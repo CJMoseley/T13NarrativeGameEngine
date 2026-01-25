@@ -1,0 +1,36 @@
+{
+    "metadata": {
+        "formatVersion": 4.5,
+        "type": "Object",
+        "generator": "Three.js JSON Object"
+    },
+    "geometries": [
+        {
+            "uuid": "wormhole_rigid_geometry",
+            "type": "CylinderGeometry",
+            "radiusTop": 1,
+            "radiusBottom": 1,
+            "height": 10,
+            "radialSegments": 16,
+            "heightSegments": 1,
+            "openEnded": true
+        }
+    ],
+    "materials": [
+        {
+            "uuid": "wormhole_rigid_material",
+            "type": "MeshBasicMaterial",
+            "color": 3381706,
+            "transparent": true,
+            "opacity": 0.5,
+            "side": 2 // THREE.DoubleSide
+        }
+    ],
+    "object": {
+        "uuid": "wormhole_rigid_object",
+        "type": "Mesh",
+        "geometry": "wormhole_rigid_geometry",
+        "material": "wormhole_rigid_material",
+        "matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]
+    }
+}

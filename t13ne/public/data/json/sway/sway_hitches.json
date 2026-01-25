@@ -1,0 +1,20 @@
+[
+  {
+    "Chi": 2,
+    "Element_Type": "Hitches",
+    "Type": "Quirk",
+    "Sway_Type_Description": "The simplest and least powerful Hitches are called Quirks, they represent minor inconveniences and character quirks, and may have a Boon equal to no more than half the Character's Facet Boon. Quirks are created with a single Hitch Facet, at least one Trigger Proficiency and possibly a Gnarl Proficiency (although often the Trigger may double as a Gnarl)."
+  },
+  {
+    "Chi": 4,
+    "Element_Type": "Hitches",
+    "Type": "Flaw",
+    "Sway_Type_Description": "Flaws are powerful Hitches that have a Boon greater than Half the Character's Facet Boon, they are powerful failings and problems that a Character must face. Flaws may have additional Triggers that increase the chances of the Flaw triggering and can blend together the Hitch Types into interesting new combinations. Flaws additionally always have at least 2 Gnarls that combine to create a more powerful disturbance when triggered."
+  },
+  {
+    "Chi": 6,
+    "Element_Type": "Hitches",
+    "Type": "Woe",
+    "Sway_Type_Description": "The most powerful Hitches usually attract the Increated, who will swap the Yarn spun by the Woe for the Twists that they can produce. Woes usually have multiple Trigger Proficiencies, which can add additional Facet Hitches to the Hitch, and all Woes must have 3 Gnarls."
+  }
+]

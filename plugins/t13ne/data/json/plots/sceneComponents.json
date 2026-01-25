@@ -1,0 +1,38 @@
+[
+  {
+    "Type": "The Ends",
+    "Scene": "Warp",
+    "Description": "The Ends are when the Characters establish what they want, usually described as Quests or as Questions that must be answered. Maybe the PCs have to defeat an Army attacking their home town, or perhaps they have to find out who the invaders are.",
+    "Rules": "The Ends for each Character are decided by the Player of that Character, the Yarn-Teller and / or Referee. The Ends are most important to the Referee, as it helps define Success and Failure for judging the Completion of the narrative."
+  },
+  {
+    "Type": "The Fray",
+    "Scene": "Warp",
+    "Description": "The Fray is what keeps the Characters from their Ends, all the things that complicate that Quest. The PCs have a huge, glorious, and bloody battle with the invading army.",
+    "Rules": "The Fray is defined by the Yarn-Teller with Yarn Cards, usually a single card defines the Fray for a single side, but many sides can have the same Fray, or each have individual Frays."
+  },
+  {
+    "Type": "The Snag",
+    "Scene": "Warp",
+    "Description": "The Snag is a complication that complicates The Fray somehow. The Snag’s complication can render any success in the Fray utterly moot. The PCs defeat the army, only to hear that it was merely the scout force for a larger invasion force led by a Prince from the next kingdom over. Snags can also occur as the result of Failure Levels during Tests, Ordeals, or due to High Suspense Levels, outside of Warp Scenes.",
+    "Rules": "The Snag is usually defined per side by a Yarn-Teller with a single card. "
+  },
+  {
+    "Type": "Recoiling",
+    "Scene": "Weft",
+    "Description": "Recoiling is when the Characters respond emotionally to the previous Warp. Faced with the news that they must battle again tomorrow, do they collapse to their knees in defeat, or celebrate the victory anyway? Recoiling should occur naturally following the Warp, as the Characters react.",
+    "Rules": "Depending upon the Plot and situation the Recoiling can consist of a Psych Attack (usually 1-2 cards, major events may warrant 3 cards). The size of these attacks (and the emotion they convey) should be a compromise between the Plot / Yarn-Teller and the Character’s Player. Characters who are not affected (due to soak etc) can obviously choose their own reaction, rather than having to portray the Psych effects."
+  },
+  {
+    "Type": "Sweeping",
+    "Scene": "Weft",
+    "Description": "Sweeping is where the Characters recover from the events of the previous Warp, and make preparations for what comes next. Sweeping can sometimes mean Gains or Revelations for the Characters. As they tend their wounds, patch their armour back together, and sharpen their blades for the next day, the Characters discover one of the enemies uniforms undamaged. Sweepings can also occur outside of the Weft as a result of numerous Success Levels.",
+    "Rules": "Sweeping is normally defined by the Yarn-Teller with a single card, sometimes it can be interesting to give each side, or even each Character their own unique Sweeping."
+  },
+  {
+    "Type": "Picking",
+    "Scene": "Weft",
+    "Description": "Picking is when the Characters choose how the Story will proceed and what will happen next. Now the PCs are faced with a choice, do they muster their forces and meet the army on the march, do they fortify their position and wait for the siege to come, or does one of them don the uniform and try to assassinate or kidnap the prince?",
+    "Rules": "The Yarn-Teller should define the choices that the Picking consists of, however the Yarn-Teller does not define all the possible choices that the Characters can make. A PC can always choose a different path that the Yarn-Teller has not imagined."
+  }
+]

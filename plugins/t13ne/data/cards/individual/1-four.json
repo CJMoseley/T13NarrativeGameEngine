@@ -1,0 +1,115 @@
+{
+	"Card_Corner": "4",
+	"Card": "Four",
+	"Suit": "1",
+	"IconSuit": "♦",
+	"Pips": "4",
+	"Unicode": "&#x1f0c4;",
+	"Svg": "images/cards-svg/4D.svg",
+	"Wound_Level": 1,
+	"Facet": "Orthodox",
+	"Tao": [
+		0,
+		0
+	],
+	"Narrative_Meaning": "Fours signify stability and foundations. They usually indicate some foundation, whether an organization or a building, that may have its foundation weakened, damaged or strengthened by the narrative.",
+	"Image": "",
+	"Yarn": {
+		"Yarn_Name": "The Book",
+		"Yarn_Description": "The Book is the card of knowledge, authority and responsibility. Books are information in permanent form, frozen thoughts, and as such are technology, language and magic. Books are granted authority, and define monotheistic religions, for example, but they may sometimes contain mistakes (in translation, spelling, or printing), or the author's opinions presented as facts, that can lead one astray. By the Book Characters act with this same occasionally flawed authority.",
+		"Significator": {
+			"Plot": "The Book Plot indicates a Plot that is reworking some other work (rather like The Myth). It may be a retelling of an older story, or a retelling of history, re-imagined in a new place or time. The new Plot will always have differences to the original (often completely inverting the Conflict or Final Resolution), but is fundamentally the same thing. Book Plots often rely heavily on Revelations and characterisations  in their Conflict.",
+			"Side": "A side of a conflict that is marked by the Book is granted authority, but that authority is flawed in some way. Perhaps they misinterpret the law, or a religious document, or place the wrong emphasis in between the two...",
+			"Character": "The Book Significator indicates a Character who does things by the Book. <p>They <strong>Gain Yin</strong> when they remind others of the rules, and point out rule-breaking.</p><p><strong>Gain Yang</strong> when they follow or enforce proper procedures and rules.</p><p><strong>Gain Chi</strong> when they are respectful of others and polite.</p><p>The Book also grants them a +1 Success Level if they break a rule.</p>",
+			"Scene": "The Book Scenes tend to be scripted. They might be a section of descriptive prose, narration or scripted dialogue, perhaps a Character will tell their back-story, motives or simply mislead. Words are important to this scene, which is more likely to be an argument than a fight, and more often a conversation or revelation. Yarn-Tellers should use this card carefully, as they will be required to narrate the details, or play out the conversations."
+		},
+		"Beat_Type": "4",
+		"Conflict_Embodiment": "3",
+		"Facet_Embodiment": "10",
+		"Hook_Aspect": "I-Ching: Second Hexagram",
+		"Aspect_Description": "The Hook targets the Character's I-Ching, specifically the 2nd Hexagram. Usually this 2nd Hexagram defines only a way of gaining Chi, Yin or Yang for the Character, so the Hook will provide whatever circumstances that Gain requires.",
+		"Hook": "Tone, Theme or Thesis",
+		"Hook_Description": "The Conflict hooks the Characters by a powerful scene that sets the Tone for the Story, that may also specify the Theme or Thesis of the Conflict with an immediate Revelation.",
+		"Gain": "Knowledge (Lore or Learning Descendant of Skill or Talent Level)",
+		"Fray": "Research",
+		"Fray_Description": "Usually a Low Stakes Ordeal that involves a Character finding out some information, it may involve reading (web-pages, books, articles, papers), visiting a Location (usually a Library, Archive, or a website), asking people questions, in interviews or by polling, or (more rarely) conducting experiments.",
+		"Snag": "Missing Page",
+		"Snag_Description": "The Book Snag is a missing page or piece of the puzzle. They may have done the research, or reached their goal, only to discover they don't have the final item they require. They may be able to find another copy, or someone who has read that page though, so all is not lost.",
+		"NPC": {
+			"Archetype": "Teacher",
+			"Persona": 14,
+			"Core": 14,
+			"Hitch": 2,
+			"Description": "Teachers are those who Teach. They may be religious people or school teachers, or they can even be Professors (although not Archetype Professors). Teachers usually have at least a Talent in what they Teach, but not always, their true Power lies in Teaching things they don't even know themselves."
+		},
+		"Sweeping": "RTFM",
+		"Sweeping_Text": "You find or are directed to a book, tome or manual that can give you a Gain of a Teaching in a Skill, etc. Example, after asking why a green light started flashing on their flight suits they were handed the Operators Manual by the Technician in the bay. They will still need to find time to read the manual...",
+		"History": "Ancient",
+		"History_Description": "The Book card indicates that the past in this case is some ancient, half-forgotten knowledge that must be researched to be properly understood. This can indicate a forgotten piece of a character's history, or some actual historical situation affects this moment.",
+		"Situation": "Authority",
+		"Situation_Description": "The Book indicates the current situation is something to do with authority, often the law or some rule, this may not necessarily be criminal law, property, corporate, civil, commercial, international, family, employment, administrative, religious, physical and temporal laws can apply. This authority may be the direct source of the situation or simply complicate it.",
+		"Solution": "Research",
+		"Solution_Description": "The Book indicates that the future, and a route out of this current situation, is certain, all ready decided and written down somewhere, only research and copious amounts of study and reading are required to find out exactly where and what that is.",
+		"Revelations": {
+			"About": "World-Building Authority",
+			"About_Description": "The information is about the background, or setting, not the current plot or situation. It might include pertinent details for the current plot, but is usually just about what is the accepted authority of the world. Is there a codified book of laws? Is there a constitution for government? Is this a crypto-anarchist collective that accepts no authority beyond itself.",
+			"Info": "Facts",
+			"Info_Description": "The available information is in the form of raw facts, such as \"Character X owns a yacht\", \"Character X comes from a poor family and neighbourhood\", \"Character X was arrested fifteen years ago, charges were not pressed at that time\" and \"Character Y was arrested for running a huge drug laboratory fourteen years ago\" usually these facts can be used to draw a number of conclusions, some of which may even be true.",
+			"Vector": "Writing",
+			"Vector_Description": "The information is found in writing. This could be a memorandum, a letter, a text, or a book. Sometimes the information will be hidden with a code or cipher within the text, perhaps even a work of fiction might hide some hidden truths.",
+			"Alternate": "Chi",
+			"Alternate_Description": "The information gives some idea of the Chi cost (or Purchase Price), stored Chi (Wealth and Experience), or methods of Gaining Chi (usually the Persona) of the Embodiment.",
+			"Detail": "Linguistic",
+			"Detail_Description": "A detail about the language (and therefore culture) of a people or area. Such as the Western Orcs having no word for \"<em>Mercy</em>\", but Southern Orcs have words that mean \"<em>Has displayed a combination of Lenience and/or laziness</em>\" and \"<em>not Ruthless</em>\" which might mean the same thing."
+		}
+	},
+	"Obstacle": {
+		"Type": "Specialist Knowledge",
+		"Description": "The way ahead isn't blocked exactly, but getting past requires some specialist knowledge, maybe you need to know what that sign says, or how to turn off the electricity... Knowledge is usually a specific required Proficiency."
+	},
+	"Tarot": {
+		"WyrdTarot": "Discourage",
+		"Crossed": "+1 Success Level on any Psychology Test",
+		"Normal": "+1 Failure Level on any Psychology Test"
+	},
+	"Ordeal": {
+		"Ordeal_Type": "Solitary Ordeal",
+		"Stages": "1",
+		"Ordeal_Spread": "Railroad",
+		"Stakes": "High",
+		"Test": "Authority (Dominion)",
+		"Obstacles": "Usually none",
+		"Suggested_Action": "Read/Research",
+		"Stage": "Small rise",
+		"Stage_Description": "A short, but slight rise, a slope, step or few steps.",
+		"Motional": "Ground Riding Dash",
+		"Motional_Description": "Working alone, but riding a beast or a vehicle, quickly. Try to get as far as possible.",
+		"Tide_of_Battle": "Higher Ground",
+		"Tide_of_Battle_Text": "The Flowing forces have the higher ground and a slight situational advantage. They  add +1 Pip to each card they play to Defend during the Stage. The Ebbing forces have the lower ground, which confers them no advantage, or real disadvantage of note.",
+		"Fight": "Assault",
+		"Fight_Description": "Entrenched or armoured opponents that are greater in number, but lower in quality (start with Extras) or have lesser equipment than the attacking force."
+	},
+	"Lea": {
+		"PathColour": "Brown/Blue Omnivore",
+		"Bulmas": "Broccen, Vermis, Labyrinthine, All-Walkers",
+		"AnimalCategory": "Mesofauna",
+		"Example": "Greenfly / Midge / Mosquito",
+		"Bodypart": "Wings",
+		"Notes": "Tiny Arthropods, often larva forms of larger arthropods"
+	},
+	"Stress": {
+		"Type": "Escapism",
+		"Description": "Characters who use escapism avoid their Stress by throwing themselves into something else. This might be a fictional universe, a fantasy, a paranoid world view, or escape an old relationship for a new love or change job.",
+		"Rules": "Escapism Characters create a new Emotional, Inept, Bias, Mild, Duty or Devotion Quirk with a Bane of 1. Characters may move Stress into this new Hitch, increasing the Banes by 1 costs the current Banes in Stress."
+	},
+	"Trauma": {
+		"Type": "Perfectionism",
+		"Description": "Trauma can have strange effects on people, obsession and compulsions can mix and create strange new behaviours and patterns, such as making a person obsessed with being perfect, and achieving perfection. This can create serious issues for a Character, making them unable to perform Tasks unless they can succeed perfectly, leading to procrastination, additional work, micromanagement and unfinished tasks.",
+		"Rules": "Perfectionist Characters Gain 1 Stress if they roll less than Maximum on any roll, or play non-court cards on Actions. However, if they roll Maximum on any individual die, or play all court-cards in an Action, then they may relieve Stress equal to the number of dice rolled (e.g. a 2d6 relieves 2 when a 12 is rolled) or Pips Reduced."
+	},
+	"Age": {
+		"Type": "Reason",
+		"Description": "An Age of Reason is occuring. During this age, knowledge and logic are valued, this usually enables a scientific, technological or cultural advance to be made by the society. Such periods usually include a host of discoveries, developments or rediscoveries, that can quickly, and often, lead onto another age.",
+		"Rules": "An age of reason where science, history and knowledge are celebrated and expanded upon, are always revolutionary somehow for a society, but always short-lived turning into another type of age after a few discoveries have been made."
+	}
+}

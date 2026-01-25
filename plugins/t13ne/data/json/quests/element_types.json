@@ -1,0 +1,135 @@
+[
+    {
+        "id": "T13-NE-QUEST-ELEM-1",
+        "data": {
+            "Type": "Agent of Change",
+            "Description": "The Agent of Change is a character that works to overturn the status-quo of the world before the Quest. They are similar to the Agent of Chaos, but work openly for their change, they will not catch a Quester off-guard about what they want to achieve."
+        }
+    },
+    {
+        "id": "T13-NE-QUEST-ELEM-2",
+        "data": {
+            "Type": "Agent of Chaos",
+            "Description": "The Agent of Chaos looks similar to the Agent of Change, but is actually a form of Opposition that works to overturn the status quo of the world before the Quest. They may work to assist the Quester at one time, but then work against them the next, the Quest and the Quester are largely irrelevant. Agents of Chaos can occasionally pretend to be Quest Givers or Informers, if it suits their purposes."
+        }
+    },
+    {
+        "id": "T13-NE-QUEST-ELEM-3",
+        "data": {
+            "Type": "Authority",
+            "Description": "An Authority is a character who has some political or social power, they are usually somewhat allied with the Old Guard, as they derive power from the status-quo, they may be allied with anyone, but are usually responsible for Bystanders. Authorities are not the Quest-giver though."
+        }
+    },
+    {
+        "id": "T13-NE-QUEST-ELEM-4",
+        "data": {
+            "Type": "Bystander",
+            "Description": "Bystanders are not involved directly with the Quest, but may be pulled in by Opposition, Quester or Dragon depending upon the situation."
+        }
+    },
+    {
+        "id": "T13-NE-QUEST-ELEM-5",
+        "data": {
+            "Type": "Complicator",
+            "Description": "The Complicator is a Character who works for the Opposition and complicates the Quest for the Quester, usually these complications will include turning allies against them, and subtle manipulations."
+        }
+    },
+    {
+        "id": "T13-NE-QUEST-ELEM-6",
+        "data": {
+            "Type": "Dragon",
+            "Description": "The Dragon is a specific Character, usually a Monster, who acts as a Guardian of a Quest Object. Examples include most Dragons in fantasy and any guard robots"
+        }
+    },
+    {
+        "id": "T13-NE-QUEST-ELEM-7",
+        "data": {
+            "Type": "Enemy Agent",
+            "Description": "A member of the Opposition who is known to the Quester as a friend (or even member of) the family, neighbour or similar. The enemy agent is often revealed quite late in the Quest, and may have been acting as a Supporter during the early Quest. The enemy agent is the most likely member of the Opposition to steal the Quest Map."
+        }
+    },
+    {
+        "id": "T13-NE-QUEST-ELEM-8",
+        "data": {
+            "Type": "Fox",
+            "Description": "The Fox is a Character or Descendant that is incredibly cunning, they may act as a Complicator and as the Object, sometimes they actually are both, but they can be neither, and are more like the Wolf, only with more desire to steal food than kill for it, such as a quick-fingered rogue."
+        }
+    },
+    {
+        "id": "T13-NE-QUEST-ELEM-9",
+        "data": {
+            "Type": "Informer",
+            "Description": "The Informer is a Character or occasionally a Descendant that informs the Quester of some aspect of the Quest. They might explain the Opposition, expose some weakness of the Target, or reveal some secret about a Quest Giver."
+        }
+    },
+    {
+        "id": "T13-NE-QUEST-ELEM-10",
+        "data": {
+            "Type": "Law-Enforcer",
+            "Description": "Any Character who is aligned with the Status Quo and given authority to impose the laws of the Status Quo world. They will oppose any character who flaunts or breaks laws who is not of greater authority than them."
+        }
+    },
+    {
+        "id": "T13-NE-QUEST-ELEM-11",
+        "data": {
+            "Type": "Object",
+            "Description": "The Object is a Location, Descendant, or Character (sometimes described as the princess) that is the objective of the Quest. They might be the fort that must be held or besieged, a magical sword that must be liberated from a dragon horde, or a kidnapped princess as the story and quest requires."
+        }
+    },
+    {
+        "id": "T13-NE-QUEST-ELEM-12",
+        "data": {
+            "Type": "Old Guard",
+            "Description": "An Agent who works to promote, and benefits from, the status-quo (the world as it is before the Quest begins). The Old Guard will oppose anyone who seeks to change the status-quo, whether Quester, Opposition, Agent of Change or Agent of Chaos. In other Quests the Old Guard can be the Quest-Giver."
+        }
+    },
+    {
+        "id": "T13-NE-QUEST-ELEM-13",
+        "data": {
+            "Type": "Opposition",
+            "Description": "Any Character who opposes the Questers and the Quest in a generic, as opposed to specific, way. Examples might include the current owners of Quest Descendants, Plot Tokens, McGuffins and the like."
+        }
+    },
+    {
+        "id": "T13-NE-QUEST-ELEM-14",
+        "data": {
+            "Type": "Quartermaster",
+            "Description": "The Quartermaster is a Character that can be met by any Quester, and who will provide assistive descendants, often times the Quartermaster will test the Quester in some way. Examples include \"Q\" in those famous MI6 movies."
+        }
+    },
+    {
+        "id": "T13-NE-QUEST-ELEM-15",
+        "data": {
+            "Type": "Quest-Giver",
+            "Description": "Any Character who has knowledge of the Quest and an authority to send someone upon it. The Quest-giver, and the authority they derive to give the Quest, is not the same as an Authority Type Character, necessarily. So the potential Quest-givers and Authorities might include the king, the vizier, the enemy Duke who opposes the king, and the hero&#39;s father, but only the Father has the authority to send his son on a Quest to reclaim the family fortune."
+        }
+    },
+    {
+        "id": "T13-NE-QUEST-ELEM-16",
+        "data": {
+            "Type": "Quester",
+            "Description": "Any Character who has accepted the Quest, even if they are from different sides or Quest Givers. Examples include the hero and any rivals."
+        }
+    },
+    {
+        "id": "T13-NE-QUEST-ELEM-17",
+        "data": {
+            "Type": "Supporter",
+            "Description": "The Supporter is a Character (and occasionally a Descendant) who offers the Quester some assistance along the way of their Quest. Often this assistance will be magical in nature, and in folklore the Supporter themselves may be a magical creature or entity."
+        }
+    },
+    {
+        "id": "T13-NE-QUEST-ELEM-18",
+        "data": {
+            "Type": "Warner",
+            "Description": "The Warner is a Character of equal or greater authority to the Quest Giver who warns the Quester not to take the Quest. Often the Warner will have some item that the Quester requires to complete the Quest, such as the Map."
+        }
+    },
+    {
+        "id": "T13-NE-QUEST-ELEM-19",
+        "data": {
+            "Type": "Wolf",
+            "Description": "The Wolf is a Character or Monster that is usually a predator, unconnected to the Quest, but is driven by hunger, anger or manipulations to attack the Quester."
+        }
+    }
+]

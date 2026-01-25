@@ -1,0 +1,33 @@
+{
+    "metadata": {
+        "formatVersion": 4.5,
+        "type": "Object",
+        "generator": "Three.js JSON Object - Generator"
+    },
+    "geometries": [
+        {
+            "uuid": "generator_geometry",
+            "type": "SphereGeometry",
+            "radius": 0.3,
+            "widthSegments": 16,
+            "heightSegments": 16
+        }
+    ],
+    "materials": [
+        {
+            "uuid": "generator_material",
+            "type": "MeshPhongMaterial",
+            "color": 16776960,
+            "specular": 16776960,
+            "emissive": 16776960,
+            "shininess": 100
+        }
+    ],
+    "object": {
+        "uuid": "generator_object",
+        "type": "Mesh",
+        "geometry": "generator_geometry",
+        "material": "generator_material"
+    },
+    "component_type": "generator"
+}

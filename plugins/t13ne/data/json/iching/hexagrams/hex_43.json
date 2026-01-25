@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 43,
+    "Name": "Displacing",
+    "Entity": "&#19946;",
+    "Logical": 31,
+    "Trigrams": [
+      0,
+      1
+    ],
+    "Hexagram_Text": "Guai, Displacing (or Breaking Through, Resoluteness, Resolve, or Determination), is about reaching a break through in your thinking. Moving from Displacing to Deciding and then Determination is often the only way to move beyond your self-imposed limits.",
+    "Unchanging": "You may redirect any direct attack upon you to an Ally or Descendant once per Scene.",
+    "Line1": "Bitten Off More Than You Can Chew",
+    "Line2": "Displaced Alarm",
+    "Line3": "Clenched Jaw",
+    "Line4": "Determined Shepherd",
+    "Line5": "Displacing Weeds",
+    "Line6": "Displaced Monologue"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you blame someone else, make a decision, or fight for your beliefs",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you do not call out misdeeds, crimes and shameful actions when you see them",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "you act pessimistic, or abandon a task before completing it",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yin",
+        "Condition": "you act paranoid, defensive or alarmed",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yin",
+        "Condition": "you laugh, bite your tongue or do not answer",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yin",
+        "Condition": "you argue, risk punishment, or realise you were wrong",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yin",
+        "Condition": "you remove, kill or destroy something that stands in your way",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yang",
+        "Condition": "you explain your goals, plans, or motives",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Displacing Quest indicates a situation where evil people are in authority. The area the Quest is set in may be ruled by an despicable dictator, greedy governor, ignoble nobles, incompetent civil servants, or corrupt politicians. During the Quest these forces are usually destabilised, exposed and removed, not always as a direct result of the Quest itself, or even the Quester, although they will play a part in this change as the evil authority is usually at least connected to the opposition in the Quest, but are rarely directed .",
+    "Quest_Complete": "The Quest that ends with a Displacing Hexagram involves the Quester having to make an important decision, or bring a warning home. The decision they must make will affect a great number of people, and they must tell them of this decision before it affects them directly, or perhaps the Quester overheard enemy plans, or found out the culprit of a crime, and must carry that information home. Even this creates a decision for the Quester, who should they tell first, and what do they do to prove what they say is the truth?",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester has accepted the Quest, but the first Test or Ordeal is already too much for them. This Test or Ordeal is more difficult than might have been expected, and the Quester will have an additional Failure Level, Hurdle or Obstacle on their Test or Ordeal. The Quester should abandon this too difficult Test or Ordeal and plan around it instead somehow.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "There is an alarming situation, where the Quester may think themselves under attack. This turns out to be a false alarm, but if the Quester was unprepared they will suffer a Failure Level, Hurdle or Obstacle on the test or Ordeal anyway.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The Quester will find themselves the subject of malicious gossip, unfounded accusations, or personal attacks. If they ignore and walk away from this angering situation then they may add a Success Level to their Test or Ordeal. If they are drawn into argument, or worse combat, then they will suffer an extra Failure Level, Hurdle or Obstacle on the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester is warned off some action by an authority. If they heed this advice all will be fine, but if they proceed with the action it may result in injury, adding a Failure Level, Hurdle or Obstacle to their Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester encounters weed-like opposition, difficult to eradicate and inclined to return whenever they try. This usually involves an Ordeal and a fight. If the Quester behaves in an evil manner themselves then add an additional Hurdle and Obstacle.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "For the Quester their time of victory should be soon at hand, but they may still stumble and snatch defeat from the jaws of victory if they are not careful. The Quester must have a detailed plan, and explain that plan to their companions. However, if any member of the the opposition overhears this plan it will add a Failure Level, Hurdle or Obstacles to the Test or Ordeal, this will often cause the evil authority to escape.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "This hexagram signifies on the one hand a break-through after a long accumulation of tension, as a swollen river breaks through its dikes, or in the manner of a cloudburst. On the other hand, applied to human conditions, it refers to the time when inferior people gradually begin to disappear. Their influence is on the wane; as a result of resolute action, a change in conditions occurs, a break-through. The hexagram is linked with the third month [April-May].",
+    "The_Image": {
+      "text": "The lake has risen up to heaven:\n\nThe image of BREAK-THROUGH.\n\nThus the superior man\nDispenses riches downward\nAnd refrains from resting on his virtue.",
+      "comments": "When the water of a lake has risen up to heaven, there is reason to fear a cloudburst. Taking this as a warning, the superior man forestalls a violent collapse. If a man were to pile up riches for himself alone, without considering others, he would certainly experience a collapse. If a man were to pile up riches for himself alone, without considering others, he would certainly experience a collapse. For all gathering is followed by dispersion. Therefore the superior man begins to distribute while he is accumulating. In the same way, in developing his character he takes care not to become hardened in obstinacy but to remain receptive to impressions by help of strict and continuous self-examination."
+    },
+    "The_Judgment": {
+      "text": "BREAK-THROUGH. One must resolutely make the matter known\nAt the court of the king.\nIt must be announced truthfully. Danger.\nIt is necessary to notify one's own city.\nIt does not further to resort to arms.\nIt furthers one to undertake something.",
+      "comments": "Even if only one inferior man is occupying a ruling position in a city, he is able to oppress superior men. Even a single passion still lurking in the heart has power to obscure reason. Passion and reason cannot exist side by side-therefore fight without quarter is necessary if the good is to prevail. In a resolute struggle of the good against evil, there are, however, definite rules that must not be disregarded, if it is to succeed. First, resolution must be based on a union of strength and friendliness. Second, a compromise with evil is not possible; evil must under all circumstances be openly discredited. Nor must our own passions and shortcomings be glossed over. Third, the struggle must not be carried on directly by force. If evil is branded, it thinks of weapons, and if we do it the favor of fighting against it blow for blow, we lose in the end because thus we ourselves get entangled in hatred and passion. Therefore it is important to begin at home, to be on guard in our own persons against the faults we have branded. In this way, finding no opponent, the sharp edges of the weapons of evil becomes dulled. For the same reasons we should not combat our own faults directly. As long as we wrestle with them, they continue victorious. Finally, the best way to fight evil is to make energetic progress in the good."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Mighty in the forward-striding toes.\nWhen one goes and is not equal to the task,\nOne makes a mistake.",
+        "comments": "In times of resolute advance, the beginning is especially difficult. We feel inspired to press forward but resistance is still strong; therefore we ought to gauge our own strength and venture only so far as we can go with certainty of success. To plunge blindly ahead is wrong, because it is precisely at the beginning that an unexpected setback can have the most disastrous results."
+      },
+      "2": {
+        "text": "A cry of alarm. Arms at evening and at night.\nFear nothing.",
+        "comments": "Readiness is everything. Resolution is indissolubly bound up with caution. If an individual is careful and keeps his wits about him, he need not become excited or alarmed. If he is watchful at all times, even before danger is present, he is armed when danger approaches and need not be afraid. The superior man is on his guard against what is not yet in sight and on the alert for what is not yet within hearing; therefore he dwells in the midst of difficulties as thought hey did not exist. If a man develops his character, people submit to him of their own accord. If reason triumphs, the passions withdraw of themselves. To be circumspect and not to forget one's armor is the right way to security."
+      },
+      "3": {
+        "text": "To be powerful in the cheekbones\nBrings misfortune.",
+        "comments": "The superior man is firmly resolved.\nHe walks alone and is caught in the rain.\nHe is bespattered,\nAnd people murmur against him.\n\nNo blame.\n\nHere we have a man in an ambiguous situation. While all others are engaged in a resolute fight against all that is inferior, he alone has a certain relationship with an inferior man. If he were to show strength outwardly and turn against this man before the time is ripe, he would only endanger the entire situation, because the inferior man would too quickly have recourse to countermeasures. The task of the superior man becomes extremely difficult here. He must be firmly resolved within himself and, while maintaining association with the inferior man, avoid any participation in his evilness. He will of course be misjudged. It will be thought that he belong to the party of the inferior man. He will be lonely because no one will understand him. His relations with the inferior man will sully him in the eyes of the multitude, and they will turn against him, grumbling. But he can endure this lack of appreciation and makes no mistake, because he remains true to himself."
+      },
+      "4": {
+        "text": "There is no skin on his thighs,\nAnd walking comes hard.\nIf a man were to let himself be led like a sheep,\nRemorse would disappear.\nBut if these words are heard",
+        "comments": "They will not be believed.\n\nHere a man is suffering from inner restlessness and cannot abide in his place. He would like to push forward under any circumstances, but encounters insuperable obstacles. Thus his situation entails an inner conflict. This is due to the obstinacy with which he seeks to enforce his will. If he would desist from this obstinacy, everything would go well. But this advice, like so much other good counsel, will be ignored. For obstinacy makes a man unable to hear, for all that he has ears."
+      },
+      "5": {
+        "text": "In dealing with weeds,\nFirm resolution is necessary.\nWalking in the middle\nRemains free of blame.",
+        "comments": "Weeds always grow back again and are difficult to exterminate. So too the struggle against an inferior man in a high position demands firm resolution. One has certain relations with him, hence there is danger that one may give up the struggle as hopeless. But this must not be. One must go on resolutely and not allow himself to be deflected from him course. Only in this way does one remain free of blame."
+      },
+      "6": {
+        "text": "No cry.\nIn the end misfortune comes.",
+        "comments": "Victory seems to have been achieved. There remains merely a remnant of the evil resolutely to be eradicated as the time demands. Everything looks easy. Just there, however, lies the danger. If we are not on guard, evil will succeed in escaping by means of concealment, and when it has eluded us new misfortunes will develop from the remaining seeds, for evil does not die easily. So too in dealing with the evil in own's own character, one must go to work with thoroughness. If out of carelessness anything were to be overlooked, new evil would arise from it."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Displacing'. Internalize this core philosophy: This hexagram signifies on the one hand a break-through after a long accumulation of tension, as a swollen river breaks through its dikes, or in the manner of a cloudburst. On the other hand, applied to human conditions, it refers to the time when inferior people gradually begin to disappear. Their influence is on the wane; as a result of resolute action, a change in conditions occurs, a break-through. The hexagram is linked with the third month [April-May]. Your current worldview is: \"Guai, Displacing (or Breaking Through, Resoluteness, Resolve, or Determination), is about reaching a break through in your thinking. Moving from Displacing to Deciding and then Determination is often the only way to move beyond your self-imposed limits.\". Let your choices be subtly driven by these conditions: you blame someone else, make a decision, or fight for your beliefs, you do not call out misdeeds, crimes and shameful actions when you see them. When interacting, mirror the wisdom found in the commentary: \"Even if only one inferior man is occupying a ruling position in a city, he is able to oppress superior men. Even a single passion still lurking in the heart has power to obscure reason. Passion and reason cannot exist side by side-therefore fight without quarter is necessary if the good is to...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Displacing'. The primary quest objective is: The Displacing Quest indicates a situation where evil people are in authority. The area the Quest is set in may be ruled by an despicable dictator, greedy governor, ignoble nobles, incompetent civil servants, or corrupt politicians. During the Quest these forces are usually destabilised, exposed and removed, not always as a direct result of the Quest itself, or even the Quester, although they will play a part in this change as the evil authority is usually at least connected to the opposition in the Quest, but are rarely directed .. Introduce environmental or social complications that reflect the 'Image' of this hexagram: When the water of a lake has risen up to heaven, there is reason to fear a cloudburst. Taking this as a warning, the superior man forestalls a violent collapse. If a man were to pile up riches for himself alone, without considering others, he would certainly experience a collapse. If a man were to pile up riches for himself alone, without considering others, he would certainly experience a... Use the following line-specific challenges to pace the story: The Quester has accepted the Quest, but the first Test or Ordeal is already too much for them. This Test or Ordeal is more difficult than might have been expected, and the Quester will have an additional Failure Level, Hurdle or Obstacle on their Test or Ordeal. The Quester should abandon this too difficult Test or Ordeal and plan around it instead somehow. | There is an alarming situation, where the Quester may think themselves under attack. This turns out to be a false alarm, but if the Quester was unprepared they will suffer a Failure Level, Hurdle or Obstacle on the test or Ordeal anyway. | The Quester will find themselves the subject of malicious gossip, unfounded accusations, or personal attacks. If they ignore and walk away from this angering situation then they may add a Success Level to their Test or Ordeal. If they are drawn into argument, or worse combat, then they will suffer an extra Failure Level, Hurdle or Obstacle on the Test or Ordeal. | The Quester is warned off some action by an authority. If they heed this advice all will be fine, but if they proceed with the action it may result in injury, adding a Failure Level, Hurdle or Obstacle to their Test or Ordeal. | The Quester encounters weed-like opposition, difficult to eradicate and inclined to return whenever they try. This usually involves an Ordeal and a fight. If the Quester behaves in an evil manner themselves then add an additional Hurdle and Obstacle. | For the Quester their time of victory should be soon at hand, but they may still stumble and snatch defeat from the jaws of victory if they are not careful. The Quester must have a detailed plan, and explain that plan to their companions. However, if any member of the the opposition overhears this plan it will add a Failure Level, Hurdle or Obstacles to the Test or Ordeal, this will often cause the evil authority to escape.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Bitten Off More Than You Can Chew): Mirror the internal state described in the commentary: \"In times of resolute advance, the beginning is especially difficult. We feel inspired to press forward but resistance is still strong; therefore we ought to gauge our own strength and venture only so far as we can go with certainty of success. To...\" Your actions should be framed by the goal: you act pessimistic, or abandon a task before completing it.",
+        "Plot": "Plot Complication Line 1 (Bitten Off More Than You Can Chew): Introduce a challenge based on the interpretation: \"In times of resolute advance, the beginning is especially difficult. We feel inspired to press forward but resistance is still strong; therefore we ought to gauge our own strength and venture only so far as we can go with certainty of success. To...\" The specific quest objective for this stage is: The Quester has accepted the Quest, but the first Test or Ordeal is already too much for them. This Test or Ordeal is more difficult than might have been expected, and the Quester will have an additional Failure Level, Hurdle or Obstacle on their Test or Ordeal. The Quester should abandon this too difficult Test or Ordeal and plan around it instead somehow."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Displaced Alarm): Mirror the internal state described in the commentary: \"Readiness is everything. Resolution is indissolubly bound up with caution. If an individual is careful and keeps his wits about him, he need not become excited or alarmed. If he is watchful at all times, even before danger is present, he is armed...\" Your actions should be framed by the goal: you act paranoid, defensive or alarmed.",
+        "Plot": "Plot Complication Line 2 (Displaced Alarm): Introduce a challenge based on the interpretation: \"Readiness is everything. Resolution is indissolubly bound up with caution. If an individual is careful and keeps his wits about him, he need not become excited or alarmed. If he is watchful at all times, even before danger is present, he is armed...\" The specific quest objective for this stage is: There is an alarming situation, where the Quester may think themselves under attack. This turns out to be a false alarm, but if the Quester was unprepared they will suffer a Failure Level, Hurdle or Obstacle on the test or Ordeal anyway."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Clenched Jaw): Mirror the internal state described in the commentary: \"The superior man is firmly resolved.\nHe walks alone and is caught in the rain.\nHe is bespattered,\nAnd people murmur against him.\n\nNo blame.\n\nHere we have a man in an ambiguous situation. While all others are engaged in a resolute fight against all...\" Your actions should be framed by the goal: you laugh, bite your tongue or do not answer.",
+        "Plot": "Plot Complication Line 3 (Clenched Jaw): Introduce a challenge based on the interpretation: \"The superior man is firmly resolved.\nHe walks alone and is caught in the rain.\nHe is bespattered,\nAnd people murmur against him.\n\nNo blame.\n\nHere we have a man in an ambiguous situation. While all others are engaged in a resolute fight against all...\" The specific quest objective for this stage is: The Quester will find themselves the subject of malicious gossip, unfounded accusations, or personal attacks. If they ignore and walk away from this angering situation then they may add a Success Level to their Test or Ordeal. If they are drawn into argument, or worse combat, then they will suffer an extra Failure Level, Hurdle or Obstacle on the Test or Ordeal."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Determined Shepherd): Mirror the internal state described in the commentary: \"They will not be believed.\n\nHere a man is suffering from inner restlessness and cannot abide in his place. He would like to push forward under any circumstances, but encounters insuperable obstacles. Thus his situation entails an inner conflict....\" Your actions should be framed by the goal: you argue, risk punishment, or realise you were wrong.",
+        "Plot": "Plot Complication Line 4 (Determined Shepherd): Introduce a challenge based on the interpretation: \"They will not be believed.\n\nHere a man is suffering from inner restlessness and cannot abide in his place. He would like to push forward under any circumstances, but encounters insuperable obstacles. Thus his situation entails an inner conflict....\" The specific quest objective for this stage is: The Quester is warned off some action by an authority. If they heed this advice all will be fine, but if they proceed with the action it may result in injury, adding a Failure Level, Hurdle or Obstacle to their Test or Ordeal."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Displacing Weeds): Mirror the internal state described in the commentary: \"Weeds always grow back again and are difficult to exterminate. So too the struggle against an inferior man in a high position demands firm resolution. One has certain relations with him, hence there is danger that one may give up the struggle as...\" Your actions should be framed by the goal: you remove, kill or destroy something that stands in your way.",
+        "Plot": "Plot Complication Line 5 (Displacing Weeds): Introduce a challenge based on the interpretation: \"Weeds always grow back again and are difficult to exterminate. So too the struggle against an inferior man in a high position demands firm resolution. One has certain relations with him, hence there is danger that one may give up the struggle as...\" The specific quest objective for this stage is: The Quester encounters weed-like opposition, difficult to eradicate and inclined to return whenever they try. This usually involves an Ordeal and a fight. If the Quester behaves in an evil manner themselves then add an additional Hurdle and Obstacle."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Displaced Monologue): Mirror the internal state described in the commentary: \"Victory seems to have been achieved. There remains merely a remnant of the evil resolutely to be eradicated as the time demands. Everything looks easy. Just there, however, lies the danger. If we are not on guard, evil will succeed in escaping by...\" Your actions should be framed by the goal: you explain your goals, plans, or motives.",
+        "Plot": "Plot Complication Line 6 (Displaced Monologue): Introduce a challenge based on the interpretation: \"Victory seems to have been achieved. There remains merely a remnant of the evil resolutely to be eradicated as the time demands. Everything looks easy. Just there, however, lies the danger. If we are not on guard, evil will succeed in escaping by...\" The specific quest objective for this stage is: For the Quester their time of victory should be soon at hand, but they may still stumble and snatch defeat from the jaws of victory if they are not careful. The Quester must have a detailed plan, and explain that plan to their companions. However, if any member of the the opposition overhears this plan it will add a Failure Level, Hurdle or Obstacles to the Test or Ordeal, this will often cause the evil authority to escape."
+      }
+    }
+  }
+}

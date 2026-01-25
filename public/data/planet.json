@@ -1,0 +1,105 @@
+{
+    "PLANET_TYPES_DEPRECATED": [
+        "Terrestrial World", "Gas Giant", "Ice Dwarf", "Ocean World", "Lava World", "Barren Rock",
+        "Jungle World", "Desert Planet", "Tidally Locked World", "Synthetic Habitat", "Relic Structure"
+    ],
+    "PLANET_PREFIXES": [
+        "Terrestrial", "Oceanic", "Volcanic", "Barren", "Jungle", "Desert", "Ice", "Gas", "Tidally-Locked", "Crystalline", "Metallic", "Carbon",
+        "Arid", "Molten", "Verdant", "Glacial", "Storm", "Ringed", "Shattered", "Twilight", "Dawn", "Aether", "Void", "Shadow"
+    ],
+    "PLANET_SUFFIXES": [
+        "World", "Giant", "Dwarf", "Expanse", "Sphere", "Rock", "Body", "Super-Earth", "Core", "Reach", "Prime", "Minor",
+        "Nexus", "Haven", "Spire", "Vault", "Deep", "Shore", "Ridge", "Peak", "Valley", "Basin", "Plateau", "Crater"
+    ],
+    "SPECIAL_PLANET_TYPES": [
+        {
+            "name": "Synthetic Habitat",
+            "desc": "A massive, self-contained artificial environment, often housing entire civilizations within its metallic shell."
+        },
+        {
+            "name": "Shattered World",
+            "desc": "The fragmented remains of a planet destroyed by a cataclysmic event, its pieces now forming a hazardous but resource-rich asteroid field."
+        },
+        {
+            "name": "Ringworld Fragment",
+            "desc": "A broken section of a colossal, ancient ring structure that once encircled a star, now tumbling through space."
+        },
+        {
+            "name": "Ringworld",
+            "desc": "A complete, impossibly large artificial ring built around a star, with a habitable inner surface millions of times larger than a normal planet."
+        },
+        {
+            "name": "Planetary Scaffold",
+            "desc": "A planet-wide construction grid, either in the process of building a world or left abandoned mid-construction."
+        },
+        {
+            "name": "Dyson Sphere",
+            "desc": "A complete shell built around a star to capture its entire energy output. A sign of a truly advanced, likely transcendent, civilization."
+        },
+        {
+            "name": "Dyson Swarm",
+            "desc": "A massive cloud of independent orbital habitats and solar collectors surrounding a star, representing an early stage of Dyson Sphere construction."
+        },
+        {
+            "name": "Dyson Plate",
+            "desc": "A single, continent-sized solar collector in a tight orbit, a more modest and achievable form of stellar engineering."
+        },
+        {
+            "name": "Stellar Engine",
+            "desc": "A megastructure designed to move an entire star system through the galaxy, often by directing stellar thrust."
+        },
+        {
+            "name": "Protoplanetary Disk",
+            "desc": "A swirling disk of gas and dust around a young star, where new planets are in the process of forming."
+        },
+        {
+            "name": "Asteroid Field",
+            "desc": "A dense collection of asteroids, often the remnants of a failed planet or a primordial feature of the system."
+        },
+        {
+            "name": "Debris Field",
+            "desc": "The wreckage of ancient battles or industrial accidents, a dangerous but potentially salvageable graveyard of ships and stations."
+        },
+        {
+            "name": "Dense Dust Cloud",
+            "desc": "An interstellar cloud of gas and dust so thick it obscures vision and interferes with sensors, often a stellar nursery."
+        },
+        {
+            "name": "World-Engine Core",
+            "desc": "The exposed, still-humming core of a planet-sized terraforming machine from a bygone era, radiating immense energy."
+        },
+        {
+            "name": "Silent Oracle",
+            "desc": "A colossal, inert computational device of unknown purpose, possibly a repository of lost knowledge or a dormant super-intelligence."
+        },
+        {
+            "name": "Gravitic Waveguide Nexus",
+            "desc": "A central hub of the ancient FTL network of The First, now dangerously unstable and leaking spatial distortions."
+        },
+        {
+            "name": "Extinct Biosphere Archive",
+            "desc": "A preserved, dead ecosystem encased in a planetary-scale containment field, like a silent, ghostly museum."
+        }
+    ],
+    "BIOSPHERE_STATUSES": [
+        "None", "Primitive Microbial Life", "Complex Flora/Fauna", "Engineered Ecosystem",
+        "Cryo-Crystalline Ecosystem", "Deceased Ecosystem (Acidic)", "Deep Ocean Life"
+    ],
+    "RESOURCE_TAGS": [
+       "Abundant Water Ice", "Rare Earth Metals", "Methane Vents", "Exotic Crystals", "Fossil Fuels", "Volcanic Sulfur",
+       "Fissile Deposits", "Resonant Alloy Veins", "Rare Atmospheric Gases", "Simple Hydrocarbons", "Heavy Metals",
+      "Silicate Crystals", "No Major Resources", "First-Tier Artifacts", "Exotic Matter Traces", "Bio-Progenitor Molecules",
+       "Floating Continents", "Deep-Mantle Diamonds", "Complex Organics", "Helium-3 Atmosphere", "Deuterium-Rich Ice",
+       "Polymer Precursors", "Psychoactive Fungi", "Catalytic Compounds", "Neutronium Fragments"
+    ],
+     
+    "MATERIALS": [
+        "Water", "Rare Earths", "Methane", "Exotic Crystals", "Hydrocarbons", "Sulfur", "Fissiles", "Resonant Alloys",
+        "Noble Gases", "Heavy Metals", "Silicates", "Progenitor Molecules", "Industrial Diamonds", "Complex Organics",
+        "Helium-3", "Deuterium", "Polymer Precursors", "Psychoactive Compounds", "Catalytic Agents", "Neutronium"
+    ],
+    "RESOURCE_FORMS": [
+        "Rich Deposits", "Trace Veins", "Atmospheric Pockets", "Dense Ices", "Crystalline Formations", "Thick Sludge",
+        "Ore-Laden Rocks", "Subsurface Vents", "Fungal Growths", "Metallic Salts", "Scattered Fragments"
+    ]
+}

@@ -1,0 +1,1448 @@
+{
+  "701": {
+    "id": 701,
+    "prof": {
+      "Name": [
+        "Inaccurate",
+        "Inaccurate Heresy Umbral Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Inaccurate challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "702": {
+    "id": 702,
+    "prof": {
+      "Name": [
+        "Misfit",
+        "Misfit Heresy Persona Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Misfit challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "703": {
+    "id": 703,
+    "prof": {
+      "Name": [
+        "Massless",
+        "Massless Inertia Zero Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Massless unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "704": {
+    "id": 704,
+    "prof": {
+      "Name": [
+        "Weightless",
+        "Weightless Inertia Zero Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Weightless unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "705": {
+    "id": 705,
+    "prof": {
+      "Name": [
+        "Void Locations",
+        "Void Location Inertia Zero Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Void Locations unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "706": {
+    "id": 706,
+    "prof": {
+      "Name": [
+        "Nimble",
+        "Nimble Inertia Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Nimble unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "707": {
+    "id": 707,
+    "prof": {
+      "Name": [
+        "Handy",
+        "Handy Inertia Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Handy unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "708": {
+    "id": 708,
+    "prof": {
+      "Name": [
+        "Bright Locations",
+        "Bright Location Inertia Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Bright Locations unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "709": {
+    "id": 709,
+    "prof": {
+      "Name": [
+        "Meteoric",
+        "Meteoric Inertia Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Meteoric unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "710": {
+    "id": 710,
+    "prof": {
+      "Name": [
+        "Fast",
+        "Fast Inertia Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Fast unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "711": {
+    "id": 711,
+    "prof": {
+      "Name": [
+        "Dazzling Locations",
+        "Dazzling Location Inertia Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Dazzling Locations unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "712": {
+    "id": 712,
+    "prof": {
+      "Name": [
+        "Dashing",
+        "Dashing Inertia Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Dashing unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "713": {
+    "id": 713,
+    "prof": {
+      "Name": [
+        "Swift",
+        "Swift Inertia Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Swift unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "714": {
+    "id": 714,
+    "prof": {
+      "Name": [
+        "Erratic Locations",
+        "Erratic Location Inertia Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Erratic Locations unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "715": {
+    "id": 715,
+    "prof": {
+      "Name": [
+        "Brisk",
+        "Brisk Inertia Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Brisk unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "716": {
+    "id": 716,
+    "prof": {
+      "Name": [
+        "Snappy",
+        "Snappy Inertia Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Snappy unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "717": {
+    "id": 717,
+    "prof": {
+      "Name": [
+        "Bracing Locations",
+        "Bracing Location Inertia Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Bracing Locations unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "718": {
+    "id": 718,
+    "prof": {
+      "Name": [
+        "Moderate",
+        "Moderate Inertia Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Moderate unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "719": {
+    "id": 719,
+    "prof": {
+      "Name": [
+        "Modest",
+        "Modest Inertia Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Modest unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "720": {
+    "id": 720,
+    "prof": {
+      "Name": [
+        "Low Locations",
+        "Low Location Inertia Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Low Locations unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "721": {
+    "id": 721,
+    "prof": {
+      "Name": [
+        "Plodding",
+        "Plodding Inertia Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Plodding unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "722": {
+    "id": 722,
+    "prof": {
+      "Name": [
+        "Slow",
+        "Slow Inertia Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Slow unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "723": {
+    "id": 723,
+    "prof": {
+      "Name": [
+        "Leaden Locations",
+        "Leaden Location Inertia Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Leaden Locations unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "724": {
+    "id": 724,
+    "prof": {
+      "Name": [
+        "Lazy",
+        "Lazy Inertia High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Lazy unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "725": {
+    "id": 725,
+    "prof": {
+      "Name": [
+        "Passive",
+        "Passive Inertia High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Passive unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "726": {
+    "id": 726,
+    "prof": {
+      "Name": [
+        "Languid Locations",
+        "Languid Location Inertia High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Languid Locations unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "727": {
+    "id": 727,
+    "prof": {
+      "Name": [
+        "Idle",
+        "Idle Inertia High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Idle unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "728": {
+    "id": 728,
+    "prof": {
+      "Name": [
+        "Outmoded",
+        "Outmoded Inertia High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Outmoded unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "729": {
+    "id": 729,
+    "prof": {
+      "Name": [
+        "Old-fashioned Locations",
+        "Old-fashioned Location Inertia High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Old-fashioned Locations unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "730": {
+    "id": 730,
+    "prof": {
+      "Name": [
+        "Inactive",
+        "Inactive Inertia Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Inactive unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "731": {
+    "id": 731,
+    "prof": {
+      "Name": [
+        "Old-fashioned",
+        "Old-fashioned Inertia Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Old-fashioned unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "732": {
+    "id": 732,
+    "prof": {
+      "Name": [
+        "Historic Locations",
+        "Historic Location Inertia Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Historic Locations unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "733": {
+    "id": 733,
+    "prof": {
+      "Name": [
+        "Lethargic",
+        "Lethargic Inertia Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Lethargic unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "734": {
+    "id": 734,
+    "prof": {
+      "Name": [
+        "Antique",
+        "Antique Inertia Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Antique unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "735": {
+    "id": 735,
+    "prof": {
+      "Name": [
+        "Ancient Locations",
+        "Ancient Location Inertia Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Ancient Locations unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "736": {
+    "id": 736,
+    "prof": {
+      "Name": [
+        "Venerable",
+        "Venerable Inertia Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Venerable unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "737": {
+    "id": 737,
+    "prof": {
+      "Name": [
+        "Ancient",
+        "Ancient Inertia Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Ancient unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "738": {
+    "id": 738,
+    "prof": {
+      "Name": [
+        "Primeval Locations",
+        "Primeval Location Inertia Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Primeval Locations unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "739": {
+    "id": 739,
+    "prof": {
+      "Name": [
+        "Ancient",
+        "Ancient Inertia Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Ancient unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "740": {
+    "id": 740,
+    "prof": {
+      "Name": [
+        "Archaic",
+        "Archaic Inertia Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Archaic unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "741": {
+    "id": 741,
+    "prof": {
+      "Name": [
+        "Primordial Locations",
+        "Primordial Location Inertia Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Primordial Locations unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "742": {
+    "id": 742,
+    "prof": {
+      "Name": [
+        "Nostalgia",
+        "Nostalgia Inertia Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Nostalgia unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "743": {
+    "id": 743,
+    "prof": {
+      "Name": [
+        "Bitterness",
+        "Bitterness Inertia Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Bitterness unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "744": {
+    "id": 744,
+    "prof": {
+      "Name": [
+        "Decided",
+        "Decided Inertia Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Decided unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "745": {
+    "id": 745,
+    "prof": {
+      "Name": [
+        "Determination",
+        "Determination Inertia Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Determination unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "746": {
+    "id": 746,
+    "prof": {
+      "Name": [
+        "Resolute",
+        "Resolute Inertia Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Resolute unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "747": {
+    "id": 747,
+    "prof": {
+      "Name": [
+        "Wait",
+        "Wait Inertia Action Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Wait unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "748": {
+    "id": 748,
+    "prof": {
+      "Name": [
+        "Slash",
+        "Slash Inertia Attack Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Slash unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "749": {
+    "id": 749,
+    "prof": {
+      "Name": [
+        "Shove",
+        "Shove Inertia Critical Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Shove unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "750": {
+    "id": 750,
+    "prof": {
+      "Name": [
+        "Worker",
+        "Worker Inertia Core Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Worker unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,77 @@
+[
+    {
+        "Type": "Another One Bites The Dust",
+        "Description": "One of the other sides captures, kills, eats, infests, or psychically subjugates random NPCs until they are dealt with (common for a Monster Embodiment). If the PC continues to ignore the plot then you might need to shift focus on NPCs that mean more to the Character, like their friends, boss, family members, lovers, etc.",
+        "Rules": "One of the other sides captures, kills, eats, infests, or psychically subjugates random NPCs until they are dealt with (common for a Monster Embodiment). If the PC continues to ignore the plot then you might need to shift focus on NPCs that mean more to the Character, like their friends, boss, family members, lovers, etc."
+    },
+    {
+        "Type": "Betrayal",
+        "Description": "An Ally abandons, betrays, or turns on the Character.",
+        "Rules": "An Ally abandons, betrays, or turns on the Character."
+    },
+    {
+        "Type": "Break up",
+        "Description": "An Ally, Mentor, friend or Love Interest, and the Character have a disagreement, that escalates into an argument, perhaps even a physical fight, and into the Ally leaving. They may be back, and often make up later. Often the argument is about how the Character is doing nothing to forward the plot (metaphorically, no one ever says they are leaving because you aren’t forwarding the plot, although in a romance this may be precisely true).",
+        "Rules": "An Ally, Mentor, friend or Love Interest, and the Character have a disagreement, that escalates into an argument, perhaps even a physical fight, and into the Ally leaving. They may be back, and often make up later. Often the argument is about how the Character is doing nothing to forward the plot (metaphorically, no one ever says they are leaving because you aren’t forwarding the plot, although in a romance this may be precisely true)."
+    },
+    {
+        "Type": "Chained",
+        "Description": "Characters from two sides are locked in a room, stuck in an elevator together, or literally chained, roped or handcuffed together. They may fight, but it won’t help them get out any sooner. Usually they have to work together, or await help from one (or both) sides.",
+        "Rules": "Characters from two sides are locked in a room, stuck in an elevator together, or literally chained, roped or handcuffed together. They may fight, but it won’t help them get out any sooner. Usually they have to work together, or await help from one (or both) sides."
+    },
+    {
+        "Type": "Chandler’s Law",
+        "Description": "Someone (usually a man — although women, robots, toons, ghosts, an army of ninja, demons, goblins, or mutant dogs can fulfil this role too) bursts into the room holding a gun (or similar High-Stakes weaponry). This instantly raises the Stakes, and often the Suspense Level. Often this NPC will insist the Player Characters do not get involved in the Plot. Typically this person is an Ally of another side’s Rational Embodiment.",
+        "Rules": "Someone (usually a man — although women, robots, toons, ghosts, an army of ninja, demons, goblins, or mutant dogs can fulfil this role too) bursts into the room holding a gun (or similar High-Stakes weaponry). This instantly raises the Stakes, and often the Suspense Level. Often this NPC will insist the Player Characters do not get involved in the Plot. Typically this person is an Ally of another side’s Rational Embodiment."
+    },
+    {
+        "Type": "Colleagues",
+        "Description": "Characters from two different sides are forced to work together by a mutual boss, a judge, or a Lord. They may argue, or fight, but it won’t get the job done any faster, and there will be repercussions (which are like consequences only worse) for failure.",
+        "Rules": "Characters from two different sides are forced to work together by a mutual boss, a judge, or a Lord. They may argue, or fight, but it won’t get the job done any faster, and there will be repercussions (which are like consequences only worse) for failure."
+    },
+    {
+        "Type": "Conscience",
+        "Description": "Someone on the other side develops a conscience and tries to make amends for what their side did, or perhaps is about to do, to the Character. They may send a warning, try to make an apology, or turn themselves in.",
+        "Rules": "Someone on the other side develops a conscience and tries to make amends for what their side did, or perhaps is about to do, to the Character. They may send a warning, try to make an apology, or turn themselves in."
+    },
+    {
+        "Type": "Diabolus ex Machina",
+        "Description": "An unexpected force, being, ability, Descendant, or entity appears, apparently from nowhere and makes things worse for the Character. This is sometimes in the form of a Lore that is revealed by a Character Embodiment (such as revealing the bad guy is a former marine, or is psychic). This is fine during the Frame or the early Loom, but try not to use this during the Late Loom or Zenith, without first foreshadowing that the enemy has unknown allies, or abilities. This can best be employed in the late Story by acting as foreshadowing (or a Revelation) for the next Scene.",
+        "Rules": "An unexpected force, being, ability, Descendant, or entity appears, apparently from nowhere and makes things worse for the Character. This is sometimes in the form of a Lore that is revealed by a Character Embodiment (such as revealing the bad guy is a former marine, or is psychic). This is fine during the Frame or the early Loom, but try not to use this during the Late Loom or Zenith, without first foreshadowing that the enemy has unknown allies, or abilities. This can best be employed in the late Story by acting as foreshadowing (or a Revelation) for the next Scene."
+    },
+    {
+        "Type": "Hook",
+        "Description": "Just use a Hook, you don’t usually need a Hook Aspect, just the Hook. For example, the Crystal Hook would just offer to pay the Character to get involved, so maybe a rich neighbour offers to pay them to deal with the issue. If they are already getting paid, maybe a second person offers to pay them more to do the same job.",
+        "Rules": "Just use a Hook, you don’t usually need a Hook Aspect, just the Hook. For example, the Crystal Hook would just offer to pay the Character to get involved, so maybe a rich neighbour offers to pay them to deal with the issue. If they are already getting paid, maybe a second person offers to pay them more to do the same job."
+    },
+    {
+        "Type": "Interference",
+        "Description": "One of the other sides will interfere in the Character’s plans somehow, this is usually not a deliberate interference but rather an coincidental action caused by their opposed or misaligned goals.",
+        "Rules": "One of the other sides will interfere in the Character’s plans somehow, this is usually not a deliberate interference but rather an coincidental action caused by their opposed or misaligned goals."
+    },
+    {
+        "Type": "Murphy’s Law",
+        "Description": "Anything that can go wrong will go wrong, usually in the worst way possible... And if something looks like its going right, it’s probably to throw you off-guard for later, or will turn out that was the wrong choice in the first place. This may result in batteries going flat, papers going missing, computers and cars crashing, traffic snarls and jams, road rage, random accidents and muggings, pens running out of ink or leaking, catching your nose on a door you open, banging your head on an open cupboard door, or dropping what you are carrying as someone barges into you.",
+        "Rules": "Anything that can go wrong will go wrong, usually in the worst way possible... And if something looks like its going right, it’s probably to throw you off-guard for later, or will turn out that was the wrong choice in the first place. This may result in batteries going flat, papers going missing, computers and cars crashing, traffic snarls and jams, road rage, random accidents and muggings, pens running out of ink or leaking, catching your nose on a door you open, banging your head on an open cupboard door, or dropping what you are carrying as someone barges into you."
+    },
+    {
+        "Type": "Obstacle",
+        "Description": "However the Character attempts to avoid the Plot they will find themselves confronted by an Obstacle. Maybe they want to drive away from the situation and discover the bridge is out, that a tree has fallen on the road, or simply that the car is out of fuel and they will have to walk, fill a can at a garage, and walk back. Then again maybe they want to stay in bed, but their guardian spirit appears in their dreams, with a nightmare letting them know what they should be doing, or else.",
+        "Rules": "However the Character attempts to avoid the Plot they will find themselves confronted by an Obstacle. Maybe they want to drive away from the situation and discover the bridge is out, that a tree has fallen on the road, or simply that the car is out of fuel and they will have to walk, fill a can at a garage, and walk back. Then again maybe they want to stay in bed, but their guardian spirit appears in their dreams, with a nightmare letting them know what they should be doing, or else."
+    },
+    {
+        "Type": "Public Meeting",
+        "Description": "Embodiment Characters from two sides of the Conflict meet in a crowded public place, such as the street, a restaurant, a port, a train station, a shop or a library. Generally this public meeting will not result in a fight breaking out, as passers-by would be caught up, and police would be called.",
+        "Rules": "Embodiment Characters from two sides of the Conflict meet in a crowded public place, such as the street, a restaurant, a port, a train station, a shop or a library. Generally this public meeting will not result in a fight breaking out, as passers-by would be caught up, and police would be called."
+    },
+    {
+        "Type": "Snag",
+        "Description": "Whatever the Character is trying to do to avoid the Plot will suffer a Snag. If they are trying to relax, the enemy will find them. If they are trying to settle a debt, the bank will get robbed while they are making a payment or withdrawal. Or if they are just chatting with a friend, they will get called out in a lie, or whatever the Snag selected may be.",
+        "Rules": "Whatever the Character is trying to do to avoid the Plot will suffer a Snag. If they are trying to relax, the enemy will find them. If they are trying to settle a debt, the bank will get robbed while they are making a payment or withdrawal. Or if they are just chatting with a friend, they will get called out in a lie, or whatever the Snag selected may be."
+    },
+    {
+        "Type": "Threats",
+        "Description": "The other side will threaten, kidnap, attack, seduce, employ, or possibly even kill (if Suspense and Stakes are high enough) an Ally, loved one (often the Character’s Love Interest), or the pet of the Character. This depends upon the nature of the Conflict, the Stakes, the Suspense and aggression of that side.",
+        "Rules": "The other side will threaten, kidnap, attack, seduce, employ, or possibly even kill (if Suspense and Stakes are high enough) an Ally, loved one (often the Character’s Love Interest), or the pet of the Character. This depends upon the nature of the Conflict, the Stakes, the Suspense and aggression of that side."
+    }
+]

@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 26,
+    "Name": "Taming Force",
+    "Entity": "&#19929;",
+    "Logical": 39,
+    "Trigrams": [
+      0,
+      6
+    ],
+    "Hexagram_Text": "Ta Ch'u, Taming Force (or Great Controlling Power), the symbolic representation of amplification. Horses pulling together in proper harness can achieve more than wild horses running. A man cannot move a rock directly with a shovel, but if he makes the right cuts it will roll away in a redirected river. Proper control and knowledge can create huge results.",
+    "Unchanging": "Once per Scene you may Double your Score (if already Doubled it becomes Triple not Quadruple) for Incarna Draw (Boon Double Reduced) Chi.",
+    "Line1": "Danger on the Horizon",
+    "Line2": "Spokes from the Wheel",
+    "Line3": "Herd Leader",
+    "Line4": "Young Bull Restrained",
+    "Line5": "Castrated Boar Tusk",
+    "Line6": "The Way of Heaven"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you rely on a Descendant to pass a Test or Ordeal",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "a powerful Descendant is in another&apos;s control",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "you suspect others motives",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yin",
+        "Condition": "you are still, unmoving, asleep or unconscious for a period",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yin",
+        "Condition": "you practice, drill or train, or an Obstacle is removed by another",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yang",
+        "Condition": "you pay attention to the little picture, the details, head trouble off before it can grow, or nip something in the bud",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you attack, or render a threat harmless",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yin",
+        "Condition": "you take the higher ground, literally or morally",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Taming Force Quest indicates a Quest that is about accumulation and storing things up, often some sort of social, economic, magical or spiritual power, usually to create a great change of some sort. Usually a Taming Force Quest has a backdrop of social or political discord, and often there is some element of hidden history, power or treasure to the Quest that must be revealed for the Quest to move on. The Quest will create a situation that requires someone with a strong personality to take charge, often this will be the Quester themselves.",
+    "Quest_Complete": "When a Quest ends with the Taming Force Hexagram the Quest rewards the Quester with some Gain, often a new Skill, Talent or Power in the form of an Annex, Descendant or Extra as required.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "There is some obvious danger to the situation that implies the Quester should not press on immediately. Perhaps there are riots, social disorder, family turmoil, the opposition has already vowed to kill any who try, or an enemy army besieges the town stopping them from leaving easily. Pressing on will add an additional Hurdle, Failure Level or Obstacles to the Test or Ordeal, where as waiting instead and ignoring the Quest will cause this line to change on its own.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester is forced to remain still for a while, this is often a result of traffic, or vehicular problems. If the Quester displays patience and rests while they are able, then there will be no misfortune, but is they insist on pushing ahead against these factors then they will add a Hurdle, Failure Level, or Obstacles to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The time for waiting is over, whatever was blocking the Quester from progressing is now removed. Often an authority, old guard, law-enforcer or even the Quest-giver will lead the way, and the Quester can follow them on. However, the situation is still dangerous and the next step must be an Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester must act immediately, moving to the next stage immediately, any delay at all will add a Failure Level, Hurdle or Obstacles to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "If the Quester acts against the opposition directly and immediately they will add a Success Level to the Test or Ordeal, and may weaken the Opposition indirectly somehow as well.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "Everything is successful, the Quest is completed now, and the Quester may make a Gain, often rewarded by the Quest-giver or an authority.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "The Creative is tamed by Kên, Keeping Still. This produces great power, a situation in contrast to that of the ninth hexagram, Hsiao Ch'u, THE TAMING POWER OF THE SMALL, in which the Creative is tamed by the Gentle alone. There one weak line must tame five strong lines, but here four strong lines are restrained by two weak lines; in addition to a minister, there is a prince, and the restraining power therefore is afar stronger. The hexagram has a threefold meaning, expressing different aspects of the concept \"Holding firm.\" Heaven within the mountain gives the idea of holding firm in the sense of holding together; the trigram Kên which holds the trigram ch'ien still, gives the idea of holding firm in the sense of holding back; the third idea is that of holding firm in the sense of caring for and nourishing. This last is suggested by the fact that a strong line at the top, which is the ruler of the hexagram, is honored and tended as a sage. The third of these meanings also attaches specifically to this strong line at the top, which represents the sage.",
+    "The_Image": {
+      "text": "Heaven within the mountain:\n\nThe image of THE TAMING POWER OF THE GREAT.\n\nThus the superior man acquaints himself with many sayings of antiquity\nAnd many deeds of the past,\nIn order to strengthen his character thereby.",
+      "comments": "Heaven within the mountain points to hidden treasures. In the words and deeds of the past there lies hidden a treasure that men may use to strengthen and elevate their own characters. The way to study the past is not to confine oneself to mere knowledge of history but, through application of this knowledge, to give actuality to the past."
+    },
+    "The_Judgment": {
+      "text": "THE TAMING POWER OF THE GREAT.\nPerseverance furthers.\n\nNot eating at home brings good fortune.\nIt furthers one to cross the great water.",
+      "comments": "To hold firmly to great creative powers and store them up, as set forth in this hexagram, there is need of a strong, clear-headed man who is honored by the ruler. The trigram Ch'ein points to strong creative power; Kên indicates firmness and truth. Both point to light and clarity and to the daily renewal of character. Only through such daily self-renewal can a man continue at the height of his powers. Force of habit helps to keep order in quiet times; but in periods when there is a great storing up of energy, everything depends on the power of the personality. However, since the worthy are honored, as in the case of the strong personality entrusted with leadership by the ruler, it is an advantage not to eat at home but rather to earn one's bread by entering upon public office. Such a man is in harmony with heaven; therefore even great and difficult undertakings, such as crossing the great water, succeed."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Danger is at hand. It furthers one to desist.",
+        "comments": "A man wishes to make vigorous advance, but circumstances present an obstacle. He sees himself held back firmly. If he should attempt to fore an advance, it would lead him into misfortune. Therefore it is better for him to compose himself and to wait until an outlet is offered for release of his stored-up energies."
+      },
+      "2": {
+        "text": "The axletrees are taken from the wagon.",
+        "comments": "Here advance is checked just as in the third line of THE TAMING POWER OF THE SMALL\n\n9. However, in the later the restraining force is slight; thus a conflict arises between the propulsive and the restraining movement, as a result of which the spokes fall out of the wagon wheels, while here the restraining force is absolutely superior; hence no struggle takes place. One submits and removes the axletrees from the wagon -in other words, contents himself with waiting. In this way energy accumulates for a vigorous advance later on."
+      },
+      "3": {
+        "text": "A good horse that follows others.\nAwareness of danger,\nWith perseverance, furthers.\nPractice chariot driving and armed defense daily.\nIt furthers one to have somewhere to go.",
+        "comments": "The way opens; the hindrance has been cleared away. A man is in contact with a strong will acting in the same direction as his own, and goes forward like one good horse following another. But danger still threatens, and he must remain aware of it, or he will be robbed of his firmness. Thus he must acquire skill on the one hand in what will take him forward, and on the other in what will protect him against unforeseen attacks. It is good in such a pass to have a goal toward which to strive."
+      },
+      "4": {
+        "text": "The headboard of a young bull.\nGreat good fortune.",
+        "comments": "This line and the one following it are the two that tame the forward-pushing lower lines. Before a bull's horns grow out, a headboard is fastened to its forehead, so that later when the horns appear they cannot do harm. A good way to restrain wild force is to forestall it. By so doing one achieves an easy and great success."
+      },
+      "5": {
+        "text": "The tusk of a gelded boar.\nGood fortune.",
+        "comments": "Here the restraining of the impetuous forward drive is achieved in an indirect way. A boar's tusk is in itself dangerous, but if the boar's nature is altered, the tusk is no longer a menace. Thus also where men are concerned, wild force should not be combated directly; instead, its roots should be eradicated."
+      },
+      "6": {
+        "text": "One attains the way of heaven.",
+        "comments": "Success.\n\nThe time of obstruction is past. The energy long dammed up by inhibition forces its way out and achieves great success. This refers to a man who is honored by the ruler and whose principles now prevail and shape the world."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Taming Force'. Internalize this core philosophy: The Creative is tamed by Kên, Keeping Still. This produces great power, a situation in contrast to that of the ninth hexagram, Hsiao Ch'u, THE TAMING POWER OF THE SMALL, in which the Creative is tamed by the Gentle alone. There one weak line must tame five strong lines, but here four strong lines are restrained by two weak lines; in addition to a minister, there is a prince, and the restraining power therefore is afar stronger. The hexagram has a threefold meaning, expressing different aspects... Your current worldview is: \"Ta Ch'u, Taming Force (or Great Controlling Power), the symbolic representation of amplification. Horses pulling together in proper harness can achieve more than wild horses running. A man cannot move a rock directly with a shovel, but if he makes the right cuts it will roll away in a redirected river. Proper control and knowledge can create huge results.\". Let your choices be subtly driven by these conditions: you rely on a Descendant to pass a Test or Ordeal, a powerful Descendant is in another&apos;s control. When interacting, mirror the wisdom found in the commentary: \"To hold firmly to great creative powers and store them up, as set forth in this hexagram, there is need of a strong, clear-headed man who is honored by the ruler. The trigram Ch'ein points to strong creative power; Kên indicates firmness and truth. Both point to light and clarity and to the daily...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Taming Force'. The primary quest objective is: The Taming Force Quest indicates a Quest that is about accumulation and storing things up, often some sort of social, economic, magical or spiritual power, usually to create a great change of some sort. Usually a Taming Force Quest has a backdrop of social or political discord, and often there is some element of hidden history, power or treasure to the Quest that must be revealed for the Quest to move on. The Quest will create a situation that requires someone with a strong personality to take charge, often this will be the Quester themselves.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: Heaven within the mountain points to hidden treasures. In the words and deeds of the past there lies hidden a treasure that men may use to strengthen and elevate their own characters. The way to study the past is not to confine oneself to mere knowledge of history but, through application of this knowledge, to give actuality to the past. Use the following line-specific challenges to pace the story: There is some obvious danger to the situation that implies the Quester should not press on immediately. Perhaps there are riots, social disorder, family turmoil, the opposition has already vowed to kill any who try, or an enemy army besieges the town stopping them from leaving easily. Pressing on will add an additional Hurdle, Failure Level or Obstacles to the Test or Ordeal, where as waiting instead and ignoring the Quest will cause this line to change on its own. | The Quester is forced to remain still for a while, this is often a result of traffic, or vehicular problems. If the Quester displays patience and rests while they are able, then there will be no misfortune, but is they insist on pushing ahead against these factors then they will add a Hurdle, Failure Level, or Obstacles to the Test or Ordeal. | The time for waiting is over, whatever was blocking the Quester from progressing is now removed. Often an authority, old guard, law-enforcer or even the Quest-giver will lead the way, and the Quester can follow them on. However, the situation is still dangerous and the next step must be an Ordeal. | The Quester must act immediately, moving to the next stage immediately, any delay at all will add a Failure Level, Hurdle or Obstacles to the Test or Ordeal. | If the Quester acts against the opposition directly and immediately they will add a Success Level to the Test or Ordeal, and may weaken the Opposition indirectly somehow as well. | Everything is successful, the Quest is completed now, and the Quester may make a Gain, often rewarded by the Quest-giver or an authority.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Danger on the Horizon): Mirror the internal state described in the commentary: \"A man wishes to make vigorous advance, but circumstances present an obstacle. He sees himself held back firmly. If he should attempt to fore an advance, it would lead him into misfortune. Therefore it is better for him to compose himself and to wait...\" Your actions should be framed by the goal: you suspect others motives.",
+        "Plot": "Plot Complication Line 1 (Danger on the Horizon): Introduce a challenge based on the interpretation: \"A man wishes to make vigorous advance, but circumstances present an obstacle. He sees himself held back firmly. If he should attempt to fore an advance, it would lead him into misfortune. Therefore it is better for him to compose himself and to wait...\" The specific quest objective for this stage is: There is some obvious danger to the situation that implies the Quester should not press on immediately. Perhaps there are riots, social disorder, family turmoil, the opposition has already vowed to kill any who try, or an enemy army besieges the town stopping them from leaving easily. Pressing on will add an additional Hurdle, Failure Level or Obstacles to the Test or Ordeal, where as waiting instead and ignoring the Quest will cause this line to change on its own."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Spokes from the Wheel): Mirror the internal state described in the commentary: \"Here advance is checked just as in the third line of THE TAMING POWER OF THE SMALL\n\n9. However, in the later the restraining force is slight; thus a conflict arises between the propulsive and the restraining movement, as a result of which the spokes...\" Your actions should be framed by the goal: you are still, unmoving, asleep or unconscious for a period.",
+        "Plot": "Plot Complication Line 2 (Spokes from the Wheel): Introduce a challenge based on the interpretation: \"Here advance is checked just as in the third line of THE TAMING POWER OF THE SMALL\n\n9. However, in the later the restraining force is slight; thus a conflict arises between the propulsive and the restraining movement, as a result of which the spokes...\" The specific quest objective for this stage is: The Quester is forced to remain still for a while, this is often a result of traffic, or vehicular problems. If the Quester displays patience and rests while they are able, then there will be no misfortune, but is they insist on pushing ahead against these factors then they will add a Hurdle, Failure Level, or Obstacles to the Test or Ordeal."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Herd Leader): Mirror the internal state described in the commentary: \"The way opens; the hindrance has been cleared away. A man is in contact with a strong will acting in the same direction as his own, and goes forward like one good horse following another. But danger still threatens, and he must remain aware of it,...\" Your actions should be framed by the goal: you practice, drill or train, or an Obstacle is removed by another.",
+        "Plot": "Plot Complication Line 3 (Herd Leader): Introduce a challenge based on the interpretation: \"The way opens; the hindrance has been cleared away. A man is in contact with a strong will acting in the same direction as his own, and goes forward like one good horse following another. But danger still threatens, and he must remain aware of it,...\" The specific quest objective for this stage is: The time for waiting is over, whatever was blocking the Quester from progressing is now removed. Often an authority, old guard, law-enforcer or even the Quest-giver will lead the way, and the Quester can follow them on. However, the situation is still dangerous and the next step must be an Ordeal."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Young Bull Restrained): Mirror the internal state described in the commentary: \"This line and the one following it are the two that tame the forward-pushing lower lines. Before a bull's horns grow out, a headboard is fastened to its forehead, so that later when the horns appear they cannot do harm. A good way to restrain wild...\" Your actions should be framed by the goal: you pay attention to the little picture, the details, head trouble off before it can grow, or nip something in the bud.",
+        "Plot": "Plot Complication Line 4 (Young Bull Restrained): Introduce a challenge based on the interpretation: \"This line and the one following it are the two that tame the forward-pushing lower lines. Before a bull's horns grow out, a headboard is fastened to its forehead, so that later when the horns appear they cannot do harm. A good way to restrain wild...\" The specific quest objective for this stage is: The Quester must act immediately, moving to the next stage immediately, any delay at all will add a Failure Level, Hurdle or Obstacles to the Test or Ordeal."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Castrated Boar Tusk): Mirror the internal state described in the commentary: \"Here the restraining of the impetuous forward drive is achieved in an indirect way. A boar's tusk is in itself dangerous, but if the boar's nature is altered, the tusk is no longer a menace. Thus also where men are concerned, wild force should not...\" Your actions should be framed by the goal: you attack, or render a threat harmless.",
+        "Plot": "Plot Complication Line 5 (Castrated Boar Tusk): Introduce a challenge based on the interpretation: \"Here the restraining of the impetuous forward drive is achieved in an indirect way. A boar's tusk is in itself dangerous, but if the boar's nature is altered, the tusk is no longer a menace. Thus also where men are concerned, wild force should not...\" The specific quest objective for this stage is: If the Quester acts against the opposition directly and immediately they will add a Success Level to the Test or Ordeal, and may weaken the Opposition indirectly somehow as well."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (The Way of Heaven): Mirror the internal state described in the commentary: \"Success.\n\nThe time of obstruction is past. The energy long dammed up by inhibition forces its way out and achieves great success. This refers to a man who is honored by the ruler and whose principles now prevail and shape the world.\" Your actions should be framed by the goal: you take the higher ground, literally or morally.",
+        "Plot": "Plot Complication Line 6 (The Way of Heaven): Introduce a challenge based on the interpretation: \"Success.\n\nThe time of obstruction is past. The energy long dammed up by inhibition forces its way out and achieves great success. This refers to a man who is honored by the ruler and whose principles now prevail and shape the world.\" The specific quest objective for this stage is: Everything is successful, the Quest is completed now, and the Quester may make a Gain, often rewarded by the Quest-giver or an authority."
+      }
+    }
+  }
+}

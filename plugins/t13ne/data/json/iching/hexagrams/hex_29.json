@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 29,
+    "Name": "The Deep",
+    "Entity": "&#19932;",
+    "Logical": 18,
+    "Trigrams": [
+      5,
+      5
+    ],
+    "Hexagram_Text": "Kǎn, The Deep (or Abyss, Abysmal or Meeting Danger), signifies that danger surrounds you. You are in deep water, hanging over the abyss, move incorrectly and you may die.",
+    "Unchanging": "You create and suffer all Wounds as though the Stakes / Success Level were Incarna Draw (Boon Double Reduced) Higher.",
+    "Line1": "Fall into the Deep",
+    "Line2": "Dangerous Deep",
+    "Line3": "Clinging On",
+    "Line4": "Food Through a Window",
+    "Line5": "The Deep is Only So Deep",
+    "Line6": "Bound in Prison"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you are in danger, at risk, or you cross water",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "whenever you deliberately move into a dangerous situation",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yang",
+        "Condition": "you do not play it safe, take risks, or wait for danger",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yin",
+        "Condition": "you act cowardly, afraid, but continue anyway",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yang",
+        "Condition": "you remain calm, rather than acting rashly and perhaps making things worse",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yang",
+        "Condition": "you keep things simple or restate something in simpler terms",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yin",
+        "Condition": "you attempt something impossible, or with little chance of success",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yang",
+        "Condition": "you ignore warnings, or are paralysed by indecision",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Deep Quest is so dangerous that those involved in it will usually have become inured to the threat. This is the depth of the war, the heart of the battlefield, the centre of the political minefield, or the boat floundering over the abyssal trench. The Deep Quest may focus on water directly (with boats, whales or submarines), or the Deep may represent another danger (space for example is really just more dangerous water), occasionally this will be an emotional or psychological depth which a character is not yet be equipped to handle, which creates danger. Sometimes the danger of the Deep may be harnessed, such as when a fast-flowing river separates two kingdoms, both sides employ the danger of the river to protect themselves from the other. The Deep Quest is always High Stakes (or higher), but often the Tension Level does not fall where you might expect.",
+    "Quest_Complete": "A Quest that ends in the Deep Hexagram ends with the Quester in deep trouble. Sometimes this will be a cliff-hanger, that moves the Quester on to a new Quest (such as escaping the danger they now find themselves in), but more often this indicates an ambiguous ending to the Quest, where many may believe the Quester died, only to have them reappear at a later time, perhaps injured, or bearing new scars.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester who is seduced by the evil or danger, causing them to take dangerous risks, add a Failure Level, Hurdle, or Obstacle on any Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The danger is mounting,and insurmountable adding at least 2 Hurdles, Obstacles or Failure Levels on any Test or Ordeal. If the Quester weighs the risks and finds the safest way forward they may add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The Quester is caught between two dangers, one ahead and one behind. Only a fool would press on right now, so if the Quester does add at least a couple of Hurdles, Obstacles or Failure Levels on their next Ordeal or Test. The correct path is waiting, or occasionally turning one danger on the other which will add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "During a time of danger the normal rules do not apply. The authorities, law-enforcers and old guard are forced to behave differently, rules and etiquette are simplified, and often the simplest solutions are most effective in times of stress. For the Quester if they complicate things that could be simpler, they will add a Failure Level, Hurdle, or Obstacle to the Test or Ordeal, but if they simplify things as much as possible then they will add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "For the Quester a way out of danger appears, but this path of least resistance leads away from their Quest goals. If they push into danger to complete their Quest they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test, but it is the only way they will succeed.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester&#39;s ego brings this danger upon themselves as the Quest goes ahead. Each warning they ignore, or any period of indecision adds a Failure Level, Hurdle or Obstacle to their Tests or Ordeals, and additionally increases the Tension Level by one, until eventually the disaster strikes, adding an additional immediate Ordeal to the Quest as they struggle to escape the danger.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "This hexagram consists of a doubling of the trigram K'an. It is one of the eight hexagrams in which doubling occurs. The trigram K'an means a plunging in. A yang line has plunged in between two yin lines and is closed in by them like water in a ravine. The trigram K'an is also the middle son. The Receptive has obtained the middle line of the Creative, and thus K'an develops. As an image it represents water, the water that comes from above and is in motion on earth in streams and rivers, giving rise to all life on earth. In man's world K'an represents the heart, the soul locked up within the body, the principle of light inclosed in the dark--that is, reason. The name of the hexagram, because the trigram is doubled, has the additional meaning, \"repetition of danger.\" Thus the hexagram is intended to designate an objective situation to which one must become accustomed, not a subjective attitude. For danger due to a subjective attitude means either foolhardiness or guile. Hence too a ravine is used to symbolize danger; it is a situation in which a man is in the same pass as the water in a ravine, and, like the water, he can escape if he behaves correctly.",
+    "The_Image": {
+      "text": "Water flows on uninterruptedly and reaches its foal:\n\nThe image of the Abysmal repeated.\n\nThus the superior man walks in lasting virtue\nAnd carries on the business of teaching.",
+      "comments": "Water reaches its goal by flowing continually. It fills up every depression before it flows on. The superior man follows its example; he is concerned that goodness should be an established attribute of character rather than an accidental and isolated occurrence. So likewise in teaching others everything depends on consistency, for it is only through repetition that the pupil makes the material his own."
+    },
+    "The_Judgment": {
+      "text": "The Abysmal repeated.\nIf you are sincere, you have success in your heart,\nAnd whatever you do succeeds.",
+      "comments": "Through repetition of danger we grow accustomed to it. Water sets the example for the right conduct under such circumstances. It flows on and on, and merely fills up all the places through which it flows; it does not shrink from any dangerous spot nor from any plunge, and nothing can make it lose its own essential nature. It remains true to itself under all conditions. Thus likewise, if one is sincere when confronted with difficulties, the heart can penetrate the meaning of the situation. And once we have gained inner mastery of a problem, it will come about naturally that the action we take will succeed. In danger all that counts is really carrying out all that has to be done--thoroughness--and going forward, in order not to perish through tarrying in the danger. Properly used, danger can have an important meaning as a protective measure. Thus heaven has its perilous height protecting it against every attempt at invasion, and earth has its mountains and bodies of water, separating countries by their dangers. Thus also rulers make use of danger to protect themselves against attacks from without and against turmoil within."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Repetition of the Abysmal.\nIn the abyss one falls into a pit.\nMisfortune.",
+        "comments": "By growing used to what is dangerous, a man can easily allow it to become part of him. He is familiar with it and grows used to evil. With this he has lost the right way, and misfortune is the natural result."
+      },
+      "2": {
+        "text": "The abyss is dangerous.\nOne should strive to attain small things only.",
+        "comments": "When we are in danger we ought not to attempt to get out of it immediately, regardless of circumstances; at first we must content ourselves with not being overcome by it. We must calmly weigh the conditions of the time and by satisfied with small gains, because for the time being a great success cannot be attained. A spring flows only sparingly at first, and tarries for some time before it makes its way in to the open."
+      },
+      "3": {
+        "text": "Forward and backward, abyss on abyss.\nIn danger like this, pause at first and wait,\nOtherwise you will fall into a pit in the abyss.\nDo not act this way.",
+        "comments": "Here every step, forward or backward, leads into danger. Escape is out of the question. Therefore we must not be misled into action, as a result of which we should only bog down deeper in the danger; disagreeable as it may be to remain in such a situation, we must wait until a way out shows itself."
+      },
+      "4": {
+        "text": "A jug of wine, a bowl of rice with it;\nEarthen vessels",
+        "comments": "Simply handed in through the Window.\n\nThere is certainly no blame in this.\n\nIn times of danger ceremonious forms are dropped. What matters most is sincerity. Although as a rule it is customary for an official to present certain introductory gifts and recommendations before he is appointed, here everything is simplified to the utmost. The gifts are insignificant, there is no one to sponsor him, he introduces himself; yet all this need not be humiliating if only there is the honest intention of mutual help in danger. Still another idea is suggested. The window is the place through which light enters the room. If in difficult times we want to enlighten someone, we must begin with that which is in itself lucid and proceed quite simply from that point on."
+      },
+      "5": {
+        "text": "The abyss is not filled to overflowing,\nIt is filled only to the rim.",
+        "comments": "No blame.\n\nDanger comes because one is too ambitious. In order to flow out of a ravine, water does not rise higher than the lowest point of the rim. So likewise a man when in danger has only to proceed along the line of least resistance; thus he reaches the goal. Great labors cannot be accomplished in such times; it is enough to get out of the danger."
+      },
+      "6": {
+        "text": "Bound with cords and ropes,",
+        "comments": "Shut in between thorn-hedged prison walls:\nFor three years one does not find the way.\nMisfortune.\n\nA man who in the extremity of danger has lost the right way and is irremediably entangled in his sins has no prospect of escape. He is like a criminal who sits shackled behind thorn hedged prison walls."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'The Deep'. Internalize this core philosophy: This hexagram consists of a doubling of the trigram K'an. It is one of the eight hexagrams in which doubling occurs. The trigram K'an means a plunging in. A yang line has plunged in between two yin lines and is closed in by them like water in a ravine. The trigram K'an is also the middle son. The Receptive has obtained the middle line of the Creative, and thus K'an develops. As an image it represents water, the water that comes from above and is in motion on earth in streams and rivers, giving... Your current worldview is: \"Kǎn, The Deep (or Abyss, Abysmal or Meeting Danger), signifies that danger surrounds you. You are in deep water, hanging over the abyss, move incorrectly and you may die.\". Let your choices be subtly driven by these conditions: you are in danger, at risk, or you cross water, whenever you deliberately move into a dangerous situation. When interacting, mirror the wisdom found in the commentary: \"Through repetition of danger we grow accustomed to it. Water sets the example for the right conduct under such circumstances. It flows on and on, and merely fills up all the places through which it flows; it does not shrink from any dangerous spot nor from any plunge, and nothing can make it lose...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'The Deep'. The primary quest objective is: The Deep Quest is so dangerous that those involved in it will usually have become inured to the threat. This is the depth of the war, the heart of the battlefield, the centre of the political minefield, or the boat floundering over the abyssal trench. The Deep Quest may focus on water directly (with boats, whales or submarines), or the Deep may represent another danger (space for example is really just more dangerous water), occasionally this will be an emotional or psychological depth which a character is not yet be equipped to handle, which creates danger. Sometimes the danger of the Deep may be harnessed, such as when a fast-flowing river separates two kingdoms, both sides employ the danger of the river to protect themselves from the other. The Deep Quest is always High Stakes (or higher), but often the Tension Level does not fall where you might expect.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: Water reaches its goal by flowing continually. It fills up every depression before it flows on. The superior man follows its example; he is concerned that goodness should be an established attribute of character rather than an accidental and isolated occurrence. So likewise in teaching others everything depends on consistency, for it is only through repetition that the pupil makes the material... Use the following line-specific challenges to pace the story: The Quester who is seduced by the evil or danger, causing them to take dangerous risks, add a Failure Level, Hurdle, or Obstacle on any Test or Ordeal. | The danger is mounting,and insurmountable adding at least 2 Hurdles, Obstacles or Failure Levels on any Test or Ordeal. If the Quester weighs the risks and finds the safest way forward they may add a Success Level instead. | The Quester is caught between two dangers, one ahead and one behind. Only a fool would press on right now, so if the Quester does add at least a couple of Hurdles, Obstacles or Failure Levels on their next Ordeal or Test. The correct path is waiting, or occasionally turning one danger on the other which will add a Success Level instead. | During a time of danger the normal rules do not apply. The authorities, law-enforcers and old guard are forced to behave differently, rules and etiquette are simplified, and often the simplest solutions are most effective in times of stress. For the Quester if they complicate things that could be simpler, they will add a Failure Level, Hurdle, or Obstacle to the Test or Ordeal, but if they simplify things as much as possible then they will add a Success Level instead. | For the Quester a way out of danger appears, but this path of least resistance leads away from their Quest goals. If they push into danger to complete their Quest they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test, but it is the only way they will succeed. | The Quester&#39;s ego brings this danger upon themselves as the Quest goes ahead. Each warning they ignore, or any period of indecision adds a Failure Level, Hurdle or Obstacle to their Tests or Ordeals, and additionally increases the Tension Level by one, until eventually the disaster strikes, adding an additional immediate Ordeal to the Quest as they struggle to escape the danger.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Fall into the Deep): Mirror the internal state described in the commentary: \"By growing used to what is dangerous, a man can easily allow it to become part of him. He is familiar with it and grows used to evil. With this he has lost the right way, and misfortune is the natural result.\" Your actions should be framed by the goal: you do not play it safe, take risks, or wait for danger.",
+        "Plot": "Plot Complication Line 1 (Fall into the Deep): Introduce a challenge based on the interpretation: \"By growing used to what is dangerous, a man can easily allow it to become part of him. He is familiar with it and grows used to evil. With this he has lost the right way, and misfortune is the natural result.\" The specific quest objective for this stage is: The Quester who is seduced by the evil or danger, causing them to take dangerous risks, add a Failure Level, Hurdle, or Obstacle on any Test or Ordeal."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Dangerous Deep): Mirror the internal state described in the commentary: \"When we are in danger we ought not to attempt to get out of it immediately, regardless of circumstances; at first we must content ourselves with not being overcome by it. We must calmly weigh the conditions of the time and by satisfied with small...\" Your actions should be framed by the goal: you act cowardly, afraid, but continue anyway.",
+        "Plot": "Plot Complication Line 2 (Dangerous Deep): Introduce a challenge based on the interpretation: \"When we are in danger we ought not to attempt to get out of it immediately, regardless of circumstances; at first we must content ourselves with not being overcome by it. We must calmly weigh the conditions of the time and by satisfied with small...\" The specific quest objective for this stage is: The danger is mounting,and insurmountable adding at least 2 Hurdles, Obstacles or Failure Levels on any Test or Ordeal. If the Quester weighs the risks and finds the safest way forward they may add a Success Level instead."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Clinging On): Mirror the internal state described in the commentary: \"Here every step, forward or backward, leads into danger. Escape is out of the question. Therefore we must not be misled into action, as a result of which we should only bog down deeper in the danger; disagreeable as it may be to remain in such a...\" Your actions should be framed by the goal: you remain calm, rather than acting rashly and perhaps making things worse.",
+        "Plot": "Plot Complication Line 3 (Clinging On): Introduce a challenge based on the interpretation: \"Here every step, forward or backward, leads into danger. Escape is out of the question. Therefore we must not be misled into action, as a result of which we should only bog down deeper in the danger; disagreeable as it may be to remain in such a...\" The specific quest objective for this stage is: The Quester is caught between two dangers, one ahead and one behind. Only a fool would press on right now, so if the Quester does add at least a couple of Hurdles, Obstacles or Failure Levels on their next Ordeal or Test. The correct path is waiting, or occasionally turning one danger on the other which will add a Success Level instead."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Food Through a Window): Mirror the internal state described in the commentary: \"Simply handed in through the Window.\n\nThere is certainly no blame in this.\n\nIn times of danger ceremonious forms are dropped. What matters most is sincerity. Although as a rule it is customary for an official to present certain introductory gifts...\" Your actions should be framed by the goal: you keep things simple or restate something in simpler terms.",
+        "Plot": "Plot Complication Line 4 (Food Through a Window): Introduce a challenge based on the interpretation: \"Simply handed in through the Window.\n\nThere is certainly no blame in this.\n\nIn times of danger ceremonious forms are dropped. What matters most is sincerity. Although as a rule it is customary for an official to present certain introductory gifts...\" The specific quest objective for this stage is: During a time of danger the normal rules do not apply. The authorities, law-enforcers and old guard are forced to behave differently, rules and etiquette are simplified, and often the simplest solutions are most effective in times of stress. For the Quester if they complicate things that could be simpler, they will add a Failure Level, Hurdle, or Obstacle to the Test or Ordeal, but if they simplify things as much as possible then they will add a Success Level instead."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (The Deep is Only So Deep): Mirror the internal state described in the commentary: \"No blame.\n\nDanger comes because one is too ambitious. In order to flow out of a ravine, water does not rise higher than the lowest point of the rim. So likewise a man when in danger has only to proceed along the line of least resistance; thus he...\" Your actions should be framed by the goal: you attempt something impossible, or with little chance of success.",
+        "Plot": "Plot Complication Line 5 (The Deep is Only So Deep): Introduce a challenge based on the interpretation: \"No blame.\n\nDanger comes because one is too ambitious. In order to flow out of a ravine, water does not rise higher than the lowest point of the rim. So likewise a man when in danger has only to proceed along the line of least resistance; thus he...\" The specific quest objective for this stage is: For the Quester a way out of danger appears, but this path of least resistance leads away from their Quest goals. If they push into danger to complete their Quest they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test, but it is the only way they will succeed."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Bound in Prison): Mirror the internal state described in the commentary: \"Shut in between thorn-hedged prison walls:\nFor three years one does not find the way.\nMisfortune.\n\nA man who in the extremity of danger has lost the right way and is irremediably entangled in his sins has no prospect of escape. He is like a criminal...\" Your actions should be framed by the goal: you ignore warnings, or are paralysed by indecision.",
+        "Plot": "Plot Complication Line 6 (Bound in Prison): Introduce a challenge based on the interpretation: \"Shut in between thorn-hedged prison walls:\nFor three years one does not find the way.\nMisfortune.\n\nA man who in the extremity of danger has lost the right way and is irremediably entangled in his sins has no prospect of escape. He is like a criminal...\" The specific quest objective for this stage is: The Quester&#39;s ego brings this danger upon themselves as the Quest goes ahead. Each warning they ignore, or any period of indecision adds a Failure Level, Hurdle or Obstacle to their Tests or Ordeals, and additionally increases the Tension Level by one, until eventually the disaster strikes, adding an additional immediate Ordeal to the Quest as they struggle to escape the danger."
+      }
+    }
+  }
+}

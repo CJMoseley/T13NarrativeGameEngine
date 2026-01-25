@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 51,
+    "Name": "Thunder",
+    "Entity": "&#19954;",
+    "Logical": 9,
+    "Trigrams": [
+      3,
+      3
+    ],
+    "Hexagram_Text": "Zhen, Thunder (or Shocking, or Arousing), is symbolic of the abrupt awakening, the sudden crash that signifies great change, and brings the guards running.",
+    "Unchanging": "You may once per Session / Chapter / Episode add your Incarna Boon to any Proficiency Roll. You may once per Scene draw and add Incarna Draw (Boon Double Reduced) cards to any Duck or Bedlam attack",
+    "Line1": "Oh-oh",
+    "Line2": "Shocking Flood",
+    "Line3": "Shaken Fate",
+    "Line4": "Quagmired!",
+    "Line5": "Extremely Shaken",
+    "Line6": "Shaken and Disturbed"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "something unexpected happens to the Character or they gain or roll Shock Dice",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "whenever a Stress effect could cause a Trauma due to lack of Stress (e.g. Stressed-Out Breaks or Shock Die rolls Even, but not Minimum or Maximum)",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "you act apprehensive, anxious or excited",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yang",
+        "Condition": "you physically lose something or leave something behind",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yang",
+        "Condition": "you play a Wyrd Tarot card",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yin",
+        "Condition": "you are selfish, focus on your own needs or wants",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you overreact or panic",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yang",
+        "Condition": "you are not concerned what others think of your behaviour",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Thunder Quest signifies a situation of sudden shocking paradigm shift. There is a great change in the situation that surrounds the Quest during it, which can be as great as an earthquake, or as profound as a god manifesting themselves. This change will cause fear, terror or horror, throughout the land, depending upon its exact nature. For the Quester it is a warning, they should conquer their own fears and set their life in order, not flinch at the sounds of thunder.",
+    "Quest_Complete": "The Quest that ends in the Thunder Hexagram ends with a bang and a surprise. This surprise may be a twist in the tale, or more often it is the firing of Checkov&#39;s gun, where some object shown early in the story (such as a gun on a wall) becomes dramatically important in the end (when it is fired or pointed at someone). This should not ever be a deus-ex-machina, where the surprise is completely unforeseeable, it should always have been foreshadowed at least once.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester should be made to feel apprehensive, anxious, or surprised, but without facing danger, often in the form of tension and a jump scare. If they react to this situation in a manner so strongly that it draws ridicule or teasing from others, then they will add a Success Level to their Test or Ordeal. If they are not suitably shocked, fearful or apprehensive then they will face an additional Failure Level, Obstacle or Hurdle instead.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester is directly threatened as well as shocked, perhaps by rising flood waters, or criminals breaking into their home, and must retreat from the danger, or add a Hurdle, Obstacle or Failure Level to their Ordeal or Obstacle. However, if the Quester retreats now, and returns when the danger has passed, they will add a Success Level instead, as that they lost is returned or replaced.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The Quester suffers a cruel blow of fate, perhaps an excruciating piece of bad luck, a very untimely coincidence, or sinister synchronicity. The Quester may despair as the situation appears hopeless, but to do so will add a Hurdle, Obstacle or Failure Level to the Ordeal or Test. Instead, if they act quickly and without mistakes, they will add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester is caught, mired in mud, without energy or momentum. Usually this means the way on is blocked by a Hurdle, multiple Obstacles (at least one per route), or a number of Failure Levels applied to motion, depending upon the Ordeal or Test, but in extreme situations the Quester may be gain a new Confined Hitch, or Crippled movement annex.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester is hit by not one shock, but many, each one rolls in with little time to recover after the last. All but the most centred, calm, prepared, and grounded Questers will face an additional Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester and companions are caught by some surprise attack, or shocking event, that the Quester alone may escape, and should, abandoning their companions at this time, or they will add a Hurdle or multiple Obstacles or Failure Levels to the Ordeal or Test.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "The hexagram Chên represents the eldest son, who seizes rule with energy and power. A yang line develops below two yin lines and presses upward forcibly. This movement is so violent that it arouses terror. It is symbolized by thunder, which bursts forth from the earth and by its shock causes fear and trembling.",
+    "The_Image": {
+      "text": "Thunder repeated: the image of SHOCK.\n\nThus in fear and trembling\n\nThe superior man sets his life in order\nAnd examines himself.",
+      "comments": "The shock of continuing thunder brings fear and trembling. The superior man is always filled with reverence at the manifestation of God; he sets his life in order and searches his heart, lest it harbor any secret opposition to the will of God. Thus reverence is the foundation of true culture."
+    },
+    "The_Judgment": {
+      "text": "SHOCK brings success.\n\nShock comes-oh, oh!\nLaughing words -ha, ha!\n\nThe shock terrifies for a hundred miles,\nAnd he does not let fall the sacrificial spoon and chalice.",
+      "comments": "The shock that comes from the manifestation of God within the depths of the earth makes man afraid, but this fear of God is good, for joy and merriment can follow upon it. When a man has learned within his heart what fear and trembling mean, he is safeguarded against any terror produced by outside influences. Let the thunder roll and spread terror a hundred miles around: he remains so composed and reverent in spirit that the sacrificial rite is not interrupted. This is the spirit that must animate leaders and rulers of men-a profound inner seriousness from which all terrors glance off harmlessly."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Shock comes-oh, oh!",
+        "comments": "Then follow laughing words-ha, ha!\nGood fortune.\n\nThe fear and trembling engendered by shock come to an individual at first in such a way that he sees himself placed at a disadvantage as against others. But this is only transitory. When the ordeal is over, he experiences relief, and thus the very terror he had to endure at the outset brings good fortune in the long run."
+      },
+      "2": {
+        "text": "Shock comes bringing danger.\nA hundred thousand times\nYou lose your treasures\nAnd must climb the nine hills.\nDo not go in pursuit of them.\nAfter seven days you will get them back again.",
+        "comments": "This pictures a situation in which a shock endangers a man and he suffers great losses. Resistance would be contrary to the movement of the time and for this reason unsuccessful. Therefore he must simply retreat to heights inaccessible to the threatening forces of danger. He must accept his loss of property without worrying too much about it. When the time of shock and upheaval that has robbed him of his possessions has passed, he will get them back again without going in pursuit of them."
+      },
+      "3": {
+        "text": "Shock comes and makes one distraught.\nIf shock spurs to action\nOne remains free of misfortune.",
+        "comments": "There are three kinds of shock-the shock of heaven, which is thunder, the shock of fate, and, finally, the shock of the heart. The present hexagram refers less to inner shock than to the shock of fate. In such times of shock, presence of mind is all too easily lost: the individual overlooks all opportunities for action and mutely lets fate take its course. But if he allows the shocks of fate to induce movement within his mind, he will overcome these external blows with little effort."
+      },
+      "4": {
+        "text": "Shock is mired.",
+        "comments": "Movement within the mind depends for its success partly on circumstances. If there is neither a resistance that might be vigorously combated, nor yet a yielding that permits of victory-if, instead, everything is tough and inert like mire-movement is crippled."
+      },
+      "5": {
+        "text": "Shock goes hither and thither.\nDanger.\nHowever, nothing at all is lost.\nYet there are things to be done.",
+        "comments": "This is a case not of a single shock but of repeated shocks with no breathing space between. Nonetheless, the shock causes no loss, because one takes care to stay in the center of movement and in this way to be spared the fate of being helplessly tossed hither and thither."
+      },
+      "6": {
+        "text": "Shock brings ruin and terrified gazing around.\nGoing ahead brings misfortune.\nIf it has not yet touched one's own body\nBut has reached one's neighbor first,",
+        "comments": "There is no blame.\nOne's comrades have something to talk about.\n\nWhen inner shock is at its height, it robs a man of reflection and clarity of vision. In such a state of shock it is of course impossible to act with presence of mind. Then the right thing is to keep still until composure and clarity are restored. But this a man can do only when he himself is not yet infected by the agitation, although its disastrous effects are already visible in those around him. If he withdraws from the affair in time, he remains free of mistakes and injury. But his comrades, who no longer heed any warning, will in their excitement certainly be displeased with him. However, he must not take this into account."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Thunder'. Internalize this core philosophy: The hexagram Chên represents the eldest son, who seizes rule with energy and power. A yang line develops below two yin lines and presses upward forcibly. This movement is so violent that it arouses terror. It is symbolized by thunder, which bursts forth from the earth and by its shock causes fear and trembling. Your current worldview is: \"Zhen, Thunder (or Shocking, or Arousing), is symbolic of the abrupt awakening, the sudden crash that signifies great change, and brings the guards running.\". Let your choices be subtly driven by these conditions: something unexpected happens to the Character or they gain or roll Shock Dice, whenever a Stress effect could cause a Trauma due to lack of Stress (e.g. Stressed-Out Breaks or Shock Die rolls Even, but not Minimum or Maximum). When interacting, mirror the wisdom found in the commentary: \"The shock that comes from the manifestation of God within the depths of the earth makes man afraid, but this fear of God is good, for joy and merriment can follow upon it. When a man has learned within his heart what fear and trembling mean, he is safeguarded against any terror produced by outside...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Thunder'. The primary quest objective is: The Thunder Quest signifies a situation of sudden shocking paradigm shift. There is a great change in the situation that surrounds the Quest during it, which can be as great as an earthquake, or as profound as a god manifesting themselves. This change will cause fear, terror or horror, throughout the land, depending upon its exact nature. For the Quester it is a warning, they should conquer their own fears and set their life in order, not flinch at the sounds of thunder.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: The shock of continuing thunder brings fear and trembling. The superior man is always filled with reverence at the manifestation of God; he sets his life in order and searches his heart, lest it harbor any secret opposition to the will of God. Thus reverence is the foundation of true culture. Use the following line-specific challenges to pace the story: The Quester should be made to feel apprehensive, anxious, or surprised, but without facing danger, often in the form of tension and a jump scare. If they react to this situation in a manner so strongly that it draws ridicule or teasing from others, then they will add a Success Level to their Test or Ordeal. If they are not suitably shocked, fearful or apprehensive then they will face an additional Failure Level, Obstacle or Hurdle instead. | The Quester is directly threatened as well as shocked, perhaps by rising flood waters, or criminals breaking into their home, and must retreat from the danger, or add a Hurdle, Obstacle or Failure Level to their Ordeal or Obstacle. However, if the Quester retreats now, and returns when the danger has passed, they will add a Success Level instead, as that they lost is returned or replaced. | The Quester suffers a cruel blow of fate, perhaps an excruciating piece of bad luck, a very untimely coincidence, or sinister synchronicity. The Quester may despair as the situation appears hopeless, but to do so will add a Hurdle, Obstacle or Failure Level to the Ordeal or Test. Instead, if they act quickly and without mistakes, they will add a Success Level instead. | The Quester is caught, mired in mud, without energy or momentum. Usually this means the way on is blocked by a Hurdle, multiple Obstacles (at least one per route), or a number of Failure Levels applied to motion, depending upon the Ordeal or Test, but in extreme situations the Quester may be gain a new Confined Hitch, or Crippled movement annex. | The Quester is hit by not one shock, but many, each one rolls in with little time to recover after the last. All but the most centred, calm, prepared, and grounded Questers will face an additional Hurdle, Obstacle or Failure Level to their Ordeal or Test. | The Quester and companions are caught by some surprise attack, or shocking event, that the Quester alone may escape, and should, abandoning their companions at this time, or they will add a Hurdle or multiple Obstacles or Failure Levels to the Ordeal or Test.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Oh-oh): Mirror the internal state described in the commentary: \"Then follow laughing words-ha, ha!\nGood fortune.\n\nThe fear and trembling engendered by shock come to an individual at first in such a way that he sees himself placed at a disadvantage as against others. But this is only transitory. When the ordeal...\" Your actions should be framed by the goal: you act apprehensive, anxious or excited.",
+        "Plot": "Plot Complication Line 1 (Oh-oh): Introduce a challenge based on the interpretation: \"Then follow laughing words-ha, ha!\nGood fortune.\n\nThe fear and trembling engendered by shock come to an individual at first in such a way that he sees himself placed at a disadvantage as against others. But this is only transitory. When the ordeal...\" The specific quest objective for this stage is: The Quester should be made to feel apprehensive, anxious, or surprised, but without facing danger, often in the form of tension and a jump scare. If they react to this situation in a manner so strongly that it draws ridicule or teasing from others, then they will add a Success Level to their Test or Ordeal. If they are not suitably shocked, fearful or apprehensive then they will face an additional Failure Level, Obstacle or Hurdle instead."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Shocking Flood): Mirror the internal state described in the commentary: \"This pictures a situation in which a shock endangers a man and he suffers great losses. Resistance would be contrary to the movement of the time and for this reason unsuccessful. Therefore he must simply retreat to heights inaccessible to the...\" Your actions should be framed by the goal: you physically lose something or leave something behind.",
+        "Plot": "Plot Complication Line 2 (Shocking Flood): Introduce a challenge based on the interpretation: \"This pictures a situation in which a shock endangers a man and he suffers great losses. Resistance would be contrary to the movement of the time and for this reason unsuccessful. Therefore he must simply retreat to heights inaccessible to the...\" The specific quest objective for this stage is: The Quester is directly threatened as well as shocked, perhaps by rising flood waters, or criminals breaking into their home, and must retreat from the danger, or add a Hurdle, Obstacle or Failure Level to their Ordeal or Obstacle. However, if the Quester retreats now, and returns when the danger has passed, they will add a Success Level instead, as that they lost is returned or replaced."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Shaken Fate): Mirror the internal state described in the commentary: \"There are three kinds of shock-the shock of heaven, which is thunder, the shock of fate, and, finally, the shock of the heart. The present hexagram refers less to inner shock than to the shock of fate. In such times of shock, presence of mind is all...\" Your actions should be framed by the goal: you play a Wyrd Tarot card.",
+        "Plot": "Plot Complication Line 3 (Shaken Fate): Introduce a challenge based on the interpretation: \"There are three kinds of shock-the shock of heaven, which is thunder, the shock of fate, and, finally, the shock of the heart. The present hexagram refers less to inner shock than to the shock of fate. In such times of shock, presence of mind is all...\" The specific quest objective for this stage is: The Quester suffers a cruel blow of fate, perhaps an excruciating piece of bad luck, a very untimely coincidence, or sinister synchronicity. The Quester may despair as the situation appears hopeless, but to do so will add a Hurdle, Obstacle or Failure Level to the Ordeal or Test. Instead, if they act quickly and without mistakes, they will add a Success Level instead."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Quagmired!): Mirror the internal state described in the commentary: \"Movement within the mind depends for its success partly on circumstances. If there is neither a resistance that might be vigorously combated, nor yet a yielding that permits of victory-if, instead, everything is tough and inert like mire-movement is...\" Your actions should be framed by the goal: you are selfish, focus on your own needs or wants.",
+        "Plot": "Plot Complication Line 4 (Quagmired!): Introduce a challenge based on the interpretation: \"Movement within the mind depends for its success partly on circumstances. If there is neither a resistance that might be vigorously combated, nor yet a yielding that permits of victory-if, instead, everything is tough and inert like mire-movement is...\" The specific quest objective for this stage is: The Quester is caught, mired in mud, without energy or momentum. Usually this means the way on is blocked by a Hurdle, multiple Obstacles (at least one per route), or a number of Failure Levels applied to motion, depending upon the Ordeal or Test, but in extreme situations the Quester may be gain a new Confined Hitch, or Crippled movement annex."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Extremely Shaken): Mirror the internal state described in the commentary: \"This is a case not of a single shock but of repeated shocks with no breathing space between. Nonetheless, the shock causes no loss, because one takes care to stay in the center of movement and in this way to be spared the fate of being helplessly...\" Your actions should be framed by the goal: you overreact or panic.",
+        "Plot": "Plot Complication Line 5 (Extremely Shaken): Introduce a challenge based on the interpretation: \"This is a case not of a single shock but of repeated shocks with no breathing space between. Nonetheless, the shock causes no loss, because one takes care to stay in the center of movement and in this way to be spared the fate of being helplessly...\" The specific quest objective for this stage is: The Quester is hit by not one shock, but many, each one rolls in with little time to recover after the last. All but the most centred, calm, prepared, and grounded Questers will face an additional Hurdle, Obstacle or Failure Level to their Ordeal or Test."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Shaken and Disturbed): Mirror the internal state described in the commentary: \"There is no blame.\nOne's comrades have something to talk about.\n\nWhen inner shock is at its height, it robs a man of reflection and clarity of vision. In such a state of shock it is of course impossible to act with presence of mind. Then the right...\" Your actions should be framed by the goal: you are not concerned what others think of your behaviour.",
+        "Plot": "Plot Complication Line 6 (Shaken and Disturbed): Introduce a challenge based on the interpretation: \"There is no blame.\nOne's comrades have something to talk about.\n\nWhen inner shock is at its height, it robs a man of reflection and clarity of vision. In such a state of shock it is of course impossible to act with presence of mind. Then the right...\" The specific quest objective for this stage is: The Quester and companions are caught by some surprise attack, or shocking event, that the Quester alone may escape, and should, abandoning their companions at this time, or they will add a Hurdle or multiple Obstacles or Failure Levels to the Ordeal or Test."
+      }
+    }
+  }
+}

@@ -1,0 +1,1431 @@
+{
+  "851": {
+    "id": 851,
+    "prof": {
+      "Name": [
+        "Awkward Moment",
+        "Awkward Moment Jeer Narrative Moment Proficiency",
+        "clumsy, shabby, unspoiled, ungraceful, difficult"
+      ],
+      "Description": "With a sharp, mocking wit, Awkward Moment is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "852": {
+    "id": 852,
+    "prof": {
+      "Name": [
+        "Humour Ordeals",
+        "Humour Ordeal Jeer Ordeal Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Humour Ordeals is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "853": {
+    "id": 853,
+    "prof": {
+      "Name": [
+        "Humour",
+        "Humour Jeer Psychosocial Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Humour is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "854": {
+    "id": 854,
+    "prof": {
+      "Name": [
+        "Mock/Copy",
+        "Mock/Copy",
+        ""
+      ],
+      "Description": "The threads of Journeast are woven into the tapestry of Mock/Copy, a story of exploration told in silence.",
+      "Tags": {
+        "Facets": [
+          "9"
+        ],
+        "Scopes": [
+          "9"
+        ],
+        "Genres": [
+          "9"
+        ],
+        "Eras": [
+          "9"
+        ],
+        "Types": [
+          "Quest"
+        ]
+      }
+    }
+  },
+  "855": {
+    "id": 855,
+    "prof": {
+      "Name": [
+        "Trick",
+        "Trick Jeer Question Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Trick is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "856": {
+    "id": 856,
+    "prof": {
+      "Name": [
+        "Individual",
+        "Individual Jeer Resolved Hitch Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Individual is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "857": {
+    "id": 857,
+    "prof": {
+      "Name": [
+        "Trickster",
+        "Trickster Jeer Style Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Trickster is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "858": {
+    "id": 858,
+    "prof": {
+      "Name": [
+        "Comic",
+        "Comic Jeer Success Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Comic is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "859": {
+    "id": 859,
+    "prof": {
+      "Name": [
+        "Cheers",
+        "Cheers Jeer Sway Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Cheers is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "860": {
+    "id": 860,
+    "prof": {
+      "Name": [
+        "Duration",
+        "Duration Jeer Tangle Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Duration is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "861": {
+    "id": 861,
+    "prof": {
+      "Name": [
+        "Joking / Mocking / Imitation",
+        "Joking / Mocking / Imitation",
+        ""
+      ],
+      "Description": "In the hushed halls of Journeast, Joking / Mocking / Imitation is the whispered secret of pilgrimage.",
+      "Tags": {
+        "Facets": [
+          "9"
+        ],
+        "Scopes": [
+          "9"
+        ],
+        "Genres": [
+          "9"
+        ],
+        "Eras": [
+          "9"
+        ],
+        "Types": [
+          "Test"
+        ]
+      }
+    }
+  },
+  "862": {
+    "id": 862,
+    "prof": {
+      "Name": [
+        "Comedy",
+        "Comedy Jeer Tone Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Comedy is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "863": {
+    "id": 863,
+    "prof": {
+      "Name": [
+        "Punchline",
+        "Punchline Jeer Turn Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Punchline is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "864": {
+    "id": 864,
+    "prof": {
+      "Name": [
+        "Humour",
+        "Humour Jeer Twisted Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Humour is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "865": {
+    "id": 865,
+    "prof": {
+      "Name": [
+        "Jeering",
+        "Jeering Jeer Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Jeering is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "866": {
+    "id": 866,
+    "prof": {
+      "Name": [
+        "Funny",
+        "Funny Jeer Annex Root Proficiency",
+        "comical, humorous, hilarious, droll, witty"
+      ],
+      "Description": "With a sharp, mocking wit, Funny is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "867": {
+    "id": 867,
+    "prof": {
+      "Name": [
+        "Witty",
+        "Witty Jeer Nimbed Proficiency",
+        "clever, sharp, keen, bright, whimsical"
+      ],
+      "Description": "With a sharp, mocking wit, Witty is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "868": {
+    "id": 868,
+    "prof": {
+      "Name": [
+        "Indignity",
+        "Indignity Jeer Umbral Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Indignity is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "869": {
+    "id": 869,
+    "prof": {
+      "Name": [
+        "Mocker",
+        "Mocker Jeer Persona Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Mocker is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "870": {
+    "id": 870,
+    "prof": {
+      "Name": [
+        "Clueless",
+        "Clueless Key Zero Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Clueless unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "871": {
+    "id": 871,
+    "prof": {
+      "Name": [
+        "Idiotic",
+        "Idiotic Key Zero Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Idiotic unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "872": {
+    "id": 872,
+    "prof": {
+      "Name": [
+        "Unworldly Locations",
+        "Unworldly Location Key Zero Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Unworldly Locations unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "873": {
+    "id": 873,
+    "prof": {
+      "Name": [
+        "Dim",
+        "Dim Key Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Dim unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "874": {
+    "id": 874,
+    "prof": {
+      "Name": [
+        "Monotone",
+        "Monotone Key Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Monotone unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "875": {
+    "id": 875,
+    "prof": {
+      "Name": [
+        "Dark Locations",
+        "Dark Location Key Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Dark Locations unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "876": {
+    "id": 876,
+    "prof": {
+      "Name": [
+        "Stupid",
+        "Stupid Key Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Stupid unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "877": {
+    "id": 877,
+    "prof": {
+      "Name": [
+        "Dense",
+        "Dense Key Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Dense unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "878": {
+    "id": 878,
+    "prof": {
+      "Name": [
+        "Gloomy Locations",
+        "Gloomy Location Key Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Gloomy Locations unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "879": {
+    "id": 879,
+    "prof": {
+      "Name": [
+        "Gullible",
+        "Gullible Key Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Gullible unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "880": {
+    "id": 880,
+    "prof": {
+      "Name": [
+        "Unsophisticated",
+        "Unsophisticated Key Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Unsophisticated unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "881": {
+    "id": 881,
+    "prof": {
+      "Name": [
+        "Forlorn Locations",
+        "Forlorn Location Key Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Forlorn Locations unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "882": {
+    "id": 882,
+    "prof": {
+      "Name": [
+        "Sensible",
+        "Sensible Key Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Sensible unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "883": {
+    "id": 883,
+    "prof": {
+      "Name": [
+        "Raw",
+        "Raw Key Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Raw unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "884": {
+    "id": 884,
+    "prof": {
+      "Name": [
+        "Simple Locations",
+        "Simple Location Key Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Simple Locations unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "885": {
+    "id": 885,
+    "prof": {
+      "Name": [
+        "Rational",
+        "Rational Key Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Rational unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "886": {
+    "id": 886,
+    "prof": {
+      "Name": [
+        "Balanced",
+        "Balanced Key Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Balanced unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "887": {
+    "id": 887,
+    "prof": {
+      "Name": [
+        "Obvious Locations",
+        "Obvious Location Key Medium Boon Location Adjective Proficiency",
+        "clear, conspicuous, evident, plain, manifest"
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Obvious Locations unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "888": {
+    "id": 888,
+    "prof": {
+      "Name": [
+        "Curious",
+        "Curious Key Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Curious unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "889": {
+    "id": 889,
+    "prof": {
+      "Name": [
+        "Examining",
+        "Examining Key Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Examining unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "890": {
+    "id": 890,
+    "prof": {
+      "Name": [
+        "Distinctive Locations",
+        "Distinctive Location Key Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Distinctive Locations unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "891": {
+    "id": 891,
+    "prof": {
+      "Name": [
+        "Analytical",
+        "Analytical Key High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Analytical unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "892": {
+    "id": 892,
+    "prof": {
+      "Name": [
+        "Analytical",
+        "Analytical Key High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Analytical unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "893": {
+    "id": 893,
+    "prof": {
+      "Name": [
+        "Remarkable Locations",
+        "Remarkable Location Key High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Remarkable Locations unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "894": {
+    "id": 894,
+    "prof": {
+      "Name": [
+        "Perceptive",
+        "Perceptive Key High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Perceptive unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "895": {
+    "id": 895,
+    "prof": {
+      "Name": [
+        "Observant",
+        "Observant Key High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Observant unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "896": {
+    "id": 896,
+    "prof": {
+      "Name": [
+        "Raised Locations",
+        "Raised Location Key High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Raised Locations unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "897": {
+    "id": 897,
+    "prof": {
+      "Name": [
+        "Intelligent",
+        "Intelligent Key High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Intelligent unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "898": {
+    "id": 898,
+    "prof": {
+      "Name": [
+        "Brilliant",
+        "Brilliant Key High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Brilliant unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "899": {
+    "id": 899,
+    "prof": {
+      "Name": [
+        "Deep Locations",
+        "Deep Location Key High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Deep Locations unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "900": {
+    "id": 900,
+    "prof": {
+      "Name": [
+        "Ingenious",
+        "Ingenious Key Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Ingenious unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

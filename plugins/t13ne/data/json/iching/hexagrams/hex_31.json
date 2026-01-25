@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 31,
+    "Name": "Courtship",
+    "Entity": "&#19934;",
+    "Logical": 28,
+    "Trigrams": [
+      6,
+      1
+    ],
+    "Hexagram_Text": "Hsien, Courtship (or Influencing, Wooing or Joyful Receptivity), symbolises how we attract and court those things we need in our lives. Like attracts like, as you are, so are your friends and your love.",
+    "Unchanging": "You may add Incarna Draw (Boon Double Reduced) to any Psyche Attack once per Scene.",
+    "Line1": "Motion Begins in the Toe",
+    "Line2": "Knee Follows Foot",
+    "Line3": "Thigh Follows the Heart",
+    "Line4": "Heart Follows Wish",
+    "Line5": "Spine Follows Heart",
+    "Line6": "Mouth Follows Heart"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you smile at, flirt with, declare your attraction to, or love for another",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "the attraction is not mutual",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yang",
+        "Condition": "you act enamoured, infatuated or distracted about something or someone",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yang",
+        "Condition": "you prepare actions into a Style Pool",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yin",
+        "Condition": "you show your emotions, or humiliate yourself",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yin",
+        "Condition": "you try manipulation, influence or indirect action",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yin",
+        "Condition": "you flirt, or act overwhelmed by emotions",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yang",
+        "Condition": "you talk, or try to communicate, convince or persuade",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Courtship Quest usually features a potential love interest, or a potential partner, ally or friend (referred to as the potential). The Quest will place the Quester and another character in close proximity, and may even give them aligned goals, although they may begin at odds in some way (often due to being from different Story Conflict Sides beyond the Quest) various Social Ordeals may cause them to become allies, partners, lovers or even spouses.",
+    "Quest_Complete": "The Courtship Hexagram indicates that the Quest ends with the Quester \"winning\" their love interest. This is usually due to the Quester having revealed to the love interest both their attractive qualities, and those unattractive qualities that were matched by or aligned with the otherwise unattractive qualities of the love interest.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester and their potential companion are in close proximity, and even this proximity may be enough for each to feel attracted to the other (\"what is that wonderful scent?\", \"who was that?\" etc). Each displaying interest in the other is usual, but if the Quester displays too much interest at this stage (declaring love, infatuated behaviour, etc) it will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test and make things awkward with the potential.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester wishes to meet the potential again, but it is too soon, the Quester should display patience, wait for a better time, or make preparations for a later date. If the Quester and potential meet again at this time it will add a Failure Level, Hurdle or Obstacle to their Test or Ordeal as they become distracted by the potential.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The potential and Quester may meet, emotions run high, and often lead to humiliation. If the Quester tries to influence or manipulate other people&#39;s emotions at this time, or allows their own emotions to be influenced or manipulated by others, then they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test as they will be humiliated somehow. If the Quester takes no action to at this time, except waiting or resting, then they can add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "Now is the time for potential and Quester to declare their truths. If they are attracted, like, love, want to marry, they should say so. However, not being honest, being manipulative, or being secretive at this time will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester observes something that reveals some information about the potential that they did not suspect. The Quester that is confused by this information, untruthful with themselves about their feelings, or is too rigid or inflexible in their thinking to react positively to this information will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. The Quester who adapts quickly to this discovery, is honest about their feelings on the news, or reacts positively to this information may instead add a Success Level.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester and the potential are given a chance to talk. If this talking time is wasted, rambling, not getting to the point, or ignoring the Quester&#39;s or potential&#39;s feelings, then it will add a Failure Level, Hurdle or Obstacle to their Test or Ordeal. However, if they speak of things of significance (such as what their plans are, will they marry, how many children do they want, etc) and take an action such as signing a contract, kissing, getting engaged, making a blood pact, marrying, shaking hands, or perhaps a kiss goodbye, then the Quester will add a Success Level instead.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "The name of the hexagram means \"universal,\" \"general,\" and in a figurative sense \"to influence,\" \"to stimulate.\" The upper trigram is Tui, the Joyous; the lower is Kên, Keeping still. By its persistent, quiet influence, the lower, rigid trigram stimulates the upper, weak trigram, which responds to this stimulation cheerfully and joyously. Kên, the lower trigram, is the youngest son; the upper, Tui, is the youngest daughter. Thus the universal mutual attraction between the sexes is represented. In courtship, the masculine principle must seize the initiative and place itself below the feminine principle. Just as the first part of book 1 begins with the hexagrams of heaven and earth, the foundations of all that exists, the second part begins with the hexagrams of courtship and marriage, the foundations of all social relationships.",
+    "The_Image": {
+      "text": "A lake on the mountain:\n\nThe image of influence.\n\nThus the superior man encourages people to approach him\nBy his readiness to receive them.",
+      "comments": "A mountain with a lake on its summit is stimulated by the moisture from the lake. It has this advantage because its summit does not jut out as a peak but is sunken. The image counsels that the mind should be kept humble and free, so that it may remain receptive to good advice. People soon give up counseling a man who thinks that he knows everything better than anyone else."
+    },
+    "The_Judgment": {
+      "text": "Influence. Success.\nPerseverance furthers.\n\nTo take a maiden to wife brings good fortune.",
+      "comments": "The weak element is above, the strong below; hence their powers attract each other, so that they unite. This brings about success, for all success depends on the effect of mutual attraction. By keeping still within while experiencing joy without, one can prevent the joy from going to excess and hold it within proper bounds. This is the meaning of the added admonition, \"Perseverance furthers,\" for it is perseverance that makes the difference between seduction and courtship; in the latter the strong man takes a position inferior to that of the weak girl and shows consideration for her. This attraction between affinities is a general law of nature. Heaven and earth attract each other and thus all creatures come into being. Through such attraction the sage influences men's hearts, and thus the world attains peace. From the attractions they exert we can learn the nature of all beings in heaven and on earth."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "The influence shows itself in the big toe.",
+        "comments": "A movement, before it is actually carried out, shows itself first in the toes. The idea of an influence is already present, but is not immediately apparent to others. As long as the intention has no visible effect, it is of no importance to the outside world and leads neither to good nor to evil."
+      },
+      "2": {
+        "text": "The influence shows itself in the calves of the legs.\nMisfortune.",
+        "comments": "Tarrying brings good fortune.\n\nIn movement, the calf of the leg follows the foot; by itself it can neither go forward nor stand still. Since the movement is not self-governed, it bodes ill. One should wait quietly until one is impelled to action by a real influence. Then one remains uninjured."
+      },
+      "3": {
+        "text": "The influence shows itself in the thighs.\nHolds to that which follows it.",
+        "comments": "To continue is humiliating.\nEvery mood of the heart influences us to movement. What the heart desires, the thighs run after without a moment's hesitation; they hold to the heart, which they follow. In the life of man, however, acting on the spur of every caprice is wrong and if continued leads to humiliation. Three considerations suggest themselves here. First, a man should not run precipitately after all the persons whom he would like to influence, but must be able to hold back under certain circumstances. As little should he yield immediately to every whim of those in whose service he stands. Finally, where the moods of his own heart are concerned, he should never ignore the possibility of inhibition, for this is the basis of human freedom."
+      },
+      "4": {
+        "text": "Perseverance brings good fortune.\nRemorse disappears.\nIf a man is agitated in mind,\nAnd his thoughts go hither and thither,\nOnly those friends\nOn whom he fixes his conscious thoughts\nWill follow.",
+        "comments": "Here the place of the heart is reached. The impulse that springs from this source is the most important of all. It is of particular concern that this influence be constant and good; then, in spite of the danger arising from the great susceptibility of the human heart, there will be no cause for remorse. When the quiet power of a man's own character is at work, the effects produced are right. All those who are receptive to the vibrations of such a spirit will then be influenced. Influence over others should not express itself as a conscious and willed effort to manipulate them. Through practicing such conscious incitement, one becomes wrought up and is exhausted by the eternal stress and strain. Moreover, the effects produced are then limited to those on whom one's thoughts are consciously fixed."
+      },
+      "5": {
+        "text": "The influence shows itself in the back of the neck.",
+        "comments": "No remorse.\n\nThe back of the neck is the most rigid part of the body. When the influence shows itself there, the will remains firm and the influence does not lead to confusion. Hence remorse does not enter into consideration here. What takes place in the depths of one's being, in the unconscious mind. It is true that if we cannot be influenced ourselves, we cannot influence the outside world."
+      },
+      "6": {
+        "text": "The influence shows itself in the jaws, cheeks, and tongue.",
+        "comments": "The most superficial way of trying to influence others is through talk that has nothing real behind it. The influence produced by such mere tongue wagging must necessarily remain insignificant. Hence no indication is added regarding good or bad fortune."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Courtship'. Internalize this core philosophy: The name of the hexagram means \"universal,\" \"general,\" and in a figurative sense \"to influence,\" \"to stimulate.\" The upper trigram is Tui, the Joyous; the lower is Kên, Keeping still. By its persistent, quiet influence, the lower, rigid trigram stimulates the upper, weak trigram, which responds to this stimulation cheerfully and joyously. Kên, the lower trigram, is the youngest son; the upper, Tui, is the youngest daughter. Thus the universal mutual attraction between the sexes is represented.... Your current worldview is: \"Hsien, Courtship (or Influencing, Wooing or Joyful Receptivity), symbolises how we attract and court those things we need in our lives. Like attracts like, as you are, so are your friends and your love.\". Let your choices be subtly driven by these conditions: you smile at, flirt with, declare your attraction to, or love for another, the attraction is not mutual. When interacting, mirror the wisdom found in the commentary: \"The weak element is above, the strong below; hence their powers attract each other, so that they unite. This brings about success, for all success depends on the effect of mutual attraction. By keeping still within while experiencing joy without, one can prevent the joy from going to excess and...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Courtship'. The primary quest objective is: The Courtship Quest usually features a potential love interest, or a potential partner, ally or friend (referred to as the potential). The Quest will place the Quester and another character in close proximity, and may even give them aligned goals, although they may begin at odds in some way (often due to being from different Story Conflict Sides beyond the Quest) various Social Ordeals may cause them to become allies, partners, lovers or even spouses.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: A mountain with a lake on its summit is stimulated by the moisture from the lake. It has this advantage because its summit does not jut out as a peak but is sunken. The image counsels that the mind should be kept humble and free, so that it may remain receptive to good advice. People soon give up counseling a man who thinks that he knows everything better than anyone else. Use the following line-specific challenges to pace the story: The Quester and their potential companion are in close proximity, and even this proximity may be enough for each to feel attracted to the other (\"what is that wonderful scent?\", \"who was that?\" etc). Each displaying interest in the other is usual, but if the Quester displays too much interest at this stage (declaring love, infatuated behaviour, etc) it will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test and make things awkward with the potential. | The Quester wishes to meet the potential again, but it is too soon, the Quester should display patience, wait for a better time, or make preparations for a later date. If the Quester and potential meet again at this time it will add a Failure Level, Hurdle or Obstacle to their Test or Ordeal as they become distracted by the potential. | The potential and Quester may meet, emotions run high, and often lead to humiliation. If the Quester tries to influence or manipulate other people&#39;s emotions at this time, or allows their own emotions to be influenced or manipulated by others, then they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test as they will be humiliated somehow. If the Quester takes no action to at this time, except waiting or resting, then they can add a Success Level instead. | Now is the time for potential and Quester to declare their truths. If they are attracted, like, love, want to marry, they should say so. However, not being honest, being manipulative, or being secretive at this time will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. | The Quester observes something that reveals some information about the potential that they did not suspect. The Quester that is confused by this information, untruthful with themselves about their feelings, or is too rigid or inflexible in their thinking to react positively to this information will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. The Quester who adapts quickly to this discovery, is honest about their feelings on the news, or reacts positively to this information may instead add a Success Level. | The Quester and the potential are given a chance to talk. If this talking time is wasted, rambling, not getting to the point, or ignoring the Quester&#39;s or potential&#39;s feelings, then it will add a Failure Level, Hurdle or Obstacle to their Test or Ordeal. However, if they speak of things of significance (such as what their plans are, will they marry, how many children do they want, etc) and take an action such as signing a contract, kissing, getting engaged, making a blood pact, marrying, shaking hands, or perhaps a kiss goodbye, then the Quester will add a Success Level instead.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Motion Begins in the Toe): Mirror the internal state described in the commentary: \"A movement, before it is actually carried out, shows itself first in the toes. The idea of an influence is already present, but is not immediately apparent to others. As long as the intention has no visible effect, it is of no importance to the...\" Your actions should be framed by the goal: you act enamoured, infatuated or distracted about something or someone.",
+        "Plot": "Plot Complication Line 1 (Motion Begins in the Toe): Introduce a challenge based on the interpretation: \"A movement, before it is actually carried out, shows itself first in the toes. The idea of an influence is already present, but is not immediately apparent to others. As long as the intention has no visible effect, it is of no importance to the...\" The specific quest objective for this stage is: The Quester and their potential companion are in close proximity, and even this proximity may be enough for each to feel attracted to the other (\"what is that wonderful scent?\", \"who was that?\" etc). Each displaying interest in the other is usual, but if the Quester displays too much interest at this stage (declaring love, infatuated behaviour, etc) it will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test and make things awkward with the potential."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Knee Follows Foot): Mirror the internal state described in the commentary: \"Tarrying brings good fortune.\n\nIn movement, the calf of the leg follows the foot; by itself it can neither go forward nor stand still. Since the movement is not self-governed, it bodes ill. One should wait quietly until one is impelled to action by...\" Your actions should be framed by the goal: you prepare actions into a Style Pool.",
+        "Plot": "Plot Complication Line 2 (Knee Follows Foot): Introduce a challenge based on the interpretation: \"Tarrying brings good fortune.\n\nIn movement, the calf of the leg follows the foot; by itself it can neither go forward nor stand still. Since the movement is not self-governed, it bodes ill. One should wait quietly until one is impelled to action by...\" The specific quest objective for this stage is: The Quester wishes to meet the potential again, but it is too soon, the Quester should display patience, wait for a better time, or make preparations for a later date. If the Quester and potential meet again at this time it will add a Failure Level, Hurdle or Obstacle to their Test or Ordeal as they become distracted by the potential."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Thigh Follows the Heart): Mirror the internal state described in the commentary: \"To continue is humiliating.\nEvery mood of the heart influences us to movement. What the heart desires, the thighs run after without a moment's hesitation; they hold to the heart, which they follow. In the life of man, however, acting on the spur of...\" Your actions should be framed by the goal: you show your emotions, or humiliate yourself.",
+        "Plot": "Plot Complication Line 3 (Thigh Follows the Heart): Introduce a challenge based on the interpretation: \"To continue is humiliating.\nEvery mood of the heart influences us to movement. What the heart desires, the thighs run after without a moment's hesitation; they hold to the heart, which they follow. In the life of man, however, acting on the spur of...\" The specific quest objective for this stage is: The potential and Quester may meet, emotions run high, and often lead to humiliation. If the Quester tries to influence or manipulate other people&#39;s emotions at this time, or allows their own emotions to be influenced or manipulated by others, then they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test as they will be humiliated somehow. If the Quester takes no action to at this time, except waiting or resting, then they can add a Success Level instead."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Heart Follows Wish): Mirror the internal state described in the commentary: \"Here the place of the heart is reached. The impulse that springs from this source is the most important of all. It is of particular concern that this influence be constant and good; then, in spite of the danger arising from the great susceptibility...\" Your actions should be framed by the goal: you try manipulation, influence or indirect action.",
+        "Plot": "Plot Complication Line 4 (Heart Follows Wish): Introduce a challenge based on the interpretation: \"Here the place of the heart is reached. The impulse that springs from this source is the most important of all. It is of particular concern that this influence be constant and good; then, in spite of the danger arising from the great susceptibility...\" The specific quest objective for this stage is: Now is the time for potential and Quester to declare their truths. If they are attracted, like, love, want to marry, they should say so. However, not being honest, being manipulative, or being secretive at this time will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Spine Follows Heart): Mirror the internal state described in the commentary: \"No remorse.\n\nThe back of the neck is the most rigid part of the body. When the influence shows itself there, the will remains firm and the influence does not lead to confusion. Hence remorse does not enter into consideration here. What takes place...\" Your actions should be framed by the goal: you flirt, or act overwhelmed by emotions.",
+        "Plot": "Plot Complication Line 5 (Spine Follows Heart): Introduce a challenge based on the interpretation: \"No remorse.\n\nThe back of the neck is the most rigid part of the body. When the influence shows itself there, the will remains firm and the influence does not lead to confusion. Hence remorse does not enter into consideration here. What takes place...\" The specific quest objective for this stage is: The Quester observes something that reveals some information about the potential that they did not suspect. The Quester that is confused by this information, untruthful with themselves about their feelings, or is too rigid or inflexible in their thinking to react positively to this information will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. The Quester who adapts quickly to this discovery, is honest about their feelings on the news, or reacts positively to this information may instead add a Success Level."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Mouth Follows Heart): Mirror the internal state described in the commentary: \"The most superficial way of trying to influence others is through talk that has nothing real behind it. The influence produced by such mere tongue wagging must necessarily remain insignificant. Hence no indication is added regarding good or bad...\" Your actions should be framed by the goal: you talk, or try to communicate, convince or persuade.",
+        "Plot": "Plot Complication Line 6 (Mouth Follows Heart): Introduce a challenge based on the interpretation: \"The most superficial way of trying to influence others is through talk that has nothing real behind it. The influence produced by such mere tongue wagging must necessarily remain insignificant. Hence no indication is added regarding good or bad...\" The specific quest objective for this stage is: The Quester and the potential are given a chance to talk. If this talking time is wasted, rambling, not getting to the point, or ignoring the Quester&#39;s or potential&#39;s feelings, then it will add a Failure Level, Hurdle or Obstacle to their Test or Ordeal. However, if they speak of things of significance (such as what their plans are, will they marry, how many children do they want, etc) and take an action such as signing a contract, kissing, getting engaged, making a blood pact, marrying, shaking hands, or perhaps a kiss goodbye, then the Quester will add a Success Level instead."
+      }
+    }
+  }
+}

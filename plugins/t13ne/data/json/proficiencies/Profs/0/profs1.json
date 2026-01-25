@@ -1,0 +1,1406 @@
+{
+  "51": {
+    "id": 51,
+    "prof": {
+      "Name": [
+        "Spiritual Descendants",
+        "Spiritual Descendants",
+        ""
+      ],
+      "Description": "The tireless watchman on the soul's high tower, Spiritual Descendants is the silent guardian against the shadows of amazement.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "52": {
+    "id": 52,
+    "prof": {
+      "Name": [
+        "Numinous Edge",
+        "Numinous Edge",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Numinous Edge is the whispered secret of wonder.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "53": {
+    "id": 53,
+    "prof": {
+      "Name": [
+        "Haunted",
+        "Haunted Awe Failure Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Haunted represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "54": {
+    "id": 54,
+    "prof": {
+      "Name": [
+        "Embarrassment",
+        "Embarrassment Awe Fumble Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Embarrassment represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "55": {
+    "id": 55,
+    "prof": {
+      "Name": [
+        "Numinous Glow",
+        "Numinous Glow",
+        ""
+      ],
+      "Description": "The tireless watchman on the soul's high tower, Numinous Glow is the silent guardian against the shadows of wonder.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "56": {
+    "id": 56,
+    "prof": {
+      "Name": [
+        "Emotions Gnarl",
+        "Emotions Gnarl",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Emotions Gnarl is the whispered secret of inspiration.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "57": {
+    "id": 57,
+    "prof": {
+      "Name": [
+        "Feelings Herald",
+        "Feelings Herald",
+        ""
+      ],
+      "Description": "The art of Feelings Herald is a delicate dance with inspiration, a step in the grand ballet of Awe.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "58": {
+    "id": 58,
+    "prof": {
+      "Name": [
+        "Irrational",
+        "Irrational Awe Hitch Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Irrational represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "59": {
+    "id": 59,
+    "prof": {
+      "Name": [
+        "Irrational Quirk",
+        "Irrational Quirk",
+        ""
+      ],
+      "Description": "Like a river carving its path through stone, Irrational Quirk is the relentless pursuit of wonder.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "29"
+        ]
+      }
+    }
+  },
+  "60": {
+    "id": 60,
+    "prof": {
+      "Name": [
+        "Irrational Flaw",
+        "Irrational Flaw",
+        ""
+      ],
+      "Description": "The tireless watchman on the soul's high tower, Irrational Flaw is the silent guardian against the shadows of inspiration.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "29"
+        ]
+      }
+    }
+  },
+  "61": {
+    "id": 61,
+    "prof": {
+      "Name": [
+        "Irrational Woe",
+        "Irrational Woe",
+        ""
+      ],
+      "Description": "A seed of wonder planted in the fertile ground of Awe, Irrational Woe is the flower that blooms in adversity.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "29"
+        ]
+      }
+    }
+  },
+  "62": {
+    "id": 62,
+    "prof": {
+      "Name": [
+        "Spiritual Crisis",
+        "Spiritual Crisis Awe Hurdle Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Spiritual Crisis represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "63": {
+    "id": 63,
+    "prof": {
+      "Name": [
+        "Spirit Ka",
+        "Spirit Ka",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Spirit Ka is the whispered secret of reverence.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "64": {
+    "id": 64,
+    "prof": {
+      "Name": [
+        "Spiritual Location",
+        "Spiritual Location",
+        ""
+      ],
+      "Description": "The threads of Awe are woven into the tapestry of Spiritual Location, a story of reverence told in silence.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "65": {
+    "id": 65,
+    "prof": {
+      "Name": [
+        "Trait Lore",
+        "Trait Lore",
+        ""
+      ],
+      "Description": "Like a river carving its path through stone, Trait Lore is the relentless pursuit of reverence.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "66": {
+    "id": 66,
+    "prof": {
+      "Name": [
+        "Terror Monster",
+        "Terror Monster",
+        ""
+      ],
+      "Description": "The threads of Awe are woven into the tapestry of Terror Monster, a story of reverence told in silence.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "67": {
+    "id": 67,
+    "prof": {
+      "Name": [
+        "Pathetic Fallacy",
+        "Pathetic Fallacy Awe Narration Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Pathetic Fallacy represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "68": {
+    "id": 68,
+    "prof": {
+      "Name": [
+        "Inner-Life Narrative",
+        "Inner-Life Narrative",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Inner-Life Narrative is the whispered secret of amazement.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "69": {
+    "id": 69,
+    "prof": {
+      "Name": [
+        "Spiritual Ordeal",
+        "Spiritual Ordeal",
+        ""
+      ],
+      "Description": "A seed of reverence planted in the fertile ground of Awe, Spiritual Ordeal is the flower that blooms in adversity.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "70": {
+    "id": 70,
+    "prof": {
+      "Name": [
+        "Idol Persona",
+        "Idol Persona",
+        ""
+      ],
+      "Description": "To wield Idol Persona is to hold the very heart of Awe, a power that shapes the tides of reverence.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "71": {
+    "id": 71,
+    "prof": {
+      "Name": [
+        "Idol Motivation",
+        "Idol Motivation",
+        ""
+      ],
+      "Description": "A seed of wonder planted in the fertile ground of Awe, Idol Motivation is the flower that blooms in adversity.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "72": {
+    "id": 72,
+    "prof": {
+      "Name": [
+        "Idol Avoidance",
+        "Idol Avoidance",
+        ""
+      ],
+      "Description": "To wield Idol Avoidance is to hold the very heart of Awe, a power that shapes the tides of inspiration.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "73": {
+    "id": 73,
+    "prof": {
+      "Name": [
+        "Idol Shadow",
+        "Idol Shadow",
+        ""
+      ],
+      "Description": "The threads of Awe are woven into the tapestry of Idol Shadow, a story of reverence told in silence.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "74": {
+    "id": 74,
+    "prof": {
+      "Name": [
+        "Idol Gain Chi",
+        "Idol Gain Chi",
+        ""
+      ],
+      "Description": "To wield Idol Gain Chi is to hold the very heart of Awe, a power that shapes the tides of inspiration.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "75": {
+    "id": 75,
+    "prof": {
+      "Name": [
+        "Supernature Psychosocial",
+        "Supernature Psychosocial",
+        ""
+      ],
+      "Description": "The threads of Awe are woven into the tapestry of Supernature Psychosocial, a story of inspiration told in silence.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "76": {
+    "id": 76,
+    "prof": {
+      "Name": [
+        "Brave/Charm Quest",
+        "Brave/Charm Quest",
+        ""
+      ],
+      "Description": "A shield against the storm, Brave/Charm Quest is the quiet strength that endures the onslaught of wonder.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "77": {
+    "id": 77,
+    "prof": {
+      "Name": [
+        "Feelings Question",
+        "Feelings Question",
+        ""
+      ],
+      "Description": "A lonely star in the vast emptiness, Feelings Question is a beacon of inspiration in the cold night of the universe.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "78": {
+    "id": 78,
+    "prof": {
+      "Name": [
+        "Invocation Resolution",
+        "Invocation Resolution",
+        ""
+      ],
+      "Description": "To wield Invocation Resolution is to hold the very heart of Awe, a power that shapes the tides of amazement.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "79": {
+    "id": 79,
+    "prof": {
+      "Name": [
+        "Elegant Style",
+        "Elegant Style",
+        ""
+      ],
+      "Description": "A seed of amazement planted in the fertile ground of Awe, Elegant Style is the flower that blooms in adversity.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "80": {
+    "id": 80,
+    "prof": {
+      "Name": [
+        "Artistic Success",
+        "Artistic Success",
+        ""
+      ],
+      "Description": "A shield against the storm, Artistic Success is the quiet strength that endures the onslaught of amazement.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "81": {
+    "id": 81,
+    "prof": {
+      "Name": [
+        "Splendour Sway",
+        "Splendour Sway",
+        ""
+      ],
+      "Description": "A shield against the storm, Splendour Sway is the quiet strength that endures the onslaught of inspiration.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "82": {
+    "id": 82,
+    "prof": {
+      "Name": [
+        "Emotions Tangle",
+        "Emotions Tangle",
+        ""
+      ],
+      "Description": "A shield against the storm, Emotions Tangle is the quiet strength that endures the onslaught of inspiration.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "83": {
+    "id": 83,
+    "prof": {
+      "Name": [
+        "Attitude Test",
+        "Attitude Test",
+        ""
+      ],
+      "Description": "A shield against the storm, Attitude Test is the quiet strength that endures the onslaught of wonder.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "84": {
+    "id": 84,
+    "prof": {
+      "Name": [
+        "Emotional Tone",
+        "Emotional Tone",
+        ""
+      ],
+      "Description": "Like a river carving its path through stone, Emotional Tone is the relentless pursuit of inspiration.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "85": {
+    "id": 85,
+    "prof": {
+      "Name": [
+        "Change-of-Heart Turn",
+        "Change-of-Heart Turn",
+        ""
+      ],
+      "Description": "Like a river carving its path through stone, Change-of-Heart Turn is the relentless pursuit of inspiration.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "86": {
+    "id": 86,
+    "prof": {
+      "Name": [
+        "Twisted Spirit",
+        "Twisted Spirit",
+        ""
+      ],
+      "Description": "A lonely star in the vast emptiness, Twisted Spirit is a beacon of inspiration in the cold night of the universe.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "87": {
+    "id": 87,
+    "prof": {
+      "Name": [
+        "Enhancing Annex Channel",
+        "Enhancing Annex Channel",
+        ""
+      ],
+      "Description": "A seed of reverence planted in the fertile ground of Awe, Enhancing Annex Channel is the flower that blooms in adversity.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "88": {
+    "id": 88,
+    "prof": {
+      "Name": [
+        "Awesome Annex Root",
+        "Awesome Annex Root",
+        ""
+      ],
+      "Description": "The ghost of a forgotten memory, Awesome Annex Root is the echo of wonder in the ruins of the past.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "89": {
+    "id": 89,
+    "prof": {
+      "Name": [
+        "Spiritual Nimbed",
+        "Spiritual Nimbed",
+        ""
+      ],
+      "Description": "The tireless watchman on the soul's high tower, Spiritual Nimbed is the silent guardian against the shadows of wonder.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "90": {
+    "id": 90,
+    "prof": {
+      "Name": [
+        "Awful Umbral",
+        "Awful Umbral",
+        ""
+      ],
+      "Description": "To wield Awful Umbral is to hold the very heart of Awe, a power that shapes the tides of reverence.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "91": {
+    "id": 91,
+    "prof": {
+      "Name": [
+        "Intuition Herald",
+        "Intuition Herald",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Intuition Herald is the whispered secret of inspiration.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "92": {
+    "id": 92,
+    "prof": {
+      "Name": [
+        "Spirit Art",
+        "Spirit Art",
+        ""
+      ],
+      "Description": "A lonely star in the vast emptiness, Spirit Art is a beacon of inspiration in the cold night of the universe.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "93": {
+    "id": 93,
+    "prof": {
+      "Name": [
+        "Psychic Awareness",
+        "Psychic Awareness",
+        ""
+      ],
+      "Description": "A seed of wonder planted in the fertile ground of Awe, Psychic Awareness is the flower that blooms in adversity.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "94": {
+    "id": 94,
+    "prof": {
+      "Name": [
+        "Divine Connection",
+        "Divine Connection",
+        ""
+      ],
+      "Description": "The ghost of a forgotten memory, Divine Connection is the echo of inspiration in the ruins of the past.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "95": {
+    "id": 95,
+    "prof": {
+      "Name": [
+        "Emotional Resonance",
+        "Emotional Resonance",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Emotional Resonance is the whispered secret of amazement.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "96": {
+    "id": 96,
+    "prof": {
+      "Name": [
+        "Haunt",
+        "Haunt Awe Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Haunt represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "97": {
+    "id": 97,
+    "prof": {
+      "Name": [
+        "Charm",
+        "Charm Awe Quest Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Charm represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "98": {
+    "id": 98,
+    "prof": {
+      "Name": [
+        "Rapture",
+        "Rapture",
+        ""
+      ],
+      "Description": "The art of Rapture is a delicate dance with wonder, a step in the grand ballet of Awe.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "99": {
+    "id": 99,
+    "prof": {
+      "Name": [
+        "Awe Expression",
+        "Awe Expression",
+        ""
+      ],
+      "Description": "A seed of reverence planted in the fertile ground of Awe, Awe Expression is the flower that blooms in adversity.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "100": {
+    "id": 100,
+    "prof": {
+      "Name": [
+        "Muse",
+        "Muse",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Muse is the whispered secret of wonder.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

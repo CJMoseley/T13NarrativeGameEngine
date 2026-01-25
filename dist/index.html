@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wormhole Racers Prototype</title>
+    <style>
+        body { margin: 0; overflow: hidden; background: #000; color: #0f0; font-family: monospace; }
+        #gameCanvas { width: 100vw; height: 100vh; }
+        #loaderUI { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
+        #mainMenu {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            display: none; /* Hidden by default, shown by Loader */
+        }
+        .menu-button {
+            background: #005500;
+            color: #0f0;
+            border: 1px solid #0f0;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        .menu-button:hover {
+            background: #008800;
+        }
+        #galaxy-map-view {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 10;
+        }
+        #solar-system-view {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a1a;
+            z-index: 11;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loaderUI">
+        <h1>Initializing Wormhole Systems...</h1>
+        <div id="loadingStatus">Waiting for input...</div>
+    </div>
+
+    <div id="mainMenu">
+        <h2>Wormhole Racers</h2>
+        <div id="menuOptions">
+            </div>
+    </div>
+
+    <div id="game-canvas-container">
+        <canvas id="gameCanvas"></canvas>
+    </div>
+
+    <script>
+        function loadScripts() {
+            const ammoScript = document.createElement('script');
+            ammoScript.src = '/ammo/ammo.wasm.js';
+
+            const mainScript = document.createElement('script');
+            mainScript.type = 'module';
+            mainScript.src = '/js/main.js';
+
+            ammoScript.onload = () => {
+                window.AMMO_LOADED = true;
+                document.body.appendChild(mainScript);
+            };
+            ammoScript.onerror = () => {
+                window.AMMO_LOADED = false;
+                console.warn("Failed to load ammo.js. Falling back to basic physics.");
+                document.body.appendChild(mainScript);
+            };
+
+            document.body.appendChild(ammoScript);
+        }
+        loadScripts();
+    </script>
+</body>
+</html>

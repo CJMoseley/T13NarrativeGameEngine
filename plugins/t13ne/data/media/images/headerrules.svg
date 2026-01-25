@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="800" height="170" enable-background="new" version="1.1" viewBox="-.1 0 211.67 44.979" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<font id="t13nec" horiz-adv-x="1024">
+			<font-face font-family="SVGFont 1" units-per-em="1024"/>
+			<missing-glyph d="M0,0h1000v1024h-1000z"/>
+		</font>
+		<filter id="t13nea" x="-.25" y="-.25" width="1.5" height="1.5" color-interpolation-filters="sRGB">
+			<feTurbulence baseFrequency="0.09" numOctaves="5" result="result6" type="fractalNoise"/>
+			<feColorMatrix in="result6" result="result5" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 4.9 -2.9 "/>
+			<feComposite in="SourceGraphic" in2="result5" operator="in"/>
+			<feMorphology operator="dilate" radius="6" result="result3"/>
+			<feTurbulence baseFrequency="0.2" result="result91" type="fractalNoise"/>
+			<feDisplacementMap in="result3" in2="result91" result="result4" scale="15" xChannelSelector="R" yChannelSelector="G"/>
+			<feComposite in2="result4" k1="0.5" k3="1" operator="arithmetic" result="result2"/>
+			<feConvolveMatrix divisor="1.5" in="result2" kernelMatrix="1 0 0 0 2 0 0 0 -1 " order="3 3" result="fbSourceGraphic" targetX="0" targetY="0"/>
+			<feColorMatrix in="fbSourceGraphic" result="fbSourceGraphicAlpha" values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"/>
+			<feGaussianBlur in="fbSourceGraphic" result="result8" stdDeviation="5"/>
+			<feTurbulence baseFrequency="0.015" numOctaves="2" result="result7" seed="20" type="fractalNoise"/>
+			<feComposite in="fbSourceGraphic" in2="result8" operator="in" result="result6"/>
+			<feComposite in="result6" in2="result7" k3="1.7" operator="arithmetic" result="result2"/>
+			<feComposite in="result2" in2="result6" operator="in" result="fbSourceGraphic"/>
+			<feComposite in="fbSourceGraphic" in2="fbSourceGraphic" k2="1.5" k3="0.3" operator="arithmetic" result="result9"/>
+		</filter>
+		<filter id="t13neb" color-interpolation-filters="sRGB">
+			<feFlood flood-color="rgb(255,255,255)" flood-opacity=".27451" result="flood"/>
+			<feComposite in="flood" in2="SourceGraphic" operator="out" result="composite1"/>
+			<feGaussianBlur in="composite1" result="blur" stdDeviation="0.7"/>
+			<feOffset dx="-2.5" dy="-0.5" result="offset"/>
+			<feComposite in="offset" in2="SourceGraphic" operator="atop" result="fbSourceGraphic"/>
+			<feColorMatrix in="fbSourceGraphic" result="fbSourceGraphicAlpha" values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"/>
+			<feFlood flood-color="rgb(0,0,96)" flood-opacity=".27451" in="fbSourceGraphic" result="flood"/>
+			<feComposite in="flood" in2="fbSourceGraphic" operator="in" result="composite1"/>
+			<feGaussianBlur in="composite1" result="blur" stdDeviation="0.7"/>
+			<feOffset dx="0.5" dy="0.6" result="offset"/>
+			<feComposite in="fbSourceGraphic" in2="offset" result="composite2"/>
+		</filter>
+	</defs>
+	<rect transform="matrix(.81543 0 0 .69535 8.5378 8.6109)" x="-3.532" y="-3.0684" width="240.7" height="49.649" fill="#ff2a2a" filter="url(#t13nea)" stroke-width=".26458"/>
+	<text transform="matrix(1.0704 0 0 .9342 -83.851 -265.51)" x="85.537537" y="311.46082" fill="#000000" filter="url(#t13neb)" font-family="sans-serif" font-size="9.887px" letter-spacing="0px" stroke-width=".24717" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><tspan x="85.537537" y="311.46082" font-family="ShadowedBlack" font-size="13.183px" stroke-width=".24717">Rules</tspan></text>
+</svg>

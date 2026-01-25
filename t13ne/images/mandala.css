@@ -1,0 +1,126 @@
+/* forest variant */
+body{	background:black;
+}
+@keyframes cog {  from { transform: rotate(0deg);} to {transform: rotate(360deg);}}
+@-moz-keyframes cog /* Firefox */ {from {-moz-transform: rotate(0deg);} to { -moz-transform: rotate(360deg);}}
+@-webkit-keyframes cog /* Safari and Chrome */{from {-webkit-transform: rotate(0deg);} to { -webkit-transform: rotate(360deg);}}
+@-o-keyframes cog /* Opera */ {from {-o-transform: rotate(0deg);}to {-o-transform: rotate(360deg);}}
+
+div#mandala{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:url(mandala.php?size=150&words=B3%20lUcKy%20BuY%20mY%20B0oK);
+-webkit-filter:blur (8px);
+-moz-filter:blur (8px);
+-o-filter:blur (8px);
+filter:blur (8px);
+}
+div#mandala div{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background-size:contain;
+background:url(mandala.php?size=800&words=D351%2081e55%20y0u%20and%20a11%20thAT);
+-webkit-filter:blur (8px);
+	-moz-filter:blur (8px);
+	-o-filter:blur (8px);
+	filer:blur(8px);
+	
+}
+div#mandala>div>img#mandali {position:fixed;
+top:0;
+left:0;
+width:200%  !important;
+height:200% !important;
+transform-origin:50% 50%;
+-ms-transform-origin:50% 50%;
+-webkit-transform-origin:50% 50%;
+-o-transform-origin:50% 50%;
+-moz-transform-origin:50% 50%;-webkit-filter:blur (8px);
+	-moz-filter:blur (8px);
+	-o-filter:blur (8px);
+	filer:blur(8px);
+
+/*rotation anim */
+		animation-name: cog;
+		animation-duration: 45s;
+		animation-timing-function: linear;
+		animation-delay: 0s;
+		animation-iteration-count: infinite;
+		animation-play-state: running;
+		/* Firefox: */
+		-moz-animation-name: cog;
+		-moz-animation-duration: 45s;
+		-moz-animation-timing-function: linear;
+		-moz-animation-delay: 0s;
+		-moz-animation-iteration-count: infinite;
+		-moz-animation-play-state: running;
+		/* Safari and Chrome: */
+		-webkit-animation-name: cog;
+		-webkit-animation-duration: 45s;
+		-webkit-animation-timing-function: linear;
+		-webkit-animation-delay: 0s;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-play-state: running;
+		/* Opera: */
+		-o-animation-name: cog;
+		-o-animation-duration: 45s;
+		-o-animation-timing-function: linear;
+		-o-animation-delay: 0s;
+		-o-animation-iteration-count: infinite;
+-o-animation-play-state: running;
+}
+@keyframes bcog {  from { transform: rotate(360deg);} to {transform: rotate(0deg);}}
+@-moz-keyframes bcog /* Firefox */ {from {-moz-transform: rotate(360deg);} to { -moz-transform: rotate(0deg);}}
+@-webkit-keyframes bcog /* Safari and Chrome */{from {-webkit-transform: rotate(360deg);} to { -webkit-transform: rotate(0deg);}}
+@-o-keyframes bcog /* Opera */ {from {-o-transform: rotate(360deg);}to {-o-transform: rotate(0deg);}}
+
+div#mandala>div>img#mandalum {position:fixed;
+bottom:0;
+right:0;
+width:200% !important;
+height:200% !important;
+transform-origin:50% 50%;
+-ms-transform-origin:50% 50%;
+-webkit-transform-origin:50% 50%;
+-o-transform-origin:50% 50%;
+-moz-transform-origin:50% 50%;
+-webkit-filter:blur (8px);
+	-moz-filter:blur (8px);
+	-o-filter:blur (8px);
+	filer:blur(8px);
+/*rotation anim */
+		animation-name: bcog;
+		animation-duration: 45s;
+		animation-timing-function: linear;
+		animation-delay: 0s;
+		animation-iteration-count: infinite;
+		animation-play-state: running;
+		/* Firefox: */
+		-moz-animation-name: bcog;
+		-moz-animation-duration: 45s;
+		-moz-animation-timing-function: linear;
+		-moz-animation-delay: 0s;
+		-moz-animation-iteration-count: infinite;
+		-moz-animation-play-state: running;
+		/* Safari and Chrome: */
+		-webkit-animation-name: bcog;
+		-webkit-animation-duration: 45s;
+		-webkit-animation-timing-function: linear;
+		-webkit-animation-delay: 0s;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-play-state: running;
+		/* Opera: */
+		-o-animation-name: bcog;
+		-o-animation-duration: 45s;
+		-o-animation-timing-function: linear;
+		-o-animation-delay: 0s;
+		-o-animation-iteration-count: infinite;
+-o-animation-play-state: running;
+}
+

@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 11,
+    "Name": "Tranquillity",
+    "Entity": "&#19914;",
+    "Logical": 7,
+    "Trigrams": [
+      0,
+      7
+    ],
+    "Hexagram_Text": "T'ai, Tranquillity (or Peace), is symbolic of the serenity that one finds after you have given up desires and wants, but it is also the abandonment of the past and the embracing of the next adventure.",
+    "Unchanging": "You may pay 1 Chi to enter a \"Flow\" state for the rest of the Scene. In \"FLow\" you may Draw and Play 1 additional Ordeal / Wyrd Tarot / Yarn Card whenever you act.",
+    "Line1": "Entangled Roots",
+    "Line2": "The Middle Path",
+    "Line3": "Wheel of Fortune",
+    "Line4": "All Neighbours Together",
+    "Line5": "A Princess Marries",
+    "Line6": "The Wall Falls"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "another Character gains Chi or spends Stress nearby",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "an opposing Character spends Chi on an Action",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "someone gains Yin nearby",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yin",
+        "Condition": "you act impartially, refuse to take sides, or are gentle",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yin",
+        "Condition": "you act pessimistic when times are good, and hopeful when times are bad",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yang",
+        "Condition": "you are civil and respectful to those who are not your peers",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you act modest and sincere, make a gesture of peace",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yang",
+        "Condition": "you communicate honestly with those closest to you",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Tranquillity Quest should be simple, easy and harmonious, with cooperation (or something like it) between all parties, as each chooses to forget their past differences and work towards this new common goal in peace, but of course it rarely works this way, usually someone is selfish or insincere, or two parties involved have too much difficulty putting aside their personal feelings of revenge, for when Tranquillity fails then all parties may turn on each other, creating a frenzy like sharks with blood in the water.",
+    "Quest_Complete": "If a Quest ends in the Tranquillity Hexagram then there will be peace, quiet and a time of respite for the Quester, and their companions (and the opposition as well), before the next Quest. This time will allow them to recover and heal, but not yet train, learn or practice new skills or abilities. They may recover, but not progress through tranquillity.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "This is a time of peace and prosperity for the Quester, and they may extend their influence and recruit new companions to their Quest. If they help others who are in need (the Quester&#39;s peace and prosperity will not extend to everyone) they will quickly attract new followers, allies and companions. Hiding away in this time will add a Failure Level, Hurdle or Obstacle, as the opposition will take advantage of this time instead.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "Times of peace bring their own problems, and these problems can each heap Failure Levels, Obstacles and Hurdles upon the Quester if they are not dealt with. <ol><li>Tranquillity sometimes mixes companions and opposition socially</li><li>Tranquillity makes people ignore, or become complacent to, common dangers (such as fording rivers or crossing roads)</li><li>Tranquillity within a region can cause one to neglect what is distant, allowing problems to occur at the edge of the domain.</li><li>Peace and Prosperity can create new internal factions, and cliques working for mutual advantage that create new oppositional forces the Quester may encounter.</li></ol> If the Quester can find some middle path between these four forces then they can instead add a Success Level to their own Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The wheel of fortune reminds us that all things are in a state of change, prosperity and peace must end, just as times of strife must end too. If the Quester does not take advantage of this time, to make preparations for later, saving some money away, making preparations for war, or whatever diligence their situation indicates, then they will add a Failure Level, Obstacle or Hurdle to their Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "In a time of peace all social ranks are able to mingle freely and easily, those in authority will meet the common people in the market, even the opposition may meet in peace. If the Quester shows any sign of disrespecting others, whether trying to intimidate, impress or insult them will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "In times of peace social rank is less important, and this impacts the Quester directly, if they treat everyone as their equal then they will add a Success Level to their Test or Ordeal. If they treat anyone as their inferior or superior then it will add a Failure Level, Obstacle or Hurdle instead.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The defences have been breached, the peace has ended with a bang, this immediately increases the danger adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "The Receptive, which moves downward, stands above; the Creative, which moves upward, is below. Hence their influences meet and are in harmony, so that all living things bloom and prosper. This hexagram belongs to the first month (February-March), at which time the forces of nature prepare the new spring.",
+    "The_Image": {
+      "text": "Heaven and earth unite: the image of PEACE.\nThus the ruler\nDivides and completes the course of heaven and earth,\nAnd so aids the people.",
+      "comments": "Heaven and earth are in contact and combine their influences, producing a time of universal flowering and prosperity. This stream of energy must be regulated by the ruler of men. It is done by a process of division. Thus men divide the uniform flow of time into the seasons, according to the succession of natural phenomena, and mark off infinite space by the points of the compass. In this way nature in its overwhelming profusion of phenomena is bounded and controlled. One the other hand, nature must be furthered in her productiveness. This is done by adjusting the products to the right time and the right place, which increases the natural yield. This controlling and furthering activity of man in his relation to nature is the work on nature that rewards him."
+    },
+    "The_Judgment": {
+      "text": "PEACE. The small departs,\nThe great approaches.\nGood fortune. Success.",
+      "comments": "This hexagram denotes a time in nature when heaven seems to be on earth. Heaven has placed itself beneath the earth, and so their powers unite in deep harmony. Then peace and blessing descend upon all living things. In the world of man it is a time of social harmony; those in high places show favor to the lowly, and the lowly and inferior is an end to all feuds. In side, at the center, in the key position, is the light principle; the dark principle is outside. Thus the light has a powerful influence, while the dark is submissive. In this way each receives its due. When the good elements of society occupy a central position and are in control, the evil elements come under their influence and change for the better. When the spirit of heaven rules in man, his animal nature also comes under its influence and takes its appropriate place. The individual lines enter the hexagram from below and leave it again at the top. Here the small, weak, and evil elements are about to take their departure, while the great, strong, and good elements are moving up. This brings good fortune and success."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "When ribbon grass is pulled up, the sod comes with it.\nEach according to his kind.\nUndertakings bring good fortune.",
+        "comments": "In times of prosperity every able man called to fill an office draws like minded people along with him, just as in pulling up ribbon grass one always pulls up a bunch of it, because the stalks are connected by their roots. In such times, when it is possible to extend influence widely, the mind of an able man is set upon going out into life and accomplishing something."
+      },
+      "2": {
+        "text": "Bearing with the uncultured in gentleness,\nFording the river with resolution,\nNot neglecting what is distant,\nNot regarding one's companions:",
+        "comments": "Thus one may manage to walk in the middle.\n\nIn times of prosperity it is important and above all to possess enough greatness of soul to bear with imperfect people. For in the hands of a great master no material is unproductive; he can find use for everything. But this generosity is by no means laxity or weakness. It is during times of prosperity especially that we must always be ready to risk even dangerous undertakings, such as the crossing of a river, if they are necessary. So too we must not neglect what is distant but must attend scrupulously to everything. Factionalism and the dominance of cliques are especially to be avoided. Even if people of like mind come forward together, they ought not to form a faction by holding together for mutual advantage; instead, each man should do is duty. Theses are four ways in which one can overcome the hidden danger of a gradual slackening that always lurks in any time of peace. And that is how one finds the middle way for action."
+      },
+      "3": {
+        "text": "No plain not followed by a slope.\nNo going not followed by a return.\nHe who remains persevering in danger\nIs without blame.\nDo not complain about this truth;\nEnjoy the good fortune you still possess.",
+        "comments": "Everything on earth is subject to change. Prosperity is followed by decline: this is the eternal law on earth. Evil can indeed be held in check but not permanently abolished. It always returns. This conviction might induct melancholy, but it should not; it ought only to keep us from falling into illusion when good fortune comes to us. If we continue mindful of the danger, we remain persevering and make no mistakes. As long as a man's inner nature remains stronger and richer than anything offered by external fortune, as long as he remains inwardly superior to fate, fortune will not desert him."
+      },
+      "4": {
+        "text": "He flutters down, not boasting of his wealth,\nTogether with his neighbor,\nGuileless and sincere.",
+        "comments": "In times of mutual confidence, people of high rank come in close contact with the lowly quite simply and without boasting of their wealth. This is not due to the force of circumstances but corresponds with their inmost sentiment. The approach is made quite spontaneously, because it is based on inner conviction."
+      },
+      "5": {
+        "text": "The sovereign I\nGives his daughter in marriage.\nAnd supreme good fortune.",
+        "comments": "The sovereign I is T'ang the Completer. By his decree the imperial princesses, although higher in rank than their husbands, had to obey them like all other wives. Here too we are shown a truly modest union of high and low that brings happiness and blessings."
+      },
+      "6": {
+        "text": "The wall falls back into the moat.\nUse no army now.\nMake your commands known within your own town.\nPerseverance brings humiliation.",
+        "comments": "The change alluded to in the middle of the hexagram has begun to take place. The wall of the town sinks back into the moat from which it was dug. The hour of doom is at hand. When matters have come to this pass, we should submit to fate and not try to stave it off by violent resistance. The one recourse left us is to hold our own within our intimate circle. Should we persevere in trying to resist the evil in the usual way, our collapse would only be more complete, and humiliation would be the result."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Tranquillity'. Internalize this core philosophy: The Receptive, which moves downward, stands above; the Creative, which moves upward, is below. Hence their influences meet and are in harmony, so that all living things bloom and prosper. This hexagram belongs to the first month (February-March), at which time the forces of nature prepare the new spring. Your current worldview is: \"T'ai, Tranquillity (or Peace), is symbolic of the serenity that one finds after you have given up desires and wants, but it is also the abandonment of the past and the embracing of the next adventure.\". Let your choices be subtly driven by these conditions: another Character gains Chi or spends Stress nearby, an opposing Character spends Chi on an Action. When interacting, mirror the wisdom found in the commentary: \"This hexagram denotes a time in nature when heaven seems to be on earth. Heaven has placed itself beneath the earth, and so their powers unite in deep harmony. Then peace and blessing descend upon all living things. In the world of man it is a time of social harmony; those in high places show favor...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Tranquillity'. The primary quest objective is: The Tranquillity Quest should be simple, easy and harmonious, with cooperation (or something like it) between all parties, as each chooses to forget their past differences and work towards this new common goal in peace, but of course it rarely works this way, usually someone is selfish or insincere, or two parties involved have too much difficulty putting aside their personal feelings of revenge, for when Tranquillity fails then all parties may turn on each other, creating a frenzy like sharks with blood in the water.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: Heaven and earth are in contact and combine their influences, producing a time of universal flowering and prosperity. This stream of energy must be regulated by the ruler of men. It is done by a process of division. Thus men divide the uniform flow of time into the seasons, according to the succession of natural phenomena, and mark off infinite space by the points of the compass. In this way... Use the following line-specific challenges to pace the story: This is a time of peace and prosperity for the Quester, and they may extend their influence and recruit new companions to their Quest. If they help others who are in need (the Quester&#39;s peace and prosperity will not extend to everyone) they will quickly attract new followers, allies and companions. Hiding away in this time will add a Failure Level, Hurdle or Obstacle, as the opposition will take advantage of this time instead. | Times of peace bring their own problems, and these problems can each heap Failure Levels, Obstacles and Hurdles upon the Quester if they are not dealt with. <ol><li>Tranquillity sometimes mixes companions and opposition socially</li><li>Tranquillity makes people ignore, or become complacent to, common dangers (such as fording rivers or crossing roads)</li><li>Tranquillity within a region can cause one to neglect what is distant, allowing problems to occur at the edge of the domain.</li><li>Peace and Prosperity can create new internal factions, and cliques working for mutual advantage that create new oppositional forces the Quester may encounter.</li></ol> If the Quester can find some middle path between these four forces then they can instead add a Success Level to their own Test or Ordeal. | The wheel of fortune reminds us that all things are in a state of change, prosperity and peace must end, just as times of strife must end too. If the Quester does not take advantage of this time, to make preparations for later, saving some money away, making preparations for war, or whatever diligence their situation indicates, then they will add a Failure Level, Obstacle or Hurdle to their Test or Ordeal. | In a time of peace all social ranks are able to mingle freely and easily, those in authority will meet the common people in the market, even the opposition may meet in peace. If the Quester shows any sign of disrespecting others, whether trying to intimidate, impress or insult them will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. | In times of peace social rank is less important, and this impacts the Quester directly, if they treat everyone as their equal then they will add a Success Level to their Test or Ordeal. If they treat anyone as their inferior or superior then it will add a Failure Level, Obstacle or Hurdle instead. | The defences have been breached, the peace has ended with a bang, this immediately increases the danger adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Entangled Roots): Mirror the internal state described in the commentary: \"In times of prosperity every able man called to fill an office draws like minded people along with him, just as in pulling up ribbon grass one always pulls up a bunch of it, because the stalks are connected by their roots. In such times, when it is...\" Your actions should be framed by the goal: someone gains Yin nearby.",
+        "Plot": "Plot Complication Line 1 (Entangled Roots): Introduce a challenge based on the interpretation: \"In times of prosperity every able man called to fill an office draws like minded people along with him, just as in pulling up ribbon grass one always pulls up a bunch of it, because the stalks are connected by their roots. In such times, when it is...\" The specific quest objective for this stage is: This is a time of peace and prosperity for the Quester, and they may extend their influence and recruit new companions to their Quest. If they help others who are in need (the Quester&#39;s peace and prosperity will not extend to everyone) they will quickly attract new followers, allies and companions. Hiding away in this time will add a Failure Level, Hurdle or Obstacle, as the opposition will take advantage of this time instead."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (The Middle Path): Mirror the internal state described in the commentary: \"Thus one may manage to walk in the middle.\n\nIn times of prosperity it is important and above all to possess enough greatness of soul to bear with imperfect people. For in the hands of a great master no material is unproductive; he can find use for...\" Your actions should be framed by the goal: you act impartially, refuse to take sides, or are gentle.",
+        "Plot": "Plot Complication Line 2 (The Middle Path): Introduce a challenge based on the interpretation: \"Thus one may manage to walk in the middle.\n\nIn times of prosperity it is important and above all to possess enough greatness of soul to bear with imperfect people. For in the hands of a great master no material is unproductive; he can find use for...\" The specific quest objective for this stage is: Times of peace bring their own problems, and these problems can each heap Failure Levels, Obstacles and Hurdles upon the Quester if they are not dealt with. <ol><li>Tranquillity sometimes mixes companions and opposition socially</li><li>Tranquillity makes people ignore, or become complacent to, common dangers (such as fording rivers or crossing roads)</li><li>Tranquillity within a region can cause one to neglect what is distant, allowing problems to occur at the edge of the domain.</li><li>Peace and Prosperity can create new internal factions, and cliques working for mutual advantage that create new oppositional forces the Quester may encounter.</li></ol> If the Quester can find some middle path between these four forces then they can instead add a Success Level to their own Test or Ordeal."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Wheel of Fortune): Mirror the internal state described in the commentary: \"Everything on earth is subject to change. Prosperity is followed by decline: this is the eternal law on earth. Evil can indeed be held in check but not permanently abolished. It always returns. This conviction might induct melancholy, but it should...\" Your actions should be framed by the goal: you act pessimistic when times are good, and hopeful when times are bad.",
+        "Plot": "Plot Complication Line 3 (Wheel of Fortune): Introduce a challenge based on the interpretation: \"Everything on earth is subject to change. Prosperity is followed by decline: this is the eternal law on earth. Evil can indeed be held in check but not permanently abolished. It always returns. This conviction might induct melancholy, but it should...\" The specific quest objective for this stage is: The wheel of fortune reminds us that all things are in a state of change, prosperity and peace must end, just as times of strife must end too. If the Quester does not take advantage of this time, to make preparations for later, saving some money away, making preparations for war, or whatever diligence their situation indicates, then they will add a Failure Level, Obstacle or Hurdle to their Test or Ordeal."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (All Neighbours Together): Mirror the internal state described in the commentary: \"In times of mutual confidence, people of high rank come in close contact with the lowly quite simply and without boasting of their wealth. This is not due to the force of circumstances but corresponds with their inmost sentiment. The approach is...\" Your actions should be framed by the goal: you are civil and respectful to those who are not your peers.",
+        "Plot": "Plot Complication Line 4 (All Neighbours Together): Introduce a challenge based on the interpretation: \"In times of mutual confidence, people of high rank come in close contact with the lowly quite simply and without boasting of their wealth. This is not due to the force of circumstances but corresponds with their inmost sentiment. The approach is...\" The specific quest objective for this stage is: In a time of peace all social ranks are able to mingle freely and easily, those in authority will meet the common people in the market, even the opposition may meet in peace. If the Quester shows any sign of disrespecting others, whether trying to intimidate, impress or insult them will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (A Princess Marries): Mirror the internal state described in the commentary: \"The sovereign I is T'ang the Completer. By his decree the imperial princesses, although higher in rank than their husbands, had to obey them like all other wives. Here too we are shown a truly modest union of high and low that brings happiness and...\" Your actions should be framed by the goal: you act modest and sincere, make a gesture of peace.",
+        "Plot": "Plot Complication Line 5 (A Princess Marries): Introduce a challenge based on the interpretation: \"The sovereign I is T'ang the Completer. By his decree the imperial princesses, although higher in rank than their husbands, had to obey them like all other wives. Here too we are shown a truly modest union of high and low that brings happiness and...\" The specific quest objective for this stage is: In times of peace social rank is less important, and this impacts the Quester directly, if they treat everyone as their equal then they will add a Success Level to their Test or Ordeal. If they treat anyone as their inferior or superior then it will add a Failure Level, Obstacle or Hurdle instead."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (The Wall Falls): Mirror the internal state described in the commentary: \"The change alluded to in the middle of the hexagram has begun to take place. The wall of the town sinks back into the moat from which it was dug. The hour of doom is at hand. When matters have come to this pass, we should submit to fate and not try...\" Your actions should be framed by the goal: you communicate honestly with those closest to you.",
+        "Plot": "Plot Complication Line 6 (The Wall Falls): Introduce a challenge based on the interpretation: \"The change alluded to in the middle of the hexagram has begun to take place. The wall of the town sinks back into the moat from which it was dug. The hour of doom is at hand. When matters have come to this pass, we should submit to fate and not try...\" The specific quest objective for this stage is: The defences have been breached, the peace has ended with a bang, this immediately increases the danger adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test"
+      }
+    }
+  }
+}

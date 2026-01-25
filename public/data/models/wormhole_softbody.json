@@ -1,0 +1,48 @@
+{
+    "metadata": {
+        "type": "SoftBodyModel",
+        "description": "A soft-body representation of a wormhole, defined by vertices and connections for physics simulation.",
+        "generator": "Gemini Agent"
+    },
+    "softbody_data": {
+        "vertices": [
+            // Start of one end of the wormhole (a circle of points)
+            [-0.5, 0, 0], [0.5, 0, 0], [0, 0.5, 0], [0, -0.5, 0],
+            // Mid-section 1
+            [-0.4, 0.1, 2], [0.4, 0.1, 2], [0.1, 0.4, 2], [0.1, -0.4, 2],
+            // Mid-section 2 (slightly distorted)
+            [-0.6, -0.1, 4], [0.6, -0.1, 4], [-0.1, 0.6, 4], [-0.1, -0.6, 4],
+            // End of the wormhole (another circle of points)
+            [-0.5, 0, 6], [0.5, 0, 6], [0, 0.5, 6], [0, -0.5, 6]
+        ],
+        "edges": [
+            // Connections forming circles along the wormhole's length
+            [0, 1], [1, 2], [2, 3], [3, 0], // First slice
+            [4, 5], [5, 6], [6, 7], [7, 4], // Second slice
+            [8, 9], [9, 10], [10, 11], [11, 8], // Third slice
+            [12, 13], [13, 14], [14, 15], [15, 12], // Fourth slice
+
+            // Connections between slices to form the tube
+            [0, 4], [1, 5], [2, 6], [3, 7],
+            [4, 8], [5, 9], [6, 10], [7, 11],
+            [8, 12], [9, 13], [10, 14], [11, 15],
+
+            // Add some cross-connections for structural integrity / complex deformation
+            [0, 5], [1, 4], [2, 7], [3, 6],
+            [4, 9], [5, 8], [6, 11], [7, 10],
+            [8, 13], [9, 12], [10, 15], [11, 14]
+        ],
+        "faces": [
+            // These would define the renderable mesh for the soft body if needed,
+            // but for pure physics data, edges might be enough.
+            // For a simple visualization of the soft body, one could render lines between edges.
+        ],
+        "physics_properties": {
+            "spring_constant": 0.5,
+            "damping_coefficient": 0.1,
+            "pressure_coefficient": 0.01,
+            "volume_constraint": true,
+            "mass_per_vertex": 0.1
+        }
+    }
+}

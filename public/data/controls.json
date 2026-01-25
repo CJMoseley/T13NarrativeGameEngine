@@ -1,0 +1,84 @@
+{
+    "schemes": {
+        "galaxy": {
+            "type": "OrbitControls",
+            "settings": {
+                "enableDamping": true,
+                "dampingFactor": 0.05,
+                "screenSpacePanning": false,
+                "minDistance": 500,
+                "maxDistance": 8000
+            }
+        },
+        "system": {
+            "type": "OrbitControls",
+            "settings": {
+                "enableDamping": true,
+                "dampingFactor": 0.05,
+                "minDistance": 10,
+                "maxDistance": 1000
+            }
+        },
+        "ui": {
+            "open": "o",
+            "minimize": "m",
+            "okay": "k",
+            "dismiss": "n"
+        },
+        "flight_air": {
+            "THRUST": {
+                "key": "w",
+                "label": "Forward Thrust",
+                "alt_key": "mouse2"
+            },
+            "STEER_LEFT": {
+                "key": "a",
+                "label": "Strafe Left"
+            },
+            "STEER_RIGHT": {
+                "key": "d",
+                "label": "Strafe Right"
+            },
+            "BOOST": {
+                "key": " ",
+                "label": "Jump / Boost",
+                "display": "<SPACE>"
+            }
+        },
+        "rolling_mode": {
+            "ACCEL_ROLL": {
+                "key": "w",
+                "label": "Roll Accel (Shield Torque)"
+            },
+            "STEER_LEFT": {
+                "key": "a",
+                "label": "Roll Left"
+            },
+            "STEER_RIGHT": {
+                "key": "d",
+                "label": "Roll Right"
+            },
+            "SLIDE": {
+                "key": " ",
+                "label": "Flatten Shield (Slide)",
+                "display": "<SPACE>"
+            }
+        },
+        "sliding_mode": {
+            "STEER_LEFT": {
+                "key": "a",
+                "label": "Inertial Slide Left"
+            },
+            "STEER_RIGHT": {
+                "key": "d",
+                "label": "Inertial Slide Right"
+            },
+            "JUMP": {
+                "key": " ",
+                "label": "Release to Jump Inward",
+                "display": "<SPACE_REL>"
+            }
+        }
+    },
+    "default": "galaxy"
+}

@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Procedural Density Wave Galaxy</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #050505;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Container for UI panels */
+        #ui-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Let clicks pass through to canvas */
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        /* General panel styling */
+        .panel {
+            background: rgba(20, 25, 30, 0.9);
+            border: 1px solid #444;
+            padding: 15px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+            pointer-events: auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            max-width: 300px;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            color: #4facfe;
+            margin-bottom: 10px;
+        }
+
+        .panel-content {
+            transition: max-height 0.3s ease-out;
+            overflow: hidden;
+        }
+
+        h1 { margin: 0; font-size: 1.2rem; }
+        h2 { margin: 0 0 5px 0; font-size: 1rem; color: #00f2fe; border-bottom: 1px solid #444; padding-bottom: 5px;}
+        p { margin: 5px 0; font-size: 0.9rem; }
+        
+        .control-group { margin-bottom: 10px; }
+        label { display: block; font-size: 0.8rem; color: #aaa; margin-bottom: 4px; }
+        input[type=range] { width: 100%; cursor: pointer; }
+
+        .stat-row { display: flex; justify-content: space-between; margin-bottom: 4px; }
+        .stat-label { color: #888; }
+        .stat-val { font-weight: normal; color: #fff; }
+
+        #system-details { 
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 300px;
+            display: none;
+        }
+        .tag { 
+            display: inline-block; 
+            padding: 2px 6px; 
+            font-size: 0.75rem; 
+            border-radius: 4px; 
+            background: #333; 
+            margin-right: 4px;
+            margin-top: 5px;
+        }
+        .tag-tech { background: #2b4a50; color: #4ff; }
+        .tag-bio { background: #2b5030; color: #4f4; }
+        .tag-society { background: #503f2b; color: #ffc44f; }
+        #close-details {
+            float: right;
+            cursor: pointer;
+            color: #ccc;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container"></div>
+
+<div id="ui-container">
+    <div id="left-ui">
+        <div id="controls-panel" class="panel">
+            <div class="panel-header" onclick="togglePanel('controls-content')">
+                <h1>Galaxy Controls</h1>
+                <span id="controls-toggle-icon">-</span>
+            </div>
+            <div id="controls-content" class="panel-content">
+                <p style="font-size: 0.8rem; color: #aaa;">Logarithmic Spiral + Density Wave Lag</p>
+                
+                <div class="control-group">
+                    <label>Spiral Arms (N)</label>
+                    <input type="range" id="param-arm-count" min="2" max="8" step="1" value="4">
+                </div>
+
+                <div class="control-group">
+                    <label>Star Density Multiplier</label>
+                    <input type="range" id="param-density" min="1" max="5" step="0.5" value="3.5">
+                </div>
+                
+                <div class="control-group">
+                    <label>Spiral Winding (B-factor)</label>
+                    <input type="range" id="param-winding" min="0.1" max="0.8" step="0.05" value="0.35">
+                </div>
+                
+                <div class="control-group">
+                    <label>Halo Star Ratio</label>
+                    <input type="range" id="param-halo-ratio" min="0" max="0.1" step="0.01" value="0.02">
+                </div>
+
+                <div class="control-group">
+                    <label>Bulge/Core Ratio</label>
+                    <input type="range" id="param-bulge-ratio" min="0" max="0.2" step="0.01" value="0.05">
+                </div>
+
+                <div class="control-group">
+                    <label>Density Wave Lag (Offset)</label>
+                    <input type="range" id="param-lag" min="0" max="1" step="0.1" value="0.5">
+                </div>
+                
+                <button id="btn-regen" style="width:100%; padding: 8px; background: #333; color: white; border: 1px solid #555; cursor: pointer;">Regenerate 3D Galaxy</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="system-details" class="panel">
+        <span id="close-details" onclick="document.getElementById('system-details').style.display='none';">×</span>
+        <h2 id="sys-name">System Name</h2>
+        <div class="stat-row"><span class="stat-label">Coords:</span> <span class="stat-val" id="sys-coords">0, 0, 0</span></div>
+        <div class="stat-row"><span class="stat-label">Star Class:</span> <span class="stat-val" id="sys-class">G2V</span></div>
+        
+        <div style="margin: 10px 0;">
+            <span id="sys-species" class="tag tag-bio">Species</span>
+            <span id="sys-tech" class="tag tag-tech">Tech Level</span>
+            <span id="sys-society" class="tag tag-society">Society Type</span>
+        </div>
+        
+        <p id="sys-desc" style="font-size: 0.85rem; line-height: 1.4; color: #ccc;">
+            System description goes here.
+        </p>
+    </div>
+</div>
+
+<script>
+// === LORE DATA STRUCTURES ===
+// these lores were meant to be expanded to include more details about each species, their culture, history, and typical homeworlds. Such as the colours, animal head, caste etc)
+// but gemini just slapped this lore in and then hallucinated anothe rrace called Xentii and would not listen to me about how that was wrong.
+
+const SPECIES_LORE = {
+    'Humans': {
+        name: 'Humans',
+        desc: 'A highly adaptable species, Humans vary greatly in appearance based on their homeworlds. They are the primary architects of many inter-species alliances.',
+        bias: 'r: 0.3-0.7 (Mid-Disc)'
+    },
+    'Therios': {
+        name: 'Theriocaphalics',
+        desc: 'Engineered blends of human and animal DNA, Therios are highly specialized for non-Human viable environments, often surpassing Humans in localized intellect.',
+        bias: 'r: >0.6 (Outer Disc)'
+    },
+    'Draco': {
+        name: 'Draco',
+        desc: 'Uplifted dinosaurs who revere the First. Though attempting to abandon their rigid caste system, social remnants persist, especially in older colonies.',
+        bias: 'r: <0.3 (Inner Disc/Bulge), Older Stars'
+    },
+    'Kathorri': {
+        name: 'Kathorri',
+        desc: 'Sentient crystalline entities formed of ice, liquid alcohol, and super-conductors. They communicate via electromagnetic waves and thrive in cold, low-energy environments.',
+        bias: 'High Z-Axis, Cold Worlds'
+    },
+    'Vemlek': {
+        name: 'Vemlek',
+        desc: 'A powerful artificial species split between the anti-biological Vemleki and the preservationist Vemleko. They are highly advanced but politically divided.',
+        bias: 'Widely scattered, High Tech'
+    },
+    'Grenk': {
+        name: 'Grenk',
+        desc: 'A robust biological servitor race of the First. They are highly stable and predisposed to helper roles, often playing a secondary role in younger civilizations.',
+        bias: 'Widely scattered, Stable systems'
+    },
+    'ThfThf': {
+        name: 'Thf-Thf',
+        desc: 'A hive mind of nano-neural cells often found in deformable containment suits. They share an electromagnetic communication band with the Kathorri, with whom they frequently interact.',
+        bias: 'High Z-Axis, Cold Worlds, often near Kathorri'
+    },
+    'FirstRelic': {
+        name: 'The First (Relic)',
+        desc: 'The primordial, eight-limbed founders of galactic civilization, now long dead. Their artifacts are fragmented and poorly understood, often serving as dangerous technological ruins.',
+        bias: 'Rare, Old Core systems'
+    }
+};
+
+// === UI HELPER FUNCTIONS ===
+function togglePanel(contentId) {
+    const content = document.getElementById(contentId);
+    const icon = document.getElementById(contentId.replace('content', 'toggle-icon'));
+    if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+        icon.textContent = '+';
+    } else {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        icon.textContent = '-';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const content = document.getElementById('controls-content');
+    content.style.maxHeight = content.scrollHeight + 'px';
+});
+
+
+// === 1. NOISE IMPLEMENTATION ===
+class NoiseGenerator {
+    constructor(seed = 12345) {
+        this.seed = seed;
+    }
+
+    hash(args) {
+        let h = this.seed;
+        for (let i = 0; i < args.length; i++) {
+            h = Math.imul(h ^ args[i], 1597334677);
+            h = (h << 13) | (h >>> 19);
+        }
+        return function() {
+            h = Math.imul(h ^ (h >>> 16), 2246822507);
+            h = Math.imul(h ^ (h >>> 13), 3266489909);
+            return (h >>> 0) / 4294967296;
+        }();
+    }
+
+    noise2D(x, y, scale = 1) {
+        x *= scale; y *= scale;
+        const ix = Math.floor(x);
+        const iy = Math.floor(y);
+        const fx = x - ix;
+        const fy = y - iy;
+
+        const a = this.hash([ix, iy]);
+        const b = this.hash([ix + 1, iy]);
+        const c = this.hash([ix, iy + 1]);
+        const d = this.hash([ix + 1, iy + 1]);
+
+        const u = fx * fx * (3 - 2 * fx);
+        const v = fy * fy * (3 - 2 * fy);
+
+        return (a * (1 - u) + b * u) * (1 - v) + (c * (1 - u) + d * u) * v;
+    }
+
+    noisenD(coords, extradims = []) {
+        const x = coords[0];
+        const y = coords[1];
+        
+        let modifier = 0;
+        extradims.forEach((v, i) => modifier += v * (i + 1) * 100);
+        
+        return this.noise2D(x + modifier, y + modifier, 1.0);
+    }
+}
+
+const noiseGen = new NoiseGenerator(Date.now());
+
+// Global variable for the core mesh reference
+let coreGlowSprite = null;
+
+// === 2. GALAXY GENERATION LOGIC ===
+// the galaxy logic was meant to include all star types, including neutron stars, black holes and white dwarfs, red giants etc. this is what we got instead. i think it requires fixing.
+const Galaxy = {
+    stars: [], 
+    points: null, 
+    scene: null, 
+    dustMeshes: [], 
+    gasMeshes: [],  
+    spriteTextures: {}, 
+    
+    NEBULA_COLORS: [
+        0x6699ff, // Cool Blue
+        0xff33cc, // Hot Pink/Magenta
+        0x33ffcc, // Cyan/Aqua
+        0xffcc33, // Orange/Yellow
+        0xff3333, // Deep Red
+        0x9966ff, // Violet
+        0x33ff66  // Green
+    ],
+
+    params: {
+        armCount: 4, 
+        densityMultiplier: 3.5, 
+        haloRatio: 0.02, 
+        bulgeRatio: 0.05, 
+        winding: 0.35, 
+        coreRadius: 0.15,
+        lag: 0.5, 
+        galaxyRadius: 2000
+    },
+
+    init(scene) {
+        this.scene = scene;
+        this.generateStars();
+        if (Object.keys(this.spriteTextures).length === 0) {
+            this.initSpriteTextures(); 
+        }
+        this.renderPoints(); 
+        this.addNebulaAndDust();
+    },
+    
+    generateStars() {
+        this.stars = [];
+        const { armCount, densityMultiplier, haloRatio, bulgeRatio, winding, lag, galaxyRadius } = this.params;
+        
+        const currentArmCount = Math.max(2, armCount); 
+
+        // Base star count scales with arm complexity and user multiplier
+        const baseStarCount = 10000;
+        const starCount = Math.floor(baseStarCount * densityMultiplier * (armCount / 2));
+        
+        const HALO_RATIO = haloRatio;  
+        const BULGE_RATIO = bulgeRatio; 
+        const DISC_RATIO = 1.0 - HALO_RATIO - BULGE_RATIO;
+        
+        if (DISC_RATIO <= 0) {
+            console.error("Halo and Bulge ratios are too high. Adjusting to prioritize Disc.");
+            // Simple fallback to ensure generation continues
+            HALO_RATIO = 0.01;
+            BULGE_RATIO = 0.01;
+        }
+
+        const haloCount = Math.floor(starCount * HALO_RATIO);
+        const bulgeCount = Math.floor(starCount * BULGE_RATIO);
+        const discCount = starCount - haloCount - bulgeCount;
+
+        const WINDING_SCALE = 8.0; 
+        
+        let starsGenerated = 0;
+
+        // --- 1. Stellar HALO ---
+        for (let i = 0; i < haloCount; i++) {
+            const isYoung = false;
+            const rNorm = Math.pow(Math.random(), 0.3);
+            const r = rNorm * galaxyRadius * 1.5; 
+
+            const phi_halo = Math.random() * Math.PI * 2;
+            const theta_halo = Math.acos(Math.random() * 2 - 1);
+
+            const x = r * Math.sin(theta_halo) * Math.cos(phi_halo);
+            const y = r * Math.sin(theta_halo) * Math.sin(phi_halo);
+            const z = r * Math.cos(theta_halo);
+            const theta = Math.atan2(y, x);
+
+            const color = this.getStarColor(isYoung, rNorm, 0.4); 
+            
+            this.stars.push({
+                x, y, z,
+                r: rNorm,
+                angle: theta,
+                isYoung,
+                color: color,
+                size: 2
+            });
+            starsGenerated++;
+        }
+
+        // --- 2. Central BULGE ---
+        for (let i = 0; i < bulgeCount; i++) {
+            const isYoung = false;
+            const rNorm = Math.pow(Math.random(), 4.0); 
+            const r = rNorm * galaxyRadius * 0.3; 
+
+            const bulgeThickness = 0.3; 
+            const z = (Math.random() - 0.5) * (r * bulgeThickness) * 2; 
+
+            const theta = Math.random() * Math.PI * 2;
+            const x = r * Math.cos(theta);
+            const y = r * Math.sin(theta);
+            
+            const color = this.getStarColor(isYoung, rNorm, 1.0); 
+            
+            this.stars.push({
+                x, y, z,
+                r: rNorm,
+                angle: theta,
+                isYoung,
+                color: color,
+                size: 2
+            });
+            starsGenerated++;
+        }
+
+        // --- 3. Galactic DISC ---
+        for (let i = 0; i < discCount; i++) {
+            
+            const rNorm = Math.pow(Math.random(), 0.5);
+            const r = rNorm * galaxyRadius;
+
+            // Arm calculation
+            const armIndex = Math.floor(Math.random() * currentArmCount);
+            const armOffset = (Math.PI * 2 / currentArmCount) * armIndex;
+
+            const A = 100;
+            let thetaBase = -Math.log((r + A) / A) * winding * WINDING_SCALE;
+            thetaBase += armOffset;
+
+            const ageNoise = noiseGen.noisenD([r * 0.01, thetaBase], [123]); 
+            const spurNoise = noiseGen.noise2D(thetaBase * 8, r * 0.05, 1.0); 
+            
+            let theta = thetaBase;
+            let isYoung = false;
+
+            let scatter = (Math.random() - 0.5) + (Math.random() - 0.5); 
+            scatter *= 0.6; 
+
+            if (ageNoise > 0.7 && spurNoise > 0.5) {
+                isYoung = true;
+                scatter *= 0.3;
+                theta += (lag * 0.3);
+            } else if (ageNoise > 0.4) {
+                isYoung = true;
+                scatter *= 0.7;
+                theta += (lag * 0.1);
+            } else {
+                isYoung = false;
+                scatter *= 0.8; 
+            }
+            
+            theta += scatter;
+
+            const x = r * Math.cos(theta);
+            const y = r * Math.sin(theta);
+            
+            const zThickness = galaxyRadius * 0.04;
+            const z = (Math.random() - 0.5) * zThickness * (1 - rNorm); 
+            
+            const color = this.getStarColor(isYoung, rNorm, 1.0); 
+            
+            this.stars.push({
+                x, y, z,
+                r: rNorm,
+                angle: theta,
+                isYoung,
+                color: color,
+                size: 2
+            });
+            starsGenerated++;
+        }
+        console.log(`Generated ${starsGenerated} stars (Disc: ${discCount}, Bulge: ${bulgeCount}, Halo: ${haloCount})`);
+    },
+    
+    // === SPRITE TEXTURE GENERATION FUNCTIONS ===
+    
+    createRadialGlow(size = 128) {
+        const canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        const context = canvas.getContext('2d');
+        const center = size / 2;
+        
+        const gradient = context.createRadialGradient(center, center, 0, center, center, center);
+        
+        gradient.addColorStop(0, 'rgba(255, 255, 255, 1)'); 
+        gradient.addColorStop(0.6, 'rgba(255, 255, 255, 0.4)'); 
+        gradient.addColorStop(0.85, 'rgba(255, 255, 255, 0.05)'); 
+        gradient.addColorStop(1, 'rgba(0, 0, 0, 0)'); 
+
+        context.fillStyle = gradient;
+        context.fillRect(0, 0, size, size);
+        return new THREE.CanvasTexture(canvas);
+    },
+
+    createCrossGlow(size = 128) {
+        const canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        const context = canvas.getContext('2d');
+        const center = size / 2;
+        
+        const gradient = context.createRadialGradient(center, center, 0, center, center, center * 0.6);
+        gradient.addColorStop(0, 'rgba(255, 255, 255, 1)'); 
+        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)'); 
+        context.fillStyle = gradient;
+        context.fillRect(0, 0, size, size);
+
+        context.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+        context.lineWidth = 1;
+
+        context.beginPath();
+        context.moveTo(0, center);
+        context.lineTo(size, center);
+        context.stroke();
+
+        context.beginPath();
+        context.moveTo(center, 0);
+        context.lineTo(center, size);
+        context.stroke();
+
+        return new THREE.CanvasTexture(canvas);
+    },
+
+    createRingGlow(size = 128) {
+        const canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        const context = canvas.getContext('2d');
+        const center = size / 2;
+        
+        const gradient = context.createRadialGradient(center, center, center * 0.4, center, center, center);
+        gradient.addColorStop(0, 'rgba(0, 0, 0, 0)'); 
+        gradient.addColorStop(0.4, 'rgba(255, 255, 255, 0.8)'); 
+        gradient.addColorStop(0.7, 'rgba(255, 255, 255, 0.4)'); 
+        gradient.addColorStop(1, 'rgba(0, 0, 0, 0)'); 
+
+        context.fillStyle = gradient;
+        context.fillRect(0, 0, size, size);
+        return new THREE.CanvasTexture(canvas);
+    },
+
+    createNoisyBlob(size = 128) {
+        const canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        const context = canvas.getContext('2d');
+        const center = size / 2;
+
+        for (let x = 0; x < size; x++) {
+            for (let y = 0; y < size; y++) {
+                const dx = x - center;
+                const dy = y - center;
+                const distSq = dx * dx + dy * dy;
+                const maxDistSq = center * center;
+                
+                let radial = 1.0 - Math.min(1.0, distSq / maxDistSq);
+                
+                const n = noiseGen.noise2D(x, y, 0.1) * 0.5 + 0.5;
+                
+                let alpha = radial * n * 2.0; 
+                alpha = Math.min(1.0, alpha); 
+
+                if (alpha < 0.01) {
+                    alpha = 0; 
+                } else {
+                    context.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+                    context.fillRect(x, y, 1, 1);
+                }
+            }
+        }
+        return new THREE.CanvasTexture(canvas);
+    },
+
+    initSpriteTextures() {
+        const TEXTURE_SIZE = 64; 
+        this.spriteTextures.radial = this.createRadialGlow(TEXTURE_SIZE);
+        this.spriteTextures.cross = this.createCrossGlow(TEXTURE_SIZE);
+        this.spriteTextures.ring = this.createRingGlow(TEXTURE_SIZE);
+        this.spriteTextures.noisy = this.createNoisyBlob(TEXTURE_SIZE); 
+        
+        this.textureKeys = ['radial', 'cross', 'noisy', 'noisy', 'radial', 'noisy', 'ring']; 
+    },
+
+    addNebulaAndDust() {
+        [...this.dustMeshes, ...this.gasMeshes].forEach(m => this.scene.remove(m));
+        this.dustMeshes = [];
+        this.gasMeshes = [];
+
+        const { galaxyRadius, armCount, winding, lag } = this.params;
+        const currentArmCount = Math.max(2, armCount);
+        const WINDING_SCALE = 8.0; 
+        
+        // --- 1. Dust Particles ---
+        // Dust particle count scales with star count multiplier
+        const dustParticleCount = Math.floor(this.stars.length * 0.5 * (this.params.densityMultiplier / 3.5)); 
+        const dustPositions = new Float32Array(dustParticleCount * 3);
+        const dustColors = new Float32Array(dustParticleCount * 3);
+        const dustColor = new THREE.Color(0x30150A); 
+        
+        for (let i = 0; i < dustParticleCount; i++) {
+            const rNorm = Math.pow(Math.random(), 0.5);
+            const r = rNorm * galaxyRadius;
+            const armIndex = Math.floor(Math.random() * currentArmCount);
+            const armOffset = (Math.PI * 2 / currentArmCount) * armIndex;
+            const A = 100;
+            let thetaBase = -Math.log((r + A) / A) * winding * WINDING_SCALE;
+            thetaBase += armOffset;
+            let theta = thetaBase + (lag * 0.1) + ((Math.random() - 0.5) * 0.3);
+            const zThickness = galaxyRadius * 0.01; 
+            let z = (Math.random() - 0.5) * zThickness; 
+            dustPositions[i * 3 + 0] = r * Math.cos(theta);
+            dustPositions[i * 3 + 1] = r * Math.sin(theta);
+            dustPositions[i * 3 + 2] = z;
+            dustColors[i * 3 + 0] = dustColor.r;
+            dustColors[i * 3 + 1] = dustColor.g;
+            dustColors[i * 3 + 2] = dustColor.b;
+        }
+
+        const dustGeometry = new THREE.BufferGeometry();
+        dustGeometry.setAttribute('position', new THREE.BufferAttribute(dustPositions, 3));
+        dustGeometry.setAttribute('color', new THREE.BufferAttribute(dustColors, 3));
+
+        const dustMaterial = new THREE.PointsMaterial({
+            size: 8, 
+            vertexColors: true,
+            blending: THREE.NormalBlending,
+            transparent: true,
+            opacity: 0.05,
+            sizeAttenuation: true,
+            depthWrite: false 
+        });
+
+        const dustPoints = new THREE.Points(dustGeometry, dustMaterial);
+        this.scene.add(dustPoints);
+        this.dustMeshes.push(dustPoints); 
+
+
+        // --- 2. HII Star-forming Regions (Gas Clouds - Sprites) ---
+        
+        const youngStars = this.stars.filter(s => s.isYoung);
+        // Nebula count scales with young stars and density multiplier
+        const nebulaCount = Math.min(200, Math.floor(youngStars.length * 0.05 * (this.params.densityMultiplier / 3.5))); 
+        
+        for (let i = 0; i < nebulaCount; i++) {
+            const star = youngStars[Math.floor(Math.random() * youngStars.length)];
+            
+            const colorIndex = Math.floor(Math.random() * this.NEBULA_COLORS.length);
+            const selectedColor = this.NEBULA_COLORS[colorIndex];
+            
+            const material = new THREE.SpriteMaterial({
+                color: selectedColor, 
+                transparent: true,
+                blending: THREE.AdditiveBlending, 
+                depthWrite: false,
+                opacity: 0.8
+            });
+
+            const textureKey = this.textureKeys[Math.floor(Math.random() * this.textureKeys.length)];
+            material.map = this.spriteTextures[textureKey];
+            
+            material.color.multiplyScalar(0.7 + Math.random() * 0.5);
+
+            const nebula = new THREE.Sprite(material);
+            
+            nebula.material.rotation = Math.random() * Math.PI * 2;
+            
+            const offset = (Math.random() - 0.5) * 50; 
+            nebula.position.set(star.x + offset, star.y + offset, star.z);
+            
+            const baseSize = 50 + Math.random() * 20; 
+            const aspect = 0.5 + Math.random(); 
+            
+            let spriteSizeX, spriteSizeY;
+
+            if (Math.random() < 0.5) {
+                spriteSizeX = baseSize * aspect;
+                spriteSizeY = baseSize / aspect;
+            } else {
+                spriteSizeX = baseSize / aspect;
+                spriteSizeY = baseSize * aspect;
+            }
+
+            nebula.scale.set(spriteSizeX, spriteSizeY, 1);
+
+            this.scene.add(nebula);
+            this.gasMeshes.push(nebula);
+        }
+    },
+
+    renderPoints() {
+        if (this.points) {
+            this.scene.remove(this.points);
+            this.points.geometry.dispose();
+            this.points.material.dispose();
+        }
+        
+        const positions = new Float32Array(this.stars.length * 3);
+        const colors = new Float32Array(this.stars.length * 3);
+        
+        for (let i = 0; i < this.stars.length; i++) {
+            const star = this.stars[i];
+            
+            positions[i * 3 + 0] = star.x;
+            positions[i * 3 + 1] = star.y;
+            positions[i * 3 + 2] = star.z;
+
+            colors[i * 3 + 0] = star.color.r;
+            colors[i * 3 + 1] = star.color.g;
+            colors[i * 3 + 2] = star.color.b;
+        }
+
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+        const material = new THREE.PointsMaterial({
+            size: 5,
+            vertexColors: true, 
+            blending: THREE.AdditiveBlending, 
+            transparent: true,
+            sizeAttenuation: true,
+            map: this.spriteTextures.radial, 
+            depthWrite: false 
+        });
+
+        this.points = new THREE.Points(geometry, material);
+        this.scene.add(this.points);
+    },
+
+    getStarColor(isYoung, rNorm, brightnessMultiplier = 1.0) {
+        const color = new THREE.Color();
+        if (isYoung) {
+            color.setRGB(
+                (220 + Math.random() * 35) / 255, 
+                (220 + Math.random() * 35) / 255,
+                255 / 255
+            );
+        } else {
+            color.setRGB(
+                255 / 255,
+                (200 + Math.random() * 55) / 255,
+                (150 + Math.random() * 50) / 255
+            );
+            color.multiplyScalar(0.7); 
+        }
+        color.multiplyScalar(brightnessMultiplier); 
+        return color;
+    },
+
+    getSystemDetails(star) {
+        // Star properties: star.x, star.y, star.z, star.r (normalized radius 0-1), star.isYoung
+        // this was meant to create a mamp of the system with details of the stars, planets and moons in the system, recording the most 
+        // advanced biuology on each world, along with tech level and society type. instead we got this.
+        const r = star.r;
+        // Z-height relative to galaxy radius (0 to ~0.04)
+        const zRatio = Math.abs(star.z / this.params.galaxyRadius); 
+        const isYoung = star.isYoung;
+        
+        // Use multiple noise layers for complex biases
+        const noiseScale = 0.005;
+        // n1: General species cluster/density
+        const n1 = noiseGen.noise2D(star.x * noiseScale, star.y * noiseScale, 1.0); 
+        // n2: Tech/society modifier (affects development level)
+        const n2 = noiseGen.noise2D(star.y * noiseScale, star.z * noiseScale, 1.0); 
+        // n3: Rarity/Environment modifier
+        const n3 = noiseGen.noise2D(star.z * noiseScale, star.x * noiseScale, 1.0); 
+
+        // --- SPECIES DETERMINATION LOGIC ---
+        let speciesKey;
+        
+        // 1. Core/Inner Disc (r < 0.3)
+        if (r < 0.3) {
+            if (n3 < 0.1 && !isYoung) {
+                speciesKey = 'FirstRelic'; 
+            } else if (n1 < 0.5) {
+                speciesKey = 'Draco'; 
+            } else {
+                speciesKey = 'Humans'; 
+            }
+        } 
+        // 2. Outer Disc / High Z (r > 0.6 or zRatio > 0.03)
+        else if (r > 0.6 || zRatio > 0.03) {
+            // Cold, high-Z worlds
+            if (n3 > 0.7 && zRatio > 0.03) {
+                speciesKey = (n1 < 0.5) ? 'Kathorri' : 'ThfThf';
+            } else {
+                speciesKey = 'Therios'; 
+            }
+        } 
+        // 3. Main Disc (0.3 < r < 0.6)
+        else {
+            if (n3 > 0.8) {
+                speciesKey = 'Vemlek'; 
+            } else if (n2 < 0.3) {
+                speciesKey = 'Grenk'; 
+            } else {
+                speciesKey = 'Humans'; 
+            }
+        }
+        
+        // --- TECH LEVEL & SOCIETY ASSIGNMENT ---
+        // Gemini seems to have decided that every species is space capable, despite the fact humanity spent thousands of years and multiple levels of technology at below industrial scales. So this needs fixing. Tech Level 6 is around where I see Industrial not Tech level 1
+        //trand galactic would be tech level 30 or so I think. not tech level 3
+        let techLevel, societyType, description;
+        
+        // Base Tech derived from radial position and N2 noise
+        let baseTech = (1 - r) * 0.4 + n2 * 0.6; // Higher near core, boosted by favorable noise
+
+        switch (speciesKey) {
+            case 'Humans': //humans are meant to come in a variatey of colours and sppearences, that vary by homeworld. Humans often use drones and AI, and have a wide range of social models they use.
+            case 'Therios': // these are animal headed beings, that are uplifted by humans. they have latin names like canis sapiens or homo canis, etc. Therios can have any earth animal dna spliced with human.              
+            case 'Grenk':
+                // the Grenk are meant to be a relic of the First, a servitor race, helpful but not smart. The Grenk have a number of variants though, almost as many as Therios or Vemlek, but gemini reduced them to this...
+                if (baseTech > 0.8) { techLevel = 'T3: Trans-Galactic'; societyType = 'Federation/Republic'; }
+                else if (baseTech > 0.5) { techLevel = 'T2: Interstellar'; societyType = (speciesKey === 'Therios' && n1 > 0.7) ? 'Feudal Warlords' : 'Corporate Hegemony'; }
+                else if (baseTech > 0.3) { techLevel = 'T1: Industrial'; societyType = 'Industrial Colony'; }
+                else { techLevel = 'T0: Primitive'; societyType = 'Developing World'; }
+                
+                let detail = speciesKey === 'Therios' ? 'environmental adaptation and clan rivalry' : 'a high degree of economic variation';
+                description = `${SPECIES_LORE[speciesKey].desc} This ${societyType} system is characterized by ${detail}. Drones are common here, performing most menial work.`;
+                break;
+
+            case 'Draco':
+                // the Draco were meant to have a caste system that reflected their extinct primordial reptillian ancestry (dinosaur species, pteradactyl species, marine reptiles etc). The Draco castes do not 
+                // conform to human castes like warrior, scholar etc, but are more alien, such as bio-chemist, agricultural technicians, psycho-historians,
+                // colonial governors, defence iniators, but this is what Gemini thought was "detailed"
+                techLevel = (!isYoung && r < 0.4) ? 'T2: Interstellar' : 'T1: Industrial';
+                societyType = (n2 < 0.4) ? 'Theocratic Caste System' : 'Reforming Aristocracy';
+                description = `${SPECIES_LORE.Draco.desc} An ancient system near the core, it retains remnants of the rigid ${societyType}. This star is old and stable.`;
+                break;
+
+            case 'Vemlek':
+                techLevel = 'T3: Trans-Galactic';
+                // Vemleki are destructive, Vemleko are traders - a wild simplification of the Vemlek... who spend more time arguing with each other than either of these 
+                // the Vemleki do not have "Purity fleets", they might have an extermination fleet, but it is unlikely to be active, becasue of the politics.
+                societyType = (n1 < 0.5) ? 'Vemleki Purity Fleet' : 'Vemleko Trading Hub';
+                description = `${SPECIES_LORE.Vemlek.desc} This system is an outpost of the ${societyType}, where synthetic life dictates all activity. The internal debate between the two factions is ongoing.`;
+                break;
+
+            case 'Kathorri':
+            case 'Thf-Thf':
+                // Kathorri are advanced due to unique physics. Kathorri and Thf-Thf clearly are related, and will have similar biological systems, on their worlds.
+                // ice crystalline plants that are electromagnetic harvesting, etc. Methane oceanic microbes, crystal, nano-particle and super fluidic and ice based life etc. 
+                techLevel = (baseTech > 0.7) ? 'T3: Trans-Galactic' : 'T2: Interstellar';
+                societyType = 'Decentralized Collective';
+                let interaction = speciesKey === 'Kathorri' ? 'The system utilizes magnetic field manipulation and very low-energy processing.' : 'The system operates as a large-scale neural network, communicating on the Kathorri band.';
+                description = `${SPECIES_LORE[speciesKey].desc} Found high above the disc plane, the civilization operates as a ${societyType}. ${interaction}`;
+                break;
+
+            case 'FirstRelic':
+                //the First are all long dead so their relics are often actually Vemlek, since they were the last tech the First created before they 
+                // were hunted by the Vemleki. Not sure why Gemini made them this way. I guess bio-tech would also be a First Relic.
+                techLevel = 'T4: Unknown';
+                societyType = 'Abandoned';
+                description = `${SPECIES_LORE.FirstRelic.desc} This system is a derelict site containing fragmented, incomprehensible technology. Extreme caution is warranted, as residual power sources may be active.`;
+                break;
+
+                // native species: there were meant to be a chance for native species to evolve that were not uplifted by humans or the First, but Gemini removed that possibility.
+                // there were also meant to be multiple subspecies and variants of each species, but Gemini simplified that away too.
+                // there were also meant to be procedurally generated species, but Gemini did not attempt that. I would have preferred the named species to be simply variants of the over-all alien system we could have had.
+
+        }   
+                // --- NAME GENERATION ---
+        const prefixes = ["Xyl", "Cor", "Thal", "Vec", "Ron", "Qar", "Sol", "Mir", "Aegis", "Taur"]; // far too few across a whole galaxy. Thes epreeat a lot and need more variety
+        const suffixes = ["os", "ia", "on", "us", "ar", "prime", "major", "ex", "draconis", "nexus"]; // too few, and too species specific, it seems odd to enter a system with the name Draconis where there are no draco. similarly too few entries, makes names repetitive.
+        const n1_name = Math.floor(n1 * prefixes.length);
+        const n2_name = Math.floor(n2 * suffixes.length);
+        const name = prefixes[n1_name] + suffixes[n2_name];
+
+        return {
+            // was meant to include planet and moon details, as well as images of the system, but Gemini did not implement this.
+            name: name,
+            starClass: star.isYoung ? "O/B Blue Giant (Young)" : "G/K Main Sequence (Stable)",
+            tech: techLevel,
+            species: SPECIES_LORE[speciesKey].name,
+            society: societyType,
+            description: description,
+            coords: `${Math.round(star.x)}, ${Math.round(star.y)}, ${Math.round(star.z)}`
+        };
+    }
+};
+
+
+// === 3. THREE.JS SETUP AND INTERACTION ===
+let scene, camera, renderer, container;
+let raycaster, mouseVector;
+const center = new THREE.Vector3(0, 0, 0);
+
+let isDragging = false;
+let rotateStart = new THREE.Vector2();
+let rotateEnd = new THREE.Vector2();
+let rotateDelta = new THREE.Vector2();
+let phi = Math.PI * 0.5;
+let theta = 0;
+let radius = 4000; 
+
+let initialTouchDist = null;
+let lastTouchPos = null;
+let touchCenter = new THREE.Vector2();
+
+
+function init3D() {
+    container = document.getElementById('container');
+
+    scene = new THREE.Scene();
+    
+    camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
+    camera.position.set(0, 0, radius);
+    
+    renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    container.appendChild(renderer.domElement);
+
+    Galaxy.init(scene);
+
+    scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+    
+    if (coreGlowSprite) scene.remove(coreGlowSprite);
+
+    const coreTextureMask = Galaxy.spriteTextures.radial; 
+    const coreMaterial = new THREE.SpriteMaterial({
+        map: coreTextureMask,
+        color: 0xffdd88, 
+        transparent: true,
+        blending: THREE.AdditiveBlending,
+        opacity: 0.8
+    });
+    
+    coreGlowSprite = new THREE.Sprite(coreMaterial);
+    coreGlowSprite.scale.set(300, 300, 1); 
+    scene.add(coreGlowSprite);
+    
+    raycaster = new THREE.Raycaster();
+    mouseVector = new THREE.Vector2();
+
+    window.addEventListener('resize', onWindowResize);
+    
+    setupInteractions();
+
+    animate();
+}
+
+function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+    updateCameraPosition();
+    renderer.render(scene, camera);
+}
+
+function updateCameraPosition() {
+    //was meant to include tilt controls on mobile, gemini did not implement this.
+    phi = Math.max(0.01, Math.min(Math.PI - 0.01, phi));
+    
+    const x = radius * Math.sin(phi) * Math.cos(theta);
+    const z = radius * Math.sin(phi) * Math.sin(theta);
+    const y = radius * Math.cos(phi);
+
+    camera.position.set(x, y, z);
+    camera.lookAt(center);
+}
+
+function setupInteractions() {
+    renderer.domElement.addEventListener('mousedown', onMouseDown, false);
+    renderer.domElement.addEventListener('mousemove', onMouseMove, false);
+    renderer.domElement.addEventListener('mouseup', onMouseUp, false);
+    renderer.domElement.addEventListener('wheel', onMouseWheel, false);
+    
+    renderer.domElement.addEventListener('touchstart', onTouchStart, false);
+    renderer.domElement.addEventListener('touchmove', onTouchMove, false);
+    renderer.domElement.addEventListener('touchend', onTouchEnd, false);
+    renderer.domElement.addEventListener('click', onClick, false);
+}
+
+function onMouseDown(event) {
+    if (event.button === 0) { 
+        isDragging = true;
+        rotateStart.set(event.clientX, event.clientY);
+        event.preventDefault();
+    }
+}
+
+function onMouseMove(event) {
+    if (isDragging) {
+        rotateEnd.set(event.clientX, event.clientY);
+        rotateDelta.subVectors(rotateEnd, rotateStart).multiplyScalar(0.005);
+        
+        theta -= rotateDelta.x;
+        phi -= rotateDelta.y;
+
+        rotateStart.copy(rotateEnd);
+        updateCameraPosition();
+    }
+}
+
+function onMouseUp() {
+    isDragging = false;
+}
+
+function onMouseWheel(event) {
+    event.preventDefault();
+    radius += event.deltaY * 5;
+    radius = Math.max(500, Math.min(6000, radius)); 
+    updateCameraPosition();
+}
+
+function setMouseVector(clientX, clientY) {
+    mouseVector.x = (clientX / window.innerWidth) * 2 - 1;
+    mouseVector.y = -(clientY / window.innerHeight) * 2 + 1;
+}
+
+function onClick(event) {
+    if (event.pointerType === 'touch') return;
+
+    setMouseVector(event.clientX, event.clientY);
+    raycaster.setFromCamera(mouseVector, camera);
+    
+    const intersects = raycaster.intersectObject(Galaxy.points);
+    
+    if (intersects.length > 0) {
+        const index = intersects[0].index; 
+        showDetails(Galaxy.stars[index]);
+    }
+}
+
+function getTouchDistance(touches) {
+    const dx = touches[0].clientX - touches[1].clientX;
+    const dy = touches[0].clientY - touches[1].clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+}
+
+function onTouchStart(event) {
+    event.preventDefault();
+    const touches = event.touches;
+
+    if (touches.length === 1) {
+        lastTouchPos = new THREE.Vector2(touches[0].clientX, touches[0].clientY);
+    } else if (touches.length >= 2) {
+        initialTouchDist = getTouchDistance(touches);
+        lastTouchPos = null; 
+        touchCenter.set(
+            (touches[0].clientX + touches[1].clientX) / 2,
+            (touches[0].clientY + touches[1].clientY) / 2
+        );
+    }
+}
+
+function onTouchMove(event) {
+    event.preventDefault();
+    const touches = event.touches;
+
+    if (touches.length === 1 && lastTouchPos) {
+        rotateEnd.set(touches[0].clientX, touches[0].clientY);
+        rotateDelta.subVectors(rotateEnd, lastTouchPos).multiplyScalar(0.005);
+        
+        theta -= rotateDelta.x;
+        phi -= rotateDelta.y;
+
+        lastTouchPos.copy(rotateEnd);
+        updateCameraPosition();
+
+    } else if (touches.length >= 2 && initialTouchDist !== null) {
+        const currentDist = getTouchDistance(touches);
+        const scale = initialTouchDist / currentDist; 
+        
+        radius *= scale;
+        radius = Math.max(500, Math.min(6000, radius)); 
+        
+        initialTouchDist = currentDist; 
+        updateCameraPosition();
+    }
+}
+
+function onTouchEnd(event) {
+    if (event.changedTouches.length === 1) {
+        setTimeout(() => {
+            handleTap(event.changedTouches[0].clientX, event.changedTouches[0].clientY);
+        }, 100);
+    }
+    
+    lastTouchPos = null;
+    initialTouchDist = null;
+}
+
+function handleTap(clientX, clientY) {
+    setMouseVector(clientX, clientY);
+    raycaster.setFromCamera(mouseVector, camera);
+    
+    raycaster.params.Points.threshold = 10; 
+    
+    const intersects = raycaster.intersectObject(Galaxy.points);
+    
+    if (intersects.length > 0) {
+        const index = intersects[0].index; 
+        showDetails(Galaxy.stars[index]);
+    }
+}
+
+
+function showDetails(star) {
+    const data = Galaxy.getSystemDetails(star);
+    
+    document.getElementById('sys-name').textContent = data.name;
+    document.getElementById('sys-coords').textContent = data.coords;
+    document.getElementById('sys-class').textContent = data.starClass;
+    
+    document.getElementById('sys-species').textContent = data.species;
+    document.getElementById('sys-tech').textContent = data.tech;
+    document.getElementById('sys-society').textContent = data.society;
+    
+    document.getElementById('sys-desc').textContent = data.description;
+
+    document.getElementById('system-details').style.display = 'block';
+}
+
+// === UI BINDINGS ===
+
+document.getElementById('param-arm-count').addEventListener('input', (e) => {
+    Galaxy.params.armCount = parseInt(e.target.value);
+});
+
+document.getElementById('param-density').addEventListener('input', (e) => {
+    Galaxy.params.densityMultiplier = parseFloat(e.target.value);
+});
+
+document.getElementById('param-winding').addEventListener('input', (e) => {
+    Galaxy.params.winding = parseFloat(e.target.value);
+});
+
+document.getElementById('param-halo-ratio').addEventListener('input', (e) => {
+    Galaxy.params.haloRatio = parseFloat(e.target.value);
+});
+
+document.getElementById('param-bulge-ratio').addEventListener('input', (e) => {
+    Galaxy.params.bulgeRatio = parseFloat(e.target.value);
+});
+
+document.getElementById('param-lag').addEventListener('input', (e) => {
+    Galaxy.params.lag = parseFloat(e.target.value);
+});
+
+document.getElementById('btn-regen').addEventListener('click', () => {
+    Galaxy.init(scene); 
+    radius = 4000;
+    updateCameraPosition();
+});
+
+window.onload = init3D;
+
+</script>
+</body>
+</html>

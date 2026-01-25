@@ -1,0 +1,1451 @@
+{
+  "1451": {
+    "id": 1451,
+    "prof": {
+      "Name": [
+        "Temperate Locations",
+        "Temperate Location Rook Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Temperate Locations is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1452": {
+    "id": 1452,
+    "prof": {
+      "Name": [
+        "Careful",
+        "Careful Rook Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Careful is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1453": {
+    "id": 1453,
+    "prof": {
+      "Name": [
+        "Switched-on",
+        "Switched-on Rook Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Switched-on is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1454": {
+    "id": 1454,
+    "prof": {
+      "Name": [
+        "Secluded Locations",
+        "Secluded Location Rook Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Secluded Locations is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1455": {
+    "id": 1455,
+    "prof": {
+      "Name": [
+        "Conservative",
+        "Conservative Rook High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Conservative is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1456": {
+    "id": 1456,
+    "prof": {
+      "Name": [
+        "Traditional",
+        "Traditional Rook High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Traditional is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1457": {
+    "id": 1457,
+    "prof": {
+      "Name": [
+        "Sheltered Locations",
+        "Sheltered Location Rook High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Sheltered Locations is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1458": {
+    "id": 1458,
+    "prof": {
+      "Name": [
+        "Assured",
+        "Assured Rook High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Assured is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1459": {
+    "id": 1459,
+    "prof": {
+      "Name": [
+        "Guaranteed",
+        "Guaranteed Rook High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Guaranteed is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1460": {
+    "id": 1460,
+    "prof": {
+      "Name": [
+        "Secure Locations",
+        "Secure Location Rook High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Secure Locations is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1461": {
+    "id": 1461,
+    "prof": {
+      "Name": [
+        "Watchful",
+        "Watchful Rook Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Watchful is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1462": {
+    "id": 1462,
+    "prof": {
+      "Name": [
+        "Toughened",
+        "Toughened Rook Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Toughened is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1463": {
+    "id": 1463,
+    "prof": {
+      "Name": [
+        "Guarded Locations",
+        "Guarded Location Rook Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Guarded Locations is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1464": {
+    "id": 1464,
+    "prof": {
+      "Name": [
+        "Wary",
+        "Wary Rook Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Wary is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1465": {
+    "id": 1465,
+    "prof": {
+      "Name": [
+        "Hardened",
+        "Hardened Rook Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Hardened is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1466": {
+    "id": 1466,
+    "prof": {
+      "Name": [
+        "Impregnable Locations",
+        "Impregnable Location Rook Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Impregnable Locations is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1467": {
+    "id": 1467,
+    "prof": {
+      "Name": [
+        "Hyper-vigilant",
+        "Hyper-vigilant Rook Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Hyper-vigilant is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1468": {
+    "id": 1468,
+    "prof": {
+      "Name": [
+        "Fortified",
+        "Fortified Rook Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Fortified is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1469": {
+    "id": 1469,
+    "prof": {
+      "Name": [
+        "Crenelated Locations",
+        "Crenelated Location Rook Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Crenelated Locations is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1470": {
+    "id": 1470,
+    "prof": {
+      "Name": [
+        "Uneasy",
+        "Uneasy Rook Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Uneasy is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1471": {
+    "id": 1471,
+    "prof": {
+      "Name": [
+        "Worried",
+        "Worried Rook Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Worried is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1472": {
+    "id": 1472,
+    "prof": {
+      "Name": [
+        "Desperate",
+        "Desperate Rook Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Desperate is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1473": {
+    "id": 1473,
+    "prof": {
+      "Name": [
+        "Attentive",
+        "Attentive Rook Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Attentive is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1474": {
+    "id": 1474,
+    "prof": {
+      "Name": [
+        "Alert",
+        "Alert Rook Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Alert is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1475": {
+    "id": 1475,
+    "prof": {
+      "Name": [
+        "Vigilance",
+        "Vigilance Rook Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Vigilance is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1476": {
+    "id": 1476,
+    "prof": {
+      "Name": [
+        "Resist",
+        "Resist Rook Action Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Resist is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1477": {
+    "id": 1477,
+    "prof": {
+      "Name": [
+        "Quash",
+        "Quash Rook Attack Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Quash is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1478": {
+    "id": 1478,
+    "prof": {
+      "Name": [
+        "Revoke",
+        "Revoke Rook Critical Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Revoke is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1479": {
+    "id": 1479,
+    "prof": {
+      "Name": [
+        "Evader",
+        "Evader Rook Core Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Evader is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1480": {
+    "id": 1480,
+    "prof": {
+      "Name": [
+        "Defences",
+        "Defences Rook Descendants Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Defences is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1481": {
+    "id": 1481,
+    "prof": {
+      "Name": [
+        "Defence",
+        "Defence Rook Edge Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Defence is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1482": {
+    "id": 1482,
+    "prof": {
+      "Name": [
+        "Defence",
+        "Defence Rook Glow Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Defence is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1483": {
+    "id": 1483,
+    "prof": {
+      "Name": [
+        "Defensive",
+        "Defensive Rook Failure Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Defensive is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1484": {
+    "id": 1484,
+    "prof": {
+      "Name": [
+        "Guarded",
+        "Guarded Rook Fumble Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Guarded is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1485": {
+    "id": 1485,
+    "prof": {
+      "Name": [
+        "Blockage",
+        "Blockage Rook Gnarl Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Blockage is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1486": {
+    "id": 1486,
+    "prof": {
+      "Name": [
+        "Attack",
+        "Attack Rook Herald Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Attack is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1487": {
+    "id": 1487,
+    "prof": {
+      "Name": [
+        "Defensive",
+        "Defensive Rook Hitch Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Defensive is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1488": {
+    "id": 1488,
+    "prof": {
+      "Name": [
+        "Drowsiness",
+        "Drowsiness Rook Hurdle Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Drowsiness is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1489": {
+    "id": 1489,
+    "prof": {
+      "Name": [
+        "Defence",
+        "Defence Rook Incarna Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Defence is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1490": {
+    "id": 1490,
+    "prof": {
+      "Name": [
+        "Secure Locations",
+        "Secure Location Rook Location Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Secure Locations is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1491": {
+    "id": 1491,
+    "prof": {
+      "Name": [
+        "Apology",
+        "Apology Rook Lore Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Apology is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1492": {
+    "id": 1492,
+    "prof": {
+      "Name": [
+        "Guardian",
+        "Guardian Rook Monster Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Guardian is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1493": {
+    "id": 1493,
+    "prof": {
+      "Name": [
+        "Avoidance",
+        "Avoidance Rook Narration Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Avoidance is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1494": {
+    "id": 1494,
+    "prof": {
+      "Name": [
+        "Defence",
+        "Defence Rook Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Defence is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1495": {
+    "id": 1495,
+    "prof": {
+      "Name": [
+        "Resist Ordeals",
+        "Resist Ordeal Rook Ordeal Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Resist Ordeals is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1496": {
+    "id": 1496,
+    "prof": {
+      "Name": [
+        "Mental Defences",
+        "Mental Defences Rook Psychosocial Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Mental Defences is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1497": {
+    "id": 1497,
+    "prof": {
+      "Name": [
+        "Secure / Guard",
+        "Secure / Guard",
+        ""
+      ],
+      "Description": "A lonely star in the vast emptiness, Secure / Guard is a beacon of prudence in the cold night of the universe.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "17"
+        ],
+        "Genres": [
+          "17"
+        ],
+        "Eras": [
+          "17"
+        ],
+        "Types": [
+          "Quest"
+        ]
+      }
+    }
+  },
+  "1498": {
+    "id": 1498,
+    "prof": {
+      "Name": [
+        "Preparedness",
+        "Preparedness Rook Question Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Preparedness is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1499": {
+    "id": 1499,
+    "prof": {
+      "Name": [
+        "Wary",
+        "Wary Rook Resolved Hitch Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Wary is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1500": {
+    "id": 1500,
+    "prof": {
+      "Name": [
+        "Preservation",
+        "Preservation Rook Rule Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Preservation is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

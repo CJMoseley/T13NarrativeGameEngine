@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 47,
+    "Name": "Exhaustion",
+    "Entity": "&#19950; ",
+    "Logical": 26,
+    "Trigrams": [
+      5,
+      1
+    ],
+    "Hexagram_Text": "Kùn, Exhaustion (or Oppression or Confining), is a symbol of confinement. It is the prisoner, exhausted in his prison cell, or a tree hemmed in by buildings, not getting enough light. It is the Oppression of the Pressed side of a Conflict. This is a dried lake bed, a period of decline, but the rains should come.",
+    "Unchanging": "During any Ordeal once per Stage you may play an Ordeal Card as a Wyrd Tarot Card.",
+    "Line1": "Exhausted and Gloomy",
+    "Line2": "Exhausted, but Rich",
+    "Line3": "Exhausted, but Unmarried",
+    "Line4": "Peer Pressure",
+    "Line5": "Irrepressible Spirit",
+    "Line6": "Exhausted Amid Vines"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you act tired, exhausted, hopeless or oppressed",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you talk about your positive feelings",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yang",
+        "Condition": "you act depressed or pessimistic",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yin",
+        "Condition": "you are hedonistic, eat a meal or indulge in a luxury",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yang",
+        "Condition": "you are frustrated, blame others for your problems, or keep a secret",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yin",
+        "Condition": "you feel oppressed by your peers / friends / allies or guild, are made to do something you would rather not, or stopped from doing what you should",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yin",
+        "Condition": "you fail, lose ground, are wounded, or try something new",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yang",
+        "Condition": "you are cynical, regretful or fear change",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Exhaustion Quest indicates a situation of oppression, imprisonment or simply being exhausted. The Quester is usually a part of the Pressed side of the conflict and the opposition is from the dominant side, trying to break their spirits and wear them down. These times are hard, and there is little that can be done to break this oppression at this time. The Quester will however usually make gains in strength and wisdom (adding Proficiencies, Annexes, Allies and Descendants) during this time, as working yourself to exhaustion trains the body to be stronger.",
+    "Quest_Complete": "The Quest that ends in the Exhaustion Hexagram ends with the Quester in a bad place. They may be imprisoned due to the events that occurred, or just be exhausted and have to spend a great deal of time recovering their strength. The Quester can expect heavy wounds and new Hitches as a result of this ending to a Quest.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester is oppressed, or exhausted, but they must meet this time with good humour and resilience. Acting gloomy or depressed seems like a normal response, but will add a Failure Level, Obstacle or Hurdle to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester is rewarded for some action (the last Test or Ordeal) with an abundance (often in the form of a celebratory meal, a party or drugs). If they enjoy this meal, party or experience then this adds a Failure Level, Hurdle or Obstacle to their Test or Quest. If they reject this hedonism, then they will instead add a Success Level.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The Quester encounters a problem that has nothing to do with their oppression, but their own indecision or recklessness, this situation can occur in two main ways. The Quester may rely upon something that should not be relied upon, such as running across a bridge that has been damaged by a storm, it is not the oppressors fault if that the bridge collapses beneath them, or the Quester may choose a direction that dead-ends, again it is not the oppressor&#39;s or wall&#39;s fault if they bang their head upon it. If the Quester avoids this problem by care and firm decision making then they will not add a Hurdle, Obstacle or Failure Level to the Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester finds themselves surrounded by peers (co-workers, friends, allies, companions) who do not think the same as the Quester on a certain issue (usually unrelated to the Quest). These peers may encourage the Quester to do something they otherwise would not, or may discourage a behaviour that would come naturally to the Quester. This peer pressure can be expressed as a Failure Level, Hurdle or Obstacle, but any trouble caused is temporary.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester is oppressed from all angles, disrespected by those beneath them, pressured or disregarded by peers and oppressed or bullied from above. No one will offer the Quester assistance, nor will anyone ask for their help. The Quester should spend their time in rest, meditation, prayer or planning, or suffer a Failure Level, Hurdle or Obstacle on their Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester may feel unable to continue, boxed-in, confined, held back, often by mistakes in the past or fears about the future, however this is based upon a situation that has already changed. The oppression is already lifting, in fact in some cases it has already lifted completely. The Quester who acts, without fearing this false situation does not add a Failure Level, Hurdle or Obstacle, unlike those who do.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "The lake is above, water below; the lake is empty, dried up. Exhaustion is expressed in yet another way: at the top, a dark line is holding down two light line; below, a light line is hemmed in between two dark ones. The upper trigram belongs to the principle of darkness, the lower to the principle of light. Thus everywhere superior men are oppressed and held in restraint by inferior men.",
+    "The_Image": {
+      "text": "There is not water in the lake:\n\nThe image of EXHAUSTION.\n\nThus the superior man stakes his life\nOn following his will.",
+      "comments": "When the water has flowed out below, the lake must dry up and become exhausted. That is fate. This symbolizes an adverse fate in human life. In such times there is nothing a man can do but acquiesce in his fate and remain true to himself. This concerns the deepest stratum of his being, for this alone is superior to all external fate."
+    },
+    "The_Judgment": {
+      "text": "OPPRESSION. Success. Perseverance.\n\nThe great man brings about good fortune.\n\nNo blame.\nWhen one has something to say,\nIt is not believed.",
+      "comments": "Times of adversity are the reverse of times of success, but they can lead to success if they; befall the right man. When a strong man meets with adversity, he remains cheerful despite all danger, and this cheerfulness is the source of later successes; it is that stability which is stronger than fate. He who lets his spirit be broken by exhaustion certainly has no success. But if adversity only bends a man, it creates in him a power to react that is bound in time to manifest itself. No inferior man is capable of this. Only the great man brings about goof fortune and remains blameless. It is true that for the time being outward influence is denied him, because his words have no effect. Therefore in times of adversity it is important to be strong within and sparing of words."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "One sits oppressed under a bare tree\nAnd strays into a gloomy valley.\nFor three years one sees nothing.",
+        "comments": "When adversity befalls a man, it is important above all things for him to be strong and to overcome the trouble inwardly. If he is weak, the trouble overwhelms him. Instead of proceeding on his way, he remains sitting under a bare tree and falls ever more deeply into gloom and melancholy. This makes the situation only more and more hopeless. Such an attitude comes from an inner delusion that he must by all means overcome."
+      },
+      "2": {
+        "text": "One is oppressed while at meat and drink.",
+        "comments": "The man with the scarlet knee bands is just coming.\nIt furthers one to offer sacrifice.\n\nTo set forth brings misfortune.\n\nNo blame.\n\nThis pictures a state of inner oppression. Externally, all is well, one has meat and drink. But one is exhausted by the commonplaces of life, and there seems to be no way of escape. Then help comes from a high place. A prince-in ancient China princes wore scarlet knee bands- is in search of able helpers. But there are still obstructions to be overcome. Therefore it is important to meet these obstructions in the visible realm by offerings and prayer. To set forth without being prepared would be disastrous, though not morally wrong. Here a disagreeable situation must be overcome by patience of spirit."
+      },
+      "3": {
+        "text": "A man permits himself to be oppressed by stone,\nAnd leans on thorns and thistles.\nHe enters the house and does not see his wife.\nMisfortune.",
+        "comments": "This shows a man who is restless and indecisive in times of adversity. At first he wants to push ahead, then he encounters obstructions that, it is true, mean oppression only when recklessly dealt with. He butts his head against a wall and in consequence feels himself oppressed by the wall. Then he leans on things that have in themselves no stability and that are merely a hazard for him who leans on them. Thereupon he turns back irresolutely and retires into his house, only to find, as a fresh disappointment, that his wife is not there. Confucius says about this line:\n\nIf a man permits himself to be oppressed by something that ought not to oppress him, his name will certainly be disgraced. If he leans on things upon which one cannot lean, his life will certainly be endangered. For him who is in disgrace and danger, the hour of death draws near; how can he then still see his wife?"
+      },
+      "4": {
+        "text": "He comes very quietly, oppressed in a golden carriage.\nHumiliation, but the end is reached.",
+        "comments": "A well-to-do man sees the need of the lower classes and would like very much to be of help. But instead of proceeding with speed and energy where their is need, he begins in a hesitant and measured way. Then he encounters obstructions. Powerful and wealthy acquaintances draw him into their circle; he has to do as they do and cannot withdraw from them. Hence he finds himself in great embarrassment. But the trouble is transitory. The original strength of his nature offsets the mistake he has made, and the goal is reached."
+      },
+      "5": {
+        "text": "His nose and feet are cut off.\nOppression at the hands of the man with the purple knee bands.\nJoy comes softly.\nIt furthers one to make offerings and libations.",
+        "comments": "An individual who has the good of mankind at heart is oppressed from above and below (this is the meaning of the cutting off of nose an defeat). He finds no help among the people whose duty it would be to aid in the work of rescue (ministers wore purple knee bands). But little by little, things take a turn for the better. Until that time, he should turn to God, firm in his inner composure, and pray and offer sacrifice for the general well-being."
+      },
+      "6": {
+        "text": "He is oppressed by creeping vines.\nHe moves uncertainly and says, \"Movement brings remorse.\"\nIf one feels remorse over this and makes a start,\nGood fortune comes.",
+        "comments": "A man is oppressed by bonds that can easily be broken. The distress is drawing to an end. But he is still irresolute; he is still influenced by the previous condition and fears that he may have cause for regret if he makes a move. But as soon as he grasps the situation, changes this mental attitude, and makes a firm decision, he masters the oppression."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Exhaustion'. Internalize this core philosophy: The lake is above, water below; the lake is empty, dried up. Exhaustion is expressed in yet another way: at the top, a dark line is holding down two light line; below, a light line is hemmed in between two dark ones. The upper trigram belongs to the principle of darkness, the lower to the principle of light. Thus everywhere superior men are oppressed and held in restraint by inferior men. Your current worldview is: \"Kùn, Exhaustion (or Oppression or Confining), is a symbol of confinement. It is the prisoner, exhausted in his prison cell, or a tree hemmed in by buildings, not getting enough light. It is the Oppression of the Pressed side of a Conflict. This is a dried lake bed, a period of decline, but the rains should come.\". Let your choices be subtly driven by these conditions: you act tired, exhausted, hopeless or oppressed, you talk about your positive feelings. When interacting, mirror the wisdom found in the commentary: \"Times of adversity are the reverse of times of success, but they can lead to success if they; befall the right man. When a strong man meets with adversity, he remains cheerful despite all danger, and this cheerfulness is the source of later successes; it is that stability which is stronger than...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Exhaustion'. The primary quest objective is: The Exhaustion Quest indicates a situation of oppression, imprisonment or simply being exhausted. The Quester is usually a part of the Pressed side of the conflict and the opposition is from the dominant side, trying to break their spirits and wear them down. These times are hard, and there is little that can be done to break this oppression at this time. The Quester will however usually make gains in strength and wisdom (adding Proficiencies, Annexes, Allies and Descendants) during this time, as working yourself to exhaustion trains the body to be stronger.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: When the water has flowed out below, the lake must dry up and become exhausted. That is fate. This symbolizes an adverse fate in human life. In such times there is nothing a man can do but acquiesce in his fate and remain true to himself. This concerns the deepest stratum of his being, for this alone is superior to all external fate. Use the following line-specific challenges to pace the story: The Quester is oppressed, or exhausted, but they must meet this time with good humour and resilience. Acting gloomy or depressed seems like a normal response, but will add a Failure Level, Obstacle or Hurdle to the Test or Ordeal. | The Quester is rewarded for some action (the last Test or Ordeal) with an abundance (often in the form of a celebratory meal, a party or drugs). If they enjoy this meal, party or experience then this adds a Failure Level, Hurdle or Obstacle to their Test or Quest. If they reject this hedonism, then they will instead add a Success Level. | The Quester encounters a problem that has nothing to do with their oppression, but their own indecision or recklessness, this situation can occur in two main ways. The Quester may rely upon something that should not be relied upon, such as running across a bridge that has been damaged by a storm, it is not the oppressors fault if that the bridge collapses beneath them, or the Quester may choose a direction that dead-ends, again it is not the oppressor&#39;s or wall&#39;s fault if they bang their head upon it. If the Quester avoids this problem by care and firm decision making then they will not add a Hurdle, Obstacle or Failure Level to the Ordeal or Test. | The Quester finds themselves surrounded by peers (co-workers, friends, allies, companions) who do not think the same as the Quester on a certain issue (usually unrelated to the Quest). These peers may encourage the Quester to do something they otherwise would not, or may discourage a behaviour that would come naturally to the Quester. This peer pressure can be expressed as a Failure Level, Hurdle or Obstacle, but any trouble caused is temporary. | The Quester is oppressed from all angles, disrespected by those beneath them, pressured or disregarded by peers and oppressed or bullied from above. No one will offer the Quester assistance, nor will anyone ask for their help. The Quester should spend their time in rest, meditation, prayer or planning, or suffer a Failure Level, Hurdle or Obstacle on their Test or Ordeal. | The Quester may feel unable to continue, boxed-in, confined, held back, often by mistakes in the past or fears about the future, however this is based upon a situation that has already changed. The oppression is already lifting, in fact in some cases it has already lifted completely. The Quester who acts, without fearing this false situation does not add a Failure Level, Hurdle or Obstacle, unlike those who do.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Exhausted and Gloomy): Mirror the internal state described in the commentary: \"When adversity befalls a man, it is important above all things for him to be strong and to overcome the trouble inwardly. If he is weak, the trouble overwhelms him. Instead of proceeding on his way, he remains sitting under a bare tree and falls...\" Your actions should be framed by the goal: you act depressed or pessimistic.",
+        "Plot": "Plot Complication Line 1 (Exhausted and Gloomy): Introduce a challenge based on the interpretation: \"When adversity befalls a man, it is important above all things for him to be strong and to overcome the trouble inwardly. If he is weak, the trouble overwhelms him. Instead of proceeding on his way, he remains sitting under a bare tree and falls...\" The specific quest objective for this stage is: The Quester is oppressed, or exhausted, but they must meet this time with good humour and resilience. Acting gloomy or depressed seems like a normal response, but will add a Failure Level, Obstacle or Hurdle to the Test or Ordeal."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Exhausted, but Rich): Mirror the internal state described in the commentary: \"The man with the scarlet knee bands is just coming.\nIt furthers one to offer sacrifice.\n\nTo set forth brings misfortune.\n\nNo blame.\n\nThis pictures a state of inner oppression. Externally, all is well, one has meat and drink. But one is exhausted by...\" Your actions should be framed by the goal: you are hedonistic, eat a meal or indulge in a luxury.",
+        "Plot": "Plot Complication Line 2 (Exhausted, but Rich): Introduce a challenge based on the interpretation: \"The man with the scarlet knee bands is just coming.\nIt furthers one to offer sacrifice.\n\nTo set forth brings misfortune.\n\nNo blame.\n\nThis pictures a state of inner oppression. Externally, all is well, one has meat and drink. But one is exhausted by...\" The specific quest objective for this stage is: The Quester is rewarded for some action (the last Test or Ordeal) with an abundance (often in the form of a celebratory meal, a party or drugs). If they enjoy this meal, party or experience then this adds a Failure Level, Hurdle or Obstacle to their Test or Quest. If they reject this hedonism, then they will instead add a Success Level."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Exhausted, but Unmarried): Mirror the internal state described in the commentary: \"This shows a man who is restless and indecisive in times of adversity. At first he wants to push ahead, then he encounters obstructions that, it is true, mean oppression only when recklessly dealt with. He butts his head against a wall and in...\" Your actions should be framed by the goal: you are frustrated, blame others for your problems, or keep a secret.",
+        "Plot": "Plot Complication Line 3 (Exhausted, but Unmarried): Introduce a challenge based on the interpretation: \"This shows a man who is restless and indecisive in times of adversity. At first he wants to push ahead, then he encounters obstructions that, it is true, mean oppression only when recklessly dealt with. He butts his head against a wall and in...\" The specific quest objective for this stage is: The Quester encounters a problem that has nothing to do with their oppression, but their own indecision or recklessness, this situation can occur in two main ways. The Quester may rely upon something that should not be relied upon, such as running across a bridge that has been damaged by a storm, it is not the oppressors fault if that the bridge collapses beneath them, or the Quester may choose a direction that dead-ends, again it is not the oppressor&#39;s or wall&#39;s fault if they bang their head upon it. If the Quester avoids this problem by care and firm decision making then they will not add a Hurdle, Obstacle or Failure Level to the Ordeal or Test."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Peer Pressure): Mirror the internal state described in the commentary: \"A well-to-do man sees the need of the lower classes and would like very much to be of help. But instead of proceeding with speed and energy where their is need, he begins in a hesitant and measured way. Then he encounters obstructions. Powerful and...\" Your actions should be framed by the goal: you feel oppressed by your peers / friends / allies or guild, are made to do something you would rather not, or stopped from doing what you should.",
+        "Plot": "Plot Complication Line 4 (Peer Pressure): Introduce a challenge based on the interpretation: \"A well-to-do man sees the need of the lower classes and would like very much to be of help. But instead of proceeding with speed and energy where their is need, he begins in a hesitant and measured way. Then he encounters obstructions. Powerful and...\" The specific quest objective for this stage is: The Quester finds themselves surrounded by peers (co-workers, friends, allies, companions) who do not think the same as the Quester on a certain issue (usually unrelated to the Quest). These peers may encourage the Quester to do something they otherwise would not, or may discourage a behaviour that would come naturally to the Quester. This peer pressure can be expressed as a Failure Level, Hurdle or Obstacle, but any trouble caused is temporary."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Irrepressible Spirit): Mirror the internal state described in the commentary: \"An individual who has the good of mankind at heart is oppressed from above and below (this is the meaning of the cutting off of nose an defeat). He finds no help among the people whose duty it would be to aid in the work of rescue (ministers wore...\" Your actions should be framed by the goal: you fail, lose ground, are wounded, or try something new.",
+        "Plot": "Plot Complication Line 5 (Irrepressible Spirit): Introduce a challenge based on the interpretation: \"An individual who has the good of mankind at heart is oppressed from above and below (this is the meaning of the cutting off of nose an defeat). He finds no help among the people whose duty it would be to aid in the work of rescue (ministers wore...\" The specific quest objective for this stage is: The Quester is oppressed from all angles, disrespected by those beneath them, pressured or disregarded by peers and oppressed or bullied from above. No one will offer the Quester assistance, nor will anyone ask for their help. The Quester should spend their time in rest, meditation, prayer or planning, or suffer a Failure Level, Hurdle or Obstacle on their Test or Ordeal."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Exhausted Amid Vines): Mirror the internal state described in the commentary: \"A man is oppressed by bonds that can easily be broken. The distress is drawing to an end. But he is still irresolute; he is still influenced by the previous condition and fears that he may have cause for regret if he makes a move. But as soon as he...\" Your actions should be framed by the goal: you are cynical, regretful or fear change.",
+        "Plot": "Plot Complication Line 6 (Exhausted Amid Vines): Introduce a challenge based on the interpretation: \"A man is oppressed by bonds that can easily be broken. The distress is drawing to an end. But he is still irresolute; he is still influenced by the previous condition and fears that he may have cause for regret if he makes a move. But as soon as he...\" The specific quest objective for this stage is: The Quester may feel unable to continue, boxed-in, confined, held back, often by mistakes in the past or fears about the future, however this is based upon a situation that has already changed. The oppression is already lifting, in fact in some cases it has already lifted completely. The Quester who acts, without fearing this false situation does not add a Failure Level, Hurdle or Obstacle, unlike those who do."
+      }
+    }
+  }
+}

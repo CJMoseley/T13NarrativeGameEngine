@@ -1,0 +1,1449 @@
+{
+  "1351": {
+    "id": 1351,
+    "prof": {
+      "Name": [
+        "Medical",
+        "Medical Phoenix Annex Root Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Medical represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1352": {
+    "id": 1352,
+    "prof": {
+      "Name": [
+        "Blazing",
+        "Blazing Phoenix Nimbed Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Blazing represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1353": {
+    "id": 1353,
+    "prof": {
+      "Name": [
+        "Fuel",
+        "Fuel Phoenix Umbral Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Fuel represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1354": {
+    "id": 1354,
+    "prof": {
+      "Name": [
+        "Healer",
+        "Healer Phoenix Persona Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Healer represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1355": {
+    "id": 1355,
+    "prof": {
+      "Name": [
+        "Disturbed",
+        "Disturbed Quiet Zero Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Disturbed speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1356": {
+    "id": 1356,
+    "prof": {
+      "Name": [
+        "Unbearable",
+        "Unbearable Quiet Zero Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Unbearable speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1357": {
+    "id": 1357,
+    "prof": {
+      "Name": [
+        "Chaotic Locations",
+        "Chaotic Location Quiet Zero Boon Location Adjective Proficiency",
+        "disordered, lawless, wild, messy, turbulent"
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Chaotic Locations speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1358": {
+    "id": 1358,
+    "prof": {
+      "Name": [
+        "Intense",
+        "Intense Quiet Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Intense speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1359": {
+    "id": 1359,
+    "prof": {
+      "Name": [
+        "Shrill",
+        "Shrill Quiet Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Shrill speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1360": {
+    "id": 1360,
+    "prof": {
+      "Name": [
+        "Wild Locations",
+        "Wild Location Quiet Low Boon Location Adjective Proficiency",
+        "barbarian, lush, untamed, savage, feral"
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Wild Locations speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1361": {
+    "id": 1361,
+    "prof": {
+      "Name": [
+        "Boisterous",
+        "Boisterous Quiet Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Boisterous speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1362": {
+    "id": 1362,
+    "prof": {
+      "Name": [
+        "Loud",
+        "Loud Quiet Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Loud speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1363": {
+    "id": 1363,
+    "prof": {
+      "Name": [
+        "Unruly Locations",
+        "Unruly Location Quiet Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Unruly Locations speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1364": {
+    "id": 1364,
+    "prof": {
+      "Name": [
+        "Loud",
+        "Loud Quiet Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Loud speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1365": {
+    "id": 1365,
+    "prof": {
+      "Name": [
+        "Noisy",
+        "Noisy Quiet Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Noisy speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1366": {
+    "id": 1366,
+    "prof": {
+      "Name": [
+        "Raucous Locations",
+        "Raucous Location Quiet Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Raucous Locations speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1367": {
+    "id": 1367,
+    "prof": {
+      "Name": [
+        "Strident",
+        "Strident Quiet Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Strident speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1368": {
+    "id": 1368,
+    "prof": {
+      "Name": [
+        "Shrill",
+        "Shrill Quiet Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Shrill speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1369": {
+    "id": 1369,
+    "prof": {
+      "Name": [
+        "Noisy Locations",
+        "Noisy Location Quiet Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Noisy Locations speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1370": {
+    "id": 1370,
+    "prof": {
+      "Name": [
+        "Blustering",
+        "Blustering Quiet Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Blustering speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1371": {
+    "id": 1371,
+    "prof": {
+      "Name": [
+        "Brazen",
+        "Brazen Quiet Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Brazen speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1372": {
+    "id": 1372,
+    "prof": {
+      "Name": [
+        "Untidy Locations",
+        "Untidy Location Quiet Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Untidy Locations speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1373": {
+    "id": 1373,
+    "prof": {
+      "Name": [
+        "Casual",
+        "Casual Quiet Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Casual speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1374": {
+    "id": 1374,
+    "prof": {
+      "Name": [
+        "Cursory",
+        "Cursory Quiet Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Cursory speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1375": {
+    "id": 1375,
+    "prof": {
+      "Name": [
+        "Homey Locations",
+        "Homey Location Quiet Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Homey Locations speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1376": {
+    "id": 1376,
+    "prof": {
+      "Name": [
+        "Easy-going",
+        "Easy-going Quiet High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Easy-going speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1377": {
+    "id": 1377,
+    "prof": {
+      "Name": [
+        "Mild",
+        "Mild Quiet High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Mild speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1378": {
+    "id": 1378,
+    "prof": {
+      "Name": [
+        "Prosaic Locations",
+        "Prosaic Location Quiet High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Prosaic Locations speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1379": {
+    "id": 1379,
+    "prof": {
+      "Name": [
+        "Reserved",
+        "Reserved Quiet High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Reserved speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1380": {
+    "id": 1380,
+    "prof": {
+      "Name": [
+        "Quiet",
+        "Quiet Quiet High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Quiet speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1381": {
+    "id": 1381,
+    "prof": {
+      "Name": [
+        "Quiet Locations",
+        "Quiet Location Quiet High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Quiet Locations speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1382": {
+    "id": 1382,
+    "prof": {
+      "Name": [
+        "Private",
+        "Private Quiet Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Private speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1383": {
+    "id": 1383,
+    "prof": {
+      "Name": [
+        "Subdued",
+        "Subdued Quiet Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Subdued speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1384": {
+    "id": 1384,
+    "prof": {
+      "Name": [
+        "Homely Locations",
+        "Homely Location Quiet Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Homely Locations speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1385": {
+    "id": 1385,
+    "prof": {
+      "Name": [
+        "Restful",
+        "Restful Quiet Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Restful speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1386": {
+    "id": 1386,
+    "prof": {
+      "Name": [
+        "Hushed",
+        "Hushed Quiet Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Hushed speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1387": {
+    "id": 1387,
+    "prof": {
+      "Name": [
+        "Sleepy Locations",
+        "Sleepy Location Quiet Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Sleepy Locations speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1388": {
+    "id": 1388,
+    "prof": {
+      "Name": [
+        "Serene",
+        "Serene Quiet Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Serene speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1389": {
+    "id": 1389,
+    "prof": {
+      "Name": [
+        "Silent",
+        "Silent Quiet Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Silent speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1390": {
+    "id": 1390,
+    "prof": {
+      "Name": [
+        "Halcyon Locations",
+        "Halcyon Location Quiet Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Halcyon Locations speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1391": {
+    "id": 1391,
+    "prof": {
+      "Name": [
+        "Reserve",
+        "Reserve Quiet Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Reserve speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1392": {
+    "id": 1392,
+    "prof": {
+      "Name": [
+        "Timidity",
+        "Timidity Quiet Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Timidity speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1393": {
+    "id": 1393,
+    "prof": {
+      "Name": [
+        "Dumbfounded",
+        "Dumbfounded Quiet Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Dumbfounded speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1394": {
+    "id": 1394,
+    "prof": {
+      "Name": [
+        "Patience",
+        "Patience Quiet Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Patience speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1395": {
+    "id": 1395,
+    "prof": {
+      "Name": [
+        "Composure",
+        "Composure Quiet Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Composure speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1396": {
+    "id": 1396,
+    "prof": {
+      "Name": [
+        "Serenity",
+        "Serenity Quiet Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Serenity speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1397": {
+    "id": 1397,
+    "prof": {
+      "Name": [
+        "Listening",
+        "Listening Quiet Action Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Listening speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1398": {
+    "id": 1398,
+    "prof": {
+      "Name": [
+        "Erode",
+        "Erode Quiet Attack Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Erode speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1399": {
+    "id": 1399,
+    "prof": {
+      "Name": [
+        "Serene",
+        "Serene Quiet Critical Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Serene speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1400": {
+    "id": 1400,
+    "prof": {
+      "Name": [
+        "Greeter",
+        "Greeter Quiet Core Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Greeter speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

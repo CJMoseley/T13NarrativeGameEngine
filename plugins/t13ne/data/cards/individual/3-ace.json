@@ -1,0 +1,115 @@
+{
+	"Card_Corner": "A",
+	"Card": "Ace",
+	"Suit": "3",
+	"IconSuit": "♣",
+	"Pips": "14",
+	"Unicode": "&#x1f0d1;",
+	"Svg": "images/cards-svg/AC.svg",
+	"Wound_Level": 6,
+	"Facet": "Burden, Dominion, Fury, Rook, Sin, Wyrd",
+	"Tao": [
+		0,
+		1
+	],
+	"Narrative_Meaning": "Aces signify beginnings, meetings and unions. They can indicate love-interests, chance encounters, alliances, and friendships.",
+	"Image": "",
+	"Yarn": {
+		"Yarn_Name": "The Court",
+		"Yarn_Description": "The Court card represents both the Courts of Law and the Legal System, and Royal Courts and Parliaments. It can represent legal and political situations, but also social judgements too.",
+		"Significator": {
+			"Plot": "The Court Plot is usually a Legal affair, often a Court case, although it can be political intrigues or social in nature, depending upon the genre and Era. The Plot usually results in one Hooked Character accusing another of something (a crime, an affair, an insult). They must then struggle to either prove their innocence, defy the Court, or accept and often change some aspect of themselves. ",
+			"Side": "When one side is affected by the Court, they are intended to act as a Judge, or Court (often of public or media opinion), upon the rest of the Plot, which can powerfully influence the resolution of this Plot, even overturning the expected result. When the Dominant Side is marked by the Court then the Pressed side can expect jumped up charges, manufactured evidence, planted evidence, and perhaps even a kangaroo court. The Dominant side is \"beyond the law\" for some reason (perhaps the Above are corrupt?). If the Pressed side is marked with the Court then you are in lawless wild west territory.",
+			"Character": "The Court Significator indicates a Character who has some authority. <p>They <strong>Gain Yin</strong> when they work for the good of society. </p><p><strong>Gain Yang</strong> when they support someone else with authority. </p><p>They <strong>Gain Chi</strong> when they direct others behaviour, either by speech, writing, or example. </p><p>They gain +1 Success Level when at least three people acknowledge their authority.</p>",
+			"Scene": "The Court Scene is usually a judgement of some sort. Most often it is a social judgement, the new partner presented to the friends or family, although it may involve a lawyer too. Yarn-Tellers can play this card when they wish to call down a judgement on a Character. It is especially easy if they have actually broken laws, otherwise this will result in some social or political judgement of the Character it has been played upon. Judgement is not always bad, and if you have been hard done by another, this might let you make a Gain."
+		},
+		"Beat_Type": "1",
+		"Conflict_Embodiment": "1",
+		"Facet_Embodiment": "3",
+		"Hook_Aspect": "I-Ching (First Hexagram)",
+		"Aspect_Description": "The Hook targets the Character's I-Ching specifically the Gain of their First Hexagram. For example: If a Character has the Cauldron (50) I-Ching, then the Hook needs to have someone hungry turn up asking for help.",
+		"Hook": "Arrested",
+		"Hook_Description": "The Story opens with the PCs captured, arrested or detained. It may be a case of mistaken identity, or they could be suspects, or maybe they did break a law or two on the way. This is perhaps justice weighing in on their past misdeeds. Sometimes there may be a bit of a Chase or Escape attempt before they are arrested, in fact a whole Epic can arise from being outlaws.",
+		"Gain": "Accolade (A knighthood, title, medal or treasure, A Super-Skill Artefact Descendant/Province)",
+		"Fray": "Court Appearance",
+		"Fray_Description": "The Fray is a Court Appearance, this may mean that the PCs will be the defendants in a Court Case, or that they will be judged socially when they appear in the \"Royal Court\" of the friends of a powerful person. Either way is an Opposed Ordeal (or Test) that has variable Stakes from Low to Paradoxical.",
+		"Snag": "Dispute",
+		"Snag_Description": "The Snag is an additional dispute either during the Fray or arising from the Fray. Often this Dispute results from the Fray as a form of Blame-Storming, as everyone discusses where they went wrong and whose fault it was.",
+		"NPC": {
+			"Archetype": "Arbiter",
+			"Persona": 21,
+			"Core": 3,
+			"Hitch": 1,
+			"Description": "The Arbiter is a judge, referee, lawyer, magistrate or noble, they specialise in listening to arguments and making decisions based on what they've heard. Arbiters interpret emotions, intuitions, law, logic, science, precedent and rhetoric as required by the rules they arbitrate, to decide who wins an argument they sit in judgement of."
+		},
+		"Sweeping": "Sweet Justice",
+		"Sweeping_Text": "The PCs get some justice, assuming how they behaved this could mean they are awarded damages, accolades, destinies, cause for celebration, get the love interest, or perhaps just laments. This at least grants the PCs a rest, and usually a Gain.",
+		"History": "Casebook",
+		"History_Description": "The Court indicates that the past of this situation revolves around a previous case, this may be a returning litigant, antagonist or criminal, or an old cold case rears its head.",
+		"Situation": "Litigation",
+		"Situation_Description": "The Court indicates that the current situation is a litigation, this may be an ongoing court case, a civil, criminal, religious, military, or even political trial, sometimes it may be writing a new law, or even trial by combat.",
+		"Solution": "Arbitration",
+		"Solution_Description": "The Court indicates that the solution to the current situation is arbitration, this may mean finding a suitable referee, judge, authority or noble who can hear the case, ideally impartially, as well as actually undergoing the arbitration, which may be a negotiation or be adversarial.",
+		"Revelations": {
+			"About": "The Story",
+			"About_Description": "The information is about the current situation and plot. It might include information about one side of the Conflict, all the sides and anything in between. It is normal when providing information to always reveal information about the Dominant Side as well as any others.",
+			"Info": "Costly",
+			"Info_Description": "Information that is valuable and useful, somehow always has a cost. The costs can vary from a simple money transaction to longer, more permanent costs.",
+			"Vector": "Records",
+			"Vector_Description": "Records can be tally marks on clay tablets; written laws and history on vellum; detailed client databases; the tangled, knotted, weavings the Eelafin call writing; musical or speech recordings, even several slightly contradictory witness statements. Regardless of how they tell us, they always have something to share, if we know how to interpret them correctly.",
+			"Alternate": "Legal",
+			"Alternate_Description": "The information is legal in nature, this may mean anything from thousands of pages of legal tomes, to a parking ticket. Often legal information will reveal past transgressions, but can also reveal property and business ownership, banking paper trails, familial connections, even contracts, treaties and alliances.",
+			"Detail": "Loophole",
+			"Detail_Description": "Loophole details reveal an ambiguity or deficiency in a system. Originally loopholes were places for archers to shoot out of a castle, and their placement was important to allow archers to cover the out walls, stopping ladders or sappers from approaching, sometimes during a siege a single archer not manning his loophole, or a loophole being misplaced, or deficient somehow could mean a section of wall was not being covered, and a push there could breach the wall. Later this attention to these details became used to describe other situations where something could be circumvented because of a technical defect."
+		}
+	},
+	"Obstacle": {
+		"Type": "Legal",
+		"Description": "The way ahead is blocked by some legal obstacle (such as a one way street, crime scene tape, lack of warrant, etc). This must be \"lawyered\" and negotiated around, or there will be legal repercussions."
+	},
+	"Tarot": {
+		"WyrdTarot": "Trap",
+		"Normal": "+2 Success Levels to all Actions to do with setting, designing and causing damage from traps (Snare Attacks).",
+		"Crossed": "+2 Failure levels to all Actions to do with disarming, avoiding, and soaking damage from traps."
+	},
+	"Ordeal": {
+		"Ordeal_Type": "Opposed Ordeal",
+		"Stages": "8",
+		"Ordeal_Spread": "Map-Geography",
+		"Stakes": "Blended Low-Medium-High",
+		"Test": "Judge (Wyrd)",
+		"Obstacles": "3 Obstacles per Stage",
+		"Suggested_Action": "Finesse",
+		"Stage": "Control Stunt",
+		"Stage_Description": "Do something that requires immense amounts of control over your vehicle, or self-control. There is always at least one Obstacle in a Control Stunt Stage.",
+		"Motional": "Dangerous Vehicular Chase",
+		"Motional_Description": "Someone is trying to get away, across the lava fields / glacier / tidal bridge / mountain-goat road you have to chase them, in a Jeep, for some reason.",
+		"Tide_of_Battle": "Set a Trap",
+		"Tide_of_Battle_Text": "The Flowing forces are able to direct the battle enough that they can create a trap on the battle-field. This allows the Flowing forces to Prepare 1 additional card from their Pool to their Style Reserves, in addition to any cards they may Prepare as an Action.",
+		"Fight": "Prepared Ambush",
+		"Fight_Description": "The Fight is an ambush by a well prepared opponent with defences and escape strategies in place. The opponents are usually weaker than the party, but have good defences and specialised weapons and tactics that give them at least one Preparation Phase, before combat is begun."
+	},
+	"Lea": {
+		"PathColour": "Green/Turquoise Herbivore",
+		"Bulmas": "Herd, Broccen, Vermis, Labyrinthine, All-Walkers",
+		"AnimalCategory": "All-path",
+		"Example": "All-Walkers / Brahman",
+		"Bodypart": "Nerves (Instinct)",
+		"Notes": "The Paths of the All-Walkers and Brahman can allow Bulmäs to do extraordinary things, like walking an individual’s life-path, so that all of their personal history is known to them. All-Walkers can assume even the forms and souls of other people by using these paths, without directly eating of the Soul. All-Walkers can even Doom Weave and play other cards from their hands as Wyrd Tarot cards, once they have played an Ace on themselves."
+	},
+	"Stress": {
+		"Type": "Sanctioned",
+		"Description": "Sometimes a Character can be told they must cease and desist some activity by lawyers, or a Character may finally let down their guard, or they may be captured and rather than being chained or imprisoned are kept under guard.",
+		"Rules": "Character must discard all Clubs (<span class=\"t13ne-blackcard\">&clubs;</span>) cards from Ordeal Pool, Style Reserves and Wyrd Tarot Hand, until they have zero Stress. Each Club Discarded removes 1 Stress, 1 Strain, or 1 Shock."
+	},
+	"Trauma": {
+		"Type": "Punishment",
+		"Description": "Trauma can sometimes act as a punishment, sometimes this is deliberate, other times the nature of the punishment maybe karmic, poetic justice or irony. Sometimes this punishment seems unjustified, as if randomly assigned (by a card no less), but usually careful examination of the circumstances can reveal some reasonable justification.",
+		"Rules": "The Trauma creates some kind of punishment for the Character, this is often in the form of a Hitch or a lingering Wound affect (Maiming and Crippling Wounds particularly). The Character can Relieve Stress by complaining about the \"punishment\" they have received, how unjustified it was etc."
+	},
+	"Age": {
+		"Type": "Law",
+		"Description": "An Age of Law is occurring. During this age a society will become increasingly law-abiding and litiguous, where as once in a society members may have discussed their differences, or even dueled, now such disputes are settled before a magistrate or judge, often with the aid of numerous legal counsellors, barristers, lawyers, solicitors, clerks and bailiffs all being involved and paid. An Age of Law will usually involve an improvement in law-enforcement for the society, with police or guards being paid more, better trained and equipped, as well as being bolstered in numbers, typically.",
+		"Rules": "During an Age of Law Characters will attempt to resolve all disputes by legal proceedings, rather than other, less expensive methods. Criminality will always impart a negative impression during this age, even to other criminals."
+	}
+}

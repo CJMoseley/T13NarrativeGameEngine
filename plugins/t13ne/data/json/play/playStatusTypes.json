@@ -1,0 +1,30 @@
+[
+    {
+        "Type": "Planning",
+        "Description": "This game or plot is in a planning stage. There is very little in it yet, beyond a few notes and maybe a mood board gallery."
+    },
+    {
+        "Type": "Development",
+        "Description": "This game or plot is in development. Some things are completed, but it is not ready to play."
+    },
+    {
+        "Type": "Ready",
+        "Description": "This game or plot is ready to be played."
+    },
+    {
+        "Type": "Begun",
+        "Description": "This game or plot is being played, but they are still in the early game."
+    },
+    {
+        "Type": "In Progress",
+        "Description": "This game or plot is being played."
+    },
+    {
+        "Type": "Hiatus",
+        "Description": "This game or plot is currently on hold, it may be that they just have not played in a while."
+    },
+    {
+        "Type": "Finished",
+        "Description": "This game or plot has been completed."
+    }
+]

@@ -1,0 +1,1452 @@
+{
+  "1301": {
+    "id": 1301,
+    "prof": {
+      "Name": [
+        "Warm",
+        "Warm Phoenix High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Warm represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1302": {
+    "id": 1302,
+    "prof": {
+      "Name": [
+        "Warm Locations",
+        "Warm Location Phoenix High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Warm Locations represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1303": {
+    "id": 1303,
+    "prof": {
+      "Name": [
+        "Passionate",
+        "Passionate Phoenix Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Passionate represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1304": {
+    "id": 1304,
+    "prof": {
+      "Name": [
+        "Hot",
+        "Hot Phoenix Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Hot represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1305": {
+    "id": 1305,
+    "prof": {
+      "Name": [
+        "Hot Locations",
+        "Hot Location Phoenix Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Hot Locations represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1306": {
+    "id": 1306,
+    "prof": {
+      "Name": [
+        "Feverish",
+        "Feverish Phoenix Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Feverish represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1307": {
+    "id": 1307,
+    "prof": {
+      "Name": [
+        "Fiery",
+        "Fiery Phoenix Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Fiery represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1308": {
+    "id": 1308,
+    "prof": {
+      "Name": [
+        "Burning Locations",
+        "Burning Location Phoenix Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Burning Locations represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1309": {
+    "id": 1309,
+    "prof": {
+      "Name": [
+        "Transformative",
+        "Transformative Phoenix Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Transformative represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1310": {
+    "id": 1310,
+    "prof": {
+      "Name": [
+        "Purifying",
+        "Purifying Phoenix Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Purifying represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1311": {
+    "id": 1311,
+    "prof": {
+      "Name": [
+        "Flaming Locations",
+        "Flaming Location Phoenix Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Flaming Locations represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1312": {
+    "id": 1312,
+    "prof": {
+      "Name": [
+        "Ruffled",
+        "Ruffled Phoenix Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Ruffled represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1313": {
+    "id": 1313,
+    "prof": {
+      "Name": [
+        "Irritated",
+        "Irritated Phoenix Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Irritated represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1314": {
+    "id": 1314,
+    "prof": {
+      "Name": [
+        "Hate",
+        "Hate Phoenix Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Hate represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1315": {
+    "id": 1315,
+    "prof": {
+      "Name": [
+        "Warmth",
+        "Warmth Phoenix Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Warmth represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1316": {
+    "id": 1316,
+    "prof": {
+      "Name": [
+        "Fondness",
+        "Fondness Phoenix Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Fondness represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1317": {
+    "id": 1317,
+    "prof": {
+      "Name": [
+        "Passion",
+        "Passion Phoenix Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Passion represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1318": {
+    "id": 1318,
+    "prof": {
+      "Name": [
+        "Aid",
+        "Aid Phoenix Action Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Aid represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1319": {
+    "id": 1319,
+    "prof": {
+      "Name": [
+        "Burn",
+        "Burn Phoenix Attack Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Burn represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1320": {
+    "id": 1320,
+    "prof": {
+      "Name": [
+        "Flame",
+        "Flame Phoenix Critical Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Flame represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1321": {
+    "id": 1321,
+    "prof": {
+      "Name": [
+        "Doctor",
+        "Doctor Phoenix Core Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Doctor represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1322": {
+    "id": 1322,
+    "prof": {
+      "Name": [
+        "Cleansing",
+        "Cleansing Phoenix Descendants Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Cleansing represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1323": {
+    "id": 1323,
+    "prof": {
+      "Name": [
+        "Flaming Locations",
+        "Flaming Location Phoenix Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Flaming Locations represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1324": {
+    "id": 1324,
+    "prof": {
+      "Name": [
+        "Flaming",
+        "Flaming Phoenix Edge Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Flaming represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1325": {
+    "id": 1325,
+    "prof": {
+      "Name": [
+        "Burnt",
+        "Burnt Phoenix Failure Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Burnt represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1326": {
+    "id": 1326,
+    "prof": {
+      "Name": [
+        "Cure",
+        "Cure Phoenix Fumble Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Cure represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1327": {
+    "id": 1327,
+    "prof": {
+      "Name": [
+        "Burning Locations",
+        "Burning Location Phoenix Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Burning Locations represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1328": {
+    "id": 1328,
+    "prof": {
+      "Name": [
+        "Scent",
+        "Scent Phoenix Herald Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Scent represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1329": {
+    "id": 1329,
+    "prof": {
+      "Name": [
+        "Consuming",
+        "Consuming Phoenix Hitch Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Consuming represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1330": {
+    "id": 1330,
+    "prof": {
+      "Name": [
+        "Pain",
+        "Pain Phoenix Hurdle Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Pain represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1331": {
+    "id": 1331,
+    "prof": {
+      "Name": [
+        "Fire (Plasma)",
+        "Fire (Plasma) Phoenix Incarna Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Fire (Plasma) represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1332": {
+    "id": 1332,
+    "prof": {
+      "Name": [
+        "Warm Locations",
+        "Warm Location Phoenix Location Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Warm Locations represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1333": {
+    "id": 1333,
+    "prof": {
+      "Name": [
+        "Warmth",
+        "Warmth Phoenix Lore Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Warmth represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1334": {
+    "id": 1334,
+    "prof": {
+      "Name": [
+        "Paragon",
+        "Paragon Phoenix Monster Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Paragon represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1335": {
+    "id": 1335,
+    "prof": {
+      "Name": [
+        "Beacon",
+        "Beacon Phoenix Narration Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Beacon represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1336": {
+    "id": 1336,
+    "prof": {
+      "Name": [
+        "Sympathies",
+        "Sympathies Phoenix Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Sympathies represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1337": {
+    "id": 1337,
+    "prof": {
+      "Name": [
+        "Invigoration Ordeals",
+        "Invigoration Ordeal Phoenix Ordeal Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Invigoration Ordeals represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1338": {
+    "id": 1338,
+    "prof": {
+      "Name": [
+        "Passions",
+        "Passions Phoenix Psychosocial Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Passions represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1339": {
+    "id": 1339,
+    "prof": {
+      "Name": [
+        "Burn \\/ Aid",
+        "Burn \\/ Aid",
+        ""
+      ],
+      "Description": "A seed of desire planted in the fertile ground of Passion, Burn \\/ Aid  is the flower that blooms in adversity.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "15"
+        ],
+        "Genres": [
+          "15"
+        ],
+        "Eras": [
+          "15"
+        ],
+        "Types": [
+          "Quest"
+        ]
+      }
+    }
+  },
+  "1340": {
+    "id": 1340,
+    "prof": {
+      "Name": [
+        "Rapid-fire",
+        "Rapid-fire Phoenix Question Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Rapid-fire represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1341": {
+    "id": 1341,
+    "prof": {
+      "Name": [
+        "Abstinence",
+        "Abstinence Phoenix Resolved Hitch Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Abstinence represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1342": {
+    "id": 1342,
+    "prof": {
+      "Name": [
+        "Comforting",
+        "Comforting Phoenix Style Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Comforting represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1343": {
+    "id": 1343,
+    "prof": {
+      "Name": [
+        "Relief",
+        "Relief Phoenix Success Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Relief represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1344": {
+    "id": 1344,
+    "prof": {
+      "Name": [
+        "Fevers",
+        "Fevers Phoenix Sway Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Fevers represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1345": {
+    "id": 1345,
+    "prof": {
+      "Name": [
+        "Volatile",
+        "Volatile Phoenix Tangle Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Volatile represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1346": {
+    "id": 1346,
+    "prof": {
+      "Name": [
+        "Burning \\/ Cleaning \\/ Cooking \\/ Fire-starting \\/ Healing \\/ Purifying \\/ Rebirth \\/ Recuperating \\/ Regeneration",
+        "Burning \\/ Cleaning \\/ Cooking \\/ Fire-starting \\/ Healing \\/ Purifying \\/ Rebirth \\/ Recuperating \\/ Regeneration",
+        ""
+      ],
+      "Description": "The threads of Passion are woven into the tapestry of Burning \\/ Cleaning \\/ Cooking \\/ Fire-starting \\/ Healing \\/ Purifying \\/ Rebirth \\/ Recuperating \\/ Regeneration, a story of zeal told in silence.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "15"
+        ],
+        "Genres": [
+          "15"
+        ],
+        "Eras": [
+          "15"
+        ],
+        "Types": [
+          "Test"
+        ]
+      }
+    }
+  },
+  "1347": {
+    "id": 1347,
+    "prof": {
+      "Name": [
+        "Medical",
+        "Medical Phoenix Tone Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Medical represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1348": {
+    "id": 1348,
+    "prof": {
+      "Name": [
+        "Rebirth",
+        "Rebirth Phoenix Test Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Rebirth represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1349": {
+    "id": 1349,
+    "prof": {
+      "Name": [
+        "Repair",
+        "Repair Phoenix Twisted Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Repair represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1350": {
+    "id": 1350,
+    "prof": {
+      "Name": [
+        "Cauterising",
+        "Cauterising Phoenix Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Cauterising represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

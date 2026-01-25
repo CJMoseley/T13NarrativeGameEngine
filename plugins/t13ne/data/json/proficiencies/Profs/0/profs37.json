@@ -1,0 +1,1442 @@
+{
+  "1851": {
+    "id": 1851,
+    "prof": {
+      "Name": [
+        "Sapid Locations",
+        "Sapid Location Yonder Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Sapid Locations leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1852": {
+    "id": 1852,
+    "prof": {
+      "Name": [
+        "Cool",
+        "Cool Yonder High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Cool leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1853": {
+    "id": 1853,
+    "prof": {
+      "Name": [
+        "Mellow",
+        "Mellow Yonder High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Mellow leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1854": {
+    "id": 1854,
+    "prof": {
+      "Name": [
+        "Weathered Locations",
+        "Weathered Location Yonder High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Weathered Locations leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1855": {
+    "id": 1855,
+    "prof": {
+      "Name": [
+        "Reserved",
+        "Reserved Yonder High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Reserved leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1856": {
+    "id": 1856,
+    "prof": {
+      "Name": [
+        "Withdrawn",
+        "Withdrawn Yonder High Boon Descendant Adjective Proficiency",
+        "detached, aloof, reserved, unsociable, isolated"
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Withdrawn leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1857": {
+    "id": 1857,
+    "prof": {
+      "Name": [
+        "Discrete Locations",
+        "Discrete Location Yonder High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Discrete Locations leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1858": {
+    "id": 1858,
+    "prof": {
+      "Name": [
+        "Aloof",
+        "Aloof Yonder Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Aloof leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1859": {
+    "id": 1859,
+    "prof": {
+      "Name": [
+        "Casual",
+        "Casual Yonder Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Casual leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1860": {
+    "id": 1860,
+    "prof": {
+      "Name": [
+        "Secluded Locations",
+        "Secluded Location Yonder Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Secluded Locations leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1861": {
+    "id": 1861,
+    "prof": {
+      "Name": [
+        "Detached",
+        "Detached Yonder Very-High Boon Adjective Proficiency",
+        "indifferent, loose, discrete, separate, aloof"
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Detached leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1862": {
+    "id": 1862,
+    "prof": {
+      "Name": [
+        "Staid",
+        "Staid Yonder Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Staid leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1863": {
+    "id": 1863,
+    "prof": {
+      "Name": [
+        "Isolated Locations",
+        "Isolated Location Yonder Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Isolated Locations leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1864": {
+    "id": 1864,
+    "prof": {
+      "Name": [
+        "Distant",
+        "Distant Yonder Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Distant leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1865": {
+    "id": 1865,
+    "prof": {
+      "Name": [
+        "Exotic",
+        "Exotic Yonder Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Exotic leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1866": {
+    "id": 1866,
+    "prof": {
+      "Name": [
+        "Solitary Locations",
+        "Solitary Location Yonder Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Solitary Locations leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1867": {
+    "id": 1867,
+    "prof": {
+      "Name": [
+        "Alienated",
+        "Alienated Yonder Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Alienated leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1868": {
+    "id": 1868,
+    "prof": {
+      "Name": [
+        "Alien",
+        "Alien Yonder Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Alien leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1869": {
+    "id": 1869,
+    "prof": {
+      "Name": [
+        "Alien Locations",
+        "Alien Location Yonder Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Alien Locations leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1870": {
+    "id": 1870,
+    "prof": {
+      "Name": [
+        "Disaffection",
+        "Disaffection Yonder Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Disaffection leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1871": {
+    "id": 1871,
+    "prof": {
+      "Name": [
+        "Loneliness",
+        "Loneliness Yonder Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Loneliness leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1872": {
+    "id": 1872,
+    "prof": {
+      "Name": [
+        "Alienation",
+        "Alienation Yonder Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Alienation leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1873": {
+    "id": 1873,
+    "prof": {
+      "Name": [
+        "Excited",
+        "Excited Yonder Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Excited leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1874": {
+    "id": 1874,
+    "prof": {
+      "Name": [
+        "Elated",
+        "Elated Yonder Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Elated leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1875": {
+    "id": 1875,
+    "prof": {
+      "Name": [
+        "Euphoria",
+        "Euphoria Yonder Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Euphoria leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1876": {
+    "id": 1876,
+    "prof": {
+      "Name": [
+        "Speak",
+        "Speak Yonder Action Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Speak leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1877": {
+    "id": 1877,
+    "prof": {
+      "Name": [
+        "Throw",
+        "Throw Yonder Attack Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Throw leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1878": {
+    "id": 1878,
+    "prof": {
+      "Name": [
+        "Remote",
+        "Remote Yonder Critical Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Remote leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1879": {
+    "id": 1879,
+    "prof": {
+      "Name": [
+        "Traveller",
+        "Traveller Yonder Core Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Traveller leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1880": {
+    "id": 1880,
+    "prof": {
+      "Name": [
+        "Locations/Connections",
+        "Locations/Connections",
+        ""
+      ],
+      "Description": "A seed of isolation planted in the fertile ground of Stagnation, Locations/Connections is the flower that blooms in adversity.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "22"
+        ],
+        "Genres": [
+          "22"
+        ],
+        "Eras": [
+          "22"
+        ],
+        "Types": [
+          "Descendant"
+        ]
+      }
+    }
+  },
+  "1881": {
+    "id": 1881,
+    "prof": {
+      "Name": [
+        "Ranged",
+        "Ranged Yonder Edge Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Ranged leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1882": {
+    "id": 1882,
+    "prof": {
+      "Name": [
+        "Ranged",
+        "Ranged Yonder Glow Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Ranged leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1883": {
+    "id": 1883,
+    "prof": {
+      "Name": [
+        "Miss",
+        "Miss Yonder Failure Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Miss leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1884": {
+    "id": 1884,
+    "prof": {
+      "Name": [
+        "Ricochet",
+        "Ricochet Yonder Fumble Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Ricochet leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1885": {
+    "id": 1885,
+    "prof": {
+      "Name": [
+        "Displacement",
+        "Displacement Yonder Gnarl Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Displacement leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1886": {
+    "id": 1886,
+    "prof": {
+      "Name": [
+        "Dispersion",
+        "Dispersion Yonder Herald Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Dispersion leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1887": {
+    "id": 1887,
+    "prof": {
+      "Name": [
+        "Loss-of-Sense",
+        "Loss-of-Sense Yonder Hitch Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Loss-of-Sense leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1888": {
+    "id": 1888,
+    "prof": {
+      "Name": [
+        "Distance",
+        "Distance Yonder Hurdle Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Distance leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1889": {
+    "id": 1889,
+    "prof": {
+      "Name": [
+        "Space (Location)",
+        "Space (Location) Yonder Incarna Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Space (Location) leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1890": {
+    "id": 1890,
+    "prof": {
+      "Name": [
+        "Connection Locations",
+        "Connection Location Yonder Location Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Connection Locations leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1891": {
+    "id": 1891,
+    "prof": {
+      "Name": [
+        "Position",
+        "Position Yonder Lore Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Position leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1892": {
+    "id": 1892,
+    "prof": {
+      "Name": [
+        "Alien",
+        "Alien Yonder Monster Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Alien leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1893": {
+    "id": 1893,
+    "prof": {
+      "Name": [
+        "Distant",
+        "Distant Yonder Narration Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Distant leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1894": {
+    "id": 1894,
+    "prof": {
+      "Name": [
+        "Chat",
+        "Chat Yonder Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Chat leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1895": {
+    "id": 1895,
+    "prof": {
+      "Name": [
+        "Distant Ordeals",
+        "Distant Ordeal Yonder Ordeal Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Distant Ordeals leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1896": {
+    "id": 1896,
+    "prof": {
+      "Name": [
+        "Broadness",
+        "Broadness Yonder Psychosocial Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Broadness leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1897": {
+    "id": 1897,
+    "prof": {
+      "Name": [
+        "Follow / Travel",
+        "Follow / Travel",
+        ""
+      ],
+      "Description": "A seed of permanence planted in the fertile ground of Stagnation, Follow / Travel is the flower that blooms in adversity.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "22"
+        ],
+        "Genres": [
+          "22"
+        ],
+        "Eras": [
+          "22"
+        ],
+        "Types": [
+          "Quest"
+        ]
+      }
+    }
+  },
+  "1898": {
+    "id": 1898,
+    "prof": {
+      "Name": [
+        "Where",
+        "Where Yonder Question Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Where leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1899": {
+    "id": 1899,
+    "prof": {
+      "Name": [
+        "Awareness",
+        "Awareness Yonder Resolved Hitch Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Awareness leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1900": {
+    "id": 1900,
+    "prof": {
+      "Name": [
+        "Range",
+        "Range Yonder Rule Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Range leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

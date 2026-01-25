@@ -1,0 +1,1446 @@
+{
+  "2057": {
+    "id": 2057,
+    "prof": {
+      "Name": [
+        "Servile",
+        "Servile Trial Zero Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Servile is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2058": {
+    "id": 2058,
+    "prof": {
+      "Name": [
+        "Greasy",
+        "Greasy Trial Zero Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Greasy is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2059": {
+    "id": 2059,
+    "prof": {
+      "Name": [
+        "Amiable",
+        "Amiable Trial Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Amiable is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2060": {
+    "id": 2060,
+    "prof": {
+      "Name": [
+        "Charming Locations",
+        "Charming Location Trial Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Charming Locations is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2061": {
+    "id": 2061,
+    "prof": {
+      "Name": [
+        "Polite",
+        "Polite Trial Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Polite is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2062": {
+    "id": 2062,
+    "prof": {
+      "Name": [
+        "Genteel",
+        "Genteel Trial Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Genteel is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2063": {
+    "id": 2063,
+    "prof": {
+      "Name": [
+        "Relaxing Locations",
+        "Relaxing Location Trial Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Relaxing Locations is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2064": {
+    "id": 2064,
+    "prof": {
+      "Name": [
+        "Dainty Locations",
+        "Dainty Location Trial Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Dainty Locations is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2065": {
+    "id": 2065,
+    "prof": {
+      "Name": [
+        "Relaxed",
+        "Relaxed Trial Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Relaxed is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2066": {
+    "id": 2066,
+    "prof": {
+      "Name": [
+        "Informal Locations",
+        "Informal Location Trial Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Informal Locations is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2067": {
+    "id": 2067,
+    "prof": {
+      "Name": [
+        "Streetwise",
+        "Streetwise Trial Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Streetwise is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2068": {
+    "id": 2068,
+    "prof": {
+      "Name": [
+        "Competitive",
+        "Competitive Trial Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Competitive is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2069": {
+    "id": 2069,
+    "prof": {
+      "Name": [
+        "Antagonistic",
+        "Antagonistic Trial Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Antagonistic is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2070": {
+    "id": 2070,
+    "prof": {
+      "Name": [
+        "Hard",
+        "Hard Trial High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Hard is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2071": {
+    "id": 2071,
+    "prof": {
+      "Name": [
+        "Tough",
+        "Tough Trial High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Tough is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2072": {
+    "id": 2072,
+    "prof": {
+      "Name": [
+        "Rigid Locations",
+        "Rigid Location Trial High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Rigid Locations is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2073": {
+    "id": 2073,
+    "prof": {
+      "Name": [
+        "Confrontational",
+        "Confrontational Trial High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Confrontational is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2074": {
+    "id": 2074,
+    "prof": {
+      "Name": [
+        "Militant",
+        "Militant Trial Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Militant is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2075": {
+    "id": 2075,
+    "prof": {
+      "Name": [
+        "Pugnacious",
+        "Pugnacious Trial Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Pugnacious is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2076": {
+    "id": 2076,
+    "prof": {
+      "Name": [
+        "Defiant Locations",
+        "Defiant Location Trial Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Defiant Locations is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2077": {
+    "id": 2077,
+    "prof": {
+      "Name": [
+        "Belligerent",
+        "Belligerent Trial Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Belligerent is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2078": {
+    "id": 2078,
+    "prof": {
+      "Name": [
+        "Martial",
+        "Martial Trial Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Martial is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2079": {
+    "id": 2079,
+    "prof": {
+      "Name": [
+        "Hostile",
+        "Hostile Trial Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Hostile is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2080": {
+    "id": 2080,
+    "prof": {
+      "Name": [
+        "Warlike",
+        "Warlike Trial Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Warlike is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2081": {
+    "id": 2081,
+    "prof": {
+      "Name": [
+        "Tactical",
+        "Tactical Trial Style Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Tactical is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2082": {
+    "id": 2082,
+    "prof": {
+      "Name": [
+        "Oppose",
+        "Oppose Trial Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Oppose is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2083": {
+    "id": 2083,
+    "prof": {
+      "Name": [
+        "Hack",
+        "Hack Trial Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Hack is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2084": {
+    "id": 2084,
+    "prof": {
+      "Name": [
+        "Win",
+        "Win Trial Critical Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Win is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2085": {
+    "id": 2085,
+    "prof": {
+      "Name": [
+        "Attacker",
+        "Attacker Trial Core Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Attacker is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2086": {
+    "id": 2086,
+    "prof": {
+      "Name": [
+        "Gear",
+        "Gear Trial Descendants Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Gear is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2087": {
+    "id": 2087,
+    "prof": {
+      "Name": [
+        "Discomfort",
+        "Discomfort Trial Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Discomfort is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2088": {
+    "id": 2088,
+    "prof": {
+      "Name": [
+        "Suffering",
+        "Suffering Trial Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Suffering is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2089": {
+    "id": 2089,
+    "prof": {
+      "Name": [
+        "Torment",
+        "Torment Trial Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Torment is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2090": {
+    "id": 2090,
+    "prof": {
+      "Name": [
+        "Confidence",
+        "Confidence Trial Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Confidence is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2091": {
+    "id": 2091,
+    "prof": {
+      "Name": [
+        "Courage",
+        "Courage Trial Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Courage is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2092": {
+    "id": 2092,
+    "prof": {
+      "Name": [
+        "Valour",
+        "Valour Trial Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Valour is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2093": {
+    "id": 2093,
+    "prof": {
+      "Name": [
+        "Forfeits",
+        "Forfeits Trial Failure Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Forfeits is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2094": {
+    "id": 2094,
+    "prof": {
+      "Name": [
+        "Turnover",
+        "Turnover Trial Fumble Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Turnover is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2095": {
+    "id": 2095,
+    "prof": {
+      "Name": [
+        "Testing",
+        "Testing Trial Gnarl Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Testing is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2096": {
+    "id": 2096,
+    "prof": {
+      "Name": [
+        "Crowds",
+        "Crowds Trial Herald Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Crowds is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2097": {
+    "id": 2097,
+    "prof": {
+      "Name": [
+        "Offensive",
+        "Offensive Trial Hitch Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Offensive is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2098": {
+    "id": 2098,
+    "prof": {
+      "Name": [
+        "Competition",
+        "Competition Trial Hurdle Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Competition is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2099": {
+    "id": 2099,
+    "prof": {
+      "Name": [
+        "Metal",
+        "Metal Trial Incarna Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Metal is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2100": {
+    "id": 2100,
+    "prof": {
+      "Name": [
+        "Contested Locations",
+        "Contested Location Trial Location Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Contested Locations is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2101": {
+    "id": 2101,
+    "prof": {
+      "Name": [
+        "Result",
+        "Result Trial Lore Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Result is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2102": {
+    "id": 2102,
+    "prof": {
+      "Name": [
+        "Killer",
+        "Killer Trial Monster Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Killer is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2103": {
+    "id": 2103,
+    "prof": {
+      "Name": [
+        "Contradictory",
+        "Contradictory Trial Narration Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Contradictory is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2104": {
+    "id": 2104,
+    "prof": {
+      "Name": [
+        "Opposed Ordeals",
+        "Opposed Ordeal Trial Ordeal Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Opposed Ordeals is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2105": {
+    "id": 2105,
+    "prof": {
+      "Name": [
+        "Athlete",
+        "Athlete Trial Persona Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Athlete is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2106": {
+    "id": 2106,
+    "prof": {
+      "Name": [
+        "Arsenal",
+        "Arsenal Trial Psychosocial Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Arsenal is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

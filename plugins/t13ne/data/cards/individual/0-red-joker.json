@@ -1,0 +1,115 @@
+{
+	"Card_Corner": "*",
+	"Card": "Red Joker",
+	"Suit": "0",
+	"IconSuit": "✱",
+	"Pips": "15",
+	"Unicode": "&#x1f0cf;",
+	"Svg": "images/cards-svg/Joker0.svg",
+	"Wound_Level": 7,
+	"Facet": "All",
+	"Tao": [
+		1,
+		0
+	],
+	"Narrative_Meaning": "Jokers signify creativity, humour and surprises, both good and bad.",
+	"Image": "",
+	"Yarn": {
+		"Yarn_Name": "The World",
+		"Yarn_Description": "The World card represents the whole world, not just the Earth, or any particular planet, or dimension but the Omniverse as a whole. In fact, any wholeness, or completion is indicated by the card, as well as the wilderness and wild places in particular (due to the wild-card nature of the Joker). The World is generally seen as a positive card, but it can be negative in the sense of endings mean farewells, good byes and moving on from one phase to another.",
+		"Significator": {
+			"Plot": "The World Plot is always a tale that spans multiple Locations, often actually across multiple worlds and time periods. The World Plot is generally at least a Volume, an Epic or Cycle, and can be useful for world-building, if you have no better ideas. World Plots consist of lots of apparently unconnected sub-Plots that examine often random Conflicts (that are still aspects of the World's Conflict). ",
+			"Side": "The side marked by the World in another Plot has more knowledge and experience than may be expected, they have travelled far, and seen things no one else around here has. They may be able to bring this experience of the world into play in odd ways. Most often the Character will have at least one Alternate that is actually an Embodiment for the Shadows or External Side as well.",
+			"Character": "The World Significator indicates a Character who are very experienced and confident. <p>They <strong>Gain Yin</strong> when they act confident, arrogant, or nonchalant. </p><p>They <strong>Gain Yang</strong> when they can share their knowledge of a situation or thing. They <strong>Gain Chi</strong> when they say farewell, good bye, or wish someone well. </p><p>They also gain +1 Success Level to all actions that they claim they have tried before.</p>",
+			"Scene": "The World Scene is often the central theme of the Story written large, or can represent the whole Story squeezed within itself, perhaps as a play with a play, or just incredible trials or rewards. World Scenes can be Framing Revelations (revealing the world as it is), represent incredible gains (you can literally Gain a whole world), or an unbelievable Ordeal (such as racing around the world). Yarn-Tellers can play the card for virtually any effect, opening portals, changing paradigms, making huge gains or losses as required."
+		},
+		"Beat_Type": "7",
+		"Conflict_Embodiment": "1",
+		"Facet_Embodiment": "14",
+		"Hook_Aspect": "Hitches",
+		"Aspect_Description": "The Hook targets the Character's Hitches, the bigger the better.",
+		"Hook": "Wildcard",
+		"Hook_Description": "The Hook is just one of those out there crazy starts to a story. Perhaps they come around on a beach near a crashed plane, or wrecked boat, with no memories of where they were going or why. Or maybe they explode from the ground, unsure how or why they were there.",
+		"Gain": "Add Alternate",
+		"Fray": "Wilderness Encounter",
+		"Fray_Description": "A holdover from Old School Gaming. The encounter is a where the PCs meet a larger group of inferior foes (for example 2d20 Vexes, or 2d6 Cast Extras) in the Wild. Encounters are not always balanced, and the PCs may have Flee turning the High Stakes Ordeal into a Chase. Encounters are usually followed by a Gain.",
+		"Snag": "Double Trouble",
+		"Snag_Description": "Add an additional Fray that must be accomplished alongside the first.",
+		"NPC": {
+			"Archetype": "Dragon",
+			"Persona": 1,
+			"Core": 22,
+			"Hitch": 0,
+			"Description": "Dragons are huge, treasure hoarding monsters... Wait, you know what a Dragon is. In T13 dragons are associated with Vermis Bulmäs in most universes, fantasy universes will have native non Vermis Dragons.."
+		},
+		"Sweeping": "Exologue",
+		"Sweeping_Text": "The Sweeping is an Exologue, where the Character spends a Short Act of a few Scenes in the world of one of their Alternates. This can be used to allow the Pressed Embodiment recovery time in a different time-line (another universe, a past life, etc).",
+		"History": "World",
+		"History_Description": "The World indicates that the current situation has been caused by major events in world history, such as world-wars, imperial collapses, technological innovations, and natural disasters such as climate change and global pandemics, these can even include events from a cosmic scale, such as planetary collisions, gamma-ray bursts and solar-flares.",
+		"Situation": "Completion",
+		"Situation_Description": "The World indicates that the current situation is one of completion, whatever the situation, it is already too late to stop it. A change is coming and it is this change and how it is weathered that is the real situation here that may be \"solved\".",
+		"Solution": "Finish",
+		"Solution_Description": "The World indicates that the solution to the current situation lies in finishing some task or quest that is already under way. Examples include having to finish your prototype, completing you journey, or finding all the remaining magic crystals.",
+		"Revelations": {
+			"About": "Hidden Influences",
+			"About_Description": "There are Hidden influences in any universe. Sometimes they are the Increated working behind the scenes, other times they are the manipulative Faeries, ensuring the Doom of Wyrd, still other groups include time-travellers and inter-dimensional visitors who have all their own agendas. This Revelation reveals something about one of these groups.",
+			"Info": "Ref Special",
+			"Info_Description": "The Yarn cards can't decide everything that is happening, this one is all down to the Ref to decide.",
+			"Vector": "Mystical",
+			"Vector_Description": "The information arrives in a mystical or via magickal means. This might be the result of scrying or a message spell.",
+			"Alternate": "Quest",
+			"Alternate_Description": "The Revelation is actually a Quest that must be followed to find out the important information.",
+			"Detail": "Wild",
+			"Detail_Description": "Wild details might be details about how wild the situation or a Character is or may just be wild card details, randomly providing truths and lies across the board."
+		}
+	},
+	"Obstacle": {
+		"Type": "Destructive",
+		"Description": "A Destructive Trap is a one shot trap, it might demolish the building, drop all the floors, flood the valley the building is in, destabilize the volcano, or unleash giant rolling balls to chase intruders out and block the exits. Once triggered there is no stopping or undoing the devastation and carnage that will follow. Luckily such traps usually have a number of Phases that they take to complete, and you usually get at least one Phase of hearing the thing fire up as a warning."
+	},
+	"Tarot": {
+		"WyrdTarot": "Wildcard",
+		"Normal": "May be played as any Non-Court card (or as an Ordeal Card Joker with +22 Pips of Liberty Penetration)",
+		"Crossed": "May be played as any Non-Court card Crossed"
+	},
+	"Ordeal": {
+		"Ordeal_Type": "Opposed Ordeal",
+		"Stages": "12",
+		"Ordeal_Spread": "Map-Geography",
+		"Stakes": "Blended Low-Soul",
+		"Test": "Luck (Liberty)",
+		"Obstacles": "3 Obstacles per Non-Court Stage, 4 per Court Stage",
+		"Suggested_Action": "Anything",
+		"Stage": "Maelstrom",
+		"Stage_Description": "The way ahead is chaos-ridden. Perhaps bullets strafe the landscape, or shells explode across No-man's land, or maybe the waters swirl in huge whirlpool. Then again perhaps it is just a swirl of litter and flashing lights that blocks the way.",
+		"Motional": "Circuit Race",
+		"Motional_Description": "Race around the Stages of the Ordeal repeatedly. Often a vehicle race, but it can be any form as required.",
+		"Tide_of_Battle": "Bullet Hell",
+		"Tide_of_Battle_Text": "Shots riddle the air, zinging from the stones of the ground and ricocheting through the melee. Anyone on the Battlefield will be Wounded by a random Unsoakable Extreme Stakes Wound card, every Phase, until one side are all dead or everyone is out of ammo.",
+		"Fight": "Insult Tennis",
+		"Fight_Description": "For whatever reason during the combat actual damage is unlikely, perhaps the combatants are Mech-pilots, or these are two immortals crossing swords. The real contest is in the barbs, insults and quips that they make. The right insult, in this context, can be deadly."
+	},
+	"Lea": {
+		"PathColour": "Rainbow",
+		"Bulmas": "All",
+		"AnimalCategory": "Any",
+		"Example": "Can create new paths that exploit new niches, rather like Broccen digging paths into the Lea.",
+		"Bodypart": "Skin Patterns / Coloured Feathers / Camouflage / Chromatophores",
+		"Notes": "These paths open and close naturally through the Lea from time to time, they are easily walked by all Bulmäs, but Vermis and All-Walkers may walk them in Swarm or Dragon configurations."
+	},
+	"Stress": {
+		"Type": "Berserk",
+		"Description": "Stress can cause a Character to snap, becoming a furious engine of destruction. This creates a glorious moment of cathartic release, with the Character burning the Stress to augment their damage, as the Character attacks friend and foe alike, relieving huge amounts of Stress. However, the repercussions of this event may create more Stress than is lost.",
+		"Rules": "All Ordeal cards played that attack another Character or Descendant add current Stress as Chi to the Pips of the Attack and reduce the Stress by 1 until the Character has no Stress remaining. However, after the dust has settled the Character will gain Stress equal to highest Character or Descendant type (or the total Group Size whichever is higher) injured or destroyed in Chi. E.g. A Berserker that killed a Hero or almost 100 Extras and Grunts would add 12 Stress after the Berserk had finished."
+	},
+	"Trauma": {
+		"Type": "Worldly",
+		"Description": "Trauma will sometimes change everything or anything about a Character, and sometimes Trauma will pass without any repercussions, this is one of those times.",
+		"Rules": "This Trauma instantly Relieves all Stress. This Stress is used as Chi to remove any effects from the Trauma."
+	},
+	"Age": {
+		"Type": "Completion",
+		"Description": "An Age of Completion is occurring. During this age a society riches the end of their story. Typically the society accomplishes some great task, raising a monument for all the ages, crossing some \"impassable\" barrier such as sailing first across an ocean, conquering some ancient empire and in this great accomplishment, the society then seems to vanish from history. Whatever happened to this society history will not record it, although often that just means that the society changes name, or breaks into a number of smaller societies, occasionally this society collapses, its task complete, the goal accomplished, the society loses cohesion, and the members simply fade away, joining neighbouring societies, or creating a new one.",
+		"Rules": "During an Age of Completion a society completes some great task, and then collapses, this collapse may be total, partial, or simply a revolution within the society or a change of name. However the story of this society is over."
+	}
+}

@@ -1,0 +1,494 @@
+[
+  {
+    "Chi": 1,
+    "Element_Type": "Rules",
+    "Type": "Success or Failure Level",
+    "Sway_Type_Description": "This is the lowest possible result of a single Success or Failure Level. Success Levels positively affect the Action, or Character performing it, or negatively affect the Opposition. Failure Levels negatively affect the Action or Character, or positively affect the Opposition."
+  },
+  {
+    "Chi": 1,
+    "Element_Type": "Rules",
+    "Type": "Re-roll",
+    "Sway_Type_Description": "You can re-roll any single Facet or Annex dice-roll. You may use either score."
+  },
+  {
+    "Chi": 1,
+    "Element_Type": "Rules",
+    "Type": "Mimic Ordeal Card Pip",
+    "Sway_Type_Description": "You may alter or mimic the Pips of a Card by one Pip for 1 Chi or 2 Sway. Chi Pips are usually treated as Wildcard Suit-less Pips (that directly increase the Pips of the cards they are played upon), although Penetration Pips are possible (for a more limited, combat-orientated game), or Range Pips (paying only Range costs for low-level Heroes)."
+  },
+  {
+    "Chi": 1,
+    "Element_Type": "Rules",
+    "Type": "Atmospheric Drama",
+    "Sway_Type_Description": "Atmospheric Drama is a small event that is simply like \"Flavour-Text\", candles gutter, a coyote calls to the moon, tumbleweed blow past, etc."
+  },
+  {
+    "Chi": 1,
+    "Element_Type": "Rules",
+    "Type": "Add Atmospheric Drama Dice",
+    "Sway_Type_Description": "Yarn-Tellers can add and roll an Atmospheric (D2) Drama Dice into the Drama Pool, while they are narrating."
+  },
+  {
+    "Chi": 1,
+    "Element_Type": "Rules",
+    "Type": "Minimal Nimbed Effect",
+    "Sway_Type_Description": "This is the minimum effect and cost that a Nimbed Proficiency may have. Nimbed Proficiencies add additional abilities to Annexes, making them more effective. Nimbeds must be supported by Umbrals in the Annex (although the number of Umbrals required per Nimbed does vary by type). The actual effect of a Nimbed is usually based upon the Character’s Score for the Proficiency Facet."
+  },
+  {
+    "Chi": 1,
+    "Element_Type": "Rules",
+    "Type": "1 Point of RT",
+    "Sway_Type_Description": "A point of RT costs 1 Chi/Pip to get rid of it (unless you wait)"
+  },
+  {
+    "Chi": 1,
+    "Element_Type": "Rules",
+    "Type": "Save",
+    "Sway_Type_Description": "Storing Chi within a Chronolith hardens that moment allowing it to be more easily reloaded."
+  },
+  {
+    "Chi": 2,
+    "Element_Type": "Rules",
+    "Type": "Draw an Ordeal Card",
+    "Sway_Type_Description": "Draw an Ordeal card from the top of the Deck (when you have no other reason to go near it)."
+  },
+  {
+    "Chi": 2,
+    "Element_Type": "Rules",
+    "Type": "Play 1 Ordeal Card",
+    "Sway_Type_Description": "Play an Ordeal card from your Ordeal Pool or a Style Reserve (usually considered automatic in Ordeals to the normal limit of the Action, included for completeness)."
+  },
+  {
+    "Chi": 2,
+    "Element_Type": "Rules",
+    "Type": "Change Stakes",
+    "Sway_Type_Description": "Alter the current Stakes. Stakes are typically raised or lowered a Step. Such altered Stakes return to normal after their Duration has expired."
+  },
+  {
+    "Chi": 2,
+    "Element_Type": "Rules",
+    "Type": "Soak Layer",
+    "Sway_Type_Description": "Alter the number of Soak Layers that are effective in the Current Stakes by 1 away from normal. This can make combat more deadly or less deadly without affecting the Stakes."
+  },
+  {
+    "Chi": 2,
+    "Element_Type": "Rules",
+    "Type": "Mimic Wyrd Tarot Pip",
+    "Sway_Type_Description": "When mimicking a Wyrd Tarot card effect pay 2 Chi per Pip."
+  },
+  {
+    "Chi": 3,
+    "Element_Type": "Rules",
+    "Type": "Ordeal Card Level",
+    "Sway_Type_Description": "You may add or subtract a Level of Success or Wound from a Card."
+  },
+  {
+    "Chi": 3,
+    "Element_Type": "Rules",
+    "Type": "Mimic Yarn Card Pip",
+    "Sway_Type_Description": "When calculating Yarn card costs, or rewards, consider each Pip to be worth 3 Chi."
+  },
+  {
+    "Chi": 3,
+    "Element_Type": "Rules",
+    "Type": "Narrative Moment Drama",
+    "Sway_Type_Description": "A Facet-based Drama, the Narrative Moment typically a social encounter for the Character."
+  },
+  {
+    "Chi": 4,
+    "Element_Type": "Rules",
+    "Type": "Draw and Play 1 Ordeal Card",
+    "Sway_Type_Description": "Draw 1 Ordeal Card to your Pool and Play 1 Card from your Pool (often the card Drawn)."
+  },
+  {
+    "Chi": 4,
+    "Element_Type": "Rules",
+    "Type": "Draw a Wyrd Tarot Card",
+    "Sway_Type_Description": "Draw an Wyrd Tarot card into your Hand whenever you like."
+  },
+  {
+    "Chi": 4,
+    "Element_Type": "Rules",
+    "Type": "Alter Stakes",
+    "Sway_Type_Description": "The Stakes of the current Ordeal can be increased or decreased one level (e.g. Medium to Low or High). Typically this will last 1 Stage (or the paid for Duration) and then return to normal."
+  },
+  {
+    "Chi": 4,
+    "Element_Type": "Rules",
+    "Type": "Roll Drama Pool",
+    "Sway_Type_Description": "The Character may roll the Dice of the Drama Pool, potentially creating Drama."
+  },
+  {
+    "Chi": 5,
+    "Element_Type": "Rules",
+    "Type": "Play an Extra Ordeal Card",
+    "Sway_Type_Description": "Playing an Extra card from your Ordeal Pool when you wouldn't normally be able to."
+  },
+  {
+    "Chi": 5,
+    "Element_Type": "Rules",
+    "Type": "Umbrals",
+    "Sway_Type_Description": "Umbral Proficiencies add Facet Value (the Character’s Facet Value for the appropriate Facet) to Annexes that may increase the Boon and alter the Boon Die of the Anex, by adding some cost or limit to what the Annex can do."
+  },
+  {
+    "Chi": 5,
+    "Element_Type": "Rules",
+    "Type": "Success or Failure Level",
+    "Sway_Type_Description": "This is the average effect of adding a single Success or Failure Level. Success Levels positively affect the Action, or Character performing it, or negatively affect the Opposition. Failure Levels negatively affect the Action or Character, or positively affect the Opposition."
+  },
+  {
+    "Chi": 5,
+    "Element_Type": "Rules",
+    "Type": "1 Point of GRT",
+    "Sway_Type_Description": "A point of GRT costs 5 Chi/Pips to get rid of it (unless you wait)"
+  },
+  {
+    "Chi": 5,
+    "Element_Type": "Rules",
+    "Type": "2 Soak Layers",
+    "Sway_Type_Description": "Alter the number of Soak Layers that are effective in the Current Stakes by 2 away from normal. This can make combat more deadly or less deadly without affecting the Stakes."
+  },
+  {
+    "Chi": 6,
+    "Element_Type": "Rules",
+    "Type": "Unsoakable",
+    "Sway_Type_Description": "Make one Ordeal card Unsoakable"
+  },
+  {
+    "Chi": 6,
+    "Element_Type": "Rules",
+    "Type": "Hazard (Minimal)",
+    "Sway_Type_Description": "Hazards represent a danger, risk or threat to the Character. They can vary greatly in type with many being more expensive than this. This represents the minimum case of a Hazard, a single imposed Failure Level."
+  },
+  {
+    "Chi": 6,
+    "Element_Type": "Rules",
+    "Type": "Social Ordeal Level",
+    "Sway_Type_Description": "Altering a Character’s impression of you, in a Clique Psychosocial Space, by a single Social Ordeal Level up or down at a time."
+  },
+  {
+    "Chi": 6,
+    "Element_Type": "Rules",
+    "Type": "Suspense Level",
+    "Sway_Type_Description": "Change the Suspense Level of the Current Scene up or down 1 Level. This will also alter the Change currently occurring."
+  },
+  {
+    "Chi": 7,
+    "Element_Type": "Rules",
+    "Type": "Prod",
+    "Sway_Type_Description": "Prods are Dramatic moments meant to focus a Hooked Embodiment on the current Plot and increase Suspense."
+  },
+  {
+    "Chi": 7,
+    "Element_Type": "Rules",
+    "Type": "Ordeal Card",
+    "Sway_Type_Description": "Affect, Discard, Redraw, Ignore, a single Ordeal Card."
+  },
+  {
+    "Chi": 7,
+    "Element_Type": "Rules",
+    "Type": "Drama Dice",
+    "Sway_Type_Description": "Add or Remove 1 of any type of Drama Die from the Drama Pool at any time. Dice added are rolled into the Pool."
+  },
+  {
+    "Chi": 8,
+    "Element_Type": "Rules",
+    "Type": "Set Stakes",
+    "Sway_Type_Description": "Set the current Stakes. This can include creating a new Custom Stake if performed by the current Yarn-Teller or Referee. Typically the Ordeal is included in the cost so the entire Ordeal is affected, or after the Duration the original Stakes will return."
+  },
+  {
+    "Chi": 8,
+    "Element_Type": "Rules",
+    "Type": "Reload",
+    "Sway_Type_Description": "The Hero (or Yarn-Teller) rewinds Time back to the last saved Chronolith (usually)."
+  },
+  {
+    "Chi": 8,
+    "Element_Type": "Rules",
+    "Type": "Draw 3 Ordeal Cards",
+    "Sway_Type_Description": "Draw 3 Ordeal cards to your Pool."
+  },
+  {
+    "Chi": 8,
+    "Element_Type": "Rules",
+    "Type": "Break (Minimal)",
+    "Sway_Type_Description": "Breaks are Drama events that lower the Suspense Level, Relieving Stress, Strains and Shocks from Characters. This is a minimal Break that does not Relieve much Stress."
+  },
+  {
+    "Chi": 9,
+    "Element_Type": "Rules",
+    "Type": "Simple Obstacle",
+    "Sway_Type_Description": "Play a single Card from your Pool or Hand as a simple Obstacle that is added to the Stage of the Ordeal. Otherwise Obstacles can be created via Ordeal Cards or Yarn Cards."
+  },
+  {
+    "Chi": 9,
+    "Element_Type": "Rules",
+    "Type": "Success or Failure Level",
+    "Sway_Type_Description": "This is the upper limit of adding a Success or Failure Level. Success Levels positively affect the Action, or Character performing it, or negatively affect the Opposition. Failure Levels negatively affect the Action or Character, or positively affect the Opposition."
+  },
+  {
+    "Chi": 10,
+    "Element_Type": "Rules",
+    "Type": "Play Two Ordeal Cards",
+    "Sway_Type_Description": "Play Two cards from your Ordeal Pool when you are not normally able to."
+  },
+  {
+    "Chi": 10,
+    "Element_Type": "Rules",
+    "Type": "2 Success or Failure Levels",
+    "Sway_Type_Description": "This is the lower limit of combining 2 Success or Failure Levels. Success Levels positively affect the Action, or Character performing it, or negatively affect the Opposition. Failure Levels negatively affect the Action or Character, or positively affect the Opposition."
+  },
+  {
+    "Chi": 11,
+    "Element_Type": "Rules",
+    "Type": "Ratchet",
+    "Sway_Type_Description": "A Ratchet Dramatic Event is meant to be a direct connection between the Suspense Level and the Narrative, they probably should never be deliberately triggered without considering the ramifications on the Story, except when they are not occurring quickly enough to keep up with a rapidly rising or falling Suspense Level."
+  },
+  {
+    "Chi": 12,
+    "Element_Type": "Rules",
+    "Type": "Draw 4 Ordeal Cards",
+    "Sway_Type_Description": "Draw 4 Ordeal cards to your Ordeal Pool."
+  },
+  {
+    "Chi": 13,
+    "Element_Type": "Rules",
+    "Type": "Facet Boon",
+    "Sway_Type_Description": "Modifying a Facet Boon up one or down one Boon (which also moves the Anti-FacetBoon down one or up one) costs the current Facet or Anti-Facet Boon in Chi, whichever is higher, so this represents the minimum cost to moving a Facet Boon."
+  },
+  {
+    "Chi": 13,
+    "Element_Type": "Rules",
+    "Type": "Unlink Facets",
+    "Sway_Type_Description": "Unlinking a Facet and its Anti-Facet so that each may be moved up or down independently costs the higher of the two current Facet Boons (with a minimum of 13 Chi) in Chi."
+  },
+  {
+    "Chi": 13,
+    "Element_Type": "Rules",
+    "Type": "Distress Cards",
+    "Sway_Type_Description": "Distress Cards are created from Ordeal Cards by Shock Dice. Distress Cards each have a Stress Effect and special rules that follow. If a Character cannot match the Pips with Stress then the Distress Card becomes a Trauma."
+  },
+  {
+    "Chi": 14,
+    "Element_Type": "Rules",
+    "Type": "Wyrd Tarot",
+    "Sway_Type_Description": "Affect, Discard, Play, Redraw, Change or Alter a single Wyrd Tarot card."
+  },
+  {
+    "Chi": 14,
+    "Element_Type": "Rules",
+    "Type": "2 Success or Failure Levels",
+    "Sway_Type_Description": "This is the average of combining 2 Success or Failure Levels. Success Levels positively affect the Action, or Character performing it, or negatively affect the Opposition. Failure Levels negatively affect the Action or Character, or positively affect the Opposition."
+  },
+  {
+    "Chi": 15,
+    "Element_Type": "Rules",
+    "Type": "Play 3 Ordeal Cards",
+    "Sway_Type_Description": "Playing an Extra 3 cards from your Ordeal Pool when you wouldn't normally be able to."
+  },
+  {
+    "Chi": 16,
+    "Element_Type": "Rules",
+    "Type": "Draw 5 Ordeal Cards",
+    "Sway_Type_Description": "Draw 5 Ordeal cards to your Ordeal Pool."
+  },
+  {
+    "Chi": 17,
+    "Element_Type": "Rules",
+    "Type": "Snag",
+    "Sway_Type_Description": "Snags are narrative complications based on a single Yarn Card. Snags are slightly cheaper than a single Yarn Card as they are quite limited in effect."
+  },
+  {
+    "Chi": 18,
+    "Element_Type": "Rules",
+    "Type": "Obstacle",
+    "Sway_Type_Description": "Play 2 Cards from your Pool or Hand as an Obstacle in the Ordeal Stage. Otherwise Obstacles can be created via Ordeal Cards or Yarn Cards."
+  },
+  {
+    "Chi": 19,
+    "Element_Type": "Rules",
+    "Type": "2 Success or Failure Levels",
+    "Sway_Type_Description": "This is the upper limit of combining 2 Success or Failure Levels. Success Levels positively affect the Action, or Character performing it, or negatively affect the Opposition. Failure Levels negatively affect the Action or Character, or positively affect the Opposition."
+  },
+  {
+    "Chi": 19,
+    "Element_Type": "Rules",
+    "Type": "Hurdle",
+    "Sway_Type_Description": "Facet Hurdles are a narrative complication that complicates the current Scene. Scenes can have multiple Facet Hurdles."
+  },
+  {
+    "Chi": 20,
+    "Element_Type": "Rules",
+    "Type": "Play 4 Ordeal Cards",
+    "Sway_Type_Description": "Play 4 cards from your Ordeal Pool when you wouldn't normally be able to."
+  },
+  {
+    "Chi": 20,
+    "Element_Type": "Rules",
+    "Type": "Trauma",
+    "Sway_Type_Description": "A Trauma is a combination of a Wound and a Psych Effect, usually created by Shock and Stress. Traumas can have powerful long term effects upon Characters."
+  },
+  {
+    "Chi": 21,
+    "Element_Type": "Rules",
+    "Type": "Yarn Card",
+    "Sway_Type_Description": "Affect, Discard, Redraw, Change, Ignore or Alter a single Yarn card."
+  },
+  {
+    "Chi": 21,
+    "Element_Type": "Rules",
+    "Type": "Fray",
+    "Sway_Type_Description": "Frays are amongst the simplest and easiest to create \"Scenes\" simply because they can be created with a single Yarn Card."
+  },
+  {
+    "Chi": 21,
+    "Element_Type": "Rules",
+    "Type": "Draw 6 Ordeal Cards",
+    "Sway_Type_Description": "Draw 6 Ordeal cards to your Ordeal Pool."
+  },
+  {
+    "Chi": 21,
+    "Element_Type": "Rules",
+    "Type": "5 Success or Failure Levels",
+    "Sway_Type_Description": "This is the lower limit of combining 5 Success or Failure Levels. Success Levels positively affect the Action, or Character performing it, or negatively affect the Opposition. Failure Levels negatively affect the Action or Character, or positively affect the Opposition."
+  },
+  {
+    "Chi": 22,
+    "Element_Type": "Rules",
+    "Type": "Mantra: Emotional Theme",
+    "Sway_Type_Description": "A Tapestry may have any number of Emotional Themes, although it is usual to focus on only a few during any particular Tale or Game. Emotional themes indicate emotions that are intrinsic to the Tapestry, such as \"Horror\", \"Terror\" or \"Fear\" are part of a Tapestry in a Horror setting. Emotional themes are explored by Characters and Plots that are embedded in the Tapestry, or can be expressed as a \"Mood\" where the audience is the where the intended target of the emotions."
+  },
+  {
+    "Chi": 22,
+    "Element_Type": "Rules",
+    "Type": "Mantra: Conceptual Theme",
+    "Sway_Type_Description": "A Tapestry may have any number of Conceptual Themes, although it is usual to focus on only a few during any particular Tale or Game. Conceptual themes are often questions about aspects of the human condition, although they can also be phrased as \"What if...?\" often too. A good conceptual theme can usually be expressed as \"What is the importance of ...?\". Examples often include Friendship, Ethics, "
+  },
+  {
+    "Chi": 23,
+    "Element_Type": "Rules",
+    "Type": "Mantra: Motif",
+    "Sway_Type_Description": "A Tapestry may have any number of Motifs, from musical Leitmotifs to recurring Characters or Descendants. Each Motif can only occur once per Narrative and cannot occur in two consecutive narratives."
+  },
+  {
+    "Chi": 23,
+    "Element_Type": "Rules",
+    "Type": "Mantra: Motto",
+    "Sway_Type_Description": "A Tapestry may have any number of Mottos. Mottos reflect some aspect of the Tapestry that informs specific Plots and Locations. Mottos can be as vague or as specific as the Yarn-Teller wishes, from \"In the Key of Death\" and \"Keep the guessing\" to \"Child Characters are functionally immortal until their 18th birthday\""
+  },
+  {
+    "Chi": 24,
+    "Element_Type": "Rules",
+    "Type": "Mantra: Synopsis",
+    "Sway_Type_Description": "A Tapestry may have only one Synopsis. The Synopsis is a brief, concise and often abstract summary of the Tapestry’s purpose. Think of it as an elevator pitch for the whole setting, although the Synopsis leaves out the Mottos, Themes and Motifs, as they are specified elsewhere. Example Synopsis could include \"Once upon a time&hellip;\", \"In a Galaxy&hellip;\", \"The Dream City of Dylath-Leen\", \"The Court of Brenin Llwyd\", \"Undersea adventures\" or \"Within the old star port sprawl\". "
+  },
+  {
+    "Chi": 25,
+    "Element_Type": "Rules",
+    "Type": "Play 5 Ordeal Cards",
+    "Sway_Type_Description": "Playing 5 cards simultaneously from your Ordeal Pool when you wouldn't normally be able to."
+  },
+  {
+    "Chi": 26,
+    "Element_Type": "Rules",
+    "Type": "Draw 7 Ordeal Cards",
+    "Sway_Type_Description": "Draw 7 Ordeal cards to your Ordeal Pool."
+  },
+  {
+    "Chi": 27,
+    "Element_Type": "Rules",
+    "Type": "Serious Obstacle",
+    "Sway_Type_Description": "Play 3 Cards from your Pool or Hand as a serious Obstacle in the Ordeal Stage. Otherwise Obstacles can be created via Ordeal Cards or Yarn Cards."
+  },
+  {
+    "Chi": 28,
+    "Element_Type": "Rules",
+    "Type": "Plight",
+    "Sway_Type_Description": "A limited 3 Card Spread that creates a History - Situation - Solution Plight that complicates the current Narrative."
+  },
+  {
+    "Chi": 29,
+    "Element_Type": "Rules",
+    "Type": "Quest",
+    "Sway_Type_Description": "A Quest is a specific 6 Card Hexagram Quest Spread."
+  },
+  {
+    "Chi": 30,
+    "Element_Type": "Rules",
+    "Type": "5 Success or Failure Levels",
+    "Sway_Type_Description": "This is the average of combining 5 Success or Failure Levels. Success Levels positively affect the Action, or Character performing it, or negatively affect the Opposition. Failure Levels negatively affect the Action or Character, or positively affect the Opposition."
+  },
+  {
+    "Chi": 31,
+    "Element_Type": "Rules",
+    "Type": "Geas",
+    "Sway_Type_Description": "A specific 6 Card Yarn Spread, that creates a Geas or a Quest, Revelation and Lore from the same Cards."
+  },
+  {
+    "Chi": 33,
+    "Element_Type": "Rules",
+    "Type": "Yarn Spread",
+    "Sway_Type_Description": "Adjust, redraw, alter or rearrange the cards of any single, unprotected Yarn Spread. Yarn-Spreads are usually protected by the Descendant, Character or Plot that played the cards, which potentially matches the Difficulty to alter the Yarn-Spread to the Difficulty to affect the protector."
+  },
+  {
+    "Chi": 34,
+    "Element_Type": "Rules",
+    "Type": "Hazard (Maximal)",
+    "Sway_Type_Description": "This is the largest a Hazard should ever be (for normal Characters depending upon genre and setting), able to create entire Yarn Spreads to create new dangers for the Character, or turn a whole town against them."
+  },
+  {
+    "Chi": 37,
+    "Element_Type": "Rules",
+    "Type": "New Tapestry",
+    "Sway_Type_Description": "Create a new Tapestry for a Game or Narrative. A Yarn-Teller Character can create a new Tapestry, or Setting for the Narration they are giving. New Tapestries are often created as a result of travelling beyond the edge of the current Tapestry, often such travel beyond the Tapestry is a portal fantasy. "
+  },
+  {
+    "Chi": 45,
+    "Element_Type": "Rules",
+    "Type": "5 Success or Failure Levels",
+    "Sway_Type_Description": "This is the upper limit of combining 5 Success or Failure Levels. Success Levels positively affect the Action, or Character performing it, or negatively affect the Opposition. Failure Levels negatively affect the Action or Character, or positively affect the Opposition."
+  },
+  {
+    "Chi": 51,
+    "Element_Type": "Rules",
+    "Type": "Genre-Bending",
+    "Sway_Type_Description": "Add a single Character Archetype, Descendant, Annex or Proficiency to the Setting from another Genre."
+  },
+  {
+    "Chi": 59,
+    "Element_Type": "Rules",
+    "Type": "Genre-Shifting",
+    "Sway_Type_Description": "Add multiple Archetypes, Descendants, Annexes, Proficiencies and Atmospherics from another Genre to the Setting, that have a profound effect upon the feeling of the setting."
+  },
+  {
+    "Chi": 74,
+    "Element_Type": "Rules",
+    "Type": "Genre-Mashing",
+    "Sway_Type_Description": "Merge two genres, including all archetypes, atmospherics, descendants, hazards, proficiencies etc into the same Setting. This is a non-syncretic mixing that does not create new elements."
+  },
+  {
+    "Chi": 83,
+    "Element_Type": "Rules",
+    "Type": "Genre-Smashing",
+    "Sway_Type_Description": "Merge two genres, including all archetypes, atmospherics, descendants, hazards, proficiencies etc into the same Setting. This is a syncretic mixing, where elements from both genres should interact and create new elements not present in either Genre."
+  },
+  {
+    "Chi": 111,
+    "Element_Type": "Rules",
+    "Type": "Break (Maximal)",
+    "Sway_Type_Description": "This is the maximum effect of a Dramatic Break on a normal Character, which can even remove Carnage+ Wounds from the Character. Although such a powerful Break would normally only be appropriate in the strongest Plots, for some Characters it may not ."
+  },
+  {
+    "Chi": 177,
+    "Element_Type": "Rules",
+    "Type": "Remake Tapestry",
+    "Sway_Type_Description": "Remake the Tapestry of a Game or Narrative. This might add or remove fundamental rules of the universe, such as turning magic (including Nullites and Twists) completely off. "
+  },
+  {
+    "Chi": 230,
+    "Element_Type": "Rules",
+    "Type": "Genre",
+    "Sway_Type_Description": "New genres can be created wholesale, rather than just combining pre-existing genres. Genres are a collection of Atmospherics, Proficiencies, Annexes, Descendants and Character Archetypes."
+  }
+]

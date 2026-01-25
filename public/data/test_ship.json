@@ -1,0 +1,17 @@
+{
+    "name": "Test Ship",
+    "components": [
+        {
+            "id": "hull",
+            "modelUrl": "public/models/hulls/test_hull.gltf",
+            "position": { "x": 0, "y": 0, "z": 0 },
+            "rotation": { "x": 0, "y": 0, "z": 0 }
+        },
+        {
+            "id": "example_engine",
+            "modelUrl": "public/models/components/example_component.gltf",
+            "position": { "x": 0, "y": 0, "z": -5 },
+            "rotation": { "x": 0, "y": 0, "z": 0 }
+        }
+    ]
+}

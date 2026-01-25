@@ -1,0 +1,42 @@
+[
+    {
+        "Type": "Embraced",
+        "Description": "Embraced is the most engaged that a Character can be. There is physical contact between the Characters at multiple locations on each others bodies, as they are literally wrapped around each other. This is the level of engagement of intimate encounters and grappling combats.",
+        "Rules": "Embraced Characters cannot disengage without risk of attack from the other and 5 automatic Failure Levels on the Disengagement action. Embraced Characters cannot be engaged by other Characters individually very easily (they are firstly usually engaged as a unit - with additional targets for each member of the embrace automatically applied) so any attack or Fumble that is directed against one, will threaten both, each additional Success Level in an attack may reduce the Wound applied to the one you aren't targeting by one Level."
+    },
+    {
+        "Type": "Locked",
+        "Description": "Characters that are locked in combat are currently close enough to be exchanging blows between them (they are both within each others Descendants Reach). There will be frequent and swift contact between the Characters or Descendants, usually as melee attacks are exchanged.",
+        "Rules": "Characters who are locked in combat cannot disengage without risk of attack from the other and 2 automatic Failure Levels on the Disengagement action, but the individual Locked Characters may be engaged (and attacked) by other Characters without too much risk to the other Locked Character."
+    },
+    {
+        "Type": "Engaged",
+        "Description": "Characters that are engaged in combat are usually firing shots at each other (either physically or verbally), they will be at greater distance than the Reach of their Descendants, but close enough to shout insults. Characters may circle each other at a distance or try to close as they see fit.",
+        "Rules": "Engaged Characters cannot disengage without risking an attack from the Character they are engaged with 1 automatic Failure Level on the Disengagement action. Engaged Characters may be engaged by multiple Characters without penalty."
+    },
+    {
+        "Type": "Suppressing",
+        "Description": "Characters that are Suppressing are usually firing shots to keep the enemy in cover. They often are not directed Physical attacks at individuals among the enemy, but rather are Psych Duck attacks used on multiple targets to keep them \"ducked\". Suppressing Characters often do not reveal themselves completely from cover either.",
+        "Rules": "Suppressing Characters are lightly engaged with everyone they are attacking. Disengagement requires a Disengagement action and risks an attack (usually a suppression) from those you Suppressed."
+    },
+    {
+        "Type": "Threatening",
+        "Description": "Characters that are threatening another may have a weapon in their hands, or just have a stern glare, threats are nebulous like that. However, a threatening Character is minimally engaged with their target. They are watching the person they are threatening and are ready to make an attack, or counter-attack if the target starts anything.",
+        "Rules": "Threatening Characters are semi-engaged with an enemy, even though they have not even drawn a weapon or spoken a word (note that usually holding a weapon is a lot more intimidating than not). They may make a Disengagement Action to cease threatening, but may be attacked when doing so. However, they may react to any attempted Action immediately after that Characters Draw, by Playing 1 Card as an Attack from their Ordeal Pool, as well as any Prepared Cards from the weapon they are weilding."
+    },
+    {
+        "Type": "Threatened",
+        "Description": "Characters who are threatened or suppressed by another Character are semi-engaged. They are being observed and threatened by another. If they make a move to engage or disengage they will be noticed.",
+        "Rules": "A Character threatened must make Disengagement Action to leave the engagement without risking an attack from the Threatening Character. They can instead Suppress or Engage the enemy, however this Action will risk an Attack from the Threatening Character."
+    },
+    {
+        "Type": "Disengaging",
+        "Description": "A Disengaging Character is trying to back out of the engagement carefully, they may duck behind cover and crawl away, or retreat with their weapons drawn to parry any attacks, or they may keep a shield to the enemy and step out of Reach. The point is to get away without exposing yourself to an easy hit or shot.",
+        "Rules": "Disengaging Characters are trying to disengage from one of the engagement states above (Embraced-Threatened). Disengagement Action involves playing movement cards (<span class=\"t13ne-redcard\">♦</span> Trump), one at a time, that can move you to Reach (to escape Embrace), beyond the Reach (to escape Locked), beyond Range (to escape Engaged), or out of sight or away (to escape Threatened/Threatening), of an enemy you are engaged in (note that some may require specific Pip Difficulties). If the enemy can play a Higher card from their Ordeal Pool as an Attack (<span class=\"t13ne-blackcard\">♠</span> Trump) after any Disengagement card, then you have failed to Disengage, are still at that level of engagement, and have a Wound to Soak. Additional Failure Levels may Increase the Level of the Wound that must be Soaked. Note it is possible therefore to break successfully from Embraced, through Locked, to Engaged, but then be stuck Engaged with a Carnage Wound and another random Wound to Soak."
+    },
+    {
+        "Type": "Disengaged",
+        "Description": "A disengaged Character is not currently engaged or threatened by any one in any way.",
+        "Rules": "No special rules, they are not engaged. If they see, or are spotted by an enemy they may become threatening or threatened, depending upon the situation."
+    }
+]

@@ -1,0 +1,1413 @@
+{
+  "2307": {
+    "id": 2307,
+    "prof": {
+      "Name": [
+        "Doom-weaver",
+        "Doom-weaver Wyrd Monster Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Doom-weaver is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2308": {
+    "id": 2308,
+    "prof": {
+      "Name": [
+        "Foreshadowing",
+        "Foreshadowing Wyrd Narration Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Foreshadowing is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2309": {
+    "id": 2309,
+    "prof": {
+      "Name": [
+        "Shadows from Above",
+        "Shadows from Above Wyrd Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Shadows from Above is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2310": {
+    "id": 2310,
+    "prof": {
+      "Name": [
+        "Axiomatic Ordeals",
+        "Axiomatic Ordeal Wyrd Ordeal Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Axiomatic Ordeals is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2311": {
+    "id": 2311,
+    "prof": {
+      "Name": [
+        "Judge",
+        "Judge Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Judge is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2312": {
+    "id": 2312,
+    "prof": {
+      "Name": [
+        "Judgement",
+        "Judgement Wyrd Psychosocial Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Judgement is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2313": {
+    "id": 2313,
+    "prof": {
+      "Name": [
+        "Capture",
+        "Capture Wyrd Quest Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Capture is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2314": {
+    "id": 2314,
+    "prof": {
+      "Name": [
+        "Fact-finding",
+        "Fact-finding Wyrd Question Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Fact-finding is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2315": {
+    "id": 2315,
+    "prof": {
+      "Name": [
+        "Discretion",
+        "Discretion Wyrd Resolved Hitch Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Discretion is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2316": {
+    "id": 2316,
+    "prof": {
+      "Name": [
+        "Law",
+        "Law Wyrd Rule Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Law is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2317": {
+    "id": 2317,
+    "prof": {
+      "Name": [
+        "Balance",
+        "Balance Wyrd Style Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Balance is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2318": {
+    "id": 2318,
+    "prof": {
+      "Name": [
+        "Axioms",
+        "Axioms Wyrd Sway Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Axioms is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2319": {
+    "id": 2319,
+    "prof": {
+      "Name": [
+        "Narratives",
+        "Narratives Wyrd Tangle Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Narratives is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2320": {
+    "id": 2320,
+    "prof": {
+      "Name": [
+        "Intuition",
+        "Intuition Wyrd Test Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Intuition is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2321": {
+    "id": 2321,
+    "prof": {
+      "Name": [
+        "Law-making",
+        "Law-making Wyrd Test Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Law-making is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2322": {
+    "id": 2322,
+    "prof": {
+      "Name": [
+        "Loopholes",
+        "Loopholes Wyrd Test Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Loopholes is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2323": {
+    "id": 2323,
+    "prof": {
+      "Name": [
+        "Prophecy",
+        "Prophecy Wyrd Test Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Prophecy is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2324": {
+    "id": 2324,
+    "prof": {
+      "Name": [
+        "Magical",
+        "Magical Wyrd Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Magical is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2325": {
+    "id": 2325,
+    "prof": {
+      "Name": [
+        "Meddlers",
+        "Meddlers Wyrd Turn Proficiency",
+        "interferer, busybody, intruder, prying, intrusive"
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Meddlers is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2326": {
+    "id": 2326,
+    "prof": {
+      "Name": [
+        "Allowing",
+        "Allowing Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Allowing is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2327": {
+    "id": 2327,
+    "prof": {
+      "Name": [
+        "Adjudicate",
+        "Adjudicate",
+        ""
+      ],
+      "Description": "Placeholder description.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2328": {
+    "id": 2328,
+    "prof": {
+      "Name": [
+        "Allow",
+        "Allow Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Allow is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2329": {
+    "id": 2329,
+    "prof": {
+      "Name": [
+        "Appraise",
+        "Appraise Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Appraise is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2330": {
+    "id": 2330,
+    "prof": {
+      "Name": [
+        "Bewitch",
+        "Bewitch Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Bewitch is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2331": {
+    "id": 2331,
+    "prof": {
+      "Name": [
+        "Comply",
+        "Comply Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Comply is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2332": {
+    "id": 2332,
+    "prof": {
+      "Name": [
+        "Convict",
+        "Convict Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Convict is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2333": {
+    "id": 2333,
+    "prof": {
+      "Name": [
+        "Declare",
+        "Declare Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Declare is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2334": {
+    "id": 2334,
+    "prof": {
+      "Name": [
+        "Determine",
+        "Determine Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Determine is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2335": {
+    "id": 2335,
+    "prof": {
+      "Name": [
+        "Enact",
+        "Enact Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Enact is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2336": {
+    "id": 2336,
+    "prof": {
+      "Name": [
+        "Enchant",
+        "Enchant Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Enchant is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2337": {
+    "id": 2337,
+    "prof": {
+      "Name": [
+        "Ensorcell",
+        "Ensorcell Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Ensorcell is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2338": {
+    "id": 2338,
+    "prof": {
+      "Name": [
+        "Enthral",
+        "Enthral Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Enthral is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2339": {
+    "id": 2339,
+    "prof": {
+      "Name": [
+        "Forbid",
+        "Forbid Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Forbid is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2340": {
+    "id": 2340,
+    "prof": {
+      "Name": [
+        "Glamour",
+        "Glamour Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Glamour is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2341": {
+    "id": 2341,
+    "prof": {
+      "Name": [
+        "Hypnotise",
+        "Hypnotise Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Hypnotise is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2342": {
+    "id": 2342,
+    "prof": {
+      "Name": [
+        "Legislate",
+        "Legislate Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Legislate is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2343": {
+    "id": 2343,
+    "prof": {
+      "Name": [
+        "Mesmerise",
+        "Mesmerise Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Mesmerise is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2344": {
+    "id": 2344,
+    "prof": {
+      "Name": [
+        "Obey",
+        "Obey Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Obey is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2345": {
+    "id": 2345,
+    "prof": {
+      "Name": [
+        "Pronounce",
+        "Pronounce Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Pronounce is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2346": {
+    "id": 2346,
+    "prof": {
+      "Name": [
+        "Prosecute",
+        "Prosecute Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Prosecute is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2347": {
+    "id": 2347,
+    "prof": {
+      "Name": [
+        "Referee",
+        "Referee Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Referee is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2348": {
+    "id": 2348,
+    "prof": {
+      "Name": [
+        "Respect",
+        "Respect Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Respect is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2349": {
+    "id": 2349,
+    "prof": {
+      "Name": [
+        "Sentence",
+        "Sentence Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Sentence is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2350": {
+    "id": 2350,
+    "prof": {
+      "Name": [
+        "Spellbind",
+        "Spellbind Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Spellbind is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2351": {
+    "id": 2351,
+    "prof": {
+      "Name": [
+        "Trap",
+        "Trap Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Trap is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2352": {
+    "id": 2352,
+    "prof": {
+      "Name": [
+        "Judged",
+        "Judged Wyrd Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Judged is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2353": {
+    "id": 2353,
+    "prof": {
+      "Name": [
+        "Authorised",
+        "Authorised",
+        ""
+      ],
+      "Description": "Placeholder description.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2354": {
+    "id": 2354,
+    "prof": {
+      "Name": [
+        "Bound",
+        "Bound Wyrd Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Bound is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2355": {
+    "id": 2355,
+    "prof": {
+      "Name": [
+        "Condemned",
+        "Condemned Wyrd Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Condemned is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2356": {
+    "id": 2356,
+    "prof": {
+      "Name": [
+        "Distinguished",
+        "Distinguished Wyrd Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Distinguished is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

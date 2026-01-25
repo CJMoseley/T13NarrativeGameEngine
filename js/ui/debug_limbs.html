@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Limb Generation Debugger</title>
+</head>
+<body>
+    <h1>Limb Generation Debugger</h1>
+    <p>Open the browser's developer console (F12) to see the debug output.</p>
+    <pre id="output"></pre>
+
+    <script type="module">
+        import { LoreData } from './js/procgen/lore/LoreData.js';
+        import { SpeciesGenerator } from './js/procgen/lore/factories/SpeciesGenerator.js';
+        import Logger from './js/core/Logger.js';
+
+        const outputEl = document.getElementById('output');
+
+        // Redirect Logger messages to the screen
+        const originalMessageFn = Logger.message;
+        Logger.message = (msg) => {
+            originalMessageFn(msg);
+            outputEl.textContent += `[MESSAGE] ${msg}\n`;
+        };
+        const originalLogVarsFn = Logger.logVariables;
+        Logger.logVariables = (vars) => {
+            originalLogVarsFn(vars);
+            outputEl.textContent += `[VARS] ${JSON.stringify(vars, (key, value) => typeof value === 'bigint' ? value.toString() : value, 2)}\n`;
+        }
+
+        async function debugLimbGeneration() {
+            const funcName = 'debugLimbGeneration';
+            Logger.start(funcName);
+            outputEl.textContent += `[STARTED] ${funcName}\n`;
+
+            try {
+                // 1. Load all necessary lore data
+                await LoreData.load();
+                Logger.message("LoreData loaded successfully.");
+
+                // 2. Instantiate the generator
+                const speciesGenerator = new SpeciesGenerator();
+                Logger.message("SpeciesGenerator instantiated.");
+
+                // 3. Define the species to test
+                const scientificName = "Homo Sapiens Sapiens";
+                const commonName = "Humans";
+                const loreObject = {
+                    commonName: commonName,
+                    scientificName: scientificName
+                };
+
+                // 4. Run the function to derive traits
+                Logger.message(`Deriving traits for '${commonName}' ('${scientificName}')...`);
+                const result = speciesGenerator.deriveTraitsFromHarmonics([scientificName, commonName], loreObject);
+
+                // 5. Log the results
+                Logger.message("--- DEBUG RESULTS ---");
+                console.log("Full derived lore object:", result);
+
+                const traits = result.derivedTraits;
+                outputEl.textContent += "\n--- Key Trait values ---\n";
+                outputEl.textContent += `Limb Count: ${traits.limbCount}\n`;
+                outputEl.textContent += `Locomotive Limbs: ${traits.locomotiveLimbs}\n`;
+                outputEl.textContent += `Dominant Limbs: ${traits.dominantLimbs}\n`;
+                outputEl.textContent += `Specialized Limbs: ${traits.specializedLimbs}\n`;
+                outputEl.textContent += `Body Plan: ${result.bodyPlan}\n`;
+
+
+            } catch (error) {
+                Logger.message(`ERROR in ${funcName}: ${error.stack}`);
+                console.error(error);
+            } finally {
+                Logger.end(funcName);
+                outputEl.textContent += `[ENDED] ${funcName}\n`;
+            }
+        }
+
+        debugLimbGeneration();
+    </script>
+</body>
+</html>

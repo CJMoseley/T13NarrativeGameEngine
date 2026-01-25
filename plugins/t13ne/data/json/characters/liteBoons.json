@@ -1,0 +1,112 @@
+[
+    {
+        "Profs": 1,
+        "Type": "Proficiency",
+        "Umbrals_Nimbeds": "U0:N0",
+        "Description": "The equivalent of a single Facet.",
+        "Boon_Equivalent": 10,
+        "Card_Draw": 1,
+        "Card_Play": 1,
+        "RT": 0,
+        "GRT": 0
+    },
+    {
+        "Profs": 2,
+        "Type": "Skill",
+        "Umbrals_Nimbeds": "U0:N0",
+        "Description": "The equivalent of two proficiencies working together.",
+        "Boon_Equivalent": 19,
+        "Card_Draw": 2,
+        "Card_Play": 1,
+        "RT": 5,
+        "GRT": 0
+    },
+    {
+        "Profs": 3,
+        "Type": "Minor Talent",
+        "Umbrals_Nimbeds": "U1:N0",
+        "Description": "The equivalent of three proficiencies working together to create a Talent with an Umbral.",
+        "Boon_Equivalent": 26,
+        "Card_Draw": 2,
+        "Card_Play": 2,
+        "RT": 7,
+        "GRT": 1
+    },
+    {
+        "Profs": 4,
+        "Type": "Normal Talent",
+        "Umbrals_Nimbeds": "U1:N1",
+        "Description": "The equivalent of four Proficiencies working together as an Talent with an Umbral and a Nimbed.",
+        "Boon_Equivalent": 29,
+        "Card_Draw": 2,
+        "Card_Play": 2,
+        "RT": 7,
+        "GRT": 1
+    },
+    {
+        "Profs": 5,
+        "Type": "Major Talent",
+        "Umbrals_Nimbeds": "U1:N2",
+        "Description": "The equivalent of five Proficiencies working together, as one Talent with an Umbral and 2 Nimbeds.",
+        "Boon_Equivalent": 32,
+        "Card_Draw": 3,
+        "Card_Play": 2,
+        "RT": 8,
+        "GRT": 1
+    },
+    {
+        "Profs": 6,
+        "Type": "Minor Power",
+        "Umbrals_Nimbeds": "U2:N2",
+        "Description": "The equivalent of six Proficiencies working together to create a Power with 2 Umbrals and 2 Nimbeds",
+        "Boon_Equivalent": 38,
+        "Card_Draw": 3,
+        "Card_Play": 3,
+        "RT": 9,
+        "GRT": 2
+    },
+    {
+        "Profs": 7,
+        "Type": "Major Power",
+        "Umbrals_Nimbeds": "U2:N3",
+        "Description": "The equivalent of seven Proficiencies working together to create a Power with 2 Umbrals and 3 Nimbeds.",
+        "Boon_Equivalent": 49,
+        "Card_Draw": 3,
+        "Card_Play": 3,
+        "RT": 10,
+        "GRT": 2
+    },
+    {
+        "Profs": 8,
+        "Type": "Super-Skill",
+        "Umbrals_Nimbeds": "U0:N6",
+        "Description": "Normally made by Two Proficiencies working together to create a Power without Umbrals (a Super-Skill) the Super-Skill loses all Umbrals and gains all the possible Nimbeds of the facet or facets the Proficiency is from. In Lite Terms this is the Equivalent to 6 Nimbeds all 4 Facet Nimbeds are present, two (usually Reward and Extend or Focus) are doubled in effect.",
+        "Boon_Equivalent": 59,
+        "Card_Draw": 4,
+        "Card_Play": 4,
+        "RT": 12,
+        "GRT": 3
+    },
+    {
+        "Profs": 9,
+        "Type": "Super-Talent",
+        "Umbrals_Nimbeds": "U1:N6",
+        "Description": "The Super-Skill adds back in the Umbrals again, to make a Super-Talent. In Lite Terms this is a single Umbral added to 6 Nimbeds (all four Facet Nimbeds with 2 doubled in effect.",
+        "Boon_Equivalent": 92,
+        "Card_Draw": 5,
+        "Card_Play": 4,
+        "RT": 16,
+        "GRT": 3
+    },
+    {
+        "Profs": 10,
+        "Type": "Super-Power",
+        "Umbrals_Nimbeds": "U2:N6*",
+        "Description": "The most powerful a lite proficiencies\/annexes can get. A Super-Power has all Nimbeds of its Facet and can either double the effect of two or add Nimbeds from other Facets.",
+        "Boon_Equivalent": 142,
+        "Card_Draw": 6,
+        "Card_Play": 4,
+        "RT": 21,
+        "GRT": 3
+    }
+]

@@ -1,0 +1,276 @@
+body{	background-color:black;
+}
+img#starfield {
+	width:100%;
+	height:100%;
+	position:fixed;
+	top:0;
+	left:0;
+	filter:blur (7px);
+	-webkit-filter:blur(7px);
+	-moz-filter:blur (7px);
+	-o-filter:blur (7px);
+}
+div#moire{
+	position:fixed;
+	top:-50%;
+	left:-50%;
+	z-index:0;
+	width:200%;
+	height:200%;
+	background-size:cover;
+	background-position:fixed;
+	background:url('svg.php?r=120');
+	animation-name: shimmy;
+				animation-duration: 25s;
+				animation-timing-function: ease-in-out;
+				animation-delay: 0s;
+				animation-iteration-count: infinite;
+				animation-play-state: running;
+				/* Firefox: */
+				-moz-animation-name: shimmy;
+				-moz-animation-duration: 25s;
+				-moz-animation-timing-function: ease-in-out;
+				-moz-animation-delay: 0s;
+				-moz-animation-iteration-count: infinite;
+				-moz-animation-play-state: running;
+				/* Safari and Chrome: */
+				-webkit-animation-name: shimmy;
+				-webkit-animation-duration: 25s;
+				-webkit-animation-timing-function: ease-in-out;
+				-webkit-animation-delay: 0s;
+				-webkit-animation-iteration-count: infinite;
+				-webkit-animation-play-state: running;
+				/* Opera: */
+				-o-animation-name: shimmy;
+				-o-animation-duration: 25s;
+				-o-animation-timing-function: ease-in-out;
+				-o-animation-delay: 0s;
+				-o-animation-iteration-count: infinite;
+-o-animation-play-state: running;
+}
+div#m0{
+position:fixed;
+	top:-50%;
+	left:-50%;
+	z-index:0;
+	width:200%;
+	height:200%;
+	background-size:cover;
+	background-position:fixed;
+	background:url('svg.php?g=120');
+			animation-name: shimmy;
+			animation-duration: 45s;
+			animation-timing-function: ease-in-out;
+			animation-delay: 0s;
+			animation-iteration-count: infinite;
+			animation-play-state: running;
+			/* Firefox: */
+			-moz-animation-name: shimmy;
+			-moz-animation-duration: 45s;
+			-moz-animation-timing-function: ease-in-out;
+			-moz-animation-delay: 0s;
+			-moz-animation-iteration-count: infinite;
+			-moz-animation-play-state: running;
+			/* Safari and Chrome: */
+			-webkit-animation-name: shimmy;
+			-webkit-animation-duration: 45s;
+			-webkit-animation-timing-function: ease-in-out;
+			-webkit-animation-delay: 0s;
+			-webkit-animation-iteration-count: infinite;
+			-webkit-animation-play-state: running;
+			/* Opera: */
+			-o-animation-name: shimmy;
+			-o-animation-duration: 45s;
+			-o-animation-timing-function: ease-in-out;
+			-o-animation-delay: 0s;
+			-o-animation-iteration-count: infinite;
+-o-animation-play-state: running;
+}
+div#m1{
+position:fixed;
+	top:-50%;
+	left:-50%;
+	right:0;
+	z-index:0;
+	width:200%;
+	height:200%;
+	background-size:cover;
+	background-position:fixed;
+	background:url('svg.php?b=120');
+	/*rotation anim */
+			animation-name: shake;
+			animation-duration: 35s;
+			animation-timing-function: linear;
+			animation-delay: 0s;
+			animation-iteration-count: infinite;
+			animation-play-state: running;
+			/* Firefox: */
+			-moz-animation-name: shake;
+			-moz-animation-duration: 35s;
+			-moz-animation-timing-function: linear;
+			-moz-animation-delay: 0s;
+			-moz-animation-iteration-count: infinite;
+			-moz-animation-play-state: running;
+			/* Safari and Chrome: */
+			-webkit-animation-name: shake;
+			-webkit-animation-duration: 35s;
+			-webkit-animation-timing-function: linear;
+			-webkit-animation-delay: 0s;
+			-webkit-animation-iteration-count: infinite;
+			-webkit-animation-play-state: running;
+			/* Opera: */
+			-o-animation-name: shake;
+			-o-animation-duration: 35s;
+			-o-animation-timing-function: linear;
+			-o-animation-delay: 0s;
+			-o-animation-iteration-count: infinite;
+-o-animation-play-state: running;
+}
+div#m2{
+position:fixed;
+	top:-50%;
+	left:-50%;
+	z-index:0;
+	width:200%;
+	height:200%;
+	background-size:cover;
+	background-position:fixed;
+	background:url('svg.php?');
+	animation-name: cog;
+		animation-duration: 60s;
+		animation-iteration-count: infinite;
+		animation-delay:0s;
+	  	animation-timing-function: ease-in-out;
+	  	animation-play-state: running;
+	  	animation-direction:alternate;
+	  	-webkit-animation-name: cog;
+		-webkit-animation-duration: 60s;
+		-webkit-animation-timing-function: ease-in-out;
+		-webkit-animation-delay: 0s;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-play-state: running;
+		-webkit-animation-direction:alternate;
+-moz-animation-name: cog;
+		-moz-animation-duration: 60s;
+		-moz-animation-timing-function: ease-in-out;
+		-moz-animation-delay: 0s;
+		-moz-animation-iteration-count: infinite;
+		-moz-animation-play-state: running;
+		-moz-animation-direction:alternate;
+-o-animation-name: cog;
+		-o-animation-duration: 60s;
+		-o-animation-timing-function: ease-in-out;
+		-o-animation-delay: 0s;
+		-o-animation-iteration-count: infinite;
+		-o-animation-play-state: running;
+		-o-animation-direction:alternate;
+
+}
+div#m3{
+position:fixed;
+	top:-50%;
+	left:-50%;
+	z-index:0;
+	width:200%;
+	height:200%;
+	background-size:cover;
+	background-position:fixed;
+	background:url('svg.php?');
+	animation-name: bcog;
+	animation-duration: 145s;
+	animation-timing-function: linear;
+	animation-delay: 0s;
+	animation-iteration-count: infinite;
+	animation-play-state: running;
+	/* Firefox: */
+	-moz-animation-name: bcog;
+	-moz-animation-duration: 145s;
+	-moz-animation-timing-function: linear;
+	-moz-animation-delay: 0s;
+	-moz-animation-iteration-count: infinite;
+	-moz-animation-play-state: running;
+	/* Safari and Chrome: */
+	-webkit-animation-name: bcog;
+	-webkit-animation-duration: 145s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-delay: 0s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-play-state: running;
+	/* Opera: */
+	-o-animation-name: bcog;
+	-o-animation-duration: 145s;
+	-o-animation-timing-function: linear;
+	-o-animation-delay: 0s;
+	-o-animation-iteration-count: infinite;
+-o-animation-play-state: running;
+}
+
+
+
+@keyframes cog {  from { transform: rotate(0deg);} to {transform: rotate(360deg);}}
+@-moz-keyframes cog /* Firefox */ {from {-moz-transform: rotate(0deg);} to { -moz-transform: rotate(360deg);}}
+@-webkit-keyframes cog /* Safari and Chrome */{from {-webkit-transform: rotate(0deg);} to { -webkit-transform: rotate(360deg);}}
+@-o-keyframes cog /* Opera */ {from {-o-transform: rotate(0deg);}to {-o-transform: rotate(360deg);}}
+
+@keyframes bcog {  from { transform: rotate(360deg);} to {transform: rotate(0deg);}}
+@-moz-keyframes bcog /* Firefox */ {from {-moz-transform: rotate(360deg);} to { -moz-transform: rotate(0deg);}}
+@-webkit-keyframes bcog /* Safari and Chrome */{from {-webkit-transform: rotate(360deg);} to { -webkit-transform: rotate(0deg);}}
+@-o-keyframes bcog /* Opera */ {from {-o-transform: rotate(360deg);}to {-o-transform: rotate(0deg);}}
+
+@keyframes shimmy {
+	0% {transform:scale(100%,100%);}
+	25% {transform:scale(150%,150%);transform:rotate(2deg);}
+	50% {transform:scale(100%,150%);transform:rotate(1deg);}
+	75% {transform:scale(150%,100%);transform:rotate(-2deg);}
+	100% {transform:scale(100%,100%);}
+}
+@-webkit-keyframes shimmy {
+	0% {-webkit-transform:scale(100%,100%);}
+	25% {-webkit-transform:scale(150%,150%);-webkit-transform:rotate(2deg);}
+	50% {-webkit-transform:scale(100%,150%);-webkit-transform:rotate(1deg);}
+	75% {-webkit-transform:scale(150%,100%);-webkit-transform:rotate(-2deg);}
+	100% {-webkit-transform:scale(100%,100%);}
+}
+@-moz-keyframes shimmy {
+	0% {-moz-transform:scale(100%,100%);}
+	25% {-moz-transform:scale(150%,150%);-moz-transform:rotate(2deg);}
+	50% {-moz-transform:scale(100%,150%);-moz-transform:rotate(1deg);}
+	75% {-moz-transform:scale(150%,100%);-moz-transform:rotate(-2deg);}
+	100% {-moz-transform:scale(100%,100%);}
+}
+@-o-keyframes shimmy {
+	0% {-o-transform:scale(100%,100%);}
+	25% {-o-transform:scale(150%,150%);-o-transform:rotate(2deg);}
+	50% {-o-transform:scale(100%,150%);-o-transform:rotate(1deg);}
+	75% {-o-transform:scale(150%,100%);-o-transform:rotate(-2deg);}
+	100% {-o-transform:scale(100%,100%);}
+}
+@keyframes shake {
+	0% {transform:scale(100%,100%);}
+	25% {transform:scale(150%,100%);transform:translatex(-5%);}
+	50% {transform:scale(100%,100%);transform:translatex(0);}
+	75% {transform:scale(150%,110%);transform:translatex(5%);}
+	100% {transform:scale(100%,100%); transform:translatex(0);}
+}
+@-webkit-keyframes shake {
+	0% {-webkit-transform:scale(100%,100%);}
+	25% {-webkit-transform:scale(150%,100%);-webkit-transform:translatex(-5%);}
+	50% {-webkit-transform:scale(100%,100%);-webkit-transform:translatex(0);}
+	75% {-webkit-transform:scale(150%,110%);-webkit-transform:translatex(5%);}
+	100% {-webkit-transform:scale(100%,100%); -webkit-transform:translatex(0);}
+}
+@-moz-keyframes shake {
+	0% {-moz-transform:scale(100%,100%);}
+	25% {-moz-transform:scale(150%,100%);-moz-transform:translatex(-5%);}
+	50% {-moz-transform:scale(100%,100%);-moz-transform:translatex(0);}
+	75% {-moz-transform:scale(150%,110%);-moz-transform:translatex(5%);}
+	100% {-moz-transform:scale(100%,100%); -moz-transform:translatex(0);}
+}
+@-o-keyframes shake {
+	0% {-o-transform:scale(100%,100%);}
+	25% {-o-transform:scale(150%,100%);-o-transform:translatex(-5%);}
+	50% {-o-transform:scale(100%,100%);-o-transform:translatex(0);}
+	75% {-o-transform:scale(150%,110%);-o-transform:translatex(5%);}
+	100% {-o-transform:scale(100%,100%); -o-transform:translatex(0);}
+}

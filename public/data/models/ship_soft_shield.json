@@ -1,0 +1,39 @@
+{
+    "metadata": {
+        "type": "SoftBodyModel",
+        "description": "A soft-body representation of a ship shield, defined by vertices and connections for physics simulation, allowing for deformation.",
+        "generator": "Gemini Agent"
+    },
+    "softbody_data": {
+        "vertices": [
+            // Example vertices forming a rough shield shape around a ship
+            // Front-top, Front-bottom, Front-left, Front-right
+            [0, 1, 1.5], [0, -1, 1.5], [-1.5, 0, 0], [1.5, 0, 0],
+            // Mid-top, Mid-bottom, Mid-left, Mid-right
+            [0, 1.2, 0], [0, -1.2, 0], [-1.7, 0, -0.5], [1.7, 0, -0.5],
+            // Back-top, Back-bottom, Back-left, Back-right
+            [0, 0.8, -1.5], [0, -0.8, -1.5], [-1.3, 0, -1], [1.3, 0, -1]
+        ],
+        "edges": [
+            // Connections to form a "cage" around the ship
+            [0,1], [0,2], [0,3], [1,2], [1,3],
+            [4,5], [4,6], [4,7], [5,6], [5,7],
+            [8,9], [8,10], [8,11], [9,10], [9,11],
+
+            // Connections between layers
+            [0,4], [1,5], [2,6], [3,7],
+            [4,8], [5,9], [6,10], [7,11],
+
+            // Cross-connections for more rigidity/detail
+            [0,5], [1,4], [2,7], [3,6],
+            [4,9], [5,8], [6,11], [7,10]
+        ],
+        "physics_properties": {
+            "spring_constant": 0.8,
+            "damping_coefficient": 0.2,
+            "pressure_coefficient": 0.05,
+            "volume_constraint": true,
+            "mass_per_vertex": 0.05
+        }
+    }
+}

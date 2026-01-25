@@ -1,0 +1,4 @@
+{
+    "ollama-participant.model": "qwen3-coder",
+    "ollamaAgent.model": "deepseek-coder-v2"
+}

@@ -1,0 +1,1445 @@
+{
+  "451": {
+    "id": 451,
+    "prof": {
+      "Name": [
+        "Emotionless",
+        "Emotionless Fury Zero Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Emotionless in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "452": {
+    "id": 452,
+    "prof": {
+      "Name": [
+        "Blank",
+        "Blank Fury Zero Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Blank in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "453": {
+    "id": 453,
+    "prof": {
+      "Name": [
+        "Icy Locations",
+        "Icy Location Fury Zero Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Icy Locations in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "454": {
+    "id": 454,
+    "prof": {
+      "Name": [
+        "Timid",
+        "Timid Fury Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Timid in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "455": {
+    "id": 455,
+    "prof": {
+      "Name": [
+        "Feeble",
+        "Feeble Fury Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Feeble in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "456": {
+    "id": 456,
+    "prof": {
+      "Name": [
+        "Gentle Locations",
+        "Gentle Location Fury Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Gentle Locations in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "457": {
+    "id": 457,
+    "prof": {
+      "Name": [
+        "Meek",
+        "Meek Fury Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Meek in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "458": {
+    "id": 458,
+    "prof": {
+      "Name": [
+        "Humble",
+        "Humble Fury Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Humble in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "459": {
+    "id": 459,
+    "prof": {
+      "Name": [
+        "Modest Locations",
+        "Modest Location Fury Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Modest Locations in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "460": {
+    "id": 460,
+    "prof": {
+      "Name": [
+        "Docile",
+        "Docile Fury Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Docile in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "461": {
+    "id": 461,
+    "prof": {
+      "Name": [
+        "Easy",
+        "Easy Fury Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Easy in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "462": {
+    "id": 462,
+    "prof": {
+      "Name": [
+        "Adaptable Locations",
+        "Adaptable Location Fury Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Adaptable Locations in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "463": {
+    "id": 463,
+    "prof": {
+      "Name": [
+        "Placid",
+        "Placid Fury Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Placid in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "464": {
+    "id": 464,
+    "prof": {
+      "Name": [
+        "Quiet",
+        "Quiet Fury Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Quiet in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "465": {
+    "id": 465,
+    "prof": {
+      "Name": [
+        "Tranquil Locations",
+        "Tranquil Location Fury Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Tranquil Locations in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "466": {
+    "id": 466,
+    "prof": {
+      "Name": [
+        "Excited",
+        "Excited Fury Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Excited in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "467": {
+    "id": 467,
+    "prof": {
+      "Name": [
+        "Whining",
+        "Whining Fury Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Whining in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "468": {
+    "id": 468,
+    "prof": {
+      "Name": [
+        "Active Locations",
+        "Active Location Fury Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Active Locations in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "469": {
+    "id": 469,
+    "prof": {
+      "Name": [
+        "Agitated",
+        "Agitated Fury Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Agitated in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "470": {
+    "id": 470,
+    "prof": {
+      "Name": [
+        "Humming",
+        "Humming Fury Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Humming in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "471": {
+    "id": 471,
+    "prof": {
+      "Name": [
+        "Charged Locations",
+        "Charged Location Fury Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Charged Locations in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "472": {
+    "id": 472,
+    "prof": {
+      "Name": [
+        "Confident",
+        "Confident Fury High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Confident in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "473": {
+    "id": 473,
+    "prof": {
+      "Name": [
+        "Assertive",
+        "Assertive Fury High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Assertive in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "474": {
+    "id": 474,
+    "prof": {
+      "Name": [
+        "Established Locations",
+        "Established Location Fury High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Established Locations in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "475": {
+    "id": 475,
+    "prof": {
+      "Name": [
+        "Grumpy",
+        "Grumpy Fury High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Grumpy in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "476": {
+    "id": 476,
+    "prof": {
+      "Name": [
+        "Fierce",
+        "Fierce Fury High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Fierce in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "477": {
+    "id": 477,
+    "prof": {
+      "Name": [
+        "Ugly Locations",
+        "Ugly Location Fury High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Ugly Locations in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "478": {
+    "id": 478,
+    "prof": {
+      "Name": [
+        "Angry",
+        "Angry Fury Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Angry in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "479": {
+    "id": 479,
+    "prof": {
+      "Name": [
+        "Brutal",
+        "Brutal Fury Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Brutal in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "480": {
+    "id": 480,
+    "prof": {
+      "Name": [
+        "Scarred Locations",
+        "Scarred Location Fury Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Scarred Locations in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "481": {
+    "id": 481,
+    "prof": {
+      "Name": [
+        "Furious",
+        "Furious Fury Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Furious in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "482": {
+    "id": 482,
+    "prof": {
+      "Name": [
+        "Military",
+        "Military Fury Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Military in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "483": {
+    "id": 483,
+    "prof": {
+      "Name": [
+        "Blasted Locations",
+        "Blasted Location Fury Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Blasted Locations in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "484": {
+    "id": 484,
+    "prof": {
+      "Name": [
+        "Enraged",
+        "Enraged Fury Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Enraged in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "485": {
+    "id": 485,
+    "prof": {
+      "Name": [
+        "Combat",
+        "Combat Fury Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Combat in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "486": {
+    "id": 486,
+    "prof": {
+      "Name": [
+        "War-Torn Locations",
+        "War-Torn Location Fury Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, War-Torn Locations in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "487": {
+    "id": 487,
+    "prof": {
+      "Name": [
+        "Wrathful",
+        "Wrathful Fury Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Wrathful in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "488": {
+    "id": 488,
+    "prof": {
+      "Name": [
+        "War",
+        "War Fury Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, War in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "489": {
+    "id": 489,
+    "prof": {
+      "Name": [
+        "Battlefront Locations",
+        "Battlefront Location Fury Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Battlefront Locations in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "490": {
+    "id": 490,
+    "prof": {
+      "Name": [
+        "Irritation",
+        "Irritation Fury Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Irritation in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "0",
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "491": {
+    "id": 491,
+    "prof": {
+      "Name": [
+        "Anger",
+        "Anger Fury Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Anger in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "0",
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "492": {
+    "id": 492,
+    "prof": {
+      "Name": [
+        "Rage",
+        "Rage Fury Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Rage in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "0",
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "493": {
+    "id": 493,
+    "prof": {
+      "Name": [
+        "Approval",
+        "Approval Fury Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Approval in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "0",
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "494": {
+    "id": 494,
+    "prof": {
+      "Name": [
+        "Fun",
+        "Fun Fury Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Fun in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "0",
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "495": {
+    "id": 495,
+    "prof": {
+      "Name": [
+        "Fervour",
+        "Fervour Fury Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Fervour in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "0",
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "496": {
+    "id": 496,
+    "prof": {
+      "Name": [
+        "Attack",
+        "Attack Fury Action Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Attack in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "497": {
+    "id": 497,
+    "prof": {
+      "Name": [
+        "Bedlam",
+        "Bedlam Fury Attack Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Bedlam in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "498": {
+    "id": 498,
+    "prof": {
+      "Name": [
+        "Frenzy",
+        "Frenzy Fury Critical Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Frenzy in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "499": {
+    "id": 499,
+    "prof": {
+      "Name": [
+        "Aggressor",
+        "Aggressor Fury Core Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Aggressor in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "500": {
+    "id": 500,
+    "prof": {
+      "Name": [
+        "Loud",
+        "Loud Fury Descendants Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Loud in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

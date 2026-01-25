@@ -1,0 +1,1446 @@
+{
+  "801": {
+    "id": 801,
+    "prof": {
+      "Name": [
+        "Entertaining",
+        "Entertaining Jeer Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Entertaining is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "802": {
+    "id": 802,
+    "prof": {
+      "Name": [
+        "Amusing Locations",
+        "Amusing Location Jeer Medium Boon Location Adjective Proficiency",
+        "funny, entertaining, diverting, humorous, comical"
+      ],
+      "Description": "With a sharp, mocking wit, Amusing Locations is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "803": {
+    "id": 803,
+    "prof": {
+      "Name": [
+        "Funny",
+        "Funny Jeer Medium Boon Adjective Proficiency",
+        "comical, humorous, hilarious, droll, witty"
+      ],
+      "Description": "With a sharp, mocking wit, Funny is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "804": {
+    "id": 804,
+    "prof": {
+      "Name": [
+        "Fun",
+        "Fun Jeer Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Fun is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "805": {
+    "id": 805,
+    "prof": {
+      "Name": [
+        "Lively Locations",
+        "Lively Location Jeer Medium Boon Location Adjective Proficiency",
+        "rustic, spirited, active, energetic, animated"
+      ],
+      "Description": "With a sharp, mocking wit, Lively Locations is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "806": {
+    "id": 806,
+    "prof": {
+      "Name": [
+        "Witty",
+        "Witty Jeer High Boon Adjective Proficiency",
+        "clever, sharp, keen, bright, whimsical"
+      ],
+      "Description": "With a sharp, mocking wit, Witty is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "807": {
+    "id": 807,
+    "prof": {
+      "Name": [
+        "Keen",
+        "Keen Jeer High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Keen is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "808": {
+    "id": 808,
+    "prof": {
+      "Name": [
+        "Whimsical Locations",
+        "Whimsical Location Jeer High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Whimsical Locations is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "809": {
+    "id": 809,
+    "prof": {
+      "Name": [
+        "Hilarious",
+        "Hilarious Jeer High Boon Adjective Proficiency",
+        "side-splitting, uproarious, noisy, festive"
+      ],
+      "Description": "With a sharp, mocking wit, Hilarious is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "810": {
+    "id": 810,
+    "prof": {
+      "Name": [
+        "Noisy",
+        "Noisy Jeer High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Noisy is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "811": {
+    "id": 811,
+    "prof": {
+      "Name": [
+        "Festive Locations",
+        "Festive Location Jeer High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Festive Locations is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "812": {
+    "id": 812,
+    "prof": {
+      "Name": [
+        "Ridiculous",
+        "Ridiculous Jeer Very-High Boon Adjective Proficiency",
+        "absurd, preposterous, laughable, silly, outrageous"
+      ],
+      "Description": "With a sharp, mocking wit, Ridiculous is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "813": {
+    "id": 813,
+    "prof": {
+      "Name": [
+        "Silly",
+        "Silly Jeer Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Silly is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "814": {
+    "id": 814,
+    "prof": {
+      "Name": [
+        "Outrageous Locations",
+        "Outrageous Location Jeer Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Outrageous Locations is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "815": {
+    "id": 815,
+    "prof": {
+      "Name": [
+        "Goofy",
+        "Goofy Jeer Very-High Boon Adjective Proficiency",
+        "silly, kooky, wacky, zany, weird"
+      ],
+      "Description": "With a sharp, mocking wit, Goofy is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "816": {
+    "id": 816,
+    "prof": {
+      "Name": [
+        "Kooky",
+        "Kooky Jeer Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Kooky is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "817": {
+    "id": 817,
+    "prof": {
+      "Name": [
+        "Weird Locations",
+        "Weird Location Jeer Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Weird Locations is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "818": {
+    "id": 818,
+    "prof": {
+      "Name": [
+        "Ludicrous",
+        "Ludicrous Jeer Very-High Boon Adjective Proficiency",
+        "laughable, absurd, preposterous, crazy, eccentric"
+      ],
+      "Description": "With a sharp, mocking wit, Ludicrous is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "819": {
+    "id": 819,
+    "prof": {
+      "Name": [
+        "Crazy",
+        "Crazy Jeer Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Crazy is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "820": {
+    "id": 820,
+    "prof": {
+      "Name": [
+        "Eccentric Locations",
+        "Eccentric Location Jeer Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Eccentric Locations is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "821": {
+    "id": 821,
+    "prof": {
+      "Name": [
+        "Nonsensical",
+        "Nonsensical Jeer Very-High Boon Adjective Proficiency",
+        "meaningless, absurd, irrational, bizarre, foolish"
+      ],
+      "Description": "With a sharp, mocking wit, Nonsensical is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "822": {
+    "id": 822,
+    "prof": {
+      "Name": [
+        "Bizarre",
+        "Bizarre Jeer Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Bizarre is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "823": {
+    "id": 823,
+    "prof": {
+      "Name": [
+        "Irrational Locations",
+        "Irrational Location Jeer Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Irrational Locations is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "824": {
+    "id": 824,
+    "prof": {
+      "Name": [
+        "Impossible",
+        "Impossible Jeer Very-High Boon Adjective Proficiency",
+        "unattainable, absurd, impassable, unthinkable, hopeless"
+      ],
+      "Description": "With a sharp, mocking wit, Impossible is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "825": {
+    "id": 825,
+    "prof": {
+      "Name": [
+        "Absurd",
+        "Absurd Jeer Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Absurd is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "826": {
+    "id": 826,
+    "prof": {
+      "Name": [
+        "Impassable Locations",
+        "Impassable Location Jeer Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Impassable Locations is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "827": {
+    "id": 827,
+    "prof": {
+      "Name": [
+        "Impertinence",
+        "Impertinence Jeer Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Impertinence is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "0",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "828": {
+    "id": 828,
+    "prof": {
+      "Name": [
+        "Insolent",
+        "Insolent Jeer Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Insolent is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "0",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "829": {
+    "id": 829,
+    "prof": {
+      "Name": [
+        "Contempt",
+        "Contempt Jeer Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Contempt is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "0",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "830": {
+    "id": 830,
+    "prof": {
+      "Name": [
+        "Amused",
+        "Amused Jeer Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Amused is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "0",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "831": {
+    "id": 831,
+    "prof": {
+      "Name": [
+        "Mirthful",
+        "Mirthful Jeer Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Mirthful is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "0",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "832": {
+    "id": 832,
+    "prof": {
+      "Name": [
+        "Joy",
+        "Joy Jeer Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Joy is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "0",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "833": {
+    "id": 833,
+    "prof": {
+      "Name": [
+        "Joke",
+        "Joke Jeer Action Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Joke is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "834": {
+    "id": 834,
+    "prof": {
+      "Name": [
+        "Freeze",
+        "Freeze Jeer Attack Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Freeze is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "835": {
+    "id": 835,
+    "prof": {
+      "Name": [
+        "Zinger",
+        "Zinger Jeer Critical Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Zinger is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "836": {
+    "id": 836,
+    "prof": {
+      "Name": [
+        "Joker",
+        "Joker Jeer Core Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Joker is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "837": {
+    "id": 837,
+    "prof": {
+      "Name": [
+        "Game",
+        "Game Jeer Descendants Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Game is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "838": {
+    "id": 838,
+    "prof": {
+      "Name": [
+        "Retorting",
+        "Retorting Jeer Edge Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Retorting is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "839": {
+    "id": 839,
+    "prof": {
+      "Name": [
+        "Retorting",
+        "Retorting Jeer Glow Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Retorting is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "840": {
+    "id": 840,
+    "prof": {
+      "Name": [
+        "Humiliation",
+        "Humiliation Jeer Failure Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Humiliation is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "841": {
+    "id": 841,
+    "prof": {
+      "Name": [
+        "Amusing",
+        "Amusing Jeer Fumble Proficiency",
+        "funny, entertaining, diverting, humorous, comical"
+      ],
+      "Description": "With a sharp, mocking wit, Amusing is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "842": {
+    "id": 842,
+    "prof": {
+      "Name": [
+        "Feelings",
+        "Feelings Jeer Gnarl Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Feelings is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "843": {
+    "id": 843,
+    "prof": {
+      "Name": [
+        "Pride",
+        "Pride Jeer Herald Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Pride is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "844": {
+    "id": 844,
+    "prof": {
+      "Name": [
+        "Odd",
+        "Odd Jeer Hitch Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Odd is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "845": {
+    "id": 845,
+    "prof": {
+      "Name": [
+        "Performance",
+        "Performance Jeer Hurdle Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Performance is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "846": {
+    "id": 846,
+    "prof": {
+      "Name": [
+        "Mockery (Illusion)",
+        "Mockery (Illusion) Jeer Incarna Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Mockery (Illusion) is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "847": {
+    "id": 847,
+    "prof": {
+      "Name": [
+        "Entertainments Locations",
+        "Entertainments Location Jeer Location Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Entertainments Locations is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "848": {
+    "id": 848,
+    "prof": {
+      "Name": [
+        "Joke",
+        "Joke Jeer Lore Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Joke is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "849": {
+    "id": 849,
+    "prof": {
+      "Name": [
+        "Mockery",
+        "Mockery Jeer Monster Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Mockery is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "850": {
+    "id": 850,
+    "prof": {
+      "Name": [
+        "Humour",
+        "Humour Jeer Narration Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Humour is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,211 @@
+{
+    "ANIMAL_BASES": [
+        "Wolf", "Fox", "Lion", "Tiger", "Bear", "Raccoon", "Otter", "Badger", "Gorilla", "Rhino",
+        "Panda", "Sloth", "Koala", "Lemur", "Chimpanzee", "Dingo", "Coyote", "Hyena", "Jaguar",
+        "Elephant", "Bison", "Horse", "Zebra", "Deer", "Kangaroo", "Dolphin", "Orca", "Bat",
+        "Pangolin", "Eagle", "Hawk", "Raven", "Parrot", "Crocodile", "Turtle", "Iguana", "Viper",
+        "Octopus", "Squid", "Mantis", "Scorpion", "Crab", "Frog", "Salamander", "Chitinous"
+    ],
+    "ANIMAL_TO_LATIN_MAPPING": {
+        "Wolf": "Canis Lupus", "Fox": "Vulpes", "Lion": "Felis Leo", "Tiger": "Felis Tigris",
+        "Bear": "Ursa", "Raccoon": "Procyon", "Otter": "Lutra", "Badger": "Meles", "Gorilla": "Gorilla",
+        "Rhino": "Rhinoceros", "Elephant": "Loxodonta", "Bison": "Bison", "Horse": "Equus",
+        "Zebra": "Equus Zebra", "Deer": "Cervus", "Kangaroo": "Macropus", "Dolphin": "Delphinus",
+        "Orca": "Orcinus", "Bat": "Chiroptera", "Pangolin": "Pholidota", "Panda": "Ailuropoda",
+        "Sloth": "Bradypus", "Koala": "Phascolarctos", "Lemur": "Lemuridae", "Chimpanzee": "Pan Troglodytes",
+        "Hawk": "Accipiter", "Raven": "Corvus", "Parrot": "Psittacidae", "Crocodile": "Crocodylus",
+        "Turtle": "Testudines", "Iguana": "Iguanidae", "Viper": "Vipera", "Octopus": "Octopoda",
+        "Squid": "Teuthida", "Mantis": "Mantodea", "Scorpion": "Scorpiones", "Crab": "Brachyura",
+        "Frog": "Anura", "Salamander": "Salamandridae", "Chitinous": "Exosapien"
+    },
+    "THERIOS_COMMON_ADJECTIVES": [
+        "Furred", "Clawed", "Scaled", "Winged", "Deep", "Burrow", "Quickened", "River", "Pack",
+        "Solitary", "Bone", "Quiet", "Sky", "Tusked", "Hive", "Bio", "Earth", "Air", "Shadow", "Glacial", "Canyon", "Swamp"
+        , "Forest", "Mountain", "Desert", "Oceanic", "Arctic", "Volcanic", "Subterranean", "Arboreal", "Nocturnal"
+    ],
+    "THERIOS_COMMON_NOUNS": [
+        "Kin", "Folk", "Blood", "Lopers", "Runners", "Speakers", "Stalkers", "Sailors", "Breakers",
+        "Minds", "Forms", "Shapers", "Dancers", "Hunters", "Wanderers", "Clans", "Broods", "Vanguards"
+        , "Guardians", "Sentinels", "Seekers", "Dreamers", "Weavers", "Builders", "Harvesters", "Nomads"
+    ],
+    "HUMAN_ORIGIN_PREFIX": [
+        "Cthonian", "Europan", "Martian", "Cytherean", "Titanian", "Solarian", "Proximan", "Keplerian", "Trappist"
+    ],
+    "HUMAN_CULTURE_SUFFIX": [
+        "Combine", "Dominion", "Expanse", "Union", "Conglomerate", "Alliance", "Mandate", "Pact", "Sodality"
+    ],
+    "HUMAN_TRANSHUMAN_MODIFIERS": [
+        "Synth-Augmented", "Bio-Adapted", "Cyber-Linked", "Void-Born", "Gene-Forged", "Psion-Evolved", "Noo-Sapiens",
+        "Quantum-Entangled", "Neural-Networked", "Cryo-Preserved", "Digital-Consciousness", "Exo-Adapted"
+    ],
+    "ALIEN_PREFIX": [
+        "K'th", "Zor", "Glim", "Fl'une", "Xylo", "P'tarr", "Vreen", "Jorl", "Q'lar", "Th'un", "Z'rax", "V'lor",
+        "H'rak", "M'gath", "S'karr", "T'kon", "N'yarr", "F'tang", "G'nath"
+    ],
+    "ALIEN_BODYPLAN": [
+        "Ambulators", "Floaters", "Diggers", "Swarm", "Climbers", "Gliders", "Thinkers"
+    ],
+    "ALIEN_SUFFIX": [
+        "ax", "ix", "on", "ul", "esh", "org", "uun"
+    ],
+    "ALIEN_JOINERS": [
+        "'", "-", ""
+    ],
+    "SYNTHETIC_PREFIX": [
+        "Unitary", "Integrated", "Autonomous", "Networked", "System", "Mainframe", "Core", "Nexus",
+        "Unitary", "Integrated", "Autonomous", "Networked", "System", "Mainframe", "Core", "Nexus"
+    ],
+    "DRONE_FUNCTION": [
+        "Cognition", "Protocol", "Directive", "Construct", "Logic", "Matrix", "Process", "Authority"
+    ],
+    "DRONE_DESIGNATION": [
+        "734", "Alpha", "Omega", "Prime", "Zero", "Delta-V", "Sigma-9", "Rho"
+    ],    
+    "LATIN_PREFIXES": [
+        "Homo", "Arctos", "Canis", "Felis", "Terra", "Stellar", "Ultra", "Magnus", "Nox", "Cael",
+        "Aether", "Avis", "Reptilia", "Aqua", "Insecta", "Corpus", "Machina", "Gelo", "Fluvius",
+        "Vex", "Primus", "Astra", "Solis", "Umbra", "Ferrus"
+    ],
+    "LATIN_SUFFIXES": [
+        "Sapiens", "Arctus", "Lupus", "Nocturna", "Marinus", "Terran", "Volans", "Ingenium",
+        "Nexus", "Aetherius", "Priscus", "Dominus", "Vetus", "Simius", "Piscis", "Ferrus",
+        "Glacialis", "Synthetica", "Fluidus", "Automata", "Digitalis", "Pulsaris", "Xenom"
+    ],
+    "DRACO_ANCIENT_BASES": [ 
+        "Pteranodon", "Archaeopteryx", "Dimetrodon", "Ichthyosaur", "Plesiosaur", "Mosasaur",
+        "Mosasaur", "Plesiosaur", "Pterodactyl", "Iguanodon", "Triceratops", "Velociraptor",
+        "Tyrannosaur", "Spinosaurus", "Coelacanth", "Archaeopteryx", "Dimetrodon",
+        "Rhamphorhynchus", "Stegosaurus", "Brachiosaurus", "Giganotosaurus"
+    ],
+    "DRACO_THEMATIC_SUFFIXES": [
+        "Deep Brood", "Sky Wardens", "Iron Scales", "Great Lineage", "Ascendancy", "Silent Hand",
+        "Sun Cult", "Cold Blood Collective", "Mire Guardians", "Basalt Sentinels", "Ridge Lords",
+        "The Primal Path", "Scaled Dynasty"
+    ],
+    "KATHORRI_CRYOGENIC_PREFIX": [
+        "Superfluid", "Cryo", "Isotope", "Neural", "Resonance", "Plasma", "Gel-State", "Aqueous", "Quantum",
+        "Glacial", "Rime", "Chrono", "Aether", "Void", "Stellar", "Cosmic", "Nebula", "Crystal",
+        "Methanol", "Liquid", "Zero-Point", "Frost", "Deep-Cold", "Hydro"
+    ],
+    "KATHORRI_FLUIDIC_SUFFIX": [
+        "Data Core", "Network", "Pylon", "Matrix", "Emissary", "Plexus", "Shard", "Emanation",
+        "Nexus", "Relay", "Conduit", "Form", "Structure", "Assembly"
+    ],
+    "VEMLEK_ADJECTIVES": [
+        "Obsidian", "Cold", "Redundant", "Ghost", "Sentinel", "Zero-Day", "Synthetic", "Logic", "Harmonic", "Quantum",
+        "Antecedent", "Fractal", "Binary", "Ghostly", "Iterative", "Adaptive", "Cognitive", "Neural", "Digital", "Virtual"
+    ],
+    "VEMLEK_CONCEPTS": [
+        "Protocol", "Grid", "Subroutines", "Collective", "Engine", "Doctrine", "Enforcement",
+        "Sanctuary", "Domain", "Cache", "Archivists", "Integrity", "Nexus", "Matrix", "Consciousness", "Directive", "Harmony"
+    ],
+    "VEMLEK_DESIGNATION": [
+        "Unit 7", "Phase III", "Model 12", "Echo Delta", "Prime Sigma", "Layer V", "Sector 9",
+        "Type A", "Codex 4", "Beta Stream", "Omega Root", "Z-Branch", "Unit 99", "Alpha Prime", "Gamma 3", "Theta 5", "Epsilon 8"
+    ],
+    "PLANET_NAME_PREFIXES": [
+        "Ael", "Kor", "Thal", "Vex", "Rhon", "Lys", "Ky", "Sol", "Mir", "Aeg", "Taur", "Kael", "Ryl", "Zet",
+        "Xylos", "Caelum", "Ignis", "Aqua", "Terra", "Ventus", "Umbra", "Lux", "Astra", "Cosmo", "Geo", "Hydro",
+        "Pyro", "Cryo", "Aero", "Chrono", "Echo", "Nova", "Pulsar", "Quasar", "Stella", "Void", "Zenith",
+        "Aether", "Ember", "Glimmer", "Halo", "Iris", "Jade", "Kilo", "Lumen", "Misty", "Nadir", "Opal",
+        "Prism", "Quill", "Rift", "Sable", "Talon", "Ursa", "Vesper", "Wisp", "Xenon", "Yonder", "Zephyr",
+        "Pry", "Nox", "Eps", "Ika", "Jun", "Lyr", "Ast", "Cyg", "Hyl", "Korr", "Pel", "Cryo", "Terra", "Xeno",
+        "Aqua", "Gelo", "Aero"
+    ],
+    "PLANET_NAME_SUFFIXES": [
+        "aris", "os", "ia", "on", "us", "ar", "prime", "ex", "nexus", "sigma", "k-12", "alpha", "beta",
+        "gamma", "lux", "minor", "aether", "umbra", "vulc", "belt"
+    ],
+    "PLANET_NAMES": {
+        "templates": [
+            "{PREFIX}{SUFFIX}",
+            "{PREFIX}-{SUFFIX}",
+            "{PREFIX} Prime",
+            "New {PREFIX}",
+            "{PREFIX}'s {SUFFIX}"
+        ],
+        "words": {
+            "PREFIX": "PLANET_NAME_PREFIXES",
+            "SUFFIX": "PLANET_NAME_SUFFIXES"
+        }
+    },
+    "SYSTEM_NAME_PREFIXES": [
+        "Xyl", "Cor", "Thal", "Vec", "Ron", "Qar", "Sol", "Mir", "Aegis", "Taur", "Kael", "Ryl",
+        "Zeta", "Pry", "Nox", "Cain", "Eps", "Ikar", "Juno", "Lyr", "Astra", "Cygnus", "Hyla", "Korr", "Pell"
+    ],
+    "SYSTEM_NAME_SUFFIXES": [
+        "os", "ia", "on", "us", "ar", "prime", "major", "ex", "nexus", "b-VII", "sigma", "terra",
+        "k-12", "alpha", "beta", "gamma", "draconis", "canis", "aquila", "lux", "minor", "solis", "aether",
+        "umbra", "vulc", "cluster", "nebula", "void", "reach", "frontier", "gate", "passage", "drift"
+    ],
+    "SYSTEM_NAMES": {
+        "templates": [
+            "{PREFIX}{SUFFIX}",
+            "{PREFIX}-{SUFFIX}",
+            "{PREFIX} {SUFFIX}"
+        ],
+        "words": {
+            "PREFIX": "SYSTEM_NAME_PREFIXES",
+            "SUFFIX": "SYSTEM_NAME_SUFFIXES"
+        }
+    },
+    "FIERY_PREFIX": [
+        "Pyr", "Igni", "Sol", "Calor", "Volc", "Magm", "Fornax", "Cinder"
+    ],
+    "FIERY_SUFFIX": [
+        "us", "os", "a", "ia", "prime", "flare", "forge", "heart"
+    ],
+    "FIERY_PLANET_NAMES": {
+        "templates": [
+            "{PREFIX}{SUFFIX}",
+            "{PREFIX}'s Furnace",
+            "{PREFIX}'s Heart",
+            "The {PREFIX} Kiln"
+        ],
+        "words": {
+            "PREFIX": "FIERY_PREFIX",
+            "SUFFIX": "FIERY_SUFFIX"
+        }
+    },
+    "SHIP_NAMES": {
+        "templates": [
+            "{ADJECTIVE} {NOUN}",
+            "The {ADJECTIVE} {NOUN}",
+            "{ANIMAL} {NOUN}",
+            "The {ANIMAL} {NOUN}",
+            "{PREFIX}{SUFFIX}"
+        ],
+        "words": {
+            "ADJECTIVE": "THERIOS_COMMON_ADJECTIVES",
+            "NOUN": "THERIOS_COMMON_NOUNS",
+            "ANIMAL": "ANIMAL_BASES",
+            "PREFIX": "ALIEN_PREFIX",
+            "SUFFIX": "ALIEN_SUFFIX"
+        }
+    },
+    "TECH_DESCRIPTORS": [
+        "High-Yield", "Phase-Shifted", "Quantum", "Nano-Assembled", "Hyper-Dense", "Magnetic", "Plasma", "Fusion", "Tachyon", "Gravitic", "Ionic", "Flux", "Void", "Null-Point", "Singularity", "Resonant"
+    ],
+    "TECH_COMPONENT_TYPES": [
+        "Generator", "Shield", "Weapon", "Drive", "Sensor", "Computer", "Capacitor", "Emitter", "Coil", "Matrix", "Relay", "Node", "Core", "Processor", "Actuator", "Servo", "Thruster", "Scoop", "Beam", "Cannon", "Launcher"
+    ],
+    "TECHNOLOGY": {
+        "templates": [
+            "{DESCRIPTOR} {COMPONENT_TYPE}",
+            "{MANUFACTURER} {DESCRIPTOR} {COMPONENT_TYPE}",
+            "{MANUFACTURER} {COMPONENT_TYPE}",
+            "{DESCRIPTOR} {COMPONENT_TYPE} Matrix",
+            "{DESCRIPTOR} {COMPONENT_TYPE} Array",
+            "{DESCRIPTOR} {COMPONENT_TYPE} System",
+            "Integrated {DESCRIPTOR} {COMPONENT_TYPE}",
+            "{MANUFACTURER} {DESCRIPTOR} {COMPONENT_TYPE} Mark {RANDOM_10}",
+            "{DESCRIPTOR} {COMPONENT_TYPE} Mark {RANDOM_10}",
+            "{DESCRIPTOR} {COMPONENT_TYPE} {RANDOM_100}"
+        ],
+        "words": {
+            "DESCRIPTOR": "TECH_DESCRIPTORS",
+            "COMPONENT_TYPE": "TECH_COMPONENT_TYPES",
+            "MANUFACTURER": "CORPORATIONS"
+        }
+    }
+}

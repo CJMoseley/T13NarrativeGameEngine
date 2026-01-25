@@ -1,0 +1,44 @@
+[
+    {
+        "Type": "New-born",
+        "Description": "New-born Characters are usually pretty defenceless things. Although xenomorphic space wasps and the like can be a lot less defenceless than say a human new born.",
+        "Rules": "Sentient New-born creatures are largely defenceless and usually unplayable. They can often not communicate and can rarely process sensory data accurately.",
+        "Scale_Modifier": "-4",
+        "Proficiency_Dice": "1d3-1"
+    },
+    {
+        "Type": "Infant",
+        "Description": "Small Children, often quite mobile and if sentient usually talking, although they have limited vocabularies.",
+        "Rules": "In general Infants are not just small people, they are still largely defenceless, although many can communicate effectively with their limited vocabulary. Infants are intelligent and manipulative, still trying to work out all the rules of their social structure, and are likely to test boundaries.",
+        "Scale_Modifier": "-3",
+        "Proficiency_Dice": "1d3"
+    },
+    {
+        "Type": "Kid",
+        "Description": "Kids are still Children, but are more like mini-adults, they are weaker than adults and have less general knowledge and education, but make up for that by being adaptable and learning fast.",
+        "Rules": "Essentially kids are small adults, they can fight, etc, but aren't very powerful. They do however learn faster, and are usually placed in full-time education during this period to take advantage of that. Kids may have multiple Hobbies in diverse fields, some of which may be connected with aspirations or parental pressures.",
+        "Scale_Modifier": "-2",
+        "Proficiency_Dice": "1d4"
+    },
+    {
+        "Type": "Young-Adult",
+        "Description": "Young Adults, or Teens are almost adult.",
+        "Rules": "Almost fully grown, although their mental facilities are sometimes hormonally impaired, in humans Young-Adults are less good at planning and are more emotional than adults. Generally have not completed their education, but in specific areas may be very knowledgable. Often have more than one Hobby activity.",
+        "Scale_Modifier": "-1",
+        "Proficiency_Dice": "1d5"
+    },
+    {
+        "Type": "Adult",
+        "Description": "Fully grown and considered an adult by their society.",
+        "Rules": "Normal, fully grown and educated. Expected to have at least one area of professional specialisation and often a Hobby too.",
+        "Scale_Modifier": "0",
+        "Proficiency_Dice": "1d6"
+    },
+    {
+        "Type": "Aged",
+        "Description": "Aged Characters are always Experienced or Veteran Characters. As Aged Characters age they generally accumulate Hitches, such as \"Fatigued\", \"Scars\", \"Madness\", \"Vague\" that limit their abilities.",
+        "Rules": "Experienced or Veteran only. Hitches may mimic the affects of old age, such as Physical Weakness, Dementia, etc. They suffer from Crisis less often than even Adults, but as a result learn slower. Expected to have numerous areas of professional and hobbyist level experience.",
+        "Scale_Modifier": "0",
+        "Proficiency_Dice": "1d8"
+    }
+]

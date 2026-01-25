@@ -1,0 +1,42 @@
+[
+    {
+        "Type": "Dominant",
+        "Description": "The Dominant side of the Conflict. The Dominant Embodiment may be the Setting, literally the Environment, or a Monster, or just a more powerful Character than the Pressed Characters, such as an Evil Border Baron. Sometimes the Embodiment, such as the murderer in a Mystery story, does not seem more powerful than the Pressed Characters (in a Mystery, the Detectives), however the killer in this case is embodying Sin, and while the killer may not be Dominant, the police cannot hope to defeat Sin itself.",
+        "Rules": "The Dominant side is always present in a Conflict, although it may be hidden from view before the final Revelation."
+    },
+    {
+        "Type": "Pressed",
+        "Description": "The Pressed side of the Conflict may be suppressed, oppressed, depressed or otherwise unempowered. They are often the PCs in Games, but can be the townsfolk, or an oppressed minority in the Barony, or the slightly less militarily based land beyond the Border. The Detectives of a Mystery story, the heroes of a War story.",
+        "Rules": "The Pressed side is always present in the Conflict, often Embodied within one of the PCs or their Allies."
+    },
+    {
+        "Type": "Above",
+        "Description": "The Above side of a Conflict sits in judgement of the Dominant and Pressed side. The Above may be political (the Duke and King, above the Baron), religious (the medieval Church, and particularly the Bishop), divine (the gods themselves, or perhaps their messengers watch and intercede where they are allowed), legal (the Barony may ignore the King’s law only so much), or it can be Moral. In Mystery Stories the Above Side may be politicians, nobles, or the press judging the Detective’s progress.",
+        "Rules": "Most Conflicts have an Above side, although it may be far removed and so have no direct Embodiment. If the Queen is far away, only eventually will some of the Story come to her attention."
+    },
+    {
+        "Type": "Internal",
+        "Description": "Sometimes Conflicts get complicated, with insurgent forces appearing within one or the other of the sides. The Internal Side may exist within all the other sides, or can express a Conflict entirely internally within one Character (creating greater depth). Perhaps the Baron has an Internal Conflict, his conflict with the other Kingdom is simply fall-out from a failed romance. In a Mystery Story the Internal side could be a serial killer inside the police, a policeman undercover within a criminal cabal, or the Detective’s struggle with their own darkness.",
+        "Rules": "Internal sides are common to all Conflicts that have Pact Descendant Embodiments, but are not required. "
+    },
+    {
+        "Type": "Below",
+        "Description": "Below the Conflict is the opposite of the Above. These are people who are beneath the normal scope of the Conflict. If the Dominant and Pressed side are two kingdoms at war, the Below could consist of the little people of both kingdoms standing up to their rulers, or perhaps it is a guild or criminal gang taking advantage of the Chaos. In a Mystery the Below side are usually the normal people, the victims of the killer, and the relatives of the victims.",
+        "Rules": "The Below side should always be represented if both Dominant and Pressed sides are of higher social status. The Below side is difficult to represent if the Pressed side are the lowest rung on the ladder."
+    },
+    {
+        "Type": "External",
+        "Description": "Appearing external to the conflict in every way, the External side is of course a part of it all. If the PCs wandered into the Barony then they might be this force. If they are locals, then the External side might be another Border Baron, who plans to out-manoeuvre the Baron, the King and the enemy somehow. If nothing else seems plausible, perhaps Aliens or Increated are involved somehow. In a Mystery Story the External side might be a character from another department, town, country, outer-space, or supernatural, they might be a killer, a cop, the FBI agent who swoops in after a serial killer.",
+        "Rules": "External side is never required. The Character Embodiments of External side should only be present rarely, and it embodies most often as External embodiments such as Locations, Tone, etc."
+    },
+    {
+        "Type": "Shadows",
+        "Description": "The Shadows side of the conflict is always hidden. Sometimes the side may represent those who are not seen, hidden influencers, who will never be revealed. Other times they hint at other Plots moving in the background. Sparingly and rarely the Shadows may reveal some Yarn-Teller, or Increated hiding and influencing events through Twists. In a Mystery story the Shadows side would be the dark underworld, kingpins, robber barons, dark websites, and the ghosts of failed cases.",
+        "Rules": "The Shadows side will often be present, whether as a direct Character embodiment or simply as a metaphorical shadow from larger Plots."
+    },
+    {
+        "Type": "DeeperShadows",
+        "Description": "The DeeperShadows side of the conflict should never exist. It is too hidden to ever be revealed. In a Mystery Story the DeeperShadows would be unknown Illuminati types, engineering these killings for political gains.",
+        "Rules": "The DeeperShadows side should never truly be present, and usually may only have External or Hidden Embodiments (although they may draw other Embodiments these should never be used as drawn. DeeperShadows also reflect the shadows of greater Plots in any Plot smaller than a Cycle. In a Cycle Plot the DeeperShadows represent those hidden masters, gods, and spirits that guide events, such as Wyrd herself."
+    }
+]

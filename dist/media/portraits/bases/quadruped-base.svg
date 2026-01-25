@@ -1,0 +1,17 @@
+<svg width="512" height="256" viewBox="0 0 512 256" xmlns="http://www.w3.org/2000/svg" id="quadruped-base">
+    <!--
+        Quadruped Base Figure SVG Template
+        ComfyUI Prompt:
+        retro anime style portrait of a powerful quadrupedal alien, muscular build, thick hide with crystalline formations, six glowing eyes, low-gravity jungle planet background, massive ancient trees with alien flora, dynamic pose, dramatic shadows, bold outlines, cel-shaded.
+        Negative Prompt:
+        bipedal, humanoid, furry, cute, photorealistic, 3d render, blurry, deformed, poorly drawn, text, watermark.
+    -->
+    <g id="body">
+        <path id="torso" d="M 100,100 C 200,80 350,80 400,100 L 400,180 C 350,200 200,200 100,180 Z" fill="#4a4a4a" />
+        <path id="front-legs" d="M 150,150 C 130,250 170,250 150,150 M 180,150 C 160,250 200,250 180,150" fill="none" stroke="#4a4a4a" stroke-width="15" />
+        <path id="rear-legs" d="M 350,150 C 330,250 370,250 350,150 M 380,150 C 360,250 400,250 380,150" fill="none" stroke="#4a4a4a" stroke-width="15" />
+    </g>
+    <g id="head">
+        <path id="headshape" d="M 50,100 C 20,80 80,80 100,100 C 80,150 20,150 50,100 Z" fill="#555" />
+    </g>
+</svg>

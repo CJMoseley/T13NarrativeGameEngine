@@ -1,0 +1,115 @@
+{
+	"Card_Corner": "9",
+	"Card": "Nine",
+	"Suit": "3",
+	"IconSuit": "♣",
+	"Pips": "9",
+	"Unicode": "&#x1f0d9;",
+	"Svg": "images/cards-svg/9C.svg",
+	"Wound_Level": 3,
+	"Facet": "Dominion",
+	"Tao": [
+		1,
+		0
+	],
+	"Narrative_Meaning": "Nines signify fortune, monetary rewards and cash prizes.",
+	"Image": "",
+	"Yarn": {
+		"Yarn_Name": "The Crown",
+		"Yarn_Description": "The Crown is the card of Leadership. It stands for Leaders, Commanders, Monarchy and Politicians. Uneasy lies the head that wears the Crown though, and those in power have additional worries, responsibilities and other troublesome Hitches. The Crown can serve as a warning for Leaders to look within, to act for those they lead, not themselves or ruin may follow. But it can also warn followers to watch those they choose to follow.",
+		"Significator": {
+			"Plot": "The Crown Plot is usually a Political Thriller, these are stories of alliances, enmities, betrayals and treaties. There's a lot going on and usually a lot at stake. The fates of countries and worlds are decided by Crown Plots, but so too are the fates of businesses and families. ",
+			"Side": "A side marked by the Crown will face tough leadership decisions, this may be because of the Internal side, which may be placed entirely within the Crown marked Side, or it may be because of another side of the Conflict, as the Yarn-Teller sees fit.",
+			"Character": "The Crown Significator indicates an absolute monarch, at least within their territory. <p>They <strong>Gain Yin</strong> when they speak to their followers, act emotional, or listen to others. </p><p>They <strong>Gain Yang</strong> when they behave aloof, or polite, use logic, or amuse themselves. </p><p>They <strong>Gain Chi</strong> when they act for the benefit of their followers, country or people. </p><p>They gain +1 Success Levels to all Psyche Defences.</p>",
+			"Scene": "The Crown Scene is usually a demonstration of power. This may be an Ordeal or more usually it will be an immense Gain (often of a powerful Lore Artefact) with an appropriate Revelation. Yarn-Tellers can play a Crown to have people follow them, gain treasures, or demonstrate their power (usually with an extreme use of their Power or Super-Annex)."
+		},
+		"Beat_Type": "7",
+		"Conflict_Embodiment": "1",
+		"Facet_Embodiment": "12",
+		"Hook_Aspect": "Gains",
+		"Aspect_Description": "The Hook targets all ways the Character can Gain Chi, Yin or Yang, combining as many ways to trigger as many as possible into the situation.",
+		"Hook": "Commanded",
+		"Hook_Description": "The Hook of this Story is simply that the PC is ordered to follow the Plot (investigate the mystery, secure the asset, overthrow the government, etc) by their boss, monarch, superior officer or spouse.",
+		"Gain": "Trophy / Monolith Treasure Descendant",
+		"Fray": "Society",
+		"Fray_Description": "Sometimes we all need a leg up, and friends are the people to do that. Making and keeping friends can be Ordeals in their own right, especially when one is talking about joining clubs, guilds and fraternity houses. Fortunately, they are usually low Stakes, but Opposed by large numbers of people at the same time.",
+		"Snag": "Responsibilities",
+		"Snag_Description": "The Crown demands responsibility from the PCs. Something about the Fray is the PCs personal responsibility. Perhaps they caused some collateral damage and hence are directly responsible for fixing the damage, or is it a case of some old decision they made has just come back to bite them.",
+		"NPC": {
+			"Archetype": "Diplomat",
+			"Persona": 21,
+			"Core": 16,
+			"Hitch": 15,
+			"Description": "The Diplomat is a mediator, they're job is working out treaties and problems."
+		},
+		"Sweeping": "Taxes",
+		"Sweeping_Text": "The Taxes of the Crown might indicate the PCs collecting taxes from their subjects, or they might be getting a rebate from taxes they have already paid. Either way, they'll gain Chi, or a Treasure Descendant.",
+		"History": "Politicized",
+		"History_Description": "The Crown indicates that the current situation has a history of political intrigues, conflicts and agendas that have led to it becoming something of a political football.",
+		"Situation": "Responsibility",
+		"Situation_Description": "The Crown indicates that the current situation is one where someone is shirking a responsibility, usually of a leadership nature. It could be a king who ignores the pleas of his western barons for aid, a dock-master who is turning a blind eye to a smuggler, or a businessman who isn't paying his staff minimum wage.",
+		"Solution": "Leadership",
+		"Solution_Description": "The Crown indicates that the solution to the current situation is good leadership, which can sometimes mean the current leader must act, but also sometimes means new leadership must be found.",
+		"Revelations": {
+			"About": "The Story",
+			"About_Description": "The information is about the current situation and plot. It might include information about one side of the Conflict, all the sides and anything in between. It is normal when providing information to always reveal information about the Dominant Side as well as any others.",
+			"Info": "Official",
+			"Info_Description": "Official Information can be information about someone's rank or class within a society, or it can be the information that governments have at their disposal, be it police records, intelligence reports, or military records.",
+			"Vector": "Political",
+			"Vector_Description": "Politics is always about messages, and so political campaigns can carry information about Embodiments (obviously if those Embodiments are politicians, or are voted non-political positions).",
+			"Alternate": "Accomplishment",
+			"Alternate_Description": "The information concerns the Embodiment's greatest, or most impressive accomplishment. Do they have the highest tower in the country, or did they kill the most Goblins in the battle of Fellmeer?",
+			"Detail": "Geopolitical",
+			"Detail_Description": "The details concern the geopolitics of the situation or Characters. Where are their allegiances, how far away are their banner-men, where is the armoury inside the fortress walls? Those sorts of questions can be answered."
+		}
+	},
+	"Obstacle": {
+		"Type": "Orders",
+		"Description": "The way ahead is blocked by official orders, such as \"No High Speed Pursuits In The Financial District\". Failure to comply (and not avoid the Obstacle) will result in repercussions."
+	},
+	"Tarot": {
+		"WyrdTarot": "Shake Off",
+		"Crossed": "Target takes 1d4 Unsoakable Distract Wounds.",
+		"Normal": "Target discards <strong>all</strong> Distract Wounds"
+	},
+	"Ordeal": {
+		"Ordeal_Type": "Opposed Ordeal",
+		"Stages": "5",
+		"Ordeal_Spread": "Pyramid",
+		"Stakes": "Low",
+		"Test": "Continuing (Inertia)",
+		"Obstacles": "1 Obstacle in every Stage",
+		"Suggested_Action": "Order",
+		"Stage": "Squeeze",
+		"Stage_Description": "A squeeze can be a tight space, or something a little more romantic, it can even be an illegal operation. Here the chances are it is a very narrow gap, too small for a normal vehicle or person to pass, without some clever thinking.",
+		"Motional": "Dangerous Riding Chase",
+		"Motional_Description": "The enemy cavalry and the Baron's standard, break. Retreating past their own lines. Ignoring the fusillade of cannon, and the still unbroken archers on the right flank, you wheel your horses to follow.",
+		"Tide_of_Battle": "Closing the Breach",
+		"Tide_of_Battle_Text": "The Flowing forces have breached the Ebbing defences, this could be the end, unless the Ebbing enemy can close the breach and hold the ground, or fall-back to a new position.",
+		"Fight": "Protect",
+		"Fight_Description": "A Force is attacking that will attempt to kill one of the Party's Allies. Usually this force is around the PCs in power level and numbers, but may have lower or higher powered reserves arriving in following Rounds. The Party must protect the Ally, usually for ethical or narrative reasons."
+	},
+	"Lea": {
+		"PathColour": "Green/Turquoise Herbivore",
+		"Bulmas": "Herd, Broccen, Vermis, Labyrinthine, All-Walkers",
+		"AnimalCategory": "Megafauna – Large",
+		"Example": "Wildebeest / Bison / Moose / Auroch / Giraffe / Rhino",
+		"Bodypart": "Antler",
+		"Notes": "The largest of the common paths that can still be walked today."
+	},
+	"Stress": {
+		"Type": "Health",
+		"Description": "Stress, especially high stress over time, can have a very deleterious effect upon a Character’s health. Commonly a weakened immune system takes longer to shrug off infections and heal, and the Character may find themselves run down and exhausted from minor illnesses that would not normally affect them so much.",
+		"Rules": "Healing times for all Clubs Suited Wounds adds the Current Stress as a Chi Extend Duration, even a Distract Wound can take a while to shake off when you are Stressed. Additionally all Club Suited Wounds that the Character takes will add Current Stress to their Pips, including the Difficulty to treat and Stabilise (increasing the chances of Wounds Festering)."
+	},
+	"Trauma": {
+		"Type": "Crown",
+		"Description": "Shakespere wrote \"Uneasy is the head that wears the crown\", and this is usually now phrased as \"Heavy lies the head that wears the crown\". Anxieties compound upon Trauma and can disrupt a Character’s equilibrium and sleep patterns, slowly driving them towards paranoia and insomnia.",
+		"Rules": "The Trauma restricts a Character getting to sleep, costing them 1d6 hours of racing thoughts before they can sleep at night, however this sleep deprived state allows the Character to Relieve 1 Stress by thinking the worst of a situation or another Character."
+	},
+	"Age": {
+		"Type": "Governance",
+		"Description": "An Age of Governance is occurring. During this age a society is lead by a powerful leader, this leader may be a benign dictator, a progressive emperor, a democratically-elected successor, a regressive oppressor, a tyrannical despot, or an unfeeling bureaucrat, amongst many other things. Regardless of their way of attaining power and leadership, they are truly in charge of the society, they may be a pinickity micromanager or a sweeping generalizer, but their leadership will have a profound effect (either positive or negative) upon the society.",
+		"Rules": "During an Age of Governance a leader will arise from within the society that is accepted and followed without question by most of the society. Depending upon the nature of this leader the society may be dramatically positively or negatively effected by them."
+	}
+}

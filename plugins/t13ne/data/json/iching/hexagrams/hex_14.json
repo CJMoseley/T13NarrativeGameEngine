@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 14,
+    "Name": "Possessing Plenty",
+    "Entity": "&#19917;",
+    "Logical": 47,
+    "Trigrams": [
+      0,
+      2
+    ],
+    "Hexagram_Text": "Ta Yu, Possessing Plenty (or Great Possessing), is a pinnacle, a moment to shine. You are part of the universe, a guest within itself, as such you can achieve all your goals when they are sync with your host.",
+    "Unchanging": "When you give Sway, Chi, Yarn, or Twists to another they receive double the amount you lose.",
+    "Line1": "Releasing Harm",
+    "Line2": "A Wagon Arrives",
+    "Line3": "A Prince Among Folk",
+    "Line4": "Different To Your Neighbours",
+    "Line5": "Accessible Truth",
+    "Line6": "Blessings From Heaven"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you act optimitic, trust another Character, or hope for the best",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "if you find you do not have something you need",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "you mention possible things that might go wrong",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yin",
+        "Condition": "you lend your, or give others, Descendants",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yin",
+        "Condition": "you are generous, giving others Descendants, Chi, Sway or advice",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yang",
+        "Condition": "you avoid envying others, and do not strive to match them",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you are truthful or dignified",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yin",
+        "Condition": "you are modest, humble, or truthful",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "During the Possessing Plenty Quest all Difficulties are calculated at high power (making them easier), everything is easier, Stakes are lower and Tensions do not rise as high as one might expect. However, any act of selfishness or prideful behaviour by the Quester will add additional Hurdles, Obstacle or Failure Levels to the Quest.",
+    "Quest_Complete": "A great reward accompanies the completion of the Quest. This is usually a huge Gain for the Quester.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "If the Quester does not state a possible way the Quest may fail it will add a Failure Level, Obstacle or Hurdle to their Test or Ordeal. If they can catalogue every possible way the Test or Ordeal could go wrong (in the Referee&#39;s opinion) then they may add a Success Level instead (although note the number of possible failures increase dramatically in magical situations and sci-fi/fantasy/horror genres.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester receives some wealth, often in the form of equipment Descendants. If the Quester hoards this wealth to themselves then it will quickly create resentment, jealousy and conflict adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If the Quester is quick to share this wealth, lending useful Descendants to their companions (and others that need help) then this will add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The Quester should be shown some poverty that even their small riches could alleviate. If the Quester is generous and charitable (giving freely of Chi, Sway or Descendants to help) then they will be rewarded with loyalty, friendship and even additional wealth. Failure to be generous will cost the Quester somehow, often in lost alliances, thefts, or by adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester is shown that they (and their companions) are different to their \"neighbours\", usually discovering that the \"neighbours\" are very rich and powerful in comparison. These rich neighbours create difficulties for the Quester, adding Hurdles, Obstacles or Failure Levels to their Ordeal or Test as they are caught between this rich neighbours arguments and conflicts. If the Quester can keep centred, avoiding envy and greed, and not get drawn into an open conflict with either neighbour, then they may add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester who is open and honest, and who stays dignified will add a Success Level to their Ordeal or Test. If the Quester lies, hides, threatens or uses force this will add an Obstacle, Hurdle, or Failure Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester is currently blessed, adding a Success Level to their Ordeal or Test, but if they act in an immodest, bragging or selfish manner then this will instead add a Hurdle, Obstacle or Failure Level instead.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "The fire in heaven above shines far, and all things stand out in the light and become manifest. The weak fifth line occupies the place of honor and all the strong lines are in accord with it.All things come to the man who is modest and kind in a high position.",
+    "The_Image": {
+      "text": "Fire in heaven above:\n\nThe image of POSSESSION IN GREAT MEASURE.\nThus the superior man curbs evil and furthers good,\nAnd thereby obeys the benevolent will of heaven.",
+      "comments": "The sun in heaven above, shedding light over everything one earth, is the image of possession on a grand scale. But a possession of this sort must be administered properly. The sun brings both evil and good into the light of day. Man must combat and curb the evil, and must favor and promote the good. Only in this way does he fulfill the benevolent will of God, who desires only good and not evil."
+    },
+    "The_Judgment": {
+      "text": "POSSESSION IN GREAT MEASURE.\n\nSupreme success.",
+      "comments": "The two trigrams indicate that strength and clarity unite. Possessions great measure is determined by fate and accords with the time. How is it possible that the weak line has power to hold the strong lines fast and to possess them? It is done by virtue of unselfish modesty. The time is favorable--a time of strength within, clarity and culture without. Power is expressing itself in graceful and controlled way. This brings supreme success and wealth."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "No relationship with what is harmful;\nThere is no blame in this.\nIf one remains conscious of difficulty,\nOne remains without blame.",
+        "comments": "Great possession that is still in its beginnings and that has not yet been challenged brings no blame, since there has been no opportunity to make mistakes. Yet there are many difficulties to be overcome. It is only by remaining conscious of theses difficulties that one can keep inwardly free of possible arrogance and wastefulness, and thus in principle overcome all cause for blame."
+      },
+      "2": {
+        "text": "A big wagon for loading.\nOne may undertake something.\nNo blame.",
+        "comments": "Great possession consists not only in the quantity of goods at one's disposal, but first and foremost, in their mobility and utility, for then they can be used in undertakings, and we remain free of embarrassment and mistakes. The big wagon, which will carry a heavy load and in which one can journey farm means that there are at hand able helpers who give their support t and are equal to their task. One can load great responsibility upon such persons, and this is necessary in important undertakings."
+      },
+      "3": {
+        "text": "A prince offers it to the Son of Heaven.\nA petty man cannot do this.",
+        "comments": "A magnanimous, liberal-minded man should not regard what he possesses as his exclusive personal property , but should place it at the disposal of the ruler or of the people at large. In so doing, he takes the right attitude toward his possession, which as private property can never endure. A petty man is incapable of this. He is harmed by great possessions, because instead of sacrificing them, he would keep them for himself."
+      },
+      "4": {
+        "text": "He makes a difference\nBetween himself and his neighbor.\nNo blame.",
+        "comments": "This characterizes the position of a man placed among rich and powerful neighbors. It is a dangerous position. He must look neither to the right nor to the left, and must shun envy and the temptation to vie with others. In this way he remains free of mistakes."
+      },
+      "5": {
+        "text": "He whose truth is accessible, yet dignified,\nHas good fortune.",
+        "comments": "The situation is very favorable. People are being won not by coercion but by unaffected sincerity, so that they are attached to us in sincerity and truth. However, benevolence alone is not sufficient at the time of POSSESSION IN GREAT MEASURE. For insolence might begin to spread. Insolence must be kept in bounds by dignity; then good fortune is assured."
+      },
+      "6": {
+        "text": "He is blessed by heaven.\nGood fortune.\nNothing that does not further.",
+        "comments": "In the fullness of possession and at the height of power, one remains modest and gives honor to the sage who stands outside the affairs of the world. By this means one puts oneself under the beneficent influence descending form heaven, and all goes well. Confucius says of this line:\n\nTo bless means to help. Heaven helps the man who is devoted; men help the man who is true. He who walks in truth and is devoted in his thinking, and furthermore reveres the worthy, is blessed by heaven. He has good fortune, and there is nothing that would not further."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Possessing Plenty'. Internalize this core philosophy: The fire in heaven above shines far, and all things stand out in the light and become manifest. The weak fifth line occupies the place of honor and all the strong lines are in accord with it.All things come to the man who is modest and kind in a high position. Your current worldview is: \"Ta Yu, Possessing Plenty (or Great Possessing), is a pinnacle, a moment to shine. You are part of the universe, a guest within itself, as such you can achieve all your goals when they are sync with your host.\". Let your choices be subtly driven by these conditions: you act optimitic, trust another Character, or hope for the best, if you find you do not have something you need. When interacting, mirror the wisdom found in the commentary: \"The two trigrams indicate that strength and clarity unite. Possessions great measure is determined by fate and accords with the time. How is it possible that the weak line has power to hold the strong lines fast and to possess them? It is done by virtue of unselfish modesty. The time is...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Possessing Plenty'. The primary quest objective is: During the Possessing Plenty Quest all Difficulties are calculated at high power (making them easier), everything is easier, Stakes are lower and Tensions do not rise as high as one might expect. However, any act of selfishness or prideful behaviour by the Quester will add additional Hurdles, Obstacle or Failure Levels to the Quest.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: The sun in heaven above, shedding light over everything one earth, is the image of possession on a grand scale. But a possession of this sort must be administered properly. The sun brings both evil and good into the light of day. Man must combat and curb the evil, and must favor and promote the good. Only in this way does he fulfill the benevolent will of God, who desires only good and not evil. Use the following line-specific challenges to pace the story: If the Quester does not state a possible way the Quest may fail it will add a Failure Level, Obstacle or Hurdle to their Test or Ordeal. If they can catalogue every possible way the Test or Ordeal could go wrong (in the Referee&#39;s opinion) then they may add a Success Level instead (although note the number of possible failures increase dramatically in magical situations and sci-fi/fantasy/horror genres. | The Quester receives some wealth, often in the form of equipment Descendants. If the Quester hoards this wealth to themselves then it will quickly create resentment, jealousy and conflict adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If the Quester is quick to share this wealth, lending useful Descendants to their companions (and others that need help) then this will add a Success Level instead. | The Quester should be shown some poverty that even their small riches could alleviate. If the Quester is generous and charitable (giving freely of Chi, Sway or Descendants to help) then they will be rewarded with loyalty, friendship and even additional wealth. Failure to be generous will cost the Quester somehow, often in lost alliances, thefts, or by adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test. | The Quester is shown that they (and their companions) are different to their \"neighbours\", usually discovering that the \"neighbours\" are very rich and powerful in comparison. These rich neighbours create difficulties for the Quester, adding Hurdles, Obstacles or Failure Levels to their Ordeal or Test as they are caught between this rich neighbours arguments and conflicts. If the Quester can keep centred, avoiding envy and greed, and not get drawn into an open conflict with either neighbour, then they may add a Success Level instead. | The Quester who is open and honest, and who stays dignified will add a Success Level to their Ordeal or Test. If the Quester lies, hides, threatens or uses force this will add an Obstacle, Hurdle, or Failure Level instead. | The Quester is currently blessed, adding a Success Level to their Ordeal or Test, but if they act in an immodest, bragging or selfish manner then this will instead add a Hurdle, Obstacle or Failure Level instead.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Releasing Harm): Mirror the internal state described in the commentary: \"Great possession that is still in its beginnings and that has not yet been challenged brings no blame, since there has been no opportunity to make mistakes. Yet there are many difficulties to be overcome. It is only by remaining conscious of theses...\" Your actions should be framed by the goal: you mention possible things that might go wrong.",
+        "Plot": "Plot Complication Line 1 (Releasing Harm): Introduce a challenge based on the interpretation: \"Great possession that is still in its beginnings and that has not yet been challenged brings no blame, since there has been no opportunity to make mistakes. Yet there are many difficulties to be overcome. It is only by remaining conscious of theses...\" The specific quest objective for this stage is: If the Quester does not state a possible way the Quest may fail it will add a Failure Level, Obstacle or Hurdle to their Test or Ordeal. If they can catalogue every possible way the Test or Ordeal could go wrong (in the Referee&#39;s opinion) then they may add a Success Level instead (although note the number of possible failures increase dramatically in magical situations and sci-fi/fantasy/horror genres."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (A Wagon Arrives): Mirror the internal state described in the commentary: \"Great possession consists not only in the quantity of goods at one's disposal, but first and foremost, in their mobility and utility, for then they can be used in undertakings, and we remain free of embarrassment and mistakes. The big wagon, which...\" Your actions should be framed by the goal: you lend your, or give others, Descendants.",
+        "Plot": "Plot Complication Line 2 (A Wagon Arrives): Introduce a challenge based on the interpretation: \"Great possession consists not only in the quantity of goods at one's disposal, but first and foremost, in their mobility and utility, for then they can be used in undertakings, and we remain free of embarrassment and mistakes. The big wagon, which...\" The specific quest objective for this stage is: The Quester receives some wealth, often in the form of equipment Descendants. If the Quester hoards this wealth to themselves then it will quickly create resentment, jealousy and conflict adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If the Quester is quick to share this wealth, lending useful Descendants to their companions (and others that need help) then this will add a Success Level instead."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (A Prince Among Folk): Mirror the internal state described in the commentary: \"A magnanimous, liberal-minded man should not regard what he possesses as his exclusive personal property , but should place it at the disposal of the ruler or of the people at large. In so doing, he takes the right attitude toward his possession,...\" Your actions should be framed by the goal: you are generous, giving others Descendants, Chi, Sway or advice.",
+        "Plot": "Plot Complication Line 3 (A Prince Among Folk): Introduce a challenge based on the interpretation: \"A magnanimous, liberal-minded man should not regard what he possesses as his exclusive personal property , but should place it at the disposal of the ruler or of the people at large. In so doing, he takes the right attitude toward his possession,...\" The specific quest objective for this stage is: The Quester should be shown some poverty that even their small riches could alleviate. If the Quester is generous and charitable (giving freely of Chi, Sway or Descendants to help) then they will be rewarded with loyalty, friendship and even additional wealth. Failure to be generous will cost the Quester somehow, often in lost alliances, thefts, or by adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Different To Your Neighbours): Mirror the internal state described in the commentary: \"This characterizes the position of a man placed among rich and powerful neighbors. It is a dangerous position. He must look neither to the right nor to the left, and must shun envy and the temptation to vie with others. In this way he remains free...\" Your actions should be framed by the goal: you avoid envying others, and do not strive to match them.",
+        "Plot": "Plot Complication Line 4 (Different To Your Neighbours): Introduce a challenge based on the interpretation: \"This characterizes the position of a man placed among rich and powerful neighbors. It is a dangerous position. He must look neither to the right nor to the left, and must shun envy and the temptation to vie with others. In this way he remains free...\" The specific quest objective for this stage is: The Quester is shown that they (and their companions) are different to their \"neighbours\", usually discovering that the \"neighbours\" are very rich and powerful in comparison. These rich neighbours create difficulties for the Quester, adding Hurdles, Obstacles or Failure Levels to their Ordeal or Test as they are caught between this rich neighbours arguments and conflicts. If the Quester can keep centred, avoiding envy and greed, and not get drawn into an open conflict with either neighbour, then they may add a Success Level instead."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Accessible Truth): Mirror the internal state described in the commentary: \"The situation is very favorable. People are being won not by coercion but by unaffected sincerity, so that they are attached to us in sincerity and truth. However, benevolence alone is not sufficient at the time of POSSESSION IN GREAT MEASURE. For...\" Your actions should be framed by the goal: you are truthful or dignified.",
+        "Plot": "Plot Complication Line 5 (Accessible Truth): Introduce a challenge based on the interpretation: \"The situation is very favorable. People are being won not by coercion but by unaffected sincerity, so that they are attached to us in sincerity and truth. However, benevolence alone is not sufficient at the time of POSSESSION IN GREAT MEASURE. For...\" The specific quest objective for this stage is: The Quester who is open and honest, and who stays dignified will add a Success Level to their Ordeal or Test. If the Quester lies, hides, threatens or uses force this will add an Obstacle, Hurdle, or Failure Level instead."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Blessings From Heaven): Mirror the internal state described in the commentary: \"In the fullness of possession and at the height of power, one remains modest and gives honor to the sage who stands outside the affairs of the world. By this means one puts oneself under the beneficent influence descending form heaven, and all goes...\" Your actions should be framed by the goal: you are modest, humble, or truthful.",
+        "Plot": "Plot Complication Line 6 (Blessings From Heaven): Introduce a challenge based on the interpretation: \"In the fullness of possession and at the height of power, one remains modest and gives honor to the sage who stands outside the affairs of the world. By this means one puts oneself under the beneficent influence descending form heaven, and all goes...\" The specific quest objective for this stage is: The Quester is currently blessed, adding a Success Level to their Ordeal or Test, but if they act in an immodest, bragging or selfish manner then this will instead add a Hurdle, Obstacle or Failure Level instead."
+      }
+    }
+  }
+}

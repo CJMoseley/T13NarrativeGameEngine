@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="500" height="500" version="1.1" viewBox="0 0 132.29 132.29" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <g fill-opacity="0" stroke="#000" stroke-opacity=".65287" stroke-width="1.123">
+   <circle cx="63.005" cy="30.343" r="18"/>
+   <circle cx="27.13" cy="64.255" r="18"/>
+   <circle cx="65.422" cy="105.85" r="18"/>
+   <circle cx="88.701" cy="84.762" r="18"/>
+  </g>
+  <g fill="none">
+   <g stroke="#008000" stroke-width="1.165">
+    <path d="m33.198 56.401 23.917-20.347h0.35697"/>
+    <path d="m66.754 36.054 20.704 42.48"/>
+    <path d="m71.037 100.67 15.35-10.352"/>
+    <path d="m58.543 99.952-26.773-29.986"/>
+   </g>
+   <path d="m62.117 36.052 1.7759 64.977" stroke="#f00" stroke-width="1.125"/>
+   <path d="m41.409 68.895 34.626 10.352" stroke="#00f" stroke-width="1.165"/>
+  </g>
+ </g>
+ <g font-family="sans-serif" font-size="8.4667px" stroke="#000000" stroke-opacity=".34253" stroke-width=".26458">
+  <text transform="translate(0 12.494)" x="49.618992" y="20.704327" style="inline-size:0;line-height:1.25;white-space:pre" xml:space="preserve"><tspan x="49.618992" y="20.704327" font-size="8.4667px" stroke="#000000" stroke-opacity=".34253" stroke-width=".26458">Marie</tspan></text>
+  <text transform="matrix(.80796 0 0 1.0033 -29.412 44.504)" x="49.618992" y="20.704327" style="inline-size:0;line-height:1.25;white-space:pre" xml:space="preserve"><tspan x="49.618992" y="20.704327" font-size="8.4667px" stroke="#000000" stroke-opacity=".34253" stroke-width=".26458">Dempsey</tspan></text>
+  <text transform="translate(25.894 66.857)" x="49.618992" y="20.704327" style="inline-size:0;line-height:1.25;white-space:pre" xml:space="preserve"><tspan x="49.618992" y="20.704327" font-size="8.4667px" stroke="#000000" stroke-opacity=".34253" stroke-width=".26458">Spider</tspan></text>
+  <text transform="translate(6.3443 87.586)" x="49.618992" y="20.704327" style="inline-size:0;line-height:1.25;white-space:pre" xml:space="preserve"><tspan x="49.618992" y="20.704327" font-size="8.4667px" stroke="#000000" stroke-opacity=".34253" stroke-width=".26458">Lucy</tspan></text>
+  <text transform="translate(-29.45 44.922)" x="49.618992" y="20.704327" style="inline-size:0;line-height:1.25;white-space:pre" xml:space="preserve"><tspan x="49.618992" y="20.704327" font-size="8.4667px" stroke="#000000" stroke-opacity=".34253" stroke-width=".26458"/></text>
+ </g>
+</svg>

@@ -1,0 +1,14 @@
+[
+  {
+    "Chi": 1,
+    "Element_Type": "Score",
+    "Type": "Score",
+    "Sway_Type_Description": "2 points of Banal Score"
+  },
+  {
+    "Chi": 1,
+    "Element_Type": "Score",
+    "Type": "Ordeal Card Pip",
+    "Sway_Type_Description": "Bold Score equivalent to 1 Pip of an Ordeal card."
+  }
+]

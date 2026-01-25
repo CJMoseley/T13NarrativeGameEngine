@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 30,
+    "Name": "Fire",
+    "Entity": "&#19933;",
+    "Logical": 45,
+    "Trigrams": [
+      2,
+      2
+    ],
+    "Hexagram_Text": "Li, Fire (or Light, Clarity, Radiance, or Clinging Brightness), is a symbol of light, hope and openness, and because of how we learned to control it, fire is one of our original technologies and often represents our intelligence. Fire has no form, but clings to the fuel at its base. It creates shadows and motion that is both real and illusion. By the candle's burning we perceive the cave.",
+    "Unchanging": "You may add Incarna Score (Boon Reduced) to the Score of any Key, Awe, or Phoenix Tests or attacks.",
+    "Line1": "Criss-crossed Footprints",
+    "Line2": "Yellow Sun",
+    "Line3": "Setting Sun",
+    "Line4": "Sudden Fire",
+    "Line5": "Floods of Tears",
+    "Line6": "Leader Alone"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you demonstrate intelligence and creative thinking",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you cannot cling to another for help or emotional support",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "you act while confused, or act rashly or hastily",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yang",
+        "Condition": "you display culture, artistic merit, or succeed",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yin",
+        "Condition": "you complain, or act old",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yin",
+        "Condition": "you don’t worry about consequences or waste time on short term goals",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you worry about others",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yin",
+        "Condition": "you fire or punish another, spare those who were just following orders, or argue",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Fire Quest is based upon art, culture, intellect, illusion, shadows and perceptions. The Quester must use their intelligence, and a commitment to the truth, to dig past the illusions and shadows that cling to this Quest. The Opposition will be artistic, cultured, creative, and deceptive, twisting the facts to make the authorities oppose the Quester whenever possible. If the Quester stays true, and remains calm when confronted by these authorities and false claims, then they will succeed, if they lose their self-control, or cannot perceive the truth through the lies then additional Hurdles will be added.",
+    "Quest_Complete": "The Quest that ends upon the Fire Hexagram ends with light. This may be a literal dawn, a huge fire (perhaps a burning building, a sacrificial or crematorial flame, a bonfire, or lighting beacon), or it may be a revelatory light, the dawning of an idea or Revelation.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "There is a confusing situation (as when many paths cross), and often a pressure upon the Quester to hurry (or the villain may get away). If the Quester hurries, beginning too quickly, then they will make a mistake that adds a Failure Level, Hurdle or Obstacle to their Test or Ordeal, but if they remain calm and focused upon their task then add a Success Level instead (even if they may be late giving their report, for example, they will be forgiven for being thorough).",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The noon sun shines straight down, and shadows are mostly concealed, yellow is also the colour of beauty, culture and the arts, so they are emphasised in this part of the Quest, creating a potential cultural-shock situation (whether intellectually or artistically out of their depth, or confused by the bizarre nature of the culture or art) and this adds a Failure Level, Obstacle or Hurdle to their Test or Ordeal. The Quester who is well-travelled, or well-read, or suitably versed in art or culture and can engage with this high-brow situation will add a Success Level to their Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The evening sun casts long shadows, and complications appear as time grows short. These complications add a Hurdle, Obstacle or Failure Level to the Ordeals or Tests, and if the Quester complains about these complications this will add another. However, if the Quester ignores the complications caused by the dying light and works until they cannot work any longer, they will add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The fire consumes as it illuminates, and some who see the light do not take time to understand it before they spread it. The Quester is exposed to some idea (this maybe a new Style, Proficiency or Annex &mdash often in the form of a Descendant) but not to the consequences that it may have. If the Quester displays too much excitement, accepts this idea too quickly then it will add a Failure Level, Hurdle or Obstacles to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "Events conspire to make the Quester&#39;s and other people&#39;s lives sadder and more complicated, adding a Hurdle, Obstacle or Failure Level to all their Ordeals or Tests, and can in some extreme circumstances add a Lament Hitch. However, if the Quester takes time out of this sadness to comfort others who have been similarly affected then they will instead add a Success Level.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The opposition in this Quest are numerous, but lead by an authority who must be confronted and punished. Punishing the lesser opposition will add a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test, but if they confront the opposition authority directly they will add a Success Level instead, as the opposition followers will disband.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "This hexagram is another double sign. The trigram Li means \"to cling to something,\" and also \"brightness.\" A dark line clings to two light lines, one above and one below--the image of an empty space between two strong lines, whereby the two strong lines are made bright. The trigram represents the middle daughter. The Creative has incorporated the central line of the Receptive, and thus Li develops. As an image, it is fire. Fire has no definite form but clings to the burning object and thus is bright. As water pours down from heaven, so fire flames up from the earth. While K'an means the soul shut within the body, Li stands for nature in its radiance.",
+    "The_Image": {
+      "text": "That which is bright rises twice:\n\nThe image of FIRE.\n\nThus the great man, by perpetuating this brightness,\nIllumines the four quarters of the world.",
+      "comments": "Each of the two trigrams represents the sun in the course of a day. The two together represent the repeated movement of the sun, the function of light with respect to time. The great man continues the work of nature in the human world. Through the clarity of his nature he causes the light to spread farther and farther and to penetrate the nature of man ever more deeply."
+    },
+    "The_Judgment": {
+      "text": "THE CLINGING. Perseverance furthers.\nIt brings success.\nCare of the cow brings good fortune.",
+      "comments": "What is dark clings to what is light and so enhances the brightness of the latter. A luminous thing giving out light must have within itself something that perseveres; otherwise it will in time burn itself out. Everything that gives light is dependent on something to which it clings, in order that it may continue to shine. Thus the sun and moon cling to heaven, and grain, grass, and trees cling to the earth. So too the twofold clarity of the dedicated man clings to what is right and thereby can shape the world. Human life on earth is conditioned and unfree, and when man recognizes this limitation and makes himself dependent upon the harmonious and beneficent forces of the cosmos, he achieves success. The cow is the symbol of extreme docility. By cultivating in himself an attitude of compliance and voluntary dependence, man acquires clarity without sharpness and finds his place in the world."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "The footprints run crisscross.\nIf one is seriously intent, no blame.",
+        "comments": "It is early morning and work begins. The mind has been closed to the outside world in sleep; now its connections with the world begin again. The traces of one's impressions run crisscross. Activity and haste prevail. It is important then to preserve inner composure and not to allow oneself to be swept along by the bustle of life. If one is serious and composed, he can acquire the clarity of mind needed for coming to terms with the innumerable impressions that pour in. It is precisely at the beginning that serious concentration is important, because the beginning holds the seed of all that is to follow."
+      },
+      "2": {
+        "text": "Yellow light. Supreme good fortune.",
+        "comments": "Midday has come; the sun shines with a yellow light. Yellow is the color of measure and mean. Yellow light is therefore a symbol of the highest culture and art, whose consummate harmony consists in holding to the mean."
+      },
+      "3": {
+        "text": "In the light of the setting sun,\nMen either beat the pot and sing\nOr loudly bewail the approach of old age.\nMisfortune.",
+        "comments": "Here the end of the day has come. The light of the setting sun calls to mind the fact that life is transitory and conditional. Caught in this external bondage, men are usually robbed of their inner freedom as well. The sense of the transitoriness of life impels them to uninhibited revelry in order to enjoy life while it lasts, or else they yield to melancholy and spoil the precious time by lamenting the approach of old age. Both attitudes are wrong. To the superior man it makes no difference whether death comes early or late. He cultivates himself, awaits his allotted time, and in this way secures his fate."
+      },
+      "4": {
+        "text": "Its coming is sudden;\nIt flames up, dies down, is thrown away.",
+        "comments": "Clarity of mind has the same relation to life that fire has to wood. Fire clings to wood, but also consumes it. Clarity of mind is rooted in life but can also consume it. Everything depends upon how the clarity functions. Here the image used is that of a meteor or a straw fire. A man who is excitable and restless may rise quickly to prominence but produces no lasting effects. Thus matters end badly when a man spends himself too rapidly and consumes himself like a meteor."
+      },
+      "5": {
+        "text": "Tears in floods, sighing and lamenting.\nGood fortune.",
+        "comments": "Here the zenith of life has been reached. Were there no warning, one would at this point consume oneself like a flame. Instead, understanding the vanity of all things, one may put aside both hope and fear, and sigh and lament: if one is intent on retaining his clarity of mind, good fortune will come from this grief. For here we are dealing not with a passing mood, as in the nine in the third place, but with a real change of heart."
+      },
+      "6": {
+        "text": "The king used him to march forth and chastise.",
+        "comments": "Then it is best to kill the leaders\nAnd take captive the followers. No blame.\n\nIt is not the purpose of chastisement to impose punishment blindly but to create discipline. Evil must be cured at its roots. To eradicate evil in political life, it is best to kill the ringleaders and spare the followers. In educating oneself it is best to root out bad habits and tolerate those that are harmless. For asceticism that is too strict, like sentences of undue severity, fails in its purpose."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Fire'. Internalize this core philosophy: This hexagram is another double sign. The trigram Li means \"to cling to something,\" and also \"brightness.\" A dark line clings to two light lines, one above and one below--the image of an empty space between two strong lines, whereby the two strong lines are made bright. The trigram represents the middle daughter. The Creative has incorporated the central line of the Receptive, and thus Li develops. As an image, it is fire. Fire has no definite form but clings to the burning object and thus is... Your current worldview is: \"Li, Fire (or Light, Clarity, Radiance, or Clinging Brightness), is a symbol of light, hope and openness, and because of how we learned to control it, fire is one of our original technologies and often represents our intelligence. Fire has no form, but clings to the fuel at its base. It creates shadows and motion that is both real and illusion. By the candle's burning we perceive the cave.\". Let your choices be subtly driven by these conditions: you demonstrate intelligence and creative thinking, you cannot cling to another for help or emotional support. When interacting, mirror the wisdom found in the commentary: \"What is dark clings to what is light and so enhances the brightness of the latter. A luminous thing giving out light must have within itself something that perseveres; otherwise it will in time burn itself out. Everything that gives light is dependent on something to which it clings, in order that...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Fire'. The primary quest objective is: The Fire Quest is based upon art, culture, intellect, illusion, shadows and perceptions. The Quester must use their intelligence, and a commitment to the truth, to dig past the illusions and shadows that cling to this Quest. The Opposition will be artistic, cultured, creative, and deceptive, twisting the facts to make the authorities oppose the Quester whenever possible. If the Quester stays true, and remains calm when confronted by these authorities and false claims, then they will succeed, if they lose their self-control, or cannot perceive the truth through the lies then additional Hurdles will be added.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: Each of the two trigrams represents the sun in the course of a day. The two together represent the repeated movement of the sun, the function of light with respect to time. The great man continues the work of nature in the human world. Through the clarity of his nature he causes the light to spread farther and farther and to penetrate the nature of man ever more deeply. Use the following line-specific challenges to pace the story: There is a confusing situation (as when many paths cross), and often a pressure upon the Quester to hurry (or the villain may get away). If the Quester hurries, beginning too quickly, then they will make a mistake that adds a Failure Level, Hurdle or Obstacle to their Test or Ordeal, but if they remain calm and focused upon their task then add a Success Level instead (even if they may be late giving their report, for example, they will be forgiven for being thorough). | The noon sun shines straight down, and shadows are mostly concealed, yellow is also the colour of beauty, culture and the arts, so they are emphasised in this part of the Quest, creating a potential cultural-shock situation (whether intellectually or artistically out of their depth, or confused by the bizarre nature of the culture or art) and this adds a Failure Level, Obstacle or Hurdle to their Test or Ordeal. The Quester who is well-travelled, or well-read, or suitably versed in art or culture and can engage with this high-brow situation will add a Success Level to their Test or Ordeal. | The evening sun casts long shadows, and complications appear as time grows short. These complications add a Hurdle, Obstacle or Failure Level to the Ordeals or Tests, and if the Quester complains about these complications this will add another. However, if the Quester ignores the complications caused by the dying light and works until they cannot work any longer, they will add a Success Level instead. | The fire consumes as it illuminates, and some who see the light do not take time to understand it before they spread it. The Quester is exposed to some idea (this maybe a new Style, Proficiency or Annex &mdash often in the form of a Descendant) but not to the consequences that it may have. If the Quester displays too much excitement, accepts this idea too quickly then it will add a Failure Level, Hurdle or Obstacles to the Test or Ordeal. | Events conspire to make the Quester&#39;s and other people&#39;s lives sadder and more complicated, adding a Hurdle, Obstacle or Failure Level to all their Ordeals or Tests, and can in some extreme circumstances add a Lament Hitch. However, if the Quester takes time out of this sadness to comfort others who have been similarly affected then they will instead add a Success Level. | The opposition in this Quest are numerous, but lead by an authority who must be confronted and punished. Punishing the lesser opposition will add a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test, but if they confront the opposition authority directly they will add a Success Level instead, as the opposition followers will disband.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Criss-crossed Footprints): Mirror the internal state described in the commentary: \"It is early morning and work begins. The mind has been closed to the outside world in sleep; now its connections with the world begin again. The traces of one's impressions run crisscross. Activity and haste prevail. It is important then to preserve...\" Your actions should be framed by the goal: you act while confused, or act rashly or hastily.",
+        "Plot": "Plot Complication Line 1 (Criss-crossed Footprints): Introduce a challenge based on the interpretation: \"It is early morning and work begins. The mind has been closed to the outside world in sleep; now its connections with the world begin again. The traces of one's impressions run crisscross. Activity and haste prevail. It is important then to preserve...\" The specific quest objective for this stage is: There is a confusing situation (as when many paths cross), and often a pressure upon the Quester to hurry (or the villain may get away). If the Quester hurries, beginning too quickly, then they will make a mistake that adds a Failure Level, Hurdle or Obstacle to their Test or Ordeal, but if they remain calm and focused upon their task then add a Success Level instead (even if they may be late giving their report, for example, they will be forgiven for being thorough)."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Yellow Sun): Mirror the internal state described in the commentary: \"Midday has come; the sun shines with a yellow light. Yellow is the color of measure and mean. Yellow light is therefore a symbol of the highest culture and art, whose consummate harmony consists in holding to the mean.\" Your actions should be framed by the goal: you display culture, artistic merit, or succeed.",
+        "Plot": "Plot Complication Line 2 (Yellow Sun): Introduce a challenge based on the interpretation: \"Midday has come; the sun shines with a yellow light. Yellow is the color of measure and mean. Yellow light is therefore a symbol of the highest culture and art, whose consummate harmony consists in holding to the mean.\" The specific quest objective for this stage is: The noon sun shines straight down, and shadows are mostly concealed, yellow is also the colour of beauty, culture and the arts, so they are emphasised in this part of the Quest, creating a potential cultural-shock situation (whether intellectually or artistically out of their depth, or confused by the bizarre nature of the culture or art) and this adds a Failure Level, Obstacle or Hurdle to their Test or Ordeal. The Quester who is well-travelled, or well-read, or suitably versed in art or culture and can engage with this high-brow situation will add a Success Level to their Test or Ordeal."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Setting Sun): Mirror the internal state described in the commentary: \"Here the end of the day has come. The light of the setting sun calls to mind the fact that life is transitory and conditional. Caught in this external bondage, men are usually robbed of their inner freedom as well. The sense of the transitoriness of...\" Your actions should be framed by the goal: you complain, or act old.",
+        "Plot": "Plot Complication Line 3 (Setting Sun): Introduce a challenge based on the interpretation: \"Here the end of the day has come. The light of the setting sun calls to mind the fact that life is transitory and conditional. Caught in this external bondage, men are usually robbed of their inner freedom as well. The sense of the transitoriness of...\" The specific quest objective for this stage is: The evening sun casts long shadows, and complications appear as time grows short. These complications add a Hurdle, Obstacle or Failure Level to the Ordeals or Tests, and if the Quester complains about these complications this will add another. However, if the Quester ignores the complications caused by the dying light and works until they cannot work any longer, they will add a Success Level instead."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Sudden Fire): Mirror the internal state described in the commentary: \"Clarity of mind has the same relation to life that fire has to wood. Fire clings to wood, but also consumes it. Clarity of mind is rooted in life but can also consume it. Everything depends upon how the clarity functions. Here the image used is that...\" Your actions should be framed by the goal: you don’t worry about consequences or waste time on short term goals.",
+        "Plot": "Plot Complication Line 4 (Sudden Fire): Introduce a challenge based on the interpretation: \"Clarity of mind has the same relation to life that fire has to wood. Fire clings to wood, but also consumes it. Clarity of mind is rooted in life but can also consume it. Everything depends upon how the clarity functions. Here the image used is that...\" The specific quest objective for this stage is: The fire consumes as it illuminates, and some who see the light do not take time to understand it before they spread it. The Quester is exposed to some idea (this maybe a new Style, Proficiency or Annex &mdash often in the form of a Descendant) but not to the consequences that it may have. If the Quester displays too much excitement, accepts this idea too quickly then it will add a Failure Level, Hurdle or Obstacles to the Test or Ordeal."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Floods of Tears): Mirror the internal state described in the commentary: \"Here the zenith of life has been reached. Were there no warning, one would at this point consume oneself like a flame. Instead, understanding the vanity of all things, one may put aside both hope and fear, and sigh and lament: if one is intent on...\" Your actions should be framed by the goal: you worry about others.",
+        "Plot": "Plot Complication Line 5 (Floods of Tears): Introduce a challenge based on the interpretation: \"Here the zenith of life has been reached. Were there no warning, one would at this point consume oneself like a flame. Instead, understanding the vanity of all things, one may put aside both hope and fear, and sigh and lament: if one is intent on...\" The specific quest objective for this stage is: Events conspire to make the Quester&#39;s and other people&#39;s lives sadder and more complicated, adding a Hurdle, Obstacle or Failure Level to all their Ordeals or Tests, and can in some extreme circumstances add a Lament Hitch. However, if the Quester takes time out of this sadness to comfort others who have been similarly affected then they will instead add a Success Level."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Leader Alone): Mirror the internal state described in the commentary: \"Then it is best to kill the leaders\nAnd take captive the followers. No blame.\n\nIt is not the purpose of chastisement to impose punishment blindly but to create discipline. Evil must be cured at its roots. To eradicate evil in political life, it is...\" Your actions should be framed by the goal: you fire or punish another, spare those who were just following orders, or argue.",
+        "Plot": "Plot Complication Line 6 (Leader Alone): Introduce a challenge based on the interpretation: \"Then it is best to kill the leaders\nAnd take captive the followers. No blame.\n\nIt is not the purpose of chastisement to impose punishment blindly but to create discipline. Evil must be cured at its roots. To eradicate evil in political life, it is...\" The specific quest objective for this stage is: The opposition in this Quest are numerous, but lead by an authority who must be confronted and punished. Punishing the lesser opposition will add a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test, but if they confront the opposition authority directly they will add a Success Level instead, as the opposition followers will disband."
+      }
+    }
+  }
+}

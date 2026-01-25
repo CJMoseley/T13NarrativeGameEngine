@@ -1,0 +1,37 @@
+[
+    {
+        "Type": "Revolution",
+        "Description": "A revolution does not really resolve the Conflict, but instead reverses the fortunes of the two sides. The Dominant side experiences a Tragic fall, the Depressed side experiences a Dramatic (or Comedic) rise. The original Conflict is technically resolved, but a new reversed Conflict is created. This is a resolution often played for by the Plot . If all else fails, they will put the PC on the top and slink away with their Conflict revolved.",
+        "Rules": "Pays out according to Plot Rank, the Plot can come back later in the Narrative at the same Rank, but with the Conflict reversed."
+    },
+    {
+        "Type": "Revelation",
+        "Description": "Not truly a resolution at all, but it ends a phase of Conflict. The “Villain” is exposed, their plans are thwarted, but the actual Conflict is actually still present (and will simply select a new “Villain” and try again). The “Good”/ “Lawful” &nbsp;vs “Evil”/”Criminal” Conflict presented in many Detective novels is an example. The Killer is caught, but society is unaltered by the resolution, the Plot can easily be recycled again with only slight changes. Again a Plot can often try for this style of resolution where nothing is really changed.",
+        "Rules": "Pays out. This Plot will return with only slight changes (such as different Embodiment) usually at the same Rank."
+    },
+    {
+        "Type": "Rejection",
+        "Description": "One side (or both) avoids the Conflict. There is no resolution, and the Plot will be promoted one Rank, gain extra Conflict Facets and will spawn at least one new Plot as additional sub-plots about the rejection. Rejections do not pay out to the Characters. If your players refuse to deal with the issue of a local Baron who is enslaving his populace and ride out into the larger world instead, they will return later to discover the Baron is now Emperor having conquered all of his neighbours with his huge slave army. Plots cannot go for this option, it should only be used if the Characters (usually Players) force this resolution.",
+        "Rules": "Does not Payout to the PCs (they receive no Final Reward). Plot is promoted 1 Rank and will return along with at least one Sub-plot specifically tied to the PCs’ rejection."
+    },
+    {
+        "Type": "Reversion",
+        "Description": "The situation is unchanged at the end, usually this is because of a failure of the Pressed side of the Conflict to defeat the Dominant. In a detective story, the Reversion will mean the detective failed to solve the crime, perhaps they convicted the wrong person, or they just got away. In the case of a Reversion, the Plot will be promoted a Rank (a Story becomes an Arc) and will return later. Reversions do not payout, but carry over the Yarn into their next Story. All good Plot will seek this resolution and get themselves promoted, unless they are close to the top level of the Plot Hierarchy. Remember though, no Plot will kill all the Pressed side, as at least one Character is needed to start the sequel.",
+        "Rules": "Failed Resolution, does not pay out. Plot promoted 1 Rank and will return."
+    },
+    {
+        "Type": "Revocation",
+        "Description": "Despite the best actions of either side, the Loom has failed to work the Conflict and nothing has changed at the end. No one has learnt any lessons. But the Plot is not promoted or demoted. It will simply return again later as essentially the same plot again. This is common to situation-comedies, where everything is back to normal at the end of the story. In a detective novel the murderer wouldn’t be caught and the murder victim would have to be returned to life, somehow, perhaps the whole thing was a mistake.",
+        "Rules": "No change to the world, Plot remains same Rank, pays out Half normal."
+    },
+    {
+        "Type": "Reconciliation",
+        "Description": "The Conflict is at least partially resolved by an accord between the two sides. The Dominant side grants conciliations (such as rights, money, makes amends or apologizes) to the Pressed side of the Conflict. A Reconciliation is usually a negotiated settlement, which means that it may not (cannot) completely resolve the Conflict. The Plot is reduced a rank and may return as a Sub-plot at some point. Plots never go for a reconciliation, unless there is no other choice, they do prefer it to an actual Resolution though.",
+        "Rules": "Pays out according to Rank. Plot -1 Rank, may return as a ’sub-plot’."
+    },
+    {
+        "Type": "Resolution",
+        "Description": "True resolution of the Conflict means that the Plot is actually defeated. It will payout its maximum rewards. True resolution usually comes from the Thesis, Antithesis, Synthesis pattern of Dialectic Logic. At it’s simplest, the Resolution is the ideal ending to a romantic plot as it represents marriage of the two Embodiments. A sensible Resolution of Jim the Thief’s Burden-Burden Conflict would probably result in Jim gaining a Burden-Burden “Wealth” skill (or Descendant), it could alternatively pay off Jim’s Vulnerable Hitch, increase his Burden Facet, or even allow him access to the Wielder Core, or Earth Incarna instead. The observant Referee may note what Skills and Descendants a particular character is after, and design a Story specifically to create the required Annex from a Resolved Conflict. While no Plot ever wants to resolve their Conflict, this is the preferred resolution for the Players and the Conflict itself.",
+        "Rules": "Plot pays out double. Plot is defeated and cannot be used again."
+    }
+]

@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 58,
+    "Name": "Delighted",
+    "Entity": "&#19961;",
+    "Logical": 27,
+    "Trigrams": [
+      1,
+      1
+    ],
+    "Hexagram_Text": "Tui, Delighted (or The Joyous or Open Lake or Wonder), is the moment of joy that follows a struggle. This is the sort of joy that others find encouraging. It is the delight of shared experiences and the defeating of shared enemies.",
+    "Unchanging": "You may once per Scene add Incarna Draw (Boon Double Reduced) Success Levels to any Character that you encourage.",
+    "Line1": "Contented Delight",
+    "Line2": "Respectful Delight",
+    "Line3": "Earthly Delights",
+    "Line4": "Joy Cannot Be Measured",
+    "Line5": "Foolish Delight",
+    "Line6": "Seductive Delights"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you enjoy yourself, encourage another, laugh, or are benevolent",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you act selfishly or malevolently",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "you act happy and content",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yin",
+        "Condition": "you show respect for others",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yang",
+        "Condition": "you act shallow, superficial or materialistic",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yin",
+        "Condition": "you act deep, analytical or spiritual",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yin",
+        "Condition": "you trust another, or they betray you",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yang",
+        "Condition": "you act bored, unhappy, dissatisfied or vain",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Delighted Quest describes a situation that cannot be won by negative methods, this situation cannot be won by closed-mindedness, violence, intimidation, manipulation, cheating, or machinations, instead only positive actions and attitudes such as open-mindedness, honesty, friendliness, as well as strength, willpower, persuasion and discussion will win the day. ",
+    "Quest_Complete": "The Quest that ends in the Delighted Hexagram indicates a Quest that ends with friends discussing the events, learning from their experiences, and setting themselves up with positive attitudes to face future situations with confidence. This often includes a gain of Proficiencies, Descendants or an Alternate Personality.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester is for some reason inherently content and feels no need to push through any Tests or Ordeals. There is no bonus or penalty associated.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester is approached by people who engage in trivial pleasures, if the Quester joins them in this temptation it will add a Hurdle, Obstacle, or Failure Level to their Ordeal or Test. If the Quester refuses these simple pleasures then they may add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "If the Quester behaves in a bored manner, seeking external pleasures to distract and entertain themselves, then add a Failure Level, Hurdle or Obstacle to their Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester is offered a choice of pleasures, one pleasure is a high spiritual or intellectual pleasure, the other a base pleasure of the flesh. If the Quester cannot ignore the base pleasure choice then they add a Hurdle, Obstacle or Failure Level to the Ordeal or Test. If they choose the higher pleasure then they will add a Success Level instead. ",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester finds themselves in a dangerous position, betrayed by someone they trusted (such as a lover or companion), which will add at least a Failure Level, Obstacle or Hurdle to their Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester is tempted by powerfully seductive delights, that massage their ego, or are addictive to the Quester. If the Quester does not reject these delights then they may spiral into addiction, costing more than just a Failure Level, Obstacle or Hurdle on their Test or Ordeal, this addiction may even add a Dependence Hitch. ",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "This hexagram, like sun, is one of the eight formed by doubling of a trigram. The trigram Tui denotes the youngest daughter; it is symbolized by the smiling lake, and its attribute is joyousness. Contrary to appearances, it is not the yielding quality of the top line that accounts for joy here. The attribute of the yielding or dark principle is not joy but melancholy. However, joy is indicated by the fact that there are two strong lines within, expressing themselves through the medium of gentleness. True joy, therefore, rests on firmness and strength within, manifesting itself outwardly as yielding and gentle.",
+    "The_Image": {
+      "text": "Lakes resting one on the other:\n\nThe image of THE JOYOUS.\n\nThus the superior man joins with his friends\nFor discussion and practice.",
+      "comments": "A lake evaporates upward and thus gradually dries up; but when two lakes are joined they do not dry up so readily, for one replenishes the other. It is the same in the field of knowledge. Knowledge should be a refreshing and vitalizing force. It becomes so only through stimulating intercourse with congenial friends with whom one holds discussion and practices application of the truths of life. In this way learning becomes many-sided and takes on a cheerful lightness, whereas there is always something ponderous and one-sided about the learning of the self-taught."
+    },
+    "The_Judgment": {
+      "text": "THE JOYOUS. Success.\nPerseverance is favorable.",
+      "comments": "The joyous mood is infectious and therefore brings success. But joy must be based on steadfastness if it is not to degenerate into uncontrolled mirth. Truth and strength must dwell in the heart, while gentleness reveals itself in social intercourse. In this way one assumes the right attitude toward God and man and achieves something. Under certain conditions, intimidation without gentleness may achieve something momentarily, but not for all time. When, on the other hand, the hearts of men are won by friendliness, they are led to take all hardships upon themselves willingly, and if need be will not shun death itself, so great is the power of joy over men."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Contented joyousness. Good fortune.",
+        "comments": "A quiet, wordless, self-contained joy, desiring nothing from without and resting content with everything, remains free of all egotistic likes and dislikes. In this freedom lies good fortune, because it harbors the quiet security of a heart fortified within itself."
+      },
+      "2": {
+        "text": "Sincere joyousness. Good fortune.\nRemorse disappears.",
+        "comments": "We often find ourselves associating with inferior people in whose company we are tempted by pleasures that are inappropriate for the superior man. To participate in such pleasures would certainly bring remorse, for a superior man can find no real satisfaction in low pleasures. When, recognizing this, a man does not permit his will to swerve, so that he does not find such ways agreeable, not even dubious companions will venture to proffer any base pleasures, because he would not enjoy them. Thus every cause for regret is removed."
+      },
+      "3": {
+        "text": "Coming joyousness. Misfortune.",
+        "comments": "True joy must spring from within. But if one is empty within and wholly given over to the world, idle pleasures come streaming in from without. This is what many people welcome as diversion. Those who lack inner stability and therefore need amusement, will always find opportunity of indulgence. They attract external pleasures by the emptiness of their natures. Thus they lose themselves more and more, which of course has bad results."
+      },
+      "4": {
+        "text": "Joyousness that is weighed is not at peace.\nAfter ridding himself of mistakes a man has joy.",
+        "comments": "Often a man finds himself weighing the choice between various kinds of pleasures, and so long as he has not decided which kind he will choose, the higher or the lower, he has no inner peace. Only when he clearly recognizes that passion brings suffering, can he make up his mind to turn away from the lower pleasures and to strive for the higher. Once this decision is sealed, he finds true joy and peace, and inner conflict is overcome."
+      },
+      "5": {
+        "text": "Sincerity toward disintegrating influences is dangerous.",
+        "comments": "Dangerous elements approach even the far best of men. If a man permits himself to have anything to do with them, their disintegrating influence acts slowly but surely, and inevitable brings dangers in its train. But if he recognizes the situation and can comprehend the danger, he knows how to protect himself and remains unharmed."
+      },
+      "6": {
+        "text": "Seductive joyousness.",
+        "comments": "A vain nature invites diverting pleasures and must suffer accordingly (cf. the six in the third place). If a man is unstable within, the pleasures of the world that he does not shun have so powerful an influence that he is swept along by them. Here it is no longer a question of danger, of good fortune or misfortune. He has given up direction of his own life, and what becomes of him depends upon chance and external influences."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Delighted'. Internalize this core philosophy: This hexagram, like sun, is one of the eight formed by doubling of a trigram. The trigram Tui denotes the youngest daughter; it is symbolized by the smiling lake, and its attribute is joyousness. Contrary to appearances, it is not the yielding quality of the top line that accounts for joy here. The attribute of the yielding or dark principle is not joy but melancholy. However, joy is indicated by the fact that there are two strong lines within, expressing themselves through the medium of... Your current worldview is: \"Tui, Delighted (or The Joyous or Open Lake or Wonder), is the moment of joy that follows a struggle. This is the sort of joy that others find encouraging. It is the delight of shared experiences and the defeating of shared enemies.\". Let your choices be subtly driven by these conditions: you enjoy yourself, encourage another, laugh, or are benevolent, you act selfishly or malevolently. When interacting, mirror the wisdom found in the commentary: \"The joyous mood is infectious and therefore brings success. But joy must be based on steadfastness if it is not to degenerate into uncontrolled mirth. Truth and strength must dwell in the heart, while gentleness reveals itself in social intercourse. In this way one assumes the right attitude toward...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Delighted'. The primary quest objective is: The Delighted Quest describes a situation that cannot be won by negative methods, this situation cannot be won by closed-mindedness, violence, intimidation, manipulation, cheating, or machinations, instead only positive actions and attitudes such as open-mindedness, honesty, friendliness, as well as strength, willpower, persuasion and discussion will win the day. . Introduce environmental or social complications that reflect the 'Image' of this hexagram: A lake evaporates upward and thus gradually dries up; but when two lakes are joined they do not dry up so readily, for one replenishes the other. It is the same in the field of knowledge. Knowledge should be a refreshing and vitalizing force. It becomes so only through stimulating intercourse with congenial friends with whom one holds discussion and practices application of the truths of life. In... Use the following line-specific challenges to pace the story: The Quester is for some reason inherently content and feels no need to push through any Tests or Ordeals. There is no bonus or penalty associated. | The Quester is approached by people who engage in trivial pleasures, if the Quester joins them in this temptation it will add a Hurdle, Obstacle, or Failure Level to their Ordeal or Test. If the Quester refuses these simple pleasures then they may add a Success Level instead. | If the Quester behaves in a bored manner, seeking external pleasures to distract and entertain themselves, then add a Failure Level, Hurdle or Obstacle to their Test or Ordeal. | The Quester is offered a choice of pleasures, one pleasure is a high spiritual or intellectual pleasure, the other a base pleasure of the flesh. If the Quester cannot ignore the base pleasure choice then they add a Hurdle, Obstacle or Failure Level to the Ordeal or Test. If they choose the higher pleasure then they will add a Success Level instead.  | The Quester finds themselves in a dangerous position, betrayed by someone they trusted (such as a lover or companion), which will add at least a Failure Level, Obstacle or Hurdle to their Test or Ordeal. | The Quester is tempted by powerfully seductive delights, that massage their ego, or are addictive to the Quester. If the Quester does not reject these delights then they may spiral into addiction, costing more than just a Failure Level, Obstacle or Hurdle on their Test or Ordeal, this addiction may even add a Dependence Hitch. ",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Contented Delight): Mirror the internal state described in the commentary: \"A quiet, wordless, self-contained joy, desiring nothing from without and resting content with everything, remains free of all egotistic likes and dislikes. In this freedom lies good fortune, because it harbors the quiet security of a heart fortified...\" Your actions should be framed by the goal: you act happy and content.",
+        "Plot": "Plot Complication Line 1 (Contented Delight): Introduce a challenge based on the interpretation: \"A quiet, wordless, self-contained joy, desiring nothing from without and resting content with everything, remains free of all egotistic likes and dislikes. In this freedom lies good fortune, because it harbors the quiet security of a heart fortified...\" The specific quest objective for this stage is: The Quester is for some reason inherently content and feels no need to push through any Tests or Ordeals. There is no bonus or penalty associated."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Respectful Delight): Mirror the internal state described in the commentary: \"We often find ourselves associating with inferior people in whose company we are tempted by pleasures that are inappropriate for the superior man. To participate in such pleasures would certainly bring remorse, for a superior man can find no real...\" Your actions should be framed by the goal: you show respect for others.",
+        "Plot": "Plot Complication Line 2 (Respectful Delight): Introduce a challenge based on the interpretation: \"We often find ourselves associating with inferior people in whose company we are tempted by pleasures that are inappropriate for the superior man. To participate in such pleasures would certainly bring remorse, for a superior man can find no real...\" The specific quest objective for this stage is: The Quester is approached by people who engage in trivial pleasures, if the Quester joins them in this temptation it will add a Hurdle, Obstacle, or Failure Level to their Ordeal or Test. If the Quester refuses these simple pleasures then they may add a Success Level instead."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Earthly Delights): Mirror the internal state described in the commentary: \"True joy must spring from within. But if one is empty within and wholly given over to the world, idle pleasures come streaming in from without. This is what many people welcome as diversion. Those who lack inner stability and therefore need...\" Your actions should be framed by the goal: you act shallow, superficial or materialistic.",
+        "Plot": "Plot Complication Line 3 (Earthly Delights): Introduce a challenge based on the interpretation: \"True joy must spring from within. But if one is empty within and wholly given over to the world, idle pleasures come streaming in from without. This is what many people welcome as diversion. Those who lack inner stability and therefore need...\" The specific quest objective for this stage is: If the Quester behaves in a bored manner, seeking external pleasures to distract and entertain themselves, then add a Failure Level, Hurdle or Obstacle to their Test or Ordeal."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Joy Cannot Be Measured): Mirror the internal state described in the commentary: \"Often a man finds himself weighing the choice between various kinds of pleasures, and so long as he has not decided which kind he will choose, the higher or the lower, he has no inner peace. Only when he clearly recognizes that passion brings...\" Your actions should be framed by the goal: you act deep, analytical or spiritual.",
+        "Plot": "Plot Complication Line 4 (Joy Cannot Be Measured): Introduce a challenge based on the interpretation: \"Often a man finds himself weighing the choice between various kinds of pleasures, and so long as he has not decided which kind he will choose, the higher or the lower, he has no inner peace. Only when he clearly recognizes that passion brings...\" The specific quest objective for this stage is: The Quester is offered a choice of pleasures, one pleasure is a high spiritual or intellectual pleasure, the other a base pleasure of the flesh. If the Quester cannot ignore the base pleasure choice then they add a Hurdle, Obstacle or Failure Level to the Ordeal or Test. If they choose the higher pleasure then they will add a Success Level instead. "
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Foolish Delight): Mirror the internal state described in the commentary: \"Dangerous elements approach even the far best of men. If a man permits himself to have anything to do with them, their disintegrating influence acts slowly but surely, and inevitable brings dangers in its train. But if he recognizes the situation...\" Your actions should be framed by the goal: you trust another, or they betray you.",
+        "Plot": "Plot Complication Line 5 (Foolish Delight): Introduce a challenge based on the interpretation: \"Dangerous elements approach even the far best of men. If a man permits himself to have anything to do with them, their disintegrating influence acts slowly but surely, and inevitable brings dangers in its train. But if he recognizes the situation...\" The specific quest objective for this stage is: The Quester finds themselves in a dangerous position, betrayed by someone they trusted (such as a lover or companion), which will add at least a Failure Level, Obstacle or Hurdle to their Test or Ordeal."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Seductive Delights): Mirror the internal state described in the commentary: \"A vain nature invites diverting pleasures and must suffer accordingly (cf. the six in the third place). If a man is unstable within, the pleasures of the world that he does not shun have so powerful an influence that he is swept along by them. Here...\" Your actions should be framed by the goal: you act bored, unhappy, dissatisfied or vain.",
+        "Plot": "Plot Complication Line 6 (Seductive Delights): Introduce a challenge based on the interpretation: \"A vain nature invites diverting pleasures and must suffer accordingly (cf. the six in the third place). If a man is unstable within, the pleasures of the world that he does not shun have so powerful an influence that he is swept along by them. Here...\" The specific quest objective for this stage is: The Quester is tempted by powerfully seductive delights, that massage their ego, or are addictive to the Quester. If the Quester does not reject these delights then they may spiral into addiction, costing more than just a Failure Level, Obstacle or Hurdle on their Test or Ordeal, this addiction may even add a Dependence Hitch. "
+      }
+    }
+  }
+}

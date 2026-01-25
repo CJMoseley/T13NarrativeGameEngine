@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 22,
+    "Name": "Adornment",
+    "Entity": "&#19925;",
+    "Logical": 37,
+    "Trigrams": [
+      2,
+      6
+    ],
+    "Hexagram_Text": "Bi, Adornment (or Adorning Grace or Elegance), signifies the grace of acceptance. Accept what is given unto you. Drape yourself in fineries if that is what you have been given. But be careful that your adornments do not become a prison.",
+    "Unchanging": "You may add Incarna Score (Boon Reduced) to any action to do with grace, style, or beauty.",
+    "Line1": "Graceful Feet",
+    "Line2": "Stroking The Beard",
+    "Line3": "Glistening Adornment",
+    "Line4": "Simple Adornment",
+    "Line5": "Grace in Hills &amp; Gardens",
+    "Line6": "Simple Grace"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you are graceful, elegant, artistic, stylish, or aesthetic",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "your artistic merit is mistaken for something else, such as religion, crafts, education, wealth, or \"breeding\"",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "you take the hard or simpler option, such as walking instead of riding or driving",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yang",
+        "Condition": "you act thoughtful, or try to manipulate or please others",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yin",
+        "Condition": "you worry about everyday concerns, or do not take things at face value",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yang",
+        "Condition": "you worry about others, show concern or ignore threats",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you act inferior, meek or insecure",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yin",
+        "Condition": "you accept others, dress down, hide, or do not reveal your full strength",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Adornment Quest is one concerned with grace, beauty, fashion and art. The aesthetics of the Quest are considered as important as the content in this Hexagram&#39;s Quests. The Adornment Quest calls for characters to dress up, the Quest might take place against a backdrop of a red carpet event, parade, an ambassadorial ball, a fashion week, an art exhibition, or a royal masquerade, as examples. There will often be Tests or Ordeals for aesthetics, politics, social situations, dancing and artistic expression, however any Test or Action that has no aesthetic or grace components will be affected by a Failure Level, Hurdle or Obstacle, so every shot fired, or punch thrown will complicate the Quest. Adornment Quests are usually fairly small affairs, unable to impact the world as a whole, although fashions may be changed by the Quest, this usually has limited impact upon the world at large.",
+    "Quest_Complete": "When the Quest ends in the Adornment Hexagram, the Quester is rewarded with a gift that adorns them in some way. This may be a medal (military, civil, or royal service awards), clothing (such as sashes, robes or a uniform), or a suit of ceremonial armour, as the Yarn-Teller and world finds appropriate. The Descendant gained usually has at least one Annex dedicated to \"Looking Good\", \"Tailored-fit\" or a similar aesthetic annex.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester is offered a choice between an easy way (riding in a carriage) or a harder way (walking). If they choose the easy way the next Test or Ordeal will have an additional Failure Level, Hurdle or Obstacle.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quest includes a situation where the Quester is reminded not to confuse form and function, or not to judge a book by its cover. If the Quester judges someone or something by appearance alone, or acts with vanity about their own appearance then this adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The Quester is offered finer things, better clothes, fine wines, and good foods, which can distract them from their Quest. If they accept these indulgences then they will add a Hurdle, Obstacle or Failure Level added to their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester is offered indulgences, finery and riches. If they accept these riches then their Test or Ordeal will have an additional Failure Level, Obstacle or Hurdle added. If they ignore the offered indulgences and concentrate upon their Quest and otherwise living simply, then they will receive aid, often in the form of a supporter, or Success Level on their Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester may be sickened by the opulence around them, or bothered by attention their beauty or fame has brought them, and may be tempted to flee or seek solitude. If they find a quiet place to hide then they will meet a potential friend, love interest, mentor or ally. If they seek to impress this character with riches and fashionable gifts they will be rejected and add a Hurdle, Obstacle, Question or Failure Level to their Ordeal or Test. If instead they imply that they cannot offer such gifts they will be accepted as the character does not value the adornments of the Quest, but honesty and sincere feelings. This will add a Success Level to the Quester&#39;s Ordeal or Test instead.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "If the Quester demonstrates physical and social graces, such as proper manners (including tolerance of different manners), then they will receive a Success Level on their Test or Ordeal. Failure to display appropriate manners, being insulting or intolerant, or being overly obsessive (especially vainly or about art or fashion) may even add a Hitch to the Quester moving forwards, and will always add a Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "This hexagram shows a fire that breaks out of the secret depths of the earth and, blazing up, illuminates and beautifies the mountain, the heavenly heights. Grace-beauty of form-is necessary in any union if it is to be well ordered and pleasing rather than disordered and chaotic.",
+    "The_Image": {
+      "text": "Fire at the foot of the mountain:\n\nThe image of GRACE.\nThus does the superior man proceed\nWhen clearing up current affairs.\nBut he dare not decide controversial issues in this way.",
+      "comments": "The fire, whose light illuminates the mountain and makes it pleasing, does not shine far; in the same way, beautiful form suffices to brighten and to throw light upon matters of lesser moment, but important questions cannot be decided in this way. They require greater earnestness."
+    },
+    "The_Judgment": {
+      "text": "GRACE has success.\nIn small matters\nIt is favorable to undertake something.",
+      "comments": "Grace brings success. However, it is not the essential or fundamental thing; it is only the ornament and therefore be used sparingly and only in little things. In the lower trigram of fire a yielding line comes between two strong lines and makes them beautiful, but the strong lines are the essential content and the weak line is the beautifying form. In the upper trigram of the mountain, the strong line takes the lead, so that here again the strong element must be regarded as the decisive factor. In nature we see in the sky the strong light of the sun; the life of the world depends on it. But this strong, essential thing is changed and given pleasing variety by the moon and the stars. In human affairs, aesthetic form comes into being when traditions exist that, strong and abiding like mountains, are made pleasing by a lucid beauty. By contemplating the forms existing in the heavens we come to understand time and its changing demands. Through contemplation of the forms existing in human society it becomes possible to shape the world."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "He lends grace to his toes, leaves the carriage, and walks.",
+        "comments": "A beginner in subordinate place must take upon himself the labor of advancing. There might be an opportunity of surreptitiously easing the way-symbolized by the carriage-but a self-contained man scorns help gained in a dubious fashion. He thinks it more graceful to go on foot than to drive in a carriage under false pretenses."
+      },
+      "2": {
+        "text": "Lends grace to the beard on his chin.",
+        "comments": "The beard is not an independent thing; it moves only with the chin. The image therefore means that form is to be considered only as a result and attribute of content. The beard is a superfluous ornament. To devote care to it for its own sake, without regard for the inner content of which it is an ornament, would bespeak a certain vanity."
+      },
+      "3": {
+        "text": "Graceful and moist.\nConstant perseverance brings good fortune.",
+        "comments": "This represents a very charming life situation. One is under the spell of grace and the mellow mood induced by wine. This grace can adorn, but it can also swamp us. Hence the warning not to sink into convivial indolence but to remain constant in perseverance. Good fortune depends on this."
+      },
+      "4": {
+        "text": "Grace or simplicity?\nA white horse comes as if on wings.\nHe is not a robber,\nHe will woo at the right time.",
+        "comments": "An individual is in a situation in which doubts arise as to which is better-to pursue the grace of external brilliance, or to return to simplicity. The doubt itself implies the answer. Confirmation comes from the outside; it comes like a white winged horse. The white color indicates simplicity. At first it may be disappointing to renounce the comforts that might have been obtained, yet one finds peace of mind in a true relationship with the friend who courts him. The winged horse is the symbol of the thoughts that transcend all limits of space and time."
+      },
+      "5": {
+        "text": "Grace in the hills and gardens.\nThe roll of silk is meager and small.\nHumiliation, but in the end good fortune.",
+        "comments": "A man withdraws from contact with people of the lowlands, who seek nothing but magnificence and luxury, in to the solitude of the heights. There he finds an individual to look up to, whom he would like to have as a friend. But the gifts he has to offer are poor and few, so that he feels ashamed. However, it is not the material gifts that count, but sincerity of feeling, and so all goes well in the end."
+      },
+      "6": {
+        "text": "Simple grace. No blame.",
+        "comments": "Here at the highest stage of development all ornament is discarded. Form no longer conceals content but brings out its value to the full. Perfect grace consists not in exterior ornamentation of the substance, but in the simple fitness of its form."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Adornment'. Internalize this core philosophy: This hexagram shows a fire that breaks out of the secret depths of the earth and, blazing up, illuminates and beautifies the mountain, the heavenly heights. Grace-beauty of form-is necessary in any union if it is to be well ordered and pleasing rather than disordered and chaotic. Your current worldview is: \"Bi, Adornment (or Adorning Grace or Elegance), signifies the grace of acceptance. Accept what is given unto you. Drape yourself in fineries if that is what you have been given. But be careful that your adornments do not become a prison.\". Let your choices be subtly driven by these conditions: you are graceful, elegant, artistic, stylish, or aesthetic, your artistic merit is mistaken for something else, such as religion, crafts, education, wealth, or \"breeding\". When interacting, mirror the wisdom found in the commentary: \"Grace brings success. However, it is not the essential or fundamental thing; it is only the ornament and therefore be used sparingly and only in little things. In the lower trigram of fire a yielding line comes between two strong lines and makes them beautiful, but the strong lines are the...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Adornment'. The primary quest objective is: The Adornment Quest is one concerned with grace, beauty, fashion and art. The aesthetics of the Quest are considered as important as the content in this Hexagram&#39;s Quests. The Adornment Quest calls for characters to dress up, the Quest might take place against a backdrop of a red carpet event, parade, an ambassadorial ball, a fashion week, an art exhibition, or a royal masquerade, as examples. There will often be Tests or Ordeals for aesthetics, politics, social situations, dancing and artistic expression, however any Test or Action that has no aesthetic or grace components will be affected by a Failure Level, Hurdle or Obstacle, so every shot fired, or punch thrown will complicate the Quest. Adornment Quests are usually fairly small affairs, unable to impact the world as a whole, although fashions may be changed by the Quest, this usually has limited impact upon the world at large.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: The fire, whose light illuminates the mountain and makes it pleasing, does not shine far; in the same way, beautiful form suffices to brighten and to throw light upon matters of lesser moment, but important questions cannot be decided in this way. They require greater earnestness. Use the following line-specific challenges to pace the story: The Quester is offered a choice between an easy way (riding in a carriage) or a harder way (walking). If they choose the easy way the next Test or Ordeal will have an additional Failure Level, Hurdle or Obstacle. | The Quest includes a situation where the Quester is reminded not to confuse form and function, or not to judge a book by its cover. If the Quester judges someone or something by appearance alone, or acts with vanity about their own appearance then this adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test. | The Quester is offered finer things, better clothes, fine wines, and good foods, which can distract them from their Quest. If they accept these indulgences then they will add a Hurdle, Obstacle or Failure Level added to their Ordeal or Test. | The Quester is offered indulgences, finery and riches. If they accept these riches then their Test or Ordeal will have an additional Failure Level, Obstacle or Hurdle added. If they ignore the offered indulgences and concentrate upon their Quest and otherwise living simply, then they will receive aid, often in the form of a supporter, or Success Level on their Test or Ordeal. | The Quester may be sickened by the opulence around them, or bothered by attention their beauty or fame has brought them, and may be tempted to flee or seek solitude. If they find a quiet place to hide then they will meet a potential friend, love interest, mentor or ally. If they seek to impress this character with riches and fashionable gifts they will be rejected and add a Hurdle, Obstacle, Question or Failure Level to their Ordeal or Test. If instead they imply that they cannot offer such gifts they will be accepted as the character does not value the adornments of the Quest, but honesty and sincere feelings. This will add a Success Level to the Quester&#39;s Ordeal or Test instead. | If the Quester demonstrates physical and social graces, such as proper manners (including tolerance of different manners), then they will receive a Success Level on their Test or Ordeal. Failure to display appropriate manners, being insulting or intolerant, or being overly obsessive (especially vainly or about art or fashion) may even add a Hitch to the Quester moving forwards, and will always add a Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Graceful Feet): Mirror the internal state described in the commentary: \"A beginner in subordinate place must take upon himself the labor of advancing. There might be an opportunity of surreptitiously easing the way-symbolized by the carriage-but a self-contained man scorns help gained in a dubious fashion. He thinks it...\" Your actions should be framed by the goal: you take the hard or simpler option, such as walking instead of riding or driving.",
+        "Plot": "Plot Complication Line 1 (Graceful Feet): Introduce a challenge based on the interpretation: \"A beginner in subordinate place must take upon himself the labor of advancing. There might be an opportunity of surreptitiously easing the way-symbolized by the carriage-but a self-contained man scorns help gained in a dubious fashion. He thinks it...\" The specific quest objective for this stage is: The Quester is offered a choice between an easy way (riding in a carriage) or a harder way (walking). If they choose the easy way the next Test or Ordeal will have an additional Failure Level, Hurdle or Obstacle."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Stroking The Beard): Mirror the internal state described in the commentary: \"The beard is not an independent thing; it moves only with the chin. The image therefore means that form is to be considered only as a result and attribute of content. The beard is a superfluous ornament. To devote care to it for its own sake,...\" Your actions should be framed by the goal: you act thoughtful, or try to manipulate or please others.",
+        "Plot": "Plot Complication Line 2 (Stroking The Beard): Introduce a challenge based on the interpretation: \"The beard is not an independent thing; it moves only with the chin. The image therefore means that form is to be considered only as a result and attribute of content. The beard is a superfluous ornament. To devote care to it for its own sake,...\" The specific quest objective for this stage is: The Quest includes a situation where the Quester is reminded not to confuse form and function, or not to judge a book by its cover. If the Quester judges someone or something by appearance alone, or acts with vanity about their own appearance then this adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Glistening Adornment): Mirror the internal state described in the commentary: \"This represents a very charming life situation. One is under the spell of grace and the mellow mood induced by wine. This grace can adorn, but it can also swamp us. Hence the warning not to sink into convivial indolence but to remain constant in...\" Your actions should be framed by the goal: you worry about everyday concerns, or do not take things at face value.",
+        "Plot": "Plot Complication Line 3 (Glistening Adornment): Introduce a challenge based on the interpretation: \"This represents a very charming life situation. One is under the spell of grace and the mellow mood induced by wine. This grace can adorn, but it can also swamp us. Hence the warning not to sink into convivial indolence but to remain constant in...\" The specific quest objective for this stage is: The Quester is offered finer things, better clothes, fine wines, and good foods, which can distract them from their Quest. If they accept these indulgences then they will add a Hurdle, Obstacle or Failure Level added to their Ordeal or Test."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Simple Adornment): Mirror the internal state described in the commentary: \"An individual is in a situation in which doubts arise as to which is better-to pursue the grace of external brilliance, or to return to simplicity. The doubt itself implies the answer. Confirmation comes from the outside; it comes like a white...\" Your actions should be framed by the goal: you worry about others, show concern or ignore threats.",
+        "Plot": "Plot Complication Line 4 (Simple Adornment): Introduce a challenge based on the interpretation: \"An individual is in a situation in which doubts arise as to which is better-to pursue the grace of external brilliance, or to return to simplicity. The doubt itself implies the answer. Confirmation comes from the outside; it comes like a white...\" The specific quest objective for this stage is: The Quester is offered indulgences, finery and riches. If they accept these riches then their Test or Ordeal will have an additional Failure Level, Obstacle or Hurdle added. If they ignore the offered indulgences and concentrate upon their Quest and otherwise living simply, then they will receive aid, often in the form of a supporter, or Success Level on their Test or Ordeal."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Grace in Hills &amp; Gardens): Mirror the internal state described in the commentary: \"A man withdraws from contact with people of the lowlands, who seek nothing but magnificence and luxury, in to the solitude of the heights. There he finds an individual to look up to, whom he would like to have as a friend. But the gifts he has to...\" Your actions should be framed by the goal: you act inferior, meek or insecure.",
+        "Plot": "Plot Complication Line 5 (Grace in Hills &amp; Gardens): Introduce a challenge based on the interpretation: \"A man withdraws from contact with people of the lowlands, who seek nothing but magnificence and luxury, in to the solitude of the heights. There he finds an individual to look up to, whom he would like to have as a friend. But the gifts he has to...\" The specific quest objective for this stage is: The Quester may be sickened by the opulence around them, or bothered by attention their beauty or fame has brought them, and may be tempted to flee or seek solitude. If they find a quiet place to hide then they will meet a potential friend, love interest, mentor or ally. If they seek to impress this character with riches and fashionable gifts they will be rejected and add a Hurdle, Obstacle, Question or Failure Level to their Ordeal or Test. If instead they imply that they cannot offer such gifts they will be accepted as the character does not value the adornments of the Quest, but honesty and sincere feelings. This will add a Success Level to the Quester&#39;s Ordeal or Test instead."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Simple Grace): Mirror the internal state described in the commentary: \"Here at the highest stage of development all ornament is discarded. Form no longer conceals content but brings out its value to the full. Perfect grace consists not in exterior ornamentation of the substance, but in the simple fitness of its form.\" Your actions should be framed by the goal: you accept others, dress down, hide, or do not reveal your full strength.",
+        "Plot": "Plot Complication Line 6 (Simple Grace): Introduce a challenge based on the interpretation: \"Here at the highest stage of development all ornament is discarded. Form no longer conceals content but brings out its value to the full. Perfect grace consists not in exterior ornamentation of the substance, but in the simple fitness of its form.\" The specific quest objective for this stage is: If the Quester demonstrates physical and social graces, such as proper manners (including tolerance of different manners), then they will receive a Success Level on their Test or Ordeal. Failure to display appropriate manners, being insulting or intolerant, or being overly obsessive (especially vainly or about art or fashion) may even add a Hitch to the Quester moving forwards, and will always add a Hurdle, Obstacle or Failure Level to their Ordeal or Test."
+      }
+    }
+  }
+}

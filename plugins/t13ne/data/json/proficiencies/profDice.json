@@ -1,0 +1,14 @@
+[
+    {
+        "Character_Type": "Child",
+        "Base_Proficiency Die Type": "d4"
+    },
+    {
+        "Character_Type": "Mortal Adult",
+        "Base_Proficiency Die Type": "d6"
+    },
+    {
+        "Character_Type": "Immortal Beings",
+        "Base_Proficiency Die Type": "d8"
+    }
+]

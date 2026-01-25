@@ -1,0 +1,19 @@
+{
+	"Name": "Universal",
+	"Hex": [0, 63],
+	"Scale": 0,
+	"Stats": [
+		{"Facet": 0, "Facet_Boon": 13, "Facet_Sway": 0, "Facet_Mutation_Matrix": 0, "Joined": true, "Antifacet_Mutation_Matrix": 0, "Antifacet": 9, "Antifacet_Boon": 13, "AntiFacet_Sway": 0},
+		{"Facet": 2, "Facet_Boon": 13, "Facet_Sway": 0, "Facet_Mutation_Matrix": 0, "Joined": true, "Antifacet_Mutation_Matrix": 0, "Antifacet": 13, "Antifacet_Boon": 13, "AntiFacet_Sway": 0},
+		{"Facet": 3, "Facet_Boon": 13, "Facet_Sway": 0, "Facet_Mutation_Matrix": 0, "Joined": true, "Antifacet_Mutation_Matrix": 0, "Antifacet": 22, "Antifacet_Boon": 13, "AntiFacet_Sway": 0},
+		{"Facet": 5, "Facet_Boon": 13, "Facet_Sway": 0, "Facet_Mutation_Matrix": 0, "Joined": true, "Antifacet_Mutation_Matrix": 0, "Antifacet": 16, "Antifacet_Boon": 13, "AntiFacet_Sway": 0},
+		{"Facet": 6, "Facet_Boon": 13, "Facet_Sway": 0, "Facet_Mutation_Matrix": 0, "Joined": true, "Antifacet_Mutation_Matrix": 0, "Antifacet": 1, "Antifacet_Boon": 13, "AntiFacet_Sway": 0},
+		{"Facet": 7, "Facet_Boon": 13, "Facet_Sway": 0, "Facet_Mutation_Matrix": 0, "Joined": true, "Antifacet_Mutation_Matrix": 0, "Antifacet": 14, "Antifacet_Boon": 13, "AntiFacet_Sway": 0},
+		{"Facet": 10, "Facet_Boon": 13, "Facet_Sway": 0, "Facet_Mutation_Matrix": 0, "Joined": true, "Antifacet_Mutation_Matrix": 0, "Antifacet": 4, "Antifacet_Boon": 13, "AntiFacet_Sway": 0},
+		{"Facet": 11, "Facet_Boon": 13, "Facet_Sway": 0, "Facet_Mutation_Matrix": 0, "Joined": true, "Antifacet_Mutation_Matrix": 0, "Antifacet": 21, "Antifacet_Boon": 13, "AntiFacet_Sway": 0},
+		{"Facet": 15, "Facet_Boon": 13, "Facet_Sway": 0, "Facet_Mutation_Matrix": 0, "Joined": true, "Antifacet_Mutation_Matrix": 0, "Antifacet": 12, "Antifacet_Boon": 13, "AntiFacet_Sway": 0},
+		{"Facet": 18, "Facet_Boon": 13, "Facet_Sway": 0, "Facet_Mutation_Matrix": 0, "Joined": true, "Antifacet_Mutation_Matrix": 0, "Antifacet": 20, "Antifacet_Boon": 13, "AntiFacet_Sway": 0},
+		{"Facet": 19, "Facet_Boon": 13, "Facet_Sway": 0, "Facet_Mutation_Matrix": 0, "Joined": true, "Antifacet_Mutation_Matrix": 0, "Antifacet": 17, "Antifacet_Boon": 13, "AntiFacet_Sway": 0},
+		{"Facet": 23, "Facet_Boon": 13, "Facet_Sway": 0, "Facet_Mutation_Matrix": 0, "Joined": true, "Antifacet_Mutation_Matrix": 0, "Antifacet": 8, "Antifacet_Boon": 13, "AntiFacet_Sway": 0}
+	]
+}

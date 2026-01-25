@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wormhole Racers Prototype</title>
+    <link rel="stylesheet" href="/css/ui-styles.css">
+    <style>
+        /* All CSS from the original file is preserved here */
+        @import url('https://fonts.googleapis.com/css2?family=Jura:wght@400;600&display=swap');
+        body { margin: 0; overflow: hidden; background: #000; color: #cce; font-family: 'Jura', sans-serif, monospace; }
+        #game-canvas-container { position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; }
+        #ui-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; }
+        h1, h2, h3 { color: #66aaff; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px rgba(102, 170, 255, 0.5); }
+        .menu-container { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; display: none; pointer-events: auto; }
+        .menu-container.menu-reveal { display: block; animation: menuRevealAnim 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+        @keyframes menuRevealAnim {
+            0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+        .menu-button { background-color: rgba(34, 85, 136, 0.7); border: 1px solid #337ab7; color: #cce; padding: 10px 20px; margin: 5px; cursor: pointer; text-transform: uppercase; font-family: 'Jura', sans-serif; transition: background-color 0.2s, box-shadow 0.2s; display: block; width: 250px; text-align: center; }
+        .menu-button:hover { background-color: #337ab7; box-shadow: 0 0 15px rgba(51, 122, 183, 0.8); color: #fff; }
+        #intro-sequence {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: #000;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .intro-content {
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        #loading-status {
+            color: #99c;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- UI Layer -->
+    <div id="ui-layer">
+		<div id="intro-sequence" style="display: none;">
+			<div class="intro-content">
+				<h1>Wormhole Racers</h1>
+				<p id="loading-status">Initializing...</p>
+			</div>
+		</div>
+        <div id="mainMenu" class="menu-container">
+            <div id="menuOptions"></div>
+        </div>
+        <div id="testMenu" class="menu-container">
+            <div id="testMenuOptions"></div>
+        </div>
+        <!-- Shipyard Panel will be dynamically added by its component -->
+    </div>
+
+    <!-- Game Canvas -->
+    <div id="game-canvas-container">
+        <!-- The 3D scene will be rendered here -->
+    </div>
+
+    <!--
+        The manual script loading for ammo.js has been removed.
+        Physics engine initialization is now handled by the enable3d library,
+        which is triggered by the scenes that require physics.
+    -->
+    <script>
+        console.log("index.html script tag is executing (T13NE Engine Mode)");
+    </script>
+    <script type="module" src="/plugins/t13ne/main.js"></script>
+
+</body>
+</html>

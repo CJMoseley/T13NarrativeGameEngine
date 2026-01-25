@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 21,
+    "Name": "Biting Through",
+    "Entity": "&#19924;",
+    "Logical": 41,
+    "Trigrams": [
+      3,
+      2
+    ],
+    "Hexagram_Text": "Shi Ho, Biting Through (or just Biting or sometimes Gnawing or Justice), is symbolic of breaking down, gnawing through an obstruction in the way. It can mean a discussion, chewing over the facts, a criminal trial, or breaking through a social or communication barrier. It is a business lunch, or a family dinner, that moves one forwards, not eating alone.",
+    "Unchanging": "You automatically add your Incarna Score (Boon Reduced) to any Ordeal Card's Pips that you play on an Obstacle.",
+    "Line1": "Bound Over",
+    "Line2": "Burying Your Face",
+    "Line3": "Biting Through History",
+    "Line4": "Biting The Arrow",
+    "Line5": "Biting The Bullet",
+    "Line6": "Bound In Stocks"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you find, point out, explain, discuss, or remove an obstacle",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you must be dishonest or cruel",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "you are caught doing some minor transgression, show remorse, or try or pretend to reform",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yang",
+        "Condition": "you are severe, harsh or just plain nasty, or show shame or regret",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yang",
+        "Condition": "you ignore history, and repeat mistakes",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yin",
+        "Condition": "your enemy is winning, you are injured, or you are punished",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you face danger, pain, or triggering a Hitch, and do not retreat or back down",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yin",
+        "Condition": "you break rules, show arrogance, stubbornness or shamelessness",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Biting Through Quest has many Obstacles and is usually a mostly Ordeal based Quest. Biting Through is best represented as a trial (usually judicial but whether criminal, political, spiritual or scientific will depend upon the Story, genre, etc), where arguments and evidence that are presented add Obstacles, Hurdles, Questions and Failure Levels to the other side of the trial. This is a Quest that has a very active and intelligent Opposition, at least the equal of the Quester in some way, and often superior in terms of temporal power and authority. Often all Character types will be represented in the Quest. The Quester may be the judge, a suspect or a lawyer in the case as need be.",
+    "Quest_Complete": "The Quest that ends with the Biting Through Hexagram has some new and additional Ordeal with Obstacles that follows the Quest. This often represents some difficulty upon returning to their home and normal life after the Quest, either literally or metaphorically, although it can represent some penalty for the Quester if they have broken laws during their Quest, or some final judgement they must exact upon another character.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quest is not about a great crime, but some minor transgression. If the Quester is the judge then they must not be too harsh in their punishment, or they will add a Question, Hurdle, Obstacle or Failure Level to their Ordeal or Test. If the Quester is not the judge then they may have been found guilty of some minor transgression, they should face the punishment (probably paying a minor fine, bail arrangement, or social punishment) or they will add a Question, Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quest is complicated by emotional concerns. If the Quester loses their temper, whether as judge, defendant or counsel it will add a Question, Hurdle, Obstacle, or Failure Level to their Ordeal or Test. However, if the Quester shows shame or regret, for either this loss of temper or for their crime then that will add a Success Level to their Ordeal or Test, and add a Question, Hurdle, Obstacle or Failure Level to the opposition&#39;s Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The Quester is drawn into an old grievance between two parties. This is a poison chalice to drink from, and the Quester will find their situation complicated by it, adding a Question, Hurdle, Obstacle or Failure Level to their Ordeal or Test. Even if the guilty party is found (which is unlikely) then this will only create greater resentment, though the punishment is necessary and inevitable.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester faces great danger, or a powerful, but guilty, individual. If they press on, without fear, despite the threat of raised Stakes then they will gain a Success Level on their Test or Ordeal, withdrawal from this danger will compound these difficulties raising the Stakes and adding an additional Question, Failure Level, Hurdle, or Obstacle to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The suspect is obviously guilty (according to the evidence, the facts may vary), but the situation is undoubtedly complicated. The Quest always adds a Question, Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test, to signify the difficulties and dangers of this trial. The judge of this case must be responsible, and impartial or they will add an additional Question, Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test (especially if the Quester is the Judge).",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The suspect is believed to be a hardened criminal, guilty of many crimes (although not necessarily the one being tried), suspected of many others, and generally unrepentant. Such a criminal cannot be corrected by punishment, and even trying adds Questions, Hurdles, Obstacles or Failure Levels to the Ordeal or Test of everyone involved.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "This hexagram represents an open mouth (cf. hexagram\n\n27 with an obstruction (in the fourth place) between the teeth. As a result the lips cannot meet. To bring them together one must bite energetically through the obstacle. Since the hexagram is made up of the trigrams for thunder and for lightning, it indicates how obstacles are forcibly removed in nature.\nEnergetic biting through overcomes the obstacle that prevents joining of the lips; the storm with its thunder and lightning overcomes the disturbing tension in nature. Recourse to law and penalties overcomes the disturbances of harmonious social life caused by criminals and slanderers. The theme of this hexagram is a criminal lawsuit, in contradistinction to that of Sung, CONFLICT\n\n6, which refers to civil suits.",
+    "The_Image": {
+      "text": "Thunder and lighting:\nThe image of BITING THROUGH.\nThus the kings of former times made firm the laws\nThrough clearly defined penalties.",
+      "comments": "Penalties are the individual applications of the law. The lawsspecify the penalties. Clarity prevails when mild and severepenalties are differentiated, according to the nature of the crimes.This is symbolized by the clarity of lighting. The law is strengthenedby a just application of penalties. This is symbolized by the terrorof thunder. This clarity and severity have the effect of instillingrespect; it is not that the penalties are ends in themselves.The obstructions in the social life of man increase when there is alack of clarity in the penal codes and slackness in executing them.The only to strengthen the law is to make it clear and make penaltiescertain and swift."
+    },
+    "The_Judgment": {
+      "text": "BITING THROUGH has success.\nIt is favorable to let justice be administered.",
+      "comments": "When an obstacle to union arises, energetic biting through brings success. This is true in all situations. Whenever unity cannot be established, the obstruction is due to a talebearer and traitor who is interfering and blocking the way. To prevent permanent injury, vigorous measures must be taken at once. Deliberate obstruction of this sort does not vanish of its own accord. Judgment and punishment are required to deter or obviate it. However, it is important to proceed in the right way. The hexagram combines Li, clarity, and Chên, excitement. Li is yielding, Chên is hard. Unqualified hardness and excitement would be too violent in meting out punishment; unqualified clarity and gentleness would be too weak. The two together create the just measure. It is of moment that the man who makes the decisions (represented by the fifth line) is gentle by nature, while he commands respect by his conduct in his position."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "His feet are fastened in the stocks,\nSo that his toes disappear.\nNo blame.",
+        "comments": "If a sentence is imposed the first time a man attempts to do wrong, the penalty is a mild one. Only the toes are put in the stocks. This prevents him from sinning further and thus he becomes free of blame. It is a warning to halt in time on the path of evil."
+      },
+      "2": {
+        "text": "Bites through tender meat,\nSo that his nose disappears.\nNo blame.",
+        "comments": "It is easy to discriminate between right and wrong in this case;it is like biting through tender meat. But one encounters ahardened sinner, and, aroused by anger, one goes a little toofar. The disappearance of the nose in the course of the bitesignifies that indignation blots out finer sensibility. However,there is no great harm in this, because the penalty as such isjust."
+      },
+      "3": {
+        "text": "Bites on old dried meat\nAnd strikes on something poisonous.\nSlight humiliation. No blame.",
+        "comments": "Punishment is to be carried out by someone who lacks the power and authority to do so. Therefore the culprits do not submit. The matter at issue is an old one-as symbolized by salted game-and in dealing with it difficulties arise. This old meat is spoiled: by taking up the problem the punisher arouses poisonous hatred against himself, and n this way is put in a somewhat humiliating position. But since punishment was required by the time, he remains free of blame."
+      },
+      "4": {
+        "text": "Bites on dried gristly meat.\nReceives metal arrows.\nIt furthers one to be mindful of difficulties\nAnd to be persevering.\nGood fortune.",
+        "comments": "There are great obstacles to be overcome, powerful opponents are to be punished. Though this is arduous, the effort succeeds. But it is necessary to be hard as metal and straight as an arrow to surmount the difficulties. If one knows these difficulties and remains persevering, he attains good fortune. The difficult task is achieved in the end."
+      },
+      "5": {
+        "text": "Bites on dried lean meat.\nReceives yellow gold.\nPerseveringly aware of danger.",
+        "comments": "No blame.\n\nThe case to be decided is indeed not easy but perfectly clear. Since we naturally incline to leniency, we must make every effort to be like yellow gold-that is, as true as gold and as impartial as yellow, the color of the middle [the mean]. It is only by remaining conscious of the dangers growing out of the responsibility we have assumed that we can avoid making mistakes."
+      },
+      "6": {
+        "text": "His neck is fastened in the wooden cangue,\nSo that his ears disappear.\nMisfortune.",
+        "comments": "In contrast to the first line, this line refers to a man who is incorrigible. His punishment is the wooden cangue, and his ears disappear under it-that is to say, he is deaf to warnings. This obstinacy leads to misfortune."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Biting Through'. Internalize this core philosophy: This hexagram represents an open mouth (cf. hexagram\n\n27 with an obstruction (in the fourth place) between the teeth. As a result the lips cannot meet. To bring them together one must bite energetically through the obstacle. Since the hexagram is made up of the trigrams for thunder and for lightning, it indicates how obstacles are forcibly removed in nature.\nEnergetic biting through overcomes the obstacle that prevents joining of the lips; the storm with its thunder and lightning overcomes the... Your current worldview is: \"Shi Ho, Biting Through (or just Biting or sometimes Gnawing or Justice), is symbolic of breaking down, gnawing through an obstruction in the way. It can mean a discussion, chewing over the facts, a criminal trial, or breaking through a social or communication barrier. It is a business lunch, or a family dinner, that moves one forwards, not eating alone.\". Let your choices be subtly driven by these conditions: you find, point out, explain, discuss, or remove an obstacle, you must be dishonest or cruel. When interacting, mirror the wisdom found in the commentary: \"When an obstacle to union arises, energetic biting through brings success. This is true in all situations. Whenever unity cannot be established, the obstruction is due to a talebearer and traitor who is interfering and blocking the way. To prevent permanent injury, vigorous measures must be taken...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Biting Through'. The primary quest objective is: The Biting Through Quest has many Obstacles and is usually a mostly Ordeal based Quest. Biting Through is best represented as a trial (usually judicial but whether criminal, political, spiritual or scientific will depend upon the Story, genre, etc), where arguments and evidence that are presented add Obstacles, Hurdles, Questions and Failure Levels to the other side of the trial. This is a Quest that has a very active and intelligent Opposition, at least the equal of the Quester in some way, and often superior in terms of temporal power and authority. Often all Character types will be represented in the Quest. The Quester may be the judge, a suspect or a lawyer in the case as need be.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: Penalties are the individual applications of the law. The lawsspecify the penalties. Clarity prevails when mild and severepenalties are differentiated, according to the nature of the crimes.This is symbolized by the clarity of lighting. The law is strengthenedby a just application of penalties. This is symbolized by the terrorof thunder. This clarity and severity have the effect of... Use the following line-specific challenges to pace the story: The Quest is not about a great crime, but some minor transgression. If the Quester is the judge then they must not be too harsh in their punishment, or they will add a Question, Hurdle, Obstacle or Failure Level to their Ordeal or Test. If the Quester is not the judge then they may have been found guilty of some minor transgression, they should face the punishment (probably paying a minor fine, bail arrangement, or social punishment) or they will add a Question, Hurdle, Obstacle or Failure Level to their Ordeal or Test. | The Quest is complicated by emotional concerns. If the Quester loses their temper, whether as judge, defendant or counsel it will add a Question, Hurdle, Obstacle, or Failure Level to their Ordeal or Test. However, if the Quester shows shame or regret, for either this loss of temper or for their crime then that will add a Success Level to their Ordeal or Test, and add a Question, Hurdle, Obstacle or Failure Level to the opposition&#39;s Ordeal or Test. | The Quester is drawn into an old grievance between two parties. This is a poison chalice to drink from, and the Quester will find their situation complicated by it, adding a Question, Hurdle, Obstacle or Failure Level to their Ordeal or Test. Even if the guilty party is found (which is unlikely) then this will only create greater resentment, though the punishment is necessary and inevitable. | The Quester faces great danger, or a powerful, but guilty, individual. If they press on, without fear, despite the threat of raised Stakes then they will gain a Success Level on their Test or Ordeal, withdrawal from this danger will compound these difficulties raising the Stakes and adding an additional Question, Failure Level, Hurdle, or Obstacle to the Test or Ordeal. | The suspect is obviously guilty (according to the evidence, the facts may vary), but the situation is undoubtedly complicated. The Quest always adds a Question, Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test, to signify the difficulties and dangers of this trial. The judge of this case must be responsible, and impartial or they will add an additional Question, Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test (especially if the Quester is the Judge). | The suspect is believed to be a hardened criminal, guilty of many crimes (although not necessarily the one being tried), suspected of many others, and generally unrepentant. Such a criminal cannot be corrected by punishment, and even trying adds Questions, Hurdles, Obstacles or Failure Levels to the Ordeal or Test of everyone involved.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Bound Over): Mirror the internal state described in the commentary: \"If a sentence is imposed the first time a man attempts to do wrong, the penalty is a mild one. Only the toes are put in the stocks. This prevents him from sinning further and thus he becomes free of blame. It is a warning to halt in time on the path...\" Your actions should be framed by the goal: you are caught doing some minor transgression, show remorse, or try or pretend to reform.",
+        "Plot": "Plot Complication Line 1 (Bound Over): Introduce a challenge based on the interpretation: \"If a sentence is imposed the first time a man attempts to do wrong, the penalty is a mild one. Only the toes are put in the stocks. This prevents him from sinning further and thus he becomes free of blame. It is a warning to halt in time on the path...\" The specific quest objective for this stage is: The Quest is not about a great crime, but some minor transgression. If the Quester is the judge then they must not be too harsh in their punishment, or they will add a Question, Hurdle, Obstacle or Failure Level to their Ordeal or Test. If the Quester is not the judge then they may have been found guilty of some minor transgression, they should face the punishment (probably paying a minor fine, bail arrangement, or social punishment) or they will add a Question, Hurdle, Obstacle or Failure Level to their Ordeal or Test."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Burying Your Face): Mirror the internal state described in the commentary: \"It is easy to discriminate between right and wrong in this case;it is like biting through tender meat. But one encounters ahardened sinner, and, aroused by anger, one goes a little toofar. The disappearance of the nose in the course of the...\" Your actions should be framed by the goal: you are severe, harsh or just plain nasty, or show shame or regret.",
+        "Plot": "Plot Complication Line 2 (Burying Your Face): Introduce a challenge based on the interpretation: \"It is easy to discriminate between right and wrong in this case;it is like biting through tender meat. But one encounters ahardened sinner, and, aroused by anger, one goes a little toofar. The disappearance of the nose in the course of the...\" The specific quest objective for this stage is: The Quest is complicated by emotional concerns. If the Quester loses their temper, whether as judge, defendant or counsel it will add a Question, Hurdle, Obstacle, or Failure Level to their Ordeal or Test. However, if the Quester shows shame or regret, for either this loss of temper or for their crime then that will add a Success Level to their Ordeal or Test, and add a Question, Hurdle, Obstacle or Failure Level to the opposition&#39;s Ordeal or Test."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Biting Through History): Mirror the internal state described in the commentary: \"Punishment is to be carried out by someone who lacks the power and authority to do so. Therefore the culprits do not submit. The matter at issue is an old one-as symbolized by salted game-and in dealing with it difficulties arise. This old meat is...\" Your actions should be framed by the goal: you ignore history, and repeat mistakes.",
+        "Plot": "Plot Complication Line 3 (Biting Through History): Introduce a challenge based on the interpretation: \"Punishment is to be carried out by someone who lacks the power and authority to do so. Therefore the culprits do not submit. The matter at issue is an old one-as symbolized by salted game-and in dealing with it difficulties arise. This old meat is...\" The specific quest objective for this stage is: The Quester is drawn into an old grievance between two parties. This is a poison chalice to drink from, and the Quester will find their situation complicated by it, adding a Question, Hurdle, Obstacle or Failure Level to their Ordeal or Test. Even if the guilty party is found (which is unlikely) then this will only create greater resentment, though the punishment is necessary and inevitable."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Biting The Arrow): Mirror the internal state described in the commentary: \"There are great obstacles to be overcome, powerful opponents are to be punished. Though this is arduous, the effort succeeds. But it is necessary to be hard as metal and straight as an arrow to surmount the difficulties. If one knows these...\" Your actions should be framed by the goal: your enemy is winning, you are injured, or you are punished.",
+        "Plot": "Plot Complication Line 4 (Biting The Arrow): Introduce a challenge based on the interpretation: \"There are great obstacles to be overcome, powerful opponents are to be punished. Though this is arduous, the effort succeeds. But it is necessary to be hard as metal and straight as an arrow to surmount the difficulties. If one knows these...\" The specific quest objective for this stage is: The Quester faces great danger, or a powerful, but guilty, individual. If they press on, without fear, despite the threat of raised Stakes then they will gain a Success Level on their Test or Ordeal, withdrawal from this danger will compound these difficulties raising the Stakes and adding an additional Question, Failure Level, Hurdle, or Obstacle to the Test or Ordeal."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Biting The Bullet): Mirror the internal state described in the commentary: \"No blame.\n\nThe case to be decided is indeed not easy but perfectly clear. Since we naturally incline to leniency, we must make every effort to be like yellow gold-that is, as true as gold and as impartial as yellow, the color of the middle [the...\" Your actions should be framed by the goal: you face danger, pain, or triggering a Hitch, and do not retreat or back down.",
+        "Plot": "Plot Complication Line 5 (Biting The Bullet): Introduce a challenge based on the interpretation: \"No blame.\n\nThe case to be decided is indeed not easy but perfectly clear. Since we naturally incline to leniency, we must make every effort to be like yellow gold-that is, as true as gold and as impartial as yellow, the color of the middle [the...\" The specific quest objective for this stage is: The suspect is obviously guilty (according to the evidence, the facts may vary), but the situation is undoubtedly complicated. The Quest always adds a Question, Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test, to signify the difficulties and dangers of this trial. The judge of this case must be responsible, and impartial or they will add an additional Question, Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test (especially if the Quester is the Judge)."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Bound In Stocks): Mirror the internal state described in the commentary: \"In contrast to the first line, this line refers to a man who is incorrigible. His punishment is the wooden cangue, and his ears disappear under it-that is to say, he is deaf to warnings. This obstinacy leads to misfortune.\" Your actions should be framed by the goal: you break rules, show arrogance, stubbornness or shamelessness.",
+        "Plot": "Plot Complication Line 6 (Bound In Stocks): Introduce a challenge based on the interpretation: \"In contrast to the first line, this line refers to a man who is incorrigible. His punishment is the wooden cangue, and his ears disappear under it-that is to say, he is deaf to warnings. This obstinacy leads to misfortune.\" The specific quest objective for this stage is: The suspect is believed to be a hardened criminal, guilty of many crimes (although not necessarily the one being tried), suspected of many others, and generally unrepentant. Such a criminal cannot be corrected by punishment, and even trying adds Questions, Hurdles, Obstacles or Failure Levels to the Ordeal or Test of everyone involved."
+      }
+    }
+  }
+}

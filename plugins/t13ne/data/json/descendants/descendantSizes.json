@@ -1,0 +1,155 @@
+[
+  {
+    "Type": "Tiny",
+    "Description": "A tiny prop such as a bullet, needle, piece of gravel, shuriken, coin, stubby pencil.",
+    "Rules": "Tiny Props are limited to Skill only Master Annexes.",
+    "Minimum_RT": 0,
+    "Suggested_RT": 1,
+    "Suggested_GRT": 0,
+    "Reach": 0
+  },
+  {
+    "Type": "Quick",
+    "Description": "A quick prop is a small prop designed for use at speed such as a dagger, pen or wand.",
+    "Rules": "Quick props are limited to Skill or Talent Master Annexes",
+    "Minimum_RT": 0,
+    "Suggested_RT": 2,
+    "Suggested_GRT": 0,
+    "Reach": 0
+  },
+  {
+    "Type": "Small",
+    "Description": "A small prop is smaller than a handful, such as a pocket calculator, a ring or a watch.",
+    "Rules": "Small Props may have Skill, Talent or Power Master Annexes.",
+    "Minimum_RT": 0,
+    "Suggested_RT": 3,
+    "Suggested_GRT": 0,
+    "Reach": 0
+  },
+  {
+    "Type": "Responsive",
+    "Description": "A responsive prop is designed to be quick, but isn’t small enough to be Quick, like a rapier or light pistol.",
+    "Rules": "Responsive Props may have Talent or Power Master Annexes.",
+    "Minimum_RT": 0,
+    "Suggested_RT": 4,
+    "Suggested_GRT": 0,
+    "Reach": 1
+  },
+  {
+    "Type": "Hand-held",
+    "Description": "A hand-held prop more than fills a hand, but is meant to be held in one, such as a handgun, or a short or arming sword.",
+    "Rules": "Hand-held Props may have any Master Annex.",
+    "Minimum_RT": 1,
+    "Suggested_RT": 5,
+    "Suggested_GRT": 1,
+    "Reach": 1
+  },
+  {
+    "Type": "Handful",
+    "Description": "A handful prop is much bigger than a hand, but is held by one usually with a handle. Examples include light buckler style shields, briefcases, and most tools and weapons including most broadswords and short spears.",
+    "Rules": "Handful Props may have any Master Annex.",
+    "Minimum_RT": 1,
+    "Suggested_RT": 6,
+    "Suggested_GRT": 1,
+    "Reach": 1
+  },
+  {
+    "Type": "Heavy",
+    "Description": "A Heavy prop is intended to be used with one arm, but is too heavy to be held for a long period, there are usually straps or loops that help hold it, such as a handbag, kite shield, satchel, bastard sword, jousting lance, or heavy wooden shield.",
+    "Rules": "Heavy Props may have any Master Annexes.",
+    "Minimum_RT": 1,
+    "Suggested_RT": 7,
+    "Suggested_GRT": 1,
+    "Reach": 2
+  },
+  {
+    "Type": "Two-handed",
+    "Description": "A Two-handed prop is so heavy that it should be wielded with two hands at once, such as bows, two-handed long swords, rifles with bayonets, and long-spears.",
+    "Rules": "Two-Handed Props may have any Master Annex.",
+    "Minimum_RT": 2,
+    "Suggested_RT": 8,
+    "Suggested_GRT": 1,
+    "Reach": 3
+  },
+  {
+    "Type": "Long",
+    "Description": "A Long prop would be a thin, but long weapon, such as long-spears, war-lances, two-handed flails, whips or exotic weapons like the whip-sword, but ropes, chains, ribbons, threads, yo-yos, grappling hooks and tentacles will also easily fill this role.",
+    "Rules": "Long props may have any Master Annex.",
+    "Minimum_RT": 3,
+    "Suggested_RT": 10,
+    "Suggested_GRT": 2,
+    "Reach": 3
+  },
+  {
+    "Type": "Heavy Two-handed",
+    "Description": "A heavy two-handed prop is heavy even when used in two hands. Often a strap or something will help spread the load. Examples include backpacks, Heavy Machine-guns / Crossbows, War-bows, executioner’s swords, and Halberds",
+    "Rules": "Heavy Two-Handed must have a Power or Super-Annex as their Master Annex.",
+    "Minimum_RT": 2,
+    "Suggested_RT": 10,
+    "Suggested_GRT": 2,
+    "Reach": 3
+  },
+  {
+    "Type": "Shoulder-mounted",
+    "Description": "The Shoulder-mounted prop is so heavy that it has to be placed over the shoulder during use, such as a missile launcher, a ladder, a pole, or a heavy backpack.",
+    "Rules": "Shoulder Mounted Props typically have Power Master Annexes, but can have any.",
+    "Minimum_RT": 2,
+    "Suggested_RT": 11,
+    "Suggested_GRT": 2,
+    "Reach": 4
+  },
+  {
+    "Type": "Extra-Long",
+    "Description": "Extra-long props are thin, but incredibly long. Ropes, cables, grappling hooks and chains can reach this length and may be used to make attacks at this sort of range. It may also be possible for pipes, lances, and even rapiers to be built and used in this way, but it would be very difficult to use close in.",
+    "Rules": "Extra-Long Props usually have Master Annexes that are Powers, but can be any.",
+    "Minimum_RT": 4,
+    "Suggested_RT": 12,
+    "Suggested_GRT": 2,
+    "Reach": 5
+  },
+  {
+    "Type": "Cumbersome",
+    "Description": "A cumbersome prop is awkward or slow to use for some reason, examples include Scythes and Shotguns.",
+    "Rules": "Cumbersome Props can have any Master Annex.",
+    "Minimum_RT": 4,
+    "Suggested_RT": 13,
+    "Suggested_GRT": 2,
+    "Reach": 2
+  },
+  {
+    "Type": "Very Heavy",
+    "Description": "A very heavy prop is almost too heavy to be used by a normal person, and is usually mounted on something to help with the load, examples include Primitive handguns, light cannon, mini-guns, battering rams, the heaviest bull-whips, cars, etc.",
+    "Rules": "Very Heavy props usually have at least a Power as a Master Annex, but can have any.",
+    "Minimum_RT": 4,
+    "Suggested_RT": 14,
+    "Suggested_GRT": 2,
+    "Reach": 6
+  },
+  {
+    "Type": "Large",
+    "Description": "A prop that is large is just plain unwieldy, it may be usable if it is mounted on a vehicle or something, but it is too big to be wielded by most people. Examples include cannon, siege engines, giant double-headed battle-axes, sports cars, motor-bikes, micro-lights, etc",
+    "Rules": "Large Props are often Super-Annex Master Annexes, but technically can be any including Size.",
+    "Minimum_RT": 4,
+    "Suggested_RT": 16,
+    "Suggested_GRT": 3,
+    "Reach": 7
+  },
+  {
+    "Type": "Huge",
+    "Description": "A huge prop is just enormous, they are not intended to be moved without a vehicle (or are actually a vehicle themselves), even aiming them usually requires some mechanism or an exceptionally strong character, examples include artillery (tanks or cannons), big cars, trucks, flat-bed trailers and shipping containers, airliners, etc.",
+    "Rules": "Huge Props typically have a Size Annex (which may Size Shift the Pips of Ordeal Cards that they Play - see Wounds rules for Damaging Locations and Giant Characters ) but not as their Master Annex. The Master Annex can be any type including Size.",
+    "Minimum_RT": 5,
+    "Suggested_RT": 21,
+    "Suggested_GRT": 3,
+    "Reach": 8
+  },
+  {
+    "Type": "Enormous",
+    "Description": "Enormous and stupidly unwieldy this prop is never meant to be wielded by anyone (although a few characters may be strong enough to tote them), examples include pocket Toon-Hammers, Anime blades (in any other genre), squid-god facial tentacles, trains, boats, and Mech-weapons.",
+    "Rules": "Enormous Props should have a Size Annex, often acts as a Master Annex, but any type above Talent can act as a Master Annex.",
+    "Minimum_RT": 6,
+    "Suggested_RT": 26,
+    "Suggested_GRT": 4,
+    "Reach": 9
+  }
+]

@@ -1,0 +1,27 @@
+[
+    {
+        "Type": "Flight",
+        "Description": "Flying, leaping, galloping and sprinting are the fastest ways that things move. You better trust the floor under you (if you touch it) and not want to change direction much.",
+        "Rules": "Travelling in a straight line you may double the Pips of the card. However, each change of direction by 15-45 degrees also costs 2 Pips and ceases that doubling effect if you make more than a 60 degree turn at any point."
+    },
+    {
+        "Type": "Run",
+        "Description": "Jogging, trotting, loping or paced running is how you run long distances. It is never as fast as Flight, but is safer and you can do it for longer. Running is the standard loping, swimming, or bounding gait of most animals, and during most action sequences is the standard way of moving.",
+        "Rules": "Standard Pips for card, changing direction by up to 45 degrees is free, more than that costs a Pip."
+    },
+    {
+        "Type": "March/Sneak",
+        "Description": "Marching is a focused walk, you are going somewhere a good pace, but do not want to exhaust yourself. A march is a brisk-paced walk, but you still have a chance to spot trouble that you might have missed if running. Sneaking is usually a bit slower than a march, but still a quickened walk, with a lot more caution.",
+        "Rules": "Marching and Sneaking use between two-thirds to three-quarters of the card Pips moving. The remaining one third to a quarter of the Pips can be used to add to another concurrent action, such as hiding, spotting, defence, attacking or whatever. e.g. When playing a Jack of Diamonds (13 Pips of Movement because of the Trump +2), that will allow movement with up to 9 Pips and leave 4 Pips for something else. Changes of Direction are completely free when marching and sneaking."
+    },
+    {
+        "Type": "Walk",
+        "Description": "Walking is the standard slow pace we generally use when we aren’t too focused on getting there. Walking should allow you to spot things that you might otherwise miss, and you can move more quietly than a Run, or even when sneaking. Walking is the fastest pace that humans can swim at, generally, and that holds true for most beings out of their normal environment, but accustomed to it.",
+        "Rules": "Walking halves the Pips of the card. But adds up to half the Pips to any action performed at the same time (such as hiding or taking aim). This can mean you walk closer and then use the remaining Pips to pay Range on a shot, for example. When used for Swimming the other half of the Pips are used to offset the Difficulty of moving through flooded terrain, as well as useful survival skills like not drowning."
+    },
+    {
+        "Type": "Crawl/Creep",
+        "Description": "Crawling or Creeping is the slowest way that we move. You can crawl silently and without being detected with only the flimsiest of cover. Crawling is also the standard speed that a being can move at when suddenly stranded in an unfamiliar environment (literally a fish out of water, or human in smoke).",
+        "Rules": "Crawling allows a card to be prepared, and also used for movement, which is pretty unique. However, crawling Reduces the Pips a tier (A Joker with Pips 15 prepared allows a Crawl of 4 Pips, meaning only one metre when in Confined Terrain. Playing three Tens in Preparation of various actions could allow crawling 7 Pips which is only 2 metres in a crowd. Normally the full Preparation (30 Pips) is available to avoid being noticed (move silently/hide), as defence (from the smoke and fire for example), or for an eventual Attack."
+    }
+]

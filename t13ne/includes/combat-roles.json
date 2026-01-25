@@ -1,0 +1,112 @@
+[
+    {
+        "Type": "All-rounder",
+        "Description": "The All-rounder is a jack-of-all-trades, able to strike, buff, debuff, heal, lead, soak and move, to some degree. They are often exceptional individuals and no side should have more than one.",
+        "Rules": "All-rounders usually require combat annexes, weapons, armour descendants and generic magic annexes too, they are usually limited compared to any specialist in what they can achieve, very few All-rounders are also samaurai-neuro-surgeons."
+    },
+    {
+        "Type": "Brick",
+        "Description": "The Brick is like a Tank or Heavy, if they just stood and took the damage. Bricks are usually large, tough-guys, but they never really fight back. They are a big target that draws and soaks hits.",
+        "Rules": "Bricks must be able to soak, ignore or heal damage rapidly, but they are usually very limited in their ability to hit back, although they can often create Obstacles for the enemy some how, and are often much more mobile than a Heavy or a Tank."
+    },
+    {
+        "Type": "Buffer",
+        "Description": "The Buffer is a generic support Character, who supports all other roles by \"buffing\" them, usually by magic or equipment upgrades.",
+        "Rules": "Buffers require an ability to buff, this may be an Annex that lets them improve another, or allows them to prepare cards upon allies at a distance, increase the Ally’s ability to hit, do damage, etc. Buffers usually have limited abilities to de-buff the enemy, and limited healing or attack abilities."
+    },
+    {
+        "Type": "Debuffer",
+        "Description": "The Debuffer is a highly specialised roles who supports their allies by \"de-buffing\" the enemy forces, usually by magic or equipment interference.",
+        "Rules": "Debuffers must have an Annex with an ability to interfere with the enemy, usually in the form of affecting them with Umbrals, Tangles, or even Hitches. Debuffers rarely have the ability to directly attack an enemy, although many can also perform limited buffs or healing on allies."
+    },
+    {
+        "Type": "Dragon",
+        "Description": "The Dragon is an ultimate warrior, usually heavily armoured, capable of engaging multiple targets simultaneously whether through Size, speed or tactical brilliance. The Dragon is similar to a Tank although usually more mobile.",
+        "Rules": "Dragons are fairly mobile (at least in the air), armoured (at least as well as soldier or knight) and often have an area-denial attack or at least Splash damage comparable to Glass Cannons. Dragons are not great at stealth and favour charges, drive-bys and fly-overs as well as ranged attacks, rather than melee, especially against large groups."
+    },
+    {
+        "Type": "Engineer",
+        "Description": "The Engineer (also called the Sapper or Demolitions) is a combat engineer who specialises in fixing, building, digging, and blowing things up, down or in. Engineers build castle walls, and they undermine them. Depending upon the technology available to the engineer they may take months to build a defensive wall, or to sap a similar wall, or the same result may be achieved with a single explosive charge.",
+        "Rules": "Engineers have Annexes in building, fixing, crafting weapons and traps (obstacles), digging or sapping, and usually explosives, sometimes they also have a combat Annex."
+    },
+    {
+        "Type": "Flanker",
+        "Description": "The Flanker is built for sneak attacks and ambushes, they are excellent at hiding, stealth, and often deploy force multiplication tactics such as superior tech, fearsome reputations, poison, force concentration and so on. Flankers include wily rogues, some rangers, movie ninjas, and most commandos.",
+        "Rules": "Flankers should have Annexes in hiding, stealth, movement, and attack. They especially like setting snares, traps, and ranged ambushes."
+    },
+    {
+        "Type": "Glass Cannon",
+        "Description": "The Glass Cannon is the character who is often found wearing robes (or Gillie suits) instead of armour, who thinks a stick with a knob on the end beats war mace, or that one big missile from far away is better than a load of smaller ones close up. The Glass Cannon is designed to dish out damage, but don’t expect them to take any hits at all, or to be running all over the battlefield. Field Spotters and Wizards are examples of Glass Cannons",
+        "Rules": "Glass Cannons have to have some way of doing a lot of damage with their Annexes to a wide area. Their Annexes usually have an area effect to increase the number of potential targets."
+    },
+    {
+        "Type": "Grenadier",
+        "Description": "Considered by some to be a type of Heavy or Shocker. The Grenadier is known for their use of explosives, typically hand grenades or RPGs, and for leading assaults.",
+        "Rules": "Grenadiers are usually large and powerful fighters, that have good mobility, and explosive weaponry. They rarely favour armour, preferring mobility and assault capabilities."
+    },
+    {
+        "Type": "Healer",
+        "Description": "The Healer is a medical or clerical character who focuses on healing injuries, easing pain, neutralising toxins, and other forms of combat medicine. Depending upon the genre and setting the Healer will either just be triaging and stabilising wounds with First Aid, or using Healing magic, Nanotech, or praying for miracles to close wounds and remove scars.",
+        "Rules": "Healers will have suitable Annexes to provide First Aid, Paramedicine, Medicine, Surgery, or Healing abilities. Healers will often also have Annexes that grant them additional support buffs such as increasing another character’s chance to hit, damage or defend."
+    },
+    {
+        "Type": "Heavy",
+        "Description": "The Heavy can dish out damage and take it. They are tough, powerful foes, but not usually particularly agile. The Heavy is usually armed with special training, tactics, armour and weapons that increase their ability to do damage to the enemy and minimise the damage they take.",
+        "Rules": "Heavies have annexes in defences and attack, but never in anything like agility, stealth or hiding. They often carry special heavy weapons."
+    },
+    {
+        "Type": "Knight",
+        "Description": "Knights are known for their armour and mobility (usually on horse-back or via vehicles), they also hit pretty hard, but not as hard as a striker.",
+        "Rules": "Knights rely on armour, mobility and attack, but should focus on armour and mobility. Knights usually rely on specialised weapons and tactics for defeating particular types of targets and should repeatedly engage and disengage enemies (they often have abilities that increase their ability to disengage rapidly and safely)."
+    },
+    {
+        "Type": "Officer",
+        "Description": "The Officer is a leadership role that uses superior tactics, strategy and logistics, to assist and direct their allies for mutual protection and combined attacks.",
+        "Rules": "Officers usually use orders, given via voice, communications or sign language to their allies, to add their cards to their allies. Officers are usually built similarly to the troops they lead, although they are often given heavier armour and lighter weapons."
+    },
+    {
+        "Type": "Rifleman / Missile Infantry",
+        "Description": "Rifleman are infantry missile troops, and crossbowmen, musketeers, and archers also fit this mould, although with shorter ranged weapons. Missile Infantry are usually not very mobile, and may dig in, place large shields or set up behind cover, to limit the ability of the enemy to engage them back.",
+        "Rules": "Missile Infantry favour range, and damage, then self-defence. Mobility is a lesser concern for these fighters, who will dig in, and deny an enemy access to an area, with their long range and concentrated fire-power."
+    },
+    {
+        "Type": "Scout",
+        "Description": "The Scout is built for stealth, mobility and observation skills, they are intended to be intelligence gathering, spotting enemy ambushes ahead of time, and reporting back. Scouts are usually lightly armed and armoured.",
+        "Rules": "Scouts should have Annexes in Stealthy movement, Observation / Perception / Senses, Fast movement (possibly) and an Attack (maybe)."
+    },
+    {
+        "Type": "Shield",
+        "Description": "The Shield is a character who is very like a Brick. However, the Shield is often built to protect others as well as themselves. Shields do not generally have an attack Annex, but they may carry a weapon.",
+        "Rules": "The Shield uses all their Annexes to augment their defences, technically all their Annexes should be defence orientated, although at least one should also provide mobility or range, to let the shield get or place defences or obstacles between the attacker and any threatened allies."
+    },
+    {
+        "Type": "Shockers",
+        "Description": "Shockers (or Shock Cavalry, Shock Troopers, Assault Troops, etc) are similar to Strikers, and Knights, but Shockers seek to overwhelm, destroy, capture or rout enemies rather than disengaging after an attack like a Knight or Striker. Shockers have a strong reliance of scare tactics, and reputation, which can limit their usefulness.",
+        "Rules": "Shockers have a heavy reliance on speed, mobility, stealth and defence, but will reduce these factors for a good scare tactic or psychological advantage. Shockers attempt to induce Stress and Shock in their opponents allowing them to be overrun, to this end Shockers will often use more intimidating customized arms and armour."
+    },
+    {
+        "Type": "Sniper",
+        "Description": "Snipers are built for stealth and doing a lot of damage to a single distant target, everything else is usually irrelevant to their tactics. Snipers will lie in wait, creating ambushes that can kill with their first well-prepared shot, and then often slip away unseen to another spot for a second kill.",
+        "Rules": "Snipers require great skill or talent in stealth and excellent ranged combat prowess, they should ideally have at least one power that can attack at a range, as well as a powerful weapon. Snipers usually begin Ordeals with Preparation Actions, hiding themselves, then aiming, before taking that deadly shot."
+    },
+    {
+        "Type": "Soldier",
+        "Description": "The Soldier is a good mix of speed, strength, armour and fire-power. Professional soldiers are well-trained, well-equipped and battle-hardened.",
+        "Rules": "The soldier is optimised for Combat Ordeals, usually with Annexes and Descendants for attack, defence, soak, mobility and tactics. Soldiers often have good psych defences, as part of their rigorous discipline and duty Hitches."
+    },
+    {
+        "Type": "Striker",
+        "Description": "The Striker is built for hit and run tactics, favouring a rapid charge or better yet ambush, lots of damage and then controlled disengagement, fall back and regroup. This is the typical pattern of cavalry, some rangers and barbarians.",
+        "Rules": "Strikers need mobility and the ability to do damage, they often have no special defences beyond light armour or shields. Strikers may have some special ability to rapidly disengage, usually by outpacing their enemies."
+    },
+    {
+        "Type": "Support",
+        "Description": "Support roles boost the abilities or capabilities of other roles. They may act as a spotter for a sniper, as communications for an Officer, as a squire to a knight, etc. Support are usually well equipped and often carry spare ammo for other Characters.",
+        "Rules": "Support Characters are usually similar to the role they are intended to support, with at least one Annex replaced with a Support Annex that will assist or buff the specific role they assist in a number of ways. For example giving an Officer the ability to spread their orders (and Cards) to multiple Targets, or making a Squire able to Prepare Cards into their Knight’s Style Reserve."
+    },
+    {
+        "Type": "Tank",
+        "Description": "The Tank is a Heavy who wears more armour, and can both soak and deal out damage. Tanks usually having at least one ridiculously oversized weapon to hit the enemy with. Tanks are often surprisingly mobile as well.",
+        "Rules": "The Tank must have Annexes that can soak, avoid, or ignore Wounds, such as Tough. Tanks usually have at least one Annex devoted to attack as well. Unlike Heavies, Tanks can be fast."
+    }
+]

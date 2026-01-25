@@ -1,0 +1,65 @@
+{
+  "StarSystem": {
+    "prompt": "Generate a name for a star system based on the following context and seed.\n\n**Context:**\n{context}\n\n**Seed:**\n{seed}\n\nPlease respond with ONLY a valid JSON object in the following format:\n{\n  \"common\": \"The common or short name\",\n  \"full\": \"The full, formal, or descriptive name\",\n  \"aliases\": \"A comma-separated string of alternative names or designations\"\n}"
+  },
+  "Homeworld": {
+    "prompt": "Generate a name for a homeworld based on the following context and seed.\n\n**Context:**\n{context}\n\n**Seed:**\n{seed}\n\nPlease respond with ONLY a valid JSON object in the following format:\n{\n  \"common\": \"The common or short name\",\n  \"full\": \"The full, formal, or descriptive name\",\n  \"aliases\": \"A comma-separated string of alternative names or designations\"\n}"
+  },
+  "Ship": {
+    "prompt": "Generate a name for a ship based on the following context and seed.\n\n**Context:**\n{context}\n\n**Seed:**\n{seed}\n\nPlease respond with ONLY a valid JSON object in the following format:\n{\n  \"common\": \"The common or short name\",\n  \"full\": \"The full, formal, or descriptive name\",\n  \"aliases\": \"A comma-separated string of alternative names or designations\"\n}"
+  },
+  "Species": {
+    "prompt": "Generate a name for a species based on the following context and seed.\n\n**Context:**\n{context}\n\n**Seed:**\n{seed}\n\nPlease respond with ONLY a valid JSON object in the following format:\n{\n  \"common\": \"The common or short name\",\n  \"full\": \"The full, formal, or descriptive scientific name\",\n  \"aliases\": \"A comma-separated string of alternative names or designations\"\n}"
+  },
+  "Corporation": {
+    "prompt": "Generate a name for a corporation based on the following context and seed.\n\n**Context:**\n{context}\n\n**Seed:**\n{seed}\n\nPlease respond with ONLY a valid JSON object in the following format:\n{\n  \"common\": \"The common or short name\",\n  \"full\": \"The full, formal, or descriptive name\",\n  \"aliases\": \"A comma-separated string of alternative names or designations\"\n}"
+  },
+  "Group": {
+    "prompt": "Generate a name for a group based on the following context and seed.\n\n**Context:**\n{context}\n\n**Seed:**\n{seed}\n\nPlease respond with ONLY a valid JSON object in the following format:\n{\n  \"common\": \"The common or short name\",\n  \"full\": \"The full, formal, or descriptive name\",\n  \"aliases\": \"A comma-separated string of alternative names or designations\"\n}"
+  },
+  "Religions": {
+    "prompt": "Generate a name for a religion based on the following context and seed.\n\n**Context:**\n{context}\n\n**Seed:**\n{seed}\n\nPlease respond with ONLY a valid JSON object in the following format:\n{\n  \"common\": \"The common or short name\",\n  \"full\": \"The full, formal, or descriptive name\",\n  \"aliases\": \"A comma-separated string of alternative names or designations\"\n}"
+  },
+  "Characters": {
+    "prompt": "Generate a name for a character based on the following context and seed.\n\n**Context:**\n{context}\n\n**Seed:**\n{seed}\n\nPlease respond with ONLY a valid JSON object in the following format:\n{\n  \"common\": \"The common or short name\",\n  \"full\": \"The full, formal, or descriptive name\",\n  \"aliases\": \"A comma-separated string of alternative names or designations\"\n}"
+  },
+  "Equipment": {
+    "prompt": "Generate a name for a piece of equipment based on the following context and seed.\n\n**Context:**\n{context}\n\n**Seed:**\n{seed}\n\nPlease respond with ONLY a valid JSON object in the following format:\n{\n  \"common\": \"The common or short name\",\n  \"full\": \"The full, formal, or descriptive name\",\n  \"aliases\": \"A comma-separated string of alternative names or designations\"\n}"
+  },
+  "Food": {
+    "prompt": "Generate a name for a food item based on the following context and seed.\n\n**Context:**\n{context}\n\n**Seed:**\n{seed}\n\nPlease respond with ONLY a valid JSON object in the following format:\n{\n  \"common\": \"The common or short name\",\n  \"full\": \"The full, formal, or descriptive name\",\n  \"aliases\": \"A comma-separated string of alternative names or designations\"\n}"
+  },
+  "Goods": {
+    "prompt": "Generate a name for a good (commerical item, trade goods, or cargo container full of something) based on the following context and seed.\n\n**Context:**\n{context}\n\n**Seed:**\n{seed}\n\nPlease respond with ONLY a valid JSON object in the following format:\n{\n  \"common\": \"The common or short name\",\n  \"full\": \"The full, formal, or descriptive name\",\n  \"aliases\": \"A comma-separated string of alternative names or designations\"\n}"
+  },
+  "Treasures": {
+    "prompt": "Generate a name for a treasure based on the following context and seed.\n\n**Context:**\n{context}\n\n**Seed:**\n{seed}\n\nPlease respond with ONLY a valid JSON object in the following format:\n{\n  \"common\": \"The common or short name\",\n  \"full\": \"The full, formal, or descriptive name\",\n  \"aliases\": \"A comma-separated string of alternative names or designations\"\n}"
+  },
+  "Relics": {
+    "prompt": "Generate a name for a relic based on the following context and seed.\n\n**Context:**\n{context}\n\n**Seed:**\n{seed}\n\nPlease respond with ONLY a valid JSON object in the following format:\n{\n  \"common\": \"The common or short name\",\n  \"full\": \"The full, formal, or descriptive name\",\n  \"aliases\": \"A comma-separated string of alternative names or designations\"\n}"
+  },
+  "Planet": {
+    "prompt": "Generate a name for a planet, moon, or celestial body based on the following context and seed.\n\n**Context:**\n{context}\n\n**Seed:**\n{seed}\n\nPlease respond with ONLY a valid JSON object in the following format:\n{\n  \"common\": \"The common or short name\",\n  \"full\": \"The full, formal, or descriptive name\",\n  \"aliases\": \"A comma-separated string of alternative names or designations\"\n}"
+  },
+  "Technology": {
+    "prompt": "Generate a name for a technology, research project, or unique gadget based on the following context and seed.\n\n**Context:**\n{context}\n\n**Seed:**\n{seed}\n\nPlease respond with ONLY a valid JSON object in the following format:\n{\n  \"common\": \"The common or short name\",\n  \"full\": \"The full, formal, or descriptive name\",\n  \"aliases\": \"A comma-separated string of alternative names or designations\"\n}"
+  },
+  "Faction": {
+    "prompt": "Generate a name for a political faction, alliance, or competing group based on the following context and seed.\n\n**Context:**\n{context}\n\n**Seed:**\n{seed}\n\nPlease respond with ONLY a valid JSON object in the following format:\n{\n  \"common\": \"The common or short name\",\n  \"full\": \"The full, formal, or descriptive name\",\n  \"aliases\": \"A comma-separated string of alternative names or designations\"\n}"
+  },
+  "Weapon": {
+    "prompt": "Generate a name for a weapon or armament based on the following context and seed.\n\n**Context:**\n{context}\n\n**Seed:**\n{seed}\n\nPlease respond with ONLY a valid JSON object in the following format:\n{\n  \"common\": \"The common or short name\",\n  \"full\": \"The full, formal, or descriptive name\",\n  \"aliases\": \"A comma-separated string of alternative names or designations\"\n}"
+  },
+  "Resource": {
+    "prompt": "Generate a name for a material, resource, or commodity based on the following context and seed.\n\n**Context:**\n{context}\n\n**Seed:**\n{seed}\n\nPlease respond with ONLY a valid JSON object in the following format:\n{\n  \"common\": \"The common or short name\",\n  \"full\": \"The full, formal, or descriptive name\",\n  \"aliases\": \"A comma-separated string of alternative names or designations\"\n}"
+  },
+  "Course": {
+    "prompt": "Generate a name for a racing course or route based on the following context and seed.\n\n**Context:**\n{context}\n\n**Seed:**\n{seed}\n\nPlease respond with ONLY a valid JSON object in the following format:\n{\n  \"common\": \"The common or short name\",\n  \"full\": \"The full, formal, or descriptive name\",\n  \"aliases\": \"A comma-separated string of alternative names or designations\"\n}"
+  },
+  "Ancient Ruins": {
+    "prompt": "Generate a mysterious and evocative name for an Ancient Ruin based on the following context and seed.\n\n**Context:**\n{context}\n\n**Seed:**\n{seed}\n\nThe name should reflect the age, original purpose (if known), and current state of the ruins.\nPlease respond with ONLY a valid JSON object in the following format:\n{\n  \"common\": \"A short, evocative name (e.g., The Whispering Arch)\",\n  \"full\": \"The full academic or historical name (e.g., Site 404: Temple of the Forgotten)\",\n  \"aliases\": \"Local legends, translations, or nicknames\"\n}"
+  },
+  "Proficiency": {
+    "prompt": "Generate a name for a Proficiency (a specialized skill or field of knowledge) based on the following context and seed.\n\n**Context:**\n{context}\n\n**Seed:**\n{seed}\n\nThe names should be evocative of the specialized knowledge and the facet it belongs to.\nPlease respond with ONLY a valid JSON object in the following format:\n{\n  \"common\": \"A short, punchy name for the skill (e.g., 'Astromancy')\",\n  \"full\": \"The formal or descriptive name of the proficiency (e.g., 'Celestial Navigation and Void-Mapping')\",\n  \"aliases\": \"A comma-separated string of alternative names, slang terms, or cross-disciplinary designations (e.g., 'Star-Gazing, Pathfinding, The Navigator's Sight')\"\n}"
+  }
+}

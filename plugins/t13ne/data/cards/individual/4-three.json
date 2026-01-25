@@ -1,0 +1,115 @@
+{
+	"Card_Corner": "3",
+	"Card": "Three",
+	"Suit": "4",
+	"IconSuit": "♠",
+	"Pips": "3",
+	"Unicode": "&#x1f0a3;",
+	"Svg": "images/cards-svg/3S.svg",
+	"Wound_Level": 1,
+	"Facet": "Key",
+	"Tao": [
+		1,
+		1
+	],
+	"Narrative_Meaning": "Threes signify creativity and and communication. They can indicate hope, imagination, inspiration and conversations.",
+	"Image": "",
+	"Yarn": {
+		"Yarn_Name": "The Key",
+		"Yarn_Description": "The Key card is representative of a key itself, but also what a key can do, opening, unlocking, or revealing something that was locked away. The Key is not normally associated with the act of locking away again, except when the phrase \"throw away the key\" is used. It most often represents liberation, escape, or discovery.",
+		"Significator": {
+			"Plot": "The Key Plot is a plot to find something essential (the key to the Plot). Usually Key Plots are more often puzzle treasure hunts than combat filled infiltrations, but both are possible.",
+			"Side": "A side that is marked with the Key is somehow the key to the Conflict. They may have some power or ability that can solve the main issues, perhaps they are some lynch-pin of the Dominant or Pressed side's plans, or maybe they are just the problem.",
+			"Character": "The Key Significator indicates a Character who has a keen mind and nimble fingers. <p><strong>Gain Yin</strong> when they try to work on a puzzle or lock. </p><p>They <strong>Gain Yang</strong> when they use tools or gadgets. </p><p>They <strong>Gain Chi</strong> when they open a door, read an encoded message, or complete a puzzle. </p><p>They gain +1 Success Levels to all actions that require dexterity or curiosity.</p>",
+			"Scene": "The Key Scene is the most important part of a Story. It may be the \"Inciting Event\" of the Frame, the \"Dark Night Of the Soul\" of the Loom, or the Finale of the Zenith. The Key can be any type of Scene (including a Hook), but defines what is important to to the Story within its single Scene. Yarn-Tellers may play the Key card to create any sort of Scene, however the Scene must be Key to targets involvement in the Plot. If the Yarn-Teller fails to invent a suitable Key Scene then the Target decides the nature of the Key."
+		},
+		"Beat_Type": "3",
+		"Conflict_Embodiment": "3",
+		"Facet_Embodiment": "9",
+		"Hook_Aspect": "Hitches",
+		"Aspect_Description": "The Hook targets the Character's Hitches, the bigger the better.",
+		"Hook": "The Key To The Kingdom",
+		"Hook_Description": "The Conflict Hooks the Character with a promise of an incredible treasure or power. Alternatively the Hook may be a literal key, perhaps to a Location that has come into the PCs possession.",
+		"Gain": "A Clue or Key to an Obstacle or Location",
+		"Fray": "The Lock",
+		"Fray_Description": "The Fray is about either opening or closing a lock. It may be a door, vault, safe, computer, chest or something more experimental that needs locking or unlocking. Usually you will require the correct key, password or codebook, or you will have to pick or solve the lock as a Puzzle. The Lock is usually a Solitary Low-Medium Stakes Ordeal, with at least one Obstacle, however storming a keep to drop the drawbridge and raise the portcullis would be a high or extreme Stakes Opposed Motional Ordeal.",
+		"Snag": "Crux",
+		"Snag_Description": "The Fray is made more complicated by being the key to the whole Story. This is the crux of the problem, and as such should have higher Stakes (with black twos wild), and an appearance of the Villain or their forces. If this crucial Fray is lost it must be returned to somehow later.",
+		"NPC": {
+			"Archetype": "Inquisitor",
+			"Persona": 10,
+			"Core": 12,
+			"Hitch": 6,
+			"Description": "Inquisitors are masters of asking questions and keeping the interrogated threatened and living. Some favour torture, usually with a strong psychological component, others rely on making friends with their subject, master Inquisitors use even more advanced techniques."
+		},
+		"Sweeping": "Lock-In",
+		"Sweeping_Text": "The PCs find somewhere safe and then secure the doors, by locking, bolting or barricading themselves in. They may rest easy inside for a while, especially if its after-hours in a country pub, not so much if its a supply cupboard during a terrorist incident.",
+		"History": "Discovered",
+		"History_Description": "The Key indicates that the past that led to the current situation involves some act of discovery, usually something important was discovered years ago at led to the the current situation, but sometimes the situation was created by an attempt at discovering something else (successfully or not).",
+		"Situation": "Locked",
+		"Situation_Description": "The Key indicates that the current situation is locked, it cannot be moved on from until something external to the situation usually unlocks it. It could be two forces are pitted against each other in an eternal stalemate, locked in battle, or it could be that you or an ally are locked in a dungeon or jail.",
+		"Solution": "Revealing",
+		"Solution_Description": "The Key indicates that the solution to the current situation is to reveal some secret. Revealing this secret may cause political upset, destabilise an opponent, or turn allies upon each other depending upon the secret revealed.",
+		"Revelations": {
+			"About": "Above",
+			"About_Description": "The information revealed is about the Above Conflict Embodiment. The Above side usually oversees the Conflict from above, they might be the local government, law enforcement, or a divinity.",
+			"Info": "Aspects",
+			"Info_Description": "Information about an exploitable weakness or a warning about a strength.",
+			"Vector": "Flashback",
+			"Vector_Description": "The information is revealed via a Flashback Scene. This might be played out, or just narrated, depending on how far back and how well planned the Ref is.",
+			"Alternate": "Sorrows",
+			"Alternate_Description": "The information is about sad things. Perhaps it details how the young orphan was passed from abusive home to abusive home, until finally he was taken in by a clan of thieves. Or perhaps it details how an Assassin's first contract was his childhood friend. Or how much they loved that dog they had to shoot when it got rabid.",
+			"Detail": "Woes",
+			"Detail_Description": "Some people don't just have problems, they have Woes. Huge Hitches in some cases, when they create Demons, who are like Mercari but with Twisted abilities, but for others, their woes just huge mistakes that the Embodiment wishes it could undo."
+		}
+	},
+	"Obstacle": {
+		"Type": "Lock",
+		"Description": "The way ahead is blocked by a Lock, you will require a key, pass-code, or lock-picking skills to unlock the way."
+	},
+	"Tarot": {
+		"WyrdTarot": "Breach",
+		"Crossed": "Discards the highest card of an incoming attack",
+		"Normal": "Adds +12 Penetration Pips to an Attack card in play."
+	},
+	"Ordeal": {
+		"Ordeal_Type": "Opposed Ordeal",
+		"Stages": "4",
+		"Ordeal_Spread": "Forking",
+		"Stakes": "Medium",
+		"Test": "Discover (Yonder)",
+		"Obstacles": "1 Obstacle in a Court Stage",
+		"Suggested_Action": "Turn",
+		"Stage": "Balance",
+		"Stage_Description": "The way ahead is narrow, perhaps a thin, mountain-goat path, or a plank across a gap. Maybe the route is across ceiling beams or the girders of the top of a box-bridge.",
+		"Motional": "Air Vehicle Flee",
+		"Motional_Description": "Foxtrot-Bravo-Two you have Echo-Charlie on your Six, accelerate to point Seven and try to shake them.",
+		"Tide_of_Battle": "Penetration",
+		"Tide_of_Battle_Text": "The Flowing forces are able to pierce through the Ebbing Defences, pushing through their lines and armour. All Ebbing sides cards are are at -1 Pips for Defence",
+		"Fight": "3 Way Battle",
+		"Fight_Description": "The Fight is between 3 equal and unaligned forces that meet in a Square, Field, or other mostly open area."
+	},
+	"Lea": {
+		"PathColour": "Red/Purple Carnivore",
+		"Bulmas": "Hunters, Broccen, Vermis, Labyrinthine, All-Walkers",
+		"AnimalCategory": "Meiofauna",
+		"Example": "Small Nematode worms",
+		"Bodypart": "Mucus Membranes",
+		"Notes": "A lot of parasitic carnivore paths at this level, these can follow much larger animal paths within that animal."
+	},
+	"Stress": {
+		"Type": "Release",
+		"Description": "Sometimes a single event is enough to release some Stress. If it is the right event",
+		"Rules": "A Character may remove 1 point of Stress after a period of any unrelated activity equal to the Current Stress as Chi Extend Duration."
+	},
+	"Trauma": {
+		"Type": "Lock",
+		"Description": "Trauma can create locks, with abilities, knowledge and memories being locked away from the conscious mind by the trauma, often as some form of psychological defence mechanism. Sometimes abilities can also be unlocked by traumas, and other times doors, portals and pathways can be unlocked in the Lea or Psychosocial layers of reality.",
+		"Rules": "The Trauma takes all current Stress and Relieves it converting it to Chi. This Chi is immediately used to lock or unlock something about the Character. For example, any Bulmäs tasting blood for the first time unlocks the Red Carnivore paths, any tasting \"dead\" meat unlocks the Black Vermis Paths."
+	},
+	"Age": {
+		"Type": "Crux",
+		"Description": "An Age of Crux is occurring. During this age a society must make an important choice or decision, that will later appear as a tipping point in history (a crux event). Typically during this age a society will choose between one action and another (whether to side with neighbour A or neighbour B during the war), although action and inaction (whether to invade or not) choices also occur. While the society as a whole may feel this crux age upon them, it is often the choice of a single individual that defines and ends the age, although no decision is made in a total vacuum and the beliefs of the society around the individual will have a powerful part of that decision-making process.",
+		"Rules": "During an Age of Crux a single crucial decision (often important for a variety of reasons, most of which will not be obvious until after it is made) affects a whole of society, often an individual will make the crucial decision (usually a leader within the society), but decisions can be voted upon by the whole, or a section, of a society too. The decision that must be made during an Age of Crux is usually a Crux Event or Causal Nexus Event (see Events for details) with all members of the Society contributing Sway to creating and enforcing the event, adding Edges and Glows, etc."
+	}
+}

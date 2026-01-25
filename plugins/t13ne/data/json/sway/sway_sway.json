@@ -1,0 +1,32 @@
+[
+  {
+    "Chi": 1,
+    "Element_Type": "Sway",
+    "Type": "Chi",
+    "Sway_Type_Description": "1 point of Chi"
+  },
+  {
+    "Chi": 1,
+    "Element_Type": "Sway",
+    "Type": "Tao-Sway",
+    "Sway_Type_Description": "2 points of Yin or Yang or 1 point of each."
+  },
+  {
+    "Chi": 1,
+    "Element_Type": "Sway",
+    "Type": "Facet Sway",
+    "Sway_Type_Description": "2 points if Banal, or Intrepid, 1 Point Bold"
+  },
+  {
+    "Chi": 2,
+    "Element_Type": "Sway",
+    "Type": "Yarn",
+    "Sway_Type_Description": "1 point of normal Yarn. +1 Tao Sway for Seelie or Unseelie Yarn"
+  },
+  {
+    "Chi": 6,
+    "Element_Type": "Sway",
+    "Type": "Twist",
+    "Sway_Type_Description": "1 Twist can be created by magic from 2 Faerie Yarn one Seelie and one Unseelie or 2 of either. The Twist is also related to the Shock, the most powerful form of Stress. Twists are often Shocking."
+  }
+]

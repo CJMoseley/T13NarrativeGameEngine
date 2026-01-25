@@ -1,0 +1,18 @@
+<svg width="256" height="512" viewBox="0 0 256 512" xmlns="http://www.w3.org/2000/svg" id="insectoid-base">
+    <!--
+        Insectoid Base Figure SVG Template
+        ComfyUI Prompt:
+        retro anime style portrait of a wise insectoid alien, multifaceted eyes, slender segmented body, chitinous plates in iridescent green and dark teal, four delicate arms, floating gracefully in a zero-gravity environment, bioluminescent patterns on its carapace, cyberpunk city background with neon signs, ethereal glow, sharp vector lines, limited color palette.
+        Negative Prompt:
+        human-like, cute, furry, photorealistic, 3d render, blurry, deformed, poorly drawn, text, watermark.
+    -->
+    <g id="body">
+        <path id="torso" d="M 128,190 C 100,250 156,250 128,190 L 128,350 Z" fill="#4a4a4a" />
+        <path id="upper-arms" d="M 100,220 C 60,180 80,250 100,220 M 156,220 C 196,180 176,250 156,220" fill="none" stroke="#4a4a4a" stroke-width="8" />
+        <path id="lower-arms" d="M 100,260 C 60,220 80,290 100,260 M 156,260 C 196,220 176,290 156,260" fill="none" stroke="#4a4a4a" stroke-width="8" />
+    </g>
+    <g id="head">
+        <path id="headshape" d="M 110,120 C 90,160 166,160 146,120 C 150,90 106,90 110,120 Z" fill="#555" />
+        <path id="mandibles" d="M 115,150 C 105,180 128,170 128,150 M 141,150 C 151,180 128,170 128,150" fill="none" stroke="#555" stroke-width="5" />
+    </g>
+</svg>

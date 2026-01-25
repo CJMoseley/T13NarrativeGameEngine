@@ -1,0 +1,15 @@
+{
+    "files": [
+        { "key": "society", "path": "/data/society.json" },
+        { "key": "tech", "path": "/data/techlevels.json" },
+        { "key": "planet", "path": "/data/planet.json" },
+        { "key": "naming", "path": "/data/naming.json" },
+        { "key": "music", "path": "/data/music.json" },
+        { "key": "controls", "path": "/data/controls.json" },
+        { "key": "galacticDefinition", "path": "/data/galacticdefinition.json", "isCritical": true },
+        { "key": "speciesFoundations", "path": "/data/speciesfoundations.json" },
+        { "key": "corporations", "path": "/data/corporations.json" },
+        { "key": "proficiencies", "path": "/data/proficiencies.json" }
+    ]
+
+}

@@ -1,0 +1,1431 @@
+{
+  "601": {
+    "id": 601,
+    "prof": {
+      "Name": [
+        "Which",
+        "Which Gossamer Question Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Which is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "602": {
+    "id": 602,
+    "prof": {
+      "Name": [
+        "Unbound",
+        "Unbound Gossamer Resolved Hitch Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Unbound is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "603": {
+    "id": 603,
+    "prof": {
+      "Name": [
+        "Communications",
+        "Communications Gossamer Rule Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Communications is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "604": {
+    "id": 604,
+    "prof": {
+      "Name": [
+        "Grapple",
+        "Grapple Gossamer Style Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Grapple is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "605": {
+    "id": 605,
+    "prof": {
+      "Name": [
+        "Ribbon",
+        "Ribbon Gossamer Success Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Ribbon is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "606": {
+    "id": 606,
+    "prof": {
+      "Name": [
+        "Breath",
+        "Breath Gossamer Sway Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Breath is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "607": {
+    "id": 607,
+    "prof": {
+      "Name": [
+        "Fumbling",
+        "Fumbling Gossamer Tangle Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Fumbling is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "608": {
+    "id": 608,
+    "prof": {
+      "Name": [
+        "Conversing / Floating /  Gossip / Gripping / Hauling / Holding / Kite-Flying / Lifting / Sailing / Strength / Stress and Strain / Strum Strings",
+        "Conversing / Floating /  Gossip / Gripping / Hauling / Holding / Kite-Flying / Lifting / Sailing / Strength / Stress and Strain / Strum Strings",
+        ""
+      ],
+      "Description": "The threads of Greed are woven into the tapestry of Conversing / Floating /  Gossip / Gripping / Hauling / Holding / Kite-Flying / Lifting / Sailing / Strength / Stress and Strain / Strum Strings, a story of avarice told in silence.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "6"
+        ],
+        "Genres": [
+          "6"
+        ],
+        "Eras": [
+          "6"
+        ],
+        "Types": [
+          "Test"
+        ]
+      }
+    }
+  },
+  "609": {
+    "id": 609,
+    "prof": {
+      "Name": [
+        "Conversational",
+        "Conversational Gossamer Tone Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Conversational is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "610": {
+    "id": 610,
+    "prof": {
+      "Name": [
+        "Shuffle",
+        "Shuffle Gossamer Turn Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Shuffle is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "611": {
+    "id": 611,
+    "prof": {
+      "Name": [
+        "Unnatural Weaponry",
+        "Unnatural Weaponry Gossamer Twisted Proficiency",
+        "odd, strange, artificial, aberrant, weird"
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Unnatural Weaponry is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "612": {
+    "id": 612,
+    "prof": {
+      "Name": [
+        "Spinning",
+        "Spinning Gossamer Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Spinning is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "613": {
+    "id": 613,
+    "prof": {
+      "Name": [
+        "Fine",
+        "Fine Gossamer Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Fine is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "614": {
+    "id": 614,
+    "prof": {
+      "Name": [
+        "Entangling",
+        "Entangling Gossamer Nimbed Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Entangling is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "615": {
+    "id": 615,
+    "prof": {
+      "Name": [
+        "Words",
+        "Words Gossamer Umbral Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Words is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "616": {
+    "id": 616,
+    "prof": {
+      "Name": [
+        "Adventurer",
+        "Adventurer Gossamer Persona Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Adventurer is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "617": {
+    "id": 617,
+    "prof": {
+      "Name": [
+        "Transparent",
+        "Transparent Heresy Zero Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Transparent challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "618": {
+    "id": 618,
+    "prof": {
+      "Name": [
+        "Distinct",
+        "Distinct Heresy Zero Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Distinct challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "619": {
+    "id": 619,
+    "prof": {
+      "Name": [
+        "Open Locations",
+        "Open Location Heresy Zero Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Open Locations challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "620": {
+    "id": 620,
+    "prof": {
+      "Name": [
+        "Naive",
+        "Naive Heresy Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Naive challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "621": {
+    "id": 621,
+    "prof": {
+      "Name": [
+        "Accurate",
+        "Accurate Heresy Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Accurate challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "622": {
+    "id": 622,
+    "prof": {
+      "Name": [
+        "Guileless Locations",
+        "Guileless Location Heresy Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Guileless Locations challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "623": {
+    "id": 623,
+    "prof": {
+      "Name": [
+        "Blunt",
+        "Blunt Heresy Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Blunt challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "624": {
+    "id": 624,
+    "prof": {
+      "Name": [
+        "Reliable",
+        "Reliable Heresy Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Reliable challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "625": {
+    "id": 625,
+    "prof": {
+      "Name": [
+        "Official Locations",
+        "Official Location Heresy Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Official Locations challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "626": {
+    "id": 626,
+    "prof": {
+      "Name": [
+        "Sincere",
+        "Sincere Heresy Low Boon Adjective Proficiency",
+        "genuine, honest, heartfelt, earnest, true"
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Sincere challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "627": {
+    "id": 627,
+    "prof": {
+      "Name": [
+        "Realistic",
+        "Realistic Heresy Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Realistic challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "628": {
+    "id": 628,
+    "prof": {
+      "Name": [
+        "Real Locations",
+        "Real Location Heresy Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Real Locations challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "629": {
+    "id": 629,
+    "prof": {
+      "Name": [
+        "Honest",
+        "Honest Heresy Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Honest challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "630": {
+    "id": 630,
+    "prof": {
+      "Name": [
+        "Traditional",
+        "Traditional Heresy Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Traditional challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "631": {
+    "id": 631,
+    "prof": {
+      "Name": [
+        "Authentic Locations",
+        "Authentic Location Heresy Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Authentic Locations challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "632": {
+    "id": 632,
+    "prof": {
+      "Name": [
+        "Diplomatic",
+        "Diplomatic Heresy Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Diplomatic challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "633": {
+    "id": 633,
+    "prof": {
+      "Name": [
+        "Pleasant",
+        "Pleasant Heresy Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Pleasant challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "634": {
+    "id": 634,
+    "prof": {
+      "Name": [
+        "Civil Locations",
+        "Civil Location Heresy Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Civil Locations challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "635": {
+    "id": 635,
+    "prof": {
+      "Name": [
+        "Boastful",
+        "Boastful Heresy Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Boastful challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "636": {
+    "id": 636,
+    "prof": {
+      "Name": [
+        "Imprecise",
+        "Imprecise Heresy Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Imprecise challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "637": {
+    "id": 637,
+    "prof": {
+      "Name": [
+        "Crooked Locations",
+        "Crooked Location Heresy Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Crooked Locations challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "638": {
+    "id": 638,
+    "prof": {
+      "Name": [
+        "Misleading",
+        "Misleading Heresy High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Misleading challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "639": {
+    "id": 639,
+    "prof": {
+      "Name": [
+        "Inaccurate",
+        "Inaccurate Heresy High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Inaccurate challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "640": {
+    "id": 640,
+    "prof": {
+      "Name": [
+        "Distracting Locations",
+        "Distracting Location Heresy High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Distracting Locations challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "641": {
+    "id": 641,
+    "prof": {
+      "Name": [
+        "Dishonest",
+        "Dishonest Heresy High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Dishonest challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "642": {
+    "id": 642,
+    "prof": {
+      "Name": [
+        "Sneaky",
+        "Sneaky Heresy High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Sneaky challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "643": {
+    "id": 643,
+    "prof": {
+      "Name": [
+        "Shady Locations",
+        "Shady Location Heresy High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Shady Locations challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "644": {
+    "id": 644,
+    "prof": {
+      "Name": [
+        "Deceptive",
+        "Deceptive Heresy High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Deceptive challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "645": {
+    "id": 645,
+    "prof": {
+      "Name": [
+        "Subtle",
+        "Subtle Heresy High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Subtle challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "646": {
+    "id": 646,
+    "prof": {
+      "Name": [
+        "Treacherous Locations",
+        "Treacherous Location Heresy High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Treacherous Locations challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "647": {
+    "id": 647,
+    "prof": {
+      "Name": [
+        "Cunning",
+        "Cunning Heresy Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Cunning challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "648": {
+    "id": 648,
+    "prof": {
+      "Name": [
+        "Smart",
+        "Smart Heresy Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Smart challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "649": {
+    "id": 649,
+    "prof": {
+      "Name": [
+        "Risky Locations",
+        "Risky Location Heresy Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Risky Locations challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "650": {
+    "id": 650,
+    "prof": {
+      "Name": [
+        "Sly",
+        "Sly Heresy Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Sly challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

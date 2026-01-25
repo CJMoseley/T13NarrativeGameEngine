@@ -1,0 +1,70 @@
+{
+    "metadata": {
+        "formatVersion": 4.5,
+        "type": "Object",
+        "generator": "Three.js JSON Object - Small Hull"
+    },
+    "geometries": [
+        {
+            "uuid": "ship_hull_body_geometry",
+            "type": "CylinderGeometry",
+            "radiusTop": 0.15,
+            "radiusBottom": 0.375,
+            "height": 1.5,
+            "radialSegments": 8,
+            "heightSegments": 1
+        },
+        {
+            "uuid": "ship_hull_wing_left_geometry",
+            "type": "BoxGeometry",
+            "width": 1.125,
+            "height": 0.075,
+            "depth": 0.375
+        },
+        {
+            "uuid": "ship_hull_wing_right_geometry",
+            "type": "BoxGeometry",
+            "width": 1.125,
+            "height": 0.075,
+            "depth": 0.375
+        }
+    ],
+    "materials": [
+        {
+            "uuid": "ship_hull_material",
+            "type": "MeshPhongMaterial",
+            "color": 8947848,
+            "specular": 8947848,
+            "emissive": 0,
+            "shininess": 30
+        }
+    ],
+    "object": {
+        "uuid": "ship_hull_group",
+        "type": "Group",
+        "children": [
+            {
+                "uuid": "ship_hull_body_mesh",
+                "type": "Mesh",
+                "geometry": "ship_hull_body_geometry",
+                "material": "ship_hull_material",
+                "position": [0, 0, 0],
+                "rotation": [1.5708, 0, 0]
+            },
+            {
+                "uuid": "ship_hull_wing_left_mesh",
+                "type": "Mesh",
+                "geometry": "ship_hull_wing_left_geometry",
+                "material": "ship_hull_material",
+                "position": [-0.5625, 0, 0]
+            },
+            {
+                "uuid": "ship_hull_wing_right_mesh",
+                "type": "Mesh",
+                "geometry": "ship_hull_wing_right_geometry",
+                "material": "ship_hull_material",
+                "position": [0.5625, 0, 0]
+            }
+        ]
+    }
+}

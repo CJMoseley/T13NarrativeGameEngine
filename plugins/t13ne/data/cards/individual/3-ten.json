@@ -1,0 +1,115 @@
+{
+	"Card_Corner": "10",
+	"Card": "Ten",
+	"Suit": "3",
+	"IconSuit": "♣",
+	"Pips": "10",
+	"Unicode": "&#x1f0da;",
+	"Svg": "images/cards-svg/10C.svg",
+	"Wound_Level": 4,
+	"Facet": "Rook",
+	"Tao": [
+		0,
+		1
+	],
+	"Narrative_Meaning": "Tens indicate a completion, whether the actual end of the story or the end of a character or phase.",
+	"Image": "",
+	"Yarn": {
+		"Yarn_Name": "The Guardian",
+		"Yarn_Description": "The Guardian card represents the people who protect us. From Parents and Teachers to friends and even social systems such as City Watch or Police. The Guardian will always look out for us, helping us to avoid the worst situations and injuries, as long as we heed their warnings, and they are trustworthy.",
+		"Significator": {
+			"Plot": "The Guardian Plot is often a plot about families. These may be coming of age tales (and often are), but a Guardian and Ward relationship will be important to this Plot. Guardian Plots can also fall into Police procedural lines, and Superhero adventures, where protecting others is an important plot point.",
+			"Side": "A side of the conflict marked by the Guardian will ally themselves with another side of the Conflict, often the Pressed or Below sides, protecting them and acting against their Rivals or enemies.",
+			"Character": "The Guardian Significator indicates a protector, who guides as well as guards. <p>They <strong>Gain Yin</strong> when they watch or listen to those they would protect, or comfort those who are injured. </p><p>They <strong>Gain Yang</strong> when they offer advice or guide others. They <strong>Gain Chi</strong> when they act to protect or shield another. </p><p>They gain +1 Success Level when they act to assist one of their wards.</p>",
+			"Scene": "The Guardian Scene is one of the major Ordeals of the Story. Guardians patrol the thresholds of adventure, and must be bested somehow. This may be a coming of age test, or a Guardian Monster Ordeal. Yarn-Tellers can use this card to unleash a Guardian Monster, perhaps as an Ally, perhaps not, they can also be used as a defence, or as a Mentor ally Gain."
+		},
+		"Beat_Type": "8",
+		"Conflict_Embodiment": "2",
+		"Facet_Embodiment": "14",
+		"Hook_Aspect": "Hitch",
+		"Aspect_Description": "The Hook targets the Character's Hitches, triggering and threatening to trigger as many as possible at once.",
+		"Hook": "Help!",
+		"Hook_Description": "The Hook is a direct call to help from someone (usually at least a Cast Extra) such as an Ally or Friend.",
+		"Gain": "A Cast Extra Ally with Power Descendant Armour",
+		"Fray": "Protect and Serve",
+		"Fray_Description": "The Fray is trying to keep people safe in a dangerous situation. Maybe the PCs are cops during a riot, or perhaps there is a natural disaster and very one has to pitch in, then again maybe someone the PCs have a Duty or Devotion to is at risk.",
+		"Snag": "Untrustworthy Guardian",
+		"Snag_Description": "Whether its a bad cop or a demonic schoolteacher, an untrustworthy guardian is a complication that can make things bad for everyone involved.",
+		"NPC": {
+			"Archetype": "Guard",
+			"Persona": 17,
+			"Core": 1,
+			"Hitch": 5,
+			"Description": "Guards, whether body, security, military, prison, royal or city guards are all essentially the same."
+		},
+		"Sweeping": "Safe House",
+		"Sweeping_Text": "The Pressed Embodiment finds a safe house. A Location where they can regroup and heal, that is unknown to, or otherwise protected from, the other sides.",
+		"History": "Guarded",
+		"History_Description": "The Guardian indicates that in the past someone or something was guarded or protected.",
+		"Situation": "Patrol",
+		"Situation_Description": "The Guardian indicates the current situation concerns a patrol, this may be a trek through your own territory, neutral territory or a border with enemy territory, or the enemy patrolling the same.",
+		"Solution": "Watch",
+		"Solution_Description": "The Guardian indicates that the solution to the current situation is to remain on guard, watching out for the enemy or their allies. Watch for the enemy and they will reveal themselves, watch the enemy when they appear and they will reveal their weaknesses.",
+		"Revelations": {
+			"About": "The Story",
+			"About_Description": "The information is about the current situation and plot. It might include information about either side of the Conflict, or both. It is normal when providing information to only reveal information about a single Side of the Conflict, usually the Dominant or Above sides.",
+			"Info": "Safety",
+			"Info_Description": "This could tell you information about someone's safety, where do they feel safe, who with and why? Or it could as easily be instructions on how to train dragons without being broiled or a simple warning to avoid the forest.",
+			"Vector": "Walls",
+			"Vector_Description": "Walls and barriers can tell us things about buildings and people, but they can also be a source of graffiti and bill posters that spread word of bands, club nights, impending temporal schisms, and so on.",
+			"Alternate": "Family",
+			"Alternate_Description": "The information concerns Family connections that surround the Embodiment.",
+			"Detail": "Flaw",
+			"Detail_Description": "Everyone and and everything have their flaws, in T13 they often have at least one Hitch of the Flaw Tier, but this might be a flaw in their story, or a flaw in the prosecution's case."
+		}
+	},
+	"Obstacle": {
+		"Type": "Guardian",
+		"Description": "The way ahead is defended by a powerful Major Guardian, it might be your date's Father, a Dragon, or Asterion, the Minotaur who guards the centre of C&aelig;ster. They are often more powerful than the whole party of PCs and must be persuaded, beguiled, impressed, misled, bribed, fought, knocked out, killed, or vaporised, before they will let any of you past."
+	},
+	"Tarot": {
+		"WyrdTarot": "Relieve Wound",
+		"Crossed": "Draw and Apply one Unsoakable Wound to the Target.",
+		"Normal": "Remove the Target's largest Wound."
+	},
+	"Ordeal": {
+		"Ordeal_Type": "Opposed Ordeal",
+		"Stages": "5",
+		"Ordeal_Spread": "Block",
+		"Stakes": "Medium",
+		"Test": "Watch (Key)",
+		"Obstacles": "1 Obstacle in every Non-Court Stage, 2 in every Court Stage",
+		"Suggested_Action": "Protect/Soak",
+		"Stage": "Skid-row",
+		"Stage_Description": "Red-light districts are the home of sin, down and outs litter the streets (to say nothing of the litter). There's plenty going on at all times of the day or night, and you can't generally drive through at speed because of the crawling cars and occasional police presence.",
+		"Motional": "Foot Chase",
+		"Motional_Description": "Each breath burns your lungs, but you can still see them ahead, as they cross the bridge, and head down to the platform and waiting train below. Ignoring the pain, you push on, you have to make it to that train.",
+		"Tide_of_Battle": "Temptation",
+		"Tide_of_Battle_Text": "The Flowing side is offered some tactical temptation that could win the battle, but risks turning the Tide against them. This may be a case of abandoning a current position for one that may offer an advantage, but they could be caught in a cross-fire. The Flowing forces must play a Trick during this Stage. Failure to play a Trick will cause them to become Ebbing instead.",
+		"Fight": "Targeted Assault",
+		"Fight_Description": "A force around the Party's size and power-level attacks. The attackers focus their attack on one Party member (usually the most Pressed or Hooked), trying to inflict maximum damage for one Round, after which they retreat, fighting a retreating battle. Also called a Drive-By."
+	},
+	"Lea": {
+		"PathColour": "Green/Turquoise Herbivore",
+		"Bulmas": "Herd, Broccen, Vermis, Labyrinthine, All-Walkers",
+		"AnimalCategory": "Megafauna – Largest",
+		"Example": "Hippopotamus / Elephant / Sauropod / Mammoth ",
+		"Bodypart": "Trunk / Tentacle / Tusk",
+		"Notes": "These uncommon paths are only really walkable in Africa and India. Elsewhere on Earth they are more likely to connect back to the Palaeolithic (or earlier), becoming buried beneath more modern paths."
+	},
+	"Stress": {
+		"Type": "Disturbed",
+		"Description": "High Stress for hours, days, weeks or perhaps even years can profoundly alter a Character. Some people freak out if their schedule is disturbed even slightly, others need their sleep cycle disturbed before it becomes a problem. Others find themselves physically or emotionally disturbed. But this all amounts to the same thing.",
+		"Rules": "A Character who has become disturbed (by the latest Stressor) cannot rest or settle while this latest stressor continues. If they can find a way to cease the disturbance they will relieve 10 Stress and cease being disturbed, but until that time they will add their current Stress and the Tension-Level as a Chi Difficulty to all Actions that are not based on ceasing the disturbance (or at least getting far away). Even Actions that act to cease the disturbance will add the Character’s current Stress in Chi as additional Difficulty."
+	},
+	"Trauma": {
+		"Type": "Guardian",
+		"Description": "Trauma can create all sorts of self-protective behaviours in a Character. Some people will create protective guardian imaginary friends, others develop a new psychological defence mechanism, a few others will learn to attack first, to limit their future risks.",
+		"Rules": "Trauma can create an new Alt, new defence mechanism [t13ne type=\"table\" array=\"psychologicalDefences\" /], and the Character can Relieve 1 Stress if they attack first."
+	},
+	"Age": {
+		"Type": "Surveillance",
+		"Description": "An Age of Surveillance is occurring. During this age a society watches itself, perhaps by introducing journalism, watchmen, police officers, video surveillance cameras, or internet tracking systems. Typically this watching simultaneously makes a society safer and more paranoid, until you reach a situation where you have nothing to fear, but are constantly afraid.",
+		"Rules": "During an Age of Surveillance a society increases both social paranoia and physical security, there will be less crime (possibly even zero crime), but this is replaced with increased paranoia and Stress for anyone who lives in the society. Typically all members of society gain Stress whenever they see signs of the surveillence (police, security guards, cameras, cell towers, etc), with Traumas often causing paranoid behaviour ."
+	}
+}

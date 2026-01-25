@@ -1,0 +1,32 @@
+{
+  "id": "whr-def-001",
+  "name": "Wormhole Racers: The Velocity Era",
+  "version": "1.0.0",
+  "genre": "Sci-Fi / Racing",
+  "definitions": {
+    "ships": {
+      "rookie_ship": {
+        "layout": "Wormhole Slider Prototype",
+        "techLevel": 1
+      }
+    },
+    "leagues": [
+      {
+        "name": "The Solar Sprint",
+        "difficulty": 3,
+        "tracks": ["Wormhole Alpha", "Wormhole Beta"]
+      }
+    ],
+    "ordeals": {
+        "race": {
+            "type": "Video-Ordeal",
+            "physics": "AdvancedPhysicsEngine",
+            "scoring": "Time-Based"
+        }
+    }
+  },
+  "initialState": {
+    "activeLeague": "The Solar Sprint",
+    "tension": 3
+  }
+}

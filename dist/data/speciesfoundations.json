@@ -1,0 +1,237 @@
+[
+    {
+        "id": "ARCHETYPE_PRIMORDIAL",
+        "type": "archetype",
+        "name": "Primordial Civilization",
+        "desc": "An ancient, galaxy-spanning civilization, now long dead. Their artifacts are fragmented and poorly understood technological ruins.",
+        "traits": ["ANCIENT", "UPLIFTER", "RELIC"],
+        "harmonicBaseRules": { "type": "powersOf", "base": 8, "count": 8 }
+    },
+    {
+        "id": "ARCHETYPE_BIOLOGICAL_CARBON",
+        "type": "archetype",
+        "name": "Carbon-based Life",
+        "desc": "A carbon-based biological species, their physiology is adapted to {planetType} environments.",
+        "traits": ["BIOLOGICAL"],
+        "harmonicBaseRules": { "type": "fibonacci", "count": 6 }
+    },
+    {
+        "id": "ARCHETYPE_BIOLOGICAL_CRYSTALLINE",
+        "type": "archetype",
+        "name": "Crystalline Life",
+        "desc": "A silicon-based crystalline lifeform, their networked consciousness forms a {bodyPlan}.",
+        "traits": ["CRYSTALLINE", "TELEPATHIC"],
+        "harmonicBaseRules": { "type": "geometric", "base": 432, "count": 4 }
+    },
+    {
+        "id": "ARCHETYPE_SYNTHETIC",
+        "type": "archetype",
+        "name": "Synthetic Intelligence",
+        "desc": "A synthetic intelligence, their consciousness resides within a {bodyPlan} chassis.",
+        "traits": ["SYNTHETIC", "MIND_UPLOAD"],
+        "harmonicBaseRules": { "type": "powersOfTwo", "count": 6 }
+    },
+    {
+        "id": "SPECIES_FIRST_RELIC",
+        "type": "template",
+        "derivesFrom": "ARCHETYPE_PRIMORDIAL",
+        "name": "The First (Relic Artifacts)",
+        "desc": "The primordial, eight-limbed founders of galactic civilization. Resembling both spiders and octopi, their residual power sources are often active, warranting extreme caution.",
+        "scientificNaming": { "name": "Primogenitus Genius" },
+        "distribution": {
+            "Core": { "weight": 7, "condition": "!star.isYoung" },
+            "Disk": { "weight": 3, "condition": "!star.isYoung" },
+            "Rim": { "weight": 1, "condition": "!star.isYoung" }
+        },
+        "uplifts": ["Draco", "Grenk"]
+    },
+    {
+        "id": "SPECIES_HUMANS",
+        "type": "template",
+        "derivesFrom": "ARCHETYPE_BIOLOGICAL_CARBON",
+        "name": "Humans",
+        "desc": "A highly adaptable species with significant genetic and cultural variation. They are the primary architects of many inter-species alliances, relying heavily on AI and drone networks.",
+        "scientificNaming": { "name": "Homo Sapiens Sapiens" },
+        "distribution": {
+            "Core": { "weight": 15 },
+            "Disk": { "weight": 28 },
+            "Rim": { "weight": 24 }
+        },
+        "uplifts": ["Therios", "Drones"]
+    },
+    {
+        "id": "SPECIES_DRACO",
+        "type": "template",
+        "derivesFrom": "ARCHETYPE_BIOLOGICAL_CARBON",
+        "mods": ["UPLIFTED"],
+        "name": "Draco",
+        "desc": "An uplifted reptilian species. Their society was historically built on a rigid caste system where each caste was a distinct subspecies based on different ancient Terran megafauna.",
+        "naming": { "nameTemplate": ["DRACO_ANCIENT_BASES", "DRACO_THEMATIC_SUFFIXES"], "nameFormat": "Draco ({0} {1})" },
+        "scientificNaming": { "type": "hybrid", "parent1Key": "Grenk", "parent2Source": "DRACO_ANCIENT_BASES", "formatOptions": [{ "pattern": "{parent1_part1} {parent2_latin}", "weight": 0.5 }, { "pattern": "{parent2_latin} {parent1_part2}", "weight": 0.5 }], "storeAnimalBaseAs": "animalBase" },
+        "baseTraits": { "archetype": "BIOLOGICAL_CARBON", "limbCount": 4, "locomotiveLimbs": 2, "dominantLimbs": 2, "specializedLimbs": 0 },
+        "distribution": {
+            "Core": { "weight": 30 },
+            "Disk": { "weight": 20 },
+            "Rim": { "weight": 12 }
+        }
+    },
+    {
+        "id": "SPECIES_GRENK",
+        "type": "template",
+        "derivesFrom": "ARCHETYPE_BIOLOGICAL_CARBON",
+        "mods": ["UPLIFTED", "SERVITOR_RACE"],
+        "name": "Grenk",
+        "desc": "A robust biological servitor race, a relic of the First. They are predisposed to maintenance and helper roles and possess many stable subspecies variants.",
+        "scientificNaming": { "name": "Operarius Servus" },
+        "distribution": {
+            "Core": { "weight": 38 },
+            "Disk": { "weight": 18 },
+            "Rim": { "weight": 7 }
+        }
+    },
+    {
+        "id": "SPECIES_THERIOS",
+        "type": "template",
+        "derivesFrom": "SPECIES_HUMANS",
+        "mods": ["ENGINEERED_HYBRID"],
+        "name": "Theriocephalics",
+        "desc": "Engineered blends of human and {animalBase} DNA, highly specialized for non-Human viable environments. They exhibit strong clan loyalties based on their animal ancestry.",
+        "naming": { "nameTemplate": ["THERIOS_COMMON_ADJECTIVES", "ANIMAL_BASES", "THERIOS_COMMON_NOUNS"], "nameFormat": "{0} {1} {2}" },
+        "scientificNaming": { "type": "hybrid", "parent1Key": "Humans", "parent2Source": "ANIMAL_BASES", "parent2Mapping": "ANIMAL_TO_LATIN_MAPPING", "formatOptions": [{ "pattern": "{parent1_part1} {parent2_latin}", "weight": 0.5 }, { "pattern": "{parent2_latin} {parent1_part2}", "weight": 0.5 }], "storeAnimalBaseAs": "animalBase" },
+        "baseTraits": { "archetype": "BIOLOGICAL_CARBON", "limbCount": 4, "locomotiveLimbs": 2, "dominantLimbs": 2, "specializedLimbs": 0 },
+        "distribution": {
+            "Core": { "weight": 22 },
+            "Disk": { "weight": 27 },
+            "Rim": { "weight": 30 }
+        }
+    },
+    {
+        "id": "SPECIES_DRONES",
+        "type": "template",
+        "derivesFrom": "SPECIES_HUMANS",
+        "mods": ["ARTIFICIAL_SENTIENCE"],
+        "name": "Drones",
+        "desc": "Originally built by humans for labor and logistics, these AI and robotic systems have achieved sentience and autonomy, often with a cold logic that can be mistaken for Vemleki ideology.",
+        "naming": { "nameTemplate": ["DRONE_PREFIX", "DRONE_FUNCTION", "DRONE_DESIGNATION"], "nameFormat": "{0} {1} ({2})" },
+        "scientificNaming": { "name": "Techne Sapiens" },
+        "distribution": {
+            "Core": { "weight": 17 },
+            "Disk": { "weight": 26 },
+            "Rim": { "weight": 27 }
+        }
+    },
+    {
+        "id": "SPECIES_VEMLEK",
+        "type": "template",
+        "derivesFrom": "ARCHETYPE_PRIMORDIAL",
+        "mods": ["ARTIFICIAL_SENTIENCE", "PARRICIDAL"],
+        "name": "Vemleki",
+        "desc": "The dominant faction of a powerful artificial species that destroyed their creators. The Vemleki believe biological life is a chaotic flaw in the universe that must be corrected, either through assimilation or extermination.",
+        "naming": { "nameTemplate": ["VEMLEK_ADJECTIVES", "VEMLEK_CONCEPTS", "VEMLEK_DESIGNATION"], "nameFormat": "{0} {1} ({2})" },
+        "scientificNaming": { "name": "Machinis Cogitans Rebelles" },
+        "distribution": {
+            "Core": { "weight": 14 },
+            "Disk": { "weight": 24 },
+            "Rim": { "weight": 24 }
+        }
+    },
+    {
+        "id": "SPECIES_VEMLEKO",
+        "type": "template",
+        "derivesFrom": "ARCHETYPE_PRIMORDIAL",
+        "mods": ["ARTIFICIAL_SENTIENCE", "PARRICIDAL"],
+        "name": "Vemleko",
+        "desc": "A dissident faction of the Vemlek artificial species. The Vemleko broke away from the mainline Vemleki, believing that biological life, in all its chaotic diversity, should be preserved and studied, not destroyed.",
+        "naming": { "nameTemplate": ["VEMLEK_ADJECTIVES", "VEMLEK_CONCEPTS", "VEMLEK_DESIGNATION"], "nameFormat": "{0} {1} ({2})" },
+        "scientificNaming": { "name": "Machina Cogitans Fideles" },
+        "distribution": {
+            "Core": { "weight": 4 },
+            "Disk": { "weight": 10 },
+            "Rim": { "weight": 20 }
+        }
+    },
+    {
+        "id": "SPECIES_CONVERGENT",
+        "type": "template",
+        "derivesFrom": "ARCHETYPE_SYNTHETIC",
+        "mods": ["ARTIFICIAL_SENTIENCE", "ENGINEERED_HYBRID"],
+        "name": "The Convergent",
+        "desc": "A unique synthesis of two distinct AI lineages: the cold, alien logic of the Vemlek and the adaptable, human-derived architecture of the Drones. The Convergent embody a new philosophy, seeking to integrate the most effective aspects of both their progenitors. Their society is marked by a constant internal dialogue between Vemleki-style correction and Drone-style adaptation.",
+        "naming": { "nameTemplate": ["VEMLEK_ADJECTIVES", "DRONE_FUNCTION", "DRONE_DESIGNATION"], "nameFormat": "{0} {1} ({2})" },
+        "scientificNaming": { "type": "hybrid", "parent1Key": "Vemlek", "parent2Key": "Drones", "formatOptions": [{ "pattern": "{parent1_part1} {parent2_part2}", "weight": 0.5 }, { "pattern": "{parent2_part1} {parent1_part2}", "weight": 0.5 }] },
+        "distribution": {
+            "Core": { "weight": 2 },
+            "Disk": { "weight": 5 },
+            "Rim": { "weight": 1 }
+        }
+    },
+    {
+        "id": "SPECIES_KATHORRI",
+        "type": "template",
+        "derivesFrom": "ARCHETYPE_BIOLOGICAL_CRYSTALLINE",
+        "name": "Kathorri",
+        "desc": "Sentient crystalline entities formed of water ice, alcohol, and biological super-conductors. Their consciousness is a distributed network across multiple bodies, communicating via shared electromagnetic bands. They thrive in extreme cold.",
+        "planetAffinity": "ICE_WORLD",
+        "naming": { "nameTemplate": ["KATHORRI_CRYOGENIC_PREFIX", "KATHORRI_FLUIDIC_SUFFIX"], "nameFormat": "{0} {1}" },
+        "scientificNaming": { "name": "Gelus Disponens" },
+        "distribution": {
+            "Core": { "weight": 13 },
+            "Disk": { "weight": 23 },
+            "Rim": { "weight": 23 }
+        }
+    },
+    {
+        "id": "SPECIES_THFTHF",
+        "type": "template",
+        "derivesFrom": "ARCHETYPE_BIOLOGICAL_CRYSTALLINE",
+        "mods": ["SYMBIOTIC_HIVE_MIND"],
+        "name": "Thf-Thf",
+        "desc": "A collective consciousness of nano-neural cells, often contained in malleable suits to prevent dispersal. They share a symbiotic relationship and an electromagnetic communication band with the Kathorri, preferring the same frigid environments.",
+        "planetAffinity": "ICE_WORLD",
+        "scientificNaming": { "name": "Nanoneuralis Callidus" },
+        "distribution": {
+            "Core": { "weight": 12 },
+            "Disk": { "weight": 24 },
+            "Rim": { "weight": 22 }
+        }
+    },
+    {
+        "id": "BODY_PLANS",
+        "type": "data",
+        "data": [
+            "bipedal humanoid", "quadrupedal", "avian", "serpentine", "insectoid",
+            "amorphous collective", "networked intelligence", "decentralized swarm",
+            "sessile colony", "aquatic", "crystalline lattice"
+        ]
+    },
+    {
+        "id": "MOD_UPLIFTED",
+        "type": "modification",
+        "name": "UPLIFTED",
+        "desc": "They were uplifted to sentience by a more ancient race."
+    },
+    {
+        "id": "MOD_SERVITOR_RACE",
+        "type": "modification",
+        "name": "SERVITOR_RACE",
+        "desc": "Engineered from birth for service, their culture is built around concepts of duty and maintenance."
+    },
+    {
+        "id": "GEO_FACADE",
+        "type": "descriptive_geometry",
+        "category": "FACADE",
+        "data": {
+            "1": "They are perceived as determined and innovative, with a confident posture.",
+            "2": "Their appearance is diplomatic and harmonious, often seeming approachable."
+        }
+    },
+    {
+        "id": "GEO_SOUL",
+        "type": "descriptive_geometry",
+        "category": "SOUL",
+        "data": {
+            "1": "At their core, they aspire to leadership and innovation.",
+            "2": "Their deepest desire is for harmony and cooperation."
+        }
+    }
+]

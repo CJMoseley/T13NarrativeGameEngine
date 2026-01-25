@@ -1,0 +1,32 @@
+[
+    {
+        "Type": "Belonging",
+        "Description": "Belonging membership is the most common membership of any Pact. It is the most basic membership that it is possible to have.",
+        "Rules": "Belonging Membership cannot grant Sub-Annexes but does grant the member access to at least 1 Proficiency from the Pact."
+    },
+    {
+        "Type": "Hobbyist",
+        "Description": "Hobbyist Membership represents the highest membership that a Character can reach in a Pact without some sort of professional, or blood-line based, patronage.",
+        "Rules": "Hobbyist Membership grants the Member access to a single Sub-Skill from the Pact, and a number of Proficiencies."
+    },
+    {
+        "Type": "Paid",
+        "Description": "Paid Membership represents the minimum level of membership for professionals within the Pact. If you are an employee of a company for example, then you will have Paid Membership, as would a fully paid up member of a trade union or similar guild.",
+        "Rules": "Paid Membership in a Pact grants the member a Sub-Talent, some Sub-Skills, and Proficiencies. Costs are indicated by Talent Umbrals and Hitches."
+    },
+    {
+        "Type": "Executive",
+        "Description": "Executive Membership represents a powerful type of membership, influential within the Pact, such as middle management.",
+        "Rules": "Executive Membership grants a Character access to a single Sub-Power, as well as Sub-Talents, Sub-Skills and Proficiencies from the Pact."
+    },
+    {
+        "Type": "Courtier",
+        "Description": "Courtier Membership represents the highest tier of membership that most members can ever hope to attain. Courtiers are very powerful, and influential, often holding senior management positions within the Pact.",
+        "Rules": "Courtier Membership grants the member access to the Super-Annex of the Pact as a Super-Skill, as well as a selection of Sub-Powers, Sub-Talents, Sub-Skills and Proficiencies."
+    },
+    {
+        "Type": "Sovereign",
+        "Description": "Sovereign Membership is the highest level of membership that is ever available to a Pact Member. The Sovereign is the absolute leader of the Pact (there can be up to 3 Sovereigns in some Pacts, but most have a singular Sovereign). In a possession pact the Sovereign has control of the physical body equal to their control of the Psychosocial Space.",
+        "Rules": "Sovereigns gain access to the full version of the Super-Annex of the Pact, as well as all Sub-Powers, Sub-Talents, Sub-Skills and Proficiencies the Pact may have. How the Sovereign is chosen can vary greatly from Pact to Pact, and may involve some Quest, Test or Ordeal to decide the Sovereign. Possession Pacts for example decide the Sovereign based on a Psychosocial Ordeal, to secure and control the Character’s Psychosocial Space."
+    }
+]

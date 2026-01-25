@@ -1,0 +1,115 @@
+{
+	"Card_Corner": "2",
+	"Card": "Two",
+	"Suit": "1",
+	"IconSuit": "♦",
+	"Pips": "2",
+	"Unicode": "&#x1f0c2;",
+	"Svg": "images/cards-svg/2D.svg",
+	"Wound_Level": 1,
+	"Facet": "Awe",
+	"Tao": [
+		1,
+		1
+	],
+	"Narrative_Meaning": "Twos signify conflict, opposition and choices. They can indicate crossroads, partings, separations, and changes of direction.",
+	"Image": "",
+	"Yarn": {
+		"Yarn_Name": "The Wraith",
+		"Yarn_Description": "Whether an expression of the supernatural or simply the psychological forces at play. The card is about People's Emotions and especially Fears. These can be as simple as a fear of missing out, or falling behind others, or expressions of deeper phobias. It is a card of small gains and intense, but limited resistance.",
+		"Significator": {
+			"Plot": "This Plot is known as a \"Ghost Story\" it may be Horror Genre, or may be a Morality Tale. It will involve either the Supernatural (in the form of a Ghost or Haunting from the Dominant, Shadows or External sides) or some sort of Psychological Terror (the Scare - usually a Dominant Side feature). Wraith Plots will always try to pile on the emotional damage, adding +1 Success Level to any Negative Psyche Attack.",
+			"Side": "A side of a conflict marked by the Wraith will be considered history by the rest of the conflict, forgotten or assumed dead, occasionally they are dead, but still their name acts as an Embodiment, influencing other Characters to revive the side.",
+			"Character": "The Wraith Significator indicates a Character that is haunted by their past. They may see actual ghosts or spirits, but more normally they are plagued by thoughts, feelings, dreams and memories that they would like to forget.<p>They <strong>Gain Yin</strong> when they mope, brood or act depressed.<p><p><strong>Gain Yang</strong> when they engage with situations or people that remind them of their past.</p><p><strong>Gain Chi</strong> when they tell others their story.</p><p>Additionally they gain +1 Success Level with any situation that relates to their past.</p>",
+			"Scene": "A Wraith Scene is a a spooky or kooky scene that is meant to be memorable by how much it disturbs or freaks out the Characters. It can be as complex as demonic invasions or as simple as saying that you realise the little girl you were talking with, never blinked once. Yarn-Tellers may use the Wraith to disturb, unnerve and disquiet even psychologically powerful Characters."
+		},
+		"Beat_Type": "2",
+		"Conflict_Embodiment": "3",
+		"Facet_Embodiment": "7",
+		"Hook_Aspect": "Persona: Shadow",
+		"Aspect_Description": "The Hook targets the Character's Persona, specifically by appealing to the Shadow of their Persona.",
+		"Hook": "Banshee's Wail",
+		"Hook_Description": "The Story opens with a warning, usually the warning is a Plot Revelation, but it may traditionally be a warning of a death in the family. The point is to make the PC's a little more afraid.",
+		"Gain": "A single coin, suitable for paying a ferryman (Yin/Yang Gain).",
+		"Fray": "Insubstantial",
+		"Fray_Description": "The Fray is an insubstantial, or trifling matter, but failure may have profound consequences later. An example may be a single question asked by a co-worker, it seems unimportant at the time, but is actually part of an human resources investigation. Usually a Test on a single Facet (A,C,O,Q,V,Z) (although an appropriate Annex might help). The difficulty is usually quite low (between 1-15). Facet Tests are meant to be quick, easy checks, a simple roll. Failures may involve negative Psyche effects.",
+		"Snag": "Haunting",
+		"Snag_Description": "The Character may see an actual ghost, or may be reminded of a previous situation, drawing comparisons with the current Fray. The Haunting Snag usually has a magical or psychological effect that may often create new Hitches.",
+		"NPC": {
+			"Archetype": "Necromancer",
+			"Persona": 18,
+			"Core": 15,
+			"Hitch": 14,
+			"Description": "Necromancers are a spiritual or mage type who deal exclusively with the dead and Undead."
+		},
+		"Sweeping": "Boo!",
+		"Sweeping_Text": "A jump scare that isn't harmful to the Characters, like having someone tap on a the window / knock on the door during a tense moment, or having a dog suddenly bark out of sight. Can act to ease Tension, or ratchet up suspense. A Boo! can also be enough to Resolve a Fear Hitch, under the right circumstances.",
+		"History": "Haunted",
+		"History_Description": "Sometimes the past will not let us go. Some moments stay with us forever, haunting our dreams, asking what if we had done something differently. This past event is always present somehow, whether dredged up by others, present in laments and fears that stay with us, or just fondly remembered, for some important reason.",
+		"Situation": "Past",
+		"Situation_Description": "The current situation is actually a problem with the past, some old problem that was not properly dealt with has once again raised its head, or some event years ago has now caused this situation. ",
+		"Solution": "Courage",
+		"Solution_Description": "The situation will only be dealt with by a demonstration of courage, this may mean facing an old fear, or simply resisting this situation come what may.",
+		"Revelations": {
+			"About": "World-Building Ghosts",
+			"About_Description": "The information is about the background, or setting, not the current plot or situation. It might include pertinent details for the current plot, but is usually just information about a local ghost story or haunting. The Yarn-Teller that played the card should specify how the ghost story.",
+			"Info": "Hints",
+			"Info_Description": "Not necessarily information, but the wraiths of information that act as pointers in the right direction. There is a lot of crossover with the Clue Wyrd Tarot Card here. Hints are generally a little more direct, (such as \"Perhaps a Guild-Mage could be paid to tell you...\") while a Clue must be worked out or pieced together.",
+			"Vector": "Phantasm",
+			"Vector_Description": "The information is conveyed by some supernatural means, often a ghost or spirit that appears and brings word of importance (often their own passing). If you are not comfortable with a ghost in your cyberpunk universe, you can always use a Cyberwraith, a digital soul, or transhuman, or phantasms can also be a holographic image, an illusion or hallucination.",
+			"Alternate": "Hitch",
+			"Alternate_Description": "The information reveals a Hitch. Often this revealed Hitch is added to a Lore.",
+			"Detail": "Specific",
+			"Detail_Description": "A specific detail is a tiny, but important details. It might include knowledge that a particular Annex or Descendant has a particular Umbral or Nimbed, or that a Character uses a specific Descendant, Proficiency, etc. Such specificity usually has a reason behind it, that may also be revealed."
+		}
+	},
+	"Obstacle": {
+		"Type": "Wraith",
+		"Description": "The way is blocked by a jump-scare, fright, terror or horror of some sort, usually as a 1-3 card Psych attack that affects all present in the Stage simultaneously, and then resets."
+	},
+	"Tarot": {
+		"WyrdTarot": "Foe",
+		"Crossed": "Player and target move to a higher, more positive Interaction Type (by one level).",
+		"Normal": "Player and target are &quot;foes&quot;. The lowest Interaction Type possible."
+	},
+	"Ordeal": {
+		"Ordeal_Type": "Solitary Ordeal",
+		"Stages": "1",
+		"Ordeal_Spread": "Railroad",
+		"Stakes": "Low",
+		"Test": "Scare (Awe)",
+		"Obstacles": "Usually none",
+		"Suggested_Action": "Intimidate",
+		"Stage": "Short Straight",
+		"Stage_Description": "A short, straight path, street or road, simple preparation or research",
+		"Motional": "Ground Vehicle Dash",
+		"Motional_Description": "The Ordeal is meant to be done quickly, along the ground in, or on, a vehicle.",
+		"Tide_of_Battle": "Push",
+		"Tide_of_Battle_Text": "The Ebbing foe falls back (+1 Pips to movement or Disengament actions), and the Flowing forces push forward into the breach (+1 Pips for movement and defence).",
+		"Fight": "Vex Fright",
+		"Fight_Description": "An aggressive, solitary Vex attacks, usually with a Duck Psych Attack, or a Toxic sting, then it will retreat after the first Phase, if it survives."
+	},
+	"Lea": {
+		"PathColour": "Brown/Blue Omnivore",
+		"Bulmas": "Broccen, Vermis, Labyrinthine, All-Walkers",
+		"AnimalCategory": "Microfauna",
+		"Example": "Plankton / Zooplankton / Tardigrade",
+		"Bodypart": "Tendrils/Tentacles",
+		"Notes": "Microscopic animal and bacterial paths, often overlooked."
+	},
+	"Stress": {
+		"Type": "Worries",
+		"Description": "Worries make a Character think about their issues, dwelling on what questions or issues are stressing them out. Time and time again their mind will return to their ",
+		"Rules": "Character may reduce their Stress, Strain, or Shock by 1 for each statement they make, that relates to their worries. Additionally they may reduce their Stress by spending Diamond Pips equal to the Stress on pacing back and forth, or they may pay Chi equal to their current Stress to remove a point of Shock, Strain or Stress."
+	},
+	"Trauma": {
+		"Type": "Flashbacks",
+		"Description": "Shocks and Traumas can create vivid, incredibly strong memories in the mind. Later the mind can replay these traumatic experiences as though they are currently happening, often doing so involuntarily as a result of Stress. These experiences can include delusions, hallucinations and paranoia in addition to simple revelries and nightmares.",
+		"Rules": "The Trauma creates an Involuntary Memory, which consists of the events leading to the trauma and the exact emotions (including the Pips and Limit card of the emotional effects) felt at the time. Whenever the Character becomes Overstressed or reminded of this Traumatic event (by similar events) the memories will replay as though the Character was living through them again, this will include all Emotional states once again affecting them with the same intensity."
+	},
+	"Age": {
+		"Type": "Retrospection",
+		"Description": "An Age of Retrospection is occuring. During this age a society dwells upon its past, such times can be both positive and negative for a society. Fashions, for example, often fixate upon some period look, reproducing, or reflecting it in someway, and similar cycles can be seen in popular arts, music, movies and television programming. Even nation states can go through an age of retrospection, with varied results.",
+		"Rules": "An age of retrospection can examine the past truthfully and shortly, without harm. Even celebrating a false (or heavily \"edited\" or \"reframed\") version of history can be good for a society, no one wants to be the bad guy in their own history. However, dwelling in the past, trying to recreate past glories, undo progress, or \"go back to a simpler time\" are all doomed to failure, as they usually always represent that time period unrealistically in the first place, glorifying some aspects while ignoring a host of others. If retrospection continues too long the society stagnates and collapses."
+	}
+}

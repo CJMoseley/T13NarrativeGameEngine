@@ -1,0 +1,46 @@
+[
+    {
+        "Type": "Comic Relief",
+        "Description": "Comedy can be a great Tension breaker, as a laugh will lower Tension immensely and immediately, and can even cause Characters that were on the verge of attack to stop and reconsider. This Break is often the best to use if the Tension has ramped up too quickly, as it has little effect on the plot structure. Care should be taken, however as a mistimed joke can ruin the momentum and sense of threat."
+    },
+    {
+        "Type": "Consequences",
+        "Description": "This Break deals with the consequences of the Characters actions. Perhaps they attracted the attention of another force, like the Security services, Police, or even an Increated, while they were going about their business. This could be a chance for a little Karma to fall their way. If they are a murder-hobo then now is the time when someone will decide they need to die for no reason, if they are a dirty double dealing rat, now they\u2019ll get sold out. Then again, perhaps they really are a hero, and have to take time out of a busy schedule because the town decided to throw them a parade."
+    },
+    {
+        "Type": "Cow Drop",
+        "Description": "A truly bizarre event happens, like a cow dropping out of the sky to kill a passer-by, or crush your van. Sure it could have fallen from a helicopter, maybe, but why was it on the helicopter, and why no one will even admit to having a helicopter in the area? Each time this is used it should be a new and apparently unconnected event, such as unexplained garden explosions, out of place animals such as a penguin in the bathroom (or the aeronautic bovine), strange lights \/ colours \/ sounds \/ shadows in the sky, odd voices on the TV \/ radio \/ in your home that cannot be understood or explained away, or some Fortean event such as a frog fall or Bigfoot sighting."
+    },
+    {
+        "Type": "Exposition",
+        "Description": "Sometimes it is possible to slow things down by adding a dash of exposition. It might be a scientist who is trying to explain things to the Character, or it could be a cop who wants to know exactly what happened and needs the Characters to explain. Exposition can slow the Characters down (although getting the Players to explain what just happened, can be a lot more effective than explaining why they can\u2019t rush on. Used too often though and the Players may feel they are being shown and told the Plot, rather than experiencing it."
+    },
+    {
+        "Type": "Gone to Ground",
+        "Description": "If the Characters are hot on the trail of the villain, they just seem to vanish.  Gone to ground can also cause a Love Interest, or Mentor, to disappear, perhaps on a holiday, a work trip, or occasionally something worse. A Character may decide to avoid the Character because they seemed too intense, or other reasons. Sometimes there are clues where they might be hiding, or what happened to them, but other times it will take a Revelation to reveal where they\u2019ve gone and maybe what they are up to."
+    },
+    {
+        "Type": "Interrupt",
+        "Description": "Sometimes the easiest Break to use is simply to Interrupt the current Scene with a Scene (or two) from another Plot (perhaps a higher Ranking Plot), or perhaps an Interlogue, Exologue or a Flashback Prologue \/ Revelation from this one. This can become messy and frustrating if used too often, as it can confuse and muddle Plots together, or make Characters feel like they are not making progress at all."
+    },
+    {
+        "Type": "Postpone",
+        "Description": "This Break postpones the next Scene, inserting a \u201crandomly created\u201d Scene before the Plot continues. Examples might include: an accident occurring, or some unforeseen Quest that must be resolved, like having to go buy bread for your mum, before you can go off to fight aliens. Postpones can become frustrating if used too often, however so try not to use them unless you have to."
+    },
+    {
+        "Type": "Reversal",
+        "Description": "This Break turns everything on its head. If the Characters have guessed what the goals of the other side are, suddenly that\u2019s exactly what they wanted the Characters to think. Their real goals are the exact opposite, but they wanted the Characters to work towards their goals, not against. Now the Characters have to undo whatever it was they did. This sort of Break should be used carefully, and rarely, as it can ruin the whole Story if used in the wrong way, or too often. Three Reversal Breaks in a single Plot would be a sign that something was very wrong with the Narrative."
+    },
+    {
+        "Type": "Gain",
+        "Description": "Sometimes Characters can be distracted from the plot by dangling a carrot on a string, offer them a Gain, and they may slow down to collect it, or argue about who should have it."
+    },
+    {
+        "Type": "Sweeping",
+        "Description": "Sometimes the easiest way to slow the Characters down is to just give them recovery time. You can use a Sweeping card effect for this purpose."
+    },
+    {
+        "Type": "Stressed-Out",
+        "Description": "Sometimes the break is that the Character lets the Stress of the situation get to them, really badly and they end up taking a Stress Attack or Ongoing Stress effect that will remove Stress equal to the Type. Usually the Stressed-out Character will suffer the largest Stress effect possible. (e.g. a Character with 7 Stress who Stresses-out will spend the 7 Stress on either an Exhaustion Attack or an ongoing Lethargy effect)."
+    }
+]

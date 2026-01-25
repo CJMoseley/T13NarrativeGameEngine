@@ -1,0 +1,15 @@
+{
+    "armCount": 4,
+    "densityMultiplier": 3.5,
+    "haloRatio": 0.02,
+    "bulgeRatio": 0.05,
+    "winding": 0.35,
+    "coreRadius": 0.15,
+    "lag": 0.5,
+    "galaxyRadius": 2000,
+    "metallicity": {
+        "base": 0.5,
+        "gradient": -0.4,
+        "noiseFactor": 0.2
+    }
+}

@@ -1,0 +1,26 @@
+<svg width="256" height="512" viewBox="0 0 256 512" xmlns="http://www.w.org/2000/svg" id="therios-base">
+    <!--
+        Therios (General Animal) Base Figure SVG Template
+        ComfyUI Prompt:
+        retro anime style portrait of a powerful therianthropic alien (Therios) with the head of a [wolf|tiger|ox|lizard|dog|eagle], humanoid body, (detailed fur, scales, or feathers), wearing an advanced lightweight ship suit, serene but fierce expression, starship bridge background with celestial maps, soft ambient lighting, clean lines, minimalist color palette.
+        Negative Prompt:
+        fully human, fully animal, photorealistic, 3d render, blurry, deformed, poorly drawn, text, watermark.
+    -->
+    <g id="body">
+        <path id="neck" d="M 120,180 L 120,150 L 136,150 L 136,180 Z" data-fill="primary-fur" fill="#555" />
+        <path id="torso" d="M 100,180 C 100,240 156,240 156,180 L 140,320 L 116,320 Z" data-fill="suit-primary" fill="#4a4a4a" />
+        <!-- Arms can be added here or as part of a suit layer -->
+        <path id="left-arm" d="M 100,180 C 92,250 82,320 87,350 L 97,345 C 92,280 100,210 100,180 Z" data-fill="suit-secondary" fill="#444" />
+        <path id="right-arm" d="M 156,180 C 164,250 174,320 169,350 L 159,345 C 164,280 156,210 156,180 Z" data-fill="suit-secondary" fill="#444" />
+    </g>
+    <g id="head">
+        <!-- This is a generic head shape, intended to be replaced by specific animal heads -->
+        <path id="headshape" d="M 110,120 C 100,150 156,150 146,120 C 140,90 116,90 110,120 Z" data-fill="primary-fur" fill="#555" />
+        <g id="eyes">
+            <circle cx="120" cy="125" r="4" data-fill="sclera" fill="#fff" />
+            <circle cx="136" cy="125" r="4" data-fill="sclera" fill="#fff" />
+            <circle cx="120" cy="125" r="2" data-fill="pupil" fill="#000" />
+            <circle cx="136" cy="125" r="2" data-fill="pupil" fill="#000" />
+        </g>
+    </g>
+</svg>

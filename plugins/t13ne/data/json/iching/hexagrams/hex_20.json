@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 20,
+    "Name": "Contemplation",
+    "Entity": "&#19923;",
+    "Logical": 48,
+    "Trigrams": [
+      7,
+      4
+    ],
+    "Hexagram_Text": "Kuan, Contemplation (or Observing or View), is the hexagram of thought and thinking. Acting without thought can often make things worse, but contemplation without action is worthless.",
+    "Unchanging": "You may once per Scene ask the Ref one yes/no Question that they must answer truthfully.",
+    "Line1": "Childish Contemplation",
+    "Line2": "Door-crack Contemplation",
+    "Line3": "Deep Thinker",
+    "Line4": "Contemplate The Kingdom",
+    "Line5": "Introspective Contemplation",
+    "Line6": "Contemplate Life"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you observe, learn, study or plan",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you act without thinking, or abandon a plan that might have worked",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yang",
+        "Condition": "you ask simple, surface level questions, act as though you do not understand, or act as though you are embarrassed by your lack of understanding",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yang",
+        "Condition": "you watch or spy on others, or when you demonstrate a lack of empathy, or relate everything to yourself",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yang",
+        "Condition": "you describe the options of a choice, or display concern for how your behaviour makes you appear to others",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yang",
+        "Condition": "you notice how your actions affect others, or act for the benefit of the majority",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yin",
+        "Condition": "you are introspective, thinking about your life, and your problems",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yin",
+        "Condition": "you talk about the past, history or lessons learned",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Contemplation Quest is one filled with questions, puzzles, plans and mysteries. Sometimes Contemplation will include elements of the supernatural, even when the genre would not usually permit it, though these elements may be ambiguous or unexplained. The Contemplation Quest is often the Quest that forces a Grunt Character to become a Hero, and a Hero to become a Yarn-Teller, although this is not guaranteed. To an Ordeal Contemplation adds Questions, Hurdles and Obstacles, to a Test it adds Questions and Failure Levels.",
+    "Quest_Complete": "The Quest that ends in the Contemplation Hexagram leaves the Quester and companions philosophical. In closing the Quest at least one Question is asked, often a thematic question, such as \"What does this story say about humanity?\".",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "There is at least one Question added to the Quester&#39;s Test or Ordeal, but this Question is usually something simple and easily answered. If the Quester fails to answer this simple question, or worse pushes beyond it to deeper questions before finding the answer, this will add a Failure Level, Obstacle or Hurdle to their Test or Ordeal as well.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester is offered only limited information, such as the view through a door crack, or one side of a conversation. There is ambiguity that could relate to the Quester or to another. If the Quester feels the information relates to (or concerns) them, then add additional Questions, Hurdles, Obstacle or Failure Levels to the Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The Quester reaches a decision point, on one hand they are offered a chance to continue the Quest, but shown that it will have a negative impact on others (usually injurious or hitch adding to bystanders), there may be an option that has no negative impacts on others, but will be much harder or more difficult for the Quester (additional Hurdles, Obstacles or Failure Levels), or they may choose a way that appears to be quitting the Quest. Often these options as presented are not what they appear, and quitting might be the easiest way to continue the Quest, and the way that seems it might harm others only harms the Quester.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester may notice something amiss, some cruelty or injustice that has been exposed to them by the Quest, or some failing in an organization or business. If they speak to an authority (the king, a vizier, a manager or the owner of the business) about the fault they have seen they will be rewarded, usually with assistance on their Ordeal or Test that adds a Success Level, failure to speak will add additional Questions, Hurdles, Obstacles or Failure Levels.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quest should push the Quester to self-examination. Can they justify the actions they are taking to complete the Quest, and the costs of these actions (such as the impact on their companions, bystanders, or the economy)? Sometimes an authority or mentor will directly ask these questions of the Quester, although sometimes situations will cause them to ask them themselves. Failure to contemplate the results of their actions at all will add additional Questions, Failure Levels, Hurdles or Obstacles to their Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester, through deep contemplation, psychic exploration, meditation, psychonautic/pharmacological antics, or spiritual practices, experiences \"ego-death\", or psychological death and rebirth, a complete transcendence of \"self\" and an hallucinatory experience or vision that offers some light on the situation the Quester finds themselves in. This will often result in a new Alt being added to the Quester character, or the coalescence of two Alts within the character, as they expand their psyche significantly.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "A slight variation of tonal stress gives the Chinese name for this hexagram a double meaning. It means both contemplating and being seen, in the sense of being an example. These ideas are suggested by the fact that the hexagram can be understood as picturing a type of tower characteristic of ancient China.\n\nA tower of this kind commanded a wide view of the country; at the same time, when situated on a mountain, it became a landmark that could be seen for miles around. Thus the hexagram shows a ruler who contemplates the law of heaven above him and the ways of the people below, and who, by means of good government, sets a lofty example to the masses. This hexagram is linked with the eight month (September-October). The light-giving power retreats and the dark power is again on the increase. However, this aspect is not material in the interpretation of the hexagram as a whole.",
+    "The_Image": {
+      "text": "The wind blows over the earth:\nThe image of CONTEMPLATION.\nThus the kings of old visited the regions of the world,\nContemplated the people,\nAnd gave them instruction.",
+      "comments": "When the wind blows over the earth it goes far and wide, and the grass must bend to its power. These two occurrences find confirmation in the hexagram. The two images are used to symbolize a practice of the kings of old; in making regular journeys the ruler could, in the first place, survey his realm and make certain that none of the existing usages of the people escaped notice; in the second, he could exert influence through which such customs as were unsuitable could be changed. All of this points to the power possessed by a superior personality. On the one hand, such a man will have a view of the real sentiments of the great mass of humanity and therefore cannot be deceived; on the other, he will impress the people so profoundly, by his mere existence and by the impact of his personality, that they will be swayed by him as the grass by the wind."
+    },
+    "The_Judgment": {
+      "text": "CONTEMPLATION. The ablution has been made,\nBut not yet the offering.\nFull of trust they look up to him.",
+      "comments": "The sacrificial ritual in China began with an ablution and a libation by which the Deity was invoked, after which the sacrifice was offered. The moment of time between these two ceremonies is the most sacred of all, the moment of deepest inner concentration. If piety is sincere and expressive of real faith, the contemplation of it has a transforming awe-spiring effect on those who witness it. Thus also in nature a holy seriousness is to be seen in the fact that natural occurrences are uniformly subject to law. Contemplation of the divine meaning underlying the workings of the universe gives to the man who is called upon to influence others the means of producing like effects. This requires that power of inner concentration which religious contemplation develops in great men strong in faith. It enables them to apprehend the mysterious and divine laws of life, and by means of profoundest inner concentration they give expression to these laws in their own persons. Thus a hidden spiritual power emanates from them, influencing and dominating others without their being aware of how it happens."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Boy like contemplation.\nFor an inferior man, no blame.\nFor a superior man, humiliation.",
+        "comments": "This means contemplation from a distance, without comprehension. A man of influence is at hand, abut his influence is not understood by the common people. This matters little in the case of the masses, for they benefit by the actions of the ruling sage whether they understand them or not. But for a superior man it is a disgrace. He must not content himself with a shallow, thoughtless view of prevailing forces; he must contemplate them as a connected whole and try to understand them."
+      },
+      "2": {
+        "text": "Contemplation through the crack of the door.\nFurthering for the perseverance of a woman.",
+        "comments": "Through the crack of the door one has a limited outlook; one looks outward from within. Contemplation is subjectively limited. One tends to relate everything to oneself and cannot put oneself in another's place and understand his motives. This is appropriate for a good housewife. It is not necessary for her to be conversant with the affairs of the world. But for a man who must take active part in public life, such a narrow, egotistic way of contemplating things is of course harmful."
+      },
+      "3": {
+        "text": "Contemplation of my life\nDecides the choice\nBetween advance and retreat.",
+        "comments": "This is the place of transition. We no longer look outward to receive pictures that are more or less limited and confused, but direct out contemplation upon ourselves in order to find a guideline for our decisions. This self-contemplation means the overcoming of naive egotism in the person who sees everything solely form his own standpoint. He begins to reflect and in this way acquires objectivity. However, self-knowledge does not mean preoccupation with one's own thoughts; rather, it means concern about the effects one creates. It is only the effects our lives produce that give us the right to judge whether what we have done means progress or regression."
+      },
+      "4": {
+        "text": "Contemplation of the light of the kingdom.\nIt furthers one to exert influence as the guest of a king.",
+        "comments": "This describes a man who understands the secrets by which a kingdom can be made to flourish. Such a man must be given an authoritative position, in which he can exert influence. He should be, so to speak, a guest-that is, he should be honored and act independently, and should not be used as a tool."
+      },
+      "5": {
+        "text": "Contemplation of my life.\nThe superior man is without blame.",
+        "comments": "A man in an authoritative position to whom others look up must always be ready for self–examination.  The right sort of self–examination, however, consists not in idle brooding over oneself but in examining the effects one produces.  Only when these effects are good, and when one’s influence on others is good, will the contemplation of one’s own life bring the satisfaction of knowing oneself to be free of mistakes."
+      },
+      "6": {
+        "text": "Contemplation of his life.\nThe superior man is without blame.",
+        "comments": "While the preceding line represents a man who contemplates himself, here in the highest place everything that is personal, related to the ego, is excluded. The picture is that of a sage who stands outside the affairs of the world. Liberated from his ego, he contemplates the laws of life and so realizes that knowing how to become free of blame is the highest good."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Contemplation'. Internalize this core philosophy: A slight variation of tonal stress gives the Chinese name for this hexagram a double meaning. It means both contemplating and being seen, in the sense of being an example. These ideas are suggested by the fact that the hexagram can be understood as picturing a type of tower characteristic of ancient China.\n\nA tower of this kind commanded a wide view of the country; at the same time, when situated on a mountain, it became a landmark that could be seen for miles around. Thus the hexagram shows a... Your current worldview is: \"Kuan, Contemplation (or Observing or View), is the hexagram of thought and thinking. Acting without thought can often make things worse, but contemplation without action is worthless.\". Let your choices be subtly driven by these conditions: you observe, learn, study or plan, you act without thinking, or abandon a plan that might have worked. When interacting, mirror the wisdom found in the commentary: \"The sacrificial ritual in China began with an ablution and a libation by which the Deity was invoked, after which the sacrifice was offered. The moment of time between these two ceremonies is the most sacred of all, the moment of deepest inner concentration. If piety is sincere and expressive of...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Contemplation'. The primary quest objective is: The Contemplation Quest is one filled with questions, puzzles, plans and mysteries. Sometimes Contemplation will include elements of the supernatural, even when the genre would not usually permit it, though these elements may be ambiguous or unexplained. The Contemplation Quest is often the Quest that forces a Grunt Character to become a Hero, and a Hero to become a Yarn-Teller, although this is not guaranteed. To an Ordeal Contemplation adds Questions, Hurdles and Obstacles, to a Test it adds Questions and Failure Levels.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: When the wind blows over the earth it goes far and wide, and the grass must bend to its power. These two occurrences find confirmation in the hexagram. The two images are used to symbolize a practice of the kings of old; in making regular journeys the ruler could, in the first place, survey his realm and make certain that none of the existing usages of the people escaped notice; in the second, he... Use the following line-specific challenges to pace the story: There is at least one Question added to the Quester&#39;s Test or Ordeal, but this Question is usually something simple and easily answered. If the Quester fails to answer this simple question, or worse pushes beyond it to deeper questions before finding the answer, this will add a Failure Level, Obstacle or Hurdle to their Test or Ordeal as well. | The Quester is offered only limited information, such as the view through a door crack, or one side of a conversation. There is ambiguity that could relate to the Quester or to another. If the Quester feels the information relates to (or concerns) them, then add additional Questions, Hurdles, Obstacle or Failure Levels to the Ordeal or Test. | The Quester reaches a decision point, on one hand they are offered a chance to continue the Quest, but shown that it will have a negative impact on others (usually injurious or hitch adding to bystanders), there may be an option that has no negative impacts on others, but will be much harder or more difficult for the Quester (additional Hurdles, Obstacles or Failure Levels), or they may choose a way that appears to be quitting the Quest. Often these options as presented are not what they appear, and quitting might be the easiest way to continue the Quest, and the way that seems it might harm others only harms the Quester. | The Quester may notice something amiss, some cruelty or injustice that has been exposed to them by the Quest, or some failing in an organization or business. If they speak to an authority (the king, a vizier, a manager or the owner of the business) about the fault they have seen they will be rewarded, usually with assistance on their Ordeal or Test that adds a Success Level, failure to speak will add additional Questions, Hurdles, Obstacles or Failure Levels. | The Quest should push the Quester to self-examination. Can they justify the actions they are taking to complete the Quest, and the costs of these actions (such as the impact on their companions, bystanders, or the economy)? Sometimes an authority or mentor will directly ask these questions of the Quester, although sometimes situations will cause them to ask them themselves. Failure to contemplate the results of their actions at all will add additional Questions, Failure Levels, Hurdles or Obstacles to their Test or Ordeal. | The Quester, through deep contemplation, psychic exploration, meditation, psychonautic/pharmacological antics, or spiritual practices, experiences \"ego-death\", or psychological death and rebirth, a complete transcendence of \"self\" and an hallucinatory experience or vision that offers some light on the situation the Quester finds themselves in. This will often result in a new Alt being added to the Quester character, or the coalescence of two Alts within the character, as they expand their psyche significantly.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Childish Contemplation): Mirror the internal state described in the commentary: \"This means contemplation from a distance, without comprehension. A man of influence is at hand, abut his influence is not understood by the common people. This matters little in the case of the masses, for they benefit by the actions of the ruling...\" Your actions should be framed by the goal: you ask simple, surface level questions, act as though you do not understand, or act as though you are embarrassed by your lack of understanding.",
+        "Plot": "Plot Complication Line 1 (Childish Contemplation): Introduce a challenge based on the interpretation: \"This means contemplation from a distance, without comprehension. A man of influence is at hand, abut his influence is not understood by the common people. This matters little in the case of the masses, for they benefit by the actions of the ruling...\" The specific quest objective for this stage is: There is at least one Question added to the Quester&#39;s Test or Ordeal, but this Question is usually something simple and easily answered. If the Quester fails to answer this simple question, or worse pushes beyond it to deeper questions before finding the answer, this will add a Failure Level, Obstacle or Hurdle to their Test or Ordeal as well."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Door-crack Contemplation): Mirror the internal state described in the commentary: \"Through the crack of the door one has a limited outlook; one looks outward from within. Contemplation is subjectively limited. One tends to relate everything to oneself and cannot put oneself in another's place and understand his motives. This is...\" Your actions should be framed by the goal: you watch or spy on others, or when you demonstrate a lack of empathy, or relate everything to yourself.",
+        "Plot": "Plot Complication Line 2 (Door-crack Contemplation): Introduce a challenge based on the interpretation: \"Through the crack of the door one has a limited outlook; one looks outward from within. Contemplation is subjectively limited. One tends to relate everything to oneself and cannot put oneself in another's place and understand his motives. This is...\" The specific quest objective for this stage is: The Quester is offered only limited information, such as the view through a door crack, or one side of a conversation. There is ambiguity that could relate to the Quester or to another. If the Quester feels the information relates to (or concerns) them, then add additional Questions, Hurdles, Obstacle or Failure Levels to the Ordeal or Test."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Deep Thinker): Mirror the internal state described in the commentary: \"This is the place of transition. We no longer look outward to receive pictures that are more or less limited and confused, but direct out contemplation upon ourselves in order to find a guideline for our decisions. This self-contemplation means the...\" Your actions should be framed by the goal: you describe the options of a choice, or display concern for how your behaviour makes you appear to others.",
+        "Plot": "Plot Complication Line 3 (Deep Thinker): Introduce a challenge based on the interpretation: \"This is the place of transition. We no longer look outward to receive pictures that are more or less limited and confused, but direct out contemplation upon ourselves in order to find a guideline for our decisions. This self-contemplation means the...\" The specific quest objective for this stage is: The Quester reaches a decision point, on one hand they are offered a chance to continue the Quest, but shown that it will have a negative impact on others (usually injurious or hitch adding to bystanders), there may be an option that has no negative impacts on others, but will be much harder or more difficult for the Quester (additional Hurdles, Obstacles or Failure Levels), or they may choose a way that appears to be quitting the Quest. Often these options as presented are not what they appear, and quitting might be the easiest way to continue the Quest, and the way that seems it might harm others only harms the Quester."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Contemplate The Kingdom): Mirror the internal state described in the commentary: \"This describes a man who understands the secrets by which a kingdom can be made to flourish. Such a man must be given an authoritative position, in which he can exert influence. He should be, so to speak, a guest-that is, he should be honored and...\" Your actions should be framed by the goal: you notice how your actions affect others, or act for the benefit of the majority.",
+        "Plot": "Plot Complication Line 4 (Contemplate The Kingdom): Introduce a challenge based on the interpretation: \"This describes a man who understands the secrets by which a kingdom can be made to flourish. Such a man must be given an authoritative position, in which he can exert influence. He should be, so to speak, a guest-that is, he should be honored and...\" The specific quest objective for this stage is: The Quester may notice something amiss, some cruelty or injustice that has been exposed to them by the Quest, or some failing in an organization or business. If they speak to an authority (the king, a vizier, a manager or the owner of the business) about the fault they have seen they will be rewarded, usually with assistance on their Ordeal or Test that adds a Success Level, failure to speak will add additional Questions, Hurdles, Obstacles or Failure Levels."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Introspective Contemplation): Mirror the internal state described in the commentary: \"A man in an authoritative position to whom others look up must always be ready for self–examination.  The right sort of self–examination, however, consists not in idle brooding over oneself but in examining the effects one produces.  Only when these...\" Your actions should be framed by the goal: you are introspective, thinking about your life, and your problems.",
+        "Plot": "Plot Complication Line 5 (Introspective Contemplation): Introduce a challenge based on the interpretation: \"A man in an authoritative position to whom others look up must always be ready for self–examination.  The right sort of self–examination, however, consists not in idle brooding over oneself but in examining the effects one produces.  Only when these...\" The specific quest objective for this stage is: The Quest should push the Quester to self-examination. Can they justify the actions they are taking to complete the Quest, and the costs of these actions (such as the impact on their companions, bystanders, or the economy)? Sometimes an authority or mentor will directly ask these questions of the Quester, although sometimes situations will cause them to ask them themselves. Failure to contemplate the results of their actions at all will add additional Questions, Failure Levels, Hurdles or Obstacles to their Test or Ordeal."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Contemplate Life): Mirror the internal state described in the commentary: \"While the preceding line represents a man who contemplates himself, here in the highest place everything that is personal, related to the ego, is excluded. The picture is that of a sage who stands outside the affairs of the world. Liberated from his...\" Your actions should be framed by the goal: you talk about the past, history or lessons learned.",
+        "Plot": "Plot Complication Line 6 (Contemplate Life): Introduce a challenge based on the interpretation: \"While the preceding line represents a man who contemplates himself, here in the highest place everything that is personal, related to the ego, is excluded. The picture is that of a sage who stands outside the affairs of the world. Liberated from his...\" The specific quest objective for this stage is: The Quester, through deep contemplation, psychic exploration, meditation, psychonautic/pharmacological antics, or spiritual practices, experiences \"ego-death\", or psychological death and rebirth, a complete transcendence of \"self\" and an hallucinatory experience or vision that offers some light on the situation the Quester finds themselves in. This will often result in a new Alt being added to the Quester character, or the coalescence of two Alts within the character, as they expand their psyche significantly."
+      }
+    }
+  }
+}

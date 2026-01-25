@@ -1,0 +1,47 @@
+[
+    {
+        "Type": "Group",
+        "Description": "A Group is a loose group of Characters who freely associate, but are not held together by anything other than friendship or economic interests.",
+        "Rules": "Groups have only a Pact (Size) Annex, but never have Sub-Annexes although they can have Proficiencies with a number of Extra Slots equal to the Pact Score."
+    },
+    {
+        "Type": "Club",
+        "Description": "A Club is a non-professional association, that typically has a smaller membership (although some clubs can rise to national sizes this is unusual), and is focused around a particular interest, hobby or skill.",
+        "Rules": "Club Pacts are smaller groups with at least one Sub-Skill Annex. Clubs may grant members grant access to the Skills and select Proficiencies."
+    },
+    {
+        "Type": "Guild",
+        "Description": "Guild Pacts indicates a larger society — usually a professional, trade organization or corporation.",
+        "Rules": "Guild Pacts can support Sub-Talents, Sub-Skills and Extra Proficiencies."
+    },
+    {
+        "Type": "Society",
+        "Description": "Society Pacts represents large numbers of normal people, or smaller groups of powerful people, working towards common goals. Often Secret Societies, large corporations, and most towns or cities will fall in this tier of Pact.",
+        "Rules": "A Society Pact has Powers, Talents, Skills and Proficiencies that it makes available to members."
+    },
+    {
+        "Type": "Nation",
+        "Description": "Nation Pacts are huge cultural and economic Pacts, that can mean hundreds of thousands, or even millions of people who share some identity.",
+        "Rules": "Nations have a Super-Annex as well as Powers, Talents, Skills and Proficiencies."
+    },
+    {
+        "Type": "Trusts",
+        "Description": "Trusts are often small business partnerships, or any committed relationships where all partners are fully invested and trust each other.",
+        "Rules": "Trusts have Sway invested in them, much as a Trophy Descendant does, representing the Trust between all members as they each sacrifice something to the Pact beyond mere membership. This sacrifice (whatever it is and they vary immensely between Trust Pacts) will grant these Trusted members an Edge. Note that a Trust Pact may have both Trusted Members and Untrusted Members (who do not gain Edges)."
+    },
+    {
+        "Type": "Leagues",
+        "Description": "Leagues are often large organisations, often with political or philanthropic goals. Smaller Leagues are possible, if members include Heroes.",
+        "Rules": "League Pacts have additional Chi stored in them, usually by Hero level Characters. League Members are granted additional Edges by the Pact. Note a League Pact may have League, Trust and common (untrusted) members."
+    },
+    {
+        "Type": "Covenants",
+        "Description": "Covenants are powerful, and often mystical or magical organisations of exceptionally powerful people. A Guild of Archmages for example, or a nation that included supernatural creatures in its populace.",
+        "Rules": "Covenant Pacts have additional Yarn stored in them by powerful Characters like Yarn-Tellers. Covenants are often supernatural Pacts, and grant the members all manner of Edges and Glows. It is possible that a Covenant may have League, Trust or Common (untrusted) members as well, but this is less likely."
+    },
+    {
+        "Type": "Possession",
+        "Description": "Possession Pacts are created by supernatural entities, such as spirits, gods and the Increated, possessing other, usually more physical Characters (or Descendants). Possession Pacts can be voluntary, where a Character elects to let another possess them, or involuntary possessions, where the Character has less say and may be trying to fight the possession.",
+        "Rules": "Possession Pacts vary by the level of control that the possessing Character can produce, and are usually created with Twists (although Sway and Chi possessions are possible too for less Demonic possessions)."
+    }
+]

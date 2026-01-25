@@ -1,0 +1,67 @@
+[
+  {
+    "Type": "Background",
+    "Description": "Background plots are usually used as part of a World-building Game. They describe the major events, places and people in the universe, usually these are events that Characters cannot hope to have an impact upon either because of their size, the fact that the event has already happened, or never happened, but most people think it did anyway.",
+    "Rules": "Background plots consist of Setting details (such as Locations, Characters, Descendants, Annexes and Proficiencies) and Events that have already happened (they may only be played through in Time travel Stories where they behave more like Destiny Plots). Generally Background Plots are unaffected by even the presence of Time-travellers, and \"history\" repairs itself often by the action of some agency such as the Paradox Warriors (or Chronomasters, Doomeisters, Special Committee for Aoristic Management, Parliament of Time, Council of Chronos, Labyrinthine Bulmäs, Eternals, etc. as appropriate to the setting) or the sheer bloody-mindedness of official historians. Background plots do not require Conflicts or Embodiments to be defined."
+  },
+  {
+    "Type": "Character",
+    "Description": "Character Plots focus on a Character and follow their Arc, the journey the Character takes from Grunt to wherever they are going. Often Character Plots are about overcoming or resolving a Hitch or some other problem in the Character’s life. This can often play out exactly like  an internal Conflict Plot.",
+    "Rules": "Character Plots generally focus on a single Character, showing the changes to that Character that occur over time. They are often developed by Yarn-Tellers about their own Characters, or by Referees to bring Grunt Characters towards Hero or Yarn-Teller play. Character plots always have a Conflict and usually have at least one Dominant Side Hidden Embodiment (and always have at least one Hidden Embodiment and One Push or Pull Embodiment on another side) and ideally Embodies the entire (usually Internalised or Simple) Conflict within a single Character."
+  },
+  {
+    "Type": "Conflict",
+    "Description": "Most T13 Plots are Conflict plots. They examine a Conflict, through relationships of Hooked Embodiments (most importantly the Characters). Usually these Characters fight or compete over something, often one or more of the Dominant Side’s Embodiments has Monster Facets (although this is not common in Sports stories for example).",
+    "Rules": "Conflict Plots must specify the Conflict and the Embodiments that have been Hooked, usually at least one PC is Hooked to the Conflict (although not necessarily). These Plots need not include actual Combat (Rational Conflicts), but do usually involve direct confrontation and competition if they don’t."
+  },
+  {
+    "Type": "Core",
+    "Description": "This is a Core Plot. Core components cannot be modified, but you can use them in your own projects. The Core Plots in T13 define the nature of the Omniverse, and can be found in novelised form in the \"Paradox War\" Trilogy.",
+    "Rules": "Core plots are overarching themes in the system. They support other forms of play, and help to define common aspects across time and universes. Core Plots do not require Conflicts or Embodiments, but may have them in some cases. They are somewhat like \"Super\"-Background Plots, creating Multiverses that share similar rules."
+  },
+  {
+    "Type": "Creation",
+    "Description": "Creation Plots are a subset of Conflict Plots that try to create a specific Annex (usually reconciling the Conflict Proficiencies into the Annex). Creation Plots do not care if the Annex is created in Character or Descendant (although they usually favour Descendants).",
+    "Rules": "Creation plots always specify the Annex that will be created, in addition to the Conflict and Hooked Characters. The Conflict must include Proficiency and/or Annex Embodiments from at least two sides (that will be combined to create the new Annex). Creation Conflicts are often Simple during early game, but later rise to even Exceptional Complexity."
+  },
+  {
+    "Type": "Descendant",
+    "Description": "Descendant Plots occur when a Plot is focused on a particular Descendant. These Descendants are often McGuffins that serve no real purpose beyond a plot device (they are often a Treasure), but they may be have Edges and Glows that grant them, or their owners, abilities.",
+    "Rules": "Descendant Plots usually detail the Descendant to a fine degree, for example, that One Ring, grants invisibility from every eye, but the almost omniscient Villain, which is drawn to view anyone wearing it, and that one Sword will keep it’s wielder alive, almost no matter what, but drains the souls of anyone close to the wielder to do that. Sometimes, this alone can be enough to drive the Plot, but usually there is also at least one Opposed group or Character that will stop at nothing to get their hands on the Descendant. The Conflict must include at least one External Location or Descendant Embodiment, usually on the Dominant side (although not always)."
+  },
+  {
+    "Type": "Destiny",
+    "Description": "Destiny Plots usually are the result of in-game Prophecy and future Chronoliths. Destiny Plots should always foreshadowed in earlier Plots. If a Ref ever makes a reference to a future event, you can be sure there is a Destiny Plot brewing.",
+    "Rules": "Destiny Plots include events that have not happened yet (and may not happen at all). The Plot will attempt to create the Event and have it happen as predicted, although other forces may be working against this Destiny. They are at their most obvious during time-travel Stories, where the expected future is some Characters’ pasts, if the \"Future\" events are changed, then the history of some Characters, and even the setting may be altered. Destiny Plots do not require Conflicts, and when they do, they are often Simple or Internalised, they are rarely Balanced or bigger."
+  },
+  {
+    "Type": "Geo-plot",
+    "Description": "Geo-plots are Plots that have possessed or become fossilised in a Location. They are common to Old School Games. The Size of the Location is usually related to the Size of the Plot.",
+    "Rules": "GeoPlots always require a Map of the Location, this Map usually includes sub-Locations (such as rooms in the Dungeon) which will have associated Events (such as Warps and Wefts) that will occur when the room is entered. Geo-plots usually present fossilised Conflicts from years ago, such as ancient castles that were built for forgotten wars, but will contain more recent echoes of these plots in the activities of the Characters (they seek an ancient weapon from the Forgotten Wars to defeat the Lich-King). Geo-plots are often quite static, with events in one room of the dungeon, or kingdom having little impact on events in other rooms, or countries, but this will vary with the Yarn-Teller, and the nature of the Geo-plot."
+  },
+  {
+    "Type": "Hitch",
+    "Description": "Hitch Plots try to spread a particular Hitch to as many Characters as possible. They represent things like Plagues, or Crime-waves... Sometimes this Hitch will be happy to spread as a quirk, other times the Hitch will only be happy when everyone is infected with a Woe (although there will probably be an Increated by such determined Hitch Plots).",
+    "Rules": "Hitch Plots have to have some specification of the Hitch that will be spread (what exactly is the plague and what does it do to people who are infected), they usually have some victory conditions set (such as infecting more than 80% of the population of a certain Location to Flaw level or better), as well as a Failure condition (such as more than 20% of the population being vaccinated - or evacuated). Hitch Plots always have a Conflict with at least one Hitch Embodiment."
+  },
+  {
+    "Type": "Political",
+    "Description": "Political Plots are based around Conflicts within a Pact Descendant (see Social). Unlike a Social Plot, in Politics there is more emphasis on competition and Conflict (although rarely Rational Conflict) with some out group.",
+    "Rules": "Political Plots must be at least Balanced in size and include a Pact Descendant (usually on the Pressed or Below Side). They are always more complex than they first appear, and while they rarely include direct conflict between the Sides, they do spawn sub-Plots that may (and usually do) include Rational Conflict (and sometimes even Monsters)."
+  },
+  {
+    "Type": "Quest",
+    "Description": "Quest Plots are based around a specific Quest, made so large that a whole Plot is required to handle it. Quest Plots are often tied to specific Descendants or Characters and usually set Stories rather than Test or Ordeals for the Quest-lines.",
+    "Rules": "Quest Plots are based around a single Quest, although Quests usually have additional details that require specification, for example, when the Quest is to defend a Location from attack, the Quest Plot must specify the Location (detail the Location that requires protecting), and specify the forces attempting to attack (such as a single Monster or Pact Descendant \"Army\" for example). Quest Plots usually have a Conflict, often a Simple one (although not necessarily), but have at least one External Quest Embodiment that will share its Hexagram with the Plot."
+  },
+  {
+    "Type": "Relationship",
+    "Description": "Relationship Plots are \"Tension\" driven plots between two or more Characters. Romance and Buddy Plots are subsets of the Relationship Plot. They are about interactions between characters, trust, friendship, love, as often as mistrust, enmity and hate.",
+    "Rules": "Relationship Plots must have Conflicts that have at least two sides of the Conflict with Pulled Embodiments. Whoever is Hooked by this Plot in those Pulled Embodiments, will be drawn into a Relationship by the Plot. Relationship plots are usually Soul Stakes in the Zenith."
+  },
+  {
+    "Type": "Social",
+    "Description": "Social Plots are plots about whole communities, usually a Pact-Descendant. Usually the whole Conflict is Embodied within members of that community (and External Embodiments), apart from the External side. Often Social Plots Sides will Embody Internally as other Pacts within the larger Pact, for example, within a Social Plot set in a High School the Sides could Embody as the Faculty or as the cliques among the students.",
+    "Rules": "The Conflict must include at least one Pact Descendant Embodiment (and usually more than one in the form of Internalised Conflicts)."
+  }
+]

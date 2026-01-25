@@ -1,0 +1,1451 @@
+{
+  "301": {
+    "id": 301,
+    "prof": {
+      "Name": [
+        "Simple",
+        "Simple Dominion High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Simple is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "302": {
+    "id": 302,
+    "prof": {
+      "Name": [
+        "Bustling Locations",
+        "Bustling Location Dominion High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Bustling Locations is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "303": {
+    "id": 303,
+    "prof": {
+      "Name": [
+        "Commanding",
+        "Commanding Dominion High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Commanding is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "304": {
+    "id": 304,
+    "prof": {
+      "Name": [
+        "Controlled",
+        "Controlled Dominion High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Controlled is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "305": {
+    "id": 305,
+    "prof": {
+      "Name": [
+        "Crowded Locations",
+        "Crowded Location Dominion High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Crowded Locations is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "306": {
+    "id": 306,
+    "prof": {
+      "Name": [
+        "Powerful",
+        "Powerful Dominion Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Powerful is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "307": {
+    "id": 307,
+    "prof": {
+      "Name": [
+        "Powerful",
+        "Powerful Dominion Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Powerful is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "308": {
+    "id": 308,
+    "prof": {
+      "Name": [
+        "Busy Locations",
+        "Busy Location Dominion Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Busy Locations is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "309": {
+    "id": 309,
+    "prof": {
+      "Name": [
+        "Compelling",
+        "Compelling Dominion Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Compelling is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "310": {
+    "id": 310,
+    "prof": {
+      "Name": [
+        "Forceful",
+        "Forceful Dominion Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Forceful is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "311": {
+    "id": 311,
+    "prof": {
+      "Name": [
+        "Teeming Locations",
+        "Teeming Location Dominion Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Teeming Locations is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "312": {
+    "id": 312,
+    "prof": {
+      "Name": [
+        "Sovereign",
+        "Sovereign Dominion Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Sovereign is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "313": {
+    "id": 313,
+    "prof": {
+      "Name": [
+        "Irresistible",
+        "Irresistible Dominion Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Irresistible is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "314": {
+    "id": 314,
+    "prof": {
+      "Name": [
+        "Packed Locations",
+        "Packed Location Dominion Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Packed Locations is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "315": {
+    "id": 315,
+    "prof": {
+      "Name": [
+        "Omnipotent",
+        "Omnipotent Dominion Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Omnipotent is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "316": {
+    "id": 316,
+    "prof": {
+      "Name": [
+        "Autocratic",
+        "Autocratic Dominion Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Autocratic is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "317": {
+    "id": 317,
+    "prof": {
+      "Name": [
+        "Congested Locations",
+        "Congested Location Dominion Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Congested Locations is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "318": {
+    "id": 318,
+    "prof": {
+      "Name": [
+        "Embarrassment",
+        "Embarrassment Dominion Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Embarrassment is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "319": {
+    "id": 319,
+    "prof": {
+      "Name": [
+        "Shame",
+        "Shame Dominion Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Shame is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "320": {
+    "id": 320,
+    "prof": {
+      "Name": [
+        "Humiliation",
+        "Humiliation Dominion Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Humiliation is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "321": {
+    "id": 321,
+    "prof": {
+      "Name": [
+        "Sympathy",
+        "Sympathy Dominion Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Sympathy is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "322": {
+    "id": 322,
+    "prof": {
+      "Name": [
+        "Compassion",
+        "Compassion Dominion Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Compassion is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "323": {
+    "id": 323,
+    "prof": {
+      "Name": [
+        "Empathy",
+        "Empathy Dominion Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Empathy is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "324": {
+    "id": 324,
+    "prof": {
+      "Name": [
+        "Marshal",
+        "Marshal Dominion Action Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Marshal is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "325": {
+    "id": 325,
+    "prof": {
+      "Name": [
+        "Explode",
+        "Explode Dominion Attack Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Explode is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "326": {
+    "id": 326,
+    "prof": {
+      "Name": [
+        "Overwhelming",
+        "Overwhelming Dominion Critical Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Overwhelming is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "327": {
+    "id": 327,
+    "prof": {
+      "Name": [
+        "Dominator",
+        "Dominator Dominion Core Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Dominator is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "328": {
+    "id": 328,
+    "prof": {
+      "Name": [
+        "Pacts",
+        "Pacts Dominion Descendants Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Pacts is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "329": {
+    "id": 329,
+    "prof": {
+      "Name": [
+        "Pact",
+        "Pact Dominion Edge Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Pact is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "330": {
+    "id": 330,
+    "prof": {
+      "Name": [
+        "Pact",
+        "Pact Dominion Glow Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Pact is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "331": {
+    "id": 331,
+    "prof": {
+      "Name": [
+        "Scandal",
+        "Scandal Dominion Failure Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Scandal is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "332": {
+    "id": 332,
+    "prof": {
+      "Name": [
+        "Mismanage",
+        "Mismanage Dominion Fumble Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Mismanage is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "333": {
+    "id": 333,
+    "prof": {
+      "Name": [
+        "Limit",
+        "Limit Dominion Gnarl Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Limit is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "334": {
+    "id": 334,
+    "prof": {
+      "Name": [
+        "Directions",
+        "Directions Dominion Herald Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Directions is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "335": {
+    "id": 335,
+    "prof": {
+      "Name": [
+        "Social",
+        "Social Dominion Hitch Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Social is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "336": {
+    "id": 336,
+    "prof": {
+      "Name": [
+        "Miscommunication",
+        "Miscommunication Dominion Hurdle Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Miscommunication is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "337": {
+    "id": 337,
+    "prof": {
+      "Name": [
+        "Group",
+        "Group Dominion Incarna Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Group is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "338": {
+    "id": 338,
+    "prof": {
+      "Name": [
+        "Urban Locations",
+        "Urban Location Dominion Location Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Urban Locations is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "339": {
+    "id": 339,
+    "prof": {
+      "Name": [
+        "Network",
+        "Network Dominion Lore Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Network is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "340": {
+    "id": 340,
+    "prof": {
+      "Name": [
+        "Horde",
+        "Horde Dominion Monster Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Horde is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "341": {
+    "id": 341,
+    "prof": {
+      "Name": [
+        "Multiplicity",
+        "Multiplicity Dominion Narration Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Multiplicity is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "342": {
+    "id": 342,
+    "prof": {
+      "Name": [
+        "Networking Interface",
+        "Networking Interface Dominion Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Networking Interface is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "343": {
+    "id": 343,
+    "prof": {
+      "Name": [
+        "Influence Ordeals",
+        "Influence Ordeal Dominion Ordeal Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Influence Ordeals is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "344": {
+    "id": 344,
+    "prof": {
+      "Name": [
+        "Folk",
+        "Folk Dominion Psychosocial Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Folk is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "345": {
+    "id": 345,
+    "prof": {
+      "Name": [
+        "Control / Lead / Join",
+        "Control / Lead / Join",
+        ""
+      ],
+      "Description": "To wield Control / Lead / Join is to hold the very heart of Deceit, a power that shapes the tides of misdirection.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "3"
+        ],
+        "Genres": [
+          "3"
+        ],
+        "Eras": [
+          "3"
+        ],
+        "Types": [
+          "Quest"
+        ]
+      }
+    }
+  },
+  "346": {
+    "id": 346,
+    "prof": {
+      "Name": [
+        "Who",
+        "Who Dominion Question Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Who is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "347": {
+    "id": 347,
+    "prof": {
+      "Name": [
+        "Popular",
+        "Popular Dominion Resolved Hitch Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Popular is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "348": {
+    "id": 348,
+    "prof": {
+      "Name": [
+        "Values",
+        "Values Dominion Rule Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Values is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "349": {
+    "id": 349,
+    "prof": {
+      "Name": [
+        "Strategy",
+        "Strategy Dominion Style Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Strategy is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "350": {
+    "id": 350,
+    "prof": {
+      "Name": [
+        "Realm",
+        "Realm Dominion Success Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Realm is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+
+[
+    {
+        "Type": "Banal",
+        "Description": "Banal Monsters are just humans who are temperamentally monstrous. The Banal Werewolf may believe they are wolf, but they are just some poor deluded soul howling at the moon. Typically such Monsters are due to Genre and Setting Limitations.",
+        "Monster_Facet_Rules": "Monster Facets are increased in Boon by the total number of Monster Facets available, as though it were a Scale effect. So a Boon 13 Monster (II) would be Boon 15 and add 83 Value to any annex instead of 66.",
+        "Monster_Pool_Rules": "Banal Monsters are very limited in their Monster Pool abilities. Banal Monster Pool Bonuses may only add the Monster Pool Size Score (the Number of Cards currently in the Pool Reduced) to the Monster’s Actions. They may only use one Monster Pool Bonus at a time.",
+        "Monster_Pool_Draw": "1 card only from 1 Monster Facet",
+        "Monster_Pool_Limit": "Highest Monster Facet Score",
+        "Monster_Pool_Initial": "Banal Monsters begin with 2 cards in their Monster Pool, unless specified by Monster Facet."
+    },
+    {
+        "Type": "Intrepid",
+        "Description": "Intrepid Monsters are mostly humans who are a little monstrous, although you might encounter the occasional monstrous animal, alien or robot. Intrepid Monsters are often described with animalistic features, such as yellow or reflective eyes, sharp teeth, claws, etc even when they are humans. The Intrepid werewolf may have long pointed nails, sharp canines and wild eyes, but they still look human.",
+        "Monster_Facet_Rules": "Monster Facets add the number of Monster Facets to the Boon but also adds the original Value. A Boon 13 Monster (II) Facet gives 83+66=149 or Boon 22.",
+        "Monster_Pool_Rules": "Intrepid Monsters have a strong connection to their Monster Pool and can use it more easily. Intrepid Monster Pool Bonuses may add Monster Pool Size Score (Number of cards Reduced) to any dice Score or card Pips on the Monster’s Actions.",
+        "Monster_Pool_Draw": "The appropriate Monster Facet Draw",
+        "Monster_Pool_Limit": "Monster Annex Score",
+        "Monster_Pool_Initial": "Intrepid Monsters begin with a number of cards equal to their lowest Monster Facet Score."
+    },
+    {
+        "Type": "Bold",
+        "Description": "Bold Monsters are pretty monstrous, often having clear signs they are not normal. The Bold werewolf actually becomes a wolf-man, perhaps even having a short snout and fur. Bold monsters are common in fantasy, and can be aliens or robots in science-fiction.",
+        "Monster_Facet_Rules": "All Monster Facet Values are multiplied by 1 + the number of Monster Facets. So a Boon 13 Monster (II) Facet would have a Value of 198, making it the equivalent of Boon 26.",
+        "Monster_Pool_Rules": "Bold Monsters have a robust connection with their Monster Pool. Bold Monster Pool Bonuses allow the Monster to add Monster Pool Size (the number of cards) to any Dice Score or card Pips of any suitable Monster Action. They may Draw cards to the Monster Pool from any Monster Facet when applicable.",
+        "Monster_Pool_Draw": "The appropriate Monster Facet Draw +1 per Monster Facet",
+        "Monster_Pool_Limit": "Lowest Monster Facet Boon",
+        "Monster_Pool_Initial": "Bold Monsters begin with a number of cards equal to their Highest Monster Facet Score"
+    },
+    {
+        "Type": "Monstrous",
+        "Description": "Monstrous Monsters are true monsters. These are the werewolves that have wolf heads, dog legs, are only injured by silver, and tend to be about eight feet tall. Such Monsters are common to Horror Settings and some Fantasy settings.",
+        "Monster_Facet_Rules": "Monstrous Monster Facets increase the Boon by the current number of Monster Facets, then take the Value as a Boon and halve. So a Monster (II) Boon 13 becomes 15 with so 83 &divide; 2 that becomes Boon 41 adding 448 Value to any Annex.",
+        "Monster_Pool_Rules": "Monstrous Monsters have an excellent connection with their Monster Pool. Their Bonuses may add Monster Pool Size (Number of cards) Success Levels to any appropriate Monster Action. They may Draw cards to their Monster Pool from any Monster Facet, whenever appropriate.",
+        "Monster_Pool_Draw": "Monster Facet Score",
+        "Monster_Pool_Limit": "Highest Monster Facet Boon",
+        "Monster_Pool_Initial": "Monstrous Monsters begin with a number of cards equal to their Highest Monster Facet Score"
+    },
+    {
+        "Type": "Twisted",
+        "Description": "Twisted Monsters are the worst Monsters, usually fused with the forces of the Increated, although science, aliens and cosmic forces can also twist a Monster.",
+        "Monster_Facet_Rules": "Twisted Monster Facets increase the Boon by multiplying the Boon by 1 + Number of Monster Facets + Stored Twists. So Boon 13 Monster(II) with 1 Twists gives 13 &times; 4 = Boon 52.",
+        "Monster_Pool_Rules": "Twisted Monsters have a strong connection with Monster Facets and Pools. Their Bonuses may add Monster Pool Size (Number of cards) Success Levels to any appropriate Monster Action. They may Draw cards to their Monster Pool from any Monster Facet, whenever appropriate.",
+        "Monster_Pool_Draw": "Monster Facet Score +1 per Monster Facet",
+        "Monster_Pool_Limit": "Monster Annex Boon",
+        "Monster_Pool_Initial": "Twisted Monsters begin with a number of cards equal to their Monster Facet Score"
+    }
+]

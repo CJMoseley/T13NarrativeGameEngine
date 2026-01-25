@@ -1,0 +1,86 @@
+[
+  {
+    "Type": "Incarna",
+    "Description": "The Conflict Embodies one Facet as a Character (or Descendant) Incarna. Often the easiest Embodiment to create Fantastical Characters, but not often suitable to all Genres and Conflicts. Also Incarna Embodiments tend to make for very obvious, unsubtle, comic-book style Plots where one Ice-based hero must defeat an Heat/Fire-based villain."
+  },
+  {
+    "Type": "Persona",
+    "Description": "The Conflict Embodies one Facet as a Character Persona. Often this is the most satisfying embodiment, but it can lead to easy identification of the Embodiment, and unsubtle, stereotyped Plots. Of course, not every Plot needs to be subtle, sometimes you just want a Villain to fight."
+  },
+  {
+    "Type": "Core",
+    "Description": "The Conflict Embodies one Facet as a Character Core. This can create very satisfying embodiments that are suitable for most Genres. Core Embodiments can create both obvious and stereotypical plots, and so require some care."
+  },
+  {
+    "Type": "Hitch",
+    "Description": "The Conflict Embodies one Facet as a Character (or Descendant) Hitch. This can create quite secretive and subtle embodiments that can be very difficult to spot, especially on Descendants. Other times, Hitch Embodiments can be very obvious, and in the case of Character Woes, glaring."
+  },
+  {
+    "Type": "Monster",
+    "Description": "The Conflict Embodies one Facet as a Monster Facet. This Monster might be a Dragon, an Orc Horde, or just a human Villain. Monsters can be great fun, but are rarely subtle. Where possible when using Monster embodiments, the Plot may want to keep the exact nature of the Monster secret for as long as possible."
+  },
+  {
+    "Type": "Proficiency",
+    "Description": "The Conflict Embodies as a single Proficiency from one Facet. Characters or Descendants that have the Proficiency may be Hooked to that side. This is a very subtle Embodiment when handled gently, and can make for incredible, interesting and fresh Plots, but can also create incomprehensible messes."
+  },
+  {
+    "Type": "Annex",
+    "Description": "The Conflict Embodies at least one Facet within an Annex, this could be a subtle, solitary Nimbed or Umbral, or be as obvious as being Root, Channel and at least one Umbral. The Annex may be within Descendants, Characters, or may be part of a Creation Plot. This can be a powerful and subtle Plot, and are often a lot of fun."
+  },
+  {
+    "Type": "Tone",
+    "Description": "The Conflict Embodies one Facet as the Tone of the Scene, Act or Story. This can be an easy way to embody some Facets, but can be restrictive and may not suit your style. It can also cause problems with conflicts between Tone and Suspense Level, where high Suspense calls for Rational Conflict, but the Embodiment is a conversational Tone. Use with care."
+  },
+  {
+    "Type": "Ordeal/Test/Hurdle",
+    "Description": "The Conflict Embodies one Facet as an Ordeal (or Test) or as a Hurdle within the same. This is simple and effective, but can be obvious and boring if used too often. A good External Stand-in embodiment during say a single Warp Fray, not a very good choice across a whole Volume usually."
+  },
+  {
+    "Type": "Obstacle",
+    "Description": "The Conflict Embodies one Facet as an Obstacle that the player must overcome. The Obstacle should match Suit with the Facet (Obstacles are defined by Cards normally). Obstacle embodiments can be fairly subtle, as you need not reuse the same Obstacle each time, this can even allow for Red Herring Facets from the same Suit to misdirect."
+  },
+  {
+    "Type": "Descendant",
+    "Description": "The Conflict Embodies one Facet as a Descendant Incarna. In some cases this can result in Location, Pact, or Lore Descendants. Conflicts embodied with Descendants can be very subtle. Commonly used by Creation Plots, when they are not nearly as subtle, but then Creation Plots are usually pretty straight forward anyway."
+  },
+  {
+    "Type": "Location",
+    "Description": "The Conflict Embodies one Facet as a Location. This can be a very subtle embodiment, while still allowing the Conflict to progress. There can be a danger of overusing the same Location as the Embodiment is such a satisfying one. But any Location where the action returns again and again is probably an Embodiment of something from one of the higher Conflicts anyway."
+  },
+  {
+    "Type": "Pact-Descendant",
+    "Description": "The Conflict Embodies one Facet as a Pact Descendant, or group of Characters, such as the Party or a Guild. This Embodiment is the most obvious to use when you are starting out. The Players become one side of the Conflict fighting the other side. It is also great for modelling any number of political and social situations. Pact-Descendants are often the source of an Internal Side and frequently are a good source of Sub-Plots."
+  },
+  {
+    "Type": "Quest/Hurdle",
+    "Description": "The Conflict Embodies one Facet as a Quest (or if there is already enough Quests as a Hurdle to a Quest) that the Character must attempt. This can be great for creating Chapters of Epics and is a way of deciding NPC Ends, but be wary of using Quests in a substitute for Character development. They can be great fun, but are best used sparingly. Quests are fairly blatant embodiments, as are Hurdles, although they are slightly harder to spot."
+  },
+  {
+    "Type": "Lore",
+    "Description": "The Conflict embodies as a special type of Descendant called a Lore. Lores are the rumours the Players hear about the enemy (and themselves occasionally) as the story goes on. Lores might grant extra Descendants (including Pacts and Locations) and even access to Monster Facets to any Character, as it is revealed that they are a powerful wizard, a Necromancer, with a skeleton horde, armed with a magickal broadsword, etc."
+  },
+  {
+    "Type": "Emotions",
+    "Description": "The Conflict embodies as one of the Facet's Emotions, this emotion will usually be the Emotion tested against during the Recoiling of a Weft for example. Emotional Embodiments can be handled subtly to create complex Plots, but can also just be glaringly obvious if the Yarn-Teller is not careful."
+  },
+  {
+    "Type": "Failure",
+    "Description": "The Conflict embodies as additional Failure Levels that plague the Characters during the Story. Failure Levels are rarely a subtle Embodiment (although they can be with careful handling, especially if you throw in a few from another Facet from time to time)."
+  },
+  {
+    "Type": "Turn",
+    "Description": "The Conflict embodies as a Turn of the Story itself. Changing the narrative in minor ways usually and occasionally in major ways. Turns are best used as a one-shot External Stand-In Embodiment, as repeatedly having \"Reversal of Fortune\" Turns throughout a Volume could quickly become predictable and annoying."
+  },
+  {
+    "Type": "Success",
+    "Description": "The Conflict embodies as additional Sucess Levels that bless the Characters during the Story. Success Levels are rarely a subtle Embodiment (although they can be with careful handling, especially if you throw in a few from another Facet from time to time)."
+  },
+  {
+    "Type": "Fumble",
+    "Description": "The Conflict embodies as a potential Fumble that may affect the Characters during the Story, if the appropriate card is drawn. Embodiment Fumbles are never subtle when they activate, although they can be overlooked if they are not triggered."
+  },
+  {
+    "Type": "Critical",
+    "Description": "The Conflict embodies as a potential Critical that affects the Characters during the Story, if the appropriate card is drawn. Embodiment Criticals are never subtle when they activate, although they can be overlooked if they are not triggered."
+  }
+]

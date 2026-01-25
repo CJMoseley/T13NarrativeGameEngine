@@ -1,0 +1,56 @@
+
+{
+    "ARCHETYPES": {
+        "Megacorp": {
+            "description": "A vast, ancient conglomerate with influence in nearly every sector.",
+            "traits": ["DIVERSIFIED", "MONOPOLISTIC"],
+            "techFocus": ["GENERATION", "COMPUTATION", "METAL"]
+        },
+        "TechInnovator": {
+            "description": "A bleeding-edge research and development firm, often responsible for major technological leaps.",
+            "traits": ["INNOVATIVE", "SPECIALIZED"],
+            "techFocus": ["SENSORS", "COMPUTATION", "FREQUENCY_CHANGING", "SEMI_CONDUCTOR"]
+        },
+        "DefenseContractor": {
+            "description": "Specializes in military-grade hardware, from personal armor to starship weaponry.",
+            "traits": ["AGGRESSIVE", "SECRETIVE"],
+            "techFocus": ["WEAPON", "SHIELD", "LASER", "NANO_ALLOYS"]
+        },
+        "BioTechFirm": {
+            "description": "Focuses on organic technology, life support, and genetic engineering.",
+            "traits": ["ORGANIC", "RESEARCH_FOCUSED"],
+            "techFocus": ["LIFE_SUPPORT", "BIOCHEMICAL", "BIO_PRINTER", "ORGANIC"]
+        },
+        "MiningGuild": {
+            "description": "A powerful organization controlling the extraction and refinement of raw materials.",
+            "traits": ["INDUSTRIAL", "RESOURCE_FOCUSED"],
+            "techFocus": ["SCOOP", "THREE_D_PRINTER", "METAL", "CRYSTALLINE", "HYPERDENSE"]
+        },
+        "ShippingHauler": {
+            "description": "The lifeblood of galactic commerce, specializing in transport and logistics.",
+            "traits": ["LOGISTICAL", "WIDESPREAD"],
+            "techFocus": ["ACCELERATOR", "BRAKE", "WORMHOLE", "FUEL"]
+        }
+    },
+    "NAMING": {
+        "TEMPLATES": [
+            "{PREFIX} {SUFFIX}",
+            "{PREFIX} Dynamics",
+            "{PREFIX} {MODIFIER} Group",
+            "{SUFFIX} Industries",
+            "{MODIFIER} {SUFFIX}"
+        ],
+        "PREFIXES": [
+            "Aegis", "Apex", "Stellar", "Quantum", "Orion", "Cygnus", "Helios", "Nova", "Sirius", "Rigel", "Vega"
+        ],
+        "SUFFIXES": [
+            "Solutions", "Technologies", "Enterprises", "Syndicate", "Combine", "Logistics", "Manufacturing", "Systems"
+        ],
+        "MODIFIERS": [
+            "Advanced", "Applied", "Core", "Unified", "Global", "Hyper"
+        ]
+    },
+    "BANNED_WORDS": [
+        "core systems"
+    ]
+}

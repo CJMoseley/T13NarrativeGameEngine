@@ -1,0 +1,17 @@
+<svg width="256" height="512" viewBox="0 0 256 512" xmlns="http://www.w.org/2000/svg" id="therios-base">
+    <!--
+        Therios (Avian) Base Figure SVG Template
+        ComfyUI Prompt:
+        retro anime style portrait of a graceful avian alien (Therios), feathered crest, sharp beak, sleek aerodynamic body, iridescent plumage in shades of sapphire and silver, advanced lightweight ship suit, holographic visor, serene expression, starship bridge background with celestial maps, soft ambient lighting, clean lines, minimalist color palette.
+        Negative Prompt:
+        mammalian, scales, fur, bulky, clumsy, photorealistic, 3d render, blurry, deformed, poorly drawn, text, watermark.
+    -->
+    <g id="body">
+        <path id="torso" d="M 100,180 C 100,240 156,240 156,180 L 140,320 L 116,320 Z" fill="#4a4a4a" />
+        <path id="wings" d="M 100,200 C 40,150 80,300 100,200 M 156,200 C 216,150 176,300 156,200" fill="none" stroke="#4a4a4a" stroke-width="12" />
+    </g>
+    <g id="head">
+        <path id="headshape" d="M 110,120 C 100,150 156,150 146,120 C 140,90 116,90 110,120 Z" fill="#555" />
+        <path id="beak" d="M 128,140 C 120,160 136,160 128,140 L 128,170 Z" fill="#555" />
+    </g>
+</svg>

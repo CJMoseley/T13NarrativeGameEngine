@@ -1,0 +1,14 @@
+.t13ne-type-hitches header{font-weight: bolder; font-size:105%;font-variant:small-caps;}
+section.t13ne-hitch {display: block;}
+details.t13ne-hitch-details{display: inline; margin: 0; padding: 0;}
+details.t13ne-hitch-details>summary{display: inline, cursor: pointer;margin: 0; padding: 0;}
+details.t13ne-hitch-details>summary>details{display: inline;}
+details.t13ne-hitch-details>summary>div{display: inline;}
+details.t13ne-hitch-details span.t13ne-facet-hitch>small{display: inline}
+details.t13ne-hitch-details>summary>details>summary{display: inline;}
+details.t13ne-hitch-details>summary span.t13ne-title{margin-left: 0;padding-left: 0;}
+details.t13ne-hitch-details>summary span.t13ne-title>div.t13ne-name{margin-left: 0;padding-left: 0;}
+details.t13ne-hitch-details>summary span.t13ne-title>div.t13ne-name>aside.t13ne-geometry{margin-left: 0;padding-left: 0;}
+details.t13ne-hitch-details>summary span.t13ne-title>div.t13ne-name>aside.t13ne-geometry>details.t13ne-name{margin-left: 0;padding-left: 0;}
+div.t13ne-facet-hitch-text,div.t13ne-hitch-rules {font-size: 2.7vh; padding: 0.4em; margin: 2px;}
+article.t13ne-type-hitches div.t13ne-quirk {}

@@ -1,0 +1,26 @@
+<svg width="256" height="512" viewBox="0 0 256 512" xmlns="http://www.w3.org/2000/svg" id="quadruped-base">
+    <!--
+        Quadruped Base Figure SVG Template
+        ComfyUI Prompt:
+        retro anime style portrait of a powerful quadrupedal alien, muscular build, thick hide with crystalline formations, six glowing eyes, low-gravity jungle planet background, massive ancient trees with alien flora, dynamic pose, dramatic shadows, bold outlines, cel-shaded.
+        Negative Prompt:
+        bipedal, humanoid, furry, cute, photorealistic, 3d render, blurry, deformed, poorly drawn, text, watermark.
+    -->
+    <g id="body">
+        <path id="neck" d="M 128,180 L 128,150 L 128,150 Z" data-stroke="primary-hide" stroke="#555" stroke-width="30" />
+        <path id="torso" d="M 80,180 C 128,160 200,160 200,180 L 180,300 L 100,300 Z" data-fill="primary-hide" fill="#4a4a4a" />
+        <path id="front-legs" d="M 100,250 C 80,350 120,350 100,250" fill="none" data-stroke="secondary-hide" stroke="#4a4a4a" stroke-width="15" />
+        <path id="rear-legs" d="M 180,250 C 160,350 200,350 180,250" fill="none" data-stroke="secondary-hide" stroke="#4a4a4a" stroke-width="15" />
+    </g>
+    <g id="head">
+        <path id="headshape" d="M 90,100 C 80,130 178,130 168,100 C 160,70 98,70 90,100 Z" data-fill="secondary-hide" fill="#555" />
+        <g id="eyes">
+            <circle cx="105" cy="100" r="3" data-fill="eyes" fill="#ff0" />
+            <circle cx="115" cy="100" r="3" data-fill="eyes" fill="#ff0" />
+            <circle cx="125" cy="100" r="3" data-fill="eyes" fill="#ff0" />
+            <circle cx="135" cy="100" r="3" data-fill="eyes" fill="#ff0" />
+            <circle cx="145" cy="100" r="3" data-fill="eyes" fill="#ff0" />
+            <circle cx="155" cy="100" r="3" data-fill="eyes" fill="#ff0" />
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,24 @@
+<svg width="256" height="512" viewBox="0 0 256 512" xmlns="http://www.w3.org/2000/svg" id="draconic-base">
+    <!--
+        Draconic Base Figure SVG Template
+        ComfyUI Prompt:
+        retro anime style portrait of a majestic draconic alien, sharp features, scales, horns, vibrant deep purple skin with electric blue highlights, black sclera, glowing yellow reptilian eyes, intricate sci-fi armor in obsidian and gold, nebula background, cinematic lighting, masterpiece, sharp focus, high contrast.
+        Negative Prompt:
+        human, photorealistic, 3d render, blurry, deformed, extra limbs, poorly drawn, text, watermark.
+    -->
+    <g id="body">
+        <path id="neck" d="M 118,170 L 118,150 L 138,150 L 138,170 Z" data-fill="primary-skin" fill="#555" />
+        <path id="torso" d="M 90,170 C 90,210 166,210 166,170 L 160,320 L 96,320 Z" data-fill="armor-primary" fill="#4a4a4a" />
+        <path id="pauldrons" d="M 90,170 C 70,160 70,220 90,210 M 166,170 C 186,160 186,220 166,210" fill="none" data-stroke="armor-secondary" stroke="#333" stroke-width="15" />
+    </g>
+    <g id="head">
+        <path id="headshape" d="M 100,80 C 90,120 128,150 156,80 C 140,50 116,50 100,80 Z" data-fill="primary-skin" fill="#555" />
+        <path id="horns" d="M 95,80 C 75,40 90,60 100,80 M 161,80 C 181,40 166,60 156,80" fill="none" data-stroke="horns" stroke="#555" stroke-width="10" />
+        <g id="eyes">
+            <path id="left-eye" d="M 110,115 C 115,125 125,125 130,115 C 125,110 115,110 110,115 Z" data-fill="sclera" fill="#000" />
+            <path id="right-eye" d="M 136,115 C 141,125 151,125 156,115 C 151,110 141,110 136,115 Z" data-fill="sclera" fill="#000" />
+            <path id="left-pupil" d="M 120,118 L 120,122" data-stroke="pupil" stroke="#ff0" stroke-width="2" />
+            <path id="right-pupil" d="M 146,118 L 146,122" data-stroke="pupil" stroke="#ff0" stroke-width="2" />
+        </g>
+    </g>
+</svg>

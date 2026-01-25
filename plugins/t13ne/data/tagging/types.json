@@ -1,0 +1,284 @@
+{
+    "0": {
+        "Name": "Tapestry",
+        "description": "Tapestries are the meat and potatoes of the T13 Narrative Engine. These are the living past-present and future on Wyrd's Loom, where the Skeins of lives, weave patterns from chaos. Usually a Tapestry can be used as a Game and has Players, a Ref, and maybe some associated Rules too, but it can also be used by Authors as a Work-in-progress or Outline (not that they might not want a Rule or two too. Narrative Tapestries are usually more linear in nature, as they have have a single Story to tell (although not always), where as Game Tapestries tend to adapt the Tapestry as Player Characters and Plots tangle.",
+        "slug": "tapestries",
+        "parent": "t13root"
+    },
+    "1": {
+        "Name": "Thread",
+        "description": "Threads are the ephemera of the T13 Game, such as individual Proficiencies, that are nothing more than aspects of the Facets.",
+        "slug": "threads",
+        "parent": "t13root"
+    },
+    "2": {
+        "Name": "Game",
+        "description": "Games are how we play through a T13 Tapestry. They are meant to present a slice of the Omniverse for you to explore and play through/with. One T13 Game can be a very different experience to another, despite being built on the same Narrative Engine.",
+        "slug": "games",
+        "parent": "0"
+    },
+    "3": {
+        "Name": "Narrative",
+        "description": "Narratives are how we outline Stories, Novels and Series. They tend to be a lot more linear than Games (as writers tend to have slightly more control over their own PCs than someone elses, although in some case not much). Hopefully you'll find a few of my Shorts and even a Novel or Two here. Or can work on your own ideas.",
+        "slug": "narratives",
+        "parent": "0"
+    },
+    "4": {
+        "Name": "Weaver",
+        "description": "Weavers create the Tapestry from the patterns. They are our main Characters (in some cases whole groups of them as Pacts) and Plots.",
+        "slug": "weavers",
+        "parent": "t13root"
+    },
+    "5": {
+        "Name": "Character",
+        "description": "Characters are we hope the most self-explanatory part of the T13 Narrative Engine. Characters can be split into Player Characters (or Protagonist Characters), and NPCs (Non-Player Characters) or \"Side\" Characters, that are handled by the Yarn-Teller.",
+        "slug": "characters",
+        "parent": "4"
+    },
+    "6": {
+        "Name": "Lite",
+        "description": "Lite Characters are simplified Protagonist Characters intended for short stories, one-off games, and younger players. They may be used as PCs and NPCs as required. They can be converted into other Character Types, but work best in their own all-Lite Tapestries. They always use Extras as Alts.",
+        "slug": "lites",
+        "parent": "5"
+    },
+    "7": {
+        "Name": "Archetype",
+        "description": "Archetype Characters are slightly simplified Player and Protagonist Characters intended for quick beginnings, and easy set-up. They can be used as NPCs (particularly minion level Grunts or low-powered Goblins) with ease, and can easily be expanded into Detailed Characters. Archetype Characters are usually created by at least one NPC Yarn Card. More Cards create more complex and powerful Archetypes.",
+        "slug": "archetypes",
+        "parent": "5"
+    },
+    "8": {
+        "Name": "Detailed",
+        "description": "Detailed Characters are how most major Characters are intended to be. You get plenty of details to base the Characterisation off, they are usually limited in number of Alts (suitable for most Characters). A Detailed Character will have at least one set of Facets, I-Ching, and at least one Personality, Core and Hitch (an Alt - these can reflect different aspects of characters or different incarnations, bodies, quantum-selves, demonic possessions, past-lives and so on). They will have Proficiencies and may have Skills, Talents and Powers depending on how advanced they are. Detailed Characters almost always have Descendants.",
+        "slug": "details",
+        "parent": "5"
+    },
+    "9": {
+        "Name": "Full",
+        "description": "Full Characters are the most important and detailed Characters in the system. They are essentially intended for gods, Yarn-Tellers and other very important Characters. PCs that reach the level of Full Characters are few and far between, and it tends to happen in the late Loom Epic of the Cycle. Characters this powerful are always Doom-weavers and usually Yarn-Tellers, affecting the patterns and Tapestry around them to at least the same degree as any Plot. Full Characters can have many Alts.",
+        "slug": "full",
+        "parent": "5"
+    },
+    "10": {
+        "Name": "Grunt",
+        "description": "Grunts are the normal folks, the muggles, low-level adventurers, PCs without alternates.",
+        "slug": "grunt",
+        "parent": "5"
+    },
+    "11": {
+        "Name": "Hero",
+        "description": "Hero Characters are powerful individuals who in T13 usually have more than one alternate existence, perhaps they have a past-life or a quantum alternate that they are aware of.",
+        "slug": "hero",
+        "parent": "5"
+    },
+    "12": {
+        "Name": "Yarn-teller",
+        "description": "Yarn-Teller Characters are the most powerful Characters in the game, they are god-like beings who either have centuries of life experience or are multi-dimensional beings in some way.",
+        "slug": "yarn-teller",
+        "parent": "5"
+    },
+    "13": {
+        "Name": "Twisted",
+        "description": "Twisted Characters are those who have been affected by the power of the Increated. They are usually antagonists in T13 games, although in some cases they can be PCs. They are usually corrupted by the power of the Increated, gaining unnatural abilities at a terrible cost.",
+        "slug": "twisted",
+        "parent": "5"
+    },
+    "14": {
+        "Name": "Goblin",
+        "description": "Goblin Characters the least powerful of those individuals who are Twisted by the power of the Increated. They usually have a single Woes Hitch",
+        "slug": "goblin",
+        "parent": "13"
+    },
+    "15": {
+        "Name": "Demon",
+        "description": "Demon Characters are powerful hero Characters touched by the Twists of the Increated. They often have a number of Woes.",
+        "slug": "demon",
+        "parent": "13"
+    },
+    "16": {
+        "Name": "Demon-Lord",
+        "description": "Demon-Lords are Yarn-Teller Characters corrupted by the Twists of the Increated. They are powerful and dangerous emissaries of the Increated, often functioning as lieutenants to the Patron Dæmons of Shades.",
+        "slug": "demonlord",
+        "parent": "13"
+    },
+    "17": {
+        "Name": "Plot",
+        "description": "Plots are a major component of the T13 Narrative Engine, they set the universe in motion, creating stories, descendants and characters to populate the game and keep the Players entertained. Plots are Weavers, manipulating the Tapestry from behind to promote and explore their particular Conflict.",
+        "slug": "plots",
+        "parent": "4"
+    },
+    "18": {
+        "Name": "Spinner",
+        "description": "Spinners are used to randomly create Patterns (and occasionally other Weavers). A Spinner is essentially a random set of tables that can produce themed content. You can set up Spinners to create NPC names, Descriptions, random treasure tables, and all sorts of other goodness.",
+        "slug": "spinner",
+        "parent": "4"
+    },
+    "19": {
+        "Name": "Pattern",
+        "description": "Patterns are reusable things that Weavers use to create the Tapestry. Typically Patterns are Descendants. They are our Locations, Extras, Descendants and Social Structures (Pacts and Extras).",
+        "slug": "patterns",
+        "parent": "t13root"
+    },
+    "20": {
+        "Name": "Structure",
+        "description": "Structures describe how Games work, they are the frameworks that we use to create Game-loops and Narrative Components. Structures can be Game Structures, Scenario Structures, Campaign Structures, Episode Structures and so on.",
+        "slug": "structure",
+        "parent": "19"
+    },
+    "21": {
+        "Name": "Descendant",
+        "description": "Descendants are free-floating Annexes, often with a Hitch or two, and are how we model everything from simple props (your equipment), education and training, to Locations, and even groups, guilds, nations or species.",
+        "slug": "desc",
+        "parent": "19"
+    },
+    "22": {
+        "Name": "Location",
+        "description": "Locations are a specific type of Descendant that is a place. Technically they are all Yonder-based Descendants. Plots require at least one Location be specified.",
+        "slug": "locations",
+        "parent": "21"
+    },
+    "23": {
+        "Name": "Pact",
+        "description": "Pacts are a specific type of Descendant that is a Group of individuals. Technically they are all Dominion based Descendants. They can be used to model all groups from small to enormous.",
+        "slug": "pacts",
+        "parent": "21"
+    },
+    "24": {
+        "Name": "Extra",
+        "description": "Extras are sub-set of Characters that are just patterns. They consist of at least one Annex. They may be given additional smaller Annexes beneath the primary one. They may also be given Hitches. Extras are usually just used as NPCs, however it is possible to use Extras as Alts...",
+        "slug": "extras",
+        "parent": "5"
+    },
+    "25": {
+        "Name": "Vex",
+        "description": "Vexes are the smallest and weakest of the Extras. They are a single Skill Annex.",
+        "slug": "vex",
+        "parent": "24"
+    },
+    "26": {
+        "Name": "Chorus",
+        "description": "Chorus are the most common Extra. They are a single Talent Annex, along with some optional Skills.",
+        "slug": "chorus",
+        "parent": "24"
+    },
+    "27": {
+        "Name": "Cast",
+        "description": "Cast extras are Extras that are almost as important as actual Characters. They are based around a Power Annex with some optional Talent and Skill Annexes.",
+        "slug": "cast",
+        "parent": "24"
+    },
+    "28": {
+        "Name": "Force-of-Nature",
+        "description": "Force-of-Nature Extras are the most powerful Extras. They are based around a Super-Annex usually with additional Power, Talent and Skill Annexes.",
+        "slug": "fon",
+        "parent": "24"
+    },
+    "29": {
+        "Name": "Knot",
+        "description": "Knots are what we build Patterns from. They are the main components of the system, made from knotting together one or more threads: Annexes and Hitches.",
+        "slug": "knots",
+        "parent": "t13root"
+    },
+    "30": {
+        "Name": "Hitch",
+        "description": "Hitches are how to model Quirks, Flaws, and Woes. The Hitch tells us what is wrong with a Character or Descendant. How are they limited, what can they not do easily.",
+        "slug": "hitches",
+        "parent": "29"
+    },
+    "31": {
+        "Name": "Annex",
+        "description": "Annexes are how we model Skills, Talents, Powers and Super-Skills, they are a primary component of Characters and Descendants",
+        "slug": "annexes",
+        "parent": "29"
+    },
+    "32": {
+        "Name": "Proficiency",
+        "description": "Proficiencies are the smallest unit of the T13 Narrative Engine. They are the smallest unit of knowledge or practice of a subject. Proficiencies can point to individual, specific things or broad categories of terms. Both \"War\" and \"AK-47\" could be used to handle an actual AK-47, but the specific would count twice (in an actual War both could also count twice, if the Yarn-Teller is very kind).",
+        "slug": "prof",
+        "parent": "31"
+    },
+    "33": {
+        "Name": "Note",
+        "description": "Sometimes you need to make notes. Perhaps because you don't want to add a Proficiency for some reason.",
+        "slug": "notes",
+        "parent": "31"
+    },
+    "34": {
+        "Name": "Diegesis",
+        "description": "Diegesis is also called Diegetic Lore, Flavour Text or Fluff. It is a piece of in-world media or narration. Examples might include quotes, Yarn-Teller Narrations, in-game lore, and planned revelations.",
+        "slug": "diegesis",
+        "parent": "31"
+    },
+    "35": {
+        "Name": "Map",
+        "description": "Useful for Yarn-Tellers and Referees to help describe a Location or Ordeal. They are mostly a picture, with some details attached.",
+        "slug": "maps",
+        "parent": "31"
+    },
+    "36": {
+        "Name": "Scene",
+        "description": "Scenes are the smallest unit of Plot in the T13 Narrative Engine. They are used show specific events, encounters and interactions between Characters. Scenes are usually focused on a single Conflict or Event, and are the building blocks of larger Plot structures like Stories, Arcs, Volumes, Epics or Cycle.",
+        "slug": "scene",
+        "parent": "17"
+    },
+    "37": {
+        "Name": "Act",
+        "description": "Acts organise Scenes into larger story units. They are used to tell larger parts of stories and are focused on bigger conflicts usually involving multiple sides and facets.",
+        "slug": "act",
+        "parent": "17"
+    },
+    "38": {
+        "Name": "Frame",
+        "description": "Frames are the first class of Act Plot, they Frame the story, set up the world and introduce the Characters. They are used to set the stage for the main action to come.",
+        "slug": "frame",
+        "parent": "37"
+    },
+    "39": {
+        "Name": "Loom",
+        "description": "Looms are the second class of Act Plot, they are the main body of the story where the primary conflicts and events take place. They are used to develop the plot and characters.",
+        "slug": "loom",
+        "parent": "37"
+    },
+    "40": {
+        "Name": "Zenith",
+        "description": "Zeniths are the final class of Act Plot, they bring the story to its climax and resolution. They are used to conclude the plot and resolve character arcs.",
+        "slug": "zenith",
+        "parent": "37"
+    },
+    "41": {
+        "Name": "Logue",
+        "description": "Logues are Acts that are detached from the main story. They can be Prologues, Epilogues, Interlogues, or Exologues, providing additional context or perspectives.",
+        "slug": "logue",
+        "parent": "37"
+    },
+    "42": {
+        "Name": "Story",
+        "description": "Stories are a class of Plot, they are used to tell chapters of larger stories and and are focused on smaller, contained conflicts usually limited in number of sides and facets.",
+        "slug": "story",
+        "parent": "17"
+    },
+    "43": {
+        "Name": "Arc",
+        "description": "Campaigns are a class of Plot, they are used to tell larger stories that may contain multiple Stories within them, and are focused on larger conflicts usually involving many sides and facets.",
+        "slug": "arc",
+        "parent": "17"
+    },
+    "44": {
+        "Name": "Volume",
+        "description": "Volumes are a class of Plot, they are used to tell epic stories that may contain multiple Campaigns within them, and are focused on grand conflicts usually involving numerous sides and facets.",
+        "slug": "volume",
+        "parent": "17"
+    },
+    "45": {
+        "Name": "Epic",
+        "description": "Epics are the largest class of Plot, they are used to tell monumental stories that may contain multiple Volumes within them, and are focused on cosmic conflicts usually involving countless sides and facets.",
+        "slug": "epic",
+        "parent": "17"
+    },
+    "46": {
+        "Name": "Cycle",
+        "description": "Cycles are the overarching structure of the T13 Narrative Engine. They encompass multiple Epics, Volumes, Campaigns, Stories, Acts and Scenes, creating a grand tapestry of interconnected narratives.",
+        "slug": "cycle",
+        "parent": "17"
+    }
+}

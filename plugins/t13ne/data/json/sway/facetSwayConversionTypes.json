@@ -1,0 +1,27 @@
+[
+    {
+        "Type": "Fixed",
+        "Description": "This is the way Increated beings treat Facet Sway. Once Sway has been flavoured it will always carry that taste, at least until you can make Chi out of it.",
+        "Rules": "Tao Sway once converted to Facet Sway cannot be converted directly back again. Facet Sway can still be combined to create Chi. Chi may be split into Tao Sway only (and potentially restricted to equal amounts of Yin and Yang)."
+    },
+    {
+        "Type": "Transferrable",
+        "Description": "This is the way most mortals (including some Goblins and Demons) use Sway. Sway can be flavoured, by being stored, but is mostly either Yin or Yang.",
+        "Rules": "Facet Sway can be used as Tao Sway when it matches Yin or Yang to the Facet, e.g. Awe’s Splendour can be spent as Banal generic Yang Tao Sway on a Trial action. Conversion of Facet Sway to Tao Sway usually costs 1 Facet Sway, so spending 4 Splendour would add 3 Yang. Conversion to the opposed Tao Sway requires conversion through Chi like Fixed."
+    },
+    {
+        "Type": "F&aelig;ry",
+        "Description": "The F&aelig; or F&aelig;ries (and some Goblins and Demons) see and use Sway this way. Yin and Yang are the most important part of Sway, Facets are momentary flavour, even if some are better suited for certain tasks.",
+        "Rules": "Facet Sway can converted between two Facets instantly and freely, as long as they are both of the same Tao type (Yin for Yin, Yang for Yang). Insight can become Splendour for free, but conversion to any Yin Tao would require filtering through Chi."
+    },
+    {
+        "Type": "Hybrid",
+        "Description": "The Bulmäs, some Eelafin, most Demi-gods and some powerful Demons, see and use Sway this way. Facets are momentary flavour, even if some are better suited for certain tasks, and Yin and Yang are important, but not completely so as each contains the opposite anyway.",
+        "Rules": "Facet Sway can converted between two Facets instantly and freely, as long as they are both of the same Tao type (Yin for Yin, Yang for Yang). Conversion to the opposite type is possible, but only to Banal / Tao Sway, and always costs 1 Sway. So 4 Insight can become 4 Splendour, or 3 Yin sway."
+    },
+    {
+        "Type": "Mercurial",
+        "Description": "This is the way divine beings like Gods and some Demon-Lords treat Facet Sway; Sway is Sway and the flavour is irrelevent.",
+        "Rules": "Facet Sway is converted between types without cost, on a 1 for 1 basis. 2 Banal Scopes can be converted to 2 Bold Support, 2 Tao Sway, or 1 Chi."
+    }
+]

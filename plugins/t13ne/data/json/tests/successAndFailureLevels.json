@@ -1,0 +1,268 @@
+{
+    "1 Failure": [
+        {
+            "Category": "Cards",
+            "Type": "Lost Opportunity",
+            "Description": "Sometimes a failure can close a window of opportunity that was previously open to us.",
+            "Rules": "Character must Discard one Card from their Ordeal Pool."
+        },
+        {
+            "Category": "Cards",
+            "Type": "Limit Divergence",
+            "Description": "Sometimes a failure when you are trying to pull your punches, or mitigate a blow, will cause you to do more damage. Conversely, sometimes you swing for fences, but get only a glancing blow.",
+            "Rules": "A current Attack’s Wound Limit is altered one step up or down by the Failure (usually down unless the Wound is on the Character or they are trying to capture the target alive)."
+        },
+        {
+            "Category": "Combat",
+            "Type": "Wide Open",
+            "Description": "Sometimes a small mistake in how you stand or move can grant your opponent an opening.",
+            "Rules": "When the Character is next Attacked, 1 card will be made Unsoakable."
+        },
+        {
+            "Category": "Communication",
+            "Type": "Mumbled",
+            "Description": "Sometimes when you are communicating a single word or phrase can be mumbled and not understood.",
+            "Rules": "Typically a single word (or short phrase) is \"deleted\" from the communication, a sound is heard there, but not understood as any word."
+        },
+        {
+            "Category": "Complexity",
+            "Type": "Mistargeted",
+            "Description": "Large complex machines and systems can be very complex to use. Sometimes a small user fault can create a situation where a complex system ends up doing whatever it does on the wrong person.",
+            "Rules": "Typically the system or machine will target the wrong Character initially. This is usually randomly determined."
+        },
+        {
+            "Category": "Descendant",
+            "Type": "Drop",
+            "Description": "Try as you might to use a Descendant, sometimes they just slip through your fingers.",
+            "Rules": "At the end of the Action, regardless of the rest of the result the Descendant being used currently is dropped. Recovering the Dropped item is usually a single action."
+        },
+        {
+            "Category": "Dramatic",
+            "Type": "Blunder",
+            "Description": "A blunder is a dramatic failure that is caused by a Character acting as though they could not see or do not understand what was going on. Such blunders can include a Character thinking they are on a different side to the one they are on.",
+            "Rules": "For NPCs a blunder is usually a mistake but for PCs, rather than causing a Player to look foolish, or stupid and destroying Player agency, Blunders reveal a Turn in the Plot. Causing a Character to change sides or even for the Central Conflict to alter. Dramatic Blunders can be very complicated to improvise, and should not be attempted unless you are experienced at using Turns."
+        },
+        {
+            "Category": "Emotional",
+            "Type": "Upset",
+            "Description": "Sometimes a failure is a minor emotional upset.",
+            "Rules": "Character is affected by a 1 card Negative emotional affect, may also Splash to affect Allies."
+        },
+        {
+            "Category": "Environmental",
+            "Type": "Specific",
+            "Description": "Sometimes some specific aspect of the environment around a Character or the Location they find themselves in causes an error in their actions. These are usually things overlooked, or easily forgotten about the Location, like the ground being slippery, the location being too loud to communicate easily, or space being filled with cobwebs.",
+            "Rules": "Specific Failures have specific consequences that should generally have a cost of up to 9 Chi. Examples include: Pulling and playing an Ordeal card to move the Character in the wrong direction, or injure them; increasing or decreasing Wound Limits on an attack; adding an additional Soak Layer (such as the cobwebs, tight quarters, mists or foliage); or causing damage from an attack to Splash unexpectedly."
+        },
+        {
+            "Category": "Investigation",
+            "Type": "Overlook",
+            "Description": "In an investigation the simplest mistake can be to overlook a piece of evidence and never collect it. ",
+            "Rules": "1 piece of evidence or revelation is completely ignored and effectively discarded by this Character. It may be found later by another Character, if important enough."
+        },
+        {
+            "Category": "Logical",
+            "Type": "Inconsistent",
+            "Description": "An inconsistent logical failure usually occurs when two propositions cannot both be true at the same time. Often these sorts of logical failures occur when lying, a Character may admit to having seen something that they should not have been.",
+            "Rules": "Inconsistent failures add a chance of Disbelief to any action. Disbelief of some part of the Action will not negate the whole action, but it can render that disbelieved part moot."
+        },
+        {
+            "Category": "Narrative",
+            "Type": "Tonal Dissonance",
+            "Description": "Sometimes an action is not strictly a failure, but alters the Tone of the Scene making similar actions harder afterwards. A sniper that shoots a target, regardless of whether he succeeds or fails, is likely to put everyone on the defensive.",
+            "Rules": "The Tone of the Current Scene is altered to match the current Action’s Anti-Facet."
+        },
+        {
+            "Category": "Proficiency",
+            "Type": "Ineffective",
+            "Description": "Sometimes a failure may make a Character question if they even know a subject at all, and perhaps go and refresh their knowledge of a subject.",
+            "Rules": "Character must delete or remove 1 Proficiency as they question their own knowledge on the subject."
+        },
+        {
+            "Category": "Psychosocial",
+            "Type": "Perturbing",
+            "Description": "Sometimes a failure will effect the impression that others have of you negatively.",
+            "Rules": "Reduces the Impression that the Character has of you by 1 Social Impression Level."
+        },
+        {
+            "Category": "Score",
+            "Type": "Pathetic",
+            "Description": "Sometimes a failure level can only lower the Score that the Action created. This is the least useful or fun result you can choose. Honestly, it probably shouldn’t even exist as an option, but occasionally it is the only Failure that makes sense.",
+            "Rules": "A single Failure Level will lower the rolled Score by 32 Banal Tao Sway (-8 Pips/Chi)."
+        },
+        {
+            "Category": "Stress",
+            "Type": "Stressful",
+            "Description": "Any amount of failure in any situation can always be stressful.",
+            "Rules": "The Character Gains Stress, this is can be upto 9 Stress, but should never fill a Character with Stress (and can be as low as 1 Stress or a normal Stress Gain)."
+        },
+        {
+            "Category": "Stress",
+            "Type": "Strained",
+            "Description": "A failure when doing something physical can result in a strained muscle, but you can also strain your mind, heart and soul.",
+            "Rules": "The Character Gains Strains on the Annex or Facet Die that is being rolled for the Action. This Failure can add upto 3 Strains to a single Die, but not to the Stress-Strain Limit."
+        },
+        {
+            "Category": "Stress",
+            "Type": "Shocked",
+            "Description": "A failure can be a shocking event, causing a Character to hesitate, freeze, or even collapse. Sometimes failure can even be traumatic.",
+            "Rules": "The Character Annex or Facet Die rolled is now Shocked. This is often regardless of Stress or Strains."
+        },
+        {
+            "Category": "Sway",
+            "Type": "Loss",
+            "Description": "When a Character is generating and accumulating Sway for any purpose they may sometimes lose some of that value along the way due to minor failures.",
+            "Rules": "A single failure level will cost Sway equivalent to the Character’s normal Sway Gain (and up to 9 Chi equivalent at maximum)."
+        },
+        {
+            "Category": "Transformation",
+            "Type": "Blemish",
+            "Description": "When a desired transformation goes a little bit wrong we get an undesired, disfiguring blemish. Some part of the surface that is the wrong colour or texture.",
+            "Rules": "A Blemish will reduce the value of a Descendant by 1/3, such that a Descendant normally costing 30 Chi will only be worth 20 Chi if Blemished. "
+        },
+        {
+            "Category": "Wellness",
+            "Type": "Injury",
+            "Description": "Failure when performing any physical task can result in a pulled muscle, and with perfect timing a pulled muscle could distract you, cause you to fall, hit your head badly, and even die.",
+            "Rules": "The Character is attacked by a 1 Ordeal Card Attack at the current Stakes. This Attack may be soaked as usual."
+        }
+    ],
+    "1 Success": [
+        {
+            "Category": "Cards",
+            "Type": "Extra Effort",
+            "Description": "Success can make a Character try harder than ever before, even more than some thought possible.",
+            "Rules": "Play an additional 1 Ordeal Card from your Ordeal Pool on the current Action."
+        },
+        {
+            "Category": "Cards",
+            "Type": "Limit Divergence",
+            "Description": "Success when you are trying to hurt someone can mean you have targeted some weak spot, or internal organ. Or perhaps if you were on the receiving end of a punch, you might want to reduce its power somehow.",
+            "Rules": "The Wound Limit of the current Attack the Character is making or taking can be raised or lowered by one. So a Maiming Wound could be reduced to a Flesh or potentially increased to Crippling. Note that this does not alter the Pips required at the current Stakes."
+        },
+        {
+            "Category": "Cards",
+            "Type": "More Choice",
+            "Description": "Success can offer a Character more choices, opportunities and chances.",
+            "Rules": "Draw an additional 1 Ordeal Card to your Ordeal Pool."
+        },
+        {
+            "Category": "Combat",
+            "Type": "Create Opening",
+            "Description": "Success in combat can allow a Character to create an opening in their opponent’s defence, even momentarily.",
+            "Rules": "The Character may make one card of their attack Unsoakable."
+        },
+        {
+            "Category": "Combat",
+            "Type": "Deadliness",
+            "Description": "Success in combat can allow a Character to alter how deadly their attack is, or how deadly the hit they took was.",
+            "Rules": "The Character may Alter the Wound Limit card a level on the Attack they are making or an incoming attack."
+        },
+        {
+            "Category": "Combat",
+            "Type": "Fend Off",
+            "Description": "Success in combat can allow a Character to fend off the worst of an Attack.",
+            "Rules": "The Character may Discard one card from an incoming attack."
+        },
+        {
+            "Category": "Communication",
+            "Type": "Expressive",
+            "Description": "Success in communication can allow you to communicate more than just a single piece of information. It is possible to even communicate one innocuous message to one person and a secret message along side it to a friend, ally or co-conspirator. Expressive communication can also have psychosocial effects or create emotional responses.",
+            "Rules": "Expressive Communication can either <ul><li>Hide a piece of information being communicated from some of those listening (Spot: Concealed)</li><li>Move a Character listening in a Psychosocial Space (increase or decrease impression for example)</li><li>Create a 1 card Psych effect in those hearing the communication.</li></ul>"
+        },
+        {
+            "Category": "Complexity",
+            "Type": "Subtle",
+            "Description": "Success when using complex systems or devices can be a subtle effect. Simply making it harder to trace back through the system. If five people are fighting in the dark, does anyone know who swung the first punch?",
+            "Rules": "The effects of the Action are Obscured and Secured by the Complexity of the system or machine or have become more difficult to trace back to the Character. This is the equivalent of Spot Obscured to even detect something is wrong, Spot Secured to actually unravel the system."
+        },
+        {
+            "Category": "Descendant",
+            "Type": "Impediment",
+            "Description": "A Descendant can often be used to create an Obstacle for another Character, at least with a Successful use. A gunshot for example can start a stampede, drop a security gate, or set off fire suppression systems.",
+            "Rules": "From the Ordeal Cards of the current Action one may be used to create a suitable 1 card Obstacle for anyone following the Character."
+        },
+        {
+            "Category": "Dramatic",
+            "Type": "Managed Expectation",
+            "Description": "Success can mean a lot of things, especially in a dramatic situation, with a climbing Drama Pool and sense of impending incidents. Success here means lowering that drama before it strikes.",
+            "Rules": "The Character can remove one die from the Drama Pool. It is usual to remove the die with the lowest number of faces. Yarn-Tellers may reroll the Pool after (which may create Drama), but this costs 1 Yarn."
+        },
+        {
+            "Category": "Emotional",
+            "Type": "Emotive",
+            "Description": "Emotional success can stir emotions in others, making them laugh, fume, or cry.",
+            "Rules": "The Character may play a 1 Card Psych effect upon another Character (or Characters). This will typically be a positive emotion if played on a friend or ally, and a negative emotion if played upon an enemy or opposition, but the choice is the Player’s."
+        },
+        {
+            "Category": "Environmental",
+            "Type": "Situational",
+            "Description": "Sometimes a Success means spotting something in the environment and using it to your advantage. This can lead to swinging across rooms, dominoing book cases, dropping chandeliers, or broken glass on people, or realising the hacker’s computer is plugged into your systems next to you.",
+            "Rules": "Situational Successes can typically add some additional benefit for the Character based upon the Location and what it contains. This benefit may have a cost up to 9 Chi, which could allow a Character to alter their appearance completely, or move them 9 Pips closer to their target, add an Obstacle, keep themselves hidden, etc. "
+        },
+        {
+            "Category": "Investigation",
+            "Type": "Discovery",
+            "Description": "A Success during an investigation can mean you have made a Discovery. A Discovery is often not quite a Clue, but might point us towards where a real CLue may be found.",
+            "Rules": "Discoveries are pieces of information, that while not Clues in their own right, are revelatory in nature. They often lead a Character to an Location where a Clue might be found, or to Character who knows something useful, but not essential. Discoveries are at best supporting evidence, but are never important enough to build a case on."
+        },
+        {
+            "Category": "Logical",
+            "Type": "Validity",
+            "Description": "Sometimes Success can make something sound correct, regardless of whether it really is. Logic and reason can build cases for almost any action, and it can be hard to use moral or ethical objections on a well constructed logical arguments. Logical Validity is its own form of truth, and for some Characters the only truth they will believe.",
+            "Rules": "Characters that hear the argument or see the Action believe it to be true. This means they must actively disbelieve this \"truth\" before they can undo its effects."
+        },
+        {
+            "Category": "Narrative",
+            "Type": "Tonal Resonance",
+            "Description": "After a Narrative Success the whole tone of a situation can change, as perhaps a Sniper shoots someone and everything becomes combative.",
+            "Rules": "The Tonal Resonance Success sets the Tone of the Current Scene to the Facet of this Action. The Tone may later return (especially if there is a Tone Embodiment), but this will usually require another Tonal Resonance Success (or a Dissonant Failure)."
+        },
+        {
+            "Category": "Proficiency",
+            "Type": "Breakthrough",
+            "Description": "A great success when using Proficiencies can result in a Breakthrough. These Successes can teach a Character new information, or allow them to combine their knowledge in new ways.",
+            "Rules": "Breakthrough Successes allow Characters to either combine the Proficiencies they just rolled into an Annex (often a new Skill), as though they had rolled a Proficiency Crisis, or to learn new Proficiencies. Breakthrough Successes are often used earlier in the game as Characters are pushed to learn new abilities by Mentors."
+        },
+        {
+            "Category": "Psychosocial",
+            "Type": "Popular",
+            "Description": "Sometimes Success can mean a Character becomes more well liked and popular. Of course, such popularity is often short-lived and may become notoriety in time, but for now people should think well of them.",
+            "Rules": "Move the Target Psychosocially (the equivalent of 9 Pips). For example, a Popular Success could increase or decrease the Target’s Impression of the Character one Social Ordeal level."
+        },
+        {
+            "Category": "Score",
+            "Type": "High-score",
+            "Description": "If all you are doing is generating Score then Success just means more Score.",
+            "Rules": "High-score Success adds 32 Banal Tao Sway (+8 Pips) to the Score"
+        },
+        {
+            "Category": "Stress",
+            "Type": "Relief",
+            "Description": "Sometimes a small win is all we need to relieve the stress, strain or shocks we have been feeling.",
+            "Rules": "A Relief Success Level can Relieve upto 9 Stress, 3 Strains or 1 Shock at a time, technically it can Relieve 1 Shock, 1 Strain and 2 Stress at the same time."
+        },
+        {
+            "Category": "Sway",
+            "Type": "Gain",
+            "Description": "Sometimes Success means a little something extra for you, be it extra Health, Wealth or whatever.",
+            "Rules": "A Gain Success causes the Character to Gain Sway equal to their normal Gain (and no more than 9 Chi equivalent Maximum)."
+        },
+        {
+            "Category": "Transformation",
+            "Type": "Functional",
+            "Description": "Sometimes the best we can hope for when converting something between forms, is that the thing actually works in its new form.",
+            "Rules": "Functional Successes can be used to provide access to suitable Annex Slots in the new form. Upto 4 Skill Slots, 1 Talent and 2 Skill Slots, or 1 Power and 1 Skill Slot can be unlocked with a single Functional Success. If these Annexes are from the original form then they may be used as normal, Annexes specific to the new form will have to paid for (Annex Boon + Proficiencies)"
+        },
+        {
+            "Category": "Wellness",
+            "Type": "Healing Surge",
+            "Description": "Sometimes Success means you are able to shrug off lesser wounds, as though they never happened.",
+            "Rules": "A Healing Surge Success can completely heal and remove 1 Flesh Wound and 1 Distract or 4 Distract Wounds instantly."
+        }
+    ],
+    "2 Failures": [],
+    "2 Successes": [],
+    "5 Failures": [],
+    "5 Successes": []
+}

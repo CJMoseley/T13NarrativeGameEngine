@@ -1,0 +1,17 @@
+<svg width="256" height="512" viewBox="0 0 256 512" xmlns="http://www.w3.org/2000/svg" id="construct-base">
+    <!--
+        Construct / Synthetic / Crystalline Base Figure SVG Template
+        - A generic, non-biological base for AI, crystalline, or energy beings.
+    -->
+    <g id="head">
+        <!-- A crystalline/geometric head shape -->
+        <path id="headshape" d="M 128,70 L 168,110 L 168,170 L 88,170 L 88,110 Z" data-fill="primary-material" fill="#a0a0d0" />
+        <!-- A central 'eye' or core -->
+        <circle id="eye-core" cx="128" cy="125" r="15" data-fill="core-glow" fill="#ffcc00" />
+        <path id="jawline" d="M 88,170 L 128,190 L 168,170" fill="none" stroke="#000" stroke-opacity="0.2" stroke-width="1"/>
+    </g>
+    <g id="body">
+        <!-- A simple geometric torso -->
+        <path id="torso" d="M 100,190 L 156,190 L 146,300 L 110,300 Z" data-fill="secondary-material" fill="#7070a0" />
+    </g>
+</svg>

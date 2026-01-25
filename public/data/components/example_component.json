@@ -1,0 +1,43 @@
+{
+  "name": "Example Component",
+  "manufacturer": "Example Corp",
+  "description_blurb": "This is the best component ever!",
+  "description_mechanic": "It's a piece of junk, but it gets the job done. Don't push it too hard.",
+  "model_3d": "public/models/components/example_component.gltf",
+  "image": "public/images/components/example_component.png",
+  "physical_properties": {
+    "mass_kg": 100,
+    "volume_m3": 1,
+    "hp": 100,
+    "damage_resistance": {
+      "kinetic": 0.1,
+      "thermal": 0.2,
+      "em": 0.3
+    }
+  },
+  "power_characteristics": {
+    "type": "consumer",
+    "power_draw_mw": 10,
+    "power_generation_mw": 0
+  },
+  "frequency_characteristics": {
+    "base_frequency_hz": 100,
+    "resonance_factor": 1.5,
+    "phase_shift_deg": 90
+  },
+  "hyperphysics_interactions": {
+    "tachyon_beam_interaction": {
+      "cross_section": 0.5,
+      "refraction_index": 1.2
+    },
+    "chiral_rules": "left_handed"
+  },
+  "crafting_recipe": {
+    "resources": {
+      "metal": 10,
+      "polymer": 5,
+      "semi_conductor": 2
+    },
+    "time_to_craft_s": 3600
+  }
+}

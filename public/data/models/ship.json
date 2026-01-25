@@ -1,0 +1,28 @@
+{
+    "metadata": {
+        "type": "ShipAssembly",
+        "description": "Assembly definition for a ship, combining individual components.",
+        "generator": "Gemini Agent",
+        "version": 1
+    },
+    "components": [
+        {
+            "id": "hull",
+            "modelUrl": "./ship_hull_medium.json",
+            "position": [0, 0, 0],
+            "rotation": [0, 0, 0],
+            "isPhysicsObject": true,
+            "mass": 1000
+        },
+        {
+            "id": "shield",
+            "modelUrl": "./ship_soft_shield.json",
+            "position": [0, 0, 0],
+            "rotation": [0, 0, 0],
+            "isPhysicsObject": false,
+            "mass": 0
+        }
+    ],
+    "default_shield_type": "soft",
+    "hull_size": "medium"
+}

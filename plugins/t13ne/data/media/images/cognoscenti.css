@@ -1,0 +1,215 @@
+/* cognoscenti variant */
+
+body{	background: url('cogs2.gif');
+	z-index:0;
+}
+@keyframes myfirst
+{0%   {background: rgba(255,0,0,0.4);}
+25%  {background: rgba(255,255,0,0.4);}
+50%  {background:rgba(0,255,255,0.4);}
+100% {background: rgba(0,0,255,0.4);}
+}
+
+@-moz-keyframes myfirst /* Firefox */
+{
+0%   {background: rgba(255,0,0,0.4);}
+25%  {background: rgba(255,255,0,0.4);}
+50%  {background:rgba(0,255,255,0.4);}
+100% {background: rgba(0,0,255,0.4);}
+}
+
+@-webkit-keyframes myfirst /* Safari and Chrome */
+{0%   {background: rgba(255,0,0,0.4);-webkit-transform: rotateX(0deg);}
+25%  {background: rgba(255,255,0,0.4);}
+50%  {background:rgba(0,255,255,0.4);}
+100% {background: rgba(0,0,255,0.4);}
+}
+
+@-o-keyframes myfirst /* Opera */
+{
+0%   {background: rgba(255,0,0,0.4);}
+25%  {background: rgba(255,255,0,0.4);}
+50%  {background:rgba(0,255,255,0.4);}
+100% {background: rgba(0,0,255,0.4);}
+}
+@keyframes cog {  from { transform: rotate(0deg);} to {transform: rotate(360deg);}}
+@-moz-keyframes cog /* Firefox */ {from {-moz-transform: rotate(0deg);} to { -moz-transform: rotate(360deg);}}
+@-webkit-keyframes cog /* Safari and Chrome */{from {-webkit-transform: rotate(0deg);} to { -webkit-transform: rotate(360deg);}}
+@-o-keyframes cog /* Opera */ {from {-o-transform: rotate(0deg);}to {-o-transform: rotate(360deg);}}
+
+@keyframes bcog {  from { transform: rotate(360deg);} to {transform: rotate(0deg);}}
+@-moz-keyframes bcog /* Firefox */ {from {-moz-transform: rotate(360deg);} to { -moz-transform: rotate(0deg);}}
+@-webkit-keyframes bcog /* Safari and Chrome */{from {-webkit-transform: rotate(360deg);} to { -webkit-transform: rotate(0deg);}}
+@-o-keyframes bcog /* Opera */ {from {-o-transform: rotate(360deg);}to {-o-transform: rotate(0deg);}}
+
+.cog,#cog{
+	position:fixed;
+	z-index:-1;
+
+	/*rotation anim */
+		animation-name: cog;
+		animation-duration: 45s;
+		animation-timing-function: linear;
+		animation-delay: 0s;
+		animation-iteration-count: infinite;
+		animation-play-state: running;
+		/* Firefox: */
+		-moz-animation-name: cog;
+		-moz-animation-duration: 45s;
+		-moz-animation-timing-function: linear;
+		-moz-animation-delay: 0s;
+		-moz-animation-iteration-count: infinite;
+		-moz-animation-play-state: running;
+		/* Safari and Chrome: */
+		-webkit-animation-name: cog;
+		-webkit-animation-duration: 45s;
+		-webkit-animation-timing-function: linear;
+		-webkit-animation-delay: 0s;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-play-state: running;
+		/* Opera: */
+		-o-animation-name: cog;
+		-o-animation-duration: 45s;
+		-o-animation-timing-function: linear;
+		-o-animation-delay: 0s;
+		-o-animation-iteration-count: infinite;
+-o-animation-play-state: running;
+
+}
+.cogs,#cogs{position:fixed;
+	top:0;
+	left:0;
+	z-index:-1;
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	}
+.cog.lefty{	left:-150px;}
+.cog.righty{right:-150px;}
+.cog.toppy{top:-150px;}
+.cog.bottomy{bottom:-150px;}
+.cog.centreside{left:25%;top:25%;}
+.bigcog.lefty{	left:-519px;}
+.bigcog.righty{right:-519px;}
+.bigcog.toppy{top:-519px;}
+.bigcog.bottomy{bottom:-519px;}
+.bigcog.centreside{left:25%;top:25%;}
+
+.bigcog,#bigcog{
+	position:fixed;
+	z-index:-1;
+	/*rotation anim */
+		animation-name: cog;
+		animation-duration: 225s;
+		animation-timing-function: linear;
+		animation-delay: 0s;
+		animation-iteration-count: infinite;
+		animation-play-state: running;
+		/* Firefox: */
+		-moz-animation-name: cog;
+		-moz-animation-duration: 225s;
+		-moz-animation-timing-function: linear;
+		-moz-animation-delay: 0s;
+		-moz-animation-iteration-count: infinite;
+		-moz-animation-play-state: running;
+		/* Safari and Chrome: */
+		-webkit-animation-name: cog;
+		-webkit-animation-duration: 225s;
+		-webkit-animation-timing-function: linear;
+		-webkit-animation-delay: 0s;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-play-state: running;
+		/* Opera: */
+		-o-animation-name: cog;
+		-o-animation-duration: 225s;
+		-o-animation-timing-function: linear;
+		-o-animation-delay: 0s;
+		-o-animation-iteration-count: infinite;
+		-o-animation-play-state: running;	
+}
+.backcog,#backcog{
+	position:fixed;
+	z-index:-2;
+	zoom:80%;
+	/*rotation anim */
+		animation-name: bcog;
+		animation-duration: 125s;
+		animation-timing-function: linear;
+		animation-delay: 0s;
+		animation-iteration-count: infinite;
+		animation-play-state: running;
+		/* Firefox: */
+		-moz-animation-name: bcog;
+		-moz-animation-duration: 125s;
+		-moz-animation-timing-function: linear;
+		-moz-animation-delay: 0s;
+		-moz-animation-iteration-count: infinite;
+		-moz-animation-play-state: running;
+		/* Safari and Chrome: */
+		-webkit-animation-name: bcog;
+		-webkit-animation-duration: 125s;
+		-webkit-animation-timing-function: linear;
+		-webkit-animation-delay: 0s;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-play-state: running;
+		/* Opera: */
+		-o-animation-name: bcog;
+		-o-animation-duration: 125s;
+		-o-animation-timing-function: linear;
+		-o-animation-delay: 0s;
+		-o-animation-iteration-count: infinite;
+		-o-animation-play-state: running;	
+}
+#cog>img{position:fixed;
+	width:100%;
+	zoom:120%;
+	height:auto;
+	z-index:-2;
+	}
+#anim{
+position:fixed;
+z-index:1;
+margin:0;
+padding:0;
+top:0;
+bottom:0;
+left:0;
+right:0;
+background:rgba(255,255,255,0);
+min-width:100%;
+min-height:100%;
+width:100%;
+height:100%;
+/*colour anim */
+animation-name: myfirst;
+animation-duration: 15s;
+animation-timing-function: linear;
+animation-delay: 0s;
+animation-iteration-count: infinite;
+animation-direction: alternate;
+animation-play-state: running;
+/* Firefox: */
+-moz-animation-name: myfirst;
+-moz-animation-duration: 15s;
+-moz-animation-timing-function: linear;
+-moz-animation-delay: 0s;
+-moz-animation-iteration-count: infinite;
+-moz-animation-direction: alternate;
+-moz-animation-play-state: running;
+/* Safari and Chrome: */
+-webkit-animation-name: myfirst;
+-webkit-animation-duration: 15s;
+-webkit-animation-timing-function: linear;
+-webkit-animation-delay: 0s;
+-webkit-animation-iteration-count: infinite;
+-webkit-animation-direction: alternate;
+-webkit-animation-play-state: running;
+/* Opera: */
+-o-animation-name: myfirst;
+-o-animation-duration: 15s;
+-o-animation-timing-function: linear;
+-o-animation-delay: 0s;
+-o-animation-iteration-count: infinite;
+-o-animation-direction: alternate;
+-o-animation-play-state: running;
+}

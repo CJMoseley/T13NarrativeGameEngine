@@ -1,0 +1,19 @@
+<svg width="256" height="512" viewBox="0 0 256 512" xmlns="http://www.w3.org/2000/svg" id="aquatic-base">
+    <!--
+        Aquatic Base Figure SVG Template
+        - A generic base for aquatic or piscine beings.
+    -->
+    <g id="head">
+        <!-- A smooth, hydrodynamic head shape -->
+        <path id="headshape" d="M 128,80 C 90,100 90,160 128,180 C 166,160 166,100 128,80 Z" data-fill="primary-skin" fill="#70a0a0" />
+        <!-- Large, side-facing eyes -->
+        <circle id="left-eye" cx="100" cy="130" r="8" data-fill="sclera" fill="#000" />
+        <circle id="right-eye" cx="156" cy="130" r="8" data-fill="sclera" fill="#000" />
+        <!-- Gills -->
+        <path id="gills" d="M 95,150 C 90,155 90,165 95,170 M 93,157 C 88,162 88,172 93,177 M 161,150 C 166,155 166,165 161,170 M 163,157 C 168,162 168,172 163,177" fill="none" data-stroke="gills" stroke="#508080" stroke-width="2" />
+    </g>
+    <g id="body">
+        <!-- A simple, streamlined torso -->
+        <path id="torso" d="M 110,180 L 146,180 L 138,320 L 118,320 Z" data-fill="secondary-skin" fill="#609090" />
+    </g>
+</svg>

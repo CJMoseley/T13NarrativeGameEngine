@@ -1,0 +1,17 @@
+<svg width="256" height="512" viewBox="0 0 256 512" xmlns="http://www.w3.org/2000/svg" id="draconic-base">
+    <!--
+        Draconic Base Figure SVG Template
+        ComfyUI Prompt:
+        retro anime style portrait of a majestic draconic alien, sharp features, scales, horns, vibrant deep purple skin with electric blue highlights, black sclera, glowing yellow reptilian eyes, intricate sci-fi armor in obsidian and gold, nebula background, cinematic lighting, masterpiece, sharp focus, high contrast.
+        Negative Prompt:
+        human, photorealistic, 3d render, blurry, deformed, extra limbs, poorly drawn, text, watermark.
+    -->
+    <g id="body">
+        <path id="torso" d="M 90,170 C 90,210 166,210 166,170 L 160,320 L 96,320 Z" fill="#4a4a4a" />
+        <path id="neck" d="M 128,170 L 128,150 L 128,150 Z" stroke="#4a4a4a" stroke-width="20" />
+    </g>
+    <g id="head">
+        <path id="headshape" d="M 100,80 C 90,120 128,150 156,80 C 140,50 116,50 100,80 Z" fill="#555" />
+        <path id="horns" d="M 95,80 C 75,40 90,60 100,80 M 161,80 C 181,40 166,60 156,80" fill="none" stroke="#555" stroke-width="10" />
+    </g>
+</svg>

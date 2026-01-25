@@ -1,0 +1,1451 @@
+{
+  "1201": {
+    "id": 1201,
+    "prof": {
+      "Name": [
+        "Illogical Locations",
+        "Illogical Location Orthodox Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Illogical Locations is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1202": {
+    "id": 1202,
+    "prof": {
+      "Name": [
+        "Mistaken",
+        "Mistaken Orthodox Low Boon Adjective Proficiency",
+        "wrong, faulty, confounding, erroneous, incorrect"
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Mistaken is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1203": {
+    "id": 1203,
+    "prof": {
+      "Name": [
+        "Faulty",
+        "Faulty Orthodox Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Faulty is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1204": {
+    "id": 1204,
+    "prof": {
+      "Name": [
+        "Confounding Locations",
+        "Confounding Location Orthodox Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Confounding Locations is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1205": {
+    "id": 1205,
+    "prof": {
+      "Name": [
+        "Uneducated",
+        "Uneducated Orthodox Low Boon Adjective Proficiency",
+        "ignorant, benighted, unrefined, unschooled, illiterate"
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Uneducated is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1206": {
+    "id": 1206,
+    "prof": {
+      "Name": [
+        "Benighted",
+        "Benighted Orthodox Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Benighted is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1207": {
+    "id": 1207,
+    "prof": {
+      "Name": [
+        "Unrefined Locations",
+        "Unrefined Location Orthodox Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Unrefined Locations is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1208": {
+    "id": 1208,
+    "prof": {
+      "Name": [
+        "Uncultured",
+        "Uncultured Orthodox Low Boon Adjective Proficiency",
+        "barbarian, uncultivated, crude, unrefined, philistine"
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Uncultured is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1209": {
+    "id": 1209,
+    "prof": {
+      "Name": [
+        "Barbarian",
+        "Barbarian Orthodox Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Barbarian is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1210": {
+    "id": 1210,
+    "prof": {
+      "Name": [
+        "Uncultivated Locations",
+        "Uncultivated Location Orthodox Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Uncultivated Locations is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1211": {
+    "id": 1211,
+    "prof": {
+      "Name": [
+        "Educated",
+        "Educated Orthodox Medium Boon Adjective Proficiency",
+        "learned, polished, civilized, schooled, literate"
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Educated is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1212": {
+    "id": 1212,
+    "prof": {
+      "Name": [
+        "Polished",
+        "Polished Orthodox Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Polished is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1213": {
+    "id": 1213,
+    "prof": {
+      "Name": [
+        "Civilized Locations",
+        "Civilized Location Orthodox Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Civilized Locations is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1214": {
+    "id": 1214,
+    "prof": {
+      "Name": [
+        "Bookish",
+        "Bookish Orthodox Medium Boon Adjective Proficiency",
+        "scholarly, academic, aesthetic, studious, learned"
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Bookish is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1215": {
+    "id": 1215,
+    "prof": {
+      "Name": [
+        "Scholarly",
+        "Scholarly Orthodox Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Scholarly is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1216": {
+    "id": 1216,
+    "prof": {
+      "Name": [
+        "Aesthetic Locations",
+        "Aesthetic Location Orthodox Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Aesthetic Locations is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1217": {
+    "id": 1217,
+    "prof": {
+      "Name": [
+        "Learned",
+        "Learned Orthodox High Boon Adjective Proficiency",
+        "scholarly, academic, cultured, knowledgeable, erudite"
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Learned is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1218": {
+    "id": 1218,
+    "prof": {
+      "Name": [
+        "Academic",
+        "Academic Orthodox High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Academic is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1219": {
+    "id": 1219,
+    "prof": {
+      "Name": [
+        "Cultured Locations",
+        "Cultured Location Orthodox High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Cultured Locations is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1220": {
+    "id": 1220,
+    "prof": {
+      "Name": [
+        "Knowledgeable",
+        "Knowledgeable Orthodox High Boon Adjective Proficiency",
+        "informed, sophisticated, discerning, learned, aware"
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Knowledgeable is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1221": {
+    "id": 1221,
+    "prof": {
+      "Name": [
+        "Sophisticated",
+        "Sophisticated Orthodox High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Sophisticated is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1222": {
+    "id": 1222,
+    "prof": {
+      "Name": [
+        "Discerning Locations",
+        "Discerning Location Orthodox High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Discerning Locations is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1223": {
+    "id": 1223,
+    "prof": {
+      "Name": [
+        "Informed",
+        "Informed Orthodox Very-High Boon Adjective Proficiency",
+        "knowledgeable, reliable, reflective, aware, briefed"
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Informed is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1224": {
+    "id": 1224,
+    "prof": {
+      "Name": [
+        "Reliable",
+        "Reliable Orthodox Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Reliable is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1225": {
+    "id": 1225,
+    "prof": {
+      "Name": [
+        "Reflective Locations",
+        "Reflective Location Orthodox Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Reflective Locations is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1226": {
+    "id": 1226,
+    "prof": {
+      "Name": [
+        "Enlightened",
+        "Enlightened Orthodox Very-High Boon Adjective Proficiency",
+        "educated, elite, studious, aware, informed"
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Enlightened is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1227": {
+    "id": 1227,
+    "prof": {
+      "Name": [
+        "Elite",
+        "Elite Orthodox Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Elite is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1228": {
+    "id": 1228,
+    "prof": {
+      "Name": [
+        "Studious Locations",
+        "Studious Location Orthodox Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Studious Locations is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1229": {
+    "id": 1229,
+    "prof": {
+      "Name": [
+        "Sooth-saying",
+        "Sooth-saying Orthodox Very-High Boon Adjective Proficiency",
+        "prophetic, scientific, literal, predictive, oracular"
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Sooth-saying is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1230": {
+    "id": 1230,
+    "prof": {
+      "Name": [
+        "Scientific",
+        "Scientific Orthodox Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Scientific is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1231": {
+    "id": 1231,
+    "prof": {
+      "Name": [
+        "Literal Locations",
+        "Literal Location Orthodox Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Literal Locations is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1232": {
+    "id": 1232,
+    "prof": {
+      "Name": [
+        "Aversion",
+        "Aversion Orthodox Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Aversion is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1233": {
+    "id": 1233,
+    "prof": {
+      "Name": [
+        "Disgust",
+        "Disgust Orthodox Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Disgust is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1234": {
+    "id": 1234,
+    "prof": {
+      "Name": [
+        "Revulsion",
+        "Revulsion Orthodox Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Revulsion is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1235": {
+    "id": 1235,
+    "prof": {
+      "Name": [
+        "Knowing",
+        "Knowing Orthodox Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Knowing is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1236": {
+    "id": 1236,
+    "prof": {
+      "Name": [
+        "Understanding",
+        "Understanding Orthodox Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Understanding is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1237": {
+    "id": 1237,
+    "prof": {
+      "Name": [
+        "Epiphany",
+        "Epiphany Orthodox Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Epiphany is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1238": {
+    "id": 1238,
+    "prof": {
+      "Name": [
+        "Learn",
+        "Learn Orthodox Action Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Learn is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1239": {
+    "id": 1239,
+    "prof": {
+      "Name": [
+        "Lecture",
+        "Lecture Orthodox Attack Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Lecture is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1240": {
+    "id": 1240,
+    "prof": {
+      "Name": [
+        "Calculated",
+        "Calculated Orthodox Critical Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Calculated is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1241": {
+    "id": 1241,
+    "prof": {
+      "Name": [
+        "Philosopher",
+        "Philosopher Orthodox Core Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Philosopher is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1242": {
+    "id": 1242,
+    "prof": {
+      "Name": [
+        "Teachings",
+        "Teachings Orthodox Descendants Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Teachings is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1243": {
+    "id": 1243,
+    "prof": {
+      "Name": [
+        "Instructive",
+        "Instructive Orthodox Edge Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Instructive is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1244": {
+    "id": 1244,
+    "prof": {
+      "Name": [
+        "Instructive",
+        "Instructive Orthodox Glow Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Instructive is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1245": {
+    "id": 1245,
+    "prof": {
+      "Name": [
+        "Misinformation",
+        "Misinformation Orthodox Failure Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Misinformation is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1246": {
+    "id": 1246,
+    "prof": {
+      "Name": [
+        "Moderate",
+        "Moderate Orthodox Fumble Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Moderate is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1247": {
+    "id": 1247,
+    "prof": {
+      "Name": [
+        "Stress",
+        "Stress Orthodox Gnarl Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Stress is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1248": {
+    "id": 1248,
+    "prof": {
+      "Name": [
+        "Notification",
+        "Notification Orthodox Herald Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Notification is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1249": {
+    "id": 1249,
+    "prof": {
+      "Name": [
+        "Bias",
+        "Bias Orthodox Hitch Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Bias is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1250": {
+    "id": 1250,
+    "prof": {
+      "Name": [
+        "Heterodoxy",
+        "Heterodoxy Orthodox Hurdle Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Heterodoxy is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

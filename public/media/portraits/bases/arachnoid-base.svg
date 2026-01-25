@@ -1,0 +1,25 @@
+<svg width="256" height="512" viewBox="0 0 256 512" xmlns="http://www.w3.org/2000/svg" id="arachnoid-base">
+    <!--
+        Arachnoid / Myriapod Base Figure SVG Template
+        - A generic base for multi-limbed creatures like spiders or centipedes.
+    -->
+    <g id="body">
+        <!-- A central, slightly segmented body -->
+        <path id="torso" d="M 128,180 C 100,220 156,220 128,180 L 128,320 C 100,360 156,360 128,320 Z" data-fill="primary-carapace" fill="#6B4F3A" />
+        <!-- Suggestion of multiple legs -->
+        <path id="legs" d="M 110,210 C 80,190 80,240 110,220 M 146,210 C 176,190 176,240 146,220 M 110,260 C 80,240 80,290 110,270 M 146,260 C 176,240 176,290 146,270 M 110,310 C 80,290 80,340 110,320 M 146,310 C 176,290 176,340 146,320" fill="none" data-stroke="limbs" stroke="#5A3F2A" stroke-width="6" />
+    </g>
+    <g id="head">
+        <!-- A more rounded, spider-like head -->
+        <path id="headshape" d="M 100,120 C 80,180 176,180 156,120 C 150,90 106,90 100,120 Z" data-fill="secondary-carapace" fill="#8C6F5A" />
+        <!-- Multiple eyes -->
+        <g id="eyes" data-fill="eyes" fill="#111">
+            <circle cx="115" cy="140" r="4" />
+            <circle cx="141" cy="140" r="4" />
+            <circle cx="105" cy="155" r="3" />
+            <circle cx="151" cy="155" r="3" />
+            <circle cx="120" cy="160" r="3" />
+            <circle cx="136" cy="160" r="3" />
+        </g>
+    </g>
+</svg>

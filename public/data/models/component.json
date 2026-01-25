@@ -1,0 +1,34 @@
+{
+    "metadata": {
+        "formatVersion": 4.5,
+        "type": "Object",
+        "generator": "Three.js JSON Object"
+    },
+    "geometries": [
+        {
+            "uuid": "component_geometry",
+            "type": "BoxGeometry",
+            "width": 1,
+            "height": 1,
+            "depth": 1,
+            "widthSegments": 1,
+            "heightSegments": 1,
+            "depthSegments": 1
+        }
+    ],
+    "materials": [
+        {
+            "uuid": "component_material",
+            "type": "MeshBasicMaterial",
+            "color": 16777215,
+            "wireframe": true
+        }
+    ],
+    "object": {
+        "uuid": "component_object",
+        "type": "Mesh",
+        "geometry": "component_geometry",
+        "material": "component_material",
+        "matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]
+    }
+}
