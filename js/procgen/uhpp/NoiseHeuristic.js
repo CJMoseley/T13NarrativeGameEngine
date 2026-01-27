@@ -32,19 +32,40 @@ export class NoiseHeuristic {
 
         const macroValue = this.noise3D(nx * noiseScale, ny * noiseScale, nz * noiseScale);
 
-        // Map macroValue (-1 to 1) to weights.
-        // For example, high noise increases weight of "complex" or "peak" tiles.
+        // Map macroValue (-1 to 1) to weights dynamically.
+        // We look for 'noiseInfluence' rules in the tile definitions.
         context.weights = tileSet.weights.map((baseWeight, index) => {
-            const tileType = tileSet.tileTypes ? tileSet.tileTypes[index] : 'Default';
+            const tileData = tileSet.tiles[index];
+            if (!tileData) return baseWeight;
 
-            if (macroValue > 0.8 && tileType === 'Peak') {
-                return baseWeight * 5;
-            }
-            if (macroValue < -0.8 && tileType === 'Void') {
-                return baseWeight * 10;
+            let multiplier = 1.0;
+
+            // Handle tile-specific noise rules (generic)
+            if (tileData.noiseInfluence) {
+                const rules = Array.isArray(tileData.noiseInfluence) ? tileData.noiseInfluence : [tileData.noiseInfluence];
+                for (const rule of rules) {
+                    const min = rule.min ?? -1;
+                    const max = rule.max ?? 1;
+                    if (macroValue >= min && macroValue <= max) {
+                        multiplier *= (rule.multiplier ?? 1.0);
+                    }
+                }
             }
 
-            return baseWeight;
+            // Fallback for context-provided global mapping (allows editor-side overrides)
+            if (context.noiseRules) {
+                for (const rule of context.noiseRules) {
+                    if (rule.tileType === tileData.type || rule.tileID === index) {
+                        const min = rule.min ?? -1;
+                        const max = rule.max ?? 1;
+                        if (macroValue >= min && macroValue <= max) {
+                            multiplier *= (rule.multiplier ?? 1.0);
+                        }
+                    }
+                }
+            }
+
+            return baseWeight * multiplier;
         });
 
         console.log(`NoiseHeuristic: Macro weight adjusted (value: ${macroValue.toFixed(2)})`);
