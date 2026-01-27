@@ -140,3 +140,7 @@
 1:38:21 AM [vite] (client) page reload plugins/t13ne/modules/workbench/t13ne-narrative-UI.js
 1:40:36 AM [vite] (client) page reload plugins/t13ne/modules/t13ne-knots.js
 1:41:59 AM [vite] (client) page reload plugins/t13ne/modules/workbench/t13ne-narrative-UI.js
+2:20:33 AM [vite] (client) page reload js/procgen/uhpp/PrimitiveModelRegistry.js
+2:21:47 AM [vite] (client) page reload js/procgen/uhpp/RenderBridge.js
+2:21:59 AM [vite] (client) page reload js/procgen/uhpp/SurfaceSynth.js
+2:25:49 AM [vite] (client) page reload js/procgen/uhpp/SurfaceSynth.js

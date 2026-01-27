@@ -1,5 +1,6 @@
 import * as THREE from 'three';
-import { MarchingCubes } from 'three/examples/jsm/objects/MarchingCubes.js';
+import { edgeTable, triTable, cornerIndexFromEdge, cubeCorners } from './MarchingCubesTables.js';
+import { materialRegistry } from './MaterialRegistry.js';
 
 /**
  * @module UHPP/SurfaceSynth
@@ -17,10 +18,12 @@ export class SurfaceSynth {
             grid,
             gridDimensions,
             surfaceMethod = 'MARCHING_CUBES',
-            material = new THREE.MeshStandardMaterial({ color: 0x888888 })
+            materialParams = { color: 0x888888 }
         } = context;
 
         if (!grid) return context;
+
+        const material = context.material || materialRegistry.getMaterial(materialParams);
 
         if (surfaceMethod === 'MARCHING_CUBES') {
             context.mesh = this._generateMarchingCubes(grid, gridDimensions, material);
@@ -37,43 +40,68 @@ export class SurfaceSynth {
      * @private
      */
     _generateMarchingCubes(grid, dims, material) {
-        const resolution = Math.max(dims.x, dims.y, dims.z);
-        const effect = new MarchingCubes(resolution, material, true, false, 100000);
+        const { x: X, y: Y, z: Z } = dims;
+        const vertices = [];
+        const threshold = 0.5;
 
-        effect.position.set(0, 0, 0);
-        effect.scale.set(dims.x, dims.y, dims.z);
+        // Iterate through each 1x1x1 cell in the grid
+        for (let z = 0; z < Z - 1; z++) {
+            for (let y = 0; y < Y - 1; y++) {
+                for (let x = 0; x < X - 1; x++) {
+                    let cubeIndex = 0;
+                    const cornerDensities = new Float32Array(8);
+                    const cornerPositions = [];
 
-        // Fill the scalar field
-        // MarchingCubes.js expects a field of size resolution^3
-        const size = resolution;
-        for (let z = 0; z < dims.z; z++) {
-            for (let y = 0; y < dims.y; y++) {
-                for (let x = 0; x < dims.x; x++) {
-                    const idx = x + y * dims.x + z * dims.x * dims.y;
-                    const val = grid[idx];
+                    // 1. Determine the index into the edge table which tells us which edges are intersected
+                    for (let i = 0; i < 8; i++) {
+                        const cx = x + cubeCorners[i][0];
+                        const cy = y + cubeCorners[i][1];
+                        const cz = z + cubeCorners[i][2];
+                        const idx = cx + cy * X + cz * X * Y;
 
-                    if (val > 0) {
-                        // In MarchingCubes, we usually set a value > threshold at the voxel center
-                        // This implementation is a bit simplified
-                        this._setVoxel(effect, x, y, z, size, 1.0);
+                        // Use grid value as density (assuming 0=Empty, >0=Full)
+                        const val = grid[idx] > 0 ? 1.0 : 0.0;
+                        cornerDensities[i] = val;
+                        cornerPositions.push(new THREE.Vector3(cx, cy, cz));
+
+                        if (val > threshold) cubeIndex |= (1 << i);
+                    }
+
+                    // 2. Look up the triangulation for this configuration
+                    const edges = edgeTable[cubeIndex];
+                    if (edges === 0) continue;
+
+                    const triangles = triTable[cubeIndex];
+                    for (let i = 0; triangles[i] !== -1; i += 3) {
+                        // For each triangle, get the three edges that make it up
+                        for (let j = 0; j < 3; j++) {
+                            const edgeIdx = triangles[i + j];
+                            const v1Idx = cornerIndexFromEdge[edgeIdx][0];
+                            const v2Idx = cornerIndexFromEdge[edgeIdx][1];
+
+                            const p1 = cornerPositions[v1Idx];
+                            const p2 = cornerPositions[v2Idx];
+                            const d1 = cornerDensities[v1Idx];
+                            const d2 = cornerDensities[v2Idx];
+
+                            // Linear interpolation for smoother surface
+                            const mu = (threshold - d1) / (d2 - d1 || 0.000001);
+                            const vx = p1.x + mu * (p2.x - p1.x);
+                            const vy = p1.y + mu * (p2.y - p1.y);
+                            const vz = p1.z + mu * (p2.z - p1.z);
+
+                            vertices.push(vx, vy, vz);
+                        }
                     }
                 }
             }
         }
 
-        effect.update();
-        return effect;
-    }
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+        geometry.computeVertexNormals();
 
-    /**
-     * Internal helper to set voxel in Three.js MarchingCubes field.
-     * @private
-     */
-    _setVoxel(effect, x, y, z, res, val) {
-        const field = effect.field;
-        const idx = x + y * res + z * res * res;
-        if (idx < field.length) {
-            field[idx] = val;
-        }
+        const mesh = new THREE.Mesh(geometry, material);
+        return mesh;
     }
 }

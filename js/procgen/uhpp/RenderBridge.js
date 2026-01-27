@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { primitiveRegistry } from './PrimitiveModelRegistry.js';
+import { materialRegistry } from './MaterialRegistry.js';
 
 /**
  * @module UHPP/RenderBridge
@@ -41,15 +42,13 @@ export class RenderBridge {
 
     /**
      * Clears the current rendering.
+     * Note: We don't dispose geometries or materials here as they are managed and cached
+     * by the respective registries (PrimitiveModelRegistry, MaterialRegistry).
      */
     clear() {
         while (this.activeGroup.children.length) {
             const obj = this.activeGroup.children[0];
-            if (obj.geometry) obj.geometry.dispose();
-            if (obj.material) {
-                if (Array.isArray(obj.material)) obj.material.forEach(m => m.dispose());
-                else obj.material.dispose();
-            }
+            // Disposal is handled by registries or central manager
             this.activeGroup.remove(obj);
         }
     }
@@ -82,9 +81,12 @@ export class RenderBridge {
             const tileData = tileSet.tiles[tileID];
             if (!tileData) continue;
 
-            // Get geometry and material from primitive registry or tile data
+            // Get geometry and material from registries
             const geometry = primitiveRegistry.getGeometry(tileData.primitive || 'Box', tileData.params || {});
-            const material = tileData.material || new THREE.MeshStandardMaterial({ color: tileData.color || 0xcccccc });
+            const material = tileData.material || materialRegistry.getMaterial({
+                color: tileData.color,
+                ...tileData.materialParams
+            });
 
             const instancedMesh = new THREE.InstancedMesh(geometry, material, positions.length);
             const dummy = new THREE.Object3D();
