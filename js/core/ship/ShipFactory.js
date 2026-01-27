@@ -15,6 +15,7 @@ import { WiringGenerator } from './WiringGenerator.js';
 import { ShipGenerator } from './ShipGenerator.js';
 import { ShipAssembler } from './ShipAssembler.js';
 import { COMPONENT_COLORS } from './ShipUtils.js';
+import { EventBus } from '../EventBus.js';
 
 export { COMPONENT_COLORS };
 
@@ -46,7 +47,16 @@ export class ShipFactory {
             .addStage(new CellularAutomata())
             .addStage(new SurfaceSynth());
 
-        this.renderBridge = new RenderBridge(this.gameEngine.scene.threeScene);
+        // Safe initialization: scene might not be available during GameEngine bootstrap
+        const initialScene = this.gameEngine.scene ? this.gameEngine.scene.threeScene : null;
+        this.renderBridge = new RenderBridge(initialScene);
+
+        // Update render bridge when the scene changes
+        EventBus.on('scene:load', () => {
+            if (this.gameEngine.scene) {
+                this.renderBridge.setTargetScene(this.gameEngine.scene.threeScene);
+            }
+        });
 
         this.shipCache = new Map();
 
@@ -126,7 +136,7 @@ export class ShipFactory {
      */
     resetAssembly() {
         this.currentShipAssembly.components.forEach((comp, id) => {
-            if (comp.model) {
+            if (comp.model && this.gameEngine.scene) {
                 this.gameEngine.scene.removeObject(id); // Remove from scene if it was added
             }
         });
@@ -156,11 +166,21 @@ export class ShipFactory {
         const componentConfig = { ...config, modelUrl };
         let model = null;
         try {
-            // Use Scene's addObject to handle loading and adding to Three.js group
-            const addedObject = await this.gameEngine.scene.addObject(id, componentConfig);
-            model = addedObject.model;
+            if (this.gameEngine.scene) {
+                // Use Scene's addObject to handle loading and adding to Three.js group
+                const addedObject = await this.gameEngine.scene.addObject(id, componentConfig);
+                model = addedObject.model;
+            } else {
+                // Fallback: load model directly if no scene is active
+                model = await this.modelLoader.loadModel(modelUrl);
+                if (model) {
+                    model.name = id;
+                    if (config.pos) model.position.set(...config.pos);
+                    if (config.rot) model.rotation.set(...config.rot);
+                }
+            }
         } catch (error) {
-            console.error(`Error adding component '${id}' to scene:`, error);
+            console.error(`Error adding component '${id}':`, error);
         }
 
         const component = {
@@ -179,7 +199,9 @@ export class ShipFactory {
      */
     removeComponent(id) {
         if (this.currentShipAssembly.components.has(id)) {
-            this.gameEngine.scene.removeObject(id); // Remove visual and physics object from scene
+            if (this.gameEngine.scene) {
+                this.gameEngine.scene.removeObject(id); // Remove visual and physics object from scene
+            }
 
             // Remove all wiring connections to/from this component
             delete this.currentShipAssembly.wiringGraph[id];

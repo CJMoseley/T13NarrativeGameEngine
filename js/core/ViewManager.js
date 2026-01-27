@@ -495,6 +495,7 @@ export class ViewManager {
 
         // 4. Load the new scene into the view
         this.currentScene = newScene;
+        this.gameEngine.scene = newScene; // Ensure GameEngine knows the active scene
         
         // Ensure the renderer's DOM element is in the container
         if (this.renderer.domElement.parentNode !== this.canvasContainer) {
