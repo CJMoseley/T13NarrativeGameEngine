@@ -1,4 +1,0 @@
-<?
-//Boon handling
-
-?>
