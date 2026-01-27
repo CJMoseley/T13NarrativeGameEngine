@@ -26,17 +26,17 @@ export class AvatarEngine {
         // 2. Generate Geometry
         const geometry = this._generateGeometry(bodyPlan, bones);
 
-        // 3. Create SkinnedMesh
+        // 3. Setup Morph Targets on Geometry
+        this._setupMorphTargets(geometry, bodyPlan);
+
+        // 4. Create SkinnedMesh
         const material = new THREE.MeshToonMaterial({
-            color: 0xaaaaaa,
-            skinning: true
+            color: 0xaaaaaa
         });
 
         const mesh = new THREE.SkinnedMesh(geometry, material);
         mesh.add(rootBone);
         mesh.bind(skeleton);
-
-        this._setupMorphTargets(mesh, bodyPlan);
 
         return mesh;
     }
@@ -44,24 +44,23 @@ export class AvatarEngine {
     /**
      * @private
      */
-    _setupMorphTargets(mesh, bodyPlan) {
+    _setupMorphTargets(geometry, bodyPlan) {
+        if (!geometry.attributes.position) return;
+
         // Create standard ARKit/VRM morph targets as empty attributes for now
         // In a real generator, we'd deform the geometry here
-        const positions = mesh.geometry.attributes.position.array;
+        const positions = geometry.attributes.position.array;
         const morphNames = ['eyeBlinkLeft', 'eyeBlinkRight', 'jawOpen', 'mouthPucker', 'mouthFunnel'];
 
-        mesh.morphTargetDictionary = {};
-        mesh.morphTargetInfluences = new Float32Array(morphNames.length);
+        geometry.morphAttributes.position = [];
 
         morphNames.forEach((name, i) => {
-            mesh.morphTargetDictionary[name] = i;
             const targetData = new Float32Array(positions.length);
             // Example: jawOpen deforms the head segment downwards
             if (name === 'jawOpen') {
-                // ... subtle deformation logic
+                // ... subtle deformation logic could go here
             }
-            mesh.geometry.morphAttributes.position = mesh.geometry.morphAttributes.position || [];
-            mesh.geometry.morphAttributes.position.push(new THREE.Float32BufferAttribute(targetData, 3));
+            geometry.morphAttributes.position.push(new THREE.Float32BufferAttribute(targetData, 3));
         });
     }
 

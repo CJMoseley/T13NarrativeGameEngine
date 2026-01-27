@@ -33,15 +33,17 @@ export class SkinSystem {
     /**
      * Creates a layered skin from multiple sources.
      * @param {Array<{src: string, type: string}>} layers
+     * @param {number} width
+     * @param {number} height
      */
-    async createLayeredSkin(layers) {
-        this.canvas.width = 1024;
-        this.canvas.height = 1024;
-        this.ctx.clearRect(0, 0, 1024, 1024);
+    async createLayeredSkin(layers, width = 1024, height = 1024) {
+        this.canvas.width = width;
+        this.canvas.height = height;
+        this.ctx.clearRect(0, 0, width, height);
 
         for (const layer of layers) {
             const img = await this._loadImage(layer.src);
-            this.ctx.drawImage(img, 0, 0, 1024, 1024);
+            this.ctx.drawImage(img, 0, 0, width, height);
         }
 
         const texture = new THREE.CanvasTexture(this.canvas);
