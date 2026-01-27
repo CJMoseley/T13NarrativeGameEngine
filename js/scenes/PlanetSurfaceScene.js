@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import Logger from '../core/Logger.js';
-import { PlanetSurfaceEnvironment } from '../rendering/PlanetSurfaceEnvironment.js';
+import { PlanetSurfaceEnvironment } from '../procgen/planet/PlanetSurfaceEnvironment.js';
 import { Scene } from '../core/Scene.js';
 
 /**
