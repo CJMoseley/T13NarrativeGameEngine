@@ -161,6 +161,7 @@ export class Lite extends Character {
                 name: `${annexFacet.FacetName} ${annexDef.type}`,
                 description: annexDef.Description || `A ${annexDef.type} based on ${annexFacet.FacetName}.`,
                 tags: { facets: [annexFacet.FacetName] },
+                annexType: annexDef.type,
                 proficiencies: knotData.map(p => p.profId ? p.profId : { name: p.profId, facet: annexFacet.FacetName }),
                 liteStats: annexDef
             };

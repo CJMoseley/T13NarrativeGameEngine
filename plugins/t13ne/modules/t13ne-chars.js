@@ -541,15 +541,36 @@ export class Character extends SuperKnot {
             const channel = resolveFacet(options.facets?.channel);
             const tangle = resolveFacet(options.facets?.tangle);
 
+            // Determine Type from typeData if available, or default
+            let annexType = 'Skill';
+            const masterAnnexDesc = typeData.Master_Annex || '';
+            if (masterAnnexDesc.includes('Super-Annex')) annexType = 'Super-Annex';
+            else if (masterAnnexDesc.includes('Power')) annexType = 'Power';
+            else if (masterAnnexDesc.includes('Talent')) annexType = 'Talent';
+
+            // Determine proficiency count
+            let masterProfCount = 2;
+            if (annexType === 'Talent') masterProfCount = rng.range(3, 5);
+            else if (annexType === 'Power') masterProfCount = rng.range(6, 10);
+            else if (annexType === 'Super-Annex') masterProfCount = rng.range(11, 15);
+
             const rootProfs = await getProficienciesForFacet(root.FacetName, 1);
             const channelProfs = await getProficienciesForFacet(channel.FacetName, 1);
+            const tangleProfs = await getProficienciesForFacet(tangle.FacetName, masterProfCount - 2);
 
             const knotData = [];
             if (rootProfs[0]) knotData.push({ ...rootProfs[0], knot: 16 });
             if (channelProfs[0]) knotData.push({ ...channelProfs[0], knot: 32 });
+            tangleProfs.forEach(p => knotData.push({ ...p, knot: 1 }));
+            
+            // Fill with placeholders if needed
+            while(knotData.length < masterProfCount) {
+                 knotData.push({ facet: tangle.FacetName, knot: 1 });
+            }
 
             charData.masterAnnex = new Annex(codexLoader, {
                 name: `${root.FacetName}-${channel.FacetName} Pattern`,
+                annexType: annexType,
                 description: `A pattern rooted in ${root.FacetName}, channelling ${channel.FacetName}.`,
                 tags: { facets: [root.FacetName, channel.FacetName, tangle.FacetName] },
                 proficiencies: knotData
@@ -569,9 +590,14 @@ export class Character extends SuperKnot {
 
             // Sub-Annexes by Tier
             let subAnnexCount = 0;
-            if (charData.charType.includes('Chorus')) subAnnexCount = rng.range(1, 2);
-            else if (charData.charType.includes('Cast')) subAnnexCount = rng.range(3, 5);
-            else if (charData.charType.includes('Force-of-Nature')) subAnnexCount = rng.range(6, 10);
+            let subAnnexType = 'Skill';
+            if (annexType === 'Talent') { subAnnexCount = rng.range(1, 2); subAnnexType = 'Skill'; }
+            else if (annexType === 'Power') { subAnnexCount = rng.range(3, 5); subAnnexType = 'Talent'; }
+            else if (annexType === 'Super-Annex') { subAnnexCount = rng.range(6, 10); subAnnexType = 'Power'; }
+            // Fallback based on charType if annexType was default
+            else if (charData.charType.includes('Chorus')) { subAnnexCount = rng.range(1, 2); subAnnexType = 'Skill'; }
+            else if (charData.charType.includes('Cast')) { subAnnexCount = rng.range(3, 5); subAnnexType = 'Talent'; }
+            else if (charData.charType.includes('Force-of-Nature')) { subAnnexCount = rng.range(6, 10); subAnnexType = 'Power'; }
 
             charData.subAnnexes = [];
             for (let i = 0; i < subAnnexCount; i++) {
@@ -579,7 +605,8 @@ export class Character extends SuperKnot {
                 const subProfs = await getProficienciesForFacet(subFacet.FacetName, 2);
                 if (subProfs.length > 0) {
                     charData.subAnnexes.push(new Annex(codexLoader, {
-                        name: `${subFacet.FacetName} Talent`,
+                        name: `${subFacet.FacetName} ${subAnnexType}`,
+                        annexType: subAnnexType,
                         proficiencies: subProfs,
                         tags: { facets: [subFacet.FacetName] }
                     }));

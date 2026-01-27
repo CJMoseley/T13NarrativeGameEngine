@@ -208,10 +208,10 @@ class KnotWork {
  * like a Skill, Talent, or Power.
  */
 export class Annex extends KnotWork {
-    constructor(codexLoader, { name, description, proficiencies, statblock = null, proficiencyId = null, tags = {}, fullName = null, altName = null }) {
+    constructor(codexLoader, { name, description, proficiencies, statblock = null, proficiencyId = null, tags = {}, fullName = null, altName = null, annexType = null }) {
         super(codexLoader, { name, description, knotData: proficiencies, proficiencyId, tags, fullName, altName });
         this.statblock = statblock;
-        this.annexType = this.determineAnnexType();
+        this.annexType = annexType || this.determineAnnexType();
     }
 
     determineAnnexType() {
@@ -326,7 +326,8 @@ export class Annex extends KnotWork {
             proficiencyId,
             tags,
             fullName: rawData.FullName || rawData.fullName,
-            altName: rawData.Alt_Name || rawData.altName
+            altName: rawData.Alt_Name || rawData.altName,
+            annexType: rawData.annexType || rawData.Annex_Type
         });
     }
 

@@ -582,8 +582,14 @@ export class T13NECommands {
         });
 
         this.registerCommand('Annex', 'Create', async (args, ctx) => {
-            // Cost: Skill (2), Talent (5), Power (10)
-            const cost = args.cost || 2;
+            // Determine Type and Cost
+            const type = args.annexType || args.type || 'Skill';
+            let defaultCost = 2; // Skill
+            if (type === 'Talent') defaultCost = 5;
+            else if (type === 'Power') defaultCost = 10;
+            else if (type === 'Super-Annex') defaultCost = 12;
+
+            const cost = args.cost || defaultCost;
             if (!deductCost(ctx, cost)) return { error: "Insufficient resources to create Annex" };
 
             const Threads = this.t13ne.getModule('Threads');
@@ -595,13 +601,21 @@ export class T13NECommands {
                 const facet = facetsArr[T13Dice.RNG(0, facetsArr.length - 1)];
 
                 const profs = await Threads.findProficiencies({ facet: facet.FacetName });
-                const count = T13Dice.RNG(2, 4);
+                
+                // Determine count based on type
+                let min = 2, max = 2;
+                if (type === 'Talent') { min = 3; max = 5; }
+                else if (type === 'Power') { min = 6; max = 10; }
+                else if (type === 'Super-Annex') { min = 11; max = 15; }
+
+                const count = T13Dice.RNG(min, max);
                 const selected = [];
                 for (let i = 0; i < count; i++) {
                     if (profs.length > 0) selected.push(profs[T13Dice.RNG(0, profs.length - 1)].id);
                 }
                 args.proficiencyIds = selected;
-                args.name = args.name || `Random ${facet.FacetName} Annex`;
+                args.name = args.name || `Random ${facet.FacetName} ${type}`;
+                args.annexType = type;
             }
 
             const annexId = await Threads.getAnnexes().createAnnex(args);

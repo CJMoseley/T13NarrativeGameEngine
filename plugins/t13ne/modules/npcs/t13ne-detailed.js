@@ -197,6 +197,7 @@ export class Detailed extends Character {
             const suggestion = {
                     name: `${targetFacetName} Skill`,
                     description: `A skill in ${targetFacetName}`,
+                    annexType: 'Skill',
                     proficiencies: [ { facet: targetFacetName }, { facet: targetFacetName } ],
                     tags: { facets: [targetFacetName] }
             };

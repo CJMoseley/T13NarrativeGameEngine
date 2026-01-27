@@ -38,7 +38,8 @@ class AnnexBuilder {
             name: data.name,
             description: data.description,
             tags: { facets: data.facets || [] },
-            proficiencies: data.proficiencyIds || [] // Pass IDs directly, Factory resolves them
+            proficiencies: data.proficiencyIds || [], // Pass IDs directly, Factory resolves them
+            annexType: data.annexType || data.type // Pass annexType if available
         };
 
         const annexObj = await AnnexFactory.create(factoryData);

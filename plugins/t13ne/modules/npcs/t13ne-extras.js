@@ -90,15 +90,28 @@ export class Extra extends Character {
         const channel = resolveFacet(options.facets?.channel);
         const tangle = resolveFacet(options.facets?.tangle);
         
+        // Calculate Proficiencies count for Master Annex
+        let masterProfCount = 2;
+        if (annexType === 'Talent') masterProfCount = rng.range(3, 5);
+        else if (annexType === 'Power') masterProfCount = rng.range(6, 10);
+        else if (annexType === 'Super-Annex') masterProfCount = rng.range(11, 15);
+
+        const masterProfs = [
+            { facet: root.FacetName, knot: 16 }, // Root
+            { facet: channel.FacetName, knot: 32 } // Channel
+        ];
+        // Add filler proficiencies
+        for(let i=2; i<masterProfCount; i++) {
+             masterProfs.push({ facet: tangle.FacetName, knot: 1 });
+        }
+
         // Create a suggestion for the master annex instead of creating it.
         charData.masterAnnexSuggestion = {
             name: `${root.FacetName}-${channel.FacetName} Ability`,
             description: `A ${annexType} rooted in ${root.FacetName}, channelling ${channel.FacetName}.`,
             tags: { facets: [root.FacetName, channel.FacetName, tangle.FacetName] },
-            proficiencies: [
-                { facet: root.FacetName, knot: 16 }, // Root
-                { facet: channel.FacetName, knot: 32 } // Channel
-            ],
+            proficiencies: masterProfs,
+            annexType: annexType,
             isMaster: true
         };
         charData.masterAnnex = null;
@@ -123,18 +136,20 @@ export class Extra extends Character {
 
         // Sub-Annexes
         let subAnnexCount = 0;
-        if (annexType === 'Talent') subAnnexCount = rng.range(1, 2);
-        else if (annexType === 'Power') subAnnexCount = rng.range(3, 5);
-        else if (annexType === 'Super-Annex') subAnnexCount = rng.range(6, 10);
+        let subAnnexType = 'Skill';
+        if (annexType === 'Talent') { subAnnexCount = rng.range(1, 2); subAnnexType = 'Skill'; }
+        else if (annexType === 'Power') { subAnnexCount = rng.range(3, 5); subAnnexType = 'Talent'; }
+        else if (annexType === 'Super-Annex') { subAnnexCount = rng.range(6, 10); subAnnexType = 'Power'; }
 
         charData.subAnnexes = [];
         charData.annexSuggestions = [];
         for (let i = 0; i < subAnnexCount; i++) {
             const subFacet = resolveFacet(null);
             const suggestion = {
-                name: `${subFacet.FacetName} Skill`,
-                description: `A skill in ${subFacet.FacetName}`,
+                name: `${subFacet.FacetName} ${subAnnexType}`,
+                description: `A ${subAnnexType} in ${subFacet.FacetName}`,
                 tags: charData.tags,
+                annexType: subAnnexType,
                 proficiencies: [
                     { facet: subFacet.FacetName },
                     { facet: subFacet.FacetName }

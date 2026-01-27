@@ -72,7 +72,11 @@
   },
   "annexes": {
     "description": "This directory contains saved Annex data structures, representing skills, talents, pacts, etc.",
-    "files": {}
+    "files": {
+      "annexTypes.json": {
+        "description": "Defines the different types of annexes."
+      }
+    }
   },
   "bulmas": {
     "description": "This directory contains data related to Bulmäs.",
@@ -603,9 +607,6 @@
   "proficiencies": {
     "description": "This directory contains data related to character proficiencies.",
     "files": {
-      "annexTypes.json": {
-        "description": "Defines the different types of annexes."
-      },
       "id-proficiency-list.json": {
         "description": "A comprehensive registry of all proficiencies within the T13 Narrative Engine. Each proficiency is assigned a unique ID, which is used to reference it in other data files."
       },
