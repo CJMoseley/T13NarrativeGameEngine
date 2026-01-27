@@ -124,7 +124,6 @@ class ThreadsUI {
 
         // Prepare Facet Options for Filter
         const facetOptions = [{value: 'All', label: 'All'}];
-        const Facets = T13NE.getModule('Facets');
         if (Facets) {
             const facetsArr = await Facets.getFacetsArr();
             facetsArr.forEach((f, i) => {
