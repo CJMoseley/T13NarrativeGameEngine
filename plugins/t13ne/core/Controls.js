@@ -1,4 +1,4 @@
-import Logger from '@/js/core/Logger.js';
+import Logger from './Logger.js';
 
 /**
  * Manages game controls by loading them from public/data/controls.json.

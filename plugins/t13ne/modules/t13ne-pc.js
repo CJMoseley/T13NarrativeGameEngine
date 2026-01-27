@@ -1,4 +1,4 @@
-import Logger from '@/js/core/Logger.js';
+import Logger from '@plugins/t13ne/core/Logger.js';
 
 /**
  * T13NE PC Handler

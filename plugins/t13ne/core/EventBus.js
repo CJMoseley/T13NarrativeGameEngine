@@ -1,4 +1,4 @@
-import Logger from '@/js/core/Logger.js';
+import Logger from './Logger.js';
 
 /**
  * A simple singleton event bus for decoupled inter-module communication.

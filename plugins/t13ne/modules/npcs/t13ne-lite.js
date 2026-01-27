@@ -1,7 +1,7 @@
 import { Character, SeededRNG } from '../t13ne-chars.js';
 import { Annex, Hitch, PersonalityAnnex } from '../t13ne-knots.js';
 import T13NE from '../../T13NE.js';
-import Logger from '@/js/core/Logger.js';
+import Logger from '@plugins/t13ne/core/Logger.js';
 import T13Boons from '../t13ne-boon.js';
 
 const LITE_BOONS = {

@@ -1,7 +1,7 @@
 import * as THREE from 'three';
-import Logger from '../core/Logger.js';
-import { Scene } from '../core/Scene.js';
-import { SceneTools } from '../core/SceneTools.js';
+import Logger from '@plugins/t13ne/core/Logger.js';
+import { Scene } from '@plugins/t13ne/core/Scene.js';
+import { SceneTools } from '@plugins/t13ne/core/SceneTools.js';
 
 export class OrreryScene extends Scene {
     constructor(viewManager, sceneData) {

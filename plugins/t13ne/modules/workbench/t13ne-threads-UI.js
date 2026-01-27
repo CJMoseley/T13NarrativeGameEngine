@@ -1,4 +1,4 @@
-import Logger from '@/js/core/Logger.js';
+import Logger from '@plugins/t13ne/core/Logger.js';
 import T13NE from '@plugins/t13ne/T13NE.js';
 import CodexLoader from '@plugins/t13ne/modules/CodexLoader.js';
 import UI from './t13ne-UI.js';
