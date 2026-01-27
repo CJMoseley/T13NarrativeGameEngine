@@ -10,13 +10,18 @@
   },
   "dependencies": {
     "@bitheral/marching-cubes": "^1.4.7",
+    "@mediapipe/camera_utils": "0.3.1675466862",
+    "@mediapipe/drawing_utils": "0.3.1675466124",
+    "@mediapipe/holistic": "0.5.1675471629",
+    "@pixiv/three-vrm": "^3.4.5",
     "d3-delaunay": "^6.0.4",
     "enable3d": "^0.26.1",
     "gl-matrix": "^3.4.4",
+    "kalidokit": "^1.1.5",
     "lindenmayer": "^1.5.4",
     "physx-js-webidl": "^2.7.1",
     "simplex-noise": "^4.0.3",
-    "three": "^0.164.1",
+    "three": "^0.174.0",
     "three-csg-ts": "^3.2.0"
   },
   "devDependencies": {
