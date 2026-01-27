@@ -196,10 +196,22 @@ var WFCTool3D = function(){
   var n_prototypes = 0
   var formulae = []
 
+  function clone3D(m) {
+    var d = m.length;
+    var r = new Array(d);
+    for (var i = 0; i < d; i++) {
+      var h = m[i].length;
+      r[i] = new Array(h);
+      for (var j = 0; j < h; j++) {
+        r[i][j] = m[i][j].slice();
+      }
+    }
+    return r;
+  }
 
   var transformBank = {
     ry:function(m){
-      var r = JSON.parse(JSON.stringify(m));
+      var r = clone3D(m);
       for (var i = 0; i < m.length; i++){
         for (var j = 0; j < m.length; j++){
           for (var k = 0; k < m.length; k++){
@@ -211,7 +223,7 @@ var WFCTool3D = function(){
     },
 
     rx:function(m){
-      var r = JSON.parse(JSON.stringify(m));
+      var r = clone3D(m);
       for (var i = 0; i < m.length; i++){
         for (var j = 0; j < m.length; j++){
           for (var k = 0; k < m.length; k++){
@@ -223,7 +235,7 @@ var WFCTool3D = function(){
     },
 
     rz:function(m){
-      var r = JSON.parse(JSON.stringify(m));
+      var r = clone3D(m);
       for (var i = 0; i < m.length; i++){
         for (var j = 0; j < m.length; j++){
           for (var k = 0; k < m.length; k++){
@@ -235,11 +247,11 @@ var WFCTool3D = function(){
     },
 
     fz:function(m){
-      var r = JSON.parse(JSON.stringify(m));
+      var r = clone3D(m);
       for (var i = 0; i < m.length; i++){
         for (var j = 0; j < m[0].length; j++){
           for (var k = 0; k < m[0][0].length; k++){
-            r[i][j][k] = m[i][j][m.length-1-k];
+            r[i][j][k] = m[i][j][m[0][0].length-1-k];
           }
         }
       }
@@ -247,11 +259,11 @@ var WFCTool3D = function(){
     },
 
     fx:function(m){
-      var r = JSON.parse(JSON.stringify(m));
+      var r = clone3D(m);
       for (var i = 0; i < m.length; i++){
         for (var j = 0; j < m[0].length; j++){
           for (var k = 0; k < m[0][0].length; k++){
-            r[i][j][k] = m[i][m.length-1-j][k];
+            r[i][j][k] = m[i][m[0].length-1-j][k];
           }
         }
       }
@@ -260,7 +272,7 @@ var WFCTool3D = function(){
 
     fy:function(m){
 
-      var r = JSON.parse(JSON.stringify(m));
+      var r = clone3D(m);
 
       for (var i = 0; i < m.length; i++){
         for (var j = 0; j < m[0].length; j++){
