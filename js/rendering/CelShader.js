@@ -98,8 +98,7 @@ export function createCelMaterial(params = {}) {
         uniforms: THREE.UniformsUtils.clone(CelShader.uniforms),
         vertexShader: CelShader.vertexShader,
         fragmentShader: CelShader.fragmentShader,
-        lights: true,
-        skinning: true
+        lights: true
     });
 
     if (params.color) material.uniforms.uColor.value.set(params.color);
