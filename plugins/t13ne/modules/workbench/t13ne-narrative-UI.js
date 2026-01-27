@@ -1,7 +1,7 @@
 import T13NE from '@plugins/t13ne/T13NE.js';
 import UI from './t13ne-UI.js';
 import CharacterUI from './t13ne-chars-UI.js';
-import GeometryUI from './t13ne-geometry-UI.js';
+import GeometryUI from './t13ne-geometry-ui.js';
 
 /**
  * T13NE Narrative UI Module
@@ -146,7 +146,7 @@ class NarrativeUI {
         return div;
     }
 
-    inspect(obj) {
+    async inspect(obj) {
         const body = document.getElementById('inspector-body');
         if (!body) return;
 
@@ -241,6 +241,7 @@ class NarrativeUI {
         }
 
         html += `
+            <div id="uhpp-inspector-anchor"></div>
             <div style="display: flex; gap: 0.5rem; margin-top: 1.5rem;">
                 <button class="btn btn-primary" style="flex: 1;" onclick="Workbench.editEntity()">Edit Data</button>
                 ${isGame ? `` : `<button class="btn" style="flex: 1;" onclick="Workbench.triggerAction()">Execute Action</button>`}
@@ -252,6 +253,20 @@ class NarrativeUI {
         `;
 
         body.innerHTML = html;
+
+        // UHPP Integration for Descendants and Locations
+        if (obj.constructor.name === 'Descendant' || obj.constructor.name === 'Location' || obj.id?.startsWith('desc-') || obj.descendantType) {
+            const anchor = document.getElementById('uhpp-inspector-anchor');
+            if (anchor) {
+                try {
+                    const { UHPPEditorUI } = await import('@/js/procgen/uhpp/UHPPEditorUI.js');
+                    const uhppUI = new UHPPEditorUI(window.Workbench);
+                    uhppUI.renderInspector(obj, anchor);
+                } catch (e) {
+                    console.error("Failed to load UHPP Editor UI:", e);
+                }
+            }
+        }
     }
 }
 

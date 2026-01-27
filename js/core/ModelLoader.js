@@ -4,6 +4,8 @@ import * as THREE from 'three';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 import { TDSLoader } from 'three/examples/jsm/loaders/TDSLoader.js';
 import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js';
+import { primitiveRegistry } from '../procgen/uhpp/PrimitiveModelRegistry.js';
+
 // USDALoader is more complex and might require additional dependencies or a custom build,
 // so we'll leave it as a lower priority/future enhancement for now.
 // import { USDZLoader } from 'three/addons/loaders/USDZLoader.js'; // For USD files
@@ -92,6 +94,16 @@ class ModelLoader {
             console.error(`Error loading custom JSON model ${url}:`, error);
             throw error;
         }
+    }
+
+    /**
+     * Loads/Creates a 3D primitive model.
+     * @param {string} type The type of primitive (Box, Sphere, etc.)
+     * @param {object} params Parameters for the primitive geometry.
+     * @returns {Promise<THREE.Mesh>}
+     */
+    async loadPrimitive(type, params = {}) {
+        return primitiveRegistry.createMesh(type, params);
     }
 }
 

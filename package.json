@@ -10,8 +10,12 @@
   },
   "dependencies": {
     "@bitheral/marching-cubes": "^1.4.7",
+    "d3-delaunay": "^6.0.4",
     "enable3d": "^0.26.1",
+    "gl-matrix": "^3.4.4",
+    "lindenmayer": "^1.5.4",
     "physx-js-webidl": "^2.7.1",
+    "simplex-noise": "^4.0.3",
     "three": "^0.164.1",
     "three-csg-ts": "^3.2.0"
   },

@@ -124,7 +124,7 @@ export class OrreryScene extends Scene {
         // Calculate distance needed to fit maxDist vertically and horizontally
         const distV = (maxDist * 1.2) / Math.tan(vFov / 2);
         const distH = (maxDist * 1.2) / (Math.tan(vFov / 2) * aspect);
-        const fitDist = Math.max(distV, distH, 300); // Ensure minimum distance
+        let fitDist = Math.max(distV, distH, 300); // Ensure minimum distance
         
         // NaN Safety
         if (isNaN(fitDist)) fitDist = 500;
@@ -307,7 +307,7 @@ export class OrreryScene extends Scene {
         // Tighter fit (1.1 buffer instead of 1.2)
         const distV = (maxDist * 1.1) / Math.tan(vFov / 2);
         const distH = (maxDist * 1.1) / (Math.tan(vFov / 2) * aspect);
-        const fitDist = Math.max(distV, distH, 300);
+        let fitDist = Math.max(distV, distH, 300);
         
         if (this.activeCamera) {
             const angle = 45 * (Math.PI / 180);

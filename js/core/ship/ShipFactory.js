@@ -1,6 +1,13 @@
 import * as THREE from 'three';
 import ModelLoader from '../ModelLoader.js';
 import WiringHarmonicsCalculator from './WiringHarmonicsCalculator.js';
+import { UniversalPipeline } from '../../procgen/uhpp/UniversalPipeline.js';
+import { NoiseHeuristic } from '../../procgen/uhpp/NoiseHeuristic.js';
+import { LSystemBridge } from '../../procgen/uhpp/LSystemBridge.js';
+import { WFCManager } from '../../procgen/uhpp/WFCManager.js';
+import { CellularAutomata } from '../../procgen/uhpp/CellularAutomata.js';
+import { SurfaceSynth } from '../../procgen/uhpp/SurfaceSynth.js';
+import { RenderBridge } from '../../procgen/uhpp/RenderBridge.js';
 import { ComponentFactory } from './ComponentFactory.js';
 import { HullGenerator } from './HullGenerator.js';
 import { GreebleGenerator } from './GreebleGenerator.js';
@@ -29,6 +36,17 @@ export class ShipFactory {
 
         this.shipGenerator = new ShipGenerator(this.wiringGenerator, this.gameEngine);
         this.shipAssembler = new ShipAssembler(this.componentFactory, this.hullGenerator, this.greebleGenerator, this.wiringGenerator, this.gameEngine);
+
+        // Initialize UHPP Pipeline for advanced generation
+        this.uhpp = new UniversalPipeline();
+        this.uhpp
+            .addStage(new NoiseHeuristic())
+            .addStage(new LSystemBridge())
+            .addStage(new WFCManager())
+            .addStage(new CellularAutomata())
+            .addStage(new SurfaceSynth());
+
+        this.renderBridge = new RenderBridge(this.gameEngine.scene.threeScene);
 
         this.shipCache = new Map();
 

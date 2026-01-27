@@ -125,6 +125,7 @@ class KnotWork {
         this.description = description;
         this.knot = new Knot(knotData);
         this.proficiencyId = proficiencyId; // The ID of the proficiency representing this KnotWork
+        this.id = proficiencyId || `knot-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
 
         this.wounds = []; // Initialize wounds array for all KnotWorks (though mostly used by SuperKnots)
 
