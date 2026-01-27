@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { edgeTable, triTable, cornerIndexFromEdge, cubeCorners } from './MarchingCubesTables.js';
 import { materialRegistry } from './MaterialRegistry.js';
+import { GRID_EMPTY } from './Aliases.js';
 
 /**
  * @module UHPP/SurfaceSynth
@@ -59,8 +60,8 @@ export class SurfaceSynth {
                         const cz = z + cubeCorners[i][2];
                         const idx = cx + cy * X + cz * X * Y;
 
-                        // Use grid value as density (assuming 0=Empty, >0=Full)
-                        const val = grid[idx] > 0 ? 1.0 : 0.0;
+                        // Use grid value as density
+                        const val = grid[idx] !== GRID_EMPTY ? 1.0 : 0.0;
                         cornerDensities[i] = val;
                         cornerPositions.push(new THREE.Vector3(cx, cy, cz));
 

@@ -1,4 +1,5 @@
 import WFC from '../../utils/ndwfc.js';
+import { tileToGrid } from './Aliases.js';
 
 /**
  * @module UHPP/WFCWorker
@@ -19,13 +20,15 @@ self.onmessage = async function(e) {
 
     // Convert pinnedTiles (Map/Object) to initial wave state
     const initialWave = {};
+    let pinnedCount = 0;
     for (const [key, tileID] of Object.entries(pinnedTiles)) {
         initialWave[key] = tileID;
+        pinnedCount++;
 
         // Also update shared buffer for initial state
         const [x, y, z] = key.split(',').map(Number);
         const idx = x + y * gridDimensions.x + z * gridDimensions.x * gridDimensions.y;
-        grid[idx] = tileID + 1; // +1 because 0 usually means uncollapsed/void
+        grid[idx] = tileToGrid(tileID);
     }
 
     const wfc = new WFC({
@@ -42,20 +45,24 @@ self.onmessage = async function(e) {
     );
 
     let iterations = 0;
-    const maxIterations = gridDimensions.x * gridDimensions.y * gridDimensions.z * 2;
+    const totalCells = gridDimensions.x * gridDimensions.y * gridDimensions.z;
+    const cellsToCollapse = totalCells - pinnedCount;
+
+    // The maximum number of steps in WFC is equal to the number of cells to collapse.
+    // Each step resolves exactly one cell (either by observation or propagation).
+    const maxIterations = cellsToCollapse;
 
     while (iterations < maxIterations) {
         const done = wfc.step();
 
         // After each step, we can update the shared buffer for real-time visualization.
-        // ndwfc stores collapsed tiles in its internal 'wave' state after they are fully resolved.
         const state = wfc.readout();
 
         for (const [key, value] of Object.entries(state)) {
             if (typeof value === 'number') {
                 const [x, y, z] = key.split(',').map(Number);
                 const idx = x + (y || 0) * gridDimensions.x + (z || 0) * gridDimensions.x * gridDimensions.y;
-                grid[idx] = value + 1;
+                grid[idx] = tileToGrid(value);
             }
         }
 

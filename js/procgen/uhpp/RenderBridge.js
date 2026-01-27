@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { primitiveRegistry } from './PrimitiveModelRegistry.js';
 import { materialRegistry } from './MaterialRegistry.js';
+import { gridToTile, GRID_EMPTY } from './Aliases.js';
 
 /**
  * @module UHPP/RenderBridge
@@ -67,11 +68,12 @@ export class RenderBridge {
             for (let y = 0; y < Y; y++) {
                 for (let x = 0; x < X; x++) {
                     const idx = x + y * X + z * X * Y;
-                    const tileVal = grid[idx] - 1;
+                    const gridValue = grid[idx];
 
-                    if (tileVal >= 0) {
-                        if (!instancesByTile.has(tileVal)) instancesByTile.set(tileVal, []);
-                        instancesByTile.get(tileVal).push(new THREE.Vector3(x, y, z));
+                    if (gridValue !== GRID_EMPTY) {
+                        const tileID = gridToTile(gridValue);
+                        if (!instancesByTile.has(tileID)) instancesByTile.set(tileID, []);
+                        instancesByTile.get(tileID).push(new THREE.Vector3(x, y, z));
                     }
                 }
             }

@@ -1,3 +1,5 @@
+import { gridToTile, tileToGrid, GRID_EMPTY } from './Aliases.js';
+
 /**
  * @module UHPP/CellularAutomata
  * @description Phase D: Iterative Simulation. Applies CA rules to the WFC grid.
@@ -34,14 +36,16 @@ export class CellularAutomata {
                         // Constraint: Never change pinned tiles
                         if (pinnedTiles.has(`${x},${y},${z}`)) continue;
 
-                        const currentTile = currentGrid[idx] - 1; // -1 because grid stores ID+1
-                        if (currentTile < 0) continue;
+                        const gridValue = currentGrid[idx];
+                        if (gridValue === GRID_EMPTY) continue;
+
+                        const currentTile = gridToTile(gridValue);
 
                         // Apply rules
                         for (const rule of this.rules) {
                             if (currentTile === rule.if) {
                                 if (this._hasNeighbor(currentGrid, x, y, z, gridDimensions, rule.neighbor)) {
-                                    nextGrid[idx] = rule.then + 1;
+                                    nextGrid[idx] = tileToGrid(rule.then);
                                     break;
                                 }
                             }
@@ -74,7 +78,8 @@ export class CellularAutomata {
 
                     if (nx >= 0 && nx < X && ny >= 0 && ny < Y && nz >= 0 && nz < Z) {
                         const nidx = nx + ny * X + nz * X * Y;
-                        if (grid[nidx] - 1 === neighborID) return true;
+                        const nGridValue = grid[nidx];
+                        if (nGridValue !== GRID_EMPTY && gridToTile(nGridValue) === neighborID) return true;
                     }
                 }
             }
