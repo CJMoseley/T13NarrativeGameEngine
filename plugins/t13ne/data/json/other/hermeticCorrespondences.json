@@ -1,0 +1,33 @@
+{
+  "hermetic_correspondences_complete_2026": {
+    "elements": [
+      { "name": "Fire", "alchemy": "Sulfur", "animals": ["Lion", "Salamander"], "plants": ["Nettle", "Thistle"], "suit": "Clubs" },
+      { "name": "Water", "alchemy": "Mercury (Philosophical)", "animals": ["Eagle", "Dolphin"], "plants": ["Lotus", "Water Lily"], "suit": "Hearts" },
+      { "name": "Air", "alchemy": "Mercury (Volatile)", "animals": ["Man", "Swallow"], "plants": ["Aspen", "Anise"], "suit": "Spades" },
+      { "name": "Earth", "alchemy": "Salt", "animals": ["Bull", "Gnome"], "plants": ["Oak", "Ivy"], "suit": "Diamonds" }
+    ],
+    "planets": [
+      { "name": "Sun", "metal": "Gold", "alchemy": "Rubedo", "animals": ["Hawk", "Lion"], "plants": ["Sunflower", "Laurel"] },
+      { "name": "Moon", "metal": "Silver", "alchemy": "Albedo", "animals": ["Dog", "Hare"], "plants": ["Mugwort", "Moonwort"] },
+      { "name": "Mercury", "metal": "Quicksilver", "alchemy": "Citrinitas", "animals": ["Ibis", "Ape"], "plants": ["Mandrake", "Vervain"] },
+      { "name": "Venus", "metal": "Copper", "alchemy": "Sublimation", "animals": ["Dove", "Sparrow"], "plants": ["Rose", "Myrtle"] },
+      { "name": "Mars", "metal": "Iron", "alchemy": "Calcination", "animals": ["Wolf", "Boar"], "plants": ["Garlic", "Nettle"] },
+      { "name": "Jupiter", "metal": "Tin", "alchemy": "Expansion", "animals": ["Eagle", "Stag"], "plants": ["Oak", "Pine"] },
+      { "name": "Saturn", "metal": "Lead", "alchemy": "Nigredo", "animals": ["Crow", "Goat"], "plants": ["Yew", "Cypress"] }
+    ],
+    "zodiac": [
+      { "sign": "Aries", "element": "Fire", "alchemy": "Calcination", "animal": "Ram", "plant": "Tiger Lily", "playing_card": "2 of Clubs" },
+      { "sign": "Taurus", "element": "Earth", "alchemy": "Congelation", "animal": "Bull", "plant": "Mallow", "playing_card": "5 of Diamonds" },
+      { "sign": "Gemini", "element": "Air", "alchemy": "Fixation", "animal": "Magpie", "plant": "Orchids", "playing_card": "8 of Spades" },
+      { "sign": "Cancer", "element": "Water", "alchemy": "Dissolution", "animal": "Crab", "plant": "Lotus", "playing_card": "2 of Hearts" },
+      { "sign": "Leo", "element": "Fire", "alchemy": "Digestion", "animal": "Lion", "plant": "Sunflower", "playing_card": "5 of Clubs" },
+      { "sign": "Virgo", "element": "Earth", "alchemy": "Distillation", "animal": "Virgin", "plant": "Snowdrop", "playing_card": "8 of Diamonds" },
+      { "sign": "Libra", "element": "Air", "alchemy": "Sublimation", "animal": "Elephant", "plant": "Aloe", "playing_card": "2 of Spades" },
+      { "sign": "Scorpio", "element": "Water", "alchemy": "Separation", "animal": "Scorpion", "plant": "Cactus", "playing_card": "5 of Hearts" },
+      { "sign": "Sagittarius", "element": "Fire", "alchemy": "Incineration", "animal": "Horse", "plant": "Rush", "playing_card": "8 of Clubs" },
+      { "sign": "Capricorn", "element": "Earth", "alchemy": "Fermentation", "animal": "Goat", "plant": "Hemp", "playing_card": "2 of Diamonds" },
+      { "sign": "Aquarius", "element": "Air", "alchemy": "Multiplication", "animal": "Eagle", "plant": "Olive", "playing_card": "5 of Spades" },
+      { "sign": "Pisces", "element": "Water", "alchemy": "Projection", "animal": "Fish", "plant": "Unicellular Organisms", "playing_card": "8 of Hearts" }
+    ]
+  }
+}
