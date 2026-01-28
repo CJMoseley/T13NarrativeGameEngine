@@ -20,11 +20,6 @@ export class Scene {
         this.sceneData = sceneData;
 
         this.scene = new THREE.Scene();
-
-        // For compatibility with components that expect 'threeScene'
-        Object.defineProperty(this, 'threeScene', {
-            get: () => this.scene
-        });
         this.renderer = this.viewManager.renderer;
         if (!this.renderer) {
             this.renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -273,72 +268,6 @@ export class Scene {
                     controls.handleResize();
                 }
             }
-        }
-    }
-
-    /**
-     * Adds an object to the scene, optionally loading it from a URL and registering with physics.
-     * @param {string} id - Unique identifier for the object.
-     * @param {object} config - Configuration including model, modelUrl, position, rotation, etc.
-     * @returns {Promise<object>} An object containing the loaded model and its configuration.
-     */
-    async addObject(id, config) {
-        let model = config.model;
-
-        if (!model && config.modelUrl) {
-            if (!this._modelLoader) {
-                // Dynamically import to avoid circular dependencies
-                const ModelLoader = (await import('./ModelLoader.js')).default;
-                this._modelLoader = new ModelLoader();
-            }
-            try {
-                model = await this._modelLoader.loadModel(config.modelUrl);
-            } catch (error) {
-                Logger.error(`Scene: Failed to load model for '${id}' from ${config.modelUrl}`, error);
-            }
-        }
-
-        if (model) {
-            model.name = id;
-            if (config.pos) model.position.set(...config.pos);
-            if (config.rot) {
-                if (Array.isArray(config.rot)) model.rotation.set(...config.rot);
-                else if (config.rot instanceof THREE.Euler) model.rotation.copy(config.rot);
-            }
-            if (config.scale) {
-                if (Array.isArray(config.scale)) model.scale.set(...config.scale);
-                else if (config.scale instanceof THREE.Vector3) model.scale.copy(config.scale);
-            }
-            this.scene.add(model);
-            Logger.message(`Scene: Object '${id}' added to scene.`);
-        }
-
-        // Handle physics registration if a physics engine is attached to the scene
-        if (this.physics && config.physics && model) {
-            if (typeof this.physics.addBody === 'function') {
-                this.physics.addBody(model, config.physics);
-            } else if (config.physics.type === 'box' && typeof this.physics.addBox === 'function') {
-                this.physics.addBox(model, config.physics.mass || 0, config.physics.material);
-            }
-        }
-
-        return { id, model, config };
-    }
-
-    /**
-     * Removes an object from the scene and cleans up its physics body.
-     * @param {string} id - The unique identifier or name of the object to remove.
-     */
-    removeObject(id) {
-        const object = this.scene.getObjectByName(id);
-        if (object) {
-            // Remove from physics engine
-            if (this.physics && typeof this.physics.removeBody === 'function') {
-                this.physics.removeBody(object);
-            }
-
-            this.scene.remove(object);
-            Logger.message(`Scene: Object '${id}' removed from scene.`);
         }
     }
 

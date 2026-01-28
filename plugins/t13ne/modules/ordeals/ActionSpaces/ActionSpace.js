@@ -1,5 +1,5 @@
 import T13NE from '@plugins/t13ne/T13NE.js';
-import Logger from '@plugins/t13ne/core/Logger.js';
+import Logger from '@/js/core/Logger.js';
 
 /**
  * Represents a generic Action Space in the T13NE system.

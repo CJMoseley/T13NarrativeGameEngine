@@ -1,4 +1,4 @@
-import Logger from './Logger.js';
+import Logger from '@/js/core/Logger.js';
 
 /**
  * Manages the Web Audio API context and master volume.

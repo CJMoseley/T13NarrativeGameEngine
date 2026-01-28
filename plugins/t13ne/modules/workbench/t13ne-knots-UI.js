@@ -1,5 +1,5 @@
 import T13NE from '@plugins/t13ne/T13NE.js';
-import Logger from '@plugins/t13ne/core/Logger.js';
+import Logger from '@/js/core/Logger.js';
 import UI from './t13ne-UI.js';
 import { TIE } from '@plugins/t13ne/modules/t13ne-knots.js';
 

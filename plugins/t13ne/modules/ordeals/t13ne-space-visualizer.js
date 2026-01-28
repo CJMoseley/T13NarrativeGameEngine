@@ -1,4 +1,4 @@
-import Logger from '@plugins/t13ne/core/Logger.js';
+import Logger from '@/js/core/Logger.js';
 
 /**
  * Visualizer for T13NE Action Spaces and Psychosocial Spaces.
