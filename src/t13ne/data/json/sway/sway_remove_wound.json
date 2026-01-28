@@ -1,0 +1,44 @@
+[
+  {
+    "Chi": 2,
+    "Element_Type": "Remove Wound",
+    "Type": "Distract",
+    "Sway_Type_Description": "Completely remove / heal a Distract Wound from a Character or Descendant."
+  },
+  {
+    "Chi": 7,
+    "Element_Type": "Remove Wound",
+    "Type": "Flesh",
+    "Sway_Type_Description": "Completely remove / heal a Flesh Wound from a Character or Descendant."
+  },
+  {
+    "Chi": 15,
+    "Element_Type": "Remove Wound",
+    "Type": "Maim",
+    "Sway_Type_Description": "Completely remove / heal a Maim Wound from a Character or Descendant, and allow re-purchasing of Maimed Proficiency."
+  },
+  {
+    "Chi": 27,
+    "Element_Type": "Remove Wound",
+    "Type": "Crippling",
+    "Sway_Type_Description": "Completely remove / heal a Crippling Wound from a Character or Descendant."
+  },
+  {
+    "Chi": 43,
+    "Element_Type": "Remove Wound",
+    "Type": "Mortal",
+    "Sway_Type_Description": "Completely remove / heal a Mortal Wound. Applied Hitches may be converted or lost depending upon the Healing Method."
+  },
+  {
+    "Chi": 64,
+    "Element_Type": "Remove Wound",
+    "Type": "Carnage",
+    "Sway_Type_Description": "Completely remove / heal a Carnage Wound. Applied Hitches may be converted or lost depending upon the Healing Method."
+  },
+  {
+    "Chi": 90,
+    "Element_Type": "Remove Wound",
+    "Type": "Carnage+",
+    "Sway_Type_Description": "Completely remove / heal a Carnage+ Wound. Applied Hitches may be converted or lost depending upon the Healing Method."
+  }
+]

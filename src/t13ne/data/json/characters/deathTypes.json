@@ -1,0 +1,77 @@
+[
+  {
+    "Type": "The End",
+    "Description": "Death is the end, after life ceases there is no afterlife of any sort. There is no reincarnation or continuation.",
+    "Rules": "Dead Characters are essentially replaced with a Physical Descendant called \"X’s Corpse\" or similar."
+  },
+  {
+    "Type": "Spirit",
+    "Description": "Death is not the end. Something of the Character is preserved after their life is ended as they are transferred to a new spiritual plane as a Spirit.",
+    "Rules": "The Yarn burst that is released upon death must be enough to purchase a change of Formation Facet, from Nature (Flesh or whatever really) to Awe (Spirit). Spirits may learn to explore the spirit worlds, and some cosmologies and religions will allow the return to living realm (in some form)."
+  },
+  {
+    "Type": "Reincarnation",
+    "Description": "Death is not the end, those who die are immediately reincarnated as a new born baby. Sometimes there is some lingering memories from this previous life, but usually these memories are hidden away and not experienced until this new Character gains access to memories from that Alternate, or previous life.",
+    "Rules": "Characters who die must immediately create a new Alt as a Scale -4 new born, this Character may learn to access Proficiencies and Annexes from their previous incarnations."
+  },
+  {
+    "Type": "Purgatory",
+    "Description": "Purgatory is a spiritual realm where the dead are purified before entrance to the Heavenly Afterlife. This existence varies from religion to religion, from a heavenly waiting room, to a hellish land of trials that the soul must complete. In some religions and cosmologies failure to pass to the heavens may result in falling to Hell or another round of re-incarnation.",
+    "Rules": "Characters who die are converted to spirits. They may then be tested or simply have to wait in line, accumulating more Sway of various types, before they are allowed access to another spiritual realm or create a new Alt reincarnation."
+  },
+  {
+    "Type": "Paradise",
+    "Description": "Paradise, Nirvana or Heaven, is a promised state, usually offered to the faithful of particular religions. This paradise offers a world free from suffering, but only the worthy may enter. So there is often a step of Testing the spirit, by whatever rules the deities responsible have decided. Those who do not enter may be offered some alternate afterlife, or reincarnation.",
+    "Rules": "Characters who die are converted to spirits which are then tested, if found worthy they are granted access to a spiritual realm of some divinity or religion."
+  },
+  {
+    "Type": "Hell",
+    "Description": "Some religions have a place of punishment, where souls may be damned for eternity. The spirits that are sent there are usually tormented for their sins in life. In some cases they are punished by fallen angels or demons, in others they suffer alongside these same beings.",
+    "Rules": "Characters who die are converted into a spirit, they may be judged in another realm, or simply be sent to Hell, where they will be judged and punished for a period of time that can be as long as eternity (and may feel like it even if it isn’t), often by the order of a benevolent god. Sometimes punishments are made to fit the crime poetically, in these cases should the spirit manage to learn from this lesson they move on to another plane."
+  },
+  {
+    "Type": "Underworld",
+    "Description": "The lands of the dead are given a geographical location here, the dead live beneath the earth. This conceptual land of the dead is where all buried bodies spirits are collected, whether brought there by a ferryman or entombed. The exact nature of this underworld life varies from cosmology to cosmology, with some rulers of the dead acting simply as landlords, others as prison wardens, and appears to predate the conceptions of paradise and hell.",
+    "Rules": "Characters who die are converted into a spirit, they may then guided by another spirit (a psychopomp) into the appropriate part of the underworld."
+  },
+  {
+    "Type": "Shades",
+    "Description": "When an Increated eats the soul of a living being, this does not technically kill them. In fact, the Increated technically don’t consume souls, instead they steal the whole living being, sometimes they will leave a corpse behind, but often this will be yet another Increated playing a role. Those taken by the Increated are \"stimulated\" to create Sway for the Increated, by whatever methods the Increated has discovered, which often depends upon what the victim believes has happened to them.",
+    "Rules": "Alts removed by Increated are taken to Shades where they are used to construct and maintain the realms the Increated keep there. It is impossible for any being in Shades to die, although escape may be possible in other ways."
+  },
+  {
+    "Type": "F&aelig; Otherworld",
+    "Description": "Those of F&arlig;ry blood, when they die immediately reincarnate in the Otherworld of the F&aelig; there they will live another whole life, usually as a Commoner, before they die and reincarnate back to the so-called world of men. What’s more this Otherworld and the \"Real\" world share each other as a \"dreamworld\" where they may experience past-future or even concurrent lives.",
+    "Rules": "Upon death the Character immediately creates a new Alt in the Otherworld, when this Alt sleeps it will dream of the real world and may even appear in it. Once this Character is dead in the Otherworld they will return to real world. It may be noted that both worlds do not share the exact same sense of time usually, the days of elves are weeks, months, years and even centuries to men according to some sources."
+  },
+  {
+    "Type": "Bulm&auml;s Cycle",
+    "Description": "Bulm&auml;s are also known as soul-eaters, as they are able to consume the souls of others and add their knowledge and abilities to their own. Traditionally, the Bulm&auml;s only consumed the souls of other Bulm&auml;s, as only these spirits had enough power and experience for the Bulm&auml;s to make sense of them. However, Labyrinth Walkers, Broccen and Hunters have all eaten human souls to learn from them from time to time. Eventually all Bulm&auml;s souls tend to collect in Vermis, who uses these millions of souls, to seed new worlds with Bulm&auml;s. All-Walkers have the ability to read and \"duplicate\" souls, allowing them to add a copy of another’s soul to their own collection.",
+    "Rules": "Bulm&auml;s Characters may add Alts to their own being, tying on the soul threads with differing degrees of Integration. Integration has a strong similarity component for Bulm&auml;s, with most consumed souls becoming Subsumed automatically."
+  },
+  {
+    "Type": "Cyberwraith",
+    "Description": "The Eusaivean Nano, and later Femite, technology allowed Eusaiveans minds to be uploaded into a sophisticated computer simulation. Eventually this technology became an automatic process, continually backing up a Eusaivean mind. These uploaded minds continue service as Cyberwraiths, operating robotic bodies as well as biological ones.",
+    "Rules": "Upon death the Character’s Incarna is converted to either Orthodox (Data) or Heresy (Fiction), depending upon their preference. As a Cyberwraith they will be able to infest, pilot or interact with machines and Femite or even Nullite systems."
+  },
+  {
+    "Type": "Nephillim Cradle",
+    "Description": "Developed from Eusaivean Femite technology, but an improvement in every way. The Nephillim Cradle creates a virtual afterlife that spreads via Nullite technology to upload minds automatically that die within its domain. Uploaded minds are usually sorted by various religious and moral criteria into the afterlife they expected, although with enough variance to make them believe it to be true.",
+    "Rules": "Upon death the Character’s Incarna is converted to either Awe (Spirit), Enigma (Riddle), Heresy (Fiction), Key (Inspiration), Liberty (Dream), Orthodox (Data), Trial (Metal), Virtue (Energy), Wyrd (Fate), or Zeal (Faith), depending upon their preference. These beings may be considered Cyberwraiths, Living Souls, Fairies, or Nephillim as required by those controlling the Cradle."
+  },
+  {
+    "Type": "Quantum Immortality",
+    "Description": "Some Heroes when they are confronted by death simply refuse. In that moment of death they reach out and find a nearby universe that is pretty close to the one that just became unsurvivable and they move there, becoming nothing more than a weird moment in that new persons memory. Other ways this can work is reaching across to find an uninjured version of yourself from another universe and pull them across to yours, so that you can miraculously survive unsurvivable things.",
+    "Rules": "The Yarn release upon death is used to either side-step their consciousness to a nearby universe that is as close as possible to the one the Character is currently dying in, or to find a suitable alternate in another universe who can be substituted into the current untenable situation allowing it to be survived. This Alt is usually so similar that they will automatically integrate together, and they may not even notice. Sometimes the Yarn-burst itself can be enough to remove all the Character’s Wounds and change their Hitches from \"Dying\" or \"Dead\" to Scarred or something similar, or even remove them."
+  },
+  {
+    "Type": "Living Death",
+    "Description": "The dead are aware of what happens to them, this may be due to a failure of a nephillim cradle, or a spirit becoming locked to its material body.",
+    "Rules": "If a Character does not have enough Chi upon Death to convert them into another form or sidestep on death they may enter the Living Death. Often the living death with resolve when their body is finally destroyed or one of their Hitches grows to a Woe, when they will move to Undeath."
+  },
+  {
+    "Type": "Undeath",
+    "Description": "Some dark powers and terrible situations can lead a Character to a Fate worse than death.",
+    "Rules": "Those who die with a Woe Hitch can elect to convert that Woe into \"Undead\" or \"Undying\". This Woe will limit the conditions of this Undeath (often adding Taboos), but will also often add a Lore that defines their type of Undead."
+  }
+]

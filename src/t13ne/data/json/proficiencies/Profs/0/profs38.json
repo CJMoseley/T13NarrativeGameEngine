@@ -1,0 +1,1436 @@
+{
+  "1901": {
+    "id": 1901,
+    "prof": {
+      "Name": [
+        "Aiming",
+        "Aiming Yonder Style Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Aiming leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1902": {
+    "id": 1902,
+    "prof": {
+      "Name": [
+        "Spatial",
+        "Spatial Yonder Success Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Spatial leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1903": {
+    "id": 1903,
+    "prof": {
+      "Name": [
+        "Scopes",
+        "Scopes Yonder Sway Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Scopes leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1904": {
+    "id": 1904,
+    "prof": {
+      "Name": [
+        "Space",
+        "Space Yonder Tangle Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Space leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1905": {
+    "id": 1905,
+    "prof": {
+      "Name": [
+        "Broadcasting / Communicating / Restraining / Shooting / Spotting / Stretching / Transmission / Yelling",
+        "Broadcasting / Communicating / Restraining / Shooting / Spotting / Stretching / Transmission / Yelling",
+        ""
+      ],
+      "Description": "The threads of Stagnation are woven into the tapestry of Broadcasting / Communicating / Restraining / Shooting / Spotting / Stretching / Transmission / Yelling, a story of permanence told in silence.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "22"
+        ],
+        "Genres": [
+          "22"
+        ],
+        "Eras": [
+          "22"
+        ],
+        "Types": [
+          "Test"
+        ]
+      }
+    }
+  },
+  "1906": {
+    "id": 1906,
+    "prof": {
+      "Name": [
+        "Odyssey / Road-movie",
+        "Odyssey / Road-movie",
+        ""
+      ],
+      "Description": "The ghost of a forgotten memory, Odyssey / Road-movie is the echo of isolation in the ruins of the past.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "22"
+        ],
+        "Genres": [
+          "22"
+        ],
+        "Eras": [
+          "22"
+        ],
+        "Types": [
+          "Tone"
+        ]
+      }
+    }
+  },
+  "1907": {
+    "id": 1907,
+    "prof": {
+      "Name": [
+        "Off-Course",
+        "Off-Course Yonder Turn Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Off-Course leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1908": {
+    "id": 1908,
+    "prof": {
+      "Name": [
+        "Space",
+        "Space Yonder Twisted Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Space leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1909": {
+    "id": 1909,
+    "prof": {
+      "Name": [
+        "Throwing",
+        "Throwing Yonder Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Throwing leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1910": {
+    "id": 1910,
+    "prof": {
+      "Name": [
+        "Distant Ordeals",
+        "Distant Ordeal Yonder Ordeal Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Distant Ordeals leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1911": {
+    "id": 1911,
+    "prof": {
+      "Name": [
+        "Distance",
+        "Distance Yonder Nimbed Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Distance leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1912": {
+    "id": 1912,
+    "prof": {
+      "Name": [
+        "Distant",
+        "Distant Yonder Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Distant leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1913": {
+    "id": 1913,
+    "prof": {
+      "Name": [
+        "Trailblazer",
+        "Trailblazer Yonder Persona Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Trailblazer leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1914": {
+    "id": 1914,
+    "prof": {
+      "Name": [
+        "Dormant",
+        "Dormant Zeal Zero Boon Adjective Proficiency",
+        "inactive, inert, fallow, asleep, latent"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Dormant is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1915": {
+    "id": 1915,
+    "prof": {
+      "Name": [
+        "Inert",
+        "Inert Zeal Zero Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Inert is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1916": {
+    "id": 1916,
+    "prof": {
+      "Name": [
+        "Fallow Locations",
+        "Fallow Location Zeal Zero Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Fallow Locations is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1917": {
+    "id": 1917,
+    "prof": {
+      "Name": [
+        "Sluggish",
+        "Sluggish Zeal Low Boon Adjective Proficiency",
+        "slow, slack, sullen, inactive, lethargic"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Sluggish is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1918": {
+    "id": 1918,
+    "prof": {
+      "Name": [
+        "Slack",
+        "Slack Zeal Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Slack is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1919": {
+    "id": 1919,
+    "prof": {
+      "Name": [
+        "Sullen Locations",
+        "Sullen Location Zeal Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Sullen Locations is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1920": {
+    "id": 1920,
+    "prof": {
+      "Name": [
+        "Leisurely",
+        "Leisurely Zeal Low Boon Adjective Proficiency",
+        "relaxed, lazy, languid, slow, unhurried"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Leisurely is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1921": {
+    "id": 1921,
+    "prof": {
+      "Name": [
+        "Lazy",
+        "Lazy Zeal Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Lazy is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1922": {
+    "id": 1922,
+    "prof": {
+      "Name": [
+        "Languid Locations",
+        "Languid Location Zeal Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Languid Locations is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1923": {
+    "id": 1923,
+    "prof": {
+      "Name": [
+        "Nonchalant",
+        "Nonchalant Zeal Low Boon Adjective Proficiency",
+        "indifferent, insipid, trifling, casual, cool"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Nonchalant is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1924": {
+    "id": 1924,
+    "prof": {
+      "Name": [
+        "Trifling",
+        "Trifling Zeal Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Trifling is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1925": {
+    "id": 1925,
+    "prof": {
+      "Name": [
+        "Insipid Locations",
+        "Insipid Location Zeal Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Insipid Locations is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1926": {
+    "id": 1926,
+    "prof": {
+      "Name": [
+        "Detached",
+        "Detached Zeal Low Boon Adjective Proficiency",
+        "indifferent, loose, discrete, separate, aloof"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Detached is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1927": {
+    "id": 1927,
+    "prof": {
+      "Name": [
+        "Loose",
+        "Loose Zeal Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Loose is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1928": {
+    "id": 1928,
+    "prof": {
+      "Name": [
+        "Discrete Locations",
+        "Discrete Location Zeal Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Discrete Locations is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1929": {
+    "id": 1929,
+    "prof": {
+      "Name": [
+        "Eager",
+        "Eager Zeal Medium Boon Adjective Proficiency",
+        "keen, enthusiastic, ready, impatient"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Eager is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1930": {
+    "id": 1930,
+    "prof": {
+      "Name": [
+        "Reconditioned",
+        "Reconditioned Zeal Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Reconditioned is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1931": {
+    "id": 1931,
+    "prof": {
+      "Name": [
+        "Gentrified Locations",
+        "Gentrified Location Zeal Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Gentrified Locations is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1932": {
+    "id": 1932,
+    "prof": {
+      "Name": [
+        "Impatient",
+        "Impatient Zeal Medium Boon Adjective Proficiency",
+        "restless, hurried, ready, eager, anxious"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Impatient is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1933": {
+    "id": 1933,
+    "prof": {
+      "Name": [
+        "Ready",
+        "Ready Zeal Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Ready is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1934": {
+    "id": 1934,
+    "prof": {
+      "Name": [
+        "Hurried Locations",
+        "Hurried Location Zeal Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Hurried Locations is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1935": {
+    "id": 1935,
+    "prof": {
+      "Name": [
+        "Dedicated",
+        "Dedicated Zeal High Boon Adjective Proficiency",
+        "devoted, staunch, committed, loyal"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Dedicated is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1936": {
+    "id": 1936,
+    "prof": {
+      "Name": [
+        "Staunch",
+        "Staunch Zeal High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Staunch is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1937": {
+    "id": 1937,
+    "prof": {
+      "Name": [
+        "Darling Locations",
+        "Darling Location Zeal High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Darling Locations is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1938": {
+    "id": 1938,
+    "prof": {
+      "Name": [
+        "Enthusiastic",
+        "Enthusiastic Zeal High Boon Adjective Proficiency",
+        "eager, animated, lively, keen, fervent"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Enthusiastic is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1939": {
+    "id": 1939,
+    "prof": {
+      "Name": [
+        "Animated",
+        "Animated Zeal High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Animated is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1940": {
+    "id": 1940,
+    "prof": {
+      "Name": [
+        "Lively Locations",
+        "Lively Location Zeal High Boon Location Adjective Proficiency",
+        "rustic, spirited, active, energetic, animated"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Lively Locations is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1941": {
+    "id": 1941,
+    "prof": {
+      "Name": [
+        "Devoted",
+        "Devoted Zeal Very-High Boon Adjective Proficiency",
+        "dedicated, religious, sacred, loyal, faithful"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Devoted is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1942": {
+    "id": 1942,
+    "prof": {
+      "Name": [
+        "Religious",
+        "Religious Zeal Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Religious is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1943": {
+    "id": 1943,
+    "prof": {
+      "Name": [
+        "Sacred Locations",
+        "Sacred Location Zeal Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Sacred Locations is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1944": {
+    "id": 1944,
+    "prof": {
+      "Name": [
+        "Fanatical",
+        "Fanatical Zeal Very-High Boon Adjective Proficiency",
+        "extremist, devoted, revered, zealous, obsessive"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Fanatical is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1945": {
+    "id": 1945,
+    "prof": {
+      "Name": [
+        "Devoted",
+        "Devoted Zeal Very-High Boon Descendant Adjective Proficiency",
+        "dedicated, religious, sacred, loyal, faithful"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Devoted is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1946": {
+    "id": 1946,
+    "prof": {
+      "Name": [
+        "Revered Locations",
+        "Revered Location Zeal Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Revered Locations is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1947": {
+    "id": 1947,
+    "prof": {
+      "Name": [
+        "Zealous",
+        "Zealous Zeal Very-High Boon Adjective Proficiency",
+        "fervent, divine, sublime, passionate, ardent"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Zealous is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1948": {
+    "id": 1948,
+    "prof": {
+      "Name": [
+        "Divine",
+        "Divine Zeal Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Divine is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1949": {
+    "id": 1949,
+    "prof": {
+      "Name": [
+        "Sublime Locations",
+        "Sublime Location Zeal Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Sublime Locations is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1950": {
+    "id": 1950,
+    "prof": {
+      "Name": [
+        "Surprise",
+        "Surprise Zeal Negative Emotion Proficiency",
+        "astonishment, amazement, wonder, shock, startle"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Surprise is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

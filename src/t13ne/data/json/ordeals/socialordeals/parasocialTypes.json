@@ -1,0 +1,32 @@
+[
+    {
+        "Type": "Attached",
+        "Description": "The most important and very closest of your social contacts, often trusting confidantes, best friends, lovers or the closest siblings of the Character, but they can also be a Nemesis or a Rival who has known them all their life. Attached Characters essentially know each other’s secrets (although not every secret usually).",
+        "Maximum_Number": "1 + Dominion Draw"
+    },
+    {
+        "Type": "Ajoining",
+        "Description": "The second closest of the social contacts. They can be close family, friends, co-workers, rivals, or foes. They know a lot about each other, including a few secrets, and they spend a lot of time in each others company generally.",
+        "Maximum_Number": "1 + Dominion Score"
+    },
+    {
+        "Type": "Associated",
+        "Description": "The third closest social contacts. These are associates, less immediate family and more-distant friends. These are people you know and may see or talk to fairly often, usually they are favourable or friendly, although a few enemies will exist in this tier.",
+        "Maximum_Number": "1 + Dominion Boon"
+    },
+    {
+        "Type": "Easy",
+        "Description": "Easy contacts are Characters who barely know each other, but have some connection despite that. They might be distant family — related, but who seldom see each other, or be former associates who have grown more distant, friends of other family members, or family members of friends, or people you have had numerous, but limited, interactions with, such as teachers, doctors, local bar workers, or shop owners you’ve known for years.",
+        "Maximum_Number": "Dominion Value"
+    },
+    {
+        "Type": "Known",
+        "Description": "The barest of contacts is \"Known\", this means you might know each others names (although rarely full names), you might have contact information for a known person, but they are likely to be business contacts rather than personal emails, etc. These are not friends, or enemies usually, but they are not quite full strangers either. They will be recognized and name usually remembered, although it is possible that actual names will be forgotten, replaced by nicknames or a summation of the relationship (\"my cousin’s father-in-law\" for example). These are people you give a friendly nod to, or say hello when you meet, but otherwise you rarely talk.",
+        "Maximum_Number": "Dominion Boon as Chi Group Size"
+    },
+    {
+        "Type": "Strangers",
+        "Description": "Everyone you don’t know is a stranger. It is true that there are potential friends as well as enemies amongst their number, but if you are going to bring a stranger into your home, make them a friend, then you are risking not only that they not become a friend, but in trying you may damage a relationship you already value, if you attempt to have more Known people than the Maximum then your Character will lose some one from the known, forcing them into the Strangers category again (and this person may think you are still known — or even believe they are a Relation or higher type... Which can make things awkward and change impressions quite quickly).",
+        "Maximum_Number": "N/A"
+    }
+]

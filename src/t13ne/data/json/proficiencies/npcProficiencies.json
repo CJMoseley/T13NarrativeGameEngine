@@ -1,0 +1,30 @@
+[
+    {
+        "Circumstance": "NPC shouldn’t be doing this",
+        "Modifier": "Halve Score"
+    },
+    {
+        "Circumstance": "NPC might be doing this",
+        "Modifier": "+3"
+    },
+    {
+        "Circumstance": "NPC can do this",
+        "Modifier": "+7"
+    },
+    {
+        "Circumstance": "NPC is good at this",
+        "Modifier": "+10"
+    },
+    {
+        "Circumstance": "NPC is great at this",
+        "Modifier": "+13"
+    },
+    {
+        "Circumstance": "NPC is an expert at this",
+        "Modifier": "+16"
+    },
+    {
+        "Circumstance": "NPC is a world leader at this",
+        "Modifier": "+21"
+    }
+]

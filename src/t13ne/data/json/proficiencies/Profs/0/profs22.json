@@ -1,0 +1,1433 @@
+{
+  "1101": {
+    "id": 1101,
+    "prof": {
+      "Name": [
+        "Transformation",
+        "Transformation Miasma Resolved Hitch Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Transformation is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1102": {
+    "id": 1102,
+    "prof": {
+      "Name": [
+        "Underworlds",
+        "Underworlds Miasma Rule Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Underworlds is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1103": {
+    "id": 1103,
+    "prof": {
+      "Name": [
+        "Foul Locations",
+        "Foul Location Miasma Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Foul Locations is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1104": {
+    "id": 1104,
+    "prof": {
+      "Name": [
+        "Transformative",
+        "Transformative Miasma Success Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Transformative is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1105": {
+    "id": 1105,
+    "prof": {
+      "Name": [
+        "Taint",
+        "Taint Miasma Sway Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Taint is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1106": {
+    "id": 1106,
+    "prof": {
+      "Name": [
+        "Fallout",
+        "Fallout Miasma Tangle Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Fallout is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1107": {
+    "id": 1107,
+    "prof": {
+      "Name": [
+        "Corrupting / Decaying / Destruction / Poisoning / Polluting / Rotting / Transformation",
+        "Corrupting / Decaying / Destruction / Poisoning / Polluting / Rotting / Transformation",
+        ""
+      ],
+      "Description": "A seed of sovereignty planted in the fertile ground of Mastery, Corrupting / Decaying / Destruction / Poisoning / Polluting / Rotting / Transformation is the flower that blooms in adversity.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Scopes": [
+          "12"
+        ],
+        "Genres": [
+          "12"
+        ],
+        "Eras": [
+          "12"
+        ],
+        "Types": [
+          "Test"
+        ]
+      }
+    }
+  },
+  "1108": {
+    "id": 1108,
+    "prof": {
+      "Name": [
+        "Eerie",
+        "Eerie Miasma Tone Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Eerie is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1109": {
+    "id": 1109,
+    "prof": {
+      "Name": [
+        "Surprise Corpse",
+        "Surprise Corpse Miasma Turn Proficiency",
+        "astonishment, amazement, wonder, shock, startle"
+      ],
+      "Description": "Eerie and unsettling, Surprise Corpse is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1110": {
+    "id": 1110,
+    "prof": {
+      "Name": [
+        "Contagion",
+        "Contagion Miasma Twisted Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Contagion is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1111": {
+    "id": 1111,
+    "prof": {
+      "Name": [
+        "Intoxicating",
+        "Intoxicating Miasma Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Intoxicating is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1112": {
+    "id": 1112,
+    "prof": {
+      "Name": [
+        "Poisonous",
+        "Poisonous Miasma Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Poisonous is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1113": {
+    "id": 1113,
+    "prof": {
+      "Name": [
+        "Festering",
+        "Festering Miasma Nimbed Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Festering is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1114": {
+    "id": 1114,
+    "prof": {
+      "Name": [
+        "Foul",
+        "Foul Miasma Style Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Foul is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1115": {
+    "id": 1115,
+    "prof": {
+      "Name": [
+        "Catalyst",
+        "Catalyst Miasma Persona Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Catalyst is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1116": {
+    "id": 1116,
+    "prof": {
+      "Name": [
+        "Supernatural",
+        "Supernatural Nature Zero Boon Adjective Proficiency",
+        "paranormal, psychic, abnormal, metaphysical, unearthly"
+      ],
+      "Description": "Visceral and sensual, Supernatural is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1117": {
+    "id": 1117,
+    "prof": {
+      "Name": [
+        "Psychic",
+        "Psychic Nature Zero Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Psychic is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1118": {
+    "id": 1118,
+    "prof": {
+      "Name": [
+        "Abnormal Locations",
+        "Abnormal Location Nature Zero Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Abnormal Locations is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1119": {
+    "id": 1119,
+    "prof": {
+      "Name": [
+        "Artificial",
+        "Artificial Nature Low Boon Adjective Proficiency",
+        "man-made, contrived, unnatural, synthetic, fake"
+      ],
+      "Description": "Visceral and sensual, Artificial is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1120": {
+    "id": 1120,
+    "prof": {
+      "Name": [
+        "Contrived",
+        "Contrived Nature Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Contrived is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1121": {
+    "id": 1121,
+    "prof": {
+      "Name": [
+        "Unnatural Locations",
+        "Unnatural Location Nature Low Boon Location Adjective Proficiency",
+        "odd, strange, artificial, aberrant, weird"
+      ],
+      "Description": "Visceral and sensual, Unnatural Locations is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1122": {
+    "id": 1122,
+    "prof": {
+      "Name": [
+        "Unnatural",
+        "Unnatural Nature Low Boon Adjective Proficiency",
+        "odd, strange, artificial, aberrant, weird"
+      ],
+      "Description": "Visceral and sensual, Unnatural is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1123": {
+    "id": 1123,
+    "prof": {
+      "Name": [
+        "Odd",
+        "Odd Nature Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Odd is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1124": {
+    "id": 1124,
+    "prof": {
+      "Name": [
+        "Strange Locations",
+        "Strange Location Nature Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Strange Locations is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1125": {
+    "id": 1125,
+    "prof": {
+      "Name": [
+        "Unhealthy",
+        "Unhealthy Nature Low Boon Adjective Proficiency",
+        "risky, undesirable, sick, morbid, ailing"
+      ],
+      "Description": "Visceral and sensual, Unhealthy is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1126": {
+    "id": 1126,
+    "prof": {
+      "Name": [
+        "Risky",
+        "Risky Nature Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Risky is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1127": {
+    "id": 1127,
+    "prof": {
+      "Name": [
+        "Undesirable Locations",
+        "Undesirable Location Nature Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Undesirable Locations is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1128": {
+    "id": 1128,
+    "prof": {
+      "Name": [
+        "Unfit",
+        "Unfit Nature Low Boon Adjective Proficiency",
+        "unsuitable, pedestrian, inappropriate, weak, ailing"
+      ],
+      "Description": "Visceral and sensual, Unfit is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1129": {
+    "id": 1129,
+    "prof": {
+      "Name": [
+        "Unsuitable",
+        "Unsuitable Nature Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Unsuitable is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1130": {
+    "id": 1130,
+    "prof": {
+      "Name": [
+        "Pedestrian Locations",
+        "Pedestrian Location Nature Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Pedestrian Locations is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1131": {
+    "id": 1131,
+    "prof": {
+      "Name": [
+        "Natural",
+        "Natural Nature Medium Boon Adjective Proficiency",
+        "instinctive, common, organic, genuine, native"
+      ],
+      "Description": "Visceral and sensual, Natural is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1132": {
+    "id": 1132,
+    "prof": {
+      "Name": [
+        "Instinctive",
+        "Instinctive Nature Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Instinctive is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1133": {
+    "id": 1133,
+    "prof": {
+      "Name": [
+        "Common Locations",
+        "Common Location Nature Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Common Locations is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1134": {
+    "id": 1134,
+    "prof": {
+      "Name": [
+        "Fit",
+        "Fit Nature Medium Boon Adjective Proficiency",
+        "proper, comfortable, healthy, suitable, capable"
+      ],
+      "Description": "Visceral and sensual, Fit is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1135": {
+    "id": 1135,
+    "prof": {
+      "Name": [
+        "Proper",
+        "Proper Nature Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Proper is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1136": {
+    "id": 1136,
+    "prof": {
+      "Name": [
+        "Comfortable Locations",
+        "Comfortable Location Nature Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Comfortable Locations is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1137": {
+    "id": 1137,
+    "prof": {
+      "Name": [
+        "Healthy",
+        "Healthy Nature High Boon Adjective Proficiency",
+        "robust, blooming, vigorous, sound, fit"
+      ],
+      "Description": "Visceral and sensual, Healthy is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1138": {
+    "id": 1138,
+    "prof": {
+      "Name": [
+        "Robust",
+        "Robust Nature High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Robust is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1139": {
+    "id": 1139,
+    "prof": {
+      "Name": [
+        "Blooming Locations",
+        "Blooming Location Nature High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Blooming Locations is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1140": {
+    "id": 1140,
+    "prof": {
+      "Name": [
+        "Hearty",
+        "Hearty Nature High Boon Adjective Proficiency",
+        "heartfelt, cheerful, robust, warm, vigorous"
+      ],
+      "Description": "Visceral and sensual, Hearty is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1141": {
+    "id": 1141,
+    "prof": {
+      "Name": [
+        "Heartfelt",
+        "Heartfelt Nature High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Heartfelt is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1142": {
+    "id": 1142,
+    "prof": {
+      "Name": [
+        "Cheerful Locations",
+        "Cheerful Location Nature High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Cheerful Locations is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1143": {
+    "id": 1143,
+    "prof": {
+      "Name": [
+        "Lively",
+        "Lively Nature Very-High Boon Adjective Proficiency",
+        "rustic, spirited, active, energetic, animated"
+      ],
+      "Description": "Visceral and sensual, Lively is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1144": {
+    "id": 1144,
+    "prof": {
+      "Name": [
+        "Rustic",
+        "Rustic Nature Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Rustic is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1145": {
+    "id": 1145,
+    "prof": {
+      "Name": [
+        "Lively Locations",
+        "Lively Location Nature Very-High Boon Location Adjective Proficiency",
+        "rustic, spirited, active, energetic, animated"
+      ],
+      "Description": "Visceral and sensual, Lively Locations is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1146": {
+    "id": 1146,
+    "prof": {
+      "Name": [
+        "Vigorous",
+        "Vigorous Nature Very-High Boon Adjective Proficiency",
+        "hardy, flourishing, strong, energetic, robust"
+      ],
+      "Description": "Visceral and sensual, Vigorous is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1147": {
+    "id": 1147,
+    "prof": {
+      "Name": [
+        "Hardy",
+        "Hardy Nature Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Hardy is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1148": {
+    "id": 1148,
+    "prof": {
+      "Name": [
+        "Flourishing Locations",
+        "Flourishing Location Nature Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Flourishing Locations is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1149": {
+    "id": 1149,
+    "prof": {
+      "Name": [
+        "Wild",
+        "Wild Nature Very-High Boon Adjective Proficiency",
+        "barbarian, lush, untamed, savage, feral"
+      ],
+      "Description": "Visceral and sensual, Wild is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1150": {
+    "id": 1150,
+    "prof": {
+      "Name": [
+        "Barbarian",
+        "Barbarian Nature Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Barbarian is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

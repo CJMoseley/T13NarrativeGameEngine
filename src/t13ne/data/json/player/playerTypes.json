@@ -1,0 +1,50 @@
+[
+  {
+    "Type": "Actor",
+    "Description": "Actors play a Character, but don’t have any ability to Create or Alter them. This usually makes them reliant upon an Author to create their Character. Some games limit all players to this role alone."
+  },
+  {
+    "Type": "Artist",
+    "Description": "Artists can create Descendants and Characters, but usually don’t play them. Artists are usually considered specialised Authors. Sometimes combined with Narrator to make Set-Dresser."
+  },
+  {
+    "Type": "Author",
+    "Description": "Authors can create Games, Settings, Plots, but they usually don’t play them. Auuthors can also create Characters and Descendants and may play them as a Player."
+  },
+  {
+    "Type": "Director",
+    "Description": "Directors are a combination role, that combines Author and Narrator. The Director generally modifies a Story and narrates that story to the others. Directors usually rely on a separate Referee. This is often a Yarn-Teller play style."
+  },
+  {
+    "Type": "Editor",
+    "Description": "Editor is a specialised role that involves deciding what the next Scene will be, will it be a Scene from the current Plot, a Sub-Plot, or something else entirely? Often this role is combined with Referee."
+  },
+  {
+    "Type": "Game-Master",
+    "Description": "Game Master (GM) is a combination role that combines Editor, Trouper, Referee, Narrator (occasionally Raconteur in the case of GMPCs) and Author. This combination of roles is quite normal in traditional roleplaying games, although less common now than it was in the wilderness-between-dungeons years."
+  },
+  {
+    "Type": "Narrator",
+    "Description": "A Narrator narrates reactions to the Players usually in the second and third person, describing descendants, events and situations to the other Players. The Narrator role is often combined with that of Referee to create a Games-Master."
+  },
+  {
+    "Type": "Player",
+    "Description": "A Player is a combination role common to roleplaying games that combines the Artist and Actor roles. Players create their own Characters and play them themselves. In T13 we also can add Raconteur and Author to this list, if they are playing a Yarn-Teller Character."
+  },
+  {
+    "Type": "Raconteur",
+    "Description": "A Raconteur is a Narrator who tells the story from their own Character’s point of view. This is most common with Yarn-Teller Characters."
+  },
+  {
+    "Type": "Referee",
+    "Description": "A Referee has the job of interpreting the Rules of the Game. The Referee is often just an aspect of the Games Master, who has additional responsibilities."
+  },
+  {
+    "Type": "Set-Dresser",
+    "Description": "Set-Dressers combine artist (or even author) and narrator. They design locations and narrate their appearance to the others."
+  },
+  {
+    "Type": "Trouper",
+    "Description": "Actors who specialise in playing NPC Characters, especially Extras. It is often combined with Narrator, but can be a separate player"
+  }
+]

@@ -1,0 +1,1491 @@
+[
+    {
+        "Type": "Unison",
+        "Description": "A Unison has only a single tone.",
+        "Character": "Unison Characters can Relieve Stress by being, or acting alone or unaided.",
+        "Group": "Unison Groups work together perfectly as one, however the group will suffer from same-think, where all members are limited to similar thoughts. It is rare that a leader will emerge from a Unison group.",
+        "ModalNumbers": [
+            0
+        ],
+        "Pattern": "0"
+    },
+    {
+        "Type": "Octave",
+        "Description": "An Octave is a double or half frequency of vibration from the original tone.",
+        "Character": "Octave Characters can Relieve Stress by working with a partner, or spending time in another’s company.",
+        "Group": "Octave Groups work perfectly together, there is little difference between the members and that can lead to same think. Occasionally a leader may emerge from an Octave Group, but this is very unusual.",
+        "ModalNumbers": [
+            0,
+            12
+        ],
+        "Pattern": "12(0)"
+    },
+    {
+        "Type": "Ditonic-Major-Sixth",
+        "Description": "A Ditonic-Major-Sixth Scale only has two notes per octave, and is a very ancient and simple form of musical construction, often used in music for children. Typically the notes are a Major Sixth apart.",
+        "Character": "Ditonic-Major-Sixth Characters can Relieve Stress by experiencing positive emotions.",
+        "Group": "Ditonic-Major-Sixth Groups are simplistic in nature, but harmonious generally. They favour flat structures where everyone is equal, although occasionally a leader may emerge. ",
+        "ModalNumbers": [
+            0,
+            9
+        ],
+        "Pattern": "9(3)"
+    },
+    {
+        "Type": "Ditonic-Major-Second",
+        "Description": "A Ditonic-Major-Second Scale only has two notes per octave, and is a very ancient and simple form of musical construction, often used in music for children. Typically the notes are a tone apart.",
+        "Character": "Ditonic-Major-Second Characters can Relieve Stress by resting, relaxing or sleeping.",
+        "Group": "Ditonic-Major-Second Groups are simplistic organisations filled with minor arguments and disagreements, it is rare for such a group to pick a leader, and stick to it, with many becoming disatified with the leadership if it appears.",
+        "ModalNumbers": [
+            0,
+            2
+        ],
+        "Pattern": "T(10)"
+    },
+    {
+        "Type": "Ditonic-Minor-Second",
+        "Description": "A Ditonic-Minor-Second Scale only has two notes per octave, and is a very ancient and simple form of musical construction, often used in music for children. Typically the notes are a Semitone apart.",
+        "Character": "Ditonic-Minor-Second Characters can Relieve Stress by yelling, screaming and shouting or Stressing someone else.",
+        "Group": "Ditonic-Minor-Second Groups are simple and chaotic. No one will ever rise to being a leader of such an unorganised group.",
+        "ModalNumbers": [
+            0,
+            1
+        ],
+        "Pattern": "S(11)"
+    },
+    {
+        "Type": "Ditonic-Minor-Third",
+        "Description": "A Ditonic-Minor Scale only has two notes per octave, and is a very ancient and simple form of musical construction, often used in music for children. Typically the notes are a minor third apart.",
+        "Character": "Ditonic-Minor-Third Characters can Relieve Stress by restating their problem in the simplest terms possible.",
+        "Group": "A Ditonic-Minor-Third Group is simplistic, but often quite effective. Typically a leader will emerge quickly, although this leadership is seldom more than guidance, the group can often work together to achieve some simple goal.",
+        "ModalNumbers": [
+            0,
+            3
+        ],
+        "Pattern": "3(9)"
+    },
+    {
+        "Type": "Ditonic-Major-Third",
+        "Description": "A Ditonic-Major-third Scale only has two notes per octave, and is a very ancient and simple form of musical construction, often used in music for children. Typically the notes are a major third apart.",
+        "Character": "Ditonic-Major-Third Characters can Relieve Stress by getting their own way, or getting what they want.",
+        "Group": "Ditaonic-Major-Third groups are simplistic, but are quite capable of finding a suitable leader to achieve a given goal, just do not expect that leader to always be the same person.",
+        "ModalNumbers": [
+            0,
+            4
+        ],
+        "Pattern": "4(8)"
+    },
+    {
+        "Type": "Ditonic-Perfect-Fourth",
+        "Description": "A Ditonic-Perfect-Fourth Scale only has two notes per octave, and is a very ancient and simple form of musical construction, often used in music for children. Typically the notes are a perfect fourth apart.",
+        "Character": "Ditonic-Perfect-Fourth Characters can Relieve Stress by relaxing, or being pleasant to another Character.",
+        "Group": "Ditonic-Perfect-Fourth groups are simplistic in their organisation and goals, but often quite accomplished. Typically a leader will emerge that has some authority over the others, although occasionally a lack of organisation will cause failures and chaos in the group.",
+        "ModalNumbers": [
+            0,
+            5
+        ],
+        "Pattern": "5(7)"
+    },
+    {
+        "Type": "Ditonic-Tritone",
+        "Description": "A Ditonic-Tritone Scale only has two notes per octave, and is a very ancient and simple form of musical construction, often used in music for children. Typically the notes are three whole tones apart.",
+        "Character": "Ditonic-Tritone Characters can Relieve Stress by acting violent, harming others, or breaking stuff.",
+        "Group": "Ditonic-tritone groups are simply chaotic unorganised messes, typically no one in the group will agree with anyone else about anything and the group will fight internally before splitting in half.",
+        "ModalNumbers": [
+            0,
+            6
+        ],
+        "Pattern": "6(6)"
+    },
+    {
+        "Type": "Ditonic-Perfect-Fifth",
+        "Description": "A Ditonic-Perfect-Fifth Scale only has two notes per octave, and is a very ancient and simple form of musical construction, often used in music for children. Typically the notes are a Perfect-Fifth apart.",
+        "Character": "Ditonic-Perfect-Fifth Characters can Relieve Stress by demonstrating power, strength or stability.",
+        "Group": "Ditonic-Perfect-Fifth groups are simple, but incredibly stable organisations, they usually consist of a largely flat structure with a specified and chosen leader. Members of the group typically do as they are told by the leader.",
+        "ModalNumbers": [
+            0,
+            7
+        ],
+        "Pattern": "7(5)"
+    },
+    {
+        "Type": "Ditonic-Minor-Sixth",
+        "Description": "A Ditonic-Minor-Sixth Scale only has two notes per octave, and is a very ancient and simple form of musical construction, often used in music for children. Typically the notes are a Minor Sixth apart.",
+        "Character": "Ditonic-Minor-Sixth Characters can Relieve Stress by experiencing negative emotions.",
+        "Group": "Ditonic-Minor-Sixth groups are simplistic organisations, but can seem stable, until pushed from outside, when they have a tendency to collapse, or become chaotic.",
+        "ModalNumbers": [
+            0,
+            8
+        ],
+        "Pattern": "8(4)"
+    },
+    {
+        "Type": "Ditonic-Minor-Seventh",
+        "Description": "A Ditonic-Minor-Seventh Scale only has two notes per octave, and is a very ancient and simple form of musical construction, often used in music for children. Typically the notes are a Minor Seventh apart.",
+        "Character": "Ditonic-Minor-Seventh Characters can Relieve Stress by making another character uneasy, or by acting strange.",
+        "Group": "Ditonic-Minor-Seventh groups are simple organisations that have secrecy about them. Members may not even know who other members of the group are, and have to recognise each other by secret greetings and signs.",
+        "ModalNumbers": [
+            0,
+            10
+        ],
+        "Pattern": "10(T)"
+    },
+    {
+        "Type": "Ditonic-Major-Seventh",
+        "Description": "A Ditonic-Major-Seventh Scale only has two notes per octave, and is a very ancient and simple form of musical construction, often used in music for children. Typically the notes are a Major Seventh apart.",
+        "Character": "Ditonic-Major-Seventh Characters can Relieve Stress by encouraging another Character.",
+        "Group": "Ditonic-Major-Seventh groups are simplistic but friendly, and quite stable. no memeber of the group is a leader, but members will help, aid and assist each other to accomplish goals.",
+        "ModalNumbers": [
+            0,
+            11
+        ],
+        "Pattern": "11(S)"
+    },
+    {
+        "Type": "Major-Triad",
+        "Description": "A Major-Triad Scale only has 3 notes to the octave, this is a \"primitive\" and ancient form of music. The Scales are usually based around a Major Trichord",
+        "Character": "Major-Triad Characters can Relieve Stress by communicating their problem to another.",
+        "Group": "Major-Triad groups true complex organisations, there will usually be a leader, or council of leaders, and the organisation is capable of growing to a large size because of this stability. Members of the group will generally have a positive experience with the group.",
+        "ModalNumbers": [
+            0,
+            4,
+            7
+        ],
+        "Pattern": "43(5)"
+    },
+    {
+        "Type": "Minor-Triad",
+        "Description": "A Minor-Triad Scale only has 3 notes to the octave, this is a \"primitive\" and ancient form of music. This variant is based around a minor trichord",
+        "Character": "Minor Triad Characters can Relieve Stress by ignoring a problem, and pretending it doesn’t exist.",
+        "Group": "Minor-Triad groups are complex and thoughful groups, but something is wrong with them, often the leaders will be corrupt, occasionally this corruption is rampant. Most members of the group will have a negative experience somehow.",
+        "ModalNumbers": [
+            0,
+            3,
+            7
+        ],
+        "Pattern": "34(5)"
+    },
+    {
+        "Type": "Leading-Tone-Triad",
+        "Description": "A Leading-Tone-Triad Scale only has 3 notes to the octave, this is a \"primitive\" and ancient form of music. The Scales are usually based around a Diminished Trichord",
+        "Character": "Leading-Tone-Triad Characters can Relieve Stress by talking and listening to another Character.",
+        "Group": "Leading-Tone-Triad Groups are active and lively hierachical groups, prone to internal conflict, but still able to work towards a common goal.",
+        "ModalNumbers": [
+            0,
+            3,
+            6
+        ],
+        "Pattern": "33(6)"
+    },
+    {
+        "Type": "Tritonic-Suspended-Sixth",
+        "Description": "A Tritonic-Suspended-Sixth Scale only has 3 notes to the octave, this is a \"primitive\" and ancient form of music. This variant is based around a Suspended 6 trichord",
+        "Character": "Tritonic-Suspended-Sixth Characters can Relieve Stress by talking about the thing that stressed them aloud.",
+        "Group": "Tritonic-Suspended-Sixth groups are typically primitive hierarchies, usually with a pyramid structure, a monarch on top, nobles and peasants below. Such an organisation can be very stressful for those on the bottom, but delightful for those on top. Those few in the middle will have a mixed bag. Such organisations are surprisingly stable, although they often dispose of a leader only to replace them with another.",
+        "ModalNumbers": [
+            0,
+            2,
+            5
+        ],
+        "Pattern": "T3(7)"
+    },
+    {
+        "Type": "Augmented-Triad",
+        "Description": "An Augmented Triad Scale only has 3 notes to the octave, this is a \"primitive\" and ancient form of music. The Scales are usually based around an Augmented Trichord",
+        "Character": "Augmented-Triad Characters can Relieve Stress by besting other Characters in minor games, such as insult matches.",
+        "Group": "Augmented-Triad groups are considered primitive orgaisations, typically having a \"Captain\" style leader who leads by example, with a number of lietenants who are respected and feared, and then the rest of the members. These organisations are very stable, although occasionally Lieutenants may make a bid for leadership, or an ordinary member will become a Lieutenant, these events are rarely damaging to the group as a whole.",
+        "ModalNumbers": [
+            0,
+            4,
+            8
+        ],
+        "Pattern": "4T(7)"
+    },
+    {
+        "Type": "Dominant-Seventh-Triad",
+        "Description": "A Dominant-Seventh-Triad Scale only has 3 notes to the octave, this is a \"primitive\" and ancient form of music. This variant is based around a Dominant Seventh Trichord",
+        "Character": "Dominant-Seventh-Triad Characters can Relieve Stress by shouting at, blaming, or reprimanding others.",
+        "Group": "Dominant-Seventh-Triad groups are primitive and often dangerous, such groups choose leaders not based on any form of merit, but because the leader is the most violent bully in the group. Such groups are often hierachical, but the \"leader\" does little but reprimand, punish and blame others when things go wrong. Membership of such a group is usually stressful and can be damaging to the health.",
+        "ModalNumbers": [
+            0,
+            2,
+            6
+        ],
+        "Pattern": "T4(6)"
+    },
+    {
+        "Type": "Inverted-Dominant-Seventh-Triad",
+        "Description": "An Inverted-Dominant-Seventh-Triad Scale only has 3 notes to the octave, this is a \"primitive\" and ancient form of music. The Scales are usually based around an Inverted Dominant Seventh Trichord.",
+        "Character": "Inverted-Dominant-Seventh-Triad Characters can Relieve Stress by listening to another Character’s problems, or accepting blame.",
+        "Group": "Inverted-Dominant-Seventh-Triad groups are primitve, but often very stable organisations. Typically leadership is given to the oldest, or wisest member of the group, and all members respect and abide by this leadership, although they may not always agree. respectful disagreement is common within the group.",
+        "ModalNumbers": [
+            0,
+            4,
+            6
+        ],
+        "Pattern": "43(5)"
+    },
+    {
+        "Type": "Major-Seventh-Triad",
+        "Description": "A Major-Seventh-Triad Scale only has 3 notes to the octave, this is a \"primitive\" and ancient form of music. This variant is based around a Major-Seventh Trichord (omitting the 5th)",
+        "Character": "Major-Seventh-Triad Characters can Relieve Stress by experiencing or seeing another Character experiencing a positive emotion.",
+        "Group": "Major-Seventh-Triad groups are primitive organisations that are usually chaotic and noisy, there is often no clear leadership, and members are only slightl more likely to work together as against each other.",
+        "ModalNumbers": [
+            0,
+            1,
+            5
+        ],
+        "Pattern": "S4(7)"
+    },
+    {
+        "Type": "Add-Second-Triad",
+        "Description": "An Add-Second-Triad Scale only has 3 notes to the octave, this is a \"primitive\" and ancient form of music. This variant is based around an Add(2) Trichord",
+        "Character": "Add-Second-Triad Characters can Relieve Stress by sleeping, or gettings things their way.",
+        "Group": "Add-Second-Triad groups are primitive organisations that commonly suffer from a multiplicity of internal problems, leadership is often itself chaotic.",
+        "ModalNumbers": [
+            0,
+            2,
+            4
+        ],
+        "Pattern": "TT(8)"
+    },
+    {
+        "Type": "Suspended-Seventh-Triad",
+        "Description": "A Suspended-Seventh-Triad Scale only has 3 notes to the octave, this is a \"primitive\" and ancient form of music. This variant is based around a Suspended-Seventh Trichord",
+        "Character": "Suspended-Seventh-Triad Characters can Relieve Stress by joking, or mocking another Character.",
+        "Group": "Suspended-Seventh-Triad Groups are primitive and chaotic, with a lot of joking and infomality, if a leader emerges they will simply be the most serious one of this bunch of clowns.",
+        "ModalNumbers": [
+            0,
+            4,
+            5
+        ],
+        "Pattern": "3S(8)"
+    },
+    {
+        "Type": "Augmented-Suspended-Fourth-Triad",
+        "Description": "An Augmented-Suspended-Fourth-Triad Scale only has 3 notes to the octave, this is a \"primitive\" and ancient form of music. This variant is based around an Augmented-Suspended-Fourth Trichord",
+        "Character": "Augmented-Suspended-Fourth-Triad Characters can Relieve Stress by increasing the Stakes or Suspense.",
+        "Group": "Augmented-Suspended-Fourth-Triad Groups are primtive secret societies, often religious in nature, they keep and pass on secret knowlege to the members. Membership is usually secretive and may wear masks or hoods to keep themselves anonymous during meetings.",
+        "ModalNumbers": [
+            0,
+            1,
+            6
+        ],
+        "Pattern": "S5(6)"
+    },
+    {
+        "Type": "Suspended-First-Triad",
+        "Description": "A Suspended-First-Triad Scale only has 3 notes to the octave, this is a \"primitive\" and ancient form of music. This variant is based around a Suspended-First Trichord",
+        "Character": "Suspended-First-Triad Characters can Relieve Stress by affecting another Character with any emotion.",
+        "Group": "Suspended-First-Triad Groups are ancient, but huge groups that encompass entire cultures and peoples, typically they have the loosest of memberships and often lack even hierachical structures. Members may recognise each other by skin tone, language, hair cut or a variety of other cultural mores.",
+        "ModalNumbers": [
+            0,
+            5,
+            6
+        ],
+        "Pattern": "5S(6)"
+    },
+    {
+        "Type": "Suspended-Second-Triad",
+        "Description": "A Suspended-Second-Triad Scale only has 3 notes to the octave, this is a \"primitive\" and ancient form of music. This variant is based around a Suspended-Second Trichord",
+        "Character": "Suspended-Second-Triad Characters can Relieve Stress by reacting dramatically to whatever is happening.",
+        "Group": "Suspended-Second-Triad groups are tense and dramatic, filled with internal tensions and complicated relationships, all within a simple flat structure.",
+        "ModalNumbers": [
+            0,
+            2,
+            7
+        ],
+        "Pattern": "T5(5)"
+    },
+    {
+        "Type": "Minor-Seventh-Triad",
+        "Description": "A Minor-Seventh-Triad Scale only has 3 notes to the octave, this is a \"primitive\" and ancient form of music. This variant is based around a Minor-Seventh Trichord",
+        "Character": "Minor-Seventh-Triad Characters can Relieve Stress by talking about what has happened to them.",
+        "Group": "Minor-Seventh-Triad groups are usually unbalanced in some way, typically they will be top-heavy organizations, with everyone fighting over the top spots and no one actually doing any work.",
+        "ModalNumbers": [
+            0,
+            2,
+            5
+        ],
+        "Pattern": "T5(5)"
+    },
+    {
+        "Type": "Minor-Minor-Seventh-Triad",
+        "Description": "A Minor-Minor-Seventh-Triad Scale only has 3 notes to the octave, this is a \"primitive\" and ancient form of music. This variant is based around a Minor-Minor-Seventh Trichord",
+        "Character": "Minor-Minor-Seventh-Triad Characters can Relieve Stress by telling an anecdote.",
+        "Group": "Minor-Minor-Seventh-Triad groups are chaotic and wild things, there is never any real sense of structure to the organisation, it may be a group of friends or a pack of wild animals. If a leader emerges it will be simply for the task at hand, or a natural leader within the group.",
+        "ModalNumbers": [
+            0,
+            3,
+            10
+        ],
+        "Pattern": "T5(5)"
+    },
+    {
+        "Type": "Neapolitan-Triad",
+        "Description": "A Neapolitan-Triad Scale only has 3 notes to the octave. This variant is based around a Neapolitan Trichord",
+        "Character": "Neapolitan-Triad Characters can Relieve Stress by getting others to do, or worry about, things for them.",
+        "Group": "Neapolitan-Triad groups are complex sprawling societies, often with a loose hierachical structure where it can be difficult to compare ranks between branches or areas. Such groups often have specialised leaders for specific purposes, such as legal, civic, religious leaders.",
+        "ModalNumbers": [
+            0,
+            3,
+            8
+        ],
+        "Pattern": "T5(5)"
+    },
+    {
+        "Type": "Suspended-Fourth-Triad",
+        "Description": "A Suspended-Fourth Scale only has 3 notes to the octave. This variant is based around a Suspended-Fourth Trichord",
+        "Character": "Suspended-Fourth-Triad Characters can Relieve Stress by working with others.",
+        "Group": "Suspended-Fourth-Triad groups are typically mysterious or secretive groups. Members usually know each other well, but keep their association secret from the outside world for some reason.",
+        "ModalNumbers": [
+            0,
+            5,
+            7
+        ],
+        "Pattern": "T5(5)"
+    },
+    {
+        "Type": "Diminished-Seventh",
+        "Description": "A Diminished-Seventh Scale only has four notes per octave, and is a very ancient form of music. The notes are all a minor third apart.",
+        "Character": "Diminished-Seventh Characters can Relieve Stress by expressing a conservative or traditional viewpoint on something.",
+        "Group": "Diminished-Seventh groups are perpetually on the edge of flying apart, internal chaos, confusion and a lack of clear leadership will result in a state of almost panic within the group.",
+        "ModalNumbers": [
+            0,
+            3,
+            6,
+            9
+        ],
+        "Pattern": "333(3)"
+    },
+    {
+        "Type": "Tetratonic-Chromatic",
+        "Description": "A Tetratonic-Chromatic Scale only has four notes each separated by a semitone.",
+        "Character": "Tetratonic-Chromatic Characters can Relieve Stress by completing a task in a traditional or conservative manner.",
+        "Group": "Tetratonic-Chromatic groups are complex and unstable groups that have little in the way of hierarchy, structure or leadership, but are inherently chaotic and confusing.",
+        "ModalNumbers": [
+            0,
+            1,
+            2,
+            3
+        ],
+        "Pattern": "SSS(9)"
+    },
+    {
+        "Type": "Tetratonic-Diminished",
+        "Description": "A Tetratonic-Diminished Scale only has four notes per octave, in the pattern of a diminished Tetrachord.",
+        "Character": "Tetratonic-Diminished Characters can Relieve Stress by talking to another Character who differs in opinions to them.",
+        "Group": "Tetratonic-Diminished groups are unstable, chaotic and dark, more like to a brawl than a society.",
+        "ModalNumbers": [
+            0,
+            1,
+            3,
+            4
+        ],
+        "Pattern": "STS(3)"
+    },
+    {
+        "Type": "Tetratonic-Gypsy",
+        "Description": "A Tetratonic-Gypsy Scale only has four notes per octave, in the pattern of a so-called Gypsy Tetrachord",
+        "Character": "Tetratonic-Gypsy Characters can Relieve Stress by dancing with a partner or showing affection to another Character physically (hug, kiss, etc).",
+        "Group": "Tetratonic-Gypsy groups are typically tied togather by emotional ties and history, they include families and life-long friendships.",
+        "ModalNumbers": [
+            0,
+            2,
+            3,
+            6
+        ],
+        "Pattern": "TS3(6)"
+    },
+    {
+        "Type": "Tetratonic-Harmonic",
+        "Description": "A Tetratonic-Harmonic Scale only has four notes per octave, in the pattern of a Harmonic Tetrachord",
+        "Character": "Tetratonic-Harmonic Characters can Relieve Stress by singing and agreeing with others.",
+        "Group": "Tetratonic-Harmonic groups are complex and harmonious, they will typically handle leadership decisions by mutual agreement.",
+        "ModalNumbers": [
+            0,
+            1,
+            4,
+            5
+        ],
+        "Pattern": "S3S(7)"
+    },
+    {
+        "Type": "Tetratonic-Major",
+        "Description": "A Tetratonic-Major Scale only has four notes per octave, in the pattern of a Major Tetrachord",
+        "Character": "Tetratonic-Major Characters can Relieve Stress by listening to others talk about their problems.",
+        "Group": "Tetratonic-Major groups are powerful and positive forces in the world. They usually have a clear leadership, often voted by a majority, and may have complex council, senate or parlimentary systems.",
+        "ModalNumbers": [
+            0,
+            2,
+            4,
+            5
+        ],
+        "Pattern": "TTS(7)"
+    },
+    {
+        "Type": "Tetratonic-Minor",
+        "Description": "A Tetratonic-Minor Scale only has four notes per octave, in the pattern of a Minor Tetrachord",
+        "Character": "Tetratonic-Minor Characters can Relieve Stress by sharing their emotions, through words or actions.",
+        "Group": "Tetratonic-Minor groups are generally held together by a shared misery or negative history. Such groups are very stable, but are often ineffective, overly emotional, or pathetic, unless their goal is to spread their misery to others.",
+        "ModalNumbers": [
+            0,
+            2,
+            3,
+            5
+        ],
+        "Pattern": "TST(7)"
+    },
+    {
+        "Type": "Tetratonic-Phrygian",
+        "Description": "A Tetratonic-Phrygian Scale only has four notes per octave, in the pattern of a Phrygian Tetrachord",
+        "Character": "Tetratonic-Phrygian Characters can Relieve Stress by acting forcefully, trying to impose their will on others, or when the Suspense Level Increases.",
+        "Group": "Tetratonic-Phrygian groups are generally heavy, dark and serious. These groups set important goals for themselves and often feature strict hierarchies and internal laws, but this is often an attempt to impose structure on chaos. Internal conflicts, schisms, pressures and tensions within the group will destabilise it eventually.",
+        "ModalNumbers": [
+            0,
+            1,
+            3,
+            5
+        ],
+        "Pattern": "STT(7)"
+    },
+    {
+        "Type": "Tetratonic-Whole",
+        "Description": "A Tetratonic-Whole Scale only has four notes per octave, in the pattern of a Whole Tone Tetrachord",
+        "Character": "Tetratonic-Whole Characters can Relieve Stress by being vague, impractical or abstract.",
+        "Group": "Tetratonic-Whole groups are examples of stable ancient societies, often characterised by a rigid legal, as well as social class, or caste, system such as those found historically in Europe, India and Japan. Members are expected to conform and there is little social movement within such societies.",
+        "ModalNumbers": [
+            0,
+            2,
+            4,
+            6
+        ],
+        "Pattern": "TTT(7)"
+    },
+    {
+        "Type": "Tetratonic-Hungarian-Major",
+        "Description": "A Tetratonic-Hungarian-Major Scale only has four notes per octave, in the pattern of a Hungarian Tetrachord",
+        "Character": "Tetratonic-Hugarian-Major Characters can Relieve Stress by considering all the options, doing the maths, or making a list.",
+        "Group": "Tetratonic-Hungarian-Major groups are inherently unstable, riddled by internal conflicts and suspense, but despite this the group will usually achieve its goals, often with surprising speed and efficiency despite, or somehow due to the chaos.",
+        "ModalNumbers": [
+            0,
+            3,
+            4,
+            6
+        ],
+        "Pattern": "3ST(6)"
+    },
+    {
+        "Type": "Major-Sixth",
+        "Description": "A Major-Sixth Scale only has 4 notes to the octave, these notes are arranged around a Major-Sixth Chord",
+        "Character": "Major-Sixth Characters can Relieve Stress by calmly discussing their feelings with another.",
+        "Group": "Major-Sixth groups are robust and stable, they typically are considered caring and internally supportive societies, although exceptions exist where bullying or domination do occur, these are very rare.",
+        "ModalNumbers": [
+            0,
+            4,
+            7,
+            9
+        ],
+        "Pattern": "43T(3)"
+    },
+    {
+        "Type": "Dominant-Seventh",
+        "Description": "A Dominant-Seventh Scale only has 4 notes to the octave, these notes are arranged around a Dominant-Seventh Chord",
+        "Character": "Dominant-Seventh Characters can Relieve Stress by talking about hope, friendship, or love.",
+        "Group": "Dominant-Seventh Groups are fairly stable and cordial, even polite societies, there is a certain influence hidden within the society, but it tends to express as a romanticism within the society. Members may feel a desire to adventure, and this can of course cause trouble.",
+        "ModalNumbers": [
+            0,
+            4,
+            7,
+            10
+        ],
+        "Pattern": "433(T)"
+    },
+    {
+        "Type": "Major-Seventh",
+        "Description": "A Major-Seventh Scale only has 4 notes to the octave, these notes are arranged around a Major-Seventh Chord",
+        "Character": "Major-Seventh Characters can Relieve Stress by relaxing with friends.",
+        "Group": "Major-Seventh groups are very calm and stable organisations, that usually has a loose structure with little internal friction.",
+        "ModalNumbers": [
+            0,
+            4,
+            7,
+            11
+        ],
+        "Pattern": "434(S)"
+    },
+    {
+        "Type": "Augmented-Seventh",
+        "Description": "An Augmented-Seventh Scale only has 4 notes to the octave, these notes are arranged around a Augmented-Seventh Chord",
+        "Character": "Augmented-Seventh Characters can Relieve Stress by changing their mind about something or changing tactics.",
+        "Group": "Augmented-Seventh groups are mysterious and curious organisations, typically formed to investigate some mystery or crime, eventually the group takes on the mysteriousness itself, with members often communicating in secret codes and jargon that confuses outsiders.",
+        "ModalNumbers": [
+            0,
+            4,
+            8,
+            10
+        ],
+        "Pattern": "44T(T)"
+    },
+    {
+        "Type": "Minor-Sixth",
+        "Description": "A Minor-Sixth Scale only has 4 notes to the octave, these notes are arranged around a Minor-Sixth Chord",
+        "Character": "Minor-Sixth Characters can Relieve Stress by travelling, walking or pacing the room.",
+        "Group": "Minor-Sixth Groups are stable and usually \"agrarian\" systems where eveyone in the group knows their place within the structure and is happy with their lot, however there is a lot of hidden tension within the society and this can lead to spontaneous criminality, violence or mistreatment within the group against some members.",
+        "ModalNumbers": [
+            0,
+            3,
+            7,
+            9
+        ],
+        "Pattern": "34T(3))"
+    },
+    {
+        "Type": "Minor-Seventh",
+        "Description": "A Minor-Seventh Scale only has 4 notes to the octave, these notes are arranged around a Minor-Seventh Chord",
+        "Character": "Minor-Seventh Characters can Relieve Stress by watching the sky, the weather or staring out of a window.",
+        "Group": "Minor-Seventh groups are known for their internal conflicts, but are known to be stable and productive usually. Members of the group may struggle for positions and ranks within the group, but all members are aligned against outsiders. This is common to trade organisations and similar organisations.",
+        "ModalNumbers": [
+            0,
+            3,
+            7,
+            10
+        ],
+        "Pattern": "343(T))"
+    },
+    {
+        "Type": "Minor-Major-Seventh",
+        "Description": "A Minor-Major-Seventh Scale only has 4 notes to the octave, these notes are arranged around a Minor-Seventh Chord",
+        "Character": "Minor-Major-Seventh Characters can Relieve Stress by asking questions.",
+        "Group": "Minor-Major-Seventh groups are strict and secretive oragnisations, often engaged in clandestine or religiously questionable practices. Typically the membership can only identify other members by some hanshake, codeword or item of clothing. Minor-Major Seventh groups can include spy rings, covert agencies and secret societies of all kinds.",
+        "ModalNumbers": [
+            0,
+            3,
+            7,
+            11
+        ],
+        "Pattern": "344(S))"
+    },
+    {
+        "Type": "Half-Diminished-Seventh",
+        "Description": "A Half-Diminished-Seventh Scale only has 4 notes to the octave, these notes are arranged around a Half-Diminished-Seventh Chord",
+        "Character": "Half-Diminished-Seventh Characters can Relieve Stress by being unkind, sarcastic and disparaging.",
+        "Group": "Half-Diminished-Seventh groups are held together by their emotional connections, often a case of shared adversity or hardship has brought this group together, and holds them together versus a continued source of hardship.",
+        "ModalNumbers": [
+            0,
+            3,
+            6,
+            10
+        ],
+        "Pattern": "334(T))"
+    },
+    {
+        "Type": "Diminished-Major-Seventh",
+        "Description": "A Diminished-Major-Seventh Scale only has 4 notes to the octave, these notes are arranged around a Major-Seventh Chord",
+        "Character": "Diminished-Major-Seventh Characters can Relieve Stress by predicting doom, saying things will get worse, and being pessimistic.",
+        "Group": "Diminished-Major-Seventh groups are filled with tension and pressures, much of it internal, but usually as a response to some external pressures that affects the group. Such groups are rarely stable, full of internal power-struggles and politcal squabbles, and only reach a later stability after at least one member has been replaced. ",
+        "ModalNumbers": [
+            0,
+            3,
+            6,
+            11
+        ],
+        "Pattern": "335(S)"
+    },
+    {
+        "Type": "Dream",
+        "Description": "The Dream Scale only has 4 notes to the octave, these notes are arranged around the so-called Dream Chord",
+        "Character": "Dream Characters can Relieve Stress by dreaming, often in nightmares.",
+        "Group": "Dream Groups are strange, odd organisations, they have almost a two-faced quality about them, as they are at once very stable, and very unstable. Often having an air of cultivated chaos, or accidental stability that can be either stressful or reassuring to the members as it affects them individually. This is the sort of organisation where a good idea can get you noticed, promoted and create enemies all at the same time.",
+        "ModalNumbers": [
+            0,
+            5,
+            6,
+            7
+        ],
+        "Pattern": "5SS(5)"
+    },
+    {
+        "Type": "Elektra",
+        "Description": "The Elektra Scale only has 5 notes to the octave, these notes are arranged around the so-called Elektra Chord (which is a multi-octave polychord",
+        "Character": "Elektra Characters can Relieve Stress by getting their own back, getting revenge for real an imagined slights against them.",
+        "Group": "Elektra groups are typically built to accomplish one, often unpleasant goal. A typical Elektra group (if such a thing can exist) would be a conspiracy to assasinate the leader of dictatorship. Internal conflicts will be largely ignored to allow the group to accomplish its goal, but should any part falter or fail, the group will inevitably implode.",
+        "ModalNumbers": [
+            0,
+            1,
+            4,
+            7,
+            9
+        ],
+        "Pattern": "T33T(3)"
+    },
+    {
+        "Type": "Mu",
+        "Description": "The Mu Scale only has 4 notes to the octave, these notes are arranged around the so-called Mu Chord.",
+        "Character": "Mu Characters can Relieve Stress by being impractical, superstitious, mystical or \"psychic\".",
+        "Group": "Mu groups are often mystical, religious or scientific organisations, these are groups of people seeking something together. Typically they will freely share information around the group, each member working to their personal strengths towards the groups goals as a whole.",
+        "ModalNumbers": [
+            0,
+            2,
+            4,
+            7
+        ],
+        "Pattern": "T33T(3)"
+    },
+    {
+        "Type": "Add-Nine",
+        "Description": "The Add-Nine Scale only has 4 notes to the octave, these notes are arranged around the so-called Add9 Chord.",
+        "Character": "Add-Nine Characters can Relieve Stress by taking a deep breath, sighing or screaming.",
+        "Group": "Add-Nine groups share common goals, for the most part, although there may be some internal conflict, the group will try to work around an individual’s issues rather than ignoring them. Such groups usually have excellent cooperation between members, but may suffer from poor internal communication.",
+        "ModalNumbers": [
+            0,
+            2,
+            4,
+            7
+        ],
+        "Pattern": "T33T(3)"
+    },
+    {
+        "Type": "Add-Fourth",
+        "Description": "The Add-Fourth Scale only has 4 notes to the octave, these notes are arranged around the so-called Add4 or Add11 Chord.",
+        "Character": "Add-Fourth Characters can Relieve Stress by washing, cleaning, showering or bathing.",
+        "Group": "Add-Fourth groups are complex and difficult to understand groups, they seem to be very stable and harmonious groups, but something is wrong. Perhaps the group is working towards the wrong goals, or more likely some member of the group is secretly working aginst the rest.",
+        "ModalNumbers": [
+            0,
+            4,
+            5,
+            7
+        ],
+        "Pattern": "3ST(6)"
+    },
+    {
+        "Type": "Add-Sixth",
+        "Description": "The Add-Sixth Scale only has 4 notes to the octave, these notes are arranged around the so-called Add6 Chord.",
+        "Character": "Add-Sixth Characters can Relieve Stress by walking and pacing, or relaxing with friends.",
+        "Group": "Add-Sixth groups are usually strong and stable organisations, the leadership of such groups is typically guiding and suggesting rather than actively ordering, and such groups have little in the way of internal strife.",
+        "ModalNumbers": [
+            0,
+            4,
+            7,
+            9
+        ],
+        "Pattern": "T33T(3)"
+    },
+    {
+        "Type": "Mixed-Third",
+        "Description": "The Mixed-Third Scale only has 4 notes to the octave, these notes are arranged around Major and Minor Thirds.",
+        "Character": "Mixed-Third Characters can Relieve Stress by starting an arguement.",
+        "Group": "Mixed-Third groups are plagued by internal strife, typically the group will have at least two clearly delineated sides, often with a shadowy counter split, and all sides have arguements and clashes with their opposed internal opposite. Such groups are never stable and usually fracture into more primitive groups.",
+        "ModalNumbers": [
+            0,
+            3,
+            4,
+            7
+        ],
+        "Pattern": "T33T(3)"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            1,
+            2,
+            4,
+            7,
+            11
+        ],
+        "Type": "Fibonacci",
+        "Description": "Fibonacci Scale is a mathematical, artificial scale that uses the Fibonacci sequence as the note intervals, it bears little relationship to traditional musical scales.",
+        "Character": "Fibonacci Characters can Relieve Stress by double checking, coming up with a scientific or skeptical explanation, counting, or calculating.",
+        "Group": "Fibonacci groups have a structure that has naturally emerged with time, and works. Although the group is not without internal strife, typically this will be utilised by the leadership, rather than removed. Loose confederations, assemblies and alliances are all good examples of Fibonacci groups.",
+        "Pattern": "SST34"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            8
+        ],
+        "Type": "True-Fibonacci",
+        "Description": "True-Fibonacci Scale is a mathematical, artificial scale that uses the Fibonacci sequence as the notes, it bears little relationship to traditional musical scales.",
+        "Character": "True-Fibonacci Characters can Relieve Stress closing their eyes, rubbing their temples, or behaving lously, aggressively or violently.",
+        "Group": "True-Fibonacci groups are chaotic, dangerous, even cut-throat organisations, typically created with needless bureaucracy and inbuilt stressors in an attempt to control, or at least mitigate the chaos. Some corporations will conform to this group.",
+        "Pattern": "SSST3"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            1,
+            5,
+            6,
+            10
+        ],
+        "Type": "Iwato",
+        "Description": "Iwato Scale can be described as an Asian Locrian/Pentatonic variant. It has a lot of internal tensions and darkness with an unstability that sounds dangerous. ",
+        "Character": "Iwato Characters can Relieve Stress by facing their problems or enemies head on.",
+        "Group": "Iwato groups are typically a conspiracy with a traitor in it, these are dangerous people, playing dangerous games. It is likely the group will implode long before they accomplish whatever nefarious goal they have set themselves, although typically they will manage to destabilse the local situation dramatically and quickly while they exist.",
+        "Pattern": "S4S4T"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            4,
+            6,
+            7,
+            11
+        ],
+        "Type": "Hirajoshi",
+        "Description": "Hirajoshi Scale is a hemitonic pentatonic Lydian scale. It is bright, but carries some shade.",
+        "Character": "Hirajoshi Characters can Relieve Stress by making a plan, even it is only a to-do list.",
+        "Group": "Hirajoshi groups are planners, typically they have a regimented, disciplined attitude internally, with a strict legal system and advanced, extended, complex hierarchical structure, however this regimentation is a response to a complex threat from the environment or another group.",
+        "ModalNumbers": [
+            0,
+            2,
+            5,
+            7,
+            9
+        ],
+        "Pattern": "4TS4(S)"
+    },
+    {
+        "Type": "Yo",
+        "Description": "Yo or Blues Major Pentatonic Scale is a bright Major sounding Pentatonic Scale.",
+        "Character": "Yo Characters can Relieve Stress when they meditate, or make art.",
+        "Group": "Yo groups are harmonious collectives, there is typically no, or little, leadership required in such groups, as the group as a whole works towards common social goals.",
+        "ModalNumbers": [
+            0,
+            3,
+            5,
+            7,
+            10
+        ],
+        "Pattern": "T3TTT(3)"
+    },
+    {
+        "Type": "Pentatonic-Minor",
+        "Description": "Pentatonic Minor Scale is a subset of Dorian with a more Asian feel. ",
+        "Character": "Yo Characters can Relieve Stress when they meditate, perform yoga, or make art.",
+        "Group": "Pentatonic-Minor Groups have a calmness and serenity about them, whether they are an artist’s collective, religious commune, or high-tech company. Sometimes it can be hard to see how things get done, but they do.",
+        "ModalNumbers": [
+            0,
+            1,
+            5,
+            7,
+            10
+        ],
+        "Pattern": "3TT3(T)"
+    },
+    {
+        "Type": "Insen",
+        "Description": "Insen Scale is a pentatonic phrygian mode found in the tuning of the koto in Japan, that differs in one note from the Hirajoshi Scale. ",
+        "Character": "Insen Characters can Relieve Stress when they emotionally appeal to others, by showing passionate emotion, or telling a \"personal anecdote\".",
+        "Group": "Insen groups tend to be bound by a common goal, or shared adversity, but they are not a harmonious bunch. Unlikely allies, bruised egos and hurt feelings are the general operating procedure of the Insen group.",
+        "Pattern": "S4T3(T)"
+    },
+    {
+        "Type": "Pentatonic-Major",
+        "Description": "Pentatonic Major Scale a particularly joyful subset of the Lydian Scale. ",
+        "Character": "Characters who are Pentatonic-Major can Relieve Stress whenever they are are affected by a positive emotion, or have pleasent company.",
+        "Group": "Pentatonic-Major groups are typically stable and friendly, leadership is often more of mentorship or encouragement, rather than dictatorial. Often considered idyllic or boring by those outside the group depending upon their personal perspective (and personal harmonies).",
+        "ModalNumbers": [
+            0,
+            1,
+            5,
+            7,
+            8
+        ],
+        "Pattern": "S4TS4"
+    },
+    {
+        "Type": "In",
+        "Description": "In Scale also known as the Sakura Pentatonic Scale, or Carnatic Shudha Saveri in India is sometimes described as the Japanese Minor Scale. ",
+        "Character": "In Characters Relieve Stress whenever they make a decision or take an Action boldly.",
+        "Group": "In groups are dangerous and fractious, members are often engaged in opposed actions and even open conflict against each other (although rarely to the death), however such behaviour is expected and even encouraged to create a more efficient and effective group.",
+        "ModalNumbers": [
+            0,
+            2,
+            5,
+            7,
+            10
+        ],
+        "Pattern": "T3T3(T)"
+    },
+    {
+        "Type": "Egyptian",
+        "Description": "Egyptian Scale also known as the Suspended Dorian Pentatonic Scale.",
+        "Character": "Egyptian Characters Relieve Stress by taking action, practising, or exercising.",
+        "Group": "Egyptian groups are strong stable societies and companies, capable of great works, with only a hint of internal conflict. Typically this internal tension and pressure is expressed as an elite leadership little connected to the normal lives of the members.",
+        "ModalNumbers": [
+            0,
+            1,
+            5,
+            6,
+            10
+        ],
+        "Pattern": "STSTS"
+    },
+    {
+        "Type": "Istrian",
+        "Description": "Istrian Scale is a hexatonic scale that can only be approximated in equal-tempered tuning. It is a unique Croatian Scale found nowhere else in the world, and is part of the Croatian folk music in the Istrian peninsula. It has a strange suspense due to the unusual tunings of the scael.",
+        "Character": "Istrian Characters can Relieve Stress whenever they assist, work with another, or are helped.",
+        "Group": "Istrian groups are usually small, tight-knit communities, that are suspicious of outsiders, and often speak a particularly incomprehensible dialect or jargon.",
+        "ModalNumbers": [
+            0,
+            3,
+            5,
+            6,
+            7,
+            10
+        ],
+        "Pattern": "3T3T(3)"
+    },
+    {
+        "Type": "Blues-Minor",
+        "Description": "Blues Minor Scale, is a Pentatonic variant of the Natural\n\tMinor Scale.",
+        "Character": "Blues-Minor Characters Relieve Stress by taking action, practising, or exercising.",
+        "Group": "Blues-Minor groups are functionally dysfunctional, or dysfunctionally functional depending upon your measuring system. They are typified as odd-ball groups, collections of misfits that finally found a place to be. Such groups take a while to establish themselves and have numerous setbacks along the way, but eventually they become a stable, if ramshackle organisation.",
+        "ModalNumbers": [
+            0,
+            1,
+            4,
+            6,
+            7,
+            8,
+            11
+        ],
+        "Pattern": "S3TSS3"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            2,
+            4,
+            6,
+            7,
+            9,
+            10
+        ],
+        "Type": "Acoustic",
+        "Description": "Acoustic Mode is not really a mode and is instead a scale that combines a Whole Tone Scale and Minor Scale, into a Lydian Dominant Scale. ",
+        "Character": "Acoustic Characters can Relieve Stress by expressing their emotions through speech and music, including singing, whistling, or playing an instrument.",
+        "Group": "Acoustic groups are known for their debates, while there are great tensions within the structure of the group, such disagreements are always openly debated and must be compromised upon. However, due to the nature of this enforced and ensured compromise, the actual result typically makes no one truly happy. Such groups are usually stable, until some compromise is made that is a step too far, or some other extreme opinions are injected.",
+        "Pattern": "TTTSTST"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            1,
+            3,
+            4,
+            6,
+            8,
+            10,
+            12
+        ],
+        "Type": "Palamidian",
+        "Description": "Palamidian, Super-Locrian or Altered Dominant Scale is a Jazz scale that has a bright intellectual feel. ",
+        "Character": "Characters who are Palamidian can Relieve Stress by acting intellectual, bright or intelligent.",
+        "Group": "Palamidian groups are complicated, difficult to understand, they have a strange stability, like looking at a large rock balanced upon pillars of smaller ones, the structure look unstable, but isn’t — usually as a result of some hidden, or at least, inobvious factors. Typically living in such a structured society is often stressful, but rewarding for the members, if they can make sense of it.",
+        "Pattern": "STSTTTT"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            2,
+            4,
+            5,
+            7,
+            8,
+            11,
+            12
+        ],
+        "Type": "Harmonic-Major",
+        "Description": "Harmonic-Major Scale is a variant of Ionian, noted for its epic majesty. ",
+        "Character": "Characters who are Harmonic-Major can Relieve Stress by acting dramatically or trying to impress another Character.",
+        "Group": "Harmonic-Major groups are huge, sprawling multicultural empires, filled with diverse people all living under a single authority (often a benign monarch, or democratic senate). Sure there are conflicts and tensions within the group, but these are usually resolved peacefully, or at least legally, rather than by violence.",
+        "Pattern": "TTSTS3S"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            2,
+            4,
+            6,
+            7,
+            9,
+            10,
+            12
+        ],
+        "Type": "Whole-Tone",
+        "Description": "Whole Tone Scale uses only whole tones, no semi tones, and creates a dreamy, otherworldly feel. ",
+        "Character": "Whole-Tone Characters can Relieve Stress when they behave irrationally or illogically.",
+        "Group": "Whole-Tone groups are often strange and powerful organisations, but usually due to the nature of the membership, not the group itself. Typically such organisations are created to encourage a particular type of person to join, and because of this they are often exclusionary (and in some cases are made illegal because of this exclusionary nature). Leadership of such a group is usually restricted to an elected commitee who make decisions based on the business of the group, but much of the day to day running may be left to hired experts from beyond the group. ",
+        "Pattern": "TTTTTT"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            2,
+            4,
+            5,
+            7,
+            8,
+            10
+        ],
+        "Type": "Bebop",
+        "Description": "Bebop Scale is a Jazz Mixolydian variant scale with a Chromatic passing tone. ",
+        "Character": "Bebop Characters can Relieve Stress by acting cool, pretending they are not stressed.",
+        "Group": "Bebop groups are evanescent, short-lived and complicated groups, typically gathered for some sort of celebration or festivity, the group may have goals, but the chances are they will not be attained. Typically the group will only maintain stability for a short period, long enough for a ball, party, carnival, or similar festivity, before fracturing apart. They don't get a lot done, but they have a gret time not doing it.",
+        "Pattern": "TTSTTSSS"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            3,
+            4,
+            5,
+            7,
+            9,
+            12
+        ],
+        "Type": "Harmonic",
+        "Description": "Harmonic Scale, the Harmonic Scale was probably the first string instrument scale. It is a natural and fundamental scale that many others incorporate. ",
+        "Character": "Characters who are Harmonic can Relieve Stress whenever they are in a calm, peaceful Location.",
+        "Group": "Harmonic groups are capable, stable and calm, generally. Harmonic groups, unlike most, are difficult to lead from the top. The officials and officiants at the top tend to be figureheads who respond to the needs of the group. Instead, Harmonic groups are much more lead from the bottom, with even a slight change in attitude in the lower ranks carrying swiftly upward through the group, such changes can be made by agitation amongst the base, or the beliefs of new members as they join.",
+        "Pattern": "3SSTT3"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            1,
+            4,
+            6,
+            7,
+            10,
+            12
+        ],
+        "Type": "Tritone",
+        "Description": "Tritone Scale is a scale built around the Petrushka Chord. It holds two major triads and a lot of internal dissonance. ",
+        "Character": "Tritone Characters can Relieve Stress whenever they disagree with another Character.",
+        "Group": "Tritone Groups have an inherent instability, that typically involves unrequited (or at least unlikely) love, and often ends in a murder, or a beating with a slap-stick. Typically the members of the group tend to be adversaries when only two of them are present, but the more members are present the more mutual alliances, friendships, owed favours, debts and desires will complicate what should be an obvious combat situation into a delicate alliance.",
+        "Pattern": "S3TS3T"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            1,
+            4,
+            5,
+            7,
+            8,
+            11,
+            12
+        ],
+        "Type": "Byzantine",
+        "Description": "The Byzantine or Double Harmonic Major Scale is an unstable Scale that extends harmonic scales into a darker, more \"Middle-Eastern\" feeling. ",
+        "Character": "Byzantine Characters can Relieve Stress by brooding, engaging in action, or watching another Character.",
+        "Group": "Byzantine groups are complicated, complex tapestries of administration, an intricate web of bureaucratic oversight, tortuous interplays of ongoing negotiations and ancient by-laws, where even day-to-day survival can be quite involved. Within Byzantine groups there is always a sense that something dark must be hiding within the web of intrigue, and often there is, but rarely is this anything as simple as a spider at the centre of a web.",
+        "Pattern": "S3STS3S"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            1,
+            4,
+            5,
+            6,
+            8,
+            11,
+            12
+        ],
+        "Type": "Persian",
+        "Description": "Persian Scale is a scale that is an unusual variant of the harmonic that is a semi-chromatic Locrian variant. ",
+        "Character": "A Persian Character can Relieve Stress whenever they relax, work calmly, or create art.",
+        "Group": "Persian Groups tend to occupy some middle ground between two larger groups, this squeezed-between state, makes the Persian group stronger in a number of special ways. Military conquest will fortify and strengthen the Persian group, as the other enemy lends aid for their defence too, and this applies both ways. This then leads to trade, which makes the Persian group wealthier, which then leads to a cultural revolution, as the two very different cultures to either side are hybridised within the Persian group to create a distinct new culture and more importantly a style that appeals to both parent cultures, allowing the Persian culture to spread and grow.",
+        "Pattern": "S3SST3S"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            1,
+            3,
+            5,
+            7,
+            9,
+            11,
+            12
+        ],
+        "Type": "Neapolitan-Major",
+        "Description": "Neapolitan-Major Scale could also be known as the Phrygian Harmonic Minor, or Phrygian Melodic Minor because it is not really a Major Scale at all, and so is quite dark and dangerous. ",
+        "Character": "Neapolitan-Major Characters can Relieve Stress when they are holding a weapon ready to use.",
+        "Group": "Neapolitan-Major groups are gritty, dangerous, and powerful, they are the criminal gangs who have moved up from the streets. Their criminality is at the level of international cartels and wars with police, while manipulating the politicians against the police as well. Neapolitan-Major groups are the elite criminal organisations who control the flow of drugs and protection rackets in the area.",
+        "Pattern": "STTTTTS"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            1,
+            3,
+            5,
+            7,
+            8,
+            11,
+            12
+        ],
+        "Type": "Neapolitan Minor",
+        "Description": "Neapolitan Minor Scale is a blend of harmonic and phrygian scales, to create a truly dark scale that contains a subtle dissonance. ",
+        "Character": "A Neapolitan Minor Character can Relieve Stress when they see another Character threatened or in danger.",
+        "Group": "Neapolitan-Minor groups are internally stable, but have and edge and violence to them that is indicitve of inner-city or even slum life. Neapolitan-Minor groups are often criminal gangs, they may have power, fear, and occasionally some wealth on their side, but no legitimacy or political clout. They are small fry ultimately, always part of the criminal underclass, not the elite, who use them or kill them according to their needs.",
+        "Pattern": "STTTS3S"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            2,
+            3,
+            5,
+            6,
+            8,
+            10,
+            12
+        ],
+        "Type": "Sisyphean",
+        "Description": "Sisyphean or Half-Diminished Scale is also known as Locrian Natural 2, or Aoelian Flat 5. ",
+        "Character": "Sisyphean Characters can Relieve Stress whenever they begin a familiar task.",
+        "Group": "Sisyphean groups are noted for their steady pace of work, that can seem indefatigable from the outside, but within is often a mess of stress, repression and depression. Sisyphean groups can accomplish great things with time, but there is always a sense that it could have been done faster and more efficiently. Typically the leadership of Sisyphean groups are the type who use the stick more than the carrot, they punish failure (although being lazy would prefer not too and tend to be at best half-hearted about such puncishments), but do not encourage success, which often leads to a system of just meeting quotas and a society that is just limping along, not really progressing, but rather spinning its wheels.",
+        "Pattern": "TSTSTTT"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            2,
+            3,
+            5,
+            7,
+            8,
+            11,
+            12
+        ],
+        "Type": "Harmonic-Minor",
+        "Description": "Harmonic-Minor is not really a mode and is more technically a scale that is a variant of Aeolian. ",
+        "Character": "Harmonic-Minor Characters Relieve Stress when they are in a location with someone who is affected by a negative emotion, or whenever the Stakes lower.",
+        "Group": "Harmonic-Minor groups are drawn together by the same emotion, often caused by a similar external source, examples include support groups for parents of children with cancer, or children of parents with dementia. While similar experiences and emotions are being forced upon the members, they actually usually have almost nothing in common, beyond the reason the group exists. Such groups are often filled with internal strife and hardships, and yet they usually remain true to their goal, and somehow cling to existence.",
+        "Pattern": "TSTTS3S"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            2,
+            3,
+            5,
+            7,
+            9,
+            11,
+            12
+        ],
+        "Type": "Melodic-Minor",
+        "Description": "Melodic-Minor is a scale that is a jazz variant of Phrygian. It can also be called the Ascending-Melodic-Minor Scale, as it works best in an ascending melody. ",
+        "Character": "Melodic-Minor Characters Relieve Stress whenever the Stakes raise, or they affect another Character emotionally.",
+        "Group": "Melodic-Minor groups are stable as long as they are moving towards some goal or aspiration. However, once that goal is achieved, or becomes unachievable the groups members will turn on each other. Grievances and retributions will create stress and suspense within the group, but rarely reach the point of destroying the group. Typically, after a round of blamestorming, dredging up past failures, and rolling the corpse of the project about to see what can be learned, a new goal is set by the group and they proceed harmoniously again.",
+        "Pattern": "TSTTTTS"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            2,
+            3,
+            6,
+            7,
+            8,
+            10,
+            12
+        ],
+        "Type": "Romani",
+        "Description": "Romani Scale is a scale that can also be called a variant Phrygian Dominant, it is common to Spanish folk songs as well as amongst the Romani and other travellers, and has a dark, exotic sound to the western ear. ",
+        "Character": "Romani Characters Relieve Stress by expressing any negative emotion, through words or actions.",
+        "Group": "Romani groups are stable, built around old emotional and familial ties, but are not usually considered a strong group. Romani groups never claim territory, or Locations as their own, but always invest heavily in improving their vehicles. Internal tensions and pressures can become very high, but are usually dealt with via Medium Stakes Combat, although this can occasionally raise to High Stakes, if weapons are drawn.",
+        "Pattern": "TS3SSTT"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            2,
+            4,
+            5,
+            7,
+            9,
+            10,
+            11,
+            12
+        ],
+        "Type": "Bebop-Major",
+        "Description": "Bebop-Major Scale is a jazz scale that is basically a Major Sixth Diminished Scale, or Ionian Scale with Chromatic passing tone between the 5th and 6th (flat 6). ",
+        "Character": "Bebop-Major Characters can Relieve Stress when they socialise, party, or show affection to with people they like and trust.",
+        "Group": "Bebop-Major groups are parties, they are strong, powerful organisations, that can accomplish goals, whether this goal is winning an election, or just celebrating a birthday. Parties are made from groups of diverse people, friends and friends of friends, work colleagues, people who share similar political beliefs (or are opposed to another group’s beliefs) and people who just want to meet other people already in the party. Bebop-Major groups can be ephemeral, as the members leave when the party ends, but the stability of the group is such that they can gather again and again.",
+        "Pattern": "TTSTSSTS"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            2,
+            4,
+            5,
+            7,
+            9,
+            10,
+            11,
+            12
+        ],
+        "Type": "Bebop-Dominant",
+        "Description": "Bebop-Dominant Scale, or Seventh Diminished Scale is a Jazz scale that adds Chromatic passing note between the root and seventh, to the Mixolydian Scale, this gives all the notes of the Major and Mixolydian Scale for the root. In many ways this is The Bebop Scale, due to its use over sevenths, dominant chords and II-V chord progressions.",
+        "Character": "Bebop-Dominant Characters can Relieve Stress by socialising, partying, and indulging in intoxicants.",
+        "Group": "Bebop-Dominant groups are parties, they are somewhat ephemeral affairs, with memberships that can start and end at anytime as someone joins or leaves the party, but they can form almost anywhere at any time. Membership is so strong, that when more than a handful of party members meet, the party starts over again, calling in old members or swallowing those compatible who are present. Such parties can get out of control, not stopping until security, guards or police (riot gear optional) get things back under control. Bebop-Dominant parties can be political in nature, and work for social change, but they are chaotic affairs, and cannot be lead from the top.",
+        "Pattern": "TTSTTSSS"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            2,
+            4,
+            6,
+            9,
+            10,
+            12
+        ],
+        "Type": "Prometheus",
+        "Description": "Prometheus Scale is a Scale built from a \"Mystic\" Quartal Hexachord Chord called by its creator the chord of the pleroma (meaning to be full of divinity), it can be thought of as a variant of Lydian created by a Theosopher. ",
+        "Character": "Promethean Characters can Relieve Stress by praying or cursing aloud.",
+        "Group": "Prometheus groups often believe they have some mystical reason for being, some believe they were sponsored by gods, spirits or the divine in some form, others are drawn together because of similar, but occasionally nonsensical events in their life (such as telepathic incidents, missing time, time-slips, hypnotically created or discovered repressed memories, night terrors, alien, ghost, monster or faery encounters, and sleep disorders). Such groups have limited stabililty, membership changes frequently, although a few members will linger for years they are usually the ones who relish the pattern of drama that often circles the group. Group drama will always cause arguments, splits, and rows within the group, forcing and allowing complex reliationships to build within the group, before drama reorders everything once again.",
+        "Pattern": "TTT3ST"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            1,
+            4,
+            5,
+            7,
+            8,
+            11,
+            12
+        ],
+        "Type": "Flamenco",
+        "Description": "Flamenco Mode is technically a Phrygian-Major Scale, or Phrygian with two raised notes (3rd and 7th), giving it a more Ionian sound. ",
+        "Character": "Flamenco Characters Relieve Stress when they dramatically demonstrate the emotions they are feeling as fiercely as they are feeling them.",
+        "Group": "Flamenco groups are held together by powerful emotional ties, that go beyond simple faimly relationships, and become passions, desires and furious revenges. Flamenco groups are not considered stable, filled with dramatic tensions that force members to evolve and change, or leave the group, but their instability rarely causes a complete collapse of the group, and it quickly rebuilds by finding suitable new members.",
+        "Pattern": "S3STS3S"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            1,
+            4,
+            6,
+            8,
+            10,
+            11,
+            12
+        ],
+        "Type": "Enigmatic",
+        "Description": "Enigmatic Scale is not really a mode and is more technically a rebus-scale that sets a musical harmonic challenge, which was solved most impressively by Verdi. ",
+        "Character": "Enigmatic Characters can Relieve Stress when they behave oddly, strangely, ask or are asked questions.",
+        "Group": "Enigmatic groups are usually artificial in nature, with members recruited to form some panel, investigation team or examination committee. Enigmatic groups can be secretive, with members unable to tell others of their membership or responsibilities. Sometimes the goals of an Enigmatic group are known (such as find a cure for a disease), and other times the group will be for a secret purpose (reverse engineer this crashed alien ship), but membership will always be a guarded secret. Enigmatic groups seldom achieve their stated purpose, although they will have successes, they are usually too unstable to complete such work and will fracture and form separate groups that may attempt to continue the work, or exploit some factor they have already discovered. ",
+        "Pattern": "S3TTTSS"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            3,
+            4,
+            7,
+            8,
+            11,
+            12
+        ],
+        "Type": "Augmented",
+        "Description": "Augmented Scale is so called because it is built from a combination of interlocking augmented triads, it can also be called the Minor-Third Half-Step Scale as this describes the tone intervals.",
+        "Character": "Augmented Characters can Relieve Stress when they pause, trail off, or are interrupted and do not complete their sentence.",
+        "Group": "Augmented Groups are typically prestigious and stable organisations, often quite old, they have been granted, or have claimed, additional power and special privileges with time, that further increases their prestige and the eliteness of their membership. Membership is usually selected to ensure the new members will be a good fit.",
+        "Pattern": "3S3S3S"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            2,
+            3,
+            4,
+            7,
+            9,
+            12
+        ],
+        "Type": "Blues-Major",
+        "Description": "Blues-Major scale is also called the Gospel Scale and is Pentatonic-Major scale with an added Flat third as a passing tone. ",
+        "Character": "Blues Characters Relieve Stress when they make art or music, or sit in silence.",
+        "Group": "Blues-Major groups are drawn together by a sense of community and belonging. They grow naturally among communities of shared adversities, hardships, and interests. They are stable, usually with some politcal, civic, artistic or emotional power like community art groups, neighbour watch, science-club, or church choirs. ",
+        "Pattern": "3TSS3T"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            1,
+            2,
+            6,
+            7,
+            8,
+            12
+        ],
+        "Type": "Two-Semi-Tone-Tritone",
+        "Description": "Two-Semi-Tone-Tritone Scale also known as Messiean Mode 5, is an artificial scale created to break the Octave into two equal parts. This Scale is quite dissonant due the Tritones. ",
+        "Character": "A Two-Semi-Tone-Tritone Character can Relieve Stress when they act unexpectedly or differently to anyone else.",
+        "Group": "Two-Semi-Tone-Tritone groups are masters of improvisation, coming up with new goals and plans to achieve them almost as often as they argue, and they argue a lot. These groups are inherently unstable, and are almost always created by artificial external forces, hardly ever naturally occurring, and are as likely to break apart into separate groups as succeed. However, due to the curious nature of these groups they demonstrate incredible problem-solving and improvisational skills, that get stronger the longer the group lasts.",
+        "Pattern": "SS4SS4"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            1,
+            3,
+            5,
+            6,
+            8,
+            10,
+            12
+        ],
+        "Type": "Locrian",
+        "Description": "Locrian Mode is usually considered the darkest Mode. It is also considered Mercurial, in that it never properly resolves or settles, and is always in motion. This is because the Mode has flat a 2nd, 3rd, 5th and 6th, which means the tonic is a Diminished triad, but includes the tritone above the tonic, making the scale always sound unsettled and unsettling.",
+        "Character": "Locrian Characters can Relieve Stress by embracing darkness (acting evil), or moving into a, or between, locations.",
+        "Group": "Locrian groups are never settled, they must roam and patrol, even if they own a territory they will not be able to relax there, other groups will disturb them or force them to move. Locrian groups are often dark, and depressing, filled with evil, or at least exploitative characters and darker emotions. There is often an air of criminality, violence or repressed trauma about a Locrian group that eveyone will notice. Locrian groups can form as Funeral and Wake parties, all sharing some sense of loss and woe, as they say their goodbyes to the departed and travel between service and wake.",
+        "Pattern": "STTSTTT"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            1,
+            3,
+            5,
+            7,
+            8,
+            10,
+            12
+        ],
+        "Type": "Phrygian",
+        "Description": "The Phrygian Mode has a lot of darkness to it. This is the mode of tension and suspense. It is considered martial and Martian. ",
+        "Character": "Phrygian Characters can Relieve Stress when they make a decision or act rashly or violently.",
+        "Group": "Phrygian groups are typically armed, disciplined and similarly trained individuals, usually specialising in military violence, such as in a professional army, mercenary group, or at a push a well-regulated militia. Such groups typically rely on internal loyalties and a strong hierarchical structure.",
+        "Pattern": "STTTSTT"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            2,
+            3,
+            5,
+            7,
+            8,
+            10,
+            12
+        ],
+        "Type": "Aeolian",
+        "Description": "Aeolian Modes have a darkness, shade and sadness to them. This is often where drama and heart-break lie. This is the sixth mode of Major, or is described as having a flat 3rd, 6th and 7th, and is also known as the Natural Minor, and is generally considered Lunar and feminine. ",
+        "Character": "Aeolian Characters can Relieve Stress when they are affected by a Negative Emotional Effect, or talk about any emotional effect or situation.",
+        "Group": "Aeolian groups are often naturally occurring, with members drawn together by a similar emotional state, often a negative emotion sadly. The groups are stable and have stronglly cyclic nature, where they recruit members, and guide them, only to have them move on from the group as their emotional state eventually changes. Some members will become fixated and stuck within the negative patterns and cycles, which inevitably lends the groups stability and history.",
+        "Pattern": "TSTTSTT"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            2,
+            3,
+            5,
+            7,
+            9,
+            10,
+            12
+        ],
+        "Type": "Dorian",
+        "Description": "Dorian Mode brings in the shade of the Minor modes, but still has a earnestness, cheekiness and brightness to its sadness. It can be thought of as having a Flat 3rd and 7th, which is what lends it its minor character. It is considered Solar as it has the brightness of the sun holding back the dark. ",
+        "Character": "Dorian Characters can Relieve Stress by being active, playing it cool, exercising or hoping about something.",
+        "Group": "Dorian groups are cool cliques, and exclusive clubs, the sort of organisation where you have to be known to the membership to be invited in. Such groups often have optimistic, lofty goals, but the general membership usually has little interest in achieving those goals, preferring instead the social benefits that membership offers, this creates a sort of optimistic melancholy, similar to unrequited love, where the group claims some higher goal or purpose, but little or no progress has ever been made.",
+        "Pattern": "TSTTTST"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            2,
+            4,
+            5,
+            7,
+            9,
+            10,
+            12
+        ],
+        "Type": "Mixolydian",
+        "Description": "Mixolydian is the fifth mode, and starts at the fifth or dominant degree of the Major Scale, which explains why it can also be called the Dominant Scale. This is mostly the Ionian Major mode with just a Flat 7th for a difference, but that Minor-Seventh brings in a hint of ambiguity and \"off-kilterness\" to the Ionian, giving it a bluesy, folksy feel. This makes it Saturnal and Saturnalian,  ",
+        "Character": "Myxolydian Characters can Relieve Stress when they speak or act dryly or cooly, without strong emotions.",
+        "Group": "Mixolydian groups have an natural organic feeling to them, membership grows organically, finding similar people who share interests, and is common to bands, clubs and many social groups. Myxolydian groups have a natural stabililty, and will often have a multiplicity of members each each tone. ",
+        "Pattern": "TTSTTST"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            2,
+            4,
+            5,
+            7,
+            9,
+            11,
+            12
+        ],
+        "Type": "Ionian/Major",
+        "Description": "Ionian Mode is second only to Lydian mode in brightness and is generally happy, uplifting and loving. It is made from all the white notes of the piano in C, and is therefore considered the first mode. Ionian Mode is considered Venusian and Venereal. ",
+        "Character": "Ionian Characters may Relieve Stress by showing affection to, or being shown affection by, another Character.",
+        "Group": "Ionian groups are positive social movements, such as charities, schools, outreach programs and the like. Membership are usually self-selecting volunteers, with similar (or aligned) goals and typically a singular positive emotional state, although some variance is normal.",
+        "Pattern": "TTSTTTS"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            2,
+            4,
+            6,
+            7,
+            9,
+            11,
+            12
+        ],
+        "Type": "Lydian",
+        "Description": "Lydian is the brightest of the Tonal Modes in the system, it can be seen as Major with a Sharp Fourth. It is considered both Jovian (relating to Jupiter) and jovial, having an ethereal or mystical quality. ",
+        "Character": "Lydian Characters can Relieve Stress by daydreaming, using their imagination, or planning ahead.",
+        "Group": "Lydian groups are jovial and light-hearted, they often represent the groups that gather for celebrations and festivals, they can become lasting, rolling parties, but rarely have political connotations.",
+        "Pattern": "TTTSTTS"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            2,
+            3,
+            4,
+            6,
+            8,
+            10,
+            11
+        ],
+        "Type": "Messiaen",
+        "Description": "Messiaen Scale, or technically Mode 3, is a tense, colourful and exotic scale intended for transitioning. ",
+        "Character": "Messiaen Characters can Relieve Stress by exiting a Location, spending time outside, or by changing task.",
+        "Group": "Messiaen groups are short-lived, chaotic groups that are formed by circumstances such as being all passengers aboard the same vessel. These groups typically do not have any structure or much purpose, although occasionally circumstances will also give them both.",
+        "Pattern": "TSSTTTS"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            1,
+            4,
+            5,
+            7,
+            8,
+            10,
+            12
+        ],
+        "Type": "Freygish",
+        "Description": "Freygish Scale, also called Phrygian Dominant (due to having a major third) or Hijaz (meaning Distant Desert in Arabic). Commonly referred to as an Arabic or Hebrew Scale, it is common to middle-eastern music, but was probably first used in India. ",
+        "Character": "Characters who are Freygish can Relieve Stress when they wander off, out of sight of others, or stare at the horizon while others speak.",
+        "Group": "Freygish groups are categorised as desert nomads, they are huge, highly structured groups that cover vast and often inhospitable territories in trade networks. Group members are typically bonded to the group by birth or less often marriage. Internal Tension can be high between different tribes within the group, but typically this will be expressed on outsiders.",
+        "Pattern": "S3STSTT"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            3,
+            4,
+            6,
+            7,
+            9,
+            10,
+            12
+        ],
+        "Type": "Hungarian-Major",
+        "Description": "Hungarian-Major Scale is a subset of Octatonic, also called Carnatic Nasikabhushani or a Lydian Dominant &sharp; 2. ",
+        "Character": "Hungarian-Major Characters can Relieve Stress by using their imagination to create something (arts, crafts, music, a plan etc) or solve a problem.",
+        "Group": "Hungarian-Major groups are strong, semi-hierarchical structures that typically fill a city, they include most people that live in the area, although only the limited subset of people who are normal citizens, not the nobility or criminal underclass. Hungarian ",
+        "Pattern": "3STSTST"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            1,
+            3,
+            4,
+            6,
+            7,
+            9,
+            10,
+            12
+        ],
+        "Type": "Octatonic",
+        "Description": "Octatonic Scale mode 2, or Half-Step / Whole Step Diminished Scale is built of alternating semitones and tones. It is often confused with the similar Diminished Scale (Octatonic mode 1).",
+        "Character": "Octatonic Characters Relieve Stress when they change their mind, or emotion.",
+        "Group": "Octatonic groups are large chaotic, semi-organised structures, such as are created in a random street of a town on a busy market day. There is a business and hustle to it, as members are just try to get their own things done, there is no sense of some overarching control or purpose.",
+        "Pattern": "STSTSTST"
+    },
+    {
+        "ModalNumbers": [
+            0,
+            2,
+            3,
+            5,
+            6,
+            8,
+            9,
+            11,
+            12
+        ],
+        "Type": "Diminished",
+        "Description": "Diminished Scale is actually the Whole step/ Half-Step Diminished Scale, or Octatonic Scale Mode 1, but is known more commonly as just the Diminished Scale, as it can thought of as two interlocking Diminished Chords.",
+        "Character": "Diminished Characters Relieve Stress when they make a deal with or talk to another Character.",
+        "Group": "Diminished groups are often randomly created by geogrpahical circumstances, such as all happening to be heading the same direction at the same time, but this can create convoys, migrations and other travelling communities, as well as all the people stuck in a traffic jam. Such groups are often chaotic and fractious, as each member has their own business oto conduct, but the general flow of traffic achieved is a goal in itself when the possibilty is removed.",
+        "Pattern": "TSTSTSTS"
+    },
+    {
+        "Type": "Asgardian",
+        "Description": "Asgardian (or Lydian Augmented) is the third mode of the ascending melodic minor scale, and actually has a \"dark major\" sound. As it is equivalent to Major with augmented 4th and 5th.",
+        "Character": "Asgardian Characters can Relieve Stress when they physically demonstrate emotions for another Character, such as laughing at, crying, patting, hugging, kissing, punching, slapping etc.",
+        "Group": "Asgardian groups are powerful, stable and ambitious organisations, typically they are not large, with little redundancy in the memberships, and often have a controlling position over a larger group, like a parliment, senate, or council. These groups are usually dangerous things to be around, and often dangerous to be in, with people on the outside waiting on a particular dead-man’s shoes they can fill, there is often an impetus to hurry along the process a little.",
+        "ModalNumbers": [
+            0,
+            2,
+            4,
+            6,
+            8,
+            9,
+            11,
+            12
+        ],
+        "Pattern": "TTTTSTS"
+    },
+    {
+        "Type": "Chromatic",
+        "Description": "Chromatic Mode is not really a mode and includes all the tones as part of the scale. This means we use a subset to consider harmonic and dissonant. ",
+        "Character": "Chromatic Characters can Relieve Stress by working step by step, reaching a destination, or surprising someone.",
+        "ModalNumbers": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+        ],
+        "Group": "Chromatic groups are everyone, the complete gamet of the world and its people, the whole multi-cultural society of not just humanity, but sapience across the Omniverse. No one is left out, and everyone is in, unless they choose to separate themselves off into their little bubbles, political parties, and smaller circles, cliques and clubs. Where, metaphorically speaking, they can find more harmony away from the dissonant chaos created by every voice singing their own song at once. Chromatic groups are far and away the most common groups, being sometimes just a tiny subset of every sentience, a few strangers who have no reason to be in the same place at the same time, but are.",
+        "Pattern": "SSSSSSSSSSSS"
+    }
+]

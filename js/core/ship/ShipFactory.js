@@ -46,7 +46,7 @@ export class ShipFactory {
             .addStage(new CellularAutomata())
             .addStage(new SurfaceSynth());
 
-        this.renderBridge = new RenderBridge(this.gameEngine.scene.threeScene);
+        this.renderBridge = null; // Lazy init or remove if unused
 
         this.shipCache = new Map();
 

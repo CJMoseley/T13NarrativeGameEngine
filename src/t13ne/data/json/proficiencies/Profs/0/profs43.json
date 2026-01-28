@@ -1,0 +1,1444 @@
+{
+  "2157": {
+    "id": 2157,
+    "prof": {
+      "Name": [
+        "Demanding",
+        "Demanding Virtue Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Demanding is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2158": {
+    "id": 2158,
+    "prof": {
+      "Name": [
+        "Challenging Locations",
+        "Challenging Location Virtue Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Challenging Locations is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2159": {
+    "id": 2159,
+    "prof": {
+      "Name": [
+        "Faithful",
+        "Faithful Virtue Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Faithful is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2160": {
+    "id": 2160,
+    "prof": {
+      "Name": [
+        "Straight",
+        "Straight Virtue Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Straight is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2161": {
+    "id": 2161,
+    "prof": {
+      "Name": [
+        "Level Locations",
+        "Level Location Virtue Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Level Locations is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2162": {
+    "id": 2162,
+    "prof": {
+      "Name": [
+        "Moral",
+        "Moral Virtue Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Moral is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2163": {
+    "id": 2163,
+    "prof": {
+      "Name": [
+        "Noble",
+        "Noble Virtue Failure Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Noble is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2164": {
+    "id": 2164,
+    "prof": {
+      "Name": [
+        "Upright",
+        "Upright Virtue High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Upright is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2165": {
+    "id": 2165,
+    "prof": {
+      "Name": [
+        "Steep Locations",
+        "Steep Location Virtue High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Steep Locations is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2166": {
+    "id": 2166,
+    "prof": {
+      "Name": [
+        "Holy",
+        "Holy Virtue Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Holy is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2167": {
+    "id": 2167,
+    "prof": {
+      "Name": [
+        "Flawless",
+        "Flawless Virtue Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Flawless is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2168": {
+    "id": 2168,
+    "prof": {
+      "Name": [
+        "Limpid Locations",
+        "Limpid Location Virtue Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Limpid Locations is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2169": {
+    "id": 2169,
+    "prof": {
+      "Name": [
+        "Praise",
+        "Praise Virtue Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Praise is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2170": {
+    "id": 2170,
+    "prof": {
+      "Name": [
+        "Convert",
+        "Convert Virtue Quest Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Convert is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2171": {
+    "id": 2171,
+    "prof": {
+      "Name": [
+        "Perfect",
+        "Perfect Virtue Critical Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Perfect is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2172": {
+    "id": 2172,
+    "prof": {
+      "Name": [
+        "Preacher",
+        "Preacher Virtue Core Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Preacher is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2173": {
+    "id": 2173,
+    "prof": {
+      "Name": [
+        "Shining",
+        "Shining Virtue Edge Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Shining is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2174": {
+    "id": 2174,
+    "prof": {
+      "Name": [
+        "Cocky",
+        "Cocky Virtue Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Cocky is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2175": {
+    "id": 2175,
+    "prof": {
+      "Name": [
+        "Self-Righteous",
+        "Self-Righteous Virtue Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Self-Righteous is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2176": {
+    "id": 2176,
+    "prof": {
+      "Name": [
+        "Vainglorious",
+        "Vainglorious Virtue Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Vainglorious is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2177": {
+    "id": 2177,
+    "prof": {
+      "Name": [
+        "Tenderness",
+        "Tenderness Virtue Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Tenderness is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2178": {
+    "id": 2178,
+    "prof": {
+      "Name": [
+        "Affection",
+        "Affection Virtue Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Affection is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2179": {
+    "id": 2179,
+    "prof": {
+      "Name": [
+        "Love",
+        "Love Virtue Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Love is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2180": {
+    "id": 2180,
+    "prof": {
+      "Name": [
+        "Fair",
+        "Fair Virtue High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Fair is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2181": {
+    "id": 2181,
+    "prof": {
+      "Name": [
+        "Prudence",
+        "Prudence Virtue Gnarl Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Prudence is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2182": {
+    "id": 2182,
+    "prof": {
+      "Name": [
+        "Innocence",
+        "Innocence Virtue Test Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Innocence is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2183": {
+    "id": 2183,
+    "prof": {
+      "Name": [
+        "Duty",
+        "Duty Virtue Hitch Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Duty is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2184": {
+    "id": 2184,
+    "prof": {
+      "Name": [
+        "Energy",
+        "Energy Virtue Incarna Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Energy is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2185": {
+    "id": 2185,
+    "prof": {
+      "Name": [
+        "Warmth",
+        "Warmth",
+        ""
+      ],
+      "Description": "Placeholder description.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2186": {
+    "id": 2186,
+    "prof": {
+      "Name": [
+        "Friendly",
+        "Friendly Virtue Monster Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Friendly is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2187": {
+    "id": 2187,
+    "prof": {
+      "Name": [
+        "Faithful",
+        "Faithful Virtue Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Faithful is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2188": {
+    "id": 2188,
+    "prof": {
+      "Name": [
+        "Ties That Bind",
+        "Ties That Bind Virtue Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Ties That Bind is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2189": {
+    "id": 2189,
+    "prof": {
+      "Name": [
+        "Righteous Ordeals",
+        "Righteous Ordeal Virtue Ordeal Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Righteous Ordeals is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2190": {
+    "id": 2190,
+    "prof": {
+      "Name": [
+        "Hallow",
+        "Hallow Virtue Persona Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Hallow is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2191": {
+    "id": 2191,
+    "prof": {
+      "Name": [
+        "Principles",
+        "Principles Virtue Psychosocial Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Principles is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2192": {
+    "id": 2192,
+    "prof": {
+      "Name": [
+        "Protect",
+        "Protect Virtue Quest Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Protect is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2193": {
+    "id": 2193,
+    "prof": {
+      "Name": [
+        "Philosophical",
+        "Philosophical Virtue Question Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Philosophical is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2194": {
+    "id": 2194,
+    "prof": {
+      "Name": [
+        "Former",
+        "Former Virtue Resolved Hitch Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Former is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2195": {
+    "id": 2195,
+    "prof": {
+      "Name": [
+        "Goodtimes",
+        "Goodtimes Virtue Rule Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Goodtimes is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2196": {
+    "id": 2196,
+    "prof": {
+      "Name": [
+        "Dazzling",
+        "Dazzling Virtue Style Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Dazzling is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2197": {
+    "id": 2197,
+    "prof": {
+      "Name": [
+        "Radiant",
+        "Radiant Virtue Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Radiant is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2198": {
+    "id": 2198,
+    "prof": {
+      "Name": [
+        "Merits",
+        "Merits Virtue Sway Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Merits is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2199": {
+    "id": 2199,
+    "prof": {
+      "Name": [
+        "Diligent",
+        "Diligent",
+        ""
+      ],
+      "Description": "Placeholder description.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2200": {
+    "id": 2200,
+    "prof": {
+      "Name": [
+        "Persuading",
+        "Persuading Virtue Test Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Persuading is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2201": {
+    "id": 2201,
+    "prof": {
+      "Name": [
+        "Praising",
+        "Praising Virtue Test Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Praising is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2202": {
+    "id": 2202,
+    "prof": {
+      "Name": [
+        "Praying",
+        "Praying Virtue Test Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Praying is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2203": {
+    "id": 2203,
+    "prof": {
+      "Name": [
+        "Romantic",
+        "Romantic Virtue Tone Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Romantic is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2204": {
+    "id": 2204,
+    "prof": {
+      "Name": [
+        "Change of Heart",
+        "Change of Heart Virtue Turn Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Change of Heart is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2205": {
+    "id": 2205,
+    "prof": {
+      "Name": [
+        "Morals",
+        "Morals Virtue Twisted Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Morals is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2206": {
+    "id": 2206,
+    "prof": {
+      "Name": [
+        "Practising",
+        "Practising Virtue Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Practising is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,1433 @@
+{
+  "501": {
+    "id": 501,
+    "prof": {
+      "Name": [
+        "Storm",
+        "Storm Fury Edge Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Storm in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "502": {
+    "id": 502,
+    "prof": {
+      "Name": [
+        "Storm",
+        "Storm Fury Glow Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Storm in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "503": {
+    "id": 503,
+    "prof": {
+      "Name": [
+        "Stress",
+        "Stress Fury Failure Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Stress in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "504": {
+    "id": 504,
+    "prof": {
+      "Name": [
+        "Outburst",
+        "Outburst Fury Fumble Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Outburst in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "505": {
+    "id": 505,
+    "prof": {
+      "Name": [
+        "Berserk",
+        "Berserk Fury Gnarl Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Berserk in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "506": {
+    "id": 506,
+    "prof": {
+      "Name": [
+        "Noise",
+        "Noise Fury Herald Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Noise in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "507": {
+    "id": 507,
+    "prof": {
+      "Name": [
+        "Unstable",
+        "Unstable Fury Hitch Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Unstable in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "508": {
+    "id": 508,
+    "prof": {
+      "Name": [
+        "Discipline",
+        "Discipline Fury Hurdle Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Discipline in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "509": {
+    "id": 509,
+    "prof": {
+      "Name": [
+        "Water",
+        "Water Fury Incarna Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Water in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "510": {
+    "id": 510,
+    "prof": {
+      "Name": [
+        "Wet/Emotive",
+        "Wet/Emotive",
+        ""
+      ],
+      "Description": "A seed of rage planted in the fertile ground of Fury, Wet/Emotive is the flower that blooms in adversity.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "5"
+        ],
+        "Genres": [
+          "5"
+        ],
+        "Eras": [
+          "5"
+        ],
+        "Types": [
+          "Location"
+        ]
+      }
+    }
+  },
+  "511": {
+    "id": 511,
+    "prof": {
+      "Name": [
+        "Passion",
+        "Passion Fury Lore Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Passion in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "512": {
+    "id": 512,
+    "prof": {
+      "Name": [
+        "Temperamental",
+        "Temperamental Fury Monster Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Temperamental in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "513": {
+    "id": 513,
+    "prof": {
+      "Name": [
+        "Pacing",
+        "Pacing Fury Narration Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Pacing in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "514": {
+    "id": 514,
+    "prof": {
+      "Name": [
+        "Fuel for the Ire",
+        "Fuel for the Ire Fury Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Fuel for the Ire in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "515": {
+    "id": 515,
+    "prof": {
+      "Name": [
+        "Emotional Ordeals",
+        "Emotional Ordeal Fury Ordeal Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Emotional Ordeals in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "516": {
+    "id": 516,
+    "prof": {
+      "Name": [
+        "Temperament",
+        "Temperament Fury Psychosocial Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Temperament in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "517": {
+    "id": 517,
+    "prof": {
+      "Name": [
+        "Destroy",
+        "Destroy Fury Quest Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Destroy in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "518": {
+    "id": 518,
+    "prof": {
+      "Name": [
+        "Simple",
+        "Simple Fury Question Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Simple in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "519": {
+    "id": 519,
+    "prof": {
+      "Name": [
+        "Persistent",
+        "Persistent Fury Resolved Hitch Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Persistent in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "520": {
+    "id": 520,
+    "prof": {
+      "Name": [
+        "Noise",
+        "Noise Fury Rule Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Noise in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "521": {
+    "id": 521,
+    "prof": {
+      "Name": [
+        "Furious",
+        "Furious Fury Style Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Furious in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "522": {
+    "id": 522,
+    "prof": {
+      "Name": [
+        "Fierce",
+        "Fierce Fury Success Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Fierce in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "523": {
+    "id": 523,
+    "prof": {
+      "Name": [
+        "Surges",
+        "Surges Fury Sway Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Surges in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "524": {
+    "id": 524,
+    "prof": {
+      "Name": [
+        "Noise",
+        "Noise Fury Tangle Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Noise in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "525": {
+    "id": 525,
+    "prof": {
+      "Name": [
+        "Anger / Brute Force / Emotions / Psionics /  Noise making",
+        "Anger / Brute Force / Emotions / Psionics /  Noise making",
+        ""
+      ],
+      "Description": "A lonely star in the vast emptiness, Anger / Brute Force / Emotions / Psionics /  Noise making is a beacon of rage in the cold night of the universe.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "5"
+        ],
+        "Genres": [
+          "5"
+        ],
+        "Eras": [
+          "5"
+        ],
+        "Types": [
+          "Test"
+        ]
+      }
+    }
+  },
+  "526": {
+    "id": 526,
+    "prof": {
+      "Name": [
+        "Action",
+        "Action Fury Tone Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Action in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "527": {
+    "id": 527,
+    "prof": {
+      "Name": [
+        "Wrath of Nature/God",
+        "Wrath of Nature/God",
+        ""
+      ],
+      "Description": "A seed of rage planted in the fertile ground of Fury, Wrath of Nature/God is the flower that blooms in adversity.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "5"
+        ],
+        "Genres": [
+          "5"
+        ],
+        "Eras": [
+          "5"
+        ],
+        "Types": [
+          "Turn"
+        ]
+      }
+    }
+  },
+  "528": {
+    "id": 528,
+    "prof": {
+      "Name": [
+        "Emotions",
+        "Emotions Fury Test Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Emotions in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "529": {
+    "id": 529,
+    "prof": {
+      "Name": [
+        "Raging",
+        "Raging Fury Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Raging in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "530": {
+    "id": 530,
+    "prof": {
+      "Name": [
+        "Furious",
+        "Furious Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Furious in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "531": {
+    "id": 531,
+    "prof": {
+      "Name": [
+        "Tempest",
+        "Tempest Fury Nimbed Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Tempest in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "532": {
+    "id": 532,
+    "prof": {
+      "Name": [
+        "Wet Locations",
+        "Wet Location Fury Location Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Wet Locations in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "533": {
+    "id": 533,
+    "prof": {
+      "Name": [
+        "Beast",
+        "Beast Fury Persona Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Beast in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "534": {
+    "id": 534,
+    "prof": {
+      "Name": [
+        "Forceless",
+        "Forceless Gossamer Zero Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Forceless is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "535": {
+    "id": 535,
+    "prof": {
+      "Name": [
+        "Useless",
+        "Useless Gossamer Zero Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Useless is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "536": {
+    "id": 536,
+    "prof": {
+      "Name": [
+        "Insubstantial Locations",
+        "Insubstantial Location Gossamer Zero Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Insubstantial Locations is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "537": {
+    "id": 537,
+    "prof": {
+      "Name": [
+        "Feeble",
+        "Feeble Gossamer Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Feeble is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "538": {
+    "id": 538,
+    "prof": {
+      "Name": [
+        "Failing",
+        "Failing Gossamer Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Failing is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "539": {
+    "id": 539,
+    "prof": {
+      "Name": [
+        "Flimsy Locations",
+        "Flimsy Location Gossamer Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Flimsy Locations is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "540": {
+    "id": 540,
+    "prof": {
+      "Name": [
+        "Weak",
+        "Weak Gossamer Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Weak is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "541": {
+    "id": 541,
+    "prof": {
+      "Name": [
+        "Fragile",
+        "Fragile Gossamer Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Fragile is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "542": {
+    "id": 542,
+    "prof": {
+      "Name": [
+        "Rickety Locations",
+        "Rickety Location Gossamer Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Rickety Locations is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "543": {
+    "id": 543,
+    "prof": {
+      "Name": [
+        "Flabby",
+        "Flabby Gossamer Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Flabby is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "544": {
+    "id": 544,
+    "prof": {
+      "Name": [
+        "Old",
+        "Old Gossamer Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Old is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "545": {
+    "id": 545,
+    "prof": {
+      "Name": [
+        "Worn Locations",
+        "Worn Location Gossamer Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Worn Locations is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "546": {
+    "id": 546,
+    "prof": {
+      "Name": [
+        "Scrawny",
+        "Scrawny Gossamer Medium Boon Adjective Proficiency",
+        "skinny, thin, gaunt, little, poor"
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Scrawny is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "547": {
+    "id": 547,
+    "prof": {
+      "Name": [
+        "Standard",
+        "Standard Gossamer Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Standard is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "548": {
+    "id": 548,
+    "prof": {
+      "Name": [
+        "Passable Locations",
+        "Passable Location Gossamer Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Passable Locations is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "549": {
+    "id": 549,
+    "prof": {
+      "Name": [
+        "Athletic",
+        "Athletic Gossamer Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Athletic is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "550": {
+    "id": 550,
+    "prof": {
+      "Name": [
+        "Recreational",
+        "Recreational Gossamer Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Recreational is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

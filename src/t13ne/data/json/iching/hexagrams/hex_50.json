@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 50,
+    "Name": "The Cauldron",
+    "Entity": "&#19953;",
+    "Logical": 46,
+    "Trigrams": [
+      4,
+      2
+    ],
+    "Hexagram_Text": "Ting, The Cauldron (or Holding or Cooking Pot), is symbolic of cooking, but not just feeding people. Cooking itself is a transformational, alchemical, process. The food is purified, perfected by the cooking that takes place.",
+    "Unchanging": "Once per Scene you may convert any Descendant in your possession into Chi, add your Incarna Boon as Chi, and then purchase a similar Descendant. E.g. You could take vegetables, water and rabbit meat and create a rabbit stew, or turn a battered old sword into a newer one.",
+    "Line1": "Overturned Cauldron",
+    "Line2": "Holding Food",
+    "Line3": "Broken Handle",
+    "Line4": "A Broken Cauldron Spills",
+    "Line5": "A Golden Cauldron",
+    "Line6": "Jade Cauldron"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you cook, create for, nourish, transform or support others",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "a Character you are supporting or feeding Gains Stress",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yang",
+        "Condition": "you strive for power or influence",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yin",
+        "Condition": "you ignore the emotions of others",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yin",
+        "Condition": "something is broken, or you are selfish",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yin",
+        "Condition": "you act like you are lacking in energy, commitment, knowledge or power, or you might crack under pressure",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you act arrogant, narcissistic or proud",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yin",
+        "Condition": "you use a Talent or Power to help another",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Cauldron Quest signifies that nourishment (whether spiritual, intellectual, or physical), transformation and purification are important to this Quest. There is a desire or hunger that must be fed by the Quester, usually by gathering, and then transforming some resource into another form. At its simplest the Quest becomes feeding the Quest companions, where the Quester must gather the ingredients, invite the guests, prepare the ingredients, and then not only serve the meal, but also entertain the companions. This would not just provide the companions with a good meal, but will lift their spirits and set their resolve, the whole Cauldron Quest transforming and bonding the companions tighter together.",
+    "Quest_Complete": "The Quest that ends in the Cauldron Hexagram often ends with a meal, this may be a celebratory feast, recognizing the Quester&#39;s heroics, but more often is a simple meal, that nourishes them, and begins their healing and recovery before their next Quest.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester should encounter a person of humble status, acknowledging this person, and realising that they may be able to help the Quester will add a Success Level, ignoring or dismissing this person for their low status will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester&#39;s successes draw negative attention. If the Quester acts as though they are concerned about this, often envious, attention, or worried about how their successes make them appear to others, then add a Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The Quester is blocked from sharing their bounty with others, just as a cooking pot with a broken handle cannot truly provide food, this is usually no fault of the Quester, and if they wait (and fix the handle) eventually this blockage may be released, but until then add a Failure Level, Obstacle or Hurdle to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester and their companions are not up to the task ahead, generally because the task is of a higher difficulty than they can easily achieve. Unless the Quester completely dedicates themselves to succeeding no matter the personal cost (spending as much Chi as they can on the Actions), then they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester who is approachable and modest will add a Success Level to their Test or Ordeal as they attract helpers to their cause, but arrogance, narcissism, pride and other traits of an overblown ego will add a Hurdle, Obstacle or Failure Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester must give another character advice on a difficult matter, the Quester must give strong advice, but they must deliver this advice carefully and softly, or they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test as they either give the wrong advice or deliver it in a way that upsets the character.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "The six lines construct the image of Ting, THE CALDRON; at the bottom are the legs, over them the belly, then come the ears (handles), and at the top the carrying rings. At the same time, the image suggests the idea of nourishment. The ting, cast of bronze, was the vessel that held the cooked viands in the temple of the ancestors and at banquets. The heads of the family served the food from the ting into the bowls of the guests. THE WELL\n\n48 likewise has the secondary meaning of giving nourishment, but rather more in relation to the people. The ting, as a utensil pertaining to a refined civilization, suggests the fostering and nourishing of able men, which redounded to the benefit of the state. This hexagram and THE WELL are the only two in the Book of Changes that represent concrete, men-made objects. Yet here too the thought has its abstract connotation. Sun, below, is wood and wind; Li, above, is flame. Thus together they stand for the flame kindled by wood and wind, which likewise suggests the idea of preparing food.",
+    "The_Image": {
+      "text": "Fire over wood:\n\nThe image of THE CALDRON.\n\nThus the superior man consolidates his fate\nBy making his position correct.",
+      "comments": "The fate of fire depends on wood; as long as there is wood below, the fire burns above. It is the same in human life; there is in man likewise a fate that lends power to his life. And if he succeeds in assigning the right place to life and to fate, thus bringing the two into harmony, he puts his fate on a firm footing. These words contain hints about fostering of life as handed on by oral tradition in the secret teachings of Chinese yoga."
+    },
+    "The_Judgment": {
+      "text": "THE CALDRON. Supreme good fortune.\n\nSuccess.",
+      "comments": "While THE WELL relates to the social foundation of our life, and this foundation is likened to the water that serves to nourish growing wood, the present hexagram refers to the cultural superstructure of society. Here it is the wood that serves as nourishment for the flame, the spirit. All that is visible must grow beyond itself, extend into the realm of the invisible. Thereby it receives its true consecration and clarity and takes firm root in the cosmic order. Here we see civilization as it reaches its culmination in religion. The ting serves in offering sacrifice to God. The highest earthly values must be sacrificed to the divine. But the truly divine does not manifest itself apart from man. The supreme revelation of God appears in prophets and holy men. To venerate them is true veneration of God. The will of God, as revealed through them, should be accepted in humility; this brings inner enlightenment and true understanding of the world, and this leads to great good fortune and success."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "A ting with legs upturned.\nFurthers removal of stagnating stuff.\nOne takes a concubine for the sake of her son.",
+        "comments": "No blame.\n\nIf a ting is turned upside down before being used, no harm is done-on the contrary, this clears it of refuse. A concubine's position is lowly, but because she has a son she comes to be honored. These two metaphors express the idea that in a highly developed civilization, such as that indicated by this hexagram, every person of good will can in some way or other succeed. No matter how lowly he may be, provided he is ready to purify himself, he is accepted. He attains a station in which he can prove himself fruitful in accomplishment, and as a result he gains recognition."
+      },
+      "2": {
+        "text": "There is food in the ting.\nMy comrades are envious,\nBut they cannot harm me.\nGood fortune.",
+        "comments": "In a period of advanced culture, it is of the greatest importance that one should achieve something significant. If a man concentrates on such real undertakings, he may indeed experience envy and disfavor, but that is not dangerous. The more he limits himself to his actual achievements, the less harm the envious inflict on him."
+      },
+      "3": {
+        "text": "The handle of the ting is altered.\nOne is impeded in his way of life.",
+        "comments": "The fat of the pheasant is not eaten.\nOnce rain falls, remorse is spent.\nGood fortune comes in the end.\n\nThe handle is the means for lifting up the ting. If the handle is altered, the ting cannot be lifted up and used, and, sad to say, the delicious food in it, such as pheasant fat, cannot be eaten by anyone. This describes a man who, in a highly evolved civilization, finds himself in a place where no one notices or recognizes him. This is a severe block to his effectiveness. All of his good qualities and gifts of mind thus needlessly go to waste. But if he will only see to it that he is possessed of something truly spiritual, the time is bound to come, sooner or later, when the difficulties will be resolved and all will go well. The fall of rain symbolizes here, as in other instances, release of tension."
+      },
+      "4": {
+        "text": "The legs of the ting are broken.",
+        "comments": "The prince's meal is spilled\nAnd his person is soiled.\nMisfortune.\n\nA man has a difficult and responsible task to which he is not adequate. Moreover, he does not devote himself to it with all his strength but goes about with inferior people; therefore the execution of the work fails. In this way he also incurs personal opprobrium. Confucius says about this line: \"Weak character coupled with honored place, meager knowledge with large plans, limited powers with heavy responsibility, will seldom escape disaster.\""
+      },
+      "5": {
+        "text": "The ting has yellow handles, golden carrying rings.\nPerseverance furthers.",
+        "comments": "Here we have, in a ruling position, a man who is approachable and modest in nature. As a result of this attitude he succeeds in finding strong and able helpers who complement and aid him in his work. Having achieved this attitude, which requires constant self-abnegation, it is important for him to hold to it and not to let himself be led astray."
+      },
+      "6": {
+        "text": "The ting has rings of jade.\nGreat good fortune.",
+        "comments": "Nothing that would not act to further.\n\nIn the preceding line the carrying rings are described as golden, to denote their strength; here they are said to be of jade. Jade is notable for its combination of hardness with soft luster. This counsel, in relation to the man who is open to it, works greatly t his advantage. Here the counsel is described in relation to the sage who imparts it. In imparting it, he will be mild and pure, like precious jade. Thus the work finds favor in the eyes of the Deity, who dispenses great good fortune, and becomes pleasing to men, wherefore all goes well."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'The Cauldron'. Internalize this core philosophy: The six lines construct the image of Ting, THE CALDRON; at the bottom are the legs, over them the belly, then come the ears (handles), and at the top the carrying rings. At the same time, the image suggests the idea of nourishment. The ting, cast of bronze, was the vessel that held the cooked viands in the temple of the ancestors and at banquets. The heads of the family served the food from the ting into the bowls of the guests. THE WELL\n\n48 likewise has the secondary meaning of giving... Your current worldview is: \"Ting, The Cauldron (or Holding or Cooking Pot), is symbolic of cooking, but not just feeding people. Cooking itself is a transformational, alchemical, process. The food is purified, perfected by the cooking that takes place.\". Let your choices be subtly driven by these conditions: you cook, create for, nourish, transform or support others, a Character you are supporting or feeding Gains Stress. When interacting, mirror the wisdom found in the commentary: \"While THE WELL relates to the social foundation of our life, and this foundation is likened to the water that serves to nourish growing wood, the present hexagram refers to the cultural superstructure of society. Here it is the wood that serves as nourishment for the flame, the spirit. All that is...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'The Cauldron'. The primary quest objective is: The Cauldron Quest signifies that nourishment (whether spiritual, intellectual, or physical), transformation and purification are important to this Quest. There is a desire or hunger that must be fed by the Quester, usually by gathering, and then transforming some resource into another form. At its simplest the Quest becomes feeding the Quest companions, where the Quester must gather the ingredients, invite the guests, prepare the ingredients, and then not only serve the meal, but also entertain the companions. This would not just provide the companions with a good meal, but will lift their spirits and set their resolve, the whole Cauldron Quest transforming and bonding the companions tighter together.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: The fate of fire depends on wood; as long as there is wood below, the fire burns above. It is the same in human life; there is in man likewise a fate that lends power to his life. And if he succeeds in assigning the right place to life and to fate, thus bringing the two into harmony, he puts his fate on a firm footing. These words contain hints about fostering of life as handed on by oral... Use the following line-specific challenges to pace the story: The Quester should encounter a person of humble status, acknowledging this person, and realising that they may be able to help the Quester will add a Success Level, ignoring or dismissing this person for their low status will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. | The Quester&#39;s successes draw negative attention. If the Quester acts as though they are concerned about this, often envious, attention, or worried about how their successes make them appear to others, then add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. | The Quester is blocked from sharing their bounty with others, just as a cooking pot with a broken handle cannot truly provide food, this is usually no fault of the Quester, and if they wait (and fix the handle) eventually this blockage may be released, but until then add a Failure Level, Obstacle or Hurdle to the Test or Ordeal. | The Quester and their companions are not up to the task ahead, generally because the task is of a higher difficulty than they can easily achieve. Unless the Quester completely dedicates themselves to succeeding no matter the personal cost (spending as much Chi as they can on the Actions), then they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. | The Quester who is approachable and modest will add a Success Level to their Test or Ordeal as they attract helpers to their cause, but arrogance, narcissism, pride and other traits of an overblown ego will add a Hurdle, Obstacle or Failure Level instead. | The Quester must give another character advice on a difficult matter, the Quester must give strong advice, but they must deliver this advice carefully and softly, or they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test as they either give the wrong advice or deliver it in a way that upsets the character.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Overturned Cauldron): Mirror the internal state described in the commentary: \"No blame.\n\nIf a ting is turned upside down before being used, no harm is done-on the contrary, this clears it of refuse. A concubine's position is lowly, but because she has a son she comes to be honored. These two metaphors express the idea that in...\" Your actions should be framed by the goal: you strive for power or influence.",
+        "Plot": "Plot Complication Line 1 (Overturned Cauldron): Introduce a challenge based on the interpretation: \"No blame.\n\nIf a ting is turned upside down before being used, no harm is done-on the contrary, this clears it of refuse. A concubine's position is lowly, but because she has a son she comes to be honored. These two metaphors express the idea that in...\" The specific quest objective for this stage is: The Quester should encounter a person of humble status, acknowledging this person, and realising that they may be able to help the Quester will add a Success Level, ignoring or dismissing this person for their low status will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Holding Food): Mirror the internal state described in the commentary: \"In a period of advanced culture, it is of the greatest importance that one should achieve something significant. If a man concentrates on such real undertakings, he may indeed experience envy and disfavor, but that is not dangerous. The more he...\" Your actions should be framed by the goal: you ignore the emotions of others.",
+        "Plot": "Plot Complication Line 2 (Holding Food): Introduce a challenge based on the interpretation: \"In a period of advanced culture, it is of the greatest importance that one should achieve something significant. If a man concentrates on such real undertakings, he may indeed experience envy and disfavor, but that is not dangerous. The more he...\" The specific quest objective for this stage is: The Quester&#39;s successes draw negative attention. If the Quester acts as though they are concerned about this, often envious, attention, or worried about how their successes make them appear to others, then add a Hurdle, Obstacle or Failure Level to their Ordeal or Test."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Broken Handle): Mirror the internal state described in the commentary: \"The fat of the pheasant is not eaten.\nOnce rain falls, remorse is spent.\nGood fortune comes in the end.\n\nThe handle is the means for lifting up the ting. If the handle is altered, the ting cannot be lifted up and used, and, sad to say, the delicious...\" Your actions should be framed by the goal: something is broken, or you are selfish.",
+        "Plot": "Plot Complication Line 3 (Broken Handle): Introduce a challenge based on the interpretation: \"The fat of the pheasant is not eaten.\nOnce rain falls, remorse is spent.\nGood fortune comes in the end.\n\nThe handle is the means for lifting up the ting. If the handle is altered, the ting cannot be lifted up and used, and, sad to say, the delicious...\" The specific quest objective for this stage is: The Quester is blocked from sharing their bounty with others, just as a cooking pot with a broken handle cannot truly provide food, this is usually no fault of the Quester, and if they wait (and fix the handle) eventually this blockage may be released, but until then add a Failure Level, Obstacle or Hurdle to the Test or Ordeal."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (A Broken Cauldron Spills): Mirror the internal state described in the commentary: \"The prince's meal is spilled\nAnd his person is soiled.\nMisfortune.\n\nA man has a difficult and responsible task to which he is not adequate. Moreover, he does not devote himself to it with all his strength but goes about with inferior people;...\" Your actions should be framed by the goal: you act like you are lacking in energy, commitment, knowledge or power, or you might crack under pressure.",
+        "Plot": "Plot Complication Line 4 (A Broken Cauldron Spills): Introduce a challenge based on the interpretation: \"The prince's meal is spilled\nAnd his person is soiled.\nMisfortune.\n\nA man has a difficult and responsible task to which he is not adequate. Moreover, he does not devote himself to it with all his strength but goes about with inferior people;...\" The specific quest objective for this stage is: The Quester and their companions are not up to the task ahead, generally because the task is of a higher difficulty than they can easily achieve. Unless the Quester completely dedicates themselves to succeeding no matter the personal cost (spending as much Chi as they can on the Actions), then they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (A Golden Cauldron): Mirror the internal state described in the commentary: \"Here we have, in a ruling position, a man who is approachable and modest in nature. As a result of this attitude he succeeds in finding strong and able helpers who complement and aid him in his work. Having achieved this attitude, which requires...\" Your actions should be framed by the goal: you act arrogant, narcissistic or proud.",
+        "Plot": "Plot Complication Line 5 (A Golden Cauldron): Introduce a challenge based on the interpretation: \"Here we have, in a ruling position, a man who is approachable and modest in nature. As a result of this attitude he succeeds in finding strong and able helpers who complement and aid him in his work. Having achieved this attitude, which requires...\" The specific quest objective for this stage is: The Quester who is approachable and modest will add a Success Level to their Test or Ordeal as they attract helpers to their cause, but arrogance, narcissism, pride and other traits of an overblown ego will add a Hurdle, Obstacle or Failure Level instead."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Jade Cauldron): Mirror the internal state described in the commentary: \"Nothing that would not act to further.\n\nIn the preceding line the carrying rings are described as golden, to denote their strength; here they are said to be of jade. Jade is notable for its combination of hardness with soft luster. This counsel, in...\" Your actions should be framed by the goal: you use a Talent or Power to help another.",
+        "Plot": "Plot Complication Line 6 (Jade Cauldron): Introduce a challenge based on the interpretation: \"Nothing that would not act to further.\n\nIn the preceding line the carrying rings are described as golden, to denote their strength; here they are said to be of jade. Jade is notable for its combination of hardness with soft luster. This counsel, in...\" The specific quest objective for this stage is: The Quester must give another character advice on a difficult matter, the Quester must give strong advice, but they must deliver this advice carefully and softly, or they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test as they either give the wrong advice or deliver it in a way that upsets the character."
+      }
+    }
+  }
+}

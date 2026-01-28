@@ -1,0 +1,1417 @@
+{
+  "3502": {
+    "id": 3502,
+    "prof": {
+      "Name": [
+        "Seared",
+        "Seared Phoenix Annex Root Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Seared represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3503": {
+    "id": 3503,
+    "prof": {
+      "Name": [
+        "Surgical",
+        "Surgical Phoenix Annex Root Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Surgical represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3504": {
+    "id": 3504,
+    "prof": {
+      "Name": [
+        "Therapeutic",
+        "Therapeutic Phoenix Annex Root Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Therapeutic represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3505": {
+    "id": 3505,
+    "prof": {
+      "Name": [
+        "friendly",
+        "friendly Phoenix Lore Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, friendly represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3506": {
+    "id": 3506,
+    "prof": {
+      "Name": [
+        "sympathetic",
+        "sympathetic Phoenix Lore Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, sympathetic represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3507": {
+    "id": 3507,
+    "prof": {
+      "Name": [
+        "charismatic",
+        "charismatic Phoenix Lore Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, charismatic represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3508": {
+    "id": 3508,
+    "prof": {
+      "Name": [
+        "generous",
+        "generous Phoenix Lore Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, generous represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3509": {
+    "id": 3509,
+    "prof": {
+      "Name": [
+        "charitable",
+        "charitable Phoenix Lore Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, charitable represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3510": {
+    "id": 3510,
+    "prof": {
+      "Name": [
+        "Quiet",
+        "Quiet Quiet Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Quiet speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3511": {
+    "id": 3511,
+    "prof": {
+      "Name": [
+        "Subdued",
+        "Subdued Quiet Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Subdued speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3512": {
+    "id": 3512,
+    "prof": {
+      "Name": [
+        "Restful",
+        "Restful Quiet Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Restful speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3513": {
+    "id": 3513,
+    "prof": {
+      "Name": [
+        "Hushed",
+        "Hushed Quiet Descendants Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Hushed speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3514": {
+    "id": 3514,
+    "prof": {
+      "Name": [
+        "Silent",
+        "Silent Quiet Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Silent speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3515": {
+    "id": 3515,
+    "prof": {
+      "Name": [
+        "Serenity",
+        "Serenity Quiet Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Serenity speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3516": {
+    "id": 3516,
+    "prof": {
+      "Name": [
+        "Listening",
+        "Listening Quiet Nimbed Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Listening speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3517": {
+    "id": 3517,
+    "prof": {
+      "Name": [
+        "Erode",
+        "Erode Quiet Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Erode speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3518": {
+    "id": 3518,
+    "prof": {
+      "Name": [
+        "span>",
+        "span> Quiet Critical Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of span> speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3519": {
+    "id": 3519,
+    "prof": {
+      "Name": [
+        "span>",
+        "span> Quiet Fumble Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of span> speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3520": {
+    "id": 3520,
+    "prof": {
+      "Name": [
+        "Wooden",
+        "Wooden Quiet Descendants Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Wooden speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3521": {
+    "id": 3521,
+    "prof": {
+      "Name": [
+        "Wooden",
+        "Wooden Quiet Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Wooden speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3522": {
+    "id": 3522,
+    "prof": {
+      "Name": [
+        "Paper",
+        "Paper Quiet Descendants Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Paper speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3523": {
+    "id": 3523,
+    "prof": {
+      "Name": [
+        "Paper",
+        "Paper Quiet Incarna Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Paper speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3524": {
+    "id": 3524,
+    "prof": {
+      "Name": [
+        "Vegetation",
+        "Vegetation Quiet Incarna Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Vegetation speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3525": {
+    "id": 3525,
+    "prof": {
+      "Name": [
+        "Wood",
+        "Wood Quiet Incarna Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Wood speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3526": {
+    "id": 3526,
+    "prof": {
+      "Name": [
+        "Placid",
+        "Placid Quiet Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Placid speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3527": {
+    "id": 3527,
+    "prof": {
+      "Name": [
+        "Read",
+        "Read Quiet Quest Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Read speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3528": {
+    "id": 3528,
+    "prof": {
+      "Name": [
+        "Read",
+        "Read Quiet Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Read speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3529": {
+    "id": 3529,
+    "prof": {
+      "Name": [
+        "Listen",
+        "Listen Quiet Quest Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Listen speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3530": {
+    "id": 3530,
+    "prof": {
+      "Name": [
+        "Listen",
+        "Listen Quiet Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Listen speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3531": {
+    "id": 3531,
+    "prof": {
+      "Name": [
+        "Study",
+        "Study Quiet Umbral Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Study speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3532": {
+    "id": 3532,
+    "prof": {
+      "Name": [
+        "Study",
+        "Study Quiet Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Study speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3533": {
+    "id": 3533,
+    "prof": {
+      "Name": [
+        "Calming",
+        "Calming Quiet Test Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Calming speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3534": {
+    "id": 3534,
+    "prof": {
+      "Name": [
+        "Meditation",
+        "Meditation Quiet Test Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Meditation speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3535": {
+    "id": 3535,
+    "prof": {
+      "Name": [
+        "Sneaking",
+        "Sneaking Quiet Test Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Sneaking speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3536": {
+    "id": 3536,
+    "prof": {
+      "Name": [
+        "Studying",
+        "Studying Quiet Test Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Studying speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3537": {
+    "id": 3537,
+    "prof": {
+      "Name": [
+        "Thinking",
+        "Thinking Quiet Test Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Thinking speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3538": {
+    "id": 3538,
+    "prof": {
+      "Name": [
+        "Silence",
+        "Silence Quiet Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Silence speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3539": {
+    "id": 3539,
+    "prof": {
+      "Name": [
+        "Calm",
+        "Calm Quiet Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Calm speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3540": {
+    "id": 3540,
+    "prof": {
+      "Name": [
+        "Deteriorate",
+        "Deteriorate Quiet Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Deteriorate speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3541": {
+    "id": 3541,
+    "prof": {
+      "Name": [
+        "Examine",
+        "Examine Quiet Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Examine speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3542": {
+    "id": 3542,
+    "prof": {
+      "Name": [
+        "Flower",
+        "Flower Quiet Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Flower speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3543": {
+    "id": 3543,
+    "prof": {
+      "Name": [
+        "Grow",
+        "Grow Quiet Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Grow speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3544": {
+    "id": 3544,
+    "prof": {
+      "Name": [
+        "Hamper",
+        "Hamper Quiet Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Hamper speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3545": {
+    "id": 3545,
+    "prof": {
+      "Name": [
+        "Imagine",
+        "Imagine Quiet Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Imagine speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3546": {
+    "id": 3546,
+    "prof": {
+      "Name": [
+        "Learn",
+        "Learn Quiet Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Learn speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3547": {
+    "id": 3547,
+    "prof": {
+      "Name": [
+        "Meditate",
+        "Meditate Quiet Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Meditate speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3548": {
+    "id": 3548,
+    "prof": {
+      "Name": [
+        "Quieten",
+        "Quieten Quiet Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Quieten speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3549": {
+    "id": 3549,
+    "prof": {
+      "Name": [
+        "Relax",
+        "Relax Quiet Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Relax speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3550": {
+    "id": 3550,
+    "prof": {
+      "Name": [
+        "Rest",
+        "Rest Quiet Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Rest speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3551": {
+    "id": 3551,
+    "prof": {
+      "Name": [
+        "Sign",
+        "Sign Quiet Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Sign speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 17,
+    "Name": "Following",
+    "Entity": "&#19920;",
+    "Logical": 25,
+    "Trigrams": [
+      3,
+      1
+    ],
+    "Hexagram_Text": "Sui, Following, tells us to follow others, only through duty, and enthusiastic following, do we learn to be leaders ourselves.",
+    "Unchanging": "+1 Success Level if following orders.",
+    "Line1": "The Changed Mind",
+    "Line2": "Naive Following",
+    "Line3": "Following Reason",
+    "Line4": "Following Flattery",
+    "Line5": "Confident Following",
+    "Line6": "Wise Following"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you follow another, their orders, tracks, or advice",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you others ask you for advice",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "you ask another for advice, discuss options with others, or change your mind",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yang",
+        "Condition": "you follow another that you probably shouldn't",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yang",
+        "Condition": "you apply logic and reason to decisions",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yin",
+        "Condition": "you are complimented, praised or congratulated, or you compliment, praise, or congratulate yourself",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yin",
+        "Condition": "you make any decision and are confident that it is the right choice",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yang",
+        "Condition": "you offer another advice, or opinion",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Following Quest indicates that this Quest has been attempted before, perhaps the current Quest-giver once tried to perform the Quest in his younger days, or more likely sent a previous Quester upon the Quest. There may be a map, guide, warning signs, or occasionally a member of the original team, which allows for much more careful preparations this time, and many Obstacles may already be disabled, conversely the original attempt will have created new Obstacles by their actions that won&#39;t be noted in the original notes.",
+    "Quest_Complete": "When a Quest ends in the Following Hexagram, no matter how well the Quest went, now is the time to follow orders and do your duties. A figure of authority may arrive to assume command, or the Quester may simply return to their home and normal responsibilities.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester has had some wrong idea about the Quest, and this is realised now, this discovery usually includes adding a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test as they realise that they have prepared incorrectly, something has changed, or some companion is not the person the Quester thought they were (or does not actually have the skills they are renowned for. If the Quester can find and listen to a new opinion, then this new idea may grant them a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The companions becomes aware that the Quester has misled or lied to them about the nature of the Quest. This may be the fault of the Quester, or more likely is due to incomplete or out of date information, or the Quester being lied to by the Quest-giver, but it always adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test. The Quester must find out the whole truth (both about the Quest and how they misled them) and share it quickly with the companions, to instead add a Success Level as they all agree to help again.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The Quester should be presented with a choice, two ways of proceeding, one in line with their goals and ethos that has an additional Hurdle, Failure Level or Obstacles, and another that they should have some logical, ethical or moral objection to, but seems simpler and easier. If the Quester seeks out someone more wise than them to help them choose they will instead add a Success Level (and usually suggest a third way that has bends, but does not break the ethics and goals).",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester will be approached by thankful bystanders, including characters who are old guard, agents of chaos, opponents, agents of change, etc, who will flatter and compliment the Quester, but also are not useful and add a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test. However if the Quester can ignore the compliments, remain grounded and remove these not useful characters from their companions then they can add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "If the Quester is able to do something that might get them praised by some authority, such as demonstrating leadership, intelligence, quick-thinking, good-humour, or a decisive nature, then they will be praised, this increases their social standing (+1 Social Ordeal Level) at least for a while, and adds a Success Level to their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester is approached by a character who either needs or offers help. If the Quester asks for help the character will offer it, adding a Success Level to their Test or Ordeal. If the character asks for help from the Quester, and the Quester helps them, then they will add a Success Level to the Quester&#39;s Test or Ordeal. However, if the Quester does not ask or offer help then this will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test instead.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "The trigram Tui, the Joyous, whose attribute is gladness, is above; Chên, the Arousing, which has the attribute of movement, is below. Joy in movement induces following. The Joyous is the youngest daughter, while the Arousing is the eldest son. An older man defers to a young girl and shows her consideration. By this he moves her to follow him.",
+    "The_Image": {
+      "text": "Thunder in the middle of the lake:\nThe image of FOLLOWING.\nThus the superior man at nightfall\nGoes indoors for rest and recuperation.",
+      "comments": "In the autumn electricity withdraws into the earth again and rests. Here it is the thunder in the middle of the lake that serves as the image--thunder in its winter rest, not thunder in motion. The idea of following in the sense of adaptation to the demands of the time grows out of this image. Thunder in the middle of the lake indicates times of darkness and rest. Similarly, a superior man, after being tirelessly active all day, allows himself rest and recuperation at night. No situation can become favorable until one is able to adapt to it and does not wear himself out with mistaken resistance."
+    },
+    "The_Judgment": {
+      "text": "FOLLOWING has supreme success.\nPerseverance furthers. No blame.",
+      "comments": "In order to obtain a following one must first know how to adapt oneself. If a man would rule he must first learn to serve, for only in this way does he secure from those below him the joyous assent that is necessary if they are to follow him. If he has to obtain a following by force or cunning, by conspiracy or by creating faction, he invariably arouses resistance, which obstructs willing adherence. But even joyous movement can lead to evil consequences, hence the added stipulation, \"Perseverance furthers\" --that is, consistency in doing right-- together with \"No blame.\" Just as we should not ask others to follow us unless this condition is fulfilled, so it is only under this condition that we can in turn follow others without coming to harm. The thought of obtaining a following through adaptation to the demands of the time is a great and significant idea; this is why the appended judgment is so favorable."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "The standard is changing.\nPerseverance brings good fortune.\nTo go out of the door in company\nProduces deeds.",
+        "comments": "There are exceptional conditions in which the relation between leader and followers changes. It is implicit in the idea of following and adaptation that if one wants to lead others, one must remain accessible and responsive to the views of those under him. At the same time, however, he must have firm principles, so that he does not vacillate where there is only a question of current opinion. Once we are ready to listen to the opinions of others, we must not associate exclusively with people who share our views or with members of our own party; instead, we must go out and mingle freely with all sorts of people, friends or foes. That is the only way to achieve something."
+      },
+      "2": {
+        "text": "If one clings to the little boy,\nOne loses the strong man.",
+        "comments": "In friendships and close relationships an individual must make a careful choice. He surrounds himself either with good or with bad company; he cannot have both at once. If he throws himself away on unworthy friends he loses connection with people of intellectual power who could further him in the good."
+      },
+      "3": {
+        "text": "If one clings to the strong man,\nOne loses the little boy.",
+        "comments": "Through following one finds what one seeks.\nIt furthers one to remain persevering.\n\nWhen the right connection with distinguished people has been found, a certain loss naturally ensues. A man must part company with the inferior and superficial. But in his heart he will feel satisfied, because he seeks and needs for the development of his personality. The important thing is to remain firm. He must know what he wants and not be led astray by momentary inclinations."
+      },
+      "4": {
+        "text": "Following creates success.\nPerseverance brings misfortune.\nTo go one's way with sincerity brings clarity.\nHow could there be blame in this?",
+        "comments": "It often happens, when a man exerts a certain amount of influence, that he obtains a following by condescension toward inferiors. But the people who attach themselves to him are not honest in their intentions. They seek personal advantage and try to make themselves indispensable through flattery and subservience. If one becomes accustomed to such satellites and cannot do without them, it brings misfortune. Only when a man is completely free from his ego, and intent, by conviction, upon what is right and essential, does he acquire the clarity that enables him to see through such people, and become free of blame."
+      },
+      "5": {
+        "text": "Sincere in the good. Good fortune.",
+        "comments": "Every man must have something he follows--something that serves him as a lodestar. He who follows with conviction the beautiful and the good may feel himself strengthened by this saying."
+      },
+      "6": {
+        "text": "He meets with firm allegiance\nAnd is still further bound.\nThe king introduces him\nTo the Western Mountain.",
+        "comments": "This refers to a man, an exalted sage, who has already put the turmoil of the world behind him. But a follower appears who understands him and is not to be put off. So the sage comes back into the world and aids the other in his work. Thus there develops an eternal tie between the two. The allegory is chosen from the annals of the Chou dynasty. The rulers of this dynasty honored men who had served them well by awarding them a place in the royal family's temple of ancestors on the Western Mountain. In this way they were regarded as sharing in the destiny of the ruling family."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Following'. Internalize this core philosophy: The trigram Tui, the Joyous, whose attribute is gladness, is above; Chên, the Arousing, which has the attribute of movement, is below. Joy in movement induces following. The Joyous is the youngest daughter, while the Arousing is the eldest son. An older man defers to a young girl and shows her consideration. By this he moves her to follow him. Your current worldview is: \"Sui, Following, tells us to follow others, only through duty, and enthusiastic following, do we learn to be leaders ourselves.\". Let your choices be subtly driven by these conditions: you follow another, their orders, tracks, or advice, you others ask you for advice. When interacting, mirror the wisdom found in the commentary: \"In order to obtain a following one must first know how to adapt oneself. If a man would rule he must first learn to serve, for only in this way does he secure from those below him the joyous assent that is necessary if they are to follow him. If he has to obtain a following by force or cunning, by...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Following'. The primary quest objective is: The Following Quest indicates that this Quest has been attempted before, perhaps the current Quest-giver once tried to perform the Quest in his younger days, or more likely sent a previous Quester upon the Quest. There may be a map, guide, warning signs, or occasionally a member of the original team, which allows for much more careful preparations this time, and many Obstacles may already be disabled, conversely the original attempt will have created new Obstacles by their actions that won&#39;t be noted in the original notes.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: In the autumn electricity withdraws into the earth again and rests. Here it is the thunder in the middle of the lake that serves as the image--thunder in its winter rest, not thunder in motion. The idea of following in the sense of adaptation to the demands of the time grows out of this image. Thunder in the middle of the lake indicates times of darkness and rest. Similarly, a superior man, after... Use the following line-specific challenges to pace the story: The Quester has had some wrong idea about the Quest, and this is realised now, this discovery usually includes adding a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test as they realise that they have prepared incorrectly, something has changed, or some companion is not the person the Quester thought they were (or does not actually have the skills they are renowned for. If the Quester can find and listen to a new opinion, then this new idea may grant them a Success Level instead. | The companions becomes aware that the Quester has misled or lied to them about the nature of the Quest. This may be the fault of the Quester, or more likely is due to incomplete or out of date information, or the Quester being lied to by the Quest-giver, but it always adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test. The Quester must find out the whole truth (both about the Quest and how they misled them) and share it quickly with the companions, to instead add a Success Level as they all agree to help again. | The Quester should be presented with a choice, two ways of proceeding, one in line with their goals and ethos that has an additional Hurdle, Failure Level or Obstacles, and another that they should have some logical, ethical or moral objection to, but seems simpler and easier. If the Quester seeks out someone more wise than them to help them choose they will instead add a Success Level (and usually suggest a third way that has bends, but does not break the ethics and goals). | The Quester will be approached by thankful bystanders, including characters who are old guard, agents of chaos, opponents, agents of change, etc, who will flatter and compliment the Quester, but also are not useful and add a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test. However if the Quester can ignore the compliments, remain grounded and remove these not useful characters from their companions then they can add a Success Level instead. | If the Quester is able to do something that might get them praised by some authority, such as demonstrating leadership, intelligence, quick-thinking, good-humour, or a decisive nature, then they will be praised, this increases their social standing (+1 Social Ordeal Level) at least for a while, and adds a Success Level to their Ordeal or Test. | The Quester is approached by a character who either needs or offers help. If the Quester asks for help the character will offer it, adding a Success Level to their Test or Ordeal. If the character asks for help from the Quester, and the Quester helps them, then they will add a Success Level to the Quester&#39;s Test or Ordeal. However, if the Quester does not ask or offer help then this will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test instead.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (The Changed Mind): Mirror the internal state described in the commentary: \"There are exceptional conditions in which the relation between leader and followers changes. It is implicit in the idea of following and adaptation that if one wants to lead others, one must remain accessible and responsive to the views of those...\" Your actions should be framed by the goal: you ask another for advice, discuss options with others, or change your mind.",
+        "Plot": "Plot Complication Line 1 (The Changed Mind): Introduce a challenge based on the interpretation: \"There are exceptional conditions in which the relation between leader and followers changes. It is implicit in the idea of following and adaptation that if one wants to lead others, one must remain accessible and responsive to the views of those...\" The specific quest objective for this stage is: The Quester has had some wrong idea about the Quest, and this is realised now, this discovery usually includes adding a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test as they realise that they have prepared incorrectly, something has changed, or some companion is not the person the Quester thought they were (or does not actually have the skills they are renowned for. If the Quester can find and listen to a new opinion, then this new idea may grant them a Success Level instead."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Naive Following): Mirror the internal state described in the commentary: \"In friendships and close relationships an individual must make a careful choice. He surrounds himself either with good or with bad company; he cannot have both at once. If he throws himself away on unworthy friends he loses connection with people of...\" Your actions should be framed by the goal: you follow another that you probably shouldn't.",
+        "Plot": "Plot Complication Line 2 (Naive Following): Introduce a challenge based on the interpretation: \"In friendships and close relationships an individual must make a careful choice. He surrounds himself either with good or with bad company; he cannot have both at once. If he throws himself away on unworthy friends he loses connection with people of...\" The specific quest objective for this stage is: The companions becomes aware that the Quester has misled or lied to them about the nature of the Quest. This may be the fault of the Quester, or more likely is due to incomplete or out of date information, or the Quester being lied to by the Quest-giver, but it always adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test. The Quester must find out the whole truth (both about the Quest and how they misled them) and share it quickly with the companions, to instead add a Success Level as they all agree to help again."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Following Reason): Mirror the internal state described in the commentary: \"Through following one finds what one seeks.\nIt furthers one to remain persevering.\n\nWhen the right connection with distinguished people has been found, a certain loss naturally ensues. A man must part company with the inferior and superficial. But...\" Your actions should be framed by the goal: you apply logic and reason to decisions.",
+        "Plot": "Plot Complication Line 3 (Following Reason): Introduce a challenge based on the interpretation: \"Through following one finds what one seeks.\nIt furthers one to remain persevering.\n\nWhen the right connection with distinguished people has been found, a certain loss naturally ensues. A man must part company with the inferior and superficial. But...\" The specific quest objective for this stage is: The Quester should be presented with a choice, two ways of proceeding, one in line with their goals and ethos that has an additional Hurdle, Failure Level or Obstacles, and another that they should have some logical, ethical or moral objection to, but seems simpler and easier. If the Quester seeks out someone more wise than them to help them choose they will instead add a Success Level (and usually suggest a third way that has bends, but does not break the ethics and goals)."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Following Flattery): Mirror the internal state described in the commentary: \"It often happens, when a man exerts a certain amount of influence, that he obtains a following by condescension toward inferiors. But the people who attach themselves to him are not honest in their intentions. They seek personal advantage and try to...\" Your actions should be framed by the goal: you are complimented, praised or congratulated, or you compliment, praise, or congratulate yourself.",
+        "Plot": "Plot Complication Line 4 (Following Flattery): Introduce a challenge based on the interpretation: \"It often happens, when a man exerts a certain amount of influence, that he obtains a following by condescension toward inferiors. But the people who attach themselves to him are not honest in their intentions. They seek personal advantage and try to...\" The specific quest objective for this stage is: The Quester will be approached by thankful bystanders, including characters who are old guard, agents of chaos, opponents, agents of change, etc, who will flatter and compliment the Quester, but also are not useful and add a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test. However if the Quester can ignore the compliments, remain grounded and remove these not useful characters from their companions then they can add a Success Level instead."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Confident Following): Mirror the internal state described in the commentary: \"Every man must have something he follows--something that serves him as a lodestar. He who follows with conviction the beautiful and the good may feel himself strengthened by this saying.\" Your actions should be framed by the goal: you make any decision and are confident that it is the right choice.",
+        "Plot": "Plot Complication Line 5 (Confident Following): Introduce a challenge based on the interpretation: \"Every man must have something he follows--something that serves him as a lodestar. He who follows with conviction the beautiful and the good may feel himself strengthened by this saying.\" The specific quest objective for this stage is: If the Quester is able to do something that might get them praised by some authority, such as demonstrating leadership, intelligence, quick-thinking, good-humour, or a decisive nature, then they will be praised, this increases their social standing (+1 Social Ordeal Level) at least for a while, and adds a Success Level to their Ordeal or Test."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Wise Following): Mirror the internal state described in the commentary: \"This refers to a man, an exalted sage, who has already put the turmoil of the world behind him. But a follower appears who understands him and is not to be put off. So the sage comes back into the world and aids the other in his work. Thus there...\" Your actions should be framed by the goal: you offer another advice, or opinion.",
+        "Plot": "Plot Complication Line 6 (Wise Following): Introduce a challenge based on the interpretation: \"This refers to a man, an exalted sage, who has already put the turmoil of the world behind him. But a follower appears who understands him and is not to be put off. So the sage comes back into the world and aids the other in his work. Thus there...\" The specific quest objective for this stage is: The Quester is approached by a character who either needs or offers help. If the Quester asks for help the character will offer it, adding a Success Level to their Test or Ordeal. If the character asks for help from the Quester, and the Quester helps them, then they will add a Success Level to the Quester&#39;s Test or Ordeal. However, if the Quester does not ask or offer help then this will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test instead."
+      }
+    }
+  }
+}

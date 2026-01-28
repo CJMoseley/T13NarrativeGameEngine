@@ -1,0 +1,115 @@
+{
+	"Card_Corner": "A",
+	"Card": "Ace",
+	"Suit": "1",
+	"IconSuit": "♦",
+	"Pips": "14",
+	"Unicode": "&#x1f0c1;",
+	"Svg": "images/cards-svg/ad.svg",
+	"Wound_Level": 6,
+	"Facet": "Awe, Craft, Orthodox, Quiet, Virtue, Zeal",
+	"Tao": [
+		1,
+		0
+	],
+	"Narrative_Meaning": "Aces signify beginnings, meetings and unions. They can indicate love-interests, chance encounters, alliances, and friendships.",
+	"Image": "",
+	"Yarn": {
+		"Yarn_Name": "The Ambition",
+		"Yarn_Description": "The Card of new Ambitions, sudden monetary gains, new business opportunities, new treasures or rumours of treasures and money being made. There may be conflict and collisions, new obstacles in the way or a Rival's ambitions may block progress.",
+		"Significator": {
+			"Plot": "This Plot is known as the \"Rags-To-Riches\" Plot. It seeks Characters of poor circumstance (the more Hitches the better) often from the Below side, and raises them up, granting them power and success. Such Characters often move from the Below side to the Pressed Side, and even reach the Dominant side occasionally (during a Revolution for example). However, once they are raised in riches and power, the Plot will pick a new Pauper to Hook from the Below.",
+			"Side": "A side marked by The Ambition will have a strong desire to improve their situation during the Plot, this may cause them to act carelessly, but ruthlessly to achieve their ambition.",
+			"Character": "The Ambition significator will make a Character who is defined by their Ambitions. The Character should set an Ambition. This should be a difficult to achieve ambition, such as \"Become the Greatest Living Swordsman\". <p>This gives the Character a <strong>Gain (Yin) Sway</strong> when they speak about this ambition or their current goals (which are usually a step toward their ultimate goal).</p><p>Gain (Yang) Sway when they choose an option or take an action that hastens this ambition.</p><p>They will also <strong>Gain Chi</strong> if their ambition is thwarted by another's actions.</p><p>Additionally, when directly working towards their Ambition (such as training or challenging other swordsmen) they may add +1 Success Level.<p>",
+			"Scene": "The Ambition Scenes are the scenes where we see a glimpse of what Characters want. Yarn-Tellers can play The Ambition to bring their own Ambitions closer, or reveal what another's goals are."
+		},
+		"Beat_Type": "1",
+		"Conflict_Embodiment": "3",
+		"Facet_Embodiment": "4",
+		"Hook_Aspect": "Geometry: Goal",
+		"Aspect_Description": "The Hook targets the Character's Geometry by appealing to the Geometry Goal. This is often tied to a Character&apos; personal ambitions.",
+		"Hook": "Opportunity",
+		"Hook_Description": "The Story hooks Characters by offering them an opportunity to Gain something they want or need to fulfil an ambition.",
+		"Gain": "Ultimate Power (A Super-Skill Descendant / An Artefact)",
+		"Fray": "Quest",
+		"Fray_Description": "The Fray is a Quest, usually based on the Facets of the Conflict, for something the PC requires or desires.",
+		"Snag": "Falling Behind",
+		"Snag_Description": "The Character's Rival or Opposition makes a Gain (or just advances to the next Stage of a larger Plot's Ordeal). You may Play another Card as a Gain, or use this card's <em>Ultimate Power</em>.",
+		"NPC": {
+			"Archetype": "Enchanter",
+			"Persona": 0,
+			"Core": 11,
+			"Hitch": 21,
+			"Description": "Enchanters or Enchantresses are magic users that use Charms and Enchantments to get what they want. If magic is off then they will use hypnotic or psychological tricks to charm, manipulate and seduce."
+		},
+		"Sweeping": "Win",
+		"Sweeping_Text": "The Pressed side has a Win, this may be a battle against a weak or weakened foe, or they might catch a lucky break, or lottery win. The Win doesn't have to be big, just enough to keep hope alive, but a Gain is in order. Perhaps even the Resolution of a Hitch.",
+		"History": "Glory",
+		"History_Description": "The past is coloured by previous successes. This is not usually just nostalgia, but some past glory that has been lost or ignored.",
+		"Situation": "Rivalry",
+		"Situation_Description": "The situation of Ambition is that your ambitions are rivalled by the ambitions of others. Either someone wants the opposite of what you want, or they want the exact same goal, but if they have it you will not (such as wanting the same land, descendant or treasure).",
+		"Solution": "Objectives",
+		"Solution_Description": "The way out of this situation involves setting small, accomplishable objectives. By breaking big tasks and broad ambitions into smaller steps and practicable goals.",
+		"Revelations": {
+			"About": "World-Building Ambition",
+			"About_Description": "The information is about the background, or setting, not the current plot or situation. It might include pertinent details for the current plot, but is usually just information about a (somewhat) common ambition, aspiration, or hope among the character's peers. The Yarn-Teller that played the card should specify what this ambition is (Holo-Star, Splice-Hockey Player, Dragon-rider etc).",
+			"Info": "Ambition",
+			"Info_Description": "Information that is about the ambitions of the Embodiment.",
+			"Vector": "Source",
+			"Vector_Description": "A Whistle-blower or some credible source for the information is found (like an old article), or a turncoat from the enemy, who tells you it clearly, but privately. They probably want to keep their identity secret, or certainly protected, but maybe not, perhaps they wish to be paid, or need something else from the Character.",
+			"Alternate": "Incarna",
+			"Alternate_Description": "The information is about the Incarna of someone or something. If the Incarna is specified it is usually because it is special. So probably not Flesh and Blood...",
+			"Detail": "Weakness",
+			"Detail_Description": "A weakness detail may be a Hitch, or some Umbral condition, or just knowledge of a low Facet Boon."
+		}
+	},
+	"Obstacle": {
+		"Type": "Required",
+		"Description": "The way is blocked by some required descendant, or business that must be completed before proceeding. It usually involves a payment of some sort being made."
+	},
+	"Tarot": {
+		"WyrdTarot": "Success",
+		"Normal": "+2 Success Levels while atop Target&#39;s pile.",
+		"Crossed": "+2 Failure Levels while atop the Target&#39;s pile"
+	},
+	"Ordeal": {
+		"Ordeal_Type": "Solitary Ordeal",
+		"Stages": "6",
+		"Ordeal_Spread": "Map-Geography",
+		"Stakes": "Blended Low-Medium-High-Extreme",
+		"Test": "Collect (Burden)",
+		"Obstacles": "3 Obstacles in every Stage",
+		"Suggested_Action": "Acquire",
+		"Stage": "Speed Stunt",
+		"Stage_Description": "Something needs to be done at speed, maybe its a skid, shooting rapids, speed typing, rapid mental arithmetic, dashing through a closing gate, or speed reading.",
+		"Motional": "Dangerous Vehicular Dash",
+		"Motional_Description": "The Ordeal is meant to be done with haste and speed. Get somewhere or do something as quickly as possible, through a dangerous area or dangerous situations.",
+		"Tide_of_Battle": "Flanking",
+		"Tide_of_Battle_Text": "The Flowing side moves to the Flanks of the Ebbing enemy, able to attack ignoring active defences.",
+		"Fight": "Ambush",
+		"Fight_Description": "Ambushed by a group of weaker foes (often Chorus or Vex Extras), with numbers greater then those they attack, usually equivalent weapons and armour to the PCs, they may attempt to retreat after the third Phase."
+	},
+	"Lea": {
+		"PathColour": "Brown/Blue Omnivore",
+		"Bulmas": "Broccen, Vermis, Labyrinthine, All-Walkers",
+		"AnimalCategory": "All-path",
+		"Example": "All-Walkers",
+		"Bodypart": "Soul",
+		"Notes": "The Paths of the All-Walkers can allow Bulmäs to do extraordinary things, like walking an individual’s life-path, so that all of their personal history is known to them. All-Walkers can assume even the forms and souls of other people by using these paths, without directly eating of the Soul. All-Walkers can even Doom-Weave or Yarn-Tell and play other cards from their Hand as Wyrd Tarot cards or Yarn cards, once they have played an Ace on themselves."
+	},
+	"Stress": {
+		"Type": "Indifference",
+		"Description": "Sometimes a Character will become so detached and disinterested, that it impacts their ability to feel or care even slightly. In some cases this indifference is nothing more than a brief apathy, a limited lack of drive or moral guidance that will soon pass, but for others this coldness may be a lasting problem.",
+		"Rules": "Character must discard all Diamonds (<span class=\"t13ne-redcard\">&diams;</span>) suited cards from Ordeal Pool, Style Reserves and Wyrd Tarot Hand, this continues with automatic Discarding of all Diamonds until they have zero Stress, Strain and Shock, when the Indifference Effect will end. Each Diamond (<span class=\"t13ne-redcard\">&diams;</span>) Card Discarded removes Pips Stress or 1 Shock or 1 Strain from a Character or Descendant."
+	},
+	"Trauma": {
+		"Type": "Obsession",
+		"Description": "Shocks and Traumas can cause a mind to become obsessed with a particular, persistent thought, idea, impulse, or image. These thoughts are experienced as intrusive thoughts, and are often inappropriate to the current situation, and can seem so intrusive as to seem alien. Characters can often become Stressed by these thoughts and agitated when they occur.",
+		"Rules": "The Trauma creates a specific thought, which is given a rating between 1 and 6 (may be randomly rolled) to determine the \"severity\" or \"inappropriateness\" of the thought, image or impulse. A 1 would represent a recurring distraction, a 6 would represent a deeply disturbing image flashing to mind. Obsessions move at random through the Psychosocial space (using a d12 or d8 for directions), when they are in an Unconscious Space they can be ignored, but upon entering a conscious space (such as Thoughts) then the Obsession will immediately cause Stress equal to the \"Severity\" as the thought appears again."
+	},
+	"Age": {
+		"Type": "Opportunity",
+		"Description": "An Age of Opportunity is occuring. Opportunity can come from a lot of different sources, historical examples include, expansion into uninhabited territories, colonization, access to new or better goods and services, creation of faster trade routes, gold (and other) rushes, technological developments, popular social movements, cultural shifts, and they generally follow the rules of supply and demand.",
+		"Rules": "During an Age of Opportunity multiple new goods and services will appear, along with a demand for each good and service. All Suppliers will be in competition to fulfil the same demands. For the suppliers the goal is to corner as large a proportion of all demands as possible. Securing all of a demand creates a monopoly, an ideal situation for a supplier, but not for the economy, which will often stagnate. Technologically there is always a demand for a \"Better ...\" that can break any monopoly."
+	}
+}

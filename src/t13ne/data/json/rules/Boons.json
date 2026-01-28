@@ -1,0 +1,7 @@
+{
+  "id": "T13-NE-RULE-1",
+  "data": {
+    "RulePage": "Boons",
+    "Description": "<!-- wp:paragraph -->\n<p>T13 uses a number system called Boons to convert \"real world\" values into game specific usefulness (like Card Draws or Dice Rolls for your Facets or Skill Annexes). </p>\n<!-- /wp:paragraph -->\n\n<!-- wp:paragraph -->\n<p>Boons are usually accessed directly on this table, looking up the equivalent Dice Rolls for any Boon. Sometimes you may be adding Values together and then looking up that Value on the table to find the Boon, this can happen when building Annexes, or when Characters work together very closely (it can for example be used to describe situations where coordinated groups work together in an Ordeal) </p>\n<!-- /wp:paragraph -->\n\n<!-- wp:shortcode -->\n[t13ne type=\"boontable\" min=\"0\" max=\"1000\" /]\n<!-- /wp:shortcode -->"
+  }
+}

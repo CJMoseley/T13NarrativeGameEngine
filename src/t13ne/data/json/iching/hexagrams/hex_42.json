@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 42,
+    "Name": "Increase",
+    "Entity": "&#19945; ",
+    "Logical": 49,
+    "Trigrams": [
+      3,
+      4
+    ],
+    "Hexagram_Text": "Yi, Increase (or Accumulating), follows decrease as growth follows die back, spring follows winter and day follows night. What is springs from what is not, as the universe sprang from nothingness through the big bang and matter and energy cannot be destroyed, but only transformed.",
+    "Unchanging": "All Chi gained by the Character from any source is doubled",
+    "Line1": "Positioned for Greatness",
+    "Line2": "Someone Increases You",
+    "Line3": "Increased By Misfortune",
+    "Line4": "Increase The Middle",
+    "Line5": "True Heart",
+    "Line6": "Increasing No One"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "whenever another gains Chi nearby",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you act quickly or boldly",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "you observe and think before acting",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yang",
+        "Condition": "others gain Yin",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yang",
+        "Condition": "anyone nearby fails",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yang",
+        "Condition": "you act as a middle man, negotiate or interfere in another's business",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yin",
+        "Condition": "you are kind, generous, or lucky",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yin",
+        "Condition": "you vacillate, change your mind, or act uncertain",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Increase Quest describes a situation where the Quester has great fortune. Everything they attempt, whether in a Test or Ordeal, will add a Success Level, and they may help others with great efficacy. Increase Quests usually include travel over water, often as part of a business trip or vacation, and typically include a Gain.",
+    "Quest_Complete": "The Quest that ends in an Increase Hexagram, signifies a Quest that rewards the Quester with a gain that usually means the resolving of a Hitch, or a Training / knowledge Descendant.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester is incredibly well positioned for some opportunity, perhaps they are behind the opposition, flanking their forces, or they have some resource already procured that is essential to the Quest. The Quester adds an additional Success Level to all actions, whether in a Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "Someone, often an authority, assists the Quester, a Quarter-master for example may gift them equipment or training for the problems ahead (in these cases the equipment should be specific to the Tests and Ordeal Obstacles ahead). This assistance typically grants the Quester an additional Success Level on the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "Another character is affected by a great misfortune, loss, or injury. If the Quester assists this character, they will be assisted in return in their Quest, adding a Success Level to their Test or Ordeal. If they do not help this will add a Failure Level, Hurdle or Obstacle to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester is asked to mediate a negotiation between two parties, often including an authority character, and very often a rival or opposition character. If they are fair and even-handed, during these negotiations then you will add a Success Level, but if the Quester favours either party then they will suffer a Failure Level, Hurdle or Obstacle on their Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester is offered an opportunity to demonstrate generosity, charity or kindness. This may be as simple as leaving a tip for waiting staff, being approached by a business seeking investment, or passing a street-beggar. If the Quester is generous, kind or charitable then they will add a Success Level to their Test, Ordeal, and their next Social Ordeal, as their generosity is noticed. Failure to demonstrate generosity will add a Failure Level, Obstacle or Hurdle to the Test or Ordeal, but does not affect their next Social Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester who is generous without fault, and who offers charity to all, without thought, will cause themselves misfortune. It may be the beggar they paid, and is following them around \"helping\", is a spy for the opposition, perhaps the tipped waiter is an agent of chaos, or the business that they invested in provides weapons to the opposition. If the Quester is not careful, and their generosity is not limited to helping only those who are deserving then add a Failure Level, Hurdle or Obstacle to the Test or Ordeal.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "The idea of increase is expressed in the fact that the strong lowest line of the upper trigram has sunk down and taken its place under the lower trigram. This conception also expresses the fundamental idea on which the Book of Changes is based. To rule truly is to serve. A sacrifice of the higher element that produces an increase of the lower is called an out-and-out increase: it indicates the spirit that alone has power to help the world.",
+    "The_Image": {
+      "text": "Wind and thunder: the image of INCREASE.\n\nThus the superior man:\nIf he sees good, he imitates it;\nIf he has faults, he rids himself of them.",
+      "comments": "While observing how thunder and wind increase and strengthen each other, a man can not the way to self-increase and self-improvement. When he discovers good in others, he should imitate it and thus make everything on earth his own. If he perceives something bad in himself, let him rid himself of it. In this way he becomes free of evil. This ethical change represents the most important increase of personality."
+    },
+    "The_Judgment": {
+      "text": "INCREASE. It furthers one\n\nTo undertake something.\nIt furthers one to cross the great water.",
+      "comments": "Sacrifice on the part of those above for the increase of those below fills the people with a sense of joy and gratitude that is extremely valuable for the flowering of the commonwealth. When people are thus devoted to their leaders, undertakings are possible, and even difficult and dangerous enterprises will succeed. Therefore in such times of progress and successful development it is necessary to work and make the best use of time. This time resembles that of the marriage of heaven and earth, when the earth partakes of the creative power of heaven, forming and bringing forth living beings. The time of INCREASE does not endure, therefore it must be utilized while it lasts."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "It furthers one to accomplish great deeds.",
+        "comments": "Supreme good fortune. No blame.\n\nIf great help comes to a man from on high, this increased strength must be used to achieve something great for which he might otherwise never have found energy, or readiness to take responsibility. Great good fortune is produced by selflessness, and in bringing about great good fortune, he remains free of reproach."
+      },
+      "2": {
+        "text": "Someone does indeed increase him;",
+        "comments": "Ten pairs of tortoises cannot oppose it.\nConstant perseverance brings good fortune.\n\nThe king presents him before God.\nGood fortune.\n\nA man brings about real increase by producing in himself the conditions for it, that it, through receptivity to and love of the good. Thus the thing for which he strives comes of itself, with the inevitability of natural law. Where increase is thus in harmony with the highest laws of the universe, it cannot be prevented by any constellation of accidents. But everything depends on his not letting unexpected good fortune make him heedless; he must make it his own through inner strength an steadfastness. Then he acquires meaning before God and man, and can accomplish something for the good of the world."
+      },
+      "3": {
+        "text": "One is enriched through unfortunate events.",
+        "comments": "No blame, if you are sincere\nAnd walk in the middle,\nAnd report with a seal to the prince.\n\nA time of blessing and enrichment has such powerful effects that even events ordinarily unfortunate must turn out to the advantage of those affected by them. These persons become free of error, and by acting in harmony with truth they gain such inner authority that they exert influence as if sanctioned by the letter and seal."
+      },
+      "4": {
+        "text": "If you walk in the middle\nAnd report the prince,\nHe will follow.\nIt furthers one to be used\nIn the removal of the capital.",
+        "comments": "It is important that there should be men who mediate between leaders and followers. These should be disinterested people, especially in times of increase, since the benefit is to spread from the leader to the people. Nothing of this benefit should be held back in a selfish way; it should really reach those for whom it is intended. This sort of intermediary, who also exercises a good influence on the leader, is especially important in times when it is a matter of great undertakings, decisive for the future and requiring the inner assent of all concerned."
+      },
+      "5": {
+        "text": "If in truth you have a kind heart, ask not.",
+        "comments": "Supreme good fortune.\n\nTruly, kindness will be recognized as your virtue.\n\nTrue kindness does not count upon nor ask about merit and gratitude but acts from inner necessity. And such a truly kind heart finds itself rewarded in being recognized, and thus the beneficent influence will spread unhindered."
+      },
+      "6": {
+        "text": "He brings increase to no one.\nIndeed, someone even strikes him.\nHe does not keep his heart constantly steady.\nMisfortune.",
+        "comments": "The meaning here is that through renunciation those in high place should bring increase to those below. By neglecting this duty and helping no one, they in turn lose the furhtering influence of others and soon find themselves alone. In this way they invite attacks. An attitude not permanently in harmony with the demands of the time will necessarily bring misfortune with it. Confucius says about this line:\n\nThe superior man sets his person at rest before he moves; he composes his mind before he speaks; he makes his relations firm before he asks for something. By attending to these three matters, the superior man gains complete security. But if a man is brusque in his movements, others will not cooperate. If he is agitated in his word, they awaken no echo in others. If he asks for something without having fist established relations, it will not be given to him. If no one is with him, those who would harm him draw near."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Increase'. Internalize this core philosophy: The idea of increase is expressed in the fact that the strong lowest line of the upper trigram has sunk down and taken its place under the lower trigram. This conception also expresses the fundamental idea on which the Book of Changes is based. To rule truly is to serve. A sacrifice of the higher element that produces an increase of the lower is called an out-and-out increase: it indicates the spirit that alone has power to help the world. Your current worldview is: \"Yi, Increase (or Accumulating), follows decrease as growth follows die back, spring follows winter and day follows night. What is springs from what is not, as the universe sprang from nothingness through the big bang and matter and energy cannot be destroyed, but only transformed.\". Let your choices be subtly driven by these conditions: whenever another gains Chi nearby, you act quickly or boldly. When interacting, mirror the wisdom found in the commentary: \"Sacrifice on the part of those above for the increase of those below fills the people with a sense of joy and gratitude that is extremely valuable for the flowering of the commonwealth. When people are thus devoted to their leaders, undertakings are possible, and even difficult and dangerous...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Increase'. The primary quest objective is: The Increase Quest describes a situation where the Quester has great fortune. Everything they attempt, whether in a Test or Ordeal, will add a Success Level, and they may help others with great efficacy. Increase Quests usually include travel over water, often as part of a business trip or vacation, and typically include a Gain.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: While observing how thunder and wind increase and strengthen each other, a man can not the way to self-increase and self-improvement. When he discovers good in others, he should imitate it and thus make everything on earth his own. If he perceives something bad in himself, let him rid himself of it. In this way he becomes free of evil. This ethical change represents the most important increase of... Use the following line-specific challenges to pace the story: The Quester is incredibly well positioned for some opportunity, perhaps they are behind the opposition, flanking their forces, or they have some resource already procured that is essential to the Quest. The Quester adds an additional Success Level to all actions, whether in a Test or Ordeal. | Someone, often an authority, assists the Quester, a Quarter-master for example may gift them equipment or training for the problems ahead (in these cases the equipment should be specific to the Tests and Ordeal Obstacles ahead). This assistance typically grants the Quester an additional Success Level on the Test or Ordeal. | Another character is affected by a great misfortune, loss, or injury. If the Quester assists this character, they will be assisted in return in their Quest, adding a Success Level to their Test or Ordeal. If they do not help this will add a Failure Level, Hurdle or Obstacle to the Test or Ordeal. | The Quester is asked to mediate a negotiation between two parties, often including an authority character, and very often a rival or opposition character. If they are fair and even-handed, during these negotiations then you will add a Success Level, but if the Quester favours either party then they will suffer a Failure Level, Hurdle or Obstacle on their Test or Ordeal. | The Quester is offered an opportunity to demonstrate generosity, charity or kindness. This may be as simple as leaving a tip for waiting staff, being approached by a business seeking investment, or passing a street-beggar. If the Quester is generous, kind or charitable then they will add a Success Level to their Test, Ordeal, and their next Social Ordeal, as their generosity is noticed. Failure to demonstrate generosity will add a Failure Level, Obstacle or Hurdle to the Test or Ordeal, but does not affect their next Social Ordeal. | The Quester who is generous without fault, and who offers charity to all, without thought, will cause themselves misfortune. It may be the beggar they paid, and is following them around \"helping\", is a spy for the opposition, perhaps the tipped waiter is an agent of chaos, or the business that they invested in provides weapons to the opposition. If the Quester is not careful, and their generosity is not limited to helping only those who are deserving then add a Failure Level, Hurdle or Obstacle to the Test or Ordeal.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Positioned for Greatness): Mirror the internal state described in the commentary: \"Supreme good fortune. No blame.\n\nIf great help comes to a man from on high, this increased strength must be used to achieve something great for which he might otherwise never have found energy, or readiness to take responsibility. Great good fortune...\" Your actions should be framed by the goal: you observe and think before acting.",
+        "Plot": "Plot Complication Line 1 (Positioned for Greatness): Introduce a challenge based on the interpretation: \"Supreme good fortune. No blame.\n\nIf great help comes to a man from on high, this increased strength must be used to achieve something great for which he might otherwise never have found energy, or readiness to take responsibility. Great good fortune...\" The specific quest objective for this stage is: The Quester is incredibly well positioned for some opportunity, perhaps they are behind the opposition, flanking their forces, or they have some resource already procured that is essential to the Quest. The Quester adds an additional Success Level to all actions, whether in a Test or Ordeal."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Someone Increases You): Mirror the internal state described in the commentary: \"Ten pairs of tortoises cannot oppose it.\nConstant perseverance brings good fortune.\n\nThe king presents him before God.\nGood fortune.\n\nA man brings about real increase by producing in himself the conditions for it, that it, through receptivity to and...\" Your actions should be framed by the goal: others gain Yin.",
+        "Plot": "Plot Complication Line 2 (Someone Increases You): Introduce a challenge based on the interpretation: \"Ten pairs of tortoises cannot oppose it.\nConstant perseverance brings good fortune.\n\nThe king presents him before God.\nGood fortune.\n\nA man brings about real increase by producing in himself the conditions for it, that it, through receptivity to and...\" The specific quest objective for this stage is: Someone, often an authority, assists the Quester, a Quarter-master for example may gift them equipment or training for the problems ahead (in these cases the equipment should be specific to the Tests and Ordeal Obstacles ahead). This assistance typically grants the Quester an additional Success Level on the Test or Ordeal."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Increased By Misfortune): Mirror the internal state described in the commentary: \"No blame, if you are sincere\nAnd walk in the middle,\nAnd report with a seal to the prince.\n\nA time of blessing and enrichment has such powerful effects that even events ordinarily unfortunate must turn out to the advantage of those affected by them....\" Your actions should be framed by the goal: anyone nearby fails.",
+        "Plot": "Plot Complication Line 3 (Increased By Misfortune): Introduce a challenge based on the interpretation: \"No blame, if you are sincere\nAnd walk in the middle,\nAnd report with a seal to the prince.\n\nA time of blessing and enrichment has such powerful effects that even events ordinarily unfortunate must turn out to the advantage of those affected by them....\" The specific quest objective for this stage is: Another character is affected by a great misfortune, loss, or injury. If the Quester assists this character, they will be assisted in return in their Quest, adding a Success Level to their Test or Ordeal. If they do not help this will add a Failure Level, Hurdle or Obstacle to the Test or Ordeal."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Increase The Middle): Mirror the internal state described in the commentary: \"It is important that there should be men who mediate between leaders and followers. These should be disinterested people, especially in times of increase, since the benefit is to spread from the leader to the people. Nothing of this benefit should...\" Your actions should be framed by the goal: you act as a middle man, negotiate or interfere in another's business.",
+        "Plot": "Plot Complication Line 4 (Increase The Middle): Introduce a challenge based on the interpretation: \"It is important that there should be men who mediate between leaders and followers. These should be disinterested people, especially in times of increase, since the benefit is to spread from the leader to the people. Nothing of this benefit should...\" The specific quest objective for this stage is: The Quester is asked to mediate a negotiation between two parties, often including an authority character, and very often a rival or opposition character. If they are fair and even-handed, during these negotiations then you will add a Success Level, but if the Quester favours either party then they will suffer a Failure Level, Hurdle or Obstacle on their Test or Ordeal."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (True Heart): Mirror the internal state described in the commentary: \"Supreme good fortune.\n\nTruly, kindness will be recognized as your virtue.\n\nTrue kindness does not count upon nor ask about merit and gratitude but acts from inner necessity. And such a truly kind heart finds itself rewarded in being recognized, and...\" Your actions should be framed by the goal: you are kind, generous, or lucky.",
+        "Plot": "Plot Complication Line 5 (True Heart): Introduce a challenge based on the interpretation: \"Supreme good fortune.\n\nTruly, kindness will be recognized as your virtue.\n\nTrue kindness does not count upon nor ask about merit and gratitude but acts from inner necessity. And such a truly kind heart finds itself rewarded in being recognized, and...\" The specific quest objective for this stage is: The Quester is offered an opportunity to demonstrate generosity, charity or kindness. This may be as simple as leaving a tip for waiting staff, being approached by a business seeking investment, or passing a street-beggar. If the Quester is generous, kind or charitable then they will add a Success Level to their Test, Ordeal, and their next Social Ordeal, as their generosity is noticed. Failure to demonstrate generosity will add a Failure Level, Obstacle or Hurdle to the Test or Ordeal, but does not affect their next Social Ordeal."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Increasing No One): Mirror the internal state described in the commentary: \"The meaning here is that through renunciation those in high place should bring increase to those below. By neglecting this duty and helping no one, they in turn lose the furhtering influence of others and soon find themselves alone. In this way they...\" Your actions should be framed by the goal: you vacillate, change your mind, or act uncertain.",
+        "Plot": "Plot Complication Line 6 (Increasing No One): Introduce a challenge based on the interpretation: \"The meaning here is that through renunciation those in high place should bring increase to those below. By neglecting this duty and helping no one, they in turn lose the furhtering influence of others and soon find themselves alone. In this way they...\" The specific quest objective for this stage is: The Quester who is generous without fault, and who offers charity to all, without thought, will cause themselves misfortune. It may be the beggar they paid, and is following them around \"helping\", is a spy for the opposition, perhaps the tipped waiter is an agent of chaos, or the business that they invested in provides weapons to the opposition. If the Quester is not careful, and their generosity is not limited to helping only those who are deserving then add a Failure Level, Hurdle or Obstacle to the Test or Ordeal."
+      }
+    }
+  }
+}

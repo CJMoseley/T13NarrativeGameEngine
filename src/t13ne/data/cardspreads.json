@@ -1,0 +1,889 @@
+{
+  "spreads": [
+    {
+      "id": "three-card-past-present-future",
+      "name": "Three Card: Past, Present, Future",
+      "numCards": 3,
+      "shufflePatterns": [
+        "fisherYates",
+        "riffle"
+      ],
+      "includeDiceRoll": false,
+      "cardPositions": [
+        {
+          "role": "Past",
+          "description": "What has led to the current situation.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "name",
+              "suit",
+              "type",
+              "description",
+              "Tarot_Text"
+            ],
+            "prefix": "Card for the Past: "
+          }
+        },
+        {
+          "role": "Present",
+          "description": "The core of the current challenge or opportunity.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "name",
+              "suit",
+              "pips",
+              "description",
+              "ability",
+              "Tarot_Text",
+              "Ordeal_Text"
+            ],
+            "prefix": "Card for the Present: "
+          }
+        },
+        {
+          "role": "Future",
+          "description": "The likely outcome or next step.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "name",
+              "suit",
+              "description",
+              "Tarot_Text",
+              "Ordeal_Text"
+            ],
+            "prefix": "Card for the Future: "
+          }
+        }
+      ]
+    },
+    {
+      "id": "obstacle-revelation",
+      "name": "Obstacle / Revelation Spread",
+      "numCards": 2,
+      "shufflePatterns": [
+        "fisherYates",
+        "mongean"
+      ],
+      "includeDiceRoll": true,
+      "cardPositions": [
+        {
+          "role": "Obstacle",
+          "description": "The primary challenge or blocking factor.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Type",
+              "Description"
+            ],
+            "prefix": "This card represents the Obstacle: "
+          }
+        },
+        {
+          "role": "Revelation",
+          "description": "An insight or hidden truth to overcome the obstacle.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "About",
+              "About_Description",
+              "Info",
+              "Info_Description",
+              "Tarot_Text"
+            ],
+            "prefix": "This card reveals a Revelation: "
+          }
+        }
+      ]
+    },
+    {
+      "id": "conflict-simple",
+      "name": "Conflict: Simple (2x2)",
+      "numCards": 5,
+      "shufflePatterns": [
+        "fisherYates"
+      ],
+      "includeDiceRoll": false,
+      "cardPositions": [
+        {
+          "role": "Dominant Side",
+          "description": "Represents the Dominant side of the conflict.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Conflict_Embodiment",
+              "Facet_Embodiment",
+              "name",
+              "suit"
+            ],
+            "prefix": "Dominant Side: "
+          }
+        },
+        {
+          "role": "Pressed Side",
+          "description": "Represents the Pressed side of the conflict.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Conflict_Embodiment",
+              "Facet_Embodiment",
+              "name",
+              "suit"
+            ],
+            "prefix": "Pressed Side: "
+          }
+        },
+        {
+          "role": "Above Side",
+          "description": "Represents the Above side (Authorities/Gods).",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Conflict_Embodiment",
+              "Facet_Embodiment",
+              "name",
+              "suit"
+            ],
+            "prefix": "Above Side: "
+          }
+        },
+        {
+          "role": "Deeper Shadows",
+          "description": "Represents hidden or deep shadow influences.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Conflict_Embodiment",
+              "Facet_Embodiment",
+              "name",
+              "suit"
+            ],
+            "prefix": "Deeper Shadows: "
+          }
+        },
+        {
+          "role": "Plot Significator",
+          "description": "The overall theme or significator of the plot.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Significator",
+              "Yarn_Name",
+              "Yarn_Description"
+            ],
+            "prefix": "Plot Significator: "
+          }
+        }
+      ]
+    },
+    {
+      "id": "conflict-balanced",
+      "name": "Conflict: Balanced (4x4)",
+      "numCards": 17,
+      "shufflePatterns": ["fisherYates"],
+      "includeDiceRoll": false,
+      "cardPositions": [
+        {"role": "Dominant Side"},
+        {"role": "Dominant Internal"},
+        {"role": "Dominant External"},
+        {"role": "Dominant Shadow"},
+        {"role": "Pressed Side"},
+        {"role": "Pressed Internal"},
+        {"role": "Pressed External"},
+        {"role": "Pressed Shadow"},
+        {"role": "Above Side"},
+        {"role": "Above Internal"},
+        {"role": "Above External"},
+        {"role": "Above Shadow"},
+        {"role": "Below Side"},
+        {"role": "Below Internal"},
+        {"role": "Below External"},
+        {"role": "Below Shadow"},
+        {"role": "Plot Significator"}
+      ]
+    },
+    {
+      "id": "conflict-complete",
+      "name": "Conflict: Complete (5x5)",
+      "numCards": 26,
+      "shufflePatterns": ["fisherYates"],
+      "includeDiceRoll": false,
+      "cardPositions": [
+        {"role": "Dominant Side"},
+        {"role": "Dominant Internal"},
+        {"role": "Dominant External"},
+        {"role": "Dominant Shadow"},
+        {"role": "Dominant Deeper Shadow"},
+        {"role": "Pressed Side"},
+        {"role": "Pressed Internal"},
+        {"role": "Pressed External"},
+        {"role": "Pressed Shadow"},
+        {"role": "Pressed Deeper Shadow"},
+        {"role": "Above Side"},
+        {"role": "Above Internal"},
+        {"role": "Above External"},
+        {"role": "Above Shadow"},
+        {"role": "Above Deeper Shadow"},
+        {"role": "Below Side"},
+        {"role": "Below Internal"},
+        {"role": "Below External"},
+        {"role": "Below Shadow"},
+        {"role": "Below Deeper Shadow"},
+        {"role": "Central Conflict"},
+        {"role": "Central Internal"},
+        {"role": "Central External"},
+        {"role": "Central Shadow"},
+        {"role": "Central Deeper Shadow"},
+        {"role": "Plot Significator"}
+      ]
+    },
+    {
+      "id": "conflict-complex",
+      "name": "Conflict: Complex (6x6)",
+      "numCards": 37,
+      "shufflePatterns": ["fisherYates"],
+      "includeDiceRoll": false,
+      "cardPositions": [
+        {"role": "Dominant Core"}, {"role": "Dominant Internal"}, {"role": "Dominant External"}, {"role": "Dominant Ally"}, {"role": "Dominant Foe"}, {"role": "Dominant Mystery"},
+        {"role": "Pressed Core"}, {"role": "Pressed Internal"}, {"role": "Pressed External"}, {"role": "Pressed Ally"}, {"role": "Pressed Foe"}, {"role": "Pressed Mystery"},
+        {"role": "Above Core"}, {"role": "Above Internal"}, {"role": "Above External"}, {"role": "Above Ally"}, {"role": "Above Foe"}, {"role": "Above Mystery"},
+        {"role": "Below Core"}, {"role": "Below Internal"}, {"role": "Below External"}, {"role": "Below Ally"}, {"role": "Below Foe"}, {"role": "Below Mystery"},
+        {"role": "Shadows Core"}, {"role": "Shadows Internal"}, {"role": "Shadows External"}, {"role": "Shadows Ally"}, {"role": "Shadows Foe"}, {"role": "Shadows Mystery"},
+        {"role": "Deeper Shadows Core"}, {"role": "Deeper Shadows Internal"}, {"role": "Deeper Shadows External"}, {"role": "Deeper Shadows Ally"}, {"role": "Deeper Shadows Foe"}, {"role": "Deeper Shadows Mystery"},
+        {"role": "Plot Significator"}
+      ]
+    },
+    {
+      "id": "conflict-exceptional",
+      "name": "Conflict: Exceptional (7x7)",
+      "numCards": 50,
+      "shufflePatterns": ["fisherYates"],
+      "includeDiceRoll": false,
+      "cardPositions": [
+        {"role": "Dominant Core"}, {"role": "Dominant Ally"}, {"role": "Dominant Foe"}, {"role": "Dominant Mystery"}, {"role": "Dominant Resource"}, {"role": "Dominant Goal"}, {"role": "Dominant Deeper Shadow"},
+        {"role": "Pressed Core"}, {"role": "Pressed Ally"}, {"role": "Pressed Foe"}, {"role": "Pressed Mystery"}, {"role": "Pressed Resource"}, {"role": "Pressed Goal"}, {"role": "Pressed Deeper Shadow"},
+        {"role": "Above Core"}, {"role": "Above Ally"}, {"role": "Above Foe"}, {"role": "Above Mystery"}, {"role": "Above Resource"}, {"role": "Above Goal"}, {"role": "Above Deeper Shadow"},
+        {"role": "Below Core"}, {"role": "Below Ally"}, {"role": "Below Foe"}, {"role": "Below Mystery"}, {"role": "Below Resource"}, {"role": "Below Goal"}, {"role": "Below Deeper Shadow"},
+        {"role": "Internal Core"}, {"role": "Internal Ally"}, {"role": "Internal Foe"}, {"role": "Internal Mystery"}, {"role": "Internal Resource"}, {"role": "Internal Goal"}, {"role": "Internal Deeper Shadow"},
+        {"role": "External Core"}, {"role": "External Ally"}, {"role": "External Foe"}, {"role": "External Mystery"}, {"role": "External Resource"}, {"role": "External Goal"}, {"role": "External Deeper Shadow"},
+        {"role": "Shadows Core"}, {"role": "Shadows Ally"}, {"role": "Shadows Foe"}, {"role": "Shadows Mystery"}, {"role": "Shadows Resource"}, {"role": "Shadows Goal"}, {"role": "Shadows Deeper Shadow"},
+        {"role": "Plot Significator"}
+      ]
+    },
+    {
+      "id": "conflict-internalised",
+      "name": "Conflict: Internalised (3x3)",
+      "numCards": 10,
+      "shufflePatterns": ["fisherYates"],
+      "includeDiceRoll": false,
+      "cardPositions": [
+        {"role": "Dominant Side", "description": "Primary force of the Dominant side."},
+        {"role": "Dominant Internal", "description": "Internal conflict within the Dominant side."},
+        {"role": "Dominant Shadow", "description": "Shadow aspect of the Dominant side."},
+        {"role": "Pressed Side", "description": "Primary force of the Pressed side."},
+        {"role": "Pressed Internal", "description": "Internal conflict within the Pressed side."},
+        {"role": "Pressed Shadow", "description": "Shadow aspect of the Pressed side."},
+        {"role": "Above Side", "description": "Authority or higher power influence."},
+        {"role": "Above Internal", "description": "Internal conflict of the Authority."},
+        {"role": "Deeper Shadows", "description": "Deepest hidden influences."},
+        {"role": "Plot Significator", "description": "The overall theme of the plot."}
+      ]
+    },
+    {
+      "id": "geas-6-card",
+      "name": "Geas (6 Card)",
+      "numCards": 6,
+      "shufflePatterns": ["fisherYates"],
+      "includeDiceRoll": false,
+      "cardPositions": [
+        {
+          "role": "Line 1 / About",
+          "description": "Mother of Quest (History) / What the Revelation is about.",
+          "aiExtractionOptions": { "fieldsToInclude": ["Type", "Description", "About", "About_Description"] }
+        },
+        {
+          "role": "Line 2 / Vector",
+          "description": "Quest (Situation) / How the information is revealed.",
+          "aiExtractionOptions": { "fieldsToInclude": ["Fray", "Fray_Description", "Vector", "Vector_Description"] }
+        },
+        {
+          "role": "Line 3 / Info",
+          "description": "Father of Quest (Question) / The specific information revealed.",
+          "aiExtractionOptions": { "fieldsToInclude": ["Question", "Info", "Info_Description"] }
+        },
+        {
+          "role": "Line 4 / Alternate",
+          "description": "Mother of Solution (Question) / Alternative interpretation or info.",
+          "aiExtractionOptions": { "fieldsToInclude": ["Question", "Alternate", "Alternate_Description"] }
+        },
+        {
+          "role": "Line 5 / Lore 1",
+          "description": "Solution / First aspect of the resulting Lore.",
+          "aiExtractionOptions": { "fieldsToInclude": ["Ordeal_Type", "Suggested_Action", "Lore"] }
+        },
+        {
+          "role": "Line 6 / Lore 2",
+          "description": "Father of Solution (Question) / Second aspect of the resulting Lore.",
+          "aiExtractionOptions": { "fieldsToInclude": ["Question", "Lore"] }
+        }
+      ]
+    },
+    {
+      "id": "scene",
+      "name": "Scene",
+      "numCards": 2,
+      "shufflePatterns": [
+        "fisherYates"
+      ],
+      "includeDiceRoll": false,
+      "cardPositions": [
+        {
+          "role": "Significator",
+          "description": "The theme or meaning of the scene.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Significator",
+              "Yarn_Name",
+              "Yarn_Description"
+            ],
+            "prefix": "Scene Significator: "
+          }
+        },
+        {
+          "role": "Beat Type",
+          "description": "The type of scene (Warp, Weft, etc.).",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Beat_Type"
+            ],
+            "prefix": "Scene Beat Type: "
+          }
+        }
+      ]
+    },
+    {
+      "id": "hook",
+      "name": "Hook",
+      "numCards": 2,
+      "shufflePatterns": [
+        "fisherYates"
+      ],
+      "includeDiceRoll": false,
+      "cardPositions": [
+        {
+          "role": "Hook",
+          "description": "The event that hooks the character.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Hook",
+              "Hook_Description"
+            ],
+            "prefix": "Hook Event: "
+          }
+        },
+        {
+          "role": "Hook Aspect",
+          "description": "The aspect of the character being hooked.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Hook_Aspect",
+              "Aspect_Description"
+            ],
+            "prefix": "Hook Aspect: "
+          }
+        }
+      ]
+    },
+    {
+      "id": "warp",
+      "name": "Warp",
+      "numCards": 2,
+      "shufflePatterns": [
+        "fisherYates"
+      ],
+      "includeDiceRoll": false,
+      "cardPositions": [
+        {
+          "role": "The Fray",
+          "description": "The conflict or struggle.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Fray",
+              "Fray_Description"
+            ],
+            "prefix": "The Fray: "
+          }
+        },
+        {
+          "role": "The Snag",
+          "description": "The complication.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Snag",
+              "Snag_Description"
+            ],
+            "prefix": "The Snag: "
+          }
+        }
+      ]
+    },
+    {
+      "id": "weft",
+      "name": "Weft",
+      "numCards": 3,
+      "shufflePatterns": [
+        "fisherYates"
+      ],
+      "includeDiceRoll": false,
+      "cardPositions": [
+        {
+          "role": "Sweeping",
+          "description": "Recovery or gain.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Sweeping",
+              "Sweeping_Text"
+            ],
+            "prefix": "Sweeping: "
+          }
+        },
+        {
+          "role": "Picking Option 1",
+          "description": "First choice for the next path.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Fray",
+              "Fray_Description"
+            ],
+            "prefix": "Option 1: "
+          }
+        },
+        {
+          "role": "Picking Option 2",
+          "description": "Second choice for the next path.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Fray",
+              "Fray_Description"
+            ],
+            "prefix": "Option 2: "
+          }
+        }
+      ]
+    },
+    {
+      "id": "revelation",
+      "name": "Revelation",
+      "numCards": 5,
+      "shufflePatterns": [
+        "fisherYates"
+      ],
+      "includeDiceRoll": false,
+      "cardPositions": [
+        {
+          "role": "Significator",
+          "description": "The theme of the revelation.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Significator",
+              "Yarn_Name",
+              "Yarn_Description"
+            ],
+            "prefix": "Significator: "
+          }
+        },
+        {
+          "role": "About",
+          "description": "What the revelation is about.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "About",
+              "About_Description"
+            ],
+            "prefix": "About: "
+          }
+        },
+        {
+          "role": "Vector",
+          "description": "How the information is revealed.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Vector",
+              "Vector_Description"
+            ],
+            "prefix": "Vector: "
+          }
+        },
+        {
+          "role": "Info",
+          "description": "The specific information revealed.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Info",
+              "Info_Description"
+            ],
+            "prefix": "Info: "
+          }
+        },
+        {
+          "role": "Alternate",
+          "description": "Alternative interpretation or info.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Alternate",
+              "Alternate_Description"
+            ],
+            "prefix": "Alternate Info: "
+          }
+        }
+      ]
+    },
+    {
+      "id": "gain",
+      "name": "Gain",
+      "numCards": 1,
+      "shufflePatterns": [
+        "fisherYates"
+      ],
+      "includeDiceRoll": false,
+      "cardPositions": [
+        {
+          "role": "Gain",
+          "description": "The reward or gain obtained.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Gain"
+            ],
+            "prefix": "Gain: "
+          }
+        }
+      ]
+    },
+    {
+      "id": "ordeal",
+      "name": "Ordeal",
+      "numCards": 7,
+      "shufflePatterns": [
+        "fisherYates"
+      ],
+      "includeDiceRoll": false,
+      "cardPositions": [
+        {
+          "role": "Stakes",
+          "description": "The risk level of the ordeal.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Stakes"
+            ],
+            "prefix": "Stakes: "
+          }
+        },
+        {
+          "role": "Spread",
+          "description": "The layout type (Railroad, Forking, etc.).",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Ordeal_Spread"
+            ],
+            "prefix": "Spread Type: "
+          }
+        },
+        {
+          "role": "Obstacles",
+          "description": "The type of obstacles encountered.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Obstacles"
+            ],
+            "prefix": "Obstacles: "
+          }
+        },
+        {
+          "role": "Stages",
+          "description": "The number and type of stages.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Stages"
+            ],
+            "prefix": "Stages: "
+          }
+        },
+        {
+          "role": "Motional",
+          "description": "Movement or chase elements.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Motional"
+            ],
+            "prefix": "Motional: "
+          }
+        },
+        {
+          "role": "Test",
+          "description": "The specific test involved.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Test"
+            ],
+            "prefix": "Test: "
+          }
+        },
+        {
+          "role": "Suggested Action",
+          "description": "What characters might do.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Suggested_Action"
+            ],
+            "prefix": "Suggested Action: "
+          }
+        }
+      ]
+    },
+    {
+      "id": "obstacle",
+      "name": "Obstacle",
+      "numCards": 4,
+      "shufflePatterns": [
+        "fisherYates"
+      ],
+      "includeDiceRoll": false,
+      "cardPositions": [
+        {
+          "role": "Type",
+          "description": "The type of obstacle.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Type",
+              "Description"
+            ],
+            "prefix": "Obstacle Type: "
+          }
+        },
+        {
+          "role": "Difficulty 1",
+          "description": "First difficulty card.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "pips"
+            ],
+            "prefix": "Diff 1: "
+          }
+        },
+        {
+          "role": "Difficulty 2",
+          "description": "Second difficulty card.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "pips"
+            ],
+            "prefix": "Diff 2: "
+          }
+        },
+        {
+          "role": "Difficulty 3",
+          "description": "Third difficulty card.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "pips"
+            ],
+            "prefix": "Diff 3: "
+          }
+        }
+      ]
+    },
+    {
+      "id": "stage",
+      "name": "Stage",
+      "numCards": 7,
+      "shufflePatterns": [
+        "fisherYates"
+      ],
+      "includeDiceRoll": false,
+      "cardPositions": [
+        {
+          "role": "Stage Type",
+          "description": "The type of stage.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Stage",
+              "Stage_Description"
+            ],
+            "prefix": "Stage Type: "
+          }
+        },
+        {
+          "role": "Stage Diff 1",
+          "description": "Stage difficulty card 1.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "pips"
+            ],
+            "prefix": "Stage Diff 1: "
+          }
+        },
+        {
+          "role": "Stage Diff 2",
+          "description": "Stage difficulty card 2.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "pips"
+            ],
+            "prefix": "Stage Diff 2: "
+          }
+        },
+        {
+          "role": "Stage Diff 3",
+          "description": "Stage difficulty card 3.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "pips"
+            ],
+            "prefix": "Stage Diff 3: "
+          }
+        },
+        {
+          "role": "Obstacle Type",
+          "description": "Obstacle within the stage.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Type",
+              "Description"
+            ],
+            "prefix": "Obstacle: "
+          }
+        },
+        {
+          "role": "Obstacle Diff 1",
+          "description": "Obstacle difficulty 1.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "pips"
+            ],
+            "prefix": "Obs Diff 1: "
+          }
+        },
+        {
+          "role": "Obstacle Diff 2",
+          "description": "Obstacle difficulty 2.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "pips"
+            ],
+            "prefix": "Obs Diff 2: "
+          }
+        }
+      ]
+    },
+    {
+      "id": "plight-3-card",
+      "name": "Plight / Situation (3 Card)",
+      "numCards": 3,
+      "shufflePatterns": [
+        "fisherYates"
+      ],
+      "includeDiceRoll": false,
+      "cardPositions": [
+        {
+          "role": "History",
+          "description": "The past situation or obstacle.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Type",
+              "Description"
+            ],
+            "prefix": "History (Obstacle): "
+          }
+        },
+        {
+          "role": "Present",
+          "description": "The current situation or quest.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Fray",
+              "Fray_Description"
+            ],
+            "prefix": "Present (Quest): "
+          }
+        },
+        {
+          "role": "Solution",
+          "description": "The potential solution or ordeal.",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Ordeal_Type",
+              "Suggested_Action"
+            ],
+            "prefix": "Solution (Ordeal): "
+          }
+        }
+      ]
+    },
+    {
+      "id": "quest-6-card",
+      "name": "Quest (6 Card)",
+      "numCards": 6,
+      "shufflePatterns": [
+        "fisherYates"
+      ],
+      "includeDiceRoll": false,
+      "cardPositions": [
+        {
+          "role": "Line 1 (Bottom)",
+          "description": "Mother of Quest (History)",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Type",
+              "Description"
+            ],
+            "prefix": "Line 1 (History/Obstacle): "
+          }
+        },
+        {
+          "role": "Line 2",
+          "description": "Quest (Situation)",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Fray",
+              "Fray_Description"
+            ],
+            "prefix": "Line 2 (Situation/Quest): "
+          }
+        },
+        {
+          "role": "Line 3",
+          "description": "Father of Quest (Question)",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Question"
+            ],
+            "prefix": "Line 3 (Question): "
+          }
+        },
+        {
+          "role": "Line 4",
+          "description": "Mother of Solution (Question)",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Question"
+            ],
+            "prefix": "Line 4 (Question): "
+          }
+        },
+        {
+          "role": "Line 5",
+          "description": "Solution",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Ordeal_Type",
+              "Suggested_Action"
+            ],
+            "prefix": "Line 5 (Solution/Ordeal): "
+          }
+        },
+        {
+          "role": "Line 6 (Top)",
+          "description": "Father of Solution (Question)",
+          "aiExtractionOptions": {
+            "fieldsToInclude": [
+              "Question"
+            ],
+            "prefix": "Line 6 (Question): "
+          }
+        }
+      ]
+    }
+  ]
+}

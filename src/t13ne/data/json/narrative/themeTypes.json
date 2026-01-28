@@ -1,0 +1,1062 @@
+[
+  {
+    "Type": "Abuse of Power",
+    "Description": "This theme is similar to other unlawful and criminal acts as themes. It is often said that power corrupts, and while this may not always be true, in this case it really is. Usually the Embodiment of the Dominant or Above Side will be the main character of this theme, and other characters will suffer from this abuse, but not always.",
+    "Rules": "To abuse power a Character must have power. Usually the level of the abuse is proportional to the difference in  the levels of power imbalance between the Characters."
+  },
+  {
+    "Type": "Arrogance",
+    "Description": "Arrogance, whether justifiable or not, is an ugly character trait. Combining pride, an overbearing manner, self-importance and self-confidence into what can be either an annoying personality quirk or a defining feature of the character.",
+    "Rules": ""
+  },
+  {
+    "Type": "Art",
+    "Description": "When art acts as a theme it examines the nature of art itself, a combination of practised, learned skills, like colour theory, painting techniques, or familiarity with the instruments, and natural talents, such as senses, coordination, imagination and inspiration. Art itself may be judged by the aesthetic beauty that is produced, by the emotional impact of the piece produced, by its rarity (and often monetary value) or popularity.",
+    "Rules": ""
+  },
+  {
+    "Type": "Autonomy",
+    "Description": "Autonomy as a theme emphasises the freedom to rule oneself, and the capacity to make informed, uncoerced decisions for themselves. This is often mixed with themes of growing up or general freedom as need be. Autonomy as a theme might push a plot, nation or character toward social revolution, political independence, self-reliance or even self-deception.",
+    "Rules": ""
+  },
+  {
+    "Type": "Beating the Odds",
+    "Description": "When beating the odds is the theme then events are stacked badly against our PCs. Characters from terrible backgrounds may make a success of their lives, they may survive the most dangerous and unlikely situations, usually by a combination of luck and skill. Beating the odds is rarely done without cost, and characters that beat the odds usually find themselves injured and even with new Hitches afterwards.",
+    "Rules": ""
+  },
+  {
+    "Type": "Beauty",
+    "Description": "Beauty is often referenced as a theme, whether we are looking at beauty as art, beauty as fleeting and fading, beauty of the soul versus the only skin deep kind, or beauty being in the eye of the beholder. When Beauty is a major theme there are usually strict aesthetic rules in place, that are often enforced by some social construct or contract.",
+    "Rules": ""
+  },
+  {
+    "Type": "Beliefs",
+    "Description": "Beliefs are a common theme, that can cover a lot of thematic ground. Societies both religious and scientific can promote and persecute almost any particular belief, depending upon the exact cultural context that the setting has, and as a theme we can examine the nature of belief itself, especially common in fantasy genres where the beliefs of the magic-users are commonly important to how their ability to use magic actually works.",
+    "Rules": ""
+  },
+  {
+    "Type": "Betrayal",
+    "Description": "Betrayal, while not a truly common theme, does turn up quite a lot. It is more common in the sense of a romantic betrayal, where someone cheats on their partner with another person. Less commonly, friends and allies may turn on a character, even turning them into the authorities, often out of some sense of fear or abandonment.",
+    "Rules": ""
+  },
+  {
+    "Type": "Bravery",
+    "Description": "Bravery as a theme is about facing your fears and overcoming fear hitches. Of course, to explore bravery as a theme the character must have a fear, or dangerous situation, to face, and if the situation is not so terrible that it causes fear, terror or horror in the character than are they really brave at all? Commonly bravery is about learning to face a particular fear or situation, such as revealing your sexuality when it is not normalised, or going to war.",
+    "Rules": ""
+  },
+  {
+    "Type": "Capitalism ",
+    "Description": "When capitalism is a theme it is usually either presented as a solution to problems, with the free market magically self-governing and balancing, or the theme is actually about how capitalism affects the individual, often in a negative and dehumanising way. ",
+    "Rules": ""
+  },
+  {
+    "Type": "Celebration",
+    "Description": "The theme of celebration is usually tied to some life event that is celebrated by the characters, this may be a one-off event as a wedding, child-birth, promotion, moving house, or a victory of come sort, or some annual celebration such as an anniversary, birthday, or some holiday festival (such as Easter, Christmas, Passover, Diwali, Ramadan, etc. Celebrations as themes are never just the backdrop to the story, they are fundamental to the plot somehow, with the planning and execution of the celebration being important to at least one of the characters.",
+    "Rules": ""
+  },
+  {
+    "Type": "Chance",
+    "Description": "Chance as a theme will emphasise the unlikely, usually in a way that draws comparisons to predictions and prophecy, where should play no part. For this reason, the chance theme is common in situations where the Fæ are involved, acting to counter the forces of Wyrd that can appear similar to pure chance in some ways.",
+    "Rules": ""
+  },
+  {
+    "Type": "Change",
+    "Description": "Change as a theme can vary considerably. Sometimes change is necessary or even inevitable, the old guard must give way to the new, other times change brings conflict with the traditional as the old guard fights to remain relevant in a changing world. Change is always present in some way, but as a theme the change becomes important not for the changes, but for how characters are reacting to the change.",
+    "Rules": ""
+  },
+  {
+    "Type": "Chaos",
+    "Description": "Chaos as a theme is more extreme than change, there may still be an order to the setting, but this order, and the authorities that support it are being forced out, or losing power. Chaos in this context can be a general sense of disorder, or some spiritual or demonic force that is deliberately destabilising the setting.",
+    "Rules": ""
+  },
+  {
+    "Type": "Character",
+    "Description": "When the theme is character, it usually examining the nature of that character. Often the theme will involve breaking down this character with hardships, and then building them up again with successes and achievements that seemed impossible to them before this began. Other times a character may be \"tried\" by another character (or often even themselves).",
+    "Rules": ""
+  },
+  {
+    "Type": "Children",
+    "Description": "The theme of children is usually about the inherent trials that children and childhood create. This is often paired with a theme of parenthood, danger, love or coming of age or growing up.",
+    "Rules": ""
+  },
+  {
+    "Type": "Circle of life",
+    "Description": "The theme of the circle of life concerns the exact cycle of birth, survival and death. The old must die to make room for the young, and only the mature can birth the next generation. When treated thematically the circle may become a wheel, loop, stream or cycle, drawing comparisons with other natural cycles, such as the year, the moon over a month, the tides and day-night cycles.",
+    "Rules": ""
+  },
+  {
+    "Type": "Coming of Age",
+    "Description": "The coming of age theme varies dramatically from society to society, but fundamentally these are stories about children becoming adults. This isn’t always the same as growing up, as the coming of age theme has particular tropes, associated social rituals and quite a lot of cultural baggage, but is fundamentally about the emotional changes, rather than physical changes that accompany growth.",
+    "Rules": ""
+  },
+  {
+    "Type": "Common Sense",
+    "Description": "The theme of common sense is concerned with the practical judgement suitable for everyday matters. Common sense differs greatly from academic knowledge and is more akin to folk wisdom, or reflexive judgement, being a knack of seeing things as they really are, and not necessarily as they are presented, and of intuitively knowing the right thing to do. Common sense is usually presented as correct, although occasionally it is trumped by specialised knowledge, especially practically obtained knowledge.",
+    "Rules": ""
+  },
+  {
+    "Type": "Communication",
+    "Description": "When communication is the theme of a plot it will often involve barriers to communication that must be overcome. Two people meeting who have no common language, or who share a common language but still lack communication, by being deafened, blinded or otherwise senseless.",
+    "Rules": ""
+  },
+  {
+    "Type": "Companionship as salvation",
+    "Description": "This theme demonstrates that sometimes we don’t need a hero to save us, but just someone to be there for us. Even being relied upon for something, and not wanting to disappoint someone can be enough to keep someone going, to save them.",
+    "Rules": ""
+  },
+  {
+    "Type": "Conservation",
+    "Description": "The theme of conservation is usually about protecting something from some one, most commonly some area of natural beauty from some evil conglomerate determined to exploit those resources, but buildings, companies and other things like ancient artefacts can be worthy of preservation and conservation.",
+    "Rules": ""
+  },
+  {
+    "Type": "Conspiracy",
+    "Description": "The theme of conspiracy is one that emphasises secrets, whether these are secret groups, secretly making plans, to\n\tsecretly kill, or obscure government agencies affecting black budget operations at the request of cabals of industrialists.",
+    "Rules": ""
+  },
+  {
+    "Type": "Convention and rebellion",
+    "Description": "The theme of convention and rebellion is usually represented as a standard adolescent rebellion, but it can be a deeper social commentary. Rebels reject convention, and its authorities, but this usually creates a new convention that the previous rebels find themselves an authority in.",
+    "Rules": ""
+  },
+  {
+    "Type": "Courage",
+    "Description": "The theme of courage is about confronting challenges, fears and anxieties, whether this is a specific hitch or a more general fear such as fear of not being murdered to death.",
+    "Rules": ""
+  },
+  {
+    "Type": "Creation",
+    "Description": "The theme of creation usually examines the trials and tribulations that surround the emergence or making of some project or character. Usually, but not always, the theme will draw a comparison between natural and artificial creation.",
+    "Rules": ""
+  },
+  {
+    "Type": "Crime",
+    "Description": "The theme of crime is sometimes an examination of the nature of sin, the slippery slope that engulfs the innocent, or it can be about power imbalances in society and disenfranchisement.",
+    "Rules": ""
+  },
+  {
+    "Type": "Dangers of ignorance",
+    "Description": "The theme of the dangers of ignorance is about how not knowing something can be incredibly dangerous, like not knowing that the pipes your water runs in are lead lined.",
+    "Rules": ""
+  },
+  {
+    "Type": "Darkness and lightness",
+    "Description": "The theme of Darkness and Lightness is reasonably common in both fantasy and crime. Often this theme will represent one side as an evil darkness and the other as a good light, but it can be inverted and more nuanced in rogue stories and crime fiction. The darkness can represent ignorance compared with a lightness of knowledge, wisdom or intellect, or perhaps the darkness represents a knowledge of occult, where the lightness represents a more intuitive, instinctual spirituality.",
+    "Rules": ""
+  },
+  {
+    "Type": "Death",
+    "Description": "The theme of death usually represents death in one of two ways – inevitable, in the case of the aged and sick, or tragedy in the case of the young and healthy. The theme is often married with a theme of loss, friendship or love.",
+    "Rules": ""
+  },
+  {
+    "Type": "Dedication",
+    "Description": "The theme of dedication will often test a character’s dedication to a cause or relationship. This may involve triggering Duty or Devotion Hitches, as well as more general tests of dedication.",
+    "Rules": ""
+  },
+  {
+    "Type": "Democracy",
+    "Description": "The theme of democracy is usually represented by some expression of democracy, often an election. Democracy is usually compared to alternative methods of rule, such as dictatorships, military hierarchies, and monarchies where an individual holds all apparent power, or collectivisms and anarchies where no one holds any power, and is proven superior. Nuanced versions of the theme may compare direct, representative, constitutional or monitory democracies, or examine democracy’s reliance on freedom, justice, legitimacy and its powers.",
+    "Rules": ""
+  },
+  {
+    "Type": "Desire to escape",
+    "Description": "The theme of desire to escape usually relies on someone being imprisoned somehow, often this is an obvious imprisonment within a gaol, tower, dungeon or prison, but occasionally it will involve a more metaphysical imprisonment, where a character may be trapped by circumstance.",
+    "Rules": ""
+  },
+  {
+    "Type": "Despair",
+    "Description": "The theme of despair has largely fallen out of favour along with some of the other tragic themes, although it does make appearances in the likes of soap operas and comic-books.",
+    "Rules": ""
+  },
+  {
+    "Type": "Destruction of beauty",
+    "Description": "The theme of destruction of beauty is quite a rare theme, that has artistic and violent overtones. This can move into territories trodden by abusers, and psychopaths, so a Trigger warning is advised with every group.",
+    "Rules": "Trigger Warning advised."
+  },
+  {
+    "Type": "Disillusionment and dreams",
+    "Description": "The theme of disillusionment and dreams can touch on deep issues of mental health, or just be a part of a coming of age story. Sometimes the dreams are a sign of the Fæ, loaded with prophecy and symbolism, more often they are aspirational ambitions the character naively believes are achievable.",
+    "Rules": ""
+  },
+  {
+    "Type": "Displacement",
+    "Description": "The theme of displacement is common to post-colonial fiction, where a person feels displaced from their own culture usually by the pressures of modernism, or the threats of globalisation, all mixed with a sense of alienation, which in some cases can be an entire culture that has become alienated.",
+    "Rules": ""
+  },
+  {
+    "Type": "Economics",
+    "Description": "Economics is a rare theme, sometimes occurring as its own sub-genre of science-fiction that usually emphasises some aspect of economic theory or may compare or contrast alternate economic theories. ",
+    "Rules": ""
+  },
+  {
+    "Type": "Effects from the past",
+    "Description": "The theme of Effects from the past will often have a lot of cross-over with themes of Haunting or Guilt. These can be dramatic sins of the father style things, unforeseen catastrophe or more minor repercussions.",
+    "Rules": ""
+  },
+  {
+    "Type": "Empowerment",
+    "Description": "The theme of empowerment can be as simple as a kid getting some pay-back on a bully, a woman not accepting the place in life prepared for her by her family and culture, or can be a more complex investigation of personal empowerment, that regards the costs as well as the benefits.",
+    "Rules": ""
+  },
+  {
+    "Type": "Emptiness of attaining false dream",
+    "Description": "The theme of Emptiness of attaining false dreams is a less than obscure literary theme, where the hero having achieved what they thought they wanted discovers it to be either not what they thought, or just not as fulfilling as expected.",
+    "Rules": ""
+  },
+  {
+    "Type": "Everlasting love",
+    "Description": "The theme of Everlasting Love is reserved for some genre-fiction generally, as this is not simply long-lasting love, but love that transcends time somehow, whether the lovers are elven (or half-elven) and long-lived, truly immortals, or whether there is some trick to it such as an spectral Undead creature, time-travel, or a series of reincarnations.",
+    "Rules": ""
+  },
+  {
+    "Type": "Evils by humanity",
+    "Description": "The theme examines the inherent or apparent Evils done by humanity, this theme can be dangerous and extremely triggering for previous victims of similar abuses.",
+    "Rules": "Trigger warnings are advised."
+  },
+  {
+    "Type": "Evils of racism",
+    "Description": "The theme of the Evils of racism is common to late twentieth-century literature, and like Displacement is a common theme in post-colonial and modern settings, but can be dangerous to approach without proper care. This theme should always carry a trigger warning.",
+    "Rules": "Trigger Warnings advised."
+  },
+  {
+    "Type": "Facing darkness",
+    "Description": "The theme of Facing darkness requires a darkness to face, sometimes this is metaphorical or spiritual in nature, such as the darkness of addiction, but this can be a literal facing darkness, especially in the case of a character who is struck blind (even if only temporarily). The unknown in the darkness can also be a crucial part of this theme.",
+    "Rules": ""
+  },
+  {
+    "Type": "Facing reality",
+    "Description": "The theme of Facing reality is usually there is some character who does not normally face reality, they may be day-dreamers, fantasists, and fools who finally get some wake up call, or this could be about accepting a scientific consensus.",
+    "Rules": ""
+  },
+  {
+    "Type": "Fading beauty",
+    "Description": "The theme of fading beauty is part of the whole ages of man extended theme, and has similarities to coming of age themes, parenthood, children and death. The theme specifically examines aspects of ageing that many find uncomfortable, and comparisons may be made to the wilting of a flower.",
+    "Rules": ""
+  },
+  {
+    "Type": "Failure",
+    "Description": "The theme of Failure is part of the tragic-comedy family. No matter how hard the character may try they will always some how fail. How they deal with this failure is usually where the comedy or tragedy lies.",
+    "Rules": ""
+  },
+  {
+    "Type": "Faith versus doubt",
+    "Description": "The theme of faith versus doubt is common to most literary fiction, usually within the confines of the narrative faith is found to be superior to doubt, with few counter-examples the doubter struggles with their situation until they accept the truth of the faithful around them.",
+    "Rules": ""
+  },
+  {
+    "Type": "Family",
+    "Description": "The theme of family is a common one to most forms of fiction, often acting as a grounding force in the narratives of genre fiction, to make the people more relatable despite their post-human setting. Family can be addressed in two main ways by the theme, some families are a blessing, supportive and helpful, other families are a curse, abusive and controlling, most families in truth are a mix of both blessing and curse.",
+    "Rules": ""
+  },
+  {
+    "Type": "Fate and free will",
+    "Description": "The theme of fate and free-will is a philosophical and religious debate that occurs occasionally in genre-fiction, especially fantasy. ",
+    "Rules": "Fate vs Free-will is considered one of the central themes of all T13 and is baked into the system as Liberty vs Wyrd."
+  },
+  {
+    "Type": "Fear of failure",
+    "Description": "The theme of fear of failure, whether represented by an actual Hitch or in some more cursory manner is common to post-modern fiction, where this fear combined with analysis paralysis can result in self-fulfilling prophesies and their ilk.",
+    "Rules": ""
+  },
+  {
+    "Type": "Fear",
+    "Description": "The theme of Fear is so strongly represented in all fiction that there is an entire genre dedicated to this single emotion (or at least the forms of it known as Horror), but fear occurs beyond the bounds of Horror alone, and all good characters will have some sense of fear.",
+    "Rules": "Fear itself is the Hitch of Awe, as such Awe can stand for Fear and vice versa in any setting."
+  },
+  {
+    "Type": "Female roles",
+    "Description": "The theme of female roles can be a contentious theme, but generally examines the common social, political, industrial and commercial roles that females are expected to take in the setting, sometimes this will examine roles that female characters are not expected to take, and there is a lot of gender studies, feminism and historical examples and exceptions that can make this theme difficult to handle.",
+    "Rules": "Trigger warnings are advised."
+  },
+  {
+    "Type": "Feminism",
+    "Description": "The theme of feminism is simply that everyone deserves equality of treatment and opportunity regardless of sex or gender. However, of course, within this simple premise a host of complexities can arise depending upon the exact nature of the social system that is \"disrupted\" by the introduction of equal treatment.",
+    "Rules": "Trigger Warnings are advised."
+  },
+  {
+    "Type": "Forbidden Love",
+    "Description": "The theme of Forbidden Love can mean a lot of different things. Love can be forbidden for a lot of different reasons and they are certainly not all equal.",
+    "Rules": "Trigger Warning required."
+  },
+  {
+    "Type": "Freedom",
+    "Description": "The theme of Freedom (or Liberty) is fairly self-explanatory, posing philosophical questions about what being truly free really means. Freedoms can often only be defined against a backdrop of a lack of freedoms, whether these freedoms are taken by laws, circumstances, or some divinity.",
+    "Rules": "Trigger warnings are suggested whenever freedoms are curtailed by a plot or theme."
+  },
+  {
+    "Type": "Friendship",
+    "Description": "The theme of friendship means different things to different people, but is one of the standard themes through out all literature. Even a lack of friendship can be a part of this theme, as it says something intrinsic to not just the character, but the whole human condition.",
+    "Rules": ""
+  },
+  {
+    "Type": "Fulfilment",
+    "Description": "The theme of fulfilment is commonly used in negative, with a lack of fulfilment driving a character’s arc, but older characters can utilise this theme directly, with their contentment holding them back from fulfilling their own destiny.",
+    "Rules": ""
+  },
+  {
+    "Type": "Future",
+    "Description": "The theme of the future is very common in literature, especially common in sci-fi and genre-fiction generally. The future as a theme asks questions about where each character is headed, what will their arc be if they continue on this trajectory, although deeper philosophical questions about the nature of time and cause and effect can also be handled with this theme.",
+    "Rules": ""
+  },
+  {
+    "Type": "God",
+    "Description": "The theme of God, which is usually strictly a Judeo-Christian interpretation of the godhead, rather than a more philosophical, or even theological examination of the nature of deities. Within the confines of the theme, the character and nature of God is rarely examined, but rather stands for some exemplar being that other characters are compared to. Characters within the theme may find themselves becoming allegorical representations for this God, but usually the theme will have no true arc or resolution, as omniscient, omnipotent, omni-benevolent beings and their theological paradoxes generally make for terrible story-lines.",
+    "Rules": "Trigger warnings are always advised for religious topics."
+  },
+  {
+    "Type": "Gods and Godheads",
+    "Description": "The theme of gods and godheads is an examination of the nature and character of the pagan divine, the religions that pre-date the ordered monotheism of the Judeo-Christian religions. This theme can use all the techniques of the God theme, but usually has a less allegorical nature, as the pantheistic beliefs invoked and evoked allow for direct competition and assistance from other gods within a pantheon. This often allows for more humanistic tales to be told with these supernatural beings, without the world-breaking theological paradoxes.",
+    "Rules": "Trigger warnings are always advised for religious topics."
+  },
+  {
+    "Type": "Good vs Evil",
+    "Description": "The theme of Good vs Evil is considered a central conflict in the T13 Omniverse, although usually represented as Sin vs Virtue in the system. Traditionally Good will always defeat Evil, but Good vs Evil stories usually have the Evil oppressing the Good somehow during the first (and often the second) act, so this Evil must have a history of victories. Sometimes to side-step this issue of Evil victories, Good victorious characters, such as kings, will be corrupted by Evil to create these situations, the victory of the corrupting Evil here is often ignored.",
+    "Rules": ""
+  },
+  {
+    "Type": "Government",
+    "Description": "The theme of government is common to literature, powering the political and war stories, even if the theme is not directly expressed in the fiction. Someone needs to lead, someone has to have a plan, left to their own devices people are chaotic engines of destruction and creation, and this theme deals with what forms government are used and how they work within the confines of the story. Normally the government represented in the theme will be the form historically accurate to the setting, although occasionally alternative forms of government may be explored as part of the theme, it is usually an examination of an existing style or form (most commonly authoritarian regimes, democracies or monarchies). The theme can contrast styles of governance, especially where such comparison falls within the traditional styles of balancing politics, big vs small government, short-term vs long-term planning, or national security vs personal liberty. ",
+    "Rules": ""
+  },
+  {
+    "Type": "Greed as downfall",
+    "Description": "The theme of greed as downfall is reasonably common, but in some ways is a more focused version of a general Greed theme. Within the theme any character who displays Greed may succumb to it, not just as Greed is as tempting as any Sin, but rather the nature of Greed itself. Greed encourages a character to seek power, wealth, or status and this inevitably corrupts them.",
+    "Rules": ""
+  },
+  {
+    "Type": "Greed",
+    "Description": "The theme of greed (and avarice or gluttony) is often part of a larger economic theme, but focuses more on the acquisitional nature of greed. That is how greed makes one desire material things, and the lengths it will make people go through to acquire more than they need. In this theme there can be consequences (a fall) for this greed, but this is not so cut and dried as the greed as downfall theme.",
+    "Rules": ""
+  },
+  {
+    "Type": "Growing up",
+    "Description": "The theme of growing up, similar to all the age based themes, is a broad and general theme common to most fiction. The specifics of this theme are usually the development from child to adult, the changes this brings on, and whether this change is a pleasure or a pain in general for the ageing character. ",
+    "Rules": ""
+  },
+  {
+    "Type": "Happiness",
+    "Description": "The theme of happiness is usually questioning what a character finds pleases them, although it can be a more philosophical inquest into the nature of happiness itself. Often in the theme a number of scenarios of potential happiness will be represented, family, friendship or success (occupational, vocational, financial, artistic, etc), with these being compared by a character to define their own personal definition of happiness, which may include features such as challenges, comforts, or love as appropriate to the story, setting and the other themes.",
+    "Rules": ""
+  },
+  {
+    "Type": "Hate",
+    "Description": "The theme of hate is a powerful and very common one, appearing across all genres and settings. Hate is often seen as the opposite of love, but this is a simplistic understanding of what is a complex, but largely negative emotion, although it is not as though love can not have its own moral complications. Hate is just as powerful a motivator for a character as love, and hatred can make heroes and villains of us all, whether driven by one’s own hatred (for a simple, but positive example perhaps hating injustice), or whether they are responding to hate from another character.",
+    "Rules": ""
+  },
+  {
+    "Type": "Hazards of passing judgement",
+    "Description": "The theme of the hazards of passing judgement is a reasonably common, with one or more characters having to pass judgement on others, and receiving negative effects from passing poorly made judgements. This can be tricky to arrange as a theme in a game, without at least one Judge character.",
+    "Rules": "Usually this theme will involve numerous characters who may require judgement, and a character who will act as a judge, who it is suggested is a Wyrd Judge Persona. There will also be numerous social, economic or similar punishments or hazards for judging each character poorly."
+  },
+  {
+    "Type": "Heartbreak",
+    "Description": "The theme of Heartbreak is commonly paired with the theme of love, and is surprisingly genre neutral with it. Heartbreaks can be as simple as breaking up with a girlfriend or boyfriend, or as tragic as a love triangle with a murder-suicide.",
+    "Rules": "Trigger warning is advised."
+  },
+  {
+    "Type": "Heritage",
+    "Description": "The theme of heritage is fairly genre neutral, although fantasy and romance may favour it slightly. Heritage is often a complicated issue that can intersect with themes of privilege, family and others.",
+    "Rules": "Trigger warning may be advised"
+  },
+  {
+    "Type": "Heroism",
+    "Description": "The theme of heroism can be quite complex, but in fantasy and sci-fi genres the theme can be simple. Grim-dark and Horror are somewhat incompatible with the heroism theme, although more complex notions of heroism, both real and perceived can still find a place there.",
+    "Rules": ""
+  },
+  {
+    "Type": "Hierarchy in nature",
+    "Description": "The theme of hierarchy in nature implies a sense of order in the natural world, which may not necessarily be true, although in general complex food webs it may be difficult to identify the true apex predator. This is a good theme to blend with Bulmäs characters as they can naturally express this hierarchy themselves.",
+    "Rules": ""
+  },
+  {
+    "Type": "Hope",
+    "Description": "The theme of hope can appear in any genre, although it is much less likely in Grim-dark and Punk genres, it can appear as a patch of light in the well of despair. Hope relies on a situation being difficult, without becoming hopeless.",
+    "Rules": ""
+  },
+  {
+    "Type": "Human Nature",
+    "Description": "The theme of Human Nature is as complex or as simple a theme as the subject matter, depending upon your point of view.",
+    "Rules": ""
+  },
+  {
+    "Type": "Humour",
+    "Description": "The theme of humour is strongly connected to the Jeer Facet, and can be a philosophical or practical theme, depending upon the genre.",
+    "Rules": ""
+  },
+  {
+    "Type": "Identity crisis",
+    "Description": "The theme of identity crisis is quite common with younger characters. Identity crisis can come in many forms, from uncertainty and confusion about their role in society to complete mental collapse, and anything in between.",
+    "Rules": ""
+  },
+  {
+    "Type": "Identity",
+    "Description": "The theme of identity is common in all literature. All characters have an identity after all, but when a character asks themselves \"who am I?\" or \"who do I want to be?\" then we are in an identity theme.",
+    "Rules": ""
+  },
+  {
+    "Type": "Ideology",
+    "Description": "The theme of ideology will usually offer up at least one ideology for consideration, and often will have more than one competing ideology. Most often this will be a political ideology, but philosophical and religions can also be examined.",
+    "Rules": "Trigger warnings may be advised."
+  },
+  {
+    "Type": "Ignorance",
+    "Description": "The theme of ignorance is exceptionally common, especially as naivety, or ignorance of a specific piece of information, although general ignorance is reasonably common too.",
+    "Rules": ""
+  },
+  {
+    "Type": "Illusion of power",
+    "Description": "The theme of the illusion of power is common in political genres, but it can occur in other contexts. Some one who believes they have power finds out they do not.",
+    "Rules": ""
+  },
+  {
+    "Type": "Immortality",
+    "Description": "Immortality as a theme is fairly uncommon, except when dealing with greek mythology or similar high fantasy. As a theme immortality is usually considered as either a gift or a curse, sure you never get old and die, but on the other hand everyone else does.",
+    "Rules": ""
+  },
+  {
+    "Type": "Individual versus society",
+    "Description": "The theme of individual versus society has seen repeated use in many genres. Sometimes an individual will rebel against their society, this can lead to turncoats, traitors and all sorts of trouble.",
+    "Rules": ""
+  },
+  {
+    "Type": "Individuality",
+    "Description": "The theme of individuality is quite a common one amongst speculative fiction genres, where what it means to be an individual is examined by the theme.",
+    "Rules": ""
+  },
+  {
+    "Type": "Injustice",
+    "Description": "The theme of injustice is shockingly common in crime dramas, and requires some act of injustice that occurs and may have justice opposed to it.",
+    "Rules": ""
+  },
+  {
+    "Type": "Inner peace",
+    "Description": "The theme of Inner peace is quite rare, focusing on the deliberate state of psychological or spritual calm, despite the rising Stakes, Suspense Level and Stress. It is the test of the spiritual warrior, and the pacificist, when confronted with difficulties that are generally the result of pretence and poor self-knowledge.",
+    "Rules": ""
+  },
+  {
+    "Type": "Inner versus outer strength",
+    "Description": "This theme is remarkably common, although it often wears different coats and pretends to be Brains vs Brawn, Determination vs Adversity, Heart vs Skill, or Willpower vs Muscle, but these are just shadows of Inner Strength versus Outer Strength. Inner Strength can be an expression of will, emotion, logic, or wisdom, among other things. Outer Strength can be any expression of physical or material power, from lifting a heavy weight, to raising an army.",
+    "Rules": ""
+  },
+  {
+    "Type": "Innocence",
+    "Description": "Innocence is a very rare theme, as the theme is usually loss of innocence, it is exceptionally rare for the theme to focus on a Character’s preserved or continued innocence and it have any meaning. The theme questions what the value of innocence is, asking is it worth protecting, and why.",
+    "Rules": ""
+  },
+  {
+    "Type": "Isolation",
+    "Description": "Isolation is one of the fundamental literature themes, recurring again and again in various guises. Isolation and loneliness can act as a powerful catalyst on a Character turning their view inwards, isolation usually requires a Character self-examine and change some aspect of their nature, personality or existence in order to break this isolation. The theme can impose physical isolation, but more important is the emotional isolation that the Character(s) endure.",
+    "Rules": ""
+  },
+  {
+    "Type": "Isolationism",
+    "Description": "The theme of Isolationism is related to isolation, but focuses more on withdrawl of contact. Characters, and often larger groups can feel threatened by certain circumstances, and an effort to reduce or remove these incidents can lead them to being self-isolating as a defence mechanism, this isolationism is usually presented as a choice that has inherent costs and hazards, but it is not always seen as a terrible solution.",
+    "Rules": ""
+  },
+  {
+    "Type": "Jealousy",
+    "Description": "The theme of jealousy is common to all literature and is as old as stories. Jealousy brews bitter rivalries, resentments and acts of vengence that poison Characters against each other. Jealousy is almost always destructive and tragic to those Charaters that are cursed with it.",
+    "Rules": ""
+  },
+  {
+    "Type": "Justice",
+    "Description": "The theme of justice is common enough in literature, with the vice-ridden bad guy is punished and the downtrodden but virtuous hero or heroine gets their uplifting reward, that we even have a term for such events in real life, Poetic Justice. This theme of justice can extend to include a sense of Karma, but rarely revenge.",
+    "Rules": ""
+  },
+  {
+    "Type": "Kindness",
+    "Description": "The theme of kindness is common in some literature, particular children’s genre variants. Kind, generous, friendly, considerate characters are required by the theme.",
+    "Rules": ""
+  },
+  {
+    "Type": "Knowledge versus ignorance",
+    "Description": "The theme of knowledge versus ignorance is incredibly common, appearing in almost every genre. Knowledge is power, but ignorance is bliss. Add in Dunning-Kruger and you have a recipe for a real story.",
+    "Rules": ""
+  },
+  {
+    "Type": "LGBTQIA+ rights/issue",
+    "Description": "The theme of none Heterosexual sexualities, their rights and their issues, is often religious (or social) persecution over who you fell in love with, but the issues faced are at their simplest just as complex as those of heterosexual relationships with additional pressures caused by biases, prejudices and social conventions that have nothing to do with love. ",
+    "Rules": ""
+  },
+  {
+    "Type": "Law",
+    "Description": "The theme of law is usually based in a legal system of justice, often based on a judiciary, but priests or politicians may also create and present the law. Often contained within the theme is some question  as to the nature of the law and whether particular laws are just or unjust and what exactly that means for a society.",
+    "Rules": ""
+  },
+  {
+    "Type": "Leadership",
+    "Description": "Leadership does not present a single theme but more of a comprehensive collection of differing but related themes, depending upon what sort of leadership style or politics are represented. Leadership always fails if no one tries to follow.",
+    "Rules": ""
+  },
+  {
+    "Type": "Liberty",
+    "Description": "Liberty as a theme is quite common, people have always valued freedom, although historically what freedom actually entailed varied dramatically from place to place and time to time. Only in the modern liberal western civilisation have liberties been successfully enshrined in law and defended, although as many liberties are taken away as defended in some people’s opinions, they are usually liberties that impinge on others liberties.",
+    "Rules": ""
+  },
+  {
+    "Type": "Life",
+    "Description": "The theme of life can be seen as the nature of nature, or as stages of life, cycles of life or in any number of other related ways. Life is often contrasted with death, but death is itself essential to the cycle life that we see on Earth. Immortality is in many ways, more of a foil to life than death itself.",
+    "Rules": ""
+  },
+  {
+    "Type": "Logic",
+    "Description": "The theme of logic is one that is seldom explored properly, few authors down the years have truly explored the theme as fully as Lewis Carroll with his Alice books. While Characters may demonostrate simple logic, and a plot must display logical consistency regardless of theme, when we are dealling with the theme of logic it is best viewed via instances of specious logic, misapplied logic, or even illogic for comedy effect.",
+    "Rules": ""
+  },
+  {
+    "Type": "Losing hope",
+    "Description": "The theme if losing hope usually relies on the idea that a situation can become hopeless. Of course, many situations in real life are actually hopeless, but usually hope manages to burn on, sometimes through ignorance of the facts, sometimes despite a clear knowledge that the situation should be viewed as hopeless. This theme looks at how extreme (or not) the situation must become in order to eradicate hope in those characters that are involved. This loss of hope can often occur in a romantic setting as a Character finally realises that what they want will never be.",
+    "Rules": ""
+  },
+  {
+    "Type": "Loss of innocence",
+    "Description": "The theme of loss of innocence is often presented as a coming of age ritual, that at some point those who are innocent must lose this guiltless stance, and accept the world realistically. Loss of innoncence can be sad, dark and disturbing for some characters, but it can also be a sign of maturity and emotional resilience, and all of that is without even looking at the potential sexual nature of this theme.",
+    "Rules": ""
+  },
+  {
+    "Type": "Lost honour",
+    "Description": "The theme of lost honour is ancient and can be difficult for some western modern people to process, as the ancient concepts of honour and what that means for an individual are always based in a cultural and social context that can be rendered meaningless by distance or years.",
+    "Rules": ""
+  },
+  {
+    "Type": "Lost love",
+    "Description": "The theme of lost love is one found in romance genres, and romantic fiction. The theme reflects on the nature of love and loss, is it better to have known love and have it torn from your heart, or to have never known such pleasures and pains? The lost love theme can show itself with hints of jealousy and emotional damage and scars that can twist the tale nicely.",
+    "Rules": ""
+  },
+  {
+    "Type": "Love and sacrifice",
+    "Description": "The theme of love and sacrifice is actually surprisingly uncommon. While we oftenthink of love and sacrifice in stories, with Characters giving everything up for their love, this is actually surprisingly rare even in romance genres. This theme of love and sacrifice is much more common in a story about parental love than romantic love, where parents will lay their lives down to protect not only their own children and family, but often any children and even strangers.",
+    "Rules": ""
+  },
+  {
+    "Type": "Love",
+    "Description": "Love is the most common theme across all forms of literature (which is admittedly  heavily slanted towards the romance genre). Every great Epic contains at least one Love story, and you can usually point at a whole sheaf of side plots that examine the theme in any novel series. Love stories aren’t just about romances though, partnerships and relationships of all kinds can be examined by the Love Theme, from friendships, parents, siblings, extended family, even business relationships and attitudes to technologies and places can be scrutinized beneath its lens.",
+    "Rules": ""
+  },
+  {
+    "Type": "Loyalty",
+    "Description": "The theme of loyalty is ancient, appearing in the loyal deeds of demi-gods and warriors thoughout time. Loyalty is the measure of many people, they must remain faithful to their companions, allies, commitments and obligations of duty and devotion. Loyalty itself can become folded into more complex themes such as medieval chivalry, where it takes on a completely different nature to not cheating on your partner.",
+    "Rules": ""
+  },
+  {
+    "Type": "Man against nature",
+    "Description": "The theme of man against nature is as old as time, these were the first stories that people told themselves, one person surviving alone or a culture taming the wilds.",
+    "Rules": ""
+  },
+  {
+    "Type": "Man vs machine",
+    "Description": "The theme of man versus machine is relatively recent, but can be a direct confrontation between a person and a robot assassin, but it doesn’t have to be, as this theme can be as basic as a worker being made redundant by a new labour saving device.",
+    "Rules": ""
+  },
+  {
+    "Type": "Man vs man",
+    "Description": "One of the most common, basic and ancient themes, man versus man is not always about two male people fighting, but it is fundamentally about an antagonist and protagonist at odds. They can both be of either geneder and this theme is often considered so basic that it is barely worth considering a theme at all. Instead, think of it as a shorthand for a Character driven conflict.",
+    "Rules": ""
+  },
+  {
+    "Type": "Man vs self",
+    "Description": "The theme of man versus self is a theme of self-inspection and self-examination that points to some internal conflict within the Character. This theme is again often considered a basic shorthand for any internalised conflict, of which there are many examples.",
+    "Rules": ""
+  },
+  {
+    "Type": "Manipulation",
+    "Description": "The theme of manipulation, whether brutal, overt, subtle or magical in nature is common through out literature. Evil Characters are often styled as manipulators, able to create thoughts in others that may border upon unnatural territories from time to time. ",
+    "Rules": ""
+  },
+  {
+    "Type": "Mankind",
+    "Description": "The theme of mankind is rarely confronted, often hidden as some less basic treatise upon the nature of experience or of human being. The theme though examines humanity through a lens of spiritual insight, poetic truth, or scientific accuracy as required, are we falling angels or flying apes? Of course, this theme is often prone to simplifying the nature of mankind, even going so far as to reduce our numbers to a single representative.",
+    "Rules": ""
+  },
+  {
+    "Type": "Materialism as downfall",
+    "Description": "The theme of materialism as downfall is rare in western fiction, although examples can be found, here and there. Materialism itself has profound impacts on a Character, as they gather and prize more material goods, they warp their own judgement, often becoming shallower and more obsessive, so they lose and discard less material treasures, such as relationships with people who they now value less for purely materialistic reasons. Materialism can also lead to addictions, dependence and alcohholism, as materialistic excesses replace all other pleasures. When this theme is employed there is usually no saving the Character, they are doomed to a tragic end, often by their own dreams.",
+    "Rules": ""
+  },
+  {
+    "Type": "Maturity",
+    "Description": "The theme of maturity is usually tied to coming of age tales, as a Character ages they will go through many stages, but maturity is usually when they are at the peak of their career, although both peak creativity and peak physicality are usually long gone by this time.",
+    "Rules": ""
+  },
+  {
+    "Type": "Medicine",
+    "Description": "The theme of medicine is almost as old as civilization, medicines are gifts from the gods, or nature, and doctors are next to priests in societies rankings, which can be a good, or bad thing, depending upon your feelings about religion. Medicine can be boon to mankind, but it is not without its faults and problems, and a good medicinal theme will cover all of that and often make an interesting investigation, into what the disease, or cause, is.",
+    "Rules": "It is never Lupus."
+  },
+  {
+    "Type": "Mercy",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Morality",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Motherhood",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Names",
+    "Description": " – power and significance",
+    "Rules": ""
+  },
+  {
+    "Type": "Nationalism ",
+    "Description": "– complications",
+    "Rules": ""
+  },
+  {
+    "Type": "Nature as beauty",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Nature",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Necessity",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Neglect",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Normality",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Opportunity",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Oppression of women",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Optimism",
+    "Description": " – power or folly",
+    "Rules": ""
+  },
+  {
+    "Type": "Overcoming",
+    "Description": " – fear, weakness, vice",
+    "Rules": ""
+  },
+  {
+    "Type": "Passion",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Patience",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Patriotism ",
+    "Description": "– positive side or complications",
+    "Rules": ""
+  },
+  {
+    "Type": "Peace",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Peer pressure",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Perfection",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Perseverance",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Power and corruption",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Power of silence",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Power of tradition",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Power of wealth",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Power of words",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Prejudice",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Pride",
+    "Description": "and downfall",
+    "Rules": ""
+  },
+  {
+    "Type": "Progress",
+    "Description": " – real or illusion",
+    "Rules": ""
+  },
+  {
+    "Type": "Purpose",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Quest for discovery",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Quest for power",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Quests",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Racial Identity",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Reality",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Rebirth",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Redemption",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Regret",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Religion",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Resistance",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Reunion",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Revenge",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Revolution",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Role of Religion",
+    "Description": " – virtue or hypocrisy",
+    "Rules": ""
+  },
+  {
+    "Type": "Role of men",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Role of women",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Sanity",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Science",
+    "Description": " scientific principles or methodology",
+    "Rules": ""
+  },
+  {
+    "Type": "Secrecy",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Segregation",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Self",
+    "Description": " – inner and outer",
+    "Rules": ""
+  },
+  {
+    "Type": "Self-awareness",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Self-discipline",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Self-preservation",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Self-reliance",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Simplicity",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Social Construct",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Social mobility",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Society",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Solitude",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Soul",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Suicide",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Survival",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Technology",
+    "Description": " in society – good or bad",
+    "Rules": ""
+  },
+  {
+    "Type": "Temporary nature of physical beauty",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Temptation and destruction",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Temptation",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Time",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Tolerance",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Totalitarianism",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Travel",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Trust",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Truth",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Universe",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Unrequited Love",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Unselfishness",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Valour",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Vanity as downfall",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Vices",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Violence",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Virtue",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Vulnerability of the meek",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Vulnerability of the strong",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "War",
+    "Description": " – glory, necessity, pain, tragedy",
+    "Rules": ""
+  },
+  {
+    "Type": "War",
+    "Description": "War is sadly one of the more common themes across history. Wars are extreme conflicts that often have little to do with Narrative Conflicts, but instead operate as a backdrop against which the Narrative may take place. Wars place individuals in conflict automatically, which can be a part of a Narrative, or simply be a fact about the world in that Era.",
+    "Rules": ""
+  },
+  {
+    "Type": "Waste",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Wealth",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Will to survive",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Willpower",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Winning and losing",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Wisdom of experience",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Wisdom",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Working class struggles",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Xenophobia",
+    "Description": "",
+    "Rules": ""
+  },
+  {
+    "Type": "Youth",
+    "Description": "",
+    "Rules": ""
+  }
+]

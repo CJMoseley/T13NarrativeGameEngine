@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 10,
+    "Name": "Stepping",
+    "Entity": "&#19913;",
+    "Logical": 59,
+    "Trigrams": [
+      1,
+      0
+    ],
+    "Hexagram_Text": "Lu, Stepping (or Treading or Careful Conduct), is symbolic of the Cautious advance. Tread carefully is the warning, but do not stand still. You walk with a tiger, do not tread upon the tail.",
+    "Unchanging": "Whenever you wait rather than acting, or are in GRT and it is your turn, you may Draw cards using your Personality Annex (and discard excess if you reach Pool Limit).",
+    "Line1": "Go Your Own Way",
+    "Line2": "The Easy Path",
+    "Line3": "Biting Tiger",
+    "Line4": "Stepping around the Tail",
+    "Line5": "Determined Stride",
+    "Line6": "Looking Back"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you show respect, act with caution or are respected",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you realise you are in danger",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "you avoid others, go around, or head off on your own",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yin",
+        "Condition": "you ignore, avoid or bypass a Plot, Conflict, Ordeal, Quest, Obstacle, or Test",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yang",
+        "Condition": "you are attacked, wounded or damage a Descendant",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yin",
+        "Condition": "you are cautious, or act nervous or afraid",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yin",
+        "Condition": "you act (or are) determined",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yin",
+        "Condition": "you achieve something (a victory, a goal, a Stage, etc.), or you look behind you, or think about the past",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Stepping Quest is a delicate balance between two dangerous situations or forces, where the Quester must choose and tread cautiously. The Quester is usually weaker than at least one of the forces involved (and occasionally is weaker than both), which can increase the danger to the Quester. The Quester can only influence the more powerful force by positive emotions, humour and tact, they will not respond well to negative emotions or force.",
+    "Quest_Complete": "The Quest that ends on the Stepping Hexagram indicates Someone who was beneath the Quester in status or power during the Quest, is actually far above them in authority or status (the old man who accompanied them, and they all though was a janitor, was actually the CEO all along). Depending upon how this character were treated, the Quester and the opposition will be judged.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester is offered a choice, one choice might be material comforts, another may forgo material concerns but place them closer to their goal, neither choice is correct and will add an Obstacle, Hurdle or Failure Level to their Ordeal or Test. Only by avoiding this false choice and coming up with their own way can the Quester add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester will find themselves surrounded by others who are in various forms of trouble, some of them may even ask for help, others will not, but their trouble will be apparent. If the Quester avoids being distracted, and manages to focus on their own goals and requirements then they will add a Success Level, but anything other than ignoring these people and their distractions will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test as they are drawn into these people&#39;s troubles.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The Quester is in great danger, they may be over-estimating their own strength, underestimating their opposition, overlooking a hazard or danger, or simply be careless.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester sees signs of danger that perhaps others do not, whether by chance, superior perception or paranoia, this perceived danger adds a Failure Level, Obstacle or Hurdle to the Quester&#39;s Test or Ordeal. However, this danger is magnified by the Quester&#39;s own caution, if the Quester presses on regardless, with confidence, then they will add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "There is danger ahead for the Quester, but as long as they remain aware of it (and act accordingly) it does not impact them, however each time the Quester is incautious, or indecisive, they add a Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "Now that the Quest is completed the companions, authorities and everyone else present, will judge the Quester based upon their actions and the end results, this ignores the Quester&#39;s motives and intent, no matter how noble. If the Quester&#39;s own motives or intent did not match the result they got this will add a Failure Level, Obstacle or Hurdle to their remaining Test or Ordeal, as they feel tormented by their feelings for the praise or blame they get that they feel they do not deserve.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "The name of the hexagram means on the one hand the right way of conducting oneself. Heaven, the father, is above, and the lake, the youngest daughter, is below. This shows the difference between high and low, upon which composure correct social conduct, depends. On the other hand the word for the name of the hexagram, TREADING, means literally treading upon something. The small and cheerful [Tui] treads upon the large and strong [Ch'ien]. The direction of movement of the two primary trigrams is upward. The fact that the strong treads on the weak is not mentioned in the Book of Changes, because it is taken for granted. For the weak to take a stand against the strong is not dangerous here, because it happened in good humor [Tui] and without presumption, so that the strong man is not irritated but takes it all in good part.",
+    "The_Image": {
+      "text": "Heaven above, the lake below:\nThe image of TREADING.\n\nThus the superior man discriminates between high and low,\nAnd thereby fortifies the thinking of the people.",
+      "comments": "Heaven and the lake show a difference of elevation that inheres in the natures of the two, hence no envy arises. Among mankind also there are necessarily differences of elevation; it is impossible to bring about universal equality. But it is important that differences in social rank should not be arbitrary and unjust, for if this occurs, envy and class struggle are the inevitable consequences. If, on the other hand, external differences in rank correspond with differences in inner worth, and if inner worth forms the criterion of external rank, people acquiesce and order reigns in society."
+    },
+    "The_Judgment": {
+      "text": "TREADING. Treading upon the tail of the tiger.\nIt does not bite the man. Success.",
+      "comments": "The situation is really difficult. That which is strongest and that which is weakest are close together. The weak follows behind the strong and worries it. The strong, however, acquiesces and does not hurt the weak, because the contact is in goof humor and harmless. In terms of a human situation, one is handling wild, intractable people. In such a case one's purpose will be achieved if one behaves with decorum. Pleasant manners succeed even with irritable people."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Simple conduct. Progress without blame.",
+        "comments": "The situation is one in which we are still not bound by any obligations of social intercourse. If our conduct is simple, we remain free of them We can quietly follow our predilections as long as we are content and make not demands on people. The meaning of the hexagram is not standstill but progress. A man finds himself in an altogether inferior position at the start. However, he has the inner strength that guarantees progress. If he can be content with simplicity, he can make progress without blame. When a man is dissatisfied with modest circumstances, he is restless and ambitious and tries to advance, not for the sake of accomplishing anything worth while, but merely in order to escape from lowliness and poverty by dint of his conduct. Once his purpose is achieved, he is certain to become arrogant and luxury-loving. Therefore blame attaches to his progress. On the other hand, a man who is good at his work is content to behave simply. He wishes to make progress in order to accomplish something. When he attains his goal, he does something worth while, an all is well."
+      },
+      "2": {
+        "text": "Treading a smooth, level course.\nThe perseverance of a dark man\nBrings good fortune.",
+        "comments": "The situation of a lonely sage is indicated here. He remains withdrawn from the bustle of life, seeks nothing, asks nothing of anyone, and travels through life unassailed, on a level road. Since he is content and does not challenge fate, he remains free of entanglements."
+      },
+      "3": {
+        "text": "A one-eyed man is able to see,\nA lame man is able to tread.\nHe treads on the tail of the tiger.",
+        "comments": "The tiger bites the man.\nMisfortune.\n\nThus does a warrior act on behalf of his great prince.\n\nA one-eyed man can indeed see, but not enough for clear vision. A lame man can indeed treat, but not enough to make progress. If in spite of such defects a man considers himself strong and consequently exposes himself to danger, he is inviting disaster, for he is undertaking something beyond his strength. This reckless way of plunging ahead, regardless of the adequacy of one's powers, can be justified only in the case of a warrior battling for his prince."
+      },
+      "4": {
+        "text": "He treads on the tail of the tiger.\nCaution and circumspection\nLead ultimately to good fortune.",
+        "comments": "This text refers to a dangerous enterprise. The inner power to carry it through is there, but this inner power is combined with hesitating caution in one's external attitude. This line contrasts with the preceding line, which is weak within but outwardly presses forward. Here one is sure of ultimate success, which consists in achieving one's purpose, that is, in overcoming danger by going forward."
+      },
+      "5": {
+        "text": "Resolute conduct.\nPerseverance with awareness of danger.",
+        "comments": "This refers to the ruler of the hexagram as a whole. One sees that one has to be resolute in conduct. But at the same time one must remain conscious of the danger connected with such resoluteness, especially if it is to be persevered in. Only awareness of the danger makes success possible."
+      },
+      "6": {
+        "text": "Look to your conduct and weigh the favorable signs.\nWhen everything is fulfilled, supreme good fortune comes.",
+        "comments": "The work is ended. If we want to know whether good fortune will follow, we must look back upon our conduct and its consequences. If the effects are good, then good fortune is certain. No one knows himself. It is only by the consequences of his actions, by the fruit of his labors, that a man can judge what he is to expect."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Stepping'. Internalize this core philosophy: The name of the hexagram means on the one hand the right way of conducting oneself. Heaven, the father, is above, and the lake, the youngest daughter, is below. This shows the difference between high and low, upon which composure correct social conduct, depends. On the other hand the word for the name of the hexagram, TREADING, means literally treading upon something. The small and cheerful [Tui] treads upon the large and strong [Ch'ien]. The direction of movement of the two primary trigrams is... Your current worldview is: \"Lu, Stepping (or Treading or Careful Conduct), is symbolic of the Cautious advance. Tread carefully is the warning, but do not stand still. You walk with a tiger, do not tread upon the tail.\". Let your choices be subtly driven by these conditions: you show respect, act with caution or are respected, you realise you are in danger. When interacting, mirror the wisdom found in the commentary: \"The situation is really difficult. That which is strongest and that which is weakest are close together. The weak follows behind the strong and worries it. The strong, however, acquiesces and does not hurt the weak, because the contact is in goof humor and harmless. In terms of a human situation,...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Stepping'. The primary quest objective is: The Stepping Quest is a delicate balance between two dangerous situations or forces, where the Quester must choose and tread cautiously. The Quester is usually weaker than at least one of the forces involved (and occasionally is weaker than both), which can increase the danger to the Quester. The Quester can only influence the more powerful force by positive emotions, humour and tact, they will not respond well to negative emotions or force.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: Heaven and the lake show a difference of elevation that inheres in the natures of the two, hence no envy arises. Among mankind also there are necessarily differences of elevation; it is impossible to bring about universal equality. But it is important that differences in social rank should not be arbitrary and unjust, for if this occurs, envy and class struggle are the inevitable consequences.... Use the following line-specific challenges to pace the story: The Quester is offered a choice, one choice might be material comforts, another may forgo material concerns but place them closer to their goal, neither choice is correct and will add an Obstacle, Hurdle or Failure Level to their Ordeal or Test. Only by avoiding this false choice and coming up with their own way can the Quester add a Success Level instead. | The Quester will find themselves surrounded by others who are in various forms of trouble, some of them may even ask for help, others will not, but their trouble will be apparent. If the Quester avoids being distracted, and manages to focus on their own goals and requirements then they will add a Success Level, but anything other than ignoring these people and their distractions will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test as they are drawn into these people&#39;s troubles. | The Quester is in great danger, they may be over-estimating their own strength, underestimating their opposition, overlooking a hazard or danger, or simply be careless. | The Quester sees signs of danger that perhaps others do not, whether by chance, superior perception or paranoia, this perceived danger adds a Failure Level, Obstacle or Hurdle to the Quester&#39;s Test or Ordeal. However, this danger is magnified by the Quester&#39;s own caution, if the Quester presses on regardless, with confidence, then they will add a Success Level instead. | There is danger ahead for the Quester, but as long as they remain aware of it (and act accordingly) it does not impact them, however each time the Quester is incautious, or indecisive, they add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. | Now that the Quest is completed the companions, authorities and everyone else present, will judge the Quester based upon their actions and the end results, this ignores the Quester&#39;s motives and intent, no matter how noble. If the Quester&#39;s own motives or intent did not match the result they got this will add a Failure Level, Obstacle or Hurdle to their remaining Test or Ordeal, as they feel tormented by their feelings for the praise or blame they get that they feel they do not deserve.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Go Your Own Way): Mirror the internal state described in the commentary: \"The situation is one in which we are still not bound by any obligations of social intercourse. If our conduct is simple, we remain free of them We can quietly follow our predilections as long as we are content and make not demands on people. The...\" Your actions should be framed by the goal: you avoid others, go around, or head off on your own.",
+        "Plot": "Plot Complication Line 1 (Go Your Own Way): Introduce a challenge based on the interpretation: \"The situation is one in which we are still not bound by any obligations of social intercourse. If our conduct is simple, we remain free of them We can quietly follow our predilections as long as we are content and make not demands on people. The...\" The specific quest objective for this stage is: The Quester is offered a choice, one choice might be material comforts, another may forgo material concerns but place them closer to their goal, neither choice is correct and will add an Obstacle, Hurdle or Failure Level to their Ordeal or Test. Only by avoiding this false choice and coming up with their own way can the Quester add a Success Level instead."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (The Easy Path): Mirror the internal state described in the commentary: \"The situation of a lonely sage is indicated here. He remains withdrawn from the bustle of life, seeks nothing, asks nothing of anyone, and travels through life unassailed, on a level road. Since he is content and does not challenge fate, he remains...\" Your actions should be framed by the goal: you ignore, avoid or bypass a Plot, Conflict, Ordeal, Quest, Obstacle, or Test.",
+        "Plot": "Plot Complication Line 2 (The Easy Path): Introduce a challenge based on the interpretation: \"The situation of a lonely sage is indicated here. He remains withdrawn from the bustle of life, seeks nothing, asks nothing of anyone, and travels through life unassailed, on a level road. Since he is content and does not challenge fate, he remains...\" The specific quest objective for this stage is: The Quester will find themselves surrounded by others who are in various forms of trouble, some of them may even ask for help, others will not, but their trouble will be apparent. If the Quester avoids being distracted, and manages to focus on their own goals and requirements then they will add a Success Level, but anything other than ignoring these people and their distractions will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test as they are drawn into these people&#39;s troubles."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Biting Tiger): Mirror the internal state described in the commentary: \"The tiger bites the man.\nMisfortune.\n\nThus does a warrior act on behalf of his great prince.\n\nA one-eyed man can indeed see, but not enough for clear vision. A lame man can indeed treat, but not enough to make progress. If in spite of such defects a...\" Your actions should be framed by the goal: you are attacked, wounded or damage a Descendant.",
+        "Plot": "Plot Complication Line 3 (Biting Tiger): Introduce a challenge based on the interpretation: \"The tiger bites the man.\nMisfortune.\n\nThus does a warrior act on behalf of his great prince.\n\nA one-eyed man can indeed see, but not enough for clear vision. A lame man can indeed treat, but not enough to make progress. If in spite of such defects a...\" The specific quest objective for this stage is: The Quester is in great danger, they may be over-estimating their own strength, underestimating their opposition, overlooking a hazard or danger, or simply be careless."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Stepping around the Tail): Mirror the internal state described in the commentary: \"This text refers to a dangerous enterprise. The inner power to carry it through is there, but this inner power is combined with hesitating caution in one's external attitude. This line contrasts with the preceding line, which is weak within but...\" Your actions should be framed by the goal: you are cautious, or act nervous or afraid.",
+        "Plot": "Plot Complication Line 4 (Stepping around the Tail): Introduce a challenge based on the interpretation: \"This text refers to a dangerous enterprise. The inner power to carry it through is there, but this inner power is combined with hesitating caution in one's external attitude. This line contrasts with the preceding line, which is weak within but...\" The specific quest objective for this stage is: The Quester sees signs of danger that perhaps others do not, whether by chance, superior perception or paranoia, this perceived danger adds a Failure Level, Obstacle or Hurdle to the Quester&#39;s Test or Ordeal. However, this danger is magnified by the Quester&#39;s own caution, if the Quester presses on regardless, with confidence, then they will add a Success Level instead."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Determined Stride): Mirror the internal state described in the commentary: \"This refers to the ruler of the hexagram as a whole. One sees that one has to be resolute in conduct. But at the same time one must remain conscious of the danger connected with such resoluteness, especially if it is to be persevered in. Only...\" Your actions should be framed by the goal: you act (or are) determined.",
+        "Plot": "Plot Complication Line 5 (Determined Stride): Introduce a challenge based on the interpretation: \"This refers to the ruler of the hexagram as a whole. One sees that one has to be resolute in conduct. But at the same time one must remain conscious of the danger connected with such resoluteness, especially if it is to be persevered in. Only...\" The specific quest objective for this stage is: There is danger ahead for the Quester, but as long as they remain aware of it (and act accordingly) it does not impact them, however each time the Quester is incautious, or indecisive, they add a Hurdle, Obstacle or Failure Level to their Ordeal or Test."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Looking Back): Mirror the internal state described in the commentary: \"The work is ended. If we want to know whether good fortune will follow, we must look back upon our conduct and its consequences. If the effects are good, then good fortune is certain. No one knows himself. It is only by the consequences of his...\" Your actions should be framed by the goal: you achieve something (a victory, a goal, a Stage, etc.), or you look behind you, or think about the past.",
+        "Plot": "Plot Complication Line 6 (Looking Back): Introduce a challenge based on the interpretation: \"The work is ended. If we want to know whether good fortune will follow, we must look back upon our conduct and its consequences. If the effects are good, then good fortune is certain. No one knows himself. It is only by the consequences of his...\" The specific quest objective for this stage is: Now that the Quest is completed the companions, authorities and everyone else present, will judge the Quester based upon their actions and the end results, this ignores the Quester&#39;s motives and intent, no matter how noble. If the Quester&#39;s own motives or intent did not match the result they got this will add a Failure Level, Obstacle or Hurdle to their remaining Test or Ordeal, as they feel tormented by their feelings for the praise or blame they get that they feel they do not deserve."
+      }
+    }
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 23,
+    "Name": "Splitting Asunder",
+    "Entity": "&#19926;",
+    "Logical": 32,
+    "Trigrams": [
+      7,
+      6
+    ],
+    "Hexagram_Text": "Po, Splitting Asunder (or Splitting Apart or Destruction), is the decay so that regeneration can occur. Just as a tree should be pruned to make room for new growth, so we sometimes grow stronger after we are harmed. It is time to shed the old habits and ways that held us back. It is the house on the verge of collapse, or the mountain broken into a fertile valley, by an earthquake.",
+    "Unchanging": "You may once per Scene move Incarna Draw (Boon Double Reduced) Wounds from yourself to another character with a touch.",
+    "Line1": "The Leg of Bed Splits",
+    "Line2": "Edge of Bed Splits",
+    "Line3": "Breaking Ties",
+    "Line4": "Bed Splits Open",
+    "Line5": "Shoal of Fish",
+    "Line6": "The Highest Fruit Uneaten"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you survive an attack, retreat before superior forces, spot a deception, or hold something in reserve for later",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you realise you are deceived or betrayed, or when you have nothing left in reserve",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yang",
+        "Condition": "you wait, or change your mind",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yang",
+        "Condition": "you are isolated or helpless, or when you ask a child for help or guidance",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yang",
+        "Condition": "you leave another, go your own way, stay still while others leave, or talk to your enemies",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yang",
+        "Condition": "you are being defeated, wounded, or are failing",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you do, or ask, a favour, or make a sacrifice",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yin",
+        "Condition": "you leave something for later, spare an opponent, or are generous",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "Splitting Asunder Quests are grim, nasty times where everyone seems to be turning against the Quester. It is during these Quests that times are dark, riots are rumoured in the streets of the capital, armies are on the march or even garrisoned in the town, foul weather, famine and plague haunt the land, and cloaked strangers gather in the corners of the inns, coughing weakly, and muttering words of plague, rebellion and revolt. There are enemies and potential enemies everywhere, and no one feels safe. Only a few merchants and mercenaries are making money and many people turn to crime, stealing what little food remains to survive. Suffice to say it is not a good time for Questing, with all difficulties treated as Low-Powered (making them much more difficult), Stakes are usually elevated so even Social encounters are Medium Stakes, and any Brawling is likely to have someone pull a deadly weapon and raise the Stakes to High or Extreme. There are always additional Hurdles, Obstacles or Failure Levels to every Test or Ordeal during the Splitting Asunder Quest, and even the Quester&#39;s Supporters, Allies and companions may leave them due to the rigours of the time. A wise person would not Quest now, but await better times, if they will ever come.",
+    "Quest_Complete": "When the Quest finishes to reveal the Splitting Asunder Hexagram then you are looking at some terrible cliffhanger event having occurred. This may be the Quester laying hands upon their prize, only to have the floor collapse beneath them, or they might hold the castle until dawn, but their reinforcements never arrive and they are captured by the enemy. It is usual to immediately begin this next Quest, perhaps with only a slight delay between sessions or chapters.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "Criminals and beggars are more common due to the times, and the Quester or their companions are affected by a minor example (a picked pocket, phone scam, tap-to-pay wi-fi hack, often where Sway or Chi is lost but no confrontation happens - although this can be enough to add a Hurdle, Obstacle, or Failure Level that could include a fight). Those loyal to authority, such as the law-enforcers, the old guard and perhaps the Quester themselves find themselves the subject of gossip and slander, and this may also complicate matters for the Quester (adding another Hurdle, Failure Level or Obstacle to the Test or Ordeal) if they become involved.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester will find themselves isolated from some or all of their companions, adding an immediate Hurdle, Obstacle or Failure Level to their Ordeal or Test. This is usually the result of some danger or peril that threatens the Quester, but sometimes they are separated by capture, traps or a secret door. The Quester alone must face an Ordeal next, that will be at least High Stakes and will often include a fight against some low-life scum who may work for the Opposition, or just be down on their luck. This is usually an additional Ordeal and has no bearing on the Quest directly.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The Quester will find themselves confronted by the dark forces in the Quest, be they criminals, invaders, agents of chaos, etc. If the Quester attacks them then the Quester will suffer additional Hurdles, Obstacles or Failure Levels in their Test or Ordeal, but if they can deal, treaty or reach an accord with these people then they may add a Success Level to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester is injured, if they already have an injury then it is worse than suspected (and now begins to Fester), if they are not injured then they are injured in some accident or incident that takes place immediately after the last Test or Ordeal. The injury should be at least a Maiming Wound, and more often Hitch causing (Mortal+), the Yarn-Teller should use a card from their Hand or Pool to create an Unsoakable Wound. This Wound is immediately applied, if created by the changing line, or increases a present Wound to the new Level, as well as making it Fester.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The dark forces that plague the Quest undergo a change, this change usually brings them under the influence of an authority, occasionally even the Quester. This has an easing effect upon the Quest, adding a Success Level to the Quester&#39;s Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The dark time is ending, the dark forces will turn upon each other as the old authority reasserts itself, or a new authority arises. The Quester who was loyal to that authority, or spares the Opposition, will gain a Success Level on their next Test or Ordeal. Those who abandoned the authority, or killed during the Quest, will receive punishment in the form of a Failure Level, Hurdle or Obstacle to the Test or Ordeal.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "The dark lines are about to mount upward and overthrow the last firm, light line by exerting a disintegrating influence on it. The inferior, dark forces overcome what is superior and strong, not by direct means, but by undermining it gradually and imperceptibly, so that it finally collapses. The lines of the hexagram present the image of a house, the top line being the roof, and because the roof is being shattered the house collapses. The hexagram belongs to the ninth month (October-November). The yin power pushes up ever more powerfully and is about to supplant the yang power altogether.",
+    "The_Image": {
+      "text": "The mountain rests on the earth:\nThe image of SPLITTING APART.\nThus those above can ensure their position\nOnly by giving generously to those below.",
+      "comments": "The mountain rests on the earth. When it is steep and narrow, lacking a broad base, it must topple over. Its position is strong only when it rises out of the earth broad and great, not proud and steep. So likewise those who rule rest on the broad foundation of the people. They too should be generous and benevolent, like the earth that carries all. Then they will make their position as secure as a mountain is in its tranquillity."
+    },
+    "The_Judgment": {
+      "text": "SPLITTING APART. IT does not further one\nTo go anywhere.",
+      "comments": "This pictures a time when inferior people are pushing forward and are about to crowd out the few remaining strong and superior men. Under these circumstances, which are due to the time, it is not favorable for the superior man to undertake anything. The right behavior in such adverse times is to be deduced from the images and their attributes. The lower trigram stands for the earth, whose attributes. The lower trigram stands for the earth, whose attributes are docility and devotion. The upper trigram stands for the mountain, whose attribute is stillness. This suggests that one should submit to the bad time and remain quiet. For it is a question not of man's doing but of time conditions, which, according to the laws of heaven, show an alternation of increase and decrease, fullness and emptiness. It is impossible to counteract these conditions of the time. Hence it is not cowardice but wisdom to submit and avoid action."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "The leg of the bed is split.\nThose who persevere are destroyed.\nMisfortune.",
+        "comments": "Inferior people are on the rise and stealthily begin their destructive burrowing from below in order to undermine the place where the superior man rests. Those followers of the ruler who remain loyal are destroyed by slander and intrigue. The situation bodes disaster, yet there is nothing to do but wait."
+      },
+      "2": {
+        "text": "The bed is split at the edge.\nThose who persevere are destroyed.\nMisfortune.",
+        "comments": "The power of the inferior people is growing. The danger draws close to one's person; already there are clear indication, and rest is disturbed. Moreover, in this dangerous situation one is as yet without help or friendly advances from above or below. Extreme caution is necessary in this isolation. One must adjust to the time and promptly avoid the danger. Stubborn perseverance in maintaining one's standpoint would lead to downfall."
+      },
+      "3": {
+        "text": "He splits with them. No blame.",
+        "comments": "An individual finds himself in an evil environment to which he is committed by external ties. But he has an inner relationship with a superior man, and through this he attains the stability to free himself from the way of the inferior people around him. This brings him into opposition to them of course, but that is not wrong."
+      },
+      "4": {
+        "text": "The bed is split up to the skin.\nMisfortune.",
+        "comments": "Here the disaster affects not only the resting place but even the occupant. No warning or other comment is added. Misfortune has reached its peak: it can no longer be warded off."
+      },
+      "5": {
+        "text": "A shoal of fishes. Favor comes through the court ladies.\nEverything acts to further.",
+        "comments": "Here, in immediate proximity to the strong, light-giving principle at the top, the nature of the dark force undergoes a change. It no longer opposes the strong principle by means of intrigues but submits to its guidance. Indeed, as the head of the other weak lines, it leads all of these to the strong line, just as a princess leads her maids-in-waiting like a shoal of fishes to her husband and thus gains his favor. Inasmuch as the lower element thus voluntarily places itself under the higher, it attains happiness and the higher also receives its due. Therefore all goes well."
+      },
+      "6": {
+        "text": "There is a large fruit still uneaten.\nThe superior man receives a carriage.\nThe house of the inferior man is split apart.",
+        "comments": "Here the splitting apart reaches its end. When misfortune has spent itself, better times return. The seed of the good remains, and it is just when the fruit falls to the ground that food sprouts anew from its seed. The superior man again attains influence and effectiveness. He is supported by public opinion as if in a carriage. But the inferior man's wickedness is visited upon himself. His house is split apart. A law of nature is at work here. Evil is not destructive to the good alone but inevitably destroys itself as well. For evil, which lives solely by negation, cannot continue to exist on its own strength alone. The inferior man himself fares best when held under control by a superior man."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Splitting Asunder'. Internalize this core philosophy: The dark lines are about to mount upward and overthrow the last firm, light line by exerting a disintegrating influence on it. The inferior, dark forces overcome what is superior and strong, not by direct means, but by undermining it gradually and imperceptibly, so that it finally collapses. The lines of the hexagram present the image of a house, the top line being the roof, and because the roof is being shattered the house collapses. The hexagram belongs to the ninth month (October-November).... Your current worldview is: \"Po, Splitting Asunder (or Splitting Apart or Destruction), is the decay so that regeneration can occur. Just as a tree should be pruned to make room for new growth, so we sometimes grow stronger after we are harmed. It is time to shed the old habits and ways that held us back. It is the house on the verge of collapse, or the mountain broken into a fertile valley, by an earthquake.\". Let your choices be subtly driven by these conditions: you survive an attack, retreat before superior forces, spot a deception, or hold something in reserve for later, you realise you are deceived or betrayed, or when you have nothing left in reserve. When interacting, mirror the wisdom found in the commentary: \"This pictures a time when inferior people are pushing forward and are about to crowd out the few remaining strong and superior men. Under these circumstances, which are due to the time, it is not favorable for the superior man to undertake anything. The right behavior in such adverse times is to be...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Splitting Asunder'. The primary quest objective is: Splitting Asunder Quests are grim, nasty times where everyone seems to be turning against the Quester. It is during these Quests that times are dark, riots are rumoured in the streets of the capital, armies are on the march or even garrisoned in the town, foul weather, famine and plague haunt the land, and cloaked strangers gather in the corners of the inns, coughing weakly, and muttering words of plague, rebellion and revolt. There are enemies and potential enemies everywhere, and no one feels safe. Only a few merchants and mercenaries are making money and many people turn to crime, stealing what little food remains to survive. Suffice to say it is not a good time for Questing, with all difficulties treated as Low-Powered (making them much more difficult), Stakes are usually elevated so even Social encounters are Medium Stakes, and any Brawling is likely to have someone pull a deadly weapon and raise the Stakes to High or Extreme. There are always additional Hurdles, Obstacles or Failure Levels to every Test or Ordeal during the Splitting Asunder Quest, and even the Quester&#39;s Supporters, Allies and companions may leave them due to the rigours of the time. A wise person would not Quest now, but await better times, if they will ever come.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: The mountain rests on the earth. When it is steep and narrow, lacking a broad base, it must topple over. Its position is strong only when it rises out of the earth broad and great, not proud and steep. So likewise those who rule rest on the broad foundation of the people. They too should be generous and benevolent, like the earth that carries all. Then they will make their position as secure as a... Use the following line-specific challenges to pace the story: Criminals and beggars are more common due to the times, and the Quester or their companions are affected by a minor example (a picked pocket, phone scam, tap-to-pay wi-fi hack, often where Sway or Chi is lost but no confrontation happens - although this can be enough to add a Hurdle, Obstacle, or Failure Level that could include a fight). Those loyal to authority, such as the law-enforcers, the old guard and perhaps the Quester themselves find themselves the subject of gossip and slander, and this may also complicate matters for the Quester (adding another Hurdle, Failure Level or Obstacle to the Test or Ordeal) if they become involved. | The Quester will find themselves isolated from some or all of their companions, adding an immediate Hurdle, Obstacle or Failure Level to their Ordeal or Test. This is usually the result of some danger or peril that threatens the Quester, but sometimes they are separated by capture, traps or a secret door. The Quester alone must face an Ordeal next, that will be at least High Stakes and will often include a fight against some low-life scum who may work for the Opposition, or just be down on their luck. This is usually an additional Ordeal and has no bearing on the Quest directly. | The Quester will find themselves confronted by the dark forces in the Quest, be they criminals, invaders, agents of chaos, etc. If the Quester attacks them then the Quester will suffer additional Hurdles, Obstacles or Failure Levels in their Test or Ordeal, but if they can deal, treaty or reach an accord with these people then they may add a Success Level to the Test or Ordeal. | The Quester is injured, if they already have an injury then it is worse than suspected (and now begins to Fester), if they are not injured then they are injured in some accident or incident that takes place immediately after the last Test or Ordeal. The injury should be at least a Maiming Wound, and more often Hitch causing (Mortal+), the Yarn-Teller should use a card from their Hand or Pool to create an Unsoakable Wound. This Wound is immediately applied, if created by the changing line, or increases a present Wound to the new Level, as well as making it Fester. | The dark forces that plague the Quest undergo a change, this change usually brings them under the influence of an authority, occasionally even the Quester. This has an easing effect upon the Quest, adding a Success Level to the Quester&#39;s Test or Ordeal. | The dark time is ending, the dark forces will turn upon each other as the old authority reasserts itself, or a new authority arises. The Quester who was loyal to that authority, or spares the Opposition, will gain a Success Level on their next Test or Ordeal. Those who abandoned the authority, or killed during the Quest, will receive punishment in the form of a Failure Level, Hurdle or Obstacle to the Test or Ordeal.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (The Leg of Bed Splits): Mirror the internal state described in the commentary: \"Inferior people are on the rise and stealthily begin their destructive burrowing from below in order to undermine the place where the superior man rests. Those followers of the ruler who remain loyal are destroyed by slander and intrigue. The...\" Your actions should be framed by the goal: you wait, or change your mind.",
+        "Plot": "Plot Complication Line 1 (The Leg of Bed Splits): Introduce a challenge based on the interpretation: \"Inferior people are on the rise and stealthily begin their destructive burrowing from below in order to undermine the place where the superior man rests. Those followers of the ruler who remain loyal are destroyed by slander and intrigue. The...\" The specific quest objective for this stage is: Criminals and beggars are more common due to the times, and the Quester or their companions are affected by a minor example (a picked pocket, phone scam, tap-to-pay wi-fi hack, often where Sway or Chi is lost but no confrontation happens - although this can be enough to add a Hurdle, Obstacle, or Failure Level that could include a fight). Those loyal to authority, such as the law-enforcers, the old guard and perhaps the Quester themselves find themselves the subject of gossip and slander, and this may also complicate matters for the Quester (adding another Hurdle, Failure Level or Obstacle to the Test or Ordeal) if they become involved."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Edge of Bed Splits): Mirror the internal state described in the commentary: \"The power of the inferior people is growing. The danger draws close to one's person; already there are clear indication, and rest is disturbed. Moreover, in this dangerous situation one is as yet without help or friendly advances from above or...\" Your actions should be framed by the goal: you are isolated or helpless, or when you ask a child for help or guidance.",
+        "Plot": "Plot Complication Line 2 (Edge of Bed Splits): Introduce a challenge based on the interpretation: \"The power of the inferior people is growing. The danger draws close to one's person; already there are clear indication, and rest is disturbed. Moreover, in this dangerous situation one is as yet without help or friendly advances from above or...\" The specific quest objective for this stage is: The Quester will find themselves isolated from some or all of their companions, adding an immediate Hurdle, Obstacle or Failure Level to their Ordeal or Test. This is usually the result of some danger or peril that threatens the Quester, but sometimes they are separated by capture, traps or a secret door. The Quester alone must face an Ordeal next, that will be at least High Stakes and will often include a fight against some low-life scum who may work for the Opposition, or just be down on their luck. This is usually an additional Ordeal and has no bearing on the Quest directly."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Breaking Ties): Mirror the internal state described in the commentary: \"An individual finds himself in an evil environment to which he is committed by external ties. But he has an inner relationship with a superior man, and through this he attains the stability to free himself from the way of the inferior people around...\" Your actions should be framed by the goal: you leave another, go your own way, stay still while others leave, or talk to your enemies.",
+        "Plot": "Plot Complication Line 3 (Breaking Ties): Introduce a challenge based on the interpretation: \"An individual finds himself in an evil environment to which he is committed by external ties. But he has an inner relationship with a superior man, and through this he attains the stability to free himself from the way of the inferior people around...\" The specific quest objective for this stage is: The Quester will find themselves confronted by the dark forces in the Quest, be they criminals, invaders, agents of chaos, etc. If the Quester attacks them then the Quester will suffer additional Hurdles, Obstacles or Failure Levels in their Test or Ordeal, but if they can deal, treaty or reach an accord with these people then they may add a Success Level to the Test or Ordeal."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Bed Splits Open): Mirror the internal state described in the commentary: \"Here the disaster affects not only the resting place but even the occupant. No warning or other comment is added. Misfortune has reached its peak: it can no longer be warded off.\" Your actions should be framed by the goal: you are being defeated, wounded, or are failing.",
+        "Plot": "Plot Complication Line 4 (Bed Splits Open): Introduce a challenge based on the interpretation: \"Here the disaster affects not only the resting place but even the occupant. No warning or other comment is added. Misfortune has reached its peak: it can no longer be warded off.\" The specific quest objective for this stage is: The Quester is injured, if they already have an injury then it is worse than suspected (and now begins to Fester), if they are not injured then they are injured in some accident or incident that takes place immediately after the last Test or Ordeal. The injury should be at least a Maiming Wound, and more often Hitch causing (Mortal+), the Yarn-Teller should use a card from their Hand or Pool to create an Unsoakable Wound. This Wound is immediately applied, if created by the changing line, or increases a present Wound to the new Level, as well as making it Fester."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Shoal of Fish): Mirror the internal state described in the commentary: \"Here, in immediate proximity to the strong, light-giving principle at the top, the nature of the dark force undergoes a change. It no longer opposes the strong principle by means of intrigues but submits to its guidance. Indeed, as the head of the...\" Your actions should be framed by the goal: you do, or ask, a favour, or make a sacrifice.",
+        "Plot": "Plot Complication Line 5 (Shoal of Fish): Introduce a challenge based on the interpretation: \"Here, in immediate proximity to the strong, light-giving principle at the top, the nature of the dark force undergoes a change. It no longer opposes the strong principle by means of intrigues but submits to its guidance. Indeed, as the head of the...\" The specific quest objective for this stage is: The dark forces that plague the Quest undergo a change, this change usually brings them under the influence of an authority, occasionally even the Quester. This has an easing effect upon the Quest, adding a Success Level to the Quester&#39;s Test or Ordeal."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (The Highest Fruit Uneaten): Mirror the internal state described in the commentary: \"Here the splitting apart reaches its end. When misfortune has spent itself, better times return. The seed of the good remains, and it is just when the fruit falls to the ground that food sprouts anew from its seed. The superior man again attains...\" Your actions should be framed by the goal: you leave something for later, spare an opponent, or are generous.",
+        "Plot": "Plot Complication Line 6 (The Highest Fruit Uneaten): Introduce a challenge based on the interpretation: \"Here the splitting apart reaches its end. When misfortune has spent itself, better times return. The seed of the good remains, and it is just when the fruit falls to the ground that food sprouts anew from its seed. The superior man again attains...\" The specific quest objective for this stage is: The dark time is ending, the dark forces will turn upon each other as the old authority reasserts itself, or a new authority arises. The Quester who was loyal to that authority, or spares the Opposition, will gain a Success Level on their next Test or Ordeal. Those who abandoned the authority, or killed during the Quest, will receive punishment in the form of a Failure Level, Hurdle or Obstacle to the Test or Ordeal."
+      }
+    }
+  }
+}

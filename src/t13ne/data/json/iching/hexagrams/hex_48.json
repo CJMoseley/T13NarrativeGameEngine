@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 48,
+    "Name": "The Well",
+    "Entity": "&#19951;",
+    "Logical": 22,
+    "Trigrams": [
+      4,
+      5
+    ],
+    "Hexagram_Text": "Jing, The Well (or Welling up), is symbolic of deep resources, but also of things that cannot be altered. You can move every building in the village, except the well. Wells are tied in place, forced to be where they are by greater forces. Unseen and unrecognised potential can well up within anyone, as can deep fears and wounds.",
+    "Unchanging": "You may Once per Session / Chapter /Episode Draw an additional Incarna Score (Boon Reduced) cards and play them instantly as Wyrd Tarot Cards, or add them to your Ordeal Pool.",
+    "Line1": "The Muddy Well",
+    "Line2": "A Hole In The Bucket",
+    "Line3": "No One Drinks",
+    "Line4": "A Well Collapsing",
+    "Line5": "Sweet Water",
+    "Line6": "The Fountain"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you tell an anecdote, a story, a dream, or joke",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you act carelessly or quickly",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yang",
+        "Condition": "you are neglectful, ignore work that should be done, or act independent",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yin",
+        "Condition": "you neglect others, act mad or forgetful, or spill something",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yin",
+        "Condition": "you act fearless, despondent or undervalued",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yang",
+        "Condition": "you act selfishly putting your own needs before others",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yin",
+        "Condition": "you drink, share a meal, or are drawn into action",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yang",
+        "Condition": "you are humble, modest, shy, or share with others",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Well Quest describes a situation where a singular resource has become essential to the well-being of the community (just as a town&#39;s drinking water is always important to the people). The opposition usually threatens the source of this resource, directly or indirectly (perhaps even going so far as to poison the well, or dry it up). Such Quests usually involve a community coming together to defeat the threat to their shared resource. Sometimes this Quest will play out with a local factory, forest, quarry or mine acting as a figurative well.",
+    "Quest_Complete": "When the Quest ends in the Well Hexagram then the Quest ends with some threat to the community, social structure or religion that surrounds the Quester. Usually this threat is direct from the opposition and affects a whole community, and usually leads into another Quest to alleviate this new threat.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The resource relied on by the community is old, corrupted, or failing. If this genuinely was a well, the water is muddy and polluted, causing disease in those that drink it. The Quester should be confronted with an example of this corrupted resource, if they fail to notify the community that relies upon the resource add a Failure Level, Hurdle or Obstacle to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The resource the community relies on is unreliable, or in a state of disrepair, those in charge of it have done no maintenance, and this could lead to waste and potentially danger. The Quester should observe some sign of a lack of maintenance, failing to repair it, or warn those who could will add a Hurdle, Obstacle or Failure Level to the Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "A resource is available, but not being used, this may be because of some law or ordinance that forbids the usage of the resource, or it maybe that the resource is a person who is being under utilised by the community. If the Quester does not notice this under utilised resource or person of ability, then they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If the Quester is the under utilised resource, then if they act unwanted or under valued they may add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The resource the community relies upon is collapsing and failing, but there are already people working to save it. Just as a well can be relined with stone to make it hardier and longer lasting, the resource can be repaired and shared. The Quester who assists in the repairing of the well adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test. However, the Quester who does not help, but rest themselves, or engage in training, prayer or meditation, will add a Success Level to their tasks.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "A resource is freely available to the Quester, often this is a potential ally or companion who has goods, services, abilities or knowledge that will directly assist the Quester, although the Quester may not realise this yet. The Quester who ignores this resource adds an additional Hurdle, Obstacle or Failure Level to their Ordeal or Test, however if the Quester pays attention to the right person, they will learn of this advantage they may gain and add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "There is a powerful resource available and shared with the whole community, this resource is like a fountain rather than a well, with the water available without even the work of lifting the bucket. These resources do not have to be solely physical, and often include spiritual or intellectual resources that are learned by all in the community.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "Wood is below, water above. The wood goes down into the earth to bring up water. The image derives from the pole-and-bucket well of ancient China. The wood represents not the buckets, which in ancient times were made of clay, but rather the wooden poles by which the water is hauled up from the well. The image also refers to the world of plants, which lift water out of the earth by means of their fibers. The well from which water is drawn conveys the further idea of an inexhaustible dispensing of nourishment.",
+    "The_Image": {
+      "text": "Water over wood: the image of THE WELL.\n\nThus the superior man encourages the people at their work,\nAnd exhorts them to help one another.",
+      "comments": "The trigram Sun, wood, is below, and the trigram K'an, water, is above it. Wood sucks water upward. Just as wood as an organism imitates the action of the well, which benefits all parts of the plant, the superior man organizes human society, so that, as in a plant organism, its parts co-operate for the benefit of the whole."
+    },
+    "The_Judgment": {
+      "text": "THE WELL. The town may be changed,\nBut the well cannot be changed.\nIt neither decreases nor increases.\n\nThey come and go and draw from the well.\nIf one gets down almost to the water\nAnd the rope does not go all the way,\nOr the jug breaks, it brings misfortune.",
+      "comments": "In ancient China the capital cities were sometimes moved, partly for the sake of more favorable location, partly because of a change in dynasties. The style of architecture changed in the course of centuries, but the shape of the well has remained the same from ancient times to this day. Thus the well is the symbol of that social structure which, evolved by mankind in meeting its most primitive needs, is independent of all political forms. Political structures change, as do nations, but the life of man with its needs remains eternally the same-this cannot be changed. Life is also inexhaustible. It grows neither less not more; it exists for one and for all. The generations come and go, and all enjoy life in its inexhaustible abundance. However, there are two prerequisites for a satisfactory political or social organization of mankind. We must go down to the very foundations of life. For any merely superficial ordering of life that leaves its deepest needs unsatisfied is as ineffectual as if no attempt at order had ever been made. Carelessness-by which the jug is broken-is also disastrous. If for instance the military defense of a state is carried to such excess that it provokes wars by which the power of the state is annihilated, this is a breaking of the jug. This hexagram applies also to the individual. However men may differ in disposition and in education, the foundations of human nature are the same in everyone. And every human being can draw in the course of his education from the inexhaustible wellspring of the divine in man's nature. But here likewise two dangers threaten: a man may fail in his education to penetrate to the real roots of humanity and remain fixed in convention-a partial education of this sort is as bad as none- or he may suddenly collapse and neglect his self-development."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "One does not drink the mud of the well.",
+        "comments": "No animals come to an old well.\n\nIf a man wanders around in swampy lowlands, his life is submerged in mud. Such a man loses all significance for mankind. He who throws himself away is no longer sought out by others. In the end no one troubles about him any more."
+      },
+      "2": {
+        "text": "At the well hole one shoots fishes.",
+        "comments": "The jug is broken and leaks.\n\nThe water itself is clear, but it is not being used. Thus the well is a place where only fish will stay, and whoever comes to it, comes only to catch fish. But the jug is broken, so that the fish cannot be kept in it. This describes the situation of a person who possesses good qualities but neglects them. No one bothers about him. As a result he deteriorates in mind. He associates with inferior men and can no longer accomplish anything worth while."
+      },
+      "3": {
+        "text": "The well is cleaned, but no one drinks from it.",
+        "comments": "This is my heart's sorrow,\nFor one might draw from it.\nIf the king were clear-minded,\nGood fortune might be enjoyed in common.\n\nAn able man is available. He is like a purified well whose water is drinkable. But no use is made of him. This is the sorrow of those who know him. One wishes that the prince might learn about it; this would be good fortune for all concerned."
+      },
+      "4": {
+        "text": "The well is being lined. No blame.",
+        "comments": "True, if a well is being lined with sone, it cannot be used while the work is going on. But the work is not in vain; the result is that the water stays clear. In life also there are times when a man must put himself in order. During such a time he can do nothing for others, but his work is nonetheless valuable, because by enhancing his powers and abilities through inner development, he can accomplish all the more later on."
+      },
+      "5": {
+        "text": "In the well there is a clear, cold spring\nFrom which one can drink.",
+        "comments": "A well that is fed by a spring of living water is a good well. A man who has virtues like a well of this sort is born to be a leader and savior of men, for he has the water of life. Nevertheless, the character for \"good fortune\" is left out here. The all-important thing about a well is that its water be drawn. The best water is only a potentiality for refreshment as long as it is not brought up. So too with leaders of mankind: it is all-important that one should drink from the spring of their words and translate them into life."
+      },
+      "6": {
+        "text": "One draws from the well\nWithout hindrance.\nIt is dependable.",
+        "comments": "Supreme good fortune.\n\nThe well is there fore all. No one is forbidden to take water from it. No matter how many come, all find what they need, for the well is dependable. It has a spring and never runs dry. Therefore it is a great blessing to the whole land. The same is true of the really great man, whose inner wealth is inexhaustible; the more that people draw from him, the greater his wealth becomes."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'The Well'. Internalize this core philosophy: Wood is below, water above. The wood goes down into the earth to bring up water. The image derives from the pole-and-bucket well of ancient China. The wood represents not the buckets, which in ancient times were made of clay, but rather the wooden poles by which the water is hauled up from the well. The image also refers to the world of plants, which lift water out of the earth by means of their fibers. The well from which water is drawn conveys the further idea of an inexhaustible dispensing... Your current worldview is: \"Jing, The Well (or Welling up), is symbolic of deep resources, but also of things that cannot be altered. You can move every building in the village, except the well. Wells are tied in place, forced to be where they are by greater forces. Unseen and unrecognised potential can well up within anyone, as can deep fears and wounds.\". Let your choices be subtly driven by these conditions: you tell an anecdote, a story, a dream, or joke, you act carelessly or quickly. When interacting, mirror the wisdom found in the commentary: \"In ancient China the capital cities were sometimes moved, partly for the sake of more favorable location, partly because of a change in dynasties. The style of architecture changed in the course of centuries, but the shape of the well has remained the same from ancient times to this day. Thus the...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'The Well'. The primary quest objective is: The Well Quest describes a situation where a singular resource has become essential to the well-being of the community (just as a town&#39;s drinking water is always important to the people). The opposition usually threatens the source of this resource, directly or indirectly (perhaps even going so far as to poison the well, or dry it up). Such Quests usually involve a community coming together to defeat the threat to their shared resource. Sometimes this Quest will play out with a local factory, forest, quarry or mine acting as a figurative well.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: The trigram Sun, wood, is below, and the trigram K'an, water, is above it. Wood sucks water upward. Just as wood as an organism imitates the action of the well, which benefits all parts of the plant, the superior man organizes human society, so that, as in a plant organism, its parts co-operate for the benefit of the whole. Use the following line-specific challenges to pace the story: The resource relied on by the community is old, corrupted, or failing. If this genuinely was a well, the water is muddy and polluted, causing disease in those that drink it. The Quester should be confronted with an example of this corrupted resource, if they fail to notify the community that relies upon the resource add a Failure Level, Hurdle or Obstacle to the Test or Ordeal. | The resource the community relies on is unreliable, or in a state of disrepair, those in charge of it have done no maintenance, and this could lead to waste and potentially danger. The Quester should observe some sign of a lack of maintenance, failing to repair it, or warn those who could will add a Hurdle, Obstacle or Failure Level to the Ordeal or Test. | A resource is available, but not being used, this may be because of some law or ordinance that forbids the usage of the resource, or it maybe that the resource is a person who is being under utilised by the community. If the Quester does not notice this under utilised resource or person of ability, then they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If the Quester is the under utilised resource, then if they act unwanted or under valued they may add a Success Level instead. | The resource the community relies upon is collapsing and failing, but there are already people working to save it. Just as a well can be relined with stone to make it hardier and longer lasting, the resource can be repaired and shared. The Quester who assists in the repairing of the well adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test. However, the Quester who does not help, but rest themselves, or engage in training, prayer or meditation, will add a Success Level to their tasks. | A resource is freely available to the Quester, often this is a potential ally or companion who has goods, services, abilities or knowledge that will directly assist the Quester, although the Quester may not realise this yet. The Quester who ignores this resource adds an additional Hurdle, Obstacle or Failure Level to their Ordeal or Test, however if the Quester pays attention to the right person, they will learn of this advantage they may gain and add a Success Level instead. | There is a powerful resource available and shared with the whole community, this resource is like a fountain rather than a well, with the water available without even the work of lifting the bucket. These resources do not have to be solely physical, and often include spiritual or intellectual resources that are learned by all in the community.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (The Muddy Well): Mirror the internal state described in the commentary: \"No animals come to an old well.\n\nIf a man wanders around in swampy lowlands, his life is submerged in mud. Such a man loses all significance for mankind. He who throws himself away is no longer sought out by others. In the end no one troubles about...\" Your actions should be framed by the goal: you are neglectful, ignore work that should be done, or act independent.",
+        "Plot": "Plot Complication Line 1 (The Muddy Well): Introduce a challenge based on the interpretation: \"No animals come to an old well.\n\nIf a man wanders around in swampy lowlands, his life is submerged in mud. Such a man loses all significance for mankind. He who throws himself away is no longer sought out by others. In the end no one troubles about...\" The specific quest objective for this stage is: The resource relied on by the community is old, corrupted, or failing. If this genuinely was a well, the water is muddy and polluted, causing disease in those that drink it. The Quester should be confronted with an example of this corrupted resource, if they fail to notify the community that relies upon the resource add a Failure Level, Hurdle or Obstacle to the Test or Ordeal."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (A Hole In The Bucket): Mirror the internal state described in the commentary: \"The jug is broken and leaks.\n\nThe water itself is clear, but it is not being used. Thus the well is a place where only fish will stay, and whoever comes to it, comes only to catch fish. But the jug is broken, so that the fish cannot be kept in it....\" Your actions should be framed by the goal: you neglect others, act mad or forgetful, or spill something.",
+        "Plot": "Plot Complication Line 2 (A Hole In The Bucket): Introduce a challenge based on the interpretation: \"The jug is broken and leaks.\n\nThe water itself is clear, but it is not being used. Thus the well is a place where only fish will stay, and whoever comes to it, comes only to catch fish. But the jug is broken, so that the fish cannot be kept in it....\" The specific quest objective for this stage is: The resource the community relies on is unreliable, or in a state of disrepair, those in charge of it have done no maintenance, and this could lead to waste and potentially danger. The Quester should observe some sign of a lack of maintenance, failing to repair it, or warn those who could will add a Hurdle, Obstacle or Failure Level to the Ordeal or Test."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (No One Drinks): Mirror the internal state described in the commentary: \"This is my heart's sorrow,\nFor one might draw from it.\nIf the king were clear-minded,\nGood fortune might be enjoyed in common.\n\nAn able man is available. He is like a purified well whose water is drinkable. But no use is made of him. This is the...\" Your actions should be framed by the goal: you act fearless, despondent or undervalued.",
+        "Plot": "Plot Complication Line 3 (No One Drinks): Introduce a challenge based on the interpretation: \"This is my heart's sorrow,\nFor one might draw from it.\nIf the king were clear-minded,\nGood fortune might be enjoyed in common.\n\nAn able man is available. He is like a purified well whose water is drinkable. But no use is made of him. This is the...\" The specific quest objective for this stage is: A resource is available, but not being used, this may be because of some law or ordinance that forbids the usage of the resource, or it maybe that the resource is a person who is being under utilised by the community. If the Quester does not notice this under utilised resource or person of ability, then they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If the Quester is the under utilised resource, then if they act unwanted or under valued they may add a Success Level instead."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (A Well Collapsing): Mirror the internal state described in the commentary: \"True, if a well is being lined with sone, it cannot be used while the work is going on. But the work is not in vain; the result is that the water stays clear. In life also there are times when a man must put himself in order. During such a time he...\" Your actions should be framed by the goal: you act selfishly putting your own needs before others.",
+        "Plot": "Plot Complication Line 4 (A Well Collapsing): Introduce a challenge based on the interpretation: \"True, if a well is being lined with sone, it cannot be used while the work is going on. But the work is not in vain; the result is that the water stays clear. In life also there are times when a man must put himself in order. During such a time he...\" The specific quest objective for this stage is: The resource the community relies upon is collapsing and failing, but there are already people working to save it. Just as a well can be relined with stone to make it hardier and longer lasting, the resource can be repaired and shared. The Quester who assists in the repairing of the well adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test. However, the Quester who does not help, but rest themselves, or engage in training, prayer or meditation, will add a Success Level to their tasks."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Sweet Water): Mirror the internal state described in the commentary: \"A well that is fed by a spring of living water is a good well. A man who has virtues like a well of this sort is born to be a leader and savior of men, for he has the water of life. Nevertheless, the character for \"good fortune\" is left out here....\" Your actions should be framed by the goal: you drink, share a meal, or are drawn into action.",
+        "Plot": "Plot Complication Line 5 (Sweet Water): Introduce a challenge based on the interpretation: \"A well that is fed by a spring of living water is a good well. A man who has virtues like a well of this sort is born to be a leader and savior of men, for he has the water of life. Nevertheless, the character for \"good fortune\" is left out here....\" The specific quest objective for this stage is: A resource is freely available to the Quester, often this is a potential ally or companion who has goods, services, abilities or knowledge that will directly assist the Quester, although the Quester may not realise this yet. The Quester who ignores this resource adds an additional Hurdle, Obstacle or Failure Level to their Ordeal or Test, however if the Quester pays attention to the right person, they will learn of this advantage they may gain and add a Success Level instead."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (The Fountain): Mirror the internal state described in the commentary: \"Supreme good fortune.\n\nThe well is there fore all. No one is forbidden to take water from it. No matter how many come, all find what they need, for the well is dependable. It has a spring and never runs dry. Therefore it is a great blessing to the...\" Your actions should be framed by the goal: you are humble, modest, shy, or share with others.",
+        "Plot": "Plot Complication Line 6 (The Fountain): Introduce a challenge based on the interpretation: \"Supreme good fortune.\n\nThe well is there fore all. No one is forbidden to take water from it. No matter how many come, all find what they need, for the well is dependable. It has a spring and never runs dry. Therefore it is a great blessing to the...\" The specific quest objective for this stage is: There is a powerful resource available and shared with the whole community, this resource is like a fountain rather than a well, with the water available without even the work of lifting the bucket. These resources do not have to be solely physical, and often include spiritual or intellectual resources that are learned by all in the community."
+      }
+    }
+  }
+}

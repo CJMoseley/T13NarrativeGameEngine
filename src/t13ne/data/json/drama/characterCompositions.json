@@ -1,0 +1,80 @@
+[
+    {
+        "Type": "Chant",
+        "Suitable_For": "Extra Characters",
+        "Description": "Chants are simple Compositions that influence the Extra Characters within the current Setting. Chants are often monotone, or singular chords, and may be focused entirely upon the lyrical content of the chant.",
+        "Rules": "A Chant affects only Extra Characters. Chants are melodically simple, focusing on a single note or chord in a certain key (although they may change Chord in any Bar like any voicing). Extras who match key with the Chant (or one of the notes of its chord) will be affected by the Chant. Extras who do not, will not. Up to 12 different Chants can be running at once, with each Conductor able to Conduct up to 3 Chants simultaneously."
+    },
+    {
+        "Type": "March",
+        "Suitable_For": "Grunt Characters",
+        "Description": "The March is the signature Composition of the Grunt Character. A March uses a simple time signature, usually 2:2 or 4:4. That is 2 or 4 beats per bar. Marches typically are 16 or 32 bars long with a single modulation usually from Tonic to Subdominant (and occasionally back — see Intervals).",
+        "Rules": "Marches affect only Grunt Characters (usually of a suitable key)."
+    },
+    {
+        "Type": "Aria",
+        "Suitable_For": "Hero Characters",
+        "Description": "The Aria is strictly speaking an operatic solo, that conveys emotions rather than the plot, and is named for the Italian word for \"air\" which is used in the same musical meaning in English. This is a Composition for a single voice that combines a Melody with lyrics to create a specific song style.",
+        "Rules": "Arias are strict in their lyrical composition, and must use an AB, ABA, ABB, or ABACA rhyme structure. Hero Characters who are in key with the Aria will experience it as stated. Those Heroes who are not in key may experience distorted versions of the Aria."
+    },
+    {
+        "Type": "Leitmotif",
+        "Suitable_For": "Lite Characters and Descendants",
+        "Description": "Leitmotifs are simple recurring musical ideas within other Compositions that influence Lite Characters and Descendants. They are used in T13 Lite games to guide Character Drama and Development beyond any Plots that may be occurring. Leitmotifs can consist of Pitches (often arranged in Melodies or Chord Sequences) and Rhythms.",
+        "Rules": "Leitmotifs affect Lite Characters and Lite Descendants that are in key with the Leitmotif."
+    },
+    {
+        "Type": "Anthem",
+        "Suitable_For": "Archetype Characters",
+        "Description": "Anthems are archetypal songs for Archetype Characters. They can be celebrations of nations, careers, and such large groups that they are best represented by Archetype Characters. Anthems are otherwise like any composition.",
+        "Rules": "Anthems typically affect only Archetype Characters who are in tune with them. However, it is possible for Archetypes to become swept up in any Character Composition, if it becomes Anthemic during play."
+    },
+    {
+        "Type": "Solo",
+        "Suitable_For": "Yarn-Teller Character",
+        "Description": "Solos are Compositions intended to affect only Yarn-Teller Characters. They are typically intense melodic tunes that affect the Yarn-Tellers who are in tune with them. Often affecting (or even specifying) the Yarn-Teller’s Narration Technique as well as the nature of what they must narrate.",
+        "Rules": "Solos affect only Yarn-Teller Characters who are in tune with them. Yarn-Tellers usually respond and narrate Character Compositions for each other, as well as the other Characters, it is worth noting."
+    },
+    {
+        "Type": "Symphonies",
+        "Suitable_For": "Any Locations",
+        "Description": "Symphonies are Compositions that affect Locations, even Locations as large as Settings. Symphonies can work much like the Score of a Film, with individual Characters bringing their own Tunes, Hymns, Marches and Chants to the Symphony. And Locations can respond to the Character Compositions, but it can also work the otherway. With the Setting and Location defining the Symphony, the Characters, or at least those in tune with the Symphony will be affected by the Location’s influence.",
+        "Rules": "Symphonies affect a Location, and either respond to Character Compositions, or direct them from the Symphony if they are in tune."
+    },
+    {
+        "Type": "Opera",
+        "Suitable_For": "Groups",
+        "Description": "Operas are Compositions that affect and influence entire groups of people, often this will be a specific Pact that the Opera influences, but any group of Characters that are thrown together can create a spontaneous \"Opera\".",
+        "Rules": "Operas typically embrace all the Characters of a group, where possible they will match Keys with all members of the group, giving each Character a section or voicing where they define the Key. Although additional modulations may be required to reach harmonic resolution."
+    },
+    {
+        "Type": "Hymn",
+        "Suitable_For": "Divine Characters",
+        "Description": "Hymns are Compositions that affect Divine Characters who are in tune with the Hymn. Hymns can affect and influence religious people, as well as more divine and spiritual entities such as angels and gods, although they will be harmonically aligned.",
+        "Rules": "Religious beings in tune with the Hymn are affected, as are Spiritual beings a Perfect Fourth above the Hymn Key, and Divine beings a Perfect Fifth above the Hymn Key."
+    },
+    {
+        "Type": "Voice",
+        "Suitable_For": "Any Character",
+        "Description": "A Voice is a melody written for a single voice, it may be a line within a choir, and be a part of a larger chord voicing. Voices are typically written for a specific Character, and multiple voicings can be active at once. Compositions may present Chord sequences as separate Voice lines for individual Characters, or the Character may be allowed to choose the Pitch they voice themselves in an improvisation.",
+        "Rules": "A Voice affects and influences a single Character. A Voice will typically sit within a larger Compostion, like a voice in a choir singing a single Pitch to help create the Choir’s chord, and need not worry about whether the Character is in tune with the Voice at all."
+    },
+    {
+        "Type": "Melody",
+        "Suitable_For": "Any Characters",
+        "Description": "Melodies are a series of Pitches (or notes or tones) along with some rhythms that tell us when to play which pitches. Technically there is no difference between a Voice and a Melody, except Voices are assigned to Characters and Melodies are not.",
+        "Rules": "Typically a Melody will affect only Characters who are in tune with the Melody. However, if no Character is in tune with a Melody, then all Characters will experience the Melody, even if they are vastly out of tune."
+    },
+    {
+        "Type": "Refrain",
+        "Suitable_For": "Any Descendant",
+        "Description": "A Refrain is a Composition for a singular, specific Descendant. This might reflect a training montage or some similar event in a Character’s story, but is usually some recurring device or idea that various Characters will encounter. If a powerful Descendant has its own Refrain it may have a impact on Characters who are around it, smart-alec magic weapons, and rings of dark lordship often have refrains.",
+        "Rules": "A Character Composition for a Descendant. Refrains may affect and influence the Descendants Owner, Creator and Weilders. Typically Refrains do not care if the Weilder, Owner or Creator is in Key, and can have profound effects upon these Characters."
+    },
+    {
+        "Type": "Jingle",
+        "Suitable_For": "Any Descendants",
+        "Description": "Jingles are short (often a single Bar) Compositions for Descendants. Unlike Refrains that are specific to a singular Descendant, Jingles are more generic. Where the one true Ring of power has a refrain, all electronic products made by a single fruit-named manufacturer might have the same Jingle.",
+        "Rules": "Jingles are Compositions for Descendants, they are commonly quite generic and broad (such as all products from the manufacturing company sharing the same Jingle). Typically a Character that uses a Descendant with a Jingle must be \"In Tune\" to be affected by the Jingle, matching Key in often in Tune, but any Perfect Interval can also count at the Conductor’s discretion."
+    }
+]

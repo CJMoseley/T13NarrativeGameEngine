@@ -1,0 +1,18 @@
+[
+  {
+    "Type": "Hidden",
+    "Description": "The Conflict embodies a side hidden within a Character who is already an Embodiment (usually of another side), this is often a Character Embodiment such as Incarna, Personality, Core, Hitches, Annexes, Proficiencies, or occasionally as an internal Quest. This creates an Internal Tension and/or Pressure within the Character between the two sides (which may or may not include the Internal Side), that must be resolved through the Plot."
+  },
+  {
+    "Type": "Pulled",
+    "Description": "The Conflict embodies one side within a Character, that the Plot will influence predominantly with Tensions. The Plot may at times use Pressures to Push the Embodiment, but they will default to using Tension on the Character."
+  },
+  {
+    "Type": "Pushed",
+    "Description": "The Conflict embodies one side of the Conflict within a Character, that the Plot will influence predominantly with Pressures. The Plot may at times use Tension to Pull the Embodiment, but they will default to using Pressure on the Character."
+  },
+  {
+    "Type": "External",
+    "Description": "The Conflict embodies this sides Facets Externally to the Characters. Embodiments might include Tones, Hurdles, Monsters, Turns, Failure Levels, Success Levels, Criticals, Fumbles, Locations, Descendants (or Descendant Hitches), Quests, Ordeals, Tests, Pact-Descendents, Quests, Obstacles. External Embodiments are also commonly used in low-Suspense Scenes where Pull or Push Embodiments are not yet meant to meet, often as a stand-in Embodiment for the Character Embodiment. This is called an External Stand-in Embodiment, and they can be used to work Conflicts in a lot of ways, including occasionally as Monsters before the \"real\" Monster is revealed."
+  }
+]

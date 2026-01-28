@@ -1,0 +1,11 @@
+{"id":0,
+"prof":{
+    "Name":"Proficiency",
+    "Description":"Describes the proficiency. A proficiency is the smallest unit of knowledge about any given subject. Proficiencies can be grouped into Annexes, which are the SKills, Talents, Powers and Super-Powers of the Characters. Annexes can also be placed in Descendants, which are the equipment, training and experiences that further enhance a Character. Every aspect of the Game, no matter how many proficiencies it is created from, can also be a single proficiency itself. Some Profciencies can be based within a single Facet, most are available in many Facets, as any Annex Proficiency will be available to all the Facets that donated Proficiencies.",
+    "Tags":{
+        "Facets":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
+        "Scopes":["0"],
+        "Genres":["0"],
+        "Eras":["0"]
+    }
+}}

@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 25,
+    "Name": "Innocence",
+    "Entity": "&#19928;",
+    "Logical": 57,
+    "Trigrams": [
+      3,
+      0
+    ],
+    "Hexagram_Text": "Wu Wang, Innocence (or Unattached / Unexpected / Correctness), is symbolic of not being guilty of any wrong doing. This is the innocence of a law-abiding citizen, and also the innocence of a child. A baby knows the way to grow without instruction, but only with instruction do they learn to be a member of society. The problem is that Innocence is easily broken, corruption abounds, and given time always succeeds.",
+    "Unchanging": "When attacked by a Character you may trigger an Incarna Draw (Boon Double Reduced) Card Psychology Test that must be beaten or the original attack will be redirected.",
+    "Line1": "Innocent Behaviour",
+    "Line2": "Work Is Its Own Reward",
+    "Line3": "Undeserved Misfortune",
+    "Line4": "Persevering",
+    "Line5": "No Medicine",
+    "Line6": "Innocent Inaction"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you maintain your innocence, keep away from wrong-doers, and pestilence",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you see vermin, pestillence or corruption",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "you believe you are doing the right thing, or ask someone to check you are",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yang",
+        "Condition": "you stick to what you know, get on with the task at hand, or seek a teacher",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yang",
+        "Condition": "you are stoic, or fatalistic, exploit of another's innocence (or naivety), or steal something",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yin",
+        "Condition": "you are optimistic, do not play the victim, or persevere",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yin",
+        "Condition": "you are calm, do not seek help or medicines, let nature take its course, or reveal the truth",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yin",
+        "Condition": "you are cautious, prepare defences, wait, or hide",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Innocence Quest indicates that the Quest is based around concepts of youth and/or innocence, this might mean the Quest is set in a school, or out in a bucolic (pastoral, rural, natural or dramatic) environment. Often the Quest will actually be without actual opposition (although opposition may be imagined), or the opposition that is present is instinctual and passive, rather than an active planning opposition, this \"opposition\" is often an animal or child themselves, not aware of the problems they are causing the Quester. The Innocence Quest will occasionally involve the Quester competing against an imagined foe, they might be tasked with holding a castle for a month against an expected siege, only to have the besiegers never appear. The Quester who acts rashly, selfishly or dishonestly will suffer additional Hurdles, Obstacles or Failure Levels throughout the Quest.",
+    "Quest_Complete": "When a Quest ends with the Innocence Hexagram then there is a general sense that everything might turn out okay. Things are generally returning to normal, the world is under good governance and the status-quo is reasserting itself. That isn&#39;t to say that everything will turn out okay for the Quester, if they are not innocent themselves then things may turn on them.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "If the Quester behaves innocently, believing they are doing the right thing, then it should turn out that is true. This adds a Success Level to their Test or Ordeal. If the Quester doubts themselves, however, or does not believe they are acting correctly, then this will add a Failure Level, Obstacle or Hurdle to their Test or Ordeal instead.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester is often tasked with (or sets themselves) a difficult, usually physically arduous task or labour (such as chopping wood, cleaning the house, garage or stables, hauling enough water from a well to fill several barrels, mixing concrete by hand, building a stonewall or a cairn) that has some restriction (often a time limit or a minimum area, or number). This task is usually presented as an additional Medium Stakes Ordeal. The completion of this task will add a Success Level to the Quester&#39;s Ordeal or Test. Failure to complete this task adds a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test instead.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "Bad luck strikes the Quester, often in the form of something being stolen from them or lost. This may be a terrible set-back or a minor inconvenience, but what is important is how the Quester handles this misfortune. If they are stoic, fatalistic about it, or cheerfully accept that their loss is another&#39;s gain, then they may innocently add a Success Level to the Test or Ordeal. If they focus on the loss, hoping it may be returned to them, or worse seek revenge for it, then their innocence is broken and their Test or Ordeal will add at least one Failure Level, Hurdle, or Obstacle.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quest becomes more difficult and dangerous, adding Hurdles, Obstacles and Failure Levels to all Ordeals and Tests. However, if the Quester remains optimistic, grounded and does not get upset at these problems then they may instead add a Success Level on their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "An unexpected evil appears, this may be in the form of an injury or wound that the Quester suffered earlier beginning to fester, or some actual evil character. If the Quester has an injury and they refuse treatment, let nature take its course, or ignore the evil, they gain a Success Level on the next Test or Ordeal. Medical treatment of the injury or the Quester trying to confront this evil will add a Failure Level, Hurdle or Obstacle to the Test or Ordeal instead.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester should not take any action to further their Quest at this time. They may have an instinctive drive to continue, but the attempt will create additional Hurdles, Obstacles or Failure Levels to the Test or Ordeal. For now all that can be done is to prepare, wait or hide.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "Ch'ien, heaven is above; Chên, movement, is below. The lower trigram Chên is under the influence of the strong line it has received form above, from heaven. When, in accord with this, movement follows the law of heaven, man is innocent and without guile. His mind is natural and true, unshadowed by reflection or ulterior designs. For wherever conscious purpose is to be seen, there the truth and innocence of nature have been lost. Nature that is not directed by the spirit is not true but degenerate nature. Starting out with the idea of the natural, the train of thought in part goes somewhat further and thus the hexagram includes also the idea of the fundamental or unexpected.",
+    "The_Image": {
+      "text": "Under heaven thunder rolls:\nAll things attain the natural state of innocence.\n\nThus the kings of old,\nRich in virtue, and in harmony with the time,\nFostered and nourished all beings.",
+      "comments": "In springtime when thunder, life energy, begins to move again under the heavens, everything sprouts and grows, and all beings receive for the creative activity of nature the childlike innocence of their original state. So it is with the good rulers of mankind: drawing on the spiritual wealth at their command, they take care of all forms of life and all forms of culture and do everything to further them, and at the proper time."
+    },
+    "The_Judgment": {
+      "text": "INNOCENCE. Supreme success.\nPerseverance furthers.\nIf someone is not as he should be,\nHe has misfortune,\nAnd it does not further him\nTo undertake anything.",
+      "comments": "Man has received from heaven a nature innately good, to guide him in all his movements. By devotion to this divine spirit within himself, he attains an unsullied innocence that leads him to do right with instinctive sureness and without any ulterior thought of reward and personal advantage. This instinctive certainty brings about supreme success and 'furthers through perseverance\". However, not everything instinctive is nature in this higher sense of the word, but only that which is right and in accord with the will of heaven. Without this quality of rightness, an unreflecting, instinctive way of acting brings only misfortune. Confucius says about this: \"He who departs from innocence, what does he come to? Heaven's will and blessing do not go with his deeds.\""
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Innocent behavior brings good fortune.",
+        "comments": "The original impulses of the heart are always good, so that we may follow them confidently, assured of good fortune and achievement of our aims."
+      },
+      "2": {
+        "text": "If one does not count on the harvest while plowing,",
+        "comments": "Nor on the use of the ground while clearing it,\nIt furthers one to undertake something.\n\nWe should do every task for its own sake as time and place demand and not with an eye to the result. Then each task turns out well, and anything we undertake succeeds."
+      },
+      "3": {
+        "text": "Undeserved misfortune.",
+        "comments": "The cow that was tethered by someone\nIs the wanderer's gain, the citizen's loss.\n\nSometimes undeserved misfortune befalls a man at the hands of another, as for instance when someone passes by and takes a tethered cow along with him. His gain is the owner's loss. In all transactions, no matter how innocent, we must accommodate ourselves to the demands of the time, otherwise unexpected misfortune overtakes us."
+      },
+      "4": {
+        "text": "He who can be persevering\nRemains without blame.",
+        "comments": "We cannot lose what really belongs to us, even if we throw it away. Therefore we need have no anxiety. All that need concern us is that we should remain true to our own natures and not listen to others."
+      },
+      "5": {
+        "text": "Use no medicine in an illness\nIncurred through no fault of your own.\nIt will pass of itself.",
+        "comments": "An unexpected evil may come accidentally from without. If it does not originate in one's own nature or have a foothold there, one should not resort to external means to eradicate it, but should quietly let nature take its course. Then improvement will come of itself."
+      },
+      "6": {
+        "text": "Innocent action brings misfortune.",
+        "comments": "Nothing furthers.\n\nWhen, in a given situation, the time is not ripe for further progress, the best thing to do is to wait quietly, without ulterior designs. If one acts thoughtlessly and tries to push ahead in opposition to fate, success will not be achieved."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Innocence'. Internalize this core philosophy: Ch'ien, heaven is above; Chên, movement, is below. The lower trigram Chên is under the influence of the strong line it has received form above, from heaven. When, in accord with this, movement follows the law of heaven, man is innocent and without guile. His mind is natural and true, unshadowed by reflection or ulterior designs. For wherever conscious purpose is to be seen, there the truth and innocence of nature have been lost. Nature that is not directed by the spirit is not true but... Your current worldview is: \"Wu Wang, Innocence (or Unattached / Unexpected / Correctness), is symbolic of not being guilty of any wrong doing. This is the innocence of a law-abiding citizen, and also the innocence of a child. A baby knows the way to grow without instruction, but only with instruction do they learn to be a member of society. The problem is that Innocence is easily broken, corruption abounds, and given time always succeeds.\". Let your choices be subtly driven by these conditions: you maintain your innocence, keep away from wrong-doers, and pestilence, you see vermin, pestillence or corruption. When interacting, mirror the wisdom found in the commentary: \"Man has received from heaven a nature innately good, to guide him in all his movements. By devotion to this divine spirit within himself, he attains an unsullied innocence that leads him to do right with instinctive sureness and without any ulterior thought of reward and personal advantage. This...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Innocence'. The primary quest objective is: The Innocence Quest indicates that the Quest is based around concepts of youth and/or innocence, this might mean the Quest is set in a school, or out in a bucolic (pastoral, rural, natural or dramatic) environment. Often the Quest will actually be without actual opposition (although opposition may be imagined), or the opposition that is present is instinctual and passive, rather than an active planning opposition, this \"opposition\" is often an animal or child themselves, not aware of the problems they are causing the Quester. The Innocence Quest will occasionally involve the Quester competing against an imagined foe, they might be tasked with holding a castle for a month against an expected siege, only to have the besiegers never appear. The Quester who acts rashly, selfishly or dishonestly will suffer additional Hurdles, Obstacles or Failure Levels throughout the Quest.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: In springtime when thunder, life energy, begins to move again under the heavens, everything sprouts and grows, and all beings receive for the creative activity of nature the childlike innocence of their original state. So it is with the good rulers of mankind: drawing on the spiritual wealth at their command, they take care of all forms of life and all forms of culture and do everything to... Use the following line-specific challenges to pace the story: If the Quester behaves innocently, believing they are doing the right thing, then it should turn out that is true. This adds a Success Level to their Test or Ordeal. If the Quester doubts themselves, however, or does not believe they are acting correctly, then this will add a Failure Level, Obstacle or Hurdle to their Test or Ordeal instead. | The Quester is often tasked with (or sets themselves) a difficult, usually physically arduous task or labour (such as chopping wood, cleaning the house, garage or stables, hauling enough water from a well to fill several barrels, mixing concrete by hand, building a stonewall or a cairn) that has some restriction (often a time limit or a minimum area, or number). This task is usually presented as an additional Medium Stakes Ordeal. The completion of this task will add a Success Level to the Quester&#39;s Ordeal or Test. Failure to complete this task adds a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test instead. | Bad luck strikes the Quester, often in the form of something being stolen from them or lost. This may be a terrible set-back or a minor inconvenience, but what is important is how the Quester handles this misfortune. If they are stoic, fatalistic about it, or cheerfully accept that their loss is another&#39;s gain, then they may innocently add a Success Level to the Test or Ordeal. If they focus on the loss, hoping it may be returned to them, or worse seek revenge for it, then their innocence is broken and their Test or Ordeal will add at least one Failure Level, Hurdle, or Obstacle. | The Quest becomes more difficult and dangerous, adding Hurdles, Obstacles and Failure Levels to all Ordeals and Tests. However, if the Quester remains optimistic, grounded and does not get upset at these problems then they may instead add a Success Level on their Ordeal or Test. | An unexpected evil appears, this may be in the form of an injury or wound that the Quester suffered earlier beginning to fester, or some actual evil character. If the Quester has an injury and they refuse treatment, let nature take its course, or ignore the evil, they gain a Success Level on the next Test or Ordeal. Medical treatment of the injury or the Quester trying to confront this evil will add a Failure Level, Hurdle or Obstacle to the Test or Ordeal instead. | The Quester should not take any action to further their Quest at this time. They may have an instinctive drive to continue, but the attempt will create additional Hurdles, Obstacles or Failure Levels to the Test or Ordeal. For now all that can be done is to prepare, wait or hide.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Innocent Behaviour): Mirror the internal state described in the commentary: \"The original impulses of the heart are always good, so that we may follow them confidently, assured of good fortune and achievement of our aims.\" Your actions should be framed by the goal: you believe you are doing the right thing, or ask someone to check you are.",
+        "Plot": "Plot Complication Line 1 (Innocent Behaviour): Introduce a challenge based on the interpretation: \"The original impulses of the heart are always good, so that we may follow them confidently, assured of good fortune and achievement of our aims.\" The specific quest objective for this stage is: If the Quester behaves innocently, believing they are doing the right thing, then it should turn out that is true. This adds a Success Level to their Test or Ordeal. If the Quester doubts themselves, however, or does not believe they are acting correctly, then this will add a Failure Level, Obstacle or Hurdle to their Test or Ordeal instead."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Work Is Its Own Reward): Mirror the internal state described in the commentary: \"Nor on the use of the ground while clearing it,\nIt furthers one to undertake something.\n\nWe should do every task for its own sake as time and place demand and not with an eye to the result. Then each task turns out well, and anything we undertake...\" Your actions should be framed by the goal: you stick to what you know, get on with the task at hand, or seek a teacher.",
+        "Plot": "Plot Complication Line 2 (Work Is Its Own Reward): Introduce a challenge based on the interpretation: \"Nor on the use of the ground while clearing it,\nIt furthers one to undertake something.\n\nWe should do every task for its own sake as time and place demand and not with an eye to the result. Then each task turns out well, and anything we undertake...\" The specific quest objective for this stage is: The Quester is often tasked with (or sets themselves) a difficult, usually physically arduous task or labour (such as chopping wood, cleaning the house, garage or stables, hauling enough water from a well to fill several barrels, mixing concrete by hand, building a stonewall or a cairn) that has some restriction (often a time limit or a minimum area, or number). This task is usually presented as an additional Medium Stakes Ordeal. The completion of this task will add a Success Level to the Quester&#39;s Ordeal or Test. Failure to complete this task adds a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test instead."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Undeserved Misfortune): Mirror the internal state described in the commentary: \"The cow that was tethered by someone\nIs the wanderer's gain, the citizen's loss.\n\nSometimes undeserved misfortune befalls a man at the hands of another, as for instance when someone passes by and takes a tethered cow along with him. His gain is the...\" Your actions should be framed by the goal: you are stoic, or fatalistic, exploit of another's innocence (or naivety), or steal something.",
+        "Plot": "Plot Complication Line 3 (Undeserved Misfortune): Introduce a challenge based on the interpretation: \"The cow that was tethered by someone\nIs the wanderer's gain, the citizen's loss.\n\nSometimes undeserved misfortune befalls a man at the hands of another, as for instance when someone passes by and takes a tethered cow along with him. His gain is the...\" The specific quest objective for this stage is: Bad luck strikes the Quester, often in the form of something being stolen from them or lost. This may be a terrible set-back or a minor inconvenience, but what is important is how the Quester handles this misfortune. If they are stoic, fatalistic about it, or cheerfully accept that their loss is another&#39;s gain, then they may innocently add a Success Level to the Test or Ordeal. If they focus on the loss, hoping it may be returned to them, or worse seek revenge for it, then their innocence is broken and their Test or Ordeal will add at least one Failure Level, Hurdle, or Obstacle."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Persevering): Mirror the internal state described in the commentary: \"We cannot lose what really belongs to us, even if we throw it away. Therefore we need have no anxiety. All that need concern us is that we should remain true to our own natures and not listen to others.\" Your actions should be framed by the goal: you are optimistic, do not play the victim, or persevere.",
+        "Plot": "Plot Complication Line 4 (Persevering): Introduce a challenge based on the interpretation: \"We cannot lose what really belongs to us, even if we throw it away. Therefore we need have no anxiety. All that need concern us is that we should remain true to our own natures and not listen to others.\" The specific quest objective for this stage is: The Quest becomes more difficult and dangerous, adding Hurdles, Obstacles and Failure Levels to all Ordeals and Tests. However, if the Quester remains optimistic, grounded and does not get upset at these problems then they may instead add a Success Level on their Ordeal or Test."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (No Medicine): Mirror the internal state described in the commentary: \"An unexpected evil may come accidentally from without. If it does not originate in one's own nature or have a foothold there, one should not resort to external means to eradicate it, but should quietly let nature take its course. Then improvement...\" Your actions should be framed by the goal: you are calm, do not seek help or medicines, let nature take its course, or reveal the truth.",
+        "Plot": "Plot Complication Line 5 (No Medicine): Introduce a challenge based on the interpretation: \"An unexpected evil may come accidentally from without. If it does not originate in one's own nature or have a foothold there, one should not resort to external means to eradicate it, but should quietly let nature take its course. Then improvement...\" The specific quest objective for this stage is: An unexpected evil appears, this may be in the form of an injury or wound that the Quester suffered earlier beginning to fester, or some actual evil character. If the Quester has an injury and they refuse treatment, let nature take its course, or ignore the evil, they gain a Success Level on the next Test or Ordeal. Medical treatment of the injury or the Quester trying to confront this evil will add a Failure Level, Hurdle or Obstacle to the Test or Ordeal instead."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Innocent Inaction): Mirror the internal state described in the commentary: \"Nothing furthers.\n\nWhen, in a given situation, the time is not ripe for further progress, the best thing to do is to wait quietly, without ulterior designs. If one acts thoughtlessly and tries to push ahead in opposition to fate, success will not be...\" Your actions should be framed by the goal: you are cautious, prepare defences, wait, or hide.",
+        "Plot": "Plot Complication Line 6 (Innocent Inaction): Introduce a challenge based on the interpretation: \"Nothing furthers.\n\nWhen, in a given situation, the time is not ripe for further progress, the best thing to do is to wait quietly, without ulterior designs. If one acts thoughtlessly and tries to push ahead in opposition to fate, success will not be...\" The specific quest objective for this stage is: The Quester should not take any action to further their Quest at this time. They may have an instinctive drive to continue, but the attempt will create additional Hurdles, Obstacles or Failure Levels to the Test or Ordeal. For now all that can be done is to prepare, wait or hide."
+      }
+    }
+  }
+}

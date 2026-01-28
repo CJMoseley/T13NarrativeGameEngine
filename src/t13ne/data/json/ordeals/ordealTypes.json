@@ -1,0 +1,38 @@
+[
+    {
+        "Type": "Railroad",
+        "Suitable_For": "Simple Linear Ordeals such as Item Creation, Lock-picking, or Linear Travel",
+        "Description": "Each Stage follows on from the previous Stage only if the Character completes that Stage. If they have to build a fire in the forge as the first step and fail, they will never forge that sword. There may be choices (from Kings, etc) in individual Stages, but the choices are generally irrelevant to the next Stage. It matters very little if the forge is lit with wood or paper, or if the main fuel is charcoal or coal, or if the bellows are pumped by hand or foot.",
+        "Image": "railroad.svg"
+    },
+    {
+        "Type": "Forking",
+        "Suitable_For": "Any activity that has simple choices, with limited repercussions from those choices. Such as Travel Ordeals, Item Creation Ordeals, or simple Tournaments.",
+        "Description": "Forking is similar to the Railroad, but is complicated because Choices generally create different routes through the Ordeal. If a King indicates a number of choices then there will be multiple routes from that point to the end of the Ordeal. When making a Sword you have a choice whether to work from ore, or a prepared ingot, whether to cast the blade or fold it, etc. Each choice has different effects on the Difficulty of the next Stage, and can even vary the number of Stages, or the Stakes, of the Ordeal.",
+        "Image": "forking.svg"
+    },
+    {
+        "Type": "Pyramid",
+        "Suitable_For": "Any situation where multiple options are roughly equivalent, but absolute Failure is not a real option, but adds additional complications before the goal can be realised.",
+        "Description": "The Pyramid stack begins with One Stage, but then each Stage after that has an increasing number of choices. It is designed for situations where Failure is an option in each Stage, but does not stop progress towards the goal. When creating a sword if you fail to light the forge, perhaps you instead use electricity, or magic, to melt the metal ore. Success in each Stage means proceeding down the Right-most Choice, Failure will lead to the Left choice beneath the Stage you are in. When Stages offer choices, these Choices may lead to various Stages on the next level as the Yarn-Telller decides and the Character chooses, however failure can result in moving left at the same level, or even being moved up to a different level in a location that cannot lead back to the choice.",
+        "Image": "pyramid.svg"
+    },
+    {
+        "Type": "Block",
+        "Suitable_For": "A simple representation of either a physical grid of locations, or a complex Ordeal such as a Heist.",
+        "Description": "The Block spread consists of a grid of Stages. These may represent physical Locations, that are similarly connected as a Cartesian grid. Movement between Stages is directed by the players' Actions, if they are successful they can move into the next Stage of their choice. Failure means they must move in a different direction, usually chosen by the Yarn-Teller, or a random 1d8 roll <table class=\"t13ne-table t13ne-display\"><tr><td>1</td><td>2</td><td>3</td></tr><tr><td>4</td><td>Current Stage</td><td>5</td></tr><tr><td>6</td><td>7 (Preferred Direction of Travel)</td><td>8</td></tr></table> This may represent an inability to cross an Obstacle, or simply having to proceed by a different route due to circumstances. Failure to get the right fuel for the forge can mean having to work the bellows harder to maintain temperature, etc. Cards around the current Stage can be read as Obstacles within the Stage or as blocking progress.",
+        "Image": "block.svg"
+    },
+    {
+        "Type": "Tree-of-Life",
+        "Suitable_For": "This spread is intended for situations where there are good, bad and indifferent end results, or where an Ordeal begins from a Choice of how to begin. It can work great for social Ordeals such as persuasion and seduction.",
+        "Description": "Also known as the three Column Spread. This is essentially three parallel railroads, but the Characters can switch tracks at any time. It matters very little if the forge is lit with wood or paper, or if the main fuel is charcoal or coal, or if the bellows are pumped by hand or foot.",
+        "Image": "tree-of-life.svg"
+    },
+    {
+        "Type": "Geo-Map",
+        "Suitable_For": "Geographical locations, explored by Characters, such as a classic \"Dungeon\".",
+        "Description": "The Geo-Map is most literally a Map of the Ordeal Locations, that has key points (the Stages) marked within it. If a room is a Stage, then Obstacles like Doors must be overcome to get to the next Stage. Rooms may have Difficulties that need to be overcome (climbing Stairs, walls, pushing through clutter, or actual Obstacles or Traps).",
+        "Image": "geo-map.svg"
+    }
+]

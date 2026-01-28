@@ -1,0 +1,574 @@
+[
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-1",
+        "data": {
+            "Name": "12Bar/ I-I-I-I-IV-IV-I-I-V-IV-I-I",
+            "Progression": [
+                "I",
+                "I",
+                "I",
+                "I",
+                "IV",
+                "IV",
+                "I",
+                "I",
+                "V",
+                "IV",
+                "I",
+                "I"
+            ],
+            "Quality": "Major",
+            "Character_Progression": "12 Bar Blues are notable for the fast changes and quick beats. However it can be difficult to realise the changes are fast when they repeat on the bar."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-2",
+        "data": {
+            "Name": "Canon/ I-V-vi-iii-IV-I-IV-V",
+            "Progression": [
+                "I",
+                "V",
+                "vi",
+                "iii",
+                "IV",
+                "I",
+                "IV",
+                "V"
+            ],
+            "Quality": "Major",
+            "Character_Progression": "The Canon progression named after Pachibel&apos;s Canon in D has a light, loving feeling, where each Chord builds lightly upon the emotions displayed before until a loving harmony is arranged."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-3",
+        "data": {
+            "Name": "I-&flat;VII-I",
+            "Progression": [
+                "I",
+                "&flat;VII",
+                "I"
+            ],
+            "Quality": "Mixolydian",
+            "Character_Progression": "Falling a whole tone to the Subtonic and then rising again gives a surprising take on the I-V-I pattern that carries as much energy, but is equally as repetitive with time. This is a series of surprising events that return to normality afterward over and over again."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-4",
+        "data": {
+            "Name": "I-ii-V-I",
+            "Progression": [
+                "I",
+                "ii",
+                "V",
+                "I"
+            ],
+            "Quality": "Major",
+            "Character_Progression": "This is a Major progression that relies implies a journey, the Character will stumble to cope with some aspect, but then rise above it, grasp it and go on to return home better somehow. "
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-5",
+        "data": {
+            "Name": "I-ii-vi-IV-I",
+            "Progression": [
+                "I",
+                "ii",
+                "vi",
+                "IV",
+                "I"
+            ],
+            "Quality": "Major",
+            "Character_Progression": "This is a Major Progression that relies on a return to resolve. This has a very mixed feeling because of hte strong Minor presence, and implies a great loss or personal sorrow along the way. It is often a journey, where we stumble and fall, but then something lifts us before we return home."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-6",
+        "data": {
+            "Name": "I-iii-&flat;VII-ii",
+            "Progression": [
+                "I",
+                "iii",
+                "&flat;VII",
+                "ii"
+            ],
+            "Quality": "Major",
+            "Character_Progression": "This is a progression variant of the Cliche that replaces the Submediant with the Mixolydian Subtonic, and uses the relative minors of the Majors, these are often arranged to descend through each progression, giving a sense of collapse. The additional use of minors creates more of a sense of falling emotionally, adding a sense of desperation to the progression."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-7",
+        "data": {
+            "Name": "I-&flat;III-IV-iv",
+            "Progression": [
+                "I",
+                "&flat;III",
+                "IV",
+                "iv"
+            ],
+            "Quality": "Major",
+            "Character_Progression": "This is an uncommon progression, that indicates something strange or unusual is at hand. The progression is filled with surprises, and has a strange downward energy, that usuallly doesn't end well for the heroes."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-8",
+        "data": {
+            "Name": "I-&flat;III-IV-V",
+            "Progression": [
+                "I",
+                "&flat;III",
+                "IV",
+                "V"
+            ],
+            "Quality": "Major",
+            "Character_Progression": "This is a powerful rejoiceful progression, it has no Minor components "
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-9",
+        "data": {
+            "Name": "I-III-IV-V",
+            "Progression": [
+                "I",
+                "&flat;III",
+                "IV",
+                "V"
+            ],
+            "Quality": "Major",
+            "Character_Progression": ""
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-10",
+        "data": {
+            "Name": "I-iii-IV-V",
+            "Progression": [
+                "I",
+                "iii",
+                "IV",
+                "V"
+            ],
+            "Quality": "Major",
+            "Character_Progression": "This is the classic building tension progression. We start at home, something changes and home isn't as safe as it once was, then some positive forces add additional tension, twice, before we fall back to the tonic, releasing all the gained tension, and repeat."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-11",
+        "data": {
+            "Name": "I-iii-IV-vi",
+            "Progression": [
+                "I",
+                "iii",
+                "IV",
+                "vi"
+            ],
+            "Quality": "Major",
+            "Character_Progression": ""
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-12",
+        "data": {
+            "Name": "i-III-IV-VI",
+            "Progression": [
+                "i",
+                "III",
+                "IV",
+                "VI"
+            ],
+            "Quality": "Major",
+            "Character_Progression": ""
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-13",
+        "data": {
+            "Name": "i-III-iv-VI",
+            "Progression": [
+                "i",
+                "III",
+                "iv",
+                "VI"
+            ],
+            "Quality": "Minor",
+            "Character_Progression": ""
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-14",
+        "data": {
+            "Name": "I-III-vi",
+            "Progression": [
+                "I",
+                "III",
+                "vi"
+            ],
+            "Quality": "Major",
+            "Character_Progression": ""
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-15",
+        "data": {
+            "Name": "I-III7-IV7-II7-V7-I",
+            "Progression": [
+                "I",
+                "III<sup>7</sup>",
+                "IV<sup>7</sup>",
+                "II<sup>7</sup>",
+                "V<sup>7</sup>",
+                "I"
+            ],
+            "Quality": "Mixolydian/Major",
+            "Character_Progression": ""
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-16",
+        "data": {
+            "Name": "I-IV-&flat;VII-IV-I",
+            "Progression": [
+                "I",
+                "IV",
+                "&flat;VII",
+                "IV",
+                "I"
+            ],
+            "Quality": "Major",
+            "Character_Progression": "This is a progression variant of the Cliche that replaces the Submediant with the Mixolydian Subtonic, but never ustilises the Dominant. Instead we climb to a surprising place, and then descend to home again. This can repeat, with the \"I\"s becoming merged in the cycle, which can then create a "
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-17",
+        "data": {
+            "Name": "I-IV-I",
+            "Progression": [
+                "I",
+                "IV",
+                "I"
+            ],
+            "Quality": "Major",
+            "Character_Progression": "Rising from the tonic to subdominant to fall again to the tonic, gives a shocking variant on the I-V-I which still carries a lot of energy, as is repetitive is more satifying than the predictable authentic cadence."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-18",
+        "data": {
+            "Name": "I-IV-I-V",
+            "Progression": [
+                "I",
+                "IV",
+                "I",
+                "V"
+            ],
+            "Quality": "Major",
+            "Character_Progression": ""
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-19",
+        "data": {
+            "Name": "I-IV-ii-V",
+            "Progression": [
+                "I",
+                "IV",
+                "ii<sup>o</sup>",
+                "V"
+            ],
+            "Quality": "Major",
+            "Character_Progression": ""
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-20",
+        "data": {
+            "Name": "i-iv-v",
+            "Progression": {
+                "0": "i",
+                "1": "iv",
+                "2": "v",
+                "Quality": "Minor"
+            },
+            "Character_Progression": ""
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-21",
+        "data": {
+            "Name": "I-IV-V",
+            "Progression": [
+                "I",
+                "IV",
+                "V"
+            ],
+            "Quality": "Major",
+            "Character_Progression": "The I-IV-V progression is a standard progression that often opens pieces as it clearly defines the key, and establishes the quality of the tone as well. In Character terms these are three positive emotional experiences that define the Character, and wind up the tension, without changing them at all."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-22",
+        "data": {
+            "Name": "I-IV-V-IV",
+            "Progression": [
+                "I",
+                "IV",
+                "V",
+                "IV"
+            ],
+            "Quality": "Major",
+            "Character_Progression": "A variant on the Cliche that ignores the Submediant for the subdominant. This gives a harmonic rocking feeling to the progression."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-23",
+        "data": {
+            "Name": "I-IV-vii<sup>o</sup>-iii-vi-ii-V-I",
+            "Progression": [
+                "I",
+                "IV",
+                "vii<sup>o</sup>",
+                "iii",
+                "vi",
+                "ii",
+                "V",
+                "I"
+            ],
+            "Quality": "Major",
+            "Character_Progression": "The Circle of Fifths progression extended through the entire scale (including the diminished fifth). Theoretically this circle can continue indefinitely, each rotation adding complexity as the minors add losses, obstacles and Hazards, where as the Major chords add successes and gains, that may feel hollow due to the descending tones."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-24",
+        "data": {
+            "Name": "I-V-&flat;VII-IV",
+            "Progression": [
+                "I",
+                "V",
+                "&flat;VII",
+                "IV"
+            ],
+            "Quality": "Major",
+            "Character_Progression": "This is a progression variant of the Cliche that replaces the Submediant with the Mixolydian Subtonic, these are often arranged to descend through each progression, giving a sense of structured collapse to the whole progression."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-25",
+        "data": {
+            "Name": "I-V-I",
+            "Progression": [
+                "I",
+                "V",
+                "I"
+            ],
+            "Quality": "Major",
+            "Character_Progression": "Rising from the tonic to dominant to fall again to the tonic is known as authentic cadence, and while it carries a lot of energy, it quickly becomes repetitive and predictable."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-26",
+        "data": {
+            "Name": "I-V-vi-IV",
+            "Progression": [
+                "I",
+                "V",
+                "vi",
+                "IV"
+            ],
+            "Quality": "Major",
+            "Character_Progression": "This progression is a Cliche to the point that \"every\" optimistic pop song uses this progression. This is a we stumble, but we get up, kind of progression."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-27",
+        "data": {
+            "Name": "I-V-vi-iii",
+            "Progression": [
+                "I",
+                "V",
+                "vi",
+                "iii"
+            ],
+            "Quality": "Major",
+            "Character_Progression": "This progression is almost the Cliche, but here we climb, stumble and fall. It tends to be a heartache"
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-28",
+        "data": {
+            "Name": "I-vi-II-IV",
+            "Progression": [
+                "I",
+                "vi",
+                "III",
+                "IV"
+            ],
+            "Quality": "Major",
+            "Character_Progression": ""
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-29",
+        "data": {
+            "Name": "I-vi-ii-V",
+            "Progression": [
+                "I",
+                "vi",
+                "ii",
+                "V"
+            ],
+            "Quality": "Major",
+            "Character_Progression": "A variant on the Circle Progression that was common in 50s pop and rock music, sometimes known as the Doo-wap progression. This gives a collapsing progression that falls into a blues "
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-30",
+        "data": {
+            "Name": "i-VI-III-VII",
+            "Progression": [
+                "i",
+                "VI",
+                "III",
+                "VII"
+            ],
+            "Quality": "Minor",
+            "Character_Progression": ""
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-31",
+        "data": {
+            "Name": "I-vi-IV-V",
+            "Progression": [
+                "I",
+                "vi",
+                "IV",
+                "V"
+            ],
+            "Quality": "Major",
+            "Character_Progression": "Common in popular music, especially in the 50s and 60s, it can also be the basis of the 80s Rock Ballad, as the Major Tonic leads straight into the Submediant colour and darkness, before falling to the subdominant and climbing to the dominant once again (although often structured as a fall). "
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-32",
+        "data": {
+            "Name": "ii-&flat;VII-IV-I",
+            "Progression": [
+                "ii",
+                "&flat;VII",
+                "IV",
+                "I"
+            ],
+            "Quality": "Major",
+            "Character_Progression": "Alternative Rock and Punk-Pop Mixolydian variant, we start in a bad place, move to a strange place (a backdoor turnaround), before something happens that finally brings resolution."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-33",
+        "data": {
+            "Name": "ii-V-I",
+            "Progression": [
+                "ii",
+                "V",
+                "I"
+            ],
+            "Quality": "Major",
+            "Character_Progression": "The ii-V-I turnaround as it is known is a common cadential chords progression used in a lot of musical genres, from Jazz to hip-hop via country. The jump from Minor Supertonic to Major Dominant and then drop to Major Tonic, blends the Major and Minor parts of the Key fully, before revealling the Tonic. This brings sorrow and joy together to define the key as whole."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-34",
+        "data": {
+            "Name": "iii-I-V-ii",
+            "Progression": [
+                "iii",
+                "I",
+                "V",
+                "ii"
+            ],
+            "Quality": "Major",
+            "Character_Progression": "Alternative, we start in a bad place, recover slightly, make some kind of personal progress or success, and then desecend into a bad place once again."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-35",
+        "data": {
+            "Name": "IV-I-V-vi",
+            "Progression": [
+                "IV",
+                "I",
+                "V",
+                "vi"
+            ],
+            "Quality": "Major",
+            "Character_Progression": "This progression variant of the Cliche that occurs a lot in Pop music "
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-36",
+        "data": {
+            "Name": "IV-ii-vi-iii",
+            "Progression": [
+                "IV",
+                "ii",
+                "vi",
+                "iii"
+            ],
+            "Quality": "Major",
+            "Character_Progression": "Alternative, the reliance on the minor chords from the Major Scale adds a lot of darkness and loss to the progression. Which starts in a good place, falls and climbs (but to a shaky place) and then falls to the end."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-37",
+        "data": {
+            "Name": "V-IV-I",
+            "Progression": [
+                "V",
+                "IV",
+                "I"
+            ],
+            "Quality": "Major",
+            "Character_Progression": "The V-IV-I progression is also known as the Blues Turnaround, and is seen as backwards to the normal I-IV-V progression, and gives an impression it is unwinding from the Dominant towards the Tonic. This gives the progression an air of relaxation."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-38",
+        "data": {
+            "Name": "V-vi-IV-I",
+            "Progression": [
+                "V",
+                "vi",
+                "IV",
+                "I"
+            ],
+            "Quality": "Major",
+            "Character_Progression": "This is a progression variant of the Cliche. It starts strong and bright, rises into a troublesome minor, before falling back towards stability, and resolution."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-39",
+        "data": {
+            "Name": "vi-ii-V-I",
+            "Progression": [
+                "vi",
+                "ii",
+                "V",
+                "I"
+            ],
+            "Quality": "Major",
+            "Character_Progression": "Called the Circle Progression, it is considered the strongest and most predictable of the harmonic progressions, as each change is a descending Fifth or Ascending Fourth. It is not quite the true Circle, but covers most of the Scale."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-PROGRESSIONS-40",
+        "data": {
+            "Name": "vi-IV-I-V",
+            "Progression": [
+                "vi",
+                "IV",
+                "I",
+                "V"
+            ],
+            "Quality": "Major",
+            "Character_Progression": "This is a pessimistic variant of the Cliche that turns up a lot in all genres. The start in Minor creates a sense of longing or loss in the beginning, that never feels quite resolved, even after passing through the I chord. This can also be expressed as a \"Don&apos;t-Something-Me\" song (trust, love, forget, hurt, etc), or a recognition that something is wrong with the Character, and that&apos;s okay."
+        }
+    }
+]

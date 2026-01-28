@@ -1,0 +1,177 @@
+{
+  "Hexagram": {
+    "Number": 37,
+    "Name": "Family",
+    "Entity": "&#19940;",
+    "Logical": 53,
+    "Trigrams": [
+      2,
+      4
+    ],
+    "Hexagram_Text": "Chia Jen, Family (or The Clan or Dwelling People), is symbolic of the support that an extended family provides. It is the family home, the kitchen and hearth, faithfulness, and everything we feel we are is usually gifted to us by our family. Rich or Poor alike can agree it is all they have at times.",
+    "Unchanging": "You may, when working with family (or very close friends or lovers), add Incarna Draw (Boon Double Reduced) Success Levels to every action by a 'family' member once per Session / Chapter / Episode.",
+    "Line1": "Family Rules",
+    "Line2": "Family Routine",
+    "Line3": "Family Peacemaker",
+    "Line4": "Matriarch",
+    "Line5": "Patriarch",
+    "Line6": "Family Business"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you co-operate with, support, or are supported by another",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "you set or follow a rule",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yin",
+        "Condition": "you try to maintain order",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yang",
+        "Condition": "you talk about mutual benefits, expectations, or punishments",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yin",
+        "Condition": "you work with others, or finances",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you show respect, or are shown it in return",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yin",
+        "Condition": "others gain any Sway or Chi",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Family Quest shows the Quester their duties, roles and responsibilities in their society, because the family is the microcosm of society as a whole, the father and mother represent authorities, the older son may also have an authoritative, but less responsible, role, whereas younger sons and daughters have roles that include obedience, but reduced responsibilities. The Family Quest therefore explores the Quester&#39;s social situation, whether as closely as their family, or as broadly as their species.",
+    "Quest_Complete": "The Quest that ends in the Family Hexagram is one that finds the Quester in a familiar place once again. This place is one that they find harmonious and should feel safe in (if only because they are used to it). The situation may make companions uncomfortable as it is dissimilar to their own home experience.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "Ground rules control how we all interact. If everyone follows the rules then there will be success (and add a Success Level to the Test or Ordeal). If the Quester deliberately breaks rules or laws to accomplish their goals then add a Failure Level, Hurdle or Obstacle to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The routine of the everyday is a busy enough schedule that Quester should be kept busy. If the Quester is kept too busy to work on their Quest, then add a Success Level to their Test or Ordeal. If the Quester is not too busy and manages to work towards their Quest goals then add a Failure Level, Hurdle or Obstacle to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "There is some argument or trouble between members of the family or society. A balance between the needs of members and their responsibilities must be made, as at the moment some needs are being ignored and some responsibilities are not being performed. The Quester should help resolve these issues, or they will add a Failure Level, Hurdle or Obstacle to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quest involves a Matriarchal character. They may be an older woman, such as a Grandmother, or simply be a character concerned with the welfare of others within the society or family. The Quester should learn from this Matriarch, whether it be how to keep a family fed on a budget, or simply the power of working with others. If the Quester is wasteful, or does not work well with others for the benefit of all, then add a Failure Level, Hurdle or Obstacle to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quest involves a Patriarchal character, they are respected and powerful, not to be feared, but trusted. If the Quester learns from their example then they will add a Success Level to the next Test or Ordeal. If the Quester does not show respect to others, or acts to undermine trust, then add a Hurdle, Failure Level, or Obstacle instead.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quest involves some family business or social agenda that the Quester is expected to become a part of. If they accept their role in the business then they add a Success Level to the Test or Ordeal. If the Quester rejects the social agenda and their position within it, then add a Hurdle, Obstacle or Failure Level instead.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "The hexagram represents the laws obtaining within the family. The strong line at the top represents the father, the lowest the son. The strong line in the fifth place represents the husband, the yielding second line the wife. On the other hand, the two strong lines in the fifth and the third place represent two brothers, and the two weak lines correlated with them in the fourth and the second place stand for their respective wives. Thus all the connections and relationships within the family find their appropriate expression. Each individual line has the character according with its place. The fact that a strong line occupies the sixth place-where a weak line might be expected-indicates very clearly the strong leadership that must come from the head of the family. The line is to be considered here not in its quality as the sixth but in its quality as the top line. THE FAMILY shows the laws operative within the household that, transferred to outside life, keep the state and the world in order. The influence that goes out from within the family is represented by the symbol of the wind created by fire.",
+    "The_Image": {
+      "text": "Wind comes forth from fire:\n\nThe image of THE FAMILY.Thus the superior man has substance in his words\nAnd duration in his way of life.",
+      "comments": "Heat creates energy: this is signified by the wind stirred up by the fire and issuing forth form it. This represents influence working from within outward. The same thing is needed in the regulation of the family. Here too the influence on others must proceed form one's own person. In order to be capable of producing such an influence, one's words must have power, and this they can have only if they are based on something real, just as flame depends on its fuel Words have influence only when they are pertinent and clearly related to definite circumstances. General discourses and admonitions have no effect whatsoever. Furthermore, the words must be supported by one's entire conduct, just as the wind is made effective by am impression on others that they can adapt and conform to it. If words and conduct are not in accord and consistent, they will have no effect."
+    },
+    "The_Judgment": {
+      "text": "THE FAMILY. The perseverance of the woman furthers.",
+      "comments": "The foundation of the family is the relationship between husband and wife. The tie that hold the family together lies in the loyalty and perseverance of the wife. The tie that holds the family together lies in the loyalty and perseverance of the wife. Her place is within (second line), while that of the husband is without (fifth line). It is in accord with the great laws of nature that husband and wife take their proper places. Within the family a strong authority is needed; this is represented by the parents. If the father is really a father and the son a son, if the elder brother fulfills his position, and the younger fulfills his, if the husband is really a husband and the wife a wife, then the family is in order. When the family is in order, all the social relationships of mankind will be in order. Three of the five social relationships are to be found within the family-that between father and son, which is the relation of love, that between the husband and wife, which is the relation of chaste conduct, and that between elder and younger brother, which is the relation of correctness. The loving reverence of the son is then carried over to the prince in the form of faithfulness to duty; the affection and correctness of behavior existing between the two brothers are extended to a friend in the form of loyalty, and to a person of superior rank in the form of deference. The family is society in the embryo; it is the native soil on which performance of moral duty is made early through natural affection, so that within a small circle a basis of moral practice is created, and this is later widened to include human relationships in general."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Firm seclusion within the family.\nRemorse disappears.",
+        "comments": "The family must form a well-defined unit within which each member knows his place. From the beginning each child must be accustomed to firmly established rules of order, before ever its will is directed to other things. If we begin too late to enforce order, when the will of the child has already been overindulged, the whims and passions, grown stronger with the years, offer resistance and give cause for remorse. If we insist on order from the outset, occasions for remorse may arise-in general social life these are unavoidable-but the remorse always disappears again, and everything rights itself. For there is nothing easily avoided and more difficult to carry through than \"breaking a child's will.\""
+      },
+      "2": {
+        "text": "She should not follow her whims.",
+        "comments": "She must attend within to the food.\nPerseverance brings good fortune.\n\nThe wife must always be guided by the will of the master of the house, be he father, husband, or grown son. There, without having to look for them, she has great and important duties. She must attend to the nourishment of her family and to the food for the sacrifice. IN this way she becomes the center of the social and religious life of the family, and her perseverance in this position brings good fortune to the whole house. In relation to general conditions, the counsel here is to seek nothing by means of force, but quietly to confine oneself to the duties at hand."
+      },
+      "3": {
+        "text": "When tempers flare up in the family,",
+        "comments": "Too great severity brings remorse.\nGood fortune nonetheless.\nWhen woman and chile dally and laugh\nIt leads in the end to humiliation.\n\nIn the family the proper mean between severity and indulgence ought to prevail. Too great severity toward one's own flesh and blood leads to remorse. The wise thing is to build strong dikes within which complete freedom of movement is allowed each individual. But in doubtful instances too great severity, despite occasional mistakes, is preferable, because it preserves discipline in the family, whereas too great weakness leads to disgrace."
+      },
+      "4": {
+        "text": "She is the treasure of the house.\nGreat good fortune.",
+        "comments": "It is upon the woman of the house that the well-being of the family depends. Well-being prevails when expenditures and income are soundly balanced. This leads to great good fortune. In the sphere of public life, this line refers to the faithful steward whose measures further the general welfare."
+      },
+      "5": {
+        "text": "As a king he approaches his family.\nFear not.\nGood fortune.",
+        "comments": "A king is the symbol of a fatherly man who is richly endowed in mind. He does nothing to make himself feared; on the contrary, the whole family can trust him, because love governs their intercourse. His character of itself exercises the right influence."
+      },
+      "6": {
+        "text": "His work commands respect.'\nIn the end good fortune comes.",
+        "comments": "In the last analysis, order within the family depends on the character of the master of the house. If he cultivates his personality so that it works impressively through the force of inner truth, all goes well with the family. In a ruling position one must of his own accord assume responsibility."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Family'. Internalize this core philosophy: The hexagram represents the laws obtaining within the family. The strong line at the top represents the father, the lowest the son. The strong line in the fifth place represents the husband, the yielding second line the wife. On the other hand, the two strong lines in the fifth and the third place represent two brothers, and the two weak lines correlated with them in the fourth and the second place stand for their respective wives. Thus all the connections and relationships within the family... Your current worldview is: \"Chia Jen, Family (or The Clan or Dwelling People), is symbolic of the support that an extended family provides. It is the family home, the kitchen and hearth, faithfulness, and everything we feel we are is usually gifted to us by our family. Rich or Poor alike can agree it is all they have at times.\". Let your choices be subtly driven by these conditions: you co-operate with, support, or are supported by another. When interacting, mirror the wisdom found in the commentary: \"The foundation of the family is the relationship between husband and wife. The tie that hold the family together lies in the loyalty and perseverance of the wife. The tie that holds the family together lies in the loyalty and perseverance of the wife. Her place is within (second line), while that...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Family'. The primary quest objective is: The Family Quest shows the Quester their duties, roles and responsibilities in their society, because the family is the microcosm of society as a whole, the father and mother represent authorities, the older son may also have an authoritative, but less responsible, role, whereas younger sons and daughters have roles that include obedience, but reduced responsibilities. The Family Quest therefore explores the Quester&#39;s social situation, whether as closely as their family, or as broadly as their species.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: Heat creates energy: this is signified by the wind stirred up by the fire and issuing forth form it. This represents influence working from within outward. The same thing is needed in the regulation of the family. Here too the influence on others must proceed form one's own person. In order to be capable of producing such an influence, one's words must have power, and this they can have only if... Use the following line-specific challenges to pace the story: Ground rules control how we all interact. If everyone follows the rules then there will be success (and add a Success Level to the Test or Ordeal). If the Quester deliberately breaks rules or laws to accomplish their goals then add a Failure Level, Hurdle or Obstacle to the Test or Ordeal. | The routine of the everyday is a busy enough schedule that Quester should be kept busy. If the Quester is kept too busy to work on their Quest, then add a Success Level to their Test or Ordeal. If the Quester is not too busy and manages to work towards their Quest goals then add a Failure Level, Hurdle or Obstacle to the Test or Ordeal. | There is some argument or trouble between members of the family or society. A balance between the needs of members and their responsibilities must be made, as at the moment some needs are being ignored and some responsibilities are not being performed. The Quester should help resolve these issues, or they will add a Failure Level, Hurdle or Obstacle to the Test or Ordeal. | The Quest involves a Matriarchal character. They may be an older woman, such as a Grandmother, or simply be a character concerned with the welfare of others within the society or family. The Quester should learn from this Matriarch, whether it be how to keep a family fed on a budget, or simply the power of working with others. If the Quester is wasteful, or does not work well with others for the benefit of all, then add a Failure Level, Hurdle or Obstacle to the Test or Ordeal. | The Quest involves a Patriarchal character, they are respected and powerful, not to be feared, but trusted. If the Quester learns from their example then they will add a Success Level to the next Test or Ordeal. If the Quester does not show respect to others, or acts to undermine trust, then add a Hurdle, Failure Level, or Obstacle instead. | The Quest involves some family business or social agenda that the Quester is expected to become a part of. If they accept their role in the business then they add a Success Level to the Test or Ordeal. If the Quester rejects the social agenda and their position within it, then add a Hurdle, Obstacle or Failure Level instead.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Family Rules): Mirror the internal state described in the commentary: \"The family must form a well-defined unit within which each member knows his place. From the beginning each child must be accustomed to firmly established rules of order, before ever its will is directed to other things. If we begin too late to...\" Your actions should be framed by the goal: you set or follow a rule.",
+        "Plot": "Plot Complication Line 1 (Family Rules): Introduce a challenge based on the interpretation: \"The family must form a well-defined unit within which each member knows his place. From the beginning each child must be accustomed to firmly established rules of order, before ever its will is directed to other things. If we begin too late to...\" The specific quest objective for this stage is: Ground rules control how we all interact. If everyone follows the rules then there will be success (and add a Success Level to the Test or Ordeal). If the Quester deliberately breaks rules or laws to accomplish their goals then add a Failure Level, Hurdle or Obstacle to the Test or Ordeal."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Family Routine): Mirror the internal state described in the commentary: \"She must attend within to the food.\nPerseverance brings good fortune.\n\nThe wife must always be guided by the will of the master of the house, be he father, husband, or grown son. There, without having to look for them, she has great and important...\" Your actions should be framed by the goal: you try to maintain order.",
+        "Plot": "Plot Complication Line 2 (Family Routine): Introduce a challenge based on the interpretation: \"She must attend within to the food.\nPerseverance brings good fortune.\n\nThe wife must always be guided by the will of the master of the house, be he father, husband, or grown son. There, without having to look for them, she has great and important...\" The specific quest objective for this stage is: The routine of the everyday is a busy enough schedule that Quester should be kept busy. If the Quester is kept too busy to work on their Quest, then add a Success Level to their Test or Ordeal. If the Quester is not too busy and manages to work towards their Quest goals then add a Failure Level, Hurdle or Obstacle to the Test or Ordeal."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Family Peacemaker): Mirror the internal state described in the commentary: \"Too great severity brings remorse.\nGood fortune nonetheless.\nWhen woman and chile dally and laugh\nIt leads in the end to humiliation.\n\nIn the family the proper mean between severity and indulgence ought to prevail. Too great severity toward one's...\" Your actions should be framed by the goal: you talk about mutual benefits, expectations, or punishments.",
+        "Plot": "Plot Complication Line 3 (Family Peacemaker): Introduce a challenge based on the interpretation: \"Too great severity brings remorse.\nGood fortune nonetheless.\nWhen woman and chile dally and laugh\nIt leads in the end to humiliation.\n\nIn the family the proper mean between severity and indulgence ought to prevail. Too great severity toward one's...\" The specific quest objective for this stage is: There is some argument or trouble between members of the family or society. A balance between the needs of members and their responsibilities must be made, as at the moment some needs are being ignored and some responsibilities are not being performed. The Quester should help resolve these issues, or they will add a Failure Level, Hurdle or Obstacle to the Test or Ordeal."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Matriarch): Mirror the internal state described in the commentary: \"It is upon the woman of the house that the well-being of the family depends. Well-being prevails when expenditures and income are soundly balanced. This leads to great good fortune. In the sphere of public life, this line refers to the faithful...\" Your actions should be framed by the goal: you work with others, or finances.",
+        "Plot": "Plot Complication Line 4 (Matriarch): Introduce a challenge based on the interpretation: \"It is upon the woman of the house that the well-being of the family depends. Well-being prevails when expenditures and income are soundly balanced. This leads to great good fortune. In the sphere of public life, this line refers to the faithful...\" The specific quest objective for this stage is: The Quest involves a Matriarchal character. They may be an older woman, such as a Grandmother, or simply be a character concerned with the welfare of others within the society or family. The Quester should learn from this Matriarch, whether it be how to keep a family fed on a budget, or simply the power of working with others. If the Quester is wasteful, or does not work well with others for the benefit of all, then add a Failure Level, Hurdle or Obstacle to the Test or Ordeal."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Patriarch): Mirror the internal state described in the commentary: \"A king is the symbol of a fatherly man who is richly endowed in mind. He does nothing to make himself feared; on the contrary, the whole family can trust him, because love governs their intercourse. His character of itself exercises the right...\" Your actions should be framed by the goal: you show respect, or are shown it in return.",
+        "Plot": "Plot Complication Line 5 (Patriarch): Introduce a challenge based on the interpretation: \"A king is the symbol of a fatherly man who is richly endowed in mind. He does nothing to make himself feared; on the contrary, the whole family can trust him, because love governs their intercourse. His character of itself exercises the right...\" The specific quest objective for this stage is: The Quest involves a Patriarchal character, they are respected and powerful, not to be feared, but trusted. If the Quester learns from their example then they will add a Success Level to the next Test or Ordeal. If the Quester does not show respect to others, or acts to undermine trust, then add a Hurdle, Failure Level, or Obstacle instead."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Family Business): Mirror the internal state described in the commentary: \"In the last analysis, order within the family depends on the character of the master of the house. If he cultivates his personality so that it works impressively through the force of inner truth, all goes well with the family. In a ruling position...\" Your actions should be framed by the goal: others gain any Sway or Chi.",
+        "Plot": "Plot Complication Line 6 (Family Business): Introduce a challenge based on the interpretation: \"In the last analysis, order within the family depends on the character of the master of the house. If he cultivates his personality so that it works impressively through the force of inner truth, all goes well with the family. In a ruling position...\" The specific quest objective for this stage is: The Quest involves some family business or social agenda that the Quester is expected to become a part of. If they accept their role in the business then they add a Success Level to the Test or Ordeal. If the Quester rejects the social agenda and their position within it, then add a Hurdle, Obstacle or Failure Level instead."
+      }
+    }
+  }
+}

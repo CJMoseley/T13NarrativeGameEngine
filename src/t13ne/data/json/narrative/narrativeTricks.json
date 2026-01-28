@@ -1,0 +1,17 @@
+[
+    {
+        "Type": "Advantage",
+        "Description": "An Advantage is a bonus that can be applied to a single roll. It may be a +1 bonus, a re-roll, or some other benefit.",
+        "Rules": "Advantages can be gained through clever play, by using a Character's strengths, or by spending a resource such as a Fate Point."
+    },
+    {
+        "Type": "Disadvantage",
+        "Description": "A Disadvantage is a penalty that can be applied to a single roll. It may be a -1 penalty, a forced re-roll, or some other hindrance.",
+        "Rules": "Disadvantages can be imposed by the GM as a consequence of a Character's actions, or by an opponent's special ability."
+    },
+    {
+        "Type": "Complication",
+        "Description": "A Complication is a new problem or obstacle that arises during a scene. It may be a new enemy, a sudden change in the environment, or a moral dilemma.",
+        "Rules": "Complications are used to increase the challenge and make the story more interesting. They should be a direct or indirect consequence of the Characters' actions."
+    }
+]

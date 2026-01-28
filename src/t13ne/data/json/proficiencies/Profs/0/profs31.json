@@ -1,0 +1,1444 @@
+{
+  "1551": {
+    "id": 1551,
+    "prof": {
+      "Name": [
+        "Smug",
+        "Smug Sin Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Smug is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1552": {
+    "id": 1552,
+    "prof": {
+      "Name": [
+        "Conceited",
+        "Conceited Sin Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Conceited is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1553": {
+    "id": 1553,
+    "prof": {
+      "Name": [
+        "Contentment",
+        "Contentment Sin Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Contentment is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1554": {
+    "id": 1554,
+    "prof": {
+      "Name": [
+        "Satisfaction",
+        "Satisfaction Sin Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Satisfaction is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1555": {
+    "id": 1555,
+    "prof": {
+      "Name": [
+        "Fulfilment",
+        "Fulfilment Sin Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Fulfilment is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1556": {
+    "id": 1556,
+    "prof": {
+      "Name": [
+        "Violate",
+        "Violate Sin Action Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Violate is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1557": {
+    "id": 1557,
+    "prof": {
+      "Name": [
+        "Curse",
+        "Curse Sin Attack Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Curse is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1558": {
+    "id": 1558,
+    "prof": {
+      "Name": [
+        "Cheat",
+        "Cheat Sin Critical Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Cheat is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1559": {
+    "id": 1559,
+    "prof": {
+      "Name": [
+        "Consumer",
+        "Consumer Sin Core Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Consumer is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1560": {
+    "id": 1560,
+    "prof": {
+      "Name": [
+        "Evil",
+        "Evil Sin Descendants Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Evil is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1561": {
+    "id": 1561,
+    "prof": {
+      "Name": [
+        "Wicked",
+        "Wicked Sin Edge Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Wicked is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1562": {
+    "id": 1562,
+    "prof": {
+      "Name": [
+        "Wicked",
+        "Wicked Sin Glow Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Wicked is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1563": {
+    "id": 1563,
+    "prof": {
+      "Name": [
+        "Weakness",
+        "Weakness Sin Failure Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Weakness is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1564": {
+    "id": 1564,
+    "prof": {
+      "Name": [
+        "Lapse",
+        "Lapse Sin Fumble Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Lapse is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1565": {
+    "id": 1565,
+    "prof": {
+      "Name": [
+        "Harm",
+        "Harm Sin Gnarl Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Harm is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1566": {
+    "id": 1566,
+    "prof": {
+      "Name": [
+        "Temptations",
+        "Temptations Sin Herald Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Temptations is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1567": {
+    "id": 1567,
+    "prof": {
+      "Name": [
+        "Desires",
+        "Desires Sin Hitch Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Desires is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1568": {
+    "id": 1568,
+    "prof": {
+      "Name": [
+        "Regrets",
+        "Regrets Sin Hurdle Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Regrets is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1569": {
+    "id": 1569,
+    "prof": {
+      "Name": [
+        "Vice",
+        "Vice Sin Incarna Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Vice is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1570": {
+    "id": 1570,
+    "prof": {
+      "Name": [
+        "Pleasure-dome Locations",
+        "Pleasure-dome Location Sin Location Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Pleasure-dome Locations is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1571": {
+    "id": 1571,
+    "prof": {
+      "Name": [
+        "Scandal",
+        "Scandal Sin Lore Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Scandal is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1572": {
+    "id": 1572,
+    "prof": {
+      "Name": [
+        "Villain",
+        "Villain Sin Monster Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Villain is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1573": {
+    "id": 1573,
+    "prof": {
+      "Name": [
+        "Unreliable",
+        "Unreliable Sin Narration Proficiency",
+        "untrustworthy, irregular, curious, fickle, shaky"
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Unreliable is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1574": {
+    "id": 1574,
+    "prof": {
+      "Name": [
+        "Dark-side",
+        "Dark-side Sin Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Dark-side is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1575": {
+    "id": 1575,
+    "prof": {
+      "Name": [
+        "Wrongdoing Ordeals",
+        "Wrongdoing Ordeal Sin Ordeal Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Wrongdoing Ordeals is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1576": {
+    "id": 1576,
+    "prof": {
+      "Name": [
+        "Darkness",
+        "Darkness Sin Psychosocial Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Darkness is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1577": {
+    "id": 1577,
+    "prof": {
+      "Name": [
+        "Seduce / Abuse",
+        "Seduce / Abuse",
+        ""
+      ],
+      "Description": "A shield against the storm, Seduce / Abuse is the quiet strength that endures the onslaught of charity.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "18"
+        ],
+        "Genres": [
+          "18"
+        ],
+        "Eras": [
+          "18"
+        ],
+        "Types": [
+          "Quest"
+        ]
+      }
+    }
+  },
+  "1578": {
+    "id": 1578,
+    "prof": {
+      "Name": [
+        "Self-Interest",
+        "Self-Interest Sin Question Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Self-Interest is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1579": {
+    "id": 1579,
+    "prof": {
+      "Name": [
+        "Pride",
+        "Pride Sin Resolved Hitch Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Pride is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1580": {
+    "id": 1580,
+    "prof": {
+      "Name": [
+        "Cheating",
+        "Cheating Sin Rule Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Cheating is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1581": {
+    "id": 1581,
+    "prof": {
+      "Name": [
+        "Dreadful",
+        "Dreadful Sin Style Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Dreadful is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1582": {
+    "id": 1582,
+    "prof": {
+      "Name": [
+        "Sinister",
+        "Sinister Sin Success Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Sinister is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1583": {
+    "id": 1583,
+    "prof": {
+      "Name": [
+        "Lapses",
+        "Lapses Sin Sway Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Lapses is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1584": {
+    "id": 1584,
+    "prof": {
+      "Name": [
+        "Devouring",
+        "Devouring Sin Tangle Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Devouring is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1585": {
+    "id": 1585,
+    "prof": {
+      "Name": [
+        "Corrupting / Cursing / Seduction / Tempting",
+        "Corrupting / Cursing / Seduction / Tempting",
+        ""
+      ],
+      "Description": "The tireless watchman on the soul's high tower, Corrupting / Cursing / Seduction / Tempting is the silent guardian against the shadows of charity.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "18"
+        ],
+        "Genres": [
+          "18"
+        ],
+        "Eras": [
+          "18"
+        ],
+        "Types": [
+          "Test"
+        ]
+      }
+    }
+  },
+  "1586": {
+    "id": 1586,
+    "prof": {
+      "Name": [
+        "Immoral",
+        "Immoral Sin Tone Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Immoral is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1587": {
+    "id": 1587,
+    "prof": {
+      "Name": [
+        "Ruined",
+        "Ruined Sin Turn Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Ruined is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1588": {
+    "id": 1588,
+    "prof": {
+      "Name": [
+        "Temptations",
+        "Temptations Sin Twisted Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Temptations is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1589": {
+    "id": 1589,
+    "prof": {
+      "Name": [
+        "Sinning",
+        "Sinning Sin Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Sinning is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1590": {
+    "id": 1590,
+    "prof": {
+      "Name": [
+        "Sinful",
+        "Sinful Sin Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Sinful is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1591": {
+    "id": 1591,
+    "prof": {
+      "Name": [
+        "Fiendish",
+        "Fiendish Sin Nimbed Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Fiendish is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1592": {
+    "id": 1592,
+    "prof": {
+      "Name": [
+        "Reprehensible",
+        "Reprehensible Sin Umbral Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Reprehensible is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1593": {
+    "id": 1593,
+    "prof": {
+      "Name": [
+        "Fiend",
+        "Fiend Sin Persona Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Fiend is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1594": {
+    "id": 1594,
+    "prof": {
+      "Name": [
+        "Servile",
+        "Servile Trial Zero Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Servile is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1595": {
+    "id": 1595,
+    "prof": {
+      "Name": [
+        "Greasy",
+        "Greasy Trial Zero Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Greasy is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1596": {
+    "id": 1596,
+    "prof": {
+      "Name": [
+        "Exposed Locations",
+        "Exposed Location Trial Zero Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Exposed Locations is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1597": {
+    "id": 1597,
+    "prof": {
+      "Name": [
+        "Amiable",
+        "Amiable Trial Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Amiable is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1598": {
+    "id": 1598,
+    "prof": {
+      "Name": [
+        "Pleasant",
+        "Pleasant Trial Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Pleasant is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1599": {
+    "id": 1599,
+    "prof": {
+      "Name": [
+        "Charming Locations",
+        "Charming Location Trial Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Charming Locations is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1600": {
+    "id": 1600,
+    "prof": {
+      "Name": [
+        "Polite",
+        "Polite Trial Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Polite is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

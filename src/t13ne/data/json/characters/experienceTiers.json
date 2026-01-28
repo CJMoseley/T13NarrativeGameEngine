@@ -1,0 +1,30 @@
+[
+    {
+        "Type": "Fresh",
+        "Description": "A new Character that has little or no experience of the real world, they may have some education, street smarts, battle experience, or professional training, but never all four.",
+        "Rules": "Fresh Characters generally begin with the minimum number of Hitches for their Type, but may add up to 2 additional Hitches. Fresh Characters often start with a negative Scale and usually begin play as Young-Adults or Kids.",
+        "Min_Hitches": "Normal for Type",
+        "Max_Hitches": "Up to +2 over Minimum"
+    },
+    {
+        "Type": "Experienced",
+        "Description": "Any Character that has survived a few Stories, or Chapters, is usually considered an Experienced Character. Some Narratives may require a Character to remain Fresh for longer than this, but if they have received new Hitches, then they are probably experienced.",
+        "Rules": "Experienced Characters generally have at least one more Hitch than their minimum, and usually have at least 3 more than the minimum. They are generally around Half full of Hitches and at least one is usually Resolved.",
+        "Min_Hitches": "Minimum for Type +1",
+        "Max_Hitches": "Up to Half of Max for the Type"
+    },
+    {
+        "Type": "Veteran",
+        "Description": "Veteran Characters have survived through at least one Volume Plot, and have Resolved at least two of their early Hitches.",
+        "Rules": "Veteran Characters generally are within 3 of their Maximum Number of Hitches for their type and always have at least Half their Hitches either filled or Resolved.",
+        "Min_Hitches": "Half of Max for Type",
+        "Max_Hitches": "Max for Type -1"
+    },
+    {
+        "Type": "Maxed",
+        "Description": "A Maxed Character has generally experienced enough of the world that nothing surprises them anymore. Maxed Characters have typically survived several Volumes and completed at least one Character Arc.",
+        "Rules": "Maxed Characters simply have their Maximum number of Hitches possible for that type (and a Scale to match). Usually a Maxed Character will have at least Half of their Hitches Resolved.",
+        "Min_Hitches": "Max-Hitches for Type. Half of them Resolved",
+        "Max_Hitches": "Max-Hitches for Type"
+    }
+]

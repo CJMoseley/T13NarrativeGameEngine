@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 64,
+    "Name": "Waiting To Cross",
+    "Entity": "&#19967;",
+    "Logical": 42,
+    "Trigrams": [
+      5,
+      2
+    ],
+    "Hexagram_Text": "Wei Chi, Waiting To Cross (or Before Completion or Before Fording), could also be called Murphy's Law. It is the symbol of mistakes, chaos, disorder and out of control systems. It is setting your sights to the summit of the mountain, only to realise when you reach it, that the real mystery is the route back down.",
+    "Unchanging": "Once per Story you may cause all cards to be discarded, shuffled and re-dealt randomly (including all Ordeal Pools, Wyrd Tarot Hands, and currently active cards and prepared cards).",
+    "Line1": "Tail in The Water",
+    "Line2": "Braking The Wheels",
+    "Line3": "Charging With Wet Trousers",
+    "Line4": "Battle Against Devils",
+    "Line5": "The Superior Light",
+    "Line6": "The Drunk Wets His Head"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you do not think something through, attempt the impossible, or act overly confident",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you Succeed at any task, pass any Ordeal Stage or Test, or best any Hurdle",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yang",
+        "Condition": "you display patience, or act humiliated",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yin",
+        "Condition": "you display patience, slow down, or make another wait for you",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yang",
+        "Condition": "you advise against attack, fall over, or are attacked",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yin",
+        "Condition": "you confront a challenge, or attack an Opponent",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you succeed",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yin",
+        "Condition": "you demonstrate a lack of restraint, get drunk, or act convivial or festive",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Waiting To Cross Quest shows us a situation that is chaotic and difficult. The odds are stacked against the Quester, as while there is a route to order (across the river) this route will only be known to those few who have lived through a similar situation before, and even then they may misunderstand the forces competing in this particular chaos. Jumping in unprepared is often a recipe for disaster, in these situations and the worst case scenario for Waiting To Cross Quests is that any failure can reset the Quester back to the beginning again (as they end up on the same side of the river they started on).",
+    "Quest_Complete": "The Quest that ends on the Waiting To Cross Hexagram shows us a Quest that ends in chaos. This often occurs because a powerful force of opposition is not revealed until the end the Quest, and this \"diablo-ex-machina\" is so powerful that the Quester is caught off guard and in incredible danger.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester is encouraged by the situation to push ahead and seize the moment, but this would be a mistake and add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. Instead, if they Quester is patient and waits, they will add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "It should be obvious to the Quester that it is still not the time to act, but just waiting will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test, instead if the Quester makes preparations, for example by training, or repairing equipment then they will add a Success Point instead.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The time to act is now, but the Quester is still unprepared, or too weak somehow, if they recognise this and try to find suitable companions to help them, then they will not add the Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "For the Quester they must act now, it is a do or die moment. Even if they act now there is no guarantee of success, but to wait further will only create additional Hurdles, Obstacles or Failure Levels for their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "For the Quester everything is going their way, add a Success Level to any Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The forces that drive the Quest begin changes in the world, but for the Quester it is still too soon to celebrate or they will add an Obstacle, Hurdle or Failure Level to their Ordeal or Test.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "This hexagram indicates a time when the transition from disorder to order is not yet completed. The change is indeed prepared for, since all the lines in the upper trigram are in relation to those in the lower. However, they are not yet in their places. While the preceding hexagram offers an analogy to autumn, which forms the transition from summer to winter, this hexagram presents a parallel to spring, which leads out of winter's stagnation into the fruitful time of summer. With this hopeful outlook the Book of Changes come to its close.",
+    "The_Image": {
+      "text": "Fire over water:\n\nThe image of the condition before transition.\n\nThus the superior man is careful\nIn the differentiation of things,\n\nSo that each finds its place.",
+      "comments": "When fire, which by nature flames upward, is above, and water, which flows downward, is below, their effects take opposite directions and remain unrelated. If we wish to achieve an effect, we must first investigate the nature of the forces in question and ascertain their proper place. If we can bring these forces to bear in the right place, they will have the desired effect and completion will be achieved. But in order to handle external forces properly, we must above all arrive at the correct standpoint ourselves, for only from this vantage can we work correctly."
+    },
+    "The_Judgment": {
+      "text": "BEFORE COMPLETION. Success.\nBut if the little fox, after nearly completing the crossing,\nGets his tail in the water,\n\nThere is nothing that would further.",
+      "comments": "The conditions are difficult. The task is great and full of responsibility. It is nothing less than that of leading the world out of confusion back to order. But it is a task that promises success, because there is a goal that can unite the forces now tending in different directions. At first, however, one must move warily, like an old fox walking over ice. The caution of a fox walking over ice is proverbial in China. His ears are constantly alert to the cracking of the ice, as he carefully and circumspectly searches out the safest spots. A young fox who as yet has not acquired this caution goes ahead boldly, and it may happen that he falls in and gets his tail wet when he is almost across the water. Then of course his effort has been all in vain. Accordingly, in times \"before completion,\" deliberation and caution are the prerequisites of success."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "He gets his tail in the water.\nHumiliating.",
+        "comments": "In times of disorder there is a temptation to advance oneself as rapidly as possible in order to accomplish something tangible. But this enthusiasm leads only to failure and humiliation if the time for achievement has not yet arrived. In such time it is wise to spare ourselves the opprobrium of failure by holding back."
+      },
+      "2": {
+        "text": "He brakes his wheels.\nPerseverance brings good fortune.",
+        "comments": "Here again the time to act has not yet come. But the patience needed is not that of idle waiting without thought of the morrow. Kept up indefinitely, this would not lead to any success. Instead, an individual must develop in himself the strength that will enable him to go forward. He must have a vehicle, as it were, to effect the crossing. But he must for the time being use the brakes. Patience in the highest sense means putting brakes on strength. Therefore he must not fall asleep and lose sight of the goal. If he remains strong and steadfast in his resolve, all goes well in the end."
+      },
+      "3": {
+        "text": "Before completion, attack brings misfortune.\nIt furthers one to cross the great water.",
+        "comments": "The time of transition has arrived, but one lacks the strength to complete the transition. If one should attempt to force it, disaster would result, because collapse would then be unavoidable. What is to be done? A new situation must be created; one must engage the energies of able helpers and in this fellowship take the decisive step-cross the great water. Then completion will become possible."
+      },
+      "4": {
+        "text": "Perseverance brings good fortune.\nRemorse disappears.",
+        "comments": "Shock, thus to discipline the Devil's Country.\nFor three years, great realms are rewarded.\n\nNow it is the time of struggle. The transition must be completed. We must make ourselves strong in resolution; this brings good fortune. All misgivings that might arise in such grave times of struggle must be silenced. It is a question of a fierce battle to break and to discipline the Devil's Country, the forces of decadence. But the struggle also has its reward. Now is the time to lay the foundations of power and mastery for the future."
+      },
+      "5": {
+        "text": "Perseverance brings good fortune.",
+        "comments": "No remorse.\n\nThe light of the superior man is true.\nGood fortune.\n\nThe victory has been won. The power of steadfastness has not been routed. Everything has gone well. All misgivings have been overcome. Success has justified the deed. The light of a superior personality shines forth anew and makes its influence felt among men who have faith in it and rally around it. The new time has arrived, and with it good fortune. And just as the sun shines forth in redoubled beauty after rain, or as a forest grows more freshly green from charred ruins after a fire, so the new era appears all the more glorious by contrast with the misery of the old."
+      },
+      "6": {
+        "text": "There is drinking of wine\nIn genuine confidence. No blame.\nBut if one wets his head,\nHe loses it, in truth.",
+        "comments": "Before completion, at the dawning of the new time, friends foregather in an atmosphere of mutual trust, and the time of waiting is passed in conviviality. Since the new era is hard on the threshold, there is no blame in this. But one must be careful in all this to keep within proper bounds. If in his exuberance a man gets drunk, he forfeits the favorableness of the situation through his intemperance."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Waiting To Cross'. Internalize this core philosophy: This hexagram indicates a time when the transition from disorder to order is not yet completed. The change is indeed prepared for, since all the lines in the upper trigram are in relation to those in the lower. However, they are not yet in their places. While the preceding hexagram offers an analogy to autumn, which forms the transition from summer to winter, this hexagram presents a parallel to spring, which leads out of winter's stagnation into the fruitful time of summer. With this hopeful... Your current worldview is: \"Wei Chi, Waiting To Cross (or Before Completion or Before Fording), could also be called Murphy's Law. It is the symbol of mistakes, chaos, disorder and out of control systems. It is setting your sights to the summit of the mountain, only to realise when you reach it, that the real mystery is the route back down.\". Let your choices be subtly driven by these conditions: you do not think something through, attempt the impossible, or act overly confident, you Succeed at any task, pass any Ordeal Stage or Test, or best any Hurdle. When interacting, mirror the wisdom found in the commentary: \"The conditions are difficult. The task is great and full of responsibility. It is nothing less than that of leading the world out of confusion back to order. But it is a task that promises success, because there is a goal that can unite the forces now tending in different directions. At first,...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Waiting To Cross'. The primary quest objective is: The Waiting To Cross Quest shows us a situation that is chaotic and difficult. The odds are stacked against the Quester, as while there is a route to order (across the river) this route will only be known to those few who have lived through a similar situation before, and even then they may misunderstand the forces competing in this particular chaos. Jumping in unprepared is often a recipe for disaster, in these situations and the worst case scenario for Waiting To Cross Quests is that any failure can reset the Quester back to the beginning again (as they end up on the same side of the river they started on).. Introduce environmental or social complications that reflect the 'Image' of this hexagram: When fire, which by nature flames upward, is above, and water, which flows downward, is below, their effects take opposite directions and remain unrelated. If we wish to achieve an effect, we must first investigate the nature of the forces in question and ascertain their proper place. If we can bring these forces to bear in the right place, they will have the desired effect and completion will be... Use the following line-specific challenges to pace the story: The Quester is encouraged by the situation to push ahead and seize the moment, but this would be a mistake and add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. Instead, if they Quester is patient and waits, they will add a Success Level instead. | It should be obvious to the Quester that it is still not the time to act, but just waiting will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test, instead if the Quester makes preparations, for example by training, or repairing equipment then they will add a Success Point instead. | The time to act is now, but the Quester is still unprepared, or too weak somehow, if they recognise this and try to find suitable companions to help them, then they will not add the Hurdle, Obstacle or Failure Level to their Ordeal or Test. | For the Quester they must act now, it is a do or die moment. Even if they act now there is no guarantee of success, but to wait further will only create additional Hurdles, Obstacles or Failure Levels for their Ordeal or Test. | For the Quester everything is going their way, add a Success Level to any Ordeal or Test. | The forces that drive the Quest begin changes in the world, but for the Quester it is still too soon to celebrate or they will add an Obstacle, Hurdle or Failure Level to their Ordeal or Test.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Tail in The Water): Mirror the internal state described in the commentary: \"In times of disorder there is a temptation to advance oneself as rapidly as possible in order to accomplish something tangible. But this enthusiasm leads only to failure and humiliation if the time for achievement has not yet arrived. In such time...\" Your actions should be framed by the goal: you display patience, or act humiliated.",
+        "Plot": "Plot Complication Line 1 (Tail in The Water): Introduce a challenge based on the interpretation: \"In times of disorder there is a temptation to advance oneself as rapidly as possible in order to accomplish something tangible. But this enthusiasm leads only to failure and humiliation if the time for achievement has not yet arrived. In such time...\" The specific quest objective for this stage is: The Quester is encouraged by the situation to push ahead and seize the moment, but this would be a mistake and add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. Instead, if they Quester is patient and waits, they will add a Success Level instead."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Braking The Wheels): Mirror the internal state described in the commentary: \"Here again the time to act has not yet come. But the patience needed is not that of idle waiting without thought of the morrow. Kept up indefinitely, this would not lead to any success. Instead, an individual must develop in himself the strength...\" Your actions should be framed by the goal: you display patience, slow down, or make another wait for you.",
+        "Plot": "Plot Complication Line 2 (Braking The Wheels): Introduce a challenge based on the interpretation: \"Here again the time to act has not yet come. But the patience needed is not that of idle waiting without thought of the morrow. Kept up indefinitely, this would not lead to any success. Instead, an individual must develop in himself the strength...\" The specific quest objective for this stage is: It should be obvious to the Quester that it is still not the time to act, but just waiting will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test, instead if the Quester makes preparations, for example by training, or repairing equipment then they will add a Success Point instead."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Charging With Wet Trousers): Mirror the internal state described in the commentary: \"The time of transition has arrived, but one lacks the strength to complete the transition. If one should attempt to force it, disaster would result, because collapse would then be unavoidable. What is to be done? A new situation must be created; one...\" Your actions should be framed by the goal: you advise against attack, fall over, or are attacked.",
+        "Plot": "Plot Complication Line 3 (Charging With Wet Trousers): Introduce a challenge based on the interpretation: \"The time of transition has arrived, but one lacks the strength to complete the transition. If one should attempt to force it, disaster would result, because collapse would then be unavoidable. What is to be done? A new situation must be created; one...\" The specific quest objective for this stage is: The time to act is now, but the Quester is still unprepared, or too weak somehow, if they recognise this and try to find suitable companions to help them, then they will not add the Hurdle, Obstacle or Failure Level to their Ordeal or Test."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Battle Against Devils): Mirror the internal state described in the commentary: \"Shock, thus to discipline the Devil's Country.\nFor three years, great realms are rewarded.\n\nNow it is the time of struggle. The transition must be completed. We must make ourselves strong in resolution; this brings good fortune. All misgivings that...\" Your actions should be framed by the goal: you confront a challenge, or attack an Opponent.",
+        "Plot": "Plot Complication Line 4 (Battle Against Devils): Introduce a challenge based on the interpretation: \"Shock, thus to discipline the Devil's Country.\nFor three years, great realms are rewarded.\n\nNow it is the time of struggle. The transition must be completed. We must make ourselves strong in resolution; this brings good fortune. All misgivings that...\" The specific quest objective for this stage is: For the Quester they must act now, it is a do or die moment. Even if they act now there is no guarantee of success, but to wait further will only create additional Hurdles, Obstacles or Failure Levels for their Ordeal or Test."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (The Superior Light): Mirror the internal state described in the commentary: \"No remorse.\n\nThe light of the superior man is true.\nGood fortune.\n\nThe victory has been won. The power of steadfastness has not been routed. Everything has gone well. All misgivings have been overcome. Success has justified the deed. The light of a...\" Your actions should be framed by the goal: you succeed.",
+        "Plot": "Plot Complication Line 5 (The Superior Light): Introduce a challenge based on the interpretation: \"No remorse.\n\nThe light of the superior man is true.\nGood fortune.\n\nThe victory has been won. The power of steadfastness has not been routed. Everything has gone well. All misgivings have been overcome. Success has justified the deed. The light of a...\" The specific quest objective for this stage is: For the Quester everything is going their way, add a Success Level to any Ordeal or Test."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (The Drunk Wets His Head): Mirror the internal state described in the commentary: \"Before completion, at the dawning of the new time, friends foregather in an atmosphere of mutual trust, and the time of waiting is passed in conviviality. Since the new era is hard on the threshold, there is no blame in this. But one must be careful...\" Your actions should be framed by the goal: you demonstrate a lack of restraint, get drunk, or act convivial or festive.",
+        "Plot": "Plot Complication Line 6 (The Drunk Wets His Head): Introduce a challenge based on the interpretation: \"Before completion, at the dawning of the new time, friends foregather in an atmosphere of mutual trust, and the time of waiting is passed in conviviality. Since the new era is hard on the threshold, there is no blame in this. But one must be careful...\" The specific quest objective for this stage is: The forces that drive the Quest begin changes in the world, but for the Quester it is still too soon to celebrate or they will add an Obstacle, Hurdle or Failure Level to their Ordeal or Test."
+      }
+    }
+  }
+}

@@ -1,0 +1,1410 @@
+{
+  "3552": {
+    "id": 3552,
+    "prof": {
+      "Name": [
+        "Sit",
+        "Sit Quiet Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Sit speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3553": {
+    "id": 3553,
+    "prof": {
+      "Name": [
+        "Sneak",
+        "Sneak Quiet Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Sneak speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3554": {
+    "id": 3554,
+    "prof": {
+      "Name": [
+        "Stand",
+        "Stand Quiet Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Stand speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3555": {
+    "id": 3555,
+    "prof": {
+      "Name": [
+        "Think",
+        "Think Quiet Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Think speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3556": {
+    "id": 3556,
+    "prof": {
+      "Name": [
+        "Tranquillise",
+        "Tranquillise Quiet Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Tranquillise speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3557": {
+    "id": 3557,
+    "prof": {
+      "Name": [
+        "Undermine",
+        "Undermine Quiet Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Undermine speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3558": {
+    "id": 3558,
+    "prof": {
+      "Name": [
+        "Weaken",
+        "Weaken Quiet Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Weaken speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3559": {
+    "id": 3559,
+    "prof": {
+      "Name": [
+        "Weather",
+        "Weather Quiet Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Weather speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3560": {
+    "id": 3560,
+    "prof": {
+      "Name": [
+        "Write",
+        "Write Quiet Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Write speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3561": {
+    "id": 3561,
+    "prof": {
+      "Name": [
+        "Botanical",
+        "Botanical Quiet Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Botanical speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3562": {
+    "id": 3562,
+    "prof": {
+      "Name": [
+        "Erosive",
+        "Erosive Quiet Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Erosive speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3563": {
+    "id": 3563,
+    "prof": {
+      "Name": [
+        "Floral",
+        "Floral Quiet Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Floral speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3564": {
+    "id": 3564,
+    "prof": {
+      "Name": [
+        "Glacial",
+        "Glacial Quiet Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Glacial speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3565": {
+    "id": 3565,
+    "prof": {
+      "Name": [
+        "Green",
+        "Green Quiet Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Green speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3566": {
+    "id": 3566,
+    "prof": {
+      "Name": [
+        "Herbal",
+        "Herbal Quiet Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Herbal speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3567": {
+    "id": 3567,
+    "prof": {
+      "Name": [
+        "Intelligent",
+        "Intelligent Quiet Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Intelligent speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3568": {
+    "id": 3568,
+    "prof": {
+      "Name": [
+        "Meditative",
+        "Meditative Quiet Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Meditative speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3569": {
+    "id": 3569,
+    "prof": {
+      "Name": [
+        "Mental",
+        "Mental Quiet Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Mental speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3570": {
+    "id": 3570,
+    "prof": {
+      "Name": [
+        "Neglected",
+        "Neglected Quiet Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Neglected speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3571": {
+    "id": 3571,
+    "prof": {
+      "Name": [
+        "Overgrown",
+        "Overgrown Quiet Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Overgrown speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3572": {
+    "id": 3572,
+    "prof": {
+      "Name": [
+        "Peaceful",
+        "Peaceful Quiet Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Peaceful speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3573": {
+    "id": 3573,
+    "prof": {
+      "Name": [
+        "Psionic",
+        "Psionic Quiet Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Psionic speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3574": {
+    "id": 3574,
+    "prof": {
+      "Name": [
+        "Rational",
+        "Rational Quiet Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Rational speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3575": {
+    "id": 3575,
+    "prof": {
+      "Name": [
+        "Rusted",
+        "Rusted Quiet Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Rusted speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3576": {
+    "id": 3576,
+    "prof": {
+      "Name": [
+        "Thoughtful",
+        "Thoughtful Quiet Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Thoughtful speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3577": {
+    "id": 3577,
+    "prof": {
+      "Name": [
+        "Tranquil",
+        "Tranquil Quiet Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Tranquil speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3578": {
+    "id": 3578,
+    "prof": {
+      "Name": [
+        "Weathered",
+        "Weathered Quiet Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Weathered speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3579": {
+    "id": 3579,
+    "prof": {
+      "Name": [
+        "Secure",
+        "Secure Rook Quest Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Secure is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3580": {
+    "id": 3580,
+    "prof": {
+      "Name": [
+        "Guarded",
+        "Guarded Rook Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Guarded is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3581": {
+    "id": 3581,
+    "prof": {
+      "Name": [
+        "Guarded",
+        "Guarded Rook Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Guarded is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3582": {
+    "id": 3582,
+    "prof": {
+      "Name": [
+        "Impregnable",
+        "Impregnable Rook Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Impregnable is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3583": {
+    "id": 3583,
+    "prof": {
+      "Name": [
+        "Fortified",
+        "Fortified Rook Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Fortified is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3584": {
+    "id": 3584,
+    "prof": {
+      "Name": [
+        "Quash",
+        "Quash Rook Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Quash is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3585": {
+    "id": 3585,
+    "prof": {
+      "Name": [
+        "Revoke",
+        "Revoke Rook Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Revoke is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3586": {
+    "id": 3586,
+    "prof": {
+      "Name": [
+        "span>",
+        "span> Rook Critical Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, span> is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3587": {
+    "id": 3587,
+    "prof": {
+      "Name": [
+        "span>",
+        "span> Rook Fumble Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, span> is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3588": {
+    "id": 3588,
+    "prof": {
+      "Name": [
+        "Defensive",
+        "Defensive Rook Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Defensive is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3589": {
+    "id": 3589,
+    "prof": {
+      "Name": [
+        "Guard",
+        "Guard Rook Quest Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Guard is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3590": {
+    "id": 3590,
+    "prof": {
+      "Name": [
+        "Guard",
+        "Guard Rook Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Guard is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3591": {
+    "id": 3591,
+    "prof": {
+      "Name": [
+        "Shelter",
+        "Shelter Rook Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Shelter is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3592": {
+    "id": 3592,
+    "prof": {
+      "Name": [
+        "Blocking",
+        "Blocking Rook Test Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Blocking is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3593": {
+    "id": 3593,
+    "prof": {
+      "Name": [
+        "Defending",
+        "Defending Rook Test Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Defending is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3594": {
+    "id": 3594,
+    "prof": {
+      "Name": [
+        "Guarding",
+        "Guarding Rook Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Guarding is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3595": {
+    "id": 3595,
+    "prof": {
+      "Name": [
+        "Protecting",
+        "Protecting Rook Test Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Protecting is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3596": {
+    "id": 3596,
+    "prof": {
+      "Name": [
+        "Self-defence",
+        "Self-defence Rook Test Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Self-defence is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3597": {
+    "id": 3597,
+    "prof": {
+      "Name": [
+        "Protective",
+        "Protective Rook Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Protective is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3598": {
+    "id": 3598,
+    "prof": {
+      "Name": [
+        "Beware",
+        "Beware Rook Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Beware is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3599": {
+    "id": 3599,
+    "prof": {
+      "Name": [
+        "Block",
+        "Block Rook Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Block is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3600": {
+    "id": 3600,
+    "prof": {
+      "Name": [
+        "Crush",
+        "Crush Rook Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Crush is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3601": {
+    "id": 3601,
+    "prof": {
+      "Name": [
+        "Defend",
+        "Defend Rook Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Defend is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

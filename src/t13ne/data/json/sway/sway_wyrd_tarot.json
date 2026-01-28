@@ -1,0 +1,278 @@
+[
+  {
+    "Chi": 4,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Crisis",
+    "Sway_Type_Description": "Creates a Proficiency Crisis."
+  },
+  {
+    "Chi": 4,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Full Re-roll",
+    "Sway_Type_Description": "Allows re-rolling any dice pool including Proficiency Dice, may keep either result."
+  },
+  {
+    "Chi": 4,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Friend / Foe",
+    "Sway_Type_Description": "Manipulates a Character's perceptions of a Character to increase or decrease their Impressions of the Player."
+  },
+  {
+    "Chi": 6,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Proficiency",
+    "Sway_Type_Description": "Immediately grants a new Proficiency suitable to the task being attempted."
+  },
+  {
+    "Chi": 6,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Inept",
+    "Sway_Type_Description": "Cancels a Die from being rolled in a Pool (usually a Proficiency Die)."
+  },
+  {
+    "Chi": 6,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Aegis",
+    "Sway_Type_Description": "Discards all cards of an attack."
+  },
+  {
+    "Chi": 6,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Breach",
+    "Sway_Type_Description": "Adds +10 Penetration Pips to an attack."
+  },
+  {
+    "Chi": 8,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Fast-Talk / Enrage",
+    "Sway_Type_Description": "Add +1 Success Level or Failure Level to any Social Activity or Test."
+  },
+  {
+    "Chi": 8,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Rally / Discourage",
+    "Sway_Type_Description": "Add +1 Success Level or Failure Level to any Psych Activity or Test."
+  },
+  {
+    "Chi": 10,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Clue",
+    "Sway_Type_Description": "Gain a hint from teh current Yarn-Teller or Ref, or Reveal or Remind a Revelation that has been previously missed."
+  },
+  {
+    "Chi": 10,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Feint",
+    "Sway_Type_Description": "Immediately summons 1d6 Distract Wounds on target."
+  },
+  {
+    "Chi": 10,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Surprise",
+    "Sway_Type_Description": "Ignore current GRT, RT, and initiative order to take one Full-Action immediately."
+  },
+  {
+    "Chi": 10,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Surprised",
+    "Sway_Type_Description": "Immediately grants 2 GRT to a target."
+  },
+  {
+    "Chi": 12,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Flashback / Retcon",
+    "Sway_Type_Description": "May be used to describe moments from a Character's past, allowing purchases to be made, or events to be changed etc. This is more than a mild Retcon, allowing a Character's history to be altered, but cannot Retcon major historical events alone."
+  },
+  {
+    "Chi": 12,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Stalemate",
+    "Sway_Type_Description": "Immediately exactly meet the difficulty of any Test or Stage of an ordeal."
+  },
+  {
+    "Chi": 12,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Unbalance",
+    "Sway_Type_Description": "Immediately add +1 Success Level, +1 Failure Level to the target's next action and 1 Unsoakable Distract to the target."
+  },
+  {
+    "Chi": 14,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Prop / Drop Prop",
+    "Sway_Type_Description": "Target immediately loses, gains, fixes or replaces a Prop"
+  },
+  {
+    "Chi": 14,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Failure",
+    "Sway_Type_Description": "Target immediately gains +2 Failure Levels (or a complete Failure)."
+  },
+  {
+    "Chi": 14,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Rise",
+    "Sway_Type_Description": "Target immediately gains +2 Success Levels."
+  },
+  {
+    "Chi": 16,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Chi",
+    "Sway_Type_Description": "Target immediately pulls another card gaining the Pips as Chi."
+  },
+  {
+    "Chi": 16,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Lose Chi",
+    "Sway_Type_Description": "Target immediately loses 8 Chi."
+  },
+  {
+    "Chi": 16,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Psst",
+    "Sway_Type_Description": "Move a card from your Hand to the Target's Hand and draw 2 cards."
+  },
+  {
+    "Chi": 16,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Doom-theft",
+    "Sway_Type_Description": "Remove a random card from target's Hand and add it to your own. The Target may redraw."
+  },
+  {
+    "Chi": 18,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Ambush",
+    "Sway_Type_Description": "The Target is intercepted or Ambushed immediately."
+  },
+  {
+    "Chi": 18,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Safe Passage",
+    "Sway_Type_Description": "The Target may move to another Location immediately ignoring the Stage Difficulty, etc"
+  },
+  {
+    "Chi": 18,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Distractions",
+    "Sway_Type_Description": "The Target takes 1d4 Unsoakable Distract Wounds"
+  },
+  {
+    "Chi": 18,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Shake-off",
+    "Sway_Type_Description": "The Target may remove all Distract Wounds instantly."
+  },
+  {
+    "Chi": 20,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Disaster",
+    "Sway_Type_Description": "The Target immediately takes 4 Failure Levels and their current Score becomes -1."
+  },
+  {
+    "Chi": 20,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Miracle",
+    "Sway_Type_Description": "The Target immediately gains 4 Success Levels and their current dice roll is maximised."
+  },
+  {
+    "Chi": 20,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Wound",
+    "Sway_Type_Description": "The Target must draw and take 1 Unsoakable Wound."
+  },
+  {
+    "Chi": 20,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Relieve Wound",
+    "Sway_Type_Description": "Remove the largest Wound from the Target."
+  },
+  {
+    "Chi": 22,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Hitch",
+    "Sway_Type_Description": "The Target may ignore their Hitches or gain double Chi by activating a Hitch whilst affected by this Wyrd Tarot."
+  },
+  {
+    "Chi": 22,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Double Bluff",
+    "Sway_Type_Description": "Closes or opens a slot where Wyrd Tarot cards can be played for the Target."
+  },
+  {
+    "Chi": 22,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Charm",
+    "Sway_Type_Description": "The Target may add +2 Success or Failure Levels to all social activities whilst atop pile, may also create or close a Style Reserve called \"Charm\" that can be used for social activities."
+  },
+  {
+    "Chi": 22,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Gun",
+    "Sway_Type_Description": "The Target may ignore Range Difficulties and add +1 Success Levels to all actions at Range or add +2 Failure Levels and +36 Range Difficulty to all actions."
+  },
+  {
+    "Chi": 24,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Smith",
+    "Sway_Type_Description": "The Target add +2 Success or Failure Levels to all creative activities, technology, creation etc."
+  },
+  {
+    "Chi": 24,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Double Score",
+    "Sway_Type_Description": "Double or Half the Score generated by one Die as long as this Wyrd Tarot is played upon them."
+  },
+  {
+    "Chi": 24,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Plan",
+    "Sway_Type_Description": "+2 Success Levels while working alone, or +1 Success Level to all Characters working toward the \"Plan\" and creates a \"Plan\" Style Reserve."
+  },
+  {
+    "Chi": 24,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Spot Hidden",
+    "Sway_Type_Description": "The Target add +2 Success Levels to all Perception or Hiding Activities."
+  },
+  {
+    "Chi": 26,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Escape",
+    "Sway_Type_Description": "The Target add +2 Success or Failure Levels to all motion Activities while affected."
+  },
+  {
+    "Chi": 26,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Heal Wounds",
+    "Sway_Type_Description": "The Target add +2 Success or Failure Levels to all healing attempts and activities."
+  },
+  {
+    "Chi": 26,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Mage",
+    "Sway_Type_Description": "The Target add +2 Success or Failure Levels to all magic and creates or closes a \"Magic\" Reserve."
+  },
+  {
+    "Chi": 28,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Success",
+    "Sway_Type_Description": "The Target add +2 Success or Failure Levels to all actions"
+  },
+  {
+    "Chi": 28,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Ignore Wounds",
+    "Sway_Type_Description": "The Target may ignore all Wound effects or Wound effects are doubled while affected."
+  },
+  {
+    "Chi": 28,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Trap",
+    "Sway_Type_Description": "The Target add +2 Success or Failure Levels to all activities to do with traps, and Ordeal cards may be played as \"Obstacles\" into the Stage, or taken into a \"Trap\" Style Reserve."
+  },
+  {
+    "Chi": 28,
+    "Element_Type": "Wyrd Tarot",
+    "Type": "Death",
+    "Sway_Type_Description": "Adds +21 Pips to all attacks or defences by the Target, raises the Limit of any card to Mortal Wounds or lowers them to Crippling, and may raise or lower the Stakes by one, and affects what Hitches may be created by Wounds."
+  }
+]

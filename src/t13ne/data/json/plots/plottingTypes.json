@@ -1,0 +1,22 @@
+[
+    {
+        "Type": "Seat-of-the-Pants",
+        "Description": "These Referees do not plan their Stories out, they react to the actions of the Characters, using the cards they have to explain how the sides react to the Character’s actions. This sort of play is great under an experienced Referee, but not recommended for beginners.",
+        "Rules": "Pantsers play cards from their Hand, in any Order, at any time, to create the next section of Plot and then refill their Hand"
+    },
+    {
+        "Type": "Authored",
+        "Description": "An Author doesn’t have to worry about Players, and can plan out the entire Plot before hand. Some Referees will also do this. Planning each session out in detail, so that they know in advance what will happen. This can go wrong when Players break the Referee’s expectations and don’t defeat the Villain how they thought they would, or run away. Worse yet for games, and the Players, Authored Plots often railroad the Player Characters, making their choices and actions unimportant to the Plot.",
+        "Rules": "Authors play cards from their Hand during the creation of the Plot to create single Scenes. The Author does not play Yarn Cards during Play usually."
+    },
+    {
+        "Type": "Full-Prep",
+        "Description": " A Fully Prepped Plot is a technique that can be used to have the Plot prepared, as an Authored Plot might be, but also include branches and choices that they can use when the Player Characters go off the rails. The easiest way to do this is for the Referee to consider at least two different ways of playing any Hand for a Yarn-Telling Scene, before play begins (you can alter the order of the cards played from the Hand to create very different results). This can give flexibility in how the Plot responds to the Characters without having the Referee have to Seat-of-the-Pants anything.",
+        "Rules": "To Prepare a Plot fully each Scene uses a separate Hand where at least Two variations of Playing the Hand are recorded ahead of time (ideally all variants would be recorded - giving each Scene as many potential ways of playing out as the Plot has sized Hand). Yarn Cards are not played during play, but are narrated by the Yarn-Teller as though they had been."
+    },
+    {
+        "Type": "Hybrid",
+        "Description": "Hybrid play means that the Referee may Author or Fully Prep the Plot, but if things go too \"off-piste\" they will use Seat-of-Pants play to get them through it. In many ways this is the best way that the Referee can work. It allows them to map out complex Plots, but doesn’t encourage the Rail-roading of the Players into a particular Story.",
+        "Rules": "The Plot is created like an Authored or Fully-prepped plot, but during Play the Plot may play cards out of their Hand at any time and then refill their Hand."
+    }
+]

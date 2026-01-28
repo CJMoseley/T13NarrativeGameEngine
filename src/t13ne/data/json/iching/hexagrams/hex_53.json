@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 53,
+    "Name": "Infiltrating",
+    "Entity": "&#19956;",
+    "Logical": 52,
+    "Trigrams": [
+      6,
+      4
+    ],
+    "Hexagram_Text": "Ji'an, Infiltrating (or Gradual Progress or Development), it can be hard to understand the connection between development and infiltration, but we see both behaviours together in nature often, ivy clings parasitic to walls and trees, seeds randomly flower in even well-tended gardens, their infiltration aboard birds, and lone trees grow high on the mountain. Development is gradual, as insidious as love.",
+    "Unchanging": "Once per Scene you may halve a Difficulty, such as a summoning Difficulty.",
+    "Line1": "Goose Near the Shore",
+    "Line2": "Goose Near a Cliff",
+    "Line3": "Goose on a Plateau",
+    "Line4": "Goose in a Tree",
+    "Line5": "Goose on a Roof",
+    "Line6": "Goose in Flight"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you talk about details, sneak or take small steps",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you talk about the big picture, jump or race ahead of others",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yang",
+        "Condition": "you act lost or listen to others",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yang",
+        "Condition": "you act secure",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yin",
+        "Condition": "you act recklessly, out of place or without caution",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yang",
+        "Condition": "you act like you don’t understand something",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yin",
+        "Condition": "you try to disturb or unsettle others",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yin",
+        "Condition": "you are respected or admired",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Infiltrating Quest describes a situation where development must be slow and gradual, this may be a seduction, an infiltration or just a complicated development program. Every step of the Quest will always have both a Test and an Ordeal or 2 Tests that must be completed before the Quester can move on. ",
+    "Quest_Complete": "The Quest that ends with the Infiltrating Hexagram indicates a situation where the Quester will accomplish only the bare minimum of progress for all the work of the Quest. The entire Quest that was completed turns out to only be step one of a multi-part plan.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester begins the infiltration, surrounded by danger, and beset by critics. If the Quester is too hasty, and acts too quickly this will add a Hurdle, Obstacle or Failure Level to the Ordeal and Tests, but if the Quester takes their time and is careful they will add a Success Level to both instead.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester enters a period of security and experiences a lucky break, they will add a Success Level to their Ordeal and Tests, unless they do not share this fortune and security with others, when it will sour into a Failure Level, Obstacle or Hurdle to further progress.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The Quester has stepped too far, and is as out of place as a water bird on a high plateau. Danger surrounds them, and they risk attack and injury from all sides, adding a Hurdle, Obstacle or Failure Level to the Ordeal and Tests, however if the Quester can fend off these initial attacks without injury then this will transform into a Success Level instead. ",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester finds themselves in a situation that they should not be in, like a goose stuck in a tree, this difficult situation will add a Failure Level, Obstacle or Hurdle to the Tests or Ordeal. However, if the Quester is sensible and yields too these threats rather than fighting them, then they can make the tree a place of safety, and add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester is isolated by a high position, and will be misjudged by their superiors or authorities, because their are deceitful people who have infiltrated the companions or side. This adds an additional Hurdle, Obstacle or Failure Level to the Ordeal and Tests of the Quester. Only when the liars are caught, or disposed of, and the misunderstandings are cleared away will the Quester be able to proceed with a Success Level instead. ",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester is held up by authorities as an example that others should seek to emulate, even sometimes after the Quester&#39;s death (or in fact especially after their death). The Quester adds a Hurdle, Obstacle or Failure Level automatically to the Ordeal and Tests of this step, but these become a Success Level if they do anything that might make someone respect or admire them. This line often indicates that a Quester will die to achieve this goal, but they will achieve it.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "This hexagram is made up of Sun (wood, penetration) above, i.e., without, and Kên (mountain, stillness) below, i.e., within. A tree on a mountain develops slowly according to the law of its being and consequently stands firmly rooted. This gives the idea of a development that proceeds gradually, step by step. The attributes of the trigrams also point to this: within is tranquillity, which guards against precipitate actions, and without is penetration, which makes development and progress possible.",
+    "The_Image": {
+      "text": "On the mountain, a tree:\n\nThe image of DEVELOPMENT.\n\nThus the superior man abides in dignity and virtue,\nIn order to improve the mores.",
+      "comments": "The tree on the mountain is visible from afar, and its development influences the landscape of the entire region. It does not shoot up like a swamp plant; its growth proceeds gradually. Thus also the work of influencing people can be only gradual. No sudden influence or awakening is of lasting effect. Progress must be quite gradual, and in order to obtain such progress in public opinion and in the mores of the people, it is necessary for the personality to acquire influence and weight. This comes about through careful and constant work on one's own moral development."
+    },
+    "The_Judgment": {
+      "text": "DEVELOPMENT. The maiden\nIs given in marriage.\nGood fortune.\nPerseverance furthers.",
+      "comments": "The development of events that leads to a girl's following a man to his home proceeds slowly. The various formalities must be disposed of before the marriage takes place. This principle of gradual development can be applied to other situations as well; it is always applicable where it is a matter of correct relationships of co-operation, as for instance in the appointment of an official. The development must be allowed to take its proper course. Hasty action would not be wise. This is also true, finally, of any effort to exert influence on others, for here too the essential factor is a correct way of development through cultivation of one's own personality. No influence such as that exerted by agitators has a lasting effect. Within the personality too, development must follow the same course if lasting results are to be achieved. Gentleness that is adaptable, but at the same time penetrating, is the outer form that should proceed from inner calm. The very gradualness of the development makes it necessary to have perseverance, for perseverance alone prevents slow progress from dwindling to nothing."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "The wild goose gradually draws near the shore.",
+        "comments": "The young son is in danger.\n\nThere is talk. No blame.\n\nAll the individual lines in this hexagram symbolize the gradual flight of the wild goose. The wild goose is the symbol of conjugal fidelity, because it is believed that this bird never takes another mate after the death of the first. The initial line suggests the first resting place in the flight of water birds from the water to the heights. The shore is reached. The situation is that of a lonely young man who is just starting out to make his way in life. Since no one comes to help him, his first steps are slow and hesitant, and he is surrounded by danger. Naturally he is subjected to much criticism. But these very difficulties keep him from being too hasty, and his progress is successful."
+      },
+      "2": {
+        "text": "The wild goose gradually draws near the cliff.\nEating and drinking in peace and concord.\nGood fortune.",
+        "comments": "The cliff is a safe place on shore. The development has gone a step further. The initial insecurity has been overcome, and a safe position in life has been found, giving one enough to live on. This first success, opening up a path to activity, brings a certain joyousness of mood, and one goes to meet the future reassured. It is said of the wild goose that it calls to its comrades whenever it finds food; this is the symbol of peace and concord in good fortune. A man does not want to keep his good luck for himself only, but is ready to share it with others."
+      },
+      "3": {
+        "text": "The wild goose gradually draws near the plateau.",
+        "comments": "The man goes forth and does not return.\n\nThe woman carries a child but does not bring it forth.\nMisfortune.\nIt furthers one to fight off robbers.\n\nThe high plateau is dry and unsuitable for the wild goose. If it goes there, it has lost its way and gone too far. This is contrary to the law of development. It is the same in human life. If we do not let things develop quietly but plunge of our own choice too rashly into a struggle, misfortune results. A man jeopardizes his own life, and his family perishes thereby. However, this is not all necessary; it is only the result of transgressing the law of natural development. If one does not willfully provoke a conflict, but confines himself to vigorously maintaining his own position and to warding off unjustified attacks, all goes well."
+      },
+      "4": {
+        "text": "The wild goose goes gradually draws near the tree.\nPerhaps it will find a flat branch. No blame.",
+        "comments": "A tree is not a suitable place for a wild goose. But if it is clever, it will find a flat branch on which it can get a footing. A man's life too, in the course of its development, often brings him into inappropriate situations, in which he finds it difficult to hold his own without danger. Then it is important to be sensible and yielding. This enables him to discover a safe place in which life can go on, although he may be surrounded by danger."
+      },
+      "5": {
+        "text": "The wild goose gradually draws near the summit.\nFor three years the woman has no child.\nIn the end nothing can hinder her.\nGood fortune.",
+        "comments": "The summit is a high place. In a high position one easily becomes isolated. One is misjudged by the very person on whom one is dependent-the woman by her husband, the official by his superior. This is the work of deceitful persons who have wormed their way in. The result is that relationships remain sterile, and nothing is accomplished. But in the course of further development, such misunderstandings are cleared away, and reconciliation is achieved after all."
+      },
+      "6": {
+        "text": "The wild goose gradually draws near the clouds heights.\nIts feathers can be used for the sacred dance.\nGood fortune.",
+        "comments": "Here life comes to its end. A man's work stands completed. The path rises high toward heaven, like the flight of wild geese when they have left the earth far behind. There they fly, keeping to the order of their flight in strict formation. And if their feathers fall, they can serve as ornaments in the sacred dance pantomimes performed in the temples. Thus the life of a man who has perfected himself is a bright light for the people of earth, who look up to him as an example."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Infiltrating'. Internalize this core philosophy: This hexagram is made up of Sun (wood, penetration) above, i.e., without, and Kên (mountain, stillness) below, i.e., within. A tree on a mountain develops slowly according to the law of its being and consequently stands firmly rooted. This gives the idea of a development that proceeds gradually, step by step. The attributes of the trigrams also point to this: within is tranquillity, which guards against precipitate actions, and without is penetration, which makes development and progress... Your current worldview is: \"Ji'an, Infiltrating (or Gradual Progress or Development), it can be hard to understand the connection between development and infiltration, but we see both behaviours together in nature often, ivy clings parasitic to walls and trees, seeds randomly flower in even well-tended gardens, their infiltration aboard birds, and lone trees grow high on the mountain. Development is gradual, as insidious as love.\". Let your choices be subtly driven by these conditions: you talk about details, sneak or take small steps, you talk about the big picture, jump or race ahead of others. When interacting, mirror the wisdom found in the commentary: \"The development of events that leads to a girl's following a man to his home proceeds slowly. The various formalities must be disposed of before the marriage takes place. This principle of gradual development can be applied to other situations as well; it is always applicable where it is a matter...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Infiltrating'. The primary quest objective is: The Infiltrating Quest describes a situation where development must be slow and gradual, this may be a seduction, an infiltration or just a complicated development program. Every step of the Quest will always have both a Test and an Ordeal or 2 Tests that must be completed before the Quester can move on. . Introduce environmental or social complications that reflect the 'Image' of this hexagram: The tree on the mountain is visible from afar, and its development influences the landscape of the entire region. It does not shoot up like a swamp plant; its growth proceeds gradually. Thus also the work of influencing people can be only gradual. No sudden influence or awakening is of lasting effect. Progress must be quite gradual, and in order to obtain such progress in public opinion and in... Use the following line-specific challenges to pace the story: The Quester begins the infiltration, surrounded by danger, and beset by critics. If the Quester is too hasty, and acts too quickly this will add a Hurdle, Obstacle or Failure Level to the Ordeal and Tests, but if the Quester takes their time and is careful they will add a Success Level to both instead. | The Quester enters a period of security and experiences a lucky break, they will add a Success Level to their Ordeal and Tests, unless they do not share this fortune and security with others, when it will sour into a Failure Level, Obstacle or Hurdle to further progress. | The Quester has stepped too far, and is as out of place as a water bird on a high plateau. Danger surrounds them, and they risk attack and injury from all sides, adding a Hurdle, Obstacle or Failure Level to the Ordeal and Tests, however if the Quester can fend off these initial attacks without injury then this will transform into a Success Level instead.  | The Quester finds themselves in a situation that they should not be in, like a goose stuck in a tree, this difficult situation will add a Failure Level, Obstacle or Hurdle to the Tests or Ordeal. However, if the Quester is sensible and yields too these threats rather than fighting them, then they can make the tree a place of safety, and add a Success Level instead. | The Quester is isolated by a high position, and will be misjudged by their superiors or authorities, because their are deceitful people who have infiltrated the companions or side. This adds an additional Hurdle, Obstacle or Failure Level to the Ordeal and Tests of the Quester. Only when the liars are caught, or disposed of, and the misunderstandings are cleared away will the Quester be able to proceed with a Success Level instead.  | The Quester is held up by authorities as an example that others should seek to emulate, even sometimes after the Quester&#39;s death (or in fact especially after their death). The Quester adds a Hurdle, Obstacle or Failure Level automatically to the Ordeal and Tests of this step, but these become a Success Level if they do anything that might make someone respect or admire them. This line often indicates that a Quester will die to achieve this goal, but they will achieve it.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Goose Near the Shore): Mirror the internal state described in the commentary: \"The young son is in danger.\n\nThere is talk. No blame.\n\nAll the individual lines in this hexagram symbolize the gradual flight of the wild goose. The wild goose is the symbol of conjugal fidelity, because it is believed that this bird never takes...\" Your actions should be framed by the goal: you act lost or listen to others.",
+        "Plot": "Plot Complication Line 1 (Goose Near the Shore): Introduce a challenge based on the interpretation: \"The young son is in danger.\n\nThere is talk. No blame.\n\nAll the individual lines in this hexagram symbolize the gradual flight of the wild goose. The wild goose is the symbol of conjugal fidelity, because it is believed that this bird never takes...\" The specific quest objective for this stage is: The Quester begins the infiltration, surrounded by danger, and beset by critics. If the Quester is too hasty, and acts too quickly this will add a Hurdle, Obstacle or Failure Level to the Ordeal and Tests, but if the Quester takes their time and is careful they will add a Success Level to both instead."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Goose Near a Cliff): Mirror the internal state described in the commentary: \"The cliff is a safe place on shore. The development has gone a step further. The initial insecurity has been overcome, and a safe position in life has been found, giving one enough to live on. This first success, opening up a path to activity,...\" Your actions should be framed by the goal: you act secure.",
+        "Plot": "Plot Complication Line 2 (Goose Near a Cliff): Introduce a challenge based on the interpretation: \"The cliff is a safe place on shore. The development has gone a step further. The initial insecurity has been overcome, and a safe position in life has been found, giving one enough to live on. This first success, opening up a path to activity,...\" The specific quest objective for this stage is: The Quester enters a period of security and experiences a lucky break, they will add a Success Level to their Ordeal and Tests, unless they do not share this fortune and security with others, when it will sour into a Failure Level, Obstacle or Hurdle to further progress."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Goose on a Plateau): Mirror the internal state described in the commentary: \"The man goes forth and does not return.\n\nThe woman carries a child but does not bring it forth.\nMisfortune.\nIt furthers one to fight off robbers.\n\nThe high plateau is dry and unsuitable for the wild goose. If it goes there, it has lost its way and...\" Your actions should be framed by the goal: you act recklessly, out of place or without caution.",
+        "Plot": "Plot Complication Line 3 (Goose on a Plateau): Introduce a challenge based on the interpretation: \"The man goes forth and does not return.\n\nThe woman carries a child but does not bring it forth.\nMisfortune.\nIt furthers one to fight off robbers.\n\nThe high plateau is dry and unsuitable for the wild goose. If it goes there, it has lost its way and...\" The specific quest objective for this stage is: The Quester has stepped too far, and is as out of place as a water bird on a high plateau. Danger surrounds them, and they risk attack and injury from all sides, adding a Hurdle, Obstacle or Failure Level to the Ordeal and Tests, however if the Quester can fend off these initial attacks without injury then this will transform into a Success Level instead. "
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Goose in a Tree): Mirror the internal state described in the commentary: \"A tree is not a suitable place for a wild goose. But if it is clever, it will find a flat branch on which it can get a footing. A man's life too, in the course of its development, often brings him into inappropriate situations, in which he finds it...\" Your actions should be framed by the goal: you act like you don’t understand something.",
+        "Plot": "Plot Complication Line 4 (Goose in a Tree): Introduce a challenge based on the interpretation: \"A tree is not a suitable place for a wild goose. But if it is clever, it will find a flat branch on which it can get a footing. A man's life too, in the course of its development, often brings him into inappropriate situations, in which he finds it...\" The specific quest objective for this stage is: The Quester finds themselves in a situation that they should not be in, like a goose stuck in a tree, this difficult situation will add a Failure Level, Obstacle or Hurdle to the Tests or Ordeal. However, if the Quester is sensible and yields too these threats rather than fighting them, then they can make the tree a place of safety, and add a Success Level instead."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Goose on a Roof): Mirror the internal state described in the commentary: \"The summit is a high place. In a high position one easily becomes isolated. One is misjudged by the very person on whom one is dependent-the woman by her husband, the official by his superior. This is the work of deceitful persons who have wormed...\" Your actions should be framed by the goal: you try to disturb or unsettle others.",
+        "Plot": "Plot Complication Line 5 (Goose on a Roof): Introduce a challenge based on the interpretation: \"The summit is a high place. In a high position one easily becomes isolated. One is misjudged by the very person on whom one is dependent-the woman by her husband, the official by his superior. This is the work of deceitful persons who have wormed...\" The specific quest objective for this stage is: The Quester is isolated by a high position, and will be misjudged by their superiors or authorities, because their are deceitful people who have infiltrated the companions or side. This adds an additional Hurdle, Obstacle or Failure Level to the Ordeal and Tests of the Quester. Only when the liars are caught, or disposed of, and the misunderstandings are cleared away will the Quester be able to proceed with a Success Level instead. "
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Goose in Flight): Mirror the internal state described in the commentary: \"Here life comes to its end. A man's work stands completed. The path rises high toward heaven, like the flight of wild geese when they have left the earth far behind. There they fly, keeping to the order of their flight in strict formation. And if...\" Your actions should be framed by the goal: you are respected or admired.",
+        "Plot": "Plot Complication Line 6 (Goose in Flight): Introduce a challenge based on the interpretation: \"Here life comes to its end. A man's work stands completed. The path rises high toward heaven, like the flight of wild geese when they have left the earth far behind. There they fly, keeping to the order of their flight in strict formation. And if...\" The specific quest objective for this stage is: The Quester is held up by authorities as an example that others should seek to emulate, even sometimes after the Quester&#39;s death (or in fact especially after their death). The Quester adds a Hurdle, Obstacle or Failure Level automatically to the Ordeal and Tests of this step, but these become a Success Level if they do anything that might make someone respect or admire them. This line often indicates that a Quester will die to achieve this goal, but they will achieve it."
+      }
+    }
+  }
+}

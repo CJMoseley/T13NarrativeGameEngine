@@ -1,0 +1,1432 @@
+{
+  "1001": {
+    "id": 1001,
+    "prof": {
+      "Name": [
+        "Prevailer",
+        "Prevailer Liberty Core Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Prevailer is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1002": {
+    "id": 1002,
+    "prof": {
+      "Name": [
+        "Fancy",
+        "Fancy Liberty Descendants Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Fancy is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1003": {
+    "id": 1003,
+    "prof": {
+      "Name": [
+        "Freebie",
+        "Freebie Liberty Edge Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Freebie is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1004": {
+    "id": 1004,
+    "prof": {
+      "Name": [
+        "Freebie",
+        "Freebie Liberty Glow Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Freebie is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1005": {
+    "id": 1005,
+    "prof": {
+      "Name": [
+        "Unlucky",
+        "Unlucky Liberty Failure Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Unlucky is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1006": {
+    "id": 1006,
+    "prof": {
+      "Name": [
+        "Misfortune",
+        "Misfortune Liberty Fumble Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Misfortune is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1007": {
+    "id": 1007,
+    "prof": {
+      "Name": [
+        "Chance",
+        "Chance Liberty Gnarl Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Chance is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1008": {
+    "id": 1008,
+    "prof": {
+      "Name": [
+        "None",
+        "None Liberty Herald Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of None is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1009": {
+    "id": 1009,
+    "prof": {
+      "Name": [
+        "Taboo",
+        "Taboo Liberty Hitch Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Taboo is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1010": {
+    "id": 1010,
+    "prof": {
+      "Name": [
+        "Carelessness",
+        "Carelessness Liberty Hurdle Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Carelessness is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1011": {
+    "id": 1011,
+    "prof": {
+      "Name": [
+        "Dream",
+        "Dream Liberty Incarna Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Dream is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1012": {
+    "id": 1012,
+    "prof": {
+      "Name": [
+        "Free Locations",
+        "Free Location Liberty Location Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Free Locations is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1013": {
+    "id": 1013,
+    "prof": {
+      "Name": [
+        "Fun",
+        "Fun Liberty Lore Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Fun is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1014": {
+    "id": 1014,
+    "prof": {
+      "Name": [
+        "Nightmare",
+        "Nightmare Liberty Monster Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Nightmare is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1015": {
+    "id": 1015,
+    "prof": {
+      "Name": [
+        "Figurative",
+        "Figurative Liberty Narration Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Figurative is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1016": {
+    "id": 1016,
+    "prof": {
+      "Name": [
+        "Tergiversation",
+        "Tergiversation Liberty Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Tergiversation is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1017": {
+    "id": 1017,
+    "prof": {
+      "Name": [
+        "Freedom Ordeals",
+        "Freedom Ordeal Liberty Ordeal Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Freedom Ordeals is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1018": {
+    "id": 1018,
+    "prof": {
+      "Name": [
+        "Dreamscape",
+        "Dreamscape Liberty Psychosocial Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Dreamscape is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1019": {
+    "id": 1019,
+    "prof": {
+      "Name": [
+        "Liberate / Escape",
+        "Liberate / Escape",
+        ""
+      ],
+      "Description": "To wield Liberate / Escape is to hold the very heart of Loss, a power that shapes the tides of grief.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "11"
+        ],
+        "Genres": [
+          "11"
+        ],
+        "Eras": [
+          "11"
+        ],
+        "Types": [
+          "Quest"
+        ]
+      }
+    }
+  },
+  "1020": {
+    "id": 1020,
+    "prof": {
+      "Name": [
+        "Free Locations",
+        "Free Location Liberty Location Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Free Locations is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1021": {
+    "id": 1021,
+    "prof": {
+      "Name": [
+        "Blessing",
+        "Blessing Liberty Resolved Hitch Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Blessing is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1022": {
+    "id": 1022,
+    "prof": {
+      "Name": [
+        "Luck",
+        "Luck Liberty Rule Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Luck is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1023": {
+    "id": 1023,
+    "prof": {
+      "Name": [
+        "Loose Locations",
+        "Loose Location Liberty High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Loose Locations is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1024": {
+    "id": 1024,
+    "prof": {
+      "Name": [
+        "Exceptional",
+        "Exceptional Liberty Success Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Exceptional is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1025": {
+    "id": 1025,
+    "prof": {
+      "Name": [
+        "Hopes",
+        "Hopes Liberty Sway Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Hopes is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1026": {
+    "id": 1026,
+    "prof": {
+      "Name": [
+        "Strangeness",
+        "Strangeness Liberty Tangle Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Strangeness is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1027": {
+    "id": 1027,
+    "prof": {
+      "Name": [
+        "Carousing / Celebrating / Dreaming / Escaping / Hedonism / Law-breaking / Magic / Partying",
+        "Carousing / Celebrating / Dreaming / Escaping / Hedonism / Law-breaking / Magic / Partying",
+        ""
+      ],
+      "Description": "A seed of grief planted in the fertile ground of Loss, Carousing / Celebrating / Dreaming / Escaping / Hedonism / Law-breaking / Magic / Partying is the flower that blooms in adversity.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "11"
+        ],
+        "Genres": [
+          "11"
+        ],
+        "Eras": [
+          "11"
+        ],
+        "Types": [
+          "Test"
+        ]
+      }
+    }
+  },
+  "1028": {
+    "id": 1028,
+    "prof": {
+      "Name": [
+        "Surreal",
+        "Surreal Liberty Tone Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Surreal is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1029": {
+    "id": 1029,
+    "prof": {
+      "Name": [
+        "Oneiromantic",
+        "Oneiromantic Liberty Turn Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Oneiromantic is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1030": {
+    "id": 1030,
+    "prof": {
+      "Name": [
+        "Dreams",
+        "Dreams Liberty Twisted Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Dreams is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1031": {
+    "id": 1031,
+    "prof": {
+      "Name": [
+        "Liberating",
+        "Liberating Liberty Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Liberating is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1032": {
+    "id": 1032,
+    "prof": {
+      "Name": [
+        "Freedom",
+        "Freedom Liberty Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Freedom is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1033": {
+    "id": 1033,
+    "prof": {
+      "Name": [
+        "Gifted",
+        "Gifted Liberty Nimbed Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Gifted is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1034": {
+    "id": 1034,
+    "prof": {
+      "Name": [
+        "Jinxed",
+        "Jinxed Liberty Umbral Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Jinxed is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1035": {
+    "id": 1035,
+    "prof": {
+      "Name": [
+        "Rake",
+        "Rake Liberty Persona Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Rake is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1036": {
+    "id": 1036,
+    "prof": {
+      "Name": [
+        "Incorruptible",
+        "Incorruptible Miasma Zero Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Incorruptible is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1037": {
+    "id": 1037,
+    "prof": {
+      "Name": [
+        "Purified",
+        "Purified Miasma Zero Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Purified is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1038": {
+    "id": 1038,
+    "prof": {
+      "Name": [
+        "Pristine Locations",
+        "Pristine Location Miasma Zero Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Pristine Locations is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1039": {
+    "id": 1039,
+    "prof": {
+      "Name": [
+        "Pure",
+        "Pure Miasma Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Pure is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1040": {
+    "id": 1040,
+    "prof": {
+      "Name": [
+        "Pure",
+        "Pure Miasma Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Pure is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1041": {
+    "id": 1041,
+    "prof": {
+      "Name": [
+        "Unsullied Locations",
+        "Unsullied Location Miasma Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Unsullied Locations is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1042": {
+    "id": 1042,
+    "prof": {
+      "Name": [
+        "Spotless",
+        "Spotless Miasma Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Spotless is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1043": {
+    "id": 1043,
+    "prof": {
+      "Name": [
+        "Immaculate",
+        "Immaculate Miasma Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Immaculate is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1044": {
+    "id": 1044,
+    "prof": {
+      "Name": [
+        "Snowy Locations",
+        "Snowy Location Miasma Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Snowy Locations is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1045": {
+    "id": 1045,
+    "prof": {
+      "Name": [
+        "Clean",
+        "Clean Miasma Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Clean is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1046": {
+    "id": 1046,
+    "prof": {
+      "Name": [
+        "Clean",
+        "Clean Miasma Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Clean is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1047": {
+    "id": 1047,
+    "prof": {
+      "Name": [
+        "Neat Locations",
+        "Neat Location Miasma Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Neat Locations is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1048": {
+    "id": 1048,
+    "prof": {
+      "Name": [
+        "Washed",
+        "Washed Miasma Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Washed is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1049": {
+    "id": 1049,
+    "prof": {
+      "Name": [
+        "Marked",
+        "Marked Miasma Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Marked is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1050": {
+    "id": 1050,
+    "prof": {
+      "Name": [
+        "Landscaped Locations",
+        "Landscaped Location Miasma Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Landscaped Locations is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

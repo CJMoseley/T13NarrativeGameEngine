@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 52,
+    "Name": "The Mountain",
+    "Entity": "&#19955;",
+    "Logical": 36,
+    "Trigrams": [
+      6,
+      6
+    ],
+    "Hexagram_Text": "Ken, The Mountain (or Keeping Still or Bound), is the symbol of the stilled silence of the meditating mind. Just as the mountain moves too slowly to be perceived so it may be that scurrying activity moves you no where.",
+    "Unchanging": "You may once per Scene add or subtract Incarna Score (Boon Reduced) Success Levels to any Test if you stay as still as possible.",
+    "Line1": "Toes Still",
+    "Line2": "Carried Along",
+    "Line3": "Stilled Hips, Stilled Heart",
+    "Line4": "Motion Without Moving",
+    "Line5": "Still Jaw",
+    "Line6": "Still Noble Heart"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you stay still, keep calm, meditate, or heal / regenerate a wound",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you are in danger or threatened",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yang",
+        "Condition": "you hold back, don't commit or stand still",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yang",
+        "Condition": "you offer bad advice, or do not interfere in an evil plan",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yin",
+        "Condition": "you act stubborn or overbearing",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yang",
+        "Condition": "you act overexcited, exuberant, or frantic",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you listen to others",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yin",
+        "Condition": "you act serene or tranquil",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Mountain Quest describes a situation where the Quest is either limited in number locations (perhaps confined or imprisoned), must be conducted with as little noise and agitation as possible (perhaps avalanches threaten the Quest Location), or just occasionally the Mountain Quest will be merely a thought-experiment, simulation, meditation or dream, taking place to bring stillness to the Quester&#39;s mind or soul. Either way the Mountain Quest is restful, and more often a collection of Tests and low-stakes Ordeals, there is often little to no conflict or threat in the Mountain Quest, except that brought on by the Mountain itself.",
+    "Quest_Complete": "The Quest that ends upon the Mountain Hexagram ends with stillness, it is a chance to rest and recuperate after the adventure of the Quest. The Quester is safe, secure upon the Mountain, beyond the reach of the Opposition, or the Authorities.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester is prompted to act, or react, but should not. Holding still and not reacting at all is the only way to not add a Failure Level, Obstacle or Hurdle to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester is ordered to act by an authority (often the Quest-giver), but to do so would be a mistake (such as following illegal or immoral orders) that will add a Hurdle, Obstacle or Failure Level to the Ordeal or Test. Even if the Quester holds still, the authority may continue on and walk into disaster, but at least they will not necessarily take the Quester with them.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "When another character is disturbed, does the Quester try to force them to be calm, or force calmness upon themselves? Because true calmness would accept the disturbance without concern, it will add a Success Level on the Ordeal or Test, rather than adding the Hurdle, Obstacle or Failure Level of forced calm.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester is allowed to rest naturally, but should they forego this chance to rest, they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test as they have not yet stilled this desire. The Quester who rests completely will add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester who is loquacious, vocal and makes jokes will create an additional Hurdle, Obstacle or Failure Level on their Ordeal or Test. But the Quester who is silent, stoic or reserved in their speech will add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester who has reached tranquillity and will not be riled or ruffled by events around them, they will add a Success Level to the Test or Ordeal, failure to be serene and calm under any circumstances will result in adding a Failure Level, Obstacle or Hurdle instead.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "The image of this hexagram is the mountain, the youngest son of heaven and earth. The male principle is at the top because it strives upward by nature; the female principle is below, since the direction of its movement has come to its normal end. In its application to man, the hexagram turns upon the problem of achieving a quiet heart. It is very difficult to bring quiet to the heart. While Buddhism strives for rest through an ebbing away of all movement in nirvana, the Book of Changes holds that rest is merely a state of polarity that always posits movement as its complement. Possibly the words of the text embody directions for the practice of yoga.",
+    "The_Image": {
+      "text": "Mountains standing close together:\n\nThe image of KEEPING STILL.\n\nThus the superior man\nDoes not permit his thoughts\n\nTo go beyond his situation.",
+      "comments": "The heart thinks constantly. This cannot be changed, but the movements of the heart-that is, a man's thoughts-should restrict themselves to the immediate situation. All thinking that goes beyond this only makes the heart sore."
+    },
+    "The_Judgment": {
+      "text": "KEEPING STILL. Keeping his back still\n\nSo that he no longer feels his body.\nHe goes into his courtyard\nAnd does not see his people.\n\nNo blame.",
+      "comments": "True quiet means keeping still when the time has come to keep still, and going forward when the time has come to go forward. In this way rest and movement are in agreement with the demands of the time, and thus there is light in life. The hexagram signifies the end and the beginning of all movement. The back is named because in the back are located all the nerve fibers that mediate movement. If the movement of these spinal nerves is brought to a standstill, the ego, with its restlessness, disappears as it were. When a man has thus become calm, he may turn to the outside world. He no longer sees in it the struggle and tumult of individual beings, and therefore he has that true peace of mind which is needed for understanding the great laws of the universe and for acting in harmony with them. Whoever acts from these deep levels makes no mistakes."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Keeping his toes still.",
+        "comments": "No blame.\nContinued perseverance furthers.\n\nKeeping the toes still means halting before one has even begun to move. The beginning is the time of few mistakes. At that time one is still in harmony with primal innocence. Not yet influenced by obscuring interests and desires, one sees things intuitively as they really are. A man who halts at the beginning, so long as he has not yet abandoned the truth, finds the right way. But persisting firmness is needed to keep one from drifting irresolutely."
+      },
+      "2": {
+        "text": "Keeping his calves still.\nHe cannot rescue him whom he follows.\nHis heart is not glad.",
+        "comments": "The leg cannot move independently; it depends on the movement of the body. If a leg is suddenly stopped while the whole body is in vigorous motion, the continuing body movement will make one fall. The same is true of a man who serves a master stronger than himself. He is swept along, and even though he may himself halt on the path of wrongdoing, he can no longer check the other in his powerful movement. Where the master presses forward, the servant, no matter how good his intentions, cannot save him."
+      },
+      "3": {
+        "text": "Keeping his hips still.\nMaking his sacrum stiff.\nDangerous. The heart suffocates.",
+        "comments": "This refers to enforced quiet. The restless heart is to be subdued by forcible means. But fire when it is smothered changes into acrid smoke that suffocates as it spreads. Therefore, in exercises in meditation and concentration, one ought not to try to force results. Rather, calmness must develop naturally out of a state of inner composure. If one tries to induce calmness by means of artificial rigidity, meditation will lead to very unwholesome results."
+      },
+      "4": {
+        "text": "Keeping his trunk still.",
+        "comments": "No blame.\n\nAs has been pointed out above in the comment on the Judgment, keeping the back at rest means forgetting the ego. This is the highest stage of rest. Here this stage has not yet been reached: the individual in this instance, though able to keep the ego, with its thoughts and impulses, in a state of rest, is not yet quite liberated from its dominance. Nonetheless, keeping the heart at rest is an important function, leading in the end to the complete elimination of egotistic drives. Even though at this point one does not yet remain free from all the dangers of doubt and unrest, this frame of mind is not a mistake, as it leads ultimately to that other, higher level."
+      },
+      "5": {
+        "text": "Keeping his jaws still.",
+        "comments": "The words have order.\nRemorse disappears.\n\nA man in a dangerous situation, especially when he is not adequate to it, is inclined to be very free with talk and presumptuous jokes. But injudicious speech easily leads to situations that subsequently give much cause for regret. However, if a man is reserved in speech, his words take ever more definite form, and every occasion for regret vanishes."
+      },
+      "6": {
+        "text": "Noblehearted keeping still.\nGood fortune.",
+        "comments": "This marks the consummation of the effort to attain tranquillity. One is at rest, not merely in a small, circumscribed way in regard to matters of detail, but one has also a general resignation in regard to life as a whole, and this confers peace and good fortune in relation to every individual matter."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'The Mountain'. Internalize this core philosophy: The image of this hexagram is the mountain, the youngest son of heaven and earth. The male principle is at the top because it strives upward by nature; the female principle is below, since the direction of its movement has come to its normal end. In its application to man, the hexagram turns upon the problem of achieving a quiet heart. It is very difficult to bring quiet to the heart. While Buddhism strives for rest through an ebbing away of all movement in nirvana, the Book of Changes holds... Your current worldview is: \"Ken, The Mountain (or Keeping Still or Bound), is the symbol of the stilled silence of the meditating mind. Just as the mountain moves too slowly to be perceived so it may be that scurrying activity moves you no where.\". Let your choices be subtly driven by these conditions: you stay still, keep calm, meditate, or heal / regenerate a wound, you are in danger or threatened. When interacting, mirror the wisdom found in the commentary: \"True quiet means keeping still when the time has come to keep still, and going forward when the time has come to go forward. In this way rest and movement are in agreement with the demands of the time, and thus there is light in life. The hexagram signifies the end and the beginning of all...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'The Mountain'. The primary quest objective is: The Mountain Quest describes a situation where the Quest is either limited in number locations (perhaps confined or imprisoned), must be conducted with as little noise and agitation as possible (perhaps avalanches threaten the Quest Location), or just occasionally the Mountain Quest will be merely a thought-experiment, simulation, meditation or dream, taking place to bring stillness to the Quester&#39;s mind or soul. Either way the Mountain Quest is restful, and more often a collection of Tests and low-stakes Ordeals, there is often little to no conflict or threat in the Mountain Quest, except that brought on by the Mountain itself.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: The heart thinks constantly. This cannot be changed, but the movements of the heart-that is, a man's thoughts-should restrict themselves to the immediate situation. All thinking that goes beyond this only makes the heart sore. Use the following line-specific challenges to pace the story: The Quester is prompted to act, or react, but should not. Holding still and not reacting at all is the only way to not add a Failure Level, Obstacle or Hurdle to the Test or Ordeal. | The Quester is ordered to act by an authority (often the Quest-giver), but to do so would be a mistake (such as following illegal or immoral orders) that will add a Hurdle, Obstacle or Failure Level to the Ordeal or Test. Even if the Quester holds still, the authority may continue on and walk into disaster, but at least they will not necessarily take the Quester with them. | When another character is disturbed, does the Quester try to force them to be calm, or force calmness upon themselves? Because true calmness would accept the disturbance without concern, it will add a Success Level on the Ordeal or Test, rather than adding the Hurdle, Obstacle or Failure Level of forced calm. | The Quester is allowed to rest naturally, but should they forego this chance to rest, they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test as they have not yet stilled this desire. The Quester who rests completely will add a Success Level instead. | The Quester who is loquacious, vocal and makes jokes will create an additional Hurdle, Obstacle or Failure Level on their Ordeal or Test. But the Quester who is silent, stoic or reserved in their speech will add a Success Level instead. | The Quester who has reached tranquillity and will not be riled or ruffled by events around them, they will add a Success Level to the Test or Ordeal, failure to be serene and calm under any circumstances will result in adding a Failure Level, Obstacle or Hurdle instead.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Toes Still): Mirror the internal state described in the commentary: \"No blame.\nContinued perseverance furthers.\n\nKeeping the toes still means halting before one has even begun to move. The beginning is the time of few mistakes. At that time one is still in harmony with primal innocence. Not yet influenced by...\" Your actions should be framed by the goal: you hold back, don't commit or stand still.",
+        "Plot": "Plot Complication Line 1 (Toes Still): Introduce a challenge based on the interpretation: \"No blame.\nContinued perseverance furthers.\n\nKeeping the toes still means halting before one has even begun to move. The beginning is the time of few mistakes. At that time one is still in harmony with primal innocence. Not yet influenced by...\" The specific quest objective for this stage is: The Quester is prompted to act, or react, but should not. Holding still and not reacting at all is the only way to not add a Failure Level, Obstacle or Hurdle to the Test or Ordeal."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Carried Along): Mirror the internal state described in the commentary: \"The leg cannot move independently; it depends on the movement of the body. If a leg is suddenly stopped while the whole body is in vigorous motion, the continuing body movement will make one fall. The same is true of a man who serves a master...\" Your actions should be framed by the goal: you offer bad advice, or do not interfere in an evil plan.",
+        "Plot": "Plot Complication Line 2 (Carried Along): Introduce a challenge based on the interpretation: \"The leg cannot move independently; it depends on the movement of the body. If a leg is suddenly stopped while the whole body is in vigorous motion, the continuing body movement will make one fall. The same is true of a man who serves a master...\" The specific quest objective for this stage is: The Quester is ordered to act by an authority (often the Quest-giver), but to do so would be a mistake (such as following illegal or immoral orders) that will add a Hurdle, Obstacle or Failure Level to the Ordeal or Test. Even if the Quester holds still, the authority may continue on and walk into disaster, but at least they will not necessarily take the Quester with them."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Stilled Hips, Stilled Heart): Mirror the internal state described in the commentary: \"This refers to enforced quiet. The restless heart is to be subdued by forcible means. But fire when it is smothered changes into acrid smoke that suffocates as it spreads. Therefore, in exercises in meditation and concentration, one ought not to try...\" Your actions should be framed by the goal: you act stubborn or overbearing.",
+        "Plot": "Plot Complication Line 3 (Stilled Hips, Stilled Heart): Introduce a challenge based on the interpretation: \"This refers to enforced quiet. The restless heart is to be subdued by forcible means. But fire when it is smothered changes into acrid smoke that suffocates as it spreads. Therefore, in exercises in meditation and concentration, one ought not to try...\" The specific quest objective for this stage is: When another character is disturbed, does the Quester try to force them to be calm, or force calmness upon themselves? Because true calmness would accept the disturbance without concern, it will add a Success Level on the Ordeal or Test, rather than adding the Hurdle, Obstacle or Failure Level of forced calm."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Motion Without Moving): Mirror the internal state described in the commentary: \"No blame.\n\nAs has been pointed out above in the comment on the Judgment, keeping the back at rest means forgetting the ego. This is the highest stage of rest. Here this stage has not yet been reached: the individual in this instance, though able to...\" Your actions should be framed by the goal: you act overexcited, exuberant, or frantic.",
+        "Plot": "Plot Complication Line 4 (Motion Without Moving): Introduce a challenge based on the interpretation: \"No blame.\n\nAs has been pointed out above in the comment on the Judgment, keeping the back at rest means forgetting the ego. This is the highest stage of rest. Here this stage has not yet been reached: the individual in this instance, though able to...\" The specific quest objective for this stage is: The Quester is allowed to rest naturally, but should they forego this chance to rest, they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test as they have not yet stilled this desire. The Quester who rests completely will add a Success Level instead."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Still Jaw): Mirror the internal state described in the commentary: \"The words have order.\nRemorse disappears.\n\nA man in a dangerous situation, especially when he is not adequate to it, is inclined to be very free with talk and presumptuous jokes. But injudicious speech easily leads to situations that subsequently...\" Your actions should be framed by the goal: you listen to others.",
+        "Plot": "Plot Complication Line 5 (Still Jaw): Introduce a challenge based on the interpretation: \"The words have order.\nRemorse disappears.\n\nA man in a dangerous situation, especially when he is not adequate to it, is inclined to be very free with talk and presumptuous jokes. But injudicious speech easily leads to situations that subsequently...\" The specific quest objective for this stage is: The Quester who is loquacious, vocal and makes jokes will create an additional Hurdle, Obstacle or Failure Level on their Ordeal or Test. But the Quester who is silent, stoic or reserved in their speech will add a Success Level instead."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Still Noble Heart): Mirror the internal state described in the commentary: \"This marks the consummation of the effort to attain tranquillity. One is at rest, not merely in a small, circumscribed way in regard to matters of detail, but one has also a general resignation in regard to life as a whole, and this confers peace...\" Your actions should be framed by the goal: you act serene or tranquil.",
+        "Plot": "Plot Complication Line 6 (Still Noble Heart): Introduce a challenge based on the interpretation: \"This marks the consummation of the effort to attain tranquillity. One is at rest, not merely in a small, circumscribed way in regard to matters of detail, but one has also a general resignation in regard to life as a whole, and this confers peace...\" The specific quest objective for this stage is: The Quester who has reached tranquillity and will not be riled or ruffled by events around them, they will add a Success Level to the Test or Ordeal, failure to be serene and calm under any circumstances will result in adding a Failure Level, Obstacle or Hurdle instead."
+      }
+    }
+  }
+}

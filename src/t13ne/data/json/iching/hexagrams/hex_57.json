@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 57,
+    "Name": "Penetrating Wind",
+    "Entity": "&#19960; ",
+    "Logical": 54,
+    "Trigrams": [
+      4,
+      4
+    ],
+    "Hexagram_Text": "Xun, The Penetrating Wind (or just Penetration or The Gentle), is the symbol of the lazy wind, the draft that cannot be excluded. The wind erodes mountains, but it also drives ships and clouds across the sky.",
+    "Unchanging": "You may add Incarna Score (Boon Reduced) Pips of Penetration to any action, once per Ordeal Stage.",
+    "Line1": "Advance or Retreat",
+    "Line2": "Penetrates Beneath The Bed",
+    "Line3": "Repeated Penetration",
+    "Line4": "Remorse Vanishes",
+    "Line5": "Don't Rush In",
+    "Line6": "Advance Then Retreat"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you are gentle, repeat an action or saying, or are persistent",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you change tack, direction or avoid resistance",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yang",
+        "Condition": "you make a choice",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yin",
+        "Condition": "you are completely honest, discuss your beliefs, or ask a question",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yin",
+        "Condition": "you repeat a question, or use violence",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yang",
+        "Condition": "you show no remorse",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yin",
+        "Condition": "you stop to discuss your actions with others",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yin",
+        "Condition": "you retreat",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Penetrating Wind Quest indicates a situation where the Quester is expected to shine a light into darkness. The darkness will vary greatly from Quest to Quest, but are usually intrigues driven by dark motives, the Quester by gentle investigation and ceaseless small triumphs will slowly reveal the motives and chip away even the greatest conspiracies.",
+    "Quest_Complete": "The Quest that ends in the Penetrating Wind Hexagram indicates the Quest ends with the ground prepared for greater success. The Quest itself doesn not achieve the ultimate goal that many expected, but represents the first steady steps towards the final goal. What the Quester has achieved here can rarely be lost again.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester is confronted with what could be a simple choice, advance or retreat, if they are immediately decisive they will add a Success Level (regardless of the choice it will be correct), if they are indecisive or doubt their decision then it will add a Failure Level, Obstacle or Hurdle instead.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester is confronted by hidden, perhaps even supernatural, spiritual or psychological, forces that they must painstakingly trace back to their source and destroy, often by exposing them to light. Failure in this tracing adds a Failure Level, Obstacle or Hurdle to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "If the Quester is confronted with the same situation again and they ask the same questions, or use violence, then they add a Failure Level, Obstacle or Hurdle to the Test or Ordeal, but if they act instantly and non-violently, without asking the same question again, then they will add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester is confronted with an opportunity to help others. If they assist and are both modest and self-respecting, showing integrity then they will add a Success Level, failure to assist, or assisting expecting a reward, or being remorseful about helping afterwards, will add a Failure Level, Hurdle or Obstacle to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester should realise that they will make no progress with the method or path they are on (the reasons will vary greatly from hearing the destination is not where they need to be, or that it will take too long, to hidden dangers being revealed). If they do not stop, assess their options, and change direction or method then they will add a Failure Level, Hurdle or Obstacle to their Test or Ordeal, but if they choose a new approach after some pausing and reflection then add a Success Level.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester engages in a gruelling task, such as tracking a powerful foe, across country for weeks, until they have found the lair, but if they press on now, while exhausted each attempt will add a Failure Level, an Obstacle or a Hurdle to the Test or Ordeal. Instead, the Quester should retreat from the foe for now.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "Sun is one of the eight doubled trigrams. It is the eldest daughter and symbolizes wind or wood; it has for its attribute gentleness, which nonetheless penetrates like the wind or like growing wood with its roots. The dark principle, in itself rigid and immovable, is dissolved by the penetrating light principle, to which it subordinates itself in gentleness. In nature, it is the wind that disperses the gathered clouds, leaving the sky clear and serene. In human life it is penetrating clarity of judgment that thwarts all dark hidden motives. In the life of the community it is the powerful influence of a great personality that uncovers and breaks up those intrigues which shun the light of day.",
+    "The_Image": {
+      "text": "Winds following one upon the other:\n\nThe image of THE GENTLY PENETRATING.\n\nThus the superior man\n\nSpreads his commands abroad\nAnd carries out his undertakings.",
+      "comments": "The penetrating quality of the wind depends upon its ceaselessness. This is what makes it so powerful; time is its instrument. In the same way the ruler's thought should penetrate the soul of the people. This too requires a lasting influence brought about by enlightenment and command. Only when the command has been assimilated by the people is action in accordance with it possible. Action without preparation of the ground only frightens and repels."
+    },
+    "The_Judgment": {
+      "text": "THE GENTLE. Success through what is small.\nIt furthers one to have somewhere to go.\nIt furthers one to see the great man.",
+      "comments": "Penetration produces gradual and inconspicuous effects. It should be effected not by an act of violation but by influence that never lapses. Results of this kind are less striking to the eye than those won by surprise attack, but they are more enduring and more complete. If one would produce such effects, one must have a clearly defined goal, for only when the penetrating influence works always in the same direction can the object be attained. Small strength can achieve its purpose only by subordinating itself to an eminent man who is capable of creating order."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "In advancing and in retreating,",
+        "comments": "The perseverance of a warrior furthers.\n\nIn born gentleness is often carried to the point of indecisiveness. One does not feel strong enough to advance resolutely. A thousand doubts crop up; one is, however, not minded to withdraw but drifts indecisively to and fro. In such a situation, a military decisiveness is the proper thing, so that one resolutely does what order demands. Resolute discipline is far better than irresolute license."
+      },
+      "2": {
+        "text": "Penetration under the bed.\nPriests and magicians are used in great number.\nGood fortune. No blame.",
+        "comments": "At times one has to deal with hidden enemies, intangible influences that slink into dark corners and from this hiding affect people by suggestion. In instances like this, it is necessary to trace these things back to the most secret recesses, in order to determine the nature of the influences to be dealt with. This is the task of the priests; removing the influences is the task of the magicians. The very anonymity of such plotting requires an especially vigorous and indefatigable effort, but this is well worth while. For when such elusive influences are brought into the light and branded, they lose their power over people."
+      },
+      "3": {
+        "text": "Repeated penetration. Humiliation.",
+        "comments": "Penetrating reflection must not be pushed too far, lest it cripple the power of decision. After a matter has been thoroughly pondered, it is essential to form a decision and to act. Repeated deliberation brings fresh doubts and scruples, and thereby humiliation, because one shows oneself unable to act."
+      },
+      "4": {
+        "text": "Remorse vanishes.\nDuring the hunt",
+        "comments": "Three kinds of game are caught.\n\nWhen a responsible position and accumulated experience lead one to combine innate modesty with energetic action, great success is assured. The three kinds of animals referred to served for offerings to the gods, for feasting guests, and for everyday consumption. When the catch answered all three purposes, the hunt was considered especially successful."
+      },
+      "5": {
+        "text": "Perseverance brings good fortune.\nRemorse vanishes.",
+        "comments": "Nothing that does not further.\n\nNo beginning, but an end.\nBefore the change, three days.\nAfter the change, three days.\nGood fortune.\n\nIn the situation described in Ku, WORK ON WHAT HAS BEEN SPOILED\n\n18, an entirely new point of departure must be set up, whereas here it is only a question of reforms. The beginning has not been good, but the moment has been reached when a new direction can be taken. Change and improvement are called for. Such steps must be undertaken with steadfastness, that is, with a firm and correct attitude of mind; then they will succeed, and remorse will disappear. But it must be remembered that such improvements require careful consideration. Before a change is made, it must be pondered over again and again. After the change is made, it is necessary to note carefully for some time after how the improvements bear the test of actuality. Such careful work is accompanied by good fortune."
+      },
+      "6": {
+        "text": "Penetration under the bed.\nHe loses his property and his ax.\nPerseverance brings misfortune.",
+        "comments": "A man's understanding is sufficiently penetrating. He follows up injurious influences into the most secret corners. But he no longer has the strength to combat them decisively. In this case any attempt to penetrate into the personal domain of darkness would only bring harm."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Penetrating Wind'. Internalize this core philosophy: Sun is one of the eight doubled trigrams. It is the eldest daughter and symbolizes wind or wood; it has for its attribute gentleness, which nonetheless penetrates like the wind or like growing wood with its roots. The dark principle, in itself rigid and immovable, is dissolved by the penetrating light principle, to which it subordinates itself in gentleness. In nature, it is the wind that disperses the gathered clouds, leaving the sky clear and serene. In human life it is penetrating clarity of... Your current worldview is: \"Xun, The Penetrating Wind (or just Penetration or The Gentle), is the symbol of the lazy wind, the draft that cannot be excluded. The wind erodes mountains, but it also drives ships and clouds across the sky.\". Let your choices be subtly driven by these conditions: you are gentle, repeat an action or saying, or are persistent, you change tack, direction or avoid resistance. When interacting, mirror the wisdom found in the commentary: \"Penetration produces gradual and inconspicuous effects. It should be effected not by an act of violation but by influence that never lapses. Results of this kind are less striking to the eye than those won by surprise attack, but they are more enduring and more complete. If one would produce such...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Penetrating Wind'. The primary quest objective is: The Penetrating Wind Quest indicates a situation where the Quester is expected to shine a light into darkness. The darkness will vary greatly from Quest to Quest, but are usually intrigues driven by dark motives, the Quester by gentle investigation and ceaseless small triumphs will slowly reveal the motives and chip away even the greatest conspiracies.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: The penetrating quality of the wind depends upon its ceaselessness. This is what makes it so powerful; time is its instrument. In the same way the ruler's thought should penetrate the soul of the people. This too requires a lasting influence brought about by enlightenment and command. Only when the command has been assimilated by the people is action in accordance with it possible. Action without... Use the following line-specific challenges to pace the story: The Quester is confronted with what could be a simple choice, advance or retreat, if they are immediately decisive they will add a Success Level (regardless of the choice it will be correct), if they are indecisive or doubt their decision then it will add a Failure Level, Obstacle or Hurdle instead. | The Quester is confronted by hidden, perhaps even supernatural, spiritual or psychological, forces that they must painstakingly trace back to their source and destroy, often by exposing them to light. Failure in this tracing adds a Failure Level, Obstacle or Hurdle to the Test or Ordeal. | If the Quester is confronted with the same situation again and they ask the same questions, or use violence, then they add a Failure Level, Obstacle or Hurdle to the Test or Ordeal, but if they act instantly and non-violently, without asking the same question again, then they will add a Success Level instead. | The Quester is confronted with an opportunity to help others. If they assist and are both modest and self-respecting, showing integrity then they will add a Success Level, failure to assist, or assisting expecting a reward, or being remorseful about helping afterwards, will add a Failure Level, Hurdle or Obstacle to the Test or Ordeal. | The Quester should realise that they will make no progress with the method or path they are on (the reasons will vary greatly from hearing the destination is not where they need to be, or that it will take too long, to hidden dangers being revealed). If they do not stop, assess their options, and change direction or method then they will add a Failure Level, Hurdle or Obstacle to their Test or Ordeal, but if they choose a new approach after some pausing and reflection then add a Success Level. | The Quester engages in a gruelling task, such as tracking a powerful foe, across country for weeks, until they have found the lair, but if they press on now, while exhausted each attempt will add a Failure Level, an Obstacle or a Hurdle to the Test or Ordeal. Instead, the Quester should retreat from the foe for now.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Advance or Retreat): Mirror the internal state described in the commentary: \"The perseverance of a warrior furthers.\n\nIn born gentleness is often carried to the point of indecisiveness. One does not feel strong enough to advance resolutely. A thousand doubts crop up; one is, however, not minded to withdraw but drifts...\" Your actions should be framed by the goal: you make a choice.",
+        "Plot": "Plot Complication Line 1 (Advance or Retreat): Introduce a challenge based on the interpretation: \"The perseverance of a warrior furthers.\n\nIn born gentleness is often carried to the point of indecisiveness. One does not feel strong enough to advance resolutely. A thousand doubts crop up; one is, however, not minded to withdraw but drifts...\" The specific quest objective for this stage is: The Quester is confronted with what could be a simple choice, advance or retreat, if they are immediately decisive they will add a Success Level (regardless of the choice it will be correct), if they are indecisive or doubt their decision then it will add a Failure Level, Obstacle or Hurdle instead."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Penetrates Beneath The Bed): Mirror the internal state described in the commentary: \"At times one has to deal with hidden enemies, intangible influences that slink into dark corners and from this hiding affect people by suggestion. In instances like this, it is necessary to trace these things back to the most secret recesses, in...\" Your actions should be framed by the goal: you are completely honest, discuss your beliefs, or ask a question.",
+        "Plot": "Plot Complication Line 2 (Penetrates Beneath The Bed): Introduce a challenge based on the interpretation: \"At times one has to deal with hidden enemies, intangible influences that slink into dark corners and from this hiding affect people by suggestion. In instances like this, it is necessary to trace these things back to the most secret recesses, in...\" The specific quest objective for this stage is: The Quester is confronted by hidden, perhaps even supernatural, spiritual or psychological, forces that they must painstakingly trace back to their source and destroy, often by exposing them to light. Failure in this tracing adds a Failure Level, Obstacle or Hurdle to the Test or Ordeal."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Repeated Penetration): Mirror the internal state described in the commentary: \"Penetrating reflection must not be pushed too far, lest it cripple the power of decision. After a matter has been thoroughly pondered, it is essential to form a decision and to act. Repeated deliberation brings fresh doubts and scruples, and thereby...\" Your actions should be framed by the goal: you repeat a question, or use violence.",
+        "Plot": "Plot Complication Line 3 (Repeated Penetration): Introduce a challenge based on the interpretation: \"Penetrating reflection must not be pushed too far, lest it cripple the power of decision. After a matter has been thoroughly pondered, it is essential to form a decision and to act. Repeated deliberation brings fresh doubts and scruples, and thereby...\" The specific quest objective for this stage is: If the Quester is confronted with the same situation again and they ask the same questions, or use violence, then they add a Failure Level, Obstacle or Hurdle to the Test or Ordeal, but if they act instantly and non-violently, without asking the same question again, then they will add a Success Level instead."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Remorse Vanishes): Mirror the internal state described in the commentary: \"Three kinds of game are caught.\n\nWhen a responsible position and accumulated experience lead one to combine innate modesty with energetic action, great success is assured. The three kinds of animals referred to served for offerings to the gods, for...\" Your actions should be framed by the goal: you show no remorse.",
+        "Plot": "Plot Complication Line 4 (Remorse Vanishes): Introduce a challenge based on the interpretation: \"Three kinds of game are caught.\n\nWhen a responsible position and accumulated experience lead one to combine innate modesty with energetic action, great success is assured. The three kinds of animals referred to served for offerings to the gods, for...\" The specific quest objective for this stage is: The Quester is confronted with an opportunity to help others. If they assist and are both modest and self-respecting, showing integrity then they will add a Success Level, failure to assist, or assisting expecting a reward, or being remorseful about helping afterwards, will add a Failure Level, Hurdle or Obstacle to the Test or Ordeal."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Don't Rush In): Mirror the internal state described in the commentary: \"Nothing that does not further.\n\nNo beginning, but an end.\nBefore the change, three days.\nAfter the change, three days.\nGood fortune.\n\nIn the situation described in Ku, WORK ON WHAT HAS BEEN SPOILED\n\n18, an entirely new point of departure must be set...\" Your actions should be framed by the goal: you stop to discuss your actions with others.",
+        "Plot": "Plot Complication Line 5 (Don't Rush In): Introduce a challenge based on the interpretation: \"Nothing that does not further.\n\nNo beginning, but an end.\nBefore the change, three days.\nAfter the change, three days.\nGood fortune.\n\nIn the situation described in Ku, WORK ON WHAT HAS BEEN SPOILED\n\n18, an entirely new point of departure must be set...\" The specific quest objective for this stage is: The Quester should realise that they will make no progress with the method or path they are on (the reasons will vary greatly from hearing the destination is not where they need to be, or that it will take too long, to hidden dangers being revealed). If they do not stop, assess their options, and change direction or method then they will add a Failure Level, Hurdle or Obstacle to their Test or Ordeal, but if they choose a new approach after some pausing and reflection then add a Success Level."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Advance Then Retreat): Mirror the internal state described in the commentary: \"A man's understanding is sufficiently penetrating. He follows up injurious influences into the most secret corners. But he no longer has the strength to combat them decisively. In this case any attempt to penetrate into the personal domain of...\" Your actions should be framed by the goal: you retreat.",
+        "Plot": "Plot Complication Line 6 (Advance Then Retreat): Introduce a challenge based on the interpretation: \"A man's understanding is sufficiently penetrating. He follows up injurious influences into the most secret corners. But he no longer has the strength to combat them decisively. In this case any attempt to penetrate into the personal domain of...\" The specific quest objective for this stage is: The Quester engages in a gruelling task, such as tracking a powerful foe, across country for weeks, until they have found the lair, but if they press on now, while exhausted each attempt will add a Failure Level, an Obstacle or a Hurdle to the Test or Ordeal. Instead, the Quester should retreat from the foe for now."
+      }
+    }
+  }
+}

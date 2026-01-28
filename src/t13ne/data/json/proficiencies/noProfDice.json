@@ -1,0 +1,22 @@
+[
+    {
+        "Number_Of_Applicable_Profs": 0,
+        "Result": "Rolled Score is Halved"
+    },
+    {
+        "Number_Of_Applicable_Profs": 1,
+        "Result": "No Special Effects"
+    },
+    {
+        "Number_Of_Applicable_Profs": 2,
+        "Result": "+1 Proficiency Die"
+    },
+    {
+        "Number_Of_Applicable_Profs": 3,
+        "Result": "+2 Proficiency Dice"
+    },
+    {
+        "Number_Of_Applicable_Profs": 4,
+        "Result": "+3 Proficiency Dice"
+    }
+]

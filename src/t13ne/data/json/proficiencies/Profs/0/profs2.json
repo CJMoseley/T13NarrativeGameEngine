@@ -1,0 +1,1445 @@
+{
+  "101": {
+    "id": 101,
+    "prof": {
+      "Name": [
+        "Presence",
+        "Presence",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Presence is the whispered secret of inspiration.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "102": {
+    "id": 102,
+    "prof": {
+      "Name": [
+        "Numinous Force",
+        "Numinous Force",
+        ""
+      ],
+      "Description": "The tireless watchman on the soul's high tower, Numinous Force is the silent guardian against the shadows of amazement.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "103": {
+    "id": 103,
+    "prof": {
+      "Name": [
+        "Spirit Bond",
+        "Spirit Bond",
+        ""
+      ],
+      "Description": "A shield against the storm, Spirit Bond is the quiet strength that endures the onslaught of inspiration.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "104": {
+    "id": 104,
+    "prof": {
+      "Name": [
+        "Incorporeal",
+        "Incorporeal Burden Zero Boon Adjective Proficiency",
+        "bodiless, insubstantial, illusory, spiritual, ghostly"
+      ],
+      "Description": "Measured by weight and value, the knowledge of Incorporeal reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "105": {
+    "id": 105,
+    "prof": {
+      "Name": [
+        "Insubstantial",
+        "Insubstantial Burden Zero Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Insubstantial reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "106": {
+    "id": 106,
+    "prof": {
+      "Name": [
+        "Illusory Locations",
+        "Illusory Location Burden Zero Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Illusory Locations reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "107": {
+    "id": 107,
+    "prof": {
+      "Name": [
+        "Starving",
+        "Starving Burden Low Boon Adjective Proficiency",
+        "famished, hungry, ravenous, meagre, tiny"
+      ],
+      "Description": "Measured by weight and value, the knowledge of Starving reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "108": {
+    "id": 108,
+    "prof": {
+      "Name": [
+        "Tiny",
+        "Tiny Burden Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Tiny reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "109": {
+    "id": 109,
+    "prof": {
+      "Name": [
+        "Meagre Locations",
+        "Meagre Location Burden Low Boon Location Adjective Proficiency",
+        "paltry, scant, limited, modest, delicate"
+      ],
+      "Description": "Measured by weight and value, the knowledge of Meagre Locations reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "110": {
+    "id": 110,
+    "prof": {
+      "Name": [
+        "Destitute",
+        "Destitute Burden Low Boon Adjective Proficiency",
+        "penniless, poor, impoverished, bare, small"
+      ],
+      "Description": "Measured by weight and value, the knowledge of Destitute reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "111": {
+    "id": 111,
+    "prof": {
+      "Name": [
+        "Small",
+        "Small Burden Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Small reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "112": {
+    "id": 112,
+    "prof": {
+      "Name": [
+        "Bare Locations",
+        "Bare Location Burden Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Bare Locations reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "113": {
+    "id": 113,
+    "prof": {
+      "Name": [
+        "Scrawny",
+        "Scrawny Burden Low Boon Adjective Proficiency",
+        "skinny, thin, gaunt, little, poor"
+      ],
+      "Description": "Measured by weight and value, the knowledge of Scrawny reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "114": {
+    "id": 114,
+    "prof": {
+      "Name": [
+        "Little",
+        "Little Burden Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Little reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "115": {
+    "id": 115,
+    "prof": {
+      "Name": [
+        "Poor Locations",
+        "Poor Location Burden Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Poor Locations reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "116": {
+    "id": 116,
+    "prof": {
+      "Name": [
+        "Meagre",
+        "Meagre Burden Low Boon Adjective Proficiency",
+        "paltry, scant, limited, modest, delicate"
+      ],
+      "Description": "Measured by weight and value, the knowledge of Meagre reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "117": {
+    "id": 117,
+    "prof": {
+      "Name": [
+        "Delicate",
+        "Delicate Burden Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Delicate reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "118": {
+    "id": 118,
+    "prof": {
+      "Name": [
+        "Modest Locations",
+        "Modest Location Burden Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Modest Locations reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "119": {
+    "id": 119,
+    "prof": {
+      "Name": [
+        "Slim",
+        "Slim Burden Low Boon Adjective Proficiency",
+        "slender, thin, flimsy, slight"
+      ],
+      "Description": "Measured by weight and value, the knowledge of Slim reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "120": {
+    "id": 120,
+    "prof": {
+      "Name": [
+        "Flimsy",
+        "Flimsy Burden Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Flimsy reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "121": {
+    "id": 121,
+    "prof": {
+      "Name": [
+        "Run-down Locations",
+        "Run-down Location Burden Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Run-down Locations reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "122": {
+    "id": 122,
+    "prof": {
+      "Name": [
+        "Lean",
+        "Lean Burden Medium Boon Adjective Proficiency",
+        "thin, spare, compact, firm"
+      ],
+      "Description": "Measured by weight and value, the knowledge of Lean reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "123": {
+    "id": 123,
+    "prof": {
+      "Name": [
+        "Compact",
+        "Compact Burden Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Compact reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "124": {
+    "id": 124,
+    "prof": {
+      "Name": [
+        "Inexpensive Locations",
+        "Inexpensive Location Burden Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Inexpensive Locations reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "125": {
+    "id": 125,
+    "prof": {
+      "Name": [
+        "Successful",
+        "Successful Burden Medium Boon Adjective Proficiency",
+        "prosperous, flourishing, busy, productive"
+      ],
+      "Description": "Measured by weight and value, the knowledge of Successful reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "126": {
+    "id": 126,
+    "prof": {
+      "Name": [
+        "Firm",
+        "Firm Burden Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Firm reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "127": {
+    "id": 127,
+    "prof": {
+      "Name": [
+        "Busy Locations",
+        "Busy Location Burden Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Busy Locations reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "128": {
+    "id": 128,
+    "prof": {
+      "Name": [
+        "Well-off",
+        "Well-off Burden High Boon Adjective Proficiency",
+        "wealthy, affluent, prosperous"
+      ],
+      "Description": "Measured by weight and value, the knowledge of Well-off reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "129": {
+    "id": 129,
+    "prof": {
+      "Name": [
+        "Heavy",
+        "Heavy Burden High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Heavy reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "130": {
+    "id": 130,
+    "prof": {
+      "Name": [
+        "Bustling Locations",
+        "Bustling Location Burden High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Bustling Locations reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "131": {
+    "id": 131,
+    "prof": {
+      "Name": [
+        "Rich",
+        "Rich Burden High Boon Adjective Proficiency",
+        "wealthy, affluent, expansive, opulent"
+      ],
+      "Description": "Measured by weight and value, the knowledge of Rich reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "132": {
+    "id": 132,
+    "prof": {
+      "Name": [
+        "Large",
+        "Large Burden High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Large reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "133": {
+    "id": 133,
+    "prof": {
+      "Name": [
+        "Expansive Locations",
+        "Expansive Location Burden High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Expansive Locations reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "134": {
+    "id": 134,
+    "prof": {
+      "Name": [
+        "Wealthy",
+        "Wealthy Burden High Boon Adjective Proficiency",
+        "rich, affluent, valuable, prosperous"
+      ],
+      "Description": "Measured by weight and value, the knowledge of Wealthy reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "135": {
+    "id": 135,
+    "prof": {
+      "Name": [
+        "Unwieldy",
+        "Unwieldy Burden High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Unwieldy reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "136": {
+    "id": 136,
+    "prof": {
+      "Name": [
+        "Valuable Locations",
+        "Valuable Location Burden High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Valuable Locations reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "137": {
+    "id": 137,
+    "prof": {
+      "Name": [
+        "Loaded",
+        "Loaded Burden Very-High Boon Adjective Proficiency",
+        "wealthy, rich, expensive, affluent, flush"
+      ],
+      "Description": "Measured by weight and value, the knowledge of Loaded reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "138": {
+    "id": 138,
+    "prof": {
+      "Name": [
+        "Expensive",
+        "Expensive Burden Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Expensive reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "139": {
+    "id": 139,
+    "prof": {
+      "Name": [
+        "Expensive Locations",
+        "Expensive Location Burden Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Expensive Locations reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "140": {
+    "id": 140,
+    "prof": {
+      "Name": [
+        "Opulent",
+        "Opulent Burden Very-High Boon Adjective Proficiency",
+        "luxurious, lavish, rich, luxury, grand"
+      ],
+      "Description": "Measured by weight and value, the knowledge of Opulent reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "141": {
+    "id": 141,
+    "prof": {
+      "Name": [
+        "Luxury",
+        "Luxury Burden Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Luxury reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "142": {
+    "id": 142,
+    "prof": {
+      "Name": [
+        "Luxury Locations",
+        "Luxury Location Burden Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Luxury Locations reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "143": {
+    "id": 143,
+    "prof": {
+      "Name": [
+        "Fat-Cat",
+        "Fat-Cat Burden Very-High Boon Adjective Proficiency",
+        "tycoon, mogul, prized, treasured, wealthy"
+      ],
+      "Description": "Measured by weight and value, the knowledge of Fat-Cat reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "144": {
+    "id": 144,
+    "prof": {
+      "Name": [
+        "Prized",
+        "Prized Burden Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Prized reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "145": {
+    "id": 145,
+    "prof": {
+      "Name": [
+        "Treasured Locations",
+        "Treasured Location Burden Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Treasured Locations reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "146": {
+    "id": 146,
+    "prof": {
+      "Name": [
+        "Impatience",
+        "Impatience Burden Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Impatience reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "147": {
+    "id": 147,
+    "prof": {
+      "Name": [
+        "Unsatisfied",
+        "Unsatisfied Burden Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Unsatisfied reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "148": {
+    "id": 148,
+    "prof": {
+      "Name": [
+        "Ambition",
+        "Ambition Burden Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Ambition reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "149": {
+    "id": 149,
+    "prof": {
+      "Name": [
+        "Acceptance",
+        "Acceptance Burden Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Acceptance reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "150": {
+    "id": 150,
+    "prof": {
+      "Name": [
+        "Trust",
+        "Trust Burden Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Trust reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,712 @@
+[
+    {
+        "Type": "abaft",
+        "Description": "The threshold goes towards the back of something",
+        "CrossRef": "!in-front, ~behind"
+    },
+    {
+        "Type": "aboard",
+        "Description": "The threshold goes aboard something",
+        "CrossRef": "~on, !off, !overboard"
+    },
+    {
+        "Type": "about",
+        "Description": "The threshold is about something",
+        "CrossRef": "!off, ~on, ~around, ~outside"
+    },
+    {
+        "Type": "above",
+        "Description": "The threshold goes above something",
+        "CrossRef": "!below, ~over, ~on"
+    },
+    {
+        "Type": "absent",
+        "Description": "The threshold goes absent from something",
+        "CrossRef": "!inside, !on"
+    },
+    {
+        "Type": "across",
+        "Description": "The threshold goes across something",
+        "CrossRef": "~over, ~through, ~inside, ~outside"
+    },
+    {
+        "Type": "across-from",
+        "Description": "The threshold goes across from something",
+        "CrossRef": "!across, ~opposite"
+    },
+    {
+        "Type": "adjacent-to",
+        "Description": "The threshold goes adjacent to something",
+        "CrossRef": "!far-from, ~near, ~next-to"
+    },
+    {
+        "Type": "after",
+        "Description": "The threshold goes after something",
+        "CrossRef": "!before"
+    },
+    {
+        "Type": "against",
+        "Description": "The threshold goes against something",
+        "CrossRef": "~along, ~on, !off"
+    },
+    {
+        "Type": "ahead-of",
+        "Description": "The threshold goes ahead of something",
+        "CrossRef": "!after, !behind, ~in-front, ~before"
+    },
+    {
+        "Type": "along",
+        "Description": "The threshold goes along something",
+        "CrossRef": "~alongside, ~against, ~on, ~inside, !outside, ~through"
+    },
+    {
+        "Type": "alongside",
+        "Description": "The threshold goes alongside something",
+        "CrossRef": "~along, !absent, ~near, ~against"
+    },
+    {
+        "Type": "amid",
+        "Description": "The threshold goes amid something",
+        "CrossRef": "~among, ~before, ~behind, ~along, ~alongside, ~middle, ~inside, !outside"
+    },
+    {
+        "Type": "among",
+        "Description": "The threshold goes among something",
+        "CrossRef": "!outside, !absent, ~middle, ~amid"
+    },
+    {
+        "Type": "around",
+        "Description": "The threshold goes around something",
+        "CrossRef": "!inside, ~outside, !through"
+    },
+    {
+        "Type": "astride",
+        "Description": "The threshold goes astride something",
+        "CrossRef": "!stood, !against"
+    },
+    {
+        "Type": "atop",
+        "Description": "The threshold goes atop something",
+        "CrossRef": "~on-top-of, ~on, ~above, ~up, !under, !below, !down"
+    },
+    {
+        "Type": "away-from",
+        "Description": "The threshold goes away from something",
+        "CrossRef": "!towards, !near, ~far-from"
+    },
+    {
+        "Type": "before",
+        "Description": "The threshold goes before something",
+        "CrossRef": "!after, !past"
+    },
+    {
+        "Type": "behind",
+        "Description": "The threshold goes behind something",
+        "CrossRef": "!in-front, !above, !below, !left, !right, ~after, !before"
+    },
+    {
+        "Type": "belongs",
+        "Description": "The threshold shows ownership by something",
+        "CrossRef": "!owns, ~owned"
+    },
+    {
+        "Type": "below",
+        "Description": "The threshold goes below something",
+        "CrossRef": "!above, ~under, ~inside"
+    },
+    {
+        "Type": "beneath",
+        "Description": "The threshold goes beneath something",
+        "CrossRef": "!on, !over, ~under, ~below"
+    },
+    {
+        "Type": "beside",
+        "Description": "The threshold goes beneath something",
+        "CrossRef": "!before, !behind, ~left, ~right"
+    },
+    {
+        "Type": "between",
+        "Description": "The threshold goes between something",
+        "CrossRef": "!outside, !beyond, ~inside, ~beside"
+    },
+    {
+        "Type": "betwixt",
+        "Description": "The threshold goes between something",
+        "CrossRef": "~between, !beyond, ~within"
+    },
+    {
+        "Type": "beyond",
+        "Description": "The threshold goes beyond something",
+        "CrossRef": "!inside, !near, ~outside, ~behind, ~past, ~after"
+    },
+    {
+        "Type": "blocks",
+        "Description": "The threshold blocks something (often a Hitch blocks access to a number of Proficiencies or Facets)",
+        "CrossRef": "~demands, ~curses, ~botches, ~evokes, ~censures, ~harms, ~dwindles, ~requires, ~rents, ~random"
+    },
+    {
+        "Type": "botches",
+        "Description": "The threshold usually limits a Yarn-Teller or Hero Character’s ability to narrate and adds failure levels usually from a Hitch.",
+        "CrossRef": "~demands, ~harms, ~curses, ~evokes, ~censures, ~blocks, ~dwindles, ~requires, ~rents, ~random"
+    },
+    {
+        "Type": "censures",
+        "Description": "The threshold censures something, marking it with \"bad-luck\", lack of acceptance, and failure in social situations.",
+        "CrossRef": "~demands, ~harms, ~curses, ~botches, ~evokes, ~blocks, ~dwindles, ~requires, ~rents, ~random"
+    },
+    {
+        "Type": "channel",
+        "Description": "The threshold indicates a prof is a channel prof",
+        "CrossRef": "!nimbed, !umbral, !root, ~tangle"
+    },
+    {
+        "Type": "circa",
+        "Description": "The threshold goes circa something",
+        "CrossRef": "~around, ~near"
+    },
+    {
+        "Type": "close",
+        "Description": "The threshold goes close to something",
+        "CrossRef": "~near, !far-from"
+    },
+    {
+        "Type": "close-to",
+        "Description": "The threshold goes close-to something",
+        "CrossRef": "!far-from, !across-from, !opposite, ~near, ~close"
+    },
+    {
+        "Type": "core",
+        "Description": "The Conflict Embodies one Facet as a Character Core. This can create very satisfying embodiments that are suitable for most Genres. Core Embodiments can create subtle or stereotypical plots, and so require some care. This can also indicate a resolved hitch too.",
+        "CrossRef": "~persona, ~core, ~hitch, ~monster, ~proficiency,~root, ~channel, ~umbral, ~nimbed , ~tone, ~ordeal, ~test, ~obstacle, ~descendant, ~location, ~pact, ~quest, ~lore, ~emotions, ~failure, ~resolved, !woe, !flaw, !quirk"
+    },
+    {
+        "Type": "curses",
+        "Description": "The threshold curses something to be affected by a Facet Umbral on all actions and those opposing a Facet Nimbed. Facets need not match and are often specified separately in the data.",
+        "CrossRef": "~demands, ~harms, ~botches, ~evokes, ~censures, ~blocks, ~dwindles, ~requires, ~rents, ~random"
+    },
+    {
+        "Type": "demands",
+        "Description": "The threshold demands Facet Sway from something (usually taken as Facet Scores on actions by a Character from a Hitch).",
+        "CrossRef": "~harms, ~curses, ~botches, ~evokes, ~censures, ~blocks, ~dwindles, ~requires, ~rents, ~random"
+    },
+    {
+        "Type": "descendant",
+        "Description": "The Conflict Embodies one Facet as a Descendant Incarna. In some cases this can result in Location, Pact, or Lore Descendants. Conflicts embodied with Descendants can be very subtle. Commonly used by Creation Plots, when they are not very subtle.",
+        "CrossRef": "~persona, ~core, ~hitch, ~monster, ~proficiency,~root, ~channel, ~umbral, ~nimbed, , ~tone, ~ordeal, ~test, ~obstacle, ~descendant, ~location, ~pact, ~quest, ~lore, ~emotions, ~failure"
+    },
+    {
+        "Type": "down",
+        "Description": "The threshold goes down something",
+        "CrossRef": "!up, !above, ~below, ~under"
+    },
+    {
+        "Type": "down-on",
+        "Description": "The threshold goes down on something",
+        "CrossRef": "!up-on, !off, ~down, ~on"
+    },
+    {
+        "Type": "during",
+        "Description": "The threshold goes during something",
+        "CrossRef": "!before, !after"
+    },
+    {
+        "Type": "dwindles",
+        "Description": "The threshold indicates a dwindling descendant or Annex that reduces in power due to a Hitch",
+        "CrossRef": "~demands, ~curses, ~botches, ~evokes, ~censures, ~harms, ~blocks, ~requires, ~rents, ~random"
+    },
+    {
+        "Type": "east",
+        "Description": "The threshold goes east of something",
+        "CrossRef": "!west"
+    },
+    {
+        "Type": "easterly",
+        "Description": "The threshold goes east-ish to something",
+        "CrossRef": " !west, ~east, ~south-east, ~north-east, ~north, ~south"
+    },
+    {
+        "Type": "easterly",
+        "Description": "The threshold goes east-ish to something",
+        "CrossRef": " !west, ~east, ~south-east, ~north-east, ~north, ~south"
+    },
+    {
+        "Type": "edge",
+        "Description": "The threshold indicates it is on the edge of something. It can also indicate a Facet or Descendant Edge too and sometimes a Resolved Hitch.",
+        "CrossRef": "~resolved, !middle, ~glow, ~nimbed"
+    },
+    {
+        "Type": "emotions",
+        "Description": "The Conflict embodies as one of the facet’s Emotions, this emotion will be Emotion tested against during the Recoiling of a Weft for example.",
+        "CrossRef": "~persona, ~core, ~hitch, ~monster, ~proficiency,~root, ~channel, ~umbral, ~nimbed, , ~tone, ~ordeal, ~test, ~obstacle, ~descendant, ~location, ~pact, ~quest, ~lore, ~emotions, ~failure"
+    },
+    {
+        "Type": "evokes",
+        "Description": "The threshold evokes an emotional effect in something, such as a Psychology Hitch evoking emotion in a Character",
+        "CrossRef": "~demands, ~harms, ~curses, ~botches, ~censures, ~blocks, ~dwindles, ~requires, ~rents, ~random"
+    },
+    {
+        "Type": "extra",
+        "Description": "The threshold indicates it is probably the extra proficiency of an annex",
+        "CrossRef": "!umbral, !root, !channel, !nimbed"
+    },
+    {
+        "Type": "failure",
+        "Description": "The Conflict embodies as additional Failure Levels that plague the Characters during the Story.",
+        "CrossRef": "~persona, ~core, ~hitch, ~monster, ~proficiency,~root, ~channel, ~umbral, ~nimbed, , ~tone, ~ordeal, ~test, ~obstacle, ~descendant, ~location, ~pact, ~quest, ~lore, ~emotions, ~failure, !success"
+    },
+    {
+        "Type": "far-from",
+        "Description": "The threshold goes far-from something",
+        "CrossRef": "!near, !close"
+    },
+    {
+        "Type": "first",
+        "Description": "The threshold goes first of something",
+        "CrossRef": "!last, !middle, !after, !behind, !below, in-front"
+    },
+    {
+        "Type": "flaw",
+        "Description": "The threshold indicates a flaw hitch in a Personality Annex",
+        "CrossRef": "~quirk, ~woe, ~hitch, !persona, !core, !resolved, !edge, !monster"
+    },
+    {
+        "Type": "for",
+        "Description": "The threshold goes for something",
+        "CrossRef": "!off, ~like"
+    },
+    {
+        "Type": "from",
+        "Description": "The threshold comes from something",
+        "CrossRef": "!inside"
+    },
+    {
+        "Type": "glow",
+        "Description": "The threshold indicates a glow on an annex or descendant.",
+        "CrossRef": "~edge, ~nimbed, !resolved"
+    },
+    {
+        "Type": "harms",
+        "Description": "The threshold harms something (usually a Character or Descendant from a Hitch)",
+        "CrossRef": "~demands, ~curses, ~botches, ~evokes, ~censures, ~blocks, ~dwindles, ~requires, ~rents, ~random"
+    },
+    {
+        "Type": "hitch",
+        "Description": "The Conflict Embodies one Facet as a Character (or Descendant) Hitch. This can create quite secretive and subtle embodiments that can be very difficult to spot, especially on Descendants. Other times Hitch Embodiments can be very obvious, and in the case of Character Woes, glaring. Do not use this to link to Characters or Descendants, they should use the Tier quirk, Flaw and Woe directions",
+        "CrossRef": "~persona, ~core, ~hitch, ~monster, ~proficiency,~root, ~channel, ~umbral, ~nimbed, , ~tone, ~ordeal, ~test, ~obstacle, ~descendant, ~location, ~pact, ~quest, ~lore, ~emotions, ~failure"
+    },
+    {
+        "Type": "in",
+        "Description": "The threshold goes in something",
+        "CrossRef": "!out, !outside ~inside, ~into"
+    },
+    {
+        "Type": "in-front",
+        "Description": "The threshold goes in front something",
+        "CrossRef": "!behind, !after, ~before"
+    },
+    {
+        "Type": "in-front-of",
+        "Description": "The threshold goes in front of something",
+        "CrossRef": "~before, !behind, !after, !inside, ~outside, ~first"
+    },
+    {
+        "Type": "incarna",
+        "Description": "The Conflict Embodies one Facet as a Character (or Descendant) Incarna. Often the easiest Embodiment to create Fantastical Characters, but not often suitable to all Genres and Conflicts. Also Incarna Embodiments tend to to make for very obvious, unsubtle, comic-book style Plots.",
+        "CrossRef": "~persona, ~core, ~hitch, ~monster, ~proficiency,~root, ~channel, ~umbral, ~nimbed, , ~tone, ~ordeal, ~test, ~obstacle, ~descendant, ~location, ~pact, ~quest, ~lore, ~emotions, ~failure"
+    },
+    {
+        "Type": "inside",
+        "Description": "The threshold goes inside something",
+        "CrossRef": "!outside, !around, !absent, ~middle, ~in"
+    },
+    {
+        "Type": "into",
+        "Description": "The threshold goes into something",
+        "CrossRef": "!out, !outside, ~in, ~inside"
+    },
+    {
+        "Type": "last",
+        "Description": "The threshold goes last something",
+        "CrossRef": "!first, !middle, !before, ~behind, ~after"
+    },
+    {
+        "Type": "left-of",
+        "Description": "The threshold goes left of something",
+        "CrossRef": "!right-of, ~alongside, ~next-to, !far-from"
+    },
+    {
+        "Type": "like",
+        "Description": "The threshold goes like something",
+        "CrossRef": "~for"
+    },
+    {
+        "Type": "location",
+        "Description": "The Conflict Embodies one Facet as a Location. This can be a very subtle embodiment, while still allowing the Conflict to progress. There can be a danger of overusing the same Location as the Embodiment is such a satisfying one. But any Location where the action returns again and again is probably an Embodiment of something from one of the higher Conflicts, anyway.",
+        "CrossRef": "~persona, ~core, ~hitch, ~monster, ~proficiency,~root, ~channel, ~umbral, ~nimbed, ~tone, ~ordeal, ~test, ~obstacle, ~descendant, ~location, ~pact, ~quest, ~lore, ~emotions, ~failure"
+    },
+    {
+        "Type": "lore",
+        "Description": "The Conflict embodies as a special type of Descendant called a Lore. Lores are the rumours the Players hear about the enemy and themselves as the story goes on. Lores might grant extra Descendants (including Pacts and Locations) to any Character, as it is revealed that they are a powerful wizard, a Necromancer, with a skeleton horde, armed with magickal broadsword, etc.",
+        "CrossRef": "~persona, ~core, ~hitch, ~monster, ~proficiency,~root, ~channel, ~umbral, ~nimbed, ~tone, ~ordeal, ~test, ~obstacle, ~descendant, ~location, ~pact, ~quest, ~lore, ~emotions, ~failure"
+    },
+    {
+        "Type": "member",
+        "Description": "The threshold says the element is a member of a group",
+        "CrossRef": "~in, !out"
+    },
+    {
+        "Type": "middle",
+        "Description": "The threshold goes in the middle something",
+        "CrossRef": "!on, !first, !last, !edge, !outside, ~inside"
+    },
+    {
+        "Type": "minus",
+        "Description": "The threshold goes minus something",
+        "CrossRef": "~without, !plus"
+    },
+    {
+        "Type": "monster",
+        "Description": "The Conflict Embodies one Facet as a Monster Facet. This Monster might be a Dragon, an Orc Horde, or just a human Villain. Monsters can be great fun, but are rarely subtle. Where possible when using Monster embodiments, the Plot may want to keep the exact nature of the Monster a secret for as long as possible. This direction can indicate a resolved hitch too.",
+        "CrossRef": "~persona, ~core, ~hitch, ~monster, ~proficiency,~root, ~channel, ~umbral, ~nimbed, ~tone, ~ordeal, ~test, ~obstacle, ~descendant, ~location, ~pact, ~quest, ~lore, ~emotions, ~failure"
+    },
+    {
+        "Type": "near",
+        "Description": "The threshold goes near something",
+        "CrossRef": "!far-from, ~circa, ~close"
+    },
+    {
+        "Type": "near-to",
+        "Description": "The threshold goes near to something",
+        "CrossRef": "!far-from, ~close-to, ~next-to"
+    },
+    {
+        "Type": "next-to",
+        "Description": "The threshold goes next to something",
+        "CrossRef": "!far-from, ~close-to, ~near-to, ~next"
+    },
+    {
+        "Type": "nimbed",
+        "Description": "The threshold indicates a Prof is a Nimbed",
+        "CrossRef": "!umbral, !root, !channel, !extra, !tangle"
+    },
+    {
+        "Type": "north",
+        "Description": "The threshold goes north of something",
+        "CrossRef": "!south"
+    },
+    {
+        "Type": "north-east",
+        "Description": "The threshold goes north-east to something",
+        "CrossRef": "!south, !west, !south-west, ~north, ~east"
+    },
+    {
+        "Type": "north-west",
+        "Description": "The threshold goes north-west to something",
+        "CrossRef": "!south, !east, !south-east, ~north, ~west"
+    },
+    {
+        "Type": "northerly",
+        "Description": "The threshold goes north ish to something",
+        "CrossRef": "!south,  ~north, ~north-east, ~north-west, ~east, ~west"
+    },
+    {
+        "Type": "quirk",
+        "Description": "The threshold indicates a quirk hitch in a Personality Annex",
+        "CrossRef": "~flaw, ~woe, ~hitch, !persona, !core, !resolved, !monster, !edge"
+    },
+    {
+        "Type": "obstacle",
+        "Description": "The Conflict Embodies one Facet as an Obstacle that the player must overcome. The Obstacle should match Suit with the Facet (Obstacles are defined by Cards normally). Obstacle embodiments can be the most subtle, you need not reuse the same Obstacle over and over, and they allow for Red Herring Facets from the same Suit to misdirect easily.",
+        "CrossRef": "~persona, ~core, ~hitch, ~monster, ~proficiency,~root, ~channel, ~umbral, ~nimbed, ~tone, ~ordeal, ~test, ~obstacle, ~descendant, ~location, ~pact, ~quest, ~lore, ~emotions, ~failure"
+    },
+    {
+        "Type": "off",
+        "Description": "The threshold goes off something",
+        "CrossRef": "!on, ~above"
+    },
+    {
+        "Type": "on",
+        "Description": "The threshold goes on something",
+        "CrossRef": "!under, ~over, !off"
+    },
+    {
+        "Type": "on-top-of",
+        "Description": "The threshold goes like something",
+        "CrossRef": "!below, !under, ~on, ~above, ~atop"
+    },
+    {
+        "Type": "onto",
+        "Description": "The threshold goes onto something",
+        "CrossRef": "!off, ~on"
+    },
+    {
+        "Type": "opposite",
+        "Description": "The threshold goes opposite something",
+        "CrossRef": "!across, ~across-from, !alongside"
+    },
+    {
+        "Type": "ordeal",
+        "Description": "The Conflict Embodies one Facet as an Ordeal (or Test). Simple and effective, but can be obvious and boring if used too often. A good embodiment during a single Warp Fray, not very good across a whole Volume.",
+        "CrossRef": "~persona, ~core, ~hitch, ~monster, ~proficiency,~root, ~channel, ~umbral, ~nimbed , ~tone, ~ordeal, ~test, ~obstacle, ~descendant, ~location, ~pact, ~quest, ~lore, ~emotions, ~failure"
+    },
+    {
+        "Type": "out-of",
+        "Description": "The threshold goes out of something",
+        "CrossRef": "!into, !in, !inside, ~out, ~outside"
+    },
+    {
+        "Type": "outside",
+        "Description": "The threshold goes out of something",
+        "CrossRef": "!inside, !middle, ~around"
+    },
+    {
+        "Type": "over",
+        "Description": "The threshold goes over something",
+        "CrossRef": "!below, ~above, ~outside, ~on"
+    },
+    {
+        "Type": "owned",
+        "Description": "The threshold shows ownership by something",
+        "CrossRef": "!owns, ~belongs"
+    },
+    {
+        "Type": "owns",
+        "Description": "The threshold shows ownership of something",
+        "CrossRef": "!owned"
+    },
+    {
+        "Type": "pact",
+        "Description": "The Conflict Embodies one Facet as a Pact Descendant, or group of Characters, such as the Party or a Guild. This Embodiment is the most obvious to use when you are starting out. The Players become one side of the Conflict fighting the other side. It is also great for modelling any number of political and social situations.",
+        "CrossRef": "~persona, ~core, ~hitch, ~monster, ~proficiency,~root, ~channel, ~umbral, ~nimbed, ~tone, ~ordeal, ~test, ~obstacle, ~descendant, ~location, ~pact, ~quest, ~lore, ~emotions, ~failure"
+    },
+    {
+        "Type": "paged",
+        "Description": "The threshold displays objects from the group in pages of a number of objects (usually 5-13)",
+        "CrossRef": "!scrolling-extend, !scrolling-limit, ~scroll, !scroll"
+    },
+    {
+        "Type": "past",
+        "Description": "The threshold goes past something",
+        "CrossRef": "!before, ~beyond, ~after"
+    },
+    {
+        "Type": "persona",
+        "Description": "The Conflict Embodies one Facet as a Character Persona. Often the most satisfying embodiment, but can lead to easy identification, and unsubtle Plots. this can also indicate a resolved hitch too.",
+        "CrossRef": "~persona, ~core, ~hitch, ~monster, ~proficiency,~root, ~channel, ~umbral, ~nimbed, ~tone, ~ordeal, ~test, ~obstacle, ~descendant, ~location, ~pact, ~quest, ~lore, ~emotions, ~failure, ~resolved, !woe, !flaw, !quirk"
+    },
+    {
+        "Type": "plus",
+        "Description": "The threshold goes plus something",
+        "CrossRef": "!minus, ~with"
+    },
+    {
+        "Type": "proficiency",
+        "Description": "The Conflict Embodies one Facet as a single Proficiency from that Facet. Characters or Descendants that have the Proficiency may be Hooked to that side. This is a very subtle Embodiment when handled gently, and can make for incredibly subtle Plots.",
+        "CrossRef": "~persona, ~core, ~hitch, ~monster, ~proficiency,~root, ~channel, ~umbral, ~nimbed, ~tone, ~ordeal, ~test, ~obstacle, ~descendant, ~location, ~pact, ~quest, ~lore, ~emotions, ~failure"
+    },
+    {
+        "Type": "quest",
+        "Description": "The Conflict Embodies one Facet as a Quest that the Character must attempt. This can be great for creating Chapters of Epics and is a way of deciding NPC Ends, but be wary of using Quests in a substitute for Character development. They can be great fun, but are best used sparingly.",
+        "CrossRef": "~persona, ~core, ~hitch, ~monster, ~proficiency,~root, ~channel, ~umbral, ~nimbed, ~tone, ~ordeal, ~test, ~obstacle, ~descendant, ~location, ~pact, ~quest, ~lore, ~emotions, ~failure"
+    },
+    {
+        "Type": "random",
+        "Description": "The threshold direction or target is inconsistent and changeable. This threshold should consult the data to determine the actual targets and direction labels",
+        "CrossRef": "~demands, ~curses, ~botches, ~evokes, ~censures, ~harms, ~blocks, ~requires, ~rents"
+    },
+    {
+        "Type": "reads",
+        "Description": "The threshold has read access to something",
+        "CrossRef": "!owns"
+    },
+    {
+        "Type": "rents",
+        "Description": "The threshold rents something (paying a cost in Chi to keep access to something regularly commonly a Rental Hitch)",
+        "CrossRef": "~demands, ~curses, ~botches, ~evokes, ~censures, ~harms, ~blocks, ~requires, ~random"
+    },
+    {
+        "Type": "requires",
+        "Description": "The threshold requires something (often a Hitch requires Proficiencies, hours or days of practice or treatment, or Failure levels are imposed.)",
+        "CrossRef": "~demands, ~curses, ~botches, ~evokes, ~censures, ~harms, ~blocks, ~rents, ~random"
+    },
+    {
+        "Type": "resolved",
+        "Description": "The threshold indicates a resolved hitch.",
+        "CrossRef": "~persona, ~core, ~monster, !quirk, !flaw, !woe"
+    },
+    {
+        "Type": "right-of",
+        "Description": "The threshold goes right of something",
+        "CrossRef": "!left-of, ~near-to, !far-from"
+    },
+    {
+        "Type": "root",
+        "Description": "The threshold indicates the root of something (usually a prof is the Root of an Annex)",
+        "CrossRef": "!channel, !nimbed, !umbral, ~tangle"
+    },
+    {
+        "Type": "scroll",
+        "Description": "The threshold scrolls down an object each time it is accessed, essentially paged by one.",
+        "CrossRef": "~paged, !paged, !scrolling-extend, !scrolling-limit"
+    },
+    {
+        "Type": "scrolling-extend",
+        "Description": "The threshold displays a page but scrolls down automatically by one after a certain game time (sway table extend duration)",
+        "CrossRef": "!paged, !scroll, ~scroll, ~scrolling-limit"
+    },
+    {
+        "Type": "scrolling-limit",
+        "Description": "The threshold displays a page, scrolls down automatically by one after a certain game time (sway table limit duration)",
+        "CrossRef": "!paged, !scroll, ~scroll, ~scrolling-extend"
+    },
+    {
+        "Type": "since",
+        "Description": "The threshold goes since something",
+        "CrossRef": "!before, ~after, ~through, ~along, !till"
+    },
+    {
+        "Type": "south",
+        "Description": "The threshold goes south of something",
+        "CrossRef": "!north"
+    },
+    {
+        "Type": "south-east",
+        "Description": "The threshold goes south-east to something",
+        "CrossRef": "!north, !west, !north-west, ~south, ~east"
+    },
+    {
+        "Type": "south-west",
+        "Description": "The threshold goes south-west to something",
+        "CrossRef": "!north, !east, !north-east, ~south, ~west"
+    },
+    {
+        "Type": "southerly",
+        "Description": "The threshold goes south-ish to something",
+        "CrossRef": "!north, ~south, ~south-east, ~south-west, ~east, ~west"
+    },
+    {
+        "Type": "success",
+        "Description": "The Conflict embodies as additional Success Levels that help the Characters on that side during the Story.",
+        "CrossRef": "~persona, ~core, ~hitch, ~monster, ~proficiency,~root, ~channel, ~umbral, ~nimbed, , ~tone, ~ordeal, ~test, ~obstacle, ~descendant, ~location, ~pact, ~quest, ~lore, ~emotions, ~failure"
+    },
+    {
+        "Type": "tangle",
+        "Description": "The threshold is the tangle of an annex, the tangle must replace either the Root or Channel of the annex, and interacts with all the Umbrals.",
+        "CrossRef": "!nimbed, ~root, ~channel, !extra, ~umbral"
+    },
+    {
+        "Type": "test",
+        "Description": "The Conflict Embodies one Facet as a Test (or Ordeal). Simple and effective, but can be obvious and boring if used too often. A good embodiment during a single Warp Fray, not very good across a whole Volume.",
+        "CrossRef": "~persona, ~core, ~hitch, ~monster, ~proficiency,~root, ~channel, ~umbral, ~nimbed, ~tone, ~ordeal, ~test, ~obstacle, ~descendant, ~location, ~pact, ~quest, ~lore, ~emotions, ~failure"
+    },
+    {
+        "Type": "through",
+        "Description": "The threshold goes through something",
+        "CrossRef": "!around, ~inside"
+    },
+    {
+        "Type": "throughout",
+        "Description": "The threshold goes throughout something",
+        "CrossRef": "!outside, ~through, ~inside, ~along"
+    },
+    {
+        "Type": "till",
+        "Description": "The threshold goes till something",
+        "CrossRef": "!since, !after, ~before"
+    },
+    {
+        "Type": "to",
+        "Description": "The threshold goes to something",
+        "CrossRef": "!from"
+    },
+    {
+        "Type": "tone",
+        "Description": "The Conflict Embodies one Facet as the Tone of the Scene, Act or Story. This can be an easy way to embody some Facets, but can be restrictive and may not suit your style. Use with care.",
+        "CrossRef": "~persona, ~core, ~hitch, ~monster, ~proficiency,~root, ~channel, ~umbral, ~nimbed, ~tone, ~ordeal, ~test, ~obstacle, ~descendant, ~location, ~pact, ~quest, ~lore, ~emotions, ~failure"
+    },
+    {
+        "Type": "towards",
+        "Description": "The threshold is towards something",
+        "CrossRef": "!away-from, ~to"
+    },
+    {
+        "Type": "umbral",
+        "Description": "The threshold is an umbral of an annex",
+        "CrossRef": "!nimbed, !root, !channel, !extra, ~tangle"
+    },
+    {
+        "Type": "under",
+        "Description": "The threshold goes under something",
+        "CrossRef": "!over, ~below, !on"
+    },
+    {
+        "Type": "underneath",
+        "Description": "The threshold goes underneath something",
+        "CrossRef": "!over, ~under, ~through"
+    },
+    {
+        "Type": "unlike",
+        "Description": "The threshold is unlike something",
+        "CrossRef": "!like, ~outside"
+    },
+    {
+        "Type": "until",
+        "Description": "The threshold is until something",
+        "CrossRef": "!since, ~till"
+    },
+    {
+        "Type": "up",
+        "Description": "The threshold goes up something",
+        "CrossRef": "!down, !on, ~above, !below"
+    },
+    {
+        "Type": "up-on",
+        "Description": "The threshold goes up on something",
+        "CrossRef": "!down-on, !off, ~up, ~on"
+    },
+    {
+        "Type": "upon",
+        "Description": "The threshold is upon something",
+        "CrossRef": "!off, !away-from, ~on, ~up, ~near"
+    },
+    {
+        "Type": "versus",
+        "Description": "The threshold is versus something",
+        "CrossRef": "!with, ~against"
+    },
+    {
+        "Type": "via",
+        "Description": "The threshold goes via something",
+        "CrossRef": "!around, ~through"
+    },
+    {
+        "Type": "west",
+        "Description": "The threshold goes west of something",
+        "CrossRef": "!east"
+    },
+    {
+        "Type": "westerly",
+        "Description": "The threshold goes west-ish to something",
+        "CrossRef": "!east, ~west, ~south-west, ~north-west, ~south, ~north"
+    },
+    {
+        "Type": "with",
+        "Description": "The threshold goes with something",
+        "CrossRef": "!against, !opposite, !without"
+    },
+    {
+        "Type": "within",
+        "Description": "The threshold goes within something",
+        "CrossRef": "!without, ~inside, ~in, ~into, !outside, !out"
+    },
+    {
+        "Type": "without",
+        "Description": "The threshold goes without something",
+        "CrossRef": "!with, !within, !inside, !in"
+    },
+    {
+        "Type": "woe",
+        "Description": "The threshold indicates a woe hitch in a Personality Annex",
+        "CrossRef": "~quirk, ~flaw, ~hitch, !persona, !core, !resolved"
+    }
+]

@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 16,
+    "Name": "Enthusiasm",
+    "Entity": "&#19919;",
+    "Logical": 8,
+    "Trigrams": [
+      7,
+      3
+    ],
+    "Hexagram_Text": "Yu, Enthusiasm, is believed to be the energy of the gods. The Forces of Heaven expressing in mankind. It is the burst of Spring growth, the rush of the river downstream, the inspiration of the artist. However, Enthusiasm can lead one astray, be careful that you enthuse about the possible, not some unachievable fantasy.",
+    "Unchanging": "When you, or others with you, are enthusiastic you may all add +1 Success Level.",
+    "Line1": "Boasting",
+    "Line2": "Tempered Enthusiasm",
+    "Line3": "Supported Enthusiasm",
+    "Line4": "Enthusiasm Without Doubt",
+    "Line5": "Ill, But Undying",
+    "Line6": "False Enthusiasm"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you speak or act with enthusiasm",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you are enthusiastic about something that is impossible or unobtainable to you",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yang",
+        "Condition": "you boast",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yang",
+        "Condition": "you temper enthusiasm in yourself, or others, with a dose of reality",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yang",
+        "Condition": "you are supported by others, or if you hesitate to seek support",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yin",
+        "Condition": "you support another, or display confidence, or trust, in another",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you are attacked, or have a Wound change state (aggravate, treated, stabilised, etc)",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yang",
+        "Condition": "you dwell on the past, believe the fantastic, are quixotic, or act deluded or drunk",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Quest of Enthusiasm will gain momentum and popular support as the Quest progresses. The Quester&#39;s own enthusiasm for the Quest will be contagious to other Characters, perhaps even among the Opposition who will admire the Quester and their enthusiasm. The Quester will find that as long as they remain enthusiastic about their goals things will be easier. Pessimism or defeatism however will create Hurdles, Obstacles or Failure Levels for the Quester.",
+    "Quest_Complete": "The Quest that finishes with the Enthusiasm Hexagram indicates that the Quester now finds that everyone who hears about this Quest will have enthusiasm both for the Quest and the Quester. Many will agree to help with their next undertaking, and if this opportunity is seized, new contacts and companions are made, new friendships and new alliances forged.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "If the Quester is boastful or arrogant, proclaiming their satisfaction, pleasure or own proficiency, especially towards their companions, then this can drive a wedge between them, causing the companions to distance themselves from the Quester and inevitably adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If the Quester is not themselves boastful then one of their companions, supporters or allies will become boastful instead, and the Quester must distance themselves from them to avoid the additional Failure Level, Hurdle or Obstacle added.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester discovers that they have been enthusiastic about something that isn&#39;t entirely realistic, as now they are faced with dose of reality. It may be that the Quest has some fantastic steps (such as bridling a unicorn), or more likely that the Quest itself is impossible, or nearly so, at least with their current abilities and equipment, this immediately adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test. Sometimes the Quester will have to realise that the fantastical instructions are allegorical or symbolic in nature, other times they will involve magical or supernatural forces, depending upon the genre. If the Quester can temper their enthusiasm when faced with reality, but still hope to succeed somehow, then they may add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "Some one with authority or power notices the Quester and their enthusiasm, and tries to recruit them to their cause, offering support in return. The Quester should not be led astray or swayed by this offer as it will add Hurdles, Obstacles or Failure Levels to their own Ordeal or Test, but if they reject this recruitment, and the offer at this time, then the support may come later automatically adding a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "Someone (usually a companion or bystander) will demonstrate enthusiasm for something beyond the Quest, and ask the Quester for support in this endeavour. If the Quester supports this enthusiast in anyway (financially, vocally, militarily, physically or socially) then they will support the Quester back, becoming a companion if they are not, and adding a Success Level to the Quester&#39;s Ordeal or Test, if they do not offer any kind of support then this may hurt the relationship, or the lack of support will add a Hurdle, Obstacle or Failure Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester suffers an illness, injury, or social isolation, this may occur naturally through play, or be pressed on the Quester by the Quest as need be (unsoakable wounds or similar). If they press on through this situation they will be fine, adding a Success Level to both the Quester&#39;s Ordeal or Test and their later attempts to heal or repair this damage. However, trying to rectify this situation (by seeking healing, medicine or company) before the Quest is complete will add an additional Hurdle, Obstacle or Failure Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "Someone in the Quest, whether the Quester or one of the companions is being deluded by enthusiasm. Often this is the Quester being blinded by their own enthusiasm to the fact that one or more of their companions is not as enthusiastic as they think, but occasionally it is the Quester themselves who are suffering false enthusiasm, although usually in these cases it is over-enthusiasm that causes the Quester to overstep some line or law. Either way this false enthusiasm will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "The strong line in the fourth place, that of the leading official, meets with response and obedience from all the other lines, which are all weak. The attribute of the upper trigram, Chên, is movement; the attributes of K'un, the lower, are obedience and devotion. This begins a movement that meets with devotion and therefore inspires enthusiasm, carrying all with it. Of great importance, furthermore, is the law of movement along the line of least resistance, which in this hexagram is enunciated as the law for natural events and for human life.",
+    "The_Image": {
+      "text": "Thunder comes resounding out of the earth:\nThe image of ENTHUSIASM.\nThus the ancient kings made music\nIn order to honor merit,\nAnd offered it with splendor\nTo the Supreme Deity,\nInviting their ancestors to be present.",
+      "comments": "When, at the beginning of summer, thunder--electrical energy--comes rushing forth from the earth again, and the first thunderstorm refreshes nature, a prolonged state of tension is resolved. Joy and relief make themselves felt. So too, music has power to ease tension within the heart and to loosen the grip of obscure emotions. The enthusiasm of the heart expresses itself involuntarily in a burst of song, in dance and rhythmic movement of the body. From immemorial times the inspiring effect of the invisible sound that moves all hearts, and draws them together, has mystified mankind. Rulers have made use of this natural taste for music; they elevated and regulated it. Music was looked upon as something serious and holy, designed to purify the feelings of men. It fell to music to glorify the virtues of heroes and thus to construct a bridge to the world of the unseen. In the temple men drew near to God with music and pantomimes (out of this later the theater developed). Religious feeling for the Creator of the world was united with the most sacred of human feelings, that of reverence for the ancestors. The ancestors were invited to these divine services as guests of the Ruler of Heaven and as representatives of humanity in the higher regions. This uniting of the human past with the Divinity in solemn moments of religious inspiration established the bond between God and man. The ruler who revered the Divinity in revering his ancestors became thereby the Son of Heaven, in whom the heavenly and the earthly world met in mystical contact. These ideas are the final summation of Chinese culture. Confucius has said of the great sacrifice at which these rites were performed: \"He who could wholly comprehend this sacrifice could rule the world as though it were spinning on his hand.\""
+    },
+    "The_Judgment": {
+      "text": "ENTHUSIASM. It furthers one to install helpers\nAnd to set armies marching.",
+      "comments": "The time of ENTHUSIASM derives from the fact that there is at hand an eminent man who is in sympathy with the spirit of the people and acts in accord with it. Hence he finds universal and willing obedience. To arouse enthusiasm it is necessary for a man to adjust himself and his ordinances to the character of those whom he has to lead. The inviolability of natural laws rests on this principle of movement along the line of least resistance. Theses laws are not forces external to things but represent the harmony of movement immanent in them. That is why the celestial bodies do not deviate from their orbits and why all events in nature occur with fixed regularity. It is the same with human society: only such laws are rooted in popular sentiment can be enforced, while laws violating this sentiment merely arouse resentment. Again, it is enthusiasm that enables us to install helpers for the completion of an undertaking without fear of secret opposition. It is enthusiasm too that can unify mass movements, as in war, so that they achieve victory."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Enthusiasm that expresses itself\nBrings misfortune.",
+        "comments": "A man in an inferior position has aristocratic connections about which he boasts enthusiastically. This arrogance inevitably invites misfortune.\nEnthusiasm should never be an egotistic emotion; it is justified only when it is a general feeling that unites one with others."
+      },
+      "2": {
+        "text": "Firm as a rock. Not a whole day.\nPerseverance brings good fortune.",
+        "comments": "This describes a person who does not allow himself to be misled by any illusions. While others are letting themselves be dazzled by enthusiasm, he recognizes with perfect clarity the first signs of the time. Thus he neither flatters those above nor neglects those beneath him; he is as firm as a rock. When the first sign of discord appears, he knows the right moment for withdrawing and does not delay even for a day. Perseverance in such conduct will bring good fortune. Confucius says about this line:\n\nTo know the seeds, that is divine indeed. In his association with those above him, the superior man does not flatter. In his association with those beneath him, he is not arrogant. For he knows the seeds. The seeds are the first imperceptible beginning of movement, the first trace of good fortune (or misfortune) that shows itself. The superior man perceives the seeds and immediately takes actin. He does not wait even a whole day. In the Book of Changes it is said: \"Firm as a rock. Not a whole day. Perseverance brings good fortune.\"\n\nFirm as a rock, what need of a whole day?\n\n. The judgment can be known.\n\n. The superior man knows what is hidden and what is evident.\nHe knows weakness, he knows strength as well.\nHence the myriads look up to him."
+      },
+      "3": {
+        "text": "Enthusiasm that looks upward creates remorse.\nHesitation brings remorse.",
+        "comments": "This line is the opposite of the preceding one: the latter bespeaks self-reliance, while here there is enthusiastic looking up to a leader. If a man hesitates too long, this also will bring remorse. The right moment for approach must be seized: only then will he do the right thing."
+      },
+      "4": {
+        "text": "The source of enthusiasm.\nHe achieves great things.\nDoubt not.\nYou gather friends around you\nAs a hair clasp gathers the hair.",
+        "comments": "This describes a man who is able to awaken enthusiasm through his own sureness and freedom from hesitation. He attracts people because he has no doubts and is wholly sincere. Owing to his confidence in them he wins their enthusiastic co-operation and attains success. Just as a clasp draws the hair together and hold it, so he draws man together by the support he gives them."
+      },
+      "5": {
+        "text": "Persistently ill, and still does not die.",
+        "comments": "Here enthusiasm is obstructed. A man is under constant pressure, which prevents him from breathing freely. However, this pressure has its advantage--it prevents him from consuming his powers in empty enthusiasm. Thus constant pressure can actually serve to keep one alive."
+      },
+      "6": {
+        "text": "Deluded enthusiasm.\nBut if after completion one changes,\nThere is no blame.",
+        "comments": "It is a bad thing for a man to let himself be deluded by enthusiasm. But if this delusion has run its course, and he is still capable of changing, then he is freed of error. A sober awakening from false enthusiasm is quite possible and very favorable."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Enthusiasm'. Internalize this core philosophy: The strong line in the fourth place, that of the leading official, meets with response and obedience from all the other lines, which are all weak. The attribute of the upper trigram, Chên, is movement; the attributes of K'un, the lower, are obedience and devotion. This begins a movement that meets with devotion and therefore inspires enthusiasm, carrying all with it. Of great importance, furthermore, is the law of movement along the line of least resistance, which in this hexagram is enunciated... Your current worldview is: \"Yu, Enthusiasm, is believed to be the energy of the gods. The Forces of Heaven expressing in mankind. It is the burst of Spring growth, the rush of the river downstream, the inspiration of the artist. However, Enthusiasm can lead one astray, be careful that you enthuse about the possible, not some unachievable fantasy.\". Let your choices be subtly driven by these conditions: you speak or act with enthusiasm, you are enthusiastic about something that is impossible or unobtainable to you. When interacting, mirror the wisdom found in the commentary: \"The time of ENTHUSIASM derives from the fact that there is at hand an eminent man who is in sympathy with the spirit of the people and acts in accord with it. Hence he finds universal and willing obedience. To arouse enthusiasm it is necessary for a man to adjust himself and his ordinances to the...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Enthusiasm'. The primary quest objective is: The Quest of Enthusiasm will gain momentum and popular support as the Quest progresses. The Quester&#39;s own enthusiasm for the Quest will be contagious to other Characters, perhaps even among the Opposition who will admire the Quester and their enthusiasm. The Quester will find that as long as they remain enthusiastic about their goals things will be easier. Pessimism or defeatism however will create Hurdles, Obstacles or Failure Levels for the Quester.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: When, at the beginning of summer, thunder--electrical energy--comes rushing forth from the earth again, and the first thunderstorm refreshes nature, a prolonged state of tension is resolved. Joy and relief make themselves felt. So too, music has power to ease tension within the heart and to loosen the grip of obscure emotions. The enthusiasm of the heart expresses itself involuntarily in a burst... Use the following line-specific challenges to pace the story: If the Quester is boastful or arrogant, proclaiming their satisfaction, pleasure or own proficiency, especially towards their companions, then this can drive a wedge between them, causing the companions to distance themselves from the Quester and inevitably adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If the Quester is not themselves boastful then one of their companions, supporters or allies will become boastful instead, and the Quester must distance themselves from them to avoid the additional Failure Level, Hurdle or Obstacle added. | The Quester discovers that they have been enthusiastic about something that isn&#39;t entirely realistic, as now they are faced with dose of reality. It may be that the Quest has some fantastic steps (such as bridling a unicorn), or more likely that the Quest itself is impossible, or nearly so, at least with their current abilities and equipment, this immediately adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test. Sometimes the Quester will have to realise that the fantastical instructions are allegorical or symbolic in nature, other times they will involve magical or supernatural forces, depending upon the genre. If the Quester can temper their enthusiasm when faced with reality, but still hope to succeed somehow, then they may add a Success Level instead. | Some one with authority or power notices the Quester and their enthusiasm, and tries to recruit them to their cause, offering support in return. The Quester should not be led astray or swayed by this offer as it will add Hurdles, Obstacles or Failure Levels to their own Ordeal or Test, but if they reject this recruitment, and the offer at this time, then the support may come later automatically adding a Success Level instead. | Someone (usually a companion or bystander) will demonstrate enthusiasm for something beyond the Quest, and ask the Quester for support in this endeavour. If the Quester supports this enthusiast in anyway (financially, vocally, militarily, physically or socially) then they will support the Quester back, becoming a companion if they are not, and adding a Success Level to the Quester&#39;s Ordeal or Test, if they do not offer any kind of support then this may hurt the relationship, or the lack of support will add a Hurdle, Obstacle or Failure Level instead. | The Quester suffers an illness, injury, or social isolation, this may occur naturally through play, or be pressed on the Quester by the Quest as need be (unsoakable wounds or similar). If they press on through this situation they will be fine, adding a Success Level to both the Quester&#39;s Ordeal or Test and their later attempts to heal or repair this damage. However, trying to rectify this situation (by seeking healing, medicine or company) before the Quest is complete will add an additional Hurdle, Obstacle or Failure Level instead. | Someone in the Quest, whether the Quester or one of the companions is being deluded by enthusiasm. Often this is the Quester being blinded by their own enthusiasm to the fact that one or more of their companions is not as enthusiastic as they think, but occasionally it is the Quester themselves who are suffering false enthusiasm, although usually in these cases it is over-enthusiasm that causes the Quester to overstep some line or law. Either way this false enthusiasm will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Boasting): Mirror the internal state described in the commentary: \"A man in an inferior position has aristocratic connections about which he boasts enthusiastically. This arrogance inevitably invites misfortune.\nEnthusiasm should never be an egotistic emotion; it is justified only when it is a general feeling that...\" Your actions should be framed by the goal: you boast.",
+        "Plot": "Plot Complication Line 1 (Boasting): Introduce a challenge based on the interpretation: \"A man in an inferior position has aristocratic connections about which he boasts enthusiastically. This arrogance inevitably invites misfortune.\nEnthusiasm should never be an egotistic emotion; it is justified only when it is a general feeling that...\" The specific quest objective for this stage is: If the Quester is boastful or arrogant, proclaiming their satisfaction, pleasure or own proficiency, especially towards their companions, then this can drive a wedge between them, causing the companions to distance themselves from the Quester and inevitably adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If the Quester is not themselves boastful then one of their companions, supporters or allies will become boastful instead, and the Quester must distance themselves from them to avoid the additional Failure Level, Hurdle or Obstacle added."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Tempered Enthusiasm): Mirror the internal state described in the commentary: \"This describes a person who does not allow himself to be misled by any illusions. While others are letting themselves be dazzled by enthusiasm, he recognizes with perfect clarity the first signs of the time. Thus he neither flatters those above nor...\" Your actions should be framed by the goal: you temper enthusiasm in yourself, or others, with a dose of reality.",
+        "Plot": "Plot Complication Line 2 (Tempered Enthusiasm): Introduce a challenge based on the interpretation: \"This describes a person who does not allow himself to be misled by any illusions. While others are letting themselves be dazzled by enthusiasm, he recognizes with perfect clarity the first signs of the time. Thus he neither flatters those above nor...\" The specific quest objective for this stage is: The Quester discovers that they have been enthusiastic about something that isn&#39;t entirely realistic, as now they are faced with dose of reality. It may be that the Quest has some fantastic steps (such as bridling a unicorn), or more likely that the Quest itself is impossible, or nearly so, at least with their current abilities and equipment, this immediately adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test. Sometimes the Quester will have to realise that the fantastical instructions are allegorical or symbolic in nature, other times they will involve magical or supernatural forces, depending upon the genre. If the Quester can temper their enthusiasm when faced with reality, but still hope to succeed somehow, then they may add a Success Level instead."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Supported Enthusiasm): Mirror the internal state described in the commentary: \"This line is the opposite of the preceding one: the latter bespeaks self-reliance, while here there is enthusiastic looking up to a leader. If a man hesitates too long, this also will bring remorse. The right moment for approach must be seized: only...\" Your actions should be framed by the goal: you are supported by others, or if you hesitate to seek support.",
+        "Plot": "Plot Complication Line 3 (Supported Enthusiasm): Introduce a challenge based on the interpretation: \"This line is the opposite of the preceding one: the latter bespeaks self-reliance, while here there is enthusiastic looking up to a leader. If a man hesitates too long, this also will bring remorse. The right moment for approach must be seized: only...\" The specific quest objective for this stage is: Some one with authority or power notices the Quester and their enthusiasm, and tries to recruit them to their cause, offering support in return. The Quester should not be led astray or swayed by this offer as it will add Hurdles, Obstacles or Failure Levels to their own Ordeal or Test, but if they reject this recruitment, and the offer at this time, then the support may come later automatically adding a Success Level instead."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Enthusiasm Without Doubt): Mirror the internal state described in the commentary: \"This describes a man who is able to awaken enthusiasm through his own sureness and freedom from hesitation. He attracts people because he has no doubts and is wholly sincere. Owing to his confidence in them he wins their enthusiastic co-operation...\" Your actions should be framed by the goal: you support another, or display confidence, or trust, in another.",
+        "Plot": "Plot Complication Line 4 (Enthusiasm Without Doubt): Introduce a challenge based on the interpretation: \"This describes a man who is able to awaken enthusiasm through his own sureness and freedom from hesitation. He attracts people because he has no doubts and is wholly sincere. Owing to his confidence in them he wins their enthusiastic co-operation...\" The specific quest objective for this stage is: Someone (usually a companion or bystander) will demonstrate enthusiasm for something beyond the Quest, and ask the Quester for support in this endeavour. If the Quester supports this enthusiast in anyway (financially, vocally, militarily, physically or socially) then they will support the Quester back, becoming a companion if they are not, and adding a Success Level to the Quester&#39;s Ordeal or Test, if they do not offer any kind of support then this may hurt the relationship, or the lack of support will add a Hurdle, Obstacle or Failure Level instead."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Ill, But Undying): Mirror the internal state described in the commentary: \"Here enthusiasm is obstructed. A man is under constant pressure, which prevents him from breathing freely. However, this pressure has its advantage--it prevents him from consuming his powers in empty enthusiasm. Thus constant pressure can actually...\" Your actions should be framed by the goal: you are attacked, or have a Wound change state (aggravate, treated, stabilised, etc).",
+        "Plot": "Plot Complication Line 5 (Ill, But Undying): Introduce a challenge based on the interpretation: \"Here enthusiasm is obstructed. A man is under constant pressure, which prevents him from breathing freely. However, this pressure has its advantage--it prevents him from consuming his powers in empty enthusiasm. Thus constant pressure can actually...\" The specific quest objective for this stage is: The Quester suffers an illness, injury, or social isolation, this may occur naturally through play, or be pressed on the Quester by the Quest as need be (unsoakable wounds or similar). If they press on through this situation they will be fine, adding a Success Level to both the Quester&#39;s Ordeal or Test and their later attempts to heal or repair this damage. However, trying to rectify this situation (by seeking healing, medicine or company) before the Quest is complete will add an additional Hurdle, Obstacle or Failure Level instead."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (False Enthusiasm): Mirror the internal state described in the commentary: \"It is a bad thing for a man to let himself be deluded by enthusiasm. But if this delusion has run its course, and he is still capable of changing, then he is freed of error. A sober awakening from false enthusiasm is quite possible and very...\" Your actions should be framed by the goal: you dwell on the past, believe the fantastic, are quixotic, or act deluded or drunk.",
+        "Plot": "Plot Complication Line 6 (False Enthusiasm): Introduce a challenge based on the interpretation: \"It is a bad thing for a man to let himself be deluded by enthusiasm. But if this delusion has run its course, and he is still capable of changing, then he is freed of error. A sober awakening from false enthusiasm is quite possible and very...\" The specific quest objective for this stage is: Someone in the Quest, whether the Quester or one of the companions is being deluded by enthusiasm. Often this is the Quester being blinded by their own enthusiasm to the fact that one or more of their companions is not as enthusiastic as they think, but occasionally it is the Quester themselves who are suffering false enthusiasm, although usually in these cases it is over-enthusiasm that causes the Quester to overstep some line or law. Either way this false enthusiasm will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test."
+      }
+    }
+  }
+}

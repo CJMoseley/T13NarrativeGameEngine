@@ -1,0 +1,115 @@
+{
+	"Card_Corner": "9",
+	"Card": "Nine",
+	"Suit": "1",
+	"IconSuit": "♦",
+	"Pips": "9",
+	"Unicode": "&#x1f0c9;",
+	"Svg": "images/cards-svg/9D.svg",
+	"Wound_Level": 3,
+	"Facet": "Virtue",
+	"Tao": [
+		0,
+		1
+	],
+	"Narrative_Meaning": "Nines signify fortune, monetary rewards and cash prizes.",
+	"Image": "",
+	"Yarn": {
+		"Yarn_Name": "The Priest",
+		"Yarn_Description": "The Priest is the card of the mortal and divine interacting. This can be literally a Priest (or other religious figure), or it can be some interaction that seems charged by divinity, ethics or morality, one of those times when the universe seems to be teaching us a lesson. These lessons are usually some allegory for an aspect of a religion, or a universal deity of some sort, but can be humanistic lessons such as \"Don't be a Dick.\". These Lessons often involve loss, anguish and difficult ethical and moral choices &mdash; one could easily interpret the card as the death of a loved one, for example.",
+		"Significator": {
+			"Plot": "The Priest Plot is a Plot where the sacred and profane are both important. The worlds of mortal and divine mix and interfere. Often the Plot will centre around a hallowed character (such as a Priest, Monk, Nun, Priestess, etc). ",
+			"Side": "If a side of a larger Conflict is marked by the Priest then that side will generally act as a go between or messenger between two of the other sides.",
+			"Character": "The Priest Significator indicates a Character who has a strong, personal connection to the divine. <p>They <strong>Gain Yin</strong> by prayer or meditation.</p><p><strong>Gain Yang</strong> by sharing stories or parables from their religion, and drawing comparisons between their current situation and those from their religious texts. </p><p>They <strong>Gain Chi</strong> when they perform religious rituals or demonstrate divine or spiritual powers or prowess. </p><p>They also gain +1 Success Level to do with all aspects of their religion or spirituality</p>",
+			"Scene": "The Priest Scene is a scene with religious or divine importance. A Yarn-Teller may use it to allow divine intervention, a resurrection or miracle of a higher order, or the Scene may concentrate on the profane, mundane activities that many of the Priesthood (or more usually Monks) must do, such as cleaning, working, meditation, gardening, farming beneath the guise of religious duty or faith."
+		},
+		"Beat_Type": "7",
+		"Conflict_Embodiment": "1",
+		"Facet_Embodiment": "3",
+		"Hook_Aspect": "Geometry (Gift)",
+		"Aspect_Description": "The Hook targets the Character's Geometry via its gift. This is often a chance to create a situation where the gift will be useful.",
+		"Hook": "A Prayer",
+		"Hook_Description": "The Hook of this Story is nothing more than a cry for help, an overheard prayer, confession or scream calls the PC to action. To Hook some Characters it is necessary to allow the Prayer to intrigue, or tempt the Character into action rather than directly ask them for help.",
+		"Gain": "Parish, the Parish is an area or territory that a priest is made responsible for. An actual Parish is a Real Estate or Province held by the Church and wardened by a Priest. (Gain Large Location)",
+		"Fray": "Shepherd",
+		"Fray_Description": "A usually Medium-Soul Stakes Ordeal that involves guiding, teaching and protecting a \"<em>flock</em>\" of animals or people. This can be as simple as leading goats to pasture, sitting with a dying person, or as complex as herding cats, or calming and consoling parents after a sectarian attack on a primary school.",
+		"Snag": "Humanitarian Crisis",
+		"Snag_Description": "Often this Snag is about the aftermath of the Fray, but sometimes it is part of the Fray. It involves a threat to the well-being of entire communities. Plagues, famines, droughts and wars are common causes of a crisis, as are other natural disasters.",
+		"NPC": {
+			"Archetype": "Martyr",
+			"Persona": 23,
+			"Core": 12,
+			"Hitch": 3,
+			"Description": "A Martyr is a fanatic dedicated to their cause who is willing to die (or at least get badly injured) for their beliefs."
+		},
+		"Sweeping": "Sacred Treasure",
+		"Sweeping_Text": "The Pressed Embodiment gains a Sacred Treasure of some sort. It should be noted that Sacredness is recognised differently by different people, for some sports or film memorabilia can be sacred, for others only divine artefacts are truly sacred.",
+		"History": "Mystic",
+		"History_Description": "The Priest indicates that the history of this situation is one where the sacred, divine or spirit world has become involved with the profane normal world. This may have been a ritual, ceremony, the past situation may involve some hallowed ground, spiritual relic, prophecy or scripture.",
+		"Situation": "Sanctified",
+		"Situation_Description": "The Priest indicates a situation where divine or spiritual power is expressed. This may be a case of an actual miracle, or simply a case of blessings being bestowed or even withheld.",
+		"Solution": "Intervention",
+		"Solution_Description": "The Priest indicates that the way out of this situation is going to require intervention from the spiritual or religious world. This can be a quiet word from a member of the clergy or a divine miracle.",
+		"Revelations": {
+			"About": "World-Building Religion",
+			"About_Description": "The information is about the background, or setting, not the current plot or situation. It might include pertinent details for the current plot, but is usually information about the priesthood and religions in the world. Often this information is presented about a single religion (although you might get information about a pantheon of gods from one god's religion where that is appropriate).",
+			"Info": "Faith",
+			"Info_Description": "Information that is narrative in nature, such stories are always embellished, even when based on real events, and may be completely invented, however they always contain some truth, even if it is an inconsequential detail.",
+			"Vector": "Faith",
+			"Vector_Description": "The information may come from a holy book, or via a cleric, or may just be a matter of personal belief for someone who shares it. It might even be an apparent answer to a prayer.",
+			"Alternate": "Morality",
+			"Alternate_Description": "The alternate information is about the morality of a character or situation. Often this is in the form of some terrible thing the enemy has done, but occasionally it will reveal a philanthropic side to even a super-villain.",
+			"Detail": "Virtue",
+			"Detail_Description": "Virtue details tell us about the good done by a Character, Pact or Descendant. These details are occasionally easily overlooked, but a lot of Characters will draw attention to their positive impact on the world around them."
+		}
+	},
+	"Obstacle": {
+		"Type": "Moral Compass",
+		"Description": "The Obstacle is an Ethical or Moral Dilemma, such as a good man having to do evil for the greater good."
+	},
+	"Tarot": {
+		"WyrdTarot": "Ambush",
+		"Crossed": "Target may leave the Location or Stage (without passing Diff). Cut to destination (where applicable).",
+		"Normal": "The Target is Intercepted or Ambushed (usually by the Player)."
+	},
+	"Ordeal": {
+		"Ordeal_Type": "Solitary Ordeal",
+		"Stages": "3",
+		"Ordeal_Spread": "Forking",
+		"Stakes": "Medium",
+		"Test": "Inspire (Awe)",
+		"Obstacles": "2 non-Court Stage Obstacles + 2 Obstacles in all Court Stages",
+		"Suggested_Action": "Curse",
+		"Stage": "Long Straight",
+		"Stage_Description": "A long, straight path, street, road, or boulevard. Working hard, or long hours of preparation or research.",
+		"Motional": "Dangerous Riding Dash",
+		"Motional_Description": "Get to the end of the Ordeal in as few Phases as possible. Across dangerous territory on a horse or bike that can help.",
+		"Tide_of_Battle": "Trading Shots",
+		"Tide_of_Battle_Text": "The Flowing and Ebbing sides exchange shots at range, either while closing in, or while keeping cover. Neither side has clear advantage.",
+		"Fight": "Rival Battle",
+		"Fight_Description": "A fight between perfectly matched opponents, may use Rivals, Dark, Mirrors, Corrupted Clones, Animus etc. You can create Dark Parties for example or mix and match."
+	},
+	"Lea": {
+		"PathColour": "Brown/Blue Omnivore",
+		"Bulmas": "Broccen, Vermis, Labyrinthine, All-Walkers",
+		"AnimalCategory": "Megafauna – Large",
+		"Example": "Pig / Boar/ Bear / Cassowary / Large Primate",
+		"Bodypart": "Fangs",
+		"Notes": "These animals keep and patrol large territories."
+	},
+	"Stress": {
+		"Type": "Health",
+		"Description": "Stress, especially high stress over time, can have a very deleterious effect upon a Character’s health. Commonly a weakened immune system takes longer to shrug off infections and heal, and the Character may find themselves run down and exhausted from minor illnesses that would not normally affect them so much.",
+		"Rules": "Healing times for all Diamond Suited Wounds add the Current Stress as a Chi Extend Duration, even a Distract Wound can take a while to shake off when you are Stressed. Additionally all Diamond Suited Wounds that the Character takes will add current Stress to their Pips, including the Difficulty to treat and Stabilise (increasing the chances of Wounds Festering)."
+	},
+	"Trauma": {
+		"Type": "Conversion",
+		"Description": "Trauma can be political, social, spiritual, or religious in nature as well as psychological or physical, and this can cause a Character to change their opinons about things. When someone has a profound change of opinion about something, like the religion they follow, or political idealogy they subscribe to then we call it a conversion (unless the religion isn&apos;t legitimate somehow when we are in Cultism territory).",
+		"Rules": "Trauma alters the Character’s opinions about their religion, political beliefs or some other factor. This Trauma immediately relieves Stress equal to the Banes of any Hitches that are converted. E.g. If a Character converts to Christianity following a traumatic possession, then their former Devotion to Pagan gods &times; 12 becomes Devotion: Christian &times; 12 and relieves 12 Stress instantly."
+	},
+	"Age": {
+		"Type": "Belief",
+		"Description": "An Age of Belief is occurring. During this age the beliefs a society holds are considered more important and true than any evidence that may disprove it. During this age a society will ignore advice, avoid evidence, declare science to be false without evidence, and double down on nonsensical beliefs.",
+		"Rules": "During an age of Belief members of a society will only accept information that supports the belief they have adopted, all other information will be ignored, dismissed or rejected."
+	}
+}

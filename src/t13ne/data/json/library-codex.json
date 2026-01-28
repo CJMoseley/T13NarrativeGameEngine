@@ -1,0 +1,1035 @@
+{
+  "_readme": "This codex serves as a central library for the T13 Narrative Engine's game data. All data has been extracted from the original PHP source files into a structured JSON format. A key feature of this new data structure is the use of a central proficiency registry. The 'ID Proficiency list.json' file contains a comprehensive list of all proficiencies in the system, each with a unique ID. All other JSON files that reference proficiencies now do so using these IDs, rather than embedding the full proficiency object. This ensures data consistency and makes the system easier to maintain and expand.",
+  "definitions": {
+    "description": "This directory contains game-specific definitions and configurations (e.g., Wormhole Racers).",
+    "files": {
+      "wormholeracers.json": {
+        "description": "Definition file for the Wormhole Racers game, including tracks, ship types, and league rules."
+      }
+    }
+  },
+  "character": {
+    "description": "This directory contains data related to characters.",
+    "files": {
+      "altTypes.json": {
+        "description": "Defines the different types of alternates a character can have."
+      },
+      "ageCategories.json": {
+        "description": "Defines the age categories for characters, from New-born to Aged."
+      },
+      "boonExamples.json": {
+        "description": "Provides real-world examples for various Boon levels."
+      },
+      "astrologySigns.json": {
+        "description": "Defines the different astrological signs and their properties."
+      },
+      "characterBoons.json": {
+        "description": "Defines the standard Boon levels for characters and locations, used for scaling and balancing."
+      },
+      "coreChars.json": {
+        "description": "Defines the core example characters like Josephine Bloggs."
+      },
+      "charTypes.json": {
+        "description": "Defines the different character types, such as Extra, Lite, Archetype, Detailed, and Full."
+      },
+      "characterCatalysts.json": {
+        "description": "Defines the different character catalysts."
+      },
+      "chiClass.json": {
+        "description": "Defines the different Chi classes for characters, from NPC to High PC."
+      },
+      "experienceTiers.json": {
+        "description": "Defines the experience tiers for characters, from Fresh to Maxed."
+      },
+      "extraTypes.json": {
+        "description": "Defines the different types of extra characters, such as Vex, Chorus, Cast, and Force-of-Nature."
+      },
+      "eidolonTypes.json": {
+        "description": "Defines the different eidolon types."
+      },
+      "integrationTypes.json": {
+        "description": "Defines the different levels of integration between character alternates."
+      },
+      "liteBoons.json": {
+        "description": "Defines boons for Lite characters."
+      },
+      "heroAbilities.json": {
+        "description": "Defines the different abilities that heroes can have."
+      },
+      "heroTypes.json": {
+        "description": "Defines the different types of heroes."
+      },
+      "pcType.json": {
+        "description": "Defines the different PC types, such as Extra, Lite Character, Archetype Character, Grunt, Goblin, Hero, Demon, Yarn-Teller, Demon-Lord, Bulmäs, Kaiju, Neechies, and Increated."
+      },
+      "rivals.json": {
+        "description": "Defines different types of rivals for characters."
+      },
+      "similarityTypes.json": {
+        "description": "Defines the similarity between character alternates."
+      }
+    }
+  },
+  "annexes": {
+    "description": "This directory contains saved Annex data structures, representing skills, talents, pacts, etc.",
+    "files": {
+      "annexTypes.json": {
+        "description": "Defines the different types of annexes."
+      }
+    }
+  },
+  "bulmas": {
+    "description": "This directory contains data related to Bulmäs.",
+    "files": {
+      "bulmasArchetypes.json": {
+        "description": "Defines the different Bulmäs archetypes, such as Ant, Bear, or Dragon."
+      }
+    }
+  },
+  "conflicts": {
+    "description": "This directory contains conflict data.",
+    "files": {
+      "conflictEmbodiments.json": {
+        "description": "Defines how conflicts can be embodied in the narrative."
+      },
+      "combat-roles.json": {
+        "description": "Combat Roles in the T13 Narrative Engine."
+      },
+      "conflictSides.json": {
+        "description": "Contains the core rules of the T13 Narrative Engine."
+      },
+      "embodimentTypes.json": {
+        "description": "Defines the types of embodiments for conflicts."
+      }
+    }
+  },
+  "descendants": {
+    "description": "This directory contains data related to descendants.",
+    "files": {
+      "descendantEdges.json": {
+        "description": "Defines the various edges that can be applied to Descendants, granting them special abilities."
+      },
+      "descendantSizes.json": {
+        "description": "Defines the sizes of Descendants, including reach and reaction time modifiers."
+      },
+      "descendantTypes.json": {
+        "description": "Defines the types, commonality, state, and other properties of Descendants."
+      }
+    }
+  },
+  "drama": {
+    "description": "This directory contains data related to drama.",
+    "files": {
+      "characterCompositions.json": {
+        "description": "Defines the different character compositions."
+      },
+      "character_effects.json": {
+        "description": "Contains data on character effects, which are used to represent the impact of various in-game events on characters."
+      },
+      "compositionTempos.json": {
+        "description": "Defines the different composition tempos."
+      },
+      "dramaDice.json": {
+        "description": "Defines the different types of drama dice, from Atmospheric to Drawn-out."
+      },
+      "dramaPools.json": {
+        "description": "Defines the different types of drama pools, such as Water, Fire, Wood, Earth, Metal, and Void."
+      },
+      "fiveChanges.json": {
+        "description": "Defines the five changes (Wood, Fire, Earth, Metal, Water) and their properties."
+      },
+      "suspenseLevels.json": {
+        "description": "Defines the levels of suspense in a scene, detailing effects on plot and characters at each level."
+      },
+      "suspenseDramas.json": {
+        "description": "Defines drama events related to suspense levels."
+      },
+      "tensionLevels.json": {
+        "description": "Defines the levels of tension in a scene, including emotional states, descriptions, and rules for different embodiment types."
+      }
+    }
+  },
+  "facets": {
+    "description": "This directory contains data related to Facets.",
+    "files": {
+      "facets.json": {
+        "description": "Defines the 24 Facets that everything is made from."
+      },
+      "statFacets.json": {
+        "description": "Defines the different stat facets."
+      }
+    }
+  },
+  "geometry": {
+    "description": "This directory contains data related to the geometry system.",
+    "files": {
+      "chords.json": {
+        "description": "Defines musical chords and their properties, used in the game's geometry system."
+      },
+      "geometries.json": {
+        "description": "Defines the geometric properties of characters, which are a core component of the T13 Narrative Engine's character system."
+      },
+      "interval_ratios.json": {
+        "description": "Defines musical interval ratios, used in the game's geometry system."
+      },
+      "keys.json": {
+        "description": "Data for musical keys, used in the game's geometry system."
+      },
+      "numerology.json": {
+        "description": "Contains data on numerology, which is used in the game's geometry system to assign numerical values to letters."
+      },
+      "numberTypes.json": {
+        "description": "Defines the different number types used in the geometry system."
+      },
+      "pitches.json": {
+        "description": "Data for musical pitches, used in the game's geometry system."
+      },
+      "progressions.json": {
+        "description": "Defines musical chord progressions, used in the game's geometry system."
+      },
+      "tonalModes.json": {
+        "description": "Defines the different tonal modes used in the geometry system."
+      }
+    }
+  },
+  "hitches": {
+    "description": "This directory contains data related to hitches, which are negative traits or disadvantages that characters can have.",
+    "files": {
+      "core_hitches.json": {
+        "description": "A list of core hitches, which are fundamental negative traits."
+      },
+      "resolves.json": {
+        "description": "Data on how hitches can be resolved or overcome."
+      },
+      "tiers.json": {
+        "description": "Defines the different tiers or levels of hitches."
+      }
+    }
+  },
+  "iching": {
+    "description": "This directory contains data related to the I-Ching.",
+    "files": {
+      "trigrams.json": {
+        "description": "Data for the eight trigrams of the I-Ching."
+      },
+      "hexagrams/hex_1.json": {
+        "description": "Hexagram 1: The Creative"
+      },
+      "hexagrams/hex_2.json": {
+        "description": "Hexagram 2: The Receptive"
+      },
+      "hexagrams/hex_3.json": {
+        "description": "Hexagram 3: Initial Adversity"
+      },
+      "hexagrams/hex_4.json": {
+        "description": "Hexagram 4: Innocence"
+      },
+      "hexagrams/hex_5.json": {
+        "description": "Hexagram 5: Nourished Waiting"
+      },
+      "hexagrams/hex_6.json": {
+        "description": "Hexagram 6: Conflict"
+      },
+      "hexagrams/hex_7.json": {
+        "description": "Hexagram 7: Army"
+      },
+      "hexagrams/hex_8.json": {
+        "description": "Hexagram 8: Union"
+      },
+      "hexagrams/hex_9.json": {
+        "description": "Hexagram 9: Taming Power"
+      },
+      "hexagrams/hex_10.json": {
+        "description": "Hexagram 10: Stepping"
+      },
+      "hexagrams/hex_11.json": {
+        "description": "Hexagram 11: Tranquillity"
+      },
+      "hexagrams/hex_12.json": {
+        "description": "Hexagram 12: Stagnation"
+      },
+      "hexagrams/hex_13.json": {
+        "description": "Hexagram 13: Fellowship"
+      },
+      "hexagrams/hex_14.json": {
+        "description": "Hexagram 14: Possessing Plenty"
+      },
+      "hexagrams/hex_15.json": {
+        "description": "Hexagram 15: Humility"
+      },
+      "hexagrams/hex_16.json": {
+        "description": "Hexagram 16: Enthusiasm"
+      },
+      "hexagrams/hex_17.json": {
+        "description": "Hexagram 17: Following"
+      },
+      "hexagrams/hex_18.json": {
+        "description": "Hexagram 18: Working Through"
+      },
+      "hexagrams/hex_19.json": {
+        "description": "Hexagram 19: Advance"
+      },
+      "hexagrams/hex_20.json": {
+        "description": "Hexagram 20: Contemplation"
+      },
+      "hexagrams/hex_21.json": {
+        "description": "Hexagram 21: Biting Through"
+      },
+      "hexagrams/hex_22.json": {
+        "description": "Hexagram 22: Adornment"
+      },
+      "hexagrams/hex_23.json": {
+        "description": "Hexagram 23: Splitting Asunder"
+      },
+      "hexagrams/hex_24.json": {
+        "description": "Hexagram 24: Returning"
+      },
+      "hexagrams/hex_25.json": {
+        "description": "Hexagram 25: Innocence"
+      },
+      "hexagrams/hex_26.json": {
+        "description": "Hexagram 26: Taming Force"
+      },
+      "hexagrams/hex_27.json": {
+        "description": "Hexagram 27: Nourishment"
+      },
+      "hexagrams/hex_28.json": {
+        "description": "Hexagram 28: Exceeding Greatness"
+      },
+      "hexagrams/hex_29.json": {
+        "description": "Hexagram 29: The Deep"
+      },
+      "hexagrams/hex_30.json": {
+        "description": "Hexagram 30: Fire"
+      },
+      "hexagrams/hex_31.json": {
+        "description": "Hexagram 31: Courtship"
+      },
+      "hexagrams/hex_32.json": {
+        "description": "Hexagram 32: Persistence"
+      },
+      "hexagrams/hex_33.json": {
+        "description": "Hexagram 33: Withdrawal"
+      },
+      "hexagrams/hex_34.json": {
+        "description": "Hexagram 34: Great Power"
+      },
+      "hexagrams/hex_35.json": {
+        "description": "Hexagram 35: Prospering"
+      },
+      "hexagrams/hex_36.json": {
+        "description": "Hexagram 36: Shuttering The Lamp"
+      },
+      "hexagrams/hex_37.json": {
+        "description": "Hexagram 37: Family"
+      },
+      "hexagrams/hex_38.json": {
+        "description": "Hexagram 38: Opposition"
+      },
+      "hexagrams/hex_39.json": {
+        "description": "Hexagram 39: Obstacles"
+      },
+      "hexagrams/hex_40.json": {
+        "description": "Hexagram 40: Burst Asunder"
+      },
+      "hexagrams/hex_41.json": {
+        "description": "Hexagram 41: Reduction"
+      },
+      "hexagrams/hex_42.json": {
+        "description": "Hexagram 42: Increase"
+      },
+      "hexagrams/hex_43.json": {
+        "description": "Hexagram 43: Displacing"
+      },
+      "hexagrams/hex_44.json": {
+        "description": "Hexagram 44: Encountering"
+      },
+      "hexagrams/hex_45.json": {
+        "description": "Hexagram 45: Gathering"
+      },
+      "hexagrams/hex_46.json": {
+        "description": "Hexagram 46: Ascending"
+      },
+      "hexagrams/hex_47.json": {
+        "description": "Hexagram 47: Exhaustion"
+      },
+      "hexagrams/hex_48.json": {
+        "description": "Hexagram 48: The Well"
+      },
+      "hexagrams/hex_49.json": {
+        "description": "Hexagram 49: Reforming"
+      },
+      "hexagrams/hex_50.json": {
+        "description": "Hexagram 50: The Cauldron"
+      },
+      "hexagrams/hex_51.json": {
+        "description": "Hexagram 51: Thunder"
+      },
+      "hexagrams/hex_52.json": {
+        "description": "Hexagram 52: The Mountain"
+      },
+      "hexagrams/hex_53.json": {
+        "description": "Hexagram 53: Infiltrating"
+      },
+      "hexagrams/hex_54.json": {
+        "description": "Hexagram 54: Young Maiden Marries"
+      },
+      "hexagrams/hex_55.json": {
+        "description": "Hexagram 55: Abundance"
+      },
+      "hexagrams/hex_56.json": {
+        "description": "Hexagram 56: Traveller Abroad"
+      },
+      "hexagrams/hex_57.json": {
+        "description": "Hexagram 57: Penetrating Wind"
+      },
+      "hexagrams/hex_58.json": {
+        "description": "Hexagram 58: Delighted"
+      },
+      "hexagrams/hex_59.json": {
+        "description": "Hexagram 59: Dispersal"
+      },
+      "hexagrams/hex_60.json": {
+        "description": "Hexagram 60: Restraint"
+      },
+      "hexagrams/hex_61.json": {
+        "description": "Hexagram 61: The Inner Truth"
+      },
+      "hexagrams/hex_62.json": {
+        "description": "Hexagram 62: Exceeding In Smallness"
+      },
+      "hexagrams/hex_63.json": {
+        "description": "Hexagram 63: Across The Stream"
+      },
+      "hexagrams/hex_64.json": {
+        "description": "Hexagram 64: Waiting To Cross"
+      }
+    }
+  },
+  "naming": {
+    "description": "This directory contains data related to naming conventions and generation.",
+    "files": {
+      "nameSounds.json": {
+        "description": "Defines phonetic components for random name generation."
+      },
+      "contexts.json": {
+        "description": "Defines naming contexts for generation."
+      }
+    }
+  },
+  "narrative": {
+    "description": "This directory contains data related to narrative structures and elements.",
+    "files": {
+      "NarrativeArchetypes.json": {
+        "description": "Defines the various narrative archetypes characters can fulfill, such as Ally, Antagonist, or Comic Relief."
+      },
+      "NarrativeBreaks.json": {
+        "description": "Defines the various narrative breaks used to give characters a respite from the plot."
+      },
+      "narrativeHazards.json": {
+        "description": "Defines the various narrative hazards that can occur as a result of Drama."
+      },
+      "narrativeProds.json": {
+        "description": "Defines the various narrative prods used to push characters back towards the plot."
+      },
+      "narrativeStructures.json": {
+        "description": "Defines different narrative structures, such as Rock Song, Tercet, Quatrain, Spenserian, and Sonnet."
+      },
+      "narrativeTricks.json": {
+        "description": "Defines various narrative tricks and their types."
+      },
+      "NarrativeTrickTypes.json": {
+        "description": "Defines the different types of narrative tricks, their descriptions, and associated rules."
+      },
+      "themeTypes.json": {
+        "description": "Defines the different thematic elements that can be used in a story."
+      }
+    }
+  },
+  "ordeals": {
+    "description": "This directory contains data related to ordeals.",
+    "files": {
+      "actionSpaces.json": {
+        "description": "Defines the different types of action spaces, such as Theatre of the Mind, Range Space, or Battle-board."
+      },
+      "ordealEngagementType.json": {
+        "description": "Defines the different types of engagement in an ordeal, from Embraced to Disengaged."
+      },
+      "ordealFiringType.json": {
+        "description": "Defines the different types of firing in an ordeal, such as Hip-Fire, Braced, or Prone/Tripod."
+      },
+      "ordealMotionType.json": {
+        "description": "Defines the different types of motion in an ordeal, such as Flight, Run, or Walk."
+      },
+      "ordealTerrain.json": {
+        "description": "Defines the different types of terrain in an ordeal, such as Open, Closed, or Confined."
+      },
+      "ordealTerrainModifiers.json": {
+        "description": "Defines the modifiers for different terrain types in an ordeal, such as Paved, Uneven, or Rough."
+      },
+      "ordealTypes.json": {
+        "description": "Defines the different types of ordeals, such as Railroad, Forking, Pyramid, Block, Tree-of-Life, Web-of-Wyrd, Semi-Grid, and Geo-Map."
+      },
+      "reachActions.json": {
+        "description": "Defines the different reach actions available in combat."
+      },
+      "stakes.json": {
+        "description": "Defines the different stakes levels for ordeals, from Low to Paradoxical."
+      },
+      "shockDice.json": {
+        "description": "Defines the different outcomes of a shock dice roll."
+      }
+    },
+    "socialordeals": {
+      "description": "This directory contains data related to social interactions.",
+      "files": {
+        "interactionTypes.json": {
+          "description": "Defines the different types of interaction a character can have with others, from Foe to Confidant."
+        },
+        "psychosocialDifficulties.json": {
+          "description": "Defines the different psychosocial difficulties."
+        },
+        "nightmareZones.json": {
+          "description": "Defines the different nightmare zones and their effects."
+        },
+        "parasocialTypes.json": {
+          "description": "Defines the different types of parasocial relationships a character can have."
+        },
+        "psychologicalDefences.json": {
+          "description": "Defines the different psychological defences a character can use."
+        },
+        "socialOrdealActions.json": {
+          "description": "Defines the different social actions a character can take in an ordeal, such as Advise, Agree, or Annoy."
+        },
+        "socialOrdealLevels.json": {
+          "description": "Defines the different levels of social ordeal, from Violent to Kinship."
+        }
+      }
+    }
+  },
+  "other": {
+    "description": "This directory contains other miscellaneous data.",
+    "files": {
+      "rules.json": {
+        "description": "Contains the core rules of the T13 Narrative Engine."
+      },
+      "alchemy.json": {
+        "description": "Defines the different alchemical metals and their properties."
+      },
+      "fiveChineseElements.json": {
+        "description": "Defines the five chinese elements (Wood, Fire, Earth, Metal, Water) and their properties."
+      },
+      "gameTypes.json": {
+        "description": "Defines the different types of games that can be created, such as Sandbox, Plotted, or Adventure."
+      },
+      "groupTypes.json": {
+        "description": "Defines different types of groups."
+      },
+      "hermetics.json": {
+        "description": "Defines the different hermetic principles."
+      },
+      "planets.json": {
+        "description": "Defines the different planets and their properties."
+      },
+      "thresholdDirections.json": {
+        "description": "Defines directions for thresholds between elements."
+      },
+      "thresholdTypes.json": {
+        "description": "Defines different types of thresholds between elements."
+      },
+      "hermeticCorrespondences.json": {
+        "description": "A comprehensive list of hermetic correspondences, including elements, planets, and zodiac signs."
+      }
+    }
+  },
+  "pacts": {
+    "description": "This directory contains data related to pacts.",
+    "files": {
+      "pactAnnexes.json": {
+        "description": "Defines the different types of pact annexes, such as Group, Club, or Guild."
+      },
+      "pactMemberships.json": {
+        "description": "Defines the different types of pact memberships, from Belonging to Sovereign."
+      }
+    }
+  },
+  "play": {
+    "description": "This directory contains data related to play styles.",
+    "files": {
+      "play-status-types.json": {
+        "description": "Defines the different statuses a game or plot can have, from planning to finished."
+      },
+      "playTypes.json": {
+        "description": "Defines the different types of play styles for games, such as Tabletop, PBM, or Discord."
+      }
+    }
+  },
+  "player": {
+    "description": "This directory contains data related to player types and play styles.",
+    "files": {
+      "playerPlayTypes.json": {
+        "description": "Defines the different types of player personalities and play styles, such as Ambitious, Antagonist, or Role-Player."
+      },
+      "playerTypes.json": {
+        "description": "Defines the different roles players can take in a game, such as Actor, Author, or Referee."
+      }
+    }
+  },
+  "plots": {
+    "description": "This directory contains data related to plots.",
+    "files": {
+      "actTypes.json": {
+        "description": "Defines the different types of acts in a narrative structure."
+      },
+      "plotRanks.json": {
+        "description": "Defines the ranks of plots, from story to cycle."
+      },
+      "plotResolutions.json": {
+        "description": "Defines the different ways a plot can resolve, such as Revolution, Revelation, or Rejection."
+      },
+      "plottingTypes.json": {
+        "description": "Defines the different ways a referee can plan a plot, such as Seat-of-the-Pants, Authored, or Hybrid."
+      },
+      "plotTypes.json": {
+        "description": "Defines the different types of plots, such as Background, Character, or Conflict plots."
+      },
+      "rivals.json": {
+        "description": "Defines different types of rivals for characters."
+      },
+      "sceneBeatTypes.json": {
+        "description": "Defines the types of beats within a scene."
+      },
+      "sceneComponents.json": {
+        "description": "Defines the components that make up a scene."
+      },
+      "sceneTypes.json": {
+        "description": "Defines the different types of scenes available in the narrative structure, such as Hook, Test, Ordeal, Warp, Weft, and Finale."
+      }
+    }
+  },
+  "proficiencies": {
+    "description": "This directory contains data related to character proficiencies.",
+    "files": {
+      "id-proficiency-list.json": {
+        "description": "A comprehensive registry of all proficiencies within the T13 Narrative Engine. Each proficiency is assigned a unique ID, which is used to reference it in other data files."
+      },
+      "noProfDice.json": {
+        "description": "Defines the rules for when a character has no proficiency dice."
+      },
+      "npcProficiencies.json": {
+        "description": "Defines the proficiency modifiers for NPCs based on their skill level."
+      },
+      "profDice.json": {
+        "description": "Defines the different proficiency dice."
+      },
+      "profInAnnex.json": {
+        "description": "Defines how proficiencies are used within annexes."
+      },
+      "Profs/0/profs0.json": {
+        "description": "Batch of proficiencies starting at ID 0"
+      },
+      "Profs/0/profs1.json": {
+        "description": "Batch of proficiencies starting at ID 50"
+      },
+      "Profs/0/profs2.json": {
+        "description": "Batch of proficiencies starting at ID 100"
+      },
+      "Profs/0/profs3.json": {
+        "description": "Batch of proficiencies starting at ID 150"
+      },
+      "Profs/0/profs4.json": {
+        "description": "Batch of proficiencies starting at ID 200"
+      },
+      "Profs/0/profs5.json": {
+        "description": "Batch of proficiencies starting at ID 250"
+      },
+      "Profs/0/profs6.json": {
+        "description": "Batch of proficiencies starting at ID 300"
+      },
+      "Profs/0/profs7.json": {
+        "description": "Batch of proficiencies starting at ID 350"
+      },
+      "Profs/0/profs8.json": {
+        "description": "Batch of proficiencies starting at ID 400"
+      },
+      "Profs/0/profs9.json": {
+        "description": "Batch of proficiencies starting at ID 450"
+      },
+      "Profs/0/profs10.json": {
+        "description": "Batch of proficiencies starting at ID 500"
+      },
+      "Profs/0/profs11.json": {
+        "description": "Batch of proficiencies starting at ID 550"
+      },
+      "Profs/0/profs12.json": {
+        "description": "Batch of proficiencies starting at ID 600"
+      },
+      "Profs/0/profs13.json": {
+        "description": "Batch of proficiencies starting at ID 650"
+      },
+      "Profs/0/profs14.json": {
+        "description": "Batch of proficiencies starting at ID 700"
+      },
+      "Profs/0/profs15.json": {
+        "description": "Batch of proficiencies starting at ID 750"
+      },
+      "Profs/0/profs16.json": {
+        "description": "Batch of proficiencies starting at ID 800"
+      },
+      "Profs/0/profs17.json": {
+        "description": "Batch of proficiencies starting at ID 850"
+      },
+      "Profs/0/profs18.json": {
+        "description": "Batch of proficiencies starting at ID 900"
+      },
+      "Profs/0/profs19.json": {
+        "description": "Batch of proficiencies starting at ID 950"
+      },
+      "Profs/0/profs20.json": {
+        "description": "Batch of proficiencies starting at ID 1000"
+      },
+      "Profs/0/profs21.json": {
+        "description": "Batch of proficiencies starting at ID 1050"
+      },
+      "Profs/0/profs22.json": {
+        "description": "Batch of proficiencies starting at ID 1100"
+      },
+      "Profs/0/profs23.json": {
+        "description": "Batch of proficiencies starting at ID 1150"
+      },
+      "Profs/0/profs24.json": {
+        "description": "Batch of proficiencies starting at ID 1200"
+      },
+      "Profs/0/profs25.json": {
+        "description": "Batch of proficiencies starting at ID 1250"
+      },
+      "Profs/0/profs26.json": {
+        "description": "Batch of proficiencies starting at ID 1300"
+      },
+      "Profs/0/profs27.json": {
+        "description": "Batch of proficiencies starting at ID 1350"
+      },
+      "Profs/0/profs28.json": {
+        "description": "Batch of proficiencies starting at ID 1400"
+      },
+      "Profs/0/profs29.json": {
+        "description": "Batch of proficiencies starting at ID 1450"
+      },
+      "Profs/0/profs30.json": {
+        "description": "Batch of proficiencies starting at ID 1500"
+      },
+      "Profs/0/profs31.json": {
+        "description": "Batch of proficiencies starting at ID 1550"
+      },
+      "Profs/0/profs32.json": {
+        "description": "Batch of proficiencies starting at ID 1600"
+      },
+      "Profs/0/profs33.json": {
+        "description": "Batch of proficiencies starting at ID 1650"
+      },
+      "Profs/0/profs34.json": {
+        "description": "Batch of proficiencies starting at ID 1700"
+      },
+      "Profs/0/profs35.json": {
+        "description": "Batch of proficiencies starting at ID 1750"
+      },
+      "Profs/0/profs36.json": {
+        "description": "Batch of proficiencies starting at ID 1800"
+      },
+      "Profs/0/profs37.json": {
+        "description": "Batch of proficiencies starting at ID 1850"
+      },
+      "Profs/0/profs38.json": {
+        "description": "Batch of proficiencies starting at ID 1900"
+      },
+      "Profs/0/profs39.json": {
+        "description": "Batch of proficiencies starting at ID 1950"
+      },
+      "Profs/0/profs40.json": {
+        "description": "Batch of proficiencies starting at ID 2000"
+      },
+      "Profs/0/profs41.json": {
+        "description": "Batch of proficiencies starting at ID 2050"
+      },
+      "Profs/0/profs42.json": {
+        "description": "Batch of proficiencies starting at ID 2100"
+      },
+      "Profs/0/profs43.json": {
+        "description": "Batch of proficiencies starting at ID 2150"
+      },
+      "Profs/0/profs44.json": {
+        "description": "Batch of proficiencies starting at ID 2200"
+      },
+      "Profs/0/profs45.json": {
+        "description": "Batch of proficiencies starting at ID 2250"
+      },
+      "Profs/0/profs46.json": {
+        "description": "Batch of proficiencies starting at ID 2300"
+      },
+      "Profs/0/profs47.json": {
+        "description": "Batch of proficiencies starting at ID 2350"
+      },
+      "Profs/0/profs48.json": {
+        "description": "Batch of proficiencies starting at ID 2400"
+      },
+      "Profs/0/profs49.json": {
+        "description": "Batch of proficiencies starting at ID 2450"
+      },
+      "Profs/1/profs50.json": {
+        "description": "Batch of proficiencies starting at ID 2502"
+      },
+      "Profs/1/profs51.json": {
+        "description": "Batch of proficiencies starting at ID 2552"
+      },
+      "Profs/1/profs52.json": {
+        "description": "Batch of proficiencies starting at ID 2602"
+      },
+      "Profs/1/profs53.json": {
+        "description": "Batch of proficiencies starting at ID 2652"
+      },
+      "Profs/1/profs54.json": {
+        "description": "Batch of proficiencies starting at ID 2702"
+      },
+      "Profs/1/profs55.json": {
+        "description": "Batch of proficiencies starting at ID 2752"
+      },
+      "Profs/1/profs56.json": {
+        "description": "Batch of proficiencies starting at ID 2802"
+      },
+      "Profs/1/profs57.json": {
+        "description": "Batch of proficiencies starting at ID 2852"
+      },
+      "Profs/1/profs58.json": {
+        "description": "Batch of proficiencies starting at ID 2902"
+      },
+      "Profs/1/profs59.json": {
+        "description": "Batch of proficiencies starting at ID 2952"
+      },
+      "Profs/1/profs60.json": {
+        "description": "Batch of proficiencies starting at ID 3002"
+      },
+      "Profs/1/profs61.json": {
+        "description": "Batch of proficiencies starting at ID 3052"
+      },
+      "Profs/1/profs62.json": {
+        "description": "Batch of proficiencies starting at ID 3102"
+      },
+      "Profs/1/profs63.json": {
+        "description": "Batch of proficiencies starting at ID 3152"
+      },
+      "Profs/1/profs64.json": {
+        "description": "Batch of proficiencies starting at ID 3202"
+      },
+      "Profs/1/profs65.json": {
+        "description": "Batch of proficiencies starting at ID 3252"
+      },
+      "Profs/1/profs66.json": {
+        "description": "Batch of proficiencies starting at ID 3302"
+      },
+      "Profs/1/profs67.json": {
+        "description": "Batch of proficiencies starting at ID 3352"
+      },
+      "Profs/1/profs68.json": {
+        "description": "Batch of proficiencies starting at ID 3402"
+      },
+      "Profs/1/profs69.json": {
+        "description": "Batch of proficiencies starting at ID 3452"
+      },
+      "Profs/1/profs70.json": {
+        "description": "Batch of proficiencies starting at ID 3502"
+      },
+      "Profs/1/profs71.json": {
+        "description": "Batch of proficiencies starting at ID 3552"
+      },
+      "Profs/1/profs72.json": {
+        "description": "Batch of proficiencies starting at ID 3602"
+      },
+      "Profs/1/profs73.json": {
+        "description": "Batch of proficiencies starting at ID 3652"
+      },
+      "Profs/1/profs74.json": {
+        "description": "Batch of proficiencies starting at ID 3702"
+      },
+      "Profs/1/profs75.json": {
+        "description": "Batch of proficiencies starting at ID 3752"
+      },
+      "Profs/1/profs76.json": {
+        "description": "Batch of proficiencies starting at ID 3802"
+      },
+      "Profs/1/profs77.json": {
+        "description": "Batch of proficiencies starting at ID 3852"
+      },
+      "Profs/1/profs78.json": {
+        "description": "Batch of proficiencies starting at ID 3902"
+      },
+      "Profs/1/profs79.json": {
+        "description": "Batch of proficiencies starting at ID 3952"
+      },
+      "Profs/1/profs80.json": {
+        "description": "Batch of proficiencies starting at ID 4002"
+      },
+      "Profs/1/profs81.json": {
+        "description": "Batch of proficiencies starting at ID 4052"
+      },
+      "Profs/1/profs82.json": {
+        "description": "Batch of proficiencies starting at ID 4102"
+      },
+      "Profs/1/profs83.json": {
+        "description": "Batch of proficiencies starting at ID 4152"
+      },
+      "Profs/1/profs84.json": {
+        "description": "Batch of proficiencies starting at ID 4202"
+      },
+      "Profs/1/profs85.json": {
+        "description": "Batch of proficiencies starting at ID 4252"
+      },
+      "Profs/1/profs86.json": {
+        "description": "Batch of proficiencies starting at ID 4302"
+      },
+      "Profs/1/profs87.json": {
+        "description": "Batch of proficiencies starting at ID 4352"
+      },
+      "Profs/1/profs88.json": {
+        "description": "Batch of proficiencies starting at ID 4402"
+      },
+      "Profs/1/profs89.json": {
+        "description": "Batch of proficiencies starting at ID 4452"
+      },
+      "Profs/1/profs90.json": {
+        "description": "Batch of proficiencies starting at ID 4502"
+      },
+      "Profs/1/profs91.json": {
+        "description": "Batch of proficiencies starting at ID 4552"
+      },
+      "Profs/1/profs92.json": {
+        "description": "Batch of proficiencies starting at ID 4602"
+      },
+      "Profs/1/profs93.json": {
+        "description": "Batch of proficiencies starting at ID 4652"
+      },
+      "Profs/1/profs94.json": {
+        "description": "Batch of proficiencies starting at ID 4702"
+      }
+    }
+  },
+  "sway": {
+    "description": "This directory contains data related to the Sway system.",
+    "files": {
+      "sway.json": {
+        "description": "Defines the core sway conversion table."
+      },
+      "facetSwayPotencyTypes.json": {
+        "description": "Defines the different facet sway potency types."
+      },
+      "facetSwayConversionTypes.json": {
+        "description": "Defines the different facet sway conversion types."
+      },
+      "sway_activity.json": {
+        "description": "Sway activity types."
+      },
+      "sway_annexes.json": {
+        "description": "Sway annexes types."
+      },
+      "sway_changes.json": {
+        "description": "Sway changes types."
+      },
+      "sway_characters.json": {
+        "description": "Sway characters types."
+      },
+      "sway_descendants.json": {
+        "description": "Sway descendants types."
+      },
+      "sway_descendants_location.json": {
+        "description": "Sway descendants location types."
+      },
+      "sway_descendants_pacts.json": {
+        "description": "Sway descendants pacts types."
+      },
+      "sway_descendants_pacts_membership.json": {
+        "description": "Sway descendants pacts membership types."
+      },
+      "sway_durations.json": {
+        "description": "Sway durations types."
+      },
+      "sway_effect.json": {
+        "description": "Sway effect types."
+      },
+      "sway_events.json": {
+        "description": "Sway events types."
+      },
+      "sway_hitches.json": {
+        "description": "Sway hitches types."
+      },
+      "sway_magic.json": {
+        "description": "Sway magic types."
+      },
+      "sway_modifier.json": {
+        "description": "Sway modifier types."
+      },
+      "sway_plots.json": {
+        "description": "Sway plots types."
+      },
+      "sway_range.json": {
+        "description": "Sway range types."
+      },
+      "sway_remove_wound.json": {
+        "description": "Sway remove wound types."
+      },
+      "sway_rules.json": {
+        "description": "Sway rules types."
+      },
+      "sway_score.json": {
+        "description": "Sway score types."
+      },
+      "sway_sizes.json": {
+        "description": "Sway sizes types."
+      },
+      "sway_spot.json": {
+        "description": "Sway spot types."
+      },
+      "sway_stress.json": {
+        "description": "Sway stress types."
+      },
+      "sway_sway.json": {
+        "description": "Sway sway types."
+      },
+      "sway_technology.json": {
+        "description": "Sway technology types."
+      },
+      "sway_wound.json": {
+        "description": "Sway wound types."
+      },
+      "sway_wyrd_tarot.json": {
+        "description": "Sway Wyrd Tarot types."
+      }
+    }
+  },
+  "tests": {
+    "description": "This directory contains data related to tests and resolution outcomes.",
+    "files": {
+      "dice.json": {
+        "description": "Defines the dice used in Boon dice Tests."
+      },
+      "successAndFailureLevels.json": {
+        "description": "Defines the specific rules and descriptions for different levels of success and failure in various contexts."
+      },
+      "tidalSuccesses.json": {
+        "description": "Defines the different types of tidal successes and failures."
+      }
+    }
+  },
+  "wounds": {
+    "description": "This directory contains data related to wounds.",
+    "files": {
+      "healingModes.json": {
+        "description": "Defines the different modes of healing available to characters, such as Chirurgery, First-Aid, or Magic."
+      },
+      "woundFreshType.json": {
+        "description": "Defines the different freshness types of a wound, such as Fresh, Untreated, or Treated."
+      },
+      "wounds.json": {
+        "description": "A list of different types of wounds that characters can receive."
+      }
+    }
+  }
+}

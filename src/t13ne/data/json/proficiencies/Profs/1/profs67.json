@@ -1,0 +1,1405 @@
+{
+  "3352": {
+    "id": 3352,
+    "prof": {
+      "Name": [
+        "Foraging",
+        "Foraging Nature Test Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Foraging is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3353": {
+    "id": 3353,
+    "prof": {
+      "Name": [
+        "Hunting",
+        "Hunting Nature Test Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Hunting is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3354": {
+    "id": 3354,
+    "prof": {
+      "Name": [
+        "Stalking",
+        "Stalking Nature Test Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Stalking is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3355": {
+    "id": 3355,
+    "prof": {
+      "Name": [
+        "Survival",
+        "Survival Nature Turn Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Survival is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3356": {
+    "id": 3356,
+    "prof": {
+      "Name": [
+        "Visceral",
+        "Visceral Nature Tone Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Visceral is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3357": {
+    "id": 3357,
+    "prof": {
+      "Name": [
+        "Sensual",
+        "Sensual Nature Tone Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Sensual is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3358": {
+    "id": 3358,
+    "prof": {
+      "Name": [
+        "Birth",
+        "Birth Nature Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Birth is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3359": {
+    "id": 3359,
+    "prof": {
+      "Name": [
+        "Bleed",
+        "Bleed Nature Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Bleed is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3360": {
+    "id": 3360,
+    "prof": {
+      "Name": [
+        "Breathe",
+        "Breathe Nature Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Breathe is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3361": {
+    "id": 3361,
+    "prof": {
+      "Name": [
+        "Bruise",
+        "Bruise Nature Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Bruise is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3362": {
+    "id": 3362,
+    "prof": {
+      "Name": [
+        "Chew",
+        "Chew Nature Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Chew is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3363": {
+    "id": 3363,
+    "prof": {
+      "Name": [
+        "Claw",
+        "Claw Nature Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Claw is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3364": {
+    "id": 3364,
+    "prof": {
+      "Name": [
+        "Cultivate",
+        "Cultivate Nature Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Cultivate is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3365": {
+    "id": 3365,
+    "prof": {
+      "Name": [
+        "Eat",
+        "Eat Nature Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Eat is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3366": {
+    "id": 3366,
+    "prof": {
+      "Name": [
+        "Gash",
+        "Gash Nature Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Gash is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3367": {
+    "id": 3367,
+    "prof": {
+      "Name": [
+        "Gather",
+        "Gather Nature Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Gather is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3368": {
+    "id": 3368,
+    "prof": {
+      "Name": [
+        "Grow",
+        "Grow Nature Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Grow is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3369": {
+    "id": 3369,
+    "prof": {
+      "Name": [
+        "Hunt",
+        "Hunt Nature Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Hunt is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3370": {
+    "id": 3370,
+    "prof": {
+      "Name": [
+        "Live",
+        "Live Nature Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Live is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3371": {
+    "id": 3371,
+    "prof": {
+      "Name": [
+        "Mature",
+        "Mature Nature Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Mature is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3372": {
+    "id": 3372,
+    "prof": {
+      "Name": [
+        "Nicked",
+        "Nicked Nature Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Nicked is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3373": {
+    "id": 3373,
+    "prof": {
+      "Name": [
+        "Nourish",
+        "Nourish Nature Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Nourish is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3374": {
+    "id": 3374,
+    "prof": {
+      "Name": [
+        "Raise",
+        "Raise Nature Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Raise is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3375": {
+    "id": 3375,
+    "prof": {
+      "Name": [
+        "Scar",
+        "Scar Nature Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Scar is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3376": {
+    "id": 3376,
+    "prof": {
+      "Name": [
+        "Scrape",
+        "Scrape Nature Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Scrape is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3377": {
+    "id": 3377,
+    "prof": {
+      "Name": [
+        "Survive",
+        "Survive Nature Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Survive is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3378": {
+    "id": 3378,
+    "prof": {
+      "Name": [
+        "Sustain",
+        "Sustain Nature Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Sustain is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3379": {
+    "id": 3379,
+    "prof": {
+      "Name": [
+        "Biological",
+        "Biological Nature Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Biological is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3380": {
+    "id": 3380,
+    "prof": {
+      "Name": [
+        "Bodily",
+        "Bodily Nature Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Bodily is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3381": {
+    "id": 3381,
+    "prof": {
+      "Name": [
+        "Bony",
+        "Bony Nature Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Bony is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3382": {
+    "id": 3382,
+    "prof": {
+      "Name": [
+        "Dying",
+        "Dying Nature Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Dying is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3383": {
+    "id": 3383,
+    "prof": {
+      "Name": [
+        "Glandular",
+        "Glandular Nature Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Glandular is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3384": {
+    "id": 3384,
+    "prof": {
+      "Name": [
+        "Meaty",
+        "Meaty Nature Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Meaty is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3385": {
+    "id": 3385,
+    "prof": {
+      "Name": [
+        "Mortal",
+        "Mortal Nature Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Mortal is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3386": {
+    "id": 3386,
+    "prof": {
+      "Name": [
+        "Muscled",
+        "Muscled Nature Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Muscled is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3387": {
+    "id": 3387,
+    "prof": {
+      "Name": [
+        "Naked",
+        "Naked Nature Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Naked is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3388": {
+    "id": 3388,
+    "prof": {
+      "Name": [
+        "Organic",
+        "Organic Nature Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Organic is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3389": {
+    "id": 3389,
+    "prof": {
+      "Name": [
+        "Primitive",
+        "Primitive Nature Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Primitive is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3390": {
+    "id": 3390,
+    "prof": {
+      "Name": [
+        "Raw",
+        "Raw Nature Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Raw is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3391": {
+    "id": 3391,
+    "prof": {
+      "Name": [
+        "Sanguine",
+        "Sanguine Nature Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Sanguine is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3392": {
+    "id": 3392,
+    "prof": {
+      "Name": [
+        "Savage",
+        "Savage Nature Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Savage is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3393": {
+    "id": 3393,
+    "prof": {
+      "Name": [
+        "Scarred",
+        "Scarred Nature Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Scarred is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3394": {
+    "id": 3394,
+    "prof": {
+      "Name": [
+        "Zoological",
+        "Zoological Nature Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Zoological is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3395": {
+    "id": 3395,
+    "prof": {
+      "Name": [
+        "Skills",
+        "Skills Nature Rule Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Skills is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3396": {
+    "id": 3396,
+    "prof": {
+      "Name": [
+        "including",
+        "including Nature Rule Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, including is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3397": {
+    "id": 3397,
+    "prof": {
+      "Name": [
+        "race",
+        "race Nature Lore Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, race is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3398": {
+    "id": 3398,
+    "prof": {
+      "Name": [
+        "Educated",
+        "Educated Orthodox Annex Root Proficiency",
+        "learned, polished, civilized, schooled, literate"
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Educated is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3399": {
+    "id": 3399,
+    "prof": {
+      "Name": [
+        "Learned",
+        "Learned Orthodox Annex Root Proficiency",
+        "scholarly, academic, cultured, knowledgeable, erudite"
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Learned is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3400": {
+    "id": 3400,
+    "prof": {
+      "Name": [
+        "Informed",
+        "Informed Orthodox Annex Root Proficiency",
+        "knowledgeable, reliable, reflective, aware, briefed"
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Informed is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3401": {
+    "id": 3401,
+    "prof": {
+      "Name": [
+        "Scientific",
+        "Scientific Orthodox Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Scientific is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

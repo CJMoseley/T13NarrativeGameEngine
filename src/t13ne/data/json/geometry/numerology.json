@@ -1,0 +1,261 @@
+[
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-1",
+        "data": {
+            "Letter": "bh",
+            "Number": 2
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-2",
+        "data": {
+            "Letter": "gh",
+            "Number": 3
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-3",
+        "data": {
+            "Letter": "sh",
+            "Number": 3
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-4",
+        "data": {
+            "Letter": "ch",
+            "Number": 8
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-5",
+        "data": {
+            "Letter": "ph",
+            "Number": 8
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-6",
+        "data": {
+            "Letter": "th",
+            "Number": 9
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-7",
+        "data": {
+            "Letter": "ts",
+            "Number": 9
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-8",
+        "data": {
+            "Letter": "tz",
+            "Number": 9
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-9",
+        "data": {
+            "Letter": "a",
+            "Number": 1
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-10",
+        "data": {
+            "Letter": "b",
+            "Number": 2
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-11",
+        "data": {
+            "Letter": "c",
+            "Number": 2
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-12",
+        "data": {
+            "Letter": "d",
+            "Number": 4
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-13",
+        "data": {
+            "Letter": "e",
+            "Number": 5
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-14",
+        "data": {
+            "Letter": "f",
+            "Number": 8
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-15",
+        "data": {
+            "Letter": "g",
+            "Number": 3
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-16",
+        "data": {
+            "Letter": "h",
+            "Number": 8
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-17",
+        "data": {
+            "Letter": "i",
+            "Number": 1
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-18",
+        "data": {
+            "Letter": "j",
+            "Number": 1
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-19",
+        "data": {
+            "Letter": "k",
+            "Number": 2
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-20",
+        "data": {
+            "Letter": "l",
+            "Number": 3
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-21",
+        "data": {
+            "Letter": "m",
+            "Number": 4
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-22",
+        "data": {
+            "Letter": "n",
+            "Number": 5
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-23",
+        "data": {
+            "Letter": "o",
+            "Number": 7
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-24",
+        "data": {
+            "Letter": "p",
+            "Number": 8
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-25",
+        "data": {
+            "Letter": "q",
+            "Number": 1
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-26",
+        "data": {
+            "Letter": "r",
+            "Number": 2
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-27",
+        "data": {
+            "Letter": "s",
+            "Number": 6
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-28",
+        "data": {
+            "Letter": "t",
+            "Number": 4
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-29",
+        "data": {
+            "Letter": "u",
+            "Number": 6
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-30",
+        "data": {
+            "Letter": "v",
+            "Number": 6
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-31",
+        "data": {
+            "Letter": "w",
+            "Number": 6
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-32",
+        "data": {
+            "Letter": "x",
+            "Number": 6
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-33",
+        "data": {
+            "Letter": "y",
+            "Number": 1
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-34",
+        "data": {
+            "Letter": "z",
+            "Number": 7
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-35",
+        "data": {
+            "Letter": "-",
+            "Number": 0
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-36",
+        "data": {
+            "Letter": "'",
+            "Number": 0
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-NUMEROLOGY-37",
+        "data": {
+            "Letter": ".",
+            "Number": 0
+        }
+    }
+]

@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 8,
+    "Name": "Union",
+    "Entity": "&#19911;",
+    "Logical": 16,
+    "Trigrams": [
+      7,
+      5
+    ],
+    "Hexagram_Text": "Pi, or Union (or Uniting or sometimes Holding Together), symbolizes not a group working as one, so much as finding one's place within the group. It is about working well with others, not organizing others. It may indicate a marriage union or joining a new job.",
+    "Unchanging": "May add Incarna Boon Reduced to another’s action.",
+    "Line1": "Trusting Relationships",
+    "Line2": "Union Within",
+    "Line3": "Bad Unions",
+    "Line4": "Hold Union Outwardly",
+    "Line5": "Manifesting Union",
+    "Line6": "Bad Head For Union"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you co-operate with another Character, perform a job or task without being asked, or are intimate with others",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you do not know your place in a group, or do not have a job to do",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yang",
+        "Condition": "you are sympathetic or accept others as they are",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yang",
+        "Condition": "you don’t co-operate, or stay true to yourself",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yang",
+        "Condition": "you work alone",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yang",
+        "Condition": "you meet someone new, or ask another for help or instruction",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yin",
+        "Condition": "someone assists you",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yin",
+        "Condition": "you avoid intimacy or co-operation",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Quest of Union is often one of bringing together a community to achieve the Quest goals. Bonding between the Quester and Companions must occur as part of the Quest or there will be problems and errors that affect the Quest and the alliance.",
+    "Quest_Complete": "The Quest that ends on the Union Hexagram demands that you find those among your community, who share your goals and ideals, those with whom you can claim some common ground, before you move ahead. This usually allows the Quester to add new allies to their companions from this Quest.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "If the Quester has lied to or misled their companions this is now revealed, adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test, as companions abandon you and may even actively undo the Quest (perhaps releasing prisoners, or selling the prize).",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "If the Quester&#39;s goals align with those of their companions and community then they may add a Success Level to their Ordeal or Test, but if the Quester&#39;s goals do not match those of the community they will find themselves opposed on all sides, adding a Hurdle, Obstacle, or Failure Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "One of the Quester&#39;s companions is not well suited to work with the others. If the Quester continues to work with this person it will add at least one Hurdle, Obstacle or Failure Level to their Ordeal or Test as this creates disharmony, arguments and errors.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "If the Quester keeps secrets or lies this will create mistakes, disasters and misunderstandings that will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test as they turn companions against the Quester. If the Quester speaks their mind and is honest and truthful in every conversation they have then they will instead add a Success Level. ",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "Someone seeks to leave the Quester&#39;s companions, alliance, or community, perhaps due to a difference in tactics, aggression, morals or goals. If they are allowed to leave those that remain will be more united and stronger together, adding a Success Level to their Test or Quest. Persuade or force them to stay and the Union will be weaker and more disharmonious as a result, which will add Failure Levels, Obstacles or Hurdles instead.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "An opportunity presents itself and the Quester must act at once and seize this chance, whether it be an offered alliance, marriage, contract, a stranger declaring \"kiss me\", or a plan. Failure to act at once is a mistake, and may lead to fatal consequences, as it inevitably adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "The waters on the surface of the earth flow together wherever they can, as for example in the ocean, where all the rivers come together. Symbolically this connotes holding together and the laws that regulate it. The same idea is suggested by the fact that all the lines of the hexagram except the fifth, the place of the ruler, are yielding. The yielding lines hold together because they are influenced by a man of strong will in the leading position, a man who is their center of union. Moreover, this strong and guiding personality in turn holds together with the others, finding in them the complement of his own nature.",
+    "The_Image": {
+      "text": "On the earth is water:\nThe image of HOLDING TOGETHER.\n\nThus the kings of antiquity\nBestowed the different states as fiefs\nAnd cultivated friendly relations\nWith the feudal lords.",
+      "comments": "Water fills up all the empty places on the earth and clings fast to it. The social organization of ancient China was based on this principle of the holding together of dependents and rulers. Water flows to unite with water, because all parts of it are subject to the same laws. So too should human society hold together through a community of interests that allows each individual to feel himself a member of a whole. The central power of a social organization must see to it that every member finds that his true interest lies in holding together with it, as was the case in the paternal relationship between king and vassals in ancient China."
+    },
+    "The_Judgment": {
+      "text": "HOLDING TOGETHER brings good fortune.\nInquire of the oracle once again\nWhether you possess sublimity, constancy, and perseverance;\nThen there is no blame.\n\nThose who are uncertain gradually join.\nWhoever come too late\nMeets with misfortune.",
+      "comments": "What is required is that we unite with others, in order that all may complement and aid one another through holding together. But such holding together calls for a central figure around whom other persons may unite. To become a center of influence holding people together is a grave matter and fraught with great responsibility. It requires greatness of spirit, consistency, and strength. Therefore let him who wishes to gather others about him ask himself whether he is equal to the undertaking, for anyone attempting the task without a real calling for it only makes confusion worse than if no union at all had taken place. But when there is a real rallying point, those who at first are hesitant or uncertain gradually come in of their own accord. Late-comers must suffer the consequences, for in holding together the question of the right time is also important. Relationships are formed and firmly established according to definite inner laws. Common experiences strengthen these ties, and he who comes too late to share in these basic experiences must suffer for it if, as a straggler, he finds the door locked. If a man has recognized the necessity for union and does not feel strong enough to function as the center, it is his duty to become a member of some other organic fellowship."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Hold to him in truth and loyalty;\nThis is without blame.\nTruth, like a full earthen bowl\"\nThus in the end\nGood fortune comes from without.",
+        "comments": "Fundamental sincerity is the only proper basis for forming relationships. This attitude, symbolized by a full earthen bowl, in which the content is everything and the empty form nothing, shows itself not in clever words but through the strength of what lies within the speaker. This strength is so great that it has power to attract good fortune to itself from without."
+      },
+      "2": {
+        "text": "Hold to him inwardly.\nPerseverance brings good fortune.",
+        "comments": "If a person responds perseveringly and in the right way to the behests from above that summon him to action, his relations with others are intrinsic and he does not lose himself. But if a man seeks association with others as if he were an obsequious office hunter, he throws himself away. He does not follow the path of the superior man, who never loses his dignity."
+      },
+      "3": {
+        "text": "You hold together with the wrong people.",
+        "comments": "We are often among people who do not belong to our own sphere. In that case we must beware of being drawn into false intimacy through force of habit. Needless to say, this would have evil consequences. Maintaining sociability without intimacy is the only right attitude toward people, because otherwise we should not be free to enter into relationship with people of our own kind later on."
+      },
+      "4": {
+        "text": "Hold to him outwardly also.\nPerseverance brings good fortune.",
+        "comments": "Here the relations with a man who is the center of union are well established. Then we may, and indeed we should, show our attachment openly. But we must remain constant and not allow ourselves to be led astray."
+      },
+      "5": {
+        "text": "Manifestation of holding together.\nIn the hunt the king uses beaters on three sides only\nAnd forgoes game that runs off in front.\nThe citizens need no warning.\nGood fortune.",
+        "comments": "In the royal hunts of ancient China it was customary to drive up the game from three sides, but on the fourth the animals had a chance to run off. If they failed to do this they had to pass through a gate behind which the king stood ready to shoot. Only animals that entered here were shot; those that ran off in front were permitted to escape. This custom accorded with a kingly attitude; the royal hunter did not wish to turn the chase into a slaughter, but held that the kill should consist only of those animals which had so to speak voluntarily exposed themselves. There is depicted here a ruler, or influential man, to whom people are attracted. Those who come to him he accepts, those who do not come are allowed to go their own way. He invited none, flatters none--all come of their own free will. In this way there develops a voluntary dependence among those who hold him. They do not have to be constantly on their guard but may express their opinions openly. Police measures are not necessary, and they cleave to their ruler of their own volition. The same principle of freedom is valid for life in general. We should not woo favor from people. If a man cultivates within himself the purity and the strength that are necessary for one who is the center of a fellowship, those who are meant for him come of their own accord."
+      },
+      "6": {
+        "text": "He finds no head for holding together.\nMisfortune.",
+        "comments": "The head is the beginning. If the beginning is not right, there is no hope of a right ending. If we have missed the right moment for union and go on hesitating to give complete and full devotion, we shall regret the error when it is too late."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Union'. Internalize this core philosophy: The waters on the surface of the earth flow together wherever they can, as for example in the ocean, where all the rivers come together. Symbolically this connotes holding together and the laws that regulate it. The same idea is suggested by the fact that all the lines of the hexagram except the fifth, the place of the ruler, are yielding. The yielding lines hold together because they are influenced by a man of strong will in the leading position, a man who is their center of union. Moreover,... Your current worldview is: \"Pi, or Union (or Uniting or sometimes Holding Together), symbolizes not a group working as one, so much as finding one's place within the group. It is about working well with others, not organizing others. It may indicate a marriage union or joining a new job.\". Let your choices be subtly driven by these conditions: you co-operate with another Character, perform a job or task without being asked, or are intimate with others, you do not know your place in a group, or do not have a job to do. When interacting, mirror the wisdom found in the commentary: \"What is required is that we unite with others, in order that all may complement and aid one another through holding together. But such holding together calls for a central figure around whom other persons may unite. To become a center of influence holding people together is a grave matter and...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Union'. The primary quest objective is: The Quest of Union is often one of bringing together a community to achieve the Quest goals. Bonding between the Quester and Companions must occur as part of the Quest or there will be problems and errors that affect the Quest and the alliance.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: Water fills up all the empty places on the earth and clings fast to it. The social organization of ancient China was based on this principle of the holding together of dependents and rulers. Water flows to unite with water, because all parts of it are subject to the same laws. So too should human society hold together through a community of interests that allows each individual to feel himself a... Use the following line-specific challenges to pace the story: If the Quester has lied to or misled their companions this is now revealed, adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test, as companions abandon you and may even actively undo the Quest (perhaps releasing prisoners, or selling the prize). | If the Quester&#39;s goals align with those of their companions and community then they may add a Success Level to their Ordeal or Test, but if the Quester&#39;s goals do not match those of the community they will find themselves opposed on all sides, adding a Hurdle, Obstacle, or Failure Level instead. | One of the Quester&#39;s companions is not well suited to work with the others. If the Quester continues to work with this person it will add at least one Hurdle, Obstacle or Failure Level to their Ordeal or Test as this creates disharmony, arguments and errors. | If the Quester keeps secrets or lies this will create mistakes, disasters and misunderstandings that will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test as they turn companions against the Quester. If the Quester speaks their mind and is honest and truthful in every conversation they have then they will instead add a Success Level.  | Someone seeks to leave the Quester&#39;s companions, alliance, or community, perhaps due to a difference in tactics, aggression, morals or goals. If they are allowed to leave those that remain will be more united and stronger together, adding a Success Level to their Test or Quest. Persuade or force them to stay and the Union will be weaker and more disharmonious as a result, which will add Failure Levels, Obstacles or Hurdles instead. | An opportunity presents itself and the Quester must act at once and seize this chance, whether it be an offered alliance, marriage, contract, a stranger declaring \"kiss me\", or a plan. Failure to act at once is a mistake, and may lead to fatal consequences, as it inevitably adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Trusting Relationships): Mirror the internal state described in the commentary: \"Fundamental sincerity is the only proper basis for forming relationships. This attitude, symbolized by a full earthen bowl, in which the content is everything and the empty form nothing, shows itself not in clever words but through the strength of...\" Your actions should be framed by the goal: you are sympathetic or accept others as they are.",
+        "Plot": "Plot Complication Line 1 (Trusting Relationships): Introduce a challenge based on the interpretation: \"Fundamental sincerity is the only proper basis for forming relationships. This attitude, symbolized by a full earthen bowl, in which the content is everything and the empty form nothing, shows itself not in clever words but through the strength of...\" The specific quest objective for this stage is: If the Quester has lied to or misled their companions this is now revealed, adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test, as companions abandon you and may even actively undo the Quest (perhaps releasing prisoners, or selling the prize)."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Union Within): Mirror the internal state described in the commentary: \"If a person responds perseveringly and in the right way to the behests from above that summon him to action, his relations with others are intrinsic and he does not lose himself. But if a man seeks association with others as if he were an obsequious...\" Your actions should be framed by the goal: you don’t co-operate, or stay true to yourself.",
+        "Plot": "Plot Complication Line 2 (Union Within): Introduce a challenge based on the interpretation: \"If a person responds perseveringly and in the right way to the behests from above that summon him to action, his relations with others are intrinsic and he does not lose himself. But if a man seeks association with others as if he were an obsequious...\" The specific quest objective for this stage is: If the Quester&#39;s goals align with those of their companions and community then they may add a Success Level to their Ordeal or Test, but if the Quester&#39;s goals do not match those of the community they will find themselves opposed on all sides, adding a Hurdle, Obstacle, or Failure Level instead."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Bad Unions): Mirror the internal state described in the commentary: \"We are often among people who do not belong to our own sphere. In that case we must beware of being drawn into false intimacy through force of habit. Needless to say, this would have evil consequences. Maintaining sociability without intimacy is the...\" Your actions should be framed by the goal: you work alone.",
+        "Plot": "Plot Complication Line 3 (Bad Unions): Introduce a challenge based on the interpretation: \"We are often among people who do not belong to our own sphere. In that case we must beware of being drawn into false intimacy through force of habit. Needless to say, this would have evil consequences. Maintaining sociability without intimacy is the...\" The specific quest objective for this stage is: One of the Quester&#39;s companions is not well suited to work with the others. If the Quester continues to work with this person it will add at least one Hurdle, Obstacle or Failure Level to their Ordeal or Test as this creates disharmony, arguments and errors."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Hold Union Outwardly): Mirror the internal state described in the commentary: \"Here the relations with a man who is the center of union are well established. Then we may, and indeed we should, show our attachment openly. But we must remain constant and not allow ourselves to be led astray.\" Your actions should be framed by the goal: you meet someone new, or ask another for help or instruction.",
+        "Plot": "Plot Complication Line 4 (Hold Union Outwardly): Introduce a challenge based on the interpretation: \"Here the relations with a man who is the center of union are well established. Then we may, and indeed we should, show our attachment openly. But we must remain constant and not allow ourselves to be led astray.\" The specific quest objective for this stage is: If the Quester keeps secrets or lies this will create mistakes, disasters and misunderstandings that will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test as they turn companions against the Quester. If the Quester speaks their mind and is honest and truthful in every conversation they have then they will instead add a Success Level. "
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Manifesting Union): Mirror the internal state described in the commentary: \"In the royal hunts of ancient China it was customary to drive up the game from three sides, but on the fourth the animals had a chance to run off. If they failed to do this they had to pass through a gate behind which the king stood ready to shoot....\" Your actions should be framed by the goal: someone assists you.",
+        "Plot": "Plot Complication Line 5 (Manifesting Union): Introduce a challenge based on the interpretation: \"In the royal hunts of ancient China it was customary to drive up the game from three sides, but on the fourth the animals had a chance to run off. If they failed to do this they had to pass through a gate behind which the king stood ready to shoot....\" The specific quest objective for this stage is: Someone seeks to leave the Quester&#39;s companions, alliance, or community, perhaps due to a difference in tactics, aggression, morals or goals. If they are allowed to leave those that remain will be more united and stronger together, adding a Success Level to their Test or Quest. Persuade or force them to stay and the Union will be weaker and more disharmonious as a result, which will add Failure Levels, Obstacles or Hurdles instead."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Bad Head For Union): Mirror the internal state described in the commentary: \"The head is the beginning. If the beginning is not right, there is no hope of a right ending. If we have missed the right moment for union and go on hesitating to give complete and full devotion, we shall regret the error when it is too late.\" Your actions should be framed by the goal: you avoid intimacy or co-operation.",
+        "Plot": "Plot Complication Line 6 (Bad Head For Union): Introduce a challenge based on the interpretation: \"The head is the beginning. If the beginning is not right, there is no hope of a right ending. If we have missed the right moment for union and go on hesitating to give complete and full devotion, we shall regret the error when it is too late.\" The specific quest objective for this stage is: An opportunity presents itself and the Quester must act at once and seize this chance, whether it be an offered alliance, marriage, contract, a stranger declaring \"kiss me\", or a plan. Failure to act at once is a mistake, and may lead to fatal consequences, as it inevitably adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test."
+      }
+    }
+  }
+}

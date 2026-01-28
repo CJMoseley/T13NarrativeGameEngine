@@ -1,0 +1,1411 @@
+{
+  "3702": {
+    "id": 3702,
+    "prof": {
+      "Name": [
+        "span>",
+        "span> Wyrd Fumble Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of span> is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3703": {
+    "id": 3703,
+    "prof": {
+      "Name": [
+        "Fate",
+        "Fate Wyrd Incarna Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Fate is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3704": {
+    "id": 3704,
+    "prof": {
+      "Name": [
+        "Sway",
+        "Sway Wyrd Incarna Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Sway is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3705": {
+    "id": 3705,
+    "prof": {
+      "Name": [
+        "Sway",
+        "Sway Wyrd Rule Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Sway is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3706": {
+    "id": 3706,
+    "prof": {
+      "Name": [
+        "Judge",
+        "Judge Wyrd Persona Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Judge is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3707": {
+    "id": 3707,
+    "prof": {
+      "Name": [
+        "Magic",
+        "Magic Wyrd Test Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Magic is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3708": {
+    "id": 3708,
+    "prof": {
+      "Name": [
+        "Bind",
+        "Bind Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Bind is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3709": {
+    "id": 3709,
+    "prof": {
+      "Name": [
+        "Cast",
+        "Cast Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Cast is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3710": {
+    "id": 3710,
+    "prof": {
+      "Name": [
+        "Catch",
+        "Catch Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Catch is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3711": {
+    "id": 3711,
+    "prof": {
+      "Name": [
+        "Enforce",
+        "Enforce Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Enforce is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3712": {
+    "id": 3712,
+    "prof": {
+      "Name": [
+        "Ensnare",
+        "Ensnare Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Ensnare is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3713": {
+    "id": 3713,
+    "prof": {
+      "Name": [
+        "Examine",
+        "Examine Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Examine is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3714": {
+    "id": 3714,
+    "prof": {
+      "Name": [
+        "Pass",
+        "Pass Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Pass is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3715": {
+    "id": 3715,
+    "prof": {
+      "Name": [
+        "Set",
+        "Set Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Set is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3716": {
+    "id": 3716,
+    "prof": {
+      "Name": [
+        "Set",
+        "Set Wyrd Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Set is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3717": {
+    "id": 3717,
+    "prof": {
+      "Name": [
+        "Thwart",
+        "Thwart Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Thwart is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3718": {
+    "id": 3718,
+    "prof": {
+      "Name": [
+        "Weaving",
+        "Weaving Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Weaving is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3719": {
+    "id": 3719,
+    "prof": {
+      "Name": [
+        "Certain",
+        "Certain Wyrd Annex Root Proficiency",
+        "sure, assured, familiar, positive, confident"
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Certain is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3720": {
+    "id": 3720,
+    "prof": {
+      "Name": [
+        "Fair",
+        "Fair Wyrd Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Fair is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3721": {
+    "id": 3721,
+    "prof": {
+      "Name": [
+        "Fry",
+        "Fry Wyrd Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Fry is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3722": {
+    "id": 3722,
+    "prof": {
+      "Name": [
+        "Logical",
+        "Logical Wyrd Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Logical is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3723": {
+    "id": 3723,
+    "prof": {
+      "Name": [
+        "Official",
+        "Official Wyrd Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Official is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3724": {
+    "id": 3724,
+    "prof": {
+      "Name": [
+        "Respected",
+        "Respected Wyrd Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Respected is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3725": {
+    "id": 3725,
+    "prof": {
+      "Name": [
+        "Strains",
+        "Strains Wyrd Rule Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Strains is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3726": {
+    "id": 3726,
+    "prof": {
+      "Name": [
+        "Chi",
+        "Chi Wyrd Rule Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Chi is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3727": {
+    "id": 3727,
+    "prof": {
+      "Name": [
+        "Yarn",
+        "Yarn Wyrd Rule Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Yarn is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3728": {
+    "id": 3728,
+    "prof": {
+      "Name": [
+        "Facets",
+        "Facets Wyrd Rule Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Facets is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3729": {
+    "id": 3729,
+    "prof": {
+      "Name": [
+        "Hitches",
+        "Hitches Wyrd Rule Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Hitches is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3730": {
+    "id": 3730,
+    "prof": {
+      "Name": [
+        "Tangles",
+        "Tangles Wyrd Rule Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Tangles is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3731": {
+    "id": 3731,
+    "prof": {
+      "Name": [
+        "science",
+        "science Wyrd Test Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of science is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3732": {
+    "id": 3732,
+    "prof": {
+      "Name": [
+        "Speak",
+        "Speak Yonder Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Speak leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3733": {
+    "id": 3733,
+    "prof": {
+      "Name": [
+        "span>",
+        "span> Yonder Critical Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of span> leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3734": {
+    "id": 3734,
+    "prof": {
+      "Name": [
+        "span>",
+        "span> Yonder Fumble Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of span> leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3735": {
+    "id": 3735,
+    "prof": {
+      "Name": [
+        "Locations",
+        "Locations Yonder Descendants Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Locations leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3736": {
+    "id": 3736,
+    "prof": {
+      "Name": [
+        "Connections",
+        "Connections Yonder Descendants Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Connections leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3737": {
+    "id": 3737,
+    "prof": {
+      "Name": [
+        "Odyssey",
+        "Odyssey Yonder Tone Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Odyssey leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3738": {
+    "id": 3738,
+    "prof": {
+      "Name": [
+        "Road-movie",
+        "Road-movie Yonder Tone Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Road-movie leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3739": {
+    "id": 3739,
+    "prof": {
+      "Name": [
+        "Drop",
+        "Drop Yonder Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Drop leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3740": {
+    "id": 3740,
+    "prof": {
+      "Name": [
+        "Engage",
+        "Engage Yonder Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Engage leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3741": {
+    "id": 3741,
+    "prof": {
+      "Name": [
+        "Hit",
+        "Hit Yonder Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Hit leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3742": {
+    "id": 3742,
+    "prof": {
+      "Name": [
+        "Locate",
+        "Locate Yonder Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Locate leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3743": {
+    "id": 3743,
+    "prof": {
+      "Name": [
+        "Pass",
+        "Pass Yonder Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Pass leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3744": {
+    "id": 3744,
+    "prof": {
+      "Name": [
+        "Shoot",
+        "Shoot Yonder Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Shoot leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3745": {
+    "id": 3745,
+    "prof": {
+      "Name": [
+        "Spot",
+        "Spot Yonder Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Spot leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3746": {
+    "id": 3746,
+    "prof": {
+      "Name": [
+        "Stretch",
+        "Stretch Yonder Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Stretch leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3747": {
+    "id": 3747,
+    "prof": {
+      "Name": [
+        "Talk",
+        "Talk Yonder Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Talk leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3748": {
+    "id": 3748,
+    "prof": {
+      "Name": [
+        "Bizarre",
+        "Bizarre Yonder Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Bizarre leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3749": {
+    "id": 3749,
+    "prof": {
+      "Name": [
+        "Curious",
+        "Curious Yonder Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Curious leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3750": {
+    "id": 3750,
+    "prof": {
+      "Name": [
+        "Strange",
+        "Strange Yonder Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Strange leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3751": {
+    "id": 3751,
+    "prof": {
+      "Name": [
+        "Urban",
+        "Urban Yonder Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Urban leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

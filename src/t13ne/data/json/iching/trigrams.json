@@ -1,0 +1,98 @@
+[
+    {
+        "id": "T13-NE-ICHING-TRIGRAMS-1",
+        "data": {
+            "Trigram_Name": "Heaven",
+            "Entity": "&#9776;",
+            "Logical": 7,
+            "Description": "3 Yang lines gives us Heaven, the creative force of light and warmth.",
+            "Quest": "The Quest will be easier if Heaven is atop the Hexagram, and more difficult is Heaven is the base of the Quest. Heaven also represents strength and power, vitality and forcefulness.",
+            "Quest_Complication": "Some creativity will be required to complete the Quest. This creativity may be required to imagine some solution, or the creation of some art or technique, or just a lot of imagination and perhaps a few fictions.",
+            "Quest_Steps": "The Creative adds 1 Yang Test if it is atop a Hexagram, and one Yang Ordeal if it is the base of a Hexagram."
+        }
+    },
+    {
+        "id": "T13-NE-ICHING-TRIGRAMS-2",
+        "data": {
+            "Trigram_Name": "Lake",
+            "Entity": "&#9777;",
+            "Logical": 3,
+            "Description": "1 Yin line over two Yang lines gives us the Lake, the joyous abundance of open water.",
+            "Quest": "The openness of the Lake suggests Food and drink, hedonistic abundances, or a magical influence may be important parts of the Quest. The waters of the Lake can be murky and difficult to see a clear path through, and the lake can become marshy and muddy near the shore which can indicate traps, surprises and secrets which are not always delights and joys.",
+            "Quest_Complication": "Distractions and secrets abound in and around the Lake, the Quester will require focus as well as determination and attention, or they may become tempted by the delights, or miss some secret in the shallows.",
+            "Quest_Steps": "The Lake suggests a single Yin Test and at least one Yang Ordeal"
+        }
+    },
+    {
+        "id": "T13-NE-ICHING-TRIGRAMS-3",
+        "data": {
+            "Trigram_Name": "Fire",
+            "Entity": "&#9778;",
+            "Logical": 5,
+            "Description": "1 Yin line between 2 Yang lines is Fire, the clinging, consuming, radiant energy that suggests departure, destruction and breaking free.",
+            "Quest": "Fire suggests a dangerous but obvious Quest, that may involve breaking free from some bonds, destruction of property, and separation of the Quester from allies, but it will almost always be obvious and clear what the Quester must do. Fire Quests and the breaking of bonds and destruction they are associated with, are more likely emotional, spiritual or mental in nature than physical.",
+            "Quest_Complication": "What the Quester must do should be obvious, but is usually dangerous. Fire Quests Ordeals are often at least High Stakes. Fire Quests usually isolate the Questers from assistance and allies, often involving imprisoning or capture.",
+            "Quest_Steps": "Fire suggests at least a High Stakes Yang Facet Ordeal, and both a Yin Test and a Yang Test."
+        }
+    },
+    {
+        "id": "T13-NE-ICHING-TRIGRAMS-4",
+        "data": {
+            "Trigram_Name": "Thunder",
+            "Entity": "&#9779;",
+            "Logical": 1,
+            "Description": "2 Yin lines built on a single Yang line gives us Thunder, the arousing noise and shaking that disturbs and unsettles.",
+            "Quest": "Thunder indicates a Quest that will not be solved quietly. There may be strong emotions, powerful reactions and profound changes. These are the Quests that always contain at least one Ordeal and often fights. Thunder indicates motion and speed, impulsive changes that occur rapidly, and without warning, Thunder Quests are loud and filled with action.",
+            "Quest_Complication": "Thunder indicates that there will be counter-actions, reactions and repercussions to the actions of the Quester during the Quest. Emotions are heightened during Thunder Quests with all Psych attacks and Tests raised a card (to a max of 3). Thunder also indicates the Quest is unstable and subject to sudden changes of direction, twists and reversals.",
+            "Quest_Steps": "At least one Motional Yin Ordeal, often involving a Fight (as a Yang Ordeal) or Yang Test, plus 1 Yin Test."
+        }
+    },
+    {
+        "id": "T13-NE-ICHING-TRIGRAMS-5",
+        "data": {
+            "Trigram_Name": "Wind/Wood",
+            "Entity": "&#9780;",
+            "Logical": 6,
+            "Description": "Two heavenly Yang lines move over an earthly Yin line, this is Wind, the gentle moving air that affects the earth below, but is usually a gentle touch unless a roaring hurricane, but it is also the trees swaying in the wind, the earth reaching gracefully up into heaven.",
+            "Quest": "Wind or Wood represents a Quest that appears gentle and flexible, however Wood and Wind are both penetrative, pushing and probing gently until they find their way, and so their Quests can grow and expand and are always subject to subtle changes in the what is expected of the Quester, although rarely violence.",
+            "Quest_Complication": "Wood and Wind Quests are always more than they seem, they are feature creep in the process, a sudden phase of expansion, or an enemy holding troops in reserve.",
+            "Quest_Steps": "At least one Yin Test and at least one Yang Test will accompany a low or medium stakes Yang Ordeal."
+        }
+    },
+    {
+        "id": "T13-NE-ICHING-TRIGRAMS-6",
+        "data": {
+            "Trigram_Name": "Water",
+            "Entity": "&#9781;",
+            "Logical": 2,
+            "Description": "One Yang line between two Yin lines indicates Water, not in the form of a stable static lake, but in the falling rain, the running water that seeks the ground, and a way beneath it. This is dangerous, abyss seeking behaviour, always flowing down to find its own level.",
+            "Quest": "Water represents a problem that requires deep thought, a dangerous crisis or signifies traps and dangers are a part of the Quest. This is especially true when the Water is the top Trigram, as this is always unstable.",
+            "Quest_Complication": "Water Quests are dangerous, this might be because of traps, a dangerous Opposition, a psychotic Agent of Chaos, or inherent dangers of the area. Water quests are also deep, in that they tend to be complex, and require some thinking to succeed.",
+            "Quest_Steps": "Two Yin Ordeals (one Medium and one High Stakes at least) and a Yang Ordeal (High-Soul Stakes) are suggested by Water, with Obstacles and at least one Fight."
+        }
+    },
+    {
+        "id": "T13-NE-ICHING-TRIGRAMS-7",
+        "data": {
+            "Trigram_Name": "Mountain",
+            "Entity": "&#9782;",
+            "Logical": 4,
+            "Description": "Two Yin lines surmounted by a single Yang line represents stillness and stability, ",
+            "Quest": "A Mountain Quest usually represents some aspect of the status quo, something unchanging and eternal, like stone or a mountain itself. Many mountain Quests contain some aspect of inevitability, once the landslide has started the pebbles do not get to vote. Mountain Quests are best handled with caution, many an adventurer has misunderstood the stability of the mountain and wandered from the path or a cliff.",
+            "Quest_Complication": "A Mountain Quest cannot change the world, the Quest itself supports the status-quo, this usually makes the Quest-giver an Old Guard, and places Agents of Change and Agents of Chaos firmly in the Opposition. Mountain Quests also raise the Stakes and Difficulty on all movement Tests and Motional Ordeals, and are often restricted to a single Location.",
+            "Quest_Steps": "The Mountain adds two Yin Tests and a Yang Test to the Quest if it is on the base of a Hexagram, but adds Two Yin Ordeals and a Yang Ordeal if it is on the top of a Hexagram."
+        }
+    },
+    {
+        "id": "T13-NE-ICHING-TRIGRAMS-8",
+        "data": {
+            "Trigram_Name": "Earth",
+            "Entity": "&#9783;",
+            "Logical": 0,
+            "Description": "Three broken Yin lines create an image of dark, rich, fertile farm soil, receptive and passive to the creativity of Heaven.",
+            "Quest": "Earth Quests are usually passive in nature, you may tend, nurture or gather some resource, but you will defend rather than attack, react to another rather than act. These are the Quests of nurturing, listening, devotion and loyalty, they require the Quester to endure and survive, not fight and win.",
+            "Quest_Complication": "Earth Quests are very passive, any dynamic Yang actions that are attempted will be faced with an additional Failure Level or Obstacle created by the Anti-Facet of the Yang Action.",
+            "Quest_Steps": "Earth Quests consist of at least one Yin Facet Ordeal when they are the base of the Hexagram and one Yin Facet Test when at the top."
+        }
+    }
+]

@@ -1,0 +1,1449 @@
+{
+  "951": {
+    "id": 951,
+    "prof": {
+      "Name": [
+        "Abstract",
+        "Abstract Key Umbral Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Abstract unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "952": {
+    "id": 952,
+    "prof": {
+      "Name": [
+        "Sleuth",
+        "Sleuth Key Persona Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Sleuth unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "953": {
+    "id": 953,
+    "prof": {
+      "Name": [
+        "Star-crossed",
+        "Star-crossed Liberty Zero Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Star-crossed is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "954": {
+    "id": 954,
+    "prof": {
+      "Name": [
+        "Constrained",
+        "Constrained Liberty Zero Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Constrained is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "955": {
+    "id": 955,
+    "prof": {
+      "Name": [
+        "Encompassed Locations",
+        "Encompassed Location Liberty Zero Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Encompassed Locations is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "956": {
+    "id": 956,
+    "prof": {
+      "Name": [
+        "Grim",
+        "Grim Liberty Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Grim is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "957": {
+    "id": 957,
+    "prof": {
+      "Name": [
+        "Cruel",
+        "Cruel Liberty Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Cruel is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "958": {
+    "id": 958,
+    "prof": {
+      "Name": [
+        "Sinister Locations",
+        "Sinister Location Liberty Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Sinister Locations is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "959": {
+    "id": 959,
+    "prof": {
+      "Name": [
+        "Compelled",
+        "Compelled Liberty Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Compelled is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "960": {
+    "id": 960,
+    "prof": {
+      "Name": [
+        "Inhibited",
+        "Inhibited Liberty Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Inhibited is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "961": {
+    "id": 961,
+    "prof": {
+      "Name": [
+        "Fenced Locations",
+        "Fenced Location Liberty Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Fenced Locations is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "962": {
+    "id": 962,
+    "prof": {
+      "Name": [
+        "Unlucky",
+        "Unlucky Liberty Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Unlucky is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "963": {
+    "id": 963,
+    "prof": {
+      "Name": [
+        "Cursed",
+        "Cursed Liberty Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Cursed is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "964": {
+    "id": 964,
+    "prof": {
+      "Name": [
+        "Blighted Locations",
+        "Blighted Location Liberty Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Blighted Locations is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "965": {
+    "id": 965,
+    "prof": {
+      "Name": [
+        "Hapless",
+        "Hapless Liberty Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Hapless is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "966": {
+    "id": 966,
+    "prof": {
+      "Name": [
+        "Glitchy",
+        "Glitchy Liberty Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Glitchy is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "967": {
+    "id": 967,
+    "prof": {
+      "Name": [
+        "Ominous Locations",
+        "Ominous Location Liberty Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Ominous Locations is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "968": {
+    "id": 968,
+    "prof": {
+      "Name": [
+        "Independent",
+        "Independent Liberty Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Independent is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "969": {
+    "id": 969,
+    "prof": {
+      "Name": [
+        "Autonomous",
+        "Autonomous Liberty Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Autonomous is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "970": {
+    "id": 970,
+    "prof": {
+      "Name": [
+        "Unpromosing Locations",
+        "Unpromosing Location Liberty Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Unpromosing Locations is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "971": {
+    "id": 971,
+    "prof": {
+      "Name": [
+        "Favoured",
+        "Favoured Liberty Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Favoured is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "972": {
+    "id": 972,
+    "prof": {
+      "Name": [
+        "Benign",
+        "Benign Liberty Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Benign is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "973": {
+    "id": 973,
+    "prof": {
+      "Name": [
+        "Promising Locations",
+        "Promising Location Liberty Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Promising Locations is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "974": {
+    "id": 974,
+    "prof": {
+      "Name": [
+        "Lucky",
+        "Lucky Liberty High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Lucky is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "975": {
+    "id": 975,
+    "prof": {
+      "Name": [
+        "Charmed",
+        "Charmed Liberty High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Charmed is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "976": {
+    "id": 976,
+    "prof": {
+      "Name": [
+        "Auspicious Locations",
+        "Auspicious Location Liberty High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Auspicious Locations is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "977": {
+    "id": 977,
+    "prof": {
+      "Name": [
+        "Liberated",
+        "Liberated Liberty High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Liberated is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "978": {
+    "id": 978,
+    "prof": {
+      "Name": [
+        "Free",
+        "Free Liberty High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Free is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "979": {
+    "id": 979,
+    "prof": {
+      "Name": [
+        "Loose Locations",
+        "Loose Location Liberty High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Loose Locations is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "980": {
+    "id": 980,
+    "prof": {
+      "Name": [
+        "Emancipated",
+        "Emancipated Liberty Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Emancipated is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "981": {
+    "id": 981,
+    "prof": {
+      "Name": [
+        "Jail-broken",
+        "Jail-broken Liberty Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Jail-broken is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "982": {
+    "id": 982,
+    "prof": {
+      "Name": [
+        "Clear Locations",
+        "Clear Location Liberty Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Clear Locations is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "983": {
+    "id": 983,
+    "prof": {
+      "Name": [
+        "Felicitous",
+        "Felicitous Liberty Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Felicitous is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "984": {
+    "id": 984,
+    "prof": {
+      "Name": [
+        "Appropriate",
+        "Appropriate Liberty Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Appropriate is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "985": {
+    "id": 985,
+    "prof": {
+      "Name": [
+        "Prosperous Locations",
+        "Prosperous Location Liberty Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Prosperous Locations is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "986": {
+    "id": 986,
+    "prof": {
+      "Name": [
+        "Fortuitous",
+        "Fortuitous Liberty Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Fortuitous is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "987": {
+    "id": 987,
+    "prof": {
+      "Name": [
+        "Fluky",
+        "Fluky Liberty Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Fluky is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "988": {
+    "id": 988,
+    "prof": {
+      "Name": [
+        "Random Locations",
+        "Random Location Liberty Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Random Locations is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "989": {
+    "id": 989,
+    "prof": {
+      "Name": [
+        "Blessed",
+        "Blessed Liberty Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Blessed is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "990": {
+    "id": 990,
+    "prof": {
+      "Name": [
+        "Sacred",
+        "Sacred Liberty Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Sacred is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "991": {
+    "id": 991,
+    "prof": {
+      "Name": [
+        "Hallowed Locations",
+        "Hallowed Location Liberty Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Hallowed Locations is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "992": {
+    "id": 992,
+    "prof": {
+      "Name": [
+        "Nervous",
+        "Nervous Liberty Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Nervous is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "993": {
+    "id": 993,
+    "prof": {
+      "Name": [
+        "Agitated",
+        "Agitated Liberty Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Agitated is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "994": {
+    "id": 994,
+    "prof": {
+      "Name": [
+        "Distraught",
+        "Distraught Liberty Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Distraught is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "995": {
+    "id": 995,
+    "prof": {
+      "Name": [
+        "Tolerant",
+        "Tolerant Liberty Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Tolerant is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "996": {
+    "id": 996,
+    "prof": {
+      "Name": [
+        "Caring",
+        "Caring Liberty Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Caring is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "997": {
+    "id": 997,
+    "prof": {
+      "Name": [
+        "Selfless",
+        "Selfless Liberty Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Selfless is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "998": {
+    "id": 998,
+    "prof": {
+      "Name": [
+        "Celebrate",
+        "Celebrate Liberty Action Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Celebrate is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "999": {
+    "id": 999,
+    "prof": {
+      "Name": [
+        "Overload",
+        "Overload Liberty Attack Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Overload is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1000": {
+    "id": 1000,
+    "prof": {
+      "Name": [
+        "Choice",
+        "Choice Liberty Critical Proficiency",
+        ""
+      ],
+      "Description": "Surreal and figuratively loose, the knowledge of Choice is a free-flowing expression that defies rigid boundaries and embraces the unusual.",
+      "Tags": {
+        "Facets": [
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

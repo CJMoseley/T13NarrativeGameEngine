@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 15,
+    "Name": "Humility",
+    "Entity": "&#19918;",
+    "Logical": 4,
+    "Trigrams": [
+      6,
+      7
+    ],
+    "Hexagram_Text": "Qiān, Humility (or Authenticity or Modesty), is symbolic of balance, justice and reaction. Everything that we do has consequences, and this Hexagram reminds us of that.",
+    "Unchanging": "Pass or Failure can never be more than complete (no superior passes or serious failures, no modified Success Levels may affect you).",
+    "Line1": "Authentic Modesty",
+    "Line2": "Make Humble Gestures",
+    "Line3": "Modesty is Required",
+    "Line4": "Modest Action",
+    "Line5": "Not Getting What You Need",
+    "Line6": "Modest Expression"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you speak or act with authenticity or humility",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "if another Character is humble before you",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yang",
+        "Condition": "you agree with another or keep a secret",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yang",
+        "Condition": "you are non-threatening or show humility in your actions (bowing, kow-towing etc)",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yin",
+        "Condition": "you are modest or determined",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yang",
+        "Condition": "you take action or recognise another&#39;s contributions",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you are authoritative, ask for advice, or take what you need",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yang",
+        "Condition": "you role-play a hitch (or one is invoked)",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Quest of Humility insists that the Quester learns humility to complete the Quest. They may have to abase themselves, submit to a greater authority, or simply demonstrate that they are free from arrogance and pride. Arrogance and Pride of any sort will instantly add Hurdles, Obstacle or Failure Levels, but so will avoiding speaking out against the same in others.",
+    "Quest_Complete": "The Quest that finishes with the Humility Hexagram is over, but the Quester will be treated poorly, as though their contributions were minimal. If the Quester accepts this treatment without complaint then they will be greater respected by those in authority and their allies.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester is in a dangerous situation, made more dangerous (adding a Hurdle, Obstacle or Failure Level to their Quest or Test) every time the Quester acts without sincerity or from ego with self-serving or immodest actions, demands or concerns. If the Quester can be sincerely modest about their own abilities and position in the Quest then they may instead add a Success Level.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester will be judged, according to their modesty, fairness and sincerity (or their lack thereof) by those around them (companions, bystanders, authorities, etc). Each action they have taken, or speech that they have made, that shows signs of pride, arrogance, bias or any desire beyond the needs of the Quest, will add a Failure Level, Obstacle or Hurdle to the Quester&#39;s Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "Great actions, such as those made by a Quester, draw attention from others around. This attention can be distracting, and feed the ego of the Quester, adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If however, the Quester can maintain their focus on their goal, and rise above the ego stroking of their companions, authorities and even the opposition then they can add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quest that the Quester has taken on is theirs, they have been selected for it, and tasked with this Quest, so if the Quester tries to use modesty to get out of the Quest (e.g. \"I am not worthy of this Quest\") then that will add a Failure Level, Hurdle or Obstacle to the Quester&#29;s Test or Ordeal. This can also play out as the Quester appearing to be tempted away from the Quest by external forces (perhaps a desperate soul asks them for help, or some authority invites them away), this appears to be a distraction from the Quest, but if they do what needs to be done (helping those in need, taking time to speak with the authority) it turns out (often by coincidence, synchronicity, or the help of those they helped) to be essential somehow.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester is tasked to perform some activity that they cannot yet complete (such as defeating a powerful foe, casting a spell they do not know, or using equipment they do not own), which adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If the Quester can find someone to teach them how to complete this task (or better yet that they can command to perform the task) and do not boast during this recruitment, instruction or commanding then they can add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "Difficulties and dangers arise often between the Quester and a companion, adding a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test. If the Quester tries to blame this companion for these difficulties, or displays a lack of humility, failure in duty, pride, arrogance or a triggered hitch in some cases (such as fear or self-pity), then this will add another Hurdle, Obstacle or Failure Level. If instead, the Quester is modest and faces these difficulties with courage, and shows respect for their companion, then they will add a Success Level instead.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "This hexagram is made up of the trigrams Kên, Keeping Still, mountain, and K'un. The mountain is the youngest son of the Creative, the representative of heaven and earth. It dispenses the blessings of heaven, the clouds and rain that gather round its summit, and thereafter shines forth radiant with heavenly light. This shows what modesty is and how it functions in great and strong men. K'un, the earth, stands above. Lowliness is a quality of the earth: this is the very reason why it appears in this hexagram as exalted, by being placed above the mountain. This shows how modesty functions in lowly, simple people: they are lifted up by it.",
+    "The_Image": {
+      "text": "Within the earth, a mountain:\n\nThe image of MODESTY.\n\nThus the superior man reduces that which is too much,\nAnd augments that which is too little.\nHe weighs things and makes them equal.",
+      "comments": "The wealth of the earth in which a mountain is hidden is not visible to the eye, because the depths are offset by the height of the mountain. Thus high and low competent each other and the result is the plain. Here an effect that it took a long time to achieve, but that in the end seems easy of accomplishment and self-evident, is used as the image of modesty. The superior man does the same thing when he establishes order in the world; he equalizes the extremes that are the source of social discontent and thereby creates just and equable conditions."
+    },
+    "The_Judgment": {
+      "text": "MODESTY creates success.\n\n. The superior man carries things through.",
+      "comments": "It is the law of heaven to make fullness empty and to make full what is modest; when the sun is at its zenith, it must, according to the law of heaven, turn toward its setting, and at its nadir it rises toward a new dawn. In obedience to the same law, the moon when it is full begins to wane, and when empty of light it waxes again. This heavenly law works itself out in the fates of men also. It is the law of earth to alter the full and to contribute to the modest. High mountains are worn down by the waters, and the valleys are filled up. It is the law of fate to undermine what is full and to prosper the modest. And men also hate fullness and love the modest. The destinies of men are subject to immutable laws that must fulfill themselves. But man has it in his power to shape his fate, according as his behavior exposes him to the influence of benevolent or of destructive forces. When a man holds a high position and is nevertheless modest, he shines with the light of wisdom; if he is in a lowly position and is modest, he cannot be passed by. Thus the superior man can carry out his work to the end without boasting of what he has achieved."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "A superior man modest about his modesty\nMay cross the great water.\nGood fortune.",
+        "comments": "A dangerous enterprise, such as the crossing of a great stream, is made much more difficult if many claims and considerations have to be taken into account. On the other hand, the task is easy if it is attended to quickly and simply. Therefore the unassuming attitude of mind that goes with modesty fits a man to accomplish even difficult undertakings: he imposes no demands or stipulations but settles matters easily and quickly. Where no claims are put forward, no resistances arise."
+      },
+      "2": {
+        "text": "Modesty that comes to expression. Perseverance brings good fortune.",
+        "comments": "\"Out of the fullness of the heart the mouth speaketh.\" When a man's attitude of mind is so modest that this expresses itself in his outward behavior, it is a source of good fortune to him. For the possibility of exerting a lasting influence arises of itself and no one can interfere."
+      },
+      "3": {
+        "text": "A superior man of modesty and merit\nCarries things to conclusion.\nGood fortune.",
+        "comments": "This is the center of the hexagram, where its secret is disclosed. A distinguished name is readily earned by great achievements. If a man allows himself to be dazzled by fame, he will soon be criticized, and difficulties will arise. If, on the contrary, he remains modest despite his merit, he makes himself beloved and wins the support necessary for carrying his work through to the end."
+      },
+      "4": {
+        "text": "Nothing that would not further modesty\nIn movement.",
+        "comments": "Everything has its proper measure. Even modesty in behavior can be carried too far. Here, however, it is appropriate, because the place between a worthy helper below and a kindly ruler above carries great responsibility. The confidence of the man in superior place must not be abused nor the merits of the man in inferior placed concealed. There are officials who indeed do not strive for prominence; they hide behind the letter of ordinances, decline all responsibility, accept pay without giving its equivalent in work, and bear empty titles. This is the opposite of what is meant here by modesty. In such a position, modesty is shown by interest in one's work."
+      },
+      "5": {
+        "text": "No boasting of wealth before one's neighbor.\nIt is favorable to attack with force.\nNothing that would not further.",
+        "comments": "Modesty is not to be confused with weak good nature that lets things take their own course. When a man holds a responsible position, he must at times resort to energetic measures. In doing so he must not try to make an impression by boasting of his superiority but must make certain of the people around him. The measures taken should be purely objective and in no way personally offensive. Thus modesty manifests itself even in severity."
+      },
+      "6": {
+        "text": "Modesty that comes to expression.\nIt is favorable to set armies marching\nTo chastise one's own city and one's country.",
+        "comments": "A person who is really sincere in his modesty must make it show in reality. He must proceed with great energy in this. When enmity arises nothing is easier than to lay the blame on another. A weak man takes offense perhaps, and draws back, feeling self-pity; he thinks that it is modesty that keeps him from defending himself. Genuine modesty sets one to creating order and inspires one to begin by disciplining one's own ego and one's immediate circle. Only through having the courage to marshal one's armies against oneself, will something forceful really be achieved."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Humility'. Internalize this core philosophy: This hexagram is made up of the trigrams Kên, Keeping Still, mountain, and K'un. The mountain is the youngest son of the Creative, the representative of heaven and earth. It dispenses the blessings of heaven, the clouds and rain that gather round its summit, and thereafter shines forth radiant with heavenly light. This shows what modesty is and how it functions in great and strong men. K'un, the earth, stands above. Lowliness is a quality of the earth: this is the very reason why it appears in... Your current worldview is: \"Qiān, Humility (or Authenticity or Modesty), is symbolic of balance, justice and reaction. Everything that we do has consequences, and this Hexagram reminds us of that.\". Let your choices be subtly driven by these conditions: you speak or act with authenticity or humility, if another Character is humble before you. When interacting, mirror the wisdom found in the commentary: \"It is the law of heaven to make fullness empty and to make full what is modest; when the sun is at its zenith, it must, according to the law of heaven, turn toward its setting, and at its nadir it rises toward a new dawn. In obedience to the same law, the moon when it is full begins to wane, and...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Humility'. The primary quest objective is: The Quest of Humility insists that the Quester learns humility to complete the Quest. They may have to abase themselves, submit to a greater authority, or simply demonstrate that they are free from arrogance and pride. Arrogance and Pride of any sort will instantly add Hurdles, Obstacle or Failure Levels, but so will avoiding speaking out against the same in others.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: The wealth of the earth in which a mountain is hidden is not visible to the eye, because the depths are offset by the height of the mountain. Thus high and low competent each other and the result is the plain. Here an effect that it took a long time to achieve, but that in the end seems easy of accomplishment and self-evident, is used as the image of modesty. The superior man does the same thing... Use the following line-specific challenges to pace the story: The Quester is in a dangerous situation, made more dangerous (adding a Hurdle, Obstacle or Failure Level to their Quest or Test) every time the Quester acts without sincerity or from ego with self-serving or immodest actions, demands or concerns. If the Quester can be sincerely modest about their own abilities and position in the Quest then they may instead add a Success Level. | The Quester will be judged, according to their modesty, fairness and sincerity (or their lack thereof) by those around them (companions, bystanders, authorities, etc). Each action they have taken, or speech that they have made, that shows signs of pride, arrogance, bias or any desire beyond the needs of the Quest, will add a Failure Level, Obstacle or Hurdle to the Quester&#39;s Test or Ordeal. | Great actions, such as those made by a Quester, draw attention from others around. This attention can be distracting, and feed the ego of the Quester, adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If however, the Quester can maintain their focus on their goal, and rise above the ego stroking of their companions, authorities and even the opposition then they can add a Success Level instead. | The Quest that the Quester has taken on is theirs, they have been selected for it, and tasked with this Quest, so if the Quester tries to use modesty to get out of the Quest (e.g. \"I am not worthy of this Quest\") then that will add a Failure Level, Hurdle or Obstacle to the Quester&#29;s Test or Ordeal. This can also play out as the Quester appearing to be tempted away from the Quest by external forces (perhaps a desperate soul asks them for help, or some authority invites them away), this appears to be a distraction from the Quest, but if they do what needs to be done (helping those in need, taking time to speak with the authority) it turns out (often by coincidence, synchronicity, or the help of those they helped) to be essential somehow. | The Quester is tasked to perform some activity that they cannot yet complete (such as defeating a powerful foe, casting a spell they do not know, or using equipment they do not own), which adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If the Quester can find someone to teach them how to complete this task (or better yet that they can command to perform the task) and do not boast during this recruitment, instruction or commanding then they can add a Success Level instead. | Difficulties and dangers arise often between the Quester and a companion, adding a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test. If the Quester tries to blame this companion for these difficulties, or displays a lack of humility, failure in duty, pride, arrogance or a triggered hitch in some cases (such as fear or self-pity), then this will add another Hurdle, Obstacle or Failure Level. If instead, the Quester is modest and faces these difficulties with courage, and shows respect for their companion, then they will add a Success Level instead.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Authentic Modesty): Mirror the internal state described in the commentary: \"A dangerous enterprise, such as the crossing of a great stream, is made much more difficult if many claims and considerations have to be taken into account. On the other hand, the task is easy if it is attended to quickly and simply. Therefore the...\" Your actions should be framed by the goal: you agree with another or keep a secret.",
+        "Plot": "Plot Complication Line 1 (Authentic Modesty): Introduce a challenge based on the interpretation: \"A dangerous enterprise, such as the crossing of a great stream, is made much more difficult if many claims and considerations have to be taken into account. On the other hand, the task is easy if it is attended to quickly and simply. Therefore the...\" The specific quest objective for this stage is: The Quester is in a dangerous situation, made more dangerous (adding a Hurdle, Obstacle or Failure Level to their Quest or Test) every time the Quester acts without sincerity or from ego with self-serving or immodest actions, demands or concerns. If the Quester can be sincerely modest about their own abilities and position in the Quest then they may instead add a Success Level."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Make Humble Gestures): Mirror the internal state described in the commentary: \"\"Out of the fullness of the heart the mouth speaketh.\" When a man's attitude of mind is so modest that this expresses itself in his outward behavior, it is a source of good fortune to him. For the possibility of exerting a lasting influence arises...\" Your actions should be framed by the goal: you are non-threatening or show humility in your actions (bowing, kow-towing etc).",
+        "Plot": "Plot Complication Line 2 (Make Humble Gestures): Introduce a challenge based on the interpretation: \"\"Out of the fullness of the heart the mouth speaketh.\" When a man's attitude of mind is so modest that this expresses itself in his outward behavior, it is a source of good fortune to him. For the possibility of exerting a lasting influence arises...\" The specific quest objective for this stage is: The Quester will be judged, according to their modesty, fairness and sincerity (or their lack thereof) by those around them (companions, bystanders, authorities, etc). Each action they have taken, or speech that they have made, that shows signs of pride, arrogance, bias or any desire beyond the needs of the Quest, will add a Failure Level, Obstacle or Hurdle to the Quester&#39;s Test or Ordeal."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Modesty is Required): Mirror the internal state described in the commentary: \"This is the center of the hexagram, where its secret is disclosed. A distinguished name is readily earned by great achievements. If a man allows himself to be dazzled by fame, he will soon be criticized, and difficulties will arise. If, on the...\" Your actions should be framed by the goal: you are modest or determined.",
+        "Plot": "Plot Complication Line 3 (Modesty is Required): Introduce a challenge based on the interpretation: \"This is the center of the hexagram, where its secret is disclosed. A distinguished name is readily earned by great achievements. If a man allows himself to be dazzled by fame, he will soon be criticized, and difficulties will arise. If, on the...\" The specific quest objective for this stage is: Great actions, such as those made by a Quester, draw attention from others around. This attention can be distracting, and feed the ego of the Quester, adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If however, the Quester can maintain their focus on their goal, and rise above the ego stroking of their companions, authorities and even the opposition then they can add a Success Level instead."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Modest Action): Mirror the internal state described in the commentary: \"Everything has its proper measure. Even modesty in behavior can be carried too far. Here, however, it is appropriate, because the place between a worthy helper below and a kindly ruler above carries great responsibility. The confidence of the man in...\" Your actions should be framed by the goal: you take action or recognise another&#39;s contributions.",
+        "Plot": "Plot Complication Line 4 (Modest Action): Introduce a challenge based on the interpretation: \"Everything has its proper measure. Even modesty in behavior can be carried too far. Here, however, it is appropriate, because the place between a worthy helper below and a kindly ruler above carries great responsibility. The confidence of the man in...\" The specific quest objective for this stage is: The Quest that the Quester has taken on is theirs, they have been selected for it, and tasked with this Quest, so if the Quester tries to use modesty to get out of the Quest (e.g. \"I am not worthy of this Quest\") then that will add a Failure Level, Hurdle or Obstacle to the Quester&#29;s Test or Ordeal. This can also play out as the Quester appearing to be tempted away from the Quest by external forces (perhaps a desperate soul asks them for help, or some authority invites them away), this appears to be a distraction from the Quest, but if they do what needs to be done (helping those in need, taking time to speak with the authority) it turns out (often by coincidence, synchronicity, or the help of those they helped) to be essential somehow."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Not Getting What You Need): Mirror the internal state described in the commentary: \"Modesty is not to be confused with weak good nature that lets things take their own course. When a man holds a responsible position, he must at times resort to energetic measures. In doing so he must not try to make an impression by boasting of his...\" Your actions should be framed by the goal: you are authoritative, ask for advice, or take what you need.",
+        "Plot": "Plot Complication Line 5 (Not Getting What You Need): Introduce a challenge based on the interpretation: \"Modesty is not to be confused with weak good nature that lets things take their own course. When a man holds a responsible position, he must at times resort to energetic measures. In doing so he must not try to make an impression by boasting of his...\" The specific quest objective for this stage is: The Quester is tasked to perform some activity that they cannot yet complete (such as defeating a powerful foe, casting a spell they do not know, or using equipment they do not own), which adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If the Quester can find someone to teach them how to complete this task (or better yet that they can command to perform the task) and do not boast during this recruitment, instruction or commanding then they can add a Success Level instead."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Modest Expression): Mirror the internal state described in the commentary: \"A person who is really sincere in his modesty must make it show in reality. He must proceed with great energy in this. When enmity arises nothing is easier than to lay the blame on another. A weak man takes offense perhaps, and draws back, feeling...\" Your actions should be framed by the goal: you role-play a hitch (or one is invoked).",
+        "Plot": "Plot Complication Line 6 (Modest Expression): Introduce a challenge based on the interpretation: \"A person who is really sincere in his modesty must make it show in reality. He must proceed with great energy in this. When enmity arises nothing is easier than to lay the blame on another. A weak man takes offense perhaps, and draws back, feeling...\" The specific quest objective for this stage is: Difficulties and dangers arise often between the Quester and a companion, adding a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test. If the Quester tries to blame this companion for these difficulties, or displays a lack of humility, failure in duty, pride, arrogance or a triggered hitch in some cases (such as fear or self-pity), then this will add another Hurdle, Obstacle or Failure Level. If instead, the Quester is modest and faces these difficulties with courage, and shows respect for their companion, then they will add a Success Level instead."
+      }
+    }
+  }
+}

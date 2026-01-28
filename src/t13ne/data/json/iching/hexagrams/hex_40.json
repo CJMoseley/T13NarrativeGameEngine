@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 40,
+    "Name": "Burst Asunder",
+    "Entity": "&#19943;",
+    "Logical": 10,
+    "Trigrams": [
+      5,
+      3
+    ],
+    "Hexagram_Text": "Jie, Burst Asunder (or Liberation, Removing Obstacles, Taking Apart, or Deliverance), is symbolic of untangling that which binds. It is the breaking of bonds, destruction of barriers, and piercing of security. It is a warning to let go of emotional ties, anger and the negative thoughts that plague us all.",
+    "Unchanging": "You may once per Stage, add Incarna Score (Boon Reduced) to any roll, test or Ordeal Card Pips, to do with barriers, doors, or Obstacles.",
+    "Line1": "Without Blame",
+    "Line2": "More Cunning than a Fox",
+    "Line3": "A Fool and His Money",
+    "Line4": "Liberate Yourself",
+    "Line5": "Self-Deliverance",
+    "Line6": "Shooting A Hawk From The Wall"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you open a door, defeat bypass an Obstacle, or rest safely",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you swear revenge",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yang",
+        "Condition": "you act confident",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yin",
+        "Condition": "you are cunning, careful or uncover the truth",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yang",
+        "Condition": "you are foolish or spend Chi",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yin",
+        "Condition": "you act as though adventure awaits you, or you just met your new best friend",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you are earnest, sincere or optimistic",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yang",
+        "Condition": "you race to be first or best at anything",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Burst Asunder Quests are most often heists, capers or prison-breaks, the Quest opposition have strong defences that will have to be penetrated by the Quester and any companions in order to secure the object of the Quest. A Burst Asunder Quest is barely dealt with simply, there will be layers of security and each layer will require dealing with very differently, guards may be intimidated and killed, walls may be tunnelled through, laddered over or blown up, locks may be picked, or keys may be stolen, and sometimes the Quester may have someone on the inside (or have to become the \"insider\") or the Quester may be a prisoner trying to burst out. Burst Asunder Quests are at least Medium Stakes and always contain at least one High Stakes Ordeal (either firearms are being waved around or someone is climbing in a dangerous situation).",
+    "Quest_Complete": "The Quest that ends with the Burst Asunder Hexagram ends with a huge lifting of Tension. The Quester may be worried about the Quest-giver or another authority having a negative response to them returning with the Quest complete, but of course, they are actually more pleased the Quester has survived the Quest than if they even completed it. The Burst Asunder ending is the glorious return to home, and a outpouring of emotion from those who stayed at home.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester full of confidence in their plan, adds a Success Level to their Test or Ordeal. Usually this takes the form of a successful intelligence gathering, or initial team assembly.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester and the assembled companions must formulate a plan of attack. This plan is often cursory in nature, and may include more information gathering and recruiting specific team members or specialists. Care should be taken to not come to the attention of the opposition or the authorities at this time, or the Quester will add a Failure Level, Hurdle or Obstacle to their Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The Quester must identify the target, whether this is the opposition, or the object, depending upon the Quest Facet. Correctly identifying the proper target will add a Success Level, but any mistake at this point will add a Hurdle, Failure Level or numerous Obstacles to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "One of the Quester&#39;s companions is secretly working against the group. They may be a mole for the opposition, or be working for another authority with a different Quest. Something causes them to tip their hand and this creates an opportunity for the Quester to root them out and separate them from the others. Failure to root out the mole will add a Failure Level, Hurdle or Obstacle as genuine friends and companions will begin to leave or fear for themselves.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The final barrier between the Quester and the target is revealed. Only the Quester has the skills, talents and powers of all the companions to complete the Quest, but if they rely on the other companions to complete parts of this Ordeal then they will add a Success Level.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "If all has gone well the object of the Quest is in the Quester&#39;s hands, now all that remains is to escape with the goods. If the Quester has a good plan that will still work, or takes a moment to make a new plan then they can add a Success Level, but if their plan is already compromised and has no suitable contingency then add a Hurdle, Failure Level or 3 Obstacles to the Test or Ordeal.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "Here the movement goes out of the sphere of danger. The obstacle has been removed, the difficulties are being resolved. Deliverance is not yet achieved; it is just in its beginning, and the hexagram represents its various stages.",
+    "The_Image": {
+      "text": "Thunder and rain set in:\n\nThe image of DELIVERANCE.\n\nThus the superior man pardons mistakes\nAnd forgives misdeeds.",
+      "comments": "A thunderstorm has the effect of clearing the air; the superior man produces a similar effect when dealing with mistakes and sins of men that induce a condition of tension. Through clarity he brings deliverance. However, when failings come to light, he does not dwell on them; he simply passes over mistakes, the unintentional transgressions, just as thunder dies away. He forgives misdeeds, the intentional transgressions, just as water washes everything clean."
+    },
+    "The_Judgment": {
+      "text": "DELIVERANCE. The southwest furthers.\nIf there is no longer anything where one has to go,\nReturn brings good fortune.\nIf there is still something where one has to go,\nHastening brings good fortune.",
+      "comments": "This refers to a time in which tensions and complications begin to be eased. At such times we ought to make our way back to ordinary conditions as soon as possible; this is the meaning of \"the southwest.\" These periods of sudden change have great importance. Just as rain relieves atmospheric tension, making all the buds burst open, so a time of deliverance from burdensome pressure has a liberating and stimulating effect on life. One thing is important, however: in such times we must not overdo our triumph. The point is not to push on farther than is necessary. Returning to the regular order of life as soon as deliverance is achieved brings good fortune. If there are any residual matters that ought to be attended to, it should be done as quickly as possible, so that a clean sweep is made and no retardations occur."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Without blame.",
+        "comments": "In keeping with the situation, few words are needed. The hindrance is past, deliverance has come. One recuperates in peace and keeps still. This is the right thing to do in times when difficulties have been overcome."
+      },
+      "2": {
+        "text": "One kills three foxes in the field\nAnd receives a yellow arrow.\nPerseverance brings good fortune.",
+        "comments": "The image is taken from the hunt. The hunter catches three cunning foxes and receives a yellow arrow as a reward. The obstacles in public life are the designing foxes who try to influence the ruler through flattery. They must be removed before there can be any deliverance. But the struggle must not be carried on with the wrong weapons. The yellow color points to measure and mean in proceeding against the enemy; the arrow signifies the straight course. If one devotes himself wholeheartedly to the task of deliverance, he develops so much inner strength from his rectitude that it acts as a weapon against all that is false and low."
+      },
+      "3": {
+        "text": "If a man carries a burden on his back\nAnd nonetheless rides in a carriage,\nHe thereby encourages robbers to draw near.\nPerseverance leads to humiliation.",
+        "comments": "This refers to a man who has come out of needy circumstances in to comfort and freedom from want. If now, in the manner of an upstart, he tries to take his ease in comfortable surroundings that do not suit his nature, he thereby attracts robbers. If he goes on thus he is sure to bring disgrace upon himself. Confucius says about this line:\n\nCarrying a burden on the back is the business of common man; a carriage is the appurtenance of a man of rank. Now, when a common man uses the appurtenance of man of rank, robbers plot to take it away from him. If a man is insolent toward those above him and hard toward those below him, robbers plot to attack him. Carelessness in guarding things tempts thieves to steal. Sumptuous ornaments worn by a maiden are an enticement to rob her of her virtue."
+      },
+      "4": {
+        "text": "Deliver yourself from your great toe.",
+        "comments": "Then the companion comes,\nAnd him you can trust.\n\nIn times of standstill it will happen that inferior people attach themselves to a superior man, and through force of daily habit they may grow very close to him and become indispensable, just as the big toe is indispensable to the foot because it makes walking easier. But when the time of deliverance draws near, with its call to deeds, a man must free himself from such chance acquaintances with whim he has no inner connection. For otherwise the friends who share his views, on whom he could really rely and together with whom he could accomplish something, mistrust him and stay away."
+      },
+      "5": {
+        "text": "If only the superior man can deliver himself,\nIt brings good fortune.",
+        "comments": "Thus he proves to inferior men that he is in earnest.\n\nTimes of deliverance demand inner resolve. Inferior people cannot be driven off by prohibitions or any external means. If one desires to be rid of them, he must first break completely with them in his own mind; they will see for themselves that he is in earnest and will withdraw."
+      },
+      "6": {
+        "text": "The prince shoots at a hawk on a high wall.\nHe kills it. Everything serves to further.",
+        "comments": "The hawk on a high wall is the symbol of a powerful inferior in a high position who is hindering the deliverance. He withstands the force of inner influences, because he is hardened in his wickedness. He must be forcibly removed, and this requires appropriate means. Confucius says about this line:\n\nThe hawk is the object of the hunt; bow and arrow are the tools and means. The marksman is man (who must make proper use of the means to his end). The superior man contains the means in his own person. He bides his time and then acts. Why then should not everything go well? He acts and is free. Therefore all he has to do is to go forth, and he takes his quarry. This is how a man fares who acts after he has made ready the means."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Burst Asunder'. Internalize this core philosophy: Here the movement goes out of the sphere of danger. The obstacle has been removed, the difficulties are being resolved. Deliverance is not yet achieved; it is just in its beginning, and the hexagram represents its various stages. Your current worldview is: \"Jie, Burst Asunder (or Liberation, Removing Obstacles, Taking Apart, or Deliverance), is symbolic of untangling that which binds. It is the breaking of bonds, destruction of barriers, and piercing of security. It is a warning to let go of emotional ties, anger and the negative thoughts that plague us all.\". Let your choices be subtly driven by these conditions: you open a door, defeat bypass an Obstacle, or rest safely, you swear revenge. When interacting, mirror the wisdom found in the commentary: \"This refers to a time in which tensions and complications begin to be eased. At such times we ought to make our way back to ordinary conditions as soon as possible; this is the meaning of \"the southwest.\" These periods of sudden change have great importance. Just as rain relieves atmospheric...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Burst Asunder'. The primary quest objective is: The Burst Asunder Quests are most often heists, capers or prison-breaks, the Quest opposition have strong defences that will have to be penetrated by the Quester and any companions in order to secure the object of the Quest. A Burst Asunder Quest is barely dealt with simply, there will be layers of security and each layer will require dealing with very differently, guards may be intimidated and killed, walls may be tunnelled through, laddered over or blown up, locks may be picked, or keys may be stolen, and sometimes the Quester may have someone on the inside (or have to become the \"insider\") or the Quester may be a prisoner trying to burst out. Burst Asunder Quests are at least Medium Stakes and always contain at least one High Stakes Ordeal (either firearms are being waved around or someone is climbing in a dangerous situation).. Introduce environmental or social complications that reflect the 'Image' of this hexagram: A thunderstorm has the effect of clearing the air; the superior man produces a similar effect when dealing with mistakes and sins of men that induce a condition of tension. Through clarity he brings deliverance. However, when failings come to light, he does not dwell on them; he simply passes over mistakes, the unintentional transgressions, just as thunder dies away. He forgives misdeeds, the... Use the following line-specific challenges to pace the story: The Quester full of confidence in their plan, adds a Success Level to their Test or Ordeal. Usually this takes the form of a successful intelligence gathering, or initial team assembly. | The Quester and the assembled companions must formulate a plan of attack. This plan is often cursory in nature, and may include more information gathering and recruiting specific team members or specialists. Care should be taken to not come to the attention of the opposition or the authorities at this time, or the Quester will add a Failure Level, Hurdle or Obstacle to their Test or Ordeal. | The Quester must identify the target, whether this is the opposition, or the object, depending upon the Quest Facet. Correctly identifying the proper target will add a Success Level, but any mistake at this point will add a Hurdle, Failure Level or numerous Obstacles to the Test or Ordeal. | One of the Quester&#39;s companions is secretly working against the group. They may be a mole for the opposition, or be working for another authority with a different Quest. Something causes them to tip their hand and this creates an opportunity for the Quester to root them out and separate them from the others. Failure to root out the mole will add a Failure Level, Hurdle or Obstacle as genuine friends and companions will begin to leave or fear for themselves. | The final barrier between the Quester and the target is revealed. Only the Quester has the skills, talents and powers of all the companions to complete the Quest, but if they rely on the other companions to complete parts of this Ordeal then they will add a Success Level. | If all has gone well the object of the Quest is in the Quester&#39;s hands, now all that remains is to escape with the goods. If the Quester has a good plan that will still work, or takes a moment to make a new plan then they can add a Success Level, but if their plan is already compromised and has no suitable contingency then add a Hurdle, Failure Level or 3 Obstacles to the Test or Ordeal.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Without Blame): Mirror the internal state described in the commentary: \"In keeping with the situation, few words are needed. The hindrance is past, deliverance has come. One recuperates in peace and keeps still. This is the right thing to do in times when difficulties have been overcome.\" Your actions should be framed by the goal: you act confident.",
+        "Plot": "Plot Complication Line 1 (Without Blame): Introduce a challenge based on the interpretation: \"In keeping with the situation, few words are needed. The hindrance is past, deliverance has come. One recuperates in peace and keeps still. This is the right thing to do in times when difficulties have been overcome.\" The specific quest objective for this stage is: The Quester full of confidence in their plan, adds a Success Level to their Test or Ordeal. Usually this takes the form of a successful intelligence gathering, or initial team assembly."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (More Cunning than a Fox): Mirror the internal state described in the commentary: \"The image is taken from the hunt. The hunter catches three cunning foxes and receives a yellow arrow as a reward. The obstacles in public life are the designing foxes who try to influence the ruler through flattery. They must be removed before there...\" Your actions should be framed by the goal: you are cunning, careful or uncover the truth.",
+        "Plot": "Plot Complication Line 2 (More Cunning than a Fox): Introduce a challenge based on the interpretation: \"The image is taken from the hunt. The hunter catches three cunning foxes and receives a yellow arrow as a reward. The obstacles in public life are the designing foxes who try to influence the ruler through flattery. They must be removed before there...\" The specific quest objective for this stage is: The Quester and the assembled companions must formulate a plan of attack. This plan is often cursory in nature, and may include more information gathering and recruiting specific team members or specialists. Care should be taken to not come to the attention of the opposition or the authorities at this time, or the Quester will add a Failure Level, Hurdle or Obstacle to their Test or Ordeal."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (A Fool and His Money): Mirror the internal state described in the commentary: \"This refers to a man who has come out of needy circumstances in to comfort and freedom from want. If now, in the manner of an upstart, he tries to take his ease in comfortable surroundings that do not suit his nature, he thereby attracts robbers. If...\" Your actions should be framed by the goal: you are foolish or spend Chi.",
+        "Plot": "Plot Complication Line 3 (A Fool and His Money): Introduce a challenge based on the interpretation: \"This refers to a man who has come out of needy circumstances in to comfort and freedom from want. If now, in the manner of an upstart, he tries to take his ease in comfortable surroundings that do not suit his nature, he thereby attracts robbers. If...\" The specific quest objective for this stage is: The Quester must identify the target, whether this is the opposition, or the object, depending upon the Quest Facet. Correctly identifying the proper target will add a Success Level, but any mistake at this point will add a Hurdle, Failure Level or numerous Obstacles to the Test or Ordeal."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Liberate Yourself): Mirror the internal state described in the commentary: \"Then the companion comes,\nAnd him you can trust.\n\nIn times of standstill it will happen that inferior people attach themselves to a superior man, and through force of daily habit they may grow very close to him and become indispensable, just as the...\" Your actions should be framed by the goal: you act as though adventure awaits you, or you just met your new best friend.",
+        "Plot": "Plot Complication Line 4 (Liberate Yourself): Introduce a challenge based on the interpretation: \"Then the companion comes,\nAnd him you can trust.\n\nIn times of standstill it will happen that inferior people attach themselves to a superior man, and through force of daily habit they may grow very close to him and become indispensable, just as the...\" The specific quest objective for this stage is: One of the Quester&#39;s companions is secretly working against the group. They may be a mole for the opposition, or be working for another authority with a different Quest. Something causes them to tip their hand and this creates an opportunity for the Quester to root them out and separate them from the others. Failure to root out the mole will add a Failure Level, Hurdle or Obstacle as genuine friends and companions will begin to leave or fear for themselves."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Self-Deliverance): Mirror the internal state described in the commentary: \"Thus he proves to inferior men that he is in earnest.\n\nTimes of deliverance demand inner resolve. Inferior people cannot be driven off by prohibitions or any external means. If one desires to be rid of them, he must first break completely with them...\" Your actions should be framed by the goal: you are earnest, sincere or optimistic.",
+        "Plot": "Plot Complication Line 5 (Self-Deliverance): Introduce a challenge based on the interpretation: \"Thus he proves to inferior men that he is in earnest.\n\nTimes of deliverance demand inner resolve. Inferior people cannot be driven off by prohibitions or any external means. If one desires to be rid of them, he must first break completely with them...\" The specific quest objective for this stage is: The final barrier between the Quester and the target is revealed. Only the Quester has the skills, talents and powers of all the companions to complete the Quest, but if they rely on the other companions to complete parts of this Ordeal then they will add a Success Level."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Shooting A Hawk From The Wall): Mirror the internal state described in the commentary: \"The hawk on a high wall is the symbol of a powerful inferior in a high position who is hindering the deliverance. He withstands the force of inner influences, because he is hardened in his wickedness. He must be forcibly removed, and this requires...\" Your actions should be framed by the goal: you race to be first or best at anything.",
+        "Plot": "Plot Complication Line 6 (Shooting A Hawk From The Wall): Introduce a challenge based on the interpretation: \"The hawk on a high wall is the symbol of a powerful inferior in a high position who is hindering the deliverance. He withstands the force of inner influences, because he is hardened in his wickedness. He must be forcibly removed, and this requires...\" The specific quest objective for this stage is: If all has gone well the object of the Quest is in the Quester&#39;s hands, now all that remains is to escape with the goods. If the Quester has a good plan that will still work, or takes a moment to make a new plan then they can add a Success Level, but if their plan is already compromised and has no suitable contingency then add a Hurdle, Failure Level or 3 Obstacles to the Test or Ordeal."
+      }
+    }
+  }
+}

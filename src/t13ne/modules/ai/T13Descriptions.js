@@ -1,0 +1,201 @@
+﻿export default class T13Descriptions {
+    constructor(t13, AIService) {
+        this.t13 = t13;
+        this.AIService = AIService;
+    }
+
+    async generate(context) {
+        // Enrich with geometry if name is present
+        if (context.name) {
+             const T13Geometry = this.t13.getModule('T13Geometry');
+             if (T13Geometry) {
+                 let type = 'Character';
+                 if (context.type) {
+                     const t = context.type.toLowerCase();
+                     if (t.includes('species')) type = 'Species';
+                     else if (t.includes('society')) type = 'Society';
+                     else if (t.includes('location') || t.includes('planet') || t.includes('system')) type = 'Location';
+                     else if (t.includes('descendant') || t.includes('item') || t.includes('object')) type = 'Descendant';
+                 }
+                 context.geometryLore = T13Geometry.getLoreDescriptions(context.name, type);
+             }
+        }
+
+        const prompt = await this.buildPrompt(context);
+        const description = await this.AIService.generateText(prompt);
+        return description;
+    }
+
+    /**
+     * Generates a description for a specific Knot type.
+     * @param {object} knot - The Knot object (Annex, Hitch, SuperKnot, etc.)
+     * @param {string} [type] - Optional type override (e.g., 'Skill', 'Power').
+     */
+    async generateKnotDescription(knot, type = null) {
+        const context = {
+            name: knot.name,
+            type: type || knot.annexType || knot.constructor.name,
+            description: knot.description,
+            sizeText: (typeof knot.getSizeText === 'function') ? knot.getSizeText() : null,
+            proficiencies: knot.knot ? knot.knot.getTiedProficiencies() : [],
+            facetDetails: []
+        };
+
+        // Extract Facet details from tags if available
+        if (knot.tags && knot.tags.facets) {
+            const Facets = this.t13.getModule('Facets');
+            if (Facets) {
+                for (const facetName of knot.tags.facets) {
+                    const fData = await Facets.getFacet(facetName);
+                    if (fData) context.facetDetails.push(fData);
+                }
+            }
+        }
+
+        const prompt = await this.buildPrompt(context);
+        return await this.AIService.generateText(prompt);
+    }
+
+    async buildPrompt(context) {
+        let prompt = "Generate a description for a Knot with the following characteristics:\n";
+
+        if (context.name) {
+            if (Array.isArray(context.name)) {
+                const [common, full, akas] = context.name;
+                prompt += `- Name: ${common}\n`;
+                if (full && full !== common) prompt += `- Full Name: ${full}\n`;
+                if (akas) {
+                    const akaStr = Array.isArray(akas) ? akas.join(', ') : akas;
+                    if (akaStr) prompt += `- Aliases: ${akaStr}\n`;
+                }
+            } else {
+                prompt += `- Name: ${context.name}\n`;
+            }
+        }
+
+        if (context.type) {
+            prompt += `- Type: ${context.type}\n`;
+        }
+
+        // Add Geometry Context if available
+        if (context.geometryLore) {
+            prompt += `\nGeometry Context (Numerological Influences):\n`;
+            prompt += `- Essence (Full Name): ${context.geometryLore.main}\n`;
+            prompt += `- Inner Nature (Soul): ${context.geometryLore.soul}\n`;
+            prompt += `- Outward Appearance (Facade): ${context.geometryLore.facade}\n`;
+            prompt += `- Origin/Foundation (Nascent): ${context.geometryLore.nascent}\n`;
+            prompt += `- Hidden Potential (Ghost): ${context.geometryLore.hidden}\n`;
+            
+            if (context.geometryLore.key) {
+                const k = context.geometryLore.key;
+                prompt += `- Key/Pitch: ${k.Pitch} (${k.House})\n`;
+                if (k.Questions) prompt += `  * Thematic Question: ${k.Questions}\n`;
+                if (k.Ruler) prompt += `  * Ruler: ${k.Ruler}\n`;
+                if (context.geometryLore.keyDescription) {
+                    prompt += `  * Environmental Feel: ${context.geometryLore.keyDescription}\n`;
+                }
+            }
+
+            if (context.geometryLore.chord) {
+                const c = context.geometryLore.chord;
+                prompt += `- Harmonic Chord: ${c.Type || 'Unknown'}\n`;
+                if (context.geometryLore.chordDescription) {
+                    prompt += `  * Harmonic Feel: ${context.geometryLore.chordDescription}\n`;
+                }
+            }
+
+            if (context.geometryLore.harmonics) {
+                const h = context.geometryLore.harmonics;
+                if (h.perfect && h.perfect.name) prompt += `- Perfect Harmony (Affinity): ${h.perfect.name}\n`;
+                if (h.nemesis && h.nemesis.name) prompt += `- Nemesis (Conflict): ${h.nemesis.name}\n`;
+            }
+        }
+
+        if (context.proficiencies) {
+            const proficiencies = await this.getProficiencies(context.proficiencies);
+            if (proficiencies.length > 0) {
+                prompt += `- Proficiencies: ${proficiencies.join(', ')}\n`;
+            }
+        }
+
+        if (context.boons) {
+            const boons = await this.getBoons(context.boons);
+            if (boons.length > 0) {
+                prompt += `- Boons: ${boons.join(', ')}\n`;
+            }
+        }
+
+        if (context.yarn) {
+            const yarn = await this.getYarn(context.yarn);
+            if (yarn.length > 0) {
+                prompt += `- Yarn: ${yarn.join(', ')}\n`;
+            }
+        }
+
+        if (context.sizeText) {
+            prompt += `- Size/Scale: ${context.sizeText}\n`;
+        }
+
+        if (context.facetDetails && context.facetDetails.length > 0) {
+            prompt += "\nFacet Context (Thematic Influences):\n";
+            context.facetDetails.forEach(f => {
+                prompt += `- ${f.FacetName}:\n`;
+                // Use specific text if available, fallback to short name
+                if (f.Annex_Root_Text || f.Annex_Root) prompt += `  * Root (Concept): ${f.Annex_Root_Text || f.Annex_Root}\n`;
+                if (f.Annex_Channel_Text || f.Annex_Channel) prompt += `  * Channel (Action): ${f.Annex_Channel_Text || f.Annex_Channel}\n`;
+                if (f.Tangle_Text || f.Tangle) prompt += `  * Tangle (Complication): ${f.Tangle_Text || f.Tangle}\n`;
+                // Auras (Nimbed/Umbral)
+                if (f.Nimbed_Text || f.Nimbed) prompt += `  * Nimbed Aura (Benefit): ${f.Nimbed_Text || f.Nimbed}\n`;
+                if (f.Umbral_Text || f.Umbral) prompt += `  * Umbral Aura (Cost/Shadow): ${f.Umbral_Text || f.Umbral}\n`;
+                if (f.Attack) prompt += `  * Attack Mode: ${f.Attack} (${f.Attack_Modes || ''}) - ${f.Attack_Text || ''}\n`;
+                if (f.Descendants_Text || f.Descendants) prompt += `  * Descendant Type: ${f.Descendants_Text || f.Descendants}\n`;
+                if (f.Location_Text || f.Location) prompt += `  * Location Context: ${f.Location_Text || f.Location}\n`;
+            });
+        }
+        
+        prompt += "\n The description should be evocative and suitable for a science fiction setting.";
+
+        return prompt;
+    }
+
+    async getProficiencies(proficiencyIds) {
+        const threads = this.t13.getModule('Threads');
+        if (!threads) return [];
+        
+        const proficiencies = await Promise.all(proficiencyIds.map(async (id) => {
+            const proficiency = await threads.getProficiency(id);
+            return proficiency ? proficiency.name : null;
+        }));
+
+        return proficiencies.filter(Boolean);
+    }
+
+    async getBoons(boonIds) {
+        const facets = this.t13.getModule('Facets');
+        if (!facets) return [];
+
+        const boons = await Promise.all(boonIds.map(async (id) => {
+            const boon = await facets.getFacet(id);
+            return boon ? boon.name : null;
+        }));
+
+        return boons.filter(Boolean);
+    }
+
+    async getYarn(yarnIds) {
+        const cardsAPI = this.t13.getModule('CardsAPI');
+        if (!cardsAPI) return [];
+
+        const yarn = await Promise.all(yarnIds.map(async (id) => {
+            const card = await cardsAPI.getYarnCard(id);
+            return card ? card.name : null;
+        }));
+
+        return yarn.filter(Boolean);
+    }
+}
+
+
+
+
+

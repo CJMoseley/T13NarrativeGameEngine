@@ -1,0 +1,65 @@
+[
+    {
+        "Type": "Foe",
+        "Description": "This is someone who is trying to attack you. They may be an enemy from a different side, or just be someone you met who was initially Antagonistic towards you and you did nothing to improve that.",
+        "MinSOL": -10,
+        "MaxSOL": -7,
+        "Rules": "A Foe will probably try and attack at the highest Stakes and most powerful weaponry available to them. Because of this Foes are usually restricted to not appearing in any Scene with a Suspense Level lower than Bloody."
+    },
+    {
+        "Type": "Antagonistic",
+        "Description": "This is someone who doesn’t want to be around you, and lets you know.",
+        "MinSOL": -9,
+        "MaxSOL": -5,
+        "Rules": "Antagonistic people will attack you, but with lower stakes attacks, such as insults, lectures, and other Psych or unarmed attacks."
+    },
+    {
+        "Type": "Unfriendly",
+        "Description": "This is someone who does not care if you live or die. They don’t like being around you, but keep it to themselves, mostly.",
+        "MinSOL": -7,
+        "MaxSOL": -1,
+        "Rules": "Unfriendly people will move away and do their best to ignore you."
+    },
+    {
+        "Type": "Unfavourable",
+        "Description": "This is someone who sees you in a bad light, but they may be yet persuaded by your charms.",
+        "MinSOL": -6,
+        "MaxSOL": -1,
+        "Rules": "Unfavourable people will watch you, to see if they should become Unfriendly, or Antagonistic towards you later. Occasionally, they might become Neutral, Favourable or even Friendly."
+    },
+    {
+        "Type": "Neutral",
+        "Description": "This is just someone, they have no special feelings about you in either direction.",
+        "MinSOL": -2,
+        "MaxSOL": 2,
+        "Rules": "Neutral people don’t pay you much attention unless you do something to draw it."
+    },
+    {
+        "Type": "Favourable",
+        "Description": "This is someone who sees you in a good light, but you can ruin that if you aren’t nice to them.",
+        "MinSOL": 1,
+        "MaxSOL": 8,
+        "Rules": "Favourable people want to like you, so they watch you, trying to decide if they want to be friendly or even more. Occasionally they can be repulsed by you, becoming Neutral, Unfavourable or even Antagonistic."
+    },
+    {
+        "Type": "Friendly",
+        "Description": "This is someone who wants to like you. They enjoy your company and want to get to know you better.",
+        "MinSOL": 2,
+        "MaxSOL": 8,
+        "Rules": "Friendly people like to spend time around you, and ask questions about your opinions on things."
+    },
+    {
+        "Type": "Trusting",
+        "Description": "This is some one who trusts you, possibly as a friend, business partner, lover, or squad-mate.",
+        "MinSOL": 6,
+        "MaxSOL": 9,
+        "Rules": "Trusting people assume you are on their side (because you probably are). They will generally try to help you, and may even defend you."
+    },
+    {
+        "Type": "Confidant",
+        "Description": "This is some one who trusts you completely. It may be as a best friend, spouse, or kindred spirit.",
+        "MinSOL": 7,
+        "MaxSOL": 10,
+        "Rules": "Confidante people tell you everything, they have no secrets from you and expect the same from you. They will leap to your defence, possibly even at the cost of their own life."
+    }
+]

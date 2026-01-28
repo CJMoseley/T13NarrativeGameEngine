@@ -1,0 +1,38 @@
+[
+    {
+        "Type": "Harmonic",
+        "Description": "Harmonic Numbers are other Geometries that have a generally positive interaction with this Geometry. When this Geometry meets one of their Harmonics they will generally view them favourably.",
+        "Impression": 1,
+        "Reaction": 0
+    },
+    {
+        "Type": "Perfect",
+        "Description": "Perfect Harmonic Numbers the Geometries that this Geometry are most attracted toward. Perfect Harmonies are sometimes described as being soul mates, but best friends, mentors and role-models may be Perfect Harmonics. When this Geometry meets their Perfect Harmonic, they will generally be friendly or trusting towards them. In Ordeals and Dice Tests, Rolling or Drawing a Perfect Harmonic can count as a Critical.",
+        "Impression": 4,
+        "Reaction": 2
+    },
+    {
+        "Type": "Wolf",
+        "Description": "The Wolf Harmonic is the one Harmonic that this particular Geometry does not mix well with. Something about the Wolf Harmonic number just doesn’t quite gel with this Geometry. When this Geometry meets their Wolf Harmonic, they will generally be unfavourable towards them.",
+        "Impression": -2,
+        "Reaction": -1
+    },
+    {
+        "Type": "Dissonant",
+        "Description": "Dissonant Numbers clash. Geometries that are Dissonant with each other will generally have a worse time of it. When this Geometry meets one of their Dissonant Geometries they will generally view them unfavourably.",
+        "Impression": -1,
+        "Reaction": 0
+    },
+    {
+        "Type": "Sustained",
+        "Description": "A Sustained Dissonant is a Dissonant that actually this Geometry is just fine with. Sure they may not be firm friends, but they can get along. When this Geometry meets their Sustained Dissonant they will generally be neutral or even favourable towards them.",
+        "Impression": 2,
+        "Reaction": 1
+    },
+    {
+        "Type": "Nemesis",
+        "Description": "Nemesis Dissonant Numbers are the absolute worst. Every time you meet one, they seem to be unpleasant, or smarmy, full of false charm. The Nemesis Dissonant may actually be a Nemesis, but more likely is just an unfriendly or just difficult to read person. When this Geometry meets their Nemesis Dissonant they will generally be unfriendly or antagonistic. In Ordeals and Dice Tests, rolling or Drawing a Nemesis Dissonant counts as a Fumble.",
+        "Impression": -4,
+        "Reaction": -2
+    }
+]

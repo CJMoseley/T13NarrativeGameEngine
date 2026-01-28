@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 36,
+    "Name": "Shuttering The Lamp",
+    "Entity": "&#19939;",
+    "Logical": 5,
+    "Trigrams": [
+      2,
+      7
+    ],
+    "Hexagram_Text": "Ming Yi, Shuttering The Lamp (or Wounding of the Bright or Darkening the Light or Brightness Hiding), every day has its night. One shutters the lamp to conserve its fuel, and to allow one's eyes to adjust to the darkness. You also contain an inner light, the philosopher's fire of intellect, imagination and will, there are times when these too should be shuttered for your protection.",
+    "Unchanging": "You may add a Success Level to any Test or Ordeal Action in exchange for an Unsoakable Level of Wound. So taking a Distract Wound adds 1 Success Level, taking a Carnage Wound would add six Success Levels to the action or Test.",
+    "Line1": "Closing the Shutters",
+    "Line2": "Stumbling in the Dark",
+    "Line3": "Gloaming Hunt",
+    "Line4": "Heart of Darkness",
+    "Line5": "The Shuttered Mind",
+    "Line6": "Snuffing the Lamp"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you hide, keep low, or act stupid",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you cooperate with others",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "you hide, keep a low profile, or aren't noticed",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yang",
+        "Condition": "you help another, or act while Wounded",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yin",
+        "Condition": "you face your problems, capture an enemy, or travel during dusk",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yang",
+        "Condition": "you despair, have a bleak outlook, or recognise your own darkness in another",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you hide your motives, yourself, or act the fool",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yang",
+        "Condition": "you ignore mores, values, morals, or ethics, and walk a middle path",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Shuttering The Lamp Quest indicates that we have entered a time of great darkness and danger, to walk around with a bright lamp at this time would make one a target. You must shutter that lamp to not be targeted. This often applies figuratively, where the Quest (or some aspect of the Quester&#39;s character) will place the Quester in opposition to the authorities, and the Quest must be accomplished with this added danger. For a example, if homosexuality and use of magic are both illegal, then a gay wizard Quester will have a much harder time protecting his prince, as both his sexuality and actions are likely to draw attention.",
+    "Quest_Complete": "When a Quest ends with The Shuttering of the Lamp Hexagram then the Quester is likely injured in the end. This is not a deadly injury, but does weaken the Quester, often by creating a new Hitch.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "If the Quester is bold add a Failure Level, Hurdle or Obstacle to their Test or Ordeal, but if they are furtive and deprive themselves of even necessities in order to keep a low profile (for example, not leaving their hiding place, despite a lack of food) then they may add a Success Level to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "If the Quester has been wounded reduce the Wound one Level now automatically (Mortal becomes Crippling, etc) and all such Wounds are never fatal (no Dead or Destroyed Hitches may be created on the Quester), as long as the Quester flees immediately, they help others, or are helped by another. If they are not wounded themselves and do not help others who are injured, then add a Failure Level, Hurdle, or Obstacle to their Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The sun is set and the twilight fades, but in the dying light the Quester and the opposition catch sight of each other. If either party tries to injure the other this will add a Failure Level, Hurdle or Obstacle to the Quester&#39;s Test or Ordeal. However, if either party surrenders to the other, then this may bring a Success Level instead (if they discuss their differences and come to some mutually beneficial agreement).",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester finds themselves in opposition territory (such as the villain&#39;s base), they get close enough that the enemies thoughts and plans are revealed to them, but staying too long will add a Failure Level, Hurdle or Obstacle to their Test or Ordeal every few minutes.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester is in danger and must hide what they really think, and their real motives to progress. They may be surrounded by the opposition and have to pretend to be of them, or they may discover those they thought were their allies actually have very different agendas. If the Quester is not successful in hiding their own motives and feelings then add a Failure Level, Hurdle or Obstacle to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "It is always darkest before the dawn, and just when things seem at their most evil, the evil turns on itself. The Quester will have to survive until and as the opposition turns upon itself. The Stakes are always at least High during this Ordeal, and sticking to their normal tactics, ethics or values adds a Failure Level, Hurdle or Obstacle to any Test or Ordeal.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "Here the sun has sunk under the earth and is therefore darkened. The name of the hexagram means literally \"wounding of the bright\"; hence the individual lines contain frequent references to wounding. The situation is the exact opposite of that in the foregoing hexagram. In the latter a wise man at the head of affairs has able helpers, and in company with them makes progress; here a man of dark nature is in a position of authority and brings harm to the wise and able man.",
+    "The_Image": {
+      "text": "The light has sunk into the earth:\n\nThe image of DARKENING OF THE LIGHT.\n\nThus does the superior man live with the great mass:\nHe veils his light, yet still shines.",
+      "comments": "In a time of darkness it is essential to be cautious and reserved. One should not needlessly awaken overwhelming enmity by inconsiderate behavior. In such times one ought not to fall in with the practices of others; neither should one drag them censoriously into the light. In social intercourse one should not try to be all-knowing. One should let many things pass, without being duped."
+    },
+    "The_Judgment": {
+      "text": "DARKENING OF THE LIGHT. In adversity\nIt furthers one to be persevering.",
+      "comments": "One must not unresistingly let himself be swept along by unfavorable circumstances, nor permit his steadfastness to be shaken. He can avoid this by maintaining his inner light, while remaining outwardly yielding and tractable. With this attitude he can overcome even the greatest adversities. In some situations indeed a man must hide his light, in order to make his will prevail inspite of difficulties in his immediate environment. Perseverance must dwell in inmost consciousness and should not be discernible from without. Only thus is a man able to maintain his will in the face of difficulties."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Darkening of the light during flight.\nHe lowers his wings.",
+        "comments": "The superior man does not eat for three days\nOn his wanderings.\nBut he has somewhere to go.\n\nThe host has occasion to gossip about him.\n\nWith grandiose resolve a man endeavors to soar above all obstacles, but thus encounters a hostile fate. He retreats and evades the issue. The time is difficult. Without rest, he must hurry along, with no permanent abiding place. If he does not want to make compromises within himself, but insists on remaining true to his principles, he suffers deprivation. Never the less he has a fixed goal to strive for even though the people with whom he lives do not understand him and speak ill of him."
+      },
+      "2": {
+        "text": "Darkening of the light injures him in the left thigh.\nHe gives aid with the strength of a horse.\nGood fortune.",
+        "comments": "Here the Lord of Light is in a subordinate place and is wounded by the Lord of Darkness. But the injury is not fatal; it is only a hindrance. Rescue is still possible. The wounded man gives no thought to himself; he thinks only of saving the others who are also in danger. Therefore he tries with all his strength to save all that can be saved. There is good fortune in thus acting according to duty."
+      },
+      "3": {
+        "text": "Darkening of the light during the hunt in the south.",
+        "comments": "Their great leader is captured.\nOne must not expect perseverance too soon.\n\nIt seems as if chance were at work. While the strong, loyal man is striving eagerly and in good faith to create order, he meets the ringleader of the disorder, as if by accident, and seizes him. Thus victory is achieved. But in abolishing abuses one must not be too hasty. This would turn out badly because the abuses have been in existence so long."
+      },
+      "4": {
+        "text": "He penetrates the left side of the belly.\nOne gets at the very heart of the darkening of the light.",
+        "comments": "We find ourselves close to the commander of darkness and so discover his mot secret thoughts. In this way we realize that there is no longer any hope of improvement, and thus we are enabled to leave the scene of disaster before the storm breaks."
+      },
+      "5": {
+        "text": "Darkening of the light as with Prince Chi.\nPerseverance furthers.",
+        "comments": "Prince Chi lived at the court of the evil tyrant Chou Hsin, who, although not mentioned by name, furnished the historical example on which this whole situation is based. Prince Chi was a relative of the tyrant and could not withdraw from the court; therefore he concealed his true sentiments and feigned insanity. Although he was held a slave, he did not allow external misery to deflect him from his convictions. This provides a teaching for those who cannot leave their posts in times of darkness. In order to escape danger, they need invincible perseverance of spirit and redoubled caution in their dealings with the world."
+      },
+      "6": {
+        "text": "Not light but darkness.\nFirst he climbed up to heaven,",
+        "comments": "Then plunged into the depths of the earth.\n\nHere the climax of the darkening is reached. The dark power at first held so high a place that it could wound all who were on the side of good and of the light. But in the end it perishes of its own darkness, for evil must itself fall at the very moment when it has wholly overcome the good, and thus consumed the energy to which it owed its duration."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Shuttering The Lamp'. Internalize this core philosophy: Here the sun has sunk under the earth and is therefore darkened. The name of the hexagram means literally \"wounding of the bright\"; hence the individual lines contain frequent references to wounding. The situation is the exact opposite of that in the foregoing hexagram. In the latter a wise man at the head of affairs has able helpers, and in company with them makes progress; here a man of dark nature is in a position of authority and brings harm to the wise and able man. Your current worldview is: \"Ming Yi, Shuttering The Lamp (or Wounding of the Bright or Darkening the Light or Brightness Hiding), every day has its night. One shutters the lamp to conserve its fuel, and to allow one's eyes to adjust to the darkness. You also contain an inner light, the philosopher's fire of intellect, imagination and will, there are times when these too should be shuttered for your protection.\". Let your choices be subtly driven by these conditions: you hide, keep low, or act stupid, you cooperate with others. When interacting, mirror the wisdom found in the commentary: \"One must not unresistingly let himself be swept along by unfavorable circumstances, nor permit his steadfastness to be shaken. He can avoid this by maintaining his inner light, while remaining outwardly yielding and tractable. With this attitude he can overcome even the greatest adversities. In...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Shuttering The Lamp'. The primary quest objective is: The Shuttering The Lamp Quest indicates that we have entered a time of great darkness and danger, to walk around with a bright lamp at this time would make one a target. You must shutter that lamp to not be targeted. This often applies figuratively, where the Quest (or some aspect of the Quester&#39;s character) will place the Quester in opposition to the authorities, and the Quest must be accomplished with this added danger. For a example, if homosexuality and use of magic are both illegal, then a gay wizard Quester will have a much harder time protecting his prince, as both his sexuality and actions are likely to draw attention.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: In a time of darkness it is essential to be cautious and reserved. One should not needlessly awaken overwhelming enmity by inconsiderate behavior. In such times one ought not to fall in with the practices of others; neither should one drag them censoriously into the light. In social intercourse one should not try to be all-knowing. One should let many things pass, without being duped. Use the following line-specific challenges to pace the story: If the Quester is bold add a Failure Level, Hurdle or Obstacle to their Test or Ordeal, but if they are furtive and deprive themselves of even necessities in order to keep a low profile (for example, not leaving their hiding place, despite a lack of food) then they may add a Success Level to the Test or Ordeal. | If the Quester has been wounded reduce the Wound one Level now automatically (Mortal becomes Crippling, etc) and all such Wounds are never fatal (no Dead or Destroyed Hitches may be created on the Quester), as long as the Quester flees immediately, they help others, or are helped by another. If they are not wounded themselves and do not help others who are injured, then add a Failure Level, Hurdle, or Obstacle to their Test or Ordeal. | The sun is set and the twilight fades, but in the dying light the Quester and the opposition catch sight of each other. If either party tries to injure the other this will add a Failure Level, Hurdle or Obstacle to the Quester&#39;s Test or Ordeal. However, if either party surrenders to the other, then this may bring a Success Level instead (if they discuss their differences and come to some mutually beneficial agreement). | The Quester finds themselves in opposition territory (such as the villain&#39;s base), they get close enough that the enemies thoughts and plans are revealed to them, but staying too long will add a Failure Level, Hurdle or Obstacle to their Test or Ordeal every few minutes. | The Quester is in danger and must hide what they really think, and their real motives to progress. They may be surrounded by the opposition and have to pretend to be of them, or they may discover those they thought were their allies actually have very different agendas. If the Quester is not successful in hiding their own motives and feelings then add a Failure Level, Hurdle or Obstacle to the Test or Ordeal. | It is always darkest before the dawn, and just when things seem at their most evil, the evil turns on itself. The Quester will have to survive until and as the opposition turns upon itself. The Stakes are always at least High during this Ordeal, and sticking to their normal tactics, ethics or values adds a Failure Level, Hurdle or Obstacle to any Test or Ordeal.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Closing the Shutters): Mirror the internal state described in the commentary: \"The superior man does not eat for three days\nOn his wanderings.\nBut he has somewhere to go.\n\nThe host has occasion to gossip about him.\n\nWith grandiose resolve a man endeavors to soar above all obstacles, but thus encounters a hostile fate. He...\" Your actions should be framed by the goal: you hide, keep a low profile, or aren't noticed.",
+        "Plot": "Plot Complication Line 1 (Closing the Shutters): Introduce a challenge based on the interpretation: \"The superior man does not eat for three days\nOn his wanderings.\nBut he has somewhere to go.\n\nThe host has occasion to gossip about him.\n\nWith grandiose resolve a man endeavors to soar above all obstacles, but thus encounters a hostile fate. He...\" The specific quest objective for this stage is: If the Quester is bold add a Failure Level, Hurdle or Obstacle to their Test or Ordeal, but if they are furtive and deprive themselves of even necessities in order to keep a low profile (for example, not leaving their hiding place, despite a lack of food) then they may add a Success Level to the Test or Ordeal."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Stumbling in the Dark): Mirror the internal state described in the commentary: \"Here the Lord of Light is in a subordinate place and is wounded by the Lord of Darkness. But the injury is not fatal; it is only a hindrance. Rescue is still possible. The wounded man gives no thought to himself; he thinks only of saving the others...\" Your actions should be framed by the goal: you help another, or act while Wounded.",
+        "Plot": "Plot Complication Line 2 (Stumbling in the Dark): Introduce a challenge based on the interpretation: \"Here the Lord of Light is in a subordinate place and is wounded by the Lord of Darkness. But the injury is not fatal; it is only a hindrance. Rescue is still possible. The wounded man gives no thought to himself; he thinks only of saving the others...\" The specific quest objective for this stage is: If the Quester has been wounded reduce the Wound one Level now automatically (Mortal becomes Crippling, etc) and all such Wounds are never fatal (no Dead or Destroyed Hitches may be created on the Quester), as long as the Quester flees immediately, they help others, or are helped by another. If they are not wounded themselves and do not help others who are injured, then add a Failure Level, Hurdle, or Obstacle to their Test or Ordeal."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Gloaming Hunt): Mirror the internal state described in the commentary: \"Their great leader is captured.\nOne must not expect perseverance too soon.\n\nIt seems as if chance were at work. While the strong, loyal man is striving eagerly and in good faith to create order, he meets the ringleader of the disorder, as if by...\" Your actions should be framed by the goal: you face your problems, capture an enemy, or travel during dusk.",
+        "Plot": "Plot Complication Line 3 (Gloaming Hunt): Introduce a challenge based on the interpretation: \"Their great leader is captured.\nOne must not expect perseverance too soon.\n\nIt seems as if chance were at work. While the strong, loyal man is striving eagerly and in good faith to create order, he meets the ringleader of the disorder, as if by...\" The specific quest objective for this stage is: The sun is set and the twilight fades, but in the dying light the Quester and the opposition catch sight of each other. If either party tries to injure the other this will add a Failure Level, Hurdle or Obstacle to the Quester&#39;s Test or Ordeal. However, if either party surrenders to the other, then this may bring a Success Level instead (if they discuss their differences and come to some mutually beneficial agreement)."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Heart of Darkness): Mirror the internal state described in the commentary: \"We find ourselves close to the commander of darkness and so discover his mot secret thoughts. In this way we realize that there is no longer any hope of improvement, and thus we are enabled to leave the scene of disaster before the storm breaks.\" Your actions should be framed by the goal: you despair, have a bleak outlook, or recognise your own darkness in another.",
+        "Plot": "Plot Complication Line 4 (Heart of Darkness): Introduce a challenge based on the interpretation: \"We find ourselves close to the commander of darkness and so discover his mot secret thoughts. In this way we realize that there is no longer any hope of improvement, and thus we are enabled to leave the scene of disaster before the storm breaks.\" The specific quest objective for this stage is: The Quester finds themselves in opposition territory (such as the villain&#39;s base), they get close enough that the enemies thoughts and plans are revealed to them, but staying too long will add a Failure Level, Hurdle or Obstacle to their Test or Ordeal every few minutes."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (The Shuttered Mind): Mirror the internal state described in the commentary: \"Prince Chi lived at the court of the evil tyrant Chou Hsin, who, although not mentioned by name, furnished the historical example on which this whole situation is based. Prince Chi was a relative of the tyrant and could not withdraw from the court;...\" Your actions should be framed by the goal: you hide your motives, yourself, or act the fool.",
+        "Plot": "Plot Complication Line 5 (The Shuttered Mind): Introduce a challenge based on the interpretation: \"Prince Chi lived at the court of the evil tyrant Chou Hsin, who, although not mentioned by name, furnished the historical example on which this whole situation is based. Prince Chi was a relative of the tyrant and could not withdraw from the court;...\" The specific quest objective for this stage is: The Quester is in danger and must hide what they really think, and their real motives to progress. They may be surrounded by the opposition and have to pretend to be of them, or they may discover those they thought were their allies actually have very different agendas. If the Quester is not successful in hiding their own motives and feelings then add a Failure Level, Hurdle or Obstacle to the Test or Ordeal."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Snuffing the Lamp): Mirror the internal state described in the commentary: \"Then plunged into the depths of the earth.\n\nHere the climax of the darkening is reached. The dark power at first held so high a place that it could wound all who were on the side of good and of the light. But in the end it perishes of its own...\" Your actions should be framed by the goal: you ignore mores, values, morals, or ethics, and walk a middle path.",
+        "Plot": "Plot Complication Line 6 (Snuffing the Lamp): Introduce a challenge based on the interpretation: \"Then plunged into the depths of the earth.\n\nHere the climax of the darkening is reached. The dark power at first held so high a place that it could wound all who were on the side of good and of the light. But in the end it perishes of its own...\" The specific quest objective for this stage is: It is always darkest before the dawn, and just when things seem at their most evil, the evil turns on itself. The Quester will have to survive until and as the opposition turns upon itself. The Stakes are always at least High during this Ordeal, and sticking to their normal tactics, ethics or values adds a Failure Level, Hurdle or Obstacle to any Test or Ordeal."
+      }
+    }
+  }
+}

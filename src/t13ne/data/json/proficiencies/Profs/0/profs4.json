@@ -1,0 +1,1440 @@
+{
+  "201": {
+    "id": 201,
+    "prof": {
+      "Name": [
+        "Unspoiled Locations",
+        "Unspoiled Location Craft Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Unspoiled Locations is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "202": {
+    "id": 202,
+    "prof": {
+      "Name": [
+        "Unpractised",
+        "Unpractised Craft Low Boon Adjective Proficiency",
+        "inexperienced, crude, back-country, raw, green"
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Unpractised is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "203": {
+    "id": 203,
+    "prof": {
+      "Name": [
+        "Crude",
+        "Crude Craft Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Crude is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "204": {
+    "id": 204,
+    "prof": {
+      "Name": [
+        "Back-country Locations",
+        "Back-country Location Craft Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Back-country Locations is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "205": {
+    "id": 205,
+    "prof": {
+      "Name": [
+        "Able",
+        "Able Craft Medium Boon Adjective Proficiency",
+        "capable, planned, rustic, skillful, competent"
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Able is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "206": {
+    "id": 206,
+    "prof": {
+      "Name": [
+        "Planned",
+        "Planned Craft Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Planned is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "207": {
+    "id": 207,
+    "prof": {
+      "Name": [
+        "Rustic Locations",
+        "Rustic Location Craft Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Rustic Locations is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "208": {
+    "id": 208,
+    "prof": {
+      "Name": [
+        "Practised",
+        "Practised Craft Medium Boon Adjective Proficiency",
+        "experienced, designed, constructed, skilled, veteran"
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Practised is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "209": {
+    "id": 209,
+    "prof": {
+      "Name": [
+        "Designed",
+        "Designed Craft Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Designed is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "210": {
+    "id": 210,
+    "prof": {
+      "Name": [
+        "Constructed Locations",
+        "Constructed Location Craft Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Constructed Locations is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "211": {
+    "id": 211,
+    "prof": {
+      "Name": [
+        "Skilful",
+        "Skilful Craft High Boon Adjective Proficiency",
+        "expert, sturdy, sound, adept, proficient"
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Skilful is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "212": {
+    "id": 212,
+    "prof": {
+      "Name": [
+        "Sturdy",
+        "Sturdy Craft High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Sturdy is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "213": {
+    "id": 213,
+    "prof": {
+      "Name": [
+        "Sound Locations",
+        "Sound Location Craft High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Sound Locations is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "214": {
+    "id": 214,
+    "prof": {
+      "Name": [
+        "Professional",
+        "Professional Craft High Boon Adjective Proficiency",
+        "expert, well-made, well-built, skilled"
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Professional is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "215": {
+    "id": 215,
+    "prof": {
+      "Name": [
+        "Well-made",
+        "Well-made Craft High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Well-made is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "216": {
+    "id": 216,
+    "prof": {
+      "Name": [
+        "Well-built Locations",
+        "Well-built Location Craft High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Well-built Locations is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "217": {
+    "id": 217,
+    "prof": {
+      "Name": [
+        "Expert",
+        "Expert Craft High Boon Adjective Proficiency",
+        "masterful, reliable, sculpted, proficient, adept"
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Expert is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "218": {
+    "id": 218,
+    "prof": {
+      "Name": [
+        "Reliable",
+        "Reliable Craft High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Reliable is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "219": {
+    "id": 219,
+    "prof": {
+      "Name": [
+        "Sculpted Locations",
+        "Sculpted Location Craft High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Sculpted Locations is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "220": {
+    "id": 220,
+    "prof": {
+      "Name": [
+        "Masterful",
+        "Masterful Craft Very-High Boon Adjective Proficiency",
+        "expert, stylish, skilled, commanding, authoritative"
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Masterful is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "221": {
+    "id": 221,
+    "prof": {
+      "Name": [
+        "Stylish",
+        "Stylish Craft Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Stylish is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "222": {
+    "id": 222,
+    "prof": {
+      "Name": [
+        "Stylish Locations",
+        "Stylish Location Craft Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Stylish Locations is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "223": {
+    "id": 223,
+    "prof": {
+      "Name": [
+        "Adept",
+        "Adept Craft Very-High Boon Adjective Proficiency",
+        "skilful, excellent, grand, proficient, expert"
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Adept is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "224": {
+    "id": 224,
+    "prof": {
+      "Name": [
+        "Excellent",
+        "Excellent Craft Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Excellent is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "225": {
+    "id": 225,
+    "prof": {
+      "Name": [
+        "Grand Locations",
+        "Grand Location Craft Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Grand Locations is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "226": {
+    "id": 226,
+    "prof": {
+      "Name": [
+        "Adroit",
+        "Adroit Craft Very-High Boon Adjective Proficiency",
+        "skilful, superb, majestic, nimble, clever"
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Adroit is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "227": {
+    "id": 227,
+    "prof": {
+      "Name": [
+        "Superb",
+        "Superb Craft Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Superb is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "228": {
+    "id": 228,
+    "prof": {
+      "Name": [
+        "Majestic Locations",
+        "Majestic Location Craft Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Majestic Locations is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "229": {
+    "id": 229,
+    "prof": {
+      "Name": [
+        "Wizard",
+        "Wizard Craft Very-High Boon Adjective Proficiency",
+        "expert, magical, towering, brilliant, master"
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Wizard is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "230": {
+    "id": 230,
+    "prof": {
+      "Name": [
+        "Magical",
+        "Magical Craft Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Magical is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "231": {
+    "id": 231,
+    "prof": {
+      "Name": [
+        "Towering Locations",
+        "Towering Location Craft Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Towering Locations is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "232": {
+    "id": 232,
+    "prof": {
+      "Name": [
+        "Anxious",
+        "Anxious Craft Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Anxious is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "233": {
+    "id": 233,
+    "prof": {
+      "Name": [
+        "Concerned",
+        "Concerned Craft Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Concerned is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "234": {
+    "id": 234,
+    "prof": {
+      "Name": [
+        "Disturbed",
+        "Disturbed Craft Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Disturbed is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "235": {
+    "id": 235,
+    "prof": {
+      "Name": [
+        "Hope",
+        "Hope Craft Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Hope is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "236": {
+    "id": 236,
+    "prof": {
+      "Name": [
+        "Assured",
+        "Assured Craft Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Assured is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "237": {
+    "id": 237,
+    "prof": {
+      "Name": [
+        "Certain",
+        "Certain Craft Positive Emotion Proficiency",
+        "sure, assured, familiar, positive, confident"
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Certain is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "238": {
+    "id": 238,
+    "prof": {
+      "Name": [
+        "Tinker",
+        "Tinker Craft Action Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Tinker is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "239": {
+    "id": 239,
+    "prof": {
+      "Name": [
+        "Crash",
+        "Crash Craft Attack Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Crash is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "240": {
+    "id": 240,
+    "prof": {
+      "Name": [
+        "Trained",
+        "Trained Craft Critical Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Trained is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "241": {
+    "id": 241,
+    "prof": {
+      "Name": [
+        "Crafter",
+        "Crafter Craft Core Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Crafter is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "242": {
+    "id": 242,
+    "prof": {
+      "Name": [
+        "Works",
+        "Works Craft Descendants Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Works is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "243": {
+    "id": 243,
+    "prof": {
+      "Name": [
+        "Proficient",
+        "Proficient Craft Edge Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Proficient is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "244": {
+    "id": 244,
+    "prof": {
+      "Name": [
+        "Proficient",
+        "Proficient Craft Glow Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Proficient is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "245": {
+    "id": 245,
+    "prof": {
+      "Name": [
+        "Extra Work",
+        "Extra Work Craft Failure Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Extra Work is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "246": {
+    "id": 246,
+    "prof": {
+      "Name": [
+        "Junk",
+        "Junk Craft Fumble Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Junk is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "247": {
+    "id": 247,
+    "prof": {
+      "Name": [
+        "Difficulties",
+        "Difficulties Craft Gnarl Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Difficulties is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "248": {
+    "id": 248,
+    "prof": {
+      "Name": [
+        "Mark",
+        "Mark Craft Herald Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Mark is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "249": {
+    "id": 249,
+    "prof": {
+      "Name": [
+        "Inept",
+        "Inept Craft Hitch Proficiency",
+        "incompetent, primitive, harsh, unskilled, clumsy"
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Inept is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "250": {
+    "id": 250,
+    "prof": {
+      "Name": [
+        "Ideal",
+        "Ideal Craft Hurdle Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Ideal is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

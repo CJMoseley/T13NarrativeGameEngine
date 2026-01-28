@@ -1,0 +1,188 @@
+[
+    {
+        "Type": "Rock Song",
+        "Description": "The classic structure of Rock Songs for no other reason than it struck me.",
+        "Structure": [
+            {
+                "Type": "Intro",
+                "Description": "introduces the main Riff"
+            },
+            {
+                "Type": "Verse",
+                "Description": "Narrative section"
+            },
+            {
+                "Type": "Pre-Chorus",
+                "Description": "Builds Tension towards the Chorus"
+            },
+            {
+                "Type": "Chorus",
+                "Description": "The Chorus is the meat of the song"
+            },
+            {
+                "Type": "Main Riff",
+                "Description": "The return of the Main Riff from the Intro"
+            },
+            {
+                "Type": "Solo Section",
+                "Description": "Variations of the Main Riff and Chorus"
+            },
+            {
+                "Type": "Bridge",
+                "Description": "A contrast section before the return of the Chorus."
+            },
+            {
+                "Type": "Chorus",
+                "Description": "Back to the Meat"
+            },
+            {
+                "Type": "Main Riff",
+                "Description": "The return of the Main Riff from the Intro"
+            }
+        ]
+    },
+    {
+        "Type": "Tercet",
+        "Description": "The classic three-line Stanza structure, usually of a ABA, BCB style progression if continued. The Tercet makes the 1st and 3rd lines rhyme, giving them similar structures and motifs.",
+        "Structure": [
+            {
+                "Type": "First Line",
+                "Description": "Something is established, questioned, or occurs, such as an Action sequence involving a rooftop chase."
+            },
+            {
+                "Type": "Second Line",
+                "Description": "Something counter-points the First Line, answers the Question, or reacts to what has occurred. Such as a Recovery Weft following the Action Warp."
+            },
+            {
+                "Type": "Third Line",
+                "Description": "To rhyme with the First. What was established, and counter-pointed, now returns. The question that was answered is asked again, because the answer was not satisfactory, or because of a change of emphasis or meaning. We now have and Action sequence once again high up, perhaps now flying above those roof-tops in a magic carpet dash."
+            }
+        ]
+    },
+    {
+        "Type": "Quatrain",
+        "Description": "A classic four-line Stanza structure, usually of a ABBA, ABAB, or occasionally AABB style progression. The Quatrains A<super>1</super> and A<super>2</super> lines rhyme, giving them similar pacing and structure. This is similarly true of the counterpointing B-Lines, which may have similar or different rhythms to the A Lines.",
+        "Structure": [
+            {
+                "Type": "First A Line",
+                "Description": "Something is established, questioned, or occurs, such as an Action sequence involving a rooftop chase."
+            },
+            {
+                "Type": "Second A Line",
+                "Description": "Something that builds on the First A Line. Continuing and echoing it’s style, pacing and setting. This is a continuation or a reprise of the roof-top chase, usually with elevated Stakes, perhaps gun-play, higher roofs, or dark."
+            },
+            {
+                "Type": "First B Line",
+                "Description": "A reaction to either the First or Second A Line. This answers the question that was asked by A or is a Weft to it’s Warp."
+            },
+            {
+                "Type": "Second B Line",
+                "Description": "To rhyme with the First, B-Line. Another Weft follows, or another Question is asked by an A Line is answered. "
+            }
+        ]
+    },
+    {
+        "Type": "Spenserian",
+        "Description": "The fixed verse form created by Edmund Spenser for the Epic poem, made up of lines in the form ABABBCBCC. This creates a complex interplay of themes as the lines share the themes, setting, rhythm and pacing.",
+        "Structure": [
+            {
+                "Type": "First A Line",
+                "Description": "Something is established, a statement is made. This is often a Revelation Weft event. An example may be a Revelation of a Portal to a new world."
+            },
+            {
+                "Type": "First B Line",
+                "Description": "A response or reaction to the first A line, a Warp to its Weft, it is the reaction to the Revelation, the immediate actions taken in response. In the example, this is the first interaction with the new world beyond the portal, whether the portal is guarded, in case something comes out (which it must), or explored."
+            },
+            {
+                "Type": "Second A Line",
+                "Description": "Something that builds on the First A Line, echoes it, often directly, hence the \"rhyme\". In the example, this could be a secondary Revelation, perhaps revealing something about the new world (such as it actually being the past or future of the original world), or revealing something about their original world (\"Oh you escaped the simulation\")."
+            },
+            {
+                "Type": "Second B Line",
+                "Description": "This second B-line follows the second A-line, and it is another reaction to the previous line. This is a Warp to counter the Revelation. Something has gone wrong, and seems to be getting worse. In the example this is when the portal changes somehow, perhaps growing bigger, spitting out something worse than before, or if they passed through the portal then now it destabilises, with the mouth shooting away, or even closing."
+            },
+            {
+                "Type": "Third B Line",
+                "Description": "This Third B-line follows the second directly. This makes it both a continuation of the B-Lines before, but also a response to themselves. This makes this line an echo Warp, the second Warp that follows the A-line’s Weft. This B-line repeat usually raises the Suspense and Stakes for this echo Warp. In the example if the portal wasn’t unstable, moving or  closing it is now, and if it was already then why not add more?"
+            },
+            {
+                "Type": "First C Line",
+                "Description": "A response to the Third B-line, that is different to the A-lines, but still counter-point the B-lines. In our example these C lines are still Wefts, but provide no Revelations for our heroes. So instead they may gain an Ally, Annex or Descendant that can help them."
+            },
+            {
+                "Type": "Fourth B Line",
+                "Description": "This Fourth B-line follows the first C-line, and is a final Warp of the verse and so has the highest Stakes so far. In our example if portals have been plopping out bad guys then the biggest one arrives, if they have been trying to stabilise the portal and return home then some one stries to stop them, or it just gets worse than before."
+            },
+            {
+                "Type": "Second C Line",
+                "Description": "This second C-Line follows the final B-line, and is a Weft to follow that Warp. In our example this line would be a Weft Scene where the characters may make yet another Gain, often as a reward for defeating the beasts, or stabilising the portal."
+            },
+            {
+                "Type": "Third C Line",
+                "Description": "This third C-line follows the second directly. This makes it both a continuation of the C-Lines before, but also a response to them. This makes this line a second Weft, that follows a Weft. In our example it represents a final chance to rest and recover from what happened in the previous lines."
+            }
+        ]
+    },
+    {
+        "Type": "Sonnet",
+        "Description": "Made famous by an English Bard, this particular verse-form was created in Italy. The rhyme form is ABAB CDCD EFEF GG.",
+        "Structure": [
+            {
+                "Type": "First A Line",
+                "Description": "Something is established, a statement is made, or a question is asked. This is usually a Hook Event as Sonnets are full Narratives. "
+            },
+            {
+                "Type": "First B Line",
+                "Description": "The first B-line expands the original statement, deepening the question. This is usually a Revelation that reveals the Conflict."
+            },
+            {
+                "Type": "Second A Line",
+                "Description": "Something that builds on the First A-Line, echoes it, often directly, hence the \"rhyme\". This Line indicates that the Loom begins by echoing the Hook, if we began with a Fight this will be a Warp, if we began at rest then now we receive a Weft."
+            },
+            {
+                "Type": "Second B Line",
+                "Description": "This second B-Line follows the second A-line, and it is a reaction to the previous line, but \"rhymes\" with the Frame Revelation, by reflecting what was revealed. This could mean more Revelations, or it could be that the Conflict begins with a bang."
+            },
+            {
+                "Type": "First C Line",
+                "Description": "The First C-Line indicates that we are stepping into new territory, narratively speaking. This establishes a new dynamic, that need not follow the old. This C-Line can be a Warp or a Weft, but rarely includes Revelations."
+            },
+            {
+                "Type": "First D Line",
+                "Description": "The First D-Line resplies to the C-Line with this new rhyming scheme. This is the still Revelation free Weft to follow a Warp, or the Warp to follow that Weft."
+            },
+            {
+                "Type": "Second C Line",
+                "Description": "The Second C-Line continues to work the story, repeating a similar Warp or Weft as appropriate."
+            },
+            {
+                "Type": "Second D Line",
+                "Description": "The Second D-Line is an echo of the First, responding to to the C-Line with its own Weft or Warp."
+            },
+            {
+                "Type": "First E Line",
+                "Description": "The First E-Line indicates another change in the conflict, this may include an escalation, perhaps of Stakes or the Embodiment may shift to being a Monster. The First E-line also represents a chance to change pace, and so it may randomly be a Warp or a Weft, and need not reflect the D-Line or repeat the C-Line."
+            },
+            {
+                "Type": "First F Line",
+                "Description": "The First F-Line is a reaction to only the E-Line, it rarely takes influences from earlier in the Sonnet. If the E-Line was a Warp, then the F will be a Weft and vice-versa. It is worth noting that Suspense and Stakes will also be raised and it is not uncommon for other Sides to unleash their Monster Embodiments now."
+            },
+            {
+                "Type": "Second E Line",
+                "Description": "The Second E-Line is an echo of the first, but with even more elevated Stakes and Suspense."
+            },
+            {
+                "Type": "Second F Line",
+                "Description": "The Second F-Line is an echo of the first, but with even more elevated Stakes and Suspense."
+            },
+            {
+                "Type": "First G Line",
+                "Description": "The First G-Line is a break from the old, and the start of the End. This is the Final Ordeal of the Zenith, be it a Final Battle, a Final Revelation or a Final date."
+            },
+            {
+                "Type": "Second G Line",
+                "Description": "The Second G-Line is an echo of the first, but the Final has already happened, so here this becomes the Completion Event that follows that. This Completion event follows on from the Final, and the Central Conflict as you would expect."
+            }
+        ]
+    }
+]

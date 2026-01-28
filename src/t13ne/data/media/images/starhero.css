@@ -1,0 +1,194 @@
+/* forest variant */
+body{background-color:black;}
+img#starfield{
+	position:fixed;
+	top:-50%;
+	right:-50%;
+	z-index:0;
+	max-width:200% !important;
+	max-height:200% !important;
+	width:200%;
+	height:200%;
+	filter:blur(2px);
+	-webkit-filter:blur (2px);
+	-moz-filter:blur (2px);
+	-o-filter:blur (2px);
+	animation-name: precess;
+	animation-duration: 725s;
+	animation-iteration-count: infinite;
+	animation-delay:0s;
+	animation-timing-function: linear;
+	animation-play-state: running;
+	-webkit-animation-name: precess;
+	-webkit-animation-duration: 725s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-delay: 0s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-play-state: running;
+	-moz-animation-name: precess;
+	-moz-animation-duration:725s;
+	-moz-animation-timing-function: linear;
+	-moz-animation-delay: 0s;
+	-moz-animation-iteration-count: infinite;
+	-moz-animation-play-state: running;
+	-o-animation-name: precess;
+	-o-animation-duration: 725s;
+	-o-animation-timing-function: linear;
+	-o-animation-delay: 0s;
+	-o-animation-iteration-count: infinite;
+	-o-animation-play-state: running;
+}
+div#dusk{
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background-color:transparent;
+	animation-name: twilight;
+	animation-duration: 60s;
+	animation-iteration-count: 1;
+	animation-delay:0s;
+	animation-timing-function: ease-in-out;
+	animation-play-state: running;
+	-webkit-animation-name: twilight;
+	-webkit-animation-duration: 60s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-delay:0s;
+	-webkit-animation-timing-function: ease-in-out;
+	-webkit-animation-play-state: running;
+	-moz-animation-name: twilight;
+	-moz-animation-duration: 60s;
+	-moz-animation-iteration-count: 1;
+	-moz-animation-delay:0s;
+	-moz-animation-timing-function: ease-in-out;
+	-moz-animation-play-state: running;
+	-o-animation-name: twilight;
+	-o-animation-duration: 60s;
+	-o-animation-iteration-count: 1;
+	-o-animation-delay:0s;
+	-o-animation-timing-function: ease-in-out;
+	-o-animation-play-state: running;	
+}
+div#horizon{
+	position:fixed;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	width:100%;
+	height:100%;
+	background-attachment:fixed;
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAyZCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxNDE0YjQiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+),url(stonehenge.png) no-repeat center bottom contain, url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzFlNTc5OSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijc0JSIgc3RvcC1jb2xvcj0iIzY0YTBkMyIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM3ZGI5ZTgiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top,  rgba(0,0,45,0) 0%, rgba(20,20,180,0.9) 100%),url(stonehenge.png) no-repeat center bottom contain,-moz-linear-gradient(top, rgba(30,87,153,0) 0%, rgba(100,160,211,0) 74%, rgba(125,185,232,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,45,0)), color-stop(100%,rgba(20,20,180,0.9))),url(stonehenge.png) no-repeat center bottom,-webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(30,87,153,0)), color-stop(74%,rgba(100,160,211,0)), color-stop(100%,rgba(125,185,232,1)));
+	background: -webkit-linear-gradient(top,  rgba(0,0,45,0) 0%,rgba(20,20,180,0.9) 100%),url(stonehenge.png) no-repeat center bottom contain,-webkit-linear-gradient(top, rgba(30,87,153,0) 0%,rgba(100,160,211,0) 74%,rgba(125,185,232,1) 100%);
+	background: -o-linear-gradient(top,  rgba(0,0,45,0) 0%,rgba(20,20,180,0.9) 100%),url(stonehenge.png) no-repeat center bottom contain,-o-linear-gradient(top, rgba(30,87,153,0) 0%,rgba(100,160,211,0) 74%,rgba(125,185,232,1) 100%);
+	background: -ms-linear-gradient(top,  rgba(0,0,45,0) 0%,rgba(20,20,180,0.9) 100%),url(stonehenge.png) no-repeat center bottom contain,-ms-linear-gradient(top, rgba(30,87,153,0) 0%,rgba(100,160,211,0) 74%,rgba(125,185,232,1) 100%);
+	background: linear-gradient(to bottom,  rgba(0,0,45,0) 0%,rgba(20,20,180,0.9) 100%),url(stonehenge.png) no-repeat center bottom contain,linear-gradient(to bottom, rgba(30,87,153,0) 0%,rgba(100,160,211,0) 74%,rgba(125,185,232,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000002d', endColorstr='#1414b4',GradientType=0 );
+}
+div#hero{
+	position:fixed;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	width:100%;
+	height:100%;
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	background-color:transparent;
+}
+div#hero.hero1{
+	background-position:80% bottom;
+	background-image:url(teucoi.png);
+}
+div#hero.hero2{
+	background-position:80% -3rem;
+	background-image:url(garner.png);
+}
+div#hero.hero3{
+	background-position:80% center;
+	background-image:url(eusaivean.png);
+	animation-name: hover;
+	animation-duration: 40s;
+	animation-iteration-count: infinite;
+	animation-delay:0s;
+	animation-timing-function: ease-in-out;
+	animation-play-state: running;
+	-webkit-animation-name: hover;
+	-webkit-animation-duration: 40s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-delay:20s;
+	-webkit-animation-timing-function: ease-in-out;
+	-webkit-animation-play-state: running;
+	-moz-animation-name: hover;
+	-moz-animation-duration: 40s;
+	-moz-animation-iteration-count: infinite;
+	-moz-animation-delay:20s;
+	-moz-animation-timing-function: ease-in-out;
+	-moz-animation-play-state: running;
+	-o-animation-name: hover;
+	-o-animation-duration: 40s;
+	-o-animation-iteration-count: infinite;
+	-o-animation-delay:20s;
+	-o-animation-timing-function: ease-in-out;
+	-o-animation-play-state: running;	
+}
+div#hero.hero4{
+	background-position:80% bottom;
+	background-image:url(veela.png);
+	background-sizing:cover;
+	
+}
+@keyframes hover {
+	0%{transform:translatey(0);transform:rotate(0);}
+	30%{transform:translatey(-2%);transform:rotate(2deg);}
+	70%{transform:translatey(25%);transform:rotate(-2deg);}
+	100%{transform:translatey(0);transform:rotate(0);}
+}
+@-moz-keyframes hover {
+	0%{-moz-transform:translatey(0);-moz-transform:rotate(0);}
+	30%{-moz-transform:translatey(-2%);-moz-transform:rotate(2deg);}
+	70%{-moz-transform:translatey(25%);-moz-transform:rotate(-2deg);}
+	100%{-moz-transform:translatey(0);-moz-transform:rotate(0);}
+}
+@-webkit-keyframes hover {
+	0%{-webkit-transform:translatey(0);-webkit-transform:rotate(0);}
+	30%{-webkit-transform:translatey(-2%);-webkit-transform:rotate(2dge);}
+	70%{-webkit-transform:translatey(25%);-webkit-transform:rotate(-2deg);}
+	100%{-webkit-transform:translatey(0);-webkit-transform:rotate(0);}
+}
+@-o-keyframes hover {
+	0%{-o-transform:translatey(0);-o-transform:rotate(0);}
+	30%{-o-transform:translatey(-2%);-o-transform:rotate(2deg);}
+	70%{-o-transform:translatey(25%);-o-transform:rotate(-2deg);}
+	100%{-o-transform:translatey(0);-o-transform:rotate(0);}
+}
+
+@keyframes precess {  from { transform: rotate(0deg);} to {transform: rotate(360deg);}}
+@-moz-keyframes precess /* Firefox */ {from {-moz-transform: rotate(0deg);} to { -moz-transform: rotate(360deg);}}
+@-webkit-keyframes precess /* Safari and Chrome */{from {-webkit-transform: rotate(0deg);} to { -webkit-transform: rotate(360deg);}}
+@-o-keyframes precess /* Opera */ {from {-o-transform: rotate(0deg);}to {-o-transform: rotate(360deg);}}
+
+@keyframes twilight { 
+	0%{ background-color:rgba(255,255,255,1);}
+	50% {background-color:rgba(180,120,180,0.9);}
+	100%{background-color:rgba(20,20,80,0);}
+}
+@-moz-keyframes twilight { 
+	0%{ background-color:rgba(255,255,255,1);}
+	50% {background-color:rgba(180,120,180,0.9);}
+	100%{background-color:rgba(20,20,80,0);}
+}
+@-webkit-keyframes twilight { 
+	0%{ background-color:rgba(255,255,255,1);}
+	50% {background-color:rgba(180,120,180,0.9);}
+	100%{background-color:rgba(20,20,80,0);}
+}
+@-o-keyframes twilight { 
+	0%{ background-color:rgba(255,255,255,1);}
+	50% {background-color:rgba(180,120,180,0.9);}
+	100%{background-color:rgba(20,20,80,0);}
+}

@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 34,
+    "Name": "Great Power",
+    "Entity": "&#19937;",
+    "Logical": 15,
+    "Trigrams": [
+      0,
+      3
+    ],
+    "Hexagram_Text": "Da Zhuang, Great Power (or Great Invigoration), is the Hexagram of invigorating speeches, wood or brick breaking strikes, and mental prowess. This is the power of true heroes, those brave, intelligent, and strong leaders, are built around a constant virtue, or benevolent core.",
+    "Unchanging": "Once a Session, Chapter, or Episode you may add all Incarna Facet Nimbeds to one of your Annexes. Once a Scene you may add One Incarna Facet Nimbed to an Annex.",
+    "Line1": "Strength in the Toes",
+    "Line2": "Power Stance",
+    "Line3": "Entangled Power",
+    "Line4": "Horse Power",
+    "Line5": "Goat Power",
+    "Line6": "Ram Caught in Fence"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you use your strength, political authority, or powers for the common good",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you are reckless or arrogant",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "you use your most powerful Annex",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yin",
+        "Condition": "you stand up (for what you believe in / against others / while everyone sits, etc)",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yin",
+        "Condition": "you hide your true power, use a weaker Annex, pull the punch, reduce the Success Level, etc",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yin",
+        "Condition": "you check everything is ready, repeat an action, or drive or ride a vehicle",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you are stubborn, push too hard, or refuse to listen",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "yang",
+        "Condition": "you get stuck, blocked, or obstructed and are patient",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Great Power Quest offers the Quester power, whether temporal, political, of will or body, or a literal new power (or superpower). However, the Quest of Great Power is really about how that power might corrupt the Quester, and how they handle the responsibility that such power brings. If the Quester is granted a power it is usually early in the Quest to help them further the Quest. They may even be granted the power, or trained in it, by the Quest-giver.",
+    "Quest_Complete": "When a Quest ends with the Great Power Hexagram then the Quester is rewarded with a power or super-power often in the form of a descendant. This may be a reward of political power, or some dedicated training or education, but most often is in the form of a piece of often magical equipment.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester has learned the very basics of their new power, but if they rely upon it too much, or attempt something too complicated there will be misfortune (add a Failure Level, Hurdle or Obstacle to the Test or Ordeal ).",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester must face their Test or Ordeal while relying upon their new power. If they use their new power only, they may add a Success Level, however if they display signs of over-confidence, or if they fail to use their new power at all, add a Failure Level, Hurdle or Obstacle to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "If the Quester boasts about their new power, makes empty threats, or uses their power at full strength, this will complicate things adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The power the Quester holds is somewhat like an ability to drive, while they may be very skilled, the car being driven applies restrictions to the driving, they can only drive the car from inside, and cannot drive this car as though it were another car or a helicopter. The Quester who tries to use their power directly and outwardly, are ignoring what the car is capable of, and this adds a Failure Level, Obstacle or Hurdle to their Test or Quest. The Quester who perseveres and practices with using their power internally and indirectly, removes Obstacles in their way, just as a skilled driver might familiarize themselves with the car, service, tune-up and improve the car however necessary before driving it, or switching to hover mode, will add a Success Level to their Test or Ordeal instead.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester will be tested once again, this time the test is not about their use of power, but about their character and whether the power is corrupting them. If they are belligerent, stubborn, or power-crazed in any way, then the power may be removed from them, and they will certainly add a Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester will face an opposition of equal or greater power who blocks their way or progress. If they charge in or retreat before this enemy they will become stuck, entangled in combat potentially and add a Failure Level, Hurdle or Obstacle to the Test or Ordeal. If instead they stand against this enemy and hold firm, with patience, they will add a Success Level instead (although there is no guarantee that the Quester will win this stand-off).",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "The great lines, that is, the light, strong lines, are powerful. Four light lines have entered the hexagram from below and are about to ascend higher. The upper trigram is Chên, the Arousing; the lower is ch'ien, the Creative. Ch'ien is strong, Chên produces movement. The union of movement and strength gives the meaning of THE POWER OF THE GREAT. The hexagram is linked with the second month (March-April).",
+    "The_Image": {
+      "text": "Thunder in heaven above:\n\nThe image of THE POWER OF THE GREAT.\n\nThus the superior man does not tread upon paths\n\nThat do not accord with established order.",
+      "comments": "Thunder--electrical energy--mounts upward in the spring. The direction of this movement is in harmony with that of the movement of heaven. It is therefore a movement in accord with heaven, producing great power. However, true greatness depends on being in harmony with what is right. Therefore in times of great power the superior man avoids doing anything that is not in harmony with the established order."
+    },
+    "The_Judgment": {
+      "text": "THE POWER OF THE GREAT. Perseverance furthers.",
+      "comments": "The hexagram points to a time when inner worth mounts with great force and comes to power. But its strength has already passed beyond the median line, hence there is danger that one may rely entirely on one's own power and forget to ask what is right. There is danger too that, being intent on movement, we may not wait for the right time. Therefore the added statement that perseverance furthers. For that is truly great power which does not degenerate into mere force but remains inwardly united with the fundamental principles of right and of justice. When we understand this point--namely, that greatness and justice must be indissolubly united--we understand the true meaning of all that happens in heaven and on earth."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Power in the toes.\nContinuing brings misfortune.",
+        "comments": "This is certainly true.\n\nThe toes are in the lowest place and are ready to advance. So likewise great power in lowly station is inclined to effect advance by force. This, if carried further, would certainly lead to misfortune, and therefore by way of advice a warning is added."
+      },
+      "2": {
+        "text": "Perseverance brings good fortune.",
+        "comments": "The premise here is that the gates to success are beginning to open. Resistance gives way and we forge ahead. This is the point at which, only too easily, we become the prey of exuberant self-confidence. This is why the oracle says that perseverance (i.e., perseverance in inner equilibrium, without excessive use of power) brings good fortune."
+      },
+      "3": {
+        "text": "The inferior man works through power.",
+        "comments": "The superior man does not act thus.\n\nTo continue is dangerous.\nA goat butts against a hedge\nAnd gets its horns entangled.\n\nMaking a boast of power leads to entanglements, just as a goat entangles its horns when it butts against a hedge. Whereas an inferior man revels in power when he comes into possession of it, the superior man never makes this mistake. He is conscious at all times of the danger of pushing ahead regardless of circumstances, and therefore renounces in good time the empty display of force."
+      },
+      "4": {
+        "text": "Perseverance brings good fortune.\nRemorse disappears.",
+        "comments": "The hedge opens; there is no entanglement.\nPower depends upon the axle of a big cart.\n\nIf a man goes on quietly and perseveringly working at the removal of resistances, success comes in the end. The obstructions give way and all occasion for remorse arising from excessive use of power disappears.\n\nSuch a man's power does not show externally, yet it can move heavy loads, like a big cart whose real strength lies in its axle. The less that power is applied outwardly, the greater its effect."
+      },
+      "5": {
+        "text": "Loses the goat with ease.",
+        "comments": "No remorse.\n\nThe goat is noted for hardness outwardly and weakness within. Now the situation is such that everything is easy; there is no more resistance. One can give up a belligerent, stubborn way of acting and will not have to regret it."
+      },
+      "6": {
+        "text": "A goat butts against a hedge.\nIt cannot go backward, it cannot go forward.",
+        "comments": "Nothing serves to further.\nIf one notes the difficulty, this brings good fortune.\n\nIf we venture too far we come to a deadlock, unable either to advance or to retreat and whatever we do merely serves to complicate thing further. Such obstinacy leads to insuperable difficulties. But if, realizing the situation, we compose ourselves and decide not to continue, everything will right itself in time."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Great Power'. Internalize this core philosophy: The great lines, that is, the light, strong lines, are powerful. Four light lines have entered the hexagram from below and are about to ascend higher. The upper trigram is Chên, the Arousing; the lower is ch'ien, the Creative. Ch'ien is strong, Chên produces movement. The union of movement and strength gives the meaning of THE POWER OF THE GREAT. The hexagram is linked with the second month (March-April). Your current worldview is: \"Da Zhuang, Great Power (or Great Invigoration), is the Hexagram of invigorating speeches, wood or brick breaking strikes, and mental prowess. This is the power of true heroes, those brave, intelligent, and strong leaders, are built around a constant virtue, or benevolent core.\". Let your choices be subtly driven by these conditions: you use your strength, political authority, or powers for the common good, you are reckless or arrogant. When interacting, mirror the wisdom found in the commentary: \"The hexagram points to a time when inner worth mounts with great force and comes to power. But its strength has already passed beyond the median line, hence there is danger that one may rely entirely on one's own power and forget to ask what is right. There is danger too that, being intent on...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Great Power'. The primary quest objective is: The Great Power Quest offers the Quester power, whether temporal, political, of will or body, or a literal new power (or superpower). However, the Quest of Great Power is really about how that power might corrupt the Quester, and how they handle the responsibility that such power brings. If the Quester is granted a power it is usually early in the Quest to help them further the Quest. They may even be granted the power, or trained in it, by the Quest-giver.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: Thunder--electrical energy--mounts upward in the spring. The direction of this movement is in harmony with that of the movement of heaven. It is therefore a movement in accord with heaven, producing great power. However, true greatness depends on being in harmony with what is right. Therefore in times of great power the superior man avoids doing anything that is not in harmony with the... Use the following line-specific challenges to pace the story: The Quester has learned the very basics of their new power, but if they rely upon it too much, or attempt something too complicated there will be misfortune (add a Failure Level, Hurdle or Obstacle to the Test or Ordeal ). | The Quester must face their Test or Ordeal while relying upon their new power. If they use their new power only, they may add a Success Level, however if they display signs of over-confidence, or if they fail to use their new power at all, add a Failure Level, Hurdle or Obstacle to the Test or Ordeal. | If the Quester boasts about their new power, makes empty threats, or uses their power at full strength, this will complicate things adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test. | The power the Quester holds is somewhat like an ability to drive, while they may be very skilled, the car being driven applies restrictions to the driving, they can only drive the car from inside, and cannot drive this car as though it were another car or a helicopter. The Quester who tries to use their power directly and outwardly, are ignoring what the car is capable of, and this adds a Failure Level, Obstacle or Hurdle to their Test or Quest. The Quester who perseveres and practices with using their power internally and indirectly, removes Obstacles in their way, just as a skilled driver might familiarize themselves with the car, service, tune-up and improve the car however necessary before driving it, or switching to hover mode, will add a Success Level to their Test or Ordeal instead. | The Quester will be tested once again, this time the test is not about their use of power, but about their character and whether the power is corrupting them. If they are belligerent, stubborn, or power-crazed in any way, then the power may be removed from them, and they will certainly add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. | The Quester will face an opposition of equal or greater power who blocks their way or progress. If they charge in or retreat before this enemy they will become stuck, entangled in combat potentially and add a Failure Level, Hurdle or Obstacle to the Test or Ordeal. If instead they stand against this enemy and hold firm, with patience, they will add a Success Level instead (although there is no guarantee that the Quester will win this stand-off).",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Strength in the Toes): Mirror the internal state described in the commentary: \"This is certainly true.\n\nThe toes are in the lowest place and are ready to advance. So likewise great power in lowly station is inclined to effect advance by force. This, if carried further, would certainly lead to misfortune, and therefore by way...\" Your actions should be framed by the goal: you use your most powerful Annex.",
+        "Plot": "Plot Complication Line 1 (Strength in the Toes): Introduce a challenge based on the interpretation: \"This is certainly true.\n\nThe toes are in the lowest place and are ready to advance. So likewise great power in lowly station is inclined to effect advance by force. This, if carried further, would certainly lead to misfortune, and therefore by way...\" The specific quest objective for this stage is: The Quester has learned the very basics of their new power, but if they rely upon it too much, or attempt something too complicated there will be misfortune (add a Failure Level, Hurdle or Obstacle to the Test or Ordeal )."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Power Stance): Mirror the internal state described in the commentary: \"The premise here is that the gates to success are beginning to open. Resistance gives way and we forge ahead. This is the point at which, only too easily, we become the prey of exuberant self-confidence. This is why the oracle says that perseverance...\" Your actions should be framed by the goal: you stand up (for what you believe in / against others / while everyone sits, etc).",
+        "Plot": "Plot Complication Line 2 (Power Stance): Introduce a challenge based on the interpretation: \"The premise here is that the gates to success are beginning to open. Resistance gives way and we forge ahead. This is the point at which, only too easily, we become the prey of exuberant self-confidence. This is why the oracle says that perseverance...\" The specific quest objective for this stage is: The Quester must face their Test or Ordeal while relying upon their new power. If they use their new power only, they may add a Success Level, however if they display signs of over-confidence, or if they fail to use their new power at all, add a Failure Level, Hurdle or Obstacle to the Test or Ordeal."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Entangled Power): Mirror the internal state described in the commentary: \"The superior man does not act thus.\n\nTo continue is dangerous.\nA goat butts against a hedge\nAnd gets its horns entangled.\n\nMaking a boast of power leads to entanglements, just as a goat entangles its horns when it butts against a hedge. Whereas an...\" Your actions should be framed by the goal: you hide your true power, use a weaker Annex, pull the punch, reduce the Success Level, etc.",
+        "Plot": "Plot Complication Line 3 (Entangled Power): Introduce a challenge based on the interpretation: \"The superior man does not act thus.\n\nTo continue is dangerous.\nA goat butts against a hedge\nAnd gets its horns entangled.\n\nMaking a boast of power leads to entanglements, just as a goat entangles its horns when it butts against a hedge. Whereas an...\" The specific quest objective for this stage is: If the Quester boasts about their new power, makes empty threats, or uses their power at full strength, this will complicate things adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Horse Power): Mirror the internal state described in the commentary: \"The hedge opens; there is no entanglement.\nPower depends upon the axle of a big cart.\n\nIf a man goes on quietly and perseveringly working at the removal of resistances, success comes in the end. The obstructions give way and all occasion for remorse...\" Your actions should be framed by the goal: you check everything is ready, repeat an action, or drive or ride a vehicle.",
+        "Plot": "Plot Complication Line 4 (Horse Power): Introduce a challenge based on the interpretation: \"The hedge opens; there is no entanglement.\nPower depends upon the axle of a big cart.\n\nIf a man goes on quietly and perseveringly working at the removal of resistances, success comes in the end. The obstructions give way and all occasion for remorse...\" The specific quest objective for this stage is: The power the Quester holds is somewhat like an ability to drive, while they may be very skilled, the car being driven applies restrictions to the driving, they can only drive the car from inside, and cannot drive this car as though it were another car or a helicopter. The Quester who tries to use their power directly and outwardly, are ignoring what the car is capable of, and this adds a Failure Level, Obstacle or Hurdle to their Test or Quest. The Quester who perseveres and practices with using their power internally and indirectly, removes Obstacles in their way, just as a skilled driver might familiarize themselves with the car, service, tune-up and improve the car however necessary before driving it, or switching to hover mode, will add a Success Level to their Test or Ordeal instead."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Goat Power): Mirror the internal state described in the commentary: \"No remorse.\n\nThe goat is noted for hardness outwardly and weakness within. Now the situation is such that everything is easy; there is no more resistance. One can give up a belligerent, stubborn way of acting and will not have to regret it.\" Your actions should be framed by the goal: you are stubborn, push too hard, or refuse to listen.",
+        "Plot": "Plot Complication Line 5 (Goat Power): Introduce a challenge based on the interpretation: \"No remorse.\n\nThe goat is noted for hardness outwardly and weakness within. Now the situation is such that everything is easy; there is no more resistance. One can give up a belligerent, stubborn way of acting and will not have to regret it.\" The specific quest objective for this stage is: The Quester will be tested once again, this time the test is not about their use of power, but about their character and whether the power is corrupting them. If they are belligerent, stubborn, or power-crazed in any way, then the power may be removed from them, and they will certainly add a Hurdle, Obstacle or Failure Level to their Ordeal or Test."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Ram Caught in Fence): Mirror the internal state described in the commentary: \"Nothing serves to further.\nIf one notes the difficulty, this brings good fortune.\n\nIf we venture too far we come to a deadlock, unable either to advance or to retreat and whatever we do merely serves to complicate thing further. Such obstinacy leads...\" Your actions should be framed by the goal: you get stuck, blocked, or obstructed and are patient.",
+        "Plot": "Plot Complication Line 6 (Ram Caught in Fence): Introduce a challenge based on the interpretation: \"Nothing serves to further.\nIf one notes the difficulty, this brings good fortune.\n\nIf we venture too far we come to a deadlock, unable either to advance or to retreat and whatever we do merely serves to complicate thing further. Such obstinacy leads...\" The specific quest objective for this stage is: The Quester will face an opposition of equal or greater power who blocks their way or progress. If they charge in or retreat before this enemy they will become stuck, entangled in combat potentially and add a Failure Level, Hurdle or Obstacle to the Test or Ordeal. If instead they stand against this enemy and hold firm, with patience, they will add a Success Level instead (although there is no guarantee that the Quester will win this stand-off)."
+      }
+    }
+  }
+}

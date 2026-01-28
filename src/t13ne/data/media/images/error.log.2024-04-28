@@ -1,0 +1,5 @@
+[Sun Apr 28 15:06:51.893735 2024] [fcgid:warn] [pid 2170352:tid 121335860299520] [client 205.210.31.140:65062] mod_fcgid: stderr: setting hooks for activation sna deactivation
+[Sun Apr 28 15:06:56.036066 2024] [fcgid:warn] [pid 2170352:tid 121339635566336] [client 173.236.246.240:43474] mod_fcgid: stderr: setting hooks for activation sna deactivation
+[Sun Apr 28 15:06:56.439962 2024] [fcgid:warn] [pid 2170352:tid 121340207539968] [client 173.236.246.240:43500] mod_fcgid: stderr: setting hooks for activation sna deactivation
+[Sun Apr 28 19:09:05.377809 2024] [fcgid:warn] [pid 1255193:tid 121343929386752] [client 142.93.46.157:34074] mod_fcgid: stderr: setting hooks for activation sna deactivation
+[Sun Apr 28 19:09:06.431632 2024] [fcgid:warn] [pid 1255193:tid 121336968115968] [client 173.236.246.240:59308] mod_fcgid: stderr: setting hooks for activation sna deactivation

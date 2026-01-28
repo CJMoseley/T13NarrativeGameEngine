@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T13NE Proficiency Manager & Extractor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .brand-wrap {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        header .brand-wrap img {
+            height: 48px;
+            width: auto;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            color: #2d3436;
+        }
+
+        .status {
+            font-size: 0.9em;
+            padding: 5px 12px;
+            border-radius: 20px;
+            background: #eee;
+        }
+
+        .status.ready {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status.loading {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 20px;
+        }
+
+        .sidebar {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+        }
+
+        .content {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            min-height: 600px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .tab {
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .btn-success {
+            background: #27ae60;
+            color: white;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .form-group select,
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            background: rgba(0,0,0,0.5);
+            color: #fff;
+        }
+
+        .form-group select:focus,
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #fff;
+            background: rgba(0,0,0,0.7);
+        }
+
+        .extractor-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .candidate-card {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 5px solid #667eea;
+        }
+
+        .candidate-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .field-tag {
+            font-size: 0.75em;
+            background: #e0e0e0;
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        .tag-pill {
+            display: inline-block;
+            background: #ebf4ff;
+            color: #2c5282;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.8em;
+            margin-right: 5px;
+        }
+
+        .ai-results {
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            border: 1px dashed #ccc;
+        }
+
+        .log-panel {
+            background: #2d3436;
+            color: #dfe6e9;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.85em;
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+
+        .prof-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .prof-item {
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            border-left: 3px solid #667eea;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="brand-wrap">
+                <img src="./data/media/images/t13logo.png" alt="T13 Logo">
+                <h1>T13NE Proficiency Manager</h1>
+            </div>
+            <div id="ai-status" class="status loading">Checking AI services...</div>
+        </header>
+
+        <div class="main-layout">
+            <aside class="sidebar">
+                <div class="form-group">
+                    <label>Quick Actions</label>
+                    <button class="btn btn-primary" style="width:100%; margin-bottom:10px;" id="btn-save-changes">Save
+                        All Changes</button>
+                    <button class="btn btn-secondary" style="width:100%;" onclick="location.reload()">Refresh
+                        Data</button>
+                </div>
+                <hr style="margin: 20px 0;">
+                <div id="stats-panel">
+                    <p>Total Proficiencies: <span id="stat-total">0</span></p>
+                </div>
+            </aside>
+
+            <main class="content">
+                <div class="tabs">
+                    <button class="tab active" data-tab="library">Library</button>
+                    <button class="tab" data-tab="extractor">Extractor</button>
+                    <button class="tab" data-tab="settings">Settings</button>
+                </div>
+
+                <!-- Library Tab -->
+                <div id="tab-library" class="tab-content active">
+                    <div class="form-group" style="display:flex; gap:10px;">
+                        <input type="text" id="lib-search" placeholder="Search by name or ID...">
+                        <select id="lib-facet-filter">
+                            <option value="">All Facets</option>
+                        </select>
+                    </div>
+                    <div id="prof-list" class="prof-list">
+                        <!-- Loaded via JS -->
+                    </div>
+                </div>
+
+                <!-- Extractor Tab -->
+                <div id="tab-extractor" class="tab-content">
+                    <div class="extractor-grid">
+                        <div class="config-panel">
+                            <h3>Automated Extraction from Facets</h3>
+                            <p style="font-size:0.85em; color:#666; margin-bottom:15px;">Select a facet to find
+                                potential proficiency candidates (Emotions, Criticals, Rules, etc.)</p>
+                            <div class="form-group" style="display:flex; gap:10px;">
+                                <select id="extract-facet-select">
+                                    <option value="">Select Facet...</option>
+                                </select>
+                                <button id="btn-analyze-facet" class="btn btn-primary">Analyze Facet</button>
+                            </div>
+                        </div>
+
+                        <div id="extraction-results" style="display:none;">
+                            <div
+                                style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                                <h4>Found <span id="candidate-count">0</span> Candidates</h4>
+                                <button id="btn-process-ai" class="btn btn-success">Process Selected with AI</button>
+                            </div>
+                            <div id="candidate-list"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Tab -->
+                <div id="tab-settings" class="tab-content">
+                    <div class="extractor-grid">
+                        <div class="config-panel">
+                            <h3>Maintenance Tools</h3>
+                            <div class="form-group">
+                                <label>Bulk Upgrade Legacy Names</label>
+                                <p style="font-size:0.8em; color:#666; margin-bottom:10px;">Iterates through the library
+                                    and uses AI to convert string names to the standard [common, full, aliases] array
+                                    format.</p>
+                                <button id="btn-bulk-upgrade" class="btn btn-secondary">Run Bulk Upgrade</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="log" class="log-panel">
+                    <div>[System] Ready.</div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script type="module">
+        import AuthorMain from './AuthorMain.js';
+        const T13NE = AuthorMain.getEngine();
+        import CodexLoader from './modules/CodexLoader.js';
+        import T13ProficiencyExtractor from './modules/T13ProficiencyExtractor.js';
+
+        let extractor;
+        let facets = [];
+        let candidates = [];
+
+        async function init() {
+            try {
+                log("Initializing Standalone T13NE Tools...");
+                await AuthorMain.bootstrap();
+
+                log("Initializing Extractor...");
+                extractor = new T13ProficiencyExtractor(T13NE, CodexLoader);
+                await extractor.initialize();
+
+                await loadFacets();
+                await updateLibrary();
+                checkAIStatus(T13NE);
+
+                setupEventListeners();
+
+                document.getElementById('ai-status').className = 'status ready';
+                document.getElementById('ai-status').textContent = 'AI Services Connected';
+                log("System ready.");
+            } catch (e) {
+                log("Initialization error: " + e.message, "error");
+                console.error(e);
+            }
+        }
+
+        async function loadFacets() {
+            const data = await CodexLoader.getData('facets', 'facets.json');
+            facets = data || [];
+            const selects = ['extract-facet-select', 'lib-facet-filter'];
+            selects.forEach(id => {
+                const el = document.getElementById(id);
+                facets.forEach((f, i) => {
+                    const opt = document.createElement('option');
+                    opt.value = i;
+                    opt.textContent = `${i}: ${f.FacetName}`;
+                    el.appendChild(opt);
+                });
+            });
+        }
+
+        async function updateLibrary() {
+            const manifest = await CodexLoader._getOrBuildProficiencyManifest();
+            const total = Object.keys(manifest.paths).length;
+            document.getElementById('stat-total').textContent = total;
+
+            const listEl = document.getElementById('prof-list');
+            listEl.innerHTML = '';
+
+            const ids = Object.keys(manifest.paths).slice(0, 50);
+            for (const id of ids) {
+                const data = await CodexLoader.getProficiency(id);
+                if (data) {
+                    const prof = data.prof || data;
+                    const name = Array.isArray(prof.Name) ? prof.Name[0] : (prof.Name || prof.name);
+                    const fullName = Array.isArray(prof.Name) ? prof.Name[1] : '';
+
+                    const item = document.createElement('div');
+                    item.className = 'prof-item';
+                    item.innerHTML = `<strong>${name}</strong> ${fullName ? `<small>(${fullName})</small>` : ''} <span style="font-size:0.8em; color:#999;">(ID: ${id})</span><br><small>${prof.Description?.substring(0, 100)}...</small>`;
+                    listEl.appendChild(item);
+                }
+            }
+        }
+
+        function setupEventListeners() {
+            document.querySelectorAll('.tab').forEach(t => {
+                t.onclick = () => {
+                    document.querySelectorAll('.tab, .tab-content').forEach(el => el.classList.remove('active'));
+                    t.classList.add('active');
+                    document.getElementById('tab-' + t.dataset.tab).classList.add('active');
+                };
+            });
+
+            document.getElementById('btn-analyze-facet').onclick = analyzeFacet;
+            document.getElementById('btn-process-ai').onclick = processAI;
+            document.getElementById('btn-save-changes').onclick = saveChanges;
+            document.getElementById('btn-bulk-upgrade').onclick = bulkUpgradeNames;
+        }
+
+        async function bulkUpgradeNames() {
+            if (!confirm("This will process all proficiencies with AI. It may take a long time and many API calls. Continue?")) return;
+
+            log("Starting bulk upgrade of legacy names...");
+            const manifest = await CodexLoader._getOrBuildProficiencyManifest();
+            const ids = Object.keys(manifest.paths);
+            let count = 0;
+
+            for (const id of ids) {
+                const data = await CodexLoader.getProficiency(id);
+                if (!data || !data.prof) continue;
+
+                if (!Array.isArray(data.prof.Name)) {
+                    log(`Upgrading ID ${id}: ${data.prof.Name}...`);
+                    try {
+                        const nameResult = await extractor.nameGenerator.generate({
+                            type: 'Proficiency',
+                            name: data.prof.Name,
+                            context: 'Existing legacy proficiency to be formalized',
+                        }, id);
+
+                        data.prof.Name = nameResult;
+                        const path = manifest.paths[id];
+                        // Re-fetch or use cache to update
+                        const fileName = path.split('/').pop();
+                        const pathParts = path.split('/');
+                        const category = pathParts.slice(pathParts.indexOf('proficiencies')).slice(0, -1).join('/');
+
+                        const bundleData = CodexLoader.dirtyFiles[path] || await CodexLoader.getData(category, fileName);
+                        bundleData[id] = data;
+                        CodexLoader.dirtyFiles[path] = bundleData;
+
+                        count++;
+                        if (count % 10 === 0) {
+                            log(`Processed ${count} proficiencies...`);
+                            await saveChanges();
+                        }
+                    } catch (e) {
+                        log(`Error upgrading ID ${id}: ${e.message}`, "error");
+                    }
+                }
+            }
+            await saveChanges();
+            log(`Bulk upgrade complete. ${count} proficiencies updated.`);
+            updateLibrary();
+        }
+
+        async function analyzeFacet() {
+            const idx = document.getElementById('extract-facet-select').value;
+            if (idx === "") return;
+
+            log(`Analyzing Facet ${idx}: ${facets[idx].FacetName}...`);
+            candidates = extractor.extractCandidates(facets[idx]);
+
+            const listEl = document.getElementById('candidate-list');
+            listEl.innerHTML = '';
+            document.getElementById('candidate-count').textContent = candidates.length;
+            document.getElementById('extraction-results').style.display = 'block';
+
+            candidates.forEach((c, i) => {
+                const card = document.createElement('div');
+                card.className = 'candidate-card';
+                card.innerHTML = `
+                    <div class="candidate-header">
+                        <strong>${c.name}</strong>
+                        <span class="field-tag">${c.field}</span>
+                    </div>
+                    <div id="ai-res-${i}">
+                        <button class="btn btn-secondary btn-sm" onclick="this.disabled=true; window.processSingleAI(${i})">Process with AI</button>
+                    </div>
+                `;
+                listEl.appendChild(card);
+            });
+        }
+
+        window.processSingleAI = async (idx) => {
+            const c = candidates[idx];
+            const resEl = document.getElementById(`ai-res-${idx}`);
+            resEl.innerHTML = '<em>Processing AI...</em>';
+
+            const results = await extractor.processBatch([c]);
+            const res = results[0];
+
+            if (res.error) {
+                resEl.innerHTML = `<span style="color:red">Error: ${res.error}</span>`;
+            } else {
+                candidates[idx] = res;
+                resEl.innerHTML = `
+                    <div class="ai-results">
+                        <strong>Generated Name:</strong> ${res.generatedName[0]} (${res.generatedName[1]})<br>
+                        <strong>Description:</strong> ${res.generatedDescription}<br>
+                        <strong>Tags:</strong> ${res.tags.Facets.map(f => `<span class="tag-pill">Facet ${f}</span>`).join('')}
+                        <div style="margin-top:10px">
+                            <button class="btn btn-success btn-sm" onclick="window.saveCandidate(${idx})">Commit to Library</button>
+                        </div>
+                    </div>
+                `;
+            }
+        };
+
+        window.saveCandidate = async (idx) => {
+            const c = candidates[idx];
+            const profObj = {
+                Name: c.generatedName,
+                Description: c.generatedDescription,
+                Tags: c.tags
+            };
+            const id = await CodexLoader.createProficiency({ prof: profObj });
+            log(`Created proficiency ID: ${id} for ${c.name}`);
+            document.getElementById(`ai-res-${idx}`).innerHTML = `<span style="color:green">✓ Saved as ID: ${id}</span>`;
+            updateLibrary();
+        };
+
+        async function processAI() {
+            log("Processing all candidates with AI...");
+            const btns = document.querySelectorAll('#candidate-list button');
+            for (let btn of btns) {
+                if (!btn.disabled) btn.click();
+            }
+        }
+
+        async function saveChanges() {
+            log("Saving all pending file changes to server...");
+            const changes = CodexLoader.getUnsavedChanges();
+            if (changes.files_to_save.length === 0) {
+                log("No changes to save.");
+                return;
+            }
+
+            try {
+                console.log("FILES TO SAVE:", changes.files_to_save);
+                log(`Saving ${changes.files_to_save.length} files...`);
+                CodexLoader.codexIsDirty = false;
+                CodexLoader.profManifestIsDirty = false;
+                CodexLoader.dirtyFiles = {};
+            } catch (e) {
+                log("Save error: " + e.message, "error");
+            }
+        }
+
+        function log(msg, type = 'info') {
+            const el = document.getElementById('log');
+            const div = document.createElement('div');
+            if (type === 'error') div.style.color = '#ff7675';
+            div.textContent = `[${new Date().toLocaleTimeString()}] ${msg}`;
+            el.appendChild(div);
+            el.scrollTop = el.scrollHeight;
+        }
+
+        async function checkAIStatus(t13) {
+            const statusEl = document.getElementById('ai-status');
+            const AI = t13.getModule('AIService') || CodexLoader.cache['/plugins/t13ne/modules/AIService.js'];
+            if (AI) {
+                statusEl.textContent = "AI Service Loaded";
+                statusEl.className = "status ready";
+            }
+        }
+
+        init();
+    </script>
+</body>
+
+</html>

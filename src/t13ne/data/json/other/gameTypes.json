@@ -1,0 +1,34 @@
+[
+  {
+    "Type": "Core",
+    "Description": "This is a Core Game. You cannot edit Core components, but can use them in your own projects. Core Games define common rules sets and the like for many other Games."
+  },
+  {
+    "Type": "World-building",
+    "Description": "World-building Games used by Referees and Authors to flesh out worlds and develop the Game's background. Word-building games are sometimes used to construct an area for a Sandbox game."
+  },
+  {
+    "Type": "Collaborative",
+    "Description": "Collaborative Games are world-building Games that are shared between multiple Authors or Referees."
+  },
+  {
+    "Type": "Sandbox",
+    "Description": "Sandbox Games are constructed Settings - which are Locations, usually villages, towns, kingdoms or whole worlds, populated with Characters and Descendants, typically with a built-in and some what delicate balance. When the PCs interact with the Sandbox, it will push the world out of balance somehow, and cause a number of reactions from the different factions, groups, and Characters in the Sandbox. Sandboxes are both complicated to set up and can be complex to run, but feel like living places when done right."
+  },
+  {
+    "Type": "Plotted",
+    "Description": "Plotted Games are based around a number of major Plots, usually at least a couple of Arcs and at least one Volume, often an Epic. These Plots guide all the major events of the Game and spawn additional Sub-Plots. Plotted games"
+  },
+  {
+    "Type": "Random",
+    "Description": "Random Games generally have a table that can roll up suitable Plots for the Characters. They can be similar to both Plotted and Sandbox games in style, but require less Referee work, and as a result can be less coherent overall."
+  },
+  {
+    "Type": "Adventure",
+    "Description": "Adventure Games are usually based around a single Plot, often a Quest. They tend to be a single Story or Arc, and are often used for one shots."
+  },
+  {
+    "Type": "Campaign",
+    "Description": "A Campaign is a hybrid of a Sandbox or Plotted, Random, and Adventure. It can be thought of as a larger Adventure, or set of Plots within a Sandbox environment."
+  }
+]

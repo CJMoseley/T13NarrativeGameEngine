@@ -1,0 +1,236 @@
+[
+    {
+        "id": "T13-NE-GEOMETRY-CHORDS-1",
+        "data": {
+            "Type": "Power",
+            "Description": "Also called a dyad. Power Chords are not real chords and lack support from a third degree of the scale, without this additional support from outside they can never be completely stable, but can sound stark, loud and powerful.",
+            "Notes": "0,7",
+            "Symbol": "5"
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHORDS-2",
+        "data": {
+            "Type": "Power",
+            "Description": "Also called a Fifth chord. Power Chords are not real chords and lack support for the fifth,  from a third degree of the scale, although in this case they have an added Octave that reinforces the root, they can never be completely stable, but will sound powerful, loud and aggressive.",
+            "Notes": "0,7,12",
+            "Symbol": "ind"
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHORDS-3",
+        "data": {
+            "Type": "Major-Triad",
+            "Description": "A powerful expression of the root note, usually bringing cheerfulness, confidence and satisfaction.",
+            "Notes": "0,4,7",
+            "Symbol": "\u0394"
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHORDS-4",
+        "data": {
+            "Type": "Major-Sixth",
+            "Description": "A bright confident expression of the root note, often more thoughtful and contemplative.",
+            "Notes": "0,4,7,9",
+            "Symbol": "maj6"
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHORDS-5",
+        "data": {
+            "Type": "Major-Seventh",
+            "Description": "This is a serene and easy expression of the root note, it has a more romantic sound, that adds both softness and exhiliration.",
+            "Notes": "0,4,7,11",
+            "Symbol": "maj<sup>7</sup>"
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHORDS-6",
+        "data": {
+            "Type": "Major-Ninth",
+            "Description": "This is an open and free expression of the root note, it has a more optimistic sound than the Seventh, an added brightness.",
+            "Notes": "0,2,4,7,11",
+            "Symbol": "maj<sup>9</sup>"
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHORDS-7",
+        "data": {
+            "Type": "Dominant-Seventh",
+            "Description": "This is an edgy, soulful or funky expression of the root note.",
+            "Notes": "0,4,7,10",
+            "Symbol": "dom7"
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHORDS-8",
+        "data": {
+            "Type": "Dominant Ninth",
+            "Description": "This is an edgy, soulful or funky expression of the root note.",
+            "Notes": "0,2,4,7,10",
+            "Symbol": "9"
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHORDS-9",
+        "data": {
+            "Type": "Dominant Ninth (no 5)",
+            "Description": "This is an edgy, soulful or funky expression of the root note.",
+            "Notes": "0,2,4,10",
+            "Symbol": "V<sup>9</sup>"
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHORDS-10",
+        "data": {
+            "Type": "Dominant Minor Ninth",
+            "Description": "This is an edgy, dramatic expression of the root note. Full of threat and danger.",
+            "Notes": "0,1,4,7,10",
+            "Symbol": "<sup>7&flat;9</sup>"
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHORDS-11",
+        "data": {
+            "Type": "Augmented-Triad",
+            "Description": "This is a less emotional expression of the root note. That adds confusing aspects to amase, astonish and surprise, like the twinkling of faery charms as they ensorcel everyone.",
+            "Notes": "0,4,8",
+            "Symbol": "aug"
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHORDS-12",
+        "data": {
+            "Type": "Augmented-Seventh",
+            "Description": "The original expression of the root note is more emotionally foggy, layers of emotional confusion and a deep sense of unease abound, overriding much of the original notes emotion.",
+            "Notes": "0,4,8,10",
+            "Symbol": "aug<sup>7</sup>"
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHORDS-13",
+        "data": {
+            "Type": "Minor-Triad",
+            "Description": "A darker, sadder expression of the root note, it brings tenseness, apprehension and melancholy to the note.",
+            "Notes": "0,3,7",
+            "Symbol": "min"
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHORDS-14",
+        "data": {
+            "Type": "Minor-Sixth",
+            "Description": "A dark majestic expression of the root note. Full of brooding Mystery, it is full of building tension, before an ultimate betrayal.",
+            "Notes": "0,3,7,9",
+            "Symbol": "min<sup>6</sup>"
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHORDS-15",
+        "data": {
+            "Type": "Minor-Seventh",
+            "Description": "A mellow, but moody expression of the root note. This can be a surprising and lively experience",
+            "Notes": "0,3,7,10",
+            "Symbol": "min<sup>7</sup>"
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHORDS-16",
+        "data": {
+            "Type": "Minor-Ninth",
+            "Description": "A creepy, ominous, but bluesy expression of the root note. This brings complexity to the emotions as well as a darkness, it adds brightness.",
+            "Notes": "0,1,3,7,10",
+            "Symbol": "min<sup>7</sup>"
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHORDS-17",
+        "data": {
+            "Type": "Minor-Major-Seventh",
+            "Description": "Also called the Hitchcock chord. This is the most mysterious expression of the root note, it most evokes a question, mystery or suspicion.",
+            "Notes": "0,3,7,11",
+            "Symbol": "min<sup>maj7</sup>"
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHORDS-18",
+        "data": {
+            "Type": "Diminished-Triad",
+            "Description": "A tense spooky expression of the root note. That indicates a fair amount of suspicion and emotional duplicity within the chord.",
+            "Notes": "0,3,6",
+            "Symbol": "dim"
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHORDS-19",
+        "data": {
+            "Type": "Diminished-Seventh",
+            "Description": "Perhaps the most emotionally tense expresion of the root note, full of suspense, bordering on panic.",
+            "Notes": "0,3,6,9",
+            "Symbol": "dim<sup>7</sup>"
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHORDS-20",
+        "data": {
+            "Type": "Half-Diminished-Seventh",
+            "Description": "A dramatic and powerful expression of the root note, full of rich tension and drama.",
+            "Notes": "0,3,6,10",
+            "Symbol": "<sup>\u00f87</sup>"
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHORDS-21",
+        "data": {
+            "Type": "Suspended Fourth",
+            "Description": "A delightfully tense expression of the root note, that adds a little emotional complexity to the situation.",
+            "Notes": "0,5,7",
+            "Symbol": "<sup>sus4</sup>"
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHORDS-22",
+        "data": {
+            "Type": "Major-Subdominant-Add-Six",
+            "Description": "An emotionally warm, relaxed expression of the root note, that often has a certain sense of emotional solace to it.",
+            "Notes": "0,5,9",
+            "Symbol": "IV<sup>maj6</sup>"
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHORDS-23",
+        "data": {
+            "Type": "Six/Nine",
+            "Description": "A relaxed, bluesy, but stable expression of the root note.",
+            "Notes": "0,2,4,7,9",
+            "Symbol": "<sup>6/9</sup>"
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHORDS-24",
+        "data": {
+            "Type": "Add Nine",
+            "Description": "A steely, austere and cold expression of the root note, as additional dissonance adds confusion to the original emotion.",
+            "Notes": "0,2,4,7",
+            "Symbol": "<sup>Add9</sup>"
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHORDS-25",
+        "data": {
+            "Type": "Minor Six/Nine",
+            "Description": "A relaxed and bluesy, stable but melancholy expression of the root note.",
+            "Notes": "0,2,3,7,9",
+            "Symbol": "MI<sup>6/9</sup>"
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHORDS-26",
+        "data": {
+            "Type": "Neapolitan Sixth",
+            "Description": "",
+            "Notes": "0,2,3,7,9",
+            "Symbol": "MI<sup>6/9</sup>"
+        }
+    }
+]

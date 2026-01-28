@@ -1,0 +1,44 @@
+[
+    {
+        "Roll": 1,
+        "Card": "Diamonds <span class=\"t13ne-redcard\">&diams;<\/span> 2-10 Pips",
+        "Type": "Atmospherics",
+        "Description": "Atmospherics are simple \"Flavour-text\" events like torches guttering in the wind, changes in the weather, curtains flapping in a breeze, strange howls in the distance, raised voices out in the street, or whispering in the darkness. Atmospherics usually have nothing to do with the Conflict, but help to build Tension in the Players and ground the adventure showing a passage of time. Atmospherics can be used to foreshadow later events (the howl in the distance is the wolf pack that should be hunting the party in the late Loom)",
+        "Stress_Relieved": 1
+    },
+    {
+        "Roll": 2,
+        "Card": "Hearts <span class=\"t13ne-redcard\">&hearts;<\/span> 2-10 Pips",
+        "Type": "Narrative Moment",
+        "Description": "Narrative Moments are small (often social) moments in the Character&#39;s life. These are intended to give us insight into the Character and who they are. Narrative Moments are specified by Facet and can tie to the Conflict especially at higher Tension Levels, but are usually randomly determined.",
+        "Stress_Relieved": "Varies as the Character\u2019s Facet Dice."
+    },
+    {
+        "Roll": 3,
+        "Card": "Spades <span class=\"t13ne-blackcard\">&spades;<\/span> 2-10 Pips",
+        "Type": "Hazard",
+        "Description": "Hazards are some danger, threat or risk to the Characters. Hazards can be as simple as an imposed number of Failure Levels (1 to Current Tension Level), an Ordeal Obstacle or Facet Hurdle, where something gets in the way of their investigation or adventure, or it can be a Snag or Fray in its own right. Some gamers will be familiar with Hazards as an encounter with a trap, wandering monster or guards.",
+        "Stress_Relieved": "Varies 2+"
+    },
+    {
+        "Roll": 4,
+        "Card": "Black Cards <span class=\"t13ne-blackcard\">&clubs;<\/span> &amp; <span class=\"t13ne-blackcard\">&spades;<\/span> 11+ Pips (includes Black Joker)",
+        "Type": "Prod",
+        "Description": "Prods are meant to force a Hooked Character to pay more attention to the Plot. If the Referee or Yarn-Teller has noticed a Character isn\u2019t particularly engaged, or isn\u2019t acting as Tense as the Tension Level suggests, then the Yarn-Teller should use a Prod. The idea of a Prod is to raise the Tension, accelerate the Story and push things forwards, how hard the Character need to be Prodded is up to the Yarn-Teller.",
+        "Stress_Relieved": 2
+    },
+    {
+        "Roll": 5,
+        "Card": "Red Cards <span class=\"t13ne-redcard\">&hearts;<\/span> &amp; <span class=\"t13ne-redcard\">&diams;<\/span>11+ Pips (includes Red Joker)",
+        "Type": "Break",
+        "Description": "Breaks are used by the Yarn-Teller to slow the pace of the Story down. If a Character is making too much progress too quickly, or if the Tension has risen too quickly, or higher than intended, or most Characters acting more nervous and jumpy than the Tension Level and Stakes suggests then the Yarn-Teller should consider using a Break.",
+        "Stress": "All Current Stress"
+    },
+    {
+        "Roll": 6,
+        "Card": "Clubs <span class=\"t13ne-blackcard\">&clubs;<\/span> 2-10 Pips",
+        "Type": "Ratchet",
+        "Description": "Ratchets are the way the Yarn-Teller (usually a Plot) to apply a direct connection between the Tension, Stress and the Narrative. Ratchets imply a change in circumstance in the Story, that might indicate how alert the local guards are, or how agitated the spirit world has become, or how close to eruption the volcano is. Most often the Ratchet will Ratchet together the Dominant and Pressed Sides Embodiments. Ratchets can tighten and sometimes loosen based on the Tension Level and Narrative.",
+        "Stress_Relieved": "Varies 2+"
+    }
+]

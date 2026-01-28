@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T13NE Proficiency Manager</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .status {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .status.ready {
+            color: #27ae60;
+        }
+
+        .status.loading {
+            color: #f39c12;
+        }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+        }
+
+        .sidebar h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 0.9em;
+            transition: border-color 0.3s;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .filter-group {
+            margin-bottom: 20px;
+        }
+
+        .filter-group label {
+            display: block;
+            font-size: 0.85em;
+            color: #555;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .filter-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 0.9em;
+            cursor: pointer;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #7f8c8d;
+        }
+
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+
+        .content {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .tab {
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .tab:hover {
+            color: #667eea;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .proficiency-list {
+            display: grid;
+            gap: 15px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .proficiency-card {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 4px solid #667eea;
+        }
+
+        .proficiency-card:hover {
+            background: #e8eaf6;
+            transform: translateX(4px);
+        }
+
+        .proficiency-card.selected {
+            background: #e8eaf6;
+            border-left-color: #764ba2;
+        }
+
+        .prof-card-name {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .prof-card-info {
+            font-size: 0.8em;
+            color: #999;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 0.95em;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .detail-panel {
+            display: grid;
+            gap: 20px;
+        }
+
+        .detail-section {
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+
+        .detail-section h4 {
+            color: #333;
+            margin-bottom: 12px;
+            font-size: 0.95em;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #999;
+        }
+
+        .empty-state-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(102, 126, 234, 0.3);
+            border-radius: 50%;
+            border-top-color: #667eea;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .alert {
+            padding: 12px 15px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            display: none;
+        }
+
+        .alert.show {
+            display: block;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 15px;
+        }
+
+        .modal-header h2 {
+            color: #333;
+        }
+
+        .modal-close {
+            float: right;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: #999;
+            border: none;
+            background: none;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            color: #333;
+        }
+
+        @media (max-width: 1024px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                height: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tabs {
+                flex-wrap: wrap;
+            }
+
+            .stat-card {
+                padding: 15px;
+            }
+
+            .stat-value {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>T13NE Proficiency Manager</h1>
+            <div class="status loading">
+                <span class="loading-spinner"></span> Loading system...
+            </div>
+        </header>
+
+        <div class="main-layout">
+            <aside class="sidebar">
+                <h3>Search & Filter</h3>
+                <input type="text" id="searchInput" class="search-box" placeholder="Search proficiencies...">
+                
+                <div class="filter-group">
+                    <label for="facetFilter">Filter by Facet</label>
+                    <select id="facetFilter">
+                        <option value="">All Facets</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="typeFilter">Filter by Type</label>
+                    <select id="typeFilter">
+                        <option value="">All Types</option>
+                        <option value="Proficiency">Proficiency</option>
+                        <option value="Skill">Skill</option>
+                        <option value="Talent">Talent</option>
+                        <option value="Power">Power</option>
+                        <option value="SuperPower">Super-Power</option>
+                    </select>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="newProfBtn">+ New Proficiency</button>
+                    <button class="btn btn-secondary" id="newAnnexBtn">+ New Annex</button>
+                    <button class="btn btn-secondary" id="exportBtn">Export</button>
+                </div>
+            </aside>
+
+            <main class="content">
+                <div class="alert" id="alert"></div>
+
+                <div class="stats" id="stats"></div>
+
+                <div class="tabs">
+                    <button class="tab active" data-tab="proficiencies">Proficiencies</button>
+                    <button class="tab" data-tab="annexes">Annexes</button>
+                    <button class="tab" data-tab="detail">Details</button>
+                </div>
+
+                <!-- Proficiencies Tab -->
+                <div class="tab-content active" id="proficiencies-tab">
+                    <div class="proficiency-list" id="proficienciesList"></div>
+                </div>
+
+                <!-- Annexes Tab -->
+                <div class="tab-content" id="annexes-tab">
+                    <div id="annexesList"></div>
+                </div>
+
+                <!-- Detail Tab -->
+                <div class="tab-content" id="detail-tab">
+                    <div class="detail-panel" id="detailPanel">
+                        <div class="empty-state">
+                            <div class="empty-state-icon">📋</div>
+                            <p>Select a proficiency to view details</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- New Proficiency Modal -->
+    <div class="modal" id="profModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create New Proficiency</h2>
+                <button class="modal-close" onclick="closeProfModal()">&times;</button>
+            </div>
+            <form id="profForm" onsubmit="saveProficiency(event)">
+                <div class="form-group">
+                    <label for="profName">Name</label>
+                    <input type="text" id="profName" required>
+                </div>
+                <div class="form-group">
+                    <label for="profDesc">Description</label>
+                    <textarea id="profDesc"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="profFacet">Facet</label>
+                    <select id="profFacet">
+                        <option value="">Select Facet</option>
+                    </select>
+                </div>
+                <div class="form-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="closeProfModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- New Annex Modal -->
+    <div class="modal" id="annexModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create New Annex</h2>
+                <button class="modal-close" onclick="closeAnnexModal()">&times;</button>
+            </div>
+            <form id="annexForm" onsubmit="saveAnnex(event)">
+                <div class="form-group">
+                    <label for="annexName">Name</label>
+                    <input type="text" id="annexName" required>
+                </div>
+                <div class="form-group">
+                    <label for="annexDesc">Description</label>
+                    <textarea id="annexDesc"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="annexProfs">Select Proficiencies (minimum 2)</label>
+                    <div id="annexProfsList" style="max-height: 300px; overflow-y: auto; border: 1px solid #e0e0e0; border-radius: 4px; padding: 10px;"></div>
+                </div>
+                <div class="form-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="closeAnnexModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create Annex</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module">
+        import { ThreadsSystem } from '@plugins/t13ne/modules/t13ne-threads.js';
+
+        // Global state
+        let threadsSystem = null;
+        let selectedProf = null;
+        let filteredProfs = [];
+        let facetData = {};
+
+        /**
+         * Initialize the application
+         */
+        async function init() {
+            try {
+                threadsSystem = new ThreadsSystem();
+                const ready = await threadsSystem.initialize();
+                
+                if (ready) {
+                    updateStatus('System ready', true);
+                    await loadFacetData();
+                    displayStats();
+                    populateFilters();
+                    displayProficiencies();
+                } else {
+                    updateStatus('Failed to initialize system', false);
+                }
+            } catch (error) {
+                console.error('Init error:', error);
+                updateStatus('Error initializing system', false);
+            }
+        }
+
+        /**
+         * Load facet data from JSON
+         */
+        async function loadFacetData() {
+            try {
+                const response = await fetch('/plugins/t13ne/data/json/facets/facets.json');
+                const data = await response.json();
+                data.forEach((facet, index) => {
+                    facetData[index] = facet;
+                });
+            } catch (error) {
+                console.error('Failed to load facet data:', error);
+            }
+        }
+
+        /**
+         * Update status indicator
+         */
+        function updateStatus(message, isReady) {
+            const status = document.querySelector('.status');
+            status.textContent = message;
+            status.classList.remove('loading', 'ready');
+            status.classList.add(isReady ? 'ready' : 'loading');
+        }
+
+        /**
+         * Display statistics
+         */
+        function displayStats() {
+            const catalogue = threadsSystem.getProficiencies();
+            const annexBuilder = threadsSystem.getAnnexes();
+            
+            const statsHtml = `
+                <div class="stat-card">
+                    <div class="stat-value">${catalogue.getAllProficiencies().length}</div>
+                    <div class="stat-label">Proficiencies</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${annexBuilder.getAllAnnexes().length}</div>
+                    <div class="stat-label">Annexes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${Object.keys(facetData).length}</div>
+                    <div class="stat-label">Facets</div>
+                </div>
+            `;
+            document.getElementById('stats').innerHTML = statsHtml;
+        }
+
+        /**
+         * Populate filter dropdowns
+         */
+        function populateFilters() {
+            const facetFilter = document.getElementById('facetFilter');
+            Object.entries(facetData).forEach(([id, facet]) => {
+                const option = document.createElement('option');
+                option.value = id;
+                option.textContent = facet.FacetName || `Facet ${id}`;
+                facetFilter.appendChild(option);
+            });
+
+            document.getElementById('profFacet').innerHTML = facetFilter.innerHTML;
+        }
+
+        /**
+         * Display all proficiencies
+         */
+        function displayProficiencies() {
+            const catalogue = threadsSystem.getProficiencies();
+            filteredProfs = catalogue.getAllProficiencies();
+            renderProficiencies();
+        }
+
+        /**
+         * Render proficiency list
+         */
+        function renderProficiencies() {
+            const list = document.getElementById('proficienciesList');
+            
+            if (filteredProfs.length === 0) {
+                list.innerHTML = '<div class="empty-state"><p>No proficiencies found</p></div>';
+                return;
+            }
+
+            list.innerHTML = filteredProfs.map(prof => `
+                <div class="proficiency-card ${selectedProf?.id === prof.id ? 'selected' : ''}" 
+                     onclick="selectProficiency('${prof.id}')">
+                    <div class="prof-card-name">${prof.name}</div>
+                    <div class="prof-card-info">
+                        ${prof.facet ? `Facet: ${facetData[prof.facet]?.FacetName || prof.facet}` : 'No facet'}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        /**
+         * Select a proficiency for viewing
+         */
+        window.selectProficiency = function(id) {
+            selectedProf = threadsSystem.getProficiencies().getProficiency(id);
+            renderProficiencies();
+            displayProficiencyDetail();
+        };
+
+        /**
+         * Display proficiency detail
+         */
+        function displayProficiencyDetail() {
+            const detailPanel = document.getElementById('detailPanel');
+            
+            if (!selectedProf) {
+                detailPanel.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📋</div><p>Select a proficiency to view details</p></div>';
+                return;
+            }
+
+            const facetName = selectedProf.facet ? (facetData[selectedProf.facet]?.FacetName || 'Unknown') : 'None';
+            
+            detailPanel.innerHTML = `
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" value="${selectedProf.name}" readonly style="background: #f0f0f0; cursor: not-allowed;">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea readonly style="background: #f0f0f0; cursor: not-allowed;">${selectedProf.description}</textarea>
+                </div>
+                <div class="detail-section">
+                    <h4>Information</h4>
+                    <p><strong>ID:</strong> ${selectedProf.id}</p>
+                    <p><strong>Facet:</strong> ${facetName}</p>
+                    <p><strong>Created:</strong> ${new Date(selectedProf.createdAt).toLocaleDateString()}</p>
+                </div>
+                <div class="detail-section">
+                    <h4>Annexes</h4>
+                    <div class="tag-list">
+                        ${selectedProf.annexes.length > 0 
+                            ? selectedProf.annexes.map(id => `<span class="tag">${id}</span>`).join('')
+                            : '<p style="color: #999;">Not part of any annexes yet</p>'}
+                    </div>
+                </div>
+                <div class="form-buttons" style="margin-top: 20px;">
+                    <button class="btn btn-danger" onclick="deleteProficiency('${selectedProf.id}')">Delete</button>
+                </div>
+            `;
+        }
+
+        /**
+         * Search proficiencies
+         */
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const keyword = e.target.value;
+            const catalogue = threadsSystem.getProficiencies();
+            filteredProfs = keyword ? catalogue.search(keyword) : catalogue.getAllProficiencies();
+            applyFilters();
+        });
+
+        /**
+         * Apply filters
+         */
+        function applyFilters() {
+            const facetFilter = document.getElementById('facetFilter').value;
+            
+            if (facetFilter) {
+                filteredProfs = filteredProfs.filter(prof => prof.facet == facetFilter);
+            }
+            
+            renderProficiencies();
+        }
+
+        document.getElementById('facetFilter').addEventListener('change', applyFilters);
+        document.getElementById('typeFilter').addEventListener('change', applyFilters);
+
+        /**
+         * Modal functions
+         */
+        window.closeProfModal = function() {
+            document.getElementById('profModal').classList.remove('show');
+            document.getElementById('profForm').reset();
+        };
+
+        window.closeAnnexModal = function() {
+            document.getElementById('annexModal').classList.remove('show');
+            document.getElementById('annexForm').reset();
+        };
+
+        document.getElementById('newProfBtn').addEventListener('click', function() {
+            document.getElementById('profModal').classList.add('show');
+        });
+
+        document.getElementById('newAnnexBtn').addEventListener('click', function() {
+            populateAnnexModal();
+            document.getElementById('annexModal').classList.add('show');
+        });
+
+        /**
+         * Save new proficiency
+         */
+        window.saveProficiency = function(event) {
+            event.preventDefault();
+            const catalogue = threadsSystem.getProficiencies();
+            
+            const id = catalogue.createProficiency({
+                name: document.getElementById('profName').value,
+                description: document.getElementById('profDesc').value,
+                facet: document.getElementById('profFacet').value || null
+            });
+
+            showAlert('Proficiency created successfully', 'success');
+            closeProfModal();
+            displayStats();
+            displayProficiencies();
+        };
+
+        /**
+         * Populate annex modal with proficiencies
+         */
+        function populateAnnexModal() {
+            const catalogue = threadsSystem.getProficiencies();
+            const profs = catalogue.getAllProficiencies();
+            const list = document.getElementById('annexProfsList');
+            
+            list.innerHTML = profs.map(prof => `
+                <label style="display: flex; align-items: center; margin-bottom: 10px; cursor: pointer;">
+                    <input type="checkbox" value="${prof.id}" style="margin-right: 10px;"> ${prof.name}
+                </label>
+            `).join('');
+        }
+
+        /**
+         * Save new annex
+         */
+        window.saveAnnex = function(event) {
+            event.preventDefault();
+            const checkboxes = document.querySelectorAll('#annexProfsList input:checked');
+            const selectedIds = Array.from(checkboxes).map(cb => cb.value);
+
+            if (selectedIds.length < 2) {
+                showAlert('Please select at least 2 proficiencies', 'error');
+                return;
+            }
+
+            const catalogue = threadsSystem.getProficiencies();
+            const annexBuilder = threadsSystem.getAnnexes();
+            
+            const facets = selectedIds
+                .map(id => catalogue.getProficiency(id).facet)
+                .filter((f, i, arr) => f && arr.indexOf(f) === i);
+
+            annexBuilder.createAnnex({
+                name: document.getElementById('annexName').value,
+                description: document.getElementById('annexDesc').value,
+                proficiencyIds: selectedIds,
+                facets: facets
+            });
+
+            showAlert('Annex created successfully', 'success');
+            closeAnnexModal();
+            displayStats();
+        };
+
+        /**
+         * Show alert message
+         */
+        function showAlert(message, type) {
+            const alert = document.getElementById('alert');
+            alert.textContent = message;
+            alert.className = `alert show alert-${type}`;
+            setTimeout(() => alert.classList.remove('show'), 3000);
+        }
+
+        /**
+         * Delete proficiency
+         */
+        window.deleteProficiency = function(id) {
+            if (confirm('Are you sure you want to delete this proficiency?')) {
+                threadsSystem.getProficiencies().deleteProficiency(id);
+                showAlert('Proficiency deleted', 'success');
+                selectedProf = null;
+                displayStats();
+                displayProficiencies();
+            }
+        };
+
+        /**
+         * Tab switching
+         */
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+                
+                this.classList.add('active');
+                const tabId = this.dataset.tab + '-tab';
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        /**
+         * Export functionality
+         */
+        document.getElementById('exportBtn').addEventListener('click', function() {
+            const state = threadsSystem.exportState();
+            const json = JSON.stringify(state, null, 2);
+            const blob = new Blob([json], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `t13ne-proficiencies-${Date.now()}.json`;
+            a.click();
+        });
+
+        // Initialize on load
+        init();
+    </script>
+</body>
+</html>

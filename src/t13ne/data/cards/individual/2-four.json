@@ -1,0 +1,115 @@
+{
+	"Card_Corner": "4",
+	"Card": "Four",
+	"Suit": "2",
+	"IconSuit": "♥",
+	"Pips": "4",
+	"Unicode": "&#x1f0b4;",
+	"Svg": "images/cards-svg/4H.svg",
+	"Wound_Level": 1,
+	"Facet": "Heresy",
+	"Tao": [
+		1,
+		1
+	],
+	"Narrative_Meaning": "Fours signify stability and foundations. They usually indicate some foundation, whether an organization or a building, that may have its foundation weakened, damaged or strengthened by the narrative.",
+	"Image": "",
+	"Yarn": {
+		"Yarn_Name": "The Myth",
+		"Yarn_Description": "The Myth represents those untruths that can gather a truth of their own. It maybe a simple lie that was believed, a complex misunderstanding, or story told as an allegory or warning, such as the stories of Ginny Greenteeth teach children to avoid water, and the myth of the the Big Bad Wolf teach them to avoid the dark woods.",
+		"Significator": {
+			"Plot": "The Myth Plot is a plot that concerns enormous lies and/or ancient legends. The Plot usually utilises ancient stories and myths, but recast within the terms of the current Conflict. This might create a modern version of Arthurian Legend, or Robin Hood, or it might highlight the similarities between the perils of AI and Golems. There is often some aspect of the updated retelling that makes a lie of the original Myth, while retaining some Truth from it (AI is compared to Golems, Pygmalion, Brazen Heads, Talos, Homunculi and Frankenstein's Monster, but isn't really the same as any of them). ",
+			"Side": "A side marked with the Myth will either have some huge lie that they have to maintain, or will be a reference to some group from a myth or legend. They may not be Achilles, but they are strong with a hidden weakness, or they may not be Odysseus, but they do have to go on a long trek, and everyone thinks they are dead when they get back.",
+			"Character": "The Myth Significator indicates a Character who lies easily and fluently.<p>They <strong>Gain Yin</strong> when they bend the truth, or present it in a way that makes it unbelievable. </p><p>They <strong>Gain Yang</strong> when they lie, or \"embellish\" a story. </p><p>They <strong>Gain Chi</strong> when their (mostly) true stories are disbelieved, or their lies and embellishments are repeated as fact. </p><p>They also gain +1 Success Levels to all actions to do with belief, lies and myths.</p>",
+			"Scene": "The Myth Scene concerns itself with Misconceptions, Fables and Legends. It may be a Scene where ancient lies are revealed, perhaps a fresh web of lies are woven, or there may be some connection or echo of some heroic tale. Yarn-Tellers may play the card to weave lies, create propaganda, illusions, or fake news to support their position, evoke Mythic themes, or examine deep themes of the Epic's or Cycle's Conflict."
+		},
+		"Beat_Type": "4",
+		"Conflict_Embodiment": "0",
+		"Facet_Embodiment": "6",
+		"Hook_Aspect": "Persona (Avoid)",
+		"Aspect_Description": "The Hook targets the Character's Persona specifically by using what they like to Avoid as a stick, and perhaps offering a Persona Gain as a carrot if that fails.",
+		"Hook": "Mistake",
+		"Hook_Description": "The story hooks the character with an apparent mistake. A misdelivered parcel, or message, or some other confusion. Often opens a comedy.",
+		"Gain": "A Lore Descendant (as part of a Revelation about themselves)",
+		"Fray": "Legend",
+		"Fray_Description": "The Fray concerns a Legend. Maybe the PCs need to solve an ancient mystery to find a legendary treasure, defeat a legendary Monster, find a legendary place, or otherwise achieve the apparently impossible.",
+		"Snag": "Fable",
+		"Snag_Description": "Either the Fray involves the PCs having to lie for all they're worth, or they make a false Revelation. The False Revelation may retcon the last Revelation (making everything learned false) or it can make the next Revelation false, as the Yarn-Teller prefers.",
+		"NPC": {
+			"Archetype": "Fabulist",
+			"Persona": 7,
+			"Core": 7,
+			"Hitch": 18,
+			"Description": "Fabulists like making things up, sometimes they don't even know that they are imagining these things, they might just be hallucinations that bear a passing resemblance to reality. Then again some people are pathological liars, they just can't help adjusting the narrative of their life."
+		},
+		"Sweeping": "Myth Revealed",
+		"Sweeping_Text": "A Lie from earlier is revealed (such as information from an earlier Revelation, or some assumption the PCs made).",
+		"History": "Mythic",
+		"History_Description": "The Myth indicates that the past situation is based on a legend, folklore, or myth. This may be a huge myth such as Arthurian legends or local folklore.",
+		"Situation": "Untruths",
+		"Situation_Description": "The Myth indicates that the current situation has been caused by misinformation, deceit, conspiracy theories, fake news or just lies.",
+		"Solution": "Lie",
+		"Solution_Description": "The Myth indicates that the way out of the current situation is to lie for all you are worth, bluff, misdirect, lie, fake, feign, falsify and forge it until you make it.",
+		"Revelations": {
+			"About": "Yours",
+			"About_Description": "The information is about your own side, or own self. This might reveal your weaknesses or strengths, if you aren't already painfully aware of them.",
+			"Info": "Lies",
+			"Info_Description": "The Information is about lies that have been told, sometimes the truth is revealed, and sometimes we just know that a lie has been told without knowing the actual truth.",
+			"Vector": "A Lie",
+			"Vector_Description": "A Lie reveals the information somehow. Perhaps the falsehood protects someone else, or the lie may be part of an alibi that cannot be true, or maybe the lie is an extrapolation of an actual truth that they didn't realise they were revealing, and do they know they have been caught out?",
+			"Alternate": "Myths",
+			"Alternate_Description": "Myths inevitably form around things, no story is ever retold without some form of mythologising the subject. This alternate information is about the myths that surround the Embodiment, these are exaggerations and misinformation that usually make things seem more powerful than they actually are.",
+			"Detail": "Cultural",
+			"Detail_Description": "Cultural details tell us about the culture of a Character, or the people that constructed, or live around a Descendant. You might want to reveal they are a warrior people, how is this expressed? Does every adult carry a sword, a shield, or a gun at all times? Do they wear armour as part of their uniform, or is it something more subtle, like chess being the national game, their cultural heroes are all military leaders from their past, or ammo pockets and bandoleers are really in fashion right now?"
+		}
+	},
+	"Obstacle": {
+		"Type": "Myth",
+		"Description": "When a Myth blocks the way, you are either talking about some Superstition that must be overcome, some commonly believed factoid that must be discarded, or Guardians that are actually Mythic (Dragons, Knight of Round Table, etc)"
+	},
+	"Tarot": {
+		"WyrdTarot": "Rally",
+		"Normal": "+1 Success Level on any Psychology Test",
+		"Crossed": "+1 Failure Level on any Psychology Test"
+	},
+	"Ordeal": {
+		"Ordeal_Type": "Opposed Ordeal",
+		"Stages": "2",
+		"Ordeal_Spread": "Forking",
+		"Stakes": "High",
+		"Test": "Knowledge (Orthodox)",
+		"Obstacles": "None",
+		"Suggested_Action": "Lie",
+		"Stage": "Crowds",
+		"Stage_Description": "A large crowd of people, an audience, a stadium or theatre. A convention or conference.",
+		"Motional": "Road Race",
+		"Motional_Description": "First to finish wins. Sometimes they race for pink slips.",
+		"Tide_of_Battle": "Out of Control",
+		"Tide_of_Battle_Text": "The battle is now out of anyone's control. Civilians may be caught in the crossfire, or some other unforeseen problem has occurred. No side has clear advantage.",
+		"Fight": "Hold-fast",
+		"Fight_Description": "The fight takes place in a single, usually, defensive location. The location is assaulted by a stream, or waves, of lesser or equal (Vex - Cast)opponents. Generally, the defending side is waiting for back-up, or relief to arrive."
+	},
+	"Lea": {
+		"PathColour": "Blue Aquatic or Black Migratory",
+		"Bulmas": "All",
+		"AnimalCategory": "Mesofauna",
+		"Example": "Greenfly / Midge / Maggots / Woodlice",
+		"Bodypart": "Antenna",
+		"Notes": "Tiny Arthropods"
+	},
+	"Stress": {
+		"Type": "Coping",
+		"Description": "Coping mechanisms for stress vary from person to person. Some people drink, or take drugs (both illegal and medically prescribed), some throw themselves into religion, a hobby or work, and a few may cut or tattoo themselves. These coping mechanisms can grow rapidly becoming Flaws or even Woes as a Character relies on them to cope with Stress.",
+		"Rules": "Coping Characters create a new Vague, Consuming, Doubt, Odd, Taboo or Scars Quirk automatically initially with a Bane of 1. Characters may move Stress into this new Hitch, increasing the Banes by 1 relieves Stress equal to the current Hitch Banes."
+	},
+	"Trauma": {
+		"Type": "Lies",
+		"Description": "Trauma can bend a Character’s mind, making them have a more loose connection with the truth than they had previously. It may be that the Character is lying to themselves, protecting usually some aspect of their own ego from the truth of what happened during or to cause the trauma, but other times they are pathological lies that serve a different purpose, such as attention-seeking, or deflection. The Character can also become a compulsive liar, who are just more comfortable lying than telling the truth.",
+		"Rules": "The Trauma alters the Character’s mind, such that whenever they tell a lie they may immediately relieve 1 Stress, some Characters will lie to themselves, others will lie pathologically or compulsively to others."
+	},
+	"Age": {
+		"Type": "Myth",
+		"Description": "An Age of Myth is occurring. During this age aspects of legend and the world&apos;s Mythic Cycle will shape the society during this age. This can include a shift of tone and genre, adding elements of horror, fantasy, science-fiction and folklore to any other genre. During an Age of Myth fantastical monsters and wizardly magic may appear, in Terminal Thirteen this often includes an F&aelig; incursion, Bulmäs migration, or some spiritual awakening.",
+		"Rules": "During the Age of Myth additional fantasy, horror and mythic tropes may be added to stories, a magical emergence will often occur, and Monsters are often more extreme and obvious."
+	}
+}

@@ -1,0 +1,1406 @@
+{
+  "3602": {
+    "id": 3602,
+    "prof": {
+      "Name": [
+        "Dodge",
+        "Dodge Rook Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Dodge is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3603": {
+    "id": 3603,
+    "prof": {
+      "Name": [
+        "Escort",
+        "Escort Rook Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Escort is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3604": {
+    "id": 3604,
+    "prof": {
+      "Name": [
+        "Fortify",
+        "Fortify Rook Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Fortify is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3605": {
+    "id": 3605,
+    "prof": {
+      "Name": [
+        "Invalidate",
+        "Invalidate Rook Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Invalidate is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3606": {
+    "id": 3606,
+    "prof": {
+      "Name": [
+        "Negate",
+        "Negate Rook Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Negate is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3607": {
+    "id": 3607,
+    "prof": {
+      "Name": [
+        "Nullify",
+        "Nullify Rook Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Nullify is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3608": {
+    "id": 3608,
+    "prof": {
+      "Name": [
+        "Parry",
+        "Parry Rook Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Parry is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3609": {
+    "id": 3609,
+    "prof": {
+      "Name": [
+        "Protect",
+        "Protect Rook Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Protect is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3610": {
+    "id": 3610,
+    "prof": {
+      "Name": [
+        "Prevent",
+        "Prevent Rook Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Prevent is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3611": {
+    "id": 3611,
+    "prof": {
+      "Name": [
+        "Reject",
+        "Reject Rook Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Reject is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3612": {
+    "id": 3612,
+    "prof": {
+      "Name": [
+        "Save",
+        "Save Rook Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Save is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3613": {
+    "id": 3613,
+    "prof": {
+      "Name": [
+        "Shield",
+        "Shield Rook Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Shield is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3614": {
+    "id": 3614,
+    "prof": {
+      "Name": [
+        "Subdue",
+        "Subdue Rook Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Subdue is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3615": {
+    "id": 3615,
+    "prof": {
+      "Name": [
+        "Subjugate",
+        "Subjugate Rook Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Subjugate is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3616": {
+    "id": 3616,
+    "prof": {
+      "Name": [
+        "Suppress",
+        "Suppress Rook Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Suppress is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3617": {
+    "id": 3617,
+    "prof": {
+      "Name": [
+        "Void",
+        "Void Rook Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Void is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3618": {
+    "id": 3618,
+    "prof": {
+      "Name": [
+        "Ward",
+        "Ward Rook Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Ward is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3619": {
+    "id": 3619,
+    "prof": {
+      "Name": [
+        "Withdraw",
+        "Withdraw Rook Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Withdraw is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3620": {
+    "id": 3620,
+    "prof": {
+      "Name": [
+        "Cancelling",
+        "Cancelling Rook Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Cancelling is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3621": {
+    "id": 3621,
+    "prof": {
+      "Name": [
+        "Cautious",
+        "Cautious Rook Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Cautious is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3622": {
+    "id": 3622,
+    "prof": {
+      "Name": [
+        "Nullified",
+        "Nullified Rook Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Nullified is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3623": {
+    "id": 3623,
+    "prof": {
+      "Name": [
+        "Overturned",
+        "Overturned Rook Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Overturned is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3624": {
+    "id": 3624,
+    "prof": {
+      "Name": [
+        "Passive",
+        "Passive Rook Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Passive is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3625": {
+    "id": 3625,
+    "prof": {
+      "Name": [
+        "Protected",
+        "Protected Rook Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Protected is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3626": {
+    "id": 3626,
+    "prof": {
+      "Name": [
+        "Strategic",
+        "Strategic Rook Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Strategic is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3627": {
+    "id": 3627,
+    "prof": {
+      "Name": [
+        "Vigilant",
+        "Vigilant Rook Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Vigilant is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3628": {
+    "id": 3628,
+    "prof": {
+      "Name": [
+        "bosses",
+        "bosses Rook Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, bosses is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3629": {
+    "id": 3629,
+    "prof": {
+      "Name": [
+        "Criminal",
+        "Criminal Sin Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Criminal is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3630": {
+    "id": 3630,
+    "prof": {
+      "Name": [
+        "Nefarious",
+        "Nefarious Sin Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Nefarious is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3631": {
+    "id": 3631,
+    "prof": {
+      "Name": [
+        "Heinous",
+        "Heinous Sin Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Heinous is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3632": {
+    "id": 3632,
+    "prof": {
+      "Name": [
+        "Unholy",
+        "Unholy Sin Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Unholy is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3633": {
+    "id": 3633,
+    "prof": {
+      "Name": [
+        "Profane",
+        "Profane Sin Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Profane is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3634": {
+    "id": 3634,
+    "prof": {
+      "Name": [
+        "Curse",
+        "Curse Sin Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Curse is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3635": {
+    "id": 3635,
+    "prof": {
+      "Name": [
+        "span>",
+        "span> Sin Critical Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of span> is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3636": {
+    "id": 3636,
+    "prof": {
+      "Name": [
+        "Evil",
+        "Evil Sin Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Evil is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3637": {
+    "id": 3637,
+    "prof": {
+      "Name": [
+        "Vice",
+        "Vice Sin Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Vice is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3638": {
+    "id": 3638,
+    "prof": {
+      "Name": [
+        "Seduce",
+        "Seduce Sin Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Seduce is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3639": {
+    "id": 3639,
+    "prof": {
+      "Name": [
+        "Corrupting",
+        "Corrupting Sin Test Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Corrupting is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3640": {
+    "id": 3640,
+    "prof": {
+      "Name": [
+        "Swear",
+        "Swear Sin Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Swear is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3641": {
+    "id": 3641,
+    "prof": {
+      "Name": [
+        "Dark",
+        "Dark Sin Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Dark is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3642": {
+    "id": 3642,
+    "prof": {
+      "Name": [
+        "Malign",
+        "Malign Sin Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Malign is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3643": {
+    "id": 3643,
+    "prof": {
+      "Name": [
+        "Vile",
+        "Vile Sin Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Vile is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3644": {
+    "id": 3644,
+    "prof": {
+      "Name": [
+        "Military",
+        "Military Trial Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Military is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3645": {
+    "id": 3645,
+    "prof": {
+      "Name": [
+        "span>",
+        "span> Trial Critical Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, span> is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3646": {
+    "id": 3646,
+    "prof": {
+      "Name": [
+        "span>",
+        "span> Trial Fumble Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, span> is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3647": {
+    "id": 3647,
+    "prof": {
+      "Name": [
+        "War",
+        "War Trial Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, War is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3648": {
+    "id": 3648,
+    "prof": {
+      "Name": [
+        "Game",
+        "Game Trial Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Game is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3649": {
+    "id": 3649,
+    "prof": {
+      "Name": [
+        "Engage",
+        "Engage Trial Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Engage is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3650": {
+    "id": 3650,
+    "prof": {
+      "Name": [
+        "Kill",
+        "Kill Trial Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Kill is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3651": {
+    "id": 3651,
+    "prof": {
+      "Name": [
+        "Participate",
+        "Participate Trial Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Participate is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}
