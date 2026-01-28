@@ -536,6 +536,9 @@
       },
       "thresholdTypes.json": {
         "description": "Defines different types of thresholds between elements."
+      },
+      "hermeticCorrespondences.json": {
+        "description": "A comprehensive list of hermetic correspondences, including elements, planets, and zodiac signs."
       }
     }
   },
