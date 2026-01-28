@@ -31,7 +31,7 @@ export class ViewManager {
         this.uiManager = new UIManager(this);
         this.uiMessage = new UIMessage(this);
         this.sceneManager = new SceneManager(this);
-        this.pluginManager = this.engine.pluginManager || this.gameEngine.pluginManager; // Use T13NE PluginManager
+        this.pluginManager = this.gameEngine.pluginManager; // Use GameEngine's PluginManager
         this.loreDataManager = LoreData; // Assign the imported LoreData instance
         this.galacticHistoryManager = GalacticHistory; // Assign the imported GalacticHistory instance
 
@@ -496,6 +496,7 @@ export class ViewManager {
 
         // 4. Load the new scene into the view
         this.currentScene = newScene;
+        this.gameEngine.scene = newScene; // Ensure GameEngine knows the active scene
 
         // Ensure the renderer's DOM element is in the container
         if (this.renderer.domElement.parentNode !== this.canvasContainer) {

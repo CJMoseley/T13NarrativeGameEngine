@@ -12,7 +12,23 @@ export class RenderBridge {
     constructor(threeScene) {
         this.threeScene = threeScene;
         this.activeGroup = new THREE.Group();
-        this.threeScene.add(this.activeGroup);
+        if (this.threeScene) {
+            this.threeScene.add(this.activeGroup);
+        }
+    }
+
+    /**
+     * Sets or updates the target Three.js scene for rendering.
+     * @param {THREE.Scene} threeScene - The Three.js scene to attach to.
+     */
+    setTargetScene(threeScene) {
+        if (this.threeScene && this.activeGroup.parent === this.threeScene) {
+            this.threeScene.remove(this.activeGroup);
+        }
+        this.threeScene = threeScene;
+        if (this.threeScene) {
+            this.threeScene.add(this.activeGroup);
+        }
     }
 
     /**

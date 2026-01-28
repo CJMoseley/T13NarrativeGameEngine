@@ -2,7 +2,7 @@ import { LoreData } from '@/js/procgen/lore/LoreData.js';
 import { NameGenerator } from '@/js/procgen/lore/factories/NameGenerator.js';
 import { SpeciesGenerator } from '@/js/procgen/lore/factories/SpeciesGenerator.js';
 import { CorporationGenerator } from '@/js/procgen/corporations/CorporationGenerator.js';
-import Logger from '@/js/core/Logger.js';
+import Logger from '@plugins/t13ne/core/Logger.js';
 
 export class SystemLoreGenerator {
     constructor(pluginManager, loreData) { // Accept pluginManager and loreData

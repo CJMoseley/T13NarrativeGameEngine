@@ -1,11 +1,11 @@
 import { LoreData } from '../procgen/lore/LoreData.js';
 import { TechGenerator } from '../procgen/lore/factories/TechGenerator.js';
 import * as THREE from 'three';
-import Logger from '../core/Logger.js';
-import { Scene } from '../core/Scene.js';
-import { Controls } from '../core/Controls.js';
+import Logger from '@plugins/t13ne/core/Logger.js';
+import { Scene } from '@plugins/t13ne/core/Scene.js';
+import { Controls } from '@plugins/t13ne/core/Controls.js';
 import { OrreryScene } from './OrreryScene.js';
-import { SceneTools } from '../core/SceneTools.js';
+import { SceneTools } from '@plugins/t13ne/core/SceneTools.js';
 
 export class StellarSystemScene extends Scene {
   constructor(viewManager, sceneData) {

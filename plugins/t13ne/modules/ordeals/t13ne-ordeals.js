@@ -6,7 +6,7 @@
  */
 
 import CodexLoader from '@plugins/t13ne/modules/CodexLoader.js';
-import Logger from '@/js/core/Logger.js';
+import Logger from '@plugins/t13ne/core/Logger.js';
 import T13NECardsAPI from '@plugins/t13ne/modules/t13ne-cards-api.js';
 import T13NE_Stakes from '@plugins/t13ne/modules//ordeals/t13ne-stakes.js';
 import T13NE from '@plugins/t13ne/T13NE.js';

@@ -1,5 +1,5 @@
-import { Plugin } from '@/js/core/Plugin.js';
-import Logger from '@/js/core/Logger.js';
+import { Plugin } from '@plugins/t13ne/core/Plugin.js';
+import Logger from '@plugins/t13ne/core/Logger.js';
 import T13NE from '@plugins/t13ne/T13NE.js';
 
 /**
