@@ -1,7 +1,7 @@
 import { Character } from '../t13ne-chars.js';
 import { Grunt, Hero, YarnTeller } from './t13ne-char-types.js';
 import { Annex, Hitch, SizeAnnex, TIE } from '../t13ne-knots.js';
-import Logger from '@plugins/t13ne/core/Logger.js';
+import Logger from '@/js/core/Logger.js';
 
 // Helper functions for common traits
 function ensureWoe(character, codexLoader, name) {

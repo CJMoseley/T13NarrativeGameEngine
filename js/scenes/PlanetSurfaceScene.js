@@ -1,7 +1,7 @@
 import * as THREE from 'three';
-import Logger from '@plugins/t13ne/core/Logger.js';
+import Logger from '../core/Logger.js';
 import { PlanetSurfaceEnvironment } from '../procgen/planet/PlanetSurfaceEnvironment.js';
-import { Scene } from '@plugins/t13ne/core/Scene.js';
+import { Scene } from '../core/Scene.js';
 
 /**
  * PlanetSurfaceScene

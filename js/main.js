@@ -1,6 +1,6 @@
-import { ViewManager } from '@plugins/t13ne/core/ViewManager.js';
-import LoaderManager from '@plugins/t13ne/core/LoaderManager.js';
-import Logger from '@plugins/t13ne/core/Logger.js';
+import { ViewManager } from '@/js/core/ViewManager.js';
+import LoaderManager from '@/js/core/LoaderManager.js';
+import Logger from '@/js/core/Logger.js';
 import IntroSequence from '@/js/ui/IntroSequence.js';
 
 /**

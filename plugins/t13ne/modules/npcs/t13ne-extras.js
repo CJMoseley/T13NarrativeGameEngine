@@ -1,7 +1,7 @@
 import { Character, SeededRNG } from '../t13ne-chars.js';
 import { Annex, PersonalityAnnex } from '../t13ne-knots.js';
 import T13NE from '../../T13NE.js';
-import Logger from '@plugins/t13ne/core/Logger.js';
+import Logger from '@/js/core/Logger.js';
 
 export class Extra extends Character {
     constructor(codexLoader, data) {

@@ -1,4 +1,4 @@
-import Logger from './Logger.js';
+import Logger from '@/js/core/Logger.js';
 
 /**
  * Hyperphysics Engine

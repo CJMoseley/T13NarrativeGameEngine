@@ -1,4 +1,4 @@
-import Logger from '@plugins/t13ne/core/Logger.js';
+import Logger from '@/js/core/Logger.js';
 
 const PROF_MANIFEST_KEY = 'T13NE_PROF_MANIFEST';
 const PROF_MANIFEST_VERSION_KEY = 'T13NE_PROF_MANIFEST_VERSION';

@@ -1,6 +1,6 @@
 import * as THREE from 'three';
-import { ShipFactory, COMPONENT_COLORS } from '@plugins/t13ne/core/ship/ShipFactory.js';
-import { Scene } from '@plugins/t13ne/core/Scene.js';
+import { ShipFactory, COMPONENT_COLORS } from '../core/ship/ShipFactory.js';
+import { Scene } from '../core/Scene.js';
 
 export class ShipShowcaseScene extends Scene {
     constructor(viewManager) {

@@ -1,6 +1,6 @@
 import { SuperKnot, Annex, Hitch, PersonalityAnnex } from './t13ne-knots.js';
 import T13NE from '../T13NE.js';
-import Logger from '@plugins/t13ne/core/Logger.js';
+import Logger from '@/js/core/Logger.js';
 import T13SwayAccount from './T13SwayAccount.js';
 
 /**

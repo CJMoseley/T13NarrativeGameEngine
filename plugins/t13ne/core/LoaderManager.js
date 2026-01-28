@@ -23,6 +23,7 @@ class LoaderManager {
      */
     constructor(viewManager) {
         this.viewManager = viewManager;
+        this.engine = viewManager.engine; // T13NE Engine
         this.gameEngine = viewManager.gameEngine;
         this.pluginManager = viewManager.pluginManager;
         this.loreDataManager = viewManager.loreDataManager;
@@ -40,15 +41,68 @@ class LoaderManager {
             { name: 'Lore Data', action: () => this.loreDataManager.load() },
             { name: 'Game Engine Data', action: () => this.gameEngine.initializeDataDependents() },
 
-            // Visual Loading Sequence - Now starts as soon as galaxy is ready
-            {
-                name: 'Initial Visuals',
-                action: async () => {
-                    // Start the visual sequence without awaiting its full completion
-                    // This allows heavy data tasks like Galactic History to load in the background
-                    this.startInitialVisualSequence();
+            // Visual Loading Sequence - Now queued via ViewManager
+            { name: 'Queue Visuals', action: async () => {
+                // Hide IntroSequence to reveal the visual sequence
+                IntroSequence.hide();
+
+                // 1. Galaxy View
+                // We clear the previous cue and replace it with a more complex one.
+                this.viewManager.sceneQueue = []; // Clear any previous cues just in case
+
+                this.viewManager.cueScene('GalaxyMapScene', { attractMode: true }, {
+                    duration: 4000,
+                    onActive: async (scene) => {
+                        // Wait a bit then focus
+                        await new Promise(r => setTimeout(r, 1000));
+                        if (scene && typeof scene.focusOnSystem === 'function' && this.gameEngine.playerStartSystem) {
+                            await scene.focusOnSystem(this.gameEngine.playerStartSystem);
+                        }
+                    }
+                });
+
+                // 3. System View
+                // We need to prepare the data for the system view first
+                if (this.gameEngine.playerStartSystem) {
+                    const systemDetails = await this.gameEngine.galaxyGenerator.getSystemDetails(this.gameEngine.playerStartSystem);
+                    const systemGen = this.gameEngine.loreMaster.stellarSystemGenerator;
+                    const planets = systemGen.generatePlanets(systemDetails);
+
+                    // Store for reuse (e.g. in TestMenu or return to system)
+                    this.gameEngine.currentSystemDetails = systemDetails;
+                    this.gameEngine.currentPlanets = planets;
+
+                    this.viewManager.cueScene('StellarSystemScene', {
+                        systemDetails,
+                        planets,
+                        star: this.gameEngine.playerStartSystem,
+                        galaxy: this.gameEngine.galaxy,
+                        playIntro: true
+                    }, {
+                        duration: 20000, // Increased duration to allow full flyby sequence (18s)
+                        transition: { type: 'crossDissolve', duration: 2000 },
+                        onActive: async (scene) => {
+                            // Delegate animation to the scene itself for better control over coordinates
+                            if (typeof scene.playIntroSequence === 'function') {
+                                await scene.playIntroSequence();
+                            }
+                        }
+                    });
                 }
-            },
+
+                // 4. Ship Showcase
+                this.viewManager.cueScene('ShipShowcaseScene', {}, {
+                    duration: 0, // It handles its own exit
+                    onActive: async () => {
+                        IntroSequence.hide(); // Reveal scene
+                    },
+                    transition: { type: 'wipe', duration: 1200, direction: 'up' }
+                });
+
+                // Start the sequence and WAIT for it to finish
+                // This prevents the UI from overlaying "Welcome" text on top of the ship generation
+                await this.viewManager.playSequence();
+            }},
 
             { name: 'Galactic History', action: () => this.galacticHistoryManager.load(this.pluginManager, this.gameEngine.loreMaster) },
         ];
@@ -60,71 +114,6 @@ class LoaderManager {
      */
     reportProgress(message) {
         IntroSequence.updateStatus(message);
-    }
-
-    /**
-     * Sets up and starts the initial visual intro sequence.
-     * @private
-     */
-    async startInitialVisualSequence() {
-        Logger.message("LoaderManager: Starting visual intro sequence...");
-
-        // Hide IntroSequence to reveal the visual sequence
-        IntroSequence.hide();
-
-        // Clear any previous cues just in case
-        this.viewManager.sceneQueue = [];
-
-        // 1. Galaxy View - Slow pan while background data loads
-        this.viewManager.cueScene('GalaxyMapScene', { attractMode: true }, {
-            duration: 6000, // Sufficient time for background tasks to progress
-            onActive: async (scene) => {
-                // Wait a bit then focus on player's start system
-                await new Promise(r => setTimeout(r, 1500));
-                if (scene && typeof scene.focusOnSystem === 'function' && this.gameEngine.playerStartSystem) {
-                    await scene.focusOnSystem(this.gameEngine.playerStartSystem);
-                }
-            }
-        });
-
-        // 2. System View - Dramatic zoom and flyby
-        if (this.gameEngine.playerStartSystem) {
-            try {
-                const systemDetails = await this.gameEngine.galaxyGenerator.getSystemDetails(this.gameEngine.playerStartSystem);
-                const systemGen = this.gameEngine.loreMaster.stellarSystemGenerator;
-                const planets = systemGen.generatePlanets(systemDetails);
-
-                this.gameEngine.currentSystemDetails = systemDetails;
-                this.gameEngine.currentPlanets = planets;
-
-                this.viewManager.cueScene('StellarSystemScene', {
-                    systemDetails,
-                    planets,
-                    star: this.gameEngine.playerStartSystem,
-                    galaxy: this.gameEngine.galaxy,
-                    playIntro: true
-                }, {
-                    duration: 15000,
-                    transition: { type: 'crossDissolve', duration: 2000 },
-                    onActive: async (scene) => {
-                        if (typeof scene.playIntroSequence === 'function') {
-                            await scene.playIntroSequence();
-                        }
-                    }
-                });
-            } catch (e) {
-                Logger.warn("LoaderManager: Failed to prepare StellarSystemScene visuals.", e);
-            }
-        }
-
-        // 3. Ship Showcase - Final reveal of the player's ship
-        this.viewManager.cueScene('ShipShowcaseScene', {}, {
-            duration: 0, // It handles its own exit
-            transition: { type: 'wipe', duration: 1200, direction: 'up' }
-        });
-
-        // Start the sequence. We DON'T await it here so the loader can continue background tasks.
-        this.viewManager.playSequence();
     }
 
     /**
@@ -153,7 +142,7 @@ class LoaderManager {
 
                 try {
                     // We don't await the visual sequence to finish, just to start
-                    if (task.name === 'Initial Visuals') {
+                    if (task.name === 'Queue Visuals') {
                         await task.action();
                     } else {
                         await Promise.race([task.action(), timeoutPromise]);

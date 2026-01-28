@@ -5,7 +5,7 @@
  * This class is NOT responsible for UI or scene management.
  */
 
-import { ShipFactory } from './ship/ShipFactory.js';
+import { ShipFactory } from '@/js/core/ship/ShipFactory.js';
 import { GalaxyGenerator } from '@/js/procgen/galaxy/GalaxyGenerator.js';
 import { LoreData } from '@/js/procgen/lore/LoreData.js';
 import { PluginManager } from './PluginManager.js';
