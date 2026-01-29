@@ -38,7 +38,6 @@ export class UIManager {
         this.shipyardPanel = new ShipyardPanel(this);
         this.pauseMenu = new PauseMenu(this);
 
-        this.showMainMenu();
         Logger.message("UIManager initialized and components instantiated.");
     }
 

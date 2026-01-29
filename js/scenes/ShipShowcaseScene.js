@@ -284,12 +284,6 @@ export class ShipShowcaseScene extends Scene {
                 this.labelElement.innerText = "RACING PROTOTYPE X-1"; 
                 this.descElement.innerText = "Ready for the Wormhole."; 
 
-                // Transition to Main Menu after a brief pause to admire the ship
-                setTimeout(() => {
-                    if (this.isActive) {
-                        this.viewManager.showMainMenu();
-                    }
-                }, 3000);
             } 
         }, 50);
         this.fadeIntervals.add(fadeInterval);

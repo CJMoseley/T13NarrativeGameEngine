@@ -219,6 +219,9 @@ class T13NE {
         this.viewManager = new ViewManager(this); // Pass T13NE as the context
         this.loaderManager = new LoaderManager(this.viewManager);
 
+        // Initialize ViewManager to set up UI components
+        await this.viewManager.initialize();
+
         // 2. Load Narrative Modules
         await this.loadModules();
 

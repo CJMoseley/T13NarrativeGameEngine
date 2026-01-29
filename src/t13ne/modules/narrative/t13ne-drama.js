@@ -62,7 +62,7 @@ class T13NE_Drama {
             this.data.hazards = hazards || [];
             this.data.prods = prods || [];
             this.data.breaks = breaks || [];
-            this.data.ratchets = await CodexLoader.getData('NarrativeRatchets') || [];
+            this.data.ratchets = await CodexLoader.getData('drama', 'NarrativeRatchets.json') || [];
             this._loadDefaultAtmospherics();
 
             this.initialized = true;

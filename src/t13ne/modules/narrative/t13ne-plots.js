@@ -1164,7 +1164,7 @@ class T13NE_Plots {
 
         try {
             this.plotRanks = await CodexLoader.getData('plotRanks') || [];
-            this.corePlots = await CodexLoader.getData('corePlots') || [];
+            this.corePlots = await CodexLoader.getData('plots', 'corePlots.json') || [];
             this.embodimentTypes = await CodexLoader.getData('embodimentTypes') || [];
             this.conflictEmbodiments = await CodexLoader.getData('conflictEmbodiments') || [];
 

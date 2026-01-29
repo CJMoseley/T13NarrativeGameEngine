@@ -32,6 +32,7 @@ export class MainMenu {
     }
 
     show() {
+        if (!this.element) return;
         this._clear();
 
         // Center the menu content
@@ -56,6 +57,7 @@ export class MainMenu {
     }
 
     hide() {
+        if (!this.element) return;
         this.element.style.display = 'none';
         this.element.classList.remove('menu-reveal');
         Logger.message("MainMenu component hidden.");

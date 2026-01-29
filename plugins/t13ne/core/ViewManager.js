@@ -29,6 +29,7 @@ export class ViewManager {
         this.engine = engine; // T13NE Engine Core
         this.gameEngine = new GameEngine(this.engine);
         this.uiManager = new UIManager(this);
+        this.uiManager.initialize(); // Initialize UI components immediately
         this.uiMessage = new UIMessage(this);
         this.sceneManager = new SceneManager(this);
         this.pluginManager = this.engine.pluginManager || this.gameEngine.pluginManager; // Use T13NE PluginManager
@@ -741,6 +742,7 @@ export class ViewManager {
 
             if (menu) {
                 Logger.message("ViewManager: Found Main Menu element, forcing display.");
+
                 
                 // Ensure z-index is correct
                 this.assignLayer(menu, 'MENUS');
@@ -769,6 +771,8 @@ export class ViewManager {
                 }
 
                 menu.style.display = 'flex';
+                menu.style.opacity = '1';
+                menu.style.pointerEvents = 'auto';
                 menu.style.flexDirection = 'column';
                 menu.style.justifyContent = 'center';
                 menu.style.alignItems = 'center';

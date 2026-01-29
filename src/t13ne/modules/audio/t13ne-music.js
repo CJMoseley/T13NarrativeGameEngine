@@ -123,6 +123,33 @@ class T13Synth {
         source.stop(startTime + duration + 0.1);
     }
 
+    playSample(name, frequency, startTime, duration, detune) {
+        const buffer = this.samples.get(name);
+        const source = this.ctx.createBufferSource();
+        source.buffer = buffer;
+        
+        // Pitch shifting: Assume base sample is C4 (approx 261.63 Hz)
+        // Calculate playback rate ratio
+        const baseFreq = 261.63; 
+        const rate = frequency / baseFreq;
+        
+        source.playbackRate.value = rate;
+        source.detune.value = detune;
+
+        const env = this.ctx.createGain();
+        source.connect(env);
+        env.connect(this.masterGain);
+
+        // Simple envelope to prevent clicking
+        env.gain.setValueAtTime(0, startTime);
+        env.gain.linearRampToValueAtTime(1, startTime + 0.01);
+        env.gain.exponentialRampToValueAtTime(0.01, startTime + duration);
+
+        source.start(startTime);
+        source.stop(startTime + duration + 0.1);
+    }
+
+
     /**
      * Plays a cluster of tones that persists until stopped (for ambience).
      * Returns a handle to control the cluster (gain node, oscillators).
@@ -155,7 +182,7 @@ class T13Synth {
         if (!soundHandle) return;
         const now = this.ctx.currentTime;
         
-        // Cancel any scheduled updates to prevent conflict
+       // Cancel any scheduled updates to prevent conflict
         soundHandle.gain.gain.cancelScheduledValues(now);
         soundHandle.gain.gain.setValueAtTime(soundHandle.gain.gain.value, now);
         soundHandle.gain.linearRampToValueAtTime(0, now + duration);
@@ -165,7 +192,7 @@ class T13Synth {
 
     /**
      * Plays a transitional "bridge" or "fill" sound.
-     * @param {number} baseFreq - Root frequency.
+     * @param   {number} baseFreq - Root frequency.
      * @param {string} direction - 'rising' (tension up) or 'falling' (tension down).
      */
     playBridge(baseFreq, direction) {
@@ -175,9 +202,9 @@ class T13Synth {
         
         osc.connect(gain);
         gain.connect(this.masterGain);
-        
+
         osc.type = direction === 'rising' ? 'sawtooth' : 'sine';
-        
+
         // Envelope
         gain.gain.setValueAtTime(0, now);
         gain.gain.linearRampToValueAtTime(0.15, now + 1.0);
@@ -222,6 +249,12 @@ class T13NE_Music {
         this.currentAmbience = null;
         this.currentPlotId = null;
         this.lastTension = -1;
+    }
+
+    async loadInstrument(name, url) {
+        if (this.synth) {
+            await this.synth.loadSample(name, url);
+        }
     }
 
     async initialize(t13ne) {
@@ -388,5 +421,6 @@ class T13NE_Music {
         }
     }
 }
+
 
 export default new T13NE_Music();
