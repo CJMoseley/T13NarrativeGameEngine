@@ -37,6 +37,7 @@ class T13Plot extends SuperKnot {
         this.location = data.Location || null;
         this.goal = data.Goal || "To resolve the conflict.";
         this.narrativeStructure = null;
+        this.currentAtmosphere = null; // Stores current atmospheric effects
 
         // Subplot & Resource properties
         this.yarnPoints = data.yarnPoints || 5;
@@ -491,6 +492,14 @@ class T13Plot extends SuperKnot {
             T13NE_Tension.setPlotSuspense(this.tensionLevel);
         }
 
+        // Trigger Music Transition (Bridge/Crossfade)
+        if (this.t13ne) {
+            const Music = this.t13ne.getModule('Music');
+            if (Music && typeof Music.updateAmbience === 'function') {
+                Music.updateAmbience(this);
+            }
+        }
+
         // Check for significant change (crossing thresholds 4 or 7) to update voice
         const getTier = (l) => {
             if (l >= 7) return 2;
@@ -521,6 +530,71 @@ class T13Plot extends SuperKnot {
      */
     addDrama(dramaDie) {
         this.dramaPool.push(dramaDie);
+    }
+
+    /**
+     * Applies an atmospheric event to the plot/scene.
+     * Handles logging and potential integration with frontend systems via T13NE.
+     * @param {object} atmospheric - The atmospheric event object { text, sfx, lighting, etc. }
+     */
+    applyAtmospheric(atmospheric) {
+        this.currentAtmosphere = atmospheric;
+        const text = typeof atmospheric === 'string' ? atmospheric : atmospheric.text;
+        Logger.message(`Plot ${this.Name}: Atmosphere changed to "${text}"`);
+
+        if (!this.t13ne) return;
+
+        // Connect to Audio System
+        const SoundEngine = this.t13ne.getModule('SoundEngine');
+        if (SoundEngine && typeof SoundEngine.playSFX === 'function' && atmospheric.sfx) {
+            SoundEngine.playSFX(atmospheric.sfx);
+        }
+
+        // Connect to Scene System via ViewManager
+        const ViewManager = this.t13ne.getModule('ViewManager');
+        if (ViewManager && ViewManager.currentScene) {
+            const scene = ViewManager.currentScene;
+            if (atmospheric.lighting && typeof scene.setLighting === 'function') {
+                scene.setLighting(atmospheric.lighting);
+            }
+            if (atmospheric.vfx && typeof scene.triggerVFX === 'function') {
+                scene.triggerVFX(atmospheric.vfx);
+            }
+        }
+    }
+
+    /**
+     * Applies an atmospheric event to the plot/scene.
+     * Connects to Audio and Scene modules to render SFX, Lighting, and VFX.
+     * @param {object} atmospheric - The atmospheric event object.
+     */
+    applyAtmospheric(atmospheric) {
+        this.currentAtmosphere = atmospheric;
+        const text = typeof atmospheric === 'string' ? atmospheric : atmospheric.text;
+        Logger.message(`Plot ${this.Name}: Atmosphere changed to "${text}"`);
+
+        if (!this.t13ne) return;
+
+        // Connect to Audio System (AudioGenerator or HTML5 Player wrapper)
+        if (atmospheric.sfx) {
+            const Audio = this.t13ne.getModule('Audio') || this.t13ne.getModule('AudioGenerator');
+            if (Audio && typeof Audio.playSFX === 'function') {
+                Audio.playSFX(atmospheric.sfx);
+            }
+        }
+
+        // Connect to Scene/Renderer System (Three.js / T13Scene)
+        if (atmospheric.lighting || atmospheric.vfx) {
+            const Scene = this.t13ne.getModule('T13Scene') || this.t13ne.getModule('Scene');
+            if (Scene) {
+                if (atmospheric.lighting && typeof Scene.setLighting === 'function') {
+                    Scene.setLighting(atmospheric.lighting);
+                }
+                if (atmospheric.vfx && typeof Scene.triggerVFX === 'function') {
+                    Scene.triggerVFX(atmospheric.vfx);
+                }
+            }
+        }
     }
 
     /**
@@ -832,6 +906,15 @@ class T13Plot extends SuperKnot {
         this.collectReports();
 
         this.updateState();
+
+        // Ensure Music/Ambience is active and matches current state
+        if (this.t13ne) {
+            const Music = this.t13ne.getModule('Music');
+            if (Music && typeof Music.updateAmbience === 'function') {
+                // This will handle initialization or updates if they were missed
+                Music.updateAmbience(this);
+            }
+        }
 
         // Ensure we have cards
         if (T13NECardsAPI.isInitialized) {
@@ -1420,10 +1503,3 @@ plotsModule.T13Plot = T13Plot;
 
 export { T13Plot };
 export default plotsModule;
-
-
-
-
-
-
-

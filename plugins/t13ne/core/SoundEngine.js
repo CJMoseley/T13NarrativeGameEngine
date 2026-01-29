@@ -83,4 +83,16 @@ export class SoundEngine {
         Logger.logVariables({ volume });
         Logger.end(funcName);
     }
+
+    /**
+     * Plays a sound effect.
+     * @param {string} sfx - The name or identifier of the SFX to play.
+     */
+    playSFX(sfx) {
+        const funcName = 'SoundEngine.playSFX';
+        Logger.start(funcName);
+        Logger.message(`SoundEngine: Playing SFX: ${sfx}`);
+        // TODO: Implement actual audio playback (e.g., asset registry lookup)
+        Logger.end(funcName);
+    }
 }

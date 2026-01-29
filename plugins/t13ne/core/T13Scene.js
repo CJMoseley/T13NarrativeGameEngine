@@ -112,4 +112,40 @@ export class T13Scene extends Scene {
             y: (-(vector.y * 0.5) + 0.5) * window.innerHeight
         };
     }
+
+    /**
+     * Sets the lighting atmosphere for the scene.
+     * @param {object} lighting - Lighting configuration { type, color, intensity, duration }.
+     */
+    setLighting(lighting) {
+        Logger.message(`T13Scene: Setting lighting: ${JSON.stringify(lighting)}`);
+        
+        if (this.scene) {
+            // Basic implementation: Adjust ambient light if present
+            const ambient = this.scene.children.find(c => c.isAmbientLight);
+            if (ambient) {
+                if (lighting.color) ambient.color.set(lighting.color);
+                if (lighting.intensity !== undefined) ambient.intensity = lighting.intensity;
+            }
+        }
+    }
+
+    /**
+     * Triggers a visual effect in the scene.
+     * @param {string|object} vfx - The VFX identifier or config.
+     */
+    triggerVFX(vfx) {
+        const vfxName = typeof vfx === 'string' ? vfx : vfx.name;
+        Logger.message(`T13Scene: Triggering VFX: ${vfxName}`);
+        
+        if (this.twoDContainer) {
+            // Use data attribute for CSS styling (e.g. rain overlay, flash)
+            this.twoDContainer.setAttribute('data-vfx', vfxName);
+            
+            // Auto-clear simple effects after a default duration if not specified
+            if (!vfx.duration || vfx.duration < 0) {
+                 setTimeout(() => this.twoDContainer.removeAttribute('data-vfx'), 1000);
+            }
+        }
+    }
 }

@@ -2,7 +2,7 @@
  * T13NE Drama Module
  * Handles Drama, Tension, and Stress relief systems.
  * Implements logic for Atmospherics, Hazards, Prods, Breaks, and Ratchets.
- */"
+ */
 import CodexLoader from "@/src/t13ne/modules/codex/CodexLoader.js";
 import Logger from "@/src/t13ne/core/Logger.js";
 import T13Dice from '@/src/t13ne/modules/mechanics/t13ne-dice.js';
@@ -64,7 +64,6 @@ class T13NE_Drama {
             this.data.breaks = breaks || [];
             this.data.ratchets = await CodexLoader.getData('NarrativeRatchets') || [];
             this._loadDefaultAtmospherics();
-            this._loadDefaultAtmospherics();
 
             this.initialized = true;
             Logger.message('T13NE_Drama: Initialized successfully.');
@@ -76,17 +75,37 @@ class T13NE_Drama {
     _loadDefaultAtmospherics() {
         // Defaults based on T13NE Rules "Drama" page
         this.data.atmospherics = {
-            'Contemporary': ["Social media notifications", "News coverage", "Real world events", "Spilled drinks", "Traffic noise", "Distant sirens"],
-            'Horror': ["Ill omens", "Owl screech", "Strange knocking", "Off-colour skies", "Doors opening on their own", "Glimpses of something terrible"],
-            'Cosmic Horror': ["Bizarre corpses", "Unexplained illnesses", "Odd individuals", "Unusual languages", "Weird glowing writings"],
-            'Fantasy': ["Weird tracks", "Odd foods", "Strange noises", "Enchanted mushrooms", "Monstrous corpses"],
-            'Dark Fantasy': ["Starving peasants", "Lame animals", "Strange smells", "Beggars", "Gibbeted criminals"],
-            'Sci-Fi': ["Two suns setting", "Unusual aliens", "Holographic drones", "Malfunctioning robots", "Planetary rings"],
-            'Cyberpunk': ["Flickering LEDs", "Garbage piles", "Drug dealers", "Surveillance drones", "Pink noise music"],
-            'Steampunk': ["Distant engines", "Oily smells", "Clouds of smoke", "Clanking automatons", "Tickertape hissing"],
-            'Thriller': ["Overheard conversations", "News of Embodiments", "Sense of being watched", "Strangers asking questions"],
-            'Comedy': ["Weird behaviour", "Funny posters", "Bizarre names", "Surreal events"],
-            'War': ["Distant explosions", "Acrid scents", "Zinging ricochets", "Unzipping thunder of aircraft", "Burning rubble"]
+              'Contemporary': [
+                  { text: "Social media notifications ping incessantly.", sfx: "notification_ping", vfx: "screen_glare" },
+                  { text: "Distant sirens wail.", sfx: "siren_wail_dist" },
+                  { text: "Traffic noise swells.", sfx: "traffic_city" },
+                  { text: "A phone vibrates on a table.", sfx: "phone_vibrate", vfx: "shake_small" },
+                  { text: "Neon signs buzz and flicker.", sfx: "neon_buzz", lighting: { type: "flicker", color: "#FF00FF", duration: 1000 } }
+              ],
+              'Horror': [
+                  { text: "A wolf howls in the distance.", sfx: "wolf_howl" },
+                  { text: "A candle gutters and dims.", lighting: { type: "dim_flicker", intensity: 0.3, duration: 2500 } },
+                  { text: "Strange knocking on the walls.", sfx: "knocking_wood_3" },
+                  { text: "A floorboard creaks behind you.", sfx: "creak_wood" },
+                  { text: "The wind whistles through a crack.", sfx: "wind_whistle" },
+                  { text: "Shadows lengthen unnaturally.", lighting: { type: "shadow_grow", duration: 5000 } }
+              ],
+              'Fantasy': [
+                  { text: "Weird tracks found in the mud.", vfx: "highlight_tracks" },
+                  { text: "Strange noises from a bush.", sfx: "rustle_bush" },
+                  { text: "Enchanted mushrooms glow softly.", lighting: { type: "pulse", color: "#00FF00", intensity: 0.4 } },
+                  { text: "Distant thunder rolls.", sfx: "thunder_dist" }
+              ],
+              'Sci-Fi': [
+                  { text: "Two suns setting cast long shadows.", lighting: { type: "sunset_double", color: "#FF4400" } },
+                  { text: "Holographic advertising drones glitch.", sfx: "static_burst", vfx: "hologram_glitch" },
+                  { text: "A ship engine rumbles overhead.", sfx: "spaceship_flyby" }
+              ],
+              'Cyberpunk': [
+                  { text: "Flickering LEDs illuminate the rain.", lighting: { type: "strobe", color: "#00FFFF" }, vfx: "rain_overlay" },
+                  { text: "Pink noise music thumps nearby.", sfx: "music_muffled_bass" },
+                  { text: "Surveillance drones hum past.", sfx: "drone_hover" }
+              ]
         };
     }
 
@@ -212,13 +231,34 @@ class T13NE_Drama {
     /**
      * Triggers an Atmospheric event based on genre.
      * @param {string} [genre='Contemporary'] 
-     * @returns {string} The atmospheric description.
+       * @param {object} [character=null] - The character experiencing the atmospheric (for stress relief).
+       * @returns {object} The atmospheric event object { type, text, stressRelief, appliedTo }.
      */
-    triggerAtmospheric(genre = 'Contemporary') {
-        const list = this.data.atmospherics[genre] || this.data.atmospherics['Contemporary'];
-        const atmospheric = list[Math.floor(Math.random() * list.length)];
-        Logger.message(`T13NE_Drama: Triggered Atmospheric (${genre}): ${atmospheric}`);
-        return atmospheric;
+      triggerAtmospheric(genre = 'Contemporary', character = null) {
+          const list = this.data.atmospherics[genre] || this.data.atmospherics['Contemporary'];
+          const entry = list[Math.floor(Math.random() * list.length)];
+          
+          // Handle both string (legacy) and object formats
+          const atmosphericText = typeof entry === 'string' ? entry : entry.text;
+          const effects = typeof entry === 'object' ? entry : {};
+
+          const stressRelief = this.getStressRelief('Atmospheric');
+          
+          let result = {
+              type: 'Atmospheric',
+              text: atmosphericText,
+              stressRelief: stressRelief,
+              appliedTo: null,
+              ...effects // Spread sfx, vfx, lighting into the result
+          };
+
+          if (character && typeof character.relieveStress === 'function') {
+              character.relieveStress(stressRelief);
+              result.appliedTo = character.name;
+          }
+
+          Logger.message(`T13NE_Drama: Triggered Atmospheric (${genre}): ${atmosphericText}`);
+          return result;
     }
 
     /**
@@ -531,10 +571,3 @@ class QuantumContest {
 }
 
 export default new T13NE_Drama();
-
-
-
-
-
-
-

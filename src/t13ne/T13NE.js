@@ -42,6 +42,7 @@ import T13NE_Game from '@/src/t13ne/modules/systems/t13ne-game.js';
 import T13NE_Reasoning from '@/src/t13ne/modules/ai/t13ne-reasoning.js';
 import T13NE_StateMachine from '@/src/t13ne/modules/systems/t13ne-state-machine.js';
 import T13NE_Editor from '@/src/t13ne/modules/systems/t13ne-editor.js';
+import T13NE_Music from '@/src/t13ne/modules/audio/t13ne-music.js';
 
 import { ViewManager } from '@/src/t13ne/core/ViewManager.js';
 import { PluginManager } from '@/src/t13ne/core/PluginManager.js';
@@ -333,6 +334,11 @@ class T13NE {
         this.modules.Wounds = T13NE_Wounds;
         await this.modules.Wounds.initialize();
         Logger.message("T13NE: Wounds module loaded.");
+
+        // Load Music module
+        this.modules.Music = T13NE_Music;
+        await this.modules.Music.initialize(this);
+        Logger.message("T13NE: Music module loaded.");
 
         // Load Character Arc module
         this.modules.CharacterArc = T13NE_CharacterArc;

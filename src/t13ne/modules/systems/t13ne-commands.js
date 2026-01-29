@@ -1,6 +1,6 @@
-﻿import Logger from "@/src/t13ne/core/Logger.js";
-import T13Dice from '@/src/t13ne/modules/mechanics/t13ne-dice.js';
+﻿import T13Dice from '@/src/t13ne/modules/mechanics/t13ne-dice.js';
 import T13Boons from '@/src/t13ne/modules/mechanics/t13ne-boon.js';
+import Logger from "@/src/t13ne/core/Logger.js";
 
 /**
  * T13NE Commands Module
@@ -38,6 +38,7 @@ export class T13NECommands {
         this.registerGameCommands(); // Register save/load commands
         this.registerSpreadCommands(); // Register new spread commands
         this.registerIChingCommands(); // Register new I-Ching commands
+        this.registerAudioCommands(); // Register new Music commands
         this.loadSettings();
 
         this.initialized = true;
@@ -781,6 +782,49 @@ export class T13NECommands {
         });
     }
 
+    registerAudioCommands() {
+        // Music:PlayLeitmotif(target=Player)
+        this.registerCommand('Music', 'PlayLeitmotif', async (args, ctx) => {
+            const Music = this.t13ne.getModule('Music');
+            const target = args.target || ctx.character;
+            const listener = args.listener || null;
+            
+            if (!Music || !target) return { error: "Music module or Target missing" };
+            
+            Music.playLeitmotif(target, listener);
+            const motif = Music.getLeitmotif(target);
+            return { type: 'LeitmotifPlayed', character: target.name, motifData: motif };
+        });
+
+        // Music:UpdateAmbience(plotId=MainPlot)
+        this.registerCommand('Music', 'UpdateAmbience', async (args, ctx) => {
+            const Music = this.t13ne.getModule('Music');
+            const Plots = this.t13ne.getModule('Plots');
+            const plot = args.plotId ? Plots.getPlot(args.plotId) : ctx.plot;
+
+            if (!Music || !plot) return { error: "Music module or Plot missing" };
+
+            Music.updateAmbience(plot);
+            return { type: 'AmbienceUpdated', plot: plot.Name, tension: plot.tensionLevel };
+        });
+
+        // Music:Stop()
+        this.registerCommand('Music', 'Stop', async (args, ctx) => {
+            const Music = this.t13ne.getModule('Music');
+            if (Music) Music.stop();
+            return { type: 'MusicStopped' };
+        });
+
+        // Music:Preview(name="Test Name") - For authoring/debugging
+        this.registerCommand('Music', 'Preview', async (args, ctx) => {
+            const Music = this.t13ne.getModule('Music');
+            // Create a dummy character object to generate a leitmotif from a string
+            const dummyChar = { name: args.name || "Test Subject", id: "preview_" + Date.now() };
+            Music.playLeitmotif(dummyChar);
+            return { type: 'MusicPreview', name: dummyChar.name, motif: Music.getLeitmotif(dummyChar) };
+        });
+    }
+
     registerOptionalRules() {
         // Drama Rules
         this.registerOptionalRule('Drama:RemoveExtraDice', true, "Yarn-Teller can remove additional Drama Dice from the pool.");
@@ -798,9 +842,3 @@ export class T13NECommands {
 }
 
 export default new T13NECommands();
-
-
-
-
-
-
