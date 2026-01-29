@@ -92,16 +92,15 @@ class LoaderManager {
 
                 // 4. Ship Showcase
                 this.viewManager.cueScene('ShipShowcaseScene', {}, {
-                    duration: 0, // It handles its own exit
+                    duration: 5000, // Show ship for 5 seconds before menu
                     onActive: async () => {
                         IntroSequence.hide(); // Reveal scene
                     },
                     transition: { type: 'wipe', duration: 1200, direction: 'up' }
                 });
 
-                // Start the sequence and WAIT for it to finish
-                // This prevents the UI from overlaying "Welcome" text on top of the ship generation
-                await this.viewManager.playSequence();
+                // Start the sequence without waiting, allowing the loader to finish and show the skip button
+                this.viewManager.playSequence();
             }},
 
             { name: 'Galactic History', action: () => this.galacticHistoryManager.load(this.pluginManager, this.gameEngine.loreMaster) },
@@ -165,7 +164,6 @@ class LoaderManager {
         Logger.message('LoaderManager: All tasks completed successfully.');
 
         // Create a standalone button to continue, ensuring it's visible over the canvas
-        // This button allows skipping the intro sequence if it gets stuck or user wants to skip
         const continueButton = document.createElement('button');
         continueButton.innerText = 'Continue to Main Menu';
         continueButton.className = 'menu-button';
@@ -173,35 +171,24 @@ class LoaderManager {
         continueButton.style.bottom = '50px';
         continueButton.style.left = '50%';
         continueButton.style.transform = 'translateX(-50%)';
-        continueButton.style.zIndex = '10000'; // Ensure it's on top of everything, including Intro
+        continueButton.style.zIndex = '10000';
         continueButton.id = 'loader-continue-btn';
         continueButton.style.cursor = 'pointer';
         continueButton.style.padding = '10px 20px';
         continueButton.style.fontSize = '16px';
         continueButton.style.borderRadius = '5px';
-        continueButton.style.width = 'auto'; // Prevent filling width
+        continueButton.style.width = 'auto';
 
         continueButton.onclick = () => {
             continueButton.remove();
             if (typeof IntroSequence !== 'undefined') {
                 IntroSequence.hide();
             }
-            this.viewManager.sceneQueue = []; // Stop the sequence
+            this.viewManager.sceneQueue = []; // Ensure sequence is cleared
             this.viewManager.showMainMenu();
         };
 
         document.body.appendChild(continueButton);
-
-        // Hook into ViewManager to remove button when sequence ends naturally
-        const originalShowMainMenu = this.viewManager.showMainMenu.bind(this.viewManager);
-        this.viewManager.showMainMenu = () => {
-            const btn = document.getElementById('loader-continue-btn');
-            if (btn) btn.remove();
-            if (typeof IntroSequence !== 'undefined') {
-                IntroSequence.hide();
-            }
-            originalShowMainMenu();
-        };
     }
 }
 
