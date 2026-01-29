@@ -1,5 +1,6 @@
 import Logger from "@/src/t13ne/core/Logger.js";
 import T13NE from '@/src/t13ne/T13NE.js';
+import CodexLoader from "@/src/t13ne/modules/codex/CodexLoader.js";
 
 /**
  * Simple Seeded RNG for deterministic music generation.
@@ -41,29 +42,32 @@ class T13Synth {
         this.masterGain = this.ctx.createGain();
         this.masterGain.gain.value = 0.3;
         this.masterGain.connect(this.ctx.destination);
-        this.samples = new Map(); // Store loaded AudioBuffers
+        this.buffers = new Map(); // Store loaded AudioBuffers
+        this.layers = new Map(); // To manage active layers { source, gainNode }
     }
 
     /**
-     * Loads an audio sample for use as an instrument.
-     * @param {string} name - Instrument name (e.g., 'piano').
+     * Loads an audio file into a buffer.
+     * @param {string} name - A unique name for the audio.
      * @param {string} url - URL to the audio file.
      */
-    async loadSample(name, url) {
+    async loadAudio(name, url) {
         try {
             const response = await fetch(url);
             const arrayBuffer = await response.arrayBuffer();
             const audioBuffer = await this.ctx.decodeAudioData(arrayBuffer);
-            this.samples.set(name, audioBuffer);
-            Logger.message(`T13Synth: Loaded sample instrument '${name}'`);
+            this.buffers.set(name, audioBuffer);
+            Logger.message(`T13Synth: Loaded audio '${name}'`);
+            return audioBuffer;
         } catch (e) {
-            Logger.error(`T13Synth: Failed to load sample '${name}'`, e);
+            Logger.error(`T13Synth: Failed to load audio '${name}'`, e);
+            return null;
         }
     }
 
     playNote(frequency, startTime, duration, type = 'sine', detune = 0, instrument = null) {
         // 1. Try to play sample if instrument is specified and loaded
-        if (instrument && this.samples.has(instrument)) {
+        if (instrument && this.buffers.has(instrument)) {
             this.playSample(instrument, frequency, startTime, duration, detune);
             return;
         }
@@ -98,7 +102,7 @@ class T13Synth {
     }
 
     playSample(name, frequency, startTime, duration, detune) {
-        const buffer = this.samples.get(name);
+        const buffer = this.buffers.get(name);
         const source = this.ctx.createBufferSource();
         source.buffer = buffer;
         
@@ -123,71 +127,68 @@ class T13Synth {
         source.stop(startTime + duration + 0.1);
     }
 
-    playSample(name, frequency, startTime, duration, detune) {
-        const buffer = this.samples.get(name);
+    /**
+     * Plays a pre-loaded audio buffer as a persistent layer.
+     * @param {string} layerName - A unique name for this layer.
+     * @param {AudioBuffer} buffer - The audio buffer to play.
+     * @param {number} volume - The target volume for the layer.
+     * @param {boolean} loop - Whether the audio should loop.
+     * @param {number} fadeTime - The time in seconds to fade in.
+     */
+    playLayer(layerName, buffer, volume = 1.0, loop = true, fadeTime = 2.0) {
+        if (this.layers.has(layerName)) return; // Already playing
+
+        const now = this.ctx.currentTime;
+        const source = this.ctx.createBufferSource();
+        const gainNode = this.ctx.createGain();
+
+        source.buffer = buffer;
+        source.loop = loop;
+
+        gainNode.gain.setValueAtTime(0, now);
+        gainNode.gain.linearRampToValueAtTime(volume, now + fadeTime);
+
+        source.connect(gainNode);
+        gainNode.connect(this.masterGain);
+        source.start(now);
+
+        this.layers.set(layerName, { source, gainNode });
+        Logger.message(`T13Synth: Started layer '${layerName}'`);
+    }
+
+    /**
+     * Stops a persistent layer with a fade out.
+     * @param {string} layerName - The name of the layer to stop.
+     * @param {number} fadeTime - The time in seconds to fade out.
+     */
+    stopLayer(layerName, fadeTime = 2.0) {
+        if (!this.layers.has(layerName)) return;
+
+        const layer = this.layers.get(layerName);
+        const now = this.ctx.currentTime;
+
+        layer.gainNode.gain.cancelScheduledValues(now);
+        layer.gainNode.gain.setValueAtTime(layer.gainNode.gain.value, now);
+        layer.gainNode.gain.linearRampToValueAtTime(0, now + fadeTime);
+
+        layer.source.stop(now + fadeTime + 0.1);
+
+        this.layers.delete(layerName);
+        Logger.message(`T13Synth: Stopped layer '${layerName}'`);
+    }
+
+    /**
+     * Plays a one-shot sound effect that is not looped.
+     * @param {AudioBuffer} buffer - The audio buffer to play.
+     * @param {number} volume - The volume to play at.
+     */
+    playFX(buffer, volume = 0.5) {
+        if (!buffer) return;
+        const now = this.ctx.currentTime;
         const source = this.ctx.createBufferSource();
         source.buffer = buffer;
-        
-        // Pitch shifting: Assume base sample is C4 (approx 261.63 Hz)
-        // Calculate playback rate ratio
-        const baseFreq = 261.63; 
-        const rate = frequency / baseFreq;
-        
-        source.playbackRate.value = rate;
-        source.detune.value = detune;
-
-        const env = this.ctx.createGain();
-        source.connect(env);
-        env.connect(this.masterGain);
-
-        // Simple envelope to prevent clicking
-        env.gain.setValueAtTime(0, startTime);
-        env.gain.linearRampToValueAtTime(1, startTime + 0.01);
-        env.gain.exponentialRampToValueAtTime(0.01, startTime + duration);
-
-        source.start(startTime);
-        source.stop(startTime + duration + 0.1);
-    }
-
-
-    /**
-     * Plays a cluster of tones that persists until stopped (for ambience).
-     * Returns a handle to control the cluster (gain node, oscillators).
-     */
-    playToneCluster(frequencies, type = 'sine', detune = 0, volume = 0.2) {
-        const now = this.ctx.currentTime;
-        const env = this.ctx.createGain();
-        env.connect(this.masterGain);
-        env.gain.setValueAtTime(0, now);
-        // Slow fade in for ambience
-        env.gain.linearRampToValueAtTime(volume, now + 4.0);
-
-        const oscillators = frequencies.map(f => {
-            const osc = this.ctx.createOscillator();
-            osc.type = type;
-            osc.frequency.value = f;
-            osc.detune.value = detune + (Math.random() * 10 - 5); // Organic drift
-            osc.connect(env);
-            osc.start(now);
-            return osc;
-        });
-
-        return { gain: env, oscillators };
-    }
-
-    /**
-     * Fades out a sound object and stops its oscillators.
-     */
-    fadeOut(soundHandle, duration = 4.0) {
-        if (!soundHandle) return;
-        const now = this.ctx.currentTime;
-        
-       // Cancel any scheduled updates to prevent conflict
-        soundHandle.gain.gain.cancelScheduledValues(now);
-        soundHandle.gain.gain.setValueAtTime(soundHandle.gain.gain.value, now);
-        soundHandle.gain.linearRampToValueAtTime(0, now + duration);
-
-        soundHandle.oscillators.forEach(osc => osc.stop(now + duration + 0.1));
+        source.connect(this.masterGain);
+        source.start(now);
     }
 
     /**
@@ -226,6 +227,9 @@ class T13Synth {
     }
 
     stopAll() {
+        this.layers.forEach((layer, name) => {
+            this.stopLayer(name, 0.5);
+        });
         this.masterGain.disconnect();
         this.masterGain = this.ctx.createGain();
         this.masterGain.gain.value = 0.3;
@@ -244,17 +248,11 @@ class T13NE_Music {
         this.soundEngine = null;
         this.synth = null;
         this.initialized = false;
-        this.leitmotifCache = new Map();
-        
-        this.currentAmbience = null;
-        this.currentPlotId = null;
+        this.tonalModes = [];
+        this.compositionCache = new Map(); // Caches generated composition data
+        this.musicPack = null; // Holds buffers for the current musical context
+        this.currentLayers = new Set(); // Tracks active layer names
         this.lastTension = -1;
-    }
-
-    async loadInstrument(name, url) {
-        if (this.synth) {
-            await this.synth.loadSample(name, url);
-        }
     }
 
     async initialize(t13ne) {
@@ -269,23 +267,166 @@ class T13NE_Music {
             Logger.warn("T13NE_Music: SoundEngine AudioContext not available. Playback disabled.");
         }
 
+        // Load data required for generation
+        this.tonalModes = await CodexLoader.getData('geometry', 'tonalModes.json') || [];
+
         this.initialized = true;
         Logger.message("T13NE_Music: Initialized.");
     }
 
+    /**
+     * Loads a single audio file for use as a sampled instrument or a one-shot effect.
+     * @param {string} name - A unique name for the instrument/effect.
+     * @param {string} url - The URL of the audio file.
+     */
     async loadInstrument(name, url) {
         if (this.synth) {
-            await this.synth.loadSample(name, url);
+            await this.synth.loadAudio(name, url);
         }
     }
 
     /**
-     * Generates a Leitmotif for a character.
+     * Loads a collection of audio stems for adaptive layering.
      */
-    getLeitmotif(character) {
+    async loadMusicPack(packData) {
+        if (this.synth) {
+            this.musicPack = {};
+            for (const key in packData) {
+                this.musicPack[key] = await this.synth.loadAudio(key, packData[key]);
+            }
+            Logger.message("T13NE_Music: Music pack loaded.");
+        }
+    }
+
+    /**
+     * Parses a tonal pattern string (e.g., "43(5)" or "TST") into an array of intervals.
+     * @param {string} patternString 
+     * @returns {number[]} An array of semitone intervals.
+     */
+    _parseTonalPattern(patternString = '') {
+        const intervals = [];
+        if (!patternString) return [2, 2, 1, 2, 2, 2, 1]; // Default to Major scale pattern
+
+        const re = /(\d+)\((\d+)\)/;
+        const match = patternString.match(re);
+
+        if (match) {
+            patternString = match[1] + match[2];
+        }
+
+        for (const char of patternString) {
+            if (char === 'S') intervals.push(1);
+            else if (char === 'T') intervals.push(2);
+            else if (!isNaN(parseInt(char, 10))) intervals.push(parseInt(char, 10));
+        }
+        return intervals;
+    }
+
+    /**
+     * Finds the Tonal Mode object for a given character's geometry.
+     * @param {object} characterGeo - The character's full geometry object.
+     * @returns {object|null} The tonal mode object from the codex.
+     */
+    _getTonalMode(characterGeo) {
+        if (!this.tonalModes.length || !characterGeo) return null;
+        const modeName = characterGeo.GeoHarmonics?.Mode || 'Ionian/Major';
+        return this.tonalModes.find(m => m.data.Type === modeName)?.data || null;
+    }
+
+    /**
+     * Analyzes the intervals between notes in a scale to find the frequency of melodic steps.
+     * @param {number[]} scaleIntervals - A sorted array of semitone intervals from the root (e.g., [0, 2, 4, 5, 7, 9, 11]).
+     * @returns {object} A map of interval sizes to their frequency (e.g., { '1': 2, '2': 5 }).
+     */
+    _getMelodicIntervalDistribution(scaleIntervals) {
+        const distribution = {};
+        if (scaleIntervals.length < 2) return distribution;
+
+        for (let i = 0; i < scaleIntervals.length - 1; i++) {
+            const interval = scaleIntervals[i + 1] - scaleIntervals[i];
+            if (interval > 0) {
+                distribution[interval] = (distribution[interval] || 0) + 1;
+            }
+        }
+        // Also consider the interval from the last note back to the octave (root)
+        const lastInterval = 12 - scaleIntervals[scaleIntervals.length - 1];
+        if (lastInterval > 0) {
+            distribution[lastInterval] = (distribution[lastInterval] || 0) + 1;
+        }
+
+        return distribution;
+    }
+
+    /**
+     * Generates a Markov transition matrix based on musical rules and preferred intervals.
+     * @param {number[]} scaleIntervals - The allowed intervals of the scale.
+     * @param {object} [harmonicStepDistribution={}] - A map of preferred melodic intervals (from harmonics) to their frequency.
+     * @returns {number[][]} A 2D array representing the transition probabilities.
+     */
+    _generateMarkovTransitions(scaleIntervals, harmonicStepDistribution = {}) {
+        const matrix = [];
+        // Create a map of weights for both ascending and descending preferred intervals.
+        const preferredIntervals = new Map();
+        for (const interval in harmonicStepDistribution) {
+            const i = parseInt(interval, 10);
+            const count = harmonicStepDistribution[interval];
+            // Give higher weight to more frequent intervals in the harmonic structure
+            preferredIntervals.set(i, (preferredIntervals.get(i) || 0) + count);
+            const descending = (12 - i) % 12;
+            if (descending !== 0) {
+                 preferredIntervals.set(descending, (preferredIntervals.get(descending) || 0) + count);
+            }
+        }
+
+        for (let i = 0; i < scaleIntervals.length; i++) {
+            const fromInterval = scaleIntervals[i];
+            const weights = [];
+            let totalWeight = 0;
+
+            for (let j = 0; j < scaleIntervals.length; j++) {
+                const toInterval = scaleIntervals[j];
+                const melodicInterval = (toInterval - fromInterval + 12) % 12;
+
+                // Start with a base weight for any valid note in the scale.
+                let weight = 1.0;
+
+                // Add weight for standard musical rules (predictability)
+                if (melodicInterval === 0) { // Repetition
+                    weight += 1.5;
+                } else if (melodicInterval === 1 || melodicInterval === 2 || melodicInterval === 10 || melodicInterval === 11) { // Stepwise motion
+                    weight += 2.0;
+                }
+
+                // Add character-specific flavor from harmonics (uniqueness)
+                if (preferredIntervals.has(melodicInterval)) {
+                    weight += 4.0 * preferredIntervals.get(melodicInterval);
+                }
+
+                // Penalize dissonant intervals unless they are harmonically preferred by the character
+                if (melodicInterval === 6 && !preferredIntervals.has(6)) {
+                    weight *= 0.1;
+                }
+                weights.push(weight);
+                totalWeight += weight;
+            }
+
+            // Normalize weights to probabilities for the current state
+            matrix[i] = weights.map(w => w / totalWeight);
+        }
+        return matrix;
+    }
+
+    /**
+     * Generates a Leitmotif for a character.
+     * This is the base melodic generator for various composition types.
+     */
+    getCharacterComposition(character, options = {}) {
         if (!character || !character.name) return null;
-        const cacheKey = character.id || character.name;
-        if (this.leitmotifCache.has(cacheKey)) return this.leitmotifCache.get(cacheKey);
+
+        const useCharacterHarmonics = options.useCharacterHarmonics !== false; // Default to true
+
+        const cacheKey = `${character.id || character.name}_${useCharacterHarmonics}`;
+        if (this.compositionCache.has(cacheKey)) return this.compositionCache.get(cacheKey);
 
         let geo = character.geometry;
         if (!geo && this.geometry) {
@@ -297,46 +438,89 @@ class T13NE_Music {
         const keyNum = geo.GeoHarmonics ? geo.GeoHarmonics.key : geo.GeometryNumber;
         const keyData = this.geometry.getKey(keyNum);
         const baseFreq = keyData.Key.Frequency;
-        const harmonics = geo.GeoHarmonics ? geo.GeoHarmonics.Harmonic : [1, 3, 5, 8];
-        
-        const scaleIntervals = harmonics.map(h => (h - 1) % 12);
-        scaleIntervals.push(0);
-        scaleIntervals.sort((a, b) => a - b);
+        const rootKeyIndex = CHROMATIC_SCALE.indexOf(keyData.Key.Key);
 
-        const length = rng.range(4, 8);
+        // 1. Determine the allowed notes from the Tonal Mode
+        const tonalMode = this._getTonalMode(geo);
+        const tonalPattern = this._parseTonalPattern(tonalMode?.Pattern); // e.g., [2, 2, 1, 2, 2, 2, 1]
+        const allowedScaleIntervals = [0];
+        let cumulativeInterval = 0;
+        for (const step of tonalPattern) {
+            cumulativeInterval += step;
+            if (cumulativeInterval < 12) {
+                allowedScaleIntervals.push(cumulativeInterval);
+            }
+        }
+
+        // 2. Determine the preferred melodic intervals from the Character's Harmonics (if applicable)
+        let harmonicStepDistribution = {};
+        if (useCharacterHarmonics) {
+            const harmonics = geo.GeoHarmonics ? geo.GeoHarmonics.Harmonic : [1, 3, 5, 8];
+            const harmonicIntervals = [...new Set(harmonics.map(h => (h - 1) % 12))];
+            if (!harmonicIntervals.includes(0)) {
+                harmonicIntervals.push(0);
+            }
+            harmonicIntervals.sort((a, b) => a - b);
+            harmonicStepDistribution = this._getMelodicIntervalDistribution(harmonicIntervals);
+        }
+
+        // 3. Generate Markov Chain transition matrix
+        const transitionMatrix = this._generateMarkovTransitions(allowedScaleIntervals, harmonicStepDistribution);
+
+        const length = rng.range(8, 16);
         const sequence = [];
         const noteDurations = [0.25, 0.5, 1.0];
-
+        let currentNoteIndex = 0; // Start at the root of the scale
+        
         for (let i = 0; i < length; i++) {
-            const interval = rng.pick(scaleIntervals);
+            const probabilities = transitionMatrix[currentNoteIndex];
+            const random = rng.next();
+            let cumulativeProb = 0;
+            let nextNoteIndex = 0;
+            for (let j = 0; j < probabilities.length; j++) {
+                cumulativeProb += probabilities[j];
+                if (random < cumulativeProb) {
+                    nextNoteIndex = j;
+                    break;
+                }
+            }
+
+            const interval = allowedScaleIntervals[nextNoteIndex];
+            const finalPitchIndex = (rootKeyIndex + interval) % 12;
+            const pitchName = CHROMATIC_SCALE[finalPitchIndex];
             const octaveOffset = rng.pick([0, 0, 1]);
             const freq = baseFreq * Math.pow(2, (interval + (octaveOffset * 12)) / 12);
             
             sequence.push({
                 freq: freq,
                 duration: rng.pick(noteDurations),
-                interval: interval
+                interval: interval,
+                pitchName: pitchName
             });
+            currentNoteIndex = nextNoteIndex;
         }
 
-        const leitmotif = {
+        const composition = {
             name: `${character.name}'s Theme`,
             key: keyData.Key.Key,
             baseFreq: baseFreq,
-            scale: scaleIntervals,
+            scale: allowedScaleIntervals,
             sequence: sequence,
             tempo: 100 + (geo.Facade * 2)
         };
 
-        this.leitmotifCache.set(cacheKey, leitmotif);
-        return leitmotif;
+        this.compositionCache.set(cacheKey, composition);
+        return composition;
     }
 
-    playLeitmotif(character, listener = null, instrument = null) {
+    playCharacterComposition(character, listener = null, instrument = null) {
         if (!this.synth) return;
-        const motif = this.getLeitmotif(character);
+        const motif = this.getCharacterComposition(character);
         if (!motif) return;
-
+        
+        // Use the character's preferred instrument if none is specified.
+        const preferredInstrument = instrument || KEY_INSTRUMENT_MAP[motif.key] || 'piano';
+        
         Logger.message(`T13NE_Music: Playing leitmotif for ${character.name}`);
         let dissonance = 0;
 
@@ -357,68 +541,261 @@ class T13NE_Music {
             const duration = note.duration * beatTime;
             const detune = (Math.random() - 0.5) * dissonance; 
             const type = dissonance > 10 ? 'sawtooth' : 'triangle';
-            this.synth.playNote(note.freq, timeCursor, duration, type, detune, instrument);
+            this.synth.playNote(note.freq, timeCursor, duration, type, detune, preferredInstrument);
             timeCursor += duration;
         });
     }
 
-    updateAmbience(plot) {
-        if (!this.synth || !plot) return;
-        if (this.currentPlotId === plot.id && this.lastTension === plot.tensionLevel) return;
+    /**
+     * Generic composition factory. Gets/generates a musical composition for any T13NE entity.
+     * @param {object} entity - The entity (Character, Location, Pact, Descendant)
+     * @returns {object|null} The generated composition data.
+     */
+    getComposition(entity) {
+        if (!entity || !entity.name) return null;
 
-        Logger.message(`T13NE_Music: Transitioning ambience for Plot ${plot.Name} (Tension: ${plot.tensionLevel})`);
-        const params = this._calculateAmbienceParams(plot);
-
-        if (this.lastTension !== -1 && this.currentAmbience) {
-            const direction = plot.tensionLevel > this.lastTension ? 'rising' : 'falling';
-            this.synth.playBridge(params.rootFreq, direction);
+        const entityType = entity.constructor.name; // A simple way to get type
+        const cacheKey = `${entityType}_${entity.id || entity.name}`;
+        if (this.compositionCache.has(cacheKey)) {
+            return this.compositionCache.get(cacheKey);
         }
 
-        if (this.currentAmbience) this.synth.fadeOut(this.currentAmbience, 5.0);
+        let compositionData = null;
 
-        this.currentAmbience = this.synth.playToneCluster(
-            params.frequencies, params.waveform, params.detune, params.volume
-        );
+        // Determine entity type and call the appropriate generator
+        if (entity.geometry && entity.type) { // Likely a Character
+            switch (entity.type) {
+                case 'Extra':
+                    compositionData = this._generateChant(entity);
+                    break;
+                case 'Grunt':
+                    compositionData = this._generateMarch(entity);
+                    break;
+                case 'Hero':
+                    compositionData = this._generateAria(entity);
+                    break;
+                case 'Yarn-Teller':
+                    compositionData = this._generateSolo(entity);
+                    break;
+                case 'Lite':
+                    compositionData = this._generateLeitmotif(entity);
+                    break;
+                case 'Archetype':
+                    compositionData = this._generateAnthem(entity);
+                    break;
+                default:
+                    compositionData = this.getCharacterComposition(entity);
+                    break;
+            }
+        } else if (entity.isLocation) { // Fictional property for type checking
+            compositionData = this._generateSymphony(entity);
+        } else if (entity.isPact) { // Fictional property
+            compositionData = this._generateOpera(entity);
+        } else if (entity.isDescendant) { // Fictional property
+            // Jingles are for generic descendants, Refrains for specific ones.
+            // This logic would need a way to differentiate, e.g., based on a descendant property.
+            compositionData = entity.isUnique ? this._generateRefrain(entity) : this._generateJingle(entity);
+        }
 
-        this.currentPlotId = plot.id;
-        this.lastTension = plot.tensionLevel;
+        if (compositionData) {
+            Logger.message(`T13NE_Music: Generated composition '${compositionData.name}' for ${entity.name}`);
+            this.compositionCache.set(cacheKey, compositionData);
+        }
+
+        return compositionData;
     }
 
-    _calculateAmbienceParams(plot) {
-        let rootFreq = 110.0;
-        let scaleType = 'minor'; 
-        let waveform = 'sine';
-        let detune = 0;
-        let volume = 0.2;
+    /**
+     * Plays a generated composition object.
+     * @param {object} composition - The composition data object from getComposition.
+     * @param {object} [listener=null] - An optional listener character to determine dissonance.
+     */
+    playComposition(composition, listener = null) {
+        if (!this.synth || !composition) return;
 
-        if (this.geometry) {
-            const geo = this.geometry.calculateFullGeo(plot.Name);
-            const keyData = this.geometry.getKey(geo.GeoHarmonics.key);
-            if (keyData && keyData.Key) rootFreq = keyData.Key.Frequency / 2;
+        Logger.message(`T13NE_Music: Playing composition '${composition.name}'`);
+
+        if (composition.type === 'Opera') {
+            // Play all character themes simultaneously on different instruments
+            const instruments = ['piano', 'triangle', 'sawtooth', 'sine']; // Example instruments
+            let i = 0;
+            for (const characterName in composition.themes) {
+                const theme = composition.themes[characterName];
+                const instrument = instruments[i % instruments.length];
+                this.playCharacterComposition({ name: characterName, geometry: theme.geometry, ...theme }, listener, instrument);
+                i++;
+            }
+        } else if (composition.sequence) {
+            // For simpler, single-melody compositions
+            this.playCharacterComposition({ ...composition, name: composition.name.split("'")[0] }, listener);
         }
+        // Note: 'Symphony' type is not played directly but used by updateAmbience to load stems.
+    }
+
+    // Private generators for each composition type
+    _generateChant(character) {
+        const composition = this.getCharacterComposition(character);
+        composition.name = `${character.name}'s Chant`;
+        // Make it monotone and rhythmic
+        composition.sequence = composition.sequence.map(note => ({ ...note, freq: composition.baseFreq, duration: 1.0 }));
+        composition.type = 'Chant';
+        return composition;
+    }
+
+    _generateMarch(character) {
+        const composition = this.getCharacterComposition(character);
+        composition.name = `${character.name}'s March`;
+        composition.tempo = 120;
+        // Make rhythm more rigid and on-beat
+        composition.sequence = composition.sequence.map(note => ({ ...note, duration: 0.5 }));
+        composition.type = 'March';
+        return composition;
+    }
+
+    _generateAria(hero) {
+        const composition = this.getCharacterComposition(hero);
+        composition.name = `${hero.name}'s Aria`;
+        composition.tempo = 80; // Slower, more expressive
+        composition.type = 'Aria';
+        return composition;
+    }
+
+    _generateSolo(yarnTeller) {
+        const composition = this.getCharacterComposition(yarnTeller);
+        composition.name = `${yarnTeller.name}'s Solo`;
+        composition.tempo = 160; // Faster, more intense
+        // Add more notes to make it feel more virtuosic
+        const extraNotes = this.getCharacterComposition({ ...yarnTeller, name: yarnTeller.name + '_extra' }).sequence;
+        composition.sequence = composition.sequence.concat(extraNotes);
+        composition.type = 'Solo';
+        return composition;
+    }
+
+    _generateLeitmotif(character) {
+        const composition = this.getCharacterComposition(character);
+        composition.name = `${character.name}'s Leitmotif`;
+        composition.sequence = composition.sequence.slice(0, 4); // Shorter for a motif
+        composition.type = 'Leitmotif';
+        return composition;
+    }
+
+    _generateAnthem(character) {
+        const composition = this.getCharacterComposition(character);
+        composition.name = `${character.name}'s Anthem`;
+        composition.tempo = 70; // Stately and grand
+        composition.type = 'Anthem';
+        return composition;
+    }
+
+    _generateSymphony(location) {
+        const geo = this.geometry.calculateFullGeo(location.name);
+        const keyData = this.geometry.getKey(geo.GeoHarmonics.key);
+        return {
+            name: `${location.name} Symphony`,
+            type: 'Symphony',
+            key: keyData.Key.Key,
+            tempo: 90,
+            // This structure tells the scene loader which audio stems to load into the musicPack
+            stems: {
+                base: `path/to/music/${location.name}_base.ogg`,
+                percussion_low: `path/to/music/${location.name}_perc_low.ogg`,
+                percussion_high: `path/to/music/${location.name}_perc_high.ogg`,
+                harmony: `path/to/music/${location.name}_harmony.ogg`,
+                melody: `path/to/music/${location.name}_melody.ogg`,
+                danger: `path/to/music/${location.name}_danger.ogg`,
+            }
+        };
+    }
+
+    _generateOpera(pact) {
+        const composition = {
+            name: `${pact.name}'s Opera`,
+            type: 'Opera',
+            tempo: 110,
+            key: 'C', // Could be derived from pact name or dominant member
+            themes: {}
+        };
+
+        pact.members.forEach(member => {
+            composition.themes[member.name] = this.getCharacterComposition(member);
+        });
+
+        return composition;
+    }
+
+    _generateRefrain(descendant) {
+        const composition = this.getCharacterComposition({ name: descendant.name }, { useCharacterHarmonics: false }); // Use descendant name for seed
+        composition.name = `${descendant.name}'s Refrain`;
+        composition.type = 'Refrain';
+        return composition;
+    }
+
+    _generateJingle(descendant) {
+        const composition = this.getCharacterComposition({ name: descendant.name }, { useCharacterHarmonics: false });
+        composition.name = `${descendant.name}'s Jingle`;
+        composition.type = 'Jingle';
+        composition.sequence = composition.sequence.slice(0, 3); // Very short
+        composition.tempo = 130;
+        return composition;
+    }
+
+    /**
+     * Uses vertical remixing (layering) to adapt the music to game state.
+     * @param {object} plot - The current plot object, containing tensionLevel.
+     * @param {object} [gameParams={}] - Additional game state like player health.
+     */
+    updateAmbience(plot, gameParams = {}) {
+        if (!this.synth || !this.musicPack || !plot) return;
 
         const tension = plot.tensionLevel || 0;
-        if (tension < 3) { scaleType = 'major'; waveform = 'sine'; }
-        else if (tension < 6) { scaleType = 'minor'; waveform = 'triangle'; detune = 5; }
-        else { scaleType = 'diminished'; waveform = 'sawtooth'; detune = 15; volume = 0.15; }
+        if (this.lastTension === tension && !gameParams.playerHealth) return; // No change
 
-        const frequencies = [rootFreq];
-        const thirdInterval = scaleType === 'major' ? 4 : 3; 
-        frequencies.push(rootFreq * Math.pow(2, thirdInterval / 12));
-        const fifthInterval = (tension > 6) ? 6 : 7;
-        frequencies.push(rootFreq * Math.pow(2, fifthInterval / 12));
-        frequencies.push(rootFreq * 2);
+        const newLayers = new Set();
 
-        return { rootFreq, frequencies, waveform, detune, volume };
+        // Define which layers play at which tension level
+        if (tension >= 0 && this.musicPack.base) {
+            newLayers.add('base');
+        }
+        if (tension >= 3 && this.musicPack.percussion_low) {
+            newLayers.add('percussion_low');
+        }
+        if (tension >= 6) {
+            if (this.musicPack.percussion_high) newLayers.add('percussion_high');
+            if (this.musicPack.harmony) newLayers.add('harmony');
+        }
+        if (tension >= 8 && this.musicPack.melody) {
+            newLayers.add('melody');
+        }
+
+        // Connect to other game parameters
+        if (gameParams.playerHealth < 0.3 && this.musicPack.danger) {
+            newLayers.add('danger');
+        }
+
+        const layersToStart = [...newLayers].filter(x => !this.currentLayers.has(x));
+        const layersToStop = [...this.currentLayers].filter(x => !newLayers.has(x));
+
+        if (layersToStart.length > 0 || layersToStop.length > 0) {
+            Logger.message(`T13NE_Music: Updating layers. Tension: ${tension}. Start: [${layersToStart.join(', ')}]. Stop: [${layersToStop.join(', ')}]`);
+        }
+
+        layersToStart.forEach(layerName => {
+            this.synth.playLayer(layerName, this.musicPack[layerName], 0.5, true, 4.0);
+        });
+
+        layersToStop.forEach(layerName => {
+            this.synth.stopLayer(layerName, 4.0);
+        });
+
+        this.currentLayers = newLayers;
+        this.lastTension = tension;
     }
 
     stop() {
-        if (this.synth) {
-            this.synth.stopAll();
-            this.currentAmbience = null;
-            this.currentPlotId = null;
-            this.lastTension = -1;
-        }
+        if (!this.synth) return;
+        this.synth.stopAll();
+        this.currentLayers.clear();
+        this.lastTension = -1;
     }
 }
 

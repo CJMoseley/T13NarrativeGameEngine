@@ -1,4 +1,4 @@
-﻿import CodexLoader from "@/src/t13ne/modules/codex/CodexLoader.js";
+﻿﻿import CodexLoader from "@/src/t13ne/modules/codex/CodexLoader.js";
 import Logger from "@/src/t13ne/core/Logger.js";
 
 /**
@@ -81,6 +81,25 @@ class T13NE_CharacterArcModule {
             type: type,
             key: key
         });
+
+        // Generate and attach the musical composition for this arc.
+        const musicModule = this.t13ne.getModule('T13NE_Music');
+        if (musicModule && musicModule.initialized) {
+            // Create a temporary entity object that getComposition can understand
+            const compositionEntity = { 
+                name: character.name,
+                id: character.id,
+                type: type, 
+                // Ensure geometry is available for music generation
+                geometry: character.geometry || this.t13ne.getModule('T13Geometry')?.calculateFullGeo(character.name) 
+            };
+            const composition = musicModule.getComposition(compositionEntity);
+            if (composition) {
+                arc.composition = composition;
+                // The 'pitches' array in CharacterArc seems to expect pitch names for its internal logic.
+                arc.pitches = composition.sequence.map(note => note.pitchName); 
+            }
+        }
 
         if (!character.arcs) character.arcs = [];
         character.arcs.push(arc);
@@ -265,9 +284,3 @@ class T13NE_CharacterArcModule {
 }
 
 export default new T13NE_CharacterArcModule();
-
-
-
-
-
-
