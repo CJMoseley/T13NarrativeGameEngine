@@ -741,6 +741,33 @@ export class ViewManager {
 
             if (menu) {
                 Logger.message("ViewManager: Found Main Menu element, forcing display.");
+                
+                // Ensure z-index is correct
+                this.assignLayer(menu, 'MENUS');
+
+                // Check if menu is empty and populate if necessary
+                const menuOptions = menu.querySelector('#menuOptions') || menu;
+                if (!menuOptions.hasChildNodes()) {
+                    Logger.message("ViewManager: Menu is empty, injecting fallback buttons.");
+                    
+                    const title = document.createElement('h2');
+                    title.textContent = "Main Menu";
+                    menuOptions.appendChild(title);
+
+                    const createBtn = (text, onClick) => {
+                        const btn = document.createElement('button');
+                        btn.className = 'menu-button';
+                        btn.textContent = text;
+                        btn.onclick = onClick;
+                        menuOptions.appendChild(btn);
+                    };
+
+                    createBtn('New Game', () => {
+                        menu.style.display = 'none';
+                        this.showGalaxyMap();
+                    });
+                }
+
                 menu.style.display = 'flex';
                 menu.style.flexDirection = 'column';
                 menu.style.justifyContent = 'center';
