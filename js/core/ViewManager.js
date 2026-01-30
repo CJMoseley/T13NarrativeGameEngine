@@ -1,15 +1,17 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/
+
 import * as THREE from 'three';
-import { GameEngine } from '@/js/core/GameEngine.js';
-import { UIManager } from '@/js/ui/UIManager.js';
-import { SceneManager } from '@/js/core/SceneManager.js';
-import Logger from '@/js/core/Logger.js';
-import { EventBus } from '@/js/core/EventBus.js';
+import { GameEngine } from '@/src/t13ne/core/GameEngine.js';
+import { UIManager } from '@/src/t13ne/core/ui/UIManager.js';
+import { SceneManager } from '@/src/t13ne/core/SceneManager.js';
+import Logger from '@/src/t13ne/core/Logger.js';
+import { EventBus } from '@/src/t13ne/core/EventBus.js';
 // The Scene base class is now the authority on what a scene is.
-import { Scene } from '@/js/core/Scene.js';
-import { PluginManager } from '@/js/core/PluginManager.js'; // Import PluginManager
+import { Scene } from '@/src/t13ne/core/Scene.js';
+import { PluginManager } from '@/src/t13ne/core/PluginManager.js'; // Import PluginManager
 import { LoreData } from '@/js/procgen/lore/LoreData.js'; // Import LoreData
 import { GalacticHistory } from '@/js/procgen/galaxy/GalacticHistory.js'; // Import GalacticHistory
-import { UIMessage } from '@/js/ui/UIMessage.js';
+import { UIMessage } from '@/src/t13ne/core/ui/UIMessage.js';
 
 /**
  * ViewManager
@@ -749,3 +751,5 @@ export class ViewManager {
         }
     }
 }
+
+*/

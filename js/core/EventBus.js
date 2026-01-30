@@ -1,4 +1,6 @@
-import Logger from '@/js/core/Logger.js';
+/* LEGACY CODE - MOVED TO src/t13ne/core/
+
+import Logger from '@/src/t13ne/core/Logger.js';
 
 /**
  * A simple singleton event bus for decoupled inter-module communication.
@@ -43,3 +45,5 @@ class EventBusManager {
 }
 
 export const EventBus = new EventBusManager();
+
+*/

@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import Logger from '@/src/t13ne/core/Logger.js';
+import Logger from '../Logger.js';
 import { ProceduralComponentGenerator } from '@/js/procgen/ships/components/ProceduralComponentGenerator.js';
 
 export const PRIMITIVE_TYPES = {

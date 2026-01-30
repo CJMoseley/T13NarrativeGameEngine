@@ -1,6 +1,6 @@
 import { LoreData } from '@/js/procgen/lore/LoreData.js';
-import Logger from '@/js/core/Logger.js';
-import { EventBus } from '@/js/core/EventBus.js';
+import Logger from '@/src/t13ne/core/Logger.js';
+import { EventBus } from '@/src/t13ne/core/EventBus.js';
 
 /**
  * An advanced, grammar-based procedural name generator.

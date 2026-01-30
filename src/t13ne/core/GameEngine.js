@@ -8,21 +8,21 @@
 import { ShipFactory } from './ship/ShipFactory.js';
 import { GalaxyGenerator } from '@/js/procgen/galaxy/GalaxyGenerator.js';
 import { LoreData } from '@/js/procgen/lore/LoreData.js';
-import { PluginManager } from '@/src/t13ne/core/PluginManager.js';
+import { PluginManager } from './PluginManager.js';
 import { GalacticHistory } from '@/js/procgen/galaxy/GalacticHistory.js';
 import { Ship } from '@/js/procgen/ships/Ship.js';
 import { ShipLayouts } from '@/js/procgen/ships/ShipLayouts.js';
 import { ProceduralComponentGenerator } from '@/js/procgen/ships/components/ProceduralComponentGenerator.js';
-import { AdvancedPhysicsEngine } from '@/src/t13ne/core/AdvancedPhysicsEngine.js';
-import { HyperphysicsEngine } from '@/src/t13ne/core/HyperphysicsEngine.js';
+import { AdvancedPhysicsEngine } from './AdvancedPhysicsEngine.js';
+import { HyperphysicsEngine } from './HyperphysicsEngine.js';
 import { LoreMaster } from '@/js/procgen/lore/LoreMaster.js';
-import { SoundEngine } from '@/src/t13ne/core/SoundEngine.js';
+import { SoundEngine } from './SoundEngine.js';
 import { EngineSoundGenerator } from '@/js/sounds/EngineSoundGenerator.js';
 import { WormholeAmbiance } from '@/js/sounds/WormholeAmbiance.js';
 import { WebRTCManager } from '@/js/net/WebRTCManager.js';
-import { VOIPManager } from '@/src/t13ne/core/VOIPManager.js';
-import { EventBus } from '@/src/t13ne/core/EventBus.js';
-import Logger from '@/src/t13ne/core/Logger.js';
+import { VOIPManager } from './VOIPManager.js';
+import { EventBus } from './EventBus.js';
+import Logger from './Logger.js';
 
 /**
  * @class GameEngine

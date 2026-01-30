@@ -1,4 +1,4 @@
-import Logger from '@/js/core/Logger.js';
+import Logger from '@/src/t13ne/core/Logger.js';
 import { ComponentDefs } from '@/js/procgen/ships/components/ComponentDefs.js';
 import ProcGen from '@/js/procgen/ProcGen.js';
 import { ComponentLoreGenerator } from '@/js/procgen/lore/factories/ComponentLoreGenerator.js';

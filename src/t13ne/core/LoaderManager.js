@@ -1,5 +1,6 @@
 import Logger from './Logger.js';
-import IntroSequence from '@/js/ui/IntroSequence.js';
+import IntroSequence from './ui/IntroSequence.js';
+import Localization from './ui/Localization.js';
 import * as THREE from 'three';
 
 /**
@@ -161,13 +162,13 @@ class LoaderManager {
             }
         }
 
-        this.reportProgress('All systems initialized. Welcome, racer.');
+        this.reportProgress(Localization.__('READY_MESSAGE', { message: 'All systems initialized. Welcome, racer.' }));
         Logger.message('LoaderManager: All tasks completed successfully.');
 
         // Create a standalone button to continue, ensuring it's visible over the canvas
         // This button allows skipping the intro sequence if it gets stuck or user wants to skip
         const continueButton = document.createElement('button');
-        continueButton.innerText = 'Continue to Main Menu';
+        continueButton.innerText = Localization.__('CONTINUE_BUTTON');
         continueButton.className = 'menu-button';
         continueButton.style.position = 'absolute';
         continueButton.style.bottom = '50px';

@@ -1,5 +1,5 @@
 import CodexLoader from '@plugins/t13ne/modules/CodexLoader.js';
-import Logger from '@/js/core/Logger.js';
+import Logger from '@/src/t13ne/core/Logger.js';
 
 class T13NE_NarrativeTricks {
     constructor() {

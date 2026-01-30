@@ -1,5 +1,5 @@
 import { LoreData } from '@/js/procgen/lore/LoreData.js';
-import Logger from '@/js/core/Logger.js';
+import Logger from '@/src/t13ne/core/Logger.js';
 import { SystemHistoryGenerator } from '@/js/procgen/system/SystemHistoryGenerator.js';
 import { GalacticHistory } from '@/js/procgen/galaxy/GalacticHistory.js';
 

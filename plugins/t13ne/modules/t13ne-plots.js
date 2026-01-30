@@ -1,5 +1,5 @@
 import CodexLoader from '../modules/CodexLoader.js';
-import Logger from '@/js/core/Logger.js';
+import Logger from '@/src/t13ne/core/Logger.js';
 import T13Tapestry from '../modules/T13Tapestry.js';
 import T13NE_Facets from '../modules/t13ne-facets.js';
 import T13Boons from '../modules/t13ne-boon.js';

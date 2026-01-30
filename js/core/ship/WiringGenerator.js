@@ -1,3 +1,5 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/
+
 import * as THREE from 'three';
 import WiringConfigs from './wiring_configs.js';
 
@@ -161,3 +163,5 @@ export class WiringGenerator {
         return group;
     }
 }
+
+*/

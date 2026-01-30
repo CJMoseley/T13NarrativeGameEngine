@@ -1,5 +1,5 @@
 import { LoreData } from '../LoreData.js';
-import Logger from '@/js/core/Logger.js';
+import Logger from '@/src/t13ne/core/Logger.js';
 
 export class ResourceFactory {
     constructor(pluginManager) {

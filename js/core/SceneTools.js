@@ -1,3 +1,5 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/
+
 import * as THREE from 'three';
 import ProcGen from '../procgen/ProcGen.js';
 
@@ -181,3 +183,5 @@ export const SceneTools = {
         );
     }
 };
+
+*/

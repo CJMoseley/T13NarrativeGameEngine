@@ -1,3 +1,5 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/ui/
+
 
 const UIMessageTemplates = {
     system_lore: (data) => `
@@ -44,3 +46,5 @@ const UIMessageTemplates = {
 };
 
 export { UIMessageTemplates };
+
+*/

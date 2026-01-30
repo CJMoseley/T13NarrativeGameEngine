@@ -1,3 +1,5 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/ui/
+
 export class HUD {
     constructor() {
         this.element = document.createElement('div');
@@ -160,3 +162,5 @@ export class HUD {
         ctx.fillRect(w - 15, h - 10 - barHeight, 10, barHeight);
     }
 }
+
+*/

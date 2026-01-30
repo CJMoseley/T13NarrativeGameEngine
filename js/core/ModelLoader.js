@@ -1,3 +1,5 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/
+
 // js/core/ModelLoader.js
 
 import * as THREE from 'three';
@@ -108,3 +110,5 @@ class ModelLoader {
 }
 
 export default ModelLoader;
+
+*/

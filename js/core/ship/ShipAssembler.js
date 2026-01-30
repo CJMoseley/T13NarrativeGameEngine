@@ -1,3 +1,5 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/
+
 import * as THREE from 'three';
 import { CSG } from 'three-csg-ts';
 import { ShipComponent } from './ShipComponent.js';
@@ -443,3 +445,5 @@ export class ShipAssembler {
         return shipGroup;
     }
 }
+
+*/

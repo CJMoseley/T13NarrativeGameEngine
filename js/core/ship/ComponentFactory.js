@@ -1,3 +1,5 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/
+
 import * as THREE from 'three';
 import Logger from '../Logger.js';
 import { ProceduralComponentGenerator } from '../../procgen/ships/components/ProceduralComponentGenerator.js';
@@ -305,3 +307,5 @@ export class ComponentFactory {
         return procComponent;
     }
 }
+
+*/

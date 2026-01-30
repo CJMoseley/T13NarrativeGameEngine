@@ -1,3 +1,5 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/ui/
+
 import Logger from '../../core/Logger.js';
 
 /**
@@ -63,3 +65,5 @@ export class MainMenu {
         Logger.message("MainMenu component hidden.");
     }
 }
+
+*/

@@ -1,9 +1,0 @@
-section.t13ne-type-annex { padding: 0.6em;}
-section.t13ne-type-annex>details>summary{}
-section.t13ne-type-annex>details>summary>strong{display: inline;}
-section.t13ne-type-annex>details>summary>strong.t13-annex-name>a{display: inline; color: black;}
-section.t13ne-type-annex>details>summary>strong.t13-annex-name>a>aside.t13ne-geometry{display: inline;}
-
- ul.t13ne-annex-profs li strong, ul.t13ne-annex-profs li details {display: inline; }
- ul.t13ne-annex-profs li {border: 0px transparent rgba(127, 127, 127, 0); margin: 2px; padding: 1em; }
-strong.t13ne-annextitle {color: rgba(0, 0, 0, 0.6); font-weight: bolder; text-shadow: 2px 2px 5px rgba(127, 127, 127, 0.6) }

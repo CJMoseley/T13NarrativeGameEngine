@@ -1,3 +1,5 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/
+
 import * as THREE from 'three';
 
 export class ShipComponent {
@@ -12,3 +14,5 @@ export class ShipComponent {
         this.harmonics = harmonics; // Harmonic frequency response data
     }
 }
+
+*/

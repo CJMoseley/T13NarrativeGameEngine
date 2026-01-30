@@ -1,3 +1,5 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/
+
 import * as THREE from 'three';
 import ModelLoader from '../ModelLoader.js';
 import WiringHarmonicsCalculator from './WiringHarmonicsCalculator.js';
@@ -237,3 +239,5 @@ export class ShipFactory {
         return this.currentShipAssembly;
     }
 }
+
+*/

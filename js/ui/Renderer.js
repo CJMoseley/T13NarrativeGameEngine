@@ -1,3 +1,5 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/ui/
+
 /**
  * Wormhole Racers Rendering Engine (GPU-Optimized)
  * Source: [Documentation Sections: Graphics Requirements, Wormhole Visualization, 12D Perlin Noise]
@@ -375,3 +377,5 @@ export class Renderer {
         // (Could be extended to a proper mesh)
     }
 }
+
+*/

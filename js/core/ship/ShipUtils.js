@@ -1,3 +1,5 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/
+
 import * as THREE from 'three';
 
 export const COMPONENT_COLORS = {
@@ -53,3 +55,5 @@ export function getCompProps(comp) {
 
     return { type, dims, pos, rot, def, usage };
 }
+
+*/

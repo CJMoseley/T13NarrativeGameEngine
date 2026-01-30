@@ -1,3 +1,5 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/ui/
+
 import Logger from '../core/Logger.js';
 
 /**
@@ -192,3 +194,5 @@ export class VOIPUI {
         Logger.end(funcName);
     }
 }
+
+*/

@@ -1,12 +1,14 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/
+
 import * as THREE from 'three';
 import { VectorMaths } from '@/js/utils/VectorMaths.js';
 import { ComponentDefs } from '@/js/procgen/ships/components/ComponentDefs.js';
 import { PlanetSurfaceEnvironment } from '@/js/procgen/planet/PlanetSurfaceEnvironment.js';
 import { WormholeShader } from '@/js/rendering/WormholeShader.js';
 import { PlanetaryRenderer } from '@/js/rendering/PlanetaryRenderer.js';
-import { Controls } from '@/js/core/Controls.js';
-import Logger from '@/js/core/Logger.js';
-import { HUD } from '@/js/ui/components/HUD.js';
+import { Controls } from '@/src/t13ne/core/Controls.js';
+import Logger from '@/src/t13ne/core/Logger.js';
+import { HUD } from '@/src/t13ne/core/ui/components/HUD.js';
 
 export class BasicPhysicsEngine {
     constructor(gameEngine) {
@@ -779,3 +781,5 @@ export class BasicPhysicsEngine {
         return n * 2.0 - 1.0;
     }
 }
+
+*/

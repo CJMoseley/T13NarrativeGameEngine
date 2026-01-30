@@ -6,7 +6,7 @@
  */
 
 import T13NE_SwayData from '../modules/t13ne-sway-data.js';
-import Logger from '@/js/core/Logger.js';
+import Logger from '@/src/t13ne/core/Logger.js';
 import T13Tapestry from '../modules/T13Tapestry.js';
 
 let T13Boons; // Will be imported dynamically

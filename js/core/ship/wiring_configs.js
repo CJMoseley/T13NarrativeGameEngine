@@ -1,3 +1,5 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/
+
 // js/core/wiring_configs.js
 
 /**
@@ -113,3 +115,5 @@ const WiringConfigs = {
 };
 
 export default WiringConfigs;
+
+*/

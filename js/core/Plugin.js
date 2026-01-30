@@ -1,4 +1,6 @@
-import Logger from '@/js/core/Logger.js';
+/* LEGACY CODE - MOVED TO src/t13ne/core/
+
+import Logger from '@/src/t13ne/core/Logger.js';
 
 /**
  * Base class for all plugins. Defines the interface that plugins must implement.
@@ -49,3 +51,5 @@ export class Plugin {
         }
     }
 }
+
+*/

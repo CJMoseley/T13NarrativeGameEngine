@@ -1,4 +1,6 @@
-import Logger from '@/js/core/Logger.js';
+/* LEGACY CODE - MOVED TO src/t13ne/core/
+
+import Logger from '@/src/t13ne/core/Logger.js';
 
 /**
  * Hyperphysics Engine
@@ -125,3 +127,5 @@ export class HyperphysicsEngine {
         Logger.end(funcName);
     }
 }
+
+*/

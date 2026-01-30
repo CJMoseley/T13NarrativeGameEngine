@@ -1,3 +1,5 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/ui/
+
 /**
  * Ship Interior View
  *
@@ -70,3 +72,5 @@ export class ShipInteriorView {
         Logger.end(funcName);
     }
 }
+
+*/

@@ -1,3 +1,5 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/ui/
+
 import Logger from '../../core/Logger.js';
 import { EventBus } from '../../core/EventBus.js';
 
@@ -101,3 +103,5 @@ export class ShipyardPanel {
         Logger.message("ShipyardPanel hidden.");
     }
 }
+
+*/
