@@ -1,8 +1,8 @@
-﻿import T13NE from '@/src/t13ne/T13NE.js';
-import CodexLoader from "@/src/t13ne/modules/codex/CodexLoader.js";
-import Logger from "@/src/t13ne/core/Logger.js";
-import { Annex, TIE } from "@/src/t13ne/modules/mechanics/t13ne-knots.js";
-import AIService from "@/src/t13ne/modules/ai/AIService.js";
+﻿import T13NE from '../../T13NE.js';
+import CodexLoader from "../codex/CodexLoader.js";
+import Logger from "../../core/Logger.js";
+import { Annex, TIE } from "../mechanics/t13ne-knots.js";
+import AIService from "../ai/AIService.js";
 
 export class AnnexFactory {
     constructor() {

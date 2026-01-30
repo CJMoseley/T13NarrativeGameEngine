@@ -1,53 +1,53 @@
-import Logger from '@/src/t13ne/core/Logger.js';
-import T13NE_Facets from '@/src/t13ne/modules/mechanics/t13ne-facets.js'; // Import the new facets module
-import T13NE_Sway from '@/src/t13ne/modules/mechanics/t13ne-sway.js';
-import CodexLoader from '@/src/t13ne/modules/codex/CodexLoader.js';
+import Logger from './core/Logger.js';
+import T13NE_Facets from './modules/mechanics/t13ne-facets.js';
+import T13NE_Sway from './modules/mechanics/t13ne-sway.js';
+import CodexLoader from './modules/codex/CodexLoader.js';
 
-import T13NECardsAPI from '@/src/t13ne/modules/mechanics/t13ne-cards-api.js'; // Import the T13NECardsAPI
-import AIService from '@/src/t13ne/modules/ai/AIService.js';
-import T13NE_IChing from '@/src/t13ne/modules/mechanics/t13ne-iching.js';
-import T13Ordeals from '@/src/t13ne/modules/systems/ordeals/t13ne-ordeals.js';
-import { T13NameGenerator } from '@/src/t13ne/modules/ai/T13NameGenerator.js';
-import T13Descriptions from '@/src/t13ne/modules/ai/T13Descriptions.js';
-import * as AINodes from '@/src/t13ne/modules/ai/t13ne-ai-nodes.js';
-import { ThreadsSystem } from '@/src/t13ne/modules/narrative/t13ne-threads.js';
-import * as Knots from '@/src/t13ne/modules/mechanics/t13ne-knots.js';
-import T13NE_PRNG from '@/src/t13ne/modules/systems/t13ne-prng.js';
-import T13Tapestry from '@/src/t13ne/modules/world/T13Tapestry.js';
-import AnnexFactory from '@/src/t13ne/modules/narrative/t13ne-annexes.js';
-import T13NE_Pacts from '@/src/t13ne/modules/narrative/t13ne-pacts.js';
-import T13NE_Drama from '@/src/t13ne/modules/narrative/t13ne-drama.js';
-import T13NE_Stress from '@/src/t13ne/modules/mechanics/t13ne-stress.js';
-import T13NE_Tension from '@/src/t13ne/modules/mechanics/t13ne-tension.js';
-import T13NE_Plots from '@/src/t13ne/modules/narrative/t13ne-plots.js';
-import T13NE_NarrativeWeaving from '@/src/t13ne/modules/narrative/t13ne-narrative-weaving.js';
-import T13NE_Resources from '@/src/t13ne/modules/mechanics/t13ne-resources.js';
-import T13NE_Tests from '@/src/t13ne/modules/mechanics/t13ne-tests.js';
-import T13NE_Stakes from '@/src/t13ne/modules/systems/ordeals/t13ne-stakes.js';
-import T13NE_NarrativeTricks from '@/src/t13ne/modules/systems/ordeals/t13ne-narrative-tricks.js';
-import T13NE_SocialOrdeals from '@/src/t13ne/modules/systems/ordeals/t13ne-social-ordeals.js';
-import T13NE_Snapfire from '@/src/t13ne/modules/systems/ordeals/t13ne-snapfire.js';
-import T13NE_YarnTangling from '@/src/t13ne/modules/systems/ordeals/t13ne-yarntangling.js';
-import T13NE_ActionSpaces from '@/src/t13ne/modules/systems/ordeals/t13ne-action-spaces.js';
-import T13NE_PsychosocialSpaces from '@/src/t13ne/modules/systems/ordeals/t13ne-psychosocial-spaces.js';
-import T13NE_SpaceVisualizer from '@/src/t13ne/modules/systems/ordeals/t13ne-space-visualizer.js';
-import T13YarnTeller from '@/src/t13ne/modules/narrative/t13ne-yarntelling.js';
-import T13NECommands from '@/src/t13ne/modules/systems/t13ne-commands.js';
-import T13NE_Wounds from '@/src/t13ne/modules/mechanics/t13ne-wounds.js';
-import T13NE_CharacterArc from '@/src/t13ne/modules/characters/t13ne-CharacterArc.js';
-import T13NE_Catalysts from '@/src/t13ne/modules/mechanics/t13ne-catalysts.js';
-import T13NE_Referee from '@/src/t13ne/modules/systems/t13ne-referee.js';
-import T13NE_GameState from '@/src/t13ne/modules/systems/t13ne-gamestate.js';
-import T13NE_Game from '@/src/t13ne/modules/systems/t13ne-game.js';
-import T13NE_Reasoning from '@/src/t13ne/modules/ai/t13ne-reasoning.js';
-import T13NE_StateMachine from '@/src/t13ne/modules/systems/t13ne-state-machine.js';
-import T13NE_Editor from '@/src/t13ne/modules/systems/t13ne-editor.js';
-import T13NE_Music from '@/src/t13ne/modules/audio/t13ne-music.js';
+import T13NECardsAPI from './modules/mechanics/t13ne-cards-api.js'; // Import the T13NECardsAPI
+import AIService from './modules/ai/AIService.js';
+import T13NE_IChing from './modules/mechanics/t13ne-iching.js';
+import T13Ordeals from './modules/systems/ordeals/t13ne-ordeals.js';
+import { T13NameGenerator } from './modules/ai/T13NameGenerator.js';
+import T13Descriptions from './modules/ai/T13Descriptions.js';
+import * as AINodes from './modules/ai/t13ne-ai-nodes.js';
+import { ThreadsSystem } from './modules/narrative/t13ne-threads.js';
+import * as Knots from './modules/mechanics/t13ne-knots.js';
+import T13NE_PRNG from './modules/systems/t13ne-prng.js';
+import T13Tapestry from './modules/world/T13Tapestry.js';
+import AnnexFactory from './modules/narrative/t13ne-annexes.js';
+import T13NE_Pacts from './modules/narrative/t13ne-pacts.js';
+import T13NE_Drama from './modules/narrative/t13ne-drama.js';
+import T13NE_Stress from './modules/mechanics/t13ne-stress.js';
+import T13NE_Tension from './modules/mechanics/t13ne-tension.js';
+import T13NE_Plots from './modules/narrative/t13ne-plots.js';
+import T13NE_NarrativeWeaving from './modules/narrative/t13ne-narrative-weaving.js';
+import T13NE_Resources from './modules/mechanics/t13ne-resources.js';
+import T13NE_Tests from './modules/mechanics/t13ne-tests.js';
+import T13NE_Stakes from './modules/systems/ordeals/t13ne-stakes.js';
+import T13NE_NarrativeTricks from './modules/systems/ordeals/t13ne-narrative-tricks.js';
+import T13NE_SocialOrdeals from './modules/systems/ordeals/t13ne-social-ordeals.js';
+import T13NE_Snapfire from './modules/systems/ordeals/t13ne-snapfire.js';
+import T13NE_YarnTangling from './modules/systems/ordeals/t13ne-yarntangling.js';
+import T13NE_ActionSpaces from './modules/systems/ordeals/t13ne-action-spaces.js';
+import T13NE_PsychosocialSpaces from './modules/systems/ordeals/t13ne-psychosocial-spaces.js';
+import T13NE_SpaceVisualizer from './modules/systems/ordeals/t13ne-space-visualizer.js';
+import T13YarnTeller from './modules/narrative/t13ne-yarntelling.js';
+import T13NECommands from './modules/systems/t13ne-commands.js';
+import T13NE_Wounds from './modules/mechanics/t13ne-wounds.js';
+import T13NE_CharacterArc from './modules/characters/t13ne-CharacterArc.js';
+import T13NE_Catalysts from './modules/mechanics/t13ne-catalysts.js';
+import T13NE_Referee from './modules/systems/t13ne-referee.js';
+import T13NE_GameState from './modules/systems/t13ne-gamestate.js';
+import T13NE_Game from './modules/systems/t13ne-game.js';
+import T13NE_Reasoning from './modules/ai/t13ne-reasoning.js';
+import T13NE_StateMachine from './modules/systems/t13ne-state-machine.js';
+import T13NE_Editor from './modules/systems/t13ne-editor.js';
+import T13NE_Music from './modules/audio/t13ne-music.js';
 
-import { ViewManager } from '@/src/t13ne/core/ViewManager.js';
-import { PluginManager } from '@/src/t13ne/core/PluginManager.js';
-import { SoundEngine } from '@/src/t13ne/core/SoundEngine.js';
-import LoaderManager from '@/src/t13ne/core/LoaderManager.js';
+import { ViewManager } from './core/ViewManager.js';
+import { PluginManager } from './core/PluginManager.js';
+import { SoundEngine } from './core/SoundEngine.js';
+import LoaderManager from './core/LoaderManager.js';
 
 /**
  * T13NE Engine Core
@@ -215,6 +215,7 @@ class T13NE {
 
         // 1. Initialize Core Infrastructure
         this.soundEngine = new SoundEngine();
+        this.soundEngine.init();
         this.pluginManager = new PluginManager(this);
         this.viewManager = new ViewManager(this); // Pass T13NE as the context
         this.loaderManager = new LoaderManager(this.viewManager);
@@ -256,13 +257,17 @@ class T13NE {
     }
 
     async _loadModulesInternal() {
-
+        console.log("T13NE DEBUG: _loadModulesInternal started");
         Logger.message("T13NE: Loading modules...");
 
         // Load the CodexLoader module first as other modules depend on it
+        console.log("T13NE DEBUG: Attaching CodexLoader...");
         this.modules.Codex = CodexLoader;
         this.modules.Codex.setConfig(this.config.codex);
+
+        console.log("T13NE DEBUG: Initializing Codex...");
         await this.modules.Codex.initialize();
+        console.log("T13NE DEBUG: Codex Initialized.");
         Logger.message("T13NE: CodexLoader module loaded.");
 
         // Load Commands module early so others can use it
@@ -270,7 +275,7 @@ class T13NE {
         await this.modules.Commands.initialize(this);
 
         // Dynamically import T13Geometry, which is now a class
-        const { default: T13Geometry } = await import('@/src/t13ne/modules/world/t13ne-geometry.js');
+        const { default: T13Geometry } = await import('./modules/world/t13ne-geometry.js');
         const geometryModule = new T13Geometry(this.modules.Codex);
         await geometryModule.initialize();
         this.modules.T13Geometry = geometryModule;
@@ -461,6 +466,8 @@ class T13NE {
         this.modules.StateMachine = T13NE_StateMachine;
         await this.modules.StateMachine.initialize(this);
         Logger.message("T13NE: StateMachine module loaded.");
+
+
 
         // Load AI Name Generator for the T13NE.generateName() method
         this.modules.NameGenerator = new T13NameGenerator(this.modules.T13Geometry);

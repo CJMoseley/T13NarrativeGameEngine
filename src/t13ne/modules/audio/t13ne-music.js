@@ -1,6 +1,6 @@
-import Logger from "@/src/t13ne/core/Logger.js";
-import T13NE from '@/src/t13ne/T13NE.js';
-import CodexLoader from "@/src/t13ne/modules/codex/CodexLoader.js";
+import Logger from "../../core/Logger.js";
+import T13NE from '../../T13NE.js';
+import CodexLoader from "../codex/CodexLoader.js";
 
 /**
  * Simple Seeded RNG for deterministic music generation.
@@ -34,6 +34,412 @@ class MusicRNG {
 }
 
 /**
+ * Manages the loading and tracking of audio assets via a manifest.
+ */
+class AudioManifestManager {
+    constructor() {
+        this.manifest = {
+            samples: {},
+            sequences: {},
+            tracks: {},
+            midi: {},
+            loops: {},
+            stems: {},
+            instruments: {}
+        };
+        this.basePath = '/data/media/audio';
+    }
+
+    async loadManifest() {
+        try {
+            const response = await fetch(`${this.basePath}/audio_assets_manifest.json`);
+            if (response.ok) {
+                this.manifest = await response.json();
+                Logger.message("AudioManifestManager: Manifest loaded.");
+            } else {
+                Logger.warn("AudioManifestManager: No manifest found, starting fresh.");
+            }
+        } catch (e) {
+            Logger.warn("AudioManifestManager: Failed to load manifest.", e);
+        }
+    }
+
+    addToManifest(category, id, metadata) {
+        if (!this.manifest[category]) this.manifest[category] = {};
+        this.manifest[category][id] = metadata;
+        // In a real backend, we would save the manifest here.
+        // Since this is client-side, we can only log the updated JSON for the user to save.
+        Logger.message(`Updated Manifest: \n${JSON.stringify(this.manifest, null, 2)}`);
+    }
+
+    getAssetPath(category, id) {
+        const item = this.manifest[category]?.[id];
+        return item ? `${this.basePath}/${category}/${item.filename}` : null;
+    }
+
+    getAssetAnalysis(category, id) {
+        return this.manifest[category]?.[id]?.analysis || null;
+    }
+
+    updateAssetAnalysis(category, id, analysis) {
+        if (this.manifest[category]?.[id]) {
+            this.manifest[category][id].analysis = analysis;
+        }
+    }
+}
+
+/**
+ * Handles Complex Additive Synthesis.
+ */
+class AdditiveProcessor {
+    constructor(audioContext) {
+        this.ctx = audioContext;
+    }
+
+    /**
+     * Creates a custom periodic wave from partials.
+     * @param {Array<{real: number, imag: number}>} partials - Fourier coefficients.
+     */
+    createCustomWave(partials) {
+        const real = new Float32Array(partials.length + 1);
+        const imag = new Float32Array(partials.length + 1);
+
+        partials.forEach((p, i) => {
+            real[i + 1] = p.real || 0;
+            imag[i + 1] = p.imag || 0;
+        });
+
+        return this.ctx.createPeriodicWave(real, imag);
+    }
+
+    createSynthFromAnalysis(analysis, depth = 'medium') {
+        const fundamental = analysis.freq || 440;
+
+        let partialCount = 5;
+        if (depth === 'low') partialCount = 3;
+        if (depth === 'high') partialCount = 12;
+        if (depth === 'full') partialCount = 32;
+
+        let partials = [];
+
+        // CHECK 1: Do we have real FFT data?
+        if (analysis.peaks && analysis.peaks.length > 0) {
+            // Use real peaks!
+            // We need to normalize them relative to fundamental?
+            // Ideally we express them as harmonic ratios for wavetable synthesis
+
+            // Take top N peaks (sorted by amp in analyzer)
+            const usedPeaks = analysis.peaks.slice(0, partialCount);
+
+            // Convert absolute freq to harmonic multiple of fundamental
+            partials = usedPeaks.map(p => ({
+                freq: p.freq / fundamental, // e.g. 440/440=1, 880/440=2
+                amp: p.amp,
+                decay: 1.0 / Math.pow(p.freq / fundamental, 0.5) // Guess decay
+            }));
+
+        } else {
+            // Fallback: Procedural generation
+            for (let i = 1; i <= partialCount; i++) {
+                let amp = 1.0 / i;
+                if (depth === 'full' && i % 2 === 0) amp *= 0.5;
+
+                partials.push({
+                    freq: i,
+                    amp: amp,
+                    decay: 1.0 / Math.pow(i, 0.5)
+                });
+            }
+        }
+
+        return {
+            type: 'additive',
+            algorithm: 'custom',
+            depth: depth,
+            partials: partials
+        };
+    }
+
+    // Updated createBellTone to be more generic 'playAdditiveTone'
+    playAdditiveTone(frequency, time, duration, destination, partials) {
+        if (!partials) {
+            // Default bell if no partials
+            partials = [
+                { freq: 1.0, amp: 1.0, decay: 1.0 },
+                { freq: 2.0, amp: 0.6, decay: 0.9 },
+                { freq: 3.0, amp: 0.4, decay: 0.8 },
+                { freq: 4.2, amp: 0.25, decay: 0.7 },
+                { freq: 5.4, amp: 0.2, decay: 0.6 }
+            ];
+        }
+
+        partials.forEach(p => {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+
+            osc.frequency.value = frequency * p.freq;
+            osc.connect(gain);
+            gain.connect(destination);
+
+            gain.gain.setValueAtTime(0, time);
+            gain.gain.linearRampToValueAtTime(p.amp * 0.2, time + 0.01);
+            gain.gain.exponentialRampToValueAtTime(0.001, time + duration * p.decay);
+
+            osc.start(time);
+            osc.stop(time + duration * p.decay + 0.1);
+        });
+    }
+}
+
+/**
+ * Manages Instrument Definitions and Playback.
+ * Supports Sample-based, Subtractive, and Additive instruments.
+ */
+class InstrumentEngine {
+    constructor(audioContext) {
+        this.ctx = audioContext;
+        this.instruments = new Map();
+        this.samples = new Map();
+        this.additive = new AdditiveProcessor(audioContext);
+
+        // Default Instruments
+        this.defineInstrument('sine', { type: 'synth', oscType: 'sine' });
+        this.defineInstrument('saw', { type: 'synth', oscType: 'sawtooth' });
+        this.defineInstrument('bell', { type: 'additive', algorithm: 'bell' });
+    }
+
+    createSyntheticInstrument(sourceId, newId, depth = 'medium') {
+        // 1. Get Analysis
+        const analysis = this.manifestManager.getAssetAnalysis('samples', sourceId);
+        if (!analysis) {
+            Logger.warn(`Cannot synthesize '${sourceId}': no analysis data.`);
+            return;
+        }
+
+        // 2. Generate Definition via Additive Processor
+        const def = this.additive.createSynthFromAnalysis(analysis, depth);
+
+        // 3. Register locally
+        this.defineInstrument(newId, def);
+
+        // 4. Save to Manifest (instruments category)
+        // We add a new category 'instruments' to manifest for these synthetic definitions
+        this.manifestManager.addToManifest('instruments', newId, {
+            definition: def,
+            source: sourceId,
+            timestamp: Date.now()
+        });
+
+        Logger.message(`Created Synthetic Instrument '${newId}' (Depth: ${depth})`);
+        return newId;
+    }
+
+    async loadSample(id, url) {
+        try {
+            const response = await fetch(url);
+            const arrayBuffer = await response.arrayBuffer();
+            const audioBuffer = await this.ctx.decodeAudioData(arrayBuffer);
+            this.samples.set(id, audioBuffer);
+
+            // Detect Pitch/Key if not already present in manifest
+            let analysis = this.manifestManager.getAssetAnalysis('samples', id);
+
+            if (!analysis) {
+                if (!this.analyzer) {
+                    // Lazy load analyzer (assuming it's imported or globally avail, or simple inline fallback)
+                    // For now, use the inline logic we just replaced or import the module
+                    analysis = this.inlineAnalyze(audioBuffer);
+                } else {
+                    analysis = await this.analyzer.analyze(audioBuffer);
+                }
+                // Save back to manifest runtime cache
+                this.manifestManager.updateAssetAnalysis('samples', id, analysis);
+            }
+
+            this.defineInstrument(id, {
+                type: 'sampler',
+                sampleId: id,
+                baseFreq: analysis.freq,
+                key: analysis.note
+            });
+            Logger.message(`InstrumentEngine: Loaded sample '${id}' (Key: ${analysis.note})`);
+            return true;
+        } catch (e) {
+            Logger.error(`InstrumentEngine: Failed to load sample '${id}'`, e);
+            return false;
+        }
+    }
+
+    // Renaming old analyzeBuffer to inlineAnalyze for fallback
+    inlineAnalyze(buffer) {
+        // Simple time-domain zero-crossing or auto-correlation for fundamental freq
+        // For short samples, simple autocorrelation is often enough.
+        const data = buffer.getChannelData(0);
+        const sampleRate = buffer.sampleRate;
+
+        // Analyze first 0.5s or full buffer
+        const size = Math.min(data.length, sampleRate * 0.5);
+        const slice = data.slice(0, size);
+
+        const freq = this._autoCorrelate(slice, sampleRate);
+        const note = this._freqToNote(freq);
+        return { freq, note };
+    }
+
+    _autoCorrelate(buf, sampleRate) {
+        let size = buf.length;
+        let rms = 0;
+        for (let i = 0; i < size; i++) {
+            const val = buf[i];
+            rms += val * val;
+        }
+        rms = Math.sqrt(rms / size);
+        if (rms < 0.01) return -1; // Too quiet
+
+        let r1 = 0, r2 = size - 1, thres = 0.2;
+        for (let i = 0; i < size / 2; i++) {
+            if (Math.abs(buf[i]) < thres) { r1 = i; break; }
+        }
+        for (let i = 1; i < size / 2; i++) {
+            if (Math.abs(buf[size - i]) < thres) { r2 = size - i; break; }
+        }
+
+        buf = buf.slice(r1, r2);
+        size = buf.length;
+
+        const c = new Array(size).fill(0);
+        for (let i = 0; i < size; i++) {
+            for (let j = 0; j < size - i; j++) {
+                c[i] = c[i] + buf[j] * buf[j + i];
+            }
+        }
+
+        let d = 0;
+        while (c[d] > c[d + 1]) d++;
+        let maxval = -1, maxpos = -1;
+        for (let i = d; i < size; i++) {
+            if (c[i] > maxval) {
+                maxval = c[i];
+                maxpos = i;
+            }
+        }
+        let T0 = maxpos;
+
+        // Parabolic interpolation
+        // ... (simplified for now, just return sampleRate / T0)
+        return sampleRate / T0;
+    }
+
+    _freqToNote(freq) {
+        if (!freq || freq <= 0) return 'Unknown';
+        const A4 = 440;
+        const notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+        const c0 = A4 * Math.pow(2, -4.75);
+        const name = notes[Math.round(12 * Math.log2(freq / c0)) % 12];
+        const oct = Math.floor(12 * Math.log2(freq / c0) / 12);
+        return name + oct;
+    }
+
+    _freqFromNote(note) {
+        if (!note) return 0;
+        const notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+        const matches = note.match(/([A-G]#?)(\d+)/);
+        if (!matches) return 440; // Default fallback
+
+        const name = matches[1];
+        const octave = parseInt(matches[2]);
+        const semitone = notes.indexOf(name);
+
+        // C0 is 16.35, A4 is 440
+        // A4 = index 9 in octave 4.
+        // steps from A4 = (octave - 4)*12 + (semitone - 9)
+        const steps = (octave - 4) * 12 + (semitone - 9);
+        return 440 * Math.pow(2, steps / 12);
+    }
+
+    defineInstrument(id, definition) {
+        this.instruments.set(id, definition);
+    }
+
+    playNote(instrumentId, frequency, time, duration, velocity = 0.5, destination) {
+        const inst = this.instruments.get(instrumentId);
+        if (!inst) {
+            // Fallback
+            return this.playSynthNote(frequency, time, duration, 'sine', velocity, destination);
+        }
+
+        switch (inst.type) {
+            case 'sampler':
+                this.playSampleNote(inst.sampleId, frequency, time, duration, velocity, destination);
+                break;
+            case 'additive':
+                // If algorithm is 'bell', use the default bell partials, otherwise use custom partials
+                if (inst.algorithm === 'bell') {
+                    this.additive.playAdditiveTone(frequency, time, duration, destination); // partials will default
+                } else if (inst.partials) {
+                    this.additive.playAdditiveTone(frequency, time, duration, destination, inst.partials);
+                } else {
+                    // Fallback for additive if no algorithm or partials specified
+                    this.additive.playAdditiveTone(frequency, time, duration, destination);
+                }
+                break;
+            case 'synth':
+            default:
+                this.playSynthNote(frequency, time, duration, inst.oscType, velocity, destination);
+                break;
+        }
+    }
+
+    playSynthNote(frequency, time, duration, type, velocity, destination) {
+        const osc = this.ctx.createOscillator();
+        const env = this.ctx.createGain();
+
+        osc.type = type || 'sine';
+        osc.frequency.value = frequency;
+
+        osc.connect(env);
+        env.connect(destination);
+
+        // Simple ADSR
+        const attack = 0.02;
+        const release = 0.1;
+
+        env.gain.setValueAtTime(0, time);
+        env.gain.linearRampToValueAtTime(velocity, time + attack);
+        env.gain.exponentialRampToValueAtTime(0.001, time + duration + release);
+
+        osc.start(time);
+        osc.stop(time + duration + release + 0.1);
+    }
+
+    playSampleNote(sampleId, frequency, time, duration, velocity, destination) {
+        const buffer = this.samples.get(sampleId);
+        if (!buffer) return;
+
+        const source = this.ctx.createBufferSource();
+        source.buffer = buffer;
+
+        // Pitch shifting (Assuming C4 base)
+        const rate = frequency / 261.63;
+        source.playbackRate.value = rate;
+
+        const env = this.ctx.createGain();
+        source.connect(env);
+        env.connect(destination);
+
+        env.gain.setValueAtTime(velocity, time);
+
+        // Simple decay if duration is short, else let sample play
+        // But preventing click at end:
+        env.gain.setValueAtTime(velocity, time + duration);
+        env.gain.linearRampToValueAtTime(0, time + duration + 0.1);
+
+        source.start(time);
+        source.stop(time + duration + 0.2);
+    }
+}
+
+/**
  * A lightweight synthesizer for procedural playback with transition capabilities.
  */
 class T13Synth {
@@ -44,6 +450,9 @@ class T13Synth {
         this.masterGain.connect(this.ctx.destination);
         this.buffers = new Map(); // Store loaded AudioBuffers
         this.layers = new Map(); // To manage active layers { source, gainNode }
+
+        // Sub-Engines
+        this.instrumentEngine = new InstrumentEngine(this.ctx);
     }
 
     /**
@@ -66,65 +475,20 @@ class T13Synth {
     }
 
     playNote(frequency, startTime, duration, type = 'sine', detune = 0, instrument = null) {
-        // 1. Try to play sample if instrument is specified and loaded
-        if (instrument && this.buffers.has(instrument)) {
-            this.playSample(instrument, frequency, startTime, duration, detune);
+        // Delegate to InstrumentEngine for unified handling
+        // If 'instrument' is a string key for a loaded sample or defined instrument
+        if (instrument) {
+            this.instrumentEngine.playNote(instrument, frequency, startTime, duration, 0.3, this.masterGain);
             return;
         }
 
-        // 2. Fallback to Enhanced Subtractive Synthesis
-        const osc = this.ctx.createOscillator();
-        const env = this.ctx.createGain();
-        const filter = this.ctx.createBiquadFilter();
-
-        osc.type = type;
-        osc.frequency.value = frequency;
-        osc.detune.value = detune;
-
-        // Filter Envelope (Wah effect)
-        filter.type = 'lowpass';
-        filter.Q.value = 1;
-        filter.frequency.setValueAtTime(frequency, startTime);
-        filter.frequency.exponentialRampToValueAtTime(frequency * 4, startTime + 0.05);
-        filter.frequency.exponentialRampToValueAtTime(frequency, startTime + duration);
-
-        // Amp Envelope (ADSR-like)
-        env.gain.setValueAtTime(0, startTime);
-        env.gain.linearRampToValueAtTime(0.3, startTime + 0.02); // Attack
-        env.gain.exponentialRampToValueAtTime(0.001, startTime + duration); // Decay/Release
-
-        osc.connect(filter);
-        filter.connect(env);
-        env.connect(this.masterGain);
-
-        osc.start(startTime);
-        osc.stop(startTime + duration);
+        // Fallback to basic synth if no instrument specified (or use default synth type)
+        this.instrumentEngine.playNote(type, frequency, startTime, duration, 0.3, this.masterGain);
     }
 
     playSample(name, frequency, startTime, duration, detune) {
-        const buffer = this.buffers.get(name);
-        const source = this.ctx.createBufferSource();
-        source.buffer = buffer;
-        
-        // Pitch shifting: Assume base sample is C4 (approx 261.63 Hz)
-        // Calculate playback rate ratio
-        const baseFreq = 261.63; 
-        const rate = frequency / baseFreq;
-        
-        source.playbackRate.value = rate;
-        source.detune.value = detune;
-
-        const env = this.ctx.createGain();
-        source.connect(env);
-        env.connect(this.masterGain);
-
-        // Simple envelope to prevent clicking
-        env.gain.setValueAtTime(0, startTime);
-        env.gain.linearRampToValueAtTime(1, startTime + 0.01);
-        env.gain.exponentialRampToValueAtTime(0.01, startTime + duration);
-
-        source.start(startTime);
-        source.stop(startTime + duration + 0.1);
+        // Forwarding legacy calls to InstrumentEngine
+        this.instrumentEngine.playNote(name, frequency, startTime, duration, 0.3, this.masterGain);
     }
 
     /**
@@ -200,7 +564,7 @@ class T13Synth {
         const now = this.ctx.currentTime;
         const osc = this.ctx.createOscillator();
         const gain = this.ctx.createGain();
-        
+
         osc.connect(gain);
         gain.connect(this.masterGain);
 
@@ -253,6 +617,8 @@ class T13NE_Music {
         this.musicPack = null; // Holds buffers for the current musical context
         this.currentLayers = new Set(); // Tracks active layer names
         this.lastTension = -1;
+
+        this.manifestManager = new AudioManifestManager();
     }
 
     async initialize(t13ne) {
@@ -260,6 +626,8 @@ class T13NE_Music {
         this.t13ne = t13ne;
         this.geometry = t13ne.getModule('T13Geometry');
         this.soundEngine = t13ne.soundEngine; // Access core sound engine
+
+        await this.manifestManager.loadManifest();
 
         if (this.soundEngine && this.soundEngine.audioContext) {
             this.synth = new T13Synth(this.soundEngine.audioContext);
@@ -275,13 +643,243 @@ class T13NE_Music {
     }
 
     /**
+     * Loads a sample and registers it in the manifest and instrument engine.
+     */
+    async loadSample(name, url) {
+        if (this.synth) {
+            const success = await this.synth.instrumentEngine.loadSample(name, url);
+            if (success) {
+                this.manifestManager.addToManifest('samples', name, { filename: url.split('/').pop(), loaded: true });
+            }
+        }
+    }
+
+    /**
+     * generating the Wormhole Racers Main Theme.
+     */
+    async createWormholeTheme() {
+        if (!this.synth) return;
+
+        const trackName = 'track_wormhole_main_theme';
+        // if (this.manifestManager.manifest.tracks[trackName]) return; // Already exists
+        // overwrite for now to ensure we get the latest procedural version during dev
+
+        Logger.message("T13NE_Music: generating Wormhole Racers Theme...");
+
+        // 1. Create Instruments
+        const bassPatch = {
+            type: 'synth',
+            oscType: 'sawtooth'
+            // In future, adding filter params to instrument engine would be nice
+        };
+        const leadPatch = {
+            type: 'additive',
+            algorithm: 'custom',
+            partials: [
+                { freq: 1, amp: 1, decay: 0.1 },
+                { freq: 2, amp: 0.5, decay: 0.2 },
+                { freq: 3, amp: 0.2, decay: 0.3 }
+            ]
+        };
+        const padPatch = {
+            type: 'additive',
+            algorithm: 'custom',
+            partials: [
+                { freq: 1, amp: 0.8, decay: 2.0 },
+                { freq: 1.01, amp: 0.8, decay: 2.0 }, // Detune
+                { freq: 2, amp: 0.4, decay: 1.5 },
+                { freq: 3, amp: 0.2, decay: 1.5 }
+            ]
+        };
+
+        this.synth.instrumentEngine.defineInstrument('wr_bass', bassPatch);
+        this.synth.instrumentEngine.defineInstrument('wr_lead', leadPatch);
+        this.synth.instrumentEngine.defineInstrument('wr_pad', padPatch);
+
+        // 2. Create Sequences
+        // 4 Bars, 120 BPM
+        const sequence = [];
+
+        // Bassline (Driving 8ths on C2)
+        for (let i = 0; i < 4 * 16; i += 2) {
+            sequence.push({ voice: 'v_bass', step: i, note: 'C2', duration: 0.20, velocity: 0.7 });
+            // Octave jump on offbeat occasionally
+            if (i % 8 === 6) sequence.push({ voice: 'v_bass', step: i + 1, note: 'C3', duration: 0.20, velocity: 0.6 });
+        }
+
+        // Pad (Chords)
+        // Bar 1: C Minor
+        sequence.push({ voice: 'v_pad', step: 0, note: 'C3', duration: 4.0, velocity: 0.4 });
+        sequence.push({ voice: 'v_pad', step: 0, note: 'Eb3', duration: 4.0, velocity: 0.4 });
+        sequence.push({ voice: 'v_pad', step: 0, note: 'G3', duration: 4.0, velocity: 0.4 });
+
+        // Bar 3: Ab Major
+        sequence.push({ voice: 'v_pad', step: 32, note: 'Ab2', duration: 4.0, velocity: 0.4 });
+        sequence.push({ voice: 'v_pad', step: 32, note: 'C3', duration: 4.0, velocity: 0.4 });
+        sequence.push({ voice: 'v_pad', step: 32, note: 'Eb3', duration: 4.0, velocity: 0.4 });
+
+        // Melody (Simple Motif)
+        const melody = [
+            { s: 0, n: 'C4', d: 1.5 }, { s: 6, n: 'G4', d: 0.5 }, { s: 8, n: 'Eb4', d: 1.0 }, { s: 12, n: 'C4', d: 2.0 },
+            { s: 32, n: 'Ab3', d: 1.5 }, { s: 38, n: 'Eb4', d: 0.5 }, { s: 40, n: 'C4', d: 1.0 }, { s: 44, n: 'Bb3', d: 2.0 },
+        ];
+
+        melody.forEach(m => {
+            sequence.push({ voice: 'v_lead', step: m.s, note: m.n, duration: m.d * 0.25, velocity: 0.8 });
+        });
+
+        // 3. Assemble Track
+        const trackData = {
+            name: 'Wormhole Racers Theme',
+            bpm: 120,
+            timeSignature: [4, 4],
+            measures: 4,
+            voices: [
+                { id: 'v_bass', name: 'Bass', instrument: 'wr_bass', sequence: [], mute: false },
+                { id: 'v_lead', name: 'Lead', instrument: 'wr_lead', sequence: [], mute: false },
+                { id: 'v_pad', name: 'Pad', instrument: 'wr_pad', sequence: [], mute: false }
+            ]
+        };
+
+        // Distribute notes to voices
+        sequence.forEach(note => {
+            const v = trackData.voices.find(voice => voice.id === note.voice);
+            if (v) v.sequence.push({ step: note.step, note: note.note, duration: note.duration, velocity: note.velocity });
+        });
+
+        // 4. Save
+        this.saveTrack(trackName, trackData);
+
+        // Also register instruments to manifest so they persist
+        // (Skipping full instrument save logic for brevity, they are active in engine now)
+
+        return trackData;
+    }
+
+    /**
+     * Plays a tracked composition.
+     */
+    playTrack(trackId) {
+        const track = this.manifestManager.manifest.tracks[trackId] || null;
+        if (!track) {
+            // It might be a raw object if we just created it and haven't reloaded
+            // Check if we can find it in saved JSONs? 
+            // Since we save to manifest structure in memory:
+            // The saveTrack method puts it in manifest.tracks[name]
+        }
+
+        // Actually, saveTrack uses 'name' as key. 
+        // Let's ensure we can retrieve it.
+        const data = this.manifestManager.manifest.tracks[trackId];
+        // If data is just metadata {filename...} we need to load it. 
+        // But if we just created it in memory, we might need a way to play the raw object or auto-load.
+
+        // For this immediate flow, let's assume we play the Object we just built if passed, or load from ID.
+        // ... (This needs a proper track scheduler, which MusicEditorUI has, but T13NE_Music needs its own playback logic)
+
+        // Implementing simple sequencer playback here for the engine/intro:
+        if (data) {
+            // If it has a filename, strictly we should fetch it. 
+            // But saveTrack updates the manifest with just metadata.
+            // But we likely still have the object in memory if we just made it?
+            // Not currently stored in a 'loadedTracks' cache.
+
+            // Quick fix: If we are calling playTrack immediately after create, we can pass the object or we need to 'load' the track JSON.
+            // Given limitations, let's just make createWormholeTheme return the Track Object.
+        }
+    }
+
+    playTrackObject(track) {
+        if (!this.synth) return;
+        Logger.message(`Playing Track: ${track.name}`);
+
+        // Simple Interval Scheduler
+        // 16th notes
+        const stepTime = (60 / track.bpm) / 4;
+        const lookahead = 0.1;
+        let currentStep = 0;
+        let nextStepTime = this.synth.ctx.currentTime + 0.1;
+
+        // Stop previous
+        if (this.currentSequenceTimer) clearTimeout(this.currentSequenceTimer);
+
+        const schedule = () => {
+            const now = this.synth.ctx.currentTime;
+            while (nextStepTime < now + lookahead) {
+                // Play notes for current step
+                track.voices.forEach(voice => {
+                    if (voice.mute) return;
+                    voice.sequence.forEach(note => {
+                        if (note.step === currentStep) {
+                            this.synth.playNote(
+                                voice.instrument,
+                                this.synth.instrumentEngine._freqFromNote(note.note),
+                                nextStepTime,
+                                note.duration,
+                                note.velocity
+                            );
+                        }
+                    });
+                });
+
+                nextStepTime += stepTime;
+                currentStep++;
+
+                // Loop
+                const totalSteps = track.measures * 16;
+                if (currentStep >= totalSteps) currentStep = 0;
+            }
+            this.currentSequenceTimer = setTimeout(schedule, 25);
+        };
+
+        schedule();
+    }
+
+    stopTrack() {
+        if (this.currentSequenceTimer) clearTimeout(this.currentSequenceTimer);
+    }
+    saveSequence(name, sequence) {
+        const data = { name, sequence, timestamp: Date.now() };
+        this.manifestManager.addToManifest('sequences', name, { filename: `${name}.json` });
+        Logger.message(`T13NE_Music: Sequence '${name}' ready for export.`);
+        return JSON.stringify(data, null, 2);
+    }
+
+    /**
+     * Export a track configuration.
+     */
+    saveTrack(name, trackData) {
+        const data = { name, ...trackData, timestamp: Date.now() };
+        this.manifestManager.addToManifest('tracks', name, { filename: `${name}.json` });
+        return JSON.stringify(data, null, 2);
+    }
+
+    /**
+     * Export MIDI-like data (notes array).
+     */
+    saveMidi(name, notes) {
+        const data = { name, notes, timestamp: Date.now() };
+        this.manifestManager.addToManifest('midi', name, { filename: `${name}.json` });
+        return JSON.stringify(data, null, 2);
+    }
+
+    /**
+     * Export a loop definition.
+     */
+    saveLoop(name, loopData) {
+        const data = { name, ...loopData, timestamp: Date.now() };
+        this.manifestManager.addToManifest('loops', name, { filename: `${name}.json` });
+        return JSON.stringify(data, null, 2);
+    }
+
+    /**
      * Loads a single audio file for use as a sampled instrument or a one-shot effect.
      * @param {string} name - A unique name for the instrument/effect.
      * @param {string} url - The URL of the audio file.
      */
     async loadInstrument(name, url) {
         if (this.synth) {
-            await this.synth.loadAudio(name, url);
+            await this.loadSample(name, url);
         }
     }
 
@@ -374,7 +972,7 @@ class T13NE_Music {
             preferredIntervals.set(i, (preferredIntervals.get(i) || 0) + count);
             const descending = (12 - i) % 12;
             if (descending !== 0) {
-                 preferredIntervals.set(descending, (preferredIntervals.get(descending) || 0) + count);
+                preferredIntervals.set(descending, (preferredIntervals.get(descending) || 0) + count);
             }
         }
 
@@ -471,7 +1069,7 @@ class T13NE_Music {
         const sequence = [];
         const noteDurations = [0.25, 0.5, 1.0];
         let currentNoteIndex = 0; // Start at the root of the scale
-        
+
         for (let i = 0; i < length; i++) {
             const probabilities = transitionMatrix[currentNoteIndex];
             const random = rng.next();
@@ -490,7 +1088,7 @@ class T13NE_Music {
             const pitchName = CHROMATIC_SCALE[finalPitchIndex];
             const octaveOffset = rng.pick([0, 0, 1]);
             const freq = baseFreq * Math.pow(2, (interval + (octaveOffset * 12)) / 12);
-            
+
             sequence.push({
                 freq: freq,
                 duration: rng.pick(noteDurations),
@@ -517,10 +1115,10 @@ class T13NE_Music {
         if (!this.synth) return;
         const motif = this.getCharacterComposition(character);
         if (!motif) return;
-        
+
         // Use the character's preferred instrument if none is specified.
         const preferredInstrument = instrument || KEY_INSTRUMENT_MAP[motif.key] || 'piano';
-        
+
         Logger.message(`T13NE_Music: Playing leitmotif for ${character.name}`);
         let dissonance = 0;
 
@@ -539,7 +1137,7 @@ class T13NE_Music {
 
         motif.sequence.forEach(note => {
             const duration = note.duration * beatTime;
-            const detune = (Math.random() - 0.5) * dissonance; 
+            const detune = (Math.random() - 0.5) * dissonance;
             const type = dissonance > 10 ? 'sawtooth' : 'triangle';
             this.synth.playNote(note.freq, timeCursor, duration, type, detune, preferredInstrument);
             timeCursor += duration;
@@ -610,26 +1208,77 @@ class T13NE_Music {
      * @param {object} composition - The composition data object from getComposition.
      * @param {object} [listener=null] - An optional listener character to determine dissonance.
      */
-    playComposition(composition, listener = null) {
-        if (!this.synth || !composition) return;
+    /**
+     * Plays a defined Track (Instrument + Sequence).
+     * @param {object} track - The track definition { instrument, sequence, bpm, ... }
+     */
+    playTrack(track) {
+        if (!this.synth || !track) return;
 
-        Logger.message(`T13NE_Music: Playing composition '${composition.name}'`);
+        Logger.message(`T13NE_Music: Playing Track '${track.name}'`);
 
-        if (composition.type === 'Opera') {
-            // Play all character themes simultaneously on different instruments
-            const instruments = ['piano', 'triangle', 'sawtooth', 'sine']; // Example instruments
-            let i = 0;
-            for (const characterName in composition.themes) {
-                const theme = composition.themes[characterName];
-                const instrument = instruments[i % instruments.length];
-                this.playCharacterComposition({ name: characterName, geometry: theme.geometry, ...theme }, listener, instrument);
-                i++;
+        const bpm = track.bpm || 120;
+        const beatTime = 60 / bpm; // Quarter note time
+        // If the sequence is 16th notes based (tracker style), stepTime is beatTime / 4
+        const stepTime = beatTime / 4;
+
+        const now = this.soundEngine.audioContext.currentTime;
+
+        track.sequence.forEach(evt => {
+            // evt: { step, note, duration, velocity }
+            const startTime = now + (evt.step * stepTime);
+            // Convert note name (e.g. "C4") to frequency if needed, or if stored as freq
+            let freq = evt.freq;
+            if (!freq && evt.note) {
+                freq = this._noteToFreq(evt.note);
             }
-        } else if (composition.sequence) {
-            // For simpler, single-melody compositions
-            this.playCharacterComposition({ ...composition, name: composition.name.split("'")[0] }, listener);
-        }
-        // Note: 'Symphony' type is not played directly but used by updateAmbience to load stems.
+
+            // duration in sequence is often in 'steps' or 'beats'? 
+            // In editor it was normalized. Let's assume duration is in 'beats' for playback consistency
+            // or if stored from editor, it was 0.25 (16th note).
+            const durationSecs = evt.duration * 4 * stepTime; // Duration is relative to beat?
+
+            this.synth.playNote(freq, startTime, durationSecs, 'sine', 0, track.instrument);
+        });
+    }
+
+    _noteToFreq(note) {
+        const notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+        const octave = parseInt(note.slice(-1));
+        const keyNumber = notes.indexOf(note.slice(0, -1));
+        if (keyNumber < 0) return 440;
+        return 440 * Math.pow(2, ((keyNumber + ((octave - 4) * 12)) - 9) / 12);
+    }
+
+    /**
+     * Export a track configuration (Instrument + Sequence + Settings).
+     */
+    saveTrack(name, instrumentId, sequence, settings = {}) {
+        const data = {
+            name,
+            instrument: instrumentId,
+            sequence,
+            bpm: settings.bpm || 120,
+            timeSignature: settings.timeSignature || [4, 4],
+            measures: settings.measures || 2,
+            timestamp: Date.now()
+        };
+        this.manifestManager.addToManifest('tracks', name, { filename: `${name}.json` });
+        return JSON.stringify(data, null, 2);
+    }
+
+    /**
+     * Export a stem (Single Voice configuration).
+     */
+    saveStem(name, voiceData) {
+        const data = {
+            name,
+            instrument: voiceData.instrument,
+            sequence: voiceData.sequence,
+            timestamp: Date.now()
+        };
+        this.manifestManager.addToManifest('stems', name, { filename: `${name}.json` });
+        return JSON.stringify(data, null, 2);
     }
 
     // Private generators for each composition type

@@ -1,5 +1,5 @@
 ﻿import Logger from "@/src/t13ne/core/Logger.js";
-import T13NE from '@plugins/t13ne/T13NE.js';
+import T13NE from '@/src/t13ne/T13NE.js';
 
 class T13NECardsUI {
     constructor() {

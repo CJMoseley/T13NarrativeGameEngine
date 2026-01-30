@@ -1,5 +1,5 @@
 ﻿import Logger from "@/src/t13ne/core/Logger.js";
-import T13NE from '@plugins/t13ne/T13NE.js';
+import T13NE from '@/src/t13ne/T13NE.js';
 import CodexLoader from "@/src/t13ne/modules/codex/CodexLoader.js";
 import UI from './t13ne-UI.js';
 
@@ -32,11 +32,11 @@ class ThreadsUI {
 
         const analysisRow = document.createElement('div');
         analysisRow.style.cssText = 'display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap;';
-        
+
         const facetSelect = document.createElement('select');
         facetSelect.className = 'input-control';
         facetSelect.style.minWidth = '200px';
-        
+
         // Populate Facets dynamically
         const Facets = T13NE.getModule('Facets');
         if (Facets) {
@@ -82,13 +82,13 @@ class ThreadsUI {
             const wrapper = document.createElement('div');
             wrapper.style.display = 'flex';
             wrapper.style.flexDirection = 'column';
-            
+
             const lbl = document.createElement('label');
             lbl.textContent = label;
             lbl.style.color = '#fff';
             lbl.style.fontSize = '0.8rem';
             lbl.style.marginBottom = '0.2rem';
-            
+
             const sel = document.createElement('select');
             sel.multiple = true;
             sel.style.background = 'rgba(0,0,0,0.5)';
@@ -97,7 +97,7 @@ class ThreadsUI {
             sel.style.borderRadius = '4px';
             sel.style.border = '1px solid rgba(255,255,255,0.2)';
             sel.style.height = '6rem';
-            
+
             options.forEach(opt => {
                 const o = document.createElement('option');
                 // Handle objects {value, label} or simple strings
@@ -108,7 +108,7 @@ class ThreadsUI {
                 if (selectedValues.includes(String(val))) o.selected = true;
                 sel.appendChild(o);
             });
-            
+
             sel.onchange = onChange;
             wrapper.appendChild(lbl);
             wrapper.appendChild(sel);
@@ -123,7 +123,7 @@ class ThreadsUI {
         ]);
 
         // Prepare Facet Options for Filter
-        const facetOptions = [{value: 'All', label: 'All'}];
+        const facetOptions = [{ value: 'All', label: 'All' }];
         if (Facets) {
             const facetsArr = await Facets.getFacetsArr();
             facetsArr.forEach((f, i) => {
@@ -135,7 +135,7 @@ class ThreadsUI {
 
         // Add Facet Filter
         filterRow.appendChild(createFilter('Facet', facetOptions, this.facetFilter, (e) => { this.facetFilter = getSelected(e.target); this.refresh(); }));
-        
+
         filterRow.appendChild(createFilter('Genre', genres, this.genreFilter, (e) => { this.genreFilter = getSelected(e.target); this.refresh(); }));
         filterRow.appendChild(createFilter('Era', eras, this.eraFilter, (e) => { this.eraFilter = getSelected(e.target); this.refresh(); }));
         filterRow.appendChild(createFilter('Scope', scopes, this.scopeFilter, (e) => { this.scopeFilter = getSelected(e.target); this.refresh(); }));
@@ -210,7 +210,7 @@ class ThreadsUI {
     async analyzeFacet(facetIndex) {
         const Facets = T13NE.getModule('Facets');
         const facets = await Facets.getFacetsArr();
-        
+
         const facet = facets[facetIndex];
         UI.notify(`Threads: Extracting from "${facet.FacetName}"...`);
 

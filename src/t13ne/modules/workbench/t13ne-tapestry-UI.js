@@ -1,5 +1,5 @@
 ﻿import FacetWebUI from './t13ne-facetweb-UI.js';
-import T13NE from '@plugins/t13ne/T13NE.js';
+import T13NE from '@/src/t13ne/T13NE.js';
 import T13Tapestry from "@/src/t13ne/modules/world/T13Tapestry.js";
 import GeometryUI from './t13ne-geometry-ui.js';
 
@@ -8,7 +8,7 @@ import GeometryUI from './t13ne-geometry-ui.js';
  * Handles rendering of Tapestry metrics and details.
  */
 class TapestryUI {
-    constructor() {}
+    constructor() { }
 
     renderInspector(obj) {
         let stats = obj.Stats || obj.facetweb?.Stats || (obj.data && obj.data.Stats) || (obj.knot && obj.knot.Stats) || (obj.proficiencies && obj.proficiencies.Stats);
@@ -79,8 +79,8 @@ class TapestryUI {
                     render: (data) => {
                         let stats = data.stats || data.facetweb?.Stats || data.Stats;
                         if (!stats) {
-                             const Tapestry = T13NE.getModule('Tapestry');
-                             stats = JSON.parse(JSON.stringify(Tapestry.defaultStatblock.Stats));
+                            const Tapestry = T13NE.getModule('Tapestry');
+                            stats = JSON.parse(JSON.stringify(Tapestry.defaultStatblock.Stats));
                         }
                         let scale = data.scale !== undefined ? data.scale : (data.facetweb?.Scale || data.Scale || 13);
                         return `

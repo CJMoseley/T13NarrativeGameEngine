@@ -45,7 +45,7 @@ export class UIManager {
         EventBus.on('scene:load', (sceneName) => {
             this.hideAll(); // Hide all menus when a scene loads
             // The ShipyardPanel is for a future ship building feature. Keep it hidden for now.
-            this.shipyardPanel.hide();
+            if (this.shipyardPanel) this.shipyardPanel.hide();
         });
     }
 
@@ -62,7 +62,7 @@ export class UIManager {
         if (this.mainMenu && this.mainMenu.element) {
             this.viewManager.assignLayer(this.mainMenu.element, 'MENUS');
         }
-        this.mainMenu.show();
+        if (this.mainMenu) this.mainMenu.show();
         this.activeMenu = this.mainMenu;
     }
 
@@ -71,7 +71,7 @@ export class UIManager {
         if (this.testMenu && this.testMenu.element) {
             this.viewManager.assignLayer(this.testMenu.element, 'MENUS');
         }
-        this.testMenu.show();
+        if (this.testMenu) this.testMenu.show();
         this.activeMenu = this.testMenu;
     }
 
@@ -79,10 +79,10 @@ export class UIManager {
         if (this.pauseMenu && this.pauseMenu.element) {
             this.viewManager.assignLayer(this.pauseMenu.element, 'MENUS');
         }
-        this.pauseMenu.show();
+        if (this.pauseMenu) this.pauseMenu.show();
     }
 
     hidePauseMenu() {
-        this.pauseMenu.hide();
+        if (this.pauseMenu) this.pauseMenu.hide();
     }
 }

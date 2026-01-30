@@ -1,0 +1,60 @@
+# T13NE Audio Assets Git Ignore
+# This file prevents large audio datasets from being committed to GitHub,
+# while preserving essential "synth" files and metadata.
+
+# 1. Ignore everything in this directory by default
+*
+
+# 2. Allow this .gitignore file
+!.gitignore
+
+# 3. Allow subdirectories to be traversed
+!*/
+
+# 4. Allow essential metadata
+!audio_assets_manifest.json
+
+# 5. Allow MIDI and Sequences (small, logic-based data)
+!midi/
+!midi/**
+!sequences/
+!sequences/**
+
+# 6. In Loops, Samples, Stems, and Tracks: ignore the bulk contents
+loops/*
+samples/*
+stems/*
+tracks/*
+
+# 7. Explicitly un-ignore Synth-related content
+# --- Samples ---
+!samples/*synth*/
+!samples/*synth*/**
+!samples/Inst_*/
+!samples/Inst_*/**
+!samples/*Serum*/
+!samples/*Serum*/**
+!samples/*Ssaws*/
+!samples/*Ssaws*/**
+!samples/bass_synth/
+!samples/bass_synth/**
+!samples/melody_hardsynth/
+!samples/melody_hardsynth/**
+!samples/melody_softsynth/
+!samples/melody_softsynth/**
+!samples/pad_hardsynth/
+!samples/pad_hardsynth/**
+!samples/pad_softsynth/
+!samples/pad_softsynth/**
+!samples/synth stabs/
+!samples/synth stabs/**
+
+# --- Loops ---
+!loops/*synth*/
+!loops/*synth*/**
+!loops/Inst_*/
+!loops/Inst_*/**
+!loops/Grid Racer - Synthwave Loops/
+!loops/Grid Racer - Synthwave Loops/**
+!loops/LC_FTR_synth loops/
+!loops/LC_FTR_synth loops/**

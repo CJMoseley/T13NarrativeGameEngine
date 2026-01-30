@@ -1,4 +1,4 @@
-﻿import AuthorMain from '@plugins/t13ne/AuthorMain.js';
+﻿import AuthorMain from '@/src/t13ne/AuthorMain.js';
 
 export default class Terminal {
     constructor(workbench) {

@@ -1,4 +1,4 @@
-﻿import T13NE from '@plugins/t13ne/T13NE.js';
+﻿import T13NE from '@/src/t13ne/T13NE.js';
 
 /**
  * T13NE Geometry UI Module
@@ -21,7 +21,7 @@ class GeometryUI {
         const geo = geoData.Geo;
         const num = geoData.GeometryNumber;
         const className = `t13ne-geo-${num}`;
-        
+
         const renderContentBox = (cls, title, content) => {
             if (!content || content === 'Not Applicable') return '';
             return `

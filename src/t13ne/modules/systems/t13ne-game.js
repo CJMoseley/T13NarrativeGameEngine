@@ -1,5 +1,5 @@
-﻿import Logger from "@/src/t13ne/core/Logger.js";
-import T13Name from "@/src/t13ne/modules/characters/t13ne-names.js";
+﻿import Logger from "../../core/Logger.js";
+import T13Name from "../characters/t13ne-names.js";
 
 /**
  * Represents a T13 Game instance.
@@ -201,7 +201,7 @@ class T13NE_Game {
 
         for (const entity of this.entityVault.values()) {
             const type = entity.constructor.name;
-            
+
             // Recover Characters
             if ((type === 'Character' || entity.charType) && Referee) {
                 if (!Referee.getCharacter(entity.id)) {
@@ -209,7 +209,7 @@ class T13NE_Game {
                     recovered++;
                 }
             }
-            
+
             // Recover Plots
             if ((type === 'T13Plot' || entity.rank) && Plots) {
                 if (!Plots.getPlot(entity.id)) {
@@ -218,7 +218,7 @@ class T13NE_Game {
                 }
             }
         }
-        
+
         if (recovered > 0) {
             Logger.message(`T13NE_Game: Recovered ${recovered} orphaned entities.`);
         }

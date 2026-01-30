@@ -1,18 +1,18 @@
-﻿import CodexLoader from "@/src/t13ne/modules/codex/CodexLoader.js";
-import Logger from "@/src/t13ne/core/Logger.js";
-import T13Tapestry from "@/src/t13ne/modules/world/T13Tapestry.js";
-import T13NE_Facets from "@/src/t13ne/modules/mechanics/t13ne-facets.js";
-import T13Boons from '@/src/t13ne/modules/mechanics/t13ne-boon.js';
-import T13NE_Tension from '@/src/t13ne/modules/mechanics/t13ne-tension.js';
-import T13NE_NarrativeWeaving from "@/src/t13ne/modules/narrative/t13ne-narrative-weaving.js";
-import T13NECardsAPI from "@/src/t13ne/modules/mechanics/t13ne-cards-api.js";
-import AIService from "@/src/t13ne/modules/ai/AIService.js";
-import T13YarnTeller from "@/src/t13ne/modules/narrative/t13ne-yarntelling.js";
-import T13Name from "@/src/t13ne/modules/characters/t13ne-names.js";
-import T13NE_Reasoning from '@/src/t13ne/modules/ai/t13ne-reasoning.js';
-import T13NE_StateMachine from '@/src/t13ne/modules/systems/t13ne-state-machine.js';
+﻿import CodexLoader from "../codex/CodexLoader.js";
+import Logger from "../../core/Logger.js";
+import T13Tapestry from "../world/T13Tapestry.js";
+import T13NE_Facets from "../mechanics/t13ne-facets.js";
+import T13Boons from '../mechanics/t13ne-boon.js';
+import T13NE_Tension from '../mechanics/t13ne-tension.js';
+import T13NE_NarrativeWeaving from "./t13ne-narrative-weaving.js";
+import T13NECardsAPI from "../mechanics/t13ne-cards-api.js";
+import AIService from "../ai/AIService.js";
+import T13YarnTeller from "./t13ne-yarntelling.js";
+import T13Name from "../characters/t13ne-names.js";
+import T13NE_Reasoning from '../ai/t13ne-reasoning.js';
+import T13NE_StateMachine from '../systems/t13ne-state-machine.js';
 
-import { SuperKnot } from "@/src/t13ne/modules/mechanics/t13ne-knots.js";
+import { SuperKnot } from "../mechanics/t13ne-knots.js";
 
 /**
  * Represents a single Plot instance.

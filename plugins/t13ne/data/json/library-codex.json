@@ -138,6 +138,9 @@
       "fiveChanges.json": {
         "description": "Defines the five changes (Wood, Fire, Earth, Metal, Water) and their properties."
       },
+      "NarrativeRatchets.json": {
+        "description": "Defines the narrative ratchets, which are events that increase tension in a scene."
+      },
       "suspenseLevels.json": {
         "description": "Defines the levels of suspense in a scene, detailing effects on plot and characters at each level."
       },
@@ -186,6 +189,9 @@
       },
       "progressions.json": {
         "description": "Defines musical chord progressions, used in the game's geometry system."
+      },
+      "RomanChords.json": {
+        "description": "Defines Roman numeral chord notation and its narrative significance."
       },
       "tonalModes.json": {
         "description": "Defines the different tonal modes used in the geometry system."
@@ -586,6 +592,9 @@
       },
       "plotResolutions.json": {
         "description": "Defines the different ways a plot can resolve, such as Revolution, Revelation, or Rejection."
+      },
+      "corePlots.json": {
+        "description": "Defines the core plots for the narrative engine."
       },
       "plottingTypes.json": {
         "description": "Defines the different ways a referee can plan a plot, such as Seat-of-the-Pants, Authored, or Hybrid."

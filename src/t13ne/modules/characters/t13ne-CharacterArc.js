@@ -1,5 +1,5 @@
-﻿﻿import CodexLoader from "@/src/t13ne/modules/codex/CodexLoader.js";
-import Logger from "@/src/t13ne/core/Logger.js";
+﻿﻿import CodexLoader from "../codex/CodexLoader.js";
+import Logger from "../../core/Logger.js";
 
 /**
  * Represents a specific Character Arc instance.
@@ -33,7 +33,7 @@ class T13NE_CharacterArcModule {
         this.characterEffects = [];
         this.t13ne = null;
         this.initialized = false;
-        
+
         // Standard Chromatic Scale for interval calculation
         this.chromaticScale = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
     }
@@ -49,7 +49,7 @@ class T13NE_CharacterArcModule {
             this.intervals = await CodexLoader.getData('geometry', 'interval_ratios.json') || [];
             this.characterEffects = await CodexLoader.getData('drama', 'character_effects.json') || [];
             this.progressions = await CodexLoader.getData('geometry', 'progressions.json') || [];
-            
+
             this.initialized = true;
             Logger.message('T13NE_CharacterArc: Initialized.');
         } catch (error) {
@@ -66,13 +66,13 @@ class T13NE_CharacterArcModule {
      */
     createArc(character, type = 'Solo', name = '') {
         if (!character) return null;
-        
+
         // Determine Key from Character Geometry if available
         let key = 'C';
         if (character.geometry && character.geometry.Key) {
             key = character.geometry.Key;
         } else if (character.geometry && character.geometry.Geo && character.geometry.Geo.Key) {
-             key = character.geometry.Geo.Key;
+            key = character.geometry.Geo.Key;
         }
 
         const arc = new CharacterArc({
@@ -86,24 +86,24 @@ class T13NE_CharacterArcModule {
         const musicModule = this.t13ne.getModule('T13NE_Music');
         if (musicModule && musicModule.initialized) {
             // Create a temporary entity object that getComposition can understand
-            const compositionEntity = { 
+            const compositionEntity = {
                 name: character.name,
                 id: character.id,
-                type: type, 
+                type: type,
                 // Ensure geometry is available for music generation
-                geometry: character.geometry || this.t13ne.getModule('T13Geometry')?.calculateFullGeo(character.name) 
+                geometry: character.geometry || this.t13ne.getModule('T13Geometry')?.calculateFullGeo(character.name)
             };
             const composition = musicModule.getComposition(compositionEntity);
             if (composition) {
                 arc.composition = composition;
                 // The 'pitches' array in CharacterArc seems to expect pitch names for its internal logic.
-                arc.pitches = composition.sequence.map(note => note.pitchName); 
+                arc.pitches = composition.sequence.map(note => note.pitchName);
             }
         }
 
         if (!character.arcs) character.arcs = [];
         character.arcs.push(arc);
-        
+
         Logger.message(`T13NE_CharacterArc: Created arc '${arc.name}' for ${character.name}.`);
         return arc;
     }
@@ -143,9 +143,9 @@ class T13NE_CharacterArcModule {
             arc.currentBeat = 1;
             arc.currentBar++;
         }
-        
+
         // Clear transient notes if necessary, or keep them. For now we keep them attached to the arc.
-        
+
         return { success: true, message: `Advanced to Bar ${arc.currentBar}, Beat ${arc.currentBeat}`, arc };
     }
 
@@ -167,11 +167,11 @@ class T13NE_CharacterArcModule {
             bar: arc.currentBar,
             beat: arc.currentBeat
         };
-        
+
         arc.notes.push(note);
         return { success: true, message: "Note added", note };
     }
-    
+
     /**
      * Sets the active pitch for the current beat/bar and calculates effects.
      * @param {object} character 
@@ -181,7 +181,7 @@ class T13NE_CharacterArcModule {
     calculatePitchEffects(character, arcId, pitch) {
         const arc = this.getArc(character, arcId);
         if (!arc) return { success: false, message: "Arc not found" };
-        
+
         const pitchData = this.pitches.find(p => p.data.Pitch === pitch || p.data.Alt === pitch)?.data;
         if (!pitchData) {
             return { success: false, message: `Pitch '${pitch}' not found in codex.` };
@@ -189,7 +189,7 @@ class T13NE_CharacterArcModule {
 
         const interval1 = this.calculateInterval(arc.key, pitch);
         const effect1 = this.getEffectForInterval(interval1);
-        
+
         let interval2 = null;
         let effect2 = null;
 
@@ -202,12 +202,12 @@ class T13NE_CharacterArcModule {
             interval2 = 12;
             effect2 = this.getEffectForInterval(interval2);
         }
-        
+
         const message = `Pitch set to ${pitch}. Potential effects: ${effect1.Name} or ${effect2 ? effect2.Name : 'none'}. House: ${pitchData.House}.`;
 
-        return { 
-            success: true, 
-            message: message, 
+        return {
+            success: true,
+            message: message,
             pitch: pitchData,
             effects: [
                 { interval: interval1, effect: effect1 },
@@ -227,18 +227,18 @@ class T13NE_CharacterArcModule {
         // Normalize keys (handle flats if necessary, though T13 usually uses sharps in examples)
         // Simple normalization: Db->C#, Eb->D#, Gb->F#, Ab->G#, Bb->A#
         const normalize = (k) => {
-            const map = {'Db':'C#', 'Eb':'D#', 'Gb':'F#', 'Ab':'G#', 'Bb':'A#'};
+            const map = { 'Db': 'C#', 'Eb': 'D#', 'Gb': 'F#', 'Ab': 'G#', 'Bb': 'A#' };
             return map[k] || k;
         };
 
         const k1 = normalize(key1);
         const k2 = normalize(key2);
-        
+
         const idx1 = this.chromaticScale.indexOf(k1);
         const idx2 = this.chromaticScale.indexOf(k2);
-        
+
         if (idx1 === -1 || idx2 === -1) return 0;
-        
+
         let interval = idx2 - idx1;
         if (interval < 0) interval += 12;
         return interval;
@@ -266,7 +266,7 @@ class T13NE_CharacterArcModule {
         if (!effectData || !effectData.data) {
             return { Name: 'Unknown', Description: `Interval effect ID ${effectId} not found in character_effects.json.` };
         }
-        
+
         // Return the whole effect object for more context, plus the interval description
         return { ...effectData.data, IntervalDescription: intervalData.data.Description };
     }

@@ -1,5 +1,5 @@
-﻿import CodexLoader from "@/src/t13ne/modules/codex/CodexLoader.js";
-import Logger from "@/src/t13ne/core/Logger.js";
+﻿import CodexLoader from "../codex/CodexLoader.js";
+import Logger from "../../core/Logger.js";
 
 /**
  * Module for handling T13NE Pacts, including data loading and membership management.

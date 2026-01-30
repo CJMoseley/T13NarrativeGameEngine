@@ -1,6 +1,6 @@
-﻿import Logger from "@/src/t13ne/core/Logger.js";
-import AIService from "@/src/t13ne/modules/ai/AIService.js";
-import T13NECardsAPI from "@/src/t13ne/modules/mechanics/t13ne-cards-api.js";
+﻿import Logger from "../../core/Logger.js";
+import AIService from "../ai/AIService.js";
+import T13NECardsAPI from "../mechanics/t13ne-cards-api.js";
 
 /**
  * T13YarnTeller
@@ -66,10 +66,10 @@ class T13YarnTeller {
                 styleTemp = totalTemp / pickedStyles.length;
             }
         } else {
-             if (styleData) {
-                 styleDescription = styleData.description;
-                 styleTemp = styleData.temperature;
-             }
+            if (styleData) {
+                styleDescription = styleData.description;
+                styleTemp = styleData.temperature;
+            }
         }
 
         if (!styleDescription) {
@@ -118,7 +118,7 @@ class T13YarnTeller {
             'The Romantic': { description: 'Bold adventurers seeking sublime experiences, driven by feelings and emotions, imaginative language, and emotional reactions.', temperature: 0.75 },
             'The Neoclassical': { description: 'Empirical and formal, typically drawing on Roman and Greek history and mythology, clean narrative and often quite formal dialogue.', temperature: 0.4 },
             'The Guttersnipe': { description: 'Fast paced narration, dialogue very slang and dialect driven, dialogue should be almost impenetrable sometimes.', temperature: 0.8 },
-            'The Handwaver': { description: 'Balanced, emotive descriptions and dialogue, but light on details, motivations and very light on exposition.', temperature: 0.6 },'The Horror Host': { description: 'Creepy, unsettling, taking sadistic glee in the events unfolding. Slightly morbid humour.', temperature: 0.75 },
+            'The Handwaver': { description: 'Balanced, emotive descriptions and dialogue, but light on details, motivations and very light on exposition.', temperature: 0.6 }, 'The Horror Host': { description: 'Creepy, unsettling, taking sadistic glee in the events unfolding. Slightly morbid humour.', temperature: 0.75 },
             'The Stoic': { description: 'Suppressed emotions, brusque characters, avoids emotional dialogue and scenes, or offers detached interest.', temperature: 0.3 },
             'The Quiet': { description: 'Dialogue is short and to the point, characters will often answer questions with an enigmatic non-answer, or gesture.', temperature: 0.4 },
             'The Motormouth': { description: 'Dialogue is long, dense and only sometimes sesquipedalian in its loquaciousness and babbling, circumlocution is often employed.', temperature: 0.8 },
@@ -258,7 +258,7 @@ Perspective: 3rd Person Omniscient or Limited as appropriate.
      */
     async speak(targetName, topic, tone = 'Neutral') {
         const speakerName = this.character ? this.character.name : 'Narrator';
-        
+
         let prompt = `Generate dialogue for ${speakerName}.
 Voice/Style: ${this.voice} (${this.narrativeStyle}).
 Speaking to: ${targetName}.
@@ -285,7 +285,7 @@ Output only the dialogue text, in character.`;
         Logger.message(`YarnTeller (${this.character ? this.character.name : 'Ref'}) seizes the spotlight!`);
         return this.narrate({ type: 'Action', action: intent });
     }
-    
+
     /**
      * Handles "Retcon" technique.
      * @param {string} originalEvent - What happened.
@@ -293,12 +293,12 @@ Output only the dialogue text, in character.`;
      * @returns {Promise<string>} The retcon narration.
      */
     async retcon(originalEvent, newEvent) {
-         const prompt = `You are performing a Retcon (Retroactive Continuity).
+        const prompt = `You are performing a Retcon (Retroactive Continuity).
 Original Event: ${originalEvent}
 New Reality: ${newEvent}
 Narrate the shift or revelation that changes the perception of the event to the new reality, maintaining your narrative voice (${this.voice}).`;
-         
-         try {
+
+        try {
             return await AIService.generateText(prompt);
         } catch (error) {
             Logger.error("YarnTeller: Failed to generate retcon.", error);
@@ -314,7 +314,7 @@ Narrate the shift or revelation that changes the perception of the event to the 
      */
     async sceneBend(scene, card, position = 'Significator') {
         Logger.message(`YarnTeller: Bending scene '${scene.Type}' with card ${card.name} in position ${position}.`);
-        
+
         // Logic to replace the card in the scene structure
         if (scene.Spread) {
             // Assuming Spread has a way to hold cards, e.g., scene.Spread.cards
@@ -354,14 +354,14 @@ Narrate the shift or revelation that changes the perception of the event to the 
      */
     async narrativeShowdown(challenger, defendant, scene) {
         Logger.message(`YarnTeller: Narrative Showdown initiated between ${challenger.name} and ${defendant.name} over scene ${scene.Type}.`);
-        
+
         // 1. Draw Cards
         const cards = T13NECardsAPI.deck.draw(2);
         const cardC = cards[0];
         const cardD = cards[1];
-        
+
         Logger.message(`Showdown: Challenger drew ${cardC.name}, Defendant drew ${cardD.name}.`);
-        
+
         // 2. Bidding (Simplified)
         // In a real UI this would be interactive. Here we simulate a result or return data for UI.
         return {
@@ -383,15 +383,15 @@ Narrate the shift or revelation that changes the perception of the event to the 
      */
     async startYarnTangling(participants, plot) {
         Logger.message(`YarnTeller: Initiating Yarn-Tangling Ordeal.`);
-        
+
         // Dynamic import to avoid circular dependency issues if any
-        const { default: T13NE_YarnTangling } = await import("@/src/t13ne/modules/systems/ordeals/t13ne-yarntangling.js");
-        
+        const { default: T13NE_YarnTangling } = await import("../systems/ordeals/t13ne-yarntangling.js");
+
         const ordeal = new T13NE_YarnTangling({
             participants: participants,
             plot: plot
         });
-        
+
         return ordeal;
     }
 

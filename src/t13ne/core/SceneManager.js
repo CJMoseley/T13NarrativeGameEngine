@@ -18,8 +18,7 @@ export class SceneManager {
     constructor(viewManager) {
         this.viewManager = viewManager; // Keep reference for scene constructors
         // Automatically assess available scenes using Vite's import.meta.glob
-        // We'll look for scenes in both the original and potentially new T13NE scene folders
-        const sceneModules = import.meta.glob(['@/js/scenes/*.js', '@plugins/t13ne/scenes/*.js']);
+        const sceneModules = import.meta.glob('@/src/t13ne/scenes/*.js');
         this.sceneRegistry = {};
 
         for (const path in sceneModules) {
@@ -42,7 +41,7 @@ export class SceneManager {
      * @param {function} onProgress - A callback to report progress (e.g., for a loading bar).
      * @returns {Promise<Scene|null>} A promise that resolves with the prepared scene instance, or null on failure.
      */
-    async prepareScene(sceneName, sceneData = {}, onProgress = () => {}) {
+    async prepareScene(sceneName, sceneData = {}, onProgress = () => { }) {
         const funcName = 'SceneManager.prepareScene';
         Logger.start(funcName, { sceneName, sceneData });
 
@@ -50,9 +49,9 @@ export class SceneManager {
 
         // Special case for the base Scene class used for benchmarking
         if (sceneName === 'Scene') {
-             const newSceneInstance = new Scene(this.viewManager, sceneData);
-             await newSceneInstance.prepare(onProgress);
-             return newSceneInstance;
+            const newSceneInstance = new Scene(this.viewManager, sceneData);
+            await newSceneInstance.prepare(onProgress);
+            return newSceneInstance;
         }
 
         if (!this.sceneRegistry[sceneName]) {

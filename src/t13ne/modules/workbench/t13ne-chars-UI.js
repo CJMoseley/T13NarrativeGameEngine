@@ -1,4 +1,4 @@
-﻿import T13NE from '@plugins/t13ne/T13NE.js';
+﻿import T13NE from '@/src/t13ne/T13NE.js';
 import UI from './t13ne-UI.js';
 import FacetWebUI from './t13ne-facetweb-UI.js';
 import GeometryUI from './t13ne-geometry-ui.js';
@@ -196,7 +196,7 @@ class CharacterUI {
                         const updateGeo = () => {
                             const T13Geometry = T13NE.getModule('T13Geometry');
                             const display = dom.querySelector('#geometry-display');
-                            
+
                             const nameData = [
                                 nameInput.value || '',
                                 fullInput.value || '',
@@ -227,19 +227,19 @@ class CharacterUI {
                     render: (data) => {
                         let stats = data.stats || data.facetweb?.Stats || data.Stats;
                         if (!stats) {
-                             // Try to inherit from Game Tapestry first
-                             const GameModule = T13NE.getModule('Game');
-                             const activeGame = GameModule ? GameModule.getActiveGame() : null;
-                             if (activeGame && activeGame.tapestries && activeGame.tapestries.length > 0) {
-                                 const baseTap = GameModule.getEntity(activeGame.tapestries[0]);
-                                 if (baseTap && baseTap.Stats) {
-                                     stats = JSON.parse(JSON.stringify(baseTap.Stats));
-                                 }
-                             }
-                             if (!stats) {
-                                 const Tapestry = T13NE.getModule('Tapestry');
-                                 stats = JSON.parse(JSON.stringify(Tapestry.defaultStatblock.Stats));
-                             }
+                            // Try to inherit from Game Tapestry first
+                            const GameModule = T13NE.getModule('Game');
+                            const activeGame = GameModule ? GameModule.getActiveGame() : null;
+                            if (activeGame && activeGame.tapestries && activeGame.tapestries.length > 0) {
+                                const baseTap = GameModule.getEntity(activeGame.tapestries[0]);
+                                if (baseTap && baseTap.Stats) {
+                                    stats = JSON.parse(JSON.stringify(baseTap.Stats));
+                                }
+                            }
+                            if (!stats) {
+                                const Tapestry = T13NE.getModule('Tapestry');
+                                stats = JSON.parse(JSON.stringify(Tapestry.defaultStatblock.Stats));
+                            }
                         }
                         let scale = data.scale !== undefined ? data.scale : (data.facetweb?.Scale || data.Scale || 0);
                         return `
@@ -291,7 +291,7 @@ class CharacterUI {
                                     AntiFacet_Sway: 0
                                 };
                             });
-                            
+
                             // Calculate and save I-Ching here
                             const IChing = T13NE.getModule('IChing');
                             if (IChing) {
@@ -336,7 +336,7 @@ class CharacterUI {
                     onRender: async (dom, data) => {
                         const stats = data.stats || [];
                         const Facets = T13NE.getModule('Facets');
-                        
+
                         // Sort by Boon value descending
                         const sortedStats = [...stats].sort((a, b) => {
                             const boonA = Math.max(a.Facet_Boon, a.Antifacet_Boon);
@@ -345,7 +345,7 @@ class CharacterUI {
                         });
 
                         const list = dom.querySelector('#p-facet-list');
-                        
+
                         // Helper to create draggable item
                         const createDraggable = (facetId, boon) => {
                             const fName = FacetWebUI.getFacetName(facetId);
@@ -354,7 +354,7 @@ class CharacterUI {
                             div.draggable = true;
                             div.style.cssText = 'padding: 4px 8px; background: #333; border-radius: 4px; cursor: grab; font-size: 0.8rem; display: flex; justify-content: space-between; margin-bottom: 2px;';
                             div.innerHTML = `<span>${fName}</span> <span style="color: var(--accent-blue)">${boon}</span>`;
-                            
+
                             div.ondragstart = (e) => {
                                 e.dataTransfer.setData('text/plain', JSON.stringify({ facetId, boon, name: fName }));
                             };
@@ -374,7 +374,7 @@ class CharacterUI {
                         const setupZone = (id, listName) => {
                             const zone = dom.querySelector(id);
                             const currentItems = data.personalityAnnex[listName] || [];
-                            
+
                             const renderItems = async () => {
                                 zone.innerHTML = '';
                                 for (const item of currentItems) {
@@ -400,7 +400,7 @@ class CharacterUI {
                                     zone.appendChild(el);
                                 }
                             };
-                            
+
                             renderItems();
 
                             zone.ondragover = (e) => { e.preventDefault(); zone.style.borderColor = 'var(--accent-blue)'; zone.style.background = 'rgba(255,255,255,0.05)'; };
@@ -435,7 +435,7 @@ class CharacterUI {
 
                             for (const p of data.personalityAnnex.personas) sumBoons += await getBoonVal(p);
                             for (const c of data.personalityAnnex.cores) sumBoons += await getBoonVal(c);
-                            
+
                             // Approximate Annex Boon (Intrepid: Sum / 2)
                             dom.querySelector('#p-annex-boon').textContent = Math.floor(sumBoons / 2);
                         };

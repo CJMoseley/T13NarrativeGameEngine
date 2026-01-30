@@ -1,6 +1,5 @@
 import { UIMessageTemplates } from './UIMessageTemplates.js';
 import Logger from '../Logger.js';
-import Localization from './Localization.js';
 
 class UIMessage {
     constructor(viewManager) {
@@ -150,13 +149,7 @@ class UIMessage {
         // Update Content
         const content = messageWindow.querySelector('.ui-message-content');
         if (content && UIMessageTemplates[messageWindow.dataset.template]) {
-            content.innerHTML = ''; // Clear
-            const result = UIMessageTemplates[messageWindow.dataset.template](options.data);
-            if (result instanceof Node) {
-                content.appendChild(result);
-            } else {
-                content.innerHTML = result;
-            }
+            content.innerHTML = UIMessageTemplates[messageWindow.dataset.template](options.data);
         } else if (content && options.data && options.data.message) {
             content.innerHTML = `<p>${options.data.message}</p>`;
         }
@@ -197,12 +190,7 @@ class UIMessage {
         const contentElement = document.createElement('div');
         contentElement.className = 'ui-message-content';
         if (UIMessageTemplates[template]) {
-            const result = UIMessageTemplates[template](data);
-            if (result instanceof Node) {
-                contentElement.appendChild(result);
-            } else {
-                contentElement.innerHTML = result;
-            }
+            contentElement.innerHTML = UIMessageTemplates[template](data);
         } else if (data && data.message) {
             contentElement.innerHTML = `<p>${data.message}</p>`;
         } else {

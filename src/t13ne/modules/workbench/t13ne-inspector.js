@@ -1,4 +1,4 @@
-﻿import AuthorMain from '@plugins/t13ne/AuthorMain.js';
+﻿import AuthorMain from '@/src/t13ne/AuthorMain.js';
 import NarrativeUI from './t13ne-narrative-UI.js';
 import CharacterUI from './t13ne-chars-UI.js';
 import FacetWebUI from './t13ne-facetweb-UI.js';
@@ -127,7 +127,7 @@ export default class Inspector {
     showEntityModal(type, callback, isEdit = false) {
         const obj = isEdit ? NarrativeUI.selectedEntity : null;
         const title = isEdit ? `Edit ${type}` : `Create ${type}`;
-        
+
         // Initialize form data
         this.formData = isEdit ? JSON.parse(JSON.stringify(obj)) : {};
         if (!this.formData.facetweb) this.formData.facetweb = {};
@@ -136,7 +136,7 @@ export default class Inspector {
         const modalTitle = document.getElementById('modal-title');
         const submitBtn = document.getElementById('modal-submit');
         const wizard = new Wizard('modal-body', 'modal-submit', () => this.closeModal());
-        
+
         if (!modalBody) {
             console.error("Modal body not found.");
             return;
@@ -151,7 +151,7 @@ export default class Inspector {
         if (isCharacter || isTapestry) {
             // Generate a draft ID for persistence
             const draftId = isEdit ? `draft_edit_${obj.id}` : `draft_create_${type}`;
-            
+
             let config = null;
             if (isCharacter) config = CharacterUI.getWizardConfig();
             else if (isTapestry) config = TapestryUI.getWizardConfig();
@@ -162,7 +162,7 @@ export default class Inspector {
         } else {
             this.renderSinglePageForm(type, obj, callback, isEdit);
         }
-        
+
         this.openModal();
     }
 
@@ -191,8 +191,8 @@ export default class Inspector {
                     <label>Rank</label>
                     <select id="m-rank">
                         ${['Scene', 'Act', 'Story', 'Chapter', 'Arc', 'Volume', 'Epic', 'Cycle'].map(r =>
-                            `<option value="${r}" ${obj?.rank === r ? 'selected' : ''}>${r}</option>`
-                        ).join('')}
+                `<option value="${r}" ${obj?.rank === r ? 'selected' : ''}>${r}</option>`
+            ).join('')}
                     </select>
                 </div>
                 <div class="form-group">
@@ -206,8 +206,8 @@ export default class Inspector {
                     <label>Game Type</label>
                     <select id="m-gtype">
                         ${['Core', 'World-building', 'Collaborative', 'Sandbox', 'Plotted', 'Random', 'Adventure', 'Campaign'].map(gt =>
-                            `<option value="${gt}" ${obj?.type === gt ? 'selected' : ''}>${gt}</option>`
-                        ).join('')}
+                `<option value="${gt}" ${obj?.type === gt ? 'selected' : ''}>${gt}</option>`
+            ).join('')}
                     </select>
                 </div>
             `;
@@ -219,7 +219,7 @@ export default class Inspector {
                 <textarea id="m-desc" placeholder="Description/Notes..." style="min-height: 100px;">${obj ? (obj.Description || obj.description || '') : ''}</textarea>
             </div>
         `;
-        
+
         html += `</div>`; // End Left Column
 
         html += `</div>`; // End Grid
@@ -251,7 +251,7 @@ export default class Inspector {
         // Remove old listeners to prevent duplicates
         const newBtn = submitBtn.cloneNode(true);
         submitBtn.parentNode.replaceChild(newBtn, submitBtn);
-        
+
         newBtn.textContent = isEdit ? 'Save Changes' : 'Create';
         newBtn.onclick = () => {
             const data = {
@@ -297,7 +297,7 @@ export default class Inspector {
         const isJoined = row.dataset.joined === 'true';
         row.dataset.joined = (!isJoined).toString();
         if (btn) btn.textContent = !isJoined ? 'ðŸ”—' : 'ðŸ”“';
-        
+
         if (!isJoined) {
             const yangInput = row.querySelector('input[data-side="facet"]');
             if (yangInput) {
@@ -324,7 +324,7 @@ export default class Inspector {
     standardizeFacets() {
         const Tapestry = T13.getModule('Tapestry');
         if (!Tapestry) return;
-        
+
         let stats = null;
         const GameModule = T13.getModule('Game');
         const activeGame = GameModule ? GameModule.getActiveGame() : null;
@@ -361,7 +361,7 @@ export default class Inspector {
             const yinItem = row.querySelector('.facet-item[data-side="antifacet"]');
             const yangInput = yangItem.querySelector('input');
             const yinInput = yinItem.querySelector('input');
-            
+
             return {
                 Facet: parseInt(yangItem.dataset.id),
                 Facet_Boon: parseInt(yangInput.value) || 0,

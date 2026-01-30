@@ -1,51 +1,45 @@
-
-import { UI } from './UI.js';
-
 const UIMessageTemplates = {
-    system_lore: (data) => UI.ContentBox({
-        title: `System Report: ${data.name}`,
-        dataType: data.tech,
-        description: data.description
-    }, UI.CE('div', { className: 't13ne-details' },
-        UI.CE('p', {}, UI.CE('strong', {}, 'Stellar Class: '), data.starClass),
-        UI.CE('p', {}, UI.CE('strong', {}, 'Galactic Coordinates: '), data.coords),
-        UI.CE('p', {}, UI.CE('strong', {}, 'Primary Species: '), data.species),
-        UI.CE('p', {}, UI.CE('strong', {}, 'Social Structure: '), data.society)
-    )),
-
-    race_results: (data) => UI.ContentBox({
-        title: 'Race Results',
-        description: 'Final results of the wormhole circuit.'
-    }, UI.CE('div', {},
-        UI.CE('p', {}, UI.CE('strong', {}, 'Winner: '), data.winner),
-        UI.CE('p', {}, UI.CE('strong', {}, 'Time: '), data.time)
-    )),
-
-    planet_lore: (data) => UI.ContentBox({
-        title: `Planetary Scan: ${data.name}`,
-        dataType: `Tech Level: ${data.techProfile.techLevel}`,
-        description: data.description || 'No additional data available.'
-    }, UI.CE('div', { className: 't13ne-details' },
-        UI.CE('p', {}, UI.CE('strong', {}, 'Type: '), data.type),
-        UI.CE('p', {}, UI.CE('strong', {}, 'Atmosphere: '), data.atmosphere),
-        UI.CE('p', {}, UI.CE('strong', {}, 'Temperature: '), `${data.temperature} K`),
-        UI.CE('p', {}, UI.CE('strong', {}, 'Gravity: '), `${data.gravity} G`),
-        UI.CE('p', {}, UI.CE('strong', {}, 'Resources: '), data.resources.join(', ')),
-        UI.CE('hr'),
-        UI.CE('h4', {}, 'Technological Profile'),
-        UI.CE('p', {}, UI.CE('strong', {}, 'Specialization: '), data.techProfile.specialization),
-        UI.CE('p', {}, UI.CE('strong', {}, 'Proficiencies: ')),
-        UI.CE('ul', {}, ...data.techProfile.knownProficiencies.map(p =>
-            UI.CE('li', {}, `${p.name} (Lvl: ${p.level})`)
-        ))
-    )),
-
-    loading_scene: (data) => UI.CE('div', { className: 'ui-message-loading-container' },
-        UI.CE('div', { className: 'spinner' }),
-        UI.CE('p', {}, data.message || 'Loading...')
-    ),
-
-    simple_message: (data) => UI.CE('p', {}, data.message || ''),
+    system_lore: (data) => `
+        <h3>System Report: ${data.name}</h3>
+        <p><strong>Stellar Class:</strong> ${data.starClass}</p>
+        <p><strong>Galactic Coordinates:</strong> ${data.coords}</p>
+        <p><strong>Primary Species:</strong> ${data.species}</p>
+        <p><strong>Social Structure:</strong> ${data.society}</p>
+        <p><strong>Technological Tier:</strong> ${data.tech}</p>
+        <p>${data.description}</p>
+    `,
+    race_results: (data) => `
+        <h3>Race Results</h3>
+        <p><strong>Winner:</strong> ${data.winner}</p>
+        <p><strong>Time:</strong> ${data.time}</p>
+    `,
+    planet_lore: (data) => `
+        <h3>Planetary Scan: ${data.name}</h3>
+        <p><strong>Type:</strong> ${data.type}</p>
+        <p><strong>Atmosphere:</strong> ${data.atmosphere}</p>
+        <p><strong>Temperature:</strong> ${data.temperature} K</p>
+        <p><strong>Gravity:</strong> ${data.gravity} G</p>
+        <p><strong>Resources:</strong> ${data.resources.join(', ')}</p>
+        <hr>
+        <h4>Technological Profile</h4>
+        <p><strong>Tech Level:</strong> ${data.techProfile.techLevel}</p>
+        <p><strong>Specialization:</strong> ${data.techProfile.specialization}</p>
+        <p><strong>Proficiencies:</strong></p>
+        <ul>
+            ${data.techProfile.knownProficiencies.map(p => `<li>${p.name} (Lvl: ${p.level})</li>`).join('')}
+        </ul>
+        <hr>
+        <p>${data.description || 'No additional data available.'}</p>
+    `,
+    loading_scene: (data) => `
+        <div class="ui-message-loading-container">
+            <div class="spinner"></div>
+            <p>${data.message || 'Loading...'}</p>
+        </div>
+    `,
+    simple_message: (data) => `
+        <p>${data.message || ''}</p>
+    `,
 };
 
 export { UIMessageTemplates };

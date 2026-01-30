@@ -5,9 +5,9 @@
  * 2 Proficiencies = Skill, 3+ = Talent/Power/Super-Power
  */
 
-import Logger from "@/src/t13ne/core/Logger.js";
-import T13Name from "@/src/t13ne/modules/characters/t13ne-names.js";
-import T13NE from '@/src/t13ne/T13NE.js';
+import Logger from "../../core/Logger.js";
+import T13Name from "../characters/t13ne-names.js";
+import T13NE from '../../T13NE.js';
 
 /**
  * Annex Builder - Combines proficiencies into Annexes
@@ -43,7 +43,7 @@ class AnnexBuilder {
         };
 
         const annexObj = await AnnexFactory.create(factoryData);
-        
+
         // Store in local map for now (legacy support)
         const id = String(this.nextId++);
         const t13n = new T13Name(annexObj.name);
@@ -64,12 +64,12 @@ class AnnexBuilder {
         };
 
         this.annexes.set(id, annex);
-        
+
         // If AnnexFactory didn't save as proficiency, we might want to?
         // But AnnexFactory usually handles resolution. 
         // The original code created a proficiency representing the annex.
         if (!annex.proficiencyId) {
-             annex.proficiencyId = await annexObj.saveAsProficiency();
+            annex.proficiencyId = await annexObj.saveAsProficiency();
         }
 
         return id;
@@ -81,7 +81,7 @@ class AnnexBuilder {
      */
     async createAnnexProficiency(annex) {
         const facetSet = new Set(annex.parentFacets);
-        
+
         for (const facetId of facetSet) {
             const profId = await this.codexLoader.createProficiency({
                 name: `${annex.name} (${annex.type})`,
@@ -104,7 +104,7 @@ class AnnexBuilder {
     async getProficienciesInAnnex(annexId) {
         const annex = this.getAnnex(annexId);
         if (!annex) return [];
-        
+
         const profPromises = annex.proficiencyIds.map(id => this.codexLoader.getProficiency(id));
         const profs = await Promise.all(profPromises);
 
@@ -214,15 +214,15 @@ class ThreadsSystem {
     async suggestProficiencies(context = {}) {
         const manifest = await this.codexLoader._getOrBuildProficiencyManifest();
         const T13Geometry = this.t13ne.getModule('T13Geometry');
-        
+
         let candidates = new Set();
-        
+
         // 1. Filter by Facet if provided
         if (context.facet) {
             const facetIds = manifest.indexes.facet[context.facet] || [];
             facetIds.forEach(id => candidates.add(id));
         }
-        
+
         // 2. If no facet, or to expand, use Geometry if Character provided
         if (context.character && T13Geometry && candidates.size === 0) {
             const charGeo = context.character.geometry;
@@ -230,7 +230,7 @@ class ThreadsSystem {
                 // Add proficiencies matching the character's geometry number
                 const geoIds = manifest.indexes.geometry[charGeo.GeometryNumber] || [];
                 geoIds.forEach(id => candidates.add(id));
-                
+
                 // Add proficiencies matching Perfect Harmonic
                 if (charGeo.GeoHarmonics?.Perfect) {
                     const perfectIds = manifest.indexes.geometry[charGeo.GeoHarmonics.Perfect] || [];
@@ -238,20 +238,20 @@ class ThreadsSystem {
                 }
             }
         }
-        
+
         // Convert to array and score
         let results = [];
         for (const id of candidates) {
             const prof = await this.getProficiency(id);
             if (!prof) continue;
-            
+
             let score = 0;
-            
+
             // Scoring logic based on Geometry Harmonics
             if (context.character && T13Geometry) {
                 const pName = Array.isArray(prof.Name) ? prof.Name[0] : prof.Name;
                 const pGeo = T13Geometry.getGeometryFromString(pName);
-                
+
                 const charGeo = context.character.geometry;
                 if (charGeo && charGeo.GeoHarmonics) {
                     if (pGeo === charGeo.GeometryNumber) score += 5; // Self resonance
@@ -262,21 +262,21 @@ class ThreadsSystem {
                     if (pGeo === charGeo.GeoHarmonics.Nemesis) score -= 5;
                 }
             }
-            
+
             results.push({ prof, score });
         }
-        
+
         // Sort descending by score
         results.sort((a, b) => b.score - a.score);
         return results.map(r => r.prof);
     }
-    
+
     // --- Annex Methods ---
 
     getAnnexes() {
         return this.annexBuilder;
     }
-    
+
     // --- General Methods ---
 
     /**

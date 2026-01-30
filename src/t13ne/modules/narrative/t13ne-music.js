@@ -1,4 +1,4 @@
-import Logger from "@/src/t13ne/core/Logger.js";
+import Logger from "../../core/Logger.js";
 
 /**
  * Simple Seeded RNG for deterministic music generation.
@@ -93,7 +93,7 @@ class T13Synth {
     fadeOut(soundHandle, duration = 4.0) {
         if (!soundHandle) return;
         const now = this.ctx.currentTime;
-        
+
         // Cancel any scheduled updates to prevent conflict
         soundHandle.gain.gain.cancelScheduledValues(now);
         soundHandle.gain.gain.setValueAtTime(soundHandle.gain.gain.value, now);
@@ -109,12 +109,12 @@ class T13Synth {
         const now = this.ctx.currentTime;
         const osc = this.ctx.createOscillator();
         const gain = this.ctx.createGain();
-        
+
         osc.connect(gain);
         gain.connect(this.masterGain);
-        
+
         osc.type = direction === 'rising' ? 'sawtooth' : 'sine';
-        
+
         // Envelope
         gain.gain.setValueAtTime(0, now);
         gain.gain.linearRampToValueAtTime(0.15, now + 1.0);
@@ -153,7 +153,7 @@ class T13NE_Music {
         this.synth = null;
         this.initialized = false;
         this.leitmotifCache = new Map();
-        
+
         this.currentAmbience = null;
         this.currentPlotId = null;
         this.lastTension = -1;
@@ -194,7 +194,7 @@ class T13NE_Music {
         const keyData = this.geometry.getKey(keyNum);
         const baseFreq = keyData.Key.Frequency;
         const harmonics = geo.GeoHarmonics ? geo.GeoHarmonics.Harmonic : [1, 3, 5, 8];
-        
+
         const scaleIntervals = harmonics.map(h => (h - 1) % 12);
         scaleIntervals.push(0);
         scaleIntervals.sort((a, b) => a - b);
@@ -207,7 +207,7 @@ class T13NE_Music {
             const interval = rng.pick(scaleIntervals);
             const octaveOffset = rng.pick([0, 0, 1]);
             const freq = baseFreq * Math.pow(2, (interval + (octaveOffset * 12)) / 12);
-            
+
             sequence.push({
                 freq: freq,
                 duration: rng.pick(noteDurations),
@@ -251,7 +251,7 @@ class T13NE_Music {
 
         motif.sequence.forEach(note => {
             const duration = note.duration * beatTime;
-            const detune = (Math.random() - 0.5) * dissonance; 
+            const detune = (Math.random() - 0.5) * dissonance;
             const type = dissonance > 10 ? 'sawtooth' : 'triangle';
             this.synth.playNote(note.freq, timeCursor, duration, type, detune);
             timeCursor += duration;
@@ -282,7 +282,7 @@ class T13NE_Music {
 
     _calculateAmbienceParams(plot) {
         let rootFreq = 110.0;
-        let scaleType = 'minor'; 
+        let scaleType = 'minor';
         let waveform = 'sine';
         let detune = 0;
         let volume = 0.2;
@@ -299,7 +299,7 @@ class T13NE_Music {
         else { scaleType = 'diminished'; waveform = 'sawtooth'; detune = 15; volume = 0.15; }
 
         const frequencies = [rootFreq];
-        const thirdInterval = scaleType === 'major' ? 4 : 3; 
+        const thirdInterval = scaleType === 'major' ? 4 : 3;
         frequencies.push(rootFreq * Math.pow(2, thirdInterval / 12));
         const fifthInterval = (tension > 6) ? 6 : 7;
         frequencies.push(rootFreq * Math.pow(2, fifthInterval / 12));

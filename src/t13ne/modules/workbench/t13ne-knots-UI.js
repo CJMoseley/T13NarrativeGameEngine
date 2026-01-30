@@ -1,4 +1,4 @@
-﻿import T13NE from '@plugins/t13ne/T13NE.js';
+﻿import T13NE from '@/src/t13ne/T13NE.js';
 import Logger from "@/src/t13ne/core/Logger.js";
 import UI from './t13ne-UI.js';
 import { TIE } from "@/src/t13ne/modules/mechanics/t13ne-knots.js";
@@ -176,13 +176,13 @@ class KnotsUI {
         channelZone.innerHTML = this.workbench.channel ? renderItem(this.workbench.channel, 'channel') : '<span class="placeholder">Drop Channel</span>';
 
         const umbralsZone = document.getElementById('drop-umbrals');
-        umbralsZone.innerHTML = this.workbench.umbrals.length ? 
-            this.workbench.umbrals.map((p, i) => renderItem(p, 'umbrals', i)).join('') : 
+        umbralsZone.innerHTML = this.workbench.umbrals.length ?
+            this.workbench.umbrals.map((p, i) => renderItem(p, 'umbrals', i)).join('') :
             '<span class="placeholder">Drop Umbrals</span>';
 
         const nimbedsZone = document.getElementById('drop-nimbeds');
-        nimbedsZone.innerHTML = this.workbench.nimbeds.length ? 
-            this.workbench.nimbeds.map((p, i) => renderItem(p, 'nimbeds', i)).join('') : 
+        nimbedsZone.innerHTML = this.workbench.nimbeds.length ?
+            this.workbench.nimbeds.map((p, i) => renderItem(p, 'nimbeds', i)).join('') :
             '<span class="placeholder">Drop Nimbeds</span>';
     }
 
@@ -202,12 +202,12 @@ class KnotsUI {
 
         const rootFacet = await getFacetData(this.workbench.root);
         const channelFacet = await getFacetData(this.workbench.channel);
-        
+
         // Tangle logic: Usually Root for Skills, but can be complex. Default to Root.
-        const tangleFacet = rootFacet; 
+        const tangleFacet = rootFacet;
 
         let html = '<h4>Annex Preview</h4>';
-        
+
         if (rootFacet) {
             html += `<div><strong>Root (${rootFacet.FacetName}):</strong> ${rootFacet.Annex_Root_Text || rootFacet.Annex_Root || ''}</div>`;
         }
@@ -215,7 +215,7 @@ class KnotsUI {
             html += `<div><strong>Channel (${channelFacet.FacetName}):</strong> ${channelFacet.Annex_Channel_Text || channelFacet.Annex_Channel || ''}</div>`;
         }
         if (tangleFacet) {
-             html += `<div><strong>Tangle (${tangleFacet.FacetName}):</strong> ${tangleFacet.Tangle_Text || tangleFacet.Tangle || ''}</div>`;
+            html += `<div><strong>Tangle (${tangleFacet.FacetName}):</strong> ${tangleFacet.Tangle_Text || tangleFacet.Tangle || ''}</div>`;
         }
 
         if (this.workbench.umbrals.length > 0) {
@@ -250,9 +250,9 @@ class KnotsUI {
         if (count === 2) type = 'Skill';
         else if (count >= 3 && count <= 5) type = 'Talent';
         else if (count > 5) type = 'Power';
-        
+
         if (count > 0) {
-             html = `<div style="margin-bottom:0.5rem"><span class="status-badge">${type}</span></div>` + html;
+            html = `<div style="margin-bottom:0.5rem"><span class="status-badge">${type}</span></div>` + html;
         }
 
         previewEl.innerHTML = html;
@@ -274,7 +274,7 @@ class KnotsUI {
 
     attachBuilderEventListeners() {
         document.getElementById('create-annex-btn').onclick = () => this.createAnnexFromWorkbench();
-        
+
         const zones = document.querySelectorAll('.drop-zone');
         zones.forEach(zone => {
             zone.ondragover = (e) => { e.preventDefault(); zone.classList.add('drag-over'); };
@@ -291,15 +291,15 @@ class KnotsUI {
 
     addToWorkbench(profId, slot) {
         if (!profId) return;
-        
+
         // Fetch prof if not in cache (should be there from drag source, but safety check)
         // For now assume it's in cache or we just use ID
-        
+
         if (slot === 'root') this.workbench.root = profId;
         else if (slot === 'channel') this.workbench.channel = profId;
         else if (slot === 'umbrals') this.workbench.umbrals.push(profId);
         else if (slot === 'nimbeds') this.workbench.nimbeds.push(profId);
-        
+
         this.renderWorkbench();
         this.updatePreview();
     }
@@ -309,7 +309,7 @@ class KnotsUI {
         else if (slot === 'channel') this.workbench.channel = null;
         else if (slot === 'umbrals' && index !== null) this.workbench.umbrals.splice(index, 1);
         else if (slot === 'nimbeds' && index !== null) this.workbench.nimbeds.splice(index, 1);
-        
+
         this.renderWorkbench();
         this.updatePreview();
     }
@@ -331,12 +331,12 @@ class KnotsUI {
             if (!this.character.subAnnexes) this.character.subAnnexes = [];
             this.character.subAnnexes.push(newAnnex);
             UI.notify(`Annex "${newAnnex.name}" created and added to ${this.character.name}.`, 'success');
-            
+
             // Clear workbench
             this.workbench = { root: null, channel: null, umbrals: [], nimbeds: [] };
             document.getElementById('annex-name-input').value = '';
             document.getElementById('annex-desc-input').value = '';
-            
+
             this.renderWorkbench();
             this.updatePreview();
             this.renderCharacterAnnexes();

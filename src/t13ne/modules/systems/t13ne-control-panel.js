@@ -1,4 +1,4 @@
-﻿import Workbench from './workbench/t13ne-workbench.js';
+﻿import Workbench from '../workbench/t13ne-workbench.js';
 
 const workbench = new Workbench();
 window.Workbench = workbench;

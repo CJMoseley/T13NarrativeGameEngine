@@ -1,13 +1,15 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/ui/
+
 /**
  * Wormhole Racers Engineer's Console UI
  * Purpose: Provides the player interface for toggling ship components on/off and monitoring
  * the dynamic power balance (Generation vs. Drain). Will eventually be a surface inside the 3d environment of the ship
  * at the moment this is little more than a test that ship systems are functional.
- *
- *
+ * 
+ * 
  */
 import { ComponentDefs } from '../procgen/ships/components/ComponentDefs.js';
-import Logger from '../Logger.js';
+import Logger from '../core/Logger.js';
 import { ShipInteriorView } from './ShipInteriorView.js';
 
 export class EngineersConsole {
@@ -45,7 +47,7 @@ export class EngineersConsole {
 		Logger.end(funcName);
 		return container;
 	}
-
+    
 	toggleVisibility() {
 		const funcName = 'EngineersConsole.toggleVisibility';
 		Logger.start(funcName);
@@ -63,7 +65,7 @@ export class EngineersConsole {
 
 		this.shipInteriorView.update();
 		const status = this.ship.powerStatus;
-		let color = status.balance >= 0 ? '#0f0' : '#f00';
+		let color = status.balance >= 0 ? '#0f0' : '#f00'; 
 		this.powerStatusElement.innerHTML = `
             <span style="color:${color};">BALANCE: ${status.balance}</span>
             (Gen: ${status.generation} / Drain: ${status.drain})
@@ -88,3 +90,5 @@ export class EngineersConsole {
 		Logger.end(funcName);
 	}
 }
+
+*/

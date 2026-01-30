@@ -1,4 +1,4 @@
-﻿import T13NE from '@plugins/t13ne/T13NE.js';
+﻿import T13NE from '@/src/t13ne/T13NE.js';
 import Logger from "@/src/t13ne/core/Logger.js";
 
 /**
@@ -54,17 +54,17 @@ export class ActionSpace {
     getDistance(entity1, entity2) {
         const pos1 = this.getPosition(entity1);
         const pos2 = this.getPosition(entity2);
-        
+
         if (!pos1 || !pos2) {
             // Fallback for Theatre of the Mind or abstract spaces
-            return 0; 
+            return 0;
         }
 
         const dx = pos1.x - pos2.x;
         const dy = pos1.y - pos2.y;
         const dz = pos1.z - pos2.z;
-        
-        return Math.sqrt(dx*dx + dy*dy + dz*dz) * this.scale;
+
+        return Math.sqrt(dx * dx + dy * dy + dz * dz) * this.scale;
     }
 
     /**
@@ -79,7 +79,7 @@ export class ActionSpace {
 
         const terrainData = ActionSpacesModule.getTerrainData(this.terrain);
         let multiplier = 1;
-        
+
         if (terrainData && terrainData.Difficulty_Multiplier) {
             multiplier = terrainData.Difficulty_Multiplier;
         }

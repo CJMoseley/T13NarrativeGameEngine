@@ -1,8 +1,8 @@
 ﻿// t13ne-geometry.js
 // ES module: core geometry data and pure functions ported from PHP class T13Geometry
 
-import T13Dice from '@/src/t13ne/modules/mechanics/t13ne-dice.js';
-import T13Name from "@/src/t13ne/modules/characters/t13ne-names.js";
+import T13Dice from '../mechanics/t13ne-dice.js';
+import T13Name from "../characters/t13ne-names.js";
 
 class T13Geometry {
   constructor(codexLoader) {

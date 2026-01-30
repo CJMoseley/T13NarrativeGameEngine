@@ -5,12 +5,12 @@
  * Ordeals are multi-stage, multi-round challenges that characters can face.
  */
 
-import CodexLoader from "@/src/t13ne/modules/codex/CodexLoader.js";
-import Logger from "@/src/t13ne/core/Logger.js";
-import T13NECardsAPI from "@/src/t13ne/modules/mechanics/t13ne-cards-api.js";
-import T13NE_Stakes from '@plugins/t13ne/modules//ordeals/t13ne-stakes.js';
-import T13NE from '@plugins/t13ne/T13NE.js';
-import T13NE_NarrativeTricks from '@plugins/t13ne/modules/ordeals/t13ne-narrative-tricks.js';
+import CodexLoader from "../../codex/CodexLoader.js";
+import Logger from "../../../core/Logger.js";
+import T13NECardsAPI from "../../mechanics/t13ne-cards-api.js";
+import T13NE_Stakes from "./t13ne-stakes.js";
+import T13NE from "../../../T13NE.js";
+import T13NE_NarrativeTricks from "./t13ne-narrative-tricks.js";
 
 /**
  * @class OrdealStage
@@ -51,7 +51,7 @@ class OrdealStage {
         } else {
             this.difficulty = baseDifficulty || 10;
         }
-        
+
         // Add Obstacles based on difficulty or random chance
         this.generateObstacles(stakes);
     }
@@ -63,14 +63,14 @@ class OrdealStage {
     generateObstacles(stakes) {
         const stakeData = T13NE_Stakes.getStake(stakes);
         const multiplier = stakeData ? (stakeData.Cost_Multiplier || 1) : 1;
-        
+
         // Determine number of obstacles: roughly 1 per 15 difficulty points, minimum 1
         const numObstacles = Math.max(1, Math.floor(this.difficulty / 15));
 
         for (let i = 0; i < numObstacles; i++) {
             let obstacleDiff = Math.floor(Math.random() * 10) + 5; // Base 5-14
             obstacleDiff = Math.ceil(obstacleDiff * multiplier);
-            
+
             let name = `Obstacle ${i + 1}`;
             let type = 'Generic';
             let description = 'A challenge to overcome.';
@@ -80,14 +80,14 @@ class OrdealStage {
                 if (card) {
                     name = card.name;
                     obstacleDiff += (parseInt(card.pips) || 0);
-                    
+
                     // Flavor based on suit (1=Diamonds, 2=Hearts, 3=Clubs, 4=Spades)
                     const s = String(card.suit);
                     if (s === '1' || s === 'Diamonds') type = 'Mental';
                     else if (s === '2' || s === 'Hearts') type = 'Social';
                     else if (s === '3' || s === 'Clubs') type = 'Physical';
                     else if (s === '4' || s === 'Spades') type = 'Mystical';
-                    
+
                     description = card.description || card.data?.Narrative_Meaning || description;
                 }
             }
@@ -197,7 +197,7 @@ class Ordeal {
         this.stakes = config.stakes || 'Low';
         this.plot = config.plot || null;
         this.participants = config.participants || []; // Array of Character objects
-        
+
         this.stages = [];
         this.rounds = []; // Rounds for the current stage
         this.currentStageIndex = 0;
@@ -207,7 +207,7 @@ class Ordeal {
         // Initialize State Machine
         const StateMachine = T13NE.getModule('StateMachine');
         this.stateMachine = StateMachine ? StateMachine.createOrdealMachine(this) : null;
-        
+
         this.setupStages(config.numStages || 3);
     }
 
@@ -240,12 +240,12 @@ class Ordeal {
         if (this.rounds.length > 0) {
             this.rounds[this.rounds.length - 1].end();
         }
-        
+
         this.currentRoundIndex++;
         const round = new OrdealRound(this.currentRoundIndex, this.stakes);
         round.start();
         this.rounds.push(round);
-        
+
         Logger.message(`Ordeal ${this.id}: Started Round ${this.currentRoundIndex} at ${this.stakes} Stakes.`);
         return round;
     }
@@ -290,16 +290,16 @@ class Ordeal {
             const tricks = currentRound.checkTricks(options.playedCards);
             if (tricks.length > 0) {
                 Logger.message(`Ordeal ${this.id}: Potential Narrative Tricks found: ${tricks.map(t => t.description).join(', ')}`);
-                
+
                 // Apply trick effects (Difficulty Reduction)
                 tricks.forEach(trick => {
                     let reduction = trick.modifier || 0;
-                    
+
                     if (!reduction) {
                         if (trick.type === 'Pair') reduction = 2;
                         else if (trick.type === 'Set') reduction = 5;
                     }
-                    
+
                     if (reduction > 0) {
                         difficulty = Math.max(0, difficulty - reduction);
                         Logger.message(`Ordeal ${this.id}: Applied trick '${trick.type}' - Difficulty reduced by ${reduction}.`);
@@ -310,10 +310,10 @@ class Ordeal {
         }
 
         // Perform the test using 'Ordeal' type to apply Stakes multipliers
-        const result = await Tests.performTest('Ordeal', character, { 
+        const result = await Tests.performTest('Ordeal', character, {
             difficulty: difficulty,
             stakes: this.stakes,
-            ...options 
+            ...options
         });
 
         // Check if the action resolved the final obstacle
@@ -370,7 +370,7 @@ class Ordeal {
                 const resourceType = options.resourceType || 'Chi';
                 // If paying specifically, amount is the limit. If method is resource, amount defaults to difficulty.
                 const amountToPay = options.amount || (method === 'resource' ? obstacle.difficulty : 0);
-                
+
                 if (amountToPay > 0) {
                     if (Resources.makePayment(character, resourceType, amountToPay)) {
                         swayTotal += amountToPay;
@@ -384,13 +384,13 @@ class Ordeal {
 
         // 2. Handle Tests (Generating Sway)
         const isTest = ['test', 'annex', 'dice', 'card', 'value', 'ordeal'].includes(method) || options.performTest;
-        
+
         if (isTest) {
             if (Tests) {
                 const testType = (method === 'test' || method === 'annex') ? 'Dice' : (method === 'ordeal' ? 'Ordeal' : method);
                 const testOptions = {
                     difficulty: obstacle.difficulty, // Pass difficulty for success check context
-                    facet: options.facet || 'Awe', 
+                    facet: options.facet || 'Awe',
                     ...options
                 };
 
@@ -402,7 +402,7 @@ class Ordeal {
                 }
 
                 const testResult = await Tests.performTest(testType, character, testOptions);
-                
+
                 // Extract Sway/Score from result
                 let generatedSway = testResult.total || testResult.actorValue || 0;
                 swayTotal += generatedSway;
@@ -471,13 +471,13 @@ class Ordeal {
         if (!round) return null;
 
         const participants = this.participants.map(p => p.id || p.name);
-        
+
         // Calculate Flowing (Tricks > Max Wound > Soaked > Prep/Move)
         const flowSorted = [...participants].sort((a, b) => {
             const stats = round.tideStats;
             const diffTricks = (stats.tricks[b] || 0) - (stats.tricks[a] || 0);
             if (diffTricks !== 0) return diffTricks;
-            
+
             const diffWound = (stats.maxWound[b] || 0) - (stats.maxWound[a] || 0);
             if (diffWound !== 0) return diffWound;
 
@@ -505,7 +505,7 @@ class Ordeal {
             const drawn = T13NECardsAPI.deck.draw(1);
             if (drawn.length > 0) tideCard = drawn[0];
         }
-        
+
         Logger.message(`Ordeal ${this.id}: Tide of Battle - Flowing: ${flowing}, Ebbing: ${ebbing}, Card: ${tideCard ? tideCard.name : 'None'}`);
 
         return { flowing, ebbing, card: tideCard };
@@ -557,10 +557,10 @@ class T13NE_Ordeals {
             participants,
             plot
         });
-        
+
         // Start the ordeal process
         ordeal.start();
-        
+
         this.activeOrdeals.push(ordeal);
         return ordeal;
     }

@@ -3,11 +3,11 @@
  * Handles Drama, Tension, and Stress relief systems.
  * Implements logic for Atmospherics, Hazards, Prods, Breaks, and Ratchets.
  */
-import CodexLoader from "@/src/t13ne/modules/codex/CodexLoader.js";
-import Logger from "@/src/t13ne/core/Logger.js";
-import T13Dice from '@/src/t13ne/modules/mechanics/t13ne-dice.js';
-import T13NECardsAPI from "@/src/t13ne/modules/mechanics/t13ne-cards-api.js";
-import T13NE_Facets from "@/src/t13ne/modules/mechanics/t13ne-facets.js";
+import CodexLoader from "../codex/CodexLoader.js";
+import Logger from "../../core/Logger.js";
+import T13Dice from '../mechanics/t13ne-dice.js';
+import T13NECardsAPI from "../mechanics/t13ne-cards-api.js";
+import T13NE_Facets from "../mechanics/t13ne-facets.js";
 
 /**
  * Module for handling T13NE Drama, Tension, and Stress relief systems.
@@ -75,37 +75,37 @@ class T13NE_Drama {
     _loadDefaultAtmospherics() {
         // Defaults based on T13NE Rules "Drama" page
         this.data.atmospherics = {
-              'Contemporary': [
-                  { text: "Social media notifications ping incessantly.", sfx: "notification_ping", vfx: "screen_glare" },
-                  { text: "Distant sirens wail.", sfx: "siren_wail_dist" },
-                  { text: "Traffic noise swells.", sfx: "traffic_city" },
-                  { text: "A phone vibrates on a table.", sfx: "phone_vibrate", vfx: "shake_small" },
-                  { text: "Neon signs buzz and flicker.", sfx: "neon_buzz", lighting: { type: "flicker", color: "#FF00FF", duration: 1000 } }
-              ],
-              'Horror': [
-                  { text: "A wolf howls in the distance.", sfx: "wolf_howl" },
-                  { text: "A candle gutters and dims.", lighting: { type: "dim_flicker", intensity: 0.3, duration: 2500 } },
-                  { text: "Strange knocking on the walls.", sfx: "knocking_wood_3" },
-                  { text: "A floorboard creaks behind you.", sfx: "creak_wood" },
-                  { text: "The wind whistles through a crack.", sfx: "wind_whistle" },
-                  { text: "Shadows lengthen unnaturally.", lighting: { type: "shadow_grow", duration: 5000 } }
-              ],
-              'Fantasy': [
-                  { text: "Weird tracks found in the mud.", vfx: "highlight_tracks" },
-                  { text: "Strange noises from a bush.", sfx: "rustle_bush" },
-                  { text: "Enchanted mushrooms glow softly.", lighting: { type: "pulse", color: "#00FF00", intensity: 0.4 } },
-                  { text: "Distant thunder rolls.", sfx: "thunder_dist" }
-              ],
-              'Sci-Fi': [
-                  { text: "Two suns setting cast long shadows.", lighting: { type: "sunset_double", color: "#FF4400" } },
-                  { text: "Holographic advertising drones glitch.", sfx: "static_burst", vfx: "hologram_glitch" },
-                  { text: "A ship engine rumbles overhead.", sfx: "spaceship_flyby" }
-              ],
-              'Cyberpunk': [
-                  { text: "Flickering LEDs illuminate the rain.", lighting: { type: "strobe", color: "#00FFFF" }, vfx: "rain_overlay" },
-                  { text: "Pink noise music thumps nearby.", sfx: "music_muffled_bass" },
-                  { text: "Surveillance drones hum past.", sfx: "drone_hover" }
-              ]
+            'Contemporary': [
+                { text: "Social media notifications ping incessantly.", sfx: "notification_ping", vfx: "screen_glare" },
+                { text: "Distant sirens wail.", sfx: "siren_wail_dist" },
+                { text: "Traffic noise swells.", sfx: "traffic_city" },
+                { text: "A phone vibrates on a table.", sfx: "phone_vibrate", vfx: "shake_small" },
+                { text: "Neon signs buzz and flicker.", sfx: "neon_buzz", lighting: { type: "flicker", color: "#FF00FF", duration: 1000 } }
+            ],
+            'Horror': [
+                { text: "A wolf howls in the distance.", sfx: "wolf_howl" },
+                { text: "A candle gutters and dims.", lighting: { type: "dim_flicker", intensity: 0.3, duration: 2500 } },
+                { text: "Strange knocking on the walls.", sfx: "knocking_wood_3" },
+                { text: "A floorboard creaks behind you.", sfx: "creak_wood" },
+                { text: "The wind whistles through a crack.", sfx: "wind_whistle" },
+                { text: "Shadows lengthen unnaturally.", lighting: { type: "shadow_grow", duration: 5000 } }
+            ],
+            'Fantasy': [
+                { text: "Weird tracks found in the mud.", vfx: "highlight_tracks" },
+                { text: "Strange noises from a bush.", sfx: "rustle_bush" },
+                { text: "Enchanted mushrooms glow softly.", lighting: { type: "pulse", color: "#00FF00", intensity: 0.4 } },
+                { text: "Distant thunder rolls.", sfx: "thunder_dist" }
+            ],
+            'Sci-Fi': [
+                { text: "Two suns setting cast long shadows.", lighting: { type: "sunset_double", color: "#FF4400" } },
+                { text: "Holographic advertising drones glitch.", sfx: "static_burst", vfx: "hologram_glitch" },
+                { text: "A ship engine rumbles overhead.", sfx: "spaceship_flyby" }
+            ],
+            'Cyberpunk': [
+                { text: "Flickering LEDs illuminate the rain.", lighting: { type: "strobe", color: "#00FFFF" }, vfx: "rain_overlay" },
+                { text: "Pink noise music thumps nearby.", sfx: "music_muffled_bass" },
+                { text: "Surveillance drones hum past.", sfx: "drone_hover" }
+            ]
         };
     }
 
@@ -234,31 +234,31 @@ class T13NE_Drama {
        * @param {object} [character=null] - The character experiencing the atmospheric (for stress relief).
        * @returns {object} The atmospheric event object { type, text, stressRelief, appliedTo }.
      */
-      triggerAtmospheric(genre = 'Contemporary', character = null) {
-          const list = this.data.atmospherics[genre] || this.data.atmospherics['Contemporary'];
-          const entry = list[Math.floor(Math.random() * list.length)];
-          
-          // Handle both string (legacy) and object formats
-          const atmosphericText = typeof entry === 'string' ? entry : entry.text;
-          const effects = typeof entry === 'object' ? entry : {};
+    triggerAtmospheric(genre = 'Contemporary', character = null) {
+        const list = this.data.atmospherics[genre] || this.data.atmospherics['Contemporary'];
+        const entry = list[Math.floor(Math.random() * list.length)];
 
-          const stressRelief = this.getStressRelief('Atmospheric');
-          
-          let result = {
-              type: 'Atmospheric',
-              text: atmosphericText,
-              stressRelief: stressRelief,
-              appliedTo: null,
-              ...effects // Spread sfx, vfx, lighting into the result
-          };
+        // Handle both string (legacy) and object formats
+        const atmosphericText = typeof entry === 'string' ? entry : entry.text;
+        const effects = typeof entry === 'object' ? entry : {};
 
-          if (character && typeof character.relieveStress === 'function') {
-              character.relieveStress(stressRelief);
-              result.appliedTo = character.name;
-          }
+        const stressRelief = this.getStressRelief('Atmospheric');
 
-          Logger.message(`T13NE_Drama: Triggered Atmospheric (${genre}): ${atmosphericText}`);
-          return result;
+        let result = {
+            type: 'Atmospheric',
+            text: atmosphericText,
+            stressRelief: stressRelief,
+            appliedTo: null,
+            ...effects // Spread sfx, vfx, lighting into the result
+        };
+
+        if (character && typeof character.relieveStress === 'function') {
+            character.relieveStress(stressRelief);
+            result.appliedTo = character.name;
+        }
+
+        Logger.message(`T13NE_Drama: Triggered Atmospheric (${genre}): ${atmosphericText}`);
+        return result;
     }
 
     /**

@@ -39,71 +39,102 @@ class LoaderManager {
             { name: 'Plugins', action: () => this.pluginManager.discoverAndLoadPlugins(this) },
             { name: 'Initialize Plugins', action: () => this.pluginManager.initializePlugins(this) },
             { name: 'Physics Engine', action: () => this.gameEngine.physicsEngine.init() },
+            { name: 'Sound Engine', action: () => this.viewManager.engine.soundEngine.init() },
             { name: 'Lore Data', action: () => this.loreDataManager.load() },
             { name: 'Game Engine Data', action: () => this.gameEngine.initializeDataDependents() },
 
-            // Visual Loading Sequence - Now queued via ViewManager
-            { name: 'Queue Visuals', action: async () => {
-                // Hide IntroSequence to reveal the visual sequence
-                IntroSequence.hide();
-
-                // 1. Galaxy View
-                // We clear the previous cue and replace it with a more complex one.
-                this.viewManager.sceneQueue = []; // Clear any previous cues just in case
-
-                this.viewManager.cueScene('GalaxyMapScene', { attractMode: true }, {
-                    duration: 4000,
-                    onActive: async (scene) => {
-                        // Wait a bit then focus
-                        await new Promise(r => setTimeout(r, 1000));
-                        if (scene && typeof scene.focusOnSystem === 'function' && this.gameEngine.playerStartSystem) {
-                            await scene.focusOnSystem(this.gameEngine.playerStartSystem);
+            // Generate and Start Music (Best effort, might need user interaction)
+            {
+                name: 'Intro Music', action: async () => {
+                    const music = this.viewManager.engine.getModule('Music');
+                    if (music) {
+                        const theme = await music.createWormholeTheme();
+                        if (theme) {
+                            // Try to play. If AudioContext is suspended, we need a gesture.
+                            if (music.synth && music.synth.ctx.state === 'suspended') {
+                                try {
+                                    // Try automatic resume first (some browsers allow this if previously interacted)
+                                    await music.synth.ctx.resume();
+                                } catch (e) {
+                                    Logger.warn("AudioContext resume blocked. Prompting user for gesture.");
+                                    await new Promise(resolve => {
+                                        IntroSequence.promptForInteraction(async () => {
+                                            await music.synth.ctx.resume();
+                                            resolve();
+                                        });
+                                    });
+                                }
+                            }
+                            music.playTrackObject(theme);
                         }
                     }
-                });
+                }
+            },
 
-                // 3. System View
-                // We need to prepare the data for the system view first
-                if (this.gameEngine.playerStartSystem) {
-                    const systemDetails = await this.gameEngine.galaxyGenerator.getSystemDetails(this.gameEngine.playerStartSystem);
-                    const systemGen = this.gameEngine.loreMaster.stellarSystemGenerator;
-                    const planets = systemGen.generatePlanets(systemDetails);
+            // Visual Loading Sequence - Now queued via ViewManager
+            {
+                name: 'Queue Visuals', action: async () => {
+                    // Hide IntroSequence to reveal the visual sequence
+                    IntroSequence.hide();
 
-                    // Store for reuse (e.g. in TestMenu or return to system)
-                    this.gameEngine.currentSystemDetails = systemDetails;
-                    this.gameEngine.currentPlanets = planets;
+                    // 1. Galaxy View
+                    // We clear the previous cue and replace it with a more complex one.
+                    this.viewManager.sceneQueue = []; // Clear any previous cues just in case
 
-                    this.viewManager.cueScene('StellarSystemScene', {
-                        systemDetails,
-                        planets,
-                        star: this.gameEngine.playerStartSystem,
-                        galaxy: this.gameEngine.galaxy,
-                        playIntro: true
-                    }, {
-                        duration: 20000, // Increased duration to allow full flyby sequence (18s)
-                        transition: { type: 'crossDissolve', duration: 2000 },
+                    this.viewManager.cueScene('GalaxyMapScene', { attractMode: true }, {
+                        duration: 4000,
                         onActive: async (scene) => {
-                            // Delegate animation to the scene itself for better control over coordinates
-                            if (typeof scene.playIntroSequence === 'function') {
-                                await scene.playIntroSequence();
+                            // Wait a bit then focus
+                            await new Promise(r => setTimeout(r, 1000));
+                            if (scene && typeof scene.focusOnSystem === 'function' && this.gameEngine.playerStartSystem) {
+                                await scene.focusOnSystem(this.gameEngine.playerStartSystem);
                             }
                         }
                     });
+
+                    // 3. System View
+                    // We need to prepare the data for the system view first
+                    if (this.gameEngine.playerStartSystem) {
+                        const systemDetails = await this.gameEngine.galaxyGenerator.getSystemDetails(this.gameEngine.playerStartSystem);
+                        const systemGen = this.gameEngine.loreMaster.stellarSystemGenerator;
+                        const planets = systemGen.generatePlanets(systemDetails);
+
+                        // Store for reuse (e.g. in TestMenu or return to system)
+                        this.gameEngine.currentSystemDetails = systemDetails;
+                        this.gameEngine.currentPlanets = planets;
+
+                        this.viewManager.cueScene('StellarSystemScene', {
+                            systemDetails,
+                            planets,
+                            star: this.gameEngine.playerStartSystem,
+                            galaxy: this.gameEngine.galaxy,
+                            playIntro: true
+                        }, {
+                            duration: 20000, // Increased duration to allow full flyby sequence (18s)
+                            transition: { type: 'crossDissolve', duration: 2000 },
+                            onActive: async (scene) => {
+                                // Delegate animation to the scene itself for better control over coordinates
+                                if (typeof scene.playIntroSequence === 'function') {
+                                    await scene.playIntroSequence();
+                                }
+                            }
+                        });
+                    }
+
+                    // 4. Ship Showcase
+                    this.viewManager.cueScene('ShipShowcaseScene', {}, {
+                        duration: 0, // It handles its own exit
+                        onActive: async () => {
+                            IntroSequence.hide(); // Reveal scene
+                        },
+                        transition: { type: 'wipe', duration: 1200, direction: 'up' }
+                    });
+
+                    // Start the sequence and WAIT for it to finish
+                    // This prevents the UI from overlaying "Welcome" text on top of the ship generation
+                    await this.viewManager.playSequence();
                 }
-
-                // 4. Ship Showcase
-                this.viewManager.cueScene('ShipShowcaseScene', {}, {
-                    duration: 0, // It handles its own exit
-                    onActive: async () => {
-                        IntroSequence.hide(); // Reveal scene
-                    },
-                    transition: { type: 'wipe', duration: 1200, direction: 'up' }
-                });
-
-                // Start the sequence and WAIT for it to finish
-                // This prevents the UI from overlaying "Welcome" text on top of the ship generation
-                await this.viewManager.playSequence();
-            }},
+            },
 
             { name: 'Galactic History', action: () => this.galacticHistoryManager.load(this.pluginManager, this.gameEngine.loreMaster) },
         ];

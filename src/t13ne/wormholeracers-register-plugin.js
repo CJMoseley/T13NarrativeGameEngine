@@ -1,4 +1,4 @@
-import { T13Plugin } from '@plugins/t13ne/T13Plugin.js';
+import { T13Plugin } from './T13Plugin.js';
 
 /**
  * @module Plugins/T13Ne/Registration

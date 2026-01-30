@@ -380,6 +380,7 @@
                 grid-template-columns: 1fr;
                 grid-template-rows: auto 1fr;
             }
+
             .narrative-layout {
                 grid-template-columns: 1fr !important;
                 grid-template-rows: 1fr auto;
@@ -655,7 +656,8 @@
     <main>
         <!-- Narrative View -->
         <div id="view-narrative" class="view-content active">
-            <div class="narrative-layout" style="display: grid; grid-template-columns: 1fr 380px; gap: 1.5rem; height: 100%; min-height: 0;">
+            <div class="narrative-layout"
+                style="display: grid; grid-template-columns: 1fr 380px; gap: 1.5rem; height: 100%; min-height: 0;">
                 <div style="overflow-y: auto; min-height: 0; padding-right: 0.5rem;">
                     <h2 style="margin-bottom: 1rem; font-family: Outfit;">Active Narrative Glob</h2>
                     <div id="packet-list"></div>
@@ -737,7 +739,7 @@
         </div>
     </footer>
 
-    <script type="module" src="./modules/t13ne-control-panel.js"></script>
+    <script type="module" src="./modules/systems/t13ne-control-panel.js"></script>
 </body>
 
 </html>

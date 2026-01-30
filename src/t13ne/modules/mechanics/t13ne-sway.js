@@ -5,9 +5,9 @@
  * potency levels, and descriptive naming of facets.
  */
 
-import T13NE_SwayData from '@/src/t13ne/modules/mechanics/t13ne-sway-data.js';
-import Logger from "@/src/t13ne/core/Logger.js";
-import T13Tapestry from "@/src/t13ne/modules/world/T13Tapestry.js";
+import T13NE_SwayData from './t13ne-sway-data.js';
+import Logger from "../../core/Logger.js";
+import T13Tapestry from "../world/T13Tapestry.js";
 
 let T13Boons; // Will be imported dynamically
 let currentTapestry = null;

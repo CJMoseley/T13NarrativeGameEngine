@@ -1,11 +1,13 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/ui/
+
 /**
  * Wormhole Racers Rendering Engine (GPU-Optimized)
  * Source: [Documentation Sections: Graphics Requirements, Wormhole Visualization, 12D Perlin Noise]
- * Purpose: Manages the 3D scene, camera, and translates the 12D Perlin Noise
+ * Purpose: Manages the 3D scene, camera, and translates the 12D Perlin Noise 
  * into a localized, visible 3D wormhole mesh using GPU shaders (GLSL/WGSL).
- * Requirement: Must use a GPU to handle the 12D noise sampling in real-time. Visualization
+ * Requirement: Must use a GPU to handle the 12D noise sampling in real-time. Visualization 
  * must reflect the component and galactic frequencies via ColourUtils.
- *
+ * 
  * this is almost certianly incorrect and does not do what was asked for.
  * the wormhole rendering engine is meant to create a 3d model of the wormhole based on the ship conponents and a rotated corsssection of some of the 12D perlin noise
  * the wormhole is meant to be a dynamic moving tunnel, vibrating across its entire length like a guitar string, with a structure that reacts to the ship components and the galactic conditions,
@@ -14,7 +16,7 @@
 import { WormholeEnvironment } from '../procgen/system/WormholeEnvironment.js';
 // PLACEHOLDER: import * as THREE from 'three'; // Placeholder for the eventual library
 
-import Logger from '../Logger.js';
+import Logger from '../core/Logger.js';
 import { VectorMaths } from '../utils/VectorMaths.js';
 
 // Minimal WebGL helper functions (matrix math)
@@ -375,3 +377,5 @@ export class Renderer {
         // (Could be extended to a proper mesh)
     }
 }
+
+*/

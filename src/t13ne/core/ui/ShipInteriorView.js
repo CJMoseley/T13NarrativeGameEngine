@@ -1,9 +1,11 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/ui/
+
 /**
  * Ship Interior View
  *
  * Renders a 2D grid representing the ship's interior and the components placed within it.
  */
-import Logger from '../Logger.js';
+import Logger from '../core/Logger.js';
 
 export class ShipInteriorView {
     constructor(ship) {
@@ -70,3 +72,5 @@ export class ShipInteriorView {
         Logger.end(funcName);
     }
 }
+
+*/

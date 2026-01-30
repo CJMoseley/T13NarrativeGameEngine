@@ -1,5 +1,7 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/ui/
+
 import { LoreData } from '../procgen/lore/LoreData.js';
-import Logger from '../Logger.js';
+import Logger from '../core/Logger.js';
 //not sure this works at all, and it certainly does not look like it can produce very complicated SVG portraits. I think this needs a lot of work moving forwards.
 class PortraitGenerator {
     constructor() {
@@ -130,3 +132,5 @@ class PortraitGenerator {
 }
 
 export const portraitGenerator = new PortraitGenerator();
+
+*/

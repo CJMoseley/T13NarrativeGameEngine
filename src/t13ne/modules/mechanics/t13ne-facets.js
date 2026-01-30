@@ -23,7 +23,7 @@ const loadAllFacets = async () => {
     if (allFacetsLoaded) return;
     const promises = facets.map(facetName => {
         console.log(`Loading facet: ${facetName}`);
-        return import(`@/src/t13ne/data/facets/${facetName}.js`).then(module => {
+        return import(`../../data/facets/${facetName}.js`).then(module => {
             loadedFacets.set(facetName, module.default);
             loadedFacets.set(module.default.FacetIndex, module.default);
             loadedFacets.set(module.default.FacetName.toLowerCase(), module.default);
@@ -49,7 +49,7 @@ const getFacet = async (identifier) => {
     // If it's a number, find by index name
     if (typeof facetIdentifier === 'number' && facets[facetIdentifier]) {
         const facetName = facets[facetIdentifier];
-        const module = await import(`@/src/t13ne/data/facets/${facetName}.js`);
+        const module = await import(`../../data/facets/${facetName}.js`);
         loadedFacets.set(facetName, module.default);
         loadedFacets.set(module.default.FacetIndex, module.default);
         loadedFacets.set(module.default.FacetName.toLowerCase(), module.default);
@@ -58,7 +58,7 @@ const getFacet = async (identifier) => {
 
     // If it's a string that matches a file name
     if (typeof facetIdentifier === 'string' && facets.includes(facetIdentifier)) {
-        const module = await import(`@/src/t13ne/data/facets/${facetIdentifier}.js`);
+        const module = await import(`../../data/facets/${facetIdentifier}.js`);
         loadedFacets.set(facetIdentifier, module.default);
         loadedFacets.set(module.default.FacetIndex, module.default);
         loadedFacets.set(module.default.FacetName.toLowerCase(), module.default);

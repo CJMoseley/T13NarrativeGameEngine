@@ -7,8 +7,8 @@ import { EventBus } from './EventBus.js';
 // The Scene base class is now the authority on what a scene is.
 import { Scene } from './Scene.js';
 import { PluginManager } from './PluginManager.js'; // Import PluginManager
-import { LoreData } from '@/js/procgen/lore/LoreData.js'; // Import LoreData
-import { GalacticHistory } from '@/js/procgen/galaxy/GalacticHistory.js'; // Import GalacticHistory
+import { LoreData } from '../procgen/lore/LoreData.js'; // Import LoreData
+import { GalacticHistory } from '../procgen/galaxy/GalacticHistory.js'; // Import GalacticHistory
 import { UIMessage } from './ui/UIMessage.js';
 import Localization from './ui/Localization.js';
 
@@ -267,7 +267,7 @@ export class ViewManager {
         const startTime = performance.now();
         // We use the base Scene class as a lightweight benchmark
         const dummyScene = new Scene(this);
-        await dummyScene.prepare(() => {});
+        await dummyScene.prepare(() => { });
         const endTime = performance.now();
 
         this.systemLatency = endTime - startTime;
@@ -414,7 +414,7 @@ export class ViewManager {
                 // Ensure we don't switch faster than the safety buffer allows for stability
                 const totalTime = performance.now() - startTime;
                 if (totalTime < safetyBuffer) {
-                     await new Promise(resolve => setTimeout(resolve, safetyBuffer - totalTime));
+                    await new Promise(resolve => setTimeout(resolve, safetyBuffer - totalTime));
                 }
 
                 // 5. Ensure next scene is ready before we loop to transition
@@ -562,9 +562,9 @@ export class ViewManager {
         if (type === 'fade' || type === 'fadeToBlack') {
             // Fade to color
             void overlay.offsetWidth; // Force reflow
-            overlay.style.transition = `opacity ${duration/2}ms ease-in`;
+            overlay.style.transition = `opacity ${duration / 2}ms ease-in`;
             overlay.style.opacity = '1';
-            await new Promise(r => setTimeout(r, duration/2));
+            await new Promise(r => setTimeout(r, duration / 2));
         } else {
             // For visual transitions, we already set opacity 1 (freeze frame).
             // Wait a frame to ensure it's rendered.
@@ -580,9 +580,9 @@ export class ViewManager {
         void overlay.offsetWidth; // Force reflow
 
         if (type === 'fade' || type === 'fadeToBlack') {
-            overlay.style.transition = `opacity ${duration/2}ms ease-out`;
+            overlay.style.transition = `opacity ${duration / 2}ms ease-out`;
             overlay.style.opacity = '0';
-            await new Promise(r => setTimeout(r, duration/2));
+            await new Promise(r => setTimeout(r, duration / 2));
         }
         else if (type === 'crossDissolve') {
             overlay.style.transition = `opacity ${duration}ms ease`;
@@ -710,12 +710,12 @@ export class ViewManager {
 
         // Fallback to main menu if not already there
         if (sceneName !== 'MainMenuScene') {
-             Logger.message("ViewManager: Attempting fallback to Main Menu.");
-             this.showMainMenu();
+            Logger.message("ViewManager: Attempting fallback to Main Menu.");
+            this.showMainMenu();
         } else {
-             // If Main Menu fails, we are in trouble.
-             console.error("Critical Error: Unable to load Main Menu. Game is in an unrecoverable state.");
-             alert("Critical Error: Unable to load game views. Please refresh the page.");
+            // If Main Menu fails, we are in trouble.
+            console.error("Critical Error: Unable to load Main Menu. Game is in an unrecoverable state.");
+            alert("Critical Error: Unable to load game views. Please refresh the page.");
         }
     }
 
@@ -740,8 +740,8 @@ export class ViewManager {
             Logger.warn("ViewManager: UIManager.showMainMenu failed, using fallback.", e);
             // Try multiple common IDs for the main menu
             const menu = document.getElementById('main-menu') ||
-                         document.getElementById('mainMenu') ||
-                         document.querySelector('.main-menu');
+                document.getElementById('mainMenu') ||
+                document.querySelector('.main-menu');
 
             if (menu) {
                 Logger.message("ViewManager: Found Main Menu element, forcing display.");

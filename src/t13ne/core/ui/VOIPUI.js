@@ -1,4 +1,6 @@
-import Logger from '../Logger.js';
+/* LEGACY CODE - MOVED TO src/t13ne/core/ui/
+
+import Logger from '../core/Logger.js';
 
 /**
  * Manages the VOIP user interface.
@@ -192,3 +194,5 @@ export class VOIPUI {
         Logger.end(funcName);
     }
 }
+
+*/

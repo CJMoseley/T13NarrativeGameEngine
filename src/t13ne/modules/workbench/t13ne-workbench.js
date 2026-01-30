@@ -1,6 +1,6 @@
 ﻿import Logger from "@/src/t13ne/core/Logger.js";
-import AuthorMain from '@plugins/t13ne/AuthorMain.js';
-import T13NE from '@plugins/t13ne/T13NE.js';
+import AuthorMain from '@/src/t13ne/AuthorMain.js';
+import T13NE from '@/src/t13ne/T13NE.js';
 import UI from './t13ne-UI.js';
 import NarrativeUI from './t13ne-narrative-UI.js';
 import ThreadsUI from './t13ne-threads-UI.js';
@@ -167,7 +167,7 @@ export default class Workbench {
         if (el) {
             el.style.opacity = '0';
             el.style.pointerEvents = 'none';
-            setTimeout(() => { if(el.parentNode) el.parentNode.removeChild(el); }, 300);
+            setTimeout(() => { if (el.parentNode) el.parentNode.removeChild(el); }, 300);
         }
     }
 

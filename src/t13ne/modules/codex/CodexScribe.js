@@ -209,14 +209,14 @@ export class CodexScribe {
             // For now, we assume the caller handles the instance or we pass `this.loader` if we had it.
             // Actually, the classes expect `codexLoader`.
             // We will rely on the fact that `import CodexLoader` gets the singleton instance.
-            const CodexLoader = (await import('@/src/t13ne/modules/codex/CodexLoader.js')).default;
+            const CodexLoader = (await import('./CodexLoader.js')).default;
             return new Character(CodexLoader, data);
         } else if (type === 'Descendant') {
-            const { Descendant } = await import('@/src/t13ne/modules/characters/t13ne-descendants.js');
-            const CodexLoader = (await import('@/src/t13ne/modules/codex/CodexLoader.js')).default;
+            const { Descendant } = await import('../characters/t13ne-descendants.js');
+            const CodexLoader = (await import('./CodexLoader.js')).default;
             return new Descendant(CodexLoader, data);
         } else if (type === 'T13Tapestry') {
-            const { default: Tapestry } = await import('@/src/t13ne/modules/world/T13Tapestry.js');
+            const { default: Tapestry } = await import('../world/T13Tapestry.js');
             return new Tapestry(data);
         } else if (type === 'T13Game') {
             // Circular dependency risk if importing T13Game here directly? 

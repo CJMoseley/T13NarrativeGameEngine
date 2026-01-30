@@ -5,11 +5,11 @@
  * It uses the CodexLoader to get card data and PRNG for randomness.
  */
 
-import { Card, Deck } from '@/src/t13ne/modules/mechanics/t13ne-cards.js';
-import PRNG from '@/src/t13ne/modules/systems/t13ne-prng.js';
-import dice from '@/src/t13ne/modules/mechanics/t13ne-dice.js';
-import Logger from '@/src/t13ne/core/Logger.js';
-import CodexLoader from '@/src/t13ne/modules/codex/CodexLoader.js'; // Import CodexLoader
+import { Card, Deck } from './t13ne-cards.js';
+import PRNG from '../systems/t13ne-prng.js';
+import dice from './t13ne-dice.js';
+import Logger from '../../core/Logger.js';
+import CodexLoader from '../codex/CodexLoader.js'; // Import CodexLoader
 
 // Helper function to gather entropy from various browser sources
 async function gatherEntropy() {

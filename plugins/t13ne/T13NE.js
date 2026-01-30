@@ -1,4 +1,4 @@
-import Logger from './core/Logger.js';
+import Logger from '@/src/t13ne/core/Logger.js';
 import T13NE_Facets from '@plugins/t13ne/modules/t13ne-facets.js'; // Import the new facets module
 import T13NE_Sway from '@plugins/t13ne/modules/t13ne-sway.js';
 import CodexLoader from '@plugins/t13ne/modules/CodexLoader.js';
@@ -43,10 +43,10 @@ import T13NE_Reasoning from '@plugins/t13ne/modules/t13ne-reasoning.js';
 import T13NE_StateMachine from '@plugins/t13ne/modules/t13ne-state-machine.js';
 import T13NE_Editor from '@plugins/t13ne/modules/t13ne-editor.js';
 
-import { ViewManager } from './core/ViewManager.js';
-import { PluginManager } from './core/PluginManager.js';
-import { SoundEngine } from './core/SoundEngine.js';
-import LoaderManager from './core/LoaderManager.js';
+import { ViewManager } from '@/src/t13ne/core/ViewManager.js';
+import { PluginManager } from '@/src/t13ne/core/PluginManager.js';
+import { SoundEngine } from '@/src/t13ne/core/SoundEngine.js';
+import LoaderManager from '@/src/t13ne/core/LoaderManager.js';
 
 /**
  * T13NE Engine Core

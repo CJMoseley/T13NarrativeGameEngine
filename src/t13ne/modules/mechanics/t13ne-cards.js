@@ -1,5 +1,5 @@
-﻿import PRNG from "@/src/t13ne/modules/systems/t13ne-prng.js";
-import CodexLoader from "@/src/t13ne/modules/codex/CodexLoader.js"; // Import CodexLoader
+﻿import PRNG from "../systems/t13ne-prng.js";
+import CodexLoader from "../codex/CodexLoader.js"; // Import CodexLoader
 
 class Card {
     constructor(data, sourceDeckId = 'base', backColor = 'blue') {

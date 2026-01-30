@@ -1,4 +1,4 @@
-import Logger from '@/src/t13ne/core/Logger.js';
+import Logger from './core/Logger.js';
 import T13NE from './T13NE.js';
 
 /**
@@ -28,7 +28,7 @@ class AuthorMain {
 
             // Inject Proficiency Extractor if not already present
             if (!T13NE.getModule('ProficiencyExtractor')) {
-                const { default: Extractor } = await import('./modules/T13ProficiencyExtractor.js');
+                const { default: Extractor } = await import('./modules/world/T13ProficiencyExtractor.js');
                 const CodexLoader = T13NE.getModule('Codex');
                 T13NE.modules.ProficiencyExtractor = new Extractor(T13NE, CodexLoader);
                 await T13NE.modules.ProficiencyExtractor.initialize();

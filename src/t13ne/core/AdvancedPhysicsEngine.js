@@ -1,12 +1,12 @@
 import * as THREE from 'three';
-import Logger from './Logger.js';
-import { PhysXProvider } from './physics/PhysXProvider.js';
-import { PlanetaryRenderer } from '@/js/rendering/PlanetaryRenderer.js';
-import { WormholeShader } from '@/js/rendering/WormholeShader.js';
-import { PlanetSurfaceEnvironment } from '@/js/procgen/planet/PlanetSurfaceEnvironment.js';
-import { WormholeEnvironment } from '@/js/procgen/galaxy/WormholeEnvironment.js';
-import { Controls } from './Controls.js';
-import { ComponentDefs } from '@/js/procgen/ships/components/ComponentDefs.js';
+import Logger from '@/src/t13ne/core/Logger.js';
+import { PhysXProvider } from '@/src/t13ne/core/physics/PhysXProvider.js';
+import { PlanetaryRenderer } from '@/src/t13ne/rendering/PlanetaryRenderer.js';
+import { WormholeShader } from '@/src/t13ne/rendering/WormholeShader.js';
+import { PlanetSurfaceEnvironment } from '@/src/t13ne/procgen/planet/PlanetSurfaceEnvironment.js';
+import { WormholeEnvironment } from '@/src/t13ne/procgen/galaxy/WormholeEnvironment.js';
+import { Controls } from '@/src/t13ne/core/Controls.js';
+import { ComponentDefs } from '@/src/t13ne/procgen/ships/components/ComponentDefs.js';
 
 export class AdvancedPhysicsEngine {
     constructor(gameEngine) {

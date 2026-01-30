@@ -1,4 +1,4 @@
-﻿import T13NE from '@plugins/t13ne/T13NE.js';
+﻿import T13NE from '@/src/t13ne/T13NE.js';
 import UI from './t13ne-UI.js';
 import CharacterUI from './t13ne-chars-UI.js';
 import GeometryUI from './t13ne-geometry-ui.js';
@@ -17,14 +17,14 @@ class NarrativeUI {
         if (!list) return;
 
         const GameModule = T13NE.getModule('Game');
-        
+
         // Attempt recovery of orphans before rendering to ensure sync
         if (GameModule) GameModule.recoverOrphans();
 
         list.innerHTML = '';
 
         const games = GameModule?.getAllGames() || [];
-        
+
         // Use the Vault as the source of truth for "All" to catch everything
         const allEntities = GameModule?.getAllEntities() || [];
         const allPlots = allEntities.filter(e => e.constructor.name === 'T13Plot' || e.rank);
@@ -184,7 +184,7 @@ class NarrativeUI {
             const charContainer = document.createElement('div');
             CharacterUI.renderInspector(obj, charContainer);
             html += charContainer.innerHTML;
-            
+
             // Render Facet Web for Characters
             const tapHandler = UI.getHandler('T13Tapestry');
             if (tapHandler && (obj.facetweb || obj.Stats)) {
@@ -259,7 +259,7 @@ class NarrativeUI {
             const anchor = document.getElementById('uhpp-inspector-anchor');
             if (anchor) {
                 try {
-                    const { UHPPEditorUI } = await import('@/js/procgen/uhpp/UHPPEditorUI.js');
+                    const { UHPPEditorUI } = await import('@/src/t13ne/procgen/uhpp/UHPPEditorUI.js');
                     const uhppUI = new UHPPEditorUI(window.Workbench);
                     uhppUI.renderInspector(obj, anchor);
                 } catch (e) {

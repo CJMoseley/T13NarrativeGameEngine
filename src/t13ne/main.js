@@ -1,5 +1,5 @@
 import T13NE from './T13NE.js';
-import IntroSequence from '@/src/t13ne/core/ui/IntroSequence.js';
+import IntroSequence from './core/ui/IntroSequence.js';
 import Logger from './core/Logger.js';
 
 /**
@@ -10,9 +10,12 @@ import Logger from './core/Logger.js';
 
 async function bootstrap() {
     Logger.message("T13NE Engine: Bootstrapping application...");
+    console.log("Bootstrap: Step 1 - Starting T13NE...");
     try {
         // Initialize and start the engine
+        console.log("Bootstrap: Step 2 - Calling T13NE.start()...");
         await T13NE.start();
+        console.log("Bootstrap: Step 3 - T13NE.start() completed.");
 
         Logger.message("T13NE Engine: Bootstrap sequence complete.");
 

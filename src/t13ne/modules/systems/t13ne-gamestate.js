@@ -1,4 +1,4 @@
-﻿import Logger from "@/src/t13ne/core/Logger.js";
+﻿import Logger from "../../core/Logger.js";
 
 /**
  * T13NE GameState Module
@@ -216,7 +216,7 @@ class T13NE_GameState {
         if (state.characters && Referee) {
             for (const cData of state.characters) {
                 try {
-                    const { Character } = await import("@/src/t13ne/modules/characters/t13ne-chars.js");
+                    const { Character } = await import("../characters/t13ne-chars.js");
                     const char = new Character(this.t13ne.getModule('Codex'), cData);
                     Referee.addCharacter(char);
                     GameModule?.registerEntity(char);
@@ -229,7 +229,7 @@ class T13NE_GameState {
         // 5. Reconstruct Tapestries
         const GameModule = this.t13ne.getModule('Game');
         if (state.tapestries && GameModule) {
-            const T13Tapestry = (await import("@/src/t13ne/modules/world/T13Tapestry.js")).default;
+            const T13Tapestry = (await import("../world/T13Tapestry.js")).default;
             for (const tData of state.tapestries) {
                 try {
                     const tap = new T13Tapestry(tData);
