@@ -1,5 +1,6 @@
 node_modules/
 .vite/
 npm_output.log
+*,mp3
 *.wav
 *.mid
