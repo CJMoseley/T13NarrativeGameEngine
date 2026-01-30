@@ -1,6 +1,5 @@
 node_modules/
 .vite/
 npm_output.log
-cardSpread.html
-public/plugins/t13ne/modules/t13ne-cardspreader.js
-public/plugins/t13ne/modules/cardSpreadSimulator.js
+*.wav
+*.mid
