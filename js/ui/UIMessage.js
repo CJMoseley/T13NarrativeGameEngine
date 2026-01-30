@@ -1,3 +1,5 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/ui/
+
 import { UIMessageTemplates } from './UIMessageTemplates.js';
 import Logger from '../core/Logger.js';
 
@@ -341,3 +343,5 @@ class UIMessage {
 }
 
 export { UIMessage };
+
+*/

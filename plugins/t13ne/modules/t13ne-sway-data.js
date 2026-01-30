@@ -1,5 +1,5 @@
 import CodexLoader from '../modules/CodexLoader.js';
-import Logger from '@/js/core/Logger.js';
+import Logger from '@/src/t13ne/core/Logger.js';
 
 let swayTable = null;
 let _allSwayTypes = []; // Renamed and initialized to an empty array

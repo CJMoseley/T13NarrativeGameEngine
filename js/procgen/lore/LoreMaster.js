@@ -13,7 +13,7 @@ import { SystemGenerator } from '@/js/procgen/system/SystemGenerator.js';
 import { SystemLoreGenerator } from '@/js/procgen/system/SystemLoreGenerator.js';
 import { StellarSystemGenerator } from '@/js/procgen/system/StellarSystemGenerator.js';
 import { GalacticHistory } from '@/js/procgen/galaxy/GalacticHistory.js';
-import Logger from '@/js/core/Logger.js';
+import Logger from '@/src/t13ne/core/Logger.js';
 
 /**
  * LoreMaster

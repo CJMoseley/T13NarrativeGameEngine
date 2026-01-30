@@ -1,3 +1,5 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/
+
 import { PhysXProvider } from './PhysXProvider.js';
 
 export class PhysXTest {
@@ -91,3 +93,5 @@ export class PhysXTest {
         }
     }
 }
+
+*/

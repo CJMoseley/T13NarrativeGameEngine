@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { GameEngine } from './GameEngine.js';
-import { UIManager } from '@/js/ui/UIManager.js';
+import { UIManager } from './ui/UIManager.js';
 import { SceneManager } from './SceneManager.js';
 import Logger from './Logger.js';
 import { EventBus } from './EventBus.js';
@@ -9,7 +9,8 @@ import { Scene } from './Scene.js';
 import { PluginManager } from './PluginManager.js'; // Import PluginManager
 import { LoreData } from '@/js/procgen/lore/LoreData.js'; // Import LoreData
 import { GalacticHistory } from '@/js/procgen/galaxy/GalacticHistory.js'; // Import GalacticHistory
-import { UIMessage } from '@/js/ui/UIMessage.js';
+import { UIMessage } from './ui/UIMessage.js';
+import Localization from './ui/Localization.js';
 
 /**
  * ViewManager
@@ -242,6 +243,9 @@ export class ViewManager {
      * Orchestrates the entire application startup sequence.
      */
     async initialize() {
+        // Initialize Localization first
+        await Localization.initialize();
+
         // All loading orchestration is now handled by the LoaderManager,
         // which is initiated from main.js. This method is kept for any
         // future synchronous initialization needs of the ViewManager itself.

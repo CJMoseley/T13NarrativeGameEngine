@@ -1,5 +1,7 @@
-import Logger from '@/js/core/Logger.js';
-import IntroSequence from '@/js/ui/IntroSequence.js';
+/* LEGACY CODE - MOVED TO src/t13ne/core/
+
+import Logger from '@/src/t13ne/core/Logger.js';
+import IntroSequence from '@/src/t13ne/core/ui/IntroSequence.js';
 import * as THREE from 'three';
 
 /**
@@ -205,3 +207,5 @@ class LoaderManager {
 }
 
 export default LoaderManager;
+
+*/

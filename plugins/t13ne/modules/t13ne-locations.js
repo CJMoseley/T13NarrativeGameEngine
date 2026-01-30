@@ -1,5 +1,5 @@
 import { SuperKnot } from './t13ne-knots.js';
-import Logger from '@/js/core/Logger.js';
+import Logger from '@/src/t13ne/core/Logger.js';
 
 /**
  * T13Location

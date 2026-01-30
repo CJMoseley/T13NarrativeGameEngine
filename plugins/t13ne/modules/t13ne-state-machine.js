@@ -1,4 +1,4 @@
-import Logger from '@/js/core/Logger.js';
+import Logger from '@/src/t13ne/core/Logger.js';
 
 /**
  * Generic State Machine for T13NE structures.

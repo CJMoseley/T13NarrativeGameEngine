@@ -8,7 +8,7 @@
 import { Card, Deck } from '@/src/t13ne/modules/mechanics/t13ne-cards.js';
 import PRNG from '@/src/t13ne/modules/systems/t13ne-prng.js';
 import dice from '@/src/t13ne/modules/mechanics/t13ne-dice.js';
-import Logger from '@/js/core/Logger.js';
+import Logger from '@/src/t13ne/core/Logger.js';
 import CodexLoader from '@/src/t13ne/modules/codex/CodexLoader.js'; // Import CodexLoader
 
 // Helper function to gather entropy from various browser sources

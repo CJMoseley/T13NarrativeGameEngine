@@ -1,3 +1,5 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/
+
 import Logger from '../Logger.js';
 import * as THREE from 'three';
 
@@ -397,3 +399,5 @@ export class PhysXProvider {
         Logger.message("PhysXProvider disposed.");
     }
 }
+
+*/

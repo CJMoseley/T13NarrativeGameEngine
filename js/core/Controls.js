@@ -1,4 +1,6 @@
-import Logger from '@/js/core/Logger.js';
+/* LEGACY CODE - MOVED TO src/t13ne/core/
+
+import Logger from '@/src/t13ne/core/Logger.js';
 
 /**
  * Manages game controls by loading them from public/data/controls.json.
@@ -186,3 +188,5 @@ class ControlsManager {
 }
 
 export const Controls = new ControlsManager();
+
+*/

@@ -1,11 +1,11 @@
 import * as THREE from 'three';
-import Logger from '@/js/core/Logger.js';
-import { PhysXProvider } from '@/js/core/physics/PhysXProvider.js';
+import Logger from './Logger.js';
+import { PhysXProvider } from './physics/PhysXProvider.js';
 import { PlanetaryRenderer } from '@/js/rendering/PlanetaryRenderer.js';
 import { WormholeShader } from '@/js/rendering/WormholeShader.js';
 import { PlanetSurfaceEnvironment } from '@/js/procgen/planet/PlanetSurfaceEnvironment.js';
 import { WormholeEnvironment } from '@/js/procgen/galaxy/WormholeEnvironment.js';
-import { Controls } from '@/js/core/Controls.js';
+import { Controls } from './Controls.js';
 import { ComponentDefs } from '@/js/procgen/ships/components/ComponentDefs.js';
 
 export class AdvancedPhysicsEngine {

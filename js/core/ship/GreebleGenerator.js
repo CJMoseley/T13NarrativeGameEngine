@@ -1,3 +1,5 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/
+
 import * as THREE from 'three';
 
 export class GreebleGenerator {
@@ -549,3 +551,5 @@ export class GreebleGenerator {
         return greebleGroup;
     }
 }
+
+*/

@@ -1,3 +1,5 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/
+
 import * as THREE from 'three';
 import { mulberry32, MANUFACTURERS, TECH_SPECS, QUALITIES } from './ShipUtils.js';
 
@@ -940,3 +942,5 @@ export class ShipGenerator {
         return this.createRandomShip(seed, { ...config, useWFC: false });
     }
 }
+
+*/

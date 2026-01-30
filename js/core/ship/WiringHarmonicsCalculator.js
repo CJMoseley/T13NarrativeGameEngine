@@ -1,3 +1,5 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/
+
 import WiringConfigs from './wiring_configs.js';
 
 /**
@@ -167,3 +169,5 @@ class WiringHarmonicsCalculator {
 }
 
 export default WiringHarmonicsCalculator;
+
+*/

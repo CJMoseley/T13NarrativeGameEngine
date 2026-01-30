@@ -1,5 +1,7 @@
-import Logger from '@/js/core/Logger.js';
-import { EventBus } from '@/js/core/EventBus.js';
+/* LEGACY CODE - MOVED TO src/t13ne/core/
+
+import Logger from '@/src/t13ne/core/Logger.js';
+import { EventBus } from '@/src/t13ne/core/EventBus.js';
 
 /**
  * Manages the VOIP system, including microphone access and audio streams.
@@ -206,3 +208,5 @@ export class VOIPManager {
         Logger.end(funcName);
     }
 }
+
+*/

@@ -1,6 +1,8 @@
-import Logger from '@/js/core/Logger.js';
-import { EventBus } from '@/js/core/EventBus.js';
-import { Scene } from '@/js/core/Scene.js';
+/* LEGACY CODE - MOVED TO src/t13ne/core/
+
+import Logger from '@/src/t13ne/core/Logger.js';
+import { EventBus } from '@/src/t13ne/core/EventBus.js';
+import { Scene } from '@/src/t13ne/core/Scene.js';
 
 /**
  * SceneManager
@@ -100,3 +102,5 @@ export class SceneManager {
         }
     }
 }
+
+*/

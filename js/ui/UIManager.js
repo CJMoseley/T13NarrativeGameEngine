@@ -1,3 +1,5 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/ui/
+
 import Logger from '../core/Logger.js';
 import { MainMenu } from './components/MainMenu.js';
 import { TestMenu } from './components/TestMenu.js';
@@ -86,3 +88,5 @@ export class UIManager {
         this.pauseMenu.hide();
     }
 }
+
+*/

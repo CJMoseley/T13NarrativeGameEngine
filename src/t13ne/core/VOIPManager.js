@@ -1,5 +1,5 @@
-import Logger from '@/js/core/Logger.js';
-import { EventBus } from '@/js/core/EventBus.js';
+import Logger from './Logger.js';
+import { EventBus } from './EventBus.js';
 
 /**
  * Manages the VOIP system, including microphone access and audio streams.

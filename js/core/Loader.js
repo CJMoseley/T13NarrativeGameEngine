@@ -1,4 +1,6 @@
-import Logger from '@/js/core/Logger.js';
+/* LEGACY CODE - MOVED TO src/t13ne/core/
+
+import Logger from '@/src/t13ne/core/Logger.js';
 
 export class Loader {
     constructor() {
@@ -61,3 +63,5 @@ export class Loader {
         Logger.message("Loader: Loading complete.");
     }
 }
+
+*/

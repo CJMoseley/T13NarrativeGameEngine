@@ -1,7 +1,7 @@
 import { Character, SeededRNG } from '../t13ne-chars.js';
 import { PersonalityAnnex, Hitch } from '../t13ne-knots.js';
 import T13NE from '../../T13NE.js';
-import Logger from '@/js/core/Logger.js';
+import Logger from '@/src/t13ne/core/Logger.js';
 
 export class Archetype extends Character {
     constructor(codexLoader, data) {

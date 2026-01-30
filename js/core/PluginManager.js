@@ -1,4 +1,6 @@
-import Logger from '@/js/core/Logger.js';
+/* LEGACY CODE - MOVED TO src/t13ne/core/
+
+import Logger from '@/src/t13ne/core/Logger.js';
 
 /**
  * @module Core/PluginManager
@@ -116,3 +118,5 @@ export class PluginManager {
         return null;
     }
 }
+
+*/

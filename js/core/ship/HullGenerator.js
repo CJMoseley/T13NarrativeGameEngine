@@ -1,3 +1,5 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/
+
 import * as THREE from 'three';
 import { MarchingCubes } from 'three/examples/jsm/objects/MarchingCubes.js';
 import { PRIMITIVE_TYPES } from './ComponentFactory.js';
@@ -384,3 +386,5 @@ export class HullGenerator {
         return geometry;
     }
 }
+
+*/

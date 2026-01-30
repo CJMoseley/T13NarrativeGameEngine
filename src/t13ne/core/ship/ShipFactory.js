@@ -1,6 +1,6 @@
 import * as THREE from 'three';
-import ModelLoader from '@/js/core/ModelLoader.js';
-import WiringHarmonicsCalculator from '@/src/t13ne/core/ship/WiringHarmonicsCalculator.js';
+import ModelLoader from '../ModelLoader.js';
+import WiringHarmonicsCalculator from '../ship/WiringHarmonicsCalculator.js';
 import { UniversalPipeline } from '@/js/procgen/uhpp/UniversalPipeline.js';
 import { NoiseHeuristic } from '@/js/procgen/uhpp/NoiseHeuristic.js';
 import { LSystemBridge } from '@/js/procgen/uhpp/LSystemBridge.js';
@@ -8,13 +8,13 @@ import { WFCManager } from '@/js/procgen/uhpp/WFCManager.js';
 import { CellularAutomata } from '@/js/procgen/uhpp/CellularAutomata.js';
 import { SurfaceSynth } from '@/js/procgen/uhpp/SurfaceSynth.js';
 import { RenderBridge } from '@/js/procgen/uhpp/RenderBridge.js';
-import { ComponentFactory } from '@/src/t13ne/core/ship/ComponentFactory.js';
-import { HullGenerator } from '@/src/t13ne/core/ship/HullGenerator.js';
-import { GreebleGenerator } from '@/src/t13ne/core/ship/GreebleGenerator.js';
-import { WiringGenerator } from '@/src/t13ne/core/ship/WiringGenerator.js';
-import { ShipGenerator } from '@/src/t13ne/core/ship/ShipGenerator.js';
-import { ShipAssembler } from '@/src/t13ne/core/ship/ShipAssembler.js';
-import { COMPONENT_COLORS } from '@/src/t13ne/core/ship/ShipUtils.js';
+import { ComponentFactory } from '../ship/ComponentFactory.js';
+import { HullGenerator } from '../ship/HullGenerator.js';
+import { GreebleGenerator } from '../ship/GreebleGenerator.js';
+import { WiringGenerator } from '../ship/WiringGenerator.js';
+import { ShipGenerator } from '../ship/ShipGenerator.js';
+import { ShipAssembler } from '../ship/ShipAssembler.js';
+import { COMPONENT_COLORS } from '../ship/ShipUtils.js';
 
 export { COMPONENT_COLORS };
 

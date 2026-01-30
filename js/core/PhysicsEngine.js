@@ -1,3 +1,5 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/
+
 // js/core/PhysicsEngine.js
 
 /**
@@ -83,3 +85,5 @@ class PhysicsEngine {
 }
 
 export default PhysicsEngine;
+
+*/

@@ -1,3 +1,5 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/
+
 class Logger {
   constructor() {
     this.isEnabled = true;
@@ -47,3 +49,5 @@ class Logger {
 }
 
 export default new Logger();
+
+*/

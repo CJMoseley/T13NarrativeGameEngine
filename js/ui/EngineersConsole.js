@@ -1,3 +1,5 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/ui/
+
 /**
  * Wormhole Racers Engineer's Console UI
  * Purpose: Provides the player interface for toggling ship components on/off and monitoring
@@ -88,3 +90,5 @@ export class EngineersConsole {
 		Logger.end(funcName);
 	}
 }
+
+*/

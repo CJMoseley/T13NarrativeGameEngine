@@ -1,4 +1,4 @@
-import Logger from '@/js/core/Logger.js';
+import Logger from '@/src/t13ne/core/Logger.js';
 import T13Name from '../modules/t13ne-names.js';
 
 /**

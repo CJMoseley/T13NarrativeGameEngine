@@ -1,8 +1,8 @@
 import * as THREE from 'three';
-import Logger from '@/js/core/Logger.js';
+import Logger from './Logger.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls.js';
-import { Controls } from '@/js/core/Controls.js';
+import { Controls } from './Controls.js';
 
 /**
  * An "Empty Stage" or base class for all scenes in the application.

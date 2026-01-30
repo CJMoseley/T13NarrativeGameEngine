@@ -1,3 +1,5 @@
+/* LEGACY CODE - MOVED TO src/t13ne/core/ui/
+
 import Logger from '../core/Logger.js';
 
 class IntroSequence {
@@ -44,3 +46,5 @@ class IntroSequence {
 IntroSequence.init();
 
 export default IntroSequence;
+
+*/
