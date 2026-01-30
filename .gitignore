@@ -3,6 +3,7 @@ node_modules/
 npm_output.log
 *.mp3
 *.wav
+<<<<<<< Updated upstream
 *.mid
 *.flac
 *.aac
@@ -13,3 +14,6 @@ npm_output.log
 *.aiff
 *.ds_store
 .DS_Store
+=======
+*.mid
+>>>>>>> Stashed changes
