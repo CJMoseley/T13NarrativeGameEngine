@@ -1,8 +1,7 @@
 node_modules/
 .vite/
 npm_output.log
-<<<<<<< Updated upstream
-*,mp3
+*.mp3
 *.wav
 *.mid
 *.flac
@@ -14,8 +13,3 @@ npm_output.log
 *.aiff
 *.ds_store
 .DS_Store
-=======
-*.mp3
-*.wav
-*.mid
->>>>>>> Stashed changes
