@@ -168,7 +168,7 @@ class AdditiveProcessor {
     }
 
     // Updated createBellTone to be more generic 'playAdditiveTone'
-    playAdditiveTone(frequency, time, duration, destination, partials, envelope = 'percussive') {
+    playAdditiveTone(frequency, time, duration, destination, partials, params = {}) {
         if (!Number.isFinite(frequency) || frequency <= 0) return;
         if (!partials) {
             // Default bell if no partials
@@ -181,6 +181,12 @@ class AdditiveProcessor {
             ];
         }
 
+        const envelope = params.envelope || 'percussive';
+        const attack = params.attack || (envelope === 'sustained' ? 0.1 : 0.01);
+        const decay = params.decay || 0.1;
+        const sustain = params.sustain !== undefined ? params.sustain : 1.0; // 0-1 multiplier of peakGain
+        const release = params.release || 0.2;
+
         partials.forEach(p => {
             const osc = this.ctx.createOscillator();
             const gain = this.ctx.createGain();
@@ -192,18 +198,26 @@ class AdditiveProcessor {
             const peakGain = p.amp * 0.2;
 
             if (envelope === 'sustained') {
-                // Sustained Envelope (Attack - Sustain - Release)
-                const attackTime = Math.min(0.1, duration * 0.4); // Safety: Ensure attack fits within duration
-                const releaseTime = 0.2;
-                
+                // Sustained Envelope (ADSR)
+                // Attack
                 gain.gain.setValueAtTime(0, time);
-                gain.gain.linearRampToValueAtTime(peakGain, time + attackTime);
-                gain.gain.setValueAtTime(peakGain, time + duration);
-                gain.gain.exponentialRampToValueAtTime(0.001, time + duration + releaseTime);
-                gain.gain.linearRampToValueAtTime(0, time + duration + releaseTime + 0.05); // Ensure silence
+                gain.gain.linearRampToValueAtTime(peakGain, time + attack);
+                
+                // Decay -> Sustain
+                if (duration > attack + decay) {
+                    const sustainLevel = peakGain * sustain;
+                    gain.gain.linearRampToValueAtTime(sustainLevel, time + attack + decay);
+                    gain.gain.setValueAtTime(sustainLevel, time + duration);
+                } else {
+                    gain.gain.setValueAtTime(peakGain, time + duration);
+                }
+
+                // Release
+                gain.gain.exponentialRampToValueAtTime(0.001, time + duration + release);
+                gain.gain.linearRampToValueAtTime(0, time + duration + release + 0.05); // Ensure silence
                 
                 osc.start(time);
-                osc.stop(time + duration + releaseTime + 0.1);
+                osc.stop(time + duration + release + 0.1);
             } else {
                 // Percussive Envelope (Attack - Decay) with minimum duration check
                 const attackTime = 0.01;
@@ -489,12 +503,12 @@ class InstrumentEngine {
             case 'additive':
                 // If algorithm is 'bell', use the default bell partials, otherwise use custom partials
                 if (inst.algorithm === 'bell') {
-                    this.additive.playAdditiveTone(frequency, time, duration, destination, null, inst.envelope); // partials will default
+                    this.additive.playAdditiveTone(frequency, time, duration, destination, null, inst); // partials will default
                 } else if (inst.partials) {
-                    this.additive.playAdditiveTone(frequency, time, duration, destination, inst.partials, inst.envelope);
+                    this.additive.playAdditiveTone(frequency, time, duration, destination, inst.partials, inst);
                 } else {
                     // Fallback for additive if no algorithm or partials specified
-                    this.additive.playAdditiveTone(frequency, time, duration, destination, null, inst.envelope);
+                    this.additive.playAdditiveTone(frequency, time, duration, destination, null, inst);
                 }
                 break;
             case 'noise':
@@ -903,11 +917,11 @@ class T13NE_Music {
         // Lead Melody from Player Character
         const leadMotif = this.getCharacterComposition(pc);
         
-        // Bass from Ship (or Plot)
-        const bassMotif = this.getCharacterComposition(ship);
+        // Bass derived from Lead to ensure tuning
+        const bassSequence = this._generateBassSequence(leadMotif, 32);
         
         // Pad/Harmony derived from Lead Scale
-        const padSequence = this._generatePadSequence(leadMotif, 16); // 16 beats length
+        const padSequence = this._generatePadSequence(leadMotif, 32); // 32 steps (2 bars) for variation
         const drumSequence = this._generateDrumSequence(16, ship); 
 
         // 1. Create Instruments
@@ -915,12 +929,16 @@ class T13NE_Music {
             type: 'additive',
             algorithm: 'custom',
             envelope: 'sustained',
+            attack: 0.02, // Fast attack for shape
+            decay: 0.1,
+            sustain: 0.8,
+            release: 0.1,
             partials: [
-                { freq: 0.5, amp: 0.7 }, // Underharmonic (Sub-bass)
-                { freq: 1.0, amp: 0.8 }, // Fundamental
-                { freq: 2.0, amp: 0.4 }, // 1st Overtone
-                { freq: 3.0, amp: 0.2 }, // 2nd Overtone
-                { freq: 4.0, amp: 0.1 }  // 3rd Overtone
+                { freq: 1.0, amp: 1.0 }, // Fundamental
+                { freq: 2.0, amp: 0.8 }, // 1st Overtone
+                { freq: 3.0, amp: 0.6 }, // 2nd Overtone
+                { freq: 4.0, amp: 0.4 }, // 3rd Overtone
+                { freq: 5.0, amp: 0.2 }  // 4th Overtone
             ]
         };
         const leadPatch = {
@@ -937,11 +955,12 @@ class T13NE_Music {
             type: 'additive',
             algorithm: 'custom',
             envelope: 'sustained',
+            attack: 1.0, // Slow fade in
+            release: 1.0, // Slow fade out
             partials: [
-                { freq: 1, amp: 0.8, decay: 2.0 },
-                { freq: 1.01, amp: 0.8, decay: 2.0 }, // Detune
-                { freq: 2, amp: 0.4, decay: 1.5 },
-                { freq: 3, amp: 0.2, decay: 1.5 }
+                { freq: 1, amp: 0.8, decay: 2.0 }, // Fundamental
+                { freq: 2, amp: 0.4, decay: 1.5 }, // Octave
+                { freq: 4, amp: 0.2, decay: 1.5 }  // 2 Octaves up (Clean, no warble)
             ]
         };
 
@@ -998,7 +1017,7 @@ class T13NE_Music {
 
         // Helper to convert motifs to track events
         const leadEvents = this._motifToTrackEvents(leadMotif, 'v_lead', beatTime);
-        const bassEvents = this._motifToTrackEvents(bassMotif, 'v_bass', beatTime, -24); // Shift bass down 2 octaves
+        const bassEvents = bassSequence.map(e => ({ ...e, voice: 'v_bass' }));
         const padEvents = padSequence.map(e => ({ ...e, voice: 'v_pad' }));
         const drumEvents = drumSequence;
 
@@ -1008,8 +1027,9 @@ class T13NE_Music {
                 
                 // Add parts if voice is active in section
                 if (section.voices.includes('v_lead')) this._addLoopToSequence(fullSequence, leadEvents, barStepOffset, 16);
-                if (section.voices.includes('v_bass')) this._addLoopToSequence(fullSequence, bassEvents, barStepOffset, 16);
-                if (section.voices.includes('v_pad')) this._addLoopToSequence(fullSequence, padEvents, barStepOffset, 16);
+                if (section.voices.includes('v_bass')) this._addLoopToSequence(fullSequence, bassEvents, barStepOffset, 32);
+                // Pad loop is 32 steps (2 bars), so we loop it differently
+                if (section.voices.includes('v_pad')) this._addLoopToSequence(fullSequence, padEvents, barStepOffset, 32);
                 
                 // Drums
                 if (section.voices.includes('v_kick')) this._addLoopToSequence(fullSequence, drumEvents.filter(e=>e.voice==='v_kick'), barStepOffset, 16);
@@ -1091,14 +1111,88 @@ class T13NE_Music {
     _generatePadSequence(leadMotif, lengthSteps) {
         // Generate a chord progression based on lead scale
         const baseFreq = leadMotif.baseFreq;
+        const scale = leadMotif.scale || [0, 2, 4, 5, 7, 9, 11];
         const events = [];
+
+        const getFreq = (degree) => {
+            const interval = scale[degree % scale.length];
+            const octave = Math.floor(degree / scale.length);
+            return baseFreq * Math.pow(2, (interval + (octave * 12)) / 12);
+        };
         
-        // Simple 1 chord per bar (16 steps)
-        // Root chord: Root, 3rd, 5th of scale
-        // Simplified: Just drone the root and 5th
-        events.push({ step: 0, freq: baseFreq, duration: 2.0, velocity: 0.4 });
-        events.push({ step: 0, freq: baseFreq * 1.5, duration: 2.0, velocity: 0.4 });
+        // Bar 1: Root
+        // Duration 2.0 beats (half bar) allows fade out before next bar
+        events.push({ step: 0, freq: baseFreq, duration: 2.0, velocity: 0.3 });
+        events.push({ step: 0, freq: baseFreq * 1.5, duration: 2.0, velocity: 0.2 });
         
+        // Bar 2: Fifth (or Fourth) to create movement
+        // 16 steps later
+        events.push({ step: 16, freq: baseFreq * 0.75, duration: 2.0, velocity: 0.3 }); // Fourth below (or Fifth above / 2)
+        events.push({ step: 16, freq: baseFreq * 1.125, duration: 2.0, velocity: 0.2 }); // Major Second above Fourth (Fifth of scale)
+        // Progression: I - vi - IV - V (Indices: 0, 5, 3, 4)
+        const chords = [
+            [0, 2, 4], // I
+            [5, 7, 9], // vi
+            [3, 5, 7], // IV
+            [4, 6, 8]  // V
+        ];
+
+        const stepsPerChord = 8; // Change every 2 beats
+
+        for (let i = 0; i < 4; i++) {
+            const offset = i * stepsPerChord;
+            if (offset >= lengthSteps) break;
+            
+            const chord = chords[i % chords.length];
+            chord.forEach(degree => {
+                events.push({ 
+                    step: offset, 
+                    freq: getFreq(degree), 
+                    duration: 2.0, // 2 beats
+                    velocity: 0.3 
+                });
+            });
+        }
+
+        return events;
+    }
+
+    _generateBassSequence(leadMotif, lengthSteps) {
+        const baseFreq = leadMotif.baseFreq * 0.5; // Octave down
+        const scale = leadMotif.scale || [0, 2, 4, 5, 7, 9, 11];
+        const events = [];
+        // Use Lead's base frequency but drop 1 octave (0.5) to ensure it's audible bass, not sub-bass
+        const bassFreq = leadMotif.baseFreq * 0.5; 
+
+        const getFreq = (degree) => {
+            const interval = scale[degree % scale.length];
+            const octave = Math.floor(degree / scale.length);
+            return baseFreq * Math.pow(2, (interval + (octave * 12)) / 12);
+        };
+        
+        // Simple driving rhythm on the root note
+        for (let i = 0; i < lengthSteps; i += 4) { // Every beat
+            events.push({ step: i, freq: bassFreq, duration: 0.5, velocity: 0.8 });
+        // Progression Roots: I - vi - IV - V
+        const roots = [0, 5, 3, 4];
+        const stepsPerChord = 8;
+
+        for (let i = 0; i < 4; i++) {
+            const rootIdx = roots[i % roots.length];
+            const offset = i * stepsPerChord;
+            
+            if (offset >= lengthSteps) break;
+
+            // Bass Pattern relative to root
+            // Beat 1: Root
+            events.push({ step: offset + 0, freq: getFreq(rootIdx), duration: 0.25, velocity: 0.9 });
+            // Beat 1.75: Octave (16th before beat 2)
+            events.push({ step: offset + 3, freq: getFreq(rootIdx + 7), duration: 0.25, velocity: 0.7 });
+            // Beat 2: 5th (Index + 4)
+            events.push({ step: offset + 4, freq: getFreq(rootIdx + 4), duration: 0.25, velocity: 0.8 });
+            // Beat 2.5: Root
+            events.push({ step: offset + 6, freq: getFreq(rootIdx), duration: 0.25, velocity: 0.8 });
+        }
         return events;
     }
 
