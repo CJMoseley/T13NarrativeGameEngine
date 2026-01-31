@@ -41,6 +41,9 @@ export class PluginManager {
         ]);
 
         for (const path in registrationModules) {
+            // T13 is now loaded as core, not as a plugin.
+            if (path.includes('t13ne') || path.includes('T13')) continue;
+
             try {
                 const moduleLoader = registrationModules[path];
                 const registrationModule = await moduleLoader();

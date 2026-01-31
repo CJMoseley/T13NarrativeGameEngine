@@ -110,7 +110,8 @@ export class GameEngine {
             if (this.loreMaster && this.loreMaster.characterGenerator) {
                 // 1. Generate Player Character (Detailed)
                 this.playerCharacter = await this.loreMaster.characterGenerator.generateCharacter('Detailed');
-                this.playerCharacter.name = "Player"; // Placeholder, usually set by UI
+                const storedName = localStorage.getItem('t13_player_name');
+                this.playerCharacter.name = storedName || "Player"; 
                 Logger.message("GameEngine: Player Character generated with T13 Tapestry.");
 
                 // 2. Generate Crew (Cast/Archetype Extras)

@@ -30,6 +30,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            pointer-events: auto;
         }
         .intro-content {
             animation: fadeIn 2s ease-in-out;
@@ -50,8 +51,8 @@
     <div id="ui-layer">
 		<div id="intro-sequence" style="display: none;">
 			<div class="intro-content">
-				<h1>Wormhole Racers</h1>
 				<p id="loading-status">Initializing...</p>
+                <button id="start-button" class="menu-button" style="display: none; margin: 20px auto;">Start Loading</button>
 			</div>
 		</div>
         <div id="mainMenu" class="menu-container">

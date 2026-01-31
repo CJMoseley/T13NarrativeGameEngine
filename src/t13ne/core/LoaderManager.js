@@ -36,35 +36,65 @@ class LoaderManager {
          * @type {Array<Object>}
          */
         this.tasks = [
-            { name: 'Plugins', action: () => this.pluginManager.discoverAndLoadPlugins(this) },
-            { name: 'Initialize Plugins', action: () => this.pluginManager.initializePlugins(this) },
-            { name: 'Physics Engine', action: () => this.gameEngine.physicsEngine.init() },
             { name: 'Sound Engine', action: () => this.viewManager.engine.soundEngine.init() },
+            {
+                name: 'System Check', action: async () => {
+                    const soundEngine = this.viewManager.engine.soundEngine;
+                    if (soundEngine && soundEngine.audioContext && soundEngine.audioContext.state === 'suspended') {
+                        Logger.message("AudioContext suspended. Requesting permission immediately.");
+                        this.reportProgress("Click to Initialize Systems...");
+
+                        await new Promise(resolve => {
+                            const startBtn = document.getElementById('start-button');
+                            if (startBtn) {
+                                startBtn.style.display = 'block';
+                                startBtn.onclick = async () => {
+                                    startBtn.style.display = 'none';
+                                    this.reportProgress("Initializing...");
+                                    await new Promise(r => setTimeout(r, 100));
+                                    await soundEngine.audioContext.resume();
+                                    resolve();
+                                };
+                            } else {
+                                IntroSequence.promptForInteraction(async () => {
+                                    await soundEngine.audioContext.resume();
+                                    resolve();
+                                });
+                            }
+                        });
+                    }
+                }
+            },
+            { name: 'Physics Engine', action: () => this.gameEngine.physicsEngine.init() },
+            { name: 'Load T13 Core', action: async () => {
+                if (this.engine.loadModules) await this.engine.loadModules();
+                
+                // Manually register T13 Core APIs since it's no longer a plugin
+                // This ensures generators can find 'T13' APIs via PluginManager
+                if (this.pluginManager) {
+                    this.pluginManager.exposeApi('T13', 'T13NE', this.engine);
+                    
+                    const modules = ['Codex', 'CardsAPI', 'T13Geometry', 'Tapestry'];
+                    modules.forEach(m => {
+                        const mod = this.engine.getModule(m);
+                        if (mod) this.pluginManager.exposeApi('T13', m, mod);
+                    });
+                    Logger.message("LoaderManager: T13 Core APIs registered manually.");
+                }
+            }},
+            { name: 'Discover Plugins', action: () => this.pluginManager.discoverAndLoadPlugins(this) },
+            { name: 'Initialize Plugins', action: () => this.pluginManager.initializePlugins(this) },
             { name: 'Lore Data', action: () => this.loreDataManager.load() },
             { name: 'Game Engine Data', action: () => this.gameEngine.initializeDataDependents() },
 
             // Generate and Start Music (Best effort, might need user interaction)
             {
-                name: 'Intro Music', action: async () => {
+                name: 'Audio Systems', action: async () => {
                     const music = this.viewManager.engine.getModule('Music');
                     if (music) {
-                        const theme = await music.createWormholeTheme();
+                        this.reportProgress("Generating Intro Music...");
+                        const theme = await music.createWormholeTheme(this.gameEngine);
                         if (theme) {
-                            // Try to play. If AudioContext is suspended, we need a gesture.
-                            if (music.synth && music.synth.ctx.state === 'suspended') {
-                                try {
-                                    // Try automatic resume first (some browsers allow this if previously interacted)
-                                    await music.synth.ctx.resume();
-                                } catch (e) {
-                                    Logger.warn("AudioContext resume blocked. Prompting user for gesture.");
-                                    await new Promise(resolve => {
-                                        IntroSequence.promptForInteraction(async () => {
-                                            await music.synth.ctx.resume();
-                                            resolve();
-                                        });
-                                    });
-                                }
-                            }
                             music.playTrackObject(theme);
                         }
                     }
@@ -166,21 +196,21 @@ class LoaderManager {
                     IntroSequence.hide();
                 }
 
-                // Add a timeout to prevent infinite hanging
+                // Add a timeout to prevent infinite hanging, but skip for interactive/long tasks
+                const useTimeout = !['Queue Visuals', 'Audio Systems', 'System Check'].includes(task.name);
                 let timeoutId;
-                const timeoutPromise = new Promise((_, reject) =>
-                    timeoutId = setTimeout(() => reject(new Error(`Task '${task.name}' timed out after 30s`)), 30000)
-                );
 
                 try {
-                    // We don't await the visual sequence to finish, just to start
-                    if (task.name === 'Queue Visuals') {
-                        await task.action();
-                    } else {
+                    if (useTimeout) {
+                        const timeoutPromise = new Promise((_, reject) =>
+                            timeoutId = setTimeout(() => reject(new Error(`Task '${task.name}' timed out after 30s`)), 30000)
+                        );
                         await Promise.race([task.action(), timeoutPromise]);
+                    } else {
+                        await task.action();
                     }
                 } finally {
-                    clearTimeout(timeoutId);
+                    if (timeoutId) clearTimeout(timeoutId);
                 }
 
                 Logger.message(`LoaderManager: Task '${task.name}' completed.`);

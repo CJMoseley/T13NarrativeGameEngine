@@ -51,26 +51,43 @@ class IntroSequence {
             return;
         }
 
+        const storedName = localStorage.getItem('t13_player_name') || '';
+
         const overlay = document.createElement('div');
         overlay.id = 'audio-prompt-overlay';
         overlay.style.cssText = 'position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.9); z-index:10001; display:flex; justify-content:center; align-items:center; cursor:pointer; flex-direction:column; font-family: "Jura", sans-serif;';
         overlay.innerHTML = `
             <h1 style="color:#66aaff; margin-bottom:10px; text-transform:uppercase; letter-spacing:4px;">Wormhole Racers</h1>
             <p style="color:#889; margin-bottom:30px;">[ SENSORS LOCALIZING ... ]</p>
-            <div style="padding:20px 40px; border:1px solid #337ab7; color:#66aaff; text-transform:uppercase; letter-spacing:2px; background: rgba(51, 122, 183, 0.1); transition: all 0.3s;">
+            
+            <div style="margin-bottom: 20px;">
+                <input type="text" id="player-name-input" value="${storedName}" placeholder="Enter Pilot Name" 
+                    style="padding: 10px; background: rgba(0,0,0,0.5); border: 1px solid #337ab7; color: #cce; font-family: 'Jura', sans-serif; text-align: center; font-size: 1.2em;">
+            </div>
+
+            <div id="init-btn" style="padding:20px 40px; border:1px solid #337ab7; color:#66aaff; text-transform:uppercase; letter-spacing:2px; background: rgba(51, 122, 183, 0.1); transition: all 0.3s; cursor: pointer;">
                 Initialize Engine
             </div>
             <p style="color:#445; margin-top:40px; font-size: 0.8em;">(Requires User Gesture for Audio)</p>
         `;
 
-        const onInteract = () => {
+        const onInteract = (e) => {
+            if (e.target.id === 'player-name-input') return; // Don't close if clicking input
+            const nameInput = document.getElementById('player-name-input');
+            if (nameInput) localStorage.setItem('t13_player_name', nameInput.value.trim() || 'Racer');
+
             document.body.removeChild(overlay);
             window.removeEventListener('keydown', onInteract);
             if (callback) callback();
         };
 
-        overlay.onclick = onInteract;
-        window.addEventListener('keydown', onInteract, { once: true });
+        const btn = overlay.querySelector('#init-btn');
+        btn.onclick = onInteract;
+        
+        // Allow Enter key to submit
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') onInteract({ target: btn });
+        }, { once: true });
 
         document.body.appendChild(overlay);
     }

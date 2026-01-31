@@ -64,6 +64,21 @@ export class UIManager {
         }
         if (this.mainMenu) this.mainMenu.show();
         this.activeMenu = this.mainMenu;
+
+        // Inject Author Mode button if not present
+        setTimeout(() => {
+            const menuOptions = document.getElementById('menuOptions');
+            if (menuOptions && !document.getElementById('btn-author-mode')) {
+                const btn = document.createElement('div');
+                btn.id = 'btn-author-mode';
+                btn.className = 'menu-button';
+                btn.innerText = 'Author Mode';
+                btn.style.marginTop = '20px';
+                btn.style.borderColor = '#818cf8'; // Purple accent
+                btn.onclick = () => window.location.href = '/src/t13ne/index.html';
+                menuOptions.appendChild(btn);
+            }
+        }, 100);
     }
 
     showTestMenu() {
