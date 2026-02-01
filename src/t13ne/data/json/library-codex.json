@@ -166,6 +166,9 @@
       "chords.json": {
         "description": "Defines musical chords and their properties, used in the game's geometry system."
       },
+      "RomanChords.json": {
+        "description": "Defines Roman Numeral chords and their narrative properties."
+      },
       "geometries.json": {
         "description": "Defines the geometric properties of characters, which are a core component of the T13 Narrative Engine's character system."
       },
