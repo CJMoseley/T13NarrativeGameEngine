@@ -1,13 +1,9 @@
 import Logger from "../../core/Logger.js";
 import T13NE from '../../T13NE.js';
 import CodexLoader from "../codex/CodexLoader.js";
+import { InstrumentEngine } from "./t13ne-InstrumentEngine.js";
 
 const CHROMATIC_SCALE = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
-const KEY_INSTRUMENT_MAP = {
-    'C': 'Cello', 'C#': 'Tuba', 'D': 'Oboe', 'D#': 'Flute',
-    'E': 'Trumpet', 'F': 'French Horn', 'F#': 'Clarinet', 'G': 'Violin',
-    'G#': 'Viola', 'A': 'Piano', 'A#': 'Harpsichord', 'B': 'Harp'
-};
 
 /**
  * Simple Seeded RNG for deterministic music generation.
@@ -92,543 +88,6 @@ class AudioManifestManager {
         if (this.manifest[category]?.[id]) {
             this.manifest[category][id].analysis = analysis;
         }
-    }
-}
-
-/**
- * Handles Complex Additive Synthesis.
- */
-class AdditiveProcessor {
-    constructor(audioContext) {
-        this.ctx = audioContext;
-    }
-
-    /**
-     * Creates a custom periodic wave from partials.
-     * @param {Array<{real: number, imag: number}>} partials - Fourier coefficients.
-     */
-    createCustomWave(partials) {
-        const real = new Float32Array(partials.length + 1);
-        const imag = new Float32Array(partials.length + 1);
-
-        partials.forEach((p, i) => {
-            real[i + 1] = p.real || 0;
-            imag[i + 1] = p.imag || 0;
-        });
-
-        return this.ctx.createPeriodicWave(real, imag);
-    }
-
-    createSynthFromAnalysis(analysis, depth = 'medium') {
-        const fundamental = analysis.freq || 440;
-
-        let partialCount = 5;
-        if (depth === 'low') partialCount = 3;
-        if (depth === 'high') partialCount = 12;
-        if (depth === 'full') partialCount = 32;
-
-        let partials = [];
-
-        // CHECK 1: Do we have real FFT data?
-        if (analysis.peaks && analysis.peaks.length > 0) {
-            // Use real peaks!
-            // We need to normalize them relative to fundamental?
-            // Ideally we express them as harmonic ratios for wavetable synthesis
-
-            // Take top N peaks (sorted by amp in analyzer)
-            const usedPeaks = analysis.peaks.slice(0, partialCount);
-
-            // Convert absolute freq to harmonic multiple of fundamental
-            partials = usedPeaks.map(p => ({
-                freq: p.freq / fundamental, // e.g. 440/440=1, 880/440=2
-                amp: p.amp,
-                decay: 1.0 / Math.pow(p.freq / fundamental, 0.5) // Guess decay
-            }));
-
-        } else {
-            // Fallback: Procedural generation
-            for (let i = 1; i <= partialCount; i++) {
-                let amp = 1.0 / i;
-                if (depth === 'full' && i % 2 === 0) amp *= 0.5;
-
-                partials.push({
-                    freq: i,
-                    amp: amp,
-                    decay: 1.0 / Math.pow(i, 0.5)
-                });
-            }
-        }
-
-        return {
-            type: 'additive',
-            algorithm: 'custom',
-            depth: depth,
-            partials: partials
-        };
-    }
-
-    // Updated createBellTone to be more generic 'playAdditiveTone'
-    playAdditiveTone(frequency, time, duration, destination, partials, params = {}) {
-        if (!Number.isFinite(frequency) || frequency <= 0) return;
-        if (!partials) {
-            // Default bell if no partials
-            partials = [
-                { freq: 1.0, amp: 1.0, decay: 1.0 },
-                { freq: 2.0, amp: 0.6, decay: 0.9 },
-                { freq: 3.0, amp: 0.4, decay: 0.8 },
-                { freq: 4.2, amp: 0.25, decay: 0.7 },
-                { freq: 5.4, amp: 0.2, decay: 0.6 }
-            ];
-        }
-
-        const envelope = params.envelope || 'percussive';
-        const attack = params.attack || (envelope === 'sustained' ? 0.1 : 0.01);
-        const decay = params.decay || 0.1;
-        const sustain = params.sustain !== undefined ? params.sustain : 1.0; // 0-1 multiplier of peakGain
-        const release = params.release || 0.2;
-
-        partials.forEach(p => {
-            const osc = this.ctx.createOscillator();
-            const gain = this.ctx.createGain();
-
-            osc.frequency.value = frequency * p.freq;
-            osc.connect(gain);
-            gain.connect(destination);
-
-            const peakGain = p.amp * 0.2;
-
-            if (envelope === 'sustained') {
-                // Sustained Envelope (ADSR)
-                // Attack
-                gain.gain.setValueAtTime(0, time);
-                gain.gain.linearRampToValueAtTime(peakGain, time + attack);
-                
-                // Decay -> Sustain
-                if (duration > attack + decay) {
-                    const sustainLevel = peakGain * sustain;
-                    gain.gain.linearRampToValueAtTime(sustainLevel, time + attack + decay);
-                    gain.gain.setValueAtTime(sustainLevel, time + duration);
-                } else {
-                    gain.gain.setValueAtTime(peakGain, time + duration);
-                }
-
-                // Release
-                gain.gain.exponentialRampToValueAtTime(0.001, time + duration + release);
-                gain.gain.linearRampToValueAtTime(0, time + duration + release + 0.05); // Ensure silence
-                
-                osc.start(time);
-                osc.stop(time + duration + release + 0.1);
-            } else {
-                // Percussive Envelope (Attack - Decay) with minimum duration check
-                const attackTime = 0.01;
-                const decayDuration = Math.max(0.05, duration * (p.decay || 1.0)); // Minimum 50ms to avoid clicks
-                gain.gain.setValueAtTime(0, time);
-                gain.gain.linearRampToValueAtTime(peakGain, time + attackTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, time + attackTime + decayDuration);
-                gain.gain.linearRampToValueAtTime(0, time + attackTime + decayDuration + 0.05); // Ensure silence
-                
-                osc.start(time);
-                osc.stop(time + attackTime + decayDuration + 0.1);
-            }
-        });
-    }
-}
-
-/**
- * Manages Instrument Definitions and Playback.
- * Supports Sample-based, Subtractive, and Additive instruments.
- */
-class InstrumentEngine {
-    constructor(audioContext) {
-        this.ctx = audioContext;
-        this.instruments = new Map();
-        this.samples = new Map();
-        this.additive = new AdditiveProcessor(audioContext);
-
-        // Default Instruments
-        this.defineInstrument('sine', { type: 'synth', oscType: 'sine' });
-        this.defineInstrument('saw', { type: 'synth', oscType: 'sawtooth' });
-        this.defineInstrument('bell', { type: 'additive', algorithm: 'bell' });
-
-        // Orchestral Definitions (Approximations)
-        // Cello: Rich, warm, with emphasis on lower harmonics
-        this.defineInstrument('Cello', { 
-            type: 'additive', 
-            algorithm: 'custom', 
-            envelope: 'sustained',
-            partials: [
-                { freq: 1, amp: 1.0, decay: 1.5 },
-                { freq: 2, amp: 0.8, decay: 1.2 },
-                { freq: 3, amp: 0.6, decay: 1.0 },
-                { freq: 4, amp: 0.4, decay: 0.8 },
-                { freq: 5, amp: 0.3, decay: 0.6 }
-            ] 
-        });
-
-        // Tuba: Deep, brassy
-        this.defineInstrument('Tuba', { 
-            type: 'additive', 
-            algorithm: 'custom', 
-            envelope: 'sustained',
-            partials: [
-                { freq: 1, amp: 1.0, decay: 0.8 },
-                { freq: 2, amp: 0.7, decay: 0.6 },
-                { freq: 3, amp: 0.4, decay: 0.4 },
-                { freq: 4, amp: 0.2, decay: 0.3 }
-            ] 
-        });
-
-        // Oboe: Nasal, rich in odd harmonics
-        this.defineInstrument('Oboe', { 
-            type: 'additive', 
-            algorithm: 'custom', 
-            envelope: 'sustained',
-            partials: [
-                { freq: 1, amp: 0.4, decay: 0.5 },
-                { freq: 2, amp: 0.1, decay: 0.5 },
-                { freq: 3, amp: 1.0, decay: 0.5 }, // Strong 3rd harmonic
-                { freq: 4, amp: 0.1, decay: 0.5 },
-                { freq: 5, amp: 0.5, decay: 0.4 }
-            ] 
-        });
-
-        this.defineInstrument('Flute', { type: 'additive', algorithm: 'custom', envelope: 'sustained', partials: [{freq:1, amp:1, decay:0.5}, {freq:2, amp:0.2, decay:0.3}] });
-        this.defineInstrument('Trumpet', { type: 'additive', algorithm: 'custom', envelope: 'sustained', partials: [{freq:1, amp:1, decay:0.2}, {freq:2, amp:0.8, decay:0.2}, {freq:3, amp:0.6, decay:0.2}, {freq:4, amp:0.4, decay:0.2}] });
-        this.defineInstrument('French Horn', { type: 'additive', algorithm: 'custom', envelope: 'sustained', partials: [{freq:1, amp:1, decay:0.8}, {freq:2, amp:0.5, decay:0.7}, {freq:3, amp:0.3, decay:0.6}] });
-        this.defineInstrument('Clarinet', { type: 'additive', algorithm: 'custom', envelope: 'sustained', partials: [{freq:1, amp:1, decay:0.6}, {freq:3, amp:0.5, decay:0.5}, {freq:5, amp:0.3, decay:0.4}] }); // Odd harmonics
-        
-        this.defineInstrument('Violin', { 
-            type: 'additive', 
-            algorithm: 'custom', 
-            envelope: 'sustained',
-            partials: [
-                { freq: 1, amp: 1.0, decay: 1.0 },
-                { freq: 2, amp: 0.5, decay: 0.9 },
-                { freq: 3, amp: 0.3, decay: 0.8 },
-                { freq: 4, amp: 0.2, decay: 0.7 },
-                { freq: 5, amp: 0.2, decay: 0.6 },
-                { freq: 6, amp: 0.1, decay: 0.5 }
-            ] 
-        });
-
-        this.defineInstrument('Viola', { type: 'additive', algorithm: 'custom', envelope: 'sustained', partials: [{freq:1, amp:1, decay:1.2}, {freq:2, amp:0.6, decay:1.0}, {freq:3, amp:0.4, decay:0.8}] });
-        this.defineInstrument('Piano', { type: 'additive', algorithm: 'custom', envelope: 'percussive', partials: [{freq:1, amp:1, decay:2.0}, {freq:2, amp:0.4, decay:1.5}, {freq:3, amp:0.2, decay:1.0}, {freq:4, amp:0.1, decay:0.8}] });
-        this.defineInstrument('Harpsichord', { type: 'additive', algorithm: 'custom', partials: [{freq:1, amp:0.6, decay:0.5}, {freq:2, amp:1.0, decay:0.4}, {freq:3, amp:0.5, decay:0.3}, {freq:4, amp:0.3, decay:0.2}] });
-        this.defineInstrument('Harp', { type: 'additive', algorithm: 'custom', partials: [{freq:1, amp:1, decay:3.0}, {freq:2, amp:0.5, decay:2.5}, {freq:3, amp:0.2, decay:2.0}] });
-
-        // Create a noise buffer for percussion
-        const bufferSize = this.ctx.sampleRate * 2.0; // 2 seconds of noise
-        this.noiseBuffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
-        const data = this.noiseBuffer.getChannelData(0);
-        for (let i = 0; i < bufferSize; i++) {
-            data[i] = Math.random() * 2 - 1;
-        }
-    }
-
-    createSyntheticInstrument(sourceId, newId, depth = 'medium', envelope = 'percussive') {
-        // 1. Get Analysis
-        const analysis = this.manifestManager.getAssetAnalysis('samples', sourceId);
-        if (!analysis) {
-            Logger.warn(`Cannot synthesize '${sourceId}': no analysis data.`);
-            return;
-        }
-
-        // 2. Generate Definition via Additive Processor
-        const def = this.additive.createSynthFromAnalysis(analysis, depth);
-        def.envelope = envelope;
-
-        // 3. Register locally
-        this.defineInstrument(newId, def);
-
-        // 4. Save to Manifest (instruments category)
-        // We add a new category 'instruments' to manifest for these synthetic definitions
-        this.manifestManager.addToManifest('instruments', newId, {
-            definition: def,
-            source: sourceId,
-            timestamp: Date.now()
-        });
-
-        Logger.message(`Created Synthetic Instrument '${newId}' (Depth: ${depth})`);
-        return newId;
-    }
-
-    async loadSample(id, url) {
-        try {
-            const response = await fetch(url);
-            const arrayBuffer = await response.arrayBuffer();
-            const audioBuffer = await this.ctx.decodeAudioData(arrayBuffer);
-            this.samples.set(id, audioBuffer);
-
-            // Detect Pitch/Key if not already present in manifest
-            let analysis = this.manifestManager.getAssetAnalysis('samples', id);
-
-            if (!analysis) {
-                if (!this.analyzer) {
-                    // Lazy load analyzer (assuming it's imported or globally avail, or simple inline fallback)
-                    // For now, use the inline logic we just replaced or import the module
-                    analysis = this.inlineAnalyze(audioBuffer);
-                } else {
-                    analysis = await this.analyzer.analyze(audioBuffer);
-                }
-                // Save back to manifest runtime cache
-                this.manifestManager.updateAssetAnalysis('samples', id, analysis);
-            }
-
-            this.defineInstrument(id, {
-                type: 'sampler',
-                sampleId: id,
-                baseFreq: analysis.freq,
-                key: analysis.note
-            });
-            Logger.message(`InstrumentEngine: Loaded sample '${id}' (Key: ${analysis.note})`);
-            return true;
-        } catch (e) {
-            Logger.error(`InstrumentEngine: Failed to load sample '${id}'`, e);
-            return false;
-        }
-    }
-
-    // Renaming old analyzeBuffer to inlineAnalyze for fallback
-    inlineAnalyze(buffer) {
-        // Simple time-domain zero-crossing or auto-correlation for fundamental freq
-        // For short samples, simple autocorrelation is often enough.
-        const data = buffer.getChannelData(0);
-        const sampleRate = buffer.sampleRate;
-
-        // Analyze first 0.5s or full buffer
-        const size = Math.min(data.length, sampleRate * 0.5);
-        const slice = data.slice(0, size);
-
-        const freq = this._autoCorrelate(slice, sampleRate);
-        const note = this._freqToNote(freq);
-        return { freq, note };
-    }
-
-    _autoCorrelate(buf, sampleRate) {
-        let size = buf.length;
-        let rms = 0;
-        for (let i = 0; i < size; i++) {
-            const val = buf[i];
-            rms += val * val;
-        }
-        rms = Math.sqrt(rms / size);
-        if (rms < 0.01) return -1; // Too quiet
-
-        let r1 = 0, r2 = size - 1, thres = 0.2;
-        for (let i = 0; i < size / 2; i++) {
-            if (Math.abs(buf[i]) < thres) { r1 = i; break; }
-        }
-        for (let i = 1; i < size / 2; i++) {
-            if (Math.abs(buf[size - i]) < thres) { r2 = size - i; break; }
-        }
-
-        buf = buf.slice(r1, r2);
-        size = buf.length;
-
-        const c = new Array(size).fill(0);
-        for (let i = 0; i < size; i++) {
-            for (let j = 0; j < size - i; j++) {
-                c[i] = c[i] + buf[j] * buf[j + i];
-            }
-        }
-
-        let d = 0;
-        while (c[d] > c[d + 1]) d++;
-        let maxval = -1, maxpos = -1;
-        for (let i = d; i < size; i++) {
-            if (c[i] > maxval) {
-                maxval = c[i];
-                maxpos = i;
-            }
-        }
-        let T0 = maxpos;
-
-        // Parabolic interpolation
-        // ... (simplified for now, just return sampleRate / T0)
-        return sampleRate / T0;
-    }
-
-    _freqToNote(freq) {
-        if (!freq || freq <= 0) return 'Unknown';
-        const A4 = 440;
-        const notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
-        const c0 = A4 * Math.pow(2, -4.75);
-        const name = notes[Math.round(12 * Math.log2(freq / c0)) % 12];
-        const oct = Math.floor(12 * Math.log2(freq / c0) / 12);
-        return name + oct;
-    }
-
-    _freqFromNote(note) {
-        if (!note) return 0;
-        const notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
-        const matches = note.match(/([A-G][#b]?)(\d+)/);
-        if (!matches) return 440; // Default fallback
-
-        let name = matches[1];
-        const octave = parseInt(matches[2]);
-
-        // Handle flats by converting to previous sharp
-        if (name.endsWith('b')) {
-            const base = name.charAt(0);
-            const baseIndex = notes.indexOf(base);
-            // Move down one semitone, wrapping around
-            const sharpIndex = (baseIndex - 1 + 12) % 12;
-            name = notes[sharpIndex];
-        }
-
-        const semitone = notes.indexOf(name);
-
-        // C0 is 16.35, A4 is 440
-        // A4 = index 9 in octave 4.
-        // steps from A4 = (octave - 4)*12 + (semitone - 9)
-        const steps = (octave - 4) * 12 + (semitone - 9);
-        return 440 * Math.pow(2, steps / 12);
-    }
-
-    defineInstrument(id, definition) {
-        this.instruments.set(id, definition);
-    }
-
-    playNote(instrumentId, frequency, time, duration, velocity = 0.5, destination) {
-        const inst = this.instruments.get(instrumentId);
-        if (!inst) {
-            // Fallback
-            return this.playSynthNote(frequency, time, duration, 'sine', velocity, destination);
-        }
-
-        switch (inst.type) {
-            case 'sampler':
-                this.playSampleNote(inst.sampleId, frequency, time, duration, velocity, destination);
-                break;
-            case 'additive':
-                // If algorithm is 'bell', use the default bell partials, otherwise use custom partials
-                if (inst.algorithm === 'bell') {
-                    this.additive.playAdditiveTone(frequency, time, duration, destination, null, inst); // partials will default
-                } else if (inst.partials) {
-                    this.additive.playAdditiveTone(frequency, time, duration, destination, inst.partials, inst);
-                } else {
-                    // Fallback for additive if no algorithm or partials specified
-                    this.additive.playAdditiveTone(frequency, time, duration, destination, null, inst);
-                }
-                break;
-            case 'noise':
-                this.playNoiseNote(time, duration, velocity, destination, inst);
-                break;
-            case 'synth':
-            default:
-                this.playSynthNote(frequency, time, duration, inst.oscType, velocity, destination, inst);
-                break;
-        }
-    }
-
-    playSynthNote(frequency, time, duration, type, velocity, destination, params = {}) {
-        if (!Number.isFinite(frequency) || frequency <= 0) return;
-        const osc = this.ctx.createOscillator();
-        const env = this.ctx.createGain();
-
-        osc.type = type || 'sine';
-        
-        // Pitch Envelope (Crucial for Kicks/Drums)
-        if (params.pitchEnv) {
-            const startFreq = params.pitchEnv.startMult ? frequency * params.pitchEnv.startMult : frequency;
-            const dropTime = params.pitchEnv.time || 0.1;
-            osc.frequency.setValueAtTime(startFreq, time);
-            osc.frequency.exponentialRampToValueAtTime(frequency, time + dropTime);
-        } else {
-            osc.frequency.value = frequency;
-        }
-
-        osc.connect(env);
-        // Filter Support
-        let source = osc;
-        if (params.filterType) {
-            const filter = this.ctx.createBiquadFilter();
-            filter.type = params.filterType;
-            filter.frequency.value = params.filterFreq || 1000;
-            if (params.filterQ) filter.Q.value = params.filterQ;
-            osc.connect(filter);
-            source = filter;
-        }
-
-        source.connect(env);
-        env.connect(destination);
-
-        // ADSR / Envelope
-        const attack = params.attack || 0.01;
-        const release = params.release || 0.1;
-        const safeDuration = Math.max(duration, attack + 0.01);
-
-        env.gain.setValueAtTime(0, time);
-        env.gain.linearRampToValueAtTime(velocity, time + attack);
-        
-        // Sustain -> Release
-        env.gain.setValueAtTime(velocity, time + safeDuration);
-        env.gain.exponentialRampToValueAtTime(0.001, time + safeDuration + release);
-        // Force silence to avoid DC offset or click at stop
-        env.gain.linearRampToValueAtTime(0, time + safeDuration + release + 0.01);
-
-        osc.start(time);
-        osc.stop(time + safeDuration + release + 0.02);
-    }
-
-    playSampleNote(sampleId, frequency, time, duration, velocity, destination) {
-        const buffer = this.samples.get(sampleId);
-        if (!buffer) return;
-
-        const source = this.ctx.createBufferSource();
-        source.buffer = buffer;
-
-        // Pitch shifting (Assuming C4 base)
-        const rate = frequency / 261.63;
-        source.playbackRate.value = rate;
-
-        const env = this.ctx.createGain();
-        source.connect(env);
-        env.connect(destination);
-
-        // Fix: Add small attack to prevent start click
-        env.gain.setValueAtTime(0, time);
-        env.gain.linearRampToValueAtTime(velocity, time + 0.005);
-
-        // Simple decay if duration is short, else let sample play
-        // But preventing click at end:
-        env.gain.setValueAtTime(velocity, time + duration);
-        env.gain.linearRampToValueAtTime(0, time + duration + 0.1);
-
-        source.start(time);
-        source.stop(time + duration + 0.2);
-    }
-
-    playNoiseNote(time, duration, velocity, destination, params = {}) {
-        const source = this.ctx.createBufferSource();
-        source.buffer = this.noiseBuffer;
-        const env = this.ctx.createGain();
-
-        // Apply Filter if specified (Essential for Hats to avoid clicking)
-        let outputNode = source;
-        if (params.filterType) {
-            const filter = this.ctx.createBiquadFilter();
-            filter.type = params.filterType;
-            filter.frequency.value = params.filterFreq || 1000;
-            if (params.filterQ) filter.Q.value = params.filterQ;
-            source.connect(filter);
-            outputNode = filter;
-            // outputNode.connect(this.ctx.destination); // DEBUG: Direct out to check filter
-        }
-
-        outputNode.connect(env);
-        env.connect(destination);
-
-        const safeDuration = Math.max(duration, 0.05); // Ensure minimum duration to avoid clicks
-        
-        // Fix: Add attack and release ramps to prevent clicks/crackles
-        env.gain.setValueAtTime(0, time);
-        env.gain.linearRampToValueAtTime(velocity, time + 0.005);
-        env.gain.exponentialRampToValueAtTime(0.001, time + safeDuration);
-        env.gain.linearRampToValueAtTime(0, time + safeDuration + 0.05); // Ensure full silence
-
-        source.start(time);
-        source.stop(time + safeDuration + 0.1);
     }
 }
 
@@ -836,6 +295,7 @@ class T13NE_Music {
         this.musicPack = null; // Holds buffers for the current musical context
         this.currentLayers = new Set(); // Tracks active layer names
         this.lastTension = -1;
+        this.themeComponents = {};
 
         this.manifestManager = new AudioManifestManager();
     }
@@ -852,6 +312,9 @@ class T13NE_Music {
             this.synth = new T13Synth(this.soundEngine.audioContext);
             // Attach manifest manager to instrument engine so it can access analysis data
             this.synth.instrumentEngine.manifestManager = this.manifestManager;
+            
+            // Initialize the Instrument Engine (loads AudioWorklets)
+            await this.synth.instrumentEngine.init();
         } else {
             Logger.warn("T13NE_Music: SoundEngine AudioContext not available. Playback disabled.");
         }
@@ -901,6 +364,37 @@ class T13NE_Music {
     }
 
     /**
+     * Inject components for theme generation if they are created asynchronously.
+     * @param {Object} components - { playerCharacter, playerShip, galaxy }
+     */
+    injectThemeComponents(components) {
+        this.themeComponents = { ...this.themeComponents, ...components };
+        Logger.message("T13NE_Music: Theme components injected.");
+    }
+
+    /**
+     * Selects an appropriate instrument based on the Role and Geometry.
+     * Roles:
+     * - Lead: The main melody voice.
+     * - Bass: The low-frequency rhythm/harmony foundation.
+     * - Pad: Harmonic Fill. Sustained background chords that "pad" the mix (e.g. Strings, Choir).
+     * - Drum: Percussive rhythm.
+     */
+    _getInstrumentForRole(role, geo) {
+        const palettes = {
+            bass: ['Tuba', 'Cello', 'Piano'], 
+            lead: ['Violin', 'Flute', 'Oboe', 'Trumpet', 'Clarinet'], 
+            pad: ['French Horn', 'Viola', 'Cello', 'Harp'], 
+            drum: ['wr_kick', 'wr_snare', 'wr_hat']
+        };
+
+        const palette = palettes[role] || palettes.lead;
+        // Use Geometry Number (1-13) to deterministically pick an instrument
+        const index = ((geo?.GeometryNumber || 1) - 1) % palette.length;
+        return palette[index];
+    }
+
+    /**
      * generating the Wormhole Racers Main Theme.
      */
     async createWormholeTheme(gameEngine) {
@@ -909,164 +403,126 @@ class T13NE_Music {
         const trackName = 'track_wormhole_main_theme';
         Logger.message("T13NE_Music: generating Wormhole Racers Theme from components...");
 
-        // 1. Determine Context from Game Engine
-        const pc = gameEngine?.playerCharacter || { name: 'Racer', geometry: { GeometryNumber: 5, Facade: 5 } };
-        const ship = gameEngine?.playerShip || { name: 'Ship', geometry: { GeometryNumber: 1, Facade: 1 } };
+        // 1. Determine Context from Game Engine or Injected Components
+        const components = this.themeComponents || {};
+        
+        // Prefer injected, then gameEngine, then fail (no hardcoded fallbacks)
+        const pcSource = components.playerCharacter || gameEngine?.playerCharacter;
+        const shipSource = components.playerShip || gameEngine?.playerShip;
+        const galaxySource = components.galaxy || gameEngine?.galaxy;
 
-        // 2. Generate Stems using Generators
-        // Lead Melody from Player Character
+        if (!pcSource || !shipSource || !galaxySource) {
+             Logger.warn("T13NE_Music: Missing components for Wormhole Theme (PC, Ship, or Galaxy). Waiting for injection.");
+             return null;
+        }
+
+        // Helper to ensure geometry is calculated if missing
+        const ensureGeometry = (source) => {
+             if (source.geometry && source.geometry.GeoHarmonics) return source;
+             // Calculate if missing using the mandatory T13Geometry module
+             const geo = this.geometry.calculateFullGeo(source.name);
+             return { ...source, geometry: geo };
+        };
+
+        const pc = ensureGeometry(pcSource);
+        const ship = ensureGeometry(shipSource);
+        const galaxy = ensureGeometry(galaxySource);
+
+        // 2. Generate Motifs (Patterns) for each entity
         const leadMotif = this.getCharacterComposition(pc);
-        
-        // Bass derived from Lead to ensure tuning
-        const bassSequence = this._generateBassSequence(leadMotif, 32);
-        
-        // Pad/Harmony derived from Lead Scale
-        const padSequence = this._generatePadSequence(leadMotif, 32); // 32 steps (2 bars) for variation
-        const drumSequence = this._generateDrumSequence(16, ship); 
+        const bassMotif = this.getCharacterComposition(ship);
+        const padMotif = this.getCharacterComposition(galaxy);
 
-        // 1. Create Instruments
-        const bassPatch = {
-            type: 'additive',
-            algorithm: 'custom',
-            envelope: 'sustained',
-            attack: 0.02, // Fast attack for shape
-            decay: 0.1,
-            sustain: 0.8,
-            release: 0.1,
-            partials: [
-                { freq: 1.0, amp: 1.0 }, // Fundamental
-                { freq: 2.0, amp: 0.8 }, // 1st Overtone
-                { freq: 3.0, amp: 0.6 }, // 2nd Overtone
-                { freq: 4.0, amp: 0.4 }, // 3rd Overtone
-                { freq: 5.0, amp: 0.2 }  // 4th Overtone
-            ]
-        };
-        const leadPatch = {
-            type: 'additive',
-            algorithm: 'custom',
-            envelope: 'sustained',
-            partials: [
-                { freq: 1, amp: 1, decay: 0.1 },
-                { freq: 2, amp: 0.5, decay: 0.2 },
-                { freq: 3, amp: 0.2, decay: 0.3 }
-            ]
-        };
-        const padPatch = {
-            type: 'additive',
-            algorithm: 'custom',
-            envelope: 'sustained',
-            attack: 1.0, // Slow fade in
-            release: 1.0, // Slow fade out
-            partials: [
-                { freq: 1, amp: 0.8, decay: 2.0 }, // Fundamental
-                { freq: 2, amp: 0.4, decay: 1.5 }, // Octave
-                { freq: 4, amp: 0.2, decay: 1.5 }  // 2 Octaves up (Clean, no warble)
-            ]
-        };
+        // 3. Determine Instruments based on Role and Geometry
+        const leadInst = this._getInstrumentForRole('lead', pc.geometry);
+        const bassInst = this._getInstrumentForRole('bass', ship.geometry);
+        const padInst = this._getInstrumentForRole('pad', galaxy.geometry);
 
-        this.synth.instrumentEngine.defineInstrument('wr_bass', bassPatch);
-        this.synth.instrumentEngine.defineInstrument('wr_lead', leadPatch);
-        this.synth.instrumentEngine.defineInstrument('wr_pad', padPatch);
-
-        this.synth.instrumentEngine.defineInstrument('wr_kick', { 
-            type: 'synth', 
-            oscType: 'sine',
-            pitchEnv: { startMult: 4.0, time: 0.1 }, // Drop pitch 4x -> 1x to create "thump"
-            attack: 0.001,
-            release: 0.2
-        }); 
-        this.synth.instrumentEngine.defineInstrument('wr_snare', { type: 'noise', filterType: 'lowpass', filterFreq: 2000 }); // Snare body - softer
-        this.synth.instrumentEngine.defineInstrument('wr_hat', { type: 'noise', filterType: 'bandpass', filterFreq: 4000, filterQ: 1.0 }); // Hats - lower freq to avoid crackle
-
-        // 3. Assemble Song Structure
-        const structures = {
-            'Pop': [
-                { type: 'Intro', bars: 4, voices: ['v_pad'] },
-                { type: 'Verse', bars: 8, voices: ['v_bass', 'v_pad', 'v_hat'] },
-                { type: 'Chorus', bars: 8, voices: ['v_bass', 'v_pad', 'v_lead', 'v_kick', 'v_snare', 'v_hat'] },
-                { type: 'Bridge', bars: 4, voices: ['v_pad', 'v_lead'] },
-                { type: 'Chorus', bars: 8, voices: ['v_bass', 'v_pad', 'v_lead', 'v_kick', 'v_snare', 'v_hat'] },
-                { type: 'Outro', bars: 4, voices: ['v_pad'] }
-            ],
-            'Cinematic': [
-                { type: 'Atmosphere', bars: 8, voices: ['v_pad'] },
-                { type: 'Tension', bars: 8, voices: ['v_pad', 'v_bass', 'v_hat'] },
-                { type: 'Build', bars: 8, voices: ['v_pad', 'v_bass', 'v_hat', 'v_snare'] },
-                { type: 'Climax', bars: 16, voices: ['v_bass', 'v_pad', 'v_lead', 'v_kick', 'v_snare', 'v_hat'] },
-                { type: 'Resolution', bars: 8, voices: ['v_pad', 'v_lead'] }
-            ],
-            'Symphony': [
-                { type: 'Exposition', bars: 8, voices: ['v_lead', 'v_pad'] },
-                { type: 'Counter-Theme', bars: 8, voices: ['v_bass', 'v_pad', 'v_hat'] },
-                { type: 'Development', bars: 16, voices: ['v_bass', 'v_lead', 'v_kick', 'v_snare'] },
-                { type: 'Recapitulation', bars: 8, voices: ['v_lead', 'v_pad', 'v_bass', 'v_kick', 'v_snare', 'v_hat'] },
-                { type: 'Coda', bars: 4, voices: ['v_lead', 'v_pad'] }
-            ]
-        };
-
-        const structureKeys = Object.keys(structures);
-        const selectedKey = structureKeys[Math.floor(Math.random() * structureKeys.length)];
-        const songStructure = structures[selectedKey];
-        
-        Logger.message(`T13NE_Music: Selected structure '${selectedKey}'`);
-
-        const fullSequence = [];
-        let currentBarOffset = 0;
+        // 4. Generate Track Events
         const bpm = 120;
         const beatTime = 60 / bpm;
 
-        // Helper to convert motifs to track events
-        const leadEvents = this._motifToTrackEvents(leadMotif, 'v_lead', beatTime);
-        const bassEvents = bassSequence.map(e => ({ ...e, voice: 'v_bass' }));
-        const padEvents = padSequence.map(e => ({ ...e, voice: 'v_pad' }));
-        const drumEvents = drumSequence;
+        // Helper to shift motif to target range
+        const getShift = (motif, targetFreq) => {
+            if (!motif || !motif.baseFreq) return 0;
+            return 12 * Math.log2(targetFreq / motif.baseFreq);
+        };
 
-        songStructure.forEach(section => {
-            for (let b = 0; b < section.bars; b++) {
-                const barStepOffset = (currentBarOffset + b) * 16;
-                
-                // Add parts if voice is active in section
-                if (section.voices.includes('v_lead')) this._addLoopToSequence(fullSequence, leadEvents, barStepOffset, 16);
-                if (section.voices.includes('v_bass')) this._addLoopToSequence(fullSequence, bassEvents, barStepOffset, 32);
-                // Pad loop is 32 steps (2 bars), so we loop it differently
-                if (section.voices.includes('v_pad')) this._addLoopToSequence(fullSequence, padEvents, barStepOffset, 32);
-                
-                // Drums
-                if (section.voices.includes('v_kick')) this._addLoopToSequence(fullSequence, drumEvents.filter(e=>e.voice==='v_kick'), barStepOffset, 16);
-                if (section.voices.includes('v_snare')) this._addLoopToSequence(fullSequence, drumEvents.filter(e=>e.voice==='v_snare'), barStepOffset, 16);
-                if (section.voices.includes('v_hat')) this._addLoopToSequence(fullSequence, drumEvents.filter(e=>e.voice==='v_hat'), barStepOffset, 16);
+        // Lead: Keep original pitch or center around C4 (261Hz)
+        const leadEvents = this._motifToTrackEvents(leadMotif, 'v_lead', beatTime, 0);
+        
+        // Bass: Shift to ~C2 (65Hz)
+        const bassShift = getShift(bassMotif, 65);
+        const bassEvents = this._motifToTrackEvents(bassMotif, 'v_bass', beatTime, bassShift);
+        
+        // Pad: Shift to ~C3 (130Hz)
+        const padShift = getShift(padMotif, 130);
+        const padEvents = this._motifToTrackEvents(padMotif, 'v_pad', beatTime, padShift);
+
+        // Drums: Procedural based on ship
+        const drumSequence = this._generateDrumSequence(16, ship);
+
+        // 5. Assemble Sequence
+        const fullSequence = [];
+        const measures = 4;
+        const totalSteps = measures * 16;
+
+        const fillTrack = (events, voiceId) => {
+            if (!events.length) return;
+            let currentStep = 0;
+            const motifLength = events[events.length - 1].step + (events[events.length - 1].duration / beatTime * 4);
+            const loopLength = Math.ceil(motifLength / 16) * 16 || 16;
+
+            while (currentStep < totalSteps) {
+                events.forEach(evt => {
+                    if (currentStep + evt.step < totalSteps) {
+                        fullSequence.push({
+                            ...evt,
+                            step: currentStep + evt.step,
+                            voice: voiceId
+                        });
+                    }
+                });
+                currentStep += loopLength;
             }
-            currentBarOffset += section.bars;
-        });
+        };
 
-        // 3. Assemble Track
+        fillTrack(leadEvents, 'v_lead');
+        fillTrack(bassEvents, 'v_bass');
+        fillTrack(padEvents, 'v_pad');
+        
+        // Drums
+        fillTrack(drumSequence.filter(e => e.voice === 'v_kick'), 'v_kick');
+        fillTrack(drumSequence.filter(e => e.voice === 'v_snare'), 'v_snare');
+        fillTrack(drumSequence.filter(e => e.voice === 'v_hat'), 'v_hat');
+
+        // Define Drum Instruments (Standard)
+        this.synth.instrumentEngine.defineInstrument('wr_kick', { type: 'synth', oscType: 'sine', pitchEnv: { startMult: 4.0, time: 0.1 }, attack: 0.001, release: 0.2 });
+        this.synth.instrumentEngine.defineInstrument('wr_snare', { type: 'noise', filterType: 'lowpass', filterFreq: 2000 });
+        this.synth.instrumentEngine.defineInstrument('wr_hat', { type: 'noise', filterType: 'bandpass', filterFreq: 4000, filterQ: 1.0 });
+
         const trackData = {
             name: 'Wormhole Racers Theme',
             bpm: bpm,
             timeSignature: [4, 4],
-            measures: currentBarOffset,
+            measures: measures,
             voices: [
-                { id: 'v_bass', name: 'Bass', instrument: 'wr_bass', sequence: [], mute: false },
-                { id: 'v_lead', name: 'Lead', instrument: 'wr_lead', sequence: [], mute: false },
-                { id: 'v_pad', name: 'Pad', instrument: 'wr_pad', sequence: [], mute: false },
+                { id: 'v_bass', name: 'Bass', instrument: bassInst, sequence: [], mute: false },
+                { id: 'v_lead', name: 'Lead', instrument: leadInst, sequence: [], mute: false },
+                { id: 'v_pad', name: 'Pad', instrument: padInst, sequence: [], mute: false },
                 { id: 'v_kick', name: 'Kick', instrument: 'wr_kick', sequence: [], mute: false },
                 { id: 'v_snare', name: 'Snare', instrument: 'wr_snare', sequence: [], mute: false },
                 { id: 'v_hat', name: 'Hat', instrument: 'wr_hat', sequence: [], mute: false }
             ]
         };
 
-        // Distribute notes to voices
+        // Distribute
         fullSequence.forEach(note => {
             const v = trackData.voices.find(voice => voice.id === note.voice);
             if (v) v.sequence.push(note);
         });
 
-        // 4. Save
         this.saveTrack(trackName, trackData);
-
-        // Also register instruments to manifest so they persist
-        // (Skipping full instrument save logic for brevity, they are active in engine now)
-
         return trackData;
     }
 
@@ -1106,94 +562,6 @@ class T13NE_Music {
                 step: offsetStep + loopStep
             });
         });
-    }
-
-    _generatePadSequence(leadMotif, lengthSteps) {
-        // Generate a chord progression based on lead scale
-        const baseFreq = leadMotif.baseFreq;
-        const scale = leadMotif.scale || [0, 2, 4, 5, 7, 9, 11];
-        const events = [];
-
-        const getFreq = (degree) => {
-            const interval = scale[degree % scale.length];
-            const octave = Math.floor(degree / scale.length);
-            return baseFreq * Math.pow(2, (interval + (octave * 12)) / 12);
-        };
-        
-        // Bar 1: Root
-        // Duration 2.0 beats (half bar) allows fade out before next bar
-        events.push({ step: 0, freq: baseFreq, duration: 2.0, velocity: 0.3 });
-        events.push({ step: 0, freq: baseFreq * 1.5, duration: 2.0, velocity: 0.2 });
-        
-        // Bar 2: Fifth (or Fourth) to create movement
-        // 16 steps later
-        events.push({ step: 16, freq: baseFreq * 0.75, duration: 2.0, velocity: 0.3 }); // Fourth below (or Fifth above / 2)
-        events.push({ step: 16, freq: baseFreq * 1.125, duration: 2.0, velocity: 0.2 }); // Major Second above Fourth (Fifth of scale)
-        // Progression: I - vi - IV - V (Indices: 0, 5, 3, 4)
-        const chords = [
-            [0, 2, 4], // I
-            [5, 7, 9], // vi
-            [3, 5, 7], // IV
-            [4, 6, 8]  // V
-        ];
-
-        const stepsPerChord = 8; // Change every 2 beats
-
-        for (let i = 0; i < 4; i++) {
-            const offset = i * stepsPerChord;
-            if (offset >= lengthSteps) break;
-            
-            const chord = chords[i % chords.length];
-            chord.forEach(degree => {
-                events.push({ 
-                    step: offset, 
-                    freq: getFreq(degree), 
-                    duration: 2.0, // 2 beats
-                    velocity: 0.3 
-                });
-            });
-        }
-
-        return events;
-    }
-
-    _generateBassSequence(leadMotif, lengthSteps) {
-        const baseFreq = leadMotif.baseFreq * 0.5; // Octave down
-        const scale = leadMotif.scale || [0, 2, 4, 5, 7, 9, 11];
-        const events = [];
-        // Use Lead's base frequency but drop 1 octave (0.5) to ensure it's audible bass, not sub-bass
-        const bassFreq = leadMotif.baseFreq * 0.5; 
-
-        const getFreq = (degree) => {
-            const interval = scale[degree % scale.length];
-            const octave = Math.floor(degree / scale.length);
-            return baseFreq * Math.pow(2, (interval + (octave * 12)) / 12);
-        };
-        
-        // Simple driving rhythm on the root note
-        for (let i = 0; i < lengthSteps; i += 4) { // Every beat
-            events.push({ step: i, freq: bassFreq, duration: 0.5, velocity: 0.8 });
-        // Progression Roots: I - vi - IV - V
-        const roots = [0, 5, 3, 4];
-        const stepsPerChord = 8;
-
-        for (let i = 0; i < 4; i++) {
-            const rootIdx = roots[i % roots.length];
-            const offset = i * stepsPerChord;
-            
-            if (offset >= lengthSteps) break;
-
-            // Bass Pattern relative to root
-            // Beat 1: Root
-            events.push({ step: offset + 0, freq: getFreq(rootIdx), duration: 0.25, velocity: 0.9 });
-            // Beat 1.75: Octave (16th before beat 2)
-            events.push({ step: offset + 3, freq: getFreq(rootIdx + 7), duration: 0.25, velocity: 0.7 });
-            // Beat 2: 5th (Index + 4)
-            events.push({ step: offset + 4, freq: getFreq(rootIdx + 4), duration: 0.25, velocity: 0.8 });
-            // Beat 2.5: Root
-            events.push({ step: offset + 6, freq: getFreq(rootIdx), duration: 0.25, velocity: 0.8 });
-        }
-        return events;
     }
 
     _generateDrumSequence(lengthSteps, ship = null) {
@@ -1650,7 +1018,7 @@ class T13NE_Music {
         if (!motif) return;
 
         // Use the character's preferred instrument if none is specified.
-        const preferredInstrument = instrument || KEY_INSTRUMENT_MAP[motif.key] || 'piano';
+        const preferredInstrument = instrument || this._getInstrumentForRole('lead', character.geometry) || 'Piano';
 
         Logger.message(`T13NE_Music: Playing leitmotif for ${character.name}`);
         let dissonance = 0;

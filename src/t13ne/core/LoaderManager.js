@@ -92,6 +92,14 @@ class LoaderManager {
                 name: 'Audio Systems', action: async () => {
                     const music = this.viewManager.engine.getModule('Music');
                     if (music) {
+                        // Inject the procedurally generated entities into the music module
+                        if (typeof music.injectThemeComponents === 'function') {
+                            music.injectThemeComponents({
+                                playerCharacter: this.gameEngine.playerCharacter,
+                                playerShip: this.gameEngine.playerShip,
+                                galaxy: this.gameEngine.galaxy
+                            });
+                        }
                         this.reportProgress("Generating Intro Music...");
                         const theme = await music.createWormholeTheme(this.gameEngine);
                         if (theme) {
