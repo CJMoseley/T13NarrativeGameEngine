@@ -21,7 +21,7 @@ export default defineConfig({
           dest: 'plugins/enable3d/dist'
         },
         {
-          src: 'plugins/t13ne/data',
+          src: 'src/t13ne/data',
           dest: 'plugins/t13ne'
         }
       ]

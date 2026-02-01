@@ -91,7 +91,8 @@ export class T13Plugin extends Plugin {
             'NameGenerator',
             'YarnTeller',
             'Reasoning',
-            'StateMachine'
+            'StateMachine',
+            'Conductor'
         ];
 
         // Iterate and expose each module

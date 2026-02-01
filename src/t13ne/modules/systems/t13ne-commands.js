@@ -39,6 +39,7 @@ export class T13NECommands {
         this.registerSpreadCommands(); // Register new spread commands
         this.registerIChingCommands(); // Register new I-Ching commands
         this.registerAudioCommands(); // Register new Music commands
+        this.registerAudioDirectorCommands(); // Register new AudioDirector commands
         this.loadSettings();
 
         this.initialized = true;
@@ -822,6 +823,26 @@ export class T13NECommands {
             const dummyChar = { name: args.name || "Test Subject", id: "preview_" + Date.now() };
             Music.playLeitmotif(dummyChar);
             return { type: 'MusicPreview', name: dummyChar.name, motif: Music.getLeitmotif(dummyChar) };
+        });
+    }
+
+    registerAudioDirectorCommands() {
+        // AudioDirector:SetMood(mood=Action, intensity=0.8)
+        this.registerCommand('AudioDirector', 'SetMood', async (args, ctx) => {
+            const Director = this.t13ne.getModule('AudioDirector');
+            if (!Director) return { error: "AudioDirector module not loaded" };
+            
+            Director.setMood(args.mood, args.intensity);
+            return { type: 'AudioDirectorMoodSet', mood: args.mood };
+        });
+
+        // AudioDirector:PlaySFX(name=Explosion, type=OneShot)
+        this.registerCommand('AudioDirector', 'PlaySFX', async (args, ctx) => {
+            const Director = this.t13ne.getModule('AudioDirector');
+            if (!Director) return { error: "AudioDirector module not loaded" };
+
+            Director.playSFX(args.type || 'OneShot', args.name);
+            return { type: 'AudioDirectorSFXPlayed', name: args.name };
         });
     }
 

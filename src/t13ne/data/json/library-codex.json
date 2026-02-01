@@ -406,6 +406,20 @@
       }
     }
   },
+  "music": {
+    "description": "This directory contains data related to music generation.",
+    "files": {
+      "drumpatterns.json": {
+        "description": "Procedural drum patterns."
+      },
+      "harmonic_patterns.json": {
+        "description": "Harmonic intersection patterns."
+      },
+      "bass_patterns.json": {
+        "description": "Bassline interaction patterns."
+      }
+    }
+  },
   "naming": {
     "description": "This directory contains data related to naming conventions and generation.",
     "files": {

@@ -1,287 +1,675 @@
 {
-  "EDM_and_Bass": [
+  "meta": {
+    "version": "3.0",
+    "description": "Procedural drum patterns for T13NE Music Engine with Narrative Tagging."
+  },
+  "Atmospheric_Patterns": [
     {
-      "name": "Four-on-the-Floor",
-      "genre": "House/Techno",
-      "bpm_range": "120-130",
-      "time_sig": "4/4",
-      "description": "Kick on 1, 2, 3, 4; Snare/Clap on 2 and 4; Open Hi-Hat on offbeats (&)."
+      "name": "Bo Diddley",
+      "tags": {
+        "genres": ["3", "4", "10"],
+        "eras": ["2", "8"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "A 3-2 clave rhythm applied to the whole drum kit.",
+      "tracks": {
+        "kick": [0, 3, 6, 10, 12],
+        "snare": [0, 3, 6, 10, 12],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14]
+      }
     },
     {
-      "name": "2-Step",
-      "genre": "Drum and Bass",
-      "bpm_range": "170-175",
-      "time_sig": "4/4",
-      "description": "Kick on 1 and 3.5; Snare on 2 and 4; 16th-note ghost snare shuffle."
-    },
-    {
-      "name": "Dem Bow",
-      "genre": "Reggaeton",
-      "bpm_range": "90-110",
-      "time_sig": "4/4",
-      "description": "Kick on 1, 2, 3, 4; Snare on 1.75, 2.5, 3.75, 4.5 (syncopated 3-3-2 feel)."
+      "name": "Surf Rock Wipeout",
+      "tags": {
+        "genres": ["3", "10", "16"],
+        "eras": ["2", "8"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Constant, frantic 16th-note single-stroke rolls.",
+      "tracks": {
+        "kick": [0, 4, 8, 12],
+        "snare": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+        "hat": [0, 4, 8, 12]
+      }
     }
   ],
-  "Rock_Metal_Punk": [
+  "Global_and_Folk": [
     {
-      "name": "Standard Backbeat",
-      "genre": "Rock/Pop",
-      "bpm_range": "80-140",
-      "time_sig": "4/4",
-      "description": "Kick on 1 and 3; Snare on 2 and 4; Steady 8th-note Hi-Hats."
+      "name": "Habanera",
+      "tags": {
+        "genres": ["12", "9", "14"],
+        "eras": ["13", "14", "2"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "A dotted rhythm: 1. (long), 1-and (short), 2, 2-and.",
+      "tracks": {
+        "kick": [0, 3, 4, 7, 8, 11, 12, 15],
+        "snare": [4, 12],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14]
+      }
     },
     {
-      "name": "D-Beat",
-      "genre": "Punk/Hardcore",
-      "bpm_range": "160-200",
-      "time_sig": "4/4",
-      "description": "Kick on 1, 2&, 3; Snare on 2 and 4; Fast 8th-note riding on Cymbals."
+      "name": "Polka",
+      "tags": {
+        "genres": ["12", "13"],
+        "eras": ["13", "12", "2"]
+      },
+      "timeSignature": [2, 4],
+      "length": 8,
+      "description": "A very fast 2/4 'Um-Pah' rhythm.",
+      "tracks": {
+        "kick": [0, 4],
+        "snare": [2, 6],
+        "hat": [0, 2, 4, 6]
+      }
     },
     {
-      "name": "Blast Beat",
-      "genre": "Extreme Metal",
-      "bpm_range": "180+",
-      "time_sig": "4/4",
-      "description": "Rapid alternating 16th-note Kick and Snare; Unison hits on Cymbals."
+      "name": "Reggae One-Drop",
+      "tags": {
+        "genres": ["3", "18"],
+        "eras": ["2", "8"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Unique because beat 1 is 'empty'.",
+      "tracks": {
+        "kick": [8],
+        "snare": [8],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14]
+      }
     },
     {
-      "name": "Odd-Time Groove",
-      "genre": "Prog Rock",
-      "bpm_range": "Variable",
-      "time_sig": "7/8",
-      "description": "Subdivided 2-2-3; Accents on 1, 3, 5; Shifting Snare placements."
+      "name": "Afrobeat",
+      "tags": {
+        "genres": ["3"],
+        "eras": ["2", "8"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Highly complex 4/4 where the Kick drum plays a staggered pattern.",
+      "tracks": {
+        "kick": [0, 3, 7, 10],
+        "snare": [4, 12, 15],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14]
+      }
     }
   ],
-  "Vintage_Machine_Presets": [
+  "Stage_and_Screen": [
     {
-      "name": "Electro Pulse",
-      "genre": "808 Hip-Hop",
-      "bpm_range": "120-130",
-      "time_sig": "4/4",
-      "description": "Kick on 1, 1.75, 2.5; Snare on 2 and 4; 16th-note mechanical Hi-Hats."
+      "name": "Overture Gallop",
+      "tags": {
+        "genres": ["13", "10"],
+        "eras": ["13", "12"]
+      },
+      "timeSignature": [2, 4],
+      "length": 8,
+      "description": "High-energy 2/4 rhythm for chase scenes.",
+      "tracks": {
+        "kick": [0],
+        "snare": [4, 5, 6, 7],
+        "hat": [0, 2, 4, 6]
+      }
     },
     {
-      "name": "Bossa Nova",
-      "genre": "Latin/Keyboard",
-      "bpm_range": "110-150",
-      "time_sig": "4/4",
-      "description": "Kick on 1 and 3; Rimshot pattern on 1, 1.75, 2.5, 3.25, 4."
+      "name": "Cinematic Ostinato",
+      "tags": {
+        "genres": ["10", "11", "6"],
+        "eras": ["2", "3"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Steady, driving 8th or 16th note staccato hits.",
+      "tracks": {
+        "kick": [0, 2, 4, 6, 8, 10, 12, 14],
+        "snare": [4, 12],
+        "hat": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+      }
     },
     {
-      "name": "Waltz",
-      "genre": "Ballroom/Classical",
-      "bpm_range": "80-120",
-      "time_sig": "3/4",
-      "description": "Kick on 1; Snare/Hat on 2 and 3; Emphasis on the downbeat."
+      "name": "Military March",
+      "tags": {
+        "genres": ["8", "12"],
+        "eras": ["1", "11", "9", "13"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Formal snare-heavy pattern.",
+      "tracks": {
+        "kick": [0, 4, 8, 12],
+        "snare": [0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14],
+        "hat": [0, 4, 8, 12]
+      }
     },
     {
-      "name": "Trap",
-      "genre": "Modern Hip-Hop",
-      "bpm_range": "140",
-      "time_sig": "4/4",
-      "description": "Syncopated 808 Kick; Snare on 3 (half-time); 16th/32nd note Hi-Hat triplets."
+      "name": "Burlesque",
+      "tags": {
+        "genres": ["13", "15"],
+        "eras": ["12", "10"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Slow, heavy swing. Kick on 1 and 3.",
+      "tracks": {
+        "kick": [0, 8],
+        "snare": [4, 12],
+        "hat": [4, 12]
+      }
     }
-  ]
-}
-{
+  ],
+  "Odd_Meters": [
+    {
+      "name": "Balkan 7/8",
+      "tags": {
+        "genres": ["5", "50"],
+        "eras": ["1", "6"]
+      },
+      "timeSignature": [7, 8],
+      "length": 14,
+      "description": "Grouped as 2+2+3.",
+      "tracks": {
+        "kick": [0, 4, 8],
+        "snare": [12],
+        "hat": [0, 2, 4, 6, 8, 10, 12]
+      }
+    },
+    {
+      "name": "Take Five",
+      "tags": {
+        "genres": ["3", "71", "20"],
+        "eras": ["2", "8"]
+      },
+      "timeSignature": [5, 4],
+      "length": 20,
+      "description": "Classic cool jazz. Grouped as 3+2.",
+      "tracks": {
+        "kick": [0],
+        "snare": [4, 12, 16],
+        "hat": [0, 3, 6, 8, 12, 15, 18]
+      }
+    },
+    {
+      "name": "Math Rock 11/8",
+      "tags": {
+        "genres": ["0", "3"],
+        "eras": ["2"]
+      },
+      "timeSignature": [11, 8],
+      "length": 22,
+      "description": "Highly syncopated linear technique.",
+      "tracks": {
+        "kick": [0, 6, 12, 18],
+        "snare": [8, 16],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+      }
+    }
+  ],
+  "Jazz_and_Blues": [
+    {
+      "name": "Hard Bop",
+      "tags": {
+        "genres": ["3", "71"],
+        "eras": ["2", "8"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Aggressive swing.",
+      "tracks": {
+        "kick": [0, 10],
+        "snare": [4, 9, 12, 14],
+        "hat": [0, 3, 6, 9, 12, 15]
+      }
+    },
+    {
+      "name": "Shuffle Blues",
+      "tags": {
+        "genres": ["3", "18"],
+        "eras": ["2", "10"]
+      },
+      "timeSignature": [4, 4],
+      "length": 12,
+      "description": "The classic 'Chicago Shuffle'. Triplets.",
+      "tracks": {
+        "kick": [0, 2, 3, 5, 6, 8, 9, 11],
+        "snare": [3, 9],
+        "hat": [0, 2, 3, 5, 6, 8, 9, 11]
+      }
+    },
+    {
+      "name": "Country Train Beat",
+      "tags": {
+        "genres": ["3", "49"],
+        "eras": ["2", "12"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Rapid 16th-note snare roll with accents.",
+      "tracks": {
+        "kick": [0, 8],
+        "snare": [0, 2, 4, 6, 8, 10, 12, 14],
+        "hat": [0, 4, 8, 12]
+      }
+    }
+  ],
+  "Latin_and_Ballroom": [
+    {
+      "name": "Mambo",
+      "tags": {
+        "genres": ["3", "9"],
+        "eras": ["2", "8"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "High-energy Cuban dance.",
+      "tracks": {
+        "kick": [0, 8],
+        "snare": [4, 12],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14]
+      }
+    },
+    {
+      "name": "Merengue",
+      "tags": {
+        "genres": ["3"],
+        "eras": ["2"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Fast-paced Dominican rhythm.",
+      "tracks": {
+        "kick": [0, 4, 8, 12],
+        "snare": [2, 6, 10, 14],
+        "hat": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+      }
+    },
+    {
+      "name": "Bolero",
+      "tags": {
+        "genres": ["9"],
+        "eras": ["13", "2"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Slow and romantic.",
+      "tracks": {
+        "kick": [0, 8, 12],
+        "snare": [4, 10, 12],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14]
+      }
+    },
+    {
+      "name": "Tango",
+      "tags": {
+        "genres": ["9", "14"],
+        "eras": ["12", "10", "2"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Dramatic and sharp.",
+      "tracks": {
+        "kick": [0, 8],
+        "snare": [4, 14],
+        "hat": [0, 4, 8, 14]
+      }
+    }
+  ],
   "Jazz_and_Swing_Standards": [
     {
-      "name": "The Swing Groove",
-      "genre": "Classic Jazz/Big Band",
-      "bpm_range": "120-180",
-      "time_sig": "4/4",
-      "description": "Spang-a-lang: Ride cymbal on 1, 2-&, 3, 4-& (triplet feel); Hi-hat foot on 2 and 4; Feathered Kick on every beat."
+      "name": "Swing Groove",
+      "tags": {
+        "genres": ["20", "12"],
+        "eras": ["10", "9", "2"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Spang-a-lang: Ride cymbal on 1, 2-&, 3, 4-&.",
+      "tracks": {
+        "kick": [0, 4, 8, 12],
+        "snare": [4, 12],
+        "hat": [0, 3, 6, 9, 12, 15]
+      }
     },
     {
       "name": "Bebop Fast",
-      "genre": "Bebop",
-      "bpm_range": "200-300+",
-      "time_sig": "4/4",
-      "description": "High-speed Ride pattern; Snare 'dropping bombs' (random syncopated accents); Kick drum used for punctuation rather than a pulse."
+      "tags": {
+        "genres": ["3"],
+        "eras": ["8", "2"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "High-speed Ride pattern.",
+      "tracks": {
+        "kick": [0, 7, 10],
+        "snare": [2, 5, 9, 14],
+        "hat": [0, 3, 6, 9, 12, 15]
+      }
     },
     {
       "name": "Jazz Waltz",
-      "genre": "Modern Jazz",
-      "bpm_range": "110-160",
-      "time_sig": "3/4",
-      "description": "Ride on 1, 2-&, 3; Hi-hat foot on 2; Snare brushes typically used for circular texture."
+      "tags": {
+        "genres": ["3"],
+        "eras": ["2"]
+      },
+      "timeSignature": [3, 4],
+      "length": 12,
+      "description": "Ride on 1, 2-&, 3.",
+      "tracks": {
+        "kick": [0],
+        "snare": [4, 8],
+        "hat": [0, 3, 6, 8]
+      }
     }
   ],
   "Ballroom_and_Social_Dance": [
     {
       "name": "Foxtrot",
-      "genre": "Ballroom",
-      "bpm_range": "120-136",
-      "time_sig": "4/4",
-      "description": "Slow-Slow-Quick-Quick: Kick on 1 and 3; Snare on 2 and 4; Hi-hat plays straight quarter notes with a slight swing."
+      "tags": {
+        "genres": ["9"],
+        "eras": ["10", "2"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Slow-Slow-Quick-Quick.",
+      "tracks": {
+        "kick": [0, 8],
+        "snare": [4, 12],
+        "hat": [0, 4, 8, 12]
+      }
     },
     {
       "name": "Rhumba",
-      "genre": "Latin/Ballroom",
-      "bpm_range": "100-120",
-      "time_sig": "4/4",
-      "description": "808/CR-78 Preset: Kick on 1, 3, 4; Woodblock/Rimshot on 1, 1-&, 3, 4; Maracas playing constant 8th notes."
+      "tags": {
+        "genres": ["9"],
+        "eras": ["2", "8"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Kick on 1, 3, 4.",
+      "tracks": {
+        "kick": [0, 8, 12],
+        "snare": [0, 2, 8, 12],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14]
+      }
     },
     {
       "name": "Cha-Cha-Cha",
-      "genre": "Latin",
-      "bpm_range": "110-130",
-      "time_sig": "4/4",
-      "description": "Cowbell on every beat; Scraper (Guiro) on 4-&-1; Kick on 1 with strong snare/timbale on 2, 3, 4."
+      "tags": {
+        "genres": ["9"],
+        "eras": ["2", "8"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Cowbell on every beat; Scraper on 4-&-1.",
+      "tracks": {
+        "kick": [0],
+        "snare": [4, 8, 12],
+        "hat": [0, 4, 8, 12, 14]
+      }
     },
     {
       "name": "Viennese Waltz",
-      "genre": "Classical/Ballroom",
-      "bpm_range": "150-180",
-      "time_sig": "3/4",
-      "description": "Fast 3/4 pulse; Heavy accent on Beat 1 (Kick); Light brushes or hats on 2 and 3."
+      "tags": {
+        "genres": ["12", "9", "25"],
+        "eras": ["13", "14"]
+      },
+      "timeSignature": [3, 4],
+      "length": 12,
+      "description": "Fast 3/4 pulse.",
+      "tracks": {
+        "kick": [0],
+        "snare": [4, 8],
+        "hat": [4, 8]
+      }
     }
   ],
   "Blues_and_Soul": [
     {
       "name": "12-Bar Shuffle",
-      "genre": "Blues",
-      "bpm_range": "90-130",
-      "time_sig": "4/4",
-      "description": "Triplet-based 'Gallop'; Snare on 2 and 4; Kick follows the bassline shuffle (1-&, 2-&, 3-&, 4-&)."
+      "tags": {
+        "genres": ["3"],
+        "eras": ["10", "2"]
+      },
+      "timeSignature": [4, 4],
+      "length": 12,
+      "description": "Triplet-based 'Gallop'.",
+      "tracks": {
+        "kick": [0, 2, 3, 5, 6, 8, 9, 11],
+        "snare": [3, 9],
+        "hat": [0, 2, 3, 5, 6, 8, 9, 11]
+      }
     },
     {
       "name": "The Motown Beat",
-      "genre": "Soul/R&B",
-      "bpm_range": "100-130",
-      "time_sig": "4/4",
-      "description": "Snare on every beat (1, 2, 3, 4); Kick on 1 and 3; Tambourine doubling the snare for high-frequency drive."
+      "tags": {
+        "genres": ["3"],
+        "eras": ["8", "2"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Snare on every beat.",
+      "tracks": {
+        "kick": [0, 8],
+        "snare": [0, 4, 8, 12],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14]
+      }
     }
-  ]
-}
-{
-  "category": "Jazz & Blues",
-  "patterns": [
+  ],
+  "EDM_and_Bass": [
     {
-      "name": "Hard Bop",
-      "time_sig": "4/4",
-      "grid": "R: 1--2-a3--4-a | H: --2---4- (Pedal) | S: Random Accents",
-      "description": "Aggressive swing. The 'Spang-a-lang' ride pattern is prominent, while the snare 'comps' (responds) to the soloist."
+      "name": "Four-on-the-Floor",
+      "tags": {
+        "genres": ["6", "32", "3"],
+        "eras": ["2", "3", "38"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Kick on 1, 2, 3, 4.",
+      "tracks": {
+        "kick": [0, 4, 8, 12],
+        "snare": [4, 12],
+        "hat": [2, 6, 10, 14]
+      }
     },
     {
-      "name": "Shuffle Blues",
-      "time_sig": "4/4",
-      "grid": "K: 1-a2-a3-a4-a | S: --2---4- | H: 1-a2-a3-a4-a",
-      "description": "The classic 'Chicago Shuffle'. Every beat is subdivided into triplets with the middle note missing."
+      "name": "2-Step",
+      "tags": {
+        "genres": ["6", "32", "11"],
+        "eras": ["2", "3", "38"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Kick on 1 and 3.5.",
+      "tracks": {
+        "kick": [0, 10],
+        "snare": [4, 12],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14]
+      }
     },
     {
-      "name": "Country Train Beat",
-      "time_sig": "4/4",
-      "grid": "K: 1---3--- | S: -e&a-e&a (Brushes) | H: 1-2-3-4-",
-      "description": "A rapid 16th-note snare roll with accents on the 'off' beats, mimicking the sound of a steam locomotive."
+      "name": "Dem Bow",
+      "tags": {
+        "genres": ["3", "46"],
+        "eras": ["2"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Syncopated 3-3-2 feel.",
+      "tracks": {
+        "kick": [0, 4, 8, 12],
+        "snare": [3, 6, 11, 14],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14]
+      }
+    },
+    {
+      "name": "Progressive House Build-Up",
+      "tags": {
+        "genres": ["6", "32"],
+        "eras": ["2", "3"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Gradual increase in intensity.",
+      "tracks": {
+        "kick": [0, 4, 8, 12],
+        "snare": [0, 2, 4, 6, 8, 10, 12, 14],
+        "hat": [2, 6, 10, 14]
+      }
+    },
+    {
+      "name": "Dubstep Wobble",
+      "tags": {
+        "genres": ["6", "32", "4"],
+        "eras": ["2", "3"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Half-time Snare on beat 3.",
+      "tracks": {
+        "kick": [0, 3, 10],
+        "snare": [8],
+        "hat": [2, 6, 10, 14]
+      }
+    },
+    {
+      "name": "Trance Anthem",
+      "tags": {
+        "genres": ["6", "32"],
+        "eras": ["2", "3"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Driving four-on-the-floor.",
+      "tracks": {
+        "kick": [0, 4, 8, 12],
+        "snare": [4, 12],
+        "hat": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+      }
     }
-  ]
-}
-{
-  "category": "Odd Meters",
-  "patterns": [
+  ],
+  "Rock_Metal_Punk": [
     {
-      "name": "Balkan 7/8",
-      "time_sig": "7/8",
-      "grid": "K: 1-3-5--- | S: ----4--- | H: 1234567",
-      "description": "Common in Bulgarian music. Grouped as 2+2+3. The long beat is at the end of the bar."
+      "name": "BasicRock",
+      "tags": {
+        "genres": ["3", "10"],
+        "eras": ["2", "8"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Kick on 1 and 3; Snare on 2 and 4.",
+      "tracks": {
+        "kick": [0, 8],
+        "snare": [4, 12],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14]
+      }
     },
     {
-      "name": "Take Five (Jazz 5/4)",
-      "time_sig": "5/4",
-      "grid": "R: 1--2-a3--4-a5-- | H: --2---4- | K: 1---",
-      "description": "Classic cool jazz. Grouped as 3+2. The ride cymbal maintains a swing feel across the five beats."
+      "name": "Driving",
+      "tags": {
+        "genres": ["11", "32", "45"],
+        "eras": ["2", "8"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Fast 8th-note riding on Cymbals.",
+      "tracks": {
+        "kick": [0, 3, 8],
+        "snare": [4, 12],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14]
+      }
     },
     {
-      "name": "Math Rock 11/8",
-      "time_sig": "11/8",
-      "grid": "K: 1---4---7---10-- | S: ----5---9--- | H: 1-11 (Linear)",
-      "description": "Highly syncopated. Often played with a 'linear' technique where no two limbs hit at the same time."
+      "name": "Blast Beat",
+      "tags": {
+        "genres": ["7", "28", "45"],
+        "eras": ["2"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Rapid alternating 16th-note Kick and Snare.",
+      "tracks": {
+        "kick": [0, 2, 4, 6, 8, 10, 12, 14],
+        "snare": [1, 3, 5, 7, 9, 11, 13, 15],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14]
+      }
+    },
+    {
+      "name": "Odd-Time Groove",
+      "tags": {
+        "genres": ["6", "5"],
+        "eras": ["2"]
+      },
+      "timeSignature": [7, 8],
+      "length": 14,
+      "description": "Subdivided 2-2-3.",
+      "tracks": {
+        "kick": [0, 4, 8],
+        "snare": [12],
+        "hat": [0, 2, 4, 6, 8, 10, 12]
+      }
     }
-  ]
-}
-{
-  "category": "Stage & Screen",
-  "patterns": [
+  ],
+  "Vintage_Machine_Presets": [
     {
-      "name": "The Overture Gallop",
-      "genre": "Musical Theatre / Opera",
-      "description": "A high-energy 2/4 rhythm used for chase scenes or finales. Heavy accent on 1, with a 'rolling' snare triplet leading into 2."
+      "name": "Electro Pulse",
+      "tags": {
+        "genres": ["6", "32", "17"],
+        "eras": ["2", "8", "38"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "16th-note mechanical Hi-Hats.",
+      "tracks": {
+        "kick": [0, 3, 6],
+        "snare": [4, 12],
+        "hat": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+      }
     },
     {
-      "name": "The Cinematic Ostinato",
-      "genre": "Modern Film Score",
-      "description": "Popularised by Hans Zimmer. Steady, driving 8th or 16th note staccato hits (often Taiko or Orchestral Kicks) in 4/4 or 7/8 for 'ticking clock' tension."
+      "name": "Bossa Nova",
+      "tags": {
+        "genres": ["3", "16"],
+        "eras": ["2", "8"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Rimshot pattern.",
+      "tracks": {
+        "kick": [0, 8],
+        "snare": [0, 3, 6, 9, 12],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14]
+      }
     },
     {
-      "name": "The Military March",
-      "genre": "Historical Drama / Opera",
-      "description": "A formal 2/4 or 4/4 snare-heavy pattern with frequent 'flams' and 'drags' (grace notes) to mimic marching soldiers."
+      "name": "Waltz",
+      "tags": {
+        "genres": ["12"],
+        "eras": ["13", "2"]
+      },
+      "timeSignature": [3, 4],
+      "length": 12,
+      "description": "Emphasis on the downbeat.",
+      "tracks": {
+        "kick": [0],
+        "snare": [4, 8],
+        "hat": [0, 2, 4, 6, 8, 10]
+      }
     },
     {
-      "name": "The Burlesque / Showtune",
-      "genre": "Broadway",
-      "description": "A slow, 'heavy' swing. Kick on 1 and 3; massive Snare with 'splash' cymbals on 2 and 4. Often includes a 'Bump and Grind' syncopation."
-    }
-  ]
-}
-{
-  "category": "Global & Folk Traditions",
-  "patterns": [
-    {
-      "name": "The Habanera",
-      "genre": "Opera (e.g., Bizet's Carmen)",
-      "description": "A dotted rhythm: 1. (long), 1-and (short), 2, 2-and. It provides a sultry, Spanish-influenced tension."
-    },
-    {
-      "name": "The Polka",
-      "genre": "Central European Folk",
-      "description": "A very fast 2/4 'Um-Pah' rhythm. Kick on 1 and 2; Snare on the 'and' of every beat."
-    },
-    {
-      "name": "The Reggae One-Drop",
-      "genre": "Reggae / Dub",
-      "description": "Unique because beat 1 is 'empty'. The Kick and Snare hit simultaneously only on beat 3, creating a weightless, floating feel."
-    },
-    {
-      "name": "The Afrobeat (Tony Allen Style)",
-      "genre": "Afrobeat",
-      "description": "Highly complex 4/4 where the Kick drum plays a staggered, melodic pattern while the Hi-Hat stays strictly on 8th notes."
-    }
-  ]
-}
-{
-  "category": "Atmospheric Patterns",
-  "patterns": [
-    {
-      "name": "The Bo Diddley Beat",
-      "genre": "Early Rock / R&B",
-      "description": "A 3-2 clave rhythm applied to the whole drum kit: 'BUMP-bump-BUMP, BUMP-BUMP.' Iconic in 'jungle' or tribal cinematic scenes."
-    },
-    {
-      "name": "The Surf Rock Wipeout",
-      "genre": "60s Surf",
-      "description": "Constant, frantic 16th-note single-stroke rolls on the Snare or Tom-toms, punctuated by heavy Kick drum accents."
-    }
-  ]
-}
-{
-  "category": "Electronic Dance Music (EDM)",
-  "patterns": [
-    {
-      "name": "The Progressive House Build-Up",
-      "genre": "Progressive House",
-      "description": "A gradual increase in intensity using a four-on-the-floor Kick pattern, layered with rising Snare rolls and open Hi-Hats leading to a drop."
-    },
-    {
-      "name": "The Dubstep Wobble",
-      "genre": "Dubstep",
-      "description": "A half-time Snare on beat 3 with syncopated Kick patterns and heavy use of offbeat Hi-Hats, creating a 'wobbling' effect."
-    },
-    {
-      "name": "The Trance Anthem",
-      "genre": "Trance",
-      "description": "A driving four-on-the-floor Kick with rolling Snare patterns on 2 and 4, combined with fast 16th-note Hi-Hats for energy."
+      "name": "Trap",
+      "tags": {
+        "genres": ["3", "45", "32"],
+        "eras": ["2", "3"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Syncopated 808 Kick.",
+      "tracks": {
+        "kick": [0, 10],
+        "snare": [8],
+        "hat": [0, 2, 4, 5, 6, 8, 10, 11, 12, 14]
+      }
     }
   ]
 }

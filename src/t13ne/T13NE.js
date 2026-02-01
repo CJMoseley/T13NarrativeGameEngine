@@ -43,7 +43,8 @@ import T13NE_Reasoning from './modules/ai/t13ne-reasoning.js';
 import T13NE_StateMachine from './modules/systems/t13ne-state-machine.js';
 import T13NE_Editor from './modules/systems/t13ne-editor.js';
 import T13NE_Music from './modules/audio/t13ne-music.js';
-import T13NE_DJ from './modules/audio/t13ne-dj.js';
+import T13NE_AudioDirector from './modules/audio/t13ne-audio-director.js';
+import T13NE_Conductor from './modules/audio/t13ne-conductor.js';
 
 import { ViewManager } from './core/ViewManager.js';
 import { PluginManager } from './core/PluginManager.js';
@@ -349,10 +350,15 @@ class T13NE {
         await this.modules.Music.initialize(this);
         Logger.message("T13NE: Music module loaded.");
 
-        // Load DJ module
-        this.modules.DJ = T13NE_DJ;
-        await this.modules.DJ.initialize(this);
-        Logger.message("T13NE: DJ module loaded.");
+        // Load AudioDirector module
+        this.modules.AudioDirector = T13NE_AudioDirector;
+        await this.modules.AudioDirector.initialize(this);
+        Logger.message("T13NE: AudioDirector module loaded.");
+
+        // Load Conductor module
+        this.modules.Conductor = T13NE_Conductor;
+        await this.modules.Conductor.initialize(this);
+        Logger.message("T13NE: Conductor module loaded.");
 
         // Load Character Arc module
         this.modules.CharacterArc = T13NE_CharacterArc;

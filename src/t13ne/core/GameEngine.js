@@ -115,7 +115,7 @@ export class GameEngine {
                 Logger.message("GameEngine: Player Character generated with T13 Tapestry.");
 
                 // 2. Generate Crew (Cast/Archetype Extras)
-                const crewRoles = ['Navigator', 'Engineer', 'Gunner', 'Comms'];
+                const crewRoles = ['Pilot', 'Engineer', 'Gunner', 'Astrogator'];
                 for (const role of crewRoles) {
                     const crewMember = await this.loreMaster.characterGenerator.generateCharacter('Archetype');
                     crewMember.role = role;
