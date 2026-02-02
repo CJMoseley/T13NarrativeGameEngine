@@ -165,7 +165,7 @@ export class ShipAssembler {
             }
             
             // Scale down slightly to fit inside hull and avoid z-fighting, but provide solid core
-            mesh.scale.multiplyScalar(0.95);
+            // mesh.scale.multiplyScalar(0.95); // Removed to prevent gaps between components
             
             // Determine color based on usage
             let color = COMPONENT_COLORS.default;
@@ -179,12 +179,13 @@ export class ShipAssembler {
                 }
             }
 
-            // Always use Industrial/Solid look for internals to fill gaps in hull
+            // Always use Industrial/Solid look in final renders for internals to fill gaps in hull
             let matParams = {
                 color: 0x555555, // Base industrial grey
                 roughness: 0.7,
                 metalness: 0.6,
-                flatShading: true
+                flatShading: true,
+                wireframe: true // Wireframe for assembly visualization
             };
 
             if (usage) {

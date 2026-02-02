@@ -133,7 +133,12 @@ export class ShipGenerator {
                                 basePos[0] * sin + basePos[1] * cos,
                                 basePos[2]
                             ];
-                            rRot = preventRotationSymmetry ? baseRot : [baseRot[0], baseRot[1], baseRot[2] + angle];
+                            // Use Quaternion for correct global rotation
+                            const q = new THREE.Quaternion().setFromEuler(new THREE.Euler(...baseRot));
+                            const symQ = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0, 0, 1), angle);
+                            if (!preventRotationSymmetry) q.premultiply(symQ);
+                            const e = new THREE.Euler().setFromQuaternion(q);
+                            rRot = [e.x, e.y, e.z];
                         } else {
                             // Rotate around Y (Saucer style)
                             rPos = [
@@ -141,7 +146,12 @@ export class ShipGenerator {
                                 basePos[1],
                                 basePos[0] * sin + basePos[2] * cos
                             ];
-                            rRot = preventRotationSymmetry ? baseRot : [baseRot[0], baseRot[1] + angle, baseRot[2]];
+                            // Use Quaternion for correct global rotation
+                            const q = new THREE.Quaternion().setFromEuler(new THREE.Euler(...baseRot));
+                            const symQ = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0, 1, 0), angle);
+                            if (!preventRotationSymmetry) q.premultiply(symQ);
+                            const e = new THREE.Euler().setFromQuaternion(q);
+                            rRot = [e.x, e.y, e.z];
                         }
 
                         const rId = id + `_rad_${i}`;
@@ -559,7 +569,14 @@ export class ShipGenerator {
             }
 
             // Center the ring at 0,0,0
-            attachComponent('fuselage_ring', [0, 0, 0], ringRot, 'torus', { radius: ringRadius, tube: tubeRadius }, 'NONE');
+            const ringId = 'fuselage_ring';
+            attachComponent(ringId, [0, 0, 0], ringRot, 'torus', { radius: ringRadius, tube: tubeRadius }, 'NONE');
+            
+            // Explicitly wire ring to the nearest fuselage segment (usually center) to ensure struts generate
+            const centralFuselage = components.find(c => c.usage === 'fuselage' && Math.abs(c.pos[2]) < 2.0);
+            if (centralFuselage) {
+                this.wiringGenerator.addConnection(explicitWiring, ringId, centralFuselage.id, 'structural', ringRadius);
+            }
         }
 
         // Helper to find fuselage radius at a specific Z position for wing attachment.

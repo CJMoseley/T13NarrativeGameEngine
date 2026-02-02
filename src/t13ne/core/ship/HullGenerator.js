@@ -240,19 +240,23 @@ export class HullGenerator {
             return d;
         };
 
-        const res = 64;
-        const mc = new MarchingCubes(res, new THREE.MeshStandardMaterial(), true, true);
-        mc.isolation = 0.0;
-
+        // Calculate bounds to determine appropriate resolution
         const bounds = new THREE.Box3();
         components.forEach(c => {
             const maxDim = Math.max(c.scale.x, c.scale.y, c.scale.z) * 0.5 + 0.5;
             bounds.expandByPoint(c.position.clone().addScalar(maxDim));
             bounds.expandByPoint(c.position.clone().subScalar(maxDim));
         });
-
         const maxBound = Math.max(Math.abs(bounds.min.x), Math.abs(bounds.max.x), Math.abs(bounds.min.y), Math.abs(bounds.max.y), Math.abs(bounds.min.z), Math.abs(bounds.max.z));
         const size = Math.max(maxBound * 1.5, 10); // Increased padding and min size to prevent clipping
+
+        // Dynamic resolution based on size to ensure detail
+        // Target roughly 2 voxels per unit, clamped between 32 and 256
+        let res = Math.ceil(size * 2 * 2.0); 
+        res = Math.min(Math.max(res, 32), 256);
+
+        const mc = new MarchingCubes(res, new THREE.MeshStandardMaterial(), true, true);
+        mc.isolation = 0.0;
 
         for (let i = 0; i < res; i++) {
             for (let j = 0; j < res; j++) {
@@ -272,10 +276,10 @@ export class HullGenerator {
         mc.update();
 
         if (mc.count === 0) {
-            return null;
+            return this.generateConvexHull(components);
         }
 
-        const geometry = mc.generateGeometry(); // Use generateGeometry to get the final mesh
+        const geometry = mc.geometry; // MarchingCubes extends Mesh, geometry is a property
         return geometry;
     }
 

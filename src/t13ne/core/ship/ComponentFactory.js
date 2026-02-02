@@ -72,7 +72,12 @@ export class ComponentFactory {
                 break;
 
             case PRIMITIVE_TYPES.CYLINDER:
-                geometry = new THREE.CylinderGeometry(dims.radiusTop || 0.5, dims.radiusBottom || 0.5, dims.height || 1, 16);
+                geometry = new THREE.CylinderGeometry(
+                    dims.radiusTop !== undefined ? dims.radiusTop : 0.5, 
+                    dims.radiusBottom !== undefined ? dims.radiusBottom : 0.5, 
+                    dims.height || 1, 
+                    16
+                );
                 break;
 
             case PRIMITIVE_TYPES.PRISM:
@@ -210,8 +215,12 @@ export class ComponentFactory {
                 sdfType = 'cone';
                 break;
             case PRIMITIVE_TYPES.CYLINDER:
-                scale.set(dims.radiusTop || 1, dims.height || 1, dims.radiusBottom || 1);
-                if (Math.abs((dims.radiusTop || 1) - (dims.radiusBottom || 1)) > 0.001) {
+                scale.set(
+                    dims.radiusTop !== undefined ? dims.radiusTop : 1, 
+                    dims.height || 1, 
+                    dims.radiusBottom !== undefined ? dims.radiusBottom : 1
+                );
+                if (Math.abs((dims.radiusTop !== undefined ? dims.radiusTop : 1) - (dims.radiusBottom !== undefined ? dims.radiusBottom : 1)) > 0.001) {
                     sdfType = 'truncatedCone';
                 } else {
                     sdfType = 'cylinder';
