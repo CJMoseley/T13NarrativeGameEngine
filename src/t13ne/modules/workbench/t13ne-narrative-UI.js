@@ -45,10 +45,10 @@ class NarrativeUI {
             gameHeader.className = 'game-header';
             gameHeader.style.cssText = 'padding: 1rem; background: var(--glass-bg); border-radius: 0.75rem; border: 1px solid var(--accent-blue); margin-bottom: 1rem; cursor: pointer; display: flex; align-items: center; gap: 1rem;';
             gameHeader.innerHTML = `
-                <div style="font-size: 1.5rem;">ðŸŽ®</div>
+                <div style="font-size: 1.5rem;">🎮</div>
                 <div style="flex: 1;">
                     <strong style="color: var(--accent-blue)">${game.name}</strong>
-                    <div style="font-size: 0.7rem; color: var(--text-dim)">${game.type} â€¢ ${game.plots.length} Plots â€¢ ${game.characters.length} Chars</div>
+                    <div style="font-size: 0.7rem; color: var(--text-dim)">${game.type} • ${game.plots.length} Plots • ${game.characters.length} Chars</div>
                 </div>
             `;
             gameHeader.onclick = () => {
@@ -197,7 +197,7 @@ class NarrativeUI {
                     <div class="form-group">
                         <label>Alternates (${obj.alternates.length})</label>
                         <div style="font-size: 0.75rem; color: var(--accent-blue)">
-                            ${obj.alternates.map((alt, i) => `â€¢ ${alt.name[0]} ${i === obj.activeAlternateIndex ? '<b>(Active)</b>' : ''}`).join('<br>')}
+                            ${obj.alternates.map((alt, i) => `• ${alt.name[0]} ${i === obj.activeAlternateIndex ? '<b>(Active)</b>' : ''}`).join('<br>')}
                         </div>
                     </div>
                 `;
@@ -209,7 +209,7 @@ class NarrativeUI {
                     <div class="form-group">
                         <label>Pact Memberships</label>
                         <div style="font-size: 0.75rem;">
-                            ${obj.pacts.map(p => `â€¢ <b>${p.pactId}</b> (${p.membership})`).join('<br>')}
+                            ${obj.pacts.map(p => `• <b>${p.pactId}</b> (${p.membership})`).join('<br>')}
                         </div>
                     </div>
                 `;
@@ -273,8 +273,3 @@ class NarrativeUI {
 const narrativeUI = new NarrativeUI();
 window.NarrativeUI = narrativeUI;
 export default narrativeUI;
-
-
-
-
-

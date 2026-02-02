@@ -326,42 +326,113 @@ export class ShipAssembler {
             const strutMat = new THREE.MeshStandardMaterial({ color: 0x555555, roughness: 0.7, metalness: 0.6 });
             const processedStruts = new Set();
             const raycaster = new THREE.Raycaster();
+            const tempVec = new THREE.Vector3();
             
             // Ensure matrices are up to date for raycasting
             shipGroup.updateMatrixWorld(true);
 
             for (const [sourceId, connections] of Object.entries(wiringGraph)) {
-                const startPos = compMap.get(sourceId);
                 const sourceMesh = meshMap.get(sourceId);
-                if (!startPos || !sourceMesh) continue;
+                if (!sourceMesh) continue;
+
+                // Get the center of the source component for raycasting origin
+                const sourceCenter = new THREE.Vector3();
+                sourceMesh.geometry.computeBoundingBox();
+                sourceMesh.geometry.boundingBox.getCenter(sourceCenter);
+                sourceMesh.localToWorld(sourceCenter);
 
                 for (const conn of connections) {
                     const edgeKey = [sourceId, conn.targetId].sort().join('-');
                     if (processedStruts.has(edgeKey)) continue;
                     processedStruts.add(edgeKey);
 
-                    const endPos = compMap.get(conn.targetId);
-                    if (!endPos) continue;
-                    
-                    // Raycast to find the nearest surface in the direction of the connection
-                    const direction = new THREE.Vector3().subVectors(endPos, startPos).normalize();
-                    raycaster.set(startPos, direction);
-                    
-                    // Intersect with all components
-                    const intersects = raycaster.intersectObjects(componentMeshes, false);
-                    
-                    let targetPoint = endPos;
+                    const targetMesh = meshMap.get(conn.targetId);
+                    if (!targetMesh) continue;
 
-                    for (const hit of intersects) {
-                        // Ignore self-intersections (source mesh)
-                        if (hit.object !== sourceMesh) {
-                            // Stop at the first valid intersection (nearest component)
-                            targetPoint = hit.point;
-                            break;
+                    // Get the center of the target component
+                    const targetCenter = new THREE.Vector3();
+                    targetMesh.geometry.computeBoundingBox();
+                    targetMesh.geometry.boundingBox.getCenter(targetCenter);
+                    targetMesh.localToWorld(targetCenter);
+
+                    // Check for concentric/overlapping components (like Ring Hull)
+                    const centerDist = sourceCenter.distanceTo(targetCenter);
+                    if (centerDist < 2.0) {
+                        const sourceType = sourceMesh.userData.primitiveType;
+                        const targetType = targetMesh.userData.primitiveType;
+                        let torusMesh = null;
+                        let innerMesh = null;
+
+                        if (sourceType === 'torus') {
+                            torusMesh = sourceMesh;
+                            innerMesh = targetMesh;
+                        } else if (targetType === 'torus') {
+                            torusMesh = targetMesh;
+                            innerMesh = sourceMesh;
+                        }
+
+                        if (torusMesh) {
+                            // Generate spokes
+                            const spokeCount = 4;
+                            for (let i = 0; i < spokeCount; i++) {
+                                const angle = (i / spokeCount) * Math.PI * 2;
+                                // Torus is in XY plane locally
+                                const localDir = new THREE.Vector3(Math.cos(angle), Math.sin(angle), 0);
+                                localDir.applyQuaternion(torusMesh.quaternion).normalize();
+
+                                // Raycast Out to Torus (find inner surface of ring)
+                                raycaster.set(sourceCenter, localDir);
+                                const torusHits = raycaster.intersectObject(torusMesh, false);
+
+                                if (torusHits.length > 0) {
+                                    const outerPoint = torusHits[0].point;
+
+                                    // Raycast In to Inner Object (find outer surface)
+                                    raycaster.set(outerPoint, localDir.clone().negate());
+                                    const innerHits = raycaster.intersectObject(innerMesh, true);
+                                    
+                                    const innerPoint = innerHits.length > 0 ? innerHits[0].point : sourceCenter;
+                                    const dist = innerPoint.distanceTo(outerPoint);
+                                    
+                                    const strutGeo = new THREE.CylinderGeometry(0.08, 0.08, dist, 6);
+                                    strutGeo.rotateX(Math.PI / 2);
+                                    const strut = new THREE.Mesh(strutGeo, strutMat);
+                                    strut.position.copy(innerPoint).add(outerPoint).multiplyScalar(0.5);
+                                    strut.lookAt(outerPoint);
+                                    shipGroup.add(strut);
+                                }
+                            }
+                            continue; // Skip standard strut generation
                         }
                     }
+
+                    // Raycast from source center towards target center to find connection points on surfaces
+                    const direction = tempVec.subVectors(targetCenter, sourceCenter).normalize();
                     
-                    const dist = startPos.distanceTo(targetPoint);
+                    // Find intersection point on source mesh
+                    raycaster.set(sourceCenter, direction);
+                    const sourceIntersects = raycaster.intersectObject(sourceMesh, true);
+                    let startPoint = sourceCenter; // Fallback
+                    if (sourceIntersects.length > 0) {
+                        startPoint = sourceIntersects[0].point;
+                    }
+
+                    // Find intersection point on target mesh
+                    raycaster.set(targetCenter, direction.negate()); // Raycast from target back to source
+                    const targetIntersects = raycaster.intersectObject(targetMesh, true);
+                    let endPoint = targetCenter; // Fallback
+                    if (targetIntersects.length > 0) {
+                        endPoint = targetIntersects[0].point;
+                    }
+
+                    // If both raycasts failed, use component centers as a last resort
+                    if (sourceIntersects.length === 0 && targetIntersects.length === 0) {
+                        startPoint = sourceCenter;
+                        endPoint = targetCenter;
+                    }
+                    
+                    const midPoint = tempVec.addVectors(startPoint, endPoint).multiplyScalar(0.5);
+                    const dist = startPoint.distanceTo(endPoint);
                     
                     // Create 3 struts in a triangle formation
                     const strutCount = 3;
@@ -375,10 +446,10 @@ export class ShipAssembler {
                         
                         const strutGeo = new THREE.CylinderGeometry(strutRadius, strutRadius, dist, 4);
                         strutGeo.rotateX(Math.PI / 2);
-                        strutGeo.translate(offsetX, offsetY, dist / 2);
+                        strutGeo.translate(offsetX, offsetY, 0); // Translate along local Y (height)
                         const strut = new THREE.Mesh(strutGeo, strutMat);
-                        strut.position.copy(startPos);
-                        strut.lookAt(targetPoint);
+                        strut.position.copy(midPoint);
+                        strut.lookAt(endPoint); // Orient towards the end point
                         shipGroup.add(strut);
                     }
                 }
@@ -401,7 +472,7 @@ export class ShipAssembler {
                         shipGroup.add(cutterMesh); // Add to group to inherit transform
                         cutterMesh.position.set(...pos);
                         if (rot) cutterMesh.rotation.set(...rot);
-                        cutterMesh.scale.multiplyScalar(1.05); // Slightly larger to create a recess
+                        cutterMesh.scale.multiplyScalar(1.02); // Slightly smaller offset for carving
                         cutterMesh.updateMatrix(); // Update local matrix for CSG
                         hullCSG = hullCSG.subtract(CSG.fromMesh(cutterMesh));
                         shipGroup.remove(cutterMesh);

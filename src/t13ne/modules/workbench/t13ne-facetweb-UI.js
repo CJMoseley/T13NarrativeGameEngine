@@ -1,4 +1,4 @@
-﻿import T13NE from '@/src/t13ne/T13NE.js';
+﻿﻿import T13NE from '@/src/t13ne/T13NE.js';
 import T13Dice from '@/src/t13ne/modules/mechanics/t13ne-dice.js';
 
 /**
@@ -38,7 +38,7 @@ class FacetWebUI {
             html += `
             <div class="facet-pair-row" data-idx="${idx}" data-joined="${joined}" style="display:grid; grid-template-columns: 1fr 40px 1fr; gap: 5px; align-items:center;">
                 ${this._renderFacetItem(pair.Facet, pair.Facet_Boon, idx, 'facet')}
-                <button class="btn-icon join-toggle" onclick="Workbench.toggleJoin(${idx}, this)" style="padding:0; border:none; background:none; cursor:pointer; color:#666; font-size:1rem;">${joined ? 'ðŸ”—' : 'ðŸ”“'}</button>
+                <button class="btn-icon join-toggle" onclick="Workbench.toggleJoin(${idx}, this)" style="padding:0; border:none; background:none; cursor:pointer; color:#666; font-size:1rem;">${joined ? '🔗' : '🔓'}</button>
                 ${this._renderFacetItem(pair.Antifacet, pair.Antifacet_Boon, idx, 'antifacet')}
             </div>`;
         });
@@ -156,8 +156,3 @@ class FacetWebUI {
 const facetWebUI = new FacetWebUI();
 window.FacetWebUI = facetWebUI;
 export default facetWebUI;
-
-
-
-
-

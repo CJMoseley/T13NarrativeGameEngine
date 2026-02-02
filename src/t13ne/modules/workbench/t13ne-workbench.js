@@ -291,7 +291,7 @@ export default class Workbench {
         const ai = T13.getModule('AIService');
         const statusEl = document.getElementById('ai-status');
         if (ai && statusEl) {
-            statusEl.innerHTML = `<span style="color: var(--accent-green);">â—</span> AI Service: Connected`;
+            statusEl.innerHTML = `<span style="color: var(--accent-green);">●</span> AI Service: Connected`;
         }
     }
 

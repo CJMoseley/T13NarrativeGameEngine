@@ -31,21 +31,25 @@ export class GreebleGenerator {
 
     createAntennaArray() {
         const group = new THREE.Group();
-        const bladeGroup = new THREE.Group();
-        const blade = new THREE.Mesh(new THREE.BoxGeometry(0.05, 1.2, 0.4), this.antennaMat);
-        blade.position.y = 0.6;
-        bladeGroup.add(blade);
-        
-        const glow = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.8, 0.05), this.lightGreenMat);
-        glow.position.set(0, 0.6, 0.2);
-        bladeGroup.add(glow);
-
-        bladeGroup.rotation.x = -Math.PI / 4;
-        group.add(bladeGroup);
+        // Construct the antenna such that its base is at (0,0,0) and its "up" is (0,1,0)
+        // The blade and glow will be children of a sub-group that can be rotated.
 
         const base = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.2, 0.2, 6), this.ventMat);
-        base.position.y = 0.1;
+        base.position.y = 0.1; // This is fine, it's relative to the group's origin
+
+        const bladeContainer = new THREE.Group(); // Container for blade and glow
+        const blade = new THREE.Mesh(new THREE.BoxGeometry(0.05, 1.2, 0.4), this.antennaMat);
+        blade.position.y = 0.6; // Relative to bladeContainer
+        bladeContainer.add(blade);
+        
+        const glow = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.8, 0.05), this.lightGreenMat);
+        glow.position.set(0, 0.6, 0.2); // Relative to bladeContainer
+        bladeContainer.add(glow);
+
+        bladeContainer.rotation.x = -Math.PI / 4; // Apply the tilt here
+        bladeContainer.position.y = 0.2; // Position the blade container above the base
         group.add(base);
+        group.add(bladeContainer);
 
         return group;
     }
@@ -82,7 +86,9 @@ export class GreebleGenerator {
             const instance = objectToPlace.clone();
             instance.position.copy(pos).add(normal.clone().multiplyScalar(offset));
             if (alignToNormal) {
-                instance.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), normal);
+                // Default orientation: object's local Y-axis points along the normal
+                const upVector = new THREE.Vector3(0, 1, 0);
+                instance.quaternion.setFromUnitVectors(upVector, normal);
                 
                 if (orientToCenter) {
                     let center;
@@ -123,7 +129,8 @@ export class GreebleGenerator {
                          const symInstance = objectToPlace.clone();
                          symInstance.position.copy(symHit.point).add(symNormal.clone().multiplyScalar(offset));
                          if (alignToNormal) {
-                             symInstance.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), symNormal);
+                             const upVector = new THREE.Vector3(0, 1, 0);
+                             symInstance.quaternion.setFromUnitVectors(upVector, symNormal);
                              
                              if (orientToCenter) {
                                 const symPos = symHit.point;
@@ -221,8 +228,10 @@ export class GreebleGenerator {
                 for (let i = 1; i < steps; i++) {
                     const z = startZ + (i / steps) * length;
                     this.placeOnSurface(hullMesh, greebleGroup, new THREE.Vector3(0, pos.y + offsetDist, z), new THREE.Vector3(0, -1, 0), new THREE.Mesh(currentRivetGeo, this.rivetMat), true, 0, isCentral, symmetryType, radialAxis, radialCount, null, globalOrientToCenter);
+                    // Raycast from positive X and positive Y towards the component
                     this.placeOnSurface(hullMesh, greebleGroup, new THREE.Vector3(pos.x + offsetDist, pos.y, z), new THREE.Vector3(-1, 0, 0), new THREE.Mesh(currentRivetGeo, this.rivetMat), true, 0, isCentral, symmetryType, radialAxis, radialCount, null, globalOrientToCenter);
                 }
+                // Dispose of the geometry after use
                 currentRivetGeo.dispose();
 
                 if (usage.includes('fuselage')) {
@@ -369,8 +378,10 @@ export class GreebleGenerator {
                 }
 
                 // FIX: Use component's local UP vector for raycasting to ensure we hit the top of the component
-                const up = new THREE.Vector3(0, 1, 0).applyEuler(rot);
-                const forward = new THREE.Vector3(0, 0, 1).applyEuler(rot);
+                // The comp.rotation is an Euler object, convert to Quaternion for applying to vectors
+                const compQuaternion = new THREE.Quaternion().setFromEuler(rot);
+                const up = new THREE.Vector3(0, 1, 0).applyQuaternion(compQuaternion);
+                const forward = new THREE.Vector3(0, 0, 1).applyQuaternion(compQuaternion);
                 
                 let rayOrigin, rayDir;
                 
@@ -415,13 +426,20 @@ export class GreebleGenerator {
                     mat = pos.x > 0 ? this.lightGreenMat : this.lightRedMat; // Fixed: +X is Right (Green), -X is Left (Red)
                 }
 
-                const w = comp.dims.width || 1;
-                const l = comp.dims.length || 1;
-                const tipWidth = l * 0.1;
-                // Calculate tip offset based on side. If Left (-X), tip is at -w/2. If Right (+X), tip is at +w/2.
-                const localTip = new THREE.Vector3((pos.x >= 0 ? 1 : -1) * w / 2, 0, -l/2 + tipWidth/2);
-                const worldTip = localTip.clone().applyEuler(rot);
-                worldTip.add(pos);
+                // Let's assume the light should be at the "outermost" point of the wing.
+                // For a wedge, this is typically at (span, 0, Z_tip) in its local space.
+                // We need to transform this local point to world space.
+                const localTip = new THREE.Vector3(comp.dims.span || 1, 0, (comp.dims.rootChord || 1) / 2 - (comp.dims.sweep || 0) - (comp.dims.tipChord || 0) / 2);
+                
+                // Apply component's local rotation (which is around Y for wings in ShipGenerator)
+                const compLocalRot = new THREE.Euler().setFromVector3(comp.rotation); // Assuming comp.rotation is [0, Y_rot, 0]
+                localTip.applyEuler(compLocalRot);
+
+                // Apply the rotation from ComponentFactory (X 90)
+                localTip.applyAxisAngle(new THREE.Vector3(1, 0, 0), Math.PI / 2);
+
+                // Now apply world position
+                const worldTip = localTip.add(pos);
 
                 const light = new THREE.Mesh(lightGeo, mat);
                 light.position.copy(worldTip);
@@ -447,11 +465,21 @@ export class GreebleGenerator {
                 const nozzleMat = new THREE.MeshStandardMaterial({ color: 0x333333, roughness: 0.6, metalness: 0.8, side: THREE.DoubleSide });
                 let nozzle;
 
-                // Determine direction "out"
-                // For main engines, we want them pointing BACK (-Z) regardless of component rotation
-                let exhaustDir = new THREE.Vector3(0, 0, -1); 
+                // Determine direction "out" - should be based on component's rotation and type
+                const compQuaternion = new THREE.Quaternion().setFromEuler(rot);
+                let exhaustDir;
+
+                // Convention: For primitives with a clear length axis (like cylinders), that axis is Y.
+                // We define the exhaust to come from the -Y end of the local geometry.
+                if (['cylinder', 'cone', 'truncatedCone', 'capsule', 'prism'].includes(comp.type)) {
+                    exhaustDir = new THREE.Vector3(0, -1, 0).applyQuaternion(compQuaternion);
+                } else {
+                    // For other shapes like boxes, we assume the length is along Z.
+                    exhaustDir = new THREE.Vector3(0, 0, -1).applyQuaternion(compQuaternion);
+                }
 
                 if (radialAxis === 'y') {
+                    // Special handling for Y-radial ships (saucers)
                     exhaustDir.set(0, -1, 0);
                 }
 
@@ -491,12 +519,10 @@ export class GreebleGenerator {
                     });
                 }
                 
-                // Fix rotation for 180 degree flip (Up to Down) which setFromUnitVectors handles poorly
-                if (exhaustDir.y === -1 && exhaustDir.x === 0 && exhaustDir.z === 0) {
-                    nozzle.rotation.x = Math.PI;
-                } else {
-                    nozzle.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), exhaustDir);
-                }
+                // Orient the nozzle to point in the exhaust direction
+                // The nozzle geometry is typically Y-up. We want its Y-axis to align with exhaustDir.
+                const defaultUp = new THREE.Vector3(0, 1, 0);
+                nozzle.quaternion.setFromUnitVectors(defaultUp, exhaustDir);
                 
                 // Raycast from "behind" the engine (in exhaust direction) back towards the ship to find the hull surface
                 // We start far out and cast opposite to exhaust
@@ -514,12 +540,15 @@ export class GreebleGenerator {
 
                 if (intersects.length > 0) {
                     const hit = intersects[0];
-                    const placePos = hit.point.clone().add(exhaustDir.clone().multiplyScalar(nozzleLen / 2));
+                    // Place the nozzle such that its "front" (where it attaches) is at the hit point
+                    // and its "back" (exhaust) is facing outwards.
+                    // The nozzle's local origin is at its center. So offset by half its length along its local Y-axis.
+                    const placePos = hit.point.clone().add(exhaustDir.clone().multiplyScalar(nozzleLen / 2)); // Offset along the normal
                     nozzle.position.copy(placePos);
                 } else {
-                    // Fallback: Place at the component's position, offset by half its height in the exhaust direction
-                    // This assumes the component is roughly aligned with the exhaust
-                    nozzle.position.copy(pos).add(exhaustDir.clone().multiplyScalar(scale.y * 0.5));
+                    // Fallback: If no intersection, place it at the component's position, but slightly offset in the exhaust direction.
+                    nozzle.position.copy(pos).add(exhaustDir.clone().multiplyScalar(scale.y * 0.5)); // This is still a fallback, but better than floating far away.
+                    console.warn(`GreebleGenerator: No hull surface found for thruster at ${pos.x},${pos.y},${pos.z}. Placing at component origin.`);
                 }
                 
                 if (shapeType !== 2) {

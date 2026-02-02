@@ -25,7 +25,7 @@ export class ComponentFactory {
         this.material = new THREE.MeshStandardMaterial({
             color: 0x888888,
             wireframe: false,
-            flatShading: true // Better for industrial looks
+            flatShading: true // Better for industrial looks (is it? really? )
         });
         this.geometryCache = new Map();
         this.generator = new ProceduralComponentGenerator();
@@ -120,8 +120,11 @@ export class ComponentFactory {
                 const extrudeSettings = { steps: 1, depth: dims.depth || 0.2, bevelEnabled: false };
                 geometry = new THREE.ExtrudeGeometry(shape, extrudeSettings);
 
-                if (dims.centered !== false) geometry.center();
-                else geometry.translate(0, 0, -(dims.depth || 0.2) / 2); // Center depth only
+                geometry.translate(0, 0, -(dims.depth || 0.2) / 2); // Center depth only, keep root at (0,0,0)
+
+                geometry.translate(0, 0, -(dims.depth || 0.2) / 2); // Center depth only, keep root at (0,0,0)
+
+                geometry.translate(0, 0, -(dims.depth || 0.2) / 2); // Center depth only, keep root at (0,0,0)
 
                 geometry.rotateX(Math.PI / 2); // Rotate so Y (Chord) becomes Z, Z (Depth) becomes -Y
 

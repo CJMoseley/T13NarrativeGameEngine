@@ -1,4 +1,4 @@
-﻿import AuthorMain from '@/src/t13ne/AuthorMain.js';
+﻿﻿import AuthorMain from '@/src/t13ne/AuthorMain.js';
 import NarrativeUI from './t13ne-narrative-UI.js';
 import CharacterUI from './t13ne-chars-UI.js';
 import FacetWebUI from './t13ne-facetweb-UI.js';
@@ -296,7 +296,7 @@ export default class Inspector {
 
         const isJoined = row.dataset.joined === 'true';
         row.dataset.joined = (!isJoined).toString();
-        if (btn) btn.textContent = !isJoined ? 'ðŸ”—' : 'ðŸ”“';
+        if (btn) btn.textContent = !isJoined ? '🔗' : '🔓';
 
         if (!isJoined) {
             const yangInput = row.querySelector('input[data-side="facet"]');
@@ -380,8 +380,3 @@ export default class Inspector {
         FacetWebUI.drop(event);
     }
 }
-
-
-
-
-

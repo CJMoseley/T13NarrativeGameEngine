@@ -1,4 +1,4 @@
-﻿import Logger from "@/src/t13ne/core/Logger.js";
+﻿﻿import Logger from "@/src/t13ne/core/Logger.js";
 import CodexLoader from "@/src/t13ne/modules/codex/CodexLoader.js";
 
 /**
@@ -55,7 +55,7 @@ class LibraryUI {
 
             let html = `
                 <div style="margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;">
-                    <button class="btn" onclick="LibraryUI.refresh()">â† Back</button>
+                    <button class="btn" onclick="LibraryUI.refresh()">← Back</button>
                     <h3 style="margin:0;">${category}</h3>
                 </div>
                 <div class="codex-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.5rem;">
@@ -112,10 +112,3 @@ class LibraryUI {
 const libraryUI = new LibraryUI();
 window.LibraryUI = libraryUI;
 export default libraryUI;
-
-
-
-
-
-
-

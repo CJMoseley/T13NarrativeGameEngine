@@ -305,8 +305,7 @@ export class InstrumentEngine {
 
                 candidates = [
                     relative,
-                    '/data' + relative,
-                    '/public' + relative
+                    '/data' + relative
                 ];
             }
             // Deduplicate

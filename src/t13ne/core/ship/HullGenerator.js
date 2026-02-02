@@ -275,8 +275,7 @@ export class HullGenerator {
             return null;
         }
 
-        const geometry = mc.geometry.clone();
-        geometry.scale(size, size, size);
+        const geometry = mc.generateGeometry(); // Use generateGeometry to get the final mesh
         return geometry;
     }
 

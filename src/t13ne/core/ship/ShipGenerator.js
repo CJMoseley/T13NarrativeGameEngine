@@ -600,33 +600,105 @@ export class ShipGenerator {
             return minDist < Infinity ? closestR : r;
         };
 
+        // Helper to create a single wing structure (potentially multi-segment)
+        // This function will now return an array of component definitions for one wing.
+        const createSingleWingStructure = (initialPos, initialRotZ, initialRootChord, isRadialSymmetry, wingThickness, baseSpan) => {
+            const wingComponents = [];
+
+            // First segment (main wing)
+            const dims = {
+                tipChord: initialRootChord * (0.3 + random() * 0.5),
+                sweep: (random() * 0.9 - 0.1) * initialRootChord,
+                depth: wingThickness,
+                span: baseSpan,
+                rootChord: initialRootChord,
+                centered: false
+            };
+
+            const rotZ = (random() * 0.5 - 0.25); // Dihedral/anhedral
+            const currentRotZ = initialRotZ + rotZ;
+
+            const mainWingDef = {
+                usage: 'wing_main',
+                type: 'wedge',
+                dims: dims,
+                pos: initialPos,
+                rot: [0, currentRotZ, 0] // Rotation around Y axis (world Y)
+            };
+            wingComponents.push(mainWingDef);
+
+            // Recursive addition of extensions/fins
+            let parentTipWorldPos = new THREE.Vector3(...initialPos);
+            // Approximate tip position: assume wing extends along its local X axis (span)
+            // after its rotation around world Y.
+            const localTipOffset = new THREE.Vector3(dims.span, 0, 0);
+            const rotatedTipOffset = localTipOffset.applyAxisAngle(new THREE.Vector3(0, 1, 0), currentRotZ); // Rotate around world Y
+            parentTipWorldPos.add(rotatedTipOffset);
+
+            // Add extensions/fins
+            if (random() > 0.3 && !isRadialSymmetry) { // Limit recursion for radial to avoid complexity
+                const numExtensions = Math.floor(random() * 2) + 1;
+                for (let i = 0; i < numExtensions; i++) {
+                    const extSpan = dims.span * (0.3 + random() * 0.4);
+                    const extTipChord = dims.tipChord * (0.5 + random() * 0.5);
+                    const extSweep = (random() * 0.5 - 0.2) * extTipChord;
+                    const extThickness = wingThickness * (0.5 + random() * 0.5);
+
+                    const extDims = { tipChord: extTipChord, sweep: extSweep, depth: extThickness, span: extSpan, rootChord: dims.tipChord, centered: false };
+                    const extRotZ = (random() * 0.8 - 0.4); // Slight angle change
+                    const extCurrentRotZ = currentRotZ + extRotZ;
+                    const extensionDef = { usage: (random() > 0.7 ? 'fin_wingtip' : 'wing_ext'), type: 'wedge', dims: extDims, pos: [parentTipWorldPos.x, parentTipWorldPos.y, parentTipWorldPos.z], rot: [0, extCurrentRotZ, 0] };
+                    wingComponents.push(extensionDef);
+                    const extLocalTipOffset = new THREE.Vector3(extSpan, 0, 0);
+                    const extRotatedTipOffset = extLocalTipOffset.applyAxisAngle(new THREE.Vector3(0, 1, 0), extCurrentRotZ);
+                    parentTipWorldPos.add(extRotatedTipOffset);
+                }
+            }
+            return wingComponents;
+        };
+
         // Engines
         const engineCount = size === 'small' ? 1 : (size === 'medium' ? 2 : 4);
         const engineZ = -(spineLength / 2) - 1;
         if (hullType === 'DISC') {
             // Saucer engines on rim
             const engR = mainHullRadius || 4;
-            attachComponent('engine', [engR, 0, 0], [0, 0, -Math.PI / 2], 'cylinder', { radiusTop: 0.4, radiusBottom: 0.6, height: 1.5 });
+            // FIX: Rotate to point local -Y outwards along +X. This is a +90 deg rotation around Z.
+            attachComponent('engine', [engR, 0, 0], [0, 0, Math.PI / 2], 'cylinder', { radiusTop: 0.4, radiusBottom: 0.6, height: 1.5 });
             // Add Strut to center
-            attachComponent('mount', [engR / 2, 0, 0], [0, 0, -Math.PI / 2], 'box', { width: 0.5, height: 0.5, depth: engR });
+            // FIX: Strut rotation should align its length (depth) along the X axis.
+            attachComponent('mount', [engR / 2, 0, 0], [0, Math.PI / 2, 0], 'box', { width: 0.5, height: 0.5, depth: engR });
         } else {
             if (symmetryType === 'REFLECTIVE') {
-                attachComponent('engine', [1.5, 0, engineZ], [Math.PI / 2, 0, 0], 'cylinder', { radiusTop: 0.4, radiusBottom: 0.6, height: 2.0 });
+                // FIX: Rotate to point local -Y backwards along -Z. This is a -90 deg rotation around X.
+                attachComponent('engine', [1.5, 0, engineZ], [-Math.PI / 2, 0, 0], 'cylinder', { radiusTop: 0.4, radiusBottom: 0.6, height: 2.0 });
                 // Add Strut to fuselage
                 attachComponent('mount', [0.75, 0, engineZ], [0, 0, 0], 'box', { width: 1.5, height: 0.4, depth: 0.8 });
             } else if (hullType === 'STAR') {
                 // Engines at ends of arms
                 const armLen = spineLength;
-                attachComponent('engine', [armLen, 0, 0], [0, 0, -Math.PI / 2], 'cylinder', { radiusTop: 0.5, radiusBottom: 0.8, height: 2.0 });
+                // FIX: Rotate to point local -Y outwards along +X. This is a +90 deg rotation around Z.
+                attachComponent('engine', [armLen, 0, 0], [0, 0, Math.PI / 2], 'cylinder', { radiusTop: 0.5, radiusBottom: 0.8, height: 2.0 });
             } else {
                 // Central engine
-                attachComponent('engine', [0, 0, engineZ], [Math.PI / 2, 0, 0], 'cylinder', { radiusTop: 0.6, radiusBottom: 0.9, height: 2.5 });
+                // FIX: Rotate to point local -Y backwards along -Z. This is a -90 deg rotation around X.
+                attachComponent('engine', [0, 0, engineZ], [-Math.PI / 2, 0, 0], 'cylinder', { radiusTop: 0.6, radiusBottom: 0.9, height: 2.5 });
             }
         }
 
         // Wings & Fins Generation
         if (random() > 0.1 && hullType === 'SPINE') { // 90% chance of wings, but not for saucers/stars
-            const wingConfig = random(); // 0-0.4: Mono, 0.4-0.7: X-Wing, 0.7-1.0: Bi-Wing
+            const wingConfigVal = random(); // 0-0.4: Mono, 0.4-0.7: X-Wing, 0.7-1.0: Bi-Wing
+            let wingConfig;
+            if (wingConfigVal < 0.4) wingConfig = 'Monoplane';
+            else if (wingConfigVal < 0.7) wingConfig = 'X-Wing';
+            else wingConfig = 'Bi-Wing';
+
+            // Prevent X-Wing style with radial symmetry
+            let effectiveWingConfig = wingConfig;
+            if (symmetryType === 'RADIAL' && wingConfig === 'X-Wing') {
+                effectiveWingConfig = random() > 0.5 ? 'Monoplane' : 'Bi-Wing'; // Fallback to other types
+            }
 
             // Dimensions - Allow larger wings relative to fuselage
             const baseRootChord = spineLength * (0.5 + random() * 0.5); // 50% to 100% of fuselage length
@@ -643,7 +715,7 @@ export class ShipGenerator {
             // Force reflective symmetry for wings if the ship is asymmetrical, to ensure balance
             const symOverride = symmetryType === 'ASYMMETRICAL' ? 'REFLECTIVE' : null;
 
-            // Recursive Wing Segment Generator
+            // Recursive Wing Segment Generator - This was replaced by createSingleWingStructure in the previous diff, which is a better approach. Assuming that change is kept.
             const addWingSegment = (parentPos, parentRotZ, currentRootChord, depth) => {
                 if (depth > 2) return; // Max recursion depth
 
@@ -718,20 +790,25 @@ export class ShipGenerator {
                 }
             };
 
-            if (wingConfig < 0.4) {
+            if (effectiveWingConfig === 'Monoplane') {
                 // Monoplane (Standard) - Variable height
                 const yPos = (random() - 0.5) * 2.0;
-                addWingSegment([attachmentX, yPos, wingZ], 0, baseRootChord, 0);
-            } else if (wingConfig < 0.7) {
+                const wingDefs = createSingleWingStructure([attachmentX, yPos, wingZ], 0, baseRootChord, symmetryType === 'RADIAL', wingThickness, baseSpan);
+                wingDefs.forEach(def => attachComponent(def.usage, def.pos, def.rot, def.type, def.dims, symOverride));
+            } else if (effectiveWingConfig === 'X-Wing') {
                 // X-Wing (Angled)
                 const angle = (Math.PI / 6) + random() * (Math.PI / 6); // 30-60 degrees
-                addWingSegment([attachmentX, 0.2, wingZ], angle, baseRootChord, 0);
-                addWingSegment([attachmentX, -0.2, wingZ], -angle, baseRootChord, 0);
+                const wingDefs1 = createSingleWingStructure([attachmentX, 0.2, wingZ], angle, baseRootChord, false, wingThickness, baseSpan);
+                wingDefs1.forEach(def => attachComponent(def.usage, def.pos, def.rot, def.type, def.dims, symOverride));
+                const wingDefs2 = createSingleWingStructure([attachmentX, -0.2, wingZ], -angle, baseRootChord, false, wingThickness, baseSpan);
+                wingDefs2.forEach(def => attachComponent(def.usage, def.pos, def.rot, def.type, def.dims, symOverride));
             } else {
                 // Bi-Wing (Stacked)
                 const gap = 2.0 + random();
-                addWingSegment([attachmentX, gap / 2, wingZ], 0, baseRootChord, 0);
-                addWingSegment([attachmentX, -gap / 2, wingZ], 0, baseRootChord, 0);
+                const wingDefs1 = createSingleWingStructure([attachmentX, gap / 2, wingZ], 0, baseRootChord, symmetryType === 'RADIAL', wingThickness, baseSpan);
+                wingDefs1.forEach(def => attachComponent(def.usage, def.pos, def.rot, def.type, def.dims, symOverride));
+                const wingDefs2 = createSingleWingStructure([attachmentX, -gap / 2, wingZ], 0, baseRootChord, symmetryType === 'RADIAL', wingThickness, baseSpan);
+                wingDefs2.forEach(def => attachComponent(def.usage, def.pos, def.rot, def.type, def.dims, symOverride));
             }
 
             // Fins (Canards / Tail)
