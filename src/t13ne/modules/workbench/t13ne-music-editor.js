@@ -20,6 +20,7 @@ export class MusicEditorUI {
         this.timeSignature = [4, 4];
         this.measures = 2;
         this.browser = null;
+        this.selectedAssetId = null;
     }
 
     async initialize() {
@@ -97,6 +98,28 @@ export class MusicEditorUI {
                     <hr style="border-color: #444;">
                     <h4>Manifest</h4>
                     <div id="me-manifest-preview" style="font-size: 0.8em; color: #aaa;"></div>
+
+                    <hr style="border-color: #444;">
+                    <h4>Analysis & Synthesis</h4>
+                    <div id="me-analysis-panel" style="display:none;">
+                        <div style="margin-bottom:5px;">
+                            <label style="font-size:0.8em;">Resolution (FFT):</label>
+                            <select id="me-an-fft" style="width:100%">
+                                <option value="2048">Low (2048)</option>
+                                <option value="4096" selected>Medium (4096)</option>
+                                <option value="8192">High (8192)</option>
+                                <option value="16384">Ultra (16k)</option>
+                            </select>
+                        </div>
+                        <div style="margin-bottom:5px;">
+                            <label style="font-size:0.8em;">Scan Point:</label>
+                            <input type="range" id="me-an-start" min="0" max="0.5" step="0.01" value="0.2" style="width:100%">
+                        </div>
+                        <button id="me-analyze-btn" style="width:100%; margin-bottom:5px; background:#444;">Re-analyze</button>
+                        <div id="me-analysis-results" style="font-size:0.7em; color:#88f; margin-bottom:5px;"></div>
+                        <button id="me-replace-btn" style="width:100%; margin-bottom:2px; display:none;" class="btn-danger">Replace Original</button>
+                        <button id="me-save-new-btn" style="width:100%; margin-bottom:5px; display:none;" class="btn-success">Save New Synth</button>
+                    </div>
                 </div>
             </div>
         `;
@@ -106,23 +129,35 @@ export class MusicEditorUI {
         // Initialize Browser
         this.browser = new AssetBrowser('me-asset-browser', this.musicModule, async (id, category, item) => {
             console.log(`Selected ${category}: ${id}`);
+            this.selectedAssetId = id;
+            
+            // Show analysis panel for samples
+            const panel = this.container.querySelector('#me-analysis-panel');
             if (category === 'samples') {
                 const url = this.musicModule.manifestManager.getAssetPath(category, id);
-                await this.musicModule.loadSample(id, url);
+                const success = await this.musicModule.loadSample(id, url);
+                if (!success) return; // Stop if load failed
 
-                // Ask to synthesize? For now, just do it automatically or provide a button?
-                // Let's create a "Synth" version automatically for testing
-                const synthId = `synth_${id}`;
-                this.musicModule.synth.instrumentEngine.createSyntheticInstrument(id, synthId);
+                if (this.musicModule.synth) {
+                    // Ask to synthesize? For now, just do it automatically or provide a button?
+                    // Let's create a "Synth" version automatically for testing
+                    const synthId = `synth_${id}`;
+                    this.musicModule.synth.instrumentEngine.createSyntheticInstrument(id, synthId);
 
-                // Default to playing the Sample, but offer Synth in list
-                this.getActiveVoice().instrument = id;
-                this.currentInstrument = id;
+                    // Default to playing the Sample, but offer Synth in list
+                    this.getActiveVoice().instrument = id;
+                    this.currentInstrument = id;
 
-                this.refreshVoiceList();
+                    this.refreshVoiceList();
 
-                // Preview (Sample)
-                this.musicModule.synth.playNote(440, this.musicModule.soundEngine.audioContext.currentTime, 0.5, 'sine', 0, id);
+                    // Preview (Sample)
+                    this.musicModule.synth.playNote(440, this.musicModule.soundEngine.audioContext.currentTime, 0.5, 'sine', 0, id);
+                    panel.style.display = 'block';
+                } else {
+                    Logger.warn("MusicEditor: Synth not available. Cannot preview or synthesize.");
+                }
+            } else {
+                panel.style.display = 'none';
             }
         });
         this.browser.render();
@@ -145,7 +180,7 @@ export class MusicEditorUI {
 
             const json = this.musicModule.saveStem(finalName, voice);
             console.log("Saved Stem:", json);
-            alert(`Active Voice saved as Stem '${finalName}' to manifest.`);
+            Logger.message(`Active Voice saved as Stem '${finalName}' to manifest.`);
             this.refreshManifestPreview();
         };
 
@@ -160,7 +195,7 @@ export class MusicEditorUI {
 
             const json = this.musicModule.saveTrack(name, this.currentTrack);
             console.log("Saved Track:", json);
-            alert(`Track '${name}' saved to manifest.`);
+            Logger.message(`Track '${name}' saved to manifest.`);
             this.refreshManifestPreview();
         };
 
@@ -183,12 +218,43 @@ export class MusicEditorUI {
         this.container.querySelector('#me-ts-den').onchange = refreshGrid;
         this.container.querySelector('#me-measures').onchange = refreshGrid;
         this.container.querySelector('#me-bpm-input').onchange = (e) => this.bpm = parseInt(e.target.value);
+
+        // Analysis Handlers
+        let lastAnalysis = null;
+        this.container.querySelector('#me-analyze-btn').onclick = async () => {
+            if (!this.selectedAssetId) return;
+            const fft = parseInt(this.container.querySelector('#me-an-fft').value);
+            const start = parseFloat(this.container.querySelector('#me-an-start').value);
+            
+            this.container.querySelector('#me-analysis-results').textContent = "Analyzing...";
+            
+            lastAnalysis = await this.musicModule.analyzeSample(this.selectedAssetId, { fftSize: fft, startPercent: start });
+            
+            if (lastAnalysis) {
+                this.container.querySelector('#me-analysis-results').innerHTML = `Freq: ${lastAnalysis.freq}Hz<br>Note: ${lastAnalysis.note}<br>Peaks: ${lastAnalysis.peaks.length}`;
+                this.container.querySelector('#me-replace-btn').style.display = 'block';
+                this.container.querySelector('#me-save-new-btn').style.display = 'block';
+                
+                // Preview the new analysis immediately using a temp synth
+                this.musicModule.synth.instrumentEngine.createSyntheticInstrument(this.selectedAssetId, 'temp_preview', 'high');
+                this.musicModule.synth.playNote(lastAnalysis.freq, this.musicModule.soundEngine.audioContext.currentTime, 0.5, 'sine', 0, 'temp_preview');
+            }
+        };
+
+        this.container.querySelector('#me-replace-btn').onclick = () => {
+            if (lastAnalysis) this.musicModule.saveAnalysis(this.selectedAssetId, lastAnalysis, false);
+        };
+        this.container.querySelector('#me-save-new-btn').onclick = () => {
+            if (lastAnalysis) this.musicModule.saveAnalysis(this.selectedAssetId, lastAnalysis, true);
+        };
     }
 
     refreshAssets() {
         const instList = this.container.querySelector('#me-instrument-list');
         const sampleList = this.container.querySelector('#me-sample-list');
         const instSelect = this.container.querySelector('#me-active-instrument');
+
+        if (!this.musicModule.synth) return;
 
         // Refresh Instruments (Mocking reading from engine for now, ideally instrumentEngine exposes keys)
         const instruments = Array.from(this.musicModule.synth.instrumentEngine.instruments.keys());
@@ -247,21 +313,19 @@ export class MusicEditorUI {
     deleteVoice(index, e) {
         e.stopPropagation();
         if (this.currentTrack.voices.length <= 1) return; // Prevent deleting last voice
-        if (confirm('Delete this voice?')) {
-            this.currentTrack.voices.splice(index, 1);
-            if (this.activeVoiceIndex >= this.currentTrack.voices.length) {
-                this.activeVoiceIndex = this.currentTrack.voices.length - 1;
-            }
-            this.selectVoice(this.activeVoiceIndex);
+        this.currentTrack.voices.splice(index, 1);
+        if (this.activeVoiceIndex >= this.currentTrack.voices.length) {
+            this.activeVoiceIndex = this.currentTrack.voices.length - 1;
         }
+        this.selectVoice(this.activeVoiceIndex);
     }
 
     refreshManifestPreview() {
         const preview = this.container.querySelector('#me-manifest-preview');
         const counts = {
-            samples: Object.keys(this.musicModule.manifestManager.manifest.samples).length,
-            sequences: Object.keys(this.musicModule.manifestManager.manifest.sequences).length,
-            loops: Object.keys(this.musicModule.manifestManager.manifest.loops).length
+            samples: Object.keys(this.musicModule.manifestManager.manifest.samples || {}).length,
+            sequences: Object.keys(this.musicModule.manifestManager.manifest.sequences || {}).length,
+            loops: Object.keys(this.musicModule.manifestManager.manifest.loops || {}).length
         };
         preview.innerHTML = `
             Samples: ${counts.samples}<br>
@@ -383,7 +447,9 @@ export class MusicEditorUI {
             element.style.background = '#38bdf8';
             // Preview
             const freq = this.noteToFreq(note);
-            this.musicModule.synth.playNote(freq, this.musicModule.soundEngine.audioContext.currentTime, 0.2, 'sine', 0, this.currentInstrument);
+            if (this.musicModule.synth) {
+                this.musicModule.synth.playNote(freq, this.musicModule.soundEngine.audioContext.currentTime, 0.2, 'sine', 0, this.currentInstrument);
+            }
         }
     }
 
@@ -417,9 +483,11 @@ export class MusicEditorUI {
 
         // Update track metadata before playing
         this.currentTrack.bpm = this.bpm;
+        this.currentTrack.timeSignature = this.timeSignature;
+        this.currentTrack.measures = this.measures;
 
         // Use the new playTrack method
-        this.musicModule.playTrack(this.currentTrack);
+        this.musicModule.playTrackObject(this.currentTrack);
 
         const stepTime = 60 / this.bpm / 4;
         const stepsPerMeasure = this.timeSignature[0] * (16 / this.timeSignature[1]);
@@ -432,7 +500,9 @@ export class MusicEditorUI {
         // Simple stop logic: cancel context? No, just flag. 
         // Real stop would require tracking scheduled nodes.
         this.isPlaying = false;
-        this.musicModule.synth.stopAll();
+        if (this.musicModule.synth) {
+            this.musicModule.synth.stopAll();
+        }
     }
 
     clearSequence() {

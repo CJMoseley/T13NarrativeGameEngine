@@ -1,33 +1,37 @@
+// src/t13ne/modules/audio/t13ne-music.js
+
 import Logger from "../../core/Logger.js";
 import T13NE from '../../T13NE.js';
 import CodexLoader from "../codex/CodexLoader.js";
 import { InstrumentEngine } from "./t13ne-InstrumentEngine.js";
+import { AudioAnalyzer } from "./t13ne-audio-analyzer.js";
 
 const CHROMATIC_SCALE = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 
-/**
- * Simple Seeded RNG for deterministic music generation.
- */
 class MusicRNG {
     constructor(seed) {
-        this.seed = typeof seed === 'string' ? this._hashString(seed) : (seed || Date.now());
+        this.seed = this._hash(seed);
     }
 
-    _hashString(str) {
+    _hash(str) {
         let hash = 0;
+        if (typeof str !== 'string') str = JSON.stringify(str);
+        if (str.length === 0) return hash;
         for (let i = 0; i < str.length; i++) {
-            hash = ((hash << 5) - hash) + str.charCodeAt(i);
-            hash |= 0;
+            const char = str.charCodeAt(i);
+            hash = ((hash << 5) - hash) + char;
+            hash |= 0; // Convert to 32bit integer
         }
         return hash;
     }
 
     next() {
-        this.seed = (this.seed * 16807) % 2147483647;
-        return (this.seed - 1) / 2147483646;
+        const x = Math.sin(this.seed++) * 10000;
+        return x - Math.floor(x);
     }
 
     pick(array) {
+        if (!array || array.length === 0) return null;
         return array[Math.floor(this.next() * array.length)];
     }
 
@@ -36,48 +40,37 @@ class MusicRNG {
     }
 }
 
-/**
- * Manages the loading and tracking of audio assets via a manifest.
- */
 class AudioManifestManager {
     constructor() {
         this.manifest = {
             samples: {},
-            sequences: {},
             tracks: {},
-            midi: {},
+            sequences: {},
             loops: {},
+            midi: {},
             stems: {},
             instruments: {}
         };
-        this.basePath = '/data/media/audio';
     }
 
     async loadManifest() {
         try {
-            const response = await fetch(`${this.basePath}/audio_assets_manifest.json`);
+            const response = await fetch('/media/audio/audio_assets_manifest.json');
             if (response.ok) {
-                this.manifest = await response.json();
-                Logger.message("AudioManifestManager: Manifest loaded.");
+                const loaded = await response.json();
+                this.manifest = { ...this.manifest, ...loaded };
+                Logger.message("AudioManifestManager: Manifest loaded from disk.");
             } else {
-                Logger.warn("AudioManifestManager: No manifest found, starting fresh.");
+                Logger.warn("AudioManifestManager: Could not load audio_assets_manifest.json");
             }
         } catch (e) {
-            Logger.warn("AudioManifestManager: Failed to load manifest.", e);
+            Logger.warn("AudioManifestManager: Error loading manifest", e);
         }
     }
 
-    addToManifest(category, id, metadata) {
+    addToManifest(category, id, data) {
         if (!this.manifest[category]) this.manifest[category] = {};
-        this.manifest[category][id] = metadata;
-        // In a real backend, we would save the manifest here.
-        // Since this is client-side, we can only log the updated JSON for the user to save.
-        Logger.message(`Updated Manifest: \n${JSON.stringify(this.manifest, null, 2)}`);
-    }
-
-    getAssetPath(category, id) {
-        const item = this.manifest[category]?.[id];
-        return item ? `${this.basePath}/${category}/${item.filename}` : null;
+        this.manifest[category][id] = data;
     }
 
     getAssetAnalysis(category, id) {
@@ -85,9 +78,47 @@ class AudioManifestManager {
     }
 
     updateAssetAnalysis(category, id, analysis) {
-        if (this.manifest[category]?.[id]) {
+        if (this.manifest[category] && this.manifest[category][id]) {
             this.manifest[category][id].analysis = analysis;
         }
+    }
+
+    getAssetPath(category, id) {
+        const item = this.manifest[category]?.[id];
+        if (!item) return null;
+        
+        if (item.path) return item.path;
+
+        let url = item.filename || id;
+        
+        // Robust path normalization
+        if (!url.match(/^(http|https|blob|data):/)) {
+            // Remove leading slash for consistent checking
+            let cleanUrl = url.startsWith('/') ? url.substring(1) : url;
+
+            // Ensure it starts with media/audio/ if it doesn't already (and isn't in data/ or public/)
+            if (!cleanUrl.startsWith('media/') && !cleanUrl.startsWith('data/') && !cleanUrl.startsWith('public/')) {
+                cleanUrl = `media/audio/${cleanUrl}`;
+            }
+            
+            // Add root slash
+            url = '/' + cleanUrl;
+        }
+
+        // Heuristic: If no extension is present, assume .wav to prevent 404s on extensionless IDs
+        if (!url.split('/').pop().includes('.')) {
+            url += '.wav';
+        }
+
+        return url;
+    }
+
+    saveAnalysis(category, id, analysis, isNew = false) {
+        if (!this.manifest[category]) this.manifest[category] = {};
+        if (!this.manifest[category][id]) this.manifest[category][id] = {};
+        
+        this.manifest[category][id].analysis = analysis;
+        if (isNew) this.manifest[category][id].type = 'synthetic';
     }
 }
 
@@ -95,10 +126,25 @@ class AudioManifestManager {
  * A lightweight synthesizer for procedural playback with transition capabilities.
  */
 class T13Synth {
-    constructor(audioContext) {
+    // ... (T13Synth class remains unchanged) ...
+    constructor(audioContext, outputNode) {
         this.ctx = audioContext;
+        this.outputNode = outputNode || this.ctx.destination;
+
         this.masterGain = this.ctx.createGain();
-        this.masterGain.gain.value = 0.5;
+        this.masterGain.gain.value = 1.0; 
+
+        this.musicGain = this.ctx.createGain();
+        this.musicGain.gain.value = 0.8;
+        this.musicGain.connect(this.masterGain);
+
+        this.sfxGain = this.ctx.createGain();
+        this.sfxGain.gain.value = 1.0;
+        this.sfxGain.connect(this.masterGain);
+
+        this.dialogueGain = this.ctx.createGain();
+        this.dialogueGain.gain.value = 1.0;
+        this.dialogueGain.connect(this.masterGain);
         
         // Add Compressor to tame peaks and prevent clipping
         this.compressor = this.ctx.createDynamicsCompressor();
@@ -109,21 +155,30 @@ class T13Synth {
         this.compressor.release.value = 0.25;
 
         this.masterGain.connect(this.compressor);
-        this.compressor.connect(this.ctx.destination);
+        this.compressor.connect(this.outputNode);
 
-        this.buffers = new Map(); // Store loaded AudioBuffers
-        this.layers = new Map(); // To manage active layers { source, gainNode }
-        this.channels = new Map(); // Channel routing for visualization
+        this.buffers = new Map(); 
+        this.layers = new Map(); 
+        this.channels = new Map(); 
 
         // Sub-Engines
         this.instrumentEngine = new InstrumentEngine(this.ctx);
     }
+    
+    // ... (rest of T13Synth methods remain unchanged) ...
 
-    /**
-     * Loads an audio file into a buffer.
-     * @param {string} name - A unique name for the audio.
-     * @param {string} url - URL to the audio file.
-     */
+    setMusicVolume(val) {
+        this.musicGain.gain.setTargetAtTime(val, this.ctx.currentTime, 0.1);
+    }
+
+    setSFXVolume(val) {
+        this.sfxGain.gain.setTargetAtTime(val, this.ctx.currentTime, 0.1);
+    }
+
+    setDialogueVolume(val) {
+        this.dialogueGain.gain.setTargetAtTime(val, this.ctx.currentTime, 0.1);
+    }
+
     async loadAudio(name, url) {
         try {
             const response = await fetch(url);
@@ -138,8 +193,10 @@ class T13Synth {
         }
     }
 
-    playNote(frequency, startTime, duration, type = 'sine', detune = 0, instrument = null, channelId = null) {
-        let dest = this.masterGain;
+    playNote(frequency, startTime, duration, type = 'Piano', detune = 0, instrument = null, channelId = null) {
+        if (!Number.isFinite(frequency) || frequency <= 0) return; // Safety check
+
+        let dest = this.musicGain; 
 
         if (channelId) {
             if (!this.channels.has(channelId)) {
@@ -147,38 +204,26 @@ class T13Synth {
                 const analyser = this.ctx.createAnalyser();
                 analyser.fftSize = 256;
                 gain.connect(analyser);
-                analyser.connect(this.masterGain);
+                analyser.connect(this.musicGain); 
                 this.channels.set(channelId, { gain, analyser });
             }
             dest = this.channels.get(channelId).gain;
         }
 
-        // Delegate to InstrumentEngine for unified handling
-        // If 'instrument' is a string key for a loaded sample or defined instrument
         if (instrument) {
             this.instrumentEngine.playNote(instrument, frequency, startTime, duration, 0.3, dest);
             return;
         }
 
-        // Fallback to basic synth if no instrument specified (or use default synth type)
         this.instrumentEngine.playNote(type, frequency, startTime, duration, 0.3, dest);
     }
 
     playSample(name, frequency, startTime, duration, detune) {
-        // Forwarding legacy calls to InstrumentEngine
-        this.instrumentEngine.playNote(name, frequency, startTime, duration, 0.3, this.masterGain);
+        this.instrumentEngine.playNote(name, frequency, startTime, duration, 0.3, this.musicGain);
     }
 
-    /**
-     * Plays a pre-loaded audio buffer as a persistent layer.
-     * @param {string} layerName - A unique name for this layer.
-     * @param {AudioBuffer} buffer - The audio buffer to play.
-     * @param {number} volume - The target volume for the layer.
-     * @param {boolean} loop - Whether the audio should loop.
-     * @param {number} fadeTime - The time in seconds to fade in.
-     */
     playLayer(layerName, buffer, volume = 1.0, loop = true, fadeTime = 2.0) {
-        if (this.layers.has(layerName)) return; // Already playing
+        if (this.layers.has(layerName)) return; 
 
         const now = this.ctx.currentTime;
         const source = this.ctx.createBufferSource();
@@ -191,18 +236,13 @@ class T13Synth {
         gainNode.gain.linearRampToValueAtTime(volume, now + fadeTime);
 
         source.connect(gainNode);
-        gainNode.connect(this.masterGain);
+        gainNode.connect(this.musicGain); 
         source.start(now);
 
         this.layers.set(layerName, { source, gainNode });
         Logger.message(`T13Synth: Started layer '${layerName}'`);
     }
 
-    /**
-     * Stops a persistent layer with a fade out.
-     * @param {string} layerName - The name of the layer to stop.
-     * @param {number} fadeTime - The time in seconds to fade out.
-     */
     stopLayer(layerName, fadeTime = 2.0) {
         if (!this.layers.has(layerName)) return;
 
@@ -219,47 +259,37 @@ class T13Synth {
         Logger.message(`T13Synth: Stopped layer '${layerName}'`);
     }
 
-    /**
-     * Plays a one-shot sound effect that is not looped.
-     * @param {AudioBuffer} buffer - The audio buffer to play.
-     * @param {number} volume - The volume to play at.
-     */
     playFX(buffer, volume = 0.5) {
         if (!buffer) return;
         const now = this.ctx.currentTime;
         const source = this.ctx.createBufferSource();
+        const gain = this.ctx.createGain();
+        gain.gain.value = volume;
+
         source.buffer = buffer;
-        source.connect(this.masterGain);
+        source.connect(gain);
+        gain.connect(this.sfxGain); 
         source.start(now);
     }
 
-    /**
-     * Plays a transitional "bridge" or "fill" sound.
-     * @param   {number} baseFreq - Root frequency.
-     * @param {string} direction - 'rising' (tension up) or 'falling' (tension down).
-     */
     playBridge(baseFreq, direction) {
         const now = this.ctx.currentTime;
         const osc = this.ctx.createOscillator();
         const gain = this.ctx.createGain();
 
         osc.connect(gain);
-        gain.connect(this.masterGain);
+        gain.connect(this.musicGain); 
 
         osc.type = direction === 'rising' ? 'sawtooth' : 'sine';
 
-        // Envelope
         gain.gain.setValueAtTime(0, now);
         gain.gain.linearRampToValueAtTime(0.15, now + 1.0);
         gain.gain.exponentialRampToValueAtTime(0.001, now + 3.0);
 
-        // Frequency Sweep
         osc.frequency.setValueAtTime(baseFreq, now);
         if (direction === 'rising') {
-            // Tension rising: Pitch up, adding dissonance
             osc.frequency.exponentialRampToValueAtTime(baseFreq * 2, now + 3.0);
         } else {
-            // Tension falling: Pitch down, resolving
             osc.frequency.setValueAtTime(baseFreq * 1.5, now);
             osc.frequency.exponentialRampToValueAtTime(baseFreq, now + 3.0);
         }
@@ -272,10 +302,9 @@ class T13Synth {
         this.layers.forEach((layer, name) => {
             this.stopLayer(name, 0.5);
         });
-        this.masterGain.disconnect();
-        this.masterGain = this.ctx.createGain();
-        this.masterGain.gain.value = 0.3;
-        this.masterGain.connect(this.ctx.destination);
+        
+        this.masterGain.gain.cancelScheduledValues(this.ctx.currentTime);
+        this.masterGain.gain.linearRampToValueAtTime(0.5, this.ctx.currentTime + 0.1);
     }
 }
 
@@ -284,6 +313,7 @@ class T13Synth {
  * Procedurally generates music based on Character Geometry and Narrative Arcs.
  */
 class T13NE_Music {
+    // ... (constructor and initialize remain unchanged) ...
     constructor() {
         this.t13ne = null;
         this.geometry = null;
@@ -291,66 +321,134 @@ class T13NE_Music {
         this.synth = null;
         this.initialized = false;
         this.tonalModes = [];
-        this.compositionCache = new Map(); // Caches generated composition data
-        this.musicPack = null; // Holds buffers for the current musical context
-        this.currentLayers = new Set(); // Tracks active layer names
+        this.compositionCache = new Map(); 
+        this.musicPack = null; 
+        this.currentLayers = new Set(); 
         this.lastTension = -1;
         this.themeComponents = {};
         this.drumPatterns = null;
         this.harmonicPatterns = null;
         this.bassPatterns = null;
         this.progressions = null;
+        this.activeComponents = [];
+        this.currentTrackName = null;
+        this.currentProgression = null;
+        this.needsRegeneration = true;
+        this.currentTrack = null; // Store active track object for live updates
 
         this.manifestManager = new AudioManifestManager();
+        this.instrumentPalette = { bass: [], pad: [], lead: [], rhythm: [] };
     }
 
     async initialize(t13ne) {
         if (this.initialized) return;
         this.t13ne = t13ne;
         this.geometry = t13ne.getModule('T13Geometry');
-        this.soundEngine = t13ne.soundEngine; // Access core sound engine
+        this.soundEngine = t13ne.soundEngine; 
 
         await this.manifestManager.loadManifest();
 
-        if (this.soundEngine && this.soundEngine.audioContext) {
-            this.synth = new T13Synth(this.soundEngine.audioContext);
-            // Attach manifest manager to instrument engine so it can access analysis data
-            this.synth.instrumentEngine.manifestManager = this.manifestManager;
-            
-            // Initialize the Instrument Engine (loads AudioWorklets)
-            await this.synth.instrumentEngine.init();
-        } else {
-            Logger.warn("T13NE_Music: SoundEngine AudioContext not available. Playback disabled.");
+        let ctx = this.soundEngine?.audioContext;
+        let output = this.soundEngine?.masterGain;
+
+        if (!ctx) {
+            Logger.message("T13NE_Music: Legacy SoundEngine context missing. Initializing independent AudioContext.");
+            try {
+                ctx = new (window.AudioContext || window.webkitAudioContext)();
+                output = ctx.destination;
+                
+                // Ensure we have a soundEngine object to hold the context for other modules (like AudioDirector)
+                if (!this.soundEngine) this.soundEngine = {};
+                this.soundEngine.audioContext = ctx;
+                this.soundEngine.masterGain = output;
+            } catch (e) {
+                Logger.error("T13NE_Music: Failed to create AudioContext.", e);
+            }
         }
 
-        // Load data required for generation
+        if (ctx) {
+            this.synth = new T13Synth(ctx, output);
+            this.synth.instrumentEngine.manifestManager = this.manifestManager;
+            
+            await this.synth.instrumentEngine.init();
+
+            const config = this.t13ne.getConfig().audio || {};
+            this.synth.setMusicVolume(config.musicVolume !== undefined ? config.musicVolume : 0.8);
+            this.synth.setSFXVolume(config.sfxVolume !== undefined ? config.sfxVolume : 1.0);
+            this.synth.setDialogueVolume(config.dialogueVolume !== undefined ? config.dialogueVolume : 1.0);
+        } else {
+            Logger.warn("T13NE_Music: No AudioContext available. Playback disabled.");
+        }
+
         this.tonalModes = await CodexLoader.getData('geometry', 'tonalModes.json') || [];
         this.progressions = await CodexLoader.getData('geometry', 'progressions.json') || [];
 
         this.initialized = true;
         Logger.message("T13NE_Music: Initialized.");
 
-        // Register standard procedural instruments (Drums & Synths)
         this._registerStandardInstruments();
-
-        // Auto-generate high-fidelity instruments from manifest samples if available
-        this._generateOrchestralInstruments();
-
-        // Load Drum Patterns
+        await this._generateOrchestralInstruments();
+        
+        // New: Process manifest to build dynamic instrument palette
+        await this._processManifestInstruments();
+        
         await this._loadDrumPatterns();
-
-        // Load Harmonic Patterns
         await this._loadHarmonicPatterns();
-
-        // Load Bass Patterns
         await this._loadBassPatterns();
+    }
+
+    async _processManifestInstruments() {
+        if (!this.synth) return;
+        
+        const samples = this.manifestManager.manifest.samples;
+        
+        for (const [key, data] of Object.entries(samples)) {
+            // Skip if not loaded or analyzed yet (lazy loading handled elsewhere, but we need ID)
+            
+            // Categorize
+            const lowerKey = key.toLowerCase();
+            let category = 'lead'; // Default
+            
+            if (lowerKey.includes('bass')) category = 'bass';
+            else if (lowerKey.includes('pad') || lowerKey.includes('atmos') || lowerKey.includes('texture')) category = 'pad';
+            else if (lowerKey.includes('drum') || lowerKey.includes('kick') || lowerKey.includes('snare') || lowerKey.includes('hat') || lowerKey.includes('perc')) category = 'rhythm';
+            
+            this.instrumentPalette[category].push(key);
+
+            // Register with Engine
+            // If we have analysis, we can create a synthetic instrument (wavetable)
+            // Otherwise, we register it as a sampler source
+            if (data.analysis && data.analysis.freq) {
+                // Create synthetic version for flexibility
+                this.synth.instrumentEngine.createSyntheticInstrument(key, key, 'high', category === 'pad' ? 'sustained' : 'percussive');
+            } else {
+                // Register as simple sampler
+                // We assume base freq C4 (261.63) if unknown, or update later
+                this.synth.instrumentEngine.defineInstrument(key, {
+                    type: 'sampler',
+                    sampleId: key,
+                    baseFreq: 261.63 
+                });
+            }
+        }
+
+        Logger.message(`T13NE_Music: Instrument Palette Built. Bass: ${this.instrumentPalette.bass.length}, Pad: ${this.instrumentPalette.pad.length}, Lead: ${this.instrumentPalette.lead.length}`);
+    }
+
+    /**
+     * Triggers the AudioBaker to analyze all samples in the manifest.
+     * Intended for Author Mode.
+     */
+    async bakeAssets() {
+        if (!this.synth) return;
+        const analyzer = new AudioAnalyzer(this.synth.ctx);
+        await analyzer.processManifest(this.manifestManager);
     }
 
     _registerStandardInstruments() {
         if (!this.synth) return;
         const engine = this.synth.instrumentEngine;
 
-        // Standard Drum Kit (Procedural Fallbacks)
         engine.defineInstrument('Drum_Kick', { type: 'synth', oscType: 'sine', pitchEnv: { startMult: 4.0, time: 0.1 }, attack: 0.001, release: 0.2 });
         engine.defineInstrument('Drum_Snare', { type: 'noise', filterType: 'lowpass', filterFreq: 2000, envelope: 'percussive', decay: 0.2 });
         engine.defineInstrument('Drum_HiHat_Closed', { type: 'noise', filterType: 'highpass', filterFreq: 5000, envelope: 'percussive', decay: 0.05 });
@@ -361,19 +459,43 @@ class T13NE_Music {
         engine.defineInstrument('Drum_Tom_Low', { type: 'synth', oscType: 'sine', pitchEnv: { startMult: 1.5, time: 0.1 }, attack: 0.001, release: 0.4, freq: 100 });
         engine.defineInstrument('Drum_Cowbell', { type: 'additive', partials: [{freq:1, amp:1}, {freq:1.5, amp:0.5}], envelope: 'percussive', decay: 0.1 });
 
-        // Basic Synths (Fallbacks if samples missing)
-        engine.defineInstrument('Synth_Bass', { type: 'synth', oscType: 'sawtooth', filterType: 'lowpass', filterFreq: 800, attack: 0.01, decay: 0.2, sustain: 0.5, release: 0.2 });
-        engine.defineInstrument('Synth_Lead', { type: 'synth', oscType: 'square', attack: 0.05, decay: 0.1, sustain: 0.8, release: 0.1 });
-        engine.defineInstrument('Synth_Pad', { type: 'synth', oscType: 'triangle', attack: 0.5, decay: 0.5, sustain: 0.8, release: 1.0 });
+        engine.defineInstrument('Synth_Bass', { 
+            type: 'additive', 
+            envelope: 'sustained',
+            attack: 0.01, decay: 0.2, sustain: 0.5, release: 0.2,
+            partials: [{freq:1, amp:1}, {freq:2, amp:0.5}, {freq:3, amp:0.25}, {freq:4, amp:0.12}] 
+        });
+        engine.defineInstrument('Synth_Lead', { 
+            type: 'additive', 
+            envelope: 'percussive',
+            attack: 0.01, decay: 0.3, sustain: 0.1, release: 0.1,
+            partials: [
+                {freq:1, amp:0.5}, 
+                {freq:2, amp:0.3}, 
+                {freq:3, amp:0.15}, 
+                {freq:4, amp:0.1}
+            ] 
+        });
+        engine.defineInstrument('Synth_Pad', { 
+            type: 'additive', 
+            envelope: 'sustained',
+            attack: 0.5, decay: 0.5, sustain: 0.8, release: 1.0,
+            partials: [{freq:1, amp:1}, {freq:2, amp:0.1}, {freq:3, amp:0.05}] 
+        });
+
+        engine.defineInstrument('Tuba', { type: 'additive', envelope: 'sustained', attack: 0.1, decay: 0.2, sustain: 0.8, release: 0.3, partials: [{freq:1, amp:1}, {freq:2, amp:0.7}, {freq:3, amp:0.4}, {freq:4, amp:0.2}] });
+        engine.defineInstrument('Oboe', { type: 'additive', envelope: 'sustained', attack: 0.05, decay: 0.1, sustain: 0.8, release: 0.1, partials: [{freq:1, amp:0.4}, {freq:2, amp:0.1}, {freq:3, amp:1.0}, {freq:4, amp:0.1}, {freq:5, amp:0.5}] });
+        engine.defineInstrument('Guitar', { type: 'additive', envelope: 'percussive', attack: 0.01, decay: 0.3, sustain: 0.2, release: 0.1, partials: [{freq:1, amp:1}, {freq:2, amp:0.5}, {freq:3, amp:0.3}, {freq:4, amp:0.2}] });
+        engine.defineInstrument('Harpsichord', { type: 'additive', envelope: 'percussive', attack: 0.01, decay: 0.1, sustain: 0.5, release: 0.1, partials: [{freq:1, amp:0.6}, {freq:2, amp:1.0}, {freq:3, amp:0.5}, {freq:4, amp:0.3}] });
     }
 
-    _generateOrchestralInstruments() {
+    async _generateOrchestralInstruments() {
         if (!this.synth) return;
         
         const mappings = {
             'Cello': 'pad_acoustic/low_string',
-            'Violin': 'melody_acoustic/hi_string',
-            'Viola': 'melody_acoustic/mid_string',
+            'Violin': 'pad_acoustic/hi_string',
+            'Viola': 'pad_acoustic/mid_string',
             'Flute': 'melody_acoustic/flute_c1',
             'Trumpet': 'melody_acoustic/trumpet_solo',
             'French Horn': 'melody_acoustic/brite_horn',
@@ -383,8 +505,10 @@ class T13NE_Music {
         };
 
         for (const [instName, sampleId] of Object.entries(mappings)) {
-            // Create a synthetic instrument derived from the sample analysis
-            // This uses the AdditiveProcessor to recreate the timbre
+            // Ensure sample is loaded and analyzed before synthesizing
+            const url = this.manifestManager.getAssetPath('samples', sampleId);
+            if (url) await this.loadSample(sampleId, url);
+            
             this.synth.instrumentEngine.createSyntheticInstrument(sampleId, instName, 'high', 'sustained');
         }
     }
@@ -393,7 +517,6 @@ class T13NE_Music {
         try {
             const data = await CodexLoader.getData('music', 'drumpatterns.json');
             if (!data) throw new Error("No data returned from CodexLoader");
-            // Flatten the category-based structure into a single map
             this.drumPatterns = {};
             for (const category in data) {
                 if (Array.isArray(data[category])) {
@@ -420,217 +543,286 @@ class T13NE_Music {
 
     async _loadBassPatterns() {
         try {
-            const data = await CodexLoader.getData('music', 'bass_patterns.json');
+            const data = await CodexLoader.getData('music', 'basspatterns.json');
+
             if (!data) throw new Error("No data returned from CodexLoader");
             this.bassPatterns = data.patterns;
             Logger.message("T13NE_Music: Bass patterns loaded.");
         } catch (e) {
-            Logger.warn("T13NE_Music: Failed to load bass_patterns.json via Codex.", e);
+            Logger.warn("T13NE_Music: Failed to load bass patterns via Codex.", e);
         }
     }
 
-    /**
-     * Loads a sample and registers it in the manifest and instrument engine.
-     */
     async loadSample(name, url) {
         if (this.synth) {
             const success = await this.synth.instrumentEngine.loadSample(name, url);
             if (success) {
                 this.manifestManager.addToManifest('samples', name, { filename: url.split('/').pop(), loaded: true });
+                return true;
             }
+        }
+        return false;
+    }
+
+    async analyzeSample(id, options = {}) {
+        if (!this.synth) return null;
+        const buffer = this.synth.instrumentEngine.samples.get(id);
+        if (!buffer) {
+            Logger.warn(`T13NE_Music: Sample '${id}' not loaded in memory for analysis.`);
+            return null;
+        }
+        
+        const analyzer = new AudioAnalyzer(this.synth.ctx);
+        const analysis = await analyzer.analyze(buffer, options);
+        return analysis;
+    }
+
+    saveAnalysis(id, analysis, asNew = false) {
+        if (asNew) {
+            const newId = `${id}_syn`;
+            // Create a new entry that references the original filename but has new analysis
+            const original = this.manifestManager.manifest.samples[id];
+            const entry = { ...original, analysis: analysis, type: 'synthetic', sourceId: id };
+            this.manifestManager.addToManifest('samples', newId, entry);
+            Logger.message(`T13NE_Music: Saved new synthetic instrument '${newId}'`);
+        } else {
+            this.manifestManager.updateAssetAnalysis('samples', id, analysis);
+            Logger.message(`T13NE_Music: Updated analysis for '${id}'`);
         }
     }
 
-    /**
-     * Inject components for theme generation if they are created asynchronously.
-     * @param {Object} components - { playerCharacter, playerShip, galaxy }
-     */
     injectThemeComponents(components) {
-        this.themeComponents = { ...this.themeComponents, ...components };
-        Logger.message("T13NE_Music: Theme components injected.");
+        let changed = false;
+        Object.values(components).forEach(entity => {
+            const exists = this.activeComponents.some(c => c.name === entity.name); // Check by name
+            if (entity && !exists) {
+                this.activeComponents.push(entity);
+                changed = true;
+            }
+        });
+        if (changed) {
+            this.needsRegeneration = true;
+        }
+        Logger.message(`T13NE_Music: Active components updated. Total: ${this.activeComponents.length}`);
     }
 
-    /**
-     * Selects an appropriate instrument based on the Role and Geometry.
-     * Roles:
-     * - Lead: The main melody voice.
-     * - Bass: The low-frequency rhythm/harmony foundation.
-     * - Pad: Harmonic Fill. Sustained background chords that "pad" the mix (e.g. Strings, Choir).
-     * - Drum: Percussive rhythm.
-     */
-    _getInstrumentForRole(role, geo) {
-        const palettes = {
-            bass: ['Tuba', 'Cello', 'Piano', 'Synth_Bass'], 
-            lead: ['Violin', 'Flute', 'Oboe', 'Trumpet', 'Clarinet', 'Synth_Lead'], 
-            pad: ['French Horn', 'Viola', 'Cello', 'Harp', 'Synth_Pad'], 
-            rhythm: ['Guitar', 'Piano', 'Harp', 'Harpsichord'],
-            percussion: ['Drum_Cowbell', 'Drum_Ride', 'Drum_Crash']
-        };
+    _getInstrumentFromGeometry(geo) {
+        // Map Key and Octave to Role
+        let octave = 4;
+        if (geo.Octave !== undefined) octave = geo.Octave;
+        
+        let role = 'rhythm';
+        if (octave <= 3) role = 'bass';
+        else if (octave >= 5) role = 'lead';
+        else role = 'pad';
 
-        const palette = palettes[role] || palettes.lead;
-        // Use Geometry Number (1-13) to deterministically pick an instrument
-        const index = ((geo?.GeometryNumber || 1) - 1) % palette.length;
-        return palette[index];
+        // Select random instrument from the palette for this role
+        // Seed RNG with geometry name/ID so the choice is consistent for this entity
+        const rng = new MusicRNG(geo.name || JSON.stringify(geo));
+        
+        const palette = this.instrumentPalette[role];
+        let instrument = 'Piano'; // Fallback
+        
+        if (palette && palette.length > 0) {
+            instrument = rng.pick(palette);
+        } else {
+            // Fallback to standard instruments if palette is empty
+            if (role === 'bass') instrument = 'Synth_Bass';
+            else if (role === 'pad') instrument = 'Synth_Pad';
+            else instrument = 'Synth_Lead';
+        }
+        
+        return { instrument: instrument, role: role };
     }
 
-    /**
-     * generating the Wormhole Racers Main Theme.
-     */
-    async createWormholeTheme(gameEngine) {
+    // ... (createWormholeTheme, ensureGeometry, _motifToTrackEvents, _addLoopToSequence, _generateRhythm, _generateProgression, _generateBassline, _generateHarmonics, playTrack remain unchanged) ...
+    async createMainTheme(gameEngine) {
         if (!this.synth) return;
 
-        const trackName = 'track_wormhole_main_theme';
-        Logger.message("T13NE_Music: generating Wormhole Racers Theme from components...");
-
-        // 1. Determine Context from Game Engine or Injected Components
-        const components = this.themeComponents || {};
+        const trackName = 'track_main_theme';
+        Logger.message("T13NE_Music: generating Main Theme from components...");
         
-        // Prefer injected, then gameEngine, then fail (no hardcoded fallbacks)
-        const pcSource = components.playerCharacter || gameEngine?.playerCharacter;
-        const shipSource = components.playerShip || gameEngine?.playerShip;
-        const galaxySource = components.galaxy || gameEngine?.galaxy;
-
-        if (!pcSource || !shipSource || !galaxySource) {
-             Logger.warn("T13NE_Music: Missing components for Wormhole Theme (PC, Ship, or Galaxy). Waiting for injection.");
-             return null;
+        if (this.activeComponents.length === 0 && gameEngine) {
+             if (gameEngine.playerCharacter) this.activeComponents.push(gameEngine.playerCharacter);
+             if (gameEngine.playerShip) this.activeComponents.push(gameEngine.playerShip);
+             if (gameEngine.galaxy) this.activeComponents.push(gameEngine.galaxy);
         }
 
-        // Helper to ensure geometry is calculated if missing
-        const ensureGeometry = (source) => {
-             if (source.geometry && source.geometry.GeoHarmonics) return source;
-             // Calculate if missing using the mandatory T13Geometry module
-             const geo = this.geometry.calculateFullGeo(source.name);
-             return { ...source, geometry: geo };
-        };
+        // 1. Determine Rhythm Source (Prioritize Ship -> Character -> Galaxy)
+        // This ensures the drums/meter change when the ship is added
+        let rhythmEntity = this.activeComponents.find(c => c.constructor && c.constructor.name === 'Ship');
+        if (!rhythmEntity) rhythmEntity = this.activeComponents.find(c => c.role); // Character
+        if (!rhythmEntity) rhythmEntity = this.activeComponents[0];
 
-        const pc = ensureGeometry(pcSource);
-        const ship = ensureGeometry(shipSource);
-        const galaxy = ensureGeometry(galaxySource);
-
-        // 2. Generate Motifs (Patterns) for each entity
-        const leadMotif = this.getCharacterComposition(pc);
-        const padMotif = this.getCharacterComposition(galaxy);
-
-        // 3. Determine Instruments based on Role and Geometry
-        const leadInst = this._getInstrumentForRole('lead', pc.geometry);
-        const bassInst = this._getInstrumentForRole('bass', ship.geometry);
-        const padInst = this._getInstrumentForRole('pad', galaxy.geometry);
+        const rhythmEntityGeo = this.ensureGeometry(rhythmEntity);
+        if (!rhythmEntityGeo) return null;
+        const rhythm = this._generateRhythm(rhythmEntityGeo);
         
-        // Select instruments for harmonic layers
-        const guitarInst = this._getInstrumentForRole('rhythm', ship.geometry);
-        const padFxInst = this._getInstrumentForRole('pad', galaxy.geometry);
+        // Base frequency for fallback/initialization
+        const baseKeyData = this.geometry.getKey(rhythmEntityGeo.geometry.GeoHarmonics.key);
+        const baseFreq = baseKeyData.Key.Frequency;
         
-        // 3b. Generate Chord Progression
-        const progression = this._generateProgression(leadMotif.baseFreq);
+        // Only regenerate progression if components changed or first run
+        if (!this.currentProgression || this.needsRegeneration) {
+            const uniqueFreqs = [];
+            const seenKeys = new Set();
 
-        // 4. Determine Rhythm & Time Signature
-        // We generate the rhythm first so the rest of the track can align to its meter
-        const rhythm = this._generateRhythm(ship);
-        
-        // 4b. Generate Harmonic Accompaniment (Guitar/Pads) based on Rhythm and Progression
-        const harmonics = this._generateHarmonics(rhythm, ship, progression, leadMotif.baseFreq);
+            // Collect unique keys from ALL active components to build the progression
+            this.activeComponents.forEach(comp => {
+                const geo = this.ensureGeometry(comp);
+                if (geo && geo.geometry && geo.geometry.GeoHarmonics) {
+                    const keyData = this.geometry.getKey(geo.geometry.GeoHarmonics.key);
+                    if (keyData && !seenKeys.has(keyData.Key.Key)) {
+                        seenKeys.add(keyData.Key.Key);
+                        uniqueFreqs.push(keyData.Key.Frequency);
+                    }
+                }
+            });
+            if (uniqueFreqs.length === 0) uniqueFreqs.push(baseFreq);
 
-        // 5. Generate Track Events
+            let fullProgression = [];
+            // Weave a progression that visits every component's key
+            uniqueFreqs.forEach(freq => {
+                fullProgression = fullProgression.concat(this._generateProgression(freq));
+            });
+            
+            // If only one key (e.g. just Galaxy), add a modulation for variety
+            if (uniqueFreqs.length === 1) {
+                fullProgression = fullProgression.concat(this._generateProgression(uniqueFreqs[0] * 1.5));
+            }
+            // Return to root
+            fullProgression = fullProgression.concat(this._generateProgression(uniqueFreqs[0]));
+
+            this.currentProgression = fullProgression;
+            Logger.message(`T13NE_Music: Progression regenerated with ${uniqueFreqs.length} unique keys.`);
+        }
+        const progression = this.currentProgression;
+
         const bpm = 120;
         const beatTime = 60 / bpm;
-
-        // Helper to shift motif to target range
-        const getShift = (motif, targetFreq) => {
-            if (!motif || !motif.baseFreq) return 0;
-            return 12 * Math.log2(targetFreq / motif.baseFreq);
-        };
-
-        // Lead: Keep original pitch or center around C4 (261Hz)
-        const leadEvents = this._motifToTrackEvents(leadMotif, 'v_lead', beatTime, 0);
+        const voices = [];
         
-        // Pad: Shift to ~C3 (130Hz)
-        const padShift = getShift(padMotif, 130);
-        const padEvents = this._motifToTrackEvents(padMotif, 'v_pad', beatTime, padShift);
+        rhythm.events.forEach(evt => {
+            let v = voices.find(v => v.id === evt.voice);
+            if (!v) {
+                const instMap = {
+                    'v_kick': 'Drum_Kick', 'v_snare': 'Drum_Snare', 'v_hat': 'Drum_HiHat_Closed',
+                    'v_crash': 'Drum_Crash', 'v_ride': 'Drum_Ride', 'v_perc': 'Drum_Cowbell'
+                };
+                v = { id: evt.voice, name: evt.voice, instrument: instMap[evt.voice], sequence: [], mute: false };
+                voices.push(v);
+            }
+            v.sequence.push(evt);
+        });
 
-        // Bass: Procedural generation based on Rhythm, Style, and Progression
-        const bassEvents = this._generateBassline(rhythm, ship, progression, leadMotif.baseFreq / 4, beatTime); // Shift down 2 octaves for bass
+        // Use for...of loop to allow awaiting/yielding
+        const componentsToProcess = [...this.activeComponents];
+        for (let index = 0; index < componentsToProcess.length; index++) {
+            // Yield to event loop to prevent blocking audio scheduler (fixes hitching)
+            await new Promise(r => setTimeout(r, 0));
 
-        // 6. Assemble Sequence
-        const fullSequence = [];
-        const measures = progression.length || 4; // Adapt track length to progression
+            const source = componentsToProcess[index];
+            if (!source || !source.name) return;
+            
+            // Sanitize name to prevent "v_undefinedundefinedundefined" IDs
+            let safeName = source.name.replace(/[^a-zA-Z0-9]/g, '_');
+            if (safeName.includes('undefined') || safeName.length === 0) safeName = `Entity_${index}`;
+
+            const entity = this.ensureGeometry(source);
+            const { instrument, role } = this._getInstrumentFromGeometry(entity.geometry);
+            const motif = this.getCharacterComposition(entity);
+            
+            let events = [];
+            if (role === 'bass') {
+                events = this._generateBassline(rhythm, entity, progression, baseFreq / 4, beatTime);
+            } else if (role === 'pad' || role === 'rhythm') {
+                const h = this._generateHarmonics(rhythm, entity, progression, baseFreq);
+                events = role === 'pad' ? h.pad : h.guitar;
+            } else {
+                if (motif) events = this._motifToHarmonizedEvents(motif, `v_${safeName}_${index}`, beatTime, progression, baseFreq);
+            }
+
+            voices.push({
+                id: `v_${safeName}_${index}`,
+                name: `${entity.name} (${role})`,
+                instrument: instrument,
+                sequence: events,
+                mute: false
+            });
+        }
+
+        const measures = progression.length || 4;
         const totalSteps = measures * rhythm.stepsPerMeasure;
 
-        const fillTrack = (events, voiceId) => {
-            if (!events.length) return;
-            let currentStep = 0;
-            const motifLength = events[events.length - 1].step + (events[events.length - 1].duration / beatTime * 4);
-            // Align loop to the measure length defined by the rhythm
-            const loopLength = Math.ceil(motifLength / rhythm.stepsPerMeasure) * rhythm.stepsPerMeasure || rhythm.stepsPerMeasure;
+        voices.forEach(v => {
+            if (v.id.startsWith('v_kick') || v.id.startsWith('v_snare') || v.id.startsWith('v_hat') || v.id.startsWith('v_crash') || v.id.startsWith('v_ride') || v.id.startsWith('v_perc')) {
+                 const measureEvents = [...v.sequence];
+                 v.sequence = [];
+                 for (let m = 0; m < measures; m++) {
+                     const offset = m * rhythm.stepsPerMeasure;
+                     measureEvents.forEach(evt => {
+                         v.sequence.push({ ...evt, step: evt.step + offset });
+                     });
+                 }
+            } 
+            // Leads are now pre-harmonized and looped to the full progression length in _motifToHarmonizedEvents
+            else if (!v.sequence || v.sequence.length === 0 || v.sequence[v.sequence.length-1].step < totalSteps) {
+                const motifEvents = [...v.sequence];
+                v.sequence = [];
+                if (motifEvents.length === 0) return;
 
-            while (currentStep < totalSteps) {
-                events.forEach(evt => {
-                    if (currentStep + evt.step < totalSteps) {
-                        fullSequence.push({
-                            ...evt,
-                            step: currentStep + evt.step,
-                            voice: voiceId
-                        });
-                    }
-                });
-                currentStep += loopLength;
+                const lastEventStep = motifEvents[motifEvents.length-1].step;
+                const loopLength = Math.ceil((lastEventStep + 1) / 16) * 16;
+                
+                let currentStep = 0;
+                while (currentStep < totalSteps) {
+                    motifEvents.forEach(evt => {
+                        if (currentStep + evt.step < totalSteps) {
+                            v.sequence.push({ ...evt, step: currentStep + evt.step });
+                        }
+                    });
+                    currentStep += loopLength; 
+                }
             }
-        };
-
-        fillTrack(leadEvents, 'v_lead');
-        fillTrack(bassEvents, 'v_bass');
-        fillTrack(padEvents, 'v_pad');
-        
-        // Drums
-        fillTrack(rhythm.events.filter(e => e.voice === 'v_kick'), 'v_kick');
-        fillTrack(rhythm.events.filter(e => e.voice === 'v_snare'), 'v_snare');
-        fillTrack(rhythm.events.filter(e => e.voice === 'v_hat'), 'v_hat');
-        fillTrack(rhythm.events.filter(e => e.voice === 'v_crash'), 'v_crash');
-        fillTrack(rhythm.events.filter(e => e.voice === 'v_ride'), 'v_ride');
-        fillTrack(rhythm.events.filter(e => e.voice === 'v_perc'), 'v_perc');
-        
-        // Harmonics
-        fillTrack(harmonics.guitar, 'v_guitar');
-        fillTrack(harmonics.pad, 'v_pad');
+        });
 
         const trackData = {
-            name: 'Wormhole Racers Theme',
+            name: 'Main Theme',
             bpm: bpm,
             timeSignature: rhythm.timeSignature,
             measures: measures,
-            voices: [
-                { id: 'v_bass', name: 'Bass', instrument: bassInst, sequence: [], mute: false },
-                { id: 'v_lead', name: 'Lead', instrument: leadInst, sequence: [], mute: false },
-                { id: 'v_pad', name: 'Pad', instrument: padInst, sequence: [], mute: false },
-                { id: 'v_kick', name: 'Kick', instrument: 'Drum_Kick', sequence: [], mute: false },
-                { id: 'v_snare', name: 'Snare', instrument: 'Drum_Snare', sequence: [], mute: false },
-                { id: 'v_hat', name: 'HiHat', instrument: 'Drum_HiHat_Closed', sequence: [], mute: false },
-                { id: 'v_crash', name: 'Crash', instrument: 'Drum_Crash', sequence: [], mute: false },
-                { id: 'v_ride', name: 'Ride', instrument: 'Drum_Ride', sequence: [], mute: false },
-                { id: 'v_perc', name: 'Percussion', instrument: 'Drum_Cowbell', sequence: [], mute: false },
-                { id: 'v_guitar', name: 'Rhythm Guitar', instrument: guitarInst, sequence: [], mute: false },
-                { id: 'v_pad_fx', name: 'Synth Pad', instrument: padFxInst, sequence: [], mute: false }
-            ]
+            totalSteps: totalSteps,
+            voices: voices
         };
 
-        // Distribute
-        fullSequence.forEach(note => {
-            const v = trackData.voices.find(voice => voice.id === note.voice);
-            if (v) v.sequence.push(note);
-        });
-
         this.saveTrack(trackName, trackData);
+        this.needsRegeneration = false;
         return trackData;
+    }
+
+    ensureGeometry(source) {
+         if (!source) return null;
+         if (source.geometry && source.geometry.GeoHarmonics) return source;
+         
+         if (!this.geometry && this.t13ne) {
+             this.geometry = this.t13ne.getModule('T13Geometry');
+         }
+         
+         if (!this.geometry) {
+             Logger.warn("T13NE_Music: Geometry module missing, cannot calculate geometry.");
+             return source;
+         }
+
+         const geo = this.geometry.calculateFullGeo(source.name);
+         return { ...source, geometry: geo };
     }
 
     _motifToTrackEvents(motif, voiceId, beatTime, pitchShiftSemitones = 0) {
         const events = [];
         let currentStep = 0;
         motif.sequence.forEach(note => {
-            // note.duration is in beats (e.g. 0.25, 0.5, 1.0)
-            // step is 16th note (0.25 beat)
             const durationSteps = note.duration * 4; 
             
-            // Pitch shift freq
             let freq = note.freq;
             if (pitchShiftSemitones !== 0) {
                 freq = freq * Math.pow(2, pitchShiftSemitones / 12);
@@ -640,7 +832,7 @@ class T13NE_Music {
                 voice: voiceId,
                 step: currentStep,
                 freq: freq,
-                duration: note.duration * beatTime, // Seconds
+                duration: note.duration * beatTime, 
                 velocity: 0.7
             });
             currentStep += durationSteps;
@@ -648,11 +840,61 @@ class T13NE_Music {
         return events;
     }
 
+    _motifToHarmonizedEvents(motif, voiceId, beatTime, progression, globalBaseFreq) {
+        const events = [];
+        let currentStep = 0;
+        
+        // Calculate total duration of the progression in steps
+        const totalProgressionSteps = progression.reduce((sum, chord) => sum + chord.durationSteps, 0);
+        
+        // Optimization: Pre-calculate chord start/end steps for faster lookup
+        const chordMap = [];
+        let stepAccumulator = 0;
+        for (const chord of progression) {
+            chordMap.push({ start: stepAccumulator, end: stepAccumulator + chord.durationSteps, chord });
+            stepAccumulator += chord.durationSteps;
+        }
+        let chordIndex = 0;
+
+        // Loop the motif until we fill the progression
+        while (currentStep < totalProgressionSteps) {
+            for (const note of motif.sequence) {
+                if (currentStep >= totalProgressionSteps) break;
+
+                // Find the active chord efficiently
+                // Since currentStep increases monotonically, we only need to check forward
+                while (chordIndex < chordMap.length && currentStep >= chordMap[chordIndex].end) {
+                    chordIndex++;
+                }
+                // Safety wrap
+                if (chordIndex >= chordMap.length) chordIndex = 0;
+
+                const activeChord = chordMap[chordIndex].chord;
+
+                // Harmonize: Transpose motif interval to Global Key + Chord Root
+                // We ignore the motif's original 'freq' and use its 'interval' (scale degree)
+                // to map it onto the current harmonic context.
+                const harmonizedPitch = activeChord.rootOffset + note.interval;
+                const freq = globalBaseFreq * Math.pow(2, harmonizedPitch / 12);
+                
+                const durationSteps = Math.ceil(note.duration * 4); // Convert beats to 16th steps
+
+                events.push({
+                    voice: voiceId,
+                    step: currentStep,
+                    freq: freq,
+                    duration: note.duration * beatTime, 
+                    velocity: 0.7
+                });
+                currentStep += durationSteps;
+            }
+        }
+        return events;
+    }
+
     _addLoopToSequence(targetSeq, sourceEvents, offsetStep, loopLengthSteps) {
         sourceEvents.forEach(evt => {
-            // Wrap event step within loop length
             const loopStep = evt.step % loopLengthSteps;
-            // Add to target
             targetSeq.push({
                 ...evt,
                 step: offsetStep + loopStep
@@ -663,14 +905,10 @@ class T13NE_Music {
     _generateRhythm(ship = null) {
         const rng = new MusicRNG(ship ? ship.name : 'default');
         
-        // 1. Try to use loaded patterns first
         if (this.drumPatterns) {
-            // Determine target tags based on ship context
-            // Default to Contemporary (3) and Modern (2)
-            const targetGenre = ship ? (ship.origin === 'Core' ? "6" : "3") : "3"; // 6=SciFi, 3=Contemporary
-            const targetEra = ship ? (ship.techLevel > 5 ? "3" : "2") : "2"; // 3=Future, 2=Modern
+            const targetGenre = ship ? (ship.origin === 'Core' ? "6" : "3") : "3"; 
+            const targetEra = ship ? (ship.techLevel > 5 ? "3" : "2") : "2"; 
             
-            // Filter patterns by tags
             let matchingKeys = Object.keys(this.drumPatterns).filter(k => {
                 const p = this.drumPatterns[k];
                 if (!p.tags) return false;
@@ -681,39 +919,33 @@ class T13NE_Music {
             
             const pool = matchingKeys.length > 0 ? matchingKeys : Object.keys(this.drumPatterns);
             
-            // Randomize slightly if multiple fit? For now just pick one.
             const patternKey = rng.pick(pool);
 
             const pattern = this.drumPatterns[patternKey];
             if (pattern) {
                 const events = [];
-                // Map pattern tracks to voices
                 if (pattern.tracks.kick) pattern.tracks.kick.forEach(step => events.push({ voice: 'v_kick', step, freq: 100, duration: 0.1, velocity: 0.9 }));
                 if (pattern.tracks.snare) pattern.tracks.snare.forEach(step => events.push({ voice: 'v_snare', step, freq: 100, duration: 0.1, velocity: 0.8 }));
                 if (pattern.tracks.hat) pattern.tracks.hat.forEach(step => events.push({ voice: 'v_hat', step, freq: 1000, duration: 0.05, velocity: 0.6 }));
                 
-                // Add Crash on step 0 for emphasis if it's a Rock/Action style
                 if (pattern.style === 'Rock' || pattern.style === 'Action') {
                     events.push({ voice: 'v_crash', step: 0, freq: 100, duration: 1.5, velocity: 0.8 });
                 }
                 
                 return {
                     events,
-                    style: pattern.style, // Pass style for harmonic matching
+                    style: pattern.style, 
                     timeSignature: pattern.timeSignature || [4, 4],
                     stepsPerMeasure: pattern.length || 16
                 };
             }
         }
 
-        // 2. Procedural Fallback
-        // Default to 4/4 if no patterns loaded
         const events = [];
         const kickPattern = rng.pick(['four-on-floor', 'breakbeat', 'driving']);
         const lengthSteps = 16;
 
         for (let i = 0; i < lengthSteps; i++) {
-            // Kick
             let kick = false;
             if (kickPattern === 'four-on-floor' && i % 4 === 0) kick = true;
             else if (kickPattern === 'driving' && (i % 2 === 0 || i % 8 === 7)) kick = true;
@@ -721,17 +953,13 @@ class T13NE_Music {
 
             if (kick) events.push({ voice: 'v_kick', step: i, freq: 100, duration: 0.1, velocity: 0.8 });
 
-            // Snare
             if (i % 8 === 4) events.push({ voice: 'v_snare', step: i, freq: 100, duration: 0.1, velocity: 0.7 });
-            // Hats - influenced by component count (more components = busier hats)
             const hatDensity = ship && ship.components ? 0.5 + (ship.components.length * 0.05) : 0.5;
             if (i % 2 === 0 || (rng.next() < hatDensity && i % 2 !== 0)) events.push({ voice: 'v_hat', step: i, freq: 1000, duration: 0.05, velocity: 0.5 });
             
-            // Ride Cymbal on off-beats for driving feel
             if (kickPattern === 'driving' && i % 2 !== 0) events.push({ voice: 'v_ride', step: i, freq: 100, duration: 0.8, velocity: 0.6 });
         }
         
-        // Crash at start
         events.push({ voice: 'v_crash', step: 0, freq: 100, duration: 1.5, velocity: 0.9 });
         
         return {
@@ -743,22 +971,19 @@ class T13NE_Music {
     }
 
     _generateProgression(baseFreq) {
-        // Simple 4-chord loops common in Western music
         const progressions = [
-            ['I', 'V', 'vi', 'IV'], // Pop / Axis of Awesome
-            ['I', 'vi', 'IV', 'V'], // 50s Progression
-            ['ii', 'V', 'I', 'vi'], // Jazz Turnaround-ish
-            ['vi', 'IV', 'I', 'V'], // Pop Minor-ish
-            ['I', 'IV', 'V', 'IV']  // Rock
+            ['I', 'V', 'vi', 'IV'], 
+            ['I', 'vi', 'IV', 'V'], 
+            ['ii', 'V', 'I', 'vi'], 
+            ['vi', 'IV', 'I', 'V'], 
+            ['I', 'IV', 'V', 'IV']  
         ];
         
-        // Access RomanChords from Geometry module
         const romanChords = this.geometry && this.geometry.RomanChords ? this.geometry.RomanChords : [];
         if (!romanChords.length) return [{ rootOffset: 0, intervals: [0, 4, 7], durationSteps: 64 }];
 
         const rng = new MusicRNG(baseFreq); 
         
-        // Use loaded progressions from JSON if available, otherwise fallback
         const sourceProgressions = (this.progressions && this.progressions.length > 0) ? this.progressions : progressions.map(p => ({ data: { Progression: p } }));
         
         const selectedItem = rng.pick(sourceProgressions);
@@ -768,47 +993,50 @@ class T13NE_Music {
             const chordDef = romanChords.find(c => c.Name === name) || romanChords[0];
             return {
                 name: chordDef.Name,
-                rootOffset: chordDef.Notes[0], // Semitones from key root
-                intervals: chordDef.Notes, // Semitones from key root for all chord tones
-                durationSteps: 16 // 1 bar per chord
+                rootOffset: chordDef.Notes[0], 
+                intervals: chordDef.Notes, 
+                durationSteps: 16 
             };
         });
     }
 
     _generateBassline(rhythm, ship, progression, keyRootFreq, beatTime) {
         const events = [];
-        if (!this.bassPatterns) return events;
+        
+        // Fallback pattern if none loaded
+        if (!this.bassPatterns || Object.keys(this.bassPatterns).length === 0) {
+            let currentStepOffset = 0;
+            progression.forEach(chord => {
+                const chordRootFreq = keyRootFreq * Math.pow(2, chord.rootOffset / 12);
+                for (let i = 0; i < chord.durationSteps; i += 4) {
+                    events.push({ voice: 'v_bass', step: currentStepOffset + i, freq: chordRootFreq, duration: 0.2, velocity: 0.9 });
+                }
+                currentStepOffset += chord.durationSteps;
+            });
+            return events;
+        }
 
         const rng = new MusicRNG(ship ? ship.name : 'bass');
         
-        // Determine style from rhythm or ship
         let style = rhythm.style || 'Rock';
-        // Map rhythm styles to bass styles if needed
         if (style === 'Driving') style = 'Action';
         if (style === 'BasicRock') style = 'Rock';
         if (style === 'FourOnFloor') style = 'Electronic';
 
-        // Find matching pattern
         let patternKey = Object.keys(this.bassPatterns).find(k => this.bassPatterns[k].style === style) || 'Rock';
         const pattern = this.bassPatterns[patternKey];
         
         const intervals = pattern.intervals || [0];
         
-        // Generate bassline for the entire progression
         let currentStepOffset = 0;
 
         progression.forEach(chord => {
             const chordRootFreq = keyRootFreq * Math.pow(2, chord.rootOffset / 12);
             const stepsInChord = chord.durationSteps;
 
-            // Helper to get freq relative to current chord root
             const getFreq = (interval) => chordRootFreq * Math.pow(2, interval / 12);
 
-        // --- Strategy Implementations ---
-
         if (pattern.strategy === 'kick_lock') {
-            // 1. Lock to Kick
-            // Filter kick steps that fall within this chord's duration (assuming rhythm loops every 16)
             const kickSteps = rhythm.events
                 .filter(e => e.voice === 'v_kick' && e.step < stepsInChord)
                 .map(e => e.step);
@@ -817,63 +1045,53 @@ class T13NE_Music {
                 events.push({ voice: 'v_bass', step: currentStepOffset + step, freq: getFreq(0), duration: 0.2, velocity: 0.9 });
             });
 
-            // 2. Add Ghost/Pop notes in gaps
             for (let i = 0; i < stepsInChord; i++) {
                 if (!kickSteps.includes(i) && rng.next() < 0.3) {
                     const interval = rng.pick(intervals);
-                    // Higher octave for pops?
                     const octave = rng.next() > 0.7 ? 1 : 0;
                     events.push({ 
                         voice: 'v_bass', 
                         step: currentStepOffset + i, 
                         freq: getFreq(interval + (octave * 12)), 
                         duration: 0.1, 
-                        velocity: 0.6 // Ghost note
+                        velocity: 0.6 
                     });
                 }
             }
         } 
         else if (pattern.strategy === 'walking') {
-            // Quarter notes: 0, 4, 8, 12
             const walkSteps = [0, 4, 8, 12];
             
             walkSteps.forEach((step, index) => {
                 if (step >= stepsInChord) return;
-                // Target next root (which is 0)
-                // Simple random walk using scale intervals
                 const currentInterval = (index === 0) ? 0 : rng.pick(intervals);
                 
                 events.push({ voice: 'v_bass', step: currentStepOffset + step, freq: getFreq(currentInterval), duration: beatTime * 0.9, velocity: 0.8 });
             });
         }
         else if (pattern.strategy === 'root_fifth') {
-            // Country Two-Step: Root on 1, Fifth on 3
             if (stepsInChord >= 8) {
                 events.push({ voice: 'v_bass', step: currentStepOffset + 0, freq: getFreq(0), duration: beatTime * 1.5, velocity: 0.9 });
                 events.push({ voice: 'v_bass', step: currentStepOffset + 8, freq: getFreq(7), duration: beatTime * 1.5, velocity: 0.8 });
             }
         }
         else if (pattern.strategy === 'root_pump') {
-            // 8th notes driving
             for (let i = 0; i < stepsInChord; i += 2) {
                 events.push({ voice: 'v_bass', step: currentStepOffset + i, freq: getFreq(0), duration: 0.15, velocity: i % 4 === 0 ? 0.9 : 0.7 });
             }
         }
         else if (pattern.strategy === 'offbeat') {
-            // Electronic offbeat bass (steps 2, 6, 10, 14)
             for (let i = 2; i < stepsInChord; i += 4) {
                 events.push({ voice: 'v_bass', step: currentStepOffset + i, freq: getFreq(0), duration: 0.2, velocity: 0.8 });
             }
         }
         else {
-            // Fallback: Melodic / Random
             for (let i = 0; i < stepsInChord; i += 2) {
                 if (rng.next() < pattern.density) {
                     const interval = rng.pick(intervals);
                     events.push({ voice: 'v_bass', step: currentStepOffset + i, freq: getFreq(interval), duration: 0.2, velocity: 0.8 });
                 }
             }
-            // Ensure downbeat
             if (!events.find(e => e.step === currentStepOffset)) {
                 events.push({ voice: 'v_bass', step: currentStepOffset, freq: getFreq(0), duration: 0.4, velocity: 1.0 });
             }
@@ -891,8 +1109,6 @@ class T13NE_Music {
         
         if (!this.harmonicPatterns) return { guitar: [], pad: [] };
 
-        // Find a harmonic pattern that matches the rhythm style
-        // Default to 'Electronic' if no direct match
         const patternKey = Object.keys(this.harmonicPatterns).find(k => 
             this.harmonicPatterns[k].style === rhythm.style
         ) || 'Electronic';
@@ -904,15 +1120,11 @@ class T13NE_Music {
 
         progression.forEach(chord => {
             const stepsInChord = chord.durationSteps;
-            // Calculate frequencies for the current chord (Root, 3rd, 5th, etc.)
-            // chord.intervals contains semitones from key root.
             const chordFreqs = chord.intervals.map(semitone => keyRootFreq * Math.pow(2, semitone / 12));
             
-        // --- Guitar Generation ---
         if (pattern.guitar) {
             pattern.guitar.steps.forEach(step => {
                 if (step >= stepsInChord) return;
-                // Pick a note from the chord (e.g., 3rd or 5th for flavor)
                 const noteFreq = chordFreqs[step % chordFreqs.length]; 
                 guitarEvents.push({
                     voice: 'v_guitar',
@@ -924,26 +1136,20 @@ class T13NE_Music {
             });
         }
 
-        // --- Pad Generation with Intersection Mechanics ---
         if (pattern.pad) {
-            // 1. Sidechain Logic (Duck on Kick)
             if (pattern.pad.behavior === 'sidechain') {
-                // Create a sustained pad note
                 padEvents.push({
                     voice: 'v_pad',
                     step: currentStepOffset,
-                    freq: chordFreqs[0], // Root of chord
-                    duration: 4.0, // Full bar
+                    freq: chordFreqs[0], 
+                    duration: 4.0, 
                     velocity: 0.6,
-                    // In a real synth, we'd modulate gain here. 
-                    // For now, we assume the instrument definition handles ADSR or we rely on the composition.
                 });
             } 
-            // 2. Snare Mirror (Follow Snare)
             else if (pattern.pad.behavior === 'snare_mirror') {
                 const snareSteps = rhythm.events.filter(e => e.voice === 'v_snare' && e.step < stepsInChord).map(e => e.step);
                 snareSteps.forEach(step => {
-                    const noteFreq = chordFreqs[1] || chordFreqs[0]; // 3rd
+                    const noteFreq = chordFreqs[1] || chordFreqs[0]; 
                     padEvents.push({
                         voice: 'v_pad',
                         step: currentStepOffset + step,
@@ -953,11 +1159,10 @@ class T13NE_Music {
                     });
                 });
             }
-            // 3. Kick Lock (Follow Kick)
             else if (pattern.pad.behavior === 'kick_lock') {
                 const kickSteps = rhythm.events.filter(e => e.voice === 'v_kick' && e.step < stepsInChord).map(e => e.step);
                 kickSteps.forEach(step => {
-                    const noteFreq = chordFreqs[0] / 2; // Low root
+                    const noteFreq = chordFreqs[0] / 2; 
                     padEvents.push({
                         voice: 'v_pad',
                         step: currentStepOffset + step,
@@ -967,7 +1172,6 @@ class T13NE_Music {
                     });
                 });
             }
-            // 4. Standard Pattern
             else {
                 pattern.pad.steps.forEach(step => {
                     if (step >= stepsInChord) return;
@@ -988,69 +1192,71 @@ class T13NE_Music {
         return { guitar: guitarEvents, pad: padEvents };
     }
 
-    /**
-     * Plays a tracked composition.
-     */
     playTrack(trackId) {
         const track = this.manifestManager.manifest.tracks[trackId] || null;
         if (!track) {
-            // It might be a raw object if we just created it and haven't reloaded
-            // Check if we can find it in saved JSONs? 
-            // Since we save to manifest structure in memory:
-            // The saveTrack method puts it in manifest.tracks[name]
         }
 
-        // Actually, saveTrack uses 'name' as key. 
-        // Let's ensure we can retrieve it.
         const data = this.manifestManager.manifest.tracks[trackId];
-        // If data is just metadata {filename...} we need to load it. 
-        // But if we just created it in memory, we might need a way to play the raw object or auto-load.
-
-        // For this immediate flow, let's assume we play the Object we just built if passed, or load from ID.
-        // ... (This needs a proper track scheduler, which MusicEditorUI has, but T13NE_Music needs its own playback logic)
-
-        // Implementing simple sequencer playback here for the engine/intro:
         if (data) {
-            // If it has a filename, strictly we should fetch it. 
-            // But saveTrack updates the manifest with just metadata.
-            // But we likely still have the object in memory if we just made it?
-            // Not currently stored in a 'loadedTracks' cache.
-
-            // Quick fix: If we are calling playTrack immediately after create, we can pass the object or we need to 'load' the track JSON.
-            // Given limitations, let's just make createWormholeTheme return the Track Object.
         }
     }
 
     playTrackObject(track) {
         if (!this.synth) return;
+        
+        // If we are already playing this track name, we might just want to update it
+        // But playTrackObject implies starting fresh.
+        if (this.currentTrackName && this.currentTrackName !== track.name) {
+             this.stopTrack();
+        }
+        
+        this.currentTrack = track;
+        this.currentTrackName = track.name;
         Logger.message(`Playing Track: ${track.name}`);
 
-        // Simple Interval Scheduler
-        // 16th notes
+        if (!track.bpm || track.bpm <= 0) {
+            Logger.error(`T13NE_Music: Invalid BPM (${track.bpm}) in track ${track.name}. Playback aborted.`);
+            return;
+        }
+
+        const timeSignature = track.timeSignature || [4, 4];
+        const measures = track.measures || 1;
         const stepTime = (60 / track.bpm) / 4;
-        const lookahead = 1.5; // Increased from 0.1 to 1.5s to prevent chopping during heavy load
+        const lookahead = 3.0; // Increased to 3.0s to prevent stalling during heavy procgen
         let currentStep = 0;
         let nextStepTime = this.synth.ctx.currentTime + 0.1;
 
-        // Stop previous
         if (this.currentSequenceTimer) clearTimeout(this.currentSequenceTimer);
 
         const schedule = () => {
+            // Ensure AudioContext is running (auto-resume if suspended)
+            if (this.synth.ctx.state === 'suspended') {
+                this.synth.ctx.resume();
+            }
+
             const now = this.synth.ctx.currentTime;
+            let iterations = 0;
+
             while (nextStepTime < now + lookahead) {
-                // Play notes for current step
-                track.voices.forEach(voice => {
+                if (iterations++ > 200) {
+                    Logger.warn("T13NE_Music: Scheduler loop limit reached. Resyncing.");
+                    nextStepTime = now + 0.1;
+                    break;
+                }
+                // Use this.currentTrack so updates are reflected immediately
+                this.currentTrack.voices.forEach(voice => {
                     if (voice.mute) return;
                     voice.sequence.forEach(note => {
                         if (note.step === currentStep) {
                             this.synth.playNote(
-                                note.freq || this.synth.instrumentEngine._freqFromNote(note.note), // frequency (ignored for noise)
-                                nextStepTime, // startTime
-                                note.duration, // duration
-                                'sine', // type (fallback)
-                                0, // detune
-                                voice.instrument, // instrument
-                                voice.id // channelId
+                                note.freq || this.synth.instrumentEngine._freqFromNote(note.note), 
+                                nextStepTime, 
+                                note.duration, 
+                                'Piano', 
+                                0, 
+                                voice.instrument, 
+                                voice.id 
                             );
                         }
                     });
@@ -1059,19 +1265,30 @@ class T13NE_Music {
                 nextStepTime += stepTime;
                 currentStep++;
 
-                // Loop
-                const totalSteps = track.measures * (track.timeSignature[0] * (16 / (track.timeSignature[1] / 4)) || 16); // Approx steps
-                if (currentStep >= totalSteps) currentStep = 0;
+                const totalSteps = track.totalSteps || (measures * timeSignature[0] * 4);
+                if (totalSteps > 0 && currentStep >= totalSteps) currentStep = 0;
             }
-            this.currentSequenceTimer = setTimeout(schedule, 100); // Increased interval to reduce main thread load
+            this.currentSequenceTimer = setTimeout(schedule, 100); 
         };
 
-        // Auto-create visualizer if missing
         if (!document.getElementById('audio-debug-viz')) {
             this.createDebugVisualizer();
         }
 
         schedule();
+    }
+
+    /**
+     * Updates the currently playing track with new data (e.g. new voices)
+     * without stopping playback.
+     */
+    updateTrack(track) {
+        if (this.currentTrack && this.currentTrack.name === track.name) {
+            this.currentTrack.voices = track.voices;
+            Logger.message(`T13NE_Music: Updated track '${track.name}' with new voices.`);
+        } else {
+            this.playTrackObject(track);
+        }
     }
 
     createDebugVisualizer() {
@@ -1098,30 +1315,50 @@ class T13NE_Music {
                 const data = new Uint8Array(ch.analyser.frequencyBinCount);
                 ch.analyser.getByteTimeDomainData(data);
                 
+                // Calculate RMS to detect silence
+                let sum = 0;
+                for(let k = 0; k < data.length; k++) {
+                    const val = (data[k] - 128) / 128.0;
+                    sum += val * val;
+                }
+                const rms = Math.sqrt(sum / data.length);
+
                 const y = i * h;
                 
                 ctx.fillStyle = '#0f0';
                 ctx.font = '10px monospace';
                 ctx.fillText(name, 2, y + 10);
                 
-                ctx.lineWidth = 1;
-                ctx.strokeStyle = '#0f0';
-                ctx.beginPath();
-                
-                for (let j = 0; j < data.length; j++) {
-                    const v = data[j] / 128.0;
-                    const yPos = y + (v * h / 2);
-                    if (j === 0) ctx.moveTo(0, yPos);
-                    else ctx.lineTo(j / data.length * canvas.width, yPos);
+                // Only draw waveform if there is signal
+                if (rms > 0.01) {
+                    ctx.lineWidth = 1;
+                    ctx.strokeStyle = '#0f0';
+                    ctx.beginPath();
+                    
+                    for (let j = 0; j < data.length; j++) {
+                        const v = data[j] / 128.0;
+                        const yPos = y + (v * h / 2);
+                        if (j === 0) ctx.moveTo(0, yPos);
+                        else ctx.lineTo(j / data.length * canvas.width, yPos);
+                    }
+                    ctx.stroke();
+                } else {
+                    // Draw flat line for silence
+                    ctx.strokeStyle = '#004400';
+                    ctx.beginPath();
+                    ctx.moveTo(0, y + h/2);
+                    ctx.lineTo(canvas.width, y + h/2);
+                    ctx.stroke();
                 }
-                ctx.stroke();
             });
         };
         draw();
     }
 
+    // ... (rest of the file remains unchanged) ...
     stopTrack() {
         if (this.currentSequenceTimer) clearTimeout(this.currentSequenceTimer);
+        this.currentTrackName = null;
     }
     saveSequence(name, sequence) {
         const data = { name, sequence, timestamp: Date.now() };
@@ -1130,47 +1367,30 @@ class T13NE_Music {
         return JSON.stringify(data, null, 2);
     }
 
-    /**
-     * Export a track configuration.
-     */
     saveTrack(name, trackData) {
         const data = { name, ...trackData, timestamp: Date.now() };
         this.manifestManager.addToManifest('tracks', name, { filename: `${name}.json` });
         return JSON.stringify(data, null, 2);
     }
 
-    /**
-     * Export MIDI-like data (notes array).
-     */
     saveMidi(name, notes) {
         const data = { name, notes, timestamp: Date.now() };
         this.manifestManager.addToManifest('midi', name, { filename: `${name}.json` });
         return JSON.stringify(data, null, 2);
     }
 
-    /**
-     * Export a loop definition.
-     */
     saveLoop(name, loopData) {
         const data = { name, ...loopData, timestamp: Date.now() };
         this.manifestManager.addToManifest('loops', name, { filename: `${name}.json` });
         return JSON.stringify(data, null, 2);
     }
 
-    /**
-     * Loads a single audio file for use as a sampled instrument or a one-shot effect.
-     * @param {string} name - A unique name for the instrument/effect.
-     * @param {string} url - The URL of the audio file.
-     */
     async loadInstrument(name, url) {
         if (this.synth) {
             await this.loadSample(name, url);
         }
     }
 
-    /**
-     * Loads a collection of audio stems for adaptive layering.
-     */
     async loadMusicPack(packData) {
         if (this.synth) {
             this.musicPack = {};
@@ -1181,14 +1401,9 @@ class T13NE_Music {
         }
     }
 
-    /**
-     * Parses a tonal pattern string (e.g., "43(5)" or "TST") into an array of intervals.
-     * @param {string} patternString 
-     * @returns {number[]} An array of semitone intervals.
-     */
     _parseTonalPattern(patternString = '') {
         const intervals = [];
-        if (!patternString) return [2, 2, 1, 2, 2, 2, 1]; // Default to Major scale pattern
+        if (!patternString) return [2, 2, 1, 2, 2, 2, 1]; 
 
         const re = /(\d+)\((\d+)\)/;
         const match = patternString.match(re);
@@ -1205,11 +1420,6 @@ class T13NE_Music {
         return intervals;
     }
 
-    /**
-     * Finds the Tonal Mode object for a given character's geometry.
-     * @param {object} characterGeo - The character's full geometry object.
-     * @returns {object|null} The tonal mode object from the codex.
-     */
     _getTonalMode(characterGeo) {
         if (!this.tonalModes.length || !characterGeo) return null;
         const modeName = characterGeo.GeoHarmonics?.Mode || 'Ionian/Major';
@@ -1220,11 +1430,6 @@ class T13NE_Music {
         return found ? (found.data || found) : null;
     }
 
-    /**
-     * Analyzes the intervals between notes in a scale to find the frequency of melodic steps.
-     * @param {number[]} scaleIntervals - A sorted array of semitone intervals from the root (e.g., [0, 2, 4, 5, 7, 9, 11]).
-     * @returns {object} A map of interval sizes to their frequency (e.g., { '1': 2, '2': 5 }).
-     */
     _getMelodicIntervalDistribution(scaleIntervals) {
         const distribution = {};
         if (scaleIntervals.length < 2) return distribution;
@@ -1235,7 +1440,6 @@ class T13NE_Music {
                 distribution[interval] = (distribution[interval] || 0) + 1;
             }
         }
-        // Also consider the interval from the last note back to the octave (root)
         const lastInterval = 12 - scaleIntervals[scaleIntervals.length - 1];
         if (lastInterval > 0) {
             distribution[lastInterval] = (distribution[lastInterval] || 0) + 1;
@@ -1244,20 +1448,12 @@ class T13NE_Music {
         return distribution;
     }
 
-    /**
-     * Generates a Markov transition matrix based on musical rules and preferred intervals.
-     * @param {number[]} scaleIntervals - The allowed intervals of the scale.
-     * @param {object} [harmonicStepDistribution={}] - A map of preferred melodic intervals (from harmonics) to their frequency.
-     * @returns {number[][]} A 2D array representing the transition probabilities.
-     */
     _generateMarkovTransitions(scaleIntervals, harmonicStepDistribution = {}) {
         const matrix = [];
-        // Create a map of weights for both ascending and descending preferred intervals.
         const preferredIntervals = new Map();
         for (const interval in harmonicStepDistribution) {
             const i = parseInt(interval, 10);
             const count = harmonicStepDistribution[interval];
-            // Give higher weight to more frequent intervals in the harmonic structure
             preferredIntervals.set(i, (preferredIntervals.get(i) || 0) + count);
             const descending = (12 - i) % 12;
             if (descending !== 0) {
@@ -1274,22 +1470,18 @@ class T13NE_Music {
                 const toInterval = scaleIntervals[j];
                 const melodicInterval = (toInterval - fromInterval + 12) % 12;
 
-                // Start with a base weight for any valid note in the scale.
                 let weight = 1.0;
 
-                // Add weight for standard musical rules (predictability)
-                if (melodicInterval === 0) { // Repetition
+                if (melodicInterval === 0) { 
                     weight += 1.5;
-                } else if (melodicInterval === 1 || melodicInterval === 2 || melodicInterval === 10 || melodicInterval === 11) { // Stepwise motion
+                } else if (melodicInterval === 1 || melodicInterval === 2 || melodicInterval === 10 || melodicInterval === 11) { 
                     weight += 2.0;
                 }
 
-                // Add character-specific flavor from harmonics (uniqueness)
                 if (preferredIntervals.has(melodicInterval)) {
                     weight += 4.0 * preferredIntervals.get(melodicInterval);
                 }
 
-                // Penalize dissonant intervals unless they are harmonically preferred by the character
                 if (melodicInterval === 6 && !preferredIntervals.has(6)) {
                     weight *= 0.1;
                 }
@@ -1297,25 +1489,19 @@ class T13NE_Music {
                 totalWeight += weight;
             }
 
-            // Normalize weights to probabilities for the current state
             matrix[i] = weights.map(w => w / totalWeight);
         }
         return matrix;
     }
 
-    /**
-     * Generates a Leitmotif for a character.
-     * This is the base melodic generator for various composition types.
-     */
     getCharacterComposition(character, options = {}) {
         if (!character || !character.name) return null;
 
-        // Lazy load geometry if not linked during init
         if (!this.geometry && this.t13ne) {
             this.geometry = this.t13ne.getModule('T13Geometry');
         }
 
-        const useCharacterHarmonics = options.useCharacterHarmonics !== false; // Default to true
+        const useCharacterHarmonics = options.useCharacterHarmonics !== false; 
 
         const cacheKey = `${character.id || character.name}_${useCharacterHarmonics}`;
         if (this.compositionCache.has(cacheKey)) return this.compositionCache.get(cacheKey);
@@ -1337,9 +1523,8 @@ class T13NE_Music {
         const baseFreq = keyData.Key.Frequency;
         const rootKeyIndex = CHROMATIC_SCALE.indexOf(keyData.Key.Key);
 
-        // 1. Determine the allowed notes from the Tonal Mode
         const tonalMode = this._getTonalMode(geo);
-        const tonalPattern = this._parseTonalPattern(tonalMode?.Pattern); // e.g., [2, 2, 1, 2, 2, 2, 1]
+        const tonalPattern = this._parseTonalPattern(tonalMode?.Pattern); 
         const allowedScaleIntervals = [0];
         let cumulativeInterval = 0;
         for (const step of tonalPattern) {
@@ -1349,7 +1534,6 @@ class T13NE_Music {
             }
         }
 
-        // 2. Determine the preferred melodic intervals from the Character's Harmonics (if applicable)
         let harmonicStepDistribution = {};
         if (useCharacterHarmonics) {
             const harmonics = geo.GeoHarmonics ? geo.GeoHarmonics.Harmonic : [1, 3, 5, 8];
@@ -1361,13 +1545,12 @@ class T13NE_Music {
             harmonicStepDistribution = this._getMelodicIntervalDistribution(harmonicIntervals);
         }
 
-        // 3. Generate Markov Chain transition matrix
         const transitionMatrix = this._generateMarkovTransitions(allowedScaleIntervals, harmonicStepDistribution);
 
         const length = rng.range(8, 16);
         const sequence = [];
         const noteDurations = [0.25, 0.5, 1.0];
-        let currentNoteIndex = 0; // Start at the root of the scale
+        let currentNoteIndex = 0; 
 
         for (let i = 0; i < length; i++) {
             const probabilities = transitionMatrix[currentNoteIndex];
@@ -1415,7 +1598,6 @@ class T13NE_Music {
         const motif = this.getCharacterComposition(character);
         if (!motif) return;
 
-        // Use the character's preferred instrument if none is specified.
         const preferredInstrument = instrument || this._getInstrumentForRole('lead', character.geometry) || 'Piano';
 
         Logger.message(`T13NE_Music: Playing leitmotif for ${character.name}`);
@@ -1443,15 +1625,10 @@ class T13NE_Music {
         });
     }
 
-    /**
-     * Generic composition factory. Gets/generates a musical composition for any T13NE entity.
-     * @param {object} entity - The entity (Character, Location, Pact, Descendant)
-     * @returns {object|null} The generated composition data.
-     */
     getComposition(entity) {
         if (!entity || !entity.name) return null;
 
-        const entityType = entity.constructor.name; // A simple way to get type
+        const entityType = entity.constructor.name; 
         const cacheKey = `${entityType}_${entity.id || entity.name}`;
         if (this.compositionCache.has(cacheKey)) {
             return this.compositionCache.get(cacheKey);
@@ -1459,8 +1636,7 @@ class T13NE_Music {
 
         let compositionData = null;
 
-        // Determine entity type and call the appropriate generator
-        if (entity.geometry && entity.type) { // Likely a Character
+        if (entity.geometry && entity.type) { 
             switch (entity.type) {
                 case 'Extra':
                     compositionData = this._generateChant(entity);
@@ -1484,13 +1660,11 @@ class T13NE_Music {
                     compositionData = this.getCharacterComposition(entity);
                     break;
             }
-        } else if (entity.isLocation) { // Fictional property for type checking
+        } else if (entity.isLocation) { 
             compositionData = this._generateSymphony(entity);
-        } else if (entity.isPact) { // Fictional property
+        } else if (entity.isPact) { 
             compositionData = this._generateOpera(entity);
-        } else if (entity.isDescendant) { // Fictional property
-            // Jingles are for generic descendants, Refrains for specific ones.
-            // This logic would need a way to differentiate, e.g., based on a descendant property.
+        } else if (entity.isDescendant) { 
             compositionData = entity.isUnique ? this._generateRefrain(entity) : this._generateJingle(entity);
         }
 
@@ -1502,40 +1676,35 @@ class T13NE_Music {
         return compositionData;
     }
 
-    /**
-     * Plays a generated composition object.
-     * @param {object} composition - The composition data object from getComposition.
-     * @param {object} [listener=null] - An optional listener character to determine dissonance.
-     */
-    /**
-     * Plays a defined Track (Instrument + Sequence).
-     * @param {object} track - The track definition { instrument, sequence, bpm, ... }
-     */
     playTrack(track) {
         if (!this.synth || !track) return;
+
+        if (track.voices) {
+            this.playTrackObject(track);
+            return;
+        }
+
+        if (!track.sequence) {
+            Logger.warn(`T13NE_Music: Track '${track.name}' has no sequence data.`);
+            return;
+        }
 
         Logger.message(`T13NE_Music: Playing Track '${track.name}'`);
 
         const bpm = track.bpm || 120;
-        const beatTime = 60 / bpm; // Quarter note time
-        // If the sequence is 16th notes based (tracker style), stepTime is beatTime / 4
+        const beatTime = 60 / bpm; 
         const stepTime = beatTime / 4;
 
         const now = this.soundEngine.audioContext.currentTime;
 
         track.sequence.forEach(evt => {
-            // evt: { step, note, duration, velocity }
             const startTime = now + (evt.step * stepTime);
-            // Convert note name (e.g. "C4") to frequency if needed, or if stored as freq
             let freq = evt.freq;
             if (!freq && evt.note) {
                 freq = this._noteToFreq(evt.note);
             }
 
-            // duration in sequence is often in 'steps' or 'beats'? 
-            // In editor it was normalized. Let's assume duration is in 'beats' for playback consistency
-            // or if stored from editor, it was 0.25 (16th note).
-            const durationSecs = evt.duration * 4 * stepTime; // Duration is relative to beat?
+            const durationSecs = evt.duration * 4 * stepTime; 
 
             this.synth.playNote(freq, startTime, durationSecs, 'sine', 0, track.instrument);
         });
@@ -1549,9 +1718,6 @@ class T13NE_Music {
         return 440 * Math.pow(2, ((keyNumber + ((octave - 4) * 12)) - 9) / 12);
     }
 
-    /**
-     * Export a track configuration (Instrument + Sequence + Settings).
-     */
     saveTrack(name, instrumentId, sequence, settings = {}) {
         const data = {
             name,
@@ -1566,9 +1732,6 @@ class T13NE_Music {
         return JSON.stringify(data, null, 2);
     }
 
-    /**
-     * Export a stem (Single Voice configuration).
-     */
     saveStem(name, voiceData) {
         const data = {
             name,
@@ -1580,11 +1743,9 @@ class T13NE_Music {
         return JSON.stringify(data, null, 2);
     }
 
-    // Private generators for each composition type
     _generateChant(character) {
         const composition = this.getCharacterComposition(character);
         composition.name = `${character.name}'s Chant`;
-        // Make it monotone and rhythmic
         composition.sequence = composition.sequence.map(note => ({ ...note, freq: composition.baseFreq, duration: 1.0 }));
         composition.type = 'Chant';
         return composition;
@@ -1594,7 +1755,6 @@ class T13NE_Music {
         const composition = this.getCharacterComposition(character);
         composition.name = `${character.name}'s March`;
         composition.tempo = 120;
-        // Make rhythm more rigid and on-beat
         composition.sequence = composition.sequence.map(note => ({ ...note, duration: 0.5 }));
         composition.type = 'March';
         return composition;
@@ -1603,7 +1763,7 @@ class T13NE_Music {
     _generateAria(hero) {
         const composition = this.getCharacterComposition(hero);
         composition.name = `${hero.name}'s Aria`;
-        composition.tempo = 80; // Slower, more expressive
+        composition.tempo = 80; 
         composition.type = 'Aria';
         return composition;
     }
@@ -1611,8 +1771,7 @@ class T13NE_Music {
     _generateSolo(yarnTeller) {
         const composition = this.getCharacterComposition(yarnTeller);
         composition.name = `${yarnTeller.name}'s Solo`;
-        composition.tempo = 160; // Faster, more intense
-        // Add more notes to make it feel more virtuosic
+        composition.tempo = 160; 
         const extraNotes = this.getCharacterComposition({ ...yarnTeller, name: yarnTeller.name + '_extra' }).sequence;
         composition.sequence = composition.sequence.concat(extraNotes);
         composition.type = 'Solo';
@@ -1622,7 +1781,7 @@ class T13NE_Music {
     _generateLeitmotif(character) {
         const composition = this.getCharacterComposition(character);
         composition.name = `${character.name}'s Leitmotif`;
-        composition.sequence = composition.sequence.slice(0, 4); // Shorter for a motif
+        composition.sequence = composition.sequence.slice(0, 4); 
         composition.type = 'Leitmotif';
         return composition;
     }
@@ -1630,7 +1789,7 @@ class T13NE_Music {
     _generateAnthem(character) {
         const composition = this.getCharacterComposition(character);
         composition.name = `${character.name}'s Anthem`;
-        composition.tempo = 70; // Stately and grand
+        composition.tempo = 70; 
         composition.type = 'Anthem';
         return composition;
     }
@@ -1643,7 +1802,6 @@ class T13NE_Music {
             type: 'Symphony',
             key: keyData.Key.Key,
             tempo: 90,
-            // This structure tells the scene loader which audio stems to load into the musicPack
             stems: {
                 base: `path/to/music/${location.name}_base.ogg`,
                 percussion_low: `path/to/music/${location.name}_perc_low.ogg`,
@@ -1660,7 +1818,7 @@ class T13NE_Music {
             name: `${pact.name}'s Opera`,
             type: 'Opera',
             tempo: 110,
-            key: 'C', // Could be derived from pact name or dominant member
+            key: 'C', 
             themes: {}
         };
 
@@ -1672,7 +1830,7 @@ class T13NE_Music {
     }
 
     _generateRefrain(descendant) {
-        const composition = this.getCharacterComposition({ name: descendant.name }, { useCharacterHarmonics: false }); // Use descendant name for seed
+        const composition = this.getCharacterComposition({ name: descendant.name }, { useCharacterHarmonics: false }); 
         composition.name = `${descendant.name}'s Refrain`;
         composition.type = 'Refrain';
         return composition;
@@ -1682,25 +1840,19 @@ class T13NE_Music {
         const composition = this.getCharacterComposition({ name: descendant.name }, { useCharacterHarmonics: false });
         composition.name = `${descendant.name}'s Jingle`;
         composition.type = 'Jingle';
-        composition.sequence = composition.sequence.slice(0, 3); // Very short
+        composition.sequence = composition.sequence.slice(0, 3); 
         composition.tempo = 130;
         return composition;
     }
 
-    /**
-     * Uses vertical remixing (layering) to adapt the music to game state.
-     * @param {object} plot - The current plot object, containing tensionLevel.
-     * @param {object} [gameParams={}] - Additional game state like player health.
-     */
     updateAmbience(plot, gameParams = {}) {
         if (!this.synth || !this.musicPack || !plot) return;
 
         const tension = plot.tensionLevel || 0;
-        if (this.lastTension === tension && !gameParams.playerHealth) return; // No change
+        if (this.lastTension === tension && !gameParams.playerHealth) return; 
 
         const newLayers = new Set();
 
-        // Define which layers play at which tension level
         if (tension >= 0 && this.musicPack.base) {
             newLayers.add('base');
         }
@@ -1715,7 +1867,6 @@ class T13NE_Music {
             newLayers.add('melody');
         }
 
-        // Connect to other game parameters
         if (gameParams.playerHealth < 0.3 && this.musicPack.danger) {
             newLayers.add('danger');
         }

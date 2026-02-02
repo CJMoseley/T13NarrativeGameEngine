@@ -99,30 +99,20 @@ export class GameEngine {
             if (!this.galaxy || !this.galaxy.stars || this.galaxy.stars.length === 0) {
                 throw new Error("Galaxy generation failed or produced no stars.");
             }
-            Logger.message('GameEngine: Galaxy instance created.');
+            
+            // Retrieve Galaxy Name from Tapestry if available
+            const tapestry = this.engine.getModule('Tapestry');
+            if (tapestry) {
+                this.galaxy.name = tapestry.galaxyName || "The Galaxy";
+            } else {
+                this.galaxy.name = "The Galaxy";
+            }
+            Logger.message(`GameEngine: Galaxy instance created: ${this.galaxy.name}`);
 
             const startPosPromise = this._determineRandomStartPosition();
             const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error("Start position determination timed out")), 15000));
 
             await Promise.race([startPosPromise, timeoutPromise]);
-
-            // --- T13 Character & Plot Generation ---
-            if (this.loreMaster && this.loreMaster.characterGenerator) {
-                // 1. Generate Player Character (Detailed)
-                this.playerCharacter = await this.loreMaster.characterGenerator.generateCharacter('Detailed');
-                const storedName = localStorage.getItem('t13_player_name');
-                this.playerCharacter.name = storedName || "Player"; 
-                Logger.message("GameEngine: Player Character generated with T13 Tapestry.");
-
-                // 2. Generate Crew (Cast/Archetype Extras)
-                const crewRoles = ['Pilot', 'Engineer', 'Gunner', 'Astrogator'];
-                for (const role of crewRoles) {
-                    const crewMember = await this.loreMaster.characterGenerator.generateCharacter('Archetype');
-                    crewMember.role = role;
-                    this.crew.push(crewMember);
-                }
-                Logger.message(`GameEngine: Generated ${this.crew.length} crew members.`);
-            }
 
             this.galacticPlot = this.generateGalacticCycle();
             Logger.message("GameEngine: Data-dependent initialization complete.");
@@ -137,29 +127,60 @@ export class GameEngine {
     }
 
     /**
+     * Generates the detailed stellar system data for the player's start location.
+     * Requires Galaxy to be initialized.
+     */
+    async generateSystem() {
+        if (!this.playerStartSystem) return;
+        const systemDetails = await this.galaxyGenerator.getSystemDetails(this.playerStartSystem);
+        const systemGen = this.loreMaster.stellarSystemGenerator;
+        const planets = systemGen.generatePlanets(systemDetails);
+        this.currentSystemDetails = systemDetails;
+        this.currentPlanets = planets;
+        Logger.message(`GameEngine: Generated System ${systemDetails.name}`);
+    }
+
+    /**
+     * Generates the Player and Crew.
+     * Requires System to be initialized (for home system context).
+     */
+    async generateCharacters() {
+        if (this.loreMaster && this.loreMaster.characterGenerator) {
+            this.playerCharacter = await this.loreMaster.characterGenerator.generateCharacter('Detailed');
+            this.playerCharacter.name = "Player"; // Default name
+            
+            // Crew generation is game-specific and should be handled by the specific game logic or Tapestry
+            this.crew = [];
+            Logger.message(`GameEngine: Generated Player Character.`);
+        }
+    }
+
+    /**
      * Generates the overarching Galactic History Cycle Plot using T13NE structures.
      * This defines the current era's major conflict.
      */
     generateGalacticCycle() {
         Logger.message("GameEngine: Generating Galactic Cycle Plot...");
-        // A Cycle Plot is Rank 13.
-        // We define a central conflict that drives the Wormhole Racing League context.
+        
+        // Try to get cycle from Tapestry
+        const tapestry = this.engine.getModule('Tapestry');
+        if (tapestry && tapestry.currentCycle) {
+            return tapestry.currentCycle;
+        }
+
+        // Generic Fallback
         return {
             rank: "Cycle",
-            name: "The Velocity Era",
-            description: "A galactic era defined by the rush for wormhole technology and the prestige of the Racing Leagues.",
+            name: "Current Era",
+            description: "The current era of the galaxy.",
             conflict: {
-                dominant: "Liberty", // Freedom of movement/speed
-                pressed: "Dominion", // Control/Regulation/Corporate Monopolies
-                facets: ["Liberty", "Dominion", "Craft", "Wealth"]
+                dominant: "Orthodox", 
+                pressed: "Heresy", 
+                facets: ["Orthodox", "Heresy"]
             },
-            tension: 3, // Aware - The conflict is known but not yet in open war
+            tension: 1, 
             yarn: 13, // Initial Yarn pool for the plot
-            embodiments: {
-                dominant: "The Racing Leagues",
-                pressed: "Galactic Trade Federation",
-                external: "The Increated (Wormhole Entities)"
-            },
+            embodiments: {},
             subplots: [] // Will be populated as the game progresses
         };
     }

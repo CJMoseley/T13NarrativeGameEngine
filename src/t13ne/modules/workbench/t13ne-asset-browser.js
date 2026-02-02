@@ -28,6 +28,7 @@ export class AssetBrowser {
                     </select>
                     <input type="text" id="ab-search" placeholder="Search..." style="background:#222; color:#fff; border:1px solid #444; flex:1;">
                 </div>
+                <div style="font-size:0.8em; color:#888; padding:2px; border-bottom:1px solid #333;">${this.currentPath.length ? this.currentPath.join('/') : '/'}</div>
 
                 <!-- Asset List -->
                 <div id="ab-list" style="flex:1; overflow-y:auto; border:1px solid #444; background:#111;">
@@ -49,27 +50,58 @@ export class AssetBrowser {
         const items = manifest[this.currentCategory] || {};
 
         let keys = Object.keys(items);
+        
         if (this.searchTerm) {
             keys = keys.filter(k => k.toLowerCase().includes(this.searchTerm.toLowerCase()));
+            // Flat list for search
+            const limit = 200;
+            const displayKeys = keys.slice(0, limit);
+            return displayKeys.map(k => {
+                const item = items[k];
+                const name = item.filename || k;
+                return `
+                    <div class="ab-item" data-id="${k}" style="padding:2px 5px; cursor:pointer; border-bottom:1px solid #222;"
+                         onclick="T13NE.getModule('Editor').musicEditor.browser.select('${k}')"
+                         title="${name}">
+                        🎵 ${name}
+                    </div>
+                `;
+            }).join('') + (keys.length > limit ? `<div style="padding:5px; color:#666;">...and ${keys.length - limit} more</div>` : '');
         }
 
-        if (keys.length === 0) return '<div style="padding:5px;">No items found.</div>';
+        // Folder Navigation
+        const prefix = this.currentPath.length > 0 ? this.currentPath.join('/') + '/' : '';
+        const folders = new Set();
+        const files = [];
 
-        // Limit display for performance if huge
-        const limit = 200;
-        const displayKeys = keys.slice(0, limit);
+        keys.forEach(k => {
+            if (!k.startsWith(prefix)) return;
+            const relative = k.substring(prefix.length);
+            const parts = relative.split('/');
+            if (parts.length > 1) {
+                folders.add(parts[0]);
+            } else {
+                files.push({ id: k, name: parts[0], item: items[k] });
+            }
+        });
 
-        return displayKeys.map(k => {
-            const item = items[k];
-            const name = item.filename || k;
-            return `
-                <div class="ab-item" data-id="${k}" style="padding:2px 5px; cursor:pointer; border-bottom:1px solid #222;"
-                     onclick="T13NE.getModule('Editor').musicEditor.browser.select('${k}')"
-                     title="${name}">
-                    ${name}
-                </div>
-            `;
-        }).join('') + (keys.length > limit ? `<div style="padding:5px; color:#666;">...and ${keys.length - limit} more</div>` : '');
+        const sortedFolders = Array.from(folders).sort();
+        const sortedFiles = files.sort((a, b) => a.name.localeCompare(b.name));
+
+        let html = '';
+        if (this.currentPath.length > 0) {
+            html += `<div class="ab-item" style="padding:2px 5px; cursor:pointer; color:#88f;" onclick="T13NE.getModule('Editor').musicEditor.browser.navigateUp()">.. [Up]</div>`;
+        }
+
+        sortedFolders.forEach(f => {
+            html += `<div class="ab-item" style="padding:2px 5px; cursor:pointer; color:#fbbf24;" onclick="T13NE.getModule('Editor').musicEditor.browser.navigateDown('${f}')">📁 ${f}</div>`;
+        });
+
+        sortedFiles.forEach(f => {
+            html += `<div class="ab-item" data-id="${f.id}" style="padding:2px 5px; cursor:pointer; border-bottom:1px solid #222;" onclick="T13NE.getModule('Editor').musicEditor.browser.select('${f.id}')" title="${f.item.filename}">🎵 ${f.name}</div>`;
+        });
+
+        return html || '<div style="padding:5px;">Empty folder.</div>';
     }
 
     bindEvents(container) {
@@ -83,6 +115,16 @@ export class AssetBrowser {
             const list = container.querySelector('#ab-list');
             list.innerHTML = this.renderList();
         };
+    }
+
+    navigateDown(folder) {
+        this.currentPath.push(folder);
+        this.render();
+    }
+
+    navigateUp() {
+        this.currentPath.pop();
+        this.render();
     }
 
     select(id) {

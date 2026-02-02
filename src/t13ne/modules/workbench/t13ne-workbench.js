@@ -6,6 +6,7 @@ import NarrativeUI from './t13ne-narrative-UI.js';
 import ThreadsUI from './t13ne-threads-UI.js';
 import KnotsUI from './t13ne-knots-UI.js';
 import LibraryUI from './t13ne-codex-UI.js';
+import { MusicEditorUI } from './t13ne-music-editor.js';
 import CardsUI from './t13ne-cards-ui.js';
 import CharacterUI from './t13ne-chars-UI.js';
 import TapestryUI from './t13ne-tapestry-UI.js';
@@ -23,6 +24,7 @@ export default class Workbench {
         this.selectedEntity = null;
         this.inspector = new Inspector(this);
         this.terminal = new Terminal(this);
+        this.musicEditor = new MusicEditorUI('view-audio');
     }
 
     async init() {
@@ -32,6 +34,16 @@ export default class Workbench {
         try {
             await AuthorMain.bootstrap();
             this.log("System: T13NE Engine Online.", "info");
+
+            // Expose T13NE globally for inline event handlers in Music Editor
+            window.T13NE = T13;
+
+            // Attach Music Editor to Editor Module for global access
+            const editorModule = T13.getModule('Editor');
+            if (editorModule) {
+                editorModule.musicEditor = this.musicEditor;
+            }
+            await this.musicEditor.initialize();
 
             // Pre-cache Proficiencies to ensure list is populated
             const Codex = T13.getModule('Codex');
@@ -219,6 +231,7 @@ export default class Workbench {
             case 'knots': KnotsUI.refresh(); break;
             case 'library': LibraryUI.refresh(); break;
             case 'cards': CardsUI.render(); break;
+            case 'audio': this.musicEditor.render(); break;
         }
     }
 
@@ -295,10 +308,3 @@ export default class Workbench {
         }
     }
 }
-
-
-
-
-
-
-

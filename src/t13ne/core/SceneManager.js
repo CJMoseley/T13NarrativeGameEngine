@@ -87,6 +87,10 @@ export class SceneManager {
 
             onProgress({ status: `Preparation complete for ${sceneName}.`, percent: 1 });
             Logger.message(`Successfully prepared scene: ${sceneName}`);
+            
+            // Notify systems (like Audio) that the scene and its data are ready
+            EventBus.emit('scene:ready', newSceneInstance);
+            
             return newSceneInstance;
 
         } catch (error) {

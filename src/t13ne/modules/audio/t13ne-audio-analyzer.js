@@ -1,3 +1,4 @@
+import Logger from '../../core/Logger.js';
 import { WavetableBaker } from './t13ne-wavetable-baker.js';
 
 /**
@@ -9,6 +10,40 @@ export class AudioAnalyzer {
     constructor(audioContext) {
         this.ctx = audioContext;
         this.baker = new WavetableBaker();
+    }
+
+    /**
+     * Batch processes the manifest to generate .asd analysis data for samples.
+     * @param {AudioManifestManager} manifestManager 
+     */
+    async processManifest(manifestManager) {
+        Logger.message("AudioAnalyzer: Starting batch analysis of samples...");
+        const samples = manifestManager.manifest.samples;
+        let count = 0;
+
+        for (const [key, data] of Object.entries(samples)) {
+            // Skip if we already have valid analysis data
+            if (data.analysis && data.analysis.freq) continue;
+
+            try {
+                const url = manifestManager.getAssetPath('samples', key);
+                const response = await fetch(url);
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                
+                const arrayBuffer = await response.arrayBuffer();
+                const audioBuffer = await this.ctx.decodeAudioData(arrayBuffer);
+
+                const analysis = await this.analyze(audioBuffer);
+                
+                manifestManager.updateAssetAnalysis('samples', key, analysis);
+                Logger.message(`AudioAnalyzer: Analyzed ${key} -> Freq: ${analysis.freq}Hz`);
+                count++;
+
+            } catch (e) {
+                Logger.warn(`AudioAnalyzer: Failed to analyze '${key}'`, e);
+            }
+        }
+        Logger.message(`AudioAnalyzer: Batch complete. Processed ${count} samples.`);
     }
 
     /**
@@ -47,9 +82,10 @@ export class AudioAnalyzer {
     /**
      * Analyzes an AudioBuffer to extract musical features including spectral peaks.
      * @param {AudioBuffer} buffer 
+     * @param {object} options - { fftSize, smoothing, durationPercent }
      * @returns {Promise<object>} { freq, note, peaks }
      */
-    async analyze(buffer) {
+    async analyze(buffer, options = {}) {
         const data = buffer.getChannelData(0);
         const sampleRate = buffer.sampleRate;
 
@@ -58,7 +94,7 @@ export class AudioAnalyzer {
         const note = this._freqToNote(freq);
 
         // 2. Spectral Analysis (Frequency Domain)
-        const peaks = await this.getSpectralPeaks(buffer, 32);
+        const peaks = await this.getSpectralPeaks(buffer, 32, options);
 
         return { freq: parseFloat(freq.toFixed(2)), note, peaks };
     }
@@ -67,15 +103,16 @@ export class AudioAnalyzer {
      * Extracts spectral peaks (harmonics) using OfflineAudioContext and AnalyserNode.
      * @param {AudioBuffer} buffer 
      * @param {number} maxPeaks 
+     * @param {object} options
      * @returns {Promise<Array<{freq: number, amp: number}>>}
      */
-    async getSpectralPeaks(buffer, maxPeaks = 32) {
+    async getSpectralPeaks(buffer, maxPeaks = 32, options = {}) {
         const sampleRate = buffer.sampleRate;
-        const fftSize = 4096; // Good balance of time/freq precision
+        const fftSize = options.fftSize || 4096; // Default or tweaked
 
         // We only need a short slice to analyze the timbre
         // Take a slice from 20% to avoid attack, ~0.2s long
-        const analysisStart = Math.min(0.1, buffer.duration * 0.2);
+        const analysisStart = Math.min(0.1, buffer.duration * (options.startPercent || 0.2));
         const analysisDuration = fftSize / sampleRate;
 
         const offlineCtx = new OfflineAudioContext(1, fftSize, sampleRate);
@@ -85,7 +122,7 @@ export class AudioAnalyzer {
 
         const analyser = offlineCtx.createAnalyser();
         analyser.fftSize = fftSize;
-        analyser.smoothingTimeConstant = 0.0; // No smoothing, we want raw snapshot
+        analyser.smoothingTimeConstant = options.smoothing !== undefined ? options.smoothing : 0.0;
 
         source.connect(analyser);
         analyser.connect(offlineCtx.destination);

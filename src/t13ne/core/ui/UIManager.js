@@ -3,6 +3,7 @@ import { MainMenu } from './components/MainMenu.js';
 import { TestMenu } from './components/TestMenu.js';
 import { ShipyardPanel } from './components/ShipyardPanel.js';
 import { PauseMenu } from './components/PauseMenu.js';
+import { SettingsMenu } from './components/settingsMenu.js';
 import { EventBus } from '../EventBus.js';
 
 /**
@@ -24,6 +25,7 @@ export class UIManager {
         this.testMenu = null;
         this.shipyardPanel = null;
         this.pauseMenu = null;
+        this.settingsMenu = null;
 
         this.listenForSceneChanges();
 
@@ -37,6 +39,7 @@ export class UIManager {
         this.testMenu = new TestMenu(this);
         this.shipyardPanel = new ShipyardPanel(this);
         this.pauseMenu = new PauseMenu(this);
+        this.settingsMenu = new SettingsMenu(this);
 
         Logger.message("UIManager initialized and components instantiated.");
     }
@@ -53,6 +56,7 @@ export class UIManager {
         if (this.mainMenu) this.mainMenu.hide();
         if (this.testMenu) this.testMenu.hide();
         if (this.pauseMenu) this.pauseMenu.hide();
+        if (this.settingsMenu) this.settingsMenu.hide();
         // Add other menus here as they are created
         this.activeMenu = null;
     }
@@ -64,21 +68,6 @@ export class UIManager {
         }
         if (this.mainMenu) this.mainMenu.show();
         this.activeMenu = this.mainMenu;
-
-        // Inject Author Mode button if not present
-        setTimeout(() => {
-            const menuOptions = document.getElementById('menuOptions');
-            if (menuOptions && !document.getElementById('btn-author-mode')) {
-                const btn = document.createElement('div');
-                btn.id = 'btn-author-mode';
-                btn.className = 'menu-button';
-                btn.innerText = 'Author Mode';
-                btn.style.marginTop = '20px';
-                btn.style.borderColor = '#818cf8'; // Purple accent
-                btn.onclick = () => window.location.href = '/src/t13ne/index.html';
-                menuOptions.appendChild(btn);
-            }
-        }, 100);
     }
 
     showTestMenu() {
@@ -99,5 +88,13 @@ export class UIManager {
 
     hidePauseMenu() {
         if (this.pauseMenu) this.pauseMenu.hide();
+    }
+
+    showSettingsMenu() {
+        this.hideAll();
+        if (this.settingsMenu) {
+            this.settingsMenu.show();
+            this.activeMenu = this.settingsMenu;
+        }
     }
 }

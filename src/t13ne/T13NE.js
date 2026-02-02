@@ -78,6 +78,12 @@ class T13NE {
                 baseUrl: 'http://localhost:11434',
                 model: 'falcon3:3b',
                 temperature: 0.7
+            },
+            audio: {
+                masterVolume: 0.5,
+                musicVolume: 0.8,
+                sfxVolume: 1.0,
+                dialogueVolume: 1.0
             }
         };
 
@@ -91,7 +97,8 @@ class T13NE {
 
         this.config = {
             codex: { ...defaults.codex, ...(savedConfig.codex || {}) },
-            ai: { ...defaults.ai, ...(savedConfig.ai || {}) }
+            ai: { ...defaults.ai, ...(savedConfig.ai || {}) },
+            audio: { ...defaults.audio, ...(savedConfig.audio || {}) }
         };
     }
 
@@ -112,6 +119,18 @@ class T13NE {
                 this.config.ai = { ...this.config.ai, ...config.ai };
                 if (this.modules.AIService) {
                     this.modules.AIService.configure(this.config.ai);
+                }
+            }
+            if (config.audio) {
+                this.config.audio = { ...this.config.audio, ...config.audio };
+                // Apply audio settings immediately
+                if (this.soundEngine && config.audio.masterVolume !== undefined) {
+                    this.soundEngine.setMasterVolume(config.audio.masterVolume);
+                }
+                if (this.modules.Music && this.modules.Music.synth) {
+                    if (config.audio.musicVolume !== undefined) this.modules.Music.synth.setMusicVolume(config.audio.musicVolume);
+                    if (config.audio.sfxVolume !== undefined) this.modules.Music.synth.setSFXVolume(config.audio.sfxVolume);
+                    if (config.audio.dialogueVolume !== undefined) this.modules.Music.synth.setDialogueVolume(config.audio.dialogueVolume);
                 }
             }
 
@@ -218,6 +237,10 @@ class T13NE {
         // 1. Initialize Core Infrastructure
         this.soundEngine = new SoundEngine();
         this.soundEngine.init();
+        // Apply master volume from config
+        if (this.config.audio && this.config.audio.masterVolume !== undefined) {
+            this.soundEngine.setMasterVolume(this.config.audio.masterVolume);
+        }
         this.pluginManager = new PluginManager(this);
         this.viewManager = new ViewManager(this); // Pass T13NE as the context
         this.loaderManager = new LoaderManager(this.viewManager);
@@ -230,6 +253,16 @@ class T13NE {
 
         this.engineInitialized = true;
         Logger.message("T13NE: Engine Core Initialized.");
+    }
+
+    /**
+     * Resumes the audio context if it was suspended (e.g. by browser policy).
+     * This is a safe method to call from UI interactions.
+     */
+    resumeAudio() {
+        if (this.soundEngine) {
+            this.soundEngine.start();
+        }
     }
 
     /**
@@ -521,11 +554,11 @@ class T13NE {
      * @returns {object|null}
      */
     getModule(moduleName) {
-        if (!this.isLoaded) {
-            Logger.message("ERROR: T13NE modules not loaded yet. Call loadModules() first.");
-            return null;
+        if (this.modules[moduleName]) {
+            return this.modules[moduleName];
         }
-        return this.modules[moduleName] || null;
+        // Only warn if we expect it to be there but it isn't
+        return null;
     }
 }
 

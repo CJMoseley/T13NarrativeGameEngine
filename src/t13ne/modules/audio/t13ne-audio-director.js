@@ -69,7 +69,7 @@ class T13NE_AudioDirector {
         
         // Example: Trigger a procedural noise if it's a generic foley request
         if (name.includes('hit') || name.includes('impact')) {
-            this.music.synth.instrumentEngine.playNoiseNote(this.music.soundEngine.audioContext.currentTime, 0.2, 0.8, this.music.synth.masterGain);
+            this.music.synth.instrumentEngine.playNoiseNote(this.music.soundEngine.audioContext.currentTime, 0.2, 0.8, this.music.synth.sfxGain);
         }
     }
 

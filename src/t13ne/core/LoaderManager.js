@@ -87,24 +87,15 @@ class LoaderManager {
             { name: 'Lore Data', action: () => this.loreDataManager.load() },
             { name: 'Game Engine Data', action: () => this.gameEngine.initializeDataDependents() },
 
-            // Generate and Start Music (Best effort, might need user interaction)
+            // 1. Start Audio with Galaxy (Immediate Feedback)
             {
-                name: 'Audio Systems', action: async () => {
+                name: 'Initialize Audio', action: async () => {
                     const music = this.viewManager.engine.getModule('Music');
                     if (music) {
-                        // Inject the procedurally generated entities into the music module
-                        if (typeof music.injectThemeComponents === 'function') {
-                            music.injectThemeComponents({
-                                playerCharacter: this.gameEngine.playerCharacter,
-                                playerShip: this.gameEngine.playerShip,
-                                galaxy: this.gameEngine.galaxy
-                            });
-                        }
-                        this.reportProgress("Generating Intro Music...");
-                        const theme = await music.createWormholeTheme(this.gameEngine);
-                        if (theme) {
-                            music.playTrackObject(theme);
-                        }
+                        music.injectThemeComponents({ galaxy: this.gameEngine.galaxy });
+                        this.reportProgress("Starting Galaxy Theme...");
+                        const theme = await music.createMainTheme(this.gameEngine);
+                        if (theme) music.playTrackObject(theme);
                     }
                 }
             },
@@ -122,28 +113,43 @@ class LoaderManager {
                     this.viewManager.cueScene('GalaxyMapScene', { attractMode: true }, {
                         duration: 4000,
                         onActive: async (scene) => {
+                            // 1. Generate System (for the next view)
+                            const systemGenPromise = (async () => {
+                                const music = this.viewManager.engine.getModule('Music');
+
+                                await this.gameEngine.generateSystem();
+                                if (music && this.gameEngine.currentSystemDetails) {
+                                    music.injectThemeComponents({ currentSystem: this.gameEngine.currentSystemDetails });
+                                    const theme = await music.createMainTheme(this.gameEngine);
+                                    music.updateTrack(theme);
+                                }
+
+                                // Update the next scene in the queue with the generated data
+                                const nextSceneItem = this.viewManager.sceneQueue.find(i => i.name === 'StellarSystemScene');
+                                if (nextSceneItem) {
+                                    nextSceneItem.data.systemDetails = this.gameEngine.currentSystemDetails;
+                                    nextSceneItem.data.planets = this.gameEngine.currentPlanets;
+                                }
+                            })();
+
                             // Wait a bit then focus
                             await new Promise(r => setTimeout(r, 1000));
                             if (scene && typeof scene.focusOnSystem === 'function' && this.gameEngine.playerStartSystem) {
                                 await scene.focusOnSystem(this.gameEngine.playerStartSystem);
                             }
+                            
+                            // Ensure generation is complete before the scene transitions
+                            await systemGenPromise;
                         }
                     });
 
                     // 3. System View
                     // We need to prepare the data for the system view first
                     if (this.gameEngine.playerStartSystem) {
-                        const systemDetails = await this.gameEngine.galaxyGenerator.getSystemDetails(this.gameEngine.playerStartSystem);
-                        const systemGen = this.gameEngine.loreMaster.stellarSystemGenerator;
-                        const planets = systemGen.generatePlanets(systemDetails);
-
-                        // Store for reuse (e.g. in TestMenu or return to system)
-                        this.gameEngine.currentSystemDetails = systemDetails;
-                        this.gameEngine.currentPlanets = planets;
-
+                        // Data already generated in 'Generate System' task
                         this.viewManager.cueScene('StellarSystemScene', {
-                            systemDetails,
-                            planets,
+                            systemDetails: this.gameEngine.currentSystemDetails,
+                            planets: this.gameEngine.currentPlanets,
                             star: this.gameEngine.playerStartSystem,
                             galaxy: this.gameEngine.galaxy,
                             playIntro: true
@@ -151,10 +157,22 @@ class LoaderManager {
                             duration: 20000, // Increased duration to allow full flyby sequence (18s)
                             transition: { type: 'crossDissolve', duration: 2000 },
                             onActive: async (scene) => {
-                                // Delegate animation to the scene itself for better control over coordinates
+                                // 2. Generate Ship (for the next view)
+                                const shipGenPromise = (async () => {
+                                    await this.gameEngine.seedPlayerShip();
+                                    const music = this.viewManager.engine.getModule('Music');
+                                    if (music && this.gameEngine.playerShip) {
+                                        music.injectThemeComponents({ playerShip: this.gameEngine.playerShip });
+                                        const theme = await music.createMainTheme(this.gameEngine);
+                                        music.updateTrack(theme);
+                                    }
+                                })();
+
                                 if (typeof scene.playIntroSequence === 'function') {
                                     await scene.playIntroSequence();
                                 }
+                                
+                                await shipGenPromise;
                             }
                         });
                     }

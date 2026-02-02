@@ -50,6 +50,7 @@ export class MainMenu {
         this._addOption({ text: Localization.__('MENU_NEW_GAME'), onClick: () => this.viewManager.showGalaxyMap() });
         this._addOption({ text: Localization.__('MENU_GALAXY_MAP'), onClick: () => this.viewManager.showGalaxyMap() });
         this._addOption({ text: Localization.__('MENU_SETTINGS'), onClick: () => this.uiManager.showSettingsMenu() });
+        this._addOption({ text: 'Author Mode', onClick: () => window.location.href = '/src/t13ne/index.html' });
         this._addOption({ text: Localization.__('MENU_CONTROLS'), onClick: () => this.uiManager.showControls() });
         this._addOption({ text: Localization.__('MENU_TEST_MENU'), onClick: () => this.uiManager.showTestMenu() });
 

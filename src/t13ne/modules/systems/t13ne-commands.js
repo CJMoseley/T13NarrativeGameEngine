@@ -824,6 +824,21 @@ export class T13NECommands {
             Music.playLeitmotif(dummyChar);
             return { type: 'MusicPreview', name: dummyChar.name, motif: Music.getLeitmotif(dummyChar) };
         });
+
+        // Audio:SetVolume(type=Master, level=0.8)
+        this.registerCommand('Audio', 'SetVolume', async (args, ctx) => {
+            const type = (args.type || 'Master').toLowerCase();
+            const level = parseFloat(args.level);
+            if (isNaN(level)) return { error: "Invalid volume level" };
+
+            const configUpdate = { audio: {} };
+            if (type === 'master') configUpdate.audio.masterVolume = level;
+            else if (type === 'music') configUpdate.audio.musicVolume = level;
+            else if (type === 'sfx') configUpdate.audio.sfxVolume = level;
+
+            this.t13ne.setConfig(configUpdate);
+            return { type: 'VolumeSet', target: type, level };
+        });
     }
 
     registerAudioDirectorCommands() {

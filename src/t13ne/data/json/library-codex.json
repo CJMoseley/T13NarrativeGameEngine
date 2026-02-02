@@ -418,7 +418,7 @@
       "harmonic_patterns.json": {
         "description": "Harmonic intersection patterns."
       },
-      "bass_patterns.json": {
+      "basspatterns.json": {
         "description": "Bassline interaction patterns."
       }
     }

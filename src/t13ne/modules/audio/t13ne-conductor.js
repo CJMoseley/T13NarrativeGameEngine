@@ -28,12 +28,53 @@ class T13NE_Conductor {
 
         // Subscribe to View/Scene events
         EventBus.on('scene:load', (sceneName) => this.onSceneChanged(sceneName));
+        EventBus.on('scene:ready', (scene) => this.onScenePrepared(scene));
         
         // Subscribe to Tension events
         EventBus.on('tension:update', (data) => this.onTensionChanged(data));
 
         this.initialized = true;
         Logger.message("T13NE_Conductor: Initialized and listening.");
+    }
+
+    /**
+     * Called when a scene has finished preparing (data generation complete).
+     * This is the cue to update the music based on the new scene data.
+     * @param {Scene} scene - The prepared scene instance.
+     */
+    async onScenePrepared(scene) {
+        const music = this.t13ne.getModule('Music');
+        if (!music) return;
+
+        const components = {};
+        const sceneData = scene.sceneData || {};
+
+        // Extract narrative components from the scene data
+        if (sceneData.galaxy) components.galaxy = sceneData.galaxy;
+        if (sceneData.systemDetails) components.currentSystem = sceneData.systemDetails;
+        
+        // Also check GameEngine for persistent entities that might be relevant
+        const gameEngine = this.t13ne.getModule('Game') || (scene.viewManager ? scene.viewManager.gameEngine : null);
+        if (gameEngine) {
+            if (gameEngine.playerCharacter) components.playerCharacter = gameEngine.playerCharacter;
+            if (gameEngine.playerShip) components.playerShip = gameEngine.playerShip;
+            if (gameEngine.crew) {
+                gameEngine.crew.forEach((member, i) => components[`crew_${i}`] = member);
+            }
+        }
+
+        // Inject components into the music engine
+        music.injectThemeComponents(components);
+
+        // Generate/Update the theme
+        // If a track is already playing, this will evolve it.
+        // If not, it will start it.
+        const theme = await music.createMainTheme(gameEngine);
+        if (theme) {
+            music.updateTrack(theme);
+        }
+
+        Logger.message(`T13NE_Conductor: Updated music for scene '${scene.constructor.name}'`);
     }
 
     /**

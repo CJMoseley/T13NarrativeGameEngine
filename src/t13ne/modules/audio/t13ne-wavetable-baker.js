@@ -64,7 +64,7 @@ export class WavetableBaker {
         const numPartials = partials.length;
 
         // 1. Prepare Data
-        // Structure: Each partial is 2 flaots (freq, amp). But WGSL structs need alignment.
+        // Structure: Each partial is 2 floats (freq, amp). But WGSL structs need alignment.
         // struct Partial { freq: f32, amp: f32 } is 8 bytes. nice.
         const partialsData = new Float32Array(numPartials * 2);
         for (let i = 0; i < numPartials; i++) {

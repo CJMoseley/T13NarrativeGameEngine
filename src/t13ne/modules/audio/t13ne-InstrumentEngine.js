@@ -93,7 +93,10 @@ export class AdditiveProcessor {
         const sustain = params.sustain !== undefined ? params.sustain : 1.0; // 0-1 multiplier of peakGain
         const release = params.release || 0.2;
 
-        partials.forEach(p => {
+        // Limit partials for CPU fallback to prevent "warbling" / overload
+        const activePartials = partials.slice(0, 4); 
+
+        activePartials.forEach(p => {
             const osc = this.ctx.createOscillator();
             const gain = this.ctx.createGain();
 
@@ -168,8 +171,17 @@ export class InstrumentEngine {
         }
 
         // Default Instruments
-        this.defineInstrument('sine', { type: 'synth', oscType: 'sine' });
-        this.defineInstrument('saw', { type: 'synth', oscType: 'sawtooth' });
+        // Replaced pure waves with additive approximations to avoid harshness
+        this.defineInstrument('sine', { 
+            type: 'additive', 
+            algorithm: 'custom', 
+            partials: [{freq:1, amp:1}, {freq:2, amp:0.05}, {freq:3, amp:0.02}] 
+        });
+        this.defineInstrument('saw', { 
+            type: 'additive', 
+            algorithm: 'custom', 
+            partials: [{freq:1, amp:1}, {freq:2, amp:0.5}, {freq:3, amp:0.33}, {freq:4, amp:0.25}] 
+        });
         this.defineInstrument('bell', { type: 'additive', algorithm: 'bell' });
 
         // Orchestral Definitions (Approximations)
@@ -276,7 +288,52 @@ export class InstrumentEngine {
 
     async loadSample(id, url) {
         try {
-            const response = await fetch(url);
+            if (!url) {
+                Logger.error(`InstrumentEngine: Cannot load sample '${id}', URL is missing/null.`);
+                return false;
+            }
+
+            // Candidate paths to try
+            let candidates = [url];
+            if (!url.match(/^(http|https|blob|data):/)) {
+                let relative = url.startsWith('/') ? url : '/' + url;
+
+                // Fix: Files in public are served at root, so strip /public prefix if present
+                if (relative.startsWith('/public/')) {
+                    relative = relative.substring(7);
+                }
+
+                candidates = [
+                    relative,
+                    '/data' + relative,
+                    '/public' + relative
+                ];
+            }
+            // Deduplicate
+            candidates = [...new Set(candidates)];
+
+            let response = null;
+            let loadedPath = null;
+
+            for (const path of candidates) {
+                try {
+                    // Robust encoding for filenames with parens/spaces
+                    const encodedPath = path.split('/').map(encodeURIComponent).join('/');
+                    const res = await fetch(encodedPath);
+                    const contentType = res.headers.get('content-type');
+                    if (res.ok && (!contentType || !contentType.includes('text/html'))) {
+                        response = res;
+                        loadedPath = path;
+                        break;
+                    }
+                } catch (e) { /* continue */ }
+            }
+
+            if (!response) {
+                Logger.error(`InstrumentEngine: Failed to load sample '${id}'. Checked: ${candidates.join(', ')}. Run 'node scripts/generate_audio_manifest.js' to fix paths.`);
+                return false;
+            }
+
             const arrayBuffer = await response.arrayBuffer();
             const audioBuffer = await this.ctx.decodeAudioData(arrayBuffer);
             this.samples.set(id, audioBuffer);
@@ -302,7 +359,7 @@ export class InstrumentEngine {
                 baseFreq: analysis.freq,
                 key: analysis.note
             });
-            Logger.message(`InstrumentEngine: Loaded sample '${id}' (Key: ${analysis.note})`);
+            Logger.message(`InstrumentEngine: Loaded sample '${id}' from ${loadedPath} (Key: ${analysis.note})`);
             return true;
         } catch (e) {
             Logger.error(`InstrumentEngine: Failed to load sample '${id}'`, e);
@@ -412,8 +469,12 @@ export class InstrumentEngine {
         
         // If it's an additive instrument, try to bake a wavetable for the Worklet
         if (definition.type === 'additive' && definition.partials) {
-            // Bake in background
-            this.baker.bake(definition.partials, 1.0, this.ctx.sampleRate).then(wavetable => {
+            // Check if harmonic (all freqs are integers)
+            const isHarmonic = definition.partials.every(p => Math.abs(p.freq - Math.round(p.freq)) < 0.001);
+            definition.isHarmonic = isHarmonic;
+
+            // Bake in background (Restored to 1.5s for quality/looping stability)
+            this.baker.bake(definition.partials, 1.5, this.ctx.sampleRate).then(wavetable => {
                 definition.wavetable = wavetable;
                 // Logger.message(`InstrumentEngine: Baked wavetable for '${id}'`);
             }).catch(e => Logger.warn(`InstrumentEngine: Failed to bake '${id}'`, e));
@@ -423,8 +484,8 @@ export class InstrumentEngine {
     playNote(instrumentId, frequency, time, duration, velocity = 0.5, destination) {
         const inst = this.instruments.get(instrumentId);
         if (!inst) {
-            // Fallback
-            return this.playSynthNote(frequency, time, duration, 'sine', velocity, destination);
+            Logger.warn(`InstrumentEngine: Instrument '${instrumentId}' not found. Note skipped.`);
+            return;
         }
 
         switch (inst.type) {
@@ -432,8 +493,12 @@ export class InstrumentEngine {
                 this.playSampleNote(inst.sampleId, frequency, time, duration, velocity, destination);
                 break;
             case 'additive':
-                // If algorithm is 'bell', use the default bell partials, otherwise use custom partials
-                if (this.workletReady && inst.wavetable) {
+                // OPTIMIZATION: Use Native PeriodicWave for harmonic instruments (Stable, no crackle)
+                if (inst.isHarmonic) {
+                    this.playPeriodicNote(inst, frequency, time, duration, velocity, destination);
+                } 
+                // Use Worklet for inharmonic/complex textures
+                else if (this.workletReady && inst.wavetable) {
                     // Use High-Performance AudioWorklet
                     this.playWorkletTone(inst, frequency, time, duration, velocity, destination);
                 } else if (inst.algorithm === 'bell') {
@@ -456,6 +521,36 @@ export class InstrumentEngine {
         }
     }
 
+    playPeriodicNote(inst, frequency, time, duration, velocity, destination) {
+        if (!Number.isFinite(frequency) || frequency <= 0) return;
+
+        // Create or reuse PeriodicWave
+        if (!inst.periodicWave) {
+            const maxHarmonic = Math.max(...inst.partials.map(p => Math.round(p.freq)));
+            const real = new Float32Array(maxHarmonic + 1);
+            const imag = new Float32Array(maxHarmonic + 1);
+            
+            // Web Audio PeriodicWave: real=cosine terms, imag=sine terms
+            inst.partials.forEach(p => {
+                const idx = Math.round(p.freq);
+                if (idx < real.length) {
+                    imag[idx] = p.amp; // Sine components
+                }
+            });
+            inst.periodicWave = this.ctx.createPeriodicWave(real, imag);
+        }
+
+        const osc = this.ctx.createOscillator();
+        osc.setPeriodicWave(inst.periodicWave);
+        osc.frequency.value = frequency;
+
+        const env = this.ctx.createGain();
+        osc.connect(env);
+        env.connect(destination);
+
+        this.applyEnvelope(env, osc, inst, time, duration, velocity);
+    }
+
     playWorkletTone(inst, frequency, time, duration, velocity, destination) {
         const node = new AudioWorkletNode(this.ctx, 'additive-processor', {
             processorOptions: { wavetable: inst.wavetable }
@@ -468,30 +563,52 @@ export class InstrumentEngine {
         node.connect(env);
         env.connect(destination);
 
+        this.applyEnvelope(env, null, inst, time, duration, velocity, node);
+    }
+
+    applyEnvelope(env, osc, inst, time, duration, velocity, workletNode = null) {
+        // Safety scaling to prevent clipping with additive synthesis
+        const gainScale = 0.2; 
+        const scaledVelocity = velocity * gainScale;
+
         // Envelope Logic (Simplified ADSR)
-        const attack = 0.02;
-        const release = 0.1;
+        const attack = inst.attack || 0.02;
+        const release = inst.release || 0.1;
         const safeDuration = Math.max(duration, attack + 0.05);
+        const endTime = time + safeDuration + release;
 
         env.gain.setValueAtTime(0, time);
-        env.gain.linearRampToValueAtTime(velocity, time + attack);
+        env.gain.linearRampToValueAtTime(scaledVelocity, time + attack);
         
         if (inst.envelope === 'sustained') {
-            env.gain.setValueAtTime(velocity, time + safeDuration);
-            env.gain.exponentialRampToValueAtTime(0.001, time + safeDuration + release);
+            const decay = inst.decay || 0.1;
+            const sustain = inst.sustain || 0.8;
+            const sustainLevel = scaledVelocity * sustain;
+            
+            env.gain.linearRampToValueAtTime(sustainLevel, time + attack + decay);
+            env.gain.setValueAtTime(sustainLevel, time + duration);
+            env.gain.exponentialRampToValueAtTime(0.001, time + duration + release);
         } else {
             // Percussive decay
-            env.gain.exponentialRampToValueAtTime(0.001, time + safeDuration);
+            env.gain.exponentialRampToValueAtTime(0.001, time + safeDuration + release);
         }
         
+        // Ensure absolute silence at end to prevent DC offset accumulation
+        env.gain.linearRampToValueAtTime(0, endTime);
+        
         // Cleanup
-        // AudioWorkletNodes don't have start/stop, they run as long as connected or until GC.
-        // We can't easily stop them without disconnecting.
-        // Schedule disconnect/gc
-        setTimeout(() => {
-            node.disconnect();
+        // Use an OscillatorNode as a precise timer on the audio thread.
+        // This ensures cleanup happens exactly when the sound ends, preventing
+        // node buildup even if the main JS thread is busy/lagging.
+        const timerOsc = this.ctx.createOscillator();
+        timerOsc.onended = () => {
+            if (osc) { osc.stop(); osc.disconnect(); }
+            if (workletNode) { workletNode.disconnect(); }
             env.disconnect();
-        }, (safeDuration + release + 0.5) * 1000);
+        };
+        timerOsc.start(time);
+        if (osc) osc.start(time);
+        timerOsc.stop(endTime + 0.1);
     }
 
     playSynthNote(frequency, time, duration, type, velocity, destination, params = {}) {
@@ -499,7 +616,7 @@ export class InstrumentEngine {
         const osc = this.ctx.createOscillator();
         const env = this.ctx.createGain();
 
-        osc.type = type || 'sine';
+        osc.type = type || 'triangle';
         
         // Pitch Envelope (Crucial for Kicks/Drums)
         if (params.pitchEnv) {

@@ -76,6 +76,19 @@ class AuthorMain {
     }
 
     /**
+     * Triggers the Audio Asset Baking process.
+     * Analyzes samples and updates the manifest with spectral data.
+     */
+    async bakeAudio() {
+        const music = T13NE.getModule('Music');
+        if (music) {
+            await music.bakeAssets();
+        } else {
+            Logger.warn("AuthorMain: Music module not loaded, cannot bake audio.");
+        }
+    }
+
+    /**
      * Simple navigation helper for tools.
      * @param {string} toolName 
      */
