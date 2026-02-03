@@ -96,8 +96,8 @@ class AudioManifestManager {
             // Remove leading slash for consistent checking
             let cleanUrl = url.startsWith('/') ? url.substring(1) : url;
 
-            // Ensure it starts with media/audio/ if it doesn't already (and isn't in data/ or public/)
-            if (!cleanUrl.startsWith('media/') && !cleanUrl.startsWith('data/') && !cleanUrl.startsWith('public/')) {
+            // Ensure it starts with media/audio/ if it doesn't already (and isn't in public/)
+            if (!cleanUrl.startsWith('media/') && !cleanUrl.startsWith('public/')) {
                 cleanUrl = `media/audio/${cleanUrl}`;
             }
             
@@ -337,7 +337,7 @@ class T13NE_Music {
         this.currentTrack = null; // Store active track object for live updates
 
         this.manifestManager = new AudioManifestManager();
-        this.instrumentPalette = { bass: [], pad: [], lead: [], rhythm: [] };
+        this.instrumentPalette = { bass: [], pad: [], lead: [], rhythm: [], kick: [], snare: [], hat: [], perc: [] };
     }
 
     async initialize(t13ne) {
@@ -370,6 +370,16 @@ class T13NE_Music {
             this.synth = new T13Synth(ctx, output);
             this.synth.instrumentEngine.manifestManager = this.manifestManager;
             
+            // Enable runtime analysis only if in Author Mode (detected by URL or explicit author mode flags)
+            const isAuthorMode = window.location.pathname.includes('t13ne-control-panel.html') || 
+                                 window.location.pathname.includes('proficiency-manager.html') ||
+                                 window.location.search.includes('author=true');
+            
+            if (isAuthorMode) {
+                this.synth.instrumentEngine.allowRuntimeAnalysis = true;
+                Logger.message("T13NE_Music: Author Mode detected. Runtime analysis enabled.");
+            }
+
             await this.synth.instrumentEngine.init();
 
             const config = this.t13ne.getConfig().audio || {};
@@ -411,25 +421,18 @@ class T13NE_Music {
             
             if (lowerKey.includes('bass')) category = 'bass';
             else if (lowerKey.includes('pad') || lowerKey.includes('atmos') || lowerKey.includes('texture')) category = 'pad';
-            else if (lowerKey.includes('drum') || lowerKey.includes('kick') || lowerKey.includes('snare') || lowerKey.includes('hat') || lowerKey.includes('perc')) category = 'rhythm';
+            else if (lowerKey.includes('kick')) category = 'kick';
+            else if (lowerKey.includes('snare')) category = 'snare';
+            else if (lowerKey.includes('hat')) category = 'hat';
+            else if (lowerKey.includes('perc') || lowerKey.includes('drum')) category = 'perc';
             
             this.instrumentPalette[category].push(key);
-
-            // Register with Engine
-            // If we have analysis, we can create a synthetic instrument (wavetable)
-            // Otherwise, we register it as a sampler source
-            if (data.analysis && data.analysis.freq) {
-                // Create synthetic version for flexibility
-                this.synth.instrumentEngine.createSyntheticInstrument(key, key, 'high', category === 'pad' ? 'sustained' : 'percussive');
-            } else {
-                // Register as simple sampler
-                // We assume base freq C4 (261.63) if unknown, or update later
-                this.synth.instrumentEngine.defineInstrument(key, {
-                    type: 'sampler',
-                    sampleId: key,
-                    baseFreq: 261.63 
-                });
+            if (category === 'kick' || category === 'snare' || category === 'hat' || category === 'perc') {
+                this.instrumentPalette.rhythm.push(key);
             }
+
+            // Lazy registration: We no longer define 13,000+ instruments on boot.
+            // Instruments will be defined on-demand when picked for a track.
         }
 
         Logger.message(`T13NE_Music: Instrument Palette Built. Bass: ${this.instrumentPalette.bass.length}, Pad: ${this.instrumentPalette.pad.length}, Lead: ${this.instrumentPalette.lead.length}`);
@@ -441,6 +444,7 @@ class T13NE_Music {
      */
     async bakeAssets() {
         if (!this.synth) return;
+        this.synth.instrumentEngine.allowRuntimeAnalysis = true;
         const analyzer = new AudioAnalyzer(this.synth.ctx);
         await analyzer.processManifest(this.manifestManager);
     }
@@ -606,6 +610,50 @@ class T13NE_Music {
         Logger.message(`T13NE_Music: Active components updated. Total: ${this.activeComponents.length}`);
     }
 
+    _getProceduralInstrument(category, seed) {
+        const rng = new MusicRNG(seed);
+        const palette = this.instrumentPalette[category];
+        if (palette && palette.length > 0) {
+            const instId = rng.pick(palette);
+            this._ensureInstrumentDefined(instId);
+            return instId;
+        }
+        // Fallback to standard
+        const fallbackMap = {
+            'kick': 'Drum_Kick',
+            'snare': 'Drum_Snare',
+            'hat': 'Drum_HiHat_Closed',
+            'perc': 'Drum_Cowbell'
+        };
+        return fallbackMap[category] || 'Piano';
+    }
+
+    _ensureInstrumentDefined(instrumentId) {
+        if (!this.synth || this.synth.instrumentEngine.instruments.has(instrumentId)) return;
+
+        // Skip if it's one of the hardcoded standard instruments
+        const standard = ['Drum_Kick', 'Drum_Snare', 'Drum_HiHat_Closed', 'Drum_HiHat_Open', 'Drum_Crash', 'Drum_Ride', 'Drum_Tom_High', 'Drum_Tom_Low', 'Drum_Cowbell', 'Synth_Bass', 'Synth_Lead', 'Synth_Pad', 'Tuba', 'Oboe', 'Guitar', 'Harpsichord', 'Piano', 'Cello', 'Violin', 'Viola', 'Flute', 'Trumpet', 'French Horn', 'Clarinet', 'Harp'];
+        if (standard.includes(instrumentId)) return;
+
+        const data = this.manifestManager.manifest.samples[instrumentId];
+        if (!data) return;
+
+        if (data.analysis && data.analysis.freq) {
+            // Determine category for envelope
+            const lowerKey = instrumentId.toLowerCase();
+            let envelope = 'percussive';
+            if (lowerKey.includes('pad') || lowerKey.includes('atmos') || lowerKey.includes('texture')) envelope = 'sustained';
+            
+            this.synth.instrumentEngine.createSyntheticInstrument(instrumentId, instrumentId, 'high', envelope);
+        } else {
+            this.synth.instrumentEngine.defineInstrument(instrumentId, {
+                type: 'sampler',
+                sampleId: instrumentId,
+                baseFreq: 261.63 
+            });
+        }
+    }
+
     _getInstrumentFromGeometry(geo) {
         // Map Key and Octave to Role
         let octave = 4;
@@ -702,14 +750,21 @@ class T13NE_Music {
         const beatTime = 60 / bpm;
         const voices = [];
         
+        // Assemble Procedural Drumkit from rhythm source (Ship components)
+        const drumSeed = rhythmEntityGeo.name || 'default_rhythm';
+        const drumKit = {
+            'v_kick': this._getProceduralInstrument('kick', drumSeed),
+            'v_snare': this._getProceduralInstrument('snare', drumSeed + '_snare'),
+            'v_hat': this._getProceduralInstrument('hat', drumSeed + '_hat'),
+            'v_crash': this._getProceduralInstrument('perc', drumSeed + '_crash'),
+            'v_ride': this._getProceduralInstrument('perc', drumSeed + '_ride'),
+            'v_perc': this._getProceduralInstrument('perc', drumSeed + '_perc')
+        };
+
         rhythm.events.forEach(evt => {
             let v = voices.find(v => v.id === evt.voice);
             if (!v) {
-                const instMap = {
-                    'v_kick': 'Drum_Kick', 'v_snare': 'Drum_Snare', 'v_hat': 'Drum_HiHat_Closed',
-                    'v_crash': 'Drum_Crash', 'v_ride': 'Drum_Ride', 'v_perc': 'Drum_Cowbell'
-                };
-                v = { id: evt.voice, name: evt.voice, instrument: instMap[evt.voice], sequence: [], mute: false };
+                v = { id: evt.voice, name: evt.voice, instrument: drumKit[evt.voice], sequence: [], mute: false };
                 voices.push(v);
             }
             v.sequence.push(evt);
@@ -730,6 +785,7 @@ class T13NE_Music {
 
             const entity = this.ensureGeometry(source);
             const { instrument, role } = this._getInstrumentFromGeometry(entity.geometry);
+            this._ensureInstrumentDefined(instrument);
             const motif = this.getCharacterComposition(entity);
             
             let events = [];

@@ -2,8 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const WavDecoder = require('wav-decoder');
 
-const manifestPath = path.join(__dirname, 'public/data/media/audio/audio_assets_manifest.json');
-const baseDir = path.join(__dirname, 'public/data/media/audio');
+const manifestPath = path.join(__dirname, 'public/media/audio/audio_assets_manifest.json');
+const baseDir = path.join(__dirname, 'public/media/audio');
 
 // Load Manifest
 if (!fs.existsSync(manifestPath)) {

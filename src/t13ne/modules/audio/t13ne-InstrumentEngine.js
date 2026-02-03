@@ -155,6 +155,7 @@ export class InstrumentEngine {
         this.additive = new AdditiveProcessor(audioContext);
         this.baker = new WavetableBaker();
         this.workletReady = false;
+        this.allowRuntimeAnalysis = false; // Disabled by default for faster loading
     }
 
     /**
@@ -304,8 +305,7 @@ export class InstrumentEngine {
                 }
 
                 candidates = [
-                    relative,
-                    '/data' + relative
+                relative
                 ];
             }
             // Deduplicate
@@ -341,15 +341,19 @@ export class InstrumentEngine {
             let analysis = this.manifestManager.getAssetAnalysis('samples', id);
 
             if (!analysis) {
-                if (!this.analyzer) {
-                    // Lazy load analyzer (assuming it's imported or globally avail, or simple inline fallback)
-                    // For now, use the inline logic we just replaced or import the module
-                    analysis = this.inlineAnalyze(audioBuffer);
+                if (this.allowRuntimeAnalysis) {
+                    if (!this.analyzer) {
+                        analysis = this.inlineAnalyze(audioBuffer);
+                    } else {
+                        analysis = await this.analyzer.analyze(audioBuffer);
+                    }
+                    // Save back to manifest runtime cache
+                    this.manifestManager.updateAssetAnalysis('samples', id, analysis);
                 } else {
-                    analysis = await this.analyzer.analyze(audioBuffer);
+                    // Fallback to default analysis if runtime analysis is disabled
+                    analysis = { freq: 261.63, note: 'C4', peaks: [] };
+                    Logger.warn(`InstrumentEngine: Analysis missing for '${id}' and runtime analysis is disabled. Using C4 fallback.`);
                 }
-                // Save back to manifest runtime cache
-                this.manifestManager.updateAssetAnalysis('samples', id, analysis);
             }
 
             this.defineInstrument(id, {
