@@ -193,7 +193,7 @@ class T13Synth {
         }
     }
 
-    playNote(frequency, startTime, duration, type = 'Piano', detune = 0, instrument = null, channelId = null) {
+    playNote(frequency, startTime, duration, type = 'Piano', detune = 0, instrument = null, channelId = null, pan = 0, velocity = 0.3) {
         if (!Number.isFinite(frequency) || frequency <= 0) return; // Safety check
 
         let dest = this.musicGain; 
@@ -211,11 +211,11 @@ class T13Synth {
         }
 
         if (instrument) {
-            this.instrumentEngine.playNote(instrument, frequency, startTime, duration, 0.3, dest);
+            this.instrumentEngine.playNote(instrument, frequency, startTime, duration, velocity, dest, pan);
             return;
         }
 
-        this.instrumentEngine.playNote(type, frequency, startTime, duration, 0.3, dest);
+        this.instrumentEngine.playNote(type, frequency, startTime, duration, velocity, dest, pan);
     }
 
     playSample(name, frequency, startTime, duration, detune) {
@@ -453,67 +453,34 @@ class T13NE_Music {
         if (!this.synth) return;
         const engine = this.synth.instrumentEngine;
 
+        // Standard placeholders (will be replaced by manifest samples if available)
         engine.defineInstrument('Drum_Kick', { type: 'synth', oscType: 'sine', pitchEnv: { startMult: 4.0, time: 0.1 }, attack: 0.001, release: 0.2 });
         engine.defineInstrument('Drum_Snare', { type: 'noise', filterType: 'lowpass', filterFreq: 2000, envelope: 'percussive', decay: 0.2 });
         engine.defineInstrument('Drum_HiHat_Closed', { type: 'noise', filterType: 'highpass', filterFreq: 5000, envelope: 'percussive', decay: 0.05 });
-        engine.defineInstrument('Drum_HiHat_Open', { type: 'noise', filterType: 'highpass', filterFreq: 5000, envelope: 'percussive', decay: 0.2 });
-        engine.defineInstrument('Drum_Crash', { type: 'noise', filterType: 'highpass', filterFreq: 3000, envelope: 'percussive', decay: 1.5 });
-        engine.defineInstrument('Drum_Ride', { type: 'additive', partials: [{freq:1, amp:1}, {freq:2.1, amp:0.5}, {freq:3.5, amp:0.3}, {freq:5.2, amp:0.2}], envelope: 'percussive', decay: 1.0 });
-        engine.defineInstrument('Drum_Tom_High', { type: 'synth', oscType: 'sine', pitchEnv: { startMult: 1.5, time: 0.1 }, attack: 0.001, release: 0.3, freq: 200 });
-        engine.defineInstrument('Drum_Tom_Low', { type: 'synth', oscType: 'sine', pitchEnv: { startMult: 1.5, time: 0.1 }, attack: 0.001, release: 0.4, freq: 100 });
         engine.defineInstrument('Drum_Cowbell', { type: 'additive', partials: [{freq:1, amp:1}, {freq:1.5, amp:0.5}], envelope: 'percussive', decay: 0.1 });
-
-        engine.defineInstrument('Synth_Bass', { 
-            type: 'additive', 
-            envelope: 'sustained',
-            attack: 0.01, decay: 0.2, sustain: 0.5, release: 0.2,
-            partials: [{freq:1, amp:1}, {freq:2, amp:0.5}, {freq:3, amp:0.25}, {freq:4, amp:0.12}] 
-        });
-        engine.defineInstrument('Synth_Lead', { 
-            type: 'additive', 
-            envelope: 'percussive',
-            attack: 0.01, decay: 0.3, sustain: 0.1, release: 0.1,
-            partials: [
-                {freq:1, amp:0.5}, 
-                {freq:2, amp:0.3}, 
-                {freq:3, amp:0.15}, 
-                {freq:4, amp:0.1}
-            ] 
-        });
-        engine.defineInstrument('Synth_Pad', { 
-            type: 'additive', 
-            envelope: 'sustained',
-            attack: 0.5, decay: 0.5, sustain: 0.8, release: 1.0,
-            partials: [{freq:1, amp:1}, {freq:2, amp:0.1}, {freq:3, amp:0.05}] 
-        });
-
-        engine.defineInstrument('Tuba', { type: 'additive', envelope: 'sustained', attack: 0.1, decay: 0.2, sustain: 0.8, release: 0.3, partials: [{freq:1, amp:1}, {freq:2, amp:0.7}, {freq:3, amp:0.4}, {freq:4, amp:0.2}] });
-        engine.defineInstrument('Oboe', { type: 'additive', envelope: 'sustained', attack: 0.05, decay: 0.1, sustain: 0.8, release: 0.1, partials: [{freq:1, amp:0.4}, {freq:2, amp:0.1}, {freq:3, amp:1.0}, {freq:4, amp:0.1}, {freq:5, amp:0.5}] });
-        engine.defineInstrument('Guitar', { type: 'additive', envelope: 'percussive', attack: 0.01, decay: 0.3, sustain: 0.2, release: 0.1, partials: [{freq:1, amp:1}, {freq:2, amp:0.5}, {freq:3, amp:0.3}, {freq:4, amp:0.2}] });
-        engine.defineInstrument('Harpsichord', { type: 'additive', envelope: 'percussive', attack: 0.01, decay: 0.1, sustain: 0.5, release: 0.1, partials: [{freq:1, amp:0.6}, {freq:2, amp:1.0}, {freq:3, amp:0.5}, {freq:4, amp:0.3}] });
+        
+        engine.defineInstrument('Synth_Bass', { type: 'additive', envelope: 'sustained', partials: [{freq:1, amp:1}, {freq:2, amp:0.5}] });
+        engine.defineInstrument('Synth_Lead', { type: 'additive', envelope: 'percussive', partials: [{freq:1, amp:1}, {freq:2, amp:0.3}] });
+        engine.defineInstrument('Synth_Pad', { type: 'additive', envelope: 'sustained', partials: [{freq:1, amp:1}, {freq:2, amp:0.1}] });
     }
 
     async _generateOrchestralInstruments() {
         if (!this.synth) return;
         
         const mappings = {
-            'Cello': 'pad_acoustic/low_string',
-            'Violin': 'pad_acoustic/hi_string',
-            'Viola': 'pad_acoustic/mid_string',
-            'Flute': 'melody_acoustic/flute_c1',
-            'Trumpet': 'melody_acoustic/trumpet_solo',
-            'French Horn': 'melody_acoustic/brite_horn',
-            'Clarinet': 'melody_acoustic/clarinet_c1',
-            'Piano': 'melody_acoustic/piano_c4',
-            'Harp': 'melody_acoustic/harp'
+            'Cello': 'samples/pad_acoustic/low_string',
+            'Violin': 'samples/pad_acoustic/hi_string',
+            'Viola': 'samples/pad_acoustic/mid_string',
+            'Flute': 'samples/melody_acoustic/flute_c1',
+            'Trumpet': 'samples/melody_acoustic/trumpet_solo',
+            'French Horn': 'samples/melody_acoustic/brite_horn',
+            'Clarinet': 'samples/melody_acoustic/clarinet_c1',
+            'Piano': 'samples/melody_acoustic/piano_c4',
+            'Harp': 'samples/melody_acoustic/harp'
         };
 
         for (const [instName, sampleId] of Object.entries(mappings)) {
-            // Ensure sample is loaded and analyzed before synthesizing
-            const url = this.manifestManager.getAssetPath('samples', sampleId);
-            if (url) await this.loadSample(sampleId, url);
-            
-            this.synth.instrumentEngine.createSyntheticInstrument(sampleId, instName, 'high', 'sustained');
+            await this._ensureInstrumentDefined(sampleId, instName, 'sustained');
         }
     }
 
@@ -598,25 +565,37 @@ class T13NE_Music {
     injectThemeComponents(components) {
         let changed = false;
         Object.values(components).forEach(entity => {
-            const exists = this.activeComponents.some(c => c.name === entity.name); // Check by name
-            if (entity && !exists) {
-                this.activeComponents.push(entity);
+            if (!entity) return;
+            
+            // Update timestamp if it exists, otherwise add it
+            const existingIndex = this.activeComponents.findIndex(c => c.name === entity.name);
+            if (existingIndex !== -1) {
+                // Move to end of array (most recent)
+                const existing = this.activeComponents.splice(existingIndex, 1)[0];
+                this.activeComponents.push({ ...existing, lastUpdate: Date.now() });
+            } else {
+                this.activeComponents.push({ ...entity, lastUpdate: Date.now() });
                 changed = true;
             }
         });
+        
+        // Keep only top 5 recent influences to prevent overload
+        if (this.activeComponents.length > 5) {
+            this.activeComponents.shift();
+            changed = true;
+        }
+
         if (changed) {
             this.needsRegeneration = true;
         }
-        Logger.message(`T13NE_Music: Active components updated. Total: ${this.activeComponents.length}`);
+        Logger.message(`T13NE_Music: Active components updated. Focal Influence: ${this.activeComponents[this.activeComponents.length-1].name}`);
     }
 
     _getProceduralInstrument(category, seed) {
         const rng = new MusicRNG(seed);
         const palette = this.instrumentPalette[category];
         if (palette && palette.length > 0) {
-            const instId = rng.pick(palette);
-            this._ensureInstrumentDefined(instId);
-            return instId;
+            return rng.pick(palette);
         }
         // Fallback to standard
         const fallbackMap = {
@@ -628,59 +607,86 @@ class T13NE_Music {
         return fallbackMap[category] || 'Piano';
     }
 
-    _ensureInstrumentDefined(instrumentId) {
-        if (!this.synth || this.synth.instrumentEngine.instruments.has(instrumentId)) return;
+    async _ensureInstrumentDefined(instrumentId, aliasId = null, forceEnvelope = null, geoParams = {}) {
+        const targetId = aliasId || instrumentId;
+        if (!this.synth || this.synth.instrumentEngine.instruments.has(targetId)) return;
 
-        // Skip if it's one of the hardcoded standard instruments
         const standard = ['Drum_Kick', 'Drum_Snare', 'Drum_HiHat_Closed', 'Drum_HiHat_Open', 'Drum_Crash', 'Drum_Ride', 'Drum_Tom_High', 'Drum_Tom_Low', 'Drum_Cowbell', 'Synth_Bass', 'Synth_Lead', 'Synth_Pad', 'Tuba', 'Oboe', 'Guitar', 'Harpsichord', 'Piano', 'Cello', 'Violin', 'Viola', 'Flute', 'Trumpet', 'French Horn', 'Clarinet', 'Harp'];
         if (standard.includes(instrumentId)) return;
 
         const data = this.manifestManager.manifest.samples[instrumentId];
-        if (!data) return;
+        if (!data) {
+            Logger.warn(`T13NE_Music: Sample data missing for '${instrumentId}'.`);
+            return;
+        }
+
+        const lowerKey = instrumentId.toLowerCase();
+        let role = 'lead';
+        if (lowerKey.includes('bass')) role = 'bass';
+        else if (lowerKey.includes('pad') || lowerKey.includes('atmos') || lowerKey.includes('texture') || lowerKey.includes('string')) role = 'pad';
+        else if (lowerKey.includes('kick')) role = 'kick';
+        else if (lowerKey.includes('snare')) role = 'snare';
+        else if (lowerKey.includes('hat')) role = 'hat';
+        else if (lowerKey.includes('perc')) role = 'perc';
+
+        let envelope = forceEnvelope || (role === 'pad' ? 'sustained' : 'percussive');
+        const depth = geoParams.techLevel > 5 ? 'high' : 'medium';
 
         if (data.analysis && data.analysis.freq) {
-            // Determine category for envelope
-            const lowerKey = instrumentId.toLowerCase();
-            let envelope = 'percussive';
-            if (lowerKey.includes('pad') || lowerKey.includes('atmos') || lowerKey.includes('texture')) envelope = 'sustained';
-            
-            this.synth.instrumentEngine.createSyntheticInstrument(instrumentId, instrumentId, 'high', envelope);
+            this.synth.instrumentEngine.createSyntheticInstrument(instrumentId, targetId, depth, envelope, role);
         } else {
-            this.synth.instrumentEngine.defineInstrument(instrumentId, {
-                type: 'sampler',
-                sampleId: instrumentId,
-                baseFreq: 261.63 
-            });
+            // If missing analysis, we have two choices:
+            // 1. Load sample and play as sampler (Raw file)
+            // 2. Synthesize using fallback (Harmonic series)
+            // User prefers synthesis, so we use fallback synthesis, but we still load the sample
+            // if we are in Author Mode to enable future analysis.
+            
+            if (this.synth.instrumentEngine.allowRuntimeAnalysis) {
+                const url = this.manifestManager.getAssetPath('samples', instrumentId);
+                if (url) {
+                    await this.loadSample(instrumentId, url);
+                    const analysis = await this.analyzeSample(instrumentId);
+                    if (analysis) {
+                        this.saveAnalysis(instrumentId, analysis);
+                        this.synth.instrumentEngine.createSyntheticInstrument(instrumentId, targetId, 'high', envelope);
+                        return;
+                    }
+                }
+            }
+            
+            // Fallback synthesis
+            this.synth.instrumentEngine.createSyntheticInstrument(instrumentId, targetId, 'low', envelope, role);
         }
     }
 
     _getInstrumentFromGeometry(geo) {
         // Map Key and Octave to Role
-        let octave = 4;
-        if (geo.Octave !== undefined) octave = geo.Octave;
+        let octave = geo.Octave !== undefined ? geo.Octave : 4;
         
-        let role = 'rhythm';
-        if (octave <= 3) role = 'bass';
-        else if (octave >= 5) role = 'lead';
+        // Influence role by TechLevel and Chi
+        const techLevel = geo.TechLevel || 1;
+        const chi = geo.Chi || 5; // Size influence
+
+        let role = 'lead';
+        if (chi > 7 || octave <= 3) role = 'bass';
+        else if (techLevel > 7 || octave >= 6) role = 'lead';
+        else if (chi < 4) role = 'rhythm';
         else role = 'pad';
 
-        // Select random instrument from the palette for this role
-        // Seed RNG with geometry name/ID so the choice is consistent for this entity
         const rng = new MusicRNG(geo.name || JSON.stringify(geo));
         
         const palette = this.instrumentPalette[role];
-        let instrument = 'Piano'; // Fallback
+        let instrument = 'Piano';
         
         if (palette && palette.length > 0) {
             instrument = rng.pick(palette);
         } else {
-            // Fallback to standard instruments if palette is empty
             if (role === 'bass') instrument = 'Synth_Bass';
             else if (role === 'pad') instrument = 'Synth_Pad';
             else instrument = 'Synth_Lead';
         }
         
-        return { instrument: instrument, role: role };
+        return { instrument: instrument, role: role, chi: chi, techLevel: techLevel };
     }
 
     // ... (createWormholeTheme, ensureGeometry, _motifToTrackEvents, _addLoopToSequence, _generateRhythm, _generateProgression, _generateBassline, _generateHarmonics, playTrack remain unchanged) ...
@@ -751,7 +757,8 @@ class T13NE_Music {
         const voices = [];
         
         // Assemble Procedural Drumkit from rhythm source (Ship components)
-        const drumSeed = rhythmEntityGeo.name || 'default_rhythm';
+        // Use a combination of name and origin for better variety
+        const drumSeed = (rhythmEntityGeo.name || 'default') + (rhythmEntityGeo.origin || '');
         const drumKit = {
             'v_kick': this._getProceduralInstrument('kick', drumSeed),
             'v_snare': this._getProceduralInstrument('snare', drumSeed + '_snare'),
@@ -760,6 +767,12 @@ class T13NE_Music {
             'v_ride': this._getProceduralInstrument('perc', drumSeed + '_ride'),
             'v_perc': this._getProceduralInstrument('perc', drumSeed + '_perc')
         };
+
+        // Pre-define drum kit instruments
+        const drumKitIds = Object.values(drumKit);
+        for (const id of drumKitIds) {
+            await this._ensureInstrumentDefined(id);
+        }
 
         rhythm.events.forEach(evt => {
             let v = voices.find(v => v.id === evt.voice);
@@ -770,31 +783,45 @@ class T13NE_Music {
             v.sequence.push(evt);
         });
 
-        // Use for...of loop to allow awaiting/yielding
-        const componentsToProcess = [...this.activeComponents];
-        for (let index = 0; index < componentsToProcess.length; index++) {
-            // Yield to event loop to prevent blocking audio scheduler (fixes hitching)
+        // Orchestration: Assign roles based on recency (end of activeComponents is newest)
+        const components = [...this.activeComponents].reverse(); // Newest first
+        
+        for (let index = 0; index < components.length; index++) {
             await new Promise(r => setTimeout(r, 0));
+            const source = components[index];
+            if (!source || !source.name) continue;
 
-            const source = componentsToProcess[index];
-            if (!source || !source.name) return;
+            const entity = this.ensureGeometry(source);
+            let { instrument, role, chi, techLevel } = this._getInstrumentFromGeometry(entity.geometry);
             
-            // Sanitize name to prevent "v_undefinedundefinedundefined" IDs
+            // Influence synthesis quality by techLevel
+            const geoParams = { chi, techLevel };
+
+            if (index === 0) role = 'lead';
+            else if (index === 1) role = 'rhythm';
+            else if (index === 2) role = 'pad';
+            else if (index >= 3 && role !== 'bass') {
+                if (index > 4) continue; // Dropout
+                role = 'pad';
+                instrument = this._getProceduralInstrument('pad', entity.name);
+            }
+
+            await this._ensureInstrumentDefined(instrument, null, null, geoParams);
+            
             let safeName = source.name.replace(/[^a-zA-Z0-9]/g, '_');
             if (safeName.includes('undefined') || safeName.length === 0) safeName = `Entity_${index}`;
 
-            const entity = this.ensureGeometry(source);
-            const { instrument, role } = this._getInstrumentFromGeometry(entity.geometry);
-            this._ensureInstrumentDefined(instrument);
-            const motif = this.getCharacterComposition(entity);
-            
             let events = [];
             if (role === 'bass') {
                 events = this._generateBassline(rhythm, entity, progression, baseFreq / 4, beatTime);
-            } else if (role === 'pad' || role === 'rhythm') {
+            } else if (role === 'pad') {
                 const h = this._generateHarmonics(rhythm, entity, progression, baseFreq);
-                events = role === 'pad' ? h.pad : h.guitar;
+                events = h.pad;
+            } else if (role === 'rhythm') {
+                const h = this._generateHarmonics(rhythm, entity, progression, baseFreq);
+                events = h.guitar;
             } else {
+                const motif = this.getCharacterComposition(entity);
                 if (motif) events = this._motifToHarmonizedEvents(motif, `v_${safeName}_${index}`, beatTime, progression, baseFreq);
             }
 
@@ -1286,7 +1313,6 @@ class T13NE_Music {
         if (this.currentSequenceTimer) clearTimeout(this.currentSequenceTimer);
 
         const schedule = () => {
-            // Ensure AudioContext is running (auto-resume if suspended)
             if (this.synth.ctx.state === 'suspended') {
                 this.synth.ctx.resume();
             }
@@ -1300,19 +1326,44 @@ class T13NE_Music {
                     nextStepTime = now + 0.1;
                     break;
                 }
-                // Use this.currentTrack so updates are reflected immediately
+                
                 this.currentTrack.voices.forEach(voice => {
                     if (voice.mute) return;
+
+                    // Determine voice properties based on ID/Instrument
+                    let pan = 0;
+                    let baseVelocity = 0.4;
+
+                    if (voice.id.includes('kick')) { pan = 0; baseVelocity = 0.8; }
+                    else if (voice.id.includes('snare')) { pan = -0.1; baseVelocity = 0.6; }
+                    else if (voice.id.includes('hat')) { pan = 0.3; baseVelocity = 0.3; }
+                    else if (voice.id.includes('perc') || voice.id.includes('ride') || voice.id.includes('crash')) { pan = -0.4; baseVelocity = 0.4; }
+                    else if (voice.id.includes('bass')) { pan = 0; baseVelocity = 0.7; }
+                    else if (voice.id.includes('pad')) { pan = 0.5; baseVelocity = 0.25; }
+                    else if (voice.id.includes('guitar')) { pan = -0.3; baseVelocity = 0.5; }
+                    else {
+                        // Spread other voices
+                        const hash = this.synth._hash(voice.id);
+                        pan = (hash % 100) / 50 - 1; // -1 to 1
+                        baseVelocity = 0.5;
+                    }
+
                     voice.sequence.forEach(note => {
                         if (note.step === currentStep) {
+                            // Add slight random variation to velocity and timing for humanization
+                            const dynamicVelocity = (note.velocity || 1.0) * baseVelocity * (0.9 + Math.random() * 0.2);
+                            const microDelay = Math.random() * 0.005;
+
                             this.synth.playNote(
                                 note.freq || this.synth.instrumentEngine._freqFromNote(note.note), 
-                                nextStepTime, 
+                                nextStepTime + microDelay, 
                                 note.duration, 
                                 'Piano', 
                                 0, 
                                 voice.instrument, 
-                                voice.id 
+                                voice.id,
+                                pan,
+                                dynamicVelocity
                             );
                         }
                     });

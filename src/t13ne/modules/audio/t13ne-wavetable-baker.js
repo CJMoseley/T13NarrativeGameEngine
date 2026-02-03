@@ -187,7 +187,7 @@ export class WavetableBaker {
         const result = new Float32Array(copyArray); // Copy so we can unmap
         readBuffer.unmap();
 
-        return result;
+        return this.normalize(result);
     }
 
     bakeCPU(partials, numSamples, sampleRate) {
@@ -198,13 +198,27 @@ export class WavetableBaker {
         for (let i = 0; i < numSamples; i++) {
             const t = i / sampleRate;
             let sum = 0;
-            // Unrolling or optimizing inner loop is possible but this is fallback
             for (let p = 0; p < partials.length; p++) {
                 sum += Math.sin(twoPi * partials[p].freq * t) * partials[p].amp;
             }
             result[i] = sum;
         }
-        return result;
+        return this.normalize(result);
+    }
+
+    normalize(buffer) {
+        let max = 0;
+        for (let i = 0; i < buffer.length; i++) {
+            const abs = Math.abs(buffer[i]);
+            if (abs > max) max = abs;
+        }
+        if (max > 0) {
+            const scale = 0.9 / max;
+            for (let i = 0; i < buffer.length; i++) {
+                buffer[i] *= scale;
+            }
+        }
+        return buffer;
     }
 
     destroy() {

@@ -25,8 +25,8 @@ export class AdditiveProcessor {
         return this.ctx.createPeriodicWave(real, imag);
     }
 
-    createSynthFromAnalysis(analysis, depth = 'medium') {
-        const fundamental = analysis.freq || 440;
+    createSynthFromAnalysis(analysis, depth = 'medium', role = 'lead') {
+        const fundamental = (analysis && analysis.freq) ? analysis.freq : 440;
 
         let partialCount = 5;
         if (depth === 'low') partialCount = 3;
@@ -36,40 +36,64 @@ export class AdditiveProcessor {
         let partials = [];
 
         // CHECK 1: Do we have real FFT data?
-        if (analysis.peaks && analysis.peaks.length > 0) {
-            // Use real peaks!
-            // We need to normalize them relative to fundamental?
-            // Ideally we express them as harmonic ratios for wavetable synthesis
-
-            // Take top N peaks (sorted by amp in analyzer)
+        if (analysis && analysis.peaks && analysis.peaks.length > 0) {
             const usedPeaks = analysis.peaks.slice(0, partialCount);
-
-            // Convert absolute freq to harmonic multiple of fundamental
             partials = usedPeaks.map(p => ({
-                freq: p.freq / fundamental, // e.g. 440/440=1, 880/440=2
+                freq: p.freq / fundamental,
                 amp: p.amp,
-                decay: 1.0 / Math.pow(p.freq / fundamental, 0.5) // Guess decay
+                decay: 1.0 / Math.pow(p.freq / fundamental, 0.5)
             }));
-
         } else {
-            // Fallback: Procedural generation
-            for (let i = 1; i <= partialCount; i++) {
-                let amp = 1.0 / i;
-                if (depth === 'full' && i % 2 === 0) amp *= 0.5;
+            // Fallback: Role-Specific Procedural generation
+            const seed = Math.sin(fundamental) * 10000;
+            const pseudoRand = (i) => {
+                const x = Math.sin(seed + i) * 10000;
+                return x - Math.floor(x);
+            };
 
-                partials.push({
-                    freq: i,
-                    amp: amp,
-                    decay: 1.0 / Math.pow(i, 0.5)
-                });
+            for (let i = 1; i <= partialCount; i++) {
+                let freq = i;
+                let amp = 1.0;
+                let decay = 1.0;
+
+                if (role === 'pad') {
+                    // Detuned, thick partials
+                    freq = i + (pseudoRand(i) * 0.05 - 0.025);
+                    amp = 1.0 / Math.pow(i, 0.3);
+                    decay = 1.0 / Math.pow(i, 0.1);
+                } else if (role === 'bass') {
+                    // Strong fundamental, fast dropoff
+                    freq = i;
+                    amp = i === 1 ? 1.0 : (1.0 / Math.pow(i, 2));
+                    decay = 1.0 / i;
+                } else if (role === 'rhythm' || role === 'kick' || role === 'perc') {
+                    // Inharmonic, sharp partials
+                    freq = i * (1 + pseudoRand(i) * 0.5);
+                    amp = 1.0 / i;
+                    decay = 0.5 / i;
+                } else {
+                    // Lead: Bright, harmonic
+                    freq = i + (pseudoRand(i) * 0.01 - 0.005);
+                    amp = 1.0 / Math.pow(i, 0.8);
+                    decay = 1.0 / Math.pow(i, 0.5);
+                }
+                
+                if (i % 2 === 0 && role !== 'bass') amp *= (0.5 + pseudoRand(i + 200) * 0.5);
+
+                partials.push({ freq, amp, decay });
             }
+            
+            // Normalize amps
+            const maxAmp = Math.max(...partials.map(p => p.amp));
+            if (maxAmp > 0) partials.forEach(p => p.amp /= maxAmp);
         }
 
         return {
             type: 'additive',
             algorithm: 'custom',
             depth: depth,
-            partials: partials
+            partials: partials,
+            role: role
         };
     }
 
@@ -171,85 +195,13 @@ export class InstrumentEngine {
             Logger.warn("InstrumentEngine: Failed to load AdditiveProcessor Worklet. Falling back to PeriodicWave.", e);
         }
 
-        // Default Instruments
-        // Replaced pure waves with additive approximations to avoid harshness
-        this.defineInstrument('sine', { 
-            type: 'additive', 
-            algorithm: 'custom', 
-            partials: [{freq:1, amp:1}, {freq:2, amp:0.05}, {freq:3, amp:0.02}] 
-        });
-        this.defineInstrument('saw', { 
-            type: 'additive', 
-            algorithm: 'custom', 
-            partials: [{freq:1, amp:1}, {freq:2, amp:0.5}, {freq:3, amp:0.33}, {freq:4, amp:0.25}] 
-        });
+        // Minimal Base Instruments
+        this.defineInstrument('sine', { type: 'additive', algorithm: 'custom', partials: [{freq:1, amp:1}, {freq:2, amp:0.05}, {freq:3, amp:0.02}] });
+        this.defineInstrument('saw', { type: 'additive', algorithm: 'custom', partials: [{freq:1, amp:1}, {freq:2, amp:0.5}, {freq:3, amp:0.33}, {freq:4, amp:0.25}] });
         this.defineInstrument('bell', { type: 'additive', algorithm: 'bell' });
-
-        // Orchestral Definitions (Approximations)
-        // Cello: Rich, warm, with emphasis on lower harmonics
-        this.defineInstrument('Cello', { 
-            type: 'additive', 
-            algorithm: 'custom', 
-            envelope: 'sustained',
-            partials: [
-                { freq: 1, amp: 1.0, decay: 1.5 },
-                { freq: 2, amp: 0.8, decay: 1.2 },
-                { freq: 3, amp: 0.6, decay: 1.0 },
-                { freq: 4, amp: 0.4, decay: 0.8 },
-                { freq: 5, amp: 0.3, decay: 0.6 }
-            ] 
-        });
-
-        // Tuba: Deep, brassy
-        this.defineInstrument('Tuba', { 
-            type: 'additive', 
-            algorithm: 'custom', 
-            envelope: 'sustained',
-            partials: [
-                { freq: 1, amp: 1.0, decay: 0.8 },
-                { freq: 2, amp: 0.7, decay: 0.6 },
-                { freq: 3, amp: 0.4, decay: 0.4 },
-                { freq: 4, amp: 0.2, decay: 0.3 }
-            ] 
-        });
-
-        // Oboe: Nasal, rich in odd harmonics
-        this.defineInstrument('Oboe', { 
-            type: 'additive', 
-            algorithm: 'custom', 
-            envelope: 'sustained',
-            partials: [
-                { freq: 1, amp: 0.4, decay: 0.5 },
-                { freq: 2, amp: 0.1, decay: 0.5 },
-                { freq: 3, amp: 1.0, decay: 0.5 }, // Strong 3rd harmonic
-                { freq: 4, amp: 0.1, decay: 0.5 },
-                { freq: 5, amp: 0.5, decay: 0.4 }
-            ] 
-        });
-
-        this.defineInstrument('Flute', { type: 'additive', algorithm: 'custom', envelope: 'sustained', partials: [{freq:1, amp:1, decay:0.5}, {freq:2, amp:0.2, decay:0.3}] });
-        this.defineInstrument('Trumpet', { type: 'additive', algorithm: 'custom', envelope: 'sustained', partials: [{freq:1, amp:1, decay:0.2}, {freq:2, amp:0.8, decay:0.2}, {freq:3, amp:0.6, decay:0.2}, {freq:4, amp:0.4, decay:0.2}] });
-        this.defineInstrument('French Horn', { type: 'additive', algorithm: 'custom', envelope: 'sustained', partials: [{freq:1, amp:1, decay:0.8}, {freq:2, amp:0.5, decay:0.7}, {freq:3, amp:0.3, decay:0.6}] });
-        this.defineInstrument('Clarinet', { type: 'additive', algorithm: 'custom', envelope: 'sustained', partials: [{freq:1, amp:1, decay:0.6}, {freq:3, amp:0.5, decay:0.5}, {freq:5, amp:0.3, decay:0.4}] }); // Odd harmonics
         
-        this.defineInstrument('Violin', { 
-            type: 'additive', 
-            algorithm: 'custom', 
-            envelope: 'sustained',
-            partials: [
-                { freq: 1, amp: 1.0, decay: 1.0 },
-                { freq: 2, amp: 0.5, decay: 0.9 },
-                { freq: 3, amp: 0.3, decay: 0.8 },
-                { freq: 4, amp: 0.2, decay: 0.7 },
-                { freq: 5, amp: 0.2, decay: 0.6 },
-                { freq: 6, amp: 0.1, decay: 0.5 }
-            ] 
-        });
-
-        this.defineInstrument('Viola', { type: 'additive', algorithm: 'custom', envelope: 'sustained', partials: [{freq:1, amp:1, decay:1.2}, {freq:2, amp:0.6, decay:1.0}, {freq:3, amp:0.4, decay:0.8}] });
-        this.defineInstrument('Piano', { type: 'additive', algorithm: 'custom', envelope: 'percussive', partials: [{freq:1, amp:1, decay:2.0}, {freq:2, amp:0.4, decay:1.5}, {freq:3, amp:0.2, decay:1.0}, {freq:4, amp:0.1, decay:0.8}] });
-        this.defineInstrument('Harpsichord', { type: 'additive', algorithm: 'custom', partials: [{freq:1, amp:0.6, decay:0.5}, {freq:2, amp:1.0, decay:0.4}, {freq:3, amp:0.5, decay:0.3}, {freq:4, amp:0.3, decay:0.2}] });
-        this.defineInstrument('Harp', { type: 'additive', algorithm: 'custom', partials: [{freq:1, amp:1, decay:3.0}, {freq:2, amp:0.5, decay:2.5}, {freq:3, amp:0.2, decay:2.0}] });
+        // Piano fallback (required for many systems)
+        this.defineInstrument('Piano', { type: 'additive', algorithm: 'custom', envelope: 'percussive', partials: [{freq:1, amp:1, decay:2.0}, {freq:2, amp:0.4, decay:1.5}] });
 
         // Create a noise buffer for percussion
         const bufferSize = this.ctx.sampleRate * 2.0; // 2 seconds of noise
@@ -260,16 +212,15 @@ export class InstrumentEngine {
         }
     }
 
-    createSyntheticInstrument(sourceId, newId, depth = 'medium', envelope = 'percussive') {
-        // 1. Get Analysis
-        const analysis = this.manifestManager.getAssetAnalysis('samples', sourceId);
+    createSyntheticInstrument(sourceId, newId, depth = 'medium', envelope = 'percussive', role = 'lead') {
+        // 1. Get Analysis (with fallback if missing)
+        let analysis = this.manifestManager.getAssetAnalysis('samples', sourceId);
         if (!analysis) {
-            Logger.warn(`Cannot synthesize '${sourceId}': no analysis data.`);
-            return;
+            analysis = { freq: 440, note: 'A4', peaks: [] };
         }
 
         // 2. Generate Definition via Additive Processor
-        const def = this.additive.createSynthFromAnalysis(analysis, depth);
+        const def = this.additive.createSynthFromAnalysis(analysis, depth, role);
         def.envelope = envelope;
 
         // 3. Register locally
@@ -484,42 +435,56 @@ export class InstrumentEngine {
         }
     }
 
-    playNote(instrumentId, frequency, time, duration, velocity = 0.5, destination) {
+    playNote(instrumentId, frequency, time, duration, velocity = 0.5, destination, pan = 0) {
         const inst = this.instruments.get(instrumentId);
         if (!inst) {
             Logger.warn(`InstrumentEngine: Instrument '${instrumentId}' not found. Note skipped.`);
             return;
         }
 
+        // Stereo Panning Stage
+        const panner = this.ctx.createStereoPanner();
+        panner.pan.value = pan;
+        panner.connect(destination);
+
+        // Cleanup helper for the panner
+        const cleanup = (endTime) => {
+            const timer = this.ctx.createOscillator();
+            timer.onended = () => {
+                panner.disconnect();
+            };
+            timer.start(endTime);
+            timer.stop(endTime + 0.1);
+        };
+
+        const releaseTime = inst.release || 0.1;
+        const endTime = time + duration + releaseTime;
+        cleanup(endTime);
+
         switch (inst.type) {
             case 'sampler':
-                this.playSampleNote(inst.sampleId, frequency, time, duration, velocity, destination);
+                this.playSampleNote(inst.sampleId, frequency, time, duration, velocity, panner);
                 break;
             case 'additive':
-                // OPTIMIZATION: Use Native PeriodicWave for harmonic instruments (Stable, no crackle)
                 if (inst.isHarmonic) {
-                    this.playPeriodicNote(inst, frequency, time, duration, velocity, destination);
+                    this.playPeriodicNote(inst, frequency, time, duration, velocity, panner);
                 } 
-                // Use Worklet for inharmonic/complex textures
                 else if (this.workletReady && inst.wavetable) {
-                    // Use High-Performance AudioWorklet
-                    this.playWorkletTone(inst, frequency, time, duration, velocity, destination);
+                    this.playWorkletTone(inst, frequency, time, duration, velocity, panner);
                 } else if (inst.algorithm === 'bell') {
-                    // Fallback to PeriodicWave
-                    this.additive.playAdditiveTone(frequency, time, duration, destination, null, inst); // partials will default
+                    this.additive.playAdditiveTone(frequency, time, duration, panner, null, inst);
                 } else if (inst.partials) {
-                    this.additive.playAdditiveTone(frequency, time, duration, destination, inst.partials, inst);
+                    this.additive.playAdditiveTone(frequency, time, duration, panner, inst.partials, inst);
                 } else {
-                    // Fallback for additive if no algorithm or partials specified
-                    this.additive.playAdditiveTone(frequency, time, duration, destination, null, inst);
+                    this.additive.playAdditiveTone(frequency, time, duration, panner, null, inst);
                 }
                 break;
             case 'noise':
-                this.playNoiseNote(time, duration, velocity, destination, inst);
+                this.playNoiseNote(time, duration, velocity, panner, inst);
                 break;
             case 'synth':
             default:
-                this.playSynthNote(frequency, time, duration, inst.oscType, velocity, destination, inst);
+                this.playSynthNote(frequency, time, duration, inst.oscType, velocity, panner, inst);
                 break;
         }
     }
@@ -527,17 +492,15 @@ export class InstrumentEngine {
     playPeriodicNote(inst, frequency, time, duration, velocity, destination) {
         if (!Number.isFinite(frequency) || frequency <= 0) return;
 
-        // Create or reuse PeriodicWave
         if (!inst.periodicWave) {
             const maxHarmonic = Math.max(...inst.partials.map(p => Math.round(p.freq)));
             const real = new Float32Array(maxHarmonic + 1);
             const imag = new Float32Array(maxHarmonic + 1);
             
-            // Web Audio PeriodicWave: real=cosine terms, imag=sine terms
             inst.partials.forEach(p => {
                 const idx = Math.round(p.freq);
                 if (idx < real.length) {
-                    imag[idx] = p.amp; // Sine components
+                    imag[idx] = p.amp;
                 }
             });
             inst.periodicWave = this.ctx.createPeriodicWave(real, imag);
@@ -570,8 +533,8 @@ export class InstrumentEngine {
     }
 
     applyEnvelope(env, osc, inst, time, duration, velocity, workletNode = null) {
-        // Safety scaling to prevent clipping with additive synthesis
-        const gainScale = 0.2; 
+        // Reduced gainScale to 0.05 to provide significant headroom for polyphony
+        const gainScale = 0.05; 
         const scaledVelocity = velocity * gainScale;
 
         // Envelope Logic (Simplified ADSR)
@@ -607,6 +570,10 @@ export class InstrumentEngine {
         timerOsc.onended = () => {
             if (osc) { osc.stop(); osc.disconnect(); }
             if (workletNode) { workletNode.disconnect(); }
+            
+            // Check if env is connected to a panner and clean that up too
+            // In our current implementation, env -> panner -> destination
+            // Disconnecting env will effectively isolate the panner, but let's be explicit
             env.disconnect();
         };
         timerOsc.start(time);

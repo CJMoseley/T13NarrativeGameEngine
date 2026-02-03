@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { ShipFactory, COMPONENT_COLORS } from '../core/ship/ShipFactory.js';
+import { MANUFACTURERS, TECH_SPECS, QUALITIES } from '../core/ship/ShipUtils.js';
 import { Scene } from '../core/Scene.js';
 
 export class ShipShowcaseScene extends Scene {
@@ -11,6 +12,7 @@ export class ShipShowcaseScene extends Scene {
         this.componentGroups = []; // List of component groups
         this.componentMeshes = []; // List of created meshes
         this.hullMesh = null;
+        this.shipName = "Unknown Prototype";
         
         this.currentIndex = 0;
         this.uiContainer = null;
@@ -62,15 +64,40 @@ export class ShipShowcaseScene extends Scene {
         // 8. Generate Ship Data Procedurally
         onProgress({ status: 'Designing random ship...', percent: 0.4 });
         // Use a random seed or one based on the home system if available
-        const seed = Math.random() * 10000; 
+        const seed = Math.floor(Math.random() * 4294967296);
+        
+        // Determine style to ensure name matches visual
+        const styles = ['ORGANIC', 'INDUSTRIAL', 'SKELETON'];
+        const style = styles[Math.floor(Math.random() * styles.length)];
+        
         const sizes = ['small', 'medium', 'large'];
         const size = sizes[Math.floor(Math.random() * sizes.length)];
-        const shipComponents = await this.shipFactory.createRandomShip(seed, { size: size, techLevel: 2 });
+        
+        const shipComponents = await this.shipFactory.createRandomShip(seed, { size: size, techLevel: 2, style: style });
+
+        // Generate Ship Name
+        if (this.viewManager.gameEngine.loreMaster && this.viewManager.gameEngine.loreMaster.nameGenerator) {
+            try {
+                const genName = await this.viewManager.gameEngine.loreMaster.nameGenerator.generate('SHIP_NAMES', seed);
+                // Fix: Check for the repetitive placeholder name and generate a fallback if found
+                if (genName && genName !== "G'nathuun") {
+                    this.shipName = genName;
+                } else {
+                    const manu = MANUFACTURERS[Math.floor(Math.random() * MANUFACTURERS.length)];
+                    const tech = TECH_SPECS[Math.floor(Math.random() * TECH_SPECS.length)];
+                    const qual = QUALITIES[Math.floor(Math.random() * QUALITIES.length)];
+                    const type = style === 'ORGANIC' ? "Bio-Craft" : (style === 'SKELETON' ? "Frame" : "Racer");
+                    this.shipName = `${manu} ${tech} ${type} ${qual}`;
+                }
+            } catch (e) {
+                console.warn("ShipShowcaseScene: Failed to generate ship name.", e);
+            }
+        }
         
 
         // Start hull generation in background immediately
         onProgress({ status: 'Generating procedural hull...', percent: 0.6 });
-        const styleConfig = { method: 'ORGANIC', plating: false, blendStrength: 1.5 };
+        const styleConfig = { method: style, plating: (style === 'INDUSTRIAL'), blendStrength: (style === 'ORGANIC' ? 1.5 : 0.1) };
         this.hullGenerationPromise = this.shipFactory.generateProceduralShipAsync(shipComponents, styleConfig);
 
         // Await generation so the loader stays up until we are ready
@@ -281,7 +308,7 @@ export class ShipShowcaseScene extends Scene {
                 if (this.hullMesh) {
                     this.hideInternals();
                 }
-                this.labelElement.innerText = "RACING PROTOTYPE X-1"; 
+                this.labelElement.innerText = this.shipName;
                 this.descElement.innerText = "Ready for the Wormhole."; 
 
             } 
