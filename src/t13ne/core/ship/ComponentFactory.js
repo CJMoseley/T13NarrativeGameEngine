@@ -15,7 +15,8 @@ export const PRIMITIVE_TYPES = {
     DODECAHEDRON: 'dodecahedron',
     ICOSAHEDRON: 'icosahedron',
     OCTAHEDRON: 'octahedron',
-    TETRAHEDRON: 'tetrahedron'
+    TETRAHEDRON: 'tetrahedron',
+    COMPOUND_EYE: 'compound_eye'
 };
 
 export class ComponentFactory {
@@ -127,10 +128,6 @@ export class ComponentFactory {
 
                 geometry.translate(0, 0, -(dims.depth || 0.2) / 2); // Center depth only, keep root at (0,0,0)
 
-                geometry.translate(0, 0, -(dims.depth || 0.2) / 2); // Center depth only, keep root at (0,0,0)
-
-                geometry.translate(0, 0, -(dims.depth || 0.2) / 2); // Center depth only, keep root at (0,0,0)
-
                 geometry.rotateX(Math.PI / 2); // Rotate so Y (Chord) becomes Z, Z (Depth) becomes -Y
 
                 const posAttribute = geometry.attributes.position;
@@ -165,6 +162,10 @@ export class ComponentFactory {
 
             case PRIMITIVE_TYPES.TETRAHEDRON:
                 geometry = new THREE.TetrahedronGeometry(dims.radius || 1);
+                break;
+
+            case PRIMITIVE_TYPES.COMPOUND_EYE:
+                geometry = new THREE.IcosahedronGeometry(dims.radius || 0.5, 2); // High detail for faceted look
                 break;
 
             default:
@@ -243,6 +244,7 @@ export class ComponentFactory {
             case PRIMITIVE_TYPES.ICOSAHEDRON:
             case PRIMITIVE_TYPES.OCTAHEDRON:
             case PRIMITIVE_TYPES.TETRAHEDRON:
+            case PRIMITIVE_TYPES.COMPOUND_EYE:
                 scale.set(dims.radius || 1, dims.radius || 1, dims.radius || 1);
                 sdfType = type;
                 break;

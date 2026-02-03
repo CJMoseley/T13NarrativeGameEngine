@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 
 export const COMPONENT_COLORS = {
-    'fuselage': 0x808080, // Grey
+    'fuselage': 0xffff00, // Structural Yellow
     'hull': 0x808080,
     'chassis': 0x808080,
     'engine': 0xff4500,   // OrangeRed
@@ -16,6 +16,7 @@ export const COMPONENT_COLORS = {
     'shield': 0x0000ff,   // Blue
     'fuel': 0xffff00,     // Yellow
     'nose': 0xeeeeee,     // White
+    'structural': 0xffff00, // Yellow
     'default': 0xaaaaaa
 };
 

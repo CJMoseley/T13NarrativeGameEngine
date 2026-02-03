@@ -157,11 +157,7 @@ export class ShipGenerator {
                         const rId = id + `_rad_${i}`;
                         components.push({ usage, name, namePromise, type, dims, pos: rPos, rot: rRot, id: rId, stats });
                         radialIds.push({ id: rId, pos: rPos });
-
-                        // Wire to center
-                        if (id !== 'fuselage_0') {
-                            this.wiringGenerator.addConnection(explicitWiring, id, `fuselage_0`, 'power', 5.0);
-                        }
+                        // Return the ID so we can link to it if needed
                     }
                 }
             }
@@ -201,6 +197,12 @@ export class ShipGenerator {
              else hullType = 'SPINE';
         }
 
+        // Inject Biological Types if Organic style
+        if (selectedStyle === 'ORGANIC' && random() > 0.4) {
+            const bioTypes = ['BIO_BIRD', 'BIO_FISH', 'BIO_CEPHALOPOD', 'BIO_INSECT'];
+            hullType = bioTypes[Math.floor(random() * bioTypes.length)];
+        }
+
         if (hullType === 'DISC') {
             // Saucer Body: Single large flat cylinder/prism
             mainHullRadius = (size === 'small' ? 4 : (size === 'medium' ? 8 : 12)) * (0.8 + random() * 0.4);
@@ -217,13 +219,23 @@ export class ShipGenerator {
             attachComponent('fuselage_spine', [0, 0, 0], [Math.PI/2, 0, 0], 'box', 
                 {width: 1.5, height: trussLen, depth: 1.5}, 'NONE');
             
-            // Engine Block at rear
-            attachComponent('engine_block', [0, 0, -trussLen/2 - 1.5], [0, 0, 0], 'box', 
+            // Engine Block at rear - Offset by 1 unit to avoid Z-fighting with spine end
+            attachComponent('engine_block', [0, 0, -trussLen/2 - 1.5 - 1.0], [0, 0, 0], 'box', 
                 {width: 5, height: 4, depth: 3}, 'NONE');
+            
+            // Connect Engine to Spine
+            const spineId = components[components.length - 2].id;
+            const engineId = components[components.length - 1].id;
+            this.wiringGenerator.addConnection(explicitWiring, engineId, spineId, 'power', 2.0);
 
             // Bridge Block at front (or top front)
-            attachComponent('bridge_block', [0, 1.5, trussLen/2 - 2], [0, 0, 0], 'box', 
+            // Overhang the front: trussLen/2 is the end. Place center slightly past it.
+            attachComponent('bridge_block', [0, 1.5, trussLen/2 + 1.0], [0, 0, 0], 'box', 
                 {width: 3, height: 2, depth: 4}, 'NONE');
+            
+            // Connect Bridge to Spine
+            const bridgeId = components[components.length - 1].id;
+            this.wiringGenerator.addConnection(explicitWiring, bridgeId, spineId, 'data', 2.0);
 
             // Cargo Containers
             const containers = Math.floor(trussLen / 3.0);
@@ -246,6 +258,7 @@ export class ShipGenerator {
             const angleSpan = Math.PI * 1.2; // > 180 degrees
             const angleStep = angleSpan / segments;
             
+            let prevId = null;
             for(let i=0; i<segments; i++) {
                 // Curve along X/Z plane
                 const angle = -angleSpan/2 + (i * angleStep);
@@ -258,6 +271,12 @@ export class ShipGenerator {
                 
                 attachComponent('fuselage_arc', [x, 0, z], [Math.PI/2, 0, rotY], 'cylinder', 
                     {radiusTop: width/2, radiusBottom: width/2, height: (curveRadius * angleStep) * 1.1, radialSegments: 8}, 'NONE');
+                
+                const currentId = components[components.length - 1].id;
+                if (prevId) {
+                    this.wiringGenerator.addConnection(explicitWiring, currentId, prevId, 'structural', 2.0);
+                }
+                prevId = currentId;
                 
                 // Occasional vertical spike or bulb on the horseshoe
                 if (random() > 0.7) {
@@ -383,9 +402,16 @@ export class ShipGenerator {
             const visited = new Set(['0,0,0']);
             const boxSize = 2.0;
             
+            let prevId = null;
             for(let i=0; i<steps; i++) {
                 attachComponent('maze_segment', curr, [0,0,0], 'box', {width: boxSize, height: boxSize, depth: boxSize}, 'NONE');
                 
+                const currentId = components[components.length - 1].id;
+                if (prevId) {
+                    this.wiringGenerator.addConnection(explicitWiring, currentId, prevId, 'structural', boxSize);
+                }
+                prevId = currentId;
+
                 // Pick random direction
                 const axis = Math.floor(random() * 3);
                 const dir = random() > 0.5 ? 1 : -1;
@@ -484,6 +510,7 @@ export class ShipGenerator {
             const segmentHeight = spineLength / spineSegments;
             let lastSegmentRadius = 1.0;
             let lastSegmentZ = 0;
+            let previousSegmentId = null;
 
             // Initialize segment count for consistency (reduce jitter between segments)
             let currentSegs = (random() > 0.5) ? harmonicSegments : Math.floor(3 + random() * 5);
@@ -524,7 +551,13 @@ export class ShipGenerator {
                         yRot = -Math.PI / segs;
                     }
 
-                    rot = [Math.PI / 2, yRot, 0];
+                    // Rotate Z to align odd-sided prisms (flat top/bottom)
+                    // Default cylinder (prism) has vertex at +X. 
+                    // RotX(90) puts vertex at +X (Side). We want vertex at +Y (Top) or -Y (Bottom) for symmetry.
+                    // RotZ(90) moves +X to +Y.
+                    const zRot = (segs % 2 !== 0) ? Math.PI / 2 : 0;
+
+                    rot = [Math.PI / 2, yRot, zRot];
 
                     if (i === spineSegments - 1) {
                         lastSegmentRadius = radius;
@@ -536,6 +569,13 @@ export class ShipGenerator {
                     { radius: radius, height: segmentHeight, segments: segs },
                     effectiveSymmetry
                 );
+
+                // Connect to previous segment
+                const currentId = components[components.length - 1].id;
+                if (previousSegmentId && hullType === 'SPINE') {
+                    this.wiringGenerator.addConnection(explicitWiring, currentId, previousSegmentId, 'power', segmentHeight);
+                }
+                previousSegmentId = currentId;
             }
 
             // Add Nose Cone (Only for Z-Spine)
@@ -551,31 +591,15 @@ export class ShipGenerator {
                     { radius: noseRadius, height: noseLength, radialSegments: noseSegments },
                     'NONE'
                 );
+                
+                // Connect nose to last segment
+                const noseId = components[components.length - 1].id;
+                if (previousSegmentId) {
+                    this.wiringGenerator.addConnection(explicitWiring, noseId, previousSegmentId, 'power', noseLength);
+                }
             } else if (hullType === 'STAR') {
                 // Central Hub for Star
                 attachComponent('hub', [0, 0, 0], [0, 0, 0], 'cylinder', { radiusTop: 2, radiusBottom: 2, height: 2, radialSegments: radialCount * 2 }, 'NONE');
-            }
-        }
-
-        // Add Torus Ring for Radial Ships
-        if (symmetryType === 'RADIAL' && random() > 0.3) {
-            const ringRadius = (size === 'small' ? 3 : (size === 'medium' ? 6 : 10)) * (0.5 + random() * 0.5);
-            const tubeRadius = ringRadius * 0.15 * (0.8 + random() * 0.4);
-
-            let ringRot = [0, 0, 0];
-            // If radialAxis is 'y' (Saucer), torus needs to be in XZ plane. Default Torus is XY. Rotate X 90.
-            if (radialAxis === 'y') {
-                ringRot = [Math.PI / 2, 0, 0];
-            }
-
-            // Center the ring at 0,0,0
-            const ringId = 'fuselage_ring';
-            attachComponent(ringId, [0, 0, 0], ringRot, 'torus', { radius: ringRadius, tube: tubeRadius }, 'NONE');
-            
-            // Explicitly wire ring to the nearest fuselage segment (usually center) to ensure struts generate
-            const centralFuselage = components.find(c => c.usage === 'fuselage' && Math.abs(c.pos[2]) < 2.0);
-            if (centralFuselage) {
-                this.wiringGenerator.addConnection(explicitWiring, ringId, centralFuselage.id, 'structural', ringRadius);
             }
         }
 
@@ -679,16 +703,16 @@ export class ShipGenerator {
         const engineZ = -(spineLength / 2) - 1;
         if (hullType === 'DISC') {
             // Saucer engines on rim
-            const engR = mainHullRadius || 4;
-            // FIX: Rotate to point local -Y outwards along +X. This is a +90 deg rotation around Z.
-            attachComponent('engine', [engR, 0, 0], [0, 0, Math.PI / 2], 'cylinder', { radiusTop: 0.4, radiusBottom: 0.6, height: 1.5 });
-            // Add Strut to center
-            // FIX: Strut rotation should align its length (depth) along the X axis.
-            attachComponent('mount', [engR / 2, 0, 0], [0, Math.PI / 2, 0], 'box', { width: 0.5, height: 0.5, depth: engR });
+            const engR = mainHullRadius * 0.6;
+            const height = (size === 'small' ? 1 : (size === 'medium' ? 2 : 3));
+            
+            // Engines on bottom, pointing down (No rotation, wider at bottom)
+            attachComponent('engine', [engR, -height/2 - 1.0, 0], [0, 0, 0], 'cylinder', 
+                { radiusTop: 0.5, radiusBottom: 1.0, height: 2.0 }, 'RADIAL');
         } else {
             if (symmetryType === 'REFLECTIVE') {
                 // FIX: Rotate to point local -Y backwards along -Z. This is a -90 deg rotation around X.
-                attachComponent('engine', [1.5, 0, engineZ], [-Math.PI / 2, 0, 0], 'cylinder', { radiusTop: 0.4, radiusBottom: 0.6, height: 2.0 });
+                attachComponent('engine', [1.5, 0, engineZ], [Math.PI / 2, 0, 0], 'cylinder', { radiusTop: 0.4, radiusBottom: 0.6, height: 2.0 });
                 // Add Strut to fuselage
                 attachComponent('mount', [0.75, 0, engineZ], [0, 0, 0], 'box', { width: 1.5, height: 0.4, depth: 0.8 });
             } else if (hullType === 'STAR') {
@@ -699,12 +723,12 @@ export class ShipGenerator {
             } else {
                 // Central engine
                 // FIX: Rotate to point local -Y backwards along -Z. This is a -90 deg rotation around X.
-                attachComponent('engine', [0, 0, engineZ], [-Math.PI / 2, 0, 0], 'cylinder', { radiusTop: 0.6, radiusBottom: 0.9, height: 2.5 });
+                attachComponent('engine', [0, 0, engineZ], [Math.PI / 2, 0, 0], 'cylinder', { radiusTop: 0.6, radiusBottom: 0.9, height: 2.5 });
             }
         }
 
         // Wings & Fins Generation
-        if (random() > 0.1 && hullType === 'SPINE') { // 90% chance of wings, but not for saucers/stars
+        if (random() > 0.1 && (hullType === 'SPINE' || hullType === 'BIO_BIRD' || hullType === 'BIO_INSECT')) { 
             const wingConfigVal = random(); // 0-0.4: Mono, 0.4-0.7: X-Wing, 0.7-1.0: Bi-Wing
             let wingConfig;
             if (wingConfigVal < 0.4) wingConfig = 'Monoplane';
@@ -722,12 +746,21 @@ export class ShipGenerator {
             const baseSpan = baseRootChord * (0.25 + random() * 0.75); // 25% to 100% of root chord
             const wingThickness = 0.2 + random() * 0.1;
 
-            // Position Z: Centered or slightly offset
-            const wingZ = (random() - 0.5) * (spineLength * 0.2);
+            // Calculate Max Span for Radial Symmetry to prevent overlap
+            let maxSpan = baseSpan;
+            if (symmetryType === 'RADIAL') {
+                const circumference = 2 * Math.PI * (mainHullRadius || 2);
+                maxSpan = Math.min(baseSpan, (circumference / radialCount) * 0.8);
+            }
+
+            // Position Z: Explicit separation
+            const wingZ = 0; // Main wings centered
+            const canardZ = spineLength / 2 - 1.0; // Front
+            const tailZ = -spineLength / 2 + 1.0; // Back
 
             // Calculate attachment point based on fuselage radius
             const fuselageRadius = getFuselageRadiusAt(wingZ);
-            const attachmentX = fuselageRadius * 0.95; // Slight overlap to ensure connection
+            const attachmentX = fuselageRadius * 0.9; // Overlap to ensure connection
 
             // Force reflective symmetry for wings if the ship is asymmetrical, to ensure balance
             const symOverride = symmetryType === 'ASYMMETRICAL' ? 'REFLECTIVE' : null;
@@ -739,7 +772,7 @@ export class ShipGenerator {
                 const isFin = depth > 0 && random() > 0.5;
 
                 // Dimensions for this segment
-                const span = baseSpan / (depth + 1) * (0.8 + random() * 0.4);
+                const span = (maxSpan / (depth + 1)) * (0.8 + random() * 0.4);
                 const tipChord = currentRootChord * (0.3 + random() * 0.5); // Taper
                 const sweep = (random() * 0.9 - 0.1) * currentRootChord; // Mostly rear swept (-0.1 to 0.8)
 
@@ -811,37 +844,70 @@ export class ShipGenerator {
                 // Monoplane (Standard) - Variable height
                 const yPos = (random() - 0.5) * 2.0;
                 const wingDefs = createSingleWingStructure([attachmentX, yPos, wingZ], 0, baseRootChord, symmetryType === 'RADIAL', wingThickness, baseSpan);
-                wingDefs.forEach(def => attachComponent(def.usage, def.pos, def.rot, def.type, def.dims, symOverride));
+                
+                let parentId = null;
+                wingDefs.forEach((def, i) => {
+                    attachComponent(def.usage, def.pos, def.rot, def.type, def.dims, symOverride);
+                    // Get the ID of the component just added (it's the last one in the list)
+                    const currentId = components[components.length - 1].id;
+                    
+                    // Wire to parent (previous segment) or fuselage if first
+                    if (i === 0) {
+                        // Main wing connects to fuselage. We find the nearest fuselage segment later in WiringGenerator, 
+                        // but we can hint it here if we knew the fuselage ID. 
+                        // For now, let WiringGenerator handle root-to-fuselage.
+                    } else if (parentId) {
+                        // Wire extension to parent wing segment
+                        this.wiringGenerator.addConnection(explicitWiring, currentId, parentId, 'structural', 1.0);
+                    }
+                    parentId = currentId;
+                });
             } else if (effectiveWingConfig === 'X-Wing') {
                 // X-Wing (Angled)
                 const angle = (Math.PI / 6) + random() * (Math.PI / 6); // 30-60 degrees
-                const wingDefs1 = createSingleWingStructure([attachmentX, 0.2, wingZ], angle, baseRootChord, false, wingThickness, baseSpan);
-                wingDefs1.forEach(def => attachComponent(def.usage, def.pos, def.rot, def.type, def.dims, symOverride));
-                const wingDefs2 = createSingleWingStructure([attachmentX, -0.2, wingZ], -angle, baseRootChord, false, wingThickness, baseSpan);
-                wingDefs2.forEach(def => attachComponent(def.usage, def.pos, def.rot, def.type, def.dims, symOverride));
+                
+                const processWing = (defs) => {
+                    let parentId = null;
+                    defs.forEach((def, i) => {
+                        attachComponent(def.usage, def.pos, def.rot, def.type, def.dims, symOverride);
+                        const currentId = components[components.length - 1].id;
+                        if (i > 0 && parentId) this.wiringGenerator.addConnection(explicitWiring, currentId, parentId, 'structural', 1.0);
+                        parentId = currentId;
+                    });
+                };
+
+                processWing(createSingleWingStructure([attachmentX, 0.2, wingZ], angle, baseRootChord, false, wingThickness, maxSpan));
+                processWing(createSingleWingStructure([attachmentX, -0.2, wingZ], -angle, baseRootChord, false, wingThickness, maxSpan));
             } else {
                 // Bi-Wing (Stacked)
                 const gap = 2.0 + random();
-                const wingDefs1 = createSingleWingStructure([attachmentX, gap / 2, wingZ], 0, baseRootChord, symmetryType === 'RADIAL', wingThickness, baseSpan);
-                wingDefs1.forEach(def => attachComponent(def.usage, def.pos, def.rot, def.type, def.dims, symOverride));
-                const wingDefs2 = createSingleWingStructure([attachmentX, -gap / 2, wingZ], 0, baseRootChord, symmetryType === 'RADIAL', wingThickness, baseSpan);
-                wingDefs2.forEach(def => attachComponent(def.usage, def.pos, def.rot, def.type, def.dims, symOverride));
+                
+                const processWing = (defs) => {
+                    let parentId = null;
+                    defs.forEach((def, i) => {
+                        attachComponent(def.usage, def.pos, def.rot, def.type, def.dims, symOverride);
+                        const currentId = components[components.length - 1].id;
+                        if (i > 0 && parentId) this.wiringGenerator.addConnection(explicitWiring, currentId, parentId, 'structural', 1.0);
+                        parentId = currentId;
+                    });
+                };
+
+                processWing(createSingleWingStructure([attachmentX, gap / 2, wingZ], 0, baseRootChord, symmetryType === 'RADIAL', wingThickness, maxSpan));
+                processWing(createSingleWingStructure([attachmentX, -gap / 2, wingZ], 0, baseRootChord, symmetryType === 'RADIAL', wingThickness, maxSpan));
             }
 
             // Fins (Canards / Tail)
             // Front Canards
             if (random() > 0.6) {
-                const canardZ = spineLength / 2 - 1.5;
                 const canardW = baseSpan * 0.4;
                 const canardL = baseRootChord * 0.3;
-                const cX = 0.6;
+                const cX = fuselageRadius * 0.8;
                 const canardSweep = canardL * 0.4;
                 attachComponent('fin_front', [cX, 0, canardZ], [0, 0, 0], 'wedge', { span: canardW, rootChord: canardL, sweep: canardSweep, depth: 0.15, centered: false }, symOverride);
             }
 
             // Rear Fins / Vertical Stabilizers
             if (random() > 0.4) {
-                const tailZ = -spineLength / 2 + 1;
                 const tailH = 2 + random() * 2;
                 const tailL = spineLength * (0.2 + random() * 0.3); // Scale fin length to fuselage
                 const tailSweep = tailL * 0.5;
@@ -858,6 +924,11 @@ export class ShipGenerator {
 
         // Cockpit
         let cockpitPlaced = false;
+
+        // Check if we already added a bridge/cockpit in the hull generation phase (e.g. Freighter)
+        if (components.some(c => c.usage.includes('bridge') || c.usage.includes('cockpit'))) {
+            cockpitPlaced = true;
+        }
 
         // 1. Check for "Tower Bridge" (Star Destroyer style) - Restricted to larger ships
         if (spineLength > 5 && (hullType === 'SPINE' || hullType === 'FREIGHTER' || hullType === 'Y_FORK') && random() > 0.4) {
@@ -885,11 +956,17 @@ export class ShipGenerator {
                 // Side Offset (Falcon style)
                 const sideX = 2.5 + random() * 1.5;
                 const sideZ = (random() - 0.5) * (spineLength * 0.4);
-
+                
+                // Fix for Radial Symmetry Cockpits:
+                // If Radial, place central or ensure rotation aligns with radial segment
+                if (symmetryType === 'RADIAL') {
+                    attachComponent('cockpit', [0, 0, spineLength/2], [0, 0, 0], 'ellipsoid', { width: 1.5, height: 1.0, length: 2.0 });
+                } else {
                 // Cockpit
                 attachComponent('cockpit', [sideX, 0, sideZ], [0, 0, 0], 'cylinder', { radiusTop: 0.8, radiusBottom: 0.8, height: 1.5, radialSegments: 16 });
                 // Connecting strut/corridor to fuselage
                 attachComponent('cockpit_strut', [sideX / 2, 0, sideZ], [0, 0, Math.PI / 2], 'cylinder', { radiusTop: 0.5, radiusBottom: 0.5, height: sideX, radialSegments: 8 });
+                }
             } else {
                 if (hullType === 'DISC') {
                     // Cockpit on rim or center? Let's put it on the rim for rotation
@@ -906,6 +983,10 @@ export class ShipGenerator {
                     // Cockpit on Hub or Rim
                     const pos = hullType === 'STATION_WHEEL' ? [0, 2.5, 0] : [spineLength * 1.5, 1.5, 0];
                     attachComponent('cockpit', pos, [0, 0, 0], 'cylinder', { radiusTop: 1, radiusBottom: 1.2, height: 1.5 });
+                } else if (hullType.startsWith('BIO_')) {
+                    // Bio ships usually have head cockpits already, but if not:
+                    // Place on top
+                    attachComponent('cockpit', [0, 1.0, spineLength/3], [0, 0, 0], 'ellipsoid', { width: 1.0, height: 0.8, length: 1.5 });
                 } else {
                     const cockpitZ = (spineLength / 2) - 1.5;
                     attachComponent('cockpit', [0, 0.6, cockpitZ], [0, 0, 0], 'ellipsoid', { width: 1.0, height: 0.8, length: 1.5 });
@@ -927,6 +1008,71 @@ export class ShipGenerator {
         // Vortex Generator
         const vortexPos = hullType === 'DISC' ? [mainHullRadius * 0.6, -0.5, 0] : [0, -0.8, spineLength / 2 - 1];
         attachComponent('vortex', vortexPos, [0, 0, 0], 'dodecahedron', { radius: 0.6 });
+
+        // Add Torus Ring for Radial Ships (Moved to end to check for wing connections)
+        if (symmetryType === 'RADIAL' && random() > 0.7) { // Reduced probability from 0.3 to 0.7
+            const ringRadius = (size === 'small' ? 3 : (size === 'medium' ? 6 : 10)) * (0.5 + random() * 0.5);
+            const tubeRadius = ringRadius * 0.15 * (0.8 + random() * 0.4);
+
+            let ringRot = [0, 0, 0];
+            if (radialAxis === 'y') {
+                ringRot = [Math.PI / 2, 0, 0];
+            }
+
+            // Check if any existing component (like a Wing) already connects to the ring
+            let isConnected = false;
+            const ringInnerR = ringRadius - tubeRadius;
+
+            for (const c of components) {
+                // Check if component extends from near center to the ring
+                let dist = 0;
+                let extent = 0;
+
+                if (radialAxis === 'z') { // Ring in XY plane
+                    dist = new THREE.Vector2(c.pos[0], c.pos[1]).length();
+                    extent = Math.max(c.dims.width || 0, c.dims.height || 0, c.dims.depth || 0, c.dims.span || 0, c.dims.radius || 0);
+                } else { // Ring in XZ plane (Saucer)
+                    dist = new THREE.Vector2(c.pos[0], c.pos[2]).length();
+                    extent = Math.max(c.dims.width || 0, c.dims.height || 0, c.dims.depth || 0, c.dims.span || 0, c.dims.radius || 0);
+                }
+
+                // If it's a wing (wedge), check span specifically
+                if (c.type === 'wedge') {
+                    const tipDist = dist + (c.dims.span || 0);
+                    if (dist < ringInnerR && tipDist >= ringInnerR) {
+                        isConnected = true;
+                        break;
+                    }
+                } else {
+                    // General check for other components
+                    if (dist < ringInnerR && (dist + extent/2) >= ringInnerR) {
+                        isConnected = true;
+                        break;
+                    }
+                }
+            }
+
+            const ringId = 'fuselage_ring';
+            attachComponent(ringId, [0, 0, 0], ringRot, 'torus', { radius: ringRadius, tube: tubeRadius }, 'NONE');
+            
+            // Only add spokes/struts if no other component connects the ring
+            if (!isConnected) {
+                const numSpokes = Math.max(3, radialCount);
+                for(let i=0; i<numSpokes; i++) {
+                    const angle = (Math.PI * 2 / numSpokes) * i;
+                    const spokeLen = ringRadius - (tubeRadius || 1);
+                    let sPos, sRot;
+                    if (radialAxis === 'y') {
+                        sPos = [Math.cos(angle) * spokeLen/2, 0, Math.sin(angle) * spokeLen/2];
+                        sRot = [0, -angle, Math.PI/2]; 
+                    } else {
+                        sPos = [Math.cos(angle) * spokeLen/2, Math.sin(angle) * spokeLen/2, 0];
+                        sRot = [0, 0, -angle + Math.PI/2]; 
+                    }
+                    attachComponent(`ring_spoke_${i}`, sPos, sRot, 'cylinder', { radiusTop: tubeRadius * 0.5, radiusBottom: tubeRadius * 0.5, height: spokeLen }, 'NONE');
+                }
+            }
+        }
 
         // --- 2b. Calculate Center of Gravity (CoG) ---
         let totalMass = 0;
@@ -966,6 +1112,8 @@ export class ShipGenerator {
         components.symmetryType = symmetryType;
         components.radialAxis = radialAxis;
         components.radialCount = radialCount;
+        components.hullType = hullType;
+        components.seed = seedVal;
 
         // Store style config for generation
         components.styleConfig = {

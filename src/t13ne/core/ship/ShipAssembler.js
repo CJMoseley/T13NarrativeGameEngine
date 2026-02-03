@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { CSG } from 'three-csg-ts';
 import { ShipComponent } from './ShipComponent.js';
 import { COMPONENT_COLORS, getCompProps } from './ShipUtils.js';
-import { racingLiveryShader } from './ShipShaders.js';
+import { racingLiveryShader, industrialLiveryShader } from './ShipShaders.js';
 
 export class ShipAssembler {
     constructor(componentFactory, hullGenerator, greebleGenerator, wiringGenerator, gameEngine) {
@@ -87,22 +87,31 @@ export class ShipAssembler {
         if (hullGeometry && hullGeometry.attributes.position && hullGeometry.attributes.position.count > 0) {
             hullMesh = new THREE.Mesh(hullGeometry, hullMaterial);
             hullMesh.name = "procedural_hull";
-            
-            // Apply Hull Noise (Dents) only if NOT organic
-            if (styleConfig.method !== 'ORGANIC') {
-                hullGeometry = this.hullGenerator.applyHullNoise(hullGeometry);
-            }
+            shipGroup.add(hullMesh);
 
-            // Apply Geometric Greebling (Rivets, Antennae, Vents, etc.)
-            const greebles = this.greebleGenerator.generate(hullMesh, shipComponents, styleConfig, components.symmetryType, components.radialAxis, components.radialCount);
-            shipGroup.add(greebles);
-
+            // 2.5 Carve Surface Details (Thrusters, Cockpit) - BEFORE Greebling
             try {
+                hullMesh.updateMatrix();
+                let hullCSG = CSG.fromMesh(hullMesh);
+
+                // Carve out space for Engines and Bridge to sit "in" the hull
+                // Note: We use proxies for carving, not the actual component meshes which are kept for internals
+                for (const comp of components) {
+                    const { type, dims, pos, rot, usage } = getCompProps(comp);
+
+                    if (usage.includes('Engine') || usage.includes('Bridge') || usage.includes('cockpit') || type === 'cone') {
+                        const cutterMesh = this.componentFactory.createProxy(type, dims);
+                        // cutterMesh is temporary, doesn't need to be added to shipGroup
+                        cutterMesh.position.set(...pos);
+                        if (rot) cutterMesh.rotation.set(...rot);
+                        cutterMesh.scale.multiplyScalar(1.02); // Slightly smaller offset for carving
+                        cutterMesh.updateMatrix();
+                        hullCSG = hullCSG.subtract(CSG.fromMesh(cutterMesh));
+                    }
+                }
+
                 // 3. Carve interior spaces
                 if (interior && interior.length > 0) {
-                    hullMesh.updateMatrix();
-                    let hullCSG = CSG.fromMesh(hullMesh);
-
                     interior.forEach(space => {
                         const spaceMesh = this.componentFactory.createProxy(space.type, space.dims);
                         spaceMesh.position.set(...(space.pos || [0, 0, 0]));
@@ -113,25 +122,37 @@ export class ShipAssembler {
                         const spaceCSG = CSG.fromMesh(spaceMesh);
                         hullCSG = hullCSG.subtract(spaceCSG);
                     });
-
-                    hullMesh = CSG.toMesh(hullCSG, hullMesh.matrix);
-                    hullMesh.material = hullMaterial;
                 }
+
+                // Apply CSG result
+                const carvedMesh = CSG.toMesh(hullCSG, hullMesh.matrix);
+                hullMesh.geometry.dispose();
+                hullMesh.geometry = carvedMesh.geometry;
+
             } catch (e) {
-                console.warn("ShipFactory: Failed to carve interior. Using solid hull.", e);
+                console.warn("ShipFactory: Failed to carve interior/surface. Using solid hull.", e);
             }
             
-            shipGroup.add(hullMesh);
+            // Apply Hull Noise (Dents) only if NOT organic
+            if (styleConfig.method !== 'ORGANIC') {
+                hullGeometry = this.hullGenerator.applyHullNoise(hullGeometry);
+            }
+
+            // Apply Geometric Greebling (Rivets, Antennae, Vents, etc.)
+            const greebles = this.greebleGenerator.generate(hullMesh, shipComponents, styleConfig, components.symmetryType, components.radialAxis, components.radialCount, components.hullType, components.seed);
+            shipGroup.add(greebles);
         }
 
-        // Optional: Add the proxy meshes for visualization or as placeholders for "real" components
+        // Add solid component meshes to fill gaps
         componentMeshes.forEach(mesh => {
             mesh.material = new THREE.MeshStandardMaterial({
-                color: 0xff0000,
-                wireframe: true,
-                opacity: 0.2,
-                transparent: true
+                color: 0x555555,
+                roughness: 0.9,
+                metalness: 0.4,
+                flatShading: true,
+                wireframe: false
             });
+            mesh.visible = true;
             shipGroup.add(mesh);
         });
 
@@ -179,31 +200,11 @@ export class ShipAssembler {
                 }
             }
 
-            // Always use Industrial/Solid look in final renders for internals to fill gaps in hull
-            let matParams = {
-                color: 0x555555, // Base industrial grey
-                roughness: 0.7,
-                metalness: 0.6,
-                flatShading: true,
-                wireframe: true // Wireframe for assembly visualization
-            };
-
-            if (usage) {
-                const u = usage.toLowerCase();
-                if (u.includes('cockpit') || u.includes('bridge')) {
-                    matParams.color = 0x112233; // Dark glass
-                    matParams.roughness = 0.1;
-                    matParams.metalness = 0.9;
-                } else if (u.includes('engine') || u.includes('thruster')) {
-                    matParams.color = 0x333333; // Dark metal
-                    matParams.emissive = 0x110000; // Slight heat glow
-                } else if (u.includes('wing') || u.includes('fin')) {
-                    matParams.color = 0x888888; // Light panels
-                } else if (u.includes('weapon')) {
-                    matParams.color = 0x222222; // Gunmetal
-                }
-            }
-            mesh.material = new THREE.MeshStandardMaterial(matParams);
+            // Initial Wireframe Material (Bright, no lighting, no PBR props)
+            mesh.material = new THREE.MeshBasicMaterial({
+                color: color,
+                wireframe: true
+            });
 
             // Visual flair: Add to group and highlight
             shipGroup.add(mesh);
@@ -273,19 +274,19 @@ export class ShipAssembler {
         });
 
         let hullGeometry = this.hullGenerator.generate(shipComponents, effectiveStyle);
-        // Use Racing Livery Shader Material
+        // Use Industrial Livery Shader Material
         const hullMaterial = new THREE.ShaderMaterial({
-            uniforms: THREE.UniformsUtils.clone(racingLiveryShader.uniforms),
-            vertexShader: racingLiveryShader.vertexShader,
-            fragmentShader: racingLiveryShader.fragmentShader
+            uniforms: THREE.UniformsUtils.clone(industrialLiveryShader.uniforms),
+            vertexShader: industrialLiveryShader.vertexShader,
+            fragmentShader: industrialLiveryShader.fragmentShader
         });
         // Randomize livery
         const livery = components.livery || {};
-        hullMaterial.uniforms.noiseSeed.value = livery.noiseSeed !== undefined ? livery.noiseSeed : Math.random() * 100;
-        hullMaterial.uniforms.patternType.value = livery.patternType !== undefined ? livery.patternType : Math.floor(Math.random() * 3);
-        hullMaterial.uniforms.color1.value.setHex(livery.color1 !== undefined ? livery.color1 : Math.random() * 0xffffff);
-        if (livery.color2 !== undefined) hullMaterial.uniforms.color2.value.setHex(livery.color2);
-        if (livery.color3 !== undefined) hullMaterial.uniforms.color3.value.setHex(livery.color3);
+        if (hullMaterial.uniforms.noiseSeed) hullMaterial.uniforms.noiseSeed.value = livery.noiseSeed !== undefined ? livery.noiseSeed : Math.random() * 100;
+        if (hullMaterial.uniforms.patternType) hullMaterial.uniforms.patternType.value = livery.patternType !== undefined ? livery.patternType : Math.floor(Math.random() * 3);
+        if (hullMaterial.uniforms.color1) hullMaterial.uniforms.color1.value.setHex(livery.color1 !== undefined ? livery.color1 : Math.random() * 0xffffff);
+        if (hullMaterial.uniforms.color2 && livery.color2 !== undefined) hullMaterial.uniforms.color2.value.setHex(livery.color2);
+        if (hullMaterial.uniforms.color3 && livery.color3 !== undefined) hullMaterial.uniforms.color3.value.setHex(livery.color3);
         
         let hullMesh = null;
 
@@ -296,27 +297,100 @@ export class ShipAssembler {
                 hullGeometry = this.hullGenerator.applyHullNoise(hullGeometry);
             }
 
-            // Apply Geometric Greebling (Rivets, Antennae, Vents, etc.)
-            const greebles = this.greebleGenerator.generate(new THREE.Mesh(hullGeometry), shipComponents, effectiveStyle, components.symmetryType, components.radialAxis, components.radialCount);
-            shipGroup.add(greebles);
-            
             hullMesh = new THREE.Mesh(hullGeometry, hullMaterial);
             hullMesh.name = "procedural_hull";
             console.log(`ShipFactory: Hull generated successfully. Vertices: ${hullGeometry.attributes.position.count}, Indices: ${hullGeometry.index ? hullGeometry.index.count : 'None'}`);
             shipGroup.add(hullMesh);
             // Ensure hull is visible and rendered
             hullMesh.visible = true;
+            
+            // Convert wireframes to solid components to fill gaps in the hull
+            componentMeshes.forEach(mesh => {
+                mesh.material = new THREE.MeshStandardMaterial({
+                    color: 0x555555, // Darker grey for internals
+                    roughness: 0.9,
+                    metalness: 0.4,
+                    flatShading: true,
+                    wireframe: false
+                });
+                // Keep them visible to fill gaps
+                mesh.visible = true;
+            });
 
             // Brief delay to let the user see the structure (and ensure renderer updates)
             await new Promise(r => setTimeout(r, 2000));
 
+            // 2.5 Carve Surface Details (Thrusters, Cockpit)
+            // MOVED: Carve before greebling so greebles sit on the final surface
+            try {
+                // Ensure matrices are updated before CSG
+                hullMesh.updateMatrix();
+                let hullCSG = CSG.fromMesh(hullMesh);
+                
+                // Carve out space for Engines and Bridge to sit "in" the hull
+                for (const comp of components) {
+                    const { type, dims, pos, rot, usage } = getCompProps(comp);
+
+                    if (usage.includes('Engine') || usage.includes('Bridge') || usage.includes('cockpit') || type === 'cone') {
+                        const cutterMesh = this.componentFactory.createProxy(type, dims);
+                        shipGroup.add(cutterMesh); // Add to group to inherit transform
+                        cutterMesh.position.set(...pos);
+                        if (rot) cutterMesh.rotation.set(...rot);
+                        cutterMesh.scale.multiplyScalar(1.02); // Slightly smaller offset for carving
+                        cutterMesh.updateMatrix(); // Update local matrix for CSG
+                        hullCSG = hullCSG.subtract(CSG.fromMesh(cutterMesh));
+                        shipGroup.remove(cutterMesh);
+                    }
+                }
+
+                // 3. Carve interior spaces (also before greebling)
+                if (interior && interior.length > 0) {
+                    interior.forEach(space => {
+                        const spaceMesh = this.componentFactory.createProxy(space.type, space.dims);
+                        shipGroup.add(spaceMesh); // Add to group to inherit transform
+                        spaceMesh.position.set(...(space.pos || [0, 0, 0]));
+                        if (space.rot) {
+                            spaceMesh.rotation.set(...space.rot);
+                        }
+                        spaceMesh.updateMatrixWorld();
+                        const spaceCSG = CSG.fromMesh(spaceMesh);
+                        hullCSG = hullCSG.subtract(spaceCSG);
+                        shipGroup.remove(spaceMesh);
+                    });
+                }
+
+                // Re-create mesh from CSG result
+                const carvedMesh = CSG.toMesh(hullCSG, hullMesh.matrix);
+                hullMesh.geometry.dispose(); // Clean up old geometry
+                hullMesh.geometry = carvedMesh.geometry;
+                
+            } catch (e) {
+                console.warn("ShipFactory: Failed to carve surface details.", e);
+            }
+
+            // Apply Geometric Greebling (Rivets, Antennae, Vents, etc.)
+            // Now using the carved hullMesh
+            const greebles = this.greebleGenerator.generate(hullMesh, shipComponents, effectiveStyle, components.symmetryType, components.radialAxis, components.radialCount, components.hullType, components.seed);
+            shipGroup.add(greebles);
+
         } else {
             console.warn("ShipFactory: Hull generation produced empty geometry or SKELETON style selected.");
             // For SKELETON style or failed hull, we keep proxies visible and maybe add struts
+            
+            // Always convert to solid if hull failed or is skeleton
+            componentMeshes.forEach(mesh => {
+                mesh.material = new THREE.MeshStandardMaterial({
+                    color: 0x888888,
+                    roughness: 0.8,
+                    metalness: 0.5,
+                    flatShading: true,
+                    wireframe: false
+                });
+            });
+
             if (effectiveStyle.method === 'SKELETON') {
                 // Apply Greebles to the component proxies directly
-                // We create a temporary group of the meshes to raycast against
-                const greebles = this.greebleGenerator.generate(shipGroup, shipComponents, effectiveStyle, components.symmetryType, components.radialAxis, components.radialCount);
+                const greebles = this.greebleGenerator.generate(shipGroup, shipComponents, effectiveStyle, components.symmetryType, components.radialAxis, components.radialCount, components.hullType, components.seed);
                 shipGroup.add(greebles);
             }
         }
@@ -355,6 +429,20 @@ export class ShipAssembler {
                     targetMesh.geometry.computeBoundingBox();
                     targetMesh.geometry.boundingBox.getCenter(targetCenter);
                     targetMesh.localToWorld(targetCenter);
+
+                    // Special handling for Torus targets: Connect to the rim, not the center
+                    let endPoint = targetCenter.clone();
+                    if (targetMesh.userData.primitiveType === 'torus') {
+                        const dims = targetMesh.userData.originalDims || {};
+                        const r = dims.radius || 1;
+                        // Transform source center to torus local space
+                        const localSource = sourceCenter.clone().applyMatrix4(targetMesh.matrixWorld.clone().invert());
+                        // Project to XY plane (Torus plane) and normalize to radius
+                        const rimPointLocal = new THREE.Vector3(localSource.x, localSource.y, 0).normalize().multiplyScalar(r);
+                        // Transform back to world
+                        endPoint = rimPointLocal.applyMatrix4(targetMesh.matrixWorld);
+                    }
+
 
                     // Check for concentric/overlapping components (like Ring Hull)
                     const centerDist = sourceCenter.distanceTo(targetCenter);
@@ -419,9 +507,9 @@ export class ShipAssembler {
                     }
 
                     // Find intersection point on target mesh
-                    raycaster.set(targetCenter, direction.negate()); // Raycast from target back to source
+                    raycaster.set(endPoint, direction.negate()); // Raycast from target back to source
                     const targetIntersects = raycaster.intersectObject(targetMesh, true);
-                    let endPoint = targetCenter; // Fallback
+                    // let endPoint = targetCenter; // Already set
                     if (targetIntersects.length > 0) {
                         endPoint = targetIntersects[0].point;
                     }
@@ -429,7 +517,7 @@ export class ShipAssembler {
                     // If both raycasts failed, use component centers as a last resort
                     if (sourceIntersects.length === 0 && targetIntersects.length === 0) {
                         startPoint = sourceCenter;
-                        endPoint = targetCenter;
+                        // endPoint is already set to rim or center
                     }
                     
                     const midPoint = tempVec.addVectors(startPoint, endPoint).multiplyScalar(0.5);
@@ -454,61 +542,6 @@ export class ShipAssembler {
                         shipGroup.add(strut);
                     }
                 }
-            }
-        }
-
-        // 2.5 Carve Surface Details (Thrusters, Cockpit)
-        if (hullMesh) {
-            try {
-                // Ensure matrices are updated before CSG
-                hullMesh.updateMatrix();
-                let hullCSG = CSG.fromMesh(hullMesh);
-                
-                // Carve out space for Engines and Bridge to sit "in" the hull
-                for (const comp of components) {
-                    const { type, dims, pos, rot, usage } = getCompProps(comp);
-
-                    if (usage.includes('Engine') || usage.includes('Bridge') || usage.includes('cockpit') || type === 'cone') {
-                        const cutterMesh = this.componentFactory.createProxy(type, dims);
-                        shipGroup.add(cutterMesh); // Add to group to inherit transform
-                        cutterMesh.position.set(...pos);
-                        if (rot) cutterMesh.rotation.set(...rot);
-                        cutterMesh.scale.multiplyScalar(1.02); // Slightly smaller offset for carving
-                        cutterMesh.updateMatrix(); // Update local matrix for CSG
-                        hullCSG = hullCSG.subtract(CSG.fromMesh(cutterMesh));
-                        shipGroup.remove(cutterMesh);
-                    }
-                }
-                hullMesh = CSG.toMesh(hullCSG, hullMesh.matrix);
-                hullMesh.material = hullMaterial;
-            } catch (e) {
-                console.warn("ShipFactory: Failed to carve surface details.", e);
-            }
-        }
-
-        // 3. Carve interior spaces
-        if (hullMesh && interior && interior.length > 0) {
-            try {
-                hullMesh.updateMatrix();
-                let hullCSG = CSG.fromMesh(hullMesh);
-
-                interior.forEach(space => {
-                    const spaceMesh = this.componentFactory.createProxy(space.type, space.dims);
-                    shipGroup.add(spaceMesh); // Add to group to inherit transform
-                    spaceMesh.position.set(...(space.pos || [0, 0, 0]));
-                    if (space.rot) {
-                        spaceMesh.rotation.set(...space.rot);
-                    }
-                    spaceMesh.updateMatrixWorld();
-                    const spaceCSG = CSG.fromMesh(spaceMesh);
-                    hullCSG = hullCSG.subtract(spaceCSG);
-                    shipGroup.remove(spaceMesh);
-                });
-
-                hullMesh = CSG.toMesh(hullCSG, hullMesh.matrix);
-                hullMesh.material = hullMaterial;
-            } catch (e) {
-                console.warn("ShipFactory: Failed to carve interior. Using solid hull.", e);
             }
         }
 

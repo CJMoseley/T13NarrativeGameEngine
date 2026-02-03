@@ -243,7 +243,8 @@ export class HullGenerator {
         // Calculate bounds to determine appropriate resolution
         const bounds = new THREE.Box3();
         components.forEach(c => {
-            const maxDim = Math.max(c.scale.x, c.scale.y, c.scale.z) * 0.5 + 0.5;
+            // Use diagonal length to ensure rotation doesn't push corners out of bounds, plus extra padding
+            const maxDim = Math.sqrt(c.scale.x * c.scale.x + c.scale.y * c.scale.y + c.scale.z * c.scale.z) * 0.5 + 2.0;
             bounds.expandByPoint(c.position.clone().addScalar(maxDim));
             bounds.expandByPoint(c.position.clone().subScalar(maxDim));
         });
@@ -280,6 +281,7 @@ export class HullGenerator {
         }
 
         const geometry = mc.geometry; // MarchingCubes extends Mesh, geometry is a property
+        geometry.scale(size, size, size); // Scale the geometry to match the SDF domain size
         return geometry;
     }
 
