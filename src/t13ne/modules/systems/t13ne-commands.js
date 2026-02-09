@@ -40,6 +40,7 @@ export class T13NECommands {
         this.registerIChingCommands(); // Register new I-Ching commands
         this.registerAudioCommands(); // Register new Music commands
         this.registerAudioDirectorCommands(); // Register new AudioDirector commands
+        this.registerRefereeCommands(); // Register new Referee commands
         this.loadSettings();
 
         this.initialized = true;
@@ -731,6 +732,35 @@ export class T13NECommands {
         });
     }
 
+    registerRefereeCommands() {
+        // Ref:GenerateCycle(name="The Age of Dust", theme="Decay", scale="Universal")
+        this.registerCommand('Ref', 'GenerateCycle', async (args, ctx) => {
+            const Referee = this.t13ne.getModule('Referee');
+            if (!Referee) return { error: "Referee module not loaded" };
+
+            const name = args.name || "New Cycle";
+            const options = {
+                theme: args.theme,
+                scale: args.scale,
+                ...args
+            };
+
+            await Referee.generateCycle(name, options);
+            return { type: 'CycleGenerated', name };
+        });
+
+        // Ref:GenerateBackstory(target=Player)
+        this.registerCommand('Ref', 'GenerateBackstory', async (args, ctx) => {
+            const Referee = this.t13ne.getModule('Referee');
+            const target = args.target || ctx.character;
+
+            if (!Referee || !target) return { error: "Referee module or Target missing" };
+
+            await Referee.generateBackstory(target, args);
+            return { type: 'BackstoryGenerated', character: target.name };
+        });
+    }
+
     registerIChingCommands() {
         // IChing:GrantReward(target=Player, hex=1, type=Gains, index=0)
         // IChing:GrantReward(target=Player, hex=1, type=LineGains, line=1)
@@ -789,9 +819,9 @@ export class T13NECommands {
             const Music = this.t13ne.getModule('Music');
             const target = args.target || ctx.character;
             const listener = args.listener || null;
-            
+
             if (!Music || !target) return { error: "Music module or Target missing" };
-            
+
             Music.playLeitmotif(target, listener);
             const motif = Music.getLeitmotif(target);
             return { type: 'LeitmotifPlayed', character: target.name, motifData: motif };
@@ -846,7 +876,7 @@ export class T13NECommands {
         this.registerCommand('AudioDirector', 'SetMood', async (args, ctx) => {
             const Director = this.t13ne.getModule('AudioDirector');
             if (!Director) return { error: "AudioDirector module not loaded" };
-            
+
             Director.setMood(args.mood, args.intensity);
             return { type: 'AudioDirectorMoodSet', mood: args.mood };
         });

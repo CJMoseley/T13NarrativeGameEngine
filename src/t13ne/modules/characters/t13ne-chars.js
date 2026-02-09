@@ -110,7 +110,7 @@ export class Character extends SuperKnot {
             this.maxYin = data.maxYin || 13;
             this.maxYang = data.maxYang || 13;
         }
-        
+
         this.templates = data.templates || [];
         this.annexSuggestions = data.annexSuggestions || [];
         this.masterAnnexSuggestion = data.masterAnnexSuggestion || null;
@@ -562,10 +562,10 @@ export class Character extends SuperKnot {
             if (rootProfs[0]) knotData.push({ ...rootProfs[0], knot: 16 });
             if (channelProfs[0]) knotData.push({ ...channelProfs[0], knot: 32 });
             tangleProfs.forEach(p => knotData.push({ ...p, knot: 1 }));
-            
+
             // Fill with placeholders if needed
-            while(knotData.length < masterProfCount) {
-                 knotData.push({ facet: tangle.FacetName, knot: 1 });
+            while (knotData.length < masterProfCount) {
+                knotData.push({ facet: tangle.FacetName, knot: 1 });
             }
 
             charData.masterAnnex = new Annex(codexLoader, {

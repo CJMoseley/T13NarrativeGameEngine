@@ -190,7 +190,7 @@ class KnotWork {
         for (const p of profs) {
             const mask = associations.get(p.id);
             const item = { id: p.id, name: p.name, facet: p.tags?.facets?.[0] };
-            
+
             if (mask & TIE.ROOT) details.root.push(item);
             if (mask & TIE.CHANNEL) details.channel.push(item);
             if (mask & TIE.UMBRAL) details.umbrals.push(item);

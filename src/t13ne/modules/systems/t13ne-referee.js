@@ -1,6 +1,8 @@
 ﻿// d:\GoogleDrive\Games\wormholeracersJS\WormholeRacersJS\plugins\t13ne\modules\t13ne-referee.js
 
 import Logger from "@/src/t13ne/core/Logger.js";
+import { T13Plot } from "../narrative/t13ne-plots.js";
+import T13LoreManager from "../narrative/t13ne-lore.js";
 
 /**
  * T13NE Referee Module
@@ -13,6 +15,7 @@ class T13NE_Referee {
         this.t13ne = null; // Will hold the main T13NE instance
         this.characters = []; // Master list of all active characters (PCs and key NPCs)
     }
+
 
     async initialize(t13ne) {
         if (this.initialized) return;
@@ -176,6 +179,92 @@ class T13NE_Referee {
         }
 
         // Future expansion: Check active Arcs, trigger Latent Drama, etc.
+    }
+
+    /**
+     * Generates a full Narrative Cycle.
+     * @param {string} name - Name of the cycle.
+     * @param {object} options - Options for generation.
+     */
+    async generateCycle(name, options = {}) {
+        const Plots = this.t13ne.getModule('Plots');
+        if (!Plots) return null;
+
+        Logger.message(`Referee: Generating Cycle '${name}'...`);
+
+        const cyclePlot = new T13Plot({
+            Name: name,
+            Rank: 'Cycle',
+            Description: options.description || 'A procedurally generated narrative cycle.',
+            ...options
+        }, this.t13ne);
+
+        // 1. Cascade the plot to generate structure down to Scenes
+        await cyclePlot.cascadePlot('Cycle');
+
+        // 2. Register the plot
+        Plots.plots.push(cyclePlot);
+
+        Logger.message(`Referee: Cycle '${name}' generated with ${cyclePlot.subPlots.length} Epics.`);
+        return cyclePlot;
+    }
+
+    /**
+     * Generates a Backstory for a character.
+     * This creates a 'Story' rank plot, populates it with historical context,
+     * resolves it, and grants Lore/Boons to the character.
+     * @param {object} character - The character to generate backstory for.
+     */
+    async generateBackstory(character) {
+        if (!character) return;
+
+        Logger.message(`Referee: Generating Backstory for ${character.name}...`);
+
+        // 1. Create a Story Plot representing their past
+        const storyName = `The Origin of ${character.name}`;
+        const backstoryPlot = new T13Plot({
+            Name: storyName,
+            Rank: 'Story',
+            Description: `The backstory of ${character.name}.`,
+            isBackstory: true,
+            Hooked_Characters: [] // Initially empty, will add historical protagonist or self
+        }, this.t13ne);
+
+        // 2. Cascade it (Generate Acts, Hooks, etc.)
+        await backstoryPlot.cascadePlot('Story');
+
+        // 3. Hook the character (conceptually, likely as a younger version or purely narrative)
+        // For backstory, we might just assume they were the protagonist.
+        // We simulate the plot "running" instantly.
+
+        // 4. Trigger a Revelation to generate Lore (Narrative Rewarding)
+        // This grants Lore to the character via the plot's internal logic if they were hooked,
+        // but for backstory we might need to force it if they aren't 'in' the plot yet.
+        const lore = await backstoryPlot.reveal(storyName, {
+            content: `Narrative details of ${character.name}'s past.`,
+            relatedTo: character.name,
+            source: 'Backstory Generation'
+        });
+
+        // Ensure character gets it even if not hooked
+        T13LoreManager.gainLore(character, lore);
+
+        // 5. Mark as fully resolved (Mechanical Cleanup)
+        backstoryPlot.isActive = false;
+        backstoryPlot.isResolved = true; // Mark as done
+
+        T13LoreManager.gainLore(character, lore);
+
+        // Add to character's history log if exists
+        if (!character.history) character.history = [];
+        character.history.push({
+            event: 'Backstory Generated',
+            plot: backstoryPlot.Name,
+            lore: lore.topic
+        });
+
+        Logger.message(`Referee: Backstory generated for ${character.name}. Gained Lore: ${lore.topic}`);
+        return backstoryPlot;
     }
 
     /**

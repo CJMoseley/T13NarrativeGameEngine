@@ -109,6 +109,21 @@ class NarrativeUI {
                 if (card) ungroupedGrid.appendChild(card);
             });
         }
+
+        // Add "New Cycle" Button at the bottom
+        const cycleBtn = document.createElement('button');
+        cycleBtn.className = 'btn btn-primary';
+        cycleBtn.style.cssText = 'display: block; width: 100%; margin-top: 2rem; padding: 1rem;';
+        cycleBtn.textContent = '✨ Generate New Narrative Cycle';
+        cycleBtn.onclick = () => {
+            const name = prompt("Name the new Cycle:");
+            if (name) {
+                T13NE.Commands.execute(`Ref:GenerateCycle(name="${name}")`);
+                // Refresh checks would happen here or via event listeners
+                setTimeout(() => this.render(), 1000); // Hacky refresh
+            }
+        };
+        list.appendChild(cycleBtn);
     }
 
     createItemCard(obj) {
@@ -202,6 +217,17 @@ class NarrativeUI {
                     </div>
                 `;
             }
+
+            // Backstory Button
+            html += `
+                <div class="form-group">
+                    <button class="btn" style="width: 100%; border: 1px dashed var(--accent-purple); color: var(--accent-purple);" 
+                        onclick="T13NE.Commands.execute({cmd: 'Ref:GenerateBackstory', args: {target: NarrativeUI.selectedEntity}}).then(() => NarrativeUI.render())">
+                        📜 Generate Backstory
+                    </button>
+                    ${obj.history ? `<div style="font-size: 0.7rem; color: var(--text-dim); margin-top: 0.5rem;">History Events: ${obj.history.length}</div>` : ''}
+                </div>
+            `;
 
             // Pacts
             if (obj.pacts && obj.pacts.length > 0) {

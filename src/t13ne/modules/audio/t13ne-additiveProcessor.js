@@ -2,10 +2,29 @@
 class AdditiveProcessor extends AudioWorkletProcessor {
   constructor(options) {
     super();
-    // wavetable is a Float32Array of pre-summed sine partials
-    this.wavetable = options.processorOptions ? options.processorOptions.wavetable : null;
-    this.tableLen = this.wavetable ? this.wavetable.length : 0;
+    // Default tiny silent wavetable to prevent null checks in hot loop
+    this.wavetable = new Float32Array(2);
+    this.tableLen = 2;
     this.phase = 0;
+    this.active = false;
+
+    if (options.processorOptions && options.processorOptions.wavetable) {
+      this.wavetable = options.processorOptions.wavetable;
+      this.tableLen = this.wavetable.length;
+      this.active = true;
+    }
+
+    this.port.onmessage = (event) => {
+      const data = event.data;
+      if (data.type === 'update') {
+        if (data.wavetable && data.wavetable.length > 0) {
+          this.wavetable = data.wavetable;
+          this.tableLen = this.wavetable.length;
+        }
+        if (data.active !== undefined) this.active = data.active;
+        if (data.resetPhase) this.phase = 0;
+      }
+    };
   }
 
   static get parameterDescriptors() {
@@ -14,22 +33,31 @@ class AdditiveProcessor extends AudioWorkletProcessor {
 
   process(inputs, outputs, parameters) {
     const output = outputs[0];
-    if (!this.wavetable || this.tableLen === 0) return true;
+    if (!output || output.length === 0) return true;
 
-    const freq = parameters.frequency;
     const channelCount = output.length;
     const bufferSize = output[0].length;
 
+    // Fast path for inactive voices: silence the output and return
+    if (!this.active || this.tableLen < 2) {
+      for (let ch = 0; ch < channelCount; ch++) {
+        output[ch].fill(0);
+      }
+      return true;
+    }
+
+    const freqArray = parameters.frequency;
+
     // Generate the signal for the block
     for (let i = 0; i < bufferSize; i++) {
-      const f = freq.length > 1 ? freq[i] : freq[0];
+      const f = freqArray.length > 1 ? freqArray[i] : freqArray[0];
       const phaseIncrement = (f * this.tableLen) / sampleRate;
 
       // Wavetable Lookup with Linear Interpolation
       const i0 = Math.floor(this.phase) % this.tableLen;
       const i1 = (i0 + 1) % this.tableLen;
       const frac = this.phase - Math.floor(this.phase);
-      
+
       const sample = this.wavetable[i0] * (1 - frac) + this.wavetable[i1] * frac;
 
       // Write to all output channels

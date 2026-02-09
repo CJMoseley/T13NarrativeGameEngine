@@ -495,10 +495,17 @@ class T13NECardsAPI {
      * @param {string} spreadId - The ID of the composite spread (e.g., 'frame-act').
      * @returns {object|null} An object containing the named sub-spreads.
      */
+    /**
+     * Generates a composite spread made of multiple smaller spreads.
+     * @param {string} spreadId - The ID of the composite spread (e.g., 'frame-act').
+     * @returns {object|null} An object containing the named sub-spreads.
+     */
     getCompositeSpread(spreadId, options = {}) {
-        // This is a proof-of-concept. A more robust system would use definitions.
+        // This logic handles hierarchical spreads
+
+        // 1. SCENE LEVEL COMPOSITES (Acts)
         if (spreadId === 'frame-act') {
-            const numSides = options.sides || 2; // Example for a simple conflict
+            const numSides = options.sides || 2;
             const hooks = [];
             for (let i = 0; i < numSides; i++) {
                 hooks.push({ name: `Hook for Side ${i + 1}`, spread: this.getCardSpread('hook') });
@@ -507,6 +514,8 @@ class T13NECardsAPI {
 
             return {
                 name: 'Frame Act Spread',
+                type: 'Act',
+                variety: 'Frame',
                 components: {
                     hooks: hooks,
                     revelation: revelation
@@ -516,7 +525,7 @@ class T13NECardsAPI {
         }
 
         if (spreadId === 'loom-act') {
-            const numPairs = options.pairs || options.sides || 2;
+            const numPairs = options.pairs || 3;
             const pairs = [];
             for (let i = 0; i < numPairs; i++) {
                 pairs.push({
@@ -527,6 +536,8 @@ class T13NECardsAPI {
             }
             return {
                 name: 'Loom Act Spread',
+                type: 'Act',
+                variety: 'Loom',
                 components: { pairs },
                 description: "The Loom Act develops the conflict through a series of actions (Warps) and reactions (Wefts)."
             };
@@ -535,6 +546,8 @@ class T13NECardsAPI {
         if (spreadId === 'zenith-act') {
             return {
                 name: 'Zenith Act Spread',
+                type: 'Act',
+                variety: 'Zenith',
                 components: {
                     ordeal: this.getCardSpread('ordeal'),
                     gain: this.getCardSpread('gain')
@@ -551,14 +564,18 @@ class T13NECardsAPI {
             if (options.includeWeft) components.weft = this.getCardSpread('weft');
             return {
                 name: 'Logue Act Spread',
+                type: 'Act',
+                variety: 'Logue',
                 components,
                 description: "A Logue (Prologue/Epilogue) provides exposition or resolution, centered around a Revelation."
             };
         }
 
+        // 2. STORY LEVEL (Composed of Acts)
         if (spreadId === 'story-3-act') {
             return {
                 name: '3 Act Story Spread',
+                type: 'Story',
                 components: {
                     frame: this.getCompositeSpread('frame-act', options),
                     loom: this.getCompositeSpread('loom-act', options),
@@ -568,67 +585,59 @@ class T13NECardsAPI {
             };
         }
 
-        if (spreadId === 'arc') {
-            const numStories = options.stories || 2; // Default to 2 stories per arc
-            const stories = [];
-            for (let i = 0; i < numStories; i++) {
-                stories.push({
-                    name: `Story line ${i + 1}`,
-                    spread: this.getCompositeSpread('story-3-act', options)
+        // 3. HIGHER LEVELS (Recursive)
+        // Helper to generate children
+        const generateChildren = (childSpreadId, count, namePrefix) => {
+            const children = [];
+            for (let i = 0; i < count; i++) {
+                children.push({
+                    name: `${namePrefix} ${i + 1}`,
+                    spread: this.getCompositeSpread(childSpreadId, options)
                 });
             }
+            return children;
+        };
+
+        if (spreadId === 'arc') {
+            const numStories = options.stories || 2;
             return {
                 name: 'Story Arc',
-                components: { stories },
+                type: 'Arc',
+                components: { stories: generateChildren('story-3-act', numStories, 'Story line') },
                 description: `An Arc, composed of ${numStories} interwoven story lines.`
             };
         }
 
         if (spreadId === 'volume') {
             const numArcs = options.arcs || 3;
-            const arcs = [];
-            for (let i = 0; i < numArcs; i++) {
-                arcs.push({
-                    name: `Arc ${i + 1}`,
-                    spread: this.getCompositeSpread('arc', options)
-                });
-            }
             return {
                 name: 'Volume',
-                components: { arcs },
-                description: `A Volume, a major narrative block composed of ${numArcs} Arcs.`
+                type: 'Volume',
+                components: { arcs: generateChildren('arc', numArcs, 'Arc') },
+                description: `A Volume, composed of ${numArcs} Arcs.`
             };
         }
 
         if (spreadId === 'epic') {
             const numVolumes = options.volumes || 3;
-            const volumes = [];
-            for (let i = 0; i < numVolumes; i++) {
-                volumes.push({
-                    name: `Volume ${i + 1}`,
-                    spread: this.getCompositeSpread('volume', options)
-                });
-            }
             return {
                 name: 'Epic',
-                components: { volumes },
-                description: `An Epic, a grand narrative composed of ${numVolumes} Volumes.`
+                type: 'Epic',
+                components: { volumes: generateChildren('volume', numVolumes, 'Volume') },
+                description: `An Epic, composed of ${numVolumes} Volumes.`
             };
         }
 
         if (spreadId === 'cycle') {
             const numEpics = options.epics || 3;
-            const epics = [];
-            for (let i = 0; i < numEpics; i++) {
-                epics.push({ name: `Epic ${i + 1}`, spread: this.getCompositeSpread('epic', options) });
-            }
             return {
                 name: 'Cycle',
-                components: { epics },
-                description: `A Cycle, the largest narrative structure, composed of ${numEpics} Epics.`
+                type: 'Cycle',
+                components: { epics: generateChildren('epic', numEpics, 'Epic') },
+                description: `A Cycle, composed of ${numEpics} Epics.`
             };
         }
-        // Add logic for 'loom', 'zenith', 'logue' here if needed.
+
         Logger.error(`Composite spread '${spreadId}' is not implemented.`);
         return null;
     }

@@ -92,6 +92,10 @@ export class GameEngine {
             await this.loreMaster.initialize();
             Logger.message('GameEngine: LoreMaster instantiated and initialized.');
 
+            // Load Galactic History (Procedural Generation)
+            await GalacticHistory.load(this.pluginManager, this.loreMaster);
+            Logger.message('GameEngine: Galactic History loaded.');
+
             this.galaxyGenerator = new GalaxyGenerator(this.loreMaster);
             Logger.message('GameEngine: GalaxyGenerator instantiated.');
             this.galaxy = this.galaxyGenerator.generateGalaxy();
@@ -99,7 +103,7 @@ export class GameEngine {
             if (!this.galaxy || !this.galaxy.stars || this.galaxy.stars.length === 0) {
                 throw new Error("Galaxy generation failed or produced no stars.");
             }
-            
+
             // Retrieve Galaxy Name from Tapestry if available
             const tapestry = this.engine.getModule('Tapestry');
             if (tapestry) {
@@ -114,7 +118,9 @@ export class GameEngine {
 
             await Promise.race([startPosPromise, timeoutPromise]);
 
-            this.galacticPlot = this.generateGalacticCycle();
+            await Promise.race([startPosPromise, timeoutPromise]);
+
+            this.galacticPlot = await this.generateGalacticCycle();
             Logger.message("GameEngine: Data-dependent initialization complete.");
             EventBus.emit('engine:initialized', this);
         } catch (error) {
@@ -148,7 +154,7 @@ export class GameEngine {
         if (this.loreMaster && this.loreMaster.characterGenerator) {
             this.playerCharacter = await this.loreMaster.characterGenerator.generateCharacter('Detailed');
             this.playerCharacter.name = "Player"; // Default name
-            
+
             // Crew generation is game-specific and should be handled by the specific game logic or Tapestry
             this.crew = [];
             Logger.message(`GameEngine: Generated Player Character.`);
@@ -159,29 +165,43 @@ export class GameEngine {
      * Generates the overarching Galactic History Cycle Plot using T13NE structures.
      * This defines the current era's major conflict.
      */
-    generateGalacticCycle() {
+    /**
+     * Generates the overarching Galactic History Cycle Plot using T13NE structures.
+     * This defines the current era's major conflict.
+     */
+    async generateGalacticCycle() {
         Logger.message("GameEngine: Generating Galactic Cycle Plot...");
-        
+
         // Try to get cycle from Tapestry
         const tapestry = this.engine.getModule('Tapestry');
         if (tapestry && tapestry.currentCycle) {
             return tapestry.currentCycle;
         }
 
-        // Generic Fallback
+        // Use Referee to generate a real Narrative Cycle
+        const Referee = this.engine.getModule('Referee');
+        if (Referee) {
+            const currentAge = GalacticHistory.getTimeline()?.slice(-1)[0]; // Get the most recent age
+            const name = currentAge ? currentAge.age : "The Current Era";
+            const desc = currentAge ? currentAge.description : "A time of uncertainty.";
+
+            return await Referee.generateCycle(name, {
+                description: desc,
+                scale: 'Galactic',
+                isHistoryBased: true
+            });
+        }
+
+        // Generic Fallback (only if Referee is missing)
         return {
             rank: "Cycle",
             name: "Current Era",
-            description: "The current era of the galaxy.",
-            conflict: {
-                dominant: "Orthodox", 
-                pressed: "Heresy", 
-                facets: ["Orthodox", "Heresy"]
-            },
-            tension: 1, 
-            yarn: 13, // Initial Yarn pool for the plot
+            description: "The current era of the galaxy (Referee not loaded).",
+            conflict: { dominant: "Stasis", pressed: "Entropy" },
+            tension: 1,
+            yarn: 13,
             embodiments: {},
-            subplots: [] // Will be populated as the game progresses
+            subplots: []
         };
     }
 

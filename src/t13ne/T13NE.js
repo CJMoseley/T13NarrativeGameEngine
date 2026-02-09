@@ -45,6 +45,7 @@ import T13NE_Editor from './modules/systems/t13ne-editor.js';
 import T13NE_Music from './modules/audio/t13ne-music.js';
 import T13NE_AudioDirector from './modules/audio/t13ne-audio-director.js';
 import T13NE_Conductor from './modules/audio/t13ne-conductor.js';
+import T13LoreManager from './modules/narrative/t13ne-lore.js';
 
 import { ViewManager } from './core/ViewManager.js';
 import { PluginManager } from './core/PluginManager.js';
@@ -432,6 +433,11 @@ class T13NE {
         this.modules.NarrativeWeaving = T13NE_NarrativeWeaving;
         await this.modules.NarrativeWeaving.initialize(this);
         Logger.message("T13NE: Narrative Weaving module loaded.");
+
+        // Load Lore Manager
+        this.modules.Lore = T13LoreManager;
+        await this.modules.Lore.initialize(this);
+        Logger.message("T13NE: Lore Manager loaded.");
 
         // Load Resources module
         this.modules.Resources = T13NE_Resources;

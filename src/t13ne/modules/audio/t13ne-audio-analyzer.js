@@ -29,12 +29,12 @@ export class AudioAnalyzer {
                 const url = manifestManager.getAssetPath('samples', key);
                 const response = await fetch(url);
                 if (!response.ok) throw new Error(`HTTP ${response.status}`);
-                
+
                 const arrayBuffer = await response.arrayBuffer();
                 const audioBuffer = await this.ctx.decodeAudioData(arrayBuffer);
 
                 const analysis = await this.analyze(audioBuffer);
-                
+
                 manifestManager.updateAssetAnalysis('samples', key, analysis);
                 Logger.message(`AudioAnalyzer: Analyzed ${key} -> Freq: ${analysis.freq}Hz`);
                 count++;
@@ -206,7 +206,9 @@ export class AudioAnalyzer {
 
         for (let offset = 10; offset < maxSamples / 2; offset++) {
             let corr = 0;
-            for (let i = 0; i < maxSamples - offset; i++) {
+            // Optimization: Skip every 2nd sample to reduce main-thread load during analysis
+            // Optimization: Skip samples to reduce main-thread load during analysis (4x skipping)
+            for (let i = 0; i < maxSamples - offset; i += 4) {
                 corr += slice[i] * slice[i + offset];
             }
             if (corr > maxCorr) {

@@ -1,5 +1,6 @@
 import Logger from "../../core/Logger.js";
 import { WavetableBaker } from "./t13ne-wavetable-baker.js";
+import { T13Effects } from "./t13ne-effects.js";
 
 /**
  * Handles Complex Additive Synthesis.
@@ -25,7 +26,7 @@ export class AdditiveProcessor {
         return this.ctx.createPeriodicWave(real, imag);
     }
 
-    createSynthFromAnalysis(analysis, depth = 'medium', role = 'lead') {
+    createSynthFromAnalysis(analysis, depth = 'medium', role = 'lead', instrumentId = '') {
         const fundamental = (analysis && analysis.freq) ? analysis.freq : 440;
 
         let partialCount = 5;
@@ -44,61 +45,95 @@ export class AdditiveProcessor {
                 decay: 1.0 / Math.pow(p.freq / fundamental, 0.5)
             }));
         } else {
-            // Fallback: Role-Specific Procedural generation
-            const seed = Math.sin(fundamental) * 10000;
+            // Fallback: Rich Waveform Synthesis (Square/Sawtooth like Harmonic Series)
+            // Use a stable seed based on the fundamental pitch AND the instrument ID to ensure uniqueness
+            let idHash = 0;
+            if (instrumentId) {
+                for (let i = 0; i < instrumentId.length; i++) {
+                    idHash = ((idHash << 5) - idHash) + instrumentId.charCodeAt(i);
+                    idHash |= 0;
+                }
+            }
+
+            const stableSeed = Math.abs(Math.floor(fundamental * 0.1337) ^ idHash);
             const pseudoRand = (i) => {
-                const x = Math.sin(seed + i) * 10000;
+                const x = Math.sin(stableSeed + i) * 12345.6789;
                 return x - Math.floor(x);
             };
 
-            for (let i = 1; i <= partialCount; i++) {
+            const targetPartials = (depth === 'high' || depth === 'full') ? 24 : 12;
+            for (let i = 1; i <= targetPartials; i++) {
                 let freq = i;
-                let amp = 1.0;
+                let amp = 0;
                 let decay = 1.0;
 
                 if (role === 'pad') {
-                    // Detuned, thick partials
-                    freq = i + (pseudoRand(i) * 0.05 - 0.025);
-                    amp = 1.0 / Math.pow(i, 0.3);
-                    decay = 1.0 / Math.pow(i, 0.1);
+                    // Warm pad (Subtle detuning for thickness without the previous warbles)
+                    freq = i + (pseudoRand(i) * 0.008 - 0.004);
+                    amp = (1.0 / Math.pow(i, 0.8));
+                    decay = 1.0 / Math.pow(i, 0.2);
                 } else if (role === 'bass') {
-                    // Strong fundamental, fast dropoff
+                    // Deep, heavy bass (Mostly odd harmonics for square-like feel)
                     freq = i;
-                    amp = i === 1 ? 1.0 : (1.0 / Math.pow(i, 2));
-                    decay = 1.0 / i;
+                    if (i % 2 === 1) {
+                        amp = 1.0 / i;
+                    } else {
+                        amp = (1.0 / i) * 0.3; // Suppressed evens
+                    }
+                    decay = 1.0 / Math.sqrt(i);
+                } else if (role === 'hat' || role === 'snare') {
+                    // Noisy/Cymbal-like (High frequencies, high density)
+                    freq = i * (4 + pseudoRand(i) * 10);
+                    amp = Math.exp(-0.2 * i);
+                    decay = 0.2 / i;
                 } else if (role === 'rhythm' || role === 'kick' || role === 'perc') {
-                    // Inharmonic, sharp partials
-                    freq = i * (1 + pseudoRand(i) * 0.5);
-                    amp = 1.0 / i;
-                    decay = 0.5 / i;
+                    // Percussive (Non-harmonic clang)
+                    freq = i * (1 + pseudoRand(i) * 2.5);
+                    amp = Math.exp(-0.15 * i);
+                    decay = 0.4 / i;
                 } else {
-                    // Lead: Bright, harmonic
-                    freq = i + (pseudoRand(i) * 0.01 - 0.005);
-                    amp = 1.0 / Math.pow(i, 0.8);
+                    // Lead: Bright Sawtooth-like (All harmonics)
+                    freq = i + (pseudoRand(i) * 0.01);
+                    amp = 1.0 / i;
                     decay = 1.0 / Math.pow(i, 0.5);
                 }
-                
-                if (i % 2 === 0 && role !== 'bass') amp *= (0.5 + pseudoRand(i + 200) * 0.5);
+
+                // Add slight randomness to individual amps for "life"
+                amp *= (0.8 + pseudoRand(i + 100) * 0.4);
 
                 partials.push({ freq, amp, decay });
             }
-            
-            // Normalize amps
-            const maxAmp = Math.max(...partials.map(p => p.amp));
-            if (maxAmp > 0) partials.forEach(p => p.amp /= maxAmp);
+
+            // Normalize amps by SUM to ensure total energy <= 100%
+            const sumAmp = partials.reduce((sum, p) => sum + p.amp, 0);
+            if (sumAmp > 1.0) partials.forEach(p => p.amp /= sumAmp);
         }
+
+        // Depth-based filtering instead of manual detuned layers (rely on effects for complexity)
+        if (partials.length > partialCount) {
+            partials = partials.slice(0, partialCount);
+        }
+
+        // Re-normalize to ensure total sum is safe
+        const totalSum = partials.reduce((sum, p) => sum + p.amp, 0);
+        if (totalSum > 0.001) partials.forEach(p => p.amp /= totalSum);
+
+        // Check for harmonicity (lenient tolerance to allow slight drift)
+        const isHarmonic = partials.every(p => Math.abs(p.freq - Math.round(p.freq)) < 0.02);
 
         return {
             type: 'additive',
             algorithm: 'custom',
             depth: depth,
             partials: partials,
-            role: role
+            role: role,
+            instrumentId: instrumentId,
+            isHarmonic: isHarmonic
         };
     }
 
     // Updated createBellTone to be more generic 'playAdditiveTone'
-    playAdditiveTone(frequency, time, duration, destination, partials, params = {}) {
+    playAdditiveTone(frequency, time, duration, destination, partials, velocity = 1.0, params = {}, onCleanup = null) {
         if (!Number.isFinite(frequency) || frequency <= 0) return;
         if (!partials) {
             // Default bell if no partials
@@ -114,13 +149,28 @@ export class AdditiveProcessor {
         const envelope = params.envelope || 'percussive';
         const attack = params.attack || (envelope === 'sustained' ? 0.1 : 0.01);
         const decay = params.decay || 0.1;
-        const sustain = params.sustain !== undefined ? params.sustain : 1.0; // 0-1 multiplier of peakGain
+        const sustain = params.sustain !== undefined ? params.sustain : 1.0;
         const release = params.release || 0.2;
 
-        // Limit partials for CPU fallback to prevent "warbling" / overload
-        const activePartials = partials.slice(0, 4); 
+        const activePartials = partials.slice(0, 32);
+        const totalAmp = activePartials.reduce((s, p) => s + p.amp, 0);
+        const ampScale = totalAmp > 1.0 ? 1.0 / totalAmp : 1.0;
 
-        activePartials.forEach(p => {
+        const masterScale = 0.1 * velocity; // Standardized with Subtractive path
+
+        // Determine the master partial (the one that lasts the longest) to trigger final cleanup
+        let maxStop = 0;
+        let masterIdx = 0;
+        const partialData = activePartials.map((p, i) => {
+            const stop = (envelope === 'sustained') ? (time + duration + release + 0.1) : (time + (Math.max(0.05, duration * (p.decay || 1.0))) + 0.2);
+            if (stop > maxStop) {
+                maxStop = stop;
+                masterIdx = i;
+            }
+            return { p, stop };
+        });
+
+        activePartials.forEach((p, idx) => {
             const osc = this.ctx.createOscillator();
             const gain = this.ctx.createGain();
 
@@ -128,15 +178,26 @@ export class AdditiveProcessor {
             osc.connect(gain);
             gain.connect(destination);
 
-            const peakGain = p.amp * 0.2;
+            // Register source for potential kill stopping
+            if (params.sources) params.sources.push(osc);
+
+            const peakGain = p.amp * ampScale * masterScale;
+            const stopTime = partialData[idx].stop;
+
+            osc.onended = () => {
+                osc.disconnect();
+                gain.disconnect();
+                // ONLY trigger master cleanup when the longest-living partial finishes
+                if (idx === masterIdx) {
+                    if (params.onCleanup) params.onCleanup();
+                    if (onCleanup) onCleanup();
+                }
+            };
 
             if (envelope === 'sustained') {
-                // Sustained Envelope (ADSR)
-                // Attack
                 gain.gain.setValueAtTime(0, time);
                 gain.gain.linearRampToValueAtTime(peakGain, time + attack);
-                
-                // Decay -> Sustain
+
                 if (duration > attack + decay) {
                     const sustainLevel = peakGain * sustain;
                     gain.gain.linearRampToValueAtTime(sustainLevel, time + attack + decay);
@@ -145,24 +206,19 @@ export class AdditiveProcessor {
                     gain.gain.setValueAtTime(peakGain, time + duration);
                 }
 
-                // Release
                 gain.gain.exponentialRampToValueAtTime(0.001, time + duration + release);
-                gain.gain.linearRampToValueAtTime(0, time + duration + release + 0.05); // Ensure silence
-                
-                osc.start(time);
-                osc.stop(time + duration + release + 0.1);
+                gain.gain.linearRampToValueAtTime(0, time + duration + release + 0.05);
             } else {
-                // Percussive Envelope (Attack - Decay) with minimum duration check
                 const attackTime = 0.01;
-                const decayDuration = Math.max(0.05, duration * (p.decay || 1.0)); // Minimum 50ms to avoid clicks
+                const decayDuration = Math.max(0.05, duration * (p.decay || 1.0));
                 gain.gain.setValueAtTime(0, time);
                 gain.gain.linearRampToValueAtTime(peakGain, time + attackTime);
                 gain.gain.exponentialRampToValueAtTime(0.001, time + attackTime + decayDuration);
-                gain.gain.linearRampToValueAtTime(0, time + attackTime + decayDuration + 0.05); // Ensure silence
-                
-                osc.start(time);
-                osc.stop(time + attackTime + decayDuration + 0.1);
+                gain.gain.linearRampToValueAtTime(0, time + attackTime + decayDuration + 0.05);
             }
+
+            osc.start(time);
+            osc.stop(stopTime);
         });
     }
 }
@@ -178,8 +234,26 @@ export class InstrumentEngine {
         this.samples = new Map();
         this.additive = new AdditiveProcessor(audioContext);
         this.baker = new WavetableBaker();
+        this.effects = new T13Effects(audioContext);
         this.workletReady = false;
-        this.allowRuntimeAnalysis = false; // Disabled by default for faster loading
+        this.allowRuntimeAnalysis = false;
+
+        // Voice Management & Performance
+        this.activeVoices = []; // Tracker for all currently playing nodes
+        this.MAX_GLOBAL_VOICES = 128; // Increased for full orchestral arrangements
+        this.polyphonyLimits = {
+            'Synth_Pad': 12,
+            'Synth_SpacePad': 10,
+            'Piano': 16,
+            'v_pad': 12,
+            'v_bass': 6,
+            'v_lead': 12
+        };
+
+        // Worklet Pooling
+        this.MAX_WORKLET_VOICES = 64; // Doubled pool
+        this.workletPool = []; // Array of { node: AudioWorkletNode, env: GainNode, inUse: boolean }
+        this.wavetableCache = new Map(); // Cache for baked wavetables
     }
 
     /**
@@ -190,18 +264,41 @@ export class InstrumentEngine {
         try {
             await this.ctx.audioWorklet.addModule('/src/t13ne/modules/audio/t13ne-additiveProcessor.js');
             this.workletReady = true;
-            Logger.message("InstrumentEngine: AdditiveProcessor Worklet loaded.");
+            Logger.message("InstrumentEngine: AudioWorklet module loaded.");
+
+            // Pre-warm the worklet pool for performance
+            for (let i = 0; i < this.MAX_WORKLET_VOICES; i++) {
+                const node = new AudioWorkletNode(this.ctx, 'additive-processor');
+                const env = this.ctx.createGain();
+                node.connect(env);
+                env.gain.value = 0;
+                this.workletPool.push({ node, env, inUse: false });
+            }
+            Logger.message(`InstrumentEngine: Worklet pool initialized with ${this.MAX_WORKLET_VOICES} persistent voices.`);
+
         } catch (e) {
-            Logger.warn("InstrumentEngine: Failed to load AdditiveProcessor Worklet. Falling back to PeriodicWave.", e);
+            Logger.warn("InstrumentEngine: Failed to load AudioWorklet module. Falling back to PeriodicWave.", e);
         }
 
         // Minimal Base Instruments
-        this.defineInstrument('sine', { type: 'additive', algorithm: 'custom', partials: [{freq:1, amp:1}, {freq:2, amp:0.05}, {freq:3, amp:0.02}] });
-        this.defineInstrument('saw', { type: 'additive', algorithm: 'custom', partials: [{freq:1, amp:1}, {freq:2, amp:0.5}, {freq:3, amp:0.33}, {freq:4, amp:0.25}] });
-        this.defineInstrument('bell', { type: 'additive', algorithm: 'bell' });
-        
-        // Piano fallback (required for many systems)
-        this.defineInstrument('Piano', { type: 'additive', algorithm: 'custom', envelope: 'percussive', partials: [{freq:1, amp:1, decay:2.0}, {freq:2, amp:0.4, decay:1.5}] });
+        this.defineInstrument('sine', { type: 'additive', algorithm: 'custom', partials: [{ freq: 1, amp: 1 }, { freq: 2, amp: 0.1 }, { freq: 3, amp: 0.05 }] });
+        this.defineInstrument('saw', { type: 'additive', algorithm: 'custom', partials: [{ freq: 1, amp: 1 }, { freq: 2, amp: 0.5 }, { freq: 3, amp: 0.33 }, { freq: 4, amp: 0.25 }, { freq: 5, amp: 0.2 }, { freq: 6, amp: 0.17 }] });
+        this.defineInstrument('bell', { type: 'additive', algorithm: 'bell', partials: [{ freq: 1, amp: 1 }, { freq: 2, amp: 0.6 }, { freq: 2.4, amp: 0.4 }, { freq: 3, amp: 0.3 }, { freq: 4.1, amp: 0.2 }] });
+
+        // Piano fallback (Rich harmonic series)
+        this.defineInstrument('Piano', {
+            type: 'additive',
+            algorithm: 'custom',
+            envelope: 'percussive',
+            isHarmonic: true,
+            partials: [
+                { freq: 1, amp: 1, decay: 2.5 },
+                { freq: 2, amp: 0.6, decay: 2.0 },
+                { freq: 3, amp: 0.4, decay: 1.5 },
+                { freq: 4.01, amp: 0.2, decay: 1.0 },
+                { freq: 5.02, amp: 0.15, decay: 0.8 }
+            ]
+        });
 
         // Create a noise buffer for percussion
         const bufferSize = this.ctx.sampleRate * 2.0; // 2 seconds of noise
@@ -220,7 +317,7 @@ export class InstrumentEngine {
         }
 
         // 2. Generate Definition via Additive Processor
-        const def = this.additive.createSynthFromAnalysis(analysis, depth, role);
+        const def = this.additive.createSynthFromAnalysis(analysis, depth, role, newId);
         def.envelope = envelope;
 
         // 3. Register locally
@@ -256,7 +353,7 @@ export class InstrumentEngine {
                 }
 
                 candidates = [
-                relative
+                    relative
                 ];
             }
             // Deduplicate
@@ -420,11 +517,11 @@ export class InstrumentEngine {
 
     defineInstrument(id, definition) {
         this.instruments.set(id, definition);
-        
+
         // If it's an additive instrument, try to bake a wavetable for the Worklet
         if (definition.type === 'additive' && definition.partials) {
-            // Check if harmonic (all freqs are integers)
-            const isHarmonic = definition.partials.every(p => Math.abs(p.freq - Math.round(p.freq)) < 0.001);
+            // Check if harmonic (relaxed threshold to 0.1 to allow high-performance PeriodicWave for most sounds)
+            const isHarmonic = definition.partials.every(p => Math.abs(p.freq - Math.round(p.freq)) < 0.1);
             definition.isHarmonic = isHarmonic;
 
             // Bake in background (Restored to 1.5s for quality/looping stability)
@@ -442,71 +539,206 @@ export class InstrumentEngine {
             return;
         }
 
-        // Stereo Panning Stage
+        // 0. Voice Management / Polyphony Limiting
+        this._managePolyphony(instrumentId, time);
+
+        // 1. Create Effect Chain
+        let effectNodes = [];
+        let chainHead = this.ctx.createGain(); // Dry output of the note
+        let chainTail = chainHead;
+
+        if (inst.effects && Array.isArray(inst.effects)) {
+            inst.effects.forEach(fx => {
+                let fxNode = null;
+                switch (fx.type) {
+                    case 'distortion':
+                        fxNode = this.effects.createDistortion(fx.amount);
+                        break;
+                    case 'reverb':
+                        fxNode = this.effects.createReverb(fx.duration, fx.decay);
+                        break;
+                    case 'phaser':
+                        const phaser = this.effects.createPhaser(fx.stages, fx.feedback, fx.rate);
+                        fxNode = { input: phaser.input, output: phaser.output, extra: [phaser.lfo] };
+                        break;
+                    case 'chorus':
+                        const chorus = this.effects.createChorus(fx.rate, fx.depth, fx.delay);
+                        fxNode = { input: chorus.input, output: chorus.output, extra: [chorus.lfo] };
+                        break;
+                    case 'filter':
+                        fxNode = this.ctx.createBiquadFilter();
+                        fxNode.type = fx.filterType || 'lowpass';
+                        fxNode.frequency.value = fx.frequency || 1000;
+                        fxNode.Q.value = fx.q || 1;
+                        break;
+                    case 'noisegate':
+                        fxNode = this.effects.createNoiseGate(fx.threshold, fx.ratio);
+                        break;
+                }
+
+                if (fxNode) {
+                    const input = fxNode.input || fxNode;
+                    const output = fxNode.output || fxNode;
+                    chainTail.connect(input);
+                    chainTail = output;
+                    effectNodes.push(fxNode);
+                }
+            });
+        }
+
+        // 2. Stereo Panning Stage
         const panner = this.ctx.createStereoPanner();
         panner.pan.value = pan;
+        chainTail.connect(panner);
         panner.connect(destination);
 
-        // Cleanup helper for the panner
-        const cleanup = (endTime) => {
-            const timer = this.ctx.createOscillator();
-            timer.onended = () => {
-                panner.disconnect();
-            };
-            timer.start(endTime);
-            timer.stop(endTime + 0.1);
-        };
-
+        // Cleanup helper for the chain
         const releaseTime = inst.release || 0.1;
         const endTime = time + duration + releaseTime;
-        cleanup(endTime);
 
+        const masterCleanup = () => {
+            if (voiceObj.cleanedUp) return;
+            voiceObj.cleanedUp = true;
+
+            const idx = this.activeVoices.indexOf(voiceObj);
+            if (idx !== -1) this.activeVoices.splice(idx, 1);
+
+            try {
+                chainHead.disconnect();
+                effectNodes.forEach(node => {
+                    const n = node.input || node;
+                    const out = node.output || node;
+                    if (n && n.disconnect) n.disconnect();
+                    if (out && out.disconnect) out.disconnect();
+                    if (node.extra) node.extra.forEach(e => { try { e.stop(); e.disconnect(); } catch (err) { } });
+                });
+                panner.disconnect();
+            } catch (e) { }
+        };
+
+        const masterKill = () => {
+            if (voiceObj.ended) return;
+            voiceObj.ended = true; // Mark immediately to free up polyphony slot
+
+            const now = this.ctx.currentTime;
+            chainHead.gain.cancelScheduledValues(now);
+            chainHead.gain.setValueAtTime(chainHead.gain.value, now);
+            // Linear ramp to zero to avoid DC offset click
+            chainHead.gain.linearRampToValueAtTime(0, now + 0.05);
+
+            // CRITICAL RESOURCE FIX: Stop all oscillators/sources associated with this voice immediately
+            voiceObj.sources.forEach(src => {
+                try {
+                    if (src.stop) src.stop(now + 0.06);
+                } catch (e) { }
+            });
+
+            setTimeout(masterCleanup, 100); // Wait for fade then clean up nodes
+        };
+
+        const voiceObj = {
+            id: instrumentId,
+            time: time,
+            ended: false,
+            cleanedUp: false,
+            sources: [], // Track sources for rigorous cleanup
+            cleanup: masterCleanup,
+            kill: masterKill
+        };
+        this.activeVoices.push(voiceObj);
+
+        const playerParams = { ...inst, sources: voiceObj.sources };
+
+        // 3. Trigger Note with chainHead as destination
         switch (inst.type) {
             case 'sampler':
-                this.playSampleNote(inst.sampleId, frequency, time, duration, velocity, panner);
+                this.playSampleNote(inst.sampleId, frequency, time, duration, velocity, chainHead, masterCleanup, voiceObj.sources);
                 break;
             case 'additive':
-                if (inst.isHarmonic) {
-                    this.playPeriodicNote(inst, frequency, time, duration, velocity, panner);
-                } 
-                else if (this.workletReady && inst.wavetable) {
-                    this.playWorkletTone(inst, frequency, time, duration, velocity, panner);
-                } else if (inst.algorithm === 'bell') {
-                    this.additive.playAdditiveTone(frequency, time, duration, panner, null, inst);
-                } else if (inst.partials) {
-                    this.additive.playAdditiveTone(frequency, time, duration, panner, inst.partials, inst);
-                } else {
-                    this.additive.playAdditiveTone(frequency, time, duration, panner, null, inst);
+                // PREFER PeriodicWave for stability if harmonic (covers Piano/Standard Synths)
+                if (inst.isHarmonic || !this.workletReady) {
+                    this.playPeriodicNote(inst, frequency, time, duration, velocity, chainHead, masterCleanup, voiceObj.sources);
+                }
+                else {
+                    // Use worklet for ALL other additive types if ready
+                    if (!inst.wavetable && (inst.partials || inst.algorithm === 'bell')) {
+                        const partials = inst.partials || (inst.algorithm === 'bell' ? this.additive.createSynthFromAnalysis(null, 'medium', 'lead').partials : null);
+                        if (partials) inst.wavetable = this.getWavetableForPartials(partials, instrumentId);
+                    }
+                    this.playWorkletTone(inst, frequency, time, duration, velocity, chainHead, masterCleanup, voiceObj.sources);
                 }
                 break;
             case 'noise':
-                this.playNoiseNote(time, duration, velocity, panner, inst);
+                this.playNoiseNote(time, duration, velocity, chainHead, playerParams, masterCleanup, voiceObj.sources);
                 break;
             case 'synth':
             default:
-                this.playSynthNote(frequency, time, duration, inst.oscType, velocity, panner, inst);
+                this.playSynthNote(frequency, time, duration, inst.oscType, velocity, chainHead, playerParams, masterCleanup, voiceObj.sources);
                 break;
         }
     }
 
-    playPeriodicNote(inst, frequency, time, duration, velocity, destination) {
-        if (!Number.isFinite(frequency) || frequency <= 0) return;
+    getWavetableForPartials(partials, instrumentId = 'temp') {
+        // Use a stable key for caching: instrumentId if provided, otherwise a JSON string of partials
+        const key = instrumentId !== 'temp' ? instrumentId : JSON.stringify(partials);
+        if (this.wavetableCache.has(key)) return this.wavetableCache.get(key);
+
+        const tableSize = 2048;
+        const wavetable = new Float32Array(tableSize);
+        const twoPi = Math.PI * 2;
+
+        for (let i = 0; i < tableSize; i++) {
+            let sum = 0;
+            const t = i / tableSize;
+            partials.forEach(p => {
+                sum += Math.sin(twoPi * p.freq * t) * p.amp;
+            });
+            wavetable[i] = sum;
+        }
+
+        // Normalize
+        let max = 0;
+        for (let i = 0; i < wavetable.length; i++) {
+            const a = Math.abs(wavetable[i]);
+            if (a > max) max = a;
+        }
+        if (max > 0) {
+            for (let i = 0; i < wavetable.length; i++) wavetable[i] /= max;
+        }
+
+        this.wavetableCache.set(key, wavetable);
+        return wavetable;
+    }
+
+    playPeriodicNote(inst, frequency, time, duration, velocity, destination, onCleanup = null, sources = null) {
+        if (!Number.isFinite(frequency) || frequency <= 0) {
+            if (onCleanup) onCleanup();
+            return;
+        }
 
         if (!inst.periodicWave) {
-            const maxHarmonic = Math.max(...inst.partials.map(p => Math.round(p.freq)));
+            const hasPartials = inst.partials && inst.partials.length > 0;
+            const maxHarmonic = hasPartials ? Math.max(1, ...inst.partials.map(p => Math.round(p.freq))) : 1;
             const real = new Float32Array(maxHarmonic + 1);
             const imag = new Float32Array(maxHarmonic + 1);
-            
-            inst.partials.forEach(p => {
-                const idx = Math.round(p.freq);
-                if (idx < real.length) {
-                    imag[idx] = p.amp;
-                }
-            });
+
+            if (hasPartials) {
+                inst.partials.forEach(p => {
+                    const idx = Math.round(p.freq);
+                    if (idx < real.length && idx > 0) {
+                        imag[idx] = p.amp;
+                    }
+                });
+                // Normalized Fundamental if empty
+                if (imag.every(v => v === 0)) imag[1] = 1;
+            } else {
+                imag[1] = 1.0;
+            }
             inst.periodicWave = this.ctx.createPeriodicWave(real, imag);
         }
 
         const osc = this.ctx.createOscillator();
+        if (sources) sources.push(osc);
         osc.setPeriodicWave(inst.periodicWave);
         osc.frequency.value = frequency;
 
@@ -514,30 +746,66 @@ export class InstrumentEngine {
         osc.connect(env);
         env.connect(destination);
 
-        this.applyEnvelope(env, osc, inst, time, duration, velocity);
+        this.applyEnvelope(env, osc, inst, time, duration, velocity, null, onCleanup);
     }
 
-    playWorkletTone(inst, frequency, time, duration, velocity, destination) {
-        const node = new AudioWorkletNode(this.ctx, 'additive-processor', {
-            processorOptions: { wavetable: inst.wavetable }
+    playWorkletTone(inst, frequency, time, duration, velocity, destination, onCleanup = null, sources = null) {
+        if (!this.workletReady) {
+            if (onCleanup) onCleanup();
+            return;
+        }
+
+        // Find an idle voice in the pool
+        let poolItem = this.workletPool.find(item => !item.inUse);
+
+        // If pool is full, STEAL the oldest (first) voice to avoid silence or oscillator spikes
+        if (!poolItem) {
+            poolItem = this.workletPool[0];
+            // Rotate the pool so we don't keep stealing the same one if multiple needed
+            this.workletPool.push(this.workletPool.shift());
+        }
+
+        poolItem.inUse = true;
+        const node = poolItem.node;
+        const env = poolItem.env;
+
+        // Reset hardware state immediately to prevent "ghost" tails or pops
+        const now = this.ctx.currentTime;
+        env.gain.cancelScheduledValues(now);
+        env.gain.setValueAtTime(0, now);
+
+        try { env.disconnect(); } catch (e) { }
+        env.connect(destination);
+
+        // Update worklet node with new wavetable
+        node.port.postMessage({
+            type: 'update',
+            wavetable: inst.wavetable,
+            active: true,
+            resetPhase: true
         });
 
         const paramFreq = node.parameters.get('frequency');
+        paramFreq.cancelScheduledValues(time);
         paramFreq.setValueAtTime(frequency, time);
 
-        const env = this.ctx.createGain();
-        node.connect(env);
-        env.connect(destination);
+        if (sources) sources.push(node);
 
-        this.applyEnvelope(env, null, inst, time, duration, velocity, node);
+        const wrapCleanup = () => {
+            // Deactivate worklet processing
+            node.port.postMessage({ type: 'update', active: false });
+            poolItem.inUse = false;
+            try { env.disconnect(); } catch (e) { }
+            if (onCleanup) onCleanup();
+        };
+
+        this.applyEnvelope(env, null, inst, time, duration, velocity, node, wrapCleanup);
     }
 
-    applyEnvelope(env, osc, inst, time, duration, velocity, workletNode = null) {
-        // Reduced gainScale to 0.05 to provide significant headroom for polyphony
-        const gainScale = 0.05; 
+    applyEnvelope(env, osc, inst, time, duration, velocity, workletNode = null, onCleanup = null) {
+        const gainScale = 0.4; // Boosted from 0.1 for better audibility across multiple gain stages
         const scaledVelocity = velocity * gainScale;
 
-        // Envelope Logic (Simplified ADSR)
         const attack = inst.attack || 0.02;
         const release = inst.release || 0.1;
         const safeDuration = Math.max(duration, attack + 0.05);
@@ -545,50 +813,54 @@ export class InstrumentEngine {
 
         env.gain.setValueAtTime(0, time);
         env.gain.linearRampToValueAtTime(scaledVelocity, time + attack);
-        
+
         if (inst.envelope === 'sustained') {
             const decay = inst.decay || 0.1;
             const sustain = inst.sustain || 0.8;
             const sustainLevel = scaledVelocity * sustain;
-            
-            env.gain.linearRampToValueAtTime(sustainLevel, time + attack + decay);
-            env.gain.setValueAtTime(sustainLevel, time + duration);
+
+            const sustainTime = Math.min(time + attack + decay, time + duration);
+            env.gain.linearRampToValueAtTime(sustainLevel, sustainTime);
+
+            if (time + duration > sustainTime) {
+                env.gain.setValueAtTime(sustainLevel, time + duration);
+            }
             env.gain.exponentialRampToValueAtTime(0.001, time + duration + release);
         } else {
-            // Percussive decay
             env.gain.exponentialRampToValueAtTime(0.001, time + safeDuration + release);
         }
-        
-        // Ensure absolute silence at end to prevent DC offset accumulation
+
         env.gain.linearRampToValueAtTime(0, endTime);
-        
-        // Cleanup
-        // Use an OscillatorNode as a precise timer on the audio thread.
-        // This ensures cleanup happens exactly when the sound ends, preventing
-        // node buildup even if the main JS thread is busy/lagging.
-        const timerOsc = this.ctx.createOscillator();
-        timerOsc.onended = () => {
-            if (osc) { osc.stop(); osc.disconnect(); }
-            if (workletNode) { workletNode.disconnect(); }
-            
-            // Check if env is connected to a panner and clean that up too
-            // In our current implementation, env -> panner -> destination
-            // Disconnecting env will effectively isolate the panner, but let's be explicit
-            env.disconnect();
+
+        const cleanup = () => {
+            try {
+                if (osc) { osc.disconnect(); }
+                if (workletNode) { try { workletNode.stop(); } catch (e) { } workletNode.disconnect(); }
+                env.disconnect();
+            } catch (e) { }
+            if (onCleanup) onCleanup();
         };
-        timerOsc.start(time);
-        if (osc) osc.start(time);
-        timerOsc.stop(endTime + 0.1);
+
+        if (osc) {
+            osc.onended = cleanup;
+            osc.start(time);
+            osc.stop(endTime + 0.1);
+        } else {
+            const timerOsc = this.ctx.createOscillator();
+            timerOsc.onended = cleanup;
+            timerOsc.start(time);
+            timerOsc.stop(endTime + 0.1);
+        }
     }
 
-    playSynthNote(frequency, time, duration, type, velocity, destination, params = {}) {
+    playSynthNote(frequency, time, duration, type, velocity, destination, params = {}, onCleanup = null, sources = null) {
         if (!Number.isFinite(frequency) || frequency <= 0) return;
         const osc = this.ctx.createOscillator();
+        if (sources) sources.push(osc);
         const env = this.ctx.createGain();
 
         osc.type = type || 'triangle';
-        
-        // Pitch Envelope (Crucial for Kicks/Drums)
+
         if (params.pitchEnv) {
             const startFreq = params.pitchEnv.startMult ? frequency * params.pitchEnv.startMult : frequency;
             const dropTime = params.pitchEnv.time || 0.1;
@@ -598,73 +870,88 @@ export class InstrumentEngine {
             osc.frequency.value = frequency;
         }
 
-        osc.connect(env);
-        // Filter Support
-        let source = osc;
+        let sourceNode = osc;
         if (params.filterType) {
             const filter = this.ctx.createBiquadFilter();
             filter.type = params.filterType;
             filter.frequency.value = params.filterFreq || 1000;
             if (params.filterQ) filter.Q.value = params.filterQ;
             osc.connect(filter);
-            source = filter;
+            sourceNode = filter;
         }
 
-        source.connect(env);
+        sourceNode.connect(env);
         env.connect(destination);
 
-        // ADSR / Envelope
         const attack = params.attack || 0.01;
         const release = params.release || 0.1;
         const safeDuration = Math.max(duration, attack + 0.01);
+        const scaledVelocity = velocity * 0.5; // Boosted from 0.1
 
         env.gain.setValueAtTime(0, time);
-        env.gain.linearRampToValueAtTime(velocity, time + attack);
-        
-        // Sustain -> Release
-        env.gain.setValueAtTime(velocity, time + safeDuration);
+        env.gain.linearRampToValueAtTime(scaledVelocity, time + attack);
+        env.gain.setValueAtTime(scaledVelocity, time + safeDuration);
         env.gain.exponentialRampToValueAtTime(0.001, time + safeDuration + release);
-        // Force silence to avoid DC offset or click at stop
         env.gain.linearRampToValueAtTime(0, time + safeDuration + release + 0.01);
 
+        const cleanup = () => {
+            osc.disconnect();
+            env.disconnect();
+            if (params.filterType) sourceNode.disconnect();
+            if (onCleanup) onCleanup();
+        };
+        osc.onended = cleanup;
+
         osc.start(time);
-        osc.stop(time + safeDuration + release + 0.02);
+        osc.stop(time + safeDuration + release + 0.05);
     }
 
-    playSampleNote(sampleId, frequency, time, duration, velocity, destination) {
+    playSampleNote(sampleId, frequency, time, duration, velocity, destination, onCleanup = null, sources = null) {
         const buffer = this.samples.get(sampleId);
-        if (!buffer) return;
+        if (!buffer) {
+            if (onCleanup) onCleanup();
+            return;
+        }
 
         const source = this.ctx.createBufferSource();
+        if (sources) sources.push(source);
         source.buffer = buffer;
 
-        // Pitch shifting (Assuming C4 base)
-        const rate = frequency / 261.63;
+        const rate = frequency / 261.63; // Assume C4 base
         source.playbackRate.value = rate;
 
         const env = this.ctx.createGain();
         source.connect(env);
         env.connect(destination);
 
-        // Fix: Add small attack to prevent start click
+        const scaledVelocity = velocity * 0.5; // Boosted from 0.1
         env.gain.setValueAtTime(0, time);
-        env.gain.linearRampToValueAtTime(velocity, time + 0.005);
-
-        // Simple decay if duration is short, else let sample play
-        // But preventing click at end:
-        env.gain.setValueAtTime(velocity, time + duration);
+        env.gain.linearRampToValueAtTime(scaledVelocity, time + 0.005);
+        env.gain.setValueAtTime(scaledVelocity, time + duration);
         env.gain.linearRampToValueAtTime(0, time + duration + 0.1);
+
+        const cleanup = () => {
+            source.disconnect();
+            env.disconnect();
+            if (onCleanup) onCleanup();
+        };
+        source.onended = cleanup;
 
         source.start(time);
         source.stop(time + duration + 0.2);
     }
 
-    playNoiseNote(time, duration, velocity, destination, params = {}) {
+    playNoiseNote(time, duration, velocity, destination, params = {}, onCleanup = null, sources = null) {
         const source = this.ctx.createBufferSource();
+        if (sources) sources.push(source);
         source.buffer = this.noiseBuffer;
-        const env = this.ctx.createGain();
 
-        // Apply Filter if specified (Essential for Hats to avoid clicking)
+        const loopStart = Math.random() * (this.noiseBuffer.duration - duration - 0.1);
+        source.loop = true;
+        source.loopStart = loopStart > 0 ? loopStart : 0;
+        source.loopEnd = this.noiseBuffer.duration;
+
+        const env = this.ctx.createGain();
         let outputNode = source;
         if (params.filterType) {
             const filter = this.ctx.createBiquadFilter();
@@ -673,21 +960,54 @@ export class InstrumentEngine {
             if (params.filterQ) filter.Q.value = params.filterQ;
             source.connect(filter);
             outputNode = filter;
-            // outputNode.connect(this.ctx.destination); // DEBUG: Direct out to check filter
         }
 
         outputNode.connect(env);
         env.connect(destination);
 
-        const safeDuration = Math.max(duration, 0.05); // Ensure minimum duration to avoid clicks
-        
-        // Fix: Add attack and release ramps to prevent clicks/crackles
+        const safeDuration = Math.max(duration, 0.05);
+        const scaledVelocity = velocity * 0.6; // Boosted from 0.15 for punchier drums
         env.gain.setValueAtTime(0, time);
-        env.gain.linearRampToValueAtTime(velocity, time + 0.005);
+        env.gain.linearRampToValueAtTime(scaledVelocity, time + 0.005);
         env.gain.exponentialRampToValueAtTime(0.001, time + safeDuration);
-        env.gain.linearRampToValueAtTime(0, time + safeDuration + 0.05); // Ensure full silence
+        env.gain.linearRampToValueAtTime(0, time + safeDuration + 0.05);
 
-        source.start(time);
+        const cleanup = () => {
+            source.disconnect();
+            env.disconnect();
+            if (params.filterType) outputNode.disconnect();
+            if (onCleanup) onCleanup();
+        };
+        source.onended = cleanup;
+
+        source.start(time, source.loopStart);
         source.stop(time + safeDuration + 0.1);
+    }
+
+    stopAll(immediate = false) {
+        Logger.message(`InstrumentEngine: Stopping all voices (immediate: ${immediate}).`);
+        const voices = [...this.activeVoices];
+        this.activeVoices = [];
+
+        voices.forEach(v => {
+            if (immediate) v.cleanup();
+            else v.kill();
+        });
+    }
+
+    _managePolyphony(id, now) {
+        const playing = this.activeVoices.filter(v => !v.ended);
+        const limit = this.polyphonyLimits[id] || 16;
+        const instrumentVoices = playing.filter(v => v.id === id);
+
+        if (instrumentVoices.length >= limit) {
+            const oldest = instrumentVoices.sort((a, b) => a.time - b.time)[0];
+            if (oldest) oldest.kill();
+        }
+
+        if (playing.length >= this.MAX_GLOBAL_VOICES) {
+            const oldest = playing.sort((a, b) => a.time - b.time)[0];
+            if (oldest) oldest.kill();
+        }
     }
 }

@@ -11,6 +11,8 @@ import T13YarnTeller from "./t13ne-yarntelling.js";
 import T13Name from "../characters/t13ne-names.js";
 import T13NE_Reasoning from '../ai/t13ne-reasoning.js';
 import T13NE_StateMachine from '../systems/t13ne-state-machine.js';
+import T13LoreManager from "./t13ne-lore.js"; // Import Lore Manager
+
 
 import { SuperKnot } from "../mechanics/t13ne-knots.js";
 
@@ -436,23 +438,111 @@ class T13Plot extends SuperKnot {
 
     /**
      * Creates plot descendants based on the conflict.
+     * Generates Locations, Props, and Lores.
      */
-    createPlotDescendants() {
+    async createPlotDescendants() {
         // "Plots create Descendants... Locations... MacGuffins... Pacts... Lores"
-        // Create at least one Location
-        this.plotDescendants.push({
-            Type: 'Location',
-            Name: `${this.Name} Location`,
-            Description: 'A location relevant to the plot.'
-        });
 
-        // Create a MacGuffin or Device if appropriate
+        // 1. Create Location
+        if (!this.location) {
+            this.plotDescendants.push({
+                Type: 'Location',
+                Name: `${this.Name} Location`,
+                Description: 'A location relevant to the plot.'
+            });
+        }
+
+        // 2. Create MacGuffin/Device (50% chance)
         if (Math.random() > 0.5) {
             this.plotDescendants.push({
                 Type: 'Prop',
                 Name: 'Plot Device',
                 Description: 'An item of importance to the conflict.'
             });
+        }
+
+        // 3. Generate Lore (New System)
+        // Plots always generate at least one piece of Lore related to their conflict
+        const loreContext = {
+            topic: `${this.Name} Mystery`,
+            source: 'Plot Generation',
+            relatedTo: this.Conflict ? 'Conflict' : 'Unknown'
+        };
+        const lore = T13LoreManager.generateLore('Secret', loreContext);
+        this.plotDescendants.push({ Type: 'Lore', ...lore });
+
+        // 4. Historical Protagonist Check
+        // If no Hooked Characters exist (e.g., Backstory generation), create a Historical Protagonist
+        if (this.characters.length === 0) {
+            await this.createNPC('Cast', { role: 'Historical Protagonist' });
+            Logger.message(`Plot ${this.Name}: Created Historical Protagonist.`);
+        }
+    }
+
+    /**
+     * Recursively generates sub-plots using Card Spreads.
+     * @param {string} [startRank] - Optional override for starting rank.
+     */
+    async cascadePlot(startRank = null) {
+        if (!T13NECardsAPI.isInitialized) {
+            Logger.warn("T13CardAPI not initialized, cannot cascade plot.");
+            return;
+        }
+
+        const currentRank = startRank || this.Rank;
+        const hierarchy = ['Cycle', 'Epic', 'Volume', 'Arc', 'Story', 'Act', 'Scene'];
+        const rankIndex = hierarchy.indexOf(currentRank);
+
+        if (rankIndex === -1 || rankIndex >= hierarchy.length - 1) {
+            return; // Lowest rank or invalid
+        }
+
+        // Get the composite spread for this rank (e.g., 'cycle' spread for a Cycle rank plot)
+        // The spread definition drives the structure (how many epics, etc.)
+        const spreadId = currentRank.toLowerCase();
+        const compositeSpread = T13NECardsAPI.getCompositeSpread(spreadId);
+
+        if (!compositeSpread || !compositeSpread.components) {
+            Logger.warn(`No composite spread found for rank ${currentRank}.`);
+            return;
+        }
+
+        Logger.message(`Cascading Plot ${this.Name} (${currentRank})...`);
+
+        // Iterate through components defined in the spread (e.g., 'epics', 'volumes')
+        for (const [key, component] of Object.entries(compositeSpread.components)) {
+            // Check if component is an array of children (e.g., 'epics': [...])
+            if (Array.isArray(component)) {
+                for (const childDef of component) {
+                    const childName = `${this.Name} - ${childDef.name}`;
+                    const childRank = hierarchy[rankIndex + 1];
+
+                    // Create the sub-plot
+                    const subPlot = this.spawnSubPlot(childName, {
+                        Rank: childRank,
+                        Description: `Generated from ${currentRank} Cascade.`
+                    });
+
+                    // Recursively cascade
+                    await subPlot.cascadePlot();
+                }
+            }
+            // Handle single child components if any (e.g. 'frame', 'loom' in Story)
+            else if (typeof component === 'object' && component.name) {
+                const childName = `${this.Name} - ${component.name}`;
+                const childRank = hierarchy[rankIndex + 1];
+
+                // Special handling for Story -> Act
+                // Story spread has 'frame', 'loom', 'zenith' keys which are Acts
+                const subPlot = this.spawnSubPlot(childName, {
+                    Rank: 'Act', // Hardcoded as Story children are Acts
+                    actType: component.variety || 'Unknown',
+                    Description: component.description
+                });
+
+                // Acts might cascade to Scenes if we implement Act spreads fully
+                await subPlot.cascadePlot();
+            }
         }
     }
 
@@ -755,11 +845,16 @@ class T13Plot extends SuperKnot {
     }
 
     /**
-     * Resolves the Plot according to the specified resolution type.
-     * Handles Payouts, Rank changes, and recycling/spawning.
+     * Resolves the Plot (ends it, changes its rank, handles success/failure).
      * @param {string} type - The resolution type (e.g., 'Resolution', 'Revolution').
+     * NOTE: For 'Revelation' (Lore gains), use reveal() instead.
      */
     async resolve(type) {
+        if (type === 'Revelation') {
+            Logger.warn(`Plot ${this.Name}: 'Revelation' is not a resolution type. Use reveal() for Lore gains.`);
+            return;
+        }
+
         const Resolutions = await CodexLoader.getData('plotResolutions');
         const resData = Resolutions.find(r => r.Type === type);
 
@@ -783,20 +878,17 @@ class T13Plot extends SuperKnot {
                 returnPlot = true;
                 conflictReversal = true;
                 break;
-            case 'Revelation':
-                payoutMultiplier = 1;
-                rankChange = 0;
-                returnPlot = true;
-                break;
+            // Revelation removed - uses reveal()
+
             case 'Rejection':
                 payoutMultiplier = 0;
-                rankChange = 1;
+                rankChange = 1; // Promotes (harder)
                 returnPlot = true;
                 spawnSubplotType = 'Rejection';
                 break;
             case 'Reversion':
                 payoutMultiplier = 0;
-                rankChange = 1;
+                rankChange = -1; // Demotes
                 returnPlot = true;
                 break;
             case 'Revocation':
@@ -810,8 +902,8 @@ class T13Plot extends SuperKnot {
                 returnPlot = true; // Returns as sub-plot (handled by rank reduction usually)
                 break;
             case 'Resolution':
-                payoutMultiplier = 2;
-                returnPlot = false;
+                payoutMultiplier = 2; // High payout
+                returnPlot = false; // Ends
                 break;
         }
 
@@ -832,12 +924,27 @@ class T13Plot extends SuperKnot {
 
             if (conflictReversal && this.Conflict && this.Conflict.Sides) {
                 // Swap Dominant and Pressed
-                // Simplified: Just log it for now, complex object manipulation required
+                // Simplified: Just log it for now
                 Logger.message(`Plot ${this.Name}: Conflict reversed.`);
+            }
+
+            // Promote/Demote
+            if (rankChange !== 0) {
+                if (rankChange > 0) this.promotePlot();
+                // Demotion logic would go here if needed, usually just reduces scope
             }
         } else {
             Logger.message(`Plot ${this.Name}: Defeated/Resolved. Removing from active plots.`);
             this.isActive = false; // Mark for removal
+
+            // Generate Resolution Lore
+            const lore = T13LoreManager.generateLore('History', {
+                topic: `${this.Name} Resolution`,
+                content: `How the conflict of ${this.Name} was resolved.`,
+                relatedTo: 'Plot History'
+            });
+            // Grant to all hooked characters
+            this.characters.forEach(char => T13LoreManager.gainLore(char, lore));
         }
 
         // 3. Spawn specific subplots if needed
@@ -875,6 +982,23 @@ class T13Plot extends SuperKnot {
                 char.swayAccount.add('Chi', totalAmount * 10);
                 Logger.message(`Character ${char.name} gained ${totalAmount * 10} Chi from Plot Resolution.`);
             }
+        }
+    }
+
+    /**
+     * Promotes the plot to the next higher rank.
+     */
+    promotePlot() {
+        const ranks = ['Scene', 'Act', 'Story', 'Chapter', 'Arc', 'Volume', 'Epic', 'Cycle'];
+        const currentIdx = ranks.indexOf(this.Rank);
+
+        if (currentIdx !== -1 && currentIdx < ranks.length - 1) {
+            const oldRank = this.Rank;
+            this.Rank = ranks[currentIdx + 1];
+            Logger.message(`Plot ${this.Name}: Promoted from ${oldRank} to ${this.Rank}.`);
+            // Trigger cascading for new rank expectations?
+            // Usually promotion means it becomes a larger threat, spawns children.
+            // this.cascadePlot(); // Optional: Immediately cascade? Better to wait for next Act cycle.
         }
     }
 
