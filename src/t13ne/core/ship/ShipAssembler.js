@@ -303,6 +303,8 @@ export class ShipAssembler {
         if (hullMaterial.uniforms.color1) hullMaterial.uniforms.color1.value.setHex(livery.color1 !== undefined ? livery.color1 : Math.random() * 0xffffff);
         if (hullMaterial.uniforms.color2 && livery.color2 !== undefined) hullMaterial.uniforms.color2.value.setHex(livery.color2);
         if (hullMaterial.uniforms.color3 && livery.color3 !== undefined) hullMaterial.uniforms.color3.value.setHex(livery.color3);
+        // Map color1 to baseColor for Industrial/Boxy shaders
+        if (hullMaterial.uniforms.baseColor) hullMaterial.uniforms.baseColor.value.setHex(livery.color1 !== undefined ? livery.color1 : 0x888888);
         
         let hullMesh = null;
 
