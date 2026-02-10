@@ -304,12 +304,12 @@ export class ShipGenerator {
             
             // Main Body
             attachComponent('fuselage_main', [0, 0, 0], [0, 0, 0], 'cylinder', 
-                {radiusTop: mainWidth/2, radiusBottom: mainWidth/2, height: 2.0, radialSegments: 16}, 'NONE');
+                {radiusTop: mainWidth/2, radiusBottom: mainWidth/2, height: 2.0, radialSegments: 32}, 'NONE');
             
             // Mandibles (Front) - Tapered
             const mandLen = mainLen * 0.6;
-            const mandWidth = mainWidth * 0.25;
-            const mandOffset = mainWidth * 0.2;
+            const mandWidth = mainWidth * 0.2; // Reduced width relative to hull
+            const mandOffset = mainWidth * 0.18;
             
             // Tapered Mandibles (Prism)
             // Rotate X 90 to lay flat. Rotate Z 45 to align 4-sided prism as box.
@@ -364,16 +364,17 @@ export class ShipGenerator {
             attachComponent('cockpit_strut', strutCenter, [0, -strutAngle, -Math.PI/2], 'cylinder', 
                 {radiusTop: 0.6, radiusBottom: 0.6, height: strutLen}, 'NONE');
                 
-            // Cockpit Head (Capsule)
-            // Position at end of strut
+            // Cockpit Head (Capsule) - Attached at rear
+            const capLen = 2.5;
+            // Position at end of strut, then shift forward by half length so strut hits the back
             const headPos = [
-                strutStartX + dirX * strutLen, 
+                strutStartX + dirX * strutLen + (capLen/2) * 0.2, // Slight X shift
                 0, 
-                strutStartZ + dirZ * strutLen
+                strutStartZ + dirZ * strutLen + (capLen/2) // Shift Z forward
             ];
             // Aligned Z (forward/backward). Capsule default is Y-up. Rotate X 90.
             attachComponent('cockpit_head', headPos, [Math.PI/2, 0, 0], 'capsule', 
-                {radius: 0.9, length: 2.5}, 'NONE');
+                {radius: 0.9, length: capLen}, 'NONE');
 
         } else if (hullType === 'CATAMARAN') {
             // Star Trek Style Nacelle Ship (Constitution / Miranda / Voyager)
@@ -790,10 +791,10 @@ export class ShipGenerator {
                     // Rotate Z to align odd-sided prisms (flat top/bottom)
                     // Default cylinder (prism) has vertex at +X. 
                     // RotX(90) puts vertex at +X (Side). We want vertex at +Y (Top) or -Y (Bottom) for symmetry.
-                    // FIX: Apply Roll rotation to Y axis (which is the longitudinal axis after X-rotation)
+                    // FIX: Apply Roll rotation to Y axis (which is the longitudinal axis after X-rotation [90,0,0])
                     const baseRoll = (segs % 2 !== 0) ? Math.PI / 2 : Math.PI / segs;
 
-                    rot = [Math.PI / 2, baseRoll + faceAlignment, 0];
+                    rot = [Math.PI / 2, baseRoll + faceAlignment, 0]; // [Pitch, Roll, Yaw] effectively due to order
 
                     if (i === spineSegments - 1) {
                         lastSegmentRadius = radius;
@@ -823,7 +824,7 @@ export class ShipGenerator {
                 const noseRotZ = (noseSegments % 2 !== 0) ? 0 : Math.PI / noseSegments;
                 
                 attachComponent('nose', [0, 0, noseZ],
-                    [Math.PI / 2, 0, (symmetryType === 'RADIAL' && radialAxis === 'z') ? -Math.PI / noseSegments : noseRotZ],
+                    [Math.PI / 2, (symmetryType === 'RADIAL' && radialAxis === 'z') ? -Math.PI / noseSegments : noseRotZ, 0],
                     'cone',
                     { radius: noseRadius, height: noseLength, radialSegments: noseSegments },
                     'NONE'

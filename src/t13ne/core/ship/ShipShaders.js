@@ -273,7 +273,7 @@ export const industrialLiveryShader = {
             vec3 lighting = vec3(0.1) + vec3(1.0) * NdotL; // Ambient + Diffuse
             // Cell Shading (Quantize lighting) to reduce flicker
             float levels = 3.0;
-            lighting = floor(lighting * levels) / levels;
+            lighting = floor(lighting * levels + 0.5) / levels; // Add bias to prevent flooring to black
 
             // Specular
             vec3 viewDir = normalize(cameraPosition - vWorldPosition);
@@ -361,7 +361,7 @@ export const boxyLiveryShader = {
             float NdotL = max(dot(vNormal, lightDir), 0.0);
             vec3 lighting = vec3(0.2) + vec3(0.8) * NdotL;
 
-            gl_FragColor = vec4(col * lighting, 1.0);
+            gl_FragColor = vec4(col * lighting, opacity);
         }
     `
 };
