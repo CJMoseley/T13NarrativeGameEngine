@@ -123,12 +123,14 @@ export const industrialLiveryShader = {
     vertexShader: `
         varying vec3 vPos;
         varying vec3 vNormal;
+        varying vec3 vObjectNormal;
         varying vec3 vWorldPosition;
         varying vec2 vUv;
         
         void main() {
             vPos = position;
             vNormal = normalize(normalMatrix * normal);
+            vObjectNormal = normalize(normal); // Object space normal for triplanar
             vWorldPosition = (modelMatrix * vec4(position, 1.0)).xyz;
             vUv = uv;
             vec4 worldPosition = modelMatrix * vec4(position, 1.0);
@@ -138,13 +140,19 @@ export const industrialLiveryShader = {
     fragmentShader: `
         varying vec3 vPos;
         varying vec3 vNormal;
+        varying vec3 vObjectNormal;
         varying vec3 vWorldPosition;
         uniform vec3 baseColor;
         uniform float noiseSeed;
 
         // --- Noise Functions ---
-        float hash(float n) { return fract(sin(n) * 1e4); }
-        float hash(vec2 p) { return fract(1e4 * sin(17.0 * p.x + p.y * 0.1) * (0.1 + abs(sin(p.y * 13.0 + p.x)))); }
+        // Replaced unstable hash with standard pseudo-random hash to prevent flickering
+        float hash(vec2 p) {
+            p = fract(p * vec2(123.34, 456.21));
+            p += dot(p, p + 45.32);
+            return fract(p.x * p.y);
+        }
+        float hash(float n) { return fract(sin(n) * 43758.5453123); }
 
         float noise(vec2 x) {
             vec2 i = floor(x);
@@ -155,19 +163,6 @@ export const industrialLiveryShader = {
             float d = hash(i + vec2(1.0, 1.0));
             vec2 u = f * f * (3.0 - 2.0 * f);
             return mix(a, b, u.x) + (c - a) * u.y * (1.0 - u.x) + (d - b) * u.x * u.y;
-        }
-
-        float fbm(vec2 x) {
-            float v = 0.0;
-            float a = 0.5;
-            vec2 shift = vec2(100.0);
-            mat2 rot = mat2(cos(0.5), sin(0.5), -sin(0.5), cos(0.50));
-            for (int i = 0; i < 5; ++i) {
-                v += a * noise(x);
-                x = rot * x * 2.0 + shift;
-                a *= 0.5;
-            }
-            return v;
         }
 
         // Voronoi for panels: returns vec3(minDist, cellID, distanceToEdge)
@@ -205,58 +200,62 @@ export const industrialLiveryShader = {
             return vec3(md, hash(n + mg), md2);
         }
 
+        // Antialiased step function for procedural lines
+        float aastep(float threshold, float value) {
+            float afwidth = length(vec2(dFdx(value), dFdy(value))) * 0.70710678;
+            return smoothstep(threshold - afwidth, threshold + afwidth, value);
+        }
+
         void main() {
             // Triplanar mapping to avoid UV seams on procedural geometry
-            vec3 blend = abs(vNormal);
+            // Use Object Normal to ensure texture sticks to ship during rotation
+            vec3 blend = abs(vObjectNormal);
             blend /= dot(blend, vec3(1.0));
             
             // Scale for panels
-            float panelScale = 0.3; // Slightly larger panels to reduce visual noise
-            vec3 vX = voronoi(vPos.yz * panelScale + noiseSeed);
-            vec3 vY = voronoi(vPos.xz * panelScale + noiseSeed + 10.0);
-            vec3 vZ = voronoi(vPos.xy * panelScale + noiseSeed + 20.0);
+            float panelScale = 0.02; // Large panels (50 units) to prevent moire
             
-            // Blend voronoi results
-            vec3 vor = vX * blend.x + vY * blend.y + vZ * blend.z;
-            float distToEdge = vor.z;
-            float cellID = vor.y;
+            // Simple Grid Noise instead of Voronoi/FBM to eliminate moire
+            // Use World Position for continuous pattern across components
+            vec3 p = vWorldPosition * panelScale;
+            vec3 cell = floor(p + 0.001); // Offset to avoid 0 artifacts
+            vec3 local = fract(p + 0.001);
+            
+            // Distance to edge (Manhattan-ish for boxy look)
+            vec3 d = min(local, 1.0 - local);
+            float distToEdge = min(min(d.x, d.y), d.z);
+            
+            float cellID = hash(cell.xy) + hash(cell.yz) + hash(cell.zx);
 
             // 1. Metalness (Stepped Noise)
-            // Use cellID to vary material slightly per panel
-            float panelMetal = 0.8 + 0.2 * hash(cellID * 10.0);
-            // Paint mask: High contrast noise
-            float paintNoise = fbm(vPos.xy * 0.15); // Lower frequency for larger paint patches
-            float isPainted = step(0.6, paintNoise); 
-            float metalness = mix(panelMetal, 0.0, isPainted); // 0.0 is painted, 1.0 is metal
-
-            // 2. Roughness (Storyteller)
-            float baseRough = 0.4 + 0.3 * hash(cellID * 20.0);
-            // Scratches: Stretched noise
-            float scratchNoise = noise(vec2(vPos.x * 1.0, vPos.y * 20.0)); // Reduced stretch frequency
-            float roughness = baseRough + 0.2 * scratchNoise;
-            if (isPainted > 0.5) roughness = 0.8; // Paint is rougher
+            float baseMetal = 0.1;
+            float shinyMetal = 0.7;
+            
+            float metalness = baseMetal + (shinyMetal - baseMetal) * step(0.8, hash(cellID));
+            float roughness = 0.7 - 0.3 * metalness;
 
             // 3. Occlusion (Depth)
             // Darken edges of panels
-            float panelEdge = smoothstep(0.02, 0.05, distToEdge);
-            float occlusion = panelEdge;
+            // Use aastep for stable, non-flickering edges
+            float occlusion = aastep(0.03, distToEdge);
             
             // Rust/Grime (Musgrave-ish via FBM)
-            float rust = fbm(vPos.xy * 1.0 + noiseSeed); // Reduced frequency
-            rust = smoothstep(0.4, 0.8, rust);
-            
+            // Triplanar rust to ensure it paints the surface correctly
+            // Simplified rust noise
+            float rustNoise = noise(vWorldPosition.xy * 0.01 + noiseSeed);
+            float rust = smoothstep(0.6, 0.8, rustNoise);
+
             // 4. Color
             vec3 finalColor = baseColor;
             // Vary panel color slightly
             finalColor *= (0.9 + 0.2 * hash(cellID));
             
-            // Apply paint color (e.g., orange/white industrial)
-            vec3 paintColor = vec3(0.9, 0.4, 0.1); // Industrial Orange
-            if (hash(cellID) > 0.8) paintColor = vec3(0.9, 0.9, 0.9); // Some white panels
-            finalColor = mix(finalColor, paintColor, isPainted);
+            // Industrial colors (Grey/Orange)
+            vec3 accentColor = vec3(0.7, 0.7, 0.75); // Neutral Grey/White Accent (No Orange)
+            if (hash(cellID + 1.0) > 0.85) finalColor = accentColor; // Occasional accent panel
 
             // Apply Rust
-            vec3 rustColor = vec3(0.35, 0.25, 0.2); // Desaturated rust to reduce orange glare
+            vec3 rustColor = vec3(0.3, 0.35, 0.4); // Blue-ish oxidation/grime
             finalColor = mix(finalColor, rustColor, rust * 0.8);
             roughness = mix(roughness, 1.0, rust);
             metalness = mix(metalness, 0.0, rust);
@@ -269,10 +268,13 @@ export const industrialLiveryShader = {
             // Rivets at corners (where distToEdge is small but not too small?)
             // Simplified: just use voronoi centers or corners
             // Actually, let's just use the panel edge for a bevel highlight
-            float edgeHighlight = 1.0 - smoothstep(0.0, 0.02, distToEdge);
+            float edgeHighlight = 1.0 - aastep(0.01, distToEdge);
             
             vec3 lighting = vec3(0.1) + vec3(1.0) * NdotL; // Ambient + Diffuse
-            
+            // Cell Shading (Quantize lighting) to reduce flicker
+            float levels = 3.0;
+            lighting = floor(lighting * levels) / levels;
+
             // Specular
             vec3 viewDir = normalize(cameraPosition - vWorldPosition);
             vec3 halfDir = normalize(lightDir + viewDir);
@@ -280,6 +282,86 @@ export const industrialLiveryShader = {
             float spec = pow(NdotH, (1.0 - roughness) * 128.0) * metalness;
 
             gl_FragColor = vec4(finalColor * lighting * occlusion + vec3(spec), 1.0);
+        }
+    `
+};
+
+export const boxyLiveryShader = {
+    uniforms: {
+        time: { value: 0 },
+        opacity: { value: 1.0 },
+        baseColor: { value: new THREE.Color(0x667788) },
+        noiseSeed: { value: Math.random() * 100 },
+        scale: { value: 1.0 }
+    },
+    vertexShader: industrialLiveryShader.vertexShader, // Reuse vertex shader
+    fragmentShader: `
+        varying vec3 vPos;
+        varying vec3 vNormal;
+        varying vec3 vWorldPosition;
+        uniform vec3 baseColor;
+        uniform float noiseSeed;
+
+        float hash(vec2 p) {
+            p = fract(p * vec2(123.34, 456.21));
+            p += dot(p, p + 45.32);
+            return fract(p.x * p.y);
+        }
+
+        float rectNoise(vec2 p, float scale) {
+            vec2 grid = floor(p * scale);
+            return hash(grid + noiseSeed);
+        }
+
+        // Antialiased step function for procedural lines
+        float aastep(float threshold, float value) {
+            float afwidth = fwidth(value) * 0.5;
+            return smoothstep(threshold - afwidth, threshold + afwidth, value);
+        }
+
+        void main() {
+            // Triplanar blending
+            vec3 blend = abs(vNormal);
+            blend /= dot(blend, vec3(1.0));
+
+            // Generate overlapping rectangle patterns
+            float scale1 = 0.5;
+            float scale2 = 1.2;
+            
+            // Layer 1: Large blocks
+            float nX1 = rectNoise(vPos.yz, scale1);
+            float nY1 = rectNoise(vPos.xz, scale1);
+            float nZ1 = rectNoise(vPos.xy, scale1);
+            float layer1 = nX1 * blend.x + nY1 * blend.y + nZ1 * blend.z;
+
+            // Layer 2: Small details
+            float nX2 = rectNoise(vPos.yz + 10.0, scale2);
+            float nY2 = rectNoise(vPos.xz + 10.0, scale2);
+            float nZ2 = rectNoise(vPos.xy + 10.0, scale2);
+            float layer2 = nX2 * blend.x + nY2 * blend.y + nZ2 * blend.z;
+
+            // Combine for greyscale variation
+            float pattern = mix(layer1, layer2, 0.4);
+            
+            // Color mapping
+            vec3 col = baseColor * (0.6 + 0.8 * pattern);
+            
+            // Panel lines (edges of grid)
+            vec2 gridUV = fract(vPos.xy * scale1); // Simplified edge check
+            // Better edge check using triplanar
+            float edgeX = aastep(0.95, fract(vPos.y * scale1)) + aastep(0.95, fract(vPos.z * scale1));
+            float edgeY = aastep(0.95, fract(vPos.x * scale1)) + aastep(0.95, fract(vPos.z * scale1));
+            float edgeZ = aastep(0.95, fract(vPos.x * scale1)) + aastep(0.95, fract(vPos.y * scale1));
+            float isEdge = max(edgeX * blend.x, max(edgeY * blend.y, edgeZ * blend.z));
+            
+            col = mix(col, col * 0.5, aastep(0.5, isEdge));
+
+            // Lighting
+            vec3 lightDir = normalize(vec3(1.0, 1.0, 1.0));
+            float NdotL = max(dot(vNormal, lightDir), 0.0);
+            vec3 lighting = vec3(0.2) + vec3(0.8) * NdotL;
+
+            gl_FragColor = vec4(col * lighting, 1.0);
         }
     `
 };

@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { CSG } from 'three-csg-ts';
 import { ShipComponent } from './ShipComponent.js';
 import { COMPONENT_COLORS, getCompProps } from './ShipUtils.js';
-import { racingLiveryShader, industrialLiveryShader } from './ShipShaders.js';
+import { racingLiveryShader, industrialLiveryShader, boxyLiveryShader } from './ShipShaders.js';
 
 export class ShipAssembler {
     constructor(componentFactory, hullGenerator, greebleGenerator, wiringGenerator, gameEngine) {
@@ -25,7 +25,11 @@ export class ShipAssembler {
 
         // 1. Generate individual component meshes (proxies)
         const componentMeshes = components.map(comp => {
-            const { type, dims, pos, rot } = getCompProps(comp);
+            const { type, dims, pos, rot, usage } = getCompProps(comp);
+            
+            // Skip visual mesh for carve components
+            if (usage && usage.includes('carve')) return null;
+
             const mesh = this.componentFactory.createProxy(type, dims);
             mesh.position.set(...pos);
             if (rot) {
@@ -37,7 +41,7 @@ export class ShipAssembler {
                 else mesh.scale.copy(comp.scale);
             }
             return mesh;
-        });
+        }).filter(m => m !== null);
 
         // 2. Generate the main hull
         const shipComponents = components.map(c => {
@@ -99,7 +103,7 @@ export class ShipAssembler {
                 for (const comp of components) {
                     const { type, dims, pos, rot, usage } = getCompProps(comp);
 
-                    if (usage.includes('Engine') || usage.includes('Bridge') || usage.includes('cockpit') || type === 'cone') {
+                    if (usage.includes('Engine') || usage.includes('Bridge') || usage.includes('cockpit') || type === 'cone' || usage.includes('carve')) {
                         const cutterMesh = this.componentFactory.createProxy(type, dims);
                         // cutterMesh is temporary, doesn't need to be added to shipGroup
                         cutterMesh.position.set(...pos);
@@ -161,9 +165,9 @@ export class ShipAssembler {
         return shipGroup;
     }
 
-    async generateProceduralShipAsync(components, styleConfig, interior) {
+    async generateProceduralShipAsync(components, styleConfig, interior, targetScene = null) {
         const shipGroup = new THREE.Group();
-        const scene = this.gameEngine.physicsEngine.scene;
+        const scene = targetScene || this.gameEngine.physicsEngine.scene;
         const effectiveStyle = components.styleConfig || styleConfig || { method: 'INDUSTRIAL', padding: 0.1 };
 
         // 1. Generate individual component meshes (proxies) and Wires
@@ -174,6 +178,9 @@ export class ShipAssembler {
         for (const comp of components) {
             const { type, dims, pos, rot, usage } = getCompProps(comp);
             const mesh = this.componentFactory.createProxy(type, dims);
+            
+            // Skip visual mesh for carve components
+            if (usage && usage.includes('carve')) continue;
             
             mesh.position.set(...pos);
             if (rot) {
@@ -186,7 +193,7 @@ export class ShipAssembler {
             }
             
             // Scale down slightly to fit inside hull and avoid z-fighting, but provide solid core
-            // mesh.scale.multiplyScalar(0.95); // Removed to prevent gaps between components
+            // mesh.scale.multiplyScalar(0.995); // Slightly reduced to prevent Z-fighting with hull
             
             // Determine color based on usage
             let color = COMPONENT_COLORS.default;
@@ -274,11 +281,20 @@ export class ShipAssembler {
         });
 
         let hullGeometry = this.hullGenerator.generate(shipComponents, effectiveStyle);
-        // Use Industrial Livery Shader Material
+        
+        // Select Shader based on Style
+        let selectedShader = industrialLiveryShader;
+        if (effectiveStyle.method === 'BOXY') {
+            selectedShader = boxyLiveryShader;
+        } else if (effectiveStyle.method === 'RACING') { // Future proofing
+            selectedShader = racingLiveryShader;
+        }
+
         const hullMaterial = new THREE.ShaderMaterial({
-            uniforms: THREE.UniformsUtils.clone(industrialLiveryShader.uniforms),
-            vertexShader: industrialLiveryShader.vertexShader,
-            fragmentShader: industrialLiveryShader.fragmentShader
+            uniforms: THREE.UniformsUtils.clone(selectedShader.uniforms),
+            vertexShader: selectedShader.vertexShader,
+            fragmentShader: selectedShader.fragmentShader,
+            extensions: { derivatives: true }
         });
         // Randomize livery
         const livery = components.livery || {};
@@ -306,13 +322,7 @@ export class ShipAssembler {
             
             // Convert wireframes to solid components to fill gaps in the hull
             componentMeshes.forEach(mesh => {
-                mesh.material = new THREE.MeshStandardMaterial({
-                    color: 0x555555, // Darker grey for internals
-                    roughness: 0.9,
-                    metalness: 0.4,
-                    flatShading: true,
-                    wireframe: false
-                });
+                mesh.material = hullMaterial.clone(); // Use the same shader as the hull to blend in
                 // Keep them visible to fill gaps
                 mesh.visible = true;
             });
@@ -331,7 +341,7 @@ export class ShipAssembler {
                 for (const comp of components) {
                     const { type, dims, pos, rot, usage } = getCompProps(comp);
 
-                    if (usage.includes('Engine') || usage.includes('Bridge') || usage.includes('cockpit') || type === 'cone') {
+                    if (usage.includes('Engine') || usage.includes('Bridge') || usage.includes('cockpit') || type === 'cone' || usage.includes('carve')) {
                         const cutterMesh = this.componentFactory.createProxy(type, dims);
                         shipGroup.add(cutterMesh); // Add to group to inherit transform
                         cutterMesh.position.set(...pos);

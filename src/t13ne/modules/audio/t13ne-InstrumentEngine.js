@@ -86,12 +86,12 @@ export class AdditiveProcessor {
                     freq = i * (4 + pseudoRand(i) * 10);
                     amp = Math.exp(-0.2 * i);
                     decay = 0.2 / i;
-                } else if (role === 'rhythm' || role === 'kick' || role === 'perc') {
+                } else if (role === 'kick' || role === 'perc') {
                     // Percussive (Non-harmonic clang)
                     freq = i * (1 + pseudoRand(i) * 2.5);
                     amp = Math.exp(-0.15 * i);
                     decay = 0.4 / i;
-                } else {
+                } else { // lead, rhythm, etc.
                     // Lead: Bright Sawtooth-like (All harmonics)
                     freq = i + (pseudoRand(i) * 0.01);
                     amp = 1.0 / i;

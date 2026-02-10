@@ -67,6 +67,13 @@ export class HullGenerator {
             return new THREE.Vector3(q.x, q.y - s, q.z).length();
         };
 
+        // Helper for Tetrahedron SDF
+        const sdTetrahedron = (p, r) => {
+            const md = Math.max(Math.max(-p.x - p.y - p.z, p.x + p.y - p.z),
+                                Math.max(-p.x + p.y + p.z, p.x - p.y + p.z));
+            return (md - r) / Math.sqrt(3.0);
+        };
+
         const sceneSDF = (x, y, z) => {
             let d = Infinity;
             const p = new THREE.Vector3(x, y, z);
@@ -220,8 +227,7 @@ export class HullGenerator {
                 } else if (c.sdfType === 'octahedron') {
                     dist = sdOctahedron(localP, scale.x) - padding;
                 } else if (c.sdfType === 'tetrahedron') {
-                    // Approximate with Octahedron for now or Sphere
-                    dist = sdOctahedron(localP, scale.x) - padding;
+                    dist = sdTetrahedron(localP, scale.x) - padding;
                 } else if (c.sdfType === 'dodecahedron' || c.sdfType === 'icosahedron') {
                     // Approximate with Sphere as they are fairly round
                     dist = localP.length() - (scale.x + padding);
@@ -303,6 +309,10 @@ export class HullGenerator {
                 case PRIMITIVE_TYPES.BOX: return new THREE.BoxGeometry(dims.width || 1, dims.height || 1, dims.depth || 1);
                 case PRIMITIVE_TYPES.SPHERE: return new THREE.SphereGeometry(dims.radius || 1, 8, 8);
                 case PRIMITIVE_TYPES.CYLINDER: return new THREE.CylinderGeometry(dims.radiusTop || 0.5, dims.radiusBottom || 0.5, dims.height || 1, 8);
+                case PRIMITIVE_TYPES.DODECAHEDRON: return new THREE.DodecahedronGeometry(dims.radius || 1);
+                case PRIMITIVE_TYPES.ICOSAHEDRON: return new THREE.IcosahedronGeometry(dims.radius || 1);
+                case PRIMITIVE_TYPES.OCTAHEDRON: return new THREE.OctahedronGeometry(dims.radius || 1);
+                case PRIMITIVE_TYPES.TETRAHEDRON: return new THREE.TetrahedronGeometry(dims.radius || 1);
                 default: return new THREE.BoxGeometry(1, 1, 1);
             }
         };

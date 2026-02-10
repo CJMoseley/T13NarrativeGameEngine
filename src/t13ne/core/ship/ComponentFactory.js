@@ -77,12 +77,17 @@ export class ComponentFactory {
                     dims.radiusTop !== undefined ? dims.radiusTop : 0.5, 
                     dims.radiusBottom !== undefined ? dims.radiusBottom : 0.5, 
                     dims.height || 1, 
-                    16
+                    dims.radialSegments || 16
                 );
                 break;
 
             case PRIMITIVE_TYPES.PRISM:
-                geometry = new THREE.CylinderGeometry(dims.radius || 0.5, dims.radius || 0.5, dims.height || 1, dims.segments || 3);
+                geometry = new THREE.CylinderGeometry(
+                    dims.radiusTop !== undefined ? dims.radiusTop : (dims.radius || 0.5),
+                    dims.radiusBottom !== undefined ? dims.radiusBottom : (dims.radius || 0.5),
+                    dims.height || 1,
+                    dims.segments || 3
+                );
                 break;
 
             case PRIMITIVE_TYPES.ELLIPSOID:
@@ -228,7 +233,8 @@ export class ComponentFactory {
                 }
                 break;
             case PRIMITIVE_TYPES.PRISM:
-                scale.set(dims.radius || 1, dims.height || 1, dims.radius || 1);
+                const r = Math.max(dims.radiusTop || 0, dims.radiusBottom || 0) || dims.radius || 1;
+                scale.set(r, dims.height || 1, r);
                 sdfType = 'prism';
                 break;
             case PRIMITIVE_TYPES.ELLIPSOID:

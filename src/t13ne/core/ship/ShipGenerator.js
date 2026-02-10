@@ -1,5 +1,6 @@
 import * as THREE from 'three';
-import { mulberry32, MANUFACTURERS, TECH_SPECS, QUALITIES } from './ShipUtils.js';
+import { mulberry32, TECH_SPECS, QUALITIES, FALLBACK_MANUFACTURERS } from './ShipUtils.js';
+import { GalacticHistory } from '@/src/t13ne/procgen/galaxy/GalacticHistory.js';
 
 export class ShipGenerator {
     constructor(wiringGenerator, gameEngine) {
@@ -25,8 +26,8 @@ export class ShipGenerator {
         const techLevel = config.techLevel || 1;
 
         // Determine Style and Padding
-        const styleTypes = ['ORGANIC', 'INDUSTRIAL', 'SKELETON'];
-        const selectedStyle = config.style || styleTypes[Math.floor(random() * styleTypes.length)];
+        const styleTypes = ['ORGANIC', 'INDUSTRIAL', 'SKELETON', 'BOXY'];
+        let selectedStyle = config.style || styleTypes[Math.floor(random() * styleTypes.length)];
         const padding = 0.05 + random() * 0.15; // Procedural padding variation
 
         // Determine Harmonic Number (Segments for prisms)
@@ -59,10 +60,13 @@ export class ShipGenerator {
             let name;
             let namePromise = null;
 
+            // Sanitize usage string for display name, removing numbers and underscores
+            const displayName = usage.replace(/[0-9]/g, '').replace(/_/g, ' ').replace(/\s+/g, ' ').trim();
+
             if (this.gameEngine && this.gameEngine.loreGenerator && this.gameEngine.loreGenerator.nameGenerator) {
                 // Use the Lore Generator for procedural names
                 const ng = this.gameEngine.loreGenerator.nameGenerator;
-                const context = { type: 'TECHNOLOGY' };
+                const context = { type: 'TECHNOLOGY', usage: displayName };
                 
                 if (typeof ng.generatePlaceholder === 'function') {
                     name = ng.generatePlaceholder(context, random());
@@ -70,13 +74,22 @@ export class ShipGenerator {
                     namePromise = ng.generate(context, random());
                 } else {
                     // Fallback for synchronous generators
-                    name = ng.generate('TECHNOLOGY', random());
+                    name = ng.generate(context, random());
                 }
-            } else {
-                name = `${MANUFACTURERS[Math.floor(random() * MANUFACTURERS.length)]} ${TECH_SPECS[Math.floor(random() * TECH_SPECS.length)]} ${usage} ${QUALITIES[Math.floor(random() * QUALITIES.length)]}`;
             }
 
-            const id = `${usage}_${components.length}`;
+            if (!name) {
+                let manufacturerName = FALLBACK_MANUFACTURERS[Math.floor(random() * FALLBACK_MANUFACTURERS.length)];
+                const activeCorps = GalacticHistory.getCorporations()?.filter(c => c.status === 'Active');
+
+                if (activeCorps && activeCorps.length > 0) {
+                    manufacturerName = activeCorps[Math.floor(random() * activeCorps.length)].name;
+                }
+                name = `${manufacturerName} ${TECH_SPECS[Math.floor(random() * TECH_SPECS.length)]} ${displayName} ${QUALITIES[Math.floor(random() * QUALITIES.length)]}`;
+            }
+
+            // Generate a more robust unique ID
+            const id = `${usage}_${(random() * 1e9) | 0}`;
             const stats = {
                 integrity: 100 * (techLevel * 0.2),
                 mass: 50,
@@ -186,7 +199,8 @@ export class ShipGenerator {
              if (rHull < 0.2) hullType = 'HORSESHOE'; // C-shape / Alien Juggernaut
              else if (rHull < 0.4) hullType = 'BLOB'; // Falcon-ish / Asymmetrical Wedge
              else if (rHull < 0.6) hullType = 'MAZE';
-             else if (rHull < 0.8) hullType = 'BIO_CLUSTER';
+             else if (rHull < 0.75) hullType = 'BIO_CLUSTER';
+             else if (rHull < 0.9) hullType = 'MONOLITH'; // Borg / Monolith style
              else hullType = 'TREE'; // Asymmetrical tree
         } else if (symmetryType === 'REFLECTIVE') {
              if (rHull < 0.2 && size !== 'small') hullType = 'FREIGHTER'; // Nostromo / Trucker
@@ -213,6 +227,9 @@ export class ShipGenerator {
                 'NONE' // No symmetry for the central disc itself
             );
         } else if (hullType === 'FREIGHTER') {
+            // Freighters should look boxy/industrial, not skeletal
+            selectedStyle = 'BOXY';
+            
             // Freighter: Long central spine with cargo pods attached
             const trussLen = spineLength * 1.5;
             // Central Truss
@@ -269,6 +286,8 @@ export class ShipGenerator {
                 const rotY = -angle; 
                 const width = 2.5 + random();
                 
+                // FIX: Rotate around Z (Yaw) to follow curve. 
+                // X(90) aligns Y-axis to Z. Z-rotation then rotates around the vertical (World Y).
                 attachComponent('fuselage_arc', [x, 0, z], [Math.PI/2, 0, rotY], 'cylinder', 
                     {radiusTop: width/2, radiusBottom: width/2, height: (curveRadius * angleStep) * 1.1, radialSegments: 8}, 'NONE');
                 
@@ -277,11 +296,6 @@ export class ShipGenerator {
                     this.wiringGenerator.addConnection(explicitWiring, currentId, prevId, 'structural', 2.0);
                 }
                 prevId = currentId;
-                
-                // Occasional vertical spike or bulb on the horseshoe
-                if (random() > 0.7) {
-                    attachComponent('structure', [x, 1.5, z], [0, 0, 0], 'cone', {radius: 1, height: 3}, 'NONE');
-                }
             }
         } else if (hullType === 'BLOB') {
             // Millennium Falcon style: Main hull + Mandibles + Offset Cockpit
@@ -292,36 +306,156 @@ export class ShipGenerator {
             attachComponent('fuselage_main', [0, 0, 0], [0, 0, 0], 'cylinder', 
                 {radiusTop: mainWidth/2, radiusBottom: mainWidth/2, height: 2.0, radialSegments: 16}, 'NONE');
             
-            // Mandibles (Front)
+            // Mandibles (Front) - Tapered
             const mandLen = mainLen * 0.6;
-            const mandWidth = mainWidth * 0.2;
-            const mandOffset = mainWidth * 0.25;
+            const mandWidth = mainWidth * 0.25;
+            const mandOffset = mainWidth * 0.2;
+            
+            // Tapered Mandibles (Prism)
+            // Rotate X 90 to lay flat. Rotate Z 45 to align 4-sided prism as box.
+            // radiusTop is Front (narrower), radiusBottom is Back (wider)
+            const mFrontW = mandWidth * 0.6;
+            const mBackW = mandWidth;
             
             // Add two mandibles manually since we might be in ASYMMETRICAL mode globally
-            attachComponent('mandible_L', [-mandOffset, 0, mainLen/2 + mandLen/2 - 1], [0, 0, 0], 'box', 
-                {width: mandWidth, height: 1.5, depth: mandLen}, 'NONE');
-            attachComponent('mandible_R', [mandOffset, 0, mainLen/2 + mandLen/2 - 1], [0, 0, 0], 'box', 
-                {width: mandWidth, height: 1.5, depth: mandLen}, 'NONE');
+            attachComponent('mandible_L', [-mandOffset, 0, mainLen/2 + mandLen/2 - 1], [Math.PI/2, 0, Math.PI/4], 'prism', 
+                {radiusTop: mFrontW/2, radiusBottom: mBackW/2, height: mandLen, segments: 4}, 'NONE');
+            attachComponent('mandible_R', [mandOffset, 0, mainLen/2 + mandLen/2 - 1], [Math.PI/2, 0, Math.PI/4], 'prism', 
+                {radiusTop: mFrontW/2, radiusBottom: mBackW/2, height: mandLen, segments: 4}, 'NONE');
                 
-            // Engine Strip (Rear)
-            attachComponent('engine_strip', [0, 0, -mainLen/2], [0, 0, 0], 'box', 
-                {width: mainWidth * 0.9, height: 1.8, depth: 1.0}, 'NONE');
+            // Engine Strip (Rear) - Carve and Thrusters
+            // Carve out the back
+            const carveDepth = 1.5;
+            attachComponent('carve_engine_strip', [0, 0, -mainLen/2], [0, 0, 0], 'box', 
+                {width: mainWidth * 0.8, height: 2.2, depth: carveDepth}, 'NONE');
+            
+            // Add Thrusters in the gap
+            const numThrusters = 8;
+            const stripW = mainWidth * 0.6;
+            const step = stripW / (numThrusters - 1);
+            const startX = -stripW/2;
+            
+            for(let i=0; i<numThrusters; i++) {
+                const tx = startX + i*step;
+                attachComponent(`thruster_strip_${i}`, [tx, 0, -mainLen/2 + 0.2], [Math.PI/2, 0, 0], 'cylinder', 
+                    {radiusTop: 0.25, radiusBottom: 0.4, height: 0.8}, 'NONE');
+            }
+
+            // Cockpit - Offset
+            // Strut (Cylinder) - Angled forward
+            const strutAngle = Math.PI/6; // 30 degrees forward
+            const strutLen = mainWidth * 0.4;
+            
+            // Start from side of hull
+            const strutStartX = (mainWidth/2) * 0.8;
+            const strutStartZ = mainLen * 0.2; // Slightly forward of center
+            
+            // Direction vector for strut (X+, Z+)
+            const dirX = Math.cos(strutAngle);
+            const dirZ = Math.sin(strutAngle);
+            
+            const strutCenter = [
+                strutStartX + dirX * strutLen/2, 
+                0, 
+                strutStartZ + dirZ * strutLen/2
+            ];
+            
+            // Rotate cylinder to match direction
+            attachComponent('cockpit_strut', strutCenter, [0, -strutAngle, -Math.PI/2], 'cylinder', 
+                {radiusTop: 0.6, radiusBottom: 0.6, height: strutLen}, 'NONE');
+                
+            // Cockpit Head (Capsule)
+            // Position at end of strut
+            const headPos = [
+                strutStartX + dirX * strutLen, 
+                0, 
+                strutStartZ + dirZ * strutLen
+            ];
+            // Aligned Z (forward/backward). Capsule default is Y-up. Rotate X 90.
+            attachComponent('cockpit_head', headPos, [Math.PI/2, 0, 0], 'capsule', 
+                {radius: 0.9, length: 2.5}, 'NONE');
 
         } else if (hullType === 'CATAMARAN') {
-            // Twin Hulls
-            const hullOffset = 3.0 + random() * 2.0;
-            const hullLen = spineLength;
+            // Star Trek Style Nacelle Ship (Constitution / Miranda / Voyager)
+            // 1. Primary Hull (Saucer)
+            const saucerRadius = (size === 'small' ? 3 : (size === 'medium' ? 5 : 8));
+            const saucerHeight = Math.max(0.5, saucerRadius * 0.15);
             
-            // Left Hull
-            attachComponent('hull_L', [-hullOffset, 0, 0], [Math.PI/2, 0, 0], 'capsule', 
-                {radius: 1.5, length: hullLen}, 'NONE');
-            // Right Hull
-            attachComponent('hull_R', [hullOffset, 0, 0], [Math.PI/2, 0, 0], 'capsule', 
-                {radius: 1.5, length: hullLen}, 'NONE');
+            attachComponent('fuselage_saucer', [0, 0, 0], [0, 0, 0], 'cylinder', 
+                {radiusTop: saucerRadius, radiusBottom: saucerRadius * 0.7, height: saucerHeight, radialSegments: 16}, 'NONE');
+
+            // 2. Configuration
+            const configType = random(); // 0-0.3: Miranda-ish, 0.3-1.0: Constitution/Voyager-ish
+            let hasEngineering = configType > 0.3;
+            
+            let engPos = [0, 0, 0];
+            
+            if (hasEngineering) {
+                const neckLen = saucerRadius * 0.8;
+                const engLen = saucerRadius * 1.2;
+                const engRadius = saucerRadius * 0.3;
                 
-            // Connecting Wing/Body
-            attachComponent('wing_connect', [0, 0, 0], [0, 0, 0], 'box', 
-                {width: hullOffset * 2, height: 0.8, depth: hullLen * 0.6}, 'NONE');
+                // Neck (Vertical or Angled)
+                const neckPos = [0, -saucerHeight/2 - neckLen/2, -saucerRadius * 0.3];
+                attachComponent('fuselage_neck', neckPos, [0.2, 0, 0], 'box', 
+                    {width: engRadius * 0.8, height: neckLen, depth: engRadius * 1.5}, 'NONE');
+                
+                // Engineering Hull
+                engPos = [0, -saucerHeight/2 - neckLen, -saucerRadius * 0.3];
+                attachComponent('fuselage_engineering', engPos, [Math.PI/2, 0, 0], 'cylinder', 
+                    {radiusTop: engRadius, radiusBottom: engRadius * 0.7, height: engLen, radialSegments: 12}, 'NONE');
+                    
+                // Deflector
+                attachComponent('deflector', [0, engPos[1], engPos[2] + engLen/2], [Math.PI/2, 0, 0], 'cylinder', 
+                    {radiusTop: engRadius * 0.8, radiusBottom: 0, height: 0.5}, 'NONE');
+            }
+            
+            // 3. Nacelles & Pylons
+            const nacelleLen = saucerRadius * 1.5;
+            const nacelleRadius = nacelleLen * 0.12; // Thinner
+            const pylonSpan = saucerRadius * (1.2 + random() * 0.5);
+            
+            // Pylon attachment point
+            const attachY = hasEngineering ? engPos[1] + engRadius * 0.5 : -saucerHeight/2;
+            const attachZ = hasEngineering ? engPos[2] - engLen * 0.2 : -saucerRadius * 0.2;
+            
+            // Nacelle Position (Up or Down relative to attachment)
+            const nacelleY = attachY + (hasEngineering ? nacelleRadius * 4 : -nacelleRadius * 3);
+            const nacelleZ = attachZ + (random() * 2 - 1); // Slight Z variation relative to attachment
+            
+            // Calculate Pylon Vector (from Hull to Nacelle)
+            const dy = nacelleY - attachY;
+            const dx = pylonSpan; // Horizontal distance to one side
+            const dz = nacelleZ - attachZ;
+            
+            const pylonLen = Math.sqrt(dx*dx + dy*dy); // 2D length in XY plane for rotation
+            const angle = Math.atan2(dy, dx); // Angle in XY plane
+            
+            // Left Pylon (Rotated to point Up/Left or Down/Left)
+            // We position it at the midpoint between attachment and nacelle
+            const pylonL_Pos = [-dx/2, attachY + dy/2, attachZ + dz/2];
+            attachComponent('pylon_L', pylonL_Pos, [0, 0, Math.PI - angle], 'box', 
+                {width: pylonLen, height: nacelleRadius * 0.2, depth: nacelleLen * 0.4}, 'NONE');
+                
+            // Right Pylon
+            const pylonR_Pos = [dx/2, attachY + dy/2, attachZ + dz/2];
+            attachComponent('pylon_R', pylonR_Pos, [0, 0, angle], 'box', 
+                {width: pylonLen, height: nacelleRadius * 0.2, depth: nacelleLen * 0.4}, 'NONE');
+            
+            // Left Nacelle
+            attachComponent('nacelle_L', [-pylonSpan, nacelleY, nacelleZ], [Math.PI/2, 0, 0], 'capsule', 
+                {radius: nacelleRadius, length: nacelleLen}, 'NONE');
+            
+            // Right Nacelle
+            attachComponent('nacelle_R', [pylonSpan, nacelleY, nacelleZ], [Math.PI/2, 0, 0], 'capsule', 
+                {radius: nacelleRadius, length: nacelleLen}, 'NONE');
+                
+            // Thrusters on Pylons (Rear)
+            const thrusterZ = attachZ - (nacelleLen * 0.5)/2 - 0.5;
+            attachComponent('thruster_L', [-dx/2, attachY + dy/2, thrusterZ], [Math.PI/2, 0, 0], 'cone', 
+                {radius: nacelleRadius * 0.5, height: 0.8}, 'NONE');
+            attachComponent('thruster_R', [dx/2, attachY + dy/2, thrusterZ], [Math.PI/2, 0, 0], 'cone', 
+                {radius: nacelleRadius * 0.5, height: 0.8}, 'NONE');
 
         } else if (hullType === 'Y_FORK') {
             // Y-Type: Single front, splitting into prongs
@@ -404,7 +538,10 @@ export class ShipGenerator {
             
             let prevId = null;
             for(let i=0; i<steps; i++) {
-                attachComponent('maze_segment', curr, [0,0,0], 'box', {width: boxSize, height: boxSize, depth: boxSize}, 'NONE');
+                // Randomize dimensions slightly for variety
+                const dimVar = () => boxSize + (random() * 0.8 - 0.2);
+                
+                attachComponent('maze_segment', curr, [0,0,0], 'box', {width: dimVar(), height: dimVar(), depth: dimVar()}, 'NONE');
                 
                 const currentId = components[components.length - 1].id;
                 if (prevId) {
@@ -413,7 +550,13 @@ export class ShipGenerator {
                 prevId = currentId;
 
                 // Pick random direction
-                const axis = Math.floor(random() * 3);
+                // Bias towards Z axis (length of ship)
+                const rDir = random();
+                let axis = 0;
+                if (rDir < 0.5) axis = 2; // 50% chance of Z
+                else if (rDir < 0.75) axis = 0; // 25% X
+                else axis = 1; // 25% Y
+
                 const dir = random() > 0.5 ? 1 : -1;
                 const next = [...curr];
                 next[axis] += dir * boxSize;
@@ -462,13 +605,106 @@ export class ShipGenerator {
                 attachComponent('bio_node', [pt.x, pt.y, pt.z], [random(), random(), random()], 'sphere', {radius: s}, 'NONE');
             }
 
+        } else if (hullType === 'MONOLITH') {
+            // Monolith: Single massive primitive with surface detail
+            const monoSize = (size === 'small' ? 5 : (size === 'medium' ? 10 : 18)) * (0.8 + random() * 0.4);
+            // Shape: Box or Prism (4-6 sides)
+            const shapeRoll = random();
+            let shapeType = 'box';
+            let prismSegs = 4;
+            
+            if (shapeRoll > 0.6) {
+                shapeType = 'prism';
+                prismSegs = Math.floor(random() * 3) + 4; // 4, 5, 6 sides
+                attachComponent('fuselage_monolith', [0, 0, 0], [Math.PI/2, 0, 0], 'prism', 
+                    {radius: monoSize * 0.6, height: monoSize * 1.2, segments: prismSegs}, 'NONE');
+            } else if (shapeRoll > 0.3) {
+                // Tetrahedron
+                shapeType = 'tetrahedron';
+                attachComponent('fuselage_monolith', [0, 0, 0], [random()*Math.PI, random()*Math.PI, 0], 'tetrahedron', 
+                    {radius: monoSize * 0.8}, 'NONE');
+            } else {
+                // Box
+                attachComponent('fuselage_monolith', [0, 0, 0], [0, 0, 0], 'box', 
+                    {width: monoSize * 0.8, height: monoSize * 0.8, depth: monoSize * 1.2}, 'NONE');
+            }
+
+            // Carve-outs (Negative Space)
+            // These components will be subtracted from the hull by ShipAssembler
+            const numCarves = Math.floor(6 + random() * 8);
+            for(let i=0; i<numCarves; i++) {
+                const cSize = monoSize * (0.15 + random() * 0.15);
+                
+                // Random position roughly on surface
+                const dir = new THREE.Vector3(random()-0.5, random()-0.5, random()-0.5).normalize();
+                const dist = monoSize * 0.5; 
+                const pos = dir.multiplyScalar(dist);
+                
+                attachComponent(`carve_void_${i}`, [pos.x, pos.y, pos.z], [random()*Math.PI, random()*Math.PI, 0], 'box', 
+                    {width: cSize, height: cSize, depth: cSize}, 'NONE');
+            }
+
+            // External Spars/Pipes (Greebles)
+            const numSpars = Math.floor(5 + random() * 5);
+            const sparThick = monoSize * 0.02;
+
+            if (shapeType === 'box') {
+                // Box: Place on faces aligned with axes
+                const dims = [monoSize * 0.8, monoSize * 0.8, monoSize * 1.2]; // Width, Height, Depth
+                for(let i=0; i<numSpars; i++) {
+                    const axis = Math.floor(random() * 3); // 0:X, 1:Y, 2:Z (Face Normal Axis)
+                    const side = random() > 0.5 ? 1 : -1;
+                    
+                    // Position on face
+                    const pos = [0, 0, 0];
+                    pos[axis] = (dims[axis] / 2 + sparThick * 2) * side; // Slightly off surface
+                    
+                    // Random position on the other two axes
+                    const u = (axis + 1) % 3;
+                    const v = (axis + 2) % 3;
+                    pos[u] = (random() - 0.5) * dims[u] * 0.8;
+                    pos[v] = (random() - 0.5) * dims[v] * 0.8;
+                    
+                    // Orientation: Align with one of the other axes (u or v)
+                    const alignAxis = random() > 0.5 ? u : v;
+                    const sparLen = dims[alignAxis] * (0.4 + random() * 0.4);
+                    
+                    const rot = [0, 0, 0];
+                    // Cylinder is Y-aligned. Rotate to match alignAxis.
+                    if (alignAxis === 0) rot[2] = Math.PI / 2; // Align X
+                    else if (alignAxis === 2) rot[0] = Math.PI / 2; // Align Z
+                    
+                    attachComponent(`structure_spar_${i}`, pos, rot, 'cylinder', 
+                        {radiusTop: sparThick, radiusBottom: sparThick, height: sparLen}, 'NONE');
+                }
+            } else if (shapeType === 'prism') {
+                // Prism: Vertical spars along the length
+                const radius = monoSize * 0.6;
+                const height = monoSize * 1.2;
+                for(let i=0; i<numSpars; i++) {
+                    const angle = (Math.floor(random() * prismSegs) / prismSegs) * Math.PI * 2; // Snap to face centers approx
+                    const r = radius + sparThick * 2;
+                    const len = height * (0.4 + random() * 0.4);
+                    attachComponent(`structure_spar_${i}`, [Math.cos(angle)*r, (random()-0.5)*height*0.5, Math.sin(angle)*r], [0, 0, 0], 'cylinder', 
+                        {radiusTop: sparThick, radiusBottom: sparThick, height: len}, 'NONE');
+                }
+            }
+            
+            // Engines are usually embedded or rear-mounted on monoliths
+            attachComponent('engine_main', [0, 0, -monoSize * 0.6], [Math.PI/2, 0, 0], 'cylinder', {radiusTop: monoSize*0.1, radiusBottom: monoSize*0.15, height: monoSize*0.2}, 'NONE');
+
         } else if (hullType === 'FRACTAL') {
-             // Iterative placement of boxes on faces
+             // Iterative placement of shapes on faces
              const iterations = 3;
+             // Randomize shape for this ship to avoid "samey" cubes
+             const fractalShapes = ['box', 'dodecahedron', 'icosahedron', 'octahedron', 'sphere', 'tetrahedron'];
+             const shapeType = fractalShapes[Math.floor(random() * fractalShapes.length)];
+
              let currentGen = [{pos: [0,0,0], size: 4.0}];
              
              // Base
-             attachComponent('fractal_base', [0,0,0], [0,0,0], 'box', {width: 4, height: 4, depth: 4}, 'NONE');
+             const baseDims = shapeType === 'box' ? {width: 4, height: 4, depth: 4} : {radius: 2.5};
+             attachComponent('fractal_base', [0,0,0], [0,0,0], shapeType, baseDims, 'NONE');
 
              for(let i=0; i<iterations; i++) {
                  const nextGen = [];
@@ -476,22 +712,27 @@ export class ShipGenerator {
                      const childSize = node.size / 2.2;
                      const offset = (node.size + childSize) / 2;
                      
-                     // 6 faces directions
+                     // 6 faces directions (Cardinal)
                      const dirs = [[1,0,0], [-1,0,0], [0,1,0], [0,-1,0], [0,0,1], [0,0,-1]];
                      
                      for(const d of dirs) {
                          // Random chance to spawn child, higher chance for lower iterations
-                         if (random() > (0.3 + i * 0.15)) { 
+                         // Increased decay (0.4 + i*0.2) to reduce component count and speed up generation
+                         if (random() > (0.4 + i * 0.2)) { 
                              const newPos = [
                                  node.pos[0] + d[0]*offset, 
                                  node.pos[1] + d[1]*offset, 
                                  node.pos[2] + d[2]*offset
                              ];
                              
-                             // Only add if we haven't generated here (simple check)
-                             // For true fractal we just place.
-                             attachComponent(`fractal_${i}`, newPos, [0,0,0], 'box', 
-                                {width: childSize, height: childSize, depth: childSize}, 'NONE');
+                             const childDims = shapeType === 'box' ? 
+                                {width: childSize, height: childSize, depth: childSize} : 
+                                {radius: childSize * 0.6};
+                             
+                             // Random rotation for non-box shapes adds variety
+                             const childRot = shapeType === 'box' ? [0,0,0] : [random()*Math.PI, random()*Math.PI, random()*Math.PI];
+
+                             attachComponent(`fractal_${i}`, newPos, childRot, shapeType, childDims, 'NONE');
                              
                              nextGen.push({pos: newPos, size: childSize});
                          }
@@ -540,24 +781,19 @@ export class ShipGenerator {
                     const zPos = -(spineLength / 2) + (i * segmentHeight) + (segmentHeight / 2);
                     pos = [0, 0, zPos];
                     // Rotate 90deg X to align Prism Y-axis with Ship Z-axis
-                    // If Radial Z, rotate Y to align faces
-                    let yRot = 0;
-
-                    if (symmetryType === 'REFLECTIVE' && segs % 2 !== 0) {
-                        // For reflective symmetry, odd-sided prisms must have a flat top/bottom
-                        // Default cylinder has vertex at +X. Rotating 90 deg puts vertex at +Y (Up), flat at -Y (Down).
-                        yRot = Math.PI / 2;
-                    } else if (isRadialZ) {
-                        yRot = -Math.PI / segs;
+                    // If Radial Z, rotate Z to align faces (since axis is now Z)
+                    let faceAlignment = 0;
+                    if (isRadialZ) {
+                        faceAlignment = -Math.PI / segs;
                     }
 
                     // Rotate Z to align odd-sided prisms (flat top/bottom)
                     // Default cylinder (prism) has vertex at +X. 
                     // RotX(90) puts vertex at +X (Side). We want vertex at +Y (Top) or -Y (Bottom) for symmetry.
-                    // RotZ(90) moves +X to +Y.
-                    const zRot = (segs % 2 !== 0) ? Math.PI / 2 : 0;
+                    // FIX: Apply Roll rotation to Y axis (which is the longitudinal axis after X-rotation)
+                    const baseRoll = (segs % 2 !== 0) ? Math.PI / 2 : Math.PI / segs;
 
-                    rot = [Math.PI / 2, yRot, zRot];
+                    rot = [Math.PI / 2, baseRoll + faceAlignment, 0];
 
                     if (i === spineSegments - 1) {
                         lastSegmentRadius = radius;
@@ -582,11 +818,12 @@ export class ShipGenerator {
             if (hullType === 'SPINE') {
                 const noseLength = 2 + random() * 3;
                 const noseZ = lastSegmentZ + (noseLength / 2) - 0.1;
-                const noseRadius = lastSegmentRadius * 0.9;
+                const noseRadius = lastSegmentRadius; // Match radius for cleaner look
                 const noseSegments = (symmetryType === 'RADIAL' && radialAxis === 'z') ? radialCount : Math.floor(4 + random() * 4);
-
+                const noseRotZ = (noseSegments % 2 !== 0) ? 0 : Math.PI / noseSegments;
+                
                 attachComponent('nose', [0, 0, noseZ],
-                    [Math.PI / 2, (symmetryType === 'RADIAL' && radialAxis === 'z') ? -Math.PI / noseSegments : 0, 0],
+                    [Math.PI / 2, 0, (symmetryType === 'RADIAL' && radialAxis === 'z') ? -Math.PI / noseSegments : noseRotZ],
                     'cone',
                     { radius: noseRadius, height: noseLength, radialSegments: noseSegments },
                     'NONE'
@@ -664,16 +901,17 @@ export class ShipGenerator {
                 type: 'wedge',
                 dims: dims,
                 pos: initialPos,
-                rot: [0, currentRotZ, 0] // Rotation around Y axis (world Y)
+                rot: [0, 0, currentRotZ] // Rotation around Z axis (Roll/Dihedral)
             };
             wingComponents.push(mainWingDef);
 
             // Recursive addition of extensions/fins
             let parentTipWorldPos = new THREE.Vector3(...initialPos);
-            // Approximate tip position: assume wing extends along its local X axis (span)
-            // after its rotation around world Y.
-            const localTipOffset = new THREE.Vector3(dims.span, 0, 0);
-            const rotatedTipOffset = localTipOffset.applyAxisAngle(new THREE.Vector3(0, 1, 0), currentRotZ); // Rotate around world Y
+            
+            // Calculate tip position including geometric sweep (Z-offset)
+            const zOffset = dims.rootChord / 2 - dims.sweep - dims.tipChord / 2;
+            const localTipOffset = new THREE.Vector3(dims.span, 0, zOffset);
+            const rotatedTipOffset = localTipOffset.applyEuler(new THREE.Euler(0, 0, currentRotZ));
             parentTipWorldPos.add(rotatedTipOffset);
 
             // Add extensions/fins
@@ -688,10 +926,11 @@ export class ShipGenerator {
                     const extDims = { tipChord: extTipChord, sweep: extSweep, depth: extThickness, span: extSpan, rootChord: dims.tipChord, centered: false };
                     const extRotZ = (random() * 0.8 - 0.4); // Slight angle change
                     const extCurrentRotZ = currentRotZ + extRotZ;
-                    const extensionDef = { usage: (random() > 0.7 ? 'fin_wingtip' : 'wing_ext'), type: 'wedge', dims: extDims, pos: [parentTipWorldPos.x, parentTipWorldPos.y, parentTipWorldPos.z], rot: [0, extCurrentRotZ, 0] };
+                    const extensionDef = { usage: (random() > 0.7 ? 'fin_wingtip' : 'wing_ext'), type: 'wedge', dims: extDims, pos: [parentTipWorldPos.x, parentTipWorldPos.y, parentTipWorldPos.z], rot: [0, 0, extCurrentRotZ] };
                     wingComponents.push(extensionDef);
-                    const extLocalTipOffset = new THREE.Vector3(extSpan, 0, 0);
-                    const extRotatedTipOffset = extLocalTipOffset.applyAxisAngle(new THREE.Vector3(0, 1, 0), extCurrentRotZ);
+                    const extZOffset = extDims.rootChord / 2 - extDims.sweep - extDims.tipChord / 2;
+                    const extLocalTipOffset = new THREE.Vector3(extSpan, 0, extZOffset);
+                    const extRotatedTipOffset = extLocalTipOffset.applyEuler(new THREE.Euler(0, 0, extCurrentRotZ));
                     parentTipWorldPos.add(extRotatedTipOffset);
                 }
             }
@@ -700,21 +939,28 @@ export class ShipGenerator {
 
         // Engines
         const engineCount = size === 'small' ? 1 : (size === 'medium' ? 2 : 4);
-        const engineZ = -(spineLength / 2) - 1;
         if (hullType === 'DISC') {
-            // Saucer engines on rim
+            // Saucer engines on rim (logic unchanged)
             const engR = mainHullRadius * 0.6;
             const height = (size === 'small' ? 1 : (size === 'medium' ? 2 : 3));
             
             // Engines on bottom, pointing down (No rotation, wider at bottom)
-            attachComponent('engine', [engR, -height/2 - 1.0, 0], [0, 0, 0], 'cylinder', 
+            attachComponent('engine', [engR, -height / 2 - 1.0, 0], [0, 0, 0], 'cylinder', 
                 { radiusTop: 0.5, radiusBottom: 1.0, height: 2.0 }, 'RADIAL');
+        } else if (hullType === 'FREIGHTER') {
+            // Freighter engines are attached to the engine block at the rear
+            const trussLen = spineLength * 1.5;
+            const engineZ = -trussLen/2 - 4.0; // Behind the engine block (which is at -trussLen/2 - 2.5)
+            
+            // Main Engine
+            attachComponent('engine_main', [0, 0, engineZ], [Math.PI / 2, 0, 0], 'cylinder', { radiusTop: 1.0, radiusBottom: 1.5, height: 3.0 });
+            // Side Engines
+            attachComponent('engine_side', [2.5, 0, engineZ + 0.5], [Math.PI / 2, 0, 0], 'cylinder', { radiusTop: 0.6, radiusBottom: 0.9, height: 2.5 }, 'REFLECTIVE');
         } else {
             if (symmetryType === 'REFLECTIVE') {
-                // FIX: Rotate to point local -Y backwards along -Z. This is a -90 deg rotation around X.
-                attachComponent('engine', [1.5, 0, engineZ], [Math.PI / 2, 0, 0], 'cylinder', { radiusTop: 0.4, radiusBottom: 0.6, height: 2.0 });
-                // Add Strut to fuselage
-                attachComponent('mount', [0.75, 0, engineZ], [0, 0, 0], 'box', { width: 1.5, height: 0.4, depth: 0.8 });
+                const engineHeight = 2.0;
+                const engineZ = -spineLength / 2 - engineHeight / 2 + 0.5; // Increased overlap
+                attachComponent('engine', [1.5, 0, engineZ], [Math.PI / 2, 0, 0], 'cylinder', { radiusTop: 0.4, radiusBottom: 0.6, height: engineHeight });
             } else if (hullType === 'STAR') {
                 // Engines at ends of arms
                 const armLen = spineLength;
@@ -722,8 +968,9 @@ export class ShipGenerator {
                 attachComponent('engine', [armLen, 0, 0], [0, 0, Math.PI / 2], 'cylinder', { radiusTop: 0.5, radiusBottom: 0.8, height: 2.0 });
             } else {
                 // Central engine
-                // FIX: Rotate to point local -Y backwards along -Z. This is a -90 deg rotation around X.
-                attachComponent('engine', [0, 0, engineZ], [Math.PI / 2, 0, 0], 'cylinder', { radiusTop: 0.6, radiusBottom: 0.9, height: 2.5 });
+                const engineHeight = 2.5;
+                const engineZ = -spineLength / 2 - engineHeight / 2 + 0.5; // Increased overlap
+                attachComponent('engine', [0, 0, engineZ], [Math.PI / 2, 0, 0], 'cylinder', { radiusTop: 0.6, radiusBottom: 0.9, height: engineHeight });
             }
         }
 
@@ -1100,9 +1347,17 @@ export class ShipGenerator {
             // For now, centering it is the requirement.
         }
 
+        // --- 2b.2 Re-orient Engines to push through CoG --- (REMOVED per user feedback)
+        // This was causing engines to be angled in ways that were visually unappealing
+        // and could cause detachment from the fuselage. We will now assume parallel thrust
+        // and that any torque from asymmetrical designs is handled by maneuvering thrusters or other systems.
+
         // 3. Generate Wiring Graph (Logical connections)
         // Use the WiringGenerator to create the full graph
         const wiringGraph = this.wiringGenerator.generateLogicalGraph(components, explicitWiring);
+        
+        // 4. Enforce Symmetry on Wiring
+        this.enforceWiringSymmetry(wiringGraph, components);
 
         // Store the graph for harmonics calculation later
         // Note: In the refactored version, we return this data instead of setting it on 'this'
@@ -1136,6 +1391,45 @@ export class ShipGenerator {
         components.wiringGraph = wiringGraph;
 
         return components;
+    }
+
+    enforceWiringSymmetry(wiringGraph, components) {
+        const compMap = new Map(components.map(c => [c.id, c]));
+        
+        const getSymId = (id) => {
+            if (id.endsWith('_sym')) return id.replace('_sym', '');
+            if (!id.endsWith('_sym') && compMap.has(id + '_sym')) return id + '_sym';
+            return null;
+        };
+
+        const newConnections = [];
+
+        for (const [sourceId, connections] of Object.entries(wiringGraph)) {
+            const sourceSymId = getSymId(sourceId);
+            
+            for (const conn of connections) {
+                const targetId = conn.targetId;
+                const targetSymId = getSymId(targetId);
+
+                if (sourceSymId && targetSymId) {
+                    if (!wiringGraph[sourceSymId] || !wiringGraph[sourceSymId].find(c => c.targetId === targetSymId)) {
+                        newConnections.push({ source: sourceSymId, target: targetSymId, type: conn.wiringType, length: conn.length });
+                    }
+                } else if (sourceSymId && !targetSymId) {
+                     if (!wiringGraph[sourceSymId] || !wiringGraph[sourceSymId].find(c => c.targetId === targetId)) {
+                        newConnections.push({ source: sourceSymId, target: targetId, type: conn.wiringType, length: conn.length });
+                    }
+                } else if (!sourceSymId && targetSymId) {
+                     if (!wiringGraph[sourceId] || !wiringGraph[sourceId].find(c => c.targetId === targetSymId)) {
+                        newConnections.push({ source: sourceId, target: targetSymId, type: conn.wiringType, length: conn.length });
+                    }
+                }
+            }
+        }
+        
+        newConnections.forEach(c => {
+            this.wiringGenerator.addConnection(wiringGraph, c.source, c.target, c.type, c.length);
+        });
     }
 
     /**

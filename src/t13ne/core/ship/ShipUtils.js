@@ -20,9 +20,9 @@ export const COMPONENT_COLORS = {
     'default': 0xaaaaaa
 };
 
-export const MANUFACTURERS = ["Zylex", "Komwrath", "Hyperion", "Vector", "Omni", "Apex", "Tyrell", "Yoyodyne"];
-export const TECH_SPECS = ["12 Gigawatt", "High-Torque", "Phase-Shift", "Quantum", "Ion-Drive", "Fusion", "Zero-Point", "Tachyon"];
-export const QUALITIES = ["Mk I", "Deluxe", "X-1000", "Prime", "Alpha", "Prototype", "Custom", "Heavy Duty"];
+export const TECH_SPECS = ["High-Output", "High-Torque", "Phase-Shift", "Quantum", "Ion-Drive", "Fusion", "Zero-Point", "Tachyon"];
+export const QUALITIES = ["Mk I", "Deluxe", "Elite", "Prime", "Alpha", "Prototype", "Custom", "Heavy Duty"];
+export const FALLBACK_MANUFACTURERS = ["Zylex", "Komwrath", "Hyperion", "Vector", "Omni", "Apex", "Tyrell", "Yoyodyne"];
 
 // Simple Seeded PRNG (Mulberry32)
 export function mulberry32(a) {

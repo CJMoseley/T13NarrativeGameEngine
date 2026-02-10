@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { ShipFactory, COMPONENT_COLORS } from '../core/ship/ShipFactory.js';
-import { MANUFACTURERS, TECH_SPECS, QUALITIES } from '../core/ship/ShipUtils.js';
+import { TECH_SPECS, QUALITIES, FALLBACK_MANUFACTURERS } from '../core/ship/ShipUtils.js';
+import { GalacticHistory } from '../procgen/galaxy/GalacticHistory.js';
 import { Scene } from '../core/Scene.js';
 
 export class ShipShowcaseScene extends Scene {
@@ -83,7 +84,11 @@ export class ShipShowcaseScene extends Scene {
                 if (genName && genName !== "G'nathuun") {
                     this.shipName = genName;
                 } else {
-                    const manu = MANUFACTURERS[Math.floor(Math.random() * MANUFACTURERS.length)];
+                    let manu = FALLBACK_MANUFACTURERS[Math.floor(Math.random() * FALLBACK_MANUFACTURERS.length)];
+                    const activeCorps = GalacticHistory.getCorporations()?.filter(c => c.status === 'Active');
+                    if (activeCorps && activeCorps.length > 0) {
+                        manu = activeCorps[Math.floor(Math.random() * activeCorps.length)].name;
+                    }
                     const tech = TECH_SPECS[Math.floor(Math.random() * TECH_SPECS.length)];
                     const qual = QUALITIES[Math.floor(Math.random() * QUALITIES.length)];
                     const type = style === 'ORGANIC' ? "Bio-Craft" : (style === 'SKELETON' ? "Frame" : "Racer");
@@ -98,10 +103,8 @@ export class ShipShowcaseScene extends Scene {
         // Start hull generation in background immediately
         onProgress({ status: 'Generating procedural hull...', percent: 0.6 });
         const styleConfig = { method: style, plating: (style === 'INDUSTRIAL'), blendStrength: (style === 'ORGANIC' ? 1.5 : 0.1) };
-        this.hullGenerationPromise = this.shipFactory.generateProceduralShipAsync(shipComponents, styleConfig);
-
-        // Await generation so the loader stays up until we are ready
-        await this.hullGenerationPromise;
+        // Pass 'this.scene' so wireframes appear immediately
+        this.hullGenerationPromise = this.shipFactory.generateProceduralShipAsync(shipComponents, styleConfig, null, this.scene);
     }
 
     createUI() {
@@ -139,7 +142,8 @@ export class ShipShowcaseScene extends Scene {
         
         if (!this.isActive) return; // Stop if scene unloaded
 
-        this.scene.add(shipGroup);
+        // shipGroup is likely already in the scene from generateProceduralShipAsync, but ensure it's added/referenced
+        if (shipGroup.parent !== this.scene) this.scene.add(shipGroup);
         this.shipGroup = shipGroup; // Store reference for later use
         this.hullMesh = shipGroup.getObjectByName("procedural_hull");
         
@@ -306,7 +310,7 @@ export class ShipShowcaseScene extends Scene {
                     }
                 });
                 if (this.hullMesh) {
-                    this.hideInternals();
+                    // this.hideInternals(); // DISABLED: Keep internals visible for industrial look/fallback
                 }
                 this.labelElement.innerText = this.shipName;
                 this.descElement.innerText = "Ready for the Wormhole."; 

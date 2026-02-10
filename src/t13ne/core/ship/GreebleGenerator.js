@@ -275,7 +275,7 @@ export class GreebleGenerator {
         greebleGroup.name = "greebles";
 
         // Determine global orientation preference for radial ships
-        const globalOrientToCenter = (symmetryType === 'RADIAL');
+        const globalOrientToCenter = (symmetryType === 'RADIAL' || symmetryType === 'REFLECTIVE');
 
         components.forEach(comp => {
             const usage = (comp.stats && (comp.stats.usage || comp.stats.name)) ? (comp.stats.usage || comp.stats.name).toLowerCase() : (comp.type || '');
@@ -499,6 +499,12 @@ export class GreebleGenerator {
                     orientToCenter = true; // Always orient to center for radial ships (Saucers or Rockets)
                 }
 
+                // If the ship is asymmetrical or the component is a wedge (often used for asymmetrical bridges),
+                // we should not constrain the normal, as the surface is likely sloped.
+                if (symmetryType === 'ASYMMETRICAL' || comp.type === 'wedge') {
+                    constraint = null;
+                }
+
                 if (radialAxis === 'y') {
                     rayOrigin = pos.clone().add(up.clone().multiplyScalar(scale.y + 5));
                     rayDir = up.clone().negate();
@@ -514,7 +520,8 @@ export class GreebleGenerator {
                 }
 
                 // Use a slightly larger offset to sink it, and ensure we don't constrain normal too strictly if the hull is curved
-                this.placeOnSurface(hullMesh, greebleGroup, rayOrigin, rayDir, dome, true, offset - 0.2, isCentral, symmetryType, radialAxis, radialCount, constraint, orientToCenter);
+                // Added scaleToFit = true (last parameter)
+                this.placeOnSurface(hullMesh, greebleGroup, rayOrigin, rayDir, dome, true, offset - 0.2, isCentral, symmetryType, radialAxis, radialCount, constraint, orientToCenter, true);
             }
 
             // 4. Nav Lights
