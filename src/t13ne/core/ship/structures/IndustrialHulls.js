@@ -137,63 +137,118 @@ export const generateBlob = (context) => {
 
     // Cockpit (Side Offset) - Replaces generic cockpit logic
     const cockpitSide = random() > 0.5 ? 1 : -1;
-    const strutLen = mainRadius * 0.6;
-    const strutRadius = mainHeight * 0.4;
-    const cockpitPos = [cockpitSide * (mainRadius + strutLen/2), 0, mainRadius * 0.2];
     
-    // Strut
-    attachComponent('cockpit_strut', cockpitPos, [0, 0, Math.PI/2], 'cylinder', 
+    // Angle: 30 to 60 degrees forward from lateral (X axis)
+    const angleDeg = 30 + random() * 30;
+    const angleRad = angleDeg * (Math.PI / 180);
+    
+    const strutLen = mainRadius * 0.8;
+    const strutRadius = mainHeight * 0.35;
+    
+    const dirX = Math.cos(angleRad) * cockpitSide;
+    const dirZ = Math.sin(angleRad);
+    
+    const startX = dirX * mainRadius * 0.6;
+    const startZ = dirZ * mainRadius * 0.6;
+    const endX = startX + dirX * strutLen;
+    const endZ = startZ + dirZ * strutLen;
+    const strutPos = [(startX + endX)/2, 0, (startZ + endZ)/2];
+    
+    // Align strut cylinder to vector
+    const rotY = Math.atan2(dirX, dirZ);
+    attachComponent('cockpit_strut', strutPos, [Math.PI/2, rotY, 0], 'cylinder', 
         { radiusTop: strutRadius, radiusBottom: strutRadius, height: strutLen }, 'NONE');
     
-    // Cockpit Capsule
-    attachComponent('cockpit', [cockpitSide * (mainRadius + strutLen + strutRadius), 0, mainRadius * 0.2], [0, 0, cockpitSide * -Math.PI/2], 'cone', 
-        { radius: strutRadius * 1.2, height: strutRadius * 2.5, radialSegments: 8 }, 'NONE');
+    // Cockpit Capsule - Pointing Forward (+Z)
+    attachComponent('cockpit', [endX, 0, endZ], [Math.PI/2, 0, 0], 'capsule', 
+        { radius: strutRadius * 1.2, length: strutRadius * 4.0 }, 'NONE');
 
     return { cockpitPlaced: true };
 };
 
 export const generateCatamaran = (context) => {
     const { size, random, attachComponent } = context;
-    
+
     // Star Trek Style Nacelle Ship (Constitution / Miranda / Voyager)
     // 1. Primary Hull (Saucer)
-    const saucerRadius = (size === 'small' ? 3 : (size === 'medium' ? 5 : 8));
-    const saucerHeight = Math.max(0.5, saucerRadius * 0.15);
-    const halfH = saucerHeight / 2;
-    
-    // Top Dome
-    attachComponent('fuselage_saucer_top', [0, halfH/2, 0], [0, 0, 0], 'cylinder', 
-        {radiusTop: saucerRadius * 0.3, radiusBottom: saucerRadius, height: halfH, radialSegments: 16}, 'NONE');
-    // Bottom Dome
-    attachComponent('fuselage_saucer_bottom', [0, -halfH/2, 0], [0, 0, 0], 'cylinder', 
-        {radiusTop: saucerRadius, radiusBottom: saucerRadius * 0.3, height: halfH, radialSegments: 16}, 'NONE');
+    const saucerRadius = (size === 'small' ? 4 : (size === 'medium' ? 6 : 9));
+    const saucerHeight = Math.max(1.0, saucerRadius * 0.2);
+
+    // Smoother saucer shape with a central cylinder
+    const midHeight = saucerHeight * (0.3 + random() * 0.3); // 30-60% of total height
+    const taperHeight = (saucerHeight - midHeight) / 2;
+
+    // Central Cylinder
+    attachComponent('fuselage_saucer_mid', [0, 0, 0], [0, 0, 0], 'cylinder',
+        { radiusTop: saucerRadius, radiusBottom: saucerRadius, height: midHeight, radialSegments: 32 }, 'NONE');
+    // Top Taper
+    attachComponent('fuselage_saucer_top', [0, midHeight / 2 + taperHeight / 2, 0], [0, 0, 0], 'cylinder',
+        { radiusTop: saucerRadius * 0.4, radiusBottom: saucerRadius, height: taperHeight, radialSegments: 32 }, 'NONE');
+    // Bottom Taper
+    attachComponent('fuselage_saucer_bottom', [0, -midHeight / 2 - taperHeight / 2, 0], [0, 0, 0], 'cylinder',
+        { radiusTop: saucerRadius, radiusBottom: saucerRadius * 0.4, height: taperHeight, radialSegments: 32 }, 'NONE');
+
+    // Add a bridge so it gets a cockpit greeble
+    attachComponent('bridge', [0, saucerHeight / 2, 0], [0, 0, 0], 'cylinder',
+        { radiusTop: saucerRadius * 0.1, radiusBottom: saucerRadius * 0.2, height: saucerHeight * 0.4, radialSegments: 8 }, 'NONE');
 
     // 2. Configuration
     const configType = random(); // 0-0.3: Miranda-ish, 0.3-1.0: Constitution/Voyager-ish
     let hasEngineering = configType > 0.3;
-    
+
     let engPos = [0, 0, 0];
-    let engRadius = saucerRadius * 0.3;
-    let engLen = saucerRadius * 1.2;
-    
+    let engRadius = saucerRadius * 0.4;
+    let engLen = saucerRadius * 1.5;
+
     if (hasEngineering) {
-        const neckLen = saucerRadius * 0.8;
-        
+        const neckLen = saucerRadius * 1.0;
+
         // Neck (Vertical or Angled)
-        const neckPos = [0, -saucerHeight/2 - neckLen/2, -saucerRadius * 0.3];
-        attachComponent('fuselage_neck', neckPos, [0.2, 0, 0], 'box', 
-            {width: engRadius * 0.8, height: neckLen, depth: engRadius * 1.5}, 'NONE');
+        const neckPos = [0, -saucerHeight / 2 - neckLen / 2, -saucerRadius * 0.3];
+        attachComponent('fuselage_neck', neckPos, [0.3, 0, 0], 'box', // Angled forward slightly
+            { width: engRadius * 0.8, height: neckLen, depth: engRadius * 1.5 }, 'NONE');
+
+        // Secondary (Engineering) Hull - position shifted back to connect neck at front
+        const secondaryHullZ = -saucerRadius * 0.3 - engLen / 2;
+        engPos = [0, -saucerHeight / 2 - neckLen, secondaryHullZ];
+        // Use non-tapered cylinder and rename to avoid engine greebles
+        attachComponent('fuselage_secondary', engPos, [Math.PI / 2, 0, 0], 'cylinder',
+            { radiusTop: engRadius, radiusBottom: engRadius, height: engLen, radialSegments: 12 }, 'NONE');
+
+        // Deflector Dish
+        attachComponent('deflector_dish', [engPos[0], engPos[1], engPos[2] + engLen / 2 + 0.1], [Math.PI / 2, 0, 0], 'cylinder',
+            { radiusTop: engRadius * 0.8, radiusBottom: 0, height: 0.5 }, 'NONE');
+
+        // Pylons and Nacelles
+        const nacelleLen = engLen * 1.1;
+        const nacelleRadius = engRadius * 0.5;
         
-        // Engineering Hull
-        engPos = [0, -saucerHeight/2 - neckLen, -saucerRadius * 0.3];
-        attachComponent('fuselage_engineering', engPos, [Math.PI/2, 0, 0], 'cylinder', 
-            {radiusTop: engRadius, radiusBottom: engRadius * 0.7, height: engLen, radialSegments: 12}, 'NONE');
-            
-        // Deflector
-        attachComponent('deflector', [0, engPos[1], engPos[2] + engLen/2], [Math.PI/2, 0, 0], 'cylinder', 
-            {radiusTop: engRadius * 0.8, radiusBottom: 0, height: 0.5}, 'NONE');
+        // Nacelle Position: Higher than saucer
+        const nacelleY = saucerHeight * 1.5;
+        const nacelleX = saucerRadius * 0.9;
+        const nacelleZ = -saucerRadius * 0.5;
+
+        // Pylon attachment point on engineering hull
+        const pylonStart = new THREE.Vector3(engRadius, engPos[1], engPos[2] + engLen * 0.2);
+        
+        // Pylon End: Attach about 1/3 along the nacelle length from the front
+        const attachZ = nacelleZ + nacelleLen/2 - (nacelleLen / 3);
+        const pylonEnd = new THREE.Vector3(nacelleX, nacelleY, attachZ);
+        
+        const pylonCenter = new THREE.Vector3().addVectors(pylonStart, pylonEnd).multiplyScalar(0.5);
+        const pylonActualLen = pylonStart.distanceTo(pylonEnd);
+        const pylonDummy = new THREE.Object3D();
+        pylonDummy.position.copy(pylonCenter);
+        pylonDummy.lookAt(pylonEnd);
+        pylonDummy.rotateX(Math.PI / 2);
+        const pylonRot = [pylonDummy.rotation.x, pylonDummy.rotation.y, pylonDummy.rotation.z];
+        attachComponent('pylon', [pylonCenter.x, pylonCenter.y, pylonCenter.z], pylonRot, 'box', { width: 0.3, height: pylonActualLen, depth: engRadius * 0.6 }, 'REFLECTIVE');
+
+        // Nacelle - Renamed to warp_nacelle to avoid thrusters
+        attachComponent('warp_nacelle', [nacelleX, nacelleY, nacelleZ], [Math.PI / 2, 0, 0], 'cylinder',
+            { radiusTop: nacelleRadius, radiusBottom: nacelleRadius, height: nacelleLen }, 'REFLECTIVE');
     }
-    
+
     return { saucerRadius, saucerHeight, hasEngineering, engPos, engRadius, engLen };
 };
 
@@ -295,6 +350,6 @@ export const generateBattlestar = (context) => {
     for(let i=0; i<numStruts; i++) {
         const z = -podLen/2 + (podLen/(numStruts-1)) * i;
         attachComponent(`pod_strut_${i}`, [spineOffset + 1.0, 0, z], [0, 0, Math.PI/2], 'cylinder', 
-            { radiusTop: 0.2, radiusBottom: 0.2, height: 2.0 }, 'REFLECTIVE');
+            { radiusTop: 0.4, radiusBottom: 0.4, height: 2.0 }, 'REFLECTIVE');
     }
 };

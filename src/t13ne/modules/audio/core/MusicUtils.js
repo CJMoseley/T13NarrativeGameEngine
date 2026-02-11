@@ -7,8 +7,9 @@ export class MusicRNG {
 
     _hash(str) {
         let hash = 0;
+        if (str === undefined || str === null) return hash;
         if (typeof str !== 'string') str = JSON.stringify(str);
-        if (str.length === 0) return hash;
+        if (!str || str.length === 0) return hash;
         for (let i = 0; i < str.length; i++) {
             const char = str.charCodeAt(i);
             hash = ((hash << 5) - hash) + char;

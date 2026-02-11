@@ -678,6 +678,50 @@ export class InstrumentEngine {
         }
     }
 
+    playNoiseLayer(destination, time, duration, velocity, params, sources) {
+        if (!params.noise || !this.noiseBuffer) return;
+        
+        const noiseGain = params.noise.level || 0.1;
+        // Future: support 'pink' via filter or different buffer
+        
+        const source = this.ctx.createBufferSource();
+        source.buffer = this.noiseBuffer;
+        source.loop = true;
+        // Randomize start position to avoid phasing artifacts on repeated notes
+        source.loopStart = Math.random() * (this.noiseBuffer.duration - 0.1);
+        source.loopEnd = this.noiseBuffer.duration;
+        
+        if (sources) sources.push(source);
+
+        const env = this.ctx.createGain();
+        
+        // Optional filter for the noise
+        let output = env;
+        if (params.noise.filterCutoff) {
+            const filter = this.ctx.createBiquadFilter();
+            filter.type = params.noise.filterType || 'lowpass';
+            filter.frequency.value = params.noise.filterCutoff;
+            env.connect(filter);
+            output = filter;
+        }
+
+        source.connect(env);
+        output.connect(destination);
+
+        // Envelope matching the main note or custom
+        const attack = params.noise.attack || params.attack || 0.01;
+        const release = params.noise.release || params.release || 0.1;
+        const safeDuration = Math.max(duration, attack + 0.01);
+        
+        env.gain.setValueAtTime(0, time);
+        env.gain.linearRampToValueAtTime(velocity * noiseGain, time + attack);
+        env.gain.setValueAtTime(velocity * noiseGain, time + safeDuration);
+        env.gain.exponentialRampToValueAtTime(0.001, time + safeDuration + release);
+        
+        source.start(time, source.loopStart);
+        source.stop(time + safeDuration + release + 0.1);
+    }
+
     getWavetableForPartials(partials, instrumentId = 'temp') {
         // Use a stable key for caching: instrumentId if provided, otherwise a JSON string of partials
         const key = instrumentId !== 'temp' ? instrumentId : JSON.stringify(partials);
@@ -746,6 +790,9 @@ export class InstrumentEngine {
         osc.connect(env);
         env.connect(destination);
 
+        // Add Noise Layer
+        this.playNoiseLayer(destination, time, duration, velocity, inst, sources);
+
         this.applyEnvelope(env, osc, inst, time, duration, velocity, null, onCleanup);
     }
 
@@ -798,6 +845,9 @@ export class InstrumentEngine {
             try { env.disconnect(); } catch (e) { }
             if (onCleanup) onCleanup();
         };
+
+        // Add Noise Layer
+        this.playNoiseLayer(destination, time, duration, velocity, inst, sources);
 
         this.applyEnvelope(env, null, inst, time, duration, velocity, node, wrapCleanup);
     }
@@ -879,6 +929,9 @@ export class InstrumentEngine {
             osc.connect(filter);
             sourceNode = filter;
         }
+
+        // Add Noise Layer
+        this.playNoiseLayer(destination, time, duration, velocity, params, sources);
 
         sourceNode.connect(env);
         env.connect(destination);

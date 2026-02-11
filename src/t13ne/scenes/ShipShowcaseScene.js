@@ -77,11 +77,13 @@ export class ShipShowcaseScene extends Scene {
         const shipComponents = await this.shipFactory.createRandomShip(seed, { size: size, techLevel: 2, style: style });
 
         // Generate Ship Name
-        if (this.viewManager.gameEngine.loreMaster && this.viewManager.gameEngine.loreMaster.nameGenerator) {
+        if (shipComponents.shipName) {
+            this.shipName = shipComponents.shipName;
+        } else if (this.viewManager.gameEngine.loreMaster && this.viewManager.gameEngine.loreMaster.nameGenerator) {
             try {
                 const genName = await this.viewManager.gameEngine.loreMaster.nameGenerator.generate('SHIP_NAMES', seed);
                 // Fix: Check for the repetitive placeholder name and generate a fallback if found
-                if (genName && genName !== "G'nathuun") {
+                if (genName && genName.toLowerCase() !== "g'nathuun") {
                     this.shipName = genName;
                 } else {
                     let manu = FALLBACK_MANUFACTURERS[Math.floor(Math.random() * FALLBACK_MANUFACTURERS.length)];

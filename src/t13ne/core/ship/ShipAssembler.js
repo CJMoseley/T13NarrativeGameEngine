@@ -503,10 +503,10 @@ export class ShipAssembler {
                     }
 
                     // Raycast from source center towards target center to find connection points on surfaces
-                    const direction = tempVec.subVectors(targetCenter, sourceCenter).normalize();
+                    const raycastDirection = tempVec.subVectors(targetCenter, sourceCenter).normalize();
                     
                     // Find intersection point on source mesh
-                    raycaster.set(sourceCenter, direction);
+                    raycaster.set(sourceCenter, raycastDirection);
                     const sourceIntersects = raycaster.intersectObject(sourceMesh, true);
                     let startPoint = sourceCenter; // Fallback
                     if (sourceIntersects.length > 0) {
@@ -514,7 +514,7 @@ export class ShipAssembler {
                     }
 
                     // Find intersection point on target mesh
-                    raycaster.set(endPoint, direction.negate()); // Raycast from target back to source
+                    raycaster.set(endPoint, raycastDirection.negate()); // Raycast from target back to source
                     const targetIntersects = raycaster.intersectObject(targetMesh, true);
                     // let endPoint = targetCenter; // Already set
                     if (targetIntersects.length > 0) {
@@ -530,24 +530,22 @@ export class ShipAssembler {
                     const midPoint = tempVec.addVectors(startPoint, endPoint).multiplyScalar(0.5);
                     const dist = startPoint.distanceTo(endPoint);
                     
-                    // Create 3 struts in a triangle formation
-                    const strutCount = 3;
-                    const strutRadius = 0.04;
-                    const offset = 0.12;
+                    // FIX: Create a single, thicker, correctly-oriented strut to avoid visual bugs.
+                    const strutRadius = 0.25;
                     
-                    for (let i = 0; i < strutCount; i++) {
-                        const angle = (i / strutCount) * Math.PI * 2;
-                        const offsetX = Math.cos(angle) * offset;
-                        const offsetY = Math.sin(angle) * offset;
-                        
-                        const strutGeo = new THREE.CylinderGeometry(strutRadius, strutRadius, dist, 4);
-                        strutGeo.rotateX(Math.PI / 2);
-                        strutGeo.translate(offsetX, offsetY, 0); // Translate along local Y (height)
-                        const strut = new THREE.Mesh(strutGeo, strutMat);
-                        strut.position.copy(midPoint);
-                        strut.lookAt(endPoint); // Orient towards the end point
-                        shipGroup.add(strut);
-                    }
+                    const strutGeo = new THREE.CylinderGeometry(strutRadius, strutRadius, dist, 8);
+                    const strut = new THREE.Mesh(strutGeo, strutMat);
+
+                    // Position at midpoint
+                    strut.position.copy(midPoint);
+
+                    // Align cylinder's default Y-axis along the vector from start to end
+                    const direction = new THREE.Vector3().subVectors(endPoint, startPoint).normalize();
+                    const up = new THREE.Vector3(0, 1, 0);
+                    const quat = new THREE.Quaternion().setFromUnitVectors(up, direction);
+                    strut.quaternion.copy(quat);
+
+                    shipGroup.add(strut);
                 }
             }
         }

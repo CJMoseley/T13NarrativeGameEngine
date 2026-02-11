@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { mulberry32, TECH_SPECS, QUALITIES, FALLBACK_MANUFACTURERS } from './ShipUtils.js';
+import { mulberry32, TECH_SPECS, QUALITIES, FALLBACK_MANUFACTURERS, SHIP_PREFIXES, SHIP_ADJECTIVES, SHIP_NOUNS } from './ShipUtils.js';
 import { GalacticHistory } from '@/src/t13ne/procgen/galaxy/GalacticHistory.js';
 import { generateDisc, generateSpineOrStar } from './structures/StandardHulls.js';
 import { generateFreighter, generateHorseshoe, generateBlob, generateCatamaran, generateYFork, generateBattlestar } from './structures/IndustrialHulls.js';
@@ -310,15 +310,22 @@ export class ShipGenerator {
         // Engines
         const engineCount = size === 'small' ? 1 : (size === 'medium' ? 2 : 4);
         if (hullType === 'DISC') {
-            // Saucer engines on rim (logic unchanged)
+            // Saucer engines on rim
             const engR = mainHullRadius * 0.65;
             const engHeight = 2.0;
             
+            // Distribute engines within the arc
+            const angleOffset = random() * Math.PI * 2;
+            const ex = Math.cos(angleOffset) * engR;
+            const ez = Math.sin(angleOffset) * engR;
+
             // Embed engines deeply into the saucer, centered vertically (y=0).
             // This allows them to perturb the upper surface and not stick out the bottom excessively.
-            attachComponent('engine', [engR, 0, 0], [0, 0, 0], 'cylinder', 
+            // Rotate to point outwards along the radius. 
+            // Cylinder default Y is up. Rotate Z 90 to point X. Then rotate Y to align with radius.
+            attachComponent('engine', [ex, 0, ez], [0, -angleOffset, Math.PI / 2], 'cylinder', 
                 { radiusTop: 0.8, radiusBottom: 0.6, height: engHeight }, 'RADIAL');
-        } else if (hullType === 'FREIGHTER') {
+        } else if (hullType === 'FREIGHTER' || hullType === 'BATTLESTAR') {
             // Freighter engines are attached to the engine block at the rear
             const trussLen = spineLength * 1.5;
             const engineZ = -trussLen/2 - 4.0; // Behind the engine block (which is at -trussLen/2 - 2.5)
@@ -401,16 +408,23 @@ export class ShipGenerator {
             if (hullType === 'STATION_RING' || hullType === 'STATION_WHEEL') {
                 // Engines on the rim for rings
                 const r = spineLength * 1.5;
-                const tubeR = size === 'large' ? 3 : 1.5;
                 
                 // Distribute engines around the ring using radial symmetry
-                // Place them slightly embedded in the rim
-                // If Radial Axis is Y (Horizontal Ring), place on X axis
-                // If Radial Axis is Z (Vertical Wheel), place on X axis
-                // We use the 'RADIAL' symmetry of the ship to distribute them
-                
+                const angleOffset = random() * Math.PI * 2;
+                const ex = Math.cos(angleOffset) * r;
+                const ez = Math.sin(angleOffset) * r;
+
                 // Place at radius r (center of tube)
-                attachComponent('engine', [r, 0, 0], [Math.PI/2, 0, 0], 'cylinder', { radiusTop: 0.6, radiusBottom: 1.0, height: 2.5 }, 'RADIAL');
+                let pos, rot;
+                if (radialAxis === 'z') {
+                     pos = [ex, ez, 0]; // XY plane
+                     rot = [0, 0, angleOffset - Math.PI/2]; // Point outward in XY
+                } else {
+                     pos = [ex, 0, ez]; // XZ plane
+                     rot = [Math.PI/2, -angleOffset, 0]; // Point outward in XZ (Cylinder Y aligned to radius)
+                }
+
+                attachComponent('engine', pos, rot, 'cylinder', { radiusTop: 0.6, radiusBottom: 1.0, height: 2.5 }, 'RADIAL');
 
             } else 
             if (symmetryType === 'REFLECTIVE') {
@@ -423,7 +437,16 @@ export class ShipGenerator {
                 // FIX: Rotate to point local -Y outwards along +X. This is a +90 deg rotation around Z.
                 attachComponent('engine', [armLen, 0, 0], [0, 0, Math.PI / 2], 'cylinder', { radiusTop: 0.5, radiusBottom: 0.8, height: 2.0 });
             } else {
-                // Central engine
+                // Default case, primarily for SPINE
+                if (hullType === 'SPINE' && random() > 0.1) {
+                    // Add a nose cone to spine ships to avoid flat fronts
+                    const noseLength = (res.lastSegmentRadius || 1.5) * (1.5 + random());
+                    const noseZ = (res.lastSegmentZ || spineLength / 2) + noseLength / 2 - 0.2; // Overlap slightly
+                    // FIX: Add 'NONE' symmetry override to prevent multiple nose cones.
+                    attachComponent('nose_cone', [0, 0, noseZ], [Math.PI / 2, 0, 0], 'cone', 
+                        { radius: res.lastSegmentRadius || 1.5, height: noseLength, radialSegments: res.lastSegmentSegments || 8 }, 'NONE');
+                }
+                // Central engine for SPINE or other fallback types
                 const engineHeight = 2.5;
                 const engineZ = -spineLength / 2 - engineHeight / 2 + 0.5; // Increased overlap
                 attachComponent('engine', [0, 0, engineZ], [Math.PI / 2, 0, 0], 'cylinder', { radiusTop: 0.6, radiusBottom: 0.9, height: engineHeight });
@@ -685,13 +708,27 @@ export class ShipGenerator {
 
         // Essential Systems (Power, Shield, Vortex) - Distributed Placement
         // Generator
-        let genPos;
-        if (hullType === 'DISC') genPos = [mainHullRadius * 0.4, 0, 0];
-        else if (hullType === 'STAR') genPos = [spineLength * 0.3, 0, 0];
-        else if (hullType === 'STATION_RING') {
-            // Place on rim, opposite cockpit (approx)
+        let genPos = [0, 0, 0];
+        let genRot = [0, 0, 0];
+        
+        if (hullType === 'DISC') {
+            const angle = random() * Math.PI * 2;
+            const r = mainHullRadius * 0.4;
+            genPos = [Math.cos(angle) * r, 0, Math.sin(angle) * r];
+            genRot = [0, -angle, 0];
+        } else if (hullType === 'STAR') {
+            genPos = [spineLength * 0.3, 0, 0];
+        } else if (hullType === 'STATION_RING') {
+            // Place on rim, random angle
             const r = spineLength * 1.5;
-            genPos = [-r, 0, 0]; 
+            const angle = random() * Math.PI * 2;
+            if (radialAxis === 'z') {
+                genPos = [Math.cos(angle) * r, Math.sin(angle) * r, 0];
+                genRot = [0, 0, angle];
+            } else {
+                genPos = [Math.cos(angle) * r, 0, Math.sin(angle) * r];
+                genRot = [0, -angle, 0];
+            }
         } else if (hullType === 'STATION_WHEEL') {
             // Place on Hub
             genPos = [0, -1.5, 0];
@@ -701,7 +738,7 @@ export class ShipGenerator {
         } else {
             genPos = [0, -0.5, -(spineLength / 2) + 1.5];
         }
-        attachComponent('generator', genPos, [0, 0, 0], 'box', { width: 1.5, height: 1.0, depth: 1.5 });
+        attachComponent('generator', genPos, genRot, 'box', { width: 1.5, height: 1.0, depth: 1.5 });
 
         // Shield Generator
         let shieldPos;
@@ -734,18 +771,28 @@ export class ShipGenerator {
         attachComponent('shield', shieldPos, shieldRot, 'torus', shieldDims, 'NONE'); // Single shield
 
         // Vortex Generator
-        let vortexPos;
+        let vortexPos = [0, 0, 0];
+        let vortexRot = [0, 0, 0];
+        
         if (hullType === 'STATION_RING') {
              const r = spineLength * 1.5;
-             vortexPos = [0, 0, -r]; // Opposite shield on rim
-             if (radialAxis === 'z') vortexPos = [0, -r, 0];
+             const angle = random() * Math.PI * 2;
+             if (radialAxis === 'z') {
+                 vortexPos = [Math.cos(angle) * r, Math.sin(angle) * r, 0];
+             } else {
+                 vortexPos = [Math.cos(angle) * r, 0, Math.sin(angle) * r];
+             }
         } else if (hullType === 'HORSESHOE') {
              const r = spineLength * 0.8;
              vortexPos = [r - 1.5, 0, 0]; // Inner curve
+        } else if (hullType === 'DISC') {
+             const angle = random() * Math.PI * 2;
+             const r = mainHullRadius * 0.6;
+             vortexPos = [Math.cos(angle) * r, -0.5, Math.sin(angle) * r];
         } else {
-             vortexPos = hullType === 'DISC' ? [mainHullRadius * 0.6, -0.5, 0] : [0, -0.8, spineLength / 2 - 1];
+             vortexPos = [0, -0.8, spineLength / 2 - 1];
         }
-        attachComponent('vortex', vortexPos, [0, 0, 0], 'dodecahedron', { radius: 0.6 });
+        attachComponent('vortex', vortexPos, vortexRot, 'dodecahedron', { radius: 0.6 });
 
         // Add Torus Ring for Radial Ships (Moved to end to check for wing connections)
         if (symmetryType === 'RADIAL' && random() > 0.7) { // Reduced probability from 0.3 to 0.7
@@ -873,8 +920,8 @@ export class ShipGenerator {
         // Use HSL to ensure we don't get black ships (military/stealth)
         // Bias towards industrial colors (low saturation, medium-high lightness)
         const hue = random();
-        const saturation = random() * 0.3; // Low saturation
-        const lightness = 0.6 + random() * 0.3; // 60% to 90% lightness (avoid darks)
+        const saturation = 0.4 + random() * 0.6; // More vibrant: 40% to 100% saturation
+        const lightness = 0.5 + random() * 0.3; // 50% to 80% lightness (avoid pure white/black)
         
         let baseColor = new THREE.Color().setHSL(hue, saturation, lightness);
         
@@ -892,6 +939,22 @@ export class ShipGenerator {
             color2: Math.floor(random() * 0xffffff),
             color3: Math.floor(random() * 0xffffff)
         };
+
+        // --- Generate Ship Name ---
+        // Influence the name generation by the component names as requested
+        let nameSeedAccumulator = seedVal;
+        components.forEach(c => {
+            if (c.name) {
+                for (let i = 0; i < c.name.length; i++) {
+                    nameSeedAccumulator = (nameSeedAccumulator + c.name.charCodeAt(i)) | 0;
+                }
+            }
+        });
+        const nameRandom = mulberry32(nameSeedAccumulator >>> 0);
+        const prefix = SHIP_PREFIXES[Math.floor(nameRandom() * SHIP_PREFIXES.length)];
+        const adjective = SHIP_ADJECTIVES[Math.floor(nameRandom() * SHIP_ADJECTIVES.length)];
+        const noun = SHIP_NOUNS[Math.floor(nameRandom() * SHIP_NOUNS.length)];
+        components.shipName = `${prefix} ${adjective} ${noun}`;
 
         // Return the components array, but also attach the wiring graph to it so it can be retrieved
         components.wiringGraph = wiringGraph;

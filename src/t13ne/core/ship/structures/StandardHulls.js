@@ -1,21 +1,28 @@
 import * as THREE from 'three';
 
 export const generateDisc = (context) => {
-    const { size, random, attachComponent } = context;
+    const { size, random, attachComponent, hullType } = context;
     const mainHullRadius = (size === 'small' ? 4 : (size === 'medium' ? 8 : 12)) * (0.8 + random() * 0.4);
-    const height = (size === 'small' ? 1 : (size === 'medium' ? 2 : 3));
+    const totalHeight = (size === 'small' ? 1.5 : (size === 'medium' ? 2.5 : 4));
 
-    // Split into top and bottom halves for a classic saucer shape (wide middle)
-    const halfHeight = height / 2;
+    // Add a central cylindrical section as requested
+    const midHeight = totalHeight * (0.2 + random() * 0.4); // 20-60% of total height
+    const taperHeight = (totalHeight - midHeight) / 2;
+
+    // Central Cylinder - add a 'hull' usage tag so greebles like windows can be added
+    attachComponent('fuselage_hull_mid', [0, 0, 0], [0, 0, 0], 'cylinder',
+        { radiusTop: mainHullRadius, radiusBottom: mainHullRadius, height: midHeight, radialSegments: 32 },
+        'NONE'
+    );
     
     // Top Half: Taper from Middle to Top
-    attachComponent('fuselage_top', [0, halfHeight / 2, 0], [0, 0, 0], 'cylinder',
-        { radiusTop: mainHullRadius * 0.25, radiusBottom: mainHullRadius, height: halfHeight, radialSegments: 16 },
+    attachComponent('fuselage_top', [0, midHeight / 2 + taperHeight / 2, 0], [0, 0, 0], 'cylinder',
+        { radiusTop: mainHullRadius * 0.25, radiusBottom: mainHullRadius, height: taperHeight, radialSegments: 32 },
         'NONE' 
     );
     // Bottom Half: Taper from Middle to Bottom
-    attachComponent('fuselage_bottom', [0, -halfHeight / 2, 0], [0, 0, 0], 'cylinder',
-        { radiusTop: mainHullRadius, radiusBottom: mainHullRadius * 0.25, height: halfHeight, radialSegments: 16 },
+    attachComponent('fuselage_bottom', [0, -midHeight / 2 - taperHeight / 2, 0], [0, 0, 0], 'cylinder',
+        { radiusTop: mainHullRadius, radiusBottom: mainHullRadius * 0.25, height: taperHeight, radialSegments: 32 },
         'NONE'
     );
     return { mainHullRadius };
@@ -37,7 +44,7 @@ export const generateSpineOrStar = (context, hullType) => {
     let currentSegs = (random() > 0.5) ? harmonicSegments : Math.floor(3 + random() * 5);
 
     for (let i = 0; i < spineSegments; i++) {
-        const width = 2.0 + random() * 1.5; // Increased width (2.0 - 3.5) to avoid "narrow" look
+        const width = 2.0 + random() * 0.8; // Reduced variation (2.0 - 2.8) to make connections smoother
         const isRadialZ = (symmetryType === 'RADIAL' && radialAxis === 'z');
 
         // 20% chance to change segment count, otherwise keep same as last to create cleaner lines

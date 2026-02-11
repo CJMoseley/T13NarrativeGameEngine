@@ -540,8 +540,14 @@ export class GreebleGenerator {
                 }
 
                 if (radialAxis === 'y') {
-                    rayOrigin = pos.clone().add(up.clone().multiplyScalar(scale.y + 5));
+                    // FIX: Distribute around the rim instead of stacking at the center.
+                    const radius = comp.scale.x * 0.7; // Use 70% of the component's radius to place greebles
+                    const angle = random() * Math.PI * 2;
+                    const x = Math.cos(angle) * radius;
+                    const z = Math.sin(angle) * radius;
+                    rayOrigin = new THREE.Vector3(x, pos.y + 5, z);
                     rayDir = up.clone().negate();
+                    alignment = new THREE.Vector3(x, 0, z).normalize(); // Face outwards
                 } else {
                     if (Math.floor((pos.x + pos.y + pos.z) * 100) % 2 === 0) {
                         rayOrigin = pos.clone().add(up.clone().multiplyScalar(scale.y + 5));
@@ -622,11 +628,8 @@ export class GreebleGenerator {
                 // Determine shape based on position for consistency
                 let shapeSeed;
                 if (symmetryType === 'RADIAL') {
-                    if (radialAxis === 'y') { // Saucer
-                        shapeSeed = new THREE.Vector2(pos.x, pos.z).length();
-                    } else { // Rocket
-                        shapeSeed = new THREE.Vector2(pos.x, pos.y).length();
-                    }
+                    // Use main ship seed for radial engines to ensure they are all the same style
+                    shapeSeed = seed;
                 } else { // Reflective or ASYMMETRICAL
                     shapeSeed = Math.abs(pos.x) + pos.y + pos.z;
                 }
@@ -745,8 +748,16 @@ export class GreebleGenerator {
                 const barrelMat = new THREE.MeshStandardMaterial({ color: 0x222222, metalness: 0.8, roughness: 0.2 });
                 const barrel = new THREE.Mesh(barrelGeo, barrelMat);
                 
-                const offsetDist = scale.y + 2;
-                this.placeOnSurface(hullMesh, greebleGroup, new THREE.Vector3(pos.x, pos.y + offsetDist, pos.z), new THREE.Vector3(0, -1, 0), barrel, true, scale.x * 0.5, isCentral, symmetryType, radialAxis, radialCount, null, 'forward');
+                if (radialAxis === 'y') {
+                    const radius = comp.scale.x * 0.8;
+                    const angle = random() * Math.PI * 2;
+                    const x = Math.cos(angle) * radius;
+                    const z = Math.sin(angle) * radius;
+                    this.placeOnSurface(hullMesh, greebleGroup, new THREE.Vector3(x, pos.y + 5, z), new THREE.Vector3(0, -1, 0), barrel, true, scale.x * 0.5, isCentral, symmetryType, radialAxis, radialCount, null, new THREE.Vector3(x, 0, z).normalize());
+                } else {
+                    const offsetDist = scale.y + 2;
+                    this.placeOnSurface(hullMesh, greebleGroup, new THREE.Vector3(pos.x, pos.y + offsetDist, pos.z), new THREE.Vector3(0, -1, 0), barrel, true, scale.x * 0.5, isCentral, symmetryType, radialAxis, radialCount, null, 'forward');
+                }
             }
 
             // 7. Solar Panels (Wings)
