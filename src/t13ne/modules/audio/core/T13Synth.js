@@ -14,7 +14,7 @@ export class T13Synth {
         this.masterGain.gain.value = 1.0;
 
         this.musicGain = this.ctx.createGain();
-        this.musicGain.gain.value = 0.3; // Safer default for complex procedural mixes
+        this.musicGain.gain.value = 0.2; // Reduced to prevent compressor pumping/ducking
         this.musicGain.connect(this.masterGain);
 
         this.sfxGain = this.ctx.createGain();
@@ -99,6 +99,22 @@ export class T13Synth {
 
         const safeVelocity = Math.max(0, Math.min(1.0, velocity));
         this.instrumentEngine.playNote(type, frequency, startTime, duration, safeVelocity, dest, pan);
+    }
+
+    pruneChannels(activeIds) {
+        const activeSet = new Set(activeIds);
+        for (const [id, ch] of this.channels) {
+            if (!activeSet.has(id)) {
+                if (this.instrumentEngine && this.instrumentEngine.stopVoices) {
+                    this.instrumentEngine.stopVoices(id);
+                }
+                try {
+                    ch.gain.disconnect();
+                    ch.analyser.disconnect();
+                } catch (e) {}
+                this.channels.delete(id);
+            }
+        }
     }
 
     playSample(name, frequency, startTime, duration, detune) {

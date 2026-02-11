@@ -68,9 +68,19 @@ export class WiringGenerator {
 
             let nearest = null;
             let minDist = Infinity;
+
+            let candidates = connected;
+            // If the component is a wing, only try to connect it to the main body, not other wings.
+            if (comp.usage && (comp.usage.includes('wing') || comp.usage.includes('fin'))) {
+                const bodyParts = connected.filter(c => c.usage && (c.usage.includes('fuselage') || c.usage.includes('spine') || c.usage.includes('hub')));
+                if (bodyParts.length > 0) {
+                    candidates = bodyParts;
+                }
+                // If no body parts are connected yet, it will fallback to the full 'connected' list.
+            }
             
             // Find nearest already-connected component
-            connected.forEach(candidate => {
+            candidates.forEach(candidate => {
                 const dist = getDist(comp, candidate);
                 if (dist < minDist) {
                     minDist = dist;

@@ -244,8 +244,66 @@ class T13NE_Music {
         return trackData;
     }
 
+    async createWormholeTheme(ship, origin, target) {
+        if (!this.synth) return;
+        const trackName = `track_wormhole_${origin.name}_${target.name}`;
+        const trackData = await this.themeGenerator.createWormholeTheme(ship, origin, target);
+        if (!trackData) return;
+        this.saveTrack(trackName, trackData);
+        return trackData;
+    }
+
+    async createWormholeRacersTheme() {
+        if (!this.synth) return;
+        const trackName = 'track_wormhole_racers';
+        Logger.message("T13NE_Music: generating Wormhole Racers Theme...");
+        const trackData = await this.themeGenerator.createWormholeRacersTheme();
+        if (!trackData) return;
+        this.saveTrack(trackName, trackData);
+        Logger.message(`T13NE_Music: Saved track '${trackName}'.`);
+        return trackData;
+    }
+
+    async createT13NETheme() {
+        if (!this.synth) return;
+        const trackName = 'track_t13ne_main';
+        Logger.message("T13NE_Music: generating T13NE Main Theme...");
+        const trackData = await this.themeGenerator.createT13NETheme();
+        if (!trackData) return;
+        this.saveTrack(trackName, trackData);
+        Logger.message(`T13NE_Music: Saved track '${trackName}'.`);
+        return trackData;
+    }
+
+    async createPactTheme(pact) {
+        if (!this.synth) return;
+        const trackName = `track_pact_${pact.name}`;
+        const trackData = await this.themeGenerator.createPactTheme(pact);
+        if (!trackData) return;
+        this.saveTrack(trackName, trackData);
+        return trackData;
+    }
+
     getCharacterComposition(character, options = {}) {
         return this.themeGenerator.getCharacterComposition(character, options);
+    }
+
+    async loadMidi(name, url) {
+        if (!this.manifestManager.manifest.midi[name]) {
+             try {
+                const response = await fetch(url);
+                if (response.ok) {
+                    const midiData = await response.json(); // Assuming JSON MIDI format
+                    this.manifestManager.addToManifest('midi', name, { data: midiData, url: url });
+                    Logger.message(`T13NE_Music: Loaded MIDI data for '${name}'.`);
+                    return midiData;
+                }
+             } catch (e) {
+                Logger.error(`T13NE_Music: Failed to load MIDI '${name}' from ${url}`, e);
+                return null;
+             }
+        }
+        return this.manifestManager.manifest.midi[name].data;
     }
 
     playCharacterComposition(character, listener = null, instrument = null) {
@@ -324,6 +382,8 @@ class T13NE_Music {
         if (this.currentTrackName && this.currentTrackName !== track.name) {
             this.stopTrack();
         }
+        
+        this.synth.pruneChannels(track.voices.map(v => v.id));
 
         this.currentTrack = track;
         this.currentTrackName = track.name;
@@ -355,6 +415,11 @@ class T13NE_Music {
             
             const safeTotalSteps = (!totalSteps || isNaN(totalSteps)) ? 64 : totalSteps;
 
+            // Fix: Ensure currentStep is within bounds if track length changed during update
+            if (this.currentStep >= safeTotalSteps) {
+                this.currentStep = this.currentStep % safeTotalSteps;
+            }
+
             if (nextStepTime < now - 0.1) {
                 const missedSeconds = now - nextStepTime;
                 const missedSteps = Math.floor(missedSeconds / stepTime);
@@ -370,12 +435,9 @@ class T13NE_Music {
                 activeTrack.voices.forEach(voice => {
                     if (voice.mute) return;
 
-                    let playbackStep = this.currentStep;
-                    if (voice.loopLength > 0) {
-                        playbackStep = this.currentStep % voice.loopLength;
-                    }
-
-                    const notesOnStep = voice.sequence.filter(n => n.step === playbackStep);
+                    const loopLen = voice.loopLength || safeTotalSteps;
+                    const loopStep = this.currentStep % loopLen;
+                    const notesOnStep = voice.sequence.filter(n => n.step === loopStep);
                     notesOnStep.forEach(note => {
                         const freq = note.freq || this.synth.instrumentEngine._freqFromNote(note.note);
                         const dynamicVelocity = (note.velocity || 1.0) * (voice.id.includes('pad') ? 0.4 : 0.8);
@@ -415,7 +477,8 @@ class T13NE_Music {
             this.currentTrack.timeSignature = track.timeSignature;
             this.currentTrack.measures = track.measures;
             this.currentTrack.totalSteps = track.totalSteps;
-            this.currentStep = 0; 
+            // this.currentStep = 0; // Removed to allow music to evolve/extend without restarting
+            this.synth.pruneChannels(track.voices.map(v => v.id));
             Logger.message(`T13NE_Music: Updated track '${track.name}' with new voices.`);
         } else {
             this.playTrackObject(track);

@@ -1,10 +1,222 @@
 // src/t13ne/modules/audio/core/ThemeGenerator.js
+
 import Logger from "../../../core/Logger.js";
 import CodexLoader from "../../codex/CodexLoader.js";
 import { MusicRNG } from "./MusicUtils.js";
 import { AudioAnalyzer } from "../t13ne-audio-analyzer.js";
 
 const CHROMATIC_SCALE = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+
+class VirtualArtist {
+    constructor(entity, generator) {
+        this.name = entity.name || 'Unknown';
+        this.entity = entity;
+        this.generator = generator;
+        this.geometry = generator.ensureGeometry(entity);
+        
+        this.midiMotif = null; // NEW: for MIDI data
+        // Determine musical identity from Geometry
+        const geoKey = this.geometry && this.geometry.geometry && this.geometry.geometry.GeoHarmonics 
+            ? this.geometry.geometry.GeoHarmonics.key 
+            : (this.geometry ? this.geometry.GeometryNumber : 1);
+            
+        this.keyData = generator.geometry ? generator.geometry.getKey(geoKey) : { Key: 'C', Frequency: 261.63 };
+        
+        // Determine Instrument
+        const instData = generator._getInstrumentFromGeometry(this.geometry ? this.geometry.geometry : { Chi: 5 });
+        this.instrumentId = instData.instrument;
+        this.role = instData.role;
+        this.chi = instData.chi;
+
+        // NEW: Determine rhythmic identity
+        const geoRhythm = this.geometry?.geometry?.GeoRhythm || { timeSignature: [4, 4] };
+        this.timeSignature = geoRhythm.timeSignature;
+        this.stepsPerBar = Math.round((this.timeSignature[0] / this.timeSignature[1]) * 16);
+        
+        this.determineMusicalPersonality();
+    }
+
+    determineMusicalPersonality() {
+        const geoNum = this.geometry?.geometry?.GeometryNumber || 0;
+        this.geoNum = geoNum;
+        
+        // 1, 3, 10: Natural leads/soloists
+        if ([1, 3, 10].includes(geoNum)) {
+            this.personality = 'lead';
+        } 
+        // 5, 7, 9: Grounded, rhythmic, bass-heavy
+        else if ([5, 7, 9].includes(geoNum)) {
+            this.personality = 'groove';
+        }
+        // 2, 4, 8: Followers, harmonic support
+        else if ([2, 4, 8].includes(geoNum)) {
+            this.personality = 'support';
+        }
+        // 6, 11, 12, 13: Weird, complex, counter-melodies
+        else {
+            this.personality = 'eccentric';
+        }
+    }
+
+    async prepare() {
+        await this.generator._ensureInstrumentDefined(this.instrumentId, null, null, { chi: this.chi });
+    }
+
+    assimilateMidi(midiData) {
+        if (!midiData || !midiData.tracks || !midiData.tracks[0] || !midiData.tracks[0].notes) {
+            Logger.warn(`VirtualArtist ${this.name}: Could not assimilate invalid MIDI data.`);
+            return;
+        }
+        // Use the first track's notes as a motif
+        // This is a simplification. A real implementation would be more complex.
+        this.midiMotif = midiData.tracks[0].notes.map(note => ({
+            // We can't use absolute pitch, we need relative intervals.
+            // For now, let's just store the MIDI note number and duration.
+            // The generation logic will need to transpose this to the current chord.
+            midi: note.midi,
+            duration: note.duration,
+            velocity: note.velocity
+        }));
+        Logger.message(`VirtualArtist ${this.name}: Assimilated a MIDI motif with ${this.midiMotif.length} notes.`);
+    }
+}
+
+class VirtualDrummer extends VirtualArtist {
+    constructor(entity, generator) {
+        super(entity, generator);
+        this.role = 'percussion';
+        this.kitType = entity.kitType || 'Standard'; // Standard, Orchestral, Electronic
+        // Personality traits for drumming
+        this.fillFrequency = 0.25; // Chance to fill at end of phrase
+        this.soloChance = 0.05; // Chance to take a solo measure
+        this.dropOutChance = 0.1; // Chance to rest for a measure
+    }
+
+    async prepare() {
+        // Ensure kit is ready. We use a seed based on name + piece to get consistent kit pieces per drummer
+        const kitPieces = ['kick', 'snare', 'hat', 'crash', 'ride', 'perc', 'tom_h', 'tom_l'];
+        for (const piece of kitPieces) {
+            const instId = this.generator._getProceduralInstrument(piece, this.name + piece);
+            await this.generator._ensureInstrumentDefined(instId);
+        }
+    }
+}
+
+class VirtualBand {
+    constructor(generator) {
+        this.generator = generator;
+        this.members = [];
+        this.conductor = null;
+        this.baseFreq = 261.63;
+        this.bpm = 120;
+        this.progression = [];
+        this.rhythm = null;
+        this.timeSignature = [4, 4]; // Add a band-wide time signature
+        this.stepsPerBar = 16;
+        this.polyrhythms = new Map(); // Store artists who will play in a different meter
+        this.drummers = [];
+    }
+
+    async addMember(entity) {
+        if (!entity) return;
+        
+        // Check if it should be a drummer based on type or name
+        const isDrummer = entity.type === 'Drummer' || (entity.name && (entity.name.includes('Drum') || entity.name.includes('Perc')));
+        if (isDrummer) {
+            await this.addDrummer(entity);
+            return;
+        }
+
+        const artist = new VirtualArtist(entity, this.generator);
+        await artist.prepare();
+        this.members.push(artist);
+
+        if (!this.conductor) {
+            this.conductor = artist;
+            this.baseFreq = artist.keyData.Frequency;
+            // Conductor sets the initial vibe
+            this.timeSignature = artist.timeSignature;
+            this.stepsPerBar = artist.stepsPerBar;
+        } else {
+            // Subsequent artists influence the band
+            const isDifferentTimeSignature = artist.timeSignature[0] !== this.timeSignature[0] || artist.timeSignature[1] !== this.timeSignature[1];
+
+            // A simple rule: if an early member (2nd or 3rd) introduces a new time signature, the whole band changes.
+            if (isDifferentTimeSignature && this.members.length <= 3) {
+                Logger.message(`VirtualBand: Time signature change! Artist ${artist.name} shifts the band to ${artist.timeSignature.join('/')}.`);
+                this.timeSignature = artist.timeSignature;
+                this.stepsPerBar = artist.stepsPerBar;
+                this.polyrhythms.clear(); // Reset polyrhythms as everyone is now in the new time signature.
+                // Force a regeneration of the progression and rhythm by clearing the cached progression.
+                this.generator.currentProgression = null; 
+            } 
+            // Later members with different signatures create polyrhythms instead of changing the whole band.
+            else if (isDifferentTimeSignature) {
+                Logger.message(`VirtualBand: Artist ${artist.name} introduces polyrhythm (${artist.timeSignature.join('/')}) over base (${this.timeSignature.join('/')}).`);
+                this.polyrhythms.set(artist.name, artist.stepsPerBar);
+            }
+        }
+    }
+
+    async addDrummer(entity) {
+        if (!entity) return;
+        const drummer = new VirtualDrummer(entity, this.generator);
+        await drummer.prepare();
+        this.drummers.push(drummer);
+    }
+
+    async assembleFromShip(ship) {
+        // Ship acts as the band, components of name act as artists
+        const nameParts = ship.name.split(/[\s-]+/);
+        for (const part of nameParts) {
+            // Create a virtual entity for the name component to derive geometry
+            const partEntity = { name: part, type: 'Component' };
+            await this.addMember(partEntity);
+        }
+        // Ensure the ship itself is the conductor/lead
+        if (this.members.length > 0) {
+            // Re-add ship as conductor if not present or just ensure influence
+            const shipArtist = new VirtualArtist(ship, this.generator);
+            await shipArtist.prepare();
+            this.members.unshift(shipArtist); 
+            this.conductor = shipArtist;
+            this.baseFreq = shipArtist.keyData.Frequency;
+        }
+    }
+
+    setProgression(progression) {
+        this.progression = progression;
+    }
+
+    generateTrack(name, measures = 8) {
+        // Delegate back to generator with this band's state
+        return this.generator._generateTrackFromBand(this, name, measures);
+    }
+
+    generateWormholeProgression(targetKeyData) {
+        // Generate a progression from Conductor's key (Origin) to Target Key
+        // This is a simplified modulation logic
+        const startFreq = this.baseFreq;
+        const endFreq = targetKeyData.Frequency;
+        
+        // Standard Form: I -> ... -> V_of_Target -> I_Target
+        // For now, simple interpolation of frequencies in steps
+        const steps = 8;
+        const progression = [];
+        for(let i=0; i<steps; i++) {
+            const t = i / (steps - 1);
+            // Linear interpolation of log frequency (pitch)
+            const freq = startFreq * Math.pow(endFreq/startFreq, t);
+            progression.push({ 
+                rootOffset: 0, 
+                intervals: [0, 4, 7], 
+                durationSteps: 16, 
+                keyFreq: freq 
+            });
+        }
+        this.progression = progression;
+    }
+}
 
 export class ThemeGenerator {
     constructor(musicModule) {
@@ -57,6 +269,7 @@ export class ThemeGenerator {
             if (!data) throw new Error("No data returned from CodexLoader");
             this.drumPatterns = {};
             for (const category in data) {
+                if (category === 'meta') continue;
                 if (Array.isArray(data[category])) {
                     data[category].forEach(pattern => this.drumPatterns[pattern.name] = pattern);
                 }
@@ -111,7 +324,10 @@ export class ThemeGenerator {
         const rng = new MusicRNG(seed);
         const palette = this.instrumentPalette[category];
         if (palette && palette.length > 0) return rng.pick(palette);
-        const fallbackMap = { 'kick': 'Drum_Kick', 'snare': 'Drum_Snare', 'hat': 'Drum_HiHat_Closed', 'perc': 'Drum_Cowbell' };
+        const fallbackMap = { 
+            'kick': 'Drum_Kick', 'snare': 'Drum_Snare', 'hat': 'Drum_HiHat_Closed', 'perc': 'Drum_Cowbell',
+            'tom_h': 'Drum_Tom_High', 'tom_l': 'Drum_Tom_Low', 'crash': 'Drum_Crash', 'ride': 'Drum_Ride'
+        };
         return fallbackMap[category] || 'Piano';
     }
 
@@ -124,7 +340,7 @@ export class ThemeGenerator {
 
         const data = this.manifestManager.manifest.samples[instrumentId];
         if (!data) {
-            Logger.warn(`ThemeGenerator: Sample data missing for ''.`);
+            Logger.warn(`ThemeGenerator: Sample data missing for '${instrumentId}'.`);
             return;
         }
 
@@ -155,6 +371,7 @@ export class ThemeGenerator {
                     }
                 }
             }
+            
             this.synth.instrumentEngine.createSyntheticInstrument(instrumentId, targetId, 'low', envelope, role);
         }
     }
@@ -198,182 +415,220 @@ export class ThemeGenerator {
 
     async createMainTheme(activeComponents, gameEngine, forceRegeneration) {
         if (!this.synth) return null;
+        Logger.message("ThemeGenerator: Assembling Virtual Band for Main Theme...");
 
-        const trackName = 'track_main_theme';
-        Logger.message("ThemeGenerator: generating Main Theme...");
-
-        const componentsList = [...activeComponents];
-        if (componentsList.length === 0 && gameEngine) {
-            if (gameEngine.playerCharacter) componentsList.push(gameEngine.playerCharacter);
-            if (gameEngine.playerShip) componentsList.push(gameEngine.playerShip);
-            if (gameEngine.galaxy) componentsList.push(gameEngine.galaxy);
+        const band = new VirtualBand(this);
+        
+        // Add components to band
+        for (const comp of activeComponents) {
+            await band.addMember(comp);
+        }
+        
+        // Fallback if empty
+        if (band.members.length === 0 && gameEngine) {
+             if (gameEngine.playerCharacter) await band.addMember(gameEngine.playerCharacter);
+             if (gameEngine.playerShip) await band.addMember(gameEngine.playerShip);
         }
 
-        const reversedComponents = [...componentsList].reverse();
-        let rhythmEntity = reversedComponents.find(c => c.constructor && c.constructor.name === 'Ship');
-        if (!rhythmEntity) rhythmEntity = reversedComponents.find(c => c.role);
-        if (!rhythmEntity) rhythmEntity = reversedComponents[0];
-
-        const rhythmEntityGeo = this.ensureGeometry(rhythmEntity);
-        if (!rhythmEntityGeo) return null;
-        const rhythm = this._generateRhythm(rhythmEntityGeo);
-        const stepsPerBar = parseInt(rhythm.stepsPerMeasure || 16, 10);
-
-        const baseKeyData = this.geometry.getKey(rhythmEntityGeo.geometry.GeoHarmonics.key);
-        const baseFreq = baseKeyData.Key.Frequency;
-
+        // Generate Progression if needed
         if (!this.currentProgression || forceRegeneration) {
-            const uniqueFreqs = [];
-            const seenKeys = new Set();
-            componentsList.forEach(comp => {
-                const geo = this.ensureGeometry(comp);
-                if (geo && geo.geometry && geo.geometry.GeoHarmonics) {
-                    const keyData = this.geometry.getKey(geo.geometry.GeoHarmonics.key);
-                    if (keyData && !seenKeys.has(keyData.Key.Key)) {
-                        seenKeys.add(keyData.Key.Key);
-                        uniqueFreqs.push(keyData.Key.Frequency);
-                    }
-                }
-            });
-            if (uniqueFreqs.length === 0) uniqueFreqs.push(baseFreq);
-
-            let fullProgression = [];
-            uniqueFreqs.forEach(freq => {
-                fullProgression = fullProgression.concat(this._generateProgression(freq, stepsPerBar));
-            });
-            if (uniqueFreqs.length === 1) {
-                fullProgression = fullProgression.concat(this._generateProgression(uniqueFreqs[0] * 1.5, stepsPerBar));
-            }
-            fullProgression = fullProgression.concat(this._generateProgression(uniqueFreqs[0], stepsPerBar));
-            this.currentProgression = fullProgression;
-            Logger.message(`ThemeGenerator: Progression regenerated with ${uniqueFreqs.length} unique keys.`);
+            // Use conductor's key
+            const baseFreq = band.baseFreq;
+            this.currentProgression = this._generateProgression(baseFreq, band.stepsPerBar);
         }
-        const progression = this.currentProgression;
+        
+        band.setProgression(this.currentProgression);
+        
+        return band.generateTrack('Main Theme');
+    }
 
-        const bpm = 120;
+    async createWormholeRacersTheme() {
+        if (!this.synth) return null;
+        Logger.message("ThemeGenerator: Assembling band for 'Wormhole Racers Theme'...");
+
+        const band = new VirtualBand(this);
+        band.bpm = 160; // Fast tempo
+
+        // Create virtual artists for a synth-heavy, driving theme
+        await band.addMember({ name: 'Arp Bass', type: 'Component', geometry: { Chi: 8 } }); // Bass role
+        await band.addMember({ name: 'Racing Lead', type: 'Component', geometry: { GeometryNumber: 1, Chi: 6 } }); // Lead role
+        await band.addMember({ name: 'Stab Chords', type: 'Component', geometry: { GeometryNumber: 7 } }); // Rhythm/Groove role
+        await band.addMember({ name: 'Glitch Pad', type: 'Component', geometry: { GeometryNumber: 13 } }); // Eccentric/Support role
+        await band.addDrummer({ name: 'Racer Drums', kitType: 'Electronic' });
+
+        // Use a simple, driving progression
+        const progression = this._generateProgression(band.baseFreq, 16, ['I', 'I', 'IV', 'V']);
+        band.setProgression(progression);
+
+        return band.generateTrack('Wormhole Racers Theme', 16);
+    }
+
+    async createT13NETheme() {
+        if (!this.synth) return null;
+        Logger.message("ThemeGenerator: Assembling orchestra for 'T13NE Theme'...");
+
+        const band = new VirtualBand(this);
+        band.bpm = 90; // Slower, more epic tempo
+
+        // Create virtual artists from the engine name for an orchestral feel
+        await band.addMember({ name: 'Terminal', type: 'Component', geometry: { GeometryNumber: 9 } }); // Bass/Groove
+        await band.addMember({ name: 'Thirteen', type: 'Component', geometry: { GeometryNumber: 13 } }); // Eccentric
+        await band.addMember({ name: 'Narrative', type: 'Component', geometry: { GeometryNumber: 2 } }); // Support
+        await band.addMember({ name: 'Engine', type: 'Component', geometry: { GeometryNumber: 1 } }); // Lead
+        await band.addDrummer({ name: 'Orchestral Percussion', kitType: 'Orchestral' });
+
+        const progression = this._generateProgression(band.baseFreq, 32, ['I', 'V', 'vi', 'IV']);
+        band.setProgression(progression);
+
+        return band.generateTrack('Terminal Thirteen Narrative Game Engine Theme', 8);
+    }
+
+    async createWormholeTheme(ship, originSystem, targetSystem) {
+        if (!this.synth) return null;
+        Logger.message(`ThemeGenerator: Assembling Wormhole Band for ${ship.name}...`);
+
+        const band = new VirtualBand(this);
+        await band.assembleFromShip(ship);
+
+        // Determine Target Key
+        // Assuming system objects have geometry or we calculate it from name
+        const targetGeo = this.ensureGeometry(targetSystem);
+        const targetKeyData = this.geometry.getKey(targetGeo.geometry.GeoHarmonics.key);
+
+        band.generateWormholeProgression(targetKeyData);
+        
+        return band.generateTrack(`Wormhole: ${originSystem.name} to ${targetSystem.name}`);
+    }
+
+    async createPactTheme(pact) {
+        if (!this.synth || !pact.members) return null;
+        Logger.message(`ThemeGenerator: Assembling Pact Band for ${pact.name}...`);
+
+        const band = new VirtualBand(this);
+        for (const member of pact.members) {
+            await band.addMember(member);
+        }
+
+        // Pacts should have a stable progression based on the Pact's own geometry if available
+        // For now, use conductor (leader)
+        const baseFreq = band.baseFreq;
+        band.setProgression(this._generateProgression(baseFreq, 16));
+
+        return band.generateTrack(`${pact.name} Theme`);
+    }
+
+    checkRouteStability(originSystem, targetSystem) {
+        // Check if a valid musical progression exists between the two systems
+        if (!this.geometry) return 0;
+        const oGeo = this.ensureGeometry(originSystem);
+        const tGeo = this.ensureGeometry(targetSystem);
+        
+        const oKey = this.geometry.getKey(oGeo.geometry.GeoHarmonics.key);
+        const tKey = this.geometry.getKey(tGeo.geometry.GeoHarmonics.key);
+
+        // Simple check: Are they harmonically compatible?
+        // For now, return 1.0 (stable) to allow travel, but this is where 
+        // circle of fifths logic would restrict routes.
+        // e.g. if Math.abs(oKey.index - tKey.index) > 2 return 0.5 (Unstable)
+        return 1.0; 
+    }
+
+    _generateTrackFromBand(band, name, measures = 8) {
+        // Replaces old createMainTheme logic but uses band properties
+        const progression = band.progression;
+        const conductor = band.conductor;
+        
+        // Ensure drum patterns are loaded
+        if (!this.drumPatterns || Object.keys(this.drumPatterns).length === 0) {
+             // This is async in original, but we are deep in sync call now. 
+             // Ideally patterns are preloaded. Assuming they are or we skip.
+        }
+
+        const seedString = band.members.map(m => m.name).join('|');
+        const rng = new MusicRNG(seedString);
+
+        // Rhythm
+        const rhythmSeed = rng.next();
+        const stepsPerBar = band.stepsPerBar;
+        const measures = band.progression.length > 0 ? band.progression.length : measures;
+        const totalSteps = measures * stepsPerBar;
+        
+        // Use conductor for rhythm generation base
+        const rhythmEntity = conductor ? conductor.entity : { name: 'default' };
+        const rhythm = this._generateRhythm(rhythmEntity, progression, stepsPerBar, rhythmSeed, measures);
+
+        const bpm = band.bpm;
         const beatTime = 60 / bpm;
         const voices = [];
-
-        const drumSeed = (rhythmEntityGeo.name || 'default') + (rhythmEntityGeo.origin || '');
-        const drumKit = {
-            'v_kick': this._getProceduralInstrument('kick', drumSeed),
-            'v_snare': this._getProceduralInstrument('snare', drumSeed + '_snare'),
-            'v_hat': this._getProceduralInstrument('hat', drumSeed + '_hat'),
-            'v_crash': this._getProceduralInstrument('perc', drumSeed + '_crash'),
-            'v_ride': this._getProceduralInstrument('perc', drumSeed + '_ride'),
-            'v_perc': this._getProceduralInstrument('perc', drumSeed + '_perc')
-        };
-
-        for (const id of Object.values(drumKit)) {
-            await this._ensureInstrumentDefined(id);
+        
+        // Generate Drums for each drummer
+        // If no drummers, create a default one from the conductor/rhythmEntity
+        if (band.drummers.length === 0) {
+            const defaultDrummer = new VirtualDrummer(rhythmEntity || { name: 'Default Drummer' }, this);
+            // We don't await prepare here to avoid async issues in this sync-ish flow, 
+            // but ideally we should. For now, rely on lazy loading or previous ensures.
+            band.drummers.push(defaultDrummer);
         }
 
-        rhythm.events.forEach(evt => {
-            let v = voices.find(v => v.id === evt.voice);
-            if (!v) {
-                // Robust drum detection: Force isDrum if ID suggests it
-                v = { id: evt.voice, name: evt.voice, instrument: drumKit[evt.voice], sequence: [], mute: false, isDrum: true };
-                voices.push(v);
-            }
-            v.sequence.push(evt);
+        band.drummers.forEach((drummer, dIndex) => {
+            const drumPart = this._generateDrumPart(drummer, progression, stepsPerBar, measures, rng);
+            
+            // Merge drum voices
+            drumPart.voices.forEach(dv => {
+                // Unique ID per drummer to allow multiple kits
+                const uniqueId = `${dv.id}_${dIndex}`;
+                voices.push({
+                    ...dv,
+                    id: uniqueId,
+                    name: `${drummer.name} ${dv.name}`,
+                    loopLength: drumPart.totalSteps
+                });
+            });
         });
 
-        const components = reversedComponents;
-        let bassAssigned = false;
-        let rhythmAssigned = false;
-        const usedInstruments = new Set();
+        // Band Members
+        const bandContext = {
+            bassAssigned: false,
+            leadAssigned: false,
+            baseFreq: band.baseFreq,
+            beatTime: beatTime,
+            rhythm: rhythm,
+            progression: progression,
+            rng: rng
+        };
 
-        for (let index = 0; index < Math.min(components.length, 6); index++) {
-            await new Promise(r => setTimeout(r, 0));
-            const source = components[index];
-            if (!source || !source.name) continue;
+        const artistStepsPerBar = band.polyrhythms.get(artist.name) || band.stepsPerBar;
+        const totalArtistSteps = measures * artistStepsPerBar;
 
-            const entity = this.ensureGeometry(source);
-            let { role: naturalRole, chi } = this._getInstrumentFromGeometry(entity.geometry, usedInstruments);
+        band.members.forEach((artist, index) => {
+            // Use artist's instrument
+            const instrument = artist.instrumentId;
+            const voiceId = `v_${artist.name.replace(/[^a-zA-Z0-9]/g, '_')}_${index}`;
             
-            let finalRole = naturalRole;
-
-            if (index === 0) {
-                finalRole = 'lead';
-            } else {
-                if (!bassAssigned && naturalRole !== 'bass') {
-                     if (index < 3 && (naturalRole === 'pad' || naturalRole === 'lead')) finalRole = 'bass';
-                }
-                if (!rhythmAssigned && naturalRole !== 'rhythm') {
-                    if (index < 3 && naturalRole === 'pad') finalRole = 'rhythm';
-                }
-            }
-
-            if (finalRole === 'lead' && index > 0) finalRole = 'pad';
-            if (finalRole === 'bass') {
-                if (bassAssigned) finalRole = 'pad';
-                else bassAssigned = true;
-            }
-            if (finalRole === 'rhythm') rhythmAssigned = true;
-
-            const instrument = this._getInstrumentForRole(finalRole, entity.geometry, usedInstruments);
-            const geoParams = { chi };
-            await this._ensureInstrumentDefined(instrument, null, null, geoParams);
-
-            const voiceId = `v_${source.name.replace(/[^a-zA-Z0-9]/g, '_')}_`;
-            let events = [];
-
-            if (finalRole === 'bass') {
-                events = this._generateBassline(rhythm, entity, progression, baseFreq / 4, beatTime);
-            } else if (finalRole === 'pad') {
-                const h = this._generateHarmonics(rhythm, entity, progression, baseFreq);
-                events = h.pad;
-            } else if (finalRole === 'rhythm') {
-                const h = this._generateHarmonics(rhythm, entity, progression, baseFreq);
-                events = h.guitar;
-            } else {
-                const motif = this.getCharacterComposition(entity);
-                if (motif) events = this._motifToHarmonizedEvents(motif, voiceId, beatTime, progression, baseFreq);
-            }
+            const events = this._generateArtistPart(artist, bandContext, voiceId);
 
             if (events.length > 0) {
                 voices.push({
                     id: voiceId,
-                    name: `${entity.name} ()`,
+                    name: `${artist.name} (${artist.personality})`,
                     instrument: instrument,
                     sequence: events,
                     mute: false,
-                    isDrum: false
+                    isDrum: false,
+                    loopLength: totalArtistSteps // Ensure all voices loop with the track
                 });
             }
-        }
-
-        const measures = Math.max(4, progression.length);
-        const totalSteps = measures * stepsPerBar;
+        });
 
         voices.forEach(v => {
             if (!v.isDrum && (v.id.includes('kick') || v.id.includes('snare') || v.id.includes('hat') || v.id.includes('perc') || v.id.includes('ride') || v.id.includes('crash'))) {
                 v.isDrum = true;
             }
-            if (v.isDrum) v.loopLength = stepsPerBar || 16; // Explicitly set loop length with fallback
-
-            if (!v.isDrum && v.sequence && v.sequence.length > 0) {
-                const motifEvents = [...v.sequence];
-                v.sequence = [];
-                if (motifEvents.length === 0) return;
-
-                const lastEventStep = motifEvents[motifEvents.length - 1].step;
-                const loopLength = Math.ceil((lastEventStep + 1) / stepsPerBar) * stepsPerBar;
-
-                let currentStep = 0;
-                while (currentStep < totalSteps) {
-                    motifEvents.forEach(evt => {
-                        if (currentStep + evt.step < totalSteps) {
-                            v.sequence.push({ ...evt, step: currentStep + evt.step });
-                        }
-                    });
-                    currentStep += loopLength;
-                }
-            }
+            // Removed manual loop unrolling as T13NE_Music now handles loopLength
         });
 
         return {
-            name: 'Main Theme',
+            name: name,
             bpm: bpm,
             timeSignature: rhythm.timeSignature,
             measures: measures,
@@ -381,6 +636,200 @@ export class ThemeGenerator {
             patternLength: stepsPerBar,
             voices: voices
         };
+    }
+
+    _generateDrumPart(drummer, progression, globalStepsPerBar, measures, rng) {
+        const voices = [];
+        const events = [];
+        
+        // Determine kit instruments
+        const seed = drummer.name;
+        const kit = {
+            'kick': this._getProceduralInstrument('kick', seed),
+            'snare': this._getProceduralInstrument('snare', seed + '_snare'),
+            'hat': this._getProceduralInstrument('hat', seed + '_hat'),
+            'crash': this._getProceduralInstrument('crash', seed + '_crash'),
+            'ride': this._getProceduralInstrument('ride', seed + '_ride'),
+            'perc': this._getProceduralInstrument('perc', seed + '_perc'),
+            'tom_h': this._getProceduralInstrument('tom_h', seed + '_tomh'),
+            'tom_l': this._getProceduralInstrument('tom_l', seed + '_toml')
+        };
+
+        // Polyrhythm check
+        const drummerStepsPerBar = drummer.stepsPerBar || globalStepsPerBar;
+        const totalSteps = measures * drummerStepsPerBar;
+
+        // Base pattern generation (reuse existing logic but adapted)
+        // We generate a base rhythm for the drummer's time signature
+        const baseRhythm = this._generateRhythm(drummer.entity, progression, drummerStepsPerBar, rng.next(), measures);
+        
+        // Apply dynamic states per measure
+        for (let m = 0; m < measures; m++) {
+            const measureStartStep = m * drummerStepsPerBar;
+            const isFill = (m + 1) % 4 === 0; // Natural phrase end
+            
+            let state = 'groove';
+            const roll = rng.next();
+            
+            if (drummer.dropOutChance > roll) state = 'rest';
+            else if (drummer.soloChance > roll) state = 'solo';
+            else if (isFill && drummer.fillFrequency > rng.next()) state = 'fill';
+
+            if (state === 'rest') continue;
+
+            // Extract events for this measure from base rhythm
+            const measureEvents = baseRhythm.events.filter(e => e.step >= measureStartStep && e.step < measureStartStep + drummerStepsPerBar);
+
+            if (state === 'groove') {
+                events.push(...measureEvents);
+            } else if (state === 'fill') {
+                // Keep first half of groove, fill second half
+                const halfBar = measureStartStep + (drummerStepsPerBar / 2);
+                events.push(...measureEvents.filter(e => e.step < halfBar));
+                
+                // Generate fill
+                const fillSteps = drummerStepsPerBar / 2;
+                for (let i = 0; i < fillSteps; i++) {
+                    const step = halfBar + i;
+                    // Simple roll logic
+                    const inst = i % 2 === 0 ? 'snare' : (i % 4 === 0 ? 'tom_l' : 'tom_h');
+                    events.push({ voice: inst, step: step, freq: 200, duration: 0.1, velocity: 0.8 + (i/fillSteps)*0.2 });
+                }
+                // Crash on 1 of next bar (handled by next iteration or post-loop)
+            } else if (state === 'solo') {
+                // Generate wild solo
+                for (let i = 0; i < drummerStepsPerBar; i++) {
+                    if (rng.next() > 0.3) { // Density
+                        const insts = ['snare', 'kick', 'tom_h', 'tom_l', 'crash'];
+                        const inst = rng.pick(insts);
+                        events.push({ voice: inst, step: measureStartStep + i, freq: 200, duration: 0.1, velocity: 0.7 + rng.next() * 0.3 });
+                    }
+                }
+            }
+        }
+
+        // Map events to voices
+        const voiceMap = new Map();
+        events.forEach(evt => {
+            // Map v_kick etc from _generateRhythm to local kit keys if needed
+            let kitKey = evt.voice.replace('v_', '');
+            if (!kit[kitKey]) kitKey = 'perc'; // Fallback
+
+            if (!voiceMap.has(kitKey)) {
+                voiceMap.set(kitKey, {
+                    id: kitKey,
+                    name: kitKey,
+                    instrument: kit[kitKey],
+                    sequence: [],
+                    mute: false,
+                    isDrum: true,
+                    loopLength: totalSteps
+                });
+            }
+            voiceMap.get(kitKey).sequence.push(evt);
+        });
+
+        return {
+            voices: Array.from(voiceMap.values()),
+            totalSteps: totalSteps
+        };
+    }
+
+    _generateArtistPart(artist, context, voiceId) {
+        const { personality } = artist;
+        const { rhythm, progression, baseFreq, beatTime, rng } = context;
+        let events = [];
+
+        // NEW: Check for MIDI motif first
+        if (artist.midiMotif) {
+            Logger.message(`Artist ${artist.name} is using an assimilated MIDI motif.`);
+            events = this._midiMotifToHarmonizedEvents(artist.midiMotif, voiceId, beatTime, progression, baseFreq);
+            return events;
+        }
+
+        let playStyle = personality;
+        
+        // Force bass if needed and artist is capable (groove or support or explicitly bass role)
+        if (!context.bassAssigned && (artist.role === 'bass' || personality === 'groove')) {
+            playStyle = 'bass';
+            context.bassAssigned = true;
+        }
+        else if (personality === 'lead' || artist.role === 'lead') {
+            if (!context.leadAssigned) {
+                playStyle = 'lead';
+                context.leadAssigned = true;
+            } else {
+                playStyle = 'solo'; 
+            }
+        }
+
+        if (playStyle === 'bass') {
+            events = this._generateBassline(rhythm, artist.entity, progression, baseFreq / 4, beatTime, artist.geoNum);
+        } else if (playStyle === 'lead' || playStyle === 'solo') {
+            const motif = this.getCharacterComposition(artist.entity);
+            if (motif) {
+                const isSolo = playStyle === 'solo';
+                events = this._motifToHarmonizedEvents(motif, voiceId, beatTime, progression, baseFreq, isSolo);
+            }
+        } else if (playStyle === 'support') {
+            const h = this._generateHarmonics(rhythm, artist.entity, progression, baseFreq);
+            const isPad = artist.instrumentId.toLowerCase().includes('pad') || artist.instrumentId.toLowerCase().includes('string');
+            events = isPad ? h.pad : h.guitar;
+            events.forEach(e => e.voice = voiceId);
+        } else if (playStyle === 'groove') {
+            const h = this._generateHarmonics(rhythm, artist.entity, progression, baseFreq);
+            events = h.guitar;
+            events.forEach(e => e.voice = voiceId);
+        } else if (playStyle === 'eccentric') {
+            const motif = this.getCharacterComposition(artist.entity);
+            if (motif) {
+                events = this._motifToHarmonizedEvents(motif, voiceId, beatTime, progression, baseFreq * 2, false);
+                events = events.filter((_, i) => i % 2 === 0); // Sparse/Weird
+            }
+        } else {
+             const h = this._generateHarmonics(rhythm, artist.entity, progression, baseFreq);
+             events = h.guitar;
+             events.forEach(e => e.voice = voiceId);
+        }
+        return events;
+    }
+
+    _midiMotifToHarmonizedEvents(midiMotif, voiceId, beatTime, progression, globalBaseFreq) {
+        // This is a complex task. A simple implementation:
+        // 1. Find the lowest MIDI note in the motif to use as a relative root.
+        // 2. For each note in the motif, calculate its interval from that root.
+        // 3. For each step in our progression, transpose the motif so its root matches the chord root.
+        const events = [];
+        if (!midiMotif.length) return events;
+
+        const baseMidiNote = midiMotif.reduce((min, note) => Math.min(min, note.midi), 127);
+        let currentStep = 0;
+        const totalProgressionSteps = progression.reduce((sum, chord) => sum + chord.durationSteps, 0);
+        
+        let chordIndex = 0;
+        while (currentStep < totalProgressionSteps) {
+            for (const note of midiMotif) {
+                 if (currentStep >= totalProgressionSteps) break;
+
+                // Find the current chord
+                while (chordIndex < progression.length -1 && currentStep >= progression[chordIndex].durationSteps * (chordIndex + 1)) {
+                    chordIndex++;
+                }
+                const activeChord = progression[chordIndex];
+                const currentRootFreq = activeChord.keyFreq || globalBaseFreq;
+                
+                const midiInterval = note.midi - baseMidiNote;
+                const chordRootInterval = activeChord.rootOffset;
+                
+                const finalInterval = chordRootInterval + midiInterval;
+                const freq = currentRootFreq * Math.pow(2, finalInterval / 12);
+                const duration = note.duration; // Assuming MIDI duration is in seconds
+                
+                events.push({ voice: voiceId, step: currentStep, freq: freq, duration: duration, velocity: note.velocity });
+                currentStep += Math.ceil(duration / beatTime * 4); // Convert duration in seconds to steps
+            }
+        }
+        return events;
     }
 
     _motifToTrackEvents(motif, voiceId, beatTime, pitchShiftSemitones = 0) {
@@ -404,7 +853,7 @@ export class ThemeGenerator {
         return events;
     }
 
-    _motifToHarmonizedEvents(motif, voiceId, beatTime, progression, globalBaseFreq) {
+    _motifToHarmonizedEvents(motif, voiceId, beatTime, progression, globalBaseFreq, isSolo = false) {
         const events = [];
         let currentStep = 0;
         const totalProgressionSteps = progression.reduce((sum, chord) => sum + chord.durationSteps, 0);
@@ -424,8 +873,9 @@ export class ThemeGenerator {
                 }
                 if (chordIndex >= chordMap.length) chordIndex = 0;
                 const activeChord = chordMap[chordIndex].chord;
+                const currentRootFreq = activeChord.keyFreq || globalBaseFreq;
                 const harmonizedPitch = activeChord.rootOffset + note.interval;
-                const freq = globalBaseFreq * Math.pow(2, harmonizedPitch / 12);
+                const freq = currentRootFreq * Math.pow(2, harmonizedPitch / 12);
                 const durationSteps = Math.ceil(note.duration * 4);
 
                 events.push({
@@ -433,7 +883,7 @@ export class ThemeGenerator {
                     step: currentStep,
                     freq: freq,
                     duration: note.duration * beatTime,
-                    velocity: 0.7
+                    velocity: isSolo ? 0.9 : 0.7
                 });
                 currentStep += durationSteps;
             }
@@ -470,85 +920,155 @@ export class ThemeGenerator {
         return count || 4;
     }
 
-    _generateRhythm(ship = null) {
+    _generateRhythm(ship = null, progression = [], stepsPerBar = 16, seed = null, minMeasures = 4) {
         const name = ship ? ship.name : 'default';
-        const rng = new MusicRNG(name);
+        const rng = new MusicRNG(seed || name);
         const targetBeats = this._countSyllablesInPhrase(name);
 
-        if (this.drumPatterns) {
+        const getPattern = (targetLength = null) => {
+            if (!this.drumPatterns) return null;
             const targetGenre = ship ? (ship.origin === 'Core' ? "6" : "3") : "3";
             const targetEra = ship ? (ship.techLevel > 5 ? "3" : "2") : "2";
             let matchingKeys = Object.keys(this.drumPatterns).filter(k => {
                 const p = this.drumPatterns[k];
-                // Prioritize matching the beat count (time signature numerator)
                 const tsNumerator = p.timeSignature ? p.timeSignature[0] : 4;
-                if (tsNumerator === targetBeats) return true;
                 
+                // If a target length is specified (e.g. 16 steps), filter for it.
+                if (targetLength && (parseInt(p.length, 10) || 16) !== targetLength) return false;
+
+                if (tsNumerator === targetBeats) return true;
+
                 if (!p.tags) return false;
                 return (p.tags.genres && p.tags.genres.includes(targetGenre)) || (p.tags.eras && p.tags.eras.includes(targetEra));
             });
             const pool = matchingKeys.length > 0 ? matchingKeys : Object.keys(this.drumPatterns);
             const patternKey = rng.pick(pool);
-            const pattern = this.drumPatterns[patternKey];
-            if (pattern) {
-                const events = [];
-                const tracks = pattern.tracks || {};
-                const getTrack = (name) => {
-                    const key = Object.keys(tracks).find(k => k.toLowerCase() === name.toLowerCase());
-                    return key ? tracks[key] : [];
-                };
-                getTrack('kick').forEach(step => events.push({ voice: 'v_kick', step: parseInt(step, 10), freq: 100, duration: 0.1, velocity: 0.9 }));
-                getTrack('snare').forEach(step => events.push({ voice: 'v_snare', step: parseInt(step, 10), freq: 261.63, duration: 0.1, velocity: 0.8 }));
-                getTrack('hat').forEach(step => events.push({ voice: 'v_hat', step: parseInt(step, 10), freq: 261.63, duration: 0.05, velocity: 0.6 }));
-                if (pattern.style === 'Rock' || pattern.style === 'Action') {
-                    events.push({ voice: 'v_crash', step: 0, freq: 100, duration: 1.5, velocity: 0.8 });
-                }
-                return {
-                    events,
-                    style: pattern.style,
-                    timeSignature: pattern.timeSignature || [4, 4],
-                    stepsPerMeasure: parseInt(pattern.length || 16, 10)
-                };
+            return this.drumPatterns[patternKey];
+        };
+
+        let pattern = getPattern(stepsPerBar);
+        let currentKeyFreq = null;
+        
+        const finalEvents = [];
+        let currentStepOffset = 0;
+        const sourceProgression = (progression && progression.length > 0) ? progression : [{ durationSteps: stepsPerBar }];
+        const measuresToGenerate = Math.max(minMeasures, sourceProgression.length);
+
+        for (let barIndex = 0; barIndex < measuresToGenerate; barIndex++) {
+            const chord = sourceProgression[barIndex % sourceProgression.length];
+            const oneBarEvents = [];
+            const stepsInBar = chord.durationSteps || stepsPerBar;
+
+            // Check for fill condition (end of 4-bar phrase)
+            const isFill = (barIndex + 1) % 4 === 0 && barIndex > 0;
+
+            if (chord.keyFreq && chord.keyFreq !== currentKeyFreq) {
+                currentKeyFreq = chord.keyFreq;
+                const newPattern = getPattern(stepsInBar);
+                if (newPattern) pattern = newPattern;
             }
+
+            if (pattern) {
+                const tracks = pattern.tracks || {};
+                const getTrack = (name) => tracks[Object.keys(tracks).find(k => k.toLowerCase() === name.toLowerCase())] || [];
+                
+                const kicks = getTrack('kick');
+                const snares = getTrack('snare');
+                const hats = getTrack('hat');
+
+                if (kicks.length > 0 || snares.length > 0 || hats.length > 0) {
+                    const patternLength = parseInt(pattern.length, 10) || 16;
+
+                    // Loop the pattern to fill the entire duration of the bar (stepsInBar)
+                    for (let i = 0; i < stepsInBar; i += patternLength) {
+                        // If it's a fill bar, we might stop the pattern early to insert the fill
+                        const fillStartStep = stepsInBar - (stepsInBar / 4); // Last quarter of the bar
+
+                        kicks.forEach(step => {
+                            const s = parseInt(step, 10);
+                            if (i + s < stepsInBar) {
+                                if (!isFill || (i + s) < fillStartStep) {
+                                    oneBarEvents.push({ voice: 'v_kick', step: i + s, freq: 100, duration: 0.1, velocity: 0.9 });
+                                }
+                            }
+                        });
+                        snares.forEach(step => {
+                            const s = parseInt(step, 10);
+                            if (i + s < stepsInBar) {
+                                if (!isFill || (i + s) < fillStartStep) {
+                                    oneBarEvents.push({ voice: 'v_snare', step: i + s, freq: 261.63, duration: 0.1, velocity: 0.8 });
+                                }
+                            }
+                        });
+                        hats.forEach(step => {
+                            const s = parseInt(step, 10);
+                            if (i + s < stepsInBar) {
+                                if (!isFill || (i + s) < fillStartStep) {
+                                    oneBarEvents.push({ voice: 'v_hat', step: i + s, freq: 261.63, duration: 0.05, velocity: 0.6 });
+                                }
+                            }
+                        });
+                    }
+
+                    if ((pattern.style === 'Rock' || pattern.style === 'Action') && barIndex % 4 === 0) {
+                        oneBarEvents.push({ voice: 'v_crash', step: 0, freq: 100, duration: 1.5, velocity: 0.8 });
+                    }
+                }
+            } 
+            
+            // Generate Fill if needed
+            if (isFill) {
+                const fillStartStep = stepsInBar - (stepsInBar / 4);
+                const fillSteps = stepsInBar - fillStartStep;
+                for (let i = 0; i < fillSteps; i++) {
+                    const step = fillStartStep + i;
+                    // Simple fill: snare roll or tom run
+                    if (i % 2 === 0) {
+                        oneBarEvents.push({ voice: 'v_snare', step: step, freq: 150, duration: 0.1, velocity: 0.8 + (i/fillSteps)*0.2 });
+                    } else {
+                        oneBarEvents.push({ voice: 'v_perc', step: step, freq: 200, duration: 0.1, velocity: 0.7 + (i/fillSteps)*0.2 });
+                    }
+                }
+            }
+
+            oneBarEvents.forEach(evt => {
+                // Apply subtle velocity variation to ensure every event is unique.
+                // This prevents audio engine optimizations/bugs from dropping identical repeated notes.
+                const variation = 1.0 - (rng.next() * 0.15);
+                finalEvents.push({ ...evt, step: currentStepOffset + evt.step, velocity: (evt.velocity || 0.9) * variation });
+            });
+
+            currentStepOffset += stepsInBar;
         }
-        const events = [];
-        const kickPattern = rng.pick(['four-on-floor', 'breakbeat', 'driving']);
-        
-        // Procedural fallback: Use targetBeats to determine length (4 steps per beat)
-        const lengthSteps = Math.max(16, targetBeats * 4); 
-        
-        for (let i = 0; i < lengthSteps; i++) {
-            let kick = false;
-            if (kickPattern === 'four-on-floor' && i % 4 === 0) kick = true;
-            else if (kickPattern === 'driving' && (i % 2 === 0 || i % 8 === 7)) kick = true;
-            else if (kickPattern === 'breakbeat' && (i % 8 === 0 || i % 8 === 5)) kick = true;
-            if (kick) events.push({ voice: 'v_kick', step: i, freq: 100, duration: 0.1, velocity: 0.8 });
-            if (i % 8 === 4) events.push({ voice: 'v_snare', step: i, freq: 100, duration: 0.1, velocity: 0.7 });
-            const hatDensity = ship && ship.components ? 0.5 + (ship.components.length * 0.05) : 0.5;
-            if (i % 2 === 0 || (rng.next() < hatDensity && i % 2 !== 0)) events.push({ voice: 'v_hat', step: i, freq: 261.63, duration: 0.05, velocity: 0.5 });
-            if (kickPattern === 'driving' && i % 2 !== 0) events.push({ voice: 'v_ride', step: i, freq: 100, duration: 0.8, velocity: 0.6 });
-        }
-        events.push({ voice: 'v_crash', step: 0, freq: 100, duration: 1.5, velocity: 0.9 });
-        return { events, style: 'Electronic', timeSignature: [targetBeats, 4], stepsPerMeasure: lengthSteps };
+
+        const stepsPerMeasure = pattern ? parseInt(pattern.length || 16, 10) : Math.max(16, targetBeats * 4);
+        const timeSig = pattern ? (pattern.timeSignature || [4, 4]) : [stepsPerMeasure / 4, 4];
+
+        return { events: finalEvents, style: pattern ? pattern.style : 'Electronic', timeSignature: timeSig, stepsPerMeasure: stepsPerMeasure, totalSteps: currentStepOffset };
     }
 
-    _generateProgression(baseFreq, stepsPerBar = 16) {
+    _generateProgression(baseFreq, stepsPerBar = 16, specificProgression = null) {
         const progressions = [
             ['I', 'V', 'vi', 'IV'], ['I', 'vi', 'IV', 'V'], ['ii', 'V', 'I', 'vi'], ['vi', 'IV', 'I', 'V'], ['I', 'IV', 'V', 'IV']
         ];
         const romanChords = this.geometry && this.geometry.RomanChords ? this.geometry.RomanChords : [];
         if (!romanChords.length) return [{ rootOffset: 0, intervals: [0, 4, 7], durationSteps: 64 }];
         const rng = new MusicRNG(baseFreq);
-        const sourceProgressions = (this.progressions && this.progressions.length > 0) ? this.progressions : progressions.map(p => ({ data: { Progression: p } }));
-        const selectedItem = rng.pick(sourceProgressions);
-        const progChords = selectedItem.data ? selectedItem.data.Progression : selectedItem;
+        
+        let progChords = specificProgression;
+        if (!progChords) {
+            const sourceProgressions = (this.progressions && this.progressions.length > 0) ? this.progressions : progressions.map(p => ({ data: { Progression: p } }));
+            const selectedItem = rng.pick(sourceProgressions);
+            progChords = selectedItem.data ? selectedItem.data.Progression : selectedItem;
+        }
+
         return progChords.map(name => {
             const chordDef = romanChords.find(c => c.Name === name) || romanChords[0];
-            return { name: chordDef.Name, rootOffset: chordDef.Notes[0], intervals: chordDef.Notes, durationSteps: stepsPerBar };
+            return { name: chordDef.Name, rootOffset: chordDef.Notes[0], intervals: chordDef.Notes, durationSteps: stepsPerBar, keyFreq: baseFreq };
         });
     }
 
-    _generateBassline(rhythm, ship, progression, keyRootFreq, beatTime) {
+    _generateBassline(rhythm, ship, progression, keyRootFreq, beatTime, styleOverride = null) {
         const events = [];
         if (!this.bassPatterns || Object.keys(this.bassPatterns).length === 0) {
             let currentStepOffset = 0;
@@ -566,16 +1086,24 @@ export class ThemeGenerator {
         if (style === 'Driving') style = 'Action';
         if (style === 'BasicRock') style = 'Rock';
         if (style === 'FourOnFloor') style = 'Electronic';
+        if (typeof styleOverride === 'number') {
+             if ([5, 7, 9].includes(styleOverride)) style = 'Funk'; 
+             else if ([2, 4, 8].includes(styleOverride)) style = 'Soul';
+             else style = 'Rock';
+        }
         let patternKey = Object.keys(this.bassPatterns).find(k => this.bassPatterns[k].style === style) || 'Rock';
         const pattern = this.bassPatterns[patternKey];
         const intervals = pattern.intervals || [0];
         let currentStepOffset = 0;
         progression.forEach(chord => {
-            const chordRootFreq = keyRootFreq * Math.pow(2, chord.rootOffset / 12);
+            const currentRootFreq = chord.keyFreq || keyRootFreq;
+            const chordRootFreq = currentRootFreq * Math.pow(2, chord.rootOffset / 12);
             const stepsInChord = chord.durationSteps;
             const getFreq = (interval) => chordRootFreq * Math.pow(2, interval / 12);
             if (pattern.strategy === 'kick_lock') {
-                const kickSteps = rhythm.events.filter(e => e.voice === 'v_kick' && e.step < stepsInChord).map(e => e.step);
+                // Fix: Filter using absolute steps (currentStepOffset) then map to relative
+                const kickSteps = rhythm.events.filter(e => e.voice === 'v_kick' && e.step >= currentStepOffset && e.step < currentStepOffset + stepsInChord)
+                                               .map(e => e.step - currentStepOffset);
                 kickSteps.forEach(step => {
                     events.push({ voice: 'v_bass', step: currentStepOffset + step, freq: getFreq(0), duration: 0.2, velocity: 0.9 });
                 });
@@ -632,7 +1160,8 @@ export class ThemeGenerator {
         let currentStepOffset = 0;
         progression.forEach(chord => {
             const stepsInChord = chord.durationSteps;
-            const chordFreqs = chord.intervals.map(semitone => keyRootFreq * Math.pow(2, semitone / 12));
+            const currentRootFreq = chord.keyFreq || keyRootFreq;
+            const chordFreqs = chord.intervals.map(semitone => currentRootFreq * Math.pow(2, semitone / 12));
             if (pattern.guitar) {
                 pattern.guitar.steps.forEach(step => {
                     if (step >= stepsInChord) return;
@@ -644,13 +1173,15 @@ export class ThemeGenerator {
                 if (pattern.pad.behavior === 'sidechain') {
                     padEvents.push({ voice: 'v_pad', step: currentStepOffset, freq: chordFreqs[0], duration: 4.0, velocity: 0.6 });
                 } else if (pattern.pad.behavior === 'snare_mirror') {
-                    const snareSteps = rhythm.events.filter(e => e.voice === 'v_snare' && e.step < stepsInChord).map(e => e.step);
+                    const snareSteps = rhythm.events.filter(e => e.voice === 'v_snare' && e.step >= currentStepOffset && e.step < currentStepOffset + stepsInChord)
+                                                    .map(e => e.step - currentStepOffset);
                     snareSteps.forEach(step => {
                         const noteFreq = chordFreqs[1] || chordFreqs[0];
                         padEvents.push({ voice: 'v_pad', step: currentStepOffset + step, freq: noteFreq, duration: pattern.pad.duration, velocity: pattern.pad.velocity });
                     });
                 } else if (pattern.pad.behavior === 'kick_lock') {
-                    const kickSteps = rhythm.events.filter(e => e.voice === 'v_kick' && e.step < stepsInChord).map(e => e.step);
+                    const kickSteps = rhythm.events.filter(e => e.voice === 'v_kick' && e.step >= currentStepOffset && e.step < currentStepOffset + stepsInChord)
+                                                   .map(e => e.step - currentStepOffset);
                     kickSteps.forEach(step => {
                         const noteFreq = chordFreqs[0] / 2;
                         padEvents.push({ voice: 'v_pad', step: currentStepOffset + step, freq: noteFreq, duration: pattern.pad.duration, velocity: pattern.pad.velocity });
@@ -933,5 +1464,54 @@ export class ThemeGenerator {
         const keyNumber = notes.indexOf(note.slice(0, -1));
         if (keyNumber < 0) return 440;
         return 440 * Math.pow(2, ((keyNumber + ((octave - 4) * 12)) - 9) / 12);
+    }
+
+    async _generateLoopFromVoice(voice, loopDurationMeasures = 2) {
+        if (!this.synth || !voice || !voice.sequence || !voice.sequence.length) return null;
+
+        const bpm = 120; // Or get from track
+        const beatTime = 60 / bpm;
+        const stepTime = beatTime / 4;
+        const stepsPerBar = 16; // Or get from track
+        const loopDurationSteps = loopDurationMeasures * stepsPerBar;
+        const loopDurationSeconds = loopDurationSteps * stepTime;
+
+        const offlineCtx = new OfflineAudioContext(1, this.synth.ctx.sampleRate * loopDurationSeconds, this.synth.ctx.sampleRate);
+        const loopGain = offlineCtx.createGain();
+        loopGain.connect(offlineCtx.destination);
+
+        Logger.message(`Generating loop for '${voice.name}' of ${loopDurationSeconds.toFixed(2)}s...`);
+
+        // Schedule all notes from the voice sequence that fall within the loop duration
+        voice.sequence.forEach(note => {
+            if (note.step < loopDurationSteps) {
+                const startTime = note.step * stepTime;
+                const freq = note.freq || this._noteToFreq(note.note);
+                // Use the instrument engine from the main synth to play into the offline context
+                this.synth.instrumentEngine.playNote(
+                    voice.instrument,
+                    freq,
+                    offlineCtx.currentTime + startTime,
+                    note.duration,
+                    note.velocity,
+                    loopGain // Play into the offline context's gain node
+                );
+            }
+        });
+
+        try {
+            const renderedBuffer = await offlineCtx.startRendering();
+            const loopId = `loop_${voice.id}_${Date.now()}`;
+            
+            this.synth.buffers.set(loopId, renderedBuffer);
+            
+            this.manifestManager.addToManifest('loops', loopId, { source: 'synthetic', duration: renderedBuffer.duration, bpm: bpm });
+
+            Logger.message(`Successfully generated and saved loop '${loopId}'.`);
+            return { id: loopId, buffer: renderedBuffer };
+        } catch (e) {
+            Logger.error(`Failed to render loop for voice '${voice.name}'`, e);
+            return null;
+        }
     }
 }

@@ -803,7 +803,7 @@ export class InstrumentEngine {
     }
 
     applyEnvelope(env, osc, inst, time, duration, velocity, workletNode = null, onCleanup = null) {
-        const gainScale = 0.4; // Boosted from 0.1 for better audibility across multiple gain stages
+        const gainScale = 0.25; // Reduced to prevent mix overcrowding and ducking
         const scaledVelocity = velocity * gainScale;
 
         const attack = inst.attack || 0.02;
@@ -993,6 +993,11 @@ export class InstrumentEngine {
             if (immediate) v.cleanup();
             else v.kill();
         });
+    }
+
+    stopVoices(id) {
+        const toKill = this.activeVoices.filter(v => v.id === id);
+        toKill.forEach(v => v.kill());
     }
 
     _managePolyphony(id, now) {

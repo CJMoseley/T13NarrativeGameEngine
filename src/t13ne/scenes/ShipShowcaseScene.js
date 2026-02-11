@@ -262,6 +262,27 @@ export class ShipShowcaseScene extends Scene {
             return;
         }
 
+        // NEW: Change component meshes from wireframe to solid before fading in the hull
+        if (this.componentMeshes && this.componentMeshes.length > 0) {
+            this.componentMeshes.forEach(mesh => {
+                // Dispose of old basic material
+                if (mesh.material) {
+                    mesh.material.dispose();
+                }
+                if (this.hullMesh && this.hullMesh.material) {
+                    // Use the hull's shader material for a unified look
+                    mesh.material = this.hullMesh.material;
+                } else {
+                    // Fallback to a standard solid material if no hull was generated
+                    mesh.material = new THREE.MeshStandardMaterial({
+                        color: 0x888888, // A neutral grey
+                        roughness: 0.8,
+                        metalness: 0.5
+                    });
+                }
+            });
+        }
+
         // Prepare for fade-in
         shipGroup.traverse(child => {
             if (child.isMesh) {

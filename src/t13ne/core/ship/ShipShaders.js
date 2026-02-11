@@ -1,25 +1,30 @@
 import * as THREE from 'three';
 
 export const racingLiveryShader = {
-    uniforms: {
-        time: { value: 0 },
-        opacity: { value: 1.0 },
-        color1: { value: new THREE.Color(0xd40000) }, // Racing Red
-        color2: { value: new THREE.Color(0xffffff) }, // White Stripe
-        color3: { value: new THREE.Color(0x111111) },  // Carbon/Black Detail
-        noiseSeed: { value: Math.random() * 100 },
-        patternType: { value: 0 } // 0: Stripe, 1: Camo, 2: Checker
-    },
+    uniforms: THREE.UniformsUtils.merge([
+        THREE.UniformsLib.lights,
+        {
+            time: { value: 0 },
+            opacity: { value: 1.0 },
+            color1: { value: new THREE.Color(0xd40000) }, // Racing Red
+            color2: { value: new THREE.Color(0xffffff) }, // White Stripe
+            color3: { value: new THREE.Color(0x333333) },  // Dark Grey Detail (Lighter than black)
+            noiseSeed: { value: Math.random() * 100 },
+            patternType: { value: 0 } // 0: Stripe, 1: Camo, 2: Checker
+        }
+    ]),
     vertexShader: `
         varying vec3 vPos;
         varying vec3 vNormal;
         void main() {
             vPos = position;
-            vNormal = normalize(normalMatrix * normal);
+            vNormal = normalize( mat3( modelMatrix ) * normal ); // Use world normal
             gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
         }
     `,
     fragmentShader: `
+        #include <common>
+        #include <lights_pars_begin>
         varying vec3 vPos;
         varying vec3 vNormal;
         uniform float time;
@@ -80,23 +85,24 @@ export const racingLiveryShader = {
                 color = mix(color, color2, circle);
             }
             
-            // Simple lighting
+            // Cell Shading Lighting
             vec3 lightDir = normalize(vec3(0.5, 1.0, 0.8));
-            float diff = max(dot(vNormal, lightDir), 0.0);
+            #if NUM_DIR_LIGHTS > 0
+                lightDir = normalize(directionalLights[0].direction);
+            #endif
+            float NdotL = max(dot(vNormal, lightDir), 0.0);
+            
+            float levels = 3.0;
+            float diffuse = floor(NdotL * levels + 0.5) / levels;
+            vec3 lighting = vec3(0.5) + vec3(0.5) * diffuse; // Ambient + Diffuse
             
             // Specular (Glossy clear coat)
             vec3 viewDir = vec3(0.0, 0.0, 1.0); // Approximate view from front/top
             vec3 reflectDir = reflect(-lightDir, vNormal);
-            float spec = pow(max(dot(viewDir, reflectDir), 0.0), 64.0);
-
-            // Rim lighting (Fresnel)
-            float rim = 1.0 - max(dot(viewDir, vNormal), 0.0);
-            rim = pow(rim, 3.0);
+            float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32.0) * 0.5; // Quantized spec? No, keep smooth for gloss
 
             // Combine
-            vec3 finalColor = color * (diff * 0.7 + 0.3);
-            finalColor += vec3(1.0) * spec * 0.8; // White specular highlight
-            finalColor += color * rim * 0.5; // Rim glow
+            vec3 finalColor = color * lighting + vec3(spec);
 
             // Animation: "Showroom Shine"
             // A band of light moving across the ship
@@ -113,13 +119,16 @@ export const racingLiveryShader = {
 };
 
 export const industrialLiveryShader = {
-    uniforms: {
-        time: { value: 0 },
-        opacity: { value: 1.0 },
-        baseColor: { value: new THREE.Color(0x888888) },
-        noiseSeed: { value: Math.random() * 100 },
-        scale: { value: 1.0 }
-    },
+    uniforms: THREE.UniformsUtils.merge([
+        THREE.UniformsLib.lights,
+        {
+            time: { value: 0 },
+            opacity: { value: 1.0 },
+            baseColor: { value: new THREE.Color(0x667788) }, // Blue-ish grey
+            noiseSeed: { value: Math.random() * 100 },
+            scale: { value: 1.0 }
+        }
+    ]),
     vertexShader: `
         varying vec3 vPos;
         varying vec3 vNormal;
@@ -129,7 +138,7 @@ export const industrialLiveryShader = {
         
         void main() {
             vPos = position;
-            vNormal = normalize(normalMatrix * normal);
+            vNormal = normalize( mat3( modelMatrix ) * normal ); // Pass world normal
             vObjectNormal = normalize(normal); // Object space normal for triplanar
             vWorldPosition = (modelMatrix * vec4(position, 1.0)).xyz;
             vUv = uv;
@@ -138,230 +147,281 @@ export const industrialLiveryShader = {
         }
     `,
     fragmentShader: `
-        varying vec3 vPos;
+        #include <common>
+        #include <lights_pars_begin>
         varying vec3 vNormal;
-        varying vec3 vObjectNormal;
         varying vec3 vWorldPosition;
         uniform vec3 baseColor;
-        uniform float noiseSeed;
-
-        // --- Noise Functions ---
-        // Replaced unstable hash with standard pseudo-random hash to prevent flickering
-        float hash(vec2 p) {
-            p = fract(p * vec2(123.34, 456.21));
-            p += dot(p, p + 45.32);
-            return fract(p.x * p.y);
-        }
-        float hash(float n) { return fract(sin(n) * 43758.5453123); }
-
-        float noise(vec2 x) {
-            vec2 i = floor(x);
-            vec2 f = fract(x);
-            float a = hash(i);
-            float b = hash(i + vec2(1.0, 0.0));
-            float c = hash(i + vec2(0.0, 1.0));
-            float d = hash(i + vec2(1.0, 1.0));
-            vec2 u = f * f * (3.0 - 2.0 * f);
-            return mix(a, b, u.x) + (c - a) * u.y * (1.0 - u.x) + (d - b) * u.x * u.y;
-        }
-
-        // Voronoi for panels: returns vec3(minDist, cellID, distanceToEdge)
-        vec3 voronoi(in vec2 x) {
-            vec2 n = floor(x);
-            vec2 f = fract(x);
-            vec2 mg, mr;
-            float md = 8.0;
-            for (int j = -1; j <= 1; j++) {
-                for (int i = -1; i <= 1; i++) {
-                    vec2 g = vec2(float(i), float(j));
-                    vec2 o = vec2(hash(n + g), hash(n + g + vec2(13.0))); 
-                    vec2 r = g + o - f;
-                    float d = dot(r, r);
-                    if (d < md) {
-                        md = d;
-                        mr = r;
-                        mg = g;
-                    }
-                }
-            }
-            
-            // Second pass for distance to edge
-            float md2 = 8.0;
-            for (int j = -1; j <= 1; j++) {
-                for (int i = -1; i <= 1; i++) {
-                    vec2 g = vec2(float(i), float(j));
-                    vec2 o = vec2(hash(n + g), hash(n + g + vec2(13.0)));
-                    vec2 r = g + o - f;
-                    if (dot(mr - r, mr - r) > 0.00001) {
-                        md2 = min(md2, dot(0.5 * (mr + r), normalize(r - mr)));
-                    }
-                }
-            }
-            return vec3(md, hash(n + mg), md2);
-        }
-
-        // Antialiased step function for procedural lines
-        float aastep(float threshold, float value) {
-            float afwidth = length(vec2(dFdx(value), dFdy(value))) * 0.70710678;
-            return smoothstep(threshold - afwidth, threshold + afwidth, value);
-        }
+        uniform float opacity;
 
         void main() {
-            // Triplanar mapping to avoid UV seams on procedural geometry
-            // Use Object Normal to ensure texture sticks to ship during rotation
-            vec3 blend = abs(vObjectNormal);
-            blend /= dot(blend, vec3(1.0));
-            
-            // Scale for panels
-            float panelScale = 0.02; // Large panels (50 units) to prevent moire
-            
-            // Simple Grid Noise instead of Voronoi/FBM to eliminate moire
-            // Use World Position for continuous pattern across components
-            vec3 p = vWorldPosition * panelScale;
-            vec3 cell = floor(p + 0.001); // Offset to avoid 0 artifacts
-            vec3 local = fract(p + 0.001);
-            
-            // Distance to edge (Manhattan-ish for boxy look)
-            vec3 d = min(local, 1.0 - local);
-            float distToEdge = min(min(d.x, d.y), d.z);
-            
-            float cellID = hash(cell.xy) + hash(cell.yz) + hash(cell.zx);
-
-            // 1. Metalness (Stepped Noise)
-            float baseMetal = 0.1;
-            float shinyMetal = 0.7;
-            
-            float metalness = baseMetal + (shinyMetal - baseMetal) * step(0.8, hash(cellID));
-            float roughness = 0.7 - 0.3 * metalness;
-
-            // 3. Occlusion (Depth)
-            // Darken edges of panels
-            // Use aastep for stable, non-flickering edges
-            float occlusion = aastep(0.03, distToEdge);
-            
-            // Rust/Grime (Musgrave-ish via FBM)
-            // Triplanar rust to ensure it paints the surface correctly
-            // Simplified rust noise
-            float rustNoise = noise(vWorldPosition.xy * 0.01 + noiseSeed);
-            float rust = smoothstep(0.6, 0.8, rustNoise);
-
-            // 4. Color
-            vec3 finalColor = baseColor;
-            // Vary panel color slightly
-            finalColor *= (0.9 + 0.2 * hash(cellID));
-            
-            // Industrial colors (Grey/Orange)
-            vec3 accentColor = vec3(0.7, 0.7, 0.75); // Neutral Grey/White Accent (No Orange)
-            if (hash(cellID + 1.0) > 0.85) finalColor = accentColor; // Occasional accent panel
-
-            // Apply Rust
-            vec3 rustColor = vec3(0.3, 0.35, 0.4); // Blue-ish oxidation/grime
-            finalColor = mix(finalColor, rustColor, rust * 0.8);
-            roughness = mix(roughness, 1.0, rust);
-            metalness = mix(metalness, 0.0, rust);
-
-            // 5. Normal/Bump (Rivets)
-            // Simple fake lighting based on normal
-            vec3 lightDir = normalize(vec3(1.0, 1.0, 1.0));
-            float NdotL = max(dot(vNormal, lightDir), 0.0);
-            
-            // Rivets at corners (where distToEdge is small but not too small?)
-            // Simplified: just use voronoi centers or corners
-            // Actually, let's just use the panel edge for a bevel highlight
-            float edgeHighlight = 1.0 - aastep(0.01, distToEdge);
-            
-            vec3 lighting = vec3(0.1) + vec3(1.0) * NdotL; // Ambient + Diffuse
-            // Cell Shading (Quantize lighting) to reduce flicker
-            float levels = 3.0;
-            lighting = floor(lighting * levels + 0.5) / levels; // Add bias to prevent flooring to black
-
-            // Specular
+            vec3 normal = normalize(vNormal);
             vec3 viewDir = normalize(cameraPosition - vWorldPosition);
-            vec3 halfDir = normalize(lightDir + viewDir);
-            float NdotH = max(dot(vNormal, halfDir), 0.0);
-            float spec = pow(NdotH, (1.0 - roughness) * 128.0) * metalness;
+            vec3 lightDir = normalize(vec3(0.5, 1.0, 0.8));
+            #if NUM_DIR_LIGHTS > 0
+                lightDir = normalize(directionalLights[0].direction);
+            #endif
 
-            gl_FragColor = vec4(finalColor * lighting * occlusion + vec3(spec), 1.0);
+            float NdotL = max(dot(normal, lightDir), 0.0);
+            
+            // Cell Shading
+            float levels = 4.0;
+            float diffuse = floor(NdotL * levels + 0.5) / levels;
+            vec3 lighting = vec3(0.4) + vec3(0.6) * diffuse;
+            
+            vec3 halfDir = normalize(lightDir + viewDir);
+            float NdotH = max(dot(normal, halfDir), 0.0);
+            float spec = pow(NdotH, 32.0) * 0.2;
+
+            gl_FragColor = vec4(baseColor * lighting + vec3(spec), opacity);
         }
     `
 };
 
 export const boxyLiveryShader = {
-    uniforms: {
-        time: { value: 0 },
-        opacity: { value: 1.0 },
-        baseColor: { value: new THREE.Color(0x667788) },
-        noiseSeed: { value: Math.random() * 100 },
-        scale: { value: 1.0 }
-    },
+    uniforms: THREE.UniformsUtils.merge([
+        THREE.UniformsLib.lights,
+        {
+            time: { value: 0 },
+            opacity: { value: 1.0 },
+            baseColor: { value: new THREE.Color(0x667788) },
+            noiseSeed: { value: Math.random() * 100 },
+            scale: { value: 1.0 }
+        }
+    ]),
     vertexShader: industrialLiveryShader.vertexShader, // Reuse vertex shader
     fragmentShader: `
+        #include <common>
+        #include <lights_pars_begin>
+        varying vec3 vNormal;
+        uniform vec3 baseColor;
+        uniform float opacity;
+
+        void main() {
+            vec3 normal = normalize(vNormal);
+            vec3 lightDir = normalize(vec3(0.5, 1.0, 0.8));
+            #if NUM_DIR_LIGHTS > 0
+                lightDir = normalize(directionalLights[0].direction);
+            #endif
+            
+            float NdotL = max(dot(normal, lightDir), 0.0);
+            
+            // Cell Shading
+            float levels = 3.0;
+            float diffuse = floor(NdotL * levels + 0.5) / levels;
+            vec3 lighting = vec3(0.5) + vec3(0.5) * diffuse;
+
+            gl_FragColor = vec4(baseColor * lighting, opacity);
+        }
+    `
+};
+
+export const organicLiveryShader = {
+    uniforms: THREE.UniformsUtils.merge([
+        THREE.UniformsLib.lights,
+        {
+            time: { value: 0 },
+            opacity: { value: 1.0 },
+            baseColor: { value: new THREE.Color(0x88aa88) }, // Organic Green/Grey
+            noiseSeed: { value: Math.random() * 100 },
+            scale: { value: 1.0 }
+        }
+    ]),
+    vertexShader: `
+        varying vec3 vPos;
+        varying vec3 vNormal;
+        varying vec3 vWorldPosition;
+        void main() {
+            vPos = position;
+            vNormal = normalize( mat3( modelMatrix ) * normal );
+            vWorldPosition = (modelMatrix * vec4(position, 1.0)).xyz;
+            gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(position, 1.0);
+        }
+    `,
+    fragmentShader: `
+        #include <common>
+        #include <lights_pars_begin>
         varying vec3 vPos;
         varying vec3 vNormal;
         varying vec3 vWorldPosition;
         uniform vec3 baseColor;
         uniform float noiseSeed;
+        uniform float opacity;
 
-        float hash(vec2 p) {
-            p = fract(p * vec2(123.34, 456.21));
-            p += dot(p, p + 45.32);
-            return fract(p.x * p.y);
+        // Simple 3D Noise
+        float hash(vec3 p) {
+            p = fract(p * 0.3183099 + .1);
+            p *= 17.0;
+            return fract(p.x * p.y * p.z * (p.x + p.y + p.z));
         }
 
-        float rectNoise(vec2 p, float scale) {
-            vec2 grid = floor(p * scale);
-            return hash(grid + noiseSeed);
-        }
-
-        // Antialiased step function for procedural lines
-        float aastep(float threshold, float value) {
-            float afwidth = fwidth(value) * 0.5;
-            return smoothstep(threshold - afwidth, threshold + afwidth, value);
+        float noise(vec3 x) {
+            vec3 i = floor(x);
+            vec3 f = fract(x);
+            f = f * f * (3.0 - 2.0 * f);
+            return mix(mix(mix(hash(i + vec3(0,0,0)), hash(i + vec3(1,0,0)), f.x),
+                           mix(hash(i + vec3(0,1,0)), hash(i + vec3(1,1,0)), f.x), f.y),
+                       mix(mix(hash(i + vec3(0,0,1)), hash(i + vec3(1,0,1)), f.x),
+                           mix(hash(i + vec3(0,1,1)), hash(i + vec3(1,1,1)), f.x), f.y), f.z);
         }
 
         void main() {
-            // Triplanar blending
-            vec3 blend = abs(vNormal);
-            blend /= dot(blend, vec3(1.0));
-
-            // Generate overlapping rectangle patterns
-            float scale1 = 0.5;
-            float scale2 = 1.2;
+            vec3 normal = normalize(vNormal);
             
-            // Layer 1: Large blocks
-            float nX1 = rectNoise(vPos.yz, scale1);
-            float nY1 = rectNoise(vPos.xz, scale1);
-            float nZ1 = rectNoise(vPos.xy, scale1);
-            float layer1 = nX1 * blend.x + nY1 * blend.y + nZ1 * blend.z;
-
-            // Layer 2: Small details
-            float nX2 = rectNoise(vPos.yz + 10.0, scale2);
-            float nY2 = rectNoise(vPos.xz + 10.0, scale2);
-            float nZ2 = rectNoise(vPos.xy + 10.0, scale2);
-            float layer2 = nX2 * blend.x + nY2 * blend.y + nZ2 * blend.z;
-
-            // Combine for greyscale variation
-            float pattern = mix(layer1, layer2, 0.4);
+            // Organic Texture (Cellular/Veiny)
+            float n = noise(vPos * 0.5 + noiseSeed);
+            float n2 = noise(vPos * 2.0 + noiseSeed);
             
-            // Color mapping
-            vec3 col = baseColor * (0.6 + 0.8 * pattern);
-            
-            // Panel lines (edges of grid)
-            vec2 gridUV = fract(vPos.xy * scale1); // Simplified edge check
-            // Better edge check using triplanar
-            float edgeX = aastep(0.95, fract(vPos.y * scale1)) + aastep(0.95, fract(vPos.z * scale1));
-            float edgeY = aastep(0.95, fract(vPos.x * scale1)) + aastep(0.95, fract(vPos.z * scale1));
-            float edgeZ = aastep(0.95, fract(vPos.x * scale1)) + aastep(0.95, fract(vPos.y * scale1));
-            float isEdge = max(edgeX * blend.x, max(edgeY * blend.y, edgeZ * blend.z));
-            
-            col = mix(col, col * 0.5, aastep(0.5, isEdge));
+            vec3 col = baseColor;
+            col = mix(col, col * 0.8, n * 0.5); // Base variation
+            col = mix(col, col * 1.2, n2 * 0.2); // Detail
 
-            // Lighting
-            vec3 lightDir = normalize(vec3(1.0, 1.0, 1.0));
-            float NdotL = max(dot(vNormal, lightDir), 0.0);
-            vec3 lighting = vec3(0.2) + vec3(0.8) * NdotL;
+            // Cell Shading
+            vec3 lightDir = normalize(vec3(0.5, 1.0, 0.8));
+            #if NUM_DIR_LIGHTS > 0
+                lightDir = normalize(directionalLights[0].direction);
+            #endif
+            float NdotL = max(dot(normal, lightDir), 0.0);
+            float levels = 3.0;
+            float diffuse = floor(NdotL * levels + 0.5) / levels;
+            vec3 lighting = vec3(0.4) + vec3(0.6) * diffuse; // High ambient for organic
+
+            // Rim Light (Subsurface scattering fake)
+            vec3 viewDir = normalize(cameraPosition - vWorldPosition);
+            float rim = 1.0 - max(dot(viewDir, normal), 0.0);
+            rim = smoothstep(0.6, 1.0, rim);
+            vec3 rimColor = baseColor * 1.5; // Glowing edge
+
+            // Specular (Wet look)
+            vec3 halfDir = normalize(lightDir + viewDir);
+            float NdotH = max(dot(normal, halfDir), 0.0);
+            float spec = pow(NdotH, 32.0) * 0.5; // Broad, wet highlight
+
+            gl_FragColor = vec4((col * lighting) + (rimColor * rim * 0.5) + vec3(spec), opacity);
+        }
+    `
+};
+
+export const miningLiveryShader = {
+    uniforms: THREE.UniformsUtils.merge([
+        THREE.UniformsLib.lights,
+        {
+            time: { value: 0 },
+            opacity: { value: 1.0 },
+            baseColor: { value: new THREE.Color(0x8B4513) }, // Rust/Brown default
+            secondaryColor: { value: new THREE.Color(0x5F7F7F) }, // Lighter Slate
+            noiseSeed: { value: Math.random() * 100 },
+            scale: { value: 1.0 }
+        }
+    ]),
+    vertexShader: industrialLiveryShader.vertexShader,
+    fragmentShader: `
+        #include <common>
+        #include <lights_pars_begin>
+        varying vec3 vPos;
+        varying vec3 vNormal;
+        varying vec3 vWorldPosition;
+        uniform vec3 baseColor;
+        uniform vec3 secondaryColor;
+        uniform float noiseSeed;
+        uniform float opacity;
+
+        float hash(vec3 p) {
+            p = fract(p * 0.3183099 + .1);
+            p *= 17.0;
+            return fract(p.x * p.y * p.z * (p.x + p.y + p.z));
+        }
+
+        void main() {
+            vec3 normal = normalize(vNormal);
+            vec3 lightDir = normalize(vec3(0.5, 1.0, 0.8));
+            #if NUM_DIR_LIGHTS > 0
+                lightDir = normalize(directionalLights[0].direction);
+            #endif
+
+            // Grime and Rust Noise
+            float n = hash(floor(vPos * 2.0 + noiseSeed));
+            float dirt = hash(vPos * 5.0 + noiseSeed);
+            
+            vec3 col = baseColor;
+            
+            // Hazard Stripes or Industrial Blocks
+            if (n > 0.7) col = secondaryColor;
+            if (n > 0.9) col = vec3(0.8, 0.6, 0.1); // Safety Yellow/Orange patches
+
+            // Heavy Wear
+            float wear = smoothstep(0.4, 0.8, dirt);
+            col = mix(col, vec3(0.2), wear * 0.8); // Grime
+            
+            // Lighting (Rough, Matte)
+            float NdotL = max(dot(normal, lightDir), 0.0);
+            float levels = 3.0;
+            float diffuse = floor(NdotL * levels + 0.5) / levels;
+            vec3 lighting = vec3(0.3) + vec3(0.7) * diffuse;
 
             gl_FragColor = vec4(col * lighting, opacity);
+        }
+    `
+};
+
+export const metallicLiveryShader = {
+    uniforms: THREE.UniformsUtils.merge([
+        THREE.UniformsLib.lights,
+        {
+            time: { value: 0 },
+            opacity: { value: 1.0 },
+            baseColor: { value: new THREE.Color(0xCCCCCC) }, // Silver/Chrome
+            roughness: { value: 0.3 },
+            metalness: { value: 1.0 },
+            noiseSeed: { value: Math.random() * 100 },
+            scale: { value: 1.0 }
+        }
+    ]),
+    vertexShader: industrialLiveryShader.vertexShader,
+    fragmentShader: `
+        #include <common>
+        #include <lights_pars_begin>
+        varying vec3 vPos;
+        varying vec3 vNormal;
+        varying vec3 vWorldPosition;
+        uniform vec3 baseColor;
+        uniform float roughness;
+        uniform float metalness;
+        uniform float noiseSeed;
+        uniform float opacity;
+
+        float hash(vec3 p) {
+            p = fract(p * 0.3183099 + .1);
+            p *= 17.0;
+            return fract(p.x * p.y * p.z * (p.x + p.y + p.z));
+        }
+
+        void main() {
+            vec3 normal = normalize(vNormal);
+            vec3 viewDir = normalize(cameraPosition - vWorldPosition);
+            vec3 lightDir = normalize(vec3(0.5, 1.0, 0.8));
+            #if NUM_DIR_LIGHTS > 0
+                lightDir = normalize(directionalLights[0].direction);
+            #endif
+
+            // Panel variation in shininess
+            float panel = hash(floor(vPos * 0.5 + noiseSeed));
+            float localRough = roughness + (panel * 0.2);
+            
+            // Lighting
+            float NdotL = max(dot(normal, lightDir), 0.0);
+            
+            // Specular (High for metallic)
+            vec3 halfDir = normalize(lightDir + viewDir);
+            float NdotH = max(dot(normal, halfDir), 0.0);
+            float spec = pow(NdotH, (1.0 - localRough) * 128.0) * metalness;
+
+            // Reflection approximation (Environment map would be better, but simple rim for now)
+            float rim = 1.0 - max(dot(viewDir, normal), 0.0);
+            vec3 reflection = baseColor * pow(rim, 2.0) * 0.5;
+
+            vec3 finalColor = baseColor * (0.2 + 0.8 * NdotL) + vec3(spec) + reflection;
+            gl_FragColor = vec4(finalColor, opacity);
         }
     `
 };

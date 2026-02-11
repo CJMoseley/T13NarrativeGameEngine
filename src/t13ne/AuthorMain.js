@@ -89,6 +89,20 @@ class AuthorMain {
     }
 
     /**
+     * Generates and saves the main intro sequence themes.
+     */
+    async generateIntroThemes() {
+        const music = T13NE.getModule('Music');
+        if (music) {
+            await music.createWormholeRacersTheme();
+            await music.createT13NETheme();
+            Logger.message("AuthorMain: Intro themes generated and saved.");
+        } else {
+            Logger.warn("AuthorMain: Music module not loaded, cannot generate themes.");
+        }
+    }
+
+    /**
      * Simple navigation helper for tools.
      * @param {string} toolName 
      */

@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { CSG } from 'three-csg-ts';
 import { ShipComponent } from './ShipComponent.js';
 import { COMPONENT_COLORS, getCompProps } from './ShipUtils.js';
-import { racingLiveryShader, industrialLiveryShader, boxyLiveryShader } from './ShipShaders.js';
+import { racingLiveryShader, industrialLiveryShader, boxyLiveryShader, organicLiveryShader, miningLiveryShader, metallicLiveryShader } from './ShipShaders.js';
 
 export class ShipAssembler {
     constructor(componentFactory, hullGenerator, greebleGenerator, wiringGenerator, gameEngine) {
@@ -280,124 +280,119 @@ export class ShipAssembler {
             );
         });
 
-        let hullGeometry = this.hullGenerator.generate(shipComponents, effectiveStyle);
-        
-        // Select Shader based on Style
-        let selectedShader = industrialLiveryShader;
-        if (effectiveStyle.method === 'BOXY') {
-            selectedShader = boxyLiveryShader;
-        } else if (effectiveStyle.method === 'RACING') { // Future proofing
-            selectedShader = racingLiveryShader;
-        }
-
-        const hullMaterial = new THREE.ShaderMaterial({
-            uniforms: THREE.UniformsUtils.clone(selectedShader.uniforms),
-            vertexShader: selectedShader.vertexShader,
-            fragmentShader: selectedShader.fragmentShader,
-            extensions: { derivatives: true }
-        });
-        // Randomize livery
-        const livery = components.livery || {};
-        if (hullMaterial.uniforms.noiseSeed) hullMaterial.uniforms.noiseSeed.value = livery.noiseSeed !== undefined ? livery.noiseSeed : Math.random() * 100;
-        if (hullMaterial.uniforms.patternType) hullMaterial.uniforms.patternType.value = livery.patternType !== undefined ? livery.patternType : Math.floor(Math.random() * 3);
-        if (hullMaterial.uniforms.color1) hullMaterial.uniforms.color1.value.setHex(livery.color1 !== undefined ? livery.color1 : Math.random() * 0xffffff);
-        if (hullMaterial.uniforms.color2 && livery.color2 !== undefined) hullMaterial.uniforms.color2.value.setHex(livery.color2);
-        if (hullMaterial.uniforms.color3 && livery.color3 !== undefined) hullMaterial.uniforms.color3.value.setHex(livery.color3);
-        // Map color1 to baseColor for Industrial/Boxy shaders
-        if (hullMaterial.uniforms.baseColor) hullMaterial.uniforms.baseColor.value.setHex(livery.color1 !== undefined ? livery.color1 : 0x888888);
-        
+        let hullGeometry;
         let hullMesh = null;
 
-        // Check if hull generation actually produced geometry (generateSDFHull returns null on failure)
+        if (effectiveStyle.method === 'ORGANIC') {
+            // Organic styles use SDF which creates a single "melty" mesh, avoiding Z-fighting.
+            hullGeometry = this.hullGenerator.generate(shipComponents, effectiveStyle);
+        } else if (effectiveStyle.method === 'SKELETON') {
+            // Skeleton style has no hull, so no Z-fighting.
+            hullGeometry = null;
+        } else {
+            // For ALL OTHER styles (INDUSTRIAL, BOXY, DISC, etc.), use CSG to create a single, manifold hull.
+            // This is the definitive fix for Z-fighting on hard-surface models.
+            console.log(`ShipAssembler: Using unified CSG method for '${effectiveStyle.method}' style.`);
+            let baseCSG = null;
+
+            // 1. Union all non-carve components into a single solid.
+            const structuralComponents = components.filter(c => !(getCompProps(c).usage || '').toLowerCase().includes('carve'));
+            if (structuralComponents.length > 0) {
+                for (const comp of structuralComponents) {
+                    const { type, dims, pos, rot } = getCompProps(comp);
+                    const mesh = this.componentFactory.createProxy(type, dims);
+                    mesh.position.set(...pos);
+                    if (rot) mesh.rotation.set(...rot);
+                    if (comp.scale) {
+                        if (Array.isArray(comp.scale)) mesh.scale.set(...comp.scale);
+                        else mesh.scale.copy(comp.scale);
+                    }
+                    mesh.updateMatrix();
+                    const compCSG = CSG.fromMesh(mesh);
+                    baseCSG = baseCSG ? baseCSG.union(compCSG) : compCSG;
+                }
+            }
+            // 2. Subtract all carving components.
+            const carvingComponents = components.filter(c => (getCompProps(c).usage || '').toLowerCase().includes('carve'));
+            if (baseCSG && carvingComponents.length > 0) {
+                for (const comp of carvingComponents) {
+                    const { type, dims, pos, rot } = getCompProps(comp);
+                    const cutterMesh = this.componentFactory.createProxy(type, dims);
+                    cutterMesh.position.set(...pos);
+                    if (rot) cutterMesh.rotation.set(...rot);
+                    if (comp.scale) cutterMesh.scale.copy(comp.scale);
+                    cutterMesh.updateMatrix();
+                    baseCSG = baseCSG.subtract(CSG.fromMesh(cutterMesh));
+                }
+            }
+
+            if (baseCSG) {
+                hullMesh = CSG.toMesh(baseCSG, new THREE.Matrix4());
+                hullGeometry = hullMesh.geometry;
+            }
+        }
+
         if (hullGeometry && hullGeometry.attributes.position && hullGeometry.attributes.position.count > 0) {
+            // Shader selection logic
+            let selectedShader = industrialLiveryShader;
+            if (effectiveStyle.method === 'BOXY') selectedShader = boxyLiveryShader;
+            else if (effectiveStyle.method === 'RACING') selectedShader = racingLiveryShader;
+            else if (effectiveStyle.method === 'ORGANIC') selectedShader = organicLiveryShader;
+            else if (effectiveStyle.method === 'MINING') selectedShader = miningLiveryShader;
+            else if (effectiveStyle.method === 'METALLIC') selectedShader = metallicLiveryShader;
+
+            const hullMaterial = new THREE.ShaderMaterial({
+                uniforms: THREE.UniformsUtils.clone(selectedShader.uniforms),
+                vertexShader: selectedShader.vertexShader,
+                fragmentShader: selectedShader.fragmentShader,
+                extensions: { derivatives: true },
+                lights: true
+            });
+
+            // Livery application
+            const livery = components.livery || {};
+            if (hullMaterial.uniforms.noiseSeed) hullMaterial.uniforms.noiseSeed.value = livery.noiseSeed !== undefined ? livery.noiseSeed : Math.random() * 100;
+            if (hullMaterial.uniforms.patternType) hullMaterial.uniforms.patternType.value = livery.patternType !== undefined ? livery.patternType : Math.floor(Math.random() * 3);
+            if (hullMaterial.uniforms.color1) hullMaterial.uniforms.color1.value.setHex(livery.color1 !== undefined ? livery.color1 : Math.random() * 0xffffff);
+            if (hullMaterial.uniforms.color2 && livery.color2 !== undefined) hullMaterial.uniforms.color2.value.setHex(livery.color2);
+            if (hullMaterial.uniforms.color3 && livery.color3 !== undefined) hullMaterial.uniforms.color3.value.setHex(livery.color3);
+            if (hullMaterial.uniforms.baseColor) hullMaterial.uniforms.baseColor.value.setHex(livery.color1 !== undefined ? livery.color1 : 0x667788);
+
             // Apply Hull Noise (Dents) only if NOT organic to preserve smooth surfaces
             if (effectiveStyle.method !== 'ORGANIC') {
                 hullGeometry = this.hullGenerator.applyHullNoise(hullGeometry);
             }
 
-            hullMesh = new THREE.Mesh(hullGeometry, hullMaterial);
+            if (!hullMesh) { // If hull was generated by SDF/Convex
+                hullMesh = new THREE.Mesh(hullGeometry, hullMaterial);
+            } else { // If hull was generated by CSG
+                hullMesh.material = hullMaterial;
+            }
+
             hullMesh.name = "procedural_hull";
-            console.log(`ShipFactory: Hull generated successfully. Vertices: ${hullGeometry.attributes.position.count}, Indices: ${hullGeometry.index ? hullGeometry.index.count : 'None'}`);
             shipGroup.add(hullMesh);
-            // Ensure hull is visible and rendered
-            hullMesh.visible = true;
-            
-            // Convert wireframes to solid components to fill gaps in the hull
+
+            // Hide the wireframe proxies now that we have a solid hull
             componentMeshes.forEach(mesh => {
-                mesh.material = hullMaterial.clone(); // Use the same shader as the hull to blend in
-                // Keep them visible to fill gaps
-                mesh.visible = true;
+                mesh.visible = false;
             });
 
             // Brief delay to let the user see the structure (and ensure renderer updates)
             await new Promise(r => setTimeout(r, 2000));
 
-            // 2.5 Carve Surface Details (Thrusters, Cockpit)
-            // MOVED: Carve before greebling so greebles sit on the final surface
-            try {
-                // Ensure matrices are updated before CSG
-                hullMesh.updateMatrix();
-                let hullCSG = CSG.fromMesh(hullMesh);
-                
-                // Carve out space for Engines and Bridge to sit "in" the hull
-                for (const comp of components) {
-                    const { type, dims, pos, rot, usage } = getCompProps(comp);
-
-                    if (usage.includes('Engine') || usage.includes('Bridge') || usage.includes('cockpit') || type === 'cone' || usage.includes('carve')) {
-                        const cutterMesh = this.componentFactory.createProxy(type, dims);
-                        shipGroup.add(cutterMesh); // Add to group to inherit transform
-                        cutterMesh.position.set(...pos);
-                        if (rot) cutterMesh.rotation.set(...rot);
-                        cutterMesh.scale.multiplyScalar(1.02); // Slightly smaller offset for carving
-                        cutterMesh.updateMatrix(); // Update local matrix for CSG
-                        hullCSG = hullCSG.subtract(CSG.fromMesh(cutterMesh));
-                        shipGroup.remove(cutterMesh);
-                    }
-                }
-
-                // 3. Carve interior spaces (also before greebling)
-                if (interior && interior.length > 0) {
-                    interior.forEach(space => {
-                        const spaceMesh = this.componentFactory.createProxy(space.type, space.dims);
-                        shipGroup.add(spaceMesh); // Add to group to inherit transform
-                        spaceMesh.position.set(...(space.pos || [0, 0, 0]));
-                        if (space.rot) {
-                            spaceMesh.rotation.set(...space.rot);
-                        }
-                        spaceMesh.updateMatrixWorld();
-                        const spaceCSG = CSG.fromMesh(spaceMesh);
-                        hullCSG = hullCSG.subtract(spaceCSG);
-                        shipGroup.remove(spaceMesh);
-                    });
-                }
-
-                // Re-create mesh from CSG result
-                const carvedMesh = CSG.toMesh(hullCSG, hullMesh.matrix);
-                hullMesh.geometry.dispose(); // Clean up old geometry
-                hullMesh.geometry = carvedMesh.geometry;
-                
-            } catch (e) {
-                console.warn("ShipFactory: Failed to carve surface details.", e);
-            }
-
             // Apply Geometric Greebling (Rivets, Antennae, Vents, etc.)
-            // Now using the carved hullMesh
-            const greebles = this.greebleGenerator.generate(hullMesh, shipComponents, effectiveStyle, components.symmetryType, components.radialAxis, components.radialCount, components.hullType, components.seed);
-            shipGroup.add(greebles);
-
+            try {
+                const greebles = this.greebleGenerator.generate(hullMesh, shipComponents, effectiveStyle, components.symmetryType, components.radialAxis, components.radialCount, components.hullType, components.seed);
+                shipGroup.add(greebles);
+            } catch (e) {
+                console.error("ShipAssembler: Greeble generation failed.", e);
+            }
         } else {
             console.warn("ShipFactory: Hull generation produced empty geometry or SKELETON style selected.");
             // For SKELETON style or failed hull, we keep proxies visible and maybe add struts
-            
-            // Always convert to solid if hull failed or is skeleton
             componentMeshes.forEach(mesh => {
-                mesh.material = new THREE.MeshStandardMaterial({
-                    color: 0x888888,
-                    roughness: 0.8,
-                    metalness: 0.5,
-                    flatShading: true,
-                    wireframe: false
-                });
+                // Keep as wireframe for the showcase scene to handle the final material.
+                mesh.visible = true;
             });
 
             if (effectiveStyle.method === 'SKELETON') {
