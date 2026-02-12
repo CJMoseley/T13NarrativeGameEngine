@@ -64,6 +64,13 @@ export class OrreryScene extends Scene {
                 dist = (i + 1) * 5.0; // Fallback distribution
             }
             p.orbitalDistance = dist;
+            
+            if (p.moons) {
+                p.moons.forEach((m, j) => {
+                    let mDist = parseFloat(m.orbitalDistance);
+                    if (isNaN(mDist)) m.orbitalDistance = 0.002 + (j * 0.001);
+                });
+            }
         });
     }
 
@@ -477,7 +484,7 @@ export class OrreryScene extends Scene {
 
                     const moonSize = 12; 
                     // Ensure visual clearance: Planet Size + Moon Size + Buffer + Scaled Distance
-                    let moonDist = size + moonSize + 4 + (moon.orbitalDistance * MOON_ORBIT_SCALE);
+                    let moonDist = size + moonSize + 4 + ((moon.orbitalDistance || 0.002) * MOON_ORBIT_SCALE);
                     
                     if (moon.isRing) {
                         moonDist = size + 5 + (mIdx * 2);

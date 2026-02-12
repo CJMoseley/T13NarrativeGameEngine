@@ -97,4 +97,16 @@ export class UIManager {
             this.activeMenu = this.settingsMenu;
         }
     }
+
+    showControls() {
+        if (this.viewManager.uiMessage) {
+            this.viewManager.uiMessage.showMessage({
+                title: 'Controls',
+                template: 'simple_text',
+                data: { message: 'WASD to Move\nMouse to Look\nESC to Pause/Menu' }
+            });
+        } else {
+            Logger.warn("UIManager: Cannot show controls, uiMessage system missing.");
+        }
+    }
 }

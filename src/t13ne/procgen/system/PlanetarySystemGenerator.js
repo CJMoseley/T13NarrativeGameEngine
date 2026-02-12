@@ -107,6 +107,9 @@ export class PlanetarySystemGenerator {
 
             // Safety check for NaN or infinite values
             if (!Number.isFinite(orbitalDistance) || isNaN(orbitalDistance)) orbitalDistance = lastDistance + 0.5;
+            
+            // Enforce minimum separation from previous planet
+            if (orbitalDistance < lastDistance + 0.15) orbitalDistance = lastDistance + 0.15;
 
             const planetRadius = outerSeed * 0.5 + 0.5;
             lastDistance = orbitalDistance;
@@ -599,7 +602,8 @@ export class PlanetarySystemGenerator {
             const moonSeed2 = moonPRNG.nextDouble();
             const nameSeed = moonPRNG.nextDouble();
             
-            const harmonic = harmonics[i];
+            // Clamp harmonic to reasonable range (1-24) to prevent massive resonance values
+            const harmonic = Math.min(Math.max(1, harmonics[i]), 24);
 
             // Radius: Influenced by harmonic
             const sizeScale = 0.01 + (harmonic / 13) * 0.2; // 0.01 to 0.21 planet radius

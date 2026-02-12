@@ -83,6 +83,24 @@ export class SettingsMenu {
             T13NE.setConfig({ audio: { dialogueVolume: val } });
         });
 
+        // --- Controls Settings ---
+        this.contentContainer.appendChild(UI.CE('hr', { style: { margin: '15px 0', borderColor: '#444' } }));
+        this.contentContainer.appendChild(UI.CE('h3', {}, 'Controls Sensitivity'));
+
+        const controlsConfig = T13NE.getConfig().controls || {};
+
+        this.addSlider('Rotation Speed', controlsConfig.rotateSpeed ?? 2.0, (val) => {
+            T13NE.setConfig({ controls: { ...T13NE.getConfig().controls, rotateSpeed: val } });
+        }, 0.1, 5.0, 0.1);
+
+        this.addSlider('Zoom Speed', controlsConfig.zoomSpeed ?? 1.2, (val) => {
+            T13NE.setConfig({ controls: { ...T13NE.getConfig().controls, zoomSpeed: val } });
+        }, 0.1, 5.0, 0.1);
+
+        this.addSlider('Pan Speed', controlsConfig.panSpeed ?? 0.8, (val) => {
+            T13NE.setConfig({ controls: { ...T13NE.getConfig().controls, panSpeed: val } });
+        }, 0.1, 5.0, 0.1);
+
         // --- VOIP Settings ---
         const voipManager = this.uiManager.gameEngine.voipManager;
         if (voipManager && voipManager.remoteStreams.size > 0) {
@@ -102,16 +120,16 @@ export class SettingsMenu {
         }
     }
 
-    addSlider(label, value, onChange) {
+    addSlider(label, value, onChange, min = 0, max = 1, step = 0.01) {
         const container = UI.CE('div', { style: { marginBottom: '10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' } });
         
         const labelEl = UI.CE('label', { style: { flex: '1' } }, label);
         
         const slider = UI.CE('input', {
             type: 'range',
-            min: '0',
-            max: '1',
-            step: '0.01',
+            min: min.toString(),
+            max: max.toString(),
+            step: step.toString(),
             value: value.toString(),
             style: { flex: '2', margin: '0 10px' },
             oninput: (e) => {

@@ -24,6 +24,7 @@ export class GreebleGenerator {
         this.lightWhiteMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
         this.lightAmberMat = new THREE.MeshBasicMaterial({ color: 0xffaa00 });
         this.lightBlueMat = new THREE.MeshBasicMaterial({ color: 0x00aaff });
+        this.solarMat = new THREE.MeshStandardMaterial({ color: 0xc0c0c0, roughness: 0.2, metalness: 1.0, emissive: 0x111111, emissiveIntensity: 0.1 });
 
         // Geometries
         this.rivetGeo = new THREE.SphereGeometry(0.1, 4, 4);
@@ -86,8 +87,20 @@ export class GreebleGenerator {
 
     createSolarPanel() {
         const group = new THREE.Group();
-        const panel = new THREE.Mesh(new THREE.BoxGeometry(1.0, 0.05, 1.5), this.glassMat);
+        
+        // Attachment stem
+        const stem = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.4), this.ventMat);
+        stem.position.y = 0.2;
+        group.add(stem);
+
+        // Panel Array (Antenna style)
+        const panelGeo = new THREE.BoxGeometry(0.6, 0.05, 1.2);
+        const panel = new THREE.Mesh(panelGeo, this.solarMat);
+        panel.position.set(0, 0.5, 0);
+        // Tilt to catch "sun"
+        panel.rotation.x = Math.PI / 6;
         group.add(panel);
+        
         return group;
     }
 
@@ -112,6 +125,8 @@ export class GreebleGenerator {
             intersects = this.raycaster.intersectObject(hullMesh);
         }
         
+        let placed = false;
+
         if (intersects.length > 0) {
             // Prevent placing greebles too close to the symmetry axis to avoid overlapping duplicates
             if (applySymmetry && symmetryType === 'REFLECTIVE' && Math.abs(intersects[0].point.x) < 0.1) {
@@ -207,6 +222,7 @@ export class GreebleGenerator {
                 }
             }
             greebleGroup.add(instance);
+            placed = true;
 
             if (applySymmetry) {
                 if (symmetryType === 'REFLECTIVE' && Math.abs(pos.x) > 0.1) {
@@ -288,6 +304,7 @@ export class GreebleGenerator {
                 }
             }
         }
+        return placed;
     }
 
     generate(hullMesh, components, styleConfig, symmetryType, radialAxis, radialCount = 3, hullType = 'SPINE', seed = 0) {
@@ -442,21 +459,24 @@ export class GreebleGenerator {
                 const shapeType = Math.floor(Math.abs(Math.sin(seed) * 6));
 
                 // FIX: Calculate dimensions based on component type to prevent oversized cockpits
+                // Use dims if available, otherwise scale
                 let refLength, refWidth, refDepth;
+                const d = comp.dims || {};
+                const s = comp.scale || new THREE.Vector3(1,1,1);
 
                 if (['cylinder', 'cone', 'capsule', 'prism', 'truncatedCone'].includes(comp.type)) {
-                    refLength = scale.y; // Long axis
-                    refWidth = scale.x;  // Radius/Width
-                    refDepth = scale.x;  // Radius/Depth
+                    refLength = (d.height || d.length || 1) * s.y;
+                    refWidth = (d.radiusTop !== undefined ? d.radiusTop : (d.radius || 0.5)) * 2 * s.x;
+                    refDepth = (d.radiusBottom !== undefined ? d.radiusBottom : (d.radius || 0.5)) * 2 * s.z;
                 } else {
-                    refLength = scale.z; // Length
-                    refWidth = scale.x;  // Width
-                    refDepth = scale.y;  // Height
+                    refLength = (d.length || d.rootChord || d.depth || 1) * s.z;
+                    refWidth = (d.width || d.span || 1) * s.x;
+                    refDepth = (d.height || 1) * s.y;
                 }
 
                 let canopyLength = refLength * 0.4; 
                 let canopyWidth = refWidth * 0.5;
-                let canopyHeight = Math.min(refDepth * 0.4, 1.2); // Cap height to avoid sticking out too much
+                let canopyHeight = Math.min(refDepth * 0.4, 0.8); // Stricter cap on height
 
                 if (radialAxis === 'y') {
                     const dim = Math.min(canopyWidth, canopyLength);
@@ -506,6 +526,15 @@ export class GreebleGenerator {
                 domeGeo.applyMatrix4(new THREE.Matrix4().makeScale(canopyWidth, canopyHeight, canopyLength));
                 
                 const dome = new THREE.Mesh(domeGeo, this.glassMat);
+
+                // Add Window Frame (Struts)
+                const frameMat = this.ventMat; // Use dark metal for frame
+                // Create a slightly larger version of the dome geometry for the frame
+                const frameGeo = new THREE.WireframeGeometry(domeGeo);
+                const frame = new THREE.LineSegments(frameGeo, frameMat);
+                // Scale it up just a tiny bit to sit on top of the glass
+                frame.scale.setScalar(1.02);
+                dome.add(frame);
                 
                 let offset = -scale.y * 0.1; // Sink slightly
                 if (['dodecahedron', 'icosahedron', 'octahedron', 'tetrahedron'].includes(comp.type)) {
@@ -515,53 +544,26 @@ export class GreebleGenerator {
                     offset = 0.0; // Flush windows
                 }
 
-                // FIX: Use component's local UP vector for raycasting to ensure we hit the top of the component
-                // The comp.rotation is an Euler object, convert to Quaternion for applying to vectors
-                const compQuaternion = new THREE.Quaternion().setFromEuler(rot);
-                const up = new THREE.Vector3(0, 1, 0).applyQuaternion(compQuaternion);
-                const forward = new THREE.Vector3(0, 0, 1).applyQuaternion(compQuaternion);
+                // FIX: Ensure window placement by trying Top, then Front, then Local Up
+                let placed = false;
                 
-                let rayOrigin, rayDir;
+                // 1. Try Top (World Y) - Best for most ships
+                placed = this.placeOnSurface(hullMesh, greebleGroup, pos.clone().add(new THREE.Vector3(0, 20, 0)), new THREE.Vector3(0, -1, 0), dome, true, offset - 0.2, isCentral, symmetryType, radialAxis, radialCount, null, 'forward', true);
                 
-                // Determine constraint. Standard ships (Z-axis) benefit from X-constraint to keep cockpits upright.
-                // Saucers (Y-axis) might have cockpits on the rim or radially, so we should not constrain X.
-                let constraint = 'x';
-                let alignment = 'forward';
-                
-                if (symmetryType === 'RADIAL') {
-                    constraint = null;
-                    alignment = 'center'; // Always orient to center for radial ships (Saucers or Rockets)
+                // 2. Try Front (World Z) - Good for forward facing cockpits
+                if (!placed) {
+                    placed = this.placeOnSurface(hullMesh, greebleGroup, pos.clone().add(new THREE.Vector3(0, 0, 20)), new THREE.Vector3(0, 0, -1), dome, true, offset - 0.2, isCentral, symmetryType, radialAxis, radialCount, null, 'up', true);
                 }
 
-                // If the ship is asymmetrical or the component is a wedge (often used for asymmetrical bridges),
-                // we should not constrain the normal, as the surface is likely sloped.
-                if (symmetryType === 'ASYMMETRICAL' || comp.type === 'wedge') {
-                    constraint = null;
+                // 3. Fallback: Component Local Up
+                if (!placed) {
+                    const compQuaternion = new THREE.Quaternion().setFromEuler(rot);
+                    const up = new THREE.Vector3(0, 1, 0).applyQuaternion(compQuaternion);
+                    // Cast from far away
+                    const rayOrigin = pos.clone().add(up.clone().multiplyScalar(20));
+                    const rayDir = up.clone().negate();
+                    this.placeOnSurface(hullMesh, greebleGroup, rayOrigin, rayDir, dome, true, offset - 0.2, isCentral, symmetryType, radialAxis, radialCount, null, 'forward', true);
                 }
-
-                if (radialAxis === 'y') {
-                    // FIX: Distribute around the rim instead of stacking at the center.
-                    const radius = comp.scale.x * 0.7; // Use 70% of the component's radius to place greebles
-                    const angle = random() * Math.PI * 2;
-                    const x = Math.cos(angle) * radius;
-                    const z = Math.sin(angle) * radius;
-                    rayOrigin = new THREE.Vector3(x, pos.y + 5, z);
-                    rayDir = up.clone().negate();
-                    alignment = new THREE.Vector3(x, 0, z).normalize(); // Face outwards
-                } else {
-                    if (Math.floor((pos.x + pos.y + pos.z) * 100) % 2 === 0) {
-                        rayOrigin = pos.clone().add(up.clone().multiplyScalar(scale.y + 5));
-                        rayDir = up.clone().negate();
-                    } else {
-                        rayOrigin = pos.clone().add(forward.clone().multiplyScalar(scale.z + 5));
-                        rayDir = forward.clone().negate();
-                        if (!isCentral) constraint = null;
-                    }
-                }
-
-                // Use a slightly larger offset to sink it, and ensure we don't constrain normal too strictly if the hull is curved
-                // Added scaleToFit = true (last parameter)
-                this.placeOnSurface(hullMesh, greebleGroup, rayOrigin, rayDir, dome, true, offset - 0.2, isCentral, symmetryType, radialAxis, radialCount, constraint, alignment, true);
             }
 
             // 4. Nav Lights
@@ -761,9 +763,22 @@ export class GreebleGenerator {
             }
 
             // 7. Solar Panels (Wings)
-            if (usage.includes('wing') && random() > 0.7) {
+            if (usage.includes('wing') && random() > 0.6) {
                 const panel = this.createSolarPanel();
-                this.placeOnSurface(hullMesh, greebleGroup, new THREE.Vector3(pos.x, pos.y + 2, pos.z), new THREE.Vector3(0, -1, 0), panel, true, 0.05, isCentral, symmetryType, radialAxis, radialCount);
+                
+                // Calculate tip position to place panels at the ends
+                const span = comp.dims.span || 1;
+                const rootChord = comp.dims.rootChord || 1;
+                const sweep = comp.dims.sweep || 0;
+                const tipChord = comp.dims.tipChord || 0;
+                
+                // Target the top surface near the tip
+                const localTip = new THREE.Vector3(span * 0.85, 0, rootChord / 2 - sweep - tipChord / 2);
+                const compLocalRot = new THREE.Euler().setFromVector3(rot);
+                const worldTip = localTip.applyEuler(compLocalRot).add(pos);
+                const up = new THREE.Vector3(0, 1, 0).applyEuler(compLocalRot);
+
+                this.placeOnSurface(hullMesh, greebleGroup, worldTip.add(up.multiplyScalar(2)), up.negate(), panel, true, 0.0, isCentral, symmetryType, radialAxis, radialCount, null, 'forward');
             }
 
             // 8. Landing Gear (Freighters/Belly)

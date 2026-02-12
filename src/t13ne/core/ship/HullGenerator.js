@@ -239,9 +239,17 @@ export class HullGenerator {
                         Math.min(Math.max(qVec.x, Math.max(qVec.y, qVec.z)), 0.0);
                 }
 
-                // Polynomial Smooth Min logic
-                const h = Math.max(k - Math.abs(d - dist), 0.0) / k;
-                d = Math.min(d, dist) - h * h * k * 0.25;
+                // Check for carving (Subtraction)
+                if (c.stats && c.stats.usage && c.stats.usage.includes('carve')) {
+                    // Polynomial Smooth Max (Subtraction)
+                    const negativeDist = -dist;
+                    const h = Math.max(k - Math.abs(d - negativeDist), 0.0) / k;
+                    d = Math.max(d, negativeDist) + h * h * k * 0.25;
+                } else {
+                    // Polynomial Smooth Min (Union)
+                    const h = Math.max(k - Math.abs(d - dist), 0.0) / k;
+                    d = Math.min(d, dist) - h * h * k * 0.25;
+                }
             }
             return d;
         };

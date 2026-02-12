@@ -103,7 +103,7 @@ export class ShipAssembler {
                 for (const comp of components) {
                     const { type, dims, pos, rot, usage } = getCompProps(comp);
 
-                    if (usage.includes('Engine') || usage.includes('Bridge') || usage.includes('cockpit') || type === 'cone' || usage.includes('carve')) {
+                    if (usage.toLowerCase().includes('carve')) {
                         const cutterMesh = this.componentFactory.createProxy(type, dims);
                         // cutterMesh is temporary, doesn't need to be added to shipGroup
                         cutterMesh.position.set(...pos);
@@ -149,14 +149,18 @@ export class ShipAssembler {
 
         // Add solid component meshes to fill gaps
         componentMeshes.forEach(mesh => {
-            mesh.material = new THREE.MeshStandardMaterial({
-                color: 0x555555,
-                roughness: 0.9,
-                metalness: 0.4,
-                flatShading: true,
-                wireframe: false
-            });
-            mesh.visible = true;
+            if (hullMesh && styleConfig.method !== 'SKELETON') {
+                mesh.visible = false;
+            } else {
+                mesh.material = new THREE.MeshStandardMaterial({
+                    color: 0x555555,
+                    roughness: 0.9,
+                    metalness: 0.4,
+                    flatShading: true,
+                    wireframe: false
+                });
+                mesh.visible = true;
+            }
             shipGroup.add(mesh);
         });
 
@@ -530,6 +534,17 @@ export class ShipAssembler {
                     const midPoint = tempVec.addVectors(startPoint, endPoint).multiplyScalar(0.5);
                     const dist = startPoint.distanceTo(endPoint);
                     
+                    // FIX: Skip struts for wing-fuselage connections to avoid visual clutter
+                    const sourceUsage = sourceMesh.userData.componentUsage || '';
+                    const targetUsage = targetMesh.userData.componentUsage || '';
+                    if ((sourceUsage.includes('wing') && (targetUsage.includes('fuselage') || targetUsage.includes('spine') || targetUsage.includes('hull'))) || 
+                        (targetUsage.includes('wing') && (sourceUsage.includes('fuselage') || sourceUsage.includes('spine') || sourceUsage.includes('hull')))) {
+                        continue; 
+                    }
+
+                    // FIX: Skip struts if components are touching or embedded to avoid visual clutter
+                    if (dist < 0.1) continue;
+
                     // FIX: Create a single, thicker, correctly-oriented strut to avoid visual bugs.
                     const strutRadius = 0.25;
                     

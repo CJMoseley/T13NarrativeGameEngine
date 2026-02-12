@@ -122,16 +122,26 @@ export class TestMenu {
                 options: [
                     {
                         text: 'Test Galaxy Generation', onClick: () => {
-                            this.viewManager.gameEngine.galaxyGenerator.generateStars();
-                            this.uiManager.showGalaxyMap();
+                            const engine = this.viewManager.gameEngine;
+                            if (engine.galaxyGenerator) {
+                                engine.galaxy = engine.galaxyGenerator.generateGalaxy();
+                                this.viewManager.showGalaxyMap();
+                            }
                         }
                     },
                     {
                         text: 'Test Lore Generation', onClick: async () => {
-                            const star = this.viewManager.gameEngine.galaxyGenerator.stars[Math.floor(Math.random() * this.viewManager.gameEngine.galaxyGenerator.stars.length)];
+                            const engine = this.viewManager.gameEngine;
+                            if (!engine.galaxyGenerator) return;
+
+                            if (!engine.galaxyGenerator.stars || engine.galaxyGenerator.stars.length === 0) {
+                                engine.galaxyGenerator.generateStars();
+                            }
+
+                            const star = engine.galaxyGenerator.stars[Math.floor(Math.random() * engine.galaxyGenerator.stars.length)];
                             const noise = { n1: Math.random(), n2: Math.random(), n3: Math.random(), n4: Math.random() };
-                            const params = this.viewManager.gameEngine.galaxyGenerator.params;
-                            const lore = await this.viewManager.gameEngine.loreMaster.generateSystemLore(star, noise, params);
+                            const params = engine.galaxyGenerator.params;
+                            const lore = await engine.loreMaster.generateSystemLore(star, noise, params);
                             Logger.message(`Generated Lore: ${JSON.stringify(lore)}`);
                         }
                     },

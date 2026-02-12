@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 
 export const generateFreighter = (context) => {
-    const { spineLength, random, attachComponent, wiringGenerator, explicitWiring, components } = context;
+    const { spineLength, random, attachComponent, wiringGenerator, explicitWiring, components, getSurfacePoint } = context;
     
     // Freighter: Long central spine with cargo pods attached
     const trussLen = spineLength * 1.5;
@@ -31,8 +31,18 @@ export const generateFreighter = (context) => {
     const containers = Math.floor(trussLen / 3.0);
     for(let i=0; i<containers; i++) {
         const z = -trussLen/2 + 3.0 * i + 2.0;
+        
+        // Raycast to find attachment point on spine to ensure pods don't float
+        let podX = 2.5; // Default fallback
+        if (getSurfacePoint) {
+             const hit = getSurfacePoint(components, [20, 0, z], [-1, 0, 0], 'fuselage_spine');
+             if (hit) {
+                 podX = hit.x + 1.5 - 0.2; // Width 3.0/2 = 1.5. Overlap 0.2.
+             }
+        }
+
         // Side containers (Reflective symmetry handles the other side)
-        attachComponent('cargo_pod', [2.5, 0, z], [0, 0, 0], 'box', 
+        attachComponent('cargo_pod', [podX, 0, z], [0, 0, 0], 'box', 
             {width: 3.0, height: 2.5, depth: 2.8}, 'REFLECTIVE');
         
         // Occasional Vertical Container
@@ -88,7 +98,7 @@ export const generateHorseshoe = (context) => {
 };
 
 export const generateBlob = (context) => {
-    const { spineLength, random, attachComponent } = context;
+    const { spineLength, random, attachComponent, components, getSurfacePoint } = context;
     
     // Millennium Falcon style: Main hull + Mandibles + Offset Cockpit
     const mainRadius = spineLength * 0.6;
@@ -143,16 +153,30 @@ export const generateBlob = (context) => {
     const angleRad = angleDeg * (Math.PI / 180);
     
     const strutLen = mainRadius * 0.8;
-    const strutRadius = mainHeight * 0.35;
+    const strutRadius = mainHeight * 0.25;
     
     const dirX = Math.cos(angleRad) * cockpitSide;
     const dirZ = Math.sin(angleRad);
     
-    const startX = dirX * mainRadius * 0.6;
-    const startZ = dirZ * mainRadius * 0.6;
-    const endX = startX + dirX * strutLen;
+    let cockpitStartX = dirX * mainRadius * 0.6;
+    let startZ = dirZ * mainRadius * 0.6;
+
+    // Raycast for better attachment if available
+    if (getSurfacePoint) {
+        const rayOrigin = [dirX * 20, 0, dirZ * 20];
+        const rayDir = [-dirX, 0, -dirZ];
+        const hit = getSurfacePoint(components, rayOrigin, rayDir, 'fuselage_main');
+        if (hit) {
+             // Embed 0.5 units into the hull
+             const embed = new THREE.Vector3(dirX, 0, dirZ).multiplyScalar(0.5);
+             cockpitStartX = hit.x - embed.x;
+             startZ = hit.z - embed.z;
+        }
+    }
+
+    const endX = cockpitStartX + dirX * strutLen;
     const endZ = startZ + dirZ * strutLen;
-    const strutPos = [(startX + endX)/2, 0, (startZ + endZ)/2];
+    const strutPos = [(cockpitStartX + endX)/2, 0, (startZ + endZ)/2];
     
     // Align strut cylinder to vector
     const rotY = Math.atan2(dirX, dirZ);
@@ -161,7 +185,7 @@ export const generateBlob = (context) => {
     
     // Cockpit Capsule - Pointing Forward (+Z)
     attachComponent('cockpit', [endX, 0, endZ], [Math.PI/2, 0, 0], 'capsule', 
-        { radius: strutRadius * 1.2, length: strutRadius * 4.0 }, 'NONE');
+        { radius: strutRadius * 1.2, length: strutRadius * 3.0 }, 'NONE');
 
     return { cockpitPlaced: true };
 };
@@ -226,10 +250,17 @@ export const generateCatamaran = (context) => {
         // Nacelle Position: Higher than saucer
         const nacelleY = saucerHeight * 1.5;
         const nacelleX = saucerRadius * 0.9;
-        const nacelleZ = -saucerRadius * 0.5;
+        const nacelleZ = -saucerRadius * 0.8; // Moved back to clear saucer
 
         // Pylon attachment point on engineering hull
-        const pylonStart = new THREE.Vector3(engRadius, engPos[1], engPos[2] + engLen * 0.2);
+        // Moved back to avoid intersecting the saucer (was +0.2)
+        // Safety Clamp: Ensure pylon Z is strictly within the hull cylinder (with 10% padding from ends)
+        const hullRear = engPos[2] - engLen / 2;
+        const hullFront = engPos[2] + engLen / 2;
+        const targetZ = engPos[2] - engLen * 0.1;
+        const clampedZ = Math.max(hullRear + engLen * 0.1, Math.min(hullFront - engLen * 0.1, targetZ));
+
+        const pylonStart = new THREE.Vector3(engRadius, engPos[1], clampedZ);
         
         // Pylon End: Attach about 1/3 along the nacelle length from the front
         const attachZ = nacelleZ + nacelleLen/2 - (nacelleLen / 3);
@@ -275,7 +306,7 @@ export const generateYFork = (context) => {
     // We use the symmetry system to generate the other prong(s)
     const symMode = symmetryType === 'ASYMMETRICAL' ? 'REFLECTIVE' : symmetryType;
     
-    attachComponent('fuselage_prong', [x, 0, z], [Math.PI/2, 0, -spreadAngle], 'cylinder', 
+    attachComponent('fuselage_prong', [x, 0, z], [Math.PI/2, Math.PI - spreadAngle, 0], 'cylinder', 
         {radiusTop: 1.2, radiusBottom: 0.8, height: prongLen}, symMode);
 };
 

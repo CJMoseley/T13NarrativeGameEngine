@@ -38,6 +38,7 @@ export const generateSpineOrStar = (context, hullType) => {
     let lastSegmentRadius = 1.0;
     let lastSegmentZ = 0;
     let lastSegmentSegments = 8;
+    let lastSegmentRotation = [0, 0, 0];
     let previousSegmentId = null;
 
     // Initialize segment count for consistency (reduce jitter between segments)
@@ -82,6 +83,7 @@ export const generateSpineOrStar = (context, hullType) => {
                 lastSegmentRadius = radius;
                 lastSegmentZ = zPos + (segmentHeight / 2);
                 lastSegmentSegments = segs;
+                lastSegmentRotation = rot;
             }
         }
 
@@ -99,7 +101,7 @@ export const generateSpineOrStar = (context, hullType) => {
     }
 
     if (hullType === 'SPINE') {
-        return { lastSegmentZ, lastSegmentRadius, lastSegmentSegments, previousSegmentId };
+        return { lastSegmentZ, lastSegmentRadius, lastSegmentSegments, previousSegmentId, lastSegmentRotation };
     } else if (hullType === 'STAR') {
         // Central Hub for Star
         attachComponent('hub', [0, 0, 0], [0, 0, 0], 'cylinder', { radiusTop: 2, radiusBottom: 2, height: 2, radialSegments: radialCount * 2 }, 'NONE');

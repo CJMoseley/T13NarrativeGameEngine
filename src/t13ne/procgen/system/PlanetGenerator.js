@@ -1,13 +1,9 @@
 import * as THREE from 'three';
-import { PlanetShader } from './PlanetShader.js';
-import { HullGenerator } from '../../core/ship/HullGenerator.js';
-import { ShipComponent } from '../../core/ship/ShipComponent.js';
 import ProcGen from '../ProcGen.js';
 import Logger from '../../core/Logger.js';
 
 export class PlanetGenerator {
     constructor(physxProvider) {
-        this.hullGenerator = new HullGenerator(physxProvider);
     }
 
     /**
@@ -17,7 +13,8 @@ export class PlanetGenerator {
      */
     generatePlanetMesh(planetData) {
         const group = new THREE.Group();
-        const radius = planetData.radius * 10; // Scale up for visibility
+        const baseRadius = (typeof planetData.radius === 'number' && Number.isFinite(planetData.radius)) ? planetData.radius : 1.0;
+        const radius = baseRadius * 10; // Scale up for visibility
         const seed = this._stringToSeed(planetData.name || 'planet');
         const prng = ProcGen.createPRNG(seed);
 
@@ -29,25 +26,19 @@ export class PlanetGenerator {
         // Determine colors based on resources/type
         const colors = this._getPlanetColors(planetData, prng);
 
-        const material = new THREE.ShaderMaterial({
-            uniforms: {
-                color1: { value: new THREE.Color(colors.c1) },
-                color2: { value: new THREE.Color(colors.c2) },
-                color3: { value: new THREE.Color(colors.c3) },
-                seed: { value: prng.nextDouble() * 100 },
-                waterLevel: { value: planetData.type.includes('Ocean') ? 0.1 : -0.1 },
-                mountainHeight: { value: 0.2 },
-                atmosphereDensity: { value: 0.5 }
-            },
-            vertexShader: PlanetShader.vertexShader,
-            fragmentShader: PlanetShader.fragmentShader
+        // Use MeshStandardMaterial instead of ShaderMaterial to ensure rendering stability
+        const material = new THREE.MeshStandardMaterial({
+            color: new THREE.Color(colors.c1),
+            roughness: 0.8,
+            metalness: 0.1,
+            map: this._generateSimplePlanetTexture(seed, colors) // Generate a simple texture
         });
 
         const planetMesh = new THREE.Mesh(geometry, material);
         group.add(planetMesh);
 
         // 2. Water Surface (if applicable)
-        if (planetData.type.includes('Terrestrial') || planetData.type.includes('Ocean')) {
+        if (planetData.type && (planetData.type.includes('Terrestrial') || planetData.type.includes('Ocean'))) {
             const waterGeo = new THREE.SphereGeometry(radius * 0.995, 64, 64); // Slightly smaller to intersect
             const waterMat = new THREE.MeshStandardMaterial({
                 color: 0x004488,
@@ -75,7 +66,7 @@ export class PlanetGenerator {
         }
 
         // 4. Rings (if applicable)
-        if (planetData.type.includes('Ring') || (planetData.moons && planetData.moons.some(m => m.isRing))) {
+        if ((planetData.type && planetData.type.includes('Ring')) || (planetData.moons && planetData.moons.some(m => m.isRing))) {
              const ringGeo = new THREE.RingGeometry(radius * 1.4, radius * 2.5, 64);
              const ringMat = new THREE.MeshBasicMaterial({ 
                  color: 0x888888, 
@@ -101,36 +92,30 @@ export class PlanetGenerator {
      */
     generateAsteroidMesh(seed, size = 5) {
         const prng = ProcGen.createPRNG(seed);
-        const components = [];
-        const numBlobs = Math.floor(prng.nextDouble() * 4) + 3;
-
-        for (let i = 0; i < numBlobs; i++) {
-            const s = size * (0.5 + prng.nextDouble() * 0.5);
-            const pos = new THREE.Vector3(
-                (prng.nextDouble() - 0.5) * size,
-                (prng.nextDouble() - 0.5) * size,
-                (prng.nextDouble() - 0.5) * size
-            );
-            // Use simple shapes for the hull generator
-            components.push(new ShipComponent('sphere', pos, new THREE.Euler(), new THREE.Vector3(s, s, s), {}, 'sphere'));
-        }
-
-        // Generate Hull
-        // Use INDUSTRIAL style for faceted rock look
-        const styleConfig = { method: 'INDUSTRIAL', plating: false };
-        let geometry = this.hullGenerator.generate(components, styleConfig);
-
-        if (!geometry) {
-            // Fallback
-            geometry = new THREE.DodecahedronGeometry(size, 1);
-        }
+        
+        // Optimization: Use DodecahedronGeometry directly instead of HullGenerator
+        // This prevents heavy PhysX/MarchingCubes calculations for hundreds of asteroids
+        const detail = 0; // Low detail for performance
+        const geometry = new THREE.DodecahedronGeometry(size, detail);
 
         // Apply noise to vertices for roughness
         const posAttribute = geometry.attributes.position;
         const vertex = new THREE.Vector3();
+        
+        // Random scale distortion
+        const sx = 0.8 + prng.nextDouble() * 0.4;
+        const sy = 0.8 + prng.nextDouble() * 0.4;
+        const sz = 0.8 + prng.nextDouble() * 0.4;
+
         for (let i = 0; i < posAttribute.count; i++) {
             vertex.fromBufferAttribute(posAttribute, i);
-            const noise = (prng.nextDouble() - 0.5) * size * 0.1;
+            
+            // Apply scale
+            vertex.x *= sx;
+            vertex.y *= sy;
+            vertex.z *= sz;
+
+            const noise = (prng.nextDouble() - 0.5) * size * 0.2;
             vertex.addScalar(noise);
             posAttribute.setXYZ(i, vertex.x, vertex.y, vertex.z);
         }
@@ -184,6 +169,37 @@ export class PlanetGenerator {
         }
 
         return { c1, c2, c3 };
+    }
+
+    _generateSimplePlanetTexture(seed, colors) {
+        const width = 512;
+        const height = 256;
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        
+        const prng = ProcGen.createPRNG(seed);
+        
+        // Fill background
+        ctx.fillStyle = '#' + new THREE.Color(colors.c1).getHexString();
+        ctx.fillRect(0, 0, width, height);
+        
+        // Add noise bands/patches
+        for (let i = 0; i < 50; i++) {
+            const x = prng.nextDouble() * width;
+            const y = prng.nextDouble() * height;
+            const r = prng.nextDouble() * 50 + 20;
+            
+            ctx.fillStyle = (i % 2 === 0) ? '#' + new THREE.Color(colors.c2).getHexString() : '#' + new THREE.Color(colors.c3).getHexString();
+            ctx.globalAlpha = 0.5;
+            ctx.beginPath();
+            ctx.arc(x, y, r, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        
+        const tex = new THREE.CanvasTexture(canvas);
+        return tex;
     }
 
     _generateCloudTexture(seed) {

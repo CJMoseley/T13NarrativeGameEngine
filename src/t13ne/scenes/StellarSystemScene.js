@@ -6,6 +6,7 @@ import { Scene } from '../core/Scene.js';
 import { Controls } from '../core/Controls.js';
 import { OrreryScene } from './OrreryScene.js';
 import { SceneTools } from '../core/SceneTools.js';
+import { PlanetGenerator } from '../procgen/system/PlanetGenerator.js';
 
 export class StellarSystemScene extends Scene {
   constructor(viewManager, sceneData) {
@@ -79,6 +80,8 @@ export class StellarSystemScene extends Scene {
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onKeyUp = this.onKeyUp.bind(this);
 
+    this.planetGenerator = new PlanetGenerator(this.gameEngine?.physicsEngine?.physx);
+
     this.sanitizePlanetData();
     // Sort planets by distance to ensure consistent order with Orrery and correct camera pathing
     if (this.planets) {
@@ -93,15 +96,43 @@ export class StellarSystemScene extends Scene {
 
   sanitizePlanetData() {
       if (!this.planets) return;
+      
+      // Sort planets by distance to ensure consistent order and spacing
+      this.planets.sort((a, b) => (a.orbitalDistance || 0) - (b.orbitalDistance || 0));
+
+      let minNextDist = 0.4; // Start at 0.4 AU to clear the sun's corona
+
       this.planets.forEach((p, i) => {
           // Ensure orbitalDistance is a valid number
-          if (typeof p.orbitalDistance !== 'number' || !Number.isFinite(p.orbitalDistance)) {
-              p.orbitalDistance = (i + 1) * 0.5; // Fallback: 0.5 AU spacing
-              Logger.warn(`StellarSystemScene: Sanitized planet ${i} distance to ${p.orbitalDistance}`);
+          if (typeof p.orbitalDistance !== 'number' || !Number.isFinite(p.orbitalDistance) || p.orbitalDistance < minNextDist) {
+              p.orbitalDistance = minNextDist;
+              // Logger.warn(`StellarSystemScene: Sanitized planet ${i} distance to ${p.orbitalDistance}`);
           }
+          minNextDist = p.orbitalDistance + 0.2; // Enforce 0.2 AU gap between planets
+
           // Synchronize start angles for Orrery alignment
           if (p.startAngle === undefined) {
               p.startAngle = Math.random() * Math.PI * 2;
+          }
+          // Sanitize Radius
+          if (typeof p.radius !== 'number' || !Number.isFinite(p.radius) || p.radius <= 0.0001) {
+              p.radius = 1.0; // Prevent 0 radius which causes Infinity scale
+          }
+          // Sanitize Orbit Speed
+          if (typeof p.orbitSpeed !== 'number' || !Number.isFinite(p.orbitSpeed)) {
+              p.orbitSpeed = 0.0001;
+          }
+          // Sanitize Moons
+          if (p.moons) {
+              p.moons.forEach((m, j) => {
+                  if (typeof m.orbitalDistance !== 'number' || !Number.isFinite(m.orbitalDistance)) {
+                      m.orbitalDistance = 0.002 + (j * 0.001); // Fallback distance
+                  }
+                  // Sanitize Moon Radius
+                  if (typeof m.radius !== 'number' || !Number.isFinite(m.radius) || m.radius <= 0.0001) {
+                      m.radius = 0.2;
+                  }
+              });
           }
       });
   }
@@ -146,7 +177,7 @@ export class StellarSystemScene extends Scene {
     if (this.planets && this.planets.length > 0) {
         maxDist = this.planets.reduce((max, p) => {
             const d = this.STAR_RADIUS + ((p.orbitalDistance || 1) * this.AU_TO_UNITS);
-            return d > max ? d : max;
+            return (Number.isFinite(d) && d > max) ? d : max;
         }, 0);
     }
     
@@ -157,10 +188,11 @@ export class StellarSystemScene extends Scene {
     Logger.message(`StellarSystemScene: System Radius calculated as ${this.systemRadius}`);
 
     // Massive far plane for space
-    const skyboxDistance = Math.max(this.systemRadius * 100, 10000000); 
+    // Cap at 5,000,000 to preserve depth precision with near=10
+    const skyboxDistance = Math.min(Math.max(this.systemRadius * 100, 1000000), 5000000); 
 
     // 1. Rendering Camera (Fixed at origin for floating origin effect)
-    this.camera = new THREE.PerspectiveCamera(60, width / height, 0.1, skyboxDistance);
+    this.camera = new THREE.PerspectiveCamera(60, width / height, 10, skyboxDistance); // Increased near plane to 10 to prevent z-fighting
     this.scene.add(this.camera);
 
     // 2. Virtual Camera (Logical position for controls)
@@ -173,7 +205,7 @@ export class StellarSystemScene extends Scene {
 
     this.virtualCamera.fov = 60;
     this.virtualCamera.aspect = width / height;
-    this.virtualCamera.near = 0.1;
+    this.virtualCamera.near = 10; // Match rendering camera
     this.virtualCamera.far = skyboxDistance;
     this.virtualCamera.position.set(0, startY, startZ);
     this.virtualCamera.lookAt(0, 0, 0);
@@ -185,7 +217,7 @@ export class StellarSystemScene extends Scene {
     
     // 3. Cinematic Camera
     this.cinematicCamera = new THREE.PerspectiveCamera(60, width / height, 0.1, skyboxDistance);
-    this.cinematicCamera.position.copy(this.virtualCamera.position); // Init to safe spot
+    this.cinematicCamera.position.copy(this.virtualCamera.position);
     this.addCamera('cinematic', this.cinematicCamera);
     const cinLight = new THREE.PointLight(0xffffff, 1.5, 0);
     this.cinematicCamera.add(cinLight);
@@ -269,6 +301,7 @@ export class StellarSystemScene extends Scene {
     this.createPlanets();
     this.createSkybox();
     this.createSpaceDust();
+    this.createAsteroids();
     Logger.end(funcName);
   }
 
@@ -360,47 +393,46 @@ export class StellarSystemScene extends Scene {
     this.starMesh = new THREE.Mesh(starGeometry, starMaterial);
     this.systemGroup.add(this.starMesh);
 
-    // Corona
-    const spriteMaterial = new THREE.SpriteMaterial({ 
-        map: this.starTexture, 
-        color: starColor, 
-        transparent: true, 
-        blending: THREE.AdditiveBlending,
-        opacity: 0.6,
-        depthWrite: false
-    });
-    const corona = new THREE.Sprite(spriteMaterial);
-    corona.scale.set(starRadius * 4, starRadius * 4, 1.0);
-    this.starMesh.add(corona); 
+    // Removed Corona Sprite to prevent flickering artifacts reported by user.
+    // The star is now just a bright sphere.
+    // We can add a glow mesh later if needed, but for now stability is priority.
 
-    // Glow
-    const glowGeo = new THREE.SphereGeometry(starRadius * 1.2, 32, 32);
-    const glowMat = new THREE.MeshBasicMaterial({
-        color: starColor,
-        transparent: true,
-        opacity: 0.3,
-        side: THREE.BackSide,
-        blending: THREE.AdditiveBlending,
-        depthWrite: false
-    });
-    const glowMesh = new THREE.Mesh(glowGeo, glowMat);
-    this.starMesh.add(glowMesh);
-
-    // Distant Star Sprite (Visible from far away)
-    const distantMat = new THREE.SpriteMaterial({
-        map: this.starTexture,
-        color: starColor,
-        transparent: true,
-        blending: THREE.AdditiveBlending,
-        depthTest: true, // Allow depth testing so it doesn't draw over the core
-        depthWrite: false
-    });
-    const distantSprite = new THREE.Sprite(distantMat);
-    // Scale it huge so it's visible from the outer system
-    distantSprite.scale.set(starRadius * 50, starRadius * 50, 1.0); // Increased scale to match Galaxy View better
-    this.starMesh.add(distantSprite);
+    // Removed Distant Star Sprite to prevent "flashing triangles" / z-fighting artifacts at large scales
+    // The corona and glow should be sufficient for system view.
+    // const distantMat = new THREE.SpriteMaterial({
+    //     map: this.starTexture,
+    //     color: starColor,
+    //     transparent: true,
+    //     blending: THREE.AdditiveBlending,
+    //     depthTest: true, 
+    //     depthWrite: false
+    // });
+    // const distantSprite = new THREE.Sprite(distantMat);
+    // // Scale it huge so it's visible from the outer system
+    // distantSprite.scale.set(starRadius * 50, starRadius * 50, 1.0); 
+    // this.starMesh.add(distantSprite);
 
     Logger.end(funcName);
+  }
+
+  createAsteroids() {
+      const asteroidCount = 200;
+      const beltDistance = this.systemRadius * 0.6; // Arbitrary belt location
+      const beltWidth = 200;
+      
+      for(let i=0; i<asteroidCount; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const dist = beltDistance + (Math.random() - 0.5) * beltWidth;
+          const y = (Math.random() - 0.5) * 50;
+          
+          const size = Math.random() * 3 + 1;
+          const mesh = this.planetGenerator.generateAsteroidMesh(i, size);
+          
+          mesh.position.set(dist * Math.cos(angle), y, dist * Math.sin(angle));
+          mesh.rotation.set(Math.random()*Math.PI, Math.random()*Math.PI, Math.random()*Math.PI);
+          
+          this.systemGroup.add(mesh);
+      }
   }
 
   createPlanets() {
@@ -412,16 +444,21 @@ export class StellarSystemScene extends Scene {
     if (!this.planets || this.planets.length === 0) Logger.warn("StellarSystemScene: No planets to create.");
 
     this.planets.forEach((planet) => {
+      if (!planet) return;
+
       // Ensure distance includes Star Radius to prevent clipping
       const dist = this.STAR_RADIUS + ((planet.orbitalDistance || (Math.random() * 5 + 1)) * this.AU_TO_UNITS);
-      const radius = Math.max(25, (planet.radius || 1) * 60); // Drastically increased size for visibility
+      const targetRadius = Math.max(50, (planet.radius || 1) * 100); // Further increased size for visibility
 
       const orbitGeometry = new THREE.BufferGeometry();
       const orbitPoints = [];
       const segments = 128;
       for (let i = 0; i <= segments; i++) {
         const angle = (i / segments) * Math.PI * 2;
-        orbitPoints.push(dist * Math.cos(angle), 0, dist * Math.sin(angle));
+        const x = dist * Math.cos(angle);
+        const z = dist * Math.sin(angle);
+        // Safety check for NaN to prevent flickering triangles
+        if (!isNaN(x) && !isNaN(z)) orbitPoints.push(x, 0, z);
       }
       orbitGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(orbitPoints), 3));
 
@@ -445,100 +482,67 @@ export class StellarSystemScene extends Scene {
       planetSystem.userData = {
           planet,
           scaledDistance: dist,
-          angle: startAngle,
+          angle: Number.isFinite(startAngle) ? startAngle : 0,
           orbitSpeed: (planet.orbitSpeed || 0.0001)
       };
       this.systemGroup.add(planetSystem);
       this.planetSystems.push(planetSystem);
 
-      // Planet Mesh
-      let texture;
-      try {
-          texture = SceneTools.generatePlanetTexture(planet);
-      } catch (e) { }
+      // Use PlanetGenerator for physical models
+      const planetGroup = this.planetGenerator.generatePlanetMesh(planet);
       
-      // Only Brown Dwarfs or specific Giants get emissive
-      const isEmissive = planet.type.includes('Dwarf') || (planet.type.includes('Giant') && Math.random() > 0.7);
-
-      // Reflectivity based on type and atmosphere
-      let roughness = 0.9;
-      let metalness = 0.1;
-      const pType = planet.type || '';
-      
-      if (pType.includes('Water') || pType.includes('Ocean') || pType.includes('Ice')) {
-          roughness = 0.2; // Very reflective
-          metalness = 0.5;
-      } else if (planet.atmosphere && planet.atmosphere !== 'None') {
-          roughness = 0.4; // Atmosphere adds some sheen/scattering
+      // Scale adjustment: PlanetGenerator uses radius * 10. We want targetRadius.
+      const genRadius = (planet.radius || 1) * 10;
+      let scale = 1;
+      if (genRadius > 0.0001) {
+          scale = targetRadius / genRadius;
       }
-
-      const planetGeometry = new THREE.SphereGeometry(radius, 64, 64);
-      const planetMaterial = new THREE.MeshStandardMaterial({ 
-          map: texture || null,
-          color: texture ? 0xffffff : (planet.color ? new THREE.Color().setHSL(planet.color.h, planet.color.s, planet.color.l) : 0x888888),
-          roughness: roughness,
-          metalness: metalness,
-          emissive: isEmissive ? 0x111111 : 0x000000
-      });
-      const planetMesh = new THREE.Mesh(planetGeometry, planetMaterial);
-
-      // Add a local light to the planet to simulate star reflection/edge light more strongly
-      // Positioned towards the star (local 0,0,0 is planet center, parent is at distance from star)
-      // We need it in the scene, not child of planet, to avoid rotation issues, or child of planetSystem
-      const localLight = new THREE.PointLight(this.systemData.starColor, 1.0, radius * 10, 1);
-      localLight.position.set(-dist, 0, 0).normalize().multiplyScalar(radius * 3); // Towards star
-      planetMesh.add(localLight);
+      if (!Number.isFinite(scale)) scale = 1; // Prevent Infinity/NaN scale
+      planetGroup.scale.set(scale, scale, scale);
 
       // Add mesh to container
-      planetSystem.add(planetMesh);
-      this.planetMeshes.push(planetMesh);
-      planetSystem.userData.visualMesh = planetMesh; // Reference for rotation
+      planetSystem.add(planetGroup);
       
-      if (planet.isHomeworld) this.homeworldMesh = planetMesh;
+      // Add children meshes to planetMeshes for raycasting
+      planetGroup.traverse(child => {
+          if (child.isMesh) {
+              this.planetMeshes.push(child);
+              // Ensure userData has planet info for tooltips
+              child.userData.planet = planet;
+          }
+      });
+      // Also tag the group
+      planetGroup.userData.planet = planet;
 
-      if (planet.atmosphere && planet.atmosphere !== 'None') {
-          const atmoGeo = new THREE.SphereGeometry(radius * 1.1, 64, 64);
-          const atmoMat = new THREE.MeshPhongMaterial({ color: 0x88ccff, transparent: true, opacity: 0.2, blending: THREE.AdditiveBlending });
-          planetMesh.add(new THREE.Mesh(atmoGeo, atmoMat));
-      }
-
-      if (planet.type.includes('Giant') && Math.random() > 0.5) {
-          const ringGeo = new THREE.RingGeometry(radius * 1.4, radius * 2.2, 64);
-          const ringMat = new THREE.MeshBasicMaterial({ color: 0xaaaaaa, side: THREE.DoubleSide, transparent: true, opacity: 0.6 });
-          const ringMesh = new THREE.Mesh(ringGeo, ringMat);
-          ringMesh.rotation.x = Math.PI / 2;
-          planetMesh.add(ringMesh);
-      }
+      planetSystem.userData.visualMesh = planetGroup; // Reference for rotation
+      
+      if (planet.isHomeworld) this.homeworldMesh = planetGroup;
 
       if (planet.moons) {
         planet.moons.forEach((moon, mIdx) => {
             const MOON_ORBIT_SCALE = 300000; // Further increased scale
             
-            const moonRadius = Math.max(0.5, radius * 0.2);
+            const moonRadius = Math.max(0.5, targetRadius * 0.2);
             // Ensure moon starts outside planet: Radius + MoonRadius + Buffer + Scaled Distance
-            let moonDist = radius + moonRadius + 40 + (moon.orbitalDistance * MOON_ORBIT_SCALE); // Increased buffer
+            // Clamp orbital distance contribution to prevent massive orbits from bad harmonics
+            const safeOrbitalDist = Math.min(Number.isFinite(moon.orbitalDistance) ? moon.orbitalDistance : 0.002, 0.5);
+            let moonDist = targetRadius + moonRadius + 40 + (safeOrbitalDist * MOON_ORBIT_SCALE);
             
             // Clamp rings close
             if (moon.isRing) {
-                moonDist = radius * 1.5 + (mIdx * 2);
+                // PlanetGenerator handles rings, so skip ring moons here to avoid duplication
+                return;
             }
 
-            let moonGeometry;
-            if (moon.isRing) {
-                moonGeometry = new THREE.RingGeometry(moonDist - 1, moonDist + 1, 32);
-                moonGeometry.rotateX(-Math.PI / 2);
-            } else {
-                moonGeometry = new THREE.SphereGeometry(moonRadius, 32, 32);
-            }
-            
-            const moonMaterial = new THREE.MeshStandardMaterial({ color: 0xaaaaaa });
-            const moonMesh = new THREE.Mesh(moonGeometry, moonMaterial);
+            // Use generateAsteroidMesh for moons for physical look
+            const moonSeed = (planet.name.length + mIdx) * 123;
+            const moonMesh = this.planetGenerator.generateAsteroidMesh(moonSeed, moonRadius);
             
             const moonAngle = Math.random() * Math.PI * 2;
             moonMesh.userData = { 
                 moon: moon,
                 distance: moonDist,
-                angle: moonAngle,
+                angle: Number.isFinite(moonAngle) ? moonAngle : 0,
                 orbitSpeed: 0.5 + (Math.random() * 0.5) // Relative speed around planet
             };
             if (moon.isHomeworld) {
@@ -546,20 +550,19 @@ export class StellarSystemScene extends Scene {
                 this.homeworldMesh = moonMesh;
             }
             
-            if (moon.isRing) {
-                moonMesh.position.set(0, 0, 0); // Rings centered on planet
-            } else {
-                moonMesh.position.set(moonDist * Math.cos(moonAngle), 0, moonDist * Math.sin(moonAngle));
-            }
+            moonMesh.position.set(moonDist * Math.cos(moonAngle), 0, moonDist * Math.sin(moonAngle));
             
             // Moon Orbit
-            if (!moon.isRing && moon.type !== 'Quasi-Satellite') {
+            if (moon.type !== 'Quasi-Satellite' && Number.isFinite(moonDist)) {
                 const moonOrbitGeo = new THREE.BufferGeometry();
                 const moonOrbitPoints = [];
                 const mSegments = 64;
                 for (let j = 0; j <= mSegments; j++) {
                     const mAngle = (j / mSegments) * Math.PI * 2;
-                    moonOrbitPoints.push(moonDist * Math.cos(mAngle), 0, moonDist * Math.sin(mAngle));
+                    const mx = moonDist * Math.cos(mAngle);
+                    const mz = moonDist * Math.sin(mAngle);
+                    // Safety check
+                    if (!isNaN(mx) && !isNaN(mz)) moonOrbitPoints.push(mx, 0, mz);
                 }
                 moonOrbitGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(moonOrbitPoints), 3));
                 // Bright yellow orbit line for visibility
@@ -908,7 +911,13 @@ export class StellarSystemScene extends Scene {
   onMouseMove(event) {
     const mouse = SceneTools.getMouseVector(event, this.renderer.domElement);
     this.raycaster.setFromCamera(mouse, this.camera);
-    const intersects = this.raycaster.intersectObjects(this.planetMeshes);
+    
+    // Recursive intersection since planetMeshes might be inside groups or have children
+    // Actually createPlanets pushes meshes to planetMeshes, but let's be safe
+    // If planetMeshes contains meshes, no recursion needed if we hit them directly.
+    // But if we want to hit children of what we pushed?
+    const intersects = this.raycaster.intersectObjects(this.planetMeshes, false);
+    
     this.planetMeshes.forEach(m => { if (m.userData.isHovered) { m.scale.set(1, 1, 1); m.userData.isHovered = false; } });
     if (intersects.length > 0) { intersects[0].object.userData.isHovered = true; intersects[0].object.scale.set(1.2, 1.2, 1.2); }
   }
@@ -1003,29 +1012,41 @@ export class StellarSystemScene extends Scene {
         this.activeCamera.position.set(0, 100, 300);
     }
 
+    // Pause orbit simulation during intro to ensure camera targets don't move away
+    if (this.isIntroPlaying) return;
+
     // 2. Planet Rotation & Orbit
     this.planetSystems.forEach((system, index) => {
       const dist = system.userData.scaledDistance;
       const speed = system.userData.orbitSpeed;
-      const angle = (Date.now() * speed * 0.0001) + system.userData.angle;
-      system.position.x = dist * Math.cos(angle);
-      system.position.z = dist * Math.sin(angle);
+      
+      // Safety check for NaN values to prevent flickering
+      if (Number.isFinite(dist) && Number.isFinite(speed)) {
+          if (system.userData.currentAngle === undefined) system.userData.currentAngle = system.userData.angle || 0;
+          system.userData.currentAngle += speed * delta * 0.001;
+          const angle = system.userData.currentAngle;
+          
+          system.position.x = dist * Math.cos(angle);
+          system.position.z = dist * Math.sin(angle);
 
+          // Sync Orrery Planet Angle to match Main System exactly
+          if (this.orrery && this.orrery.planetGroups && this.orrery.planetGroups[index]) {
+              this.orrery.planetGroups[index].userData.angle = angle;
+          }
+      }
+      
       if (system.userData.visualMesh) {
           system.userData.visualMesh.rotation.y += system.userData.planet.spinSpeed || 0.001;
-      }
-
-      // Sync Orrery Planet Angle to match Main System exactly
-      if (this.orrery && this.orrery.planetGroups && this.orrery.planetGroups[index]) {
-          this.orrery.planetGroups[index].userData.angle = angle;
       }
 
       // Animate Moons
       system.children.forEach(child => {
           if (child.userData.moon && child.userData.orbitSpeed) {
-              child.userData.angle += child.userData.orbitSpeed * delta * 0.001;
-              child.position.x = child.userData.distance * Math.cos(child.userData.angle);
-              child.position.z = child.userData.distance * Math.sin(child.userData.angle);
+              if (Number.isFinite(child.userData.angle) && Number.isFinite(child.userData.distance)) {
+                  child.userData.angle += child.userData.orbitSpeed * delta * 0.001;
+                  child.position.x = child.userData.distance * Math.cos(child.userData.angle);
+                  child.position.z = child.userData.distance * Math.sin(child.userData.angle);
+              }
           }
       });
     });
@@ -1050,7 +1071,13 @@ export class StellarSystemScene extends Scene {
         const worldPos = new THREE.Vector3();
         system.getWorldPosition(worldPos);
         const dist = activeCam.position.distanceTo(worldPos);
-        const min = (system.userData.visualMesh ? system.userData.visualMesh.geometry.parameters.radius : 10) + safeDistance;
+        
+        // Estimate radius from scale since it's a group now
+        let radius = 10;
+        if (system.userData.visualMesh) {
+            radius = 10 * system.userData.visualMesh.scale.x; // Base radius 10 * scale
+        }
+        const min = radius + safeDistance;
         if (dist < min) {
             const dir = activeCam.position.clone().sub(worldPos).normalize();
             activeCam.position.copy(worldPos).add(dir.multiplyScalar(min));
@@ -1136,7 +1163,10 @@ export class StellarSystemScene extends Scene {
       const intersects = this.raycaster.intersectObjects(this.planetMeshes);
       
       if (intersects.length > 0) {
-          const planet = intersects[0].object.parent?.userData?.planet;
+          // Check object userData first (set in createPlanets), then parent
+          let planet = intersects[0].object.userData?.planet;
+          if (!planet) planet = intersects[0].object.parent?.userData?.planet;
+          if (!planet) planet = intersects[0].object.parent?.parent?.userData?.planet;
           
           if (planet && this.currentScanTarget !== planet) {
               this.currentScanTarget = planet;
@@ -1216,7 +1246,18 @@ export class StellarSystemScene extends Scene {
       homeworld.getWorldPosition(worldPos);
       worldPos.sub(this.worldGroup.position);
 
-      const targetRadius = homeworld.geometry.parameters.radius || 1;
+      let targetRadius = 10;
+      if (homeworld.geometry && homeworld.geometry.parameters && homeworld.geometry.parameters.radius) {
+          // It's a Mesh (e.g. Moon or simple Planet)
+          targetRadius = homeworld.geometry.parameters.radius * (homeworld.scale.x || 1);
+      } else if (homeworld.userData.planet) {
+          // It's a Group (Planet System), calculate radius from data to match createPlanets logic
+          targetRadius = Math.max(25, (homeworld.userData.planet.radius || 1) * 60);
+      }
+      
+      // Ensure minimum target radius for camera offset so we don't get too close to tiny moons
+      targetRadius = Math.max(targetRadius, 50);
+
       const offsetDist = targetRadius * 2.5;
       const planetToStar = worldPos.clone().negate().normalize();
       const endPos = worldPos.clone().add(planetToStar.multiplyScalar(offsetDist)).add(new THREE.Vector3(0, targetRadius * 0.5, 0));
@@ -1362,8 +1403,10 @@ export class StellarSystemScene extends Scene {
               // Get World Position
               const worldPos = new THREE.Vector3();
               planetMesh.getWorldPosition(worldPos);
+
+              // Estimate radius
+              const radius = 10 * planetMesh.scale.x;
               
-              const radius = planetMesh.geometry.parameters.radius;
               const dist = radius * 2.5;
               
               // Position camera: Offset from planet towards the star (to catch the lit side)
