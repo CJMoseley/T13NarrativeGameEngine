@@ -337,11 +337,11 @@ export class ShipGenerator {
             // This allows them to perturb the upper surface and not stick out the bottom excessively.
             // Align vertically as requested (Cylinder default Y is up).
             attachComponent('engine', [ex, 0, ez], [0, 0, 0], 'cylinder', 
-                { radiusTop: 0.8, radiusBottom: 0.6, height: engHeight }, 'RADIAL');
+                { radiusTop: 0.6, radiusBottom: 0.8, height: engHeight }, 'RADIAL');
         } else if (hullType === 'FREIGHTER' || hullType === 'BATTLESTAR') {
             // Freighter engines are attached to the engine block at the rear
             const trussLen = spineLength * 1.5;
-            const engineZ = -trussLen/2 - 4.0; // Behind the engine block (which is at -trussLen/2 - 2.5)
+            const engineZ = -trussLen/2 - 4.0 + 0.5; // Behind the engine block (which is at -trussLen/2 - 2.5) + Overlap
             
             // Main Engine
             attachComponent('engine_main', [0, 0, engineZ], [Math.PI / 2, 0, 0], 'cylinder', { radiusTop: 1.0, radiusBottom: 1.5, height: 3.0 });
@@ -533,7 +533,7 @@ export class ShipGenerator {
                         // Type 6: Sloped Front (Sliced Cone)
                         const noseLength = lastRad * 2.0;
                         // Renamed to fuselage_nose to ensure it persists as a hull component
-                        attachComponent('fuselage_nose', [0, 0, lastZ + noseLength/2 - 0.1], lastRot, 'cone',
+                        attachComponent('fuselage_nose', [0, 0, lastZ + noseLength/2 - 0.2], lastRot, 'cone',
                             { radius: lastRad, height: noseLength, radialSegments: lastSegs }, 'NONE');
                         
                         const sliceSize = Math.max(lastRad, noseLength) * 3;
@@ -545,6 +545,7 @@ export class ShipGenerator {
                 // Central engine for SPINE or other fallback types
                 const engineHeight = 2.5;
                 const engineZ = -spineLength / 2 - engineHeight / 2 + 0.5; // Increased overlap
+                const engineZ = -spineLength / 2 - engineHeight / 2 + 1.0; // Increased overlap to ensure connection
                 attachComponent('engine', [0, 0, engineZ], [Math.PI / 2, 0, 0], 'cylinder', { radiusTop: 0.6, radiusBottom: 0.9, height: engineHeight });
             }
         }
@@ -841,6 +842,18 @@ export class ShipGenerator {
                 } else {
                     const cockpitZ = (spineLength / 2) - 1.5;
                     attachComponent('cockpit', [0, 0.6, cockpitZ], [0, 0, 0], 'ellipsoid', { width: 1.0, height: 0.8, length: 1.5 });
+                    
+                    // Raycast to find top surface for cockpit to avoid burying it
+                    let cockpitY = 0.6;
+                    if (this.getSurfacePoint) {
+                        const rayOrigin = [0, 50, cockpitZ];
+                        const rayDir = [0, -1, 0];
+                        const hit = this.getSurfacePoint(components, rayOrigin, rayDir, ['fuselage', 'hull', 'spine']);
+                        if (hit) {
+                            cockpitY = hit.y + 0.4; // Sit on top (0.4 is half height of cockpit)
+                        }
+                    }
+                    attachComponent('cockpit', [0, cockpitY, cockpitZ], [0, 0, 0], 'ellipsoid', { width: 1.0, height: 0.8, length: 1.5 });
                 }
             }
         }

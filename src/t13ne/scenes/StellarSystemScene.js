@@ -1,8 +1,8 @@
-import { LoreData } from '../lore/LoreData.js';
-import ProcGen from '../ProcGen.js';
-import Logger from '../../core/Logger.js';
-import { ResourceFactory } from '../lore/factories/ResourceFactory.js';
-import { PlanetGenerator } from './PlanetGenerator.js';
+import { LoreData } from '@/t13ne/procgen/lore/LoreData.js';
+import ProcGen from '@/t13ne/procgen/ProcGen.js';
+import Logger from '@/t13ne/core/Logger.js';
+import { ResourceFactory } from '@/t13ne/procgen/lore/factories/ResourceFactory.js';
+import { PlanetGenerator } from '@/t13ne/procgen/system/PlanetGenerator.js';
 
 export class PlanetarySystemGenerator {
     constructor(pluginManager, nameGenerator) {
