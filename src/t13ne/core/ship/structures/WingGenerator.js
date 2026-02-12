@@ -148,7 +148,7 @@ const createSingleWingStructure = (initialPos, initialRotZ, initialRootChord, is
                         usage: 'wing_pod', type: 'capsule',
                         dims: { radius: 0.3, length: extSpan * 0.6 },
                         pos: [attachmentPos.x, attachmentPos.y, attachmentPos.z],
-                        rot: [0, 0, extCurrentRotZ] // Align with wing
+                        rot: [Math.PI/2, 0, 0] // Align horizontal (Forward Z)
                      });
                 }
             }

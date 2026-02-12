@@ -39,8 +39,8 @@ export class PlanetarySystemGenerator {
         if (T13Geometry && systemData.name) {
             const geo = T13Geometry.calculateFullGeo(systemData.name);
             if (geo && geo.GeoHarmonics) {
-                if (geo.GeoHarmonics.Harmonic) harmonics = geo.GeoHarmonics.Harmonic;
-                if (geo.GeoHarmonics.corrected) chordNotes = geo.GeoHarmonics.corrected;
+                if (Array.isArray(geo.GeoHarmonics.Harmonic)) harmonics = geo.GeoHarmonics.Harmonic;
+                if (Array.isArray(geo.GeoHarmonics.corrected)) chordNotes = geo.GeoHarmonics.corrected;
             }
         }
 
@@ -106,7 +106,10 @@ export class PlanetarySystemGenerator {
             let orbitalDistance = Math.pow(currentPeriod * currentPeriod * starMass, 1/3);
 
             // Safety check for NaN or infinite values
-            if (!Number.isFinite(orbitalDistance) || isNaN(orbitalDistance)) orbitalDistance = lastDistance + 0.5;
+            if (!Number.isFinite(orbitalDistance) || isNaN(orbitalDistance)) {
+                Logger.warn(`${funcName}: Calculated orbital distance was NaN for planet ${i}. Using fallback.`);
+                orbitalDistance = lastDistance + 0.5;
+            }
             
             // Enforce minimum separation from previous planet
             if (orbitalDistance < lastDistance + 0.15) orbitalDistance = lastDistance + 0.15;
@@ -574,7 +577,7 @@ export class PlanetarySystemGenerator {
         
         if (T13Geometry && planetName) {
             const geo = T13Geometry.calculateFullGeo(planetName);
-            if (geo && geo.GeoHarmonics && geo.GeoHarmonics.Harmonic) {
+            if (geo && geo.GeoHarmonics && Array.isArray(geo.GeoHarmonics.Harmonic)) {
                 harmonics = geo.GeoHarmonics.Harmonic;
             }
         }
@@ -602,8 +605,14 @@ export class PlanetarySystemGenerator {
             const moonSeed2 = moonPRNG.nextDouble();
             const nameSeed = moonPRNG.nextDouble();
             
-            // Clamp harmonic to reasonable range (1-24) to prevent massive resonance values
-            const harmonic = Math.min(Math.max(1, harmonics[i]), 24);
+            // Ensure harmonic is a valid number and clamped to prevent massive orbits
+            let hVal = Number(harmonics[i]);
+            if (!Number.isFinite(hVal)) {
+                // Logger.warn(`PlanetarySystemGenerator: Invalid harmonic at index ${i}: ${harmonics[i]}. Defaulting to 1.`);
+                hVal = 1;
+            }
+            
+            const harmonic = Math.min(Math.max(1, hVal), 24);
 
             // Radius: Influenced by harmonic
             const sizeScale = 0.01 + (harmonic / 13) * 0.2; // 0.01 to 0.21 planet radius
@@ -615,6 +624,11 @@ export class PlanetarySystemGenerator {
             
             // Keplerian spacing: a_next = a_prev * (resonance)^(2/3)
             let moonDistance = currentOrbit * Math.pow(resonance, 2/3) * (0.95 + moonSeed2 * 0.1);
+            
+            if (!Number.isFinite(moonDistance)) {
+                Logger.warn(`PlanetarySystemGenerator: Moon distance NaN for moon ${i}. Aborting moon generation.`);
+                break;
+            }
             
             currentOrbit = moonDistance;
             
@@ -634,8 +648,8 @@ export class PlanetarySystemGenerator {
                 isRing = true;
             } else if (moonDistance > hillSphere) {
                 // Lost moon - skip
-                Logger.message(`Moon lost over Hill limit: ${moonDistance.toFixed(4)} > ${hillSphere.toFixed(4)}`);
-                continue;
+                // Logger.message(`Moon lost over Hill limit: ${moonDistance.toFixed(4)} > ${hillSphere.toFixed(4)}`);
+                break;
             } else if (moonDistance > hillSphere * 0.8) {
                 // Quasi-satellite at edge
                 type = 'Quasi-Satellite';

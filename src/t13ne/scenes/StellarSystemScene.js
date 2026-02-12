@@ -1,1459 +1,700 @@
-import { LoreData } from '../procgen/lore/LoreData.js';
-import { TechGenerator } from '../procgen/lore/factories/TechGenerator.js';
-import * as THREE from 'three';
-import Logger from '../core/Logger.js';
-import { Scene } from '../core/Scene.js';
-import { Controls } from '../core/Controls.js';
-import { OrreryScene } from './OrreryScene.js';
-import { SceneTools } from '../core/SceneTools.js';
-import { PlanetGenerator } from '../procgen/system/PlanetGenerator.js';
+import { LoreData } from '../lore/LoreData.js';
+import ProcGen from '../ProcGen.js';
+import Logger from '../../core/Logger.js';
+import { ResourceFactory } from '../lore/factories/ResourceFactory.js';
+import { PlanetGenerator } from './PlanetGenerator.js';
 
-export class StellarSystemScene extends Scene {
-  constructor(viewManager, sceneData) {
-    super(viewManager, sceneData);
-
-    this.galaxy = sceneData.galaxy;
-    this.systemData = sceneData.systemDetails;
-    this.starLocation = sceneData.star;
-    this.planets = sceneData.planets;
-    this.playIntro = sceneData.playIntro;
-
-    this.techGenerator = new TechGenerator(this.gameEngine.procGen);
-    this.starTexture = null;
-    this.camera = null; // This will be our rendering camera
-    this.planetMeshes = [];
-    this.homeworldMesh = null;
-    this.raycaster = new THREE.Raycaster();
-    this.mouseVector = new THREE.Vector2();
-    this.planetSystems = []; // Track the container groups
-    this.dustSystem = null;
-    this.snapshotCamera = null;
-    this.spectatorCameras = new Map();
-    this.trailingCameras = new Map();
-    this.onPlanetSelected = null;
-    
-    this.showOrrery = true;
-    this.scanHoverTime = 0;
-    this.currentScanTarget = null;
-    this.scanTriggered = false;
-    this.hudElement = null;
-    
-    this.AU_TO_UNITS = 5000; // Increased scale to prevent moon/star overlap
-    this.STAR_RADIUS = 100; // Star size relative to new AU scale
-    
-    // Spectator Camera Settings
-    this.spectatorSpeed = 2000; // Increased speed for large scale
-    this.spectatorLookSpeed = 0.002; // Radians per pixel
-    this.spectatorZoomSpeed = 200; // Units per scroll tick
-    
-    // Smoothing Vectors
-    this.spectatorVelocity = new THREE.Vector3();
-    this.spectatorRotationVelocity = new THREE.Vector2();
-    this.damping = 0.95; // Inertia factor (0.0 - 1.0)
-    
-    // Intro Animation State
-    this.isIntroPlaying = false;
-    this.introStartTime = 0;
-    this.introDuration = 20000; // Match LoaderManager duration to prevent HUD flicker
-    this.introCurve = null;
-    this.introTargets = [];
-    this.introResolve = null;
-    this.introPromise = null;
-    this.introStartPos = new THREE.Vector3();
-    this.introStarFlybyPos = new THREE.Vector3();
-
-    // Floating Origin System
-    this.worldGroup = new THREE.Group();
-    this.virtualCamera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 5e7);
-    this.orreryCamera = null;
-    this.pathLine = null;
-    this.pathPoints = [];
-    this.starRadius = 1000;
-
-    // Bind interaction methods to prevent DOM errors
-    this.onMouseClick = this.onMouseClick.bind(this);
-    this.onMouseMove = this.onMouseMove.bind(this);
-    this.onContextMenu = this.onContextMenu.bind(this);
-    
-    // Initialize keys for spectator movement
-    this.keys = { w: false, a: false, s: false, d: false, q: false, e: false, shift: false };
-    this.onKeyDown = this.onKeyDown.bind(this);
-    this.onKeyUp = this.onKeyUp.bind(this);
-
-    this.planetGenerator = new PlanetGenerator(this.gameEngine?.physicsEngine?.physx);
-
-    this.sanitizePlanetData();
-    // Sort planets by distance to ensure consistent order with Orrery and correct camera pathing
-    if (this.planets) {
-        this.planets.sort((a, b) => (a.orbitalDistance || 0) - (b.orbitalDistance || 0));
-    }
-  }
-
-  async prepare(onProgress) {
-    this.init();
-    onProgress({ status: 'System generated', percent: 1.0 });
-  }
-
-  sanitizePlanetData() {
-      if (!this.planets) return;
-      
-      // Sort planets by distance to ensure consistent order and spacing
-      this.planets.sort((a, b) => (a.orbitalDistance || 0) - (b.orbitalDistance || 0));
-
-      let minNextDist = 0.4; // Start at 0.4 AU to clear the sun's corona
-
-      this.planets.forEach((p, i) => {
-          // Ensure orbitalDistance is a valid number
-          if (typeof p.orbitalDistance !== 'number' || !Number.isFinite(p.orbitalDistance) || p.orbitalDistance < minNextDist) {
-              p.orbitalDistance = minNextDist;
-              // Logger.warn(`StellarSystemScene: Sanitized planet ${i} distance to ${p.orbitalDistance}`);
-          }
-          minNextDist = p.orbitalDistance + 0.2; // Enforce 0.2 AU gap between planets
-
-          // Synchronize start angles for Orrery alignment
-          if (p.startAngle === undefined) {
-              p.startAngle = Math.random() * Math.PI * 2;
-          }
-          // Sanitize Radius
-          if (typeof p.radius !== 'number' || !Number.isFinite(p.radius) || p.radius <= 0.0001) {
-              p.radius = 1.0; // Prevent 0 radius which causes Infinity scale
-          }
-          // Sanitize Orbit Speed
-          if (typeof p.orbitSpeed !== 'number' || !Number.isFinite(p.orbitSpeed)) {
-              p.orbitSpeed = 0.0001;
-          }
-          // Sanitize Moons
-          if (p.moons) {
-              p.moons.forEach((m, j) => {
-                  if (typeof m.orbitalDistance !== 'number' || !Number.isFinite(m.orbitalDistance)) {
-                      m.orbitalDistance = 0.002 + (j * 0.001); // Fallback distance
-                  }
-                  // Sanitize Moon Radius
-                  if (typeof m.radius !== 'number' || !Number.isFinite(m.radius) || m.radius <= 0.0001) {
-                      m.radius = 0.2;
-                  }
-              });
-          }
-      });
-  }
-
-  init() {
-    const funcName = 'SolarSystemScene.init';
-    Logger.start(funcName, { systemName: this.systemData.name });
-
-    this.scene.add(this.worldGroup);
-    this.starTexture = SceneTools.createStarTexture(128, 'rgba(255, 255, 255, 1)');
-    
-    // Setup Orrery for PiP FIRST so we can use its scale for the camera
-    this.orrery = new OrreryScene(this.viewManager, {
-        systemDetails: this.systemData,
-        planets: this.planets,
-        star: this.starLocation
-    });
-    this.orrery.init();
-    // Disable orrery controls so they don't interfere
-    this.orrery.cameraControls.forEach(c => c.enabled = false);
-
-    this.setupThreeJS();
-    this.setupExtraCameras();
-    this.createScene();
-    this.createHUD();
-
-    // Generate icons after a short delay to ensure scene is ready
-    // In a real app, this might be triggered by a specific event or user action
-    setTimeout(() => this.generatePlanetIcons(), 1000);
-  }
-
-  setupThreeJS() {
-    const funcName = 'SolarSystemView.setupThreeJS';
-    Logger.start(funcName);
-    this.scene.background = new THREE.Color(0x000000);
-
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-
-    // Calculate system radius
-    let maxDist = 1000;
-    if (this.planets && this.planets.length > 0) {
-        maxDist = this.planets.reduce((max, p) => {
-            const d = this.STAR_RADIUS + ((p.orbitalDistance || 1) * this.AU_TO_UNITS);
-            return (Number.isFinite(d) && d > max) ? d : max;
-        }, 0);
-    }
-    
-    // NaN Safety Check
-    if (isNaN(maxDist) || maxDist <= 0) maxDist = 2000;
-    
-    this.systemRadius = Math.max(maxDist, this.STAR_RADIUS * 20, 500); // Reduced minimum radius for small systems
-    Logger.message(`StellarSystemScene: System Radius calculated as ${this.systemRadius}`);
-
-    // Massive far plane for space
-    // Cap at 5,000,000 to preserve depth precision with near=10
-    const skyboxDistance = Math.min(Math.max(this.systemRadius * 100, 1000000), 5000000); 
-
-    // 1. Rendering Camera (Fixed at origin for floating origin effect)
-    this.camera = new THREE.PerspectiveCamera(60, width / height, 10, skyboxDistance); // Increased near plane to 10 to prevent z-fighting
-    this.scene.add(this.camera);
-
-    // 2. Virtual Camera (Logical position for controls)
-    // 15 degrees above ecliptic
-    const elevation = 15 * (Math.PI / 180);
-    // Ensure we are far enough back to see the system but not inside the star
-    const startDist = this.playIntro ? this.systemRadius * 1.2 : this.systemRadius * 1.5;
-    const startY = startDist * Math.sin(elevation);
-    const startZ = startDist * Math.cos(elevation);
-
-    this.virtualCamera.fov = 60;
-    this.virtualCamera.aspect = width / height;
-    this.virtualCamera.near = 10; // Match rendering camera
-    this.virtualCamera.far = skyboxDistance;
-    this.virtualCamera.position.set(0, startY, startZ);
-    this.virtualCamera.lookAt(0, 0, 0);
-    this.virtualCamera.updateProjectionMatrix();
-
-    // Register the VIRTUAL camera for controls, but we render with the static camera
-    this.addCamera('systemMain', this.virtualCamera);
-    this.setActiveCamera('systemMain');
-    
-    // 3. Cinematic Camera
-    this.cinematicCamera = new THREE.PerspectiveCamera(60, width / height, 0.1, skyboxDistance);
-    this.cinematicCamera.position.copy(this.virtualCamera.position);
-    this.addCamera('cinematic', this.cinematicCamera);
-    const cinLight = new THREE.PointLight(0xffffff, 1.5, 0);
-    this.cinematicCamera.add(cinLight);
-    this.scene.add(this.cinematicCamera);
-
-    // 4. Orrery Camera
-    // Calculate distance based on Orrery Scale (Toy Scale)
-    let orreryMaxRadius = 1000;
-    if (this.orrery && typeof this.orrery.getVisualDistance === 'function' && this.planets.length > 0) {
-        // Get the visual distance of the furthest planet
-        orreryMaxRadius = this.orrery.getVisualDistance(this.planets.length - 1);
-    }
-    
-    const orreryAspect = 1.0; // Square PiP
-    const orreryDist = orreryMaxRadius * 3.5; // Distance to fit radius with 45 deg FOV + buffer
-    
-    this.orreryCamera = new THREE.PerspectiveCamera(45, orreryAspect, 0.1, orreryDist * 5);
-    const orreryElevation = 45 * (Math.PI / 180); // Steeper angle for better view of rings
-    this.orreryCamera.position.set(0, orreryDist * Math.sin(orreryElevation), orreryDist * Math.cos(orreryElevation));
-    this.orreryCamera.lookAt(0, 0, 0);
-    this.addCamera('orrery', this.orreryCamera);
-
-    // Note: We are NOT setting up TrackballControls here. 
-    // We will use custom Spectator controls in the update loop.
-
-    Logger.end(funcName);
-  }
-
-  setupExtraCameras() {
-      // Snapshot Camera for UI Icons
-      this.snapshotCamera = new THREE.PerspectiveCamera(30, 1, 0.1, 100000);
-      this.scene.add(this.snapshotCamera);
-      this.addCamera('snapshot', this.snapshotCamera);
-  }
-
-  createHUD() {
-      this.hudElement = document.createElement('div');
-      this.hudElement.style.position = 'absolute';
-      this.hudElement.style.top = '10px';
-      this.hudElement.style.left = '10px';
-      this.hudElement.style.color = '#00ff00';
-      this.hudElement.style.fontFamily = 'monospace';
-      this.hudElement.style.fontSize = '14px';
-      this.hudElement.style.pointerEvents = 'none';
-      this.hudElement.style.zIndex = '1000';
-      this.hudElement.style.whiteSpace = 'pre';
-      this.hudElement.innerHTML = 'Spectator Mode<br>WASD: Move | Q/E: Up/Down | Shift: Boost<br>Mouse Wheel: Adjust Speed';
-      if (this.playIntro) {
-          this.hudElement.style.display = 'none';
-      }
-      // HUD is attached in onLoad to prevent it showing during pre-loading
-  }
-
-  createScene() {
-    const funcName = 'SolarSystemView.createScene';
-    Logger.start(funcName);
-    
-    // Global Light in World
-    const hemiLight = new THREE.HemisphereLight(0xeeeeff, 0x080820, 0.3);
-    this.worldGroup.add(hemiLight);
-
-    // Headlight on rendering camera
-    const camLight = new THREE.PointLight(0xffffff, 0.5, 0);
-    this.camera.add(camLight);
-
-    // Star Light in World
-    const starLight = new THREE.PointLight(this.systemData.starColor, 2.0, 0, 0); // No decay for infinite range
-    starLight.position.set(0, 0, 0);
-    this.worldGroup.add(starLight);
-
-    this.systemGroup = new THREE.Group();
-    this.worldGroup.add(this.systemGroup); // systemGroup is child of worldGroup
-    
-    if (this.starLocation) {
-        const angleToCenter = Math.atan2(this.starLocation.x, this.starLocation.z);
-        this.systemGroup.rotation.y = angleToCenter;
-        this.systemGroup.rotation.x = (Math.random() - 0.5) * 0.5; 
+export class PlanetarySystemGenerator {
+    constructor(pluginManager, nameGenerator) {
+        const funcName = 'PlanetarySystemGenerator.constructor';
+        Logger.start(funcName);
+        this.pluginManager = pluginManager;
+        this.nameGenerator = nameGenerator;
+        this.resourceFactory = new ResourceFactory(pluginManager);
+        this.planet3DGenerator = new PlanetGenerator(null); // Pass physxProvider if available
+        Logger.end(funcName);
     }
 
-    this.createStar();
-    this.createPlanets();
-    this.createSkybox();
-    this.createSpaceDust();
-    this.createAsteroids();
-    Logger.end(funcName);
-  }
+    generatePlanets(systemData) {
+        const funcName = 'PlanetarySystemGenerator.generatePlanets';
+        if (!systemData) {
+            Logger.error(`${funcName}: systemData is undefined.`);
+            return [];
+        }
+        Logger.start(funcName, { numPlanets: systemData.numPlanets });
 
-  createSpaceDust() {
-      const particleCount = 8000; // Increased count
-      const geometry = new THREE.BufferGeometry();
-      const positions = new Float32Array(particleCount * 3);
-      
-      // Initial random positions in a box around origin
-      const range = 4000; // Increased range to reduce "tunnel" effect
-      for (let i = 0; i < particleCount; i++) {
-          positions[i * 3] = (Math.random() - 0.5) * range;
-          positions[i * 3 + 1] = (Math.random() - 0.5) * range;
-          positions[i * 3 + 2] = (Math.random() - 0.5) * range;
-      }
-      
-      geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-      
-      const sprite = SceneTools.createGlowTexture(); // Use a soft texture
-      const material = new THREE.PointsMaterial({
-          color: 0xffffff,
-          size: 2, // Further reduced size
-          map: sprite,
-          transparent: true,
-          opacity: 0.6,
-          sizeAttenuation: true,
-          depthWrite: false,
-          blending: THREE.AdditiveBlending
-      });
-      
-      this.dustSystem = new THREE.Points(geometry, material);
-      this.dustSystem.frustumCulled = false;
-      this.worldGroup.add(this.dustSystem);
-  }
+        const planets = [];
+        // Ensure seeds exist to prevent crash if systemData is incomplete
+        const seeds = (systemData.seeds && Array.isArray(systemData.seeds)) ? systemData.seeds : [Math.random(), Math.random(), Math.random(), Math.random()];
+        const numPlanets = systemData.numPlanets || 0;
+        const homeWorldIndex = systemData.homeWorldIndex !== undefined ? systemData.homeWorldIndex : -1;
 
-  createSkybox() {
-      const funcName = 'StellarSystemScene.createSkybox';
-      Logger.start(funcName);
-      
-      const bgRadius = this.systemRadius * 50; 
-      // Use fixed pixel size (2) instead of scaled size to avoid "large squares"
-      const starField = SceneTools.createStarfield(bgRadius, 15000, 1.5, false);
-      this.scene.add(starField);
-
-      // Add distant stars from galaxy data if available
-      if (this.galaxy && this.galaxy.stars) {
-          const starGeometry = new THREE.BufferGeometry();
-          const positions = [];
-          const colors = [];
-          const currentPos = new THREE.Vector3(0,0,0);
-          if (this.starLocation) currentPos.set(this.starLocation.x, this.starLocation.y, this.starLocation.z);
-
-          this.galaxy.stars.forEach(star => {
-              const starPos = new THREE.Vector3(star.x, star.y, star.z);
-              const dist = starPos.distanceTo(currentPos);
-              if (dist < 1) return;
-              
-              const distance = (this.systemRadius || 5000) * 20; 
-              const dir = starPos.clone().sub(currentPos).normalize();
-              const pos = dir.multiplyScalar(distance);
-              positions.push(pos.x, pos.y, pos.z);
-
-              // Dimmer, milkier galaxy background
-              let brightness = 8000 / (dist + 500); 
-              if (brightness > 0.8) brightness = 0.8;
-              if (brightness < 0.05) brightness = 0.05;
-              const c = new THREE.Color(star.color);
-              c.multiplyScalar(brightness);
-              colors.push(c.r, c.g, c.b);
-          });
-          starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-          starGeometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
-          const starMaterial = new THREE.PointsMaterial({ size: 1.5, sizeAttenuation: false, vertexColors: true, transparent: true, opacity: 0.8, depthWrite: false });
-          const starPoints = new THREE.Points(starGeometry, starMaterial);
-          this.scene.add(starPoints);
-      }
-      Logger.end(funcName);
-  }
-
-  createStar() {
-    const funcName = 'SolarSystemView.createStar';
-    Logger.start(funcName);
-    const starColor = new THREE.Color(this.systemData.starColor);
-    const starRadius = this.STAR_RADIUS;
-
-    // Core
-    const starGeometry = new THREE.SphereGeometry(starRadius, 64, 64);
-    const starMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
-    this.starMesh = new THREE.Mesh(starGeometry, starMaterial);
-    this.systemGroup.add(this.starMesh);
-
-    // Removed Corona Sprite to prevent flickering artifacts reported by user.
-    // The star is now just a bright sphere.
-    // We can add a glow mesh later if needed, but for now stability is priority.
-
-    // Removed Distant Star Sprite to prevent "flashing triangles" / z-fighting artifacts at large scales
-    // The corona and glow should be sufficient for system view.
-    // const distantMat = new THREE.SpriteMaterial({
-    //     map: this.starTexture,
-    //     color: starColor,
-    //     transparent: true,
-    //     blending: THREE.AdditiveBlending,
-    //     depthTest: true, 
-    //     depthWrite: false
-    // });
-    // const distantSprite = new THREE.Sprite(distantMat);
-    // // Scale it huge so it's visible from the outer system
-    // distantSprite.scale.set(starRadius * 50, starRadius * 50, 1.0); 
-    // this.starMesh.add(distantSprite);
-
-    Logger.end(funcName);
-  }
-
-  createAsteroids() {
-      const asteroidCount = 200;
-      const beltDistance = this.systemRadius * 0.6; // Arbitrary belt location
-      const beltWidth = 200;
-      
-      for(let i=0; i<asteroidCount; i++) {
-          const angle = Math.random() * Math.PI * 2;
-          const dist = beltDistance + (Math.random() - 0.5) * beltWidth;
-          const y = (Math.random() - 0.5) * 50;
-          
-          const size = Math.random() * 3 + 1;
-          const mesh = this.planetGenerator.generateAsteroidMesh(i, size);
-          
-          mesh.position.set(dist * Math.cos(angle), y, dist * Math.sin(angle));
-          mesh.rotation.set(Math.random()*Math.PI, Math.random()*Math.PI, Math.random()*Math.PI);
-          
-          this.systemGroup.add(mesh);
-      }
-  }
-
-  createPlanets() {
-    const funcName = 'SolarSystemView.createPlanets';
-    Logger.start(funcName);
-    this.planetMeshes = [];
-    this.planetSystems = [];
-
-    if (!this.planets || this.planets.length === 0) Logger.warn("StellarSystemScene: No planets to create.");
-
-    this.planets.forEach((planet) => {
-      if (!planet) return;
-
-      // Ensure distance includes Star Radius to prevent clipping
-      const dist = this.STAR_RADIUS + ((planet.orbitalDistance || (Math.random() * 5 + 1)) * this.AU_TO_UNITS);
-      const targetRadius = Math.max(50, (planet.radius || 1) * 100); // Further increased size for visibility
-
-      const orbitGeometry = new THREE.BufferGeometry();
-      const orbitPoints = [];
-      const segments = 128;
-      for (let i = 0; i <= segments; i++) {
-        const angle = (i / segments) * Math.PI * 2;
-        const x = dist * Math.cos(angle);
-        const z = dist * Math.sin(angle);
-        // Safety check for NaN to prevent flickering triangles
-        if (!isNaN(x) && !isNaN(z)) orbitPoints.push(x, 0, z);
-      }
-      orbitGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(orbitPoints), 3));
-
-      // Orbit Color based on Temperature/Distance (AU)
-      let orbitColor = 0x0088ff; // Default Blue (Frigid)
-      const au = planet.orbitalDistance;
-      if (au < 0.8) {
-          orbitColor = 0xff3333; // Red (Hot)
-      } else if (au >= 0.8 && au <= 1.6) {
-          orbitColor = 0x33ff33; // Green (Habitable)
-      }
-      const lineMaterial = new THREE.LineBasicMaterial({ color: orbitColor, transparent: true, opacity: 0.3 });
-      const orbitLine = new THREE.Line(orbitGeometry, lineMaterial);
-      this.systemGroup.add(orbitLine);
-
-      // Planet Container Group (Moves around star, does not rotate on axis)
-      const planetSystem = new THREE.Group();
-      const startAngle = planet.startAngle !== undefined ? planet.startAngle : Math.random() * Math.PI * 2;
-      planetSystem.position.set(dist * Math.cos(startAngle), 0, dist * Math.sin(startAngle));
-      
-      planetSystem.userData = {
-          planet,
-          scaledDistance: dist,
-          angle: Number.isFinite(startAngle) ? startAngle : 0,
-          orbitSpeed: (planet.orbitSpeed || 0.0001)
-      };
-      this.systemGroup.add(planetSystem);
-      this.planetSystems.push(planetSystem);
-
-      // Use PlanetGenerator for physical models
-      const planetGroup = this.planetGenerator.generatePlanetMesh(planet);
-      
-      // Scale adjustment: PlanetGenerator uses radius * 10. We want targetRadius.
-      const genRadius = (planet.radius || 1) * 10;
-      let scale = 1;
-      if (genRadius > 0.0001) {
-          scale = targetRadius / genRadius;
-      }
-      if (!Number.isFinite(scale)) scale = 1; // Prevent Infinity/NaN scale
-      planetGroup.scale.set(scale, scale, scale);
-
-      // Add mesh to container
-      planetSystem.add(planetGroup);
-      
-      // Add children meshes to planetMeshes for raycasting
-      planetGroup.traverse(child => {
-          if (child.isMesh) {
-              this.planetMeshes.push(child);
-              // Ensure userData has planet info for tooltips
-              child.userData.planet = planet;
-          }
-      });
-      // Also tag the group
-      planetGroup.userData.planet = planet;
-
-      planetSystem.userData.visualMesh = planetGroup; // Reference for rotation
-      
-      if (planet.isHomeworld) this.homeworldMesh = planetGroup;
-
-      if (planet.moons) {
-        planet.moons.forEach((moon, mIdx) => {
-            const MOON_ORBIT_SCALE = 300000; // Further increased scale
-            
-            const moonRadius = Math.max(0.5, targetRadius * 0.2);
-            // Ensure moon starts outside planet: Radius + MoonRadius + Buffer + Scaled Distance
-            // Clamp orbital distance contribution to prevent massive orbits from bad harmonics
-            const safeOrbitalDist = Math.min(Number.isFinite(moon.orbitalDistance) ? moon.orbitalDistance : 0.002, 0.5);
-            let moonDist = targetRadius + moonRadius + 40 + (safeOrbitalDist * MOON_ORBIT_SCALE);
-            
-            // Clamp rings close
-            if (moon.isRing) {
-                // PlanetGenerator handles rings, so skip ring moons here to avoid duplication
-                return;
+        let lastDistance = 0.2; // Start at 0.2 AU for realistic inner planets
+        
+        // T13 Harmonics for Orbital Resonance
+        const T13NE = this.pluginManager?.getApi('T13', 'T13NE');
+        const T13Geometry = T13NE?.getModule('T13Geometry');
+        let harmonics = [];
+        let chordNotes = [];
+        if (T13Geometry && systemData.name) {
+            const geo = T13Geometry.calculateFullGeo(systemData.name);
+            if (geo && geo.GeoHarmonics) {
+                if (Array.isArray(geo.GeoHarmonics.Harmonic)) harmonics = geo.GeoHarmonics.Harmonic;
+                if (Array.isArray(geo.GeoHarmonics.corrected)) chordNotes = geo.GeoHarmonics.corrected;
             }
+        }
 
-            // Use generateAsteroidMesh for moons for physical look
-            const moonSeed = (planet.name.length + mIdx) * 123;
-            const moonMesh = this.planetGenerator.generateAsteroidMesh(moonSeed, moonRadius);
+        const BASE_ORBIT_SPEED = 0.0000005;
+        const PLANET_SPEED_FACTOR = 3;
+        const BASE_SPIN_SPEED = 0.000005;
+
+        let totalMoonsGenerated = 0;
+        const MAX_MOONS_PER_SYSTEM = 100;
+        
+        // Calculate initial period for the starting distance (0.2 AU)
+        // Kepler's 3rd Law: T^2 = a^3 / M (T in years, a in AU, M in Solar Masses)
+        const starMass = this.getStarMass(systemData.star?.starClass);
+        let currentPeriod = Math.sqrt(Math.pow(lastDistance, 3) / starMass);
             
-            const moonAngle = Math.random() * Math.PI * 2;
-            moonMesh.userData = { 
-                moon: moon,
-                distance: moonDist,
-                angle: Number.isFinite(moonAngle) ? moonAngle : 0,
-                orbitSpeed: 0.5 + (Math.random() * 0.5) // Relative speed around planet
-            };
-            if (moon.isHomeworld) {
-                moonMesh.userData.isHomeworld = true;
-                this.homeworldMesh = moonMesh;
-            }
+
+        for (let i = 0; i < numPlanets; i++) {
+            const planetPRNG = ProcGen.createPRNG([...seeds, i].join(','));
+            const innerSeed = planetPRNG.nextDouble();
+            const outerSeed = planetPRNG.nextDouble();
+            const moonSeed = planetPRNG.nextDouble();
+            const nameSeed = planetPRNG.nextDouble();
+
+            // Calculate Orbital Period Ratio
+            let periodRatio = 1.618; // Default Golden Ratio
             
-            moonMesh.position.set(moonDist * Math.cos(moonAngle), 0, moonDist * Math.sin(moonAngle));
-            
-            // Moon Orbit
-            if (moon.type !== 'Quasi-Satellite' && Number.isFinite(moonDist)) {
-                const moonOrbitGeo = new THREE.BufferGeometry();
-                const moonOrbitPoints = [];
-                const mSegments = 64;
-                for (let j = 0; j <= mSegments; j++) {
-                    const mAngle = (j / mSegments) * Math.PI * 2;
-                    const mx = moonDist * Math.cos(mAngle);
-                    const mz = moonDist * Math.sin(mAngle);
-                    // Safety check
-                    if (!isNaN(mx) && !isNaN(mz)) moonOrbitPoints.push(mx, 0, mz);
+            if (chordNotes.length > 0) {
+                // Use Chord intervals for natural harmonic ratios
+                // We map the sequence of planets to the sequence of notes in the chord
+                const noteIndex = i % chordNotes.length;
+                const octave = Math.floor(i / chordNotes.length);
+                
+                // Current note value (absolute semitones from root)
+                const currentNoteVal = chordNotes[noteIndex] + (octave * 12);
+                
+                // Previous note value (relative to the sequence start)
+                let prevNoteVal = 0;
+                if (i > 0) {
+                    const prevIndex = (i - 1) % chordNotes.length;
+                    const prevOctave = Math.floor((i - 1) / chordNotes.length);
+                    prevNoteVal = chordNotes[prevIndex] + (prevOctave * 12);
                 }
-                moonOrbitGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(moonOrbitPoints), 3));
-                // Bright yellow orbit line for visibility
-                const moonOrbitLine = new THREE.Line(moonOrbitGeo, new THREE.LineBasicMaterial({ color: 0xffff00, transparent: true, opacity: 0.5 }));
-                planetSystem.add(moonOrbitLine);
+                
+                let interval = currentNoteVal - prevNoteVal;
+                if (interval <= 0) interval += 12; // Ensure outward movement
+                
+                // Ratio for equal temperament semitones: 2^(n/12)
+                periodRatio = Math.pow(2, interval / 12);
+            } else if (harmonics.length > 0) {
+                // Fallback to Harmonics table if no chord
+                const stableResonances = [
+                    1.5, 2.0, 1.333, 1.5, 2.5, 2.0, 1.6, 1.5, 3.0, 1.25, 2.0, 1.5, 1.666
+                ];
+                const harmonicIndex = i % harmonics.length;
+                const hVal = harmonics[harmonicIndex];
+                periodRatio = stableResonances[(hVal - 1) % stableResonances.length] || 1.6;
+            }
+
+            // Update Period
+            currentPeriod = currentPeriod * periodRatio;
+            
+            // Calculate Distance from Period: a = (T^2 * M)^(1/3)
+            let orbitalDistance = Math.pow(currentPeriod * currentPeriod * starMass, 1/3);
+
+            // Safety check for NaN or infinite values
+            if (!Number.isFinite(orbitalDistance) || isNaN(orbitalDistance)) {
+                Logger.warn(`${funcName}: Calculated orbital distance was NaN for planet ${i}. Using fallback.`);
+                orbitalDistance = lastDistance + 0.5;
             }
             
-            planetSystem.add(moonMesh);
-        });
-      }
-    });
-    Logger.end(funcName);
-  }
+            // Enforce minimum separation from previous planet
+            if (orbitalDistance < lastDistance + 0.15) orbitalDistance = lastDistance + 0.15;
 
-  // ... (playIntroSequence remains largely the same, but uses virtualCamera/cinematicCamera)
+            const planetRadius = outerSeed * 0.5 + 0.5;
+            lastDistance = orbitalDistance;
 
-  playIntroSequence() {
-      Logger.message("StellarSystemScene: Playing intro sequence...");
-      if (!this.playIntro) return Promise.resolve();
-      if (this.isIntroPlaying && this.introPromise) return this.introPromise;
+            const classificationData = this.determinePlanetClassification(
+                i,
+                orbitalDistance,
+                planetRadius,
+                planetPRNG,
+                systemData
+            );
+            Logger.message(`${funcName}: Planet ${i} classified as ${classificationData.type}`);
 
-      this.isIntroPlaying = true;
-      this.shouldUpdateControls = false;
-      this.pathPoints = [];
-      
-      this.introStartPos.set(0, this.systemRadius * 10, this.systemRadius * 5);
-      this.introStarFlybyPos.set(this.starRadius * 3, this.starRadius, this.starRadius * 3);
-      
-      this.cinematicCamera.fov = 60;
-      this.cinematicCamera.updateProjectionMatrix();
-      this.cinematicCamera.position.copy(this.introStartPos);
-      this.cinematicCamera.lookAt(0, 0, 0);
-
-      this.introStartTime = performance.now();
-      
-      this.introPromise = new Promise(resolve => {
-          this.introResolve = resolve;
-          // Reset Orrery Path to avoid "jump" lines
-          if (this.orrery) {
-              this.orrery.resetPath();
-          }
-          
-          // Switch to cinematic camera
-          this.setActiveCamera('cinematic');
-          const controls = this.cameraControls.get('systemMain');
-          if (controls) controls.enabled = false;
-
-          this.systemGroup.updateMatrixWorld(true);
-
-          const getWorldPos = (obj) => {
-              const vec = new THREE.Vector3();
-              obj.getWorldPosition(vec);
-              return vec;
-          };
-
-          // Targets
-          const starPos = new THREE.Vector3(0, 0, 0);
-          
-          // 1. Find Homeworld Target (Planet or Moon)
-          let homeworld = null;
-          let homeSystem = this.planetSystems.find(s => s.userData.planet && s.userData.planet.isHomeworld) || this.planetSystems[0];
-
-          // Fallback if no planets exist at all
-          if (!homeSystem) {
-              Logger.warn("StellarSystemScene: No planets found. Creating virtual homeworld for intro.");
-              homeSystem = new THREE.Object3D();
-              homeSystem.position.set(this.systemRadius * 0.3, 0, 0); // Place it somewhere
-              homeSystem.userData = { planet: { radius: 10 }, visualMesh: homeSystem };
-          }
-
-          if (homeSystem) {
-              homeworld = homeSystem.userData.visualMesh;
-              if (homeSystem.children && homeSystem.children.length > 0) {
-                  // Check for homeworld moon
-                  const hwMoon = homeSystem.children.find(c => c.userData.isHomeworld);
-                  if (hwMoon) {
-                      homeworld = hwMoon;
-                  } else {
-                      homeworld = homeSystem.userData.visualMesh;
-                  }
-              }
-          }
-
-          // 2. Find Flyby Target (Outer Planet)
-          // Look for a planet further out than the homeworld to fly past
-          let flybySystem = null;
-          if (this.planetSystems && this.planetSystems.length > 0) {
-              const outerSystems = this.planetSystems.filter(s => 
-                  s !== homeSystem && 
-                  s.userData.planet && 
-                  s.userData.planet.orbitalDistance > (homeSystem.userData.planet.orbitalDistance || 0)
-              );
-              
-              // Pick the largest outer planet, or just any other system if none are outer
-              if (outerSystems.length > 0) {
-                  flybySystem = outerSystems.sort((a, b) => (b.userData.planet.radius || 0) - (a.userData.planet.radius || 0))[0];
-              } else {
-                  // If homeworld is the outermost, try to find an inner planet to fly by
-                  const otherSystems = this.planetSystems.filter(s => s !== homeSystem);
-                  if (otherSystems.length > 0) {
-                      flybySystem = otherSystems[otherSystems.length - 1]; // Furthest other planet
-                  } else {
-                      flybySystem = homeSystem;
-                  }
-              }
-          }
-          Logger.message(`StellarSystemScene: Flyby Target selected: ${flybySystem.userData.planet.name || 'Unknown'}`);
-
-          // 3. Calculate Path Points in Local Space
-          // We calculate in Local Space to ensure the path aligns with the orbital plane (XZ)
-          // regardless of how the systemGroup is rotated in World Space.
-          
-          // End Position: Inside orbit of homeworld, facing it.
-          const hwWorld = getWorldPos(homeworld);
-          const hwLocal = hwWorld.clone();
-          this.systemGroup.worldToLocal(hwLocal);
-          
-          const hwRadius = (homeworld.geometry && homeworld.geometry.parameters.radius) || 10;
-          const vecStarToHW = hwLocal.clone().normalize(); // Star is at 0,0,0 local
-          
-          // Position: HW Position minus vector from star (placing it "inside" the orbit, facing planet)
-          const endPos = hwLocal.clone().sub(vecStarToHW.multiplyScalar(hwRadius * 4.0)).add(new THREE.Vector3(0, hwRadius * 1.0, 0));
-
-          // Flyby Position
-          let flybyPos;
-          let flybyRadius = 20;
-          if (flybySystem) {
-              const fbMesh = flybySystem.userData.visualMesh || flybySystem; 
-              const fbWorld = getWorldPos(fbMesh);
-              const fbLocal = fbWorld.clone();
-              this.systemGroup.worldToLocal(fbLocal);
-              
-              flybyRadius = (fbMesh.geometry && fbMesh.geometry.parameters.radius) || 20;
-              
-              // Calculate a safe flyby point:
-              // Perpendicular to the path towards homeworld to create a nice curve
-              let vecToHW = hwLocal.clone().sub(fbLocal);
-              if (vecToHW.lengthSq() < 1) {
-                  // Fallback vector if start/end are same (e.g. single planet system)
-                  vecToHW = new THREE.Vector3(1, 0, 0);
-              }
-              vecToHW.normalize();
-              const up = new THREE.Vector3(0, 1, 0); // Local Up
-              const side = new THREE.Vector3().crossVectors(vecToHW, up).normalize();
-              
-              // Pass 3 radii to the side and 1.5 radii up for a closer, more dramatic flyby
-              flybyPos = fbLocal.clone().add(side.multiplyScalar(flybyRadius * 3)).add(new THREE.Vector3(0, flybyRadius * 1.5, 0));
-          } else {
-              // Fallback: Midpoint with offset
-              flybyPos = hwLocal.clone().multiplyScalar(0.5).add(new THREE.Vector3(200, 100, 0));
-          }
-
-          // Start Position: Outside system, 20 degrees above ecliptic
-          // Vector from Star -> Flyby Planet
-          const outwardVec = flybyPos.clone().normalize();
-
-          // Calculate start distance relative to the Flyby target, rather than the system edge
-          // This ensures we start "outside" the flyby event, but not necessarily at the edge of the Oort cloud
-          const flybyDistFromStar = new THREE.Vector3(flybyPos.x, 0, flybyPos.z).length();
-          const startDist = Math.max(flybyDistFromStar * 1.4, this.STAR_RADIUS * 10, 200); 
-
-          const elevationAngle = 15 * (Math.PI / 180); 
-          
-          // Position: Along the outward vector (projected to XZ), but elevated
-          const flatOutward = new THREE.Vector3(outwardVec.x, 0, outwardVec.z).normalize();
-          const startPos = flatOutward.clone().multiplyScalar(startDist * Math.cos(elevationAngle));
-          startPos.y = startDist * Math.sin(elevationAngle); 
-
-          // Add an intermediate point to create an arc
-          // Midpoint between Start and Flyby, but pushed "up" to create a cinematic arc
-          const distStartToFlyby = startPos.distanceTo(flybyPos);
-          const midPoint = startPos.clone().lerp(flybyPos, 0.5);
-          midPoint.y += distStartToFlyby * 0.05; // Reduced arc height for smoother path
-
-          const localPoints = [startPos, midPoint, flybyPos, endPos];
-          
-          // Create Curve
-          const validLocalPoints = localPoints.filter(p => p instanceof THREE.Vector3 && !isNaN(p.x) && !isNaN(p.y) && !isNaN(p.z));
-          if (validLocalPoints.length < 2) {
-              Logger.error("StellarSystemScene: Not enough valid points for intro curve.", localPoints);
-              this.isIntroPlaying = false;
-              this.shouldUpdateControls = true;
-              this.setActiveCamera('systemMain');
-              if (controls) {
-                  controls.enabled = true;
-              }
-              return;
-          }
-          
-          // Create Local Curve for Orrery
-          this.introCurve = new THREE.CatmullRomCurve3(validLocalPoints);
-          this.introCurve.curveType = 'catmullrom';
-          this.introCurve.tension = 0.1; // Low tension for straighter lines
-
-          // Set Intro Path on Orrery immediately
-          if (this.orrery) {
-              const pathPoints = this.introCurve.getPoints(2000); // High resolution path
-              this.orrery.setIntroPath(pathPoints, this.AU_TO_UNITS);
-          }
-
-          // Convert Local Points to World Space for Camera Animation
-          const worldPoints = validLocalPoints.map(p => {
-              const wp = p.clone();
-              this.systemGroup.localToWorld(wp);
-              return wp;
-          });
-          this.introCurveWorld = new THREE.CatmullRomCurve3(worldPoints);
-          this.introCurveWorld.curveType = 'catmullrom';
-          this.introCurveWorld.tension = 0.1;
-
-          // Set initial camera position to start of curve immediately
-          this.cinematicCamera.position.copy(worldPoints[0]);
-          
-          // Look at the first target (Flyby Planet) in World Space
-          const flybyWorld = flybyPos.clone();
-          this.systemGroup.localToWorld(flybyWorld);
-          this.cinematicCamera.lookAt(flybyWorld); 
-
-          // Force update Orrery Marker to start position immediately (in Local Space)
-          if (this.orrery) {
-              const localCamPos = this.cinematicCamera.position.clone();
-              this.systemGroup.worldToLocal(localCamPos);
-              this.orrery.updateCameraMarker(localCamPos, this.AU_TO_UNITS);
-          }
-          
-          // LookAt Curve (Interpolate between targets)
-          this.introTargets = [
-              { target: flybySystem ? (flybySystem.userData.visualMesh || flybySystem) : this.starMesh, time: 0.0 }, 
-              { target: flybySystem ? (flybySystem.userData.visualMesh || flybySystem) : this.starMesh, time: 0.5 }, 
-              { target: homeworld, time: 0.85 }, 
-              { target: homeworld, time: 1.0 }    
-          ];
-
-          this.introStartTime = performance.now();
-      });
-      return this.introPromise;
-  }
-
-  onLoad() {
-    super.onLoad();
-    this.renderer.domElement.addEventListener('click', this.onMouseClick);
-    this.renderer.domElement.addEventListener('mousemove', this.onMouseMove);
-    this.renderer.domElement.addEventListener('contextmenu', this.onContextMenu);
-    window.addEventListener('keydown', this.onKeyDown);
-    window.addEventListener('keyup', this.onKeyUp);
-    Controls.setLockingEnabled(true);
-    
-    if (this.hudElement) {
-        this.viewManager.setHUD(this.hudElement);
-    }
-
-    if (this.playIntro) {
-        this.playIntroSequence();
-    }
-  }
-
-  onUnload() {
-    super.onUnload();
-    this.renderer.domElement.removeEventListener('click', this.onMouseClick);
-    this.renderer.domElement.removeEventListener('mousemove', this.onMouseMove);
-    this.renderer.domElement.removeEventListener('contextmenu', this.onContextMenu);
-    window.removeEventListener('keydown', this.onKeyDown);
-    window.removeEventListener('keyup', this.onKeyUp);
-    Controls.setLockingEnabled(false);
-    
-    // Reset Renderer State to ensure subsequent scenes (like ShipShowcase) use the full canvas
-    this.renderer.setScissorTest(false);
-    this.renderer.setViewport(0, 0, window.innerWidth, window.innerHeight);
-    this.renderer.setScissor(0, 0, window.innerWidth, window.innerHeight);
-
-    if (this.viewManager) {
-        this.viewManager.setHUD(null);
-    }
-
-    if (this.viewManager && this.viewManager.uiMessage) {
-        this.viewManager.uiMessage.closeMessage('planet_scan');
-    }
-  }
-
-  onKeyDown(event) {
-      const key = event.key.toLowerCase();
-      if (this.keys.hasOwnProperty(key)) this.keys[key] = true;
-      if (event.key === 'Shift') this.keys.shift = true;
-  }
-
-  onKeyUp(event) {
-      const key = event.key.toLowerCase();
-      if (this.keys.hasOwnProperty(key)) this.keys[key] = false;
-      if (event.key === 'Shift') this.keys.shift = false;
-  }
-
-  onMouseClick(event) {
-    // Left click is now reserved for Pointer Lock / Taking Control
-    // Planet scanning is handled by Gaze (center screen) or Right Click on Orrery
-  }
-
-  onContextMenu(event) {
-    event.preventDefault(); // Prevent default browser context menu
-
-    // Check if clicking in Orrery PiP
-    if (!this.showOrrery || !this.orrery || !this.orreryCamera) return;
-
-    const rect = this.renderer.domElement.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const mouseX = event.clientX - rect.left;
-    const mouseY = event.clientY - rect.top;
-
-    // PiP Dimensions (must match render loop)
-    const pipSize = Math.min(width, height) * 0.25; 
-    const margin = 20;
-
-    // Calculate PiP bounds in DOM coordinates (Top-Left origin)
-    // Renderer viewport (Bottom-Left origin): x = width - pipSize - margin, y = margin
-    // DOM Rect:
-    // Left: width - pipSize - margin
-    // Top: height - margin - pipSize
-    // Right: width - margin
-    // Bottom: height - margin
-
-    if (mouseX >= width - pipSize - margin && mouseX <= width - margin &&
-        mouseY >= height - margin - pipSize && mouseY <= height - margin) {
-        
-        // Calculate normalized device coordinates for PiP
-        const pipLeft = width - pipSize - margin;
-        const pipTop = height - margin - pipSize;
-        
-        const ndcX = ((mouseX - pipLeft) / pipSize) * 2 - 1;
-        const ndcY = -((mouseY - pipTop) / pipSize) * 2 + 1;
-        
-        const mouseVector = new THREE.Vector2(ndcX, ndcY);
-        this.raycaster.setFromCamera(mouseVector, this.orreryCamera);
-        
-        // Intersect with Orrery planets
-        const intersects = this.raycaster.intersectObjects(this.orrery.planetMeshes);
-        
-        if (intersects.length > 0) {
-            const mesh = intersects[0].object;
-            // In OrreryScene, mesh is child of planetGroup. planetGroup has userData.planet
-            const planet = mesh.parent.userData.planet;
-            if (planet) this.showPlanetScan(planet);
-        }
-    }
-  }
-
-  onMouseMove(event) {
-    const mouse = SceneTools.getMouseVector(event, this.renderer.domElement);
-    this.raycaster.setFromCamera(mouse, this.camera);
-    
-    // Recursive intersection since planetMeshes might be inside groups or have children
-    // Actually createPlanets pushes meshes to planetMeshes, but let's be safe
-    // If planetMeshes contains meshes, no recursion needed if we hit them directly.
-    // But if we want to hit children of what we pushed?
-    const intersects = this.raycaster.intersectObjects(this.planetMeshes, false);
-    
-    this.planetMeshes.forEach(m => { if (m.userData.isHovered) { m.scale.set(1, 1, 1); m.userData.isHovered = false; } });
-    if (intersects.length > 0) { intersects[0].object.userData.isHovered = true; intersects[0].object.scale.set(1.2, 1.2, 1.2); }
-  }
-
-  animate() {
-    if (!this.isActive) return;
-
-    const time = performance.now();
-    const delta = (time - (this.lastTime || time));
-    this.lastTime = time;
-
-    this.animationFrameId = requestAnimationFrame(this.animate.bind(this));
-
-    // Update Global Controls
-    Controls.update();
-
-    // Update Active Camera Controls
-    if (this.shouldUpdateControls && this.activeCameraName && this.cameraControls.has(this.activeCameraName)) {
-        const controls = this.cameraControls.get(this.activeCameraName);
-        if (controls.enabled) {
-            controls.update();
-        }
-    }
-
-    this.update(time, delta);
-
-    if (this.activeCamera && this.renderer) {
-        const renderer = this.renderer;
-        const size = new THREE.Vector2();
-        renderer.getSize(size);
-        renderer.autoClear = false;
-        renderer.clear();
-
-        // Floating Origin Sync
-        // Move the world opposite to the active (virtual) camera's position
-        this.worldGroup.position.copy(this.activeCamera.position).negate();
-        
-        // Sync rendering camera rotation with active virtual camera
-        this.camera.quaternion.copy(this.activeCamera.quaternion);
-        this.camera.updateMatrixWorld();
-
-        // 1. Main Viewport
-        renderer.setViewport(0, 0, size.x, size.y);
-        renderer.setScissor(0, 0, size.x, size.y);
-        renderer.setScissorTest(false);
-        // Render using the static rendering camera (at 0,0,0)
-        renderer.render(this.scene, this.camera);
-
-        // 2. PiP Orrery (Only during intro)
-        if ((this.isIntroPlaying || this.showOrrery) && this.orrery && this.orreryCamera) {
-            const pipSize = Math.min(size.x, size.y) * 0.25; 
-            const margin = 20;
-
-            renderer.setViewport(size.x - pipSize - margin, margin, pipSize, pipSize);
-            renderer.setScissor(size.x - pipSize - margin, margin, pipSize, pipSize);
-            renderer.setScissorTest(true);
-            renderer.clearDepth(); 
+            // Generate Orbital Inclination and Axial Tilt
+            // Inclination: Mostly flat (0-5 degrees), occasional outliers
+            const inclination = (planetPRNG.nextDouble() * 5) * (planetPRNG.nextDouble() > 0.5 ? 1 : -1);
             
-            // Render Orrery Scene
-            renderer.render(this.orrery.scene, this.orreryCamera);
+            // Axial Tilt: Mostly stable (0-30), rare extreme/retrograde
+            let axialTilt = planetPRNG.nextDouble() * 30;
+            if (planetPRNG.nextDouble() > 0.9) axialTilt += 90; // Extreme tilt
+            if (planetPRNG.nextDouble() > 0.95) axialTilt += 90; // Retrograde
+
+            let planetName;
+            let statusText;
+            let isHomeworld = i === homeWorldIndex;
+
+            if (isHomeworld) {
+                planetName = systemData.homeWorldName;
+                statusText = `Home World (${systemData.tech.split(' ')[0]})`;
+            } else {
+                planetName = this.generateGenericPlanetName(nameSeed, innerSeed);
+                statusText = classificationData.type.includes('Giant') ? 'Gas Giant' : 'Uncolonized World';
+
+                if (systemData.speciesKey === 'SPECIES_FIRST_RELIC' && classificationData.description) {
+                    statusText = 'Relic Artifact Site';
+                }
+            }
+   
+            // Calculate Hill Sphere (Gravitational dominance region)
+            // r_Hill = a * cbrt(m_planet / 3 * M_star)
+            const planetMass = this.getPlanetMass(classificationData.type, planetRadius);
+            const planetMassSolar = planetMass * 3.003e-6; // Convert Earth masses to Solar masses
+            const hillSphereRadius = orbitalDistance * Math.pow(planetMassSolar / (3 * starMass), 1/3);
             
-            renderer.setScissorTest(false);
+            // Roche Limit (Fluid) approx 2.44 * Radius. 1 Earth Radius approx 4.26e-5 AU
+            const rocheLimit = (planetRadius * 0.0000426) * 2.44;
+
+            const moons = this.generateMoons(planetRadius, orbitalDistance, [...seeds, i], hillSphereRadius, rocheLimit, planetName, MAX_MOONS_PER_SYSTEM - totalMoonsGenerated);
+            const moonCount = moons.length;
+            totalMoonsGenerated += moonCount;
+
+            // Ensure homeworld giants have at least one moon to live on (if none generated by harmonics)
+            if (isHomeworld && classificationData.type.includes('Giant') && moonCount === 0) {
+                // Force generate a moon if it's a homeworld giant
+                const forcedMoon = {
+                    name: `${planetName} Prime`,
+                    type: 'Habitable Moon',
+                    isRing: false,
+                    atmosphere: 'Breathable',
+                    biosphere: 'Microbial',
+                    description: 'A large moon serving as the homeworld.',
+                    radius: planetRadius * 0.2,
+                    orbitalDistance: rocheLimit * 2,
+                    color: { h: 0.5, s: 0.5, l: 0.5 }
+                };
+                moons.push(forcedMoon);
+            }
+
+            Logger.message(`${funcName}: Planet ${i} generated ${moons.length} moons`);
+
+            // Handle Gas Giant Homeworlds (Moon Colony)
+            if (isHomeworld && classificationData.type.includes('Giant') && moons.length > 0) {
+                const targetMoon = moons[0];
+                targetMoon.isHomeworld = true;
+                targetMoon.name = systemData.homeWorldName;
+                targetMoon.description = (targetMoon.description || "") + " This moon serves as the species' homeworld.";
+                
+                planetName = `${systemData.homeWorldName} Prime`;
+                statusText = `${classificationData.type} (Homeworld System)`;
+                isHomeworld = false; // The planet itself is not the homeworld
+            }
+
+            const society = this.generateSociety(planetPRNG, systemData.speciesKey);
+
+            // T13 Geometry Descriptions for Society (Soul) and Place (Facade)
+            const T13NE = this.pluginManager ? this.pluginManager.getApi('T13', 'T13NE') : null;
+            const T13Geometry = T13NE ? T13NE.getModule('T13Geometry') : null;
+            
+            if (T13Geometry) {
+                const geo = T13Geometry.calculateFullGeo(planetName);
+                const soulGeo = T13Geometry.Geometries[geo.Soul];
+                const facadeGeo = T13Geometry.Geometries[geo.Facade];
+
+                if (soulGeo && soulGeo.Social_Description) {
+                    classificationData.description += ` ${soulGeo.Social_Description}`;
+                }
+                if (facadeGeo && facadeGeo.Descendant_Description) {
+                    classificationData.description += ` ${facadeGeo.Descendant_Description}`;
+                }
+            }
+
+            // Generate Individual Story for the Planet
+            const planetStory = this.generatePlanetStory(planetName, classificationData, society, planetPRNG);
+
+            // Adjust color based on resources
+            let planetColor = {
+                h: innerSeed,
+                s: 0.7,
+                l: 0.5 + outerSeed * 0.3
+            };
+            planetColor = this.adjustPlanetColorByResources(planetColor, classificationData.resources);
+
+            // Generate 3D Mesh Data (or the mesh itself if running in a context that supports it)
+            // We store the config to generate the mesh later to avoid heavy processing here if not needed immediately
+            const meshConfig = {
+                radius: planetRadius,
+                type: classificationData.type,
+                resources: classificationData.resources,
+                atmosphere: classificationData.atmosphere,
+                moons: moons,
+                name: planetName
+            };
+
+            planets.push({
+                index: i,
+                name: planetName,
+                status: statusText,
+                society: society,
+                type: classificationData.type,
+                radius: planetRadius,
+                orbitalDistance,
+                biosphere: classificationData.biosphere,
+                resources: classificationData.resources,
+                description: classificationData.description,
+                atmosphere: classificationData.atmosphere,
+                temperature: classificationData.temperature.toFixed(2),
+                gravity: classificationData.gravity.toFixed(2),
+                isHomeworld,
+                moons: moons,
+                moonCount: moonCount,
+                color: planetColor,
+                orbitSpeed: (BASE_ORBIT_SPEED * PLANET_SPEED_FACTOR) / orbitalDistance,
+                spinSpeed: BASE_SPIN_SPEED * (1 - innerSeed),
+                axialTilt: axialTilt.toFixed(1),
+                inclination: inclination.toFixed(2),
+                story: planetStory,
+                meshConfig: meshConfig
+            });
         }
-    }
-  }
 
-  update(time, delta) {
-    super.update(time, delta);
-
-    if (this.isIntroPlaying) {
-        this.updateIntroAnimation(time);
-        // Hide HUD during intro
-        if (this.hudElement) this.hudElement.style.display = 'none';
-    } else if (this.activeCameraName === 'systemMain') {
-        this.updateSpectatorControls(delta);
-        this.updateGazeScan(delta);
-        // Show HUD during gameplay
-        if (this.hudElement) this.hudElement.style.display = 'block';
+        Logger.end(funcName, `Generated ${planets.length} planets.`);
+        return planets;
     }
 
-    this.updateSpaceDust();
-    this.updateCameras(delta);
-
-    // Update HUD
-    if (this.hudElement && this.virtualCamera && !this.isIntroPlaying) {
-        const pos = this.virtualCamera.position;
-        this.hudElement.innerHTML = `SPECTATOR CAM<br>----------------<br>SPEED: ${Math.round(this.spectatorSpeed)} u/s<br>POS: ${Math.round(pos.x)}, ${Math.round(pos.y)}, ${Math.round(pos.z)}<br><br>Controls:<br>WASD: Move<br>Q/E: Up/Down<br>Shift: Boost (x5)<br>Scroll: Adjust Speed`;
+    getStarMass(starClass) {
+        if (!starClass) return 1.0;
+        const c = starClass.charAt(0).toUpperCase();
+        // Approximate mass in Solar Masses
+        const masses = { 'O': 16, 'B': 6, 'A': 2, 'F': 1.4, 'G': 1, 'K': 0.8, 'M': 0.5 };
+        return masses[c] || 1.0;
     }
 
-    // Failsafe: Prevent camera from being stuck at origin
-    if (this.activeCamera.position.lengthSq() < 50) {
-        this.activeCamera.position.set(0, 100, 300);
+    getStarLuminosity(starClass) {
+        if (!starClass) return 1.0;
+        const c = starClass.charAt(0).toUpperCase();
+        // Approximate luminosity relative to Sol
+        const lums = { 'O': 30000, 'B': 1000, 'A': 20, 'F': 4, 'G': 1, 'K': 0.4, 'M': 0.04 };
+        return lums[c] || 1.0;
     }
 
-    // Pause orbit simulation during intro to ensure camera targets don't move away
-    if (this.isIntroPlaying) return;
+    getPlanetMass(type, radius) {
+        // Approximate mass in Earth Masses based on type and radius
+        // Radius is roughly 0.5 - 1.5 relative scale in generator
+        if (type.includes('Gas Giant')) return 318 * radius; // Jupiter is ~318 Earths
+        if (type.includes('Ice Giant')) return 15 * radius; // Neptune is ~17 Earths
+        if (type.includes('Dwarf')) return 0.01 * radius;
+        if (type.includes('Super-Earth')) return 5 * radius;
+        return 1.0 * radius; // Standard Terrestrial
+    }
 
-    // 2. Planet Rotation & Orbit
-    this.planetSystems.forEach((system, index) => {
-      const dist = system.userData.scaledDistance;
-      const speed = system.userData.orbitSpeed;
-      
-      // Safety check for NaN values to prevent flickering
-      if (Number.isFinite(dist) && Number.isFinite(speed)) {
-          if (system.userData.currentAngle === undefined) system.userData.currentAngle = system.userData.angle || 0;
-          system.userData.currentAngle += speed * delta * 0.001;
-          const angle = system.userData.currentAngle;
-          
-          system.position.x = dist * Math.cos(angle);
-          system.position.z = dist * Math.sin(angle);
+    adjustPlanetColorByResources(baseColor, resources) {
+        if (!resources || resources.length === 0) return baseColor;
 
-          // Sync Orrery Planet Angle to match Main System exactly
-          if (this.orrery && this.orrery.planetGroups && this.orrery.planetGroups[index]) {
-              this.orrery.planetGroups[index].userData.angle = angle;
-          }
-      }
-      
-      if (system.userData.visualMesh) {
-          system.userData.visualMesh.rotation.y += system.userData.planet.spinSpeed || 0.001;
-      }
+        let h = baseColor.h;
+        let s = baseColor.s;
+        let l = baseColor.l;
 
-      // Animate Moons
-      system.children.forEach(child => {
-          if (child.userData.moon && child.userData.orbitSpeed) {
-              if (Number.isFinite(child.userData.angle) && Number.isFinite(child.userData.distance)) {
-                  child.userData.angle += child.userData.orbitSpeed * delta * 0.001;
-                  child.position.x = child.userData.distance * Math.cos(child.userData.angle);
-                  child.position.z = child.userData.distance * Math.sin(child.userData.angle);
-              }
-          }
-      });
-    });
+        // Simple keyword matching to shift hue/saturation
+        // Handle object array from ResourceFactory
+        const resourceString = resources.map(r => r.name).join(' ').toLowerCase();
 
-    // 3. Collision Avoidance (Prevent camera clipping)
-    const activeCam = this.activeCamera;
-    const safeDistance = 100; // Minimum distance from surface
-    
-    // Check Star
-    if (this.starMesh) {
-        const dist = activeCam.position.distanceTo(this.starMesh.position);
-        const min = this.starMesh.geometry.parameters.radius + safeDistance;
-        if (dist < min) {
-            const dir = activeCam.position.clone().sub(this.starMesh.position).normalize();
-            activeCam.position.copy(this.starMesh.position).add(dir.multiplyScalar(min));
+        if (resourceString.includes('water') || resourceString.includes('ice')) {
+            h = (h + 0.6) / 2; // Shift towards blue (0.6)
+            s = Math.min(1, s + 0.1);
         }
+        if (resourceString.includes('iron') || resourceString.includes('rust') || resourceString.includes('copper')) {
+            h = (h + 0.05) / 2; // Shift towards red/orange (0.05)
+            s = Math.min(1, s + 0.2);
+        }
+        if (resourceString.includes('gold') || resourceString.includes('sulfur')) {
+            h = (h + 0.15) / 2; // Shift towards yellow (0.15)
+        }
+        if (resourceString.includes('vegetation') || resourceString.includes('algae') || resourceString.includes('emerald')) {
+            h = (h + 0.33) / 2; // Shift towards green (0.33)
+        }
+        if (resourceString.includes('carbon') || resourceString.includes('coal') || resourceString.includes('obsidian')) {
+            l = Math.max(0.1, l - 0.3); // Darken
+        }
+        if (resourceString.includes('diamond') || resourceString.includes('crystal') || resourceString.includes('quartz')) {
+            l = Math.min(0.9, l + 0.2); // Lighten/Sparkle
+        }
+
+        return {
+            h: h % 1.0,
+            s: s,
+            l: l
+        };
     }
 
-    // Check Planets
-    this.planetSystems.forEach(system => {
-        // Need world position as planets move
-        const worldPos = new THREE.Vector3();
-        system.getWorldPosition(worldPos);
-        const dist = activeCam.position.distanceTo(worldPos);
+    determinePlanetClassification(i, orbitalDistance, planetRadius, prng, systemData) {
+        const funcName = 'PlanetarySystemGenerator.determinePlanetClassification';
+        Logger.start(funcName, { planetIndex: i, distance: orbitalDistance });
+        const specialSeed = prng.nextDouble();
+        let classification = {
+            type: '',
+            biosphere: '',
+            resources: [],
+            description: null,
+            atmosphere: 'None',
+            temperature: 0,
+            gravity: 0
+        };
+
+        const innerSeed = prng.nextDouble();
+        const outerSeed = prng.nextDouble();
+
+        // --- 1. Determine Base Type ---
+        Logger.message(`${funcName}: Step 1 - Base Type`);
+        let isSpecial = false;
+        if (specialSeed > 0.9 && i !== systemData.homeWorldIndex) {
+            const specialTypes = (LoreData.planet && LoreData.planet.SPECIAL_PLANET_TYPES) ? LoreData.planet.SPECIAL_PLANET_TYPES : [];
+            if (specialTypes && specialTypes.length > 0) {
+                const index = Math.min(Math.floor(innerSeed * specialTypes.length), specialTypes.length - 1);
+                const specialType = specialTypes[index];
+                if (specialType) {
+                    classification.type = specialType.name;
+                    classification.description = specialType.desc;
+                    classification.biosphere = 'None';
+                    isSpecial = true;
+                }
+            }
+        }
+
+        if (!isSpecial) {
+            const prefixes = (LoreData.planet && LoreData.planet.PLANET_PREFIXES) ? LoreData.planet.PLANET_PREFIXES : ['Unknown'];
+            const index = Math.min(Math.floor(innerSeed * prefixes.length), prefixes.length - 1);
+            let prefix = prefixes[index] || 'Unknown';
+            let suffix = 'World';
+
+            // Calculate Zones based on Star Luminosity
+            const luminosity = this.getStarLuminosity(systemData.star?.starClass);
+            const frostLine = 4.85 * Math.sqrt(luminosity);
+            const hotZone = 0.5 * Math.sqrt(luminosity);
+
+            if (planetRadius > 0.8 && orbitalDistance > frostLine) {
+                prefix = (outerSeed > 0.5) ? 'Gas' : 'Ice';
+                suffix = 'Giant';
+            } else if (orbitalDistance < frostLine) {
+                prefix = (innerSeed < 0.4) ? 'Volcanic' : 'Barren';
+                suffix = (planetRadius < 0.6) ? 'Rock' : 'World';
+            } else if (orbitalDistance > frostLine * 2.5) {
+                prefix = (outerSeed > 0.6) ? 'Ice' : 'Crystalline';
+                suffix = (planetRadius < 0.7) ? 'Dwarf' : 'World';
+            }
+            classification.type = `${prefix} ${suffix}`;
+        }
+
+        // --- 2. Generate Physical Properties Based on Type ---
+        Logger.message(`${funcName}: Step 2 - Physical Properties`);
+        const tempSeed = prng.nextDouble();
+        const luminosity = this.getStarLuminosity(systemData.star?.starClass);
         
-        // Estimate radius from scale since it's a group now
-        let radius = 10;
-        if (system.userData.visualMesh) {
-            radius = 10 * system.userData.visualMesh.scale.x; // Base radius 10 * scale
-        }
-        const min = radius + safeDistance;
-        if (dist < min) {
-            const dir = activeCam.position.clone().sub(worldPos).normalize();
-            activeCam.position.copy(worldPos).add(dir.multiplyScalar(min));
-        }
-    });
-
-    // 4. Update Orrery PiP
-    if (this.orrery) {
-        this.orrery.update(time, delta);
+        // Calculate Blackbody temperature approximation: T = 278 * (L^0.25) / (d^0.5)
+        // This gives a baseline temperature in Kelvin
+        const baseTemp = 278 * Math.pow(luminosity, 0.25) / Math.sqrt(orbitalDistance);
         
-        // Convert camera position to Local Space for Orrery update
-        const localCamPos = this.activeCamera.position.clone();
-        if (this.systemGroup) this.systemGroup.worldToLocal(localCamPos);
-        this.orrery.updateCameraMarker(localCamPos, this.AU_TO_UNITS);
+        // Revised Gravity Calculation: More realistic scaling
+        classification.gravity = planetRadius * (0.8 + innerSeed * 0.4); // 0.4 - 1.2 G roughly for terrestrials
+
+        if (classification.type.includes('Gas') || classification.type.includes('Giant')) {
+            classification.atmosphere = 'Dense Hydrogen, Helium';
+            classification.temperature = baseTemp + (tempSeed * 50); // Internal heat
+            classification.gravity = planetRadius * (1.5 + tempSeed * 1.5); // 0.75 - 2.5 G roughly
+        } else if (classification.type.includes('Volcanic')) {
+            classification.atmosphere = 'Sulphuric, Carbon Dioxide';
+            classification.temperature = baseTemp + 200 + (tempSeed * 200);
+        } else if (classification.type.includes('Ice')) {
+            classification.atmosphere = 'Thin Nitrogen, Methane';
+            classification.temperature = Math.min(baseTemp, 150); // Cap at freezing
+        } else if (classification.type.includes('Barren')) {
+            classification.atmosphere = 'Trace, Argon';
+            classification.temperature = baseTemp + (tempSeed * 20 - 10);
+        } else {
+            classification.atmosphere = 'Nitrogen, Oxygen';
+            classification.temperature = baseTemp + (tempSeed * 30 - 15); // Greenhouse effect variance
+        }
+
+        // --- 3. Determine Biosphere ---
+        Logger.message(`${funcName}: Step 3 - Biosphere`);
+        const biosphereSeed = prng.nextDouble();
+        if (classification.biosphere === '') {
+            const biospheres = (LoreData.planet && LoreData.planet.BIOSPHERE_STATUSES) ? LoreData.planet.BIOSPHERE_STATUSES : ['None'];
+            const index = Math.min(Math.floor(biosphereSeed * biospheres.length), biospheres.length - 1);
+            classification.biosphere = biospheres[index] || 'None';
+        }
+
+        // Ensure type is defined before resource generation
+        if (!classification.type) {
+            classification.type = 'Unknown World';
+        }
+
+        // --- 4. Logical Resource Allocation ---
+        Logger.message(`${funcName}: Step 4 - Resources`);
+        classification.resources = this.resourceFactory.generateResources(classification.type, orbitalDistance, systemData.star, prng);
+        Logger.message(`${funcName}: Generated ${classification.resources.length} resources.`);
+
+        // --- 5. Apply Homeworld & Lore Overrides ---
+        Logger.message(`${funcName}: Step 5 - Overrides`);
+        if (i === systemData.homeWorldIndex) {
+            classification.biosphere = 'Complex Flora/Fauna';
+            classification.type = 'Terrestrial World';
+            classification.atmosphere = 'Standard Terran (Nitrogen-Oxygen)';
+            classification.temperature = 288;
+            classification.gravity = 1.0;
+
+            // Use planetAffinity from species lore if it exists
+            const affinity = systemData.speciesCore?.planetAffinity;
+            if (affinity) {
+                if (affinity.includes('aquatic')) {
+                    classification.type = 'Ocean World';
+                } else if (affinity.includes('jungle') || affinity.includes('forest') || affinity.includes('insectoid')) {
+                    classification.type = 'Jungle World';
+                } else if (affinity.includes('desert') || affinity.includes('reptilian')) {
+                    classification.type = 'Desert World';
+                } else if (affinity.includes('avian') || affinity.includes('mountain')) {
+                    classification.type = 'Mountainous World';
+                }
+            }
+            // Add resources appropriate for a homeworld
+            classification.resources.push(
+                { name: "Water", grade: "Abundant", value: 20, description: "Abundant Water" },
+                { name: "Soil", grade: "Rich", value: 15, description: "Rich Soil" },
+                { name: "Metals", grade: "Common", value: 10, description: "Common Metals" }
+            );
+        } else if (systemData.speciesKey === 'SPECIES_FIRST_RELIC') {
+            classification.type = 'Relic World';
+            classification.biosphere = 'None';
+            classification.resources = [
+                { name: "Artifacts", grade: "First-Tier", value: 30, description: "First-Tier Artifacts" },
+                { name: "Exotic Matter", grade: "Trace", value: 5, description: "Exotic Matter Traces" }
+            ];
+        } else if (systemData.speciesCore && systemData.speciesCore.archetype && systemData.speciesCore.archetype.includes('SYNTHETIC')) {
+            classification.type = 'Forge World';
+            classification.biosphere = 'Engineered Ecosystem';
+            classification.resources.push(
+                { name: "Rare Earths", grade: "Major", value: 15, description: "Rare Earths" },
+                { name: "Heavy Metals", grade: "Major", value: 15, description: "Heavy Metals" }
+            );
+        }
+
+        // --- 6. T13 Sway Population & Biosphere ---
+        const T13NE = this.pluginManager ? this.pluginManager.getApi('T13', 'T13NE') : null;
+        const Sway = T13NE ? T13NE.getModule('Sway') : null;
+        if (Sway && classification.biosphere !== 'None') {
+            // Map planet radius (0.5 - 1.5) to Chi (21 - 24)
+            const planetChi = Math.floor(21 + (planetRadius - 0.5) * 3);
+            const carryingCapacity = Sway.calculateCarryingCapacity(planetChi, classification.biosphere === 'Complex Flora/Fauna' ? 1.0 : 0.1);
+            
+            // Determine population if inhabited
+            if (systemData.speciesKey && systemData.speciesKey !== 'None' && classification.biosphere !== 'None') {
+                const successRate = 0.8; // High success for spacefaring
+                const biomassPercent = 0.001; // Dominant species biomass
+                const pop = Sway.calculatePopulation(carryingCapacity, successRate, biomassPercent);
+                classification.population = pop;
+                classification.carryingCapacity = carryingCapacity;
+                classification.description += ` Supports a population of ${pop.toLocaleString()} (Capacity: ${carryingCapacity.toLocaleString()}).`;
+            }
+        }
+
+        classification.description = `A ${classification.type} with a biosphere classification of '${classification.biosphere}'.`;
+
+        Logger.end(funcName, classification);
+        return classification;
     }
-  }
 
-  updateSpectatorControls(delta) {
-      const dt = delta / 1000;
-      // Acceleration based movement
-      const acceleration = this.spectatorSpeed * (this.keys.shift ? 5 : 1); 
-      const drag = 2.0; // Drag coefficient
-      
-      // Calculate target velocity based on input
-      const inputVector = new THREE.Vector3();
+    generateGenericPlanetName(n1, n2) {
+        const funcName = 'PlanetarySystemGenerator.generateGenericPlanetName';
+        Logger.start(funcName);
+        // Use the new, robust name generator to create a planet name.
+        // We combine the noise values to create a seed.
+        const seed = `${n1}-${n2}`;
+        const name = this.nameGenerator.generate('PLANET_NAMES', seed);
+        Logger.end(funcName, name);
+        return name;
+    }
 
-      // WASD Movement (Relative to camera orientation)
-      if (this.keys.w) inputVector.z -= 1;
-      if (this.keys.s) inputVector.z += 1;
-      if (this.keys.a) inputVector.x -= 1;
-      if (this.keys.d) inputVector.x += 1;
-      
-      // Vertical Movement (Q/E)
-      if (this.keys.q) inputVector.y += 1;
-      if (this.keys.e) inputVector.y -= 1;
+    generateSociety(prng, speciesKey) {
+        const funcName = 'PlanetarySystemGenerator.generateSociety';
+        Logger.start(funcName, { speciesKey });
+        if (speciesKey === 'SPECIES_FIRST_RELIC') {
+            return 'None (Relic Site)';
+        }
 
-      inputVector.normalize().multiplyScalar(acceleration * dt);
-      
-      // Apply input to velocity (relative to camera rotation)
-      inputVector.applyQuaternion(this.virtualCamera.quaternion);
-      this.spectatorVelocity.add(inputVector);
-      
-      // Apply Drag
-      this.spectatorVelocity.multiplyScalar(1 - Math.min(1, drag * dt));
-      
-      // Apply velocity to camera
-      this.virtualCamera.position.add(this.spectatorVelocity.clone().multiplyScalar(dt));
-      
-      const mouseDeltas = Controls.consumeMouseMovement();
+        // Fallback lists in case LoreData is missing or incomplete
+        const fallbackAdjectives = ["Industrial", "Agrarian", "Feudal", "Corporate", "Nomadic", "Spiritual", "Militaristic", "Peaceful", "High-Tech", "Primitive"];
+        const fallbackNouns = ["Hegemony", "Republic", "Empire", "Collective", "Federation", "Union", "Syndicate", "Order", "Dominion", "State"];
 
-      // Mouse Rotation (Pointer Lock)
-      if (document.pointerLockElement) { 
-           const { x, y } = mouseDeltas;
-           
-           // Quaternion based rotation (Free look / Trackball style)
-           const sensitivity = this.spectatorLookSpeed * 0.5;
-           const qx = new THREE.Quaternion();
-           qx.setFromAxisAngle(new THREE.Vector3(0, 1, 0), -x * sensitivity);
-           const qy = new THREE.Quaternion();
-           qy.setFromAxisAngle(new THREE.Vector3(1, 0, 0), -y * sensitivity);
-           
-           this.virtualCamera.quaternion.multiply(qx);
-           this.virtualCamera.quaternion.multiply(qy);
-           this.virtualCamera.quaternion.normalize();
-      }
-      
-      // Speed Adjustment (Mouse Wheel)
-      const wheel = mouseDeltas.wheel;
-      if (wheel !== 0) {
-          const factor = wheel < 0 ? 1.2 : 0.8; // Scroll Up (neg) to increase, Down (pos) to decrease
-          this.spectatorSpeed *= factor;
-          this.spectatorSpeed = Math.max(10, Math.min(this.spectatorSpeed, 1000000)); // Clamp speed
-      }
-  }
+        let adjList = fallbackAdjectives;
+        let nounList = fallbackNouns;
 
-  updateGazeScan(delta) {
-      // Raycast from center of screen (0,0) using the rendering camera
-      // The rendering camera is fixed at 0,0,0 but rotates with the virtual camera
-      // However, the world moves around it. 
-      // Raycasting from (0,0) in camera space works because the camera is the eye.
-      
-      this.raycaster.setFromCamera(new THREE.Vector2(0, 0), this.camera);
-      const intersects = this.raycaster.intersectObjects(this.planetMeshes);
-      
-      if (intersects.length > 0) {
-          // Check object userData first (set in createPlanets), then parent
-          let planet = intersects[0].object.userData?.planet;
-          if (!planet) planet = intersects[0].object.parent?.userData?.planet;
-          if (!planet) planet = intersects[0].object.parent?.parent?.userData?.planet;
-          
-          if (planet && this.currentScanTarget !== planet) {
-              this.currentScanTarget = planet;
-              this.scanHoverTime = 0;
-              this.scanTriggered = false; // Reset trigger when target changes
-          } else if (planet && !this.scanTriggered) {
-              this.scanHoverTime += delta;
-              if (this.scanHoverTime > 500) { // 0.5s hover to trigger
-                  this.showPlanetScan(planet);
-                  this.scanTriggered = true; // Mark as triggered so it doesn't spam/reopen
-              }
-          }
-      } else {
-          if (this.currentScanTarget) {
-              // Lost target
-              this.scanHoverTime = 0;
-              this.currentScanTarget = null;
-              this.scanTriggered = false;
-              // Close the scan window if it's open
-              if (this.viewManager.uiMessage && typeof this.viewManager.uiMessage.closeMessage === 'function') {
-                  this.viewManager.uiMessage.closeMessage('planet_scan');
-              }
-          }
-      }
-  }
+        if (LoreData.society && Array.isArray(LoreData.society.SOCIAL_ADJECTIVES) && Array.isArray(LoreData.society.SOCIAL_NOUN)) {
+            if (LoreData.society.SOCIAL_ADJECTIVES.length > 0) adjList = LoreData.society.SOCIAL_ADJECTIVES;
+            if (LoreData.society.SOCIAL_NOUN.length > 0) nounList = LoreData.society.SOCIAL_NOUN;
+        }
 
-  updateSpaceDust() {
-      if (!this.dustSystem || !this.activeCamera) return;
-      
-      const positions = this.dustSystem.geometry.attributes.position.array;
-      const camPos = this.activeCamera.position;
-      const range = 4000; // Match creation range
-      const halfRange = range / 2;
-      
-      let needsUpdate = false;
-      
-      for (let i = 0; i < positions.length / 3; i++) {
-          const ix = i * 3;
-          const iy = i * 3 + 1;
-          const iz = i * 3 + 2;
-          
-          // Calculate distance from camera in World Space
-          const dx = positions[ix] - camPos.x;
-          const dy = positions[iy] - camPos.y;
-          const dz = positions[iz] - camPos.z;
-          
-          // If too far, wrap around to the other side to create infinite field illusion
-          // We wrap to the opposite edge (e.g., if > 500, move to -500 relative to camera)
-          if (Math.abs(dx) > halfRange) { 
-              positions[ix] = camPos.x - Math.sign(dx) * (halfRange - 10); 
-              needsUpdate = true; 
-          }
-          if (Math.abs(dy) > halfRange) { 
-              positions[iy] = camPos.y - Math.sign(dy) * (halfRange - 10); 
-              needsUpdate = true; 
-          }
-          if (Math.abs(dz) > halfRange) { 
-              positions[iz] = camPos.z - Math.sign(dz) * (halfRange - 10); 
-              needsUpdate = true; 
-          }
-      }
-      
-      if (needsUpdate) {
-          this.dustSystem.geometry.attributes.position.needsUpdate = true;
-      }
-  }
+        const adjIndex = Math.min(Math.floor(prng.nextDouble() * adjList.length), adjList.length - 1);
+        const nounIndex = Math.min(Math.floor(prng.nextDouble() * nounList.length), nounList.length - 1);
 
-  updateIntroAnimation(time) {
-      const elapsed = time - this.introStartTime;
-      const progress = Math.min(elapsed / this.introDuration, 1);
+        const adjective = adjList[adjIndex];
+        const noun = nounList[nounIndex];
 
-      const homeworld = this.homeworldMesh || this.planetMeshes[0];
-      if (!homeworld) return;
+        const society = `${adjective.charAt(0).toUpperCase() + adjective.slice(1)} ${noun}`;
+        Logger.end(funcName, society);
+        return society;
+    }
 
-      // Calculate Dynamic Target Position in World Space (relative to worldGroup)
-      const worldPos = new THREE.Vector3();
-      homeworld.getWorldPosition(worldPos);
-      worldPos.sub(this.worldGroup.position);
+    generatePlanetStory(name, classification, society, prng) {
+        // Simple story generator based on planet type and society
+        const themes = ['Conflict', 'Discovery', 'Mystery', 'Trade', 'Survival'];
+        const theme = themes[Math.floor(prng.nextDouble() * themes.length)];
+        
+        let plotHook = `The ${society} on ${name} is facing a ${theme}.`;
+        if (classification.resources.length > 0) {
+            const resource = classification.resources[0];
+            plotHook += ` Control of the ${resource.name} deposits is a key factor.`;
+        }
+        
+        return {
+            title: `${theme} on ${name}`,
+            hook: plotHook,
+            theme: theme
+        };
+    }
 
-      let targetRadius = 10;
-      if (homeworld.geometry && homeworld.geometry.parameters && homeworld.geometry.parameters.radius) {
-          // It's a Mesh (e.g. Moon or simple Planet)
-          targetRadius = homeworld.geometry.parameters.radius * (homeworld.scale.x || 1);
-      } else if (homeworld.userData.planet) {
-          // It's a Group (Planet System), calculate radius from data to match createPlanets logic
-          targetRadius = Math.max(25, (homeworld.userData.planet.radius || 1) * 60);
-      }
-      
-      // Ensure minimum target radius for camera offset so we don't get too close to tiny moons
-      targetRadius = Math.max(targetRadius, 50);
+    generateMoons(planetRadius, parentOrbitalDistance, seeds, hillSphere, rocheLimit, planetName, maxMoons) {
+        const funcName = 'PlanetarySystemGenerator.generateMoons';
+        
+        // T13 Harmonics for Moon Orbits based on Planet Name
+        const T13NE = this.pluginManager?.getApi('T13', 'T13NE');
+        const T13Geometry = T13NE?.getModule('T13Geometry');
+        let harmonics = [];
+        
+        if (T13Geometry && planetName) {
+            const geo = T13Geometry.calculateFullGeo(planetName);
+            if (geo && geo.GeoHarmonics && Array.isArray(geo.GeoHarmonics.Harmonic)) {
+                harmonics = geo.GeoHarmonics.Harmonic;
+            }
+        }
+        
+        // Fallback if no harmonics available (e.g. T13 not loaded)
+        if (harmonics.length === 0) {
+             const moonPRNG = ProcGen.createPRNG(seeds.join(','));
+             // Generate pseudo-harmonics
+             const count = Math.floor(moonPRNG.nextDouble() * 5) + 1;
+             for(let k=0; k<count; k++) harmonics.push(Math.floor(moonPRNG.nextDouble() * 13) + 1);
+        }
 
-      const offsetDist = targetRadius * 2.5;
-      const planetToStar = worldPos.clone().negate().normalize();
-      const endPos = worldPos.clone().add(planetToStar.multiplyScalar(offsetDist)).add(new THREE.Vector3(0, targetRadius * 0.5, 0));
+        Logger.start(funcName, { planetName, harmonics });
 
-      let currentTargetPos = new THREE.Vector3();
-      let currentLookAt = new THREE.Vector3();
+        const moons = [];
+        const moonPRNG = ProcGen.createPRNG(seeds.join(','));
 
-      // Use the pre-calculated world curve if available
-      if (this.introCurveWorld) {
-          const camPos = this.introCurveWorld.getPointAt(progress);
-          this.cinematicCamera.position.copy(camPos);
-          
-          // LookAt Interpolation
-          // Find current segment
-          for (let i = 0; i < this.introTargets.length - 1; i++) {
-              if (progress >= this.introTargets[i].time && progress <= this.introTargets[i+1].time) {
-                  const t = (progress - this.introTargets[i].time) / (this.introTargets[i+1].time - this.introTargets[i].time);
-                  // Ease the lookAt transition
-                  const easeT = t * t * (3 - 2 * t); 
-                  
-                  const getWorldPos = (obj) => {
-                      const vec = new THREE.Vector3();
-                      obj.getWorldPosition(vec);
-                      return vec;
-                  };
-                  const posA = getWorldPos(this.introTargets[i].target);
-                  const posB = getWorldPos(this.introTargets[i+1].target);
-                  currentLookAt.lerpVectors(posA, posB, easeT);
-                  break;
-              }
-          }
-          this.cinematicCamera.lookAt(currentLookAt);
-      } else {
-          // Fallback simple lerp if curve failed
-          if (progress < 0.4) {
-              const p = progress / 0.4;
-              const t = p < 0.5 ? 2 * p * p : -1 + (4 - 2 * p) * p;
-              currentTargetPos.lerpVectors(this.introStartPos, this.introStarFlybyPos, t);
-              currentLookAt.set(0, 0, 0);
-          } else {
-              const p = (progress - 0.4) / 0.6;
-              const t = p < 0.5 ? 2 * p * p : -1 + (4 - 2 * p) * p;
-              currentTargetPos.lerpVectors(this.introStarFlybyPos, endPos, t);
-              currentLookAt.lerpVectors(new THREE.Vector3(0,0,0), worldPos, t);
-          }
-          this.cinematicCamera.position.copy(currentTargetPos);
-          this.cinematicCamera.lookAt(currentLookAt);
-      }
+        // Start generating from just inside Roche limit to allow for rings
+        let currentOrbit = rocheLimit * 0.8;
 
-      if (progress >= 1) {
-          this.isIntroPlaying = false;
-          this.shouldUpdateControls = true;
-          const mainControls = this.cameraControls.get('systemMain');
-          
-          // Sync virtual camera to cinematic end position
-          this.virtualCamera.position.copy(this.cinematicCamera.position);
-          this.virtualCamera.quaternion.copy(this.cinematicCamera.quaternion);
+        for (let i = 0; i < harmonics.length; i++) {
+            if (moons.length >= maxMoons) break;
 
-          // If we were using standard controls, we'd update target here.
-          // Since we are using custom spectator controls, we just set the position/rotation.
-          
-          this.setActiveCamera('systemMain');
-          
-          if (this.introResolve) {
-              this.introResolve();
-              this.introResolve = null;
-              this.introPromise = null;
-          }
-      }
-  }
+            const moonSeed1 = moonPRNG.nextDouble();
+            const moonSeed2 = moonPRNG.nextDouble();
+            const nameSeed = moonPRNG.nextDouble();
+            
+            // Ensure harmonic is a valid number and clamped to prevent massive orbits
+            let hVal = Number(harmonics[i]);
+            if (!Number.isFinite(hVal)) {
+                // Logger.warn(`PlanetarySystemGenerator: Invalid harmonic at index ${i}: ${harmonics[i]}. Defaulting to 1.`);
+                hVal = 1;
+            }
+            
+            const harmonic = Math.min(Math.max(1, hVal), 24);
 
-  showPlanetScan(planet) {
-      this.viewManager.uiMessage.showMessage({
-          key: 'planet_scan',
-          title: `Planetary Scan: ${planet.name}`,
-          template: 'planet_lore',
-          data: { ...planet, techProfile: { techLevel: 'Unknown', specialization: 'None', knownProficiencies: [] } },
-          actions: [{ label: 'Land on Surface', callback: () => this.viewManager.showPlanetSurface(planet) }]
-      });
-  }
+            // Radius: Influenced by harmonic
+            const sizeScale = 0.01 + (harmonic / 13) * 0.2; // 0.01 to 0.21 planet radius
+            const moonRadius = sizeScale * planetRadius;
+            
+            // Calculate Distance using Harmonic Resonance
+            // Resonance factor: 1.1 to 2.4 based on harmonic
+            const resonance = 1.1 + (harmonic * 0.1); 
+            
+            // Keplerian spacing: a_next = a_prev * (resonance)^(2/3)
+            let moonDistance = currentOrbit * Math.pow(resonance, 2/3) * (0.95 + moonSeed2 * 0.1);
+            
+            if (!Number.isFinite(moonDistance)) {
+                Logger.warn(`PlanetarySystemGenerator: Moon distance NaN for moon ${i}. Aborting moon generation.`);
+                break;
+            }
+            
+            currentOrbit = moonDistance;
+            
+            // Generate Name
+            let moonName = `Moon ${i + 1}`;
+            if (this.nameGenerator && typeof this.nameGenerator.generate === 'function') {
+                 // Use a distinct seed for the name
+                 moonName = this.nameGenerator.generate('PLANET_NAMES', nameSeed);
+            }
 
-  // --- Camera Management ---
+            // Determine Characteristics
+            let type = 'Barren Moon';
+            let isRing = false;
 
-  addSpectatorCamera(id, targetObject) {
-      const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100000);
-      this.scene.add(camera);
-      this.spectatorCameras.set(id, { camera, target: targetObject });
-      this.addCamera(`spectator_${id}`, camera);
-      return camera;
-  }
+            if (moonDistance < rocheLimit) {
+                type = 'Ring System';
+                isRing = true;
+            } else if (moonDistance > hillSphere) {
+                // Lost moon - skip
+                // Logger.message(`Moon lost over Hill limit: ${moonDistance.toFixed(4)} > ${hillSphere.toFixed(4)}`);
+                break;
+            } else if (moonDistance > hillSphere * 0.8) {
+                // Quasi-satellite at edge
+                type = 'Quasi-Satellite';
+            }
 
-  addTrailingCamera(id, targetObject, distance = 50, height = 20) {
-      const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100000);
-      this.scene.add(camera);
-      this.trailingCameras.set(id, { camera, target: targetObject, distance, height });
-      this.addCamera(`trail_${id}`, camera);
-      return camera;
-  }
+            let atmosphere = 'None';
+            let biosphere = 'None';
+            let description = 'A small, barren rock.';
 
-  updateCameras(delta) {
-      // Update Spectator Cameras (LookAt)
-      this.spectatorCameras.forEach((data) => {
-          if (data.target) {
-              data.camera.lookAt(data.target.position);
-          }
-      });
+            // Thresholds
+            const HABITABLE_SIZE_MIN = 0.2; 
+            const HABITABLE_ZONE_MIN = 0.8; // AU
+            const HABITABLE_ZONE_MAX = 1.6; // AU
 
-      // Update Trailing Cameras
-      this.trailingCameras.forEach((data) => {
-          if (data.target) {
-              const targetPos = data.target.position;
-              // Calculate desired position behind ship
-              // Assuming standard object orientation where +Z is forward
-              const offset = new THREE.Vector3(0, data.height, -data.distance);
-              offset.applyEuler(data.target.rotation); 
-              offset.add(targetPos);
-              
-              // Smoothly interpolate camera position
-              data.camera.position.lerp(offset, 0.1);
-              data.camera.lookAt(targetPos);
-          }
-      });
-  }
+            if (!isRing && type !== 'Quasi-Satellite' && moonRadius >= 0.15) {
+                 if (moonRadius >= HABITABLE_SIZE_MIN && parentOrbitalDistance >= HABITABLE_ZONE_MIN && parentOrbitalDistance <= HABITABLE_ZONE_MAX) {
+                     if (moonSeed2 > 0.6) {
+                         type = 'Habitable Moon';
+                         atmosphere = 'Breathable';
+                         biosphere = 'Microbial';
+                         description = 'A large moon with a breathable atmosphere and simple life.';
+                     }
+                 } else if (parentOrbitalDistance > HABITABLE_ZONE_MAX) {
+                     type = 'Ice Moon';
+                     if (moonSeed2 > 0.5) {
+                         biosphere = 'Subsurface Ocean';
+                         description = 'An icy moon potentially harboring a subsurface ocean.';
+                     }
+                 }
+            }
 
-  async generatePlanetIcons() {
-      if (!this.snapshotCamera || !this.renderer) return;
-      
-      Logger.message("StellarSystemScene: Generating planet icons...");
+            moons.push({
+                name: moonName,
+                type: type,
+                isRing: isRing,
+                atmosphere: atmosphere,
+                biosphere: biosphere,
+                description: description,
+                radius: moonRadius,
+                orbitalDistance: moonDistance,
+                color: { h: moonSeed1, s: 0.2, l: 0.6 + moonSeed2 * 0.2 }
+            });
+        }
 
-      const size = 256;
-      const renderTarget = new THREE.WebGLRenderTarget(size, size);
-      const originalTarget = this.renderer.getRenderTarget();
-      const originalAspect = this.snapshotCamera.aspect;
-      
-      this.snapshotCamera.aspect = 1;
-      this.snapshotCamera.updateProjectionMatrix();
-
-      this.planetSystems.forEach(system => {
-          const planetMesh = system.userData.visualMesh;
-          const planetData = system.userData.planet;
-          
-          if (planetMesh && planetData) {
-              // Get World Position
-              const worldPos = new THREE.Vector3();
-              planetMesh.getWorldPosition(worldPos);
-
-              // Estimate radius
-              const radius = 10 * planetMesh.scale.x;
-              
-              const dist = radius * 2.5;
-              
-              // Position camera: Offset from planet towards the star (to catch the lit side)
-              // Star is at worldGroup.position (0,0,0 in local space, but worldGroup moves)
-              // Actually, Star Light is at 0,0,0 in worldGroup.
-              // So vector from Planet to Star (in world space)
-              const starWorldPos = new THREE.Vector3();
-              this.starMesh.getWorldPosition(starWorldPos);
-              
-              const dirToStar = starWorldPos.clone().sub(worldPos).normalize();
-              
-              // Place camera along this vector, but slightly elevated to see features
-              const camPos = worldPos.clone().add(dirToStar.multiplyScalar(dist));
-              camPos.y += radius * 0.5;
-              
-              this.snapshotCamera.position.copy(camPos);
-              this.snapshotCamera.lookAt(worldPos);
-              
-              // Render
-              this.renderer.setRenderTarget(renderTarget);
-              this.renderer.render(this.scene, this.snapshotCamera);
-              
-              // Extract image
-              const canvas = document.createElement('canvas');
-              canvas.width = size; canvas.height = size;
-              const context = canvas.getContext('2d');
-              context.drawImage(this.renderer.domElement, 0, 0, size, size); // Fallback if readPixels is complex
-              // Note: Proper readPixels implementation is verbose, using toDataURL from renderer is easier if preserveDrawingBuffer is on.
-              // But since we are rendering to a target, we can use renderer.domElement if we rendered to screen, but we didn't.
-              // For simplicity in this snippet, we'll assume the renderer can output the target or we skip the complex buffer read for now.
-              // Ideally: planetData.icon = ... (Buffer read logic)
-          }
-      });
-
-      this.renderer.setRenderTarget(originalTarget);
-      this.snapshotCamera.aspect = originalAspect;
-      this.snapshotCamera.updateProjectionMatrix();
-      renderTarget.dispose();
-  }
-
-  dispose() {
-    this.renderer.domElement.removeEventListener('click', this.onMouseClick);
-    this.renderer.domElement.removeEventListener('mousemove', this.onMouseMove);
-    window.removeEventListener('keydown', this.onKeyDown);
-    window.removeEventListener('keyup', this.onKeyUp);
-    const funcName = 'SolarSystemView.dispose';
-    Logger.start(funcName);
-    super.dispose();
-  }
+        Logger.end(funcName, `Generated ${moons.length} moons.`);
+        return moons;
+    }
 }

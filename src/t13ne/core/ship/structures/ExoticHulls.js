@@ -245,7 +245,7 @@ export const generateBioBird = (context) => {
         { width: bodyLen*0.4, height: bodyLen*0.3, length: bodyLen }, 'NONE');
     
     // Head
-    attachComponent('bio_head', [0, bodyLen*0.1, bodyLen*0.55], [0, 0, 0], 'cone', 
+    attachComponent('bio_head', [0, bodyLen*0.1, bodyLen*0.55], [Math.PI/2, 0, 0], 'cone', 
         { radius: bodyLen*0.15, height: bodyLen*0.3 }, 'NONE');
         
     // Wings
@@ -254,7 +254,7 @@ export const generateBioBird = (context) => {
         { span: wingSpan/2, rootChord: bodyLen*0.5, tipChord: bodyLen*0.2, sweep: bodyLen*0.3, depth: 0.15, centered: false }, 'REFLECTIVE');
         
     // Tail
-    attachComponent('bio_tail', [0, 0.1, -bodyLen*0.5], [0.2, 0, 0], 'wedge', 
+    attachComponent('bio_tail_feathers', [0, 0.1, -bodyLen*0.5], [0.2, 0, 0], 'wedge', 
         { span: bodyLen*0.4, rootChord: bodyLen*0.3, tipChord: bodyLen*0.6, sweep: -bodyLen*0.1, depth: 0.1, centered: true }, 'NONE');
 
     // Engines (Thighs) - Horizontal cylinders where upper legs would be
@@ -284,7 +284,7 @@ export const generateBioFish = (context) => {
         { width: bodyLen*0.25, height: bodyLen*0.4, length: bodyLen }, 'NONE');
         
     // Tail Fin (Caudal)
-    attachComponent('bio_fin_tail', [0, 0, -bodyLen*0.55], [Math.PI/2, 0, 0], 'wedge', 
+    attachComponent('bio_fin_tail', [0, 0, -bodyLen*0.55], [0, 0, Math.PI/2], 'wedge', 
         { span: bodyLen*0.9, rootChord: bodyLen*0.15, tipChord: bodyLen*0.5, sweep: -bodyLen*0.1, depth: 0.2, centered: true }, 'NONE');
         
     // Dorsal Fin

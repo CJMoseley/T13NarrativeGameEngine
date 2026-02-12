@@ -451,7 +451,7 @@ export class ShipGenerator {
              // Bottom Engine
              attachComponent('engine_bottom', [0, -engineY, engineZ], [Math.PI / 2, 0, 0], 'cone', 
                 { radius: 0.5, height: engineHeight }, 'NONE');
-        } else {
+        } else if (hullType !== 'BATTLESTAR') { // Battlestar engines are handled in generateBattlestar
             if (hullType === 'STATION_RING' || hullType === 'STATION_WHEEL') {
                 // Engines on the rim for rings
                 const r = spineLength * 1.5;
@@ -532,11 +532,13 @@ export class ShipGenerator {
                     } else {
                         // Type 6: Sloped Front (Sliced Cone)
                         const noseLength = lastRad * 2.0;
-                        attachComponent('nose_base', [0, 0, lastZ + noseLength/2 - 0.1], lastRot, 'cone',
+                        // Renamed to fuselage_nose to ensure it persists as a hull component
+                        attachComponent('fuselage_nose', [0, 0, lastZ + noseLength/2 - 0.1], lastRot, 'cone',
                             { radius: lastRad, height: noseLength, radialSegments: lastSegs }, 'NONE');
                         
                         const sliceSize = Math.max(lastRad, noseLength) * 3;
-                        attachComponent('carve_nose_slice', [0, lastRad * 0.5, lastZ + noseLength], [Math.PI/4, 0, 0], 'box', 
+                        // Position carve slightly further forward to ensure base remains
+                        attachComponent('carve_nose_slice', [0, lastRad * 0.8, lastZ + noseLength], [Math.PI/4, 0, 0], 'box', 
                             { width: sliceSize, height: sliceSize, depth: sliceSize }, 'NONE');
                     }
                 }
@@ -615,15 +617,32 @@ export class ShipGenerator {
                     if (i === 0 && random() > 0.3) { // 70% chance on main wing segment
                         const span = def.dims.span;
                         const rootChord = def.dims.rootChord;
+                        const tipChord = def.dims.tipChord || (rootChord * 0.5);
+                        const sweep = def.dims.sweep || 0;
+
                         // Place engine at 1/3 to 1/2 span
-                        const engPosLocal = new THREE.Vector3(span * (0.3 + random() * 0.3), 0, 0);
+                        const spanFactor = 0.3 + random() * 0.3;
+                        const engX = span * spanFactor;
+                        
+                        // Calculate trailing edge Z at this X (Local to wing)
+                        // Root Rear Z: -rootChord/2
+                        // Tip Rear Z: rootChord/2 - sweep - tipChord
+                        const zRearRoot = -rootChord / 2;
+                        const zRearTip = rootChord / 2 - sweep - tipChord;
+                        const zRearAtX = zRearRoot * (1 - spanFactor) + zRearTip * spanFactor;
+
+                        // Engine size relative to wing
+                        const engRadius = Math.min(rootChord * 0.15, 1.0);
+                        const engLen = Math.min(rootChord * 0.6, 3.0);
+                        
+                        // Position engine so its front attaches to the wing's rear
+                        // Engine is rotated 90 X, so length is along Z. Center is at Z - len/2 to put front at Z.
+                        const engZ = zRearAtX - engLen / 2;
+                        const engPosLocal = new THREE.Vector3(engX, 0, engZ);
+
                         // Apply wing rotation
                         const wingRotEuler = new THREE.Euler(...def.rot);
                         const engPosWorld = engPosLocal.applyEuler(wingRotEuler).add(new THREE.Vector3(...def.pos));
-                        
-                        // Engine size relative to wing
-                        const engRadius = rootChord * 0.25;
-                        const engLen = rootChord * 0.8;
                         
                         attachComponent(`wing_engine_${i}`, [engPosWorld.x, engPosWorld.y, engPosWorld.z], [Math.PI/2, 0, 0], 'cylinder',
                             { radiusTop: engRadius * 0.8, radiusBottom: engRadius, height: engLen }, symOverride);
@@ -686,23 +705,31 @@ export class ShipGenerator {
         }
 
         // 1. Check for "Tower Bridge" (Star Destroyer style) - Restricted to larger ships
-        if (spineLength > 5 && (hullType === 'SPINE' || hullType === 'FREIGHTER' || hullType === 'Y_FORK') && random() > 0.4) {
+        if (spineLength > 5 && (hullType === 'SPINE' || hullType === 'Y_FORK') && random() > 0.4) {
             cockpitPlaced = true;
             const towerH = 1.5 + random();
             const towerZ = -(spineLength / 2) + 2.0;
+            const towerWidth = 4.0 + random() * 2.0; // Wide T-bar
 
-            // Tower neck (Central)
-            attachComponent('bridge_tower', [0, towerH / 2, towerZ], [0, 0, 0], 'box', { width: 1.0, height: towerH, depth: 1.5 });
+            // Tower Neck (Stem)
+            attachComponent('bridge_neck', [0, towerH / 2, towerZ], [0, 0, 0], 'box', 
+                { width: 1.0, height: towerH, depth: 1.5 }, 'NONE');
 
-            // Bridge on top
-            if (symmetryType === 'REFLECTIVE' || symmetryType === 'RADIAL') {
-                // Symmetrical Bridge: Use a Prism (Triangular) to look like a gable/wedge but symmetrical
-                // Rotate to align flat side down
-                attachComponent('bridge', [0, towerH + 0.4, towerZ], [Math.PI / 2, Math.PI / 2, 0], 'prism', { radius: 1.5, height: 1.5, segments: 3 });
-            } else {
-                // Asymmetrical Bridge: Use the Wedge
-                attachComponent('bridge', [0, towerH + 0.4, towerZ], [0, 0, 0], 'wedge', { width: 3.0, length: 1.5, depth: 0.6 });
-            }
+            // Tower Crossbar (Top) - The "T"
+            attachComponent('bridge_crossbar', [0, towerH + 0.4, towerZ], [0, 0, 0], 'box', 
+                { width: towerWidth, height: 0.8, depth: 1.2 }, 'NONE');
+
+            // Supports (Angled Struts)
+            const strutLen = Math.sqrt((towerWidth/2)**2 + towerH**2) * 0.95; // Slightly shorter to embed
+            const angle = Math.atan2(towerWidth/2, towerH);
+            
+            // Left Support
+            attachComponent('bridge_support_L', [-towerWidth/4, towerH/2, towerZ], [0, 0, angle], 'cylinder', 
+                { radiusTop: 0.2, radiusBottom: 0.3, height: strutLen }, 'NONE');
+            
+            // Right Support
+            attachComponent('bridge_support_R', [towerWidth/4, towerH/2, towerZ], [0, 0, -angle], 'cylinder', 
+                { radiusTop: 0.2, radiusBottom: 0.3, height: strutLen }, 'NONE');
         }
 
         // 2. Fallback / Other Styles
