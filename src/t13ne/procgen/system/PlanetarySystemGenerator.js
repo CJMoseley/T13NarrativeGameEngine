@@ -11,7 +11,7 @@ export class PlanetarySystemGenerator {
         this.pluginManager = pluginManager;
         this.nameGenerator = nameGenerator;
         this.resourceFactory = new ResourceFactory(pluginManager);
-        this.planet3DGenerator = new PlanetGenerator(null); // Pass physxProvider if available
+        // this.planet3DGenerator = new PlanetGenerator(null); // Removed unused instantiation to prevent potential issues if dependencies missing
         Logger.end(funcName);
     }
 
@@ -263,6 +263,65 @@ export class PlanetarySystemGenerator {
             });
         }
 
+        // --- Post-Generation Guarantees ---
+        
+        // 1. Ensure at least one planet has moons (if planets exist) to maximize biosphere chances
+        if (planets.length > 0 && !planets.some(p => p.moons.length > 0)) {
+            // Pick the largest planet (likely a giant) or just the last one (outer system)
+            const candidates = [...planets].sort((a, b) => b.radius - a.radius);
+            const host = candidates[0];
+            
+            const moonName = `${host.name} Alpha`;
+            // Approximate relative distance for a captured moon
+            const moonDist = host.radius * 5 + 0.01; 
+            
+            const forcedMoon = {
+                name: moonName,
+                type: 'Captured Moon',
+                isRing: false,
+                atmosphere: 'None',
+                biosphere: 'None',
+                description: 'A solitary moon orbiting the planet.',
+                radius: host.radius * 0.2,
+                orbitalDistance: moonDist,
+                color: { h: 0.0, s: 0.0, l: 0.5 },
+                orbitSpeed: 0.02
+            };
+            
+            host.moons.push(forcedMoon);
+            host.moonCount = (host.moonCount || 0) + 1;
+            Logger.message(`${funcName}: Forced moon generation on ${host.name} to ensure system variety.`);
+        }
+
+        // 2. Ensure at least one biosphere exists in the system
+        const hasLife = planets.some(p => p.biosphere && p.biosphere !== 'None' && p.biosphere !== 'Extinct');
+        if (planets.length > 0 && !hasLife) {
+            // Pick a random planet to host life if none exists
+            const lifeHost = planets[Math.floor(Math.random() * planets.length)];
+            const temp = parseFloat(lifeHost.temperature);
+            
+            let bioType = 'Native Biosphere';
+            let bioDesc = '';
+
+            if (temp > 373) { // > 100 C
+                bioType = 'Magma-based Life';
+                bioDesc = ' Silicon-based lifeforms thrive in the extreme heat.';
+            } else if (temp < 200) { // < -73 C
+                bioType = 'Cryo-Crystalline Life';
+                bioDesc = ' Crystalline entities metabolize energy in the freezing cold.';
+            } else if (lifeHost.type.includes('Gas')) {
+                bioType = 'Atmospheric Floaters';
+                bioDesc = ' Large floating organisms inhabit the dense atmosphere.';
+            } else {
+                bioType = 'Microbial';
+                bioDesc = ' Simple microbial life exists in the crust.';
+            }
+
+            lifeHost.biosphere = bioType;
+            lifeHost.description += bioDesc;
+            Logger.message(`${funcName}: Forced biosphere '${bioType}' on ${lifeHost.name} to ensure life exists in system.`);
+        }
+
         Logger.end(funcName, `Generated ${planets.length} planets.`);
         return planets;
     }
@@ -442,30 +501,23 @@ export class PlanetarySystemGenerator {
         // --- 5. Apply Homeworld & Lore Overrides ---
         Logger.message(`${funcName}: Step 5 - Overrides`);
         if (i === systemData.homeWorldIndex) {
-            classification.biosphere = 'Complex Flora/Fauna';
-            classification.type = 'Terrestrial World';
-            classification.atmosphere = 'Standard Terran (Nitrogen-Oxygen)';
-            classification.temperature = 288;
-            classification.gravity = 1.0;
-
-            // Use planetAffinity from species lore if it exists
-            const affinity = systemData.speciesCore?.planetAffinity;
-            if (affinity) {
-                if (affinity.includes('aquatic')) {
-                    classification.type = 'Ocean World';
-                } else if (affinity.includes('jungle') || affinity.includes('forest') || affinity.includes('insectoid')) {
-                    classification.type = 'Jungle World';
-                } else if (affinity.includes('desert') || affinity.includes('reptilian')) {
-                    classification.type = 'Desert World';
-                } else if (affinity.includes('avian') || affinity.includes('mountain')) {
-                    classification.type = 'Mountainous World';
+            // Ensure homeworlds have a life-sustaining biosphere, but respect the generated environment.
+            if (!classification.biosphere || classification.biosphere === 'None' || classification.biosphere === 'Extinct') {
+                // Instead of a generic override, pick a plausible biosphere.
+                if (classification.type.includes('Volcanic')) {
+                    classification.biosphere = 'Chemosynthetic Life';
+                } else if (classification.type.includes('Ocean')) {
+                    classification.biosphere = 'Complex Aquatic Life';
+                } else {
+                    classification.biosphere = 'Native Ecosystem'; // A more generic but active term
                 }
+                Logger.message(`${funcName}: Homeworld at index ${i} was lifeless, upgraded biosphere to '${classification.biosphere}'.`);
             }
+
             // Add resources appropriate for a homeworld
             classification.resources.push(
-                { name: "Water", grade: "Abundant", value: 20, description: "Abundant Water" },
-                { name: "Soil", grade: "Rich", value: 15, description: "Rich Soil" },
-                { name: "Metals", grade: "Common", value: 10, description: "Common Metals" }
+                { name: "Water", grade: "Abundant", value: 20, description: "Abundant Water" }, // Or liquid equivalent
+                { name: "Construction Materials", grade: "Rich", value: 15, description: "Rich Minerals" }
             );
         } else if (systemData.speciesKey === 'SPECIES_FIRST_RELIC') {
             classification.type = 'Relic World';

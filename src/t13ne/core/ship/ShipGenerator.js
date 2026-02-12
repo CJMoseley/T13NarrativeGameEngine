@@ -41,7 +41,7 @@ export class ShipGenerator {
 
         // Determine Radial Count (3, 4, 5, 6, 8) - Ensure 3x or more for radial
         const radialCounts = [2, 3, 4, 5, 6, 8];
-        const radialCount = radialCounts[Math.floor(random() * radialCounts.length)];
+        let radialCount = radialCounts[Math.floor(random() * radialCounts.length)];
 
         const symmetryType = config.symmetry || (random() > 0.7 ? 'ASYMMETRICAL' : (random() > 0.5 ? 'RADIAL' : 'REFLECTIVE'));
 
@@ -160,9 +160,9 @@ export class ShipGenerator {
                         } else {
                             // Rotate around Y (Saucer style)
                             rPos = [
-                                basePos[0] * cos + basePos[2] * sin,
+                                basePos[0] * cos - basePos[2] * sin,
                                 basePos[1],
-                                -basePos[0] * sin + basePos[2] * cos
+                                basePos[0] * sin + basePos[2] * cos
                             ];
                             // Use Quaternion for correct global rotation
                             const q = new THREE.Quaternion().setFromEuler(new THREE.Euler(...baseRot));
@@ -179,6 +179,7 @@ export class ShipGenerator {
                     }
                 }
             }
+            return id;
         };
 
         // 1. Generate Central Fuselage (Spine, Saucer, or Star)
@@ -221,7 +222,7 @@ export class ShipGenerator {
              if (radialAxis === 'y') hullType = random() > 0.4 ? 'DISC' : 'STAR';
              else {
                  const roll = random();
-                 if (radialCount >= 2 && radialCount <= 4 && roll > 0.7) hullType = 'LIBERATOR';
+                 if (radialCount === 3 && roll > 0.7) hullType = 'LIBERATOR';
                  else hullType = roll > 0.4 ? 'Y_FORK' : 'SPINE';
              }
         } else if (symmetryType === 'ASYMMETRICAL') {
@@ -253,6 +254,14 @@ export class ShipGenerator {
         // Force INDUSTRIAL style for BLOB (Falcon-like) to ensure CSG carving works for the engine strip
         if (hullType === 'BLOB') {
             selectedStyle = 'INDUSTRIAL';
+        }
+
+        // Enforce Liberator Constraints
+        if (hullType === 'LIBERATOR') {
+            radialCount = 3;
+            context.radialCount = 3;
+            context.symmetryType = 'RADIAL';
+            context.radialAxis = 'z';
         }
 
         if (hullType === 'DISC') {
@@ -338,7 +347,7 @@ export class ShipGenerator {
             // Align vertically as requested (Cylinder default Y is up).
             attachComponent('engine', [ex, 0, ez], [0, 0, 0], 'cylinder', 
                 { radiusTop: 0.6, radiusBottom: 0.8, height: engHeight }, 'RADIAL');
-        } else if (hullType === 'FREIGHTER' || hullType === 'BATTLESTAR') {
+        } else if (hullType === 'FREIGHTER') {
             // Freighter engines are attached to the engine block at the rear
             const trussLen = spineLength * 1.5;
             const engineZ = -trussLen/2 - 4.0 + 0.5; // Behind the engine block (which is at -trussLen/2 - 2.5) + Overlap
@@ -350,10 +359,11 @@ export class ShipGenerator {
         } else if (hullType === 'Y_FORK') {
              // Engines on prongs
              const prongLen = spineLength * 0.8;
+             const embedDepth = 1.0; // Embed engine into prong to ensure connection
              const spreadAngle = Math.PI / 6;
              
-             const ex = Math.sin(spreadAngle) * prongLen;
-             const ez = -Math.cos(spreadAngle) * prongLen;
+             const ex = Math.sin(spreadAngle) * (prongLen - embedDepth);
+             const ez = -Math.cos(spreadAngle) * (prongLen - embedDepth);
              
              const symMode = symmetryType === 'ASYMMETRICAL' ? 'REFLECTIVE' : symmetryType;
              
@@ -451,7 +461,7 @@ export class ShipGenerator {
              // Bottom Engine
              attachComponent('engine_bottom', [0, -engineY, engineZ], [Math.PI / 2, 0, 0], 'cone', 
                 { radius: 0.5, height: engineHeight }, 'NONE');
-        } else if (hullType !== 'BATTLESTAR') { // Battlestar engines are handled in generateBattlestar
+        } else if (hullType !== 'BATTLESTAR' && hullType !== 'LIBERATOR' && !hullType.startsWith('BIO_')) { // Battlestar, Liberator and Bio engines are handled separately
             if (hullType === 'STATION_RING' || hullType === 'STATION_WHEEL') {
                 // Engines on the rim for rings
                 const r = spineLength * 1.5;
@@ -477,7 +487,19 @@ export class ShipGenerator {
             if (symmetryType === 'REFLECTIVE') {
                 const engineHeight = 2.0;
                 const engineZ = -spineLength / 2 - engineHeight / 2 + 0.5; // Increased overlap
-                attachComponent('engine', [1.5, 0, engineZ], [Math.PI / 2, 0, 0], 'cylinder', { radiusTop: 0.4, radiusBottom: 0.6, height: engineHeight });
+                
+                // Fix for floating engines: Calculate X based on hull width at this Z
+                let engineX = 1.5; // Default fallback
+                if (this.getSurfacePoint) {
+                    // Raycast from outside (+X) towards center at the engine's Z
+                    const rayOrigin = [20, 0, engineZ];
+                    const rayDir = [-1, 0, 0];
+                    const hit = this.getSurfacePoint(components, rayOrigin, rayDir, ['fuselage', 'hull', 'spine']);
+                    if (hit) {
+                        engineX = hit.x + 0.3; // Attach to surface + radius (approx 0.5) - overlap (0.2)
+                    }
+                }
+                attachComponent('engine', [engineX, 0, engineZ], [Math.PI / 2, 0, 0], 'cylinder', { radiusTop: 0.4, radiusBottom: 0.6, height: engineHeight });
             } else if (hullType === 'STAR') {
                 // Engines at ends of arms
                 const armLen = spineLength;
@@ -537,21 +559,48 @@ export class ShipGenerator {
                             { radius: lastRad, height: noseLength, radialSegments: lastSegs }, 'NONE');
                         
                         const sliceSize = Math.max(lastRad, noseLength) * 3;
+                        
+                        // Calculate slice position and rotation to match the nose's roll
+                        const roll = lastRot[2] || 0;
+                        const sliceY = lastRad * 0.8;
+                        
+                        // Rotate the offset vector (0, sliceY) by the roll angle
+                        const sX = -sliceY * Math.sin(roll);
+                        const sY = sliceY * Math.cos(roll);
+
                         // Position carve slightly further forward to ensure base remains
-                        attachComponent('carve_nose_slice', [0, lastRad * 0.8, lastZ + noseLength], [Math.PI/4, 0, 0], 'box', 
+                        // The slice rotation should be independent of the cone's roll to get a clean top-down slope.
+                        attachComponent('carve_nose_slice', [sX, sY, lastZ + noseLength], [Math.PI/4, 0, 0], 'box', 
                             { width: sliceSize, height: sliceSize, depth: sliceSize }, 'NONE');
                     }
                 }
+
                 // Central engine for SPINE or other fallback types
                 const engineHeight = 2.5;
-                const engineZ = -spineLength / 2 - engineHeight / 2 + 0.5; // Increased overlap
-                const engineZ = -spineLength / 2 - engineHeight / 2 + 1.0; // Increased overlap to ensure connection
+                let engineZ = -spineLength / 2 - engineHeight / 2 + 1.0; // Default for SPINE
+
+                // For non-SPINE hulls (MAZE, FRACTAL, etc), find the actual rear-most point
+                if (hullType !== 'SPINE') {
+                    let minZ = 0;
+                    components.forEach(c => {
+                        if (c.usage.includes('fuselage') || c.usage.includes('hull') || c.usage.includes('maze') || c.usage.includes('fractal')) {
+                            const z = c.pos[2];
+                            const d = (c.dims.depth || c.dims.length || c.dims.radius || 1);
+                            // For radius based shapes, extent is z - radius. For box/cyl, z - height/2 or depth/2
+                            const rear = z - (c.dims.radius ? c.dims.radius : d/2);
+                            if (rear < minZ) minZ = rear;
+                        }
+                    });
+                    // Attach to the rear-most point found, with overlap
+                    engineZ = minZ - engineHeight / 2 + 0.5;
+                }
+                
                 attachComponent('engine', [0, 0, engineZ], [Math.PI / 2, 0, 0], 'cylinder', { radiusTop: 0.6, radiusBottom: 0.9, height: engineHeight });
             }
         }
 
         // Wings & Fins Generation
-        if (random() > 0.1 && (hullType === 'SPINE' || hullType === 'BIO_BIRD' || hullType === 'BIO_INSECT')) { 
+        if (random() > 0.1 && (hullType === 'SPINE' || hullType === 'BIO_INSECT')) { 
             const wingConfigVal = random(); // 0-0.4: Mono, 0.4-0.7: X-Wing, 0.7-1.0: Bi-Wing
             let wingConfig;
             if (wingConfigVal < 0.4) wingConfig = 'Monoplane';
@@ -605,7 +654,7 @@ export class ShipGenerator {
             const processWing = (defs) => {
                 let parentId = null;
                 defs.forEach((def, i) => {
-                    attachComponent(def.usage, def.pos, def.rot, def.type, def.dims, symOverride);
+                    const compId = attachComponent(def.usage, def.pos, def.rot, def.type, def.dims, symOverride);
                     const currentId = components[components.length - 1].id;
                     
                     // Wire to parent
@@ -613,6 +662,12 @@ export class ShipGenerator {
                         this.wiringGenerator.addConnection(explicitWiring, currentId, parentId, 'structural', 1.0);
                     }
                     parentId = currentId;
+
+                    // Wire Root to Fuselage (Explicitly)
+                    if (i === 0) {
+                        const fuselageId = components.find(c => c.usage.includes('fuselage') || c.usage.includes('spine'))?.id;
+                        if (fuselageId) this.wiringGenerator.addConnection(explicitWiring, currentId, fuselageId, 'structural', 2.0);
+                    }
 
                     // Add Wing Engine (Small)
                     if (i === 0 && random() > 0.3) { // 70% chance on main wing segment
@@ -633,8 +688,8 @@ export class ShipGenerator {
                         const zRearAtX = zRearRoot * (1 - spanFactor) + zRearTip * spanFactor;
 
                         // Engine size relative to wing
-                        const engRadius = Math.min(rootChord * 0.15, 1.0);
-                        const engLen = Math.min(rootChord * 0.6, 3.0);
+                        const engRadius = Math.min(rootChord * 0.1, 0.6); // Reduced size
+                        const engLen = Math.min(rootChord * 0.5, 2.5);
                         
                         // Position engine so its front attaches to the wing's rear
                         // Engine is rotated 90 X, so length is along Z. Center is at Z - len/2 to put front at Z.
@@ -754,9 +809,10 @@ export class ShipGenerator {
                  const cz = Math.sin(angle) * r;
                  attachComponent('cockpit', [cx, 0, cz], [0, angle + Math.PI/2, 0], 'box', { width: 2, height: 1.5, depth: 3 });
             } else if (symmetryType === 'ASYMMETRICAL' || hullType === 'BLOB' || hullType === 'MAZE') {
-                // Asymmetrical Side Cockpit (Cylinder Strut + Capsule)
-                const isLeft = random() > 0.5;
-                const sideDir = isLeft ? 1 : -1;
+                // Asymmetrical Side Cockpit (Angled Cylinder Strut + Capsule)
+                // Default to Right side (+X) for Falcon style, but allow random for variety unless it's a BLOB
+                const isRight = (hullType === 'BLOB') ? true : (random() > 0.5);
+                const sideDir = isRight ? 1 : -1;
                 
                 // Move startZ forward so the cockpit ends up near the front
                 const startZ = spineLength * 0.2; 
@@ -776,41 +832,31 @@ export class ShipGenerator {
                     startX = 0;
                 }
                 
-                // Strut configuration: Angled forward 30-60 degrees (Average 45)
+                // Corridor configuration: Angled back 30-60 degrees
                 const angleDeg = 30 + random() * 30; 
                 const angleRad = angleDeg * (Math.PI / 180);
                 
-                // Determine clearance from hull
-                const clearance = 4.0 + random() * 2.0;
+                // Determine arm length
+                const armLength = 4.0 + random() * 2.0;
                 
                 // Calculate End point (Cockpit location) relative to startX
-                const endX = startX + (sideDir * (Math.cos(angleRad) * clearance));
-                const endZ = startZ + (Math.sin(angleRad) * clearance);
+                const endX = startX + (sideDir * (Math.cos(angleRad) * armLength));
+                const endZ = startZ - (Math.sin(angleRad) * armLength); // Swept back (-Z)
                 
-                // Create an "Arm" with an Elbow
-                // Shoulder (Lateral Strut)
-                const elbowX = endX;
-                const elbowZ = startZ; // Go straight out first
+                // Create a single angled arm
+                const midX = (startX + endX) / 2;
+                const midZ = (startZ + endZ) / 2;
                 
-                const shoulderLen = Math.abs(elbowX - startX);
-                const shoulderPos = [(startX + elbowX) / 2, 0, startZ];
-                
-                attachComponent('cockpit_arm_shoulder', shoulderPos, [0, 0, Math.PI/2], 'cylinder', 
-                    { radiusTop: 0.6, radiusBottom: 0.7, height: shoulderLen + 0.5 }); // Overlap
+                // Calculate rotation for the cylinder
+                // Cylinder is Y-aligned. We rotate X 90 to put it in XZ plane.
+                // Then rotate Y to point it.
+                // Vector is (dx, dz). Angle from Z axis is atan2(dx, dz).
+                const dx = endX - startX;
+                const dz = endZ - startZ;
+                const yaw = Math.atan2(dx, dz);
 
-                // Elbow Joint
-                attachComponent('cockpit_arm_elbow', [elbowX, 0, elbowZ], [0, 0, 0], 'sphere', { radius: 0.9 });
-
-                // Forearm (Forward Strut)
-                const forearmLen = Math.abs(endZ - elbowZ);
-                const forearmPos = [elbowX, 0, (elbowZ + endZ) / 2];
-                
-                // Only add forearm if there is forward distance (otherwise it's just a side pod)
-                if (forearmLen > 0.5) {
-                    attachComponent('cockpit_arm_forearm', forearmPos, [Math.PI/2, 0, 0], 'cylinder', 
-                        { radiusTop: 0.5, radiusBottom: 0.6, height: forearmLen + 0.5 });
-                }
-
+                attachComponent('cockpit_corridor', [midX, 0, midZ], [Math.PI/2, yaw, 0], 'cylinder', 
+                    { radiusTop: 0.6, radiusBottom: 0.7, height: armLength + 0.5 }); // Overlap
                 
                 // Capsule Cockpit
                 const capLen = 3.0;
@@ -820,11 +866,7 @@ export class ShipGenerator {
                 attachComponent('cockpit', [endX, 0, endZ], [Math.PI/2, 0, 0], 'capsule', 
                     { radius: capRad, length: capLen - (capRad*2) }); 
             } else {
-                if (hullType === 'DISC') {
-                    // Cockpit on rim or center? Let's put it on the rim for rotation
-                    const r = mainHullRadius * 0.8;
-                attachComponent('cockpit', [r, 0.5, 0], [0, 0, 0], 'ellipsoid', { width: 1.5, height: 0.8, length: 1.5 }, 'NONE');
-                } else if (hullType === 'STAR') {
+                if (hullType === 'STAR') {
                     // Cockpit on one arm
                     attachComponent('cockpit', [spineLength * 0.5, 0.5, 0], [0, 0, 0], 'ellipsoid', { width: 1.2, height: 0.8, length: 2.0 }, 'NONE'); // Only one cockpit
                 } else if (hullType === 'HORSESHOE') {
@@ -841,7 +883,6 @@ export class ShipGenerator {
                     attachComponent('cockpit', [0, 1.0, spineLength/3], [0, 0, 0], 'ellipsoid', { width: 1.0, height: 0.8, length: 1.5 });
                 } else {
                     const cockpitZ = (spineLength / 2) - 1.5;
-                    attachComponent('cockpit', [0, 0.6, cockpitZ], [0, 0, 0], 'ellipsoid', { width: 1.0, height: 0.8, length: 1.5 });
                     
                     // Raycast to find top surface for cockpit to avoid burying it
                     let cockpitY = 0.6;
@@ -850,12 +891,33 @@ export class ShipGenerator {
                         const rayDir = [0, -1, 0];
                         const hit = this.getSurfacePoint(components, rayOrigin, rayDir, ['fuselage', 'hull', 'spine']);
                         if (hit) {
-                            cockpitY = hit.y + 0.4; // Sit on top (0.4 is half height of cockpit)
+                            cockpitY = hit.y + 0.4 - 0.2; // Sit on top (0.4 is half height) - Embed by 0.2 to ensure connection
                         }
                     }
                     attachComponent('cockpit', [0, cockpitY, cockpitZ], [0, 0, 0], 'ellipsoid', { width: 1.0, height: 0.8, length: 1.5 });
                 }
             }
+        }
+
+        // Explicit Wiring for Catamaran / Enterprise Style to prevent jumping
+        if (hullType === 'CATAMARAN') {
+            const findId = (prefix) => components.find(c => c.usage === prefix)?.id;
+            const saucerId = findId('fuselage_saucer_mid') || findId('bridge');
+            const neckId = findId('fuselage_neck');
+            const secId = findId('fuselage_secondary');
+            
+            if (saucerId && neckId) this.wiringGenerator.addConnection(explicitWiring, neckId, saucerId, 'structural', 5.0);
+            if (neckId && secId) this.wiringGenerator.addConnection(explicitWiring, secId, neckId, 'structural', 5.0);
+
+            // Wire Pylons to Secondary Hull
+            const pylons = components.filter(c => c.usage === 'pylon');
+            pylons.forEach(p => {
+                if (secId) this.wiringGenerator.addConnection(explicitWiring, p.id, secId, 'structural', 3.0);
+                // Wire Nacelle to Pylon
+                // Find nacelle with closest position
+                const nacelle = components.find(n => n.usage === 'warp_nacelle' && getDist(n.pos, p.pos) < 10.0 && Math.sign(n.pos[0]) === Math.sign(p.pos[0]));
+                if (nacelle) this.wiringGenerator.addConnection(explicitWiring, nacelle.id, p.id, 'power', 3.0);
+            });
         }
 
         // Essential Systems (Power, Shield, Vortex) - Distributed Placement
@@ -1030,8 +1092,9 @@ export class ShipGenerator {
         // --- 2b.1 Move Shield Generator to CoG (or near it) ---
         // We want it balanced, but maybe not exactly at 0,0,0 if the CoG is there.
         // Actually, centering it on CoG is good for a shield.
+        // Exception: Station Rings/Wheels should keep shield at 0,0,0 (Geometric Center) to fit the ring
         const shieldComp = components.find(c => c.usage === 'shield');
-        if (shieldComp) {
+        if (shieldComp && hullType !== 'STATION_RING' && hullType !== 'STATION_WHEEL') {
             shieldComp.pos = [cog.x, cog.y, cog.z];
             // Ensure it doesn't clip too badly by checking bounds? 
             // For now, centering it is the requirement.
@@ -1076,6 +1139,11 @@ export class ShipGenerator {
         const lightness = 0.5 + random() * 0.3; // 50% to 80% lightness (avoid pure white/black)
         
         let baseColor = new THREE.Color().setHSL(hue, saturation, lightness);
+
+        if (hullType === 'LIBERATOR') {
+            baseColor = new THREE.Color(0xdddddd); // Bone White / Light Grey
+            selectedStyle = 'INDUSTRIAL';
+        }
         
         // Override colors for specific styles
         if (selectedStyle === 'MINING') baseColor = new THREE.Color(0x554433); // Brown/Grey
@@ -1107,6 +1175,9 @@ export class ShipGenerator {
         const adjective = SHIP_ADJECTIVES[Math.floor(nameRandom() * SHIP_ADJECTIVES.length)];
         const noun = SHIP_NOUNS[Math.floor(nameRandom() * SHIP_NOUNS.length)];
         components.shipName = `${prefix} ${adjective} ${noun}`;
+
+        // Generate Interiors (Corridors and Rooms for carving)
+        components.interior = this.generateInteriors(components);
 
         // Return the components array, but also attach the wiring graph to it so it can be retrieved
         components.wiringGraph = wiringGraph;
@@ -1208,6 +1279,72 @@ export class ShipGenerator {
         }
 
         return closestPoint;
+    }
+
+    generateInteriors(components) {
+        const interior = [];
+        
+        // Identify habitable components to connect
+        const habitable = components.filter(c => 
+            c.usage && (c.usage.includes('cockpit') || c.usage.includes('bridge') || c.usage.includes('fuselage') || c.usage.includes('hull') || c.usage.includes('quarters'))
+        );
+        
+        if (habitable.length === 0) return interior;
+
+        // Sort by Z to create a spine-like connection sequence
+        habitable.sort((a, b) => b.pos[2] - a.pos[2]);
+
+        // Create corridors connecting sorted components
+        for (let i = 0; i < habitable.length - 1; i++) {
+            const c1 = habitable[i];
+            const c2 = habitable[i+1];
+            
+            const p1 = new THREE.Vector3(...c1.pos);
+            const p2 = new THREE.Vector3(...c2.pos);
+            const dist = p1.distanceTo(p2);
+            
+            // Only connect if reasonably close but not identical
+            if (dist > 0.5 && dist < 50.0) {
+                const mid = p1.clone().add(p2).multiplyScalar(0.5);
+                const dir = p2.clone().sub(p1).normalize();
+                const up = new THREE.Vector3(0, 1, 0);
+                
+                // Calculate rotation to align cylinder Y with direction
+                const q = new THREE.Quaternion().setFromUnitVectors(up, dir);
+                const e = new THREE.Euler().setFromQuaternion(q);
+                
+                interior.push({
+                    usage: 'interior_corridor',
+                    type: 'cylinder',
+                    dims: { radiusTop: 0.8, radiusBottom: 0.8, height: dist },
+                    pos: [mid.x, mid.y, mid.z],
+                    rot: [e.x, e.y, e.z]
+                });
+            }
+        }
+        
+        // Add an airlock (Exterior Door) to the largest fuselage component
+        const mainHull = habitable.find(c => c.usage.includes('fuselage'));
+        if (mainHull) {
+            // Place airlock on the side (+X)
+            // Estimate width based on type
+            let width = (mainHull.dims.width || mainHull.dims.radius || mainHull.dims.radiusTop || 2);
+            // If it's a box, width is full width, so half it. If radius, it's radius.
+            if (mainHull.type === 'box') width /= 2;
+            
+            const airlockPos = new THREE.Vector3(...mainHull.pos);
+            airlockPos.x += width; // Move to edge
+            
+            interior.push({
+                usage: 'interior_airlock',
+                type: 'box',
+                dims: { width: 1.5, height: 2.0, depth: 1.5 },
+                pos: [airlockPos.x, airlockPos.y, airlockPos.z],
+                rot: [0, 0, 0]
+            });
+        }
+
+        return interior;
     }
 
     /**

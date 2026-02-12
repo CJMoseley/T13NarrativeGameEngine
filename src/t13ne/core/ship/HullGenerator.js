@@ -255,35 +255,59 @@ export class HullGenerator {
         };
 
         // Calculate bounds to determine appropriate resolution
-        const bounds = new THREE.Box3();
+        const worldBounds = new THREE.Box3();
+        const tempMesh = new THREE.Mesh();
+        const tempBox = new THREE.Box3();
+        const boxGeom = new THREE.BoxGeometry(1, 1, 1);
+
         components.forEach(c => {
-            // Use diagonal length to ensure rotation doesn't push corners out of bounds, plus extra padding
-            const maxDim = Math.sqrt(c.scale.x * c.scale.x + c.scale.y * c.scale.y + c.scale.z * c.scale.z) * 0.5 + 2.0;
-            bounds.expandByPoint(c.position.clone().addScalar(maxDim));
-            bounds.expandByPoint(c.position.clone().subScalar(maxDim));
+            tempMesh.geometry = boxGeom;
+            tempMesh.position.copy(c.position);
+            tempMesh.quaternion.setFromEuler(c.rotation);
+            // c.scale is the full dimension, BoxGeometry is unit size.
+            // FIX: For radius-based primitives, c.scale holds the radius, but BoxGeometry needs full diameter (2*r).
+            const s = c.scale.clone();
+            if (['sphere', 'capsule', 'cylinder', 'cone', 'truncatedCone', 'torus', 'prism', 'dodecahedron', 'icosahedron', 'octahedron', 'tetrahedron', 'compound_eye'].includes(c.sdfType)) {
+                // For these, x and z are usually radii. y is height/length (full dim) for cyl/cone/capsule, but radius for sphere/polyhedra.
+                s.x *= 2;
+                s.z *= 2;
+                // Sphere/Polyhedra/Torus(tube) use uniform radius or specific mapping, but generally if it's a radius it needs doubling for the box.
+                if (['sphere', 'dodecahedron', 'icosahedron', 'octahedron', 'tetrahedron', 'compound_eye'].includes(c.sdfType)) s.y *= 2;
+            }
+            tempMesh.scale.copy(s);
+            tempMesh.updateMatrixWorld();
+            tempBox.setFromObject(tempMesh);
+            worldBounds.union(tempBox);
         });
-        const maxBound = Math.max(Math.abs(bounds.min.x), Math.abs(bounds.max.x), Math.abs(bounds.min.y), Math.abs(bounds.max.y), Math.abs(bounds.min.z), Math.abs(bounds.max.z));
-        const size = Math.max(maxBound * 1.5, 10); // Increased padding and min size to prevent clipping
+        boxGeom.dispose();
+        worldBounds.expandByScalar(padding * 2 + 1.0); // Add padding
+
+        const boundsSize = new THREE.Vector3();
+        worldBounds.getSize(boundsSize);
+        const size = Math.max(boundsSize.x, boundsSize.y, boundsSize.z);
 
         // Dynamic resolution based on size to ensure detail
-        // Target roughly 2 voxels per unit, clamped between 32 and 256
-        let res = Math.ceil(size * 2 * 2.0); 
-        res = Math.min(Math.max(res, 32), 256);
+        let res = Math.ceil(size * 1.5); 
+        res = Math.min(Math.max(res, 32), 128); // Cap at 128 for performance
 
         const mc = new MarchingCubes(res, new THREE.MeshStandardMaterial(), true, true);
         mc.isolation = 0.0;
 
-        for (let i = 0; i < res; i++) {
+        // Manually populate the field
+        const field = mc.field;
+        for (let k = 0; k < res; k++) {
             for (let j = 0; j < res; j++) {
-                for (let m = 0; m < res; m++) {
-                    const x = ((i / res) - 0.5) * size * 2;
-                    const y = ((j / res) - 0.5) * size * 2;
-                    const z = ((m / res) - 0.5) * size * 2;
-                    const val = sceneSDF(x, y, z);
-                    
-                    if (mc.field !== undefined) {
-                        mc.field[i + j * res + m * res * res] = -val;
-                    }
+                for (let i = 0; i < res; i++) {
+                    const x = i / (res - 1);
+                    const y = j / (res - 1);
+                    const z = k / (res - 1);
+                    const val = -sceneSDF(
+                        worldBounds.min.x + x * boundsSize.x,
+                        worldBounds.min.y + y * boundsSize.y,
+                        worldBounds.min.z + z * boundsSize.z
+                    );
+                    // MarchingCubes index mapping: x + y*res + z*res*res
+                    field[i + j * res + k * res * res] = val;
                 }
             }
         }
@@ -295,70 +319,23 @@ export class HullGenerator {
         }
 
         const geometry = mc.geometry; // MarchingCubes extends Mesh, geometry is a property
-        geometry.scale(size, size, size); // Scale the geometry to match the SDF domain size
+
+        // Marching Cubes generates geometry in the range [-1, 1]
+        // We need to map this to [worldBounds.min, worldBounds.max]
+        const halfSize = boundsSize.clone().multiplyScalar(0.5);
+        const center = new THREE.Vector3();
+        worldBounds.getCenter(center);
+
+        geometry.scale(halfSize.x, halfSize.y, halfSize.z);
+        geometry.translate(center.x, center.y, center.z);
         return geometry;
     }
 
     // Pipeline B: The "Faceted" Look (PhysX)
     generateConvexHull(components) {
-        if (!this.physxProvider || !this.physxProvider.physics) {
-            console.warn("PhysX is not available to HullGenerator. Using Marching Cubes fallback.");
-            return this.generateSDFHull(components, 0.1);
-        }
-
-        // Collect all vertices from component proxies
-        // Note: This requires access to ComponentFactory or similar logic to get vertices
-        // For now, we assume we can get simple proxy geometry
-        let allPoints = [];
-        
-        // Simple proxy generator for convex hull points
-        const getSimpleProxyGeo = (type, dims) => {
-             switch (type) {
-                case PRIMITIVE_TYPES.BOX: return new THREE.BoxGeometry(dims.width || 1, dims.height || 1, dims.depth || 1);
-                case PRIMITIVE_TYPES.SPHERE: return new THREE.SphereGeometry(dims.radius || 1, 8, 8);
-                case PRIMITIVE_TYPES.CYLINDER: return new THREE.CylinderGeometry(dims.radiusTop || 0.5, dims.radiusBottom || 0.5, dims.height || 1, 8);
-                case PRIMITIVE_TYPES.DODECAHEDRON: return new THREE.DodecahedronGeometry(dims.radius || 1);
-                case PRIMITIVE_TYPES.ICOSAHEDRON: return new THREE.IcosahedronGeometry(dims.radius || 1);
-                case PRIMITIVE_TYPES.OCTAHEDRON: return new THREE.OctahedronGeometry(dims.radius || 1);
-                case PRIMITIVE_TYPES.TETRAHEDRON: return new THREE.TetrahedronGeometry(dims.radius || 1);
-                default: return new THREE.BoxGeometry(1, 1, 1);
-            }
-        };
-
-        for (const c of components) {
-            const proxyGeo = getSimpleProxyGeo(c.type, c.dims);
-            const tempMesh = new THREE.Mesh(proxyGeo);
-            tempMesh.position.copy(c.position);
-            tempMesh.rotation.copy(c.rotation);
-            tempMesh.scale.copy(c.scale); // Apply scale
-            tempMesh.updateMatrixWorld();
-
-            const positions = proxyGeo.attributes.position.array;
-            const vec = new THREE.Vector3();
-            for (let i = 0; i < positions.length; i += 3) {
-                vec.set(positions[i], positions[i + 1], positions[i + 2]);
-                vec.applyMatrix4(tempMesh.matrixWorld);
-                allPoints.push(vec.x, vec.y, vec.z);
-            }
-        }
-
-        if (allPoints.length === 0) {
-            return new THREE.BufferGeometry();
-        }
-
-        const vertices = new Float32Array(allPoints);
-        const hull = this.physxProvider.createConvexHull(vertices);
-
-        if (!hull || hull.vertices.length < 3 || hull.indices.length === 0) {
-            return this.generateSDFHull(components, 0.1);
-        }
-
-        const hullGeometry = new THREE.BufferGeometry();
-        hullGeometry.setAttribute('position', new THREE.Float32BufferAttribute(hull.vertices, 3));
-        hullGeometry.setIndex(new THREE.BufferAttribute(hull.indices, 1));
-        hullGeometry.computeVertexNormals();
-
-        return hullGeometry;
+        // Fallback to showing individual components is now the default behavior.
+        // Returning null achieves this in the ShipAssembler.
+        return null;
     }
 
     applyVoronoiPlating(baseGeometry, type) {

@@ -10,21 +10,23 @@ export class GreebleGenerator {
         this.rivetMat = new THREE.MeshStandardMaterial({ color: 0x555555, roughness: 0.7, metalness: 0.6 });
         this.ventMat = new THREE.MeshStandardMaterial({ color: 0x222222, roughness: 0.8, metalness: 0.4 });
         this.antennaMat = new THREE.MeshStandardMaterial({ color: 0xaaaaaa, roughness: 0.4, metalness: 0.8 });
-        this.glassMat = new THREE.MeshPhysicalMaterial({ 
-            color: 0x88ccff, 
-            metalness: 0.9, 
-            roughness: 0.1, 
-            transmission: 0.2,
-            emissive: 0x002244,
-            emissiveIntensity: 0.5,
-            transparent: true
+        // Lit from within look: High emissive, low roughness
+        this.glassMat = new THREE.MeshStandardMaterial({ 
+            color: 0x111111, 
+            emissive: 0xaaddff,
+            emissiveIntensity: 2.0,
+            roughness: 0.2,
+            metalness: 0.8
         });
+        this.decalMat = new THREE.MeshStandardMaterial({ transparent: true, opacity: 0.9, roughness: 0.8, metalness: 0.2, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -1 });
         this.lightRedMat = new THREE.MeshBasicMaterial({ color: 0xff0000 });
         this.lightGreenMat = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
         this.lightWhiteMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
         this.lightAmberMat = new THREE.MeshBasicMaterial({ color: 0xffaa00 });
         this.lightBlueMat = new THREE.MeshBasicMaterial({ color: 0x00aaff });
         this.solarMat = new THREE.MeshStandardMaterial({ color: 0xc0c0c0, roughness: 0.2, metalness: 1.0, emissive: 0x111111, emissiveIntensity: 0.1 });
+        this.warpGlowMat = new THREE.MeshBasicMaterial({ color: 0x00aaff, transparent: true, opacity: 0.9 }); // Blue glow for strips
+        this.bussardMat = new THREE.MeshBasicMaterial({ color: 0xff3300, transparent: true, opacity: 0.9 }); // Red/Orange for collectors
 
         // Geometries
         this.rivetGeo = new THREE.SphereGeometry(0.1, 4, 4);
@@ -113,6 +115,22 @@ export class GreebleGenerator {
         group.add(leg);
         group.add(foot);
         return group;
+    }
+
+    createRoundedRectShape(width, height, radius) {
+        const shape = new THREE.Shape();
+        const x = -width / 2;
+        const y = -height / 2;
+        shape.moveTo(x + radius, y);
+        shape.lineTo(x + width - radius, y);
+        shape.quadraticCurveTo(x + width, y, x + width, y + radius);
+        shape.lineTo(x + width, y + height - radius);
+        shape.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+        shape.lineTo(x + radius, y + height);
+        shape.quadraticCurveTo(x, y + height, x, y + height - radius);
+        shape.lineTo(x, y + radius);
+        shape.quadraticCurveTo(x, y, x + radius, y);
+        return shape;
     }
 
     placeOnSurface(hullMesh, greebleGroup, origin, direction, objectToPlace, alignToNormal = true, offset = 0, applySymmetry = true, symmetryType, radialAxis, radialCount = 3, constrainNormalAxis = null, alignment = 'center', scaleToFit = false) {
@@ -347,22 +365,34 @@ export class GreebleGenerator {
                 isCentral = true; 
             }
 
+            // Determine primary axis for greebling (forward/exhaust) and the component's length along that axis.
+            const compQuaternion = new THREE.Quaternion().setFromEuler(rot);
+            let exhaustDir, forwardDir, lengthDim;
+            if (['cylinder', 'cone', 'truncatedCone', 'capsule', 'prism'].includes(comp.type)) {
+                // For these shapes, length is along the local Y axis in their geometry definition.
+                exhaustDir = new THREE.Vector3(0, -1, 0).applyQuaternion(compQuaternion);
+                forwardDir = new THREE.Vector3(0, 1, 0).applyQuaternion(compQuaternion);
+                lengthDim = scale.y;
+            } else {
+                // For other shapes like boxes, we assume length is along the local Z axis.
+                exhaustDir = new THREE.Vector3(0, 0, -1).applyQuaternion(compQuaternion);
+                forwardDir = new THREE.Vector3(0, 0, 1).applyQuaternion(compQuaternion);
+                lengthDim = scale.z;
+            }
+
             // 1. Rivet Lines
             if (styleConfig.method !== 'ORGANIC' && (usage.includes('fuselage') || usage.includes('chassis') || usage.includes('hull'))) {
-                let length = scale.z;
-                if (['cylinder', 'prism', 'capsule', 'cone', 'truncatedCone'].includes(comp.type)) {
-                    length = scale.y;
-                }
-
-                const steps = Math.floor(length * 2); 
-                const startZ = pos.z - length / 2;
-                const offsetDist = Math.max(scale.x, scale.y) + 2; // Ensure we start outside
+                // Note: This rivet logic assumes a Z-aligned spine and may not look perfect on all shapes.
+                // Using lengthDim for consistency.
+                const steps = Math.floor(lengthDim * 2); 
+                const startZ = pos.z - lengthDim / 2;
+                const offsetDist = Math.max(scale.x, scale.y) + 50; // Start far outside to avoid burying
                 const rivetScale = Math.max(0.5, Math.min(1.5, scale.x * 0.5));
                 const currentRivetGeo = this.rivetGeo.clone();
                 currentRivetGeo.scale(rivetScale, rivetScale, rivetScale);
                 
                 for (let i = 1; i < steps; i++) {
-                    const z = startZ + (i / steps) * length;
+                    const z = startZ + (i / steps) * lengthDim;
                     this.placeOnSurface(hullMesh, greebleGroup, new THREE.Vector3(0, pos.y + offsetDist, z), new THREE.Vector3(0, -1, 0), new THREE.Mesh(currentRivetGeo, this.rivetMat), true, 0, isCentral, symmetryType, radialAxis, radialCount, null, 'forward');
                     // Raycast from positive X and positive Y towards the component
                     this.placeOnSurface(hullMesh, greebleGroup, new THREE.Vector3(pos.x + offsetDist, pos.y, z), new THREE.Vector3(-1, 0, 0), new THREE.Mesh(currentRivetGeo, this.rivetMat), true, 0, isCentral, symmetryType, radialAxis, radialCount, null, 'forward');
@@ -378,7 +408,7 @@ export class GreebleGenerator {
 
                 // Pipes and Ladders on industrial ships
                 if (styleConfig.method === 'INDUSTRIAL' && random() > 0.6) {
-                    const pipe = this.createPipe(scale.z * 0.8);
+                    const pipe = this.createPipe(lengthDim * 0.8);
                     this.placeOnSurface(hullMesh, greebleGroup, new THREE.Vector3(pos.x + offsetDist, pos.y, pos.z), new THREE.Vector3(-1, 0, 0), pipe, true, 0.1, isCentral, symmetryType, radialAxis, radialCount, null, 'forward');
                 }
             }
@@ -420,15 +450,14 @@ export class GreebleGenerator {
                 container.add(ventGroup);
                 ventGroup.rotation.x = -Math.PI / 2;
 
-                const offsetDist = Math.max(scale.x, scale.y) + 2;
+                const offsetDist = Math.max(scale.x, scale.y) + 50; // Start far outside
                 this.placeOnSurface(hullMesh, greebleGroup, new THREE.Vector3(pos.x, pos.y + offsetDist, pos.z), new THREE.Vector3(0, -1, 0), container, true, 0, isCentral, symmetryType, radialAxis, radialCount, null, 'forward', true);
                 // Removed side placement to avoid fins
 
                 // Engine Intakes
                 const intake = new THREE.Mesh(new THREE.BoxGeometry(ventWidth, ventHeight, ventWidth), this.ventMat);
                 // Place at front of engine
-                const forward = new THREE.Vector3(0, 0, 1).applyEuler(rot);
-                this.placeOnSurface(hullMesh, greebleGroup, pos.clone().add(forward.multiplyScalar(scale.y/2 + 2)), forward.negate(), intake, true, 0, isCentral, symmetryType, radialAxis, radialCount, null, 'forward');
+                this.placeOnSurface(hullMesh, greebleGroup, pos.clone().add(forwardDir.multiplyScalar(lengthDim/2 + 50)), forwardDir.clone().negate(), intake, true, 0, isCentral, symmetryType, radialAxis, radialCount, null, 'forward');
             }
 
             // 3. Cockpit / Bridge
@@ -519,7 +548,8 @@ export class GreebleGenerator {
                             domeGeo.translate(0, 0.4, 0);
                             break;
                         default: // Classic Dome
-                            domeGeo = new THREE.SphereGeometry(1, 24, 24, 0, Math.PI * 2, 0, Math.PI * 0.5);
+                            // Faceted Geodesic Dome
+                            domeGeo = new THREE.IcosahedronGeometry(1, 1);
                             break;
                     }
                 }
@@ -529,12 +559,32 @@ export class GreebleGenerator {
 
                 // Add Window Frame (Struts)
                 const frameMat = this.ventMat; // Use dark metal for frame
-                // Create a slightly larger version of the dome geometry for the frame
-                const frameGeo = new THREE.WireframeGeometry(domeGeo);
-                const frame = new THREE.LineSegments(frameGeo, frameMat);
-                // Scale it up just a tiny bit to sit on top of the glass
+                // Removed WireframeGeometry to avoid black lines on every triangle edge.
+                // Instead, we use a slightly larger, inverted mesh or just rely on the nodes for detail.
+                // For now, we'll just add a simple rim at the base if needed, but the nodes below provide the "tech" look.
+                // To keep a frame effect without wireframe, we can use a slightly larger version of the geometry
+                // with `wireframe: true` on the material, but that is also dense.
+                // Let's stick to just the glass and the nodes for a cleaner look.
+                const frame = new THREE.Group(); 
                 frame.scale.setScalar(1.02);
                 dome.add(frame);
+
+                // Add Dark Metal Vertices (Nodes)
+                const nodeGeo = new THREE.IcosahedronGeometry(0.04, 0);
+                const nodeMat = this.ventMat;
+                const posAttr = domeGeo.attributes.position;
+                const vertices = new Set();
+
+                for(let i=0; i<posAttr.count; i++){
+                    const v = new THREE.Vector3().fromBufferAttribute(posAttr, i);
+                    const key = `${v.x.toFixed(3)},${v.y.toFixed(3)},${v.z.toFixed(3)}`;
+                    if(vertices.has(key)) continue;
+                    vertices.add(key);
+                    
+                    const node = new THREE.Mesh(nodeGeo, nodeMat);
+                    node.position.copy(v);
+                    dome.add(node);
+                }
                 
                 let offset = -scale.y * 0.1; // Sink slightly
                 if (['dodecahedron', 'icosahedron', 'octahedron', 'tetrahedron'].includes(comp.type)) {
@@ -548,11 +598,11 @@ export class GreebleGenerator {
                 let placed = false;
                 
                 // 1. Try Top (World Y) - Best for most ships
-                placed = this.placeOnSurface(hullMesh, greebleGroup, pos.clone().add(new THREE.Vector3(0, 20, 0)), new THREE.Vector3(0, -1, 0), dome, true, offset - 0.2, isCentral, symmetryType, radialAxis, radialCount, null, 'forward', true);
+                placed = this.placeOnSurface(hullMesh, greebleGroup, pos.clone().add(new THREE.Vector3(0, 100, 0)), new THREE.Vector3(0, -1, 0), dome, true, offset - 0.2, isCentral, symmetryType, radialAxis, radialCount, null, 'forward', true);
                 
                 // 2. Try Front (World Z) - Good for forward facing cockpits
                 if (!placed) {
-                    placed = this.placeOnSurface(hullMesh, greebleGroup, pos.clone().add(new THREE.Vector3(0, 0, 20)), new THREE.Vector3(0, 0, -1), dome, true, offset - 0.2, isCentral, symmetryType, radialAxis, radialCount, null, 'up', true);
+                    placed = this.placeOnSurface(hullMesh, greebleGroup, pos.clone().add(new THREE.Vector3(0, 0, 100)), new THREE.Vector3(0, 0, -1), dome, true, offset - 0.2, isCentral, symmetryType, radialAxis, radialCount, null, 'up', true);
                 }
 
                 // 3. Fallback: Component Local Up
@@ -560,10 +610,75 @@ export class GreebleGenerator {
                     const compQuaternion = new THREE.Quaternion().setFromEuler(rot);
                     const up = new THREE.Vector3(0, 1, 0).applyQuaternion(compQuaternion);
                     // Cast from far away
-                    const rayOrigin = pos.clone().add(up.clone().multiplyScalar(20));
+                    const rayOrigin = pos.clone().add(up.clone().multiplyScalar(100));
                     const rayDir = up.clone().negate();
                     this.placeOnSurface(hullMesh, greebleGroup, rayOrigin, rayDir, dome, true, offset - 0.2, isCentral, symmetryType, radialAxis, radialCount, null, 'forward', true);
                 }
+            }
+
+            // 3b. Windows for Crew Areas / Engine Rooms
+            if (usage.includes('fuselage') || usage.includes('hull') || usage.includes('quarters') || usage.includes('engine_room')) {
+                // Add scattered windows
+                if (random() > 0.4) {
+                    let windowGeo;
+                    const winType = random();
+                    
+                    if (winType < 0.3) {
+                        // Porthole
+                        windowGeo = new THREE.CircleGeometry(0.15, 16);
+                    } else if (winType < 0.6) {
+                        // Rounded Rectangle
+                        windowGeo = new THREE.ShapeGeometry(this.createRoundedRectShape(0.25, 0.4, 0.05));
+                    } else if (winType < 0.8) {
+                        // Strip Light / Window
+                        windowGeo = new THREE.PlaneGeometry(0.8, 0.15);
+                    } else {
+                        // Hexagonal
+                        windowGeo = new THREE.CircleGeometry(0.18, 6);
+                    }
+
+                    // Rotate geometry to face Y (Up) so it lies flat on the surface
+                    // placeOnSurface aligns Local Y to Surface Normal.
+                    // Default Plane/Circle is in XZ (Normal Z). Rotate X -90 puts Normal to Y.
+                    windowGeo.rotateX(-Math.PI / 2);
+
+                    const windowMat = this.glassMat;
+                    const numWindows = Math.floor(scale.y * 0.6) + 1; // Reduced density
+                    const step = (scale.y * 0.8) / Math.max(1, numWindows);
+                    const startZ = -(scale.y * 0.8) / 2;
+                    
+                    for(let w=0; w<numWindows; w++) {
+                        if (random() > 0.5) { // 50% chance per slot
+                            const zOffset = startZ + w * step + (random() * step * 0.4);
+                            // Try placing on sides with minimal offset (0.01) to look flat/flush
+                            this.placeOnSurface(hullMesh, greebleGroup, pos.clone().add(new THREE.Vector3(scale.x + 2, 0, zOffset)), new THREE.Vector3(-1, 0, 0), new THREE.Mesh(windowGeo, windowMat), true, 0.01, isCentral, symmetryType, radialAxis, radialCount, null, 'up');
+                        }
+                    }
+                }
+            }
+
+            // 3c. Warp Nacelle Lighting
+            if (usage.includes('warp_nacelle')) {
+                // Add glowing strips along the side
+                // Width 0.2, Height (Length) scale.y * 0.8.
+                // Rotate X -90 to face Y. Height becomes Z (Length).
+                const stripGeo = new THREE.PlaneGeometry(0.2, scale.y * 0.8);
+                stripGeo.rotateX(-Math.PI / 2);
+
+                const stripMesh = new THREE.Mesh(stripGeo, this.warpGlowMat);
+                
+                // Raycast to sides
+                const sideDir = new THREE.Vector3(1, 0, 0).applyEuler(rot);
+                this.placeOnSurface(hullMesh, greebleGroup, pos.clone().add(sideDir.multiplyScalar(scale.x + 50)), sideDir.negate(), stripMesh, true, 0.01, isCentral, symmetryType, radialAxis, radialCount, null, 'forward');
+
+                // Bussard Collector (Front Cap)
+                // Assuming front is +Y in local space (which is usually +Z in world for nacelles rotated 90 X)
+                const frontDir = new THREE.Vector3(0, 1, 0).applyEuler(rot);
+                const collectorGeo = new THREE.CircleGeometry(scale.x * 0.6, 16);
+                collectorGeo.rotateX(-Math.PI / 2); // Face Y
+                const collectorMesh = new THREE.Mesh(collectorGeo, this.bussardMat);
+                
+                this.placeOnSurface(hullMesh, greebleGroup, pos.clone().add(frontDir.multiplyScalar(scale.y/2 + 50)), frontDir.negate(), collectorMesh, true, 0.01, isCentral, symmetryType, radialAxis, radialCount, null, 'up');
             }
 
             // 4. Nav Lights
@@ -607,7 +722,7 @@ export class GreebleGenerator {
                 // Direction from root (pos) to tip (worldTip)
                 const dir = new THREE.Vector3().subVectors(worldTip, pos).normalize();
                 // Start outside and cast back
-                const rayOrigin = worldTip.clone().add(dir.multiplyScalar(3.0));
+                const rayOrigin = worldTip.clone().add(dir.multiplyScalar(20.0));
                 const rayDir = dir.clone().negate();
 
                 // Use placeOnSurface to handle placement and symmetry
@@ -639,19 +754,6 @@ export class GreebleGenerator {
 
                 const nozzleMat = new THREE.MeshStandardMaterial({ color: 0x333333, roughness: 0.6, metalness: 0.8, side: THREE.DoubleSide });
                 let nozzle;
-
-                // Determine direction "out" - should be based on component's rotation and type
-                const compQuaternion = new THREE.Quaternion().setFromEuler(rot);
-                let exhaustDir;
-
-                // Convention: For primitives with a clear length axis (like cylinders), that axis is Y.
-                // We define the exhaust to come from the -Y end of the local geometry.
-                if (['cylinder', 'cone', 'truncatedCone', 'capsule', 'prism'].includes(comp.type)) {
-                    exhaustDir = new THREE.Vector3(0, -1, 0).applyQuaternion(compQuaternion);
-                } else {
-                    // For other shapes like boxes, we assume the length is along Z.
-                    exhaustDir = new THREE.Vector3(0, 0, -1).applyQuaternion(compQuaternion);
-                }
 
                 if (radialAxis === 'y') {
                     // Special handling for Y-radial ships (saucers)
@@ -701,7 +803,8 @@ export class GreebleGenerator {
                 
                 // Raycast from "behind" the engine (in exhaust direction) back towards the ship to find the hull surface
                 // We start far out and cast opposite to exhaust
-                const rayOrigin = new THREE.Vector3().copy(pos).add(exhaustDir.clone().multiplyScalar(scale.y + 2));
+                // The component extends lengthDim/2 from its center, so start 50 units behind that.
+                const rayOrigin = new THREE.Vector3().copy(pos).add(exhaustDir.clone().multiplyScalar(lengthDim/2 + 50));
                 const rayDir = exhaustDir.clone().negate();
                 
                 this.raycaster.set(rayOrigin, rayDir);
@@ -722,8 +825,10 @@ export class GreebleGenerator {
                     nozzle.position.copy(placePos);
                 } else {
                     // Fallback: If no intersection, place it at the component's position, but slightly offset in the exhaust direction.
-                    nozzle.position.copy(pos).add(exhaustDir.clone().multiplyScalar(scale.y * 0.5)); // This is still a fallback, but better than floating far away.
-                    console.warn(`GreebleGenerator: No hull surface found for thruster at ${pos.x},${pos.y},${pos.z}. Placing at component origin.`);
+                    // Offset by half length + half nozzle length to ensure it sits ON the surface, not half-buried.
+                    const offset = (lengthDim * 0.5) + (nozzleLen * 0.5);
+                    nozzle.position.copy(pos).add(exhaustDir.clone().multiplyScalar(offset));
+                    console.warn(`GreebleGenerator: No hull surface found for thruster at ${pos.x},${pos.y},${pos.z}. Placing at calculated rear offset.`);
                 }
                 
                 if (shapeType !== 2) {
@@ -757,7 +862,7 @@ export class GreebleGenerator {
                     const z = Math.sin(angle) * radius;
                     this.placeOnSurface(hullMesh, greebleGroup, new THREE.Vector3(x, pos.y + 5, z), new THREE.Vector3(0, -1, 0), barrel, true, scale.x * 0.5, isCentral, symmetryType, radialAxis, radialCount, null, new THREE.Vector3(x, 0, z).normalize());
                 } else {
-                    const offsetDist = scale.y + 2;
+                    const offsetDist = scale.y + 50;
                     this.placeOnSurface(hullMesh, greebleGroup, new THREE.Vector3(pos.x, pos.y + offsetDist, pos.z), new THREE.Vector3(0, -1, 0), barrel, true, scale.x * 0.5, isCentral, symmetryType, radialAxis, radialCount, null, 'forward');
                 }
             }
@@ -789,5 +894,56 @@ export class GreebleGenerator {
         });
 
         return greebleGroup;
+    }
+
+    generateDecals(hullMesh, components, glyphGenerator, shipName, corporation, seed) {
+        const decalGroup = new THREE.Group();
+        decalGroup.name = "decals";
+        const random = mulberry32(seed);
+
+        // 1. Corporation Logo
+        if (corporation) {
+            const logoTex = glyphGenerator.generateLogo(seed, corporation.name, new THREE.Color(0xffffff), new THREE.Color(0xffaa00));
+            if (logoTex) {
+                const mat = this.decalMat.clone();
+                mat.map = logoTex;
+                mat.color = new THREE.Color(0xffffff);
+                
+                const logoMesh = new THREE.Mesh(new THREE.PlaneGeometry(4, 4), mat);
+                
+                // Try to place on the largest fuselage component
+                const fuselage = components.find(c => c.usage.includes('fuselage') && c.scale.x > 3);
+                if (fuselage) {
+                    // Place on side
+                    const pos = fuselage.position.clone();
+                    const sideDir = new THREE.Vector3(1, 0, 0).applyEuler(fuselage.rotation);
+                    const rayOrigin = pos.clone().add(sideDir.multiplyScalar(50));
+                    
+                    this.placeOnSurface(hullMesh, decalGroup, rayOrigin, sideDir.negate(), logoMesh, true, 0.1, true, components.symmetryType, components.radialAxis, components.radialCount, null, 'up');
+                }
+            }
+        }
+
+        // 2. Ship Name / ID
+        if (shipName) {
+            const textTex = glyphGenerator.generateTextDecal(shipName, new THREE.Color(0xcccccc));
+            if (textTex) {
+                const mat = this.decalMat.clone();
+                mat.map = textTex;
+                
+                const textMesh = new THREE.Mesh(new THREE.PlaneGeometry(6, 1.5), mat);
+                
+                // Place near the front/bow
+                // Find front-most component
+                let frontComp = components[0];
+                components.forEach(c => { if(c.position.z > frontComp.position.z) frontComp = c; });
+                
+                if (frontComp) {
+                    const rayOrigin = frontComp.position.clone().add(new THREE.Vector3(10, 0, 0));
+                    this.placeOnSurface(hullMesh, decalGroup, rayOrigin, new THREE.Vector3(-1, 0, 0), textMesh, true, 0.1, true, components.symmetryType, components.radialAxis, components.radialCount, null, 'forward');
+                }
+            }
+        }
+        return decalGroup;
     }
 }

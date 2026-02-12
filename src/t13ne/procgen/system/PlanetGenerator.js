@@ -85,7 +85,7 @@ export class PlanetGenerator {
 
     /**
      * Generates a 3D mesh for an asteroid or small moon.
-     * Uses HullGenerator to wrap random primitives.
+     * Uses DodecahedronGeometry to avoid HullGenerator/MarchingCubes issues.
      * @param {number} seed - Seed for generation.
      * @param {number} size - Approximate size.
      * @returns {THREE.Mesh} The asteroid mesh.
@@ -94,7 +94,7 @@ export class PlanetGenerator {
         const prng = ProcGen.createPRNG(seed);
         
         // Optimization: Use DodecahedronGeometry directly instead of HullGenerator
-        // This prevents heavy PhysX/MarchingCubes calculations for hundreds of asteroids
+        // This prevents heavy PhysX/MarchingCubes calculations and crashes if MC is broken
         const detail = 0; // Low detail for performance
         const geometry = new THREE.DodecahedronGeometry(size, detail);
 

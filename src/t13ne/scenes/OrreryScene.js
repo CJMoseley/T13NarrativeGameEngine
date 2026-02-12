@@ -22,6 +22,7 @@ export class OrreryScene extends Scene {
         this.mouseVector = new THREE.Vector2();
         
         this.cameraPathPoints = [];
+        this.hudElement = null;
     }
 
     async prepare(onProgress) {
@@ -542,31 +543,19 @@ export class OrreryScene extends Scene {
         const moonCount = this.planets.reduce((acc, p) => acc + (p.moons ? p.moons.length : 0), 0);
         const total = 1 + planetCount + moonCount; // +1 for Star
 
-        const canvas = document.createElement('canvas');
-        canvas.width = 1024; // Higher resolution
-        canvas.height = 256;
-        const ctx = canvas.getContext('2d');
-        
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
-        ctx.fillRect(0, 0, 1024, 256);
-        
-        ctx.font = 'bold 80px Arial'; // Larger font
-        ctx.fillStyle = '#00ff00';
-        ctx.textAlign = 'left';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(`TRACKING: ${total} BODIES`, 40, 128);
-        
-        const texture = new THREE.CanvasTexture(canvas);
-        const material = new THREE.SpriteMaterial({ map: texture });
-        const sprite = new THREE.Sprite(material);
-        
-        // Position in top left of the 3D view (relative to camera)
-        // We attach it to the camera so it stays in view
-        // Adjusted for visibility in PiP (z=-30, FOV 45 => visible height ~24.8, width ~24.8)
-        sprite.position.set(-6, 9, -30); 
-        sprite.scale.set(12, 3, 1); // Scaled down to fit
-        this.activeCamera.add(sprite);
-        this.scene.add(this.activeCamera); // Ensure camera is in scene for children to render
+        this.hudElement = document.createElement('div');
+        Object.assign(this.hudElement.style, {
+            position: 'absolute',
+            top: '20px',
+            right: '20px',
+            color: '#00ff00',
+            fontFamily: 'Arial, sans-serif',
+            fontSize: '24px',
+            fontWeight: 'bold',
+            textShadow: '0 0 5px #000',
+            pointerEvents: 'none'
+        });
+        this.hudElement.innerText = `TRACKING: ${total} BODIES`;
     }
 
     createGrid() {
@@ -627,6 +616,9 @@ export class OrreryScene extends Scene {
         if (this.renderer && this.renderer.domElement) {
             this.renderer.domElement.addEventListener('click', this.onMouseClick);
             this.renderer.domElement.addEventListener('mousemove', this.onMouseMove);
+        }
+        if (this.hudElement) {
+            this.viewManager.setHUD(this.hudElement);
         }
     }
 

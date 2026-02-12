@@ -150,15 +150,15 @@ export const generateBlob = (context) => {
     // Cockpit (Side Offset) - Replaces generic cockpit logic
     const cockpitSide = random() > 0.5 ? 1 : -1;
     
-    // Angle: 30 to 60 degrees forward from lateral (X axis)
-    const angleDeg = 30 + random() * 30;
+    // Angle: 30 to 60 degrees swept back from lateral (X axis) as requested
+    const angleDeg = 30 + random() * 30; 
     const angleRad = angleDeg * (Math.PI / 180);
     
-    const strutLen = mainRadius * 0.8;
-    const strutRadius = mainHeight * 0.25;
+    const corridorLen = mainRadius * 0.8;
+    const corridorRadius = mainHeight * 0.25;
     
     const dirX = Math.cos(angleRad) * cockpitSide;
-    const dirZ = Math.sin(angleRad);
+    const dirZ = -Math.sin(angleRad); // Negative Z for swept back look (_/)
     
     let cockpitStartX = dirX * mainRadius * 0.6;
     let startZ = dirZ * mainRadius * 0.6;
@@ -176,18 +176,18 @@ export const generateBlob = (context) => {
         }
     }
 
-    const endX = cockpitStartX + dirX * strutLen;
-    const endZ = startZ + dirZ * strutLen;
-    const strutPos = [(cockpitStartX + endX)/2, 0, (startZ + endZ)/2];
+    const endX = cockpitStartX + dirX * corridorLen;
+    const endZ = startZ + dirZ * corridorLen;
+    const corridorPos = [(cockpitStartX + endX)/2, 0, (startZ + endZ)/2];
     
-    // Align strut cylinder to vector
+    // Align corridor cylinder to vector
     const rotY = Math.atan2(dirX, dirZ);
-    attachComponent('cockpit_strut', strutPos, [Math.PI/2, rotY, 0], 'cylinder', 
-        { radiusTop: strutRadius, radiusBottom: strutRadius, height: strutLen }, 'NONE');
+    attachComponent('cockpit_corridor', corridorPos, [Math.PI/2, rotY, 0], 'cylinder', 
+        { radiusTop: corridorRadius, radiusBottom: corridorRadius, height: corridorLen }, 'NONE');
     
     // Cockpit Capsule - Pointing Forward (+Z)
     attachComponent('cockpit', [endX, 0, endZ], [Math.PI/2, 0, 0], 'capsule', 
-        { radius: strutRadius * 1.2, length: strutRadius * 3.0 }, 'NONE');
+        { radius: corridorRadius * 1.2, length: corridorRadius * 3.0 }, 'NONE');
 
     return { cockpitPlaced: true };
 };
@@ -198,7 +198,7 @@ export const generateCatamaran = (context) => {
     // Star Trek Style Nacelle Ship (Constitution / Miranda / Voyager)
     // 1. Primary Hull (Saucer)
     const saucerRadius = (size === 'small' ? 4 : (size === 'medium' ? 6 : 9));
-    const saucerHeight = Math.max(1.0, saucerRadius * 0.2);
+    const saucerHeight = Math.max(1.5, saucerRadius * 0.25); // Thicker to allow embedding
 
     // Smoother saucer shape with a central cylinder
     const midHeight = saucerHeight * (0.3 + random() * 0.3); // 30-60% of total height
@@ -227,7 +227,7 @@ export const generateCatamaran = (context) => {
     let engLen = saucerRadius * 1.5;
 
     if (hasEngineering) {
-        const neckLen = saucerRadius * 1.0;
+        const neckLen = saucerRadius * 0.5; // Shorter neck
 
         // Neck (Vertical or Angled)
         const neckPos = [0, -saucerHeight / 2 - neckLen / 2, -saucerRadius * 0.3];
@@ -235,7 +235,9 @@ export const generateCatamaran = (context) => {
             { width: engRadius * 0.8, height: neckLen, depth: engRadius * 1.5 }, 'NONE');
 
         // Secondary (Engineering) Hull - position shifted back to connect neck at front
-        const secondaryHullZ = -saucerRadius * 0.3 - engLen / 2;
+        // Extend hull ahead of neck: Neck is at -0.3R. Front of hull should be at -0.3R + 2.0.
+        const engFrontZ = -saucerRadius * 0.3 + 2.0;
+        const secondaryHullZ = engFrontZ - engLen / 2;
         engPos = [0, -saucerHeight / 2 - neckLen, secondaryHullZ];
         // Use non-tapered cylinder and rename to avoid engine greebles
         attachComponent('fuselage_secondary', engPos, [Math.PI / 2, 0, 0], 'cylinder',
@@ -246,11 +248,13 @@ export const generateCatamaran = (context) => {
             { radiusTop: engRadius * 0.8, radiusBottom: 0, height: 0.5 }, 'NONE');
 
         // Pylons and Nacelles
-        const nacelleLen = engLen * 1.1;
-        const nacelleRadius = engRadius * 0.5;
+        const nacelleLen = engLen * 1.2;
+        const nacelleRadius = engRadius * 0.25; // Thinner nacelles
         
         // Nacelle Position: Higher than saucer
-        const nacelleY = saucerHeight * 1.5;
+        // Ensure Y clears the saucer top (saucerHeight/2) + nacelleRadius + buffer
+        const minNacelleY = saucerHeight / 2 + nacelleRadius + 1.5;
+        const nacelleY = Math.max(minNacelleY, saucerHeight * 1.2);
         const nacelleX = saucerRadius * 0.9;
         const nacelleZ = -saucerRadius * 1.5; // Moved further back to ensure pylons sweep back, not forward
 
@@ -270,16 +274,60 @@ export const generateCatamaran = (context) => {
         
         const pylonCenter = new THREE.Vector3().addVectors(pylonStart, pylonEnd).multiplyScalar(0.5);
         const pylonActualLen = pylonStart.distanceTo(pylonEnd);
-        const pylonDummy = new THREE.Object3D();
-        pylonDummy.position.copy(pylonCenter);
-        pylonDummy.lookAt(pylonEnd);
-        pylonDummy.rotateX(Math.PI / 2);
-        const pylonRot = [pylonDummy.rotation.x, pylonDummy.rotation.y, pylonDummy.rotation.z];
-        attachComponent('pylon', [pylonCenter.x, pylonCenter.y, pylonCenter.z], pylonRot, 'box', { width: 0.3, height: pylonActualLen, depth: engRadius * 0.6 }, 'REFLECTIVE');
+        
+        // Orient Pylon: Z axis = Length (to target), Y axis = Chord (Forward), X axis = Thickness
+        // Use lookAt with Up vector (0,0,1) to try and align local Y with Global Z (Forward)
+        const m = new THREE.Matrix4();
+        m.lookAt(pylonCenter, pylonEnd, new THREE.Vector3(0, 0, 1));
+        const pylonRotEuler = new THREE.Euler().setFromRotationMatrix(m);
+        const pylonRot = [pylonRotEuler.x, pylonRotEuler.y, pylonRotEuler.z];
+
+        // Box: Width=Thickness, Height=Chord, Depth=Length
+        attachComponent('pylon', [pylonCenter.x, pylonCenter.y, pylonCenter.z], pylonRot, 'box', 
+            { width: 0.3, height: engRadius * 0.6, depth: pylonActualLen }, 'REFLECTIVE');
 
         // Nacelle - Renamed to warp_nacelle to avoid thrusters
         attachComponent('warp_nacelle', [nacelleX, nacelleY, nacelleZ], [Math.PI / 2, 0, 0], 'cylinder',
             { radiusTop: nacelleRadius, radiusBottom: nacelleRadius, height: nacelleLen }, 'REFLECTIVE');
+
+        // Explicit Wiring for Structure
+        // Saucer (bridge) -> Neck -> Secondary -> Pylon -> Nacelle
+        // We need IDs. Since attachComponent pushes to array, we can grab last ID.
+        // Note: attachComponent handles symmetry, so we need to be careful.
+        // Assuming the last added components correspond to the order above.
+        // This is tricky with symmetry. Better to rely on ShipGenerator's wiring logic 
+        // or pass IDs if we refactor attachComponent to return them.
+        // For now, we can use the fact that ShipGenerator passes `explicitWiring` object.
+        // We need the IDs.
+        const comps = context.components;
+        const nacelleId = comps[comps.length - 1].id; // Right Nacelle
+        const pylonId = comps[comps.length - 3].id; // Right Pylon (skip sym nacelle/pylon if any? No, REFLECTIVE adds immediately)
+        // Actually, REFLECTIVE adds [Original, Mirror]. So last is Mirror Nacelle. -2 is Original Nacelle.
+        // This is getting complex to guess IDs. 
+        // Ideally attachComponent returns the ID. 
+        // But we can rely on the fact that `ShipGenerator` enforces symmetry on wiring.
+        // So we only need to wire the positive X side.
+        // Right Nacelle (last added if X>0? No, attachComponent adds base then sym).
+        // Base is usually positive X.
+        // Let's assume base is Positive X.
+        // Nacelle is last added (before symmetry).
+        // Pylon is before that.
+        // Secondary Hull is before that.
+        // Neck is before that.
+        // Bridge/Saucer is earlier.
+        
+        // We will implement explicit wiring in ShipGenerator by returning IDs from attachComponent if possible,
+        // or by searching for them here.
+        const findId = (prefix) => comps.find(c => c.usage === prefix)?.id;
+        const secId = findId('fuselage_secondary');
+        const neckId = findId('fuselage_neck');
+        const saucerId = findId('fuselage_saucer_mid') || findId('bridge');
+        
+        // We can't easily get the specific pylon/nacelle IDs here without refactoring attachComponent return.
+        // However, we can use the `wiringGenerator` to connect by proximity/type later if we tag them?
+        // Or just trust the Prim algorithm in WiringGenerator? 
+        // The user specifically complained about jumping.
+        // We will add a post-pass in ShipGenerator to wire these specific structures.
     } else {
         // Miranda Style (No secondary hull, nacelles on pylons/rollbar)
         // Nacelles attached to the bottom of the saucer section
@@ -331,90 +379,112 @@ export const generateYFork = (context) => {
 };
 
 export const generateBattlestar = (context) => {
-    const { spineLength, random, attachComponent } = context;
+    const { spineLength, random, attachComponent, components } = context;
 
-    // Battlestar: Nose + Engine Block + Parallel Spines (Ribs) + Outriggers (Flight Pods)
-    const totalLen = spineLength * 1.8;
-    const noseLen = totalLen * 0.25;
-    const engineLen = totalLen * 0.25;
-    const spineSectionLen = totalLen * 0.5;
+    // Battlestar Galactica (BSG-75) Style
+    // Scale factor based on 100-unit blueprint relative to spineLength
+    const unit = spineLength / 100;
+
+    // 1. Engine Section (Rear)
+    // Length 30, Width 22, Height 15
+    // Position: Rear. Ship runs roughly Z=50 to Z=-50.
+    // Engine Block Z range: -50 to -20. Center: -35.
+    const engineL = 30 * unit;
+    const engineW = 22 * unit;
+    const engineH = 15 * unit;
+    const engineZ = -35 * unit;
     
-    // 1. Nose Section
-    const noseZ = spineSectionLen / 2 + noseLen / 2 - 0.5; // Embed
-    // Rotate 90 deg Y to taper along Z (Length) instead of X (Span)
-    // Swap Span and RootChord dimensions to match rotation
-    attachComponent('nose_block', [0, 0, noseZ], [0, Math.PI/2, 0], 'wedge', 
-        { span: noseLen, rootChord: 4, tipChord: 1, depth: 2, centered: true }, 'NONE');
-    
-    // 2. Engine Section
-    const engineZ = -spineSectionLen / 2 - engineLen / 2 + 0.5; // Embed
     attachComponent('engine_block', [0, 0, engineZ], [0, 0, 0], 'box', 
-        { width: 6, height: 3, depth: engineLen }, 'NONE');
+        { width: engineW, height: engineH, depth: engineL }, 'NONE');
 
-    // Add Engines directly here to ensure they are attached to the engine block
-    const thrusterZ = engineZ - engineLen/2;
-    // Main thrusters
-    attachComponent('engine_main_L', [-1.5, 0, thrusterZ], [Math.PI/2, 0, 0], 'cylinder', { radiusTop: 0.8, radiusBottom: 1.2, height: 2.0 }, 'NONE');
-    attachComponent('engine_main_R', [1.5, 0, thrusterZ], [Math.PI/2, 0, 0], 'cylinder', { radiusTop: 0.8, radiusBottom: 1.2, height: 2.0 }, 'NONE');
-    // Secondary thrusters
-    attachComponent('engine_sec_L', [-3.5, 0, thrusterZ + 0.5], [Math.PI/2, 0, 0], 'cylinder', { radiusTop: 0.5, radiusBottom: 0.8, height: 1.5 }, 'NONE');
-    attachComponent('engine_sec_R', [3.5, 0, thrusterZ + 0.5], [Math.PI/2, 0, 0], 'cylinder', { radiusTop: 0.5, radiusBottom: 0.8, height: 1.5 }, 'NONE');
+    // Thrusters (Aft face)
+    // 6 cylinders: Row of 2 top, Row of 4 bottom.
+    const nozzleLen = 5 * unit;
+    const nozzleRad = 2.5 * unit;
+    const nozzleZ = -50 * unit - (nozzleLen / 2) + 1.0; // Embed slightly
 
-    // 3. Parallel Spines
-    const numSpines = 2 + Math.floor(random() * 3) * 2; // 2, 4, 6 (always pairs for symmetry)
-    const spineOffset = 1.5 + random(); // Distance from center X
+    // Top Row (2)
+    attachComponent('thruster_top_L', [-5 * unit, 3 * unit, nozzleZ], [Math.PI/2, 0, 0], 'cylinder', { radiusTop: nozzleRad, radiusBottom: nozzleRad*0.8, height: nozzleLen }, 'NONE');
+    attachComponent('thruster_top_R', [5 * unit, 3 * unit, nozzleZ], [Math.PI/2, 0, 0], 'cylinder', { radiusTop: nozzleRad, radiusBottom: nozzleRad*0.8, height: nozzleLen }, 'NONE');
     
-    const sideSpines = numSpines / 2;
-    
-    for (let s = 0; s < sideSpines; s++) {
-        const yOffset = (s - (sideSpines - 1) / 2) * 1.5; // Stack vertically if multiple
-        const xPos = spineOffset;
-        
-        // Segmented Spine
-        const segments = 5 + Math.floor(random() * 5);
-        const segLen = spineSectionLen / segments;
-        
-        for (let i = 0; i < segments; i++) {
-            const z = -spineSectionLen / 2 + segLen * i + segLen / 2;
-            
-            // Vary shape
-            const shapeType = random() > 0.5 ? 'prism' : 'box';
-            const width = 1.0 + random() * 0.8;
-            const height = 1.0 + random() * 0.8;
-            
-            // Prisms change segments often
-            const prismSegs = 3 + Math.floor(random() * 4);
-            
-            const id = `spine_${s}_seg_${i}`;
-            
-            if (shapeType === 'prism') {
-                attachComponent(id, [xPos, yOffset, z], [Math.PI/2, 0, 0], 'prism', 
-                    { radius: width/2, height: segLen, segments: prismSegs }, 'REFLECTIVE');
-            } else {
-                attachComponent(id, [xPos, yOffset, z], [0, 0, 0], 'box', 
-                    { width: width, height: height, depth: segLen }, 'REFLECTIVE');
-            }
-        }
+    // Bottom Row (4)
+    const botY = -3 * unit;
+    const botSpacing = 5 * unit;
+    for(let i=0; i<4; i++) {
+        const x = -7.5 * unit + i * botSpacing;
+        attachComponent(`thruster_bot_${i}`, [x, botY, nozzleZ], [Math.PI/2, 0, 0], 'cylinder', { radiusTop: nozzleRad*0.9, radiusBottom: nozzleRad*0.7, height: nozzleLen }, 'NONE');
     }
+
+    // 2. The Mid-Section (Neck)
+    // Length 45, Width 12, Height 10
+    // Z range: -20 to +25. Center: +2.5.
+    const neckL = 45 * unit;
+    const neckW = 12 * unit;
+    const neckH = 10 * unit;
+    const neckZ = 2.5 * unit;
+
+    attachComponent('fuselage_neck', [0, 0, neckZ], [0, 0, 0], 'box', 
+        { width: neckW, height: neckH, depth: neckL }, 'NONE');
+
+    // Ribs: Thin Box every 5 units
+    const ribW = neckW + (1 * unit);
+    const ribH = neckH + (1 * unit);
+    const ribD = 5 * unit; // Increased thickness to prevent flat sheets
+    const numRibs = Math.floor(45 / 5);
     
-    // 4. Outriggers (Flight Pods)
-    // Attached to the spines on the outside
-    const podY = -2.5;
-    const podLen = spineSectionLen * 0.8;
-    const podWidth = 2.0;
-    const podDepth = 1.0;
-    const podX = spineOffset + 2.5;
-    
-    attachComponent('flight_pod', [podX, podY, 0], [0, 0, 0], 'box', 
-        { width: podWidth, height: podDepth, depth: podLen }, 'REFLECTIVE');
-        
-    // Struts connecting Pod to Spine
-    const numStruts = 3;
-    for(let i=0; i<numStruts; i++) {
-        const z = -podLen/2 + (podLen/(numStruts-1)) * i;
-        // Strut from Spine (Y=0, X=spineOffset) to Pod (Y=-2.5, X=podX)
-        // Use a vertical-ish box strut
-        attachComponent(`pod_strut_${i}`, [spineOffset + 1.0, podY/2, z], [0, 0, -Math.PI/4], 'box', 
-            { width: 0.5, height: 4.0, depth: 0.5 }, 'REFLECTIVE');
+    for(let i=0; i<numRibs; i++) {
+        const rZ = (-20 * unit) + (i * 5 * unit) + (2.5 * unit);
+        attachComponent(`neck_rib_${i}`, [0, 0, rZ], [0, 0, 0], 'box', 
+            { width: ribW, height: ribH, depth: ribD }, 'NONE');
     }
+
+    // 3. The Bow (Head)
+    // Length 25, Width 20, Height 8
+    // Z range: +25 to +50. Center: +37.5.
+    // Truncated Hexagonal Prism, flattened on Y.
+    const headL = 25 * unit;
+    const headZ = 37.5 * unit;
+    
+    // Prism rotated X 90 aligns along Z. 6 segments.
+    // radiusTop (Front) < radiusBottom (Back) for taper.
+    attachComponent('fuselage_head', [0, 0, headZ], [Math.PI/2, 0, 0], 'prism', 
+        { radiusTop: 0.6, radiusBottom: 1.0, height: headL, segments: 6 }, 'NONE');
+    
+    // Scale to match Width 20 and Height 8.
+    // Base Prism (Rad 1) has Width 2, Height ~1.732.
+    // Scale X = 20/2 = 10. Scale Y = 8/1.732 = 4.6.
+    components[components.length - 1].scale = [10 * unit, 4.6 * unit, 1]; 
+
+    // 4. Flight Pods
+    // Length 55, Width 6, Height 5.
+    const podL = 55 * unit;
+    const podW = 6 * unit;
+    const podH = 5 * unit;
+    const podZ = 0;
+    
+    // Pylons
+    const pylonW = 14 * unit;
+    const pylonD = 12 * unit;
+    const pylonH = 4 * unit;
+    
+    attachComponent('pylon_L', [-13 * unit, 0, podZ], [0, 0, 0], 'box', 
+        { width: pylonW, height: pylonH, depth: pylonD }, 'NONE');
+    attachComponent('pylon_R', [13 * unit, 0, podZ], [0, 0, 0], 'box', 
+        { width: pylonW, height: pylonH, depth: pylonD }, 'NONE');
+
+    // Construct Pods (C-Shape: Top, Bottom, Inner Wall)
+    const plateH = 1 * unit;
+    const wallW = 1.5 * unit;
+    const rPodX = 22 * unit;
+    const lPodX = -22 * unit;
+
+    // Right Pod
+    attachComponent('pod_R_top', [rPodX, (podH-plateH)/2, podZ], [0, 0, 0], 'box', { width: podW, height: plateH, depth: podL }, 'NONE');
+    attachComponent('pod_R_bot', [rPodX, -(podH-plateH)/2, podZ], [0, 0, 0], 'box', { width: podW, height: plateH, depth: podL }, 'NONE');
+    attachComponent('pod_R_wall', [rPodX - podW/2 + wallW/2, 0, podZ], [0, 0, 0], 'box', { width: wallW, height: podH - 2*plateH, depth: podL }, 'NONE');
+
+    // Left Pod
+    attachComponent('pod_L_top', [lPodX, (podH-plateH)/2, podZ], [0, 0, 0], 'box', { width: podW, height: plateH, depth: podL }, 'NONE');
+    attachComponent('pod_L_bot', [lPodX, -(podH-plateH)/2, podZ], [0, 0, 0], 'box', { width: podW, height: plateH, depth: podL }, 'NONE');
+    attachComponent('pod_L_wall', [lPodX + podW/2 - wallW/2, 0, podZ], [0, 0, 0], 'box', { width: wallW, height: podH - 2*plateH, depth: podL }, 'NONE');
 };

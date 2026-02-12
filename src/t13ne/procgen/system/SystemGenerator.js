@@ -265,6 +265,42 @@ export class SystemGenerator {
             }
         }
 
+        // --- Generate Binary/Trinary Stars ---
+        // Use n1 (system seed) to determine star count
+        let starCountRoll = safeNoise.n1;
+        let stars = [];
+        
+        // Base Star
+        stars.push({
+            radius: 1.0,
+            color: star.color || 0xffffaa,
+            type: star.starClass || 'G',
+            mass: 1.0
+        });
+
+        // 30% chance of multiple stars
+        if (starCountRoll > 0.7) {
+            // Binary
+            const companionColor = this.getCompanionStarColor(star.starClass, safeNoise.n2);
+            stars.push({
+                radius: 0.6 + safeNoise.n2 * 0.3,
+                color: companionColor,
+                type: 'Companion',
+                offset: 400 // Visual offset
+            });
+
+            // 10% chance of Trinary (if Binary)
+            if (starCountRoll > 0.9) {
+                const trinaryColor = this.getCompanionStarColor(star.starClass, safeNoise.n3);
+                stars.push({
+                    radius: 0.4 + safeNoise.n3 * 0.3,
+                    color: trinaryColor,
+                    type: 'Dwarf',
+                    offset: 800
+                });
+            }
+        }
+
         const result = {
             name: systemNameArray[0], // Common name
             systemNameFull: systemNameArray, // Full name object
@@ -282,10 +318,17 @@ export class SystemGenerator {
             techDetails: swayTech, // Pass full sway tech object for UI
             seeds: [n1, n2, n3, n4], // Pass noise values as seeds for planetary generation
             extras: extras, // Attached generated extras
-            star: star // Pass star data for resource generation context
+            star: star, // Pass star data for resource generation context
+            stars: stars // Pass multi-star data for rendering
         };
         Logger.end(funcName, result);
         return result;
+    }
+
+    getCompanionStarColor(primaryClass, noise) {
+        // Simple logic: Companion is usually cooler/smaller
+        const colors = [0xffaaaa, 0xffccaa, 0xffffaa, 0xffffff, 0xaaccff];
+        return colors[Math.floor(noise * colors.length)];
     }
 
     _generateHistoricalEventFromCards() {

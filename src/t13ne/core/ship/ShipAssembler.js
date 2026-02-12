@@ -3,6 +3,7 @@ import { CSG } from 'three-csg-ts';
 import { ShipComponent } from './ShipComponent.js';
 import { COMPONENT_COLORS, getCompProps } from './ShipUtils.js';
 import { racingLiveryShader, industrialLiveryShader, boxyLiveryShader, organicLiveryShader, miningLiveryShader, metallicLiveryShader } from './ShipShaders.js';
+import { GlyphGenerator } from './GlyphGenerator.js';
 
 export class ShipAssembler {
     constructor(componentFactory, hullGenerator, greebleGenerator, wiringGenerator, gameEngine) {
@@ -12,6 +13,7 @@ export class ShipAssembler {
         this.wiringGenerator = wiringGenerator;
         this.gameEngine = gameEngine;
         this.shipCache = new Map();
+        this.glyphGenerator = new GlyphGenerator();
     }
 
     generateProceduralShip(components, styleConfig, interior) {
@@ -115,8 +117,9 @@ export class ShipAssembler {
                 }
 
                 // 3. Carve interior spaces
-                if (interior && interior.length > 0) {
-                    interior.forEach(space => {
+                const interiorToCarve = interior || components.interior;
+                if (interiorToCarve && interiorToCarve.length > 0) {
+                    interiorToCarve.forEach(space => {
                         const spaceMesh = this.componentFactory.createProxy(space.type, space.dims);
                         spaceMesh.position.set(...(space.pos || [0, 0, 0]));
                         if (space.rot) {
@@ -145,6 +148,10 @@ export class ShipAssembler {
             // Apply Geometric Greebling (Rivets, Antennae, Vents, etc.)
             const greebles = this.greebleGenerator.generate(hullMesh, shipComponents, styleConfig, components.symmetryType, components.radialAxis, components.radialCount, components.hullType, components.seed);
             shipGroup.add(greebles);
+
+            // Apply Decals (Logos, Text)
+            const decals = this.greebleGenerator.generateDecals(hullMesh, shipComponents, this.glyphGenerator, components.shipName, components.corporation, components.seed);
+            shipGroup.add(decals);
         }
 
         // Add solid component meshes to fill gaps
@@ -178,61 +185,82 @@ export class ShipAssembler {
         const componentMeshes = [];
         const compMap = new Map(); // Map ID to position for wiring
         const meshMap = new Map(); // Map ID to Mesh for raycasting
+        
+        // Add to scene immediately for showcase effect
+        if (scene) scene.add(shipGroup);
 
+        // Group components to accelerate showcase (batch identical types)
+        const groupedComponents = new Map();
         for (const comp of components) {
-            const { type, dims, pos, rot, usage } = getCompProps(comp);
-            const mesh = this.componentFactory.createProxy(type, dims);
-            
-            // Skip visual mesh for carve components
-            if (usage && usage.includes('carve')) continue;
-            
-            mesh.position.set(...pos);
-            if (rot) {
-                mesh.rotation.set(...rot);
-            }
-            // FIX: Apply scale
-            if (comp.scale) {
-                if (Array.isArray(comp.scale)) mesh.scale.set(...comp.scale);
-                else mesh.scale.copy(comp.scale);
-            }
-            
-            // Scale down slightly to fit inside hull and avoid z-fighting, but provide solid core
-            // mesh.scale.multiplyScalar(0.995); // Slightly reduced to prevent Z-fighting with hull
-            
-            // Determine color based on usage
-            let color = COMPONENT_COLORS.default;
+            const { usage } = getCompProps(comp);
+            let groupKey = 'misc';
             if (usage) {
-                const lowerUsage = usage.toLowerCase();
-                for (const key in COMPONENT_COLORS) {
-                    if (lowerUsage.includes(key)) {
-                        color = COMPONENT_COLORS[key];
-                        break;
+                const u = usage.toLowerCase();
+                if (u.includes('maze')) groupKey = 'maze';
+                else if (u.includes('spine') || u.includes('fuselage')) groupKey = 'fuselage';
+                else if (u.includes('branch')) groupKey = 'structure';
+                else if (u.includes('wing') || u.includes('fin')) groupKey = 'wing';
+                else if (u.includes('engine') || u.includes('thruster')) groupKey = 'engine';
+                else groupKey = u.split('_')[0];
+            }
+            if (!groupedComponents.has(groupKey)) groupedComponents.set(groupKey, []);
+            groupedComponents.get(groupKey).push(comp);
+        }
+
+        for (const [groupName, group] of groupedComponents) {
+            for (const comp of group) {
+                const { type, dims, pos, rot, usage } = getCompProps(comp);
+                const mesh = this.componentFactory.createProxy(type, dims);
+                
+                // Skip visual mesh for carve components
+                if (usage && usage.includes('carve')) continue;
+                
+                mesh.position.set(...pos);
+                if (rot) {
+                    mesh.rotation.set(...rot);
+                }
+                // FIX: Apply scale
+                if (comp.scale) {
+                    if (Array.isArray(comp.scale)) mesh.scale.set(...comp.scale);
+                    else mesh.scale.copy(comp.scale);
+                }
+                
+                // Determine color based on usage
+                let color = COMPONENT_COLORS.default;
+                if (usage) {
+                    const lowerUsage = usage.toLowerCase();
+                    for (const key in COMPONENT_COLORS) {
+                        if (lowerUsage.includes(key)) {
+                            color = COMPONENT_COLORS[key];
+                            break;
+                        }
                     }
                 }
-            }
 
-            // Initial Wireframe Material (Bright, no lighting, no PBR props)
-            mesh.material = new THREE.MeshBasicMaterial({
-                color: color,
-                wireframe: true
-            });
+                // Initial Wireframe Material (Bright, no lighting, no PBR props)
+                mesh.material = new THREE.MeshBasicMaterial({
+                    color: color,
+                    wireframe: true
+                });
 
-            // Visual flair: Add to group and highlight
-            shipGroup.add(mesh);
-            
-            // Keep visible initially so we see the structure immediately
-            // Add metadata for the Showcase scene to group them
-            mesh.userData.componentName = comp.name || `${usage} Component`;
-            mesh.userData.componentUsage = usage;
-            mesh.userData.componentId = comp.id;
-            mesh.userData.namePromise = comp.namePromise;
-            mesh.visible = true;
-            componentMeshes.push(mesh);
-            
-            if (comp.id) {
-                compMap.set(comp.id, mesh.position);
-                meshMap.set(comp.id, mesh);
+                // Visual flair: Add to group and highlight
+                shipGroup.add(mesh);
+                
+                // Keep visible initially so we see the structure immediately
+                mesh.userData.componentName = comp.name || `${usage} Component`;
+                mesh.userData.componentUsage = usage;
+                mesh.userData.componentId = comp.id;
+                mesh.userData.namePromise = comp.namePromise;
+                mesh.visible = true;
+                componentMeshes.push(mesh);
+                
+                if (comp.id) {
+                    compMap.set(comp.id, mesh.position);
+                    meshMap.set(comp.id, mesh);
+                }
             }
+            // Small delay between groups to visualize construction steps
+            await new Promise(resolve => setTimeout(resolve, 50));
         }
 
         // 1b. Generate Wiring Meshes
@@ -248,8 +276,6 @@ export class ShipAssembler {
             const wireGroup = this.wiringGenerator.createVisuals(wiringGraph, compMap, compDataMap);
             shipGroup.add(wireGroup);
         }
-
-        if (scene) scene.add(shipGroup);
 
         // Yield to the renderer so the user sees the component skeleton before the hull generates
         await new Promise(resolve => setTimeout(resolve, 2000));
@@ -388,6 +414,10 @@ export class ShipAssembler {
             try {
                 const greebles = this.greebleGenerator.generate(hullMesh, shipComponents, effectiveStyle, components.symmetryType, components.radialAxis, components.radialCount, components.hullType, components.seed);
                 shipGroup.add(greebles);
+
+                // Apply Decals
+                const decals = this.greebleGenerator.generateDecals(hullMesh, shipComponents, this.glyphGenerator, components.shipName, components.corporation, components.seed);
+                shipGroup.add(decals);
             } catch (e) {
                 console.error("ShipAssembler: Greeble generation failed.", e);
             }

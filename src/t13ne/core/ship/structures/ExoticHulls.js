@@ -186,54 +186,81 @@ export const generateFractal = (context) => {
 };
 
 export const generateLiberator = (context) => {
-    const { spineLength, radialCount, random, attachComponent } = context;
+    const { spineLength, attachComponent } = context;
     
-    // Liberator / Gothic Cathedral: Rear Hub + Forward Spikes
-    // 2, 3, or 4 way symmetry (Radial)
+    // Liberator (DSV2) - Tri-radial, Hex Hull, Rear Sphere, 3 Nacelles
+    // Total Length: 100 units (scaled by spineLength)
+    const unit = spineLength / 100;
     
-    const hubRadius = spineLength * 0.25;
+    // Coordinate System: +Z is Forward (0), -Z is Rear (100)
+    // Center of ship (50) is at Z=0.
     
-    // 1. Rear Hub (Engine/Power section)
-    attachComponent('hub_core', [0, 0, -spineLength * 0.4], [0, 0, 0], 'dodecahedron', 
-        { radius: hubRadius }, 'NONE');
-        
-    // 2. Forward Spikes (The "Cathedral Spires")
-    // These extend from the hub forward.
-    const spikeLen = spineLength * 1.2;
-    const spikeOffset = hubRadius * 0.8;
+    // 1. Main Body (Hexagonal Prism)
+    // Length 45. Position: 27.5 to 72.5 (Brief).
+    // Center: 50. Z = 0.
+    const hullLen = 45 * unit;
+    const hullRadius = 6 * unit; 
     
-    const zStart = -spineLength * 0.3;
-    const zEnd = spineLength * 0.7;
-    const len = zEnd - zStart;
+    attachComponent('fuselage_main', [0, 0, 0], [Math.PI/2, 0, 0], 'prism', 
+        { radius: hullRadius, height: hullLen, segments: 6 }, 'NONE');
+
+    // 2. Rear Sphere (Power Sphere)
+    // Diameter 15. Center at 80 (Z = -30 * unit).
+    const sphereRad = 7.5 * unit;
+    const sphereZ = -30 * unit;
     
-    // Segmented Spire for "Gothic" look (tapering, ridges)
-    const segments = 6;
-    const segLen = len / segments;
+    attachComponent('reactor_sphere', [0, 0, sphereZ], [0, 0, 0], 'sphere', 
+        { radius: sphereRad }, 'NONE');
+
+    // 3. Rear Spire
+    // Length 12. Extends from sphere (87.5) to 99.5.
+    // Center Z: 93.5 -> Z = -43.5 * unit.
+    const rearSpireLen = 12 * unit;
+    const rearSpireZ = -43.5 * unit;
     
-    for(let i=0; i<segments; i++) {
-        const z = zStart + i * segLen + segLen/2;
-        const progress = i / segments;
-        
-        // Tapering profile: Wide at base, thin at tip, maybe bulging in middle
-        const r = (1 - progress) * 1.5 + 0.5; 
-        
-        // Gothic details: Use Prism with 4 or 8 sides for "blocky" look
-        attachComponent(`spire_seg_${i}`, [spikeOffset, 0, z], [Math.PI/2, 0, 0], 'prism', 
-            { radius: r, height: segLen, segments: 4 }, 'RADIAL');
-            
-        // "Flying Buttress" / Strut connecting to center axis?
-        // Or spikes on the spire
-        if (i % 2 === 0 && i < segments - 1) {
-             attachComponent(`spire_detail_${i}`, [spikeOffset * 1.5, 0, z], [0, 0, 0], 'cone', 
-                { radius: 0.3, height: 1.0 }, 'RADIAL');
-        }
-    }
+    attachComponent('sensor_spire_rear', [0, 0, rearSpireZ], [Math.PI/2, 0, 0], 'cone', 
+        { radius: 1 * unit, height: rearSpireLen }, 'NONE');
+
+    // 4. Flight Deck (Bridge)
+    // Front of Hull (27.5 -> Z = +22.5 * unit).
+    const bridgeLen = 5 * unit;
+    const bridgeZ = 22.5 * unit + bridgeLen/2;
     
-    // 3. Central Spire (Optional, for Cathedral look)
-    if (random() > 0.3) {
-        attachComponent('central_spire', [0, 0, 0], [Math.PI/2, 0, 0], 'cylinder', 
-            { radiusTop: 0.2, radiusBottom: 0.8, height: spineLength }, 'NONE');
-    }
+    attachComponent('bridge', [0, 0, bridgeZ], [Math.PI/2, 0, 0], 'prism', 
+        { radiusTop: hullRadius * 0.6, radiusBottom: hullRadius, height: bridgeLen, segments: 6 }, 'NONE');
+
+    // 5. Pylons & Nacelles (Tri-Radial)
+    const nacelleRad = 30 * unit;
+    const nacelleLen = 20 * unit;
+    const nacelleZ = 28 * unit; // Center of nacelle in Z
+    
+    // Nacelle (Teardrop): Tip at +Z (Front), Base at -Z (Rear)
+    attachComponent('engine_nacelle', [nacelleRad, 0, nacelleZ], [Math.PI/2, 0, 0], 'cone', 
+        { radius: 4 * unit, height: nacelleLen, radialSegments: 16 }, 'RADIAL');
+
+    // Forward Spire
+    // Length 12. Extends from Nacelle Front (Z=38) to Z=50.
+    const fwdSpireLen = 12 * unit;
+    const fwdSpireZ = 44 * unit;
+    
+    attachComponent('sensor_spire_fwd', [nacelleRad, 0, fwdSpireZ], [Math.PI/2, 0, 0], 'cone', 
+        { radius: 0.5 * unit, height: fwdSpireLen }, 'RADIAL');
+
+    // Pylon
+    const pylonStart = new THREE.Vector3(hullRadius * 0.8, 0, 0);
+    const pylonEnd = new THREE.Vector3(nacelleRad * 0.8, 0, nacelleZ);
+    const pylonVec = new THREE.Vector3().subVectors(pylonEnd, pylonStart);
+    const pylonLen = pylonVec.length();
+    const pylonMid = new THREE.Vector3().addVectors(pylonStart, pylonEnd).multiplyScalar(0.5);
+    
+    // Orientation
+    const dummy = new THREE.Object3D();
+    dummy.position.copy(pylonMid);
+    dummy.lookAt(pylonEnd);
+    dummy.rotateX(Math.PI/2);
+    
+    attachComponent('pylon', [pylonMid.x, pylonMid.y, pylonMid.z], [dummy.rotation.x, dummy.rotation.y, dummy.rotation.z], 'box', 
+        { width: 2 * unit, height: pylonLen, depth: 1 * unit }, 'RADIAL');
 };
 
 export const generateBioBird = (context) => {
@@ -248,10 +275,37 @@ export const generateBioBird = (context) => {
     attachComponent('bio_head', [0, bodyLen*0.1, bodyLen*0.55], [Math.PI/2, 0, 0], 'cone', 
         { radius: bodyLen*0.15, height: bodyLen*0.3 }, 'NONE');
         
-    // Wings
-    const wingSpan = bodyLen * 1.5;
-    attachComponent('bio_wing', [bodyLen*0.25, 0, 0.1], [0, 0, -0.2], 'wedge', 
-        { span: wingSpan/2, rootChord: bodyLen*0.5, tipChord: bodyLen*0.2, sweep: bodyLen*0.3, depth: 0.15, centered: false }, 'REFLECTIVE');
+    // Wings - Feathered Structure (Radial Pinions)
+    const wingRootX = bodyLen * 0.25;
+    const wingZ = 0.1;
+    const featherDepth = 0.1;
+    
+    // Inner Feathers (Secondaries) - Attached to forearm, parallel
+    const numSec = 4;
+    const secWidth = (bodyLen * 0.6) / numSec;
+    const secLen = bodyLen * 0.5;
+    
+    for(let i=0; i<numSec; i++) {
+        const x = wingRootX + i * (secWidth * 0.8); // Overlap slightly
+        attachComponent(`wing_feather_sec_${i}`, [x, 0, wingZ], [0, 0, -0.2], 'wedge', 
+            { span: secWidth, rootChord: secLen, tipChord: secLen * 0.9, sweep: secLen * 0.1, depth: featherDepth, centered: false }, 'REFLECTIVE');
+    }
+    
+    // Outer Feathers (Primaries/Pinions) - Attached to wrist, fanning out radially
+    const wristX = wingRootX + (numSec - 1) * (secWidth * 0.8) + secWidth * 0.5;
+    const numPrim = 6;
+    const primLen = bodyLen * 0.7;
+    
+    for(let i=0; i<numPrim; i++) {
+        const t = i / (numPrim - 1);
+        // Fan angle: Start parallel to X, sweep back radially
+        const angle = -Math.PI/2.5 * t; // 0 to ~72 degrees sweep
+        
+        // Position: Fan out from wrist area
+        // Offset Z slightly to layer them and prevent z-fighting
+        attachComponent(`wing_feather_prim_${i}`, [wristX + i*0.1, 0, wingZ - i*0.02], [0, angle, -0.2], 'wedge', 
+            { span: primLen, rootChord: secLen * (0.8 - t*0.4), tipChord: secLen * 0.2, sweep: secLen * 0.4, depth: featherDepth, centered: false }, 'REFLECTIVE');
+    }
         
     // Tail
     attachComponent('bio_tail_feathers', [0, 0.1, -bodyLen*0.5], [0.2, 0, 0], 'wedge', 

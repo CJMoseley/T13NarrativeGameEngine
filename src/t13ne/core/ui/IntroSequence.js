@@ -55,7 +55,7 @@ class IntroSequence {
 
         const overlay = document.createElement('div');
         overlay.id = 'audio-prompt-overlay';
-        overlay.style.cssText = 'position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.9); z-index:10001; display:flex; justify-content:center; align-items:center; cursor:pointer; flex-direction:column; font-family: "Jura", sans-serif;';
+        overlay.style.cssText = 'position:fixed; top: 50%; left: 20px; transform: translateY(-50%); width: auto; max-width: 400px; background:rgba(0, 10, 20, 0.8); border: 1px solid #337ab7; border-radius: 10px; z-index:10001; display:flex; justify-content:center; align-items:center; flex-direction:column; font-family: "Jura", sans-serif; padding: 20px 40px; box-shadow: 0 0 25px rgba(0, 128, 255, 0.6); backdrop-filter: blur(5px);';
         overlay.innerHTML = `
             <h1 style="color:#66aaff; margin-bottom:10px; text-transform:uppercase; letter-spacing:4px;">Wormhole Racers</h1>
             <p style="color:#889; margin-bottom:30px;">[ SENSORS LOCALIZING ... ]</p>
@@ -72,7 +72,7 @@ class IntroSequence {
         `;
 
         const onInteract = (e) => {
-            if (e.target.id === 'player-name-input') return; // Don't close if clicking input
+            if (e.target.id === 'player-name-input') { e.stopPropagation(); return; } // Don't close if clicking input
             const nameInput = document.getElementById('player-name-input');
             if (nameInput) localStorage.setItem('t13_player_name', nameInput.value.trim() || 'Racer');
 

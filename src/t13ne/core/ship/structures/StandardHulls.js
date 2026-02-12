@@ -25,6 +25,18 @@ export const generateDisc = (context) => {
         { radiusTop: mainHullRadius, radiusBottom: mainHullRadius * 0.25, height: taperHeight, radialSegments: 32 },
         'NONE'
     );
+
+    // Add a central, top-mounted bridge/cockpit to be greebled later.
+    const bridgeHeight = totalHeight * 0.3;
+    const bridgeRadius = mainHullRadius * 0.15;
+    // Position it so it's embedded in the top taper.
+    // Top of saucer is at totalHeight / 2.
+    // Place the bridge center slightly below that to merge it.
+    const bridgeY = (totalHeight / 2) - (bridgeHeight / 2) + 0.1; // Embed slightly
+    attachComponent('bridge', [0, bridgeY, 0], [0, 0, 0], 'cylinder',
+        { radiusTop: bridgeRadius * 0.8, radiusBottom: bridgeRadius, height: bridgeHeight, radialSegments: 12 },
+        'NONE'
+    );
     return { mainHullRadius };
 };
 
