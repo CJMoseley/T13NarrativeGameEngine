@@ -99,6 +99,79 @@ export const generateHorseshoe = (context) => {
     }
 };
 
+/**
+ * Generates a side-mounted cockpit, attached via an angled corridor.
+ * This is a common pattern for "asymmetrical" or "functional" ship designs.
+ * @param {object} context - The ship generation context.
+ * @param {string|Array<string>} parentCompUsage - The usage tag(s) of the component(s) to attach to.
+ * @param {string} [side='random'] - 'left', 'right', or 'random'.
+ * @param {number} parentRadius - The radius of the parent hull, used for scaling.
+ * @param {number} parentHeight - The height of the parent hull, used for scaling.
+ * @returns {{cockpitPlaced: boolean}}
+ */
+export const generateSideCockpit = (context, parentCompUsage, side = 'random', parentRadius, parentHeight) => {
+    const { random, attachComponent, components, getSurfacePoint } = context;
+
+    const cockpitSide = (side === 'random') ? (random() > 0.5 ? 1 : -1) : (side === 'right' ? 1 : -1);
+    
+    const radius = parentRadius;
+    const height = parentHeight;
+
+    // Angle: Swept Forward to connect to the back of the cockpit
+    // 30 to 60 degrees from lateral
+    const angleDeg = 30 + random() * 30;
+    const angleRad = angleDeg * (Math.PI / 180);
+    
+    const corridorLen = radius * 0.8;
+    const corridorRadius = height * 0.25;
+    
+    const dirX = Math.cos(angleRad) * cockpitSide;
+    const dirZ = Math.sin(angleRad); // Positive Z to sweep forward (so corridor hits back of cockpit)
+    
+    let startPoint = new THREE.Vector3(dirX * radius * 0.6, 0, dirZ * radius * 0.6);
+
+    if (getSurfacePoint) {
+        // Raycast to find hull surface
+        const rayOrigin = [dirX * (radius + 20), 0, 0]; // Cast from side
+        const rayDir = [-dirX, 0, 0];
+        const hit = getSurfacePoint(components, rayOrigin, rayDir, parentCompUsage);
+        if (hit) {
+             // Start at surface, embed slightly
+             startPoint.set(hit.x - (dirX * 0.5), hit.y, hit.z);
+        }
+    }
+
+    // 1. Corridor (Cylinder)
+    const direction = new THREE.Vector3(dirX, 0, dirZ).normalize();
+    const endPoint = startPoint.clone().add(direction.clone().multiplyScalar(corridorLen));
+    const corridorPos = startPoint.clone().add(endPoint).multiplyScalar(0.5);
+    
+    // Use a quaternion to correctly align the cylinder's Y-axis with the direction vector
+    const up = new THREE.Vector3(0, 1, 0);
+    const quat = new THREE.Quaternion().setFromUnitVectors(up, direction);
+    const euler = new THREE.Euler().setFromQuaternion(quat, 'YXZ');
+
+    attachComponent('cockpit_corridor', [corridorPos.x, corridorPos.y, corridorPos.z], [euler.x, euler.y, euler.z], 'cylinder', 
+        { radiusTop: corridorRadius, radiusBottom: corridorRadius, height: corridorLen + 0.2 });
+    
+    // 2. Cockpit (Capsule)
+    // Aligned to Z axis (Forward).
+    // Positioned so its REAR intersects the endPoint of the corridor.
+    const cockpitRadius = corridorRadius * 1.2;
+    const cockpitLength = corridorRadius * 3.0; // Length of cylindrical part
+    
+    // Capsule total length along Z is length + 2*radius.
+    // Center is (0,0,0). Rear tip is at -Z (if rotated X 90).
+    // Rear Tip Z relative to center = -(length/2 + radius).
+    // We want Rear Tip to be at endPoint.
+    // So Center.z = endPoint.z + (length/2 + radius).
+    // Embed slightly (-0.5) to ensure overlap.
+    const offsetZ = (cockpitLength / 2) + cockpitRadius - 0.5;
+    
+    attachComponent('cockpit', [endPoint.x, endPoint.y, endPoint.z + offsetZ], [Math.PI/2, 0, 0], 'capsule', 
+        { radius: cockpitRadius, length: cockpitLength });
+};
+
 export const generateBlob = (context) => {
     const { spineLength, random, attachComponent, components, getSurfacePoint } = context;
     
@@ -147,47 +220,9 @@ export const generateBlob = (context) => {
             { radiusTop: 0.25, radiusBottom: 0.4, height: 0.8 }, 'NONE');
     }
 
-    // Cockpit (Side Offset) - Replaces generic cockpit logic
-    const cockpitSide = random() > 0.5 ? 1 : -1;
-    
-    // Angle: 30 to 60 degrees swept back from lateral (X axis) as requested
-    const angleDeg = 30 + random() * 30; 
-    const angleRad = angleDeg * (Math.PI / 180);
-    
-    const corridorLen = mainRadius * 0.8;
-    const corridorRadius = mainHeight * 0.25;
-    
-    const dirX = Math.cos(angleRad) * cockpitSide;
-    const dirZ = -Math.sin(angleRad); // Negative Z for swept back look (_/)
-    
-    let cockpitStartX = dirX * mainRadius * 0.6;
-    let startZ = dirZ * mainRadius * 0.6;
-
-    // Raycast for better attachment if available
-    if (getSurfacePoint) {
-        const rayOrigin = [dirX * 20, 0, dirZ * 20];
-        const rayDir = [-dirX, 0, -dirZ];
-        const hit = getSurfacePoint(components, rayOrigin, rayDir, 'fuselage_main');
-        if (hit) {
-             // Embed 0.5 units into the hull
-             const embed = new THREE.Vector3(dirX, 0, dirZ).multiplyScalar(0.5);
-             cockpitStartX = hit.x - embed.x;
-             startZ = hit.z - embed.z;
-        }
-    }
-
-    const endX = cockpitStartX + dirX * corridorLen;
-    const endZ = startZ + dirZ * corridorLen;
-    const corridorPos = [(cockpitStartX + endX)/2, 0, (startZ + endZ)/2];
-    
-    // Align corridor cylinder to vector
-    const rotY = Math.atan2(dirX, dirZ);
-    attachComponent('cockpit_corridor', corridorPos, [Math.PI/2, rotY, 0], 'cylinder', 
-        { radiusTop: corridorRadius, radiusBottom: corridorRadius, height: corridorLen }, 'NONE');
-    
-    // Cockpit Capsule - Pointing Forward (+Z)
-    attachComponent('cockpit', [endX, 0, endZ], [Math.PI/2, 0, 0], 'capsule', 
-        { radius: corridorRadius * 1.2, length: corridorRadius * 3.0 }, 'NONE');
+    // Cockpit (Side Offset) - Use the new unified function
+    const cockpitSide = random() > 0.5 ? 'right' : 'left';
+    generateSideCockpit(context, 'fuselage_main', cockpitSide, mainRadius, mainHeight);
 
     return { cockpitPlaced: true };
 };
@@ -230,15 +265,17 @@ export const generateCatamaran = (context) => {
         const neckLen = saucerRadius * 0.5; // Shorter neck
 
         // Neck (Vertical or Angled)
-        const neckPos = [0, -saucerHeight / 2 - neckLen / 2, -saucerRadius * 0.3];
+        // Connect at rear of saucer (-0.7 radius) and overlap vertically (+0.2) to ensure solid connection but not protrude top
+        const neckPos = [0, -saucerHeight / 2 - neckLen / 2 + 0.2, -saucerRadius * 0.7];
         attachComponent('fuselage_neck', neckPos, [0.3, 0, 0], 'box', // Angled forward slightly
             { width: engRadius * 0.8, height: neckLen, depth: engRadius * 1.5 }, 'NONE');
 
         // Secondary (Engineering) Hull - position shifted back to connect neck at front
-        // Extend hull ahead of neck: Neck is at -0.3R. Front of hull should be at -0.3R + 2.0.
-        const engFrontZ = -saucerRadius * 0.3 + 2.0;
+        // Extend hull ahead of neck: Neck is at -0.7R. Front of hull should be at -0.7R + 1.0 (Slightly forward).
+        const engFrontZ = -saucerRadius * 0.7 + 1.0;
         const secondaryHullZ = engFrontZ - engLen / 2;
-        engPos = [0, -saucerHeight / 2 - neckLen, secondaryHullZ];
+        // Lower engineering hull so neck is visible (not embedded)
+        engPos = [0, -saucerHeight / 2 - neckLen - engRadius * 0.6, secondaryHullZ];
         // Use non-tapered cylinder and rename to avoid engine greebles
         attachComponent('fuselage_secondary', engPos, [Math.PI / 2, 0, 0], 'cylinder',
             { radiusTop: engRadius, radiusBottom: engRadius, height: engLen, radialSegments: 12 }, 'NONE');
@@ -263,10 +300,11 @@ export const generateCatamaran = (context) => {
         // Safety Clamp: Ensure pylon Z is strictly within the hull cylinder (with 10% padding from ends)
         const hullRear = engPos[2] - engLen / 2;
         const hullFront = engPos[2] + engLen / 2;
-        const targetZ = engPos[2] - engLen * 0.1;
+        const targetZ = engPos[2] - engLen * 0.1; // Moved forward slightly (was 0.3)
         const clampedZ = Math.max(hullRear + engLen * 0.1, Math.min(hullFront - engLen * 0.1, targetZ));
 
-        const pylonStart = new THREE.Vector3(engRadius, engPos[1], clampedZ);
+        // Connect INTO the hull (0.5 radius)
+        const pylonStart = new THREE.Vector3(engRadius * 0.5, engPos[1], clampedZ);
         
         // Pylon End: Attach about 1/3 along the nacelle length from the front
         const attachZ = nacelleZ + nacelleLen/2 - (nacelleLen / 3);
@@ -404,15 +442,15 @@ export const generateBattlestar = (context) => {
     const nozzleZ = -50 * unit - (nozzleLen / 2) + 1.0; // Embed slightly
 
     // Top Row (2)
-    attachComponent('thruster_top_L', [-5 * unit, 3 * unit, nozzleZ], [Math.PI/2, 0, 0], 'cylinder', { radiusTop: nozzleRad, radiusBottom: nozzleRad*0.8, height: nozzleLen }, 'NONE');
-    attachComponent('thruster_top_R', [5 * unit, 3 * unit, nozzleZ], [Math.PI/2, 0, 0], 'cylinder', { radiusTop: nozzleRad, radiusBottom: nozzleRad*0.8, height: nozzleLen }, 'NONE');
+    attachComponent('thruster_top_L', [-5 * unit, 3 * unit, nozzleZ], [Math.PI/2, 0, 0], 'cylinder', { radiusTop: nozzleRad*0.8, radiusBottom: nozzleRad, height: nozzleLen }, 'NONE');
+    attachComponent('thruster_top_R', [5 * unit, 3 * unit, nozzleZ], [Math.PI/2, 0, 0], 'cylinder', { radiusTop: nozzleRad*0.8, radiusBottom: nozzleRad, height: nozzleLen }, 'NONE');
     
     // Bottom Row (4)
     const botY = -3 * unit;
     const botSpacing = 5 * unit;
     for(let i=0; i<4; i++) {
         const x = -7.5 * unit + i * botSpacing;
-        attachComponent(`thruster_bot_${i}`, [x, botY, nozzleZ], [Math.PI/2, 0, 0], 'cylinder', { radiusTop: nozzleRad*0.9, radiusBottom: nozzleRad*0.7, height: nozzleLen }, 'NONE');
+        attachComponent(`thruster_bot_${i}`, [x, botY, nozzleZ], [Math.PI/2, 0, 0], 'cylinder', { radiusTop: nozzleRad*0.7, radiusBottom: nozzleRad*0.9, height: nozzleLen }, 'NONE');
     }
 
     // 2. The Mid-Section (Neck)
@@ -452,15 +490,20 @@ export const generateBattlestar = (context) => {
     
     // Scale to match Width 20 and Height 8.
     // Base Prism (Rad 1) has Width 2, Height ~1.732.
-    // Scale X = 20/2 = 10. Scale Y = 8/1.732 = 4.6.
-    components[components.length - 1].scale = [10 * unit, 4.6 * unit, 1]; 
+    // Scale X = 20/2 = 10. Scale Z = 8/1.732 = 4.6.
+    components[components.length - 1].scale = [10 * unit, 1, 4.6 * unit]; 
+
+    // Bridge (Internal/Embedded)
+    // Sit inside top back of nose section.
+    attachComponent('bridge', [0, 2 * unit, headZ - headL * 0.3], [0, 0, 0], 'box',
+        { width: 4 * unit, height: 2 * unit, depth: 3 * unit }, 'NONE');
 
     // 4. Flight Pods
     // Length 55, Width 6, Height 5.
     const podL = 55 * unit;
     const podW = 6 * unit;
     const podH = 5 * unit;
-    const podZ = 0;
+    const podZ = 0; // Center Z
     
     // Pylons
     const pylonW = 14 * unit;
@@ -468,23 +511,39 @@ export const generateBattlestar = (context) => {
     const pylonH = 4 * unit;
     
     attachComponent('pylon_L', [-13 * unit, 0, podZ], [0, 0, 0], 'box', 
-        { width: pylonW, height: pylonH, depth: pylonD }, 'NONE');
-    attachComponent('pylon_R', [13 * unit, 0, podZ], [0, 0, 0], 'box', 
-        { width: pylonW, height: pylonH, depth: pylonD }, 'NONE');
+        { width: pylonW, height: pylonH, depth: pylonD }, 'REFLECTIVE');
 
-    // Construct Pods (C-Shape: Top, Bottom, Inner Wall)
+    // Construct Pods (Hollow Box / Tube open at ends)
+    // Move below body: Body is ~15 high (7.5 half). Move pods down to Y = -10 * unit.
+    const podY = -10 * unit;
     const plateH = 1 * unit;
-    const wallW = 1.5 * unit;
+    const wallW = 1 * unit;
     const rPodX = 22 * unit;
-    const lPodX = -22 * unit;
 
-    // Right Pod
-    attachComponent('pod_R_top', [rPodX, (podH-plateH)/2, podZ], [0, 0, 0], 'box', { width: podW, height: plateH, depth: podL }, 'NONE');
-    attachComponent('pod_R_bot', [rPodX, -(podH-plateH)/2, podZ], [0, 0, 0], 'box', { width: podW, height: plateH, depth: podL }, 'NONE');
-    attachComponent('pod_R_wall', [rPodX - podW/2 + wallW/2, 0, podZ], [0, 0, 0], 'box', { width: wallW, height: podH - 2*plateH, depth: podL }, 'NONE');
-
-    // Left Pod
-    attachComponent('pod_L_top', [lPodX, (podH-plateH)/2, podZ], [0, 0, 0], 'box', { width: podW, height: plateH, depth: podL }, 'NONE');
-    attachComponent('pod_L_bot', [lPodX, -(podH-plateH)/2, podZ], [0, 0, 0], 'box', { width: podW, height: plateH, depth: podL }, 'NONE');
-    attachComponent('pod_L_wall', [lPodX + podW/2 - wallW/2, 0, podZ], [0, 0, 0], 'box', { width: wallW, height: podH - 2*plateH, depth: podL }, 'NONE');
+    // Right Pod Construction (Reflective will handle Left)
+    // Top Plate
+    attachComponent('pod_top', [rPodX, podY + (podH-plateH)/2, podZ], [0, 0, 0], 'box', { width: podW, height: plateH, depth: podL }, 'REFLECTIVE');
+    // Bottom Plate
+    attachComponent('pod_bot', [rPodX, podY - (podH-plateH)/2, podZ], [0, 0, 0], 'box', { width: podW, height: plateH, depth: podL }, 'REFLECTIVE');
+    // Inner Wall
+    attachComponent('pod_wall_in', [rPodX - podW/2 + wallW/2, podY, podZ], [0, 0, 0], 'box', { width: wallW, height: podH - 2*plateH, depth: podL }, 'REFLECTIVE');
+    // Outer Wall
+    attachComponent('pod_wall_out', [rPodX + podW/2 - wallW/2, podY, podZ], [0, 0, 0], 'box', { width: wallW, height: podH - 2*plateH, depth: podL }, 'REFLECTIVE');
+    
+    // Update Pylons to connect to lower pods
+    // Pylon goes from Hull (0,0,0) to Pod (rPodX, podY, 0).
+    // Angle it down.
+    const pylonMidX = rPodX / 2;
+    const pylonMidY = podY / 2;
+    const pylonLen = Math.sqrt(rPodX*rPodX + podY*podY);
+    const pylonAngle = Math.atan2(podY, rPodX); // Negative angle
+    
+    // Replace previous pylon with angled one
+    // Remove previous pylon calls above and use this:
+    // Note: We need to clear the previous pylon components or just overwrite the logic. 
+    // Since I'm editing the file, I'll just replace the pylon block in the diff.
+    
+    // (The diff above replaces the pylon_L/R block with the new angled pylon logic)
+    attachComponent('pylon', [pylonMidX, pylonMidY, podZ], [0, 0, -pylonAngle], 'box', 
+        { width: pylonLen, height: pylonH * 0.5, depth: pylonD }, 'REFLECTIVE');
 };

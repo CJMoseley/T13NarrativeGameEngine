@@ -133,6 +133,11 @@ export class ComponentFactory {
 
                 geometry.translate(0, 0, -(dims.depth || 0.2) / 2); // Center depth only, keep root at (0,0,0)
 
+                // If centered is requested (or default), center the span (X)
+                if (dims.centered !== false) {
+                    geometry.translate(-w / 2, 0, 0);
+                }
+
                 geometry.rotateX(Math.PI / 2); // Rotate so Y (Chord) becomes Z, Z (Depth) becomes -Y
 
                 const posAttribute = geometry.attributes.position;
@@ -238,7 +243,10 @@ export class ComponentFactory {
                 sdfType = 'prism';
                 break;
             case PRIMITIVE_TYPES.ELLIPSOID:
-                scale.set(dims.width || 1, dims.height || 1, dims.length || 1);
+                // HullGenerator expects full diameter for Ellipsoid (it divides by 2), 
+                // but createProxy uses these as radii/scale factors.
+                // We must double them here to match the visual mesh size in the SDF.
+                scale.set((dims.width || 1) * 2, (dims.height || 0.5) * 2, (dims.length || 1) * 2);
                 sdfType = 'ellipsoid';
                 break;
             case PRIMITIVE_TYPES.TORUS:

@@ -4,6 +4,8 @@ import { Scene } from '../core/Scene.js';
 import { PlanetGenerator } from '../procgen/system/PlanetGenerator.js';
 import { SceneTools } from '../core/SceneTools.js';
 import { UI } from '../core/ui/UI.js';
+import { OrreryScene } from './OrreryScene.js';
+import { Controls } from '../core/Controls.js';
 
 export class StellarSystemScene extends Scene {
     constructor(viewManager, sceneData) {
@@ -19,17 +21,17 @@ export class StellarSystemScene extends Scene {
         // Real Space Scales (Simulation Units)
         this.scales = {
             orbit: 10000,      // 1 AU = 10,000 units.
-            planetSize: 1,     // 1:1 Scale multiplier for planets
-            starSize: 100,     // Base star radius
-            moonOrbit: 200     // Moon orbit scale
+            planetSize: 100,   // Base visual size for planets (Radius)
+            starSize: 1000,    // Base visual size for star (Radius)
+            moonOrbit: 500     // Visual orbit size for moons
         };
 
         // Intro Sequence State
         this.introActive = true;
         this.introTime = 0;
         this.homeWorldObj = null;
-        this.introStartPos = new THREE.Vector3(0, 2000, 80000); // Defined start position
-        // Floating Origin & Compression
+        this.introStartPos = new THREE.Vector3(0, 5000, 200000); // Start much further out
+        // Floating Origin: The Virtual Camera tracks the "Real" position in the simulation
         this.virtualCameraPosition = new THREE.Vector3(0, 5000, 50000); // Start far out
         this.virtualCameraTarget = new THREE.Vector3(0, 0, 0);
         this.COMPRESSION_C = 1000.0; // Compression constant. Larger = less compression close up.
@@ -51,6 +53,7 @@ export class StellarSystemScene extends Scene {
         this.raycaster = new THREE.Raycaster();
         this.mouse = new THREE.Vector2();
         this.onMouseClick = this.onMouseClick.bind(this);
+        this.orreryScene = null;
     }
 
     async prepare(onProgress) {
@@ -95,8 +98,16 @@ export class StellarSystemScene extends Scene {
         this.activeCamera.updateProjectionMatrix();
         this.scene.add(this.activeCamera); // Ensure camera is in scene for skybox attachment
         
-        // Disable controls initially for the intro sequence
-        this.setupControls('none');
+        // Use TrackballControls as requested to avoid gimbal lock
+        this.setupControls('trackball', {
+            rotateSpeed: 2.0,
+            zoomSpeed: 1.2,
+            panSpeed: 0.8,
+            noZoom: false,
+            noPan: true, // Keep camera at origin, we move the world
+            staticMoving: false,
+            dynamicDampingFactor: 0.1
+        });
 
         this.sanitizeData(); // Fix NaNs before creation
         this.createStars();
@@ -111,14 +122,29 @@ export class StellarSystemScene extends Scene {
             this.homeWorldObj = planets[hwIndex] || planets[0];
             Logger.message(`StellarSystemScene: Homeworld identified as ${this.homeWorldObj.data.name}`);
             
-            // Set initial virtual position relative to homeworld for the "Fly-in"
-            // Start high above the system plane
-            this.virtualCameraPosition.copy(this.introStartPos);
+            // Recalculate start position based on system scale
+            // Find the furthest planet to ensure we start outside the system
+            const maxDist = this.objects.reduce((max, obj) => Math.max(max, obj.orbitRadius || 0), 0);
+            this.introStartPos.set(0, maxDist * 0.2, maxDist * 1.5); // Start well outside
+            this.virtualCameraPosition.copy(this.introStartPos); // Set initial position
         }
 
-        this.createHUD();
+        // Setup Orrery for PiP (Picture in Picture)
+        this.orreryScene = new OrreryScene(this.viewManager, {
+            systemDetails: this.systemData,
+            planets: this.planets,
+            star: this.starData
+        });
+        this.orreryScene.init();
+        // Disable controls on the PiP so it doesn't conflict with main view
+        if (this.orreryScene.cameraControls.has('orbit')) this.orreryScene.cameraControls.get('orbit').enabled = false;
 
         Logger.end(funcName);
+    }
+
+    onLoad() {
+        super.onLoad();
+        this.createHUD();
     }
 
     setupInteraction() {
@@ -190,7 +216,7 @@ export class StellarSystemScene extends Scene {
                 offset: 0
             }];
         }
-        const baseStarSize = this.scales.starSize;
+        const baseStarSize = this.scales.starSize; // 1000
 
         stars.forEach((starData, index) => {
             const radius = baseStarSize * (starData.radius || 1.0);
@@ -253,11 +279,11 @@ export class StellarSystemScene extends Scene {
             this.scene.add(lod);
 
             // Planet Physical Radius (1 Earth Radius = 100 units approx for visibility)
-            const planetRadius = (planetData.radius || 1) * 100; 
+            const planetRadius = this.scales.planetSize * (planetData.radius || 1); 
             
             // High-LOD (close-up view)
-            // Generator output is ~10 units. Scale to planetRadius.
-            const meshScale = planetRadius / 10;
+            // Generator output is ~10 units radius. Scale to match planetRadius (100).
+            const meshScale = planetRadius / 10.0;
 
             // 1. High-LOD (close-up view) - Normalize to Radius 1.0
             let detailedMesh;
@@ -278,11 +304,25 @@ export class StellarSystemScene extends Scene {
                 color: color
             });
             const simpleMesh = new THREE.Mesh(simpleSphereGeo, simpleSphereMat);
-            lod.addLevel(simpleMesh, 2000); // Switch distance
+            lod.addLevel(simpleMesh, 5000); // Switch distance
+
+            // Orbit Line Setup
+            const orbitPoints = [];
+            const segments = 128;
+            for (let i = 0; i <= segments; i++) {
+                const theta = (i / segments) * Math.PI * 2;
+                orbitPoints.push(new THREE.Vector3(Math.cos(theta) * distance, 0, Math.sin(theta) * distance));
+            }
+            const orbitGeo = new THREE.BufferGeometry().setFromPoints(orbitPoints);
+            const orbitMat = new THREE.LineBasicMaterial({ color: 0x444444, transparent: true, opacity: 0.3 });
+            const orbitLine = new THREE.Line(orbitGeo, orbitMat);
+            this.scene.add(orbitLine);
 
             // Store metadata for updates
             const planetObj = {
                 mesh: lod,
+                orbitLine: orbitLine,
+                orbitPointsReal: orbitPoints, // Store real-space points for re-projection
                 data: planetData,
                 orbitRadius: distance,
                 orbitSpeed: (planetData.orbitSpeed || 0.0001) * 5,
@@ -292,6 +332,10 @@ export class StellarSystemScene extends Scene {
                 type: 'planet',
                 moons: []
             };
+            
+            // Set initial real position based on random angle
+            planetObj.realPosition.set(Math.cos(planetObj.orbitAngle) * distance, 0, Math.sin(planetObj.orbitAngle) * distance);
+            
             this.createLabel(planetObj);
             this.objects.push(planetObj);
 
@@ -301,7 +345,7 @@ export class StellarSystemScene extends Scene {
                     const moonLOD = new THREE.LOD();
                     this.scene.add(moonLOD);
 
-                    const moonRadius = (moonData.radius || 0.2) * 100;
+                    const moonRadius = (moonData.radius || 0.2) * (this.scales.planetSize * 0.3);
                     const moonMeshScale = moonRadius / 2; // Asteroid gen size approx 2
 
                     let detailedMoonMesh;
@@ -324,7 +368,7 @@ export class StellarSystemScene extends Scene {
                     const moonObj = {
                         mesh: moonLOD,
                         data: moonData,
-                        orbitRadius: (moonData.orbitalDistance || 0.002) * this.scales.orbit + (planetRadius * 2), // Distance from planet
+                        orbitRadius: (moonData.orbitalDistance || 0.002) * 5000 + (planetRadius * 3), // Local orbit
                         orbitSpeed: (moonData.orbitSpeed || 0.01),
                         orbitAngle: Math.random() * Math.PI * 2,
                         realPosition: new THREE.Vector3(),
@@ -379,12 +423,14 @@ export class StellarSystemScene extends Scene {
         const dt = delta * 0.001;
         const C = this.COMPRESSION_C;
         const camera = this.activeCamera;
-
+        
         // --- 1. Update Real Positions (Simulation) ---
         this.objects.forEach(obj => {
-            // Orbit Animation
-            if (obj.orbitGroup && obj.speed) {
-                obj.orbitGroup.rotation.y += obj.speed * dt;
+            // Orbit Animation (Real Space)
+            if (obj.orbitSpeed && obj.orbitRadius) {
+                obj.orbitAngle += obj.orbitSpeed * dt;
+                obj.realPosition.x = Math.cos(obj.orbitAngle) * obj.orbitRadius;
+                obj.realPosition.z = Math.sin(obj.orbitAngle) * obj.orbitRadius;
             }
 
             // Update LOD objects
@@ -394,7 +440,7 @@ export class StellarSystemScene extends Scene {
         });
 
         // --- 2. Intro Sequence Logic (Camera Movement) ---
-        if (this.introActive && this.homeWorldObj) {
+        if (this.introActive && this.homeWorldObj && this.homeWorldObj.realPosition) {
             this.introTime += dt;
             const duration = 12.0; // 12 seconds flyby
             const t = Math.min(this.introTime / duration, 1.0);
@@ -402,96 +448,114 @@ export class StellarSystemScene extends Scene {
             // Ease out cubic for smooth arrival
             const ease = 1 - Math.pow(1 - t, 3);
             
-            // Target Position: Near the homeworld
+            // Target Position: Near the homeworld (Real Space)
             const targetRealPos = this.homeWorldObj.realPosition.clone();
-            // Offset: Position camera to look at planet from a nice angle
-            const offset = new THREE.Vector3(200, 100, 200).normalize().multiplyScalar(this.homeWorldObj.baseRadius * 4.0);
+            
+            // Offset: Position camera to arrive in orbit
+            // We want to end up at a distance relative to the planet size
+            const arrivalDist = this.homeWorldObj.baseRadius * 4.0;
+            const offset = new THREE.Vector3(0, arrivalDist * 0.5, arrivalDist); 
             const targetCamPos = targetRealPos.clone().add(offset);
             
             // Interpolate Virtual Camera Position
             this.virtualCameraPosition.lerpVectors(this.introStartPos, targetCamPos, ease);
             
-            // Look at the planet
-            // Calculate direction from virtual camera to real planet position
-            const lookDir = new THREE.Vector3().subVectors(targetRealPos, this.virtualCameraPosition).normalize();
-            // Apply that direction to the actual camera (which is at 0,0,0)
-            const lookAtPos = new THREE.Vector3().addVectors(this.activeCamera.position, lookDir);
-            this.activeCamera.lookAt(lookAtPos);
+            // Orient Camera to look at the target (Planet)
+            // Since Camera is at 0,0,0, we look in the direction of (PlanetReal - VirtualCam)
+            const relVec = new THREE.Vector3().subVectors(targetRealPos, this.virtualCameraPosition);
+            const lookAtPoint = relVec.normalize().multiplyScalar(100); // Look at point 100 units away in that direction
+            this.activeCamera.lookAt(lookAtPoint);
             
             // End Intro
             if (t >= 1.0) {
                 this.introActive = false;
-                Logger.message("StellarSystemScene: Intro complete. Handing over controls.");
-                
-                // Enable orbit controls around the planet
-                // Note: OrbitControls target needs to be updated in the loop as the planet moves
-                this.setupControls('orbit', {
-                    target: new THREE.Vector3(0,0,0), // Will be updated in loop
-                    maxDistance: 50000, 
-                    minDistance: this.homeWorldObj.baseRadius * 1.2,
-                    zoomSpeed: 1.0,
-                    enableDamping: true
+                // Ensure orbit lines are visible again
+                this.objects.forEach(obj => {
+                    if (obj.orbitLine) obj.orbitLine.visible = true;
                 });
+                
+                Logger.message("StellarSystemScene: Intro complete. Transitioning to Planetary Orbit.");
+                if (this.viewManager) {
+                    this.viewManager.transitionToScene('PlanetaryOrbitScene', { planet: this.homeWorldObj.data, system: this.systemData }, { type: 'crossDissolve', duration: 2000 });
+                }
             }
         } else if (this.homeWorldObj && !this.introActive) {
-             // Keep the camera controls target locked on the moving planet
-             // In Floating Origin, the planet is visually at 'mesh.position'.
-             // But OrbitControls moves the camera. 
-             // Actually, for OrbitControls to work in Floating Origin, we usually lock the camera to 0,0,0 
-             // and rotate the world. But standard OrbitControls moves the camera.
-             // For now, let's just let OrbitControls work normally relative to the visual position.
-             const controls = this.cameraControls.get(this.activeCameraName);
-             if (controls && this.homeWorldObj.mesh) {
-                 controls.target.copy(this.homeWorldObj.mesh.position);
-             }
+             // LOCK VIRTUAL CAMERA TO PLANET
+             // This ensures the planet is always rendered at (0,0,0) Visual Space (or close to it)
+             // allowing TrackballControls to rotate around it naturally.
+             // We offset slightly so we aren't inside it.
+             const offset = new THREE.Vector3(0, this.homeWorldObj.baseRadius * 0.5, this.homeWorldObj.baseRadius * 4.0);
+             this.virtualCameraPosition.copy(this.homeWorldObj.realPosition).add(offset);
+        }
+
+        // Update Orrery if active
+        if (this.orreryScene) {
+            this.orreryScene.update(time, delta);
+            this.orreryScene.updateCameraMarker(this.virtualCameraPosition, this.scales.orbit);
         }
 
         // --- 3. Spatial Compression & Rendering ---
         // Map Real Positions to Visual Positions relative to (0,0,0)
-        // const cameraPos = this.activeCamera.position; // Should be 0,0,0 usually
 
         this.objects.forEach(obj => {
-            if (!obj.mesh) return;
+            // 1. Update Planet Mesh Position
+            if (obj.mesh) {
+                const relVec = new THREE.Vector3().subVectors(obj.realPosition, this.virtualCameraPosition);
+                const realDist = relVec.length();
 
-            // Vector from Virtual Camera to Object
-            // If OrbitControls moved the actual camera, we must account for that, 
-            // but ideally we keep actual camera at 0,0,0 and move virtual camera.
-            // For simplicity in this hybrid mode:
-            // Real Vector = ObjectRealPos - VirtualCamPos
-            const relVec = new THREE.Vector3().subVectors(obj.realPosition, this.virtualCameraPosition);
-            const realDist = relVec.length();
+                // Logarithmic Compression: visualDist = C * log(1 + realDist / C)
+                const visualDist = C * Math.log(1 + realDist / C);
 
-            // Logarithmic Compression
-            // visualDist = C * log(1 + realDist / C)
-            const visualDist = C * Math.log(1 + realDist / C);
+                const visualPos = relVec.normalize().multiplyScalar(visualDist);
+                obj.mesh.position.copy(visualPos);
 
-            // Direction is preserved
-            const visualPos = relVec.normalize().multiplyScalar(visualDist);
-            
-            // Apply to mesh
-            obj.mesh.position.copy(visualPos);
+                // Scaling to preserve angular size
+                let scale = 1.0;
+                if (realDist > 0.001) {
+                    scale = visualDist / realDist;
+                }
+                
+                // Visibility Boost
+                const minAngularSize = 0.002; 
+                const minScale = (visualDist * minAngularSize) / (obj.baseRadius || 1);
+                if (scale < minScale) scale = minScale;
 
-            // Scaling
-            // To preserve angular size: scale = visualDist / realDist
-            let scale = 1.0;
-            if (realDist > 0.001) {
-                scale = visualDist / realDist;
+                obj.mesh.scale.setScalar(scale);
+                
+                // Update LOD
+                if (obj.mesh.update) obj.mesh.update(camera);
             }
-            
-            // Visibility Boost (Orrery Effect) for distant objects
-            const minAngularSize = 0.005; // Increased for visibility
-            const minScale = (visualDist * minAngularSize) / (obj.baseRadius || 1);
-            if (scale < minScale) scale = minScale;
 
-            obj.mesh.scale.setScalar(scale);
-            
-            // Update LOD
-            if (obj.mesh.update) obj.mesh.update(camera);
+            // 2. Update Orbit Line (Apply Spatial Compression to every point)
+            if (obj.orbitLine && obj.orbitPointsReal) {
+                obj.orbitLine.visible = !this.introActive; // Hide lines during intro
+                const positions = obj.orbitLine.geometry.attributes.position.array;
+                const tempVec = new THREE.Vector3();
+                
+                for (let i = 0; i < obj.orbitPointsReal.length; i++) {
+                    const realPt = obj.orbitPointsReal[i];
+                    
+                    // Calculate relative vector from virtual camera
+                    tempVec.subVectors(realPt, this.virtualCameraPosition);
+                    const rDist = tempVec.length();
+                    
+                    // Apply compression
+                    const vDist = C * Math.log(1 + rDist / C);
+                    
+                    // Normalize and scale
+                    tempVec.normalize().multiplyScalar(vDist);
+                    
+                    positions[i * 3] = tempVec.x;
+                    positions[i * 3 + 1] = tempVec.y;
+                    positions[i * 3 + 2] = tempVec.z;
+                }
+                obj.orbitLine.geometry.attributes.position.needsUpdate = true;
+            }
 
             // Update Label
             if (obj.label) {
                 // Project visual position to screen
-                const tempV = visualPos.clone();
+                const tempV = obj.mesh.position.clone();
                 tempV.project(camera);
                 
                 // Check if in front of camera
@@ -530,6 +594,46 @@ export class StellarSystemScene extends Scene {
                 Logger.message(`Clicked on ${targetObj.data.name}`);
                 // Fly to it? Or just select?
                 // For now, let's just log it.
+            }
+        }
+    }
+
+    animate() {
+        if (!this.isActive) return;
+
+        const time = performance.now();
+        const delta = (time - (this.lastTime || time));
+        this.lastTime = time;
+
+        this.animationFrameId = requestAnimationFrame(this.animate.bind(this));
+
+        Controls.update();
+
+        // Update Active Camera Controls
+        if (this.shouldUpdateControls && this.activeCameraName && this.cameraControls.has(this.activeCameraName)) {
+            const controls = this.cameraControls.get(this.activeCameraName);
+            if (controls.enabled) {
+                controls.update();
+            }
+        }
+
+        this.update(time, delta);
+
+        if (this.activeCamera && this.renderer) {
+            // 1. Render Main Scene
+            this.renderer.setViewport(0, 0, window.innerWidth, window.innerHeight);
+            this.renderer.setScissor(0, 0, window.innerWidth, window.innerHeight);
+            this.renderer.setScissorTest(false);
+            this.renderer.render(this.scene, this.activeCamera);
+
+            // 2. Render Orrery PiP (Bottom Left) during Intro
+            if (this.introActive && this.orreryScene) {
+                const pipSize = Math.min(window.innerWidth, window.innerHeight) * 0.25;
+                this.renderer.setViewport(20, 20, pipSize, pipSize);
+                this.renderer.setScissor(20, 20, pipSize, pipSize);
+                this.renderer.setScissorTest(true);
+                this.renderer.render(this.orreryScene.scene, this.orreryScene.activeCamera);
+                this.renderer.setScissorTest(false);
             }
         }
     }

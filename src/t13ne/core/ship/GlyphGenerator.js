@@ -122,25 +122,50 @@ export class GlyphGenerator {
     generateTextDecal(text, color) {
         if (!this.ctx) return null;
         const ctx = this.ctx;
-        const width = 512;
-        const height = 128; // Wider aspect ratio for text
-        this.canvas.width = width;
+        const width = 512; // Square for block layout
+        const height = 512; 
+        this.canvas.width = width; 
         this.canvas.height = height;
 
         ctx.clearRect(0, 0, width, height);
         
         // Stencil effect
         ctx.fillStyle = '#' + color.getHexString();
-        ctx.font = 'bold 80px "Courier New", monospace';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
         
-        // Add a border/box
-        ctx.strokeStyle = '#' + color.getHexString();
-        ctx.lineWidth = 5;
-        ctx.strokeRect(10, 10, width - 20, height - 20);
+        // Removed border for painted look
 
-        ctx.fillText(text.toUpperCase(), width / 2, height / 2);
+        // Generate Alien Glyphs instead of English Text
+        const random = mulberry32(text.length); // Seed with text length for consistency
+        const numGlyphs = Math.min(text.length, 16); // Allow more glyphs
+        
+        // Grid Layout
+        const cols = Math.ceil(Math.sqrt(numGlyphs));
+        const rows = Math.ceil(numGlyphs / cols);
+        const cellW = (width - 40) / cols;
+        const cellH = (height - 40) / rows;
+        
+        ctx.lineWidth = 8;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+
+        for (let i = 0; i < numGlyphs; i++) {
+            const col = i % cols;
+            const row = Math.floor(i / cols);
+            const x = 20 + col * cellW;
+            const y = 20 + row * cellH;
+            
+            ctx.save();
+            ctx.translate(x + cellW/2, y + cellH/2);
+            
+            // Draw random lines/shapes for glyph
+            ctx.beginPath();
+            for(let j=0; j<3; j++) {
+                ctx.moveTo((random()-0.5) * cellW * 0.6, (random()-0.5) * cellH * 0.6);
+                ctx.lineTo((random()-0.5) * cellW * 0.6, (random()-0.5) * cellH * 0.6);
+            }
+            ctx.stroke();
+            ctx.restore();
+        }
 
         const texture = new THREE.CanvasTexture(this.canvas);
         texture.needsUpdate = true;

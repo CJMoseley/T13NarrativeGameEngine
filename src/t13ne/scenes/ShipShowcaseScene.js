@@ -21,7 +21,7 @@ export class ShipShowcaseScene extends Scene {
         this.descElement = null;
         
         // Configuration
-        this.componentDisplayDuration = 4000; // ms per component
+        this.componentDisplayDuration = 1000; // Accelerated reveal
         this.typingSpeed = 50; // ms per char (approx 100 wpm)
 
         this.revealTimeout = null;
@@ -148,6 +148,8 @@ export class ShipShowcaseScene extends Scene {
         if (shipGroup.parent !== this.scene) this.scene.add(shipGroup);
         this.shipGroup = shipGroup; // Store reference for later use
         this.hullMesh = shipGroup.getObjectByName("procedural_hull");
+
+        this.fitCameraToShip(shipGroup);
         
         // Hide everything initially
         shipGroup.traverse(child => {
@@ -186,6 +188,37 @@ export class ShipShowcaseScene extends Scene {
 
         // Start the reveal
         this.revealNextComponent();
+    }
+
+    fitCameraToShip(object) {
+        const box = new THREE.Box3().setFromObject(object);
+        const size = new THREE.Vector3();
+        box.getSize(size);
+        const center = new THREE.Vector3();
+        box.getCenter(center);
+
+        const maxDim = Math.max(size.x, size.y, size.z);
+        const fov = this.activeCamera.fov * (Math.PI / 180);
+        
+        // Calculate distance to fit the object vertically
+        let cameraZ = Math.abs(maxDim / (2 * Math.tan(fov / 2)));
+
+        // Adjust for aspect ratio if necessary (e.g. portrait mode)
+        if (this.activeCamera.aspect < 1) {
+             cameraZ /= this.activeCamera.aspect;
+        }
+
+        cameraZ *= 1.5; // Zoom out a bit for padding
+        
+        const direction = new THREE.Vector3(1, 0.5, 1).normalize(); // Isometric-ish angle
+        const position = center.clone().add(direction.multiplyScalar(cameraZ));
+
+        this.activeCamera.position.copy(position);
+        this.activeCamera.lookAt(center);
+        if (this.controls) {
+            this.controls.target.copy(center);
+            this.controls.update();
+        }
     }
 
     async revealNextComponent() {

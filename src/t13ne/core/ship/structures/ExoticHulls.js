@@ -268,12 +268,24 @@ export const generateBioBird = (context) => {
     const bodyLen = spineLength;
     
     // Body
+    // Ellipsoid dims are radii/scale. Use bodyLen*0.5 so total length is bodyLen.
     attachComponent('bio_body', [0, 0, 0], [0, 0, 0], 'ellipsoid', 
-        { width: bodyLen*0.4, height: bodyLen*0.3, length: bodyLen }, 'NONE');
+        { width: bodyLen*0.25, height: bodyLen*0.2, length: bodyLen*0.5 }, 'NONE');
     
     // Head
-    attachComponent('bio_head', [0, bodyLen*0.1, bodyLen*0.55], [Math.PI/2, 0, 0], 'cone', 
-        { radius: bodyLen*0.15, height: bodyLen*0.3 }, 'NONE');
+    // Move further forward to avoid being swallowed by body blend. 
+    // Body ends at 0.5. Head center at 0.65 puts it clearly in front.
+    attachComponent('bio_head', [0, 0, bodyLen*0.65], [Math.PI/2, 0, 0], 'cone', 
+        { radius: bodyLen*0.12, height: bodyLen*0.3 }, 'NONE');
+
+    // Beak
+    // Head ends at 0.65 + 0.15 = 0.8. Place beak center at 0.85 for overlap.
+    attachComponent('bio_beak', [0, 0, bodyLen*0.85], [Math.PI/2, 0, 0], 'cone',
+        { radius: bodyLen*0.05, height: bodyLen*0.2 }, 'NONE');
+
+    // Cockpit (Explicitly placed to prevent generic placement)
+    attachComponent('cockpit', [0, bodyLen*0.15, bodyLen*0.4], [0, 0, 0], 'ellipsoid',
+        { width: bodyLen*0.15, height: bodyLen*0.1, length: bodyLen*0.2 }, 'NONE');
         
     // Wings - Feathered Structure (Radial Pinions)
     const wingRootX = bodyLen * 0.25;
@@ -308,8 +320,16 @@ export const generateBioBird = (context) => {
     }
         
     // Tail
-    attachComponent('bio_tail_feathers', [0, 0.1, -bodyLen*0.5], [0.2, 0, 0], 'wedge', 
-        { span: bodyLen*0.4, rootChord: bodyLen*0.3, tipChord: bodyLen*0.6, sweep: -bodyLen*0.1, depth: 0.1, centered: true }, 'NONE');
+    // Radial fan at rear. Rotate Y 180 to point backward (-Z). Fan out.
+    const tailZ = -bodyLen * 0.5;
+    const tailFanAngle = 0.15; // Tighter fan for more feathers
+    const numTailFeathers = 7; // More feathers (Odd number for center)
+    const tailOffset = Math.floor(numTailFeathers / 2);
+    
+    for(let i=-tailOffset; i<=tailOffset; i++) {
+        attachComponent(`bio_tail_feather_${i}`, [0, 0, tailZ], [0, Math.PI + (i * tailFanAngle), 0], 'wedge', 
+            { span: bodyLen*0.12, rootChord: bodyLen*0.9, tipChord: bodyLen*0.2, sweep: 0, depth: 0.05, centered: true }, 'NONE');
+    }
 
     // Engines (Thighs) - Horizontal cylinders where upper legs would be
     const legX = bodyLen * 0.25;
@@ -337,9 +357,24 @@ export const generateBioFish = (context) => {
     attachComponent('bio_body', [0, 0, 0], [0, 0, 0], 'ellipsoid', 
         { width: bodyLen*0.25, height: bodyLen*0.4, length: bodyLen }, 'NONE');
         
-    // Tail Fin (Caudal)
-    attachComponent('bio_fin_tail', [0, 0, -bodyLen*0.55], [0, 0, Math.PI/2], 'wedge', 
-        { span: bodyLen*0.9, rootChord: bodyLen*0.15, tipChord: bodyLen*0.5, sweep: -bodyLen*0.1, depth: 0.2, centered: true }, 'NONE');
+    // Tail Fin (Caudal) - Split into Top and Bottom lobes with Engines
+    const tailZ = -bodyLen * 0.5;
+    const lobeSpan = bodyLen * 0.4;
+    const lobeRoot = bodyLen * 0.15;
+    
+    // Top Lobe
+    attachComponent('bio_fin_tail_top', [0, bodyLen*0.1, tailZ], [0, 0, Math.PI/2], 'wedge', 
+        { span: lobeSpan, rootChord: lobeRoot, tipChord: bodyLen*0.1, sweep: bodyLen*0.2, depth: 0.15, centered: false }, 'NONE');
+
+    // Bottom Lobe
+    attachComponent('bio_fin_tail_bottom', [0, -bodyLen*0.1, tailZ], [0, 0, -Math.PI/2], 'wedge', 
+        { span: lobeSpan, rootChord: lobeRoot, tipChord: bodyLen*0.1, sweep: bodyLen*0.2, depth: 0.15, centered: false }, 'NONE');
+
+    // Vertical Engines at Tail Base
+    attachComponent('bio_engine_top', [0, bodyLen*0.15, tailZ + bodyLen*0.1], [Math.PI/2, 0, 0], 'cone',
+        { radius: bodyLen*0.08, height: bodyLen*0.3 }, 'NONE');
+    attachComponent('bio_engine_bottom', [0, -bodyLen*0.15, tailZ + bodyLen*0.1], [Math.PI/2, 0, 0], 'cone',
+        { radius: bodyLen*0.08, height: bodyLen*0.3 }, 'NONE');
         
     // Dorsal Fin
     attachComponent('bio_fin_dorsal', [0, bodyLen*0.2, 0], [0, 0, Math.PI/2], 'wedge', 

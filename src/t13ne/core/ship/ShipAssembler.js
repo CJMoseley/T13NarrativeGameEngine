@@ -260,7 +260,7 @@ export class ShipAssembler {
                 }
             }
             // Small delay between groups to visualize construction steps
-            await new Promise(resolve => setTimeout(resolve, 50));
+            await new Promise(resolve => setTimeout(resolve, 10)); // Accelerated
         }
 
         // 1b. Generate Wiring Meshes
@@ -274,6 +274,7 @@ export class ShipAssembler {
             });
 
             const wireGroup = this.wiringGenerator.createVisuals(wiringGraph, compMap, compDataMap);
+            wireGroup.name = 'wiring_visuals';
             shipGroup.add(wireGroup);
         }
 
@@ -359,6 +360,8 @@ export class ShipAssembler {
             if (baseCSG) {
                 hullMesh = CSG.toMesh(baseCSG, new THREE.Matrix4());
                 hullGeometry = hullMesh.geometry;
+                // Apply slight scale to avoid Z-fighting with internal components
+                hullGeometry.scale(1.005, 1.005, 1.005);
             }
         }
 
@@ -407,6 +410,10 @@ export class ShipAssembler {
                 mesh.visible = false;
             });
 
+            // Hide wiring visuals if hull is present (they are internal)
+            const wg = shipGroup.getObjectByName('wiring_visuals');
+            if (wg) wg.visible = false;
+
             // Brief delay to let the user see the structure (and ensure renderer updates)
             await new Promise(r => setTimeout(r, 2000));
 
@@ -439,6 +446,14 @@ export class ShipAssembler {
         // Generate struts between connected components for ALL styles to ensure connectivity
         // For SKELETON, these are the main structure. For others, they act as internal cabling or external supports if hull fails.
         if (wiringGraph) {
+            const strutGroup = new THREE.Group();
+            strutGroup.name = "internal_struts";
+            // If a hull exists and we are not in SKELETON mode, hide struts by default (internal structure)
+            if (hullMesh && effectiveStyle.method !== 'SKELETON') {
+                strutGroup.visible = false;
+            }
+            shipGroup.add(strutGroup);
+
             const strutMat = new THREE.MeshStandardMaterial({ color: 0x555555, roughness: 0.7, metalness: 0.6 });
             const processedStruts = new Set();
             const raycaster = new THREE.Raycaster();
@@ -529,7 +544,7 @@ export class ShipAssembler {
                                     const strut = new THREE.Mesh(strutGeo, strutMat);
                                     strut.position.copy(innerPoint).add(outerPoint).multiplyScalar(0.5);
                                     strut.lookAt(outerPoint);
-                                    shipGroup.add(strut);
+                                    strutGroup.add(strut);
                                 }
                             }
                             continue; // Skip standard strut generation
@@ -576,9 +591,10 @@ export class ShipAssembler {
                     if (dist < 0.1) continue;
 
                     // FIX: Create a single, thicker, correctly-oriented strut to avoid visual bugs.
+                    // Embed strut into components by increasing length slightly
                     const strutRadius = 0.25;
-                    
-                    const strutGeo = new THREE.CylinderGeometry(strutRadius, strutRadius, dist, 8);
+                    const embedDepth = 1.0; 
+                    const strutGeo = new THREE.CylinderGeometry(strutRadius, strutRadius, dist + embedDepth, 8);
                     const strut = new THREE.Mesh(strutGeo, strutMat);
 
                     // Position at midpoint
@@ -590,7 +606,7 @@ export class ShipAssembler {
                     const quat = new THREE.Quaternion().setFromUnitVectors(up, direction);
                     strut.quaternion.copy(quat);
 
-                    shipGroup.add(strut);
+                    strutGroup.add(strut);
                 }
             }
         }

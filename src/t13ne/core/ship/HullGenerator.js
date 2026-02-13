@@ -89,13 +89,21 @@ export class HullGenerator {
                 if (scale.y < 0) { localP.y = -localP.y; scale.y = Math.abs(scale.y); }
                 if (scale.z < 0) { localP.z = -localP.z; scale.z = Math.abs(scale.z); }
                 
+                // Dynamic padding for thin components to prevent "puffiness"
+                // If a component is very thin (like a wing feather), reduce padding to preserve detail
+                let localPadding = padding;
+                const minDim = Math.min(scale.x, scale.y, scale.z);
+                if (minDim < padding * 4.0) {
+                    localPadding = minDim * 0.25; 
+                }
+
                 let dist = 0;
                 // Expanded SDF primitives
                 if (c.sdfType === 'sphere') {
-                    dist = localP.length() - (scale.x + padding);
+                    dist = localP.length() - (scale.x + localPadding);
                 } else if (c.sdfType === 'box') {
                     const absLocalP = new THREE.Vector3(Math.abs(localP.x), Math.abs(localP.y), Math.abs(localP.z));
-                    const qVec = absLocalP.sub(scale.clone().multiplyScalar(0.5).addScalar(padding));
+                    const qVec = absLocalP.sub(scale.clone().multiplyScalar(0.5).addScalar(localPadding));
                     dist = qVec.clone().max(new THREE.Vector3(0, 0, 0)).length() +
                         Math.min(Math.max(qVec.x, Math.max(qVec.y, qVec.z)), 0.0);
                 } else if (c.sdfType === 'capsule') {
@@ -103,11 +111,11 @@ export class HullGenerator {
                     const r = scale.x; // radius
                     const py = Math.max(-h/2, Math.min(h/2, localP.y));
                     const qVec = new THREE.Vector3(localP.x, localP.y - py, localP.z);
-                    dist = qVec.length() - (r + padding);
+                    dist = qVec.length() - (r + localPadding);
                 } else if (c.sdfType === 'cylinder') {
                     const h = scale.y;
                     const r = scale.x;
-                    const d2 = new THREE.Vector2(new THREE.Vector2(localP.x, localP.z).length() - (r + padding), Math.abs(localP.y) - h/2 - padding);
+                    const d2 = new THREE.Vector2(new THREE.Vector2(localP.x, localP.z).length() - (r + localPadding), Math.abs(localP.y) - h/2 - localPadding);
                     dist = Math.min(Math.max(d2.x, d2.y), 0.0) + d2.max(new THREE.Vector2(0, 0)).length();
                 } else if (c.sdfType === 'truncatedCone') {
                     const r1 = scale.z; // radiusBottom
@@ -132,11 +140,11 @@ export class HullGenerator {
                     
                     const s = (cb.x < 0.0 && ca.y < 0.0) ? -1.0 : 1.0;
                     
-                    dist = s * Math.sqrt(Math.min(ca.lengthSq(), cb.lengthSq())) - padding;
+                    dist = s * Math.sqrt(Math.min(ca.lengthSq(), cb.lengthSq())) - localPadding;
                 } else if (c.sdfType === 'torus') {
                     const t = new THREE.Vector2(scale.x, scale.y); // major radius, minor radius
                     const q2 = new THREE.Vector2(new THREE.Vector2(localP.x, localP.y).length() - t.x, localP.z);
-                    dist = q2.length() - (t.y + padding);
+                    dist = q2.length() - (t.y + localPadding);
                 } else if (c.sdfType === 'cone') {
                     // Check for pyramid (low segments)
                     if (c.dims && c.dims.radialSegments && c.dims.radialSegments <= 4) {
@@ -154,7 +162,7 @@ export class HullGenerator {
                         const vecY = localP.y - h / 2;
                         const distCone = (vecR * h + vecY * r) / hyp;
                         const distY = Math.max(localP.y - h / 2, -h / 2 - localP.y);
-                        dist = Math.max(distCone, distY) - padding;
+                        dist = Math.max(distCone, distY) - localPadding;
                     } else {
                         const r = scale.x;
                         const h = scale.y;
@@ -163,7 +171,7 @@ export class HullGenerator {
                         const vecY = localP.y - h / 2;
                         const distCone = (vecR * h + vecY * r) / hyp;
                         const distY = Math.max(localP.y - h / 2, -h / 2 - localP.y);
-                        dist = Math.max(distCone, distY) - padding;
+                        dist = Math.max(distCone, distY) - localPadding;
                     }
                 } else if (c.sdfType === 'prism') {
                     // Correct SDF for n-sided prism
@@ -179,7 +187,7 @@ export class HullGenerator {
                     const dist2D = sdPolygon(new THREE.Vector2(localP.x, localP.z), verts);
                     const distY = Math.abs(localP.y) - h/2;
                     const dVec = new THREE.Vector2(dist2D, distY);
-                    dist = Math.min(Math.max(dVec.x, dVec.y), 0.0) + dVec.max(new THREE.Vector2(0, 0)).length() - padding;
+                    dist = Math.min(Math.max(dVec.x, dVec.y), 0.0) + dVec.max(new THREE.Vector2(0, 0)).length() - localPadding;
                 } else if (c.sdfType === 'wedge') {
                     const span = c.dims.span || c.scale.x;
                     const rootChord = c.dims.rootChord || c.scale.z;
@@ -218,23 +226,23 @@ export class HullGenerator {
                     const dist2D = sdPolygon(p2, verts);
                     const distY = Math.abs(localP.y) - thickness / 2;
                     const dVec = new THREE.Vector2(dist2D, distY);
-                    dist = Math.min(Math.max(dVec.x, dVec.y), 0.0) + dVec.max(new THREE.Vector2(0, 0)).length() - padding;
+                    dist = Math.min(Math.max(dVec.x, dVec.y), 0.0) + dVec.max(new THREE.Vector2(0, 0)).length() - localPadding;
                 } else if (c.sdfType === 'ellipsoid') {
                     const r = scale.clone().multiplyScalar(0.5);
                     const k0 = localP.clone().divide(r).length();
                     const k1 = localP.clone().divide(r.clone().multiply(r)).length();
-                    dist = (k0 * (k0 - 1.0) / k1) - padding;
+                    dist = (k0 * (k0 - 1.0) / k1) - localPadding;
                 } else if (c.sdfType === 'octahedron') {
-                    dist = sdOctahedron(localP, scale.x) - padding;
+                    dist = sdOctahedron(localP, scale.x) - localPadding;
                 } else if (c.sdfType === 'tetrahedron') {
-                    dist = sdTetrahedron(localP, scale.x) - padding;
+                    dist = sdTetrahedron(localP, scale.x) - localPadding;
                 } else if (c.sdfType === 'dodecahedron' || c.sdfType === 'icosahedron') {
                     // Approximate with Sphere as they are fairly round
-                    dist = localP.length() - (scale.x + padding);
+                    dist = localP.length() - (scale.x + localPadding);
                 } else {
                     // Fallback to box
                     const absLocalP = new THREE.Vector3(Math.abs(localP.x), Math.abs(localP.y), Math.abs(localP.z));
-                    const qVec = absLocalP.sub(scale.clone().multiplyScalar(0.5).addScalar(padding));
+                    const qVec = absLocalP.sub(scale.clone().multiplyScalar(0.5).addScalar(localPadding));
                     dist = qVec.clone().max(new THREE.Vector3(0, 0, 0)).length() +
                         Math.min(Math.max(qVec.x, Math.max(qVec.y, qVec.z)), 0.0);
                 }
@@ -280,15 +288,15 @@ export class HullGenerator {
             worldBounds.union(tempBox);
         });
         boxGeom.dispose();
-        worldBounds.expandByScalar(padding * 2 + 1.0); // Add padding
+        worldBounds.expandByScalar(padding * 4 + 2.0); // Increased padding to prevent clipping
 
         const boundsSize = new THREE.Vector3();
         worldBounds.getSize(boundsSize);
         const size = Math.max(boundsSize.x, boundsSize.y, boundsSize.z);
 
         // Dynamic resolution based on size to ensure detail
-        let res = Math.ceil(size * 1.5); 
-        res = Math.min(Math.max(res, 32), 128); // Cap at 128 for performance
+        let res = Math.ceil(size * 5.0); 
+        res = Math.min(Math.max(res, 64), 400); // Increased cap for better detail on wings/tentacles
 
         const mc = new MarchingCubes(res, new THREE.MeshStandardMaterial(), true, true);
         mc.isolation = 0.0;
@@ -320,13 +328,57 @@ export class HullGenerator {
 
         const geometry = mc.geometry; // MarchingCubes extends Mesh, geometry is a property
 
-        // Marching Cubes generates geometry in the range [-1, 1]
+        // Compute the actual bounding box of the generated geometry to normalize it
+        geometry.computeBoundingBox();
+        const geoBounds = geometry.boundingBox;
+        const geoSize = new THREE.Vector3();
+        geoBounds.getSize(geoSize);
+        const geoCenter = new THREE.Vector3();
+        geoBounds.getCenter(geoCenter);
+
+        // Center the geometry first
+        geometry.translate(-geoCenter.x, -geoCenter.y, -geoCenter.z);
+
+        // Scale to match world bounds
+        // Marching Cubes generates within a normalized volume, we map that volume to worldBounds
         // We need to map this to [worldBounds.min, worldBounds.max]
+        // The geometry size might be slightly smaller than 2.0 (or 1.0) depending on isosurface, 
+        // but we want to map the full marching cubes volume to the world bounds.
+        // Standard MarchingCubes usually spans -1 to 1 (size 2) or -0.5 to 0.5 (size 1).
+        // Let's assume the volume is size 2 (based on Three.js examples usually).
+        // But to be safe, we scale based on the boundsSize directly.
+        
+        // Actually, simpler: The MC field corresponds to worldBounds.
+        // The MC geometry vertices are in the range of the grid coordinates usually normalized.
+        // If we assume the MC geometry vertices are in [-1, 1] (which they are in standard Three.js MC),
+        // then we scale by boundsSize/2 and translate to center.
+        
+        // Re-applying the logic but ensuring we start from a known state (0,0,0 center)
+        // If the geometry was not centered (e.g. [0, 1]), centering it first fixes that.
+        // Now we scale. If the original range was [-1, 1] (size 2), we scale by size/2.
+        // If it was [0, 1] (size 1), we scale by size.
+        // Let's assume standard [-1, 1] behavior but check size.
+        
+        let scaleFactor = 0.5;
+        // If the geometry is tiny (normalized), scale it up.
+        
+        // Correct approach:
+        // The MarchingCubes algorithm generates vertices. We want to map the grid volume to worldBounds.
+        // We don't rely on the geometry bounding box because the hull might be smaller than the bounds.
+        // We rely on the fact that MC generates in [-1, 1].
+        
+        // Reset any previous transforms (just in case)
+        // geometry.center(); // This centers the *vertices*, but we want to center the *volume*.
+        // If MC generates [-1, 1], the volume center is 0,0,0.
+        
         const halfSize = boundsSize.clone().multiplyScalar(0.5);
         const center = new THREE.Vector3();
         worldBounds.getCenter(center);
 
-        geometry.scale(halfSize.x, halfSize.y, halfSize.z);
+        // If MC output is [-1, 1], scaling by halfSize makes it [-halfSize, halfSize] which is correct size.
+        // Apply a slight over-scale to prevent Z-fighting with internal components
+        const zFightBuffer = 1.001; // Reduced from 1.02 to prevent huge inflation
+        geometry.scale(halfSize.x * zFightBuffer, halfSize.y * zFightBuffer, halfSize.z * zFightBuffer);
         geometry.translate(center.x, center.y, center.z);
         return geometry;
     }

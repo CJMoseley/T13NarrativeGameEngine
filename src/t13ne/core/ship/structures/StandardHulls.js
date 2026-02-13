@@ -89,7 +89,7 @@ export const generateSpineOrStar = (context, hullType) => {
             let baseRoll = 0;
             if (segs % 4 === 0) baseRoll = Math.PI / segs; // Square/Octagon -> Flat Top/Bottom
 
-            rot = [Math.PI / 2, 0, baseRoll + faceAlignment]; // Rotate X to align Z, then Z to roll
+            rot = [Math.PI / 2, baseRoll + faceAlignment, 0]; // Rotate X to align Z, then Y to roll
 
             if (i === spineSegments - 1) {
                 lastSegmentRadius = radius;
