@@ -884,6 +884,29 @@
           }
         }
       ]
+    },
+    {
+      "id": "species",
+      "name": "Species Generation",
+      "numCards": 3,
+      "shufflePatterns": [
+        "fisherYates"
+      ],
+      "includeDiceRoll": false,
+      "cardPositions": [
+        {
+          "role": "Body Plan",
+          "description": "Determines the base body plan."
+        },
+        {
+          "role": "Features",
+          "description": "Adds specific features or limbs."
+        },
+        {
+          "role": "Affinity",
+          "description": "Determines environmental affinity."
+        }
+      ]
     }
   ]
 }

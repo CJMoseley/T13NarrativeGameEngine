@@ -316,7 +316,7 @@ export class ShipAssembler {
 
         if (effectiveStyle.method === 'ORGANIC') {
             // Organic styles use SDF which creates a single "melty" mesh, avoiding Z-fighting.
-            hullGeometry = this.hullGenerator.generate(shipComponents, effectiveStyle);
+            hullGeometry = await this.hullGenerator.generateAsync(shipComponents, effectiveStyle);
         } else if (effectiveStyle.method === 'SKELETON') {
             // Skeleton style has no hull, so no Z-fighting.
             hullGeometry = null;
@@ -341,6 +341,7 @@ export class ShipAssembler {
                     mesh.updateMatrix();
                     const compCSG = CSG.fromMesh(mesh);
                     baseCSG = baseCSG ? baseCSG.union(compCSG) : compCSG;
+                    await new Promise(r => setTimeout(r, 0)); // Yield
                 }
             }
             // 2. Subtract all carving components.
@@ -354,6 +355,7 @@ export class ShipAssembler {
                     if (comp.scale) cutterMesh.scale.copy(comp.scale);
                     cutterMesh.updateMatrix();
                     baseCSG = baseCSG.subtract(CSG.fromMesh(cutterMesh));
+                    await new Promise(r => setTimeout(r, 0)); // Yield
                 }
             }
 
@@ -467,10 +469,10 @@ export class ShipAssembler {
                 if (!sourceMesh) continue;
 
                 // Get the center of the source component for raycasting origin
-                const sourceCenter = new THREE.Vector3();
+                const sourceCentre = new THREE.Vector3();
                 sourceMesh.geometry.computeBoundingBox();
-                sourceMesh.geometry.boundingBox.getCenter(sourceCenter);
-                sourceMesh.localToWorld(sourceCenter);
+                sourceMesh.geometry.boundingBox.getCenter(sourceCentre);
+                sourceMesh.localToWorld(sourceCentre);
 
                 for (const conn of connections) {
                     const edgeKey = [sourceId, conn.targetId].sort().join('-');
@@ -481,18 +483,18 @@ export class ShipAssembler {
                     if (!targetMesh) continue;
 
                     // Get the center of the target component
-                    const targetCenter = new THREE.Vector3();
+                    const targetCentre = new THREE.Vector3();
                     targetMesh.geometry.computeBoundingBox();
-                    targetMesh.geometry.boundingBox.getCenter(targetCenter);
-                    targetMesh.localToWorld(targetCenter);
+                    targetMesh.geometry.boundingBox.getCenter(targetCentre);
+                    targetMesh.localToWorld(targetCentre);
 
                     // Special handling for Torus targets: Connect to the rim, not the center
-                    let endPoint = targetCenter.clone();
+                    let endPoint = targetCentre.clone();
                     if (targetMesh.userData.primitiveType === 'torus') {
                         const dims = targetMesh.userData.originalDims || {};
                         const r = dims.radius || 1;
                         // Transform source center to torus local space
-                        const localSource = sourceCenter.clone().applyMatrix4(targetMesh.matrixWorld.clone().invert());
+                        const localSource = sourceCentre.clone().applyMatrix4(targetMesh.matrixWorld.clone().invert());
                         // Project to XY plane (Torus plane) and normalize to radius
                         const rimPointLocal = new THREE.Vector3(localSource.x, localSource.y, 0).normalize().multiplyScalar(r);
                         // Transform back to world
@@ -501,7 +503,7 @@ export class ShipAssembler {
 
 
                     // Check for concentric/overlapping components (like Ring Hull)
-                    const centerDist = sourceCenter.distanceTo(targetCenter);
+                    const centerDist = sourceCentre.distanceTo(targetCentre);
                     if (centerDist < 2.0) {
                         const sourceType = sourceMesh.userData.primitiveType;
                         const targetType = targetMesh.userData.primitiveType;
@@ -526,7 +528,7 @@ export class ShipAssembler {
                                 localDir.applyQuaternion(torusMesh.quaternion).normalize();
 
                                 // Raycast Out to Torus (find inner surface of ring)
-                                raycaster.set(sourceCenter, localDir);
+                                raycaster.set(sourceCentre, localDir);
                                 const torusHits = raycaster.intersectObject(torusMesh, false);
 
                                 if (torusHits.length > 0) {
@@ -536,7 +538,7 @@ export class ShipAssembler {
                                     raycaster.set(outerPoint, localDir.clone().negate());
                                     const innerHits = raycaster.intersectObject(innerMesh, true);
                                     
-                                    const innerPoint = innerHits.length > 0 ? innerHits[0].point : sourceCenter;
+                                    const innerPoint = innerHits.length > 0 ? innerHits[0].point : sourceCentre;
                                     const dist = innerPoint.distanceTo(outerPoint);
                                     
                                     const strutGeo = new THREE.CylinderGeometry(0.08, 0.08, dist, 6);
@@ -552,12 +554,12 @@ export class ShipAssembler {
                     }
 
                     // Raycast from source center towards target center to find connection points on surfaces
-                    const raycastDirection = tempVec.subVectors(targetCenter, sourceCenter).normalize();
+                    const raycastDirection = tempVec.subVectors(targetCentre, sourceCentre).normalize();
                     
                     // Find intersection point on source mesh
-                    raycaster.set(sourceCenter, raycastDirection);
+                    raycaster.set(sourceCentre, raycastDirection);
                     const sourceIntersects = raycaster.intersectObject(sourceMesh, true);
-                    let startPoint = sourceCenter; // Fallback
+                    let startPoint = sourceCentre; // Fallback
                     if (sourceIntersects.length > 0) {
                         startPoint = sourceIntersects[0].point;
                     }
@@ -572,7 +574,7 @@ export class ShipAssembler {
 
                     // If both raycasts failed, use component centers as a last resort
                     if (sourceIntersects.length === 0 && targetIntersects.length === 0) {
-                        startPoint = sourceCenter;
+                        startPoint = sourceCentre;
                         // endPoint is already set to rim or center
                     }
                     
@@ -587,8 +589,16 @@ export class ShipAssembler {
                         continue; 
                     }
 
+                    // FIX: Skip struts for embedded generators on arc ships
+                    if (components.hullType === 'HORSESHOE' || components.hullType === 'STATION_RING') {
+                        if (sourceUsage.includes('generator') || targetUsage.includes('generator') ||
+                            sourceUsage.includes('shield') || targetUsage.includes('shield')) {
+                            continue;
+                        }
+                    }
+
                     // FIX: Skip struts if components are touching or embedded to avoid visual clutter
-                    if (dist < 0.1) continue;
+                    if (dist < 0.5) continue;
 
                     // FIX: Create a single, thicker, correctly-oriented strut to avoid visual bugs.
                     // Embed strut into components by increasing length slightly

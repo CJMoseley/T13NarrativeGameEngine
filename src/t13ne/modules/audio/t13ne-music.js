@@ -1,5 +1,3 @@
-// src/t13ne/modules/audio/t13ne-music.js
-
 import Logger from "../../core/Logger.js";
 import T13NE from '../../T13NE.js';
 import CodexLoader from "../codex/CodexLoader.js";
@@ -30,6 +28,7 @@ class T13NE_Music {
         this.currentTrackName = null;
         this.currentTrack = null; // Store active track object for live updates
         this.currentStep = 0;
+        this.trackCache = new Map(); // Cache for generated tracks to prevent hitches
 
         this.manifestManager = new AudioManifestManager();
         this.themeGenerator = new ThemeGenerator(this);
@@ -233,13 +232,30 @@ class T13NE_Music {
     async createMainTheme(gameEngine) {
         if (!this.synth) return;
 
-        const trackName = 'track_main_theme';
-        Logger.message("T13NE_Music: generating Main Theme from components...");
+        // Generate a unique hash for the current components to enable caching
+        const componentHash = this.activeComponents
+            .map(c => c.name || c.id || 'unknown')
+            .sort()
+            .join('|');
+        
+        let hash = 0;
+        for (let i = 0; i < componentHash.length; i++) {
+            hash = ((hash << 5) - hash) + componentHash.charCodeAt(i);
+            hash |= 0;
+        }
+        const trackId = `theme_${Math.abs(hash)}`;
 
+        if (this.trackCache.has(trackId) && !this.needsRegeneration) {
+            Logger.message(`T13NE_Music: Using cached theme ''`);
+            return this.trackCache.get(trackId);
+        }
+
+        Logger.message("T13NE_Music: Generating Main Theme (Async)...");
         const trackData = await this.themeGenerator.createMainTheme(this.activeComponents, gameEngine, this.needsRegeneration);
         if (!trackData) return;
         
-        this.saveTrack(trackName, trackData);
+        this.trackCache.set(trackId, trackData);
+        this.saveTrack(trackId, trackData);
         this.needsRegeneration = false;
         return trackData;
     }
@@ -260,7 +276,7 @@ class T13NE_Music {
         const trackData = await this.themeGenerator.createWormholeRacersTheme();
         if (!trackData) return;
         this.saveTrack(trackName, trackData);
-        Logger.message(`T13NE_Music: Saved track '${trackName}'.`);
+        Logger.message(`T13NE_Music: Saved track ''.`);
         return trackData;
     }
 
@@ -271,7 +287,7 @@ class T13NE_Music {
         const trackData = await this.themeGenerator.createT13NETheme();
         if (!trackData) return;
         this.saveTrack(trackName, trackData);
-        Logger.message(`T13NE_Music: Saved track '${trackName}'.`);
+        Logger.message(`T13NE_Music: Saved track ''.`);
         return trackData;
     }
 
@@ -295,11 +311,11 @@ class T13NE_Music {
                 if (response.ok) {
                     const midiData = await response.json(); // Assuming JSON MIDI format
                     this.manifestManager.addToManifest('midi', name, { data: midiData, url: url });
-                    Logger.message(`T13NE_Music: Loaded MIDI data for '${name}'.`);
+                    Logger.message(`T13NE_Music: Loaded MIDI data for ''.`);
                     return midiData;
                 }
              } catch (e) {
-                Logger.error(`T13NE_Music: Failed to load MIDI '${name}' from ${url}`, e);
+                Logger.error(`T13NE_Music: Failed to load MIDI '' from `, e);
                 return null;
              }
         }
@@ -422,10 +438,18 @@ class T13NE_Music {
 
             if (nextStepTime < now - 0.1) {
                 const missedSeconds = now - nextStepTime;
-                const missedSteps = Math.floor(missedSeconds / stepTime);
-                nextStepTime = now + 0.02;
-                this.currentStep = (this.currentStep + missedSteps) % safeTotalSteps;
-                Logger.warn(`T13NE_Music: Sync jump! Advanced  steps to recover from lag.`);
+                
+                // FIX: If gap is huge (e.g. > 2s), assume tab backgrounding/pause and just reset without warning/catchup
+                if (missedSeconds > 2.0) {
+                     nextStepTime = now + 0.02;
+                     this.currentStep = (this.currentStep + 1) % safeTotalSteps; // Just move to next
+                     Logger.message(`T13NE_Music: Large time gap detected (${missedSeconds.toFixed(2)}s). Resyncing scheduler.`);
+                } else {
+                    const missedSteps = Math.floor(missedSeconds / stepTime);
+                    nextStepTime = now + 0.02;
+                    this.currentStep = (this.currentStep + missedSteps) % safeTotalSteps;
+                    Logger.warn(`T13NE_Music: Sync jump! Advanced  steps to recover from lag.`);
+                }
             }
 
             let iterations = 0;

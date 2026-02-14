@@ -309,8 +309,8 @@ export class SpeciesGenerator {
             return null;
         }
 
-        // Use a simple spread that draws 3 cards. 'hook' is a known 3-card spread.
-        const spread = CardsAPI.getCardSpread('hook');
+        // Use the 'species' spread which draws 3 cards.
+        const spread = CardsAPI.getCardSpread('species');
         if (!spread || !spread.cards || spread.cards.length < 3) {
             Logger.warn("SpeciesGenerator: Failed to draw enough cards for body plan generation.");
             return null;

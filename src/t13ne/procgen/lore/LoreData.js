@@ -39,11 +39,12 @@ class LoreDataManager {
             }
 
             const contentType = response.headers.get('content-type');
-            if (!response.ok || !contentType || !contentType.includes('application/json')) {
-                const statusText = response.ok
-                    ? `but received Content-Type: ${contentType || 'unknown'}`
-                    : `${response.status} ${response.statusText}`;
-                throw new Error(`Failed to fetch valid JSON from ${attemptedUrl}. Server responded with status ${statusText}`);
+            if (!response.ok) {
+                throw new Error(`Failed to fetch ${attemptedUrl}: ${response.status} ${response.statusText}`);
+            }
+            
+            if (contentType && !contentType.includes('application/json')) {
+                Logger.message(`WARN: LoreDataManager: ${attemptedUrl} served with content-type '${contentType}', expected 'application/json'. Attempting to parse anyway.`);
             }
 
             // Clone the response to read its body as text without consuming it.
@@ -52,7 +53,11 @@ class LoreDataManager {
                 throw new Error(`Failed to load JSON from ${attemptedUrl}: Response body is empty.`);
             }
 
-            return response.json(); // Now it's safe to parse.
+            try {
+                return await response.json();
+            } catch (e) {
+                throw new Error(`JSON Parse Error in ${attemptedUrl}: ${e.message}`);
+            }
         };
 
         // Return a promise that resolves when all data is loaded
@@ -60,6 +65,10 @@ class LoreDataManager {
             try {
                 // 1. Load the manifest file first.
                 const manifest = await loadJSON(MANIFEST_PATH);
+                
+                if (!manifest || !Array.isArray(manifest.files)) {
+                    throw new Error(`Manifest at ${MANIFEST_PATH} is invalid or missing 'files' array.`);
+                }
                 this.dataFiles = manifest.files;
 
                 // Initialize properties to null based on the manifest.

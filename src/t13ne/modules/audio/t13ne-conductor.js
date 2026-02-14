@@ -115,7 +115,7 @@ class T13NE_Conductor {
         if (!this.audioDirector) return;
 
         const level = data.level !== undefined ? data.level : 0;
-        Logger.message(`T13NE_Conductor: Adjusting to Tension Level `);
+        Logger.message(`T13NE_Conductor: Adjusting to Tension Level ${level}`);
 
         // Map Tension Level (0-11) to Mood and Intensity
         // 0-2: Calm / Neutral

@@ -1,4 +1,4 @@
-﻿import PRNG from "../systems/t13ne-prng.js";
+﻿﻿import PRNG from "../systems/t13ne-prng.js";
 import CodexLoader from "../codex/CodexLoader.js"; // Import CodexLoader
 
 class Card {
@@ -129,7 +129,7 @@ class Deck {
         for (const { cards } of this.sourceDecks.values()) {
             this.currentDeck.push(...cards);
         }
-        console.log(`Current deck rebuilt with ${this.currentDeck.length} cards.`);
+        // console.log(`Current deck rebuilt with ${this.currentDeck.length} cards.`);
     }
 
     _fisherYatesShuffle() {
@@ -203,7 +203,7 @@ class Deck {
             const shuffleFunc = this.shufflePatterns[pattern];
             if (shuffleFunc) {
                 shuffleFunc.call(this); // Call the shuffle function in the context of the Deck instance
-                console.log(`Deck shuffled using ${pattern} pattern.`);
+                // console.log(`Deck shuffled using ${pattern} pattern.`);
             } else {
                 console.warn(`Unknown shuffle pattern: ${pattern}. Skipping.`);
             }
@@ -232,7 +232,7 @@ class Deck {
             cards = [cards];
         }
         this.discardPile.push(...cards);
-        console.log(`Discarded ${cards.length} card(s). Discard pile size: ${this.discardPile.length}`);
+        // console.log(`Discarded ${cards.length} card(s). Discard pile size: ${this.discardPile.length}`);
     }
 
     /**
@@ -262,10 +262,3 @@ const AllSuits = Object.freeze({
 });
 
 export { Card, Deck, AllSuits };
-
-
-
-
-
-
-

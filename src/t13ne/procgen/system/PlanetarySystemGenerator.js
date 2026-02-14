@@ -143,7 +143,7 @@ export class PlanetarySystemGenerator {
                 planetName = systemData.homeWorldName;
                 statusText = `Home World (${systemData.tech.split(' ')[0]})`;
             } else {
-                planetName = this.generateGenericPlanetName(nameSeed, innerSeed);
+                planetName = this.generateGenericPlanetName(nameSeed, innerSeed, systemData);
                 statusText = classificationData.type.includes('Giant') ? 'Gas Giant' : 'Uncolonized World';
 
                 if (systemData.speciesKey === 'SPECIES_FIRST_RELIC' && classificationData.description) {
@@ -560,13 +560,43 @@ export class PlanetarySystemGenerator {
         return classification;
     }
 
-    generateGenericPlanetName(n1, n2) {
+    generateGenericPlanetName(n1, n2, systemData) {
         const funcName = 'PlanetarySystemGenerator.generateGenericPlanetName';
         Logger.start(funcName);
-        // Use the new, robust name generator to create a planet name.
-        // We combine the noise values to create a seed.
+        
         const seed = `${n1}-${n2}`;
-        const name = this.nameGenerator.generate('PLANET_NAMES', seed);
+        let name;
+
+        // Determine if this is a colony world (Human or similar) or an Alien world
+        const species = systemData?.speciesKey || 'Unknown';
+        const isHuman = species === 'SPECIES_HUMANS' || species === 'Humans';
+
+        if (isHuman) {
+            // Colony Naming Logic
+            if (n1 < 0.25) {
+                // Homeworld Reference (New [Place])
+                const homeworld = systemData?.homeWorldName || "Terra";
+                // Strip "New" if already present to avoid "New New Terra"
+                const base = homeworld.replace(/^New\s+/, '');
+                name = `New ${base}`; 
+            } else if (n1 < 0.5) {
+                // Earth Location (Country/City/State)
+                name = this.nameGenerator.generateEarthLocation(seed);
+            } else if (n1 < 0.7) {
+                // Founder Name
+                name = this.nameGenerator.generateFounderName(seed);
+            } else if (n1 < 0.85) {
+                // Feature (Irony handled by description usually, but name can be descriptive)
+                name = this.nameGenerator.generateDescriptiveName(seed);
+            } else {
+                // Classic Sci-Fi / Latin
+                name = this.nameGenerator.generate('PLANET_NAMES', seed);
+            }
+        } else {
+            // Alien Naming - Run through translator (simulated by Alien Name grammar)
+            name = this.nameGenerator.generateAlienName(seed);
+        }
+
         Logger.end(funcName, name);
         return name;
     }

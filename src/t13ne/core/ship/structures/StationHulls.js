@@ -26,9 +26,9 @@ export const generateStation = (context, hullType) => {
         const endX = r - (tubeR * 0.5); // End inside rim (Tube radius is tubeR)
         
         const spokeLen = endX - startX;
-        const centerX = startX + spokeLen / 2;
+        const centreX = startX + spokeLen / 2;
         
-        const spokePos = [centerX, 0, 0];
+        const spokePos = [centreX, 0, 0];
         const spokeRot = [0, 0, Math.PI/2];
         
         // Adjust for Y axis orientation if needed, but attachComponent handles radial rotation

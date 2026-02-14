@@ -25,7 +25,10 @@ export class SystemGenerator {
         const T13NE = this.pluginManager?.getApi('T13', 'T13NE');
         const T13NE_PRNG = T13NE?.getModule('PRNG');
         if (n1 === undefined && T13NE_PRNG) {
-            const seed = `${star.x},${star.y},${star.z}-system-lore`;
+            // Include galaxy seed or a salt if available to prevent "Pell Drift" repetition on fixed coordinates
+            const galaxySeed = galaxyParams?.seed || '';
+            const salt = galaxyParams?.salt || ''; 
+            const seed = `${star.x},${star.y},${star.z}-${galaxySeed}-${salt}-system-lore`;
             const prng = T13NE_PRNG.create(seed);
             n1 = prng.nextDouble();
             n2 = prng.nextDouble();
@@ -103,7 +106,12 @@ export class SystemGenerator {
         Logger.message(`${funcName}: Tech Level: ${techString}`);
 
         // Generate a technobabble flavor for this system's specific tech advancement
-        const techFlavor = await this.scienceGenerator.generateTechnobabble(chiLevel, n3);
+        let techFlavor = "Unknown Tech";
+        try {
+            techFlavor = await this.scienceGenerator.generateTechnobabble(chiLevel, n3);
+        } catch (e) {
+            Logger.warn(`${funcName}: ScienceGenerator failed.`, e);
+        }
 
         // 3. Narrative Generation
         Logger.message(`${funcName}: Step 3 - Narrative Generation`);
@@ -175,6 +183,7 @@ export class SystemGenerator {
         speciesLore = this.speciesGenerator.deriveTraitsFromHarmonics(namesToAnalyze, speciesLore);
         speciesLore.scientificName = scientificName;
 
+        await new Promise(r => setTimeout(r, 0)); // Yield before card operations
         // 2.5 Society Generation
         Logger.message(`${funcName}: Step 4 - Society Generation`);
         let society;
@@ -199,9 +208,7 @@ export class SystemGenerator {
                 }
             }
         }
-        if (isRelicSystem) {
-            society += " (Relic Site)";
-        }
+        
         if (inhabitants.length > 1) {
             society += " (Multi-species)";
         }
@@ -215,6 +222,7 @@ export class SystemGenerator {
             eventDescription += `A notable historical period in this system was an 'Age of ${historicalEvent.title}', characterized by: ${historicalEvent.description}`;
         }
 
+        await new Promise(r => setTimeout(r, 0)); // Yield
         // 2.7 NPC Generation
         const npcData = this._generateNPCsFromCards();
         if (npcData) {
@@ -229,12 +237,23 @@ export class SystemGenerator {
             const numExtras = Math.floor(n3 * 3) + 1;
             for (let i = 0; i < numExtras; i++) {
                 const extraType = n4 > 0.9 ? 'Cast' : 'Chorus'; // Mostly Chorus, occasional Cast
-                extras.push(await this.characterGenerator.generateCharacter(extraType));
+                try {
+                    extras.push(await this.characterGenerator.generateCharacter(extraType));
+                } catch (e) {
+                    Logger.warn(`${funcName}: CharacterGenerator failed for extra.`, e);
+                }
             }
         }
 
         Logger.message(`${funcName}: Step 5 - Description & Naming`);
-        const corporatePresence = this.corporationGenerator.determineCorporatePresence(star, n4);
+        let corporatePresence = null;
+        if (this.corporationGenerator) {
+            try {
+                corporatePresence = this.corporationGenerator.determineCorporatePresence(star, n4);
+            } catch (e) {
+                Logger.warn(`${funcName}: CorporationGenerator failed.`, e);
+            }
+        }
 
         // Generate the main system description, now focusing on high-level details.
         let numPlanets = galaxyParams.numPlanets;
@@ -346,12 +365,13 @@ export class SystemGenerator {
         }
 
         const card = spread.cards[0].card;
-        const historyData = card?.data?.Yarn;
+        // Use Age data for historical events as requested
+        const ageData = card?.data?.Age;
 
-        if (historyData && historyData.History && historyData.History_Description) {
+        if (ageData && ageData.Type && ageData.Description) {
             return {
-                title: historyData.History,
-                description: historyData.History_Description
+                title: ageData.Type,
+                description: ageData.Description
             };
         }
 
@@ -374,7 +394,7 @@ export class SystemGenerator {
 
         if (yarnData && yarnData.Significator && yarnData.Significator.Character) {
             return {
-                type: yarnData.Name || card.name,
+                type: yarnData.Yarn_Name || card.name,
                 description: yarnData.Significator.Character
             };
         }
@@ -396,7 +416,7 @@ export class SystemGenerator {
         }
 
         const card = spread.cards[0].card;
-        const ageData = card?.data?.Lea?.Age;
+        const ageData = card?.data?.Age;
 
         if (ageData && ageData.Type) {
             const adjList = LoreData.society?.SOCIAL_ADJECTIVES || [];

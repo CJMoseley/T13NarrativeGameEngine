@@ -70,6 +70,64 @@ export class NameGenerator {
         return this._capitalize(name);
     }
 
+    /**
+     * Generates a name using syllabic construction for infinite variety.
+     * @param {string|number} seed - Seed for deterministic generation.
+     * @param {string} flavor - 'alien', 'ancient', 'harsh', 'soft', 'tech'.
+     * @returns {string} The generated name.
+     */
+    generateSyllabicName(seed, flavor = 'alien') {
+        let prng;
+        const T13NE = this.pluginManager?.getApi('T13', 'T13NE');
+        const T13NE_PRNG = T13NE?.getModule('PRNG');
+        if (T13NE_PRNG) {
+            prng = T13NE_PRNG.create(seed);
+        } else {
+            prng = { nextDouble: () => Math.random() };
+        }
+
+        const sylls = {
+            alien: {
+                start: ['Kr', 'X', 'Z', 'Q', 'V', 'Th', 'Ph', 'Ch', 'J', 'K', 'Zh', 'G', 'Xy', 'Qu'],
+                mid: ['a', 'e', 'i', 'o', 'u', 'y', 'aa', 'ae', 'uo', 'oa', 'ee', 'ai', 'ou'],
+                end: ['x', 'z', 'k', 'r', 'n', 'th', 's', 'v', 'g', 'sh', 'ng', 'qs']
+            },
+            ancient: {
+                start: ['An', 'Bel', 'Cyr', 'Dor', 'El', 'Fa', 'Gil', 'Hel', 'In', 'Jur', 'Kal', 'Lor', 'Mer', 'Nyl'],
+                mid: ['a', 'e', 'i', 'o', 'u', 'ia', 'io', 'iu', 'ae', 'eo'],
+                end: ['us', 'um', 'is', 'a', 'os', 'or', 'on', 'as', 'es', 'ax']
+            },
+            harsh: {
+                start: ['Kr', 'Gr', 'Tr', 'Br', 'Dr', 'K', 'G', 'T', 'D', 'P', 'V', 'R', 'Str', 'Vl'],
+                mid: ['a', 'o', 'u', 'ar', 'or', 'ur', 'ir', 'ok', 'uk'],
+                end: ['k', 'g', 't', 'd', 'p', 'rk', 'rg', 'rd', 'kt', 'gn', 'ch']
+            },
+            soft: {
+                start: ['L', 'S', 'F', 'H', 'V', 'W', 'M', 'N', 'Th', 'Sh', 'El', 'Al', 'Si', 'Fe'],
+                mid: ['a', 'e', 'i', 'o', 'u', 'ea', 'ia', 'ai', 'ei', 'ie', 'ae'],
+                end: ['l', 's', 'n', 'm', 'th', 'h', 'r', 'ss', 'll', 'sh']
+            }
+        };
+
+        const set = sylls[flavor] || sylls.alien;
+        const length = 2 + Math.floor(prng.nextDouble() * 2); // 2-3 syllables
+        let name = '';
+        
+        for (let i = 0; i < length; i++) {
+            const s = set.start[Math.floor(prng.nextDouble() * set.start.length)];
+            const m = set.mid[Math.floor(prng.nextDouble() * set.mid.length)];
+            name += s + m;
+            
+            // Chance for end consonant, higher on last syllable
+            if (prng.nextDouble() > (i === length - 1 ? 0.2 : 0.8)) {
+                const e = set.end[Math.floor(prng.nextDouble() * set.end.length)];
+                name += e;
+            }
+        }
+        
+        return this._capitalize(name.toLowerCase());
+    }
+
     _capitalize(str) {
         return str.replace(/\b\w/g, char => char.toUpperCase());
     }
@@ -105,27 +163,60 @@ export class NameGenerator {
         return this.generate('PROCEDURAL_LATIN_NAMES', seed);
     }
 
-    generateAlienName(seed) {
-        // Check if the specific grammar exists
-        if (LoreData.naming && LoreData.naming['ALIEN_NAMES']) {
-            return this.generate('ALIEN_NAMES', seed);
+    generateEarthLocation(seed) {
+        // Try to use specific grammar if available, otherwise fallback to Latin/Generic
+        if (LoreData.naming['EARTH_LOCATIONS']) {
+            return this.generate('EARTH_LOCATIONS', seed);
         }
+        // Fallback list
+        const locations = ["Nova Scotia", "Albion", "Columbia", "Victoria", "Arcadia", "Britannia", "Gallia", "Hibernia", "Caledonia", "Cambria", "Alexandria", "Carolina", "Georgia", "Virginia", "Maryland", "Pennsylvania", "York", "Jersey", "Hampshire", "London", "Paris", "Berlin", "Rome", "Athens", "Sparta", "Troy", "Carthage", "Memphis", "Thebes", "Babylon"];
+        const prng = this.pluginManager?.getApi('T13', 'T13NE')?.getModule('PRNG')?.create(seed) || { nextDouble: () => Math.random() };
+        const base = locations[Math.floor(prng.nextDouble() * locations.length)];
+        
+        // Add suffix occasionally
+        if (prng.nextDouble() > 0.7) {
+            const suffixes = ["IV", "Prime", "Secundus", "Major", "Minor", "Colony"];
+            return `${base} ${suffixes[Math.floor(prng.nextDouble() * suffixes.length)]}`;
+        }
+        return base;
+    }
 
-        // Fallback: Construct from prefixes/suffixes/joiners if available
-        const prefixes = LoreData.naming.ALIEN_PREFIX || ['Xen'];
-        const suffixes = LoreData.naming.ALIEN_SUFFIX || ['o'];
-        const joiners = LoreData.naming.ALIEN_JOINERS || ['-'];
+    generateFounderName(seed) {
+        // Use generic human names or specific founder list
+        const prng = this.pluginManager?.getApi('T13', 'T13NE')?.getModule('PRNG')?.create(seed) || { nextDouble: () => Math.random() };
+        const names = ["Drake", "Hudson", "Carter", "Franklin", "Vega", "Thorne", "Bishop", "Mercer", "Vance", "Halloway", "Brand", "Ross", "Finch", "Cross", "Stark"];
+        const name = names[Math.floor(prng.nextDouble() * names.length)];
+        
+        const suffixType = prng.nextDouble();
+        if (suffixType < 0.4) return `${name}'s World`;
+        if (suffixType < 0.7) return `${name}'s Landing`;
+        if (suffixType < 0.9) return `${name}'s Hope`;
+        return `${name}'s Folly`; // Irony
+    }
 
+    generateDescriptiveName(seed) {
+        if (LoreData.naming['DESCRIPTIVE_PLANET_NAMES']) {
+            return this.generate('DESCRIPTIVE_PLANET_NAMES', seed);
+        }
+        const names = ["Red Rock", "Emerald", "Sapphire", "Onyx", "Dust", "Rust", "Ice", "Frost", "Magma", "Cinder", "Verdant", "Azure", "Midnight", "Twilight", "Dawn", "Horizon", "Reach", "Haven", "Sanctuary", "Paradise", "Eden", "Hell", "Inferno", "Abyss", "Void"];
+        const prng = this.pluginManager?.getApi('T13', 'T13NE')?.getModule('PRNG')?.create(seed) || { nextDouble: () => Math.random() };
+        return names[Math.floor(prng.nextDouble() * names.length)];
+    }
+
+    generateAlienName(seed) {
         let prng;
         const T13NE = this.pluginManager?.getApi('T13', 'T13NE');
         const T13NE_PRNG = T13NE?.getModule('PRNG');
         prng = T13NE_PRNG ? T13NE_PRNG.create(seed) : { nextDouble: () => Math.random() };
 
-        const prefix = prefixes[Math.floor(prng.nextDouble() * prefixes.length)];
-        const suffix = suffixes[Math.floor(prng.nextDouble() * suffixes.length)];
-        const joiner = joiners[Math.floor(prng.nextDouble() * joiners.length)];
+        // Check if the specific grammar exists
+        // 50% chance to use grammar if available, otherwise use syllabic for variety
+        if (LoreData.naming && LoreData.naming['ALIEN_NAMES'] && prng.nextDouble() > 0.5) {
+            return this.generate('ALIEN_NAMES', seed);
+        }
 
-        return this._capitalize(`${prefix}${joiner}${suffix}`);
+        // Fallback to infinite syllabic generation
+        return this.generateSyllabicName(seed, 'alien');
     }
 
     generateSpeciesName(speciesKey, seed) {
@@ -137,9 +228,26 @@ export class NameGenerator {
         }
     }
 
-    async generateSystemName(n1, n2, n3) {
+    async generateSystemName(n1, n2, n3, nearbySpecies = []) {
         // The noise values are used as a seed. We combine them for a more unique seed.
         const seed = `${n1}-${n2}-${n3}`;
+        const prng = this.pluginManager?.getApi('T13', 'T13NE')?.getModule('PRNG')?.create(seed) || { nextDouble: () => Math.random() };
+
+        // 50% chance to use syllabic generation for unique system names
+        if (prng.nextDouble() < 0.5) {
+            let flavor = 'alien';
+            if (nearbySpecies && nearbySpecies.length > 0) {
+                const sp = nearbySpecies[0].toLowerCase();
+                if (sp.includes('draco') || sp.includes('orc')) flavor = 'harsh';
+                else if (sp.includes('elf') || sp.includes('asari')) flavor = 'soft';
+                else if (sp.includes('ancient')) flavor = 'ancient';
+            } else {
+                const flavors = ['alien', 'ancient', 'harsh', 'soft'];
+                flavor = flavors[Math.floor(prng.nextDouble() * flavors.length)];
+            }
+            return this.generateSyllabicName(seed, flavor);
+        }
+
         return this.generate('SYSTEM_NAMES', seed);
     }
 

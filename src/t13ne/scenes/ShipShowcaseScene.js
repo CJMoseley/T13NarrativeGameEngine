@@ -101,12 +101,12 @@ export class ShipShowcaseScene extends Scene {
             }
         }
         
-
         // Start hull generation in background immediately
         onProgress({ status: 'Generating procedural hull...', percent: 0.6 });
         const styleConfig = { method: style, plating: (style === 'INDUSTRIAL'), blendStrength: (style === 'ORGANIC' ? 1.5 : 0.1) };
         // Pass 'this.scene' so wireframes appear immediately
         this.hullGenerationPromise = this.shipFactory.generateProceduralShipAsync(shipComponents, styleConfig, null, this.scene);
+        onProgress({ status: 'Ship data ready.', percent: 1.0 });
     }
 
     createUI() {
@@ -138,8 +138,18 @@ export class ShipShowcaseScene extends Scene {
         this.uiContainer.appendChild(this.descElement);
     }
 
+    async generateShipVisuals() {
+        if (!this.shipData) return;
+        const { shipComponents, style } = this.shipData;
+        
+        const styleConfig = { method: style, plating: (style === 'INDUSTRIAL'), blendStrength: (style === 'ORGANIC' ? 1.5 : 0.1) };
+        // Pass 'this.scene' so wireframes appear immediately
+        this.hullGenerationPromise = this.shipFactory.generateProceduralShipAsync(shipComponents, styleConfig, null, this.scene);
+    }
+
     async prepareRevealSequence() {
         // Wait for the ship group to be generated (it contains the meshes)
+        if (!this.hullGenerationPromise) return;
         const shipGroup = await this.hullGenerationPromise;
         
         if (!this.isActive) return; // Stop if scene unloaded

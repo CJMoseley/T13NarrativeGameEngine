@@ -113,62 +113,94 @@ export const generateSideCockpit = (context, parentCompUsage, side = 'random', p
     const { random, attachComponent, components, getSurfacePoint } = context;
 
     const cockpitSide = (side === 'random') ? (random() > 0.5 ? 1 : -1) : (side === 'right' ? 1 : -1);
+
+    // Find largest fuselage component to attach to
+    let targetComp = null;
+    let maxVol = 0;
+    const candidates = components.filter(c => {
+        const u = (c.usage || '').toLowerCase();
+        return u.includes('fuselage') || u.includes('hull') || u.includes('spine') || u.includes('monolith') || u.includes('ring') || u.includes('rim') || u.includes('torus');
+    });
+    candidates.forEach(c => {
+        const d = c.dims;
+        const s = c.scale || [1,1,1];
+        const vol = (d.width || d.radius || d.radiusTop || 1) * (s[0]||1) * (d.height || d.radius || 1) * (s[1]||1) * (d.depth || d.length || 1) * (s[2]||1);
+        if (vol > maxVol) { maxVol = vol; targetComp = c; }
+    });
     
+    // Target Center
+    const targetX = targetComp ? targetComp.pos[0] : 0;
+    const targetY = targetComp ? targetComp.pos[1] : 0;
+    const targetZ = targetComp ? targetComp.pos[2] : 0;
+
     const radius = parentRadius;
     const height = parentHeight;
 
-    // Angle: Swept Forward to connect to the back of the cockpit
-    // 30 to 60 degrees from lateral
+    // 1. Determine Cockpit Position (The "End" of the corridor)
+    // Move out from the target component
     const angleDeg = 30 + random() * 30;
     const angleRad = angleDeg * (Math.PI / 180);
-    
-    const corridorLen = radius * 0.8;
-    const corridorRadius = height * 0.25;
+    const slopeY = (random() > 0.8) ? (random() - 0.5) * 0.5 : 0;
+
+    const armLength = radius * (1.5 + random() * 0.5); // Distance from center of hull to center of cockpit rear sphere
     
     const dirX = Math.cos(angleRad) * cockpitSide;
-    const dirZ = Math.sin(angleRad); // Positive Z to sweep forward (so corridor hits back of cockpit)
+    const dirY = slopeY;
+    const dirZ = Math.sin(angleRad); 
     
-    let startPoint = new THREE.Vector3(dirX * radius * 0.6, 0, dirZ * radius * 0.6);
+    const offsetVector = new THREE.Vector3(dirX, dirY, dirZ).normalize().multiplyScalar(armLength);
+    const cockpitPos = new THREE.Vector3(targetX, targetY, targetZ).add(offsetVector);
+
+    // 2. Find Attachment Point on Hull (The "Start" of the corridor)
+    const rayDir = new THREE.Vector3(targetX, targetY, targetZ).sub(cockpitPos).normalize();
+    const rayOrigin = cockpitPos.clone().add(rayDir.clone().multiplyScalar(0.1)); // Start slightly towards hull
+    
+    let startPoint = new THREE.Vector3(targetX, targetY, targetZ); // Fallback
 
     if (getSurfacePoint) {
-        // Raycast to find hull surface
-        const rayOrigin = [dirX * (radius + 20), 0, 0]; // Cast from side
-        const rayDir = [-dirX, 0, 0];
-        const hit = getSurfacePoint(components, rayOrigin, rayDir, parentCompUsage);
+        // Use the specific usage of the target if found, otherwise generic list
+        const hit = getSurfacePoint(components, rayOrigin, rayDir, targetComp ? [targetComp.usage] : parentCompUsage);
         if (hit) {
-             // Start at surface, embed slightly
-             startPoint.set(hit.x - (dirX * 0.5), hit.y, hit.z);
+             startPoint.copy(hit);
+        } else {
+            // Fallback: intersection with estimated radius
+            startPoint = new THREE.Vector3(targetX, targetY, targetZ).sub(rayDir.multiplyScalar(radius));
         }
     }
 
-    // 1. Corridor (Cylinder)
-    const direction = new THREE.Vector3(dirX, 0, dirZ).normalize();
-    const endPoint = startPoint.clone().add(direction.clone().multiplyScalar(corridorLen));
-    const corridorPos = startPoint.clone().add(endPoint).multiplyScalar(0.5);
+    // 3. Place Corridor (Cylinder)
+    const corridorVec = new THREE.Vector3().subVectors(cockpitPos, startPoint);
+    const dist = corridorVec.length();
+    
+    const corridorRadius = height * 0.25;
+    const corridorLen = dist;
+    
+    // Embed into hull slightly
+    const embedStart = corridorRadius; // Embed into hull
+    const cylHeight = corridorLen + embedStart;
+    
+    // Center of cylinder: cockpitPos - (direction * height/2)
+    const cylDir = corridorVec.clone().normalize();
+    const corridorPos = cockpitPos.clone().sub(cylDir.clone().multiplyScalar(cylHeight / 2));
     
     // Use a quaternion to correctly align the cylinder's Y-axis with the direction vector
     const up = new THREE.Vector3(0, 1, 0);
-    const quat = new THREE.Quaternion().setFromUnitVectors(up, direction);
+    const quat = new THREE.Quaternion().setFromUnitVectors(up, cylDir);
     const euler = new THREE.Euler().setFromQuaternion(quat, 'YXZ');
 
-    attachComponent('cockpit_corridor', [corridorPos.x, corridorPos.y, corridorPos.z], [euler.x, euler.y, euler.z], 'cylinder', 
-        { radiusTop: corridorRadius, radiusBottom: corridorRadius, height: corridorLen + 0.2 });
+    attachComponent('fuselage_corridor', [corridorPos.x, corridorPos.y, corridorPos.z], [euler.x, euler.y, euler.z], 'cylinder', 
+        { radiusTop: corridorRadius, radiusBottom: corridorRadius, height: cylHeight });
     
-    // 2. Cockpit (Capsule)
+    // 4. Place Cockpit (Capsule)
     // Aligned to Z axis (Forward).
-    // Positioned so its REAR intersects the endPoint of the corridor.
-    const cockpitRadius = corridorRadius * 1.2;
-    const cockpitLength = corridorRadius * 3.0; // Length of cylindrical part
+    // Rear Sphere Center at cockpitPos.
+    const cockpitRadius = corridorRadius * 1.6; // Increased to 1.6x to ensure corridor cap (1.414x at corners) is contained
+    const cockpitLength = corridorRadius * 4.0; // Length of cylindrical part
     
-    // Capsule total length along Z is length + 2*radius.
-    // Center is (0,0,0). Rear tip is at -Z (if rotated X 90).
-    // Rear Tip Z relative to center = -(length/2 + radius).
-    // We want Rear Tip to be at endPoint.
-    // So Center.z = endPoint.z + (length/2 + radius).
-    // Embed slightly (-0.5) to ensure overlap.
-    const offsetZ = (cockpitLength / 2) + cockpitRadius - 0.5;
+    // Capsule Center Z = RearSphereZ + length/2
+    const offsetZ = (cockpitLength / 2);
     
-    attachComponent('cockpit', [endPoint.x, endPoint.y, endPoint.z + offsetZ], [Math.PI/2, 0, 0], 'capsule', 
+    attachComponent('cockpit', [cockpitPos.x, cockpitPos.y, cockpitPos.z + offsetZ], [Math.PI/2, 0, 0], 'capsule', 
         { radius: cockpitRadius, length: cockpitLength });
 };
 
@@ -310,18 +342,18 @@ export const generateCatamaran = (context) => {
         const attachZ = nacelleZ + nacelleLen/2 - (nacelleLen / 3);
         const pylonEnd = new THREE.Vector3(nacelleX, nacelleY, attachZ);
         
-        const pylonCenter = new THREE.Vector3().addVectors(pylonStart, pylonEnd).multiplyScalar(0.5);
+        const pylonCentre = new THREE.Vector3().addVectors(pylonStart, pylonEnd).multiplyScalar(0.5);
         const pylonActualLen = pylonStart.distanceTo(pylonEnd);
         
         // Orient Pylon: Z axis = Length (to target), Y axis = Chord (Forward), X axis = Thickness
         // Use lookAt with Up vector (0,0,1) to try and align local Y with Global Z (Forward)
         const m = new THREE.Matrix4();
-        m.lookAt(pylonCenter, pylonEnd, new THREE.Vector3(0, 0, 1));
+        m.lookAt(pylonCentre, pylonEnd, new THREE.Vector3(0, 0, 1));
         const pylonRotEuler = new THREE.Euler().setFromRotationMatrix(m);
         const pylonRot = [pylonRotEuler.x, pylonRotEuler.y, pylonRotEuler.z];
 
         // Box: Width=Thickness, Height=Chord, Depth=Length
-        attachComponent('pylon', [pylonCenter.x, pylonCenter.y, pylonCenter.z], pylonRot, 'box', 
+        attachComponent('pylon', [pylonCentre.x, pylonCentre.y, pylonCentre.z], pylonRot, 'box', 
             { width: 0.3, height: engRadius * 0.6, depth: pylonActualLen }, 'REFLECTIVE');
 
         // Nacelle - Renamed to warp_nacelle to avoid thrusters

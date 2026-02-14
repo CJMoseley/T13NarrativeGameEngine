@@ -28,12 +28,16 @@ export class StellarSystemScene extends Scene {
 
         // Intro Sequence State
         this.introActive = true;
+        this.introPhase = 0; // 0: Flyby, 1: Homeworld
         this.introTime = 0;
         this.homeWorldObj = null;
+        this.flybyObj = null;
+        this.phaseStartPos = null; // Track start position for curves
         this.introStartPos = new THREE.Vector3(0, 5000, 200000); // Start much further out
         // Floating Origin: The Virtual Camera tracks the "Real" position in the simulation
         this.virtualCameraPosition = new THREE.Vector3(0, 5000, 50000); // Start far out
         this.virtualCameraTarget = new THREE.Vector3(0, 0, 0);
+        this.currentLookAt = new THREE.Vector3(0, 0, -1); // Track current look direction for smoothing
         this.COMPRESSION_C = 1000.0; // Compression constant. Larger = less compression close up.
         
         this.hudElement = null;
@@ -50,6 +54,7 @@ export class StellarSystemScene extends Scene {
             speed: 100.0 // Base movement speed
         };
 
+        this.introPath = []; // Store precalculated path
         this.raycaster = new THREE.Raycaster();
         this.mouse = new THREE.Vector2();
         this.onMouseClick = this.onMouseClick.bind(this);
@@ -76,15 +81,16 @@ export class StellarSystemScene extends Scene {
         this.scene.background = new THREE.Color(0x000000);
         
         // Lighting
-        const ambient = new THREE.AmbientLight(0x333333);
+        const ambient = new THREE.AmbientLight(0x666666); // Increased ambient to prevent grey/black planets
         this.scene.add(ambient);
         
-        // Sun Light
-        const sunLight = new THREE.PointLight(0xffffff, 2.0, 0, 0); // Infinite range, no decay
-        this.scene.add(sunLight);
+        // Sun Light - Will be positioned in update to match Star visual position
+        this.sunLight = new THREE.PointLight(0xffffff, 2.0, 0, 0); // Infinite range, no decay
+        this.scene.add(this.sunLight);
 
         // Camera Headlamp (ensure planets are visible from all angles in orrery view)
-        const headlamp = new THREE.DirectionalLight(0xffffff, 0.5);
+        // Reduced intensity significantly to allow for proper day/night cycles and matching transition
+        const headlamp = new THREE.DirectionalLight(0xffffff, 0.05);
         headlamp.position.set(0, 0, 1);
         this.activeCamera.add(headlamp);
 
@@ -127,7 +133,16 @@ export class StellarSystemScene extends Scene {
             const maxDist = this.objects.reduce((max, obj) => Math.max(max, obj.orbitRadius || 0), 0);
             this.introStartPos.set(0, maxDist * 0.2, maxDist * 1.5); // Start well outside
             this.virtualCameraPosition.copy(this.introStartPos); // Set initial position
+            
+            // Identify Flyby Target (Random planet that isn't homeworld)
+            const candidates = this.objects.filter(o => o.type === 'planet' && o !== this.homeWorldObj);
+            if (candidates.length > 0) {
+                this.flybyObj = candidates[Math.floor(Math.random() * candidates.length)];
+            }
         }
+
+        // Precalculate the flight path for stability and visualization
+        this.introPath = this.generateIntroPath();
 
         // Setup Orrery for PiP (Picture in Picture)
         this.orreryScene = new OrreryScene(this.viewManager, {
@@ -136,10 +151,115 @@ export class StellarSystemScene extends Scene {
             star: this.starData
         });
         this.orreryScene.init();
+        // Pass the path to the Orrery to draw the "Flight Plan"
+        if (this.introPath.length > 0) this.orreryScene.setIntroPath(this.introPath, this.scales.orbit);
+
         // Disable controls on the PiP so it doesn't conflict with main view
         if (this.orreryScene.cameraControls.has('orbit')) this.orreryScene.cameraControls.get('orbit').enabled = false;
 
         Logger.end(funcName);
+    }
+
+    generateIntroPath() {
+        const points = [];
+        const fps = 60;
+        const dt = 1 / fps;
+        
+        // Clone objects for simulation so we don't mess up the main scene state
+        const simObjects = this.objects.map(o => ({
+            ...o,
+            orbitAngle: o.orbitAngle, 
+            realPosition: o.realPosition.clone()
+        }));
+        
+        const flybyObj = this.flybyObj ? simObjects.find(o => o.data === this.flybyObj.data) : null;
+        const homeObj = simObjects.find(o => o.data === this.homeWorldObj.data);
+        
+        let currentPos = this.introStartPos.clone();
+        let phaseStartPos = this.introStartPos.clone();
+        
+        // Total duration logic matches update loop
+        const totalDuration = (flybyObj) ? 20.0 : 20.0; 
+        const totalSteps = Math.ceil(totalDuration * fps);
+
+        for (let i = 0; i <= totalSteps; i++) {
+            const time = i * dt;
+            
+            // 1. Simulate Orbits
+            simObjects.forEach(obj => {
+                if (obj.orbitSpeed && obj.orbitRadius) {
+                    obj.orbitAngle += obj.orbitSpeed * dt;
+                    obj.realPosition.x = Math.cos(obj.orbitAngle) * obj.orbitRadius;
+                    obj.realPosition.z = Math.sin(obj.orbitAngle) * obj.orbitRadius;
+                }
+            });
+
+            // 2. Determine Target & Phase
+            let targetObj = homeObj;
+            let duration = 20.0;
+            let phaseTime = time;
+            let startPos = this.introStartPos;
+            let phase = 0;
+
+            if (flybyObj) {
+                if (time < 10.0) {
+                    targetObj = flybyObj;
+                    duration = 10.0;
+                    phaseTime = time;
+                    startPos = this.introStartPos;
+                    phase = 0;
+                } else {
+                    targetObj = homeObj;
+                    duration = 10.0;
+                    phaseTime = time - 10.0;
+                    // Start pos for phase 2 is the end of phase 1 (approx)
+                    // We capture it when we switch phases, or just use the last calculated point
+                    if (points.length > 0 && Math.abs(time - 10.0) < dt * 1.5) {
+                        phaseStartPos.copy(points[points.length - 1]);
+                    }
+                    startPos = phaseStartPos;
+                    phase = 1;
+                }
+            }
+
+            const t = Math.min(phaseTime / duration, 1.0);
+            
+            // Easing
+            let ease;
+            if (phase === 1 && flybyObj) {
+                ease = t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+            } else {
+                ease = 1 - Math.pow(1 - t, 3);
+            }
+
+            // Target Position
+            const targetRealPos = targetObj.realPosition;
+            const arrivalDist = targetObj.baseRadius * 8.0;
+            const targetCamPos = new THREE.Vector3(
+                targetRealPos.x, 
+                targetRealPos.y + arrivalDist * 0.3, 
+                targetRealPos.z + arrivalDist * 0.9
+            );
+
+            // Bezier Curve
+            const p0 = startPos;
+            const p2 = targetCamPos;
+            const dist = p0.distanceTo(p2);
+            
+            // Midpoint + Arc
+            const mid = new THREE.Vector3().addVectors(p0, p2).multiplyScalar(0.5);
+            const p1 = mid.clone().setY(mid.y + (dist * 0.1));
+
+            const invT = 1 - ease;
+            const x = invT * invT * p0.x + 2 * invT * ease * p1.x + ease * ease * p2.x;
+            const y = invT * invT * p0.y + 2 * invT * ease * p1.y + ease * ease * p2.y;
+            const z = invT * invT * p0.z + 2 * invT * ease * p1.z + ease * ease * p2.z;
+
+            currentPos.set(x, y, z);
+            points.push(currentPos.clone());
+        }
+        
+        return points;
     }
 
     onLoad() {
@@ -157,6 +277,18 @@ export class StellarSystemScene extends Scene {
         this.labels.forEach(l => l.remove());
         this.labels = [];
         if (this.viewManager) this.viewManager.setHUD(null);
+
+        // Reset renderer state to ensure next scene uses full canvas
+        if (this.renderer) {
+            this.renderer.setViewport(0, 0, window.innerWidth, window.innerHeight);
+            this.renderer.setScissor(0, 0, window.innerWidth, window.innerHeight);
+            this.renderer.setScissorTest(false);
+        }
+
+        if (this.orreryScene) {
+            this.orreryScene.onUnload();
+            this.orreryScene = null;
+        }
     }
 
     sanitizeData() {
@@ -274,37 +406,36 @@ export class StellarSystemScene extends Scene {
             // Calculate Distance
             const distance = (planetData.orbitalDistance || 1) * this.scales.orbit;
             
-            // Generate Planet Mesh
-            const lod = new THREE.LOD();
-            this.scene.add(lod);
-
             // Planet Physical Radius (1 Earth Radius = 100 units approx for visibility)
             const planetRadius = this.scales.planetSize * (planetData.radius || 1); 
             
-            // High-LOD (close-up view)
-            // Generator output is ~10 units radius. Scale to match planetRadius (100).
-            const meshScale = planetRadius / 10.0;
-
-            // 1. High-LOD (close-up view) - Normalize to Radius 1.0
-            let detailedMesh;
-            try {
-                detailedMesh = this.planetGenerator.generatePlanetMesh(planetData);
-                detailedMesh.scale.setScalar(meshScale);
-            } catch (e) {
-                Logger.warn(`Failed to generate planet mesh for ${planetData.name}. Using fallback.`, e);
-                const color = planetData.color ? new THREE.Color().setHSL(planetData.color.h, planetData.color.s, planetData.color.l) : 0x888888;
-                detailedMesh = new THREE.Mesh(new THREE.SphereGeometry(planetRadius, 32, 32), new THREE.MeshBasicMaterial({ color: color }));
+            // Simple Sphere for Stellar System View
+            // Ensure color is valid
+            let color = new THREE.Color(0x888888);
+            if (planetData.color) {
+                if (planetData.color.isColor) color = planetData.color;
+                else if (planetData.color.h !== undefined) color.setHSL(planetData.color.h, planetData.color.s, planetData.color.l);
+                else color.setHex(planetData.color);
+            } else {
+                color.setHSL(Math.random(), 0.6, 0.5);
             }
-            lod.addLevel(detailedMesh, 0);
 
-            // 2. Low-LOD (distant orrery view) - Normalize to Radius 1.0
-            const color = planetData.color ? new THREE.Color().setHSL(planetData.color.h, planetData.color.s, planetData.color.l) : 0x888888;
-            const simpleSphereGeo = new THREE.SphereGeometry(planetRadius, 16, 16);
-            const simpleSphereMat = new THREE.MeshBasicMaterial({ 
-                color: color
+            const geometry = new THREE.SphereGeometry(planetRadius, 32, 32);
+            const material = new THREE.MeshStandardMaterial({ 
+                color: color,
+                roughness: 0.7,
+                metalness: 0.1
             });
-            const simpleMesh = new THREE.Mesh(simpleSphereGeo, simpleSphereMat);
-            lod.addLevel(simpleMesh, 5000); // Switch distance
+            const planetMesh = new THREE.Mesh(geometry, material);
+            this.scene.add(planetMesh);
+
+            // Add Atmosphere Glow
+            if (planetData.atmosphere && planetData.atmosphere !== 'None') {
+                const atmoGeo = new THREE.SphereGeometry(planetRadius * 1.2, 32, 32);
+                const atmoMat = new THREE.MeshBasicMaterial({ color: color, transparent: true, opacity: 0.3, side: THREE.BackSide });
+                const atmoMesh = new THREE.Mesh(atmoGeo, atmoMat);
+                planetMesh.add(atmoMesh);
+            }
 
             // Orbit Line Setup
             const orbitPoints = [];
@@ -320,7 +451,7 @@ export class StellarSystemScene extends Scene {
 
             // Store metadata for updates
             const planetObj = {
-                mesh: lod,
+                mesh: planetMesh,
                 orbitLine: orbitLine,
                 orbitPointsReal: orbitPoints, // Store real-space points for re-projection
                 data: planetData,
@@ -423,6 +554,18 @@ export class StellarSystemScene extends Scene {
         const dt = delta * 0.001;
         const C = this.COMPRESSION_C;
         const camera = this.activeCamera;
+
+        // --- 0. Update Sun Light Position ---
+        // Move sun light to the visual position of the star so lighting direction is correct
+        const starObj = this.objects.find(o => o.type === 'star');
+        if (starObj && this.sunLight) {
+            const relVec = new THREE.Vector3().subVectors(starObj.realPosition, this.virtualCameraPosition);
+            const realDist = relVec.length();
+            // Apply same compression as meshes
+            const visualDist = C * Math.log(1 + realDist / C);
+            const visualPos = relVec.normalize().multiplyScalar(visualDist);
+            this.sunLight.position.copy(visualPos);
+        }
         
         // --- 1. Update Real Positions (Simulation) ---
         this.objects.forEach(obj => {
@@ -432,53 +575,72 @@ export class StellarSystemScene extends Scene {
                 obj.realPosition.x = Math.cos(obj.orbitAngle) * obj.orbitRadius;
                 obj.realPosition.z = Math.sin(obj.orbitAngle) * obj.orbitRadius;
             }
-
-            // Update LOD objects
-            if (obj.lod) {
-                obj.lod.update(this.activeCamera);
-            }
         });
 
         // --- 2. Intro Sequence Logic (Camera Movement) ---
         if (this.introActive && this.homeWorldObj && this.homeWorldObj.realPosition) {
             this.introTime += dt;
-            const duration = 12.0; // 12 seconds flyby
-            const t = Math.min(this.introTime / duration, 1.0);
             
-            // Ease out cubic for smooth arrival
-            const ease = 1 - Math.pow(1 - t, 3);
+            // Sample from Precalculated Path
+            if (this.introPath.length > 0) {
+                const fps = 60;
+                const maxIndex = this.introPath.length - 1;
+                const exactIndex = this.introTime * fps;
+                const index = Math.floor(exactIndex);
+                const alpha = exactIndex - index;
+                
+                if (index < maxIndex) {
+                    const pA = this.introPath[index];
+                    const pB = this.introPath[index + 1];
+                    this.virtualCameraPosition.lerpVectors(pA, pB, alpha);
+                } else {
+                    this.virtualCameraPosition.copy(this.introPath[maxIndex]);
+                }
+            }
             
-            // Target Position: Near the homeworld (Real Space)
-            const targetRealPos = this.homeWorldObj.realPosition.clone();
-            
-            // Offset: Position camera to arrive in orbit
-            // We want to end up at a distance relative to the planet size
-            const arrivalDist = this.homeWorldObj.baseRadius * 4.0;
-            const offset = new THREE.Vector3(0, arrivalDist * 0.5, arrivalDist); 
-            const targetCamPos = targetRealPos.clone().add(offset);
-            
-            // Interpolate Virtual Camera Position
-            this.virtualCameraPosition.lerpVectors(this.introStartPos, targetCamPos, ease);
+            // Determine LookAt Target (Dynamic)
+            const targetObj = (this.flybyObj && this.introTime < 10.0) ? this.flybyObj : this.homeWorldObj;
+            const targetRealPos = targetObj.realPosition; // No clone needed, read directly
             
             // Orient Camera to look at the target (Planet)
             // Since Camera is at 0,0,0, we look in the direction of (PlanetReal - VirtualCam)
-            const relVec = new THREE.Vector3().subVectors(targetRealPos, this.virtualCameraPosition);
-            const lookAtPoint = relVec.normalize().multiplyScalar(100); // Look at point 100 units away in that direction
+            const targetLookVec = new THREE.Vector3().subVectors(targetRealPos, this.virtualCameraPosition).normalize();
+            // Smoothly interpolate look direction
+            this.currentLookAt.lerp(targetLookVec, dt * 2.0);
+            const lookAtPoint = this.currentLookAt.clone().multiplyScalar(100); 
             this.activeCamera.lookAt(lookAtPoint);
             
-            // End Intro
-            if (t >= 1.0) {
-                this.introActive = false;
-                // Ensure orbit lines are visible again
-                this.objects.forEach(obj => {
-                    if (obj.orbitLine) obj.orbitLine.visible = true;
-                });
-                
-                Logger.message("StellarSystemScene: Intro complete. Transitioning to Planetary Orbit.");
-                if (this.viewManager) {
-                    this.viewManager.transitionToScene('PlanetaryOrbitScene', { planet: this.homeWorldObj.data, system: this.systemData }, { type: 'crossDissolve', duration: 2000 });
+            // Phase Transition / End Intro
+            // Check time thresholds instead of 't'
+            if (this.flybyObj && this.introPhase === 0 && this.introTime >= 10.0) {
+                    this.introPhase = 1;
+                    Logger.message(`StellarSystemScene: Flyby of ${this.flybyObj.data.name} complete. Heading to ${this.homeWorldObj.data.name}.`);
+            } 
+            
+            // Check for end of intro independently to handle large time jumps (lag spikes)
+            if (this.introTime >= (this.flybyObj ? 20.0 : 20.0)) {
+                    this.introActive = false;
+                    // Ensure orbit lines are visible again
+                    this.objects.forEach(obj => {
+                        if (obj.orbitLine) obj.orbitLine.visible = true;
+                    });
+                    
+                    // Calculate Sun Direction relative to the planet for continuity
+                    let sunDirection = null;
+                    const starObj = this.objects.find(o => o.type === 'star');
+                    if (starObj && this.homeWorldObj) {
+                        sunDirection = new THREE.Vector3().subVectors(starObj.realPosition, this.homeWorldObj.realPosition).normalize();
+                    }
+
+                    Logger.message("StellarSystemScene: Intro complete. Transitioning to Planetary Orbit.");
+                    if (this.viewManager) {
+                        this.viewManager.transitionToScene('PlanetaryOrbitScene', { 
+                            planet: this.homeWorldObj.data, 
+                            system: this.systemData,
+                            sunDirection: sunDirection
+                        }, { type: 'crossDissolve', duration: 2000 });
+                    }
                 }
-            }
         } else if (this.homeWorldObj && !this.introActive) {
              // LOCK VIRTUAL CAMERA TO PLANET
              // This ensures the planet is always rendered at (0,0,0) Visual Space (or close to it)
@@ -521,9 +683,6 @@ export class StellarSystemScene extends Scene {
                 if (scale < minScale) scale = minScale;
 
                 obj.mesh.scale.setScalar(scale);
-                
-                // Update LOD
-                if (obj.mesh.update) obj.mesh.update(camera);
             }
 
             // 2. Update Orbit Line (Apply Spatial Compression to every point)

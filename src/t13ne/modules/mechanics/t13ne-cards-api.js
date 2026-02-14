@@ -407,7 +407,9 @@ class T13NECardsAPI {
 
         const { numCards, shufflePatterns, includeDiceRoll, cardPositions } = spreadDef;
 
-        this.deck.reset(shufflePatterns); // Reset and reshuffle for each new spread with specified patterns
+        if (this.deck.currentDeck.length < (numCards || 1)) {
+            this.deck.reset(shufflePatterns); // Reset if not enough cards
+        }
         const drawnCards = this.deck.draw(numCards);
         Logger.message(`T13NECardsAPI: Drawn ${drawnCards.length} cards for spread "${spreadId}".`);
 
@@ -752,8 +754,3 @@ class T13NECardsAPI {
 }
 
 export default new T13NECardsAPI();
-
-
-
-
-

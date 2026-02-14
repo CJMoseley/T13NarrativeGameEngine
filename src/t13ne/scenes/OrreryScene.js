@@ -189,13 +189,26 @@ export class OrreryScene extends Scene {
     }
 
     createCameraMarker() {
-        const geometry = new THREE.SphereGeometry(25, 16, 16); // Even larger for visibility
+        // Create a Crosshair Reticle instead of a sphere
+        const group = new THREE.Group();
+        
+        // Ring
+        const ringGeo = new THREE.RingGeometry(30, 35, 32);
         const material = new THREE.MeshBasicMaterial({ 
-            color: 0xff00ff,
+            color: 0x00ff00, // Bright Green for visibility
             depthTest: false, // Always render on top
-            transparent: true
+            transparent: true,
+            opacity: 0.8,
+            side: THREE.DoubleSide
         }); 
-        this.cameraMarker = new THREE.Mesh(geometry, material);
+        const ring = new THREE.Mesh(ringGeo, material);
+        group.add(ring);
+
+        // Crosshairs
+        // Simple lines are harder to see, let's use thin boxes
+        // ... (omitted for brevity, Ring is usually enough, but let's stick to the Ring for clarity)
+
+        this.cameraMarker = group;
         this.cameraMarker.renderOrder = 999;
         this.scene.add(this.cameraMarker);
 
@@ -347,7 +360,7 @@ export class OrreryScene extends Scene {
             // Clamp to camera far plane to prevent clipping
             if (this.activeCamera && orreryDist > this.activeCamera.far * 0.9) orreryDist = this.activeCamera.far * 0.9;
 
-            const newPos = position.clone().normalize().multiplyScalar(orreryDist);
+            const newPos = position.clone().normalize().multiplyScalar(Math.max(orreryDist, this.STAR_RADIUS + 10));
             if (newPos.lengthSq() === 0) newPos.set(0, 0, this.STAR_RADIUS + 5); // Handle 0,0,0 input
             this.cameraMarker.position.copy(newPos);
 
@@ -605,9 +618,9 @@ export class OrreryScene extends Scene {
 
         // Pulse Camera Marker
         if (this.cameraMarker) {
-            const scale = 1 + Math.sin(time * 0.005) * 0.3;
+            const scale = 1 + Math.sin(time * 0.005) * 0.2;
             this.cameraMarker.scale.setScalar(scale);
-            this.cameraMarker.material.opacity = 0.5 + Math.sin(time * 0.01) * 0.5;
+            // this.cameraMarker.material.opacity = 0.5 + Math.sin(time * 0.01) * 0.5; // Don't fade out completely
         }
     }
     

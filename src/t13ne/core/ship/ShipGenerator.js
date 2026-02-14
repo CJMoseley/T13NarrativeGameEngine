@@ -101,6 +101,10 @@ export class ShipGenerator {
                 efficiency: 0.8 + (techLevel * 0.05),
                 techLevel: techLevel
             };
+            
+            // Propagate forceSymmetry to stats if present, so GreebleGenerator can respect it
+            // This is crucial for components like wings that might have different symmetry than the hull
+            if (forceSymmetry) stats.forceSymmetry = forceSymmetry;
 
             components.push({ usage, name, namePromise, type, dims, pos: basePos, rot: baseRot, id, stats });
 
@@ -160,9 +164,9 @@ export class ShipGenerator {
                         } else {
                             // Rotate around Y (Saucer style)
                             rPos = [
-                                basePos[0] * cos - basePos[2] * sin,
+                                basePos[0] * cos + basePos[2] * sin,
                                 basePos[1],
-                                basePos[0] * sin + basePos[2] * cos
+                                -basePos[0] * sin + basePos[2] * cos
                             ];
                             // Use Quaternion for correct global rotation
                             const q = new THREE.Quaternion().setFromEuler(new THREE.Euler(...baseRot));
@@ -518,8 +522,8 @@ export class ShipGenerator {
             } else if (hullType === 'STAR') {
                 // Engines at ends of arms
                 const armLen = spineLength;
-                // FIX: Rotate to point local -Y outwards along +X. This is a +90 deg rotation around Z.
-                attachComponent('engine', [armLen, 0, 0], [0, 0, Math.PI / 2], 'cylinder', { radiusTop: 0.5, radiusBottom: 0.8, height: 2.0 });
+                // FIX: Rotate to point local Y outwards along +X. This is a -90 deg rotation around Z.
+                attachComponent('engine', [armLen, 0, 0], [0, 0, -Math.PI / 2], 'cylinder', { radiusTop: 0.5, radiusBottom: 0.8, height: 2.0 });
             } else {
                 // Default case, primarily for SPINE
                 if (hullType === 'SPINE') {
@@ -593,24 +597,46 @@ export class ShipGenerator {
                 // Central engine for SPINE or other fallback types
                 const engineHeight = 2.5;
                 let engineZ = -spineLength / 2 - engineHeight / 2 + 1.0; // Default for SPINE
+                let engineX = 0;
+                let engineY = 0;
 
                 // For non-SPINE hulls (MAZE, FRACTAL, etc), find the actual rear-most point
                 if (hullType !== 'SPINE') {
                     let minZ = 0;
+                    let rearComp = null;
                     components.forEach(c => {
                         if (c.usage.includes('fuselage') || c.usage.includes('hull') || c.usage.includes('maze') || c.usage.includes('fractal')) {
                             const z = c.pos[2];
                             const d = (c.dims.depth || c.dims.length || c.dims.radius || 1);
                             // For radius based shapes, extent is z - radius. For box/cyl, z - height/2 or depth/2
                             const rear = z - (c.dims.radius ? c.dims.radius : d/2);
-                            if (rear < minZ) minZ = rear;
+                            if (rear < minZ) {
+                                minZ = rear;
+                                rearComp = c;
+                            }
                         }
                     });
                     // Attach to the rear-most point found, with overlap
                     engineZ = minZ - engineHeight / 2 + 0.5;
+                    
+                    // For Maze/Fractal, align engine with the rear-most component's X/Y, not 0,0
+                    if (rearComp) {
+                        engineX = rearComp.pos[0];
+                        engineY = rearComp.pos[1];
+                    }
+                } else {
+                    // For SPINE, ensure we attach to the actual last segment
+                    const lastZ = res.lastSegmentZ !== undefined ? res.lastSegmentZ : -(spineLength / 2);
+                    const lastRad = res.lastSegmentRadius || 1.0;
+                    // Engine Z: Last Segment Center Z - Half Height - Half Engine Height + Overlap
+                    // Actually, lastSegmentZ is the center of the last segment.
+                    // Back face is lastZ - (segmentHeight/2).
+                    // We don't have segmentHeight easily here, but we can estimate or use a safe overlap.
+                    // Let's just embed it deeper.
+                    engineZ = lastZ - (spineLength / (res.lastSegmentSegments || 8)) / 2 - engineHeight / 2 + 1.5;
                 }
                 
-                attachComponent('engine', [0, 0, engineZ], [Math.PI / 2, 0, 0], 'cylinder', { radiusTop: 0.6, radiusBottom: 0.9, height: engineHeight });
+                attachComponent('engine', [engineX, engineY, engineZ], [Math.PI / 2, 0, 0], 'cylinder', { radiusTop: 0.6, radiusBottom: 0.9, height: engineHeight });
             }
         }
 
@@ -825,7 +851,7 @@ export class ShipGenerator {
             } else if (symmetryType === 'ASYMMETRICAL' || hullType === 'BLOB' || hullType === 'MAZE') {
                 // Use the unified side cockpit generator
                 const side = (hullType === 'BLOB') ? 'right' : 'random';
-                const parentUsage = ['fuselage', 'hull', 'spine', 'monolith', 'maze'];
+                const parentUsage = ['fuselage', 'hull', 'spine', 'monolith', 'maze', 'ring', 'rim', 'torus'];
                 
                 // Estimate parent radius and height from the generic hullRadius
                 const parentRadius = hullRadius;
@@ -859,7 +885,9 @@ export class ShipGenerator {
                         const rayDir = [0, -1, 0];
                         const hit = this.getSurfacePoint(components, rayOrigin, rayDir, ['fuselage', 'hull', 'spine']);
                         if (hit) {
-                            cockpitY = hit.y + 0.4 - 0.2; // Sit on top (0.4 is half height) - Embed by 0.2 to ensure connection
+                            // Embed deeply (approx 75% of height 0.8)
+                            // Center at hit.y - 0.2. Top at hit.y + 0.2. Bottom at hit.y - 0.6.
+                            cockpitY = hit.y - 0.2;
                         }
                     }
                     attachComponent('cockpit', [0, cockpitY, cockpitZ], [0, 0, 0], 'ellipsoid', { width: 1.0, height: 0.8, length: 1.5 });
@@ -956,14 +984,22 @@ export class ShipGenerator {
              }
         } else if (hullType === 'HORSESHOE') {
              // Place on the arc (back center) to avoid floating in void
+             // Ensure intersection by making it large and centered on the arc tube
              const r = spineLength * 0.8;
-             shieldPos = [r, 1.0, 0]; // Top of arc, back center
+             shieldPos = [r, 0, 0]; // Centered on the arc tube
+             shieldDims = { radius: 3.0, tube: 0.5 }; // Large enough to intersect
         } else {
              // Place inside the hull
              shieldPos = hullType === 'DISC' ? [0, 0, 0] : [0, 0, 0];
         }
         
         attachComponent('shield', shieldPos, shieldRot, 'torus', shieldDims, 'NONE'); // Single shield
+
+        // Calculate Shield Efficiency based on size and tech level
+        const shieldComp = components[components.length - 1];
+        const shieldSize = shieldDims.radius;
+        shieldComp.stats.efficiency = (0.8 + (techLevel * 0.05)) * (1 + shieldSize * 0.1);
+        shieldComp.stats.generatorType = "Harmonic Torus";
 
         // Vortex Generator
         let vortexPos = [0, 0, 0];
@@ -1074,18 +1110,18 @@ export class ShipGenerator {
         // We want it balanced, but maybe not exactly at 0,0,0 if the CoG is there.
         // Actually, centering it on CoG is good for a shield.
         // Exception: Station Rings/Wheels should keep shield at 0,0,0 (Geometric Center) to fit the ring
-        const shieldComp = components.find(c => c.usage === 'shield');
-        if (shieldComp && hullType !== 'STATION_RING' && hullType !== 'STATION_WHEEL') {
+        const shieldComponent = components.find(c => c.usage === 'shield');
+        if (shieldComponent && hullType !== 'STATION_RING' && hullType !== 'STATION_WHEEL') {
             if (hullType === 'CATAMARAN') {
                 // Place in Neck
                 const neck = components.find(c => c.usage === 'fuselage_neck');
                 if (neck) {
-                    shieldComp.pos = [...neck.pos];
+                    shieldComponent.pos = [...neck.pos];
                 } else {
-                    shieldComp.pos = [0, 0, 0];
+                    shieldComponent.pos = [0, 0, 0];
                 }
             } else {
-                shieldComp.pos = [cog.x, cog.y, cog.z];
+                shieldComponent.pos = [cog.x, cog.y, cog.z];
             }
             // Ensure it doesn't clip too badly by checking bounds? 
             // For now, centering it is the requirement.

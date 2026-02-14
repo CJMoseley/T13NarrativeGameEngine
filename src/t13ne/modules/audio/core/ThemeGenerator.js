@@ -201,9 +201,9 @@ class VirtualBand {
         this.progression = progression;
     }
 
-    generateTrack(name, measures = 8) {
+    async generateTrack(name, measures = 8) {
         // Delegate back to generator with this band's state
-        return this.generator._generateTrackFromBand(this, name, measures);
+        return await this.generator._generateTrackFromBand(this, name, measures);
     }
 
     generateWormholeProgression(targetKeyData) {
@@ -422,6 +422,9 @@ export class ThemeGenerator {
         if (!this.synth) return null;
         Logger.message("ThemeGenerator: Assembling Virtual Band for Main Theme...");
 
+        // Yield to main thread to prevent UI freeze
+        await new Promise(r => setTimeout(r, 0));
+
         const band = new VirtualBand(this);
         
         // Add components to band
@@ -444,7 +447,7 @@ export class ThemeGenerator {
         
         band.setProgression(this.currentProgression);
         
-        return band.generateTrack('Main Theme');
+        return await band.generateTrack('Main Theme');
     }
 
     async createWormholeRacersTheme() {
@@ -465,7 +468,7 @@ export class ThemeGenerator {
         const progression = this._generateProgression(band.baseFreq, 16, ['I', 'I', 'IV', 'V']);
         band.setProgression(progression);
 
-        return band.generateTrack('Wormhole Racers Theme', 16);
+        return await band.generateTrack('Wormhole Racers Theme', 16);
     }
 
     async createT13NETheme() {
@@ -485,7 +488,7 @@ export class ThemeGenerator {
         const progression = this._generateProgression(band.baseFreq, 32, ['I', 'V', 'vi', 'IV']);
         band.setProgression(progression);
 
-        return band.generateTrack('Terminal Thirteen Narrative Game Engine Theme', 8);
+        return await band.generateTrack('Terminal Thirteen Narrative Game Engine Theme', 8);
     }
 
     async createWormholeTheme(ship, originSystem, targetSystem) {
@@ -502,7 +505,7 @@ export class ThemeGenerator {
 
         band.generateWormholeProgression(targetKeyData);
         
-        return band.generateTrack(`Wormhole: ${originSystem.name} to ${targetSystem.name}`);
+        return await band.generateTrack(`Wormhole: ${originSystem.name} to ${targetSystem.name}`);
     }
 
     async createPactTheme(pact) {
@@ -519,7 +522,7 @@ export class ThemeGenerator {
         const baseFreq = band.baseFreq;
         band.setProgression(this._generateProgression(baseFreq, 16));
 
-        return band.generateTrack(`${pact.name} Theme`);
+        return await band.generateTrack(`${pact.name} Theme`);
     }
 
     checkRouteStability(originSystem, targetSystem) {
@@ -538,7 +541,7 @@ export class ThemeGenerator {
         return 1.0; 
     }
 
-    _generateTrackFromBand(band, name, measures = 8) {
+    async _generateTrackFromBand(band, name, measures = 8) {
         // Replaces old createMainTheme logic but uses band properties
         let progression = band.progression;
         const conductor = band.conductor;
@@ -607,6 +610,9 @@ export class ThemeGenerator {
             band.drummers.push(defaultDrummer);
         }
 
+        // Yield before processing drummers
+        await new Promise(r => setTimeout(r, 0));
+
         band.drummers.forEach((drummer, dIndex) => {
             const drumPart = this._generateDrumPart(drummer, progression, stepsPerBar, trackMeasures, rng);
             
@@ -634,7 +640,10 @@ export class ThemeGenerator {
             rng: rng
         };
 
-        band.members.forEach((artist, index) => {
+        // Process members asynchronously to avoid frame drops
+        for (let index = 0; index < band.members.length; index++) {
+            const artist = band.members[index];
+            
             const artistStepsPerBar = band.polyrhythms.get(artist.name) || band.stepsPerBar;
             const totalArtistSteps = trackMeasures * artistStepsPerBar;
 
@@ -655,7 +664,10 @@ export class ThemeGenerator {
                     loopLength: totalArtistSteps // Ensure all voices loop with the track
                 });
             }
-        });
+            
+            // Yield every few members
+            if (index % 2 === 0) await new Promise(r => setTimeout(r, 0));
+        }
 
         voices.forEach(v => {
             if (!v.isDrum && (v.id.includes('kick') || v.id.includes('snare') || v.id.includes('hat') || v.id.includes('perc') || v.id.includes('ride') || v.id.includes('crash'))) {

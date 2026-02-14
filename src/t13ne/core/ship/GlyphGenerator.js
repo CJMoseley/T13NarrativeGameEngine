@@ -31,9 +31,6 @@ export class GlyphGenerator {
 
         // Clear and set background
         ctx.clearRect(0, 0, width, height);
-        // Optional: Semi-transparent background for the decal plate
-        ctx.fillStyle = 'rgba(20, 20, 20, 0.1)'; 
-        ctx.fillRect(0, 0, width, height);
 
         // Draw Base Shape
         ctx.fillStyle = '#' + primaryColor.getHexString();
@@ -130,7 +127,7 @@ export class GlyphGenerator {
         ctx.clearRect(0, 0, width, height);
         
         // Stencil effect
-        ctx.fillStyle = '#' + color.getHexString();
+        ctx.strokeStyle = '#' + color.getHexString();
         
         // Removed border for painted look
 
