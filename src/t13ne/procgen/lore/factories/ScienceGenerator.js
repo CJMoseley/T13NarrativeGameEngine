@@ -48,7 +48,7 @@ export class ScienceGenerator {
         // Fallback to simple list
         const prefixes = ["Quantum", "Hyper", "Nano", "Bio", "Cyber", "Astro", "Void", "Flux", "Chrono", "Meta"];
         const suffixes = ["Dynamics", "Physics", "Mechanics", "Synthesis", "Engineering", "Optics", "Harmonics", "Resonance"];
-        const rng = seed ? (typeof seed === 'number' ? { nextDouble: () => (seed * 9301 + 49297) % 233280 / 233280 } : { nextDouble: () => Math.random() }) : { nextDouble: () => Math.random() };
+        const rng = seed ? (typeof seed === 'number' ? { nextDouble: () => (Math.abs(seed) * 9301 + 49297) % 233280 / 233280 } : { nextDouble: () => Math.random() }) : { nextDouble: () => Math.random() };
         
         return `${prefixes[Math.floor(rng.nextDouble() * prefixes.length)]} ${suffixes[Math.floor(rng.nextDouble() * suffixes.length)]}`;
     }
@@ -56,6 +56,8 @@ export class ScienceGenerator {
     generateProceduralLatinName(n1, n2) {
         const funcName = 'ScienceGenerator.generateProceduralLatinName';
         Logger.start(funcName);
+        n1 = Math.abs(n1) % 1;
+        n2 = Math.abs(n2) % 1;
         const prefixes = LoreData.naming.LATIN_PREFIXES;
         const suffixes = LoreData.naming.LATIN_SUFFIXES;
         const prefix = prefixes[Math.floor(n1 * prefixes.length)];
@@ -68,6 +70,9 @@ export class ScienceGenerator {
     generateAlienName(n1, n2, n3) {
         const funcName = 'ScienceGenerator.generateAlienName';
         Logger.start(funcName);
+        n1 = Math.abs(n1) % 1;
+        n2 = Math.abs(n2) % 1;
+        n3 = Math.abs(n3) % 1;
         const prefixes = LoreData.naming.ALIEN_PREFIX;
         const suffixes = LoreData.naming.ALIEN_SUFFIX;
         const joiners = LoreData.naming.ALIEN_JOINERS;
@@ -99,6 +104,9 @@ export class ScienceGenerator {
     generateSystemName(n1, n2, n3) {
         const funcName = 'ScienceGenerator.generateSystemName';
         Logger.start(funcName);
+        n1 = Math.abs(n1) % 1;
+        n2 = Math.abs(n2) % 1;
+        n3 = Math.abs(n3) % 1;
         const prefixes = LoreData.naming.SYSTEM_NAME_PREFIXES;
         const suffixes = LoreData.naming.SYSTEM_NAME_SUFFIXES;
         const prefix = prefixes[Math.floor(n1 * prefixes.length)];
@@ -123,6 +131,7 @@ export class ScienceGenerator {
         }
 
         // Descriptive naming based on planetary temperature (simulated by noise 'n' as distance factor)
+        n = Math.abs(n) % 1;
         // Hot/Fiery (Close to star)
         if (n > 0.8) {
             const fieryAdjectives = LoreData.naming.FIERY_PREFIX || ["Fire", "Flame", "Forge", "Inferno", "Cinder"];

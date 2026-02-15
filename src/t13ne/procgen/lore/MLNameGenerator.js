@@ -79,6 +79,9 @@ export class MLNameGenerator {
      * @returns {string} The generated name.
      */
     generateSystemName(n1, n2, n3) {
+        n1 = Math.abs(n1) % 1;
+        n2 = Math.abs(n2) % 1;
+        n3 = Math.abs(n3) % 1;
         const grammar = this.grammars.corporate; // Using 'corporate' as an example for system names
         const template = grammar.templates[Math.floor(n1 * grammar.templates.length)];
 
@@ -106,6 +109,7 @@ export class MLNameGenerator {
             return "Unknown Tech";
         }
 
+        seed = Math.abs(seed) % 1;
         // Simple pseudo-random values derived from seed
         const n1 = seed;
         const n2 = (seed * 100) % 1;
