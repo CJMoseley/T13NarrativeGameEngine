@@ -1,3 +1,5 @@
+// d:\GIthubreps\t13nge\T13NarrativeGameEngine\src\t13ne\core\ship\GlyphGenerator.js
+
 import * as THREE from 'three';
 import { mulberry32 } from './ShipUtils.js';
 
@@ -124,7 +126,10 @@ export class GlyphGenerator {
         this.canvas.width = width; 
         this.canvas.height = height;
 
+        // Ensure transparent background
         ctx.clearRect(0, 0, width, height);
+        ctx.fillStyle = 'rgba(0,0,0,0)';
+        ctx.fillRect(0, 0, width, height);
         
         // Stencil effect
         ctx.strokeStyle = '#' + color.getHexString();

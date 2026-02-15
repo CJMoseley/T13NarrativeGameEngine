@@ -2,7 +2,7 @@
 
 import { LoreData } from '/src/t13ne/procgen/lore/LoreData.js';
 import { NameGenerator } from '/src/t13ne/procgen/lore/factories/NameGenerator.js';
-import { MLNameGenerator } from '/src/t13ne/procgen/lore/MLNameGenerator.js';
+import { MLNameGenerator } from '/src/t13ne/procgen/lore/factories/MLNameGenerator.js';
 import { SpeciesGenerator } from '/src/t13ne/procgen/lore/factories/SpeciesGenerator.js';
 import { TechGenerator } from '/src/t13ne/procgen/lore/factories/TechGenerator.js';
 import { ScienceGenerator } from '/src/t13ne/procgen/lore/factories/ScienceGenerator.js';
@@ -76,7 +76,7 @@ export class LoreMaster {
                     Logger.warn("LoreMaster: Advanced MLNameGenerator failed to initialize. Falling back to standard.", e);
                 });
 
-                this.speciesGenerator = new SpeciesGenerator(this.pluginManager, this.nameGenerator);
+                this.speciesGenerator = new SpeciesGenerator(this.pluginManager, this);
 
                 this.techGenerator = new TechGenerator(this.pluginManager);
                 await this.techGenerator.initialize();
@@ -92,7 +92,7 @@ export class LoreMaster {
                     techGenerator: this.techGenerator,
                     scienceGenerator: this.scienceGenerator,
                     corporationGenerator: this.corporationGenerator,
-                    nameGenerator: this.nameGenerator,
+                    nameGenerator: this,
                     characterGenerator: this.characterGenerator
                 });
 
@@ -151,7 +151,11 @@ export class LoreMaster {
     // --- Name Generation (With Advanced Options) ---
 
     async generateSystemName(n1, n2, n3, nearbySpecies = []) {
-        // We could use MLNameGenerator here if configured/ready, but standard is safer for now.
+        if (this.mlNameGenerator && this.mlNameGenerator.modelLoaded) {
+            const result = this.mlNameGenerator.generateSystemName(n1, n2, n3);
+            return [result, result, ""];
+        }
+
         let result = await this.nameGenerator.generateSystemName(n1, n2, n3, nearbySpecies);
         if (!Array.isArray(result)) {
             result = [result, result, ""];
@@ -160,11 +164,28 @@ export class LoreMaster {
     }
 
     async generateHomeworldName(systemName, speciesName, speciesKey, techLevelKey, n3, star, nearbySpecies = []) {
+        if (this.mlNameGenerator && this.mlNameGenerator.modelLoaded) {
+            const result = await this.mlNameGenerator.generateHomeworldName(systemName, speciesName, speciesKey, techLevelKey, n3, star);
+            return [result, result, ""];
+        }
+
         let result = await this.nameGenerator.generateHomeworldName(systemName, speciesName, speciesKey, techLevelKey, n3, star, nearbySpecies);
         if (!Array.isArray(result)) {
             result = [result, result, ""];
         }
         return result;
+    }
+
+    generateSyllabicName(seed, flavor) {
+        return this.nameGenerator.generateSyllabicName(seed, flavor);
+    }
+
+    generateSpeciesName(speciesKey, seed) {
+        return this.nameGenerator.generateSpeciesName(speciesKey, seed);
+    }
+
+    generateProceduralLatinName(seed) {
+        return this.nameGenerator.generateProceduralLatinName(seed);
     }
 
     // --- History & Context ---

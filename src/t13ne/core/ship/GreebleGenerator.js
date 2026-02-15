@@ -1,3 +1,5 @@
+// d:\GIthubreps\t13nge\T13NarrativeGameEngine\src\t13ne\core\ship\GreebleGenerator.js
+
 import * as THREE from 'three';
 import { DecalGeometry } from 'three/examples/jsm/geometries/DecalGeometry.js';
 import { mulberry32 } from './ShipUtils.js';
@@ -27,7 +29,7 @@ export class GreebleGenerator {
             envMapIntensity: 1.0
         });
         this.supportMat = new THREE.MeshStandardMaterial({ color: 0x222222, roughness: 0.7, metalness: 0.4 });
-        this.decalMat = new THREE.MeshStandardMaterial({ transparent: true, opacity: 0.8, roughness: 0.6, metalness: 0.1, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -1 });
+        this.decalMat = new THREE.MeshStandardMaterial({ transparent: true, opacity: 0.9, roughness: 0.8, metalness: 0.2, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -1 });
         this.lightRedMat = new THREE.MeshBasicMaterial({ color: 0xff0000 });
         this.lightGreenMat = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
         this.lightWhiteMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
@@ -41,6 +43,9 @@ export class GreebleGenerator {
         this.rivetGeo = new THREE.SphereGeometry(0.08, 4, 4); // Slightly smaller for scale
         this.ventGeo = new THREE.BoxGeometry(0.8, 0.1, 0.4);
         this.panelGeo = new THREE.BoxGeometry(0.8, 0.05, 0.8);
+
+        this.occupiedZones = []; // Track placed greebles {pos, radius}
+        this.avoidanceZones = []; // Track areas to avoid (cockpits) {pos, radius}
     }
 
     createAntennaArray() {
@@ -172,6 +177,28 @@ export class GreebleGenerator {
             if (!hit.face) return false; // Safety check for non-mesh hits
 
             const pos = hit.point;
+
+            // --- Occupancy Check ---
+            // Calculate approximate radius of object being placed
+            const bbox = new THREE.Box3().setFromObject(objectToPlace);
+            const size = new THREE.Vector3();
+            bbox.getSize(size);
+            const radius = Math.max(size.x, size.z) * 0.6; // Slightly generous radius
+
+            // Check against occupied zones
+            for (const zone of this.occupiedZones) {
+                if (pos.distanceTo(zone.pos) < (radius + zone.radius)) {
+                    return false;
+                }
+            }
+            // Check against avoidance zones (e.g. cockpits)
+            for (const zone of this.avoidanceZones) {
+                if (pos.distanceTo(zone.pos) < (radius + zone.radius)) {
+                    return false;
+                }
+            }
+            // -----------------------
+
             const normal = hit.face.normal.clone();
             normal.transformDirection(hit.object.matrixWorld).normalize();
 
@@ -182,35 +209,38 @@ export class GreebleGenerator {
 
             const instance = objectToPlace.clone();
             
-            if (scaleToFit && hit.object.geometry && hit.object.geometry.attributes.position) {
-                // Calculate face dimensions to prevent overhang
-                const face = hit.face;
-                const posAttr = hit.object.geometry.attributes.position;
-                const va = new THREE.Vector3().fromBufferAttribute(posAttr, face.a);
-                const vb = new THREE.Vector3().fromBufferAttribute(posAttr, face.b);
-                const vc = new THREE.Vector3().fromBufferAttribute(posAttr, face.c);
-                
-                // Transform to world to match scale of object
-                va.applyMatrix4(hit.object.matrixWorld);
-                vb.applyMatrix4(hit.object.matrixWorld);
-                vc.applyMatrix4(hit.object.matrixWorld);
-
-                // Get max edge length of the face
-                const ab = va.distanceTo(vb);
-                const bc = vb.distanceTo(vc);
-                const ca = vc.distanceTo(va);
-                const maxEdge = Math.max(ab, bc, ca);
-                
-                // Get size of object to place
+            if (scaleToFit) {
+                // Advanced Footprint Check: Ensure corners of the object are on the surface
+                // This handles CSG meshes where face size is unreliable
                 const bbox = new THREE.Box3().setFromObject(instance);
-                const size = new THREE.Vector3();
-                bbox.getSize(size);
-                const maxObjDim = Math.max(size.x, size.y, size.z);
+                const width = bbox.max.x - bbox.min.x;
+                const depth = bbox.max.z - bbox.min.z;
                 
-                // Scale down if object is larger than 80% of the face
-                if (maxObjDim > maxEdge * 0.8) {
-                    const scaleFactor = (maxEdge * 0.8) / maxObjDim;
-                    instance.scale.multiplyScalar(scaleFactor);
+                // Create a basis for the placement
+                const up = normal.clone();
+                const right = new THREE.Vector3(1, 0, 0).cross(up).normalize();
+                if (right.lengthSq() < 0.01) right.set(1, 0, 0); // Handle case where normal is X
+                const fwd = new THREE.Vector3().crossVectors(up, right).normalize();
+
+                // Check 4 corners
+                const corners = [
+                    new THREE.Vector3().addScaledVector(right, width/2).addScaledVector(fwd, depth/2),
+                    new THREE.Vector3().addScaledVector(right, -width/2).addScaledVector(fwd, depth/2),
+                    new THREE.Vector3().addScaledVector(right, width/2).addScaledVector(fwd, -depth/2),
+                    new THREE.Vector3().addScaledVector(right, -width/2).addScaledVector(fwd, -depth/2)
+                ];
+
+                let allOnSurface = true;
+                const checkRay = new THREE.Raycaster();
+                
+                for (const cornerOffset of corners) {
+                    const cornerOrigin = pos.clone().add(cornerOffset).add(normal.clone().multiplyScalar(1.0)); // Start slightly above
+                    checkRay.set(cornerOrigin, normal.clone().negate());
+                    const hits = checkRay.intersectObject(hit.object, false);
+                    if (hits.length === 0 || hits[0].distance > 2.0) { // If miss or too far (gap)
+                        instance.scale.multiplyScalar(0.7); // Scale down significantly if overhang detected
+                        break; // Only need to scale once per check cycle (simplified)
+                    }
                 }
             }
 
@@ -257,6 +287,9 @@ export class GreebleGenerator {
             }
             greebleGroup.add(instance);
             placed = true;
+
+            // Register occupied zone
+            this.occupiedZones.push({ pos: instance.position.clone(), radius: radius });
 
             if (applySymmetry) {
                 if (symmetryType === 'REFLECTIVE' && Math.abs(pos.x) > 0.1) {
@@ -308,6 +341,8 @@ export class GreebleGenerator {
                              }
                          }
                          greebleGroup.add(symInstance);
+                         // Register symmetry occupied zone
+                         this.occupiedZones.push({ pos: symInstance.position.clone(), radius: radius });
                      }
                 } else if (symmetryType === 'RADIAL') {
                     const count = radialCount;
@@ -356,6 +391,22 @@ export class GreebleGenerator {
     generate(hullMesh, components, styleConfig, symmetryType, radialAxis, radialCount = 3, hullType = 'SPINE', seed = 0) {
         const random = mulberry32(seed >>> 0);
         if (!hullMesh) return new THREE.Group();
+
+        // Reset tracking arrays
+        this.occupiedZones = [];
+        this.avoidanceZones = [];
+
+        // Identify Cockpits for avoidance
+        components.forEach(c => {
+            if (c.usage && (c.usage.includes('cockpit') || c.usage.includes('bridge'))) {
+                // Estimate radius
+                const s = c.scale || [1,1,1];
+                const d = c.dims || {};
+                // Use max dimension as exclusion radius
+                const r = Math.max((d.width||0)*s[0], (d.height||0)*s[1], (d.depth||0)*s[2], (d.radius||0)*s[0]) * 0.8;
+                this.avoidanceZones.push({ pos: new THREE.Vector3(...c.pos), radius: r });
+            }
+        });
 
         // Handle both single Mesh (Hull) and Group (Skeleton/Proxies)
         let bbox;
@@ -1069,6 +1120,17 @@ export class GreebleGenerator {
             if (intersects.length > 0) {
                 const hit = intersects[0];
                 const pos = hit.point;
+                
+                // --- Occupancy Check for Decals ---
+                // Check if we are placing on top of a greeble
+                const radius = Math.max(width, height) * 0.6;
+                for (const zone of this.occupiedZones) {
+                    if (pos.distanceTo(zone.pos) < (radius + zone.radius)) {
+                        return; // Don't place decal on greeble
+                    }
+                }
+                // ----------------------------------
+
                 const n = hit.face.normal.clone();
                 n.transformDirection(hit.object.matrixWorld).normalize();
                 
@@ -1088,6 +1150,9 @@ export class GreebleGenerator {
                 
                 const mesh = new THREE.Mesh(decalGeo, mat);
                 decalGroup.add(mesh);
+                
+                // Register occupied zone for decal
+                this.occupiedZones.push({ pos: pos.clone(), radius: radius });
 
                 if (checkSymmetry && components.symmetryType === 'REFLECTIVE' && Math.abs(pos.x) > 0.5) {
                     const symOrigin = new THREE.Vector3(-origin.x, origin.y, origin.z);

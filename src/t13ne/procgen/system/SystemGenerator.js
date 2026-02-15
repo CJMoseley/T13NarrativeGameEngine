@@ -243,21 +243,58 @@ export class SystemGenerator {
 
         // 2.8 Extras Generation (Chorus/Cast for local flavor)
         const extras = [];
+        let systemArchetype = null;
+
         if (this.characterGenerator) {
-            // Generate a few locals based on society/tech
-            const numExtras = Math.floor(n3 * 3) + 1;
-            Logger.message(`${funcName}: Generating ${numExtras} extras...`);
-            for (let i = 0; i < numExtras; i++) {
-                const extraType = n4 > 0.9 ? 'Cast' : 'Chorus'; // Mostly Chorus, occasional Cast
-                try {
-                    const char = await this.characterGenerator.generateCharacter(extraType);
-                    await new Promise(r => setTimeout(r, 0)); // Yield to prevent hanging
-                    if (char) {
-                        extras.push(char);
+            // 1. Generate the Detailed System Archetype
+            Logger.message(`${funcName}: Generating System Archetype (Detailed)...`);
+            try {
+                const archetypeSeed = n3 * 12345;
+                const speciesName = speciesLore ? speciesLore.commonName : 'Unknown Species';
+                systemArchetype = await this.characterGenerator.generateCharacter('Detailed', {
+                    seed: archetypeSeed,
+                    species: speciesName
+                });
+
+                if (systemArchetype) {
+                    // 2. Generate Extras based on the Archetype's Annexes/Facets
+                    const numExtras = Math.floor(n3 * 3) + 1;
+                    const sourceFacets = [];
+                    
+                    // Collect facets from Personality and Hitches to seed locals
+                    if (systemArchetype.personalityAnnex) {
+                        if (systemArchetype.personalityAnnex.personas) sourceFacets.push(...systemArchetype.personalityAnnex.personas);
+                        if (systemArchetype.personalityAnnex.cores) sourceFacets.push(...systemArchetype.personalityAnnex.cores);
                     }
-                } catch (e) {
-                    Logger.warn(`${funcName}: CharacterGenerator failed for extra.`, e);
+                    if (systemArchetype.hitches) {
+                        systemArchetype.hitches.forEach(h => {
+                            if (h.tags && h.tags.facets) sourceFacets.push(...h.tags.facets);
+                        });
+                    }
+                    if (sourceFacets.length === 0) sourceFacets.push('Awe'); // Fallback
+
+                    Logger.message(`${funcName}: Generating ${numExtras} extras based on archetype...`);
+                    for (let i = 0; i < numExtras; i++) {
+                        const extraType = n4 > 0.9 ? 'Cast' : 'Chorus';
+                        const seedFacet = sourceFacets[i % sourceFacets.length];
+                        
+                        try {
+                            const char = await this.characterGenerator.generateCharacter(extraType, {
+                                seed: archetypeSeed + i + 1,
+                                facets: { root: { FacetName: seedFacet } }
+                            });
+                            await new Promise(r => setTimeout(r, 0)); // Yield
+                            if (char) {
+                                char.description += ` A local reflecting the ${seedFacet} aspect of the system.`;
+                                extras.push(char);
+                            }
+                        } catch (e) {
+                            Logger.warn(`${funcName}: CharacterGenerator failed for extra.`, e);
+                        }
+                    }
                 }
+            } catch (e) {
+                Logger.warn(`${funcName}: CharacterGenerator failed for archetype/extras.`, e);
             }
         }
 
@@ -316,6 +353,8 @@ export class SystemGenerator {
         
         // Base Star
         stars.push({
+            name: systemNameArray[0],
+            t13Name: systemNameArray,
             radius: 1.0,
             color: star.color || 0xffffaa,
             type: star.starClass || 'G',
@@ -361,6 +400,7 @@ export class SystemGenerator {
             homeWorldNameFull: homeWorldNameArray, // Full name object
             techDetails: swayTech, // Pass full sway tech object for UI
             seeds: [n1, n2, n3, n4], // Pass noise values as seeds for planetary generation
+            systemArchetype: systemArchetype, // The Detailed character for the system
             extras: extras, // Attached generated extras
             star: star, // Pass star data for resource generation context
             stars: stars // Pass multi-star data for rendering

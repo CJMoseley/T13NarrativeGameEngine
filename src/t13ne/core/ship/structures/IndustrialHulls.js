@@ -444,7 +444,15 @@ export const generateYFork = (context) => {
     // We use the symmetry system to generate the other prong(s)
     const symMode = symmetryType === 'ASYMMETRICAL' ? 'REFLECTIVE' : symmetryType;
     
-    attachComponent('fuselage_prong', [x, 0, z], [Math.PI/2, Math.PI - spreadAngle, 0], 'cylinder', 
+    // Orient prong to point from hub to tip
+    const tip = new THREE.Vector3(Math.sin(spreadAngle) * prongLen, 0, -Math.cos(spreadAngle) * prongLen);
+    const dummy = new THREE.Object3D();
+    dummy.position.set(x, 0, z);
+    dummy.lookAt(tip);
+    dummy.rotateX(Math.PI / 2); // Align Y-cylinder to Z-lookAt
+    const rot = [dummy.rotation.x, dummy.rotation.y, dummy.rotation.z];
+
+    attachComponent('fuselage_prong', [x, 0, z], rot, 'cylinder', 
         {radiusTop: 1.2, radiusBottom: 0.8, height: prongLen}, symMode);
 };
 

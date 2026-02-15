@@ -1,0 +1,82 @@
+[
+  {
+    "Type": "Proficiency",
+    "Description": "A Proficiency (or Lite Annex) is the smallest mimetic unit about the Proficiency’s subject. It represents knowledge, memories and experiences that Character has learned or had.",
+    "Rules": "A Single Proficiency is the smallest mimetic unit about the Proficiency’s subject. Two Proficiencies may be added during a Crisis to create a Skill. Or an additional Proficiency may be added to a Skill to create a Talent. Lite Characters just use Lite Annexes, which may increase one level when a Crisis occurs.",
+    "Minimum RT": 0,
+    "GRT": 0,
+    "Maximum_Cards_Played": 1,
+    "Passive_Play": 0
+  },
+  {
+    "Type": "Skill",
+    "Description": "Two Proficiencies working together (usually with the Boons of a Character’s or a Plot’s Statblock of Facets). ",
+    "Rules": "Two Proficiencies add their respective Facet Values to find a Boon Value for the Skill. One Proficiency provides the Root Facet the other the Channelling Facet. Characters may have as many Skill Annexes as their largest Hitch’s Marks (Banes Reduced) and may have no more Skills than active Personality Proficiencies. Descendants (including Extras) may have a maximum number of SKills dependent upon the Master Annex Type. Skills may have Additional Proficiency Slots equal to their Boon Reduced.",
+    "Minimum RT": 0,
+    "GRT": 0,
+    "Maximum_Cards_Played": 1,
+    "Passive_Play": 0
+  },
+  {
+    "Type": "Talent",
+    "Description": "At least three or four Proficiencies working together. One of them must be acting as a Root, another a Channel,  Tangle, another must act as an Umbral.",
+    "Rules": "Characters may have as many additional Proficiencies in a Talent as their number of Hitches Reduced. Alternatively a Talent may have only 1 Umbral and at most 2 Nimbeds. A Character may have as many Talents as their Highest Hitch’s Marks (Banes Reduced) and have active Skills. Umbral Proficiencies in the Talent allows up to 2 Nimbed Proficiency Slots (although you don’t have to have any Nimbeds unless optional Rules would make it a Power.). Descendants (including Extras) may have a maximum number of Talents dependant upon the Master Annex Type. Talent Master Annexes may have 2 Skills.",
+    "Minimum_RT": 5,
+    "GRT": 1,
+    "Maximum_Cards_Played": 2,
+    "Passive_Play": 1
+  },
+  {
+    "Type": "Power",
+    "Description": "At least three, and normally around 5-6 Proficiencies in the same Annex. At least one of them is an Umbral.",
+    "Rules": "A Power may have one additional Proficiency for each Hitch the Character has. Optional Rule: A Power is a Talent with more than 1 Umbral Proficiency (note this reduces the ability of Yarn-Tellers to best Powers with their Talents). A Character may have as many Powers as their Personality Draw, or their Highest Hitch Ruins, or their Number of Active Talents Reduced, which ever is smaller. Descendants (including Extras) may have a maximum of 2 Powers if they have a Super-Annex Master Annex. Master-Annex Powers may have 2 Talents beneath them or Power Score Skills and Additional Proficiencies.",
+    "Minimum RT": 6,
+    "GRT": 2,
+    "Maximum_Cards_Played": 3,
+    "Passive_Play": 2
+  },
+  {
+    "Type": "Super-Annex",
+    "Description": "A Super-Annex is the most powerful of the Descendant Annexes. Any other Annex can be promoted to Super status (becoming a Super-Skill, Super-Talent or Super-Power as required).",
+    "Rules": "A Super Annex automatically adds Boons directly from Proficiency Facets and gains all the Nimbeds of any Facet that is providing Boons to the Annex. A Yarn-Teller (Solo/Fae/Greater Demon) may have 1 Super-Annex. Artefacts can also occasionally grant Super-Annexes to any Character. Descendants can have a maximum of 1 Super-Annex and it must be the Master Annex of the Descendant. A Master Super-Annex can have a maximum of 2 Powers beneath it, or Super-Annex Score Talents, Skills, and Proficiencies.",
+    "Minimum RT": 11,
+    "GRT": 3,
+    "Maximum_Cards_Played": 4,
+    "Passive_Play": 3
+  },
+  {
+    "Type": "Pact",
+    "Description": "A Pact Annex is a separate form of Annex that is created by groups of people working together. Each Member has some access to the Pact based on whether they paid for Skill, Talent, Power, Super Access.",
+    "Rules": "A Pact Annex is not created with Proficiencies, but from the Size and Types of its membership.",
+    "Minimum RT": 0,
+    "GRT": 0,
+    "Maximum_Cards_Played": 5,
+    "Passive_Play": 4
+  },
+  {
+    "Type": "Size",
+    "Description": "A Size Annex is the Master Annex of any Location Descendant, and defines the Size of any Location or Character according to the Sway table as Chi",
+    "Rules": "Size Annexes are not built from Proficiencies, but instead relate solely to the Size of the Location (or Kaiju Monster) being described.",
+    "Minimum RT": 16,
+    "GRT": 4,
+    "Maximum_Cards_Played": 5,
+    "Passive_Play": 4
+  },
+  {
+    "Type": "Personality",
+    "Description": "A Personality Annex is the Master Annex of any major Character (Extras use normal Annex equivalents for simplicity).",
+    "Rules": "Personality Annexes add Hitches, Personas and Cores to a Character. The Personality governs all other Annex usage.",
+    "Minimum RT": 0,
+    "GRT": 0,
+    "Maximum_Cards_Played": 3,
+    "Passive_Play": "Number of Hitches Reduced"
+  },
+  {
+    "Type": "Conflict",
+    "Description": "Conflicts are the Master Annexes of Plots. They can add Monster Facets to the Plot’s Characters, and have direct effects on the Extras, Quests, Ordeals, etc.",
+    "Rules": "Conflicts add the Boons of their Conflict Facets directly together like SUper Annexes.",
+    "Minimum RT": 0,
+    "GRT": 0,
+    "Maximum_Cards_Played": 6
+  }
+]

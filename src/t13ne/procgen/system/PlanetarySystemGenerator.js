@@ -138,9 +138,11 @@ export class PlanetarySystemGenerator {
             let planetName;
             let statusText;
             let isHomeworld = i === homeWorldIndex;
+            let t13Name = null;
 
             if (isHomeworld) {
                 planetName = systemData.homeWorldName;
+                t13Name = systemData.homeWorldNameFull;
                 statusText = `Home World (${systemData.tech.split(' ')[0]})`;
             } else {
                 planetName = this.generateGenericPlanetName(nameSeed, innerSeed, systemData);
@@ -239,6 +241,7 @@ export class PlanetarySystemGenerator {
             planets.push({
                 index: i,
                 name: planetName,
+                t13Name: t13Name,
                 status: statusText,
                 society: society,
                 type: classificationData.type,
@@ -259,7 +262,8 @@ export class PlanetarySystemGenerator {
                 axialTilt: axialTilt.toFixed(1),
                 inclination: inclination.toFixed(2),
                 story: planetStory,
-                meshConfig: meshConfig
+                meshConfig: meshConfig,
+                seeds: [innerSeed, outerSeed, moonSeed, nameSeed]
             });
         }
 

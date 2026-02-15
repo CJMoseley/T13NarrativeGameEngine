@@ -167,8 +167,7 @@ export class OrreryScene extends Scene {
         this.scene.add(point);
 
         // Camera Headlamp to ensure planets are visible regardless of angle
-        const headlamp = new THREE.DirectionalLight(0xffffff, 0.6);
-        headlamp.position.set(0, 0, 1);
+        const headlamp = new THREE.PointLight(0xffffff, 0.5, 0, 0);
         this.activeCamera.add(headlamp);
         this.scene.add(this.activeCamera);
     }
@@ -197,7 +196,7 @@ export class OrreryScene extends Scene {
         const ringGeo = new THREE.RingGeometry(30, 35, 32);
         const material = new THREE.MeshBasicMaterial({ 
             color: 0x00ff00, // Bright Green for visibility
-            depthTest: false, // Always render on top
+            depthTest: false, // Always render on top of other objects
             transparent: true,
             opacity: 0.8,
             side: THREE.DoubleSide
@@ -222,7 +221,7 @@ export class OrreryScene extends Scene {
 
         const pathMat = new THREE.LineBasicMaterial({ 
             color: 0xff00ff, // Magenta
-            depthTest: false, // Always draw on top
+            depthTest: false, // Always draw on top of other objects
             transparent: false, 
             opacity: 1.0
         }); 
@@ -347,15 +346,15 @@ export class OrreryScene extends Scene {
     }
 
     updateCameraMarker(position, mainScale = 100) {
-        if (this.cameraMarker && position) {
+        if (this.cameraMarker && position && !isNaN(position.x)) {
             // Convert main scene position to AU, then to Visual Scale
-            // Note: StellarSystemScene adds STAR_RADIUS (25) to distance, so we subtract it to get raw AU distance
+            // Note: StellarSystemScene does NOT add STAR_RADIUS to orbital distance in realPosition.
             const dist = position.length();
-            const au = Math.max(0, (dist - 25) / mainScale);
+            const au = Math.max(0, dist / mainScale);
             
             let orreryDist = this.getVisualDistanceForAU(au);
             
-            // Ensure marker is visible (not inside star)
+            // Ensure marker is visible (not inside star) and has a minimum distance
             if (orreryDist < this.STAR_RADIUS + 5) orreryDist = this.STAR_RADIUS + 5;
             
             // Clamp to camera far plane to prevent clipping

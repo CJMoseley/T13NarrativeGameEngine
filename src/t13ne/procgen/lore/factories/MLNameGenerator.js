@@ -49,9 +49,9 @@ export class MLNameGenerator {
             if (!embeddingLayer) {
                 throw new Error("No embedding layer found in the loaded model.");
             }
-            this.wordVectors = embeddingLayer.getWeights()[0];
+            this.wordVectors = embeddingLayer.getWeights()[0].clone();
 
-            tf.dispose(model); // We only need the weights, so we can dispose the rest of the model.
+            model.dispose(); // We only need the weights, so we can dispose the rest of the model.
 
             this.modelLoaded = true;
             Logger.message(`Word Vector Name Generator: Model loaded with ${Object.keys(this.vocabulary).length} words.`);

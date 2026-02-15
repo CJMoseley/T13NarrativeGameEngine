@@ -1,4 +1,4 @@
-﻿﻿import PRNG from "../systems/t13ne-prng.js";
+﻿﻿﻿﻿import PRNG from "../systems/t13ne-prng.js";
 import CodexLoader from "../codex/CodexLoader.js"; // Import CodexLoader
 
 class Card {

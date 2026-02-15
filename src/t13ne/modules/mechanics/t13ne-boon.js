@@ -185,6 +185,12 @@ class T13Boons {
                 boon = Math.abs(boon);
                 mul = -1;
             }
+            
+            // Safety cap to prevent infinite loops with large values
+            if (boon > 1000000) {
+                 return Math.floor(3 * Math.log2(boon)) * mul;
+            }
+
             if (boon > 1 && boon < 9223372036854775807) {
                 let retval;
                 for (let i = 0; i <= boon; i++) {
@@ -364,10 +370,3 @@ class T13Boons {
 }
 
 export default T13Boons;
-
-
-
-
-
-
-

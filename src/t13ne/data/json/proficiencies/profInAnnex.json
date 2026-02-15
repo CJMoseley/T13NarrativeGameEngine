@@ -1,0 +1,93 @@
+[
+  {
+    "Type": "Annex_Root",
+    "Description": "The Root of an Annex, normally adds Value to its Annex.",
+    "AddBoonValue": 1,
+    "Short": "Root",
+    "Knot": 81
+  },
+  {
+    "Type": "Annex_Channel",
+    "Description": "The Channel of an Annex, normally adds Value to its Annex.",
+    "AddBoonValue": 1,
+    "Short": "Channel",
+    "Knot": 97
+  },
+  {
+    "Type": "Tangle",
+    "Description": "The Proficiency stands for the Tangle and displaces another when selected. The Tangle will always be accompanied by the original",
+    "AddBoonValue": 0,
+    "Short": "Tangle",
+    "Knot": 1025
+  },
+  {
+    "Type": "Umbral",
+    "Description": "Adds Value to an Annex, but the Annex will only activate if the User meets the Umbral  and Tangle Costs.",
+    "AddBoonValue": 1,
+    "Short": "Umbral",
+    "Knot": 2113
+  },
+  {
+    "Type": "Nimbed",
+    "Description": "Grants an Annex a specific Nimbed ability.",
+    "AddBoonValue": 0,
+    "Short": "Nimbed",
+    "Knot": 4097
+  },
+  {
+    "Type": "Hitch",
+    "Description": "Personality Annexes have Hitches in them.",
+    "AddBoonValue": 1,
+    "Short": "Hitch",
+    "Knot": 332
+  },
+  {
+    "Type": "Extra_Slot",
+    "Description": "Personality and Master-Annexes can store additional Proficiencies in Extra Proficiency Slots. This is one such slot.",
+    "AddBoonValue": 0,
+    "Short": "Slot",
+    "Knot": 1
+  },
+  {
+    "Type": "Conflict_Prof",
+    "Description": "Conflict Proficiencies define the sides of the Plot, and of course help define the Embodiments, like Monsters, Tones, Characters, Locations, and so on.",
+    "AddBoonValue": 1,
+    "Short": "Conflict",
+    "Knot": 67108864
+  },
+  {
+    "Type": "Lite_Prof",
+    "Description": "Lite Proficiencies are only used in Lite Annexes. They have a multiplier rather than having multiple different Proficiencies.",
+    "AddBoonValue": 0,
+    "Short": "Lite",
+    "Knot": 33554432
+  },
+  {
+    "Type": "Persona",
+    "Description": "The Proficiency stands for the Persona of a Personality Annex.",
+    "AddBoonValue": 1,
+    "Short": "Person",
+    "Knot": 65601
+  },
+  {
+    "Type": "Core",
+    "Description": "The Proficiency stands for the Core of a Personality Annex.",
+    "AddBoonValue": 1,
+    "Short": "Core",
+    "Knot": 131137
+  },
+  {
+    "Type": "Trigger",
+    "Description": "The Proficiency stands for the a Trigger Proficiency of a Hitch or Annex.",
+    "AddBoonValue": 0,
+    "Short": "Trigger",
+    "Knot": 8193
+  },
+  {
+    "Type": "T13",
+    "Description": "The Proficiency stands for another T13 Element, such as another Annex, a Hitch or a pattern like a Descendant or Character.",
+    "AddBoonValue": 0,
+    "Short": "T13",
+    "Knot": 8
+  }
+]

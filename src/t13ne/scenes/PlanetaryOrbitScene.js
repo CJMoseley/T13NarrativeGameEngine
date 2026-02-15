@@ -26,7 +26,7 @@ export class PlanetaryOrbitScene extends Scene {
         // Sun position for dramatic lighting
         if (sceneData.sunDirection) {
             this.sunPosition = sceneData.sunDirection.clone().normalize().multiplyScalar(1000);
-        } else {
+        } else if (!this.sunPosition) {
             this.sunPosition = new THREE.Vector3(-800, 200, -500); 
         }
         
@@ -55,7 +55,7 @@ export class PlanetaryOrbitScene extends Scene {
         sunLight.castShadow = true;
         this.scene.add(sunLight);
         
-        const ambient = new THREE.AmbientLight(0x050510, 0.2); 
+        const ambient = new THREE.AmbientLight(0x111111, 0.4); // Increased ambient to prevent pitch black shadows
         this.scene.add(ambient);
         
         const rimLight = new THREE.DirectionalLight(0x445566, 0.8);
@@ -113,31 +113,111 @@ export class PlanetaryOrbitScene extends Scene {
     }
 
     createSkybox() {
-        const prng = ProcGen.createPRNG(this.planetData.name || 'skybox');
-        const r = 10000;
+        const r = 20000; // Increased radius for better depth
         const starsGeometry = new THREE.BufferGeometry();
         const starsVertices = [];
-        for (let i = 0; i < 2000; i++) {
-            const x = (prng.nextDouble() - 0.5) * 2;
-            const y = (prng.nextDouble() - 0.5) * 2;
-            const z = (prng.nextDouble() - 0.5) * 2;
-            const v = new THREE.Vector3(x, y, z).normalize().multiplyScalar(r);
-            starsVertices.push(v.x, v.y, v.z);
+        const starsColors = [];
+
+        // Try to use actual galaxy stars if available via systemData
+        const galaxy = this.viewManager?.gameEngine?.galaxyGenerator?.galaxy;
+        const currentStar = this.systemData.star;
+
+        if (galaxy && galaxy.stars && currentStar) {
+            const currentPos = new THREE.Vector3(currentStar.x || 0, currentStar.y || 0, currentStar.z || 0);
+            
+            galaxy.stars.forEach(star => {
+                const dx = star.x - currentPos.x;
+                const dy = star.y - currentPos.y;
+                const dz = star.z - currentPos.z;
+                const distSq = dx*dx + dy*dy + dz*dz;
+                
+                if (distSq < 100) return; // Skip self
+
+                const dist = Math.sqrt(distSq);
+                const scale = r / dist;
+                
+                starsVertices.push(dx * scale, dy * scale, dz * scale);
+                
+                const brightness = Math.min(1.0, 5000 / Math.max(1, dist)); 
+                const c = new THREE.Color(star.color);
+                starsColors.push(c.r * brightness, c.g * brightness, c.b * brightness);
+            });
+            Logger.message(`PlanetaryOrbitScene: Generated skybox from galaxy data.`);
+        } else {
+            // Fallback
+            const prng = ProcGen.createPRNG(this.planetData.name || 'skybox');
+            for (let i = 0; i < 5000; i++) {
+                const v = new THREE.Vector3(
+                    (prng.nextDouble() - 0.5) * 2,
+                    (prng.nextDouble() - 0.5) * 2,
+                    (prng.nextDouble() - 0.5) * 2
+                ).normalize().multiplyScalar(r);
+                starsVertices.push(v.x, v.y, v.z);
+                starsColors.push(1, 1, 1);
+            }
         }
+
         starsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starsVertices, 3));
-        const starsMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 2, sizeAttenuation: false });
+        starsGeometry.setAttribute('color', new THREE.Float32BufferAttribute(starsColors, 3));
+        const starsMaterial = new THREE.PointsMaterial({ vertexColors: true, size: 2, sizeAttenuation: false, transparent: true });
         const starField = new THREE.Points(starsGeometry, starsMaterial);
         this.scene.add(starField);
+
+        // Add Nebulae (Copy of StellarSystemScene logic for consistency)
+        if (this.viewManager?.gameEngine?.galaxyGenerator && SceneTools && SceneTools.createCloudTexture && currentStar) {
+            const galaxyParams = this.viewManager.gameEngine.galaxyGenerator.params;
+            const galPrng = ProcGen.create32PRNG(galaxyParams.seed || 'galaxy-visuals');
+            const sysPos = new THREE.Vector3(currentStar.x || 0, currentStar.y || 0, currentStar.z || 0);
+            
+            let galaxyRadius = galaxyParams.galaxyRadius || 2000000;
+            const armCount = Math.max(2, galaxyParams.armCount);
+            const winding = galaxyParams.winding || 0.35;
+            const WINDING_SCALE = 8.0;
+            const NEBULA_COLORS = [0x6699ff, 0xff33cc, 0x33ffcc, 0xffcc33, 0xff3333, 0x9966ff, 0x33ff66];
+            const cloudTex = SceneTools.createCloudTexture();
+            const nebulaGroup = new THREE.Group();
+
+            for (let i = 0; i < 1000; i++) { // Reduced count for performance
+                const effectiveRadius = galaxyRadius * (0.85 + galPrng.nextDouble() * 0.3);
+                const rNorm = Math.pow(galPrng.nextDouble(), 0.5); 
+                const rad = rNorm * effectiveRadius;
+                const armIndex = Math.floor(galPrng.nextDouble() * armCount);
+                const armOffset = (Math.PI * 2 / armCount) * armIndex;
+                const A = 100;
+                let theta = -Math.log((rad + A) / A) * winding * WINDING_SCALE + armOffset + (galPrng.nextDouble() - 0.5) * 1.5;
+                const z = (galPrng.nextDouble() + galPrng.nextDouble() - 1.0) * galaxyRadius * 0.01;
+                const x = rad * Math.cos(theta);
+                const y = rad * Math.sin(theta);
+
+                const nebulaPos = new THREE.Vector3(x, y, z);
+                const dist = nebulaPos.distanceTo(sysPos);
+                const dir = new THREE.Vector3().subVectors(nebulaPos, sysPos).normalize();
+                
+                const spriteScale = Math.min((300 / Math.max(dist, 50)) * r * 1.5, r * 1.5);
+                if (spriteScale < 20) continue;
+
+                const sprite = new THREE.Sprite(new THREE.SpriteMaterial({
+                    map: cloudTex, color: NEBULA_COLORS[Math.floor(galPrng.nextDouble() * NEBULA_COLORS.length)],
+                    transparent: true, opacity: 0.1, blending: THREE.AdditiveBlending, depthWrite: false
+                }));
+                sprite.position.copy(dir.multiplyScalar(r * 0.9));
+                sprite.scale.set(spriteScale, spriteScale, 1);
+                nebulaGroup.add(sprite);
+            }
+            this.scene.add(nebulaGroup);
+        }
     }
 
     createSunVisual() {
-        const starColor = this.systemData.starColor || 0xffffee;
-        
-        const sunGeo = new THREE.SphereGeometry(50, 32, 32);
-        const sunMat = new THREE.MeshBasicMaterial({ color: starColor });
-        const sunMesh = new THREE.Mesh(sunGeo, sunMat);
-        sunMesh.position.copy(this.sunPosition);
-        this.scene.add(sunMesh);
+        const stars = this.systemData.stars && this.systemData.stars.length > 0 
+            ? this.systemData.stars 
+            : [{ color: this.systemData.starColor || 0xffffee, radius: 1.0 }];
+
+        // Calculate a basis for offsetting stars perpendicular to the sun direction
+        const sunDir = this.sunPosition.clone().normalize();
+        const up = new THREE.Vector3(0, 1, 0);
+        const right = new THREE.Vector3().crossVectors(sunDir, up).normalize();
+        if (right.lengthSq() < 0.01) right.set(1, 0, 0); // Handle vertical sun
         
         let map = null;
         if (SceneTools && typeof SceneTools.createGlowTexture === 'function') {
@@ -156,16 +236,31 @@ export class PlanetaryOrbitScene extends Scene {
             map = new THREE.CanvasTexture(canvas);
         }
 
-        const spriteMat = new THREE.SpriteMaterial({ 
-            map: map,
-            color: starColor,
-            transparent: true, 
-            opacity: 0.6,
-            blending: THREE.AdditiveBlending
+        stars.forEach((star, i) => {
+            const starColor = star.color || 0xffffee;
+            const radius = (star.radius || 1.0) * 50; 
+            
+            const sunGeo = new THREE.SphereGeometry(radius, 32, 32);
+            const sunMat = new THREE.MeshBasicMaterial({ color: starColor });
+            const sunMesh = new THREE.Mesh(sunGeo, sunMat);
+            
+            // Offset multiple stars slightly
+            const offset = right.clone().multiplyScalar((i - (stars.length - 1) / 2) * 300);
+            sunMesh.position.copy(this.sunPosition).add(offset);
+            
+            this.scene.add(sunMesh);
+
+            const spriteMat = new THREE.SpriteMaterial({ 
+                map: map,
+                color: starColor,
+                transparent: true, 
+                opacity: 0.6,
+                blending: THREE.AdditiveBlending
+            });
+            const sprite = new THREE.Sprite(spriteMat);
+            sprite.scale.set(radius * 12, radius * 12, 1);
+            sunMesh.add(sprite);
         });
-        const sprite = new THREE.Sprite(spriteMat);
-        sprite.scale.set(600, 600, 1);
-        sunMesh.add(sprite);
     }
 
     createMainPlanet() {
@@ -193,9 +288,17 @@ export class PlanetaryOrbitScene extends Scene {
             surfaceMap = null;
         }
         
+        // Robust Color Handling
+        let baseColor = 0x228833;
+        if (pData.color) {
+            if (pData.color.isColor) baseColor = pData.color;
+            else if (pData.color.h !== undefined) baseColor = new THREE.Color().setHSL(pData.color.h, pData.color.s, pData.color.l);
+            else baseColor = new THREE.Color(pData.color);
+        }
+
         const material = new THREE.MeshStandardMaterial({
             map: surfaceMap,
-            color: surfaceMap ? 0xffffff : (pData.color ? new THREE.Color().setHSL(pData.color.h, pData.color.s, pData.color.l) : 0x228833),
+            color: surfaceMap ? 0xffffff : baseColor,
             roughness: 0.8,
             metalness: 0.1
         });
@@ -209,7 +312,8 @@ export class PlanetaryOrbitScene extends Scene {
         // Base geometry radius is 10.
         // We want final radius to be this.scales.planetRadius (100).
         const generatedRadius = 10;
-        const scale = this.scales.planetRadius / generatedRadius;
+        const targetRadius = this.scales.planetRadius * (this.planetData.radius || 1.0);
+        const scale = targetRadius / generatedRadius;
         
         planetGroup.scale.setScalar(scale);
         planetGroup.position.set(0, 0, 0);
@@ -236,6 +340,8 @@ export class PlanetaryOrbitScene extends Scene {
         const baseColor = new THREE.Color();
         if (colorData && colorData.h !== undefined) {
             baseColor.setHSL(colorData.h, colorData.s, colorData.l);
+        } else if (colorData) {
+            baseColor.set(colorData);
         } else {
             baseColor.setHex(0x228833);
         }
@@ -414,6 +520,16 @@ export class PlanetaryOrbitScene extends Scene {
         
         const description = this.planetData.description || "A mysterious world.";
 
+        // Define POI (Point of Interest) for the UI
+        let poi = "Unknown Anomaly";
+        if (this.planetData.resources && this.planetData.resources.length > 0) {
+            poi = `Resource Deposit: ${this.planetData.resources[0].name}`;
+        } else if (this.planetData.biosphere && this.planetData.biosphere !== 'None') {
+            poi = `Life Sign: ${this.planetData.biosphere}`;
+        } else if (this.planetData.type) {
+            poi = `Geological Feature: ${this.planetData.type}`;
+        }
+
         // Create Panel Container
         const panel = document.createElement('div');
         Object.assign(panel.style, {
@@ -554,6 +670,14 @@ export class PlanetaryOrbitScene extends Scene {
         surfaceScene.add(dir);
         
         try {
+            // Ensure seeds exist for surface generation
+            if (!this.planetData.seeds || !Array.isArray(this.planetData.seeds)) {
+                const seed = this._stringToSeed(this.planetData.name || 'surface');
+                // Normalize to 0-1 range
+                const n = (seed % 100000) / 100000;
+                this.planetData.seeds = [n, (n * 1.5) % 1, (n * 2.5) % 1, (n * 3.5) % 1];
+            }
+
             // Generate Environment
             const env = new PlanetSurfaceEnvironment(surfaceScene, this.planetData);
             env.generate();

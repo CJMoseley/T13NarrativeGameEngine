@@ -383,7 +383,8 @@ export class ShipGenerator {
              
              const symMode = symmetryType === 'ASYMMETRICAL' ? 'REFLECTIVE' : symmetryType;
              
-             attachComponent('engine', [ex, 0, ez], [Math.PI/2, Math.PI - spreadAngle, 0], 'cylinder', 
+             // Engines point directly back (Z-axis), embedded in prong tips
+             attachComponent('engine', [ex, 0, ez], [Math.PI/2, 0, 0], 'cylinder', 
                 {radiusTop: 0.8, radiusBottom: 1.1, height: 2.0}, symMode);
         } else if (hullType === 'MONOLITH') {
             // Monolith Engines: Place symmetrically on the rear face
@@ -522,8 +523,9 @@ export class ShipGenerator {
             } else if (hullType === 'STAR') {
                 // Engines at ends of arms
                 const armLen = spineLength;
-                // FIX: Rotate to point local Y outwards along +X. This is a -90 deg rotation around Z.
-                attachComponent('engine', [armLen, 0, 0], [0, 0, -Math.PI / 2], 'cylinder', { radiusTop: 0.5, radiusBottom: 0.8, height: 2.0 });
+                // Engines point down (Vertical)
+                // Offset Y by -0.5 to ensure the wide bottom is below the hull and the top is embedded
+                attachComponent('engine', [armLen, -0.5, 0], [0, 0, 0], 'cylinder', { radiusTop: 0.5, radiusBottom: 0.8, height: 2.0 });
             } else {
                 // Default case, primarily for SPINE
                 if (hullType === 'SPINE') {
@@ -847,7 +849,9 @@ export class ShipGenerator {
                  const angle = 1.0; // Near tip (approx 57 degrees)
                  const cx = Math.cos(angle) * r;
                  const cz = Math.sin(angle) * r;
-                 attachComponent('cockpit', [cx, 0, cz], [0, angle + Math.PI/2, 0], 'box', { width: 2, height: 1.5, depth: 3 });
+                 // Reduced size to ensure it fits within the arc tube (min diam ~2.5)
+                 // Align rotation with the curve tangent (-angle) instead of radial (angle + PI/2)
+                 attachComponent('cockpit', [cx, 0, cz], [0, -angle, 0], 'box', { width: 1.5, height: 1.2, depth: 2.0 });
             } else if (symmetryType === 'ASYMMETRICAL' || hullType === 'BLOB' || hullType === 'MAZE') {
                 // Use the unified side cockpit generator
                 const side = (hullType === 'BLOB') ? 'right' : 'random';
@@ -861,8 +865,8 @@ export class ShipGenerator {
                 cockpitPlaced = true;
             } else {
                 if (hullType === 'STAR') {
-                    // Cockpit on one arm
-                    attachComponent('cockpit', [spineLength * 0.5, 0.5, 0], [0, 0, 0], 'ellipsoid', { width: 1.2, height: 0.8, length: 2.0 }, 'NONE'); // Only one cockpit
+                    // Cockpit centrally placed on hub
+                    attachComponent('cockpit', [0, 1.2, 0], [0, 0, 0], 'ellipsoid', { width: 1.5, height: 1.0, length: 1.5 }, 'NONE');
                 } else if (hullType === 'HORSESHOE') {
                     // Cockpit on one tip of the horseshoe
                     const r = spineLength * 0.6; // Approx radius used in generation
@@ -987,7 +991,7 @@ export class ShipGenerator {
              // Ensure intersection by making it large and centered on the arc tube
              const r = spineLength * 0.8;
              shieldPos = [r, 0, 0]; // Centered on the arc tube
-             shieldDims = { radius: 3.0, tube: 0.5 }; // Large enough to intersect
+             shieldDims = { radius: 1.5, tube: 0.5 }; // Radius 1.5 intersects hull tube (approx rad 1.5)
         } else {
              // Place inside the hull
              shieldPos = hullType === 'DISC' ? [0, 0, 0] : [0, 0, 0];

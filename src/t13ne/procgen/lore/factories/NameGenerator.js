@@ -38,7 +38,12 @@ export class NameGenerator {
             return `Undefined-Template-${Math.floor(prng.nextDouble() * 1000)}`;
         }
 
-        let templateIndex = Math.floor(prng.nextDouble() * grammar.templates.length);
+        let rand = prng.nextDouble();
+        if (typeof rand !== 'number' || isNaN(rand) || rand < 0 || rand >= 1) {
+            rand = Math.random();
+        }
+
+        let templateIndex = Math.floor(rand * grammar.templates.length);
         if (templateIndex >= grammar.templates.length) templateIndex = grammar.templates.length - 1;
         const template = grammar.templates[templateIndex];
 
@@ -57,17 +62,31 @@ export class NameGenerator {
                 Logger.message(`WARN: Word list not found or empty for key: ${wordList}`);
                 return `[${wordList}]`;
             }
-            let wordIndex = Math.floor(prng.nextDouble() * list.length);
+            
+            let wRand = prng.nextDouble();
+            if (typeof wRand !== 'number' || isNaN(wRand) || wRand < 0 || wRand >= 1) {
+                wRand = Math.random();
+            }
+            
+            let wordIndex = Math.floor(wRand * list.length);
             if (wordIndex >= list.length) wordIndex = list.length - 1;
             return list[wordIndex];
         });
 
         // Handle procedural number suffixes (e.g., "-{RANDOM_100}")
         name = name.replace(/\{RANDOM_(\d+)\}/g, (match, max) => {
-            return Math.floor(prng.nextDouble() * parseInt(max, 10));
+            let nRand = prng.nextDouble();
+            if (typeof nRand !== 'number' || isNaN(nRand) || nRand < 0 || nRand >= 1) {
+                nRand = Math.random();
+            }
+            return Math.floor(nRand * parseInt(max, 10));
         });
 
-        return this._capitalize(name);
+        const finalName = this._capitalize(name);
+        if (this._isBanned(finalName)) {
+             return this.generate(grammarKey, seed + "_retry");
+        }
+        return finalName;
     }
 
     /**
@@ -77,14 +96,8 @@ export class NameGenerator {
      * @returns {string} The generated name.
      */
     generateSyllabicName(seed, flavor = 'alien') {
-        let prng;
         const T13NE = this.pluginManager?.getApi('T13', 'T13NE');
         const T13NE_PRNG = T13NE?.getModule('PRNG');
-        if (T13NE_PRNG) {
-            prng = T13NE_PRNG.create(seed);
-        } else {
-            prng = { nextDouble: () => Math.random() };
-        }
 
         const sylls = {
             alien: {
@@ -103,26 +116,54 @@ export class NameGenerator {
                 end: ['k', 'g', 't', 'd', 'p', 'rk', 'rg', 'rd', 'kt', 'gn', 'ch']
             },
             soft: {
-                start: ['L', 'S', 'F', 'H', 'V', 'W', 'M', 'N', 'Th', 'Sh', 'El', 'Al', 'Si', 'Fe'],
+                start: ['L', 'S', 'F', 'H', 'V', 'W', 'M', 'N', 'Th', 'Sh', 'El', 'Al', 'Si'],
                 mid: ['a', 'e', 'i', 'o', 'u', 'ea', 'ia', 'ai', 'ei', 'ie', 'ae'],
                 end: ['l', 's', 'n', 'm', 'th', 'h', 'r', 'ss', 'll', 'sh']
             }
         };
 
         const set = sylls[flavor] || sylls.alien;
-        const length = 2 + Math.floor(prng.nextDouble() * 2); // 2-3 syllables
-        let name = '';
         
-        for (let i = 0; i < length; i++) {
-            const s = set.start[Math.floor(prng.nextDouble() * set.start.length)];
-            const m = set.mid[Math.floor(prng.nextDouble() * set.mid.length)];
-            name += s + m;
+        let name = '';
+        let attempts = 0;
+        
+        while (attempts < 10) {
+            let currentSeed = seed;
+            if (attempts > 0) currentSeed = `${seed}_${attempts}`;
             
-            // Chance for end consonant, higher on last syllable
-            if (prng.nextDouble() > (i === length - 1 ? 0.2 : 0.8)) {
-                const e = set.end[Math.floor(prng.nextDouble() * set.end.length)];
-                name += e;
+            let prng;
+            if (T13NE_PRNG) {
+                prng = T13NE_PRNG.create(currentSeed);
+            } else {
+                prng = { nextDouble: () => Math.random() };
             }
+
+            let rand = prng.nextDouble();
+            if (typeof rand !== 'number' || isNaN(rand) || rand < 0 || rand >= 1) {
+                rand = Math.random();
+            }
+            
+            let length = 2 + Math.floor(rand * 4); // 2-5 syllables
+            if (length > 13) length = 13;
+            name = '';
+            
+            for (let i = 0; i < length; i++) {
+                const getRand = () => {
+                    let r = prng.nextDouble();
+                    return (typeof r !== 'number' || isNaN(r) || r < 0 || r >= 1) ? Math.random() : r;
+                };
+                const s = set.start[Math.floor(getRand() * set.start.length)];
+                const m = set.mid[Math.floor(getRand() * set.mid.length)];
+                name += s + m;
+                
+                if (getRand() > (i === length - 1 ? 0.2 : 0.8)) {
+                    const e = set.end[Math.floor(getRand() * set.end.length)];
+                    name += e;
+                }
+            }
+            
+            if (!this._isBanned(name)) return this._capitalize(name.toLowerCase());
+            attempts++;
         }
         
         return this._capitalize(name.toLowerCase());
@@ -130,6 +171,12 @@ export class NameGenerator {
 
     _capitalize(str) {
         return str.replace(/\b\w/g, char => char.toUpperCase());
+    }
+
+    _isBanned(name) {
+        const lower = name.toLowerCase();
+        const banned = ['femme', 'homme', 'sex', 'xxx'];
+        return banned.includes(lower);
     }
 
     // --- Specific Name Generation Methods ---
@@ -204,6 +251,7 @@ export class NameGenerator {
     }
 
     generateAlienName(seed) {
+        Logger.message(`NameGenerator: generateAlienName called with seed ${seed}`);
         let prng;
         const T13NE = this.pluginManager?.getApi('T13', 'T13NE');
         const T13NE_PRNG = T13NE?.getModule('PRNG');
@@ -212,10 +260,12 @@ export class NameGenerator {
         // Check if the specific grammar exists
         // 50% chance to use grammar if available, otherwise use syllabic for variety
         if (LoreData.naming && LoreData.naming['ALIEN_NAMES'] && prng.nextDouble() > 0.5) {
+            Logger.message(`NameGenerator: Using ALIEN_NAMES grammar`);
             return this.generate('ALIEN_NAMES', seed);
         }
 
         // Fallback to infinite syllabic generation
+        Logger.message(`NameGenerator: Using syllabic generation`);
         return this.generateSyllabicName(seed, 'alien');
     }
 
@@ -263,6 +313,13 @@ export class NameGenerator {
         }
 
         if (speciesKey === 'FirstRelic') return 'The Silent Relic';
+        
+        // Ensure alien species get alien homeworld names
+        const isHuman = speciesKey === 'SPECIES_HUMANS' || speciesKey === 'Humans';
+        if (!isHuman) {
+            return this.generateAlienName(seed + "-homeworld");
+        }
+
         if (techLevelKey === 'T0') return `${speciesName.split('(')[0].trim().split(' ')[0]} Home`;
 
         // Descriptive naming based on star properties

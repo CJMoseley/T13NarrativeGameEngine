@@ -1,0 +1,37 @@
+[
+  {
+    "Type": "Individual",
+    "Description": "Individual Personalities are how Alternates always begin, they are unaware of their Alternates, or have none.",
+    "Rules": "This Alternate is usually the original Character."
+  },
+  {
+    "Type": "Coalesced",
+    "Description": "For the Character these Alternates are essentially merged, becoming one Personality.",
+    "Rules": "<p>The new Coalesced Personality will retain Personality and Core, from all merged personalities. So the Coalesced Character may augment their Personality Annex with another Alternate&#39;s Personality and Core replacing two Hitches.<br/>\n\t\tHitches from the Alternate may be traded out for another Alternate’s Hitches, as desired.<br/>\n\t\tIf two Alternates have the same Hitch, Personality or Core, the Values of both may be added together to calculate the Character&#39;s Personality Boon. So two &quot;Same&quot; Alternates that coalesce would double their Personality Value and increase in Boon accordingly. <br/>\n\t\tAll Coalesced Alternates may add Annexes to the (usually larger) pool of Annexes the Character is currently using. Changing which Annexes are currently available costs an amount of Chi equal to the Annex Type (e.g. Swapping a Skill costs 2 Chi). <br/>\n\t\tAll Personality Proficiencies are always available from all Coalesced Alternates.</p>"
+  },
+  {
+    "Type": "Integrated",
+    "Description": "When you have integrated two Alternates, they no longer struggle for control. They have worked out how to compromise and work together. They may dream each other&#39;s dreams, blending their Alternates life with their own. ",
+    "Rules": "Two integrated Alternates may swap any (or all) Annexes between each other, lending abilities from their world, or time, to the Alternate in the other. However, the cost must be paid for both (e.g. For the Alternates to swap 2 Talents over would cost 10 Chi, 5 for each).<br/>\n\t\tPersonality Proficiencies from both Alternates are always available to either."
+  },
+  {
+    "Type": "Co-dominant",
+    "Description": "These Alternates are very much separate from each other, but they have worked out how to hand each other control, for a while. Often they will dream of the other life, especially around those moments where control changes hands. ",
+    "Rules": "Handing over control of the body for a given period costs Chi/Sway equal to the duration (e.g. 12 Chi would buy a day). However, either Alternate can end the swap during that time period for free."
+  },
+  {
+    "Type": "Split",
+    "Description": "These Alternates argue for control over the body. They must keep separate counts of Chi, etc, and you can also have different Players control the different Alternates.",
+    "Rules": "Wresting control of the body has a cost depending on the situation, these costs are noted in Sway (or Diff)/Chi/Yarn or as modifiers of the same.<br><div class=\"t13ne-tablewrap\"><table class=\"t13ne-table\"><thead><tr><th>Situation</th><th>Cost in Sway/Chi/Yarn</th></tr></thead><tbody><tr><td>Normally</td><td>Active Personality Boon x2/ Active Personality Boon/ APB Reduced</td></tr><tr><td>Alternate is trying to wrest back control of their own body</td><td>Halve</td></tr><tr><td>Alternate would gain Chi from Personality or Core</td><td>Halve</td></tr><tr><td>Events would trigger Alternate’s Hitch</td><td>-Twice Hitch Boon/-Hitch Boon/-Hitch Bane points</td></tr></tbody></table></div>\n\t\t<p>So if your body is possessed by a demon with a Personality Boon of 57 when you would gain Chi from your Personality and Core then you can possibly wrest control back with a Personality Annex roll of 14. Card Ordeals can also be used to simulate these contests, with Crippling or greater Wounds knocking an Alternate unconscious (such contests are not usually High Stakes, but can be).</p>"
+  },
+  {
+    "Type": "Unstable",
+    "Description": "Even worse than Split, is Unstable, which is basically what happens if you have multiple Split Alternates.",
+    "Rules": "For Unstable Characters all Alternates compete to take control, with the winner buying some time based on how much they beat everyone else by. You can run a great game, and tell an amazing story, having each Player control a separate Alternate in an Unstable Character."
+  },
+  {
+    "Type": "Subsumed",
+    "Description": "When an Alternate gives up fighting for dominance then they may become subsumed by another Alternate.",
+    "Rules": "Subsumed characters are considered dormant. Their Proficiencies and Annexes may be swapped out by the Dominant Alternate. The subsuming Alternate may choose to add one Hitch from the Subsumed Alternate to their own Personality Annex, if this Hitch is the same as one they already have then they should add the Hitch Boons, this may increase the Tier to Woe, granting access to Twists."
+  }
+]

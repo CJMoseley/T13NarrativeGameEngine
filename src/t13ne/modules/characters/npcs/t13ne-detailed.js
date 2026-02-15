@@ -108,7 +108,8 @@ export class Detailed extends Character {
         const baseScale = -1;
         const finalScale = baseScale + charData.scaleModifier;
         let statblock;
-        if (options.species && options.species !== 'Humans' && options.species !== 'Progenitor') {
+        const standardSpecies = ['Humans', 'Drones', 'Therios', 'Human', 'Drone', 'Therio'];
+        if (options.species && !standardSpecies.includes(options.species)) {
             statblock = Tapestry.createSpeciesStatblock(options.species, finalScale);
         } else {
             statblock = Tapestry.randomiseStats(0, 0, finalScale);
