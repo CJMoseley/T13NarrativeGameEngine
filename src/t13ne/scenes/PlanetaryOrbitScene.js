@@ -6,6 +6,9 @@ import { SceneTools } from '../core/SceneTools.js';
 import ProcGen from '../procgen/ProcGen.js';
 import { PlanetSurfaceEnvironment } from '../procgen/planet/PlanetSurfaceEnvironment.js';
 import { PlanetaryRenderer } from '../rendering/PlanetaryRenderer.js';
+import { Starbox } from './scenecomponents/Starbox.js';
+import { Planet } from './scenecomponents/Planet.js';
+import { Asteroid } from './scenecomponents/Asteroid.js';
 
 export class PlanetaryOrbitScene extends Scene {
     constructor(viewManager, sceneData) {
@@ -27,7 +30,8 @@ export class PlanetaryOrbitScene extends Scene {
         if (sceneData.sunDirection) {
             this.sunPosition = sceneData.sunDirection.clone().normalize().multiplyScalar(1000);
         } else if (!this.sunPosition) {
-            this.sunPosition = new THREE.Vector3(-800, 200, -500); 
+            // Default to front-right-up lighting for good visibility if no direction provided
+            this.sunPosition = new THREE.Vector3(500, 300, 500); 
         }
         
         this.asteroidObj = null;
@@ -39,6 +43,7 @@ export class PlanetaryOrbitScene extends Scene {
         this.introTime = 0;
         this.infoPanel = null;
         this.shipSceneReady = false;
+        this.starbox = null;
     }
 
     async prepare(onProgress) {
@@ -55,7 +60,11 @@ export class PlanetaryOrbitScene extends Scene {
         sunLight.castShadow = true;
         this.scene.add(sunLight);
         
-        const ambient = new THREE.AmbientLight(0x111111, 0.4); // Increased ambient to prevent pitch black shadows
+        // Add Hemisphere Light for vibrant sci-fi look (Sky color, Ground color, Intensity)
+        const hemiLight = new THREE.HemisphereLight(0xddeeff, 0x0f0e0d, 0.6); 
+        this.scene.add(hemiLight);
+
+        const ambient = new THREE.AmbientLight(0x111111, 0.2); 
         this.scene.add(ambient);
         
         const rimLight = new THREE.DirectionalLight(0x445566, 0.8);
@@ -66,8 +75,14 @@ export class PlanetaryOrbitScene extends Scene {
     setupCamera() {
         this.activeCamera.position.set(0, 200, 800);
         this.activeCamera.lookAt(0, 0, 0);
+
+        // Adjust FOV to make planet fill ~50% of the view
+        // Smaller FOV = More Zoom
+        this.activeCamera.fov = 35;
+        this.activeCamera.updateProjectionMatrix();
+
         this.activeCamera.near = 0.1;
-        this.activeCamera.far = 20000;
+        this.activeCamera.far = 100000; // Increased far plane to ensure skybox visibility
         this.activeCamera.updateProjectionMatrix();
         this.scene.add(this.activeCamera);
         
@@ -113,99 +128,9 @@ export class PlanetaryOrbitScene extends Scene {
     }
 
     createSkybox() {
-        const r = 20000; // Increased radius for better depth
-        const starsGeometry = new THREE.BufferGeometry();
-        const starsVertices = [];
-        const starsColors = [];
-
-        // Try to use actual galaxy stars if available via systemData
-        const galaxy = this.viewManager?.gameEngine?.galaxyGenerator?.galaxy;
-        const currentStar = this.systemData.star;
-
-        if (galaxy && galaxy.stars && currentStar) {
-            const currentPos = new THREE.Vector3(currentStar.x || 0, currentStar.y || 0, currentStar.z || 0);
-            
-            galaxy.stars.forEach(star => {
-                const dx = star.x - currentPos.x;
-                const dy = star.y - currentPos.y;
-                const dz = star.z - currentPos.z;
-                const distSq = dx*dx + dy*dy + dz*dz;
-                
-                if (distSq < 100) return; // Skip self
-
-                const dist = Math.sqrt(distSq);
-                const scale = r / dist;
-                
-                starsVertices.push(dx * scale, dy * scale, dz * scale);
-                
-                const brightness = Math.min(1.0, 5000 / Math.max(1, dist)); 
-                const c = new THREE.Color(star.color);
-                starsColors.push(c.r * brightness, c.g * brightness, c.b * brightness);
-            });
-            Logger.message(`PlanetaryOrbitScene: Generated skybox from galaxy data.`);
-        } else {
-            // Fallback
-            const prng = ProcGen.createPRNG(this.planetData.name || 'skybox');
-            for (let i = 0; i < 5000; i++) {
-                const v = new THREE.Vector3(
-                    (prng.nextDouble() - 0.5) * 2,
-                    (prng.nextDouble() - 0.5) * 2,
-                    (prng.nextDouble() - 0.5) * 2
-                ).normalize().multiplyScalar(r);
-                starsVertices.push(v.x, v.y, v.z);
-                starsColors.push(1, 1, 1);
-            }
-        }
-
-        starsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starsVertices, 3));
-        starsGeometry.setAttribute('color', new THREE.Float32BufferAttribute(starsColors, 3));
-        const starsMaterial = new THREE.PointsMaterial({ vertexColors: true, size: 2, sizeAttenuation: false, transparent: true });
-        const starField = new THREE.Points(starsGeometry, starsMaterial);
-        this.scene.add(starField);
-
-        // Add Nebulae (Copy of StellarSystemScene logic for consistency)
-        if (this.viewManager?.gameEngine?.galaxyGenerator && SceneTools && SceneTools.createCloudTexture && currentStar) {
-            const galaxyParams = this.viewManager.gameEngine.galaxyGenerator.params;
-            const galPrng = ProcGen.create32PRNG(galaxyParams.seed || 'galaxy-visuals');
-            const sysPos = new THREE.Vector3(currentStar.x || 0, currentStar.y || 0, currentStar.z || 0);
-            
-            let galaxyRadius = galaxyParams.galaxyRadius || 2000000;
-            const armCount = Math.max(2, galaxyParams.armCount);
-            const winding = galaxyParams.winding || 0.35;
-            const WINDING_SCALE = 8.0;
-            const NEBULA_COLORS = [0x6699ff, 0xff33cc, 0x33ffcc, 0xffcc33, 0xff3333, 0x9966ff, 0x33ff66];
-            const cloudTex = SceneTools.createCloudTexture();
-            const nebulaGroup = new THREE.Group();
-
-            for (let i = 0; i < 1000; i++) { // Reduced count for performance
-                const effectiveRadius = galaxyRadius * (0.85 + galPrng.nextDouble() * 0.3);
-                const rNorm = Math.pow(galPrng.nextDouble(), 0.5); 
-                const rad = rNorm * effectiveRadius;
-                const armIndex = Math.floor(galPrng.nextDouble() * armCount);
-                const armOffset = (Math.PI * 2 / armCount) * armIndex;
-                const A = 100;
-                let theta = -Math.log((rad + A) / A) * winding * WINDING_SCALE + armOffset + (galPrng.nextDouble() - 0.5) * 1.5;
-                const z = (galPrng.nextDouble() + galPrng.nextDouble() - 1.0) * galaxyRadius * 0.01;
-                const x = rad * Math.cos(theta);
-                const y = rad * Math.sin(theta);
-
-                const nebulaPos = new THREE.Vector3(x, y, z);
-                const dist = nebulaPos.distanceTo(sysPos);
-                const dir = new THREE.Vector3().subVectors(nebulaPos, sysPos).normalize();
-                
-                const spriteScale = Math.min((300 / Math.max(dist, 50)) * r * 1.5, r * 1.5);
-                if (spriteScale < 20) continue;
-
-                const sprite = new THREE.Sprite(new THREE.SpriteMaterial({
-                    map: cloudTex, color: NEBULA_COLORS[Math.floor(galPrng.nextDouble() * NEBULA_COLORS.length)],
-                    transparent: true, opacity: 0.1, blending: THREE.AdditiveBlending, depthWrite: false
-                }));
-                sprite.position.copy(dir.multiplyScalar(r * 0.9));
-                sprite.scale.set(spriteScale, spriteScale, 1);
-                nebulaGroup.add(sprite);
-            }
-            this.scene.add(nebulaGroup);
-        }
+        const r = 60000; // Increased radius to be well within far plane but background
+        this.starbox = new Starbox(this.viewManager.gameEngine);
+        this.starbox.generate(this.scene, this.systemData.star, r);
     }
 
     createSunVisual() {
@@ -275,59 +200,15 @@ export class PlanetaryOrbitScene extends Scene {
             atmosphere: this.planetData.atmosphere || 'Nitrogen-Oxygen',
             color: this.planetData.color
         };
-
-        let planetGroup = new THREE.Group();
         
-        // 1. Surface Sphere with Generated Texture
-        const geometry = new THREE.SphereGeometry(10, 64, 64);
-        let surfaceMap;
-        try {
-            surfaceMap = this.createPlanetTexture(pData.color);
-        } catch (e) {
-            Logger.warn("PlanetaryOrbitScene: Failed to generate texture, using fallback.", e);
-            surfaceMap = null;
-        }
-        
-        // Robust Color Handling
-        let baseColor = 0x228833;
-        if (pData.color) {
-            if (pData.color.isColor) baseColor = pData.color;
-            else if (pData.color.h !== undefined) baseColor = new THREE.Color().setHSL(pData.color.h, pData.color.s, pData.color.l);
-            else baseColor = new THREE.Color(pData.color);
-        }
-
-        const material = new THREE.MeshStandardMaterial({
-            map: surfaceMap,
-            color: surfaceMap ? 0xffffff : baseColor,
-            roughness: 0.8,
-            metalness: 0.1
-        });
-        const surfaceMesh = new THREE.Mesh(geometry, material);
-        planetGroup.add(surfaceMesh);
-
-        // 2. Cloud Sphere
-        this.createAtmosphere(planetGroup);
-
-        // Scale Logic:
-        // Base geometry radius is 10.
-        // We want final radius to be this.scales.planetRadius (100).
-        const generatedRadius = 10;
         const targetRadius = this.scales.planetRadius * (this.planetData.radius || 1.0);
-        const scale = targetRadius / generatedRadius;
         
-        planetGroup.scale.setScalar(scale);
-        planetGroup.position.set(0, 0, 0);
-        
-        // Ensure shadows are cast/received
-        planetGroup.traverse(child => {
-            if (child.isMesh) {
-                child.castShadow = true;
-                child.receiveShadow = true;
-            }
-        });
-
+        // Use Planet class with highDetail = true and position the planet to the left
+        // Note: Planet class defaults to radius 10, so we pass targetRadius directly
+        const planetGroup = new Planet(pData, targetRadius, true);
+        planetGroup.position.set(-targetRadius * 0.35, 0, 0); // Offset to the left
         this.scene.add(planetGroup);
-        this.planetMesh = planetGroup;
+        this.planetMesh = planetGroup; // Store ref to group for rotation
     }
 
     createPlanetTexture(colorData) {
@@ -366,7 +247,8 @@ export class PlanetaryOrbitScene extends Scene {
     }
 
     createAtmosphere(group) {
-        const cloudGeo = new THREE.SphereGeometry(10.15, 64, 64);
+        const cloudGeo = new THREE.SphereGeometry(10.15, 64, 64); 
+         
         let cloudMap = null;
         if (SceneTools && typeof SceneTools.createCloudTexture === 'function') {
              cloudMap = SceneTools.createCloudTexture();
@@ -405,7 +287,7 @@ export class PlanetaryOrbitScene extends Scene {
                     moonMesh = this.planetGenerator.generatePlanetMesh(moonData);
                 } else {
                     const moonSeed = this._stringToSeed(moonData.name || `moon_${index}`);
-                    moonMesh = this.planetGenerator.generateAsteroidMesh(moonSeed, 5);
+                    moonMesh = new Asteroid(5);
                 }
             } catch (e) {
                 moonMesh = new THREE.Mesh(new THREE.SphereGeometry(5, 16, 16), new THREE.MeshStandardMaterial({ color: 0x888888 }));
@@ -470,7 +352,7 @@ export class PlanetaryOrbitScene extends Scene {
     createCinematicAsteroid() {
         // A cinematic asteroid passing by in the foreground
         const prng = ProcGen.createPRNG(this.planetData.name || 'asteroid');
-        const asteroid = this.planetGenerator.generateAsteroidMesh(prng.nextDouble(), 3);
+        const asteroid = new Asteroid(3);
         asteroid.scale.setScalar(3.0); 
         
         // Start position: Off screen to the left
@@ -640,6 +522,12 @@ export class PlanetaryOrbitScene extends Scene {
         statusDiv.innerText = "ORBITAL SCAN COMPLETE. PREPARING LANDING...";
         panel.appendChild(statusDiv);
 
+        // Ensure the info panel stays to the right and doesn't overlap the planet
+        panel.style.left = 'auto';
+        panel.style.right = '5%';
+
+
+
         document.body.appendChild(panel);
         this.infoPanel = panel;
         
@@ -670,11 +558,11 @@ export class PlanetaryOrbitScene extends Scene {
         surfaceScene.add(dir);
         
         try {
-            // Ensure seeds exist for surface generation
+            // Ensure seeds exist for surface generation, use fallback
             if (!this.planetData.seeds || !Array.isArray(this.planetData.seeds)) {
                 const seed = this._stringToSeed(this.planetData.name || 'surface');
                 // Normalize to 0-1 range
-                const n = (seed % 100000) / 100000;
+                const n = Math.abs(seed % 100000) / 100000;
                 this.planetData.seeds = [n, (n * 1.5) % 1, (n * 2.5) % 1, (n * 3.5) % 1];
             }
 
@@ -743,6 +631,10 @@ export class PlanetaryOrbitScene extends Scene {
     update(time, delta) {
         super.update(time, delta);
         const dt = delta * 0.001;
+
+        if (this.starbox) {
+            this.starbox.update(time * 0.001);
+        }
 
         // Rotate Planet
         if (this.planetMesh) {

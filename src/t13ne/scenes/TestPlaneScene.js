@@ -1,6 +1,6 @@
 import * as THREE from 'three';
-import Logger from '../core/Logger.js';
-import { Scene } from '../core/Scene.js';
+import Logger from '/src/t13ne/core/Logger.js';
+import { Scene } from '/src/t13ne/core/Scene.js';
 
 /**
  * TestPlaneScene

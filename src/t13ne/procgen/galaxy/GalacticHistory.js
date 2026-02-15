@@ -1,6 +1,6 @@
-import { GalacticTimelineGenerator } from './GalacticTimelineGenerator.js';
-import { LoreData } from '../lore/LoreData.js';
-import Logger from '../../core/Logger.js';
+import { GalacticTimelineGenerator } from '/src/t13ne/procgen/galaxy/GalacticTimelineGenerator.js';
+import { LoreData } from '/src/t13ne/procgen/lore/LoreData.js';
+import Logger from '/src/t13ne/core/Logger.js';
 
 /**
  * Manages the galactic timeline and historical events.

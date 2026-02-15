@@ -27,6 +27,15 @@ export class ShipGenerator {
         if (!seedVal) seedVal = Date.now();
         const random = mulberry32(seedVal >>> 0);
 
+        // Generate a consistent theme for the entire ship
+        let shipManufacturer = FALLBACK_MANUFACTURERS[Math.floor(random() * FALLBACK_MANUFACTURERS.length)];
+        const activeCorps = GalacticHistory.getCorporations()?.filter(c => c.status === 'Active');
+        if (activeCorps && activeCorps.length > 0) {
+            shipManufacturer = activeCorps[Math.floor(random() * activeCorps.length)].name;
+        }
+        const shipTech = TECH_SPECS[Math.floor(random() * TECH_SPECS.length)];
+        const shipQuality = QUALITIES[Math.floor(random() * QUALITIES.length)];
+
         const size = config.size || 'medium'; // small, medium, large
         const techLevel = config.techLevel || 1;
 
@@ -84,13 +93,19 @@ export class ShipGenerator {
             }
 
             if (!name) {
-                let manufacturerName = FALLBACK_MANUFACTURERS[Math.floor(random() * FALLBACK_MANUFACTURERS.length)];
-                const activeCorps = GalacticHistory.getCorporations()?.filter(c => c.status === 'Active');
-
-                if (activeCorps && activeCorps.length > 0) {
-                    manufacturerName = activeCorps[Math.floor(random() * activeCorps.length)].name;
+                // Apply consistent theme only for Organic/Bio ships to ensure components group together
+                if (selectedStyle === 'ORGANIC' || (typeof hullType !== 'undefined' && hullType.startsWith('BIO_'))) {
+                    name = `${shipManufacturer} ${shipTech} ${displayName} ${shipQuality}`;
+                } else {
+                    let localManu = FALLBACK_MANUFACTURERS[Math.floor(random() * FALLBACK_MANUFACTURERS.length)];
+                    const activeCorps = GalacticHistory.getCorporations()?.filter(c => c.status === 'Active');
+                    if (activeCorps && activeCorps.length > 0) {
+                        localManu = activeCorps[Math.floor(random() * activeCorps.length)].name;
+                    }
+                    const localTech = TECH_SPECS[Math.floor(random() * TECH_SPECS.length)];
+                    const localQual = QUALITIES[Math.floor(random() * QUALITIES.length)];
+                    name = `${localManu} ${localTech} ${displayName} ${localQual}`;
                 }
-                name = `${manufacturerName} ${TECH_SPECS[Math.floor(random() * TECH_SPECS.length)]} ${displayName} ${QUALITIES[Math.floor(random() * QUALITIES.length)]}`;
             }
 
             // Generate a more robust unique ID

@@ -15,7 +15,7 @@ export class GreebleGenerator {
         this.antennaMat = new THREE.MeshStandardMaterial({ color: 0xaaaaaa, roughness: 0.4, metalness: 0.8 });
         // Lit from within look: High emissive, low roughness
         this.glassMat = new THREE.MeshStandardMaterial({ 
-            color: 0x111111, 
+            color: 0x444444,
             emissive: 0xaaddff,
             emissiveIntensity: 2.0,
             roughness: 0.2,
@@ -32,15 +32,17 @@ export class GreebleGenerator {
         this.decalMat = new THREE.MeshStandardMaterial({ transparent: true, opacity: 0.9, roughness: 0.8, metalness: 0.2, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -1 });
         this.lightRedMat = new THREE.MeshBasicMaterial({ color: 0xff0000 });
         this.lightGreenMat = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-        this.lightWhiteMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
-        this.lightAmberMat = new THREE.MeshBasicMaterial({ color: 0xffaa00 });
+        this.lightWhiteMat = new THREE.MeshBasicMaterial({ color: 0xffffff }); // Red/Orange for collectors
+		this.lightAmberMat = new THREE.MeshBasicMaterial({ color: 0xffaa00 });
+
+        // More distinctive engine indicator lights
+
         this.lightBlueMat = new THREE.MeshBasicMaterial({ color: 0x00aaff });
         this.solarMat = new THREE.MeshStandardMaterial({ color: 0xc0c0c0, roughness: 0.2, metalness: 1.0, emissive: 0x111111, emissiveIntensity: 0.1 });
         this.warpGlowMat = new THREE.MeshBasicMaterial({ color: 0x00aaff, transparent: true, opacity: 0.9 }); // Blue glow for strips
         this.bussardMat = new THREE.MeshBasicMaterial({ color: 0xff3300, transparent: true, opacity: 0.9 }); // Red/Orange for collectors
 
         // Geometries
-        this.rivetGeo = new THREE.SphereGeometry(0.08, 4, 4); // Slightly smaller for scale
         this.ventGeo = new THREE.BoxGeometry(0.8, 0.1, 0.4);
         this.panelGeo = new THREE.BoxGeometry(0.8, 0.05, 0.8);
 
@@ -48,7 +50,7 @@ export class GreebleGenerator {
         this.avoidanceZones = []; // Track areas to avoid (cockpits) {pos, radius}
     }
 
-    createAntennaArray() {
+	createAntennaArray() {
         const group = new THREE.Group();
         // Construct the antenna such that its base is at (0,0,0) and its "up" is (0,1,0)
         // The blade and glow will be children of a sub-group that can be rotated.
@@ -71,6 +73,25 @@ export class GreebleGenerator {
         group.add(bladeContainer);
 
         return group;
+    }
+
+    createRivet() {
+        // Try to create variable rivet shape for variety
+        const roll = Math.random();
+        let rivetGeo;
+        if (roll < 0.33) {
+            rivetGeo = new THREE.SphereGeometry(0.08, 4, 4);
+        } else if (roll < 0.66) {
+            rivetGeo = new THREE.CylinderGeometry(0.05, 0.05, 0.2, 6);
+        } else {
+            rivetGeo = new THREE.TetrahedronGeometry(0.1);
+        }
+		return rivetGeo;
+    }
+
+	
+    getOrCreateRivetGeo() {
+		return this.rivetGeo = this.rivetGeo || this.createRivet();
     }
 
     createPipe(length) {
@@ -535,7 +556,8 @@ export class GreebleGenerator {
                 if (usage.includes('fuselage')) {
                     const antenna = this.createAntennaArray();
                     antenna.scale.setScalar(1.0);
-                    this.placeOnSurface(hullMesh, greebleGroup, new THREE.Vector3(0, pos.y + offsetDist, pos.z - scale.z * 0.4), new THREE.Vector3(0, -1, 0), antenna, true, 0, isCentral, effectiveSymmetry, radialAxis, effectiveRadialCount, null, 'forward');
+                    // FIX: Use pos.x instead of 0 to support asymmetrical ships
+                    this.placeOnSurface(hullMesh, greebleGroup, new THREE.Vector3(pos.x, pos.y + offsetDist, pos.z - scale.z * 0.4), new THREE.Vector3(0, -1, 0), antenna, true, 0, isCentral, effectiveSymmetry, radialAxis, effectiveRadialCount, null, 'forward');
                 }
 
                 // Pipes and Ladders on industrial ships
@@ -547,6 +569,7 @@ export class GreebleGenerator {
 
             // 2. Vents
             if (usage.includes('engine') || usage.includes('reactor') || usage.includes('generator')) {
+
                 const ventGroup = new THREE.Group();
                 
                 // Calculate size based on component dimensions, keeping it smaller to fit surfaces better
@@ -556,12 +579,15 @@ export class GreebleGenerator {
                     minDim = Math.min(scale.x, scale.z);
                 }
 
-                const ventWidth = Math.max(0.5, minDim * 0.5);
-                const ventHeight = ventWidth * 0.6;
+                // Use new variable vent sizes for more diverse outputs
+                const ventWidth = Math.max(0.6, minDim * (0.4 + random() * 0.3));
+                const ventHeight = ventWidth * (0.4 + random()*0.6);
                 const ventDepth = 0.1;
+				
+                const ventShape = this.getOrCreateRivetGeo();
 
                 // Create a frame/base
-                const frameGeo = new THREE.BoxGeometry(ventWidth, ventHeight, ventDepth);
+                const frameGeo = new THREE.BoxGeometry(ventWidth, ventHeight, ventDepth)
                 const frame = new THREE.Mesh(frameGeo, this.ventMat);
                 ventGroup.add(frame);
 

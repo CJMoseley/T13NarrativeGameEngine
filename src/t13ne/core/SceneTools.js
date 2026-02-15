@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import ProcGen from '../procgen/ProcGen.js';
+import ProcGen from '/src/t13ne/procgen/ProcGen.js';
 
 export const SceneTools = {
     /**

@@ -177,16 +177,19 @@ export const generateSideCockpit = (context, parentCompUsage, side = 'random', p
     
     // Embed into hull slightly
     const embedStart = corridorRadius; // Embed into hull
-    const cylHeight = corridorLen + embedStart;
+    const embedEnd = corridorRadius;   // Embed into cockpit
+    const cylHeight = corridorLen + embedStart + embedEnd;
     
-    // Center of cylinder: cockpitPos - (direction * height/2)
+    // Calculate center to account for embedding at both ends
     const cylDir = corridorVec.clone().normalize();
-    const corridorPos = cockpitPos.clone().sub(cylDir.clone().multiplyScalar(cylHeight / 2));
+    const startVisual = startPoint.clone().sub(cylDir.clone().multiplyScalar(embedStart));
+    const endVisual = cockpitPos.clone().add(cylDir.clone().multiplyScalar(embedEnd));
+    const corridorPos = new THREE.Vector3().addVectors(startVisual, endVisual).multiplyScalar(0.5);
     
     // Use a quaternion to correctly align the cylinder's Y-axis with the direction vector
     const up = new THREE.Vector3(0, 1, 0);
     const quat = new THREE.Quaternion().setFromUnitVectors(up, cylDir);
-    const euler = new THREE.Euler().setFromQuaternion(quat, 'YXZ');
+    const euler = new THREE.Euler().setFromQuaternion(quat); // Default XYZ order to match Mesh rotation
 
     attachComponent('fuselage_corridor', [corridorPos.x, corridorPos.y, corridorPos.z], [euler.x, euler.y, euler.z], 'cylinder', 
         { radiusTop: corridorRadius, radiusBottom: corridorRadius, height: cylHeight });
@@ -195,6 +198,7 @@ export const generateSideCockpit = (context, parentCompUsage, side = 'random', p
     // Aligned to Z axis (Forward).
     // Rear Sphere Center at cockpitPos.
     const cockpitRadius = corridorRadius * 1.6; // Increased to 1.6x to ensure corridor cap (1.414x at corners) is contained
+
     const cockpitLength = corridorRadius * 4.0; // Length of cylindrical part
     
     // Capsule Center Z = RearSphereZ + length/2
@@ -202,6 +206,8 @@ export const generateSideCockpit = (context, parentCompUsage, side = 'random', p
     
     attachComponent('cockpit', [cockpitPos.x, cockpitPos.y, cockpitPos.z + offsetZ], [Math.PI/2, 0, 0], 'capsule', 
         { radius: cockpitRadius, length: cockpitLength });
+
+    return { cockpitPlaced: true, radius: cockpitRadius, length: cockpitLength };
 };
 
 export const generateBlob = (context) => {
@@ -211,10 +217,11 @@ export const generateBlob = (context) => {
     const mainRadius = spineLength * 0.6;
     const mainHeight = 2.5;
 
+	
     // Main Body
     attachComponent('fuselage_main', [0, 0, 0], [0, 0, 0], 'cylinder',
         { radiusTop: mainRadius, radiusBottom: mainRadius, height: mainHeight, radialSegments: 32 }, 'NONE');
-
+	
     // Mandibles (Front) - Tapered
     const mandLen = mainRadius * 0.85; // Shorter than radius
     const mandWidth = mainRadius * 0.4;
@@ -339,7 +346,7 @@ export const generateCatamaran = (context) => {
         const pylonStart = new THREE.Vector3(engRadius * 0.5, engPos[1], clampedZ);
         
         // Pylon End: Attach about 1/3 along the nacelle length from the front
-        const attachZ = nacelleZ + nacelleLen/2 - (nacelleLen / 3);
+        const attachZ = nacelleZ + nacelleLen/2 - (nacelleLen / 3)+1.0;
         const pylonEnd = new THREE.Vector3(nacelleX, nacelleY, attachZ);
         
         const pylonCentre = new THREE.Vector3().addVectors(pylonStart, pylonEnd).multiplyScalar(0.5);
@@ -412,6 +419,7 @@ export const generateCatamaran = (context) => {
         // Pylon connecting saucer bottom to nacelle
         attachComponent('pylon', [nacelleX, nacelleY/2, nacelleZ], [0, 0, 0], 'box',
             { width: 0.5, height: Math.abs(nacelleY), depth: nacelleLen * 0.5 }, 'REFLECTIVE');
+
 
         // Nacelle (Boxy/Rhomboid)
         attachComponent('warp_nacelle', [nacelleX, nacelleY, nacelleZ], [0, 0, 0], 'box',

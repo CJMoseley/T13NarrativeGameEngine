@@ -1,7 +1,8 @@
 import * as THREE from 'three';
-import Logger from '../core/Logger.js';
-import { PlanetSurfaceEnvironment } from '../procgen/planet/PlanetSurfaceEnvironment.js';
-import { Scene } from '../core/Scene.js';
+import Logger from '/src/t13ne/core/Logger.js';
+import { PlanetSurfaceEnvironment } from '/src/t13ne/procgen/planet/PlanetSurfaceEnvironment.js';
+import { Scene } from '/src/t13ne/core/Scene.js';
+import { Skybox } from '/src/t13ne/scenes/scenecomponents/skybox.js';
 
 /**
  * PlanetSurfaceScene
@@ -14,6 +15,7 @@ export class PlanetSurfaceScene extends Scene {
         this.planetData = null;
 
         this.environment = null;
+        this.skybox = null;
     }
 
     init(planetData) {
@@ -26,7 +28,7 @@ export class PlanetSurfaceScene extends Scene {
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
         this.scene.add(ambientLight);
         const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-        directionalLight.position.set(5, 10, 7.5);
+        directionalLight.position.set(500, 1000, 750); // Moved further out for skybox calc
         this.scene.add(directionalLight);
 
         // Position camera
@@ -35,9 +37,27 @@ export class PlanetSurfaceScene extends Scene {
             target: new THREE.Vector3(0, 0, 0)
         });
 
+        // Create Skybox if system data is available
+        if (this.planetData && this.planetData.system && this.planetData.system.star) {
+            this.skybox = new Skybox(this.viewManager.gameEngine);
+            // Use Atmospheric Skybox for surface
+            this.skybox.createAtmosphericSkybox(
+                this.scene, 
+                this.planetData, 
+                this.planetData.system.star, 
+                directionalLight.position, 
+                5000
+            );
+        }
+
         // Create the environment
         this.environment = new PlanetSurfaceEnvironment(this.scene, this.planetData);
         this.environment.generate();
+    }
+
+    update(time, delta) {
+        super.update(time, delta);
+        if (this.skybox) this.skybox.update(time * 0.001);
     }
 
     onLoad(sceneData) {

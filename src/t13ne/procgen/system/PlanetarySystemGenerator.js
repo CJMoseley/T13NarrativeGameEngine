@@ -1,8 +1,8 @@
-import { LoreData } from '../lore/LoreData.js';
-import ProcGen from '../ProcGen.js';
-import Logger from '../../core/Logger.js';
-import { ResourceFactory } from '../lore/factories/ResourceFactory.js';
-import { PlanetGenerator } from './PlanetGenerator.js';
+import { LoreData } from '/src/t13ne/procgen/lore/LoreData.js';
+import ProcGen from '/src/t13ne/procgen/ProcGen.js';
+import Logger from '/src/t13ne/core/Logger.js';
+import { ResourceFactory } from '/src/t13ne/procgen/lore/factories/ResourceFactory.js';
+import { PlanetGenerator } from '/src/t13ne/procgen/system/PlanetGenerator.js';
 
 export class PlanetarySystemGenerator {
     constructor(pluginManager, nameGenerator) {
@@ -26,8 +26,13 @@ export class PlanetarySystemGenerator {
         const planets = [];
         // Ensure seeds exist to prevent crash if systemData is incomplete
         const seeds = (systemData.seeds && Array.isArray(systemData.seeds)) ? systemData.seeds : [Math.random(), Math.random(), Math.random(), Math.random()];
-        const numPlanets = systemData.numPlanets || 0;
+        let numPlanets = systemData.numPlanets;
         const homeWorldIndex = systemData.homeWorldIndex !== undefined ? systemData.homeWorldIndex : -1;
+
+        // Ensure minimum planets (especially for homeworlds)
+        if (numPlanets === undefined || numPlanets < 1) {
+             numPlanets = Math.floor(Math.random() * 5) + 3; // 3-7 planets default
+        }
 
         let lastDistance = 0.2; // Start at 0.2 AU for realistic inner planets
         
@@ -112,7 +117,7 @@ export class PlanetarySystemGenerator {
             }
             
             // Enforce minimum separation from previous planet
-            if (orbitalDistance < lastDistance + 0.15) orbitalDistance = lastDistance + 0.15;
+            if (orbitalDistance < lastDistance + 0.2) orbitalDistance = lastDistance + 0.2;
 
             const planetRadius = outerSeed * 0.5 + 0.5;
             lastDistance = orbitalDistance;
@@ -382,7 +387,7 @@ export class PlanetarySystemGenerator {
             h = (h + 0.33) / 2; // Shift towards green (0.33)
         }
         if (resourceString.includes('carbon') || resourceString.includes('coal') || resourceString.includes('obsidian')) {
-            l = Math.max(0.1, l - 0.3); // Darken
+            l = Math.max(0.25, l - 0.3); // Darken but keep visible (was 0.1)
         }
         if (resourceString.includes('diamond') || resourceString.includes('crystal') || resourceString.includes('quartz')) {
             l = Math.min(0.9, l + 0.2); // Lighten/Sparkle

@@ -1,8 +1,8 @@
-import { LoreData } from '../lore/LoreData.js';
-import ProcGen from '../ProcGen.js';
-import Logger from '../../core/Logger.js';
-import { ColourUtils } from '../../utils/ColourUtils.js';
-import { Galaxy } from './Galaxy.js';
+import { LoreData } from '/src/t13ne/procgen/lore/LoreData.js';
+import ProcGen from '/src/t13ne/procgen/ProcGen.js';
+import Logger from '/src/t13ne/core/Logger.js';
+import { ColourUtils } from '/src/t13ne/utils/ColourUtils.js';
+import { Galaxy } from '/src/t13ne/procgen/galaxy/Galaxy.js';
 
 export class GalaxyGenerator {
   constructor(loreMaster, params = {}) {

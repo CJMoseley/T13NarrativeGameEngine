@@ -1,8 +1,8 @@
 import * as THREE from 'three';
-import { ShipFactory, COMPONENT_COLORS } from '../core/ship/ShipFactory.js';
-import { TECH_SPECS, QUALITIES, FALLBACK_MANUFACTURERS } from '../core/ship/ShipUtils.js';
-import { GalacticHistory } from '../procgen/galaxy/GalacticHistory.js';
-import { Scene } from '../core/Scene.js';
+import { ShipFactory, COMPONENT_COLORS } from '/src/t13ne/core/ship/ShipFactory.js';
+import { TECH_SPECS, QUALITIES, FALLBACK_MANUFACTURERS } from '/src/t13ne/core/ship/ShipUtils.js';
+import { GalacticHistory } from '/src/t13ne/procgen/galaxy/GalacticHistory.js';
+import { Scene } from '/src/t13ne/core/Scene.js';
 
 export class ShipShowcaseScene extends Scene {
     constructor(viewManager) {
@@ -49,10 +49,11 @@ export class ShipShowcaseScene extends Scene {
         this.scene.add(pointLight);
 
         // 5. Controls
-        this.setupControls('orbit', {
-            enableDamping: true,
-            autoRotate: true,
-            autoRotateSpeed: 2.0
+        this.setupControls('trackball', {
+            rotateSpeed: 2.0,
+            zoomSpeed: 1.2,
+            panSpeed: 0.8,
+            dynamicDampingFactor: 0.1
         });
 
         // 6. UI Setup
@@ -392,6 +393,11 @@ export class ShipShowcaseScene extends Scene {
         super.update(time, delta);
         if (this.hullMesh && this.hullMesh.material && this.hullMesh.material.uniforms && this.hullMesh.material.uniforms.time) {
             this.hullMesh.material.uniforms.time.value = time * 0.001;
+        }
+
+        // Auto-rotate the ship for showcase
+        if (this.shipGroup && this.isActive) {
+            this.shipGroup.rotation.y += delta * 0.0002;
         }
         
         // Update label position to follow the active component

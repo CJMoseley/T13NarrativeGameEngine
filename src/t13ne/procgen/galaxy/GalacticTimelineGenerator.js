@@ -1,7 +1,7 @@
-import { LoreData } from '../lore/LoreData.js';
-import Logger from '../../core/Logger.js';
-import { ComponentDefs } from '../ships/components/ComponentDefs.js';
-import { NameGenerator as FallbackNameGenerator } from '../lore/factories/NameGenerator.js';
+import { LoreData } from '/src/t13ne/procgen/lore/LoreData.js';
+import Logger from '/src/t13ne/core/Logger.js';
+import { ComponentDefs } from '/src/t13ne/procgen/ships/components/ComponentDefs.js';
+import { NameGenerator as FallbackNameGenerator } from '/src/t13ne/procgen/lore/factories/NameGenerator.js';
 
 /**
  * Procedurally generates a galactic history timeline.

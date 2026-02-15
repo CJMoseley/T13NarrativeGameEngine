@@ -76,6 +76,10 @@ export class MLNameGenerator {
 
         return tf.tidy(() => {
             const seedIndex = this.vocabulary[word];
+            // Safety check: Ensure index is valid and within the bounds of the loaded model weights
+            if (seedIndex === undefined || seedIndex >= this.wordVectors.shape[0]) {
+                return [];
+            }
             const seedVector = this.wordVectors.slice([seedIndex, 0], [1]);
 
             // Calculate cosine similarity between the wordVector and all other vectors.

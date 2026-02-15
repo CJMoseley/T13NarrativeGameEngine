@@ -79,7 +79,7 @@ export class OrreryScene extends Scene {
     // Helper to place planets at even intervals for visibility
     getVisualDistance(index) {
         // Explicitly add Star Radius to ensure we start outside
-        const gap = this.STAR_RADIUS * 2.5; // Reduced gap significantly to keep camera closer
+        const gap = this.STAR_RADIUS * 3.0; // Adjusted gap for better separation
         return this.STAR_RADIUS + (this.STAR_RADIUS * 2) + (index * gap);
     }
 
@@ -133,7 +133,7 @@ export class OrreryScene extends Scene {
         // Calculate distance needed to fit maxDist vertically and horizontally
         const distV = (maxDist * 1.2) / Math.tan(vFov / 2);
         const distH = (maxDist * 1.2) / (Math.tan(vFov / 2) * aspect);
-        let fitDist = Math.max(distV, distH, 300); // Ensure minimum distance
+        let fitDist = Math.max(distV, distH, 500); // Ensure minimum distance
         
         // NaN Safety
         if (isNaN(fitDist)) fitDist = 500;
@@ -189,26 +189,16 @@ export class OrreryScene extends Scene {
     }
 
     createCameraMarker() {
-        // Create a Crosshair Reticle instead of a sphere
-        const group = new THREE.Group();
-        
-        // Ring
-        const ringGeo = new THREE.RingGeometry(30, 35, 32);
+        // Create a Red Spot marker as requested
+        const geometry = new THREE.SphereGeometry(20, 16, 16);
         const material = new THREE.MeshBasicMaterial({ 
-            color: 0x00ff00, // Bright Green for visibility
+            color: 0xff0000, // Red for visibility
             depthTest: false, // Always render on top of other objects
             transparent: true,
-            opacity: 0.8,
-            side: THREE.DoubleSide
+            opacity: 0.8
         }); 
-        const ring = new THREE.Mesh(ringGeo, material);
-        group.add(ring);
-
-        // Crosshairs
-        // Simple lines are harder to see, let's use thin boxes
-        // ... (omitted for brevity, Ring is usually enough, but let's stick to the Ring for clarity)
-
-        this.cameraMarker = group;
+        
+        this.cameraMarker = new THREE.Mesh(geometry, material);
         this.cameraMarker.renderOrder = 999;
         this.scene.add(this.cameraMarker);
 

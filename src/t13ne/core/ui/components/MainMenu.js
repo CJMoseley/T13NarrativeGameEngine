@@ -1,6 +1,7 @@
 import Logger from '../../Logger.js';
 import Localization from '../Localization.js';
 import { UI } from '../UI.js';
+import { EventBus } from '../../EventBus.js';
 
 /**
  * MainMenu Component
@@ -15,6 +16,13 @@ export class MainMenu {
         this.viewManager = uiManager.viewManager;
         this.element = document.getElementById('mainMenu'); // The root element for all menus
         this.menuOptionsElement = document.getElementById('menuOptions'); // The container for buttons
+
+        EventBus.on('view:sequence-complete', () => {
+            Logger.message('MainMenu: Sequence complete event received. Showing menu.');
+            const intro = document.getElementById('intro-sequence');
+            if (intro) intro.style.display = 'none';
+            this.show();
+        });
         Logger.end(funcName);
     }
 

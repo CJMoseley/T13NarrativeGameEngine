@@ -1,8 +1,8 @@
-import ProcGen from '../ProcGen.js';
-import { MusicGenerator } from '../audio/MusicGenerator.js';
-import Logger from '../../core/Logger.js';
-import { ColourUtils } from '../../utils/ColourUtils.js';
-import { LoreData } from '../lore/LoreData.js';
+import ProcGen from '/src/t13ne/procgen/ProcGen.js';
+import { MusicGenerator } from '/src/t13ne/procgen/audio/MusicGenerator.js';
+import Logger from '/src/t13ne/core/Logger.js';
+import { ColourUtils } from '/src/t13ne/utils/ColourUtils.js';
+import { LoreData } from '/src/t13ne/procgen/lore/LoreData.js';
 
 // WormholeEnvironment.js
 // This class defines the wormhole environment for a race erroneously. 

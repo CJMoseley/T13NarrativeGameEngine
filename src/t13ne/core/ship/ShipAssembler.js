@@ -95,6 +95,7 @@ export class ShipAssembler {
         if (hullGeometry && hullGeometry.attributes.position && hullGeometry.attributes.position.count > 0) {
             hullMesh = new THREE.Mesh(hullGeometry, hullMaterial);
             hullMesh.name = "procedural_hull";
+            hullMesh.material.side = THREE.DoubleSide;
             shipGroup.add(hullMesh);
 
             // 2.5 Carve Surface Details (Thrusters, Cockpit) - BEFORE Greebling
@@ -114,6 +115,7 @@ export class ShipAssembler {
                         if (rot) cutterMesh.rotation.set(...rot);
                         cutterMesh.scale.multiplyScalar(1.02); // Slightly smaller offset for carving
                         cutterMesh.updateMatrix();
+
                         hullCSG = hullCSG.subtract(CSG.fromMesh(cutterMesh));
                     }
                 }
@@ -135,6 +137,7 @@ export class ShipAssembler {
 
                 // Apply CSG result
                 const carvedMesh = CSG.toMesh(hullCSG, hullMesh.matrix);
+
                 hullMesh.geometry.dispose();
                 hullMesh.geometry = carvedMesh.geometry;
 
@@ -150,6 +153,7 @@ export class ShipAssembler {
             // Apply Geometric Greebling (Rivets, Antennae, Vents, etc.)
             const greebles = this.greebleGenerator.generate(hullMesh, shipComponents, styleConfig, components.symmetryType, components.radialAxis, components.radialCount, components.hullType, components.seed);
             shipGroup.add(greebles);
+             shipGroup.add(greebles);
 
             // Apply Decals (Logos, Text)
             const decals = this.greebleGenerator.generateDecals(hullMesh, shipComponents, this.glyphGenerator, components.shipName, components.corporation, components.seed);
@@ -570,16 +574,21 @@ export class ShipAssembler {
                     // Find intersection point on target mesh
                     raycaster.set(endPoint, raycastDirection.negate()); // Raycast from target back to source
                     const targetIntersects = raycaster.intersectObject(targetMesh, true);
-                    // let endPoint = targetCenter; // Already set
                     if (targetIntersects.length > 0) {
                         endPoint = targetIntersects[0].point;
                     }
 
-                    // If both raycasts failed, use component centers as a last resort
-                    if (sourceIntersects.length === 0 && targetIntersects.length === 0) {
-                        startPoint = sourceCentre;
-                        // endPoint is already set to rim or center
+                    if (sourceIntersects.length === 0 || targetIntersects.length === 0) {
+                        continue;
                     }
+
+                    // FIX: Check for overlap using dot product
+                    // raycastDirection is now Target->Source (due to negate())
+                    // gapVec is End - Start (SourceSurface -> TargetSurface)
+                    // If disjoint, gapVec opposes raycastDirection -> dot < 0
+                    // If overlapping, gapVec aligns with raycastDirection -> dot > 0
+                    const gapVec = new THREE.Vector3().subVectors(endPoint, startPoint);
+                    if (gapVec.dot(raycastDirection) > 0) continue;
                     
                     const midPoint = tempVec.addVectors(startPoint, endPoint).multiplyScalar(0.5);
                     const dist = startPoint.distanceTo(endPoint);
