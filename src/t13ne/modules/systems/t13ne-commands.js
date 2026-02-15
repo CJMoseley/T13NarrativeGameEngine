@@ -1,6 +1,6 @@
-﻿import T13Dice from '@/src/t13ne/modules/mechanics/t13ne-dice.js';
-import T13Boons from '@/src/t13ne/modules/mechanics/t13ne-boon.js';
-import Logger from "@/src/t13ne/core/Logger.js";
+﻿import T13Dice from '/src/t13ne/modules/mechanics/t13ne-dice.js';
+import T13Boons from '/src/t13ne/modules/mechanics/t13ne-boon.js';
+import Logger from "/src/t13ne/core/Logger.js";
 
 /**
  * T13NE Commands Module
@@ -552,7 +552,7 @@ export class T13NECommands {
             const cost = args.cost || (args.model === 'Detailed' ? 10 : 2);
             if (!deductCost(ctx, cost)) return { error: "Insufficient resources to create Character" };
 
-            const { Character } = await import("@/src/t13ne/modules/characters/t13ne-chars.js");
+            const { Character } = await import("/src/t13ne/modules/characters/t13ne-chars.js");
             const Codex = this.t13ne.getModule('Codex');
             const char = await Character.generate(Codex, args);
 
@@ -636,7 +636,7 @@ export class T13NECommands {
             const cost = args.cost || 5;
             if (!deductCost(ctx, cost)) return { error: "Insufficient resources to create Descendant" };
 
-            const { Descendant } = await import("@/src/t13ne/modules/characters/t13ne-descendants.js");
+            const { Descendant } = await import("/src/t13ne/modules/characters/t13ne-descendants.js");
             const Codex = this.t13ne.getModule('Codex');
 
             let desc;
@@ -679,7 +679,7 @@ export class T13NECommands {
                 Goal: args.goal || "To resolve the conflict."
             };
 
-            const { T13Plot } = await import("@/src/t13ne/modules/narrative/t13ne-plots.js");
+            const { T13Plot } = await import("/src/t13ne/modules/narrative/t13ne-plots.js");
             const plot = new T13Plot(plotData, this.t13ne);
 
             if (Plots) {

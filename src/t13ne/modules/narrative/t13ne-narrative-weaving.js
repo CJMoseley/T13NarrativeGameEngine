@@ -1,7 +1,7 @@
-﻿import CodexLoader from "@/src/t13ne/modules/codex/CodexLoader.js";
-import Logger from "@/src/t13ne/core/Logger.js";
-import T13NECardsAPI from "@/src/t13ne/modules/mechanics/t13ne-cards-api.js";
-import { T13Plot } from "@/src/t13ne/modules/narrative/t13ne-plots.js";
+﻿import CodexLoader from "/src/t13ne/modules/codex/CodexLoader.js";
+import Logger from "/src/t13ne/core/Logger.js";
+import T13NECardsAPI from "/src/t13ne/modules/mechanics/t13ne-cards-api.js";
+import { T13Plot } from "/src/t13ne/modules/narrative/t13ne-plots.js";
 
 /**
  * Module for handling T13NE Narrative Weaving.

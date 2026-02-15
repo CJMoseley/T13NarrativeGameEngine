@@ -1,7 +1,7 @@
-﻿import { Character, SeededRNG } from "@/src/t13ne/modules/characters/t13ne-chars.js";
-import { PersonalityAnnex, Hitch, Annex } from "@/src/t13ne/modules/mechanics/t13ne-knots.js";
-import T13NE from '@/src/t13ne/T13NE.js';
-import Logger from "@/src/t13ne/core/Logger.js";
+﻿﻿import { Character, SeededRNG } from "/src/t13ne/modules/characters/t13ne-chars.js";
+import { PersonalityAnnex, Hitch, Annex } from "/src/t13ne/modules/mechanics/t13ne-knots.js";
+import T13NE from '/src/t13ne/T13NE.js';
+import Logger from "/src/t13ne/core/Logger.js";
 
 export class Detailed extends Character {
     constructor(codexLoader, data) {
@@ -9,6 +9,8 @@ export class Detailed extends Character {
     }
 
     static async generate(codexLoader, options = {}) {
+        const funcName = 'Detailed.generate';
+        Logger.start(funcName, options);
         const seed = options.seed !== undefined ? options.seed : Date.now();
         const rng = new SeededRNG(seed);
         const genre = options.genre || 'T13 Core';
@@ -96,6 +98,7 @@ export class Detailed extends Character {
         charData.name = nameResult[0];
         charData.fullName = nameResult[1];
         charData.altName = nameResult[2];
+        Logger.message(`${funcName}: Generated Name: ${charData.name}`);
 
         if (T13Geometry) {
             charData.geometry = T13Geometry.calculateFullGeo(charData.name);
@@ -116,6 +119,7 @@ export class Detailed extends Character {
         charData.iching = statblock.Hex;
 
         // Personality
+        Logger.message(`${funcName}: Generating Personality...`);
         const personaFacet = resolveFacet(options.facets?.persona);
         const coreFacet = resolveFacet(options.facets?.core);
         const personaName = (personaFacet.Persona && personaFacet.Persona.Name) ? personaFacet.Persona.Name : personaFacet.FacetName;
@@ -131,6 +135,7 @@ export class Detailed extends Character {
         });
 
         // Hitches
+        Logger.message(`${funcName}: Generating Hitches...`);
         const typeMin = parseInt(typeData['Min-Hitches']) || 1;
         const typeMax = parseInt(typeData['Max-Hitches']) || 4;
         let minHitches = typeMin;
@@ -173,9 +178,11 @@ export class Detailed extends Character {
             hitch.resolution = resolution;
             if (AIService && Facets) await hitch.generateNarrative(AIService, Facets);
             charData.hitches.push(hitch);
+            Logger.message(`${funcName}: Added Hitch: ${hitch.name}`);
         }
 
         // Annexes
+        Logger.message(`${funcName}: Generating Annex Suggestions...`);
         const annexSlots = 3 + numHitches;
         charData.subAnnexes = []; // Ensure it's empty for new characters
         charData.annexSuggestions = []; // Add a place for suggestions
@@ -273,6 +280,7 @@ export class Detailed extends Character {
         // Auto-assign if requested via options or game settings
         const config = T13NE.getConfig();
         if (options.autoAssign || (config.gameSettings && config.gameSettings.autoAssignAnnexes)) {
+             Logger.message(`${funcName}: Auto-assigning Annexes...`);
              await detailed.autoAssignAnnexes();
         }
 
@@ -281,14 +289,7 @@ export class Detailed extends Character {
             detailed.psychosocialSpace = PsychosocialSpaces.createHexagonalMap(detailed);
         }
 
+        Logger.end(funcName, detailed);
         return detailed;
     }
 }
-
-
-
-
-
-
-
-

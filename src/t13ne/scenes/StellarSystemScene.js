@@ -6,6 +6,7 @@ import { SceneTools } from '../core/SceneTools.js';
 import { UI } from '../core/ui/UI.js';
 import { OrreryScene } from './OrreryScene.js';
 import { Controls } from '../core/Controls.js';
+import ProcGen from '../procgen/ProcGen.js';
 
 export class StellarSystemScene extends Scene {
     constructor(viewManager, sceneData) {
@@ -84,10 +85,6 @@ export class StellarSystemScene extends Scene {
         const ambient = new THREE.AmbientLight(0x666666); // Increased ambient to prevent grey/black planets
         this.scene.add(ambient);
         
-        // Sun Light - Will be positioned in update to match Star visual position
-        this.sunLight = new THREE.PointLight(0xffffff, 2.0, 0, 0); // Infinite range, no decay
-        this.scene.add(this.sunLight);
-
         // Camera Headlamp (ensure planets are visible from all angles in orrery view)
         // Reduced intensity significantly to allow for proper day/night cycles and matching transition
         const headlamp = new THREE.DirectionalLight(0xffffff, 0.05);
@@ -135,9 +132,11 @@ export class StellarSystemScene extends Scene {
             this.virtualCameraPosition.copy(this.introStartPos); // Set initial position
             
             // Identify Flyby Target (Random planet that isn't homeworld)
+            // Use deterministic seed based on system name
+            const prng = ProcGen.createPRNG(this.systemData.name || 'flyby');
             const candidates = this.objects.filter(o => o.type === 'planet' && o !== this.homeWorldObj);
             if (candidates.length > 0) {
-                this.flybyObj = candidates[Math.floor(Math.random() * candidates.length)];
+                this.flybyObj = candidates[Math.floor(prng.nextDouble() * candidates.length)];
             }
         }
 
@@ -379,6 +378,11 @@ export class StellarSystemScene extends Scene {
 
             this.scene.add(starMesh);
             this.addStarGlow(starMesh, radius, material.color);
+
+            // Add light source to every star
+            const intensity = index === 0 ? 1.5 : 0.8; // Primary star is brighter
+            const light = new THREE.PointLight(starData.color || 0xffffaa, intensity, 0, 1); // Infinite range
+            starMesh.add(light);
         });
     }
 
@@ -402,6 +406,8 @@ export class StellarSystemScene extends Scene {
         if (!this.planets) return;
         Logger.message(`StellarSystemScene: Creating ${this.planets.length} planets.`);
 
+        const prng = ProcGen.createPRNG(this.systemData.name || 'planets');
+
         this.planets.forEach((planetData, index) => {
             // Calculate Distance
             const distance = (planetData.orbitalDistance || 1) * this.scales.orbit;
@@ -417,7 +423,7 @@ export class StellarSystemScene extends Scene {
                 else if (planetData.color.h !== undefined) color.setHSL(planetData.color.h, planetData.color.s, planetData.color.l);
                 else color.setHex(planetData.color);
             } else {
-                color.setHSL(Math.random(), 0.6, 0.5);
+                color.setHSL(prng.nextDouble(), 0.6, 0.5);
             }
 
             const geometry = new THREE.SphereGeometry(planetRadius, 32, 32);
@@ -457,7 +463,7 @@ export class StellarSystemScene extends Scene {
                 data: planetData,
                 orbitRadius: distance,
                 orbitSpeed: (planetData.orbitSpeed || 0.0001) * 5,
-                orbitAngle: Math.random() * Math.PI * 2,
+                orbitAngle: prng.nextDouble() * Math.PI * 2,
                 realPosition: new THREE.Vector3(distance, 0, 0), // Initial
                 baseRadius: planetRadius,
                 type: 'planet',
@@ -481,7 +487,7 @@ export class StellarSystemScene extends Scene {
 
                     let detailedMoonMesh;
                     try {
-                         detailedMoonMesh = this.planetGenerator.generateAsteroidMesh(Math.random(), 2);
+                         detailedMoonMesh = this.planetGenerator.generateAsteroidMesh(prng.nextDouble(), 2);
                          detailedMoonMesh.scale.setScalar(moonMeshScale);
                     } catch(e) {
                          detailedMoonMesh = new THREE.Mesh(new THREE.SphereGeometry(moonRadius, 8, 8), new THREE.MeshStandardMaterial({color: 0x888888}));
@@ -501,7 +507,7 @@ export class StellarSystemScene extends Scene {
                         data: moonData,
                         orbitRadius: (moonData.orbitalDistance || 0.002) * 5000 + (planetRadius * 3), // Local orbit
                         orbitSpeed: (moonData.orbitSpeed || 0.01),
-                        orbitAngle: Math.random() * Math.PI * 2,
+                        orbitAngle: prng.nextDouble() * Math.PI * 2,
                         realPosition: new THREE.Vector3(),
                         baseRadius: moonRadius,
                         type: 'moon'
@@ -534,19 +540,160 @@ export class StellarSystemScene extends Scene {
 
     createSkybox() {
         const r = 60000; // Within the far plane
+        
+        // 1. Stars
         const starsGeometry = new THREE.BufferGeometry();
         const starsVertices = [];
-        for (let i = 0; i < 10000; i++) {
-            const x = (Math.random() - 0.5) * 2;
-            const y = (Math.random() - 0.5) * 2;
-            const z = (Math.random() - 0.5) * 2;
-            const v = new THREE.Vector3(x, y, z).normalize().multiplyScalar(r);
-            starsVertices.push(v.x, v.y, v.z);
+        const starsColors = [];
+        
+        const galaxy = this.gameEngine?.galaxyGenerator?.galaxy;
+
+        if (galaxy && galaxy.stars && galaxy.stars.length > 0) {
+            // Use actual galaxy stars for skybox
+            const currentPos = new THREE.Vector3(this.starData.x || 0, this.starData.y || 0, this.starData.z || 0);
+            
+            galaxy.stars.forEach(star => {
+                // Skip self (approximate check)
+                const dx = star.x - currentPos.x;
+                const dy = star.y - currentPos.y;
+                const dz = star.z - currentPos.z;
+                const distSq = dx*dx + dy*dy + dz*dz;
+                
+                if (distSq < 100) return; // Skip if too close (self or binary companion handled by scene objects)
+
+                // Project to skybox radius
+                const dist = Math.sqrt(distSq);
+                const scale = r / dist;
+                
+                starsVertices.push(dx * scale, dy * scale, dz * scale);
+                
+                // Color & Brightness
+                // Simple distance attenuation for brightness to give depth
+                const brightness = Math.min(1.0, 5000 / Math.max(1, dist)); 
+                const c = new THREE.Color(star.color);
+                starsColors.push(c.r * brightness, c.g * brightness, c.b * brightness);
+            });
+            
+            Logger.message(`StellarSystemScene: Generated skybox from ${galaxy.stars.length} galactic stars.`);
+        } else {
+            // Fallback: Procedural Random Stars
+            const prng = ProcGen.createPRNG(this.systemData.name || 'skybox');
+            for (let i = 0; i < 15000; i++) {
+                const v = new THREE.Vector3(
+                    (prng.nextDouble() - 0.5) * 2,
+                    (prng.nextDouble() - 0.5) * 2,
+                    (prng.nextDouble() - 0.5) * 2
+                ).normalize().multiplyScalar(r);
+                starsVertices.push(v.x, v.y, v.z);
+                
+                // Star Colors (White, Blue, Yellow, Red)
+                const colorRoll = prng.nextDouble();
+                const color = new THREE.Color();
+                if (colorRoll > 0.9) color.setHex(0xffaa88); // Red/Orange
+                else if (colorRoll > 0.7) color.setHex(0xffffaa); // Yellow
+                else if (colorRoll > 0.5) color.setHex(0xaaddff); // Blue
+                else color.setHex(0xffffff); // White
+                
+                // Randomize brightness slightly
+                color.multiplyScalar(0.5 + prng.nextDouble() * 0.5);
+                
+                starsColors.push(color.r, color.g, color.b);
+            }
         }
+        
         starsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starsVertices, 3));
-        const starsMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 2.0, sizeAttenuation: false });
+        starsGeometry.setAttribute('color', new THREE.Float32BufferAttribute(starsColors, 3));
+        
+        const starsMaterial = new THREE.PointsMaterial({ 
+            vertexColors: true, 
+            size: 3.0, 
+            sizeAttenuation: false,
+            transparent: true,
+            opacity: 1.0
+        });
         const starField = new THREE.Points(starsGeometry, starsMaterial);
-        this.scene.add(starField); // Add to scene so it stays fixed while camera rotates
+        this.scene.add(starField);
+
+        // 2. Background Nebulae (Galactic Match)
+        if (this.gameEngine && this.gameEngine.galaxyGenerator && SceneTools && SceneTools.createCloudTexture) {
+            const galaxyParams = this.gameEngine.galaxyGenerator.params;
+            const galaxySeed = galaxyParams.seed || 'galaxy-visuals';
+            // Use 32-bit PRNG to match GalaxyMapScene's visual generation
+            const galPrng = ProcGen.create32PRNG(galaxySeed); 
+
+            const sysPos = new THREE.Vector3(this.starData.x || 0, this.starData.y || 0, this.starData.z || 0);
+            
+            let galaxyRadius = galaxyParams.galaxyRadius;
+            if (!Number.isFinite(galaxyRadius) || galaxyRadius < 100000) galaxyRadius = 2000000;
+            
+            const armCount = Math.max(2, galaxyParams.armCount);
+            const winding = galaxyParams.winding;
+            const WINDING_SCALE = 8.0;
+            let safeWinding = Number(winding);
+            if (!Number.isFinite(safeWinding)) safeWinding = 0.35;
+            safeWinding = Math.max(-10, Math.min(10, safeWinding));
+
+            const nebulaCount = 2000; 
+            const NEBULA_COLORS = [0x6699ff, 0xff33cc, 0x33ffcc, 0xffcc33, 0xff3333, 0x9966ff, 0x33ff66];
+            
+            const nebulaGroup = new THREE.Group();
+            const cloudTex = SceneTools.createCloudTexture();
+
+            for (let i = 0; i < nebulaCount; i++) {
+                const effectiveRadius = galaxyRadius * (0.85 + galPrng.nextDouble() * 0.3);
+                const rNorm = Math.pow(galPrng.nextDouble(), 0.5); 
+                const rad = rNorm * effectiveRadius;
+
+                const armIndex = Math.floor(galPrng.nextDouble() * armCount);
+                const armOffset = (Math.PI * 2 / armCount) * armIndex;
+                const A = 100;
+                let theta = -Math.log((rad + A) / A) * safeWinding * WINDING_SCALE;
+                theta += armOffset;
+                theta += (galPrng.nextDouble() - 0.5) * 1.5;
+
+                const flare = 1.0 + (rNorm * rNorm * 0.25);
+                const z = (galPrng.nextDouble() + galPrng.nextDouble() - 1.0) * galaxyRadius * 0.01 * flare;
+                const x = rad * Math.cos(theta);
+                const y = rad * Math.sin(theta);
+
+                // Clustering check
+                const clusterNoise = ProcGen.simplex2D(x * 0.003, y * 0.003);
+                if (clusterNoise < 0.0) continue;
+
+                const nebulaPos = new THREE.Vector3(x, y, z);
+                const dist = nebulaPos.distanceTo(sysPos);
+                
+                // Project onto skybox
+                const dir = new THREE.Vector3().subVectors(nebulaPos, sysPos).normalize();
+                
+                const realSize = (galPrng.nextDouble() * 300 + 150);
+                const safeDist = Math.max(dist, 50); 
+                
+                let spriteScale = (realSize / safeDist) * r * 1.5; 
+                if (spriteScale < 20) continue;
+                spriteScale = Math.min(spriteScale, r * 1.5);
+
+                const colorInt = NEBULA_COLORS[Math.floor(galPrng.nextDouble() * NEBULA_COLORS.length)];
+                const color = new THREE.Color(colorInt);
+                const opacity = (0.1 + galPrng.nextDouble() * 0.2) * Math.min(1.0, 50000 / safeDist);
+
+                const spriteMat = new THREE.SpriteMaterial({
+                    map: cloudTex,
+                    color: color,
+                    transparent: true,
+                    opacity: opacity,
+                    blending: THREE.AdditiveBlending,
+                    depthWrite: false,
+                    rotation: galPrng.nextDouble() * Math.PI * 2
+                });
+
+                const sprite = new THREE.Sprite(spriteMat);
+                sprite.position.copy(dir.multiplyScalar(r * 0.9)); // Behind local stars
+                sprite.scale.set(spriteScale, spriteScale, 1);
+                nebulaGroup.add(sprite);
+            }
+            this.scene.add(nebulaGroup);
+        }
     }
 
     update(time, delta) {
@@ -554,18 +701,6 @@ export class StellarSystemScene extends Scene {
         const dt = delta * 0.001;
         const C = this.COMPRESSION_C;
         const camera = this.activeCamera;
-
-        // --- 0. Update Sun Light Position ---
-        // Move sun light to the visual position of the star so lighting direction is correct
-        const starObj = this.objects.find(o => o.type === 'star');
-        if (starObj && this.sunLight) {
-            const relVec = new THREE.Vector3().subVectors(starObj.realPosition, this.virtualCameraPosition);
-            const realDist = relVec.length();
-            // Apply same compression as meshes
-            const visualDist = C * Math.log(1 + realDist / C);
-            const visualPos = relVec.normalize().multiplyScalar(visualDist);
-            this.sunLight.position.copy(visualPos);
-        }
         
         // --- 1. Update Real Positions (Simulation) ---
         this.objects.forEach(obj => {

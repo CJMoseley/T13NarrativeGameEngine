@@ -4,6 +4,7 @@ import { ShipComponent } from './ShipComponent.js';
 import { COMPONENT_COLORS, getCompProps } from './ShipUtils.js';
 import { racingLiveryShader, industrialLiveryShader, boxyLiveryShader, organicLiveryShader, miningLiveryShader, metallicLiveryShader } from './ShipShaders.js';
 import { GlyphGenerator } from './GlyphGenerator.js';
+import { mulberry32 } from './ShipUtils.js';
 
 export class ShipAssembler {
     constructor(componentFactory, hullGenerator, greebleGenerator, wiringGenerator, gameEngine) {
@@ -83,9 +84,10 @@ export class ShipAssembler {
         });
         // Randomize livery
         const livery = components.livery || {};
-        hullMaterial.uniforms.noiseSeed.value = livery.noiseSeed !== undefined ? livery.noiseSeed : Math.random() * 100;
-        hullMaterial.uniforms.patternType.value = livery.patternType !== undefined ? livery.patternType : Math.floor(Math.random() * 3);
-        hullMaterial.uniforms.color1.value.setHex(livery.color1 !== undefined ? livery.color1 : Math.random() * 0xffffff);
+        const prng = mulberry32(components.seed || 0);
+        hullMaterial.uniforms.noiseSeed.value = livery.noiseSeed !== undefined ? livery.noiseSeed : prng() * 100;
+        hullMaterial.uniforms.patternType.value = livery.patternType !== undefined ? livery.patternType : Math.floor(prng() * 3);
+        hullMaterial.uniforms.color1.value.setHex(livery.color1 !== undefined ? livery.color1 : Math.floor(prng() * 0xffffff));
         if (livery.color2 !== undefined) hullMaterial.uniforms.color2.value.setHex(livery.color2);
         if (livery.color3 !== undefined) hullMaterial.uniforms.color3.value.setHex(livery.color3);
 
@@ -386,9 +388,10 @@ export class ShipAssembler {
 
             // Livery application
             const livery = components.livery || {};
-            if (hullMaterial.uniforms.noiseSeed) hullMaterial.uniforms.noiseSeed.value = livery.noiseSeed !== undefined ? livery.noiseSeed : Math.random() * 100;
-            if (hullMaterial.uniforms.patternType) hullMaterial.uniforms.patternType.value = livery.patternType !== undefined ? livery.patternType : Math.floor(Math.random() * 3);
-            if (hullMaterial.uniforms.color1) hullMaterial.uniforms.color1.value.setHex(livery.color1 !== undefined ? livery.color1 : Math.random() * 0xffffff);
+            const prng = mulberry32(components.seed || 0);
+            if (hullMaterial.uniforms.noiseSeed) hullMaterial.uniforms.noiseSeed.value = livery.noiseSeed !== undefined ? livery.noiseSeed : prng() * 100;
+            if (hullMaterial.uniforms.patternType) hullMaterial.uniforms.patternType.value = livery.patternType !== undefined ? livery.patternType : Math.floor(prng() * 3);
+            if (hullMaterial.uniforms.color1) hullMaterial.uniforms.color1.value.setHex(livery.color1 !== undefined ? livery.color1 : Math.floor(prng() * 0xffffff));
             if (hullMaterial.uniforms.color2 && livery.color2 !== undefined) hullMaterial.uniforms.color2.value.setHex(livery.color2);
             if (hullMaterial.uniforms.color3 && livery.color3 !== undefined) hullMaterial.uniforms.color3.value.setHex(livery.color3);
             if (hullMaterial.uniforms.baseColor) hullMaterial.uniforms.baseColor.value.setHex(livery.color1 !== undefined ? livery.color1 : 0x667788);

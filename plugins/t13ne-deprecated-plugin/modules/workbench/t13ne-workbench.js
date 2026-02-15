@@ -1,4 +1,4 @@
-import Logger from '@/src/t13ne/core/Logger.js';
+import Logger from '/src/t13ne/core/Logger.js';
 import AuthorMain from '@plugins/t13ne/AuthorMain.js';
 import T13NE from '@plugins/t13ne/T13NE.js';
 import UI from './t13ne-UI.js';

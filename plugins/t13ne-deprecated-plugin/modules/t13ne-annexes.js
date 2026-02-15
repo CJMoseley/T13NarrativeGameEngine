@@ -1,6 +1,6 @@
 import T13NE from '../T13NE.js';
 import CodexLoader from './CodexLoader.js';
-import Logger from '@/src/t13ne/core/Logger.js';
+import Logger from '/src/t13ne/core/Logger.js';
 import { Annex, TIE } from './t13ne-knots.js';
 import AIService from './AIService.js';
 

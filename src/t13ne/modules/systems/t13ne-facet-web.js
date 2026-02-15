@@ -1,4 +1,4 @@
-﻿import T13NE_IChing from "@/src/t13ne/modules/mechanics/t13ne-iching.js";
+﻿import T13NE_IChing from "/src/t13ne/modules/mechanics/t13ne-iching.js";
 /**
  * FacetWeb manages the web of Facets and their relationships (Stats).
  * It defines the Yin/Yang pairs and constructs the statblock structure.

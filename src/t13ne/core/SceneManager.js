@@ -18,7 +18,7 @@ export class SceneManager {
     constructor(viewManager) {
         this.viewManager = viewManager; // Keep reference for scene constructors
         // Automatically assess available scenes using Vite's import.meta.glob
-        const sceneModules = import.meta.glob('@/src/t13ne/scenes/*.js');
+        const sceneModules = import.meta.glob('/src/t13ne/scenes/*.js');
         this.sceneRegistry = {};
 
         for (const path in sceneModules) {

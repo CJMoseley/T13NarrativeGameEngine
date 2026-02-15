@@ -1,6 +1,6 @@
 import { Ordeal, OrdealRound } from './t13ne-ordeals.js';
 import T13NECardsAPI from '../t13ne-cards-api.js';
-import Logger from '@/src/t13ne/core/Logger.js';
+import Logger from '/src/t13ne/core/Logger.js';
 import T13NE from '../../T13NE.js';
 
 /**

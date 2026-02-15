@@ -47,6 +47,12 @@ export class SystemGenerator {
             n1 = simpleHash(seedStr + 'n1'); n2 = simpleHash(seedStr + 'n2'); n3 = simpleHash(seedStr + 'n3'); n4 = simpleHash(seedStr + 'n4');
         }
 
+        // Normalize noise values to [0, 1] to prevent negative indices or out-of-bounds errors
+        n1 = Math.abs(n1) % 1;
+        n2 = Math.abs(n2) % 1;
+        n3 = Math.abs(n3) % 1;
+        n4 = Math.abs(n4) % 1;
+
         const safeNoise = { n1, n2, n3, n4 };
 
         // 1. Species Determination

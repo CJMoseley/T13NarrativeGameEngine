@@ -1,5 +1,5 @@
-﻿import Logger from '@/src/t13ne/core/Logger.js';
-import CodexDB from '@/src/t13ne/modules/codex/CodexDB.js';
+﻿import Logger from '/src/t13ne/core/Logger.js';
+import CodexDB from '/src/t13ne/modules/codex/CodexDB.js';
 
 /**
  * CodexLibrary

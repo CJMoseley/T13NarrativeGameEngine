@@ -1,10 +1,14 @@
 ﻿// d:\GoogleDrive\Games\wormholeracersJS\WormholeRacersJS\plugins\t13ne\modules\npcs\t13ne-types.js
+﻿// d:\GoogleDrive\Games\wormholeracersJS\WormholeRacersJS\plugins\t13ne\modules\npcs\t13ne-types.js
 
-import { Character } from "@/src/t13ne/modules/characters/t13ne-chars.js";
+import { Character } from "/src/t13ne/modules/characters/t13ne-chars.js";
+import { Character } from "../t13ne-chars.js";
 import { Detailed } from './t13ne-detailed.js';
 import * as Mixins from './t13ne-char-mixins.js';
-import { Descendant } from "@/src/t13ne/modules/characters/t13ne-descendants.js";
-import { Annex, TIE } from "@/src/t13ne/modules/mechanics/t13ne-knots.js";
+import { Descendant } from "/src/t13ne/modules/characters/t13ne-descendants.js";
+import { Annex, TIE } from "/src/t13ne/modules/mechanics/t13ne-knots.js";
+import { Descendant } from "../t13ne-descendants.js";
+import { Annex, TIE } from "../../mechanics/t13ne-knots.js";
 
 // --- Base Detailed Types ---
 

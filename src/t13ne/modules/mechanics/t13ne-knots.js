@@ -1,9 +1,9 @@
-﻿// Knots are combinations of threads that create everything else in the game.
+﻿﻿// Knots are combinations of threads that create everything else in the game.
 // They are essentially bundles of proficiencies, texts, and other game elements.
 
-import Logger from "@/src/t13ne/core/Logger.js";
-import T13NE_Sway from "@/src/t13ne/modules/mechanics/t13ne-sway.js";
-import T13Name from "@/src/t13ne/modules/characters/t13ne-names.js";
+import Logger from "/src/t13ne/core/Logger.js";
+import T13NE_Sway from "/src/t13ne/modules/mechanics/t13ne-sway.js";
+import T13Name from "/src/t13ne/modules/characters/t13ne-names.js";
 
 /**
  * TIE constants for defining knot relationships using a bitmask.
@@ -230,6 +230,7 @@ export class Annex extends KnotWork {
      * @returns {Annex|PersonalityAnnex|PactAnnex|ConflictAnnex}
      */
     static create(codexLoader, rawData) {
+        Logger.message(`Annex.create: Instantiating annex '${rawData.Name || rawData.name}'`);
         const rawName = rawData.Name || rawData.name || 'Unnamed Annex';
         const t13n = new T13Name(rawName);
         const annexType = rawData.Annex_Type || rawData.annex_type || rawData.annexType; // e.g., 7 for Personality
@@ -397,6 +398,8 @@ export class Annex extends KnotWork {
      * @param {object} facetsModule - The Facets module to look up Root/Channel texts.
      */
     async generateNarrative(aiService, facetsModule) {
+        const funcName = 'Annex.generateNarrative';
+        Logger.start(funcName, { name: this.name, type: this.annexType });
         if (!aiService || !facetsModule) return;
 
         const profs = await this.getProficiencyDetails();
@@ -460,8 +463,10 @@ export class Annex extends KnotWork {
                 if (data.name) this.name = data.name;
                 if (data.description) this.description = data.description;
             }
+            Logger.end(funcName);
         } catch (e) {
             Logger.warn("Annex AI naming failed", e);
+            Logger.end(funcName, 'Failed');
         }
     }
 }
@@ -656,6 +661,8 @@ export class Hitch extends KnotWork {
      * @param {object} facetsModule - The Facets module to look up Root/Channel texts.
      */
     async generateNarrative(aiService, facetsModule) {
+        const funcName = 'Hitch.generateNarrative';
+        Logger.start(funcName, { name: this.name, bane: this.bane });
         if (!aiService || !facetsModule) return;
 
         const profs = await this.getProficiencyDetails();
@@ -714,8 +721,10 @@ export class Hitch extends KnotWork {
                 if (data.name) this.name = data.name;
                 if (data.description) this.description = data.description;
             }
+            Logger.end(funcName);
         } catch (e) {
             Logger.warn("Hitch AI naming failed", e);
+            Logger.end(funcName, 'Failed');
         }
     }
 }
@@ -862,6 +871,8 @@ export class SuperKnot extends KnotWork {
      * @param {object} facetsModule - The Facets module.
      */
     async generateNarrative(aiService, facetsModule) {
+        const funcName = 'SuperKnot.generateNarrative';
+        Logger.start(funcName, { name: this.name, type: this.constructor.name });
         if (!aiService || !facetsModule) return;
 
         let typeContext = this.constructor.name;
@@ -925,8 +936,10 @@ export class SuperKnot extends KnotWork {
                 if (data.name) this.name = data.name;
                 if (data.description) this.description = data.description;
             }
+            Logger.end(funcName);
         } catch (e) {
             Logger.warn("SuperKnot AI naming failed", e);
+            Logger.end(funcName, 'Failed');
         }
     }
 }
@@ -943,9 +956,3 @@ export class Plot extends SuperKnot {
         this.plotType = data.PlotType || data.plotType || null;
     }
 }
-
-
-
-
-
-

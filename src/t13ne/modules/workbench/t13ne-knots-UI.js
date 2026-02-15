@@ -1,7 +1,7 @@
-﻿import T13NE from '@/src/t13ne/T13NE.js';
-import Logger from "@/src/t13ne/core/Logger.js";
+﻿import T13NE from '/src/t13ne/T13NE.js';
+import Logger from "/src/t13ne/core/Logger.js";
 import UI from './t13ne-UI.js';
-import { TIE } from "@/src/t13ne/modules/mechanics/t13ne-knots.js";
+import { TIE } from "/src/t13ne/modules/mechanics/t13ne-knots.js";
 
 /**
  * T13NE Knots UI Module

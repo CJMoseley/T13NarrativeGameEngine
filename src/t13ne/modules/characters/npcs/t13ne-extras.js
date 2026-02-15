@@ -1,7 +1,7 @@
-﻿import { Character, SeededRNG } from "@/src/t13ne/modules/characters/t13ne-chars.js";
-import { Annex, PersonalityAnnex } from "@/src/t13ne/modules/mechanics/t13ne-knots.js";
-import T13NE from '@/src/t13ne/T13NE.js';
-import Logger from "@/src/t13ne/core/Logger.js";
+﻿﻿import { Character, SeededRNG } from "/src/t13ne/modules/characters/t13ne-chars.js";
+import { Annex, PersonalityAnnex } from "/src/t13ne/modules/mechanics/t13ne-knots.js";
+import T13NE from '/src/t13ne/T13NE.js';
+import Logger from "/src/t13ne/core/Logger.js";
 
 export class Extra extends Character {
     constructor(codexLoader, data) {
@@ -9,6 +9,8 @@ export class Extra extends Character {
     }
 
     static async generate(codexLoader, options = {}) {
+        const funcName = 'Extra.generate';
+        Logger.start(funcName, options);
         const seed = options.seed !== undefined ? options.seed : Date.now();
         const rng = new SeededRNG(seed);
         const genre = options.genre || 'T13 Core';
@@ -51,6 +53,7 @@ export class Extra extends Character {
             }
         }
         if (!typeData) typeData = { Type: 'Chorus', Master_Annex: 'Talent' };
+        Logger.message(`${funcName}: Determined type data`, typeData);
 
         // Load Age
         let ageData = await codexLoader.getData('characters', 'ageCategories.json');
@@ -74,6 +77,7 @@ export class Extra extends Character {
         charData.name = nameResult[0];
         charData.fullName = nameResult[1];
         charData.altName = nameResult[2];
+        Logger.message(`${funcName}: Generated name`, charData.name);
 
         if (T13Geometry) {
             charData.geometry = T13Geometry.calculateFullGeo(charData.name);
@@ -106,6 +110,7 @@ export class Extra extends Character {
         }
 
         // Create a suggestion for the master annex instead of creating it.
+        Logger.message(`${funcName}: Creating Master Annex Suggestion...`);
         charData.masterAnnexSuggestion = {
             name: `${root.FacetName}-${channel.FacetName} Ability`,
             description: `A ${annexType} rooted in ${root.FacetName}, channelling ${channel.FacetName}.`,
@@ -142,6 +147,7 @@ export class Extra extends Character {
         else if (annexType === 'Super-Annex') { subAnnexCount = rng.range(6, 10); subAnnexType = 'Power'; }
 
         charData.subAnnexes = [];
+        Logger.message(`${funcName}: Generating ${subAnnexCount} Sub-Annex Suggestions...`);
         charData.annexSuggestions = [];
         for (let i = 0; i < subAnnexCount; i++) {
             const subFacet = resolveFacet(null);
@@ -165,14 +171,7 @@ export class Extra extends Character {
             extra.psychosocialSpace = PsychosocialSpaces.createTriangularMap(extra);
         }
 
+        Logger.end(funcName, extra);
         return extra;
     }
 }
-
-
-
-
-
-
-
-

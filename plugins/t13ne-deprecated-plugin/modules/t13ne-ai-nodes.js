@@ -1,4 +1,4 @@
-import Logger from '@/src/t13ne/core/Logger.js';
+import Logger from '/src/t13ne/core/Logger.js';
 import T13NECardsAPI from '../modules/t13ne-cards-api.js';
 import AIService from '../modules/AIService.js';
 

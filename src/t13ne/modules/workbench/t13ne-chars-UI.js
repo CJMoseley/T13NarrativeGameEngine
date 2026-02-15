@@ -1,4 +1,4 @@
-﻿import T13NE from '@/src/t13ne/T13NE.js';
+﻿import T13NE from '/src/t13ne/T13NE.js';
 import UI from './t13ne-UI.js';
 import FacetWebUI from './t13ne-facetweb-UI.js';
 import GeometryUI from './t13ne-geometry-ui.js';

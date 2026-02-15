@@ -1,5 +1,5 @@
-﻿import dice from '@/src/t13ne/modules/mechanics/t13ne-dice.js';
-import CodexLoader from "@/src/t13ne/modules/codex/CodexLoader.js";
+﻿import dice from '/src/t13ne/modules/mechanics/t13ne-dice.js';
+import CodexLoader from "/src/t13ne/modules/codex/CodexLoader.js";
 
 /**
  * Creates a 64-bit FNV-1a hash from a string and returns it as a hex string.

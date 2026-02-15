@@ -1,5 +1,5 @@
-﻿import Logger from '@/src/t13ne/core/Logger.js';
-import CodexDB from '@/src/t13ne/modules/codex/CodexDB.js';
+﻿﻿import Logger from '/src/t13ne/core/Logger.js';
+import CodexDB from '/src/t13ne/modules/codex/CodexDB.js';
 
 /**
  * CodexScribe
@@ -16,6 +16,8 @@ export class CodexScribe {
     }
 
     async createProficiency(profData, suggestedId = null) {
+        const funcName = 'CodexScribe.createProficiency';
+        Logger.start(funcName, { name: profData.name, suggestedId });
         await this.librarian._getOrBuildProficiencyManifest();
 
         let newId = suggestedId ? String(suggestedId) : String(this.librarian.nextProfId++);
@@ -50,10 +52,13 @@ export class CodexScribe {
         await CodexDB.saveKnot(knotRecord);
 
         Logger.message(`CodexScribe: Created/Updated proficiency ID '${newId}' in '${fullPath}'.`);
+        Logger.end(funcName, newId);
         return newId;
     }
 
     async createKnot(knotData, suggestedId = null) {
+        const funcName = 'CodexScribe.createKnot';
+        Logger.start(funcName, { name: knotData.name, suggestedId });
         await this.librarian._getOrBuildKnotManifest();
 
         let newId = suggestedId ? String(suggestedId) : String(this.librarian.nextKnotId++);
@@ -84,6 +89,7 @@ export class CodexScribe {
         await CodexDB.saveKnot(knotRecord);
 
         Logger.message(`CodexScribe: Created/Updated knot ID '${newId}' in '${fullPath}'.`);
+        Logger.end(funcName, newId);
         return newId;
     }
 
@@ -202,7 +208,7 @@ export class CodexScribe {
     async _reconstructEntity(data, type) {
         // Dynamic imports to avoid circular dependencies in Scribe
         if (type === 'Character') {
-            const { Character } = await import('@/src/t13ne/modules/characters/t13ne-chars.js');
+            const { Character } = await import('/src/t13ne/modules/characters/t13ne-chars.js');
             // We need to pass the CodexLoader facade, not just library/scribe
             // Assuming CodexLoader is available globally or passed down. 
             // Since we are inside CodexLoader composition, we might need a reference to the parent.
@@ -226,8 +232,3 @@ export class CodexScribe {
         return data;
     }
 }
-
-
-
-
-

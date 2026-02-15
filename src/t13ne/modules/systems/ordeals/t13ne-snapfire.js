@@ -1,7 +1,7 @@
 ﻿﻿import { Ordeal, OrdealRound } from './t13ne-ordeals-core.js';
-import T13NECardsAPI from '@/src/t13ne/modules/mechanics/t13ne-cards-api.js';
-import Logger from '@/src/t13ne/core/Logger.js';
-import T13NE from '@/src/t13ne/T13NE.js';
+import T13NECardsAPI from '/src/t13ne/modules/mechanics/t13ne-cards-api.js';
+import Logger from '/src/t13ne/core/Logger.js';
+import T13NE from '/src/t13ne/T13NE.js';
 
 /**
  * Represents a Snap-fire Ordeal Round.

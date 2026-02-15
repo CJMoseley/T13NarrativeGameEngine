@@ -1,6 +1,6 @@
-﻿import CodexLoader from "@/src/t13ne/modules/codex/CodexLoader.js";
-import Logger from "@/src/t13ne/core/Logger.js";
-import AIService from "@/src/t13ne/modules/ai/AIService.js";
+﻿import CodexLoader from "/src/t13ne/modules/codex/CodexLoader.js";
+import Logger from "/src/t13ne/core/Logger.js";
+import AIService from "/src/t13ne/modules/ai/AIService.js";
 
 export class CharacterCatalyst {
     constructor(data) {

@@ -37,7 +37,7 @@ export class PluginManager {
         // Vite-specific feature to find all plugin registration files.
         const registrationModules = import.meta.glob([
             '@plugins/*/wormholeracers-register-plugin.js',
-            '@/src/*/wormholeracers-register-plugin.js'
+            '/src/*/wormholeracers-register-plugin.js'
         ]);
 
         for (const path in registrationModules) {

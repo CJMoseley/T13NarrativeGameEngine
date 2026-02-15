@@ -1,5 +1,5 @@
 import CodexLoader from '../modules/CodexLoader.js';
-import Logger from '@/src/t13ne/core/Logger.js';
+import Logger from '/src/t13ne/core/Logger.js';
 import AIService from '../modules/AIService.js';
 
 export class CharacterCatalyst {

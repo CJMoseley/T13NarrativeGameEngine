@@ -1,7 +1,7 @@
-import Logger from '@/src/t13ne/core/Logger.js';
-import { ComponentDefs } from '@/src/t13ne/procgen/ships/components/ComponentDefs.js';
-import ProcGen from '@/src/t13ne/procgen/ProcGen.js';
-import { ComponentLoreGenerator } from '@/src/t13ne/procgen/lore/factories/ComponentLoreGenerator.js';
+import Logger from '/src/t13ne/core/Logger.js';
+import { ComponentDefs } from '/src/t13ne/procgen/ships/components/ComponentDefs.js';
+import ProcGen from '/src/t13ne/procgen/ProcGen.js';
+import { ComponentLoreGenerator } from '/src/t13ne/procgen/lore/factories/ComponentLoreGenerator.js';
 
 const SHAPE_OPTIONS = {
     'fuselage': ['box', 'cylinder', 'capsule'],

@@ -5,7 +5,7 @@
  * 2 Proficiencies = Skill, 3+ = Talent/Power/Super-Power
  */
 
-import Logger from '@/src/t13ne/core/Logger.js';
+import Logger from '/src/t13ne/core/Logger.js';
 import T13Name from '../modules/t13ne-names.js';
 import T13NE from '../T13NE.js';
 

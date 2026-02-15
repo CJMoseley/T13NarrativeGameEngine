@@ -1049,6 +1049,14 @@ export class GreebleGenerator {
         // Helper to extract usage safely
         const getUsage = (comp) => (comp.stats && (comp.stats.usage || comp.stats.name)) ? (comp.stats.usage || comp.stats.name).toLowerCase() : (comp.type || '');
 
+        const getContrastColor = (baseColorHex) => {
+            if (baseColorHex === undefined) return new THREE.Color(0xffffff);
+            const color = new THREE.Color(baseColorHex);
+            const hsl = { h: 0, s: 0, l: 0 };
+            color.getHSL(hsl);
+            return hsl.l > 0.5 ? new THREE.Color(0x111111) : new THREE.Color(0xffffff);
+        };
+
         const placeDecal = (texture, width, height, origin, direction, checkSymmetry = true) => {
             this.raycaster.set(origin, direction);
             let intersects = [];
@@ -1091,7 +1099,10 @@ export class GreebleGenerator {
 
         // 1. Corporation Logo
         if (corporation) {
-            const logoTex = glyphGenerator.generateLogo(seed, corporation.name, new THREE.Color(0xffffff), new THREE.Color(0xffaa00));
+            const primaryColor = getContrastColor(livery ? livery.color1 : undefined);
+            const secondaryColor = new THREE.Color(livery && livery.color2 !== undefined ? livery.color2 : 0xffaa00);
+            
+            const logoTex = glyphGenerator.generateLogo(seed, corporation.name, primaryColor, secondaryColor);
             if (logoTex) {
                 const fuselage = components.find(c => getUsage(c).includes('fuselage') && c.scale.x > 3);
                 if (fuselage) {
@@ -1105,13 +1116,7 @@ export class GreebleGenerator {
 
         // 2. Ship Name / ID
         if (shipName) {
-            let textColor = new THREE.Color(0xffffff);
-            if (livery && livery.color1 !== undefined) {
-                const hullColor = new THREE.Color(livery.color1);
-                const hsl = { h: 0, s: 0, l: 0 };
-                hullColor.getHSL(hsl);
-                textColor = hsl.l > 0.5 ? new THREE.Color(0x111111) : new THREE.Color(0xffffff);
-            }
+            const textColor = getContrastColor(livery ? livery.color1 : undefined);
 
             const textTex = glyphGenerator.generateTextDecal(shipName, textColor);
             if (textTex) {

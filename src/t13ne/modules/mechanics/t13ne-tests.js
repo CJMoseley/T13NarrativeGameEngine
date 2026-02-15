@@ -1,13 +1,13 @@
-﻿import CodexLoader from "@/src/t13ne/modules/codex/CodexLoader.js";
-import Logger from "@/src/t13ne/core/Logger.js";
-import T13Dice from '@/src/t13ne/modules/mechanics/t13ne-dice.js';
-import T13NECardsAPI from "@/src/t13ne/modules/mechanics/t13ne-cards-api.js";
-import T13NE_Facets from "@/src/t13ne/modules/mechanics/t13ne-facets.js";
-import T13Boons from '@/src/t13ne/modules/mechanics/t13ne-boon.js';
-import T13NE_Stakes from '@/src/t13ne/modules/systems/ordeals/t13ne-stakes.js';
-import T13NE_Sway from "@/src/t13ne/modules/mechanics/t13ne-sway.js";
-import T13NE_Stress from "@/src/t13ne/modules/mechanics/t13ne-stress.js";
-import T13NE_Resources from "@/src/t13ne/modules/mechanics/t13ne-resources.js";
+﻿import CodexLoader from "/src/t13ne/modules/codex/CodexLoader.js";
+import Logger from "/src/t13ne/core/Logger.js";
+import T13Dice from '/src/t13ne/modules/mechanics/t13ne-dice.js';
+import T13NECardsAPI from "/src/t13ne/modules/mechanics/t13ne-cards-api.js";
+import T13NE_Facets from "/src/t13ne/modules/mechanics/t13ne-facets.js";
+import T13Boons from '/src/t13ne/modules/mechanics/t13ne-boon.js';
+import T13NE_Stakes from '/src/t13ne/modules/systems/ordeals/t13ne-stakes.js';
+import T13NE_Sway from "/src/t13ne/modules/mechanics/t13ne-sway.js";
+import T13NE_Stress from "/src/t13ne/modules/mechanics/t13ne-stress.js";
+import T13NE_Resources from "/src/t13ne/modules/mechanics/t13ne-resources.js";
 
 /**
  * Module for handling T13NE Tests (Value, Card Draw, Dice).

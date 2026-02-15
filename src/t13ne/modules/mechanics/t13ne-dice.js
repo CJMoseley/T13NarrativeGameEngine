@@ -1,4 +1,4 @@
-﻿import PRNG from "@/src/t13ne/modules/systems/t13ne-prng.js";
+﻿import PRNG from "/src/t13ne/modules/systems/t13ne-prng.js";
 
 let _prng = PRNG;
 

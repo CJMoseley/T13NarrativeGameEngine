@@ -1,5 +1,6 @@
 import { LoreData } from '../LoreData.js';
 import { NameGenerator } from './NameGenerator.js';
+import Logger from '../../../core/Logger.js';
 
 class Descendant {
     constructor(data) {
@@ -38,29 +39,51 @@ export class CharacterGenerator {
     }
 
     async generateCharacter(model) {
-        switch (model) {
-            case 'Extra':
-            case 'Chorus':
-            case 'Cast':
-                return await this._generateExtraCharacter(model);
-            case 'Archetype':
-                return await this._generateArchetypeCharacter();
-            case 'Detailed':
-                return await this._generateDetailedCharacter();
-            default:
-                throw new Error(`Unknown character model: ${model}`);
+        Logger.message(`CharacterGenerator: generateCharacter called for model '${model}'`);
+        try {
+            switch (model) {
+                case 'Extra':
+                case 'Chorus':
+                case 'Cast':
+                    return await this._generateExtraCharacter(model);
+                case 'Archetype':
+                    return await this._generateArchetypeCharacter();
+                case 'Detailed':
+                    return await this._generateDetailedCharacter();
+                default:
+                    throw new Error(`Unknown character model: ${model}`);
+            }
+        } catch (error) {
+            Logger.error(`CharacterGenerator: Failed to generate character for model '${model}'`, error);
+            throw error;
         }
     }
 
     async _getFacets() {
-        const T13NE = this.pluginManager.getApi('T13', 'T13NE');
+        Logger.message("CharacterGenerator: _getFacets called.");
+        const T13NE = this.pluginManager?.getApi('T13', 'T13NE');
         if (T13NE) {
             const Facets = T13NE.getModule('Facets');
             if (Facets) {
-                return await Facets.getFacetsArr();
+                try {
+                    const facets = await Facets.getFacetsArr();
+                    if (Array.isArray(facets) && facets.length > 0) {
+                        Logger.message(`CharacterGenerator: Retrieved ${facets.length} facets from Facets module.`);
+                        return facets;
+                    } else {
+                        Logger.warn("CharacterGenerator: Facets module returned empty or invalid array.");
+                    }
+                } catch (e) {
+                    Logger.warn("CharacterGenerator: Failed to retrieve facets from module.", e);
+                }
+            } else {
+                Logger.warn("CharacterGenerator: Facets module not found.");
             }
+        } else {
+            Logger.warn("CharacterGenerator: T13NE API not found.");
         }
         // Fallback facets if LoreData failed to load them or hasn't loaded them yet
+        Logger.message("CharacterGenerator: Using fallback facets list.");
         return [
             { FacetName: 'Awe', Hitch: 'Awe Hitch' }, { FacetName: 'Burden', Hitch: 'Burden Hitch' }, 
             { FacetName: 'Craft', Hitch: 'Craft Hitch' }, { FacetName: 'Dominion', Hitch: 'Dominion Hitch' },
@@ -78,28 +101,48 @@ export class CharacterGenerator {
     }
 
     async _generateExtraCharacter(specificType) {
-        const name = this.nameGenerator.generateAlienName(Math.random(), Math.random(), Math.random());
-        
-        let isChorus;
-        if (specificType === 'Chorus') isChorus = true;
-        else if (specificType === 'Cast') isChorus = false;
-        else isChorus = Math.random() > 0.5;
+        Logger.message(`CharacterGenerator: Generating extra character (${specificType})...`);
+        try {
+            const name = this.nameGenerator.generateAlienName(Math.random());
+            Logger.message(`CharacterGenerator: Generated name: ${name}`);
+            
+            let isChorus;
+            if (specificType === 'Chorus') isChorus = true;
+            else if (specificType === 'Cast') isChorus = false;
+            else isChorus = Math.random() > 0.5;
 
-        const annexType = isChorus ? 'Talent' : 'Power';
-        const facets = await this._getFacets();
-        const rootFacet = facets[Math.floor(Math.random() * facets.length)];
-        const channelFacet = facets[Math.floor(Math.random() * facets.length)];
-        const tangleFacet = facets[Math.floor(Math.random() * facets.length)];
-        const auras = [];
+            const annexType = isChorus ? 'Talent' : 'Power';
+            const facets = await this._getFacets();
+            if (!facets || facets.length === 0) {
+                Logger.error("CharacterGenerator: No facets available.");
+                throw new Error("No facets available for character generation.");
+            }
 
-        const annex = new Annex(rootFacet.FacetName, channelFacet.FacetName, tangleFacet.FacetName, auras);
+            const rootFacet = facets[Math.floor(Math.random() * facets.length)];
+            const channelFacet = facets[Math.floor(Math.random() * facets.length)];
+            const tangleFacet = facets[Math.floor(Math.random() * facets.length)];
+            
+            if (!rootFacet || !channelFacet || !tangleFacet) {
+                 Logger.error("CharacterGenerator: Failed to select random facets.", { rootFacet, channelFacet, tangleFacet });
+                 throw new Error("Failed to select random facets.");
+            }
 
-        return {
-            name: name,
-            type: 'Extra',
-            extraType: isChorus ? 'Chorus' : 'Cast',
-            annex: annex
-        };
+            Logger.message(`CharacterGenerator: Selected facets - Root: ${rootFacet.FacetName}, Channel: ${channelFacet.FacetName}`);
+
+            const auras = [];
+
+            const annex = new Annex(rootFacet.FacetName, channelFacet.FacetName, tangleFacet.FacetName, auras);
+
+            return {
+                name: name,
+                type: 'Extra',
+                extraType: isChorus ? 'Chorus' : 'Cast',
+                annex: annex
+            };
+        } catch (e) {
+            Logger.error(`CharacterGenerator: Error in _generateExtraCharacter: ${e.message}`, e);
+            throw e;
+        }
     }
 
     async _generateArchetypeCharacter() {

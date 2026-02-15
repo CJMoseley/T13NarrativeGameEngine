@@ -1,8 +1,8 @@
-import { LoreData } from '@/src/t13ne/procgen/lore/LoreData.js';
-import { NameGenerator } from '@/src/t13ne/procgen/lore/factories/NameGenerator.js';
-import { SpeciesGenerator } from '@/src/t13ne/procgen/lore/factories/SpeciesGenerator.js';
-import { CorporationGenerator } from '@/src/t13ne/procgen/corporations/CorporationGenerator.js';
-import Logger from '@/src/t13ne/core/Logger.js';
+import { LoreData } from '/src/t13ne/procgen/lore/LoreData.js';
+import { NameGenerator } from '/src/t13ne/procgen/lore/factories/NameGenerator.js';
+import { SpeciesGenerator } from '/src/t13ne/procgen/lore/factories/SpeciesGenerator.js';
+import { CorporationGenerator } from '/src/t13ne/procgen/corporations/CorporationGenerator.js';
+import Logger from '/src/t13ne/core/Logger.js';
 
 export class SystemLoreGenerator {
     constructor(pluginManager, loreData) { // Accept pluginManager and loreData
@@ -18,7 +18,13 @@ export class SystemLoreGenerator {
     async generateSystemLore(star, noiseValues, galaxyParams, nearbySpecies = []) {
         const funcName = 'SystemLoreGenerator.generateSystemLore';
         Logger.start(funcName, { starId: star.id });
-        const { n1, n2, n3, n4 } = noiseValues || { n1: Math.random(), n2: Math.random(), n3: Math.random(), n4: Math.random() };
+        let { n1, n2, n3, n4 } = noiseValues || { n1: Math.random(), n2: Math.random(), n3: Math.random(), n4: Math.random() };
+
+        // Normalize noise values to [0, 1]
+        n1 = Math.abs(n1) % 1;
+        n2 = Math.abs(n2) % 1;
+        n3 = Math.abs(n3) % 1;
+        n4 = Math.abs(n4) % 1;
 
         // 1. Species Determination
         Logger.message(`${funcName}: Step 1 - Species Determination`);

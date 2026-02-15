@@ -1,5 +1,5 @@
-﻿import Logger from "@/src/t13ne/core/Logger.js";
-import AIService from "@/src/t13ne/modules/ai/AIService.js";
+﻿import Logger from "/src/t13ne/core/Logger.js";
+import AIService from "/src/t13ne/modules/ai/AIService.js";
 
 /**
  * T13NE Reasoning Module ("The Loom Logic")

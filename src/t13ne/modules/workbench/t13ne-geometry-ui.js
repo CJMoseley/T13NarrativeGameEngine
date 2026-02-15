@@ -1,4 +1,4 @@
-﻿import T13NE from '@/src/t13ne/T13NE.js';
+﻿import T13NE from '/src/t13ne/T13NE.js';
 
 /**
  * T13NE Geometry UI Module

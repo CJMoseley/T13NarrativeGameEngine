@@ -1,12 +1,12 @@
 import * as THREE from 'three';
-import { VectorMaths } from '@/src/t13ne/utils/VectorMaths.js';
-import { ComponentDefs } from '@/src/t13ne/procgen/ships/components/ComponentDefs.js';
-import { PlanetSurfaceEnvironment } from '@/src/t13ne/procgen/planet/PlanetSurfaceEnvironment.js';
-import { WormholeShader } from '@/src/t13ne/rendering/WormholeShader.js';
-import { PlanetaryRenderer } from '@/src/t13ne/rendering/PlanetaryRenderer.js';
-import { Controls } from '@/src/t13ne/core/Controls.js';
-import Logger from '@/src/t13ne/core/Logger.js';
-import { HUD } from '@/src/t13ne/core/ui/components/HUD.js';
+import { VectorMaths } from '/src/t13ne/utils/VectorMaths.js';
+import { ComponentDefs } from '/src/t13ne/procgen/ships/components/ComponentDefs.js';
+import { PlanetSurfaceEnvironment } from '/src/t13ne/procgen/planet/PlanetSurfaceEnvironment.js';
+import { WormholeShader } from '/src/t13ne/rendering/WormholeShader.js';
+import { PlanetaryRenderer } from '/src/t13ne/rendering/PlanetaryRenderer.js';
+import { Controls } from '/src/t13ne/core/Controls.js';
+import Logger from '/src/t13ne/core/Logger.js';
+import { HUD } from '/src/t13ne/core/ui/components/HUD.js';
 
 export class BasicPhysicsEngine {
     constructor(gameEngine) {

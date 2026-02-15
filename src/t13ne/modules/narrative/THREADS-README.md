@@ -52,7 +52,7 @@ const annexes = threads.getAnnexes();
 ### Direct Import (for UI or utilities)
 
 ```javascript
-import { ThreadsSystem } from '@/src/t13ne/modules/t13ne-threads.js';
+import { ThreadsSystem } from '/src/t13ne/modules/t13ne-threads.js';
 
 const threads = new ThreadsSystem();
 await threads.initialize();

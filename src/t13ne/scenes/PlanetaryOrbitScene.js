@@ -113,13 +113,14 @@ export class PlanetaryOrbitScene extends Scene {
     }
 
     createSkybox() {
+        const prng = ProcGen.createPRNG(this.planetData.name || 'skybox');
         const r = 10000;
         const starsGeometry = new THREE.BufferGeometry();
         const starsVertices = [];
         for (let i = 0; i < 2000; i++) {
-            const x = (Math.random() - 0.5) * 2;
-            const y = (Math.random() - 0.5) * 2;
-            const z = (Math.random() - 0.5) * 2;
+            const x = (prng.nextDouble() - 0.5) * 2;
+            const y = (prng.nextDouble() - 0.5) * 2;
+            const z = (prng.nextDouble() - 0.5) * 2;
             const v = new THREE.Vector3(x, y, z).normalize().multiplyScalar(r);
             starsVertices.push(v.x, v.y, v.z);
         }
@@ -242,15 +243,17 @@ export class PlanetaryOrbitScene extends Scene {
         ctx.fillStyle = `#${baseColor.getHexString()}`;
         ctx.fillRect(0, 0, 512, 256);
         
+        const prng = ProcGen.createPRNG(this.planetData.name || 'texture');
+
         // Add Bands/Noise for patterning
         for (let i = 0; i < 40; i++) {
-            const y = Math.random() * 256;
-            const h = Math.random() * 40 + 5;
-            ctx.fillStyle = `rgba(255, 255, 255, ${Math.random() * 0.15})`;
+            const y = prng.nextDouble() * 256;
+            const h = prng.nextDouble() * 40 + 5;
+            ctx.fillStyle = `rgba(255, 255, 255, ${prng.nextDouble() * 0.15})`;
             ctx.fillRect(0, y, 512, h);
             
-            ctx.fillStyle = `rgba(0, 0, 0, ${Math.random() * 0.15})`;
-            ctx.fillRect(0, Math.random() * 256, 512, Math.random() * 40 + 5);
+            ctx.fillStyle = `rgba(0, 0, 0, ${prng.nextDouble() * 0.15})`;
+            ctx.fillRect(0, prng.nextDouble() * 256, 512, prng.nextDouble() * 40 + 5);
         }
         
         return new THREE.CanvasTexture(canvas);
@@ -279,6 +282,8 @@ export class PlanetaryOrbitScene extends Scene {
 
         Logger.message(`PlanetaryOrbitScene: Creating ${this.planetData.moons.length} moons.`);
         this.moons = [];
+
+        const prng = ProcGen.createPRNG(this.planetData.name || 'moons');
         
         // Ensure at least one moon for the cinematic shot
         if (this.planetData.moons.length === 0) {
@@ -293,7 +298,8 @@ export class PlanetaryOrbitScene extends Scene {
                 if (isRound) {
                     moonMesh = this.planetGenerator.generatePlanetMesh(moonData);
                 } else {
-                    moonMesh = this.planetGenerator.generateAsteroidMesh(Math.random(), 5);
+                    const moonSeed = this._stringToSeed(moonData.name || `moon_${index}`);
+                    moonMesh = this.planetGenerator.generateAsteroidMesh(moonSeed, 5);
                 }
             } catch (e) {
                 moonMesh = new THREE.Mesh(new THREE.SphereGeometry(5, 16, 16), new THREE.MeshStandardMaterial({ color: 0x888888 }));
@@ -310,8 +316,8 @@ export class PlanetaryOrbitScene extends Scene {
             // Stagger distances
             const distance = this.scales.planetRadius * 1.8 + (index * 60);
             // Position the first moon to be between camera and planet roughly, or to the side
-            const angle = index === 0 ? Math.PI * 0.8 : Math.random() * Math.PI * 2;
-            const inclination = (Math.random() - 0.5) * 0.5; // Radians
+            const angle = index === 0 ? Math.PI * 0.8 : prng.nextDouble() * Math.PI * 2;
+            const inclination = (prng.nextDouble() - 0.5) * 0.5; // Radians
             
             moonMesh.position.set(
                 Math.cos(angle) * distance,
@@ -357,7 +363,8 @@ export class PlanetaryOrbitScene extends Scene {
 
     createCinematicAsteroid() {
         // A cinematic asteroid passing by in the foreground
-        const asteroid = this.planetGenerator.generateAsteroidMesh(Math.random(), 3);
+        const prng = ProcGen.createPRNG(this.planetData.name || 'asteroid');
+        const asteroid = this.planetGenerator.generateAsteroidMesh(prng.nextDouble(), 3);
         asteroid.scale.setScalar(3.0); 
         
         // Start position: Off screen to the left
@@ -397,7 +404,7 @@ export class PlanetaryOrbitScene extends Scene {
         // Yield to allow frame render before generating UI
         await new Promise(r => setTimeout(r, 100));
 
-        const seed = this.planetData.name ? this._stringToSeed(this.planetData.name) : Math.random() * 1000;
+        const seed = this.planetData.name ? this._stringToSeed(this.planetData.name) : 12345;
         const prng = ProcGen.createPRNG(seed);
 
         // Generate Lore Data
@@ -642,10 +649,11 @@ export class PlanetaryOrbitScene extends Scene {
             this.asteroidObj.mesh.rotation.z += this.asteroidObj.rotation.z * dt;
             
             // Reset if too far to loop the cinematic effect
+            const prng = ProcGen.createPRNG(this.planetData.name || 'asteroid_loop');
             if (this.asteroidObj.mesh.position.x > 400) {
-                 this.asteroidObj.mesh.position.set(-400, -50 + (Math.random()*100), 200);
+                 this.asteroidObj.mesh.position.set(-400, -50 + (prng.nextDouble()*100), 200);
                  // Randomize velocity slightly
-                 this.asteroidObj.velocity.set(15 + Math.random()*5, (Math.random()-0.5)*5, 5);
+                 this.asteroidObj.velocity.set(15 + prng.nextDouble()*5, (prng.nextDouble()-0.5)*5, 5);
             }
         }
 

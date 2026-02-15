@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import Logger from '../Logger.js';
-import { ProceduralComponentGenerator } from '@/src/t13ne/procgen/ships/components/ProceduralComponentGenerator.js';
+import { ProceduralComponentGenerator } from '/src/t13ne/procgen/ships/components/ProceduralComponentGenerator.js';
 
 export const PRIMITIVE_TYPES = {
     BOX: 'box',

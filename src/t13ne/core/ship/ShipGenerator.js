@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { mulberry32, TECH_SPECS, QUALITIES, FALLBACK_MANUFACTURERS, SHIP_PREFIXES, SHIP_ADJECTIVES, SHIP_NOUNS } from './ShipUtils.js';
-import { GalacticHistory } from '@/src/t13ne/procgen/galaxy/GalacticHistory.js';
+import { GalacticHistory } from '/src/t13ne/procgen/galaxy/GalacticHistory.js';
 import { generateDisc, generateSpineOrStar } from './structures/StandardHulls.js';
 import { generateFreighter, generateHorseshoe, generateBlob, generateCatamaran, generateYFork, generateBattlestar, generateSideCockpit } from './structures/IndustrialHulls.js';
 import { generateTree, generateMaze, generateBioCluster, generateMonolith, generateFractal, generateLiberator, generateBioBird, generateBioFish, generateBioInsect, generateBioCephalopod } from './structures/ExoticHulls.js';

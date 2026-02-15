@@ -1,7 +1,7 @@
 // Knots are combinations of threads that create everything else in the game.
 // They are essentially bundles of proficiencies, texts, and other game elements.
 
-import Logger from '@/src/t13ne/core/Logger.js';
+import Logger from '/src/t13ne/core/Logger.js';
 import T13NE_Sway from '../modules/t13ne-sway.js';
 import T13Name from '../modules/t13ne-names.js';
 

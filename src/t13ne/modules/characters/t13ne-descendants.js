@@ -1,7 +1,8 @@
-﻿import { SuperKnot } from "@/src/t13ne/modules/mechanics/t13ne-knots.js";
+﻿﻿import { SuperKnot } from "/src/t13ne/modules/mechanics/t13ne-knots.js";
 import T13SwayAccount from './T13SwayAccount.js';
-import T13NE from '@/src/t13ne/T13NE.js';
-import T13Dice from '@/src/t13ne/modules/mechanics/t13ne-dice.js';
+import T13NE from '/src/t13ne/T13NE.js';
+import T13Dice from '/src/t13ne/modules/mechanics/t13ne-dice.js';
+import Logger from "/src/t13ne/core/Logger.js";
 
 /**
  * Represents a Descendant in the T13NE system (Items, Locations, Connections, etc.).
@@ -45,6 +46,8 @@ export class Descendant extends SuperKnot {
      * @param {object} options 
      */
     static async generate(codexLoader, options = {}) {
+        const funcName = 'Descendant.generate';
+        Logger.start(funcName, options);
         const type = options.descendantType || 'Item';
         const Facets = T13NE.getModule('Facets');
         const facetsArr = await Facets.getFacetsArr();
@@ -58,6 +61,7 @@ export class Descendant extends SuperKnot {
         }
 
         if (!nameInput) nameInput = [`Random ${facet.FacetName} ${type}`, `Random ${facet.FacetName} ${type}`, ''];
+        Logger.message(`${funcName}: Generated Name: ${nameInput[0]}`);
 
         const data = {
             name: nameInput,
@@ -67,15 +71,16 @@ export class Descendant extends SuperKnot {
             ...options
         };
 
+        Logger.message(`${funcName}: Creating Master Annex for ${type}...`);
         if (type === 'Pact') {
-            const { PactAnnex } = await import("@/src/t13ne/modules/mechanics/t13ne-knots.js");
+            const { PactAnnex } = await import("/src/t13ne/modules/mechanics/t13ne-knots.js");
             data.masterAnnex = new PactAnnex(codexLoader, {
                 name: `${nameInput[0]} Pact`,
                 description: `A collective pact of ${facet.FacetName}.`,
                 tags: { facets: [facet.FacetName] }
             });
         } else if (type === 'Location') {
-            const { SizeAnnex } = await import("@/src/t13ne/modules/mechanics/t13ne-knots.js");
+            const { SizeAnnex } = await import("/src/t13ne/modules/mechanics/t13ne-knots.js");
             data.masterAnnex = new SizeAnnex(codexLoader, {
                 name: `${nameInput[0]} Size`,
                 size: options.size || 0,
@@ -90,7 +95,7 @@ export class Descendant extends SuperKnot {
                     proficiencies: [{ facet: facet.FacetName }, { facet: facet.FacetName }]
                 });
             } else {
-                const { Annex } = await import("@/src/t13ne/modules/mechanics/t13ne-knots.js");
+                const { Annex } = await import("/src/t13ne/modules/mechanics/t13ne-knots.js");
                 data.masterAnnex = new Annex(codexLoader, {
                     name: `${facet.FacetName} Function`,
                     description: 'Generated functionality.',
@@ -99,14 +104,8 @@ export class Descendant extends SuperKnot {
             }
         }
 
-        return new Descendant(codexLoader, data);
+        const descendant = new Descendant(codexLoader, data);
+        Logger.end(funcName, descendant);
+        return descendant;
     }
 }
-
-
-
-
-
-
-
-

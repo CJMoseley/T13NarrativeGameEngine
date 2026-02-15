@@ -1,5 +1,5 @@
-﻿import Logger from "@/src/t13ne/core/Logger.js";
-import T13NE from '@/src/t13ne/T13NE.js';
+﻿﻿import Logger from "/src/t13ne/core/Logger.js";
+import T13NE from '/src/t13ne/T13NE.js';
 
 /**
  * T13NE NPC Handler
@@ -16,9 +16,14 @@ export class NPCController {
      * @returns {Promise<object>}
      */
     async getAIProfile() {
-        if (!this.character) return null;
+        const funcName = 'NPCController.getAIProfile';
+        Logger.start(funcName, { name: this.character?.name });
+        if (!this.character) {
+            Logger.warn(`${funcName}: No character attached.`);
+            return null;
+        }
 
-        return {
+        const profile = {
             identity: this._getIdentity(),
             descriptors: await this._getDescriptors(),
             capabilities: this._getCapabilities(),
@@ -29,6 +34,9 @@ export class NPCController {
             catalysts: this._getCatalysts(),
             state: this._getCurrentState()
         };
+
+        Logger.end(funcName);
+        return profile;
     }
 
     _getIdentity() {
@@ -341,10 +349,3 @@ export class NPCController {
         return advice;
     }
 }
-
-
-
-
-
-
-

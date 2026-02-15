@@ -1,5 +1,7 @@
-﻿import { Annex, Hitch, SizeAnnex, TIE } from "@/src/t13ne/modules/mechanics/t13ne-knots.js";
-import Logger from "@/src/t13ne/core/Logger.js";
+﻿import { Annex, Hitch, SizeAnnex, TIE } from "/src/t13ne/modules/mechanics/t13ne-knots.js";
+import Logger from "/src/t13ne/core/Logger.js";
+﻿import { Annex, Hitch, SizeAnnex, TIE } from "../../mechanics/t13ne-knots.js";
+import Logger from "../../core/Logger.js";
 
 export const ChiUser = (Base) => class extends Base {
     constructor(...args) {

@@ -1,7 +1,7 @@
-﻿import Logger from "@/src/t13ne/core/Logger.js";
-import AIService from "@/src/t13ne/modules/ai/AIService.js";
-import T13NE_PRNG from "@/src/t13ne/modules/systems/t13ne-prng.js";
-import CodexLoader from "@/src/t13ne/modules/codex/CodexLoader.js";
+﻿﻿import Logger from "../../core/Logger.js";
+import AIService from "./AIService.js";
+import T13NE_PRNG from "../systems/t13ne-prng.js";
+import CodexLoader from "../codex/CodexLoader.js";
 
 /**
  * A generic, context-driven name generator that uses an AI service and procedural techniques.
@@ -56,6 +56,8 @@ Please respond with ONLY a valid JSON object in the following format:
      * @returns {Promise<[string, string, string]>} A promise that resolves to the standard T13NE name array.
      */
     async generate(context, seed) {
+        const funcName = 'T13NameGenerator.generate';
+        Logger.start(funcName, { contextType: context.type, seed });
         let aiResponse = null;
         let attempts = 0;
         const maxAttempts = 3;
@@ -63,6 +65,7 @@ Please respond with ONLY a valid JSON object in the following format:
         // 1. Attempt to generate a name using the AI service, with retries for quality control.
         while (attempts < maxAttempts) {
             attempts++;
+            Logger.message(`${funcName}: Attempt ${attempts}/${maxAttempts} using AI...`);
             const prompt = this._buildPrompt(context, seed);
             try {
                 const rawResponse = await AIService.generateText(prompt);
@@ -70,17 +73,18 @@ Please respond with ONLY a valid JSON object in the following format:
                 // Basic quality check: ensure the common name is reasonably long.
                 if (parsed.common && parsed.common.length > 2) {
                     aiResponse = parsed;
+                    Logger.message(`${funcName}: AI generation successful on attempt ${attempts}.`);
                     break; // Exit loop on success
                 }
-                Logger.warn(`T13NameGenerator: AI returned low-quality name (attempt ${attempts}). Retrying...`);
+                Logger.warn(`${funcName}: AI returned low-quality name (attempt ${attempts}). Retrying...`);
             } catch (error) {
-                Logger.error(`T13NameGenerator: AI generation failed (attempt ${attempts}): ${error.message}`);
+                Logger.error(`${funcName}: AI generation failed (attempt ${attempts}): ${error.message}`);
             }
         }
 
         // 2. Handle AI failure or persistent low-quality output.
         if (!aiResponse) {
-            Logger.error(`T13NameGenerator: AI failed to produce a valid name after ${maxAttempts} attempts. Using procedural fallback.`);
+            Logger.warn(`${funcName}: AI failed to produce a valid name after ${maxAttempts} attempts. Using procedural fallback.`);
             const fallbackSeed = context.speciesKey || context.type || 'Fallback';
             const commonName = this._proceduralTranslate(fallbackSeed, fallbackSeed);
             aiResponse = {
@@ -97,6 +101,7 @@ Please respond with ONLY a valid JSON object in the following format:
         // 4. Combine results and return the final, standardized name array.
         const finalAliases = [aiResponse.aliases, proceduralAlias].filter(Boolean).join(', ');
 
+        Logger.end(funcName, aiResponse.common);
         return [
             aiResponse.common,
             aiResponse.full,
@@ -312,9 +317,3 @@ Please respond with ONLY a valid JSON object in the following format:
         Logger.message(`T13NameGenerator: Added/Updated template for '${key}'.`);
     }
 }
-
-
-
-
-
-

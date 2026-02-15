@@ -1,7 +1,7 @@
-﻿import { Character, SeededRNG } from "@/src/t13ne/modules/characters/t13ne-chars.js";
-import { PersonalityAnnex, Hitch } from "@/src/t13ne/modules/mechanics/t13ne-knots.js";
-import T13NE from '@/src/t13ne/T13NE.js';
-import Logger from "@/src/t13ne/core/Logger.js";
+﻿import { Character, SeededRNG } from "../t13ne-chars.js";
+import { PersonalityAnnex, Hitch } from "../../mechanics/t13ne-knots.js";
+import T13NE from '../../T13NE.js';
+import Logger from "../../core/Logger.js";
 
 export class Archetype extends Character {
     constructor(codexLoader, data) {
@@ -9,6 +9,8 @@ export class Archetype extends Character {
     }
 
     static async generate(codexLoader, options = {}) {
+        const funcName = 'Archetype.generate';
+        Logger.start(funcName, options);
         const seed = options.seed !== undefined ? options.seed : Date.now();
         const rng = new SeededRNG(seed);
         const genre = options.genre || 'T13 Core';
@@ -60,6 +62,7 @@ export class Archetype extends Character {
         charData.name = nameResult[0];
         charData.fullName = nameResult[1];
         charData.altName = nameResult[2];
+        Logger.message(`${funcName}: Generated Name: ${charData.name}`);
 
         if (T13Geometry) {
             charData.geometry = T13Geometry.calculateFullGeo(charData.name);
@@ -75,6 +78,7 @@ export class Archetype extends Character {
         charData.iching = statblock.Hex;
 
         // Personality Annex
+        Logger.message(`${funcName}: Generating Personality...`);
         const personaFacet = resolveFacet(options.facets?.persona);
         const coreFacet = resolveFacet(options.facets?.core);
         const personaName = (personaFacet.Persona && personaFacet.Persona.Name) ? personaFacet.Persona.Name : personaFacet.FacetName;
@@ -90,6 +94,7 @@ export class Archetype extends Character {
         });
 
         // Hitches (Archetypes usually have 1)
+        Logger.message(`${funcName}: Generating Hitches...`);
         charData.hitches = [];
         const hitchFacet = resolveFacet(options.facets?.hitches?.[0]);
         const hitch = new Hitch(codexLoader, {
@@ -111,14 +116,7 @@ export class Archetype extends Character {
             archetype.psychosocialSpace = PsychosocialSpaces.createHexagonalMap(archetype);
         }
 
+        Logger.end(funcName, archetype);
         return archetype;
     }
 }
-
-
-
-
-
-
-
-

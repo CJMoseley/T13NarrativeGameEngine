@@ -141,7 +141,7 @@ export class GlyphGenerator {
         const cellW = (width - 40) / cols;
         const cellH = (height - 40) / rows;
         
-        ctx.lineWidth = 8;
+        ctx.lineWidth = 16;
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
 

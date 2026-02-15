@@ -1,5 +1,5 @@
 import T13NE from './T13NE.js';
-import IntroSequence from '@/src/t13ne/core/ui/IntroSequence.js';
+import IntroSequence from '/src/t13ne/core/ui/IntroSequence.js';
 import Logger from './core/Logger.js';
 
 /**

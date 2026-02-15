@@ -121,8 +121,14 @@ export class PlanetGenerator {
         }
         geometry.computeVertexNormals();
 
+        // Varied asteroid colors (Browns, Greys, Reddish)
+        const hue = prng.nextDouble() * 0.1 + 0.05; // Orange-ish
+        const sat = prng.nextDouble() * 0.2; // Low saturation
+        const lit = 0.2 + prng.nextDouble() * 0.3; // Dark to Mid
+        const color = new THREE.Color().setHSL(hue, sat, lit);
+
         const material = new THREE.MeshStandardMaterial({
-            color: 0x666666,
+            color: color,
             roughness: 0.9,
             metalness: 0.2
         });
@@ -141,6 +147,22 @@ export class PlanetGenerator {
     }
 
     _getPlanetColors(planetData, prng) {
+        // Use pre-generated color if available (from PlanetarySystemGenerator)
+        if (planetData.color) {
+            const c = new THREE.Color();
+            if (planetData.color.h !== undefined) {
+                c.setHSL(planetData.color.h, planetData.color.s, planetData.color.l);
+            } else if (planetData.color.isColor) {
+                c.copy(planetData.color);
+            } else {
+                c.setHex(planetData.color);
+            }
+            // Generate complementary/analogous colors for c2/c3 based on c1
+            const c2 = c.clone().offsetHSL(0.05, -0.1, -0.1); // Analogous darker
+            const c3 = c.clone().offsetHSL(0, -0.2, 0.2); // Lighter/Darker variation
+            return { c1: c.getHex(), c2: c2.getHex(), c3: c3.getHex() };
+        }
+
         // Default terrestrial
         let c1 = 0x228822; // Green
         let c2 = 0x886644; // Brown
@@ -156,6 +178,15 @@ export class PlanetGenerator {
             c1 = 0x330000; c2 = 0x110000; c3 = 0xff4400;
         } else if (type.includes('Desert')) {
             c1 = 0xffcc44; c2 = 0xcc8822; c3 = 0xaa6611;
+        } else if (type.includes('Barren') || type.includes('Rock') || type.includes('Dwarf')) {
+            // Vivid Barren: Not just grey. Reddish, bluish, purplish rock.
+            const hue = prng.nextDouble();
+            const sat = 0.2 + prng.nextDouble() * 0.3; // Some color
+            const lit = 0.3 + prng.nextDouble() * 0.4;
+            const c = new THREE.Color().setHSL(hue, sat, lit);
+            c1 = c.getHex();
+            c2 = c.clone().multiplyScalar(0.8).getHex(); // Darker shade
+            c3 = c.clone().multiplyScalar(1.2).getHex(); // Lighter shade
         }
 
         // Adjust based on resources (if available in new format)

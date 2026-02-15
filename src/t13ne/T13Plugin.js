@@ -1,6 +1,6 @@
-import { Plugin } from '@/src/t13ne/core/Plugin.js';
-import Logger from '@/src/t13ne/core/Logger.js';
-import T13NE from '@/src/t13ne/T13NE.js';
+import { Plugin } from '/src/t13ne/core/Plugin.js';
+import Logger from '/src/t13ne/core/Logger.js';
+import T13NE from '/src/t13ne/T13NE.js';
 
 /**
  * @module Plugins/T13Ne/T13Plugin

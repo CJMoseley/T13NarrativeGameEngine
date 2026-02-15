@@ -1,6 +1,6 @@
-﻿import CodexLoader from "@/src/t13ne/modules/codex/CodexLoader.js";
-import Logger from "@/src/t13ne/core/Logger.js";
-import T13NE from '@/src/t13ne/T13NE.js';
+﻿import CodexLoader from "/src/t13ne/modules/codex/CodexLoader.js";
+import Logger from "/src/t13ne/core/Logger.js";
+import T13NE from '/src/t13ne/T13NE.js';
 
 /**
  * Module for handling T13NE Social Ordeals.

@@ -37,11 +37,11 @@ async function runVerification() {
     try {
         // --- Temporarily patch files for Node.js environment ---
         originalSwayJS = await fs.readFile(swayPath, 'utf8');
-        let patchedSwayJS = originalSwayJS.replace("import Logger from '@/src/t13ne/core/Logger.js';", "const Logger = global.Logger;");
+        let patchedSwayJS = originalSwayJS.replace("import Logger from '/src/t13ne/core/Logger.js';", "const Logger = global.Logger;");
         await fs.writeFile(swayPath, patchedSwayJS);
 
         originalSwayDataJS = await fs.readFile(swayDataPath, 'utf8');
-        let patchedSwayDataJS = originalSwayDataJS.replace("import Logger from '@/src/t13ne/core/Logger.js';", "const Logger = global.Logger;");
+        let patchedSwayDataJS = originalSwayDataJS.replace("import Logger from '/src/t13ne/core/Logger.js';", "const Logger = global.Logger;");
         await fs.writeFile(swayDataPath, patchedSwayDataJS);
         // --- End Patch ---
 

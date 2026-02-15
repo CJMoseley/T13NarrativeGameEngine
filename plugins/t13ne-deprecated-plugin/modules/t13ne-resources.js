@@ -1,4 +1,4 @@
-import Logger from '@/src/t13ne/core/Logger.js';
+import Logger from '/src/t13ne/core/Logger.js';
 import T13Boons from '../modules/t13ne-boon.js';
 import T13Dice from '../modules/t13ne-dice.js';
 

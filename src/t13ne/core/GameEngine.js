@@ -6,20 +6,20 @@
  */
 
 import { ShipFactory } from './ship/ShipFactory.js';
-import { GalaxyGenerator } from '@/src/t13ne/procgen/galaxy/GalaxyGenerator.js';
-import { LoreData } from '@/src/t13ne/procgen/lore/LoreData.js';
+import { GalaxyGenerator } from '/src/t13ne/procgen/galaxy/GalaxyGenerator.js';
+import { LoreData } from '/src/t13ne/procgen/lore/LoreData.js';
 import { PluginManager } from './PluginManager.js';
-import { GalacticHistory } from '@/src/t13ne/procgen/galaxy/GalacticHistory.js';
-import { Ship } from '@/src/t13ne/procgen/ships/Ship.js';
-import { ShipLayouts } from '@/src/t13ne/procgen/ships/ShipLayouts.js';
-import { ProceduralComponentGenerator } from '@/src/t13ne/procgen/ships/components/ProceduralComponentGenerator.js';
+import { GalacticHistory } from '/src/t13ne/procgen/galaxy/GalacticHistory.js';
+import { Ship } from '/src/t13ne/procgen/ships/Ship.js';
+import { ShipLayouts } from '/src/t13ne/procgen/ships/ShipLayouts.js';
+import { ProceduralComponentGenerator } from '/src/t13ne/procgen/ships/components/ProceduralComponentGenerator.js';
 import { AdvancedPhysicsEngine } from './AdvancedPhysicsEngine.js';
 import { HyperphysicsEngine } from './HyperphysicsEngine.js';
-import { LoreMaster } from '@/src/t13ne/procgen/lore/LoreMaster.js';
+import { LoreMaster } from '/src/t13ne/procgen/lore/LoreMaster.js';
 import { SoundEngine } from './SoundEngine.js';
-import { EngineSoundGenerator } from '@/src/t13ne/sounds/EngineSoundGenerator.js';
-import { WormholeAmbiance } from '@/src/t13ne/sounds/WormholeAmbiance.js';
-import { WebRTCManager } from '@/src/t13ne/net/WebRTCManager.js';
+import { EngineSoundGenerator } from '/src/t13ne/sounds/EngineSoundGenerator.js';
+import { WormholeAmbiance } from '/src/t13ne/sounds/WormholeAmbiance.js';
+import { WebRTCManager } from '/src/t13ne/net/WebRTCManager.js';
 import { VOIPManager } from './VOIPManager.js';
 import { EventBus } from './EventBus.js';
 import Logger from './Logger.js';

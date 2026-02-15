@@ -1,7 +1,7 @@
-﻿import Logger from '@/src/t13ne/core/Logger.js';
-import CodexLoader from '@/src/t13ne/modules/codex/CodexLoader.js';
-import T13Boons from '@/src/t13ne/modules/mechanics/t13ne-boon.js';
-import T13Dice from '@/src/t13ne/modules/mechanics/t13ne-dice.js';
+﻿import Logger from '/src/t13ne/core/Logger.js';
+import CodexLoader from '/src/t13ne/modules/codex/CodexLoader.js';
+import T13Boons from '/src/t13ne/modules/mechanics/t13ne-boon.js';
+import T13Dice from '/src/t13ne/modules/mechanics/t13ne-dice.js';
 
 /**
  * Module for handling T13NE Stress, Strain, and Shock systems.

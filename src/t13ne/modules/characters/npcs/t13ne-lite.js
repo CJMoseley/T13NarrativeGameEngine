@@ -1,8 +1,8 @@
-﻿import { Character, SeededRNG } from "@/src/t13ne/modules/characters/t13ne-chars.js";
-import { Annex, Hitch, PersonalityAnnex } from "@/src/t13ne/modules/mechanics/t13ne-knots.js";
-import T13NE from '@/src/t13ne/T13NE.js';
-import Logger from "@/src/t13ne/core/Logger.js";
-import T13Boons from '@/src/t13ne/modules/mechanics/t13ne-boon.js';
+﻿﻿import { Character, SeededRNG } from "/src/t13ne/modules/characters/t13ne-chars.js";
+import { Annex, Hitch, PersonalityAnnex } from "/src/t13ne/modules/mechanics/t13ne-knots.js";
+import T13NE from '/src/t13ne/T13NE.js';
+import Logger from "/src/t13ne/core/Logger.js";
+import T13Boons from '/src/t13ne/modules/mechanics/t13ne-boon.js';
 
 const LITE_BOONS = {
     1: { type: 'Proficiency', boon: 10, draw: 1, play: 1, rt: 0, grt: 0, umbral: 0, nimbed: 0 },
@@ -36,6 +36,8 @@ export class Lite extends Character {
     }
 
     static async generate(codexLoader, options = {}) {
+        const funcName = 'Lite.generate';
+        Logger.start(funcName, options);
         const seed = options.seed !== undefined ? options.seed : Date.now();
         const rng = new SeededRNG(seed);
         const genre = options.genre || 'T13 Core';
@@ -85,12 +87,14 @@ export class Lite extends Character {
         charData.name = nameResult[0];
         charData.fullName = nameResult[1];
         charData.altName = nameResult[2];
+        Logger.message(`${funcName}: Generated Name: ${charData.name}`);
 
         if (T13Geometry) {
             charData.geometry = T13Geometry.calculateFullGeo(charData.name);
         }
 
         // 2. Hitches (1 to 13)
+        Logger.message(`${funcName}: Generating Hitches...`);
         const numHitches = rng.range(1, 13);
         let totalProficiencyPoints = 0;
         let maxHitchBoon = 0;
@@ -124,6 +128,7 @@ export class Lite extends Character {
         // 3. Proficiencies & Annexes
         // "For each Hitch Bane the Lite Character may select a Proficiency."
         // "multiply/combine proficiencies to make the Lite equivalent of Annexes"
+        Logger.message(`${funcName}: Generating Annex Suggestions...`);
         let remainingProfs = totalProficiencyPoints;
         charData.annexSuggestions = [];
 
@@ -179,6 +184,7 @@ export class Lite extends Character {
         // (since Boon -> Value -> Boon is circular, unless scale modifies it).
         // Assuming standard scale 0 for Lite.
 
+        Logger.message(`${funcName}: Generating Personality...`);
         let highestProfBoon = 0;
         charData.subAnnexes.forEach(a => {
             if (a.liteStats && a.liteStats.boon > highestProfBoon) highestProfBoon = a.liteStats.boon;
@@ -216,14 +222,8 @@ export class Lite extends Character {
 
         charData.description = `A Lite character with ${numHitches} Hitches and ${charData.subAnnexes.length} Annexes. Highest Ability: ${highestProfBoon} Boon.`;
 
-        return new Lite(codexLoader, charData);
+        const liteChar = new Lite(codexLoader, charData);
+        Logger.end(funcName, liteChar);
+        return liteChar;
     }
 }
-
-
-
-
-
-
-
-

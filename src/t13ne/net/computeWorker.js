@@ -1,6 +1,6 @@
 // Module worker that computes per-segment wormhole samples using existing PerlinNoise implementation.
-import { PerlinNoise } from '@/src/t13ne/utils/PerlinNoise.js';
-import { ColourUtils } from '@/src/t13ne/utils/ColourUtils.js';
+import { PerlinNoise } from '/src/t13ne/utils/PerlinNoise.js';
+import { ColourUtils } from '/src/t13ne/utils/ColourUtils.js';
 
 // Worker expects message: { task: { taskId, startPoint, endPoint, segments, baseRadius, freqs, env, timeOffset } }
 self.addEventListener('message', async (ev) => {

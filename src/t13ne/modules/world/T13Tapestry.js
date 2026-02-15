@@ -1,11 +1,11 @@
 ﻿// T13Tapestry.js
-import T13Dice from '@/src/t13ne/modules/mechanics/t13ne-dice.js';
-import T13NE_Facets from "@/src/t13ne/modules/mechanics/t13ne-facets.js";
-import T13Boons from '@/src/t13ne/modules/mechanics/t13ne-boon.js';
-import Logger from "@/src/t13ne/core/Logger.js";
-import FacetWeb from '@/src/t13ne/modules/systems/t13ne-facet-web.js';
-import T13NE_PRNG from "@/src/t13ne/modules/systems/t13ne-prng.js";
-import T13Name from "@/src/t13ne/modules/characters/t13ne-names.js";
+import T13Dice from '/src/t13ne/modules/mechanics/t13ne-dice.js';
+import T13NE_Facets from "/src/t13ne/modules/mechanics/t13ne-facets.js";
+import T13Boons from '/src/t13ne/modules/mechanics/t13ne-boon.js';
+import Logger from "/src/t13ne/core/Logger.js";
+import FacetWeb from '/src/t13ne/modules/systems/t13ne-facet-web.js';
+import T13NE_PRNG from "/src/t13ne/modules/systems/t13ne-prng.js";
+import T13Name from "/src/t13ne/modules/characters/t13ne-names.js";
 
 /**
  * A JavaScript port of the T13Statblock PHP class.

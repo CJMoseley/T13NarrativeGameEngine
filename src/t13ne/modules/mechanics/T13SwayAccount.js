@@ -1,8 +1,13 @@
 ﻿// T13SwayAccount.js
-import T13NE_Sway from "@/src/t13ne/modules/mechanics/t13ne-sway.js";
-import Logger from "@/src/t13ne/core/Logger.js";
-import T13SwayPurse from '@/src/t13ne/modules/mechanics/T13SwayPurse.js';
-import T13NE from '@/src/t13ne/T13NE.js';
+import T13NE_Sway from "/src/t13ne/modules/mechanics/t13ne-sway.js";
+import Logger from "/src/t13ne/core/Logger.js";
+import T13SwayPurse from '/src/t13ne/modules/mechanics/T13SwayPurse.js';
+import T13NE from '/src/t13ne/T13NE.js';
+﻿// T13SwayAccount.js
+import T13NE_Sway from "./t13ne-sway.js";
+import Logger from "../../core/Logger.js";
+import T13SwayPurse from './T13SwayPurse.js';
+import T13NE from '../T13NE.js';
 
 /**
  * Manages multiple "flavors" of sway for a character or item.

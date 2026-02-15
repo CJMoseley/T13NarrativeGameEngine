@@ -1,6 +1,6 @@
 // d:\GoogleDrive\Games\wormholeracersJS\WormholeRacersJS\plugins\t13ne\modules\t13ne-referee.js
 
-import Logger from '@/src/t13ne/core/Logger.js';
+import Logger from '/src/t13ne/core/Logger.js';
 
 /**
  * T13NE Referee Module

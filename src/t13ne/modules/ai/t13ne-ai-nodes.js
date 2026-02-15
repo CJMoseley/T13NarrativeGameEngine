@@ -1,6 +1,6 @@
-﻿import Logger from "@/src/t13ne/core/Logger.js";
-import T13NECardsAPI from "@/src/t13ne/modules/mechanics/t13ne-cards-api.js";
-import AIService from "@/src/t13ne/modules/ai/AIService.js";
+﻿import Logger from "/src/t13ne/core/Logger.js";
+import T13NECardsAPI from "/src/t13ne/modules/mechanics/t13ne-cards-api.js";
+import AIService from "/src/t13ne/modules/ai/AIService.js";
 
 /**
  * Base class for all AI nodes. Defines the basic structure and execution flow.

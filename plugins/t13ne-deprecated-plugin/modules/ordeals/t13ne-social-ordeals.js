@@ -1,5 +1,5 @@
 import CodexLoader from '../CodexLoader.js';
-import Logger from '@/src/t13ne/core/Logger.js';
+import Logger from '/src/t13ne/core/Logger.js';
 import T13NE from '../../T13NE.js';
 
 /**

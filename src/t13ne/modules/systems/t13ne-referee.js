@@ -1,6 +1,6 @@
 ﻿// d:\GoogleDrive\Games\wormholeracersJS\WormholeRacersJS\plugins\t13ne\modules\t13ne-referee.js
 
-import Logger from "@/src/t13ne/core/Logger.js";
+import Logger from "/src/t13ne/core/Logger.js";
 import { T13Plot } from "../narrative/t13ne-plots.js";
 import T13LoreManager from "../narrative/t13ne-lore.js";
 

@@ -1,19 +1,19 @@
 // d:\GoogleDrive\Games\wormholeracersJS\WormholeRacersJS\js\procgen\lore\LoreMaster.js
 
-import { LoreData } from '@/src/t13ne/procgen/lore/LoreData.js';
-import { NameGenerator } from '@/src/t13ne/procgen/lore/factories/NameGenerator.js';
-import { MLNameGenerator } from '@/src/t13ne/procgen/lore/MLNameGenerator.js';
-import { SpeciesGenerator } from '@/src/t13ne/procgen/lore/factories/SpeciesGenerator.js';
-import { TechGenerator } from '@/src/t13ne/procgen/lore/factories/TechGenerator.js';
-import { ScienceGenerator } from '@/src/t13ne/procgen/lore/factories/ScienceGenerator.js';
-import { CharacterGenerator } from '@/src/t13ne/procgen/lore/factories/CharacterGenerator.js';
-import { ComponentLoreGenerator } from '@/src/t13ne/procgen/lore/factories/ComponentLoreGenerator.js';
-import { CorporationGenerator } from '@/src/t13ne/procgen/corporations/CorporationGenerator.js';
-import { SystemGenerator } from '@/src/t13ne/procgen/system/SystemGenerator.js';
-import { SystemLoreGenerator } from '@/src/t13ne/procgen/system/SystemLoreGenerator.js';
-import { StellarSystemGenerator } from '@/src/t13ne/procgen/system/StellarSystemGenerator.js';
-import { GalacticHistory } from '@/src/t13ne/procgen/galaxy/GalacticHistory.js';
-import Logger from '@/src/t13ne/core/Logger.js';
+import { LoreData } from '/src/t13ne/procgen/lore/LoreData.js';
+import { NameGenerator } from '/src/t13ne/procgen/lore/factories/NameGenerator.js';
+import { MLNameGenerator } from '/src/t13ne/procgen/lore/MLNameGenerator.js';
+import { SpeciesGenerator } from '/src/t13ne/procgen/lore/factories/SpeciesGenerator.js';
+import { TechGenerator } from '/src/t13ne/procgen/lore/factories/TechGenerator.js';
+import { ScienceGenerator } from '/src/t13ne/procgen/lore/factories/ScienceGenerator.js';
+import { CharacterGenerator } from '/src/t13ne/procgen/lore/factories/CharacterGenerator.js';
+import { ComponentLoreGenerator } from '/src/t13ne/procgen/lore/factories/ComponentLoreGenerator.js';
+import { CorporationGenerator } from '/src/t13ne/procgen/corporations/CorporationGenerator.js';
+import { SystemGenerator } from '/src/t13ne/procgen/system/SystemGenerator.js';
+import { SystemLoreGenerator } from '/src/t13ne/procgen/system/SystemLoreGenerator.js';
+import { StellarSystemGenerator } from '/src/t13ne/procgen/system/StellarSystemGenerator.js';
+import { GalacticHistory } from '/src/t13ne/procgen/galaxy/GalacticHistory.js';
+import Logger from '/src/t13ne/core/Logger.js';
 
 /**
  * LoreMaster

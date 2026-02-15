@@ -1,4 +1,4 @@
-﻿import T13NE from '@/src/t13ne/T13NE.js';
+﻿import T13NE from '/src/t13ne/T13NE.js';
 import UI from './t13ne-UI.js';
 import CharacterUI from './t13ne-chars-UI.js';
 import GeometryUI from './t13ne-geometry-ui.js';
@@ -285,7 +285,7 @@ class NarrativeUI {
             const anchor = document.getElementById('uhpp-inspector-anchor');
             if (anchor) {
                 try {
-                    const { UHPPEditorUI } = await import('@/src/t13ne/procgen/uhpp/UHPPEditorUI.js');
+                    const { UHPPEditorUI } = await import('/src/t13ne/procgen/uhpp/UHPPEditorUI.js');
                     const uhppUI = new UHPPEditorUI(window.Workbench);
                     uhppUI.renderInspector(obj, anchor);
                 } catch (e) {

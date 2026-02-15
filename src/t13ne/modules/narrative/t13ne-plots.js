@@ -230,7 +230,7 @@ class T13Plot extends SuperKnot {
         else if (type === 'Force-of-Nature') yarnGain = 4;
 
         // Generate the Character
-        const { Character } = await import("@/src/t13ne/modules/characters/t13ne-chars.js");
+        const { Character } = await import("/src/t13ne/modules/characters/t13ne-chars.js");
         const Codex = this.t13ne.getModule('Codex');
         const npc = await Character.generate(Codex, { ...options, model: type });
 
@@ -340,7 +340,7 @@ class T13Plot extends SuperKnot {
         else if (type === 'Force-of-Nature') yarnGain = 4;
 
         // Generate the Character
-        const { Character } = await import("@/src/t13ne/modules/characters/t13ne-chars.js");
+        const { Character } = await import("/src/t13ne/modules/characters/t13ne-chars.js");
         const Codex = this.t13ne.getModule('Codex');
         const npc = await Character.generate(Codex, { ...options, model: type });
 

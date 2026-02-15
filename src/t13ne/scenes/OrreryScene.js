@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import Logger from '../core/Logger.js';
 import { Scene } from '../core/Scene.js';
 import { SceneTools } from '../core/SceneTools.js';
+import ProcGen from '../procgen/ProcGen.js';
 
 export class OrreryScene extends Scene {
     constructor(viewManager, sceneData) {
@@ -418,6 +419,8 @@ export class OrreryScene extends Scene {
         // Sort planets by distance to ensure linear spacing works visually
         this.planets.sort((a, b) => a.orbitalDistance - b.orbitalDistance);
 
+        const prng = ProcGen.createPRNG(this.systemData.name || 'orrery');
+
         this.planets.forEach((planet, index) => {
             // Use index-based distance for visibility
             const dist = this.getVisualDistance(index);
@@ -456,7 +459,7 @@ export class OrreryScene extends Scene {
             
             // 2. Planet Group (Holds Mesh + Moons)
             const planetGroup = new THREE.Group();
-            const angle = planet.startAngle !== undefined ? planet.startAngle : Math.random() * Math.PI * 2;
+            const angle = planet.startAngle !== undefined ? planet.startAngle : prng.nextDouble() * Math.PI * 2;
             planetGroup.position.set(dist * Math.cos(angle), 0, dist * Math.sin(angle));
             
             planetGroup.userData = {
@@ -516,11 +519,11 @@ export class OrreryScene extends Scene {
 
                     const moonMesh = new THREE.Mesh(moonGeo, moonMat);
                     
-                    const mAngle = Math.random() * Math.PI * 2;
+                    const mAngle = prng.nextDouble() * Math.PI * 2;
                     moonMesh.userData = {
                         distance: moonDist,
                         angle: mAngle,
-                        speed: 1.5 + (Math.random() * 1.0) // Fast orbit for visibility
+                        speed: 1.5 + (prng.nextDouble() * 1.0) // Fast orbit for visibility
                     };
                     
                     if (moon.isRing) {
