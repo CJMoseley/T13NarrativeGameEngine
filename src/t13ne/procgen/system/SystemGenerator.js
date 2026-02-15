@@ -1,7 +1,7 @@
-import { LoreData } from '@/src/t13ne/procgen/lore/LoreData.js';
-import Logger from '@/src/t13ne/core/Logger.js';
-import { SystemHistoryGenerator } from '@/src/t13ne/procgen/system/SystemHistoryGenerator.js';
-import { GalacticHistory } from '@/src/t13ne/procgen/galaxy/GalacticHistory.js';
+import { LoreData } from '/src/t13ne/procgen/lore/LoreData.js';
+import Logger from '/src/t13ne/core/Logger.js';
+import { SystemHistoryGenerator } from '/src/t13ne/procgen/system/SystemHistoryGenerator.js';
+import { GalacticHistory } from '/src/t13ne/procgen/galaxy/GalacticHistory.js';
 
 export class SystemGenerator {
     constructor(pluginManager, generators) {
@@ -28,7 +28,8 @@ export class SystemGenerator {
             // Include galaxy seed or a salt if available to prevent "Pell Drift" repetition on fixed coordinates
             const galaxySeed = galaxyParams?.seed || '';
             const salt = galaxyParams?.salt || ''; 
-            const seed = `${star.x},${star.y},${star.z}-${galaxySeed}-${salt}-system-lore`;
+            const uniqueId = star.id || `${star.x},${star.y},${star.z}`;
+            const seed = `${uniqueId}-${galaxySeed}-${salt}-system-lore`; // Removed Date.now() to ensure persistence
             const prng = T13NE_PRNG.create(seed);
             n1 = prng.nextDouble();
             n2 = prng.nextDouble();
@@ -38,8 +39,12 @@ export class SystemGenerator {
 
         if (n1 === undefined) {
             // Fallback if PRNG failed to load
-            Logger.warn("T13NE_PRNG not loaded, using Math.random()");
-            n1 = Math.random(); n2 = Math.random(); n3 = Math.random(); n4 = Math.random();
+            Logger.warn("T13NE_PRNG not loaded, using deterministic fallback.");
+            const simpleHash = (str) => {
+                let h = 0x811c9dc5; for(let i=0;i<str.length;i++) h^=str.charCodeAt(i), h=Math.imul(h,0x01000193); return (h>>>0)/4294967296;
+            };
+            const seedStr = star.id || `${star.x},${star.y},${star.z}`;
+            n1 = simpleHash(seedStr + 'n1'); n2 = simpleHash(seedStr + 'n2'); n3 = simpleHash(seedStr + 'n3'); n4 = simpleHash(seedStr + 'n4');
         }
 
         const safeNoise = { n1, n2, n3, n4 };
@@ -235,10 +240,15 @@ export class SystemGenerator {
         if (this.characterGenerator) {
             // Generate a few locals based on society/tech
             const numExtras = Math.floor(n3 * 3) + 1;
+            Logger.message(`${funcName}: Generating ${numExtras} extras...`);
             for (let i = 0; i < numExtras; i++) {
                 const extraType = n4 > 0.9 ? 'Cast' : 'Chorus'; // Mostly Chorus, occasional Cast
                 try {
-                    extras.push(await this.characterGenerator.generateCharacter(extraType));
+                    const char = await this.characterGenerator.generateCharacter(extraType);
+                    await new Promise(r => setTimeout(r, 0)); // Yield to prevent hanging
+                    if (char) {
+                        extras.push(char);
+                    }
                 } catch (e) {
                     Logger.warn(`${funcName}: CharacterGenerator failed for extra.`, e);
                 }
@@ -265,7 +275,16 @@ export class SystemGenerator {
 
         let description = this.generateSystemDescription(star, numPlanets, speciesLore, secondarySpeciesLore, eventDescription, corporatePresence, isRelicSystem);
 
-        let systemNameArray = await this.nameGenerator.generateSystemName(n1, n2, n3, nearbySpecies);
+        // Force syllabic generation more often to avoid repetitive list names
+        let systemNameArray;
+        if (this.nameGenerator.generateSyllabicName && n4 > 0.3) { // 70% chance of unique syllabic name
+             const flavor = n3 > 0.5 ? 'alien' : (n3 > 0.25 ? 'tech' : 'ancient');
+             const name = this.nameGenerator.generateSyllabicName(`${n1}-${n2}`, flavor);
+             systemNameArray = [name, name, ""];
+        } else {
+             systemNameArray = await this.nameGenerator.generateSystemName(n1, n2, n3, nearbySpecies);
+        }
+
         if (!Array.isArray(systemNameArray)) {
             systemNameArray = [systemNameArray, systemNameArray, ""];
         }
@@ -297,8 +316,8 @@ export class SystemGenerator {
             mass: 1.0
         });
 
-        // 30% chance of multiple stars
-        if (starCountRoll > 0.7) {
+        // 60% chance of multiple stars (Binary+)
+        if (starCountRoll > 0.4) {
             // Binary
             const companionColor = this.getCompanionStarColor(star.starClass, safeNoise.n2);
             stars.push({
@@ -308,8 +327,8 @@ export class SystemGenerator {
                 offset: 400 // Visual offset
             });
 
-            // 10% chance of Trinary (if Binary)
-            if (starCountRoll > 0.9) {
+            // 20% chance of Trinary (if Binary) - relative to the 60%
+            if (starCountRoll > 0.8) {
                 const trinaryColor = this.getCompanionStarColor(star.starClass, safeNoise.n3);
                 stars.push({
                     radius: 0.4 + safeNoise.n3 * 0.3,
@@ -345,9 +364,32 @@ export class SystemGenerator {
     }
 
     getCompanionStarColor(primaryClass, noise) {
-        // Simple logic: Companion is usually cooler/smaller
-        const colors = [0xffaaaa, 0xffccaa, 0xffffaa, 0xffffff, 0xaaccff];
-        return colors[Math.floor(noise * colors.length)];
+        // Expanded palette based on spectral class
+        const palettes = {
+            'O': [0x99ccff, 0xaaddff, 0xbbccff], // Blue
+            'B': [0xaaddff, 0xbbddff, 0xcceeff], // Blue-white
+            'A': [0xcceeff, 0xddeeff, 0xffffff], // White
+            'F': [0xffffff, 0xffffee, 0xffffdd], // Yellow-white
+            'G': [0xffffee, 0xffffdd, 0xffddbb], // Yellow
+            'K': [0xffddbb, 0xffccaa, 0xffbb99], // Orange
+            'M': [0xffccaa, 0xffbb99, 0xffaa88], // Red-Orange
+            // Brown Dwarves: Deep Red/Dark Orange Brown (L, T, Y classes)
+            'L': [0xcc5522, 0xaa4400, 0x882200], 
+            'T': [0x882200, 0x661100, 0x550a00], 
+            'Y': [0x440500, 0x330000, 0x2a0000]  
+        };
+
+        const spectralOrder = ['O', 'B', 'A', 'F', 'G', 'K', 'M', 'L', 'T', 'Y'];
+        const primaryChar = (primaryClass || 'G').charAt(0).toUpperCase();
+        let primaryIndex = spectralOrder.indexOf(primaryChar);
+        if (primaryIndex === -1) primaryIndex = 4; // Default G
+
+        // Companion is usually cooler (higher index). Shift 0 to 6 steps based on noise.
+        let companionIndex = Math.min(primaryIndex + Math.floor(noise * 6), spectralOrder.length - 1);
+        const companionClass = spectralOrder[companionIndex];
+        const palette = palettes[companionClass] || palettes['M'];
+
+        return palette[Math.floor((noise * 100) % palette.length)];
     }
 
     _generateHistoricalEventFromCards() {
