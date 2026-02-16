@@ -717,7 +717,6 @@ export class ShipGenerator {
                 
                 attachComponent('engine', [engineX, engineY, engineZ], [Math.PI / 2, 0, 0], 'cylinder', { radiusTop: 0.6, radiusBottom: 0.9, height: engineHeight });
             }
-        };
 
 
         // Update context with determined hullType for sub-generators
@@ -1166,13 +1165,6 @@ export class ShipGenerator {
         components.shipName = `${prefix} ${adjective} ${noun}`;
 
         // Generate Interiors (Corridors and Rooms for carving)
-        
-        // NOTE: generateInteriors and enforceWiringSymmetry no longer use 'this.'
-        // They operate on the passed 'components' variable, which has accumulated
-        // the various attached components.
-        // If something relies on a 'this' instance variable from ShipGenerator,
-        // it must be explicitly passed in the 'context' object.
-
         
         // NOTE: generateInteriors and enforceWiringSymmetry no longer use 'this.'
         // They operate on the passed 'components' variable, which has accumulated
