@@ -58,3 +58,60 @@ export function getCompProps(comp) {
 
     return { type, dims, pos, rot, def, usage };
 }
+
+// Helper to find surface point via raycasting
+export function getSurfacePoint(components, origin, direction, usageFilter = ['fuselage', 'hull', 'spine', 'block', 'monolith']) {
+    const targets = components.filter(c => {
+        if (!c.usage) return false;
+        const u = c.usage.toLowerCase();
+        if (Array.isArray(usageFilter)) {
+            return usageFilter.some(f => u.includes(f));
+        }
+        return u.includes(usageFilter);
+    });
+    if (targets.length === 0) return null;
+
+    const raycaster = new THREE.Raycaster(
+        new THREE.Vector3(...origin),
+        new THREE.Vector3(...direction).normalize()
+    );
+
+    let closestPoint = null;
+    let minDistance = Infinity;
+
+    for (const c of targets) {
+        let geo;
+        const d = c.dims;
+        
+        try {
+            switch (c.type) {
+                case 'box': geo = new THREE.BoxGeometry(d.width, d.height, d.depth); break;
+                case 'cylinder': geo = new THREE.CylinderGeometry(d.radiusTop, d.radiusBottom, d.height, d.radialSegments || 16); break;
+                case 'prism': geo = new THREE.CylinderGeometry(d.radius || d.radiusTop, d.radius || d.radiusBottom, d.height, d.segments || 3); break;
+                case 'tetrahedron': geo = new THREE.TetrahedronGeometry(d.radius); break;
+                case 'sphere': geo = new THREE.SphereGeometry(d.radius, 16, 16); break;
+                case 'torus': geo = new THREE.TorusGeometry(d.radius, d.tube, 16, 32); break;
+                case 'cone': geo = new THREE.ConeGeometry(d.radius, d.height, 16); break;
+                default: continue;
+            }
+        } catch (e) { continue; }
+
+        const mesh = new THREE.Mesh(geo);
+        mesh.position.set(...c.pos);
+        mesh.rotation.set(...c.rot);
+        if (c.scale) mesh.scale.set(...c.scale);
+        mesh.updateMatrixWorld();
+
+        const intersects = raycaster.intersectObject(mesh);
+        if (intersects.length > 0) {
+            if (intersects[0].distance < minDistance) {
+                minDistance = intersects[0].distance;
+                closestPoint = intersects[0].point;
+            }
+        }
+        
+        geo.dispose();
+    }
+
+    return closestPoint;
+}

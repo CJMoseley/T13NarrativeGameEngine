@@ -227,8 +227,8 @@ export class PlanetarySystemGenerator {
             // Adjust color based on resources
             let planetColor = {
                 h: innerSeed,
-                s: 0.7,
-                l: 0.5 + outerSeed * 0.3
+                s: 0.8 + (outerSeed * 0.2), // High saturation (0.8 - 1.0)
+                l: 0.4 + (moonSeed * 0.3)   // Balanced lightness
             };
             planetColor = this.adjustPlanetColorByResources(planetColor, classificationData.resources);
 
@@ -788,5 +788,4 @@ export class PlanetarySystemGenerator {
         Logger.end(funcName, `Generated ${moons.length} moons.`);
         return moons;
     }
-}   }
 }

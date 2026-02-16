@@ -619,7 +619,7 @@ export class GreebleGenerator {
             }
 
             // 3. Cockpit (Canopy)
-            if (usage.includes('cockpit')) {
+            if (usage.includes('cockpit') || usage.includes('bridge')) {
                 let isPrimaryCockpit = true;
                 if (symmetryType === 'RADIAL' && radialAxis === 'y') {
                     // Limit cockpits to front 1/3 (120 degrees)

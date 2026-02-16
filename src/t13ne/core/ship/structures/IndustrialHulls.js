@@ -19,20 +19,21 @@ export const generateFreighter = (context) => {
     const frameWidth = 4.5; 
     const frameHeight = 4.5; 
 
+    const strutName = "Structural Lattice";
     for (let i = 0; i < frameCount; i++) {
         const z = -trussLen/2 + i * frameSpacing;
         // Cross Frames
-        attachComponent(`strut_frame_T_${i}`, [0, frameHeight/2, z], [0, 0, Math.PI/2], 'box', {width: 0.3, height: frameWidth, depth: 0.3}, 'NONE');
-        attachComponent(`strut_frame_B_${i}`, [0, -frameHeight/2, z], [0, 0, Math.PI/2], 'box', {width: 0.3, height: frameWidth, depth: 0.3}, 'NONE');
-        attachComponent(`strut_frame_L_${i}`, [-frameWidth/2, 0, z], [0, 0, 0], 'box', {width: 0.3, height: frameHeight, depth: 0.3}, 'NONE');
-        attachComponent(`strut_frame_R_${i}`, [frameWidth/2, 0, z], [0, 0, 0], 'box', {width: 0.3, height: frameHeight, depth: 0.3}, 'NONE');
+        attachComponent(`strut_frame_T_${i}`, [0, frameHeight/2, z], [0, 0, Math.PI/2], 'box', {width: 0.3, height: frameWidth, depth: 0.3}, 'NONE', false, strutName);
+        attachComponent(`strut_frame_B_${i}`, [0, -frameHeight/2, z], [0, 0, Math.PI/2], 'box', {width: 0.3, height: frameWidth, depth: 0.3}, 'NONE', false, strutName);
+        attachComponent(`strut_frame_L_${i}`, [-frameWidth/2, 0, z], [0, 0, 0], 'box', {width: 0.3, height: frameHeight, depth: 0.3}, 'NONE', false, strutName);
+        attachComponent(`strut_frame_R_${i}`, [frameWidth/2, 0, z], [0, 0, 0], 'box', {width: 0.3, height: frameHeight, depth: 0.3}, 'NONE', false, strutName);
     }
     // Longitudinal Struts (Corners)
     const longStrutDims = {width: 0.3, height: trussLen, depth: 0.3};
-    attachComponent('strut_long_TL', [-frameWidth/2, frameHeight/2, 0], [Math.PI/2, 0, 0], 'box', longStrutDims, 'NONE');
-    attachComponent('strut_long_TR', [frameWidth/2, frameHeight/2, 0], [Math.PI/2, 0, 0], 'box', longStrutDims, 'NONE');
-    attachComponent('strut_long_BL', [-frameWidth/2, -frameHeight/2, 0], [Math.PI/2, 0, 0], 'box', longStrutDims, 'NONE');
-    attachComponent('strut_long_BR', [frameWidth/2, -frameHeight/2, 0], [Math.PI/2, 0, 0], 'box', longStrutDims, 'NONE');
+    attachComponent('strut_long_TL', [-frameWidth/2, frameHeight/2, 0], [Math.PI/2, 0, 0], 'box', longStrutDims, 'NONE', false, strutName);
+    attachComponent('strut_long_TR', [frameWidth/2, frameHeight/2, 0], [Math.PI/2, 0, 0], 'box', longStrutDims, 'NONE', false, strutName);
+    attachComponent('strut_long_BL', [-frameWidth/2, -frameHeight/2, 0], [Math.PI/2, 0, 0], 'box', longStrutDims, 'NONE', false, strutName);
+    attachComponent('strut_long_BR', [frameWidth/2, -frameHeight/2, 0], [Math.PI/2, 0, 0], 'box', longStrutDims, 'NONE', false, strutName);
 
     // Engine Block at rear - Overlap by 0.5 to ensure solid connection
     attachComponent('engine_block', [0, 0, -trussLen/2 - 1.5 + 0.5], [0, 0, 0], 'box', 
@@ -449,152 +450,216 @@ export const generateBlob = (context) => {
 export const generateCatamaran = (context) => {
     const { size, random, attachComponent } = context;
 
-    // Star Trek Style Nacelle Ship (Constitution / Miranda / Voyager)
+    // Determine Sub-Type: Standard (Saucer), Daedalus (Sphere), or Olympic (Oblate Sphere)
+    const subTypeRoll = random();
+    let subType = 'SAUCER';
+    if (subTypeRoll > 0.7) subType = 'DAEDALUS';
+    else if (subTypeRoll > 0.85) subType = 'OLYMPIC'; // Rare
+
     // 1. Primary Hull (Saucer)
-    const saucerRadius = (size === 'small' ? 4 : (size === 'medium' ? 6 : 9));
-    const saucerHeight = Math.max(1.5, saucerRadius * 0.25); // Thicker to allow embedding
+    let primaryRadius, primaryHeight;
+    
+    if (subType === 'DAEDALUS') {
+        // Daedalus: Sphere (32 unit diam -> 16 radius)
+        const unit = (size === 'small' ? 0.6 : (size === 'medium' ? 1.0 : 1.5));
+        
+        primaryRadius = 16 * unit;
+        primaryHeight = primaryRadius * 2;
+        
+        // Sphere
+        attachComponent('fuselage_primary', [0, 0, 0], [0, 0, 0], 'sphere', { radius: primaryRadius }, 'NONE');
+        
+        // Bridge Cap (Flattened top)
+        attachComponent('bridge', [0, primaryRadius * 0.9, 0], [0, 0, 0], 'cylinder', { radiusTop: 4 * unit, radiusBottom: 5 * unit, height: 2 * unit }, 'NONE');
+        
+        // Sensor Band
+        attachComponent('sensor_band', [0, 0, 0], [Math.PI/2, 0, 0], 'torus', { radius: primaryRadius, tube: 1.0 * unit }, 'NONE');
 
-    // Smoother saucer shape with a central cylinder
-    const midHeight = saucerHeight * (0.3 + random() * 0.3); // 30-60% of total height
-    const taperHeight = (saucerHeight - midHeight) / 2;
+    } else if (subType === 'OLYMPIC') {
+        // Olympic: Oblate Sphere (38 unit diam -> 19 radius)
+        const unit = (size === 'small' ? 0.6 : (size === 'medium' ? 1.0 : 1.5));
+        primaryRadius = 19 * unit;
+        primaryHeight = primaryRadius * 2 * 0.92; // Squashed
+        
+        // Oblate Sphere
+        attachComponent('fuselage_primary', [0, 0, 0], [0, 0, 0], 'sphere', { radius: primaryRadius }, 'NONE');
+        // Apply scale to squash
+        context.components[context.components.length - 1].scale = [1, 0.92, 1];
 
-    // Central Cylinder
-    attachComponent('fuselage_saucer_mid', [0, 0, 0], [0, 0, 0], 'cylinder',
-        { radiusTop: saucerRadius, radiusBottom: saucerRadius, height: midHeight, radialSegments: 32 }, 'NONE');
-    // Top Taper
-    attachComponent('fuselage_saucer_top', [0, midHeight / 2 + taperHeight / 2, 0], [0, 0, 0], 'cylinder',
-        { radiusTop: saucerRadius * 0.4, radiusBottom: saucerRadius, height: taperHeight, radialSegments: 32 }, 'NONE');
-    // Bottom Taper
-    attachComponent('fuselage_saucer_bottom', [0, -midHeight / 2 - taperHeight / 2, 0], [0, 0, 0], 'cylinder',
-        { radiusTop: saucerRadius, radiusBottom: saucerRadius * 0.4, height: taperHeight, radialSegments: 32 }, 'NONE');
+        // Inset/Cutout Bridge
+        attachComponent('bridge', [0, primaryRadius * 0.8, primaryRadius * 0.5], [0, 0, 0], 'box', { width: 8 * unit, height: 4 * unit, depth: 6 * unit }, 'NONE');
 
-    // Add a bridge so it gets a cockpit greeble
-    attachComponent('bridge', [0, saucerHeight / 2, 0], [0, 0, 0], 'cylinder',
-        { radiusTop: saucerRadius * 0.1, radiusBottom: saucerRadius * 0.2, height: saucerHeight * 0.4, radialSegments: 8 }, 'NONE');
+    } else {
+        // Standard Saucer
+        const saucerRadius = (size === 'small' ? 4 : (size === 'medium' ? 6 : 9));
+        const saucerHeight = Math.max(1.5, saucerRadius * 0.25);
+        primaryRadius = saucerRadius;
+        primaryHeight = saucerHeight;
 
-    // 2. Configuration
+        const midHeight = saucerHeight * (0.3 + random() * 0.3);
+        const taperHeight = (saucerHeight - midHeight) / 2;
+
+        attachComponent('fuselage_saucer_mid', [0, 0, 0], [0, 0, 0], 'cylinder',
+            { radiusTop: saucerRadius, radiusBottom: saucerRadius, height: midHeight, radialSegments: 32 }, 'NONE');
+        attachComponent('fuselage_saucer_top', [0, midHeight / 2 + taperHeight / 2, 0], [0, 0, 0], 'cylinder',
+            { radiusTop: saucerRadius * 0.4, radiusBottom: saucerRadius, height: taperHeight, radialSegments: 32 }, 'NONE');
+        attachComponent('fuselage_saucer_bottom', [0, -midHeight / 2 - taperHeight / 2, 0], [0, 0, 0], 'cylinder',
+            { radiusTop: saucerRadius, radiusBottom: saucerRadius * 0.4, height: taperHeight, radialSegments: 32 }, 'NONE');
+        
+        attachComponent('bridge', [0, saucerHeight / 2, 0], [0, 0, 0], 'cylinder',
+            { radiusTop: saucerRadius * 0.1, radiusBottom: saucerRadius * 0.2, height: saucerHeight * 0.4, radialSegments: 8 }, 'NONE');
+    }
+
+    // 2. Configuration & Secondary Hull
     const configType = random(); // 0-0.3: Miranda-ish, 0.3-1.0: Constitution/Voyager-ish
     let hasEngineering = configType > 0.3;
 
     let engPos = [0, 0, 0];
-    let engRadius = saucerRadius * 0.4;
-    let engLen = saucerRadius * 1.5;
+    let engRadius = primaryRadius * 0.4;
+    let engLen = primaryRadius * 1.5;
+    const unit = (size === 'small' ? 0.6 : (size === 'medium' ? 1.0 : 1.5));
 
     if (hasEngineering) {
-        const neckLen = saucerRadius * 0.5; // Shorter neck
+        let neckLen;
+        
+        if (subType === 'DAEDALUS') {
+            neckLen = 12 * unit;
+            engLen = 56 * unit;
+            engRadius = 5 * unit;
+            
+            // Neck (Pipe)
+            attachComponent('fuselage_neck', [0, -primaryRadius - neckLen/2 + 2*unit, 0], [0, 0, 0], 'cylinder', 
+                { radiusTop: 3 * unit, radiusBottom: 3 * unit, height: neckLen }, 'NONE');
+                
+            // Secondary Hull (Cylinder)
+            const secY = -primaryRadius - neckLen;
+            engPos = [0, secY - engRadius, -engLen/2 + 5*unit];
+            
+            attachComponent('fuselage_secondary', engPos, [Math.PI / 2, 0, 0], 'cylinder',
+                { radiusTop: engRadius, radiusBottom: engRadius, height: engLen, radialSegments: 16 }, 'NONE');
+                
+        } else if (subType === 'OLYMPIC') {
+            neckLen = 8 * unit;
+            engLen = 54 * unit;
+            engRadius = 6 * unit;
+            
+            // Neck (Collar)
+            attachComponent('fuselage_neck', [0, -primaryRadius * 0.9 - neckLen/2, -primaryRadius * 0.2], [0.2, 0, 0], 'cylinder', 
+                { radiusTop: 4 * unit, radiusBottom: 3 * unit, height: neckLen }, 'NONE');
+                
+            // Secondary Hull (Wedge/Prism)
+            const secY = -primaryRadius * 0.9 - neckLen - 2*unit;
+            const secZ = -engLen/2;
+            engPos = [0, secY, secZ];
+            
+            attachComponent('fuselage_secondary', engPos, [Math.PI / 2, Math.PI, 0], 'prism',
+                { radius: engRadius, height: engLen, segments: 3 }, 'NONE');
+            context.components[context.components.length - 1].scale = [1.5, 1, 1];
 
-        // Neck (Vertical or Angled)
-        // Connect at rear of saucer (-0.7 radius) and overlap vertically (+0.2) to ensure solid connection but not protrude top
-        const neckPos = [0, -saucerHeight / 2 - neckLen / 2 + 0.2, -saucerRadius * 0.7];
-        attachComponent('fuselage_neck', neckPos, [0.3, 0, 0], 'box', // Angled forward slightly
-            { width: engRadius * 0.8, height: neckLen, depth: engRadius * 1.5 }, 'NONE');
+        } else {
+            // Standard Saucer Configuration
+            neckLen = primaryRadius * 0.5;
+            
+            // Neck - Tilted and Tapered (Parallelogram/Trapezoid Prism)
+            const overlap = 0.5;
+            const neckY = -primaryHeight/2 + overlap - neckLen/2;
+            
+            const neckWidth = engRadius * 0.8;
+            const neckLengthBottom = engRadius * 1.8;
+            // Prefer thinner at top (taper < 1.0)
+            const taper = 0.6 + random() * 0.4; 
+            const neckLengthTop = neckLengthBottom * taper;
+            
+            // Tilt forward: sweep negative
+            const tilt = 0.2 + random() * 0.4; 
+            const sweep = -neckLen * tilt; 
 
-        // Secondary (Engineering) Hull - position shifted back to connect neck at front
-        // Extend hull ahead of neck: Neck is at -0.7R. Front of hull should be at -0.7R + 1.0 (Slightly forward).
-        const engFrontZ = -saucerRadius * 0.7 + 1.0;
-        const secondaryHullZ = engFrontZ - engLen / 2;
-        // Lower engineering hull so neck is visible (not embedded)
-        engPos = [0, -saucerHeight / 2 - neckLen - engRadius * 0.6, secondaryHullZ];
-        // Use non-tapered cylinder and rename to avoid engine greebles
-        attachComponent('fuselage_secondary', engPos, [Math.PI / 2, 0, 0], 'cylinder',
-            { radiusTop: engRadius, radiusBottom: engRadius, height: engLen, radialSegments: 12 }, 'NONE');
+            // Calculate Z offset of Top Center relative to Bottom Center to align top with saucer
+            const topZOffset = (neckLengthBottom / 2) - sweep - (neckLengthTop / 2);
+            const targetZ = -primaryRadius * 0.5;
+            const neckZ = targetZ - topZOffset; // Z of Bottom Center
+            
+            attachComponent('fuselage_neck', [0, neckY, neckZ], [0, 0, Math.PI/2], 'wedge', 
+                { span: neckLen, rootChord: neckLengthBottom, tipChord: neckLengthTop, sweep: sweep, depth: neckWidth, centered: true }, 'NONE');
 
-        // Deflector Dish
-        attachComponent('deflector_dish', [engPos[0], engPos[1], engPos[2] + engLen / 2 + 0.1], [Math.PI / 2, 0, 0], 'cylinder',
-            { radiusTop: engRadius * 0.8, radiusBottom: 0, height: 0.5 }, 'NONE');
+            // Secondary Hull
+            const secY = (neckY - neckLen/2) - engRadius + overlap;
+            const secZ = neckZ - engLen/3; 
+            engPos = [0, secY, secZ];
+            
+            attachComponent('fuselage_secondary', engPos, [Math.PI / 2, 0, 0], 'cylinder',
+                { radiusTop: engRadius, radiusBottom: engRadius, height: engLen, radialSegments: 12 }, 'NONE');
+
+            // Deflector Dish
+            attachComponent('deflector_dish', [engPos[0], engPos[1], engPos[2] + engLen / 2 + 0.1], [Math.PI / 2, 0, 0], 'cylinder',
+                { radiusTop: engRadius * 0.8, radiusBottom: 0, height: 0.5 }, 'NONE');
+        }
 
         // Pylons and Nacelles
-        const nacelleLen = engLen * 1.2;
+        const nacelleLen = engLen * (subType === 'DAEDALUS' ? 1.1 : 0.9);
         const nacelleRadius = engRadius * 0.25; // Thinner nacelles
         
-        // Nacelle Position: Higher than saucer
-        // Ensure Y clears the saucer top (saucerHeight/2) + nacelleRadius + buffer
-        const minNacelleY = saucerHeight / 2 + nacelleRadius + 1.5;
-        const nacelleY = Math.max(minNacelleY, saucerHeight * 1.2);
-        const nacelleX = saucerRadius * 0.9;
-        const nacelleZ = -saucerRadius * 1.5; // Moved further back to ensure pylons sweep back, not forward
-
-        // Pylon attachment point on engineering hull
-        // Moved back to avoid intersecting the saucer (was +0.2)
-        // Safety Clamp: Ensure pylon Z is strictly within the hull cylinder (with 10% padding from ends)
-        const hullRear = engPos[2] - engLen / 2;
-        const hullFront = engPos[2] + engLen / 2;
-        const targetZ = engPos[2] - engLen * 0.1; // Moved forward slightly (was 0.3)
-        const clampedZ = Math.max(hullRear + engLen * 0.1, Math.min(hullFront - engLen * 0.1, targetZ));
-
-        // Connect INTO the hull (0.5 radius)
-        const pylonStart = new THREE.Vector3(engRadius * 0.5, engPos[1], clampedZ);
+        let nacelleY, nacelleX, nacelleZ;
         
-        // Pylon End: Attach about 1/3 along the nacelle length from the front
-        const attachZ = nacelleZ + nacelleLen/2 - (nacelleLen / 3)+1.0;
-        const pylonEnd = new THREE.Vector3(nacelleX, nacelleY, attachZ);
-        
-        const pylonCentre = new THREE.Vector3().addVectors(pylonStart, pylonEnd).multiplyScalar(0.5);
-        const pylonActualLen = pylonStart.distanceTo(pylonEnd);
-        
-        // Orient Pylon: Z axis = Length (to target), Y axis = Chord (Forward), X axis = Thickness
-        // Use lookAt with Up vector (0,0,1) to try and align local Y with Global Z (Forward)
-        const m = new THREE.Matrix4();
-        m.lookAt(pylonCentre, pylonEnd, new THREE.Vector3(0, 0, 1));
-        const pylonRotEuler = new THREE.Euler().setFromRotationMatrix(m);
-        const pylonRot = [pylonRotEuler.x, pylonRotEuler.y, pylonRotEuler.z];
+        if (subType === 'DAEDALUS') {
+            nacelleX = engRadius * 3.0;
+            nacelleY = engPos[1];
+            nacelleZ = engPos[2];
+            
+            const pylonW = nacelleX - engRadius * 0.5;
+            attachComponent('pylon', [nacelleX/2, nacelleY, nacelleZ], [0, 0, 0], 'box', 
+                { width: pylonW, height: 0.5 * unit, depth: 2 * unit }, 'REFLECTIVE');
+                
+        } else if (subType === 'OLYMPIC') {
+            nacelleX = engRadius * 2.5;
+            nacelleY = engPos[1] - 2 * unit;
+            nacelleZ = engPos[2] - 5 * unit;
+            
+            const start = new THREE.Vector3(engRadius*0.5, engPos[1], engPos[2]);
+            const end = new THREE.Vector3(nacelleX, nacelleY, nacelleZ);
+            const mid = new THREE.Vector3().addVectors(start, end).multiplyScalar(0.5);
+            const angleZ = Math.atan2(end.y - start.y, end.x - start.x);
+            const len = start.distanceTo(end);
+            
+            attachComponent('pylon', [mid.x, mid.y, mid.z], [0, 0, angleZ], 'box', 
+                { width: len, height: 0.5 * unit, depth: 3 * unit }, 'REFLECTIVE');
 
-        // Box: Width=Thickness, Height=Chord, Depth=Length
-        attachComponent('pylon', [pylonCentre.x, pylonCentre.y, pylonCentre.z], pylonRot, 'box', 
-            { width: 0.3, height: engRadius * 0.6, depth: pylonActualLen }, 'REFLECTIVE');
+        } else {
+            // Standard
+            nacelleY = primaryHeight / 2 + nacelleRadius + 1.5;
+            nacelleX = primaryRadius * 0.9;
+            nacelleZ = -primaryRadius * 1.5;
+
+            const start = new THREE.Vector3(engRadius * 0.5, engPos[1], engPos[2] - engLen * 0.1);
+            const end = new THREE.Vector3(nacelleX, nacelleY, nacelleZ + nacelleLen/2 - (nacelleLen/3));
+            const mid = new THREE.Vector3().addVectors(start, end).multiplyScalar(0.5);
+            const len = start.distanceTo(end);
+            const angleY = Math.atan2(end.y - start.y, end.x - start.x);
+
+            attachComponent('pylon', [mid.x, mid.y, mid.z], [0, 0, angleY], 'box', 
+                { width: len, height: engRadius * 0.6, depth: 1.0 }, 'REFLECTIVE');
+        }
 
         // Nacelle - Renamed to warp_nacelle to avoid thrusters
         attachComponent('warp_nacelle', [nacelleX, nacelleY, nacelleZ], [Math.PI / 2, 0, 0], 'cylinder',
             { radiusTop: nacelleRadius, radiusBottom: nacelleRadius, height: nacelleLen }, 'REFLECTIVE');
 
-        // Explicit Wiring for Structure
-        // Saucer (bridge) -> Neck -> Secondary -> Pylon -> Nacelle
-        // We need IDs. Since attachComponent pushes to array, we can grab last ID.
-        // Note: attachComponent handles symmetry, so we need to be careful.
-        // Assuming the last added components correspond to the order above.
-        // This is tricky with symmetry. Better to rely on ShipGenerator's wiring logic 
-        // or pass IDs if we refactor attachComponent to return them.
-        // For now, we can use the fact that ShipGenerator passes `explicitWiring` object.
-        // We need the IDs.
-        const comps = context.components;
-        const nacelleId = comps[comps.length - 1].id; // Right Nacelle
-        const pylonId = comps[comps.length - 3].id; // Right Pylon (skip sym nacelle/pylon if any? No, REFLECTIVE adds immediately)
-        // Actually, REFLECTIVE adds [Original, Mirror]. So last is Mirror Nacelle. -2 is Original Nacelle.
-        // This is getting complex to guess IDs. 
-        // Ideally attachComponent returns the ID. 
-        // But we can rely on the fact that `ShipGenerator` enforces symmetry on wiring.
-        // So we only need to wire the positive X side.
-        // Right Nacelle (last added if X>0? No, attachComponent adds base then sym).
-        // Base is usually positive X.
-        // Let's assume base is Positive X.
-        // Nacelle is last added (before symmetry).
-        // Pylon is before that.
-        // Secondary Hull is before that.
-        // Neck is before that.
-        // Bridge/Saucer is earlier.
-        
-        // We will implement explicit wiring in ShipGenerator by returning IDs from attachComponent if possible,
-        // or by searching for them here.
-        const findId = (prefix) => comps.find(c => c.usage === prefix)?.id;
-        const secId = findId('fuselage_secondary');
-        const neckId = findId('fuselage_neck');
-        const saucerId = findId('fuselage_saucer_mid') || findId('bridge');
-        
-        // We can't easily get the specific pylon/nacelle IDs here without refactoring attachComponent return.
-        // However, we can use the `wiringGenerator` to connect by proximity/type later if we tag them?
-        // Or just trust the Prim algorithm in WiringGenerator? 
-        // The user specifically complained about jumping.
-        // We will add a post-pass in ShipGenerator to wire these specific structures.
+        // Daedalus Spike
+        if (subType === 'DAEDALUS') {
+            attachComponent('nacelle_spike', [nacelleX, nacelleY, nacelleZ + nacelleLen/2 + 1.5*unit], [Math.PI/2, 0, 0], 'cone',
+                { radius: nacelleRadius * 0.5, height: 3 * unit }, 'REFLECTIVE');
+        }
+
     } else {
         // Miranda Style (No secondary hull, nacelles on pylons/rollbar)
         // Nacelles attached to the bottom of the saucer section
-        const nacelleLen = saucerRadius * 1.2;
-        const nacelleWidth = saucerRadius * 0.15;
-        const nacelleHeight = saucerRadius * 0.2; // Rectangular/Rhomboid style
+        const nacelleLen = primaryRadius * 1.2;
+        const nacelleWidth = primaryRadius * 0.15;
+        const nacelleHeight = primaryRadius * 0.2; // Rectangular/Rhomboid style
         
-        const nacelleX = saucerRadius * 0.8;
-        const nacelleY = -saucerHeight * 1.0; // Below saucer
-        const nacelleZ = -saucerRadius * 0.2; // Slightly back
+        const nacelleX = primaryRadius * 0.8;
+        const nacelleY = -primaryHeight * 1.0; // Below saucer
+        const nacelleZ = -primaryRadius * 0.2; // Slightly back
         
         // Pylon connecting saucer bottom to nacelle
         attachComponent('pylon', [nacelleX, nacelleY/2, nacelleZ], [0, 0, 0], 'box',
@@ -606,7 +671,7 @@ export const generateCatamaran = (context) => {
             { width: nacelleWidth, height: nacelleHeight, depth: nacelleLen }, 'REFLECTIVE');
     }
 
-    return { saucerRadius, saucerHeight, hasEngineering, engPos, engRadius, engLen };
+    return { saucerRadius: primaryRadius, saucerHeight: primaryHeight, hasEngineering, engPos, engRadius, engLen };
 };
 
 export const generateYFork = (context) => {
@@ -774,4 +839,47 @@ export const generateBattlestar = (context) => {
     // (The diff above replaces the pylon_L/R block with the new angled pylon logic)
     attachComponent('pylon', [pylonMidX, pylonMidY, podZ], [0, 0, -pylonAngle], 'box', 
         { width: pylonLen, height: pylonH * 0.5, depth: pylonD }, 'REFLECTIVE');
+};
+
+export const generateScavenger = (context) => {
+    const { spineLength, random, attachComponent, components, getSurfacePoint } = context;
+    
+    // Scavenger ships are chaotic collections of parts welded together
+    // Start with a central core
+    const coreSize = 3 + random() * 2;
+    attachComponent('scavenger_core', [0, 0, 0], [0, 0, 0], 'box', {width: coreSize, height: coreSize, depth: coreSize}, 'NONE');
+    
+    const numParts = 10 + Math.floor(random() * 15);
+    
+    for (let i = 0; i < numParts; i++) {
+        // Pick a random existing component to attach to
+        const parent = components[Math.floor(random() * components.length)];
+        
+        // Random direction from parent center
+        const dir = new THREE.Vector3(random()-0.5, random()-0.5, random()-0.5).normalize();
+        
+        // Find surface point to attach to
+        let pos = new THREE.Vector3(0,0,0);
+        if (getSurfacePoint) {
+            // Cast from outside towards parent
+            const origin = new THREE.Vector3(...parent.pos).add(dir.clone().multiplyScalar(15));
+            const hit = getSurfacePoint(components, origin, dir.clone().negate(), [parent.usage]);
+            if (hit) pos = hit;
+            else pos = new THREE.Vector3(...parent.pos).add(dir.multiplyScalar(2)); // Fallback
+        } else {
+             pos = new THREE.Vector3(...parent.pos).add(dir.multiplyScalar(2));
+        }
+        
+        // Random component type and size
+        const types = ['box', 'cylinder', 'sphere', 'capsule', 'prism'];
+        const type = types[Math.floor(random() * types.length)];
+        const s = 1 + random() * 2;
+        const dims = { width: s, height: s, depth: s, radius: s*0.6, radiusTop: s*0.5, radiusBottom: s*0.7, length: s*1.5 };
+        
+        // Random rotation
+        const rot = [random() * Math.PI, random() * Math.PI, random() * Math.PI];
+        
+        // Attach
+        attachComponent(`scavenged_part_${i}`, [pos.x, pos.y, pos.z], rot, type, dims, 'NONE');
+    }
 };

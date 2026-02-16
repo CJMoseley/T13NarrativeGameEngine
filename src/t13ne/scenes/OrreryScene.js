@@ -177,8 +177,13 @@ export class OrreryScene extends Scene {
         const radius = this.STAR_RADIUS; 
         const geometry = new THREE.SphereGeometry(radius, 32, 32);
         
-        // Simple emissive material for the star
-        const starColor = this.systemData.starColor || 0xffff00;
+        // Standardize color source to match LocalSpaceScene
+        let starColor = 0xffff00;
+        if (this.systemData.star && this.systemData.star.color) {
+            starColor = this.systemData.star.color;
+        } else if (this.systemData.starColor) {
+            starColor = this.systemData.starColor;
+        }
         const starMat = new THREE.MeshStandardMaterial({
             color: starColor,
             emissive: starColor,
@@ -191,12 +196,12 @@ export class OrreryScene extends Scene {
 
     createCameraMarker() {
         // Create a Red Spot marker as requested
-        const geometry = new THREE.SphereGeometry(40, 16, 16); // Increased size for visibility
+        const geometry = new THREE.SphereGeometry(80, 16, 16); // Even larger for visibility
         const material = new THREE.MeshBasicMaterial({ 
             color: 0xff0000, // Red for visibility
             depthTest: false, // Always render on top of other objects
             transparent: true,
-            opacity: 1.0
+            opacity: 0.9
         }); 
         
         this.cameraMarker = new THREE.Mesh(geometry, material);
@@ -222,7 +227,7 @@ export class OrreryScene extends Scene {
         this.scene.add(this.cameraPathLine);
 
         // Add Points for visibility (since Lines can be thin)
-        const pointsMat = new THREE.PointsMaterial({ color: 0xff00ff, size: 5, sizeAttenuation: false, depthTest: false });
+        const pointsMat = new THREE.PointsMaterial({ color: 0xff00ff, size: 8, sizeAttenuation: false, depthTest: false });
         this.cameraPathPointsMesh = new THREE.Points(pathGeo, pointsMat);
         this.cameraPathPointsMesh.frustumCulled = false;
         this.cameraPathPointsMesh.renderOrder = 999;
@@ -271,7 +276,7 @@ export class OrreryScene extends Scene {
             
             const p = points[i];
             // Convert main scene position to AU, then to Visual Scale
-            const dist = p.length();
+            const dist = p.length() || 1; // Avoid division by zero
             const au = Math.max(0, (dist - 25) / mainScale); // 25 is STAR_RADIUS in StellarSystemScene
             let orreryDist = this.getVisualDistanceForAU(au);
             
@@ -351,7 +356,10 @@ export class OrreryScene extends Scene {
             // Clamp to camera far plane to prevent clipping
             if (this.activeCamera && orreryDist > this.activeCamera.far * 0.9) orreryDist = this.activeCamera.far * 0.9;
 
-            const newPos = position.clone().normalize().multiplyScalar(Math.max(orreryDist, this.STAR_RADIUS + 10));
+            const direction = position.clone().normalize();
+            // Safety check for (0,0,0) vector which can't be normalized
+            if (direction.lengthSq() === 0) direction.set(0,0,1);
+            const newPos = direction.multiplyScalar(Math.max(orreryDist, this.STAR_RADIUS + 15));
             if (newPos.lengthSq() === 0) newPos.set(0, 0, this.STAR_RADIUS + 5); // Handle 0,0,0 input
             this.cameraMarker.position.copy(newPos);
 
@@ -465,11 +473,11 @@ export class OrreryScene extends Scene {
             const geometry = new THREE.SphereGeometry(size, 32, 32);
             let color = new THREE.Color(0x888888);
             
-            // Robust color check
-            if (planet.color && (planet.color.isColor || typeof planet.color === 'number' || (typeof planet.color === 'string' && planet.color.length > 0) || (typeof planet.color === 'object' && Object.keys(planet.color).length > 0))) {
-                if (planet.color.isColor) color.copy(planet.color);
-                else if (planet.color.h !== undefined) color.setHSL(planet.color.h, planet.color.s, planet.color.l);
-                else if (planet.color.r !== undefined) color.setRGB(planet.color.r, planet.color.g, planet.color.b);
+            // Simplified, robust color check
+            if (planet.color) {
+                if (planet.color.isColor) { color.copy(planet.color); }
+                else if (planet.color.h !== undefined) { color.setHSL(planet.color.h, planet.color.s, planet.color.l); }
+                else if (planet.color.r !== undefined) { color.setRGB(planet.color.r, planet.color.g, planet.color.b); }
                 else color.set(planet.color); 
             } else if (planet.name) {
                  // Fallback using name frequency

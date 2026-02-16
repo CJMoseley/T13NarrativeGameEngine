@@ -163,23 +163,149 @@ const createSingleWingStructure = (initialPos, initialRotZ, initialRootChord, is
 };
 
 export const generateWings = (context) => {
-    const { spineLength, random, symmetryType, radialCount, radialAxis, harmonicSegments, attachComponent, wiringGenerator, explicitWiring, components, hullType, mainHullRadius } = context;
+    const { spineLength, random, symmetryType, radialCount, attachComponent, wiringGenerator, explicitWiring, components, hullType, getSurfacePoint } = context;
 
-    // ... (Logic from ShipGenerator.js lines 1230-1320)
-    // I'll need to adapt the logic to use the passed context and helper functions.
-    // Since the logic is quite extensive and relies on `getFuselageAt` and `createSingleWingStructure`, 
-    // I've extracted those helpers above.
-    
-    // ... (Implementation of generateWings using the helpers)
-    // For brevity in this diff, I will assume the logic is moved here.
-    // The key is that `generateWings` returns nothing but modifies `components` via `attachComponent`.
-    
-    // NOTE: I will implement the full logic in the actual file creation if requested, 
-    // but for now I will just export the helpers and let ShipGenerator use them or 
-    // move the block entirely.
-    
-    // Actually, to fully decouple, `generateWings` should contain the logic.
-    // I will include the full implementation in the final file write.
+    if (random() > 0.1 && (hullType === 'SPINE' || hullType === 'BIO_INSECT')) { 
+        const wingConfigVal = random(); // 0-0.4: Mono, 0.4-0.7: X-Wing, 0.7-1.0: Bi-Wing
+        let wingConfig;
+        if (wingConfigVal < 0.4) wingConfig = 'Monoplane';
+        else if (wingConfigVal < 0.7) wingConfig = 'X-Wing';
+        else wingConfig = 'Bi-Wing';
+
+        // Prevent X-Wing style with radial symmetry
+        let effectiveWingConfig = wingConfig;
+        if (symmetryType === 'RADIAL' && wingConfig === 'X-Wing') {
+            effectiveWingConfig = random() > 0.5 ? 'Monoplane' : 'Bi-Wing'; // Fallback to other types
+        }
+
+        // Dimensions - Allow larger wings relative to fuselage
+        const baseRootChord = spineLength * (0.5 + random() * 0.5); // 50% to 100% of fuselage length
+        const baseSpan = baseRootChord * (0.25 + random() * 0.75); // 25% to 100% of root chord
+        const wingThickness = 0.2 + random() * 0.1;
+
+        // Calculate Max Span for Radial Symmetry to prevent overlap
+        let maxSpan = baseSpan;
+        if (symmetryType === 'RADIAL') {
+            const mainHull = components.find(c => c.usage.includes('fuselage') || c.usage.includes('hull'));
+            const mainHullRadius = mainHull ? (mainHull.dims.radius || 2.0) : 2.0;
+            const circumference = 2 * Math.PI * mainHullRadius;
+            maxSpan = Math.min(baseSpan, (circumference / radialCount) * 0.8);
+        }
+
+        // Position Z: Explicit separation
+        const wingZ = 0; // Main wings centered
+        const canardZ = spineLength / 2 - 1.0; // Front
+        const tailZ = -spineLength / 2 + 1.0; // Back
+
+        // Calculate attachment point using Raycasting to ensure surface contact
+        let attachX = 0.5; // Default fallback: Center line (safest for connection)
+        let attachY = 0;
+
+        // Raycast from far right towards center to find the hull surface
+        const rayOrigin = [50, 0, wingZ];
+        const rayDir = [-1, 0, 0];
+        const hit = getSurfacePoint(components, rayOrigin, rayDir, ['fuselage', 'hull', 'spine']);
+
+        if (hit) {
+            attachX = hit.x;
+            attachY = hit.y;
+            // Embed slightly to ensure connection (0.5 units)
+            // Since we are attaching to the right side (+X), we subtract from X
+            attachX -= 0.5;
+        }
+
+        // Helper to find attachment point at specific Y, Z to ensure wings connect to surface
+        const getWingAttachPos = (targetY, targetZ) => {
+            let pos = [attachX, targetY, targetZ]; // Default to the y=0 hit
+            if (getSurfacePoint) {
+                let hit = getSurfacePoint(components, [50, targetY, targetZ], [-1, 0, 0], ['fuselage', 'hull', 'spine']);
+                if (!hit) {
+                    const dirY = targetY >= 0 ? -1 : 1;
+                    const startY = targetY >= 0 ? Math.max(targetY, 20) : Math.min(targetY, -20);
+                    const vertHit = getSurfacePoint(components, [0, startY, targetZ], [0, dirY, 0], ['fuselage', 'hull', 'spine']);
+                    if (vertHit) {
+                        const newY = vertHit.y + (dirY * 0.5); 
+                        hit = getSurfacePoint(components, [50, newY, targetZ], [-1, 0, 0], ['fuselage', 'hull', 'spine']);
+                    }
+                }
+                if (hit) {
+                    pos = [hit.x - 0.5, hit.y, targetZ];
+                }
+            }
+            return pos;
+        };
+
+        const symOverride = symmetryType === 'ASYMMETRICAL' ? 'REFLECTIVE' : null;
+
+        const processWing = (defs) => {
+            let parentId = null;
+            defs.forEach((def, i) => {
+                const compId = attachComponent(def.usage, def.pos, def.rot, def.type, def.dims, symOverride);
+                const currentId = components[components.length - 1].id;
+                if (i > 0 && parentId) {
+                    wiringGenerator.addConnection(explicitWiring, currentId, parentId, 'structural', 1.0);
+                }
+                parentId = currentId;
+                if (i === 0) {
+                    const fuselageId = components.find(c => c.usage.includes('fuselage') || c.usage.includes('spine'))?.id;
+                    if (fuselageId) wiringGenerator.addConnection(explicitWiring, currentId, fuselageId, 'structural', 2.0);
+                }
+                if (i === 0 && random() > 0.3) {
+                    const { span, rootChord, tipChord = rootChord * 0.5, sweep = 0 } = def.dims;
+                    const spanFactor = 0.3 + random() * 0.3;
+                    const engX = span * spanFactor;
+                    const zRearRoot = -rootChord / 2;
+                    const zRearTip = rootChord / 2 - sweep - tipChord;
+                    const zRearAtX = zRearRoot * (1 - spanFactor) + zRearTip * spanFactor;
+                    const engRadius = Math.min(rootChord * 0.1, 0.6);
+                    const engLen = Math.min(rootChord * 0.5, 2.5);
+                    const engZ = zRearAtX - engLen / 2;
+                    const engPosLocal = new THREE.Vector3(engX, 0, engZ);
+                    const wingRotEuler = new THREE.Euler(...def.rot);
+                    const engPosWorld = engPosLocal.applyEuler(wingRotEuler).add(new THREE.Vector3(...def.pos));
+                    attachComponent(`wing_engine_${i}`, [engPosWorld.x, engPosWorld.y, engPosWorld.z], [Math.PI/2, 0, 0], 'cylinder', { radiusTop: engRadius * 0.8, radiusBottom: engRadius, height: engLen }, symOverride);
+                    const engId = components[components.length - 1].id;
+                    wiringGenerator.addConnection(explicitWiring, engId, currentId, 'fuel_pipe', 1.0);
+                }
+            });
+        };
+
+        if (effectiveWingConfig === 'Monoplane') {
+            const pos = getWingAttachPos(attachY, wingZ);
+            processWing(createSingleWingStructure(pos, 0, baseRootChord, symmetryType === 'RADIAL', wingThickness, baseSpan, random));
+        } else if (effectiveWingConfig === 'X-Wing') {
+            const angle = (Math.PI / 6) + random() * (Math.PI / 6);
+            const pos1 = getWingAttachPos(attachY + 0.2, wingZ);
+            const pos2 = getWingAttachPos(attachY - 0.2, wingZ);
+            processWing(createSingleWingStructure(pos1, angle, baseRootChord, false, wingThickness, maxSpan, random));
+            processWing(createSingleWingStructure(pos2, -angle, baseRootChord, false, wingThickness, maxSpan, random));
+        } else {
+            const gap = 2.0 + random();
+            const pos1 = getWingAttachPos(attachY + gap / 2, wingZ);
+            const pos2 = getWingAttachPos(attachY - gap / 2, wingZ);
+            processWing(createSingleWingStructure(pos1, 0, baseRootChord, symmetryType === 'RADIAL', wingThickness, maxSpan, random));
+            processWing(createSingleWingStructure(pos2, 0, baseRootChord, symmetryType === 'RADIAL', wingThickness, maxSpan, random));
+        }
+
+        if (random() > 0.6) {
+            const canardW = baseSpan * 0.4;
+            const canardL = baseRootChord * 0.3;
+            const cX = attachX * 0.8;
+            const canardSweep = canardL * 0.4;
+            attachComponent('fin_front', [cX, 0, canardZ], [0, 0, 0], 'wedge', { span: canardW, rootChord: canardL, sweep: canardSweep, depth: 0.15, centered: false }, symOverride);
+        }
+
+        if (random() > 0.4) {
+            const tailH = 2 + random() * 2;
+            const tailL = spineLength * (0.2 + random() * 0.3);
+            const tailSweep = tailL * 0.5;
+            const tY = 0.8;
+            attachComponent('fin_tail_top', [0, tY, tailZ], [0, 0, Math.PI / 2], 'wedge', { span: tailH, rootChord: tailL, sweep: tailSweep, depth: 0.2, centered: false });
+            if (random() > 0.7) {
+                attachComponent('fin_tail_bottom', [0, -tY, tailZ], [0, 0, -Math.PI / 2], 'wedge', { span: tailH, rootChord: tailL, sweep: tailSweep, depth: 0.2, centered: false });
+            }
+        }
+    }
 };
 
 export { getFuselageAt, createSingleWingStructure };

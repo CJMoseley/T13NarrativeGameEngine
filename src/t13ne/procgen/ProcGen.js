@@ -103,7 +103,9 @@ class Xoshiro256ss {
     nextInt(min = 0, max = 1) {
         min = Number(min);
         max = Number(max);
-        if (max < min)[min, max] = [max, min];
+        if (max < min) {
+            [min, max] = [max, min];
+        }
         const range = BigInt(max - min + 1);
         const v = this.nextUint64();
         const r = Number(v % range) + min;

@@ -93,6 +93,11 @@ export class Planet extends THREE.Group {
         const canvas = document.createElement('canvas');
         canvas.width = 1024;
         canvas.height = 512;
+        // DEBUG: Add to body to see texture
+        // canvas.style.position = 'fixed';
+        // canvas.style.top = '0';
+        // canvas.style.left = '0';
+        // document.body.appendChild(canvas);
         const ctx = canvas.getContext('2d');
 
         const roughCanvas = document.createElement('canvas');
@@ -104,13 +109,9 @@ export class Planet extends THREE.Group {
         const baseColor = new THREE.Color();
         const colorData = planetData.color;
 
-        if (colorData && colorData.h !== undefined) {
-            baseColor.setHSL(colorData.h, Math.max(0.6, colorData.s), Math.max(0.4, colorData.l)); // Balanced vividness
-        } else if (colorData && colorData.r !== undefined && colorData.g !== undefined && colorData.b !== undefined) {
-            baseColor.setRGB(colorData.r, colorData.g, colorData.b);
-        } else if (typeof colorData === 'number' || typeof colorData === 'string') {
-            baseColor.set(colorData);
-        } else if (colorData && typeof colorData === 'object' && Object.keys(colorData).length > 0) {
+        if (colorData && colorData.h !== undefined) { // Prioritize HSL
+            baseColor.setHSL(colorData.h, colorData.s, colorData.l);
+        } else if (colorData) { // Fallback to any other valid THREE.Color format
             baseColor.set(colorData);
         } else if (planetData.name) {
             // Generate from Name Frequency if no color provided
@@ -125,69 +126,126 @@ export class Planet extends THREE.Group {
         // Enforce Vibrancy check
         const hsl = {};
         baseColor.getHSL(hsl);
-        if (hsl.s < 0.5) hsl.s = 0.5 + prng.nextDouble() * 0.5;
-        if (hsl.l < 0.3) hsl.l = 0.3 + prng.nextDouble() * 0.4;
+        if (hsl.s < 0.6) hsl.s = 0.6 + prng.nextDouble() * 0.4; // Force high saturation
+        if (hsl.l < 0.2) hsl.l = 0.3 + prng.nextDouble() * 0.4; // Avoid too dark
         baseColor.setHSL(hsl.h, hsl.s, hsl.l);
         
         // Secondary color for variation (analogous)
         const secColor = baseColor.clone().offsetHSL(0.1, 0, -0.1);
 
         // Generate Coherent Noise Texture
-        const imageData = ctx.getImageData(0, 0, 1024, 512);
+        const imageData = ctx.createImageData(1024, 512);
         const data = imageData.data;
-        const roughImageData = roughCtx.getImageData(0, 0, 1024, 512);
+        const roughImageData = roughCtx.createImageData(1024, 512);
         const rData = roughImageData.data;
-        
-        const noiseScale = 3.0; // Balanced scale
-        const detailScale = 16.0; // Finer detail
+
+        // --- BIOME COLOR PALETTES ---
+        const palettes = {
+            'Terrestrial': {
+                waterDeep: new THREE.Color(0x003366),
+                waterShallow: new THREE.Color(0x006699),
+                land1: baseColor,
+                land2: secColor,
+                landHigh: new THREE.Color(0x997755), // Brownish mountains
+                ice: new THREE.Color(0xf0f8ff)
+            },
+            'Ocean': {
+                waterDeep: new THREE.Color(0x002255),
+                waterShallow: new THREE.Color(0x0055aa),
+                land1: baseColor.clone().offsetHSL(0.1, 0.1, -0.2), // Small, dark islands
+                land2: secColor.clone().offsetHSL(0.1, 0.1, -0.2),
+                landHigh: new THREE.Color(0x444444),
+                ice: new THREE.Color(0xddeeff)
+            },
+            'Volcanic': {
+                waterDeep: new THREE.Color(0x110000), // Magma
+                waterShallow: new THREE.Color(0xff4400), // Bright lava
+                land1: new THREE.Color(0x222222), // Black rock
+                land2: new THREE.Color(0x444444), // Grey rock
+                landHigh: new THREE.Color(0x111111),
+                ice: new THREE.Color(0x555555) // Ash/soot
+            },
+            'Ice': {
+                waterDeep: new THREE.Color(0x6699cc), // Sub-glacial ocean
+                waterShallow: new THREE.Color(0x99ccff),
+                land1: new THREE.Color(0xe0e8f0),
+                land2: new THREE.Color(0xffffff),
+                landHigh: new THREE.Color(0xcccccc),
+                ice: new THREE.Color(0xf8f8ff)
+            },
+            'Gas': {
+                waterDeep: baseColor, // Bands
+                waterShallow: secColor,
+                land1: baseColor.clone().offsetHSL(0.05, 0.1, 0.1),
+                land2: secColor.clone().offsetHSL(-0.05, -0.1, -0.1),
+                landHigh: new THREE.Color(0xffffff), // Storms
+                ice: baseColor.clone().offsetHSL(0, 0, 0.2)
+            },
+            'Barren': {
+                waterDeep: baseColor.clone().multiplyScalar(0.5), // Darker shade for "seas"
+                waterShallow: baseColor.clone().multiplyScalar(0.8),
+                land1: baseColor,
+                land2: secColor,
+                landHigh: baseColor.clone().offsetHSL(0, -0.1, 0.1),
+                ice: baseColor.clone().offsetHSL(0, 0.1, 0.2)
+            }
+        };
+
+        let pType = Object.keys(palettes).find(k => planetData.type.includes(k)) || 'Barren';
+        const p = palettes[pType];
+
+        // --- TEXTURE GENERATION LOOP ---
+        const noiseScale = 4.0;
+        const detailScale = 12.0;
+        const warpScale = 0.5;
 
         for (let y = 0; y < 512; y++) {
             for (let x = 0; x < 1024; x++) {
-                // Map 2D grid to 3D sphere coordinates for seamless wrapping
                 const u = x / 1024;
                 const v = y / 512;
                 const theta = u * Math.PI * 2;
                 const phi = v * Math.PI;
-                
-                const sx = Math.sin(phi) * Math.cos(theta);
-                const sy = Math.sin(phi) * Math.sin(theta);
-                const sz = Math.cos(phi);
 
-                // Fractal Brownian Motion (FBM) for detailed terrain
+                let sx = Math.sin(phi) * Math.cos(theta);
+                let sy = Math.sin(phi) * Math.sin(theta);
+                let sz = Math.cos(phi);
+
+                // FBM for terrain features
                 let n = 0;
-                let amplitude = 1.0;
-                let frequency = noiseScale;
-                n += amplitude * ProcGen.simplex3D(sx * frequency, sy * frequency, sz * frequency);
-                amplitude *= 0.5; frequency *= 2.0;
-                n += amplitude * ProcGen.simplex3D(sx * frequency, sy * frequency, sz * frequency);
-                amplitude *= 0.5; frequency *= 2.0;
-                n += amplitude * ProcGen.simplex3D(sx * frequency, sy * frequency, sz * frequency);
-                
-                // Normalize roughly to 0-1
-                n = (n + 1.8) / 3.6; // Adjusted normalization for FBM range
-                n = Math.max(0, Math.min(1, n));
+                let amp = 1.0;
+                let freq = noiseScale;
+                for (let i = 0; i < 5; i++) {
+                    n += amp * ProcGen.simplex3D(sx * freq, sy * freq, sz * freq);
+                    amp *= 0.5;
+                    freq *= 2.0;
+                }
+                n = (n + 1.0) / 2.0; // Normalize to 0-1
 
-                let r, g, b, roughness;
+                // Determine final color based on noise value (height)
+                let finalColor = new THREE.Color();
+                let roughness = 0.8;
 
                 // Water Threshold (if terrestrial)
                 const isWater = (planetData.type.includes('Terrestrial') || planetData.type.includes('Ocean')) && n < 0.45;
                 
                 if (isWater) {
                     // Ocean Color (Deep Blue/Green)
-                    r = 20; g = 60; b = 140;
+                    finalColor.lerpColors(p.waterDeep, p.waterShallow, (n / 0.45));
                     roughness = 0.1; // Shiny
                 } else {
                     // Land Color
-                    r = (baseColor.r * n + secColor.r * (1 - n)) * 255;
-                    g = (baseColor.g * n + secColor.g * (1 - n)) * 255;
-                    b = (baseColor.b * n + secColor.b * (1 - n)) * 255;
+                    const landHeight = (n - 0.45) / 0.55; // Remap 0.45-1.0 to 0-1
+                    finalColor.lerpColors(p.land1, p.land2, landHeight);
+                    if (landHeight > 0.7) {
+                        finalColor.lerp(p.landHigh, (landHeight - 0.7) / 0.3);
+                    }
                     roughness = 0.9; // Rough
                 }
 
                 const idx = (y * 1024 + x) * 4;
-                data[idx] = r;
-                data[idx + 1] = g;
-                data[idx + 2] = b;
+                data[idx] = finalColor.r * 255;
+                data[idx + 1] = finalColor.g * 255;
+                data[idx + 2] = finalColor.b * 255;
                 data[idx + 3] = 255;
 
                 rData[idx] = roughness * 255;
@@ -196,6 +254,7 @@ export class Planet extends THREE.Group {
                 rData[idx + 3] = 255;
             }
         }
+
         ctx.putImageData(imageData, 0, 0);
         roughCtx.putImageData(roughImageData, 0, 0);
         

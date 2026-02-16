@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import WiringConfigs from './wiring_configs.js';
+import { getSurfacePoint } from './ShipUtils.js';
 
 export class WiringGenerator {
     constructor() {
@@ -272,5 +273,44 @@ export class WiringGenerator {
             }
         }
         return group;
+    }
+
+    enforceWiringSymmetry(wiringGraph, components) {
+        const compMap = new Map(components.map(c => [c.id, c]));
+        
+        const getSymId = (id) => {
+            if (id.endsWith('_sym')) return id.replace('_sym', '');
+            if (!id.endsWith('_sym') && compMap.has(id + '_sym')) return id + '_sym';
+            return null;
+        };
+
+        const newConnections = [];
+
+        for (const [sourceId, connections] of Object.entries(wiringGraph)) {
+            const sourceSymId = getSymId(sourceId);
+            
+            for (const conn of connections) {
+                const targetId = conn.targetId;
+                const targetSymId = getSymId(targetId);
+
+                if (sourceSymId && targetSymId) {
+                    if (!wiringGraph[sourceSymId] || !wiringGraph[sourceSymId].find(c => c.targetId === targetSymId)) {
+                        newConnections.push({ source: sourceSymId, target: targetSymId, type: conn.wiringType, length: conn.length });
+                    }
+                } else if (sourceSymId && !targetSymId) {
+                     if (!wiringGraph[sourceSymId] || !wiringGraph[sourceSymId].find(c => c.targetId === targetId)) {
+                        newConnections.push({ source: sourceSymId, target: targetId, type: conn.wiringType, length: conn.length });
+                    }
+                } else if (!sourceSymId && targetSymId) {
+                     if (!wiringGraph[sourceId] || !wiringGraph[sourceId].find(c => c.targetId === targetSymId)) {
+                        newConnections.push({ source: sourceId, target: targetSymId, type: conn.wiringType, length: conn.length });
+                    }
+                }
+            }
+        }
+        
+        newConnections.forEach(c => {
+            this.addConnection(wiringGraph, c.source, c.target, c.type, c.length);
+        });
     }
 }

@@ -3,6 +3,7 @@ import { ShipFactory, COMPONENT_COLORS } from '/src/t13ne/core/ship/ShipFactory.
 import { TECH_SPECS, QUALITIES, FALLBACK_MANUFACTURERS } from '/src/t13ne/core/ship/ShipUtils.js';
 import { GalacticHistory } from '/src/t13ne/procgen/galaxy/GalacticHistory.js';
 import { Scene } from '/src/t13ne/core/Scene.js';
+import ProcGen from '/src/t13ne/procgen/ProcGen.js';
 
 export class ShipShowcaseScene extends Scene {
     constructor(viewManager) {
@@ -66,14 +67,14 @@ export class ShipShowcaseScene extends Scene {
         // 8. Generate Ship Data Procedurally
         onProgress({ status: 'Designing random ship...', percent: 0.4 });
         // Use a random seed or one based on the home system if available
-        const seed = Math.floor(Math.random() * 4294967296);
+        const seed = ProcGen.nextInt(0, 4294967296);
         
         // Determine style to ensure name matches visual
         const styles = ['ORGANIC', 'INDUSTRIAL', 'SKELETON', 'BOXY', 'RACING', 'MINING', 'METALLIC'];
-        const style = styles[Math.floor(Math.random() * styles.length)];
+        const style = styles[ProcGen.nextInt(0, styles.length - 1)];
         
         const sizes = ['small', 'medium', 'large'];
-        const size = sizes[Math.floor(Math.random() * sizes.length)];
+        const size = sizes[ProcGen.nextInt(0, sizes.length - 1)];
         
         const shipComponents = await this.shipFactory.createRandomShip(seed, { size: size, techLevel: 2, style: style });
         this.shipComponents = shipComponents;
@@ -88,13 +89,13 @@ export class ShipShowcaseScene extends Scene {
                 if (genName && genName.toLowerCase() !== "g'nathuun") {
                     this.shipName = genName;
                 } else {
-                    let manu = FALLBACK_MANUFACTURERS[Math.floor(Math.random() * FALLBACK_MANUFACTURERS.length)];
+                    let manu = FALLBACK_MANUFACTURERS[ProcGen.nextInt(0, FALLBACK_MANUFACTURERS.length - 1)];
                     const activeCorps = GalacticHistory.getCorporations()?.filter(c => c.status === 'Active');
                     if (activeCorps && activeCorps.length > 0) {
-                        manu = activeCorps[Math.floor(Math.random() * activeCorps.length)].name;
+                        manu = activeCorps[ProcGen.nextInt(0, activeCorps.length - 1)].name;
                     }
-                    const tech = TECH_SPECS[Math.floor(Math.random() * TECH_SPECS.length)];
-                    const qual = QUALITIES[Math.floor(Math.random() * QUALITIES.length)];
+                    const tech = TECH_SPECS[ProcGen.nextInt(0, TECH_SPECS.length - 1)];
+                    const qual = QUALITIES[ProcGen.nextInt(0, QUALITIES.length - 1)];
                     const type = style === 'ORGANIC' ? "Bio-Craft" : (style === 'SKELETON' ? "Frame" : "Racer");
                     this.shipName = `${manu} ${tech} ${type} ${qual}`;
                 }
@@ -112,6 +113,10 @@ export class ShipShowcaseScene extends Scene {
     }
 
     createUI() {
+        // Ensure we don't create duplicate UIs
+        if (this.uiContainer && this.uiContainer.parentNode) {
+            this.uiContainer.parentNode.removeChild(this.uiContainer);
+        }
         this.uiContainer = document.createElement('div');
         this.uiContainer.style.position = 'absolute';
         this.uiContainer.style.bottom = '120px'; // Raised to avoid Continue button
