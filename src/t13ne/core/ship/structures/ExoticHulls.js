@@ -132,8 +132,8 @@ export const generateFractal = (context) => {
     const { random, attachComponent } = context;
     
     // Iterative placement of shapes on faces
-    const iterations = 3;
-    const maxComponents = 50; // Hard limit to prevent performance issues
+    const iterations = 2;
+    const maxComponents = 20; // Hard limit to prevent performance issues
     let count = 0;
 
     const fractalShapes = ['box', 'dodecahedron', 'icosahedron', 'octahedron', 'sphere', 'tetrahedron'];
@@ -142,7 +142,7 @@ export const generateFractal = (context) => {
     // Use radius as the standard size metric
     const baseRadius = 2.5;
     let currentGen = [{pos: [0,0,0], radius: baseRadius}];
-    
+
     // Base
     const baseDims = shapeType === 'box' ? {width: baseRadius*2, height: baseRadius*2, depth: baseRadius*2} : {radius: baseRadius};
     attachComponent('fractal_base', [0,0,0], [0,0,0], shapeType, baseDims, 'NONE');

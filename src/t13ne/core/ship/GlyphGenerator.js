@@ -23,11 +23,13 @@ export class GlyphGenerator {
      * @returns {THREE.CanvasTexture}
      */
     generateLogo(seed, name, primaryColor, secondaryColor) {
-        if (!this.ctx) return null;
         const random = mulberry32(seed);
-        const ctx = this.ctx;
-        const width = this.canvas.width;
-        const height = this.canvas.height;
+        const width = 512;
+        const height = 512;
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
         const cx = width / 2;
         const cy = height / 2;
 
@@ -102,12 +104,8 @@ export class GlyphGenerator {
         ctx.fill();
 
         // Create Texture
-        const texture = new THREE.CanvasTexture(this.canvas);
+        const texture = new THREE.CanvasTexture(canvas);
         texture.needsUpdate = true;
-        // Clone canvas content to texture so we can reuse the canvas
-        const image = new Image();
-        image.src = this.canvas.toDataURL();
-        texture.image = image;
         
         return texture;
     }
@@ -119,17 +117,15 @@ export class GlyphGenerator {
      * @returns {THREE.CanvasTexture}
      */
     generateTextDecal(text, color) {
-        if (!this.ctx) return null;
-        const ctx = this.ctx;
-        const width = 512; // Square for block layout
-        const height = 512; 
-        this.canvas.width = width; 
-        this.canvas.height = height;
+        const width = 512;
+        const height = 512;
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
 
         // Ensure transparent background
         ctx.clearRect(0, 0, width, height);
-        ctx.fillStyle = 'rgba(0,0,0,0)';
-        ctx.fillRect(0, 0, width, height);
         
         // Stencil effect
         ctx.strokeStyle = '#' + color.getHexString();
@@ -169,15 +165,8 @@ export class GlyphGenerator {
             ctx.restore();
         }
 
-        const texture = new THREE.CanvasTexture(this.canvas);
+        const texture = new THREE.CanvasTexture(canvas);
         texture.needsUpdate = true;
-        const image = new Image();
-        image.src = this.canvas.toDataURL();
-        texture.image = image;
-
-        // Reset canvas size
-        this.canvas.width = 512;
-        this.canvas.height = 512;
 
         return texture;
     }

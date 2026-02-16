@@ -37,7 +37,17 @@ export class WiringGenerator {
         const wiringGraph = JSON.parse(JSON.stringify(existingGraph)); // Deep copy
 
         // Use a Prim-like expansion to route wiring through structural components
-        const roots = components.filter(c => c.id.startsWith('spine') || c.id.startsWith('fuselage') || c.id === 'saucer_hull' || c.id.includes('ring'));
+        const structuralKeywords = [
+            'spine', 'fuselage', 'hull', 'saucer', 'ring', 'rim', 'hub', 'spoke', 
+            'branch', 'maze', 'bio', 'fractal', 'pod', 'pylon', 'block', 'neck', 'head',
+            'structure', 'truss', 'corridor'
+        ];
+
+        const roots = components.filter(c => {
+            const id = c.id.toLowerCase();
+            return structuralKeywords.some(kw => id.includes(kw));
+        });
+
         const pool = components.filter(c => !roots.includes(c));
         const connected = [...roots];
         
@@ -72,7 +82,10 @@ export class WiringGenerator {
             let candidates = connected;
             // If the component is a wing, only try to connect it to the main body, not other wings.
             if (comp.usage && (comp.usage.includes('wing') || comp.usage.includes('fin'))) {
-                const bodyParts = connected.filter(c => c.usage && (c.usage.includes('fuselage') || c.usage.includes('spine') || c.usage.includes('hub')));
+                const bodyParts = connected.filter(c => {
+                    const u = c.usage ? c.usage.toLowerCase() : c.id.toLowerCase();
+                    return structuralKeywords.some(kw => u.includes(kw));
+                });
                 if (bodyParts.length > 0) {
                     candidates = bodyParts;
                 }
@@ -102,6 +115,96 @@ export class WiringGenerator {
                 connected.push(comp);
             }
         });
+
+        // 2. Power Grid Pass: Ensure high-power systems connect to a Generator
+        const powerConsumers = components.filter(c => {
+            const u = c.usage ? c.usage.toLowerCase() : '';
+            return u.includes('shield') || u.includes('engine') || u.includes('weapon') || 
+                   u.includes('vortex') || u.includes('hyperdrive') || u.includes('sensor') || 
+                   u.includes('computer') || u.includes('life_support');
+        });
+        
+        const powerSources = components.filter(c => {
+            const u = c.usage ? c.usage.toLowerCase() : '';
+            return u.includes('generator') || u.includes('reactor') || u.includes('battery') || u.includes('core');
+        });
+
+        if (powerSources.length > 0) {
+            powerConsumers.forEach(consumer => {
+                // Find nearest source
+                let nearestSource = null;
+                let minSourceDist = Infinity;
+                
+                powerSources.forEach(source => {
+                    const dist = getDist(consumer, source);
+                    if (dist < minSourceDist) {
+                        minSourceDist = dist;
+                        nearestSource = source;
+                    }
+                });
+
+                if (nearestSource) {
+                    // Check if already connected directly
+                    const existing = wiringGraph[consumer.id] && wiringGraph[consumer.id].find(c => c.targetId === nearestSource.id);
+                    if (!existing) {
+                        // Add a direct power line
+                        let type = 'power';
+                        const u = consumer.usage ? consumer.usage.toLowerCase() : '';
+                        if (u.includes('vortex') || u.includes('weapon')) type = 'plasma_conduit';
+                        else if (u.includes('shield') || u.includes('generator')) type = 'superconductor';
+                        
+                        this.addConnection(wiringGraph, consumer.id, nearestSource.id, type, minSourceDist);
+                    }
+                }
+            });
+        }
+
+        // 3. Control Network Pass: Connect Bridge/Cockpit/Engine Room to Systems
+        const controlSources = components.filter(c => {
+            const u = c.usage ? c.usage.toLowerCase() : '';
+            return u.includes('bridge') || u.includes('cockpit') || u.includes('computer') || u.includes('engine_room') || u.includes('engine_block');
+        });
+
+        const controlTargets = components.filter(c => {
+            const u = c.usage ? c.usage.toLowerCase() : '';
+            // Most active systems need control
+            return u.includes('engine') || u.includes('thruster') || u.includes('weapon') || 
+                   u.includes('shield') || u.includes('sensor') || u.includes('generator') || 
+                   u.includes('reactor') || u.includes('hyperdrive') || u.includes('vortex');
+        });
+
+        if (controlSources.length > 0) {
+            controlTargets.forEach(target => {
+                // Find nearest control source
+                let nearestSource = null;
+                let minSourceDist = Infinity;
+                
+                controlSources.forEach(source => {
+                    const targetU = target.usage ? target.usage.toLowerCase() : '';
+                    const sourceU = source.usage ? source.usage.toLowerCase() : '';
+                    
+                    let dist = getDist(target, source);
+                    
+                    // Weight distance to prefer Bridge for Shields/Weapons (Pilot control)
+                    if ((targetU.includes('shield') || targetU.includes('weapon')) && (sourceU.includes('bridge') || sourceU.includes('cockpit'))) {
+                        dist *= 0.5; // Make bridge seem closer to prioritize pilot control
+                    }
+
+                    if (dist < minSourceDist) {
+                        minSourceDist = dist;
+                        nearestSource = source;
+                    }
+                });
+
+                if (nearestSource) {
+                    // Check if already connected directly
+                    const existing = wiringGraph[target.id] && wiringGraph[target.id].find(c => c.targetId === nearestSource.id);
+                    if (!existing) {
+                        this.addConnection(wiringGraph, target.id, nearestSource.id, 'data', minSourceDist);
+                    }
+                }
+            });
+        }
 
         return wiringGraph;
     }

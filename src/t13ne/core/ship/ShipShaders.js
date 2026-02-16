@@ -16,9 +16,11 @@ export const racingLiveryShader = {
     vertexShader: `
         varying vec3 vPos;
         varying vec3 vNormal;
+        varying vec3 vColor;
         void main() {
             vPos = position;
             vNormal = normalize( mat3( modelMatrix ) * normal ); // Use world normal
+            vColor = color;
             gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
         }
     `,
@@ -27,6 +29,7 @@ export const racingLiveryShader = {
         #include <lights_pars_begin>
         varying vec3 vPos;
         varying vec3 vNormal;
+        varying vec3 vColor;
         uniform float time;
         uniform float opacity;
         uniform vec3 color1;
@@ -85,6 +88,12 @@ export const racingLiveryShader = {
                 color = mix(color, color2, circle);
             }
             
+            // Apply Vertex Color Modifiers (R=Sat, G=Val)
+            // This ensures engines are dark and wings/details pop
+            float luminance = dot(color, vec3(0.299, 0.587, 0.114));
+            color = mix(vec3(luminance), color, vColor.r);
+            color *= vColor.g;
+
             // Cell Shading Lighting
             vec3 lightDir = normalize(vec3(0.5, 1.0, 0.8));
             #if NUM_DIR_LIGHTS > 0
@@ -135,6 +144,7 @@ export const industrialLiveryShader = {
         varying vec3 vObjectNormal;
         varying vec3 vWorldPosition;
         varying vec2 vUv;
+        varying vec3 vColor;
         
         void main() {
             vPos = position;
@@ -142,6 +152,7 @@ export const industrialLiveryShader = {
             vObjectNormal = normalize(normal); // Object space normal for triplanar
             vWorldPosition = (modelMatrix * vec4(position, 1.0)).xyz;
             vUv = uv;
+            vColor = color;
             vec4 worldPosition = modelMatrix * vec4(position, 1.0);
             gl_Position = projectionMatrix * viewMatrix * worldPosition;
         }
@@ -151,6 +162,7 @@ export const industrialLiveryShader = {
         #include <lights_pars_begin>
         varying vec3 vNormal;
         varying vec3 vWorldPosition;
+        varying vec3 vColor;
         uniform vec3 baseColor;
         uniform float opacity;
 
@@ -164,6 +176,16 @@ export const industrialLiveryShader = {
 
             float NdotL = max(dot(normal, lightDir), 0.0);
             
+            // Apply Vertex Color Modifiers (R=Sat, G=Val)
+            vec3 col = baseColor;
+            
+            // Simple Saturation
+            float luminance = dot(col, vec3(0.299, 0.587, 0.114));
+            col = mix(vec3(luminance), col, vColor.r);
+            
+            // Value
+            col *= vColor.g;
+
             // Cell Shading
             float levels = 4.0;
             float diffuse = floor(NdotL * levels + 0.5) / levels;
@@ -173,7 +195,7 @@ export const industrialLiveryShader = {
             float NdotH = max(dot(normal, halfDir), 0.0);
             float spec = pow(NdotH, 32.0) * 0.2;
 
-            gl_FragColor = vec4(baseColor * lighting + vec3(spec), opacity);
+            gl_FragColor = vec4(col * lighting + vec3(spec), opacity);
         }
     `
 };
@@ -194,6 +216,7 @@ export const boxyLiveryShader = {
         #include <common>
         #include <lights_pars_begin>
         varying vec3 vNormal;
+        varying vec3 vColor;
         uniform vec3 baseColor;
         uniform float opacity;
 
@@ -206,12 +229,18 @@ export const boxyLiveryShader = {
             
             float NdotL = max(dot(normal, lightDir), 0.0);
             
+            // Apply Vertex Color Modifiers (R=Sat, G=Val)
+            vec3 col = baseColor;
+            float luminance = dot(col, vec3(0.299, 0.587, 0.114));
+            col = mix(vec3(luminance), col, vColor.r);
+            col *= vColor.g;
+
             // Cell Shading
             float levels = 3.0;
             float diffuse = floor(NdotL * levels + 0.5) / levels;
             vec3 lighting = vec3(0.5) + vec3(0.5) * diffuse;
 
-            gl_FragColor = vec4(baseColor * lighting, opacity);
+            gl_FragColor = vec4(col * lighting, opacity);
         }
     `
 };

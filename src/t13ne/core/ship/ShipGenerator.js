@@ -202,7 +202,7 @@ export class ShipGenerator {
         };
 
         // 1. Generate Central Fuselage (Spine, Saucer, or Star)
-        const spineLength = (size === 'small' ? 3 : (size === 'medium' ? 6 : 10)) * (0.8 + random() * 0.4);
+        let spineLength = (size === 'small' ? 3 : (size === 'medium' ? 6 : 10)) * (0.8 + random() * 0.4);
 
         // Context object to pass to generators
         const context = {
@@ -293,6 +293,7 @@ export class ShipGenerator {
         
         if (hullType === 'BATTLESTAR') {
             spineLength = 120; // Force large scale for Battlestar to make generic components look small
+            context.spineLength = spineLength;
         }
 
         if (hullType === 'DISC') {
@@ -454,11 +455,12 @@ export class ShipGenerator {
 
                 if (engineCount === 2) {
                     const offset = halfWidth * 0.5;
-                    // Embed by 1.0 (Center at z - 1.0 means front at z + 0.5 for height 3.0)
-                    attachComponent('engine_L', [worldX - offset, worldY, worldRearZ - 1.0], [Math.PI/2, 0, 0], 'cylinder', { radiusTop: 0.8, radiusBottom: 1.2, height: 3.0 });
-                    attachComponent('engine_R', [worldX + offset, worldY, worldRearZ - 1.0], [Math.PI/2, 0, 0], 'cylinder', { radiusTop: 0.8, radiusBottom: 1.2, height: 3.0 });
+                    // Embed 90% (Height 3.0 -> 2.7 inside, 0.3 outside).
+                    // Rear face at worldRearZ - 0.3. Center at worldRearZ - 0.3 + 1.5 = worldRearZ + 1.2
+                    attachComponent('engine_L', [worldX - offset, worldY, worldRearZ + 1.2], [Math.PI/2, 0, 0], 'cylinder', { radiusTop: 0.8, radiusBottom: 1.2, height: 3.0 });
+                    attachComponent('engine_R', [worldX + offset, worldY, worldRearZ + 1.2], [Math.PI/2, 0, 0], 'cylinder', { radiusTop: 0.8, radiusBottom: 1.2, height: 3.0 });
                 } else {
-                    attachComponent('engine_main', [worldX, worldY, worldRearZ - 1.0], [Math.PI/2, 0, 0], 'cylinder', { radiusTop: 0.8, radiusBottom: 1.2, height: 3.0 });
+                    attachComponent('engine_main', [worldX, worldY, worldRearZ + 1.2], [Math.PI/2, 0, 0], 'cylinder', { radiusTop: 0.8, radiusBottom: 1.2, height: 3.0 });
                 }
             } else {
                  // Fallback
@@ -493,7 +495,6 @@ export class ShipGenerator {
              // Bottom Engine
              attachComponent('engine_bottom', [0, -engineY, engineZ], [Math.PI / 2, 0, 0], 'cone', 
                 { radius: 0.5, height: engineHeight }, 'NONE');
-        } else if (hullType !== 'BATTLESTAR' && hullType !== 'LIBERATOR' && !hullType.startsWith('BIO_')) { // Battlestar, Liberator and Bio engines are handled separately
             if (hullType === 'CATAMARAN') {
                 // Skip generic engines for Catamaran as it has Nacelles
             } else if (hullType === 'STATION_RING' || hullType === 'STATION_WHEEL') {
@@ -517,9 +518,42 @@ export class ShipGenerator {
             const rot = [Math.PI/2, 0, 0]; 
 
             attachComponent('engine', pos, rot, 'cylinder', { radiusTop: 0.6, radiusBottom: 1.0, height: 2.5 }, 'RADIAL', true);
+            
+            // Add Main Engine on Central Spine
+            const spineLen = r * 1.2;
+            const engineZ = -spineLen / 2 - 1.5; // Behind spine
+            
+            attachComponent('engine_main', [0, 0, engineZ], [Math.PI/2, 0, 0], 'cylinder', 
+                { radiusTop: 1.5, radiusBottom: 2.0, height: 3.0 }, 'NONE');
 
             } else 
             if (symmetryType === 'REFLECTIVE') {
+                // Add Sensors/Scanners
+                const sensorHeight = 1.0;
+                const sensorZ = -spineLength / 2 + 4.0; 
+                
+                let sensorX = 2.0;
+                if (this.getSurfacePoint) {
+                     const rayOrigin = [20, 0, sensorZ];
+                     const rayDir = [-1, 0, 0];
+                     const hit = this.getSurfacePoint(components, rayOrigin, rayDir, ['fuselage', 'hull', 'spine']);
+                     if (hit) {
+                         sensorX = hit.x; // Embed half-way to ensure connection
+                     }
+                }
+                
+                const sensorId = attachComponent('sensor_array', [sensorX, 0.5, sensorZ], [0, 0, 0], 'box', { width: 0.5, height: 0.5, depth: 1.0 });
+                
+                // Wire to bridge if possible
+                const bridge = components.find(c => c.usage.includes('bridge') || c.usage.includes('cockpit'));
+                if (bridge) {
+                    this.wiringGenerator.addConnection(explicitWiring, sensorId, bridge.id, 'data', 5.0);
+                    const sensorSymId = sensorId + '_sym';
+                    if (components.find(c => c.id === sensorSymId)) {
+                         this.wiringGenerator.addConnection(explicitWiring, sensorSymId, bridge.id, 'data', 5.0);
+                    }
+                }
+
                 const engineHeight = 2.0;
                 const engineZ = -spineLength / 2 - engineHeight / 2 + 0.5; // Increased overlap
                 
@@ -541,6 +575,15 @@ export class ShipGenerator {
                 // Engines point down (Vertical)
                 // Offset Y by -0.5 to ensure the wide bottom is below the hull and the top is embedded
                 attachComponent('engine', [armLen, -0.5, 0], [0, 0, 0], 'cylinder', { radiusTop: 0.5, radiusBottom: 0.8, height: 2.0 });
+
+                // Add Sensor Array on Hub (Bottom)
+                const sensorId = attachComponent('sensor_array', [0, -1.5, 0], [Math.PI, 0, 0], 'cone', { radius: 0.5, height: 1.0 }, 'NONE');
+                
+                // Wire to bridge/hub
+                const bridge = components.find(c => c.usage.includes('bridge') || c.usage.includes('cockpit') || c.usage.includes('hub'));
+                if (bridge) {
+                    this.wiringGenerator.addConnection(explicitWiring, sensorId, bridge.id, 'data', 2.0);
+                }
             } else {
                 // Default case, primarily for SPINE
                 if (hullType === 'SPINE') {
@@ -608,6 +651,22 @@ export class ShipGenerator {
                         // The slice rotation should be independent of the cone's roll to get a clean top-down slope.
                         attachComponent('carve_nose_slice', [sX, sY, lastZ + noseLength], [Math.PI/4, 0, 0], 'box', 
                             { width: sliceSize, height: sliceSize, depth: sliceSize }, 'NONE');
+                    }
+
+                    // Add Sensors for Spine ships
+                    const sensorZ = (spineLength / 2) - 3.0;
+                    let sensorY = 0.8; // Default fallback
+                    // Raycast to find surface to ensure attachment
+                    if (this.getSurfacePoint) {
+                        const hit = this.getSurfacePoint(components, [0, 20, sensorZ], [0, -1, 0], ['fuselage', 'hull', 'spine']);
+                        if (hit) sensorY = hit.y + 0.1; // Embed slightly (Height 0.4, Half 0.2. Center at Surface + 0.1 means 0.1 embedded)
+                    }
+                    const sensorId = attachComponent('sensor_array', [0, sensorY, sensorZ], [0, 0, 0], 'box', { width: 0.6, height: 0.4, depth: 0.8 }, 'NONE');
+                    
+                    // Wire to bridge
+                    const bridge = components.find(c => c.usage.includes('bridge') || c.usage.includes('cockpit'));
+                    if (bridge) {
+                        this.wiringGenerator.addConnection(explicitWiring, sensorId, bridge.id, 'data', 3.0);
                     }
                 }
 
@@ -852,11 +911,12 @@ export class ShipGenerator {
                 // Use raycasting from front (+Z) towards center
                 const hit = this.getSurfacePoint(components, [0, 0, 50], [0, 0, -1], ['fuselage', 'monolith']);
                 if (hit) {
-                    // Embed by 0.5 units (Center at hit.z + 0.5 for depth 2.0 means back at hit.z - 0.5)
-                    attachComponent('cockpit', [hit.x, hit.y, hit.z + 0.5], [0, 0, 0], 'box', { width: 2.5, height: 1.5, depth: 2.0 });
+                    // Embed 90% (Depth 2.0 -> 1.8 inside, 0.2 outside).
+                    // Front face at hit.z + 0.2. Center at hit.z + 0.2 - 1.0 = hit.z - 0.8.
+                    attachComponent('cockpit', [hit.x, hit.y, hit.z - 0.8], [0, 0, 0], 'box', { width: 2.5, height: 1.5, depth: 2.0 });
                 } else {
                     // Fallback
-                    attachComponent('cockpit', [0, 0, hullRadius + 0.5], [0, 0, 0], 'box', { width: 2.5, height: 1.5, depth: 2.0 });
+                    attachComponent('cockpit', [0, 0, hullRadius - 0.8], [0, 0, 0], 'box', { width: 2.5, height: 1.5, depth: 2.0 });
                 }
             } else if (hullType === 'HORSESHOE') {
                  // Horseshoe Cockpit: Place on the arc tip to avoid floating in the center void
@@ -870,7 +930,7 @@ export class ShipGenerator {
             } else if (symmetryType === 'ASYMMETRICAL' || hullType === 'BLOB' || hullType === 'MAZE') {
                 // Use the unified side cockpit generator
                 const side = (hullType === 'BLOB') ? 'right' : 'random';
-                const parentUsage = ['fuselage', 'hull', 'spine', 'monolith', 'maze', 'ring', 'rim', 'torus'];
+                const parentUsage = ['fuselage', 'hull', 'spine', 'monolith', 'maze', 'ring', 'rim', 'torus', 'bio', 'node', 'segment', 'fractal'];
                 
                 // Estimate parent radius and height from the generic hullRadius
                 const parentRadius = hullRadius;
@@ -1040,9 +1100,31 @@ export class ShipGenerator {
              const r = mainHullRadius * 0.6;
              vortexPos = [Math.cos(angle) * r, -0.5, Math.sin(angle) * r];
         } else {
-             vortexPos = [0, -0.8, spineLength / 2 - 1];
+             // Default placement: Front-ish, bottom
+             // Use Raycast to find bottom surface to ensure attachment
+             const searchZ = spineLength / 2 - 2.0; // Slightly back from tip
+             let placeY = -0.5; // Fallback
+             
+             if (this.getSurfacePoint) {
+                 // Cast from below up
+                 const hit = this.getSurfacePoint(components, [0, -20, searchZ], [0, 1, 0], ['fuselage', 'hull', 'spine']);
+                 if (hit) {
+                     // Embed by radius * 0.5
+                     const r = 0.6 * internalScale;
+                     placeY = hit.y - (r * 0.5);
+                 } else {
+                     placeY = 0; // Center it if no hull found (e.g. gap)
+                 }
+             }
+             vortexPos = [0, placeY, searchZ];
         }
-        attachComponent('vortex', vortexPos, vortexRot, 'dodecahedron', { radius: 0.6 * internalScale });
+        const vortexId = attachComponent('vortex', vortexPos, vortexRot, 'dodecahedron', { radius: 0.6 * internalScale });
+        
+        // Wire Vortex to Generator or Hull
+        const powerSource = components.find(c => c.usage.includes('generator') || c.usage.includes('reactor')) || components.find(c => c.usage.includes('fuselage'));
+        if (powerSource) {
+            this.wiringGenerator.addConnection(explicitWiring, vortexId, powerSource.id, 'plasma_conduit', 5.0);
+        }
 
         // Add Torus Ring for Radial Ships (Moved to end to check for wing connections)
         if (symmetryType === 'RADIAL' && random() > 0.7 && !hullType.startsWith('BIO_') && hullType !== 'BIO_CEPHALOPOD') { // Reduced probability, exclude BIO

@@ -90,7 +90,7 @@ export class PlanetGenerator {
      * @param {number} size - Approximate size.
      * @returns {THREE.Mesh} The asteroid mesh.
      */
-    generateAsteroidMesh(seed, size = 5) {
+    generateAsteroidMesh(seed, size = 5, colorData = null) {
         const prng = ProcGen.createPRNG(seed);
         
         // Optimization: Use DodecahedronGeometry directly instead of HullGenerator
@@ -122,10 +122,17 @@ export class PlanetGenerator {
         geometry.computeVertexNormals();
 
         // Varied asteroid colors (Browns, Greys, Reddish)
-        const hue = prng.nextDouble() * 0.1 + 0.05; // Orange-ish
-        const sat = prng.nextDouble() * 0.2; // Low saturation
-        const lit = 0.2 + prng.nextDouble() * 0.3; // Dark to Mid
-        const color = new THREE.Color().setHSL(hue, sat, lit);
+        const color = new THREE.Color();
+        if (colorData) {
+            if (colorData.h !== undefined) color.setHSL(colorData.h, colorData.s, colorData.l);
+            else if (colorData.isColor) color.copy(colorData);
+            else color.set(colorData);
+        } else {
+            const hue = prng.nextDouble() * 0.1 + 0.05; // Orange-ish
+            const sat = prng.nextDouble() * 0.2; // Low saturation
+            const lit = 0.2 + prng.nextDouble() * 0.3; // Dark to Mid
+            color.setHSL(hue, sat, lit);
+        }
 
         const material = new THREE.MeshStandardMaterial({
             color: color,
@@ -181,7 +188,7 @@ export class PlanetGenerator {
         } else if (type.includes('Barren') || type.includes('Rock') || type.includes('Dwarf')) {
             // Vivid Barren: Not just grey. Reddish, bluish, purplish rock.
             const hue = prng.nextDouble();
-            const sat = 0.2 + prng.nextDouble() * 0.3; // Some color
+            const sat = 0.4 + prng.nextDouble() * 0.4; // More color
             const lit = 0.3 + prng.nextDouble() * 0.4;
             const c = new THREE.Color().setHSL(hue, sat, lit);
             c1 = c.getHex();

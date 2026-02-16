@@ -481,6 +481,10 @@ export class ViewManager {
             this.addSceneToCache(sceneName, newScene);
         } else {
             Logger.message(`Scene '${sceneName}' found in cache.`);
+            // Inject updated data if the scene supports it (fixes pre-loading race conditions)
+            if (sceneData && typeof newScene.updateSceneData === 'function') {
+                newScene.updateSceneData(sceneData);
+            }
         }
 
         // 2. Handle Transition Start (Capture old scene)
@@ -695,13 +699,13 @@ export class ViewManager {
     async showSolarSystem(starData) {
         Logger.message(`ViewManager: Showing Solar System for ${starData.systemDetails.name}`);
         try {
-            const success = await this.transitionToScene('StellarSystemScene', { ...starData, galaxy: this.gameEngine.galaxy });
+            const success = await this.transitionToScene('LocalSpaceScene', { ...starData, galaxy: this.gameEngine.galaxy });
             if (!success) {
-                this.handleSceneLoadFailure('StellarSystemScene');
+                this.handleSceneLoadFailure('LocalSpaceScene');
             }
         } catch (error) {
-            Logger.error(`ViewManager: Error loading StellarSystemScene:`, error);
-            this.handleSceneLoadFailure('StellarSystemScene');
+            Logger.error(`ViewManager: Error loading LocalSpaceScene:`, error);
+            this.handleSceneLoadFailure('LocalSpaceScene');
         }
     }
 

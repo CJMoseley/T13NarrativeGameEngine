@@ -69,13 +69,14 @@ export class ShipShowcaseScene extends Scene {
         const seed = Math.floor(Math.random() * 4294967296);
         
         // Determine style to ensure name matches visual
-        const styles = ['ORGANIC', 'INDUSTRIAL', 'SKELETON'];
+        const styles = ['ORGANIC', 'INDUSTRIAL', 'SKELETON', 'BOXY', 'RACING', 'MINING', 'METALLIC'];
         const style = styles[Math.floor(Math.random() * styles.length)];
         
         const sizes = ['small', 'medium', 'large'];
         const size = sizes[Math.floor(Math.random() * sizes.length)];
         
         const shipComponents = await this.shipFactory.createRandomShip(seed, { size: size, techLevel: 2, style: style });
+        this.shipComponents = shipComponents;
 
         // Generate Ship Name
         if (shipComponents.shipName) {
@@ -320,8 +321,9 @@ export class ShipShowcaseScene extends Scene {
                     mesh.material = this.hullMesh.material;
                 } else {
                     // Fallback to a standard solid material if no hull was generated
+                    const color = (this.shipComponents && this.shipComponents.livery && this.shipComponents.livery.color1) ? this.shipComponents.livery.color1 : 0x888888;
                     mesh.material = new THREE.MeshStandardMaterial({
-                        color: 0x888888, // A neutral grey
+                        color: color,
                         roughness: 0.8,
                         metalness: 0.5
                     });

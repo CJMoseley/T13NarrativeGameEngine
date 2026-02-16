@@ -125,7 +125,7 @@ class LoaderManager {
                                 }
 
                                 // Update the next scene in the queue with the generated data
-                                const nextSceneItem = this.viewManager.sceneQueue.find(i => i.name === 'StellarSystemScene');
+                                const nextSceneItem = this.viewManager.sceneQueue.find(i => i.name === 'LocalSpaceScene');
                                 if (nextSceneItem) {
                                     nextSceneItem.data.systemDetails = this.gameEngine.currentSystemDetails;
                                     nextSceneItem.data.planets = this.gameEngine.currentPlanets;
@@ -147,7 +147,7 @@ class LoaderManager {
                     // We need to prepare the data for the system view first
                     if (this.gameEngine.playerStartSystem) {
                         // Data already generated in 'Generate System' task
-                        this.viewManager.cueScene('StellarSystemScene', {
+                        this.viewManager.cueScene('LocalSpaceScene', {
                             systemDetails: this.gameEngine.currentSystemDetails,
                             planets: this.gameEngine.currentPlanets,
                             star: this.gameEngine.playerStartSystem,

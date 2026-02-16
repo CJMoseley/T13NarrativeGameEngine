@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import ProcGen from '/src/t13ne/procgen/ProcGen.js';
 import { SceneTools } from '/src/t13ne/core/SceneTools.js';
+import { ColourUtils } from '/src/t13ne/utils/ColourUtils.js';
 
 export class Planet extends THREE.Group {
     constructor(data, radius = 10, highDetail = false) {
@@ -20,12 +21,15 @@ export class Planet extends THREE.Group {
         let material;
         if (this.highDetail) {
             // Procedural Texture Generation for Orbit View
-            const texture = this._createProceduralTexture(this.data.color, prng);
+            const textures = this._createProceduralTextures(this.data, prng);
             material = new THREE.MeshStandardMaterial({
-                map: texture,
-                color: 0xffffff, // Ensure base color is white so texture shows
-                roughness: 0.8,
-                metalness: 0.1
+                map: textures.map,
+                roughnessMap: textures.roughness,
+                bumpMap: textures.map,
+                bumpScale: this.radius * 0.005, // Reduced bump scale to avoid "scribbles"
+                color: 0xffffff, 
+                metalness: 0.1,
+                roughness: 1.0
             });
         } else {
             // Simple Color for System View
@@ -45,27 +49,38 @@ export class Planet extends THREE.Group {
         surface.receiveShadow = true;
         this.add(surface);
 
-        // 2. Atmosphere (if applicable)
+        // 2. Clouds (Separate Layer)
+        if (this.highDetail && this.data.atmosphere && this.data.atmosphere !== 'None') {
+            const cloudGeo = new THREE.SphereGeometry(this.radius * 1.01, 64, 64);
+            const cloudTex = this._createCloudTexture(prng);
+            const cloudMat = new THREE.MeshStandardMaterial({
+                map: cloudTex,
+                transparent: true,
+                opacity: 0.8,
+                blending: THREE.NormalBlending,
+                side: THREE.DoubleSide,
+                depthWrite: false
+            });
+            const clouds = new THREE.Mesh(cloudGeo, cloudMat);
+            this.add(clouds);
+        }
+
+        // 3. Atmosphere Glow (Separate Layer)
         if (this.data.atmosphere && this.data.atmosphere !== 'None') {
-            const atmoGeo = new THREE.SphereGeometry(this.radius * 1.02, 64, 64);
-            let atmoMat;
+            const atmoGeo = new THREE.SphereGeometry(this.radius * 1.025, 64, 64);
+            // Determine atmosphere color based on type
+            let atmoColor = 0x88ccff; // Default Blue
+            if (this.data.type.includes('Gas')) atmoColor = 0xffcc88;
+            if (this.data.type.includes('Volcanic')) atmoColor = 0xffaa88;
+            if (this.data.type.includes('Ice')) atmoColor = 0xaaccff;
             
-            if (this.highDetail && SceneTools.createCloudTexture) {
-                atmoMat = new THREE.MeshStandardMaterial({
-                    map: SceneTools.createCloudTexture(),
-                    transparent: true,
-                    opacity: 0.4,
-                    blending: THREE.AdditiveBlending,
-                    side: THREE.DoubleSide
-                });
-            } else {
-                atmoMat = new THREE.MeshBasicMaterial({
-                    color: surface.material.color,
-                    transparent: true,
-                    opacity: 0.3,
-                    side: THREE.BackSide
-                });
-            }
+            const atmoMat = new THREE.MeshBasicMaterial({
+                color: atmoColor,
+                transparent: true,
+                opacity: 0.2,
+                side: THREE.BackSide,
+                blending: THREE.AdditiveBlending
+            });
             const atmo = new THREE.Mesh(atmoGeo, atmoMat);
             this.add(atmo);
         }
@@ -74,57 +89,147 @@ export class Planet extends THREE.Group {
         // Logic for rings can be added here based on data.type containing 'Ring'
     }
 
-    _createProceduralTexture(colorData, prng) {
+    _createProceduralTextures(planetData, prng) {
         const canvas = document.createElement('canvas');
-        canvas.width = 512;
-        canvas.height = 256;
+        canvas.width = 1024;
+        canvas.height = 512;
         const ctx = canvas.getContext('2d');
+
+        const roughCanvas = document.createElement('canvas');
+        roughCanvas.width = 1024;
+        roughCanvas.height = 512;
+        const roughCtx = roughCanvas.getContext('2d');
         
         // Base Color
         const baseColor = new THREE.Color();
+        const colorData = planetData.color;
+
         if (colorData && colorData.h !== undefined) {
-            baseColor.setHSL(colorData.h, colorData.s, Math.max(0.2, colorData.l)); // Ensure visibility
+            baseColor.setHSL(colorData.h, Math.max(0.6, colorData.s), Math.max(0.4, colorData.l)); // Balanced vividness
         } else if (colorData && colorData.r !== undefined && colorData.g !== undefined && colorData.b !== undefined) {
             baseColor.setRGB(colorData.r, colorData.g, colorData.b);
-        } else if (colorData) {
+        } else if (typeof colorData === 'number' || typeof colorData === 'string') {
             baseColor.set(colorData);
+        } else if (colorData && typeof colorData === 'object' && Object.keys(colorData).length > 0) {
+            baseColor.set(colorData);
+        } else if (planetData.name) {
+            // Generate from Name Frequency if no color provided
+            let freq = 0;
+            for(let i=0; i<planetData.name.length; i++) freq += planetData.name.charCodeAt(i);
+            freq = (freq % 300) + 400; // 400-700Hz range (Visible spectrum)
+            baseColor.set(ColourUtils.curvedFrequencyToHex(freq));
         } else {
             baseColor.setHex(0x228833);
         }
-        
-        ctx.fillStyle = `#${baseColor.getHexString()}`;
-        ctx.fillRect(0, 0, 512, 256);
 
-        // Add Noise/Texture
-        const imageData = ctx.getImageData(0, 0, 512, 256);
+        // Enforce Vibrancy check
+        const hsl = {};
+        baseColor.getHSL(hsl);
+        if (hsl.s < 0.5) hsl.s = 0.5 + prng.nextDouble() * 0.5;
+        if (hsl.l < 0.3) hsl.l = 0.3 + prng.nextDouble() * 0.4;
+        baseColor.setHSL(hsl.h, hsl.s, hsl.l);
+        
+        // Secondary color for variation (analogous)
+        const secColor = baseColor.clone().offsetHSL(0.1, 0, -0.1);
+
+        // Generate Coherent Noise Texture
+        const imageData = ctx.getImageData(0, 0, 1024, 512);
         const data = imageData.data;
-        for (let i = 0; i < data.length; i += 4) {
-            const noise = (prng.nextDouble() - 0.5) * 30;
-            data[i] = Math.min(255, Math.max(0, data[i] + noise));
-            data[i+1] = Math.min(255, Math.max(0, data[i+1] + noise));
-            data[i+2] = Math.min(255, Math.max(0, data[i+2] + noise));
+        const roughImageData = roughCtx.getImageData(0, 0, 1024, 512);
+        const rData = roughImageData.data;
+        
+        const noiseScale = 3.0; // Balanced scale
+        const detailScale = 16.0; // Finer detail
+
+        for (let y = 0; y < 512; y++) {
+            for (let x = 0; x < 1024; x++) {
+                // Map 2D grid to 3D sphere coordinates for seamless wrapping
+                const u = x / 1024;
+                const v = y / 512;
+                const theta = u * Math.PI * 2;
+                const phi = v * Math.PI;
+                
+                const sx = Math.sin(phi) * Math.cos(theta);
+                const sy = Math.sin(phi) * Math.sin(theta);
+                const sz = Math.cos(phi);
+
+                // Fractal Brownian Motion (FBM) for detailed terrain
+                let n = 0;
+                let amplitude = 1.0;
+                let frequency = noiseScale;
+                n += amplitude * ProcGen.simplex3D(sx * frequency, sy * frequency, sz * frequency);
+                amplitude *= 0.5; frequency *= 2.0;
+                n += amplitude * ProcGen.simplex3D(sx * frequency, sy * frequency, sz * frequency);
+                amplitude *= 0.5; frequency *= 2.0;
+                n += amplitude * ProcGen.simplex3D(sx * frequency, sy * frequency, sz * frequency);
+                
+                // Normalize roughly to 0-1
+                n = (n + 1.8) / 3.6; // Adjusted normalization for FBM range
+                n = Math.max(0, Math.min(1, n));
+
+                let r, g, b, roughness;
+
+                // Water Threshold (if terrestrial)
+                const isWater = (planetData.type.includes('Terrestrial') || planetData.type.includes('Ocean')) && n < 0.45;
+                
+                if (isWater) {
+                    // Ocean Color (Deep Blue/Green)
+                    r = 20; g = 60; b = 140;
+                    roughness = 0.1; // Shiny
+                } else {
+                    // Land Color
+                    r = (baseColor.r * n + secColor.r * (1 - n)) * 255;
+                    g = (baseColor.g * n + secColor.g * (1 - n)) * 255;
+                    b = (baseColor.b * n + secColor.b * (1 - n)) * 255;
+                    roughness = 0.9; // Rough
+                }
+
+                const idx = (y * 1024 + x) * 4;
+                data[idx] = r;
+                data[idx + 1] = g;
+                data[idx + 2] = b;
+                data[idx + 3] = 255;
+
+                rData[idx] = roughness * 255;
+                rData[idx + 1] = roughness * 255;
+                rData[idx + 2] = roughness * 255;
+                rData[idx + 3] = 255;
+            }
         }
         ctx.putImageData(imageData, 0, 0);
+        roughCtx.putImageData(roughImageData, 0, 0);
         
-        // Add Bands
-        for (let i = 0; i < 10; i++) {
-            const y = prng.nextDouble() * 256;
-            const h = prng.nextDouble() * 20 + 5;
-            ctx.fillStyle = `rgba(255, 255, 255, ${prng.nextDouble() * 0.1})`;
-            ctx.fillRect(0, y, 512, h);
-        }
+        // Add Ice Caps (Procedural)
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+        ctx.fillRect(0, 0, 1024, 60); // Top (Larger)
+        ctx.fillRect(0, 452, 1024, 60); // Bottom (Larger)
 
-        // Add Craters/Features
-        for (let i = 0; i < 15; i++) {
-            const x = prng.nextDouble() * 512;
-            const y = prng.nextDouble() * 256;
-            const r = prng.nextDouble() * 15 + 2;
-            ctx.beginPath();
-            ctx.arc(x, y, r, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
-            ctx.fill();
-        }
+        // Ice is smooth
+        roughCtx.fillStyle = 'rgba(20, 20, 20, 1.0)'; // Low roughness
+        roughCtx.fillRect(0, 0, 1024, 60);
+        roughCtx.fillRect(0, 452, 1024, 60);
         
+        return {
+            map: new THREE.CanvasTexture(canvas),
+            roughness: new THREE.CanvasTexture(roughCanvas)
+        };
+    }
+
+    _createCloudTexture(prng) {
+        const canvas = document.createElement('canvas');
+        canvas.width = 1024; canvas.height = 512;
+        const ctx = canvas.getContext('2d');
+        
+        // Transparent background
+        ctx.clearRect(0, 0, 1024, 512);
+        
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+        for(let i=0; i<200; i++) {
+            const x = prng.nextDouble() * 1024;
+            const y = prng.nextDouble() * 512;
+            const r = prng.nextDouble() * 40 + 10;
+            ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI*2); ctx.fill();
+        }
         return new THREE.CanvasTexture(canvas);
     }
 }

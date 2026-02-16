@@ -781,11 +781,12 @@ export class PlanetarySystemGenerator {
                 description: description,
                 radius: moonRadius,
                 orbitalDistance: moonDistance,
-                color: { h: moonSeed1, s: 0.2, l: 0.6 + moonSeed2 * 0.2 }
+                color: { h: moonSeed1, s: 0.7, l: 0.4 + moonSeed2 * 0.4 }
             });
         }
 
         Logger.end(funcName, `Generated ${moons.length} moons.`);
         return moons;
     }
+}   }
 }

@@ -29,7 +29,7 @@ export class GreebleGenerator {
             envMapIntensity: 1.0
         });
         this.supportMat = new THREE.MeshStandardMaterial({ color: 0x222222, roughness: 0.7, metalness: 0.4 });
-        this.decalMat = new THREE.MeshStandardMaterial({ transparent: true, opacity: 0.9, roughness: 0.8, metalness: 0.2, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -1 });
+        this.decalMat = new THREE.MeshStandardMaterial({ transparent: true, opacity: 0.9, roughness: 0.8, metalness: 0.2, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -1, alphaTest: 0.1 });
         this.lightRedMat = new THREE.MeshBasicMaterial({ color: 0xff0000 });
         this.lightGreenMat = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
         this.lightWhiteMat = new THREE.MeshBasicMaterial({ color: 0xffffff }); // Red/Orange for collectors
@@ -204,7 +204,7 @@ export class GreebleGenerator {
             const bbox = new THREE.Box3().setFromObject(objectToPlace);
             const size = new THREE.Vector3();
             bbox.getSize(size);
-            const radius = Math.max(size.x, size.z) * 0.6; // Slightly generous radius
+            const radius = Math.max(size.x, size.z) * 0.75; // Increased safety radius to prevent intersections
 
             // Check against occupied zones
             for (const zone of this.occupiedZones) {
@@ -653,7 +653,7 @@ export class GreebleGenerator {
 
                 if (['cylinder', 'cone', 'capsule', 'prism', 'truncatedCone'].includes(comp.type)) {
                     refLength = (d.height || d.length || 1) * s.y;
-                    refWidth = (d.radiusTop !== undefined ? d.radiusTop : (d.radius || 0.5)) * 2 * s.x;
+                    refWidth = (d.radiusTop !== undefined ? d.radiusTop : (d.radius || 0.5)) * 1.0 * s.x;
                     refDepth = (d.radiusBottom !== undefined ? d.radiusBottom : (d.radius || 0.5)) * 2 * s.z;
                 } else {
                     refLength = (d.length || d.rootChord || d.depth || 1) * s.z;
@@ -758,7 +758,7 @@ export class GreebleGenerator {
                 // 1. Try Top (World Y) - Best for most ships
                 placed = this.placeOnSurface(hullMesh, greebleGroup, pos.clone().add(new THREE.Vector3(0, 100, 0)), new THREE.Vector3(0, -1, 0), dome, true, offset - 0.2, isCentral, effectiveSymmetry, radialAxis, effectiveRadialCount, null, 'forward', true);
                 
-                // 2. Try Front (World Z) - Good for forward facing cockpits
+                 // 2. Try Front (World Z) - Good for forward facing cockpits
                 if (!placed) {
                     placed = this.placeOnSurface(hullMesh, greebleGroup, pos.clone().add(new THREE.Vector3(0, 0, 100)), new THREE.Vector3(0, 0, -1), dome, true, offset - 0.2, isCentral, effectiveSymmetry, radialAxis, effectiveRadialCount, null, 'up', true);
                 }
@@ -1052,6 +1052,9 @@ export class GreebleGenerator {
                     nozzle.position.copy(pos).add(exhaustDir.clone().multiplyScalar(offset));
                     console.warn(`GreebleGenerator: No hull surface found for thruster at ${pos.x},${pos.y},${pos.z}. Placing at calculated rear offset.`);
                 }
+
+                // Register thruster position to prevent other greebles from intersecting it
+                this.occupiedZones.push({ pos: nozzle.position.clone(), radius: rearRadius * 1.2 });
                 
                 if (shapeType !== 2) {
                     const glowGeo = new THREE.SphereGeometry(rearRadius * 0.25, 16, 16);

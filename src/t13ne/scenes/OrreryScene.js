@@ -3,6 +3,7 @@ import Logger from '../core/Logger.js';
 import { Scene } from '../core/Scene.js';
 import { SceneTools } from '../core/SceneTools.js';
 import ProcGen from '../procgen/ProcGen.js';
+import { ColourUtils } from '/src/t13ne/utils/ColourUtils.js';
 
 export class OrreryScene extends Scene {
     constructor(viewManager, sceneData) {
@@ -190,12 +191,12 @@ export class OrreryScene extends Scene {
 
     createCameraMarker() {
         // Create a Red Spot marker as requested
-        const geometry = new THREE.SphereGeometry(20, 16, 16);
+        const geometry = new THREE.SphereGeometry(40, 16, 16); // Increased size for visibility
         const material = new THREE.MeshBasicMaterial({ 
             color: 0xff0000, // Red for visibility
             depthTest: false, // Always render on top of other objects
             transparent: true,
-            opacity: 0.8
+            opacity: 1.0
         }); 
         
         this.cameraMarker = new THREE.Mesh(geometry, material);
@@ -463,8 +464,19 @@ export class OrreryScene extends Scene {
             // 3. Planet Mesh (Visual Sphere)
             const geometry = new THREE.SphereGeometry(size, 32, 32);
             let color = new THREE.Color(0x888888);
-            if (planet.color) {
-                color.setHSL(planet.color.h, planet.color.s, planet.color.l);
+            
+            // Robust color check
+            if (planet.color && (planet.color.isColor || typeof planet.color === 'number' || (typeof planet.color === 'string' && planet.color.length > 0) || (typeof planet.color === 'object' && Object.keys(planet.color).length > 0))) {
+                if (planet.color.isColor) color.copy(planet.color);
+                else if (planet.color.h !== undefined) color.setHSL(planet.color.h, planet.color.s, planet.color.l);
+                else if (planet.color.r !== undefined) color.setRGB(planet.color.r, planet.color.g, planet.color.b);
+                else color.set(planet.color); 
+            } else if (planet.name) {
+                 // Fallback using name frequency
+                 let freq = 0;
+                 for(let i=0; i<planet.name.length; i++) freq += planet.name.charCodeAt(i);
+                 freq = (freq % 300) + 400; 
+                 color.set(ColourUtils.curvedFrequencyToHex(freq));
             }
             
             const material = new THREE.MeshStandardMaterial({

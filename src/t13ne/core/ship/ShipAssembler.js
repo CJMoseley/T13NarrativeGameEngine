@@ -77,19 +77,20 @@ export class ShipAssembler {
         });
 
         let hullGeometry = this.hullGenerator.generate(shipComponents, components.styleConfig || styleConfig);
+        
         const hullMaterial = new THREE.ShaderMaterial({
             uniforms: THREE.UniformsUtils.clone(racingLiveryShader.uniforms),
             vertexShader: racingLiveryShader.vertexShader,
-            fragmentShader: racingLiveryShader.fragmentShader
+            fragmentShader: racingLiveryShader.fragmentShader,
+            vertexColors: true
         });
+
         // Randomize livery
         const livery = components.livery || {};
         const prng = mulberry32(components.seed || 0);
         hullMaterial.uniforms.noiseSeed.value = livery.noiseSeed !== undefined ? livery.noiseSeed : prng() * 100;
         hullMaterial.uniforms.patternType.value = livery.patternType !== undefined ? livery.patternType : Math.floor(prng() * 3);
         hullMaterial.uniforms.color1.value.setHex(livery.color1 !== undefined ? livery.color1 : Math.floor(prng() * 0xffffff));
-        if (livery.color2 !== undefined) hullMaterial.uniforms.color2.value.setHex(livery.color2);
-        if (livery.color3 !== undefined) hullMaterial.uniforms.color3.value.setHex(livery.color3);
 
         let hullMesh = null;
         if (hullGeometry && hullGeometry.attributes.position && hullGeometry.attributes.position.count > 0) {
@@ -152,11 +153,9 @@ export class ShipAssembler {
 
             // Apply Geometric Greebling (Rivets, Antennae, Vents, etc.)
             const greebles = this.greebleGenerator.generate(hullMesh, shipComponents, styleConfig, components.symmetryType, components.radialAxis, components.radialCount, components.hullType, components.seed);
-            shipGroup.add(greebles);
-             shipGroup.add(greebles);
-
+            
             // Apply Decals (Logos, Text)
-            const decals = this.greebleGenerator.generateDecals(hullMesh, shipComponents, this.glyphGenerator, components.shipName, components.corporation, components.seed);
+            const decals = this.greebleGenerator.generateDecals(hullMesh, shipComponents, this.glyphGenerator, components.shipName, components.corporation, components.seed, components.livery);
             shipGroup.add(decals);
         }
 
@@ -165,8 +164,9 @@ export class ShipAssembler {
             if (hullMesh && styleConfig.method !== 'SKELETON') {
                 mesh.visible = false;
             } else {
+                const color = (components.livery && components.livery.color1) ? components.livery.color1 : 0x555555;
                 mesh.material = new THREE.MeshStandardMaterial({
-                    color: 0x555555,
+                    color: color,
                     roughness: 0.9,
                     metalness: 0.4,
                     flatShading: true,
@@ -336,7 +336,7 @@ export class ShipAssembler {
             const structuralComponents = components.filter(c => !(getCompProps(c).usage || '').toLowerCase().includes('carve'));
             if (structuralComponents.length > 0) {
                 for (const comp of structuralComponents) {
-                    const { type, dims, pos, rot } = getCompProps(comp);
+                    const { type, dims, pos, rot, usage } = getCompProps(comp);
                     const mesh = this.componentFactory.createProxy(type, dims);
                     mesh.position.set(...pos);
                     if (rot) mesh.rotation.set(...rot);
@@ -345,6 +345,27 @@ export class ShipAssembler {
                         else mesh.scale.copy(comp.scale);
                     }
                     mesh.updateMatrix();
+
+                    // Apply Palette UVs based on component usage
+                    let colorIndex = 0;
+                    if (usage) {
+                        const u = usage.toLowerCase();
+                        if (u.includes('engine') || u.includes('thruster')) colorIndex = 3;
+                        else if (u.includes('wing') || u.includes('fin')) colorIndex = 1;
+                        else if (u.includes('cockpit') || u.includes('bridge')) colorIndex = 2;
+                        else if (u.includes('struct') || u.includes('strut') || u.includes('truss')) colorIndex = 4;
+                        else colorIndex = 0;
+                    }
+                    
+                    const uvAttribute = mesh.geometry.attributes.uv;
+                    if (uvAttribute) {
+                        const u = (colorIndex + 0.5) / 8;
+                        for (let i = 0; i < uvAttribute.count; i++) {
+                            uvAttribute.setXY(i, u, 0.5);
+                        }
+                        uvAttribute.needsUpdate = true;
+                    }
+
                     const compCSG = CSG.fromMesh(mesh);
                     baseCSG = baseCSG ? baseCSG.union(compCSG) : compCSG;
                     await new Promise(r => setTimeout(r, 0)); // Yield
@@ -382,16 +403,18 @@ export class ShipAssembler {
             else if (effectiveStyle.method === 'MINING') selectedShader = miningLiveryShader;
             else if (effectiveStyle.method === 'METALLIC') selectedShader = metallicLiveryShader;
 
+            const livery = components.livery || {};
+
             const hullMaterial = new THREE.ShaderMaterial({
                 uniforms: THREE.UniformsUtils.clone(selectedShader.uniforms),
                 vertexShader: selectedShader.vertexShader,
                 fragmentShader: selectedShader.fragmentShader,
                 extensions: { derivatives: true },
-                lights: true
+                lights: true,
+                vertexColors: true
             });
 
             // Livery application
-            const livery = components.livery || {};
             const prng = mulberry32(components.seed || 0);
             if (hullMaterial.uniforms.noiseSeed) hullMaterial.uniforms.noiseSeed.value = livery.noiseSeed !== undefined ? livery.noiseSeed : prng() * 100;
             if (hullMaterial.uniforms.patternType) hullMaterial.uniforms.patternType.value = livery.patternType !== undefined ? livery.patternType : Math.floor(prng() * 3);
@@ -432,7 +455,7 @@ export class ShipAssembler {
                 shipGroup.add(greebles);
 
                 // Apply Decals
-                const decals = this.greebleGenerator.generateDecals(hullMesh, shipComponents, this.glyphGenerator, components.shipName, components.corporation, components.seed);
+                const decals = this.greebleGenerator.generateDecals(hullMesh, shipComponents, this.glyphGenerator, components.shipName, components.corporation, components.seed, components.livery);
                 shipGroup.add(decals);
             } catch (e) {
                 console.error("ShipAssembler: Greeble generation failed.", e);

@@ -9,6 +9,31 @@ export const generateFreighter = (context) => {
     attachComponent('fuselage_spine', [0, 0, 0], [Math.PI/2, 0, 0], 'box', 
         {width: 1.5, height: trussLen, depth: 1.5}, 'NONE');
     
+    // Spinal Corridor (Cylindrical core)
+    attachComponent('spinal_corridor', [0, 0, 0], [Math.PI/2, 0, 0], 'cylinder', 
+        { radiusTop: 0.6, radiusBottom: 0.6, height: trussLen + 1.0 }, 'NONE');
+
+    // Strut Lattice (Box of struts around the spine)
+    const frameCount = Math.floor(trussLen / 4.0) + 2;
+    const frameSpacing = trussLen / (frameCount - 1);
+    const frameWidth = 4.5; 
+    const frameHeight = 4.5; 
+
+    for (let i = 0; i < frameCount; i++) {
+        const z = -trussLen/2 + i * frameSpacing;
+        // Cross Frames
+        attachComponent(`strut_frame_T_${i}`, [0, frameHeight/2, z], [0, 0, Math.PI/2], 'box', {width: 0.3, height: frameWidth, depth: 0.3}, 'NONE');
+        attachComponent(`strut_frame_B_${i}`, [0, -frameHeight/2, z], [0, 0, Math.PI/2], 'box', {width: 0.3, height: frameWidth, depth: 0.3}, 'NONE');
+        attachComponent(`strut_frame_L_${i}`, [-frameWidth/2, 0, z], [0, 0, 0], 'box', {width: 0.3, height: frameHeight, depth: 0.3}, 'NONE');
+        attachComponent(`strut_frame_R_${i}`, [frameWidth/2, 0, z], [0, 0, 0], 'box', {width: 0.3, height: frameHeight, depth: 0.3}, 'NONE');
+    }
+    // Longitudinal Struts (Corners)
+    const longStrutDims = {width: 0.3, height: trussLen, depth: 0.3};
+    attachComponent('strut_long_TL', [-frameWidth/2, frameHeight/2, 0], [Math.PI/2, 0, 0], 'box', longStrutDims, 'NONE');
+    attachComponent('strut_long_TR', [frameWidth/2, frameHeight/2, 0], [Math.PI/2, 0, 0], 'box', longStrutDims, 'NONE');
+    attachComponent('strut_long_BL', [-frameWidth/2, -frameHeight/2, 0], [Math.PI/2, 0, 0], 'box', longStrutDims, 'NONE');
+    attachComponent('strut_long_BR', [frameWidth/2, -frameHeight/2, 0], [Math.PI/2, 0, 0], 'box', longStrutDims, 'NONE');
+
     // Engine Block at rear - Overlap by 0.5 to ensure solid connection
     attachComponent('engine_block', [0, 0, -trussLen/2 - 1.5 + 0.5], [0, 0, 0], 'box', 
         {width: 5, height: 4, depth: 3}, 'NONE');
@@ -119,7 +144,7 @@ export const generateSideCockpit = (context, parentCompUsage, side = 'random', p
     let maxVol = 0;
     const candidates = components.filter(c => {
         const u = (c.usage || '').toLowerCase();
-        return u.includes('fuselage') || u.includes('hull') || u.includes('spine') || u.includes('monolith') || u.includes('ring') || u.includes('rim') || u.includes('torus');
+        return u.includes('fuselage') || u.includes('hull') || u.includes('spine') || u.includes('monolith') || u.includes('ring') || u.includes('rim') || u.includes('torus') || u.includes('bio') || u.includes('node') || u.includes('segment') || u.includes('fractal');
     });
     candidates.forEach(c => {
         const d = c.dims;
@@ -142,7 +167,11 @@ export const generateSideCockpit = (context, parentCompUsage, side = 'random', p
     const angleRad = angleDeg * (Math.PI / 180);
     const slopeY = (random() > 0.8) ? (random() - 0.5) * 0.5 : 0;
 
-    const armLength = radius * (1.5 + random() * 0.5); // Distance from center of hull to center of cockpit rear sphere
+    // Calculate dimensions early to determine arm length
+    const corridorRadius = height * 0.25;
+    const cockpitLength = corridorRadius * 4.0;
+
+    const armLength = radius + (cockpitLength * (0.2 + random() * 0.3)); // Reduced offset to keep it closer
     
     const dirX = Math.cos(angleRad) * cockpitSide;
     const dirY = slopeY;
@@ -163,8 +192,9 @@ export const generateSideCockpit = (context, parentCompUsage, side = 'random', p
         if (hit) {
              startPoint.copy(hit);
         } else {
-            // Fallback: intersection with estimated radius
-            startPoint = new THREE.Vector3(targetX, targetY, targetZ).sub(rayDir.multiplyScalar(radius));
+            // Fallback: intersection with estimated radius.
+            // We multiply by 0.5 to embed deeply into the volume if we missed the surface, ensuring connection.
+            startPoint = new THREE.Vector3(targetX, targetY, targetZ).sub(rayDir.multiplyScalar(radius * 0.5));
         }
     }
 
@@ -172,7 +202,6 @@ export const generateSideCockpit = (context, parentCompUsage, side = 'random', p
     const corridorVec = new THREE.Vector3().subVectors(cockpitPos, startPoint);
     const dist = corridorVec.length();
     
-    const corridorRadius = height * 0.25;
     const corridorLen = dist;
     
     // Embed into hull slightly
@@ -194,74 +223,225 @@ export const generateSideCockpit = (context, parentCompUsage, side = 'random', p
     attachComponent('fuselage_corridor', [corridorPos.x, corridorPos.y, corridorPos.z], [euler.x, euler.y, euler.z], 'cylinder', 
         { radiusTop: corridorRadius, radiusBottom: corridorRadius, height: cylHeight });
     
+    // Add Struts if corridor is long
+    if (corridorLen > corridorRadius * 2.0) {
+        const numStruts = Math.ceil(corridorLen / (corridorRadius * 3));
+        for (let i = 1; i < numStruts; i++) {
+            const t = i / numStruts;
+            // Interpolate position along the visual corridor (excluding embed depth)
+            const strutPos = new THREE.Vector3().lerpVectors(startVisual, endVisual, t);
+            
+            // Add a structural collar/brace
+            attachComponent('structural_collar', [strutPos.x, strutPos.y, strutPos.z], [euler.x, euler.y, euler.z], 'cylinder', 
+                { radiusTop: corridorRadius * 1.3, radiusBottom: corridorRadius * 1.3, height: corridorRadius * 0.5 }, 'NONE');
+        }
+    }
+
     // 4. Place Cockpit (Capsule)
     // Aligned to Z axis (Forward).
     // Rear Sphere Center at cockpitPos.
     const cockpitRadius = corridorRadius * 1.6; // Increased to 1.6x to ensure corridor cap (1.414x at corners) is contained
-
-    const cockpitLength = corridorRadius * 4.0; // Length of cylindrical part
     
     // Capsule Center Z = RearSphereZ + length/2
     const offsetZ = (cockpitLength / 2);
-    
+
     attachComponent('cockpit', [cockpitPos.x, cockpitPos.y, cockpitPos.z + offsetZ], [Math.PI/2, 0, 0], 'capsule', 
         { radius: cockpitRadius, length: cockpitLength });
 
     return { cockpitPlaced: true, radius: cockpitRadius, length: cockpitLength };
 };
 
+
 export const generateBlob = (context) => {
-    const { spineLength, random, attachComponent, components, getSurfacePoint } = context;
+    const { spineLength, random, attachComponent } = context;
     
-    // Millennium Falcon style: Main hull + Mandibles + Offset Cockpit
-    const mainRadius = spineLength * 0.6;
-    const mainHeight = 2.5;
+    // Scale factor: User's 100 units = spineLength
+    const unit = spineLength / 100;
 
-	
-    // Main Body
-    attachComponent('fuselage_main', [0, 0, 0], [0, 0, 0], 'cylinder',
-        { radiusTop: mainRadius, radiusBottom: mainRadius, height: mainHeight, radialSegments: 32 }, 'NONE');
-	
-    // Mandibles (Front) - Tapered
-    const mandLen = mainRadius * 0.85; // Shorter than radius
-    const mandWidth = mainRadius * 0.4;
-    const mandOffset = mainRadius * 0.4; // Slightly wider stance
-    const mandHeight = mainHeight; // Match saucer thickness
+    // Variation helper: +/- 10%
+    const vary = (val) => val * (0.9 + random() * 0.2);
 
-    // Tapered Mandibles (Prism) - 4 segments (Diamond profile)
-    // Rotate X 90 to lay flat.
-    // radiusTop is Front (narrower), radiusBottom is Back (wider).
-    const mFrontW = mandWidth * 0.6;
-    const mBackW = mandWidth;
-    const zFront = mainRadius * 0.8; // Embed slightly
+    // Feature Flags - Mix and Match
+    const useNewHull = random() > 0.5;
+    const useNewMandibles = random() > 0.5;
+    const useNewCockpit = random() > 0.5;
+    const useNewEngine = random() > 0.5;
 
-    // Add two mandibles manually since we might be in ASYMMETRICAL mode globally
-    attachComponent('mandible_L', [-mandOffset, 0, zFront + mandLen / 2], [Math.PI / 2, 0, 0], 'prism',
-        { radiusTop: mFrontW / 2, radiusBottom: mBackW / 2, height: mandLen, segments: 4 }, 'NONE');
-    attachComponent('mandible_R', [mandOffset, 0, zFront + mandLen / 2], [Math.PI / 2, 0, 0], 'prism',
-        { radiusTop: mFrontW / 2, radiusBottom: mBackW / 2, height: mandLen, segments: 4 }, 'NONE');
+    let hullRadius, hullHeight;
 
-    // Engine Strip (Rear) - Carve and Thrusters
-    // Carve out the back
-    const carveDepth = mainRadius * 0.2;
-    attachComponent('carve_engine_strip', [0, 0, -mainRadius], [0, 0, 0], 'box',
-        { width: mainRadius * 1.5, height: mainHeight * 1.1, depth: carveDepth }, 'NONE');
+    // 1. The Main Hull
+    if (useNewHull) {
+        // Detailed Geometric Construction (Lenticular Disk)
+        hullRadius = vary(32 * unit);
+        const rimHeight = vary(4 * unit);
+        const coneHeight = vary(4 * unit); // Height of the cone part (from rim to peak)
+        hullHeight = rimHeight + coneHeight * 2;
+        
+        // Rim (The Trench)
+        attachComponent('fuselage_rim', [0, 0, 0], [0, 0, 0], 'cylinder', 
+            { radiusTop: hullRadius, radiusBottom: hullRadius, height: rimHeight, radialSegments: 32 }, 'NONE');
+            
+        // Upper Hull (Cone)
+        attachComponent('fuselage_upper', [0, rimHeight/2 + coneHeight/2, 0], [0, 0, 0], 'cone',
+            { radius: hullRadius, height: coneHeight, radialSegments: 32 }, 'NONE');
 
-    // Add Thrusters in the gap
-    const numThrusters = 8;
-    const stripW = mainRadius * 1.2;
-    const step = stripW / (numThrusters - 1);
-    const startX = -stripW / 2;
+        // Lower Hull (Inverted Cone)
+        attachComponent('fuselage_lower', [0, -(rimHeight/2 + coneHeight/2), 0], [Math.PI, 0, 0], 'cone',
+            { radius: hullRadius, height: coneHeight, radialSegments: 32 }, 'NONE');
 
-    for (let i = 0; i < numThrusters; i++) {
-        const tx = startX + i * step;
-        attachComponent(`thruster_strip_${i}`, [tx, 0, -mainRadius + carveDepth * 0.5], [Math.PI / 2, 0, 0], 'cylinder',
-            { radiusTop: 0.25, radiusBottom: 0.4, height: 0.8 }, 'NONE');
+        // Turret Wells (Flattening the peaks)
+        const wellRadius = vary(6 * unit);
+        const wellDepth = 2 * unit;
+        const peakY = rimHeight/2 + coneHeight;
+        
+        // Carve out the tips
+        attachComponent('carve_turret_well_top', [0, peakY, 0], [0, 0, 0], 'cylinder', 
+            { radiusTop: wellRadius, radiusBottom: wellRadius, height: wellDepth }, 'NONE');
+        attachComponent('carve_turret_well_bottom', [0, -peakY, 0], [0, 0, 0], 'cylinder', 
+            { radiusTop: wellRadius, radiusBottom: wellRadius, height: wellDepth }, 'NONE');
+
+        // Place Turret Mounts in the wells
+        attachComponent('turret_mount_top', [0, peakY - wellDepth, 0], [0, 0, 0], 'cylinder', 
+            { radiusTop: wellRadius * 0.8, radiusBottom: wellRadius * 0.8, height: 0.5 * unit }, 'NONE');
+        attachComponent('turret_mount_bottom', [0, -peakY + wellDepth, 0], [Math.PI, 0, 0], 'cylinder', 
+            { radiusTop: wellRadius * 0.8, radiusBottom: wellRadius * 0.8, height: 0.5 * unit }, 'NONE');
+    } else {
+        // Simple Procedural Hull (Cylinder)
+        hullRadius = vary(45 * unit); // Slightly larger to match presence of detailed hull
+        hullHeight = vary(12 * unit);
+        
+        attachComponent('fuselage_main', [0, 0, 0], [0, 0, 0], 'cylinder',
+            { radiusTop: hullRadius, radiusBottom: hullRadius, height: hullHeight, radialSegments: 32 }, 'NONE');
     }
 
-    // Cockpit (Side Offset) - Use the new unified function
-    const cockpitSide = random() > 0.5 ? 'right' : 'left';
-    generateSideCockpit(context, 'fuselage_main', cockpitSide, mainRadius, mainHeight);
+    // 2. The Mandibles
+    if (useNewMandibles) {
+        // Notch Cut-Out (Trapezoidal/Box style)
+        const notchWidth = vary(hullRadius * 0.5);
+        const notchDepth = vary(hullRadius * 0.8);
+        const notchZ = hullRadius * 0.5; // Forward
+        attachComponent('carve_mandible_notch', [0, 0, notchZ], [0, 0, 0], 'box', 
+            { width: notchWidth, height: hullHeight * 3, depth: notchDepth }, 'NONE');
+
+        // Mandibles
+        const mandWidth = vary(hullRadius * 0.25);
+        const mandLength = vary(hullRadius * 1.4); 
+        const mandZ = hullRadius * 0.8;
+        const mandX = hullRadius * 0.35;
+        
+        attachComponent('mandible_L', [-mandX, 0, mandZ], [0, 0, 0], 'box', 
+            { width: mandWidth, height: hullHeight * 0.8, depth: mandLength }, 'NONE');
+        attachComponent('mandible_R', [mandX, 0, mandZ], [0, 0, 0], 'box', 
+            { width: mandWidth, height: hullHeight * 0.8, depth: mandLength }, 'NONE');
+    } else {
+        // Classic Tapered Prisms
+        const mandLen = vary(hullRadius * 0.85);
+        const mandWidth = vary(hullRadius * 0.4);
+        const mandOffset = hullRadius * 0.4;
+        const mFrontW = mandWidth * 0.6;
+        const mBackW = mandWidth;
+        const zFront = hullRadius * 0.8;
+
+        attachComponent('mandible_L', [-mandOffset, 0, zFront + mandLen / 2], [Math.PI / 2, 0, 0], 'prism',
+            { radiusTop: mFrontW / 2, radiusBottom: mBackW / 2, height: mandLen, segments: 4 }, 'NONE');
+        attachComponent('mandible_R', [mandOffset, 0, zFront + mandLen / 2], [Math.PI / 2, 0, 0], 'prism',
+            { radiusTop: mFrontW / 2, radiusBottom: mBackW / 2, height: mandLen, segments: 4 }, 'NONE');
+    }
+
+    // 3. Cockpit Access Arm
+    // Falcon-style Cockpit Assembly (Starboard Side)
+    const tubeRadius = hullHeight * 0.35; 
+    // Length needs to be enough to get from hull edge to forward position
+    // User map: (25,0,10) to (35,0,30). Length = sqrt(10^2 + 20^2) = 22.3.
+    // Relative to hullRadius ~45. So length is ~0.5 * hullRadius.
+    const tubeLen = hullRadius * 0.6; 
+    
+    // Passage Tube: Emerges from Starboard (Right/+X), angled forward (2 o'clock)
+    // User suggests vector (10, 0, 20) -> (1, 0, 2).
+    const tubeDir = new THREE.Vector3(0.5, 0, 1.0).normalize(); 
+    
+    // Start near hull edge at roughly 2 o'clock
+    const startPos = new THREE.Vector3(hullRadius * 0.5, 0, hullRadius * 0.2);
+    const endPos = startPos.clone().add(tubeDir.clone().multiplyScalar(tubeLen));
+    const midPos = new THREE.Vector3().addVectors(startPos, endPos).multiplyScalar(0.5);
+    
+    // Orientation (Align Cylinder Y with Direction)
+    const up = new THREE.Vector3(0, 1, 0);
+    const qTube = new THREE.Quaternion().setFromUnitVectors(up, tubeDir);
+    const eTube = new THREE.Euler().setFromQuaternion(qTube);
+
+    attachComponent('fuselage_cockpit_tube', [midPos.x, midPos.y, midPos.z], [eTube.x, eTube.y, eTube.z], 'cylinder', 
+        { radiusTop: tubeRadius, radiusBottom: tubeRadius, height: tubeLen }, 'NONE');
+
+    // Carve Notch for Tube
+    // A bite out of the saucer at the start position
+    attachComponent('carve_cockpit_notch', [startPos.x, 0, startPos.z], [0, eTube.y, 0], 'box', 
+        { width: tubeRadius * 2.2, height: hullHeight * 1.2, depth: tubeRadius * 4.0 }, 'NONE');
+
+    // Cockpit Pod (Truncated Cone)
+    const cockpitLen = tubeRadius * 2.5;
+    const cockpitRadiusBack = tubeRadius * 1.2;
+    const cockpitRadiusFront = tubeRadius * 0.9;
+    
+    // Direction: Forward (+Z), slightly inward (towards -X) as per text description
+    const cockpitDir = new THREE.Vector3(-0.1, 0, 1).normalize();
+    
+    // Position: Attached to end of tube
+    // Center of cockpit is endPos + half length * direction
+    const cockpitPos = endPos.clone().add(cockpitDir.clone().multiplyScalar(cockpitLen * 0.4));
+    
+    const qCockpit = new THREE.Quaternion().setFromUnitVectors(up, cockpitDir);
+    const eCockpit = new THREE.Euler().setFromQuaternion(qCockpit);
+
+    attachComponent('cockpit', [cockpitPos.x, cockpitPos.y, cockpitPos.z], [eCockpit.x, eCockpit.y, eCockpit.z], 'cylinder', 
+        { radiusTop: cockpitRadiusFront, radiusBottom: cockpitRadiusBack, height: cockpitLen, radialSegments: 16 }, 'NONE');
+
+    // Port Side Docking Port (Flush)
+    const portX = -hullRadius * 0.8; 
+    const portZ = hullRadius * 0.2;
+    attachComponent('docking_port', [portX, 0, portZ], [0, 0, Math.PI/2], 'cylinder', 
+        { radiusTop: tubeRadius * 0.8, radiusBottom: tubeRadius * 0.8, height: 1.0 }, 'NONE');
+
+    // 4. Engine Vent
+    if (useNewEngine) {
+        const engineZ = -hullRadius * 0.85;
+        const engineWidth = vary(hullRadius * 1.0);
+        
+        // Carve the rear arc
+        attachComponent('carve_engine_arc', [0, 0, engineZ], [0, 0, 0], 'box', 
+            { width: engineWidth, height: hullHeight * 1.2, depth: 5 * unit }, 'NONE');
+        
+        // Add Engine Emitters
+        const numThrusters = 8;
+        const step = engineWidth / numThrusters;
+        for (let i = 0; i < numThrusters; i++) {
+            const x = -engineWidth/2 + step/2 + i*step;
+            attachComponent(`thruster_${i}`, [x, 0, engineZ], [Math.PI/2, 0, 0], 'cylinder', 
+                { radiusTop: 1.5 * unit, radiusBottom: 2 * unit, height: 2 * unit }, 'NONE');
+        }
+    } else {
+        // Classic Engine Strip
+        const carveDepth = hullRadius * 0.2;
+        const stripZ = -hullRadius * 0.85;
+        attachComponent('carve_engine_strip', [0, 0, stripZ], [0, 0, 0], 'box',
+            { width: hullRadius * 1.1, height: hullHeight * 1.1, depth: carveDepth }, 'NONE');
+
+        const numThrusters = 8;
+        const stripW = hullRadius * 0.9;
+        const step = stripW / (numThrusters - 1);
+        const startX = -stripW / 2;
+        for (let i = 0; i < numThrusters; i++) {
+            const tx = startX + i * step;
+            attachComponent(`thruster_strip_${i}`, [tx, 0, stripZ + carveDepth * 0.2], [Math.PI / 2, 0, 0], 'cylinder',
+                { radiusTop: 0.25, radiusBottom: 0.4, height: 0.8 }, 'NONE');
+        }
+    }
+
+    // 5. Docking Rings (Optional Extra)
+    if (random() > 0.5) {
+        attachComponent('docking_ring_port', [-hullRadius, 0, 0], [0, 0, Math.PI/2], 'cylinder', 
+            { radiusTop: 3 * unit, radiusBottom: 3 * unit, height: 2 * unit }, 'NONE');
+    }
 
     return { cockpitPlaced: true };
 };
