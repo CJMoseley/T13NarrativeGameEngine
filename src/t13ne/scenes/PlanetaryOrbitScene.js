@@ -493,16 +493,6 @@ export class PlanetaryOrbitScene extends Scene {
             <div style="color:#aaccff; font-size:0.85em; margin-bottom:10px;">SOCIETY: ${society}</div>
         `;
         
-        // Procedural Avatar Canvas
-        const avCanvas = document.createElement('canvas');
-        avCanvas.width = 80; avCanvas.height = 80;
-        avCanvas.style.border = '1px solid #005588';
-        avCanvas.style.float = 'left';
-        avCanvas.style.marginRight = '15px';
-        avCanvas.style.marginBottom = '5px';
-        avCanvas.style.backgroundColor = '#050510';
-        avCanvas.style.borderRadius = '4px';
-        const avCtx = avCanvas.getContext('2d');
         // Procedural Avatar Container (Replaces Canvas)
         const avContainer = document.createElement('div');
         avContainer.style.width = '80px'; 
@@ -516,31 +506,7 @@ export class PlanetaryOrbitScene extends Scene {
         avContainer.style.overflow = 'hidden';
         avContainer.innerHTML = '<div style="color:#00ffff;font-size:10px;text-align:center;line-height:80px;">Scanning...</div>';
         
-        // Draw Alien Face (Enhanced)
-        // Use species color if available
-        let baseColor = `hsl(${Math.floor(prng.nextDouble() * 360)}, 60%, 40%)`;
-        if (this.systemData.speciesCore && this.systemData.speciesCore.color) {
-             // Assuming color is hex string or number
-             const c = new THREE.Color(this.systemData.speciesCore.color);
-             const hsl = {};
-             c.getHSL(hsl);
-             baseColor = `hsl(${Math.floor(hsl.h * 360)}, ${Math.floor(hsl.s * 100)}%, ${Math.floor(hsl.l * 100)}%)`;
-        }
-
-        avCtx.fillStyle = baseColor;
-        avCtx.beginPath();
-        avCtx.ellipse(40, 40, 25, 35, 0, 0, Math.PI * 2);
-        avCtx.fill();
-        // Eyes
-        avCtx.fillStyle = '#000'; // Sclera
-        avCtx.beginPath(); avCtx.ellipse(30, 35, 8, 5, 0.2, 0, Math.PI*2); avCtx.fill();
-        avCtx.beginPath(); avCtx.ellipse(50, 35, 8, 5, -0.2, 0, Math.PI*2); avCtx.fill();
-        avCtx.fillStyle = '#fff'; // Pupil
-        avCtx.beginPath(); avCtx.arc(30, 35, 3, 0, Math.PI*2); avCtx.fill();
-        avCtx.beginPath(); avCtx.arc(50, 35, 3, 0, Math.PI*2); avCtx.fill();
         speciesDiv.insertBefore(avContainer, speciesDiv.children[2] || null); // Insert after headers
-        
-        speciesDiv.insertBefore(avCanvas, speciesDiv.children[2] || null); // Insert after headers
         
         const loreTextDiv = document.createElement('div');
         loreTextDiv.style.fontSize = '0.85em';
@@ -610,7 +576,6 @@ export class PlanetaryOrbitScene extends Scene {
         setTimeout(() => this.generateAvatarSnapshot(avContainer), 200);
     }
 
-    async generateSurfaceSnapshot(container) {
     async generateSurfaceSnapshot(container, attempt = 0) {
         const width = 280;
         const height = 150;
@@ -695,8 +660,6 @@ export class PlanetaryOrbitScene extends Scene {
                 if (o.material) o.material.dispose();
             });
         } catch (e) {
-            Logger.warn("PlanetaryOrbitScene: Surface snapshot failed", e);
-            container.innerHTML = '<span style="color:#ff0000;">Scan Failed</span>';
             Logger.warn(`PlanetaryOrbitScene: Surface snapshot failed (Attempt ${attempt + 1})`, e);
             
             // Cleanup scene even on failure

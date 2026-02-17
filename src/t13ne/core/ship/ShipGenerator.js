@@ -450,6 +450,9 @@ export class ShipGenerator {
             }
         }
 
+        // Generate Wings (Moved after Nose Cone generation to ensure Canards attach to the nose)
+        generateWings(context);
+
         // Engines
         const engineCount = size === 'small' ? 1 : (size === 'medium' ? 2 : 4);
         if (hullType === 'DISC') {
@@ -617,27 +620,33 @@ export class ShipGenerator {
         } else if (symmetryType === 'REFLECTIVE') {
                 // Add Sensors/Scanners
                 const sensorHeight = 1.0;
-                const sensorZ = -spineLength / 2 + 4.0; 
+                // FIX: Ensure sensorZ is within the hull bounds. 
+                // Previously -spineLength/2 + 4.0 could be > spineLength/2 for small ships, causing floating sensors at the front.
+                const sensorZ = Math.min(-spineLength / 2 + 4.0, spineLength / 2 - 1.0); 
                 
                 let sensorX = 2.0;
+                let sensorAttached = false;
                 if (getSurfacePoint) {
                      const rayOrigin = [20, 0, sensorZ];
                      const rayDir = [-1, 0, 0];
                      const hit = getSurfacePoint(components, rayOrigin, rayDir, ['fuselage', 'hull', 'spine']);
                      if (hit) {
                          sensorX = hit.x; // Embed half-way to ensure connection
+                         sensorAttached = true;
                      }
                 }
                 
-                const sensorId = attachComponent('sensor_array', [sensorX, 0.5, sensorZ], [0, 0, 0], 'box', { width: 0.5, height: 0.5, depth: 1.0 });
+                if (sensorAttached) {
+                    const sensorId = attachComponent('sensor_array', [sensorX, 0.5, sensorZ], [0, 0, 0], 'box', { width: 0.5, height: 0.5, depth: 1.0 });
                 
-                // Wire to bridge if possible
-                const bridge = components.find(c => c.usage.includes('bridge') || c.usage.includes('cockpit'));
-                if (bridge) {
-                    this.wiringGenerator.addConnection(explicitWiring, sensorId, bridge.id, 'data', 5.0);
-                    const sensorSymId = sensorId + '_sym';
-                    if (components.find(c => c.id === sensorSymId)) {
-                         this.wiringGenerator.addConnection(explicitWiring, sensorSymId, bridge.id, 'data', 5.0);
+                    // Wire to bridge if possible
+                    const bridge = components.find(c => c.usage.includes('bridge') || c.usage.includes('cockpit'));
+                    if (bridge) {
+                        this.wiringGenerator.addConnection(explicitWiring, sensorId, bridge.id, 'data', 5.0);
+                        const sensorSymId = sensorId + '_sym';
+                        if (components.find(c => c.id === sensorSymId)) {
+                             this.wiringGenerator.addConnection(explicitWiring, sensorSymId, bridge.id, 'data', 5.0);
+                        }
                     }
                 }
 
@@ -721,8 +730,6 @@ export class ShipGenerator {
 
         // Update context with determined hullType for sub-generators
         context.hullType = hullType;
-
-        generateWings(context);
 
         // Cockpit
 

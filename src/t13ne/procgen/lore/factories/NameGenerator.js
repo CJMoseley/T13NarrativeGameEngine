@@ -332,12 +332,6 @@ export class NameGenerator {
         // Default to a generic planet name grammar
         const genericName = this.generate('PLANET_NAMES', seed + "-generic");
 
-        // Occasionally prepend the species name for variety
-        if (prng.nextDouble() > 0.6) {
-            const speciesRoot = speciesName.split('(')[0].trim().split(' ')[0];
-            return `${speciesRoot} ${genericName}`;
-        }
-
         return genericName;
     }
 }

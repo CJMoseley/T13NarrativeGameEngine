@@ -160,10 +160,14 @@ export class ScienceGenerator {
         const prefix = planetPrefixes[Math.floor(n * 100) % planetPrefixes.length];
         const suffix = planetSuffixes[Math.floor(n * 1000) % planetSuffixes.length];
 
-        const result = template
+        let result = template
             .replace('{PREFIX}', prefix)
             .replace('{SUFFIX}', suffix)
             .replace('{SPECIES}', speciesRoot);
+            
+        // Fix grammar for possessives (e.g. Drones's -> Drones')
+        result = result.replace(/s's/g, "s'");
+        
         Logger.end(funcName, result);
         return result;
     }

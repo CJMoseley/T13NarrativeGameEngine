@@ -98,7 +98,41 @@ export class ShipAssembler {
             if (!hullGeometry.attributes.color) {
                 const count = hullGeometry.attributes.position.count;
                 const colors = new Float32Array(count * 3);
-                for (let i = 0; i < count * 3; i++) colors[i] = 1.0; // Default to White
+                const posAttr = hullGeometry.attributes.position;
+                const v = new THREE.Vector3();
+                
+                // Pre-calculate component colors and positions for speed
+                const compData = shipComponents.map(c => {
+                    let colorHex = COMPONENT_COLORS.default;
+                    const usage = c.stats ? c.stats.usage : '';
+                    if (usage) {
+                        const lowerUsage = usage.toLowerCase();
+                        for (const key in COMPONENT_COLORS) {
+                            if (lowerUsage.includes(key)) {
+                                colorHex = COMPONENT_COLORS[key];
+                                break;
+                            }
+                        }
+                    }
+                    return { pos: c.position, color: new THREE.Color(colorHex) };
+                });
+
+                for (let i = 0; i < count; i++) {
+                    v.fromBufferAttribute(posAttr, i);
+                    let minDistSq = Infinity;
+                    let closestColor = compData[0] ? compData[0].color : new THREE.Color(1,1,1);
+
+                    for (const c of compData) {
+                        const distSq = v.distanceToSquared(c.pos);
+                        if (distSq < minDistSq) {
+                            minDistSq = distSq;
+                            closestColor = c.color;
+                        }
+                    }
+                    colors[i * 3] = closestColor.r;
+                    colors[i * 3 + 1] = closestColor.g;
+                    colors[i * 3 + 2] = closestColor.b;
+                }
                 hullGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
             }
 
@@ -226,6 +260,14 @@ export class ShipAssembler {
                 // Skip visual mesh for carve components
                 if (usage && usage.includes('carve')) continue;
                 
+                // FIX: Ensure geometry has color attribute for shaders that expect vertexColors
+                if (!mesh.geometry.attributes.color) {
+                    const count = mesh.geometry.attributes.position.count;
+                    const colors = new Float32Array(count * 3);
+                    for (let i = 0; i < count * 3; i++) colors[i] = 1.0; // Default to White
+                    mesh.geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+                }
+
                 mesh.position.set(...pos);
                 if (rot) {
                     mesh.rotation.set(...rot);
@@ -345,9 +387,36 @@ export class ShipAssembler {
                     const mesh = this.componentFactory.createProxy(type, dims);
                     mesh.position.set(...pos);
                     if (rot) mesh.rotation.set(...rot);
+                    
+                    // FIX: Handle negative scale (mirroring) by baking it into geometry
+                    // CSG operations often fail with negative scale matrices (inverted normals)
+                    let s = new THREE.Vector3(1, 1, 1);
                     if (comp.scale) {
-                        if (Array.isArray(comp.scale)) mesh.scale.set(...comp.scale);
-                        else mesh.scale.copy(comp.scale);
+                        if (Array.isArray(comp.scale)) s.set(...comp.scale);
+                        else s.copy(comp.scale);
+                    }
+
+                    if (s.x < 0 || s.y < 0 || s.z < 0) {
+                        mesh.scale.set(1, 1, 1);
+                        mesh.geometry = mesh.geometry.clone();
+                        mesh.geometry.scale(s.x, s.y, s.z);
+                        
+                        // If determinant is negative, we need to flip faces to restore outward normals
+                        if (s.x * s.y * s.z < 0) {
+                            const index = mesh.geometry.index;
+                            if (index) {
+                                for (let i = 0; i < index.count; i += 3) {
+                                    const a = index.getX(i);
+                                    index.setX(i, index.getX(i+2));
+                                    index.setX(i+2, a);
+                                }
+                            } else {
+                                // Non-indexed geometry not handled here for brevity, but proxies usually use primitives which can be indexed or we rely on computeVertexNormals
+                            }
+                            mesh.geometry.computeVertexNormals();
+                        }
+                    } else {
+                        mesh.scale.copy(s);
                     }
                     mesh.updateMatrix();
 
@@ -404,7 +473,41 @@ export class ShipAssembler {
             if (!hullGeometry.attributes.color) {
                 const count = hullGeometry.attributes.position.count;
                 const colors = new Float32Array(count * 3);
-                for (let i = 0; i < count * 3; i++) colors[i] = 1.0; // Default to White
+                const posAttr = hullGeometry.attributes.position;
+                const v = new THREE.Vector3();
+                
+                // Pre-calculate component colors and positions for speed
+                const compData = shipComponents.map(c => {
+                    let colorHex = COMPONENT_COLORS.default;
+                    const usage = c.stats ? c.stats.usage : '';
+                    if (usage) {
+                        const lowerUsage = usage.toLowerCase();
+                        for (const key in COMPONENT_COLORS) {
+                            if (lowerUsage.includes(key)) {
+                                colorHex = COMPONENT_COLORS[key];
+                                break;
+                            }
+                        }
+                    }
+                    return { pos: c.position, color: new THREE.Color(colorHex) };
+                });
+
+                for (let i = 0; i < count; i++) {
+                    v.fromBufferAttribute(posAttr, i);
+                    let minDistSq = Infinity;
+                    let closestColor = compData[0] ? compData[0].color : new THREE.Color(1,1,1);
+
+                    for (const c of compData) {
+                        const distSq = v.distanceToSquared(c.pos);
+                        if (distSq < minDistSq) {
+                            minDistSq = distSq;
+                            closestColor = c.color;
+                        }
+                    }
+                    colors[i * 3] = closestColor.r;
+                    colors[i * 3 + 1] = closestColor.g;
+                    colors[i * 3 + 2] = closestColor.b;
+                }
                 hullGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
             }
 

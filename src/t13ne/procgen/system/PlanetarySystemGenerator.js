@@ -475,8 +475,15 @@ export class PlanetarySystemGenerator {
                 prefix = (outerSeed > 0.5) ? 'Gas' : 'Ice';
                 suffix = 'Giant';
             } else if (orbitalDistance < frostLine) {
-                prefix = (innerSeed < 0.4) ? 'Volcanic' : 'Barren';
+                // Reduced chance of Barren, increased chance of habitable types
+                if (innerSeed < 0.15) prefix = 'Volcanic';
+                else if (innerSeed < 0.25) prefix = 'Barren';
+                else if (innerSeed < 0.55) prefix = 'Desert';
+                else if (innerSeed < 0.80) prefix = 'Ocean';
+                else prefix = 'Terrestrial';
+                
                 suffix = (planetRadius < 0.6) ? 'Rock' : 'World';
+                if (prefix === 'Terrestrial' || prefix === 'Ocean') suffix = 'World';
             } else if (orbitalDistance > frostLine * 2.5) {
                 prefix = (outerSeed > 0.6) ? 'Ice' : 'Crystalline';
                 suffix = (planetRadius < 0.7) ? 'Dwarf' : 'World';
@@ -517,10 +524,19 @@ export class PlanetarySystemGenerator {
         // --- 3. Determine Biosphere ---
         Logger.message(`${funcName}: Step 3 - Biosphere`);
         const biosphereSeed = prng.nextDouble();
+        
+        // Weighted generation to favor life (User Request: "Every single planet had its own species")
         if (classification.biosphere === '') {
-            const biospheres = (LoreData.planet && LoreData.planet.BIOSPHERE_STATUSES) ? LoreData.planet.BIOSPHERE_STATUSES : ['None'];
-            const index = Math.min(Math.floor(biosphereSeed * biospheres.length), biospheres.length - 1);
-            classification.biosphere = biospheres[index] || 'None';
+            if (biosphereSeed < 0.05) classification.biosphere = 'None'; // Very rare dead worlds
+            else if (biosphereSeed < 0.10) classification.biosphere = 'Extinct'; // Rare extinct
+            else if (biosphereSeed < 0.40) classification.biosphere = 'Microbial';
+            else if (biosphereSeed < 0.75) classification.biosphere = 'Complex Flora/Fauna';
+            else classification.biosphere = 'Sentient';
+            
+            // Boost life chance further for 'Terrestrial' or 'Ocean' types
+            if ((classification.type.includes('Terrestrial') || classification.type.includes('Ocean')) && classification.biosphere === 'None') {
+                classification.biosphere = 'Microbial';
+            }
         }
 
         // Ensure type is defined before resource generation
@@ -543,6 +559,11 @@ export class PlanetarySystemGenerator {
                 classification.biosphere = 'Ancient Technological Ruins';
                 classification.description = "The remnants of a once-great civilization, now nothing but shattered towers and echoing memories.";
             } else {
+                // Fix "Barren" Homeworlds - Rename to Arid/Desert if they are inhabited
+                if (classification.type.includes('Barren')) {
+                    classification.type = classification.type.replace('Barren', 'Arid');
+                }
+
                 // Always enforce a habitable/sentient biosphere for the Homeworld, overriding random generation
                 const temp = classification.temperature;
                 const innerSeed = prng.nextDouble();
@@ -575,19 +596,20 @@ export class PlanetarySystemGenerator {
                 { name: "Construction Materials", grade: "Rich", value: 15, description: "Rich Minerals" }
             );
 
-            // APEX SENTIENT GENERATION
-            // If the homeworld has a sentient biosphere, generate the Apex species for it.
-            if (this.speciesGenerator && classification.biosphere && !classification.biosphere.includes('None') && !classification.biosphere.includes('Extinct')) {
-                const seeds = { n1: prng.nextDouble(), n2: prng.nextDouble(), n3: prng.nextDouble(), n4: prng.nextDouble() };
-                const apexSpecies = await this.speciesGenerator.generateApexSpeciesForBiosphere(classification.biosphere, seeds);
-                if (apexSpecies) {
-                    classification.apexSpecies = apexSpecies;
-                    classification.description += ` It is the cradle of the ${apexSpecies.commonName}, ${apexSpecies.physicalDescription || 'a unique local species'}.`;
+        }
 
-                    // If it matches the system's primary species key, enrich it
-                    if (systemData.speciesKey === apexSpecies.commonName) {
-                        systemData.speciesCore = { ...systemData.speciesCore, ...apexSpecies };
-                    }
+        // --- 5b. Universal Species Generation ---
+        // Generate a unique species for ANY planet with a biosphere (User Request)
+        if (this.speciesGenerator && classification.biosphere && !classification.biosphere.includes('None') && !classification.biosphere.includes('Extinct')) {
+            const seeds = { n1: prng.nextDouble(), n2: prng.nextDouble(), n3: prng.nextDouble(), n4: prng.nextDouble() };
+            const apexSpecies = await this.speciesGenerator.generateApexSpeciesForBiosphere(classification.biosphere, seeds);
+            if (apexSpecies) {
+                classification.apexSpecies = apexSpecies;
+                classification.description += ` Home to the ${apexSpecies.commonName}.`;
+
+                // If this is the homeworld, sync with system data
+                if (i === systemData.homeWorldIndex && systemData.speciesKey === apexSpecies.commonName) {
+                    systemData.speciesCore = { ...systemData.speciesCore, ...apexSpecies };
                 }
             }
         } else if (systemData.speciesKey === 'SPECIES_FIRST_RELIC') {

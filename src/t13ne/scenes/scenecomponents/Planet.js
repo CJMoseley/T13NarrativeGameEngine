@@ -334,7 +334,6 @@ export class Planet extends THREE.Group {
                 } else {
                     // Terrestrial/Ocean/Ice get standard FBM but with more octaves
                     n = fbm(sx, sy, sz, 8, 0.5, noiseScale);
-                    n = (n + 1.0) / 2.0; // Normalize to 0-1
                 }
                 
                 n = Math.max(0, Math.min(1, n)); // Clamp
@@ -344,15 +343,18 @@ export class Planet extends THREE.Group {
                 let roughness = 0.8;
 
                 // Water Threshold (if terrestrial)
-                const isWater = (planetData.type.includes('Terrestrial') || planetData.type.includes('Ocean')) && n < 0.45;
+                let waterLevel = 0.45;
+                if (pType === 'Ocean') waterLevel = 0.75; // Ocean worlds are mostly water
+
+                const isWater = (planetData.type.includes('Terrestrial') || planetData.type.includes('Ocean')) && n < waterLevel;
                 
                 if (isWater) {
                     // Ocean Color (Deep Blue/Green)
-                    finalColor.lerpColors(p.waterDeep, p.waterShallow, (n / 0.45));
+                    finalColor.lerpColors(p.waterDeep, p.waterShallow, (n / waterLevel));
                     roughness = 0.2; // Shiny
                 } else {
                     // Land Color
-                    const landHeight = (n - 0.45) / 0.55; // Remap 0.45-1.0 to 0-1
+                    const landHeight = (n - waterLevel) / (1.0 - waterLevel); // Remap waterLevel-1.0 to 0-1
                     
                     // Cartoony Stepping
                     const steppedHeight = Math.floor(landHeight * bands) / bands;

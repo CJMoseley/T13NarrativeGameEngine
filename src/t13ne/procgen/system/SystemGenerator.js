@@ -339,6 +339,8 @@ export class SystemGenerator {
              if (typeof homeWorldNameArray[0] === 'string') {
                  if (homeWorldNameArray[0].includes("Humans's")) homeWorldNameArray[0] = homeWorldNameArray[0].replace("Humans's", "Human");
                  if (homeWorldNameArray[0].includes("Porno")) homeWorldNameArray[0] = homeWorldNameArray[0].replace("Porno", "Prime");
+                 // General fix for s's -> s'
+                 homeWorldNameArray[0] = homeWorldNameArray[0].replace(/s's/g, "s'");
              }
         }
 

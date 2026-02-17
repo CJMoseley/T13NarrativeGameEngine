@@ -260,6 +260,40 @@ export class LocalSpaceScene extends Scene {
 
             waypoints.push(finalWaypoint);
 
+            // --- SAFETY CHECK: Avoid Star Collision ---
+            // Ensure the camera never flies through the star (at 0,0,0)
+            const starSafeRadius = (this.scales.starSize || 500) * 3.0;
+            const origin = new THREE.Vector3(0, 0, 0);
+            
+            for (let i = 0; i < waypoints.length - 1; i++) {
+                const p1 = waypoints[i];
+                const p2 = waypoints[i+1];
+                
+                const line = new THREE.Line3(p1, p2);
+                const closest = new THREE.Vector3();
+                line.closestPointToPoint(origin, true, closest);
+                
+                if (closest.distanceTo(origin) < starSafeRadius) {
+                    // Path cuts too close to the star. Insert a diversion point.
+                    const mid = new THREE.Vector3().addVectors(p1, p2).multiplyScalar(0.5);
+                    
+                    // Lift the path "up" (Y+) to fly over the star
+                    const divertHeight = starSafeRadius * 1.5;
+                    if (mid.y < divertHeight) mid.y = divertHeight;
+                    
+                    // Also push out horizontally if it's still too close (e.g. vertical dive)
+                    if (mid.distanceTo(origin) < starSafeRadius) {
+                        const pushDir = mid.clone().setY(0).normalize();
+                        if (pushDir.lengthSq() === 0) pushDir.set(1, 0, 0);
+                        mid.add(pushDir.multiplyScalar(starSafeRadius));
+                    }
+                    
+                    waypoints.splice(i + 1, 0, mid);
+                    i++; // Skip the newly inserted point
+                    Logger.message("LocalSpaceScene: Inserted safety waypoint to avoid star collision.");
+                }
+            }
+
             if (waypoints.length > 1) {
                 this.introPathSpline = new THREE.CatmullRomCurve3(waypoints);
                 this.introPath = this.introPathSpline.getPoints(200);

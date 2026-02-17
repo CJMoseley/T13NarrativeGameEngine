@@ -194,8 +194,26 @@ export const generateWings = (context) => {
 
         // Position Z: Explicit separation
         const wingZ = 0; // Main wings centered
-        const canardZ = spineLength / 2 - 1.0; // Front
         const tailZ = -spineLength / 2 + 1.0; // Back
+
+        // Calculate Front Z dynamically to place canards on the nose
+        let frontZ = spineLength / 2;
+        components.forEach(c => {
+             if (c.usage.includes('nose') || c.usage.includes('fuselage') || c.usage.includes('cockpit')) {
+                 const z = c.pos[2];
+                 let ext = 0;
+                 // Estimate forward extent based on type
+                 if (c.type === 'cone' || c.type === 'cylinder' || c.type === 'capsule') {
+                     ext = (c.dims.height || c.dims.length || 1) / 2;
+                 } else if (c.type === 'box') {
+                     ext = (c.dims.depth || 1) / 2;
+                 } else if (c.dims.radius) {
+                     ext = c.dims.radius;
+                 }
+                 // Check if this component extends further forward
+                 if (z + ext > frontZ) frontZ = z + ext;
+             }
+        });
 
         // Calculate attachment point using Raycasting to ensure surface contact
         let attachX = 0.5; // Default fallback: Center line (safest for connection)
@@ -290,21 +308,25 @@ export const generateWings = (context) => {
         if (random() > 0.6) {
             const canardW = baseSpan * 0.4;
             const canardL = baseRootChord * 0.3;
+            // Place canards further back to ensure they hit the main body, not a thin nose tip
+            const canardZ = frontZ - canardL - 2.0;
             
             // Recalculate attachment point for canards at their specific Z to prevent floating
             let cX = attachX * 0.8; 
             let canardAttached = false;
             if (getSurfacePoint) {
-                const hit = getSurfacePoint(components, [50, 0, canardZ], [-1, 0, 0], ['fuselage', 'hull', 'spine']);
+                const hit = getSurfacePoint(components, [50, 0, canardZ], [-1, 0, 0], ['fuselage', 'hull', 'spine', 'nose']);
                 if (hit) {
-                    cX = hit.x - 0.2; // Embed slightly
+                    cX = hit.x - 0.5; // Embed deeply
                     canardAttached = true;
                 }
             }
 
-            if (canardAttached) {
-                const canardSweep = canardL * 0.4;
-                attachComponent('fin_front', [cX, 0, canardZ], [0, 0, 0], 'wedge', { span: canardW, rootChord: canardL, sweep: canardSweep, depth: 0.15, centered: false }, symOverride);
+            // FIX: Ensure canards are not placed on the centerline (uni-horn) or floating near a thin nose
+            if (canardAttached && Math.abs(cX) > 0.5) {
+                // Use a cone (spike) instead of a wedge to avoid "floating block" look if dimensions are odd
+                // Rotate to point Forward (+Z). Default Cone is Y-up. Rot X 90 -> Z-up.
+                attachComponent('fin_front', [cX, 0, canardZ], [Math.PI/2, 0, 0], 'cone', { radius: 0.3, height: canardL * 1.2 }, symOverride);
             }
         }
 
