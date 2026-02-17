@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { SceneTools } from '/src/t13ne/core/SceneTools.js';
+import ProcGen from '/src/t13ne/procgen/ProcGen.js';
 
 export class Star extends THREE.Group {
     constructor(data, radius = 1000) {
@@ -13,7 +14,11 @@ export class Star extends THREE.Group {
         // 1. The Star Sphere
         const geometry = new THREE.SphereGeometry(this.radius, 64, 64);
         const color = this.data.color || 0xffffaa;
-        const material = new THREE.MeshBasicMaterial({ color: color });
+        
+        // Generate a vibrant texture for the star
+        const texture = this._createStarTexture(color);
+        
+        const material = new THREE.MeshBasicMaterial({ color: 0xffffff, map: texture });
         const mesh = new THREE.Mesh(geometry, material);
         this.add(mesh);
 
@@ -37,5 +42,33 @@ export class Star extends THREE.Group {
         // For now, we add a point light with no decay for infinite reach in system view
         const light = new THREE.PointLight(color, 1.5, 0, 0);
         this.add(light);
+    }
+
+    _createStarTexture(colorVal) {
+        const canvas = document.createElement('canvas');
+        canvas.width = 512; canvas.height = 256;
+        const ctx = canvas.getContext('2d');
+        const prng = ProcGen.createPRNG('star');
+        
+        const baseColor = new THREE.Color(colorVal || 0xffffaa);
+        const hsl = {};
+        baseColor.getHSL(hsl);
+        hsl.s = 1.0; // Max saturation for vibrancy
+        hsl.l = 0.6; // Bright
+        baseColor.setHSL(hsl.h, hsl.s, hsl.l);
+
+        ctx.fillStyle = '#' + baseColor.getHexString();
+        ctx.fillRect(0, 0, 512, 256);
+
+        // Add some "sunspots" or surface variation for style
+        for (let i = 0; i < 30; i++) {
+            const x = prng.nextDouble() * 512;
+            const y = prng.nextDouble() * 256;
+            const r = prng.nextDouble() * 60 + 20;
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
+            ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI*2); ctx.fill();
+        }
+        
+        return new THREE.CanvasTexture(canvas);
     }
 }

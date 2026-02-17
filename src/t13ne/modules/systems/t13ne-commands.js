@@ -449,6 +449,15 @@ export class T13NECommands {
             const spread = CardsAPI.getCompositeSpread(args.spreadId, args);
             return { type: 'CompositeSpreadDrawn', spread };
         });
+
+        // Cards:ReseedDeck(seed="xyz")
+        this.registerCommand('Cards', 'ReseedDeck', async (args, ctx) => {
+            const CardsAPI = this.t13ne.getModule('CardsAPI');
+            if (!CardsAPI) return { error: "CardsAPI module not loaded" };
+
+            CardsAPI.reseedMasterDeck(args.seed);
+            return { type: 'DeckReseeded', seed: args.seed };
+        });
     }
 
     registerGameCommands() {

@@ -1,3 +1,4 @@
+import PRNG from '/src/t13ne/modules/systems/t13ne-prng.js';
 import { LoreData } from '/src/t13ne/procgen/lore/LoreData.js';
 import Logger from '/src/t13ne/core/Logger.js';
 import { ComponentDefs } from '/src/t13ne/procgen/ships/components/ComponentDefs.js';
@@ -10,14 +11,8 @@ export class GalacticTimelineGenerator {
     constructor(seed, pluginManager, loreMaster) {
         this.pluginManager = pluginManager;
         this.loreMaster = loreMaster;
-        const T13NE = this.pluginManager?.getApi('T13', 'T13NE');
-        const T13NE_PRNG = T13NE?.getModule('PRNG');
-        if (T13NE_PRNG) {
-            this.prng = T13NE_PRNG.create(seed);
-        } else {
-            this.prng = { nextDouble: () => Math.random() };
-        }
-        
+        this.prng = PRNG.create(seed);
+
         this.swayEvents = null;
         this.cardsApi = this.pluginManager?.getApi('T13', 'CardsAPI');
     }
@@ -26,7 +21,7 @@ export class GalacticTimelineGenerator {
         const funcName = 'GalacticTimelineGenerator.generate';
         Logger.start(funcName);
         const params = await this._loadParams();
-        
+
         // Load Sway Events
         const T13NE = this.pluginManager?.getApi('T13', 'T13NE');
         const Codex = T13NE?.getModule('Codex');
@@ -48,12 +43,12 @@ export class GalacticTimelineGenerator {
             // Determine Age Type using Sway Events or Cards
             let ageType = "Age";
             let ageDesc = "An era of galactic history.";
-            
+
             if (this.swayEvents && this.swayEvents.length > 0) {
                 // Pick an event type based on a "Chi" roll for the age's significance
                 const chiRoll = Math.floor(this.prng.nextDouble() * 100) + 1;
                 // Find closest event type
-                const eventType = this.swayEvents.reduce((prev, curr) => 
+                const eventType = this.swayEvents.reduce((prev, curr) =>
                     Math.abs(curr.Chi - chiRoll) < Math.abs(prev.Chi - chiRoll) ? curr : prev
                 );
                 ageType = eventType.Type;
@@ -76,7 +71,7 @@ export class GalacticTimelineGenerator {
         }
 
         Logger.end(funcName);
-        return { timeline, corporations };
+        return { timeline, corporations, activeSpecies };
     }
 
     async _generateEventsForPeriod(age, activeSpecies, corporations, params) {
@@ -92,7 +87,7 @@ export class GalacticTimelineGenerator {
         }
 
         if (this.prng.nextDouble() < params.eventProbabilities.EXTINCTION_EVENT && activeSpecies.length > 1) {
-             await this._createExtinctionEvent(age, activeSpecies, params);
+            await this._createExtinctionEvent(age, activeSpecies, params);
         }
 
         if (activeSpecies.length > 0 && this.prng.nextDouble() < params.eventProbabilities.CORPORATION_FOUNDING) {
@@ -138,19 +133,19 @@ export class GalacticTimelineGenerator {
             };
             // We pass a mock star and galaxyParams since we're not in a specific system yet
             const speciesLore = await this.loreMaster.generateSystemLore({ r: this.prng.nextDouble(), z: 0 }, noiseValues, {});
-            
+
             activeSpecies.push(speciesLore); // Store the full lore object
             age.events.push({
                 type: "SPECIES_EMERGENCE",
                 species: speciesLore,
                 time: age.start,
-                position: { x: this.prng.nextDouble() * 20000 - 10000, y: this.prng.nextDouble() * 20000 - 10000 },
+                position: { x: this.prng.nextDouble() * 4000 - 2000, y: this.prng.nextDouble() * 4000 - 2000 },
                 description: `The ${speciesLore.commonName} species emerged.`
             });
         }
     }
 
-    _createUpliftEvent(age, activeSpecies, params) {
+    async _createUpliftEvent(age, activeSpecies, params) {
         const creator = activeSpecies[Math.floor(this.prng.nextDouble() * activeSpecies.length)];
         const creatorLore = LoreData.speciesFoundations.find(s => s.name === creator.commonName);
 
@@ -158,21 +153,32 @@ export class GalacticTimelineGenerator {
             const createdOptions = creatorLore.uplifts;
             const createdName = createdOptions[Math.floor(this.prng.nextDouble() * createdOptions.length)];
             if (!activeSpecies.some(s => s.commonName === createdName)) {
-                // We're just pushing the name for now for simplicity
-                activeSpecies.push({ commonName: createdName });
+                // Generate the full lore for this uplifted species
+                const noiseValues = {
+                    n1: this.prng.nextDouble(),
+                    n2: this.prng.nextDouble(),
+                    n3: this.prng.nextDouble(),
+                    n4: this.prng.nextDouble()
+                };
+                const speciesLore = await this.loreMaster.generateSystemLore({ r: this.prng.nextDouble(), z: 0 }, noiseValues, {});
+
+                // Override commonName to match the historical uplift name if it's already defined
+                speciesLore.commonName = createdName;
+
+                activeSpecies.push(speciesLore);
                 age.events.push({
                     type: "UPLIFT_EVENT",
                     creator: creator.commonName,
-                    created: createdName,
+                    created: speciesLore,
                     time: age.start + 10000,
-                    position: { x: this.prng.nextDouble() * 20000 - 10000, y: this.prng.nextDouble() * 20000 - 10000 },
+                    position: { x: this.prng.nextDouble() * 4000 - 2000, y: this.prng.nextDouble() * 4000 - 2000 },
                     description: `The ${creator.commonName} uplifted the ${createdName} species.`
                 });
             }
         }
     }
 
-     _createExtinctionEvent(age, activeSpecies, params) {
+    _createExtinctionEvent(age, activeSpecies, params) {
         const extinctIndex = Math.floor(this.prng.nextDouble() * activeSpecies.length);
         const extinctSpecies = activeSpecies.splice(extinctIndex, 1)[0];
         age.events.push({
@@ -180,7 +186,7 @@ export class GalacticTimelineGenerator {
             species: extinctSpecies,
             time: age.end - 10000,
             cause: "Unknown",
-            position: { x: this.prng.nextDouble() * 20000 - 10000, y: this.prng.nextDouble() * 20000 - 10000 },
+            position: { x: this.prng.nextDouble() * 4000 - 2000, y: this.prng.nextDouble() * 4000 - 2000 },
             description: `The ${extinctSpecies.commonName} went extinct.`
         });
     }
@@ -223,7 +229,7 @@ export class GalacticTimelineGenerator {
             type: "CORPORATION_FOUNDING",
             corporation: corporation,
             time: corporation.founded,
-            position: { x: corporation.homeRegion.r * 10000 * Math.cos(corporation.homeRegion.theta), y: corporation.homeRegion.r * 10000 * Math.sin(corporation.homeRegion.theta) },
+            position: { x: corporation.homeRegion.r * 2000 * Math.cos(corporation.homeRegion.theta), y: corporation.homeRegion.r * 2000 * Math.sin(corporation.homeRegion.theta) },
             description: `${corporation.name}, a ${corporation.archetype}, was founded by the ${foundingSpecies.commonName}.`
         });
     }
@@ -250,7 +256,7 @@ export class GalacticTimelineGenerator {
             acquiringCorp: acquiringCorp,
             targetCorp: targetCorp,
             time: age.start + Math.floor(this.prng.nextDouble() * (age.end - age.start)),
-            position: { x: acquiringCorp.homeRegion.r * 10000 * Math.cos(acquiringCorp.homeRegion.theta), y: acquiringCorp.homeRegion.r * 10000 * Math.sin(acquiringCorp.homeRegion.theta) },
+            position: { x: acquiringCorp.homeRegion.r * 2000 * Math.cos(acquiringCorp.homeRegion.theta), y: acquiringCorp.homeRegion.r * 2000 * Math.sin(acquiringCorp.homeRegion.theta) },
             description: `${acquiringCorp.name} acquired ${targetCorp.name} in a major corporate merger.`
         });
     }
@@ -266,7 +272,7 @@ export class GalacticTimelineGenerator {
             type: "CORPORATION_COLLAPSE",
             corporation: collapsingCorp,
             time: age.start + Math.floor(this.prng.nextDouble() * (age.end - age.start)),
-            position: { x: collapsingCorp.homeRegion.r * 10000 * Math.cos(collapsingCorp.homeRegion.theta), y: collapsingCorp.homeRegion.r * 10000 * Math.sin(collapsingCorp.homeRegion.theta) },
+            position: { x: collapsingCorp.homeRegion.r * 2000 * Math.cos(collapsingCorp.homeRegion.theta), y: collapsingCorp.homeRegion.r * 2000 * Math.sin(collapsingCorp.homeRegion.theta) },
             description: `The once-mighty ${collapsingCorp.name} collapsed due to internal strife and market pressures.`
         });
     }

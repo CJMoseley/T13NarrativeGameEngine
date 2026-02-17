@@ -5,17 +5,17 @@ import { ResourceFactory } from '/src/t13ne/procgen/lore/factories/ResourceFacto
 import { PlanetGenerator } from '/src/t13ne/procgen/system/PlanetGenerator.js';
 
 export class PlanetarySystemGenerator {
-    constructor(pluginManager, nameGenerator) {
+    constructor(pluginManager, nameGenerator, speciesGenerator) {
         const funcName = 'PlanetarySystemGenerator.constructor';
         Logger.start(funcName);
         this.pluginManager = pluginManager;
         this.nameGenerator = nameGenerator;
+        this.speciesGenerator = speciesGenerator;
         this.resourceFactory = new ResourceFactory(pluginManager);
-        // this.planet3DGenerator = new PlanetGenerator(null); // Removed unused instantiation to prevent potential issues if dependencies missing
         Logger.end(funcName);
     }
 
-    generatePlanets(systemData) {
+    async generatePlanets(systemData) {
         const funcName = 'PlanetarySystemGenerator.generatePlanets';
         if (!systemData) {
             Logger.error(`${funcName}: systemData is undefined.`);
@@ -31,11 +31,11 @@ export class PlanetarySystemGenerator {
 
         // Ensure minimum planets (especially for homeworlds)
         if (numPlanets === undefined || numPlanets < 1) {
-             numPlanets = Math.floor(Math.random() * 5) + 3; // 3-7 planets default
+            numPlanets = Math.floor(Math.random() * 5) + 3; // 3-7 planets default
         }
 
         let lastDistance = 0.2; // Start at 0.2 AU for realistic inner planets
-        
+
         // T13 Harmonics for Orbital Resonance
         const T13NE = this.pluginManager?.getApi('T13', 'T13NE');
         const T13Geometry = T13NE?.getModule('T13Geometry');
@@ -55,12 +55,12 @@ export class PlanetarySystemGenerator {
 
         let totalMoonsGenerated = 0;
         const MAX_MOONS_PER_SYSTEM = 100;
-        
+
         // Calculate initial period for the starting distance (0.2 AU)
         // Kepler's 3rd Law: T^2 = a^3 / M (T in years, a in AU, M in Solar Masses)
         const starMass = this.getStarMass(systemData.star?.starClass);
         let currentPeriod = Math.sqrt(Math.pow(lastDistance, 3) / starMass);
-            
+
 
         for (let i = 0; i < numPlanets; i++) {
             const planetPRNG = ProcGen.createPRNG([...seeds, i].join(','));
@@ -71,16 +71,16 @@ export class PlanetarySystemGenerator {
 
             // Calculate Orbital Period Ratio
             let periodRatio = 1.618; // Default Golden Ratio
-            
+
             if (chordNotes.length > 0) {
                 // Use Chord intervals for natural harmonic ratios
                 // We map the sequence of planets to the sequence of notes in the chord
                 const noteIndex = i % chordNotes.length;
                 const octave = Math.floor(i / chordNotes.length);
-                
+
                 // Current note value (absolute semitones from root)
                 const currentNoteVal = chordNotes[noteIndex] + (octave * 12);
-                
+
                 // Previous note value (relative to the sequence start)
                 let prevNoteVal = 0;
                 if (i > 0) {
@@ -88,10 +88,10 @@ export class PlanetarySystemGenerator {
                     const prevOctave = Math.floor((i - 1) / chordNotes.length);
                     prevNoteVal = chordNotes[prevIndex] + (prevOctave * 12);
                 }
-                
+
                 let interval = currentNoteVal - prevNoteVal;
                 if (interval <= 0) interval += 12; // Ensure outward movement
-                
+
                 // Ratio for equal temperament semitones: 2^(n/12)
                 periodRatio = Math.pow(2, interval / 12);
             } else if (harmonics.length > 0) {
@@ -106,23 +106,23 @@ export class PlanetarySystemGenerator {
 
             // Update Period
             currentPeriod = currentPeriod * periodRatio;
-            
+
             // Calculate Distance from Period: a = (T^2 * M)^(1/3)
-            let orbitalDistance = Math.pow(currentPeriod * currentPeriod * starMass, 1/3);
+            let orbitalDistance = Math.pow(currentPeriod * currentPeriod * starMass, 1 / 3);
 
             // Safety check for NaN or infinite values
             if (!Number.isFinite(orbitalDistance) || isNaN(orbitalDistance)) {
                 Logger.warn(`${funcName}: Calculated orbital distance was NaN for planet ${i}. Using fallback.`);
                 orbitalDistance = lastDistance + 0.5;
             }
-            
+
             // Enforce minimum separation from previous planet
             if (orbitalDistance < lastDistance + 0.2) orbitalDistance = lastDistance + 0.2;
 
             const planetRadius = outerSeed * 0.5 + 0.5;
             lastDistance = orbitalDistance;
 
-            const classificationData = this.determinePlanetClassification(
+            const classificationData = await this.determinePlanetClassification(
                 i,
                 orbitalDistance,
                 planetRadius,
@@ -134,7 +134,7 @@ export class PlanetarySystemGenerator {
             // Generate Orbital Inclination and Axial Tilt
             // Inclination: Mostly flat (0-5 degrees), occasional outliers
             const inclination = (planetPRNG.nextDouble() * 5) * (planetPRNG.nextDouble() > 0.5 ? 1 : -1);
-            
+
             // Axial Tilt: Mostly stable (0-30), rare extreme/retrograde
             let axialTilt = planetPRNG.nextDouble() * 30;
             if (planetPRNG.nextDouble() > 0.9) axialTilt += 90; // Extreme tilt
@@ -157,13 +157,13 @@ export class PlanetarySystemGenerator {
                     statusText = 'Relic Artifact Site';
                 }
             }
-   
+
             // Calculate Hill Sphere (Gravitational dominance region)
             // r_Hill = a * cbrt(m_planet / 3 * M_star)
             const planetMass = this.getPlanetMass(classificationData.type, planetRadius);
             const planetMassSolar = planetMass * 3.003e-6; // Convert Earth masses to Solar masses
-            const hillSphereRadius = orbitalDistance * Math.pow(planetMassSolar / (3 * starMass), 1/3);
-            
+            const hillSphereRadius = orbitalDistance * Math.pow(planetMassSolar / (3 * starMass), 1 / 3);
+
             // Roche Limit (Fluid) approx 2.44 * Radius. 1 Earth Radius approx 4.26e-5 AU
             const rocheLimit = (planetRadius * 0.0000426) * 2.44;
 
@@ -195,11 +195,12 @@ export class PlanetarySystemGenerator {
                 const targetMoon = moons[0];
                 targetMoon.isHomeworld = true;
                 targetMoon.name = systemData.homeWorldName;
-                targetMoon.description = (targetMoon.description || "") + " This moon serves as the species' homeworld.";
-                
+                targetMoon.description = (targetMoon.description || "") + " This moon serves as the species' primary living site.";
+
                 planetName = `${systemData.homeWorldName} Prime`;
                 statusText = `${classificationData.type} (Homeworld System)`;
-                isHomeworld = false; // The planet itself is not the homeworld
+                // We KEEP isHomeworld = true for the planet so it's found as the anchor, 
+                // but the status text clarifies it's a system.
             }
 
             const society = this.generateSociety(planetPRNG, systemData.speciesKey);
@@ -207,7 +208,7 @@ export class PlanetarySystemGenerator {
             // T13 Geometry Descriptions for Society (Soul) and Place (Facade)
             const T13NE = this.pluginManager ? this.pluginManager.getApi('T13', 'T13NE') : null;
             const T13Geometry = T13NE ? T13NE.getModule('T13Geometry') : null;
-            
+
             if (T13Geometry) {
                 const geo = T13Geometry.calculateFullGeo(planetName);
                 const soulGeo = T13Geometry.Geometries[geo.Soul];
@@ -273,17 +274,17 @@ export class PlanetarySystemGenerator {
         }
 
         // --- Post-Generation Guarantees ---
-        
+
         // 1. Ensure at least one planet has moons (if planets exist) to maximize biosphere chances
         if (planets.length > 0 && !planets.some(p => p.moons.length > 0)) {
             // Pick the largest planet (likely a giant) or just the last one (outer system)
             const candidates = [...planets].sort((a, b) => b.radius - a.radius);
             const host = candidates[0];
-            
+
             const moonName = `${host.name} Alpha`;
             // Approximate relative distance for a captured moon
-            const moonDist = host.radius * 5 + 0.01; 
-            
+            const moonDist = host.radius * 5 + 0.01;
+
             const forcedMoon = {
                 name: moonName,
                 type: 'Captured Moon',
@@ -296,39 +297,64 @@ export class PlanetarySystemGenerator {
                 color: { h: 0.0, s: 0.0, l: 0.5 },
                 orbitSpeed: 0.02
             };
-            
+
             host.moons.push(forcedMoon);
             host.moonCount = (host.moonCount || 0) + 1;
             Logger.message(`${funcName}: Forced moon generation on ${host.name} to ensure system variety.`);
         }
 
         // 2. Ensure at least one biosphere exists in the system
-        const hasLife = planets.some(p => p.biosphere && p.biosphere !== 'None' && p.biosphere !== 'Extinct');
+        const hasLife = planets.some(p => (p.biosphere && p.biosphere !== 'None' && p.biosphere !== 'Extinct') || p.moons.some(m => m.biosphere && m.biosphere !== 'None'));
         if (planets.length > 0 && !hasLife) {
             // Pick a random planet to host life if none exists
             const lifeHost = planets[Math.floor(Math.random() * planets.length)];
             const temp = parseFloat(lifeHost.temperature);
-            
+
             let bioType = 'Native Biosphere';
             let bioDesc = '';
 
-            if (temp > 373) { // > 100 C
-                bioType = 'Magma-based Life';
-                bioDesc = ' Silicon-based lifeforms thrive in the extreme heat.';
-            } else if (temp < 200) { // < -73 C
-                bioType = 'Cryo-Crystalline Life';
-                bioDesc = ' Crystalline entities metabolize energy in the freezing cold.';
+            if (temp > 600) { // Extreme Heat / Lava
+                bioType = 'Complex Hydrate Extremophiles';
+                bioDesc = ' Organisms utilizing high-pressure crystalline lattices to maintain biological integrity in molten conditions.';
+            } else if (temp > 450) { // Very Hot / Plasma
+                bioType = 'Self-Assembling Plasma Entities';
+                bioDesc = ' Coherent electromagnetic structures that metabolize ambient radiation and solar wind.';
+            } else if (temp > 373) { // > 100 C
+                bioType = 'Thermosynthetic Biota';
+                bioDesc = ' Silicon-based lifeforms thrive in the extreme heat, metabolizing temperature gradients.';
+            } else if (temp < 150) { // Very Cold
+                bioType = 'Cryo-Crystalline Entities';
+                bioDesc = ' Super-conductive organisms that process information at near-zero temperatures.';
             } else if (lifeHost.type.includes('Gas')) {
-                bioType = 'Atmospheric Floaters';
-                bioDesc = ' Large floating organisms inhabit the dense atmosphere.';
+                if (temp > 250) {
+                    bioType = 'Living Plasma Gases';
+                    bioDesc = ' Sentient gas clouds maintaining coherence through complex magnetic fluctuations.';
+                } else {
+                    bioType = 'Atmospheric Floaters';
+                    bioDesc = ' Massive bioluminescent organisms drift through the high-pressure clouds.';
+                }
             } else {
-                bioType = 'Microbial';
-                bioDesc = ' Simple microbial life exists in the crust.';
+                bioType = 'Verdant Global Ecosystem';
+                bioDesc = ' A rich, living biosphere covering the planet in strange, colorful growth.';
             }
 
             lifeHost.biosphere = bioType;
             lifeHost.description += bioDesc;
             Logger.message(`${funcName}: Forced biosphere '${bioType}' on ${lifeHost.name} to ensure life exists in system.`);
+        }
+
+        // 3. Final Homeworld Guarantee & Sentience Check
+        const currentHW = planets.find(p => p.isHomeworld) || planets.find(p => p.moons.some(m => m.isHomeworld));
+        if (!currentHW && planets.length > 0) {
+            const fallbackIndex = Math.min(homeWorldIndex >= 0 ? homeWorldIndex : 0, planets.length - 1);
+            const fallbackHW = planets[fallbackIndex];
+            fallbackHW.isHomeworld = true;
+            fallbackHW.status = `Home World (Fallback)`;
+            if (fallbackHW.biosphere === 'None' || !fallbackHW.biosphere) {
+                fallbackHW.biosphere = 'Advanced Sentient Civilization';
+                fallbackHW.description += " This world hosts the primary sentient population of the system.";
+            }
+            Logger.warn(`${funcName}: No homeworld was designated in planetary loop. Forced fallback to planet ${fallbackIndex}.`);
         }
 
         Logger.end(funcName, `Generated ${planets.length} planets.`);
@@ -400,7 +426,7 @@ export class PlanetarySystemGenerator {
         };
     }
 
-    determinePlanetClassification(i, orbitalDistance, planetRadius, prng, systemData) {
+    async determinePlanetClassification(i, orbitalDistance, planetRadius, prng, systemData) {
         const funcName = 'PlanetarySystemGenerator.determinePlanetClassification';
         Logger.start(funcName, { planetIndex: i, distance: orbitalDistance });
         const specialSeed = prng.nextDouble();
@@ -462,11 +488,11 @@ export class PlanetarySystemGenerator {
         Logger.message(`${funcName}: Step 2 - Physical Properties`);
         const tempSeed = prng.nextDouble();
         const luminosity = this.getStarLuminosity(systemData.star?.starClass);
-        
+
         // Calculate Blackbody temperature approximation: T = 278 * (L^0.25) / (d^0.5)
         // This gives a baseline temperature in Kelvin
         const baseTemp = 278 * Math.pow(luminosity, 0.25) / Math.sqrt(orbitalDistance);
-        
+
         // Revised Gravity Calculation: More realistic scaling
         classification.gravity = planetRadius * (0.8 + innerSeed * 0.4); // 0.4 - 1.2 G roughly for terrestrials
 
@@ -510,17 +536,37 @@ export class PlanetarySystemGenerator {
         // --- 5. Apply Homeworld & Lore Overrides ---
         Logger.message(`${funcName}: Step 5 - Overrides`);
         if (i === systemData.homeWorldIndex) {
-            // Ensure homeworlds have a life-sustaining biosphere, but respect the generated environment.
-            if (!classification.biosphere || classification.biosphere === 'None' || classification.biosphere === 'Extinct') {
-                // Instead of a generic override, pick a plausible biosphere.
+            // Ensure homeworlds have a sentient-capable biosphere, but respect the generated environment and archetype.
+            const isPrimordial = systemData.speciesCore?.archetype === 'ARCHETYPE_PRIMORDIAL' || systemData.speciesKey === 'SPECIES_FIRST_RELIC';
+
+            if (isPrimordial) {
+                classification.biosphere = 'Ancient Technological Ruins';
+                classification.description = "The remnants of a once-great civilization, now nothing but shattered towers and echoing memories.";
+            } else {
+                // Always enforce a habitable/sentient biosphere for the Homeworld, overriding random generation
+                const temp = classification.temperature;
+                const innerSeed = prng.nextDouble();
+
+                // Instead of a generic override, pick a plausible sentient-tier biosphere.
                 if (classification.type.includes('Volcanic')) {
-                    classification.biosphere = 'Chemosynthetic Life';
+                    classification.biosphere = temp > 600 ? 'Hydrate-Lattice Civilization' : 'Magma-Surfing Sentients';
+                } else if (classification.type.includes('Gas')) {
+                    classification.biosphere = temp > 250 ? 'Living Plasma Intelligence' : 'Aether-Cloud Collective';
                 } else if (classification.type.includes('Ocean')) {
-                    classification.biosphere = 'Complex Aquatic Life';
+                    classification.biosphere = 'Abyssal Sentient Hive';
+                } else if (classification.type.includes('Ice')) {
+                    classification.biosphere = 'Sub-glacial Networked AI';
                 } else {
-                    classification.biosphere = 'Native Ecosystem'; // A more generic but active term
+                    // Variety for standard terrestrials
+                    if (innerSeed > 0.7) {
+                        classification.biosphere = 'Primitive Post-Technological Society';
+                    } else if (innerSeed > 0.4) {
+                        classification.biosphere = 'Sentient Global Ecosystem';
+                    } else {
+                        classification.biosphere = 'Advanced Sentient Civilization';
+                    }
                 }
-                Logger.message(`${funcName}: Homeworld at index ${i} was lifeless, upgraded biosphere to '${classification.biosphere}'.`);
+                Logger.message(`${funcName}: Homeworld at index ${i} biosphere enforced to '${classification.biosphere}'.`);
             }
 
             // Add resources appropriate for a homeworld
@@ -528,6 +574,22 @@ export class PlanetarySystemGenerator {
                 { name: "Water", grade: "Abundant", value: 20, description: "Abundant Water" }, // Or liquid equivalent
                 { name: "Construction Materials", grade: "Rich", value: 15, description: "Rich Minerals" }
             );
+
+            // APEX SENTIENT GENERATION
+            // If the homeworld has a sentient biosphere, generate the Apex species for it.
+            if (this.speciesGenerator && classification.biosphere && !classification.biosphere.includes('None') && !classification.biosphere.includes('Extinct')) {
+                const seeds = { n1: prng.nextDouble(), n2: prng.nextDouble(), n3: prng.nextDouble(), n4: prng.nextDouble() };
+                const apexSpecies = await this.speciesGenerator.generateApexSpeciesForBiosphere(classification.biosphere, seeds);
+                if (apexSpecies) {
+                    classification.apexSpecies = apexSpecies;
+                    classification.description += ` It is the cradle of the ${apexSpecies.commonName}, ${apexSpecies.physicalDescription || 'a unique local species'}.`;
+
+                    // If it matches the system's primary species key, enrich it
+                    if (systemData.speciesKey === apexSpecies.commonName) {
+                        systemData.speciesCore = { ...systemData.speciesCore, ...apexSpecies };
+                    }
+                }
+            }
         } else if (systemData.speciesKey === 'SPECIES_FIRST_RELIC') {
             classification.type = 'Relic World';
             classification.biosphere = 'None';
@@ -551,7 +613,7 @@ export class PlanetarySystemGenerator {
             // Map planet radius (0.5 - 1.5) to Chi (21 - 24)
             const planetChi = Math.floor(21 + (planetRadius - 0.5) * 3);
             const carryingCapacity = Sway.calculateCarryingCapacity(planetChi, classification.biosphere === 'Complex Flora/Fauna' ? 1.0 : 0.1);
-            
+
             // Determine population if inhabited
             if (systemData.speciesKey && systemData.speciesKey !== 'None' && classification.biosphere !== 'None') {
                 const successRate = 0.8; // High success for spacefaring
@@ -572,7 +634,7 @@ export class PlanetarySystemGenerator {
     generateGenericPlanetName(n1, n2, systemData) {
         const funcName = 'PlanetarySystemGenerator.generateGenericPlanetName';
         Logger.start(funcName);
-        
+
         const seed = `${n1}-${n2}`;
         let name;
 
@@ -587,7 +649,7 @@ export class PlanetarySystemGenerator {
                 const homeworld = systemData?.homeWorldName || "Terra";
                 // Strip "New" if already present to avoid "New New Terra"
                 const base = homeworld.replace(/^New\s+/, '');
-                name = `New ${base}`; 
+                name = `New ${base}`;
             } else if (n1 < 0.5) {
                 // Earth Location (Country/City/State)
                 name = this.nameGenerator.generateEarthLocation(seed);
@@ -644,13 +706,13 @@ export class PlanetarySystemGenerator {
         // Simple story generator based on planet type and society
         const themes = ['Conflict', 'Discovery', 'Mystery', 'Trade', 'Survival'];
         const theme = themes[Math.floor(prng.nextDouble() * themes.length)];
-        
+
         let plotHook = `The ${society} on ${name} is facing a ${theme}.`;
         if (classification.resources.length > 0) {
             const resource = classification.resources[0];
             plotHook += ` Control of the ${resource.name} deposits is a key factor.`;
         }
-        
+
         return {
             title: `${theme} on ${name}`,
             hook: plotHook,
@@ -660,25 +722,25 @@ export class PlanetarySystemGenerator {
 
     generateMoons(planetRadius, parentOrbitalDistance, seeds, hillSphere, rocheLimit, planetName, maxMoons) {
         const funcName = 'PlanetarySystemGenerator.generateMoons';
-        
+
         // T13 Harmonics for Moon Orbits based on Planet Name
         const T13NE = this.pluginManager?.getApi('T13', 'T13NE');
         const T13Geometry = T13NE?.getModule('T13Geometry');
         let harmonics = [];
-        
+
         if (T13Geometry && planetName) {
             const geo = T13Geometry.calculateFullGeo(planetName);
             if (geo && geo.GeoHarmonics && Array.isArray(geo.GeoHarmonics.Harmonic)) {
                 harmonics = geo.GeoHarmonics.Harmonic;
             }
         }
-        
+
         // Fallback if no harmonics available (e.g. T13 not loaded)
         if (harmonics.length === 0) {
-             const moonPRNG = ProcGen.createPRNG(seeds.join(','));
-             // Generate pseudo-harmonics
-             const count = Math.floor(moonPRNG.nextDouble() * 5) + 1;
-             for(let k=0; k<count; k++) harmonics.push(Math.floor(moonPRNG.nextDouble() * 13) + 1);
+            const moonPRNG = ProcGen.createPRNG(seeds.join(','));
+            // Generate pseudo-harmonics
+            const count = Math.floor(moonPRNG.nextDouble() * 5) + 1;
+            for (let k = 0; k < count; k++) harmonics.push(Math.floor(moonPRNG.nextDouble() * 13) + 1);
         }
 
         Logger.start(funcName, { planetName, harmonics });
@@ -695,39 +757,39 @@ export class PlanetarySystemGenerator {
             const moonSeed1 = moonPRNG.nextDouble();
             const moonSeed2 = moonPRNG.nextDouble();
             const nameSeed = moonPRNG.nextDouble();
-            
+
             // Ensure harmonic is a valid number and clamped to prevent massive orbits
             let hVal = Number(harmonics[i]);
             if (!Number.isFinite(hVal)) {
                 // Logger.warn(`PlanetarySystemGenerator: Invalid harmonic at index ${i}: ${harmonics[i]}. Defaulting to 1.`);
                 hVal = 1;
             }
-            
+
             const harmonic = Math.min(Math.max(1, hVal), 24);
 
             // Radius: Influenced by harmonic
             const sizeScale = 0.01 + (harmonic / 13) * 0.2; // 0.01 to 0.21 planet radius
             const moonRadius = sizeScale * planetRadius;
-            
+
             // Calculate Distance using Harmonic Resonance
             // Resonance factor: 1.1 to 2.4 based on harmonic
-            const resonance = 1.1 + (harmonic * 0.1); 
-            
+            const resonance = 1.1 + (harmonic * 0.1);
+
             // Keplerian spacing: a_next = a_prev * (resonance)^(2/3)
-            let moonDistance = currentOrbit * Math.pow(resonance, 2/3) * (0.95 + moonSeed2 * 0.1);
-            
+            let moonDistance = currentOrbit * Math.pow(resonance, 2 / 3) * (0.95 + moonSeed2 * 0.1);
+
             if (!Number.isFinite(moonDistance)) {
                 Logger.warn(`PlanetarySystemGenerator: Moon distance NaN for moon ${i}. Aborting moon generation.`);
                 break;
             }
-            
+
             currentOrbit = moonDistance;
-            
+
             // Generate Name
             let moonName = `Moon ${i + 1}`;
             if (this.nameGenerator && typeof this.nameGenerator.generate === 'function') {
-                 // Use a distinct seed for the name
-                 moonName = this.nameGenerator.generate('PLANET_NAMES', nameSeed);
+                // Use a distinct seed for the name
+                moonName = this.nameGenerator.generate('PLANET_NAMES', nameSeed);
             }
 
             // Determine Characteristics
@@ -751,25 +813,25 @@ export class PlanetarySystemGenerator {
             let description = 'A small, barren rock.';
 
             // Thresholds
-            const HABITABLE_SIZE_MIN = 0.2; 
+            const HABITABLE_SIZE_MIN = 0.2;
             const HABITABLE_ZONE_MIN = 0.8; // AU
             const HABITABLE_ZONE_MAX = 1.6; // AU
 
             if (!isRing && type !== 'Quasi-Satellite' && moonRadius >= 0.15) {
-                 if (moonRadius >= HABITABLE_SIZE_MIN && parentOrbitalDistance >= HABITABLE_ZONE_MIN && parentOrbitalDistance <= HABITABLE_ZONE_MAX) {
-                     if (moonSeed2 > 0.6) {
-                         type = 'Habitable Moon';
-                         atmosphere = 'Breathable';
-                         biosphere = 'Microbial';
-                         description = 'A large moon with a breathable atmosphere and simple life.';
-                     }
-                 } else if (parentOrbitalDistance > HABITABLE_ZONE_MAX) {
-                     type = 'Ice Moon';
-                     if (moonSeed2 > 0.5) {
-                         biosphere = 'Subsurface Ocean';
-                         description = 'An icy moon potentially harboring a subsurface ocean.';
-                     }
-                 }
+                if (moonRadius >= HABITABLE_SIZE_MIN && parentOrbitalDistance >= HABITABLE_ZONE_MIN && parentOrbitalDistance <= HABITABLE_ZONE_MAX) {
+                    if (moonSeed2 > 0.6) {
+                        type = 'Habitable Moon';
+                        atmosphere = 'Breathable';
+                        biosphere = 'Microbial';
+                        description = 'A large moon with a breathable atmosphere and simple life.';
+                    }
+                } else if (parentOrbitalDistance > HABITABLE_ZONE_MAX) {
+                    type = 'Ice Moon';
+                    if (moonSeed2 > 0.5) {
+                        biosphere = 'Subsurface Ocean';
+                        description = 'An icy moon potentially harboring a subsurface ocean.';
+                    }
+                }
             }
 
             moons.push({

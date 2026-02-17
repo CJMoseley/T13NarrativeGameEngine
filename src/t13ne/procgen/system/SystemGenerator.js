@@ -29,7 +29,7 @@ export class SystemGenerator {
             const galaxySeed = galaxyParams?.seed || '';
             const salt = galaxyParams?.salt || ''; 
             const uniqueId = star.id || `${star.x},${star.y},${star.z}`;
-            const seed = `${uniqueId}-${galaxySeed}-${salt}-system-lore`; // Removed Date.now() to ensure persistence
+            const seed = `---system-lore`; // Removed Date.now() to ensure persistence
             const prng = T13NE_PRNG.create(seed);
             n1 = prng.nextDouble();
             n2 = prng.nextDouble();
@@ -56,7 +56,7 @@ export class SystemGenerator {
         const safeNoise = { n1, n2, n3, n4 };
 
         // 1. Species Determination
-        Logger.message(`${funcName}: Step 1 - Species Determination`);
+        Logger.message(`: Step 1 - Species Determination`);
         let initialSpeciesKey = this.speciesGenerator.determineSpecies(star, safeNoise, galaxyParams);
         let primarySpeciesKey = initialSpeciesKey;
         let isRelicSystem = false;
@@ -92,10 +92,10 @@ export class SystemGenerator {
                 inhabitants.push('SPECIES_HUMANS');
             }
         }
-        Logger.message(`${funcName}: Primary Species: ${primarySpeciesKey}, Relic: ${isRelicSystem}, Inhabitants: ${inhabitants.join(', ')}`);
+        Logger.message(`: Primary Species: , Relic: , Inhabitants: ${inhabitants.join(', ')}`);
 
         // 2. Tech Level - Integrated with T13 Sway
-        Logger.message(`${funcName}: Step 2 - Tech Level`);
+        Logger.message(`: Step 2 - Tech Level`);
         const baseTech = (1 - star.r) * 0.5 + n2 * 0.5;
         // Map baseTech (0-1) to Chi (1-289 approx, though usually lower for systems)
         // Let's say max normal system tech is Chi 100 (Portal/Teleport)
@@ -105,7 +105,7 @@ export class SystemGenerator {
         const techLevelKey = swayTech.Type;
         const techDescription = swayTech.Sway_Type_Description;
 
-        let techString = `${techLevelKey} (Chi: ${chiLevel})`;
+        let techString = ` (Chi: )`;
 
         // Apply Magical Tech Costing if applicable (e.g. for high chi or specific species)
         const Sway = T13NE?.getModule('Sway');
@@ -114,18 +114,18 @@ export class SystemGenerator {
             techString += ` [Magical Tech Cost: ${magicCost.totalChi}]`;
         }
 
-        Logger.message(`${funcName}: Tech Level: ${techString}`);
+        Logger.message(`: Tech Level: `);
 
         // Generate a technobabble flavor for this system's specific tech advancement
         let techFlavor = "Unknown Tech";
         try {
             techFlavor = await this.scienceGenerator.generateTechnobabble(chiLevel, n3);
         } catch (e) {
-            Logger.warn(`${funcName}: ScienceGenerator failed.`, e);
+            Logger.warn(`: ScienceGenerator failed.`, e);
         }
 
         // 3. Narrative Generation
-        Logger.message(`${funcName}: Step 3 - Narrative Generation`);
+        Logger.message(`: Step 3 - Narrative Generation`);
         let speciesLore;
         const foundations = LoreData.speciesFoundations || [];
         const template = foundations.find(s => s.type === 'template' && (s.id === primarySpeciesKey || s.name === primarySpeciesKey));
@@ -196,7 +196,7 @@ export class SystemGenerator {
 
         await new Promise(r => setTimeout(r, 0)); // Yield before card operations
         // 2.5 Society Generation
-        Logger.message(`${funcName}: Step 4 - Society Generation`);
+        Logger.message(`: Step 4 - Society Generation`);
         let society;
         const cardSociety = this._generateSocietyFromCards(safeNoise);
         if (cardSociety) {
@@ -214,7 +214,7 @@ export class SystemGenerator {
                     const adj = adjList[adjIndex];
                     const noun = nounList[nounIndex];
                     if (adj && noun) {
-                        society = `${adj.charAt(0).toUpperCase() + adj.slice(1)} ${noun}`;
+                        society = `${adj.charAt(0).toUpperCase() + adj.slice(1)} `;
                     }
                 }
             }
@@ -223,7 +223,7 @@ export class SystemGenerator {
         if (inhabitants.length > 1) {
             society += " (Multi-species)";
         }
-        Logger.message(`${funcName}: Society: ${society}`);
+        Logger.message(`: Society: `);
 
         // 2.6 Historical Event Generation
         const historicalEvent = this._generateHistoricalEventFromCards();
@@ -247,7 +247,7 @@ export class SystemGenerator {
 
         if (this.characterGenerator) {
             // 1. Generate the Detailed System Archetype
-            Logger.message(`${funcName}: Generating System Archetype (Detailed)...`);
+            Logger.message(`: Generating System Archetype (Detailed)...`);
             try {
                 const archetypeSeed = n3 * 12345;
                 const speciesName = speciesLore ? speciesLore.commonName : 'Unknown Species';
@@ -273,7 +273,7 @@ export class SystemGenerator {
                     }
                     if (sourceFacets.length === 0) sourceFacets.push('Awe'); // Fallback
 
-                    Logger.message(`${funcName}: Generating ${numExtras} extras based on archetype...`);
+                    Logger.message(`: Generating  extras based on archetype...`);
                     for (let i = 0; i < numExtras; i++) {
                         const extraType = n4 > 0.9 ? 'Cast' : 'Chorus';
                         const seedFacet = sourceFacets[i % sourceFacets.length];
@@ -285,26 +285,26 @@ export class SystemGenerator {
                             });
                             await new Promise(r => setTimeout(r, 0)); // Yield
                             if (char) {
-                                char.description += ` A local reflecting the ${seedFacet} aspect of the system.`;
+                                char.description += ` A local reflecting the  aspect of the system.`;
                                 extras.push(char);
                             }
                         } catch (e) {
-                            Logger.warn(`${funcName}: CharacterGenerator failed for extra.`, e);
+                            Logger.warn(`: CharacterGenerator failed for extra.`, e);
                         }
                     }
                 }
             } catch (e) {
-                Logger.warn(`${funcName}: CharacterGenerator failed for archetype/extras.`, e);
+                Logger.warn(`: CharacterGenerator failed for archetype/extras.`, e);
             }
         }
 
-        Logger.message(`${funcName}: Step 5 - Description & Naming`);
+        Logger.message(`: Step 5 - Description & Naming`);
         let corporatePresence = null;
         if (this.corporationGenerator) {
             try {
                 corporatePresence = this.corporationGenerator.determineCorporatePresence(star, n4);
             } catch (e) {
-                Logger.warn(`${funcName}: CorporationGenerator failed.`, e);
+                Logger.warn(`: CorporationGenerator failed.`, e);
             }
         }
 
@@ -322,7 +322,7 @@ export class SystemGenerator {
         let systemNameArray;
         if (this.nameGenerator.generateSyllabicName && n4 > 0.3) { // 70% chance of unique syllabic name
              const flavor = n3 > 0.5 ? 'alien' : (n3 > 0.25 ? 'tech' : 'ancient');
-             const name = this.nameGenerator.generateSyllabicName(`${n1}-${n2}`, flavor);
+             const name = this.nameGenerator.generateSyllabicName(`-`, flavor);
              systemNameArray = [name, name, ""];
         } else {
              systemNameArray = await this.nameGenerator.generateSystemName(n1, n2, n3, nearbySpecies);
@@ -333,6 +333,14 @@ export class SystemGenerator {
         }
 
         const homeWorldNameArray = await this.nameGenerator.generateHomeworldName(systemNameArray[0], speciesLore.commonName, primarySpeciesKey, techLevelKey, n3, star, nearbySpecies);
+
+        // Sanitize potentially offensive or broken names
+        if (homeWorldNameArray && homeWorldNameArray.length > 0) {
+             if (typeof homeWorldNameArray[0] === 'string') {
+                 if (homeWorldNameArray[0].includes("Humans's")) homeWorldNameArray[0] = homeWorldNameArray[0].replace("Humans's", "Human");
+                 if (homeWorldNameArray[0].includes("Porno")) homeWorldNameArray[0] = homeWorldNameArray[0].replace("Porno", "Prime");
+             }
+        }
 
         // Add Geometry-based Society Description
         if (T13NE) {
@@ -387,7 +395,7 @@ export class SystemGenerator {
         const result = {
             name: systemNameArray[0], // Common name
             systemNameFull: systemNameArray, // Full name object
-            tech: `${techLevelKey} (${techFlavor})`,
+            tech: ` ()`,
             numPlanets: numPlanets,
             homeWorldIndex: homeWorldIndex,
             society: society,
@@ -517,12 +525,12 @@ export class SystemGenerator {
                 const adj = adjList[adjIndex];
                 const noun = nounList[nounIndex];
                 if (adj && noun) {
-                    societyName = `${adj.charAt(0).toUpperCase() + adj.slice(1)} ${noun}`;
+                    societyName = `${adj.charAt(0).toUpperCase() + adj.slice(1)} `;
                 }
             }
 
             return {
-                name: `${societyName} in an Age of ${ageData.Type}`,
+                name: ` in an Age of ${ageData.Type}`,
                 description: ageData.Description || ''
             };
         }
@@ -562,7 +570,7 @@ export class SystemGenerator {
                     speciesLore: { commonName: fallbackTemplate.name, descTemplate: fallbackTemplate.desc }
                 };
             } else {
-                Logger.error(`CRITICAL FALLBACK FAILURE: fallbackTemplate is invalid. Index: ${fallbackIndex}, n4: ${n4}. Defaulting to first available template.`);
+                Logger.error(`CRITICAL FALLBACK FAILURE: fallbackTemplate is invalid. Index: , n4: . Defaulting to first available template.`);
                 // This is an absolute last resort to prevent a crash. It grabs the first valid template.
                 const firstValidTemplate = availableTemplates[0];
                 result = {

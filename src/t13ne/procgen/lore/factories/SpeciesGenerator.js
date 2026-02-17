@@ -1,5 +1,6 @@
 import { LoreData } from '../LoreData.js';
 import { NameGenerator } from './NameGenerator.js';
+import { GalacticHistory } from '/src/t13ne/procgen/galaxy/GalacticHistory.js';
 import Logger from '../../../core/Logger.js';
 
 export class SpeciesGenerator {
@@ -10,6 +11,7 @@ export class SpeciesGenerator {
         this.pluginManager = pluginManager;
         this.nameGenerator = nameGenerator || new NameGenerator(pluginManager);
         this.speciesGeoData = null;
+        this.registeredSpecies = new Map(); // Track all generated/discovered species
         this._initSpeciesGeoData();
     }
 
@@ -115,10 +117,10 @@ export class SpeciesGenerator {
             // Await the generator (T13 is async, Fallback is sync but await handles both)
             const seedStr = `${n3 + (attempts * 0.01)}-${n4}-${n2}`;
             rawName = await this.nameGenerator.generateSpeciesName('Progenitor', seedStr);
-            
+
             // Handle T13 array format vs Fallback string format
             speciesName = Array.isArray(rawName) ? rawName[0] : rawName;
-            
+
             attempts++;
         } while (this.isNameBanned(speciesName) && attempts < 10);
 
@@ -133,11 +135,30 @@ export class SpeciesGenerator {
             commonName: speciesName,
             scientificName: scientificName,
             descTemplate: descTemplate,
-            archetype: archetype.name,
+            archetype: archetype.id, // Store the ID for easier lookup
+            archetypeName: archetype.name,
             traits: archetype.traits || [],
-            // The bodyPlan will now be determined later in _deriveTraitsFromHarmonics
+            // The bodyPlan will now be determined later in deriveTraitsFromHarmonics
             bodyPlan: null,
         };
+
+        // If biological, pick an animal base from the existing dataset to influence the body plan
+        if (archetype.traits.includes('BIOLOGICAL') || archetype.traits.includes('CARBON_BASED')) {
+            const animalBases = LoreData.naming.ANIMAL_BASES || [];
+            if (animalBases.length > 0) {
+                speciesLore.animalBase = animalBases[Math.floor(n2 * animalBases.length)];
+
+                // Update scientific name to reflect animal base using the mapping
+                const mapping = LoreData.naming.ANIMAL_TO_LATIN_MAPPING || {};
+                const latinBase = mapping[speciesLore.animalBase] || speciesLore.animalBase;
+                const parts = scientificName.split(' ');
+                speciesLore.scientificName = `${latinBase} ${parts[parts.length - 1] || 'progenitor'}`;
+            }
+        }
+
+        // 6. Derive harmonic traits
+        const namesToAnalyze = [speciesLore.scientificName, speciesLore.commonName].filter(Boolean);
+        this.deriveTraitsFromHarmonics(namesToAnalyze, speciesLore);
 
         // Generate descriptions immediately for procedural species
         this.enrichSpeciesLore(speciesLore);
@@ -179,6 +200,13 @@ export class SpeciesGenerator {
     }
 
     determineSpecies(star, noiseValues, galaxyParams) {
+        // 1. Check for historical presence from the Galactic Timeline
+        const historicalSpecies = GalacticHistory.getDominantSpeciesAt(star.x, star.y);
+        if (historicalSpecies) {
+            Logger.message(`SpeciesGenerator: Historical species ${historicalSpecies} found at coordinate ${Math.round(star.x)}, ${Math.round(star.y)}`);
+            return historicalSpecies;
+        }
+
         const { r, z } = star;
         const { n3 } = noiseValues;
         const zRatio = Math.abs(z / galaxyParams.galaxyRadius);
@@ -238,14 +266,14 @@ export class SpeciesGenerator {
         const T13NE = this.pluginManager?.getApi('T13', 'T13NE');
         const T13Geometry = T13NE?.getModule('T13Geometry');
         if (!T13Geometry) {
-             if (!this.pluginManager) {
-                 Logger.warn("SpeciesGenerator: PluginManager not available.");
-             } else if (!T13NE) {
-                 Logger.warn("SpeciesGenerator: T13NE API not found. T13 Plugin might not be loaded yet.");
-             } else {
-                 Logger.warn("SpeciesGenerator: T13Geometry module missing in T13NE.");
-             }
-             return loreObject;
+            if (!this.pluginManager) {
+                Logger.warn("SpeciesGenerator: PluginManager not available.");
+            } else if (!T13NE) {
+                Logger.warn("SpeciesGenerator: T13NE API not found. T13 Plugin might not be loaded yet.");
+            } else {
+                Logger.warn("SpeciesGenerator: T13Geometry module missing in T13NE.");
+            }
+            return loreObject;
         }
 
         const scientificAnalysis = T13Geometry.calculateFullGeo(scientificName) || { GeoHarmonics: {}, Facade: 0, Soul: 0, Initial: 0, GeometryNumber: 0 };
@@ -261,14 +289,15 @@ export class SpeciesGenerator {
         // --- T13 Tapestry Generation ---
         const T13Tapestry = T13NE?.getModule('Tapestry');
         if (T13Tapestry && !loreObject.tapestry) {
-             // Create a full FacetWeb Tapestry for this species
-             loreObject.tapestry = T13Tapestry.createSpeciesStatblock(loreObject.commonName);
+            // Create a full FacetWeb Tapestry for this species
+            loreObject.tapestry = T13Tapestry.createSpeciesStatblock(loreObject.commonName);
         }
 
         const keyData = T13Geometry.getKey(scientificAnalysis.GeoHarmonics.key);
 
-        const majorSpecies = ["Humans", "The Draco", "The Kathorri", "The Vemleki", "The First"];
-        const impressionNames = [names[1] || names[0], ...majorSpecies.filter(s => s !== loreObject.commonName)];
+        const majorSpecies = ["Humans", "The Draco", "The Kathorri", "The Vemleki", "The First", "The Convergent", "The Vex"];
+        const namesToCompare = names && names.length > 0 ? names : [loreObject.commonName];
+        const impressionNames = [namesToCompare[0], ...majorSpecies.filter(s => s !== loreObject.commonName)].slice(0, 6);
         const impressions = T13Geometry.calculateImpressions(impressionNames);
 
         const traits = {
@@ -285,7 +314,7 @@ export class SpeciesGenerator {
             facadeNumber: scientificAnalysis.Facade,
             soulNumber: scientificAnalysis.Soul,
             initialNumber: scientificAnalysis.Initial,
-            specificFrequency:keyData.Key.Frequency+commonAnalysis.GeometryNumber+commonAnalysis.Facade+commonAnalysis.Soul+commonAnalysis.Initial,
+            specificFrequency: keyData.Key.Frequency + commonAnalysis.GeometryNumber + commonAnalysis.Facade + commonAnalysis.Soul + commonAnalysis.Initial,
         };
 
         const impressionsGrid = impressions.grid;
@@ -294,9 +323,9 @@ export class SpeciesGenerator {
             const other = impressions.geolist[1].Name;
             const value = impressionsGrid[0][1].Value;
             if (value > 2) {
-                traits.impressionSummary = `They are generally friendly towards .`;
+                traits.impressionSummary = `They are generally friendly towards ${other}.`;
             } else if (value < -2) {
-                traits.impressionSummary = `They feel a deep-seated animosity towards .`;
+                traits.impressionSummary = `They feel a deep-seated animosity towards ${other}.`;
             }
         }
 
@@ -313,8 +342,8 @@ export class SpeciesGenerator {
         } else {
             const correctedTones = commonHarmonics.corrected || [];
             // Safety check: Ensure correctedTones is an array and has length
-            const totalLimbs = (correctedTones && correctedTones.length > 0) 
-                ? correctedTones[Math.floor(correctedTones.length / 2)] 
+            const totalLimbs = (correctedTones && correctedTones.length > 0)
+                ? correctedTones[Math.floor(correctedTones.length / 2)]
                 : 4;
 
             const scientificCorrectedTones = scientificHarmonics.corrected || [];
@@ -336,7 +365,7 @@ export class SpeciesGenerator {
 
             const archetypes = LoreData.speciesFoundations ? LoreData.speciesFoundations.filter(s => s.type === 'archetype') : [];
             let derivedArchetype = null;
-            
+
             if (archetypes.length > 0) {
                 const archetypeIndex = (traits.perfectHarmonic || 0) % archetypes.length;
                 derivedArchetype = archetypes[archetypeIndex];
@@ -348,22 +377,35 @@ export class SpeciesGenerator {
             // Specific archetypes have fixed body plans that override procedural ones.
             if (derivedArchetype && (derivedArchetype.id === 'ARCHETYPE_BIOLOGICAL_CRYSTALLINE' || derivedArchetype.id === 'ARCHETYPE_SYNTHETIC')) {
                 loreObject.bodyPlan = 'networked intelligence';
+            } else if (derivedArchetype && derivedArchetype.id === 'ARCHETYPE_BIOLOGICAL_PLASMA') {
+                loreObject.bodyPlan = 'coherent electromagnetic nebula';
+            } else if (derivedArchetype && derivedArchetype.id === 'ARCHETYPE_BIOLOGICAL_ENERGETIC') {
+                loreObject.bodyPlan = 'luminescent photonic pattern';
+            } else if (derivedArchetype && derivedArchetype.id === 'ARCHETYPE_BIOLOGICAL_GASEOUS') {
+                loreObject.bodyPlan = 'atmospheric filter-feeding leviathan';
+            } else if (derivedArchetype && derivedArchetype.id === 'ARCHETYPE_BIOLOGICAL_SILICON' && (traits.limbCount || 0) < 2) {
+                loreObject.bodyPlan = 'monolithic geological entity';
             } else {
                 // Attempt to generate a body plan from Lea cards first.
                 const leaData = this._generateBodyPlanFromLeaCards();
                 if (leaData) {
                     loreObject.bodyPlan = leaData.bodyPlan;
                     loreObject.planetAffinity = leaData.animalCategory; // Store the affinity
+                } else if (loreObject.animalBase) {
+                    // Use the animal base from the existing naming dataset
+                    loreObject.bodyPlan = `a sentient species with physiology reminiscent of a ${loreObject.animalBase.toLowerCase()}`;
                 } else {
                     // Fallback to harmonic-based description if card generation fails.
                     let bodyPlanStr = '';
                     if (roleSpecialized > 0) bodyPlanStr += 'Winged ';
-                    if (roleLocomotive <= 2) bodyPlanStr += 'Biped';
-                    else if (roleLocomotive <= 4) bodyPlanStr += 'Quadruped';
-                    else if (roleLocomotive <= 6) bodyPlanStr += 'Hexapod';
-                    else if (roleLocomotive <= 8) bodyPlanStr += 'Octopod';
-                    else bodyPlanStr += 'Myriapod';
-                    if (roleDominant > 0) bodyPlanStr += ` with ${roleDominant} primary manipulator${roleDominant > 1 ? 's' : ''}`;
+                    if (roleLocomotive <= 2) bodyPlanStr += (traits.limbCount >= 4 ? 'Centauroid' : 'Bipedal');
+                    else if (roleLocomotive <= 4) bodyPlanStr += 'Quadrupedal';
+                    else if (roleLocomotive <= 6) bodyPlanStr += 'Hexapedal';
+                    else if (roleLocomotive <= 8) bodyPlanStr += 'Octopedal';
+                    else bodyPlanStr += 'Multi-limbed';
+
+                    if (roleDominant > 0) bodyPlanStr += ` ${roleDominant > 1 ? 'poly-dexterous' : 'dexterous'}`;
+                    bodyPlanStr += ' morphology';
                     loreObject.bodyPlan = bodyPlanStr.trim();
                 }
             }
@@ -373,12 +415,118 @@ export class SpeciesGenerator {
         loreObject.color = '0x' + colorRef.substring(1);
 
         loreObject.derivedTraits = traits;
-        
-        // Generate descriptions after traits are derived
         this.enrichSpeciesLore(loreObject);
-        
         return loreObject;
+    }
 
+    /**
+     * Generates a species that fits a specific planetary biosphere.
+     * @param {string} biosphere - The biosphere classification (e.g. "Living Plasma Intelligence").
+     * @param {object} seeds - The noise values to ensure deterministic generation.
+     * @returns {object} The generated species lore object.
+     */
+    async generateApexSpeciesForBiosphere(biosphere, seeds) {
+        const { n1, n2, n3, n4 } = seeds;
+        let archetypeId = 'ARCHETYPE_BIOLOGICAL_CARBON'; // Default
+
+        // 1. Redundancy Check: If we already have an Apex species for this exact biological niche, return it.
+        for (const species of this.registeredSpecies.values()) {
+            if (species.originBiosphere === biosphere && species.isApex) {
+                return species;
+            }
+        }
+
+        // Map biosphere to archetype
+        const b = biosphere.toLowerCase();
+        if (b.includes('plasma')) archetypeId = 'ARCHETYPE_BIOLOGICAL_PLASMA';
+        else if (b.includes('magma') || b.includes('silicon') || b.includes('hydrate')) archetypeId = 'ARCHETYPE_BIOLOGICAL_SILICON';
+        else if (b.includes('energetic') || b.includes('aether')) archetypeId = 'ARCHETYPE_BIOLOGICAL_ENERGETIC';
+        else if (b.includes('gaseous') || b.includes('atmospheric')) archetypeId = 'ARCHETYPE_BIOLOGICAL_GASEOUS';
+        else if (b.includes('crystalline')) archetypeId = 'ARCHETYPE_BIOLOGICAL_CRYSTALLINE';
+
+        const foundations = LoreData.speciesFoundations || [];
+        const archetype = foundations.find(s => s.id === archetypeId);
+
+        if (!archetype) {
+            Logger.warn(`SpeciesGenerator: Archetype ${archetypeId} not found for biosphere ${biosphere}.`);
+            return null;
+        }
+
+        // Determine animal base for biological species
+        let animalBase = null;
+        const T13NE = this.pluginManager?.getApi('T13', 'T13NE');
+        const T13NE_PRNG = T13NE?.getModule('PRNG');
+
+        if (archetypeId === 'ARCHETYPE_BIOLOGICAL_CARBON') {
+            const bases = LoreData.naming.ANIMAL_BASES || [];
+            if (bases.length > 0) {
+                const prng = T13NE_PRNG ? T13NE_PRNG.create(`${n1}-${biosphere}`) : { nextDouble: () => Math.random() };
+                animalBase = bases[Math.floor(prng.nextDouble() * bases.length)];
+            }
+        }
+
+        const rawName = await this.nameGenerator.generateAlienName(`${n1}-${n2}-${biosphere}`);
+        const speciesName = Array.isArray(rawName) ? rawName[0] : rawName;
+
+        // Generate Scientific Name
+        let scientificName = '';
+        const prngName = T13NE_PRNG ? T13NE_PRNG.create(`${n3}-${n4}-${archetypeId}`) : { nextDouble: () => Math.random() };
+
+        if (animalBase) {
+            const latinPrefix = LoreData.naming.ANIMAL_TO_LATIN_MAPPING?.[animalBase] || animalBase;
+            scientificName = `${latinPrefix} Sapiens`;
+        } else {
+            // Specialized exotic naming
+            let prefix = 'Exoticus';
+            if (archetypeId === 'ARCHETYPE_BIOLOGICAL_PLASMA') prefix = 'Plasmis';
+            else if (archetypeId === 'ARCHETYPE_BIOLOGICAL_ENERGETIC') prefix = 'Photis';
+            else if (archetypeId === 'ARCHETYPE_BIOLOGICAL_GASEOUS') prefix = 'Vapor';
+            else if (archetypeId === 'ARCHETYPE_BIOLOGICAL_SILICON') prefix = 'Crystallum';
+
+            const suffixes = ['Cosmicus', 'Nebulae', 'Electricus', 'Astrum', 'Vagus', 'Aeturnus'];
+            const suffix = suffixes[Math.floor(prngName.nextDouble() * suffixes.length)];
+            scientificName = `${prefix} ${suffix}`;
+        }
+
+        const speciesLore = {
+            commonName: speciesName,
+            scientificName: scientificName,
+            descTemplate: archetype.desc,
+            archetype: archetype.id,
+            archetypeName: archetype.name,
+            traits: archetype.traits || [],
+            originBiosphere: biosphere,
+            animalBase: animalBase,
+            isApex: true,
+            bodyPlan: null
+        };
+
+        // Derive traits
+        const namesToAnalyze = [scientificName, speciesName].filter(Boolean);
+        this.deriveTraitsFromHarmonics(namesToAnalyze, speciesLore);
+
+        this.registerSpecies(speciesLore);
+
+        return speciesLore;
+    }
+
+    /**
+     * Registers a species in the generator's internal registry.
+     * @param {object} species - The species lore object.
+     */
+    registerSpecies(species) {
+        if (!species || !species.commonName) return;
+        this.registeredSpecies.set(species.commonName, species);
+        Logger.message(`SpeciesGenerator: Registered species ${species.commonName} (${species.archetypeName})`);
+    }
+
+    /**
+     * Gets a registered species by name.
+     * @param {string} name - The common name of the species.
+     * @returns {object|null}
+     */
+    getRegisteredSpecies(name) {
+        return this.registeredSpecies.get(name) || null;
     }
 
     /**
@@ -420,7 +568,7 @@ export class SpeciesGenerator {
         if (bodyParts.size === 0) {
             return null; // Not enough data to build a plan
         }
-        
+
         // Determine the most common category to set an affinity
         let dominantCategory = null;
         let maxCount = 0;
@@ -537,7 +685,7 @@ export class SpeciesGenerator {
         if (scientificNamingRules.name) {
             return scientificNamingRules.name;
         }
-        
+
         if (scientificNamingRules.type === "hybrid") {
             const parent1Template = LoreData.speciesFoundations.find(s => s.type === 'template' && s.name === scientificNamingRules.parent1Key);
             if (!parent1Template || !parent1Template.scientificNaming?.name) {
@@ -585,9 +733,6 @@ export class SpeciesGenerator {
                 }
                 const selectedAnimalBase = parent2SourceArray[Math.floor(n1 * parent2SourceArray.length)];
                 parent2_latin = selectedAnimalBase;
- if (scientificNamingRules.name) {
-            return scientificNamingRules.name;
-        }
                 if (scientificNamingRules.parent2Mapping) {
                     const mapping = namingData[scientificNamingRules.parent2Mapping];
                     parent2_latin = mapping[selectedAnimalBase] || selectedAnimalBase;

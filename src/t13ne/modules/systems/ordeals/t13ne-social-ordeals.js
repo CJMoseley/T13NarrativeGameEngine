@@ -20,9 +20,9 @@ class T13NE_SocialOrdeals {
     async initialize() {
         if (this.initialized) return;
         try {
-            this.actions = await CodexLoader.getData('socialOrdealActions') || [];
-            this.levels = await CodexLoader.getData('socialOrdealLevels') || [];
-            this.interactionTypes = await CodexLoader.getData('interactionTypes') || [];
+            this.actions = await CodexLoader.getData('ordeals', 'socialordeals/socialOrdealActions.json') || [];
+            this.levels = await CodexLoader.getData('ordeals', 'socialordeals/socialOrdealLevels.json') || [];
+            this.interactionTypes = await CodexLoader.getData('ordeals', 'socialordeals/interactionTypes.json') || [];
             this.initialized = true;
             Logger.message('T13NE_SocialOrdeals: Initialized successfully.');
         } catch (error) {
@@ -37,7 +37,7 @@ class T13NE_SocialOrdeals {
      * @returns {object} Impression data { level: number, description: string }
      */
     calculateZerothImpression(observer, subject) {
-        let impressionLevel = 0; 
+        let impressionLevel = 0;
         let description = "Neutral";
 
         if (observer.geometry && subject.geometry) {
@@ -50,10 +50,10 @@ class T13NE_SocialOrdeals {
                     impressionLevel += 1;
                 }
                 // Check Dissonants
-                 if (harmonics.Dissonant && harmonics.Dissonant.includes(subGeoNum)) {
+                if (harmonics.Dissonant && harmonics.Dissonant.includes(subGeoNum)) {
                     impressionLevel -= 1;
                 }
-                
+
                 // Special Harmonics
                 if (harmonics.Perfect === subGeoNum) impressionLevel += 2;
                 if (harmonics.Wolf === subGeoNum) impressionLevel += 1;
@@ -83,7 +83,7 @@ class T13NE_SocialOrdeals {
 
         if (actor.geometry && target.geometry) {
             const targetGeoNum = target.geometry.Geo ? target.geometry.Geo.Number : null;
-            
+
             // Soul Geometry Attraction
             if (actor.geometry.Soul === targetGeoNum) {
                 successLevels++;
@@ -132,20 +132,20 @@ class T13NE_SocialOrdeals {
      */
     async performSocialAction(actor, target, actionName, options = {}) {
         const actionData = this.actions.find(a => a.Name === actionName);
-        
+
         const Tests = T13NE.getModule('Tests');
         if (!Tests) return { success: false, message: "Tests module not loaded." };
 
         // Determine Facet from actionData or options, default to Dominion
         const facet = options.facet || (actionData ? actionData.Facet : 'Dominion');
-        
+
         // Difficulty might be based on Target's Social Defence or Impression
         // Default difficulty 10 if not specified
         let difficulty = options.difficulty || 10;
-        
+
         // Apply Social Modifiers
         const modifiers = this.getSocialModifiers(actor, target);
-        
+
         // Perform Test
         const result = await Tests.performTest('Dice', actor, {
             facet: facet,
@@ -171,7 +171,7 @@ class T13NE_SocialOrdeals {
     updateImpression(observer, subject, change) {
         if (!observer.impressions) observer.impressions = {};
         const subjectId = subject.id || subject.name;
-        
+
         if (observer.impressions[subjectId] === undefined) {
             const zeroth = this.calculateZerothImpression(observer, subject);
             observer.impressions[subjectId] = {
@@ -180,18 +180,18 @@ class T13NE_SocialOrdeals {
                 history: []
             };
         }
-        
+
         // Handle legacy format if it exists (just a number)
         if (typeof observer.impressions[subjectId] === 'number') {
-             const val = observer.impressions[subjectId];
-             observer.impressions[subjectId] = { current: val, first: val, history: [] };
+            const val = observer.impressions[subjectId];
+            observer.impressions[subjectId] = { current: val, first: val, history: [] };
         }
 
         const record = observer.impressions[subjectId];
         record.current += change;
         // Clamp between -10 and 10
         record.current = Math.max(-10, Math.min(10, record.current));
-        
+
         Logger.message(`T13NE_SocialOrdeals: ${observer.name}'s impression of ${subject.name} is now ${record.current}.`);
     }
 
@@ -226,14 +226,14 @@ class T13NE_SocialOrdeals {
             // And target gains +1 additional (so reliefAmount + 1? No, rule says target gains +1 additional stress)
             // Wait, "target... will Gain an additional +1 Stress".
             // Implies target gains (reliefAmount + 1).
-            
+
             // Relieve actor
             // Simplified: relieve from first available overstressed die
             if (actor.stressState) {
-                 for (const dieId in actor.stressState) {
-                     if (reliefAmount <= 0) break;
-                     await Stress.relieveStress(actor, dieId, reliefAmount);
-                 }
+                for (const dieId in actor.stressState) {
+                    if (reliefAmount <= 0) break;
+                    await Stress.relieveStress(actor, dieId, reliefAmount);
+                }
             }
 
             // Add to target
@@ -250,7 +250,7 @@ class T13NE_SocialOrdeals {
      */
     applyPsychologicalDefence(character, defenceType, attack) {
         Logger.message(`T13NE_SocialOrdeals: ${character.name} uses ${defenceType} against ${attack.emotion || 'Attack'}.`);
-        
+
         let result = { mitigated: false, stressCost: 0, narrative: '' };
 
         switch (defenceType) {
@@ -283,7 +283,7 @@ class T13NE_SocialOrdeals {
             default:
                 result.narrative = `${character.name} attempts ${defenceType}.`;
         }
-        
+
         return result;
     }
 

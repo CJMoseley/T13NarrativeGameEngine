@@ -16,7 +16,7 @@ export class CharacterCatalyst {
         this.stickCommand = data.stickCommand || ''; // Command to execute on failure/ignore
         this.bluff = data.bluff || ''; // Hidden info
         // Score defaults to sum of carrot and stick values if not explicit
-        this.score = data.score || (this.carrotValue + this.stickValue); 
+        this.score = data.score || (this.carrotValue + this.stickValue);
         this.source = data.source || 'Internal'; // Internal, Plot, Pact, Event
     }
 }
@@ -27,7 +27,7 @@ class T13NE_Catalysts {
         this.initialized = false;
         this.t13ne = null;
         this.prng = Math; // Could use T13Dice.RNG if imported, but Math is fine for simple selection
-        
+
         // Component-based library for assembling catalysts
         this.catalystComponents = {
             "Self-Preservation": {
@@ -253,7 +253,7 @@ class T13NE_Catalysts {
         if (this.initialized) return;
         this.t13ne = t13ne;
         try {
-            this.catalystTypes = await CodexLoader.getData('character', 'characterCatalysts.json') || [];
+            this.catalystTypes = await CodexLoader.getData('characters', 'characterCatalysts.json') || [];
             this.initialized = true;
             Logger.message('T13NE_Catalysts: Initialized.');
         } catch (error) {
@@ -265,32 +265,32 @@ class T13NE_Catalysts {
         // Apply component-based assembly if type matches and fields are missing
         if (data.type && this.catalystComponents[data.type]) {
             const components = this.catalystComponents[data.type];
-            
+
             // Pick a random Factor if not provided
             if (!data.factor) data.factor = this.getRandomElement(components.factors);
-            
+
             // Randomly decide structure: Carrot only, Stick only, or Both.
             // Bias towards having at least one.
             const hasCarrot = data.carrot || Math.random() > 0.3;
             const hasStick = data.stick || (!hasCarrot) || Math.random() > 0.3;
-            
+
             if (hasCarrot && !data.carrot) {
                 const c = this.getRandomElement(components.carrots);
                 data.carrot = c.text;
                 data.carrotValue = c.value;
                 data.carrotCommand = c.command;
             }
-            
+
             if (hasStick && !data.stick) {
                 const s = this.getRandomElement(components.sticks);
                 data.stick = s.text;
                 data.stickValue = s.value;
                 data.stickCommand = s.command;
             }
-            
+
             // Bluffs are strictly optional (30% chance if not specified)
             if (!data.bluff && Math.random() > 0.7) {
-                 data.bluff = this.getRandomElement(components.bluffs);
+                data.bluff = this.getRandomElement(components.bluffs);
             }
         }
         return new CharacterCatalyst(data);
@@ -375,7 +375,7 @@ class T13NE_Catalysts {
 
         // Persona
         if (character.personaDetails) {
-             space.addEntity({
+            space.addEntity({
                 id: 'persona_mask',
                 name: `Persona: ${character.personaDetails.Name}`,
                 type: 'InternalizedCharacter',
@@ -386,7 +386,7 @@ class T13NE_Catalysts {
 
         // Shadow
         if (character.personaDetails && character.personaDetails.Shadow) {
-             space.addEntity({
+            space.addEntity({
                 id: 'shadow_self',
                 name: 'The Shadow',
                 type: 'InternalizedCharacter',
@@ -408,14 +408,14 @@ class T13NE_Catalysts {
                     description: `Factor: ${cat.factor}\nCarrot: ${cat.carrot} (${cat.carrotValue})\nStick: ${cat.stick} (${cat.stickValue})`,
                     facets: [cat.type],
                     catalystData: cat
-                }, { 
-                    x: Math.cos(angle) * radius, 
-                    y: Math.sin(angle) * radius, 
-                    z: 0 
+                }, {
+                    x: Math.cos(angle) * radius,
+                    y: Math.sin(angle) * radius,
+                    z: 0
                 });
             });
         }
-        
+
         Logger.message(`T13NE_Catalysts: Populated Psychosocial Space for ${character.name}.`);
     }
 
@@ -429,7 +429,7 @@ class T13NE_Catalysts {
         // Calculate effective scores based on Carrot and Stick values
         // High stick values (Peril) often outweigh Carrots in immediate collisions (Self-preservation)
         // But high Carrots (Ambition) can override low Sticks.
-        
+
         const getEffectiveScore = (cat) => {
             let s = cat.score || (cat.carrotValue + cat.stickValue);
             // Bluffs might inflate perceived score, or deflate if known? 
@@ -439,7 +439,7 @@ class T13NE_Catalysts {
 
         let score1 = getEffectiveScore(cat1);
         let score2 = getEffectiveScore(cat2);
-        
+
         const diff = score1 - score2;
         let result = { winner: null, action: '', description: '' };
 
@@ -464,12 +464,12 @@ class T13NE_Catalysts {
                 result.description = `${cat1.name} and ${cat2.name} merge into a complex motivation.`;
             }
         }
-        
+
         // Append command info to description for debugging/narrative use
         if (result.winner) {
             result.description += ` Potential Outcome: ${result.winner.carrot} (Carrot) or ${result.winner.stick} (Stick).`;
         }
-        
+
         return result;
     }
 }

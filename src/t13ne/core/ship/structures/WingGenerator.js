@@ -290,9 +290,22 @@ export const generateWings = (context) => {
         if (random() > 0.6) {
             const canardW = baseSpan * 0.4;
             const canardL = baseRootChord * 0.3;
-            const cX = attachX * 0.8;
-            const canardSweep = canardL * 0.4;
-            attachComponent('fin_front', [cX, 0, canardZ], [0, 0, 0], 'wedge', { span: canardW, rootChord: canardL, sweep: canardSweep, depth: 0.15, centered: false }, symOverride);
+            
+            // Recalculate attachment point for canards at their specific Z to prevent floating
+            let cX = attachX * 0.8; 
+            let canardAttached = false;
+            if (getSurfacePoint) {
+                const hit = getSurfacePoint(components, [50, 0, canardZ], [-1, 0, 0], ['fuselage', 'hull', 'spine']);
+                if (hit) {
+                    cX = hit.x - 0.2; // Embed slightly
+                    canardAttached = true;
+                }
+            }
+
+            if (canardAttached) {
+                const canardSweep = canardL * 0.4;
+                attachComponent('fin_front', [cX, 0, canardZ], [0, 0, 0], 'wedge', { span: canardW, rootChord: canardL, sweep: canardSweep, depth: 0.15, centered: false }, symOverride);
+            }
         }
 
         if (random() > 0.4) {

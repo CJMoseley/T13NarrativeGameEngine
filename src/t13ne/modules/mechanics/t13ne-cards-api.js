@@ -105,6 +105,19 @@ class T13NECardsAPI {
     }
 
     /**
+     * Reseeds the master deck with a new seed.
+     * @param {string} seed 
+     */
+    reseedMasterDeck(seed) {
+        this.seed = seed;
+        PRNG.setSeed(seed);
+        this.deck = new Deck(seed);
+        // Re-add active source decks to the new deck instance
+        // This assumes sourceDecks are already loaded in memory
+        Logger.message("T13NECardsAPI: Master Deck reseeded:", seed);
+    }
+
+    /**
      * Loads the base set of cards (from cards.json) as a source deck.
      * @param {string} deckId - ID for this source deck.
      * @param {string} backColor - Color for the back of cards from this deck.
@@ -391,9 +404,10 @@ class T13NECardsAPI {
     /**
      * Draws cards for a specific spread defined in cardspreads.json.
      * @param {string} spreadId - The ID of the spread to use (e.g., "three-card-past-present-future").
+     * @param {object} [options={}] - Optional overrides or context (e.g. seed).
      * @returns {{cards: {card: Card, position: object}[], diceRoll: number|null, topDiscard: Card|null, spreadDefinition: object|null}|null} An object containing drawn cards, dice roll, top discard, and the spread definition.
      */
-    getCardSpread(spreadId) {
+    getCardSpread(spreadId, options = {}) {
         if (!this.isInitialized || !this.deck) {
             Logger.error('T13NECardsAPI: Not initialized or deck not loaded. Call initialize() first.');
             return null;
@@ -406,16 +420,29 @@ class T13NECardsAPI {
         }
 
         const { numCards, shufflePatterns, includeDiceRoll, cardPositions } = spreadDef;
+        let drawingDeck = this.deck;
+        const seed = options.seed || null;
 
-        if (this.deck.currentDeck.length < (numCards || 1)) {
-            this.deck.reset(shufflePatterns); // Reset if not enough cards
+        if (seed) {
+            // Create a temporary seeded deck for this specific draw
+            drawingDeck = new Deck(seed);
+            // Copy source decks from master deck
+            for (const [id, data] of this.deck.sourceDecks.entries()) {
+                drawingDeck.sourceDecks.set(id, data);
+            }
+            drawingDeck.reset(shufflePatterns || ['fisherYates']);
         }
-        const drawnCards = this.deck.draw(numCards);
-        Logger.message(`T13NECardsAPI: Drawn ${drawnCards.length} cards for spread "${spreadId}".`);
+
+        if (drawingDeck.currentDeck.length < (numCards || 1)) {
+            drawingDeck.reset(shufflePatterns || ['fisherYates']); // Reset if not enough cards
+        }
+        const drawnCards = drawingDeck.draw(numCards);
+        Logger.message(`T13NECardsAPI: Drawn ${drawnCards.length} cards for spread "${spreadId}"${seed ? ` (Seeded: ${seed})` : ''}.`);
 
         let diceResult = null;
         if (includeDiceRoll) {
-            diceResult = dice.RNG(1, 6); // Example: Roll a d6
+            // If using a seed, use the drawingDeck's PRNG for dice
+            diceResult = seed ? drawingDeck.prng.nextInt(1, 6) : dice.RNG(1, 6);
             Logger.message(`T13NECardsAPI: Dice Roll: ${diceResult}`);
         }
 
@@ -500,12 +527,15 @@ class T13NECardsAPI {
     /**
      * Generates a composite spread made of multiple smaller spreads.
      * @param {string} spreadId - The ID of the composite spread (e.g., 'frame-act').
-     * @returns {object|null} An object containing the named sub-spreads.
+     * @param {object} [options={}] - Options including 'recursive', 'epics', 'volumes', etc.
+     * @returns {object|null} An object containing the named sub-spreads/components.
      */
     getCompositeSpread(spreadId, options = {}) {
         // This logic handles hierarchical spreads
+        const isRecursive = options.recursive || false;
 
         // 1. SCENE LEVEL COMPOSITES (Acts)
+        // These are "leaf" composites that draw actual cards.
         if (spreadId === 'frame-act') {
             const numSides = options.sides || 2;
             const hooks = [];
@@ -575,38 +605,62 @@ class T13NECardsAPI {
 
         // 2. STORY LEVEL (Composed of Acts)
         if (spreadId === 'story-3-act') {
+            const components = {};
+            if (isRecursive) {
+                const seed = options.seed;
+                components.frame = this.getCompositeSpread('frame-act', { ...options, seed: seed ? `${seed}_frame` : null });
+                components.loom = this.getCompositeSpread('loom-act', { ...options, seed: seed ? `${seed}_loom` : null });
+                components.zenith = this.getCompositeSpread('zenith-act', { ...options, seed: seed ? `${seed}_zenith` : null });
+            } else {
+                components.frame = { name: 'Frame Act', variety: 'Frame', childSpreadId: 'frame-act' };
+                components.loom = { name: 'Loom Act', variety: 'Loom', childSpreadId: 'loom-act' };
+                components.zenith = { name: 'Zenith Act', variety: 'Zenith', childSpreadId: 'zenith-act' };
+            }
+
             return {
                 name: '3 Act Story Spread',
                 type: 'Story',
-                components: {
-                    frame: this.getCompositeSpread('frame-act', options),
-                    loom: this.getCompositeSpread('loom-act', options),
-                    zenith: this.getCompositeSpread('zenith-act', options)
-                },
+                components: components,
                 description: "A standard 3-Act story structure, comprising a Frame (setup), Loom (confrontation), and Zenith (resolution)."
             };
         }
 
-        // 3. HIGHER LEVELS (Recursive)
-        // Helper to generate children
+        // 3. HIGHER LEVELS (Structural)
+        // Helper to generate children definitions
         const generateChildren = (childSpreadId, count, namePrefix) => {
             const children = [];
-            for (let i = 0; i < count; i++) {
-                children.push({
-                    name: `${namePrefix} ${i + 1}`,
-                    spread: this.getCompositeSpread(childSpreadId, options)
-                });
+            const effectiveCount = options.singleLine ? 1 : count;
+
+            for (let i = 0; i < effectiveCount; i++) {
+                const child = {
+                    name: (options.singleLine && options.focus) ? `${options.focus}` : `${namePrefix} ${i + 1}`,
+                    childSpreadId: childSpreadId
+                };
+                if (isRecursive) {
+                    child.spread = this.getCompositeSpread(childSpreadId, options);
+                }
+                children.push(child);
             }
             return children;
         };
 
         if (spreadId === 'arc') {
-            const numStories = options.stories || 2;
+            const numChapters = options.chapters || 3;
             return {
                 name: 'Story Arc',
                 type: 'Arc',
+                components: { chapters: generateChildren('chapter', numChapters, 'Chapter') },
+                description: `An Arc, composed of ${numChapters} Chapters.`
+            };
+        }
+
+        if (spreadId === 'chapter') {
+            const numStories = options.stories || 3;
+            return {
+                name: 'Chapter',
+                type: 'Chapter',
                 components: { stories: generateChildren('story-3-act', numStories, 'Story line') },
-                description: `An Arc, composed of ${numStories} interwoven story lines.`
+                description: `A Chapter, composed of ${numStories} interwoven story lines.`
             };
         }
 
@@ -631,12 +685,21 @@ class T13NECardsAPI {
         }
 
         if (spreadId === 'cycle') {
-            const numEpics = options.epics || 3;
+            const components = {};
+            if (isRecursive) {
+                components.history = this.getCompositeSpread('epic', { ...options, variety: 'Frame' });
+                components.current = this.getCompositeSpread('epic', { ...options, variety: 'Loom' });
+            } else {
+                // Specialized Epics: Historical Frame governs all history; Current Loom governs current events.
+                components.history = { name: 'Historical Frame', variety: 'Frame', childSpreadId: 'epic' };
+                components.current = { name: 'Current Loom', variety: 'Loom', childSpreadId: 'epic' };
+                // zenith-epic is omitted as the Galactic Plot does not conclude within game scope.
+            }
             return {
                 name: 'Cycle',
                 type: 'Cycle',
-                components: { epics: generateChildren('epic', numEpics, 'Epic') },
-                description: `A Cycle, composed of ${numEpics} Epics.`
+                components: components,
+                description: `The Galactic Cycle, providing the framework for all history and current events.`
             };
         }
 

@@ -12,6 +12,8 @@ import T13Name from "../characters/t13ne-names.js";
 import T13NE_Reasoning from '../ai/t13ne-reasoning.js';
 import T13NE_StateMachine from '../systems/t13ne-state-machine.js';
 import T13LoreManager from "./t13ne-lore.js"; // Import Lore Manager
+import PRNG from "../systems/t13ne-prng.js";
+import ProcGen from "../../procgen/ProcGen.js";
 
 
 import { SuperKnot } from "../mechanics/t13ne-knots.js";
@@ -22,16 +24,20 @@ import { SuperKnot } from "../mechanics/t13ne-knots.js";
  */
 class T13Plot extends SuperKnot {
     constructor(data, t13ne = null) {
+        // Ensure lowercase 'name' is present for the SuperKnot/KnotWork constructor
+        if (!data.name && data.Name) data.name = data.Name;
+
         super(t13ne?.getModule('Codex'), data);
 
         this.t13ne = t13ne; // Reference to main system for commands
+        this.Name = this.name || data.Name || data.name || "Unnamed Plot";
         this.memory = data.memory || { events: [] };
         this.subPlots = [];
         this.plotDescendants = [];
         this.characterArcs = data.characterArcs || []; // Linked Character Arcs
         this.tensionLevel = data.TensionLevel || 2; // Default Low/Medium
         this.dramaPool = [];
-        this.yarnCards = [];
+        this.yarnCards = data.yarnCards || [];
         this.characters = data.Hooked_Characters || [];
         this.motifs = data.Motifs || [];
         this.significator = data.Significator || null;
@@ -45,6 +51,7 @@ class T13Plot extends SuperKnot {
         this.yarnPoints = data.yarnPoints || 5;
         this.reports = [];
         this.parentPlot = data.parentPlot || null;
+        this.isActive = data.isActive !== undefined ? data.isActive : true;
 
         // State Machine
         // Initialize appropriate machine based on Rank
@@ -55,8 +62,20 @@ class T13Plot extends SuperKnot {
 
         this.genre = data.genre || 'T13 Core';
         this.era = data.era || 'Timeless';
+        this.variety = data.variety || data.actType || 'Unknown';
+
+        // Narrative Role Stacking & Importance
+        this.importance = data.importance || 5; // 1-10 level for AI focus
+        this.narrativeRoles = data.narrativeRoles || [this.Rank]; // Stackable roles (e.g., ['Story', 'Arc-Act'])
+        this.tags = data.tags || []; // e.g., ['HISTORICAL', 'CURRENT_ACTIVE']
+
+        if (this.isActive && !this.tags.includes('HISTORICAL')) {
+            if (!this.tags.includes('CURRENT_ACTIVE')) this.tags.push('CURRENT_ACTIVE');
+        }
 
         this.yarnTeller = new T13YarnTeller(null, data.voice || this.generateComplexVoice());
+
+        Logger.message(`T13Plot: Created plot '${this.Name}' (Rank: ${this.Rank}, Variety: ${this.variety}, Importance: ${this.importance}, Tags: ${this.tags.join(', ')})`);
     }
 
     get currentState() {
@@ -243,115 +262,11 @@ class T13Plot extends SuperKnot {
         return null;
     }
 
-    /**
-     * Hooks a character to a specific side and facet of the conflict.
-     * Updates the plot's conflict boons based on the character's stats.
-     * @param {object} character - The character to hook.
-     * @param {string} side - 'Dominant', 'Pressed', etc.
-     * @param {string} [facet] - Optional specific facet name.
-     */
-    async hookCharacter(character, side, facet = null) {
-        if (!character) return;
 
-        // Check if already hooked
-        const existingIndex = this.characters.findIndex(c => c.id === character.id || c.name === character.name);
 
-        const hookData = {
-            ...character, // Store reference or shallow copy depending on architecture
-            hookSide: side,
-            hookFacet: facet,
-            hookedAt: Date.now()
-        };
 
-        if (existingIndex !== -1) {
-            this.characters[existingIndex] = hookData;
-            Logger.message(`Plot ${this.Name}: Updated hook for ${character.name} to ${side}.`);
-        } else {
-            this.characters.push(hookData);
-            Logger.message(`Plot ${this.Name}: Hooked ${character.name} to ${side}.`);
-        }
 
-        // Recalculate Plot Boons based on the new character
-        await this.calculateConflictBoons();
-    }
 
-    /**
-     * Recalculates the Plot's Conflict Boons based on Hooked Characters.
-     * Rules:
-     * 1. Plots get Facet Boons from Hooked Characters (Highest Facet).
-     * 2. Dominant side must be at least one Boon Higher than Pressed Facet (Min 13).
-     */
-    async calculateConflictBoons() {
-        if (!this.Conflict || !this.Conflict.Sides) return;
-
-        const sideBoons = {};
-
-        // 1. Determine highest boon for each side from hooked characters
-        for (const [sideName, sideData] of Object.entries(this.Conflict.Sides)) {
-            let maxBoon = 0;
-
-            // Find characters hooked to this side
-            const sideChars = this.characters.filter(c => c.hookSide === sideName);
-
-            for (const char of sideChars) {
-                if (char.facetweb) {
-                    // If a specific facet is targeted, check that, otherwise check all conflict facets
-                    const facetsToCheck = sideData.Facets || [];
-                    for (const facetId of facetsToCheck) {
-                        const facetObj = await T13NE_Facets.getFacet(facetId);
-                        if (facetObj) {
-                            const charBoonData = await char.facetweb.getFacetBoon(facetObj.FacetName);
-                            const totalBoon = (charBoonData.Boon || 0) + (char.scaleModifier || 0);
-                            if (totalBoon > maxBoon) maxBoon = totalBoon;
-                        }
-                    }
-                }
-            }
-
-            // Default minimum if no characters or low stats
-            sideBoons[sideName] = Math.max(13, maxBoon);
-        }
-
-        // 2. Enforce Dominant > Pressed Rule
-        if (sideBoons['Dominant'] && sideBoons['Pressed']) {
-            if (sideBoons['Dominant'] <= sideBoons['Pressed']) {
-                sideBoons['Dominant'] = sideBoons['Pressed'] + 1;
-                Logger.message(`Plot ${this.Name}: Adjusted Dominant Boon to ${sideBoons['Dominant']} to exceed Pressed side.`);
-            }
-        }
-
-        this.conflictBoons = sideBoons;
-        Logger.message(`Plot ${this.Name}: Conflict Boons updated.`, this.conflictBoons);
-    }
-
-    /**
-     * Creates an NPC for the plot and gains Yarn.
-     * Rule: "Plots gain Yarn from every Character that they create."
-     * @param {string} type - 'Extra', 'Vex', 'Chorus', 'Cast', 'Force-of-Nature'.
-     * @param {object} options - Additional options for generation.
-     */
-    async createNPC(type, options = {}) {
-        if (!this.t13ne) return null;
-
-        // Determine Yarn Gain (Cost) based on type
-        let yarnGain = 1; // Default Vex/Extra
-        if (type === 'Chorus') yarnGain = 2;
-        else if (type === 'Cast') yarnGain = 3;
-        else if (type === 'Force-of-Nature') yarnGain = 4;
-
-        // Generate the Character
-        const { Character } = await import("/src/t13ne/modules/characters/t13ne-chars.js");
-        const Codex = this.t13ne.getModule('Codex');
-        const npc = await Character.generate(Codex, { ...options, model: type });
-
-        if (npc) {
-            this.characters.push(npc); // Add to plot characters (implicitly hooked to plot, side needs assignment)
-            this.feed(yarnGain); // Plot gains Yarn
-            Logger.message(`Plot ${this.Name}: Created NPC ${npc.name} (${type}). Gained ${yarnGain} Yarn.`);
-            return npc;
-        }
-        return null;
-    }
 
     /**
      * Adds a Motif to the plot.
@@ -480,34 +395,56 @@ class T13Plot extends SuperKnot {
     }
 
     /**
-     * Recursively generates sub-plots using Card Spreads.
-     * @param {string} [startRank] - Optional override for starting rank.
+     * Generates sub-plots using Card Spreads.
+     * @param {object|string} [options={}] - Options or startRank string (legacy support).
      */
-    async cascadePlot(startRank = null) {
+    async cascadePlot(options = {}) {
+        if (typeof options === 'string') options = { startRank: options };
+
         if (!T13NECardsAPI.isInitialized) {
             Logger.warn("T13CardAPI not initialized, cannot cascade plot.");
             return;
         }
 
-        const currentRank = startRank || this.Rank;
-        const hierarchy = ['Cycle', 'Epic', 'Volume', 'Arc', 'Story', 'Act', 'Scene'];
+        const currentRank = options.startRank || this.Rank;
+        const recursive = options.recursive !== undefined ? options.recursive : true;
+        const singleLine = options.singleLine || false;
+
+        const hierarchy = ['Cycle', 'Epic', 'Volume', 'Arc', 'Chapter', 'Story', 'Act', 'Scene'];
         const rankIndex = hierarchy.indexOf(currentRank);
 
         if (rankIndex === -1 || rankIndex >= hierarchy.length - 1) {
             return; // Lowest rank or invalid
         }
 
-        // Get the composite spread for this rank (e.g., 'cycle' spread for a Cycle rank plot)
-        // The spread definition drives the structure (how many epics, etc.)
-        const spreadId = currentRank.toLowerCase();
-        const compositeSpread = T13NECardsAPI.getCompositeSpread(spreadId);
+        // Determine the correct spread ID. 
+        // Acts and Epics can use variety-based spreads.
+        let spreadId = currentRank.toLowerCase();
+        if (currentRank === 'Story') {
+            spreadId = 'story-3-act';
+        } else if (currentRank === 'Act' && this.variety) {
+            spreadId = `${this.variety.toLowerCase()}-act`;
+        }
+
+        // For historical plots, we use a deterministic seed based on location/id to ensure repeatability
+        const seed = options.seed || (this.tags.includes('HISTORICAL') ? `${this.location || this.id}_${currentRank}` : null);
+
+        if (seed) {
+            PRNG.pushSeed(seed);
+            ProcGen.sync();
+        }
+        const compositeSpread = T13NECardsAPI.getCompositeSpread(spreadId, { ...options, seed, singleLine });
 
         if (!compositeSpread || !compositeSpread.components) {
-            Logger.warn(`No composite spread found for rank ${currentRank}.`);
+            Logger.warn(`No composite spread found for rank ${currentRank} (spreadId: ${spreadId}).`);
+            if (seed) {
+                PRNG.popSeed();
+                ProcGen.sync();
+            }
             return;
         }
 
-        Logger.message(`Cascading Plot ${this.Name} (${currentRank})...`);
+        Logger.message(`Cascading Plot ${this.Name} (${currentRank}, Variety: ${this.variety})${seed ? ` [Seeding: ${seed}]` : ''}${singleLine ? ' [Single Line]' : ''}...`);
 
         // Iterate through components defined in the spread (e.g., 'epics', 'volumes')
         for (const [key, component] of Object.entries(compositeSpread.components)) {
@@ -520,29 +457,79 @@ class T13Plot extends SuperKnot {
                     // Create the sub-plot
                     const subPlot = this.spawnSubPlot(childName, {
                         Rank: childRank,
+                        variety: childDef.variety || 'Unknown',
                         Description: `Generated from ${currentRank} Cascade.`
                     });
 
-                    // Recursively cascade
-                    await subPlot.cascadePlot();
+                    // Conditionally cascade recursively
+                    if (recursive) await subPlot.cascadePlot({ ...options, startRank: childRank, recursive: true });
+
+                    // If single line, we only process the first child of the first component that yields children
+                    if (singleLine) break;
                 }
             }
-            // Handle single child components if any (e.g. 'frame', 'loom' in Story)
+            // Handle single child components (e.g. 'frame', 'loom', 'zenith' in Story)
             else if (typeof component === 'object' && component.name) {
                 const childName = `${this.Name} - ${component.name}`;
                 const childRank = hierarchy[rankIndex + 1];
 
-                // Special handling for Story -> Act
-                // Story spread has 'frame', 'loom', 'zenith' keys which are Acts
+                // Special handling for Story -> Act or explicit sub-objects
                 const subPlot = this.spawnSubPlot(childName, {
-                    Rank: 'Act', // Hardcoded as Story children are Acts
-                    actType: component.variety || 'Unknown',
-                    Description: component.description
+                    Rank: childRank,
+                    variety: component.variety || 'Unknown',
+                    Description: component.description || `Generated from ${currentRank} Cascade.`
                 });
 
-                // Acts might cascade to Scenes if we implement Act spreads fully
-                await subPlot.cascadePlot();
+                // Conditionally cascade recursively
+                if (recursive) await subPlot.cascadePlot({ ...options, startRank: childRank, recursive: true });
             }
+
+            if (singleLine && Array.isArray(component) && component.length > 0) break;
+        }
+        if (seed) {
+            PRNG.popSeed();
+            ProcGen.sync();
+        }
+    }
+
+    /**
+     * Ensures this plot has a parent hierarchy leading up to the Galactic Cycle.
+     * Generates parents "upwards" if they do not exist.
+     */
+    async ensureParentage() {
+        const hierarchy = ['Cycle', 'Epic', 'Volume', 'Arc', 'Chapter', 'Story', 'Act', 'Scene'];
+        const currentIdx = hierarchy.indexOf(this.Rank);
+
+        if (currentIdx <= 0) return; // Already at top or invalid
+
+        if (!this.parentPlot) {
+            const parentRank = hierarchy[currentIdx - 1];
+            const PlotsModule = this.t13ne?.getModule('Plots');
+
+            // Try to find a suitable parent in the system
+            let parent = PlotsModule?.plots.find(p => p.Rank === parentRank && p.isActive);
+
+            if (!parent) {
+                Logger.message(`Plot ${this.Name}: No parent ${parentRank} found. Generating up...`);
+                parent = new T13Plot({
+                    Name: `Parent ${parentRank} of ${this.Name}`,
+                    Rank: parentRank,
+                    Description: `Automatically generated parent for ${this.Name}.`,
+                    genre: this.genre,
+                    era: this.era
+                }, this.t13ne);
+
+                if (PlotsModule) PlotsModule.plots.push(parent);
+
+                // Recursively ensure parent's parentage
+                await parent.ensureParentage();
+            }
+
+            this.parentPlot = parent;
+            if (!parent.subPlots.includes(this)) {
+                parent.subPlots.push(this);
+            }
+            Logger.message(`Plot ${this.Name}: Parented to ${parent.Name} (${parentRank}).`);
         }
     }
 
@@ -653,39 +640,7 @@ class T13Plot extends SuperKnot {
         }
     }
 
-    /**
-     * Applies an atmospheric event to the plot/scene.
-     * Connects to Audio and Scene modules to render SFX, Lighting, and VFX.
-     * @param {object} atmospheric - The atmospheric event object.
-     */
-    applyAtmospheric(atmospheric) {
-        this.currentAtmosphere = atmospheric;
-        const text = typeof atmospheric === 'string' ? atmospheric : atmospheric.text;
-        Logger.message(`Plot ${this.Name}: Atmosphere changed to "${text}"`);
 
-        if (!this.t13ne) return;
-
-        // Connect to Audio System (AudioGenerator or HTML5 Player wrapper)
-        if (atmospheric.sfx) {
-            const Audio = this.t13ne.getModule('Audio') || this.t13ne.getModule('AudioGenerator');
-            if (Audio && typeof Audio.playSFX === 'function') {
-                Audio.playSFX(atmospheric.sfx);
-            }
-        }
-
-        // Connect to Scene/Renderer System (Three.js / T13Scene)
-        if (atmospheric.lighting || atmospheric.vfx) {
-            const Scene = this.t13ne.getModule('T13Scene') || this.t13ne.getModule('Scene');
-            if (Scene) {
-                if (atmospheric.lighting && typeof Scene.setLighting === 'function') {
-                    Scene.setLighting(atmospheric.lighting);
-                }
-                if (atmospheric.vfx && typeof Scene.triggerVFX === 'function') {
-                    Scene.triggerVFX(atmospheric.vfx);
-                }
-            }
-        }
-    }
 
     /**
      * Generates the narrative structure for this plot using Narrative Weaving.
@@ -1008,14 +963,14 @@ class T13Plot extends SuperKnot {
      * @returns {string} New Rank
      */
     adjustRank(steps) {
-        const ranks = ['Scene', 'Act', 'Story', 'Chapter', 'Arc', 'Volume', 'Epic', 'Cycle'];
-        let idx = ranks.indexOf(this.Rank);
-        if (idx === -1) idx = 2; // Default to Story
+        const hierarchy = ['Scene', 'Act', 'Story', 'Chapter', 'Arc', 'Volume', 'Epic', 'Cycle'];
+        let idx = hierarchy.indexOf(this.Rank);
+        if (idx === -1) idx = hierarchy.indexOf('Story');
 
         let newIdx = idx + steps;
-        newIdx = Math.max(0, Math.min(newIdx, ranks.length - 1));
+        newIdx = Math.max(0, Math.min(newIdx, hierarchy.length - 1));
 
-        return ranks[newIdx];
+        return hierarchy[newIdx];
     }
 
     /**
@@ -1023,10 +978,8 @@ class T13Plot extends SuperKnot {
      * @param {object} aiService 
      */
     async act(aiService) {
-        // 1. Subplots act first to generate reports
-        for (const subPlot of this.subPlots) {
-            await subPlot.act(aiService);
-        }
+        // Subplots are now handled individually by the Referee's flattened loop.
+        // We just collect reports from our children to inform our own AI decision.
         this.collectReports();
 
         this.updateState();
@@ -1035,31 +988,46 @@ class T13Plot extends SuperKnot {
         if (this.t13ne) {
             const Music = this.t13ne.getModule('Music');
             if (Music && typeof Music.updateAmbience === 'function') {
-                // This will handle initialization or updates if they were missed
                 Music.updateAmbience(this);
             }
         }
 
-        // Ensure we have cards
-        if (T13NECardsAPI.isInitialized) {
-            await this.checkHandSize();
+        // Card play and Narrative generation logic
+        const hasActiveSubplots = this.subPlots.some(p => p.isActive && !p.isResolved);
+        const isHistorical = this.tags.includes('HISTORICAL');
+        const isInactive = this.tags.includes('CURRENT_INACTIVE');
 
-            // AI Decision
-            // Rule: Plots can only affect Hooked Characters and Extras.
-            // We filter the context passed to AI to emphasize hooked characters.
-            const hookedChars = this.characters.filter(c => c.hookSide); // Basic check for hooked status
-            // If no hooked characters in Frame, AI should prioritize Hook cards.
-
-            const decision = await this.decideCardPlay(aiService);
-
-            if (decision && decision.cardsToPlay && decision.cardsToPlay.length > 0) {
-                await this.executePlay(decision);
-            } else {
-                Logger.message(`Plot ${this.Name}: Decided to wait.`);
+        if (T13NECardsAPI.isInitialized && !hasActiveSubplots && !isInactive) {
+            // Historical plots skip the Yarn card hand management
+            if (!isHistorical) {
+                await this.checkHandSize();
             }
 
-            // Decay Yarn over time (simulation of session passing or inactivity)
-            // this.decay(); // Uncomment to enable decay logic
+            // AI Decision (uses Historical mode if tagged)
+            const decision = await this.decideCardPlay(aiService);
+
+            if (decision) {
+                // Execute card plays only for active session plots
+                if (decision.cardsToPlay && decision.cardsToPlay.length > 0 && !isHistorical) {
+                    await this.executePlay(decision);
+                }
+
+                // Allow both Active and Historical plots to spawn sub-plots 
+                // to flesh out the narrative or history.
+                if (decision.spawnSubPlot) {
+                    const spData = decision.spawnSubPlot;
+                    this.spawnSubPlot(spData.name, {
+                        Description: spData.intent,
+                        tags: isHistorical ? ['HISTORICAL'] : []
+                    });
+                }
+
+                if (!decision.cardsToPlay && !decision.spawnSubPlot) {
+                    Logger.message(`Plot ${this.Name}: Decided to wait.`);
+                }
+            }
+        } else if (hasActiveSubplots) {
+            Logger.message(`Plot ${this.Name}: Waiting for subplots to resolve.`);
         }
     }
 
@@ -1087,7 +1055,24 @@ class T13Plot extends SuperKnot {
         const tensionData = T13NE_Tension.getSuspenseData(this.tensionLevel);
         const tensionContext = tensionData ? `${tensionData.Type}: ${tensionData.Description}` : 'Unknown';
 
-        const prompt = `You are the Plot Director for "${this.Name}".
+        const isHistorical = this.tags.includes('HISTORICAL');
+        const roleDesc = isHistorical ? "Historical Chronicler" : "Plot Director";
+
+        const handContext = !isHistorical ? `Your Hand of Yarn Cards:\n${handDescriptions}\n` : '';
+        const directive = isHistorical ?
+            `- Your goal is to Draft the Galactic History. Determine if this period needs more detailed sub-plots (Stories, Arcs, Chapters) to feel "rich".
+             - Use 'spawnSubPlot' to identify missing historical beats that should be explored.` :
+            `- Determine which cards (if any) to play to advance the plot.
+             - In 'Frame', focus on Hooks (Aces) and Revelations (Queens, 5s). You MUST Hook characters before moving on.
+             - Aces can be played as Hooks to spawn new Subplots if the narrative requires branching.
+             - In 'Loom', focus on Warps (Conflict/Action) and Wefts (Recovery/Social).
+             - In 'Zenith', focus on High Stakes and Resolution.`;
+
+        const prompt = `You are the ${roleDesc} for "${this.Name}".
+        Rank: ${this.Rank}
+        Narrative Roles: ${this.narrativeRoles.join(', ')}
+        Importance: ${this.importance} / 10
+        Tags: ${this.tags.join(', ')}
         Current State: ${this.currentState}
         Tension Level: ${this.tensionLevel} (${tensionContext})
         Goal: ${this.goal}
@@ -1097,23 +1082,18 @@ class T13Plot extends SuperKnot {
         Yarn Points: ${this.yarnPoints}
         Subplot Reports: ${reportSummaries || 'None'}
 
-        Your Hand of Yarn Cards:
-        ${handDescriptions}
+        ${handContext}
         
-        Determine which cards (if any) to play to advance the plot.
-        - In 'Frame', focus on Hooks (Aces) and Revelations (Queens, 5s). You MUST Hook characters before moving on.
-        - Aces can be played as Hooks to spawn new Subplots if the narrative requires branching.
-        - In 'Loom', focus on Warps (Conflict/Action) and Wefts (Recovery/Social).
-        - In 'Zenith', focus on High Stakes and Resolution.
+        ${directive}
         
         Respond with a JSON object:
         {
-            "rationale": "Why you are playing these cards",
-            "cardsToPlay": ["Card Name 1", "Card Name 2"],
-            "narrativeEffect": "Description of the event caused by these cards",
+            "rationale": "Why you are taking this action",
+            "cardsToPlay": ["Card Name 1", "Card Name 2"], (Optional - Only for non-historical plots)
+            "narrativeEffect": "Description of the event or historical discovery",
             "spawnSubPlot": { "name": "Optional Name", "intent": "Why spawn this subplot" } (Optional)
         }
-        If no cards are suitable, return empty cardsToPlay.`;
+        Return empty fields if no action is needed.`;
 
         try {
             const response = await aiService.generateText(prompt);
@@ -1211,6 +1191,8 @@ class T13Plot extends SuperKnot {
             yarnPoints: 5,
             genre: this.genre,
             era: this.era,
+            importance: this.importance,
+            tags: this.tags.includes('HISTORICAL') ? ['HISTORICAL'] : [],
             ...context
         }, this.t13ne);
 
@@ -1263,6 +1245,51 @@ class T13Plot extends SuperKnot {
         this.memory.events.push({ timestamp: Date.now(), description: desc });
         if (this.memory.events.length > 50) this.memory.events.shift();
     }
+
+    /**
+     * Serializes the Plot instance for saving.
+     * @returns {object} A serializable data object.
+     */
+    serialize() {
+        const data = {
+            id: this.id,
+            Name: this.Name,
+            name: this.name,
+            Rank: this.Rank,
+            RankIndex: this.RankIndex,
+            Description: this.Description,
+            Goal: this.goal,
+            TensionLevel: this.tensionLevel,
+            yarnPoints: this.yarnPoints,
+            isActive: this.isActive,
+            isResolved: this.isResolved,
+            isRogue: this.isRogue || false,
+            genre: this.genre,
+            era: this.era,
+            parentPlotId: this.parentPlot ? this.parentPlot.id : null,
+            Conflict: this.Conflict,
+            Location: this.location,
+            Motifs: this.motifs,
+            Significator: this.significator,
+            memory: this.memory,
+            characterArcs: this.characterArcs.map(a => a.id || a),
+            Hooked_Characters: this.characters.map(c => c.id || c.name),
+            importance: this.importance,
+            narrativeRoles: this.narrativeRoles,
+            tags: this.tags,
+            variety: this.variety,
+            subPlots: this.subPlots.map(sp => sp.serialize())
+        };
+
+        if (this.stateMachine && typeof this.stateMachine.serialize === 'function') {
+            data.stateMachine = this.stateMachine.serialize();
+        }
+        if (this.actStateMachine && typeof this.actStateMachine.serialize === 'function') {
+            data.actStateMachine = this.actStateMachine.serialize();
+        }
+
+        return data;
+    }
 }
 
 /**
@@ -1295,6 +1322,20 @@ class T13NE_Plots {
             // Initialize core plots as T13Plot instances
             if (this.corePlots && Array.isArray(this.corePlots)) {
                 this.plots = this.corePlots.map(plotData => new T13Plot(plotData, this.t13ne));
+            }
+
+            // Ensure the Galactic Cycle exists as the root of the hierarchy
+            let cycle = this.plots.find(p => p.Rank === 'Cycle');
+            if (!cycle) {
+                cycle = new T13Plot({
+                    Name: "Galactic Cycle",
+                    Rank: "Cycle",
+                    Description: "The overarching narrative framework of the galaxy."
+                }, this.t13ne);
+                this.plots.push(cycle);
+
+                // Trigger non-recursive cascade to create the Historical Frame and Current Loom Epics
+                await cycle.cascadePlot({ recursive: false });
             }
 
             this.initialized = true;
@@ -1607,6 +1648,43 @@ class T13NE_Plots {
         if (plot.subPlots && plot.subPlots.length > 0) {
             plot.subPlots.forEach(subPlot => this.generateFullHierarchy(subPlot));
         }
+    }
+
+    /**
+     * Ensures a plot has a parent of the appropriate rank, creating it if necessary.
+     * Supports "bottom-up" piecemeal generation of history.
+     * @param {T13Plot} plot - The plot needing a parent.
+     * @returns {T13Plot} The parent plot.
+     */
+    async ensureParent(plot) {
+        const hierarchy = ['Cycle', 'Epic', 'Volume', 'Arc', 'Chapter', 'Story', 'Act', 'Scene'];
+        const currentRankIdx = hierarchy.indexOf(plot.Rank);
+        if (currentRankIdx <= 0) return plot; // Root or unknown
+
+        if (plot.parentPlot) return plot.parentPlot;
+
+        const parentRank = hierarchy[currentRankIdx - 1];
+
+        // Find or create a suitable parent
+        let parent = this.plots.find(p => p.Rank === parentRank && !p.isResolved);
+        if (!parent) {
+            parent = new T13Plot({
+                Name: `Generated ${parentRank} for ${plot.Name}`,
+                Rank: parentRank,
+                Description: "Auto-generated to support narrative hierarchy."
+            }, this.t13ne);
+            this.plots.push(parent);
+            Logger.message(`T13NE_Plots: Bottom-up generation: Created ${parentRank} parent for '${plot.Name}'`);
+        }
+
+        plot.parentPlot = parent;
+        if (!parent.subPlots.includes(plot)) {
+            parent.subPlots.push(plot);
+        }
+
+        // Recurse upwards to ensure the full chain to the Cycle
+        await this.ensureParent(parent);
+        return parent;
     }
 
     /**

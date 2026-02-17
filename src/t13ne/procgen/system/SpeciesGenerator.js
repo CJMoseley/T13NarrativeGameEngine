@@ -1,6 +1,6 @@
-import { LoreData } from '../LoreData.js';
-import { NameGenerator } from './NameGenerator.js';
-import Logger from '../../../core/Logger.js';
+import { LoreData } from '/src/t13ne/procgen/lore/LoreData.js';
+import { NameGenerator } from '/src/t13ne/procgen/lore/factories/NameGenerator.js';
+import Logger from '/src/t13ne/core/Logger.js';
 
 export class SpeciesGenerator {
     constructor(pluginManager, nameGenerator) {
@@ -451,6 +451,42 @@ export class SpeciesGenerator {
         }
 
         return cultureParts.join(' ');
+    }
+
+    async generateApexSpeciesForBiosphere(biosphere, seeds) {
+        const funcName = 'SpeciesGenerator.generateApexSpeciesForBiosphere';
+        Logger.start(funcName, { biosphere });
+
+        const { n1, n2, n3, n4 } = seeds;
+        
+        // Generate a name
+        let name;
+        if (this.nameGenerator && typeof this.nameGenerator.generateAlienName === 'function') {
+             name = await this.nameGenerator.generateAlienName(`${n1}-${n2}`);
+        } else {
+             name = this.nameGenerator.generateProceduralLatinName(n1, n2);
+        }
+        
+        // Basic species generation logic
+        const species = {
+            commonName: name,
+            scientificName: this.nameGenerator.generateProceduralLatinName(n3, n4),
+            biosphere: biosphere,
+            description: `The dominant species of the ${biosphere}.`,
+            bodyPlan: 'Unknown',
+            derivedTraits: {
+                limbCount: 4,
+                locomotiveLimbs: 2,
+                dominantLimbs: 2,
+                specializedLimbs: 0
+            }
+        };
+        
+        // Enrich with traits
+        this.enrichSpeciesLore(species);
+
+        Logger.end(funcName, species);
+        return species;
     }
 
     generateScientificName(speciesKey, loreObject, noiseValues) {

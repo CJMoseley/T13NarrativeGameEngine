@@ -583,8 +583,8 @@ export class ShipGenerator {
              // Bottom Engine
              attachComponent('engine_bottom', [0, -engineY, engineZ], [Math.PI / 2, 0, 0], 'cone', 
                 { radius: 0.5, height: engineHeight }, 'NONE');
-        } else if (hullType === 'CATAMARAN') {
-                // Skip generic engines for Catamaran as it has Nacelles
+        } else if (hullType === 'CATAMARAN' || hullType === 'BLOB') {
+                // Skip generic engines for Catamaran as it has Nacelles, and Blob has integrated engine strip
         } else if (hullType === 'STATION_RING' || hullType === 'STATION_WHEEL') {
                 // Engines on the rim for rings
                 const r = spineLength * 1.5;
@@ -717,7 +717,6 @@ export class ShipGenerator {
                 
                 attachComponent('engine', [engineX, engineY, engineZ], [Math.PI / 2, 0, 0], 'cylinder', { radiusTop: 0.6, radiusBottom: 0.9, height: engineHeight });
             }
-        };
 
 
         // Update context with determined hullType for sub-generators
@@ -862,9 +861,9 @@ export class ShipGenerator {
         let genPos = [0, 0, 0];
         let genRot = [0, 0, 0];
         
-        if (hullType === 'DISC') {
+        if (hullType === 'DISC' || hullType === 'BLOB') {
             const angle = random() * Math.PI * 2;
-            const r = mainHullRadius * 0.3;
+            const r = (hullType === 'BLOB' ? hullRadius : mainHullRadius) * 0.3;
             genPos = [Math.cos(angle) * r, 0, Math.sin(angle) * r];
             genRot = [0, -angle, 0];
         } else if (hullType === 'STAR') {
@@ -1166,13 +1165,6 @@ export class ShipGenerator {
         components.shipName = `${prefix} ${adjective} ${noun}`;
 
         // Generate Interiors (Corridors and Rooms for carving)
-        
-        // NOTE: generateInteriors and enforceWiringSymmetry no longer use 'this.'
-        // They operate on the passed 'components' variable, which has accumulated
-        // the various attached components.
-        // If something relies on a 'this' instance variable from ShipGenerator,
-        // it must be explicitly passed in the 'context' object.
-
         
         // NOTE: generateInteriors and enforceWiringSymmetry no longer use 'this.'
         // They operate on the passed 'components' variable, which has accumulated

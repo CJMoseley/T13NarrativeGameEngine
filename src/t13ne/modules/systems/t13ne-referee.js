@@ -152,7 +152,10 @@ class T13NE_Referee {
                 plotList.forEach(p => {
                     if (p.isActive && !p.isResolved) {
                         allPlots.push(p);
-                        if (p.subPlots) gather(p.subPlots);
+                    }
+                    // Always recurse to find sub-plots, even if parent is inactive/resolved
+                    if (p.subPlots && p.subPlots.length > 0) {
+                        gather(p.subPlots);
                     }
                 });
             };
@@ -200,12 +203,12 @@ class T13NE_Referee {
         }, this.t13ne);
 
         // 1. Cascade the plot to generate structure down to Scenes
-        await cyclePlot.cascadePlot('Cycle');
+        await cyclePlot.cascadePlot({ startRank: 'Cycle', singleLine: true });
 
         // 2. Register the plot
         Plots.plots.push(cyclePlot);
 
-        Logger.message(`Referee: Cycle '${name}' generated with ${cyclePlot.subPlots.length} Epics.`);
+        Logger.message(`Referee: Cycle '${name}' generated.`);
         return cyclePlot;
     }
 
@@ -230,8 +233,11 @@ class T13NE_Referee {
             Hooked_Characters: [] // Initially empty, will add historical protagonist or self
         }, this.t13ne);
 
-        // 2. Cascade it (Generate Acts, Hooks, etc.)
-        await backstoryPlot.cascadePlot('Story');
+        // 2. Ensure it has a parent hierarchy (up to Volume/Epic/Cycle)
+        await backstoryPlot.ensureParentage();
+
+        // 3. Cascade it (Generate Acts, Hooks, etc.) - Single Line for focus
+        await backstoryPlot.cascadePlot({ startRank: 'Story', singleLine: true });
 
         // 3. Hook the character (conceptually, likely as a younger version or purely narrative)
         // For backstory, we might just assume they were the protagonist.

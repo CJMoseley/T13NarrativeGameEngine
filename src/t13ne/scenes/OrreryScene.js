@@ -8,21 +8,22 @@ import { ColourUtils } from '/src/t13ne/utils/ColourUtils.js';
 export class OrreryScene extends Scene {
     constructor(viewManager, sceneData) {
         super(viewManager, sceneData);
-        
+
         this.systemData = sceneData.systemDetails || {};
-        this.planets = sceneData.planets || [];
+        // Fix: Clone planets to prevent mutation of shared data
+        this.planets = sceneData.planets ? JSON.parse(JSON.stringify(sceneData.planets)) : [];
         this.starLocation = sceneData.star;
-        
+
         // Orrery specific settings: Toy Scale
         this.STAR_RADIUS = 80; // Fixed large size for the star
         this.planetMeshes = [];
         this.orbitLines = [];
-        
+
         this.onMouseClick = this.onMouseClick.bind(this);
         this.onMouseMove = this.onMouseMove.bind(this);
         this.raycaster = new THREE.Raycaster();
         this.mouseVector = new THREE.Vector2();
-        
+
         this.cameraPathPoints = [];
         this.hudElement = null;
     }
@@ -35,24 +36,24 @@ export class OrreryScene extends Scene {
     init() {
         const funcName = 'OrreryScene.init';
         Logger.start(funcName);
-        
+
         // Debug Data
         Logger.message(`Orrery Init: System ${this.systemData.name || 'Unknown'}, Planets: ${this.planets.length}`);
         this.planets.forEach((p, i) => {
-            Logger.message(`- Planet ${i}: ${p.name} (${p.type}) Dist: ${p.orbitalDistance} AU`);
+            Logger.message(`- Planet : ${p.name} (${p.type}) Dist: ${p.orbitalDistance} AU`);
         });
-        
+
         this.sanitizeData();
 
         this.scene.background = new THREE.Color(0x111111); // Slightly lighter background to see black planets
-        
+
         this.setupCamera();
         this.setupLighting();
         this.createStar();
         this.createPlanets(); // This now uses getScaledDistance
         this.createGrid(); // Helper grid to establish the orbital plane
-        this.createCameraMarker(); 
-        
+        this.createCameraMarker();
+
         // Body Count Display
         this.createBodyCountDisplay();
 
@@ -63,15 +64,15 @@ export class OrreryScene extends Scene {
         if (!this.planets) return;
         this.planets.forEach((p, i) => {
             let dist = parseFloat(p.orbitalDistance);
-            if (isNaN(dist)) {
-                dist = (i + 1) * 5.0; // Fallback distribution
+            if (isNaN(dist) || dist <= 0) {
+                dist = (i + 1) * 3.0 + 2.0; // Fallback distribution, ensure > 0
             }
             p.orbitalDistance = dist;
-            
+
             if (p.moons) {
                 p.moons.forEach((m, j) => {
                     let mDist = parseFloat(m.orbitalDistance);
-                    if (isNaN(mDist)) m.orbitalDistance = 0.002 + (j * 0.001);
+                    if (isNaN(mDist) || mDist <= 0) m.orbitalDistance = 0.002 + (j * 0.001);
                 });
             }
         });
@@ -87,55 +88,60 @@ export class OrreryScene extends Scene {
     // Helper to map real AU back to the visual index-based scale for the camera marker
     getVisualDistanceForAU(au) {
         if (!this.planets || this.planets.length === 0) return 0;
-        
+
         // 1. Find the two planets this AU falls between
         // Assumes planets are sorted by distance (which we do in createPlanets)
         for (let i = 0; i < this.planets.length - 1; i++) {
             const p1 = this.planets[i];
-            const p2 = this.planets[i+1];
+            const p2 = this.planets[i + 1];
             if (au >= p1.orbitalDistance && au <= p2.orbitalDistance) {
                 // Interpolate
                 const range = p2.orbitalDistance - p1.orbitalDistance;
+                if (range <= 0) return this.getVisualDistance(i); // Safety
                 const progress = (au - p1.orbitalDistance) / range;
                 const v1 = this.getVisualDistance(i);
-                const v2 = this.getVisualDistance(i+1);
+                const v2 = this.getVisualDistance(i + 1);
                 return v1 + (progress * (v2 - v1));
             }
         }
-        
+
         // 2. Handle out of bounds
         if (au < this.planets[0].orbitalDistance) {
             return (au / this.planets[0].orbitalDistance) * this.getVisualDistance(0);
         }
-        
-        // Beyond the last planet - Extrapolate linearly
+
+        // Beyond the last planet - Conservative extrapolation
         const lastPlanet = this.planets[this.planets.length - 1];
         const lastVisual = this.getVisualDistance(this.planets.length - 1);
-        // Remove clamp to allow tracking from deep space
-        return (au / lastPlanet.orbitalDistance) * lastVisual;
+        if (lastPlanet.orbitalDistance <= 0) return lastVisual; // Safety
+
+        const extrapolationRatio = au / lastPlanet.orbitalDistance;
+        // Use a slight log factor for extreme distances to prevent "breaking" the orrery view
+        const logRatio = 1 + Math.log(extrapolationRatio);
+        return lastVisual * logRatio;
     }
 
     setupCamera() {
         const width = window.innerWidth;
         const height = window.innerHeight;
-        
+
         // Calculate extent of system to position camera
         let maxDist = 500;
         if (this.planets.length > 0) {
             // Use the visual distance of the last planet
             maxDist = this.getVisualDistance(this.planets.length - 1);
         }
-        
+
         // Calculate distance required to fit the system in view based on FOV
         const fov = 45; // Use a slightly narrower FOV for a better "diagram" look
         const aspect = width / height;
         const vFov = fov * (Math.PI / 180);
-        
+
         // Calculate distance needed to fit maxDist vertically and horizontally
         const distV = (maxDist * 1.2) / Math.tan(vFov / 2);
         const distH = (maxDist * 1.2) / (Math.tan(vFov / 2) * aspect);
         let fitDist = Math.max(distV, distH, 500); // Ensure minimum distance
-        
+
         // NaN Safety
         if (isNaN(fitDist)) fitDist = 500;
 
@@ -143,7 +149,7 @@ export class OrreryScene extends Scene {
         const angle = 30 * (Math.PI / 180);
         const y = fitDist * Math.sin(angle);
         const z = fitDist * Math.cos(angle);
-        
+
         this.activeCamera.fov = fov;
         this.activeCamera.position.set(0, y, z);
         this.activeCamera.lookAt(0, 0, 0);
@@ -159,9 +165,9 @@ export class OrreryScene extends Scene {
     }
 
     setupLighting() {
-        const ambient = new THREE.AmbientLight(0xffffff, 0.4); 
+        const ambient = new THREE.AmbientLight(0xffffff, 0.4);
         this.scene.add(ambient);
-        
+
         // Star light (Point light at center) - 0 decay for infinite range in this view
         const point = new THREE.PointLight(0xffffff, 1.2, 0, 0);
         point.position.set(0, 0, 0);
@@ -174,13 +180,14 @@ export class OrreryScene extends Scene {
     }
 
     createStar() {
-        const radius = this.STAR_RADIUS; 
+        const radius = this.STAR_RADIUS;
         const geometry = new THREE.SphereGeometry(radius, 32, 32);
-        
+
         // Standardize color source to match LocalSpaceScene
-        let starColor = 0xffff00;
-        if (this.systemData.star && this.systemData.star.color) {
-            starColor = this.systemData.star.color;
+        // Standardize color source
+        let starColor = 0xffffaa;
+        if (this.starLocation && this.starLocation.color) {
+            starColor = this.starLocation.color;
         } else if (this.systemData.starColor) {
             starColor = this.systemData.starColor;
         }
@@ -189,7 +196,7 @@ export class OrreryScene extends Scene {
             emissive: starColor,
             emissiveIntensity: 0.8
         });
-        
+
         this.starMesh = new THREE.Mesh(geometry, starMat);
         this.scene.add(this.starMesh);
     }
@@ -197,13 +204,13 @@ export class OrreryScene extends Scene {
     createCameraMarker() {
         // Create a Red Spot marker as requested
         const geometry = new THREE.SphereGeometry(80, 16, 16); // Even larger for visibility
-        const material = new THREE.MeshBasicMaterial({ 
+        const material = new THREE.MeshBasicMaterial({
             color: 0xff0000, // Red for visibility
             depthTest: false, // Always render on top of other objects
             transparent: true,
             opacity: 0.9
-        }); 
-        
+        });
+
         this.cameraMarker = new THREE.Mesh(geometry, material);
         this.cameraMarker.renderOrder = 999;
         this.scene.add(this.cameraMarker);
@@ -215,12 +222,12 @@ export class OrreryScene extends Scene {
         pathGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
         pathGeo.setDrawRange(0, 0);
 
-        const pathMat = new THREE.LineBasicMaterial({ 
+        const pathMat = new THREE.LineBasicMaterial({
             color: 0xff00ff, // Magenta
             depthTest: false, // Always draw on top of other objects
-            transparent: false, 
+            transparent: false,
             opacity: 1.0
-        }); 
+        });
         this.cameraPathLine = new THREE.Line(pathGeo, pathMat);
         this.cameraPathLine.frustumCulled = false;
         this.cameraPathLine.renderOrder = 999; // Ensure it renders last
@@ -232,7 +239,7 @@ export class OrreryScene extends Scene {
         this.cameraPathPointsMesh.frustumCulled = false;
         this.cameraPathPointsMesh.renderOrder = 999;
         this.scene.add(this.cameraPathPointsMesh);
-        
+
         this.cameraPathPoints = []; // Reset points
     }
 
@@ -250,7 +257,7 @@ export class OrreryScene extends Scene {
 
     setIntroPath(points, mainScale = 100) {
         if (!points || points.length === 0 || !this.cameraPathLine) return;
-        
+
         this.resetPath();
         this.isStaticPath = true;
 
@@ -260,7 +267,7 @@ export class OrreryScene extends Scene {
         let count = 0;
         const maxPoints = positions.length / 3;
         let maxVisualDist = 0;
-        
+
         // Frustum check prep
         const frustum = new THREE.Frustum();
         const projScreenMatrix = new THREE.Matrix4();
@@ -273,22 +280,22 @@ export class OrreryScene extends Scene {
 
         for (let i = 0; i < points.length; i++) {
             if (count >= maxPoints) break;
-            
+
             const p = points[i];
             // Convert main scene position to AU, then to Visual Scale
             const dist = p.length() || 1; // Avoid division by zero
             const au = Math.max(0, (dist - 25) / mainScale); // 25 is STAR_RADIUS in StellarSystemScene
             let orreryDist = this.getVisualDistanceForAU(au);
-            
+
             if (orreryDist < this.STAR_RADIUS + 5) orreryDist = this.STAR_RADIUS + 5;
 
             const newPos = p.clone().normalize().multiplyScalar(orreryDist);
-            
+
             if (!isNaN(newPos.x) && !isNaN(newPos.y) && !isNaN(newPos.z)) {
                 positions[count * 3] = newPos.x;
                 positions[count * 3 + 1] = newPos.y;
                 positions[count * 3 + 2] = newPos.z;
-                
+
                 if (this.activeCamera && !frustum.containsPoint(newPos)) {
                     outsideCount++;
                 }
@@ -297,16 +304,16 @@ export class OrreryScene extends Scene {
                 count++;
             }
         }
-        
-        Logger.message(`OrreryScene: Path points outside frustum: ${outsideCount} / ${count}. Max Dist: ${maxVisualDist}`);
+
+        Logger.message(`OrreryScene: Path points outside frustum:  / . Max Dist: `);
 
         this.cameraPathLine.geometry.setDrawRange(0, count);
         this.cameraPathLine.geometry.attributes.position.needsUpdate = true;
         if (this.cameraPathPointsMesh) this.cameraPathPointsMesh.geometry.setDrawRange(0, count);
         this.cameraPathLine.computeLineDistances();
-        
+
         // Auto-fit camera to include the path
-        // this.fitCameraToDist(maxVisualDist);
+        this.fitCameraToDist(maxVisualDist);
     }
 
     fitCameraToDist(targetMaxDist) {
@@ -316,28 +323,33 @@ export class OrreryScene extends Scene {
             maxDist = this.getVisualDistance(this.planets.length - 1);
         }
         maxDist = Math.max(maxDist, targetMaxDist);
-        
+
         // Assume Square Aspect for PiP
-        const aspect = 1.0; 
+        const aspect = 1.0;
         const fov = 45;
         const vFov = fov * (Math.PI / 180);
         // Tighter fit (1.1 buffer instead of 1.2)
         const distV = (maxDist * 1.1) / Math.tan(vFov / 2);
         const distH = (maxDist * 1.1) / (Math.tan(vFov / 2) * aspect);
         let fitDist = Math.max(distV, distH, 300);
-        
+
+        // CAP fitDist to prevent camera flying into deep space where system is invisible
+        const maxFit = maxDist * 4.0;
+        if (fitDist > maxFit) fitDist = maxFit;
+        if (fitDist > 15000) fitDist = 15000; // Hard cap for orrery visibility
+
         if (this.activeCamera) {
             const angle = 45 * (Math.PI / 180);
             const y = fitDist * Math.sin(angle);
             const z = fitDist * Math.cos(angle);
-            
+
             this.activeCamera.position.set(0, y, z);
             this.activeCamera.lookAt(0, 0, 0);
             this.activeCamera.far = fitDist * 5;
             this.activeCamera.aspect = aspect; // Force square aspect
             this.activeCamera.updateProjectionMatrix();
-            
-            Logger.message(`OrreryScene: Adjusted camera to fit dist ${maxDist}. New Pos: ${y.toFixed(0)}, ${z.toFixed(0)}`);
+
+            Logger.message(`OrreryScene: Adjusted camera to fit dist . New Pos: ${y.toFixed(0)}, ${z.toFixed(0)}`);
         }
     }
 
@@ -347,18 +359,18 @@ export class OrreryScene extends Scene {
             // Note: StellarSystemScene does NOT add STAR_RADIUS to orbital distance in realPosition.
             const dist = position.length();
             const au = Math.max(0, dist / mainScale);
-            
+
             let orreryDist = this.getVisualDistanceForAU(au);
-            
+
             // Ensure marker is visible (not inside star) and has a minimum distance
             if (orreryDist < this.STAR_RADIUS + 5) orreryDist = this.STAR_RADIUS + 5;
-            
+
             // Clamp to camera far plane to prevent clipping
             if (this.activeCamera && orreryDist > this.activeCamera.far * 0.9) orreryDist = this.activeCamera.far * 0.9;
 
             const direction = position.clone().normalize();
             // Safety check for (0,0,0) vector which can't be normalized
-            if (direction.lengthSq() === 0) direction.set(0,0,1);
+            if (direction.lengthSq() === 0) direction.set(0, 0, 1);
             const newPos = direction.multiplyScalar(Math.max(orreryDist, this.STAR_RADIUS + 15));
             if (newPos.lengthSq() === 0) newPos.set(0, 0, this.STAR_RADIUS + 5); // Handle 0,0,0 input
             this.cameraMarker.position.copy(newPos);
@@ -369,7 +381,7 @@ export class OrreryScene extends Scene {
             // Update Path
             // Only add point if it has moved sufficiently to avoid buffer spam
             const lastPoint = this.cameraPathPoints.length > 0 ? this.cameraPathPoints[this.cameraPathPoints.length - 1] : null;
-            
+
             // Check for NaN to prevent corrupting the buffer
             if (isNaN(newPos.x) || isNaN(newPos.y) || isNaN(newPos.z)) return;
 
@@ -380,14 +392,14 @@ export class OrreryScene extends Scene {
             }
 
             // Update if moved or if it's the first point. Reduced threshold for smoother lines.
-            if (!lastPoint || lastPoint.distanceTo(newPos) > 1.0) { 
+            if (!lastPoint || lastPoint.distanceTo(newPos) > 1.0) {
                 this.cameraPathPoints.push(newPos.clone());
-                
+
                 const maxPoints = 10000;
-                if (this.cameraPathPoints.length > maxPoints) { 
+                if (this.cameraPathPoints.length > maxPoints) {
                     this.cameraPathPoints.shift();
                 }
-                
+
                 // Update BufferGeometry
                 const positions = this.cameraPathLine.geometry.attributes.position.array;
                 for (let i = 0; i < this.cameraPathPoints.length; i++) {
@@ -395,7 +407,7 @@ export class OrreryScene extends Scene {
                     positions[i * 3 + 1] = this.cameraPathPoints[i].y;
                     positions[i * 3 + 2] = this.cameraPathPoints[i].z;
                 }
-                
+
                 this.cameraPathLine.geometry.attributes.position.needsUpdate = true;
                 this.cameraPathLine.geometry.setDrawRange(0, this.cameraPathPoints.length);
                 if (this.cameraPathPointsMesh) this.cameraPathPointsMesh.geometry.setDrawRange(0, this.cameraPathPoints.length);
@@ -413,7 +425,7 @@ export class OrreryScene extends Scene {
             Logger.warn("OrreryScene: No planets to render.");
             return;
         }
-        
+
         // Sort planets by distance to ensure linear spacing works visually
         this.planets.sort((a, b) => a.orbitalDistance - b.orbitalDistance);
 
@@ -422,7 +434,7 @@ export class OrreryScene extends Scene {
         this.planets.forEach((planet, index) => {
             // Use index-based distance for visibility
             const dist = this.getVisualDistance(index);
-            
+
             // Toy Scale: Planets are huge relative to orbits for visibility
             let size = 50; // Increased base size
             if (planet.type && planet.type.includes('Giant')) {
@@ -430,17 +442,17 @@ export class OrreryScene extends Scene {
             } else if (planet.type && planet.type.includes('Dwarf')) {
                 size = 30;
             }
-            
+
             // 1. Orbit Line
             const orbitGeo = new THREE.BufferGeometry();
             const points = [];
             const segments = 128;
-            for(let i=0; i<=segments; i++) {
-                const th = (i/segments) * Math.PI * 2;
+            for (let i = 0; i <= segments; i++) {
+                const th = (i / segments) * Math.PI * 2;
                 points.push(dist * Math.cos(th), 0, dist * Math.sin(th));
             }
             orbitGeo.setAttribute('position', new THREE.Float32BufferAttribute(points, 3));
-            
+
             // Orbit Color based on Temperature/Distance
             let orbitColor = 0x0088ff; // Default Blue (Frigid)
             const au = planet.orbitalDistance;
@@ -454,12 +466,12 @@ export class OrreryScene extends Scene {
             const orbit = new THREE.Line(orbitGeo, orbitMat);
             this.scene.add(orbit);
             this.orbitLines.push(orbit);
-            
+
             // 2. Planet Group (Holds Mesh + Moons)
             const planetGroup = new THREE.Group();
             const angle = planet.startAngle !== undefined ? planet.startAngle : prng.nextDouble() * Math.PI * 2;
             planetGroup.position.set(dist * Math.cos(angle), 0, dist * Math.sin(angle));
-            
+
             planetGroup.userData = {
                 planet: planet,
                 distance: dist,
@@ -472,33 +484,33 @@ export class OrreryScene extends Scene {
             // 3. Planet Mesh (Visual Sphere)
             const geometry = new THREE.SphereGeometry(size, 32, 32);
             let color = new THREE.Color(0x888888);
-            
+
             // Simplified, robust color check
             if (planet.color) {
                 if (planet.color.isColor) { color.copy(planet.color); }
                 else if (planet.color.h !== undefined) { color.setHSL(planet.color.h, planet.color.s, planet.color.l); }
                 else if (planet.color.r !== undefined) { color.setRGB(planet.color.r, planet.color.g, planet.color.b); }
-                else color.set(planet.color); 
+                else color.set(planet.color);
             } else if (planet.name) {
-                 // Fallback using name frequency
-                 let freq = 0;
-                 for(let i=0; i<planet.name.length; i++) freq += planet.name.charCodeAt(i);
-                 freq = (freq % 300) + 400; 
-                 color.set(ColourUtils.curvedFrequencyToHex(freq));
+                // Fallback using name frequency
+                let freq = 0;
+                for (let i = 0; i < planet.name.length; i++) freq += planet.name.charCodeAt(i);
+                freq = (freq % 300) + 400;
+                color.set(ColourUtils.curvedFrequencyToHex(freq));
             }
-            
+
             const material = new THREE.MeshStandardMaterial({
                 color: color,
                 roughness: 0.7,
                 metalness: 0.1
             });
-            
+
             const mesh = new THREE.Mesh(geometry, material);
             mesh.userData.isPlanetBody = true; // Tag for rotation logic
             // Add mesh to group (at 0,0,0 relative to group)
             planetGroup.add(mesh);
             this.planetMeshes.push(mesh); // Keep track for raycasting
-            
+
             // 3. Moons (Simplified)
             if (planet.moons && planet.moons.length > 0) {
                 // Calculate visual limit for moons in Orrery (half the gap between planets)
@@ -508,17 +520,17 @@ export class OrreryScene extends Scene {
                 planet.moons.forEach((moon, mIdx) => {
                     // if (moon.type === 'Quasi-Satellite') return; // User wants them generated, just not lines
 
-                    const moonSize = 12; 
+                    const moonSize = 12;
                     // Ensure visual clearance: Planet Size + Moon Size + Buffer + Scaled Distance
                     let moonDist = size + moonSize + 4 + ((moon.orbitalDistance || 0.002) * MOON_ORBIT_SCALE);
-                    
+
                     if (moon.isRing) {
                         moonDist = size + 5 + (mIdx * 2);
                     }
 
                     let moonGeo;
                     const moonMat = new THREE.MeshStandardMaterial({ color: 0xaaaaaa });
-                    
+
                     if (moon.isRing) {
                         moonGeo = new THREE.RingGeometry(moonDist - 1, moonDist + 1, 32);
                         moonGeo.rotateX(-Math.PI / 2);
@@ -527,28 +539,28 @@ export class OrreryScene extends Scene {
                     }
 
                     const moonMesh = new THREE.Mesh(moonGeo, moonMat);
-                    
+
                     const mAngle = prng.nextDouble() * Math.PI * 2;
                     moonMesh.userData = {
                         distance: moonDist,
                         angle: mAngle,
                         speed: 1.5 + (prng.nextDouble() * 1.0) // Fast orbit for visibility
                     };
-                    
+
                     if (moon.isRing) {
                         moonMesh.position.set(0, 0, 0);
                     } else {
                         moonMesh.position.set(moonDist * Math.cos(mAngle), 0, moonDist * Math.sin(mAngle));
                     }
-                    
+
                     // Moon Orbit Line
                     if (!moon.isRing && moon.type !== 'Quasi-Satellite') {
                         const mOrbitGeo = new THREE.BufferGeometry();
                         const mPts = [];
                         const mSeg = 32;
-                        for(let k=0; k<=mSeg; k++) {
-                            const phi = (k/mSeg)*Math.PI*2;
-                            mPts.push(moonDist*Math.cos(phi), 0, moonDist*Math.sin(phi));
+                        for (let k = 0; k <= mSeg; k++) {
+                            const phi = (k / mSeg) * Math.PI * 2;
+                            mPts.push(moonDist * Math.cos(phi), 0, moonDist * Math.sin(phi));
                         }
                         mOrbitGeo.setAttribute('position', new THREE.Float32BufferAttribute(mPts, 3));
                         // Yellow orbit lines for moons
@@ -580,33 +592,33 @@ export class OrreryScene extends Scene {
             textShadow: '0 0 5px #000',
             pointerEvents: 'none'
         });
-        this.hudElement.innerText = `TRACKING: ${total} BODIES`;
+        this.hudElement.innerText = `TRACKING:  BODIES`;
     }
 
     createGrid() {
         // Create a grid helper to visualize the ecliptic plane
         let size = 200;
         if (this.planets.length > 0) {
-             // Use visual distance of last planet
-             size = this.getVisualDistance(this.planets.length - 1) * 2.5;
+            // Use visual distance of last planet
+            size = this.getVisualDistance(this.planets.length - 1) * 2.5;
         }
-        
+
         const grid = new THREE.GridHelper(size, 40, 0x333333, 0x111111);
         this.scene.add(grid);
     }
 
     update(time, delta) {
         super.update(time, delta);
-        
+
         // Animate orbits
         const dt = delta / 1000;
-        
+
         // Move Planet Groups (Orbit)
         this.planetGroups.forEach(group => {
             group.userData.angle += group.userData.speed * dt;
             group.position.x = group.userData.distance * Math.cos(group.userData.angle);
             group.position.z = group.userData.distance * Math.sin(group.userData.angle);
-            
+
             // Rotate Planet Mesh on Axis (Day/Night cycle)
             const planetBody = group.children.find(c => c.userData.isPlanetBody);
             if (planetBody) {
@@ -622,7 +634,7 @@ export class OrreryScene extends Scene {
                 }
             });
         });
-        
+
         // Rotate Star
         if (this.starMesh) {
             this.starMesh.rotation.y += 0.1 * dt;
@@ -635,7 +647,7 @@ export class OrreryScene extends Scene {
             // this.cameraMarker.material.opacity = 0.5 + Math.sin(time * 0.01) * 0.5; // Don't fade out completely
         }
     }
-    
+
     onLoad() {
         super.onLoad();
         if (this.renderer && this.renderer.domElement) {
@@ -657,16 +669,16 @@ export class OrreryScene extends Scene {
 
     onMouseClick(event) {
         const mouse = SceneTools.getMouseVector(event, this.renderer.domElement);
-        
+
         this.raycaster.setFromCamera(mouse, this.activeCamera);
         const intersects = this.raycaster.intersectObjects(this.planetMeshes);
-        
+
         if (intersects.length > 0) {
             const planet = intersects[0].object.parent.userData.planet; // Data is on the Group now
             Logger.message(`Orrery: Clicked ${planet.name}`);
-            
+
             // Trigger UI Message
-             this.viewManager.uiMessage.showMessage({
+            this.viewManager.uiMessage.showMessage({
                 key: 'orrery_scan',
                 title: `Orrery Scan: ${planet.name}`,
                 template: 'planet_lore',
@@ -682,18 +694,18 @@ export class OrreryScene extends Scene {
 
     onMouseMove(event) {
         const mouse = SceneTools.getMouseVector(event, this.renderer.domElement);
-        
+
         this.raycaster.setFromCamera(mouse, this.activeCamera);
         const intersects = this.raycaster.intersectObjects(this.planetMeshes);
-        
+
         // Reset scales of previously hovered
         this.planetMeshes.forEach(m => {
             if (m.userData.hovered) {
-                m.scale.set(1,1,1);
+                m.scale.set(1, 1, 1);
                 m.userData.hovered = false;
             }
         });
-        
+
         if (intersects.length > 0) {
             const mesh = intersects[0].object;
             mesh.scale.set(1.5, 1.5, 1.5); // Pop effect

@@ -9,6 +9,8 @@ import { PlanetaryRenderer } from '../rendering/PlanetaryRenderer.js';
 import { Starbox } from './scenecomponents/Starbox.js';
 import { Planet } from './scenecomponents/Planet.js';
 import { Asteroid } from './scenecomponents/Asteroid.js';
+import { AvatarEngine } from '../procgen/avatar/AvatarEngine.js';
+import { BODY_PLANS } from '../procgen/avatar/BodyPlanSchema.js';
 
 export class PlanetaryOrbitScene extends Scene {
     constructor(viewManager, sceneData) {
@@ -398,9 +400,35 @@ export class PlanetaryOrbitScene extends Scene {
         // Generate Lore Data
         // Use actual system data if available, otherwise fallback
         const species = this.systemData.species || this.planetData.species || "Unknown Species";
-        const society = this.systemData.society || "Unknown Society";
+        let society = this.systemData.society || "Unknown Society";
+        if (this.planetData.population) {
+            society += ` (Pop: ${this.planetData.population.toLocaleString()})`;
+        }
         
         const description = this.planetData.description || "A mysterious world.";
+
+        // Extended Data extraction
+        const gravity = this.planetData.gravity ? `${parseFloat(this.planetData.gravity).toFixed(2)} G` : 'Unknown';
+        const temperature = this.planetData.temperature ? `${Math.round(this.planetData.temperature)} K` : 'Unknown';
+        const atmosphere = this.planetData.atmosphere || 'None';
+        
+        let techInfo = "Unknown";
+        if (this.systemData.tech) {
+            // Handle both string and object formats for tech
+            techInfo = typeof this.systemData.tech === 'string' ? this.systemData.tech : (this.systemData.tech.Type || "Unknown");
+        }
+
+        let resourcesHtml = '<span style="color:#888;">None detected</span>';
+        if (this.planetData.resources && this.planetData.resources.length > 0) {
+            resourcesHtml = this.planetData.resources.map(r => `<span style="color:#aaffaa;">${r.name}</span> <span style="color:#88aa88; font-size:0.8em;">(${r.grade})</span>`).join(', ');
+        }
+
+        let speciesLoreHtml = "";
+        if (this.systemData.speciesCore) {
+            const core = this.systemData.speciesCore;
+            if (core.physicalDescription) speciesLoreHtml += `<div style="margin-top:5px; font-style:italic; color:#aaccff;">"${core.physicalDescription}"</div>`;
+            if (core.culturalDescription) speciesLoreHtml += `<div style="margin-top:5px; color:#ccccff;">${core.culturalDescription}</div>`;
+        }
 
         // Define POI (Point of Interest) for the UI
         let poi = "Unknown Anomaly";
@@ -416,100 +444,147 @@ export class PlanetaryOrbitScene extends Scene {
         const panel = document.createElement('div');
         Object.assign(panel.style, {
             position: 'absolute',
-            top: '15%',
-            right: '5%',
-            width: '320px',
+            top: '10%',
+            right: '2%',
+            width: '400px', // Widened
+            maxHeight: '80%',
+            overflowY: 'auto',
             padding: '20px',
-            backgroundColor: 'rgba(0, 15, 30, 0.85)',
+            backgroundColor: 'rgba(0, 10, 20, 0.9)',
             border: '1px solid #00aaff',
-            boxShadow: '0 0 15px rgba(0, 170, 255, 0.3)',
+            boxShadow: '0 0 20px rgba(0, 170, 255, 0.4)',
             color: '#e0f0ff',
             fontFamily: '"Orbitron", "Courier New", monospace',
             zIndex: '100',
-            borderRadius: '5px',
-            backdropFilter: 'blur(5px)',
-            transition: 'opacity 1s'
+            borderRadius: '8px',
+            backdropFilter: 'blur(8px)',
+            transition: 'opacity 1s',
+            scrollbarWidth: 'thin'
         });
 
         // Header
         panel.innerHTML = `
-            <h2 style="margin: 0 0 10px 0; color: #00ffff; text-transform: uppercase; font-size: 1.2em; border-bottom: 1px solid #005588; padding-bottom: 5px;">
+            <h2 style="margin: 0 0 10px 0; color: #00ffff; text-transform: uppercase; font-size: 1.4em; border-bottom: 2px solid #005588; padding-bottom: 5px; text-shadow: 0 0 5px #00ffff;">
                 ${this.planetData.name || 'Unknown World'}
             </h2>
-            <div style="font-size: 0.9em; margin-bottom: 15px; color: #aaccff;">
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.85em; margin-bottom: 15px; color: #aaccff; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px;">
                 <div><strong>Type:</strong> ${this.planetData.type || 'Terrestrial'}</div>
-                <div><strong>Atmosphere:</strong> ${this.planetData.atmosphere || 'Breathable'}</div>
-                <div><strong>Gravity:</strong> ${(0.5 + prng.nextDouble()).toFixed(2)} G</div>
+                <div><strong>Gravity:</strong> ${gravity}</div>
+                <div><strong>Atmosphere:</strong> ${atmosphere}</div>
+                <div><strong>Temp:</strong> ${temperature}</div>
+                <div style="grid-column: span 2;"><strong>Biosphere:</strong> ${this.planetData.biosphere || 'None'}</div>
+                <div style="grid-column: span 2;"><strong>Tech Level:</strong> ${techInfo}</div>
+            </div>
+
+            <div style="font-size: 0.9em; line-height: 1.4; margin-bottom: 15px; color: #ffffff;">
+                ${description}
             </div>
         `;
 
         // Species Section
         const speciesDiv = document.createElement('div');
         speciesDiv.style.marginBottom = '15px';
-        speciesDiv.innerHTML = `<div style="color:#00ffff; font-size:0.9em; margin-bottom:5px;">DOMINANT SPECIES: ${species}</div>
-                                <div style="color:#aaccff; font-size:0.8em; margin-bottom:5px;">SOCIETY: ${society}</div>`;
+        speciesDiv.style.borderTop = '1px solid #005588';
+        speciesDiv.style.paddingTop = '10px';
+        
+        speciesDiv.innerHTML = `
+            <div style="color:#00ffff; font-size:1.0em; margin-bottom:5px; font-weight:bold;">DOMINANT SPECIES: ${species}</div>
+            <div style="color:#aaccff; font-size:0.85em; margin-bottom:10px;">SOCIETY: ${society}</div>
+        `;
         
         // Procedural Avatar Canvas
         const avCanvas = document.createElement('canvas');
-        avCanvas.width = 64; avCanvas.height = 64;
+        avCanvas.width = 80; avCanvas.height = 80;
         avCanvas.style.border = '1px solid #005588';
         avCanvas.style.float = 'left';
-        avCanvas.style.marginRight = '10px';
-        avCanvas.style.backgroundColor = '#000';
+        avCanvas.style.marginRight = '15px';
+        avCanvas.style.marginBottom = '5px';
+        avCanvas.style.backgroundColor = '#050510';
+        avCanvas.style.borderRadius = '4px';
         const avCtx = avCanvas.getContext('2d');
+        // Procedural Avatar Container (Replaces Canvas)
+        const avContainer = document.createElement('div');
+        avContainer.style.width = '80px'; 
+        avContainer.style.height = '80px';
+        avContainer.style.border = '1px solid #005588';
+        avContainer.style.float = 'left';
+        avContainer.style.marginRight = '15px';
+        avContainer.style.marginBottom = '5px';
+        avContainer.style.backgroundColor = '#050510';
+        avContainer.style.borderRadius = '4px';
+        avContainer.style.overflow = 'hidden';
+        avContainer.innerHTML = '<div style="color:#00ffff;font-size:10px;text-align:center;line-height:80px;">Scanning...</div>';
         
-        // Draw Alien Face
-        const skinHue = Math.floor(prng.nextDouble() * 360);
-        avCtx.fillStyle = `hsl(${skinHue}, 60%, 40%)`;
+        // Draw Alien Face (Enhanced)
+        // Use species color if available
+        let baseColor = `hsl(${Math.floor(prng.nextDouble() * 360)}, 60%, 40%)`;
+        if (this.systemData.speciesCore && this.systemData.speciesCore.color) {
+             // Assuming color is hex string or number
+             const c = new THREE.Color(this.systemData.speciesCore.color);
+             const hsl = {};
+             c.getHSL(hsl);
+             baseColor = `hsl(${Math.floor(hsl.h * 360)}, ${Math.floor(hsl.s * 100)}%, ${Math.floor(hsl.l * 100)}%)`;
+        }
+
+        avCtx.fillStyle = baseColor;
         avCtx.beginPath();
-        avCtx.ellipse(32, 32, 20, 28, 0, 0, Math.PI * 2);
+        avCtx.ellipse(40, 40, 25, 35, 0, 0, Math.PI * 2);
         avCtx.fill();
         // Eyes
         avCtx.fillStyle = '#000'; // Sclera
-        avCtx.beginPath(); avCtx.ellipse(24, 28, 6, 4, 0.2, 0, Math.PI*2); avCtx.fill();
-        avCtx.beginPath(); avCtx.ellipse(40, 28, 6, 4, -0.2, 0, Math.PI*2); avCtx.fill();
+        avCtx.beginPath(); avCtx.ellipse(30, 35, 8, 5, 0.2, 0, Math.PI*2); avCtx.fill();
+        avCtx.beginPath(); avCtx.ellipse(50, 35, 8, 5, -0.2, 0, Math.PI*2); avCtx.fill();
         avCtx.fillStyle = '#fff'; // Pupil
-        avCtx.beginPath(); avCtx.arc(24, 28, 2, 0, Math.PI*2); avCtx.fill();
-        avCtx.beginPath(); avCtx.arc(40, 28, 2, 0, Math.PI*2); avCtx.fill();
+        avCtx.beginPath(); avCtx.arc(30, 35, 3, 0, Math.PI*2); avCtx.fill();
+        avCtx.beginPath(); avCtx.arc(50, 35, 3, 0, Math.PI*2); avCtx.fill();
+        speciesDiv.insertBefore(avContainer, speciesDiv.children[2] || null); // Insert after headers
         
-        speciesDiv.insertBefore(avCanvas, speciesDiv.firstChild);
-        speciesDiv.innerHTML += `<div style="clear:both;"></div>`; // Clear float
+        speciesDiv.insertBefore(avCanvas, speciesDiv.children[2] || null); // Insert after headers
+        
+        const loreTextDiv = document.createElement('div');
+        loreTextDiv.style.fontSize = '0.85em';
+        loreTextDiv.innerHTML = speciesLoreHtml;
+        speciesDiv.appendChild(loreTextDiv);
+        
+        // Clear float
+        const clearDiv = document.createElement('div');
+        clearDiv.style.clear = 'both';
+        speciesDiv.appendChild(clearDiv);
+
         panel.appendChild(speciesDiv);
+
+        // Resources Section
+        const resDiv = document.createElement('div');
+        resDiv.style.borderTop = '1px solid #005588';
+        resDiv.style.paddingTop = '10px';
+        resDiv.style.marginBottom = '15px';
+        resDiv.innerHTML = `
+            <div style="color:#00ffff; font-size:0.9em; margin-bottom:5px;">STRATEGIC RESOURCES</div>
+            <div style="font-size:0.8em; line-height:1.4;">${resourcesHtml}</div>
+        `;
+        panel.appendChild(resDiv);
 
         // POI Section
         const poiDiv = document.createElement('div');
-        poiDiv.innerHTML = `<div style="color:#00ffff; font-size:0.9em; margin-bottom:5px;">SCAN DETECTED: ${poi}</div>`;
+        poiDiv.style.borderTop = '1px solid #005588';
+        poiDiv.style.paddingTop = '10px';
+        poiDiv.innerHTML = `<div style="color:#00ffff; font-size:0.9em; margin-bottom:5px;">SURFACE SCAN: ${poi}</div>`;
         
         // Procedural Landscape Canvas
         const landCanvas = document.createElement('canvas');
-        landCanvas.width = 280; landCanvas.height = 100;
+        landCanvas.width = 360; landCanvas.height = 120;
         landCanvas.style.border = '1px solid #005588';
         landCanvas.style.width = '100%';
+        landCanvas.style.borderRadius = '4px';
         const lCtx = landCanvas.getContext('2d');
         
-        // Sky
-        const skyGrad = lCtx.createLinearGradient(0,0,0,100);
-        skyGrad.addColorStop(0, '#001133');
-        skyGrad.addColorStop(1, '#003366');
-        lCtx.fillStyle = skyGrad;
-        lCtx.fillRect(0,0,280,100);
-        
-        // Terrain
-        lCtx.fillStyle = '#112211';
-        lCtx.beginPath();
-        lCtx.moveTo(0, 100);
-        for(let x=0; x<=280; x+=10) {
-            lCtx.lineTo(x, 60 + Math.sin(x * 0.05 + seed) * 20);
-        }
-        lCtx.lineTo(280, 100);
-        lCtx.fill();
-        
-        // Structure
+        // Placeholder background
         lCtx.fillStyle = '#000';
-        lCtx.fillRect(120, 40, 40, 60); // Silhouette
-        lCtx.fillStyle = '#00ffff'; // Windows/Lights
-        lCtx.fillRect(130, 50, 5, 5);
-        lCtx.fillRect(145, 60, 5, 5);
+        lCtx.fillRect(0,0,360,120);
+        lCtx.fillStyle = '#004488';
+        lCtx.font = "12px monospace";
+        lCtx.fillText("Acquiring Satellite Feed...", 10, 20);
 
         poiDiv.appendChild(landCanvas);
         panel.appendChild(poiDiv);
@@ -519,14 +594,9 @@ export class PlanetaryOrbitScene extends Scene {
         statusDiv.style.marginTop = '15px';
         statusDiv.style.fontSize = '0.8em';
         statusDiv.style.color = '#00ff00';
-        statusDiv.innerText = "ORBITAL SCAN COMPLETE. PREPARING LANDING...";
+        statusDiv.style.textAlign = 'right';
+        statusDiv.innerText = "ORBITAL INSERTION COMPLETE";
         panel.appendChild(statusDiv);
-
-        // Ensure the info panel stays to the right and doesn't overlap the planet
-        panel.style.left = 'auto';
-        panel.style.right = '5%';
-
-
 
         document.body.appendChild(panel);
         this.infoPanel = panel;
@@ -536,9 +606,12 @@ export class PlanetaryOrbitScene extends Scene {
         
         // Trigger Surface Generation
         setTimeout(() => this.generateSurfaceSnapshot(landCanvas), 100);
+        // Trigger Avatar Generation
+        setTimeout(() => this.generateAvatarSnapshot(avContainer), 200);
     }
 
     async generateSurfaceSnapshot(container) {
+    async generateSurfaceSnapshot(container, attempt = 0) {
         const width = 280;
         const height = 150;
         
@@ -560,6 +633,11 @@ export class PlanetaryOrbitScene extends Scene {
         try {
             // Ensure seeds exist for surface generation, use fallback
             if (!this.planetData.seeds || !Array.isArray(this.planetData.seeds)) {
+                // Check if seeds are stored in the meshConfig (common pattern)
+                if (this.planetData.meshConfig && this.planetData.meshConfig.seeds) {
+                    this.planetData.seeds = this.planetData.meshConfig.seeds;
+                }
+                
                 const seed = this._stringToSeed(this.planetData.name || 'surface');
                 // Normalize to 0-1 range
                 const n = Math.abs(seed % 100000) / 100000;
@@ -576,6 +654,9 @@ export class PlanetaryOrbitScene extends Scene {
             
             // Render to offscreen target
             const renderer = this.viewManager.renderer;
+            
+            if (!renderer) throw new Error("Renderer not available");
+
             const rt = new THREE.WebGLRenderTarget(width, height);
             const currentRt = renderer.getRenderTarget();
             
@@ -616,6 +697,19 @@ export class PlanetaryOrbitScene extends Scene {
         } catch (e) {
             Logger.warn("PlanetaryOrbitScene: Surface snapshot failed", e);
             container.innerHTML = '<span style="color:#ff0000;">Scan Failed</span>';
+            Logger.warn(`PlanetaryOrbitScene: Surface snapshot failed (Attempt ${attempt + 1})`, e);
+            
+            // Cleanup scene even on failure
+            surfaceScene.traverse(o => {
+                if (o.geometry) o.geometry.dispose();
+                if (o.material) o.material.dispose();
+            });
+
+            if (attempt < 2) {
+                setTimeout(() => this.generateSurfaceSnapshot(container, attempt + 1), 500);
+            } else {
+                container.innerHTML = '<span style="color:#ff0000;">Scan Failed</span>';
+            }
         }
     }
 
@@ -626,6 +720,97 @@ export class PlanetaryOrbitScene extends Scene {
             hash |= 0;
         }
         return Math.abs(hash);
+    }
+
+    async generateAvatarSnapshot(container) {
+        const width = 80;
+        const height = 80;
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x050510);
+
+        const camera = new THREE.PerspectiveCamera(25, width / height, 0.1, 100);
+        camera.position.set(0, 0.15, 0.8);
+        camera.lookAt(0, 0.15, 0);
+
+        const ambient = new THREE.AmbientLight(0xffffff, 0.7);
+        scene.add(ambient);
+        const spot = new THREE.DirectionalLight(0xffffff, 1.0);
+        spot.position.set(1, 1, 2);
+        scene.add(spot);
+
+        try {
+            const avatarEngine = new AvatarEngine();
+            // Determine body plan from lore
+            let planName = 'HUMANOID';
+            const speciesCore = this.systemData.speciesCore || {};
+            
+            if (speciesCore.bodyPlan) {
+                const bp = speciesCore.bodyPlan.toLowerCase();
+                if (bp.includes('quadruped')) planName = 'QUADRUPED';
+                else if (bp.includes('spider') || bp.includes('arachnid')) planName = 'SPIDER';
+                else if (bp.includes('centipede') || bp.includes('myriapod')) planName = 'CENTIPEDE';
+                else if (bp.includes('radial') || bp.includes('tentacle')) planName = 'RADIAL';
+                else if (bp.includes('winged') || bp.includes('avian')) planName = 'WINGED';
+            }
+
+            const bodyPlan = BODY_PLANS[planName] || BODY_PLANS.HUMANOID;
+            const avatarMesh = avatarEngine.generate(bodyPlan);
+            
+            if (speciesCore.color) {
+                const c = new THREE.Color(speciesCore.color);
+                avatarMesh.material.color.copy(c);
+            } else {
+                 const hue = Math.random();
+                 avatarMesh.material.color.setHSL(hue, 0.6, 0.5);
+            }
+
+            // Center and scale
+            const box = new THREE.Box3().setFromObject(avatarMesh);
+            const center = box.getCenter(new THREE.Vector3());
+            avatarMesh.position.sub(center);
+            avatarMesh.position.y -= 0.1; 
+
+            scene.add(avatarMesh);
+
+            const renderer = this.viewManager.renderer;
+            if (!renderer) throw new Error("Renderer not available");
+
+            const rt = new THREE.WebGLRenderTarget(width, height);
+            const currentRt = renderer.getRenderTarget();
+            
+            renderer.setRenderTarget(rt);
+            renderer.render(scene, camera);
+            renderer.setRenderTarget(currentRt);
+
+            const buffer = new Uint8Array(width * height * 4);
+            renderer.readRenderTargetPixels(rt, 0, 0, width, height, buffer);
+            
+            const canvas = document.createElement('canvas');
+            canvas.width = width; canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            const imgData = ctx.createImageData(width, height);
+            
+            for (let y = 0; y < height; y++) {
+                const srcRow = (height - 1 - y) * width * 4;
+                const dstRow = y * width * 4;
+                imgData.data.set(buffer.subarray(srcRow, srcRow + width * 4), dstRow);
+            }
+            ctx.putImageData(imgData, 0, 0);
+            
+            container.innerHTML = '';
+            const img = document.createElement('img');
+            img.src = canvas.toDataURL();
+            img.style.width = '100%'; img.style.height = '100%';
+            container.appendChild(img);
+            
+            rt.dispose();
+            avatarMesh.geometry.dispose();
+            avatarMesh.material.dispose();
+
+        } catch (e) {
+            Logger.warn("PlanetaryOrbitScene: Avatar generation failed", e);
+            container.innerHTML = '<div style="color:red;font-size:10px;text-align:center;line-height:80px;">No Data</div>';
+        }
     }
 
     update(time, delta) {

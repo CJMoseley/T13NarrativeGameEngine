@@ -100,7 +100,7 @@ export class LoreMaster {
                 this.systemLoreGenerator = new SystemLoreGenerator(this.pluginManager, this.loreData);
 
                 // Initialize StellarSystemGenerator (Planets) here to centralize access
-                this.stellarSystemGenerator = new StellarSystemGenerator(this.pluginManager, this.nameGenerator);
+                this.stellarSystemGenerator = new StellarSystemGenerator(this.pluginManager, this.nameGenerator, this.speciesGenerator);
 
                 this.isInitialized = true;
                 Logger.message("LoreMaster: All systems initialized.");

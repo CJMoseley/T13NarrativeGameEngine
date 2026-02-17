@@ -18,9 +18,9 @@ export class LocalSpaceScene extends Scene {
         this.planets = sceneData.planets || [];
         this.starData = sceneData.star || {};
         this.planetGenerator = new PlanetGenerator(null);
-        
-        this.objects = []; 
-        
+
+        this.objects = [];
+
         // View Settings: Default to visible scales if not provided
         this.scales = sceneData.scales || {
             orbit: 10000.0,      // 1 AU = 10,000 units
@@ -31,26 +31,26 @@ export class LocalSpaceScene extends Scene {
 
         // Intro Sequence State
         this.introActive = true;
-        this.introPhase = 0; 
+        this.introPhase = 0;
         this.introTime = 0;
         this.homeWorldObj = null;
         this.flybySequenceActive = false;
         this.flybyObj = null;
-        this.phaseStartPos = null; 
+        this.phaseStartPos = null;
         this.introStartPos = new THREE.Vector3(0, 1000, 2000); // Default, updated in init
-        
-        this.virtualCameraPosition = new THREE.Vector3(0, 0, 0); 
+
+        this.virtualCameraPosition = new THREE.Vector3(0, 0, 0);
         this.virtualCameraTarget = new THREE.Vector3(0, 0, 0);
-        this.currentLookAt = new THREE.Vector3(0, 0, -1); 
-        this.COMPRESSION_C = 1000.0; 
-        
+        this.currentLookAt = new THREE.Vector3(0, 0, -1);
+        this.COMPRESSION_C = 1000.0;
+
         this.hudElement = null;
-        
+
         this.inputState = {
             forward: false, backward: false, left: false, right: false, up: false, down: false, speed: 100.0
         };
 
-        this.introPath = []; 
+        this.introPath = [];
         this.raycaster = new THREE.Raycaster();
         this.mouse = new THREE.Vector2();
         this.onMouseClick = this.onMouseClick.bind(this);
@@ -64,7 +64,7 @@ export class LocalSpaceScene extends Scene {
         if (data.planets) this.planets = data.planets;
         if (data.star) this.starData = data.star;
         if (data.playIntro !== undefined) this.introActive = data.playIntro;
-        
+
         // Re-initialize the scene with the new data
         this.init();
     }
@@ -95,7 +95,7 @@ export class LocalSpaceScene extends Scene {
             this.orreryScene.onUnload();
             this.orreryScene = null;
         }
-        
+
         for (let i = this.scene.children.length - 1; i >= 0; i--) {
             const child = this.scene.children[i];
             if (child.isMesh || child.isLine || child.isPoints || child.isSprite || child.isGroup) {
@@ -106,26 +106,28 @@ export class LocalSpaceScene extends Scene {
         }
 
         this.scene.background = new THREE.Color(0x000000);
-        
-        const ambient = new THREE.AmbientLight(0x404040); 
+
+        const ambient = new THREE.AmbientLight(0x404040);
         this.scene.add(ambient);
-        
-        const headlamp = new THREE.PointLight(0xffffff, 0.3, 0, 0); 
+
+        const headlamp = new THREE.PointLight(0xffffff, 0.3, 0, 0);
         this.activeCamera.add(headlamp);
 
         this.activeCamera.position.set(0, 0, 0);
-        this.activeCamera.lookAt(0, 0, -1); 
+        this.activeCamera.lookAt(0, 0, -1);
+        this.activeCamera.up.set(0, 1, 0); // Reset UP vector in case previous scene changed it
+        this.activeCamera.fov = 60; // Reset FOV
         this.activeCamera.near = 10.0; // Increased to prevent Z-fighting on clouds at distance
         this.activeCamera.far = 10000000; // Increased far plane for realistic scales
         this.activeCamera.updateProjectionMatrix();
-        this.scene.add(this.activeCamera); 
-        
+        this.scene.add(this.activeCamera);
+
         this.setupControls('trackball', {
             rotateSpeed: 2.0,
             zoomSpeed: 1.2,
             panSpeed: 0.8,
             noZoom: false,
-            noPan: true, 
+            noPan: true,
             staticMoving: false,
             dynamicDampingFactor: 0.1
         });
@@ -137,41 +139,60 @@ export class LocalSpaceScene extends Scene {
         // Removed sanitizeData() - View should not alter model data
         this.createStars();
         this.createPlanets();
-        this.createAsteroids(); 
-        this.createSkybox(); 
+        this.createAsteroids();
+        this.createSkybox();
         this.setupInteraction();
 
         // --- Identify Homeworld and Fly-by target for Intro ---
-        const planets = this.objects.filter(o => o.type === 'planet');
-        const hwIndex = this.systemData.homeWorldIndex !== undefined ? this.systemData.homeWorldIndex : 0;
-        this.homeWorldObj = planets[hwIndex] || null;
+        // Search all objects (planets and moons) for the explicit isHomeworld flag
+        this.homeWorldObj = this.objects.find(o => o.data?.isHomeworld === true);
+
+        // Fallback to the index-based planet if no object is explicitly marked
+        if (!this.homeWorldObj) {
+            const planets = this.objects.filter(o => o.type === 'planet');
+            const hwIndex = this.systemData.homeWorldIndex !== undefined ? this.systemData.homeWorldIndex : 0;
+            this.homeWorldObj = planets[hwIndex] || planets[0] || null;
+        }
 
         if (this.homeWorldObj) {
-            Logger.message(`LocalSpaceScene: Homeworld identified as ${this.homeWorldObj.data.name}`);
+            Logger.message(`LocalSpaceScene: Homeworld identified as ${this.homeWorldObj.data.name || 'Body ' + (this.homeWorldObj.index || '')} (${this.homeWorldObj.type})`);
 
             // Find a fly-by target: random solid object (planet, moon, asteroid) NOT homeworld
-            const candidates = this.objects.filter(o => 
-                (o.type === 'planet' || o.type === 'moon' || o.type === 'asteroid') && 
+            const candidates = this.objects.filter(o =>
+                (o.type === 'planet' || o.type === 'moon' || o.type === 'asteroid') &&
                 o !== this.homeWorldObj &&
                 o.mesh // Ensure it has a mesh
             );
-            
+
             if (candidates.length > 0) {
                 this.flybyObj = candidates[Math.floor(Math.random() * candidates.length)];
             } else {
-                // Fallback to star if absolutely nothing else
-                this.flybyObj = this.objects.find(o => o.type === 'star');
+                // If no other planets/moons, pick a point in space or fallback to star focus
+                this.flybyObj = (this.homeWorldObj.moons && this.homeWorldObj.moons.length > 0) ?
+                    this.homeWorldObj.moons[0] :
+                    this.objects.find(o => o.type === 'star');
             }
-            Logger.message(`LocalSpaceScene: Fly-by object identified as ${this.flybyObj?.data?.name || 'the star'}`);
+            Logger.message(`LocalSpaceScene: Fly-by object identified as ${this.flybyObj?.data?.name || this.flybyObj?.type || 'the star'}`);
 
         } else {
             Logger.warn("LocalSpaceScene: Could not identify a homeworld. Intro sequence disabled.");
             this.introActive = false;
         }
 
+        // Enable High Detail for key objects
+        if (this.homeWorldObj && this.homeWorldObj.mesh && typeof this.homeWorldObj.mesh.enableHighDetail === 'function') {
+            this.homeWorldObj.mesh.enableHighDetail();
+        }
+        if (this.flybyObj && this.flybyObj.mesh && typeof this.flybyObj.mesh.enableHighDetail === 'function') {
+            this.flybyObj.mesh.enableHighDetail();
+        }
+
         this.flybySequenceActive = !!this.flybyObj;
 
         // Reset intro time
+
+        // Set initial camera position AFTER path is calculated
+
         this.introTime = 0;
 
         this.orreryScene = new OrreryScene(this.viewManager, {
@@ -180,9 +201,7 @@ export class LocalSpaceScene extends Scene {
             star: this.starData
         });
         this.orreryScene.init();
-        
-        this.orreryScene.updateCameraMarker(this.virtualCameraPosition, this.scales.orbit);
-        
+
         if (this.orreryScene.cameraControls.has('orbit')) this.orreryScene.cameraControls.get('orbit').enabled = false;
 
         // --- Generate Intro Path and Set Initial Camera Position ---
@@ -190,55 +209,63 @@ export class LocalSpaceScene extends Scene {
             const waypoints = [];
             const allPlanets = this.objects.filter(o => o.type === 'planet').sort((a, b) => a.orbitRadius - b.orbitRadius);
             const systemRadius = allPlanets.length > 0 ? allPlanets[allPlanets.length - 1].orbitRadius : 20000;
-            const startDist = Math.max(systemRadius * 1.2, 50000);
+            const startDist = Math.max(systemRadius * 2.5, 120000); // Start MUCH further out
 
             // 1. Start Point: Outer Edge
-            // Pick a random angle for variety
             const angle = Math.random() * Math.PI * 2;
             this.introStartPos.set(
-                Math.cos(angle) * startDist, 
-                startDist * 0.3, // Elevation
+                Math.cos(angle) * startDist,
+                startDist * 0.4, // Higher elev
                 Math.sin(angle) * startDist
             );
-            waypoints.push(this.introStartPos);
+            waypoints.push(this.introStartPos.clone());
 
             // 2. Flyby Waypoint
             if (this.flybyObj && this.flybyObj.realPosition) {
                 const flybyPos = this.flybyObj.realPosition.clone();
-                const flybyRadius = (this.flybyObj.baseRadius || 100) * 15.0; // Close enough to view
+                const flybyRadius = (this.flybyObj.baseRadius || 100) * (this.flybyObj.type === 'star' ? 40.0 : 15.0);
 
-                // Calculate a point that passes "around" the object
-                // Vector from Start to Object
-                const dir = new THREE.Vector3().subVectors(flybyPos, this.introStartPos).normalize();
-                // Perpendicular vector (roughly up/side)
-                const side = new THREE.Vector3().crossVectors(dir, new THREE.Vector3(0, 1, 0)).normalize();
+                // Perpendicular vector
+                const dirToCenter = new THREE.Vector3(0, 0, 0).sub(this.introStartPos).normalize();
+                const side = new THREE.Vector3().crossVectors(dirToCenter, new THREE.Vector3(0, 1, 0)).normalize();
                 if (side.lengthSq() === 0) side.set(1, 0, 0);
-                
+
                 const flybyWaypoint = flybyPos.clone().add(side.multiplyScalar(flybyRadius));
+                flybyWaypoint.y += flybyRadius * 0.3; // Slight drop/rise
                 waypoints.push(flybyWaypoint);
             }
 
             // 3. Final approach point to homeworld
             const homePos = this.homeWorldObj.realPosition.clone();
             const homeRadius = this.homeWorldObj.baseRadius || 1000;
-            
-            // Approach vector: From Flyby (or Start) to Home
+
             const prevPoint = waypoints[waypoints.length - 1];
-            const approachDir = new THREE.Vector3().subVectors(homePos, prevPoint).normalize();
-            
-            // Stop short for "in orbit" view
-            const finalWaypoint = homePos.clone().sub(approachDir.multiplyScalar(homeRadius * 4.0));
-            // Add some elevation
+            let approachDir = new THREE.Vector3().subVectors(homePos, prevPoint).normalize();
+
+            // If it's a moon, adjust approach to try and keep the parent in view
+            if (this.homeWorldObj.type === 'moon' && this.homeWorldObj.parent) {
+                const parentPos = this.homeWorldObj.parent.realPosition;
+                const parentToMoon = new THREE.Vector3().subVectors(homePos, parentPos).normalize();
+
+                // Cross product to find a "side" approach that sees both
+                const sideDir = new THREE.Vector3().crossVectors(parentToMoon, new THREE.Vector3(0, 1, 0)).normalize();
+                if (sideDir.lengthSq() > 0.1) {
+                    // Bias the approach to be slightly from the side of the parent-moon axis
+                    approachDir.lerp(sideDir, 0.4).normalize();
+                }
+            }
+
+            const finalWaypoint = homePos.clone().sub(approachDir.multiplyScalar(homeRadius * 5.0));
             finalWaypoint.y += homeRadius * 1.5;
-            
+
             waypoints.push(finalWaypoint);
 
             if (waypoints.length > 1) {
                 this.introPathSpline = new THREE.CatmullRomCurve3(waypoints);
-                this.introPath = this.introPathSpline.getPoints(200); // Sample for orrery
+                this.introPath = this.introPathSpline.getPoints(200);
                 this.orreryScene.setIntroPath(this.introPath, this.scales.orbit);
             } else {
-                this.introActive = false; // Not enough points to make a path
+                this.introActive = false;
             }
         } else {
             this.introActive = false;
@@ -296,15 +323,15 @@ export class LocalSpaceScene extends Scene {
             pointerEvents: 'none',
             zIndex: '100'
         });
-        
+
         let name = this.systemData.name || 'Unknown';
         if (this.systemData.systemNameFull && Array.isArray(this.systemData.systemNameFull)) {
-             const [common, formal, aka] = this.systemData.systemNameFull;
-             name = `${common} | ${formal}`;
-             if (aka) name += ` | ${aka}`;
+            const [common, formal, aka] = this.systemData.systemNameFull;
+            name = `${common} | ${formal}`;
+            if (aka) name += ` | ${aka}`;
         }
         this.hudElement.innerText = `SYSTEM: ${name} (${total} Bodies)`;
-        
+
         if (this.viewManager) {
             this.viewManager.setHUD(this.hudElement);
         }
@@ -322,24 +349,24 @@ export class LocalSpaceScene extends Scene {
                 offset: 0
             }];
         }
-        
+
         // Use scale from data or default 1
-        const baseStarSize = this.scales.starSize; 
+        const baseStarSize = this.scales.starSize;
 
         stars.forEach((starData, index) => {
             const radius = baseStarSize * (starData.radius || 1.0);
-            
+
             let realPos = new THREE.Vector3(0, 0, 0);
             if (stars.length > 1) {
-                if (index > 0 || stars.length > 1) { 
-                    const dist = (baseStarSize * 5) + (starData.offset || 0);
-                    const angle = (index - 1) * (Math.PI * 2 / (stars.length - 1));
+                if (index > 0 || stars.length > 1) {
+                    const dist = (baseStarSize * 1.5) + (starData.offset || 0);
+                    const angle = index * (Math.PI * 2 / stars.length);
                     realPos.set(Math.cos(angle) * dist, 0, Math.sin(angle) * dist);
                 }
             }
 
             const starMesh = new Star(starData, radius);
-            
+
             const starObj = {
                 mesh: starMesh,
                 realPosition: realPos,
@@ -366,9 +393,10 @@ export class LocalSpaceScene extends Scene {
         this.planets.forEach((planetData, index) => {
             // Use raw data values scaled by the provided scale factor (default 1)
             const distance = (planetData.orbitalDistance || 0) * this.scales.orbit;
-            const planetRadius = (planetData.radius || 1) * this.scales.planetSize; 
-            
-            const planetMesh = new Planet(planetData, planetRadius, true);
+            const planetRadius = (planetData.radius || 1) * this.scales.planetSize;
+
+            // Default to low detail (false) to prevent massive lag spike. We enable high detail for specific targets later.
+            const planetMesh = new Planet(planetData, planetRadius, false);
             this.scene.add(planetMesh);
 
             const orbitPoints = [];
@@ -385,23 +413,23 @@ export class LocalSpaceScene extends Scene {
             const planetObj = {
                 mesh: planetMesh,
                 orbitLine: orbitLine,
-                orbitPointsReal: orbitPoints, 
+                orbitPointsReal: orbitPoints,
                 data: planetData,
                 orbitRadius: distance,
                 orbitSpeed: (planetData.orbitSpeed || 0.0001) * 5,
                 orbitAngle: prng.nextDouble() * Math.PI * 2,
-                realPosition: new THREE.Vector3(distance, 0, 0), 
+                realPosition: new THREE.Vector3(distance, 0, 0),
                 baseRadius: planetRadius,
                 type: 'planet',
                 parent: null,
                 moons: []
             };
-            
+
             planetObj.realPosition.set(Math.cos(planetObj.orbitAngle) * distance, 0, Math.sin(planetObj.orbitAngle) * distance);
-            
+
             // Sync angle back to data for Orrery
             planetData.startAngle = planetObj.orbitAngle;
-            
+
             this.createDistantSprite(planetObj, planetData.color);
             this.objects.push(planetObj);
 
@@ -411,37 +439,37 @@ export class LocalSpaceScene extends Scene {
                     this.scene.add(moonLOD);
 
                     const moonRadius = (moonData.radius || 0.2) * (this.scales.planetSize || 1);
-                    const moonMeshScale = moonRadius / 2; 
+                    const moonMeshScale = moonRadius / 2;
 
                     let detailedMoonMesh;
                     try {
-                         detailedMoonMesh = this.planetGenerator.generateAsteroidMesh(prng.nextDouble(), 2, moonData.color);
-                         detailedMoonMesh.scale.setScalar(moonMeshScale);
-                    } catch(e) {
-                         detailedMoonMesh = new THREE.Mesh(new THREE.SphereGeometry(moonRadius, 8, 8), new THREE.MeshStandardMaterial({color: 0x888888}));
+                        detailedMoonMesh = this.planetGenerator.generateAsteroidMesh(prng.nextDouble(), 2, moonData.color);
+                        detailedMoonMesh.scale.setScalar(moonMeshScale);
+                    } catch (e) {
+                        detailedMoonMesh = new THREE.Mesh(new THREE.SphereGeometry(moonRadius, 8, 8), new THREE.MeshStandardMaterial({ color: 0x888888 }));
                     }
                     moonLOD.addLevel(detailedMoonMesh, 0);
 
                     let simpleMoonMesh;
                     try {
-                        simpleMoonMesh = new THREE.Mesh(new THREE.SphereGeometry(moonRadius, 8, 8), new THREE.MeshBasicMaterial({color: 0xaaaaaa}));
-                    } catch(e) {
-                        simpleMoonMesh = new THREE.Mesh(new THREE.SphereGeometry(moonRadius, 4, 4), new THREE.MeshBasicMaterial({color: 0x888888}));
+                        simpleMoonMesh = new THREE.Mesh(new THREE.SphereGeometry(moonRadius, 8, 8), new THREE.MeshBasicMaterial({ color: 0xaaaaaa }));
+                    } catch (e) {
+                        simpleMoonMesh = new THREE.Mesh(new THREE.SphereGeometry(moonRadius, 4, 4), new THREE.MeshBasicMaterial({ color: 0x888888 }));
                     }
                     moonLOD.addLevel(simpleMoonMesh, 1000);
 
                     const moonObj = {
                         mesh: moonLOD,
                         data: moonData,
-                        orbitRadius: (moonData.orbitalDistance || 0.002) * (this.scales.moonOrbit || 1) + (planetRadius * 3), 
+                        orbitRadius: (moonData.orbitalDistance || 0.002) * (this.scales.moonOrbit || 1) + (planetRadius * 3),
                         orbitSpeed: (moonData.orbitSpeed || 0.01),
                         orbitAngle: prng.nextDouble() * Math.PI * 2,
                         realPosition: new THREE.Vector3(),
                         baseRadius: moonRadius,
-                        parent: planetObj, 
+                        parent: planetObj,
                         type: 'moon'
                     };
-                    
+
                     this.createDistantSprite(moonObj, moonData.color);
                     planetObj.moons.push(moonObj);
                     this.objects.push(moonObj);
@@ -452,22 +480,22 @@ export class LocalSpaceScene extends Scene {
 
     createAsteroids() {
         const count = 400;
-        const beltRadius = this.scales.orbit * 2.5; 
+        const beltRadius = this.scales.orbit * 2.5;
         const beltWidth = this.scales.orbit * 0.8;
-        
-        for(let i=0; i<count; i++) {
+
+        for (let i = 0; i < count; i++) {
             const mesh = new Asteroid(15);
             this.scene.add(mesh);
-            
+
             const angle = Math.random() * Math.PI * 2;
             const dist = beltRadius + (Math.random() - 0.5) * beltWidth;
-            const y = (Math.random() - 0.5) * 400; 
-            
+            const y = (Math.random() - 0.5) * 400;
+
             const asteroidObj = {
                 mesh: mesh,
-                realPosition: new THREE.Vector3(Math.cos(angle)*dist, y, Math.sin(angle)*dist),
+                realPosition: new THREE.Vector3(Math.cos(angle) * dist, y, Math.sin(angle) * dist),
                 orbitRadius: dist,
-                orbitSpeed: (0.0002 + Math.random() * 0.0001) * 5, 
+                orbitSpeed: (0.0002 + Math.random() * 0.0001) * 5,
                 orbitAngle: angle,
                 baseRadius: 15,
                 type: 'asteroid',
@@ -478,14 +506,14 @@ export class LocalSpaceScene extends Scene {
     }
 
     createSkybox() {
-        const r = 60000; 
+        const r = 60000;
         this.starbox = new Starbox(this.gameEngine);
         this.starbox.generate(this.scene, this.starData, r);
     }
 
     createDistantSprite(obj, colorData) {
         if (!this.glowTexture) return;
-        
+
         let color = new THREE.Color(0xffffff);
         if (colorData) {
             if (colorData.isColor) color.copy(colorData);
@@ -493,8 +521,8 @@ export class LocalSpaceScene extends Scene {
             else color.set(colorData);
         }
 
-        const material = new THREE.SpriteMaterial({ 
-            map: this.glowTexture, 
+        const material = new THREE.SpriteMaterial({
+            map: this.glowTexture,
             color: color,
             transparent: true,
             depthTest: true, // Allow depth testing so it doesn't shine through planets
@@ -513,12 +541,12 @@ export class LocalSpaceScene extends Scene {
             // Starbox is static, no update needed unless camera moves within it
             // this.starbox.update(time * 0.001);
         }
-        
+
         // --- 1. Update Real Positions (Simulation) ---
         this.objects.forEach(obj => {
             if (obj.orbitSpeed && obj.orbitRadius) {
                 obj.orbitAngle += obj.orbitSpeed * dt;
-                
+
                 const lx = Math.cos(obj.orbitAngle) * obj.orbitRadius;
                 const lz = Math.sin(obj.orbitAngle) * obj.orbitRadius;
 
@@ -532,35 +560,35 @@ export class LocalSpaceScene extends Scene {
 
         // --- 2. Intro Sequence Logic (Camera Movement) ---
         if (this.introActive && this.homeWorldObj && this.homeWorldObj.realPosition) {
-             this.introTime += dt;
-             this.updateIntroCamera(this.introTime);
+            this.introTime += dt;
+            this.updateIntroCamera(this.introTime);
 
-             // Transition condition
-             const introDuration = this.flybyObj ? 22.0 : 15.0;
-             if (this.introTime >= introDuration) {
-                    this.introActive = false;
-                    
-                    let sunDirection = null;
-                    const starObj = this.objects.find(o => o.type === 'star');
-                    if (starObj && this.homeWorldObj) {
-                        sunDirection = new THREE.Vector3().subVectors(starObj.realPosition, this.homeWorldObj.realPosition).normalize();
-                    }
+            // Transition condition
+            const introDuration = this.flybyObj ? 22.0 : 15.0;
+            if (this.introTime >= introDuration) {
+                this.introActive = false;
 
-                    Logger.message("LocalSpaceScene: Intro complete. Transitioning to Planetary Orbit.");
-                    if (this.viewManager) {
-                        this.viewManager.transitionToScene('PlanetaryOrbitScene', { 
-                            planet: this.homeWorldObj.data, 
-                            system: this.systemData,
-                            sunDirection: sunDirection
-                        }, { type: 'crossDissolve', duration: 2000 });
-                    }
+                let sunDirection = null;
+                const starObj = this.objects.find(o => o.type === 'star');
+                if (starObj && this.homeWorldObj) {
+                    sunDirection = new THREE.Vector3().subVectors(starObj.realPosition, this.homeWorldObj.realPosition).normalize();
                 }
+
+                Logger.message("LocalSpaceScene: Intro complete. Transitioning to Planetary Orbit.");
+                if (this.viewManager) {
+                    this.viewManager.transitionToScene('PlanetaryOrbitScene', {
+                        planet: this.homeWorldObj.data,
+                        system: this.systemData,
+                        sunDirection: sunDirection
+                    }, { type: 'crossDissolve', duration: 2000 });
+                }
+            }
         } else if (this.homeWorldObj && !this.introActive) {
-             const offset = new THREE.Vector3(0, 200, 800); 
-             if (!this.homeWorldObj.realPosition) {
-                 this.homeWorldObj.realPosition = new THREE.Vector3(0,0,0);
-             }
-             this.virtualCameraPosition.copy(this.homeWorldObj.realPosition).add(offset);
+            const offset = new THREE.Vector3(0, 200, 800);
+            if (!this.homeWorldObj.realPosition) {
+                this.homeWorldObj.realPosition = new THREE.Vector3(0, 0, 0);
+            }
+            this.virtualCameraPosition.copy(this.homeWorldObj.realPosition).add(offset);
         }
 
         if (this.orreryScene) {
@@ -580,26 +608,39 @@ export class LocalSpaceScene extends Scene {
                 if (!this.introActive && obj === this.homeWorldObj) {
                     obj.mesh.position.copy(relVec);
                     obj.mesh.scale.setScalar(1.0);
-                    return; 
+                    return;
                 }
 
                 const visualDist = C * Math.log(1 + realDist / C);
-                const visualPos = relVec.normalize().multiplyScalar(visualDist);
+                const visualPos = relVec.clone();
+                if (realDist > 0.01) {
+                    visualPos.normalize().multiplyScalar(visualDist);
+                } else {
+                    visualPos.set(0, 0, 0);
+                }
                 obj.mesh.position.copy(visualPos);
 
                 // If this object is our look-at target, store its visual position
                 if (this.introActive && (obj === this.flybyObj || obj === this.homeWorldObj)) {
                     const targetObj = (this.flybyObj && this.introPhase === 0) ? this.flybyObj : this.homeWorldObj;
-                    if (obj === targetObj) visualLookAtTarget = visualPos;
+                    if (obj === targetObj) {
+                        visualLookAtTarget.copy(visualPos);
+
+                        // If targeting a moon homeworld, slightly bias the look-at towards the parent
+                        if (targetObj === this.homeWorldObj && targetObj.type === 'moon' && targetObj.parent && targetObj.parent.mesh) {
+                            const parentVisual = targetObj.parent.mesh.position;
+                            visualLookAtTarget.lerp(parentVisual, 0.15); // Subtle bias to keep giant in frame
+                        }
+                    }
                 }
 
                 let scale = 1.0;
                 if (realDist > 0.001) {
                     scale = visualDist / realDist;
                 }
-                
-                if (obj.type === 'star' || obj.type === 'planet' || obj.type === 'moon' ) {
-                    const minAngularSize = 0.005; 
+
+                if (obj.type === 'star' || obj.type === 'planet' || obj.type === 'moon') {
+                    const minAngularSize = 0.005;
                     const minScale = (visualDist * minAngularSize) / (obj.baseRadius || 1);
                     if (scale < minScale) scale = minScale;
                 }
@@ -614,21 +655,22 @@ export class LocalSpaceScene extends Scene {
                     // Mesh Scale = visualDist / realDist
                     // Sprite should represent the object's radius.
                     // We want the sprite to be visible even when the mesh would be sub-pixel.
-                    
+
                     const physicalScale = (obj.baseRadius || 100) * scale;
                     const minPixelScale = visualDist * 0.005; // Minimum size to be a visible "star" point
-                    
+
                     obj.sprite.scale.setScalar(Math.max(physicalScale * 2.0, minPixelScale)); // *2 for glow effect
                     obj.sprite.position.copy(visualPos);
 
                     // Simple LOD: If close enough to see detail, hide sprite, show mesh
-                    // During intro, keep homeworld as a sprite until the final approach phase
-                    const isFinalApproach = this.introActive && this.introPhase === 1;
-                    const canShowMesh = scale > 0.005 || (obj === this.homeWorldObj && isFinalApproach);
+                    // During intro, keep homeworld as a sprite until the final approach phase or if it's the star
+                    const isFinalPhase = this.introActive && this.introPhase === 1;
+                    const canShowMesh = scale > 0.005 || (obj === this.homeWorldObj && isFinalPhase) || (obj.type === 'star');
 
                     if (canShowMesh) {
-                        // Only show mesh if not in intro OR if it's the final approach to the homeworld
-                        obj.mesh.visible = !this.introActive || (obj === this.homeWorldObj && isFinalApproach);
+                        // Show mesh if not in intro OR if it's the final approach to the homeworld OR it's the star
+                        obj.mesh.visible = !this.introActive || (obj === this.homeWorldObj && isFinalPhase) || (obj.type === 'star');
+
                         // Fade out sprite when close
                         obj.sprite.material.opacity = Math.max(0, 1.0 - (scale * 100));
                         obj.sprite.visible = obj.sprite.material.opacity > 0.01;
@@ -640,18 +682,19 @@ export class LocalSpaceScene extends Scene {
                 }
             }
 
+
             if (obj.orbitLine && obj.orbitPointsReal) {
-                obj.orbitLine.visible = !this.introActive; 
+                obj.orbitLine.visible = !this.introActive;
                 const positions = obj.orbitLine.geometry.attributes.position.array;
                 const tempVec = new THREE.Vector3();
-                
+
                 for (let i = 0; i < obj.orbitPointsReal.length; i++) {
                     const realPt = obj.orbitPointsReal[i];
                     tempVec.subVectors(realPt, this.virtualCameraPosition);
                     const rDist = tempVec.length();
                     const vDist = C * Math.log(1 + rDist / C);
                     tempVec.normalize().multiplyScalar(vDist);
-                    
+
                     positions[i * 3] = tempVec.x;
                     positions[i * 3 + 1] = tempVec.y;
                     positions[i * 3 + 2] = tempVec.z;
@@ -680,7 +723,7 @@ export class LocalSpaceScene extends Scene {
         if (intersects.length > 0) {
             const hit = intersects[0].object;
             const targetObj = this.objects.find(o => o.mesh === hit || o.mesh.children.includes(hit));
-            
+
             if (targetObj) {
                 Logger.message(`Clicked on ${targetObj.data.name}`);
             }
@@ -737,13 +780,13 @@ export class LocalSpaceScene extends Scene {
         // Determine current phase of the intro (for LOD and look-at target)
         // If we have a flyby object, we switch phase halfway through the path (at the flyby point)
         if (this.flybyObj) {
-             // Assuming 3 points: Start(0), Flyby(0.5), Home(1)
-             // Switch focus after passing the flyby point
-             this.introPhase = ease < 0.55 ? 0 : 1; // 0.55 to give a bit of time after passing
+            // Assuming 3 points: Start(0), Flyby(0.5), Home(1)
+            // Switch focus after passing the flyby point
+            this.introPhase = ease < 0.55 ? 0 : 1; // 0.55 to give a bit of time after passing
         } else {
-             this.introPhase = 1; // Direct approach
+            this.introPhase = 1; // Direct approach
         }
-        
+
         // The actual lookAt is now handled in the main update loop after visual positions are calculated.
         // This function is now only responsible for moving the virtualCameraPosition along the path
         // and setting the current intro phase.

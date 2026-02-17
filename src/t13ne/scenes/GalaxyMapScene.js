@@ -63,31 +63,31 @@ export class GalaxyMapScene extends Scene {
     const controlSettings = LoreData.controls.schemes.galaxy.settings;
     // Use TrackballControls for true free rotation (prevents gimbal lock at poles)
     this.setupControls('trackball', {
-        rotateSpeed: 2.0,
-        zoomSpeed: 1.2,
-        panSpeed: 0.8,
-        noZoom: false,
-        noPan: true, // Keep center locked
-        staticMoving: false,
-        dynamicDampingFactor: 0.1,
-        enabled: !this.attractMode
+      rotateSpeed: 2.0,
+      zoomSpeed: 1.2,
+      panSpeed: 0.8,
+      noZoom: false,
+      noPan: true, // Keep center locked
+      staticMoving: false,
+      dynamicDampingFactor: 0.1,
+      enabled: !this.attractMode
     });
 
     // Handle transition from system view (Zoom Out)
     if (this.startLocation) {
-        const center = new THREE.Vector3(0, 0, 0);
-        const sysPos = new THREE.Vector3(this.startLocation.x, this.startLocation.y, this.startLocation.z);
-        const direction = sysPos.clone().sub(center).normalize();
-        if (direction.lengthSq() === 0) direction.set(0, 0, 1);
-        // Start close to the star we just left
-        const viewDistance = 100; 
-        const startPos = sysPos.clone().add(direction.multiplyScalar(viewDistance));
-        
-        this.activeCamera.position.copy(startPos);
-        this.activeCamera.lookAt(0, 0, 0);
+      const center = new THREE.Vector3(0, 0, 0);
+      const sysPos = new THREE.Vector3(this.startLocation.x, this.startLocation.y, this.startLocation.z);
+      const direction = sysPos.clone().sub(center).normalize();
+      if (direction.lengthSq() === 0) direction.set(0, 0, 1);
+      // Start close to the star we just left
+      const viewDistance = 100;
+      const startPos = sysPos.clone().add(direction.multiplyScalar(viewDistance));
 
-        // Animate back to default galaxy view
-        this.transitionFromSystem(defaultPos);
+      this.activeCamera.position.copy(startPos);
+      this.activeCamera.lookAt(0, 0, 0);
+
+      // Animate back to default galaxy view
+      this.transitionFromSystem(defaultPos);
     }
 
     window.addEventListener('resize', () => this.onWindowResize());
@@ -97,7 +97,7 @@ export class GalaxyMapScene extends Scene {
   createSpriteTextures() {
     const funcName = 'GalaxyMapView.createSpriteTextures';
     Logger.start(funcName);
-    
+
     // Use shared tools for textures
     this.spriteTextures.glow = SceneTools.createGlowTexture();
     this.spriteTextures.cloud = SceneTools.createCloudTexture();
@@ -351,34 +351,34 @@ export class GalaxyMapScene extends Scene {
   }
 
   transitionFromSystem(targetPos) {
-      const duration = 2000;
-      const startTime = performance.now();
-      const startPos = this.activeCamera.position.clone();
-      const controls = this.cameraControls.get('default');
-      
-      if (controls) controls.enabled = false;
+    const duration = 2000;
+    const startTime = performance.now();
+    const startPos = this.activeCamera.position.clone();
+    const controls = this.cameraControls.get('default');
 
-      const animateZoomOut = () => {
-          const now = performance.now();
-          const progress = Math.min((now - startTime) / duration, 1);
-          const ease = 1 - Math.pow(1 - progress, 3); // Cubic ease-out
+    if (controls) controls.enabled = false;
 
-          this.activeCamera.position.lerpVectors(startPos, targetPos, ease);
-          if (controls) this.activeCamera.lookAt(controls.target);
+    const animateZoomOut = () => {
+      const now = performance.now();
+      const progress = Math.min((now - startTime) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3); // Cubic ease-out
 
-          if (progress < 1) {
-              requestAnimationFrame(animateZoomOut);
-          } else {
-              if (controls) controls.enabled = true;
-          }
-      };
-      requestAnimationFrame(animateZoomOut);
+      this.activeCamera.position.lerpVectors(startPos, targetPos, ease);
+      if (controls) this.activeCamera.lookAt(controls.target);
+
+      if (progress < 1) {
+        requestAnimationFrame(animateZoomOut);
+      } else {
+        if (controls) controls.enabled = true;
+      }
+    };
+    requestAnimationFrame(animateZoomOut);
   }
 
   async onMouseClick(event) {
     const funcName = 'GalaxyMapView.onMouseClick';
     Logger.start(funcName);
-    
+
     const mouse = SceneTools.getMouseVector(event, this.renderer.domElement);
 
     let closestStar = null;
@@ -425,14 +425,14 @@ export class GalaxyMapScene extends Scene {
         let systemGen = this.gameEngine.loreMaster.stellarSystemGenerator;
 
         if (!systemGen) {
-            Logger.message("GalaxyMapScene: StellarSystemGenerator missing on LoreMaster.");
-            // It should be there if LoreMaster initialized, but if not, we can't easily recover without NameGenerator
+          Logger.message("GalaxyMapScene: StellarSystemGenerator missing on LoreMaster.");
+          // It should be there if LoreMaster initialized, but if not, we can't easily recover without NameGenerator
         }
 
         let planets = [];
 
         if (systemGen && typeof systemGen.generatePlanets === 'function') {
-          planets = systemGen.generatePlanets(systemDetails);
+          planets = await systemGen.generatePlanets(systemDetails);
         } else {
           Logger.message("WARNING: StellarSystemGenerator not found on GameEngine. Skipping planet generation.");
         }
@@ -440,10 +440,10 @@ export class GalaxyMapScene extends Scene {
         Logger.message(`GalaxyMapView: Lore and planets generated for star: ${systemDetails.name}`);
 
         this.selectedStar = { star: closestStar, systemDetails, planets };
-        
+
         // Wait for the zoom animation to finish before switching scenes
         await zoomPromise;
-        
+
         // Transition to the SolarSystemScene
         this.viewManager.showSolarSystem(this.selectedStar);
 
@@ -488,74 +488,74 @@ export class GalaxyMapScene extends Scene {
     const funcName = 'GalaxyMapView.focusOnSystem';
     Logger.start(funcName);
     return new Promise((resolve) => {
-        const controls = this.cameraControls.get('default');
-        if (!system || !controls) {
-            resolve();
-            return;
+      const controls = this.cameraControls.get('default');
+      if (!system || !controls) {
+        resolve();
+        return;
+      }
+
+      if (this.flyToAnimationFrameId) {
+        cancelAnimationFrame(this.flyToAnimationFrameId);
+      }
+
+      // 1. Stop Galaxy Rotation immediately so the target doesn't move
+      this.attractMode = false;
+      this.galaxyGroup.updateMatrixWorld(); // Ensure matrix is current
+
+      // Switch to cinematic camera for the flight
+      this.isCinematic = true;
+      this.cinematicCamera.position.copy(this.activeCamera.position);
+      this.cinematicCamera.quaternion.copy(this.activeCamera.quaternion);
+      this.cinematicCamera.up.copy(this.activeCamera.up); // Sync UP vector to prevent flip
+      this.setActiveCamera('cinematic');
+
+      // 2. Calculate World Position of the star
+      const localPos = new THREE.Vector3(system.x, system.y, system.z);
+      const sysWorldPos = localPos.clone().applyMatrix4(this.galaxyGroup.matrixWorld);
+
+      const startPosition = this.cinematicCamera.position.clone();
+
+      const flightVector = new THREE.Vector3().subVectors(sysWorldPos, startPosition);
+      const distance = flightVector.length();
+      const direction = flightVector.normalize();
+
+      // Stop short of the star (adjust distance based on scale)
+      const stopDistance = 200;
+      const endPosition = sysWorldPos.clone().sub(direction.multiplyScalar(stopDistance));
+
+      // Orientation
+      const startQuaternion = this.cinematicCamera.quaternion.clone();
+      this.cinematicCamera.lookAt(sysWorldPos);
+      const endQuaternion = this.cinematicCamera.quaternion.clone();
+      this.cinematicCamera.quaternion.copy(startQuaternion); // Reset to animate
+
+      const duration = 2000; // Slower for dramatic effect
+      const startTime = performance.now();
+
+      controls.enabled = false;
+      this.shouldUpdateControls = false; // Explicitly stop Scene.js from updating controls
+
+      const animateFlyTo = () => {
+        const now = performance.now();
+        const progress = Math.min((now - startTime) / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+
+        // Fly towards star
+        this.cinematicCamera.position.lerpVectors(startPosition, endPosition, ease);
+
+        if (progress < 1) {
+          this.flyToAnimationFrameId = requestAnimationFrame(animateFlyTo);
+        } else {
+          // Handover back to main camera (optional, or just stay in cinematic until scene switch)
+          // For now, we stay in cinematic as we are about to switch scenes anyway.
+          // Do NOT re-enable controls here, as it causes snapping before the scene transition.
+          // The ViewManager will handle unloading this scene shortly.
+          this.flyToAnimationFrameId = null;
+          resolve();
         }
+      };
 
-        if (this.flyToAnimationFrameId) {
-          cancelAnimationFrame(this.flyToAnimationFrameId);
-        }
-
-        // 1. Stop Galaxy Rotation immediately so the target doesn't move
-        this.attractMode = false;
-        this.galaxyGroup.updateMatrixWorld(); // Ensure matrix is current
-
-        // Switch to cinematic camera for the flight
-        this.isCinematic = true;
-        this.cinematicCamera.position.copy(this.activeCamera.position);
-        this.cinematicCamera.quaternion.copy(this.activeCamera.quaternion);
-        this.cinematicCamera.up.copy(this.activeCamera.up); // Sync UP vector to prevent flip
-        this.setActiveCamera('cinematic');
-
-        // 2. Calculate World Position of the star
-        const localPos = new THREE.Vector3(system.x, system.y, system.z);
-        const sysWorldPos = localPos.clone().applyMatrix4(this.galaxyGroup.matrixWorld);
-
-        const startPosition = this.cinematicCamera.position.clone();
-        
-        const flightVector = new THREE.Vector3().subVectors(sysWorldPos, startPosition);
-        const distance = flightVector.length();
-        const direction = flightVector.normalize();
-
-        // Stop short of the star (adjust distance based on scale)
-        const stopDistance = 200; 
-        const endPosition = sysWorldPos.clone().sub(direction.multiplyScalar(stopDistance));
-        
-        // Orientation
-        const startQuaternion = this.cinematicCamera.quaternion.clone();
-        this.cinematicCamera.lookAt(sysWorldPos);
-        const endQuaternion = this.cinematicCamera.quaternion.clone();
-        this.cinematicCamera.quaternion.copy(startQuaternion); // Reset to animate
-
-        const duration = 2000; // Slower for dramatic effect
-        const startTime = performance.now();
-
-        controls.enabled = false;
-        this.shouldUpdateControls = false; // Explicitly stop Scene.js from updating controls
-
-        const animateFlyTo = () => {
-          const now = performance.now();
-          const progress = Math.min((now - startTime) / duration, 1);
-          const ease = 1 - Math.pow(1 - progress, 3);
-
-          // Fly towards star
-          this.cinematicCamera.position.lerpVectors(startPosition, endPosition, ease);
-          
-          if (progress < 1) {
-            this.flyToAnimationFrameId = requestAnimationFrame(animateFlyTo);
-          } else {
-            // Handover back to main camera (optional, or just stay in cinematic until scene switch)
-            // For now, we stay in cinematic as we are about to switch scenes anyway.
-            // Do NOT re-enable controls here, as it causes snapping before the scene transition.
-            // The ViewManager will handle unloading this scene shortly.
-            this.flyToAnimationFrameId = null;
-            resolve();
-          }
-        };
-
-        this.flyToAnimationFrameId = requestAnimationFrame(animateFlyTo);
+      this.flyToAnimationFrameId = requestAnimationFrame(animateFlyTo);
     });
     Logger.end(funcName);
   }
@@ -571,9 +571,9 @@ export class GalaxyMapScene extends Scene {
 
   update(time, delta) {
     super.update(time, delta); // Call base class update if it has any logic
-    
+
     if (this.attractMode && this.galaxyGroup) {
-        this.galaxyGroup.rotation.z += 0.0005;
+      this.galaxyGroup.rotation.z += 0.0005;
     }
   }
 
@@ -583,7 +583,7 @@ export class GalaxyMapScene extends Scene {
     if (this.flyToAnimationFrameId) {
       cancelAnimationFrame(this.flyToAnimationFrameId);
     }
-    
+
     Logger.message("GalaxyMapScene specific resources disposed.");
   }
 }

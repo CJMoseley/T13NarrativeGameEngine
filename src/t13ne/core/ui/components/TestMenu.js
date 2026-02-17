@@ -77,7 +77,7 @@ export class TestMenu {
 
                                     systemDetails = await engine.galaxyGenerator.getSystemDetails(star);
                                     const systemGen = engine.loreMaster.stellarSystemGenerator;
-                                    planets = systemGen.generatePlanets(systemDetails);
+                                    planets = await systemGen.generatePlanets(systemDetails);
                                 }
 
                                 sceneData = { systemDetails, planets, star, galaxy: engine.galaxy, playIntro: false };

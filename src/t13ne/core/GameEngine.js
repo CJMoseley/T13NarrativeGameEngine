@@ -92,11 +92,21 @@ export class GameEngine {
             await this.loreMaster.initialize();
             Logger.message('GameEngine: LoreMaster instantiated and initialized.');
 
+            // Ensure we have a consistent seed from the Game module if available
+            const GameModule = this.engine?.getModule('Game');
+            const activeGame = GameModule?.getActiveGame();
+            const galacticParams = {};
+            if (activeGame?.seed) {
+                galacticParams.seed = activeGame.seed;
+                GalacticHistory.setSeed(activeGame.seed);
+                Logger.message(`GameEngine: Using active game seed for galaxy and history: ${activeGame.seed}`);
+            }
+
             // Load Galactic History (Procedural Generation)
             await GalacticHistory.load(this.pluginManager, this.loreMaster);
             Logger.message('GameEngine: Galactic History loaded.');
 
-            this.galaxyGenerator = new GalaxyGenerator(this.loreMaster);
+            this.galaxyGenerator = new GalaxyGenerator(this.loreMaster, galacticParams);
             Logger.message('GameEngine: GalaxyGenerator instantiated.');
             this.galaxy = this.galaxyGenerator.generateGalaxy();
 
@@ -140,7 +150,7 @@ export class GameEngine {
         if (!this.playerStartSystem) return;
         const systemDetails = await this.galaxyGenerator.getSystemDetails(this.playerStartSystem);
         const systemGen = this.loreMaster.stellarSystemGenerator;
-        const planets = systemGen.generatePlanets(systemDetails);
+        const planets = await systemGen.generatePlanets(systemDetails);
         this.currentSystemDetails = systemDetails;
         this.currentPlanets = planets;
         Logger.message(`GameEngine: Generated System ${systemDetails.name}`);

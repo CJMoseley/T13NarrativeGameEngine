@@ -1,4 +1,4 @@
-﻿﻿﻿﻿import PRNG from "../systems/t13ne-prng.js";
+﻿﻿import PRNG from "../systems/t13ne-prng.js";
 import CodexLoader from "../codex/CodexLoader.js"; // Import CodexLoader
 
 class Card {
@@ -50,8 +50,8 @@ class Card {
 }
 
 class Deck {
-    constructor(seed = Date.now()) {
-        this.prng = PRNG.create(seed);
+    constructor(seed = null) {
+        this.prng = seed ? PRNG.create(seed) : PRNG;
         this.sourceDecks = new Map(); // Stores { deckId -> { cards: Card[], backColor: string } }
         this.currentDeck = []; // The combined, shuffled deck
         this.discardPile = [];

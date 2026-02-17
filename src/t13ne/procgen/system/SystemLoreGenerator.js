@@ -10,7 +10,7 @@ export class SystemLoreGenerator {
         Logger.start(funcName);
         this.pluginManager = pluginManager;
         this.nameGenerator = new NameGenerator(pluginManager);
-        this.speciesGenerator = new SpeciesGenerator(pluginManager);
+        this.speciesGenerator = new SpeciesGenerator(pluginManager, this.nameGenerator);
         this.corporationGenerator = new CorporationGenerator(); // This is used to determine presence
         Logger.end(funcName);
     }

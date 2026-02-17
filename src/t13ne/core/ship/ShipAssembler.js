@@ -94,6 +94,14 @@ export class ShipAssembler {
 
         let hullMesh = null;
         if (hullGeometry && hullGeometry.attributes.position && hullGeometry.attributes.position.count > 0) {
+            // FIX: Ensure geometry has color attribute for shaders that expect vertexColors
+            if (!hullGeometry.attributes.color) {
+                const count = hullGeometry.attributes.position.count;
+                const colors = new Float32Array(count * 3);
+                for (let i = 0; i < count * 3; i++) colors[i] = 1.0; // Default to White
+                hullGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+            }
+
             hullMesh = new THREE.Mesh(hullGeometry, hullMaterial);
             hullMesh.name = "procedural_hull";
             hullMesh.material.side = THREE.DoubleSide;
@@ -161,19 +169,16 @@ export class ShipAssembler {
 
         // Add solid component meshes to fill gaps
         componentMeshes.forEach(mesh => {
-            if (hullMesh && styleConfig.method !== 'SKELETON') {
-                mesh.visible = false;
-            } else {
-                const color = (components.livery && components.livery.color1) ? components.livery.color1 : 0x555555;
-                mesh.material = new THREE.MeshStandardMaterial({
-                    color: color,
-                    roughness: 0.9,
-                    metalness: 0.4,
-                    flatShading: true,
-                    wireframe: false
-                });
-                mesh.visible = true;
-            }
+            // FIX: Keep components visible as requested
+            const color = (components.livery && components.livery.color1) ? components.livery.color1 : 0x555555;
+            mesh.material = new THREE.MeshStandardMaterial({
+                color: color,
+                roughness: 0.9,
+                metalness: 0.4,
+                flatShading: true,
+                wireframe: false
+            });
+            mesh.visible = true;
             shipGroup.add(mesh);
         });
 
@@ -395,6 +400,14 @@ export class ShipAssembler {
         }
 
         if (hullGeometry && hullGeometry.attributes.position && hullGeometry.attributes.position.count > 0) {
+            // FIX: Ensure geometry has color attribute for shaders that expect vertexColors
+            if (!hullGeometry.attributes.color) {
+                const count = hullGeometry.attributes.position.count;
+                const colors = new Float32Array(count * 3);
+                for (let i = 0; i < count * 3; i++) colors[i] = 1.0; // Default to White
+                hullGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+            }
+
             // Shader selection logic
             let selectedShader = industrialLiveryShader;
             if (effectiveStyle.method === 'BOXY') selectedShader = boxyLiveryShader;
@@ -436,11 +449,6 @@ export class ShipAssembler {
 
             hullMesh.name = "procedural_hull";
             shipGroup.add(hullMesh);
-
-            // Hide the wireframe proxies now that we have a solid hull
-            componentMeshes.forEach(mesh => {
-                mesh.visible = false;
-            });
 
             // Hide wiring visuals if hull is present (they are internal)
             const wg = shipGroup.getObjectByName('wiring_visuals');
@@ -619,6 +627,10 @@ export class ShipAssembler {
                     // FIX: Skip struts for wing-fuselage connections to avoid visual clutter
                     const sourceUsage = sourceMesh.userData.componentUsage || '';
                     const targetUsage = targetMesh.userData.componentUsage || '';
+
+                    // Skip struts for mandibles to prevent "floating supports" in the gap
+                    if (sourceUsage.includes('mandible') || targetUsage.includes('mandible')) continue;
+
                     if ((sourceUsage.includes('wing') && (targetUsage.includes('fuselage') || targetUsage.includes('spine') || targetUsage.includes('hull'))) || 
                         (targetUsage.includes('wing') && (sourceUsage.includes('fuselage') || sourceUsage.includes('spine') || sourceUsage.includes('hull')))) {
                         continue; 

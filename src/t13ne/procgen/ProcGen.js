@@ -1,198 +1,4 @@
-/**
- * @module ProcGen
- * @description A comprehensive library for procedural generation, including a robust PRNG and various noise algorithms.
- * This library is designed with a "WASM-ready" API for future performance enhancements.
- * All noise functions return values in the range [-1, 1] unless otherwise specified.
- */
-
-// --- PRNG (Xoshiro256ss) ---
-const MASK64 = (1n << 64n) - 1n;
-
-/**
- * Rotates a 64-bit BigInt left.
- * @param {bigint} x The BigInt to rotate.
- * @param {number} k The number of bits to rotate by.
- * @returns {bigint} The rotated BigInt.
- */
-function rotl(x, k) {
-    return ((x << BigInt(k)) | (x >> (64n - BigInt(k)))) & MASK64;
-}
-
-/**
- * A 64-bit seed generator.
- * @param {bigint} seed The input seed.
- * @returns {bigint} A new 64-bit BigInt.
- */
-function splitmix64(seed) {
-    let z = (BigInt(seed) + 0x9E3779B97f4A7C15n) & MASK64;
-    z = (z ^ (z >> 30n)) * 0xBF58476D1CE4E5B9n & MASK64;
-    z = (z ^ (z >> 27n)) * 0x94D049BB133111EBn & MASK64;
-    return (z ^ (z >> 31n)) & MASK64;
-}
-
-/**
- * @class Xoshiro256ss
- * @description A high-quality, seedable 64-bit pseudo-random number generator.
- */
-class Xoshiro256ss {
-    constructor(seed) {
-        this.s = [0n, 0n, 0n, 0n];
-        if (seed === undefined) seed = Date.now();
-        this.seed(seed);
-    }
-
-    /**
-     * Seeds the PRNG.
-     * @param {number|string|bigint} seed The seed to use.
-     */
-    seed(seed) {
-        let h;
-        if (typeof seed === 'bigint') h = seed;
-        else if (typeof seed === 'number') h = BigInt(Math.floor(seed));
-        else if (typeof seed === 'string') {
-            let v = 1469598103934665603n;
-            for (let i = 0; i < seed.length; i++) {
-                v ^= BigInt(seed.charCodeAt(i));
-                v = (v * 1099511628211n) & MASK64;
-            }
-            h = v;
-        } else {
-            h = BigInt(Date.now());
-        }
-        let sm = h & MASK64;
-        for (let i = 0; i < 4; i++) {
-            this.s[i] = splitmix64(sm + BigInt(i));
-        }
-        if (this.s.every(v => v === 0n)) {
-            this.s[0] = 0x0123456789ABCDEFn;
-            this.s[1] = 0xFEDCBA9876543210n;
-            this.s[2] = 0xF0E1D2C3B4A59687n;
-            this.s[3] = 0x89ABCDEF01234567n;
-        }
-    }
-
-    /**
-     * @returns {bigint} The next 64-bit unsigned integer in the sequence.
-     */
-    nextUint64() {
-        const result = rotl(this.s[1] * 5n & MASK64, 7) * 9n & MASK64;
-        const t = (this.s[1] << 17n) & MASK64;
-        this.s[2] ^= this.s[0];
-        this.s[3] ^= this.s[1];
-        this.s[1] ^= this.s[2];
-        this.s[0] ^= this.s[3];
-        this.s[2] ^= t;
-        this.s[3] = rotl(this.s[3], 45);
-        return result & MASK64;
-    }
-
-    /**
-     * @returns {number} The next float in the sequence, in the range [0, 1).
-     */
-    nextDouble() {
-        const u = this.nextUint64();
-        const top53 = Number(u >> 11n) / (1 << 53);
-        return top53;
-    }
-
-    /**
-     * @param {number} min The minimum integer value (inclusive).
-     * @param {number} max The maximum integer value (inclusive).
-     * @returns {number} The next integer in the sequence, in the specified range.
-     */
-    nextInt(min = 0, max = 1) {
-        min = Number(min);
-        max = Number(max);
-        if (max < min) {
-            [min, max] = [max, min];
-        }
-        const range = BigInt(max - min + 1);
-        const v = this.nextUint64();
-        const r = Number(v % range) + min;
-        return r;
-    }
-
-    /**
-     * Returns a random float in range [0, 1) cast to 32-bit precision.
-     * Useful for ensuring compatibility with WebGL buffers and preventing precision drift.
-     * @returns {number}
-     */
-    nextFloat() {
-        return Math.fround(this.nextDouble());
-    }
-
-    /**
-     * Returns a random point on a sphere of given radius.
-     * Handles the spherical distribution correctly and safely to avoid NaNs.
-     * @param {number} radius The radius of the sphere.
-     * @returns {{x: number, y: number, z: number}} The point coordinates.
-     */
-    nextSpherePoint(radius = 1) {
-        const u = this.nextDouble();
-        const v = this.nextDouble();
-        const theta = 2 * Math.PI * u;
-        const phi = Math.acos(Math.max(-1, Math.min(1, 2 * v - 1))); // Clamp to prevent NaN
-        const sinPhi = Math.sin(phi);
-        return {
-            x: Math.fround(radius * sinPhi * Math.cos(theta)),
-            y: Math.fround(radius * sinPhi * Math.sin(theta)),
-            z: Math.fround(radius * Math.cos(phi))
-        };
-    }
-}
-
-/**
- * @class Mulberry32
- * @description A fast, 32-bit seeded PRNG. Excellent for procedural generation where BigInt overhead is unnecessary.
- */
-class Mulberry32 {
-    constructor(seed) {
-        this.state = 0;
-        this.seed(seed);
-    }
-
-    seed(seed) {
-        let h;
-        if (typeof seed === 'string') {
-            h = 2166136261;
-            for (let i = 0; i < seed.length; i++) {
-                h = Math.imul(h ^ seed.charCodeAt(i), 16777619);
-            }
-        } else if (typeof seed === 'number') {
-            h = seed | 0;
-        } else {
-            h = Date.now();
-        }
-        this.state = h >>> 0;
-    }
-
-    nextDouble() {
-        this.state = (this.state + 0x6D2B79F5) | 0;
-        let t = Math.imul(this.state ^ (this.state >>> 15), 1 | this.state);
-        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) | 0;
-        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-    }
-
-    nextInt(min = 0, max = 1) {
-        return Math.floor(this.nextDouble() * (max - min + 1)) + min;
-    }
-
-    nextFloat() {
-        return Math.fround(this.nextDouble());
-    }
-
-    nextSpherePoint(radius = 1) {
-        const u = this.nextDouble();
-        const v = this.nextDouble();
-        const theta = 2 * Math.PI * u;
-        const phi = Math.acos(2 * v - 1);
-        return {
-            x: Math.fround(radius * Math.sin(phi) * Math.cos(theta)),
-            y: Math.fround(radius * Math.sin(phi) * Math.sin(theta)),
-            z: Math.fround(radius * Math.cos(phi))
-        };
-    }
-}
+import PRNG from "../modules/systems/t13ne-prng.js";
 
 // --- Noise Constants and Utility Functions ---
 const F2 = 0.5 * (Math.sqrt(3.0) - 1.0);
@@ -207,7 +13,7 @@ const grad4 = new Float32Array([0, 1, 1, 1, 0, 1, 1, -1, 0, 1, -1, 1, 0, 1, -1, 
 
 /**
  * Builds a permutation table for noise generation.
- * @param {Xoshiro256ss} prng The PRNG to use.
+ * @param {object} prng The PRNG instance to use.
  * @returns {Uint8Array} The permutation table.
  */
 function buildPermutationTable(prng) {
@@ -230,10 +36,10 @@ function buildPermutationTable(prng) {
  */
 class ProcGen {
     /**
-     * @param {number|string|bigint} seed The seed for the main PRNG.
+     * @param {number|string|bigint|null} seed The seed for the main PRNG. If null, uses global PRNG.
      */
-    constructor(seed) {
-        this.prng = new Xoshiro256ss(seed);
+    constructor(seed = null) {
+        this.prng = seed ? PRNG.create(seed) : PRNG;
         this.p = buildPermutationTable(this.prng);
         this.perm = new Uint8Array(512);
         this.permMod12 = new Uint8Array(512);
@@ -248,7 +54,7 @@ class ProcGen {
      * @param {number|string|bigint} seed The seed to use.
      */
     setSeed(seed) {
-        this.prng.seed(seed);
+        this.prng.setSeed(seed);
         this.p = buildPermutationTable(this.prng);
         for (let i = 0; i < 512; i++) {
             this.perm[i] = this.p[i & 255];
@@ -259,19 +65,31 @@ class ProcGen {
     /**
      * Creates a new, independent PRNG instance.
      * @param {number|string|bigint} seed The seed for the new PRNG.
-     * @returns {Xoshiro256ss} A new PRNG instance.
+     * @returns {object} A new PRNG instance.
      */
     createPRNG(seed) {
-        return new Xoshiro256ss(seed);
+        return PRNG.create(seed);
     }
 
     /**
      * Creates a new, independent 32-bit PRNG instance (Mulberry32).
      * @param {number|string} seed The seed for the new PRNG.
-     * @returns {Mulberry32} A new PRNG instance.
+     * @returns {object} A new PRNG instance.
      */
     create32PRNG(seed) {
-        return new Mulberry32(seed);
+        return PRNG.create32(seed);
+    }
+
+    /**
+     * Synchronizes the internal permutation table with the PRNG's current sequence.
+     * Call this after a pushSeed() to ensure noise functions follow the new seed.
+     */
+    sync() {
+        this.p = buildPermutationTable(this.prng);
+        for (let i = 0; i < 512; i++) {
+            this.perm[i] = this.p[i & 255];
+            this.permMod12[i] = this.perm[i] % 12;
+        }
     }
 
     /**
@@ -642,4 +460,4 @@ class ProcGen {
     }
 }
 
-export default new ProcGen(Date.now());
+export default new ProcGen(null);

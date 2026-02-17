@@ -58,7 +58,7 @@ class T13NE_GameState {
         // 2. Prepare the full state object (Legacy Blob/LocalStorage)
         const state = {
             timestamp: Date.now(),
-            plots: Plots.plots.map(p => this._serializeSuperKnot(p)),
+            plots: Plots.plots.map(p => p.serialize()),
             characters: Referee.getCharacters().map(c => this._serializeSuperKnot(c)),
             deckState: {
                 currentDeck: CardsAPI.deck.currentDeck.map(c => c.id),
@@ -186,28 +186,36 @@ class T13NE_GameState {
             Drama.dramaPool = state.dramaState.pool;
         }
 
-        // 3. Reconstruct Plots
+        // 3. Reconstruct Plots (Recursive)
         if (state.plots && Plots) {
+            const reconstructPlot = (pData, parent = null) => {
+                const T13Plot = Plots.T13Plot;
+                const plot = new T13Plot(pData, this.t13ne);
+                plot.parentPlot = parent;
+
+                // Reconstruct State Machines
+                if (pData.stateMachine && StateMachine) {
+                    plot.stateMachine = StateMachine.reconstruct(pData.stateMachine, plot);
+                }
+                if (pData.actStateMachine && StateMachine) {
+                    plot.actStateMachine = StateMachine.reconstruct(pData.actStateMachine, plot);
+                }
+
+                // Subplots (Recursive)
+                if (pData.subPlots && Array.isArray(pData.subPlots)) {
+                    plot.subPlots = pData.subPlots.map(spData => reconstructPlot(spData, plot));
+                }
+
+                GameModule?.registerEntity(plot);
+                return plot;
+            };
+
             for (const pData of state.plots) {
                 try {
-                    // Check if T13Plot is exported from Plots module
-                    const T13Plot = Plots.T13Plot;
-                    if (!T13Plot) throw new Error("T13Plot class not found in Plots module.");
-
-                    const plot = new T13Plot(pData, this.t13ne);
-
-                    // Reconstruct State Machines
-                    if (pData.stateMachine && StateMachine) {
-                        plot.stateMachine = StateMachine.reconstruct(pData.stateMachine, plot);
-                    }
-                    if (pData.actStateMachine && StateMachine) {
-                        plot.actStateMachine = StateMachine.reconstruct(pData.actStateMachine, plot);
-                    }
-
+                    const plot = reconstructPlot(pData);
                     Plots.plots.push(plot);
-                    GameModule?.registerEntity(plot);
                 } catch (e) {
-                    Logger.error(`GameState: Failed to reconstruct plot '${pData.Name}': ${e.message}`);
+                    Logger.error(`GameState: Failed to reconstruct plot hierarchy: ${e.message}`);
                 }
             }
         }

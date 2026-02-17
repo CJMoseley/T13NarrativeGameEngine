@@ -1,5 +1,7 @@
 ﻿import Logger from "../../core/Logger.js";
 import T13Name from "../characters/t13ne-names.js";
+import PRNG from "./t13ne-prng.js";
+import ProcGen from "../../procgen/ProcGen.js";
 
 /**
  * Represents a T13 Game instance.
@@ -18,6 +20,7 @@ export class T13Game {
 
         this.type = data.type || 'Campaign';
         this.description = data.description || '';
+        this.seed = data.seed || `seed-${this.name}-${this.id}`;
 
         // Members of the game (IDs)
         this.plots = data.plots || [];
@@ -104,6 +107,7 @@ export class T13Game {
             name: this.name,
             type: this.type,
             description: this.description,
+            seed: this.seed,
             plots: this.plots,
             characters: this.characters,
             descendants: this.descendants,
@@ -136,11 +140,12 @@ class T13NE_Game {
 
         // Create default games if none exist
         if (this.games.length === 0) {
-            this.createGame({ name: 'T13 Core', type: 'Core', description: 'T13 Narrative Engine official core content.' });
-            this.createGame({ name: 'Wormhole Racers', type: 'Campaign', description: 'Official Wormhole Racers campaign.' });
+            this.createGame({ name: 'T13 Core', type: 'Core', description: 'T13 Narrative Engine official core content.', seed: 't13core-v1' });
+            this.createGame({ name: 'Wormhole Racers', type: 'Campaign', description: 'Official Wormhole Racers campaign.', seed: 'wormhole-v1' });
         }
 
         this.initialized = true;
+        this.syncGameSeed();
         Logger.message("T13NE_Game: Initialized.");
     }
 
@@ -234,11 +239,25 @@ class T13NE_Game {
     }
 
     setActiveGame(id) {
-        if (this.getGame(id)) {
+        const game = this.getGame(id);
+        if (game) {
             this.activeGameId = id;
+            this.syncGameSeed();
             return true;
         }
         return false;
+    }
+
+    /**
+     * Synchronizes the global PRNG and ProcGen systems with the active game's seed.
+     */
+    syncGameSeed() {
+        const activeGame = this.getActiveGame();
+        if (activeGame && activeGame.seed) {
+            Logger.message(`T13NE_Game: Syncing global seed to active game: "${activeGame.seed}"`);
+            PRNG.setSeed(activeGame.seed);
+            ProcGen.sync();
+        }
     }
 
     getAllGames() {
