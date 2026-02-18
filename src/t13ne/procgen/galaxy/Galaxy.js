@@ -19,8 +19,9 @@ export class Galaxy {
     /**
      * Generates the stars for the galaxy based on the provided parameters.
      * This method populates the `this.stars` array.
+     * Async implementation to prevent UI hangs.
      */
-    generateStars() {
+    async generateStars() {
         this.stars = [];
         const { armCount, densityMultiplier, haloRatio, bulgeRatio, winding, galaxyRadius } = this.params;
         const currentArmCount = Math.max(2, armCount);
@@ -59,7 +60,10 @@ export class Galaxy {
         // Initialize PRNG with seed for deterministic generation
         const prng = ProcGen.create32PRNG(this.params.seed || 'wormhole-galaxy');
 
+        const yieldEvery = 500;
+
         for (let i = 0; i < haloCount; i++) {
+            if (i % yieldEvery === 0) await new Promise(r => setTimeout(r, 0));
           const isYoung = false;
           const rNorm = Math.pow(prng.nextDouble(), 0.3);
           const r = rNorm * safeGalaxyRadius * 1.5;
@@ -96,6 +100,7 @@ export class Galaxy {
         }
 
         for (let i = 0; i < bulgeCount; i++) {
+          if (i % yieldEvery === 0) await new Promise(r => setTimeout(r, 0));
           const isYoung = false;
           // Use spherical distribution for a proper Bulge (Ellipsoid), not a cone
           // Power of 0.6 concentrates stars in the center (approx 1/r density falloff)
@@ -127,6 +132,7 @@ export class Galaxy {
         }
 
         for (let i = 0; i < discCount; i++) {
+          if (i % yieldEvery === 0) await new Promise(r => setTimeout(r, 0));
           // Feathering the edge:
           // Randomize the cutoff radius slightly per star to avoid a hard edge
           const effectiveRadius = safeGalaxyRadius * (0.9 + prng.nextDouble() * 0.2);

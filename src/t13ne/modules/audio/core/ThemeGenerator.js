@@ -1,11 +1,18 @@
 // src/t13ne/modules/audio/core/ThemeGenerator.js
 
-import Logger from "../../../core/Logger.js";
+// import Logger from "../../../core/SafeLogger.js"; // Handled safely below
 import CodexLoader from "../../codex/CodexLoader.js";
 import { MusicRNG } from "./MusicUtils.js";
 import { AudioAnalyzer } from "../t13ne-audio-analyzer.js";
 
 const CHROMATIC_SCALE = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+
+// Safe Logger fallback for Worker compatibility
+const SafeLogger = {
+    message: (msg) => typeof Logger !== 'undefined' ? SafeLogger.message(msg) : console.log(`[MSG] ${msg}`),
+    warn: (msg, err) => typeof Logger !== 'undefined' ? SafeLogger.warn(msg, err) : console.warn(`[WARN] ${msg}`, err || ''),
+    error: (msg, err) => typeof Logger !== 'undefined' ? SafeLogger.error(msg, err) : console.error(`[ERR] ${msg}`, err || '')
+};
 
 class VirtualArtist {
     constructor(entity, generator) {
@@ -64,7 +71,7 @@ class VirtualArtist {
 
     assimilateMidi(midiData) {
         if (!midiData || !midiData.tracks || !midiData.tracks[0] || !midiData.tracks[0].notes) {
-            Logger.warn(`VirtualArtist ${this.name}: Could not assimilate invalid MIDI data.`);
+            SafeLogger.warn(`VirtualArtist ${this.name}: Could not assimilate invalid MIDI data.`);
             return;
         }
         // Use the first track's notes as a motif
@@ -77,7 +84,7 @@ class VirtualArtist {
             duration: note.duration,
             velocity: note.velocity
         }));
-        Logger.message(`VirtualArtist ${this.name}: Assimilated a MIDI motif with ${this.midiMotif.length} notes.`);
+        SafeLogger.message(`VirtualArtist ${this.name}: Assimilated a MIDI motif with ${this.midiMotif.length} notes.`);
     }
 }
 
@@ -156,7 +163,7 @@ class VirtualBand {
 
             // A simple rule: if an early member (2nd or 3rd) introduces a new time signature, the whole band changes.
             if (isDifferentTimeSignature && this.members.length <= 3) {
-                Logger.message(`VirtualBand: Time signature change! Artist ${artist.name} shifts the band to ${artist.timeSignature.join('/')}.`);
+                SafeLogger.message(`VirtualBand: Time signature change! Artist ${artist.name} shifts the band to ${artist.timeSignature.join('/')}.`);
                 this.timeSignature = artist.timeSignature;
                 this.stepsPerBar = artist.stepsPerBar;
                 this.polyrhythms.clear(); // Reset polyrhythms as everyone is now in the new time signature.
@@ -165,7 +172,7 @@ class VirtualBand {
             } 
             // Later members with different signatures create polyrhythms instead of changing the whole band.
             else if (isDifferentTimeSignature) {
-                Logger.message(`VirtualBand: Artist ${artist.name} introduces polyrhythm (${artist.timeSignature.join('/')}) over base (${this.timeSignature.join('/')}).`);
+                SafeLogger.message(`VirtualBand: Artist ${artist.name} introduces polyrhythm (${artist.timeSignature.join('/')}) over base (${this.timeSignature.join('/')}).`);
                 this.polyrhythms.set(artist.name, artist.stepsPerBar);
             }
         }
@@ -273,7 +280,7 @@ export class ThemeGenerator {
             else if (lowerKey.includes('guitar') || lowerKey.includes('pluck') || lowerKey.includes('clav') || lowerKey.includes('piano')) category = 'rhythm';
             this.instrumentPalette[category].push(key);
         }
-        Logger.message(`ThemeGenerator: Instrument Palette Built. Bass: ${this.instrumentPalette.bass.length}, Pad: ${this.instrumentPalette.pad.length}, Lead: ${this.instrumentPalette.lead.length}`);
+        SafeLogger.message(`ThemeGenerator: Instrument Palette Built. Bass: ${this.instrumentPalette.bass.length}, Pad: ${this.instrumentPalette.pad.length}, Lead: ${this.instrumentPalette.lead.length}`);
     }
 
     async _loadDrumPatterns() {
@@ -287,9 +294,9 @@ export class ThemeGenerator {
                     data[category].forEach(pattern => this.drumPatterns[pattern.name] = pattern);
                 }
             }
-            Logger.message("ThemeGenerator: Drum patterns loaded.");
+            SafeLogger.message("ThemeGenerator: Drum patterns loaded.");
         } catch (e) {
-            Logger.warn("ThemeGenerator: Failed to load drumpatterns.json via Codex.", e);
+            SafeLogger.warn("ThemeGenerator: Failed to load drumpatterns.json via Codex.", e);
         }
     }
 
@@ -298,9 +305,9 @@ export class ThemeGenerator {
             const data = await CodexLoader.getData('music', 'harmonic_patterns.json');
             if (!data) throw new Error("No data returned from CodexLoader");
             this.harmonicPatterns = data.patterns;
-            Logger.message("ThemeGenerator: Harmonic patterns loaded.");
+            SafeLogger.message("ThemeGenerator: Harmonic patterns loaded.");
         } catch (e) {
-            Logger.warn("ThemeGenerator: Failed to load harmonic_patterns.json via Codex.", e);
+            SafeLogger.warn("ThemeGenerator: Failed to load harmonic_patterns.json via Codex.", e);
         }
     }
 
@@ -309,9 +316,9 @@ export class ThemeGenerator {
             const data = await CodexLoader.getData('music', 'basspatterns.json');
             if (!data) throw new Error("No data returned from CodexLoader");
             this.bassPatterns = data.patterns;
-            Logger.message("ThemeGenerator: Bass patterns loaded.");
+            SafeLogger.message("ThemeGenerator: Bass patterns loaded.");
         } catch (e) {
-            Logger.warn("ThemeGenerator: Failed to load bass patterns via Codex.", e);
+            SafeLogger.warn("ThemeGenerator: Failed to load bass patterns via Codex.", e);
         }
     }
 
@@ -329,7 +336,7 @@ export class ThemeGenerator {
             return instrument;
         }
 
-        Logger.warn(`ThemeGenerator: No instrument found for role ${role} in palette.`);
+        SafeLogger.warn(`ThemeGenerator: No instrument found for role ${role} in palette.`);
         return null;
     }
 
@@ -338,7 +345,7 @@ export class ThemeGenerator {
         const palette = this.instrumentPalette[category];
         if (palette && palette.length > 0) return rng.pick(palette);
         
-        Logger.warn(`ThemeGenerator: No procedural instrument found for category ${category}`);
+        SafeLogger.warn(`ThemeGenerator: No procedural instrument found for category ${category}`);
         return null;
     }
 
@@ -348,7 +355,7 @@ export class ThemeGenerator {
 
         const data = this.manifestManager.manifest.samples[instrumentId];
         if (!data) {
-            Logger.warn(`ThemeGenerator: Sample data missing for '${instrumentId}'.`);
+            SafeLogger.warn(`ThemeGenerator: Sample data missing for '${instrumentId}'.`);
             return;
         }
 
@@ -411,7 +418,7 @@ export class ThemeGenerator {
         if (!source) return null;
         if (source.geometry && source.geometry.GeoHarmonics) return source;
         if (!this.geometry) {
-            Logger.warn("ThemeGenerator: Geometry module missing.");
+            SafeLogger.warn("ThemeGenerator: Geometry module missing.");
             return source;
         }
         const geo = this.geometry.calculateFullGeo(source.name);
@@ -420,7 +427,7 @@ export class ThemeGenerator {
 
     async createMainTheme(activeComponents, gameEngine, forceRegeneration) {
         if (!this.synth) return null;
-        Logger.message("ThemeGenerator: Assembling Virtual Band for Main Theme...");
+        SafeLogger.message("ThemeGenerator: Assembling Virtual Band for Main Theme...");
 
         // Yield to main thread to prevent UI freeze
         await new Promise(r => setTimeout(r, 0));
@@ -452,7 +459,7 @@ export class ThemeGenerator {
 
     async createWormholeRacersTheme() {
         if (!this.synth) return null;
-        Logger.message("ThemeGenerator: Assembling band for 'Wormhole Racers Theme'...");
+        SafeLogger.message("ThemeGenerator: Assembling band for 'Wormhole Racers Theme'...");
 
         const band = new VirtualBand(this);
         band.bpm = 160; // Fast tempo
@@ -473,7 +480,7 @@ export class ThemeGenerator {
 
     async createT13NETheme() {
         if (!this.synth) return null;
-        Logger.message("ThemeGenerator: Assembling orchestra for 'T13NE Theme'...");
+        SafeLogger.message("ThemeGenerator: Assembling orchestra for 'T13NE Theme'...");
 
         const band = new VirtualBand(this);
         band.bpm = 90; // Slower, more epic tempo
@@ -493,7 +500,7 @@ export class ThemeGenerator {
 
     async createWormholeTheme(ship, originSystem, targetSystem) {
         if (!this.synth) return null;
-        Logger.message(`ThemeGenerator: Assembling Wormhole Band for ${ship.name}...`);
+        SafeLogger.message(`ThemeGenerator: Assembling Wormhole Band for ${ship.name}...`);
 
         const band = new VirtualBand(this);
         await band.assembleFromShip(ship);
@@ -510,7 +517,7 @@ export class ThemeGenerator {
 
     async createPactTheme(pact) {
         if (!this.synth || !pact.members) return null;
-        Logger.message(`ThemeGenerator: Assembling Pact Band for ${pact.name}...`);
+        SafeLogger.message(`ThemeGenerator: Assembling Pact Band for ${pact.name}...`);
 
         const band = new VirtualBand(this);
         for (const member of pact.members) {
@@ -781,7 +788,7 @@ export class ThemeGenerator {
 
         // NEW: Check for MIDI motif first
         if (artist.midiMotif) {
-            Logger.message(`Artist ${artist.name} is using an assimilated MIDI motif.`);
+            SafeLogger.message(`Artist ${artist.name} is using an assimilated MIDI motif.`);
             events = this._midiMotifToHarmonizedEvents(artist.midiMotif, voiceId, beatTime, progression, baseFreq);
             return events;
         }
@@ -1400,7 +1407,7 @@ export class ThemeGenerator {
         const rng = new MusicRNG(character.name);
         const keyNum = geo.GeoHarmonics ? geo.GeoHarmonics.key : geo.GeometryNumber;
         if (!this.geometry) {
-            Logger.warn("ThemeGenerator: Geometry module missing, cannot generate composition.");
+            SafeLogger.warn("ThemeGenerator: Geometry module missing, cannot generate composition.");
             return null;
         }
         const keyData = this.geometry.getKey(keyNum);
@@ -1476,7 +1483,7 @@ export class ThemeGenerator {
             compositionData = entity.isUnique ? this._generateRefrain(entity) : this._generateJingle(entity);
         }
         if (compositionData) {
-            Logger.message(`ThemeGenerator: Generated composition '${compositionData.name}' for ${entity.name}`);
+            SafeLogger.message(`ThemeGenerator: Generated composition '${compositionData.name}' for ${entity.name}`);
             this.compositionCache.set(cacheKey, compositionData);
         }
         return compositionData;
@@ -1604,7 +1611,7 @@ export class ThemeGenerator {
         const loopGain = offlineCtx.createGain();
         loopGain.connect(offlineCtx.destination);
 
-        Logger.message(`Generating loop for '${voice.name}' of ${loopDurationSeconds.toFixed(2)}s...`);
+        SafeLogger.message(`Generating loop for '${voice.name}' of ${loopDurationSeconds.toFixed(2)}s...`);
 
         // Schedule all notes from the voice sequence that fall within the loop duration
         voice.sequence.forEach(note => {
@@ -1631,10 +1638,10 @@ export class ThemeGenerator {
             
             this.manifestManager.addToManifest('loops', loopId, { source: 'synthetic', duration: renderedBuffer.duration, bpm: bpm });
 
-            Logger.message(`Successfully generated and saved loop '${loopId}'.`);
+            SafeLogger.message(`Successfully generated and saved loop '${loopId}'.`);
             return { id: loopId, buffer: renderedBuffer };
         } catch (e) {
-            Logger.error(`Failed to render loop for voice '${voice.name}'`, e);
+            SafeLogger.error(`Failed to render loop for voice '${voice.name}'`, e);
             return null;
         }
     }

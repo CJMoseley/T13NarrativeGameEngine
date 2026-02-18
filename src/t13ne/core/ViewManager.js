@@ -10,6 +10,7 @@ import { PluginManager } from './PluginManager.js'; // Import PluginManager
 import { LoreData } from '../procgen/lore/LoreData.js'; // Import LoreData
 import { GalacticHistory } from '../procgen/galaxy/GalacticHistory.js'; // Import GalacticHistory
 import { UIMessage } from './ui/UIMessage.js';
+import { PerformanceMonitor } from './PerformanceMonitor.js';
 import Localization from './ui/Localization.js';
 
 /**
@@ -75,6 +76,9 @@ export class ViewManager {
 
         this.activeComponentForPlacement = null;
         this.isPaused = false;
+
+        this.performanceMonitor = new PerformanceMonitor(this);
+        this.performanceMonitor.start();
 
         this.initGlobalListeners();
         this.transitionOverlay = this.createTransitionOverlay();

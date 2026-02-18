@@ -1,4 +1,4 @@
-﻿﻿import Logger from "@/srct13ne/core/Logger.js";
+﻿﻿import Logger from "@/src/t13ne/core/Logger.js";
 import CodexLoader from "/src/t13ne/modules/codex/CodexLoader.js";
 
 /**
