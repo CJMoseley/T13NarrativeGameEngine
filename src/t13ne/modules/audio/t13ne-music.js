@@ -1,11 +1,11 @@
-import Logger from "@/src/t13ne/core/Logger.js";
-import T13NE from '@/src/t13ne/T13NE.js';
-import CodexLoader from "@/src/t13ne/modules/codex/CodexLoader.js";
-import { InstrumentEngine } from "@/src/t13ne/modules/audio/t13ne-InstrumentEngine.js";
-import { AudioAnalyzer } from "@/src/t13ne/modules/audio/t13ne-audio-analyzer.js";
-import { ThemeGenerator } from "@/src/t13ne/modules/audio/core/ThemeGenerator.js";
-import { AudioManifestManager } from "@/src/t13ne/modules/audio/core/AudioManifestManager.js";
-import { T13Synth } from "@/src/t13ne/modules/audio/core/T13Synth.js";
+import Logger from "/src/t13ne/core/Logger.js";
+import T13NE from '/src/t13ne/T13NE.js';
+import CodexLoader from "/src/t13ne/modules/codex/CodexLoader.js";
+import { InstrumentEngine } from "/src/t13ne/modules/audio/t13ne-InstrumentEngine.js";
+import { AudioAnalyzer } from "/src/t13ne/modules/audio/t13ne-audio-analyzer.js";
+import { ThemeGenerator } from "/src/t13ne/modules/audio/core/ThemeGenerator.js";
+import { AudioManifestManager } from "/src/t13ne/modules/audio/core/AudioManifestManager.js";
+import { T13Synth } from "/src/t13ne/modules/audio/core/T13Synth.js";
 
 /**
  * T13NE Music Module
@@ -280,6 +280,15 @@ class T13NE_Music {
                 activeComponents: sanitizedComponents,
                 forceRegeneration: this.needsRegeneration
             });
+
+            // Ensure main thread has all instruments defined
+            if (trackData && trackData.voices) {
+                for (const voice of trackData.voices) {
+                    if (voice.instrument && !this.synth.instrumentEngine.instruments.has(voice.instrument)) {
+                        await this.themeGenerator._ensureInstrumentDefined(voice.instrument);
+                    }
+                }
+            }
         } else {
             trackData = await this.themeGenerator.createMainTheme(this.activeComponents, gameEngine, this.needsRegeneration);
         }
@@ -726,6 +735,14 @@ class T13NE_Music {
             this.worker = new Worker(new URL('./core/MusicWorker.js', import.meta.url), { type: 'module' });
             this.worker.onmessage = (e) => this.handleWorkerMessage(e.data);
 
+            if (!this._pendingRequests) this._pendingRequests = new Map();
+            const requestId = 'init_' + Math.random().toString(36).substring(7);
+
+            this._pendingRequests.set(requestId, {
+                resolve: () => Logger.message("T13NE_Music: Worker initialized."),
+                reject: (err) => Logger.error("T13NE_Music: Worker failed to initialize.", err)
+            });
+
             // Send initial data to worker
             const codexData = {};
             // We need to pass the loaded patterns to the worker
@@ -749,7 +766,8 @@ class T13NE_Music {
                     codexData: patterns,
                     geometryData: geometryData,
                     manifest: this.manifestManager.manifest
-                }
+                },
+                requestId
             });
         } catch (e) {
             Logger.error("T13NE_Music: Failed to initialize worker.", e);

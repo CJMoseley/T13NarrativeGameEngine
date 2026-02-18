@@ -1,9 +1,9 @@
 import * as THREE from 'three';
-import { ShipFactory, COMPONENT_COLORS } from '@/src/t13ne/core/ship/ShipFactory.js';
-import { TECH_SPECS, QUALITIES, FALLBACK_MANUFACTURERS } from '@/src/t13ne/core/ship/ShipUtils.js';
-import { GalacticHistory } from '@/src/t13ne/procgen/galaxy/GalacticHistory.js';
-import { Scene } from '@/src/t13ne/core/Scene.js';
-import ProcGen from '@/src/t13ne/procgen/ProcGen.js';
+import { ShipFactory, COMPONENT_COLORS } from '/src/t13ne/core/ship/ShipFactory.js';
+import { TECH_SPECS, QUALITIES, FALLBACK_MANUFACTURERS } from '/src/t13ne/core/ship/ShipUtils.js';
+import { GalacticHistory } from '/src/t13ne/procgen/galaxy/GalacticHistory.js';
+import { Scene } from '/src/t13ne/core/Scene.js';
+import ProcGen from '/src/t13ne/procgen/ProcGen.js';
 
 export class ShipShowcaseScene extends Scene {
     constructor(viewManager) {

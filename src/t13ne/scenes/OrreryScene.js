@@ -1,9 +1,9 @@
 import * as THREE from 'three';
-import Logger from '@/src/t13ne/core/Logger.js';
-import { Scene } from '@/src/t13ne/core/Scene.js';
-import { SceneTools } from '@/src/t13ne/core/SceneTools.js';
-import ProcGen from '@/src/t13ne/procgen/ProcGen.js';
-import { ColourUtils } from '@/src/t13ne/utils/ColourUtils.js';
+import Logger from '/src/t13ne/core/Logger.js';
+import { Scene } from '/src/t13ne/core/Scene.js';
+import { SceneTools } from '/src/t13ne/core/SceneTools.js';
+import ProcGen from '/src/t13ne/procgen/ProcGen.js';
+import { ColourUtils } from '/src/t13ne/utils/ColourUtils.js';
 
 export class OrreryScene extends Scene {
     constructor(viewManager, sceneData) {

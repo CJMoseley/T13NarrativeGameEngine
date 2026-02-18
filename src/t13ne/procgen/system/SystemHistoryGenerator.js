@@ -1,5 +1,5 @@
-import Logger from '@/src/t13ne/core/Logger.js';
-import { LoreData } from '@/src/t13ne/procgen/lore/LoreData.js';
+import Logger from '/src/t13ne/core/Logger.js';
+import { LoreData } from '/src/t13ne/procgen/lore/LoreData.js';
 
 /**
  * Generates a localized history for a specific star system,

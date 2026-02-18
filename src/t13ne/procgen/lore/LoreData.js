@@ -1,4 +1,4 @@
-import Logger from '@/src/t13ne/core/Logger.js';
+import Logger from '/src/t13ne/core/Logger.js';
 
 /**
  * Asynchronously loads and manages all static lore data from JSON files.
@@ -158,7 +158,13 @@ class LoreDataManager {
     }
 
     _processCorporations() {
-        if (this.corporations && this.corporations.ARCHETYPES) {
+        if (this.corporations) {
+            if (!this.corporations.BANNED_WORDS) {
+                this.corporations.BANNED_WORDS = [];
+            }
+
+            if (!this.corporations.ARCHETYPES) return;
+
             // Convert to array if it's an object (to handle map-like JSON structures)
             if (!Array.isArray(this.corporations.ARCHETYPES)) {
                 this.corporations.ARCHETYPES = Object.values(this.corporations.ARCHETYPES);

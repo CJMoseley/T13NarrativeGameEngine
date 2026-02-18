@@ -1,9 +1,9 @@
 import * as THREE from 'three';
 import { CSG } from 'three-csg-ts';
-import { ShipComponent } from '@/src/t13ne/core/ship/ShipComponent.js';
-import { COMPONENT_COLORS, getCompProps, mulberry32 } from '@/src/t13ne/core/ship/ShipUtils.js';
-import { racingLiveryShader, industrialLiveryShader, boxyLiveryShader, organicLiveryShader, miningLiveryShader, metallicLiveryShader } from '@/src/t13ne/core/ship/ShipShaders.js';
-import { GlyphGenerator } from '@/src/t13ne/core/ship/GlyphGenerator.js';
+import { ShipComponent } from '/src/t13ne/core/ship/ShipComponent.js';
+import { COMPONENT_COLORS, getCompProps, mulberry32 } from '/src/t13ne/core/ship/ShipUtils.js';
+import { racingLiveryShader, industrialLiveryShader, boxyLiveryShader, organicLiveryShader, miningLiveryShader, metallicLiveryShader } from '/src/t13ne/core/ship/ShipShaders.js';
+import { GlyphGenerator } from '/src/t13ne/core/ship/GlyphGenerator.js';
 
 export class ShipAssembler {
     constructor(componentFactory, hullGenerator, greebleGenerator, wiringGenerator, gameEngine) {

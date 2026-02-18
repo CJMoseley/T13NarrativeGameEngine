@@ -1,6 +1,6 @@
 // src/t13ne/modules/audio/core/T13Synth.js
-import Logger from "@/src/t13ne/core/Logger.js";
-import { InstrumentEngine } from "@/src/t13ne/modules/audio/t13ne-InstrumentEngine.js";
+import Logger from "/src/t13ne/core/Logger.js";
+import { InstrumentEngine } from "/src/t13ne/modules/audio/t13ne-InstrumentEngine.js";
 
 /**
  * A lightweight synthesizer for procedural playback with transition capabilities.
