@@ -1,5 +1,5 @@
 
-import Logger from "../../core/Logger.js";
+import Logger from "@/src/t13ne/core/Logger.js";
 
 /**
  * WebGPUWavetableBaker

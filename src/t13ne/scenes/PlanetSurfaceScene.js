@@ -1,8 +1,8 @@
 import * as THREE from 'three';
-import Logger from '/src/t13ne/core/Logger.js';
-import { PlanetSurfaceEnvironment } from '/src/t13ne/procgen/planet/PlanetSurfaceEnvironment.js';
-import { Scene } from '/src/t13ne/core/Scene.js';
-import { Skybox } from '/src/t13ne/scenes/scenecomponents/skybox.js';
+import Logger from '@/src/t13ne/core/Logger.js';
+import { PlanetSurfaceEnvironment } from '@/src/t13ne/procgen/planet/PlanetSurfaceEnvironment.js';
+import { Scene } from '@/src/t13ne/core/Scene.js';
+import { Skybox } from '@/src/t13ne/scenes/scenecomponents/skybox.js';
 
 /**
  * PlanetSurfaceScene

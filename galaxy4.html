@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Procedural Density Wave Galaxy (V2 Visuals + V3 Lore)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #050505;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Container for UI panels */
+        #ui-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Let clicks pass through to canvas */
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* General panel styling */
+        .panel {
+            background: rgba(20, 25, 30, 0.9);
+            border: 1px solid #444;
+            padding: 15px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+            pointer-events: auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            max-width: 450px;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            color: #4facfe;
+            margin-bottom: 10px;
+        }
+
+        .panel-content {
+            transition: max-height 0.3s ease-out;
+            overflow: hidden;
+        }
+
+        h1 { margin: 0; font-size: 1.2rem; }
+        h2 { margin: 0 0 5px 0; font-size: 1rem; color: #00f2fe; border-bottom: 1px solid #444; padding-bottom: 5px;}
+        p { margin: 5px 0; font-size: 0.9rem; }
+
+        .control-group { margin-bottom: 10px; }
+        label { display: block; font-size: 0.8rem; color: #aaa; margin-bottom: 4px; }
+        input[type=range] { width: 100%; cursor: pointer; }
+
+        #system-details {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 450px;
+            display: none;
+        }
+
+        #close-details {
+            float: right;
+            cursor: pointer;
+            color: #f44336;
+            font-size: 1.5rem;
+            line-height: 1;
+            margin-top: -5px;
+        }
+
+        /* V3 Lore Panel Styling Additions */
+        #system-map-container {
+            width: 100%;
+            height: 150px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .data-label {
+            color: #888;
+            font-size: 0.85rem;
+        }
+        .data-value {
+            color: #e0e0e0;
+            margin-bottom: 10px;
+        }
+
+        .planet-card {
+            background: rgba(30, 40, 50, 0.7);
+            border-left: 3px solid #4CAF50;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        .planet-card h3 {
+            margin: 0 0 5px 0;
+            color: #64DD17;
+            font-size: 1rem;
+        }
+        .planet-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container"></div>
+
+<div id="ui-container">
+    <div id="left-ui">
+        <div id="controls-panel" class="panel">
+            <div class="panel-header" onclick="togglePanel('controls-content')">
+                <h1>Galaxy Controls (V2 UI)</h1>
+                <span id="controls-toggle-icon">-</span>
+            </div>
+            <div id="controls-content" class="panel-content">
+                <p style="font-size: 0.8rem; color: #aaa;">Logarithmic Spiral + Density Wave Lag</p>
+
+                <div class="control-group">
+                    <label>Spiral Arms (N)</label>
+                    <input type="range" id="param-arm-count" min="2" max="8" step="1" value="4">
+                </div>
+
+                <div class="control-group">
+                    <label>Star Density Multiplier</label>
+                    <input type="range" id="param-density" min="1" max="5" step="0.5" value="3.5">
+                </div>
+
+                <div class="control-group">
+                    <label>Spiral Winding (B-factor)</label>
+                    <input type="range" id="param-winding" min="0.1" max="0.8" step="0.05" value="0.35">
+                </div>
+
+                <div class="control-group">
+                    <label>Halo Star Ratio</label>
+                    <input type="range" id="param-halo-ratio" min="0" max="0.1" step="0.01" value="0.02">
+                </div>
+
+                <div class="control-group">
+                    <label>Bulge/Core Ratio</label>
+                    <input type="range" id="param-bulge-ratio" min="0" max="0.2" step="0.01" value="0.05">
+                </div>
+
+                <div class="control-group">
+                    <label>Density Wave Lag (Offset)</label>
+                    <input type="range" id="param-lag" min="0" max="1" step="0.1" value="0.5">
+                </div>
+
+                <button id="btn-regen" style="width:100%; padding: 8px; background: #333; color: white; border: 1px solid #555; cursor: pointer;">Regenerate 3D Galaxy</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="system-details" class="panel">
+        <span id="close-details" onclick="Galaxy.hideSystemDetails()">X</span>
+        <h2 id="sys-name">System Name</h2>
+
+        <div id="system-map-container">
+            <canvas id="system-map-canvas" width="450" height="150"></canvas>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div>
+                <div class="data-label">Star Class:</div>
+                <div id="sys-class" class="data-value"></div>
+            </div>
+            <div>
+                <div class="data-label">Dominant Species:</div>
+                <div id="sys-species" class="data-value"></div>
+            </div>
+            <div>
+                <div class="data-label">Tech Level:</div>
+                <div id="sys-tech" class="data-value"></div>
+            </div>
+            <div>
+                <div class="data-label">Society Type:</div>
+                <div class="data-value" id="sys-society"></div>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 15px; color: #aaa;">System Summary</h3>
+        <p id="sys-desc" style="font-size: 0.95rem; line-height: 1.4;"></p>
+
+        <h3 style="margin-top: 20px; color: #aaa;">Planetary Lore</h3>
+        <div id="planet-details-container">
+            </div>
+
+    </div>
+</div>
+
+<script>
+// ====================================================================
+// V3 LORE DATA and HELPERS (from galaxy3.html, defined globally)
+// ====================================================================
+
+// Simple deterministic pseudo-random number generator (PRNG)
+function mulberry32(a) {
+    return function() {
+        var t = a += 0x6D2B79F5;
+        t = Math.imul(t ^ t >>> 15, t | 1);
+        t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+        return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    }
+}
+
+// Alphabetized Lore lists (from galaxy3.html)
+const speciesList = ['Atlanteans', 'Cyborg Collective', 'Humans', 'The Kryll Swarm', 'Uninhabited', 'Xenolings'];
+const techList = ['Advanced AI', 'Atomic', 'FTL Capable', 'God-like', 'Industrial', 'Primitive'];
+const societyList = ['Anarchy', 'Corporate State', 'Democratic', 'Feudal', 'Hive Mind', 'Utopian'];
+const planetTypes = ['Barren Rock', 'Desert Planet', 'Gas Giant', 'Ice World', 'Ocean World', 'Terran World'];
+
+// V2 NOISE IMPLEMENTATION (from galaxy2.html)
+class NoiseGenerator {
+    constructor(seed = 12345) {
+        this.seed = seed;
+    }
+
+    hash(args) {
+        let h = this.seed;
+        for (let i = 0; i < args.length; i++) {
+            h = Math.imul(h ^ args[i], 1597334677);
+            h = (h << 13) | (h >>> 19);
+        }
+        return function() {
+            h = Math.imul(h ^ (h >>> 16), 2246822507);
+            h = Math.imul(h ^ (h >>> 13), 3266489909);
+            return (h >>> 0) / 4294967296;
+        }();
+    }
+
+    noise2D(x, y, scale = 1) {
+        x *= scale; y *= scale;
+        const ix = Math.floor(x);
+        const iy = Math.floor(y);
+        const fx = x - ix;
+        const fy = y - iy;
+
+        const a = this.hash([ix, iy]);
+        const b = this.hash([ix + 1, iy]);
+        const c = this.hash([ix, iy + 1]);
+        const d = this.hash([ix + 1, iy + 1]);
+
+        const u = fx * fx * (3 - 2 * fx);
+        const v = fy * fy * (3 - 2 * fy);
+
+        return (a * (1 - u) + b * u) * (1 - v) + (c * (1 - u) + d * u) * v;
+    }
+}
+
+const noiseGen = new NoiseGenerator(Date.now());
+let coreGlowSprite = null;
+
+// ====================================================================
+// GALAXY OBJECT (V2 Base with V3 Lore Functionality)
+// ====================================================================
+
+const Galaxy = {
+    stars: [],
+    points: null,
+    scene: null,
+    dustMeshes: [],
+    gasMeshes: [],
+    spriteTextures: {},
+
+    // V2 Nebula Colors
+    NEBULA_COLORS: [
+        0x6699ff, 0xff33cc, 0x33ffcc, 0xffcc33, 0xff3333, 0x9966ff, 0x33ff66
+    ],
+
+    // V2 Parameters
+    params: {
+        starCount: 80000,
+        armCount: 4,
+        densityMultiplier: 3.5,
+        haloRatio: 0.02,
+        bulgeRatio: 0.05,
+        winding: 0.35,
+        lag: 0.5,
+    },
+
+    // V2 Star Colors
+    STAR_COLORS: [
+        new THREE.Color(0xFF6600), // M-class (Red/Orange, dim)
+        new THREE.Color(0xFFB888), // K-class (Orange)
+        new THREE.Color(0xFFFF88), // G-class (Yellow, Sun-like)
+        new THREE.Color(0x88FFFF), // F/A-class (White/Blue-White)
+        new THREE.Color(0x8888FF), // B-class (Blue)
+        new THREE.Color(0xBB88FF)  // O-class (Violet-Blue, hottest)
+    ],
+
+    // --- V2 Texture Generation Functions ---
+    createRadialGlow(size = 128) {
+        const canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        const context = canvas.getContext('2d');
+        const gradient = context.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
+        gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
+        gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.5)');
+        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+        context.fillStyle = gradient;
+        context.fillRect(0, 0, size, size);
+        const texture = new THREE.CanvasTexture(canvas);
+        texture.minFilter = THREE.LinearFilter;
+        return texture;
+    },
+
+    createCrossGlow(size = 128) {
+        const canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        const context = canvas.getContext('2d');
+        context.fillStyle = 'white';
+        context.fillRect(size * 0.1, size * 0.45, size * 0.8, size * 0.1);
+        context.fillRect(size * 0.45, size * 0.1, size * 0.1, size * 0.8);
+        context.beginPath();
+        context.arc(size / 2, size / 2, size * 0.1, 0, Math.PI * 2);
+        context.fillStyle = 'rgba(255, 255, 255, 0.8)';
+        context.fill();
+        const texture = new THREE.CanvasTexture(canvas);
+        texture.minFilter = THREE.LinearFilter;
+        return texture;
+    },
+
+    createRingGlow(size = 128) {
+        const canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        const context = canvas.getContext('2d');
+        context.beginPath();
+        context.arc(size / 2, size / 2, size / 3, 0, Math.PI * 2);
+        context.strokeStyle = 'rgba(255, 255, 255, 1)';
+        context.lineWidth = size / 10;
+        context.stroke();
+        const texture = new THREE.CanvasTexture(canvas);
+        texture.minFilter = THREE.LinearFilter;
+        return texture;
+    },
+
+    createNoisyBlob(size = 128) {
+        const canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        const context = canvas.getContext('2d');
+        for (let i = 0; i < size; i++) {
+            for (let j = 0; j < size; j++) {
+                const opacity = Math.random() * 0.2 + 0.05;
+                context.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+                context.fillRect(i, j, 1, 1);
+            }
+        }
+        return new THREE.CanvasTexture(canvas);
+    },
+
+    initSpriteTextures() {
+        this.spriteTextures.radial = this.createRadialGlow(128);
+        this.spriteTextures.cross = this.createCrossGlow(128);
+        this.spriteTextures.ring = this.createRingGlow(128);
+        this.spriteTextures.dust = this.createNoisyBlob(64);
+    },
+
+    // V2 Star Color logic
+    getStarColorAndClass(isYoung, rNorm, densityFactor) {
+        let starTypeNoise = Math.random() * densityFactor;
+
+        let colorIndex;
+        let starClass;
+
+        if (isYoung) {
+            if (starTypeNoise > 0.8) { colorIndex = 5; starClass = 'O5'; }
+            else if (starTypeNoise > 0.5) { colorIndex = 4; starClass = 'B0'; }
+            else { colorIndex = 3; starClass = 'A1'; }
+        } else {
+            if (starTypeNoise > 0.95) {
+                colorIndex = 5; starClass = 'O5';
+            } else if (starTypeNoise > 0.9) {
+                colorIndex = 4; starClass = 'B0';
+            } else if (starTypeNoise > 0.8) {
+                colorIndex = 3; starClass = 'A1';
+            } else if (starTypeNoise > 0.6) {
+                colorIndex = 2; starClass = 'G2V';
+            } else if (starTypeNoise > 0.3) {
+                colorIndex = 1; starClass = 'K0';
+            } else {
+                colorIndex = 0; starClass = 'M5';
+            }
+        }
+
+        return {
+            color: this.STAR_COLORS[colorIndex],
+            starClass: starClass
+        };
+    },
+
+    // --- V3 LORE GENERATOR FUNCTION (Integrated) ---
+    generateSystemData(x, y, z, galacticNoise) {
+        const seed = Math.floor(Math.abs(x) * 100) + Math.floor(Math.abs(y) * 100) + Math.floor(Math.abs(z) * 100);
+        const rand = mulberry32(seed);
+
+        const starClasses = ['O', 'B', 'A', 'F', 'G', 'K', 'M'];
+        const starTypeNoise = galacticNoise;
+        const starClassIndex = Math.floor(starTypeNoise * starClasses.length);
+        const starClass = starClasses[Math.min(starClassIndex, starClasses.length - 1)];
+
+        const densityFactor = (1 + Galaxy.params.densityMultiplier / 2);
+        const species = speciesList[Math.floor(rand() * speciesList.length * densityFactor) % speciesList.length];
+        const tech = techList[Math.floor(rand() * techList.length * densityFactor) % techList.length];
+        const society = societyList[Math.floor(rand() * societyList.length * densityFactor) % societyList.length];
+
+        const prefixes = ['Alpha', 'Beta', 'Delta', 'Epsilon', 'Orion', 'Saga', 'Sol', 'Zeta'];
+        const suffixes = ['A', 'B', 'C', 'IV', 'Prime', 'Major', 'Nexus', 'Terra'];
+        const systemName = prefixes[Math.floor(rand() * prefixes.length)] + ' ' + suffixes[Math.floor(rand() * suffixes.length)];
+
+        let description = `A ${starClass}-class star system named ${systemName}. It is primarily controlled by the ${species}, who operate under a ${society} government with a technology base categorized as ${tech}.`;
+
+        const planetCount = Math.floor(rand() * 5) + 3;
+        const planets = [];
+        const planetRand = mulberry32(seed + 100);
+
+        for (let i = 0; i < planetCount; i++) {
+            const planetNoise = planetRand();
+            const planetType = planetTypes[Math.floor(planetNoise * planetTypes.length)];
+            let planetDescription = `A standard ${planetType}.`;
+
+            if (planetType === 'Terran World') {
+                planetDescription = 'A habitable terrestrial world, likely the center of system activity.';
+            } else if (planetType === 'Gas Giant') {
+                planetDescription = 'A massive gas giant, valuable for its atmospheric resources.';
+            } else if (planetType === 'Ocean World') {
+                planetDescription = 'A planet covered entirely by water, challenging for non-aquatic settlements.';
+            } else if (i === 0 && planetType !== 'Gas Giant') {
+                planetDescription = `The inner-most planet, a ${planetType} that is intensely irradiated by the star.`;
+            }
+
+            if (species === 'Cyborg Collective' && planetType === 'Barren Rock') {
+                planetDescription += ` Currently being terraformed by the Cyborg Collective due to its abundant resources.`;
+            }
+
+            planets.push({
+                name: `${systemName.split(' ')[0]}-${i + 1}`,
+                type: planetType,
+                description: planetDescription,
+                orbitalRadius: 1 + i * 0.5 + planetRand() * 0.2,
+                size: 0.2 + planetNoise * 0.3
+            });
+        }
+
+        return {
+            systemName: systemName,
+            starClass: starClass,
+            species: species,
+            tech: tech,
+            society: society,
+            description: description,
+            planets: planets,
+            coords: `${Math.round(x)}, ${Math.round(y)}, ${Math.round(z)}`
+        };
+    },
+    // --- END V3 LORE GENERATOR ---
+
+    // V2 Star Generation function (uses linear Z distribution)
+    generateStars() {
+        this.stars = [];
+        const starCount = this.params.starCount;
+        const armCount = this.params.armCount;
+        const winding = this.params.winding;
+        const haloRatio = this.params.haloRatio;
+        const bulgeRatio = this.params.bulgeRatio;
+        const lag = this.params.lag;
+
+        const galaxyRadius = 4000;
+        const bulgeRadius = galaxyRadius * 0.15;
+        const WINDING_SCALE = 8.0;
+
+        let DISC_RATIO = 1.0 - haloRatio - bulgeRatio;
+        if (DISC_RATIO <= 0) {
+            haloRatio = 0.01;
+            bulgeRatio = 0.01;
+            DISC_RATIO = 0.98;
+        }
+
+        const haloCount = Math.floor(starCount * haloRatio);
+        const bulgeCount = Math.floor(starCount * bulgeRatio);
+        const discCount = starCount - haloCount - bulgeCount;
+
+        const starDataList = [];
+
+        // --- Halo stars ---
+        for (let i = 0; i < haloCount; i++) {
+            const isYoung = false;
+            const rNorm = Math.pow(Math.random(), 0.3);
+            const r = rNorm * galaxyRadius * 1.5;
+            const phi_halo = Math.random() * Math.PI * 2;
+            const theta_halo = Math.acos(Math.random() * 2 - 1);
+            const x = r * Math.sin(theta_halo) * Math.cos(phi_halo);
+            const y = r * Math.sin(theta_halo) * Math.sin(phi_halo);
+            const z = r * Math.cos(theta_halo);
+
+            const starDetails = this.getStarColorAndClass(isYoung, rNorm, 0.4);
+
+            const systemData = this.generateSystemData(x, y, z, rNorm);
+            starDataList.push(systemData);
+
+            this.stars.push({ x, y, z, r: rNorm, color: starDetails.color, starClass: starDetails.starClass, size: 2, loreIndex: starDataList.length - 1 });
+        }
+
+        // --- Bulge stars ---
+        for (let i = 0; i < bulgeCount; i++) {
+            const isYoung = false;
+            const rNorm = Math.random();
+            const r = rNorm * bulgeRadius;
+            const phi_bulge = Math.random() * Math.PI * 2;
+            const theta_bulge = Math.acos(Math.random() * 2 - 1);
+            const zScale = 0.5;
+            const x = r * Math.sin(theta_bulge) * Math.cos(phi_bulge);
+            const y = r * Math.sin(theta_bulge) * Math.sin(phi_bulge);
+            const z = r * Math.cos(theta_bulge) * zScale;
+
+            const starDetails = this.getStarColorAndClass(isYoung, rNorm, 0.6);
+
+            const systemData = this.generateSystemData(x, y, z, rNorm);
+            starDataList.push(systemData);
+
+            this.stars.push({ x, y, z, r: rNorm, color: starDetails.color, starClass: starDetails.starClass, size: 3, loreIndex: starDataList.length - 1 });
+        }
+
+        // --- Disc stars (Spiral Arms) ---
+        for (let i = 0; i < discCount; i++) {
+            const rNorm = 1.0 - Math.pow(Math.random(), 0.8);
+            const r = rNorm * galaxyRadius;
+            let theta = Math.random() * Math.PI * 2;
+            const spiralOffset = Math.log(r / (galaxyRadius * 0.05)) / winding;
+            const armOffset = (Math.floor(Math.random() * armCount) * Math.PI * 2 / armCount);
+
+            theta = spiralOffset + armOffset;
+
+            let scatter = (Math.random() - 0.5) * WINDING_SCALE / r * 200;
+            let isYoung = false;
+
+            if (Math.random() < 0.3) {
+                isYoung = true;
+                scatter += (lag * 0.1);
+            } else {
+                isYoung = false;
+                scatter *= 0.8;
+            }
+
+            theta += scatter;
+
+            const x = r * Math.cos(theta);
+            const y = r * Math.sin(theta);
+
+            // V2: Linear Z distribution for disk
+            const zThickness = galaxyRadius * 0.04;
+            const z = (Math.random() - 0.5) * zThickness * (1 - rNorm);
+
+            const starDetails = this.getStarColorAndClass(isYoung, rNorm, 1.0);
+
+            const systemData = this.generateSystemData(x, y, z, rNorm);
+            starDataList.push(systemData);
+
+            this.stars.push({ x, y, z, r: rNorm, color: starDetails.color, starClass: starDetails.starClass, size: 2, loreIndex: starDataList.length - 1 });
+        }
+
+        this.loreData = starDataList;
+
+        this.clearMeshes();
+        this.renderPoints();
+        this.renderNebulaAndDust(); // V2: Includes nebula generation
+    },
+
+    clearMeshes() {
+        if (this.points) this.scene.remove(this.points);
+        this.dustMeshes.forEach(mesh => this.scene.remove(mesh));
+        this.gasMeshes.forEach(mesh => this.scene.remove(mesh));
+        this.dustMeshes = [];
+        this.gasMeshes = [];
+    },
+
+    // V2 renderPoints: Uses cross texture
+    renderPoints() {
+        if (this.points) this.scene.remove(this.points);
+
+        const vertices = [];
+        const colors = [];
+        const sizes = [];
+
+        this.stars.forEach(star => {
+            vertices.push(star.x, star.y, star.z);
+            colors.push(star.color.r, star.color.g, star.color.b);
+            sizes.push(star.size);
+        });
+
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+        geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+        geometry.setAttribute('size', new THREE.Float32BufferAttribute(sizes, 1));
+
+        const material = new THREE.PointsMaterial({
+            size: 5,
+            vertexColors: true,
+            transparent: true,
+            opacity: 0.9,
+            blending: THREE.AdditiveBlending,
+            map: this.spriteTextures.cross, // V2: Use cross texture
+            sizeAttenuation: true
+        });
+
+        this.points = new THREE.Points(geometry, material);
+        this.scene.add(this.points);
+    },
+
+    // V2 renderNebulaAndDust: Adjusted size/count for better rendering
+    renderNebulaAndDust() {
+        // Adjusted count and size to prevent excessive occlusion and blending artifacts
+        const nebulaCount = 750;
+        const galaxyRadius = 4000;
+        const noiseScale = 0.005;
+
+        const colorIndices = [];
+        for (let i = 0; i < nebulaCount; i++) {
+            colorIndices.push(Math.floor(Math.random() * this.NEBULA_COLORS.length));
+        }
+
+        for (let i = 0; i < nebulaCount; i++) {
+            const r = Math.pow(Math.random(), 0.5) * galaxyRadius;
+            const theta = Math.random() * Math.PI * 2;
+            const z = (Math.random() - 0.5) * 500;
+
+            const x = r * Math.cos(theta);
+            const y = r * Math.sin(theta);
+
+            const clusterNoise = noiseGen.noise2D(x * noiseScale, y * noiseScale, 1.0);
+            if (clusterNoise < 0.4) continue;
+
+            const color = this.NEBULA_COLORS[colorIndices[i]];
+            const material = new THREE.SpriteMaterial({
+                map: this.spriteTextures.radial,
+                color: color,
+                transparent: true,
+                blending: THREE.AdditiveBlending,
+                opacity: 0.25 // Slightly increased opacity for better glow/blending
+            });
+
+            const sprite = new THREE.Sprite(material);
+            const spriteSize = (Math.random() * 300) + 100; // Reduced max size from 700 to 400
+            sprite.scale.set(spriteSize, spriteSize, 1);
+            sprite.position.set(x, y, z);
+
+            this.gasMeshes.push(sprite);
+            this.scene.add(sprite);
+        }
+    },
+
+    // V3 drawSystemMap (required for V3 lore panel)
+    drawSystemMap(planets) {
+        const canvas = document.getElementById('system-map-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        const width = canvas.width;
+        const height = canvas.height;
+        ctx.clearRect(0, 0, width, height);
+
+        const centerX = width / 2;
+        const centerY = height / 2;
+        const starRadius = 10;
+        const maxOrbitalRadius = 50;
+
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, starRadius, 0, 2 * Math.PI);
+        ctx.fillStyle = '#ffeb3b';
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = '#ffeb3b';
+        ctx.fill();
+        ctx.shadowBlur = 0;
+
+        planets.forEach(planet => {
+            const orbitRadius = maxOrbitalRadius + (planet.orbitalRadius * 20);
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, orbitRadius, 0, 2 * Math.PI);
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+
+            const angle = planet.orbitalRadius * 5;
+            const planetX = centerX + Math.cos(angle) * orbitRadius;
+            const planetY = centerY + Math.sin(angle) * orbitRadius;
+
+            let planetColor = '#9E9E9E';
+            switch (planet.type) {
+                case 'Gas Giant': planetColor = '#FF9800'; break;
+                case 'Terran World': planetColor = '#4CAF50'; break;
+                case 'Ice World': planetColor = '#B3E5FC'; break;
+                case 'Ocean World': planetColor = '#2196F3'; break;
+                case 'Desert Planet': planetColor = '#FFC107'; break;
+                case 'Barren Rock': planetColor = '#795548'; break;
+            }
+
+            ctx.beginPath();
+            const planetDisplaySize = Math.max(2, planet.size * 5);
+            ctx.arc(planetX, planetY, planetDisplaySize, 0, 2 * Math.PI);
+            ctx.fillStyle = planetColor;
+            ctx.fill();
+            ctx.strokeStyle = 'rgba(0, 0, 0, 0.8)';
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+        });
+    },
+
+    // V3 showSystemDetails (required for V3 lore data, uses alphabetized lists)
+    showSystemDetails: function (data) {
+        document.getElementById('sys-name').textContent = data.systemName;
+        document.getElementById('sys-class').textContent = data.starClass;
+        document.getElementById('sys-species').textContent = data.species;
+        document.getElementById('sys-tech').textContent = data.tech;
+        document.getElementById('sys-society').textContent = data.society;
+        document.getElementById('sys-desc').textContent = data.description;
+
+        this.drawSystemMap(data.planets);
+
+        const planetContainer = document.getElementById('planet-details-container');
+        planetContainer.innerHTML = '';
+
+        // Alphabetize the list and do not use emphasis (per user instructions)
+        const sortedPlanets = data.planets.sort((a, b) => a.name.localeCompare(b.name));
+
+        sortedPlanets.forEach(planet => {
+            const card = document.createElement('div');
+            card.className = 'planet-card';
+            card.innerHTML = `
+                <h3>${planet.name} (${planet.type})</h3>
+                <p>${planet.description}</p>
+            `;
+            planetContainer.appendChild(card);
+        });
+
+        document.getElementById('system-details').style.display = 'block';
+    },
+
+    hideSystemDetails: function() {
+        document.getElementById('system-details').style.display = 'none';
+    }
+};
+
+// === 3. THREE.JS SETUP AND INTERACTION (FROM V2) ===
+let scene, camera, renderer, container;
+let raycaster, mouseVector;
+const center = new THREE.Vector3(0, 0, 0);
+let isDragging = false;
+let rotateStart = new THREE.Vector2();
+let rotateEnd = new THREE.Vector2();
+let rotateDelta = new THREE.Vector2();
+let phi = Math.PI * 0.5;
+let theta = 0;
+let radius = 4000;
+let initialTouchDist = null;
+let lastTouchPos = null;
+
+
+function init3D() {
+    container = document.getElementById('container');
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
+    camera.position.set(0, 0, radius); // Correct initial Z position (V2)
+
+    renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    container.appendChild(renderer.domElement);
+
+    Galaxy.initSpriteTextures();
+    Galaxy.scene = scene;
+    Galaxy.generateStars();
+
+    scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+
+    if (coreGlowSprite) scene.remove(coreGlowSprite);
+    const coreTextureMask = Galaxy.spriteTextures.radial;
+    const coreMaterial = new THREE.SpriteMaterial({
+        map: coreTextureMask,
+        color: 0xaa66ff,
+        transparent: true,
+        blending: THREE.AdditiveBlending,
+        opacity: 0.6
+    });
+    coreGlowSprite = new THREE.Sprite(coreMaterial);
+    const coreSize = 600;
+    coreGlowSprite.scale.set(coreSize, coreSize, 1);
+    coreGlowSprite.position.set(0, 0, 0);
+    scene.add(coreGlowSprite);
+
+    raycaster = new THREE.Raycaster();
+    raycaster.params.Points.threshold = 10;
+    mouseVector = new THREE.Vector2();
+
+    window.addEventListener('resize', onWindowResize, false);
+    container.addEventListener('mousedown', onMouseDown, false);
+    container.addEventListener('mousemove', onMouseMove, false);
+    container.addEventListener('mouseup', onMouseUp, false);
+    container.addEventListener('wheel', onMouseWheel, false);
+    container.addEventListener('click', onClick, false);
+
+    container.addEventListener('touchstart', onTouchStart, false);
+    container.addEventListener('touchmove', onTouchMove, false);
+    container.addEventListener('touchend', onTouchEnd, false);
+
+    updateCameraPosition();
+
+    animate();
+
+    document.getElementById('btn-regen').addEventListener('click', Galaxy.generateStars.bind(Galaxy));
+    window.togglePanel('controls-content');
+}
+
+function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+function updateCameraPosition() {
+    // V2 camera calculation logic
+    phi = Math.max(0.01, Math.min(Math.PI - 0.01, phi));
+    camera.position.x = radius * Math.sin(phi) * Math.cos(theta);
+    camera.position.y = radius * Math.cos(phi);
+    camera.position.z = radius * Math.sin(phi) * Math.sin(theta);
+    camera.lookAt(center);
+}
+
+function onMouseDown(event) {
+    isDragging = true;
+    rotateStart.set(event.clientX, event.clientY);
+    container.style.cursor = 'grabbing';
+}
+
+function onMouseMove(event) {
+    if (isDragging) {
+        rotateEnd.set(event.clientX, event.clientY);
+        rotateDelta.subVectors(rotateEnd, rotateStart).multiplyScalar(0.002);
+
+        theta += rotateDelta.x;
+        phi -= rotateDelta.y;
+
+        rotateStart.copy(rotateEnd);
+        updateCameraPosition();
+    } else {
+        container.style.cursor = 'grab';
+    }
+}
+
+function onMouseUp() {
+    isDragging = false;
+    container.style.cursor = 'grab';
+}
+
+function onMouseWheel(event) {
+    event.preventDefault();
+    radius += event.deltaY * 5;
+    radius = Math.max(500, Math.min(6000, radius));
+    updateCameraPosition();
+}
+
+function setMouseVector(clientX, clientY) {
+    mouseVector.x = (clientX / window.innerWidth) * 2 - 1;
+    mouseVector.y = -(clientY / window.innerHeight) * 2 + 1;
+}
+
+function onClick(event) {
+    if (rotateDelta.length() > 0.001) {
+        rotateDelta.set(0, 0);
+        return;
+    }
+
+    setMouseVector(event.clientX, event.clientY);
+    raycaster.setFromCamera(mouseVector, camera);
+
+    const intersects = raycaster.intersectObject(Galaxy.points);
+
+    if (intersects.length > 0) {
+        const index = intersects[0].index;
+        const lore = Galaxy.loreData[index];
+        Galaxy.showSystemDetails(lore);
+    }
+}
+
+function getTouchDistance(touches) {
+    const dx = touches[0].clientX - touches[1].clientX;
+    const dy = touches[0].clientY - touches[1].clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+}
+
+function onTouchStart(event) {
+    event.preventDefault();
+    const touches = event.touches;
+
+    if (touches.length === 1) {
+        isDragging = true;
+        rotateStart.set(touches[0].clientX, touches[0].clientY);
+    } else if (touches.length === 2) {
+        initialTouchDist = getTouchDistance(touches);
+        lastTouchPos = null;
+        isDragging = false;
+    }
+}
+
+function onTouchMove(event) {
+    event.preventDefault();
+    const touches = event.touches;
+
+    if (touches.length === 1 && isDragging) {
+        rotateEnd.set(touches[0].clientX, touches[0].clientY);
+        rotateDelta.subVectors(rotateEnd, rotateStart).multiplyScalar(0.004);
+
+        theta += rotateDelta.x;
+        phi -= rotateDelta.y;
+
+        rotateStart.copy(rotateEnd);
+        updateCameraPosition();
+    } else if (touches.length === 2 && initialTouchDist !== null) {
+        const currentTouchDist = getTouchDistance(touches);
+        const deltaDist = currentTouchDist - initialTouchDist;
+
+        radius -= deltaDist * 2;
+        radius = Math.max(500, Math.min(6000, radius));
+
+        initialTouchDist = currentTouchDist;
+        updateCameraPosition();
+    }
+}
+
+function onTouchEnd(event) {
+    isDragging = false;
+    initialTouchDist = null;
+
+    if (event.touches.length === 0 && rotateDelta.length() < 0.01) {
+        if (rotateEnd.x && rotateEnd.y) {
+            setMouseVector(rotateEnd.x, rotateEnd.y);
+            raycaster.setFromCamera(mouseVector, camera);
+
+            const intersects = raycaster.intersectObject(Galaxy.points);
+
+            if (intersects.length > 0) {
+                const index = intersects[0].index;
+                const lore = Galaxy.loreData[index];
+                Galaxy.showSystemDetails(lore);
+            }
+        }
+    }
+    rotateDelta.set(0, 0);
+}
+
+// === UI BINDINGS (FROM V2) ===
+
+document.getElementById('param-arm-count').addEventListener('input', (e) => {
+    Galaxy.params.armCount = parseInt(e.target.value);
+});
+
+document.getElementById('param-density').addEventListener('input', (e) => {
+    Galaxy.params.densityMultiplier = parseFloat(e.target.value);
+});
+
+document.getElementById('param-winding').addEventListener('input', (e) => {
+    Galaxy.params.winding = parseFloat(e.target.value);
+});
+
+document.getElementById('param-halo-ratio').addEventListener('input', (e) => {
+    Galaxy.params.haloRatio = parseFloat(e.target.value);
+});
+
+document.getElementById('param-bulge-ratio').addEventListener('input', (e) => {
+    Galaxy.params.bulgeRatio = parseFloat(e.target.value);
+});
+
+document.getElementById('param-lag').addEventListener('input', (e) => {
+    Galaxy.params.lag = parseFloat(e.target.value);
+});
+
+document.addEventListener('DOMContentLoaded', init3D);
+
+function animate() {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+}
+
+// Helper to toggle panels (from V2)
+window.togglePanel = function(contentId) {
+    const content = document.getElementById(contentId);
+    const icon = document.getElementById('controls-toggle-icon');
+
+    if (contentId === 'controls-content' && content.style.maxHeight === '') {
+        content.style.maxHeight = content.scrollHeight + "px";
+        icon.textContent = '-';
+        return;
+    }
+
+    if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+        icon.textContent = '+';
+    } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+        icon.textContent = '-';
+    }
+}
+</script>
+
+</body>
+</html>

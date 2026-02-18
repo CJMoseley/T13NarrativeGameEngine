@@ -1,10 +1,9 @@
 import * as THREE from 'three';
 import { CSG } from 'three-csg-ts';
-import { ShipComponent } from './ShipComponent.js';
-import { COMPONENT_COLORS, getCompProps } from './ShipUtils.js';
-import { racingLiveryShader, industrialLiveryShader, boxyLiveryShader, organicLiveryShader, miningLiveryShader, metallicLiveryShader } from './ShipShaders.js';
-import { GlyphGenerator } from './GlyphGenerator.js';
-import { mulberry32 } from './ShipUtils.js';
+import { ShipComponent } from '@/src/t13ne/core/ship/ShipComponent.js';
+import { COMPONENT_COLORS, getCompProps, mulberry32 } from '@/src/t13ne/core/ship/ShipUtils.js';
+import { racingLiveryShader, industrialLiveryShader, boxyLiveryShader, organicLiveryShader, miningLiveryShader, metallicLiveryShader } from '@/src/t13ne/core/ship/ShipShaders.js';
+import { GlyphGenerator } from '@/src/t13ne/core/ship/GlyphGenerator.js';
 
 export class ShipAssembler {
     constructor(componentFactory, hullGenerator, greebleGenerator, wiringGenerator, gameEngine) {
@@ -93,7 +92,7 @@ export class ShipAssembler {
         hullMaterial.uniforms.color1.value.setHex(livery.color1 !== undefined ? livery.color1 : Math.floor(prng() * 0xffffff));
 
         let hullMesh = null;
-        if (hullGeometry && hullGeometry.attributes.position && hullGeometry.attributes.position.count > 0) {
+        if (hullGeometry && hullGeometry.attributes && hullGeometry.attributes.position && hullGeometry.attributes.position.count > 0) {
             // FIX: Ensure geometry has color attribute for shaders that expect vertexColors
             if (!hullGeometry.attributes.color) {
                 const count = hullGeometry.attributes.position.count;
@@ -261,7 +260,7 @@ export class ShipAssembler {
                 if (usage && usage.includes('carve')) continue;
                 
                 // FIX: Ensure geometry has color attribute for shaders that expect vertexColors
-                if (!mesh.geometry.attributes.color) {
+                if (mesh.geometry.attributes && !mesh.geometry.attributes.color && mesh.geometry.attributes.position) {
                     const count = mesh.geometry.attributes.position.count;
                     const colors = new Float32Array(count * 3);
                     for (let i = 0; i < count * 3; i++) colors[i] = 1.0; // Default to White
@@ -370,8 +369,21 @@ export class ShipAssembler {
         if (effectiveStyle.method === 'ORGANIC') {
             // Organic styles use SDF which creates a single "melty" mesh, avoiding Z-fighting.
             if (this.gameEngine.shipFactory && this.gameEngine.shipFactory.useWorker) {
+                // Sanitize components for worker (plain objects only)
+                const sanitizedComponents = shipComponents.map(c => {
+                    if (!c) return null;
+                    return {
+                        type: c.type,
+                        position: c.position ? { x: c.position.x, y: c.position.y, z: c.position.z } : { x: 0, y: 0, z: 0 },
+                        rotation: c.rotation ? { x: c.rotation.x, y: c.rotation.y, z: c.rotation.z, order: c.rotation.order } : { x: 0, y: 0, z: 0, order: 'XYZ' },
+                        scale: c.scale ? { x: c.scale.x, y: c.scale.y, z: c.scale.z } : { x: 1, y: 1, z: 1 },
+                        sdfType: c.sdfType,
+                        dims: c.dims
+                    };
+                }).filter(c => c !== null);
+
                 const geoData = await this.gameEngine.shipFactory.callWorker('generateSDFHull', {
-                    components: shipComponents,
+                    components: sanitizedComponents,
                     styleConfig: effectiveStyle
                 });
                 if (geoData) {
@@ -396,28 +408,40 @@ export class ShipAssembler {
             if (this.gameEngine.shipFactory && this.gameEngine.shipFactory.useWorker) {
                 const workerComponents = [];
                 for (const comp of components) {
-                    const { type, dims, pos, rot, usage } = getCompProps(comp);
-                    const isCarve = (usage || '').toLowerCase().includes('carve');
-                    const mesh = this.componentFactory.createProxy(type, dims);
-                    
-                    let s = new THREE.Vector3(1, 1, 1);
-                    if (comp.scale) {
-                        if (Array.isArray(comp.scale)) s.set(...comp.scale);
-                        else s.copy(comp.scale);
-                    }
+                    try {
+                        const { type, dims, pos, rot, usage } = getCompProps(comp);
+                        const isCarve = (usage || '').toLowerCase().includes('carve');
+                        const mesh = this.componentFactory.createProxy(type, dims);
 
-                    // Extract geometry for worker
-                    const geo = mesh.geometry;
-                    workerComponents.push({
-                        position: pos,
-                        rotation: rot,
-                        scale: [s.x, s.y, s.z],
-                        isCarve: isCarve,
-                        geometry: {
-                            positions: geo.attributes.position.array,
-                            indices: geo.index ? geo.index.array : null
+                        if (!mesh || !mesh.geometry) continue;
+
+                        const geo = mesh.geometry;
+                        const posAttr = geo.getAttribute ? geo.getAttribute('position') : (geo.attributes ? geo.attributes.position : null);
+
+                        if (!posAttr || !posAttr.array) {
+                            console.warn(`ShipAssembler: Component ${usage} (${type}) has no position array!`);
+                            continue;
                         }
-                    });
+
+                        let s = [1, 1, 1];
+                        if (comp.scale) {
+                            if (Array.isArray(comp.scale)) s = comp.scale;
+                            else s = [comp.scale.x, comp.scale.y, comp.scale.z];
+                        }
+
+                        workerComponents.push({
+                            position: pos,
+                            rotation: rot,
+                            scale: s,
+                            isCarve: isCarve,
+                            geometry: {
+                                positions: (posAttr && posAttr.array) ? posAttr.array : null,
+                                indices: (geo && geo.index && geo.index.array) ? geo.index.array : null
+                            }
+                        });
+                    } catch (e) {
+                        console.error(`ShipAssembler: Error processing component for worker:`, e);
+                    }
                 }
 
                 const geoData = await this.gameEngine.shipFactory.callWorker('generateCSGHull', { components: workerComponents });
@@ -502,7 +526,7 @@ export class ShipAssembler {
             }
         }
 
-        if (hullGeometry && hullGeometry.attributes.position && hullGeometry.attributes.position.count > 0) {
+        if (hullGeometry && hullGeometry.attributes && hullGeometry.attributes.position && hullGeometry.attributes.position.count > 0) {
             // FIX: Ensure geometry has color attribute for shaders that expect vertexColors
             if (!hullGeometry.attributes.color) {
                 const count = hullGeometry.attributes.position.count;

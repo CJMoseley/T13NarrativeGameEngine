@@ -1,6 +1,6 @@
-import Logger from './Logger.js';
-import IntroSequence from './ui/IntroSequence.js';
-import Localization from './ui/Localization.js';
+import Logger from '@/src/t13ne/core/Logger.js';
+import IntroSequence from '@/src/t13ne/core/ui/IntroSequence.js';
+import Localization from '@/src/t13ne/core/ui/Localization.js';
 import * as THREE from 'three';
 
 /**

@@ -41,12 +41,13 @@ export class PlanetSurfaceGenerator {
         const funcName = 'PlanetSurfaceGenerator.generateCraters';
         Logger.start(funcName, { count });
         const craters = [];
+        const seeds = (this.planetData && this.planetData.seeds) ? this.planetData.seeds : [0.1, 0.2, 0.3, 0.4];
         for (let i = 0; i < count; i++) {
             craters.push({
-                x: (this.procGen.createPRNG([...this.planetData.seeds, i, 0.1].join(',')).nextDouble() - 0.5) * 500,
-                z: (this.procGen.createPRNG([...this.planetData.seeds, i, 0.2].join(',')).nextDouble() - 0.5) * 500,
-                radius: this.procGen.createPRNG([...this.planetData.seeds, i, 0.3].join(',')).nextDouble() * 20 + 10,
-                depth: this.procGen.createPRNG([...this.planetData.seeds, i, 0.4].join(',')).nextDouble() * 10 + 5,
+                x: (this.procGen.createPRNG([...seeds, i, 0.1].join(',')).nextDouble() - 0.5) * 500,
+                z: (this.procGen.createPRNG([...seeds, i, 0.2].join(',')).nextDouble() - 0.5) * 500,
+                radius: this.procGen.createPRNG([...seeds, i, 0.3].join(',')).nextDouble() * 20 + 10,
+                depth: this.procGen.createPRNG([...seeds, i, 0.4].join(',')).nextDouble() * 10 + 5,
             });
         }
         Logger.end(funcName, `Generated ${craters.length} craters.`);
@@ -56,11 +57,12 @@ export class PlanetSurfaceGenerator {
         const funcName = 'PlanetSurfaceGenerator.generateRocks';
         Logger.start(funcName, { count });
         const rocks = [];
+        const seeds = (this.planetData && this.planetData.seeds) ? this.planetData.seeds : [0.1, 0.2, 0.3, 0.4];
         for (let i = 0; i < count; i++) {
             rocks.push({
-                x: (this.procGen.createPRNG([...this.planetData.seeds, i, 0.5].join(',')).nextDouble() - 0.5) * 500,
-                z: (this.procGen.createPRNG([...this.planetData.seeds, i, 0.6].join(',')).nextDouble() - 0.5) * 500,
-                size: this.procGen.createPRNG([...this.planetData.seeds, i, 0.7].join(',')).nextDouble() * 2 + 1,
+                x: (this.procGen.createPRNG([...seeds, i, 0.5].join(',')).nextDouble() - 0.5) * 500,
+                z: (this.procGen.createPRNG([...seeds, i, 0.6].join(',')).nextDouble() - 0.5) * 500,
+                size: this.procGen.createPRNG([...seeds, i, 0.7].join(',')).nextDouble() * 2 + 1,
             });
         }
         Logger.end(funcName, `Generated ${rocks.length} rocks.`);

@@ -1,6 +1,6 @@
 // src/t13ne/modules/audio/core/MusicWorker.js
-import { ThemeGenerator } from './ThemeGenerator.js';
-import { MusicRNG } from './MusicUtils.js';
+import { ThemeGenerator } from '@/src/t13ne/modules/audio/core/ThemeGenerator.js';
+import { MusicRNG } from '@/src/t13ne/modules/audio/core/MusicUtils.js';
 
 let themeGenerator = null;
 let initPromise = null;
@@ -46,14 +46,20 @@ self.onmessage = async (e) => {
     try {
         if (type === 'init') {
             initPromise = (async () => {
-                for (const [key, val] of Object.entries(data.codexData || {})) {
+                const { codexData, geometryData, manifest, performanceMode } = data;
+
+                for (const [key, val] of Object.entries(codexData || {})) {
                     const parts = key.split(':');
                     const cat = parts[0];
                     const file = parts[1];
                     mockCodexLoader.setData(cat, file, val);
                 }
 
-                if (data.geometryData) {
+                if (manifest) {
+                    mockMusicModule.manifestManager.manifest = manifest;
+                }
+
+                if (geometryData) {
                     mockMusicModule.geometry = {
                         RomanChords: data.geometryData.romanChords,
                         keys: data.geometryData.keys,
@@ -94,7 +100,7 @@ self.onmessage = async (e) => {
                 }
 
                 themeGenerator = new ThemeGenerator(mockMusicModule);
-                if (data.performanceMode) themeGenerator.performanceMode = data.performanceMode;
+                if (performanceMode) themeGenerator.performanceMode = performanceMode;
                 await themeGenerator.loadAssets();
             })();
             await initPromise;

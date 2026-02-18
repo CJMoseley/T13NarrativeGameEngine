@@ -1,11 +1,11 @@
-import Logger from "../../core/Logger.js";
-import T13NE from '../../T13NE.js';
-import CodexLoader from "../codex/CodexLoader.js";
-import { InstrumentEngine } from "./t13ne-InstrumentEngine.js";
-import { AudioAnalyzer } from "./t13ne-audio-analyzer.js";
-import { ThemeGenerator } from "./core/ThemeGenerator.js";
-import { AudioManifestManager } from "./core/AudioManifestManager.js";
-import { T13Synth } from "./core/T13Synth.js";
+import Logger from "@/src/t13ne/core/Logger.js";
+import T13NE from '@/src/t13ne/T13NE.js';
+import CodexLoader from "@/src/t13ne/modules/codex/CodexLoader.js";
+import { InstrumentEngine } from "@/src/t13ne/modules/audio/t13ne-InstrumentEngine.js";
+import { AudioAnalyzer } from "@/src/t13ne/modules/audio/t13ne-audio-analyzer.js";
+import { ThemeGenerator } from "@/src/t13ne/modules/audio/core/ThemeGenerator.js";
+import { AudioManifestManager } from "@/src/t13ne/modules/audio/core/AudioManifestManager.js";
+import { T13Synth } from "@/src/t13ne/modules/audio/core/T13Synth.js";
 
 /**
  * T13NE Music Module
@@ -260,8 +260,24 @@ class T13NE_Music {
 
         let trackData;
         if (this.useWorker && this.worker) {
+            // Sanitize components to plain objects for cloning to Worker
+            const sanitizedComponents = this.activeComponents.map(c => ({
+                name: c.name,
+                id: c.id,
+                type: c.type,
+                geometry: c.geometry ? {
+                    GeometryNumber: c.geometry.GeometryNumber,
+                    GeoHarmonics: c.geometry.GeoHarmonics,
+                    Soul: c.geometry.Soul,
+                    Facade: c.geometry.Facade,
+                    Nascent: c.geometry.Nascent,
+                    Chi: c.geometry.Chi,
+                    Octave: c.geometry.Octave
+                } : null
+            }));
+
             trackData = await this.callWorker('generateMainTheme', {
-                activeComponents: this.activeComponents,
+                activeComponents: sanitizedComponents,
                 forceRegeneration: this.needsRegeneration
             });
         } else {
@@ -731,7 +747,8 @@ class T13NE_Music {
                 type: 'init',
                 data: {
                     codexData: patterns,
-                    geometryData: geometryData
+                    geometryData: geometryData,
+                    manifest: this.manifestManager.manifest
                 }
             });
         } catch (e) {

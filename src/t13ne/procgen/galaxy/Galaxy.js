@@ -1,6 +1,6 @@
-import Logger from '/src/t13ne/core/Logger.js';
-import ProcGen from '/src/t13ne/procgen/ProcGen.js';
-import { ColourUtils } from '/src/t13ne/utils/ColourUtils.js';
+import Logger from '@/src/t13ne/core/Logger.js';
+import ProcGen from '@/src/t13ne/procgen/ProcGen.js';
+import { ColourUtils } from '@/src/t13ne/utils/ColourUtils.js';
 
 /**
  * Galaxy Class

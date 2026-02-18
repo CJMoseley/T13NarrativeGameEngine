@@ -1,15 +1,15 @@
 import * as THREE from 'three';
-import Logger from '/src/t13ne/core/Logger.js';
-import { Scene } from '/src/t13ne/core/Scene.js';
-import { OrreryScene } from '/src/t13ne/scenes/OrreryScene.js';
-import { Controls } from '/src/t13ne/core/Controls.js';
-import ProcGen from '/src/t13ne/procgen/ProcGen.js';
-import { Starbox } from '/src/t13ne/scenes/scenecomponents/starbox.js';
-import { PlanetGenerator } from '/src/t13ne/procgen/system/PlanetGenerator.js';
-import { Planet } from '/src/t13ne/scenes/scenecomponents/Planet.js';
-import { Star } from '/src/t13ne/scenes/scenecomponents/Star.js';
-import { Asteroid } from '/src/t13ne/scenes/scenecomponents/Asteroid.js';
-import { SceneTools } from '/src/t13ne/core/SceneTools.js';
+import Logger from '@/src/t13ne/core/Logger.js';
+import { Scene } from '@/src/t13ne/core/Scene.js';
+import { OrreryScene } from '@/src/t13ne/scenes/OrreryScene.js';
+import { Controls } from '@/src/t13ne/core/Controls.js';
+import ProcGen from '@/src/t13ne/procgen/ProcGen.js';
+import { Starbox } from '@/src/t13ne/scenes/scenecomponents/starbox.js';
+import { PlanetGenerator } from '@/src/t13ne/procgen/system/PlanetGenerator.js';
+import { Planet } from '@/src/t13ne/scenes/scenecomponents/Planet.js';
+import { Star } from '@/src/t13ne/scenes/scenecomponents/Star.js';
+import { Asteroid } from '@/src/t13ne/scenes/scenecomponents/Asteroid.js';
+import { SceneTools } from '@/src/t13ne/core/SceneTools.js';
 
 export class LocalSpaceScene extends Scene {
     constructor(viewManager, sceneData) {

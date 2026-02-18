@@ -32,6 +32,7 @@ export class PlanetaryRenderer {
         const geometry = new THREE.PlaneGeometry(size, size, segments, segments);
         geometry.rotateX(-Math.PI / 2);
 
+        if (!geometry.attributes.position || !geometry.attributes.position.array) return;
         const vertices = geometry.attributes.position.array;
         for (let i = 0; i <= segments; i++) {
             for (let j = 0; j <= segments; j++) {
