@@ -108,7 +108,7 @@ export class GameEngine {
 
             this.galaxyGenerator = new GalaxyGenerator(this.loreMaster, galacticParams);
             Logger.message('GameEngine: GalaxyGenerator instantiated.');
-            this.galaxy = this.galaxyGenerator.generateGalaxy();
+            this.galaxy = await this.galaxyGenerator.generateGalaxy();
 
             if (!this.galaxy || !this.galaxy.stars || this.galaxy.stars.length === 0) {
                 throw new Error("Galaxy generation failed or produced no stars.");

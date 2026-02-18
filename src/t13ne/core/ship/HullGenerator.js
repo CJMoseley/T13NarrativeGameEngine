@@ -1,11 +1,22 @@
 import * as THREE from 'three';
 import { MarchingCubes } from 'three/examples/jsm/objects/MarchingCubes.js';
 import { PRIMITIVE_TYPES } from './ComponentFactory.js';
+import Logger from '/src/t13ne/core/Logger.js';
 
 export class HullGenerator {
     constructor(physxProvider) {
         this.physxProvider = physxProvider;
         this.componentFactory = null; // Can be injected if needed for convex hull proxies
+        this.performanceMode = 'high';
+    }
+
+    setPerformanceMode(mode) {
+        this.performanceMode = mode;
+        if (typeof Logger !== 'undefined') {
+            Logger.message(`HullGenerator: Performance mode set to ${mode}`);
+        } else {
+            console.log(`HullGenerator: Performance mode set to ${mode}`);
+        }
     }
 
     generate(components, styleConfig) {
@@ -330,8 +341,12 @@ export class HullGenerator {
         // Target ~3 voxels per smallest feature
         let targetRes = Math.ceil(maxBoundDim / (minFeatureSize / 3.0));
         
-        // Clamp resolution (64 to 180)
-        const res = Math.min(Math.max(targetRes, 64), 180);
+        // Clamp resolution based on performance mode
+        let maxRes = 180;
+        if (this.performanceMode === 'low') maxRes = 64;
+        else if (this.performanceMode === 'medium') maxRes = 100;
+
+        const res = Math.min(Math.max(targetRes, 64), maxRes);
 
         const mc = new MarchingCubes(res, new THREE.MeshStandardMaterial(), true, true, 1000000);
         mc.isolation = 0.0;
@@ -475,7 +490,12 @@ export class HullGenerator {
         });
         minFeatureSize = Math.max(minFeatureSize, 0.25);
         let targetRes = Math.ceil(maxBoundDim / (minFeatureSize / 3.0));
-        const res = Math.min(Math.max(targetRes, 64), 180);
+
+        let maxRes = 180;
+        if (this.performanceMode === 'low') maxRes = 64;
+        else if (this.performanceMode === 'medium') maxRes = 100;
+
+        const res = Math.min(Math.max(targetRes, 64), maxRes);
 
         const mc = new MarchingCubes(res, new THREE.MeshStandardMaterial(), true, true, 1000000);
         mc.isolation = 0.0;

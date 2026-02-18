@@ -256,6 +256,44 @@ export class InstrumentEngine {
         this.wavetableCache = new Map(); // Cache for baked wavetables
     }
 
+    setPerformanceMode(mode) {
+        if (mode === 'low') {
+            this.MAX_GLOBAL_VOICES = 32;
+            this.MAX_WORKLET_VOICES = 16;
+            this.polyphonyLimits = {
+                'Synth_Pad': 4,
+                'Synth_SpacePad': 4,
+                'Piano': 8,
+                'v_pad': 4,
+                'v_bass': 2,
+                'v_lead': 4
+            };
+        } else if (mode === 'medium') {
+            this.MAX_GLOBAL_VOICES = 64;
+            this.MAX_WORKLET_VOICES = 32;
+            this.polyphonyLimits = {
+                'Synth_Pad': 8,
+                'Synth_SpacePad': 6,
+                'Piano': 12,
+                'v_pad': 8,
+                'v_bass': 4,
+                'v_lead': 8
+            };
+        } else {
+            this.MAX_GLOBAL_VOICES = 128;
+            this.MAX_WORKLET_VOICES = 64;
+            this.polyphonyLimits = {
+                'Synth_Pad': 12,
+                'Synth_SpacePad': 10,
+                'Piano': 16,
+                'v_pad': 12,
+                'v_bass': 6,
+                'v_lead': 12
+            };
+        }
+        Logger.message(`InstrumentEngine: Performance mode set to ${mode}. Polyphony limited to ${this.MAX_GLOBAL_VOICES} voices.`);
+    }
+
     /**
      * Initializes the AudioWorklet module.
      */
