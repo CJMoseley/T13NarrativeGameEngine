@@ -1,6 +1,6 @@
-import Logger from "@/src/t13ne/core/Logger.js";
-import { WavetableBaker } from "@/src/t13ne/modules/audio/t13ne-wavetable-baker.js";
-import { T13Effects } from "@/src/t13ne/modules/audio/t13ne-effects.js";
+import Logger from "/src/t13ne/core/Logger.js";
+import { WavetableBaker } from "/src/t13ne/modules/audio/t13ne-wavetable-baker.js";
+import { T13Effects } from "/src/t13ne/modules/audio/t13ne-effects.js";
 
 /**
  * Handles Complex Additive Synthesis.

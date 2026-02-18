@@ -1,6 +1,6 @@
 // src/t13ne/modules/audio/core/MusicWorker.js
-import { ThemeGenerator } from '@/src/t13ne/modules/audio/core/ThemeGenerator.js';
-import { MusicRNG } from '@/src/t13ne/modules/audio/core/MusicUtils.js';
+import { ThemeGenerator } from '/src/t13ne/modules/audio/core/ThemeGenerator.js';
+import { MusicRNG } from '/src/t13ne/modules/audio/core/MusicUtils.js';
 
 let themeGenerator = null;
 let initPromise = null;
@@ -22,7 +22,19 @@ const mockMusicModule = {
         instrumentEngine: {
             instruments: new Map(),
             samples: new Map(),
-            _freqFromNote: (note) => 440
+            _freqFromNote: (note) => 440,
+            createSyntheticInstrument: (sourceId, newId, depth, envelope, role) => {
+                mockMusicModule.synth.instrumentEngine.instruments.set(newId, {
+                    type: 'additive',
+                    envelope: envelope,
+                    role: role,
+                    partials: []
+                });
+                return newId;
+            },
+            defineInstrument: (id, def) => {
+                mockMusicModule.synth.instrumentEngine.instruments.set(id, def);
+            }
         },
         ctx: { currentTime: 0, sampleRate: 44100 },
         pruneChannels: () => {}

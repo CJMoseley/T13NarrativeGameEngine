@@ -1,16 +1,16 @@
 import * as THREE from 'three';
-import Logger from '@/src/t13ne/core/Logger.js';
-import { Scene } from '@/src/t13ne/core/Scene.js';
-import { PlanetGenerator } from '@/src/t13ne/procgen/system/PlanetGenerator.js';
-import { SceneTools } from '@/src/t13ne/core/SceneTools.js';
-import ProcGen from '@/src/t13ne/procgen/ProcGen.js';
-import { PlanetSurfaceEnvironment } from '@/src/t13ne/procgen/planet/PlanetSurfaceEnvironment.js';
-import { PlanetaryRenderer } from '@/src/t13ne/rendering/PlanetaryRenderer.js';
-import { Starbox } from '@/src/t13ne/scenes/scenecomponents/starbox.js';
-import { Planet } from '@/src/t13ne/scenes/scenecomponents/Planet.js';
-import { Asteroid } from '@/src/t13ne/scenes/scenecomponents/Asteroid.js';
-import { AvatarEngine } from '@/src/t13ne/procgen/avatar/AvatarEngine.js';
-import { BODY_PLANS } from '@/src/t13ne/procgen/avatar/BodyPlanSchema.js';
+import Logger from '/src/t13ne/core/Logger.js';
+import { Scene } from '/src/t13ne/core/Scene.js';
+import { PlanetGenerator } from '/src/t13ne/procgen/system/PlanetGenerator.js';
+import { SceneTools } from '/src/t13ne/core/SceneTools.js';
+import ProcGen from '/src/t13ne/procgen/ProcGen.js';
+import { PlanetSurfaceEnvironment } from '/src/t13ne/procgen/planet/PlanetSurfaceEnvironment.js';
+import { PlanetaryRenderer } from '/src/t13ne/rendering/PlanetaryRenderer.js';
+import { Starbox } from '/src/t13ne/scenes/scenecomponents/starbox.js';
+import { Planet } from '/src/t13ne/scenes/scenecomponents/Planet.js';
+import { Asteroid } from '/src/t13ne/scenes/scenecomponents/Asteroid.js';
+import { AvatarEngine } from '/src/t13ne/procgen/avatar/AvatarEngine.js';
+import { BODY_PLANS } from '/src/t13ne/procgen/avatar/BodyPlanSchema.js';
 
 export class PlanetaryOrbitScene extends Scene {
     constructor(viewManager, sceneData) {

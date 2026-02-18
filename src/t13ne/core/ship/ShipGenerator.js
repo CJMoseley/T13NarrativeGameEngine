@@ -1,13 +1,13 @@
 import * as THREE from 'three';
-import { TECH_SPECS, QUALITIES, FALLBACK_MANUFACTURERS, SHIP_PREFIXES, SHIP_ADJECTIVES, SHIP_NOUNS, getSurfacePoint } from '@/src/t13ne/core/ship/ShipUtils.js';
-import ProcGen from '@/src/t13ne/procgen/ProcGen.js';
-import { GalacticHistory } from '@/src/t13ne/procgen/galaxy/GalacticHistory.js';
-import { generateDisc, generateSpineOrStar } from '@/src/t13ne/core/ship/structures/StandardHulls.js';
-import { generateFreighter, generateHorseshoe, generateBlob, generateCatamaran, generateYFork, generateBattlestar, generateSideCockpit, generateScavenger } from '@/src/t13ne/core/ship/structures/IndustrialHulls.js';
-import { generateTree, generateMaze, generateBioCluster, generateMonolith, generateFractal, generateLiberator, generateBioBird, generateBioFish, generateBioInsect, generateBioCephalopod } from '@/src/t13ne/core/ship/structures/ExoticHulls.js';
-import { generateStation } from '@/src/t13ne/core/ship/structures/StationHulls.js';
-import { generateWings } from '@/src/t13ne/core/ship/structures/WingGenerator.js';
-import { generateInteriors } from '@/src/t13ne/core/ship/InteriorGenerator.js';
+import { TECH_SPECS, QUALITIES, FALLBACK_MANUFACTURERS, SHIP_PREFIXES, SHIP_ADJECTIVES, SHIP_NOUNS, getSurfacePoint } from '/src/t13ne/core/ship/ShipUtils.js';
+import ProcGen from '/src/t13ne/procgen/ProcGen.js';
+import { GalacticHistory } from '/src/t13ne/procgen/galaxy/GalacticHistory.js';
+import { generateDisc, generateSpineOrStar } from '/src/t13ne/core/ship/structures/StandardHulls.js';
+import { generateFreighter, generateHorseshoe, generateBlob, generateCatamaran, generateYFork, generateBattlestar, generateSideCockpit, generateScavenger } from '/src/t13ne/core/ship/structures/IndustrialHulls.js';
+import { generateTree, generateMaze, generateBioCluster, generateMonolith, generateFractal, generateLiberator, generateBioBird, generateBioFish, generateBioInsect, generateBioCephalopod } from '/src/t13ne/core/ship/structures/ExoticHulls.js';
+import { generateStation } from '/src/t13ne/core/ship/structures/StationHulls.js';
+import { generateWings } from '/src/t13ne/core/ship/structures/WingGenerator.js';
+import { generateInteriors } from '/src/t13ne/core/ship/InteriorGenerator.js';
 
 export class ShipGenerator {
     constructor(wiringGenerator, gameEngine) {

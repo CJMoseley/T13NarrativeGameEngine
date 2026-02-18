@@ -1,7 +1,7 @@
-import { LoreData } from '@/src/t13ne/procgen/lore/LoreData.js';
-import Logger from '@/src/t13ne/core/Logger.js';
-import { SystemHistoryGenerator } from '@/src/t13ne/procgen/system/SystemHistoryGenerator.js';
-import { GalacticHistory } from '@/src/t13ne/procgen/galaxy/GalacticHistory.js';
+import { LoreData } from '/src/t13ne/procgen/lore/LoreData.js';
+import Logger from '/src/t13ne/core/Logger.js';
+import { SystemHistoryGenerator } from '/src/t13ne/procgen/system/SystemHistoryGenerator.js';
+import { GalacticHistory } from '/src/t13ne/procgen/galaxy/GalacticHistory.js';
 
 export class SystemGenerator {
     constructor(pluginManager, generators) {

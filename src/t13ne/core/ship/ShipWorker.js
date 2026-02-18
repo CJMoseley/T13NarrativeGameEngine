@@ -1,9 +1,9 @@
 // src/t13ne/core/ship/ShipWorker.js
 import * as THREE from 'three';
 import { CSG } from 'three-csg-ts';
-import { HullGenerator } from '@/src/t13ne/core/ship/HullGenerator.js';
-import { ShipGenerator } from '@/src/t13ne/core/ship/ShipGenerator.js';
-import { WiringGenerator } from '@/src/t13ne/core/ship/WiringGenerator.js';
+import { HullGenerator } from '/src/t13ne/core/ship/HullGenerator.js';
+import { ShipGenerator } from '/src/t13ne/core/ship/ShipGenerator.js';
+import { WiringGenerator } from '/src/t13ne/core/ship/WiringGenerator.js';
 
 let hullGenerator = new HullGenerator(null);
 let shipGenerator = new ShipGenerator(new WiringGenerator(), null);

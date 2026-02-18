@@ -1,8 +1,8 @@
 // src/t13ne/modules/audio/core/ThemeGenerator.js
 
-import CodexLoader from "@/src/t13ne/modules/codex/CodexLoader.js";
-import { MusicRNG } from "@/src/t13ne/modules/audio/core/MusicUtils.js";
-import { AudioAnalyzer } from "@/src/t13ne/modules/audio/t13ne-audio-analyzer.js";
+import CodexLoader from "/src/t13ne/modules/codex/CodexLoader.js";
+import { MusicRNG } from "/src/t13ne/modules/audio/core/MusicUtils.js";
+import { AudioAnalyzer } from "/src/t13ne/modules/audio/t13ne-audio-analyzer.js";
 
 const CHROMATIC_SCALE = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 

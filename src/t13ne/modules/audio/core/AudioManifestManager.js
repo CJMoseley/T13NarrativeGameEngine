@@ -1,5 +1,5 @@
 // src/t13ne/modules/audio/core/AudioManifestManager.js
-import Logger from "@/src/t13ne/core/Logger.js";
+import Logger from "/src/t13ne/core/Logger.js";
 
 export class AudioManifestManager {
     constructor() {

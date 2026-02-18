@@ -1,4 +1,4 @@
-﻿﻿import T13NE from '@/src/t13ne/T13NE.js';
+﻿﻿import T13NE from '/src/t13ne/T13NE.js';
 import T13Dice from '/src/t13ne/modules/mechanics/t13ne-dice.js';
 
 /**
