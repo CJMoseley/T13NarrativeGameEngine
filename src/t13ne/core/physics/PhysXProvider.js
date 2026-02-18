@@ -246,6 +246,7 @@ export class PhysXProvider {
         const geometry = mesh.geometry;
         if (!geometry || !geometry.attributes.position || !geometry.index) return null;
 
+        if (!geometry.attributes.position || !geometry.attributes.position.array || !geometry.index || !geometry.index.array) return null;
         const positions = geometry.attributes.position.array;
         const indices = geometry.index.array;
 

@@ -1,5 +1,5 @@
-import Logger from './Logger.js';
-import { EventBus } from './EventBus.js';
+import Logger from '@/src/t13ne/core/Logger.js';
+import { EventBus } from '@/src/t13ne/core/EventBus.js';
 
 export class PerformanceMonitor {
     constructor(viewManager) {

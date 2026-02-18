@@ -1,17 +1,17 @@
 import * as THREE from 'three';
-import { GameEngine } from './GameEngine.js';
-import { UIManager } from './ui/UIManager.js';
-import { SceneManager } from './SceneManager.js';
-import Logger from './Logger.js';
-import { EventBus } from './EventBus.js';
+import { GameEngine } from '@/src/t13ne/core/GameEngine.js';
+import { UIManager } from '@/src/t13ne/core/ui/UIManager.js';
+import { SceneManager } from '@/src/t13ne/core/SceneManager.js';
+import Logger from '@/src/t13ne/core/Logger.js';
+import { EventBus } from '@/src/t13ne/core/EventBus.js';
 // The Scene base class is now the authority on what a scene is.
-import { Scene } from './Scene.js';
-import { PluginManager } from './PluginManager.js'; // Import PluginManager
-import { LoreData } from '../procgen/lore/LoreData.js'; // Import LoreData
-import { GalacticHistory } from '../procgen/galaxy/GalacticHistory.js'; // Import GalacticHistory
-import { UIMessage } from './ui/UIMessage.js';
-import { PerformanceMonitor } from './PerformanceMonitor.js';
-import Localization from './ui/Localization.js';
+import { Scene } from '@/src/t13ne/core/Scene.js';
+import { PluginManager } from '@/src/t13ne/core/PluginManager.js'; // Import PluginManager
+import { LoreData } from '@/src/t13ne/procgen/lore/LoreData.js'; // Import LoreData
+import { GalacticHistory } from '@/src/t13ne/procgen/galaxy/GalacticHistory.js'; // Import GalacticHistory
+import { UIMessage } from '@/src/t13ne/core/ui/UIMessage.js';
+import { PerformanceMonitor } from '@/src/t13ne/core/PerformanceMonitor.js';
+import Localization from '@/src/t13ne/core/ui/Localization.js';
 
 /**
  * ViewManager

@@ -1,9 +1,9 @@
-import { LoreData } from '../procgen/lore/LoreData.js';
 import * as THREE from 'three';
-import ProcGen from '../procgen/ProcGen.js';
-import Logger from '../core/Logger.js';
-import { Scene } from '../core/Scene.js';
-import { SceneTools } from '../core/SceneTools.js';
+import { LoreData } from '@/src/t13ne/procgen/lore/LoreData.js';
+import ProcGen from '@/src/t13ne/procgen/ProcGen.js';
+import Logger from '@/src/t13ne/core/Logger.js';
+import { Scene } from '@/src/t13ne/core/Scene.js';
+import { SceneTools } from '@/src/t13ne/core/SceneTools.js';
 
 export class GalaxyMapScene extends Scene {
   constructor(viewManager, sceneData) {

@@ -1,6 +1,6 @@
 import * as THREE from 'three';
-import ProcGen from '../ProcGen.js';
-import Logger from '../../core/Logger.js';
+import ProcGen from '@/src/t13ne/procgen/ProcGen.js';
+import Logger from '@/src/t13ne/core/Logger.js';
 
 export class PlanetGenerator {
     constructor(physxProvider) {

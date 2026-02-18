@@ -1,6 +1,6 @@
 import * as THREE from 'three';
-import ProcGen from '/src/t13ne/procgen/ProcGen.js';
-import { SceneTools } from '/src/t13ne/core/SceneTools.js';
+import ProcGen from '@/src/t13ne/procgen/ProcGen.js';
+import { SceneTools } from '@/src/t13ne/core/SceneTools.js';
 
 export class Starbox {
     constructor(gameEngine) {

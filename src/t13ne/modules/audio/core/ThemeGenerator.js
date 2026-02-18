@@ -1,17 +1,16 @@
 // src/t13ne/modules/audio/core/ThemeGenerator.js
 
-// import Logger from "../../../core/SafeLogger.js"; // Handled safely below
-import CodexLoader from "../../codex/CodexLoader.js";
-import { MusicRNG } from "./MusicUtils.js";
-import { AudioAnalyzer } from "../t13ne-audio-analyzer.js";
+import CodexLoader from "@/src/t13ne/modules/codex/CodexLoader.js";
+import { MusicRNG } from "@/src/t13ne/modules/audio/core/MusicUtils.js";
+import { AudioAnalyzer } from "@/src/t13ne/modules/audio/t13ne-audio-analyzer.js";
 
 const CHROMATIC_SCALE = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 
 // Safe Logger fallback for Worker compatibility
 const SafeLogger = {
-    message: (msg) => typeof Logger !== 'undefined' ? SafeLogger.message(msg) : console.log(`[MSG] ${msg}`),
-    warn: (msg, err) => typeof Logger !== 'undefined' ? SafeLogger.warn(msg, err) : console.warn(`[WARN] ${msg}`, err || ''),
-    error: (msg, err) => typeof Logger !== 'undefined' ? SafeLogger.error(msg, err) : console.error(`[ERR] ${msg}`, err || '')
+    message: (msg) => typeof Logger !== 'undefined' ? Logger.message(msg) : console.log(`[MSG] ${msg}`),
+    warn: (msg, err) => typeof Logger !== 'undefined' ? Logger.warn(msg, err) : console.warn(`[WARN] ${msg}`, err || ''),
+    error: (msg, err) => typeof Logger !== 'undefined' ? Logger.error(msg, err) : console.error(`[ERR] ${msg}`, err || '')
 };
 
 class VirtualArtist {

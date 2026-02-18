@@ -1,9 +1,9 @@
 // src/t13ne/core/ship/ShipWorker.js
 import * as THREE from 'three';
 import { CSG } from 'three-csg-ts';
-import { HullGenerator } from './HullGenerator.js';
-import { ShipGenerator } from './ShipGenerator.js';
-import { WiringGenerator } from './WiringGenerator.js';
+import { HullGenerator } from '@/src/t13ne/core/ship/HullGenerator.js';
+import { ShipGenerator } from '@/src/t13ne/core/ship/ShipGenerator.js';
+import { WiringGenerator } from '@/src/t13ne/core/ship/WiringGenerator.js';
 
 let hullGenerator = new HullGenerator(null);
 let shipGenerator = new ShipGenerator(new WiringGenerator(), null);
@@ -22,17 +22,26 @@ self.onmessage = async (e) => {
 
             const reconstructedComponents = components.map(c => ({
                 ...c,
-                position: new THREE.Vector3().copy(c.position),
-                rotation: new THREE.Euler().copy(c.rotation),
-                scale: new THREE.Vector3().copy(c.scale)
+                position: new THREE.Vector3(c.position.x, c.position.y, c.position.z),
+                rotation: new THREE.Euler(c.rotation.x, c.rotation.y, c.rotation.z, c.rotation.order),
+                scale: new THREE.Vector3(c.scale.x, c.scale.y, c.scale.z)
             }));
 
             const geometry = await hullGenerator.generateSDFHullAsync(reconstructedComponents, styleConfig.blendStrength, styleConfig.padding);
 
             if (geometry) {
-                const positions = geometry.attributes.position.array;
-                const normals = geometry.attributes.normal.array;
-                const colors = geometry.attributes.color ? geometry.attributes.color.array : null;
+                const posAttr = geometry.getAttribute ? geometry.getAttribute('position') : (geometry.attributes ? geometry.attributes.position : null);
+                const normAttr = geometry.getAttribute ? geometry.getAttribute('normal') : (geometry.attributes ? geometry.attributes.normal : null);
+
+                const positions = posAttr ? posAttr.array : null;
+                const normals = normAttr ? normAttr.array : null;
+
+                if (!positions || !normals) {
+                    throw new Error("SDF generated geometry with missing attributes");
+                }
+
+                const colorsAttr = geometry.getAttribute ? geometry.getAttribute('color') : (geometry.attributes ? geometry.attributes.color : null);
+                const colors = colorsAttr ? colorsAttr.array : null;
 
                 self.postMessage({
                     type: 'hullGenerated',
@@ -78,8 +87,19 @@ self.onmessage = async (e) => {
                 const hullMesh = CSG.toMesh(baseCSG, new THREE.Matrix4());
                 const geometry = hullMesh.geometry;
 
-                const positions = geometry.attributes.position.array;
-                const normals = geometry.attributes.normal.array;
+                const posAttr = geometry.getAttribute ? geometry.getAttribute('position') : (geometry.attributes ? geometry.attributes.position : null);
+                const normAttr = geometry.getAttribute ? geometry.getAttribute('normal') : (geometry.attributes ? geometry.attributes.normal : null);
+
+                if (!normAttr) {
+                    geometry.computeVertexNormals();
+                }
+
+                const positions = posAttr ? posAttr.array : null;
+                if (!positions) {
+                    throw new Error("CSG generated geometry with no position attribute");
+                }
+
+                const normals = normAttr ? normAttr.array : new Float32Array(positions.length);
                 const indices = geometry.index ? geometry.index.array : null;
 
                 self.postMessage({

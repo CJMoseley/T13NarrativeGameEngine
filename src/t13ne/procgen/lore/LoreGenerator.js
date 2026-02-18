@@ -1,12 +1,12 @@
-import { GalacticHistory } from '../galaxy/GalacticHistory.js';
-import { NameGenerator as FallbackNameGenerator } from './factories/NameGenerator.js';
-import Logger from '../../core/Logger.js';
-import { SpeciesGenerator } from './factories/SpeciesGenerator.js';
-import { TechGenerator } from './factories/TechGenerator.js';
-import { CorporationGenerator } from '../corporations/CorporationGenerator.js';
-import { SystemGenerator } from '../system/SystemGenerator.js';
-import { ComponentLoreGenerator } from './factories/ComponentLoreGenerator.js';
-import { ScienceGenerator } from './factories/ScienceGenerator.js';
+import { GalacticHistory } from '@/src/t13ne/procgen/galaxy/GalacticHistory.js';
+import { NameGenerator as FallbackNameGenerator } from '@/src/t13ne/procgen/lore/factories/NameGenerator.js';
+import Logger from '@/src/t13ne/core/Logger.js';
+import { SpeciesGenerator } from '@/src/t13ne/procgen/lore/factories/SpeciesGenerator.js';
+import { TechGenerator } from '@/src/t13ne/procgen/lore/factories/TechGenerator.js';
+import { CorporationGenerator } from '@/src/t13ne/procgen/corporations/CorporationGenerator.js';
+import { SystemGenerator } from '@/src/t13ne/procgen/system/SystemGenerator.js';
+import { ComponentLoreGenerator } from '@/src/t13ne/procgen/lore/factories/ComponentLoreGenerator.js';
+import { ScienceGenerator } from '@/src/t13ne/procgen/lore/factories/ScienceGenerator.js';
 
 /**
  * Centralized module for all procedural lore generation.

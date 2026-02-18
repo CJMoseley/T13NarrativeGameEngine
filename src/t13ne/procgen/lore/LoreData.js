@@ -1,4 +1,4 @@
-import Logger from '../../core/Logger.js';
+import Logger from '@/src/t13ne/core/Logger.js';
 
 /**
  * Asynchronously loads and manages all static lore data from JSON files.
