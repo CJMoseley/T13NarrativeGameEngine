@@ -49,6 +49,9 @@ export class ShipFactory {
         this.renderBridge = null; // Lazy init or remove if unused
 
         this.shipCache = new Map();
+        this.worker = null;
+        this.useWorker = true;
+        this.initWorker();
 
         this.currentShipAssembly = {
             hull: null,
@@ -69,6 +72,9 @@ export class ShipFactory {
      * @returns {Array<object>} List of component definitions ready for generation.
      */
     async createRandomShip(seed, config = {}) {
+        if (this.useWorker && this.worker) {
+            return await this.callWorker('createRandomShip', { seed, config });
+        }
         return await this.shipGenerator.createRandomShip(seed, config);
     }
 
@@ -235,5 +241,54 @@ export class ShipFactory {
      */
     getCurrentShipAssembly() {
         return this.currentShipAssembly;
+    }
+
+    setPerformanceMode(mode) {
+        if (this.hullGenerator) this.hullGenerator.setPerformanceMode(mode);
+        if (this.useWorker && this.worker) {
+            this.callWorker('setPerformanceMode', mode);
+        }
+    }
+
+    initWorker() {
+        if (typeof Worker === 'undefined') {
+            this.useWorker = false;
+            return;
+        }
+        try {
+            this.worker = new Worker(new URL('./ShipWorker.js', import.meta.url), { type: 'module' });
+            this.worker.onmessage = (e) => this.handleWorkerMessage(e.data);
+            this._pendingRequests = new Map();
+        } catch (e) {
+            console.error("ShipFactory: Failed to initialize worker.", e);
+            this.useWorker = false;
+        }
+    }
+
+    handleWorkerMessage(data) {
+        const { type, components, geometryData, requestId, error } = data;
+        if (this._pendingRequests && this._pendingRequests.has(requestId)) {
+            const { resolve, reject } = this._pendingRequests.get(requestId);
+            this._pendingRequests.delete(requestId);
+            if (error) reject(new Error(error));
+            else if (type === 'shipCreated') resolve(components);
+            else if (type === 'hullGenerated') resolve(geometryData);
+            else resolve(data);
+        }
+    }
+
+    async callWorker(type, data) {
+        if (!this.worker) return null;
+        const requestId = Math.random().toString(36).substring(7);
+        return new Promise((resolve, reject) => {
+            this._pendingRequests.set(requestId, { resolve, reject });
+            this.worker.postMessage({ type, data, requestId });
+            setTimeout(() => {
+                if (this._pendingRequests.has(requestId)) {
+                    this._pendingRequests.delete(requestId);
+                    reject(new Error(`ShipWorker request '${type}' timed out`));
+                }
+            }, 30000);
+        });
     }
 }

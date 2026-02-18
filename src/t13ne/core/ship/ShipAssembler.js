@@ -369,7 +369,22 @@ export class ShipAssembler {
 
         if (effectiveStyle.method === 'ORGANIC') {
             // Organic styles use SDF which creates a single "melty" mesh, avoiding Z-fighting.
-            hullGeometry = await this.hullGenerator.generateAsync(shipComponents, effectiveStyle);
+            if (this.gameEngine.shipFactory && this.gameEngine.shipFactory.useWorker) {
+                const geoData = await this.gameEngine.shipFactory.callWorker('generateSDFHull', {
+                    components: shipComponents,
+                    styleConfig: effectiveStyle
+                });
+                if (geoData) {
+                    hullGeometry = new THREE.BufferGeometry();
+                    hullGeometry.setAttribute('position', new THREE.BufferAttribute(geoData.positions, 3));
+                    hullGeometry.setAttribute('normal', new THREE.BufferAttribute(geoData.normals, 3));
+                    if (geoData.colors) {
+                        hullGeometry.setAttribute('color', new THREE.BufferAttribute(geoData.colors, 3));
+                    }
+                }
+            } else {
+                hullGeometry = await this.hullGenerator.generateAsync(shipComponents, effectiveStyle);
+            }
         } else if (effectiveStyle.method === 'SKELETON') {
             // Skeleton style has no hull, so no Z-fighting.
             hullGeometry = null;
@@ -377,94 +392,113 @@ export class ShipAssembler {
             // For ALL OTHER styles (INDUSTRIAL, BOXY, DISC, etc.), use CSG to create a single, manifold hull.
             // This is the definitive fix for Z-fighting on hard-surface models.
             console.log(`ShipAssembler: Using unified CSG method for '${effectiveStyle.method}' style.`);
-            let baseCSG = null;
 
-            // 1. Union all non-carve components into a single solid.
-            const structuralComponents = components.filter(c => !(getCompProps(c).usage || '').toLowerCase().includes('carve'));
-            if (structuralComponents.length > 0) {
-                for (const comp of structuralComponents) {
+            if (this.gameEngine.shipFactory && this.gameEngine.shipFactory.useWorker) {
+                const workerComponents = [];
+                for (const comp of components) {
                     const { type, dims, pos, rot, usage } = getCompProps(comp);
+                    const isCarve = (usage || '').toLowerCase().includes('carve');
                     const mesh = this.componentFactory.createProxy(type, dims);
-                    mesh.position.set(...pos);
-                    if (rot) mesh.rotation.set(...rot);
                     
-                    // FIX: Handle negative scale (mirroring) by baking it into geometry
-                    // CSG operations often fail with negative scale matrices (inverted normals)
                     let s = new THREE.Vector3(1, 1, 1);
                     if (comp.scale) {
                         if (Array.isArray(comp.scale)) s.set(...comp.scale);
                         else s.copy(comp.scale);
                     }
 
-                    if (s.x < 0 || s.y < 0 || s.z < 0) {
-                        mesh.scale.set(1, 1, 1);
-                        mesh.geometry = mesh.geometry.clone();
-                        mesh.geometry.scale(s.x, s.y, s.z);
+                    // Extract geometry for worker
+                    const geo = mesh.geometry;
+                    workerComponents.push({
+                        position: pos,
+                        rotation: rot,
+                        scale: [s.x, s.y, s.z],
+                        isCarve: isCarve,
+                        geometry: {
+                            positions: geo.attributes.position.array,
+                            indices: geo.index ? geo.index.array : null
+                        }
+                    });
+                }
+
+                const geoData = await this.gameEngine.shipFactory.callWorker('generateCSGHull', { components: workerComponents });
+                if (geoData) {
+                    hullGeometry = new THREE.BufferGeometry();
+                    hullGeometry.setAttribute('position', new THREE.BufferAttribute(geoData.positions, 3));
+                    hullGeometry.setAttribute('normal', new THREE.BufferAttribute(geoData.normals, 3));
+                    if (geoData.indices) {
+                        hullGeometry.setIndex(new THREE.BufferAttribute(geoData.indices, 1));
+                    }
+                    // Apply slight scale to avoid Z-fighting with internal components
+                    hullGeometry.scale(1.005, 1.005, 1.005);
+                }
+            } else {
+                let baseCSG = null;
+
+                // 1. Union all non-carve components into a single solid.
+                const structuralComponents = components.filter(c => !(getCompProps(c).usage || '').toLowerCase().includes('carve'));
+                if (structuralComponents.length > 0) {
+                    for (const comp of structuralComponents) {
+                        const { type, dims, pos, rot, usage } = getCompProps(comp);
+                        const mesh = this.componentFactory.createProxy(type, dims);
+                        mesh.position.set(...pos);
+                        if (rot) mesh.rotation.set(...rot);
                         
-                        // If determinant is negative, we need to flip faces to restore outward normals
-                        if (s.x * s.y * s.z < 0) {
-                            const index = mesh.geometry.index;
-                            if (index) {
-                                for (let i = 0; i < index.count; i += 3) {
-                                    const a = index.getX(i);
-                                    index.setX(i, index.getX(i+2));
-                                    index.setX(i+2, a);
+                        // FIX: Handle negative scale (mirroring) by baking it into geometry
+                        // CSG operations often fail with negative scale matrices (inverted normals)
+                        let s = new THREE.Vector3(1, 1, 1);
+                        if (comp.scale) {
+                            if (Array.isArray(comp.scale)) s.set(...comp.scale);
+                            else s.copy(comp.scale);
+                        }
+
+                        if (s.x < 0 || s.y < 0 || s.z < 0) {
+                            mesh.scale.set(1, 1, 1);
+                            mesh.geometry = mesh.geometry.clone();
+                            mesh.geometry.scale(s.x, s.y, s.z);
+
+                            // If determinant is negative, we need to flip faces to restore outward normals
+                            if (s.x * s.y * s.z < 0) {
+                                const index = mesh.geometry.index;
+                                if (index) {
+                                    for (let i = 0; i < index.count; i += 3) {
+                                        const a = index.getX(i);
+                                        index.setX(i, index.getX(i+2));
+                                        index.setX(i+2, a);
+                                    }
                                 }
-                            } else {
-                                // Non-indexed geometry not handled here for brevity, but proxies usually use primitives which can be indexed or we rely on computeVertexNormals
+                                mesh.geometry.computeVertexNormals();
                             }
-                            mesh.geometry.computeVertexNormals();
+                        } else {
+                            mesh.scale.copy(s);
                         }
-                    } else {
-                        mesh.scale.copy(s);
-                    }
-                    mesh.updateMatrix();
+                        mesh.updateMatrix();
 
-                    // Apply Palette UVs based on component usage
-                    let colorIndex = 0;
-                    if (usage) {
-                        const u = usage.toLowerCase();
-                        if (u.includes('engine') || u.includes('thruster')) colorIndex = 3;
-                        else if (u.includes('wing') || u.includes('fin')) colorIndex = 1;
-                        else if (u.includes('cockpit') || u.includes('bridge')) colorIndex = 2;
-                        else if (u.includes('struct') || u.includes('strut') || u.includes('truss')) colorIndex = 4;
-                        else colorIndex = 0;
+                        const compCSG = CSG.fromMesh(mesh);
+                        baseCSG = baseCSG ? baseCSG.union(compCSG) : compCSG;
+                        await new Promise(r => setTimeout(r, 0)); // Yield
                     }
-                    
-                    const uvAttribute = mesh.geometry.attributes.uv;
-                    if (uvAttribute) {
-                        const u = (colorIndex + 0.5) / 8;
-                        for (let i = 0; i < uvAttribute.count; i++) {
-                            uvAttribute.setXY(i, u, 0.5);
-                        }
-                        uvAttribute.needsUpdate = true;
-                    }
-
-                    const compCSG = CSG.fromMesh(mesh);
-                    baseCSG = baseCSG ? baseCSG.union(compCSG) : compCSG;
-                    await new Promise(r => setTimeout(r, 0)); // Yield
                 }
-            }
-            // 2. Subtract all carving components.
-            const carvingComponents = components.filter(c => (getCompProps(c).usage || '').toLowerCase().includes('carve'));
-            if (baseCSG && carvingComponents.length > 0) {
-                for (const comp of carvingComponents) {
-                    const { type, dims, pos, rot } = getCompProps(comp);
-                    const cutterMesh = this.componentFactory.createProxy(type, dims);
-                    cutterMesh.position.set(...pos);
-                    if (rot) cutterMesh.rotation.set(...rot);
-                    if (comp.scale) cutterMesh.scale.copy(comp.scale);
-                    cutterMesh.updateMatrix();
-                    baseCSG = baseCSG.subtract(CSG.fromMesh(cutterMesh));
-                    await new Promise(r => setTimeout(r, 0)); // Yield
+                // 2. Subtract all carving components.
+                const carvingComponents = components.filter(c => (getCompProps(c).usage || '').toLowerCase().includes('carve'));
+                if (baseCSG && carvingComponents.length > 0) {
+                    for (const comp of carvingComponents) {
+                        const { type, dims, pos, rot } = getCompProps(comp);
+                        const cutterMesh = this.componentFactory.createProxy(type, dims);
+                        cutterMesh.position.set(...pos);
+                        if (rot) cutterMesh.rotation.set(...rot);
+                        if (comp.scale) cutterMesh.scale.copy(comp.scale);
+                        cutterMesh.updateMatrix();
+                        baseCSG = baseCSG.subtract(CSG.fromMesh(cutterMesh));
+                        await new Promise(r => setTimeout(r, 0)); // Yield
+                    }
                 }
-            }
 
-            if (baseCSG) {
-                hullMesh = CSG.toMesh(baseCSG, new THREE.Matrix4());
-                hullGeometry = hullMesh.geometry;
-                // Apply slight scale to avoid Z-fighting with internal components
-                hullGeometry.scale(1.005, 1.005, 1.005);
+                if (baseCSG) {
+                    hullMesh = CSG.toMesh(baseCSG, new THREE.Matrix4());
+                    hullGeometry = hullMesh.geometry;
+                    // Apply slight scale to avoid Z-fighting with internal components
+                    hullGeometry.scale(1.005, 1.005, 1.005);
+                }
             }
         }
 

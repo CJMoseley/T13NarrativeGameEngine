@@ -110,7 +110,7 @@ export class PlanetaryOrbitScene extends Scene {
             Logger.error("PlanetaryOrbitScene: No planet data provided.");
         }
 
-        this.createSkybox();
+        await this.createSkybox();
         await new Promise(r => setTimeout(r, 0)); // Yield to event loop
         
         this.createSunVisual();
@@ -129,10 +129,10 @@ export class PlanetaryOrbitScene extends Scene {
         Logger.end(funcName);
     }
 
-    createSkybox() {
+    async createSkybox() {
         const r = 60000; // Increased radius to be well within far plane but background
         this.starbox = new Starbox(this.viewManager.gameEngine);
-        this.starbox.generate(this.scene, this.systemData.star, r);
+        await this.starbox.generate(this.scene, this.systemData.star, r);
     }
 
     createSunVisual() {

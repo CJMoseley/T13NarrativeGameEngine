@@ -26,9 +26,9 @@ export class GalaxyGenerator {
     Object.assign(this.params, newParams);
   }
 
-  generateGalaxy() {
+  async generateGalaxy() {
     this.galaxy = new Galaxy(this.params);
-    this.galaxy.generateStars();
+    await this.galaxy.generateStars();
     return this.galaxy;
   }
 

@@ -14,6 +14,7 @@ import { T13Synth } from "./core/T13Synth.js";
 class T13NE_Music {
     constructor() {
         this.t13ne = null;
+        this.worker = null;
         this.geometry = null;
         this.soundEngine = null;
         this.synth = null;
@@ -32,6 +33,7 @@ class T13NE_Music {
 
         this.manifestManager = new AudioManifestManager();
         this.themeGenerator = new ThemeGenerator(this);
+        this.useWorker = true;
     }
 
     async initialize(t13ne) {
@@ -89,6 +91,10 @@ class T13NE_Music {
 
         this.tonalModes = await CodexLoader.getData('geometry', 'tonalModes.json') || [];
         await this.themeGenerator.loadAssets();
+
+        if (this.useWorker) {
+            this.initWorker();
+        }
 
         this.initialized = true;
         Logger.message("T13NE_Music: Initialized.");
@@ -246,12 +252,22 @@ class T13NE_Music {
         const trackId = `theme_${Math.abs(hash)}`;
 
         if (this.trackCache.has(trackId) && !this.needsRegeneration) {
-            Logger.message(`T13NE_Music: Using cached theme ''`);
+            Logger.message(`T13NE_Music: Using cached theme '${trackId}'`);
             return this.trackCache.get(trackId);
         }
 
         Logger.message("T13NE_Music: Generating Main Theme (Async)...");
-        const trackData = await this.themeGenerator.createMainTheme(this.activeComponents, gameEngine, this.needsRegeneration);
+
+        let trackData;
+        if (this.useWorker && this.worker) {
+            trackData = await this.callWorker('generateMainTheme', {
+                activeComponents: this.activeComponents,
+                forceRegeneration: this.needsRegeneration
+            });
+        } else {
+            trackData = await this.themeGenerator.createMainTheme(this.activeComponents, gameEngine, this.needsRegeneration);
+        }
+
         if (!trackData) return;
         
         this.trackCache.set(trackId, trackData);
@@ -263,7 +279,14 @@ class T13NE_Music {
     async createWormholeTheme(ship, origin, target) {
         if (!this.synth) return;
         const trackName = `track_wormhole_${origin.name}_${target.name}`;
-        const trackData = await this.themeGenerator.createWormholeTheme(ship, origin, target);
+
+        let trackData;
+        if (this.useWorker && this.worker) {
+            trackData = await this.callWorker('generateWormholeTheme', { ship, origin, target });
+        } else {
+            trackData = await this.themeGenerator.createWormholeTheme(ship, origin, target);
+        }
+
         if (!trackData) return;
         this.saveTrack(trackName, trackData);
         return trackData;
@@ -665,6 +688,96 @@ class T13NE_Music {
         this.synth.stopAll();
         this.currentLayers.clear();
         this.lastTension = -1;
+    }
+
+    setPerformanceMode(mode) {
+        if (this.synth && this.synth.instrumentEngine && typeof this.synth.instrumentEngine.setPerformanceMode === 'function') {
+            this.synth.instrumentEngine.setPerformanceMode(mode);
+        }
+        if (this.themeGenerator) {
+            this.themeGenerator.performanceMode = mode;
+        }
+        if (this.useWorker && this.worker) {
+            this.callWorker('setPerformanceMode', mode);
+        }
+        Logger.message(`T13NE_Music: Performance mode set to ${mode}`);
+    }
+
+    initWorker() {
+        if (this.worker) return;
+
+        try {
+            this.worker = new Worker(new URL('./core/MusicWorker.js', import.meta.url), { type: 'module' });
+            this.worker.onmessage = (e) => this.handleWorkerMessage(e.data);
+
+            // Send initial data to worker
+            const codexData = {};
+            // We need to pass the loaded patterns to the worker
+            const patterns = {
+                'music:drumpatterns.json': this.themeGenerator.drumPatterns,
+                'music:harmonic_patterns.json': { patterns: this.themeGenerator.harmonicPatterns },
+                'music:basspatterns.json': { patterns: this.themeGenerator.bassPatterns },
+                'geometry:progressions.json': this.themeGenerator.progressions,
+                'geometry:tonalModes.json': this.tonalModes
+            };
+
+            // Also need RomanChords
+            const geometryData = {
+                romanChords: this.geometry?.RomanChords || [],
+                keys: this.geometry?.keys || {}
+            };
+
+            this.worker.postMessage({
+                type: 'init',
+                data: {
+                    codexData: patterns,
+                    geometryData: geometryData
+                }
+            });
+        } catch (e) {
+            Logger.error("T13NE_Music: Failed to initialize worker.", e);
+            this.useWorker = false;
+        }
+    }
+
+    handleWorkerMessage(data) {
+        const { type, track, requestId, error } = data;
+
+        if (this._pendingRequests && this._pendingRequests.has(requestId)) {
+            const { resolve, reject } = this._pendingRequests.get(requestId);
+            this._pendingRequests.delete(requestId);
+
+            if (type === 'error') {
+                reject(new Error(error));
+            } else {
+                console.log(`T13NE_Music: Resolving request ${requestId} (${type})`);
+                resolve(track || data);
+            }
+        } else {
+            if (type !== 'initialized' && type !== 'performanceModeSet') {
+                console.warn(`T13NE_Music: Received worker message for unknown requestId ${requestId}`, data);
+            }
+        }
+    }
+
+    async callWorker(type, data) {
+        if (!this.worker) return null;
+
+        if (!this._pendingRequests) this._pendingRequests = new Map();
+        const requestId = Math.random().toString(36).substring(7);
+
+        return new Promise((resolve, reject) => {
+            this._pendingRequests.set(requestId, { resolve, reject });
+            this.worker.postMessage({ type, data, requestId });
+
+            // Timeout after 10s
+            setTimeout(() => {
+                if (this._pendingRequests.has(requestId)) {
+                    this._pendingRequests.delete(requestId);
+                    reject(new Error("Worker request timed out"));
+                }
+            }, 10000);
+        });
     }
 }
 

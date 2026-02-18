@@ -1,5 +1,5 @@
 import { LoreData } from '../procgen/lore/LoreData.js';
-import { THREE } from 'enable3d';
+import * as THREE from 'three';
 import ProcGen from '../procgen/ProcGen.js';
 import Logger from '../core/Logger.js';
 import { Scene } from '../core/Scene.js';
@@ -105,7 +105,7 @@ export class GalaxyMapScene extends Scene {
     Logger.end(funcName);
   }
 
-  generateAndRenderGalaxy() {
+  async generateAndRenderGalaxy() {
     const funcName = 'GalaxyMapScene.generateAndRenderGalaxy';
     Logger.start(funcName);
 
@@ -164,13 +164,13 @@ export class GalaxyMapScene extends Scene {
     this.galaxyGroup.add(this.starPoints);
 
     // --- Generate Nebulae and Dust ---
-    this.generateNebulaeAndDust();
+    await this.generateNebulaeAndDust();
 
     this.scene.add(new THREE.AmbientLight(0xffffff, 0.4));
     Logger.end(funcName);
   }
 
-  generateNebulaeAndDust() {
+  async generateNebulaeAndDust() {
     // --- Dust Lanes (Dark Matter/Obscuring Dust) ---
     const dustCount = 60000; // High density for visible lanes
     const dustGeometry = new THREE.BufferGeometry();
@@ -200,6 +200,7 @@ export class GalaxyMapScene extends Scene {
     ];
 
     for (let i = 0; i < dustCount; i++) {
+      if (i % 1000 === 0) await new Promise(r => setTimeout(r, 0));
       const effectiveRadius = galaxyRadius * (0.85 + prng.nextDouble() * 0.3); // Feathered edge
       const rNorm = Math.pow(prng.nextDouble(), 0.5); // Bias towards center
       const r = rNorm * effectiveRadius;
@@ -286,6 +287,7 @@ export class GalaxyMapScene extends Scene {
     const NEBULA_COLORS = [0x6699ff, 0xff33cc, 0x33ffcc, 0xffcc33, 0xff3333, 0x9966ff, 0x33ff66];
 
     for (let i = 0; i < nebulaCount; i++) {
+      if (i % 100 === 0) await new Promise(r => setTimeout(r, 0));
       const effectiveRadius = galaxyRadius * (0.85 + prng.nextDouble() * 0.3);
       const rNorm = Math.pow(prng.nextDouble(), 0.5); // Bias towards center
       const r = rNorm * effectiveRadius;

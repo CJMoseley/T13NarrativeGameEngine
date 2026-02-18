@@ -4,7 +4,7 @@ import { Scene } from '/src/t13ne/core/Scene.js';
 import { OrreryScene } from '/src/t13ne/scenes/OrreryScene.js';
 import { Controls } from '/src/t13ne/core/Controls.js';
 import ProcGen from '/src/t13ne/procgen/ProcGen.js';
-import { Starbox } from '/src/t13ne/scenes/scenecomponents/Starbox.js';
+import { Starbox } from '/src/t13ne/scenes/scenecomponents/starbox.js';
 import { PlanetGenerator } from '/src/t13ne/procgen/system/PlanetGenerator.js';
 import { Planet } from '/src/t13ne/scenes/scenecomponents/Planet.js';
 import { Star } from '/src/t13ne/scenes/scenecomponents/Star.js';
@@ -57,6 +57,9 @@ export class LocalSpaceScene extends Scene {
         this.orreryScene = null;
         this.starbox = null;
         this.glowTexture = null;
+
+        this.asteroidMesh = null;
+        this._asteroidNeedsUpdate = false;
     }
 
     updateSceneData(data) {
@@ -161,7 +164,7 @@ export class LocalSpaceScene extends Scene {
             const candidates = this.objects.filter(o =>
                 (o.type === 'planet' || o.type === 'moon' || o.type === 'asteroid') &&
                 o !== this.homeWorldObj &&
-                o.mesh // Ensure it has a mesh
+                (o.mesh || o.type === 'asteroid') // Ensure it has a mesh or is an asteroid
             );
 
             if (candidates.length > 0) {
@@ -517,16 +520,25 @@ export class LocalSpaceScene extends Scene {
         const beltRadius = this.scales.orbit * 2.5;
         const beltWidth = this.scales.orbit * 0.8;
 
-        for (let i = 0; i < count; i++) {
-            const mesh = new Asteroid(15);
-            this.scene.add(mesh);
+        // Use InstancedMesh for asteroid belt optimization
+        const dummyAsteroid = new Asteroid(15);
+        const geometry = dummyAsteroid.geometry;
+        const material = dummyAsteroid.material;
 
+        this.asteroidMesh = new THREE.InstancedMesh(geometry, material, count);
+        this.asteroidMesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+        this.scene.add(this.asteroidMesh);
+
+        const matrix = new THREE.Matrix4();
+
+        for (let i = 0; i < count; i++) {
             const angle = Math.random() * Math.PI * 2;
             const dist = beltRadius + (Math.random() - 0.5) * beltWidth;
             const y = (Math.random() - 0.5) * 400;
 
             const asteroidObj = {
-                mesh: mesh,
+                mesh: null, // No individual mesh
+                instanceIndex: i,
                 realPosition: new THREE.Vector3(Math.cos(angle) * dist, y, Math.sin(angle) * dist),
                 orbitRadius: dist,
                 orbitSpeed: (0.0002 + Math.random() * 0.0001) * 5,
@@ -535,14 +547,20 @@ export class LocalSpaceScene extends Scene {
                 type: 'asteroid',
                 parent: null
             };
+
+            // Set initial position
+            matrix.setPosition(asteroidObj.realPosition);
+            this.asteroidMesh.setMatrixAt(i, matrix);
+
             this.objects.push(asteroidObj);
         }
+        this.asteroidMesh.instanceMatrix.needsUpdate = true;
     }
 
-    createSkybox() {
+    async createSkybox() {
         const r = 60000;
         this.starbox = new Starbox(this.gameEngine);
-        this.starbox.generate(this.scene, this.starData, r);
+        await this.starbox.generate(this.scene, this.starData, r);
     }
 
     createDistantSprite(obj, colorData) {
@@ -642,9 +660,69 @@ export class LocalSpaceScene extends Scene {
                 if (!this.introActive && obj === this.homeWorldObj) {
                     obj.mesh.position.copy(relVec);
                     obj.mesh.scale.setScalar(1.0);
-                    return;
-                }
+                } else {
+                    const visualDist = C * Math.log(1 + realDist / C);
+                    const visualPos = relVec.clone();
+                    if (realDist > 0.01) {
+                        visualPos.normalize().multiplyScalar(visualDist);
+                    } else {
+                        visualPos.set(0, 0, 0);
+                    }
+                    obj.mesh.position.copy(visualPos);
 
+                    // If this object is our look-at target, store its visual position
+                    if (this.introActive && (obj === this.flybyObj || obj === this.homeWorldObj)) {
+                        const targetObj = (this.flybyObj && this.introPhase === 0) ? this.flybyObj : this.homeWorldObj;
+                        if (obj === targetObj) {
+                            visualLookAtTarget.copy(visualPos);
+
+                            // If targeting a moon homeworld, slightly bias the look-at towards the parent
+                            if (targetObj === this.homeWorldObj && targetObj.type === 'moon' && targetObj.parent && targetObj.parent.mesh) {
+                                const parentVisual = targetObj.parent.mesh.position;
+                                visualLookAtTarget.lerp(parentVisual, 0.15); // Subtle bias to keep giant in frame
+                            }
+                        }
+                    }
+
+                    let scale = 1.0;
+                    if (realDist > 0.001) {
+                        scale = visualDist / realDist;
+                    }
+
+                    if (obj.type === 'star' || obj.type === 'planet' || obj.type === 'moon') {
+                        const minAngularSize = 0.005;
+                        const minScale = (visualDist * minAngularSize) / (obj.baseRadius || 1);
+                        if (scale < minScale) scale = minScale;
+                    }
+
+                    obj.mesh.scale.setScalar(scale);
+
+                    // LOD / Sprite Switching
+                    if (obj.sprite) {
+                        const physicalScale = (obj.baseRadius || 100) * scale;
+                        const minPixelScale = visualDist * 0.005;
+
+                        obj.sprite.scale.setScalar(Math.max(physicalScale * 2.0, minPixelScale));
+                        obj.sprite.position.copy(visualPos);
+
+                        const isFinalPhase = this.introActive && this.introPhase === 1;
+                        const canShowMesh = scale > 0.005 || (obj === this.homeWorldObj && isFinalPhase) || (obj.type === 'star');
+
+                        if (canShowMesh) {
+                            obj.mesh.visible = !this.introActive || (obj === this.homeWorldObj && isFinalPhase) || (obj.type === 'star');
+                            obj.sprite.material.opacity = Math.max(0, 1.0 - (scale * 100));
+                            obj.sprite.visible = obj.sprite.material.opacity > 0.01;
+                        } else {
+                            obj.mesh.visible = false;
+                            obj.sprite.visible = true;
+                            obj.sprite.material.opacity = 1.0;
+                        }
+                    }
+                }
+            } else if (obj.type === 'asteroid' && this.asteroidMesh) {
+                // Instanced Asteroid update
+                const relVec = new THREE.Vector3().subVectors(obj.realPosition, this.virtualCameraPosition);
+                const realDist = relVec.length();
                 const visualDist = C * Math.log(1 + realDist / C);
                 const visualPos = relVec.clone();
                 if (realDist > 0.01) {
@@ -652,72 +730,18 @@ export class LocalSpaceScene extends Scene {
                 } else {
                     visualPos.set(0, 0, 0);
                 }
-                obj.mesh.position.copy(visualPos);
 
-                // If this object is our look-at target, store its visual position
-                if (this.introActive && (obj === this.flybyObj || obj === this.homeWorldObj)) {
-                    const targetObj = (this.flybyObj && this.introPhase === 0) ? this.flybyObj : this.homeWorldObj;
-                    if (obj === targetObj) {
-                        visualLookAtTarget.copy(visualPos);
-
-                        // If targeting a moon homeworld, slightly bias the look-at towards the parent
-                        if (targetObj === this.homeWorldObj && targetObj.type === 'moon' && targetObj.parent && targetObj.parent.mesh) {
-                            const parentVisual = targetObj.parent.mesh.position;
-                            visualLookAtTarget.lerp(parentVisual, 0.15); // Subtle bias to keep giant in frame
-                        }
-                    }
-                }
-
-                let scale = 1.0;
-                if (realDist > 0.001) {
-                    scale = visualDist / realDist;
-                }
-
-                if (obj.type === 'star' || obj.type === 'planet' || obj.type === 'moon') {
-                    const minAngularSize = 0.005;
-                    const minScale = (visualDist * minAngularSize) / (obj.baseRadius || 1);
-                    if (scale < minScale) scale = minScale;
-                }
-
-                obj.mesh.scale.setScalar(scale);
-
-                // LOD / Sprite Switching
-                if (obj.sprite) {
-                    // If visual distance is very far, show sprite instead of mesh
-                    // Scale sprite to match the visual size of the object if it were rendered as a mesh
-                    // This prevents the "static size" issue.
-                    // Mesh Scale = visualDist / realDist
-                    // Sprite should represent the object's radius.
-                    // We want the sprite to be visible even when the mesh would be sub-pixel.
-
-                    const physicalScale = (obj.baseRadius || 100) * scale;
-                    const minPixelScale = visualDist * 0.005; // Minimum size to be a visible "star" point
-
-                    obj.sprite.scale.setScalar(Math.max(physicalScale * 2.0, minPixelScale)); // *2 for glow effect
-                    obj.sprite.position.copy(visualPos);
-
-                    // Simple LOD: If close enough to see detail, hide sprite, show mesh
-                    // During intro, keep homeworld as a sprite until the final approach phase or if it's the star
-                    const isFinalPhase = this.introActive && this.introPhase === 1;
-                    const canShowMesh = scale > 0.005 || (obj === this.homeWorldObj && isFinalPhase) || (obj.type === 'star');
-
-                    if (canShowMesh) {
-                        // Show mesh if not in intro OR if it's the final approach to the homeworld OR it's the star
-                        obj.mesh.visible = !this.introActive || (obj === this.homeWorldObj && isFinalPhase) || (obj.type === 'star');
-
-                        // Fade out sprite when close
-                        obj.sprite.material.opacity = Math.max(0, 1.0 - (scale * 100));
-                        obj.sprite.visible = obj.sprite.material.opacity > 0.01;
-                    } else {
-                        obj.mesh.visible = false;
-                        obj.sprite.visible = true;
-                        obj.sprite.material.opacity = 1.0;
-                    }
-                }
+                const matrix = new THREE.Matrix4();
+                matrix.setPosition(visualPos);
+                // Scale asteroid based on compression
+                let scale = realDist > 0.001 ? (visualDist / realDist) : 1.0;
+                matrix.scale(new THREE.Vector3(scale, scale, scale));
+                this.asteroidMesh.setMatrixAt(obj.instanceIndex, matrix);
+                this._asteroidNeedsUpdate = true;
             }
 
 
-            if (obj.orbitLine && obj.orbitPointsReal) {
+            if (obj.orbitLine && obj.orbitPointsReal && obj.orbitLine.geometry && obj.orbitLine.geometry.attributes.position && obj.orbitLine.geometry.attributes.position.array) {
                 obj.orbitLine.visible = !this.introActive;
                 const positions = obj.orbitLine.geometry.attributes.position.array;
                 const tempVec = new THREE.Vector3();
@@ -736,6 +760,11 @@ export class LocalSpaceScene extends Scene {
                 obj.orbitLine.geometry.attributes.position.needsUpdate = true;
             }
         });
+
+        if (this._asteroidNeedsUpdate && this.asteroidMesh) {
+            this.asteroidMesh.instanceMatrix.needsUpdate = true;
+            this._asteroidNeedsUpdate = false;
+        }
 
         // --- 4. Update Camera LookAt ---
         if (this.introActive) {

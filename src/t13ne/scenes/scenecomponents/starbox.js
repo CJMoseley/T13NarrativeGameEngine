@@ -8,9 +8,9 @@ export class Starbox {
         this.starMaterial = null;
     }
 
-    generate(scene, starData, radius = 50000) {
+    async generate(scene, starData, radius = 50000) {
         this._createStars(scene, new THREE.Vector3(0,0,0), radius, false);
-        this._createNebulae(scene, new THREE.Vector3(0,0,0), radius);
+        await this._createNebulae(scene, new THREE.Vector3(0,0,0), radius);
     }
 
     _createStars(scene, currentPos, radius, twinkling = false) {
@@ -105,7 +105,7 @@ export class Starbox {
         scene.add(starField);
     }
 
-    _createNebulae(scene, currentPos, radius) {
+    async _createNebulae(scene, currentPos, radius) {
         if (!this.gameEngine?.galaxyGenerator || !SceneTools || !SceneTools.createCloudTexture) return;
 
         const galaxyParams = this.gameEngine.galaxyGenerator.params;
@@ -129,6 +129,7 @@ export class Starbox {
         const cloudTex = SceneTools.createCloudTexture();
 
         for (let i = 0; i < nebulaCount; i++) {
+            if (i % 100 === 0) await new Promise(r => setTimeout(r, 0));
             const effectiveRadius = galaxyRadius * (0.85 + galPrng.nextDouble() * 0.3);
             const rNorm = Math.pow(galPrng.nextDouble(), 0.5); 
             const rad = rNorm * effectiveRadius;
