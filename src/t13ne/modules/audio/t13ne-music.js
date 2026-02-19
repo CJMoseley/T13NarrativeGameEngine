@@ -238,6 +238,9 @@ class T13NE_Music {
     async createMainTheme(gameEngine) {
         if (!this.synth) return;
 
+        const tensionModule = this.t13ne ? this.t13ne.getModule('Tension') : null;
+        const currentTension = tensionModule ? tensionModule.getTensionLevel() : (this.lastTension >= 0 ? this.lastTension : 2);
+
         // Generate a unique hash for the current components to enable caching
         const componentHash = this.activeComponents
             .map(c => c.name || c.id || 'unknown')
@@ -278,6 +281,7 @@ class T13NE_Music {
 
             trackData = await this.callWorker('generateMainTheme', {
                 activeComponents: sanitizedComponents,
+                tensionLevel: currentTension,
                 forceRegeneration: this.needsRegeneration
             });
 
@@ -290,7 +294,7 @@ class T13NE_Music {
                 }
             }
         } else {
-            trackData = await this.themeGenerator.createMainTheme(this.activeComponents, gameEngine, this.needsRegeneration);
+            trackData = await this.themeGenerator.createMainTheme(this.activeComponents, gameEngine, this.needsRegeneration, currentTension);
         }
 
         if (!trackData) return;

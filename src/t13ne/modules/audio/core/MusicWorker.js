@@ -121,8 +121,8 @@ self.onmessage = async (e) => {
         else if (type === 'generateMainTheme') {
             if (!themeGenerator) throw new Error("ThemeGenerator not initialized in worker");
 
-            const { activeComponents, forceRegeneration } = data;
-            const track = await themeGenerator.createMainTheme(activeComponents, null, forceRegeneration);
+            const { activeComponents, forceRegeneration, tensionLevel } = data;
+            const track = await themeGenerator.createMainTheme(activeComponents, null, forceRegeneration, tensionLevel);
             self.postMessage({ type: 'trackGenerated', track, requestId });
         }
         else if (type === 'generateWormholeTheme') {
