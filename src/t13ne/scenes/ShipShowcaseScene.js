@@ -62,7 +62,7 @@ export class ShipShowcaseScene extends Scene {
         onProgress({ status: 'Initializing Ship Factory...', percent: 0.2 });
 
         // 7. Initialize Factory
-        this.shipFactory = new ShipFactory(this.viewManager.gameEngine, null);
+        this.shipFactory = this.viewManager.gameEngine.shipFactory || new ShipFactory(this.viewManager.gameEngine, null);
 
         // 8. Generate Ship Data Procedurally
         onProgress({ status: 'Designing random ship...', percent: 0.4 });

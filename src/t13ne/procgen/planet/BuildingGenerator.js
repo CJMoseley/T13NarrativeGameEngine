@@ -21,9 +21,10 @@ export class BuildingGenerator {
         const funcName = 'BuildingGenerator.generateBuildings';
         Logger.start(funcName, { count });
         const buildings = [];
+        const seeds = (this.planetData && this.planetData.seeds) ? this.planetData.seeds : [0.1, 0.2, 0.3, 0.4];
         for (let i = 0; i < count; i++) {
-            const x = this._getSeededRandom([...this.planetData.seeds, i, 0.8]) * 500 - 250;
-            const z = this._getSeededRandom([...this.planetData.seeds, i, 0.9]) * 500 - 250;
+            const x = this._getSeededRandom([...seeds, i, 0.8]) * 500 - 250;
+            const z = this._getSeededRandom([...seeds, i, 0.9]) * 500 - 250;
             if (densityMap.getDensity(x, z) < -0.5) {
                 buildings.push(this.generateBuilding(x, z, terrainGenerator));
             }
@@ -37,12 +38,13 @@ export class BuildingGenerator {
 
         const y = terrainGenerator.getTerrainHeight(x, z);
         const position = { x, y, z };
+        const seeds = (this.planetData && this.planetData.seeds) ? this.planetData.seeds : [0.1, 0.2, 0.3, 0.4];
         const size = {
-            x: this._getSeededRandom([...this.planetData.seeds, x, 0.1]) * 10 + 5,
-            y: this._getSeededRandom([...this.planetData.seeds, y, 0.2]) * 20 + 10,
-            z: this._getSeededRandom([...this.planetData.seeds, z, 0.3]) * 10 + 5,
+            x: this._getSeededRandom([...seeds, x, 0.1]) * 10 + 5,
+            y: this._getSeededRandom([...seeds, y, 0.2]) * 20 + 10,
+            z: this._getSeededRandom([...seeds, z, 0.3]) * 10 + 5,
         };
-        const type = this._getSeededRandom([...this.planetData.seeds, x, y, z, 0.4]) > 0.5 ? 'prism' : 'cylinder';
+        const type = this._getSeededRandom([...seeds, x, y, z, 0.4]) > 0.5 ? 'prism' : 'cylinder';
         const building = { position, size, type };
         Logger.end(funcName, building);
         return building;
