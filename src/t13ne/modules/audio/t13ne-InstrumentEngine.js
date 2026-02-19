@@ -1,6 +1,7 @@
 import Logger from "/src/t13ne/core/Logger.js";
 import { WavetableBaker } from "/src/t13ne/modules/audio/t13ne-wavetable-baker.js";
 import { T13Effects } from "/src/t13ne/modules/audio/t13ne-effects.js";
+import PRNG from '/src/t13ne/modules/systems/t13ne-prng.js';
 
 /**
  * Handles Complex Additive Synthesis.
@@ -342,8 +343,11 @@ export class InstrumentEngine {
         const bufferSize = this.ctx.sampleRate * 2.0; // 2 seconds of noise
         this.noiseBuffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
         const data = this.noiseBuffer.getChannelData(0);
+
+        // Seeded noise generation for determinism
+        const noiseRNG = PRNG.create32(0x1337BEEF);
         for (let i = 0; i < bufferSize; i++) {
-            data[i] = Math.random() * 2 - 1;
+            data[i] = noiseRNG.nextDouble() * 2 - 1;
         }
     }
 
@@ -725,8 +729,10 @@ export class InstrumentEngine {
         const source = this.ctx.createBufferSource();
         source.buffer = this.noiseBuffer;
         source.loop = true;
-        // Randomize start position to avoid phasing artifacts on repeated notes
-        source.loopStart = Math.random() * (this.noiseBuffer.duration - 0.1);
+        // Use deterministic offset based on time/duration to avoid phasing artifacts
+        // while remaining procedural and repeatable.
+        const offsetSeed = (time * 1000) % this.noiseBuffer.duration;
+        source.loopStart = offsetSeed;
         source.loopEnd = this.noiseBuffer.duration;
         
         if (sources) sources.push(source);
@@ -1037,7 +1043,7 @@ export class InstrumentEngine {
         if (sources) sources.push(source);
         source.buffer = this.noiseBuffer;
 
-        const loopStart = Math.random() * (this.noiseBuffer.duration - duration - 0.1);
+        const loopStart = (time * 777) % (this.noiseBuffer.duration - duration - 0.1);
         source.loop = true;
         source.loopStart = loopStart > 0 ? loopStart : 0;
         source.loopEnd = this.noiseBuffer.duration;

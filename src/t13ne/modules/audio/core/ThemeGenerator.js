@@ -42,6 +42,38 @@ class VirtualArtist {
         this.determineMusicalPersonality();
     }
 
+    setRole(role) {
+        this.role = role;
+        if (role === 'bass') {
+            this.personality = 'groove';
+            this.setOctave(2);
+        } else if (role === 'rhythm') {
+            this.personality = 'support';
+            this.setOctave(4);
+        }
+    }
+
+    setOctave(octave) {
+        if (!this.geometry) this.geometry = { geometry: {} };
+        if (!this.geometry.geometry) this.geometry.geometry = {};
+        this.geometry.geometry.Octave = octave;
+
+        const geoKey = this.geometry.geometry.GeoHarmonics ? this.geometry.geometry.GeoHarmonics.key : (this.geometry.GeometryNumber || 1);
+
+        if (this.generator.geometry && typeof this.generator.geometry.getKey === 'function') {
+            const keyData = this.generator.geometry.getKey(geoKey);
+            // Manually override frequency based on our new octave
+            const baseFreq = keyData.Key.Frequency / Math.pow(2, (keyData.KeyNo || 4) - 4);
+            this.keyData = {
+                Key: { ...keyData.Key, Frequency: baseFreq * Math.pow(2, octave - 4) },
+                KeyNo: octave,
+                T13NEDescription: keyData.T13NEDescription || ''
+            };
+        } else {
+            this.keyData = { Key: { Key: 'C', Frequency: 261.63 * Math.pow(2, octave - 4) }, KeyNo: octave };
+        }
+    }
+
     determineMusicalPersonality() {
         const geoNum = this.geometry?.geometry?.GeometryNumber || 0;
         this.geoNum = geoNum;
@@ -134,6 +166,31 @@ class VirtualBand {
         this.stepsPerBar = 16;
         this.polyrhythms = new Map(); // Store artists who will play in a different meter
         this.drummers = [];
+        this.tensionLevel = 2;
+    }
+
+    balanceRoles() {
+        const hasBass = this.members.some(m => m.role === 'bass');
+        const hasRhythm = this.members.some(m => m.role === 'rhythm' || m.role === 'pad' || m.personality === 'support');
+
+        if (!hasBass && this.members.length > 0) {
+            // Pick a member to be bass (prefer lowest octave)
+            const candidate = this.members.reduce((prev, curr) => {
+                const prevOct = (prev.geometry && prev.geometry.geometry) ? (prev.geometry.geometry.Octave || 4) : 4;
+                const currOct = (curr.geometry && curr.geometry.geometry) ? (curr.geometry.geometry.Octave || 4) : 4;
+                return (currOct < prevOct) ? curr : prev;
+            });
+            candidate.setRole('bass');
+            SafeLogger.message(`VirtualBand: Reassigned ${candidate.name} to Bass role.`);
+        }
+
+        if (!hasRhythm && this.members.length > 1) {
+             const candidate = this.members.find(m => m.role !== 'bass');
+             if (candidate) {
+                 candidate.setRole('rhythm');
+                 SafeLogger.message(`VirtualBand: Reassigned ${candidate.name} to Rhythm role.`);
+             }
+        }
     }
 
     async addMember(entity) {
@@ -256,8 +313,9 @@ export class ThemeGenerator {
     get geometry() { return this.music.geometry; }
 
     async loadAssets() {
-        this.tonalModes = await CodexLoader.getData('geometry', 'tonalModes.json') || [];
-        this.progressions = await CodexLoader.getData('geometry', 'progressions.json') || [];
+        const loader = this.music.codex || CodexLoader;
+        this.tonalModes = await loader.getData('geometry', 'tonalModes.json') || [];
+        this.progressions = await loader.getData('geometry', 'progressions.json') || [];
         await this._loadDrumPatterns();
         await this._loadHarmonicPatterns();
         await this._loadBassPatterns();
@@ -284,7 +342,8 @@ export class ThemeGenerator {
 
     async _loadDrumPatterns() {
         try {
-            const data = await CodexLoader.getData('music', 'drumpatterns.json');
+            const loader = this.music.codex || CodexLoader;
+            const data = await loader.getData('music', 'drumpatterns.json');
             if (!data) throw new Error("No data returned from CodexLoader");
             this.drumPatterns = {};
             for (const category in data) {
@@ -301,7 +360,8 @@ export class ThemeGenerator {
 
     async _loadHarmonicPatterns() {
         try {
-            const data = await CodexLoader.getData('music', 'harmonic_patterns.json');
+            const loader = this.music.codex || CodexLoader;
+            const data = await loader.getData('music', 'harmonic_patterns.json');
             if (!data) throw new Error("No data returned from CodexLoader");
             this.harmonicPatterns = data.patterns;
             SafeLogger.message("ThemeGenerator: Harmonic patterns loaded.");
@@ -312,7 +372,8 @@ export class ThemeGenerator {
 
     async _loadBassPatterns() {
         try {
-            const data = await CodexLoader.getData('music', 'basspatterns.json');
+            const loader = this.music.codex || CodexLoader;
+            const data = await loader.getData('music', 'basspatterns.json');
             if (!data) throw new Error("No data returned from CodexLoader");
             this.bassPatterns = data.patterns;
             SafeLogger.message("ThemeGenerator: Bass patterns loaded.");
@@ -424,7 +485,7 @@ export class ThemeGenerator {
         return { ...source, geometry: geo };
     }
 
-    async createMainTheme(activeComponents, gameEngine, forceRegeneration) {
+    async createMainTheme(activeComponents, gameEngine, forceRegeneration, tensionLevel = 2) {
         if (!this.synth) return null;
         SafeLogger.message("ThemeGenerator: Assembling Virtual Band for Main Theme...");
 
@@ -432,11 +493,14 @@ export class ThemeGenerator {
         await new Promise(r => setTimeout(r, 0));
 
         const band = new VirtualBand(this);
+        band.tensionLevel = tensionLevel;
         
         // Add components to band
         for (const comp of activeComponents) {
             await band.addMember(comp);
         }
+
+        band.balanceRoles();
         
         // Fallback if empty
         if (band.members.length === 0 && gameEngine) {
@@ -636,6 +700,19 @@ export class ThemeGenerator {
         });
 
         // Band Members
+        // Pre-count actual leads that will be assigned as lead/solo
+        let leadsCount = 0;
+        const tempContext = { bassAssigned: false, leadAssigned: false };
+        band.members.forEach(artist => {
+            let playStyle = artist.personality;
+            if (!tempContext.bassAssigned && (artist.role === 'bass' || artist.personality === 'groove')) {
+                playStyle = 'bass';
+                tempContext.bassAssigned = true;
+            } else if (artist.personality === 'lead' || artist.role === 'lead') {
+                leadsCount++;
+            }
+        });
+
         const bandContext = {
             bassAssigned: false,
             leadAssigned: false,
@@ -643,7 +720,11 @@ export class ThemeGenerator {
             beatTime: beatTime,
             rhythm: rhythm,
             progression: progression,
-            rng: rng
+            rng: rng,
+            tensionLevel: band.tensionLevel || 2,
+            activeLeads: leadsCount,
+            leadIndex: 0,
+            stepsPerBar: stepsPerBar
         };
 
         // Process members asynchronously to avoid frame drops
@@ -657,7 +738,16 @@ export class ThemeGenerator {
             const instrument = artist.instrumentId;
             const voiceId = `v_${artist.name.replace(/[^a-zA-Z0-9]/g, '_')}_${index}`;
             
+            // Check if this artist will be a lead/solo before calling _generateArtistPart
+            // to ensure we increment leadIndex ONLY if it actually plays lead/solo roles
+            const isLeadPotential = (artist.personality === 'lead' || artist.role === 'lead');
+            const willBeLead = isLeadPotential && (bandContext.bassAssigned || (artist.role !== 'bass' && artist.personality !== 'groove'));
+
             const events = this._generateArtistPart(artist, bandContext, voiceId);
+
+            if (willBeLead) {
+                bandContext.leadIndex++;
+            }
 
             if (events.length > 0) {
                 voices.push({
@@ -782,7 +872,7 @@ export class ThemeGenerator {
 
     _generateArtistPart(artist, context, voiceId) {
         const { personality } = artist;
-        const { rhythm, progression, baseFreq, beatTime, rng } = context;
+        const { rhythm, progression, baseFreq, beatTime, rng, tensionLevel, activeLeads, leadIndex } = context;
         let events = [];
 
         // NEW: Check for MIDI motif first
@@ -809,12 +899,22 @@ export class ThemeGenerator {
         }
 
         if (playStyle === 'bass') {
-            events = this._generateBassline(rhythm, artist.entity, progression, baseFreq / 4, beatTime, artist.geoNum);
+            events = this._generateBassline(rhythm, artist.entity, progression, baseFreq / 4, beatTime, artist.geoNum, tensionLevel);
         } else if (playStyle === 'lead' || playStyle === 'solo') {
-            const motif = this.getCharacterComposition(artist.entity);
+            const motif = this.getCharacterComposition(artist);
             if (motif) {
                 const isSolo = playStyle === 'solo';
-                events = this._motifToHarmonizedEvents(motif, voiceId, beatTime, progression, baseFreq, isSolo);
+                events = this._motifToHarmonizedEvents(motif, voiceId, beatTime, progression, baseFreq, isSolo, tensionLevel);
+
+                // Lead Trading Logic
+                if (activeLeads > 1) {
+                    const stepsPerBar = context.stepsPerBar || 16;
+                    events = events.filter(e => {
+                        const measure = Math.floor(e.step / stepsPerBar);
+                        // Every lead gets 2 bars
+                        return (Math.floor(measure / 2) % activeLeads) === leadIndex;
+                    });
+                }
             }
         } else if (artist.role === 'percussion' || artist.role === 'perc') {
             // Percussionist Logic: Generate a rhythmic pattern on a single instrument
@@ -835,7 +935,7 @@ export class ThemeGenerator {
                 }
             });
         } else if (playStyle === 'support') {
-            const h = this._generateHarmonics(rhythm, artist.entity, progression, baseFreq);
+            const h = this._generateHarmonics(rhythm, artist.entity, progression, baseFreq, tensionLevel);
             const isPad = artist.instrumentId.toLowerCase().includes('pad') || artist.instrumentId.toLowerCase().includes('string');
             events = isPad ? h.pad : h.guitar;
             events.forEach(e => e.voice = voiceId);
@@ -846,7 +946,7 @@ export class ThemeGenerator {
             events = this._generateArpeggio(rhythm, progression, baseFreq, beatTime, 'down');
             events.forEach(e => e.voice = voiceId);
         } else if (playStyle === 'groove') {
-            const h = this._generateHarmonics(rhythm, artist.entity, progression, baseFreq);
+            const h = this._generateHarmonics(rhythm, artist.entity, progression, baseFreq, tensionLevel);
             events = h.guitar;
             events.forEach(e => e.voice = voiceId);
         } else if (playStyle === 'syncopated') {
@@ -867,7 +967,7 @@ export class ThemeGenerator {
                 currentStepOffset += stepsInChord;
             });
         } else {
-             const h = this._generateHarmonics(rhythm, artist.entity, progression, baseFreq);
+             const h = this._generateHarmonics(rhythm, artist.entity, progression, baseFreq, tensionLevel);
              events = h.guitar;
              events.forEach(e => e.voice = voiceId);
         }
@@ -967,8 +1067,9 @@ export class ThemeGenerator {
         return events;
     }
 
-    _motifToHarmonizedEvents(motif, voiceId, beatTime, progression, globalBaseFreq, isSolo = false) {
+    _motifToHarmonizedEvents(motif, voiceId, beatTime, progression, globalBaseFreq, isSolo = false, tensionLevel = 2) {
         const events = [];
+        const rng = new MusicRNG(voiceId + tensionLevel);
         let currentStep = 0;
         const totalProgressionSteps = progression.reduce((sum, chord) => sum + chord.durationSteps, 0);
         const chordMap = [];
@@ -993,7 +1094,7 @@ export class ThemeGenerator {
                 // We assume a diatonic scale relative to the chord root
                 const rawInterval = activeChord.rootOffset + note.interval;
                 const octave = Math.floor(rawInterval / 12);
-                const pitchClass = rawInterval % 12;
+                const pitchClass = ((rawInterval % 12) + 12) % 12;
                 
                 // Simple Major Scale intervals for quantization: 0, 2, 4, 5, 7, 9, 11
                 const scale = [0, 2, 4, 5, 7, 9, 11]; 
@@ -1002,6 +1103,27 @@ export class ThemeGenerator {
                 const harmonizedPitch = (octave * 12) + nearest;
                 const freq = currentRootFreq * Math.pow(2, harmonizedPitch / 12);
                 const durationSteps = Math.ceil(note.duration * 4);
+
+                // Tension-based filtering: lower tension means sparser notes
+                const roll = rng.next();
+                const densityThreshold = 0.3 + (tensionLevel / 11) * 0.7;
+                if (roll > densityThreshold && !isSolo) {
+                    // Sparse accents instead of full motif
+                    if (rng.next() > 0.8) {
+                        // Play a high accent hit (9th or 7th)
+                        const accentInterval = rng.pick([10, 14]); // 7th or 9th
+                        const accentFreq = currentRootFreq * Math.pow(2, (accentInterval + 12) / 12);
+                        events.push({
+                            voice: voiceId,
+                            step: currentStep,
+                            freq: accentFreq,
+                            duration: 0.1,
+                            velocity: 0.5
+                        });
+                    }
+                    currentStep += durationSteps;
+                    continue;
+                }
 
                 events.push({
                     voice: voiceId,
@@ -1190,14 +1312,43 @@ export class ThemeGenerator {
             progChords = selectedItem.data ? selectedItem.data.Progression : selectedItem;
         }
 
+        let lastNotes = null;
         return progChords.map(name => {
             const chordDef = romanChords.find(c => c.Name === name) || romanChords[0];
-            return { name: chordDef.Name, rootOffset: chordDef.Notes[0], intervals: chordDef.Notes, durationSteps: stepsPerBar, keyFreq: baseFreq };
+            let notes = [...chordDef.Notes];
+
+            if (lastNotes) {
+                notes = this._getSmoothInversion(notes, lastNotes);
+            }
+            lastNotes = notes;
+
+            return { name: chordDef.Name, rootOffset: notes[0], intervals: notes, durationSteps: stepsPerBar, keyFreq: baseFreq };
         });
     }
 
-    _generateBassline(rhythm, ship, progression, keyRootFreq, beatTime, styleOverride = null) {
+    _getSmoothInversion(currentNotes, lastNotes) {
+        const lastAvg = lastNotes.reduce((a, b) => a + b, 0) / lastNotes.length;
+
+        return currentNotes.map(note => {
+            let bestNote = note;
+            let minDiff = Math.abs(note - lastAvg);
+
+            // Check octaves up and down to find the closest version of this note
+            [-12, 12, -24, 24].forEach(offset => {
+                const shifted = note + offset;
+                const diff = Math.abs(shifted - lastAvg);
+                if (diff < minDiff) {
+                    minDiff = diff;
+                    bestNote = shifted;
+                }
+            });
+            return bestNote;
+        });
+    }
+
+    _generateBassline(rhythm, ship, progression, keyRootFreq, beatTime, styleOverride = null, tensionLevel = 2) {
         const events = [];
+        const densityMultiplier = 0.5 + (tensionLevel / 11) * 1.0;
         if (!this.bassPatterns || Object.keys(this.bassPatterns).length === 0) {
             let currentStepOffset = 0;
             progression.forEach(chord => {
@@ -1237,7 +1388,7 @@ export class ThemeGenerator {
                     events.push({ voice: 'v_bass', step: currentStepOffset + step, freq: getFreq(0), duration: 0.2, velocity: 0.9 });
                 });
                 for (let i = 0; i < stepsInChord; i++) {
-                    if (!kickSteps.includes(i) && rng.next() < 0.3) {
+                    if (!kickSteps.includes(i) && rng.next() < 0.3 * densityMultiplier) {
                         const interval = rng.pick(intervals);
                         const octave = rng.next() > 0.7 ? 1 : 0;
                         events.push({ voice: 'v_bass', step: currentStepOffset + i, freq: getFreq(interval + (octave * 12)), duration: 0.1, velocity: 0.6 });
@@ -1265,7 +1416,7 @@ export class ThemeGenerator {
                 }
             } else {
                 for (let i = 0; i < stepsInChord; i += 2) {
-                    if (rng.next() < pattern.density) {
+                    if (rng.next() < (pattern.density || 0.5) * densityMultiplier) {
                         const interval = rng.pick(intervals);
                         events.push({ voice: 'v_bass', step: currentStepOffset + i, freq: getFreq(interval), duration: 0.2, velocity: 0.8 + velocityBoost });
                     }
@@ -1279,9 +1430,11 @@ export class ThemeGenerator {
         return events;
     }
 
-    _generateHarmonics(rhythm, ship, progression, keyRootFreq) {
+    _generateHarmonics(rhythm, ship, progression, keyRootFreq, tensionLevel = 2) {
         const guitarEvents = [];
         const padEvents = [];
+        const rng = new MusicRNG((ship ? ship.name : 'harmonics') + tensionLevel);
+        const densityMultiplier = 0.5 + (tensionLevel / 11) * 1.0;
         if (!this.harmonicPatterns) return { guitar: [], pad: [] };
         const patternKey = Object.keys(this.harmonicPatterns).find(k => this.harmonicPatterns[k].style === rhythm.style) || 'Electronic';
         const pattern = this.harmonicPatterns[patternKey];
@@ -1295,6 +1448,7 @@ export class ThemeGenerator {
             if (pattern.guitar) {
                 pattern.guitar.steps.forEach(step => {
                     if (step >= stepsInChord) return;
+                    if (rng.next() > densityMultiplier) return; // Tension-based density
                     const noteFreq = chordFreqs[step % chordFreqs.length];
                     guitarEvents.push({ voice: 'v_guitar', step: currentStepOffset + step, freq: noteFreq, duration: pattern.guitar.duration, velocity: pattern.guitar.velocity + velocityBoost });
                 });
@@ -1365,9 +1519,13 @@ export class ThemeGenerator {
         return distribution;
     }
 
-    _generateMarkovTransitions(scaleIntervals, harmonicStepDistribution = {}) {
+    _generateMarkovTransitions(scaleIntervals, harmonicStepDistribution = {}, artist = null) {
         const matrix = [];
         const preferredIntervals = new Map();
+
+        const isSingable = artist && (artist.instrumentId?.toLowerCase().includes('voice') ||
+                          artist.instrumentId?.toLowerCase().includes('acoustic') ||
+                          artist.personality === 'lead');
         for (const interval in harmonicStepDistribution) {
             const i = parseInt(interval, 10);
             const count = harmonicStepDistribution[interval];
@@ -1383,6 +1541,13 @@ export class ThemeGenerator {
                 const toInterval = scaleIntervals[j];
                 const melodicInterval = (toInterval - fromInterval + 12) % 12;
                 let weight = 1.0;
+
+                if (isSingable) {
+                    // Favor small intervals for singable melodies
+                    if (melodicInterval <= 2 || melodicInterval >= 10) weight += 3.0;
+                    else if (melodicInterval > 4 && melodicInterval < 8) weight *= 0.2; // Penalize tritone/large jumps
+                }
+
                 if (melodicInterval === 0) weight += 1.5;
                 else if (melodicInterval === 1 || melodicInterval === 2 || melodicInterval === 10 || melodicInterval === 11) weight += 2.0;
                 if (preferredIntervals.has(melodicInterval)) weight += 4.0 * preferredIntervals.get(melodicInterval);
@@ -1428,7 +1593,7 @@ export class ThemeGenerator {
             harmonicIntervals.sort((a, b) => a - b);
             harmonicStepDistribution = this._getMelodicIntervalDistribution(harmonicIntervals);
         }
-        const transitionMatrix = this._generateMarkovTransitions(allowedScaleIntervals, harmonicStepDistribution);
+        const transitionMatrix = this._generateMarkovTransitions(allowedScaleIntervals, harmonicStepDistribution, character);
         const length = rng.range(8, 16);
         const sequence = [];
         const noteDurations = [0.25, 0.5, 1.0];

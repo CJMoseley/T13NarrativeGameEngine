@@ -1,6 +1,7 @@
 import { LoreData } from '../lore/LoreData.js';
 import ProcGen from '../ProcGen.js';
 import Logger from '../../core/Logger.js';
+import PRNG from '/src/t13ne/modules/systems/t13ne-prng.js';
 
 /**
  * Handles procedural music generation based on galactic coordinates and game state.
@@ -77,8 +78,13 @@ export class MusicGenerator {
         if (!progressions || progressions.length === 0) {
             return [song.scaleData.triads[0]]; // Default to the tonic if no progressions exist
         }
-        // Pick a random common progression for this scale
-        const progression = progressions[Math.floor(Math.random() * progressions.length)];
+
+        // Use a deterministic seed based on song key and scale
+        const seedStr = (song.key || 'C') + (song.scaleName || 'Major');
+        const rng = PRNG.create32(seedStr);
+
+        // Pick a deterministic common progression for this scale
+        const progression = progressions[rng.nextInt(0, progressions.length - 1)];
         
         // For now, we'll just return a simple verse-chorus-verse structure
         const verse = progression;

@@ -4,6 +4,7 @@ import CodexLoader from "/src/t13ne/modules/codex/CodexLoader.js";
 import { InstrumentEngine } from "/src/t13ne/modules/audio/t13ne-InstrumentEngine.js";
 import { AudioAnalyzer } from "/src/t13ne/modules/audio/t13ne-audio-analyzer.js";
 import { ThemeGenerator } from "/src/t13ne/modules/audio/core/ThemeGenerator.js";
+import { MusicRNG } from "/src/t13ne/modules/audio/core/MusicUtils.js";
 import { AudioManifestManager } from "/src/t13ne/modules/audio/core/AudioManifestManager.js";
 import { T13Synth } from "/src/t13ne/modules/audio/core/T13Synth.js";
 
@@ -238,6 +239,9 @@ class T13NE_Music {
     async createMainTheme(gameEngine) {
         if (!this.synth) return;
 
+        const tensionModule = this.t13ne ? this.t13ne.getModule('Tension') : null;
+        const currentTension = tensionModule ? tensionModule.getTensionLevel() : (this.lastTension >= 0 ? this.lastTension : 2);
+
         // Generate a unique hash for the current components to enable caching
         const componentHash = this.activeComponents
             .map(c => c.name || c.id || 'unknown')
@@ -278,6 +282,7 @@ class T13NE_Music {
 
             trackData = await this.callWorker('generateMainTheme', {
                 activeComponents: sanitizedComponents,
+                tensionLevel: currentTension,
                 forceRegeneration: this.needsRegeneration
             });
 
@@ -290,7 +295,7 @@ class T13NE_Music {
                 }
             }
         } else {
-            trackData = await this.themeGenerator.createMainTheme(this.activeComponents, gameEngine, this.needsRegeneration);
+            trackData = await this.themeGenerator.createMainTheme(this.activeComponents, gameEngine, this.needsRegeneration, currentTension);
         }
 
         if (!trackData) return;
@@ -393,9 +398,11 @@ class T13NE_Music {
         let timeCursor = now;
         const beatTime = 60 / motif.tempo;
 
+        const rng = this.themeGenerator.music.rng || new MusicRNG(character.name + listener?.name);
+
         motif.sequence.forEach(note => {
             const duration = note.duration * beatTime;
-            const detune = (Math.random() - 0.5) * dissonance;
+            const detune = (rng.next() - 0.5) * dissonance;
             const type = dissonance > 10 ? 'sawtooth' : 'triangle';
             this.synth.playNote(note.freq, timeCursor, duration, type, detune, preferredInstrument);
             timeCursor += duration;
@@ -736,7 +743,7 @@ class T13NE_Music {
             this.worker.onmessage = (e) => this.handleWorkerMessage(e.data);
 
             if (!this._pendingRequests) this._pendingRequests = new Map();
-            const requestId = 'init_' + Math.random().toString(36).substring(7);
+            const requestId = 'init_' + Date.now().toString(36) + Math.floor(performance.now() * 1000).toString(36);
 
             this._pendingRequests.set(requestId, {
                 resolve: () => Logger.message("T13NE_Music: Worker initialized."),
@@ -799,7 +806,7 @@ class T13NE_Music {
         if (!this.worker) return null;
 
         if (!this._pendingRequests) this._pendingRequests = new Map();
-        const requestId = Math.random().toString(36).substring(7);
+        const requestId = Date.now().toString(36) + Math.floor(performance.now() * 1000).toString(36);
 
         return new Promise((resolve, reject) => {
             this._pendingRequests.set(requestId, { resolve, reject });

@@ -1,4 +1,5 @@
 import Logger from "../../core/Logger.js";
+import PRNG from '/src/t13ne/modules/systems/t13ne-prng.js';
 
 /**
  * T13NE Audio Effects System
@@ -65,12 +66,16 @@ export class T13Effects {
         const impulseL = impulse.getChannelData(0);
         const impulseR = impulse.getChannelData(1);
 
+        // Seeded impulse generation for deterministic reverb
+        const rngL = PRNG.create32(0x12345);
+        const rngR = PRNG.create32(0x6789A);
+
         for (let i = 0; i < length; i++) {
             const n = reverse ? length - i : i;
             const envelope = Math.pow(1 - n / length, decay);
             // White noise modulated by an exponential decay envelope
-            impulseL[i] = (Math.random() * 2 - 1) * envelope;
-            impulseR[i] = (Math.random() * 2 - 1) * envelope;
+            impulseL[i] = (rngL.nextDouble() * 2 - 1) * envelope;
+            impulseR[i] = (rngR.nextDouble() * 2 - 1) * envelope;
         }
         return impulse;
     }
