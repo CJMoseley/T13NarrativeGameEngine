@@ -700,6 +700,19 @@ export class ThemeGenerator {
         });
 
         // Band Members
+        // Pre-count actual leads that will be assigned as lead/solo
+        let leadsCount = 0;
+        const tempContext = { bassAssigned: false, leadAssigned: false };
+        band.members.forEach(artist => {
+            let playStyle = artist.personality;
+            if (!tempContext.bassAssigned && (artist.role === 'bass' || artist.personality === 'groove')) {
+                playStyle = 'bass';
+                tempContext.bassAssigned = true;
+            } else if (artist.personality === 'lead' || artist.role === 'lead') {
+                leadsCount++;
+            }
+        });
+
         const bandContext = {
             bassAssigned: false,
             leadAssigned: false,
@@ -709,7 +722,7 @@ export class ThemeGenerator {
             progression: progression,
             rng: rng,
             tensionLevel: band.tensionLevel || 2,
-            activeLeads: band.members.filter(m => m.personality === 'lead' || m.personality === 'solo' || m.role === 'lead').length,
+            activeLeads: leadsCount,
             leadIndex: 0,
             stepsPerBar: stepsPerBar
         };
@@ -725,10 +738,14 @@ export class ThemeGenerator {
             const instrument = artist.instrumentId;
             const voiceId = `v_${artist.name.replace(/[^a-zA-Z0-9]/g, '_')}_${index}`;
             
+            // Check if this artist will be a lead/solo before calling _generateArtistPart
+            // to ensure we increment leadIndex ONLY if it actually plays lead/solo roles
+            const isLeadPotential = (artist.personality === 'lead' || artist.role === 'lead');
+            const willBeLead = isLeadPotential && (bandContext.bassAssigned || (artist.role !== 'bass' && artist.personality !== 'groove'));
+
             const events = this._generateArtistPart(artist, bandContext, voiceId);
 
-            // Lead Trading Logic: increment leadIndex for subsequent leads
-            if (artist.personality === 'lead' || artist.personality === 'solo' || artist.role === 'lead') {
+            if (willBeLead) {
                 bandContext.leadIndex++;
             }
 

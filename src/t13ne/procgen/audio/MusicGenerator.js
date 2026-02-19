@@ -77,8 +77,24 @@ export class MusicGenerator {
         if (!progressions || progressions.length === 0) {
             return [song.scaleData.triads[0]]; // Default to the tonic if no progressions exist
         }
-        // Pick a random common progression for this scale
-        const progression = progressions[Math.floor(Math.random() * progressions.length)];
+
+        // Use a deterministic seed based on song key and scale
+        let seed = 0;
+        const seedStr = (song.key || 'C') + (song.scaleName || 'Major');
+        for (let i = 0; i < seedStr.length; i++) {
+            seed = ((seed << 5) - seed) + seedStr.charCodeAt(i);
+            seed |= 0;
+        }
+
+        const pseudoRand = () => {
+            let t = seed += 0x6D2B79F5;
+            t = Math.imul(t ^ (t >>> 15), t | 1);
+            t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+            return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+        };
+
+        // Pick a deterministic common progression for this scale
+        const progression = progressions[Math.floor(pseudoRand() * progressions.length)];
         
         // For now, we'll just return a simple verse-chorus-verse structure
         const verse = progression;
