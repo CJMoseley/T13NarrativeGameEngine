@@ -1,6 +1,7 @@
 import Logger from "/src/t13ne/core/Logger.js";
 import { WavetableBaker } from "/src/t13ne/modules/audio/t13ne-wavetable-baker.js";
 import { T13Effects } from "/src/t13ne/modules/audio/t13ne-effects.js";
+import PRNG from '/src/t13ne/modules/systems/t13ne-prng.js';
 
 /**
  * Handles Complex Additive Synthesis.
@@ -344,14 +345,9 @@ export class InstrumentEngine {
         const data = this.noiseBuffer.getChannelData(0);
 
         // Seeded noise generation for determinism
-        let seed = 0x1337BEEF;
-        const nextNoise = () => {
-            seed = (seed * 1103515245 + 12345) & 0x7fffffff;
-            return (seed / 0x7fffffff) * 2 - 1;
-        };
-
+        const noiseRNG = PRNG.create32(0x1337BEEF);
         for (let i = 0; i < bufferSize; i++) {
-            data[i] = nextNoise();
+            data[i] = noiseRNG.nextDouble() * 2 - 1;
         }
     }
 

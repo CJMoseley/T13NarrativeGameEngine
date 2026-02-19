@@ -4,6 +4,7 @@ import CodexLoader from "/src/t13ne/modules/codex/CodexLoader.js";
 import { InstrumentEngine } from "/src/t13ne/modules/audio/t13ne-InstrumentEngine.js";
 import { AudioAnalyzer } from "/src/t13ne/modules/audio/t13ne-audio-analyzer.js";
 import { ThemeGenerator } from "/src/t13ne/modules/audio/core/ThemeGenerator.js";
+import { MusicRNG } from "/src/t13ne/modules/audio/core/MusicUtils.js";
 import { AudioManifestManager } from "/src/t13ne/modules/audio/core/AudioManifestManager.js";
 import { T13Synth } from "/src/t13ne/modules/audio/core/T13Synth.js";
 

@@ -901,7 +901,7 @@ export class ThemeGenerator {
         if (playStyle === 'bass') {
             events = this._generateBassline(rhythm, artist.entity, progression, baseFreq / 4, beatTime, artist.geoNum, tensionLevel);
         } else if (playStyle === 'lead' || playStyle === 'solo') {
-            const motif = this.getCharacterComposition(artist.entity);
+            const motif = this.getCharacterComposition(artist);
             if (motif) {
                 const isSolo = playStyle === 'solo';
                 events = this._motifToHarmonizedEvents(motif, voiceId, beatTime, progression, baseFreq, isSolo, tensionLevel);
