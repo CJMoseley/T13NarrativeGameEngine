@@ -33,6 +33,7 @@ export class LocalSpaceScene extends Scene {
         this.introActive = true;
         this.introPhase = 0;
         this.introTime = 0;
+        this.introStartTime = performance.now();
         this.homeWorldObj = null;
         this.flybySequenceActive = false;
         this.flybyObj = null;
@@ -830,6 +831,9 @@ export class LocalSpaceScene extends Scene {
 
     async playIntroSequence() {
         if (!this.introActive) return;
+
+        this.introStartTime = performance.now();
+        this.introTime = 0;
 
         const totalDuration = this.flybyObj ? 22.0 : 15.0;
 

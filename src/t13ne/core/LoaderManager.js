@@ -168,7 +168,7 @@ class LoaderManager {
 
                         // 3.5 Planetary Orbit
                         this.viewManager.cueScene('PlanetaryOrbitScene', {
-                            planet: this.gameEngine.currentPlanets[0], // First planet as home
+                            planet: this.gameEngine.currentPlanets ? this.gameEngine.currentPlanets[0] : null,
                             system: this.gameEngine.currentSystemDetails,
                             sunDirection: new THREE.Vector3(1, 0.5, 1).normalize() // Fallback
                         }, {
