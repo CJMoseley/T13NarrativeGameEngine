@@ -727,6 +727,11 @@ export class ThemeGenerator {
             
             const events = this._generateArtistPart(artist, bandContext, voiceId);
 
+            // Lead Trading Logic: increment leadIndex for subsequent leads
+            if (artist.personality === 'lead' || artist.personality === 'solo' || artist.role === 'lead') {
+                bandContext.leadIndex++;
+            }
+
             if (events.length > 0) {
                 voices.push({
                     id: voiceId,
