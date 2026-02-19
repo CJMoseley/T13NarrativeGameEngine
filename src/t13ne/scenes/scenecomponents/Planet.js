@@ -45,9 +45,10 @@ export class Planet extends THREE.Group {
             const atmoGeo = new THREE.SphereGeometry(this.radius * 1.025, 64, 64);
             // Determine atmosphere color based on type
             let atmoColor = 0x88ccff; // Default Blue
-            if (this.data.type.includes('Gas')) atmoColor = 0xffcc88;
-            if (this.data.type.includes('Volcanic')) atmoColor = 0xffaa88;
-            if (this.data.type.includes('Ice')) atmoColor = 0xaaccff;
+            const type = this.data.type || '';
+            if (type.includes('Gas')) atmoColor = 0xffcc88;
+            if (type.includes('Volcanic')) atmoColor = 0xffaa88;
+            if (type.includes('Ice')) atmoColor = 0xaaccff;
             
             const atmoMat = new THREE.MeshBasicMaterial({
                 color: atmoColor,

@@ -124,11 +124,16 @@ class LoaderManager {
                                     music.updateTrack(theme);
                                 }
 
-                                // Update the next scene in the queue with the generated data
-                                const nextSceneItem = this.viewManager.sceneQueue.find(i => i.name === 'LocalSpaceScene');
-                                if (nextSceneItem) {
-                                    nextSceneItem.data.systemDetails = this.gameEngine.currentSystemDetails;
-                                    nextSceneItem.data.planets = this.gameEngine.currentPlanets;
+                                // Update the next scenes in the queue with the generated data
+                                const localSpaceItem = this.viewManager.sceneQueue.find(i => i.name === 'LocalSpaceScene');
+                                if (localSpaceItem) {
+                                    localSpaceItem.data.systemDetails = this.gameEngine.currentSystemDetails;
+                                    localSpaceItem.data.planets = this.gameEngine.currentPlanets;
+                                }
+                                const orbitItem = this.viewManager.sceneQueue.find(i => i.name === 'PlanetaryOrbitScene');
+                                if (orbitItem) {
+                                    orbitItem.data.system = this.gameEngine.currentSystemDetails;
+                                    orbitItem.data.planet = this.gameEngine.currentPlanets ? this.gameEngine.currentPlanets[0] : null;
                                 }
                             })();
 
@@ -144,9 +149,7 @@ class LoaderManager {
                     });
 
                     // 3. System View
-                    // We need to prepare the data for the system view first
                     if (this.gameEngine.playerStartSystem) {
-                        // Data already generated in 'Generate System' task
                         this.viewManager.cueScene('LocalSpaceScene', {
                             systemDetails: this.gameEngine.currentSystemDetails,
                             planets: this.gameEngine.currentPlanets,
@@ -154,8 +157,23 @@ class LoaderManager {
                             galaxy: this.gameEngine.galaxy,
                             playIntro: true
                         }, {
-                            duration: 20000, // Increased duration to allow full flyby sequence (18s)
+                            duration: 0, // Wait for onActive to finish
                             transition: { type: 'crossDissolve', duration: 2000 },
+                            onActive: async (scene) => {
+                                if (typeof scene.playIntroSequence === 'function') {
+                                    await scene.playIntroSequence();
+                                }
+                            }
+                        });
+
+                        // 3.5 Planetary Orbit
+                        this.viewManager.cueScene('PlanetaryOrbitScene', {
+                            planet: this.gameEngine.currentPlanets[0], // First planet as home
+                            system: this.gameEngine.currentSystemDetails,
+                            sunDirection: new THREE.Vector3(1, 0.5, 1).normalize() // Fallback
+                        }, {
+                            duration: 10000,
+                            transition: { type: 'fade', duration: 1500 },
                             onActive: async (scene) => {
                                 // 2. Generate Ship (for the next view)
                                 const shipGenPromise = (async () => {
@@ -167,11 +185,6 @@ class LoaderManager {
                                         music.updateTrack(theme);
                                     }
                                 })();
-
-                                if (typeof scene.playIntroSequence === 'function') {
-                                    await scene.playIntroSequence();
-                                }
-                                
                                 await shipGenPromise;
                             }
                         });
