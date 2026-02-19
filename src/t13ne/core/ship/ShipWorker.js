@@ -33,15 +33,15 @@ self.onmessage = async (e) => {
                 const posAttr = geometry.getAttribute ? geometry.getAttribute('position') : (geometry.attributes ? geometry.attributes.position : null);
                 const normAttr = geometry.getAttribute ? geometry.getAttribute('normal') : (geometry.attributes ? geometry.attributes.normal : null);
 
-                const positions = posAttr ? posAttr.array : null;
-                const normals = normAttr ? normAttr.array : null;
+                const positions = (posAttr && posAttr.array) ? posAttr.array : null;
+                const normals = (normAttr && normAttr.array) ? normAttr.array : null;
 
                 if (!positions || !normals) {
                     throw new Error("SDF generated geometry with missing attributes");
                 }
 
                 const colorsAttr = geometry.getAttribute ? geometry.getAttribute('color') : (geometry.attributes ? geometry.attributes.color : null);
-                const colors = colorsAttr ? colorsAttr.array : null;
+                const colors = (colorsAttr && colorsAttr.array) ? colorsAttr.array : null;
 
                 self.postMessage({
                     type: 'hullGenerated',
@@ -90,17 +90,18 @@ self.onmessage = async (e) => {
                 const posAttr = geometry.getAttribute ? geometry.getAttribute('position') : (geometry.attributes ? geometry.attributes.position : null);
                 const normAttr = geometry.getAttribute ? geometry.getAttribute('normal') : (geometry.attributes ? geometry.attributes.normal : null);
 
-                if (!normAttr) {
+                if (!normAttr || !normAttr.array) {
                     geometry.computeVertexNormals();
                 }
 
-                const positions = posAttr ? posAttr.array : null;
+                const positions = (posAttr && posAttr.array) ? posAttr.array : null;
                 if (!positions) {
                     throw new Error("CSG generated geometry with no position attribute");
                 }
 
-                const normals = normAttr ? normAttr.array : new Float32Array(positions.length);
-                const indices = geometry.index ? geometry.index.array : null;
+                const updatedNormAttr = geometry.getAttribute ? geometry.getAttribute('normal') : (geometry.attributes ? geometry.attributes.normal : null);
+                const normals = (updatedNormAttr && updatedNormAttr.array) ? updatedNormAttr.array : new Float32Array(positions.length);
+                const indices = (geometry.index && geometry.index.array) ? geometry.index.array : null;
 
                 self.postMessage({
                     type: 'hullGenerated',

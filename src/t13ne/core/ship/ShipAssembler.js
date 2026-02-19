@@ -92,9 +92,9 @@ export class ShipAssembler {
         hullMaterial.uniforms.color1.value.setHex(livery.color1 !== undefined ? livery.color1 : Math.floor(prng() * 0xffffff));
 
         let hullMesh = null;
-        if (hullGeometry && hullGeometry.attributes && hullGeometry.attributes.position && hullGeometry.attributes.position.count > 0) {
+        if (hullGeometry && hullGeometry.attributes && hullGeometry.attributes.position && (hullGeometry.attributes.position.array || hullGeometry.attributes.position.count > 0)) {
             // FIX: Ensure geometry has color attribute for shaders that expect vertexColors
-            if (!hullGeometry.attributes.color) {
+            if (!hullGeometry.attributes.color || !hullGeometry.attributes.color.array) {
                 const count = hullGeometry.attributes.position.count;
                 const colors = new Float32Array(count * 3);
                 const posAttr = hullGeometry.attributes.position;
@@ -260,7 +260,7 @@ export class ShipAssembler {
                 if (usage && usage.includes('carve')) continue;
                 
                 // FIX: Ensure geometry has color attribute for shaders that expect vertexColors
-                if (mesh.geometry.attributes && !mesh.geometry.attributes.color && mesh.geometry.attributes.position) {
+                if (mesh.geometry.attributes && (!mesh.geometry.attributes.color || !mesh.geometry.attributes.color.array) && mesh.geometry.attributes.position) {
                     const count = mesh.geometry.attributes.position.count;
                     const colors = new Float32Array(count * 3);
                     for (let i = 0; i < count * 3; i++) colors[i] = 1.0; // Default to White
@@ -526,9 +526,9 @@ export class ShipAssembler {
             }
         }
 
-        if (hullGeometry && hullGeometry.attributes && hullGeometry.attributes.position && hullGeometry.attributes.position.count > 0) {
+        if (hullGeometry && hullGeometry.attributes && hullGeometry.attributes.position && (hullGeometry.attributes.position.array || hullGeometry.attributes.position.count > 0)) {
             // FIX: Ensure geometry has color attribute for shaders that expect vertexColors
-            if (!hullGeometry.attributes.color) {
+            if (!hullGeometry.attributes.color || !hullGeometry.attributes.color.array) {
                 const count = hullGeometry.attributes.position.count;
                 const colors = new Float32Array(count * 3);
                 const posAttr = hullGeometry.attributes.position;
