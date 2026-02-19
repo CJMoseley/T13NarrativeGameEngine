@@ -418,7 +418,7 @@ export class ShipAssembler {
                         const geo = mesh.geometry;
                         if (!geo) continue;
 
-                        const posAttr = geo.getAttribute ? geo.getAttribute('position') : (geo.attributes ? geo.attributes.position : null);
+                        const posAttr = geo.getAttribute ? geo.getAttribute('position') : (geo.attributes && geo.attributes.position ? geo.attributes.position : null);
 
                         if (!posAttr || !posAttr.array) {
                             console.warn(`ShipAssembler: Component ${usage} (${type}) has no position array!`);

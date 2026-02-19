@@ -30,8 +30,8 @@ self.onmessage = async (e) => {
             const geometry = await hullGenerator.generateSDFHullAsync(reconstructedComponents, styleConfig.blendStrength, styleConfig.padding);
 
             if (geometry) {
-                const posAttr = geometry.getAttribute ? geometry.getAttribute('position') : (geometry.attributes ? geometry.attributes.position : null);
-                const normAttr = geometry.getAttribute ? geometry.getAttribute('normal') : (geometry.attributes ? geometry.attributes.normal : null);
+                const posAttr = geometry.getAttribute ? geometry.getAttribute('position') : (geometry.attributes && geometry.attributes.position ? geometry.attributes.position : null);
+                const normAttr = geometry.getAttribute ? geometry.getAttribute('normal') : (geometry.attributes && geometry.attributes.normal ? geometry.attributes.normal : null);
 
                 const positions = (posAttr && posAttr.array) ? posAttr.array : null;
                 const normals = (normAttr && normAttr.array) ? normAttr.array : null;
@@ -70,6 +70,10 @@ self.onmessage = async (e) => {
             let baseCSG = null;
 
             for (const comp of components) {
+                if (!comp || !comp.geometry || !comp.geometry.positions) {
+                    console.warn("ShipWorker: Skipping malformed component in generateCSGHull", comp);
+                    continue;
+                }
                 const geo = new THREE.BufferGeometry();
                 geo.setAttribute('position', new THREE.BufferAttribute(comp.geometry.positions, 3));
                 if (comp.geometry.indices) geo.setIndex(new THREE.BufferAttribute(comp.geometry.indices, 1));
@@ -92,20 +96,24 @@ self.onmessage = async (e) => {
                 const hullMesh = CSG.toMesh(baseCSG, new THREE.Matrix4());
                 const geometry = hullMesh.geometry;
 
-                const posAttr = geometry.getAttribute ? geometry.getAttribute('position') : (geometry.attributes ? geometry.attributes.position : null);
+                const posAttr = geometry.getAttribute ? geometry.getAttribute('position') : (geometry.attributes && geometry.attributes.position ? geometry.attributes.position : null);
 
                 // CRITICAL: Ensure positions exist BEFORE computing normals
                 if (posAttr && posAttr.array) {
-                    const normAttr = geometry.getAttribute ? geometry.getAttribute('normal') : (geometry.attributes ? geometry.attributes.normal : null);
+                    const normAttr = geometry.getAttribute ? geometry.getAttribute('normal') : (geometry.attributes && geometry.attributes.normal ? geometry.attributes.normal : null);
                     if (!normAttr || !normAttr.array) {
-                        geometry.computeVertexNormals();
+                        try {
+                            geometry.computeVertexNormals();
+                        } catch (e) {
+                            console.warn("ShipWorker: computeVertexNormals failed", e);
+                        }
                     }
                 } else {
                     throw new Error("CSG generated geometry with no position attribute or array");
                 }
 
                 const positions = posAttr.array;
-                const updatedNormAttr = geometry.getAttribute ? geometry.getAttribute('normal') : (geometry.attributes ? geometry.attributes.normal : null);
+                const updatedNormAttr = geometry.getAttribute ? geometry.getAttribute('normal') : (geometry.attributes && geometry.attributes.normal ? geometry.attributes.normal : null);
                 const normals = (updatedNormAttr && updatedNormAttr.array) ? updatedNormAttr.array : new Float32Array(positions.length);
                 const indices = (geometry.index && geometry.index.array) ? geometry.index.array : null;
 
