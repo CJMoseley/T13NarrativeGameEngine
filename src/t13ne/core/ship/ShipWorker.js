@@ -43,6 +43,11 @@ self.onmessage = async (e) => {
                 const colorsAttr = geometry.getAttribute ? geometry.getAttribute('color') : (geometry.attributes ? geometry.attributes.color : null);
                 const colors = (colorsAttr && colorsAttr.array) ? colorsAttr.array : null;
 
+                const transferable = [];
+                if (positions && positions.buffer) transferable.push(positions.buffer);
+                if (normals && normals.buffer) transferable.push(normals.buffer);
+                if (colors && colors.buffer) transferable.push(colors.buffer);
+
                 self.postMessage({
                     type: 'hullGenerated',
                     geometryData: {
@@ -51,7 +56,7 @@ self.onmessage = async (e) => {
                         colors
                     },
                     requestId
-                }, [positions.buffer, normals.buffer, ...(colors ? [colors.buffer] : [])]);
+                }, transferable);
             } else {
                 self.postMessage({ type: 'hullGenerated', geometryData: null, requestId });
             }
@@ -88,20 +93,26 @@ self.onmessage = async (e) => {
                 const geometry = hullMesh.geometry;
 
                 const posAttr = geometry.getAttribute ? geometry.getAttribute('position') : (geometry.attributes ? geometry.attributes.position : null);
-                const normAttr = geometry.getAttribute ? geometry.getAttribute('normal') : (geometry.attributes ? geometry.attributes.normal : null);
 
-                if (!normAttr || !normAttr.array) {
-                    geometry.computeVertexNormals();
+                // CRITICAL: Ensure positions exist BEFORE computing normals
+                if (posAttr && posAttr.array) {
+                    const normAttr = geometry.getAttribute ? geometry.getAttribute('normal') : (geometry.attributes ? geometry.attributes.normal : null);
+                    if (!normAttr || !normAttr.array) {
+                        geometry.computeVertexNormals();
+                    }
+                } else {
+                    throw new Error("CSG generated geometry with no position attribute or array");
                 }
 
-                const positions = (posAttr && posAttr.array) ? posAttr.array : null;
-                if (!positions) {
-                    throw new Error("CSG generated geometry with no position attribute");
-                }
-
+                const positions = posAttr.array;
                 const updatedNormAttr = geometry.getAttribute ? geometry.getAttribute('normal') : (geometry.attributes ? geometry.attributes.normal : null);
                 const normals = (updatedNormAttr && updatedNormAttr.array) ? updatedNormAttr.array : new Float32Array(positions.length);
                 const indices = (geometry.index && geometry.index.array) ? geometry.index.array : null;
+
+                const transferable = [];
+                if (positions && positions.buffer) transferable.push(positions.buffer);
+                if (normals && normals.buffer) transferable.push(normals.buffer);
+                if (indices && indices.buffer) transferable.push(indices.buffer);
 
                 self.postMessage({
                     type: 'hullGenerated',
@@ -111,7 +122,7 @@ self.onmessage = async (e) => {
                         indices
                     },
                     requestId
-                }, [positions.buffer, normals.buffer, ...(indices ? [indices.buffer] : [])]);
+                }, transferable);
             } else {
                 self.postMessage({ type: 'hullGenerated', geometryData: null, requestId });
             }

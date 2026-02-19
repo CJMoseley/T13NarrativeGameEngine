@@ -596,6 +596,8 @@ export class PlanetaryOrbitScene extends Scene {
         surfaceScene.add(dir);
         
         try {
+            if (!this.isActive) return;
+
             // Ensure seeds exist for surface generation, use fallback
             if (!this.planetData.seeds || !Array.isArray(this.planetData.seeds)) {
                 // Check if seeds are stored in the meshConfig (common pattern)
@@ -702,6 +704,8 @@ export class PlanetaryOrbitScene extends Scene {
         scene.add(spot);
 
         try {
+            if (!this.isActive) return;
+
             const avatarEngine = new AvatarEngine();
             // Determine body plan from lore
             let planName = 'HUMANOID';
@@ -824,14 +828,11 @@ export class PlanetaryOrbitScene extends Scene {
         // Intro Sequence Transition Logic
         if (this.introActive) {
             this.introTime += dt;
-            // Transition after 10 seconds
-            if (this.introTime > 10.0 && this.shipSceneReady) {
-                this.introActive = false;
-                if (this.infoPanel) {
+            if (this.introTime > 10.0) {
+                 this.introActive = false;
+                 if (this.infoPanel) {
                     this.infoPanel.style.opacity = '0';
                 }
-                Logger.message("PlanetaryOrbitScene: Intro complete. Transitioning to Ship Generation.");
-                this.viewManager.transitionToScene('ShipShowcaseScene', {}, { type: 'fade', duration: 1000 });
             }
         }
     }

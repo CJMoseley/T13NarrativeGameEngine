@@ -44,6 +44,10 @@ export class LocalSpaceScene extends Scene {
         this.currentLookAt = new THREE.Vector3(0, 0, -1);
         this.COMPRESSION_C = 1000.0;
 
+        // Pre-allocate for performance in update loop
+        this._dummyMatrix = new THREE.Matrix4();
+        this._dummyVector = new THREE.Vector3();
+
         this.hudElement = null;
 
         this.inputState = {
@@ -626,14 +630,7 @@ export class LocalSpaceScene extends Scene {
                     sunDirection = new THREE.Vector3().subVectors(starObj.realPosition, this.homeWorldObj.realPosition).normalize();
                 }
 
-                Logger.message("LocalSpaceScene: Intro complete. Transitioning to Planetary Orbit.");
-                if (this.viewManager) {
-                    this.viewManager.transitionToScene('PlanetaryOrbitScene', {
-                        planet: this.homeWorldObj.data,
-                        system: this.systemData,
-                        sunDirection: sunDirection
-                    }, { type: 'crossDissolve', duration: 2000 });
-                }
+                Logger.message("LocalSpaceScene: Intro complete. Signalling ViewManager.");
             }
         } else if (this.homeWorldObj && !this.introActive) {
             const offset = new THREE.Vector3(0, 200, 800);
@@ -731,12 +728,13 @@ export class LocalSpaceScene extends Scene {
                     visualPos.set(0, 0, 0);
                 }
 
-                const matrix = new THREE.Matrix4();
-                matrix.setPosition(visualPos);
+                this._dummyMatrix.identity();
+                this._dummyMatrix.setPosition(visualPos);
                 // Scale asteroid based on compression
                 let scale = realDist > 0.001 ? (visualDist / realDist) : 1.0;
-                matrix.scale(new THREE.Vector3(scale, scale, scale));
-                this.asteroidMesh.setMatrixAt(obj.instanceIndex, matrix);
+                this._dummyVector.set(scale, scale, scale);
+                this._dummyMatrix.scale(this._dummyVector);
+                this.asteroidMesh.setMatrixAt(obj.instanceIndex, this._dummyMatrix);
                 this._asteroidNeedsUpdate = true;
             }
 
@@ -828,6 +826,26 @@ export class LocalSpaceScene extends Scene {
                 this.renderer.setScissorTest(false);
             }
         }
+    }
+
+    async playIntroSequence() {
+        if (!this.introActive) return;
+
+        const totalDuration = this.flybyObj ? 22.0 : 15.0;
+
+        // Return a promise that resolves when the intro is complete
+        return new Promise(resolve => {
+            const check = () => {
+                const introTime = (performance.now() - this.introStartTime) * 0.001;
+                if (introTime >= totalDuration - 0.5) {
+                    this.introActive = false;
+                    resolve();
+                } else {
+                    requestAnimationFrame(check);
+                }
+            };
+            check();
+        });
     }
 
     updateIntroCamera(time) {

@@ -416,6 +416,8 @@ export class ShipAssembler {
                         if (!mesh || !mesh.geometry) continue;
 
                         const geo = mesh.geometry;
+                        if (!geo) continue;
+
                         const posAttr = geo.getAttribute ? geo.getAttribute('position') : (geo.attributes ? geo.attributes.position : null);
 
                         if (!posAttr || !posAttr.array) {
@@ -435,8 +437,8 @@ export class ShipAssembler {
                             scale: s,
                             isCarve: isCarve,
                             geometry: {
-                                positions: (posAttr && posAttr.array) ? posAttr.array : null,
-                                indices: (geo && geo.index && geo.index.array) ? geo.index.array : null
+                                positions: posAttr.array,
+                                indices: (geo.index && geo.index.array) ? geo.index.array : null
                             }
                         });
                     } catch (e) {
