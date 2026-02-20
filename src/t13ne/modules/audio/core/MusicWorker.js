@@ -68,7 +68,9 @@ self.onmessage = async (e) => {
                 }
 
                 if (manifest) {
-                    mockMusicModule.manifestManager.manifest = manifest;
+                    // Correctly merge Sample and Synthetic stores in the worker
+                    mockMusicModule.manifestManager.manifest.samples = manifest.samples || {};
+                    mockMusicModule.manifestManager.manifest.instruments = manifest.instruments || {};
                 }
 
                 if (geometryData) {
