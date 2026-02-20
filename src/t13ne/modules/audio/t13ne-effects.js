@@ -70,12 +70,23 @@ export class T13Effects {
         const rngL = PRNG.create32(0x12345);
         const rngR = PRNG.create32(0x6789A);
 
+        let lpL = 0;
+        let lpR = 0;
+
         for (let i = 0; i < length; i++) {
             const n = reverse ? length - i : i;
             const envelope = Math.pow(1 - n / length, decay);
+
             // White noise modulated by an exponential decay envelope
-            impulseL[i] = (rngL.nextDouble() * 2 - 1) * envelope;
-            impulseR[i] = (rngR.nextDouble() * 2 - 1) * envelope;
+            const rawL = (rngL.nextDouble() * 2 - 1) * envelope;
+            const rawR = (rngR.nextDouble() * 2 - 1) * envelope;
+
+            // Warmth: One-pole lowpass filter for more natural room response
+            lpL = lpL * 0.85 + rawL * 0.15;
+            lpR = lpR * 0.85 + rawR * 0.15;
+
+            impulseL[i] = lpL;
+            impulseR[i] = lpR;
         }
         return impulse;
     }

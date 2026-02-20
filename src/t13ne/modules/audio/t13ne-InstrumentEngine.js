@@ -92,15 +92,29 @@ export class AdditiveProcessor {
                     freq = i * (1 + pseudoRand(i) * 2.5);
                     amp = Math.exp(-0.15 * i);
                     decay = 0.4 / i;
-                } else { // lead, rhythm, etc.
-                    // Lead: Bright Sawtooth-like (All harmonics)
-                    freq = i + (pseudoRand(i) * 0.01);
-                    amp = 1.0 / i;
-                    decay = 1.0 / Math.pow(i, 0.5);
+                } else {
+                    // Lead: Richer complex wave with formants
+                    // Increased detuning for more organic "thickness"
+                    freq = i + (pseudoRand(i) * 0.015 - 0.0075);
+
+                    // Stronger fundamental, rolling off harmonics with resonance
+                    if (i === 1) amp = 1.0;
+                    else if (i <= 4) amp = 0.9 / i;
+                    else amp = (1.8 / Math.pow(i, 1.4)) * (0.7 + pseudoRand(i) * 0.3);
+
+                    // Add formant-like resonance peaks around 3rd, 5th and 7th harmonics
+                    if (i === 3 || i === 5 || i === 7) amp *= 1.4;
+
+                    decay = 1.0 / Math.pow(i, 0.4);
+
+                    // Add a sub-harmonic for lead weight (common for "soulful" leads)
+                    if (i === 1 && pseudoRand(idHash + 1) > 0.3) {
+                        partials.push({ freq: 0.5, amp: 0.4, decay: 1.5 });
+                    }
                 }
 
                 // Add slight randomness to individual amps for "life"
-                amp *= (0.8 + pseudoRand(i + 100) * 0.4);
+                amp *= (0.85 + pseudoRand(i + 100) * 0.3);
 
                 partials.push({ freq, amp, decay });
             }
@@ -129,7 +143,9 @@ export class AdditiveProcessor {
             partials: partials,
             role: role,
             instrumentId: instrumentId,
-            isHarmonic: isHarmonic
+            isHarmonic: isHarmonic,
+            vibrato: (role === 'lead' || role === 'pad') ? 0.004 : 0,
+            shimmer: (role === 'pad') ? 0.15 : (role === 'lead' ? 0.08 : 0)
         };
     }
 
@@ -321,7 +337,7 @@ export class InstrumentEngine {
 
         // Minimal Base Instruments
         this.defineInstrument('sine', { type: 'additive', algorithm: 'custom', partials: [{ freq: 1, amp: 1 }, { freq: 2, amp: 0.1 }, { freq: 3, amp: 0.05 }] });
-        this.defineInstrument('saw', { type: 'additive', algorithm: 'custom', partials: [{ freq: 1, amp: 1 }, { freq: 2, amp: 0.5 }, { freq: 3, amp: 0.33 }, { freq: 4, amp: 0.25 }, { freq: 5, amp: 0.2 }, { freq: 6, amp: 0.17 }] });
+        this.defineInstrument('saw', { type: 'additive', algorithm: 'custom', partials: [{ freq: 1, amp: 1 }, { freq: 2, amp: 0.5 }, { freq: 3, amp: 0.33 }, { freq: 4, amp: 0.25 }, { freq: 5, amp: 0.2 }, { freq: 6, amp: 0.17 }], effects: [{ type: 'filter', filterType: 'lowpass', frequency: 2000 }] });
         this.defineInstrument('bell', { type: 'additive', algorithm: 'bell', partials: [{ freq: 1, amp: 1 }, { freq: 2, amp: 0.6 }, { freq: 2.4, amp: 0.4 }, { freq: 3, amp: 0.3 }, { freq: 4.1, amp: 0.2 }] });
 
         // Piano fallback (Rich harmonic series)
@@ -351,29 +367,60 @@ export class InstrumentEngine {
         }
     }
 
-    createSyntheticInstrument(sourceId, newId, depth = 'medium', envelope = 'percussive', role = 'lead') {
-        // 1. Get Analysis (with fallback if missing)
-        let analysis = this.manifestManager.getAssetAnalysis('samples', sourceId);
-        if (!analysis) {
-            analysis = { freq: 440, note: 'A4', peaks: [] };
+    async createSyntheticInstrument(sourceId, newId, depth = 'full', envelope = 'percussive', role = 'lead') {
+        const buffer = this.samples.get(sourceId);
+        if (!buffer) {
+            Logger.warn(`InstrumentEngine: Cannot create synthetic from '${sourceId}', source buffer missing.`);
+            return this.createSyntheticFallback(sourceId, newId, depth, envelope, role);
         }
 
-        // 2. Generate Definition via Additive Processor
-        const def = this.additive.createSynthFromAnalysis(analysis, depth, role, newId);
-        def.envelope = envelope;
+        Logger.message(`InstrumentEngine: Creating synthetic sample from '${sourceId}'...`);
 
-        // 3. Register locally
+        if (!this.analyzer) {
+            const { AudioAnalyzer } = await import('/src/t13ne/modules/audio/t13ne-audio-analyzer.js');
+            this.analyzer = new AudioAnalyzer(this.ctx);
+        }
+
+        // 1. Perform Deep Analysis and GPU Bake
+        // depth 'full' -> use more peaks
+        const syntheticBuffer = await this.analyzer.analyzeAndBake(buffer);
+        const analysis = await this.analyzer.analyze(syntheticBuffer);
+
+        // 2. Store as a NEW Sample
+        const synthSampleId = `syn_${newId}`;
+        this.samples.set(synthSampleId, syntheticBuffer);
+
+        // 3. Define as a Sampler (using the synthetic wave)
+        const def = {
+            type: 'sampler',
+            sampleId: synthSampleId,
+            baseFreq: analysis.freq,
+            key: analysis.note,
+            envelope: envelope,
+            role: role,
+            isSynthetic: true
+        };
+
         this.defineInstrument(newId, def);
 
-        // 4. Save to Manifest (instruments category)
-        // We add a new category 'instruments' to manifest for these synthetic definitions
+        // 4. Update Manifest
         this.manifestManager.addToManifest('instruments', newId, {
             definition: def,
             source: sourceId,
             timestamp: Date.now()
         });
 
-        Logger.message(`Created Synthetic Instrument '${newId}' (Depth: ${depth})`);
+        Logger.message(`Created High-Fidelity Synthetic Sample Instrument '${newId}'`);
+        return newId;
+    }
+
+    createSyntheticFallback(sourceId, newId, depth, envelope, role) {
+        let analysis = this.manifestManager.getAssetAnalysis('samples', sourceId);
+        if (!analysis) analysis = { freq: 440, note: 'A4', peaks: [] };
+
+        const def = this.additive.createSynthFromAnalysis(analysis, depth, role, newId);
+        def.envelope = envelope;
+        this.defineInstrument(newId, def);
         return newId;
     }
 
@@ -577,6 +624,17 @@ export class InstrumentEngine {
     playNote(instrumentId, frequency, time, duration, velocity = 0.5, destination, pan = 0) {
         const inst = this.instruments.get(instrumentId);
         if (!inst) {
+            // Last chance: if it's a sample ID not yet defined, auto-define it
+            if (instrumentId.includes('/')) {
+                this.defineInstrument(instrumentId, {
+                    type: 'sampler',
+                    sampleId: instrumentId,
+                    baseFreq: 261.63, // Default fallback
+                    key: 'C4'
+                });
+                // Re-fetch
+                return this.playNote(instrumentId, frequency, time, duration, velocity, destination, pan);
+            }
             Logger.warn(`InstrumentEngine: Instrument '${instrumentId}' not found. Note skipped.`);
             return;
         }
@@ -694,7 +752,7 @@ export class InstrumentEngine {
         // 3. Trigger Note with chainHead as destination
         switch (inst.type) {
             case 'sampler':
-                this.playSampleNote(inst.sampleId, frequency, time, duration, velocity, chainHead, masterCleanup, voiceObj.sources);
+                this.playSampleNote(inst, frequency, time, duration, velocity, chainHead, masterCleanup, voiceObj.sources);
                 break;
             case 'additive':
                 // PREFER PeriodicWave for stability if harmonic (covers Piano/Standard Synths)
@@ -830,9 +888,41 @@ export class InstrumentEngine {
         osc.setPeriodicWave(inst.periodicWave);
         osc.frequency.value = frequency;
 
+        // Vibrato (Organic Pitch Jitter)
+        if (inst.vibrato > 0) {
+            const vib = this.ctx.createOscillator();
+            const vibGain = this.ctx.createGain();
+            const rng = PRNG.create32(Math.floor(frequency * 131));
+            vib.frequency.value = 4.0 + rng.nextDouble() * 2.5; // 4-6.5 Hz
+            vibGain.gain.value = frequency * inst.vibrato;
+            vib.connect(vibGain);
+            vibGain.connect(osc.frequency);
+            vib.start(time);
+            vib.stop(time + duration + 1.0);
+            if (sources) sources.push(vib);
+        }
+
         const env = this.ctx.createGain();
+        const modGain = this.ctx.createGain();
+        modGain.gain.value = 1.0;
+
         osc.connect(env);
-        env.connect(destination);
+        env.connect(modGain);
+        modGain.connect(destination);
+
+        // Shimmer (Organic Amplitude Variation)
+        if (inst.shimmer > 0) {
+            const shim = this.ctx.createOscillator();
+            const shimAmount = this.ctx.createGain();
+            const rng = PRNG.create32(Math.floor(frequency * 211));
+            shim.frequency.value = 0.5 + rng.nextDouble() * 4.0;
+            shimAmount.gain.value = inst.shimmer;
+            shim.connect(shimAmount);
+            shimAmount.connect(modGain.gain);
+            shim.start(time);
+            shim.stop(time + duration + 1.0);
+            if (sources) sources.push(shim);
+        }
 
         // Add Noise Layer
         this.playNoiseLayer(destination, time, duration, velocity, inst, sources);
@@ -1003,7 +1093,8 @@ export class InstrumentEngine {
         osc.stop(time + safeDuration + release + 0.05);
     }
 
-    playSampleNote(sampleId, frequency, time, duration, velocity, destination, onCleanup = null, sources = null) {
+    playSampleNote(inst, frequency, time, duration, velocity, destination, onCleanup = null, sources = null) {
+        const sampleId = inst.sampleId;
         const buffer = this.samples.get(sampleId);
         if (!buffer) {
             if (onCleanup) onCleanup();
@@ -1014,7 +1105,8 @@ export class InstrumentEngine {
         if (sources) sources.push(source);
         source.buffer = buffer;
 
-        const rate = frequency / 261.63; // Assume C4 base
+        const baseFreq = inst.baseFreq || 261.63;
+        const rate = frequency / baseFreq;
         source.playbackRate.value = rate;
 
         const env = this.ctx.createGain();
