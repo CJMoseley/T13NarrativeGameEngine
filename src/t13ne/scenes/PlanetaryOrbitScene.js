@@ -612,8 +612,7 @@ export class PlanetaryOrbitScene extends Scene {
             }
 
             // Generate Environment
-            const env = new PlanetSurfaceEnvironment(surfaceScene, this.planetData);
-            env.generate();
+            const env = new PlanetSurfaceEnvironment(this.planetData);
             
             // Use PlanetaryRenderer to populate scene if needed
             const rendererHelper = new PlanetaryRenderer(surfaceScene);
