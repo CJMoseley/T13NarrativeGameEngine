@@ -40,6 +40,14 @@ class VirtualArtist {
         this.stepsPerBar = Math.round((this.timeSignature[0] / this.timeSignature[1]) * 16);
         
         this.determineMusicalPersonality();
+
+        // If personality is syncopated, favor the new Accent synth for punchier variety
+        if (this.personality === 'syncopated' && this.role !== 'bass') {
+            if (this.instrumentId === 'Piano' || this.instrumentId === 'Synth_Lead') {
+                const rng = new MusicRNG(this.name + 'accent');
+                this.instrumentId = rng.next() > 0.5 ? 'Synth_Accent' : 'Synth_Pluck';
+            }
+        }
     }
 
     setRole(role) {
@@ -132,23 +140,56 @@ class VirtualDrummer extends VirtualArtist {
     }
 
     async prepare() {
-        // Ensure kit is ready. Use consistent seeds matching _generateDrumPart logic
-        const pieces = {
-            'kick': '', 
-            'snare': '_snare',
-            'hat': '_hat',
-            'crash': '_crash',
-            'ride': '_ride',
-            'perc': '_perc',
-            'tom_h': '_tomh',
-            'tom_l': '_toml'
-        };
+        // Prefer picking a coherent kit from the same folder
+        const rng = new MusicRNG(this.name);
 
-        for (const [role, suffix] of Object.entries(pieces)) {
-            const seed = this.name + suffix;
-            const instId = this.generator._getProceduralInstrument(role, seed);
+        // Pieces we need
+        const pieces = ['kick', 'snare', 'hat', 'perc'];
+        const kitMap = {};
+
+        // 1. Try to find a folder that has at least 3 of these
+        const allSamples = Object.keys(this.generator.manifestManager.manifest.samples);
+        const folderCounts = {};
+        allSamples.forEach(s => {
+            const folder = s.split('/')[0];
+            if (!folderCounts[folder]) folderCounts[folder] = { kick: [], snare: [], hat: [], perc: [], count: 0 };
+            const lower = s.toLowerCase();
+            if (lower.includes('kick')) folderCounts[folder].kick.push(s);
+            else if (lower.includes('snare')) folderCounts[folder].snare.push(s);
+            else if (lower.includes('hat')) folderCounts[folder].hat.push(s);
+            else if (lower.includes('perc') || lower.includes('clap') || lower.includes('rim')) folderCounts[folder].perc.push(s);
+        });
+
+        // Pick folders that have at least kick and snare
+        const kits = Object.entries(folderCounts).filter(([name, data]) => data.kick.length > 0 && data.snare.length > 0);
+
+        if (kits.length > 0) {
+            const [folderName, folderData] = rng.pick(kits);
+            kitMap.kick = rng.pick(folderData.kick);
+            kitMap.snare = rng.pick(folderData.snare);
+            kitMap.hat = rng.pick(folderData.hat) || this.generator._getProceduralInstrument('hat', this.name + '_hat');
+            kitMap.perc = rng.pick(folderData.perc) || this.generator._getProceduralInstrument('perc', this.name + '_perc');
+            SafeLogger.message(`VirtualDrummer ${this.name}: Selected coherent kit from folder '${folderName}'`);
+        } else {
+            // Fallback to mixed selection
+            kitMap.kick = this.generator._getProceduralInstrument('kick', this.name);
+            kitMap.snare = this.generator._getProceduralInstrument('snare', this.name + '_snare');
+            kitMap.hat = this.generator._getProceduralInstrument('hat', this.name + '_hat');
+            kitMap.perc = this.generator._getProceduralInstrument('perc', this.name + '_perc');
+        }
+
+        // Add to kit and ensure defined
+        for (const [role, instId] of Object.entries(kitMap)) {
             this.kit[role] = instId;
             await this.generator._ensureInstrumentDefined(instId);
+        }
+
+        // Add extra pieces with mixed selection
+        const extraPieces = { 'crash': '_crash', 'ride': '_ride', 'tom_h': '_tomh', 'tom_l': '_toml' };
+        for (const [role, suffix] of Object.entries(extraPieces)) {
+             const instId = this.generator._getProceduralInstrument(role, this.name + suffix);
+             this.kit[role] = instId;
+             await this.generator._ensureInstrumentDefined(instId);
         }
     }
 }
@@ -325,19 +366,46 @@ export class ThemeGenerator {
     async _processManifestInstruments() {
         if (!this.synth) return;
         const samples = this.manifestManager.manifest.samples;
+
+        // Reset palette
+        this.instrumentPalette = {
+            bass: [], pad: [], lead: [], rhythm: [],
+            kick: [], snare: [], hat: [], perc: [],
+            loop_drum: [], loop_music: []
+        };
+
         for (const [key, data] of Object.entries(samples)) {
             const lowerKey = key.toLowerCase();
-            let category = 'lead';
-            if (lowerKey.includes('bass')) category = 'bass';
-            else if (lowerKey.includes('pad') || lowerKey.includes('atmos') || lowerKey.includes('texture')) category = 'pad';
-            else if (lowerKey.includes('kick')) category = 'kick';
-            else if (lowerKey.includes('snare')) category = 'snare';
-            else if (lowerKey.includes('hat')) category = 'hat';
-            else if (lowerKey.includes('perc') || lowerKey.includes('drum')) category = 'perc';
-            else if (lowerKey.includes('guitar') || lowerKey.includes('pluck') || lowerKey.includes('clav') || lowerKey.includes('piano')) category = 'rhythm';
-            this.instrumentPalette[category].push(key);
+
+            // Detection: Loop vs One-Shot
+            const isLoop = lowerKey.includes('loop') || lowerKey.includes('bpm');
+
+            let category = null;
+
+            // Priority categorization
+            if (lowerKey.includes('kick') || lowerKey.includes(' bd')) category = 'kick';
+            else if (lowerKey.includes('snare') || lowerKey.includes(' sd')) category = 'snare';
+            else if (lowerKey.includes('hat') || lowerKey.includes(' hh')) category = 'hat';
+            else if (lowerKey.includes('perc') || lowerKey.includes('clap') || lowerKey.includes('rim') || lowerKey.includes('tom')) category = 'perc';
+            else if (lowerKey.includes('bass')) category = 'bass';
+            else if (lowerKey.includes('pad') || lowerKey.includes('atmos') || lowerKey.includes('texture') || lowerKey.includes('string')) category = 'pad';
+            else if (lowerKey.includes('guitar') || lowerKey.includes('pluck') || lowerKey.includes('clav') || lowerKey.includes('piano') || lowerKey.includes('key')) category = 'rhythm';
+            else category = 'lead';
+
+            if (isLoop) {
+                if (['kick', 'snare', 'hat', 'perc'].includes(category) || lowerKey.includes('drum')) {
+                    this.instrumentPalette.loop_drum.push(key);
+                } else {
+                    this.instrumentPalette.loop_music.push(key);
+                }
+            } else {
+                this.instrumentPalette[category].push(key);
+            }
         }
-        SafeLogger.message(`ThemeGenerator: Instrument Palette Built. Bass: ${this.instrumentPalette.bass.length}, Pad: ${this.instrumentPalette.pad.length}, Lead: ${this.instrumentPalette.lead.length}`);
+
+        // Log findings
+        const counts = Object.entries(this.instrumentPalette).map(([cat, list]) => `${cat}: ${list.length}`).join(', ');
+        SafeLogger.message(`ThemeGenerator: Instrument Palette Built. ${counts}`);
     }
 
     async _loadDrumPatterns() {
@@ -382,15 +450,77 @@ export class ThemeGenerator {
         }
     }
 
+    _parseNoteFromFilename(filename) {
+        if (!filename) return null;
+        // Search for patterns like (C2), _G#3, -a#4, Bb5
+        const regex = /[\(_\- ]([A-G][#b]?\d)[\)\._\- ]/i;
+        const match = filename.match(regex);
+        if (match) {
+            let note = match[1].toUpperCase();
+            // Standardize: ensure # is before digit, if any
+            return note;
+        }
+        return null;
+    }
+
     _getInstrumentForRole(role, geo, usedInstruments = new Set()) {
         if (!this.synth) return 'Piano';
         let palette = this.instrumentPalette[role];
-        if (!palette || palette.length === 0) palette = this.instrumentPalette.lead;
+
+        // Smarter fallback
+        if (!palette || palette.length === 0) {
+            const drumRoles = ['kick', 'snare', 'hat', 'perc'];
+            if (drumRoles.includes(role)) {
+                // If specific drum missing, try general perc
+                palette = this.instrumentPalette.perc;
+                if (!palette || palette.length === 0) {
+                    // Ultimate fallback for drums: hardcoded synthetic IDs
+                    const syntheticDrumFallback = {
+                        'kick': 'Drum_Kick',
+                        'snare': 'Drum_Snare',
+                        'hat': 'Drum_HiHat_Closed',
+                        'perc': 'Drum_Cowbell'
+                    };
+                    return syntheticDrumFallback[role] || 'Drum_Cowbell';
+                }
+            } else {
+                palette = this.instrumentPalette.lead;
+            }
+        }
 
         if (palette && palette.length > 0) {
             const rng = new MusicRNG(geo?.name || role);
-            const available = palette.filter(inst => !usedInstruments.has(inst));
-            const pool = available.length > 0 ? available : palette;
+
+            // Smart filtering by octave if available
+            const targetOctave = geo?.Octave !== undefined ? geo.Octave : 4;
+
+            // Try to find samples that match the target octave in their name (e.g. _c4, _a2)
+            let candidates = palette;
+            const getMatches = (oct) => {
+                const patterns = [`_c${oct}`, `_a${oct}`, `_e${oct}`, `_g${oct}`, `_d${oct}`, `_f${oct}`, `_b${oct}`];
+                return palette.filter(inst => {
+                    const lowerInst = inst.toLowerCase();
+                    return patterns.some(p => lowerInst.includes(p));
+                });
+            };
+
+            const exactMatches = getMatches(targetOctave);
+
+            if (exactMatches.length > 0) {
+                candidates = exactMatches;
+            } else {
+                // Best Fit: Look for nearby octaves (+/- 1 then +/- 2)
+                for (let offset = 1; offset <= 2; offset++) {
+                    const nearby = [...getMatches(targetOctave - offset), ...getMatches(targetOctave + offset)];
+                    if (nearby.length > 0) {
+                        candidates = nearby;
+                        break;
+                    }
+                }
+            }
+
+            const available = candidates.filter(inst => !usedInstruments.has(inst));
+            const pool = available.length > 0 ? available : candidates;
             const instrument = rng.pick(pool);
             usedInstruments.add(instrument);
             return instrument;
@@ -402,11 +532,31 @@ export class ThemeGenerator {
 
     _getProceduralInstrument(category, seed) {
         const rng = new MusicRNG(seed);
-        const palette = this.instrumentPalette[category];
+        let palette = this.instrumentPalette[category];
+
+        // Fallback for drums
+        if (!palette || palette.length === 0) {
+            if (['kick', 'snare', 'hat'].includes(category)) {
+                palette = this.instrumentPalette.perc;
+            }
+        }
+
         if (palette && palette.length > 0) return rng.pick(palette);
         
-        SafeLogger.warn(`ThemeGenerator: No procedural instrument found for category ${category}`);
-        return null;
+        // Ultimate hardcoded fallbacks if manifest is missing items
+        const fallbacks = {
+            'kick': 'Drum_Kick',
+            'snare': 'Drum_Snare',
+            'hat': 'Drum_HiHat_Closed',
+            'perc': 'Drum_Cowbell',
+            'bass': 'Synth_Bass',
+            'lead': 'Synth_Lead',
+            'pad': 'Synth_Pad',
+            'rhythm': 'Piano'
+        };
+
+        SafeLogger.warn(`ThemeGenerator: No procedural sample found for category ${category}. Using synthetic fallback.`);
+        return fallbacks[category] || 'Piano';
     }
 
     async _ensureInstrumentDefined(instrumentId, aliasId = null, forceEnvelope = null, geoParams = {}) {
@@ -414,13 +564,11 @@ export class ThemeGenerator {
         if (!this.synth || this.synth.instrumentEngine.instruments.has(targetId)) return;
 
         const data = this.manifestManager.manifest.samples[instrumentId];
-        if (!data) {
-            SafeLogger.warn(`ThemeGenerator: Sample data missing for '${instrumentId}'.`);
-            return;
-        }
 
         const lowerKey = instrumentId.toLowerCase();
         let role = 'lead';
+        const drumRoles = ['kick', 'snare', 'hat', 'perc'];
+
         if (lowerKey.includes('bass')) role = 'bass';
         else if (lowerKey.includes('pad') || lowerKey.includes('atmos') || lowerKey.includes('texture') || lowerKey.includes('string')) role = 'pad';
         else if (lowerKey.includes('kick')) role = 'kick';
@@ -429,26 +577,40 @@ export class ThemeGenerator {
         else if (lowerKey.includes('perc')) role = 'perc';
 
         let envelope = forceEnvelope || (role === 'pad' ? 'sustained' : 'percussive');
-        const depth = geoParams.chi > 7 ? 'high' : 'medium';
+        const depth = geoParams.chi > 7 ? 'full' : 'high';
 
-        if (data.analysis && data.analysis.freq) {
-            this.synth.instrumentEngine.createSyntheticInstrument(instrumentId, targetId, depth, envelope, role);
-        } else {
-            if (this.synth.instrumentEngine.allowRuntimeAnalysis) {
+        // THEME: Samples are treated as sources for High-Fidelity Synthetic Instruments
+        if (data || instrumentId.includes('/')) {
+            // 1. Ensure sample is loaded first
+            if (!this.synth.instrumentEngine.samples.has(instrumentId)) {
                 const url = this.manifestManager.getAssetPath('samples', instrumentId);
                 if (url) {
                     await this.music.loadSample(instrumentId, url);
-                    const analysis = await this.music.analyzeSample(instrumentId);
-                    if (analysis) {
-                        this.music.saveAnalysis(instrumentId, analysis);
-                        this.synth.instrumentEngine.createSyntheticInstrument(instrumentId, targetId, 'high', envelope);
-                        return;
-                    }
                 }
             }
-            
-            this.synth.instrumentEngine.createSyntheticInstrument(instrumentId, targetId, 'low', envelope, role);
+
+            // 2. Create high-fidelity synthetic version from the sample
+            if (this.synth.instrumentEngine.samples.has(instrumentId)) {
+                // For loops, we keep the original sampler for timing accuracy
+                const isLoop = lowerKey.includes('loop') || lowerKey.includes('bpm');
+                if (isLoop) {
+                     this.synth.instrumentEngine.defineInstrument(targetId, {
+                        type: 'sampler',
+                        sampleId: instrumentId,
+                        baseFreq: 440,
+                        key: 'A4',
+                        envelope: envelope,
+                        role: role
+                    });
+                } else {
+                    await this.synth.instrumentEngine.createSyntheticInstrument(instrumentId, targetId, depth, envelope, role);
+                }
+                return;
+            }
         }
+
+        // Fallback to purely algorithmic synthetic
+        await this.synth.instrumentEngine.createSyntheticInstrument(instrumentId, targetId, depth, envelope, role);
     }
 
     _getInstrumentFromGeometry(geo, usedInstruments = new Set()) {
@@ -460,16 +622,7 @@ export class ThemeGenerator {
         else if (chi < 4) role = 'rhythm';
         else role = 'pad';
 
-        const rng = new MusicRNG(geo.name || JSON.stringify(geo));
-        let palette = this.instrumentPalette[role];
-        let instrument = null;
-
-        if (palette && palette.length > 0) {
-            const available = palette.filter(inst => !usedInstruments.has(inst));
-            const pool = available.length > 0 ? available : palette;
-            instrument = rng.pick(pool);
-            usedInstruments.add(instrument);
-        } 
+        const instrument = this._getInstrumentForRole(role, { ...geo, Octave: octave }, usedInstruments);
         
         return { instrument: instrument, role: role, chi: chi };
     }
@@ -683,11 +836,17 @@ export class ThemeGenerator {
         // Yield before processing drummers
         await new Promise(r => setTimeout(r, 0));
 
-        band.drummers.forEach((drummer, dIndex) => {
+        for (let dIndex = 0; dIndex < band.drummers.length; dIndex++) {
+            const drummer = band.drummers[dIndex];
             const drumPart = this._generateDrumPart(drummer, progression, stepsPerBar, trackMeasures, rng);
             
             // Merge drum voices
-            drumPart.voices.forEach(dv => {
+            for (const dv of drumPart.voices) {
+                // Ensure loop instruments are defined (pre-prepared kit pieces already are)
+                if (dv.id === 'v_drum_loop') {
+                    await this._ensureInstrumentDefined(dv.instrument);
+                }
+
                 // Unique ID per drummer to allow multiple kits
                 const uniqueId = `${dv.id}_${dIndex}`;
                 voices.push({
@@ -696,26 +855,42 @@ export class ThemeGenerator {
                     name: `${drummer.name} ${dv.name}`,
                     loopLength: drumPart.totalSteps
                 });
-            });
+            }
+        }
+
+        // PRE-ASSIGN ROLES FOR COHERENCE
+        const assignedRoles = [];
+        let bassAssigned = false;
+        let leadAssigned = false;
+        let leadsCount = 0;
+
+        band.members.forEach((artist, idx) => {
+            let role = artist.personality;
+            if (!bassAssigned && (artist.role === 'bass' || artist.personality === 'groove' || artist.personality === 'support')) {
+                role = 'bass';
+                bassAssigned = true;
+            } else if (artist.personality === 'lead' || artist.role === 'lead') {
+                if (!leadAssigned) {
+                    role = 'lead';
+                    leadAssigned = true;
+                    leadsCount++;
+                } else {
+                    role = 'solo';
+                    leadsCount++;
+                }
+            } else if (artist.role === 'rhythm' || artist.personality === 'support') {
+                role = 'rhythm';
+            }
+            assignedRoles[idx] = role;
         });
 
-        // Band Members
-        // Pre-count actual leads that will be assigned as lead/solo
-        let leadsCount = 0;
-        const tempContext = { bassAssigned: false, leadAssigned: false };
-        band.members.forEach(artist => {
-            let playStyle = artist.personality;
-            if (!tempContext.bassAssigned && (artist.role === 'bass' || artist.personality === 'groove')) {
-                playStyle = 'bass';
-                tempContext.bassAssigned = true;
-            } else if (artist.personality === 'lead' || artist.role === 'lead') {
-                leadsCount++;
-            }
-        });
+        // Ensure at least one bass if possible
+        if (!bassAssigned && band.members.length > 0) {
+            assignedRoles[0] = 'bass';
+            bassAssigned = true;
+        }
 
         const bandContext = {
-            bassAssigned: false,
-            leadAssigned: false,
             baseFreq: band.baseFreq,
             beatTime: beatTime,
             rhythm: rhythm,
@@ -730,6 +905,7 @@ export class ThemeGenerator {
         // Process members asynchronously to avoid frame drops
         for (let index = 0; index < band.members.length; index++) {
             const artist = band.members[index];
+            const role = assignedRoles[index];
             
             const artistStepsPerBar = band.polyrhythms.get(artist.name) || band.stepsPerBar;
             const totalArtistSteps = trackMeasures * artistStepsPerBar;
@@ -738,14 +914,9 @@ export class ThemeGenerator {
             const instrument = artist.instrumentId;
             const voiceId = `v_${artist.name.replace(/[^a-zA-Z0-9]/g, '_')}_${index}`;
             
-            // Check if this artist will be a lead/solo before calling _generateArtistPart
-            // to ensure we increment leadIndex ONLY if it actually plays lead/solo roles
-            const isLeadPotential = (artist.personality === 'lead' || artist.role === 'lead');
-            const willBeLead = isLeadPotential && (bandContext.bassAssigned || (artist.role !== 'bass' && artist.personality !== 'groove'));
+            const events = this._generateArtistPart(artist, bandContext, voiceId, role);
 
-            const events = this._generateArtistPart(artist, bandContext, voiceId);
-
-            if (willBeLead) {
+            if (role === 'lead' || role === 'solo') {
                 bandContext.leadIndex++;
             }
 
@@ -784,6 +955,34 @@ export class ThemeGenerator {
     }
 
     _generateDrumPart(drummer, progression, globalStepsPerBar, measures, rng) {
+        // High Tension / Complexity: Try to find a matching Drum Loop first
+        const tensionLevel = drummer.generator.music.lastTension;
+        const bpm = drummer.generator.music.currentTrack?.bpm || 120;
+
+        if (tensionLevel >= 6 && drummer.generator.instrumentPalette.loop_drum.length > 0 && rng.next() > 0.5) {
+             const loops = drummer.generator.instrumentPalette.loop_drum;
+             // Try to find a loop with matching BPM in name
+             const matchingBpm = loops.filter(l => l.includes(bpm.toString()));
+             const pool = matchingBpm.length > 0 ? matchingBpm : loops;
+             const loopId = rng.pick(pool);
+
+             if (loopId) {
+                 SafeLogger.message(`VirtualDrummer ${drummer.name}: Using full drum loop sample '${loopId}'`);
+                 return {
+                     voices: [{
+                         id: 'v_drum_loop',
+                         name: 'Drum Loop',
+                         instrument: loopId,
+                         sequence: [{ step: 0, freq: 440, duration: measures * globalStepsPerBar / 4, velocity: 0.9 }],
+                         mute: false,
+                         isDrum: true,
+                         loopLength: measures * globalStepsPerBar
+                     }],
+                     totalSteps: measures * globalStepsPerBar
+                 };
+             }
+        }
+
         const voices = [];
         const events = [];
         
@@ -870,7 +1069,7 @@ export class ThemeGenerator {
         };
     }
 
-    _generateArtistPart(artist, context, voiceId) {
+    _generateArtistPart(artist, context, voiceId, roleOverride = null) {
         const { personality } = artist;
         const { rhythm, progression, baseFreq, beatTime, rng, tensionLevel, activeLeads, leadIndex } = context;
         let events = [];
@@ -882,22 +1081,8 @@ export class ThemeGenerator {
             return events;
         }
 
-        let playStyle = personality;
+        let playStyle = roleOverride || personality;
         
-        // Force bass if needed and artist is capable (groove or support or explicitly bass role)
-        if (!context.bassAssigned && (artist.role === 'bass' || personality === 'groove')) {
-            playStyle = 'bass';
-            context.bassAssigned = true;
-        }
-        else if (personality === 'lead' || artist.role === 'lead') {
-            if (!context.leadAssigned) {
-                playStyle = 'lead';
-                context.leadAssigned = true;
-            } else {
-                playStyle = 'solo'; 
-            }
-        }
-
         if (playStyle === 'bass') {
             events = this._generateBassline(rhythm, artist.entity, progression, baseFreq / 4, beatTime, artist.geoNum, tensionLevel);
         } else if (playStyle === 'lead' || playStyle === 'solo') {
@@ -1109,10 +1294,10 @@ export class ThemeGenerator {
                 const densityThreshold = 0.3 + (tensionLevel / 11) * 0.7;
                 if (roll > densityThreshold && !isSolo) {
                     // Sparse accents instead of full motif
-                    if (rng.next() > 0.8) {
-                        // Play a high accent hit (9th or 7th)
-                        const accentInterval = rng.pick([10, 14]); // 7th or 9th
-                        const accentFreq = currentRootFreq * Math.pow(2, (accentInterval + 12) / 12);
+                    if (rng.next() > 0.85) {
+                        // Play a supportive accent hit (7th, 9th, or resonance)
+                        const accentInterval = rng.pick([10, 14, 2, -5]);
+                        const accentFreq = currentRootFreq * Math.pow(2, accentInterval / 12);
                         events.push({
                             voice: voiceId,
                             step: currentStep,
@@ -1173,7 +1358,19 @@ export class ThemeGenerator {
         const targetBeats = this._countSyllablesInPhrase(name);
 
         const getPattern = (targetLength = null) => {
-            if (!this.drumPatterns) return null;
+            if (!this.drumPatterns || Object.keys(this.drumPatterns).length === 0) {
+                 return {
+                    name: 'Default',
+                    style: 'Electronic',
+                    length: targetLength || 16,
+                    timeSignature: [4, 4],
+                    tracks: {
+                        kick: [0, 8],
+                        snare: [4, 12],
+                        hat: [0, 2, 4, 6, 8, 10, 12, 14]
+                    }
+                };
+            }
             const targetGenre = ship ? (ship.origin === 'Core' ? "6" : "3") : "3";
             const targetEra = ship ? (ship.techLevel > 5 ? "3" : "2") : "2";
             let matchingKeys = Object.keys(this.drumPatterns).filter(k => {
@@ -1188,9 +1385,24 @@ export class ThemeGenerator {
                 if (!p.tags) return false;
                 return (p.tags.genres && p.tags.genres.includes(targetGenre)) || (p.tags.eras && p.tags.eras.includes(targetEra));
             });
-            const pool = matchingKeys.length > 0 ? matchingKeys : Object.keys(this.drumPatterns);
+        const pool = (matchingKeys.length > 0) ? matchingKeys : Object.keys(this.drumPatterns || {});
             const patternKey = rng.pick(pool);
-            return this.drumPatterns[patternKey];
+        let p = patternKey ? this.drumPatterns[patternKey] : null;
+
+        if (!p || !p.tracks) {
+            p = {
+                name: 'Fallback',
+                style: 'Electronic',
+                length: 16,
+                timeSignature: [4, 4],
+                tracks: {
+                    kick: [0, 8],
+                    snare: [4, 12],
+                    hat: [0, 2, 4, 6, 8, 10, 12, 14]
+                }
+            };
+        }
+        return p;
         };
 
         let pattern = getPattern(stepsPerBar);
@@ -1237,25 +1449,19 @@ export class ThemeGenerator {
                         kicks.forEach(step => {
                             const s = parseInt(step, 10);
                             if (i + s < stepsInBar) {
-                                if (!isFill || (i + s) < fillStartStep) {
-                                    oneBarEvents.push({ voice: 'v_kick', step: i + s, freq: 100, duration: 0.1, velocity: 0.9 });
-                                }
+                                oneBarEvents.push({ voice: 'v_kick', step: i + s, freq: 100, duration: 0.1, velocity: 0.9 });
                             }
                         });
                         snares.forEach(step => {
                             const s = parseInt(step, 10);
                             if (i + s < stepsInBar) {
-                                if (!isFill || (i + s) < fillStartStep) {
-                                    oneBarEvents.push({ voice: 'v_snare', step: i + s, freq: 261.63, duration: 0.1, velocity: 0.8 });
-                                }
+                                oneBarEvents.push({ voice: 'v_snare', step: i + s, freq: 261.63, duration: 0.1, velocity: 0.8 });
                             }
                         });
                         hats.forEach(step => {
                             const s = parseInt(step, 10);
                             if (i + s < stepsInBar) {
-                                if (!isFill || (i + s) < fillStartStep) {
-                                    oneBarEvents.push({ voice: 'v_hat', step: i + s, freq: 261.63, duration: 0.05, velocity: 0.6 });
-                                }
+                                oneBarEvents.push({ voice: 'v_hat', step: i + s, freq: 261.63, duration: 0.05, velocity: 0.6 });
                             }
                         });
                     }
@@ -1523,8 +1729,9 @@ export class ThemeGenerator {
         const matrix = [];
         const preferredIntervals = new Map();
 
-        const isSingable = artist && (artist.instrumentId?.toLowerCase().includes('voice') ||
-                          artist.instrumentId?.toLowerCase().includes('acoustic') ||
+        const instId = artist?.instrumentId?.toLowerCase() || '';
+        const isSingable = artist && (instId.includes('voice') ||
+                          instId.includes('acoustic') ||
                           artist.personality === 'lead');
         for (const interval in harmonicStepDistribution) {
             const i = parseInt(interval, 10);

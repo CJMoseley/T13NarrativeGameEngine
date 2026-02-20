@@ -91,6 +91,8 @@ class T13NE_Music {
         }
 
         this.tonalModes = await CodexLoader.getData('geometry', 'tonalModes.json') || [];
+
+        this._registerStandardInstruments();
         await this.themeGenerator.loadAssets();
 
         if (this.useWorker) {
@@ -100,7 +102,6 @@ class T13NE_Music {
         this.initialized = true;
         Logger.message("T13NE_Music: Initialized.");
 
-        this._registerStandardInstruments();
         await this._generateOrchestralInstruments();
     }
 
@@ -125,9 +126,58 @@ class T13NE_Music {
         engine.defineInstrument('Drum_HiHat_Closed', { type: 'noise', filterType: 'highpass', filterFreq: 5000, envelope: 'percussive', decay: 0.05 });
         engine.defineInstrument('Drum_Cowbell', { type: 'additive', partials: [{ freq: 1, amp: 1 }, { freq: 1.5, amp: 0.5 }], envelope: 'percussive', decay: 0.1 });
 
-        engine.defineInstrument('Synth_Bass', { type: 'additive', isHarmonic: true, envelope: 'sustained', sustain: 0.7, partials: [{ freq: 1, amp: 1 }, { freq: 2, amp: 0.6 }, { freq: 3, amp: 0.4 }, { freq: 4, amp: 0.2 }, { freq: 5, amp: 0.1 }] });
-        engine.defineInstrument('Synth_Lead', { type: 'additive', isHarmonic: true, envelope: 'percussive', partials: [{ freq: 1, amp: 1 }, { freq: 2, amp: 0.5 }, { freq: 3, amp: 0.4 }, { freq: 4, amp: 0.3 }, { freq: 5, amp: 0.2 }, { freq: 6, amp: 0.15 }] });
-        engine.defineInstrument('Synth_Pad', { type: 'additive', isHarmonic: true, envelope: 'sustained', sustain: 0.9, attack: 1.0, release: 2.0, partials: [{ freq: 1, amp: 1 }, { freq: 1.002, amp: 0.8 }, { freq: 1.998, amp: 0.5 }, { freq: 3.003, amp: 0.2 }] });
+        engine.defineInstrument('Synth_Bass', { type: 'additive', isHarmonic: true, envelope: 'sustained', sustain: 0.7, partials: [{ freq: 1, amp: 1 }, { freq: 2, amp: 0.4 }, { freq: 3, amp: 0.3 }, { freq: 0.5, amp: 0.2 }], role: 'bass' });
+        engine.defineInstrument('Synth_Lead', { type: 'additive', isHarmonic: true, envelope: 'percussive', partials: [{ freq: 1, amp: 1 }, { freq: 2, amp: 0.4 }, { freq: 3, amp: 0.3 }, { freq: 4, amp: 0.2 }, { freq: 5, amp: 0.1 }, { freq: 1.5, amp: 0.2 }], vibrato: 0.003, role: 'lead' });
+        engine.defineInstrument('Synth_Pad', {
+            type: 'additive',
+            isHarmonic: true,
+            envelope: 'sustained',
+            sustain: 0.9,
+            attack: 1.2,
+            release: 2.5,
+            partials: [
+                { freq: 1, amp: 1 },
+                { freq: 1.002, amp: 0.8 },
+                { freq: 1.998, amp: 0.6 },
+                { freq: 3.003, amp: 0.3 },
+                { freq: 0.5, amp: 0.5 },
+                { freq: 4.005, amp: 0.1 }
+            ],
+            shimmer: 0.15,
+            vibrato: 0.003,
+            role: 'pad',
+            effects: [{ type: 'reverb', duration: 2.5, decay: 3.0 }]
+        });
+
+        engine.defineInstrument('Synth_Accent', {
+            type: 'additive',
+            isHarmonic: true,
+            envelope: 'percussive',
+            decay: 0.4,
+            partials: [{ freq: 1, amp: 1 }, { freq: 2, amp: 0.6 }, { freq: 3, amp: 0.4 }, { freq: 4, amp: 0.2 }, { freq: 5.5, amp: 0.1 }],
+            vibrato: 0.005,
+            role: 'lead',
+            effects: [{ type: 'reverb', duration: 1.0, decay: 1.5 }]
+        });
+
+        engine.defineInstrument('Synth_Pluck', {
+            type: 'additive',
+            isHarmonic: true,
+            envelope: 'percussive',
+            decay: 0.2,
+            partials: [
+                { freq: 1, amp: 1 },
+                { freq: 2.01, amp: 0.5 },
+                { freq: 3, amp: 0.4 },
+                { freq: 5.2, amp: 0.2 },
+                { freq: 7.4, amp: 0.1 }
+            ],
+            role: 'lead',
+            effects: [
+                { type: 'distortion', amount: 10 },
+                { type: 'reverb', duration: 0.4, decay: 1.0 }
+            ]
+        });
 
         // FX-Rich Instruments
         engine.defineInstrument('Synth_WarpLead', {
@@ -466,7 +516,7 @@ class T13NE_Music {
         }
 
         const stepTime = (60 / track.bpm) / 4;
-        const lookahead = 0.8; 
+        const lookahead = 1.2; // Increased lookahead to prevent gaps during background processing
         this.currentStep = 0;
         let nextStepTime = this.synth.ctx.currentTime + 0.05;
 
@@ -550,15 +600,25 @@ class T13NE_Music {
     }
 
     updateTrack(track) {
-        if (this.currentTrack && this.currentTrack.name === track.name) {
+        // IMPROVED: More lenient track matching to prevent restarts on regeneration
+        const isCompatible = this.currentTrack &&
+            (this.currentTrack.name === track.name ||
+             this.currentTrack.name.startsWith('theme_') && track.name.startsWith('theme_'));
+
+        if (isCompatible) {
+            // Smooth update: replace data without stopping the scheduler
             this.currentTrack.voices = track.voices;
             this.currentTrack.bpm = track.bpm;
             this.currentTrack.timeSignature = track.timeSignature;
             this.currentTrack.measures = track.measures;
             this.currentTrack.totalSteps = track.totalSteps;
-            // this.currentStep = 0; // Removed to allow music to evolve/extend without restarting
+
+            // Do NOT reset currentStep - the scheduler will pick up the new voices
+            // in its next lookahead cycle.
+
+            // Prune channels that are no longer in use
             this.synth.pruneChannels(track.voices.map(v => v.id));
-            Logger.message(`T13NE_Music: Updated track '${track.name}' with new voices.`);
+            Logger.message(`T13NE_Music: Smoothly updated theme '${track.name}'.`);
         } else {
             this.playTrackObject(track);
         }

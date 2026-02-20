@@ -94,9 +94,44 @@ export class AudioAnalyzer {
         const note = this._freqToNote(freq);
 
         // 2. Spectral Analysis (Frequency Domain)
-        const peaks = await this.getSpectralPeaks(buffer, 32, options);
+        // Increase peak count for richer synthesis
+        const peakCount = options.maxPeaks || 64;
+        const peaks = await this.getSpectralPeaks(buffer, peakCount, options);
 
-        return { freq: parseFloat(freq.toFixed(2)), note, peaks };
+        // 3. Envelope Analysis (Simple RMS)
+        const envelope = this._analyzeEnvelope(data, sampleRate);
+
+        return {
+            freq: parseFloat(freq.toFixed(2)),
+            note,
+            peaks,
+            envelope,
+            duration: buffer.duration
+        };
+    }
+
+    _analyzeEnvelope(data, sampleRate) {
+        const windowSize = Math.floor(sampleRate * 0.02); // 20ms windows
+        const rms = [];
+        for (let i = 0; i < data.length; i += windowSize) {
+            let sum = 0;
+            const end = Math.min(i + windowSize, data.length);
+            for (let j = i; j < end; j++) {
+                sum += data[j] * data[j];
+            }
+            rms.push(Math.sqrt(sum / (end - i)));
+        }
+
+        // Simple ADSR estimate
+        let attack = 0, decay = 0, sustain = 0, release = 0;
+        const maxIdx = rms.indexOf(Math.max(...rms));
+        attack = (maxIdx * 0.02);
+
+        // Sustain is average of middle section
+        const middle = rms.slice(maxIdx, Math.floor(rms.length * 0.8));
+        sustain = middle.length > 0 ? (middle.reduce((a,b) => a+b, 0) / middle.length) : 0;
+
+        return { attack, sustain, totalSamples: data.length };
     }
 
     /**
@@ -184,42 +219,55 @@ export class AudioAnalyzer {
     }
 
     _autoCorrelate(buf, sampleRate) {
-        // Optimized time-domain autocorrelation
-        let size = buf.length;
-        // Focus on the "meat" of the sample (ignore silence at start/end)
-        // ... (Simplified logic similar to the CJS script but optimized for browser JS)
+        // High-fidelity pitch detection (YIN-inspired)
+        const size = Math.min(buf.length, 16384); // Larger window for better bass detection
+        const slice = buf.slice(0, size);
 
-        const maxSamples = Math.min(size, 4096);
-        const slice = buf.slice(0, maxSamples);
-        let rms = 0;
-        for (let i = 0; i < maxSamples; i++) {
-            rms += slice[i] * slice[i];
-        }
-        rms = Math.sqrt(rms / maxSamples);
-        if (rms < 0.01) return -1;
-
-        let bestOffset = -1;
-        let maxCorr = 0;
-
-        // Search range for musical freqs (e.g. 20Hz - 4000Hz)
-        // Offset at 44100Hz: 20Hz ~= 2200 samples, 4000Hz ~= 11 samples
-
-        for (let offset = 10; offset < maxSamples / 2; offset++) {
-            let corr = 0;
-            // Optimization: Skip every 2nd sample to reduce main-thread load during analysis
-            // Optimization: Skip samples to reduce main-thread load during analysis (4x skipping)
-            for (let i = 0; i < maxSamples - offset; i += 4) {
-                corr += slice[i] * slice[i + offset];
-            }
-            if (corr > maxCorr) {
-                maxCorr = corr;
-                bestOffset = offset;
+        // Difference function
+        const diff = new Float32Array(size / 2);
+        for (let tau = 0; tau < size / 2; tau++) {
+            for (let i = 0; i < size / 2; i++) {
+                const delta = slice[i] - slice[i + tau];
+                diff[tau] += delta * delta;
             }
         }
 
-        if (bestOffset > 0) {
-            return sampleRate / bestOffset;
+        // Cumulative mean normalized difference
+        const cmnd = new Float32Array(size / 2);
+        cmnd[0] = 1;
+        let runningSum = 0;
+        for (let tau = 1; tau < size / 2; tau++) {
+            runningSum += diff[tau];
+            cmnd[tau] = diff[tau] / (runningSum / tau);
         }
+
+        // Absolute threshold
+        const threshold = 0.15;
+        let tau = -1;
+        for (let t = 1; t < size / 2; t++) {
+            if (cmnd[t] < threshold) {
+                tau = t;
+                // Refine to local minimum
+                while (t + 1 < size / 2 && cmnd[t + 1] < cmnd[t]) {
+                    t++;
+                    tau = t;
+                }
+                break;
+            }
+        }
+
+        if (tau > 0) {
+            // Parabolic interpolation for sub-sample precision
+            let betterTau = tau;
+            if (tau > 0 && tau < size / 2 - 1) {
+                const s0 = cmnd[tau - 1];
+                const s1 = cmnd[tau];
+                const s2 = cmnd[tau + 1];
+                betterTau = tau + (s2 - s0) / (2 * (2 * s1 - s2 - s0));
+            }
+            return sampleRate / betterTau;
+        }
+
         return -1;
     }
 
