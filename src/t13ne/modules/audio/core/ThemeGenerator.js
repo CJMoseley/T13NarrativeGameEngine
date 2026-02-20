@@ -102,6 +102,13 @@ class VirtualArtist {
         } else {
             this.personality = 'syncopated';
         }
+
+        // Ensure Lead personalities are in a singable octave
+        if (this.personality === 'lead' || this.role === 'lead') {
+            const currentOctave = this.geometry?.geometry?.Octave || 4;
+            if (currentOctave < 4) this.setOctave(4);
+            if (currentOctave > 6) this.setOctave(6);
+        }
     }
 
     async prepare() {
@@ -915,7 +922,8 @@ export class ThemeGenerator {
             activeLeads: leadsCount,
             leadMeasures: leadMeasures,
             artistIndex: 0,
-            stepsPerBar: stepsPerBar
+            stepsPerBar: stepsPerBar,
+            conductor: conductor
         };
 
         // Process members asynchronously to avoid frame drops
@@ -1128,7 +1136,8 @@ export class ThemeGenerator {
             // Just return empty, the ensemble accent logic below will handle it
             events = [];
         } else if (playStyle === 'bass') {
-            events = this._generateBassline(rhythm, artist.entity, progression, baseFreq / 4, beatTime, artist.geoNum, tensionLevel);
+            const titleRhythm = this._getSyllableRhythm(context.conductor?.name);
+            events = this._generateBassline(rhythm, artist.entity, progression, baseFreq / 4, beatTime, artist.geoNum, tensionLevel, titleRhythm);
         } else if (playStyle === 'lead' || playStyle === 'solo') {
             const motif = this.getCharacterComposition(artist);
             if (motif) {
@@ -1451,6 +1460,36 @@ export class ThemeGenerator {
         return count || 4;
     }
 
+    /**
+     * Converts a phrase into a rhythmic pattern of durations.
+     * Long vowels or multi-syllable words get varied durations.
+     */
+    _getSyllableRhythm(phrase) {
+        if (!phrase) return [0.5, 0.5, 0.5, 0.5];
+        const words = phrase.split(/[^a-zA-Z]+/);
+        const rhythm = [];
+
+        words.forEach(word => {
+            if (!word) return;
+            const syllableCount = this._countSyllables(word);
+
+            // Map syllables to durations
+            // Short words/syllables: 0.25 or 0.5
+            // Long words or stressed syllables: 1.0
+            for (let i = 0; i < syllableCount; i++) {
+                if (word.length > 6 && i === 0) {
+                    rhythm.push(1.0); // Emphasis on first syllable of long words
+                } else if (syllableCount === 1) {
+                    rhythm.push(0.5);
+                } else {
+                    rhythm.push(0.25);
+                }
+            }
+        });
+
+        return rhythm.length > 0 ? rhythm : [0.5, 0.5, 0.5, 0.5];
+    }
+
     _generateRhythm(ship = null, progression = [], stepsPerBar = 16, seed = null, minMeasures = 4) {
         const name = ship ? ship.name : 'default';
         const rng = new MusicRNG(seed || name);
@@ -1664,7 +1703,7 @@ export class ThemeGenerator {
         });
     }
 
-    _generateBassline(rhythm, ship, progression, keyRootFreq, beatTime, styleOverride = null, tensionLevel = 2) {
+    _generateBassline(rhythm, ship, progression, keyRootFreq, beatTime, styleOverride = null, tensionLevel = 2, titleRhythm = null) {
         const events = [];
         const densityMultiplier = 0.5 + (tensionLevel / 11) * 1.0;
         if (!this.bassPatterns || Object.keys(this.bassPatterns).length === 0) {
@@ -1732,6 +1771,22 @@ export class ThemeGenerator {
                 for (let i = 2; i < stepsInChord; i += 4) {
                     events.push({ voice: 'v_bass', step: currentStepOffset + i, freq: getFreq(0), duration: 0.2, velocity: 0.8 + velocityBoost });
                 }
+            } else if (titleRhythm && (barIndex % 4 === 2)) {
+                // ECHO LOGIC: Echo the title rhythm in the bassline every few bars
+                let echoStep = 0;
+                titleRhythm.forEach((dur, i) => {
+                    if (echoStep < stepsInChord) {
+                        const interval = i === 0 ? 0 : rng.pick(intervals);
+                        events.push({
+                            voice: 'v_bass',
+                            step: currentStepOffset + echoStep,
+                            freq: getFreq(interval),
+                            duration: dur * beatTime,
+                            velocity: 0.85
+                        });
+                        echoStep += Math.ceil(dur * 4);
+                    }
+                });
             } else {
                 for (let i = 0; i < stepsInChord; i += 2) {
                     if (rng.next() < (pattern.density || 0.5) * densityMultiplier) {
@@ -1863,8 +1918,10 @@ export class ThemeGenerator {
 
                 if (isSingable) {
                     // Favor small intervals for singable melodies
-                    if (melodicInterval <= 2 || melodicInterval >= 10) weight += 3.0;
-                    else if (melodicInterval > 4 && melodicInterval < 8) weight *= 0.2; // Penalize tritone/large jumps
+                    if (melodicInterval === 0) weight += 4.0; // Repeated notes
+                    else if (melodicInterval <= 2 || melodicInterval >= 10) weight += 5.0; // Steps
+                    else if (melodicInterval === 5 || melodicInterval === 7) weight += 2.0; // Perfect 4th/5th
+                    else if (melodicInterval > 7 || (melodicInterval > 2 && melodicInterval < 5)) weight *= 0.1; // Penalize jumps
                 }
 
                 if (melodicInterval === 0) weight += 1.5;
@@ -1913,7 +1970,11 @@ export class ThemeGenerator {
             harmonicStepDistribution = this._getMelodicIntervalDistribution(harmonicIntervals);
         }
         const transitionMatrix = this._generateMarkovTransitions(allowedScaleIntervals, harmonicStepDistribution, character);
-        const length = rng.range(8, 16);
+
+        // SYLLABLE RHYTHM INTEGRATION
+        const syllableRhythm = this._getSyllableRhythm(character.name);
+        const length = Math.max(syllableRhythm.length, 8);
+
         const sequence = [];
         const noteDurations = [0.25, 0.5, 1.0];
         let currentNoteIndex = 0;
@@ -1932,9 +1993,21 @@ export class ThemeGenerator {
             const interval = allowedScaleIntervals[nextNoteIndex];
             const finalPitchIndex = (rootKeyIndex + interval) % 12;
             const pitchName = CHROMATIC_SCALE[finalPitchIndex];
-            const octaveOffset = rng.pick([0, 0, 1]);
+
+            // Refine octave for singability (Lead voices should stay in Octave 4-5)
+            let octaveOffset = rng.pick([0, 0, 1]);
+            const instId = character.instrumentId?.toLowerCase() || '';
+            if (instId.includes('voice') || instId.includes('lead') || instId.includes('melody')) {
+                // Force into a melodic range relative to baseFreq
+                // If baseFreq is already Octave 4, offset 0 or 1 is perfect.
+            }
+
             const freq = baseFreq * Math.pow(2, (interval + (octaveOffset * 12)) / 12);
-            sequence.push({ freq: freq, duration: rng.pick(noteDurations), interval: interval, pitchName: pitchName });
+
+            // Use syllable rhythm for the primary phrase, then vary
+            const duration = (i < syllableRhythm.length) ? syllableRhythm[i] : rng.pick(noteDurations);
+
+            sequence.push({ freq: freq, duration: duration, interval: interval, pitchName: pitchName });
             currentNoteIndex = nextNoteIndex;
         }
         const composition = { name: `${character.name}'s Theme`, key: keyData.Key.Key, baseFreq: baseFreq, scale: allowedScaleIntervals, sequence: sequence, tempo: 100 + (geo.Facade * 2) };
