@@ -368,29 +368,45 @@ export class InstrumentEngine {
     }
 
     async createSyntheticInstrument(sourceId, newId, depth = 'full', envelope = 'percussive', role = 'lead') {
+        // 1. Check Synthetic Store first
+        const existingSynth = this.manifestManager.manifest.instruments[newId];
+        if (existingSynth && existingSynth.definition) {
+            this.defineInstrument(newId, existingSynth.definition);
+            Logger.message(`InstrumentEngine: Loaded synthetic instrument '${newId}' from persistent store.`);
+            return newId;
+        }
+
+        // 2. Not in store, need to create from sample source
         const buffer = this.samples.get(sourceId);
         if (!buffer) {
-            Logger.warn(`InstrumentEngine: Cannot create synthetic from '${sourceId}', source buffer missing.`);
+            Logger.warn(`InstrumentEngine: Source buffer '${sourceId}' missing for synthetic creation. Checking for raw sample...`);
+            const url = this.manifestManager.getAssetPath('samples', sourceId);
+            if (url) {
+                const success = await this.loadSample(sourceId, url);
+                if (success) return this.createSyntheticInstrument(sourceId, newId, depth, envelope, role);
+            }
+
+            Logger.warn(`InstrumentEngine: Cannot create synthetic from '${sourceId}'. Using algorithmic fallback.`);
             return this.createSyntheticFallback(sourceId, newId, depth, envelope, role);
         }
 
-        Logger.message(`InstrumentEngine: Creating synthetic sample from '${sourceId}'...`);
+        Logger.message(`InstrumentEngine: Creating high-fidelity synthetic instrument from '${sourceId}'...`);
 
         if (!this.analyzer) {
             const { AudioAnalyzer } = await import('/src/t13ne/modules/audio/t13ne-audio-analyzer.js');
             this.analyzer = new AudioAnalyzer(this.ctx);
         }
 
-        // 1. Perform Deep Analysis and GPU Bake
-        // depth 'full' -> use more peaks
+        // 3. Perform Deep Analysis and GPU Bake
+        // High peak count for better realism
         const syntheticBuffer = await this.analyzer.analyzeAndBake(buffer);
         const analysis = await this.analyzer.analyze(syntheticBuffer);
 
-        // 2. Store as a NEW Sample
+        // 4. Store the buffer
         const synthSampleId = `syn_${newId}`;
         this.samples.set(synthSampleId, syntheticBuffer);
 
-        // 3. Define as a Sampler (using the synthetic wave)
+        // 5. Define as a Sampler (using the synthetic wave)
         const def = {
             type: 'sampler',
             sampleId: synthSampleId,
@@ -398,19 +414,21 @@ export class InstrumentEngine {
             key: analysis.note,
             envelope: envelope,
             role: role,
-            isSynthetic: true
+            isSynthetic: true,
+            peaks: analysis.peaks // Persist the peaks too
         };
 
         this.defineInstrument(newId, def);
 
-        // 4. Update Manifest
+        // 6. Update Persistent Store (Memory for now, can be exported in Author Mode)
         this.manifestManager.addToManifest('instruments', newId, {
             definition: def,
             source: sourceId,
-            timestamp: Date.now()
+            timestamp: Date.now(),
+            fidelity: depth
         });
 
-        Logger.message(`Created High-Fidelity Synthetic Sample Instrument '${newId}'`);
+        Logger.message(`Created High-Fidelity Synthetic Sample Instrument '${newId}' (Freq: ${analysis.freq}Hz)`);
         return newId;
     }
 
