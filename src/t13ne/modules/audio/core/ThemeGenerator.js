@@ -8,9 +8,9 @@ const CHROMATIC_SCALE = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', '
 
 // Safe Logger fallback for Worker compatibility
 const SafeLogger = {
-    message: (msg) => typeof Logger !== 'undefined' ? Logger.message(msg) : console.log(`[MSG] ${msg}`),
-    warn: (msg, err) => typeof Logger !== 'undefined' ? Logger.warn(msg, err) : console.warn(`[WARN] ${msg}`, err || ''),
-    error: (msg, err) => typeof Logger !== 'undefined' ? Logger.error(msg, err) : console.error(`[ERR] ${msg}`, err || '')
+    message: (msg) => (typeof Logger !== 'undefined' && Logger !== SafeLogger) ? Logger.message(msg) : console.log(`[MSG] ${msg}`),
+    warn: (msg, err) => (typeof Logger !== 'undefined' && Logger !== SafeLogger) ? Logger.warn(msg, err) : console.warn(`[WARN] ${msg}`, err || ''),
+    error: (msg, err) => (typeof Logger !== 'undefined' && Logger !== SafeLogger) ? Logger.error(msg, err) : console.error(`[ERR] ${msg}`, err || '')
 };
 
 class VirtualArtist {

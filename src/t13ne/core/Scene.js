@@ -245,6 +245,10 @@ export class Scene {
 
         this.update(time, delta);
 
+        if (this.gameEngine && typeof this.gameEngine.update === 'function') {
+            this.gameEngine.update(time, delta);
+        }
+
         if (this.activeCamera && this.renderer) {
             this.renderer.render(this.scene, this.activeCamera);
         }

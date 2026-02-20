@@ -6,6 +6,7 @@ import { AudioAnalyzer } from "/src/t13ne/modules/audio/t13ne-audio-analyzer.js"
 import { ThemeGenerator } from "/src/t13ne/modules/audio/core/ThemeGenerator.js";
 import { AudioManifestManager } from "/src/t13ne/modules/audio/core/AudioManifestManager.js";
 import { T13Synth } from "/src/t13ne/modules/audio/core/T13Synth.js";
+import { WorkerPool } from "/src/t13ne/core/WorkerPool.js";
 
 /**
  * T13NE Music Module
@@ -14,7 +15,7 @@ import { T13Synth } from "/src/t13ne/modules/audio/core/T13Synth.js";
 class T13NE_Music {
     constructor() {
         this.t13ne = null;
-        this.worker = null;
+        this.workerPool = null;
         this.geometry = null;
         this.soundEngine = null;
         this.synth = null;
@@ -722,30 +723,19 @@ class T13NE_Music {
         if (this.themeGenerator) {
             this.themeGenerator.performanceMode = mode;
         }
-        if (this.useWorker && this.worker) {
-            this.callWorker('setPerformanceMode', mode);
+        if (this.useWorker && this.workerPool) {
+            this.workerPool.broadcast('setPerformanceMode', mode);
         }
         Logger.message(`T13NE_Music: Performance mode set to ${mode}`);
     }
 
-    initWorker() {
-        if (this.worker) return;
+    async initWorker() {
+        if (this.workerPool) return;
 
         try {
-            this.worker = new Worker(new URL('./core/MusicWorker.js', import.meta.url), { type: 'module' });
-            this.worker.onmessage = (e) => this.handleWorkerMessage(e.data);
+            this.workerPool = new WorkerPool('music', new URL('./core/MusicWorker.js', import.meta.url), 1);
 
-            if (!this._pendingRequests) this._pendingRequests = new Map();
-            const requestId = 'init_' + Math.random().toString(36).substring(7);
-
-            this._pendingRequests.set(requestId, {
-                resolve: () => Logger.message("T13NE_Music: Worker initialized."),
-                reject: (err) => Logger.error("T13NE_Music: Worker failed to initialize.", err)
-            });
-
-            // Send initial data to worker
-            const codexData = {};
-            // We need to pass the loaded patterns to the worker
+            // Send initial data to all workers in the pool
             const patterns = {
                 'music:drumpatterns.json': this.themeGenerator.drumPatterns,
                 'music:harmonic_patterns.json': { patterns: this.themeGenerator.harmonicPatterns },
@@ -754,65 +744,34 @@ class T13NE_Music {
                 'geometry:tonalModes.json': this.tonalModes
             };
 
-            // Also need RomanChords
             const geometryData = {
                 romanChords: this.geometry?.RomanChords || [],
                 keys: this.geometry?.keys || {}
             };
 
-            this.worker.postMessage({
-                type: 'init',
-                data: {
-                    codexData: patterns,
-                    geometryData: geometryData,
-                    manifest: this.manifestManager.manifest
-                },
-                requestId
+            await this.workerPool.broadcast('init', {
+                codexData: patterns,
+                geometryData: geometryData,
+                manifest: this.manifestManager.manifest,
+                performanceMode: this.themeGenerator.performanceMode
             });
+
+            Logger.message("T13NE_Music: Worker pool initialized.");
         } catch (e) {
-            Logger.error("T13NE_Music: Failed to initialize worker.", e);
+            Logger.error("T13NE_Music: Failed to initialize worker pool.", e);
             this.useWorker = false;
         }
     }
 
-    handleWorkerMessage(data) {
-        const { type, track, requestId, error } = data;
-
-        if (this._pendingRequests && this._pendingRequests.has(requestId)) {
-            const { resolve, reject } = this._pendingRequests.get(requestId);
-            this._pendingRequests.delete(requestId);
-
-            if (type === 'error') {
-                reject(new Error(error));
-            } else {
-                console.log(`T13NE_Music: Resolving request ${requestId} (${type})`);
-                resolve(track || data);
-            }
-        } else {
-            if (type !== 'initialized' && type !== 'performanceModeSet') {
-                console.warn(`T13NE_Music: Received worker message for unknown requestId ${requestId}`, data);
-            }
-        }
-    }
-
     async callWorker(type, data) {
-        if (!this.worker) return null;
-
-        if (!this._pendingRequests) this._pendingRequests = new Map();
-        const requestId = Math.random().toString(36).substring(7);
-
-        return new Promise((resolve, reject) => {
-            this._pendingRequests.set(requestId, { resolve, reject });
-            this.worker.postMessage({ type, data, requestId });
-
-            // Timeout after 10s
-            setTimeout(() => {
-                if (this._pendingRequests.has(requestId)) {
-                    this._pendingRequests.delete(requestId);
-                    reject(new Error("Worker request timed out"));
-                }
-            }, 10000);
-        });
+        if (!this.workerPool) return null;
+        try {
+            const response = await this.workerPool.execute(type, data);
+            return response.track || response;
+        } catch (e) {
+            Logger.error(`T13NE_Music: Worker task failed (${type}):`, e);
+            throw e;
+        }
     }
 }
 

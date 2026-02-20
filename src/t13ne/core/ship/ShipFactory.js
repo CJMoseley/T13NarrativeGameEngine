@@ -15,6 +15,7 @@ import { WiringGenerator } from '/src/t13ne/core/ship/WiringGenerator.js';
 import { ShipGenerator } from '/src/t13ne/core/ship/ShipGenerator.js';
 import { ShipAssembler } from '/src/t13ne/core/ship/ShipAssembler.js';
 import { COMPONENT_COLORS } from '/src/t13ne/core/ship/ShipUtils.js';
+import { WorkerPool } from '/src/t13ne/core/WorkerPool.js';
 
 export { COMPONENT_COLORS };
 
@@ -49,7 +50,7 @@ export class ShipFactory {
         this.renderBridge = null; // Lazy init or remove if unused
 
         this.shipCache = new Map();
-        this.worker = null;
+        this.workerPool = null;
         this.useWorker = true;
         this.initWorker();
 
@@ -72,7 +73,7 @@ export class ShipFactory {
      * @returns {Array<object>} List of component definitions ready for generation.
      */
     async createRandomShip(seed, config = {}) {
-        if (this.useWorker && this.worker) {
+        if (this.useWorker && this.workerPool) {
             return await this.callWorker('createRandomShip', { seed, config });
         }
         return await this.shipGenerator.createRandomShip(seed, config);
@@ -245,8 +246,8 @@ export class ShipFactory {
 
     setPerformanceMode(mode) {
         if (this.hullGenerator) this.hullGenerator.setPerformanceMode(mode);
-        if (this.useWorker && this.worker) {
-            this.callWorker('setPerformanceMode', mode);
+        if (this.useWorker && this.workerPool) {
+            this.workerPool.broadcast('setPerformanceMode', mode);
         }
     }
 
@@ -256,39 +257,26 @@ export class ShipFactory {
             return;
         }
         try {
-            this.worker = new Worker(new URL('./ShipWorker.js', import.meta.url), { type: 'module' });
-            this.worker.onmessage = (e) => this.handleWorkerMessage(e.data);
-            this._pendingRequests = new Map();
+            this.workerPool = new WorkerPool('ship', new URL('./ShipWorker.js', import.meta.url), 2);
+            this.useWorker = true;
         } catch (e) {
-            console.error("ShipFactory: Failed to initialize worker.", e);
+            console.error("ShipFactory: Failed to initialize worker pool.", e);
             this.useWorker = false;
         }
     }
 
-    handleWorkerMessage(data) {
-        const { type, components, geometryData, requestId, error } = data;
-        if (this._pendingRequests && this._pendingRequests.has(requestId)) {
-            const { resolve, reject } = this._pendingRequests.get(requestId);
-            this._pendingRequests.delete(requestId);
-            if (error) reject(new Error(error));
-            else if (type === 'shipCreated') resolve(components);
-            else if (type === 'hullGenerated') resolve(geometryData);
-            else resolve(data);
-        }
-    }
-
     async callWorker(type, data) {
-        if (!this.worker) return null;
-        const requestId = Math.random().toString(36).substring(7);
-        return new Promise((resolve, reject) => {
-            this._pendingRequests.set(requestId, { resolve, reject });
-            this.worker.postMessage({ type, data, requestId });
-            setTimeout(() => {
-                if (this._pendingRequests.has(requestId)) {
-                    this._pendingRequests.delete(requestId);
-                    reject(new Error(`ShipWorker request '${type}' timed out`));
-                }
-            }, 30000);
-        });
+        if (!this.workerPool) return null;
+        try {
+            const response = await this.workerPool.execute(type, data);
+
+            const { type: respType, components, geometryData } = response;
+            if (respType === 'shipCreated') return components;
+            if (respType === 'hullGenerated') return geometryData;
+            return response;
+        } catch (e) {
+            console.error(`ShipFactory: Worker call failed (${type}):`, e);
+            throw e;
+        }
     }
 }

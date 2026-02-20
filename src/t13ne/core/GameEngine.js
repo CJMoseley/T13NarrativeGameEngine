@@ -128,8 +128,6 @@ export class GameEngine {
 
             await Promise.race([startPosPromise, timeoutPromise]);
 
-            await Promise.race([startPosPromise, timeoutPromise]);
-
             this.galacticPlot = await this.generateGalacticCycle();
             Logger.message("GameEngine: Data-dependent initialization complete.");
             EventBus.emit('engine:initialized', this);
@@ -171,10 +169,6 @@ export class GameEngine {
         }
     }
 
-    /**
-     * Generates the overarching Galactic History Cycle Plot using T13NE structures.
-     * This defines the current era's major conflict.
-     */
     /**
      * Generates the overarching Galactic History Cycle Plot using T13NE structures.
      * This defines the current era's major conflict.
@@ -357,9 +351,16 @@ export class GameEngine {
 
     /**
      * The main update function, called every frame by the active scene.
-     * @param {number} deltaTime - The time since the last frame.
+     * @param {number} time - The high-resolution timestamp from requestAnimationFrame.
+     * @param {number} delta - The time in milliseconds since the last frame.
      */
-    update(deltaTime) {
-        // ... (rest of the file is unchanged)
+    update(time, delta) {
+        if (this.physicsEngine) {
+            this.physicsEngine.update(time, delta);
+        }
+
+        // Update sound generators if active
+        if (this.engineSound) this.engineSound.update(time, delta);
+        if (this.wormholeAmbiance) this.wormholeAmbiance.update(time, delta);
     }
 }
