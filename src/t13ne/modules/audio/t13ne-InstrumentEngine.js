@@ -415,7 +415,9 @@ export class InstrumentEngine {
             envelope: envelope,
             role: role,
             isSynthetic: true,
-            peaks: analysis.peaks // Persist the peaks too
+            peaks: analysis.peaks, // Persist the peaks too
+            attack: analysis.envelope?.attack || 0.01,
+            sustain: analysis.envelope?.sustain || 1.0
         };
 
         this.defineInstrument(newId, def);

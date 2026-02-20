@@ -29,6 +29,8 @@ class T13NE_Music {
         this.activeComponents = [];
         this.currentTrackName = null;
         this.currentTrack = null; // Store active track object for live updates
+        this.nextTrackBuffer = null; // Double-buffer for seamless variations
+        this.isGeneratingVariation = false;
         this.currentStep = 0;
         this.trackCache = new Map(); // Cache for generated tracks to prevent hitches
 
@@ -286,7 +288,7 @@ class T13NE_Music {
         Logger.message(`T13NE_Music: Active components updated. Focal Influence: ${this.activeComponents[this.activeComponents.length - 1].name}`);
     }
 
-    async createMainTheme(gameEngine) {
+    async createMainTheme(gameEngine, forceVariation = false) {
         if (!this.synth) return;
 
         const tensionModule = this.t13ne ? this.t13ne.getModule('Tension') : null;
@@ -305,12 +307,13 @@ class T13NE_Music {
         }
         const trackId = `theme_${Math.abs(hash)}`;
 
-        if (this.trackCache.has(trackId) && !this.needsRegeneration) {
+        // If not forcing a variation and we have a cache, use it
+        if (!forceVariation && !this.needsRegeneration && this.trackCache.has(trackId)) {
             Logger.message(`T13NE_Music: Using cached theme '${trackId}'`);
             return this.trackCache.get(trackId);
         }
 
-        Logger.message("T13NE_Music: Generating Main Theme (Async)...");
+        Logger.message(`T13NE_Music: Generating ${forceVariation ? 'Variation' : 'Main Theme'} (Async)...`);
 
         let trackData;
         if (this.useWorker && this.worker) {
@@ -333,7 +336,7 @@ class T13NE_Music {
             trackData = await this.callWorker('generateMainTheme', {
                 activeComponents: sanitizedComponents,
                 tensionLevel: currentTension,
-                forceRegeneration: this.needsRegeneration
+                forceRegeneration: this.needsRegeneration || forceVariation
             });
 
             // Ensure main thread has all instruments defined
@@ -345,13 +348,15 @@ class T13NE_Music {
                 }
             }
         } else {
-            trackData = await this.themeGenerator.createMainTheme(this.activeComponents, gameEngine, this.needsRegeneration, currentTension);
+            trackData = await this.themeGenerator.createMainTheme(this.activeComponents, gameEngine, this.needsRegeneration || forceVariation, currentTension);
         }
 
         if (!trackData) return;
         
-        this.trackCache.set(trackId, trackData);
-        this.saveTrack(trackId, trackData);
+        if (!forceVariation) {
+            this.trackCache.set(trackId, trackData);
+            this.saveTrack(trackId, trackData);
+        }
         this.needsRegeneration = false;
         return trackData;
     }
@@ -536,8 +541,38 @@ class T13NE_Music {
             
             const safeTotalSteps = (!totalSteps || isNaN(totalSteps)) ? 64 : totalSteps;
 
+            // Double-Buffering: Trigger variation generation when nearing the end of the track
+            if (this.currentTrackName?.startsWith('theme_') && !this.isGeneratingVariation && !this.nextTrackBuffer) {
+                const stepsRemaining = safeTotalSteps - this.currentStep;
+                // If we are in the last 2 measures, start generating the next variation
+                if (stepsRemaining < (stepsPerMeasure * 2) && stepsRemaining > 0) {
+                    this.isGeneratingVariation = true;
+                    this.createMainTheme(null, true).then(variation => {
+                        this.nextTrackBuffer = variation;
+                        this.isGeneratingVariation = false;
+                        Logger.message("T13NE_Music: Next theme variation buffered.");
+                    }).catch(e => {
+                        Logger.error("T13NE_Music: Failed to buffer variation.", e);
+                        this.isGeneratingVariation = false;
+                    });
+                }
+            }
+
             // Fix: Ensure currentStep is within bounds if track length changed during update
             if (this.currentStep >= safeTotalSteps) {
+                // If we have a buffered variation, swap it in at the loop point
+                if (this.nextTrackBuffer) {
+                    const nextTrack = this.nextTrackBuffer;
+                    this.nextTrackBuffer = null;
+                    this.updateTrack(nextTrack);
+                    // Re-calculate steps for the new track
+                    const nextTs = nextTrack.timeSignature || [4, 4];
+                    const nextStepsPerMeasure = Math.floor(nextTs[0] * (16 / nextTs[1]));
+                    const nextTotalSteps = nextTrack.totalSteps || (nextTrack.measures * nextStepsPerMeasure);
+                    this.currentStep = 0;
+                    Logger.message(`T13NE_Music: Successfully transitioned to buffered variation '${nextTrack.name}'.`);
+                    return schedule(); // Re-run with new track data
+                }
                 this.currentStep = this.currentStep % safeTotalSteps;
             }
 

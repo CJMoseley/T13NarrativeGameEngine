@@ -102,6 +102,13 @@ class VirtualArtist {
         } else {
             this.personality = 'syncopated';
         }
+
+        // Ensure Lead personalities are in a singable octave
+        if (this.personality === 'lead' || this.role === 'lead') {
+            const currentOctave = this.geometry?.geometry?.Octave || 4;
+            if (currentOctave < 4) this.setOctave(4);
+            if (currentOctave > 6) this.setOctave(6);
+        }
     }
 
     async prepare() {
@@ -890,6 +897,21 @@ export class ThemeGenerator {
             bassAssigned = true;
         }
 
+        // Pre-calculate which lead owns which measure for coordination
+        const leadMeasures = new Map();
+        if (leadsCount > 0) {
+            for (let m = 0; m < trackMeasures; m++) {
+                const leadOwnerIdx = Math.floor(m / 2) % leadsCount;
+                let currentLead = 0;
+                assignedRoles.forEach((r, artistIdx) => {
+                    if (r === 'lead' || r === 'solo') {
+                        if (currentLead === leadOwnerIdx) leadMeasures.set(m, artistIdx);
+                        currentLead++;
+                    }
+                });
+            }
+        }
+
         const bandContext = {
             baseFreq: band.baseFreq,
             beatTime: beatTime,
@@ -898,14 +920,17 @@ export class ThemeGenerator {
             rng: rng,
             tensionLevel: band.tensionLevel || 2,
             activeLeads: leadsCount,
-            leadIndex: 0,
-            stepsPerBar: stepsPerBar
+            leadMeasures: leadMeasures,
+            artistIndex: 0,
+            stepsPerBar: stepsPerBar,
+            conductor: conductor
         };
 
         // Process members asynchronously to avoid frame drops
         for (let index = 0; index < band.members.length; index++) {
             const artist = band.members[index];
             const role = assignedRoles[index];
+            bandContext.artistIndex = index;
             
             const artistStepsPerBar = band.polyrhythms.get(artist.name) || band.stepsPerBar;
             const totalArtistSteps = trackMeasures * artistStepsPerBar;
@@ -915,10 +940,6 @@ export class ThemeGenerator {
             const voiceId = `v_${artist.name.replace(/[^a-zA-Z0-9]/g, '_')}_${index}`;
             
             const events = this._generateArtistPart(artist, bandContext, voiceId, role);
-
-            if (role === 'lead' || role === 'solo') {
-                bandContext.leadIndex++;
-            }
 
             if (events.length > 0) {
                 voices.push({
@@ -1044,6 +1065,22 @@ export class ThemeGenerator {
 
         // Map events to voices
         const voiceMap = new Map();
+
+        // Ensure core kit voices always exist to avoid "single drum" feel even if pattern is sparse
+        ['kick', 'snare', 'hat'].forEach(k => {
+            if (kit[k]) {
+                voiceMap.set(k, {
+                    id: k,
+                    name: k,
+                    instrument: kit[k],
+                    sequence: [],
+                    mute: false,
+                    isDrum: true,
+                    loopLength: totalSteps
+                });
+            }
+        });
+
         events.forEach(evt => {
             // Map v_kick etc from _generateRhythm to local kit keys if needed
             let kitKey = evt.voice.replace('v_', '');
@@ -1071,7 +1108,7 @@ export class ThemeGenerator {
 
     _generateArtistPart(artist, context, voiceId, roleOverride = null) {
         const { personality } = artist;
-        const { rhythm, progression, baseFreq, beatTime, rng, tensionLevel, activeLeads, leadIndex } = context;
+        const { rhythm, progression, baseFreq, beatTime, rng, tensionLevel, activeLeads, leadMeasures, artistIndex } = context;
         let events = [];
 
         // NEW: Check for MIDI motif first
@@ -1082,22 +1119,38 @@ export class ThemeGenerator {
         }
 
         let playStyle = roleOverride || personality;
-        
-        if (playStyle === 'bass') {
-            events = this._generateBassline(rhythm, artist.entity, progression, baseFreq / 4, beatTime, artist.geoNum, tensionLevel);
+
+        // Check if artist is "distant" from the band's base frequency
+        const bandBaseFreq = context.baseFreq;
+        const artistBaseFreq = artist.keyData.Frequency;
+        const ratio = artistBaseFreq / bandBaseFreq;
+        const semitoneDiff = Math.abs(12 * Math.log2(ratio));
+        const isDistant = semitoneDiff > 4 && (semitoneDiff % 12) > 2 && (semitoneDiff % 12) < 10;
+
+        if (isDistant && playStyle !== 'bass') {
+            // Distant voices focus on accents only
+            playStyle = 'accent_specialist';
+        }
+
+        if (playStyle === 'accent_specialist') {
+            // Just return empty, the ensemble accent logic below will handle it
+            events = [];
+        } else if (playStyle === 'bass') {
+            const titleRhythm = this._getSyllableRhythm(context.conductor?.name);
+            events = this._generateBassline(rhythm, artist.entity, progression, baseFreq / 4, beatTime, artist.geoNum, tensionLevel, titleRhythm);
         } else if (playStyle === 'lead' || playStyle === 'solo') {
             const motif = this.getCharacterComposition(artist);
             if (motif) {
                 const isSolo = playStyle === 'solo';
                 events = this._motifToHarmonizedEvents(motif, voiceId, beatTime, progression, baseFreq, isSolo, tensionLevel);
 
-                // Lead Trading Logic
+                // Lead Trading Logic (Conversation)
                 if (activeLeads > 1) {
                     const stepsPerBar = context.stepsPerBar || 16;
                     events = events.filter(e => {
                         const measure = Math.floor(e.step / stepsPerBar);
-                        // Every lead gets 2 bars
-                        return (Math.floor(measure / 2) % activeLeads) === leadIndex;
+                        const owner = leadMeasures.get(measure);
+                        return owner === artistIndex;
                     });
                 }
             }
@@ -1119,7 +1172,7 @@ export class ThemeGenerator {
                     });
                 }
             });
-        } else if (playStyle === 'support') {
+        } else if (playStyle === 'support' || playStyle === 'rhythm') {
             const h = this._generateHarmonics(rhythm, artist.entity, progression, baseFreq, tensionLevel);
             const isPad = artist.instrumentId.toLowerCase().includes('pad') || artist.instrumentId.toLowerCase().includes('string');
             events = isPad ? h.pad : h.guitar;
@@ -1156,6 +1209,61 @@ export class ThemeGenerator {
              events = h.guitar;
              events.forEach(e => e.voice = voiceId);
         }
+
+        // Space-making pass (Conversation)
+        const stepsPerBar = context.stepsPerBar || 16;
+        events.forEach(e => {
+            const measure = Math.floor(e.step / stepsPerBar);
+            const owner = leadMeasures.get(measure);
+            if (owner !== undefined && owner !== artistIndex) {
+                // Not leading this bar.
+                if (playStyle === 'bass') {
+                    // Bass keeps the groove but slightly quieter
+                    e.velocity *= 0.9;
+                } else if (playStyle === 'lead' || playStyle === 'solo') {
+                    // This artist is a lead but not currently "speaking"
+                    e.mute = true;
+                } else {
+                    // Supporting role: reduce density
+                    e.velocity *= 0.7;
+                    if (rng.next() > 0.5) e.mute = true;
+                }
+            }
+        });
+        events = events.filter(e => !e.mute);
+
+        // Ensemble Coordination: Add harmonious accents on chord changes
+        const isAccentSpecialist = playStyle === 'accent_specialist';
+        const accentChance = isAccentSpecialist ? 0.8 : (0.3 + (tensionLevel / 20));
+
+        if (rng.next() < accentChance) {
+            let stepAcc = 0;
+            progression.forEach(chord => {
+                const stepsInChord = chord.durationSteps;
+                // Add a coordinated accent hit on the first beat of the chord change
+                const currentRootFreq = chord.keyFreq || baseFreq;
+
+                // Use the artist's natural octave for their accent
+                const artistOctave = artist.keyData.KeyNo || 4;
+                const octaveShift = (artistOctave - 4) * 12;
+
+                const freq = currentRootFreq * Math.pow(2, (chord.rootOffset + octaveShift) / 12);
+
+                // Don't duplicate if a note already exists exactly at this step
+                if (!events.some(e => e.step === stepAcc)) {
+                    events.push({
+                        voice: voiceId,
+                        step: stepAcc,
+                        freq: freq,
+                        duration: isAccentSpecialist ? 0.4 : 0.2,
+                        velocity: isAccentSpecialist ? 0.7 : 0.9,
+                        isAccent: true
+                    });
+                }
+                stepAcc += stepsInChord;
+            });
+        }
+
         return events;
     }
 
@@ -1352,6 +1460,36 @@ export class ThemeGenerator {
         return count || 4;
     }
 
+    /**
+     * Converts a phrase into a rhythmic pattern of durations.
+     * Long vowels or multi-syllable words get varied durations.
+     */
+    _getSyllableRhythm(phrase) {
+        if (!phrase) return [0.5, 0.5, 0.5, 0.5];
+        const words = phrase.split(/[^a-zA-Z]+/);
+        const rhythm = [];
+
+        words.forEach(word => {
+            if (!word) return;
+            const syllableCount = this._countSyllables(word);
+
+            // Map syllables to durations
+            // Short words/syllables: 0.25 or 0.5
+            // Long words or stressed syllables: 1.0
+            for (let i = 0; i < syllableCount; i++) {
+                if (word.length > 6 && i === 0) {
+                    rhythm.push(1.0); // Emphasis on first syllable of long words
+                } else if (syllableCount === 1) {
+                    rhythm.push(0.5);
+                } else {
+                    rhythm.push(0.25);
+                }
+            }
+        });
+
+        return rhythm.length > 0 ? rhythm : [0.5, 0.5, 0.5, 0.5];
+    }
+
     _generateRhythm(ship = null, progression = [], stepsPerBar = 16, seed = null, minMeasures = 4) {
         const name = ship ? ship.name : 'default';
         const rng = new MusicRNG(seed || name);
@@ -1443,9 +1581,6 @@ export class ThemeGenerator {
 
                     // Loop the pattern to fill the entire duration of the bar (stepsInBar)
                     for (let i = 0; i < stepsInBar; i += patternLength) {
-                        // If it's a fill bar, we might stop the pattern early to insert the fill
-                        const fillStartStep = stepsInBar - (stepsInBar / 4); // Last quarter of the bar
-
                         kicks.forEach(step => {
                             const s = parseInt(step, 10);
                             if (i + s < stepsInBar) {
@@ -1456,14 +1591,30 @@ export class ThemeGenerator {
                             const s = parseInt(step, 10);
                             if (i + s < stepsInBar) {
                                 oneBarEvents.push({ voice: 'v_snare', step: i + s, freq: 261.63, duration: 0.1, velocity: 0.8 });
+                                // Add subtle ghost notes for snare realism
+                                if (rng.next() > 0.7) {
+                                    const ghostStep = (s + 2) % patternLength;
+                                    if (i + ghostStep < stepsInBar) {
+                                        oneBarEvents.push({ voice: 'v_snare', step: i + ghostStep, freq: 261.63, duration: 0.05, velocity: 0.3 });
+                                    }
+                                }
                             }
                         });
                         hats.forEach(step => {
                             const s = parseInt(step, 10);
                             if (i + s < stepsInBar) {
-                                oneBarEvents.push({ voice: 'v_hat', step: i + s, freq: 261.63, duration: 0.05, velocity: 0.6 });
+                                oneBarEvents.push({ voice: 'v_hat', step: i + s, freq: 261.63, duration: 0.05, velocity: 0.65 });
                             }
                         });
+
+                        // Add consistent 8th or 16th note hats if the pattern is sparse
+                        if (hats.length < 4) {
+                            for (let h = 0; h < patternLength; h += 2) {
+                                if (!hats.includes(h) && i + h < stepsInBar) {
+                                    oneBarEvents.push({ voice: 'v_hat', step: i + h, freq: 261.63, duration: 0.03, velocity: 0.4 });
+                                }
+                            }
+                        }
                     }
 
                     if ((pattern.style === 'Rock' || pattern.style === 'Action') && barIndex % 4 === 0) {
@@ -1552,7 +1703,7 @@ export class ThemeGenerator {
         });
     }
 
-    _generateBassline(rhythm, ship, progression, keyRootFreq, beatTime, styleOverride = null, tensionLevel = 2) {
+    _generateBassline(rhythm, ship, progression, keyRootFreq, beatTime, styleOverride = null, tensionLevel = 2, titleRhythm = null) {
         const events = [];
         const densityMultiplier = 0.5 + (tensionLevel / 11) * 1.0;
         if (!this.bassPatterns || Object.keys(this.bassPatterns).length === 0) {
@@ -1620,6 +1771,22 @@ export class ThemeGenerator {
                 for (let i = 2; i < stepsInChord; i += 4) {
                     events.push({ voice: 'v_bass', step: currentStepOffset + i, freq: getFreq(0), duration: 0.2, velocity: 0.8 + velocityBoost });
                 }
+            } else if (titleRhythm && (barIndex % 4 === 2)) {
+                // ECHO LOGIC: Echo the title rhythm in the bassline every few bars
+                let echoStep = 0;
+                titleRhythm.forEach((dur, i) => {
+                    if (echoStep < stepsInChord) {
+                        const interval = i === 0 ? 0 : rng.pick(intervals);
+                        events.push({
+                            voice: 'v_bass',
+                            step: currentStepOffset + echoStep,
+                            freq: getFreq(interval),
+                            duration: dur * beatTime,
+                            velocity: 0.85
+                        });
+                        echoStep += Math.ceil(dur * 4);
+                    }
+                });
             } else {
                 for (let i = 0; i < stepsInChord; i += 2) {
                     if (rng.next() < (pattern.density || 0.5) * densityMultiplier) {
@@ -1751,8 +1918,10 @@ export class ThemeGenerator {
 
                 if (isSingable) {
                     // Favor small intervals for singable melodies
-                    if (melodicInterval <= 2 || melodicInterval >= 10) weight += 3.0;
-                    else if (melodicInterval > 4 && melodicInterval < 8) weight *= 0.2; // Penalize tritone/large jumps
+                    if (melodicInterval === 0) weight += 4.0; // Repeated notes
+                    else if (melodicInterval <= 2 || melodicInterval >= 10) weight += 5.0; // Steps
+                    else if (melodicInterval === 5 || melodicInterval === 7) weight += 2.0; // Perfect 4th/5th
+                    else if (melodicInterval > 7 || (melodicInterval > 2 && melodicInterval < 5)) weight *= 0.1; // Penalize jumps
                 }
 
                 if (melodicInterval === 0) weight += 1.5;
@@ -1801,7 +1970,11 @@ export class ThemeGenerator {
             harmonicStepDistribution = this._getMelodicIntervalDistribution(harmonicIntervals);
         }
         const transitionMatrix = this._generateMarkovTransitions(allowedScaleIntervals, harmonicStepDistribution, character);
-        const length = rng.range(8, 16);
+
+        // SYLLABLE RHYTHM INTEGRATION
+        const syllableRhythm = this._getSyllableRhythm(character.name);
+        const length = Math.max(syllableRhythm.length, 8);
+
         const sequence = [];
         const noteDurations = [0.25, 0.5, 1.0];
         let currentNoteIndex = 0;
@@ -1820,9 +1993,21 @@ export class ThemeGenerator {
             const interval = allowedScaleIntervals[nextNoteIndex];
             const finalPitchIndex = (rootKeyIndex + interval) % 12;
             const pitchName = CHROMATIC_SCALE[finalPitchIndex];
-            const octaveOffset = rng.pick([0, 0, 1]);
+
+            // Refine octave for singability (Lead voices should stay in Octave 4-5)
+            let octaveOffset = rng.pick([0, 0, 1]);
+            const instId = character.instrumentId?.toLowerCase() || '';
+            if (instId.includes('voice') || instId.includes('lead') || instId.includes('melody')) {
+                // Force into a melodic range relative to baseFreq
+                // If baseFreq is already Octave 4, offset 0 or 1 is perfect.
+            }
+
             const freq = baseFreq * Math.pow(2, (interval + (octaveOffset * 12)) / 12);
-            sequence.push({ freq: freq, duration: rng.pick(noteDurations), interval: interval, pitchName: pitchName });
+
+            // Use syllable rhythm for the primary phrase, then vary
+            const duration = (i < syllableRhythm.length) ? syllableRhythm[i] : rng.pick(noteDurations);
+
+            sequence.push({ freq: freq, duration: duration, interval: interval, pitchName: pitchName });
             currentNoteIndex = nextNoteIndex;
         }
         const composition = { name: `${character.name}'s Theme`, key: keyData.Key.Key, baseFreq: baseFreq, scale: allowedScaleIntervals, sequence: sequence, tempo: 100 + (geo.Facade * 2) };
