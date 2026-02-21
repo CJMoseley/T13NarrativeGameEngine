@@ -248,12 +248,12 @@ export class OrreryScene extends Scene {
         this.isStaticPath = false;
         if (this.cameraPathLine) {
             this.cameraPathLine.geometry.setDrawRange(0, 0);
-            if (this.cameraPathLine.geometry.attributes.position && this.cameraPathLine.geometry.attributes.position.array) {
+            if (this.cameraPathLine.geometry?.attributes?.position?.array) {
                 const positions = this.cameraPathLine.geometry.attributes.position.array;
                 positions.fill(0); // Clear buffer
                 this.cameraPathLine.geometry.attributes.position.needsUpdate = true;
             }
-            if (this.cameraPathPointsMesh && this.cameraPathPointsMesh.geometry.attributes.position) {
+            if (this.cameraPathPointsMesh && this.cameraPathPointsMesh.geometry?.attributes?.position) {
                 this.cameraPathPointsMesh.geometry.attributes.position.needsUpdate = true;
             }
         }
@@ -267,7 +267,7 @@ export class OrreryScene extends Scene {
 
         Logger.message(`OrreryScene: Setting intro path with ${points.length} points.`);
 
-        if (!this.cameraPathLine.geometry.attributes.position || !this.cameraPathLine.geometry.attributes.position.array) return;
+        if (!this.cameraPathLine.geometry?.attributes?.position?.array) return;
         const positions = this.cameraPathLine.geometry.attributes.position.array;
         let count = 0;
         const maxPoints = positions.length / 3;
@@ -406,7 +406,7 @@ export class OrreryScene extends Scene {
                 }
 
                 // Update BufferGeometry
-                if (!this.cameraPathLine.geometry.attributes.position || !this.cameraPathLine.geometry.attributes.position.array) return;
+                if (!this.cameraPathLine.geometry?.attributes?.position?.array) return;
                 const positions = this.cameraPathLine.geometry.attributes.position.array;
                 for (let i = 0; i < this.cameraPathPoints.length; i++) {
                     positions[i * 3] = this.cameraPathPoints[i].x;

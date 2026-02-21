@@ -68,9 +68,7 @@ self.onmessage = async (e) => {
                 }
 
                 if (manifest) {
-                    // Correctly merge Sample and Synthetic stores in the worker
-                    mockMusicModule.manifestManager.manifest.samples = manifest.samples || {};
-                    mockMusicModule.manifestManager.manifest.instruments = manifest.instruments || {};
+                    mockMusicModule.manifestManager.manifest = manifest;
                 }
 
                 if (geometryData) {
@@ -123,8 +121,8 @@ self.onmessage = async (e) => {
         else if (type === 'generateMainTheme') {
             if (!themeGenerator) throw new Error("ThemeGenerator not initialized in worker");
 
-            const { activeComponents, forceRegeneration, tensionLevel } = data;
-            const track = await themeGenerator.createMainTheme(activeComponents, null, forceRegeneration, tensionLevel);
+            const { activeComponents, forceRegeneration } = data;
+            const track = await themeGenerator.createMainTheme(activeComponents, null, forceRegeneration);
             self.postMessage({ type: 'trackGenerated', track, requestId });
         }
         else if (type === 'generateWormholeTheme') {

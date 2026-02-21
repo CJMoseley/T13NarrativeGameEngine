@@ -4,7 +4,6 @@ import CodexLoader from "/src/t13ne/modules/codex/CodexLoader.js";
 import { InstrumentEngine } from "/src/t13ne/modules/audio/t13ne-InstrumentEngine.js";
 import { AudioAnalyzer } from "/src/t13ne/modules/audio/t13ne-audio-analyzer.js";
 import { ThemeGenerator } from "/src/t13ne/modules/audio/core/ThemeGenerator.js";
-import { MusicRNG } from "/src/t13ne/modules/audio/core/MusicUtils.js";
 import { AudioManifestManager } from "/src/t13ne/modules/audio/core/AudioManifestManager.js";
 import { T13Synth } from "/src/t13ne/modules/audio/core/T13Synth.js";
 import { WorkerPool } from "/src/t13ne/core/WorkerPool.js";
@@ -29,20 +28,19 @@ class T13NE_Music {
         this.themeComponents = {};
         this.activeComponents = [];
         this.currentTrackName = null;
-        this.currentTrack = null; // Store active track object for live updates
-        this.nextTrackBuffer = null; // Double-buffer for seamless variations
-        this.isGeneratingVariation = false;
+        this.currentTrack = null;
         this.currentStep = 0;
-        this.trackCache = new Map(); // Cache for generated tracks to prevent hitches
+        this.trackCache = new Map();
 
         this.manifestManager = new AudioManifestManager();
         this.themeGenerator = new ThemeGenerator(this);
         this.useWorker = true;
+        this._workerInitPromise = null;
     }
 
     async initialize(t13ne) {
         if (this.initialized) {
-            if (this.synth) this.synth.stopAll(true); // Hard stop on re-init
+            if (this.synth) this.synth.stopAll(true);
             return;
         }
         this.t13ne = t13ne;
@@ -60,7 +58,6 @@ class T13NE_Music {
                 ctx = new (window.AudioContext || window.webkitAudioContext)();
                 output = ctx.destination;
 
-                // Ensure we have a soundEngine object to hold the context for other modules (like AudioDirector)
                 if (!this.soundEngine) this.soundEngine = {};
                 this.soundEngine.audioContext = ctx;
                 this.soundEngine.masterGain = output;
@@ -73,7 +70,6 @@ class T13NE_Music {
             this.synth = new T13Synth(ctx, output);
             this.synth.instrumentEngine.manifestManager = this.manifestManager;
 
-            // Enable runtime analysis only if in Author Mode (detected by URL or explicit author mode flags)
             const isAuthorMode = window.location.pathname.includes('t13ne-control-panel.html') ||
                 window.location.pathname.includes('proficiency-manager.html') ||
                 window.location.search.includes('author=true');
@@ -86,7 +82,7 @@ class T13NE_Music {
             await this.synth.instrumentEngine.init();
 
             const config = this.t13ne.getConfig().audio || {};
-            this.synth.setMusicVolume(config.musicVolume !== undefined ? config.musicVolume : 0.4); // Safer orchestral default
+            this.synth.setMusicVolume(config.musicVolume !== undefined ? config.musicVolume : 0.4);
             this.synth.setSFXVolume(config.sfxVolume !== undefined ? config.sfxVolume : 0.8);
             this.synth.setDialogueVolume(config.dialogueVolume !== undefined ? config.dialogueVolume : 1.0);
         } else {
@@ -94,24 +90,20 @@ class T13NE_Music {
         }
 
         this.tonalModes = await CodexLoader.getData('geometry', 'tonalModes.json') || [];
-
-        this._registerStandardInstruments();
         await this.themeGenerator.loadAssets();
 
         if (this.useWorker) {
-            this.initWorker();
+            // Start worker initialization but don't strictly block main thread audio setup
+            this.initWorker().catch(e => Logger.error("T13NE_Music: Async worker init failed", e));
         }
 
         this.initialized = true;
         Logger.message("T13NE_Music: Initialized.");
 
+        this._registerStandardInstruments();
         await this._generateOrchestralInstruments();
     }
 
-    /**
-     * Triggers the AudioBaker to analyze all samples in the manifest.
-     * Intended for Author Mode.
-     */
     async bakeAssets() {
         if (!this.synth) return;
         this.synth.instrumentEngine.allowRuntimeAnalysis = true;
@@ -123,66 +115,15 @@ class T13NE_Music {
         if (!this.synth) return;
         const engine = this.synth.instrumentEngine;
 
-        // Standard placeholders (will be replaced by manifest samples if available)
         engine.defineInstrument('Drum_Kick', { type: 'synth', oscType: 'sine', pitchEnv: { startMult: 4.0, time: 0.1 }, attack: 0.001, release: 0.2 });
         engine.defineInstrument('Drum_Snare', { type: 'noise', filterType: 'lowpass', filterFreq: 2000, envelope: 'percussive', decay: 0.2 });
         engine.defineInstrument('Drum_HiHat_Closed', { type: 'noise', filterType: 'highpass', filterFreq: 5000, envelope: 'percussive', decay: 0.05 });
         engine.defineInstrument('Drum_Cowbell', { type: 'additive', partials: [{ freq: 1, amp: 1 }, { freq: 1.5, amp: 0.5 }], envelope: 'percussive', decay: 0.1 });
 
-        engine.defineInstrument('Synth_Bass', { type: 'additive', isHarmonic: true, envelope: 'sustained', sustain: 0.7, partials: [{ freq: 1, amp: 1 }, { freq: 2, amp: 0.4 }, { freq: 3, amp: 0.3 }, { freq: 0.5, amp: 0.2 }], role: 'bass' });
-        engine.defineInstrument('Synth_Lead', { type: 'additive', isHarmonic: true, envelope: 'percussive', partials: [{ freq: 1, amp: 1 }, { freq: 2, amp: 0.4 }, { freq: 3, amp: 0.3 }, { freq: 4, amp: 0.2 }, { freq: 5, amp: 0.1 }, { freq: 1.5, amp: 0.2 }], vibrato: 0.003, role: 'lead' });
-        engine.defineInstrument('Synth_Pad', {
-            type: 'additive',
-            isHarmonic: true,
-            envelope: 'sustained',
-            sustain: 0.9,
-            attack: 1.2,
-            release: 2.5,
-            partials: [
-                { freq: 1, amp: 1 },
-                { freq: 1.002, amp: 0.8 },
-                { freq: 1.998, amp: 0.6 },
-                { freq: 3.003, amp: 0.3 },
-                { freq: 0.5, amp: 0.5 },
-                { freq: 4.005, amp: 0.1 }
-            ],
-            shimmer: 0.15,
-            vibrato: 0.003,
-            role: 'pad',
-            effects: [{ type: 'reverb', duration: 2.5, decay: 3.0 }]
-        });
+        engine.defineInstrument('Synth_Bass', { type: 'additive', isHarmonic: true, envelope: 'sustained', sustain: 0.7, partials: [{ freq: 1, amp: 1 }, { freq: 2, amp: 0.6 }, { freq: 3, amp: 0.4 }, { freq: 4, amp: 0.2 }, { freq: 5, amp: 0.1 }] });
+        engine.defineInstrument('Synth_Lead', { type: 'additive', isHarmonic: true, envelope: 'percussive', partials: [{ freq: 1, amp: 1 }, { freq: 2, amp: 0.5 }, { freq: 3, amp: 0.4 }, { freq: 4, amp: 0.3 }, { freq: 5, amp: 0.2 }, { freq: 6, amp: 0.15 }] });
+        engine.defineInstrument('Synth_Pad', { type: 'additive', isHarmonic: true, envelope: 'sustained', sustain: 0.9, attack: 1.0, release: 2.0, partials: [{ freq: 1, amp: 1 }, { freq: 1.002, amp: 0.8 }, { freq: 1.998, amp: 0.5 }, { freq: 3.003, amp: 0.2 }] });
 
-        engine.defineInstrument('Synth_Accent', {
-            type: 'additive',
-            isHarmonic: true,
-            envelope: 'percussive',
-            decay: 0.4,
-            partials: [{ freq: 1, amp: 1 }, { freq: 2, amp: 0.6 }, { freq: 3, amp: 0.4 }, { freq: 4, amp: 0.2 }, { freq: 5.5, amp: 0.1 }],
-            vibrato: 0.005,
-            role: 'lead',
-            effects: [{ type: 'reverb', duration: 1.0, decay: 1.5 }]
-        });
-
-        engine.defineInstrument('Synth_Pluck', {
-            type: 'additive',
-            isHarmonic: true,
-            envelope: 'percussive',
-            decay: 0.2,
-            partials: [
-                { freq: 1, amp: 1 },
-                { freq: 2.01, amp: 0.5 },
-                { freq: 3, amp: 0.4 },
-                { freq: 5.2, amp: 0.2 },
-                { freq: 7.4, amp: 0.1 }
-            ],
-            role: 'lead',
-            effects: [
-                { type: 'distortion', amount: 10 },
-                { type: 'reverb', duration: 0.4, decay: 1.0 }
-            ]
-        });
-
-        // FX-Rich Instruments
         engine.defineInstrument('Synth_WarpLead', {
             type: 'additive',
             envelope: 'percussive',
@@ -256,10 +197,10 @@ class T13NE_Music {
             const original = this.manifestManager.manifest.samples[id];
             const entry = { ...original, analysis: analysis, type: 'synthetic', sourceId: id };
             this.manifestManager.addToManifest('samples', newId, entry);
-            Logger.message(`T13NE_Music: Saved new synthetic instrument ''`);
+            Logger.message(`T13NE_Music: Saved new synthetic instrument`);
         } else {
             this.manifestManager.updateAssetAnalysis('samples', id, analysis);
-            Logger.message(`T13NE_Music: Updated analysis for ''`);
+            Logger.message(`T13NE_Music: Updated analysis`);
         }
     }
 
@@ -286,16 +227,12 @@ class T13NE_Music {
         if (changed) {
             this.needsRegeneration = true;
         }
-        Logger.message(`T13NE_Music: Active components updated. Focal Influence: ${this.activeComponents[this.activeComponents.length - 1].name}`);
+        Logger.message(`T13NE_Music: Active components updated. Focal Influence: ${this.activeComponents[this.activeComponents.length - 1]?.name}`);
     }
 
-    async createMainTheme(gameEngine, forceVariation = false) {
+    async createMainTheme(gameEngine) {
         if (!this.synth) return;
 
-        const tensionModule = this.t13ne ? this.t13ne.getModule('Tension') : null;
-        const currentTension = tensionModule ? tensionModule.getTensionLevel() : (this.lastTension >= 0 ? this.lastTension : 2);
-
-        // Generate a unique hash for the current components to enable caching
         const componentHash = this.activeComponents
             .map(c => c.name || c.id || 'unknown')
             .sort()
@@ -308,17 +245,15 @@ class T13NE_Music {
         }
         const trackId = `theme_${Math.abs(hash)}`;
 
-        // If not forcing a variation and we have a cache, use it
-        if (!forceVariation && !this.needsRegeneration && this.trackCache.has(trackId)) {
+        if (this.trackCache.has(trackId) && !this.needsRegeneration) {
             Logger.message(`T13NE_Music: Using cached theme '${trackId}'`);
             return this.trackCache.get(trackId);
         }
 
-        Logger.message(`T13NE_Music: Generating ${forceVariation ? 'Variation' : 'Main Theme'} (Async)...`);
+        Logger.message("T13NE_Music: Generating Main Theme (Async)...");
 
         let trackData;
-        if (this.useWorker && this.worker) {
-            // Sanitize components to plain objects for cloning to Worker
+        if (this.useWorker && this.workerPool) {
             const sanitizedComponents = this.activeComponents.map(c => ({
                 name: c.name,
                 id: c.id,
@@ -336,11 +271,9 @@ class T13NE_Music {
 
             trackData = await this.callWorker('generateMainTheme', {
                 activeComponents: sanitizedComponents,
-                tensionLevel: currentTension,
-                forceRegeneration: this.needsRegeneration || forceVariation
+                forceRegeneration: this.needsRegeneration
             });
 
-            // Ensure main thread has all instruments defined
             if (trackData && trackData.voices) {
                 for (const voice of trackData.voices) {
                     if (voice.instrument && !this.synth.instrumentEngine.instruments.has(voice.instrument)) {
@@ -349,15 +282,13 @@ class T13NE_Music {
                 }
             }
         } else {
-            trackData = await this.themeGenerator.createMainTheme(this.activeComponents, gameEngine, this.needsRegeneration || forceVariation, currentTension);
+            trackData = await this.themeGenerator.createMainTheme(this.activeComponents, gameEngine, this.needsRegeneration);
         }
 
         if (!trackData) return;
         
-        if (!forceVariation) {
-            this.trackCache.set(trackId, trackData);
-            this.saveTrack(trackId, trackData);
-        }
+        this.trackCache.set(trackId, trackData);
+        this.saveTrack(trackId, trackData);
         this.needsRegeneration = false;
         return trackData;
     }
@@ -367,7 +298,7 @@ class T13NE_Music {
         const trackName = `track_wormhole_${origin.name}_${target.name}`;
 
         let trackData;
-        if (this.useWorker && this.worker) {
+        if (this.useWorker && this.workerPool) {
             trackData = await this.callWorker('generateWormholeTheme', { ship, origin, target });
         } else {
             trackData = await this.themeGenerator.createWormholeTheme(ship, origin, target);
@@ -385,7 +316,6 @@ class T13NE_Music {
         const trackData = await this.themeGenerator.createWormholeRacersTheme();
         if (!trackData) return;
         this.saveTrack(trackName, trackData);
-        Logger.message(`T13NE_Music: Saved track ''.`);
         return trackData;
     }
 
@@ -396,7 +326,6 @@ class T13NE_Music {
         const trackData = await this.themeGenerator.createT13NETheme();
         if (!trackData) return;
         this.saveTrack(trackName, trackData);
-        Logger.message(`T13NE_Music: Saved track ''.`);
         return trackData;
     }
 
@@ -418,13 +347,12 @@ class T13NE_Music {
              try {
                 const response = await fetch(url);
                 if (response.ok) {
-                    const midiData = await response.json(); // Assuming JSON MIDI format
+                    const midiData = await response.json();
                     this.manifestManager.addToManifest('midi', name, { data: midiData, url: url });
-                    Logger.message(`T13NE_Music: Loaded MIDI data for ''.`);
                     return midiData;
                 }
              } catch (e) {
-                Logger.error(`T13NE_Music: Failed to load MIDI '' from `, e);
+                Logger.error(`T13NE_Music: Failed to load MIDI`, e);
                 return null;
              }
         }
@@ -454,11 +382,9 @@ class T13NE_Music {
         let timeCursor = now;
         const beatTime = 60 / motif.tempo;
 
-        const rng = this.themeGenerator.music.rng || new MusicRNG(character.name + listener?.name);
-
         motif.sequence.forEach(note => {
             const duration = note.duration * beatTime;
-            const detune = (rng.next() - 0.5) * dissonance;
+            const detune = (Math.random() - 0.5) * dissonance;
             const type = dissonance > 10 ? 'sawtooth' : 'triangle';
             this.synth.playNote(note.freq, timeCursor, duration, type, detune, preferredInstrument);
             timeCursor += duration;
@@ -522,7 +448,7 @@ class T13NE_Music {
         }
 
         const stepTime = (60 / track.bpm) / 4;
-        const lookahead = 1.2; // Increased lookahead to prevent gaps during background processing
+        const lookahead = 0.8;
         this.currentStep = 0;
         let nextStepTime = this.synth.ctx.currentTime + 0.05;
 
@@ -542,54 +468,19 @@ class T13NE_Music {
             
             const safeTotalSteps = (!totalSteps || isNaN(totalSteps)) ? 64 : totalSteps;
 
-            // Double-Buffering: Trigger variation generation when nearing the end of the track
-            if (this.currentTrackName?.startsWith('theme_') && !this.isGeneratingVariation && !this.nextTrackBuffer) {
-                const stepsRemaining = safeTotalSteps - this.currentStep;
-                // If we are in the last 2 measures, start generating the next variation
-                if (stepsRemaining < (stepsPerMeasure * 2) && stepsRemaining > 0) {
-                    this.isGeneratingVariation = true;
-                    this.createMainTheme(null, true).then(variation => {
-                        this.nextTrackBuffer = variation;
-                        this.isGeneratingVariation = false;
-                        Logger.message("T13NE_Music: Next theme variation buffered.");
-                    }).catch(e => {
-                        Logger.error("T13NE_Music: Failed to buffer variation.", e);
-                        this.isGeneratingVariation = false;
-                    });
-                }
-            }
-
-            // Fix: Ensure currentStep is within bounds if track length changed during update
             if (this.currentStep >= safeTotalSteps) {
-                // If we have a buffered variation, swap it in at the loop point
-                if (this.nextTrackBuffer) {
-                    const nextTrack = this.nextTrackBuffer;
-                    this.nextTrackBuffer = null;
-                    this.updateTrack(nextTrack);
-                    // Re-calculate steps for the new track
-                    const nextTs = nextTrack.timeSignature || [4, 4];
-                    const nextStepsPerMeasure = Math.floor(nextTs[0] * (16 / nextTs[1]));
-                    const nextTotalSteps = nextTrack.totalSteps || (nextTrack.measures * nextStepsPerMeasure);
-                    this.currentStep = 0;
-                    Logger.message(`T13NE_Music: Successfully transitioned to buffered variation '${nextTrack.name}'.`);
-                    return schedule(); // Re-run with new track data
-                }
                 this.currentStep = this.currentStep % safeTotalSteps;
             }
 
             if (nextStepTime < now - 0.1) {
                 const missedSeconds = now - nextStepTime;
-                
-                // FIX: If gap is huge (e.g. > 2s), assume tab backgrounding/pause and just reset without warning/catchup
                 if (missedSeconds > 2.0) {
                      nextStepTime = now + 0.02;
-                     this.currentStep = (this.currentStep + 1) % safeTotalSteps; // Just move to next
-                     Logger.message(`T13NE_Music: Large time gap detected (${missedSeconds.toFixed(2)}s). Resyncing scheduler.`);
+                     this.currentStep = (this.currentStep + 1) % safeTotalSteps;
                 } else {
                     const missedSteps = Math.floor(missedSeconds / stepTime);
                     nextStepTime = now + 0.02;
                     this.currentStep = (this.currentStep + missedSteps) % safeTotalSteps;
-                    Logger.warn(`T13NE_Music: Sync jump! Advanced  steps to recover from lag.`);
                 }
             }
 
@@ -636,31 +527,20 @@ class T13NE_Music {
     }
 
     updateTrack(track) {
-        // IMPROVED: More lenient track matching to prevent restarts on regeneration
-        const isCompatible = this.currentTrack &&
-            (this.currentTrack.name === track.name ||
-             this.currentTrack.name.startsWith('theme_') && track.name.startsWith('theme_'));
-
-        if (isCompatible) {
-            // Smooth update: replace data without stopping the scheduler
+        if (this.currentTrack && this.currentTrack.name === track.name) {
             this.currentTrack.voices = track.voices;
             this.currentTrack.bpm = track.bpm;
             this.currentTrack.timeSignature = track.timeSignature;
             this.currentTrack.measures = track.measures;
             this.currentTrack.totalSteps = track.totalSteps;
-
-            // Do NOT reset currentStep - the scheduler will pick up the new voices
-            // in its next lookahead cycle.
-
-            // Prune channels that are no longer in use
             this.synth.pruneChannels(track.voices.map(v => v.id));
-            Logger.message(`T13NE_Music: Smoothly updated theme '${track.name}'.`);
         } else {
             this.playTrackObject(track);
         }
     }
 
     createDebugVisualizer() {
+        if (document.getElementById('audio-debug-viz')) return;
         const canvas = document.createElement('canvas');
         canvas.id = 'audio-debug-viz';
         canvas.width = 300;
@@ -672,36 +552,27 @@ class T13NE_Music {
         const draw = () => {
             if (!this.synth) return;
             requestAnimationFrame(draw);
-
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
             const channels = Array.from(this.synth.channels.entries());
             if (channels.length === 0) return;
-
             const h = canvas.height / channels.length;
-
             channels.forEach(([name, ch], i) => {
                 const data = new Uint8Array(ch.analyser.frequencyBinCount);
                 ch.analyser.getByteTimeDomainData(data);
-
                 let sum = 0;
                 for (let k = 0; k < data.length; k++) {
                     const val = (data[k] - 128) / 128.0;
                     sum += val * val;
                 }
                 const rms = Math.sqrt(sum / data.length);
-
                 const y = i * h;
-
                 ctx.fillStyle = '#0f0';
                 ctx.font = '10px monospace';
                 ctx.fillText(name, 2, y + 10);
-
                 if (rms > 0.01) {
                     ctx.lineWidth = 1;
                     ctx.strokeStyle = '#0f0';
                     ctx.beginPath();
-
                     for (let j = 0; j < data.length; j++) {
                         const v = data[j] / 128.0;
                         const yPos = y + (v * h / 2);
@@ -725,12 +596,6 @@ class T13NE_Music {
         if (this.currentSequenceTimer) clearTimeout(this.currentSequenceTimer);
         this.currentTrackName = null;
     }
-    saveSequence(name, sequence) {
-        const data = { name, sequence, timestamp: Date.now() };
-        this.manifestManager.addToManifest('sequences', name, { filename: `.json` });
-        Logger.message(`T13NE_Music: Sequence '' ready for export.`);
-        return JSON.stringify(data, null, 2);
-    }
 
     saveTrack(name, trackData) {
         const data = { name, ...trackData, timestamp: Date.now() };
@@ -738,75 +603,27 @@ class T13NE_Music {
         return JSON.stringify(data, null, 2);
     }
 
-    saveMidi(name, notes) {
-        const data = { name, notes, timestamp: Date.now() };
-        this.manifestManager.addToManifest('midi', name, { filename: `.json` });
-        return JSON.stringify(data, null, 2);
-    }
-
-    saveLoop(name, loopData) {
-        const data = { name, ...loopData, timestamp: Date.now() };
-        this.manifestManager.addToManifest('loops', name, { filename: `.json` });
-        return JSON.stringify(data, null, 2);
-    }
-
-    async loadInstrument(name, url) {
-        if (this.synth) {
-            await this.loadSample(name, url);
-        }
-    }
-
-    async loadMusicPack(packData) {
-        if (this.synth) {
-            this.musicPack = {};
-            for (const key in packData) {
-                this.musicPack[key] = await this.synth.loadAudio(key, packData[key]);
-            }
-            Logger.message("T13NE_Music: Music pack loaded.");
-        }
-    }
-
     updateAmbience(plot, gameParams = {}) {
         if (!this.synth || !this.musicPack || !plot) return;
-
         const tension = plot.tensionLevel || 0;
         if (this.lastTension === tension && !gameParams.playerHealth) return;
-
         const newLayers = new Set();
-
-        if (tension >= 0 && this.musicPack.base) {
-            newLayers.add('base');
-        }
-        if (tension >= 3 && this.musicPack.percussion_low) {
-            newLayers.add('percussion_low');
-        }
+        if (tension >= 0 && this.musicPack.base) newLayers.add('base');
+        if (tension >= 3 && this.musicPack.percussion_low) newLayers.add('percussion_low');
         if (tension >= 6) {
             if (this.musicPack.percussion_high) newLayers.add('percussion_high');
             if (this.musicPack.harmony) newLayers.add('harmony');
         }
-        if (tension >= 8 && this.musicPack.melody) {
-            newLayers.add('melody');
-        }
-
-        if (gameParams.playerHealth < 0.3 && this.musicPack.danger) {
-            newLayers.add('danger');
-        }
-
+        if (tension >= 8 && this.musicPack.melody) newLayers.add('melody');
+        if (gameParams.playerHealth < 0.3 && this.musicPack.danger) newLayers.add('danger');
         const layersToStart = [...newLayers].filter(x => !this.currentLayers.has(x));
         const layersToStop = [...this.currentLayers].filter(x => !newLayers.has(x));
-
-        if (layersToStart.length > 0 || layersToStop.length > 0) {
-            Logger.message(`T13NE_Music: Updating layers. Tension: . Start: [${layersToStart.join(', ')}]. Stop: [${layersToStop.join(', ')}]`);
-        }
-
         layersToStart.forEach(layerName => {
-            this.synth.playLayer(layerName, this.musicPack[layerName], 0.2, true, 4.0); // Reduced to 0.2 from 0.5
+            this.synth.playLayer(layerName, this.musicPack[layerName], 0.2, true, 4.0);
         });
-
         layersToStop.forEach(layerName => {
             this.synth.stopLayer(layerName, 4.0);
         });
-
         this.currentLayers = newLayers;
         this.lastTension = tension;
     }
@@ -819,7 +636,7 @@ class T13NE_Music {
     }
 
     setPerformanceMode(mode) {
-        if (this.synth && this.synth.instrumentEngine && typeof this.synth.instrumentEngine.setPerformanceMode === 'function') {
+        if (this.synth?.instrumentEngine?.setPerformanceMode) {
             this.synth.instrumentEngine.setPerformanceMode(mode);
         }
         if (this.themeGenerator) {
@@ -828,70 +645,64 @@ class T13NE_Music {
         if (this.useWorker && this.workerPool) {
             this.workerPool.broadcast('setPerformanceMode', mode);
         }
-        Logger.message(`T13NE_Music: Performance mode set to ${mode}`);
     }
 
     async initWorker() {
         if (this.workerPool) return;
+        if (this._workerInitPromise) return this._workerInitPromise;
 
-        try {
-            this.worker = new Worker(new URL('./core/MusicWorker.js', import.meta.url), { type: 'module' });
-            this.worker.onmessage = (e) => this.handleWorkerMessage(e.data);
+        this._workerInitPromise = (async () => {
+            try {
+                this.workerPool = new WorkerPool('music', new URL('./core/MusicWorker.js', import.meta.url), 1);
 
-            if (!this._pendingRequests) this._pendingRequests = new Map();
-            const requestId = 'init_' + Date.now().toString(36) + Math.floor(performance.now() * 1000).toString(36);
+                const patterns = {
+                    'music:drumpatterns.json': this.themeGenerator.drumPatterns,
+                    'music:harmonic_patterns.json': { patterns: this.themeGenerator.harmonicPatterns },
+                    'music:basspatterns.json': { patterns: this.themeGenerator.bassPatterns },
+                    'geometry:progressions.json': this.themeGenerator.progressions,
+                    'geometry:tonalModes.json': this.tonalModes
+                };
 
-            this._pendingRequests.set(requestId, {
-                resolve: () => Logger.message("T13NE_Music: Worker initialized."),
-                reject: (err) => Logger.error("T13NE_Music: Worker failed to initialize.", err)
-            });
+                const geometryData = {
+                    romanChords: this.geometry?.RomanChords || [],
+                    keys: this.geometry?.keys || {}
+                };
 
-            // Send initial data to all workers in the pool
-            const patterns = {
-                'music:drumpatterns.json': this.themeGenerator.drumPatterns,
-                'music:harmonic_patterns.json': { patterns: this.themeGenerator.harmonicPatterns },
-                'music:basspatterns.json': { patterns: this.themeGenerator.bassPatterns },
-                'geometry:progressions.json': this.themeGenerator.progressions,
-                'geometry:tonalModes.json': this.tonalModes
-            };
+                // CRITICAL: Ensure workerPool is still assigned before calling broadcast
+                if (this.workerPool) {
+                    await this.workerPool.broadcast('init', {
+                        codexData: patterns,
+                        geometryData: geometryData,
+                        manifest: this.manifestManager.manifest,
+                        performanceMode: this.themeGenerator.performanceMode
+                    });
+                    Logger.message("T13NE_Music: Worker pool initialized.");
+                }
+            } catch (e) {
+                Logger.error("T13NE_Music: Failed to initialize worker pool.", e);
+                this.workerPool = null;
+                this.useWorker = false;
+            } finally {
+                this._workerInitPromise = null;
+            }
+        })();
 
-            const geometryData = {
-                romanChords: this.geometry?.RomanChords || [],
-                keys: this.geometry?.keys || {}
-            };
-
-            await this.workerPool.broadcast('init', {
-                codexData: patterns,
-                geometryData: geometryData,
-                manifest: this.manifestManager.manifest,
-                performanceMode: this.themeGenerator.performanceMode
-            });
-
-            Logger.message("T13NE_Music: Worker pool initialized.");
-        } catch (e) {
-            Logger.error("T13NE_Music: Failed to initialize worker pool.", e);
-            this.useWorker = false;
-        }
+        return this._workerInitPromise;
     }
 
     async callWorker(type, data) {
-        if (!this.worker) return null;
-
-        if (!this._pendingRequests) this._pendingRequests = new Map();
-        const requestId = Date.now().toString(36) + Math.floor(performance.now() * 1000).toString(36);
-
-        return new Promise((resolve, reject) => {
-            this._pendingRequests.set(requestId, { resolve, reject });
-            this.worker.postMessage({ type, data, requestId });
-
-            // Timeout after 10s
-            setTimeout(() => {
-                if (this._pendingRequests.has(requestId)) {
-                    this._pendingRequests.delete(requestId);
-                    reject(new Error("Worker request timed out"));
-                }
-            }, 10000);
-        });
+        if (!this.workerPool) {
+            // Try to initialize if not already
+            if (this.useWorker) await this.initWorker();
+            if (!this.workerPool) return null;
+        }
+        try {
+            const response = await this.workerPool.execute(type, data);
+            return response.track || response;
+        } catch (e) {
+            Logger.error(`T13NE_Music: Worker task failed (${type}):`, e);
+            throw e;
+        }
     }
 }
 

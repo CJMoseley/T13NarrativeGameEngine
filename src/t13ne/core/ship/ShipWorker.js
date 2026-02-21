@@ -30,23 +30,23 @@ self.onmessage = async (e) => {
             const geometry = await hullGenerator.generateSDFHullAsync(reconstructedComponents, styleConfig.blendStrength, styleConfig.padding);
 
             if (geometry) {
-                const posAttr = geometry.getAttribute ? geometry.getAttribute('position') : (geometry.attributes && geometry.attributes.position ? geometry.attributes.position : null);
-                const normAttr = geometry.getAttribute ? geometry.getAttribute('normal') : (geometry.attributes && geometry.attributes.normal ? geometry.attributes.normal : null);
+                const posAttr = geometry.getAttribute ? geometry.getAttribute('position') : (geometry.attributes?.position);
+                const normAttr = geometry.getAttribute ? geometry.getAttribute('normal') : (geometry.attributes?.normal);
 
-                const positions = (posAttr && posAttr.array) ? posAttr.array : null;
-                const normals = (normAttr && normAttr.array) ? normAttr.array : null;
+                const positions = posAttr?.array;
+                const normals = normAttr?.array;
 
                 if (!positions || !normals) {
-                    throw new Error("SDF generated geometry with missing attributes");
+                    throw new Error("SDF generated geometry with missing attributes or arrays");
                 }
 
-                const colorsAttr = geometry.getAttribute ? geometry.getAttribute('color') : (geometry.attributes ? geometry.attributes.color : null);
-                const colors = (colorsAttr && colorsAttr.array) ? colorsAttr.array : null;
+                const colorsAttr = geometry.getAttribute ? geometry.getAttribute('color') : (geometry.attributes?.color);
+                const colors = colorsAttr?.array || null;
 
                 const transferable = [];
-                if (positions && positions.buffer) transferable.push(positions.buffer);
-                if (normals && normals.buffer) transferable.push(normals.buffer);
-                if (colors && colors.buffer) transferable.push(colors.buffer);
+                if (positions?.buffer) transferable.push(positions.buffer);
+                if (normals?.buffer) transferable.push(normals.buffer);
+                if (colors?.buffer) transferable.push(colors.buffer);
 
                 self.postMessage({
                     type: 'hullGenerated',
@@ -76,7 +76,9 @@ self.onmessage = async (e) => {
                 }
                 const geo = new THREE.BufferGeometry();
                 geo.setAttribute('position', new THREE.BufferAttribute(comp.geometry.positions, 3));
-                if (comp.geometry.indices) geo.setIndex(new THREE.BufferAttribute(comp.geometry.indices, 1));
+                if (comp.geometry.indices) {
+                    geo.setIndex(new THREE.BufferAttribute(comp.geometry.indices, 1));
+                }
 
                 const mesh = new THREE.Mesh(geo);
                 mesh.position.set(...comp.position);
@@ -84,11 +86,15 @@ self.onmessage = async (e) => {
                 mesh.scale.set(...comp.scale);
                 mesh.updateMatrix();
 
-                const compCSG = CSG.fromMesh(mesh);
-                if (comp.isCarve) {
-                    if (baseCSG) baseCSG = baseCSG.subtract(compCSG);
-                } else {
-                    baseCSG = baseCSG ? baseCSG.union(compCSG) : compCSG;
+                try {
+                    const compCSG = CSG.fromMesh(mesh);
+                    if (comp.isCarve) {
+                        if (baseCSG) baseCSG = baseCSG.subtract(compCSG);
+                    } else {
+                        baseCSG = baseCSG ? baseCSG.union(compCSG) : compCSG;
+                    }
+                } catch (csgError) {
+                    console.error("ShipWorker: CSG operation failed for component", comp.usage, csgError);
                 }
             }
 
@@ -96,12 +102,11 @@ self.onmessage = async (e) => {
                 const hullMesh = CSG.toMesh(baseCSG, new THREE.Matrix4());
                 const geometry = hullMesh.geometry;
 
-                const posAttr = geometry.getAttribute ? geometry.getAttribute('position') : (geometry.attributes && geometry.attributes.position ? geometry.attributes.position : null);
+                const posAttr = geometry.getAttribute ? geometry.getAttribute('position') : (geometry.attributes?.position);
 
-                // CRITICAL: Ensure positions exist BEFORE computing normals
-                if (posAttr && posAttr.array) {
-                    const normAttr = geometry.getAttribute ? geometry.getAttribute('normal') : (geometry.attributes && geometry.attributes.normal ? geometry.attributes.normal : null);
-                    if (!normAttr || !normAttr.array) {
+                if (posAttr?.array) {
+                    const normAttr = geometry.getAttribute ? geometry.getAttribute('normal') : (geometry.attributes?.normal);
+                    if (!normAttr?.array) {
                         try {
                             geometry.computeVertexNormals();
                         } catch (e) {
@@ -112,18 +117,15 @@ self.onmessage = async (e) => {
                     throw new Error("CSG generated geometry with no position attribute or array");
                 }
 
-                const positions = (posAttr && posAttr.array) ? posAttr.array : null;
-                if (!positions) {
-                    throw new Error("CSG generated geometry has no position array");
-                }
-                const updatedNormAttr = geometry.getAttribute ? geometry.getAttribute('normal') : (geometry.attributes && geometry.attributes.normal ? geometry.attributes.normal : null);
-                const normals = (updatedNormAttr && updatedNormAttr.array) ? updatedNormAttr.array : new Float32Array(positions.length);
-                const indices = (geometry.index && geometry.index.array) ? geometry.index.array : null;
+                const positions = posAttr.array;
+                const updatedNormAttr = geometry.getAttribute ? geometry.getAttribute('normal') : (geometry.attributes?.normal);
+                const normals = updatedNormAttr?.array || new Float32Array(positions.length);
+                const indices = geometry.index?.array || null;
 
                 const transferable = [];
-                if (positions && positions.buffer) transferable.push(positions.buffer);
-                if (normals && normals.buffer) transferable.push(normals.buffer);
-                if (indices && indices.buffer) transferable.push(indices.buffer);
+                if (positions?.buffer) transferable.push(positions.buffer);
+                if (normals?.buffer) transferable.push(normals.buffer);
+                if (indices?.buffer) transferable.push(indices.buffer);
 
                 self.postMessage({
                     type: 'hullGenerated',
@@ -139,6 +141,7 @@ self.onmessage = async (e) => {
             }
         }
     } catch (error) {
+        console.error("ShipWorker: Unhandled error", error);
         self.postMessage({ type: 'error', error: error.message, requestId });
     }
 };

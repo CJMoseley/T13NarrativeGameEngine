@@ -625,31 +625,28 @@ export class ShipGenerator {
                 const sensorZ = Math.min(-spineLength / 2 + 4.0, spineLength / 2 - 1.0); 
                 
                 let sensorX = 2.0;
+                let sensorAttached = false;
                 if (getSurfacePoint) {
                      const rayOrigin = [20, 0, sensorZ];
                      const rayDir = [-1, 0, 0];
                      const hit = getSurfacePoint(components, rayOrigin, rayDir, ['fuselage', 'hull', 'spine']);
                      if (hit) {
                          sensorX = hit.x; // Embed half-way to ensure connection
+                         sensorAttached = true;
                      }
                 }
                 
-                const sensorId = attachComponent('sensor_array', [sensorX, 0.5, sensorZ], [0, 0, 0], 'box', { width: 0.5, height: 0.5, depth: 1.0 });
+                if (sensorAttached) {
+                    const sensorId = attachComponent('sensor_array', [sensorX, 0.5, sensorZ], [0, 0, 0], 'box', { width: 0.5, height: 0.5, depth: 1.0 });
                 
-                // Add Antenna Dish to make it look like a sensor
-                // Place on front face and rotate to point forward
-                attachComponent('sensor_dish', [sensorX, 0.5, sensorZ + 0.6], [Math.PI/2, 0, 0], 'cone', { radius: 0.2, height: 0.4 }, 'REFLECTIVE');
-                
-                // Wire to bridge if possible (Power and Data)
-                const bridge = components.find(c => c.usage.includes('bridge') || c.usage.includes('cockpit')) || components.find(c => c.usage.includes('fuselage'));
-                if (bridge) {
-                    this.wiringGenerator.addConnection(explicitWiring, sensorId, bridge.id, 'data', 5.0);
-                    this.wiringGenerator.addConnection(explicitWiring, sensorId, bridge.id, 'power', 5.0);
-                    
-                    const sensorSymId = sensorId + '_sym';
-                    if (components.find(c => c.id === sensorSymId)) {
-                            this.wiringGenerator.addConnection(explicitWiring, sensorSymId, bridge.id, 'data', 5.0);
-                            this.wiringGenerator.addConnection(explicitWiring, sensorSymId, bridge.id, 'power', 5.0);
+                    // Wire to bridge if possible
+                    const bridge = components.find(c => c.usage.includes('bridge') || c.usage.includes('cockpit'));
+                    if (bridge) {
+                        this.wiringGenerator.addConnection(explicitWiring, sensorId, bridge.id, 'data', 5.0);
+                        const sensorSymId = sensorId + '_sym';
+                        if (components.find(c => c.id === sensorSymId)) {
+                             this.wiringGenerator.addConnection(explicitWiring, sensorSymId, bridge.id, 'data', 5.0);
+                        }
                     }
                 }
 
