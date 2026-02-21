@@ -325,35 +325,73 @@ class T13NE_Drama {
     }
 
     /**
-     * Triggers a Ratchet event based on the current Tension Level.
+     * Triggers a Ratchet event based on the current Tension Level and Plot context.
      * Ratchets progress based on tension or sequential activation.
+     * @param {object} plot - The plot triggering the ratchet.
      * @param {string} [type='General'] - The type of ratchet (e.g., 'Security', 'Dominance').
      * @returns {object} The ratchet event.
      */
-    triggerRatchet(type = 'General') {
-        // Find a relevant ratchet from data
-        const ratchet = this.data.ratchets.find(r => r.type === type) || this.data.ratchets[0];
+    triggerRatchet(plot, type = 'General') {
+        const tension = plot?.tensionLevel ?? this.tensionLevel;
+
+        // 1. Identify valid ratchet for the plot
+        let ratchet = null;
+        if (plot && plot.ratchets && plot.ratchets.length > 0) {
+            ratchet = plot.ratchets.find(r => r.type === type) || plot.ratchets[0];
+        }
+
+        if (!ratchet) {
+            ratchet = this.data.ratchets.find(r => r.type === type) || this.data.ratchets[0];
+        }
 
         if (!ratchet) {
             // Fallback generic Ratchet if no data
             const levels = [
-                "Strange smells on the air. (Relieves 10 Stress)",
-                "Animals behave strangely. (Relieves 8 Stress)",
-                "Rumbling noises, but no lightning. (Relieves 6 Stress)",
-                "Birds leave the area. (Relieves 5 Stress)",
-                "Strange auras around the mountain at night. (Relieves 4 Stress)",
-                "Volcano erupts! (Relieves 3 Stress)",
-                "Pyroclastic flow! (Relieves 2 Stress)"
+                { description: "Strange smells on the air.", stressRelief: 10, tension: 0 },
+                { description: "Animals behave strangely.", stressRelief: 8, tension: 1 },
+                { description: "Rumbling noises, but no lightning.", stressRelief: 6, tension: 2 },
+                { description: "Birds leave the area.", stressRelief: 5, tension: 3 },
+                { description: "Strange auras around the mountain at night.", stressRelief: 4, tension: 4 },
+                { description: "Volcano erupts!", stressRelief: 3, tension: 5 },
+                { description: "Pyroclastic flow!", stressRelief: 2, tension: 6 }
             ];
-            const idx = Math.min(this.tensionLevel, levels.length - 1);
-            return { description: levels[idx], level: this.tensionLevel };
+            const idx = Math.min(tension, levels.length - 1);
+            const entry = levels[idx];
+            return { ...entry, ratchetName: 'Volcanic (Fallback)', level: tension };
         }
 
-        // Return the entry for the current tension level
-        // Assuming ratchet.levels is an array matching tension 0-6
-        const entry = ratchet.levels[Math.min(this.tensionLevel, ratchet.levels.length - 1)];
-        Logger.message(`T13NE_Drama: Triggered Ratchet (${ratchet.name}) at Level ${this.tensionLevel}: ${entry.description}`);
-        return { ...entry, ratchetName: ratchet.name };
+        // 2. Ladder Progression Logic
+        // If the ratchet has a current level tracked on the plot, we might increment it
+        let currentIdx = 0;
+        if (plot) {
+            if (!plot._ratchetStates) plot._ratchetStates = {};
+            const rId = ratchet.id || ratchet.name;
+            currentIdx = plot._ratchetStates[rId] || 0;
+
+            // Advance the ladder if tension is high enough or if triggered sequentially
+            // Rule: "each time the Ratchet is 'activated' the Ratchet will climb or fall a layer"
+            // We'll advance it but cap it by tension level if the ratchet is tension-bound
+            if (ratchet.tensionBound) {
+                currentIdx = Math.min(tension, ratchet.levels.length - 1);
+            } else {
+                currentIdx = Math.min(currentIdx + 1, ratchet.levels.length - 1);
+            }
+            plot._ratchetStates[rId] = currentIdx;
+        } else {
+            currentIdx = Math.min(tension, ratchet.levels.length - 1);
+        }
+
+        const entry = ratchet.levels[currentIdx];
+        const result = {
+            ...entry,
+            ratchetName: ratchet.name,
+            level: currentIdx,
+            tension: tension,
+            stressRelief: entry.stressRelief || this.getStressRelief('Ratchet')
+        };
+
+        Logger.message(`T13NE_Drama: Triggered Ratchet (${ratchet.name}) at Index ${currentIdx} (Tension ${tension}): ${entry.description}`);
+        return result;
     }
 
     /**
