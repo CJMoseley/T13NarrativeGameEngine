@@ -112,7 +112,10 @@ self.onmessage = async (e) => {
                     throw new Error("CSG generated geometry with no position attribute or array");
                 }
 
-                const positions = posAttr.array;
+                const positions = (posAttr && posAttr.array) ? posAttr.array : null;
+                if (!positions) {
+                    throw new Error("CSG generated geometry has no position array");
+                }
                 const updatedNormAttr = geometry.getAttribute ? geometry.getAttribute('normal') : (geometry.attributes && geometry.attributes.normal ? geometry.attributes.normal : null);
                 const normals = (updatedNormAttr && updatedNormAttr.array) ? updatedNormAttr.array : new Float32Array(positions.length);
                 const indices = (geometry.index && geometry.index.array) ? geometry.index.array : null;

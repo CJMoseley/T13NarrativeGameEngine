@@ -51,8 +51,7 @@ export class PlanetSurfaceScene extends Scene {
         }
 
         // Create the environment
-        this.environment = new PlanetSurfaceEnvironment(this.scene, this.planetData);
-        this.environment.generate();
+        this.environment = new PlanetSurfaceEnvironment(this.planetData);
     }
 
     update(time, delta) {
