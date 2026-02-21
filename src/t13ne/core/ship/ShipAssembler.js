@@ -92,9 +92,9 @@ export class ShipAssembler {
         hullMaterial.uniforms.color1.value.setHex(livery.color1 !== undefined ? livery.color1 : Math.floor(prng() * 0xffffff));
 
         let hullMesh = null;
-        if (hullGeometry && hullGeometry.attributes && hullGeometry.attributes.position && (hullGeometry.attributes.position.array || hullGeometry.attributes.position.count > 0)) {
+        if (hullGeometry && hullGeometry.attributes?.position && (hullGeometry.attributes.position.array || hullGeometry.attributes.position.count > 0)) {
             // FIX: Ensure geometry has color attribute for shaders that expect vertexColors
-            if (!hullGeometry.attributes.color || !hullGeometry.attributes.color.array) {
+            if (!hullGeometry.attributes.color?.array) {
                 const count = hullGeometry.attributes.position.count;
                 const colors = new Float32Array(count * 3);
                 const posAttr = hullGeometry.attributes.position;
@@ -260,7 +260,7 @@ export class ShipAssembler {
                 if (usage && usage.includes('carve')) continue;
                 
                 // FIX: Ensure geometry has color attribute for shaders that expect vertexColors
-                if (mesh.geometry.attributes && (!mesh.geometry.attributes.color || !mesh.geometry.attributes.color.array) && mesh.geometry.attributes.position) {
+                if (mesh.geometry?.attributes && !mesh.geometry.attributes.color?.array && mesh.geometry.attributes.position) {
                     const count = mesh.geometry.attributes.position.count;
                     const colors = new Float32Array(count * 3);
                     for (let i = 0; i < count * 3; i++) colors[i] = 1.0; // Default to White
@@ -322,7 +322,7 @@ export class ShipAssembler {
             // Create map of component data for WiringGenerator (needed for Torus connections)
             const compDataMap = new Map();
             components.forEach(c => {
-                compDataMap.set(c.id, { type: c.type, dims: c.dims, rotation: new THREE.Euler(...c.rot) });
+                compDataMap.set(c.id, { type: c.type, dims: c.dims, rotation: new THREE.Euler(...(c.rot || [0,0,0])) });
             });
 
             const wireGroup = this.wiringGenerator.createVisuals(wiringGraph, compMap, compDataMap);
@@ -368,7 +368,7 @@ export class ShipAssembler {
 
         if (effectiveStyle.method === 'ORGANIC') {
             // Organic styles use SDF which creates a single "melty" mesh, avoiding Z-fighting.
-            if (this.gameEngine.shipFactory && this.gameEngine.shipFactory.useWorker) {
+            if (this.gameEngine.shipFactory?.useWorker) {
                 // Sanitize components for worker (plain objects only)
                 const sanitizedComponents = shipComponents.map(c => {
                     if (!c) return null;
@@ -389,7 +389,9 @@ export class ShipAssembler {
                 if (geoData) {
                     hullGeometry = new THREE.BufferGeometry();
                     hullGeometry.setAttribute('position', new THREE.BufferAttribute(geoData.positions, 3));
-                    hullGeometry.setAttribute('normal', new THREE.BufferAttribute(geoData.normals, 3));
+                    if (geoData.normals) {
+                        hullGeometry.setAttribute('normal', new THREE.BufferAttribute(geoData.normals, 3));
+                    }
                     if (geoData.colors) {
                         hullGeometry.setAttribute('color', new THREE.BufferAttribute(geoData.colors, 3));
                     }
@@ -405,7 +407,7 @@ export class ShipAssembler {
             // This is the definitive fix for Z-fighting on hard-surface models.
             console.log(`ShipAssembler: Using unified CSG method for '${effectiveStyle.method}' style.`);
 
-            if (this.gameEngine.shipFactory && this.gameEngine.shipFactory.useWorker) {
+            if (this.gameEngine.shipFactory?.useWorker) {
                 const workerComponents = [];
                 for (const comp of components) {
                     try {
@@ -413,15 +415,13 @@ export class ShipAssembler {
                         const isCarve = (usage || '').toLowerCase().includes('carve');
                         const mesh = this.componentFactory.createProxy(type, dims);
 
-                        if (!mesh || !mesh.geometry) continue;
+                        if (!mesh?.geometry) continue;
 
                         const geo = mesh.geometry;
-                        if (!geo) continue;
+                        const posAttr = geo.getAttribute ? geo.getAttribute('position') : (geo.attributes?.position);
 
-                        const posAttr = geo.getAttribute ? geo.getAttribute('position') : (geo.attributes && geo.attributes.position ? geo.attributes.position : null);
-
-                        if (!posAttr || !posAttr.array) {
-                            console.warn(`ShipAssembler: Component ${usage} (${type}) has no position array!`);
+                        if (!posAttr?.array) {
+                            console.warn(`ShipAssembler: Component ${usage} (${type}) has no position attribute or array!`);
                             continue;
                         }
 
@@ -436,6 +436,7 @@ export class ShipAssembler {
                             rotation: rot,
                             scale: s,
                             isCarve: isCarve,
+                            usage: usage,
                             geometry: {
                                 positions: posAttr.array,
                                 indices: (geo.index && geo.index.array) ? geo.index.array : null
@@ -447,10 +448,12 @@ export class ShipAssembler {
                 }
 
                 const geoData = await this.gameEngine.shipFactory.callWorker('generateCSGHull', { components: workerComponents });
-                if (geoData) {
+                if (geoData && geoData.positions) {
                     hullGeometry = new THREE.BufferGeometry();
                     hullGeometry.setAttribute('position', new THREE.BufferAttribute(geoData.positions, 3));
-                    hullGeometry.setAttribute('normal', new THREE.BufferAttribute(geoData.normals, 3));
+                    if (geoData.normals) {
+                        hullGeometry.setAttribute('normal', new THREE.BufferAttribute(geoData.normals, 3));
+                    }
                     if (geoData.indices) {
                         hullGeometry.setIndex(new THREE.BufferAttribute(geoData.indices, 1));
                     }
@@ -464,13 +467,12 @@ export class ShipAssembler {
                 const structuralComponents = components.filter(c => !(getCompProps(c).usage || '').toLowerCase().includes('carve'));
                 if (structuralComponents.length > 0) {
                     for (const comp of structuralComponents) {
-                        const { type, dims, pos, rot, usage } = getCompProps(comp);
+                        const { type, dims, pos, rot } = getCompProps(comp);
                         const mesh = this.componentFactory.createProxy(type, dims);
                         mesh.position.set(...pos);
                         if (rot) mesh.rotation.set(...rot);
                         
                         // FIX: Handle negative scale (mirroring) by baking it into geometry
-                        // CSG operations often fail with negative scale matrices (inverted normals)
                         let s = new THREE.Vector3(1, 1, 1);
                         if (comp.scale) {
                             if (Array.isArray(comp.scale)) s.set(...comp.scale);
@@ -528,9 +530,9 @@ export class ShipAssembler {
             }
         }
 
-        if (hullGeometry && hullGeometry.attributes && hullGeometry.attributes.position && (hullGeometry.attributes.position.array || hullGeometry.attributes.position.count > 0)) {
+        if (hullGeometry?.attributes?.position && (hullGeometry.attributes.position.array?.length > 0 || hullGeometry.attributes.position.count > 0)) {
             // FIX: Ensure geometry has color attribute for shaders that expect vertexColors
-            if (!hullGeometry.attributes.color || !hullGeometry.attributes.color.array) {
+            if (!hullGeometry.attributes.color?.array) {
                 const count = hullGeometry.attributes.position.count;
                 const colors = new Float32Array(count * 3);
                 const posAttr = hullGeometry.attributes.position;
@@ -635,7 +637,6 @@ export class ShipAssembler {
             console.warn("ShipFactory: Hull generation produced empty geometry or SKELETON style selected.");
             // For SKELETON style or failed hull, we keep proxies visible and maybe add struts
             componentMeshes.forEach(mesh => {
-                // Keep as wireframe for the showcase scene to handle the final material.
                 mesh.visible = true;
             });
 
@@ -646,12 +647,10 @@ export class ShipAssembler {
             }
         }
 
-        // Generate struts between connected components for ALL styles to ensure connectivity
-        // For SKELETON, these are the main structure. For others, they act as internal cabling or external supports if hull fails.
+        // Generate struts between connected components
         if (wiringGraph) {
             const strutGroup = new THREE.Group();
             strutGroup.name = "internal_struts";
-            // If a hull exists and we are not in SKELETON mode, hide struts by default (internal structure)
             if (hullMesh && effectiveStyle.method !== 'SKELETON') {
                 strutGroup.visible = false;
             }
@@ -662,17 +661,15 @@ export class ShipAssembler {
             const raycaster = new THREE.Raycaster();
             const tempVec = new THREE.Vector3();
             
-            // Ensure matrices are up to date for raycasting
             shipGroup.updateMatrixWorld(true);
 
             for (const [sourceId, connections] of Object.entries(wiringGraph)) {
                 const sourceMesh = meshMap.get(sourceId);
                 if (!sourceMesh) continue;
 
-                // Get the center of the source component for raycasting origin
                 const sourceCentre = new THREE.Vector3();
-                sourceMesh.geometry.computeBoundingBox();
-                sourceMesh.geometry.boundingBox.getCenter(sourceCentre);
+                sourceMesh.geometry?.computeBoundingBox();
+                sourceMesh.geometry?.boundingBox?.getCenter(sourceCentre);
                 sourceMesh.localToWorld(sourceCentre);
 
                 for (const conn of connections) {
@@ -683,27 +680,20 @@ export class ShipAssembler {
                     const targetMesh = meshMap.get(conn.targetId);
                     if (!targetMesh) continue;
 
-                    // Get the center of the target component
                     const targetCentre = new THREE.Vector3();
-                    targetMesh.geometry.computeBoundingBox();
-                    targetMesh.geometry.boundingBox.getCenter(targetCentre);
+                    targetMesh.geometry?.computeBoundingBox();
+                    targetMesh.geometry?.boundingBox?.getCenter(targetCentre);
                     targetMesh.localToWorld(targetCentre);
 
-                    // Special handling for Torus targets: Connect to the rim, not the center
                     let endPoint = targetCentre.clone();
                     if (targetMesh.userData.primitiveType === 'torus') {
                         const dims = targetMesh.userData.originalDims || {};
                         const r = dims.radius || 1;
-                        // Transform source center to torus local space
                         const localSource = sourceCentre.clone().applyMatrix4(targetMesh.matrixWorld.clone().invert());
-                        // Project to XY plane (Torus plane) and normalize to radius
                         const rimPointLocal = new THREE.Vector3(localSource.x, localSource.y, 0).normalize().multiplyScalar(r);
-                        // Transform back to world
                         endPoint = rimPointLocal.applyMatrix4(targetMesh.matrixWorld);
                     }
 
-
-                    // Check for concentric/overlapping components (like Ring Hull)
                     const centerDist = sourceCentre.distanceTo(targetCentre);
                     if (centerDist < 2.0) {
                         const sourceType = sourceMesh.userData.primitiveType;
@@ -720,22 +710,17 @@ export class ShipAssembler {
                         }
 
                         if (torusMesh) {
-                            // Generate spokes
                             const spokeCount = 4;
                             for (let i = 0; i < spokeCount; i++) {
                                 const angle = (i / spokeCount) * Math.PI * 2;
-                                // Torus is in XY plane locally
                                 const localDir = new THREE.Vector3(Math.cos(angle), Math.sin(angle), 0);
                                 localDir.applyQuaternion(torusMesh.quaternion).normalize();
 
-                                // Raycast Out to Torus (find inner surface of ring)
                                 raycaster.set(sourceCentre, localDir);
                                 const torusHits = raycaster.intersectObject(torusMesh, false);
 
                                 if (torusHits.length > 0) {
                                     const outerPoint = torusHits[0].point;
-
-                                    // Raycast In to Inner Object (find outer surface)
                                     raycaster.set(outerPoint, localDir.clone().negate());
                                     const innerHits = raycaster.intersectObject(innerMesh, true);
                                     
@@ -750,48 +735,35 @@ export class ShipAssembler {
                                     strutGroup.add(strut);
                                 }
                             }
-                            continue; // Skip standard strut generation
+                            continue;
                         }
                     }
 
-                    // Raycast from source center towards target center to find connection points on surfaces
                     const raycastDirection = tempVec.subVectors(targetCentre, sourceCentre).normalize();
-                    
-                    // Find intersection point on source mesh
                     raycaster.set(sourceCentre, raycastDirection);
                     const sourceIntersects = raycaster.intersectObject(sourceMesh, true);
-                    let startPoint = sourceCentre; // Fallback
+                    let startPoint = sourceCentre;
                     if (sourceIntersects.length > 0) {
                         startPoint = sourceIntersects[0].point;
                     }
 
-                    // Find intersection point on target mesh
-                    raycaster.set(endPoint, raycastDirection.negate()); // Raycast from target back to source
+                    raycaster.set(endPoint, raycastDirection.negate());
                     const targetIntersects = raycaster.intersectObject(targetMesh, true);
                     if (targetIntersects.length > 0) {
                         endPoint = targetIntersects[0].point;
                     }
 
-                    if (sourceIntersects.length === 0 || targetIntersects.length === 0) {
-                        continue;
-                    }
+                    if (sourceIntersects.length === 0 || targetIntersects.length === 0) continue;
 
-                    // FIX: Check for overlap using dot product
-                    // raycastDirection is now Target->Source (due to negate())
-                    // gapVec is End - Start (SourceSurface -> TargetSurface)
-                    // If disjoint, gapVec opposes raycastDirection -> dot < 0
-                    // If overlapping, gapVec aligns with raycastDirection -> dot > 0
                     const gapVec = new THREE.Vector3().subVectors(endPoint, startPoint);
                     if (gapVec.dot(raycastDirection) > 0) continue;
                     
                     const midPoint = tempVec.addVectors(startPoint, endPoint).multiplyScalar(0.5);
                     const dist = startPoint.distanceTo(endPoint);
                     
-                    // FIX: Skip struts for wing-fuselage connections to avoid visual clutter
                     const sourceUsage = sourceMesh.userData.componentUsage || '';
                     const targetUsage = targetMesh.userData.componentUsage || '';
 
-                    // Skip struts for mandibles to prevent "floating supports" in the gap
                     if (sourceUsage.includes('mandible') || targetUsage.includes('mandible')) continue;
 
                     if ((sourceUsage.includes('wing') && (targetUsage.includes('fuselage') || targetUsage.includes('spine') || targetUsage.includes('hull'))) || 
@@ -799,28 +771,14 @@ export class ShipAssembler {
                         continue; 
                     }
 
-                    // FIX: Skip struts for embedded generators on arc ships
-                    if (components.hullType === 'HORSESHOE' || components.hullType === 'STATION_RING') {
-                        if (sourceUsage.includes('generator') || targetUsage.includes('generator') ||
-                            sourceUsage.includes('shield') || targetUsage.includes('shield')) {
-                            continue;
-                        }
-                    }
-
-                    // FIX: Skip struts if components are touching or embedded to avoid visual clutter
                     if (dist < 0.5) continue;
 
-                    // FIX: Create a single, thicker, correctly-oriented strut to avoid visual bugs.
-                    // Embed strut into components by increasing length slightly
                     const strutRadius = 0.25;
                     const embedDepth = 1.0; 
                     const strutGeo = new THREE.CylinderGeometry(strutRadius, strutRadius, dist + embedDepth, 8);
                     const strut = new THREE.Mesh(strutGeo, strutMat);
-
-                    // Position at midpoint
                     strut.position.copy(midPoint);
 
-                    // Align cylinder's default Y-axis along the vector from start to end
                     const direction = new THREE.Vector3().subVectors(endPoint, startPoint).normalize();
                     const up = new THREE.Vector3(0, 1, 0);
                     const quat = new THREE.Quaternion().setFromUnitVectors(up, direction);

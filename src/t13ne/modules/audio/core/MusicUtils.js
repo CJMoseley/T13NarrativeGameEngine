@@ -1,14 +1,26 @@
 // src/t13ne/modules/audio/core/MusicUtils.js
 
-import PRNG from '/src/t13ne/modules/systems/t13ne-prng.js';
-
 export class MusicRNG {
     constructor(seed) {
-        this.engine = PRNG.create32(seed);
+        this.seed = this._hash(seed);
+    }
+
+    _hash(str) {
+        let hash = 0;
+        if (str === undefined || str === null) return hash;
+        if (typeof str !== 'string') str = JSON.stringify(str);
+        if (!str || str.length === 0) return hash;
+        for (let i = 0; i < str.length; i++) {
+            const char = str.charCodeAt(i);
+            hash = ((hash << 5) - hash) + char;
+            hash |= 0; // Convert to 32bit integer
+        }
+        return hash;
     }
 
     next() {
-        return this.engine.nextDouble();
+        const x = Math.sin(this.seed++) * 10000;
+        return x - Math.floor(x);
     }
 
     pick(array) {
@@ -17,6 +29,6 @@ export class MusicRNG {
     }
 
     range(min, max) {
-        return this.engine.nextInt(min, max);
+        return Math.floor(this.next() * (max - min + 1)) + min;
     }
 }

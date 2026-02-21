@@ -107,6 +107,7 @@ export class WorkerPool {
     }
 
     _handleMessage(workerContext, response) {
+        if (!response) return;
         const { requestId, error, type } = response;
 
         // Handle potential responses that don't match a request (rare if protocol is followed)
@@ -115,8 +116,9 @@ export class WorkerPool {
         const pending = this.pendingRequests.get(requestId);
 
         if (error) {
-            if (pending) pending.reject(new Error(error));
-            EventBus.emit(`worker:${this.poolId}:error`, { requestId, error, type });
+            const errObj = (typeof error === 'string') ? new Error(error) : error;
+            if (pending) pending.reject(errObj);
+            EventBus.emit(`worker:${this.poolId}:error`, { requestId, error: error.message || error, type });
         } else {
             // Store result for polling
             this.completedResults.set(requestId, response);

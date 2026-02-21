@@ -1,7 +1,23 @@
 import * as THREE from 'three';
 import { MarchingCubes } from 'three/examples/jsm/objects/MarchingCubes.js';
 import { PRIMITIVE_TYPES } from './ComponentFactory.js';
-import Logger from '/src/t13ne/core/Logger.js';
+
+// Worker-safe logger fallback
+const SafeLogger = {
+    message: (msg) => {
+        try {
+            // Check if we are in a worker and if Logger is available via global scope or similar
+            if (typeof Logger !== 'undefined') Logger.message(msg);
+            else console.log(`[MSG] ${msg}`);
+        } catch (e) { console.log(`[MSG] ${msg}`); }
+    },
+    warn: (msg) => {
+        try {
+            if (typeof Logger !== 'undefined') Logger.warn(msg);
+            else console.warn(`[WARN] ${msg}`);
+        } catch (e) { console.warn(`[WARN] ${msg}`); }
+    }
+};
 
 export class HullGenerator {
     constructor(physxProvider) {
@@ -12,11 +28,7 @@ export class HullGenerator {
 
     setPerformanceMode(mode) {
         this.performanceMode = mode;
-        if (typeof Logger !== 'undefined') {
-            Logger.message(`HullGenerator: Performance mode set to ${mode}`);
-        } else {
-            console.log(`HullGenerator: Performance mode set to ${mode}`);
-        }
+        SafeLogger.message(`HullGenerator: Performance mode set to ${mode}`);
     }
 
     generate(components, styleConfig) {
