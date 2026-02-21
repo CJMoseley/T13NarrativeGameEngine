@@ -3,6 +3,8 @@
 import Logger from "/src/t13ne/core/Logger.js";
 import { T13Plot } from "../narrative/t13ne-plots.js";
 import T13LoreManager from "../narrative/t13ne-lore.js";
+import { SceneDirector } from "./t13ne-scene-director.js";
+import { WorkerPool } from "/src/t13ne/core/WorkerPool.js";
 
 /**
  * T13NE Referee Module
@@ -14,14 +16,106 @@ class T13NE_Referee {
         this.initialized = false;
         this.t13ne = null; // Will hold the main T13NE instance
         this.characters = []; // Master list of all active characters (PCs and key NPCs)
+        this.sceneDirector = new SceneDirector(this);
+        this.primingData = null;
+        this.workerPool = null;
     }
 
 
     async initialize(t13ne) {
         if (this.initialized) return;
         this.t13ne = t13ne;
+
+        // Initialize Worker Pool
+        this.workerPool = new WorkerPool('referee', new URL('./t13neworkers.js', import.meta.url), 1);
+        await this.workerPool.init();
+
+        // Load priming data
+        try {
+            const CodexLoader = (await import("../codex/CodexLoader.js")).default;
+            this.primingData = await CodexLoader.getData('other', 'wormhole_racers_priming.json');
+            Logger.message('T13NE_Referee: Priming data loaded for ' + this.primingData?.game);
+        } catch (e) {
+            Logger.warn('T13NE_Referee: Failed to load priming data.', e);
+        }
+
         this.initialized = true;
         Logger.message('T13NE_Referee: Initialized.');
+    }
+
+    /**
+     * Plays the introductory narrative sequence.
+     * Replaces the hardcoded sequence in LoaderManager.
+     */
+    async playIntro() {
+        Logger.message("Referee: Playing Intro Sequence...");
+        const ViewManager = this.t13ne.viewManager;
+        const GameEngine = ViewManager?.gameEngine;
+
+        if (!ViewManager) {
+            Logger.error("Referee: ViewManager not found.");
+            return;
+        }
+
+        // Use priming data for initial narration if available
+        if (this.primingData && this.primingData.intro_narrative) {
+            Logger.message(`Referee: ${this.primingData.intro_narrative.opening}`);
+        }
+
+        // 1. Initial Galaxy Reveal
+        ViewManager.cueScene('GalaxyMapScene', { attractMode: true }, {
+            duration: 4000,
+            onActive: async (scene) => {
+                await GameEngine.generateSystem();
+
+                // Update the next scenes in the queue with the generated data
+                const localSpaceItem = ViewManager.sceneQueue.find(i => i.name === 'LocalSpaceScene');
+                if (localSpaceItem) {
+                    localSpaceItem.data.systemDetails = GameEngine.currentSystemDetails;
+                    localSpaceItem.data.planets = GameEngine.currentPlanets;
+                    localSpaceItem.data.star = GameEngine.playerStartSystem;
+                }
+                const orbitItem = ViewManager.sceneQueue.find(i => i.name === 'PlanetaryOrbitScene');
+                if (orbitItem) {
+                    orbitItem.data.system = GameEngine.currentSystemDetails;
+                    orbitItem.data.planet = GameEngine.currentPlanets ? GameEngine.currentPlanets[0] : null;
+                }
+
+                if (scene && typeof scene.focusOnSystem === 'function' && GameEngine.playerStartSystem) {
+                    await scene.focusOnSystem(GameEngine.playerStartSystem);
+                }
+            }
+        });
+
+        // 2. Transition to Local Space
+        ViewManager.cueScene('LocalSpaceScene', {
+            playIntro: true
+        }, {
+            duration: 0,
+            transition: { type: 'crossDissolve', duration: 2000 },
+            onActive: async (scene) => {
+                if (typeof scene.playIntroSequence === 'function') {
+                    await scene.playIntroSequence();
+                }
+            }
+        });
+
+        // 3. Planetary Orbit and Ship Discovery
+        ViewManager.cueScene('PlanetaryOrbitScene', {}, {
+            duration: 10000,
+            transition: { type: 'fade', duration: 1500 },
+            onActive: async () => {
+                await GameEngine.seedPlayerShip();
+            }
+        });
+
+        // 4. Ship Showcase (Final Reveal)
+        ViewManager.cueScene('ShipShowcaseScene', {}, {
+            duration: 0,
+            transition: { type: 'wipe', duration: 1200, direction: 'up' }
+        });
+
+        return await ViewManager.playSequence();
     }
 
     /**
@@ -144,6 +238,18 @@ class T13NE_Referee {
         const AIService = this.t13ne.getModule('AIService');
 
         Logger.message("T13NE_Referee: Processing Turn...");
+
+        // Use worker for heavy plot processing if possible
+        if (Plots && this.workerPool) {
+            try {
+                // Serialize plots for worker (simplified for demo)
+                const plotSummary = Plots.plots.map(p => ({ id: p.id, tensionLevel: p.tensionLevel }));
+                const workerResult = await this.workerPool.execute('process_plots', { plots: plotSummary });
+                Logger.message(`Referee: Worker processed ${workerResult.result.length} plots.`);
+            } catch (e) {
+                Logger.warn("Referee: Worker turn processing failed, falling back to main thread.", e);
+            }
+        }
 
         if (Plots) {
             // Gather all active plots (flattening hierarchy for processing)

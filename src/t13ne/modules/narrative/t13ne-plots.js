@@ -40,6 +40,7 @@ class T13Plot extends SuperKnot {
         this.yarnCards = data.yarnCards || [];
         this.characters = data.Hooked_Characters || [];
         this.motifs = data.Motifs || [];
+        this.ratchets = data.Ratchets || []; // Array of ratchet definitions
         this.significator = data.Significator || null;
         this.conflictBoons = {}; // Stores calculated boons for the conflict sides
         this.location = data.Location || null;
@@ -75,7 +76,26 @@ class T13Plot extends SuperKnot {
 
         this.yarnTeller = new T13YarnTeller(null, data.voice || this.generateComplexVoice());
 
+        // Ensure at least one ratchet is present
+        this.ensureRatchet();
+
         Logger.message(`T13Plot: Created plot '${this.Name}' (Rank: ${this.Rank}, Variety: ${this.variety}, Importance: ${this.importance}, Tags: ${this.tags.join(', ')})`);
+    }
+
+    /**
+     * Ensures the plot has at least one ratchet.
+     */
+    ensureRatchet() {
+        if (this.ratchets.length === 0) {
+            // Add a default ratchet based on variety or genre
+            const defaultRatchets = {
+                'Security': 'Infiltration',
+                'Conflict': 'Dominance',
+                'Disaster': 'Volcanic'
+            };
+            const type = defaultRatchets[this.variety] || 'General';
+            this.ratchets.push({ type: type, name: `${this.Name} ${type} Ratchet` });
+        }
     }
 
     get currentState() {
