@@ -10,34 +10,22 @@ export class AudioManifestManager {
             loops: {},
             midi: {},
             stems: {},
-            instruments: {} // This is the Synthetic Store
+            instruments: {}
         };
     }
 
     async loadManifest() {
-        // Load Sample Store (from public/media)
         try {
             const response = await fetch('/media/audio/audio_assets_manifest.json');
             if (response.ok) {
                 const loaded = await response.json();
-                this.manifest.samples = { ...this.manifest.samples, ...loaded.samples };
-                Logger.message("AudioManifestManager: Sample manifest loaded.");
+                this.manifest = { ...this.manifest, ...loaded };
+                Logger.message("AudioManifestManager: Manifest loaded from disk.");
+            } else {
+                Logger.warn("AudioManifestManager: Could not load audio_assets_manifest.json");
             }
         } catch (e) {
-            Logger.warn("AudioManifestManager: Could not load sample manifest", e);
-        }
-
-        // Load Synthetic Store (from T13NE data)
-        try {
-            const response = await fetch('/plugins/t13ne/data/json/music/synthetic_instruments.json');
-            if (response.ok) {
-                const loaded = await response.json();
-                this.manifest.instruments = { ...this.manifest.instruments, ...loaded };
-                Logger.message("AudioManifestManager: Synthetic manifest loaded.");
-            }
-        } catch (e) {
-            // It's okay if this is missing initially
-            Logger.message("AudioManifestManager: Synthetic manifest missing or empty.");
+            Logger.warn("AudioManifestManager: Error loading manifest", e);
         }
     }
 

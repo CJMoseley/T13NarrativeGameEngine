@@ -45,11 +45,10 @@ export class AvatarEngine {
      * @private
      */
     _setupMorphTargets(geometry, bodyPlan) {
-        if (!geometry || !geometry.attributes || !geometry.attributes.position) return;
+        if (!geometry?.attributes?.position?.array) return;
 
         // Create standard ARKit/VRM morph targets as empty attributes for now
         // In a real generator, we'd deform the geometry here
-        if (!geometry.attributes.position.array) return;
         const positions = geometry.attributes.position.array;
         const morphNames = ['eyeBlinkLeft', 'eyeBlinkRight', 'jawOpen', 'mouthPucker', 'mouthFunnel'];
 

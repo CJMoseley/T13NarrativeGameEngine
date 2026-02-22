@@ -592,7 +592,7 @@ export class LocalSpaceScene extends Scene {
     update(time, delta) {
         super.update(time, delta);
         const dt = delta * 0.001;
-        const C = this.COMPRESSION_C;
+        const compression = this.COMPRESSION_C;
 
         if (this.starbox) {
             // Starbox is static, no update needed unless camera moves within it
@@ -659,7 +659,7 @@ export class LocalSpaceScene extends Scene {
                     obj.mesh.position.copy(relVec);
                     obj.mesh.scale.setScalar(1.0);
                 } else {
-                    const visualDist = C * Math.log(1 + realDist / C);
+                    const visualDist = compression * Math.log(1 + realDist / compression);
                     const visualPos = relVec.clone();
                     if (realDist > 0.01) {
                         visualPos.normalize().multiplyScalar(visualDist);
@@ -721,7 +721,7 @@ export class LocalSpaceScene extends Scene {
                 // Instanced Asteroid update
                 const relVec = new THREE.Vector3().subVectors(obj.realPosition, this.virtualCameraPosition);
                 const realDist = relVec.length();
-                const visualDist = C * Math.log(1 + realDist / C);
+                const visualDist = compression * Math.log(1 + realDist / compression);
                 const visualPos = relVec.clone();
                 if (realDist > 0.01) {
                     visualPos.normalize().multiplyScalar(visualDist);
@@ -740,7 +740,7 @@ export class LocalSpaceScene extends Scene {
             }
 
 
-            if (obj.orbitLine && obj.orbitPointsReal && obj.orbitLine.geometry && obj.orbitLine.geometry.attributes.position && obj.orbitLine.geometry.attributes.position.array) {
+            if (obj.orbitLine && obj.orbitPointsReal && obj.orbitLine.geometry?.attributes?.position?.array) {
                 obj.orbitLine.visible = !this.introActive;
                 const positions = obj.orbitLine.geometry.attributes.position.array;
                 const tempVec = new THREE.Vector3();
@@ -749,7 +749,7 @@ export class LocalSpaceScene extends Scene {
                     const realPt = obj.orbitPointsReal[i];
                     tempVec.subVectors(realPt, this.virtualCameraPosition);
                     const rDist = tempVec.length();
-                    const vDist = C * Math.log(1 + rDist / C);
+                    const vDist = compression * Math.log(1 + rDist / compression);
                     tempVec.normalize().multiplyScalar(vDist);
 
                     positions[i * 3] = tempVec.x;
