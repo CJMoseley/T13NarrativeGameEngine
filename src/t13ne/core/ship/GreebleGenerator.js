@@ -75,23 +75,19 @@ export class GreebleGenerator {
         return group;
     }
 
-    createRivet() {
-        // Try to create variable rivet shape for variety
-        const roll = Math.random();
-        let rivetGeo;
-        if (roll < 0.33) {
-            rivetGeo = new THREE.SphereGeometry(0.08, 4, 4);
-        } else if (roll < 0.66) {
-            rivetGeo = new THREE.CylinderGeometry(0.05, 0.05, 0.2, 6);
-        } else {
-            rivetGeo = new THREE.TetrahedronGeometry(0.1);
+    getRivetGeo(seed) {
+        if (!this.rivetGeos) {
+            this.rivetGeos = [
+                new THREE.SphereGeometry(0.08, 4, 4),
+                new THREE.CylinderGeometry(0.05, 0.05, 0.2, 6),
+                new THREE.TetrahedronGeometry(0.1)
+            ];
         }
-		return rivetGeo;
-    }
-
-	
-    getOrCreateRivetGeo() {
-		return this.rivetGeo = this.rivetGeo || this.createRivet();
+        const rng = mulberry32(seed);
+        const roll = rng();
+        if (roll < 0.33) return this.rivetGeos[0];
+        if (roll < 0.66) return this.rivetGeos[1];
+        return this.rivetGeos[2];
     }
 
     createPipe(length) {
@@ -449,6 +445,9 @@ export class GreebleGenerator {
         const greebleGroup = new THREE.Group();
         greebleGroup.name = "greebles";
 
+        // Select rivet type deterministically for this ship
+        const rivetGeo = this.getRivetGeo(seed);
+
         // Determine global orientation preference for radial ships
         const globalOrientToCenter = (symmetryType === 'RADIAL' || symmetryType === 'REFLECTIVE');
 
@@ -527,7 +526,7 @@ export class GreebleGenerator {
                         
                         const rayOrigin = ringCenter.clone().add(offset);
                         const rayDir = offset.clone().negate().normalize();
-                        this.placeOnSurface(hullMesh, greebleGroup, rayOrigin, rayDir, new THREE.Mesh(this.rivetGeo, this.rivetMat), true, 0, isCentral, effectiveSymmetry, radialAxis, effectiveRadialCount, null, 'up');
+                        this.placeOnSurface(hullMesh, greebleGroup, rayOrigin, rayDir, new THREE.Mesh(rivetGeo, this.rivetMat), true, 0, isCentral, effectiveSymmetry, radialAxis, effectiveRadialCount, null, 'up');
                     }
                 }
 
@@ -550,7 +549,7 @@ export class GreebleGenerator {
                         const linePoint = pos.clone().add(lengthDir.clone().multiplyScalar(localPos));
                         const rayOrigin = linePoint.clone().add(offsetDir.clone().multiplyScalar(radiusDim + 5.0));
                         const rayDir = offsetDir.clone().negate();
-                        this.placeOnSurface(hullMesh, greebleGroup, rayOrigin, rayDir, new THREE.Mesh(this.rivetGeo, this.rivetMat), true, 0, isCentral, effectiveSymmetry, radialAxis, effectiveRadialCount, null, 'up');
+                        this.placeOnSurface(hullMesh, greebleGroup, rayOrigin, rayDir, new THREE.Mesh(rivetGeo, this.rivetMat), true, 0, isCentral, effectiveSymmetry, radialAxis, effectiveRadialCount, null, 'up');
                     }
                 }
 

@@ -9,7 +9,7 @@ export const racingLiveryShader = {
             color1: { value: new THREE.Color(0xd40000) }, // Racing Red
             color2: { value: new THREE.Color(0xffffff) }, // White Stripe
             color3: { value: new THREE.Color(0x333333) },  // Dark Grey Detail (Lighter than black)
-            noiseSeed: { value: Math.random() * 100 },
+            noiseSeed: { value: 0 },
             patternType: { value: 0 } // 0: Stripe, 1: Camo, 2: Checker
         }
     ]),
@@ -38,7 +38,7 @@ export const racingLiveryShader = {
         uniform float noiseSeed;
         uniform int patternType;
 
-        float rand(vec2 co){
+        float random(vec2 co){
             return fract(sin(dot(co, vec2(12.9898, 78.233))) * 43758.5453);
         }
 
@@ -68,7 +68,7 @@ export const racingLiveryShader = {
                 color = mix(color, color2, centerStripe); // Apply white center stripe
             } else if (patternType == 1) {
                 // Camo / Noise
-                float n = rand(floor(vPos.xz * 2.0 + noiseSeed));
+                float n = random(floor(vPos.xz * 2.0 + noiseSeed));
                 if (n > 0.5) color = color2;
                 if (n > 0.8) color = color3;
             } else if (patternType == 2) {
@@ -134,7 +134,7 @@ export const industrialLiveryShader = {
             time: { value: 0 },
             opacity: { value: 1.0 },
             baseColor: { value: new THREE.Color(0x667788) }, // Blue-ish grey
-            noiseSeed: { value: Math.random() * 100 },
+            noiseSeed: { value: 0 },
             scale: { value: 1.0 }
         }
     ]),
@@ -207,7 +207,7 @@ export const boxyLiveryShader = {
             time: { value: 0 },
             opacity: { value: 1.0 },
             baseColor: { value: new THREE.Color(0x667788) },
-            noiseSeed: { value: Math.random() * 100 },
+            noiseSeed: { value: 0 },
             scale: { value: 1.0 }
         }
     ]),
@@ -252,7 +252,7 @@ export const organicLiveryShader = {
             time: { value: 0 },
             opacity: { value: 1.0 },
             baseColor: { value: new THREE.Color(0x88aa88) }, // Organic Green/Grey
-            noiseSeed: { value: Math.random() * 100 },
+            noiseSeed: { value: 0 },
             scale: { value: 1.0 }
         }
     ]),
@@ -339,7 +339,7 @@ export const miningLiveryShader = {
             opacity: { value: 1.0 },
             baseColor: { value: new THREE.Color(0x8B4513) }, // Rust/Brown default
             secondaryColor: { value: new THREE.Color(0x5F7F7F) }, // Lighter Slate
-            noiseSeed: { value: Math.random() * 100 },
+            noiseSeed: { value: 0 },
             scale: { value: 1.0 }
         }
     ]),
@@ -402,7 +402,7 @@ export const metallicLiveryShader = {
             baseColor: { value: new THREE.Color(0xCCCCCC) }, // Silver/Chrome
             roughness: { value: 0.3 },
             metalness: { value: 1.0 },
-            noiseSeed: { value: Math.random() * 100 },
+            noiseSeed: { value: 0 },
             scale: { value: 1.0 }
         }
     ]),

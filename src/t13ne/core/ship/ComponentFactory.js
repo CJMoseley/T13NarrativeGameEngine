@@ -68,7 +68,7 @@ export class ComponentFactory {
                 geometry = new THREE.ConeGeometry(
                     dims.radius || 0.5,
                     dims.height || 1,
-                    16
+                    dims.radialSegments || 16
                 );
                 break;
 

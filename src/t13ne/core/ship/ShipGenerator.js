@@ -65,7 +65,7 @@ export class ShipGenerator {
         };
 
         // --- Helper: Attach Component with Symmetry ---
-        const attachComponent = (usage, basePos, baseRot, type, dims, forceSymmetry = null, preventRotationSymmetry = false, overrideName = null) => {
+        const attachComponent = (usage, basePos, baseRot, type, dims, forceSymmetry = null, preventRotationSymmetry = false, overrideName = null, extraProps = {}) => {
             // Add primary component
             let name = overrideName;
             let namePromise = null;
@@ -117,7 +117,7 @@ export class ShipGenerator {
             // This is crucial for components like wings that might have different symmetry than the hull
             if (forceSymmetry) stats.forceSymmetry = forceSymmetry;
 
-            components.push({ usage, name, namePromise, type, dims, pos: basePos, rot: baseRot, id, stats });
+            components.push({ usage, name, namePromise, type, dims, pos: basePos, rot: baseRot, id, stats, ...extraProps });
 
             const effectiveSymmetry = forceSymmetry || symmetryType;
 
@@ -141,7 +141,7 @@ export class ShipGenerator {
                     symScale = [symScale[0] * scaleVar, symScale[1] * scaleVar, symScale[2] * scaleVar]; // Update mirror
                 }
 
-                components.push({ usage, name, namePromise, type, dims, pos: symPos, rot: symRot, scale: symScale, id: id + '_sym', stats });
+                components.push({ usage, name, namePromise, type, dims, pos: symPos, rot: symRot, scale: symScale, id: id + '_sym', stats, ...extraProps });
             } else if (effectiveSymmetry === 'RADIAL') {
                 // Check if component is on the axis of rotation to prevent overlapping duplicates
                 const threshold = 0.1;
@@ -188,7 +188,7 @@ export class ShipGenerator {
                         }
 
                         const rId = id + `_rad_${i}`;
-                        components.push({ usage, name, namePromise, type, dims, pos: rPos, rot: rRot, id: rId, stats });
+                        components.push({ usage, name, namePromise, type, dims, pos: rPos, rot: rRot, id: rId, stats, ...extraProps });
                         radialIds.push({ id: rId, pos: rPos });
                         // Return the ID so we can link to it if needed
                     }
@@ -1089,6 +1089,17 @@ export class ShipGenerator {
         });
 
         if (totalMass > 0) cog.divideScalar(totalMass);
+
+        // Recenter ship on CoG so it rotates around its center of mass
+        if (totalMass > 0) {
+            components.forEach(c => {
+                c.pos[0] -= cog.x;
+                c.pos[1] -= cog.y;
+                c.pos[2] -= cog.z;
+            });
+            // Reset CoG to 0,0,0 for subsequent calculations (like Shield placement)
+            cog.set(0, 0, 0);
+        }
 
         // --- 2b.1 Move Shield Generator to CoG (or near it) ---
         // We want it balanced, but maybe not exactly at 0,0,0 if the CoG is there.

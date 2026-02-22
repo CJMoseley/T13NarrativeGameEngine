@@ -355,6 +355,50 @@ export class InstrumentEngine {
             ]
         });
 
+        // Bass Definitions
+        this.defineInstrument('Bass_Sub808', {
+            type: 'synth', oscType: 'sine',
+            envelope: 'sustained', attack: 0.01, decay: 0.1, sustain: 0.8, release: 0.3,
+            role: 'bass',
+            effects: [{ type: 'distortion', amount: 5 }]
+        });
+
+        this.defineInstrument('Bass_Reese', {
+            type: 'additive',
+            envelope: 'sustained', attack: 0.05, decay: 0.1, sustain: 1.0, release: 0.4,
+            partials: [
+                { freq: 1.0, amp: 1.0 },
+                { freq: 1.01, amp: 0.8 },
+                { freq: 0.99, amp: 0.8 },
+                { freq: 2.0, amp: 0.5 },
+                { freq: 2.02, amp: 0.4 }
+            ],
+            role: 'bass',
+            effects: [{ type: 'filter', filterType: 'lowpass', frequency: 800, q: 1 }]
+        });
+
+        this.defineInstrument('Bass_Moog', {
+            type: 'synth', oscType: 'sawtooth',
+            envelope: 'sustained', attack: 0.05, decay: 0.2, sustain: 0.6, release: 0.2,
+            role: 'bass',
+            filterType: 'lowpass', filterFreq: 600, filterQ: 2
+        });
+
+        this.defineInstrument('Bass_Acid', {
+            type: 'synth', oscType: 'sawtooth',
+            envelope: 'percussive', attack: 0.01, decay: 0.4, sustain: 0, release: 0.1,
+            role: 'bass',
+            filterType: 'lowpass', filterFreq: 1000, filterQ: 10,
+            effects: [{ type: 'distortion', amount: 20 }]
+        });
+
+        this.defineInstrument('Bass_Pluck', {
+            type: 'synth', oscType: 'square',
+            envelope: 'percussive', attack: 0.01, decay: 0.3, sustain: 0, release: 0.1,
+            role: 'bass',
+            filterType: 'lowpass', filterFreq: 800, filterQ: 1
+        });
+
         // Create a noise buffer for percussion
         const bufferSize = this.ctx.sampleRate * 2.0; // 2 seconds of noise
         this.noiseBuffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
@@ -454,15 +498,13 @@ export class InstrumentEngine {
             // Candidate paths to try
             let candidates = [url];
             if (!url.match(/^(http|https|blob|data):/)) {
-                let relative = url.startsWith('/') ? url : '/' + url;
-
-                // Fix: Files in public are served at root, so strip /public prefix if present
-                if (relative.startsWith('/public/')) {
-                    relative = relative.substring(7);
-                }
-
+                // Try raw, root-relative, and public-prefixed variations to catch all serving configs
+                const raw = url.startsWith('/') ? url.substring(1) : url;
                 candidates = [
-                    relative
+                    url,                        // As provided
+                    `/${raw}`,                  // Root relative
+                    `/public/${raw}`,           // Explicit public folder
+                    raw                         // Relative to current path
                 ];
             }
             // Deduplicate

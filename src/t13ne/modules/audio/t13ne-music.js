@@ -511,6 +511,7 @@ class T13NE_Music {
         let nextStepTime = this.synth.ctx.currentTime + 0.05;
 
         if (this.currentSequenceTimer) clearTimeout(this.currentSequenceTimer);
+        this.currentSequenceTimer = null;
 
         const schedule = () => {
             const activeTrack = this.currentTrack;

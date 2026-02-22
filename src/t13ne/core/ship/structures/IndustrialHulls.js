@@ -54,6 +54,17 @@ export const generateFreighter = (context) => {
     wiringGenerator.addConnection(explicitWiring, bridgeId, spineId, 'data', 2.0);
 
     // Cargo Containers
+    // Industrial Container Colors (RAL-ish)
+    const containerColors = [
+        0x8B0000, // Dark Red
+        0x00008B, // Dark Blue
+        0x006400, // Dark Green
+        0xFF8C00, // Dark Orange
+        0x808080, // Grey
+        0xA52A2A, // Brown
+        0xDDDDDD, // Off-White
+        0xDAA520  // Goldenrod
+    ];
     const containers = Math.floor(trussLen / 3.0);
     for(let i=0; i<containers; i++) {
         const z = -trussLen/2 + 3.0 * i + 2.0;
@@ -67,16 +78,30 @@ export const generateFreighter = (context) => {
              }
         }
 
+        // Determine Container Type & Color
+        const color = containerColors[Math.floor(random() * containerColors.length)];
+        const typeRoll = random();
+        let dims = { width: 3.0, height: 2.5, depth: 2.8 }; // Standard
+
+        if (typeRoll > 0.7) {
+            // "40ft" equivalent (Longer)
+            dims = { width: 3.0, height: 2.5, depth: 5.0 };
+        } else if (typeRoll > 0.4) {
+            // "High Cube" (Taller)
+            dims = { width: 3.0, height: 3.2, depth: 2.8 };
+        }
+
         // Side containers (Reflective symmetry handles the other side)
         attachComponent('cargo_pod', [podX, 0, z], [0, 0, 0], 'box', 
-            {width: 3.0, height: 2.5, depth: 2.8}, 'REFLECTIVE');
+            dims, 'REFLECTIVE', false, null, { color: color });
         
         // Occasional Vertical Container
         if (random() > 0.6) {
                 // Spine top is at Y=0.75 (Depth 1.5 / 2). Pod Height 2.0.
                 // Center should be 0.75 + 1.0 - 0.2 = 1.55 to ensure overlap
+                const topColor = containerColors[Math.floor(random() * containerColors.length)];
                 attachComponent('cargo_pod_top', [0, 1.55, z], [0, 0, 0], 'box', 
-                {width: 2.0, height: 2.0, depth: 2.8}, 'NONE');
+                {width: 2.0, height: 2.0, depth: 2.8}, 'NONE', false, null, { color: topColor });
         }
     }
 };
@@ -596,8 +621,8 @@ export const generateCatamaran = (context) => {
         }
 
         // Pylons and Nacelles
-        const nacelleLen = engLen * (subType === 'DAEDALUS' ? 1.1 : 0.9);
-        const nacelleRadius = engRadius * 0.25; // Thinner nacelles
+        const nacelleLen = engLen * (subType === 'DAEDALUS' ? 1.1 : 1.3);
+        const nacelleRadius = engRadius * 0.6; // Thicker nacelles
         
         let nacelleY, nacelleX, nacelleZ;
         
@@ -637,7 +662,7 @@ export const generateCatamaran = (context) => {
             const angleY = Math.atan2(end.y - start.y, end.x - start.x);
 
             attachComponent('pylon', [mid.x, mid.y, mid.z], [0, 0, angleY], 'box', 
-                { width: len, height: engRadius * 0.6, depth: 1.0 }, 'REFLECTIVE');
+                { width: len, height: engRadius * 0.15, depth: 0.4 }, 'REFLECTIVE');
         }
 
         // Nacelle - Renamed to warp_nacelle to avoid thrusters

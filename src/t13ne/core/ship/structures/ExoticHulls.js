@@ -194,57 +194,103 @@ export const generateLiberator = (context) => {
     
     // Coordinate System: +Z is Forward (0), -Z is Rear (100)
     // Center of ship (50) is at Z=0.
+    // Coordinate System: +Z is Forward.
+    // Based on user blueprint.
     
     // 1. Main Body (Hexagonal Prism)
     // Length 45. Position: 27.5 to 72.5 (Brief).
     // Center: 50. Z = 0.
     const hullLen = 45 * unit;
     const hullRadius = 6 * unit; 
+    // 1. Aft Sphere (Green Globe) - The Power Source
+    // Center: -40. Radius: 8.
+    const sphereRad = 8 * unit;
+    const sphereZ = -40 * unit;
     
     attachComponent('fuselage_main', [0, 0, 0], [Math.PI/2, 0, 0], 'prism', 
         { radius: hullRadius, height: hullLen, segments: 6 }, 'NONE');
+    attachComponent('reactor_sphere', [0, 0, sphereZ], [0, 0, 0], 'sphere', 
+        { radius: sphereRad }, 'NONE', false, null, { color: 0x00ff00, emissive: 0x00ff00, emissiveIntensity: 0.5 });
 
     // 2. Rear Sphere (Power Sphere)
     // Diameter 15. Center at 80 (Z = -30 * unit).
     const sphereRad = 7.5 * unit;
     const sphereZ = -30 * unit;
+    // 2. Spine Base (Connecting Sphere to Hub)
+    // Center: -25. Radius: 3. Length: 20 (-35 to -15).
+    const rearSpireLen = 20 * unit;
+    const rearSpireZ = -25 * unit;
+    const spineBaseRad = 3 * unit;
     
     attachComponent('reactor_sphere', [0, 0, sphereZ], [0, 0, 0], 'sphere', 
         { radius: sphereRad }, 'NONE');
+    attachComponent('fuselage_rear', [0, 0, rearSpireZ], [Math.PI/2, 0, 0], 'cylinder', 
+        { radiusTop: spineBaseRad, radiusBottom: spineBaseRad, height: rearSpireLen }, 'NONE', false, null, { color: 0xffffee });
 
     // 3. Rear Spire
     // Length 12. Extends from sphere (87.5) to 99.5.
     // Center Z: 93.5 -> Z = -43.5 * unit.
     const rearSpireLen = 12 * unit;
     const rearSpireZ = -43.5 * unit;
+    // 3. Main Hub (The Flight Deck / Collar)
+    // Center: -10. Radius: 10. Depth: 10 (-15 to -5).
+    const hubLen = 10 * unit;
+    const hubZ = -10 * unit;
+    const hubRad = 10 * unit;
     
-    attachComponent('sensor_spire_rear', [0, 0, rearSpireZ], [Math.PI/2, 0, 0], 'cone', 
+    attachComponent('sensor_spire_rear', [0, 0, rearSpireZ], [-Math.PI/2, 0, 0], 'cone', 
         { radius: 1 * unit, height: rearSpireLen }, 'NONE');
+    attachComponent('fuselage_hub', [0, 0, hubZ], [Math.PI/2, 0, 0], 'prism', 
+        { radius: hubRad, height: hubLen, segments: 6 }, 'NONE', false, null, { color: 0xdaa520 }); // Gold
 
     // 4. Flight Deck (Bridge)
     // Front of Hull (27.5 -> Z = +22.5 * unit).
     const bridgeLen = 5 * unit;
     const bridgeZ = 22.5 * unit + bridgeLen/2;
+    // 4. Forward Spine (The Javelin)
+    // Tapered. Starts at Hub Front (-5). Ends at 80. Length = 85.
+    // Center = -5 + 42.5 = 37.5.
+    // Radius: Hub (5) -> Tip (0.5).
+    const fwdSpireLen = 85 * unit;
+    const fwdSpireZ = 37.5 * unit;
+    const fwdRadBase = 5 * unit;
+    const fwdRadTip = 0.5 * unit;
     
     attachComponent('bridge', [0, 0, bridgeZ], [Math.PI/2, 0, 0], 'prism', 
         { radiusTop: hullRadius * 0.6, radiusBottom: hullRadius, height: bridgeLen, segments: 6 }, 'NONE');
+    attachComponent('fuselage_spine', [0, 0, fwdSpireZ], [Math.PI/2, 0, 0], 'cylinder', 
+        { radiusTop: fwdRadTip, radiusBottom: fwdRadBase, height: fwdSpireLen }, 'NONE', false, null, { color: 0xffffee });
 
     // 5. Pylons & Nacelles (Tri-Radial)
-    const nacelleRad = 30 * unit;
-    const nacelleLen = 20 * unit;
-    const nacelleZ = 28 * unit; // Center of nacelle in Z
+    const nacelleRad = 15 * unit;
+    const nacelleLen = 25 * unit;
+    const nacelleZ = 0 * unit; // Center of nacelle in Z
+    // We use 'liberator_pod' to avoid default engine greebles (vents)
     
     // Nacelle (Teardrop): Tip at +Z (Front), Base at -Z (Rear)
     attachComponent('engine_nacelle', [nacelleRad, 0, nacelleZ], [Math.PI/2, 0, 0], 'cone', 
-        { radius: 4 * unit, height: nacelleLen, radialSegments: 16 }, 'RADIAL');
+        { radius: 3 * unit, height: nacelleLen, radialSegments: 16 }, 'RADIAL');
 
     // Forward Spire
-    // Length 12. Extends from Nacelle Front (Z=38) to Z=50.
-    const fwdSpireLen = 12 * unit;
-    const fwdSpireZ = 44 * unit;
+    // Length 20. Extends from Bridge (Z=25) to Z=45.
+    const fwdSpireLen = 20 * unit;
+    const fwdSpireZ = 35 * unit;
+    const podLen = 30 * unit;
+    const podRad = 4 * unit;
+    const podY = 25 * unit; // Radial distance
+    const podZ = 10 * unit; // Forward of Hub
     
-    attachComponent('sensor_spire_fwd', [nacelleRad, 0, fwdSpireZ], [Math.PI/2, 0, 0], 'cone', 
-        { radius: 0.5 * unit, height: fwdSpireLen }, 'RADIAL');
+    attachComponent('sensor_spire_fwd', [0, 0, fwdSpireZ], [Math.PI/2, 0, 0], 'cone', 
+        { radius: 2 * unit, height: fwdSpireLen }, 'NONE');
+    // Pod Body
+    attachComponent('liberator_pod', [0, podY, podZ], [Math.PI/2, 0, 0], 'cylinder', 
+        { radiusTop: podRad * 0.8, radiusBottom: podRad, height: podLen }, 'RADIAL', false, null, { color: 0xffffee });
+        
+    // Pod Intake (Green Tip)
+    // Pod ends at 10 + 15 = 25.
+    const intakeZ = podZ + (podLen / 2);
+    attachComponent('liberator_intake', [0, podY, intakeZ], [Math.PI/2, 0, 0], 'sphere', 
+        { radius: podRad * 0.9 }, 'RADIAL', false, null, { color: 0x00ff00, emissive: 0x00ff00, emissiveIntensity: 0.8 });
 
     // Pylon
     const pylonStart = new THREE.Vector3(hullRadius * 0.8, 0, 0);
@@ -252,15 +298,31 @@ export const generateLiberator = (context) => {
     const pylonVec = new THREE.Vector3().subVectors(pylonEnd, pylonStart);
     const pylonLen = pylonVec.length();
     const pylonMid = new THREE.Vector3().addVectors(pylonStart, pylonEnd).multiplyScalar(0.5);
+    // Pylons (Swept forward)
+    // Connect Hub (Z=-10, Y~8) to Pod (Z=10, Y=21).
+    const pylonStartY = 8 * unit;
+    const pylonStartZ = -10 * unit;
+    const pylonEndY = 21 * unit; // Pod Y (25) - Radius (4)
+    const pylonEndZ = 10 * unit;
     
     // Orientation
     const dummy = new THREE.Object3D();
     dummy.position.copy(pylonMid);
     dummy.lookAt(pylonEnd);
     dummy.rotateX(Math.PI/2);
+    const dy = pylonEndY - pylonStartY;
+    const dz = pylonEndZ - pylonStartZ;
+    const pylonLen = Math.sqrt(dy*dy + dz*dz);
+    const pylonAngle = Math.atan2(dz, dy); // Angle from Y axis towards Z
     
     attachComponent('pylon', [pylonMid.x, pylonMid.y, pylonMid.z], [dummy.rotation.x, dummy.rotation.y, dummy.rotation.z], 'box', 
         { width: 2 * unit, height: pylonLen, depth: 1 * unit }, 'RADIAL');
+    const pylonMidY = (pylonStartY + pylonEndY) / 2;
+    const pylonMidZ = (pylonStartZ + pylonEndZ) / 2;
+    
+    // Box oriented along Y then rotated around X
+    attachComponent('structural_pylon', [0, pylonMidY, pylonMidZ], [pylonAngle, 0, 0], 'box', 
+        { width: 1 * unit, height: pylonLen, depth: 4 * unit }, 'RADIAL', false, null, { color: 0xdaa520 }); // Gold
 };
 
 export const generateBioBird = (context) => {

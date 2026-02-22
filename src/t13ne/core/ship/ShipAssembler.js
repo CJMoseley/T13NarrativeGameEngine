@@ -42,6 +42,8 @@ export class ShipAssembler {
                 if (Array.isArray(comp.scale)) mesh.scale.set(...comp.scale);
                 else mesh.scale.copy(comp.scale);
             }
+            // Attach component data to mesh for later use (e.g. coloring)
+            mesh.userData.componentData = comp;
             return mesh;
         }).filter(m => m !== null);
 
@@ -203,7 +205,13 @@ export class ShipAssembler {
         // Add solid component meshes to fill gaps
         componentMeshes.forEach(mesh => {
             // FIX: Keep components visible as requested
-            const color = (components.livery && components.livery.color1) ? components.livery.color1 : 0x555555;
+            let color = (components.livery && components.livery.color1) ? components.livery.color1 : 0x555555;
+            
+            // Allow individual component color override
+            if (mesh.userData.componentData && mesh.userData.componentData.color) {
+                color = mesh.userData.componentData.color;
+            }
+
             mesh.material = new THREE.MeshStandardMaterial({
                 color: color,
                 roughness: 0.9,

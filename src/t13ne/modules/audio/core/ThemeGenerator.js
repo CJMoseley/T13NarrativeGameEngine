@@ -35,8 +35,8 @@ class VirtualArtist {
         this.chi = instData.chi;
 
         // NEW: Determine rhythmic identity
-        const geoRhythm = this.geometry?.geometry?.GeoRhythm || { timeSignature: [4, 4] };
-        this.timeSignature = geoRhythm.timeSignature;
+        // Force 4/4 default to prevent weird temporal signatures unless explicitly overridden by a specific trait
+        this.timeSignature = [4, 4]; 
         this.stepsPerBar = Math.round((this.timeSignature[0] / this.timeSignature[1]) * 16);
         
         this.determineMusicalPersonality();
@@ -257,25 +257,21 @@ class VirtualBand {
 
         if (!this.conductor) {
             this.conductor = artist;
-            this.baseFreq = artist.keyData.Frequency;
+            // Snap base frequency to nearest standard note to ensure sample compatibility
+            const rawFreq = artist.keyData.Frequency;
+            const noteIndex = Math.round(12 * Math.log2(rawFreq / 440));
+            this.baseFreq = 440 * Math.pow(2, noteIndex / 12);
             // Conductor sets the initial vibe
-            this.timeSignature = artist.timeSignature;
-            this.stepsPerBar = artist.stepsPerBar;
+            this.timeSignature = [4, 4]; // Enforce 4/4 for stability
+            this.stepsPerBar = 16;
         } else {
             // Subsequent artists influence the band
             const isDifferentTimeSignature = artist.timeSignature[0] !== this.timeSignature[0] || artist.timeSignature[1] !== this.timeSignature[1];
 
-            // A simple rule: if an early member (2nd or 3rd) introduces a new time signature, the whole band changes.
-            if (isDifferentTimeSignature && this.members.length <= 3) {
-                SafeLogger.message(`VirtualBand: Time signature change! Artist ${artist.name} shifts the band to ${artist.timeSignature.join('/')}.`);
-                this.timeSignature = artist.timeSignature;
-                this.stepsPerBar = artist.stepsPerBar;
-                this.polyrhythms.clear(); // Reset polyrhythms as everyone is now in the new time signature.
-                // Force a regeneration of the progression and rhythm by clearing the cached progression.
-                this.generator.currentProgression = null; 
-            } 
-            // Later members with different signatures create polyrhythms instead of changing the whole band.
-            else if (isDifferentTimeSignature) {
+            // Removed chaotic time signature switching. 
+            // Band stays in 4/4. Polyrhythms are only allowed if explicitly divergent.
+            
+            if (isDifferentTimeSignature) {
                 SafeLogger.message(`VirtualBand: Artist ${artist.name} introduces polyrhythm (${artist.timeSignature.join('/')}) over base (${this.timeSignature.join('/')}).`);
                 this.polyrhythms.set(artist.name, artist.stepsPerBar);
             }
@@ -556,7 +552,14 @@ export class ThemeGenerator {
             'snare': 'Drum_Snare',
             'hat': 'Drum_HiHat_Closed',
             'perc': 'Drum_Cowbell',
-            'bass': 'Synth_Bass',
+            'bass': (() => {
+                // Pick a random bass style if no samples available
+                const basses = ['Bass_Sub808', 'Bass_Reese', 'Bass_Moog', 'Bass_Acid', 'Bass_Pluck', 'Synth_Bass'];
+                // Use seed to pick consistently for the same character
+                let hash = 0;
+                for (let i = 0; i < seed.length; i++) hash = ((hash << 5) - hash) + seed.charCodeAt(i);
+                return basses[Math.abs(hash) % basses.length];
+            })(),
             'lead': 'Synth_Lead',
             'pad': 'Synth_Pad',
             'rhythm': 'Piano'
@@ -912,6 +915,16 @@ export class ThemeGenerator {
             }
         }
 
+        // Limit active background layers to prevent chaos
+        const maxBackgroundLayers = 3;
+        let backgroundCount = 0;
+        // Prioritize: Bass -> Rhythm -> Arp -> Pad
+        const priorityOrder = ['bass', 'groove', 'rhythm', 'arpeggiator', 'support', 'pad', 'cascading', 'syncopated'];
+        const getPriority = (role) => {
+            const idx = priorityOrder.indexOf(role);
+            return idx === -1 ? 99 : idx;
+        };
+
         const bandContext = {
             baseFreq: band.baseFreq,
             beatTime: beatTime,
@@ -931,15 +944,25 @@ export class ThemeGenerator {
             const artist = band.members[index];
             const role = assignedRoles[index];
             bandContext.artistIndex = index;
-            
-            const artistStepsPerBar = band.polyrhythms.get(artist.name) || band.stepsPerBar;
-            const totalArtistSteps = trackMeasures * artistStepsPerBar;
+
+            // Skip if we have too many background layers and this isn't a lead/solo
+            if (role !== 'lead' && role !== 'solo' && role !== 'bass') {
+                if (backgroundCount >= maxBackgroundLayers) {
+                    continue;
+                }
+                backgroundCount++;
+            }
+
+            // Use global steps for loop length to ensure synchronization, pass local meter preference to generator
+            const artistStepsPerBar = band.polyrhythms.get(artist.name) || stepsPerBar;
+            const totalArtistSteps = totalSteps; // Force lock to global track length
 
             // Use artist's instrument
             const instrument = artist.instrumentId;
-            const voiceId = `v_${artist.name.replace(/[^a-zA-Z0-9]/g, '_')}_${index}`;
+            const voiceId = `v_${artist.name.replace(/[^a-zA-Z0-9]/g, '_')}`;
             
-            const events = this._generateArtistPart(artist, bandContext, voiceId, role);
+            // Pass the artist's preferred meter to the generator
+            const events = this._generateArtistPart(artist, { ...bandContext, artistStepsPerBar }, voiceId, role);
 
             if (events.length > 0) {
                 voices.push({
@@ -1108,7 +1131,7 @@ export class ThemeGenerator {
 
     _generateArtistPart(artist, context, voiceId, roleOverride = null) {
         const { personality } = artist;
-        const { rhythm, progression, baseFreq, beatTime, rng, tensionLevel, activeLeads, leadMeasures, artistIndex } = context;
+        const { rhythm, progression, baseFreq, beatTime, rng, tensionLevel, activeLeads, leadMeasures, artistIndex, artistStepsPerBar } = context;
         let events = [];
 
         // NEW: Check for MIDI motif first
@@ -1125,11 +1148,20 @@ export class ThemeGenerator {
         const artistBaseFreq = artist.keyData.Frequency;
         const ratio = artistBaseFreq / bandBaseFreq;
         const semitoneDiff = Math.abs(12 * Math.log2(ratio));
-        const isDistant = semitoneDiff > 4 && (semitoneDiff % 12) > 2 && (semitoneDiff % 12) < 10;
+        
+        // Refined Harmonic Distance: Check for dissonance against the root
+        // Dissonant intervals: m2(1), M2(2), Tritone(6), m7(10), M7(11)
+        const pitchClass = Math.round(semitoneDiff) % 12;
+        const isDissonant = [1, 2, 6, 10, 11].includes(pitchClass);
 
-        if (isDistant && playStyle !== 'bass') {
-            // Distant voices focus on accents only
+        // Octave Distance: Check if wildly different octave (> 2.5 octaves)
+        const octaveDiff = Math.abs(Math.log2(ratio));
+        const isOctaveDistant = octaveDiff > 2.5;
+
+        if ((isDissonant || isOctaveDistant) && playStyle !== 'bass') {
+            // Distant/Dissonant voices focus on accents only (On Beat)
             playStyle = 'accent_specialist';
+            SafeLogger.message(`Artist ${artist.name} forced to accent_specialist (Dissonant: ${isDissonant}, High/Low: ${isOctaveDistant})`);
         }
 
         if (playStyle === 'accent_specialist') {
@@ -1163,10 +1195,25 @@ export class ThemeGenerator {
             // and map them to this artist's single instrument
             percRhythm.events.forEach(e => {
                 if (e.voice === 'v_snare' || e.voice === 'v_perc' || (e.voice === 'v_hat' && rng.next() > 0.5)) {
+                    // Ensure tonal percussion follows the chord progression if possible
+                    let freq = artist.keyData.Frequency || 261.63;
+                    // Find current chord to tune percussion if it's tonal
+                    const currentChord = progression.find(c => {
+                        // Approximate chord finding based on step (simplified)
+                        // Ideally we'd map e.step to chord index, but for now use baseFreq
+                        return false; 
+                    });
+                    
+                    // Use band base frequency for tonal percussion to ensure it's in key
+                    // or a fixed ratio of it (e.g. 0.5 for low tom)
+                    const percFreq = (artist.keyData.Frequency && artist.keyData.Frequency < 1000) 
+                        ? context.baseFreq * (artist.keyData.Frequency / 261.63) // Maintain relative pitch ratio
+                        : artist.keyData.Frequency;
+
                     events.push({
                         voice: voiceId,
                         step: e.step,
-                        freq: artist.keyData.Frequency || 261.63, // Some percs are tonal
+                        freq: percFreq || 261.63, 
                         duration: 0.1,
                         velocity: e.velocity
                     });
@@ -1194,11 +1241,17 @@ export class ThemeGenerator {
                 const currentRootFreq = chord.keyFreq || baseFreq;
                 // Use chord tones (3rd or 5th) one octave up for visibility
                 const interval = chord.intervals.length > 1 ? chord.intervals[1] : chord.intervals[0];
-                const freq = currentRootFreq * Math.pow(2, (chord.rootOffset + interval + 12) / 12);
+                // Interval is absolute offset.
+                const freq = currentRootFreq * Math.pow(2, (interval + 12) / 12);
                 
-                // Play on off-beats (2, 6, 10, 14 in 16th notes)
-                for (let s = 2; s < stepsInChord; s += 4) {
-                    if (rng.next() > 0.15) {
+                // Reduced Syncopation: Use a more structured clave-like pattern instead of random off-beats
+                // Standard Son Clave (3-2) approximation in 16th notes: 0, 3, 6, 10, 12
+                // This includes the downbeat (0) to keep it grounded.
+                // Vary pattern slightly based on artist index to avoid phasing
+                const pattern = [0, 3, 6, 10, 12]; 
+                
+                for (let s = 0; s < stepsInChord; s++) {
+                    if (pattern.includes(s % 16) && rng.next() > 0.3) {
                         events.push({ voice: voiceId, step: currentStepOffset + s, freq: freq, duration: 0.15, velocity: 0.7 });
                     }
                 }
@@ -1208,6 +1261,23 @@ export class ThemeGenerator {
              const h = this._generateHarmonics(rhythm, artist.entity, progression, baseFreq, tensionLevel);
              events = h.guitar;
              events.forEach(e => e.voice = voiceId);
+        }
+
+        // Polyrhythm / Polymeter Handling
+        // If the artist has a different meter (artistStepsPerBar), we mask the events
+        // to create a cross-rhythm feel without breaking the loop.
+        if (artistStepsPerBar && artistStepsPerBar !== context.stepsPerBar) {
+            // Filter events to emphasize the artist's meter
+            // e.g. if 3/4 (12 steps) over 4/4 (16 steps), accent every 12th step
+            events.forEach(e => {
+                const localStep = e.step % artistStepsPerBar;
+                if (localStep === 0) {
+                    e.velocity *= 1.2; // Accent the '1' of the polyrhythm
+                } else if (e.step % context.stepsPerBar === 0) {
+                    // Also keep the global '1' strong to anchor it
+                    e.velocity *= 1.1; 
+                }
+            });
         }
 
         // Space-making pass (Conversation)
@@ -1281,17 +1351,19 @@ export class ThemeGenerator {
             
             [0, 1].forEach(oct => {
                 baseIntervals.forEach(interval => {
-                    tones.push(currentRootFreq * Math.pow(2, (chord.rootOffset + interval + (oct * 12)) / 12));
+                    // Interval is absolute offset. Do not add rootOffset.
+                    tones.push(currentRootFreq * Math.pow(2, (interval + (oct * 12)) / 12));
                 });
             });
             
             if (direction === 'down') tones.reverse();
 
             // Generate 16th notes (1 step)
-            for (let i = 0; i < stepsInChord; i += 1) {
+            // Reduce density: Play 8th notes (every 2 steps) instead of 16ths
+            for (let i = 0; i < stepsInChord; i += 2) {
                 const toneIndex = i % tones.length;
                 const freq = tones[toneIndex];
-                const velocity = (i % 4 === 0) ? 0.8 : 0.6; // Accent beats
+                const velocity = (i % 4 === 0) ? 0.7 : 0.5; // Accent beats
                 
                 events.push({ voice: 'v_arp', step: currentStepOffset + i, freq: freq, duration: beatTime * 0.25, velocity: velocity });
             }
@@ -1658,6 +1730,9 @@ export class ThemeGenerator {
         const progressions = [
             ['I', 'V', 'vi', 'IV'], ['I', 'vi', 'IV', 'V'], ['ii', 'V', 'I', 'vi'], ['vi', 'IV', 'I', 'V'], ['I', 'IV', 'V', 'IV']
         ];
+        // Add more complex progressions with secondary dominants or modal interchange if possible
+        // e.g. I -> III7 -> vi -> IV (Radiohead creep-ish)
+        // For now, stick to diatonic for safety unless geometry provides RomanChords
         const romanChords = this.geometry && this.geometry.RomanChords ? this.geometry.RomanChords : [];
         if (!romanChords.length) return [{ rootOffset: 0, intervals: [0, 4, 7], durationSteps: 64 }];
         const rng = new MusicRNG(baseFreq || 261.63);
@@ -1733,7 +1808,9 @@ export class ThemeGenerator {
         let currentStepOffset = 0;
         progression.forEach(chord => {
             const currentRootFreq = chord.keyFreq || keyRootFreq;
-            const chordRootFreq = currentRootFreq * Math.pow(2, chord.rootOffset / 12);
+            // Normalize rootOffset to keep bass in the low register regardless of chord inversions
+            const normalizedRoot = ((chord.rootOffset % 12) + 12) % 12;
+            const chordRootFreq = currentRootFreq * Math.pow(2, normalizedRoot / 12);
             const stepsInChord = chord.durationSteps;
             const velocityBoost = (chord.section === 'Chorus' || chord.section === 'Bridge') ? 0.1 : 0.0;
             const getFreq = (interval) => chordRootFreq * Math.pow(2, interval / 12);
