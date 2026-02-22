@@ -438,8 +438,10 @@ export class ShipGenerator {
             let sensorY = 0.8; // Default fallback
             // Raycast to find surface to ensure attachment
             if (getSurfacePoint) {
-                const hit = getSurfacePoint(components, [0, 20, sensorZ], [0, -1, 0], ['fuselage', 'hull', 'spine']);
-                if (hit) sensorY = hit.y + 0.1; // Embed slightly (Height 0.4, Half 0.2. Center at Surface + 0.1 means 0.1 embedded)
+                try {
+                    const hit = getSurfacePoint(components, [0, 20, sensorZ], [0, -1, 0], ['fuselage', 'hull', 'spine']);
+                    if (hit) sensorY = hit.y + 0.1; // Embed slightly (Height 0.4, Half 0.2. Center at Surface + 0.1 means 0.1 embedded)
+                } catch (e) { /* Ignore raycast error */ }
             }
             const sensorId = attachComponent('sensor_array', [0, sensorY, sensorZ], [0, 0, 0], 'box', { width: 0.6, height: 0.4, depth: 0.8 }, 'NONE');
             
@@ -626,12 +628,14 @@ export class ShipGenerator {
                 
                 let sensorX = 2.0;
                 if (getSurfacePoint) {
-                     const rayOrigin = [20, 0, sensorZ];
-                     const rayDir = [-1, 0, 0];
-                     const hit = getSurfacePoint(components, rayOrigin, rayDir, ['fuselage', 'hull', 'spine']);
-                     if (hit) {
-                         sensorX = hit.x; // Embed half-way to ensure connection
-                     }
+                     try {
+                         const rayOrigin = [20, 0, sensorZ];
+                         const rayDir = [-1, 0, 0];
+                         const hit = getSurfacePoint(components, rayOrigin, rayDir, ['fuselage', 'hull', 'spine']);
+                         if (hit) {
+                             sensorX = hit.x; // Embed half-way to ensure connection
+                         }
+                     } catch (e) { /* Ignore */ }
                 }
                 
                 const sensorId = attachComponent('sensor_array', [sensorX, 0.5, sensorZ], [0, 0, 0], 'box', { width: 0.5, height: 0.5, depth: 1.0 });
@@ -659,13 +663,15 @@ export class ShipGenerator {
                 // Fix for floating engines: Calculate X based on hull width at this Z
                 let engineX = 1.5; // Default fallback
                 if (getSurfacePoint) {
-                    // Raycast from outside (+X) towards center at the engine's Z
-                    const rayOrigin = [20, 0, engineZ];
-                    const rayDir = [-1, 0, 0];
-                    const hit = getSurfacePoint(components, rayOrigin, rayDir, ['fuselage', 'hull', 'spine']);
-                    if (hit) {
-                        engineX = hit.x + 0.3; // Attach to surface + radius (approx 0.5) - overlap (0.2)
-                    }
+                    try {
+                        // Raycast from outside (+X) towards center at the engine's Z
+                        const rayOrigin = [20, 0, engineZ];
+                        const rayDir = [-1, 0, 0];
+                        const hit = getSurfacePoint(components, rayOrigin, rayDir, ['fuselage', 'hull', 'spine']);
+                        if (hit) {
+                            engineX = hit.x + 0.3; // Attach to surface + radius (approx 0.5) - overlap (0.2)
+                        }
+                    } catch (e) { /* Ignore */ }
                 }
                 attachComponent('engine', [engineX, 0, engineZ], [Math.PI / 2, 0, 0], 'cylinder', { radiusTop: 0.4, radiusBottom: 0.6, height: engineHeight });
             } else if (hullType === 'STAR') {
@@ -774,7 +780,12 @@ export class ShipGenerator {
             if (hullType === 'MONOLITH') {
                 // Monolith Cockpit: Ensure it's outside the hull
                 // Use raycasting from front (+Z) towards center
-                const hit = getSurfacePoint(components, [0, 0, 50], [0, 0, -1], ['fuselage', 'monolith']);
+                let hit = null;
+                if (getSurfacePoint) {
+                    try {
+                        hit = getSurfacePoint(components, [0, 0, 50], [0, 0, -1], ['fuselage', 'monolith']);
+                    } catch (e) { /* Ignore */ }
+                }
                 if (hit) {
                     // Embed 90% (Depth 2.0 -> 1.8 inside, 0.2 outside).
                     // Front face at hit.z + 0.2. Center at hit.z + 0.2 - 1.0 = hit.z - 0.8.
@@ -828,14 +839,16 @@ export class ShipGenerator {
                     // Raycast to find top surface for cockpit to avoid burying it
                     let cockpitY = 0.6;
                     if (getSurfacePoint) {
-                        const rayOrigin = [0, 50, cockpitZ];
-                        const rayDir = [0, -1, 0];
-                        const hit = getSurfacePoint(components, rayOrigin, rayDir, ['fuselage', 'hull', 'spine']);
-                        if (hit) {
-                            // Embed deeply (approx 75% of height 0.8)
-                            // Center at hit.y - 0.2. Top at hit.y + 0.2. Bottom at hit.y - 0.6.
-                            cockpitY = hit.y - 0.2;
-                        }
+                        try {
+                            const rayOrigin = [0, 50, cockpitZ];
+                            const rayDir = [0, -1, 0];
+                            const hit = getSurfacePoint(components, rayOrigin, rayDir, ['fuselage', 'hull', 'spine']);
+                            if (hit) {
+                                // Embed deeply (approx 75% of height 0.8)
+                                // Center at hit.y - 0.2. Top at hit.y + 0.2. Bottom at hit.y - 0.6.
+                                cockpitY = hit.y - 0.2;
+                            }
+                        } catch (e) { /* Ignore */ }
                     }
                     attachComponent('cockpit', [0, cockpitY, cockpitZ], [0, 0, 0], 'ellipsoid', { width: 1.0, height: 0.8, length: 1.5 });
                 }
@@ -974,15 +987,17 @@ export class ShipGenerator {
              let placeY = -0.5; // Fallback
              
              if (getSurfacePoint) {
-                 // Cast from below up
-                 const hit = getSurfacePoint(components, [0, -20, searchZ], [0, 1, 0], ['fuselage', 'hull', 'spine']);
-                 if (hit) {
-                     // Embed by radius * 0.5
-                     const r = 0.6 * internalScale;
-                     placeY = hit.y - (r * 0.5);
-                 } else {
-                     placeY = 0; // Center it if no hull found (e.g. gap)
-                 }
+                 try {
+                     // Cast from below up
+                     const hit = getSurfacePoint(components, [0, -20, searchZ], [0, 1, 0], ['fuselage', 'hull', 'spine']);
+                     if (hit) {
+                         // Embed by radius * 0.5
+                         const r = 0.6 * internalScale;
+                         placeY = hit.y - (r * 0.5);
+                     } else {
+                         placeY = 0; // Center it if no hull found (e.g. gap)
+                     }
+                 } catch (e) { /* Ignore */ }
              }
              vortexPos = [0, placeY, searchZ];
         }

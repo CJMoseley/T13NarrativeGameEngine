@@ -3,6 +3,7 @@ class Logger {
     this.isEnabled = true;
     this.level = 1; // 0: DEBUG, 1: INFO, 2: WARN, 3: ERROR
     this.timers = new Map();
+    console.log("Logger initialized.");
   }
 
   enable() {

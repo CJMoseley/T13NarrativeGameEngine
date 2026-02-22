@@ -490,8 +490,6 @@ export class ThemeGenerator {
                     };
                     return syntheticDrumFallback[role] || 'Drum_Cowbell';
                 }
-            } else {
-                palette = this.instrumentPalette.lead;
             }
         }
 
@@ -533,8 +531,10 @@ export class ThemeGenerator {
             return instrument;
         }
 
-        SafeLogger.warn(`ThemeGenerator: No instrument found for role ${role} in palette.`);
-        return null;
+        // Procedural Fallback: Generate a unique synthetic ID for this character/role
+        const seedName = geo?.name || 'Anonymous';
+        const cleanName = seedName.replace(/[^a-zA-Z0-9]/g, '');
+        return `Voice_${cleanName}_${role}`;
     }
 
     _getProceduralInstrument(category, seed) {

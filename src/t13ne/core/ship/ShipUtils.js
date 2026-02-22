@@ -80,10 +80,10 @@ export function getSurfacePoint(components, origin, direction, usageFilter = ['f
     let minDistance = Infinity;
 
     for (const c of targets) {
-        let geo;
-        const d = c.dims;
-        
         try {
+            let geo;
+            const d = c.dims;
+            
             switch (c.type) {
                 case 'box': geo = new THREE.BoxGeometry(d.width, d.height, d.depth); break;
                 case 'cylinder': geo = new THREE.CylinderGeometry(d.radiusTop, d.radiusBottom, d.height, d.radialSegments || 16); break;
@@ -94,23 +94,25 @@ export function getSurfacePoint(components, origin, direction, usageFilter = ['f
                 case 'cone': geo = new THREE.ConeGeometry(d.radius, d.height, 16); break;
                 default: continue;
             }
-        } catch (e) { continue; }
 
-        const mesh = new THREE.Mesh(geo);
-        mesh.position.set(...c.pos);
-        mesh.rotation.set(...c.rot);
-        if (c.scale) mesh.scale.set(...c.scale);
-        mesh.updateMatrixWorld();
+            if (!geo) continue;
 
-        const intersects = raycaster.intersectObject(mesh);
-        if (intersects.length > 0) {
-            if (intersects[0].distance < minDistance) {
-                minDistance = intersects[0].distance;
-                closestPoint = intersects[0].point;
+            const mesh = new THREE.Mesh(geo);
+            mesh.position.set(...c.pos);
+            mesh.rotation.set(...c.rot);
+            if (c.scale) mesh.scale.set(...c.scale);
+            mesh.updateMatrixWorld();
+
+            const intersects = raycaster.intersectObject(mesh);
+            if (intersects.length > 0) {
+                if (intersects[0].distance < minDistance) {
+                    minDistance = intersects[0].distance;
+                    closestPoint = intersects[0].point;
+                }
             }
-        }
-        
-        geo.dispose();
+            
+            geo.dispose();
+        } catch (e) { continue; }
     }
 
     return closestPoint;

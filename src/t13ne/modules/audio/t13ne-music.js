@@ -99,13 +99,11 @@ class T13NE_Music {
         await this.themeGenerator.loadAssets();
 
         if (this.useWorker) {
-            this.initWorker();
+            await this.initWorker();
         }
 
         this.initialized = true;
         Logger.message("T13NE_Music: Initialized.");
-
-        await this._generateOrchestralInstruments();
     }
 
     /**
@@ -204,26 +202,6 @@ class T13NE_Music {
                 { type: 'chorus', rate: 0.5, depth: 5.0, delay: 0.04 }
             ]
         });
-    }
-
-    async _generateOrchestralInstruments() {
-        if (!this.synth) return;
-
-        const mappings = {
-            'Cello': 'samples/pad_acoustic/low_string',
-            'Violin': 'samples/pad_acoustic/hi_string',
-            'Viola': 'samples/pad_acoustic/mid_string',
-            'Flute': 'samples/melody_acoustic/flute_c1',
-            'Trumpet': 'samples/melody_acoustic/trumpet_solo',
-            'French Horn': 'samples/melody_acoustic/brite_horn',
-            'Clarinet': 'samples/melody_acoustic/clarinet_c1',
-            'Piano': 'samples/melody_acoustic/piano_c4',
-            'Harp': 'samples/melody_acoustic/harp'
-        };
-
-        for (const [instName, sampleId] of Object.entries(mappings)) {
-            await this.themeGenerator._ensureInstrumentDefined(sampleId, instName, 'sustained');
-        }
     }
 
     async loadSample(name, url) {
@@ -352,7 +330,10 @@ class T13NE_Music {
             trackData = await this.themeGenerator.createMainTheme(this.activeComponents, gameEngine, this.needsRegeneration || forceVariation, currentTension);
         }
 
-        if (!trackData) return;
+        if (!trackData) {
+            Logger.warn(`T13NE_Music: Failed to generate theme for '${trackId}'. No data returned.`);
+            return;
+        }
         
         if (!forceVariation) {
             this.trackCache.set(trackId, trackData);
@@ -504,7 +485,10 @@ class T13NE_Music {
     }
 
     playTrackObject(track) {
-        if (!this.synth) return;
+        if (!this.synth || !track) {
+            Logger.warn("T13NE_Music: playTrackObject called with missing synth or track.");
+            return;
+        }
 
         if (this.currentTrackName && this.currentTrackName !== track.name) {
             this.stopTrack();
@@ -825,14 +809,32 @@ class T13NE_Music {
         if (this.themeGenerator) {
             this.themeGenerator.performanceMode = mode;
         }
-        if (this.useWorker && this.workerPool) {
-            this.workerPool.broadcast('setPerformanceMode', mode);
+        if (this.useWorker && this.worker) {
+            this.worker.postMessage({ type: 'setPerformanceMode', data: mode });
         }
         Logger.message(`T13NE_Music: Performance mode set to ${mode}`);
     }
 
+    handleWorkerMessage(response) {
+        if (!response) return;
+        const { requestId, error } = response;
+
+        if (requestId && this._pendingRequests && this._pendingRequests.has(requestId)) {
+            const { resolve, reject } = this._pendingRequests.get(requestId);
+            this._pendingRequests.delete(requestId);
+            
+            if (error) {
+                reject(new Error(error));
+            } else {
+                // Robustly handle data/track/result fields to prevent silent undefined resolution
+                const payload = response.data !== undefined ? response.data : (response.track !== undefined ? response.track : response);
+                resolve(payload);
+            }
+        }
+    }
+
     async initWorker() {
-        if (this.workerPool) return;
+        if (this.worker) return;
 
         try {
             this.worker = new Worker(new URL('./core/MusicWorker.js', import.meta.url), { type: 'module' });
@@ -841,9 +843,17 @@ class T13NE_Music {
             if (!this._pendingRequests) this._pendingRequests = new Map();
             const requestId = 'init_' + Date.now().toString(36) + Math.floor(performance.now() * 1000).toString(36);
 
-            this._pendingRequests.set(requestId, {
-                resolve: () => Logger.message("T13NE_Music: Worker initialized."),
-                reject: (err) => Logger.error("T13NE_Music: Worker failed to initialize.", err)
+            const initPromise = new Promise((resolve, reject) => {
+                this._pendingRequests.set(requestId, {
+                    resolve: () => {
+                        Logger.message("T13NE_Music: Worker initialized.");
+                        resolve();
+                    },
+                    reject: (err) => {
+                        Logger.error("T13NE_Music: Worker failed to initialize.", err);
+                        reject(err);
+                    }
+                });
             });
 
             // Send initial data to all workers in the pool
@@ -860,14 +870,18 @@ class T13NE_Music {
                 keys: this.geometry?.keys || {}
             };
 
-            await this.workerPool.broadcast('init', {
-                codexData: patterns,
-                geometryData: geometryData,
-                manifest: this.manifestManager.manifest,
-                performanceMode: this.themeGenerator.performanceMode
+            this.worker.postMessage({
+                type: 'init',
+                data: {
+                    codexData: patterns,
+                    geometryData: geometryData,
+                    manifest: this.manifestManager.manifest,
+                    performanceMode: this.themeGenerator.performanceMode
+                },
+                requestId: requestId
             });
 
-            Logger.message("T13NE_Music: Worker pool initialized.");
+            await initPromise;
         } catch (e) {
             Logger.error("T13NE_Music: Failed to initialize worker pool.", e);
             this.useWorker = false;

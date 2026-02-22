@@ -70,25 +70,33 @@ self.onmessage = async (e) => {
             let baseCSG = null;
 
             for (const comp of components) {
-                if (!comp || !comp.geometry || !comp.geometry.positions) {
-                    console.warn("ShipWorker: Skipping malformed component in generateCSGHull", comp);
+                try {
+                    if (!comp || !comp.geometry || !comp.geometry.positions) {
+                        console.warn("ShipWorker: Skipping malformed component in generateCSGHull", comp);
+                        continue;
+                    }
+                    const geo = new THREE.BufferGeometry();
+                    geo.setAttribute('position', new THREE.BufferAttribute(comp.geometry.positions, 3));
+                    if (comp.geometry.indices) geo.setIndex(new THREE.BufferAttribute(comp.geometry.indices, 1));
+
+                    // Ensure normals exist as CSG operations often require them
+                    geo.computeVertexNormals();
+
+                    const mesh = new THREE.Mesh(geo);
+                    mesh.position.set(...comp.position);
+                    mesh.rotation.set(...comp.rotation);
+                    mesh.scale.set(...comp.scale);
+                    mesh.updateMatrix();
+
+                    const compCSG = CSG.fromMesh(mesh);
+                    if (comp.isCarve) {
+                        if (baseCSG) baseCSG = baseCSG.subtract(compCSG);
+                    } else {
+                        baseCSG = baseCSG ? baseCSG.union(compCSG) : compCSG;
+                    }
+                } catch (err) {
+                    console.warn("ShipWorker: Error processing component in generateCSGHull", err);
                     continue;
-                }
-                const geo = new THREE.BufferGeometry();
-                geo.setAttribute('position', new THREE.BufferAttribute(comp.geometry.positions, 3));
-                if (comp.geometry.indices) geo.setIndex(new THREE.BufferAttribute(comp.geometry.indices, 1));
-
-                const mesh = new THREE.Mesh(geo);
-                mesh.position.set(...comp.position);
-                mesh.rotation.set(...comp.rotation);
-                mesh.scale.set(...comp.scale);
-                mesh.updateMatrix();
-
-                const compCSG = CSG.fromMesh(mesh);
-                if (comp.isCarve) {
-                    if (baseCSG) baseCSG = baseCSG.subtract(compCSG);
-                } else {
-                    baseCSG = baseCSG ? baseCSG.union(compCSG) : compCSG;
                 }
             }
 

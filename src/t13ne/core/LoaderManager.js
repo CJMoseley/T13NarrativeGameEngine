@@ -95,7 +95,7 @@ class LoaderManager {
                         music.injectThemeComponents({ galaxy: this.gameEngine.galaxy });
                         this.reportProgress("Starting Galaxy Theme...");
                         const theme = await music.createMainTheme(this.gameEngine);
-                        if (theme) music.playTrackObject(theme);
+                        if (theme) music.updateTrack(theme);
                     }
                 }
             },
@@ -182,7 +182,7 @@ class LoaderManager {
                                     if (music && this.gameEngine.playerShip) {
                                         music.injectThemeComponents({ playerShip: this.gameEngine.playerShip });
                                         const theme = await music.createMainTheme(this.gameEngine);
-                                        music.updateTrack(theme);
+                                        if (theme) music.updateTrack(theme);
                                     }
                                 })();
                                 await shipGenPromise;

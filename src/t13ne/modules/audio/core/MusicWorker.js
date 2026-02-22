@@ -125,12 +125,12 @@ self.onmessage = async (e) => {
 
             const { activeComponents, forceRegeneration, tensionLevel } = data;
             const track = await themeGenerator.createMainTheme(activeComponents, null, forceRegeneration, tensionLevel);
-            self.postMessage({ type: 'trackGenerated', track, requestId });
+            self.postMessage({ type: 'trackGenerated', data: track, requestId });
         }
         else if (type === 'generateWormholeTheme') {
             const { ship, origin, target } = data;
             const track = await themeGenerator.createWormholeTheme(ship, origin, target);
-            self.postMessage({ type: 'trackGenerated', track, requestId });
+            self.postMessage({ type: 'trackGenerated', data: track, requestId });
         }
         else if (type === 'setPerformanceMode') {
             if (themeGenerator) themeGenerator.performanceMode = data;

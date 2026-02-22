@@ -107,6 +107,7 @@ export class WorkerPool {
     }
 
     _handleMessage(workerContext, response) {
+        if (!response) return;
         const { requestId, error, type } = response;
 
         // Handle potential responses that don't match a request (rare if protocol is followed)
@@ -115,7 +116,9 @@ export class WorkerPool {
         const pending = this.pendingRequests.get(requestId);
 
         if (error) {
-            if (pending) pending.reject(new Error(error));
+            console.error(`WorkerPool: Worker execution failed for request ${requestId} (${type}):`, error);
+            const errObj = error instanceof Error ? error : new Error(typeof error === 'string' ? error : JSON.stringify(error));
+            if (pending) pending.reject(errObj);
             EventBus.emit(`worker:${this.poolId}:error`, { requestId, error, type });
         } else {
             // Store result for polling
@@ -124,8 +127,12 @@ export class WorkerPool {
             if (pending) pending.resolve(response);
 
             // Emit completion event
-            EventBus.emit(`worker:${this.poolId}:completed`, response);
-            EventBus.emit(`worker:${this.poolId}:completed:${requestId}`, response);
+            try {
+                EventBus.emit(`worker:${this.poolId}:completed`, response);
+                EventBus.emit(`worker:${this.poolId}:completed:${requestId}`, response);
+            } catch (err) {
+                console.error(`WorkerPool: Error in event listener for request ${requestId}`, err);
+            }
         }
 
         if (pending) {
