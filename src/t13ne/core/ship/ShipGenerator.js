@@ -25,6 +25,9 @@ export class ShipGenerator {
         const prng = ProcGen.createPRNG(seed);
         const random = () => prng.nextDouble();
 
+        // Declare hullType in outer scope so attachComponent can see it
+        let hullType;
+
         // Generate a consistent theme for the entire ship
         let shipManufacturer = FALLBACK_MANUFACTURERS[Math.floor(random() * FALLBACK_MANUFACTURERS.length)];
         const activeCorps = GalacticHistory.getCorporations()?.filter(c => c.status === 'Active');
@@ -92,7 +95,7 @@ export class ShipGenerator {
 
             if (!name) {
                 // Apply consistent theme only for Organic/Bio ships to ensure components group together
-                if (selectedStyle === 'ORGANIC' || (typeof hullType !== 'undefined' && hullType.startsWith('BIO_'))) {
+                if (selectedStyle === 'ORGANIC' || (hullType && hullType.startsWith('BIO_'))) {
                     name = `${shipManufacturer} ${shipTech} ${displayName} ${shipQuality}`;
                 } else {
                     let localManu = FALLBACK_MANUFACTURERS[Math.floor(random() * FALLBACK_MANUFACTURERS.length)];
@@ -237,6 +240,22 @@ export class ShipGenerator {
                 components.push(comp);
             });
 
+            // --- Add Essential Internals for Synthesizer Ships ---
+            // Calculate bounds to place internals roughly in the center
+            let min = new THREE.Vector3(Infinity, Infinity, Infinity);
+            let max = new THREE.Vector3(-Infinity, -Infinity, -Infinity);
+            if (components.length > 0) {
+                components.forEach(c => {
+                    const p = new THREE.Vector3(...c.pos);
+                    min.min(p);
+                    max.max(p);
+                });
+                const center = new THREE.Vector3().addVectors(min, max).multiplyScalar(0.5);
+                
+                // Generator & Shield (Center)
+                attachComponent('generator', [center.x, center.y, center.z], [0,0,0], 'box', { width: 1.5, height: 1.0, depth: 1.5 });
+                attachComponent('shield', [center.x, center.y, center.z], [Math.PI/2, 0, 0], 'torus', { radius: 0.8, tube: 0.2 }, 'NONE');
+            }
         } else {
             // --- LEGACY GENERATION ---
         // 1. Generate Central Fuselage (Spine, Saucer, or Star)
@@ -263,7 +282,7 @@ export class ShipGenerator {
         let mainHullRadius = 0;
         
         // Determine Hull Layout Strategy
-        let hullType = 'SPINE';
+        hullType = 'SPINE';
         const rHull = random();
         let res = {};
         let cockpitPlaced = false;
@@ -497,8 +516,6 @@ export class ShipGenerator {
 
         // Generate Wings (Legacy procedural wings)
         generateWings(context);
-        } // End Legacy Block
-
 
         // Engines
         const engineCount = size === 'small' ? 1 : (size === 'medium' ? 2 : 4);
@@ -1123,6 +1140,8 @@ export class ShipGenerator {
                 }
             }
         }
+
+        } // End Legacy Block
 
         // --- 2b. Calculate Center of Gravity (CoG) ---
         let totalMass = 0;

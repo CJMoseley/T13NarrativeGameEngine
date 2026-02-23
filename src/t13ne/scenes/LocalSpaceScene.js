@@ -365,8 +365,6 @@ export class LocalSpaceScene extends Scene {
         if (this.introActive) {
             this.virtualCameraPosition.copy(this.introStartPos);
         }
-
-        Logger.end(funcName);
     }
 
     onLoad() {
