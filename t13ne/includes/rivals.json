@@ -1,0 +1,58 @@
+[
+    {
+        "Type": "Anima",
+        "Description": "Anima Rivals are more \"passive / creative / accepting / nurturing / feminine\" versions of the Character. They may not be female, but are often portrayed as camp or effeminate if they are male, although this is not universal. Anima Rivals increase Yin Facets by one Boon and Reduce Yang Facets by one Boon. Such Characters may require some balancing and alterations to Annexes, to be practical."
+    },
+    {
+        "Type": "Animus",
+        "Description": "Animus Rivals are more \"aggressive / warlike / destructive/ active / masculine\" versions of the Character, they are usually a male version of a female Character, but can just be a more muscular, taciturn or aggressive version. They typically are similar to a Twin, but increase all Yang Boons by one and decrease all Yin Boons by one. Such Characters may need more balancing to be practical, entire Annexes may require rebuilding, rather than just renaming."
+    },
+    {
+        "Type": "Competitor",
+        "Description": "The Competitor is a fairly standard Rival who is intended to be a bit different to the original. For each Facet Boon roll 1d6-3 and apply the result to all Yang facets -altering the Yin Facet Boons as well. You can apply the 1d6-3 again for the Yin Facet (again altering the Yang as well). Competitors generally have similar Annexes to the original character, but obviously Values should vary. Competitors are usually a friendly rivalry, but can also be murderous."
+    },
+    {
+        "Type": "Corrupted Clone",
+        "Description": "The Corrupted Clone is usually a version of the Character that has been mutated somehow. The Corrupted Clone will have at least one additional Hitch (often a Woe) and additional Scale to match. The Corrupted Clone will have largely the same Skills and Talents (although often with changes to Umbrals and Nimbeds), but will usually have a dramatically different seeming variant on the original’s Power, with different Umbrals and Nimbeds to reflect the mutation."
+    },
+    {
+        "Type": "Dark",
+        "Description": "Dark Rivals are (even more) evil versions of the Character. Increase the Character’s Sin and either Heresy or Fury Boons by two and decrease Virtue and either Orthodox or Quiet by two also. Dark Rivals are usually similar to the original, although they may favour Fiend, Beast and Deviant Personalities, and frequently have more dangerous Descendants and darker Annexes and Proficiencies. Dark Rivals may have additional Hitches and increased Scale too."
+    },
+    {
+        "Type": "Frenemy",
+        "Description": "The Frenemy is a Rival to the Character who is both a friend and an enemy. They often have complicated relationships, and may be pulled or pushed embodiments as required, indeed Frenemies can save the Protagonist from danger, only to declare that it is only so they will kill them later. Frenemies usually have some reason they are trusted by the Protagonist and vice-versa. The Frenemy usually has at least one Annex in common with the Protagonist, but their Facets are randomly assigned, not based on the Rivalry."
+    },
+    {
+        "Type": "Lancer",
+        "Description": "The Lancer is a Rival to the Character who is on the same team, and often is a best friend to the original. Lancers will have a similar build to the original, but with a major change in the Style of that build. If the main Character is a ice-based, melee-based, shocker, then the Lancer could be a fire-based, ranged, tank. Lancers may alter a quarter of their Boons (6) up by 1, which will also force a quarter (6) down by 1. Lancers are usually the same Scale as the original."
+    },
+    {
+        "Type": "Love Rival",
+        "Description": "The Love Rival seeks the same romantic interest as the Character. A Love Rival is often a Rake or Idol Personality, but may actully be of any Persona. The Love Rival usually has a little in common with the Protagonist, sharing a hobby or profession (ideally they are already what the Character aspires to be), but is often richer, more successful, and more powerful (having at least one more Hitch and often extra Scale)."
+    },
+    {
+        "Type": "Mirror",
+        "Description": "Mirror Rivals swap Yin Facets for Yang Facets and vice-versa everywhere they occur. So a Defensive Annex on the original Character becomes an Attack Annex on the Mirror Rival. A Detective may become an Enigma, a Prince a Pauper and so on."
+    },
+    {
+        "Type": "Monstrous",
+        "Description": "The Monstrous Rival is the ultimate Rival type in T13. Monstrous Rivals are an extreme version of the Character. Adding at least Two Monster Facets to the Character (usually the Conflict Facet(s) for their side, plus the Monster Facet of the original Character’s Persona, Core or Highest Hitch). Monsters usually also increase the Boons of their Monster Facets by 3 (with a negative 3 to their anti-facets)."
+    },
+    {
+        "Type": "Outlander",
+        "Description": "The outlander is basically a Mirror or Twin Character, with one important difference. They are a different nationality, race or even species to the original Character. Usually the differences will all be in Descendants (often just the National Pact the Character is a member of), although the Outlander may also be Scale +1 to the original."
+    },
+    {
+        "Type": "Pure",
+        "Description": "Pure Rivals are the opposite of Dark Rivals. Increase the Character’s Virtue and Orthodox or Quiet by two and decrease Sin and Heresy or Fury Boons by two also. Pure Rivals are usually similar to the original, although they may favour Hallow, Hermit and Mentor Personalities, and are more benevolent in their choices for Proficiencies, Annexes and Descendants. Pure Rivals may have additional Hitches and increased Scale too, but this is much rarer than with Dark Rivals."
+    },
+    {
+        "Type": "Reversed",
+        "Description": "A Reversed Rival is based off the Character, using the same Statblock, but every Annex is reversed, Personality for Core, Core for Personality, Root for Channel, Channel for Root. Otherwise the Reversed Rival is generally equal in power to the original Character. You may also swap Umbrals for Nimbeds and Resolved and Active Hitches too, where appropriate."
+    },
+    {
+        "Type": "Twin",
+        "Description": "A Twin Rival is exactly like the original Character, although details such as the Proficiencies used, and Annex names may be a little different. The Twin is commonly used when creating a rival group to the PCs, with the group having a Twin for each Character."
+    }
+]

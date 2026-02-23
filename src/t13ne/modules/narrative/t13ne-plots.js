@@ -30,13 +30,6 @@ class T13Plot extends SuperKnot {
         super(t13ne?.getModule('Codex'), data);
 
         this.t13ne = t13ne; // Reference to main system for commands
-
-        // Register with Plots module if available
-        const PlotsModule = this.t13ne?.getModule('Plots');
-        if (PlotsModule && !PlotsModule.plots.includes(this)) {
-            PlotsModule.plots.push(this);
-        }
-
         this.Name = this.name || data.Name || data.name || "Unnamed Plot";
         this.memory = data.memory || { events: [] };
         this.subPlots = [];
@@ -71,12 +64,6 @@ class T13Plot extends SuperKnot {
         this.genre = data.genre || 'T13 Core';
         this.era = data.era || 'Timeless';
         this.variety = data.variety || data.actType || 'Unknown';
-
-        // Hierarchy & Spread Data
-        this.index = data.index || 0;
-        this.spread = data.spread || data.Spread || null;
-        this.scenes = data.scenes || null;
-        this.sceneType = data.sceneType || null;
 
         // Narrative Role Stacking & Importance
         this.importance = data.importance || 5; // 1-10 level for AI focus
@@ -190,18 +177,17 @@ class T13Plot extends SuperKnot {
      * @param {string} side - 'Dominant', 'Pressed', etc.
      * @param {string} [facet] - Optional specific facet name.
      */
-    async hookCharacter(character, side, facet = null, hookSpread = null) {
+    async hookCharacter(character, side, facet = null) {
         if (!character) return;
 
         // Check if already hooked
         const existingIndex = this.characters.findIndex(c => c.id === character.id || c.name === character.name);
 
         const hookData = {
-            ...character, // Store reference or shallow copy depending on architecture 
+            ...character, // Store reference or shallow copy depending on architecture
             hookSide: side,
             hookFacet: facet,
-            hookedAt: Date.now(),
-            hookSpread: hookSpread || character.hookSpread || null // Store the hook that was used
+            hookedAt: Date.now()
         };
 
         if (existingIndex !== -1) {
@@ -492,8 +478,7 @@ class T13Plot extends SuperKnot {
                     const subPlot = this.spawnSubPlot(childName, {
                         Rank: childRank,
                         variety: childDef.variety || 'Unknown',
-                        Description: `Generated from ${currentRank} Cascade.`,
-                        spread: childDef.spread || null
+                        Description: `Generated from ${currentRank} Cascade.`
                     });
 
                     // Conditionally cascade recursively
@@ -512,8 +497,7 @@ class T13Plot extends SuperKnot {
                 const subPlot = this.spawnSubPlot(childName, {
                     Rank: childRank,
                     variety: component.variety || 'Unknown',
-                    Description: component.description || `Generated from ${currentRank} Cascade.`,
-                    spread: component.spread || null
+                    Description: component.description || `Generated from ${currentRank} Cascade.`
                 });
 
                 // Conditionally cascade recursively
@@ -743,8 +727,7 @@ class T13Plot extends SuperKnot {
                             index: ctx.currentSceneIndex,
                             goal: sceneData.Description,
                             sceneType: sceneData.Type,
-                            components: sceneData.Components,
-                            spread: sceneData.Spread || null
+                            components: sceneData.Components
                         });
                     }
 
@@ -1192,20 +1175,10 @@ class T13Plot extends SuperKnot {
             // Here we would trigger actual game effects based on narrativeEffect or card types
             // For now, we just log it.
             if (this.currentState === 'Frame' && decision.narrativeEffect.toLowerCase().includes('hook')) {
-                // If this plot has a spread (e.g. it's a Hook scene), use its cards for the hook
-                const hookSpread = (this.sceneType === 'Hook' || this.variety === 'Hook') ? this.spread : null;
-
+                // Simulate hooking logic if not already handled
                 if (this.characters.length === 0) {
                     Logger.message(`Plot ${this.Name}: Hooks established via card play.`);
-                    // In a real system, we'd add characters here. 
-                    // This logic would pull from the current context/location.
-                }
-
-                // If we have characters and cards, ensure we store the hook
-                for (const char of this.characters) {
-                    if (!char.hookSpread) {
-                        char.hookSpread = hookSpread || playedCards;
-                    }
+                    // In a real system, we'd add characters here.
                 }
             }
 
@@ -1318,19 +1291,9 @@ class T13Plot extends SuperKnot {
             Location: this.location,
             Motifs: this.motifs,
             Significator: this.significator,
-            spread: this.spread,
-            index: this.index,
-            scenes: this.scenes,
-            sceneType: this.sceneType,
             memory: this.memory,
             characterArcs: this.characterArcs.map(a => a.id || a),
-            Hooked_Characters: this.characters.map(c => {
-                // Preserve character object with hook data if it exists
-                if (c.hookSide || c.hookSpread) {
-                    return { ...c };
-                }
-                return c.id || c.name || c;
-            }),
+            Hooked_Characters: this.characters.map(c => c.id || c.name),
             importance: this.importance,
             narrativeRoles: this.narrativeRoles,
             tags: this.tags,

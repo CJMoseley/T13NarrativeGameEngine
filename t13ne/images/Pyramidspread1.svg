@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="297mm" height="210mm" version="1.1" viewBox="0 0 297 210" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <defs>
+  <marker id="marker18304" overflow="visible" orient="auto">
+   <path transform="scale(.8) translate(12.5)" d="m0 0 5-5-17.5 5 17.5 5-5-5z" fill="#059800" fill-rule="evenodd" stroke="#059800" stroke-width="1pt"/>
+  </marker>
+  <marker id="EmptyTriangleOutL" overflow="visible" orient="auto">
+   <path transform="scale(.8) translate(-6)" d="m5.77 0-8.65 5v-10l8.65 5z" fill="#fff" fill-rule="evenodd" stroke="#059800" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker13185" overflow="visible" orient="auto">
+   <path transform="scale(.4) translate(7.4 1)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill="#ff0" fill-rule="evenodd" stroke="#ff0" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker8984" overflow="visible" orient="auto">
+   <path transform="scale(.4) translate(7.4 1)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill="#f70000" fill-rule="evenodd" stroke="#f70000" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker5879" overflow="visible" orient="auto">
+   <path transform="scale(.4) translate(7.4 1)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill="#ecff00" fill-rule="evenodd" stroke="#ecff00" stroke-width="1pt"/>
+  </marker>
+  <marker id="DotM" overflow="visible" orient="auto">
+   <path transform="scale(.4) translate(7.4 1)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill="#ecff00" fill-rule="evenodd" stroke="#ecff00" stroke-width="1pt"/>
+  </marker>
+  <marker id="DotM-5" overflow="visible" orient="auto">
+   <path transform="matrix(.4 0 0 .4 2.96 .4)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill="#ff0" fill-rule="evenodd" stroke="#ff0" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker5879-5" overflow="visible" orient="auto">
+   <path transform="matrix(.4 0 0 .4 2.96 .4)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill="#ff0" fill-rule="evenodd" stroke="#ff0" stroke-width="1pt"/>
+  </marker>
+  <marker id="DotM-5-5" overflow="visible" orient="auto">
+   <path transform="matrix(.4 0 0 .4 2.96 .4)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill="#fec700" fill-rule="evenodd" stroke="#fec700" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker5879-5-9" overflow="visible" orient="auto">
+   <path transform="matrix(.4 0 0 .4 2.96 .4)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill="#fec700" fill-rule="evenodd" stroke="#fec700" stroke-width="1pt"/>
+  </marker>
+  <marker id="DotM-5-5-3" overflow="visible" orient="auto">
+   <path transform="matrix(.4 0 0 .4 2.96 .4)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill="#f70000" fill-rule="evenodd" stroke="#f70000" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker5879-5-9-5" overflow="visible" orient="auto">
+   <path transform="matrix(.4 0 0 .4 2.96 .4)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill="#f70000" fill-rule="evenodd" stroke="#f70000" stroke-width="1pt"/>
+  </marker>
+  <marker id="DotM-5-5-3-5" overflow="visible" orient="auto">
+   <path transform="matrix(.4 0 0 .4 2.96 .4)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill="#dfe700" fill-rule="evenodd" stroke="#dfe700" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker5879-5-9-5-4" overflow="visible" orient="auto">
+   <path transform="matrix(.4 0 0 .4 2.96 .4)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill="#dfe700" fill-rule="evenodd" stroke="#dfe700" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker8984-5" overflow="visible" orient="auto">
+   <path transform="matrix(.4 0 0 .4 2.96 .4)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill="#dfe700" fill-rule="evenodd" stroke="#dfe700" stroke-width="1pt"/>
+  </marker>
+  <marker id="DotM-5-5-3-7" overflow="visible" orient="auto">
+   <path transform="matrix(.4 0 0 .4 2.96 .4)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill="#f06800" fill-rule="evenodd" stroke="#f06800" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker5879-5-9-5-6" overflow="visible" orient="auto">
+   <path transform="matrix(.4 0 0 .4 2.96 .4)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill="#f06800" fill-rule="evenodd" stroke="#f06800" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker8984-9" overflow="visible" orient="auto">
+   <path transform="matrix(.4 0 0 .4 2.96 .4)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill="#f06800" fill-rule="evenodd" stroke="#f06800" stroke-width="1pt"/>
+  </marker>
+  <marker id="DotM-5-5-3-1" overflow="visible" orient="auto">
+   <path transform="matrix(.4 0 0 .4 2.96 .4)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill="#00f700" fill-rule="evenodd" stroke="#00f700" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker5879-5-9-5-0" overflow="visible" orient="auto">
+   <path transform="matrix(.4 0 0 .4 2.96 .4)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill="#00f700" fill-rule="evenodd" stroke="#00f700" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker8984-2" overflow="visible" orient="auto">
+   <path transform="matrix(.4 0 0 .4 2.96 .4)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill="#00f700" fill-rule="evenodd" stroke="#00f700" stroke-width="1pt"/>
+  </marker>
+  <marker id="DotM-5-5-3-0" overflow="visible" orient="auto">
+   <path transform="matrix(.4 0 0 .4 2.96 .4)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill="#a0c300" fill-rule="evenodd" stroke="#a0c300" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker5879-5-9-5-1" overflow="visible" orient="auto">
+   <path transform="matrix(.4 0 0 .4 2.96 .4)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill="#a0c300" fill-rule="evenodd" stroke="#a0c300" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker8984-99" overflow="visible" orient="auto">
+   <path transform="matrix(.4 0 0 .4 2.96 .4)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill="#a0c300" fill-rule="evenodd" stroke="#a0c300" stroke-width="1pt"/>
+  </marker>
+ </defs>
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <g transform="translate(0,-87)">
+  <g>
+   <g transform="matrix(.17991 0 0 .18509 150.15 89.971)" stroke="#000" stroke-width="2.7793">
+    <path d="m166.84 235.55c0 3.7774-3.0869 6.8691-6.8711 6.8691h-152.85c-3.7749 0-6.8608-3.0918-6.8608-6.8691v-228.43c0-3.7773 3.0859-6.8701 6.8608-6.8701h152.85c3.7842 0 6.8711 3.0928 6.8711 6.8701z" fill="#fff" stroke-width="2.7793"/>
+   </g>
+   <g transform="matrix(1.6026 0 0 1.6487 -55.39 -58.398)" stroke-width=".312">
+    <g stroke="#000" stroke-width="2.7793">
+     <g transform="matrix(.11226 0 0 .11226 117.51 119.95)">
+      <path d="m166.84 235.55c0 3.7774-3.0869 6.8691-6.8711 6.8691h-152.85c-3.7749 0-6.8608-3.0918-6.8608-6.8691v-228.43c0-3.7773 3.0859-6.8701 6.8608-6.8701h152.85c3.7842 0 6.8711 3.0928 6.8711 6.8701z" fill="#fff" stroke-width="2.7793"/>
+     </g>
+     <g transform="matrix(.11226 0 0 .11226 138.98 119.95)">
+      <path d="m166.84 235.55c0 3.7774-3.0869 6.8691-6.8711 6.8691h-152.85c-3.7749 0-6.8608-3.0918-6.8608-6.8691v-228.43c0-3.7773 3.0859-6.8701 6.8608-6.8701h152.85c3.7842 0 6.8711 3.0928 6.8711 6.8701z" fill="#fff" stroke-width="2.7793"/>
+     </g>
+    </g>
+   </g>
+   <g transform="matrix(1.6026 0 0 1.6487 -56.362 -58.398)" stroke="#000">
+    <path d="m147.58 175.72c0 0.42404-0.34654 0.77111-0.77135 0.77111h-17.159c-0.42376 0-0.77018-0.34708-0.77018-0.77111v-25.643c0-0.42404 0.34642-0.77123 0.77018-0.77123h17.159c0.42481 0 0.77135 0.34719 0.77135 0.77123z" fill="#fff" stroke-width=".312"/>
+    <g transform="matrix(.11226 0 0 .11226 107.65 149.28)" stroke-width="2.7793">
+     <path d="m166.84 235.55c0 3.7774-3.0869 6.8691-6.8711 6.8691h-152.85c-3.7749 0-6.8608-3.0918-6.8608-6.8691v-228.43c0-3.7773 3.0859-6.8701 6.8608-6.8701h152.85c3.7842 0 6.8711 3.0928 6.8711 6.8701z" fill="#fff" stroke-width="2.7793"/>
+    </g>
+    <g transform="matrix(.11226 0 0 .11226 150.06 149.28)" stroke-width="2.7793">
+     <path d="m166.84 235.55c0 3.7774-3.0869 6.8691-6.8711 6.8691h-152.85c-3.7749 0-6.8608-3.0918-6.8608-6.8691v-228.43c0-3.7773 3.0859-6.8701 6.8608-6.8701h152.85c3.7842 0 6.8711 3.0928 6.8711 6.8701z" fill="#fff" stroke-width="2.7793"/>
+    </g>
+   </g>
+   <g transform="matrix(1.6026 0 0 1.6487 -57.217 -58.398)" stroke="#000" stroke-width="2.7793">
+    <g transform="matrix(.11226 0 0 .11226 93.93 179.49)">
+     <path d="m166.84 235.55c0 3.7774-3.0869 6.8691-6.8711 6.8691h-152.85c-3.7749 0-6.8608-3.0918-6.8608-6.8691v-228.43c0-3.7773 3.0859-6.8701 6.8608-6.8701h152.85c3.7842 0 6.8711 3.0928 6.8711 6.8701z" fill="#fff" stroke-width="2.7793"/>
+    </g>
+    <g transform="matrix(.11226 0 0 .11226 117.57 179.49)">
+     <path d="m166.84 235.55c0 3.7774-3.0869 6.8691-6.8711 6.8691h-152.85c-3.7749 0-6.8608-3.0918-6.8608-6.8691v-228.43c0-3.7773 3.0859-6.8701 6.8608-6.8701h152.85c3.7842 0 6.8711 3.0928 6.8711 6.8701z" fill="#fff" stroke-width="2.7793"/>
+    </g>
+    <g transform="matrix(.11226 0 0 .11226 141.21 179.49)">
+     <path d="m166.84 235.55c0 3.7774-3.0869 6.8691-6.8711 6.8691h-152.85c-3.7749 0-6.8608-3.0918-6.8608-6.8691v-228.43c0-3.7773 3.0859-6.8701 6.8608-6.8701h152.85c3.7842 0 6.8711 3.0928 6.8711 6.8701z" fill="#fff" stroke-width="2.7793"/>
+    </g>
+    <g transform="matrix(.11226 0 0 .11226 164.85 179.49)">
+     <path d="m166.84 235.55c0 3.7774-3.0869 6.8691-6.8711 6.8691h-152.85c-3.7749 0-6.8608-3.0918-6.8608-6.8691v-228.43c0-3.7773 3.0859-6.8701 6.8608-6.8701h152.85c3.7842 0 6.8711 3.0928 6.8711 6.8701z" fill="#fff" stroke-width="2.7793"/>
+    </g>
+   </g>
+  </g>
+  <g fill="none">
+   <path d="m203.11 210.86-19.146 49.786" marker-end="url(#marker8984-99)" marker-mid="url(#marker5879-5-9-5-1)" marker-start="url(#DotM-5-5-3-0)" stroke="#a0c300" stroke-dasharray="7.99761909, 7.99761909" stroke-linejoin="round" stroke-width="1.9994"/>
+   <g stroke="#000" stroke-width=".43009px">
+    <path d="m51.759 137.11h226.84"/>
+    <path d="m51.759 186.37h226.84"/>
+    <path d="m51.759 234.97h226.84"/>
+   </g>
+  </g>
+  <g fill="#000000" font-family="sans-serif" font-size="17.204px" letter-spacing="0px" stroke-width=".43009" word-spacing="0px">
+   <text transform="scale(.98592 1.0143)" x="49.384258" y="116.85786" style="line-height:1.25" xml:space="preserve"><tspan x="49.384258" y="116.85786" stroke-width=".43009">Stage : 1</tspan></text>
+   <text transform="scale(.98592 1.0143)" x="48.552479" y="164.14729" style="line-height:1.25" xml:space="preserve"><tspan x="48.552479" y="164.14729" stroke-width=".43009">Stage : 2</tspan></text>
+   <text transform="scale(.98592 1.0143)" x="34.320972" y="214.43193" style="line-height:1.25" xml:space="preserve"><tspan x="34.320972" y="214.43193" stroke-width=".43009">Stage : 3</tspan></text>
+   <text transform="scale(.98592 1.0143)" x="15.345631" y="261.8703" style="line-height:1.25" xml:space="preserve"><tspan x="15.345631" y="261.8703" stroke-width=".43009">Stage : 4</tspan></text>
+  </g>
+  <g fill="none">
+   <g stroke-linejoin="round" stroke-width="1.9994">
+    <path d="m165.33 109.87 19.176 51.965-18.708 47.635 18.166 51.18" marker-mid="url(#marker5879)" marker-start="url(#DotM)" stroke="#ecff00" stroke-dasharray="7.99761889, 1.99940472"/>
+    <path d="m165.33 109.87-19.176 51.965 19.644 47.635-18.24 51.003" marker-end="url(#marker13185)" marker-mid="url(#marker5879-5)" marker-start="url(#DotM-5)" stroke="#ff0" stroke-dasharray="11.99642832, 3.99880945"/>
+    <path d="m146.15 161.83-19.176 51.965" marker-mid="url(#marker5879-5-9)" marker-start="url(#DotM-5-5)" stroke="#fec700" stroke-dasharray="7.99761893, 7.99761893"/>
+    <path d="m128.72 207.9-19.667 51.838" marker-end="url(#marker8984)" marker-mid="url(#marker5879-5-9-5)" marker-start="url(#DotM-5-5-3)" stroke="#f70000" stroke-dasharray="7.997619, 7.997619"/>
+   </g>
+   <g stroke-dasharray="7.99761909, 7.99761909" stroke-linejoin="round" stroke-width="1.9994">
+    <path d="m184.51 161.83 18.604 49.028" marker-end="url(#marker8984-5)" marker-mid="url(#marker5879-5-9-5-4)" marker-start="url(#DotM-5-5-3-5)" stroke="#dfe700"/>
+    <path d="m128.72 207.9 18.835 52.569" marker-end="url(#marker8984-9)" marker-mid="url(#marker5879-5-9-5-6)" marker-start="url(#DotM-5-5-3-7)" stroke="#f06800"/>
+    <path d="m203.11 210.86 21.047 50.04" marker-end="url(#marker8984-2)" marker-mid="url(#marker5879-5-9-5-0)" marker-start="url(#DotM-5-5-3-1)" stroke="#00f700"/>
+   </g>
+   <path d="m267.57 130.93v127.12-0.44762" marker-end="url(#marker18304)" marker-start="url(#EmptyTriangleOutL)" stroke="#059800" stroke-dasharray="72.75882434, 3.03161768" stroke-width="3.0316"/>
+  </g>
+ </g>
+</svg>

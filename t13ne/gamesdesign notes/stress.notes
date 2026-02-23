@@ -1,0 +1,465 @@
+Stress
+
+Stress is related to Shock, Sway (at up to Twist Levels), RT, Wounds, and Hitches.
+
+Stress is created by Stressors
+
+Stressors include:
+	 Size Annexes on Force of Nature / Kaiju Characters
+	 Combat Stress: Seeing (whether taking or making) Wounds should have a Stress component.
+	 Major Life Events: These all create Stress, but are sometimes positive in nature
+	 	<table class="wikitable sortable jquery-tablesorter">
+
+<thead><tr>
+<th class="headerSort headerSortDown" tabindex="0" role="columnheader button" title="Sort initial">Life event
+</th>
+<th class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">Life change units
+</th></tr></thead><tbody>
+<tr>
+<td>Vacation</td>
+<td>13
+</td></tr><tr>
+<td>Trouble with in-laws</td>
+<td>29
+</td></tr><tr>
+<td>Trouble with boss</td>
+<td>23
+</td></tr><tr>
+<td>Spouse starts or stops work</td>
+<td>26
+</td></tr><tr>
+<td>Sexual difficulties</td>
+<td>39
+</td></tr><tr>
+<td>Revision of personal habits</td>
+<td>24
+</td></tr><tr>
+<td>Retirement</td>
+<td>45
+</td></tr><tr>
+<td>Pregnancy</td>
+<td>40
+</td></tr><tr>
+<td>Personal injury or illness</td>
+<td>53
+</td></tr><tr>
+<td>Outstanding personal achievement</td>
+<td>28
+</td></tr><tr>
+<td>Minor violation of law</td>
+<td>11
+</td></tr><tr>
+<td>Minor mortgage or loan</td>
+<td>17
+</td></tr><tr>
+<td>Marriage</td>
+<td>50
+</td></tr><tr>
+<td>Marital separation</td>
+<td>65
+</td></tr><tr>
+<td>Marital reconciliation</td>
+<td>45
+</td></tr><tr>
+<td>Major mortgage</td>
+<td>32
+</td></tr><tr>
+<td>Major Holiday</td>
+<td>12
+</td></tr><tr>
+<td>Imprisonment</td>
+<td>63
+</td></tr><tr>
+<td>Gain a new family member</td>
+<td>39
+</td></tr><tr>
+<td>Foreclosure of mortgage or loan</td>
+<td>30
+</td></tr><tr>
+<td>Divorce</td>
+<td>73
+</td></tr><tr>
+<td>Dismissal from work</td>
+<td>47
+</td></tr><tr>
+<td>Death of a spouse</td>
+<td>100
+</td></tr><tr>
+<td>Death of a close friend</td>
+<td>37
+</td></tr><tr>
+<td>Death of a close family member</td>
+<td>63
+</td></tr><tr>
+<td>Child leaving home</td>
+<td>29
+</td></tr><tr>
+<td>Change to different line of work</td>
+<td>36
+</td></tr><tr>
+<td>Change in working hours or conditions</td>
+<td>20
+</td></tr><tr>
+<td>Change in social activities</td>
+<td>18
+</td></tr><tr>
+<td>Change in sleeping habits</td>
+<td>16
+</td></tr><tr>
+<td>Change in schools</td>
+<td>20
+</td></tr><tr>
+<td>Change in responsibilities at work</td>
+<td>29
+</td></tr><tr>
+<td>Change in residence</td>
+<td>20
+</td></tr><tr>
+<td>Change in recreation</td>
+<td>19
+</td></tr><tr>
+<td>Change in number of family reunions</td>
+<td>15
+</td></tr><tr>
+<td>Change in living conditions</td>
+<td>25
+</td></tr><tr>
+<td>Change in health of family member</td>
+<td>44
+</td></tr><tr>
+<td>Change in frequency of arguments</td>
+<td>35
+</td></tr><tr>
+<td>Change in financial state</td>
+<td>38
+</td></tr><tr>
+<td>Change in eating habits</td>
+<td>15
+</td></tr><tr>
+<td>Change in church activities</td>
+<td>19
+</td></tr><tr>
+<td>Business readjustment</td>
+<td>39
+</td></tr><tr>
+<td>Beginning or end of school</td>
+<td>26
+</td></tr></tbody><tfoot></tfoot></table>
+<table class="wikitable sortable jquery-tablesorter">
+
+<thead><tr>
+<th class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">Life Event
+</th>
+<th class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">Life Change Units
+</th></tr></thead><tbody>
+<tr>
+<td>Death of parent</td>
+<td>100
+</td></tr>
+<tr>
+<td>Unplanned pregnancy/abortion</td>
+<td>100
+</td></tr>
+<tr>
+<td>Getting married</td>
+<td>95
+</td></tr>
+<tr>
+<td>Divorce of parents</td>
+<td>90
+</td></tr>
+<tr>
+<td>Acquiring a visible deformity</td>
+<td>80
+</td></tr>
+<tr>
+<td>Fathering a child</td>
+<td>70
+</td></tr>
+<tr>
+<td>Jail sentence of parent for over one year</td>
+<td>70
+</td></tr>
+<tr>
+<td>Marital separation of parents</td>
+<td>69
+</td></tr>
+<tr>
+<td>Death of a brother or sister</td>
+<td>68
+</td></tr>
+<tr>
+<td>Change in acceptance by peers</td>
+<td>67
+</td></tr>
+<tr>
+<td>Unplanned pregnancy of sister</td>
+<td>64
+</td></tr>
+<tr>
+<td>Discovery of being an adopted child</td>
+<td>63
+</td></tr>
+<tr>
+<td>Marriage of parent to stepparent</td>
+<td>63
+</td></tr>
+<tr>
+<td>Death of a close friend</td>
+<td>63
+</td></tr>
+<tr>
+<td>Having a visible congenital deformity</td>
+<td>62
+</td></tr>
+<tr>
+<td>Serious illness requiring hospitalization</td>
+<td>58
+</td></tr>
+<tr>
+<td>Failure of a grade in school</td>
+<td>56
+</td></tr>
+<tr>
+<td>Not making an extracurricular activity</td>
+<td>55
+</td></tr>
+<tr>
+<td>Hospitalization of a parent</td>
+<td>55
+</td></tr>
+<tr>
+<td>Jail sentence of parent for over 30 days</td>
+<td>53
+</td></tr>
+<tr>
+<td>Breaking up with boyfriend or girlfriend</td>
+<td>53
+</td></tr>
+<tr>
+<td>Beginning to date</td>
+<td>51
+</td></tr>
+<tr>
+<td>Suspension from school</td>
+<td>50
+</td></tr>
+<tr>
+<td>Becoming involved with drugs or alcohol</td>
+<td>50
+</td></tr>
+<tr>
+<td>Birth of a brother or sister</td>
+<td>50
+</td></tr>
+<tr>
+<td>Increase in arguments between parents</td>
+<td>47
+</td></tr>
+<tr>
+<td>Loss of job by parent</td>
+<td>46
+</td></tr>
+<tr>
+<td>Outstanding personal achievement</td>
+<td>46
+</td></tr>
+<tr>
+<td>Change in parent's financial status</td>
+<td>45
+</td></tr>
+<tr>
+<td>Accepted at college of choice</td>
+<td>43
+</td></tr>
+<tr>
+<td>Being a senior in high school</td>
+<td>42
+</td></tr>
+<tr>
+<td>Hospitalization of a sibling</td>
+<td>41
+</td></tr>
+<tr>
+<td>Increased absence of parent from home</td>
+<td>38
+</td></tr>
+<tr>
+<td>Brother or sister leaving home</td>
+<td>37
+</td></tr>
+<tr>
+<td>Addition of third adult to family</td>
+<td>34
+</td></tr>
+<tr>
+<td>Becoming a full-fledged member of a church</td>
+<td>31
+</td></tr>
+<tr>
+<td>Decrease in arguments between parents</td>
+<td>27
+</td></tr>
+<tr>
+<td>Decrease in arguments with parents</td>
+<td>26
+</td></tr>
+<tr>
+<td>Mother or father beginning work</td>
+<td>26
+</td></tr></tbody><tfoot></tfoot></table>
+
+	 Making Decisions:
+	 	Choose between two equally good options
+	 	Choose between two equally bad options
+	 	Choose whether to take a mixed option of good and bad
+	 Deadlines:
+	 	automatically add Stress for each period of working under a deadline.
+	 		e.g. centuries, decades, years, months, weeks, days, hours, minutes, seconds.
+	 		let this go up to the line and there is a lot of Stress to be accumulated
+	 Obstacles:
+	 	Traffic jams and the like add Stress. Obstacles add Stress when they add required time.
+	 Encountering Dissonant Geometries
+	 Stepping out of your comfort zone
+	 Travel Stress:
+	 	Lost Time for other things
+	 	Surprises during travel (delays, lost baggage)
+	 	Routine Breaking
+	 Ambient Stress:
+	 	Tension Stress: Gifted by the Plot to Embodiment Characters who aren't doing their job.
+	 	Location Stress:
+	 		Pollution: Bad air quality (Miasma) adds Stress (we can calculate the Stress from the rolled Score probably)
+	 		Noise: Noise (Fury) adds Stress
+	 		Crowding: Groups of people automatically add Stress, the bigger the group present and the smaller the space, the more Stress (Dominion and Yonder).
+	 		Traffic: Groups of people moving in small spaces and large vehicles will add more Stress (this should be calculated based on Dominion, Yonder and Zeal)
+	 		Okay it looks like each Facet of a Location may cause an ambient Stress.
+	 			so Facet based Stressors:
+		 			Awe: Spiritual Residue / Haunted - ghosts and oppressive airs add stress 
+		 			Burden: Debt and Wealth both adds Stress
+		 			Craft: Oppressive architecture adds Stress
+		 			Dominion: Groups of people add Stress
+		 			Enigma: Confusion and getting lost always add Stress
+		 			Fury: Noise adds Stress
+		 			Gossamer: Draughts and whispers add Stress
+		 			Heresy: Discovered lies add Stress (hidden garbage etc)
+		 			Inertia: Motion even steady motion adds Stress
+		 			Jeer: Humiliation adds Stress. Humour reduces Stress though
+		 			Key: Too much information adds stress
+		 			Liberty: Generally reduces Stress, but other people's liberty can increase Stress (fear of missing out)
+		 			Miasma: Pollution adds Stress
+		 			Nature: Groups of animals add Stress
+		 			Orthodox: Knowledge adds Stress
+		 			Phoenix: Heat adds Stress
+		 			Quiet: Thoughts add Stress
+		 			Rook: Soaking Damage on Facets adds Stress
+		 			Sin: we can say it adds Stress if it makes you feel better...
+		 			Trial: Conflict adds Stress
+		 			Virtue: Would it make you feel any better to say Virtue doesn't add Stress? 
+		 			Wyrd: Doom, and a lack of free will in general, big add Stress
+		 			Yonder: Small spaces add Stress, but so can big spaces too sometimes.
+		 			Zeal: Acceleration of any sort adds Stress
+		 		I guess these should add Stress only if the Stress is greater than their Facet Value (or Boon) (we still need to see about the numbers and how much Stress is good or bad.)
+
+	Stress Management:
+		Firstly, we need to say 
+		Routine:
+			Anything that has become routine for a Character will stress them less (except Hitches). Removing the chance of Shock significantly.
+
+Awe: 
+Burder:
+Craft:
+Enigma:
+Fury:
+Gossamer:
+Heresy:
+Inertia:
+Jeer:
+Key:
+Liberty:
+Miasma:
+Nature:
+Orthodox:
+Phoenix:
+Quiet:
+Rook:
+Sin:
+Trial:
+Virtue:
+Wyrd:
+Yonder:
+Zeal:
+
+
+Thinking about Stress there are a number of ways that it can be used.
+1) Stress operates like Value... Small amounts of Stress are meaningless, but huge amounts become terrible. The Boon of the Stress Value would be called Strains / Banes, and the Score would be called Shock / Marks .
+	Stress would be gained by card each one adding 2-15 Stress... which is 1-4 Strain and only 1 Shock
+	so 2 Stress Cards would be 4-30 Stress 1-7 Strain 1-2 Shock
+	3 Cards 6-45 Stress 2-10 Strain 1-3 Shock 
+	-- interesting that 3, 10, 45 has a 1d6 Die... That might be useable...
+	Characters would be able to store a lot of Stress (over 300) Which I think we limit by adding highest Facet Value to Hitch Value...
+	Boon 18 (111) and Bane 16 (92) that's 203... What if we just use Personality Annex or Master Annex that will probably work better. That could work as the amounts are huge with storing 4 Shock being possible.
+
+	This would give certain events plausible big numbers of Stress like the numbers on the table above.
+
+	So here's my first real idea.
+
+	Stress can be Eustress (good Stress that can be used to increase mental and physical activities - see it creates Strain) and Distress (bad stress - stress you can't cope with or that needs working through) you accumulate both.
+	When they are added together though you get Strain.
+	Strain can become Strain Dice which we can add to a Strain Pool and force a roll (but Strain Dice are not Drama Dice) - Strain Dice could bet Stress on the roll. So if You have 700 Stress you could spend 691 adding a 2d10 Strain Die. This depending upon what is rolled will return 16-4427 Stress? That does not seem right. Instead the Stress bet returns if the Dice roll is below average... 
+	
+	If Shock was equivalent to Draw and so Stress cards become Shock effects perhaps... Maybe add another level Traumas..
+
+	Hitches will have to be upped as their level of Stress is far too small. Quirks may be Ruins, Flaws Marks and Woes Banes Stress... This lets Stress power Characters which will better than Chi coming from Hitches probably... As Stress will be both good and bad with this system...
+
+	We need to think about how Shock works... 
+	A Character has a Stress Limit, but they also have a Strain Limit and a Shock Limit.
+
+
+	Okay pause that... how else can we model Stress, Strain and Shock
+
+2) The Sway model
+	in this model Stress is much like Tao Sway
+	Strain could be Facet Sway (stored Stress)
+	Shock would be Chi
+	Trauma would be Yarn
+
+		Characters gain Stress
+		A Character or Descendant can hold as much Stress as their Stress Limit which is their Total Annex Boons.
+		Stress after the Stress Limit will cause Shock.
+		A Character can burn Stress on Strain Dice that add to the Pool of a Facet or Annex Action, but the rolled die adds Strains equal to the rolled Score. 
+			Strains are stored on Annexes or Facets, and can only reach the Facet Boon or the Facet or Annex becomes Strained. 
+			Any annex or facet with Strains suffers additional Reaction Time equal to its current Strains.
+			Any Strained Annex or Facet can be used, but adds a negative Strain Die to the Pool.
+			Strains are healed by rest. Each twenty minutes of rest or sleep will allow a Character to remove a Strain. 
+			Strain does not count towards a Character's Stress Limit, but all Stored Strains Reduced add to Shock.
+		Shock has different storage limits. Shock is stored on the Master or Personality Annex Score.
+		Shock can be burned as GRT, stopping a Character from acting, although they can continue to act, ignoring the Shock until they can store no more.
+		
+		If a Descendant or Character is filled with Shock then Stress is converted to Strain, all Strain is converted to Shock and all Shock is converted to Trauma.
+		Traumas cause long lasting Stress card effects or
+
+
+Sway Stress Model Take 2
+Stress is gained from a variety of sources, but especially Hitches.
+Stress can be stored on Annexes, with each Annex able to Store as much Stress as it can generate as a Score, e.g. the Maximum of the Annex Die roll.
+
+Stress can be spent to purchase Strain Dice which can be added to any roll. Typically the Stress spent is treated as a Boon to buy the bonus Strain Die.
+Each time you do this it will add a Strain to the Annex. A Strained Annex will have a -1 to all Scores until the Strain has been healed or rested away. 
+Typically 1 Point of Strain requires the Character does not use this Annex for a period of time equal to the current Strains as Chi Extend Duration. E.g. A Strain of 1 will add -1 to all rolls and takes only 1 Ordeal Phase to heal, 8 Strains will add -8 and require an entire Scene to pass without using that Annex. 
+An Annex can only store Strains equal to the maximum Stress Reduced. 
+
+e.g. Boon 10 *1d6 has Max 6 Stress and 2 Strain
+
+If Stress is full and more Stress is gained, then the Character is Overstressed. Overstressed Characters must convert Stress into Shock Dice.
+Stress Reduced + current Strains = Shock Dice (so the Maximum Shock is usually twice the Strains- although extreme Stress can make this more crazy.)
+
+Shock Dice are rolled immediately.
+Each Shock Dice is a d6.
+
+1-2: The Shock Die has no Effect
+3-4: The Shock Die creates a GRT
+5-6: The Shock Die Draws a Stress Card
+
+Characters and Descendants can end up stuck in a whole mess of Shock GRT, or they can end up Drawing cards for the Stress Effects.
+
+

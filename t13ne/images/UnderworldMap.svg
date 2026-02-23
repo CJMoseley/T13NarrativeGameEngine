@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="210mm" height="297mm" version="1.1" viewBox="0 0 210 297" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <image x="1.8961" y="31.283" width="206.82" height="182.53" image-rendering="optimizeQuality" preserveAspectRatio="none" xlink:href="file:///E:/Site/cjm.dev.cc/wp-content/plugins/t13ne/images/Testmap.png"/>
+ <g fill="none" stroke-width="1.165">
+  <path d="m19.474 113.09 38.597-5.2792-18.536 32.262z" stroke="#0f0" stroke-dasharray="1.165, 1.165"/>
+  <path d="m116.32 115.59 15.623-34.053-0.12205 0.12206" stroke="#0000fa" stroke-dasharray="1.165,1.165"/>
+  <path d="m155.13 145.37-38.814-29.782" marker-start="" stroke="#f00" stroke-dasharray="2.33, 1.165, 0.5825, 1.165"/>
+  <path d="m131.82 81.655 20.017 12.328" marker-mid="" stroke="#00fa00" stroke-dasharray="1.165, 1.165"/>
+  <path d="m155.13 145.37-51.996-1.8308" stroke="#f00" stroke-dasharray="2.33, 1.165, 0.5825, 1.165"/>
+  <path d="m151.84 93.983-8.2998 25.754" stroke="#ff0" stroke-dasharray="2.33,1.165"/>
+  <path d="m143.54 119.74-27.218-4.1499" stroke="#fa0000" stroke-dasharray="1.165, 1.165"/>
+  <path d="m143.54 119.74 11.595 25.632" stroke="#0f0" stroke-dasharray="2.33, 1.165, 0.5825, 1.165"/>
+  <path d="m155.13 145.37-18.919 18.919" stroke="#0f0" stroke-dasharray="2.33,1.165,0.5825,1.165"/>
+  <path d="m116.32 115.59-13.182 27.951" stroke="#00f" stroke-dasharray="2.33, 1.165"/>
+  <path d="m116.32 115.59-58.247-7.7731" stroke="#00f" stroke-dasharray="1.165, 1.165"/>
+  <path d="m103.14 143.54-20.871 42.109" stroke="#fffa00" stroke-dasharray="4.66, 2.33"/>
+  <path d="m136.21 164.29-53.949 21.36" stroke="#f00" stroke-dasharray="2.33,1.165"/>
+  <path d="m136.21 164.29-33.077-20.749" stroke="#00f" stroke-dasharray="3.495, 1.165"/>
+  <path d="m39.536 140.08 63.601 3.4619" stroke="#ff0" stroke-dasharray="1.165,1.165"/>
+  <path d="m58.071 107.81 45.065 35.724" stroke="#ff0" stroke-dasharray="1.165, 1.165"/>
+  <path d="m39.536 140.08 42.73 45.571" stroke="#f00" stroke-dasharray="3.495,1.165"/>
+  <path d="m5.3704 223h25.876" stroke="#000" stroke-dasharray="1.165,1.165"/>
+ </g>
+ <text x="33.32037" y="224.09464" font-family="sans-serif" font-size="3.5278px" stroke-width=".26458" style="line-height:1.25" xml:space="preserve"><tspan x="33.32037" y="224.09464" stroke-width=".26458">Human</tspan></text>
+ <path d="m56.756 222.87 32.833-0.12205" fill="none" stroke="#000" stroke-dasharray="2.33,1.165" stroke-width="1.165"/>
+ <text x="92.640121" y="223.52379" font-family="sans-serif" font-size="3.5278px" stroke-width=".26458" style="line-height:1.25" xml:space="preserve"><tspan x="92.640121" y="223.52379" stroke-width=".26458">Spirits </tspan></text>
+ <path d="m113.15 222.75c33.077-0.36617 33.077-0.36617 33.077-0.36617" fill="none" stroke="#000" stroke-dasharray="2.33,1.165,0.5825,1.165" stroke-width="1.165"/>
+ <text x="150.0062" y="223.11819" font-family="sans-serif" font-size="3.5278px" stroke-width=".26458" style="line-height:1.25" xml:space="preserve"><tspan x="150.0062" y="223.11819" stroke-width=".26458">Goblinoids</tspan></text>
+ <path d="m5.8587 227.88 25.265-0.24411" fill="none" stroke="#f00" stroke-width="1.165"/>
+ <text x="32.588814" y="228.85405" font-family="sans-serif" font-size="3.5278px" stroke-width=".26458" style="line-height:1.25" xml:space="preserve"><tspan x="32.588814" y="228.85405" stroke-width=".26458">Opposed</tspan></text>
+ <path d="m56.512 228.12 26.73-0.24411" fill="none" stroke="#ff0" stroke-width="1.165"/>
+ <text x="85.560905" y="229.05873" font-family="sans-serif" font-size="3.5278px" stroke-width=".26458" style="line-height:1.25" xml:space="preserve"><tspan x="85.560905" y="229.05873" stroke-width=".26458">Neutral</tspan></text>
+ <path d="m105.82 227.53c7.3626 0.0234 14.725 0.0394 22.088 0.0674" fill="none" stroke="#0f0" stroke-width=".95302"/>
+ <text x="130.72144" y="228.36583" font-family="sans-serif" font-size="3.5278px" stroke-width=".26458" style="line-height:1.25" xml:space="preserve"><tspan x="130.72144" y="228.36583" stroke-width=".26458">Allied</tspan></text>
+ <path d="m56.755 232.35 26.853-0.15037c3e-6 0 0 0 0 0" fill="none" stroke="#00f" stroke-width="1.165"/>
+ <text x="84.705727" y="233.37085" font-family="sans-serif" font-size="3.5278px" stroke-width=".26458" style="line-height:1.25" xml:space="preserve"><tspan x="84.705727" y="233.37085" stroke-width=".26458">Balanced</tspan></text>
+ <g stroke="#000" stroke-linejoin="round">
+  <rect x="14.403" y="75.43" width="120.1" height="69.816" fill="#f6b0ff" fill-opacity=".13655" stroke-dasharray="1.165, 1.165" stroke-opacity=".77912" stroke-width="1.165" style="mix-blend-mode:screen;paint-order:fill markers stroke"/>
+  <path transform="scale(.26458)" d="m603.86 615.39-328.68 124.26 56.73-346.77 135.97 111.26z" fill="#00f" fill-opacity=".080321" stroke-dasharray="8.8063, 4.40315" stroke-opacity=".6988" stroke-width="4.4032" style="mix-blend-mode:screen;paint-order:fill markers stroke"/>
+  <ellipse cx="157.21" cy="130.54" rx="30.026" ry="41.804" fill="#00f300" fill-opacity=".080321" stroke-dasharray="2.33, 1.165, 0.5825, 1.165" stroke-opacity=".63855" stroke-width="1.165" style="mix-blend-mode:screen;paint-order:fill markers stroke"/>
+ </g>
+</svg>
