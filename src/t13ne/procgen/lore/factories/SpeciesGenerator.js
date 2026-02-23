@@ -639,29 +639,39 @@ export class SpeciesGenerator {
 
         // 1. Primary Geometry for core identity
         const primaryGeoData = this.speciesGeoData[traits.primaryGeometry];
-        if (primaryGeoData && primaryGeoData.Geometry_Description) {
-            cultureParts.push(primaryGeoData.Geometry_Description);
+        if (primaryGeoData) {
+            if (primaryGeoData.preGeneratedLore) {
+                cultureParts.push(primaryGeoData.preGeneratedLore);
+            } else if (primaryGeoData.Geometry_Description) {
+                cultureParts.push(primaryGeoData.Geometry_Description);
+            }
         }
 
-        // 2. Soul Geometry for inner nature
+        // 2. Soul Geometry for inner nature (only if we didn't use a bulk pre-generated piece or if it's different)
         const soulGeoData = this.speciesGeoData[traits.soulNumber];
-        if (soulGeoData && soulGeoData.Gift_Description) {
-            cultureParts.push(soulGeoData.Gift_Description);
+        if (soulGeoData && !primaryGeoData.preGeneratedLore) {
+            if (soulGeoData.preGeneratedLore && traits.soulNumber !== traits.primaryGeometry) {
+                cultureParts.push(soulGeoData.preGeneratedLore);
+            } else if (soulGeoData.Gift_Description) {
+                cultureParts.push(soulGeoData.Gift_Description);
+            }
         }
 
         // 3. Facade Geometry for outward appearance
         const facadeGeoData = this.speciesGeoData[traits.facadeNumber];
-        if (facadeGeoData && facadeGeoData.Goal_Description) {
-            cultureParts.push(facadeGeoData.Goal_Description);
+        if (facadeGeoData && !primaryGeoData.preGeneratedLore) {
+            if (facadeGeoData.Goal_Description) {
+                cultureParts.push(facadeGeoData.Goal_Description);
+            }
         }
 
         // 4. Key for emotional tone
         const T13NE = this.pluginManager?.getApi('T13', 'T13NE');
         const T13Geometry = T13NE?.getModule('T13Geometry');
-        if (T13Geometry) {
+        if (T13Geometry && traits.key) {
             const keyData = T13Geometry.getKey(traits.key);
             if (keyData && keyData.Key && keyData.Key.Description) {
-                cultureParts.push(`The overall emotional tone of their society can be described as ${keyData.Key.Description.toLowerCase()}`);
+                cultureParts.push(`The overarching spirit of their society is ${keyData.Key.Description.toLowerCase()}.`);
             }
         }
 

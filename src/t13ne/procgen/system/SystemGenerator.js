@@ -27,7 +27,7 @@ export class SystemGenerator {
         if (n1 === undefined && T13NE_PRNG) {
             // Include galaxy seed or a salt if available to prevent "Pell Drift" repetition on fixed coordinates
             const galaxySeed = galaxyParams?.seed || '';
-            const salt = galaxyParams?.salt || ''; 
+            const salt = galaxyParams?.salt || '';
             const uniqueId = star.id || `${star.x},${star.y},${star.z}`;
             const seed = `---system-lore`; // Removed Date.now() to ensure persistence
             const prng = T13NE_PRNG.create(seed);
@@ -41,7 +41,7 @@ export class SystemGenerator {
             // Fallback if PRNG failed to load
             Logger.warn("T13NE_PRNG not loaded, using deterministic fallback.");
             const simpleHash = (str) => {
-                let h = 0x811c9dc5; for(let i=0;i<str.length;i++) h^=str.charCodeAt(i), h=Math.imul(h,0x01000193); return (h>>>0)/4294967296;
+                let h = 0x811c9dc5; for (let i = 0; i < str.length; i++) h ^= str.charCodeAt(i), h = Math.imul(h, 0x01000193); return (h >>> 0) / 4294967296;
             };
             const seedStr = star.id || `${star.x},${star.y},${star.z}`;
             n1 = simpleHash(seedStr + 'n1'); n2 = simpleHash(seedStr + 'n2'); n3 = simpleHash(seedStr + 'n3'); n4 = simpleHash(seedStr + 'n4');
@@ -219,18 +219,19 @@ export class SystemGenerator {
                 }
             }
         }
-        
+
         if (inhabitants.length > 1) {
             society += " (Multi-species)";
         }
-        Logger.message(`: Society: `);
+        Logger.message(`: Society: ${society}`);
 
         // 2.6 Historical Event Generation
         const historicalEvent = this._generateHistoricalEventFromCards();
         if (historicalEvent) {
+            const cleanAge = historicalEvent.title.replace(/^Age of /i, '');
             // Prepend a space if eventDescription already has content.
             if (eventDescription) eventDescription += " ";
-            eventDescription += `A notable historical period in this system was an 'Age of ${historicalEvent.title}', characterized by: ${historicalEvent.description}`;
+            eventDescription += `History remembers this system for its era of ${cleanAge.toLowerCase()}. ${historicalEvent.description}`;
         }
 
         await new Promise(r => setTimeout(r, 0)); // Yield
@@ -238,7 +239,7 @@ export class SystemGenerator {
         const npcData = this._generateNPCsFromCards();
         if (npcData) {
             if (eventDescription) eventDescription += " ";
-            eventDescription += `Notable individuals here often resemble the '${npcData.type}' archetype: ${npcData.description}`;
+            eventDescription += `The inhabitants are often characterized by ${npcData.description.toLowerCase()}`;
         }
 
         // 2.8 Extras Generation (Chorus/Cast for local flavor)
@@ -260,7 +261,7 @@ export class SystemGenerator {
                     // 2. Generate Extras based on the Archetype's Annexes/Facets
                     const numExtras = Math.floor(n3 * 3) + 1;
                     const sourceFacets = [];
-                    
+
                     // Collect facets from Personality and Hitches to seed locals
                     if (systemArchetype.personalityAnnex) {
                         if (systemArchetype.personalityAnnex.personas) sourceFacets.push(...systemArchetype.personalityAnnex.personas);
@@ -277,7 +278,7 @@ export class SystemGenerator {
                     for (let i = 0; i < numExtras; i++) {
                         const extraType = n4 > 0.9 ? 'Cast' : 'Chorus';
                         const seedFacet = sourceFacets[i % sourceFacets.length];
-                        
+
                         try {
                             const char = await this.characterGenerator.generateCharacter(extraType, {
                                 seed: archetypeSeed + i + 1,
@@ -321,11 +322,11 @@ export class SystemGenerator {
         // Force syllabic generation more often to avoid repetitive list names
         let systemNameArray;
         if (this.nameGenerator.generateSyllabicName && n4 > 0.3) { // 70% chance of unique syllabic name
-             const flavor = n3 > 0.5 ? 'alien' : (n3 > 0.25 ? 'tech' : 'ancient');
-             const name = this.nameGenerator.generateSyllabicName(`-`, flavor);
-             systemNameArray = [name, name, ""];
+            const flavor = n3 > 0.5 ? 'alien' : (n3 > 0.25 ? 'tech' : 'ancient');
+            const name = this.nameGenerator.generateSyllabicName(`-`, flavor);
+            systemNameArray = [name, name, ""];
         } else {
-             systemNameArray = await this.nameGenerator.generateSystemName(n1, n2, n3, nearbySpecies);
+            systemNameArray = await this.nameGenerator.generateSystemName(n1, n2, n3, nearbySpecies);
         }
 
         if (!Array.isArray(systemNameArray)) {
@@ -336,12 +337,12 @@ export class SystemGenerator {
 
         // Sanitize potentially offensive or broken names
         if (homeWorldNameArray && homeWorldNameArray.length > 0) {
-             if (typeof homeWorldNameArray[0] === 'string') {
-                 if (homeWorldNameArray[0].includes("Humans's")) homeWorldNameArray[0] = homeWorldNameArray[0].replace("Humans's", "Human");
-                 if (homeWorldNameArray[0].includes("Porno")) homeWorldNameArray[0] = homeWorldNameArray[0].replace("Porno", "Prime");
-                 // General fix for s's -> s'
-                 homeWorldNameArray[0] = homeWorldNameArray[0].replace(/s's/g, "s'");
-             }
+            if (typeof homeWorldNameArray[0] === 'string') {
+                if (homeWorldNameArray[0].includes("Humans's")) homeWorldNameArray[0] = homeWorldNameArray[0].replace("Humans's", "Human");
+                if (homeWorldNameArray[0].includes("Porno")) homeWorldNameArray[0] = homeWorldNameArray[0].replace("Porno", "Prime");
+                // General fix for s's -> s'
+                homeWorldNameArray[0] = homeWorldNameArray[0].replace(/s's/g, "s'");
+            }
         }
 
         // Add Geometry-based Society Description
@@ -350,7 +351,10 @@ export class SystemGenerator {
             if (T13Geometry && systemNameArray && systemNameArray[0]) {
                 const geo = T13Geometry.calculateFullGeo(systemNameArray[0]);
                 const soulGeo = T13Geometry.Geometries[geo.Soul];
-                if (soulGeo && soulGeo.Social_Description) {
+                // Use preGeneratedLore for a more diegetic and jargon-free description
+                if (soulGeo && soulGeo.preGeneratedLore) {
+                    description += ` ${soulGeo.preGeneratedLore}`;
+                } else if (soulGeo && soulGeo.Social_Description) {
                     description += ` ${soulGeo.Social_Description}`;
                 }
             }
@@ -360,7 +364,7 @@ export class SystemGenerator {
         // Use n1 (system seed) to determine star count
         let starCountRoll = safeNoise.n1;
         let stars = [];
-        
+
         // Base Star
         stars.push({
             name: systemNameArray[0],
@@ -430,9 +434,9 @@ export class SystemGenerator {
             'K': [0xffddbb, 0xffccaa, 0xffbb99], // Orange
             'M': [0xffccaa, 0xffbb99, 0xffaa88], // Red-Orange
             // Brown Dwarves: Deep Red/Dark Orange Brown (L, T, Y classes)
-            'L': [0xcc5522, 0xaa4400, 0x882200], 
-            'T': [0x882200, 0x661100, 0x550a00], 
-            'Y': [0x440500, 0x330000, 0x2a0000]  
+            'L': [0xcc5522, 0xaa4400, 0x882200],
+            'T': [0x882200, 0x661100, 0x550a00],
+            'Y': [0x440500, 0x330000, 0x2a0000]
         };
 
         const spectralOrder = ['O', 'B', 'A', 'F', 'G', 'K', 'M', 'L', 'T', 'Y'];
@@ -469,7 +473,7 @@ export class SystemGenerator {
         if (ageData && ageData.Type && ageData.Description) {
             return {
                 title: ageData.Type,
-                description: ageData.Description
+                description: this._sanitizeLore(ageData.Description)
             };
         }
 
@@ -493,7 +497,7 @@ export class SystemGenerator {
         if (yarnData && yarnData.Significator && yarnData.Significator.Character) {
             return {
                 type: yarnData.Yarn_Name || card.name,
-                description: yarnData.Significator.Character
+                description: this._sanitizeLore(yarnData.Significator.Character)
             };
         }
         return null;
@@ -532,8 +536,8 @@ export class SystemGenerator {
             }
 
             return {
-                name: ` in an Age of ${ageData.Type}`,
-                description: ageData.Description || ''
+                name: `a society currently shaped by ${ageData.Type.toLowerCase()}`,
+                description: this._sanitizeLore(ageData.Description) || ''
             };
         }
 
@@ -592,6 +596,38 @@ export class SystemGenerator {
         return result;
     }
 
+    /**
+     * Sanitizes lore text by removing mechanical jargon and formatting for immersion.
+     * @param {string} text - The raw lore text.
+     * @returns {string} The sanitized, more diegetic text.
+     */
+    _sanitizeLore(text) {
+        if (!text || typeof text !== 'string') return text;
+
+        // 1. Remove obvious system terms in parentheses
+        let clean = text.replace(/\([^)]*(Boon|Geometry|Chi|Facet|Hitch|Gematria|Success|Difficulty|Pips|Draw|Pool|Phase|Test|Action|Significator|Dominant|Pressed)[^)]*\)/gi, '');
+
+        // 2. Remove explicit mechanical labels and their values
+        clean = clean.replace(/(Geometry (Number|Name)|Chi (Gain|Level)|Boon|Facet (Score|Name)|Success Level|Difficulty Rating|Pip Gain|Draw (Count|Spread)|Pool Size|Significator|Archetype):?\s*[\w\d\+\-\s]*/gi, '');
+
+        // 3. Remove common mechanical sentences about Success Levels
+        clean = clean.replace(/(They|Individuals) add \+\d+ Success Level on any Action [^.]*\./gi, '');
+        clean = clean.replace(/Add \+\d+ Success Level to any Action [^.]*\./gi, '');
+        clean = clean.replace(/Each additional [^.]* adds a [^.]* Success Level\./gi, '');
+
+        // 4. Remove geometry names if used clinically (e.g. "Nonagon Characters are...")
+        // We want the description, not the label.
+        clean = clean.replace(/(Void|Circle|Half-Moon|Triangle|Square|Pentagon|Hexagon|Heptagon|Octagon|Nonagon|Decagon|Undecagon|Dodecagon|Triskaidecagon) (Characters|Beings|Planets|Societies) are/gi, 'Individuals here are typically');
+
+        // 5. Clean up "Age of" clinical phrasing
+        clean = clean.replace(/An Age of ([^.]*) is occuring\./gi, 'This is a time of $1.');
+
+        // 6. General cleanup of artifact whitespace
+        clean = clean.replace(/\s+/g, ' ').trim();
+
+        return clean;
+    }
+
     generateSystemDescription(star, numPlanets, loreObject, secondaryLore, eventDescription, corporatePresence, isRelicSystem) {
         const funcName = 'SystemGenerator.generateSystemDescription';
         Logger.start(funcName, {
@@ -601,31 +637,35 @@ export class SystemGenerator {
 
         let relicDesc = "";
         if (isRelicSystem) {
-            relicDesc = `This system contains ancient ruins of The First, dominated by colossal artifacts. `;
+            relicDesc = `This system holds the silent, monumental remains of The First. `;
         }
 
         const traits = loreObject.derivedTraits;
 
-        let systemDesc = `The system is centered around a ${star.starClass} star and contains  planets.`;
-        let culturalDesc = `It is primarily inhabited by the ${loreObject.commonName}, a species with a ${loreObject.descTemplate || 'unique culture'}.`;
+        let systemDesc = `The system is centered around a ${star.starClass} star and contains ${numPlanets} planets.`;
+        let culturalDesc = `It is primarily inhabited by the ${loreObject.commonName}, a species with ${loreObject.descTemplate || 'a unique and burgeoning culture'}.`;
 
         if (loreObject.culturalDescription) {
-            culturalDesc += ` ${loreObject.culturalDescription}`;
+            culturalDesc += ` ${this._sanitizeLore(loreObject.culturalDescription)}`;
         }
 
         if (loreObject.animalBase) {
             culturalDesc = culturalDesc.replace('{animalBase}', loreObject.animalBase);
         }
 
-        const impressionDesc = traits?.impressionSummary || '';
+        const impressionDesc = this._sanitizeLore(traits?.impressionSummary || '');
         let secondaryDesc = '';
         if (secondaryLore) {
-            secondaryDesc = `A notable minority of ${secondaryLore.commonName} are also present, maintaining a complex relationship with the primary inhabitants.`;
+            secondaryDesc = `A significant community of ${secondaryLore.commonName} also calls this system home, their history deeply intertwined with the primary inhabitants.`;
         }
 
-        const corporateDesc = corporatePresence ? `The ${corporatePresence.name} has a significant presence in the system, influencing its economy and development.` : '';
+        const corporateDesc = corporatePresence ? `The influence of ${corporatePresence.name} is pervasive here, shaping the system's economic landscape.` : '';
 
-        const description = [relicDesc, systemDesc, culturalDesc, secondaryDesc, eventDescription, impressionDesc, corporateDesc].filter(Boolean).join(' ');
+        // Clean up event description
+        const cleanEventDesc = this._sanitizeLore(eventDescription);
+
+        const description = [relicDesc, systemDesc, culturalDesc, secondaryDesc, cleanEventDesc, impressionDesc, corporateDesc].filter(Boolean).join(' ');
+
         Logger.end(funcName, description);
         return description;
     }

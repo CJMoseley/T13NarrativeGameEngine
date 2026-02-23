@@ -205,18 +205,18 @@ export class PlanetarySystemGenerator {
 
             const society = this.generateSociety(planetPRNG, systemData.speciesKey);
 
-            // T13 Geometry Descriptions for Society (Soul) and Place (Facade)
-            const T13NE = this.pluginManager ? this.pluginManager.getApi('T13', 'T13NE') : null;
-            const T13Geometry = T13NE ? T13NE.getModule('T13Geometry') : null;
-
             if (T13Geometry) {
                 const geo = T13Geometry.calculateFullGeo(planetName);
                 const soulGeo = T13Geometry.Geometries[geo.Soul];
                 const facadeGeo = T13Geometry.Geometries[geo.Facade];
 
-                if (soulGeo && soulGeo.Social_Description) {
+                // Use preGeneratedLore for more immersive and jargon-free planet society descriptions
+                if (soulGeo && soulGeo.preGeneratedLore) {
+                    classificationData.description += ` ${soulGeo.preGeneratedLore}`;
+                } else if (soulGeo && soulGeo.Social_Description) {
                     classificationData.description += ` ${soulGeo.Social_Description}`;
                 }
+
                 if (facadeGeo && facadeGeo.Descendant_Description) {
                     classificationData.description += ` ${facadeGeo.Descendant_Description}`;
                 }
@@ -255,12 +255,12 @@ export class PlanetarySystemGenerator {
                 orbitalDistance,
                 biosphere: classificationData.biosphere,
                 resources: classificationData.resources,
-                description: classificationData.description,
+                description: this._sanitizeLore(classificationData.description),
                 atmosphere: classificationData.atmosphere,
                 temperature: classificationData.temperature.toFixed(2),
                 gravity: classificationData.gravity.toFixed(2),
                 isHomeworld,
-                moons: moons,
+                moons: moons.map(m => ({ ...m, description: this._sanitizeLore(m.description) })),
                 moonCount: moonCount,
                 color: planetColor,
                 orbitSpeed: (BASE_ORBIT_SPEED * PLANET_SPEED_FACTOR) / orbitalDistance,
@@ -481,7 +481,7 @@ export class PlanetarySystemGenerator {
                 else if (innerSeed < 0.55) prefix = 'Desert';
                 else if (innerSeed < 0.80) prefix = 'Ocean';
                 else prefix = 'Terrestrial';
-                
+
                 suffix = (planetRadius < 0.6) ? 'Rock' : 'World';
                 if (prefix === 'Terrestrial' || prefix === 'Ocean') suffix = 'World';
             } else if (orbitalDistance > frostLine * 2.5) {
@@ -524,7 +524,7 @@ export class PlanetarySystemGenerator {
         // --- 3. Determine Biosphere ---
         Logger.message(`${funcName}: Step 3 - Biosphere`);
         const biosphereSeed = prng.nextDouble();
-        
+
         // Weighted generation to favor life (User Request: "Every single planet had its own species")
         if (classification.biosphere === '') {
             if (biosphereSeed < 0.05) classification.biosphere = 'None'; // Very rare dead worlds
@@ -532,7 +532,7 @@ export class PlanetarySystemGenerator {
             else if (biosphereSeed < 0.40) classification.biosphere = 'Microbial';
             else if (biosphereSeed < 0.75) classification.biosphere = 'Complex Flora/Fauna';
             else classification.biosphere = 'Sentient';
-            
+
             // Boost life chance further for 'Terrestrial' or 'Ocean' types
             if ((classification.type.includes('Terrestrial') || classification.type.includes('Ocean')) && classification.biosphere === 'None') {
                 classification.biosphere = 'Microbial';
@@ -871,5 +871,37 @@ export class PlanetarySystemGenerator {
 
         Logger.end(funcName, `Generated ${moons.length} moons.`);
         return moons;
+    }
+
+    /**
+     * Sanitizes lore text by removing mechanical jargon and formatting for immersion.
+     * @param {string} text - The raw lore text.
+     * @returns {string} The sanitized, more diegetic text.
+     */
+    _sanitizeLore(text) {
+        if (!text || typeof text !== 'string') return text;
+
+        // 1. Remove obvious system terms in parentheses
+        let clean = text.replace(/\([^)]*(Boon|Geometry|Chi|Facet|Hitch|Gematria|Success|Difficulty|Pips|Draw|Pool|Phase|Test|Action|Significator|Dominant|Pressed)[^)]*\)/gi, '');
+
+        // 2. Remove explicit mechanical labels and their values
+        clean = clean.replace(/(Geometry (Number|Name)|Chi (Gain|Level)|Boon|Facet (Score|Name)|Success Level|Difficulty Rating|Pip Gain|Draw (Count|Spread)|Pool Size|Significator|Archetype):?\s*[\w\d\+\-\s]*/gi, '');
+
+        // 3. Remove common mechanical sentences about Success Levels
+        clean = clean.replace(/(They|Individuals) add \+\d+ Success Level on any Action [^.]*\./gi, '');
+        clean = clean.replace(/Add \+\d+ Success Level to any Action [^.]*\./gi, '');
+        clean = clean.replace(/Each additional [^.]* adds a [^.]* Success Level\./gi, '');
+
+        // 4. Remove geometry names if used clinically (e.g. "Nonagon Characters are...")
+        // We want the description, not the label.
+        clean = clean.replace(/(Void|Circle|Half-Moon|Triangle|Square|Pentagon|Hexagon|Heptagon|Octagon|Nonagon|Decagon|Undecagon|Dodecagon|Triskaidecagon) (Characters|Beings|Planets|Societies) are/gi, 'Individuals here are typically');
+
+        // 5. Clean up "Age of" clinical phrasing
+        clean = clean.replace(/An Age of ([^.]*) is occuring\./gi, 'This is a time of $1.');
+
+        // 6. General cleanup of artifact whitespace
+        clean = clean.replace(/\s+/g, ' ').trim();
+
+        return clean;
     }
 }
