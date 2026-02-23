@@ -1,9 +1,9 @@
 import Logger from './core/Logger.js';
-import T13NE_Facets from './modules/mechanics/t13ne-facets.js'; 
+import T13NE_Facets from './modules/mechanics/t13ne-facets.js';
 import T13NE_Sway from './modules/mechanics/t13ne-sway.js';
 import CodexLoader from './modules/codex/CodexLoader.js';
 
-import T13NECardsAPI from './modules/mechanics/t13ne-cards-api.js'; 
+import T13NECardsAPI from './modules/mechanics/t13ne-cards-api.js';
 import AIService from './modules/ai/AIService.js';
 import T13NE_IChing from './modules/mechanics/t13ne-iching.js';
 import T13Ordeals from './modules/systems/ordeals/t13ne-ordeals.js';
@@ -493,8 +493,8 @@ class T13NE {
      * @returns {object|null}
      */
     getModule(moduleName) {
-        if (!this.isLoaded) {
-            Logger.message("ERROR: T13NE modules not loaded yet. Call loadModules() first.");
+        if (!this.isLoaded && !this.modules[moduleName]) {
+            Logger.message(`ERROR: T13NE module '${moduleName}' not loaded yet.`);
             return null;
         }
         return this.modules[moduleName] || null;

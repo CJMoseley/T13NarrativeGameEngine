@@ -28,7 +28,6 @@ class T13NE_Referee {
 
         // Initialize Worker Pool
         this.workerPool = new WorkerPool('referee', new URL('./t13neworkers.js', import.meta.url), 1);
-        await this.workerPool.init();
 
         // Load priming data
         try {
