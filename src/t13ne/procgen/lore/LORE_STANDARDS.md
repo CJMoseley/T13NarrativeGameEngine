@@ -10,10 +10,11 @@ The following terms (and their variants) should **NEVER** appear in player-facin
 - **Technical/Numerology**: Gematria, I-Ching, Hexagram, Yin, Yang, Soul Gift, Key/Pitch (when used as a mechanic).
 
 ## Handling Technical Data
-When procedural systems generate technical values (e.g., a planet's Chi level or a species' Facet scores), these must be processed before being shown to the player:
+When procedural systems generate technical values (e.g., a planet's Chi level or a species' Facet scores), these must be processed before being shown to the player. The order of priority is:
 
-1.  **AI Enrichment (Primary)**: Pass the technical context to `T13Descriptions.generate()`. The AI is instructed to "absorb" these values and translate them into atmospheric descriptions (e.g., instead of "High Chi Gain", describe "a palpable spiritual resonance in the air").
-2.  **Thematic Aliasing**: Map technical tiers to thematic names. For example, use "Technological Era" instead of "Tech Level", and names like "Primitive Chemistry" or "Post-Scarcity" instead of numbers.
+1.  **Pre-Generated Diegetic Data (Best Practice)**: Whenever possible, pre-generate diegetic descriptions during the build process or content creation phase using a high-quality (heavy) LLM. Store this as `preGeneratedLore` in the JSON alongside the raw T13 data. `T13Descriptions` will prioritize this data to avoid runtime latency and consistency issues.
+2.  **Live AI Enrichment (Fallback)**: If pre-baked data is unavailable, pass the technical context to `T13Descriptions.generate()`. The live "light" AI model is instructed to "absorb" these values into narrative prose.
+3.  **Thematic Aliasing**: Map technical tiers to thematic names. For example, use "Technological Era" instead of "Tech Level", and names like "Primitive Chemistry" or "Post-Scarcity" instead of numbers.
 3.  **Sanitization (Fallback)**: Use the `_sanitizeLore` helper (found in `PlanetaryOrbitScene.js` and similar UI components) to strip out accidental mechanical leaks, especially parenthetical data like `(Boon: ...)` or `(Geometry: ...)`.
 
 ## Systems to Watch

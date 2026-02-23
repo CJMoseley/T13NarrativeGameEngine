@@ -5,6 +5,13 @@
     }
 
     async generate(context) {
+        // PRIORITIZE PRE-GENERATED DIEGETIC DATA
+        // If the context already contains high-quality pre-baked lore, use it directly
+        // to avoid runtime LLM latency or failures.
+        if (context.preGeneratedLore) {
+            return context.preGeneratedLore;
+        }
+
         // Enrich with geometry if name is present
         if (context.name) {
              const T13Geometry = this.t13.getModule('T13Geometry');
