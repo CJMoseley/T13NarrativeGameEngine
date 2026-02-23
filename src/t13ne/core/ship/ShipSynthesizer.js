@@ -36,6 +36,12 @@ export class ShipSynthesizer {
             [SOCKET_TYPES.FUSELAGE_AFT]: [
                 { part: 'nacelle_cylindrical', weight: 1 }, // Single nacelle?
                 { part: 'hull_box_cargo', weight: 1 }
+            ],
+            [SOCKET_TYPES.WING_MOUNT]: [
+                { part: 'wing_delta', weight: 3 },
+                { part: 'wing_swept_back', weight: 3 },
+                { part: 'wing_forward_swept', weight: 1 },
+                { part: 'wing_blocky', weight: 1 }
             ]
         };
     }
@@ -54,6 +60,8 @@ export class ShipSynthesizer {
         // Usually a Secondary Hull or a Saucer depending on ship class
         let rootPartId = 'hull_cylindrical_standard';
         if (rng() > 0.7) rootPartId = 'saucer_elliptical';
+        if (rng() > 0.85) rootPartId = 'saucer_radial';
+        if (rng() > 0.95) rootPartId = 'hull_star';
         if (config.style === 'INDUSTRIAL') rootPartId = 'hull_box_cargo';
 
         const rootDef = SHIP_PARTS[rootPartId];
@@ -153,7 +161,10 @@ export class ShipSynthesizer {
             }
         }
 
-        return components;
+        // 3. Post-Process: Deformation
+        const deformedComponents = this.deformShip(components, rng, config);
+
+        return deformedComponents;
     }
 
     addComponent(list, socketQueue, partDef, pos, rot, rng) {
@@ -223,6 +234,50 @@ export class ShipSynthesizer {
             if (random <= 0) return opt.part;
         }
         return options[0].part;
+    }
+
+    /**
+     * Applies global deformations to the ship structure to create variations.
+     * e.g. Stretching the hull, flattening the profile, or scaling wings.
+     */
+    deformShip(components, rng, config) {
+        // Determine global deformation factors
+        // 1.0 is normal.
+        const stretchZ = 0.8 + rng() * 0.6; // 0.8x to 1.4x length
+        const widthX = 0.8 + rng() * 0.4;   // 0.8x to 1.2x width
+        const flatY = 0.7 + rng() * 0.6;    // 0.7x to 1.3x height (flatten or bulk up)
+
+        // Apply to all components
+        components.forEach(comp => {
+            // 1. Scale Position
+            comp.pos[0] *= widthX;
+            comp.pos[1] *= flatY;
+            comp.pos[2] *= stretchZ;
+
+            // 2. Scale Dimensions/Scale
+            // We modify the component's scale vector to deform the mesh itself
+            if (!comp.scale) comp.scale = [1, 1, 1];
+            
+            // Be careful with rotation. If a component is rotated 90deg, scaling X might visually scale Z.
+            // For a robust deformation, we usually just scale the position (spacing) and 
+            // lightly scale the components themselves to match, or we rely on the HullGenerator's SDF 
+            // to smooth out the gaps.
+            
+            // Simple approach: Apply the same scale factors to the component's local scale.
+            // This works well for "organic" or "sdf" hulls. For rigid mechanical parts, it might distort circles into ovals.
+            // Given the user wants "variations", distorting shapes is likely desired.
+            
+            // Note: comp.scale is [x, y, z].
+            // We need to apply the deformation in WORLD space, but comp.scale is LOCAL space.
+            // For now, we apply a uniform scaler to keep it simple, or just rely on position spacing.
+            // Let's apply a slight randomization to component size to add variety.
+            const localVar = 0.9 + rng() * 0.2;
+            comp.scale[0] *= localVar;
+            comp.scale[1] *= localVar;
+            comp.scale[2] *= localVar;
+        });
+
+        return components;
     }
 
     hashString(str) {

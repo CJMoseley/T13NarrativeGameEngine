@@ -40,6 +40,8 @@ export class GreebleGenerator {
         this.lightBlueMat = new THREE.MeshBasicMaterial({ color: 0x00aaff });
         this.solarMat = new THREE.MeshStandardMaterial({ color: 0xc0c0c0, roughness: 0.2, metalness: 1.0, emissive: 0x111111, emissiveIntensity: 0.1 });
         this.warpGlowMat = new THREE.MeshBasicMaterial({ color: 0x00aaff, transparent: true, opacity: 0.9 }); // Blue glow for strips
+        this.sensorMat = new THREE.MeshStandardMaterial({ color: 0x111111, roughness: 0.1, metalness: 0.9 }); // Dark glossy sensor
+        this.shieldMat = new THREE.MeshBasicMaterial({ color: 0x00ff88, transparent: true, opacity: 0.6 });
         this.bussardMat = new THREE.MeshBasicMaterial({ color: 0xff3300, transparent: true, opacity: 0.9 }); // Red/Orange for collectors
 
         // Geometries
@@ -150,6 +152,27 @@ export class GreebleGenerator {
         foot.position.y = -1.5;
         group.add(leg);
         group.add(foot);
+        return group;
+    }
+
+    createSensorBlister() {
+        const group = new THREE.Group();
+        const dome = new THREE.Mesh(new THREE.SphereGeometry(0.3, 16, 16, 0, Math.PI * 2, 0, Math.PI / 2), this.sensorMat);
+        dome.rotation.x = -Math.PI / 2; // Face up
+        const ring = new THREE.Mesh(new THREE.TorusGeometry(0.3, 0.05, 8, 16), this.ventMat);
+        ring.rotation.x = -Math.PI / 2;
+        group.add(dome);
+        group.add(ring);
+        return group;
+    }
+
+    createShieldEmitter() {
+        const group = new THREE.Group();
+        const base = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.2, 0.1, 8), this.ventMat);
+        const emitter = new THREE.Mesh(new THREE.SphereGeometry(0.15, 8, 8), this.shieldMat);
+        emitter.position.y = 0.15;
+        group.add(base);
+        group.add(emitter);
         return group;
     }
 
@@ -490,7 +513,10 @@ export class GreebleGenerator {
             }
 
             // 1. Structural Riveting (Grid/Seam Logic)
-            if (styleConfig.method !== 'ORGANIC' && (usage.includes('fuselage') || usage.includes('chassis') || usage.includes('hull'))) {
+            // Universal check: If it's a large structural component, add rivets/panels
+            const isStructural = usage.includes('fuselage') || usage.includes('chassis') || usage.includes('hull') || usage.includes('wing') || (scale.x > 2 && scale.z > 2);
+            
+            if (styleConfig.method !== 'ORGANIC' && isStructural) {
                 const basis = this.getLocalBasis(rot);
                 let lengthDir, radialDir1, radialDir2, radiusDim;
 
@@ -1134,6 +1160,25 @@ export class GreebleGenerator {
             if (hullType === 'FREIGHTER' && pos.y < 0 && random() > 0.8) {
                 const gear = this.createLandingGear();
                 this.placeOnSurface(hullMesh, greebleGroup, new THREE.Vector3(pos.x, pos.y - 2, pos.z), new THREE.Vector3(0, 1, 0), gear, true, 0, isCentral, effectiveSymmetry, radialAxis, effectiveRadialCount);
+            }
+
+            // 9. Universal Sensor/Shield Placement (Random distribution on large surfaces)
+            if (isStructural && random() > 0.7) {
+                const greebleType = random() > 0.5 ? 'sensor' : 'shield';
+                const greebleObj = greebleType === 'sensor' ? this.createSensorBlister() : this.createShieldEmitter();
+                
+                // Pick a random spot on the component surface
+                // Simple approximation: Move along length, pick a random angle
+                const t = (random() - 0.5) * lengthDim * 0.8;
+                const angle = random() * Math.PI * 2;
+                
+                // Calculate offset in local space then transform to world
+                // This is a rough approximation, relying on placeOnSurface raycast to fix it
+                const basis = this.getLocalBasis(rot);
+                const rayOrigin = pos.clone().add(forwardDir.clone().multiplyScalar(t)).add(basis.right.clone().multiplyScalar(Math.cos(angle) * 10)).add(basis.up.clone().multiplyScalar(Math.sin(angle) * 10));
+                const rayDir = pos.clone().add(forwardDir.clone().multiplyScalar(t)).sub(rayOrigin).normalize();
+
+                this.placeOnSurface(hullMesh, greebleGroup, rayOrigin, rayDir, greebleObj, true, 0, isCentral, effectiveSymmetry, radialAxis, effectiveRadialCount, null, 'up');
             }
         });
 

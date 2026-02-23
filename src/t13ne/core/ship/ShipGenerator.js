@@ -8,11 +8,13 @@ import { generateTree, generateMaze, generateBioCluster, generateMonolith, gener
 import { generateStation } from '/src/t13ne/core/ship/structures/StationHulls.js';
 import { generateWings } from '/src/t13ne/core/ship/structures/WingGenerator.js';
 import { generateInteriors } from '/src/t13ne/core/ship/InteriorGenerator.js';
+import { ShipSynthesizer } from '/src/t13ne/core/ship/ShipSynthesizer.js';
 
 export class ShipGenerator {
     constructor(wiringGenerator, gameEngine) {
         this.wiringGenerator = wiringGenerator;
         this.gameEngine = gameEngine;
+        this.synthesizer = new ShipSynthesizer();
     }
 
     async createRandomShip(seed, config = {}) {
@@ -60,6 +62,7 @@ export class ShipGenerator {
         const explicitWiring = {};
 
         // Helper to get distance
+        // Helper to get distance (used in legacy generation)
         const getDist = (p1, p2) => {
             return new THREE.Vector3(...p1).distanceTo(new THREE.Vector3(...p2));
         };
@@ -197,6 +200,46 @@ export class ShipGenerator {
             return id;
         };
 
+        // --- NEW: Ship Synthesizer Integration ---
+        // Determine if we should use the new Synthesizer or Legacy generators
+        // We use Legacy if a specific complex hullType is requested that isn't supported by the Synthesizer yet,
+        // or if the config explicitly requests legacy mode.
+        const legacyTypes = ['HORSESHOE', 'BLOB', 'Y_FORK', 'TREE', 'MAZE', 'BIO_CLUSTER', 'MONOLITH', 'FRACTAL', 'HEAVY_CARRIER', 'LIBERATOR', 'BIO_BIRD', 'BIO_FISH', 'BIO_INSECT', 'BIO_CEPHALOPOD', 'SCAVENGER'];
+        
+        let useSynthesizer = true;
+        if (config.hullType && legacyTypes.includes(config.hullType)) {
+            useSynthesizer = false;
+        } else if (config.legacy) {
+            useSynthesizer = false;
+        }
+
+        if (useSynthesizer) {
+            // Use the new Socket-based Ship Synthesizer
+            const synthConfig = {
+                style: selectedStyle,
+                tags: [],
+                size: size
+            };
+            
+            // Map style to tags for the synthesizer
+            if (selectedStyle === 'INDUSTRIAL') synthConfig.tags.push('industrial');
+            if (selectedStyle === 'ORGANIC') synthConfig.tags.push('organic');
+            if (selectedStyle === 'RACING') synthConfig.tags.push('fast');
+            if (selectedStyle === 'BOXY') synthConfig.tags.push('industrial');
+            
+            const rawComponents = this.synthesizer.generate(seed, synthConfig);
+
+            // Hydrate components with game-specific data (stats, names) that the raw synthesizer doesn't provide
+            rawComponents.forEach(comp => {
+                // Re-use attachComponent logic to populate stats and ID, but bypass the push to 'components' array since we have the object
+                // We call attachComponent to register it properly if we were building iteratively, but here we have the list.
+                // So we manually hydrate.
+                this._hydrateSynthesizedComponent(comp, techLevel, shipManufacturer, shipTech, shipQuality, random);
+                components.push(comp);
+            });
+
+        } else {
+            // --- LEGACY GENERATION ---
         // 1. Generate Central Fuselage (Spine, Saucer, or Star)
         let spineLength = (size === 'small' ? 3 : (size === 'medium' ? 6 : 10)) * (0.8 + random() * 0.4);
 
@@ -454,7 +497,10 @@ export class ShipGenerator {
         }
 
         // Generate Wings (Moved after Nose Cone generation to ensure Canards attach to the nose)
+        // Generate Wings (Legacy procedural wings)
         generateWings(context);
+        } // End Legacy Block
+
 
         // Engines
         const engineCount = size === 'small' ? 1 : (size === 'medium' ? 2 : 4);
@@ -748,6 +794,7 @@ export class ShipGenerator {
 
         // Check if we already added a bridge/cockpit in the hull generation phase (e.g. Freighter)
         if (components.some(c => c.usage.includes('bridge') || c.usage.includes('cockpit'))) {
+        if (components.some(c => (c.usage && (c.usage.includes('bridge') || c.usage.includes('cockpit'))))) {
             cockpitPlaced = true;
         }
 
@@ -1084,6 +1131,7 @@ export class ShipGenerator {
         let totalMass = 0;
         let cog = new THREE.Vector3(0, 0, 0);
 
+        
         components.forEach(c => {
             // Estimate mass from volume
             const d = c.dims;
@@ -1220,6 +1268,39 @@ export class ShipGenerator {
         components.wiringGraph = wiringGraph;
 
         return components;
+    }
+
+    /**
+     * Hydrates a raw component from the Synthesizer with game-specific stats and names.
+     * @private
+     */
+    _hydrateSynthesizedComponent(comp, techLevel, manufacturer, tech, quality, random) {
+        // Generate ID if missing (Synthesizer usually provides one, but ensure uniqueness)
+        if (!comp.id) comp.id = `${comp.usage}_${(random() * 1e9) | 0}`;
+        
+        // Generate Name
+        const displayName = (comp.usage || 'part').replace(/[0-9]/g, '').replace(/_/g, ' ').replace(/\s+/g, ' ').trim();
+        
+        if (!comp.name && this.gameEngine && this.gameEngine.loreGenerator && this.gameEngine.loreGenerator.nameGenerator) {
+            const ng = this.gameEngine.loreGenerator.nameGenerator;
+            const context = { type: 'TECHNOLOGY', usage: displayName };
+            if (typeof ng.generatePlaceholder === 'function') {
+                comp.name = ng.generatePlaceholder(context, random());
+                comp.namePromise = ng.generate(context, random());
+            } else {
+                comp.name = ng.generate(context, random());
+            }
+        }
+        
+        if (!comp.name) {
+            comp.name = `${manufacturer} ${tech} ${displayName} ${quality}`;
+        }
+
+        // Generate Stats
+        comp.stats = comp.stats || {};
+        comp.stats.integrity = 100 * (techLevel * 0.2);
+        comp.stats.mass = 50;
+        comp.stats.techLevel = techLevel;
     }
 
     /**
