@@ -39,16 +39,23 @@ export class WorkerPool {
 
         try {
             // Using workerpool's exec method
-            const result = await this.pool.exec(type, [data], {
+            // If transferables are provided, wrap the data in workerpool.Transfer
+            const args = (transferables && transferables.length > 0)
+                ? [new workerpool.Transfer(data, transferables)]
+                : [data];
+
+            const result = await this.pool.exec(type, args, {
                 on: (payload) => {
                     // Optional: handle progress or intermediate messages
                 }
             });
 
             // Compatibility with legacy event-based system
-            const response = typeof result === 'object' && result !== null
-                ? { ...result, requestId, type }
+            // Handle both object results and primitive results gracefully
+            const response = (typeof result === 'object' && result !== null)
+                ? (Array.isArray(result) ? { result, requestId, type } : { ...result, requestId, type })
                 : { result, requestId, type };
+
             this.completedResults.set(requestId, response);
 
             EventBus.emit(`worker:${this.poolId}:completed`, response);

@@ -2,12 +2,1653 @@
 > wormholeracersjs@0.1.0 dev
 > vite
 
-Port 5173 is in use, trying another one...
-Port 5174 is in use, trying another one...
-Port 5175 is in use, trying another one...
 
-  VITE v7.3.0  ready in 847 ms
+  VITE v7.3.0  ready in 758 ms
 
-  ➜  Local:   http://localhost:5176/
+  ➜  Local:   http://localhost:5173/
   ➜  Network: use --host to expose
 [vite-plugin-static-copy] Collected 3 items.
+(!) Failed to run dependency scan. Skipping dependency pre-bundling. Error:   Failed to scan for dependencies from entries:
+  /app/WormholeRacers.html
+/app/galaxy.html
+/app/galaxy2.html
+/app/galaxy3.html
+/app/galaxy4.html
+/app/galaxy5.html
+/app/galaxy6.html
+/app/galaxy7.html
+/app/galaxy8.html
+/app/helloworld.html
+/app/index.html
+/app/plugins/t13ne-deprecated-plugin/index.html
+/app/plugins/t13ne-deprecated-plugin/proficiency-manager.html
+/app/plugins/t13ne-deprecated-plugin/t13ne-control-panel.html
+/app/src/t13ne/index.html
+/app/src/t13ne/proficiency-manager.html
+/app/src/t13ne/t13ne-control-panel.html
+/app/t13ne/includes/partials/archetypes text.html
+/app/t13ne/includes/templates/card.html
+/app/plugins/t13ne-deprecated-plugin/modules/examples/proficiency-manager.html
+/app/src/t13ne/core/ui/debug_limbs.html
+/app/src/t13ne/modules/examples/proficiency-manager.html
+
+  [31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/js/procgen/uhpp/UHPPEditorUI.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/modules/workbench/t13ne-narrative-UI.js:262:58:
+[37m      262 │ ...PPEditorUI } = await import([32m'@/js/procgen/uhpp/UHPPEditorUI.js'[37m);
+          ╵                                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/AuthorMain.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/modules/workbench/t13ne-workbench.js:2:23:
+[37m      2 │ import AuthorMain from [32m'@plugins/t13ne/AuthorMain.js'[37m;
+        ╵                        [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/T13NE.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/modules/workbench/t13ne-workbench.js:3:18:
+[37m      3 │ import T13NE from [32m'@plugins/t13ne/T13NE.js'[37m;
+        ╵                   [32m~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/AIService.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:7:22:
+[37m      7 │ import AIService from [32m'@plugins/t13ne/modules/AIService.js'[37m;
+        ╵                       [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/CodexLoader.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/modules/workbench/t13ne-codex-UI.js:2:24:
+[37m      2 │ import CodexLoader from [32m'@plugins/t13ne/modules/CodexLoader.js'[37m;
+        ╵                         [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/T13Descriptions.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:11:28:
+[37m      11 │ ... T13Descriptions from [32m'@plugins/t13ne/modules/T13Descriptions.js'[37m;
+         ╵                          [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/T13NameGenerator.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:10:33:
+[37m      10 │ ...NameGenerator } from [32m'@plugins/t13ne/modules/T13NameGenerator.js'[37m;
+         ╵                         [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/T13Tapestry.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/modules/workbench/t13ne-tapestry-UI.js:3:24:
+[37m      3 │ import T13Tapestry from [32m'@plugins/t13ne/modules/T13Tapestry.js'[37m;
+        ╵                         [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/ordeals/t13ne-action-spaces.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:31:31:
+[37m      31 │ ...aces from [32m'@plugins/t13ne/modules/ordeals/t13ne-action-spaces.js'[37m;
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/ordeals/t13ne-narrative-tricks.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:27:34:
+[37m      27 │ ...icks from [32m'@plugins/t13ne/modules/ordeals/t13ne-narrative-trick[37m...
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/ordeals/t13ne-ordeals.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:9:23:
+[37m      9 │ ... T13Ordeals from [32m'@plugins/t13ne/modules/ordeals/t13ne-ordeals.js'[37m;
+        ╵                     [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/ordeals/t13ne-psychosocial-spaces.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:32:37:
+[37m      32 │ ...aces from [32m'@plugins/t13ne/modules/ordeals/t13ne-psychosocial-sp[37m...
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/ordeals/t13ne-snapfire.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:29:27:
+[37m      29 │ ..._Snapfire from [32m'@plugins/t13ne/modules/ordeals/t13ne-snapfire.js'[37m;
+         ╵                   [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/ordeals/t13ne-social-ordeals.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:28:32:
+[37m      28 │ ...eals from [32m'@plugins/t13ne/modules/ordeals/t13ne-social-ordeals.[37m...
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/ordeals/t13ne-space-visualizer.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:33:34:
+[37m      33 │ ...izer from [32m'@plugins/t13ne/modules/ordeals/t13ne-space-visualize[37m...
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/ordeals/t13ne-stakes.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:26:25:
+[37m      26 │ ...13NE_Stakes from [32m'@plugins/t13ne/modules/ordeals/t13ne-stakes.js'[37m;
+         ╵                     [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/ordeals/t13ne-yarntangling.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:30:31:
+[37m      30 │ ...gling from [32m'@plugins/t13ne/modules/ordeals/t13ne-yarntangling.js'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-CharacterArc.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:37:31:
+[37m      37 │ ..._CharacterArc from [32m'@plugins/t13ne/modules/t13ne-CharacterArc.js'[37m;
+         ╵                       [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-ai-nodes.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:12:25:
+[37m      12 │ import * as AINodes from [32m'@plugins/t13ne/modules/t13ne-ai-nodes.js'[37m;
+         ╵                          [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-annexes.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:17:25:
+[37m      17 │ import AnnexFactory from [32m'@plugins/t13ne/modules/t13ne-annexes.js'[37m;
+         ╵                          [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-cards-api.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:6:26:
+[37m      6 │ ...dsAPI from [32m'@plugins/t13ne/modules/t13ne-cards-api.js'[37m; // Impor...
+        ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-catalysts.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:38:28:
+[37m      38 │ ... T13NE_Catalysts from [32m'@plugins/t13ne/modules/t13ne-catalysts.js'[37m;
+         ╵                          [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-commands.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:35:26:
+[37m      35 │ import T13NECommands from [32m'@plugins/t13ne/modules/t13ne-commands.js'[37m;
+         ╵                           [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-dice.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/modules/workbench/t13ne-facetweb-UI.js:2:20:
+[37m      2 │ import T13Dice from [32m'@plugins/t13ne/modules/t13ne-dice.js'[37m;
+        ╵                     [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-drama.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:19:24:
+[37m      19 │ import T13NE_Drama from [32m'@plugins/t13ne/modules/t13ne-drama.js'[37m;
+         ╵                         [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-editor.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:44:25:
+[37m      44 │ import T13NE_Editor from [32m'@plugins/t13ne/modules/t13ne-editor.js'[37m;
+         ╵                          [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-facets.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:2:25:
+[37m      2 │ ...Facets from [32m'@plugins/t13ne/modules/t13ne-facets.js'[37m; // Import ...
+        ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-game.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:41:23:
+[37m      41 │ import T13NE_Game from [32m'@plugins/t13ne/modules/t13ne-game.js'[37m;
+         ╵                        [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-gamestate.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:40:28:
+[37m      40 │ ... T13NE_GameState from [32m'@plugins/t13ne/modules/t13ne-gamestate.js'[37m;
+         ╵                          [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-iching.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:8:25:
+[37m      8 │ import T13NE_IChing from [32m'@plugins/t13ne/modules/t13ne-iching.js'[37m;
+        ╵                          [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-knots.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/modules/workbench/t13ne-knots-UI.js:4:20:
+[37m      4 │ import { TIE } from [32m'@plugins/t13ne/modules/t13ne-knots.js'[37m;
+        ╵                     [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-narrative-weaving.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:23:35:
+[37m      23 │ ...eWeaving from [32m'@plugins/t13ne/modules/t13ne-narrative-weaving.js'[37m;
+         ╵                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-pacts.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:18:24:
+[37m      18 │ import T13NE_Pacts from [32m'@plugins/t13ne/modules/t13ne-pacts.js'[37m;
+         ╵                         [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-plots.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:22:24:
+[37m      22 │ import T13NE_Plots from [32m'@plugins/t13ne/modules/t13ne-plots.js'[37m;
+         ╵                         [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-prng.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:15:23:
+[37m      15 │ import T13NE_PRNG from [32m'@plugins/t13ne/modules/t13ne-prng.js'[37m;
+         ╵                        [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-reasoning.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:42:28:
+[37m      42 │ ... T13NE_Reasoning from [32m'@plugins/t13ne/modules/t13ne-reasoning.js'[37m;
+         ╵                          [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-referee.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:39:26:
+[37m      39 │ import T13NE_Referee from [32m'@plugins/t13ne/modules/t13ne-referee.js'[37m;
+         ╵                           [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-resources.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:24:28:
+[37m      24 │ ... T13NE_Resources from [32m'@plugins/t13ne/modules/t13ne-resources.js'[37m;
+         ╵                          [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-state-machine.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:43:31:
+[37m      43 │ ...StateMachine from [32m'@plugins/t13ne/modules/t13ne-state-machine.js'[37m;
+         ╵                      [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-stress.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:20:25:
+[37m      20 │ import T13NE_Stress from [32m'@plugins/t13ne/modules/t13ne-stress.js'[37m;
+         ╵                          [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-sway.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:3:23:
+[37m      3 │ import T13NE_Sway from [32m'@plugins/t13ne/modules/t13ne-sway.js'[37m;
+        ╵                        [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-tension.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:21:26:
+[37m      21 │ import T13NE_Tension from [32m'@plugins/t13ne/modules/t13ne-tension.js'[37m;
+         ╵                           [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-tests.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:25:24:
+[37m      25 │ import T13NE_Tests from [32m'@plugins/t13ne/modules/t13ne-tests.js'[37m;
+         ╵                         [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-threads.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    script:/app/plugins/t13ne-deprecated-plugin/modules/examples/proficiency-manager.html?id=0:2:38:
+[37m      2 │ ...t { ThreadsSystem } from [32m'@plugins/t13ne/modules/t13ne-threads.js'[37m;
+        ╵                             [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-wounds.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:36:25:
+[37m      36 │ import T13NE_Wounds from [32m'@plugins/t13ne/modules/t13ne-wounds.js'[37m;
+         ╵                          [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/plugins/t13ne/modules/t13ne-yarntelling.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    plugins/t13ne-deprecated-plugin/T13NE.js:34:26:
+[37m      34 │ ... T13YarnTeller from [32m'@plugins/t13ne/modules/t13ne-yarntelling.js'[37m;
+         ╵                        [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+    at failureErrorWithLog (/app/node_modules/esbuild/lib/main.js:1467:15)
+    at /app/node_modules/esbuild/lib/main.js:926:25
+    at runOnEndCallbacks (/app/node_modules/esbuild/lib/main.js:1307:45)
+    at buildResponseToResult (/app/node_modules/esbuild/lib/main.js:924:7)
+    at /app/node_modules/esbuild/lib/main.js:936:9
+    at new Promise (<anonymous>)
+    at requestCallbacks.on-end (/app/node_modules/esbuild/lib/main.js:935:54)
+    at handleRequest (/app/node_modules/esbuild/lib/main.js:628:17)
+    at handleIncomingPacket (/app/node_modules/esbuild/lib/main.js:653:7)
+    at Socket.readFromStdout (/app/node_modules/esbuild/lib/main.js:581:7)
