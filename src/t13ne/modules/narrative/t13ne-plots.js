@@ -421,6 +421,30 @@ class T13Plot extends SuperKnot {
     async cascadePlot(options = {}) {
         if (typeof options === 'string') options = { startRank: options };
 
+        // Attempt to offload to worker
+        const Referee = this.t13ne?.getModule('Referee');
+        if (Referee && Referee.workerPool && !options.noWorker) {
+            try {
+                Logger.message(`T13Plot: Offloading cascade of ${this.Name} to worker...`);
+                const seed = options.seed || (this.tags.includes('HISTORICAL') ? `${this.location || this.id}_${this.Rank}` : null);
+                const result = await Referee.workerPool.execute('generate_cascade_hierarchy', {
+                    startRank: options.startRank || this.Rank,
+                    seed,
+                    variety: this.variety,
+                    name: this.Name,
+                    options: options
+                });
+
+                if (result && result.result) {
+                    this._hydrateHierarchy(result.result);
+                    Logger.message(`T13Plot: Successfully hydrated offloaded cascade for ${this.Name}.`);
+                    return;
+                }
+            } catch (e) {
+                Logger.warn(`T13Plot: Worker cascade failed for ${this.Name}, falling back to main thread.`, e);
+            }
+        }
+
         if (!T13NECardsAPI.isInitialized) {
             Logger.warn("T13CardAPI not initialized, cannot cascade plot.");
             return;
@@ -509,6 +533,28 @@ class T13Plot extends SuperKnot {
         if (seed) {
             PRNG.popSeed();
             ProcGen.sync();
+        }
+    }
+
+    /**
+     * Maps a JSON tree from the worker back into T13Plot class instances.
+     * @param {object} data - The JSON tree from the worker.
+     * @private
+     */
+    _hydrateHierarchy(data) {
+        if (!data || !data.children) return;
+
+        for (const childData of data.children) {
+            const subPlot = new T13Plot({
+                ...childData,
+                parentPlot: this,
+                t13ne: this.t13ne
+            }, this.t13ne);
+
+            this.subPlots.push(subPlot);
+
+            // Recursively hydrate grandchildren
+            subPlot._hydrateHierarchy(childData);
         }
     }
 
@@ -1264,6 +1310,65 @@ class T13Plot extends SuperKnot {
     logEvent(desc) {
         this.memory.events.push({ timestamp: Date.now(), description: desc });
         if (this.memory.events.length > 50) this.memory.events.shift();
+    }
+
+    /**
+     * Serializes the Plot instance for the Web Worker.
+     * Strips methods, circular references, and UI elements.
+     * @returns {Promise<object>} A clean JSON object for the worker.
+     */
+    async serializeForWorker() {
+        const charSummaries = [];
+
+        for (const char of this.characters) {
+            let maxBoon = 0;
+            if (this.Conflict && this.Conflict.Sides) {
+                const sideName = char.hookSide;
+                const sideData = this.Conflict.Sides[sideName];
+                if (sideData && char.facetweb) {
+                    const facetsToCheck = sideData.Facets || [];
+                    for (const facetId of facetsToCheck) {
+                        const facetObj = await T13NE_Facets.getFacet(facetId);
+                        if (facetObj) {
+                            const charBoonData = await char.facetweb.getFacetBoon(facetObj.FacetName);
+                            const totalBoon = (charBoonData.Boon || 0) + (char.scaleModifier || 0);
+                            if (totalBoon > maxBoon) maxBoon = totalBoon;
+                        }
+                    }
+                }
+            }
+
+            charSummaries.push({
+                id: char.id || char.name,
+                name: char.name,
+                hookSide: char.hookSide,
+                hookFacet: char.hookFacet,
+                applicableBoonScore: Math.max(13, maxBoon),
+                scaleModifier: char.scaleModifier || 0
+            });
+        }
+
+        return {
+            id: this.id,
+            Name: this.Name,
+            Rank: this.Rank,
+            tensionLevel: this.tensionLevel,
+            currentState: this.currentState,
+            isActive: this.isActive,
+            isResolved: this.isResolved,
+            conflictBoons: this.conflictBoons,
+            variety: this.variety,
+            scenes: this.scenes,
+            tags: this.tags,
+            yarnPoints: this.yarnPoints,
+            characters: charSummaries,
+            Conflict: this.Conflict,
+            genre: this.genre,
+            era: this.era,
+            importance: this.importance,
+            narrativeRoles: this.narrativeRoles,
+            parentPlotId: this.parentPlot ? this.parentPlot.id : null
+        };
     }
 
     /**
