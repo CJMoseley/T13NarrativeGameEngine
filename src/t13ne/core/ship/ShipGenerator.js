@@ -3,7 +3,7 @@ import { TECH_SPECS, QUALITIES, FALLBACK_MANUFACTURERS, SHIP_PREFIXES, SHIP_ADJE
 import ProcGen from '/src/t13ne/procgen/ProcGen.js';
 import { GalacticHistory } from '/src/t13ne/procgen/galaxy/GalacticHistory.js';
 import { generateDisc, generateSpineOrStar } from '/src/t13ne/core/ship/structures/StandardHulls.js';
-import { generateFreighter, generateHorseshoe, generateBlob, generateCatamaran, generateYFork, generateBattlestar, generateSideCockpit, generateScavenger } from '/src/t13ne/core/ship/structures/IndustrialHulls.js';
+import { generateFreighter, generateHorseshoe, generateBlob, generateCatamaran, generateYFork, generateHeavyCarrier, generateSideCockpit, generateScavenger } from '/src/t13ne/core/ship/structures/IndustrialHulls.js';
 import { generateTree, generateMaze, generateBioCluster, generateMonolith, generateFractal, generateLiberator, generateBioBird, generateBioFish, generateBioInsect, generateBioCephalopod } from '/src/t13ne/core/ship/structures/ExoticHulls.js';
 import { generateStation } from '/src/t13ne/core/ship/structures/StationHulls.js';
 import { generateWings } from '/src/t13ne/core/ship/structures/WingGenerator.js';
@@ -238,7 +238,7 @@ export class ShipGenerator {
              if (radialAxis === 'y') hullType = random() > 0.4 ? 'DISC' : 'STAR';
              else {
                  const roll = random();
-                 if (radialCount === 3 && roll > 0.7) hullType = 'LIBERATOR';
+                 if (radialCount >= 3 && radialCount <= 5 && roll > 0.7) hullType = 'LIBERATOR';
                  else hullType = roll > 0.4 ? 'Y_FORK' : 'SPINE';
              }
         } else if (symmetryType === 'ASYMMETRICAL') {
@@ -251,7 +251,7 @@ export class ShipGenerator {
         } else if (symmetryType === 'REFLECTIVE') {
              if (rHull < 0.2 && size !== 'small') hullType = 'FREIGHTER'; // Nostromo / Trucker
              else if (rHull < 0.3) hullType = 'CATAMARAN'; // Twin Hull
-             else if (rHull < 0.45) hullType = 'BATTLESTAR'; // New Type
+             else if (rHull < 0.45) hullType = 'HEAVY_CARRIER'; // New Type
              else if (rHull < 0.55) hullType = 'Y_FORK';
              else if (rHull < 0.7) hullType = 'FRACTAL';
              else hullType = 'SPINE';
@@ -287,14 +287,15 @@ export class ShipGenerator {
 
         // Enforce Liberator Constraints
         if (hullType === 'LIBERATOR') {
-            radialCount = 3;
-            context.radialCount = 3;
+            // Ensure radial count is within valid range for Liberator (3-5)
+            if (radialCount < 3 || radialCount > 5) radialCount = 3;
+            context.radialCount = radialCount;
             context.symmetryType = 'RADIAL';
             context.radialAxis = 'z';
         }
         
-        if (hullType === 'BATTLESTAR') {
-            spineLength = 120; // Force large scale for Battlestar to make generic components look small
+        if (hullType === 'HEAVY_CARRIER') {
+            spineLength = 120; // Force large scale for Carrier to make generic components look small
             context.spineLength = spineLength;
         }
 
@@ -326,8 +327,8 @@ export class ShipGenerator {
             generateMonolith(context);
         } else if (hullType === 'FRACTAL') {
              generateFractal(context);
-        } else if (hullType === 'BATTLESTAR') {
-            generateBattlestar(context);
+        } else if (hullType === 'HEAVY_CARRIER') {
+            generateHeavyCarrier(context);
         } else if (hullType === 'LIBERATOR') {
             generateLiberator(context);
         } else if (hullType === 'BIO_BIRD') {
@@ -590,6 +591,8 @@ export class ShipGenerator {
                 { radius: 0.5, height: engineHeight }, 'NONE');
         } else if (hullType === 'CATAMARAN' || hullType === 'BLOB') {
                 // Skip generic engines for Catamaran as it has Nacelles, and Blob has integrated engine strip
+        } else if (hullType === 'LIBERATOR') {
+                // Liberator has specific engines in generateLiberator, skip default
         } else if (hullType === 'STATION_RING' || hullType === 'STATION_WHEEL') {
                 // Engines on the rim for rings
                 const r = spineLength * 1.5;
@@ -658,7 +661,8 @@ export class ShipGenerator {
                 }
 
                 const engineHeight = 2.0;
-                const engineZ = -spineLength / 2 - engineHeight / 2 + 0.5; // Increased overlap
+                // Move engine forward to be alongside the rear of the hull, not behind it
+                const engineZ = -spineLength / 2 + engineHeight * 0.6; 
                 
                 // Fix for floating engines: Calculate X based on hull width at this Z
                 let engineX = 1.5; // Default fallback
@@ -817,6 +821,8 @@ export class ShipGenerator {
                 
                 generateSideCockpit(context, parentUsage, side, parentRadius, parentHeight);
                 cockpitPlaced = true;
+            } else if (hullType === 'LIBERATOR') {
+                // Liberator has integrated bridge in hub, do not add generic cockpit
             } else {
                 if (hullType === 'STAR') {
                     // Cockpit centrally placed on hub
@@ -1064,10 +1070,10 @@ export class ShipGenerator {
                     let sPos, sRot;
                     if (radialAxis === 'y') {
                         sPos = [Math.cos(angle) * spokeLen/2, 0, Math.sin(angle) * spokeLen/2];
-                        sRot = [0, -angle, Math.PI/2]; 
+                        sRot = [0, -angle, -Math.PI/2]; // Point outward
                     } else {
                         sPos = [Math.cos(angle) * spokeLen/2, Math.sin(angle) * spokeLen/2, 0];
-                        sRot = [0, 0, -angle + Math.PI/2]; 
+                        sRot = [0, 0, angle - Math.PI/2]; // Point outward
                     }
                     attachComponent(`ring_spoke_${i}`, sPos, sRot, 'cylinder', { radiusTop: tubeRadius * 0.5, radiusBottom: tubeRadius * 0.5, height: spokeLen }, 'NONE');
                 }

@@ -429,12 +429,52 @@ export class InstrumentEngine {
             if (!url.match(/^(http|https|blob|data):/)) {
                 // Try raw, root-relative, and public-prefixed variations to catch all serving configs
                 const raw = url.startsWith('/') ? url.substring(1) : url;
+                
+                // Handle space/underscore mismatch common in web assets
+                const swapped = raw.includes(' ') ? raw.replace(/ /g, '_') : raw.replace(/_/g, ' ');
+
+                // Handle 'public/' prefix stripping (common build artifact issue where public is root)
+                const noPublic = raw.startsWith('public/') ? raw.substring(7) : raw;
+                const noPublicSwapped = swapped.startsWith('public/') ? swapped.substring(7) : swapped;
+
+                // Handle 'data/' prefix stripping (common if manifest is in data/ but assets are in root media/)
+                const noData = raw.startsWith('data/') ? raw.substring(5) : raw;
+                const noDataSwapped = swapped.startsWith('data/') ? swapped.substring(5) : swapped;
+
                 candidates = [
                     url,                        // As provided
                     `/${raw}`,                  // Root relative
                     `/public/${raw}`,           // Explicit public folder
-                    raw                         // Relative to current path
+                    `/data/${raw}`,             // Explicit data folder
+                    `/public/data/${raw}`,      // Explicit public/data folder
+                    raw,                        // Relative to current path
+                    `/${swapped}`,              // Swapped versions
+                    `/public/${swapped}`,
+                    swapped,
+                    `/${noPublic}`,             // Stripped public prefix
+                    noPublic,
+                    `/${noPublicSwapped}`,
+                    noPublicSwapped,
+                    `/data/${swapped}`,
+                    `/public/data/${swapped}`,
+                    `/data/${noPublic}`,
+                    `/public/data/${noPublic}`,
+                    `/${noData}`,               // Stripped data prefix
+                    noData,
+                    `/${noDataSwapped}`,
+                    noDataSwapped
                 ];
+
+                // Fallback: Try .mp3 and .ogg if .wav fails (common web conversion)
+                // We apply this to ALL candidates that look like wav files
+                const extraCandidates = [];
+                candidates.forEach(c => {
+                    if (c && c.endsWith('.wav')) {
+                        extraCandidates.push(c.replace('.wav', '.mp3'));
+                        extraCandidates.push(c.replace('.wav', '.ogg'));
+                    }
+                });
+                candidates = [...candidates, ...extraCandidates];
             }
             // Deduplicate
             candidates = [...new Set(candidates)];

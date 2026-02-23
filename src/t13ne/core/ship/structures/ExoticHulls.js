@@ -186,143 +186,159 @@ export const generateFractal = (context) => {
 };
 
 export const generateLiberator = (context) => {
-    const { spineLength, attachComponent } = context;
+    const { spineLength, attachComponent, radialCount } = context;
     
     // Liberator (DSV2) - Tri-radial, Hex Hull, Rear Sphere, 3 Nacelles
-    // Total Length: 100 units (scaled by spineLength)
-    const unit = spineLength / 100;
+    // Scale factor: spineLength is roughly the total length.
+    // User spec: Spine (Hub to Sphere) is 3.5x engine spread.
+    // Let's normalize units so the ship looks proportional.
+    // If Hub Width is 1.0 (S), Pod is 0.6S, Length 3.0S.
+    // We define S based on spineLength to fit the 3.5x ratio.
+    // If Spread is ~3S, Spine is ~10.5S. Total ~12S.
+    const S = spineLength / 12; 
+
+    // --- 4. Pylons & Pods Setup ---
+    const numPods = radialCount || 3;
+
+    // --- 1. Central Hub (The "Zen" Core) ---
+    // Hexagonal (or Octagonal/Decagonal) Drum based on pod count.
+    // Width 1.0 * S. Radius = 0.5 * S.
+    const hubRad = 0.5 * S;
+    const hubLen = 0.8 * S; // Depth
+    const hubZ = 0;
+    const hubSegs = numPods * 2;
     
-    // Coordinate System: +Z is Forward (0), -Z is Rear (100)
-    // Center of ship (50) is at Z=0.
-    // Coordinate System: +Z is Forward.
-    // Based on user blueprint.
+    // Rotate so flat faces align with the radial angles (0, 120, 240 for 3 pods)
+    // For a hexagon (6 segs), vertices are at 0, 60... Face centers at 30, 90...
+    // We want a face at 0. Rotate -30 deg (-PI/6).
+    const hubRot = [Math.PI/2, 0, -Math.PI/hubSegs];
     
-    // 1. Main Body (Hexagonal Prism)
-    // Length 45. Position: 27.5 to 72.5 (Brief).
-    // Center: 50. Z = 0.
-    const hullLen = 45 * unit;
-    const hullRadius = 6 * unit; 
-    // 1. Aft Sphere (Green Globe) - The Power Source
-    // Center: -40. Radius: 8.
-    const sphereRad = 8 * unit;
-    const sphereZ = -40 * unit;
+    attachComponent('hull_hex_hub', [0, 0, hubZ], hubRot, 'prism', 
+        { radius: hubRad, height: hubLen, segments: hubSegs }, 'NONE', false, null, { color: 0xdaa520 }); // Gold/Brass
+
+    // Flight Deck Notch (Recessed slit on forward face)
+    const bridgeRad = hubRad * 0.95;
+    const bridgeZ = hubZ + hubLen/2 - 0.05 * S;
+    attachComponent('bridge_slit_hex', [0, 0, bridgeZ], hubRot, 'prism',
+        { radius: bridgeRad, height: 0.1 * S, segments: hubSegs }, 'NONE', false, null, { color: 0x111111 });
+
+    // --- 2. The Spine ---
+    // Tapered needle. Widest at Hub (100%), 40% at tip.
+    // Thickness at Hub = S / 2.5 = 0.4 * S. Radius = 0.2 * S.
+    const spineRadBase = 0.2 * S;
+    const spineRadTip = spineRadBase * 0.4;
+    const spineLen = 10.5 * S; // 3.5x Spread (approx 3S)
+    const spineZ = -hubLen/2 - spineLen/2;
     
-    attachComponent('fuselage_main', [0, 0, 0], [Math.PI/2, 0, 0], 'prism', 
-        { radius: hullRadius, height: hullLen, segments: 6 }, 'NONE');
+    attachComponent('fuselage_tapered_spine', [0, 0, spineZ], [Math.PI/2, 0, 0], 'cylinder', 
+        { radiusTop: spineRadBase, radiusBottom: spineRadTip, height: spineLen }, 'NONE', false, null, { color: 0xffffff }); // White
+
+    // Longitudinal Vanes (12 raised ribs)
+    const numVanes = 12;
+    const vaneLen = spineLen * 0.95;
+    const vaneZ = spineZ;
+    for(let i=0; i<numVanes; i++) {
+        const angle = (Math.PI * 2 / numVanes) * i;
+        const avgRad = (spineRadBase + spineRadTip) / 2;
+        // Position on surface (approximate for tapered cylinder)
+        const vx = Math.cos(angle) * avgRad;
+        const vy = Math.sin(angle) * avgRad;
+        // Rotate to align with radial
+        attachComponent(`spine_vane_${i}`, [vx, vy, vaneZ], [0, 0, angle + Math.PI/2], 'box',
+            { width: vaneLen, height: 0.02 * S, depth: avgRad * 0.4 }, 'NONE', false, null, { color: 0xffffff });
+    }
+
+    // --- 3. Aft Sphere (Power Source) ---
+    const sphereRad = 0.6 * S; // Proportional to pod width
+    const sphereZ = (spineZ - spineLen/2) - sphereRad * 0.8; // Overlap
+    
     attachComponent('reactor_sphere', [0, 0, sphereZ], [0, 0, 0], 'sphere', 
-        { radius: sphereRad }, 'NONE', false, null, { color: 0x00ff00, emissive: 0x00ff00, emissiveIntensity: 0.5 });
+        { radius: sphereRad }, 'NONE', false, null, { color: 0x00ff00, emissive: 0x00ff00, emissiveIntensity: 0.8 });
 
-    // 2. Rear Sphere (Power Sphere)
-    // Diameter 15. Center at 80 (Z = -30 * unit).
-    const sphereRad = 7.5 * unit;
-    const sphereZ = -30 * unit;
-    // 2. Spine Base (Connecting Sphere to Hub)
-    // Center: -25. Radius: 3. Length: 20 (-35 to -15).
-    const rearSpireLen = 20 * unit;
-    const rearSpireZ = -25 * unit;
-    const spineBaseRad = 3 * unit;
-    
-    attachComponent('reactor_sphere', [0, 0, sphereZ], [0, 0, 0], 'sphere', 
-        { radius: sphereRad }, 'NONE');
-    attachComponent('fuselage_rear', [0, 0, rearSpireZ], [Math.PI/2, 0, 0], 'cylinder', 
-        { radiusTop: spineBaseRad, radiusBottom: spineBaseRad, height: rearSpireLen }, 'NONE', false, null, { color: 0xffffee });
-
-    // 3. Rear Spire
-    // Length 12. Extends from sphere (87.5) to 99.5.
-    // Center Z: 93.5 -> Z = -43.5 * unit.
-    const rearSpireLen = 12 * unit;
-    const rearSpireZ = -43.5 * unit;
-    // 3. Main Hub (The Flight Deck / Collar)
-    // Center: -10. Radius: 10. Depth: 10 (-15 to -5).
-    const hubLen = 10 * unit;
-    const hubZ = -10 * unit;
-    const hubRad = 10 * unit;
-    
-    attachComponent('sensor_spire_rear', [0, 0, rearSpireZ], [-Math.PI/2, 0, 0], 'cone', 
-        { radius: 1 * unit, height: rearSpireLen }, 'NONE');
-    attachComponent('fuselage_hub', [0, 0, hubZ], [Math.PI/2, 0, 0], 'prism', 
-        { radius: hubRad, height: hubLen, segments: 6 }, 'NONE', false, null, { color: 0xdaa520 }); // Gold
-
-    // 4. Flight Deck (Bridge)
-    // Front of Hull (27.5 -> Z = +22.5 * unit).
-    const bridgeLen = 5 * unit;
-    const bridgeZ = 22.5 * unit + bridgeLen/2;
-    // 4. Forward Spine (The Javelin)
-    // Tapered. Starts at Hub Front (-5). Ends at 80. Length = 85.
-    // Center = -5 + 42.5 = 37.5.
-    // Radius: Hub (5) -> Tip (0.5).
-    const fwdSpireLen = 85 * unit;
-    const fwdSpireZ = 37.5 * unit;
-    const fwdRadBase = 5 * unit;
-    const fwdRadTip = 0.5 * unit;
-    
-    attachComponent('bridge', [0, 0, bridgeZ], [Math.PI/2, 0, 0], 'prism', 
-        { radiusTop: hullRadius * 0.6, radiusBottom: hullRadius, height: bridgeLen, segments: 6 }, 'NONE');
-    attachComponent('fuselage_spine', [0, 0, fwdSpireZ], [Math.PI/2, 0, 0], 'cylinder', 
-        { radiusTop: fwdRadTip, radiusBottom: fwdRadBase, height: fwdSpireLen }, 'NONE', false, null, { color: 0xffffee });
-
-    // 5. Pylons & Nacelles (Tri-Radial)
-    const nacelleRad = 15 * unit;
-    const nacelleLen = 25 * unit;
-    const nacelleZ = 0 * unit; // Center of nacelle in Z
-    // We use 'liberator_pod' to avoid default engine greebles (vents)
-    
-    // Nacelle (Teardrop): Tip at +Z (Front), Base at -Z (Rear)
-    attachComponent('engine_nacelle', [nacelleRad, 0, nacelleZ], [Math.PI/2, 0, 0], 'cone', 
-        { radius: 3 * unit, height: nacelleLen, radialSegments: 16 }, 'RADIAL');
-
-    // Forward Spire
-    // Length 20. Extends from Bridge (Z=25) to Z=45.
-    const fwdSpireLen = 20 * unit;
-    const fwdSpireZ = 35 * unit;
-    const podLen = 30 * unit;
-    const podRad = 4 * unit;
-    const podY = 25 * unit; // Radial distance
-    const podZ = 10 * unit; // Forward of Hub
-    
-    attachComponent('sensor_spire_fwd', [0, 0, fwdSpireZ], [Math.PI/2, 0, 0], 'cone', 
-        { radius: 2 * unit, height: fwdSpireLen }, 'NONE');
-    // Pod Body
-    attachComponent('liberator_pod', [0, podY, podZ], [Math.PI/2, 0, 0], 'cylinder', 
-        { radiusTop: podRad * 0.8, radiusBottom: podRad, height: podLen }, 'RADIAL', false, null, { color: 0xffffee });
+    // Cradle (3 tiny claw-like structures)
+    for(let i=0; i<3; i++) {
+        const angle = (Math.PI * 2 / 3) * i;
+        const clawLen = sphereRad * 1.5;
+        const clawOffset = sphereRad * 0.9;
+        const cx = Math.cos(angle) * clawOffset;
+        const cy = Math.sin(angle) * clawOffset;
         
-    // Pod Intake (Green Tip)
-    // Pod ends at 10 + 15 = 25.
-    const intakeZ = podZ + (podLen / 2);
-    attachComponent('liberator_intake', [0, podY, intakeZ], [Math.PI/2, 0, 0], 'sphere', 
-        { radius: podRad * 0.9 }, 'RADIAL', false, null, { color: 0x00ff00, emissive: 0x00ff00, emissiveIntensity: 0.8 });
+        // Rotate to cup the sphere
+        // Position relative to sphere center
+        attachComponent(`sphere_cradle_${i}`, [cx, cy, sphereZ], [0.5, 0, angle - Math.PI/2], 'box',
+            { width: 0.1 * S, height: clawLen, depth: 0.2 * S }, 'NONE', false, null, { color: 0xdaa520 });
+    }
 
-    // Pylon
-    const pylonStart = new THREE.Vector3(hullRadius * 0.8, 0, 0);
-    const pylonEnd = new THREE.Vector3(nacelleRad * 0.8, 0, nacelleZ);
-    const pylonVec = new THREE.Vector3().subVectors(pylonEnd, pylonStart);
-    const pylonLen = pylonVec.length();
-    const pylonMid = new THREE.Vector3().addVectors(pylonStart, pylonEnd).multiplyScalar(0.5);
-    // Pylons (Swept forward)
-    // Connect Hub (Z=-10, Y~8) to Pod (Z=10, Y=21).
-    const pylonStartY = 8 * unit;
-    const pylonStartZ = -10 * unit;
-    const pylonEndY = 21 * unit; // Pod Y (25) - Radius (4)
-    const pylonEndZ = 10 * unit;
+    // --- 4. Pylons & Pods ---
+    const podYDist = 1.5 * S; // Radial distance
+    const podZ = 1.0 * S; // Forward of Hub
     
-    // Orientation
-    const dummy = new THREE.Object3D();
-    dummy.position.copy(pylonMid);
-    dummy.lookAt(pylonEnd);
-    dummy.rotateX(Math.PI/2);
-    const dy = pylonEndY - pylonStartY;
-    const dz = pylonEndZ - pylonStartZ;
-    const pylonLen = Math.sqrt(dy*dy + dz*dz);
-    const pylonAngle = Math.atan2(dz, dy); // Angle from Y axis towards Z
-    
-    attachComponent('pylon', [pylonMid.x, pylonMid.y, pylonMid.z], [dummy.rotation.x, dummy.rotation.y, dummy.rotation.z], 'box', 
-        { width: 2 * unit, height: pylonLen, depth: 1 * unit }, 'RADIAL');
-    const pylonMidY = (pylonStartY + pylonEndY) / 2;
-    const pylonMidZ = (pylonStartZ + pylonEndZ) / 2;
-    
-    // Box oriented along Y then rotated around X
-    attachComponent('structural_pylon', [0, pylonMidY, pylonMidZ], [pylonAngle, 0, 0], 'box', 
-        { width: 1 * unit, height: pylonLen, depth: 4 * unit }, 'RADIAL', false, null, { color: 0xdaa520 }); // Gold
+    for(let i=0; i<numPods; i++) {
+        const angle = (Math.PI * 2 / numPods) * i;
+        
+        // Pod Position
+        const px = Math.cos(angle) * podYDist;
+        const py = Math.sin(angle) * podYDist;
+        
+        // Pod Orientation: Parallel to Z
+        const podRot = [Math.PI/2, 0, 0];
+        
+        // --- Pod Geometry ---
+        // Dimensions: Width 0.6S (Radius 0.3S), Length 3.0S.
+        const podRad = 0.3 * S;
+        const podMainLen = 1.5 * S; // Main body length
+        
+        attachComponent(`nacelle_pod_main_${i}`, [px, py, pz], podRot, 'capsule', 
+            { radius: podRad, length: podMainLen }, 'NONE', false, null, { color: 0xffffee });
+            
+        // Stage 1: Nose (Green Glass Frustum)
+        const noseLen = 0.75 * S;
+        const noseZ = podZ + 0.75 * S + noseLen/2; // Attach to front of main body
+        attachComponent(`pod_nose_${i}`, [px, py, noseZ], podRot, 'cylinder', 
+            { radiusTop: podRad * 0.5, radiusBottom: podRad, height: noseLen }, 'NONE', false, null, { color: 0x00ff00, opacity: 0.6, transparent: true });
+            
+        // Stage 3: Tail (Dark Taper)
+        const tailLen = 0.75 * S;
+        const tailZ = podZ - 0.75 * S - tailLen/2; // Attach to rear
+        attachComponent(`nacelle_pod_tail_${i}`, [px, py, tailZ], [Math.PI/2, 0, 0], 'cylinder', 
+            { radiusTop: podRad, radiusBottom: podRad * 0.3, height: tailLen }, 'NONE', false, null, { color: 0x222222 });
+
+        // --- Pylon ---
+        // Connects Hub Face to Pod. 
+        // Pylon Base: Hub Face (Apothem).
+        const pBaseRad = hubRad * Math.cos(Math.PI/hubSegs);
+        const pBaseX = Math.cos(angle) * pBaseRad;
+        const pBaseY = Math.sin(angle) * pBaseRad;
+        const pBaseZ = hubZ;
+        
+        // Pylon Tip: "Straddles" the pod. "Melts" into pod 2/3rds back.
+        // Pod Z range: TailEnd (-1.5S) to NoseTip (+2.25S). Total ~3.75S.
+        // 2/3rds back from nose is roughly Z = 0.
+        // "Pods sit inboard" -> Pylon tip is further out than pod center.
+        const pTipDist = podYDist + 0.2 * S;
+        const pTipX = Math.cos(angle) * pTipDist;
+        const pTipY = Math.sin(angle) * pTipDist;
+        const pTipZ = 0.5 * S; // Forward sweep target
+        
+        // Calculate Midpoint and Length
+        const pMidX = (pBaseX + pTipX) / 2;
+        const pMidY = (pBaseY + pTipY) / 2;
+        const pMidZ = (pBaseZ + pTipZ) / 2;
+        const pLen = Math.sqrt((pTipX-pBaseX)**2 + (pTipY-pBaseY)**2 + (pTipZ-pBaseZ)**2);
+        
+        // Orientation: Look from Base to Tip
+        const dummy = new THREE.Object3D();
+        dummy.position.set(pBaseX, pBaseY, pBaseZ);
+        dummy.lookAt(pTipX, pTipY, pTipZ);
+        
+        // Create Pylon (Thin tapered blade)
+        // We use a box, scaled to be thin in thickness (local Y) and wide in chord (local X/Z?)
+        // Box default: Width=X, Height=Y, Depth=Z.
+        // We want Length along Z (pLen). Thickness along local Y? Chord along local X?
+        // "Thin, tapered blade".
+        attachComponent(`pylon_swept_${i}`, [pMidX, pMidY, pMidZ], [dummy.rotation.x, dummy.rotation.y, dummy.rotation.z], 'box', 
+            { width: 0.1 * S, height: 0.4 * S, depth: pLen }, 'NONE', false, null, { color: 0xdaa520 });
+    }
 };
 
 export const generateBioBird = (context) => {

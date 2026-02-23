@@ -28,6 +28,7 @@ export class Planet extends THREE.Group {
         } else {
             color.setHSL(prng.nextDouble(), 0.6, 0.5);
         }
+        this.baseColor = color.clone(); // Store determined color for consistency
         
         const material = new THREE.MeshStandardMaterial({ color: color, roughness: 0.7 });
         const surface = new THREE.Mesh(geometry, material);
@@ -151,22 +152,11 @@ export class Planet extends THREE.Group {
         const emissiveCtx = emissiveCanvas.getContext('2d');
         
         // Base Color
-        const baseColor = new THREE.Color();
-        const colorData = planetData.color;
-
-        if (colorData && colorData.h !== undefined) { // Prioritize HSL
-            baseColor.setHSL(colorData.h, colorData.s, colorData.l);
-        } else if (colorData) { // Fallback to any other valid THREE.Color format
-            baseColor.set(colorData);
-        } else if (planetData.name) {
-            // Generate from Name Frequency if no color provided
-            let freq = 0;
-            for(let i=0; i<planetData.name.length; i++) freq += planetData.name.charCodeAt(i);
-            freq = (freq % 300) + 400; // 400-700Hz range (Visible spectrum)
-            baseColor.set(ColourUtils.curvedFrequencyToHex(freq));
-        } else {
-            baseColor.setHex(0x228833);
-        }
+        // Use the stored baseColor to ensure it matches the low-detail mesh
+        const baseColor = this.baseColor ? this.baseColor.clone() : new THREE.Color(0x228833);
+        
+        // If we somehow don't have a baseColor (legacy), we skip the old fallback logic 
+        // to avoid the mismatch described.
 
         // Enforce Vibrancy check
         const hsl = {};

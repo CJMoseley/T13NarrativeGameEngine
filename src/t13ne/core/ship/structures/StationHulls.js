@@ -29,22 +29,30 @@ export const generateStation = (context, hullType) => {
 
     // Spokes - Connect Spine to Rim
     const spokeLen = r;
-    const centreX = r / 2;
-    const spokePos = [centreX, 0, 0];
-    const spokeRot = [0, 0, Math.PI/2];
     
-    const spokeId = attachComponent('spoke', spokePos, spokeRot, 'cylinder', {radiusTop: tubeR/2, radiusBottom: tubeR/2, height: spokeLen}, 'RADIAL');
-
-    // Explicitly wire Spine -> Spoke -> Rim
-    if (wiringGenerator && explicitWiring) {
-        wiringGenerator.addConnection(explicitWiring, spineId, spokeId, 'structural', r/2);
-        wiringGenerator.addConnection(explicitWiring, spokeId, rimId, 'structural', r/2);
-
-        // Wire radial duplicates
-        for(let i=1; i<radialCount; i++) {
-            const radSpokeId = `${spokeId}_rad_${i}`;
-            wiringGenerator.addConnection(explicitWiring, spineId, radSpokeId, 'structural', r/2);
-            wiringGenerator.addConnection(explicitWiring, radSpokeId, rimId, 'structural', r/2);
+    // Explicitly generate spokes to ensure correct orientation
+    for (let i = 0; i < radialCount; i++) {
+        const angle = (Math.PI * 2 / radialCount) * i;
+        const dist = r / 2;
+        
+        let pos;
+        if (radialAxis === 'z') {
+            pos = [Math.cos(angle) * dist, Math.sin(angle) * dist, 0];
+        } else {
+            pos = [Math.cos(angle) * dist, 0, Math.sin(angle) * dist];
+        }
+        
+        const dir = new THREE.Vector3(pos[0], pos[1], pos[2]).normalize();
+        const up = new THREE.Vector3(0, 1, 0);
+        const q = new THREE.Quaternion().setFromUnitVectors(up, dir);
+        const e = new THREE.Euler().setFromQuaternion(q);
+        
+        const sId = attachComponent(`spoke_${i}`, pos, [e.x, e.y, e.z], 'cylinder', 
+            {radiusTop: tubeR/2, radiusBottom: tubeR/2, height: spokeLen}, 'NONE');
+            
+        if (wiringGenerator && explicitWiring) {
+            wiringGenerator.addConnection(explicitWiring, spineId, sId, 'structural', r/2);
+            wiringGenerator.addConnection(explicitWiring, sId, rimId, 'structural', r/2);
         }
     }
 };

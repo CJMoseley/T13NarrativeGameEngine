@@ -19,9 +19,23 @@ const __dirname = path.dirname(__filename);
 
 // Configuration
 const PUBLIC_DIR = path.join(__dirname, '../public');
-const AUDIO_ROOT = 'media/audio';
-const SCAN_DIR = path.join(PUBLIC_DIR, AUDIO_ROOT);
+
+// Auto-detect where the audio files actually are
+let AUDIO_ROOT = 'media/audio';
+let SCAN_DIR = path.join(PUBLIC_DIR, AUDIO_ROOT);
+
+if (!fs.existsSync(SCAN_DIR) || (fs.existsSync(SCAN_DIR) && fs.readdirSync(SCAN_DIR).filter(f => !f.startsWith('.')).length === 0)) {
+    const altDir = path.join(PUBLIC_DIR, 'data', 'media', 'audio');
+    if (fs.existsSync(altDir)) {
+        console.log(`[Agent] Standard directory '${AUDIO_ROOT}' is empty. Switching scan to 'data/media/audio'.`);
+        AUDIO_ROOT = 'data/media/audio';
+        SCAN_DIR = altDir;
+    }
+}
+
 const OUTPUT_FILE = path.join(SCAN_DIR, 'audio_assets_manifest.json');
+// Also output to data/media/audio if it exists, to keep them in sync
+const DATA_OUTPUT_FILE = path.join(PUBLIC_DIR, 'data', 'media', 'audio', 'audio_assets_manifest.json');
 
 const VALID_EXTENSIONS = ['.wav', '.mp3', '.ogg', '.webm'];
 
@@ -170,7 +184,7 @@ async function run() {
 
         const id = generateId(fullPath, SCAN_DIR);
         const relativePath = path.relative(PUBLIC_DIR, fullPath).split(path.sep).join('/');
-        const webPath = '/' + relativePath;
+        const webPath = '/' + relativePath; // This will now correctly include /data/ if that's where files are
 
         let oldId = null;
         for (const [key, val] of Object.entries(manifest.samples)) {
@@ -187,8 +201,11 @@ async function run() {
         }
 
         if (!manifest.samples[id]) {
+            // FIX: Store relative path (including subdirectories) in filename so fallback logic works
+            // Node.js path.basename() strips the directory, which breaks browser fallback if 'path' is missing.
+            const relativeFilename = path.relative(SCAN_DIR, fullPath).split(path.sep).join('/');
             manifest.samples[id] = {
-                filename: path.basename(fullPath),
+                filename: relativeFilename,
                 path: webPath,
                 format: path.extname(fullPath).substring(1)
             };
@@ -229,6 +246,12 @@ async function run() {
 
     fs.writeFileSync(OUTPUT_FILE, JSON.stringify(manifest, null, 2));
     console.log(`[Agent] Manifest written to ${OUTPUT_FILE}`);
+
+    const dataDir = path.dirname(DATA_OUTPUT_FILE);
+    if (fs.existsSync(dataDir)) {
+        fs.writeFileSync(DATA_OUTPUT_FILE, JSON.stringify(manifest, null, 2));
+        console.log(`[Agent] Manifest copy written to ${DATA_OUTPUT_FILE}`);
+    }
 }
 
 run();

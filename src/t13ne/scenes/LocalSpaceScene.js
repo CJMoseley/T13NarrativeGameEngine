@@ -30,7 +30,8 @@ export class LocalSpaceScene extends Scene {
         };
 
         // Intro Sequence State
-        this.introActive = true;
+        this.introConfig = sceneData.introConfig || null;
+        this.introActive = !!this.introConfig;
         this.introPhase = 0;
         this.introTime = 0;
         this.introStartTime = performance.now();
@@ -71,7 +72,10 @@ export class LocalSpaceScene extends Scene {
         if (data.systemDetails) this.systemData = data.systemDetails;
         if (data.planets) this.planets = data.planets;
         if (data.star) this.starData = data.star;
-        if (data.playIntro !== undefined) this.introActive = data.playIntro;
+        if (data.introConfig) {
+            this.introConfig = data.introConfig;
+            this.introActive = true;
+        }
 
         // Re-initialize the scene with the new data
         this.init();
@@ -213,7 +217,50 @@ export class LocalSpaceScene extends Scene {
         if (this.orreryScene.cameraControls.has('orbit')) this.orreryScene.cameraControls.get('orbit').enabled = false;
 
         // --- Generate Intro Path and Set Initial Camera Position ---
-        if (this.introActive && this.homeWorldObj) {
+        if (this.introActive) {
+            // If a path was passed in config, use it
+            if (this.introConfig && this.introConfig.path) {
+                this.setIntroPath(this.introConfig.path);
+            } 
+            // Otherwise generate one if we have a target
+            else if (this.homeWorldObj) {
+                this.generateIntroPath();
+            } else {
+                this.introActive = false;
+            }
+        }
+
+        // Set initial camera position AFTER path is calculated
+        if (this.introActive) {
+            this.virtualCameraPosition.copy(this.introStartPos);
+        }
+
+        Logger.end(funcName);
+    }
+
+    /**
+     * Sets a custom path for the intro sequence.
+     * @param {THREE.Vector3[]} points 
+     */
+    setIntroPath(points) {
+        if (!points || points.length < 2) return;
+        this.introPathSpline = new THREE.CatmullRomCurve3(points);
+        this.introPath = this.introPathSpline.getPoints(200);
+        this.introStartPos.copy(points[0]);
+        
+        if (this.orreryScene) {
+            this.orreryScene.setIntroPath(this.introPath, this.scales.orbit);
+        }
+        this.introActive = true;
+    }
+
+    /**
+     * Generates a procedural intro path based on the system layout.
+     * Preserves the original logic but fixes collision detection.
+     */
+    generateIntroPath() {
+        if (!this.homeWorldObj) return;
+
             const waypoints = [];
             const allPlanets = this.objects.filter(o => o.type === 'planet').sort((a, b) => a.orbitRadius - b.orbitRadius);
             const systemRadius = allPlanets.length > 0 ? allPlanets[allPlanets.length - 1].orbitRadius : 20000;
@@ -270,7 +317,13 @@ export class LocalSpaceScene extends Scene {
 
             // --- SAFETY CHECK: Avoid Star Collision ---
             // Ensure the camera never flies through the star (at 0,0,0)
-            const starSafeRadius = (this.scales.starSize || 500) * 3.0;
+            let maxStarRadius = (this.scales.starSize || 500);
+            this.objects.forEach(o => {
+                if (o.type === 'star' && o.baseRadius > maxStarRadius) {
+                    maxStarRadius = o.baseRadius;
+                }
+            });
+            const starSafeRadius = maxStarRadius * 2.5 + 2000; // Add buffer
             const origin = new THREE.Vector3(0, 0, 0);
             
             for (let i = 0; i < waypoints.length - 1; i++) {
@@ -307,13 +360,15 @@ export class LocalSpaceScene extends Scene {
                 this.introPath = this.introPathSpline.getPoints(200);
                 this.orreryScene.setIntroPath(this.introPath, this.scales.orbit);
             } else {
+                Logger.warn("LocalSpaceScene: Failed to generate valid intro path.");
                 this.introActive = false;
             }
         } else {
+            // No intro config or homeworld, disable intro mode
             this.introActive = false;
         }
 
-        // Set initial camera position AFTER path is calculated
+        // Set initial camera position if intro is active
         if (this.introActive) {
             this.virtualCameraPosition.copy(this.introStartPos);
         }
@@ -621,7 +676,7 @@ export class LocalSpaceScene extends Scene {
             this.updateIntroCamera(this.introTime);
 
             // Transition condition
-            const introDuration = this.flybyObj ? 22.0 : 15.0;
+            const introDuration = this.introConfig.duration || (this.flybyObj ? 22.0 : 15.0);
             if (this.introTime >= introDuration) {
                 this.introActive = false;
 
@@ -634,11 +689,12 @@ export class LocalSpaceScene extends Scene {
                 Logger.message("LocalSpaceScene: Intro complete. Signalling ViewManager.");
             }
         } else if (this.homeWorldObj && !this.introActive) {
-            const offset = new THREE.Vector3(0, 200, 800);
-            if (!this.homeWorldObj.realPosition) {
-                this.homeWorldObj.realPosition = new THREE.Vector3(0, 0, 0);
+            // Gameplay Mode: Do NOT lock virtualCameraPosition to homeworld every frame.
+            // Allow external controls or ship logic to update it.
+            // If no other system is updating it, we might want to initialize it once.
+            if (this.virtualCameraPosition.lengthSq() === 0 && this.homeWorldObj.realPosition) {
+                 this.virtualCameraPosition.copy(this.homeWorldObj.realPosition).add(new THREE.Vector3(0, 200, 800));
             }
-            this.virtualCameraPosition.copy(this.homeWorldObj.realPosition).add(offset);
         }
 
         if (this.orreryScene) {
@@ -835,7 +891,7 @@ export class LocalSpaceScene extends Scene {
         this.introStartTime = performance.now();
         this.introTime = 0;
 
-        const totalDuration = this.flybyObj ? 22.0 : 15.0;
+        const totalDuration = this.introConfig?.duration || (this.flybyObj ? 22.0 : 15.0);
 
         // Return a promise that resolves when the intro is complete
         return new Promise(resolve => {
@@ -855,7 +911,7 @@ export class LocalSpaceScene extends Scene {
     updateIntroCamera(time) {
         if (!this.introPathSpline) return;
 
-        const totalDuration = this.flybyObj ? 22.0 : 15.0;
+        const totalDuration = this.introConfig?.duration || (this.flybyObj ? 22.0 : 15.0);
         const progress = Math.min(time / totalDuration, 1.0);
         const ease = 1 - Math.pow(1 - progress, 3); // Ease-out
 

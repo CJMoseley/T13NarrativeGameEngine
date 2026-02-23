@@ -457,6 +457,9 @@ export class GreebleGenerator {
             const scale = comp.scale;
             const rot = comp.rotation;
 
+            // Skip spikes, spires, antennae, sensors from receiving greebles
+            if (usage.includes('spike') || usage.includes('spire') || usage.includes('antenna') || usage.includes('sensor')) return;
+
             // Check for component-specific symmetry override (e.g. wings on an asymmetrical ship)
             const effectiveSymmetry = (comp.stats && comp.stats.forceSymmetry) ? comp.stats.forceSymmetry : symmetryType;
             const effectiveRadialCount = (comp.stats && comp.stats.radialCount) ? comp.stats.radialCount : radialCount;
@@ -571,7 +574,8 @@ export class GreebleGenerator {
 
             // 2. Vents
             // Only place vents on engines, avoiding internal components like reactors/generators
-            if (usage.includes('engine') && !usage.includes('room')) {
+            // Skip reactor spheres and specific drives
+            if (usage.includes('engine') && !usage.includes('room') && !usage.includes('reactor') && !usage.includes('sphere')) {
 
                 const ventGroup = new THREE.Group();
                 
@@ -611,16 +615,10 @@ export class GreebleGenerator {
 
                 const offsetDist = Math.max(scale.x, scale.y) + 5; // Start just outside to avoid hitting other components
                 this.placeOnSurface(hullMesh, greebleGroup, new THREE.Vector3(pos.x, pos.y + offsetDist, pos.z), new THREE.Vector3(0, -1, 0), container, true, 0, isCentral, effectiveSymmetry, radialAxis, effectiveRadialCount, null, 'forward', true);
-                // Removed side placement to avoid fins
-
-                // Engine Intakes
-                const intake = new THREE.Mesh(new THREE.BoxGeometry(ventWidth, ventHeight, ventWidth), this.ventMat);
-                // Place at front of engine
-                this.placeOnSurface(hullMesh, greebleGroup, pos.clone().add(forwardDir.multiplyScalar(lengthDim/2 + 5)), forwardDir.clone().negate(), intake, true, 0, isCentral, effectiveSymmetry, radialAxis, effectiveRadialCount, null, 'forward');
             }
 
             // 3. Cockpit (Canopy)
-            if (usage.includes('cockpit') || usage.includes('bridge')) {
+            if (usage.includes('cockpit')) {
                 let isPrimaryCockpit = true;
                 if (symmetryType === 'RADIAL' && radialAxis === 'y') {
                     // Limit cockpits to front 1/3 (120 degrees)
@@ -962,7 +960,8 @@ export class GreebleGenerator {
             }
 
             // 5. Thrusters
-            if (usage.includes('thruster') || usage.includes('engine')) {
+            // Skip reactor spheres, and check for ion/impulse to avoid nozzles
+            if ((usage.includes('thruster') || usage.includes('engine')) && !usage.includes('reactor') && !usage.includes('sphere')) {
                 let refDim = Math.min(scale.x, scale.y, scale.z);
                 let radiusFactor = 0.35;
 
@@ -992,6 +991,10 @@ export class GreebleGenerator {
                     exhaustDir.set(0, -1, 0); // Down
                 }
 
+                // If Ion or Impulse, use a simpler glow plate instead of a nozzle
+                const isHighTech = usage.includes('ion') || usage.includes('impulse');
+
+                if (!isHighTech) {
                 if (shapeType === 0) {
                     // Standard Truncated Cone
                     // Narrow radius in direction of travel (+Z). Wide at exhaust (-Z).
@@ -1026,6 +1029,11 @@ export class GreebleGenerator {
                         
                         nozzle.add(subMesh);
                     });
+                }
+                } else {
+                    // Flat plate for Ion/Impulse
+                    const plateGeo = new THREE.CylinderGeometry(rearRadius, rearRadius, nozzleLen * 0.2, 16);
+                    nozzle = new THREE.Mesh(plateGeo, nozzleMat);
                 }
                 
                 // Orient the nozzle to point in the exhaust direction

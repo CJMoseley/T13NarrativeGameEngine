@@ -1,4 +1,5 @@
 import Logger from '../Logger.js';
+import * as THREE from 'three';
 
 class IntroSequence {
     static element = null;
@@ -90,6 +91,100 @@ class IntroSequence {
         }, { once: true });
 
         document.body.appendChild(overlay);
+    }
+
+    /**
+     * Plays the main visual intro sequence.
+     * @param {ViewManager} viewManager 
+     */
+    static async play(viewManager) {
+        const gameEngine = viewManager.gameEngine;
+        this.hide(); // Hide the loading UI
+
+        // 1. Galaxy View
+        viewManager.cueScene('GalaxyMapScene', { attractMode: true }, {
+            duration: 4000,
+            onActive: async (scene) => {
+                // Generate System in background
+                const music = viewManager.engine.getModule('Music');
+                await gameEngine.generateSystem();
+                
+                if (music && gameEngine.currentSystemDetails) {
+                    music.injectThemeComponents({ currentSystem: gameEngine.currentSystemDetails });
+                    const theme = await music.createMainTheme(gameEngine);
+                    music.updateTrack(theme);
+                }
+
+                // Update queued scenes with new data
+                const localSpaceItem = viewManager.sceneQueue.find(i => i.name === 'LocalSpaceScene');
+                if (localSpaceItem) {
+                    localSpaceItem.data.systemDetails = gameEngine.currentSystemDetails;
+                    localSpaceItem.data.planets = gameEngine.currentPlanets;
+                }
+                const orbitItem = viewManager.sceneQueue.find(i => i.name === 'PlanetaryOrbitScene');
+                if (orbitItem) {
+                    orbitItem.data.system = gameEngine.currentSystemDetails;
+                    orbitItem.data.planet = gameEngine.currentPlanets ? gameEngine.currentPlanets[0] : null;
+                }
+
+                // Focus camera
+                await new Promise(r => setTimeout(r, 1000));
+                if (scene && typeof scene.focusOnSystem === 'function' && gameEngine.playerStartSystem) {
+                    await scene.focusOnSystem(gameEngine.playerStartSystem);
+                }
+            }
+        });
+
+        // 2. System View (Local Space)
+        if (gameEngine.playerStartSystem) {
+            viewManager.cueScene('LocalSpaceScene', {
+                systemDetails: gameEngine.currentSystemDetails,
+                planets: gameEngine.currentPlanets,
+                star: gameEngine.playerStartSystem,
+                galaxy: gameEngine.galaxy,
+                introConfig: { mode: 'flyby', duration: 25.0 } // Increased duration for smoother flyby
+            }, {
+                duration: 0, 
+                transition: { type: 'crossDissolve', duration: 2000 },
+                onActive: async (scene) => {
+                    if (typeof scene.playIntroSequence === 'function') {
+                        await scene.playIntroSequence();
+                    }
+                }
+            });
+
+            // 3. Planetary Orbit
+            viewManager.cueScene('PlanetaryOrbitScene', {
+                planet: gameEngine.currentPlanets ? gameEngine.currentPlanets[0] : null,
+                system: gameEngine.currentSystemDetails,
+                sunDirection: new THREE.Vector3(1, 0.5, 1).normalize()
+            }, {
+                duration: 10000,
+                transition: { type: 'fade', duration: 1500 },
+                onActive: async (scene) => {
+                    // Generate Ship
+                    await gameEngine.seedPlayerShip();
+                    const music = viewManager.engine.getModule('Music');
+                    if (music && gameEngine.playerShip) {
+                        music.injectThemeComponents({ playerShip: gameEngine.playerShip });
+                        const theme = await music.createMainTheme(gameEngine);
+                        if (theme) music.updateTrack(theme);
+                    }
+                }
+            });
+        }
+
+        // 4. Ship Showcase
+        viewManager.cueScene('ShipShowcaseScene', {}, {
+            duration: 0,
+            onActive: async () => {
+                this.hide(); 
+            },
+            transition: { type: 'wipe', duration: 1200, direction: 'up' }
+        });
+
+        // Execute
+        await viewManager.playSequence();
     }
 }
 

@@ -399,13 +399,13 @@ export class PlanetaryOrbitScene extends Scene {
 
         // Generate Lore Data
         // Use actual system data if available, otherwise fallback
-        const species = this.systemData.species || this.planetData.species || "Unknown Species";
-        let society = this.systemData.society || "Unknown Society";
+        const species = this._sanitizeLore(this.systemData.species || this.planetData.species || "Unknown Species");
+        let society = this._sanitizeLore(this.systemData.society || "Unknown Society");
         if (this.planetData.population) {
             society += ` (Pop: ${this.planetData.population.toLocaleString()})`;
         }
         
-        const description = this.planetData.description || "A mysterious world.";
+        const description = this._sanitizeLore(this.planetData.description || "A mysterious world.");
 
         // Extended Data extraction
         const gravity = this.planetData.gravity ? `${parseFloat(this.planetData.gravity).toFixed(2)} G` : 'Unknown';
@@ -415,7 +415,7 @@ export class PlanetaryOrbitScene extends Scene {
         let techInfo = "Unknown";
         if (this.systemData.tech) {
             // Handle both string and object formats for tech
-            techInfo = typeof this.systemData.tech === 'string' ? this.systemData.tech : (this.systemData.tech.Type || "Unknown");
+            techInfo = this._sanitizeLore(typeof this.systemData.tech === 'string' ? this.systemData.tech : (this.systemData.tech.Type || "Unknown"));
         }
 
         let resourcesHtml = '<span style="color:#888;">None detected</span>';
@@ -426,8 +426,8 @@ export class PlanetaryOrbitScene extends Scene {
         let speciesLoreHtml = "";
         if (this.systemData.speciesCore) {
             const core = this.systemData.speciesCore;
-            if (core.physicalDescription) speciesLoreHtml += `<div style="margin-top:5px; font-style:italic; color:#aaccff;">"${core.physicalDescription}"</div>`;
-            if (core.culturalDescription) speciesLoreHtml += `<div style="margin-top:5px; color:#ccccff;">${core.culturalDescription}</div>`;
+            if (core.physicalDescription) speciesLoreHtml += `<div style="margin-top:5px; font-style:italic; color:#aaccff;">"${this._sanitizeLore(core.physicalDescription)}"</div>`;
+            if (core.culturalDescription) speciesLoreHtml += `<div style="margin-top:5px; color:#ccccff;">${this._sanitizeLore(core.culturalDescription)}</div>`;
         }
 
         // Define POI (Point of Interest) for the UI
@@ -576,6 +576,16 @@ export class PlanetaryOrbitScene extends Scene {
         setTimeout(() => this.generateAvatarSnapshot(avContainer), 200);
     }
 
+    _sanitizeLore(text) {
+        if (!text || typeof text !== 'string') return text;
+        // Remove patterns like "Geometry: ...", "Chi Gain: ...", "(Boon ...)"
+        // This regex removes parenthetical technical data often found in raw dumps
+        let clean = text.replace(/\([^)]*(Boon|Geometry|Chi|Facet|Hitch|Gematria)[^)]*\)/gi, '');
+        // Remove explicit labels if they appear outside parens
+        clean = clean.replace(/(Geometry|Chi Gain|Boon|Facet Score):?\s*[\w\d\+\-\s]+/gi, '');
+        return clean.trim();
+    }
+
     async generateSurfaceSnapshot(container, attempt = 0) {
         const width = 280;
         const height = 150;
@@ -584,7 +594,7 @@ export class PlanetaryOrbitScene extends Scene {
         const surfaceScene = new THREE.Scene();
         surfaceScene.background = new THREE.Color(0x1a2b34);
         
-        const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+        const camera = new THREE.PerspectiveCamera(35, width / height, 0.1, 1000);
         camera.position.set(0, 50, 100);
         camera.lookAt(0, 0, 0);
         
@@ -730,10 +740,20 @@ export class PlanetaryOrbitScene extends Scene {
                  avatarMesh.material.color.setHSL(hue, 0.6, 0.5);
             }
 
-            // Center and scale
+            // Center and scale to ensure it fits in the camera view
             const box = new THREE.Box3().setFromObject(avatarMesh);
+            const size = box.getSize(new THREE.Vector3());
             const center = box.getCenter(new THREE.Vector3());
-            avatarMesh.position.sub(center);
+            
+            // Fit to view (Camera is at z=0.8)
+            const maxDim = Math.max(size.x, size.y, size.z);
+            if (maxDim > 0) {
+                const scale = 0.5 / maxDim; 
+                avatarMesh.scale.setScalar(scale);
+                // Re-center after scaling
+                const newBox = new THREE.Box3().setFromObject(avatarMesh);
+                avatarMesh.position.sub(newBox.getCenter(new THREE.Vector3()));
+            }
             avatarMesh.position.y -= 0.1; 
 
             scene.add(avatarMesh);

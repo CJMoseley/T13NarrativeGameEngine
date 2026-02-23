@@ -617,6 +617,27 @@ export class ThemeGenerator {
                 }
                 return;
             }
+            
+            // Sample failed to load? Use a high-quality preset fallback instead of raw synthesis
+            if (!this.synth.instrumentEngine.samples.has(instrumentId)) {
+                const fallbackMap = {
+                    'bass': ['Bass_Moog', 'Bass_Sub808', 'Synth_Bass', 'Bass_Reese'],
+                    'pad': ['Synth_Pad', 'Synth_SpacePad'],
+                    'lead': ['Synth_Lead', 'Synth_Pluck', 'Synth_WarpLead'],
+                    'kick': ['Drum_Kick'],
+                    'snare': ['Drum_Snare'],
+                    'hat': ['Drum_HiHat_Closed'],
+                    'perc': ['Drum_Cowbell']
+                };
+                const presets = fallbackMap[role] || fallbackMap['lead'];
+                const presetId = presets[Math.floor(Math.random() * presets.length)];
+                const def = this.synth.instrumentEngine.instruments.get(presetId);
+                if (def) {
+                    this.synth.instrumentEngine.defineInstrument(targetId, { ...def, role: role });
+                    SafeLogger.warn(`ThemeGenerator: Sample '${instrumentId}' failed. Using preset '${presetId}' for '${targetId}'.`);
+                    return;
+                }
+            }
         }
 
         // Fallback to purely algorithmic synthetic
@@ -1206,9 +1227,11 @@ export class ThemeGenerator {
                     
                     // Use band base frequency for tonal percussion to ensure it's in key
                     // or a fixed ratio of it (e.g. 0.5 for low tom)
-                    const percFreq = (artist.keyData.Frequency && artist.keyData.Frequency < 1000) 
-                        ? context.baseFreq * (artist.keyData.Frequency / 261.63) // Maintain relative pitch ratio
-                        : artist.keyData.Frequency;
+                    // FIX: Quantize to nearest semitone to avoid microtonal dissonance
+                    let percFreq = artist.keyData.Frequency || 261.63;
+                    const ratio = percFreq / 261.63;
+                    const semitones = Math.round(12 * Math.log2(ratio));
+                    percFreq = context.baseFreq * Math.pow(2, semitones / 12);
 
                     events.push({
                         voice: voiceId,
@@ -1395,10 +1418,12 @@ export class ThemeGenerator {
                     chordIndex++;
                 }
                 const activeChord = progression[chordIndex];
+                // Use harmonicRoot if available to stay in key, falling back to rootOffset (bass note)
+                const transpositionRoot = (activeChord.harmonicRoot !== undefined) ? activeChord.harmonicRoot : activeChord.rootOffset;
                 const currentRootFreq = activeChord.keyFreq || globalBaseFreq;
                 
                 const midiInterval = note.midi - baseMidiNote;
-                const chordRootInterval = activeChord.rootOffset;
+                const chordRootInterval = transpositionRoot;
                 
                 const finalInterval = chordRootInterval + midiInterval;
                 const freq = currentRootFreq * Math.pow(2, finalInterval / 12);
@@ -1754,7 +1779,14 @@ export class ThemeGenerator {
             }
             lastNotes = notes;
 
-            return { name: chordDef.Name, rootOffset: notes[0], intervals: notes, durationSteps: stepsPerBar, keyFreq: baseFreq };
+            return { 
+                name: chordDef.Name, 
+                rootOffset: notes[0], // The bass note (lowest pitch)
+                harmonicRoot: chordDef.Notes[0], // The true root of the chord (for harmonic context)
+                intervals: notes, 
+                durationSteps: stepsPerBar, 
+                keyFreq: baseFreq 
+            };
         });
     }
 

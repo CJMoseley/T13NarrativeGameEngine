@@ -12,15 +12,28 @@ export class AudioManifestManager {
             stems: {},
             instruments: {}
         };
+        this.basePath = ''; // Will be detected upon load
     }
 
     async loadManifest() {
         try {
-            const response = await fetch('/media/audio/audio_assets_manifest.json');
+            // Prioritize the standard media/audio path where the generation script outputs
+            let response = await fetch('/media/audio/audio_assets_manifest.json');
+            if (!response.ok) {
+                response = await fetch('/data/media/audio/audio_assets_manifest.json');
+            }
+
             if (response.ok) {
                 const loaded = await response.json();
                 this.manifest = { ...this.manifest, ...loaded };
-                Logger.message("AudioManifestManager: Manifest loaded from disk.");
+                
+                // Detect base path from the successful URL to ensure assets are loaded relative to it
+                const url = new URL(response.url, window.location.origin);
+                // Remove the filename (audio_assets_manifest.json) to get the directory
+                let path = url.pathname.substring(0, url.pathname.lastIndexOf('/'));
+                this.basePath = path.startsWith('/') ? path.substring(1) : path;
+                
+                Logger.message(`AudioManifestManager: Manifest loaded from /${this.basePath}`);
             } else {
                 Logger.warn("AudioManifestManager: Could not load audio_assets_manifest.json");
             }
@@ -48,27 +61,33 @@ export class AudioManifestManager {
         const item = this.manifest[category]?.[id];
         if (!item) return null;
 
+        // If the manifest has a direct web path, use it.
         if (item.path) return item.path;
 
         let url = item.filename || id;
 
-        // Robust path normalization
+        // Normalize start
+        if (url.startsWith('/')) url = url.substring(1);
+
         if (!url.match(/^(http|https|blob|data):/)) {
-            // Remove leading slash for consistent checking
-            let cleanUrl = url.startsWith('/') ? url.substring(1) : url;
-
-            // Ensure it starts with media/audio/ if it doesn't already (and isn't in public/)
-            if (!cleanUrl.startsWith('media/') && !cleanUrl.startsWith('public/')) {
-                cleanUrl = `media/audio/${cleanUrl}`;
+            // Force standard media/audio path if not present.
+            // We ignore this.basePath because the manifest might be in /data/ while assets are in /media/
+            if (!url.startsWith('media/audio/') && !url.startsWith('data/')) {
+                // If it starts with media/ but not media/audio/, we assume it's relative to root media/
+                if (!url.startsWith('media/')) {
+                    url = `media/audio/${url}`;
+                }
             }
-
-            // Add root slash
-            url = '/' + cleanUrl;
+            url = '/' + url;
         }
 
         // Heuristic: If no extension is present, assume .wav to prevent 404s on extensionless IDs
         if (!url.split('/').pop().includes('.')) {
-            url += '.wav';
+            if (item.format) {
+                url += `.${item.format}`;
+            } else {
+                url += '.wav';
+            }
         }
 
         return url;
