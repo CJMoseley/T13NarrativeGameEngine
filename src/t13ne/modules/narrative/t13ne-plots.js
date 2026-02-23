@@ -1,4 +1,4 @@
-import CodexLoader from "../codex/CodexLoader.js";
+﻿import CodexLoader from "../codex/CodexLoader.js";
 import Logger from "../../core/Logger.js";
 import T13Tapestry from "../world/T13Tapestry.js";
 import T13NE_Facets from "../mechanics/t13ne-facets.js";
@@ -1283,11 +1283,11 @@ class T13Plot extends SuperKnot {
         this.subPlots.push(subPlot);
         this.logEvent(`Spawned subplot: ${subPlot.Name}`);
         Logger.message(`Plot ${this.Name}: Spawned subplot ${subPlot.Name}`);
-        
+
         // Ensure children are saved and parent is updated
         subPlot.save();
-        this.save(); 
-        
+        this.save();
+
         return subPlot;
     }
 
@@ -1367,9 +1367,26 @@ class T13Plot extends SuperKnot {
             memory: this.memory,
             characterArcs: this.characterArcs.map(a => a.id || a),
             Hooked_Characters: this.characters.map(c => {
-                // Preserve character object with hook data if it exists
                 if (c.hookSide || c.hookSpread) {
-                    return { ...c };
+                    const cleanChar = {
+                        id: c.id,
+                        name: c.name || c.Name,
+                        charType: c.charType,
+                        hookSide: c.hookSide,
+                        hookFacet: c.hookFacet,
+                        hookedAt: c.hookedAt,
+                        hookSpread: null
+                    };
+                    if (c.hookSpread) {
+                        try {
+                            cleanChar.hookSpread = typeof c.hookSpread.serialize === 'function'
+                                ? c.hookSpread.serialize()
+                                : JSON.parse(JSON.stringify(c.hookSpread));
+                        } catch (e) {
+                            cleanChar.hookSpread = { error: "Uncloneable spread" };
+                        }
+                    }
+                    return cleanChar;
                 }
                 return c.id || c.name || c;
             }),
