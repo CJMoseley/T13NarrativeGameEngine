@@ -77,6 +77,27 @@ class CodexDB {
         return new Promise((resolve, reject) => {
             const transaction = this.db.transaction([storeName], 'readwrite');
             const store = transaction.objectStore(storeName);
+            // Debug uncloneable data
+            const findUncloneable = (obj, path = '') => {
+                if (obj instanceof Promise) return path;
+                if (typeof obj !== 'object' || obj === null) return null;
+                for (const key in obj) {
+                    try {
+                        const res = findUncloneable(obj[key], path ? `${path}.${key}` : key);
+                        if (res) return res;
+                    } catch (e) {
+                        return path ? `${path}.${key}` : key;
+                    }
+                }
+                return null;
+            };
+
+            const uncloneablePath = findUncloneable(item);
+            if (uncloneablePath) {
+                Logger.error(`CodexDB: Uncloneable property found at item.${uncloneablePath}`);
+                console.error('Uncloneable item:', item);
+            }
+
             const request = store.put(item);
             request.onsuccess = () => resolve(request.result);
             request.onerror = () => reject(request.error);

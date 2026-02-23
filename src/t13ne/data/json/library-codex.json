@@ -616,6 +616,9 @@
       },
       "thresholdTypes.json": {
         "description": "Defines different types of thresholds between elements."
+      },
+      "wormhole_racers_priming.json": {
+        "description": "Definition file for the Wormhole Racers priming data."
       }
     }
   },
