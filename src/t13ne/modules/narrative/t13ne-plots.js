@@ -1,4 +1,4 @@
-﻿import CodexLoader from "../codex/CodexLoader.js";
+import CodexLoader from "../codex/CodexLoader.js";
 import Logger from "../../core/Logger.js";
 import T13Tapestry from "../world/T13Tapestry.js";
 import T13NE_Facets from "../mechanics/t13ne-facets.js";
@@ -30,6 +30,13 @@ class T13Plot extends SuperKnot {
         super(t13ne?.getModule('Codex'), data);
 
         this.t13ne = t13ne; // Reference to main system for commands
+
+        // Register with Plots module if available
+        const PlotsModule = this.t13ne?.getModule('Plots');
+        if (PlotsModule && !PlotsModule.plots.includes(this)) {
+            PlotsModule.plots.push(this);
+        }
+
         this.Name = this.name || data.Name || data.name || "Unnamed Plot";
         this.memory = data.memory || { events: [] };
         this.subPlots = [];
@@ -65,6 +72,12 @@ class T13Plot extends SuperKnot {
         this.era = data.era || 'Timeless';
         this.variety = data.variety || data.actType || 'Unknown';
 
+        // Hierarchy & Spread Data
+        this.index = data.index || 0;
+        this.spread = data.spread || data.Spread || null;
+        this.scenes = data.scenes || null;
+        this.sceneType = data.sceneType || null;
+
         // Narrative Role Stacking & Importance
         this.importance = data.importance || 5; // 1-10 level for AI focus
         this.narrativeRoles = data.narrativeRoles || [this.Rank]; // Stackable roles (e.g., ['Story', 'Arc-Act'])
@@ -80,6 +93,18 @@ class T13Plot extends SuperKnot {
         this.ensureRatchet();
 
         Logger.message(`T13Plot: Created plot '${this.Name}' (Rank: ${this.Rank}, Variety: ${this.variety}, Importance: ${this.importance}, Tags: ${this.tags.join(', ')})`);
+
+        // Automatically save on creation
+        this.save();
+    }
+
+    /**
+     * Saves the plot to the Codex storage.
+     */
+    async save() {
+        if (CodexLoader) {
+            await CodexLoader.saveEntityToStore(this);
+        }
     }
 
     /**
@@ -177,17 +202,18 @@ class T13Plot extends SuperKnot {
      * @param {string} side - 'Dominant', 'Pressed', etc.
      * @param {string} [facet] - Optional specific facet name.
      */
-    async hookCharacter(character, side, facet = null) {
+    async hookCharacter(character, side, facet = null, hookSpread = null) {
         if (!character) return;
 
         // Check if already hooked
         const existingIndex = this.characters.findIndex(c => c.id === character.id || c.name === character.name);
 
         const hookData = {
-            ...character, // Store reference or shallow copy depending on architecture
+            ...character, // Store reference or shallow copy depending on architecture 
             hookSide: side,
             hookFacet: facet,
-            hookedAt: Date.now()
+            hookedAt: Date.now(),
+            hookSpread: hookSpread || character.hookSpread || null // Store the hook that was used
         };
 
         if (existingIndex !== -1) {
@@ -421,30 +447,6 @@ class T13Plot extends SuperKnot {
     async cascadePlot(options = {}) {
         if (typeof options === 'string') options = { startRank: options };
 
-        // Attempt to offload to worker
-        const Referee = this.t13ne?.getModule('Referee');
-        if (Referee && Referee.workerPool && !options.noWorker) {
-            try {
-                Logger.message(`T13Plot: Offloading cascade of ${this.Name} to worker...`);
-                const seed = options.seed || (this.tags.includes('HISTORICAL') ? `${this.location || this.id}_${this.Rank}` : null);
-                const result = await Referee.workerPool.execute('generate_cascade_hierarchy', {
-                    startRank: options.startRank || this.Rank,
-                    seed,
-                    variety: this.variety,
-                    name: this.Name,
-                    options: options
-                });
-
-                if (result && result.result) {
-                    this._hydrateHierarchy(result.result);
-                    Logger.message(`T13Plot: Successfully hydrated offloaded cascade for ${this.Name}.`);
-                    return;
-                }
-            } catch (e) {
-                Logger.warn(`T13Plot: Worker cascade failed for ${this.Name}, falling back to main thread.`, e);
-            }
-        }
-
         if (!T13NECardsAPI.isInitialized) {
             Logger.warn("T13CardAPI not initialized, cannot cascade plot.");
             return;
@@ -502,7 +504,8 @@ class T13Plot extends SuperKnot {
                     const subPlot = this.spawnSubPlot(childName, {
                         Rank: childRank,
                         variety: childDef.variety || 'Unknown',
-                        Description: `Generated from ${currentRank} Cascade.`
+                        Description: `Generated from ${currentRank} Cascade.`,
+                        spread: childDef.spread || null
                     });
 
                     // Conditionally cascade recursively
@@ -521,7 +524,8 @@ class T13Plot extends SuperKnot {
                 const subPlot = this.spawnSubPlot(childName, {
                     Rank: childRank,
                     variety: component.variety || 'Unknown',
-                    Description: component.description || `Generated from ${currentRank} Cascade.`
+                    Description: component.description || `Generated from ${currentRank} Cascade.`,
+                    spread: component.spread || null
                 });
 
                 // Conditionally cascade recursively
@@ -533,28 +537,6 @@ class T13Plot extends SuperKnot {
         if (seed) {
             PRNG.popSeed();
             ProcGen.sync();
-        }
-    }
-
-    /**
-     * Maps a JSON tree from the worker back into T13Plot class instances.
-     * @param {object} data - The JSON tree from the worker.
-     * @private
-     */
-    _hydrateHierarchy(data) {
-        if (!data || !data.children) return;
-
-        for (const childData of data.children) {
-            const subPlot = new T13Plot({
-                ...childData,
-                parentPlot: this,
-                t13ne: this.t13ne
-            }, this.t13ne);
-
-            this.subPlots.push(subPlot);
-
-            // Recursively hydrate grandchildren
-            subPlot._hydrateHierarchy(childData);
         }
     }
 
@@ -612,6 +594,23 @@ class T13Plot extends SuperKnot {
 
         // "what the Scene would like the characters to achieve"
         this.goal = "To advance the narrative by resolving the local conflict.";
+    }
+
+    /**
+     * Triggers the rendering of this plot as a game scene.
+     */
+    async play() {
+        if (this.Rank !== 'Scene') {
+            Logger.warn(`Plot ${this.Name}: Cannot play non-Scene rank plot.`);
+            return;
+        }
+
+        const ViewManager = this.t13ne?.getModule('ViewManager');
+        if (ViewManager) {
+            const sceneName = this.sceneType || 'DialogueScene';
+            Logger.message(`Plot ${this.Name}: Requesting transition to scene '${sceneName}'.`);
+            await ViewManager.transitionToScene(sceneName, { plot: this });
+        }
     }
 
     /**
@@ -773,7 +772,8 @@ class T13Plot extends SuperKnot {
                             index: ctx.currentSceneIndex,
                             goal: sceneData.Description,
                             sceneType: sceneData.Type,
-                            components: sceneData.Components
+                            components: sceneData.Components,
+                            spread: sceneData.Spread || null
                         });
                     }
 
@@ -958,6 +958,11 @@ class T13Plot extends SuperKnot {
             Logger.message(`Plot ${this.Name}: Defeated/Resolved. Removing from active plots.`);
             this.isActive = false; // Mark for removal
 
+            // Tag as Historical on resolution
+            if (!this.tags.includes('HISTORICAL')) this.tags.push('HISTORICAL');
+            const activeIdx = this.tags.indexOf('CURRENT_ACTIVE');
+            if (activeIdx !== -1) this.tags.splice(activeIdx, 1);
+
             // Generate Resolution Lore
             const lore = T13LoreManager.generateLore('History', {
                 topic: `${this.Name} Resolution`,
@@ -975,6 +980,9 @@ class T13Plot extends SuperKnot {
 
         // Transition state machine to final state
         this.stateMachine.transition('RESOLUTION');
+
+        // Save final state
+        await this.save();
     }
 
     /**
@@ -1221,10 +1229,20 @@ class T13Plot extends SuperKnot {
             // Here we would trigger actual game effects based on narrativeEffect or card types
             // For now, we just log it.
             if (this.currentState === 'Frame' && decision.narrativeEffect.toLowerCase().includes('hook')) {
-                // Simulate hooking logic if not already handled
+                // If this plot has a spread (e.g. it's a Hook scene), use its cards for the hook
+                const hookSpread = (this.sceneType === 'Hook' || this.variety === 'Hook') ? this.spread : null;
+
                 if (this.characters.length === 0) {
                     Logger.message(`Plot ${this.Name}: Hooks established via card play.`);
-                    // In a real system, we'd add characters here.
+                    // In a real system, we'd add characters here. 
+                    // This logic would pull from the current context/location.
+                }
+
+                // If we have characters and cards, ensure we store the hook
+                for (const char of this.characters) {
+                    if (!char.hookSpread) {
+                        char.hookSpread = hookSpread || playedCards;
+                    }
                 }
             }
 
@@ -1265,6 +1283,11 @@ class T13Plot extends SuperKnot {
         this.subPlots.push(subPlot);
         this.logEvent(`Spawned subplot: ${subPlot.Name}`);
         Logger.message(`Plot ${this.Name}: Spawned subplot ${subPlot.Name}`);
+        
+        // Ensure children are saved and parent is updated
+        subPlot.save();
+        this.save(); 
+        
         return subPlot;
     }
 
@@ -1313,65 +1336,6 @@ class T13Plot extends SuperKnot {
     }
 
     /**
-     * Serializes the Plot instance for the Web Worker.
-     * Strips methods, circular references, and UI elements.
-     * @returns {Promise<object>} A clean JSON object for the worker.
-     */
-    async serializeForWorker() {
-        const charSummaries = [];
-
-        for (const char of this.characters) {
-            let maxBoon = 0;
-            if (this.Conflict && this.Conflict.Sides) {
-                const sideName = char.hookSide;
-                const sideData = this.Conflict.Sides[sideName];
-                if (sideData && char.facetweb) {
-                    const facetsToCheck = sideData.Facets || [];
-                    for (const facetId of facetsToCheck) {
-                        const facetObj = await T13NE_Facets.getFacet(facetId);
-                        if (facetObj) {
-                            const charBoonData = await char.facetweb.getFacetBoon(facetObj.FacetName);
-                            const totalBoon = (charBoonData.Boon || 0) + (char.scaleModifier || 0);
-                            if (totalBoon > maxBoon) maxBoon = totalBoon;
-                        }
-                    }
-                }
-            }
-
-            charSummaries.push({
-                id: char.id || char.name,
-                name: char.name,
-                hookSide: char.hookSide,
-                hookFacet: char.hookFacet,
-                applicableBoonScore: Math.max(13, maxBoon),
-                scaleModifier: char.scaleModifier || 0
-            });
-        }
-
-        return {
-            id: this.id,
-            Name: this.Name,
-            Rank: this.Rank,
-            tensionLevel: this.tensionLevel,
-            currentState: this.currentState,
-            isActive: this.isActive,
-            isResolved: this.isResolved,
-            conflictBoons: this.conflictBoons,
-            variety: this.variety,
-            scenes: this.scenes,
-            tags: this.tags,
-            yarnPoints: this.yarnPoints,
-            characters: charSummaries,
-            Conflict: this.Conflict,
-            genre: this.genre,
-            era: this.era,
-            importance: this.importance,
-            narrativeRoles: this.narrativeRoles,
-            parentPlotId: this.parentPlot ? this.parentPlot.id : null
-        };
-    }
-
-    /**
      * Serializes the Plot instance for saving.
      * @returns {object} A serializable data object.
      */
@@ -1396,9 +1360,19 @@ class T13Plot extends SuperKnot {
             Location: this.location,
             Motifs: this.motifs,
             Significator: this.significator,
+            spread: this.spread,
+            index: this.index,
+            scenes: this.scenes,
+            sceneType: this.sceneType,
             memory: this.memory,
             characterArcs: this.characterArcs.map(a => a.id || a),
-            Hooked_Characters: this.characters.map(c => c.id || c.name),
+            Hooked_Characters: this.characters.map(c => {
+                // Preserve character object with hook data if it exists
+                if (c.hookSide || c.hookSpread) {
+                    return { ...c };
+                }
+                return c.id || c.name || c;
+            }),
             importance: this.importance,
             narrativeRoles: this.narrativeRoles,
             tags: this.tags,

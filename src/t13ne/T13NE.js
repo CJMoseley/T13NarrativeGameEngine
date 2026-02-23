@@ -1,9 +1,9 @@
 import Logger from './core/Logger.js';
-import T13NE_Facets from './modules/mechanics/t13ne-facets.js';
+import T13NE_Facets from './modules/mechanics/t13ne-facets.js'; 
 import T13NE_Sway from './modules/mechanics/t13ne-sway.js';
 import CodexLoader from './modules/codex/CodexLoader.js';
 
-import T13NECardsAPI from './modules/mechanics/t13ne-cards-api.js'; // Import the T13NECardsAPI
+import T13NECardsAPI from './modules/mechanics/t13ne-cards-api.js'; 
 import AIService from './modules/ai/AIService.js';
 import T13NE_IChing from './modules/mechanics/t13ne-iching.js';
 import T13Ordeals from './modules/systems/ordeals/t13ne-ordeals.js';
@@ -42,10 +42,6 @@ import T13NE_Game from './modules/systems/t13ne-game.js';
 import T13NE_Reasoning from './modules/ai/t13ne-reasoning.js';
 import T13NE_StateMachine from './modules/systems/t13ne-state-machine.js';
 import T13NE_Editor from './modules/systems/t13ne-editor.js';
-import T13NE_Music from './modules/audio/t13ne-music.js';
-import T13NE_AudioDirector from './modules/audio/t13ne-audio-director.js';
-import T13NE_Conductor from './modules/audio/t13ne-conductor.js';
-import T13LoreManager from './modules/narrative/t13ne-lore.js';
 
 import { ViewManager } from './core/ViewManager.js';
 import { PluginManager } from './core/PluginManager.js';
@@ -79,12 +75,6 @@ class T13NE {
                 baseUrl: 'http://localhost:11434',
                 model: 'falcon3:3b',
                 temperature: 0.7
-            },
-            audio: {
-                masterVolume: 0.5,
-                musicVolume: 0.8,
-                sfxVolume: 1.0,
-                dialogueVolume: 1.0
             }
         };
 
@@ -98,8 +88,7 @@ class T13NE {
 
         this.config = {
             codex: { ...defaults.codex, ...(savedConfig.codex || {}) },
-            ai: { ...defaults.ai, ...(savedConfig.ai || {}) },
-            audio: { ...defaults.audio, ...(savedConfig.audio || {}) }
+            ai: { ...defaults.ai, ...(savedConfig.ai || {}) }
         };
     }
 
@@ -120,18 +109,6 @@ class T13NE {
                 this.config.ai = { ...this.config.ai, ...config.ai };
                 if (this.modules.AIService) {
                     this.modules.AIService.configure(this.config.ai);
-                }
-            }
-            if (config.audio) {
-                this.config.audio = { ...this.config.audio, ...config.audio };
-                // Apply audio settings immediately
-                if (this.soundEngine && config.audio.masterVolume !== undefined) {
-                    this.soundEngine.setMasterVolume(config.audio.masterVolume);
-                }
-                if (this.modules.Music && this.modules.Music.synth) {
-                    if (config.audio.musicVolume !== undefined) this.modules.Music.synth.setMusicVolume(config.audio.musicVolume);
-                    if (config.audio.sfxVolume !== undefined) this.modules.Music.synth.setSFXVolume(config.audio.sfxVolume);
-                    if (config.audio.dialogueVolume !== undefined) this.modules.Music.synth.setDialogueVolume(config.audio.dialogueVolume);
                 }
             }
 
@@ -237,33 +214,15 @@ class T13NE {
 
         // 1. Initialize Core Infrastructure
         this.soundEngine = new SoundEngine();
-        this.soundEngine.init();
-        // Apply master volume from config
-        if (this.config.audio && this.config.audio.masterVolume !== undefined) {
-            this.soundEngine.setMasterVolume(this.config.audio.masterVolume);
-        }
         this.pluginManager = new PluginManager(this);
         this.viewManager = new ViewManager(this); // Pass T13NE as the context
         this.loaderManager = new LoaderManager(this.viewManager);
-
-        // Initialize ViewManager to set up UI components
-        await this.viewManager.initialize();
 
         // 2. Load Narrative Modules
         await this.loadModules();
 
         this.engineInitialized = true;
         Logger.message("T13NE: Engine Core Initialized.");
-    }
-
-    /**
-     * Resumes the audio context if it was suspended (e.g. by browser policy).
-     * This is a safe method to call from UI interactions.
-     */
-    resumeAudio() {
-        if (this.soundEngine) {
-            this.soundEngine.start();
-        }
     }
 
     /**
@@ -293,17 +252,13 @@ class T13NE {
     }
 
     async _loadModulesInternal() {
-        console.log("T13NE DEBUG: _loadModulesInternal started");
+
         Logger.message("T13NE: Loading modules...");
 
         // Load the CodexLoader module first as other modules depend on it
-        console.log("T13NE DEBUG: Attaching CodexLoader...");
         this.modules.Codex = CodexLoader;
         this.modules.Codex.setConfig(this.config.codex);
-
-        console.log("T13NE DEBUG: Initializing Codex...");
         await this.modules.Codex.initialize();
-        console.log("T13NE DEBUG: Codex Initialized.");
         Logger.message("T13NE: CodexLoader module loaded.");
 
         // Load Commands module early so others can use it
@@ -379,21 +334,6 @@ class T13NE {
         await this.modules.Wounds.initialize();
         Logger.message("T13NE: Wounds module loaded.");
 
-        // Load Music module
-        this.modules.Music = T13NE_Music;
-        await this.modules.Music.initialize(this);
-        Logger.message("T13NE: Music module loaded.");
-
-        // Load AudioDirector module
-        this.modules.AudioDirector = T13NE_AudioDirector;
-        await this.modules.AudioDirector.initialize(this);
-        Logger.message("T13NE: AudioDirector module loaded.");
-
-        // Load Conductor module
-        this.modules.Conductor = T13NE_Conductor;
-        await this.modules.Conductor.initialize(this);
-        Logger.message("T13NE: Conductor module loaded.");
-
         // Load Character Arc module
         this.modules.CharacterArc = T13NE_CharacterArc;
         await this.modules.CharacterArc.initialize(this);
@@ -433,11 +373,6 @@ class T13NE {
         this.modules.NarrativeWeaving = T13NE_NarrativeWeaving;
         await this.modules.NarrativeWeaving.initialize(this);
         Logger.message("T13NE: Narrative Weaving module loaded.");
-
-        // Load Lore Manager
-        this.modules.Lore = T13LoreManager;
-        await this.modules.Lore.initialize(this);
-        Logger.message("T13NE: Lore Manager loaded.");
 
         // Load Resources module
         this.modules.Resources = T13NE_Resources;
@@ -518,8 +453,6 @@ class T13NE {
         await this.modules.StateMachine.initialize(this);
         Logger.message("T13NE: StateMachine module loaded.");
 
-
-
         // Load AI Name Generator for the T13NE.generateName() method
         this.modules.NameGenerator = new T13NameGenerator(this.modules.T13Geometry);
         await this.modules.NameGenerator.initialize();
@@ -560,11 +493,11 @@ class T13NE {
      * @returns {object|null}
      */
     getModule(moduleName) {
-        if (this.modules[moduleName]) {
-            return this.modules[moduleName];
+        if (!this.isLoaded) {
+            Logger.message("ERROR: T13NE modules not loaded yet. Call loadModules() first.");
+            return null;
         }
-        // Only warn if we expect it to be there but it isn't
-        return null;
+        return this.modules[moduleName] || null;
     }
 }
 

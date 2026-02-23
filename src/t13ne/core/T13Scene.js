@@ -15,6 +15,7 @@ export class T13Scene extends Scene {
 
         this.renderMode = sceneData.renderMode || '3d'; // '3d', '2d', or 'dual'
         this.location = sceneData.location || null; // T13 Location Entity
+        this.plot = sceneData.plot || null; // T13Plot instance
 
         // 2D Layer (SVG)
         this.twoDContainer = null;

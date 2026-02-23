@@ -1,4 +1,4 @@
-﻿﻿import Logger from '/src/t13ne/core/Logger.js';
+﻿import Logger from '/src/t13ne/core/Logger.js';
 import CodexDB from '/src/t13ne/modules/codex/CodexDB.js';
 
 /**
@@ -157,6 +157,34 @@ export class CodexScribe {
         // 3. Update IndexedDB (The real save)
         await CodexDB.saveFile(filePath, dataToSave);
         await CodexDB.saveKnot({ id: entity.id, type: type, ...dataToSave });
+
+        // 4. Update SuperKnot Catalogue if it's a Plot or other key entity
+        if (type === 'T13Plot' || type === 'Character') {
+            await this.updateSuperKnotCatalogue(entity.id, type, entity.Name || entity.name);
+        }
+    }
+
+    async updateSuperKnotCatalogue(id, type, name) {
+        const cataloguePath = 'knots/superknots/superknot-catalogue.json';
+        const fullPath = `/plugins/t13ne/data/json/${cataloguePath}`;
+        
+        let catalogue = this.dirtyFiles[fullPath] || await this.library.getData(cataloguePath) || [];
+        if (!Array.isArray(catalogue)) catalogue = [];
+
+        const existing = catalogue.find(item => item.id === id);
+        if (existing) {
+            existing.name = name;
+            existing.type = type;
+            existing.updatedAt = Date.now();
+        } else {
+            catalogue.push({ id, type, name, createdAt: Date.now(), updatedAt: Date.now() });
+        }
+
+        this.dirtyFiles[fullPath] = catalogue;
+        this.library.cache[fullPath] = catalogue;
+        
+        // Also save to DB
+        await CodexDB.saveFile(fullPath, catalogue);
     }
 
     async loadEntity(entityId, type) {
@@ -196,6 +224,10 @@ export class CodexScribe {
 
         const savedId = await this.createKnot(dataToSave, superKnotObject.proficiencyId);
         superKnotObject.proficiencyId = savedId;
+
+        // Update catalogue
+        await this.updateSuperKnotCatalogue(savedId, superKnotObject.constructor.name, superKnotObject.Name || superKnotObject.name);
+
         return savedId;
     }
 

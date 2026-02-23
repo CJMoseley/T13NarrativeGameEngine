@@ -1,4 +1,4 @@
-﻿import { CodexLibrary } from './CodexLibrary.js';
+import { CodexLibrary } from './CodexLibrary.js';
 import { CodexLibrarian } from './CodexLibrarian.js';
 import { CodexScribe } from './CodexScribe.js';
 
@@ -61,7 +61,8 @@ class CodexLoader {
     loadNarrativeGlob(id) { return this.scribe.loadNarrativeGlob(id); }
     saveSuperKnot(obj) { return this.scribe.saveSuperKnot(obj); }
     loadSuperKnot(id) { return this.scribe.loadSuperKnot(id); }
-    
+    saveEntityToStore(entity) { return this.scribe.saveEntityToStore(entity); }
+
     // Legacy internal method exposure if needed
     _buildFileIndex() { return this.library._buildFileIndex(); }
     _buildProficiencyManifest() { return this.librarian._buildProficiencyManifest(); }

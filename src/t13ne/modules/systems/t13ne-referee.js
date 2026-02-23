@@ -1,4 +1,4 @@
-﻿// d:\GoogleDrive\Games\wormholeracersJS\WormholeRacersJS\plugins\t13ne\modules\t13ne-referee.js
+// d:\GoogleDrive\Games\wormholeracersJS\WormholeRacersJS\plugins\t13ne\modules\t13ne-referee.js
 
 import Logger from "/src/t13ne/core/Logger.js";
 import { T13Plot } from "../narrative/t13ne-plots.js";
@@ -29,16 +29,6 @@ class T13NE_Referee {
         // Initialize Worker Pool
         this.workerPool = new WorkerPool('referee', new URL('./t13neworkers.js', import.meta.url), 1);
         await this.workerPool.init();
-
-        // Pass AI configuration to worker
-        const AIService = this.t13ne.getModule('AIService');
-        if (AIService && AIService.config) {
-            try {
-                await this.workerPool.execute('INITIALIZE_AI', { config: AIService.config });
-            } catch (e) {
-                Logger.warn("Referee: Failed to initialize AI in worker.", e);
-            }
-        }
 
         // Load priming data
         try {
@@ -249,67 +239,34 @@ class T13NE_Referee {
 
         Logger.message("T13NE_Referee: Processing Turn...");
 
-        // Gather all active plots (flattening hierarchy for processing)
-        const allPlots = [];
-        const gather = (plotList) => {
-            plotList.forEach(p => {
-                if (p.isActive && !p.isResolved) {
-                    allPlots.push(p);
-                }
-                // Always recurse to find sub-plots, even if parent is inactive/resolved
-                if (p.subPlots && p.subPlots.length > 0) {
-                    gather(p.subPlots);
-                }
-            });
-        };
-
-        if (Plots) gather(Plots.plots);
-
         // Use worker for heavy plot processing if possible
-        if (Plots && this.workerPool && allPlots.length > 0) {
+        if (Plots && this.workerPool) {
             try {
-                // Serialize plots for worker
-                const serializedPlots = await Promise.all(allPlots.map(p => p.serializeForWorker()));
-
-                // Provide rulesets for state machines
-                const rulesets = {
-                    plotMachine: {
-                        initial: 'Frame',
-                        states: {
-                            'Frame': { transitions: { 'HOOKS_SET': 'Loom' } },
-                            'Loom': { transitions: { 'CLIMAX_APPROACHING': 'Zenith', 'RELAX': 'Loom' } },
-                            'Zenith': { transitions: { 'RESOLUTION': 'Resolved' } },
-                            'Resolved': {}
-                        }
-                    },
-                    warpMachine: {
-                        initial: 'The Ends',
-                        states: {
-                            'The Ends': { transitions: { 'ENGAGE': 'The Fray' } },
-                            'The Fray': { transitions: { 'COMPLICATE': 'The Snag', 'RESOLVE': 'Complete' } },
-                            'The Snag': { transitions: { 'RESOLVE': 'Complete' } },
-                            'Complete': {}
-                        }
-                    }
-                };
-
-                const workerResult = await this.workerPool.execute('process_plots', {
-                    plots: serializedPlots,
-                    rulesets: rulesets
-                });
-
-                if (workerResult && Array.isArray(workerResult.result)) {
-                    await this.applyWorkerDeltas(workerResult.result);
-                    Logger.message(`Referee: Worker processed ${serializedPlots.length} plots and returned ${workerResult.result.length} deltas.`);
-                    return; // Successfully processed via worker
-                }
+                // Serialize plots for worker (simplified for demo)
+                const plotSummary = Plots.plots.map(p => ({ id: p.id, tensionLevel: p.tensionLevel }));
+                const workerResult = await this.workerPool.execute('process_plots', { plots: plotSummary });
+                Logger.message(`Referee: Worker processed ${workerResult.result.length} plots.`);
             } catch (e) {
                 Logger.warn("Referee: Worker turn processing failed, falling back to main thread.", e);
             }
         }
 
-        if (Plots && allPlots.length > 0) {
-            // Fallback: Main thread execution
+        if (Plots) {
+            // Gather all active plots (flattening hierarchy for processing)
+            const allPlots = [];
+            const gather = (plotList) => {
+                plotList.forEach(p => {
+                    if (p.isActive && !p.isResolved) {
+                        allPlots.push(p);
+                    }
+                    // Always recurse to find sub-plots, even if parent is inactive/resolved
+                    if (p.subPlots && p.subPlots.length > 0) {
+                        gather(p.subPlots);
+                    }
+                });
+            };
+            gather(Plots.plots);
+
             // Prioritize Plots
             // Rules: Zenith > Loom > Frame. High Tension > Low Tension.
             const stateScore = { 'Zenith': 3, 'Loom': 2, 'Frame': 1, 'SceneActive': 2, 'NextScene': 1 };
@@ -323,53 +280,22 @@ class T13NE_Referee {
             Logger.message(`T13NE_Referee: Found ${allPlots.length} active plots. Top priority: ${allPlots[0]?.Name}`);
 
             // Execute Plots
+            // We act on them in priority order.
+            // Note: Act() calls updateState(), which may spawn new subplots.
             for (const plot of allPlots) {
                 await plot.act(AIService);
+
+                // If a Scene plot is active and at top priority, trigger its display
+                if (plot === allPlots[0] && plot.Rank === 'Scene' && plot.isActive && !plot.isResolved) {
+                    const ViewManager = this.t13ne.getModule('ViewManager');
+                    if (ViewManager && ViewManager.currentScene?.plot !== plot) {
+                        await plot.play();
+                    }
+                }
             }
         }
 
         // Future expansion: Check active Arcs, trigger Latent Drama, etc.
-    }
-
-    /**
-     * Applies delta updates from the worker to the live game state.
-     * @param {Array} deltas - Array of delta objects.
-     */
-    async applyWorkerDeltas(deltas) {
-        const Plots = this.t13ne.getModule('Plots');
-        if (!Plots || !deltas) return;
-
-        for (const delta of deltas) {
-            const plot = Plots.getPlot(delta.id);
-
-            switch (delta.action) {
-                case 'UPDATE_TENSION':
-                    if (plot) plot.updateTension(delta.newLevel);
-                    break;
-                case 'TRANSITION_STATE':
-                    if (plot && plot.stateMachine) {
-                        plot.stateMachine.transition(delta.transition);
-                    }
-                    break;
-                case 'SPAWN_SUBPLOT':
-                    if (plot) {
-                        plot.spawnSubPlot(delta.name, delta.context);
-                    }
-                    break;
-                case 'RESOLVE_PLOT':
-                    if (plot) await plot.resolve(delta.resolutionType || 'Resolution');
-                    break;
-                case 'UPDATE_YARN':
-                    if (plot) plot.yarnPoints = delta.newValue;
-                    break;
-                case 'LOG_EVENT':
-                    if (plot) plot.logEvent(delta.message);
-                    break;
-                case 'UPDATE_BOONS':
-                    if (plot) plot.conflictBoons = delta.newBoons;
-                    break;
-            }
-        }
     }
 
     /**
