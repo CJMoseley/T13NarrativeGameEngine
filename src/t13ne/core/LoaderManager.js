@@ -45,43 +45,33 @@ class LoaderManager {
                         this.reportProgress("Click to Initialize Systems...");
 
                         await new Promise(resolve => {
-                            const startBtn = document.getElementById('start-button');
-                            if (startBtn) {
-                                startBtn.style.display = 'block';
-                                startBtn.onclick = async () => {
-                                    startBtn.style.display = 'none';
-                                    this.reportProgress("Initializing...");
-                                    await new Promise(r => setTimeout(r, 100));
-                                    await soundEngine.audioContext.resume();
-                                    resolve();
-                                };
-                            } else {
-                                IntroSequence.promptForInteraction(async () => {
-                                    await soundEngine.audioContext.resume();
-                                    resolve();
-                                });
-                            }
+                            IntroSequence.promptForInteraction(async () => {
+                                await soundEngine.audioContext.resume();
+                                resolve();
+                            });
                         });
                     }
                 }
             },
             { name: 'Physics Engine', action: () => this.gameEngine.physicsEngine.init() },
-            { name: 'Load T13 Core', action: async () => {
-                if (this.engine.loadModules) await this.engine.loadModules();
-                
-                // Manually register T13 Core APIs since it's no longer a plugin
-                // This ensures generators can find 'T13' APIs via PluginManager
-                if (this.pluginManager) {
-                    this.pluginManager.exposeApi('T13', 'T13NE', this.engine);
-                    
-                    const modules = ['Codex', 'CardsAPI', 'T13Geometry', 'Tapestry'];
-                    modules.forEach(m => {
-                        const mod = this.engine.getModule(m);
-                        if (mod) this.pluginManager.exposeApi('T13', m, mod);
-                    });
-                    Logger.message("LoaderManager: T13 Core APIs registered manually.");
+            {
+                name: 'Load T13 Core', action: async () => {
+                    if (this.engine.loadModules) await this.engine.loadModules();
+
+                    // Manually register T13 Core APIs since it's no longer a plugin
+                    // This ensures generators can find 'T13' APIs via PluginManager
+                    if (this.pluginManager) {
+                        this.pluginManager.exposeApi('T13', 'T13NE', this.engine);
+
+                        const modules = ['Codex', 'CardsAPI', 'T13Geometry', 'Tapestry'];
+                        modules.forEach(m => {
+                            const mod = this.engine.getModule(m);
+                            if (mod) this.pluginManager.exposeApi('T13', m, mod);
+                        });
+                        Logger.message("LoaderManager: T13 Core APIs registered manually.");
+                    }
                 }
-            }},
+            },
             { name: 'Discover Plugins', action: () => this.pluginManager.discoverAndLoadPlugins(this) },
             { name: 'Initialize Plugins', action: () => this.pluginManager.initializePlugins(this) },
             { name: 'Lore Data', action: () => this.loreDataManager.load() },
