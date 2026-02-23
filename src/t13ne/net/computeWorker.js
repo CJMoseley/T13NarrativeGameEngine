@@ -1,13 +1,9 @@
 // Module worker that computes per-segment wormhole samples using existing PerlinNoise implementation.
+import workerpool from 'workerpool';
 import { PerlinNoise } from '/src/t13ne/utils/PerlinNoise.js';
 import { ColourUtils } from '/src/t13ne/utils/ColourUtils.js';
 
-// Worker expects message: { task: { taskId, startPoint, endPoint, segments, baseRadius, freqs, env, timeOffset } }
-self.addEventListener('message', async (ev) => {
-    const data = ev.data;
-    if (!data || !data.task) return;
-    const task = data.task;
-
+async function computeSamples(task) {
     const segments = task.segments || 32;
     const radii = new Float32Array(segments);
     const colors = new Float32Array(segments * 3);
@@ -27,7 +23,6 @@ self.addEventListener('message', async (ev) => {
             z: start.z + (end.z - start.z) * t
         };
 
-        // Map to noise inputs like WormholeEnvironment
         const d1 = center.x * 0.01;
         const d2 = center.y * 0.01;
         const d3 = center.z * 0.01;
@@ -55,7 +50,6 @@ self.addEventListener('message', async (ev) => {
         colors[i * 3 + 2] = b;
     }
 
-    // Compute simple digest (SHA-256) of radii buffer for basic integrity
     let digestHex = null;
     try {
         const buf = radii.buffer;
@@ -66,13 +60,16 @@ self.addEventListener('message', async (ev) => {
         digestHex = 'nodigest';
     }
 
-    // Post result back to main thread
-    self.postMessage({
-        type: 'taskResult',
+    return {
         taskId: task.taskId,
         radii: Array.from(radii),
         colors: Array.from(colors),
         digest: digestHex,
         size: radii.length
-    });
+    };
+}
+
+// create a worker and register public functions
+workerpool.worker({
+    computeSamples: computeSamples
 });
