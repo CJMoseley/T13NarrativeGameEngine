@@ -102,7 +102,7 @@ export const generateBioCluster = (context) => {
 export const generateMonolith = (context) => {
     const { size, random, attachComponent } = context;
     
-    // Monolith: Single massive primitive with surface detail
+    // Monolith: Single massive primitive with surface detail (Geometric Solid)
     const monoSize = (size === 'small' ? 5 : (size === 'medium' ? 10 : 18)) * (0.8 + random() * 0.4);
     // Shape: Box or Prism (4-6 sides)
     const shapeRoll = random();
@@ -188,7 +188,7 @@ export const generateFractal = (context) => {
 export const generateLiberator = (context) => {
     const { spineLength, attachComponent, radialCount } = context;
     
-    // Liberator (DSV2) - Tri-radial, Hex Hull, Rear Sphere, 3 Nacelles
+    // Liberator Style - Tri-radial, Hex Hull, Rear Sphere, 3 Nacelles
     // Scale factor: spineLength is roughly the total length.
     // User spec: Spine (Hub to Sphere) is 3.5x engine spread.
     // Let's normalize units so the ship looks proportional.

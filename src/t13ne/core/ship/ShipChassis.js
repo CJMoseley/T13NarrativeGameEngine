@@ -24,8 +24,8 @@ const socket = (id, type, x, y, z, rx=0, ry=0, rz=0, mirror=false) => ({
 
 export const SHIP_PARTS = {
     // --- SAUCERS ---
-    'saucer_constitution': {
-        id: 'saucer_constitution',
+    'saucer_classic': {
+        id: 'saucer_classic',
         type: 'composite', // Made of multiple primitives
         usage: 'hull_primary',
         components: [
@@ -39,10 +39,10 @@ export const SHIP_PARTS = {
             socket('edge_port', SOCKET_TYPES.WEAPON_MOUNT, 8.5, 0, 0),
             socket('edge_starboard', SOCKET_TYPES.WEAPON_MOUNT, -8.5, 0, 0)
         ],
-        tags: ['federation', 'standard']
+        tags: ['union', 'standard']
     },
-    'saucer_galaxy': {
-        id: 'saucer_galaxy',
+    'saucer_elliptical': {
+        id: 'saucer_elliptical',
         type: 'composite',
         usage: 'hull_primary',
         components: [
@@ -54,10 +54,10 @@ export const SHIP_PARTS = {
             socket('neck', SOCKET_TYPES.SAUCER_VENTRAL, 0, -1.5, 4), // Further back
             socket('phaser_strip', SOCKET_TYPES.WEAPON_MOUNT, 0, 0, 7)
         ],
-        tags: ['federation', 'advanced', 'organic']
+        tags: ['union', 'advanced', 'organic']
     },
-    'saucer_sovereign': {
-        id: 'saucer_sovereign',
+    'saucer_wedge': {
+        id: 'saucer_wedge',
         type: 'composite',
         usage: 'hull_primary',
         components: [
@@ -67,12 +67,12 @@ export const SHIP_PARTS = {
             socket('bridge', SOCKET_TYPES.BRIDGE_MOUNT, 0, 1.0, -2),
             socket('neck', SOCKET_TYPES.SAUCER_VENTRAL, 0, -1.0, 2)
         ],
-        tags: ['federation', 'warship']
+        tags: ['union', 'warship']
     },
 
     // --- SECONDARY HULLS ---
-    'hull_cylindrical': {
-        id: 'hull_cylindrical',
+    'hull_cylindrical_standard': {
+        id: 'hull_cylindrical_standard',
         type: 'cylinder',
         dims: { radiusTop: 2.5, radiusBottom: 2.5, height: 12, radialSegments: 16 },
         rot: [Math.PI/2, 0, 0], // Lay flat
@@ -84,10 +84,10 @@ export const SHIP_PARTS = {
             socket('deflector', SOCKET_TYPES.DEFLECTOR, 0, 0, 6),
             socket('shuttlebay', SOCKET_TYPES.FUSELAGE_AFT, 0, 1, -6)
         ],
-        tags: ['federation', 'standard']
+        tags: ['union', 'standard']
     },
-    'hull_box_freighter': {
-        id: 'hull_box_freighter',
+    'hull_box_cargo': {
+        id: 'hull_box_cargo',
         type: 'box',
         dims: { width: 4, height: 4, depth: 16 },
         usage: 'hull_secondary',
@@ -101,8 +101,8 @@ export const SHIP_PARTS = {
     },
 
     // --- NECKS ---
-    'neck_vertical': {
-        id: 'neck_vertical',
+    'neck_upright': {
+        id: 'neck_upright',
         type: 'box',
         dims: { width: 1.5, height: 4, depth: 3 },
         usage: 'fuselage_neck',
@@ -112,8 +112,8 @@ export const SHIP_PARTS = {
         ],
         tags: ['standard']
     },
-    'neck_forward_swept': {
-        id: 'neck_forward_swept',
+    'neck_swept': {
+        id: 'neck_swept',
         type: 'wedge',
         dims: { span: 2, rootChord: 6, tipChord: 4, sweep: 2, depth: 2, centered: true },
         rot: [0, 0, Math.PI/2], // Rotate to stand up
@@ -126,8 +126,8 @@ export const SHIP_PARTS = {
     },
 
     // --- NACELLES ---
-    'nacelle_tube': {
-        id: 'nacelle_tube',
+    'nacelle_cylindrical': {
+        id: 'nacelle_cylindrical',
         type: 'cylinder',
         dims: { radiusTop: 1.2, radiusBottom: 1.2, height: 14, radialSegments: 16 },
         rot: [Math.PI/2, 0, 0],
@@ -136,10 +136,10 @@ export const SHIP_PARTS = {
             socket('pylon', SOCKET_TYPES.PYLON_MOUNT, 0, -1.2, 0),
             socket('bussard', SOCKET_TYPES.FORWARD, 0, 0, 7)
         ],
-        tags: ['federation', 'standard']
+        tags: ['union', 'standard']
     },
-    'nacelle_box': {
-        id: 'nacelle_box',
+    'nacelle_rectangular': {
+        id: 'nacelle_rectangular',
         type: 'box',
         dims: { width: 1.5, height: 2, depth: 12 },
         usage: 'warp_nacelle',
@@ -161,8 +161,8 @@ export const SHIP_PARTS = {
         ],
         tags: ['standard']
     },
-    'pylon_angled_up': {
-        id: 'pylon_angled_up',
+    'pylon_angled': {
+        id: 'pylon_angled',
         type: 'box',
         dims: { width: 6, height: 0.5, depth: 2 },
         rot: [0, 0, Math.PI/6], // 30 deg up
@@ -171,7 +171,7 @@ export const SHIP_PARTS = {
             socket('root', SOCKET_TYPES.PYLON_MOUNT, -2.5, -1.5, 0),
             socket('tip', SOCKET_TYPES.NACELLE_MOUNT, 2.5, 1.5, 0)
         ],
-        tags: ['federation']
+        tags: ['union']
     },
 
     // --- BRIDGES ---
@@ -194,8 +194,8 @@ export const SHIP_PARTS = {
     },
 
     // --- EXOTIC ---
-    'ring_structure': {
-        id: 'ring_structure',
+    'ring_habitat': {
+        id: 'ring_habitat',
         type: 'torus',
         dims: { radius: 10, tube: 1.5 },
         rot: [Math.PI/2, 0, 0],
@@ -206,6 +206,6 @@ export const SHIP_PARTS = {
             socket('spoke_3', SOCKET_TYPES.RING_SPOKE, 0, 0, 10),
             socket('spoke_4', SOCKET_TYPES.RING_SPOKE, 0, 0, -10)
         ],
-        tags: ['station', 'vulcan']
+        tags: ['station', 'alien_logic']
     }
 };

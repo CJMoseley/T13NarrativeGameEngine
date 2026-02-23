@@ -12,7 +12,7 @@ export const generateStation = (context, hullType) => {
     // Rim
     const rimId = attachComponent('rim', [0,0,0], rot, 'torus', {radius: r, tube: tubeR}, 'NONE');
     
-    // Central Fuselage (Spine) - Treating these as "Ships with Rings"
+    // Central Fuselage (Spine) - Treating these as "Stations with Rings"
     // Length proportional to ring radius to look like a ship flying through a ring
     const fuselageLen = r * 1.2; 
     const fuselageRadius = tubeR * 1.5;

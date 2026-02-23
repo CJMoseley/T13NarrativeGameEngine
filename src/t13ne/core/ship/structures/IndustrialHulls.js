@@ -3,7 +3,7 @@ import * as THREE from 'three';
 export const generateFreighter = (context) => {
     const { spineLength, random, attachComponent, wiringGenerator, explicitWiring, components, getSurfacePoint } = context;
     
-    // Freighter: Long central spine with cargo pods attached
+    // Freighter: Long central spine with cargo pods attached (Standard Hauler)
     const trussLen = spineLength * 1.5;
     // Central Truss
     attachComponent('fuselage_spine', [0, 0, 0], [Math.PI/2, 0, 0], 'box', 
@@ -109,7 +109,7 @@ export const generateFreighter = (context) => {
 export const generateHorseshoe = (context) => {
     const { spineLength, random, attachComponent, wiringGenerator, explicitWiring, components } = context;
     
-    // Asymmetrical Curve (Alien Juggernaut style)
+    // Asymmetrical Curve (Crescent style)
     const curveRadius = spineLength * 0.8;
     const segments = 6 + Math.floor(random() * 4);
     const angleSpan = Math.PI * 1.2; // > 180 degrees
@@ -287,7 +287,7 @@ export const generateBlob = (context) => {
     // Variation helper: +/- 10%
     const vary = (val) => val * (0.9 + random() * 0.2);
 
-    // Feature Flags - Mix and Match
+    // Feature Flags - Mix and Match for Asymmetrical Disc
     const useNewHull = random() > 0.5;
     const useNewMandibles = random() > 0.5;
     const useNewCockpit = random() > 0.5;
@@ -375,7 +375,7 @@ export const generateBlob = (context) => {
     }
 
     // 3. Cockpit Access Arm
-    // Falcon-style Cockpit Assembly (Starboard Side)
+    // Asymmetrical Cockpit Assembly (Offset Side)
     const tubeRadius = hullHeight * 0.35; 
     // Length needs to be enough to get from hull edge to forward position
     // User map: (25,0,10) to (35,0,30). Length = sqrt(10^2 + 20^2) = 22.3.
@@ -475,17 +475,17 @@ export const generateBlob = (context) => {
 export const generateCatamaran = (context) => {
     const { size, random, attachComponent } = context;
 
-    // Determine Sub-Type: Standard (Saucer), Daedalus (Sphere), or Olympic (Oblate Sphere)
+    // Determine Sub-Type: Standard (Disc), Sphere-Bow, or Oblate-Bow
     const subTypeRoll = random();
     let subType = 'SAUCER';
-    if (subTypeRoll > 0.7) subType = 'DAEDALUS';
-    else if (subTypeRoll > 0.85) subType = 'OLYMPIC'; // Rare
+    if (subTypeRoll > 0.7) subType = 'SPHERE_BOW';
+    else if (subTypeRoll > 0.85) subType = 'OBLATE_BOW'; // Rare
 
     // 1. Primary Hull (Saucer)
     let primaryRadius, primaryHeight;
     
-    if (subType === 'DAEDALUS') {
-        // Daedalus: Sphere (32 unit diam -> 16 radius)
+    if (subType === 'SPHERE_BOW') {
+        // Sphere (32 unit diam -> 16 radius)
         const unit = (size === 'small' ? 0.6 : (size === 'medium' ? 1.0 : 1.5));
         
         primaryRadius = 16 * unit;
@@ -500,8 +500,8 @@ export const generateCatamaran = (context) => {
         // Sensor Band
         attachComponent('sensor_band', [0, 0, 0], [Math.PI/2, 0, 0], 'torus', { radius: primaryRadius, tube: 1.0 * unit }, 'NONE');
 
-    } else if (subType === 'OLYMPIC') {
-        // Olympic: Oblate Sphere (38 unit diam -> 19 radius)
+    } else if (subType === 'OBLATE_BOW') {
+        // Oblate Sphere (38 unit diam -> 19 radius)
         const unit = (size === 'small' ? 0.6 : (size === 'medium' ? 1.0 : 1.5));
         primaryRadius = 19 * unit;
         primaryHeight = primaryRadius * 2 * 0.92; // Squashed
@@ -515,7 +515,7 @@ export const generateCatamaran = (context) => {
         attachComponent('bridge', [0, primaryRadius * 0.8, primaryRadius * 0.5], [0, 0, 0], 'box', { width: 8 * unit, height: 4 * unit, depth: 6 * unit }, 'NONE');
 
     } else {
-        // Standard Saucer
+        // Standard Disc
         const saucerRadius = (size === 'small' ? 4 : (size === 'medium' ? 6 : 9));
         const saucerHeight = Math.max(1.5, saucerRadius * 0.25);
         primaryRadius = saucerRadius;
@@ -536,7 +536,7 @@ export const generateCatamaran = (context) => {
     }
 
     // 2. Configuration & Secondary Hull
-    const configType = random(); // 0-0.3: Miranda-ish, 0.3-1.0: Constitution/Voyager-ish
+    const configType = random(); // 0-0.3: Underslung, 0.3-1.0: Standard
     let hasEngineering = configType > 0.3;
 
     let engPos = [0, 0, 0];
@@ -547,7 +547,7 @@ export const generateCatamaran = (context) => {
     if (hasEngineering) {
         let neckLen;
         
-        if (subType === 'DAEDALUS') {
+        if (subType === 'SPHERE_BOW') {
             neckLen = 12 * unit;
             engLen = 56 * unit;
             engRadius = 5 * unit;
@@ -563,7 +563,7 @@ export const generateCatamaran = (context) => {
             attachComponent('fuselage_secondary', engPos, [Math.PI / 2, 0, 0], 'cylinder',
                 { radiusTop: engRadius, radiusBottom: engRadius, height: engLen, radialSegments: 16 }, 'NONE');
                 
-        } else if (subType === 'OLYMPIC') {
+        } else if (subType === 'OBLATE_BOW') {
             neckLen = 8 * unit;
             engLen = 54 * unit;
             engRadius = 6 * unit;
@@ -582,7 +582,7 @@ export const generateCatamaran = (context) => {
             context.components[context.components.length - 1].scale = [1.5, 1, 1];
 
         } else {
-            // Standard Saucer Configuration
+            // Standard Disc Configuration
             neckLen = primaryRadius * 0.5;
             
             // Neck - Tilted and Tapered (Parallelogram/Trapezoid Prism)
@@ -621,12 +621,12 @@ export const generateCatamaran = (context) => {
         }
 
         // Pylons and Nacelles
-        const nacelleLen = engLen * (subType === 'DAEDALUS' ? 1.1 : 1.3);
+        const nacelleLen = engLen * (subType === 'SPHERE_BOW' ? 1.1 : 1.3);
         const nacelleRadius = engRadius * 0.6; // Thicker nacelles
         
         let nacelleY, nacelleX, nacelleZ;
         
-        if (subType === 'DAEDALUS') {
+        if (subType === 'SPHERE_BOW') {
             nacelleX = engRadius * 3.0;
             nacelleY = engPos[1];
             nacelleZ = engPos[2];
@@ -635,7 +635,7 @@ export const generateCatamaran = (context) => {
             attachComponent('pylon', [nacelleX/2, nacelleY, nacelleZ], [0, 0, 0], 'box', 
                 { width: pylonW, height: 0.5 * unit, depth: 2 * unit }, 'REFLECTIVE');
                 
-        } else if (subType === 'OLYMPIC') {
+        } else if (subType === 'OBLATE_BOW') {
             nacelleX = engRadius * 2.5;
             nacelleY = engPos[1] - 2 * unit;
             nacelleZ = engPos[2] - 5 * unit;
@@ -665,18 +665,18 @@ export const generateCatamaran = (context) => {
                 { width: len, height: engRadius * 0.15, depth: 0.4 }, 'REFLECTIVE');
         }
 
-        // Nacelle - Renamed to warp_nacelle to avoid thrusters
+        // Nacelle - Renamed to warp_nacelle to distinguish from chemical thrusters
         attachComponent('warp_nacelle', [nacelleX, nacelleY, nacelleZ], [Math.PI / 2, 0, 0], 'cylinder',
             { radiusTop: nacelleRadius, radiusBottom: nacelleRadius, height: nacelleLen }, 'REFLECTIVE');
 
-        // Daedalus Spike
-        if (subType === 'DAEDALUS') {
+        // Spike Cap
+        if (subType === 'SPHERE_BOW') {
             attachComponent('nacelle_spike', [nacelleX, nacelleY, nacelleZ + nacelleLen/2 + 1.5*unit], [Math.PI/2, 0, 0], 'cone',
                 { radius: nacelleRadius * 0.5, height: 3 * unit }, 'REFLECTIVE');
         }
 
     } else {
-        // Miranda Style (No secondary hull, nacelles on pylons/rollbar)
+        // Underslung Style (No secondary hull, nacelles on pylons/rollbar)
         // Nacelles attached to the bottom of the saucer section
         const nacelleLen = primaryRadius * 1.2;
         const nacelleWidth = primaryRadius * 0.15;
@@ -734,10 +734,10 @@ export const generateYFork = (context) => {
         {radiusTop: 1.2, radiusBottom: 0.8, height: prongLen}, symMode);
 };
 
-export const generateBattlestar = (context) => {
+export const generateHeavyCarrier = (context) => {
     const { spineLength, random, attachComponent, components } = context;
 
-    // Battlestar Galactica (BSG-75) Style
+    // Heavy Carrier Style
     // Scale factor based on 100-unit blueprint relative to spineLength
     const unit = spineLength / 100;
 

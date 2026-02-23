@@ -15,7 +15,7 @@ export const generateDisc = (context) => {
         'NONE'
     );
     
-    // Top Half: Taper from Middle to Top
+    // Top Half: Taper from Middle to Top (Saucer slope)
     attachComponent('fuselage_top', [0, midHeight / 2 + taperHeight / 2, 0], [0, 0, 0], 'cylinder',
         { radiusTop: mainHullRadius * 0.25, radiusBottom: mainHullRadius, height: taperHeight, radialSegments: 32 },
         'NONE' 

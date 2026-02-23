@@ -52,9 +52,7 @@ export class LocalSpaceScene extends Scene {
 
         this.hudElement = null;
 
-        this.inputState = {
-            forward: false, backward: false, left: false, right: false, up: false, down: false, speed: 100.0
-        };
+        this._introResolve = null;
 
         this.introPath = [];
         this.raycaster = new THREE.Raycaster();
@@ -66,6 +64,7 @@ export class LocalSpaceScene extends Scene {
 
         this.asteroidMesh = null;
         this._asteroidNeedsUpdate = false;
+        this.lockedTarget = null;
     }
 
     updateSceneData(data) {
@@ -134,14 +133,12 @@ export class LocalSpaceScene extends Scene {
         this.activeCamera.updateProjectionMatrix();
         this.scene.add(this.activeCamera);
 
-        this.setupControls('trackball', {
-            rotateSpeed: 2.0,
-            zoomSpeed: 1.2,
-            panSpeed: 0.8,
-            noZoom: false,
-            noPan: true,
-            staticMoving: false,
-            dynamicDampingFactor: 0.1
+        // Use system controls (Fly) for local space navigation
+        this.setupControls('fly', {
+            movementSpeed: 100.0,
+            rollSpeed: 0.5,
+            dragToLook: false,
+            autoForward: false
         });
 
         if (SceneTools && SceneTools.createGlowTexture) {
@@ -363,10 +360,6 @@ export class LocalSpaceScene extends Scene {
                 Logger.warn("LocalSpaceScene: Failed to generate valid intro path.");
                 this.introActive = false;
             }
-        } else {
-            // No intro config or homeworld, disable intro mode
-            this.introActive = false;
-        }
 
         // Set initial camera position if intro is active
         if (this.introActive) {
@@ -649,6 +642,16 @@ export class LocalSpaceScene extends Scene {
         const dt = delta * 0.001;
         const compression = this.COMPRESSION_C;
 
+        // --- 0. Input Handling (Local Controls) ---
+        if (!this.introActive) {
+            // Transfer movement from activeCamera (moved by system controls) to virtualCameraPosition
+            // This maintains the floating origin for the logarithmic depth buffer
+            if (this.activeCamera.position.lengthSq() > 0) {
+                this.virtualCameraPosition.add(this.activeCamera.position);
+                this.activeCamera.position.set(0, 0, 0);
+            }
+        }
+
         if (this.starbox) {
             // Starbox is static, no update needed unless camera moves within it
             // this.starbox.update(time * 0.001);
@@ -687,6 +690,11 @@ export class LocalSpaceScene extends Scene {
                 }
 
                 Logger.message("LocalSpaceScene: Intro complete. Signalling ViewManager.");
+                
+                if (this._introResolve) {
+                    this._introResolve();
+                    this._introResolve = null;
+                }
             }
         } else if (this.homeWorldObj && !this.introActive) {
             // Gameplay Mode: Do NOT lock virtualCameraPosition to homeworld every frame.
@@ -705,7 +713,7 @@ export class LocalSpaceScene extends Scene {
         }
 
         // --- 3. Spatial Compression & Rendering ---
-        let visualLookAtTarget = new THREE.Vector3(0, 0, -100); // Default look-at
+        let CameraSubject = new THREE.Vector3(0, 0, -100); // Default look-at
         this.objects.forEach(obj => {
             if (obj.mesh) {
                 const relVec = new THREE.Vector3().subVectors(obj.realPosition, this.virtualCameraPosition);
@@ -728,12 +736,12 @@ export class LocalSpaceScene extends Scene {
                     if (this.introActive && (obj === this.flybyObj || obj === this.homeWorldObj)) {
                         const targetObj = (this.flybyObj && this.introPhase === 0) ? this.flybyObj : this.homeWorldObj;
                         if (obj === targetObj) {
-                            visualLookAtTarget.copy(visualPos);
+                            CameraSubject.copy(visualPos);
 
                             // If targeting a moon homeworld, slightly bias the look-at towards the parent
                             if (targetObj === this.homeWorldObj && targetObj.type === 'moon' && targetObj.parent && targetObj.parent.mesh) {
                                 const parentVisual = targetObj.parent.mesh.position;
-                                visualLookAtTarget.lerp(parentVisual, 0.15); // Subtle bias to keep giant in frame
+                                CameraSubject.lerp(parentVisual, 0.15); // Subtle bias to keep giant in frame
                             }
                         }
                     }
@@ -823,9 +831,20 @@ export class LocalSpaceScene extends Scene {
 
         // --- 4. Update Camera LookAt ---
         if (this.introActive) {
-            this.activeCamera.lookAt(visualLookAtTarget);
-        } else {
-            // In free-look mode, controls handle lookAt
+            this.activeCamera.lookAt(CameraSubject);
+        } else if (this.lockedTarget && this.lockedTarget.mesh) {
+            // Target Lock Logic: Smoothly rotate camera to face the target
+            const targetPos = this.lockedTarget.mesh.position;
+            const targetQuaternion = new THREE.Quaternion();
+            const m = new THREE.Matrix4();
+            // Calculate the rotation required to look at the target from (0,0,0)
+            // We use the camera's up vector to maintain orientation (or level the horizon)
+            m.lookAt(new THREE.Vector3(0, 0, 0), targetPos, this.activeCamera.up);
+            targetQuaternion.setFromRotationMatrix(m);
+            
+            // Slerp (Spherical Linear Interpolation) towards the target rotation
+            // 5.0 * dt provides a snappy but smooth lock-on feel
+            this.activeCamera.quaternion.slerp(targetQuaternion, 5.0 * dt);
         }
     }
 
@@ -843,7 +862,14 @@ export class LocalSpaceScene extends Scene {
             const targetObj = this.objects.find(o => o.mesh === hit || o.mesh.children.includes(hit));
 
             if (targetObj) {
-                Logger.message(`Clicked on ${targetObj.data.name}`);
+                this.lockedTarget = targetObj;
+                Logger.message(`LocalSpaceScene: Target Locked on ${targetObj.data.name}`);
+            }
+        } else {
+            // Clicked on empty space, disengage lock
+            if (this.lockedTarget) {
+                this.lockedTarget = null;
+                Logger.message("LocalSpaceScene: Target Lock disengaged.");
             }
         }
     }
@@ -890,21 +916,9 @@ export class LocalSpaceScene extends Scene {
 
         this.introStartTime = performance.now();
         this.introTime = 0;
-
-        const totalDuration = this.introConfig?.duration || (this.flybyObj ? 22.0 : 15.0);
-
-        // Return a promise that resolves when the intro is complete
+        
         return new Promise(resolve => {
-            const check = () => {
-                const introTime = (performance.now() - this.introStartTime) * 0.001;
-                if (introTime >= totalDuration - 0.5) {
-                    this.introActive = false;
-                    resolve();
-                } else {
-                    requestAnimationFrame(check);
-                }
-            };
-            check();
+            this._introResolve = resolve;
         });
     }
 

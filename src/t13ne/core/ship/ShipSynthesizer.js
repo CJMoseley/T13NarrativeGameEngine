@@ -8,34 +8,34 @@ export class ShipSynthesizer {
         // Key: Socket Type -> Value: Array of { partId, weight }
         this.connectionRules = {
             [SOCKET_TYPES.NECK_TOP]: [
-                { part: 'saucer_constitution', weight: 5 },
-                { part: 'saucer_galaxy', weight: 2 },
-                { part: 'saucer_sovereign', weight: 1 }
+                { part: 'saucer_classic', weight: 5 },
+                { part: 'saucer_elliptical', weight: 2 },
+                { part: 'saucer_wedge', weight: 1 }
             ],
             [SOCKET_TYPES.NECK_BOTTOM]: [
-                { part: 'hull_cylindrical', weight: 5 },
-                { part: 'hull_box_freighter', weight: 1 }
+                { part: 'hull_cylindrical_standard', weight: 5 },
+                { part: 'hull_box_cargo', weight: 1 }
             ],
             [SOCKET_TYPES.SAUCER_VENTRAL]: [
-                { part: 'neck_vertical', weight: 4 },
-                { part: 'neck_forward_swept', weight: 2 },
-                { part: 'hull_cylindrical', weight: 1 } // Direct connect (Miranda style)
+                { part: 'neck_upright', weight: 4 },
+                { part: 'neck_swept', weight: 2 },
+                { part: 'hull_cylindrical_standard', weight: 1 } // Direct connect
             ],
             [SOCKET_TYPES.PYLON_MOUNT]: [
                 { part: 'pylon_straight', weight: 3 },
-                { part: 'pylon_angled_up', weight: 3 }
+                { part: 'pylon_angled', weight: 3 }
             ],
             [SOCKET_TYPES.NACELLE_MOUNT]: [
-                { part: 'nacelle_tube', weight: 5 },
-                { part: 'nacelle_box', weight: 1 }
+                { part: 'nacelle_cylindrical', weight: 5 },
+                { part: 'nacelle_rectangular', weight: 1 }
             ],
             [SOCKET_TYPES.BRIDGE_MOUNT]: [
                 { part: 'bridge_dome', weight: 5 },
                 { part: 'bridge_block', weight: 1 }
             ],
             [SOCKET_TYPES.FUSELAGE_AFT]: [
-                { part: 'nacelle_tube', weight: 1 }, // Single nacelle?
-                { part: 'hull_box_freighter', weight: 1 }
+                { part: 'nacelle_cylindrical', weight: 1 }, // Single nacelle?
+                { part: 'hull_box_cargo', weight: 1 }
             ]
         };
     }
@@ -52,9 +52,9 @@ export class ShipSynthesizer {
 
         // 1. Select Root Component
         // Usually a Secondary Hull or a Saucer depending on ship class
-        let rootPartId = 'hull_cylindrical';
-        if (rng() > 0.7) rootPartId = 'saucer_galaxy';
-        if (config.style === 'INDUSTRIAL') rootPartId = 'hull_box_freighter';
+        let rootPartId = 'hull_cylindrical_standard';
+        if (rng() > 0.7) rootPartId = 'saucer_elliptical';
+        if (config.style === 'INDUSTRIAL') rootPartId = 'hull_box_cargo';
 
         const rootDef = SHIP_PARTS[rootPartId];
         if (!rootDef) {
@@ -159,6 +159,10 @@ export class ShipSynthesizer {
     addComponent(list, socketQueue, partDef, pos, rot, rng) {
         const id = `${partDef.id}_${list.length}`;
         
+        // Allow parts to define their own style overrides (e.g. for bio components skinned differently)
+        // This supports the requirement for sub-assemblies to have distinct skinning/hull generation parameters.
+        const componentStyle = partDef.style || null;
+        
         // Handle Composite Parts (expand them into individual primitives)
         if (partDef.type === 'composite' && partDef.components) {
             partDef.components.forEach((sub, idx) => {
@@ -180,7 +184,8 @@ export class ShipSynthesizer {
                     pos: [subPos.x, subPos.y, subPos.z],
                     rot: [subRot.x, subRot.y, subRot.z],
                     usage: partDef.usage, // Inherit usage
-                    scale: partDef.scale || [1,1,1]
+                    scale: partDef.scale || [1,1,1],
+                    styleConfig: componentStyle // Pass style to sub-components
                 });
             });
         } else {
@@ -192,7 +197,8 @@ export class ShipSynthesizer {
                 pos: pos,
                 rot: rot,
                 usage: partDef.usage,
-                scale: partDef.scale || [1,1,1]
+                scale: partDef.scale || [1,1,1],
+                styleConfig: componentStyle
             });
         }
 
