@@ -88,6 +88,47 @@ export class SystemLoreGenerator {
         const corporatePresence = this.corporationGenerator.determineCorporatePresence(star, n4);
         let description = this.generateDescription(speciesLore, secondarySpeciesLore, eventDescription, corporatePresence);
 
+        // Try to enrich with AI if available
+        const T13NE_Module = this.pluginManager ? this.pluginManager.getApi('T13', 'T13NE') : null;
+        if (T13NE_Module) {
+            const descGen = T13NE_Module.getModule('DescriptionGenerator');
+            if (descGen) {
+                try {
+                    // Enrich main description
+                    const context = {
+                        name: speciesLore.commonName + ' System',
+                        type: 'Star System',
+                        description: description,
+                        species: speciesLore.commonName,
+                        tech: techLevelKey
+                    };
+                    const aiDesc = await descGen.generate(context);
+                    if (aiDesc) description = aiDesc;
+
+                    // Also enrich Species physical/cultural descriptions individually if they are procedural
+                    if (speciesLore.physicalDescription) {
+                        const physAi = await descGen.generate({
+                            name: speciesLore.commonName,
+                            type: 'Species Physiology',
+                            description: speciesLore.physicalDescription
+                        });
+                        if (physAi) speciesLore.physicalDescription = physAi;
+                    }
+                    if (speciesLore.culturalDescription) {
+                        const cultAi = await descGen.generate({
+                            name: speciesLore.commonName,
+                            type: 'Species Culture',
+                            description: speciesLore.culturalDescription
+                        });
+                        if (cultAi) speciesLore.culturalDescription = cultAi;
+                    }
+
+                } catch (e) {
+                    Logger.warn("SystemLoreGenerator: AI Description enrichment failed.", e);
+                }
+            }
+        }
+
         // Society & Era Generation via T13 Cards
         let societyType = "Unknown Society";
         let societyDesc = "";
@@ -171,8 +212,8 @@ export class SystemLoreGenerator {
                     tension: 2 // Default starting tension
                 };
 
-                // Append conflict flavor to description
-                description += ` The conflict is driven by ${domCard.name} (${domCard.Facet}) dominating ${pressCard.name} (${pressCard.Facet}).`;
+                // Append conflict flavor to description - DIEGETIC VERSION
+                description += ` The system is gripped by a struggle between ${domCard.data?.Yarn?.Significator?.Side || domCard.name} and ${pressCard.data?.Yarn?.Significator?.Side || pressCard.name}.`;
             }
         }
 

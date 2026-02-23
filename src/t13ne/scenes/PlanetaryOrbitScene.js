@@ -469,12 +469,12 @@ export class PlanetaryOrbitScene extends Scene {
             </h2>
             
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.85em; margin-bottom: 15px; color: #aaccff; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px;">
-                <div><strong>Type:</strong> ${this.planetData.type || 'Terrestrial'}</div>
+                <div><strong>Class:</strong> ${this.planetData.type || 'Terrestrial'}</div>
                 <div><strong>Gravity:</strong> ${gravity}</div>
                 <div><strong>Atmosphere:</strong> ${atmosphere}</div>
-                <div><strong>Temp:</strong> ${temperature}</div>
+                <div><strong>Surface Temp:</strong> ${temperature}</div>
                 <div style="grid-column: span 2;"><strong>Biosphere:</strong> ${this.planetData.biosphere || 'None'}</div>
-                <div style="grid-column: span 2;"><strong>Tech Level:</strong> ${techInfo}</div>
+                <div style="grid-column: span 2;"><strong>Technological Era:</strong> ${techInfo}</div>
             </div>
 
             <div style="font-size: 0.9em; line-height: 1.4; margin-bottom: 15px; color: #ffffff;">
@@ -578,11 +578,15 @@ export class PlanetaryOrbitScene extends Scene {
 
     _sanitizeLore(text) {
         if (!text || typeof text !== 'string') return text;
-        // Remove patterns like "Geometry: ...", "Chi Gain: ...", "(Boon ...)"
+        // Remove patterns like "Geometry: ...", "Chi Gain: ...", "(Boon ...)", "Success Level", etc.
         // This regex removes parenthetical technical data often found in raw dumps
-        let clean = text.replace(/\([^)]*(Boon|Geometry|Chi|Facet|Hitch|Gematria)[^)]*\)/gi, '');
+        let clean = text.replace(/\([^)]*(Boon|Geometry|Chi|Facet|Hitch|Gematria|Success|Difficulty|Pips|Draw|Pool|Phase|Test|Action)[^)]*\)/gi, '');
         // Remove explicit labels if they appear outside parens
-        clean = clean.replace(/(Geometry|Chi Gain|Boon|Facet Score):?\s*[\w\d\+\-\s]+/gi, '');
+        clean = clean.replace(/(Geometry Number|Chi Gain|Boon|Facet Score|Success Level|Difficulty Rating|Pip Gain|Draw Count|Pool Size):?\s*[\w\d\+\-\s]*/gi, '');
+        // Remove common mechanical sentences
+        clean = clean.replace(/They add \+\d+ Success Level on any Action [^.]*\./gi, '');
+        clean = clean.replace(/Add \+\d+ Success Level to any Action [^.]*\./gi, '');
+        clean = clean.replace(/Each additional [^.]* adds a [^.]* Success Level\./gi, '');
         return clean.trim();
     }
 

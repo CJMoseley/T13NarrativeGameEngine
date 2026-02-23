@@ -153,7 +153,14 @@
             });
         }
         
-        prompt += "\n The description should be evocative and suitable for a science fiction setting.";
+        prompt += "\n### IMPORTANT GUIDELINES FOR THE OUTPUT ###\n";
+        prompt += "1. The description must be PURELY DIEGETIC and evocative. It should read like a journal entry, a sensor scan report, or a historical record.\n";
+        prompt += "2. NEVER use technical RPG or game mechanics terms in the output. This includes but is not limited to: 'Chi', 'Boon', 'Geometry Number', 'Geometry', 'Harmonics', 'Facet', 'Knot', 'Proficiency', 'Annex', 'Hitch', 'Sway', 'Gain', 'Stress', 'Soul Gift', 'Yin', 'Yang', 'I-Ching', 'Hexagram', 'Gematria'.\n";
+        prompt += "3. DO NOT repeat the technical labels from the context provided above. Instead, 'absorb' their meaning into the narrative. For example, instead of 'Chi Gain', describe a feeling of spiritual replenishment or atmospheric resonance.\n";
+        prompt += "4. If a 'Geometry Number' or 'Key' is provided, use it to inform the 'vibe' or 'pitch' of the description (e.g., if it's a dissonant key, make the description unsettling or chaotic).\n";
+        prompt += "5. The final output should NOT contain any parenthetical technical data or explicit lists of game stats.\n";
+        prompt += "6. Focus on atmosphere, sensory details, and lore-friendly explanations for technical phenomena.\n";
+        prompt += "\nThe description should be evocative and suitable for a science fiction setting.";
 
         return prompt;
     }
