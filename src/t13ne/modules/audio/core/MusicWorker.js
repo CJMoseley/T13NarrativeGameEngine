@@ -1,4 +1,5 @@
 // src/t13ne/modules/audio/core/MusicWorker.js
+import workerpool from 'workerpool';
 import { ThemeGenerator } from '/src/t13ne/modules/audio/core/ThemeGenerator.js';
 import { MusicRNG } from '/src/t13ne/modules/audio/core/MusicUtils.js';
 
@@ -48,95 +49,95 @@ const mockMusicModule = {
     codex: mockCodexLoader
 };
 
-self.onmessage = async (e) => {
-    const { type, data, requestId } = e.data;
+async function init(data) {
+    initPromise = (async () => {
+        const { codexData, geometryData, manifest, performanceMode } = data;
 
-    if (type !== 'init' && initPromise) {
-        await initPromise;
-    }
+        for (const [key, val] of Object.entries(codexData || {})) {
+            const parts = key.split(':');
+            const cat = parts[0];
+            const file = parts[1];
+            mockCodexLoader.setData(cat, file, val);
+        }
 
-    try {
-        if (type === 'init') {
-            initPromise = (async () => {
-                const { codexData, geometryData, manifest, performanceMode } = data;
+        if (manifest) {
+            mockMusicModule.manifestManager.manifest.samples = manifest.samples || {};
+            mockMusicModule.manifestManager.manifest.instruments = manifest.instruments || {};
+        }
 
-                for (const [key, val] of Object.entries(codexData || {})) {
-                    const parts = key.split(':');
-                    const cat = parts[0];
-                    const file = parts[1];
-                    mockCodexLoader.setData(cat, file, val);
-                }
+        if (geometryData) {
+            mockMusicModule.geometry = {
+                RomanChords: geometryData.romanChords,
+                keys: geometryData.keys,
+                getKey: function(tone) {
+                    let t = Number(tone);
+                    const toneInt = Math.trunc(t);
+                    const noteIndex = toneInt % 12;
+                    const octave = Math.floor(toneInt / 12);
 
-                if (manifest) {
-                    // Correctly merge Sample and Synthetic stores in the worker
-                    mockMusicModule.manifestManager.manifest.samples = manifest.samples || {};
-                    mockMusicModule.manifestManager.manifest.instruments = manifest.instruments || {};
-                }
+                    const baseKey = this.keys[noteIndex] || { Key: 'C', Frequency: 261.63 };
+                    const octaveOffset = octave - 4;
+                    const freq = (baseKey.Frequency || 261.63) * Math.pow(2, octaveOffset);
 
-                if (geometryData) {
-                    mockMusicModule.geometry = {
-                        RomanChords: data.geometryData.romanChords,
-                        keys: data.geometryData.keys,
-                        getKey: function(tone) {
-                            let t = Number(tone);
-                            const toneInt = Math.trunc(t);
-                            const noteIndex = toneInt % 12;
-                            const octave = Math.floor(toneInt / 12);
-
-                            const baseKey = this.keys[noteIndex] || { Key: 'C', Frequency: 261.63 };
-                            const octaveOffset = octave - 4;
-                            const freq = (baseKey.Frequency || 261.63) * Math.pow(2, octaveOffset);
-
-                            return {
-                                Key: { ...baseKey, Frequency: freq },
-                                KeyNo: octave,
-                                T13NEDescription: baseKey.T13NEDescription || ''
-                            };
+                    return {
+                        Key: { ...baseKey, Frequency: freq },
+                        KeyNo: octave,
+                        T13NEDescription: baseKey.T13NEDescription || ''
+                    };
+                },
+                calculateFullGeo: function(name) {
+                    return {
+                        name: name,
+                        GeometryNumber: 1,
+                        GeoHarmonics: {
+                            key: 1,
+                            Harmonic: [1, 3, 5, 8],
+                            corrected: [0, 4, 7],
+                            Ghost: 1,
+                            Perfect: 1,
+                            Nemesis: 2
                         },
-                        calculateFullGeo: function(name) {
-                            return {
-                                name: name,
-                                GeometryNumber: 1,
-                                GeoHarmonics: {
-                                    key: 1,
-                                    Harmonic: [1, 3, 5, 8],
-                                    corrected: [0, 4, 7],
-                                    Ghost: 1,
-                                    Perfect: 1,
-                                    Nemesis: 2
-                                },
-                                Soul: 1,
-                                Facade: 1,
-                                Nascent: 1
-                            };
-                        }
+                        Soul: 1,
+                        Facade: 1,
+                        Nascent: 1
                     };
                 }
+            };
+        }
 
-                themeGenerator = new ThemeGenerator(mockMusicModule);
-                if (performanceMode) themeGenerator.performanceMode = performanceMode;
-                await themeGenerator.loadAssets();
-            })();
-            await initPromise;
-            self.postMessage({ type: 'initialized', requestId });
-        }
-        else if (type === 'generateMainTheme') {
-            if (!themeGenerator) throw new Error("ThemeGenerator not initialized in worker");
+        themeGenerator = new ThemeGenerator(mockMusicModule);
+        if (performanceMode) themeGenerator.performanceMode = performanceMode;
+        await themeGenerator.loadAssets();
+    })();
+    await initPromise;
+    return { status: 'initialized' };
+}
 
-            const { activeComponents, forceRegeneration, tensionLevel } = data;
-            const track = await themeGenerator.createMainTheme(activeComponents, null, forceRegeneration, tensionLevel);
-            self.postMessage({ type: 'trackGenerated', data: track, requestId });
-        }
-        else if (type === 'generateWormholeTheme') {
-            const { ship, origin, target } = data;
-            const track = await themeGenerator.createWormholeTheme(ship, origin, target);
-            self.postMessage({ type: 'trackGenerated', data: track, requestId });
-        }
-        else if (type === 'setPerformanceMode') {
-            if (themeGenerator) themeGenerator.performanceMode = data;
-            self.postMessage({ type: 'performanceModeSet', requestId });
-        }
-    } catch (error) {
-        self.postMessage({ type: 'error', error: error.message, requestId });
-    }
-};
+async function generateMainTheme(data) {
+    if (initPromise) await initPromise;
+    if (!themeGenerator) throw new Error("ThemeGenerator not initialized in worker");
+
+    const { activeComponents, forceRegeneration, tensionLevel } = data;
+    const track = await themeGenerator.createMainTheme(activeComponents, null, forceRegeneration, tensionLevel);
+    return track;
+}
+
+async function generateWormholeTheme(data) {
+    if (initPromise) await initPromise;
+    const { ship, origin, target } = data;
+    const track = await themeGenerator.createWormholeTheme(ship, origin, target);
+    return track;
+}
+
+function setPerformanceMode(data) {
+    if (themeGenerator) themeGenerator.performanceMode = data;
+    return { success: true };
+}
+
+// create a worker and register public functions
+workerpool.worker({
+    init,
+    generateMainTheme,
+    generateWormholeTheme,
+    setPerformanceMode
+});

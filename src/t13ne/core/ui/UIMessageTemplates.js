@@ -5,7 +5,7 @@ const UIMessageTemplates = {
         <p><strong>Galactic Coordinates:</strong> ${data.coords}</p>
         <p><strong>Primary Species:</strong> ${data.species}</p>
         <p><strong>Social Structure:</strong> ${data.society}</p>
-        <p><strong>Technological Tier:</strong> ${data.tech}</p>
+        <p><strong>Technological Era:</strong> ${data.tech}</p>
         <p>${data.description}</p>
     `,
     race_results: (data) => `
@@ -20,14 +20,6 @@ const UIMessageTemplates = {
         <p><strong>Temperature:</strong> ${data.temperature} K</p>
         <p><strong>Gravity:</strong> ${data.gravity} G</p>
         <p><strong>Resources:</strong> ${data.resources.join(', ')}</p>
-        <hr>
-        <h4>Technological Profile</h4>
-        <p><strong>Tech Level:</strong> ${data.techProfile.techLevel}</p>
-        <p><strong>Specialization:</strong> ${data.techProfile.specialization}</p>
-        <p><strong>Proficiencies:</strong></p>
-        <ul>
-            ${data.techProfile.knownProficiencies.map(p => `<li>${p.name} (Lvl: ${p.level})</li>`).join('')}
-        </ul>
         <hr>
         <p>${data.description || 'No additional data available.'}</p>
     `,

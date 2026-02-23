@@ -1,153 +1,89 @@
 /**
  * WorkerPool.js
- * Manages a pool of Web Workers for parallel processing and task queueing.
+ * Manages a pool of Web Workers using the 'workerpool' library.
+ * This provides a unified interface for all background processing.
  */
+import workerpool from 'workerpool';
 import { EventBus } from './EventBus.js';
 
 export class WorkerPool {
     /**
-     * @param {string} poolId - Unique identifier for this pool (used in EventBus)
+     * @param {string} poolId - Unique identifier for this pool
      * @param {string|URL} workerUrl - URL to the worker script
      * @param {number} poolSize - Number of workers to spawn
-     * @param {object} options - Worker constructor options (e.g. { type: 'module' })
+     * @param {object} options - Worker constructor options
      */
     constructor(poolId, workerUrl, poolSize = 1, options = { type: 'module' }) {
         this.poolId = poolId;
         this.workerUrl = workerUrl;
         this.poolSize = poolSize;
         this.options = options;
-        this.workers = [];
-        this.queue = [];
-        this.pendingRequests = new Map();
-        this.completedResults = new Map(); // For "polling"
-        this.initialized = false;
-        this._initPromise = null;
+
+        // Initialize workerpool
+        // Note: For ESM workers in Vite, we often need to use the worker script directly.
+        this.pool = workerpool.pool(this.workerUrl, {
+            minWorkers: 1,
+            maxWorkers: poolSize,
+            workerType: 'web',
+            ...options
+        });
+
+        this.completedResults = new Map();
     }
 
     /**
-     * Spawns workers and waits for them to be ready.
+     * Executes a task on the pool.
      */
-    async init() {
-        if (this.initialized) return;
-        if (this._initPromise) return this._initPromise;
+    async execute(type, data, transferables = []) {
+        const requestId = Math.random().toString(36).substring(7);
 
-        this._initPromise = (async () => {
-            for (let i = 0; i < this.poolSize; i++) {
-                const worker = new Worker(this.workerUrl, this.options);
-                const workerContext = {
-                    instance: worker,
-                    busy: false,
-                    currentRequestId: null,
-                    ready: true // Assume ready unless we add a handshake
-                };
+        try {
+            // Using workerpool's exec method
+            // If transferables are provided, wrap the data in workerpool.Transfer
+            const args = (transferables && transferables.length > 0)
+                ? [new workerpool.Transfer(data, transferables)]
+                : [data];
 
-                worker.onmessage = (e) => this._handleMessage(workerContext, e.data);
-                worker.onerror = (e) => this._handleError(workerContext, e);
+            const result = await this.pool.exec(type, args, {
+                on: (payload) => {
+                    // Optional: handle progress or intermediate messages
+                }
+            });
 
-                this.workers.push(workerContext);
-            }
-            this.initialized = true;
-            this._initPromise = null;
-        })();
+            // Compatibility with legacy event-based system
+            // Handle both object results and primitive results gracefully
+            const response = (typeof result === 'object' && result !== null)
+                ? (Array.isArray(result) ? { result, requestId, type } : { ...result, requestId, type })
+                : { result, requestId, type };
 
-        return this._initPromise;
+            this.completedResults.set(requestId, response);
+
+            EventBus.emit(`worker:${this.poolId}:completed`, response);
+            EventBus.emit(`worker:${this.poolId}:completed:${requestId}`, response);
+
+            return response;
+        } catch (error) {
+            console.error(`WorkerPool: Pool ${this.poolId} execution failed:`, error);
+            EventBus.emit(`worker:${this.poolId}:error`, { requestId, error, type });
+            throw error;
+        }
     }
 
     /**
-     * Sends a message to ALL workers in the pool (e.g. for initialization/data syncing).
+     * Legacy broadcast support - runs on all workers (best effort)
      */
     async broadcast(type, data) {
-        await this.init();
-        const promises = this.workers.map(worker => {
-            const requestId = 'broadcast_' + Math.random().toString(36).substring(7);
-            return new Promise((resolve, reject) => {
-                this.pendingRequests.set(requestId, { resolve, reject, worker });
-                worker.instance.postMessage({ type, data, requestId });
-            });
-        });
+        const promises = [];
+        // Note: workerpool doesn't have a native 'broadcast' to all active workers.
+        // We simulate it by submitting N tasks.
+        for (let i = 0; i < this.poolSize; i++) {
+            promises.push(this.pool.exec(type, [data]));
+        }
         return Promise.all(promises);
     }
 
     /**
-     * Executes a task on the next available worker.
-     */
-    async execute(type, data, transferables = []) {
-        await this.init();
-        const requestId = Math.random().toString(36).substring(7);
-
-        return new Promise((resolve, reject) => {
-            const task = { type, data, transferables, requestId, resolve, reject };
-            this.queue.push(task);
-            this._processQueue();
-        });
-    }
-
-    _processQueue() {
-        if (this.queue.length === 0) return;
-
-        // Find an idle worker
-        const availableWorker = this.workers.find(w => !w.busy && w.ready);
-        if (!availableWorker) return;
-
-        const task = this.queue.shift();
-        availableWorker.busy = true;
-        availableWorker.currentRequestId = task.requestId;
-
-        this.pendingRequests.set(task.requestId, {
-            resolve: task.resolve,
-            reject: task.reject,
-            worker: availableWorker
-        });
-
-        availableWorker.instance.postMessage({
-            type: task.type,
-            data: task.data,
-            requestId: task.requestId
-        }, task.transferables);
-    }
-
-    _handleMessage(workerContext, response) {
-        if (!response) return;
-        const { requestId, error, type } = response;
-
-        // Handle potential responses that don't match a request (rare if protocol is followed)
-        if (!requestId) return;
-
-        const pending = this.pendingRequests.get(requestId);
-
-        if (error) {
-            console.error(`WorkerPool: Worker execution failed for request ${requestId} (${type}):`, error);
-            const errObj = error instanceof Error ? error : new Error(typeof error === 'string' ? error : JSON.stringify(error));
-            if (pending) pending.reject(errObj);
-            EventBus.emit(`worker:${this.poolId}:error`, { requestId, error, type });
-        } else {
-            // Store result for polling
-            this.completedResults.set(requestId, response);
-
-            if (pending) pending.resolve(response);
-
-            // Emit completion event
-            try {
-                EventBus.emit(`worker:${this.poolId}:completed`, response);
-                EventBus.emit(`worker:${this.poolId}:completed:${requestId}`, response);
-            } catch (err) {
-                console.error(`WorkerPool: Error in event listener for request ${requestId}`, err);
-            }
-        }
-
-        if (pending) {
-            this.pendingRequests.delete(requestId);
-            workerContext.busy = false;
-            workerContext.currentRequestId = null;
-
-            // Trigger next task in queue
-            this._processQueue();
-        }
-    }
-
-    /**
-     * Polls for a result by requestId. Returns null if not yet completed.
-     * If completed, returns the result and removes it from the completed cache.
+     * Polls for a result by requestId.
      */
     poll(requestId) {
         if (this.completedResults.has(requestId)) {
@@ -158,30 +94,10 @@ export class WorkerPool {
         return null;
     }
 
-    _handleError(workerContext, error) {
-        console.error("WorkerPool: Worker reported an error", error);
-
-        if (workerContext.currentRequestId) {
-            const pending = this.pendingRequests.get(workerContext.currentRequestId);
-            if (pending) {
-                pending.reject(error);
-                this.pendingRequests.delete(workerContext.currentRequestId);
-            }
-        }
-
-        workerContext.busy = false;
-        workerContext.currentRequestId = null;
-        this._processQueue();
-    }
-
     /**
-     * Shuts down all workers.
+     * Shuts down the pool.
      */
     terminate() {
-        this.workers.forEach(w => w.instance.terminate());
-        this.workers = [];
-        this.initialized = false;
-        this.queue = [];
-        this.pendingRequests.clear();
+        this.pool.terminate();
     }
 }

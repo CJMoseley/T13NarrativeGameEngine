@@ -1,3 +1,4 @@
+import workerpool from 'workerpool';
 import WFC from '../../utils/ndwfc.js';
 import { tileToGrid } from './Aliases.js';
 
@@ -6,7 +7,7 @@ import { tileToGrid } from './Aliases.js';
  * @description Phase C: Assembly (Worker). Runs the N-Dimensional WFC solver.
  */
 
-self.onmessage = async function(e) {
+async function solve(data) {
     const {
         weights,
         rules,
@@ -14,7 +15,7 @@ self.onmessage = async function(e) {
         gridDimensions,
         pinnedTiles,
         sharedBuffer
-    } = e.data;
+    } = data;
 
     const grid = new Uint8Array(sharedBuffer);
 
@@ -48,14 +49,11 @@ self.onmessage = async function(e) {
     const totalCells = gridDimensions.x * gridDimensions.y * gridDimensions.z;
     const cellsToCollapse = totalCells - pinnedCount;
 
-    // The maximum number of steps in WFC is equal to the number of cells to collapse.
-    // Each step resolves exactly one cell (either by observation or propagation).
     const maxIterations = cellsToCollapse;
 
     while (iterations < maxIterations) {
         const done = wfc.step();
 
-        // After each step, we can update the shared buffer for real-time visualization.
         const state = wfc.readout();
 
         for (const [key, value] of Object.entries(state)) {
@@ -68,13 +66,12 @@ self.onmessage = async function(e) {
 
         if (done) break;
         iterations++;
-
-        // Small yield to allow main thread to see updates if not using SAB properly,
-        // but with SAB it's immediate.
-        if (iterations % 100 === 0) {
-            self.postMessage({ type: 'progress', iterations });
-        }
     }
 
-    self.postMessage({ type: 'complete', state: wfc.readout() });
-};
+    return { state: wfc.readout() };
+}
+
+// create a worker and register public functions
+workerpool.worker({
+    solve: solve
+});

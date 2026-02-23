@@ -22,7 +22,8 @@
     "physx-js-webidl": "^2.7.1",
     "simplex-noise": "^4.0.3",
     "three": "^0.174.0",
-    "three-csg-ts": "^3.2.0"
+    "three-csg-ts": "^3.2.0",
+    "workerpool": "^10.0.1"
   },
   "devDependencies": {
     "@playwright/test": "^1.57.0",
