@@ -61,7 +61,6 @@ export class ShipGenerator {
         const components = [];
         const explicitWiring = {};
 
-        // Helper to get distance
         // Helper to get distance (used in legacy generation)
         const getDist = (p1, p2) => {
             return new THREE.Vector3(...p1).distanceTo(new THREE.Vector3(...p2));
@@ -496,7 +495,6 @@ export class ShipGenerator {
             }
         }
 
-        // Generate Wings (Moved after Nose Cone generation to ensure Canards attach to the nose)
         // Generate Wings (Legacy procedural wings)
         generateWings(context);
         } // End Legacy Block
@@ -793,7 +791,6 @@ export class ShipGenerator {
         // Cockpit
 
         // Check if we already added a bridge/cockpit in the hull generation phase (e.g. Freighter)
-        if (components.some(c => c.usage.includes('bridge') || c.usage.includes('cockpit'))) {
         if (components.some(c => (c.usage && (c.usage.includes('bridge') || c.usage.includes('cockpit'))))) {
             cockpitPlaced = true;
         }
@@ -1130,7 +1127,6 @@ export class ShipGenerator {
         // --- 2b. Calculate Center of Gravity (CoG) ---
         let totalMass = 0;
         let cog = new THREE.Vector3(0, 0, 0);
-
         
         components.forEach(c => {
             // Estimate mass from volume
