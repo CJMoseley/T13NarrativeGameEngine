@@ -63,8 +63,11 @@ export class GalacticTimelineGenerator {
                 events: []
             };
 
+            // Yield control to UI thread before event generation
+            await new Promise(r => setTimeout(r, 0));
+
             // Seed the age with some initial events
-            this._generateEventsForPeriod(age, activeSpecies, corporations, params);
+            await this._generateEventsForPeriod(age, activeSpecies, corporations, params);
 
             timeline.push(age);
             currentTime = ageEnd;
@@ -140,7 +143,7 @@ export class GalacticTimelineGenerator {
                 species: speciesLore,
                 time: age.start,
                 position: { x: this.prng.nextDouble() * 4000 - 2000, y: this.prng.nextDouble() * 4000 - 2000 },
-                description: `The ${speciesLore.commonName} species emerged.`
+                description: `The ${speciesLore.commonName} emerged as a significant power in the galaxy.`
             });
         }
     }
@@ -172,7 +175,7 @@ export class GalacticTimelineGenerator {
                     created: speciesLore,
                     time: age.start + 10000,
                     position: { x: this.prng.nextDouble() * 4000 - 2000, y: this.prng.nextDouble() * 4000 - 2000 },
-                    description: `The ${creator.commonName} uplifted the ${createdName} species.`
+                    description: `The ${creator.commonName} uplifted the ${createdName}, welcoming them into the galactic community.`
                 });
             }
         }
@@ -187,7 +190,7 @@ export class GalacticTimelineGenerator {
             time: age.end - 10000,
             cause: "Unknown",
             position: { x: this.prng.nextDouble() * 4000 - 2000, y: this.prng.nextDouble() * 4000 - 2000 },
-            description: `The ${extinctSpecies.commonName} went extinct.`
+            description: `The ${extinctSpecies.commonName} have faded from the galaxy, their era coming to an end.`
         });
     }
 
@@ -230,7 +233,7 @@ export class GalacticTimelineGenerator {
             corporation: corporation,
             time: corporation.founded,
             position: { x: corporation.homeRegion.r * 2000 * Math.cos(corporation.homeRegion.theta), y: corporation.homeRegion.r * 2000 * Math.sin(corporation.homeRegion.theta) },
-            description: `${corporation.name}, a ${corporation.archetype}, was founded by the ${foundingSpecies.commonName}.`
+            description: `The ${corporation.name}, who identify as a ${corporation.archetype}, were founded by the ${foundingSpecies.commonName}.`
         });
     }
 
@@ -257,7 +260,7 @@ export class GalacticTimelineGenerator {
             targetCorp: targetCorp,
             time: age.start + Math.floor(this.prng.nextDouble() * (age.end - age.start)),
             position: { x: acquiringCorp.homeRegion.r * 2000 * Math.cos(acquiringCorp.homeRegion.theta), y: acquiringCorp.homeRegion.r * 2000 * Math.sin(acquiringCorp.homeRegion.theta) },
-            description: `${acquiringCorp.name} acquired ${targetCorp.name} in a major corporate merger.`
+            description: `The ${acquiringCorp.name} have acquired the ${targetCorp.name} in a major corporate merger.`
         });
     }
 
@@ -273,7 +276,7 @@ export class GalacticTimelineGenerator {
             corporation: collapsingCorp,
             time: age.start + Math.floor(this.prng.nextDouble() * (age.end - age.start)),
             position: { x: collapsingCorp.homeRegion.r * 2000 * Math.cos(collapsingCorp.homeRegion.theta), y: collapsingCorp.homeRegion.r * 2000 * Math.sin(collapsingCorp.homeRegion.theta) },
-            description: `The once-mighty ${collapsingCorp.name} collapsed due to internal strife and market pressures.`
+            description: `The once-mighty ${collapsingCorp.name} have collapsed due to internal strife and market pressures.`
         });
     }
 

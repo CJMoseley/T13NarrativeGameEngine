@@ -71,10 +71,13 @@ export class LoreMaster {
 
                 // MLNameGenerator is the advanced TensorFlow-based generator
                 this.mlNameGenerator = new MLNameGenerator();
-                // We initialize it asynchronously but don't block main init on it
-                this.mlNameGenerator.initialize().catch(e => {
-                    Logger.warn("LoreMaster: Advanced MLNameGenerator failed to initialize. Falling back to standard.", e);
-                });
+                // Defer initialization to avoid resource contention during initial galaxy generation
+                setTimeout(() => {
+                    Logger.message("LoreMaster: Initiating deferred MLNameGenerator setup...");
+                    this.mlNameGenerator.initialize().catch(e => {
+                        Logger.warn("LoreMaster: Advanced MLNameGenerator failed to initialize. Falling back to standard.", e);
+                    });
+                }, 5000);
 
                 this.speciesGenerator = new SpeciesGenerator(this.pluginManager, this);
 
@@ -152,7 +155,7 @@ export class LoreMaster {
 
     async generateSystemName(n1, n2, n3, nearbySpecies = []) {
         if (this.mlNameGenerator && this.mlNameGenerator.modelLoaded) {
-            const result = this.mlNameGenerator.generateSystemName(n1, n2, n3);
+            const result = await this.mlNameGenerator.generateSystemName(n1, n2, n3);
             return [result, result, ""];
         }
 

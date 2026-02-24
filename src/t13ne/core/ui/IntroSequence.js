@@ -84,7 +84,7 @@ class IntroSequence {
 
         const btn = overlay.querySelector('#init-btn');
         btn.onclick = onInteract;
-        
+
         // Allow Enter key to submit
         window.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') onInteract({ target: btn });
@@ -101,90 +101,92 @@ class IntroSequence {
         const gameEngine = viewManager.gameEngine;
         this.hide(); // Hide the loading UI
 
-        // 1. Galaxy View
+        // 1. Galaxy View - Cued immediately to start the visual sequence
         viewManager.cueScene('GalaxyMapScene', { attractMode: true }, {
             duration: 4000,
             onActive: async (scene) => {
-                // Generate System in background
-                const music = viewManager.engine.getModule('Music');
+                // Wait for Narrative Data to be ready in the background
+                await gameEngine.waitForNarrativeInit();
+
+                // Generate the specific system details for our starting location
                 await gameEngine.generateSystem();
-                
+
+                const music = viewManager.engine.getModule('Music');
                 if (music && gameEngine.currentSystemDetails) {
                     music.injectThemeComponents({ currentSystem: gameEngine.currentSystemDetails });
                     const theme = await music.createMainTheme(gameEngine);
                     music.updateTrack(theme);
                 }
 
-                // Update queued scenes with new data
-                const localSpaceItem = viewManager.sceneQueue.find(i => i.name === 'LocalSpaceScene');
-                if (localSpaceItem) {
-                    localSpaceItem.data.systemDetails = gameEngine.currentSystemDetails;
-                    localSpaceItem.data.planets = gameEngine.currentPlanets;
-                }
-                const orbitItem = viewManager.sceneQueue.find(i => i.name === 'PlanetaryOrbitScene');
-                if (orbitItem) {
-                    orbitItem.data.system = gameEngine.currentSystemDetails;
-                    orbitItem.data.planet = gameEngine.currentPlanets ? gameEngine.currentPlanets[0] : null;
-                }
-
-                // Focus camera
-                await new Promise(r => setTimeout(r, 1000));
+                // T13: Focus camera on the discovered start position
                 if (scene && typeof scene.focusOnSystem === 'function' && gameEngine.playerStartSystem) {
                     await scene.focusOnSystem(gameEngine.playerStartSystem);
+                }
+
+                // Dynamically cue the rest of the intro sequence now that data is ready
+                this.cueDependentScenes(viewManager);
+            }
+        });
+
+        // Start the sequence loop - it will process GalaxyMapScene and then pick up the rest
+        await viewManager.playSequence();
+
+        // Final transition to Main Menu
+        viewManager.showMainMenu();
+    }
+
+    /**
+     * Cues scenes that depend on game engine narrative data being initialized.
+     * @param {ViewManager} viewManager 
+     */
+    static cueDependentScenes(viewManager) {
+        const gameEngine = viewManager.gameEngine;
+
+        // 2. System View (Local Space)
+        viewManager.cueScene('LocalSpaceScene', {
+            systemDetails: gameEngine.currentSystemDetails,
+            planets: gameEngine.currentPlanets,
+            star: gameEngine.playerStartSystem,
+            galaxy: gameEngine.galaxy,
+            introConfig: { mode: 'flyby', duration: 25.0 }
+        }, {
+            duration: 0,
+            transition: { type: 'crossDissolve', duration: 2000 },
+            onActive: async (scene) => {
+                if (typeof scene.playIntroSequence === 'function') {
+                    await scene.playIntroSequence();
                 }
             }
         });
 
-        // 2. System View (Local Space)
-        if (gameEngine.playerStartSystem) {
-            viewManager.cueScene('LocalSpaceScene', {
-                systemDetails: gameEngine.currentSystemDetails,
-                planets: gameEngine.currentPlanets,
-                star: gameEngine.playerStartSystem,
-                galaxy: gameEngine.galaxy,
-                introConfig: { mode: 'flyby', duration: 25.0 } // Increased duration for smoother flyby
-            }, {
-                duration: 0, 
-                transition: { type: 'crossDissolve', duration: 2000 },
-                onActive: async (scene) => {
-                    if (typeof scene.playIntroSequence === 'function') {
-                        await scene.playIntroSequence();
-                    }
+        // 3. Planetary Orbit
+        viewManager.cueScene('PlanetaryOrbitScene', {
+            planet: gameEngine.currentPlanets ? gameEngine.currentPlanets[0] : null,
+            system: gameEngine.currentSystemDetails,
+            sunDirection: new THREE.Vector3(1, 0.5, 1).normalize()
+        }, {
+            duration: 10000,
+            transition: { type: 'fade', duration: 1500 },
+            onActive: async (scene) => {
+                // Generate Ship
+                await gameEngine.seedPlayerShip();
+                const music = viewManager.engine.getModule('Music');
+                if (music && gameEngine.playerShip) {
+                    music.injectThemeComponents({ playerShip: gameEngine.playerShip });
+                    const theme = await music.createMainTheme(gameEngine);
+                    if (theme) music.updateTrack(theme);
                 }
-            });
-
-            // 3. Planetary Orbit
-            viewManager.cueScene('PlanetaryOrbitScene', {
-                planet: gameEngine.currentPlanets ? gameEngine.currentPlanets[0] : null,
-                system: gameEngine.currentSystemDetails,
-                sunDirection: new THREE.Vector3(1, 0.5, 1).normalize()
-            }, {
-                duration: 10000,
-                transition: { type: 'fade', duration: 1500 },
-                onActive: async (scene) => {
-                    // Generate Ship
-                    await gameEngine.seedPlayerShip();
-                    const music = viewManager.engine.getModule('Music');
-                    if (music && gameEngine.playerShip) {
-                        music.injectThemeComponents({ playerShip: gameEngine.playerShip });
-                        const theme = await music.createMainTheme(gameEngine);
-                        if (theme) music.updateTrack(theme);
-                    }
-                }
-            });
-        }
+            }
+        });
 
         // 4. Ship Showcase
         viewManager.cueScene('ShipShowcaseScene', {}, {
             duration: 0,
             onActive: async () => {
-                this.hide(); 
+                this.hide();
             },
             transition: { type: 'wipe', duration: 1200, direction: 'up' }
         });
-
-        // Execute
-        await viewManager.playSequence();
     }
 }
 

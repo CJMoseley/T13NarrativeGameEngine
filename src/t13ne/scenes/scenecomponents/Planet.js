@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import ProcGen from '/src/t13ne/procgen/ProcGen.js';
+import ProcGen from '../../procgen/ProcGen.js';
 import { SceneTools } from '/src/t13ne/core/SceneTools.js';
 import { ColourUtils } from '/src/t13ne/utils/ColourUtils.js';
 
@@ -15,10 +15,10 @@ export class Planet extends THREE.Group {
 
     init() {
         const prng = ProcGen.createPRNG(this.data.name || 'planet');
-        
+
         // 1. Surface
         const geometry = new THREE.SphereGeometry(this.radius, 64, 64);
-        
+
         // Initial simple material to prevent blocking
         let color = new THREE.Color(0x888888);
         if (this.data.color) {
@@ -29,7 +29,7 @@ export class Planet extends THREE.Group {
             color.setHSL(prng.nextDouble(), 0.6, 0.5);
         }
         this.baseColor = color.clone(); // Store determined color for consistency
-        
+
         const material = new THREE.MeshStandardMaterial({ color: color, roughness: 0.7 });
         const surface = new THREE.Mesh(geometry, material);
         surface.castShadow = true;
@@ -50,7 +50,7 @@ export class Planet extends THREE.Group {
             if (type.includes('Gas')) atmoColor = 0xffcc88;
             if (type.includes('Volcanic')) atmoColor = 0xffaa88;
             if (type.includes('Ice')) atmoColor = 0xaaccff;
-            
+
             const atmoMat = new THREE.MeshBasicMaterial({
                 color: atmoColor,
                 transparent: true,
@@ -79,7 +79,7 @@ export class Planet extends THREE.Group {
         // 1. Surface Textures
         this._generateTexturesAsync(this.data, prng).then(textures => {
             if (!this.surfaceMesh) return;
-            
+
             const oldMat = this.surfaceMesh.material;
             this.surfaceMesh.material = new THREE.MeshStandardMaterial({
                 map: textures.map,
@@ -89,7 +89,7 @@ export class Planet extends THREE.Group {
                 emissiveIntensity: 1.0,
                 bumpMap: textures.map,
                 bumpScale: this.radius * 0.02,
-                color: 0xffffff, 
+                color: 0xffffff,
                 metalness: 0.1,
                 roughness: 1.0
             });
@@ -103,14 +103,14 @@ export class Planet extends THREE.Group {
             const cloudMat = new THREE.MeshStandardMaterial({
                 color: 0xffffff,
                 transparent: true,
-                opacity: 0, 
+                opacity: 0,
                 blending: THREE.NormalBlending,
                 side: THREE.DoubleSide,
                 depthWrite: false
             });
             const clouds = new THREE.Mesh(cloudGeo, cloudMat);
             this.add(clouds);
-            
+
             this._createCloudTextureAsync(prng, this.data.type).then(tex => {
                 if (clouds) {
                     clouds.material.map = tex;
@@ -121,12 +121,12 @@ export class Planet extends THREE.Group {
         }
 
         // 3. Orbital Station (Signs of Habitation)
-        const hasCities = (this.data.population > 0) || 
-                          (this.data.biosphere && !['None', 'Extinct', 'Microbial'].some(s => this.data.biosphere.includes(s))) ||
-                          (this.data.type && (this.data.type.includes('Terrestrial') || this.data.type.includes('Ocean')));
+        const hasCities = (this.data.population > 0) ||
+            (this.data.biosphere && !['None', 'Extinct', 'Microbial'].some(s => this.data.biosphere.includes(s))) ||
+            (this.data.type && (this.data.type.includes('Terrestrial') || this.data.type.includes('Ocean')));
 
         if (hasCities && prng.nextDouble() > 0.3) {
-             this._createOrbitalStation(prng);
+            this._createOrbitalStation(prng);
         }
     }
 
@@ -150,11 +150,11 @@ export class Planet extends THREE.Group {
         emissiveCanvas.width = 1024;
         emissiveCanvas.height = 512;
         const emissiveCtx = emissiveCanvas.getContext('2d');
-        
+
         // Base Color
         // Use the stored baseColor to ensure it matches the low-detail mesh
         const baseColor = this.baseColor ? this.baseColor.clone() : new THREE.Color(0x228833);
-        
+
         // If we somehow don't have a baseColor (legacy), we skip the old fallback logic 
         // to avoid the mismatch described.
 
@@ -164,7 +164,7 @@ export class Planet extends THREE.Group {
         hsl.s = 0.8 + prng.nextDouble() * 0.2; // Force very high saturation for cartoon look
         hsl.l = 0.4 + prng.nextDouble() * 0.3; // Bright and vibrant
         baseColor.setHSL(hsl.h, hsl.s, hsl.l);
-        
+
         // Secondary color for variation (analogous)
         const secColor = baseColor.clone().offsetHSL(0.1, 0, -0.1);
 
@@ -177,7 +177,7 @@ export class Planet extends THREE.Group {
         const eData = emissiveImageData.data;
 
         // Fill emissive with black initially
-        for (let i = 0; i < eData.length; i += 4) { eData[i] = 0; eData[i+1] = 0; eData[i+2] = 0; eData[i+3] = 255; }
+        for (let i = 0; i < eData.length; i += 4) { eData[i] = 0; eData[i + 1] = 0; eData[i + 2] = 0; eData[i + 3] = 255; }
 
 
         // --- BIOME COLOR PALETTES ---
@@ -243,9 +243,9 @@ export class Planet extends THREE.Group {
         }
 
         // Habitation Check
-        const hasCities = (planetData.population > 0) || 
-                          (planetData.biosphere && !['None', 'Extinct', 'Microbial'].some(s => planetData.biosphere.includes(s))) ||
-                          (pType === 'Terrestrial' || pType === 'Ocean');
+        const hasCities = (planetData.population > 0) ||
+            (planetData.biosphere && !['None', 'Extinct', 'Microbial'].some(s => planetData.biosphere.includes(s))) ||
+            (pType === 'Terrestrial' || pType === 'Ocean');
 
         // --- NOISE FUNCTIONS ---
         const fbm = (x, y, z, octaves, persistence, scale) => {
@@ -258,7 +258,7 @@ export class Planet extends THREE.Group {
             let frequency = scale;
             let amplitude = 1;
             let maxVal = 0;
-            for(let i = 0; i < Math.min(octaves, 4); i++) {
+            for (let i = 0; i < Math.min(octaves, 4); i++) {
                 let n = ProcGen.simplex3D(x * frequency, y * frequency, z * frequency);
                 n = 1.0 - Math.abs(n);
                 n = n * n; // Sharpen ridges
@@ -274,11 +274,11 @@ export class Planet extends THREE.Group {
             const qx = ProcGen.fbm3D(x * scale, y * scale, z * scale, 3, 2.0, 0.5);
             const qy = ProcGen.fbm3D((x + 5.2) * scale, (y + 1.3) * scale, (z + 2.8) * scale, 3, 2.0, 0.5);
             const qz = ProcGen.fbm3D((x + 9.2) * scale, (y + 2.3) * scale, (z + 4.8) * scale, 3, 2.0, 0.5);
-            
+
             const n = ProcGen.fbm3D(
-                (x + 4.0 * qx) * scale, 
-                (y + 4.0 * qy) * scale, 
-                (z + 4.0 * qz) * scale, 
+                (x + 4.0 * qx) * scale,
+                (y + 4.0 * qy) * scale,
+                (z + 4.0 * qz) * scale,
                 3, 2.0, 0.5
             );
             return (n + 1) * 0.5;
@@ -321,12 +321,12 @@ export class Planet extends THREE.Group {
                     const base = fbm(sx, sy, sz, 4, 0.5, noiseScale);
                     const cell = worley(sx, sy, sz, noiseScale * 2.0);
                     // Invert worley for craters/cells
-                    n = base * 0.6 + (1.0 - cell) * 0.4; 
+                    n = base * 0.6 + (1.0 - cell) * 0.4;
                 } else {
                     // Terrestrial/Ocean/Ice get standard FBM but with more octaves
                     n = fbm(sx, sy, sz, 8, 0.5, noiseScale);
                 }
-                
+
                 n = Math.max(0, Math.min(1, n)); // Clamp
 
                 // Determine final color based on noise value (height)
@@ -338,7 +338,7 @@ export class Planet extends THREE.Group {
                 if (pType === 'Ocean') waterLevel = 0.75; // Ocean worlds are mostly water
 
                 const isWater = (planetData.type.includes('Terrestrial') || planetData.type.includes('Ocean')) && n < waterLevel;
-                
+
                 if (isWater) {
                     // Ocean Color (Deep Blue/Green)
                     finalColor.lerpColors(p.waterDeep, p.waterShallow, (n / waterLevel));
@@ -346,10 +346,10 @@ export class Planet extends THREE.Group {
                 } else {
                     // Land Color
                     const landHeight = (n - waterLevel) / (1.0 - waterLevel); // Remap waterLevel-1.0 to 0-1
-                    
+
                     // Cartoony Stepping
                     const steppedHeight = Math.floor(landHeight * bands) / bands;
-                    
+
                     finalColor.lerpColors(p.land1, p.land2, steppedHeight);
                     if (landHeight > 0.7) {
                         finalColor.lerp(p.landHigh, (landHeight - 0.7) / 0.3);
@@ -380,7 +380,7 @@ export class Planet extends THREE.Group {
                                 else if (chemN > 0.2) chemColor.setHex(0xcb7520); // Orange/Red
                                 else if (chemN > 0.0) chemColor.setHex(0x654321); // Dark Brown
                                 else chemColor.setHex(0x556b2f); // Olive Green
-                                
+
                                 finalColor.lerp(chemColor, (chemN + 0.2) * 0.7);
                             }
                         }
@@ -389,15 +389,15 @@ export class Planet extends THREE.Group {
                     // City Lights (Emissive)
                     if (hasCities && !isWater && pType !== 'Volcanic' && pType !== 'Gas') {
                         // Use Worley noise for city clusters
-                        let cityN = worley(sx, sy, sz, noiseScale * 15.0); 
+                        let cityN = worley(sx, sy, sz, noiseScale * 15.0);
                         // Invert and threshold for sparse cities
-                        if (cityN > 0.85) { 
-                             // Mask with land height to avoid underwater cities and high peaks
-                             if (n < 0.8) {
-                                 eData[idx] = 255; // Warm Light
-                                 eData[idx + 1] = 220;
-                                 eData[idx + 2] = 150;
-                             }
+                        if (cityN > 0.85) {
+                            // Mask with land height to avoid underwater cities and high peaks
+                            if (n < 0.8) {
+                                eData[idx] = 255; // Warm Light
+                                eData[idx + 1] = 220;
+                                eData[idx + 2] = 150;
+                            }
                         }
                     }
 
@@ -419,7 +419,7 @@ export class Planet extends THREE.Group {
         ctx.putImageData(imageData, 0, 0);
         roughCtx.putImageData(roughImageData, 0, 0);
         emissiveCtx.putImageData(emissiveImageData, 0, 0);
-        
+
         // Add Ice Caps (Procedural)
         if (pType !== 'Volcanic' && pType !== 'Gas') {
             ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
@@ -431,7 +431,7 @@ export class Planet extends THREE.Group {
             roughCtx.fillRect(0, 0, 1024, 40);
             roughCtx.fillRect(0, 472, 1024, 40);
         }
-        
+
         return {
             map: new THREE.CanvasTexture(canvas),
             roughness: new THREE.CanvasTexture(roughCanvas),
@@ -445,24 +445,24 @@ export class Planet extends THREE.Group {
         const ctx = canvas.getContext('2d');
         const imgData = ctx.createImageData(1024, 512);
         const data = imgData.data;
-        
+
         const isVolcanic = type && type.includes('Volcanic');
         const cloudOpacity = isVolcanic ? 0.9 : 0.6;
         const scale = 3.0;
-        
+
         for (let y = 0; y < 512; y++) {
             // Yield every 8 rows
             if (y % 8 === 0) await new Promise(resolve => setTimeout(resolve, 0));
 
             for (let x = 0; x < 1024; x++) {
                 const idx = (y * 1024 + x) * 4;
-                
+
                 // Spherical mapping for seamless clouds
                 const u = x / 1024;
                 const v = y / 512;
                 const theta = u * Math.PI * 2;
                 const phi = v * Math.PI;
-                
+
                 const sx = Math.sin(phi) * Math.cos(theta);
                 const sy = Math.sin(phi) * Math.sin(theta);
                 const sz = Math.cos(phi);
@@ -482,8 +482,8 @@ export class Planet extends THREE.Group {
                 if (isVolcanic) {
                     // Mix Ash (Dark Grey) and Sulphur (Yellow)
                     let mixN = ProcGen.simplex3D(sx * 6.0, sy * 6.0, sz * 6.0);
-                    mixN = (mixN + 1) * 0.5; 
-                    
+                    mixN = (mixN + 1) * 0.5;
+
                     if (mixN > 0.6) {
                         // Sulphur
                         r = 210; g = 190; b = 90;
@@ -500,50 +500,50 @@ export class Planet extends THREE.Group {
                 }
 
                 data[idx] = Math.floor(r);
-                data[idx+1] = Math.floor(g);
-                data[idx+2] = Math.floor(b);
-                data[idx+3] = Math.floor(alpha * 255 * cloudOpacity);
+                data[idx + 1] = Math.floor(g);
+                data[idx + 2] = Math.floor(b);
+                data[idx + 3] = Math.floor(alpha * 255 * cloudOpacity);
             }
         }
-        
+
         ctx.putImageData(imgData, 0, 0);
         return new THREE.CanvasTexture(canvas);
     }
 
     _createOrbitalStation(prng) {
         const stationGroup = new THREE.Group();
-        
+
         // Main Hub
         const hullGeo = new THREE.CylinderGeometry(0.2, 0.2, 1.5, 8);
         const hullMat = new THREE.MeshStandardMaterial({ color: 0xaaaaaa, metalness: 0.8, roughness: 0.2 });
         const hull = new THREE.Mesh(hullGeo, hullMat);
         hull.rotation.z = Math.PI / 2;
         stationGroup.add(hull);
-        
+
         // Ring
         const ringGeo = new THREE.TorusGeometry(0.8, 0.1, 8, 16);
         const ring = new THREE.Mesh(ringGeo, hullMat);
         stationGroup.add(ring);
-        
+
         // Solar Panels
         const panelGeo = new THREE.BoxGeometry(2.5, 0.05, 0.5);
         const panelMat = new THREE.MeshStandardMaterial({ color: 0x112244, emissive: 0x001133, roughness: 0.2 });
         const panel = new THREE.Mesh(panelGeo, panelMat);
         stationGroup.add(panel);
-        
+
         // Position in orbit (Geostationary relative to surface for now)
         const orbitRadius = this.radius * (1.2 + prng.nextDouble() * 0.5);
         const angle = prng.nextDouble() * Math.PI * 2;
         const inclination = (prng.nextDouble() - 0.5) * 0.5;
-        
+
         stationGroup.position.set(
             Math.cos(angle) * orbitRadius,
             Math.sin(angle) * orbitRadius * Math.sin(inclination),
             Math.sin(angle) * orbitRadius * Math.cos(inclination)
         );
-        
+
         stationGroup.lookAt(0, 0, 0);
-        
+
         // Add a beacon light
         const beacon = new THREE.PointLight(0xff0000, 1, 5);
         stationGroup.add(beacon);

@@ -66,7 +66,7 @@ export class ViewManager {
         // Scene Caching and Preparation Tracking
         this.preparedScenes = new Map(); // Cache for ready-to-display scenes
         this.scenesInProgress = new Map(); // Tracks scenes currently being prepared
-        this.MAX_CACHE_SIZE = 3; // Max number of scenes to keep in memory
+        this.MAX_CACHE_SIZE = 5; // Increased cache for smoother transitions
 
         // Sequencing and Timing
         this.sceneQueue = [];
@@ -353,17 +353,9 @@ export class ViewManager {
                 Logger.message(`ViewManager: Sequence item '${item.name}' not cached. Attempting just-in-time preparation.`);
 
                 const scene = await this.sceneManager.prepareScene(item.name, item.data, (p) => {
-                    this.uiMessage.showMessage({
-                        key: 'seq_loader',
-                        title: 'Loading...',
-                        template: 'loading_scene',
-                        data: { message: p.status || 'Loading...' },
-                        showProgress: true,
-                        progress: p.percent
-                    });
+                    // During sequencing, we avoid showing a blocking loader unless absolutely necessary
+                    // (we could add a delay here if desired, but for now we'll keep it silent)
                 });
-
-                this.uiMessage.closeMessage('seq_loader');
 
                 if (!scene) {
                     Logger.error(`ViewManager: Failed to prepare '${item.name}'. Skipping to next sequence item.`);
@@ -453,30 +445,27 @@ export class ViewManager {
             Logger.message(`Scene '${sceneName}' not in cache. Preparing...`);
             EventBus.emit('scene:loading', sceneName); // For UIManager to show loading screen
 
-            // Show loading progress window
-            this.uiMessage.showMessage({
-                key: 'scene_loader',
-                title: 'Loading Scene',
-                template: 'loading_scene',
-                data: { message: `Preparing ${sceneName}...` },
-                showProgress: true,
-                progress: 0
-            });
-
             const onProgress = (progress) => {
                 EventBus.emit('scene:loading_progress', { sceneName, ...progress });
-                this.uiMessage.showMessage({
-                    key: 'scene_loader',
-                    title: 'Loading Scene',
-                    template: 'loading_scene',
-                    data: { message: progress.status || `Loading ${sceneName}...` },
-                    showProgress: true,
-                    progress: progress.percent
-                });
+
+                // Only show the message UI if we are NOT in a cinematic sequence and preparation is taking a while
+                if (!this.isSequencing) {
+                    this.uiMessage.showMessage({
+                        key: 'scene_loader',
+                        title: 'Loading Scene',
+                        template: 'loading_scene',
+                        data: { message: progress.status || `Loading ${sceneName}...` },
+                        showProgress: true,
+                        progress: progress.percent
+                    });
+                }
             };
 
             newScene = await this.sceneManager.prepareScene(sceneName, sceneData, onProgress);
-            this.uiMessage.closeMessage('scene_loader');
+
+            if (!this.isSequencing) {
+                this.uiMessage.closeMessage('scene_loader');
+            }
 
             if (!newScene) {
                 this.handleSceneLoadFailure(sceneName, "Preparation failed in SceneManager.");

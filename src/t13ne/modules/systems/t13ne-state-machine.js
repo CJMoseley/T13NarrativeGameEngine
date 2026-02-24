@@ -42,8 +42,8 @@ class StateMachine {
     serialize() {
         return {
             currentState: this.currentState,
-            context: this.context,
-            history: this.history
+            // Exclude context and states as they often contain circular refs or functions
+            history: [...this.history]
         };
     }
 

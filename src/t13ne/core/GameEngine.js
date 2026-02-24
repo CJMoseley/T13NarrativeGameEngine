@@ -83,61 +83,93 @@ export class GameEngine {
      * @async
      */
     async initializeDataDependents() {
-        const funcName = 'GameEngine.initializeDataDependents';
+        await this.initializeBaseData();
+        await this.initializeNarrativeData();
+    }
+
+    /**
+     * Initializes the base data (Lore, History, Galaxy) needed for the first visual scene.
+     */
+    async initializeBaseData() {
+        const funcName = 'GameEngine.initializeBaseData';
         Logger.start(funcName);
+        const startTime = performance.now();
 
         try {
-            // Instantiate LoreMaster
+            Logger.message("GameEngine: Initializing LoreMaster...");
             this.loreMaster = new LoreMaster(this.pluginManager);
             await this.loreMaster.initialize();
-            Logger.message('GameEngine: LoreMaster instantiated and initialized.');
+            Logger.message(`GameEngine: LoreMaster initialized in ${(performance.now() - startTime).toFixed(2)}ms`);
 
-            // Ensure we have a consistent seed from the Game module if available
             const GameModule = this.engine?.getModule('Game');
             const activeGame = GameModule?.getActiveGame();
             const galacticParams = {};
             if (activeGame?.seed) {
                 galacticParams.seed = activeGame.seed;
                 GalacticHistory.setSeed(activeGame.seed);
-                Logger.message(`GameEngine: Using active game seed for galaxy and history: ${activeGame.seed}`);
             }
 
-            // Load Galactic History (Procedural Generation)
-            await GalacticHistory.load(this.pluginManager, this.loreMaster);
-            Logger.message('GameEngine: Galactic History loaded.');
+            // DO NOT load GalacticHistory here - it's too slow and blocks the intro visuals.
+            // It will be loaded in initializeNarrativeData which runs during the intro.
 
+            Logger.message("GameEngine: Starting Galaxy Generation...");
+            const galaxyStartTime = performance.now();
             this.galaxyGenerator = new GalaxyGenerator(this.loreMaster, galacticParams);
-            Logger.message('GameEngine: GalaxyGenerator instantiated.');
             this.galaxy = await this.galaxyGenerator.generateGalaxy();
+            Logger.message(`GameEngine: Galaxy generated in ${(performance.now() - galaxyStartTime).toFixed(2)}ms`);
 
             if (!this.galaxy || !this.galaxy.stars || this.galaxy.stars.length === 0) {
                 throw new Error("Galaxy generation failed or produced no stars.");
             }
 
-            // Retrieve Galaxy Name from Tapestry if available
             const tapestry = this.engine.getModule('Tapestry');
-            if (tapestry) {
-                this.galaxy.name = tapestry.galaxyName || "The Galaxy";
-            } else {
-                this.galaxy.name = "The Galaxy";
-            }
-            Logger.message(`GameEngine: Galaxy instance created: ${this.galaxy.name}`);
+            this.galaxy.name = tapestry?.galaxyName || "The Galaxy";
+
+            Logger.message(`GameEngine: Base data initialization complete in ${(performance.now() - startTime).toFixed(2)}ms. Galaxy: ${this.galaxy.name}`);
+        } catch (error) {
+            Logger.error("GameEngine: Failed to initialize base data.", error);
+            throw error;
+        } finally {
+            Logger.end(funcName);
+        }
+    }
+
+    /**
+     * Initializes the narrative data (Start system, plots) which can happen during the intro.
+     */
+    async initializeNarrativeData() {
+        const funcName = 'GameEngine.initializeNarrativeData';
+        Logger.start(funcName);
+
+        try {
+            // Ensure history is loaded first as start position logic needs it for dominant species
+            await GalacticHistory.load(this.pluginManager, this.loreMaster);
 
             const startPosPromise = this._determineRandomStartPosition();
-            const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error("Start position determination timed out")), 15000));
+            const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error("Start position determination timed out")), 20000));
 
             await Promise.race([startPosPromise, timeoutPromise]);
 
             this.galacticPlot = await this.generateGalacticCycle();
-            Logger.message("GameEngine: Data-dependent initialization complete.");
+            Logger.message("GameEngine: Narrative initialization complete.");
             EventBus.emit('engine:initialized', this);
         } catch (error) {
-            Logger.error("GameEngine: Critical error during data initialization.", error);
+            Logger.error("GameEngine: Failed to initialize narrative data.", error);
             EventBus.emit('engine:initialization_failed', error);
-            throw error; // Re-throw to let LoaderManager handle it
+            throw error;
         } finally {
             Logger.end(funcName);
         }
+    }
+
+    /**
+     * Waits for the narrative initialization to complete.
+     */
+    async waitForNarrativeInit() {
+        if (this.galacticPlot) return this;
+        return new Promise((resolve) => {
+            EventBus.once('engine:initialized', () => resolve(this));
+        });
     }
 
     /**
@@ -232,7 +264,7 @@ export class GameEngine {
 
         const availableSpeciesSet = new Set();
         await Promise.all(this.nearbyStartSystems.map(async (system) => {
-            const details = await this.galaxyGenerator.getSystemDetails(system);
+            const details = await this.galaxyGenerator.getSystemDetails(system, { quick: true });
             if (details && details.speciesKey && details.speciesKey !== 'FirstRelic') {
                 availableSpeciesSet.add(details.speciesKey);
             }

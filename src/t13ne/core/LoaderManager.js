@@ -42,7 +42,7 @@ class LoaderManager {
                     const soundEngine = this.viewManager.engine.soundEngine;
                     if (soundEngine && soundEngine.audioContext && soundEngine.audioContext.state === 'suspended') {
                         Logger.message("AudioContext suspended. Requesting permission immediately.");
-                        this.reportProgress("Click to Initialize Systems...");
+                        this.reportProgress("Pre-flight Check Required...");
 
                         await new Promise(resolve => {
                             IntroSequence.promptForInteraction(async () => {
@@ -75,31 +75,33 @@ class LoaderManager {
             { name: 'Discover Plugins', action: () => this.pluginManager.discoverAndLoadPlugins(this) },
             { name: 'Initialize Plugins', action: () => this.pluginManager.initializePlugins(this) },
             { name: 'Lore Data', action: () => this.loreDataManager.load() },
-            { name: 'Game Engine Data', action: () => this.gameEngine.initializeDataDependents() },
+            { name: 'Core Game Data', action: () => this.gameEngine.initializeBaseData() },
 
-            // 1. Start Audio with Galaxy (Immediate Feedback)
             {
                 name: 'Initialize Audio', action: async () => {
                     const music = this.viewManager.engine.getModule('Music');
                     if (music) {
                         music.injectThemeComponents({ galaxy: this.gameEngine.galaxy });
-                        this.reportProgress("Starting Galaxy Theme...");
+                        this.reportProgress("Priming Acoustic Harmonics...");
                         const theme = await music.createMainTheme(this.gameEngine);
                         if (theme) music.updateTrack(theme);
                     }
                 }
             },
 
-            // Visual Loading Sequence - Now queued via ViewManager
             {
-                name: 'Queue Visuals', action: async () => {
-                    this.viewManager.sceneQueue = []; // Clear any existing queue to prevent double ups
+                name: 'Cinematic Intro', action: async () => {
                     this.viewManager.sceneQueue = [];
-                    await IntroSequence.play(this.viewManager);
+                    // Start the cinematic loop - we do NOT await completion so narrative gen can run in parallel
+                    IntroSequence.play(this.viewManager);
+                    // Minimal delay to ensure scene transition logic starts before background crunching
+                    await new Promise(r => setTimeout(r, 200));
                 }
             },
 
-            { name: 'Galactic History', action: () => this.galacticHistoryManager.load(this.pluginManager, this.gameEngine.loreMaster) },
+            {
+                name: 'Narrative Data', action: () => this.gameEngine.initializeNarrativeData()
+            }
         ];
     }
 
@@ -135,8 +137,9 @@ class LoaderManager {
 
                 try {
                     if (useTimeout) {
+                        const timeoutDuration = (task.name === 'Narrative Data' || task.name === 'Core Game Data') ? 120000 : (task.name === 'Load T13 Core' ? 60000 : 30000);
                         const timeoutPromise = new Promise((_, reject) =>
-                            timeoutId = setTimeout(() => reject(new Error(`Task '${task.name}' timed out after 30s`)), 30000)
+                            timeoutId = setTimeout(() => reject(new Error(`Task '${task.name}' timed out after ${timeoutDuration / 1000}s`)), timeoutDuration)
                         );
                         await Promise.race([task.action(), timeoutPromise]);
                     } else {
@@ -159,44 +162,7 @@ class LoaderManager {
         this.reportProgress(Localization.__('READY_MESSAGE', { message: 'All systems initialized. Welcome, racer.' }));
         Logger.message('LoaderManager: All tasks completed successfully.');
 
-        // Create a standalone button to continue, ensuring it's visible over the canvas
-        // This button allows skipping the intro sequence if it gets stuck or user wants to skip
-        const continueButton = document.createElement('button');
-        continueButton.innerText = Localization.__('CONTINUE_BUTTON');
-        continueButton.className = 'menu-button';
-        continueButton.style.position = 'absolute';
-        continueButton.style.bottom = '50px';
-        continueButton.style.left = '50%';
-        continueButton.style.transform = 'translateX(-50%)';
-        continueButton.style.zIndex = '10000'; // Ensure it's on top of everything, including Intro
-        continueButton.id = 'loader-continue-btn';
-        continueButton.style.cursor = 'pointer';
-        continueButton.style.padding = '10px 20px';
-        continueButton.style.fontSize = '16px';
-        continueButton.style.borderRadius = '5px';
-        continueButton.style.width = 'auto'; // Prevent filling width
-
-        continueButton.onclick = () => {
-            continueButton.remove();
-            if (typeof IntroSequence !== 'undefined') {
-                IntroSequence.hide();
-            }
-            this.viewManager.sceneQueue = []; // Stop the sequence
-            this.viewManager.showMainMenu();
-        };
-
-        document.body.appendChild(continueButton);
-
-        // Hook into ViewManager to remove button when sequence ends naturally
-        const originalShowMainMenu = this.viewManager.showMainMenu.bind(this.viewManager);
-        this.viewManager.showMainMenu = () => {
-            const btn = document.getElementById('loader-continue-btn');
-            if (btn) btn.remove();
-            if (typeof IntroSequence !== 'undefined') {
-                IntroSequence.hide();
-            }
-            originalShowMainMenu();
-        };
+        // Finalize loading - the IntroSequence or the last scene will handle the transition to the Main Menu.
     }
 }
 

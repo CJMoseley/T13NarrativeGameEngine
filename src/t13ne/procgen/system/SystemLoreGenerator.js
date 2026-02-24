@@ -77,7 +77,7 @@ export class SystemLoreGenerator {
         } else if (speciesLore.isCreator && n4 > 0.95) {
             const newSpecies = this.speciesGenerator.generateProceduralSpecies({ n1: n2, n2: n3, n3: n1, n4: n4 });
             secondarySpeciesLore = newSpecies;
-            eventDescription = `This system is the cradle of the ${newSpecies.commonName}, a newly emerged species created by the system's primary inhabitants.`;
+            eventDescription = `This system is the cradle of the ${newSpecies.commonName}, a newly emerged species created by the system's primary inhabitants. They are viewed as a significant biological achievement.`;
         }
 
         const scientificName = this.speciesGenerator.generateScientificName(primarySpeciesKey, speciesLore, noiseValues);
@@ -218,7 +218,7 @@ export class SystemLoreGenerator {
                 // Append conflict flavor to description - DIEGETIC VERSION
                 const domTheme = (domCard.data?.Yarn?.Significator?.Description || domCard.data?.Yarn?.Yarn_Name || domCard.name).toLowerCase();
                 const pressTheme = (pressCard.data?.Yarn?.Significator?.Description || pressCard.data?.Yarn?.Yarn_Name || pressCard.name).toLowerCase();
-                description += ` The system is currently gripped by a struggle between those driven by ${domTheme} and those resisting with ${pressTheme}.`;
+                description += ` Members of this society are currently gripped by a struggle between those driven by ${domTheme} and those resisting with ${pressTheme}.`;
             }
         }
 
@@ -303,7 +303,7 @@ export class SystemLoreGenerator {
         clean = clean.replace(/(Void|Circle|Half-Moon|Triangle|Square|Pentagon|Hexagon|Heptagon|Octagon|Nonagon|Decagon|Undecagon|Dodecagon|Triskaidecagon) (Characters|Beings|Planets|Societies) are/gi, 'Individuals here are typically');
 
         // 5. Clean up "Age of" clinical phrasing
-        clean = clean.replace(/An Age of ([^.]*) is occuring\./gi, 'This is a time of $1.');
+        clean = clean.replace(/An Age of ([^.]*) is occuring\./gi, 'This is a time when they are shaped by $1.');
 
         // 6. General cleanup of artifact whitespace
         clean = clean.replace(/\s+/g, ' ').trim();
@@ -360,10 +360,10 @@ export class SystemLoreGenerator {
         let secondaryDesc = '';
 
         if (secondaryLore) {
-            secondaryDesc = `This system is also notable for the presence of the ${secondaryLore.commonName}, a species known to have a complex relationship with the primary inhabitants.`;
+            secondaryDesc = `This system is also notable for the presence of the ${secondaryLore.commonName}, a species known to have a complex relationship with the primary inhabitants. They maintain a distinct cultural presence here.`;
         }
 
-        const corporateDesc = corporatePresence ? `The system shows significant influence from the ${corporatePresence.name}, a major corporate entity in the galaxy.` : '';
+        const corporateDesc = corporatePresence ? `Significant influence is wielded here by the ${corporatePresence.name}, who act as a major corporate entity in the galaxy.` : '';
 
         let prostheticDesc = '';
         if (loreObject.prosthetics && loreObject.prosthetics.length > 0) {

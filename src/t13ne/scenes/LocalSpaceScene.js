@@ -3,7 +3,7 @@ import Logger from '/src/t13ne/core/Logger.js';
 import { Scene } from '/src/t13ne/core/Scene.js';
 import { OrreryScene } from '/src/t13ne/scenes/OrreryScene.js';
 import { Controls } from '/src/t13ne/core/Controls.js';
-import ProcGen from '/src/t13ne/procgen/ProcGen.js';
+import ProcGen from '../procgen/ProcGen.js';
 import { Starbox } from '/src/t13ne/scenes/scenecomponents/starbox.js';
 import { PlanetGenerator } from '/src/t13ne/procgen/system/PlanetGenerator.js';
 import { Planet } from '/src/t13ne/scenes/scenecomponents/Planet.js';
@@ -218,7 +218,7 @@ export class LocalSpaceScene extends Scene {
             // If a path was passed in config, use it
             if (this.introConfig && this.introConfig.path) {
                 this.setIntroPath(this.introConfig.path);
-            } 
+            }
             // Otherwise generate one if we have a target
             else if (this.homeWorldObj) {
                 this.generateIntroPath();
@@ -244,7 +244,7 @@ export class LocalSpaceScene extends Scene {
         this.introPathSpline = new THREE.CatmullRomCurve3(points);
         this.introPath = this.introPathSpline.getPoints(200);
         this.introStartPos.copy(points[0]);
-        
+
         if (this.orreryScene) {
             this.orreryScene.setIntroPath(this.introPath, this.scales.orbit);
         }
@@ -258,108 +258,108 @@ export class LocalSpaceScene extends Scene {
     generateIntroPath() {
         if (!this.homeWorldObj) return;
 
-            const waypoints = [];
-            const allPlanets = this.objects.filter(o => o.type === 'planet').sort((a, b) => a.orbitRadius - b.orbitRadius);
-            const systemRadius = allPlanets.length > 0 ? allPlanets[allPlanets.length - 1].orbitRadius : 20000;
-            const startDist = Math.max(systemRadius * 2.5, 120000); // Start MUCH further out
+        const waypoints = [];
+        const allPlanets = this.objects.filter(o => o.type === 'planet').sort((a, b) => a.orbitRadius - b.orbitRadius);
+        const systemRadius = allPlanets.length > 0 ? allPlanets[allPlanets.length - 1].orbitRadius : 20000;
+        const startDist = Math.max(systemRadius * 2.5, 120000); // Start MUCH further out
 
-            // 1. Start Point: Outer Edge
-            const angle = Math.random() * Math.PI * 2;
-            this.introStartPos.set(
-                Math.cos(angle) * startDist,
-                startDist * 0.4, // Higher elev
-                Math.sin(angle) * startDist
-            );
-            waypoints.push(this.introStartPos.clone());
+        // 1. Start Point: Outer Edge
+        const angle = Math.random() * Math.PI * 2;
+        this.introStartPos.set(
+            Math.cos(angle) * startDist,
+            startDist * 0.4, // Higher elev
+            Math.sin(angle) * startDist
+        );
+        waypoints.push(this.introStartPos.clone());
 
-            // 2. Flyby Waypoint
-            if (this.flybyObj && this.flybyObj.realPosition) {
-                const flybyPos = this.flybyObj.realPosition.clone();
-                const flybyRadius = (this.flybyObj.baseRadius || 100) * (this.flybyObj.type === 'star' ? 40.0 : 15.0);
+        // 2. Flyby Waypoint
+        if (this.flybyObj && this.flybyObj.realPosition) {
+            const flybyPos = this.flybyObj.realPosition.clone();
+            const flybyRadius = (this.flybyObj.baseRadius || 100) * (this.flybyObj.type === 'star' ? 40.0 : 15.0);
 
-                // Perpendicular vector
-                const dirToCenter = new THREE.Vector3(0, 0, 0).sub(this.introStartPos).normalize();
-                const side = new THREE.Vector3().crossVectors(dirToCenter, new THREE.Vector3(0, 1, 0)).normalize();
-                if (side.lengthSq() === 0) side.set(1, 0, 0);
+            // Perpendicular vector
+            const dirToCenter = new THREE.Vector3(0, 0, 0).sub(this.introStartPos).normalize();
+            const side = new THREE.Vector3().crossVectors(dirToCenter, new THREE.Vector3(0, 1, 0)).normalize();
+            if (side.lengthSq() === 0) side.set(1, 0, 0);
 
-                const flybyWaypoint = flybyPos.clone().add(side.multiplyScalar(flybyRadius));
-                flybyWaypoint.y += flybyRadius * 0.3; // Slight drop/rise
-                waypoints.push(flybyWaypoint);
+            const flybyWaypoint = flybyPos.clone().add(side.multiplyScalar(flybyRadius));
+            flybyWaypoint.y += flybyRadius * 0.3; // Slight drop/rise
+            waypoints.push(flybyWaypoint);
+        }
+
+        // 3. Final approach point to homeworld
+        const homePos = this.homeWorldObj.realPosition.clone();
+        const homeRadius = this.homeWorldObj.baseRadius || 1000;
+
+        const prevPoint = waypoints[waypoints.length - 1];
+        let approachDir = new THREE.Vector3().subVectors(homePos, prevPoint).normalize();
+
+        // If it's a moon, adjust approach to try and keep the parent in view
+        if (this.homeWorldObj.type === 'moon' && this.homeWorldObj.parent) {
+            const parentPos = this.homeWorldObj.parent.realPosition;
+            const parentToMoon = new THREE.Vector3().subVectors(homePos, parentPos).normalize();
+
+            // Cross product to find a "side" approach that sees both
+            const sideDir = new THREE.Vector3().crossVectors(parentToMoon, new THREE.Vector3(0, 1, 0)).normalize();
+            if (sideDir.lengthSq() > 0.1) {
+                // Bias the approach to be slightly from the side of the parent-moon axis
+                approachDir.lerp(sideDir, 0.4).normalize();
             }
+        }
 
-            // 3. Final approach point to homeworld
-            const homePos = this.homeWorldObj.realPosition.clone();
-            const homeRadius = this.homeWorldObj.baseRadius || 1000;
+        const finalWaypoint = homePos.clone().sub(approachDir.multiplyScalar(homeRadius * 5.0));
+        finalWaypoint.y += homeRadius * 1.5;
 
-            const prevPoint = waypoints[waypoints.length - 1];
-            let approachDir = new THREE.Vector3().subVectors(homePos, prevPoint).normalize();
+        waypoints.push(finalWaypoint);
 
-            // If it's a moon, adjust approach to try and keep the parent in view
-            if (this.homeWorldObj.type === 'moon' && this.homeWorldObj.parent) {
-                const parentPos = this.homeWorldObj.parent.realPosition;
-                const parentToMoon = new THREE.Vector3().subVectors(homePos, parentPos).normalize();
+        // --- SAFETY CHECK: Avoid Star Collision ---
+        // Ensure the camera never flies through the star (at 0,0,0)
+        let maxStarRadius = (this.scales.starSize || 500);
+        this.objects.forEach(o => {
+            if (o.type === 'star' && o.baseRadius > maxStarRadius) {
+                maxStarRadius = o.baseRadius;
+            }
+        });
+        const starSafeRadius = maxStarRadius * 2.5 + 2000; // Add buffer
+        const origin = new THREE.Vector3(0, 0, 0);
 
-                // Cross product to find a "side" approach that sees both
-                const sideDir = new THREE.Vector3().crossVectors(parentToMoon, new THREE.Vector3(0, 1, 0)).normalize();
-                if (sideDir.lengthSq() > 0.1) {
-                    // Bias the approach to be slightly from the side of the parent-moon axis
-                    approachDir.lerp(sideDir, 0.4).normalize();
+        for (let i = 0; i < waypoints.length - 1; i++) {
+            const p1 = waypoints[i];
+            const p2 = waypoints[i + 1];
+
+            const line = new THREE.Line3(p1, p2);
+            const closest = new THREE.Vector3();
+            line.closestPointToPoint(origin, true, closest);
+
+            if (closest.distanceTo(origin) < starSafeRadius) {
+                // Path cuts too close to the star. Insert a diversion point.
+                const mid = new THREE.Vector3().addVectors(p1, p2).multiplyScalar(0.5);
+
+                // Lift the path "up" (Y+) to fly over the star
+                const divertHeight = starSafeRadius * 1.5;
+                if (mid.y < divertHeight) mid.y = divertHeight;
+
+                // Also push out horizontally if it's still too close (e.g. vertical dive)
+                if (mid.distanceTo(origin) < starSafeRadius) {
+                    const pushDir = mid.clone().setY(0).normalize();
+                    if (pushDir.lengthSq() === 0) pushDir.set(1, 0, 0);
+                    mid.add(pushDir.multiplyScalar(starSafeRadius));
                 }
+
+                waypoints.splice(i + 1, 0, mid);
+                i++; // Skip the newly inserted point
+                Logger.message("LocalSpaceScene: Inserted safety waypoint to avoid star collision.");
             }
+        }
 
-            const finalWaypoint = homePos.clone().sub(approachDir.multiplyScalar(homeRadius * 5.0));
-            finalWaypoint.y += homeRadius * 1.5;
-
-            waypoints.push(finalWaypoint);
-
-            // --- SAFETY CHECK: Avoid Star Collision ---
-            // Ensure the camera never flies through the star (at 0,0,0)
-            let maxStarRadius = (this.scales.starSize || 500);
-            this.objects.forEach(o => {
-                if (o.type === 'star' && o.baseRadius > maxStarRadius) {
-                    maxStarRadius = o.baseRadius;
-                }
-            });
-            const starSafeRadius = maxStarRadius * 2.5 + 2000; // Add buffer
-            const origin = new THREE.Vector3(0, 0, 0);
-            
-            for (let i = 0; i < waypoints.length - 1; i++) {
-                const p1 = waypoints[i];
-                const p2 = waypoints[i+1];
-                
-                const line = new THREE.Line3(p1, p2);
-                const closest = new THREE.Vector3();
-                line.closestPointToPoint(origin, true, closest);
-                
-                if (closest.distanceTo(origin) < starSafeRadius) {
-                    // Path cuts too close to the star. Insert a diversion point.
-                    const mid = new THREE.Vector3().addVectors(p1, p2).multiplyScalar(0.5);
-                    
-                    // Lift the path "up" (Y+) to fly over the star
-                    const divertHeight = starSafeRadius * 1.5;
-                    if (mid.y < divertHeight) mid.y = divertHeight;
-                    
-                    // Also push out horizontally if it's still too close (e.g. vertical dive)
-                    if (mid.distanceTo(origin) < starSafeRadius) {
-                        const pushDir = mid.clone().setY(0).normalize();
-                        if (pushDir.lengthSq() === 0) pushDir.set(1, 0, 0);
-                        mid.add(pushDir.multiplyScalar(starSafeRadius));
-                    }
-                    
-                    waypoints.splice(i + 1, 0, mid);
-                    i++; // Skip the newly inserted point
-                    Logger.message("LocalSpaceScene: Inserted safety waypoint to avoid star collision.");
-                }
-            }
-
-            if (waypoints.length > 1) {
-                this.introPathSpline = new THREE.CatmullRomCurve3(waypoints);
-                this.introPath = this.introPathSpline.getPoints(200);
-                this.orreryScene.setIntroPath(this.introPath, this.scales.orbit);
-            } else {
-                Logger.warn("LocalSpaceScene: Failed to generate valid intro path.");
-                this.introActive = false;
-            }
+        if (waypoints.length > 1) {
+            this.introPathSpline = new THREE.CatmullRomCurve3(waypoints);
+            this.introPath = this.introPathSpline.getPoints(200);
+            this.orreryScene.setIntroPath(this.introPath, this.scales.orbit);
+        } else {
+            Logger.warn("LocalSpaceScene: Failed to generate valid intro path.");
+            this.introActive = false;
+        }
 
         // Set initial camera position if intro is active
         if (this.introActive) {
@@ -688,7 +688,7 @@ export class LocalSpaceScene extends Scene {
                 }
 
                 Logger.message("LocalSpaceScene: Intro complete. Signalling ViewManager.");
-                
+
                 if (this._introResolve) {
                     this._introResolve();
                     this._introResolve = null;
@@ -699,7 +699,7 @@ export class LocalSpaceScene extends Scene {
             // Allow external controls or ship logic to update it.
             // If no other system is updating it, we might want to initialize it once.
             if (this.virtualCameraPosition.lengthSq() === 0 && this.homeWorldObj.realPosition) {
-                 this.virtualCameraPosition.copy(this.homeWorldObj.realPosition).add(new THREE.Vector3(0, 200, 800));
+                this.virtualCameraPosition.copy(this.homeWorldObj.realPosition).add(new THREE.Vector3(0, 200, 800));
             }
         }
 
@@ -839,7 +839,7 @@ export class LocalSpaceScene extends Scene {
             // We use the camera's up vector to maintain orientation (or level the horizon)
             m.lookAt(new THREE.Vector3(0, 0, 0), targetPos, this.activeCamera.up);
             targetQuaternion.setFromRotationMatrix(m);
-            
+
             // Slerp (Spherical Linear Interpolation) towards the target rotation
             // 5.0 * dt provides a snappy but smooth lock-on feel
             this.activeCamera.quaternion.slerp(targetQuaternion, 5.0 * dt);
@@ -914,7 +914,7 @@ export class LocalSpaceScene extends Scene {
 
         this.introStartTime = performance.now();
         this.introTime = 0;
-        
+
         return new Promise(resolve => {
             this._introResolve = resolve;
         });

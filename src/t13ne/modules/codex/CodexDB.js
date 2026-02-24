@@ -77,35 +77,75 @@ class CodexDB {
         return new Promise((resolve, reject) => {
             const transaction = this.db.transaction([storeName], 'readwrite');
             const store = transaction.objectStore(storeName);
-            // Debug uncloneable data
-            const findUncloneable = (obj, path = '') => {
-                if (obj instanceof Promise) return path;
-                if (typeof obj !== 'object' || obj === null) return null;
-                for (const key in obj) {
-                    try {
-                        const res = findUncloneable(obj[key], path ? `${path}.${key}` : key);
-                        if (res) return res;
-                    } catch (e) {
-                        return path ? `${path}.${key}` : key;
+
+            // Deep sanitize to remove Promises and other uncloneable items
+            const sanitize = (obj, path = 'root', seen = new WeakMap()) => {
+                if (obj instanceof Promise) {
+                    Logger.message(`CodexDB.sanitize: Stripping Promise at ${path}`);
+                    return null;
+                }
+                if (typeof obj === 'function') {
+                    Logger.message(`CodexDB.sanitize: Stripping Function at ${path}`);
+                    return null;
+                }
+                if (typeof obj === 'symbol') {
+                    Logger.message(`CodexDB.sanitize: Stripping Symbol at ${path}`);
+                    return null;
+                }
+                if (typeof obj !== 'object' || obj === null) return obj;
+
+                if (seen.has(obj)) return '[Circular]';
+
+                const isArray = Array.isArray(obj);
+                const copy = isArray ? [] : {};
+                seen.set(obj, copy);
+
+                // Handle both normal keys and symbols if they exist
+                const keys = isArray ? obj.map((_, i) => i) : [...Object.keys(obj), ...Object.getOwnPropertySymbols(obj)];
+
+                for (const key of keys) {
+                    const keyStr = typeof key === 'symbol' ? key.toString() : key;
+
+                    // EXPLICIT SKIP for massive system-level objects to prevent traversal of the entire engine
+                    if (['t13ne', 'codexLoader', 'viewManager', 'engine', 'pluginManager', 'gameEngine', 'sceneManager', 'renderer', 'workerPool', 'pool'].includes(keyStr)) {
+                        copy[key] = `[SystemRef: ${keyStr}]`;
+                        continue;
+                    }
+
+                    // Skip private properties or internal state that shouldn't be persisted if they start with underscore
+                    // but we keep some critical ones. This is a heuristic.
+                    if (typeof keyStr === 'string' && keyStr.startsWith('_') && !['_id', '_type', '_rev', '_data'].includes(keyStr)) {
+                        continue;
+                    }
+
+                    const val = obj[key];
+                    const sanitized = sanitize(val, `${path}.${keyStr}`, seen);
+
+                    // We keep nulls if they were already there, but we skip undefined/stripped
+                    if (sanitized !== undefined) {
+                        copy[key] = sanitized;
                     }
                 }
-                return null;
+                return copy;
             };
 
-            const uncloneablePath = findUncloneable(item);
-            if (uncloneablePath) {
-                Logger.error(`CodexDB: Uncloneable property found at item.${uncloneablePath}`);
-                console.error('Uncloneable item:', item);
-            }
+            const sanitizedItem = sanitize(item);
 
-            const request = store.put(item);
-            request.onsuccess = () => resolve(request.result);
-            request.onerror = () => reject(request.error);
+            try {
+                const request = store.put(sanitizedItem);
+                request.onsuccess = () => resolve(request.result);
+                request.onerror = () => reject(request.error);
+            } catch (e) {
+                Logger.error(`CodexDB: Critical failure putting to ${storeName}. Sanitization may have missed something.`, e);
+                // Last ditch effort: log the sanitized item structure if it still fails
+                Logger.message("CodexDB: Failed Sanitized Item Structure:", Object.keys(sanitizedItem));
+                reject(e);
+            }
         });
     }
 }
-
-export default new CodexDB();
+const instance = new CodexDB();
+export default instance;
 
 
 

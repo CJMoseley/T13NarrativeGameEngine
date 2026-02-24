@@ -39,27 +39,27 @@ export class SpeciesGenerator {
     _rewriteDescriptionForSpecies(text) {
         if (!text) return '';
         return text
-            .replace(/Characters are/g, 'beings are typically')
+            .replace(/Characters are/g, 'they are typically')
             .replace(/natural loners/g, 'often solitary')
             .replace(/perceived as leaders/g, 'perceived as natural leaders')
-            .replace(/co-operative, harmony seeking diplomats/g, 'a co-operative, harmony-seeking species')
-            .replace(/can become manipulative and petty/g, 'can have manipulative and petty tendencies')
-            .replace(/intelligent, creative, expressive, often artistic types/g, 'an intelligent, creative, and expressive species, often with artistic inclinations')
-            .replace(/love to talk, being entertaining/g, 'value communication and are often entertaining')
+            .replace(/co-operative, harmony seeking diplomats/g, 'they are a co-operative, harmony-seeking people')
+            .replace(/can become manipulative and petty/g, 'they can have manipulative and petty tendencies')
+            .replace(/intelligent, creative, expressive, often artistic types/g, 'they are an intelligent, creative, and expressive people, often with artistic inclinations')
+            .replace(/love to talk, being entertaining/g, 'they value communication and are often entertaining')
             .replace(/it may turn gossipy and superficial/g, 'their communication may sometimes tend towards the superficial')
-            .replace(/dependable, trustworthy and hard-working/g, 'a dependable, trustworthy, and hard-working people')
-            .replace(/can be rigid and narrow-minded/g, 'can exhibit rigid and narrow-minded traits')
-            .replace(/freedom-loving risk-takers/g, 'a freedom-loving species of risk-takers')
-            .replace(/may be fearless, or foolish/g, 'a trait that can manifest as either fearlessness or foolishness')
-            .replace(/intellectual, but intuitive, deep — to the point of over — thinker/g, 'an intellectual and intuitive species of deep thinkers, sometimes to the point of over-analysis')
+            .replace(/dependable, trustworthy and hard-working/g, 'they are a dependable, trustworthy, and hard-working people')
+            .replace(/can be rigid and narrow-minded/g, 'they can exhibit rigid and narrow-minded traits')
+            .replace(/freedom-loving risk-takers/g, 'they are a freedom-loving people of risk-takers')
+            .replace(/may be fearless, or foolish/g, 'a trait that can manifest in them as either fearlessness or foolishness')
+            .replace(/intellectual, but intuitive, deep — to the point of over — thinker/g, 'they are an intellectual and intuitive people of deep thinkers, sometimes to the point of over-analysis')
             .replace(/can be wise, but may become aloof/g, 'a trait that lends them wisdom, though they can sometimes become aloof')
-            .replace(/powerful, ambitious, but ultimately materialistic individuals/g, 'a powerful, ambitious, and materialistic people')
-            .replace(/deeply spiritual people, intuitive, compassionate and caring/g, 'a deeply spiritual, intuitive, and compassionate species')
+            .replace(/powerful, ambitious, but ultimately materialistic individuals/g, 'they are a powerful, ambitious, and materialistic people')
+            .replace(/deeply spiritual people, intuitive, compassionate and caring/g, 'they are a deeply spiritual, intuitive, and compassionate people')
             .replace(/natural humanitarians, and passionate fighters against injustice/g, 'they are natural humanitarians and passionate fighters against injustice')
-            .replace(/mystically amplified/g, 'a mystically amplified version of')
-            .replace(/can be so intuitive as to even believe themselves Psychic/g, 'are so intuitive they are often considered psychic')
-            .replace(/gifted communicators and creative types, but with strong social ties that off-set rugged independence/g, 'gifted communicators and creative types, with strong social ties that balance a rugged independence')
-            .replace(/a sort of dark reflection of the stability and social nature/g, 'a darker reflection of the stability and social nature');
+            .replace(/mystically amplified/g, 'a mystically amplified version of their own nature')
+            .replace(/can be so intuitive as to even believe themselves Psychic/g, 'they are so intuitive they are often considered psychic')
+            .replace(/gifted communicators and creative types, but with strong social ties that off-set rugged independence/g, 'they are gifted communicators and creative types, with strong social ties that balance a rugged independence')
+            .replace(/a sort of dark reflection of the stability and social nature/g, 'a darker reflection of their stability and social nature');
     }
 
     _rewriteGoalForSpecies(text) {
@@ -68,33 +68,33 @@ export class SpeciesGenerator {
             .replace(/They define their goals/g, 'Their societal goals are defined')
             .replace(/They are dedicated to the goals of a group or pact/g, 'Their culture is dedicated to the goals of the collective')
             .replace(/They prefer social goals/g, 'Their society prioritizes social goals')
-            .replace(/These Characters are only interesting in having a great story to tell/g, 'This species is driven by the desire for a grand narrative')
+            .replace(/These Characters are only interesting in having a great story to tell/g, 'They are driven by the desire for a grand narrative')
             .replace(/They are likely to set themselves the most ambitious, grand and lofty goals/g, 'They are known for setting ambitious, grand, and lofty goals for their society')
             .replace(/They set Deep goals for themselves/g, 'Their culture is shaped by Deep goals')
             .replace(/These characters are invested in preserving the status quo/g, 'Their society is heavily invested in preserving the status quo')
             .replace(/They are driven to save human lives/g, 'Their culture is driven by a need to save lives')
-            .replace(/These Characters set impossible, absurd, impractical goals/g, 'This species sets seemingly impossible and impractical goals for itself')
-            .replace(/The Character has secrets, and one of the things they keep secret is what their own goals are/g, 'This species is secretive, and their collective goals are often shrouded in mystery')
-            .replace(/The Character has Melded goals/g, 'The species has Melded goals')
+            .replace(/These Characters set impossible, absurd, impractical goals/g, 'They set seemingly impossible and impractical goals for themselves')
+            .replace(/The Character has secrets, and one of the things they keep secret is what their own goals are/g, 'They are secretive, and their collective goals are often shrouded in mystery')
+            .replace(/The Character has Melded goals/g, 'They have Melded goals')
             .replace(/They set themselves long and complex goals/g, 'Their society is known for setting long-term, complex goals');
     }
 
     _rewriteGiftForSpecies(text, geoName) {
         if (!text) return '';
         return text
-            .replace(/They are determined people/g, 'They are a determined species')
-            .replace(new RegExp(`The ${geoName} Geometry are sensitive, diplomatic people`, 'g'), 'This species is sensitive and diplomatic')
-            .replace(new RegExp(`The ${geoName} Geometry makes people who are witty, quicker thinkers`, 'g'), 'This species is witty and composed of quick thinkers')
-            .replace(new RegExp(`The ${geoName} Geometry makes people more stable`, 'g'), 'This species has a natural inclination towards stability')
-            .replace(new RegExp(`The ${geoName} Geometry are more adventurous than others`, 'g'), 'This species is notably adventurous')
-            .replace(new RegExp(`The ${geoName} Character is often a visionary`, 'g'), 'This species often produces visionaries')
-            .replace(new RegExp(`The ${geoName} Geometry makes people wise`, 'g'), 'This species is known for its wisdom')
-            .replace(new RegExp(`The ${geoName} Geometry makes people better at physically manifesting their dreams`, 'g'), 'This species excels at physically manifesting its collective will')
-            .replace(new RegExp(`The ${geoName} Geometry makes Characters more spiritual`, 'g'), 'This species has a deeply spiritual nature')
-            .replace(new RegExp(`The ${geoName} Geometry makes people determined`, 'g'), 'This species is exceptionally determined')
-            .replace(new RegExp(`The ${geoName} Geometry is so about intuition... that it makes people seem psychic`, 'g'), 'This species has such a strong intuition that they often appear psychic')
-            .replace(new RegExp(`The ${geoName} Geometry makes characters extremely communicative`, 'g'), 'This species is extremely communicative')
-            .replace(new RegExp(`The ${geoName} Geometry makes people have extreme luck`, 'g'), 'This species is known for its extreme luck');
+            .replace(/They are determined people/g, 'They are a determined people')
+            .replace(new RegExp(`The ${geoName} Geometry are sensitive, diplomatic people`, 'g'), 'They are sensitive and diplomatic')
+            .replace(new RegExp(`The ${geoName} Geometry makes people who are witty, quicker thinkers`, 'g'), 'They are witty and quick thinkers')
+            .replace(new RegExp(`The ${geoName} Geometry makes people more stable`, 'g'), 'They have a natural inclination towards stability')
+            .replace(new RegExp(`The ${geoName} Geometry are more adventurous than others`, 'g'), 'They are notably adventurous')
+            .replace(new RegExp(`The ${geoName} Character is often a visionary`, 'g'), 'They often produce visionaries from among their number')
+            .replace(new RegExp(`The ${geoName} Geometry makes people wise`, 'g'), 'They are known for their wisdom')
+            .replace(new RegExp(`The ${geoName} Geometry makes people better at physically manifesting their dreams`, 'g'), 'They excel at physically manifesting their collective will')
+            .replace(new RegExp(`The ${geoName} Geometry makes Characters more spiritual`, 'g'), 'They have a deeply spiritual nature')
+            .replace(new RegExp(`The ${geoName} Geometry makes people determined`, 'g'), 'They are exceptionally determined')
+            .replace(new RegExp(`The ${geoName} Geometry is so about intuition... that it makes people seem psychic`, 'g'), 'They have such a strong intuition that they often appear psychic')
+            .replace(new RegExp(`The ${geoName} Geometry makes characters extremely communicative`, 'g'), 'They are extremely communicative')
+            .replace(new RegExp(`The ${geoName} Geometry makes people have extreme luck`, 'g'), 'They are known for their extreme luck');
     }
 
     async generateProceduralSpecies(noiseValues) {

@@ -280,6 +280,11 @@ class T13NE {
         this.modules.Tapestry = T13Tapestry;
         Logger.message("T13NE: Tapestry module loaded.");
 
+        // Load Game module early as others (like CardsAPI) may want it during their init
+        this.modules.Game = T13NE_Game;
+        await this.modules.Game.initialize(this);
+        Logger.message("T13NE: Game module loaded.");
+
         // Load the Facets module and pre-load all facet data
         this.modules.Facets = T13NE_Facets;
         await this.modules.Facets.loadAllFacets(); // Pre-load all facets
@@ -354,10 +359,7 @@ class T13NE {
         await this.modules.GameState.initialize(this);
         Logger.message("T13NE: GameState module loaded.");
 
-        // Load Game module (top-level hierarchy)
-        this.modules.Game = T13NE_Game;
-        await this.modules.Game.initialize(this);
-        Logger.message("T13NE: Game module loaded.");
+        // ... existing Game registration was here ...
 
         // Load Stress module
         this.modules.Stress = T13NE_Stress;
@@ -493,11 +495,12 @@ class T13NE {
      * @returns {object|null}
      */
     getModule(moduleName) {
-        if (!this.isLoaded && !this.modules[moduleName]) {
+        const mod = this.modules[moduleName];
+        if (!mod && !this.isLoaded) {
             Logger.message(`ERROR: T13NE module '${moduleName}' not loaded yet.`);
             return null;
         }
-        return this.modules[moduleName] || null;
+        return mod || null;
     }
 }
 

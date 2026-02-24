@@ -21,24 +21,31 @@ class EventBusManager {
     }
 
     on(eventName, listener) {
-        const funcName = 'EventBusManager.on';
-        Logger.start(funcName);
-        Logger.logVariables({ eventName });
         if (!this.events[eventName]) {
             this.events[eventName] = [];
         }
         this.events[eventName].push(listener);
-        Logger.end(funcName);
+    }
+
+    off(eventName, listener) {
+        if (!this.events[eventName]) return;
+        this.events[eventName] = this.events[eventName].filter(l => l !== listener);
+    }
+
+    once(eventName, listener) {
+        const wrapper = (...args) => {
+            this.off(eventName, wrapper);
+            listener(...args);
+        };
+        this.on(eventName, wrapper);
     }
 
     emit(eventName, ...args) {
-        const funcName = 'EventBusManager.emit';
-        Logger.start(funcName);
-        Logger.logVariables({ eventName });
         if (this.events[eventName]) {
-            this.events[eventName].forEach(listener => listener(...args));
+            // Use slice to avoid issues if listeners are removed during emission
+            const listeners = this.events[eventName].slice();
+            listeners.forEach(listener => listener(...args));
         }
-        Logger.end(funcName);
     }
 }
 

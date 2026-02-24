@@ -1,5 +1,5 @@
 import { LoreData } from '/src/t13ne/procgen/lore/LoreData.js';
-import ProcGen from '/src/t13ne/procgen/ProcGen.js';
+import ProcGen from '../ProcGen.js';
 import Logger from '/src/t13ne/core/Logger.js';
 import { ColourUtils } from '/src/t13ne/utils/ColourUtils.js';
 import { Galaxy } from '/src/t13ne/procgen/galaxy/Galaxy.js';
@@ -34,21 +34,21 @@ export class GalaxyGenerator {
 
   _findClosestSystems(centerStar, starList, count) {
     const distances = starList.map(star => {
-        const dx = star.x - centerStar.x;
-        const dy = star.y - centerStar.y;
-        const dz = star.z - centerStar.z;
-        const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
-        return { star, distance };
+      const dx = star.x - centerStar.x;
+      const dy = star.y - centerStar.y;
+      const dz = star.z - centerStar.z;
+      const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
+      return { star, distance };
     });
 
     distances.sort((a, b) => a.distance - b.distance);
     return distances.slice(0, count).map(d => d.star);
   }
 
-  async getSystemDetails(star) {
+  async getSystemDetails(star, options = {}) {
     if (!this.galaxy || !this.galaxy.stars || this.galaxy.stars.length === 0) {
-        Logger.error("GalaxyGenerator: Galaxy not generated. Cannot get system details.");
-        return null;
+      Logger.error("GalaxyGenerator: Galaxy not generated. Cannot get system details.");
+      return null;
     }
 
     // 1. Find nearby systems to gather context for name generation
@@ -57,19 +57,22 @@ export class GalaxyGenerator {
 
     // To avoid async operations in a loop, we can't get full details here.
     // We'll rely on the species determination logic which is deterministic.
-    nearbySystems.forEach(system => {
-        const noiseScale = 5.0;
-        const n1 = ProcGen.simplex2D(system.x * noiseScale, system.y * noiseScale);
-        const n2 = ProcGen.simplex2D(system.y * noiseScale, system.z * noiseScale);
-        const n3 = ProcGen.simplex2D(system.z * noiseScale, system.x * noiseScale);
-        const n4 = ProcGen.simplex2D(system.x * noiseScale, system.z * noiseScale);
+    for (const system of nearbySystems) {
+      const noiseScale = 5.0;
+      const n1 = ProcGen.simplex2D(system.x * noiseScale, system.y * noiseScale);
+      const n2 = ProcGen.simplex2D(system.y * noiseScale, system.z * noiseScale);
+      const n3 = ProcGen.simplex2D(system.z * noiseScale, system.x * noiseScale);
+      const n4 = ProcGen.simplex2D(system.x * noiseScale, system.z * noiseScale);
 
-        // This deterministically re-calculates the species for a nearby star
-        const speciesKey = this.loreMaster.determineSpecies(system, {n1, n2, n3, n4}, this.params);
-        if (speciesKey && speciesKey !== 'FirstRelic') {
-            nearbySpeciesSet.add(speciesKey);
-        }
-    });
+      // This deterministically re-calculates the species for a nearby star
+      const speciesKey = this.loreMaster.determineSpecies(system, { n1, n2, n3, n4 }, this.params);
+      if (speciesKey && speciesKey !== 'FirstRelic') {
+        nearbySpeciesSet.add(speciesKey);
+      }
+
+      // Yield every few systems to keep UI responsive
+      await new Promise(r => setTimeout(r, 0));
+    }
     const nearbySpecies = Array.from(nearbySpeciesSet);
 
     // 2. Generate the lore for the target star, now with enriched context
@@ -89,7 +92,8 @@ export class GalaxyGenerator {
       star,
       { n1, n2, n3, n4 },
       { ...this.params, numPlanets },
-      nearbySpecies // Pass the new context
+      nearbySpecies, // Pass the new context
+      options
     );
 
     const homeWorldSelectionSeed = localPRNG.nextDouble();

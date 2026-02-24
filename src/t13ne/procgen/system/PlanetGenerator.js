@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import ProcGen from '/src/t13ne/procgen/ProcGen.js';
+import ProcGen from '../ProcGen.js';
 import Logger from '/src/t13ne/core/Logger.js';
 
 export class PlanetGenerator {
@@ -21,7 +21,7 @@ export class PlanetGenerator {
         // 1. Base Planet Sphere (Oblate Spheroid)
         const geometry = new THREE.SphereGeometry(radius, 64, 64);
         // Flatten slightly for oblate shape
-        geometry.scale(1, 0.95, 1); 
+        geometry.scale(1, 0.95, 1);
 
         // Determine colors based on resources/type
         const colors = this._getPlanetColors(planetData, prng);
@@ -67,17 +67,17 @@ export class PlanetGenerator {
 
         // 4. Rings (if applicable)
         if ((planetData.type && planetData.type.includes('Ring')) || (planetData.moons && planetData.moons.some(m => m.isRing))) {
-             const ringGeo = new THREE.RingGeometry(radius * 1.4, radius * 2.5, 64);
-             const ringMat = new THREE.MeshBasicMaterial({ 
-                 color: 0x888888, 
-                 side: THREE.DoubleSide,
-                 transparent: true,
-                 opacity: 0.6,
-                 map: this._generateRingTexture(seed)
-             });
-             const ringMesh = new THREE.Mesh(ringGeo, ringMat);
-             ringMesh.rotation.x = Math.PI / 2;
-             group.add(ringMesh);
+            const ringGeo = new THREE.RingGeometry(radius * 1.4, radius * 2.5, 64);
+            const ringMat = new THREE.MeshBasicMaterial({
+                color: 0x888888,
+                side: THREE.DoubleSide,
+                transparent: true,
+                opacity: 0.6,
+                map: this._generateRingTexture(seed)
+            });
+            const ringMesh = new THREE.Mesh(ringGeo, ringMat);
+            ringMesh.rotation.x = Math.PI / 2;
+            group.add(ringMesh);
         }
 
         return group;
@@ -92,7 +92,7 @@ export class PlanetGenerator {
      */
     generateAsteroidMesh(seed, size = 5, colorData = null) {
         const prng = ProcGen.createPRNG(seed);
-        
+
         // Optimization: Use DodecahedronGeometry directly instead of HullGenerator
         // This prevents heavy PhysX/MarchingCubes calculations and crashes if MC is broken
         const detail = 0; // Low detail for performance
@@ -101,7 +101,7 @@ export class PlanetGenerator {
         // Apply noise to vertices for roughness
         const posAttribute = geometry.attributes.position;
         const vertex = new THREE.Vector3();
-        
+
         // Random scale distortion
         const sx = 0.8 + prng.nextDouble() * 0.4;
         const sy = 0.8 + prng.nextDouble() * 0.4;
@@ -109,7 +109,7 @@ export class PlanetGenerator {
 
         for (let i = 0; i < posAttribute.count; i++) {
             vertex.fromBufferAttribute(posAttribute, i);
-            
+
             // Apply scale
             vertex.x *= sx;
             vertex.y *= sy;
@@ -176,7 +176,7 @@ export class PlanetGenerator {
         let c3 = 0xffffff; // Snow
 
         const type = planetData.type || '';
-        
+
         if (type.includes('Gas')) {
             c1 = 0xddccaa; c2 = 0xaa8866; c3 = 0xcc9988;
         } else if (type.includes('Ice')) {
@@ -198,12 +198,12 @@ export class PlanetGenerator {
 
         // Adjust based on resources (if available in new format)
         if (planetData.resources && planetData.resources.length > 0) {
-             // Simple tinting based on first resource name for now
-             // In a full implementation, we'd use the resource 'value' or 'type'
-             const res = planetData.resources[0];
-             if (res.name && res.name.includes('Iron')) c1 = 0x883322;
-             if (res.name && res.name.includes('Gold')) c3 = 0xffdd00;
-             if (res.name && res.name.includes('Water')) c2 = 0x004488;
+            // Simple tinting based on first resource name for now
+            // In a full implementation, we'd use the resource 'value' or 'type'
+            const res = planetData.resources[0];
+            if (res.name && res.name.includes('Iron')) c1 = 0x883322;
+            if (res.name && res.name.includes('Gold')) c3 = 0xffdd00;
+            if (res.name && res.name.includes('Water')) c2 = 0x004488;
         }
 
         return { c1, c2, c3 };
@@ -216,26 +216,26 @@ export class PlanetGenerator {
         canvas.width = width;
         canvas.height = height;
         const ctx = canvas.getContext('2d');
-        
+
         const prng = ProcGen.createPRNG(seed);
-        
+
         // Fill background
         ctx.fillStyle = '#' + new THREE.Color(colors.c1).getHexString();
         ctx.fillRect(0, 0, width, height);
-        
+
         // Add noise bands/patches
         for (let i = 0; i < 50; i++) {
             const x = prng.nextDouble() * width;
             const y = prng.nextDouble() * height;
             const r = prng.nextDouble() * 50 + 20;
-            
+
             ctx.fillStyle = (i % 2 === 0) ? '#' + new THREE.Color(colors.c2).getHexString() : '#' + new THREE.Color(colors.c3).getHexString();
             ctx.globalAlpha = 0.5;
             ctx.beginPath();
             ctx.arc(x, y, r, 0, Math.PI * 2);
             ctx.fill();
         }
-        
+
         const tex = new THREE.CanvasTexture(canvas);
         return tex;
     }
@@ -248,19 +248,19 @@ export class PlanetGenerator {
         const ctx = canvas.getContext('2d');
         ctx.fillStyle = '#000000';
         ctx.fillRect(0, 0, 512, 256);
-        
+
         // Simple random clouds
         const prng = ProcGen.createPRNG(seed);
         ctx.fillStyle = '#ffffff';
-        for(let i=0; i<100; i++) {
+        for (let i = 0; i < 100; i++) {
             const x = prng.nextDouble() * 512;
             const y = prng.nextDouble() * 256;
             const r = prng.nextDouble() * 40 + 10;
             ctx.beginPath();
-            ctx.arc(x, y, r, 0, Math.PI*2);
+            ctx.arc(x, y, r, 0, Math.PI * 2);
             ctx.fill();
         }
-        
+
         const tex = new THREE.CanvasTexture(canvas);
         return tex;
     }
@@ -270,19 +270,19 @@ export class PlanetGenerator {
         canvas.width = 256;
         canvas.height = 1;
         const ctx = canvas.getContext('2d');
-        
+
         const prng = ProcGen.createPRNG(seed);
         const gradient = ctx.createLinearGradient(0, 0, 256, 0);
-        
-        for(let i=0; i<5; i++) {
+
+        for (let i = 0; i < 5; i++) {
             gradient.addColorStop(prng.nextDouble(), `rgba(255,255,255,${prng.nextDouble()})`);
         }
         gradient.addColorStop(0, 'rgba(0,0,0,0)');
         gradient.addColorStop(1, 'rgba(0,0,0,0)');
-        
+
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, 256, 1);
-        
+
         return new THREE.CanvasTexture(canvas);
     }
 }

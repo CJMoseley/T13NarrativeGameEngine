@@ -17,8 +17,9 @@ export class SystemGenerator {
         Logger.end(funcName);
     }
 
-    async generateSystemLore(star, noiseValues, galaxyParams, nearbySpecies = []) {
+    async generateSystemLore(star, noiseValues, galaxyParams, nearbySpecies = [], options = {}) {
         const funcName = 'SystemGenerator.generateSystemLore';
+        const startTime = performance.now();
         Logger.start(funcName, { starId: star.id });
 
         let { n1, n2, n3, n4 } = noiseValues || {};
@@ -186,7 +187,7 @@ export class SystemGenerator {
         } else if (speciesLore.isCreator && n4 > 0.95) {
             const newSpecies = await this.speciesGenerator.generateProceduralSpecies({ n1: n2, n2: n3, n3: n1, n4: n4 });
             secondarySpeciesLore = newSpecies;
-            eventDescription = `This system is the cradle of the ${newSpecies.commonName}, a newly emerged species created by the system's primary inhabitants.`;
+            eventDescription = `This system is the cradle of the ${newSpecies.commonName}, a newly emerged species created by the system's primary inhabitants. They are developing rapidly.`;
         }
 
         const scientificName = this.speciesGenerator.generateScientificName(primarySpeciesKey, speciesLore, safeNoise);
@@ -196,7 +197,7 @@ export class SystemGenerator {
 
         await new Promise(r => setTimeout(r, 0)); // Yield before card operations
         // 2.5 Society Generation
-        Logger.message(`: Step 4 - Society Generation`);
+        Logger.message(`${star.name}: Step 4 - Society Generation`);
         let society;
         const cardSociety = this._generateSocietyFromCards(safeNoise);
         if (cardSociety) {
@@ -223,8 +224,8 @@ export class SystemGenerator {
         if (inhabitants.length > 1) {
             society += " (Multi-species)";
         }
-        Logger.message(`: Society: ${society}`);
 
+        await new Promise(r => setTimeout(r, 0)); // Yield
         // 2.6 Historical Event Generation
         const historicalEvent = this._generateHistoricalEventFromCards();
         if (historicalEvent) {
@@ -234,14 +235,26 @@ export class SystemGenerator {
             eventDescription += `History remembers this system for its era of ${cleanAge.toLowerCase()}. ${historicalEvent.description}`;
         }
 
-        await new Promise(r => setTimeout(r, 0)); // Yield
+        if (options.quick) {
+            Logger.message(`SystemGenerator: Quick mode active for star ${star.id}, skipping detailed generation.`);
+            return {
+                speciesKey: primarySpeciesKey,
+                speciesCore: speciesLore,
+                commonName: speciesLore.commonName,
+                name: star.name || "Scanning...",
+                description: "System details pending full scan."
+            };
+        }
+
+        await new Promise(r => setTimeout(r, 0)); // Yield before NPC generation
         // 2.7 NPC Generation
         const npcData = this._generateNPCsFromCards();
         if (npcData) {
             if (eventDescription) eventDescription += " ";
-            eventDescription += `The inhabitants are often characterized by ${npcData.description.toLowerCase()}`;
+            eventDescription += ` The inhabitants are often characterized as those who are ${npcData.description.toLowerCase()}`;
         }
 
+        await new Promise(r => setTimeout(r, 0)); // Yield
         // 2.8 Extras Generation (Chorus/Cast for local flavor)
         const extras = [];
         let systemArchetype = null;
@@ -419,6 +432,12 @@ export class SystemGenerator {
             star: star, // Pass star data for resource generation context
             stars: stars // Pass multi-star data for rendering
         };
+
+        const endTime = performance.now();
+        if (endTime - startTime > 100) {
+            Logger.message(`SystemGenerator: Generation for star ${star.id} took ${(endTime - startTime).toFixed(2)}ms`);
+        }
+
         Logger.end(funcName, result);
         return result;
     }
@@ -620,7 +639,7 @@ export class SystemGenerator {
         clean = clean.replace(/(Void|Circle|Half-Moon|Triangle|Square|Pentagon|Hexagon|Heptagon|Octagon|Nonagon|Decagon|Undecagon|Dodecagon|Triskaidecagon) (Characters|Beings|Planets|Societies) are/gi, 'Individuals here are typically');
 
         // 5. Clean up "Age of" clinical phrasing
-        clean = clean.replace(/An Age of ([^.]*) is occuring\./gi, 'This is a time of $1.');
+        clean = clean.replace(/An Age of ([^.]*) is occuring\./gi, 'This is a time when they are shaped by $1.');
 
         // 6. General cleanup of artifact whitespace
         clean = clean.replace(/\s+/g, ' ').trim();
@@ -643,10 +662,10 @@ export class SystemGenerator {
         const traits = loreObject.derivedTraits;
 
         let systemDesc = `The system is centered around a ${star.starClass} star and contains ${numPlanets} planets.`;
-        let culturalDesc = `It is primarily inhabited by the ${loreObject.commonName}, a species with ${loreObject.descTemplate || 'a unique and burgeoning culture'}.`;
+        let culturalDesc = `They are primarily the territory of the ${loreObject.commonName}, who maintain ${loreObject.descTemplate || 'a unique and burgeoning culture'}.`;
 
         if (loreObject.culturalDescription) {
-            culturalDesc += ` ${this._sanitizeLore(loreObject.culturalDescription)}`;
+            culturalDesc += ` They are described as a people who are ${this._sanitizeLore(loreObject.culturalDescription)}`;
         }
 
         if (loreObject.animalBase) {
@@ -656,10 +675,10 @@ export class SystemGenerator {
         const impressionDesc = this._sanitizeLore(traits?.impressionSummary || '');
         let secondaryDesc = '';
         if (secondaryLore) {
-            secondaryDesc = `A significant community of ${secondaryLore.commonName} also calls this system home, their history deeply intertwined with the primary inhabitants.`;
+            secondaryDesc = `A significant community of ${secondaryLore.commonName} also calls this system home; they have a history deeply intertwined with the primary inhabitants.`;
         }
 
-        const corporateDesc = corporatePresence ? `The influence of ${corporatePresence.name} is pervasive here, shaping the system's economic landscape.` : '';
+        const corporateDesc = corporatePresence ? `The ${corporatePresence.name} have a pervasive influence here, shaping the system's economic landscape.` : '';
 
         // Clean up event description
         const cleanEventDesc = this._sanitizeLore(eventDescription);
