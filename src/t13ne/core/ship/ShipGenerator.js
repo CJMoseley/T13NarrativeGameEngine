@@ -1,7 +1,6 @@
 import * as THREE from 'three';
 import { TECH_SPECS, QUALITIES, FALLBACK_MANUFACTURERS, SHIP_PREFIXES, SHIP_ADJECTIVES, SHIP_NOUNS, getSurfacePoint } from '/src/t13ne/core/ship/ShipUtils.js';
 import ProcGen from '/src/t13ne/procgen/ProcGen.js';
-import { GalacticHistory } from '/src/t13ne/procgen/galaxy/GalacticHistory.js';
 import { generateDisc, generateSpineOrStar } from '/src/t13ne/core/ship/structures/StandardHulls.js';
 import { generateFreighter, generateHorseshoe, generateBlob, generateCatamaran, generateYFork, generateHeavyCarrier, generateSideCockpit, generateScavenger } from '/src/t13ne/core/ship/structures/IndustrialHulls.js';
 import { generateTree, generateMaze, generateBioCluster, generateMonolith, generateFractal, generateLiberator, generateBioBird, generateBioFish, generateBioInsect, generateBioCephalopod } from '/src/t13ne/core/ship/structures/ExoticHulls.js';
@@ -29,11 +28,13 @@ export class ShipGenerator {
         let hullType;
 
         // Generate a consistent theme for the entire ship
-        let shipManufacturer = FALLBACK_MANUFACTURERS[Math.floor(random() * FALLBACK_MANUFACTURERS.length)];
-        const activeCorps = GalacticHistory.getCorporations()?.filter(c => c.status === 'Active');
-        if (activeCorps && activeCorps.length > 0) {
-            shipManufacturer = activeCorps[Math.floor(random() * activeCorps.length)].name;
+        let manufacturers = config.manufacturers || FALLBACK_MANUFACTURERS;
+        // If manufacturers passed as objects (from GalacticHistory), extract names
+        if (manufacturers.length > 0 && typeof manufacturers[0] === 'object') {
+            manufacturers = manufacturers.map(m => m.name);
         }
+        let shipManufacturer = manufacturers[Math.floor(random() * manufacturers.length)];
+
         const shipTech = TECH_SPECS[Math.floor(random() * TECH_SPECS.length)];
         const shipQuality = QUALITIES[Math.floor(random() * QUALITIES.length)];
 
@@ -98,11 +99,7 @@ export class ShipGenerator {
                 if (selectedStyle === 'ORGANIC' || (hullType && hullType.startsWith('BIO_'))) {
                     name = `${shipManufacturer} ${shipTech} ${displayName} ${shipQuality}`;
                 } else {
-                    let localManu = FALLBACK_MANUFACTURERS[Math.floor(random() * FALLBACK_MANUFACTURERS.length)];
-                    const activeCorps = GalacticHistory.getCorporations()?.filter(c => c.status === 'Active');
-                    if (activeCorps && activeCorps.length > 0) {
-                        localManu = activeCorps[Math.floor(random() * activeCorps.length)].name;
-                    }
+                    let localManu = manufacturers[Math.floor(random() * manufacturers.length)];
                     const localTech = TECH_SPECS[Math.floor(random() * TECH_SPECS.length)];
                     const localQual = QUALITIES[Math.floor(random() * QUALITIES.length)];
                     name = `${localManu} ${localTech} ${displayName} ${localQual}`;

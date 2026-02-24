@@ -16,6 +16,7 @@ import { ShipGenerator } from '/src/t13ne/core/ship/ShipGenerator.js';
 import { ShipAssembler } from '/src/t13ne/core/ship/ShipAssembler.js';
 import { COMPONENT_COLORS } from '/src/t13ne/core/ship/ShipUtils.js';
 import { WorkerPool } from '/src/t13ne/core/WorkerPool.js';
+import { GalacticHistory } from '/src/t13ne/procgen/galaxy/GalacticHistory.js';
 
 export { COMPONENT_COLORS };
 
@@ -73,10 +74,18 @@ export class ShipFactory {
      * @returns {Array<object>} List of component definitions ready for generation.
      */
     async createRandomShip(seed, config = {}) {
-        if (this.useWorker && this.workerPool) {
-            return await this.callWorker('createRandomShip', { seed, config });
+        // Gather context data to pass to worker (since worker cannot access singletons)
+        const workerConfig = { ...config };
+        
+        if (!workerConfig.manufacturers) {
+            const activeCorps = GalacticHistory.getCorporations()?.filter(c => c.status === 'Active');
+            if (activeCorps && activeCorps.length > 0) workerConfig.manufacturers = activeCorps;
         }
-        return await this.shipGenerator.createRandomShip(seed, config);
+
+        if (this.useWorker && this.workerPool) {
+            return await this.callWorker('createRandomShip', { seed, config: workerConfig });
+        }
+        return await this.shipGenerator.createRandomShip(seed, workerConfig);
     }
 
     /**
@@ -247,7 +256,9 @@ export class ShipFactory {
     setPerformanceMode(mode) {
         if (this.hullGenerator) this.hullGenerator.setPerformanceMode(mode);
         if (this.useWorker && this.workerPool) {
-            this.workerPool.broadcast('setPerformanceMode', mode);
+            this.workerPool.broadcast('setPerformanceMode', mode).catch(err => {
+                console.error("ShipFactory: Error broadcasting performance mode.", err);
+            });
         }
     }
 
@@ -257,7 +268,8 @@ export class ShipFactory {
             return;
         }
         try {
-            this.workerPool = new WorkerPool('ship', new URL('./ShipWorker.js', import.meta.url), 2);
+            const shipWorkerUrl = new URL('./ShipWorker.js', import.meta.url);
+            this.workerPool = new WorkerPool('ship', shipWorkerUrl, 2);
             this.useWorker = true;
         } catch (e) {
             console.error("ShipFactory: Failed to initialize worker pool.", e);
@@ -270,10 +282,18 @@ export class ShipFactory {
         try {
             const response = await this.workerPool.execute(type, data);
 
-            const { type: respType, components, geometryData } = response;
-            if (respType === 'shipCreated') return components;
-            if (respType === 'hullGenerated') return geometryData;
-            return response;
+            // The worker functions return different structures.
+            // Instead of a complex response object, let's handle them by what they return.
+            if (type === 'createRandomShip') {
+                // This worker function returns the components array directly.
+                return response.result;
+            }
+            if (type === 'generateSDFHull' || type === 'generateCSGHull') {
+                // These return an object like { geometryData: ... }
+                return response.geometryData;
+            }
+            // For setPerformanceMode or others, the response might be simple.
+            return response; 
         } catch (e) {
             console.error(`ShipFactory: Worker call failed (${type}):`, e);
             throw e;

@@ -21,6 +21,7 @@
 			"Plot": "The Lovers Plot is a Romance. These come in a number of types, but usually involve a hero, or heroine, at least one Love Interest, and a number of Love Rivals. Stories may be complicated by multiple Love Interests, or both sides having Love Rivals, or by additional Rivalries beyond love. Romances generally end with marriage, or death, occasionally both. ",
 			"Side": "The side of a Conflict marked by The Lovers will face a choice (usually between Love Interests, but it may be who to make a friendship or alliance with or whom to attack).",
 			"Character": "The Lovers Significator indicates a Character who is a Lothario or temptress. <p>They <strong>Gain Yin</strong> by being touched by another Character. </p><p>They <strong>Gain Yang</strong> by flirting, or seducing another Character. </p><p>They <strong>Gain Chi</strong> when they are intimate with others.</p><p>They gain +1 Success Levels with all attempts at flirting, charm, kissing or similar socio-sexual acts.</p>",
+			"Diegetic_Character": "A charismatic figure, often a temptress or lothario, who thrives on intimacy and connection. They are masters of charm and seduction, navigating the world through relationships.",
 			"Scene": "The Lovers Scene can represent a romantic (or just sexual) interlude. Yarn-Tellers can play the card and fade to black, if they wish... Alternatively, the Yarn-Teller can use the card to effect profound changes in how they are perceived by those around them. Hate being transformed into Love, or vice versa."
 		},
 		"Beat_Type": "1",
@@ -31,6 +32,7 @@
 		"Hook": "Who is That?",
 		"Hook_Description": "The Story opens with a new Character appearing who is of interest to the PC (usually as a friend or potential new love interest).",
 		"Gain": "Monster Lover - A Powerful Ally that even has some Monster Facets.",
+		"Diegetic_Gain": "A powerful bond with a monstrous or extraordinary ally, forged in the fires of deep emotion.",
 		"Fray": "Test of Love",
 		"Fray_Description": "The Fray is a Test, Ordeal or Quest, usually set by the PC's Romantic Interest as a Test of their Love. Such tests can include humiliating yourself, surviving battle, or going against your normal nature, to prove that your have grown as an individual. Tests of Love can also include Quests where the Quest giver is a friend or member of the family.",
 		"Snag": "Love Triangle/Jealousy",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Romance",
 		"Description": "An Age of Romance is occurring. During this age narratived (often at least one Arc Plot and several Stories) will shape the society, often these narratives include love, attraction and betrayals, usually this narrative is based upon a choice, perhaps a society will be presented with two potential alliances, siding with one will alienate the other, another example is that two sides within society are opposed to each other, within that context members of both sides fall in love. Note that during an age of Romance many narratives may unfold, concurrently and in series.",
+		"Diegetic_Description": "This is an Age of Romance, where the heart rules the head. Society is swept up in narratives of love, betrayal, and grand choices. Alliances are forged and broken on the whims of passion, and the drama of relationships takes center stage.",
 		"Rules": "During an Age of Romance the entire age is woven by Plots for the society. Embodiments will be chosen exclusively from within the society. An age of romance can tie directly into Mythic Cycles for that universe, although that is not in any way guarranteed."
 	}
 }

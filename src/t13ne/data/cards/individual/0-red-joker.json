@@ -21,6 +21,7 @@
 			"Plot": "The World Plot is always a tale that spans multiple Locations, often actually across multiple worlds and time periods. The World Plot is generally at least a Volume, an Epic or Cycle, and can be useful for world-building, if you have no better ideas. World Plots consist of lots of apparently unconnected sub-Plots that examine often random Conflicts (that are still aspects of the World's Conflict). ",
 			"Side": "The side marked by the World in another Plot has more knowledge and experience than may be expected, they have travelled far, and seen things no one else around here has. They may be able to bring this experience of the world into play in odd ways. Most often the Character will have at least one Alternate that is actually an Embodiment for the Shadows or External Side as well.",
 			"Character": "The World Significator indicates a Character who are very experienced and confident. <p>They <strong>Gain Yin</strong> when they act confident, arrogant, or nonchalant. </p><p>They <strong>Gain Yang</strong> when they can share their knowledge of a situation or thing. They <strong>Gain Chi</strong> when they say farewell, good bye, or wish someone well. </p><p>They also gain +1 Success Level to all actions that they claim they have tried before.</p>",
+			"Diegetic_Character": "A figure of great experience and confidence, often well-traveled and knowledgeable. They carry an air of nonchalance, having seen much of what the world has to offer.",
 			"Scene": "The World Scene is often the central theme of the Story written large, or can represent the whole Story squeezed within itself, perhaps as a play with a play, or just incredible trials or rewards. World Scenes can be Framing Revelations (revealing the world as it is), represent incredible gains (you can literally Gain a whole world), or an unbelievable Ordeal (such as racing around the world). Yarn-Tellers can play the card for virtually any effect, opening portals, changing paradigms, making huge gains or losses as required."
 		},
 		"Beat_Type": "7",
@@ -31,6 +32,7 @@
 		"Hook": "Wildcard",
 		"Hook_Description": "The Hook is just one of those out there crazy starts to a story. Perhaps they come around on a beach near a crashed plane, or wrecked boat, with no memories of where they were going or why. Or maybe they explode from the ground, unsure how or why they were there.",
 		"Gain": "Add Alternate",
+		"Diegetic_Gain": "The realization of a new path or possibility, expanding one's influence across different spheres of existence.",
 		"Fray": "Wilderness Encounter",
 		"Fray_Description": "A holdover from Old School Gaming. The encounter is a where the PCs meet a larger group of inferior foes (for example 2d20 Vexes, or 2d6 Cast Extras) in the Wild. Encounters are not always balanced, and the PCs may have Flee turning the High Stakes Ordeal into a Chase. Encounters are usually followed by a Gain.",
 		"Snag": "Double Trouble",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Completion",
 		"Description": "An Age of Completion is occurring. During this age a society riches the end of their story. Typically the society accomplishes some great task, raising a monument for all the ages, crossing some \"impassable\" barrier such as sailing first across an ocean, conquering some ancient empire and in this great accomplishment, the society then seems to vanish from history. Whatever happened to this society history will not record it, although often that just means that the society changes name, or breaks into a number of smaller societies, occasionally this society collapses, its task complete, the goal accomplished, the society loses cohesion, and the members simply fade away, joining neighbouring societies, or creating a new one.",
+		"Diegetic_Description": "This is an Age of Completion, where the great works of the past are finished and society reaches the end of a long chapter. It is a time of accomplishment, but also of endings, as the driving purpose of the age is fulfilled, leaving a quiet void in its wake.",
 		"Rules": "During an Age of Completion a society completes some great task, and then collapses, this collapse may be total, partial, or simply a revolution within the society or a change of name. However the story of this society is over."
 	}
 }

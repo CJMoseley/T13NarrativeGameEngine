@@ -21,6 +21,7 @@
 			"Plot": "This Plot is known as the \"Rags-To-Riches\" Plot. It seeks Characters of poor circumstance (the more Hitches the better) often from the Below side, and raises them up, granting them power and success. Such Characters often move from the Below side to the Pressed Side, and even reach the Dominant side occasionally (during a Revolution for example). However, once they are raised in riches and power, the Plot will pick a new Pauper to Hook from the Below.",
 			"Side": "A side marked by The Ambition will have a strong desire to improve their situation during the Plot, this may cause them to act carelessly, but ruthlessly to achieve their ambition.",
 			"Character": "The Ambition significator will make a Character who is defined by their Ambitions. The Character should set an Ambition. This should be a difficult to achieve ambition, such as \"Become the Greatest Living Swordsman\". <p>This gives the Character a <strong>Gain (Yin) Sway</strong> when they speak about this ambition or their current goals (which are usually a step toward their ultimate goal).</p><p>Gain (Yang) Sway when they choose an option or take an action that hastens this ambition.</p><p>They will also <strong>Gain Chi</strong> if their ambition is thwarted by another's actions.</p><p>Additionally, when directly working towards their Ambition (such as training or challenging other swordsmen) they may add +1 Success Level.<p>",
+			"Diegetic_Character": "An individual defined by their burning ambition. They are driven to improve their station, often speaking of their grand goals and acting ruthlessly to achieve them.",
 			"Scene": "The Ambition Scenes are the scenes where we see a glimpse of what Characters want. Yarn-Tellers can play The Ambition to bring their own Ambitions closer, or reveal what another's goals are."
 		},
 		"Beat_Type": "1",
@@ -31,6 +32,7 @@
 		"Hook": "Opportunity",
 		"Hook_Description": "The Story hooks Characters by offering them an opportunity to Gain something they want or need to fulfil an ambition.",
 		"Gain": "Ultimate Power (A Super-Skill Descendant / An Artefact)",
+		"Diegetic_Gain": "The acquisition of ultimate power, be it a legendary artifact or a skill that surpasses all others.",
 		"Fray": "Quest",
 		"Fray_Description": "The Fray is a Quest, usually based on the Facets of the Conflict, for something the PC requires or desires.",
 		"Snag": "Falling Behind",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Opportunity",
 		"Description": "An Age of Opportunity is occuring. Opportunity can come from a lot of different sources, historical examples include, expansion into uninhabited territories, colonization, access to new or better goods and services, creation of faster trade routes, gold (and other) rushes, technological developments, popular social movements, cultural shifts, and they generally follow the rules of supply and demand.",
+		"Diegetic_Description": "An Age of Opportunity has dawned. New frontiers, technologies, or social shifts have created a wealth of possibilities for those bold enough to seize them. It is a time of rapid growth, expansion, and the pursuit of fortune.",
 		"Rules": "During an Age of Opportunity multiple new goods and services will appear, along with a demand for each good and service. All Suppliers will be in competition to fulfil the same demands. For the suppliers the goal is to corner as large a proportion of all demands as possible. Securing all of a demand creates a monopoly, an ideal situation for a supplier, but not for the economy, which will often stagnate. Technologically there is always a demand for a \"Better ...\" that can break any monopoly."
 	}
 }

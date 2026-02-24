@@ -421,7 +421,10 @@ export class SpeciesGenerator {
 
         const facadeGeo = foundations.find(s => s.type === 'descriptive_geometry' && s.category === 'FACADE');
         if (facadeGeo && facadeGeo.data[traits.facadeNumber]) {
-            physDescParts.push(facadeGeo.data[traits.facadeNumber]);
+            const facadeData = facadeGeo.data[traits.facadeNumber];
+            // Prefer diegetic text if available
+            const diegeticText = facadeData?.Diegetic_Individual || facadeData?.diegetic_text || facadeData?.preGeneratedLore || (typeof facadeData === 'string' ? facadeData : null);
+            if (diegeticText) physDescParts.push(diegeticText);
         }
 
         return physDescParts.join(' ');
@@ -437,7 +440,10 @@ export class SpeciesGenerator {
         // Use Soul Geometry for inner nature/character
         const soulGeo = foundations.find(s => s.type === 'descriptive_geometry' && s.category === 'SOUL');
         if (soulGeo && soulGeo.data[traits.soulNumber]) {
-            cultureParts.push(soulGeo.data[traits.soulNumber]);
+            const soulData = soulGeo.data[traits.soulNumber];
+            // Prefer diegetic text if available
+            const diegeticText = soulData?.Diegetic_Society || soulData?.diegetic_text || soulData?.preGeneratedLore || (typeof soulData === 'string' ? soulData : null);
+            if (diegeticText) cultureParts.push(diegeticText);
         }
 
         // Use Harmonic Signature for general disposition

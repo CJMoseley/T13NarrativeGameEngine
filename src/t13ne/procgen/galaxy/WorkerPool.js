@@ -24,9 +24,10 @@ export class WorkerPool {
         const poolOptions = {
             minWorkers: poolSize,
             maxWorkers: poolSize,
-            workerType: 'web',
-            workerOpts: { type: 'module' },
-            ...options
+            workerOptions: {
+                type: 'module'
+            },
+            ...options // Pass other workerpool options through
         };
 
         this.pool = workerpool.pool(scriptPath, poolOptions);

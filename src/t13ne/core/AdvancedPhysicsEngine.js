@@ -220,7 +220,7 @@ export class AdvancedPhysicsEngine {
         const keyboard = input ? input.keyboard : null;
 
         if (!keyboard) {
-            Logger.message("WARN: Input or Keyboard manager not found in scene context. Controls may not work.");
+            // we don't need this spamming all the time Logger.message("WARN: Input or Keyboard manager not found in scene context. Controls may not work.");
             // We set it to a dummy object so the game doesn't crash on this.keys[k]
             this.keys = {
                 w: { isDown: false },

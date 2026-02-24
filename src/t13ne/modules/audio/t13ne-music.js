@@ -295,7 +295,7 @@ class T13NE_Music {
         Logger.message(`T13NE_Music: Generating ${forceVariation ? 'Variation' : 'Main Theme'} (Async)...`);
 
         let trackData;
-        if (this.useWorker && this.worker) {
+        if (this.useWorker && this.workerPool) {
             // Sanitize components to plain objects for cloning to Worker
             const sanitizedComponents = this.activeComponents.map(c => ({
                 name: c.name,
@@ -312,7 +312,7 @@ class T13NE_Music {
                 } : null
             }));
 
-            trackData = await this.callWorker('generateMainTheme', {
+            trackData = await this.workerPool.execute('generateMainTheme', {
                 activeComponents: sanitizedComponents,
                 tensionLevel: currentTension,
                 forceRegeneration: this.needsRegeneration || forceVariation
@@ -348,12 +348,12 @@ class T13NE_Music {
         const trackName = `track_wormhole_${origin.name}_${target.name}`;
 
         let trackData;
-        if (this.useWorker && this.worker) {
-            trackData = await this.callWorker('generateWormholeTheme', { ship, origin, target });
+        if (this.useWorker && this.workerPool) {
+            trackData = await this.workerPool.execute('generateWormholeTheme', { ship, origin, target });
         } else {
             trackData = await this.themeGenerator.createWormholeTheme(ship, origin, target);
         }
-
+        
         if (!trackData) return;
         this.saveTrack(trackName, trackData);
         return trackData;
@@ -499,6 +499,7 @@ class T13NE_Music {
         this.currentTrack = track;
         this.currentTrackName = track.name;
         Logger.message(`Playing Track: ${track.name}`);
+        console.log(`[T13NE_Music] Starting playback for ${track.name} at BPM ${track.bpm}`);
 
         if (!track.bpm || track.bpm <= 0) {
             Logger.error(`T13NE_Music: Invalid BPM (${track.bpm}) in track ${track.name}. Playback aborted.`);
@@ -810,103 +811,44 @@ class T13NE_Music {
         if (this.themeGenerator) {
             this.themeGenerator.performanceMode = mode;
         }
-        if (this.useWorker && this.worker) {
-            this.worker.postMessage({ type: 'setPerformanceMode', data: mode });
-        }
-        Logger.message(`T13NE_Music: Performance mode set to ${mode}`);
-    }
-
-    handleWorkerMessage(response) {
-        if (!response) return;
-        const { requestId, error } = response;
-
-        if (requestId && this._pendingRequests && this._pendingRequests.has(requestId)) {
-            const { resolve, reject } = this._pendingRequests.get(requestId);
-            this._pendingRequests.delete(requestId);
-            
-            if (error) {
-                reject(new Error(error));
-            } else {
-                // Robustly handle data/track/result fields to prevent silent undefined resolution
-                const payload = response.data !== undefined ? response.data : (response.track !== undefined ? response.track : response);
-                resolve(payload);
-            }
+        if (this.useWorker && this.workerPool) {
+            this.workerPool.execute('setPerformanceMode', { data: mode }).catch(e => console.warn(e));
         }
     }
 
     async initWorker() {
-        if (this.worker) return;
+        if (this.workerPool) return;
 
         try {
-            this.worker = new Worker(new URL('./core/MusicWorker.js', import.meta.url), { type: 'module' });
-            this.worker.onmessage = (e) => this.handleWorkerMessage(e.data);
+            const workerUrl = new URL('./core/MusicWorker.js', import.meta.url);
+            this.workerPool = new WorkerPool('music', workerUrl, 1);
 
-            if (!this._pendingRequests) this._pendingRequests = new Map();
-            const requestId = 'init_' + Date.now().toString(36) + Math.floor(performance.now() * 1000).toString(36);
-
-            const initPromise = new Promise((resolve, reject) => {
-                this._pendingRequests.set(requestId, {
-                    resolve: () => {
-                        Logger.message("T13NE_Music: Worker initialized.");
-                        resolve();
-                    },
-                    reject: (err) => {
-                        Logger.error("T13NE_Music: Worker failed to initialize.", err);
-                        reject(err);
-                    }
-                });
-            });
-
-            // Send initial data to all workers in the pool
             const patterns = {
                 'music:drumpatterns.json': this.themeGenerator.drumPatterns,
-                'music:harmonic_patterns.json': { patterns: this.themeGenerator.harmonicPatterns },
+                'music:harmonicpatterns.json': { patterns: this.themeGenerator.harmonicPatterns },
                 'music:basspatterns.json': { patterns: this.themeGenerator.bassPatterns },
                 'geometry:progressions.json': this.themeGenerator.progressions,
                 'geometry:tonalModes.json': this.tonalModes
             };
 
             const geometryData = {
-                romanChords: this.geometry?.RomanChords || [],
-                keys: this.geometry?.keys || {}
+                romanChords: this.geometry?.RomanChords,
+                keys: this.geometry?.keys
             };
 
-            this.worker.postMessage({
-                type: 'init',
-                data: {
+            // Initialize the worker with data
+            await this.workerPool.execute('init', {
                     codexData: patterns,
                     geometryData: geometryData,
                     manifest: this.manifestManager.manifest,
                     performanceMode: this.themeGenerator.performanceMode
-                },
-                requestId: requestId
             });
 
-            await initPromise;
+            Logger.message("T13NE_Music: Worker pool ready.");
         } catch (e) {
             Logger.error("T13NE_Music: Failed to initialize worker pool.", e);
             this.useWorker = false;
         }
-    }
-
-    async callWorker(type, data) {
-        if (!this.worker) return null;
-
-        if (!this._pendingRequests) this._pendingRequests = new Map();
-        const requestId = Date.now().toString(36) + Math.floor(performance.now() * 1000).toString(36);
-
-        return new Promise((resolve, reject) => {
-            this._pendingRequests.set(requestId, { resolve, reject });
-            this.worker.postMessage({ type, data, requestId });
-
-            // Timeout after 10s
-            setTimeout(() => {
-                if (this._pendingRequests.has(requestId)) {
-                    this._pendingRequests.delete(requestId);
-                    reject(new Error("Worker request timed out"));
-                }
-            }, 10000);
-        });
     }
 }
 

@@ -737,8 +737,12 @@ export class PlanetaryOrbitScene extends Scene {
             const avatarMesh = avatarEngine.generate(bodyPlan);
             
             if (speciesCore.color) {
-                const c = new THREE.Color(speciesCore.color);
-                avatarMesh.material.color.copy(c);
+                try {
+                    const c = new THREE.Color(speciesCore.color);
+                    avatarMesh.material.color.copy(c);
+                } catch (e) {
+                    Logger.warn(`PlanetaryOrbitScene: Invalid species color '${speciesCore.color}', defaulting to random.`);
+                }
             } else {
                  const hue = Math.random();
                  avatarMesh.material.color.setHSL(hue, 0.6, 0.5);

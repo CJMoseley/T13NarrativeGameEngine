@@ -143,7 +143,7 @@ export class SystemLoreGenerator {
 
                 if (ageData) {
                     societyType = `a society currently shaped by ${ageData.Type.toLowerCase()}`;
-                    societyDesc = this._sanitizeLore(ageData.Description);
+                    societyDesc = ageData.Description;
                     description += ` ${societyDesc}`;
                 } else {
                     // Fallback if card has no Age data
@@ -171,12 +171,12 @@ export class SystemLoreGenerator {
         const T13Geometry = T13NE ? T13NE.getModule('T13Geometry') : null;
         if (T13Geometry) {
             const geo = T13Geometry.calculateFullGeo(systemNameArray[0]);
-            const soulGeo = T13Geometry.Geometries[geo.Soul];
+            const soulGeometryData = T13Geometry.Geometries[geo.Soul];
             // Use preGeneratedLore for a more diegetic and jargon-free description
-            if (soulGeo && soulGeo.preGeneratedLore) {
-                description += ` ${soulGeo.preGeneratedLore}`;
-            } else if (soulGeo && soulGeo.Social_Description) {
-                description += ` ${soulGeo.Social_Description}`;
+            const diegeticText = soulGeometryData?.Diegetic_Society || soulGeometryData?.diegetic_text || soulGeometryData?.preGeneratedLore || soulGeometryData?.Description;
+
+            if (diegeticText) {
+                description += ` ${diegeticText}`;
             }
         }
 
@@ -279,38 +279,6 @@ export class SystemLoreGenerator {
         return result;
     }
 
-    /**
-     * Sanitizes lore text by removing mechanical jargon and formatting for immersion.
-     * @param {string} text - The raw lore text.
-     * @returns {string} The sanitized, more diegetic text.
-     */
-    _sanitizeLore(text) {
-        if (!text || typeof text !== 'string') return text;
-
-        // 1. Remove obvious system terms in parentheses
-        let clean = text.replace(/\([^)]*(Boon|Geometry|Chi|Facet|Hitch|Gematria|Success|Difficulty|Pips|Draw|Pool|Phase|Test|Action|Significator|Dominant|Pressed)[^)]*\)/gi, '');
-
-        // 2. Remove explicit mechanical labels and their values
-        clean = clean.replace(/(Geometry (Number|Name)|Chi (Gain|Level)|Boon|Facet (Score|Name)|Success Level|Difficulty Rating|Pip Gain|Draw (Count|Spread)|Pool Size|Significator|Archetype):?\s*[\w\d\+\-\s]*/gi, '');
-
-        // 3. Remove common mechanical sentences about Success Levels
-        clean = clean.replace(/(They|Individuals) add \+\d+ Success Level on any Action [^.]*\./gi, '');
-        clean = clean.replace(/Add \+\d+ Success Level to any Action [^.]*\./gi, '');
-        clean = clean.replace(/Each additional [^.]* adds a [^.]* Success Level\./gi, '');
-
-        // 4. Remove geometry names if used clinically (e.g. "Nonagon Characters are...")
-        // We want the description, not the label.
-        clean = clean.replace(/(Void|Circle|Half-Moon|Triangle|Square|Pentagon|Hexagon|Heptagon|Octagon|Nonagon|Decagon|Undecagon|Dodecagon|Triskaidecagon) (Characters|Beings|Planets|Societies) are/gi, 'Individuals here are typically');
-
-        // 5. Clean up "Age of" clinical phrasing
-        clean = clean.replace(/An Age of ([^.]*) is occuring\./gi, 'This is a time when they are shaped by $1.');
-
-        // 6. General cleanup of artifact whitespace
-        clean = clean.replace(/\s+/g, ' ').trim();
-
-        return clean;
-    }
-
     generateDescription(loreObject, secondaryLore, eventDescription, corporatePresence) {
         const funcName = 'SystemLoreGenerator.generateDescription';
         Logger.start(funcName, {
@@ -340,12 +308,12 @@ export class SystemLoreGenerator {
 
             const facadeGeo = LoreData.speciesFoundations.find(s => s.type === 'descriptive_geometry' && s.category === 'FACADE');
             if (facadeGeo && facadeGeo.data[traits.facadeNumber]) {
-                physDescParts.push(this._sanitizeLore(facadeGeo.data[traits.facadeNumber]));
+                physDescParts.push(facadeGeo.data[traits.facadeNumber]);
             }
 
             const soulGeo = LoreData.speciesFoundations.find(s => s.type === 'descriptive_geometry' && s.category === 'SOUL');
             if (soulGeo && soulGeo.data[traits.soulNumber]) {
-                physDescParts.push(this._sanitizeLore(soulGeo.data[traits.soulNumber]));
+                physDescParts.push(soulGeo.data[traits.soulNumber]);
             }
 
             proceduralDesc = physDescParts.join(' ');
@@ -356,7 +324,7 @@ export class SystemLoreGenerator {
             culturalDesc = culturalDesc.replace('{animalBase}', loreObject.animalBase);
         }
 
-        const impressionDesc = this._sanitizeLore(traits?.impressionSummary || '');
+        const impressionDesc = traits?.impressionSummary || '';
         let secondaryDesc = '';
 
         if (secondaryLore) {
@@ -370,7 +338,7 @@ export class SystemLoreGenerator {
             prostheticDesc = `They are distinguished by features such as ${loreObject.prosthetics.join(', ')}.`;
         }
 
-        const description = [proceduralDesc, culturalDesc, prostheticDesc, secondaryDesc, this._sanitizeLore(eventDescription), impressionDesc, corporateDesc].filter(Boolean).join(' ');
+        const description = [proceduralDesc, culturalDesc, prostheticDesc, secondaryDesc, eventDescription, impressionDesc, corporatePresence].filter(Boolean).join(' ');
         Logger.end(funcName, description);
         return description;
     }

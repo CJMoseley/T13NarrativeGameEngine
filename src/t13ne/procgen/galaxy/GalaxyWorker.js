@@ -183,7 +183,11 @@ function generateStars(data) {
     return { stars };
 }
 
-// create a worker and register public functions
-workerpool.worker({
+const workerMethods = {
   generateStars: generateStars
-});
+};
+
+console.log('[GalaxyWorker] Initializing worker. Registered methods:', Object.keys(workerMethods));
+
+// create a worker and register public functions
+workerpool.worker(workerMethods);

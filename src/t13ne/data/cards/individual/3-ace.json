@@ -21,6 +21,7 @@
 			"Plot": "The Court Plot is usually a Legal affair, often a Court case, although it can be political intrigues or social in nature, depending upon the genre and Era. The Plot usually results in one Hooked Character accusing another of something (a crime, an affair, an insult). They must then struggle to either prove their innocence, defy the Court, or accept and often change some aspect of themselves. ",
 			"Side": "When one side is affected by the Court, they are intended to act as a Judge, or Court (often of public or media opinion), upon the rest of the Plot, which can powerfully influence the resolution of this Plot, even overturning the expected result. When the Dominant Side is marked by the Court then the Pressed side can expect jumped up charges, manufactured evidence, planted evidence, and perhaps even a kangaroo court. The Dominant side is \"beyond the law\" for some reason (perhaps the Above are corrupt?). If the Pressed side is marked with the Court then you are in lawless wild west territory.",
 			"Character": "The Court Significator indicates a Character who has some authority. <p>They <strong>Gain Yin</strong> when they work for the good of society. </p><p><strong>Gain Yang</strong> when they support someone else with authority. </p><p>They <strong>Gain Chi</strong> when they direct others behaviour, either by speech, writing, or example. </p><p>They gain +1 Success Level when at least three people acknowledge their authority.</p>",
+			"Diegetic_Character": "A figure of authority and judgment, accustomed to directing others and upholding the structures of society. They carry the weight of law or tradition and expect their station to be respected.",
 			"Scene": "The Court Scene is usually a judgement of some sort. Most often it is a social judgement, the new partner presented to the friends or family, although it may involve a lawyer too. Yarn-Tellers can play this card when they wish to call down a judgement on a Character. It is especially easy if they have actually broken laws, otherwise this will result in some social or political judgement of the Character it has been played upon. Judgement is not always bad, and if you have been hard done by another, this might let you make a Gain."
 		},
 		"Beat_Type": "1",
@@ -31,6 +32,7 @@
 		"Hook": "Arrested",
 		"Hook_Description": "The Story opens with the PCs captured, arrested or detained. It may be a case of mistaken identity, or they could be suspects, or maybe they did break a law or two on the way. This is perhaps justice weighing in on their past misdeeds. Sometimes there may be a bit of a Chase or Escape attempt before they are arrested, in fact a whole Epic can arise from being outlaws.",
 		"Gain": "Accolade (A knighthood, title, medal or treasure, A Super-Skill Artefact Descendant/Province)",
+		"Diegetic_Gain": "The bestowal of a high honor, title, or symbol of authority, marking the recipient as a pillar of the established order.",
 		"Fray": "Court Appearance",
 		"Fray_Description": "The Fray is a Court Appearance, this may mean that the PCs will be the defendants in a Court Case, or that they will be judged socially when they appear in the \"Royal Court\" of the friends of a powerful person. Either way is an Opposed Ordeal (or Test) that has variable Stakes from Low to Paradoxical.",
 		"Snag": "Dispute",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Law",
 		"Description": "An Age of Law is occurring. During this age a society will become increasingly law-abiding and litiguous, where as once in a society members may have discussed their differences, or even dueled, now such disputes are settled before a magistrate or judge, often with the aid of numerous legal counsellors, barristers, lawyers, solicitors, clerks and bailiffs all being involved and paid. An Age of Law will usually involve an improvement in law-enforcement for the society, with police or guards being paid more, better trained and equipped, as well as being bolstered in numbers, typically.",
+		"Diegetic_Description": "An Age of Law prevails. Order, regulation, and litigation define the era. Disputes are settled by magistrates and codes rather than steel, and the machinery of justice—or at least the legal system—grinds exceedingly fine.",
 		"Rules": "During an Age of Law Characters will attempt to resolve all disputes by legal proceedings, rather than other, less expensive methods. Criminality will always impart a negative impression during this age, even to other criminals."
 	}
 }

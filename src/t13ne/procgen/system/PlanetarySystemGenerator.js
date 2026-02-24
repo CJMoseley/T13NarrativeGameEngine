@@ -207,18 +207,18 @@ export class PlanetarySystemGenerator {
 
             if (T13Geometry) {
                 const geo = T13Geometry.calculateFullGeo(planetName);
-                const soulGeo = T13Geometry.Geometries[geo.Soul];
-                const facadeGeo = T13Geometry.Geometries[geo.Facade];
+                const soulGeometryData = T13Geometry.Geometries[geo.Soul];
+                const facadeGeometryData = T13Geometry.Geometries[geo.Facade];
 
                 // Use preGeneratedLore for more immersive and jargon-free planet society descriptions
-                if (soulGeo && soulGeo.preGeneratedLore) {
-                    classificationData.description += ` ${soulGeo.preGeneratedLore}`;
-                } else if (soulGeo && soulGeo.Social_Description) {
-                    classificationData.description += ` ${soulGeo.Social_Description}`;
+                const soulDiegeticText = soulGeometryData?.Diegetic_Society || soulGeometryData?.diegetic_text || soulGeometryData?.preGeneratedLore || soulGeometryData?.Description;
+                if (soulDiegeticText) {
+                    classificationData.description += ` ${soulDiegeticText}`;
                 }
 
-                if (facadeGeo && facadeGeo.Descendant_Description) {
-                    classificationData.description += ` ${facadeGeo.Descendant_Description}`;
+                const facadeDiegeticText = facadeGeometryData?.Diegetic_Society || facadeGeometryData?.diegetic_text || facadeGeometryData?.preGeneratedLore || facadeGeometryData?.Description;
+                if (facadeDiegeticText) {
+                    classificationData.description += ` ${facadeDiegeticText}`;
                 }
             }
 
@@ -255,12 +255,12 @@ export class PlanetarySystemGenerator {
                 orbitalDistance,
                 biosphere: classificationData.biosphere,
                 resources: classificationData.resources,
-                description: this._sanitizeLore(classificationData.description),
+                description: classificationData.description,
                 atmosphere: classificationData.atmosphere,
                 temperature: classificationData.temperature.toFixed(2),
                 gravity: classificationData.gravity.toFixed(2),
                 isHomeworld,
-                moons: moons.map(m => ({ ...m, description: this._sanitizeLore(m.description) })),
+                moons: moons,
                 moonCount: moonCount,
                 color: planetColor,
                 orbitSpeed: (BASE_ORBIT_SPEED * PLANET_SPEED_FACTOR) / orbitalDistance,
@@ -873,35 +873,4 @@ export class PlanetarySystemGenerator {
         return moons;
     }
 
-    /**
-     * Sanitizes lore text by removing mechanical jargon and formatting for immersion.
-     * @param {string} text - The raw lore text.
-     * @returns {string} The sanitized, more diegetic text.
-     */
-    _sanitizeLore(text) {
-        if (!text || typeof text !== 'string') return text;
-
-        // 1. Remove obvious system terms in parentheses
-        let clean = text.replace(/\([^)]*(Boon|Geometry|Chi|Facet|Hitch|Gematria|Success|Difficulty|Pips|Draw|Pool|Phase|Test|Action|Significator|Dominant|Pressed)[^)]*\)/gi, '');
-
-        // 2. Remove explicit mechanical labels and their values
-        clean = clean.replace(/(Geometry (Number|Name)|Chi (Gain|Level)|Boon|Facet (Score|Name)|Success Level|Difficulty Rating|Pip Gain|Draw (Count|Spread)|Pool Size|Significator|Archetype):?\s*[\w\d\+\-\s]*/gi, '');
-
-        // 3. Remove common mechanical sentences about Success Levels
-        clean = clean.replace(/(They|Individuals) add \+\d+ Success Level on any Action [^.]*\./gi, '');
-        clean = clean.replace(/Add \+\d+ Success Level to any Action [^.]*\./gi, '');
-        clean = clean.replace(/Each additional [^.]* adds a [^.]* Success Level\./gi, '');
-
-        // 4. Remove geometry names if used clinically (e.g. "Nonagon Characters are...")
-        // We want the description, not the label.
-        clean = clean.replace(/(Void|Circle|Half-Moon|Triangle|Square|Pentagon|Hexagon|Heptagon|Octagon|Nonagon|Decagon|Undecagon|Dodecagon|Triskaidecagon) (Characters|Beings|Planets|Societies) are/gi, 'Individuals here are typically');
-
-        // 5. Clean up "Age of" clinical phrasing
-        clean = clean.replace(/An Age of ([^.]*) is occuring\./gi, 'This is a time of $1.');
-
-        // 6. General cleanup of artifact whitespace
-        clean = clean.replace(/\s+/g, ' ').trim();
-
-        return clean;
-    }
 }

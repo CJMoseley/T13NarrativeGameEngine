@@ -363,13 +363,14 @@ export class SystemGenerator {
             const T13Geometry = T13NE.getModule('T13Geometry');
             if (T13Geometry && systemNameArray && systemNameArray[0]) {
                 const geo = T13Geometry.calculateFullGeo(systemNameArray[0]);
-                const soulGeo = T13Geometry.Geometries[geo.Soul];
+                const soulGeometryData = T13Geometry.Geometries[geo.Soul];
+                
                 // Use preGeneratedLore for a more diegetic and jargon-free description
-                if (soulGeo && soulGeo.preGeneratedLore) {
-                    description += ` ${soulGeo.preGeneratedLore}`;
-                } else if (soulGeo && soulGeo.Social_Description) {
-                    description += ` ${soulGeo.Social_Description}`;
-                }
+                const diegeticText = soulGeometryData?.Diegetic_Society || soulGeometryData?.diegetic_text || soulGeometryData?.preGeneratedLore || soulGeometryData?.Description;
+
+                if (diegeticText) {
+                    description += ` ${diegeticText}`;
+                } 
             }
         }
 
@@ -492,7 +493,7 @@ export class SystemGenerator {
         if (ageData && ageData.Type && ageData.Description) {
             return {
                 title: ageData.Type,
-                description: this._sanitizeLore(ageData.Description)
+                description: ageData.Description
             };
         }
 
@@ -516,7 +517,7 @@ export class SystemGenerator {
         if (yarnData && yarnData.Significator && yarnData.Significator.Character) {
             return {
                 type: yarnData.Yarn_Name || card.name,
-                description: this._sanitizeLore(yarnData.Significator.Character)
+                description: yarnData.Significator.Character
             };
         }
         return null;
@@ -556,7 +557,7 @@ export class SystemGenerator {
 
             return {
                 name: `a society currently shaped by ${ageData.Type.toLowerCase()}`,
-                description: this._sanitizeLore(ageData.Description) || ''
+                description: ageData.Description || ''
             };
         }
 
@@ -615,38 +616,6 @@ export class SystemGenerator {
         return result;
     }
 
-    /**
-     * Sanitizes lore text by removing mechanical jargon and formatting for immersion.
-     * @param {string} text - The raw lore text.
-     * @returns {string} The sanitized, more diegetic text.
-     */
-    _sanitizeLore(text) {
-        if (!text || typeof text !== 'string') return text;
-
-        // 1. Remove obvious system terms in parentheses
-        let clean = text.replace(/\([^)]*(Boon|Geometry|Chi|Facet|Hitch|Gematria|Success|Difficulty|Pips|Draw|Pool|Phase|Test|Action|Significator|Dominant|Pressed)[^)]*\)/gi, '');
-
-        // 2. Remove explicit mechanical labels and their values
-        clean = clean.replace(/(Geometry (Number|Name)|Chi (Gain|Level)|Boon|Facet (Score|Name)|Success Level|Difficulty Rating|Pip Gain|Draw (Count|Spread)|Pool Size|Significator|Archetype):?\s*[\w\d\+\-\s]*/gi, '');
-
-        // 3. Remove common mechanical sentences about Success Levels
-        clean = clean.replace(/(They|Individuals) add \+\d+ Success Level on any Action [^.]*\./gi, '');
-        clean = clean.replace(/Add \+\d+ Success Level to any Action [^.]*\./gi, '');
-        clean = clean.replace(/Each additional [^.]* adds a [^.]* Success Level\./gi, '');
-
-        // 4. Remove geometry names if used clinically (e.g. "Nonagon Characters are...")
-        // We want the description, not the label.
-        clean = clean.replace(/(Void|Circle|Half-Moon|Triangle|Square|Pentagon|Hexagon|Heptagon|Octagon|Nonagon|Decagon|Undecagon|Dodecagon|Triskaidecagon) (Characters|Beings|Planets|Societies) are/gi, 'Individuals here are typically');
-
-        // 5. Clean up "Age of" clinical phrasing
-        clean = clean.replace(/An Age of ([^.]*) is occuring\./gi, 'This is a time when they are shaped by $1.');
-
-        // 6. General cleanup of artifact whitespace
-        clean = clean.replace(/\s+/g, ' ').trim();
-
-        return clean;
-    }
-
     generateSystemDescription(star, numPlanets, loreObject, secondaryLore, eventDescription, corporatePresence, isRelicSystem) {
         const funcName = 'SystemGenerator.generateSystemDescription';
         Logger.start(funcName, {
@@ -665,14 +634,14 @@ export class SystemGenerator {
         let culturalDesc = `They are primarily the territory of the ${loreObject.commonName}, who maintain ${loreObject.descTemplate || 'a unique and burgeoning culture'}.`;
 
         if (loreObject.culturalDescription) {
-            culturalDesc += ` They are described as a people who are ${this._sanitizeLore(loreObject.culturalDescription)}`;
+            culturalDesc += ` They are described as a people who are ${loreObject.culturalDescription}`;
         }
 
         if (loreObject.animalBase) {
             culturalDesc = culturalDesc.replace('{animalBase}', loreObject.animalBase);
         }
 
-        const impressionDesc = this._sanitizeLore(traits?.impressionSummary || '');
+        const impressionDesc = traits?.impressionSummary || '';
         let secondaryDesc = '';
         if (secondaryLore) {
             secondaryDesc = `A significant community of ${secondaryLore.commonName} also calls this system home; they have a history deeply intertwined with the primary inhabitants.`;
@@ -680,10 +649,7 @@ export class SystemGenerator {
 
         const corporateDesc = corporatePresence ? `The ${corporatePresence.name} have a pervasive influence here, shaping the system's economic landscape.` : '';
 
-        // Clean up event description
-        const cleanEventDesc = this._sanitizeLore(eventDescription);
-
-        const description = [relicDesc, systemDesc, culturalDesc, secondaryDesc, cleanEventDesc, impressionDesc, corporateDesc].filter(Boolean).join(' ');
+        const description = [relicDesc, systemDesc, culturalDesc, secondaryDesc, eventDescription, impressionDesc, corporateDesc].filter(Boolean).join(' ');
 
         Logger.end(funcName, description);
         return description;

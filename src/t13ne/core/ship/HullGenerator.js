@@ -138,6 +138,11 @@ export class HullGenerator {
 
         const res = Math.min(Math.max(targetRes, 64), maxRes);
 
+        if (typeof MarchingCubes === 'undefined') {
+            SafeLogger.warn("HullGenerator: MarchingCubes not available. Falling back to convex hull.");
+            return this.generateConvexHull(components);
+        }
+
         const mc = new MarchingCubes(res, new THREE.MeshStandardMaterial(), true, true, 1000000);
         mc.isolation = 0.0;
 
@@ -261,6 +266,11 @@ export class HullGenerator {
         else if (this.performanceMode === 'medium') maxRes = 100;
 
         const res = Math.min(Math.max(targetRes, 64), maxRes);
+
+        if (typeof MarchingCubes === 'undefined') {
+            SafeLogger.warn("HullGenerator: MarchingCubes not available. Falling back to convex hull.");
+            return this.generateConvexHull(components);
+        }
 
         const mc = new MarchingCubes(res, new THREE.MeshStandardMaterial(), true, true, 1000000);
         mc.isolation = 0.0;

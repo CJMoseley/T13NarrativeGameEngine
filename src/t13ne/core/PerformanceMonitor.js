@@ -68,19 +68,23 @@ export class PerformanceMonitor {
     }
 
     applyTierSettings() {
-        const music = this.viewManager.engine.getModule('Music');
-        if (music && typeof music.setPerformanceMode === 'function') {
-            music.setPerformanceMode(this.tier);
-        }
+        try {
+            const music = this.viewManager.engine.getModule('Music');
+            if (music && typeof music.setPerformanceMode === 'function') {
+                music.setPerformanceMode(this.tier);
+            }
 
-        const gameEngine = this.viewManager.gameEngine;
-        if (gameEngine && gameEngine.shipFactory && typeof gameEngine.shipFactory.setPerformanceMode === 'function') {
-            gameEngine.shipFactory.setPerformanceMode(this.tier);
-        }
+            const gameEngine = this.viewManager.gameEngine;
+            if (gameEngine && gameEngine.shipFactory && typeof gameEngine.shipFactory.setPerformanceMode === 'function') {
+                gameEngine.shipFactory.setPerformanceMode(this.tier);
+            }
 
-        // Update current scene if it supports it
-        if (this.viewManager.currentScene && typeof this.viewManager.currentScene.setPerformanceMode === 'function') {
-            this.viewManager.currentScene.setPerformanceMode(this.tier);
+            // Update current scene if it supports it
+            if (this.viewManager.currentScene && typeof this.viewManager.currentScene.setPerformanceMode === 'function') {
+                this.viewManager.currentScene.setPerformanceMode(this.tier);
+            }
+        } catch (e) {
+            Logger.warn("PerformanceMonitor: Failed to apply tier settings.", e);
         }
     }
 }

@@ -21,6 +21,7 @@
 			"Plot": "The Threshold Plot is often one of invasion. Of course, who the invaders are, and how they invade varies from Plot to Plot. Threshold Plots can be about stepping into another world (Portal Fantasies), exploring strange new lands, uninvited guests, F&aelig;ry visitors, hauntings, or space invaders. ",
 			"Side": "A side marked by the Threshold is marked as liminal somehow, they may be on the cusp of a decision perhaps whether to ally with one or the other of the other sides, or they may have contacts beyond this Story, or even world, then again they may be a group of Heroes or Yarn-Tellers that have Alternates in another Era or universe.",
 			"Character": "The Threshold Significator indicates a Character who is between two worlds, perhaps on the cusp between one thing and another. <p>They <strong>Gain Yin</strong> when they act confused, tired, or shy. </p><p>They <strong>Gain Yang</strong> when they act like a know-it-all, or act arrogant or confident. </p><p>They <strong>Gain Chi</strong> when they cross a Threshold, enter a new space, or notice the time (usually by dusk or dawn). </p><p>They gain +1 Success Levels to all actions in liminal spaces and times (at dusk, midnight, new years, doorways, crossroads etc)</p>",
+			"Diegetic_Character": "A liminal figure, existing on the threshold between worlds or states of being. They are often found at crossroads, doorways, or in the twilight hours, bridging the gap between the known and the unknown.",
 			"Scene": "The Threshold Scene usually represents some portal or barrier that must be overcome or penetrated. A Yarn-Teller may play the card to create a portal or other connection between Locations, which may be permanent or temporary as required, or may play the card to create a Threshold that acts as a barrier that must be overcome with a Test, Ordeal or Quest. A truly crafty Yarn-Teller could even send someone to another lifetime as a distraction."
 		},
 		"Beat_Type": "1",
@@ -31,6 +32,7 @@
 		"Hook": "Kick in the door",
 		"Hook_Description": "The Story opens with action, often a Fight, it could be the PCs who kick in a door, or an enemy may burst in.",
 		"Gain": "Ref Special: e.g. (Immortality)",
+		"Diegetic_Gain": "A profound transformation or crossing, such as achieving immortality or stepping into a new plane of existence.",
 		"Fray": "The Edge of the World",
 		"Fray_Description": "This is as bad as a Threshold can get, it is the liminal space between the known and the unknown. It might be the edge of a map, the ocean over the horizon, the edge of space, or the mouth of a cave. Usually such portals and thresholds will have some sort of guardian that must be defeated, sneaked or riddled past with an Ordeal.",
 		"Snag": "The End of the Day",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Emergence",
 		"Description": "An Age of Emergence is occurring. During this age society stands upon the brink of a great sea-change in thinking, some paradigm shift is underway, and after the age has finished some aspect of society will be forever altered. The whole society will be affected and altered by this shift in perspective, historically these revolutionary ideas have caused huge changes in culture and the path of history, the industrial revolution changed how the world worked, the assembly line altered businesses and factories forever, the internet altered communications and information retrieval completely.",
+		"Diegetic_Description": "An Age of Emergence is dawning. Old paradigms are crumbling as new ideas, technologies, or powers break through the surface of society. It is a time of radical shifts and new beginnings, where the world is being reshaped before everyone's eyes.",
 		"Rules": "During an Age of Emergence some new paradigm, theory or technology sweeps the world, changing all societies. Societies that fail to adapt to the Emerging new world usually swiftly collapse, hoever those that can exploit some new niche of the new world quickly thrive."
 	}
 }

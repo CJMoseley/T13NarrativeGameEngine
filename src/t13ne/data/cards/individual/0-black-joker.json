@@ -21,6 +21,7 @@
 			"Plot": "The Beyond Plot is often a tale of horror (usually cosmic), as some force beyond normal is unleashed upon the world. Demons, Undead and other tools of the Increated are common to Beyond Plots. Technically, any unknown can be a part of the Beyond, extraterrestrials, ghosts, spirits, a stranger from out of town, they can all be part of a Beyond tale. The only important factor is that it is Beyond normal in some way. ",
 			"Side": "A Side marked by the Beyond is usually touched by some other world. This can range from their Embodiments just being considered a bit weird to actually being possessed by the Increated. When the External side or Shadows side is marked by The Beyond then the Embodiments can actually be Aliens, Fantastic races or Increated, Goblins, Demons or Demon-Lords as required.",
 			"Character": "The Beyond Significator indicates a Character who is an outsider, alien or weirdo. <p>They <strong>Gain Yin</strong> when they speak or act strangely, or ask odd questions. </p><p>They <strong>Gain Yang</strong> when they answer a question, especially if it wasn't directed at them, or the answer is weird. </p><p>They <strong>Gain Chi</strong> when they act as if something common or normal is unusual or funny, or they act as though they have forgotten (or never knew the meaning of) a common word. </p><p>They also gain +1 Success Level to any strange, weird or \"impossible\" action.</p>",
+			"Diegetic_Character": "An outsider or eccentric, often perceived as alien or simply weird by those around them. They view the world through a different lens, finding humor in the mundane and reacting strangely to what others consider normal.",
 			"Scene": "The Beyond Scene is usually used to represent any scene that goes beyond the normal risks or limits of the Plot. This Scene may be at much Higher Stakes than any other, or it may involve forces that have not appeared in this story, and actually represents the Frame of a second, larger Story impinging on the first. Yarn-Tellers that play a Beyond card can narrate almost anything following it. The Referee and other Yarn-Tellers should try to roll with this Narration as much as possible. Narration during a Beyond may not directly contradict any previous Narration, or it runs the risk of becoming Unreliable Narration, which in turn can be ignored by later Yarn-Tellers."
 		},
 		"Beat_Type": "6",
@@ -31,6 +32,7 @@
 		"Hook": "Wildcard",
 		"Hook_Description": "The Hook is just one of those out there crazy starts to a story. Perhaps they come around on a beach near a crashed plane, or wrecked boat, with no memories of where they were going or why.",
 		"Gain": "Add Alternate",
+		"Diegetic_Gain": "The discovery of a new aspect of oneself, or a connection to a different version of reality.",
 		"Fray": "Wandering Monster",
 		"Fray_Description": "A holdover from Old School Gaming. The encounter is against a random Monster (Force of Nature Extra or similar powerful individual) or a group of similar powered Characters (Cast Extras) or a large group (2 to 1 outnumbering) Chorus (Extras) or a tide of Vex Extras.",
 		"Snag": "Triple Threat",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Incursion",
 		"Description": "An Age of Incursion is occurring. During this age a society is infiltrated from beyond, usually this will be simply some foreign power, but in some genres this may be a cross-temporal / hyper-geometric / inter-dimensional / extraterrestrial / ultraterrestrial / supernatural / spiritual / divine / demonic or Increated incursion. The Incursion can be an expedition, infiltration, intrusion, raid, abduction, invasion, usurpation, or just a vacation.",
+		"Diegetic_Description": "This is a time of strange incursions, where the boundaries of the known world are breached by forces from beyond. Societies find themselves infiltrated by foreign or even supernatural powers, leading to a period of unease and transformation.",
 		"Rules": "During an Age of Incursion some force from beyond, either the society, nature or even the genre, appears within the society. This incursion can be for any purpose, but represents some exterior unknowable force. When in doubt use any crazy idea, you can always say it was an Increated that nightmare fueled off a nearby insane person later, if necessaary. Incursions can bring changes to not just the society, but the nature of reality itself, as time-travellers, gods or sleeping dragons awaken and emerge into the society."
 	}
 }

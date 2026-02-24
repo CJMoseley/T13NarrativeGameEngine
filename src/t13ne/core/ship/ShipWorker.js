@@ -6,13 +6,15 @@ import { HullGenerator } from '/src/t13ne/core/ship/HullGenerator.js';
 import { ShipGenerator } from '/src/t13ne/core/ship/ShipGenerator.js';
 import { WiringGenerator } from '/src/t13ne/core/ship/WiringGenerator.js';
 
+console.log('[ShipWorker] SCRIPT LOADED via Vite.');
+
 let hullGenerator = new HullGenerator(null);
 let shipGenerator = new ShipGenerator(new WiringGenerator(), null);
 
 async function createRandomShip(data) {
     const { seed, config } = data;
     const components = await shipGenerator.createRandomShip(seed, config);
-    return { components };
+    return components;
 }
 
 async function generateSDFHull(data) {
@@ -142,10 +144,14 @@ async function generateCSGHull(data) {
     }
 }
 
-// create a worker and register public functions
-workerpool.worker({
+const workerMethods = {
     createRandomShip,
     generateSDFHull,
     setPerformanceMode,
     generateCSGHull
-});
+};
+
+console.log('[ShipWorker] Initializing worker. Registered methods:', Object.keys(workerMethods));
+
+// create a worker and register public functions
+workerpool.worker(workerMethods);

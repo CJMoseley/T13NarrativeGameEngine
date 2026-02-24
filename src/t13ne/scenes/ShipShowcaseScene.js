@@ -66,22 +66,29 @@ export class ShipShowcaseScene extends Scene {
 
         // 8. Generate Ship Data Procedurally
         onProgress({ status: 'Designing random ship...', percent: 0.4 });
-        // Use a random seed or one based on the home system if available
-        const seed = ProcGen.nextInt(0, 4294967296);
+        // Use a random seed (never) instead only use one based on the home system 
+        const prng = ProcGen.createPRNG(Date.now()); // this code is incorrect and will not generate procedurally seeded ships that  are required.
+        const seed = Math.floor(prng.nextDouble() * 4294967296); // this is not correct and will not generate procedurally seeded ships that  are required.
         
         // Determine style to ensure name matches visual
         const styles = ['ORGANIC', 'INDUSTRIAL', 'SKELETON', 'BOXY', 'RACING', 'MINING', 'METALLIC'];
-        const style = styles[ProcGen.nextInt(0, styles.length - 1)];
+        const style = styles[Math.floor(prng.nextDouble() * styles.length)];
         
         const sizes = ['small', 'medium', 'large'];
-        const size = sizes[ProcGen.nextInt(0, sizes.length - 1)];
+        const size = sizes[Math.floor(prng.nextDouble() * sizes.length)];
         
-        const shipComponents = await this.shipFactory.createRandomShip(seed, { size: size, techLevel: 2, style: style });
-        this.shipComponents = shipComponents;
+        try {
+            const shipComponents = await this.shipFactory.createRandomShip(seed, { size: size, techLevel: 2, style: style });
+            this.shipComponents = shipComponents;
+        } catch (e) {
+            console.error("ShipShowcaseScene: Failed to generate ship components.", e);
+            onProgress({ status: 'Ship generation failed.', percent: 1.0, error: true });
+            return;
+        }
 
         // Generate Ship Name
-        if (shipComponents.shipName) {
-            this.shipName = shipComponents.shipName;
+        if (this.shipComponents && this.shipComponents.shipName) {
+            this.shipName = this.shipComponents.shipName;
         } else if (this.viewManager.gameEngine.loreMaster && this.viewManager.gameEngine.loreMaster.nameGenerator) {
             try {
                 const genName = await this.viewManager.gameEngine.loreMaster.nameGenerator.generate('SHIP_NAMES', seed);
@@ -89,13 +96,13 @@ export class ShipShowcaseScene extends Scene {
                 if (genName && genName.toLowerCase() !== "g'nathuun") {
                     this.shipName = genName;
                 } else {
-                    let manu = FALLBACK_MANUFACTURERS[ProcGen.nextInt(0, FALLBACK_MANUFACTURERS.length - 1)];
+                    let manu = FALLBACK_MANUFACTURERS[Math.floor(prng.nextDouble() * FALLBACK_MANUFACTURERS.length)];
                     const activeCorps = GalacticHistory.getCorporations()?.filter(c => c.status === 'Active');
                     if (activeCorps && activeCorps.length > 0) {
-                        manu = activeCorps[ProcGen.nextInt(0, activeCorps.length - 1)].name;
+                        manu = activeCorps[Math.floor(prng.nextDouble() * activeCorps.length)].name;
                     }
-                    const tech = TECH_SPECS[ProcGen.nextInt(0, TECH_SPECS.length - 1)];
-                    const qual = QUALITIES[ProcGen.nextInt(0, QUALITIES.length - 1)];
+                    const tech = TECH_SPECS[Math.floor(prng.nextDouble() * TECH_SPECS.length)];
+                    const qual = QUALITIES[Math.floor(prng.nextDouble() * QUALITIES.length)];
                     const type = style === 'ORGANIC' ? "Bio-Craft" : (style === 'SKELETON' ? "Frame" : "Racer");
                     this.shipName = `${manu} ${tech} ${type} ${qual}`;
                 }
@@ -108,7 +115,7 @@ export class ShipShowcaseScene extends Scene {
         onProgress({ status: 'Generating procedural hull...', percent: 0.6 });
         const styleConfig = { method: style, plating: (style === 'INDUSTRIAL'), blendStrength: (style === 'ORGANIC' ? 1.5 : 0.1) };
         // Pass 'this.scene' so wireframes appear immediately
-        this.hullGenerationPromise = this.shipFactory.generateProceduralShipAsync(shipComponents, styleConfig, null, this.scene);
+        this.hullGenerationPromise = this.shipFactory.generateProceduralShipAsync(this.shipComponents, styleConfig, null, this.scene);
         onProgress({ status: 'Ship data ready.', percent: 1.0 });
     }
 
