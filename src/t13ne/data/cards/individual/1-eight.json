@@ -31,6 +31,7 @@
 		"Hook": "Craze",
 		"Hook_Description": "The Conflict hooks Characters with a new craze, fad or fashion that is related to the Conflict. Kids and young adults are often the early adopters of the new craze, but the fad may be more cultish. in extreme examples the Dominant Embodiment will have this fad cult based around themselves.",
 		"Gain": "Fan Club (a group of Chorus Allies who are \"fans\" of the Character",
+		"Diegetic_Gain": "The character gains a loyal following of fans, a group of allies who admire them.",
 		"Fray": "Persuasion",
 		"Fray_Description": "The Fray consists of trying to persuade someone (a group of potential allies, a mentor or guardian, an Opposed Embodiment, or any Rival) to your point of view. Persuasion is either a Sub-Ordeal conversation, a Zeal vs Personality Test, or a Low / Soul Stakes Ordeal, depending how the Yarn-Teller wants to run it. Of course matters may be complicated if you are trying to convince a braying mob of your innocence, and the ultimate goal of the Cultist is always to try and persuade another to join the same cult.",
 		"Snag": "Kidnapped",
@@ -110,6 +111,7 @@
 	"Age": {
 		"Type": "Schism",
 		"Description": "An Age of Schism is occurring. During this age a society fractures and schisms as the society breaks apart due to internal pressures. During this period ideological or political differences will create internal groups following individual leaders within the society. During the age of Schism the internal sides will compete to control the society as a whole.",
+		"Diegetic_Description": "This is a time of deep division. Society fractures along ideological lines, with internal groups competing for control.",
 		"Rules": "During an age of Schism a group will break apart, creating internal factions each with their own leadership, who will compete for actual control."
 	}
 }

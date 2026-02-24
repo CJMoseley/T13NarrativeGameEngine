@@ -31,6 +31,7 @@
 		"Hook": "Set up",
 		"Hook_Description": "The set up is the beginning of the joke, in a comedy this is usually a misunderstanding, in a shorter joke this is a question, somewhere in between it is a sentence or two that creates a narrative framework that misleads the audience. At its very simplest it is a cliché, such as a bunch of adventurers walk into a bar. Occasionally, it is a physical set up to a prank or stunt that will be important later. And every now and then it is a literal set up, with a situation created to put the PCs in the Narrative.",
 		"Gain": "Friends (a Group of 2-12 Vexes, or 2-6 Chorus Extras)",
+		"Diegetic_Gain": "The character makes new friends, forming a small but loyal group of companions.",
 		"Fray": "Caper",
 		"Fray_Description": "Capers are usually Low to Medium Stakes (although Higher Stakes Capers are possible) where multiple deceptions, confusions and complex physical activities occur that are all connected to trying to achieve some goal, often a heist or con-game. Humour is usually part of a Caper, such as swapping priceless jewels for plastic kids jewellery, or million-dollar bonds for monopoly money. In a real criminal enterprise such frivolities would create additional leads for the police, during a Caper though they will just confound, bemuse and amuse.",
 		"Snag": "Shenanigans",
@@ -110,6 +111,7 @@
 	"Age": {
 		"Type": "Whimsy",
 		"Description": "An Age of Whimsy is occurring. During this age a society values play, sport, entertainment and escapism over industry or advancement. During an age of whimsy artists, musicians, sportsmen, actors, writers, and similar individuals are seen as social leaders and revolutionaries, and new artforms and styles will emerge during the age. Politics during this age is often more driven by character than by policy, which can lead to popularism and extremist politics arising to end the age.",
+		"Diegetic_Description": "An age of whimsy and play, where society values entertainment and escapism above all else. Artists and performers become cultural leaders.",
 		"Rules": "A period of cultural growth and diversity that creates new artforms, musical genres, styles and fashions. The Age will often end with some reactionary event or social force."
 	}
 }

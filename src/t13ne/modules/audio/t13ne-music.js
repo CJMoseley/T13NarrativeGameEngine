@@ -312,11 +312,13 @@ class T13NE_Music {
                 } : null
             }));
 
+            Logger.message(`T13NE_Music: Sending ${sanitizedComponents.length} components to worker.`);
             trackData = await this.workerPool.execute('generateMainTheme', {
                 activeComponents: sanitizedComponents,
                 tensionLevel: currentTension,
                 forceRegeneration: this.needsRegeneration || forceVariation
             });
+            Logger.message(`T13NE_Music: Worker returned track data: ${trackData ? trackData.name : 'null'}`);
 
             // Ensure main thread has all instruments defined
             if (trackData && trackData.voices) {
@@ -844,7 +846,7 @@ class T13NE_Music {
                     performanceMode: this.themeGenerator.performanceMode
             });
 
-            Logger.message("T13NE_Music: Worker pool ready.");
+            Logger.message(`T13NE_Music: Worker pool ready. Pool ID: ${this.workerPool.poolId}`);
         } catch (e) {
             Logger.error("T13NE_Music: Failed to initialize worker pool.", e);
             this.useWorker = false;

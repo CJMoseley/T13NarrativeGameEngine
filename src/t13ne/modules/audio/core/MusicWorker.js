@@ -46,7 +46,11 @@ const mockMusicModule = {
         getAssetPath: () => null
     },
     geometry: null,
-    codex: mockCodexLoader
+    codex: mockCodexLoader,
+    loadSample: async (id, url) => {
+        // Mock loadSample to prevent crash in ThemeGenerator
+        return false; 
+    }
 };
 
 async function init(data) {
@@ -107,18 +111,29 @@ async function init(data) {
 
         themeGenerator = new ThemeGenerator(mockMusicModule);
         if (performanceMode) themeGenerator.performanceMode = performanceMode;
+        try {
+            await themeGenerator.loadAssets();
+            console.log('[MusicWorker] ThemeGenerator assets loaded.');
+        } catch (e) {
+            console.error('[MusicWorker] Failed to load assets in ThemeGenerator:', e);
+        }
         await themeGenerator.loadAssets();
+        console.log('[MusicWorker] ThemeGenerator assets loaded.');
     })();
     await initPromise;
+    console.log('[MusicWorker] Initialization complete.');
     return { status: 'initialized' };
 }
 
 async function generateMainTheme(data) {
+    console.log('[MusicWorker] generateMainTheme called.');
     if (initPromise) await initPromise;
     if (!themeGenerator) throw new Error("ThemeGenerator not initialized in worker");
 
     const { activeComponents, forceRegeneration, tensionLevel } = data;
+    console.log(`[MusicWorker] Generating theme with ${activeComponents ? activeComponents.length : 0} components.`);
     const track = await themeGenerator.createMainTheme(activeComponents, null, forceRegeneration, tensionLevel);
+    console.log('[MusicWorker] Theme generated:', track ? track.name : 'null');
     return track;
 }
 
