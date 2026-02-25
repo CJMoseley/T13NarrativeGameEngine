@@ -70,15 +70,17 @@ export class MusicGenerator {
     /**
      * Generates a chord progression for a race based on the song's structure.
      * @param {object} song - The song object from getWormholeSong.
+     * @param {string|number} [seed] - Optional seed for deterministic generation.
      * @returns {Array} A list of chords representing the race's musical structure.
      */
-    generateChordProgression(song) {
+    generateChordProgression(song, seed) {
+        const prng = ProcGen.createPRNG(seed || song.key || 'default-music-seed');
         const progressions = song.scaleData.progressions;
         if (!progressions || progressions.length === 0) {
             return [song.scaleData.triads[0]]; // Default to the tonic if no progressions exist
         }
         // Pick a random common progression for this scale
-        const progression = progressions[Math.floor(Math.random() * progressions.length)];
+        const progression = progressions[Math.floor(prng.nextDouble() * progressions.length)];
         
         // For now, we'll just return a simple verse-chorus-verse structure
         const verse = progression;

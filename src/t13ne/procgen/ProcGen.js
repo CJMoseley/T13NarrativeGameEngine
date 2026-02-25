@@ -80,6 +80,16 @@ export class ProcGen {
     }
 
     /**
+     * Derives a new seed from a parent seed and components.
+     * @param {string|number} parentSeed
+     * @param  {...any} components
+     * @returns {string}
+     */
+    static deriveSeed(parentSeed, ...components) {
+        return PRNG.deriveSeed(parentSeed, ...components);
+    }
+
+    /**
      * Synchronizes procedural systems.
      */
     static sync() {

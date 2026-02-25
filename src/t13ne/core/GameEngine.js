@@ -294,6 +294,10 @@ export class GameEngine {
      * @returns {Ship} The created ship.
      */
     async seedPlayerShip() {
+        // 0. Derive seed from start system
+        const systemSeed = this.currentSystemDetails?.seeds?.join(',') || 'fallback-ship-seed';
+        const shipSeed = this.engine.getModule('PRNG').deriveSeed(systemSeed, 'player-ship');
+
         // 1. Create a new Ship instance
         const ship = new Ship("Rookie Ship");
 
@@ -355,14 +359,16 @@ export class GameEngine {
         });
 
         // 5. Generate a name for the ship
-        const seed = Math.random();
-        const shipName = await this.loreMaster.nameGenerator.generate('SHIP_NAMES', seed);
+        const shipName = await this.loreMaster.nameGenerator.generate('SHIP_NAMES', shipSeed);
         ship.name = shipName;
 
         // 6. Generate the ship's mesh
         const styleConfig = { method: 'ORGANIC', plating: false, blendStrength: 1.5 };
+        // Use seeded creation if possible via ShipFactory
+        const proceduralComponents = await this.shipFactory.createRandomShip(shipSeed, { style: 'RACING' });
+
         // Use async generation for visualization
-        ship.mesh = await this.shipFactory.generateProceduralShipAsync(ship.components, styleConfig);
+        ship.mesh = await this.shipFactory.generateProceduralShipAsync(proceduralComponents, styleConfig);
 
         this.playerShip = ship;
         this.database.ships.push(this.playerShip);
