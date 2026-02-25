@@ -21,6 +21,7 @@
 			"Plot": "The Waters Plot is deep. It may be that there are a lot of sides, or that the Conflict involves deeper themes than normal. Perhaps it is philosophical, an essay on the existential angst that haunts modern life, or how predestination paradoxes and prophesy counter the concept of free-will. Then again, maybe the Story revolves literally around waters, waves, water-craft, and sailors. ",
 			"Side": "A side of a Conflict marked by the Deep, will often be deeply affected philosophically or emotionally by the events occurring in the main Conflict. This often leads that side to behave outside what is expected, due to the depth of their feelings.",
 			"Character": "The Waters Significator indicates a deep, philosophical, emotional Character. <p>They <strong>Gain Yin</strong> when they act calm, thoughtful, or philosophical. </p><p>They <strong>Gain Yang</strong> when they act agitated, emotional or angry. </p><p>They <strong>Gain Chi</strong> when they empathise or reflect another's emotions. </p><p>They gain +1 Success Level to all Psyche Attacks.</p>",
+			"Diegetic_Character": "A deeply emotional and contemplative individual, possessing a philosophical mind and a heart that resonates with the feelings of others. They are subject to sudden shifts in temperament, moving from thoughtful calm to stormy agitation as their inner tides dictate.",
 			"Scene": "The Waters Scene is one that features Water. The Waters often represent a moment of death and rebirth, which is a profound Ordeal or Weft. They don't all have to be so deep, sometimes it just means it rains. Yarn-Tellers may play the card to gain deep insights, travel by water, or create Ordeals (including rebirth), as required."
 		},
 		"Beat_Type": "4",
@@ -31,6 +32,7 @@
 		"Hook": "Rising Waters",
 		"Hook_Description": "The story hooks the character with a slowly rising danger. This can be a literal rising water level, or a sign of worse things to come, such as being teased, before it turns to abuse and bullying. The danger is present now, but may not be taken seriously enough yet.",
 		"Gain": "Water Location (such as a pond, pool, lake, river, shore, beach or a suitable water  vehicle)",
+		"Diegetic_Gain": "A tranquil sanctuary near the water—a hidden pool, a serene shoreline, or a dependable vessel that provides both refuge and a means of travel.",
 		"Fray": "Drowning",
 		"Fray_Description": "Drowning is any Ordeal where the Stakes rise rapidly during the Ordeal. Drowning might start as Low Stakes (a pleasant swim or putting a meal on credit card), but it soon escalates until the Stakes are Medium (a current starts to drag them out to sea or they have to take a pay day loan after the car breaks down, until suddenly the stakes are High or even higher (far from shore the sharks start circling or finally they made a deal with the devil to pay off the debt).",
 		"Snag": "Leaks",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Inundation",
 		"Description": "An Age of Inundation is occurring. During this age pressure builds within society, like water gathering behind a dam, exactly what is the cause or experession of this pressure will vary everytime the age occurs. Usually this pressure pushes Characters together, as a flood will push a community further from the river.",
+		"Diegetic_Description": "A time of building pressure and collective unease, where the weight of unresolved issues threatens to overflow. It is an era that forces people together as they seek higher ground, defined by the mounting tension and the inevitable outbursts that occur when the social floodgates finally burst.",
 		"Rules": "An Age of Inudnation creates a pressure on or within the society, this may be a literal pressure, too many people in too small a Location, or dramatic cliff erosion taking houses from the town, but is more likely a metaphorical pressue, such as the economoic pressures placed on high streets by out of town supermarkets, or the cultural pressure between neighbouring sports teams. This pressure is often expressed through Push Embodiments of the Facets within the society (and beyond) that best represent the sources and expressions of the pressure."
 	}
 }

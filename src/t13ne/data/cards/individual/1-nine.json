@@ -21,6 +21,7 @@
 			"Plot": "The Priest Plot is a Plot where the sacred and profane are both important. The worlds of mortal and divine mix and interfere. Often the Plot will centre around a hallowed character (such as a Priest, Monk, Nun, Priestess, etc). ",
 			"Side": "If a side of a larger Conflict is marked by the Priest then that side will generally act as a go between or messenger between two of the other sides.",
 			"Character": "The Priest Significator indicates a Character who has a strong, personal connection to the divine. <p>They <strong>Gain Yin</strong> by prayer or meditation.</p><p><strong>Gain Yang</strong> by sharing stories or parables from their religion, and drawing comparisons between their current situation and those from their religious texts. </p><p>They <strong>Gain Chi</strong> when they perform religious rituals or demonstrate divine or spiritual powers or prowess. </p><p>They also gain +1 Success Level to do with all aspects of their religion or spirituality</p>",
+			"Diegetic_Character": "A devout individual with a profound connection to the spiritual realm, often serving as a conduit for higher powers. They are guided by faith and tradition, finding strength in prayer and wisdom in the sacred texts of their order.",
 			"Scene": "The Priest Scene is a scene with religious or divine importance. A Yarn-Teller may use it to allow divine intervention, a resurrection or miracle of a higher order, or the Scene may concentrate on the profane, mundane activities that many of the Priesthood (or more usually Monks) must do, such as cleaning, working, meditation, gardening, farming beneath the guise of religious duty or faith."
 		},
 		"Beat_Type": "7",
@@ -31,6 +32,7 @@
 		"Hook": "A Prayer",
 		"Hook_Description": "The Hook of this Story is nothing more than a cry for help, an overheard prayer, confession or scream calls the PC to action. To Hook some Characters it is necessary to allow the Prayer to intrigue, or tempt the Character into action rather than directly ask them for help.",
 		"Gain": "Parish, the Parish is an area or territory that a priest is made responsible for. An actual Parish is a Real Estate or Province held by the Church and wardened by a Priest. (Gain Large Location)",
+		"Diegetic_Gain": "Responsibility for a hallowed sanctuary or a community of the faithful, providing a secure haven and a position of spiritual leadership.",
 		"Fray": "Shepherd",
 		"Fray_Description": "A usually Medium-Soul Stakes Ordeal that involves guiding, teaching and protecting a \"<em>flock</em>\" of animals or people. This can be as simple as leading goats to pasture, sitting with a dying person, or as complex as herding cats, or calming and consoling parents after a sectarian attack on a primary school.",
 		"Snag": "Humanitarian Crisis",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Belief",
 		"Description": "An Age of Belief is occurring. During this age the beliefs a society holds are considered more important and true than any evidence that may disprove it. During this age a society will ignore advice, avoid evidence, declare science to be false without evidence, and double down on nonsensical beliefs.",
+		"Diegetic_Description": "A time of fervent faith and unyielding conviction, where the dictates of belief outweigh the evidence of the senses. Society becomes closed to outside reason, finding unity and purpose in shared dogmas while rejecting any truths that might challenge their worldview.",
 		"Rules": "During an age of Belief members of a society will only accept information that supports the belief they have adopted, all other information will be ignored, dismissed or rejected."
 	}
 }

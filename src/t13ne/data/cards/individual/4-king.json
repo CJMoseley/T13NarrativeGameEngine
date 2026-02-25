@@ -21,6 +21,7 @@
 			"Plot": "The Butcher Plot is usually set within a small community, and tends to be about survival, this may be survival against a harsh environment, like a drought or harsh winter, or more normally a killer is loose in the community. This killer is usually a serial killer and a member of the community, but it may be a Monster from outside the community in the horror genre. ",
 			"Side": "The side marked by the Butcher will have to kill by the end the Conflict. This killing may be symbolic, or literal, and can be an animal, or even an insect if need be, although usually the animal will be eaten (unless vermin) or otherwise consumed. In many cases the Butcher also indicates the side may provide a feast to those who are hungry, or that their services and allegiances are for sale.",
 			"Character": "The Butcher Significator indicates a Character who is a killer, but often for the good of the community. <p>They <strong>Gain Yin</strong> when they provide for the hungry, poor, or in need. </p><p>They <strong>Gain Yang</strong> when they care about how clean their hands are (wash, wipe, wear gloves). </p><p>They <strong>Gain Chi</strong> when they execute, or prepare an attack or piece of meat. </p><p>They also gain +1 Success Levels to all physical attacks.</p>",
+			"Diegetic_Character": "A pragmatic character who understands the necessity of death to sustain life. They are often seen as grim or clinical, focused on the messy reality of providing for their community, whether that means preparing a feast or executing a necessary judgment.",
 			"Scene": "The Butcher Scene is usually a High Stakes Ordeal where a killer is involved in most genres, but it can be used to represent a party or feast. Butchers can also represent Allies from within a community. Yarn-Tellers can play a Butcher card to kill (or at least summon a powerful killer to attack the target), or to provide food for a whole community, or host a spectacular feast."
 		},
 		"Beat_Type": "9",
@@ -31,6 +32,7 @@
 		"Hook": "Danger",
 		"Hook_Description": "The Hook just consists of some enormous danger, it isn't looming, it isn't coming, it is right here, right now.",
 		"Gain": "Increase Scale",
+		"Diegetic_Gain": "A significant expansion in one's influence and reach—the growth of a small following into a formidable organization, or the elevation of a local reputation to a regional legend.",
 		"Fray": "Hunted",
 		"Fray_Description": "Being Hunted (or hunting) is a High Stakes Ordeal, that may begin with a Stalk or Chase, that explodes into a Fight. A Hunt is usually a team sport, with the Hunter being superior in power level to the Prey.",
 		"Snag": "Big Bad",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Feasting",
 		"Description": "An Age of Feasting is occurring. During this age a society has reasons to celebrate and is often quite rich, but food rather than riches is how society demonstrates those riches. Vast banquets, lavish meals, bountiful harvests, and fat farm animals are the order of the age. Quite what the society is celebrating will depend upon the previous age. Although the age of feasting is a celebration of some sort, it is also a bloody period, death and carrion are all around, flies and rats swarm the back alleys and sickness is never more than a few neighbours away.",
+		"Diegetic_Description": "A decadent era of celebration and abundance, following a period of hardship or great achievement. Society indulges in grand festivals and lavish displays of wealth, though this period of excess often carries the seeds of its own decay, as over-indulgence leads to social and physical fragility.",
 		"Rules": "During the Age of Feasting a society celebrates the last age or its end, the society is food rich due to good harvests or strong trade. All members of society will be well fed, and healthy, at least at the start of the age. Depending how long the situation remains stable, with trade good, harvests rich and animal stocks well maintained, eventually most members of society will be over-fed, and become quite unhealthy, sickness will inevitably sweep through the society, if famine, drought or trade disruption does not end the situation ealier."
 	}
 }

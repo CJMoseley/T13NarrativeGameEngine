@@ -21,6 +21,7 @@
 			"Plot": "The Forest Plot is about making the Hooked Characters learn their place in the greater world. Often, they learn their place is not where they thought it was (and it certainly isn't the Forest itself). In the deep, dark forest all Stakes are Higher than you might expect, especially for the side that has this Significator.",
 			"Side": "A side marked by the Forest will be isolated from the other sides, occasionally physically removed entirely and sometimes suffer only External Embodiments from the other sides, all these interactions increase in Stake by at least one step.",
 			"Character": "The Forest Significator indicates a Character who is uncomfortable in normal society.<p>They <strong>Gain Yin</strong> when they are silent or alone. </p><p><strong>Gain Yang</strong> when they walk away, leave the path, or sniff the air. </p><p>They <strong>Gain Chi</strong> when they enjoy the elements directly upon their body, wind in their hair, sun on their face. </p><p>They also gain a +1 Success Level when in the shadows of trees.</p>",
+			"Diegetic_Character": "A wild or untamed soul, more at home in the silence of the woods than in the bustle of the city. They are deeply attuned to the natural world, finding comfort in the elements and the solitary peace of the wild.",
 			"Scene": "The Forest Scenes are set deep in the wilds of the world, far from normal civilisations. These are the settings for Ordeals, Tests and Quests or quiet, but deeply personal Revelations. Yarn-Tellers may use The Forest in an urban environment to signify urban jungle, with its own predators and prey."
 		},
 		"Beat_Type": "5",
@@ -31,6 +32,7 @@
 		"Hook": "Witch's Cottage",
 		"Hook_Description": "Traditionally the Witch's Cottage is a run down shack hidden in the woods. It is thought that no one lives there any more, at least until the first child went missing. The Conflict begins with a missing child, or a strange ruin found of the beaten path.",
 		"Gain": "Serenity, the Character finds a small Location where they can relax and meditate. This Location can help them to rest and recover more quickly from stress and negative effects.",
+		"Diegetic_Gain": "A place of profound serenity—a quiet grove or a hidden glade where the mind can find rest and the spirit can heal from the wounds of the world.",
 		"Fray": "Forced March",
 		"Fray_Description": "Usually a Medium Stakes Solitary Motional Ordeal, like hurrying to catch the bus, racing to the airport, getting the shopping done before the dinner party, or getting an army through the Forest before nightfall. A Forced March Ordeal usually involves an Obstacle or two.",
 		"Snag": "Dangerous Shadows",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Dispersal",
 		"Description": "An Age of Dispersal is occuring. During this age a society sheds members, sometimes due to death and old age, more often they dissolve into other (neighbouring, related or more popular) societies, some few may remain in the original, but it will now be a smaller, more tightly aligned group.",
+		"Diegetic_Description": "A time of fading and scattering, where the bonds of society begin to loosen. People drift away, seeking new lives in distant lands or merging with neighboring cultures, leaving behind a smaller, more insular core of those who remain.",
 		"Rules": "More than half of the members of the society fade away, ceasing their membership, often including former leadership roles. There must be a change of orientation or direction for the group, along with a change of leadership, or this age will end when the social group has completely collapsed."
 	}
 }

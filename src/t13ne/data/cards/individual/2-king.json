@@ -21,6 +21,7 @@
 			"Plot": "The Physician Plot is all about a medical situation, common to all medical dramas. It may be that the Plot centres on a disease, or plague that must be contained, and treated. Or the Plot may be about a specific Physician, perhaps new to a practice, or who has decidedly unorthodox practices. ",
 			"Side": "When a side is marked by The Physician they are marked as having a Skill, Talent, or Power that is essential to the well-being of one the other sides (usually the Dominant Side, sometimes the Above, Pressed or Below). Often the Physician will have to be persuaded, or paid, to use this ability, sometimes they will behave as an ally to anyone needs their help.",
 			"Character": "The Physician Significator indicates a Character who cares deeply about the well-being of others. <p>They <strong>Gain Yin</strong> when they rest, read or examine something or someone. </p><p>They <strong>Gain Yang</strong> when they ask questions, make observations, or write notes. </p><p>The <strong>Gain Chi</strong> when they solve a problem, heal a Wound, or reduce a Hitch. </p><p>They gain +1 Success Levels to all attempts to Heal Wounds or reduce Hitches.</p>",
+			"Diegetic_Character": "A compassionate and observant healer, dedicated to the preservation of life and the alleviation of suffering. They possess a keen eye for detail and a steady hand, finding their greatest purpose in mending the broken and restoring balance to those in their care.",
 			"Scene": "The Physician Scene is when the Characters get better from any wounds they may have taken. This may consist of a Surgical Ordeal, or just a montage of push-ups. Yarn-Tellers can play this card to remove and Heal Wounds, and even some Hitches (such as a \"Dying\" Hitch - usually converting it to a Scars Hitch). It can even raise the dead, under the right circumstances. The Referee can (and should) limit the effectiveness of the card, requiring downtime, or new Hitches."
 		},
 		"Beat_Type": "9",
@@ -31,6 +32,7 @@
 		"Hook": "Bad News",
 		"Hook_Description": "The Hook just consists of terrible bad news, often medical in nature, such as an incurable (or at least perilous) disease diagnosis.",
 		"Gain": "Savant &mdash; Powerful Ally (Demon/Solo/Fae/Grand-Mercari)",
+		"Diegetic_Gain": "The aid of a brilliant and exceptional specialist—a savant whose extraordinary talents provide unique insights and peerless assistance.",
 		"Fray": "Medical Situation",
 		"Fray_Description": "This is a medical situation, maybe the PCs need Surgery (or to conduct it), perhaps they need to deal with a large scale accident, disaster, or plague.",
 		"Snag": "Medical Ethics",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Recovery",
 		"Description": "An Age of Recovery is occurring. During this age a society heals and recovers from the wounds of the past, rifts will be mended, and the society will resettle into a new harmony. There may be a few scars and other signs of damage left behind, but most members have put the bad times behind them, whatever they were. During this age economic and cultural recovery will also occur, which may advance the society into a new age.",
+		"Diegetic_Description": "A time of healing and reconciliation, where society mends the divisions and scars of a previous era. It is a period of resettlement and the restoration of harmony, as the collective focus shifts toward rebuilding and the steady recovery of prosperity and culture.",
 		"Rules": "During an Age of Recovery a society will recover from whatever harm has previously befallen them. Typically this will mean a period of steady growth in membership, economic, artistic, technological and cultural successes are also possible to recover something previously lost."
 	}
 }

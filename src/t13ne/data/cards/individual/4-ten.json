@@ -21,6 +21,7 @@
 			"Plot": "The Lion plot is a plot about strength (personal or numeric), heroics (hunting or battle prowess are likely) and often pride (usually as part of a dramatic fall). ",
 			"Side": "A side marked by the Lion sees themselves as strong, and powerful, although others may see them as overly-proud or heroic depending upon their alliances. The side is often challenged by another as a demonstration of strength, which may have profound impacts on the plot as whole.",
 			"Character": "The Lion Significator indicates a Character who is proud and regal. <p>They <strong>Gain Yin</strong> when they act proud or mention their accomplishments. </p><p>They <strong>Gain Yang</strong> when they demonstrate their strength or physical ability.</p><p>They also gain +1 Success Levels to any action that demonstrates physical prowess and strength.</p>",
+			"Diegetic_Character": "A proud and regal figure who carries themselves with an air of natural authority and strength. They value their own accomplishments and physical excellence, thriving when their power is acknowledged or put to the test, though their pride can occasionally lead them into peril.",
 			"Scene": "The Lion Scene is any scene that tests the strength (or pride) of the Characters. This may be a simple Gossamer Test or a more complex Ordeal. The Lion can also represent an animal (often a pet) or a Guardian Monster. Yarn-Tellers may play the card to summon a Lion (or similar strong animal) to attack their enemies, or they can pass a strength test, or any hunting Ordeals."
 		},
 		"Beat_Type": "8",
@@ -31,6 +32,7 @@
 		"Hook": "Pride Comes Before A Fall",
 		"Hook_Description": "The Story Hooks the Character with giving them recognition for some earlier story, this Story is often a Sequel to the earlier episode. Usually makes a Gain (often a Prize, Medal or Award) as acknowledgement of the previous actions of the PC.",
 		"Gain": "Powerful Monster Ally, Super (or Power) Annex or Super-Skill Descendant",
+		"Diegetic_Gain": "The acquisition of a powerful and formidable ally—a great beast or a master of combat—or the attainment of a legendary skill that sets one apart from all others.",
 		"Fray": "Encounter",
 		"Fray_Description": "An Encounter is a Fight against a smaller number of similar powered foes, or a larger group of weaker foes. The Encounter is intended to insert a bit of action, and drama without risking the PCs too much. An Encounter should wear at the party, maybe Crippling or Maiming a few Characters and perhaps giving one Character a new Hitch (Mortal+), Extras (of any size) may die, including Cast Extras. You may want to kill a PC during this Fray if the Stakes are already elevated.",
 		"Snag": "Test of Strength",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Predation",
 		"Description": "An Age of Predation is occurring. During this age a society draws closer together, either as they prey upon a weaker society, or as they are preyed upon by a larger society. Typically this predation is in the form of exploitation, manipulation and abuse, whether through invasion, theft, warfare or more nefarious means such as trade agreements, enslavement, post-war reparations, aid foundations, international politics, or unchecked commercial practices. Usually the weaker, prey society is \"consumed\" by the predatory society, who will gain the members (sometimes as prisoners, slaves or as part of a brain-drain). There is some overlap here with Jumbling Ages, but one society is always clearly dominant in an age pf Predation.",
+		"Diegetic_Description": "A harsh and unforgiving era defined by the consumption of the weak by the strong. Society becomes predatory, thriving on the exploitation and absorption of its neighbors, leading to a consolidation of power where one culture expands by systematically dismantling and incorporating another.",
 		"Rules": "During an Age of Predation the society preys upon and consumes another, usually smaller or less technological society. Members of the smaller predated society may be able to move into the predatory society and those able to move will often do so. Sometimes a prey society may manage to survive, or at least preserve some of their original culture within the new society."
 	}
 }

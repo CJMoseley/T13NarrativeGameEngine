@@ -21,6 +21,7 @@
 			"Plot": "The Inn Plot is about sins, dirty secrets and adult situations. There is always an air of adventure to the Inn, a temptation that can be a part of coming of age plots, and such like, but is more normally a part of a deeper awakening.",
 			"Side": "The side of a conflict marked by the Inn will have a good time during the plot, they may party, dance, love, drink, eat and generally be merry, sure there may be drama, fights, even a duel or two, but they will survive and enjoy themselves anyway, usually.",
 			"Character": "The Inn Significator indicates a Character who revels in the joys of life.<p>They <strong>Gain Yin</strong> when they take pleasure in something. </p><p>They <strong>Gain Yang</strong> when they tempt others. </p><p>They <strong>Gain Chi</strong> when they enjoy something socially. </p><p>They also gain +1 Success Level on all passive defences.</p>",
+			"Diegetic_Character": "A convivial and life-loving individual, who finds joy in the pleasures of the senses and the company of others. They are masters of hospitality and temptation, often acting as the heart of any social gathering and possessing a natural resilience that comes from a well-lived life.",
 			"Scene": "The Inn Scene is usually a Character's first taste of a wider world. There are strange folk in the Inn, some look weird, some speak weird, some just are weird and a few want weird things. A Yarn-Teller can play the Inn Scene to secure themselves a place to stay, or play, or a chance to meet new people."
 		},
 		"Beat_Type": "5",
@@ -31,6 +32,7 @@
 		"Hook": "The Stranger Arrives",
 		"Hook_Description": "The Story opens with a stranger arriving in town. This person may be a Rival or an Embodiment, but more normally is some unknown Ally who brings the PCs some warning or message about a threat beyond the town.",
 		"Gain": "Dark Territory (a Twist riddled Location)",
+		"Diegetic_Gain": "A foothold in a dangerous and unpredictable territory—a place where the rules are different and the risks are high, but the rewards are equally great.",
 		"Fray": "Social Drinking",
 		"Fray_Description": "The Fray involves a complex social Ordeal, usually of Medium Stakes, although higher and lower Stakes versions are possible. There will be drinks, usually alcoholic, which may be replaced or augmented by other recreational drugs. This Fray is social and allows Characters to alter their social status with other Characters, earning respect, friendship or enmity as appropriate.",
 		"Snag": "Illegal or Immoral",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Decadence",
 		"Description": "An Age of Decadence is occurring. During this age society revels in immorality, iniquity, sinfulness and wrongdoing, rather than just the excesses of wealth. Although the wealthy will display impropriety too, extravagant debaucheries that rival those of an age of ostentation, for the underclasses of society there is just as much excess in some ways, but it often involves stronger or at least cheaper booze.",
+		"Diegetic_Description": "A time of moral decay and unbridled excess, where society turns away from virtue to indulge in every vice. It is an era defined by extravagant debauchery and widespread impropriety, as the pursuit of pleasure at any cost becomes the defining characteristic of the age.",
 		"Rules": "During the Age of Decadence most members of society will develop at least one additional Hitch that reflects the dark hobbies they are developing during the age."
 	}
 }

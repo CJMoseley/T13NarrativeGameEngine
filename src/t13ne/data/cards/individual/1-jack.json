@@ -21,6 +21,7 @@
 			"Plot": "The Teacher Plot seeks to educate and elucidate, sometimes teaching only one side, other times teaching all sides. The lesson may be through the use of metaphor or allegory, more often it is a little more direct. These Plots are based around facts and truisms, often of a religious or moral nature, occasionally of a scientific or spiritual one. The Teacher Plot is also about testing if the student is ready, and rites of passage in general will feature strongly in these tales. ",
 			"Side": "When one side is marked by the Teacher they are usually tasked with teaching a lesson to another side, often this may be a lesson about humility, but almost any lesson will do.",
 			"Character": "The Teacher Significator indicates a Character who is a teacher.<p>They <strong>Gain Yin</strong> when they ask a question or confirm an answer. </p><p><strong>Gain Yang</strong> when they explain, or answer a question. </p><p>They <strong>Gain Chi</strong> when they set tasks, or someone else asks a question.</p><p>They also gain +1 Success Level on any action to do with what they teach.</p>",
+			"Diegetic_Character": "A dedicated mentor and educator, possessing a wealth of knowledge and a passion for sharing it with others. They are patient and articulate, always seeking to enlighten and guide those willing to learn, while expecting diligence and respect in return.",
 			"Scene": "The Teacher Scene is nothing but a learning moment. A Yarn-Teller can use the card to teach another, or to learn themselves, information will be shared and retained."
 		},
 		"Beat_Type": "4",
@@ -31,6 +32,7 @@
 		"Hook": "Exposition",
 		"Hook_Description": "The Story opens with exposition, this may be \"incluing\" where hints about the world are scattered about the text, or more normally with this card, direct narration that describes the setting. This is usually exposition done by a figure of authority, such as a teacher or politician, reciting the information for the PCs and audience.",
 		"Gain": "Mentor Ally, Learning Descendant, Annex Training or Proficiencies",
+		"Diegetic_Gain": "The guidance of a wise mentor or access to a valuable source of instruction, providing the opportunity to master new skills and gain deeper understanding.",
 		"Fray": "Study",
 		"Fray_Description": "The Study Ordeal consists of studying, researching, experimentation, and perhaps learning. It might be a Teaching Moment in a classroom, a meticulously planned and executed heist, a science experiment or sitting the bar exam. It may even lead to a scientific discovery, or similar paradigm changing moment.",
 		"Snag": "Disruptive",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Teacher",
 		"Description": "An Age of a Teacher is occurring. During this age a teacher will be revealed within the society, this teacher may act as a leader, guiding the society towards some improvement or advancement, or more often they will train the next generation, inspiring rather than leading, sometimes to be a revolutionary force within the society. It should be noted though, that while the teacher has a profound impact, this is not necessarily and age of learning, and may be a rejection or reaction to the actual teachings.",
+		"Diegetic_Description": "A time of great instruction and intellectual growth, sparked by the emergence of a visionary teacher. This figure may lead society toward a new dawn or inspire the next generation to challenge old ways, leaving an indelible mark on the culture's development.",
 		"Rules": "A Character within the society will become a Mentor to either the whole society or to the youth of the society, that will encourage, lead, or inspire improvements, advancements and change in the society."
 	}
 }

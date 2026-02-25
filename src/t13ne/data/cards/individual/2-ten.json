@@ -21,6 +21,7 @@
 			"Plot": "The Jester Plot is also a comedy, although unlike the Joke, the Jester is more parody and satire of something else than a comedy in its own right. A Jester has things to say, about politics, about society, about the audience, where as the Joke just wants to make you laugh the Jester wants to make you laugh and think. The Jester doesn't just make a Pun at random, the Pun will fully reflect the situation at hand.",
 			"Side": " When a side is affected by a Jester they are marked out politically, perhaps they have the ear of the press, or the people directly, or perhaps they are an advisor to the crown, then again they may just be comedic relief.",
 			"Character": "The Jester Significator indicates a Character who pokes fun at their betters. <p>They <strong>Gain Yin</strong> when they mock or make jokes about their superiors, leaders or friends. </p><p>They <strong>Gain Yang</strong> when they defend someone, or distract an attacker with humour. </p><p>They <strong>Gain Chi</strong> when they mock or poke fun at some one of higher status than themselves.</p>",
+			"Diegetic_Character": "A sharp-witted satirist who delights in puncturing the egos of the powerful and the self-important. They use humor as a social equalizer, mocking authority and defending the downtrodden with a quick tongue and a keen eye for hypocrisy.",
 			"Scene": "The Jester Scene is intended for comic relief, rather like the Joke card. However, the Jester indicates the Scene will contain a Character who is Comic Relief rather than the Scene being comic. Yarn-Tellers can play the card to create a Comic-Relief Character (usually an Ally or Rival), who will help them, or hinder their enemies somehow."
 		},
 		"Beat_Type": "8",
@@ -31,6 +32,7 @@
 		"Hook": "Entrance",
 		"Hook_Description": "The Hook is literally an entrance. This usually refers to the sudden, dramatic appearance of a new or returning Embodiment, but it can also be an opening, door or any threshold, or cliff-edge moment. In Old Comedies the players would sing as they paraded in, setting up the story with the first song, in old serials they would show how the Cliff-Hanger ending of the last Chapter was resolved (often with a retcon).",
 		"Gain": "An unlikely, but powerful Ally (A Eusaivean with a Bulmäs best friend, a Knight with a Dragon steed, a cyborg with a pet Rust monster)",
+		"Diegetic_Gain": "A strong bond with an unexpected and powerful ally, whose unique nature and abilities provide a formidable advantage.",
 		"Fray": "Insult Tennis",
 		"Fray_Description": "Insult tennis is a Low-Medium Stakes Opposed Ordeal, the PCs and their foes or Rivals exchange insults, and cutting remarks. In effect the Tennis is a battle or duel fought to the first blood (although in this case first emotional outburst) with Psych attacks.",
 		"Snag": "Upside-Down",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Jest",
 		"Description": "An Age of Jest is occurring. During this age wits, humour and comedy are greatly valued within the society. While they generally do not become leaders themselves, comedians, clowns, jokers and jesters are accorded great fame and often some political power within the society in this age.",
+		"Diegetic_Description": "A time of laughter and wit, where the jester's tongue is as influential as the king's decree. Society embraces the absurd and the satirical, granting great renown and even political sway to those who can make the masses laugh and think.",
 		"Rules": "During an Age of Jest Stakes are usually limited to Medium at best, unless a weapon is drawn. However, comedy and humiliation can operate at Higher Stakes (including Soul Stakes) if the comedian wishes to humiliate and harm their target."
 	}
 }

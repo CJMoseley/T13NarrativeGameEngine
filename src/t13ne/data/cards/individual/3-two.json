@@ -21,6 +21,7 @@
 			"Plot": "The Eelafin Plot is a hybrid itself, combining other types of Plots together to create something unique. You can draw for the hybrids, or simply choose. You might make a Romance-Detective Plot, where the \"Who-dunnit\" is as important than the \"Will-They-Won't-They\". Or maybe throw in a Masked Vigilante, who is also a serial killer... ",
 			"Side": "When sides of a Conflict are influenced by the Eelafin, they are marked out as being a hybrid, in that they are a half-elf, or cyborg, or something similar, or a changeling, meaning that sometime during the Loom (or during the Zenith) they may change, and reveal, that they were not what was assumed, as a Below Embodiment might reveal they are actually a Prince from the Above side in hiding. Sometimes the changeling will be revealed as being a single Embodiment within a side, to the rest of that side, during the Frame. They are then trying to keep this information secret from the other sides for the rest of the Plot (until the Zenith Final Revelation ideally).",
 			"Character": "The Eelafin Significator indicates a Character who seems at odds with themselves. <p>They <strong>Gain Yin</strong> when they act fatalistic, pessimistic, or depressed. </p><p>They <strong>Gain Yang</strong> when they act optimistic, positive, or excited. </p><p>They <strong>Gain Chi</strong> when they day-dream, or deal with, or talk about, a situation as it really is. </p><p>They gain +1 Success Level to the separate actions when they perform two or more at a time (shoot two or three targets, shoot while somersaulting, etc).</p>",
+			"Diegetic_Character": "A conflicted individual, existing as a hybrid of two disparate natures. They oscillate between fatalism and optimism, often finding themselves caught between the mundane world and a dreamlike reality, excelling when they can harmonize their conflicting impulses.",
 			"Scene": "The Eelafin Scene is a Scene that straddles two worlds at the same time. This is not the same as a portal or threshold that joins two places with a liminal space. Here the Scene blends the two worlds together, like the recreation of your bedroom deep within the dream. Yarn-Tellers may play the card to create a Scene that blends the real world with another world (often a Quantum Alternate), perhaps in the form of a model, book, or piece of art or technology from that world."
 		},
 		"Beat_Type": "2",
@@ -31,6 +32,7 @@
 		"Hook": "Sensed",
 		"Hook_Description": "The Eelafin are known not just for their Doom-sense, but for their heightened senses in general. Perhaps a cry for help is heard, or a crime is witnessed by the Character to Hook them.",
 		"Gain": "Bloodline/Doom Descendant (some bloodlines and destinies grant extra Skills, Talents or even Powers, the Character discovers one of theirs)",
+		"Diegetic_Gain": "The discovery of a hidden legacy or a predestined path, unlocking dormant potential and a greater sense of purpose.",
 		"Fray": "Doom",
 		"Fray_Description": "A Doom is a profound, Chronolithed event, a predestination paradox, or an event that is part of history and should not be changed, they are always Paradoxical Stakes Ordeals. Dooms are sensed approaching by every Mercari, Eelafin, or Yarn-Teller present. While a Doom is influenced and affected by the cards played, it is only the Ordeal cards that define the final success of the Doom, be careful, you may find yourself on the wrong side of history.",
 		"Snag": "Hitches",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Jumbling",
 		"Description": "An Age of Jumbling is occurring. During this age the society encounters and merges with another society. This intermingling of societies causes both to grow and approach the other culturally. Societies often gain or swap proficiencies, technologies, artistic styles, words or grammatical peculiarities, as well as creating a new culture during this time.",
+		"Diegetic_Description": "A time of cultural convergence and mixing, where two societies meet and begin to merge into one. It is an era of exchange and adaptation, as new ideas, technologies, and artistic styles are shared, creating a vibrant—if sometimes chaotic—new cultural tapestry.",
 		"Rules": "During an Age of Jumbling a society blends itself with at least one other, essentially creating a new culture within the society, this new culture may later move to dominate the society, or may later be rejected by the spciety as a whole."
 	}
 }

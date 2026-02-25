@@ -21,6 +21,7 @@
 			"Plot": "The Shield Plot seeks to defend a position. The Plot may favour a particular Plot Resolution, and will seek to actively defend that position against the Characters. Such Plots can be frustrating, or exciting, depending upon the situation, and the Players actions and resolve. The Shield Plot usually protects the status-quo of the world, always seeking to return the normal balance to the local universe, but it can be overcome and great change brought about through that paradigm shift. ",
 			"Side": "When a side is marked by the Shield, they will act as the Guardians of the status-quo during the Plot. Trying to stop the Completion from occurring at all if possible, prolonging the Loom as long as they can, or favouring Rejection, Revelation, Reversion, and Revocation endings in that order.",
 			"Character": "The Shield Significator indicates a Character who acts to protect society, as well as individuals.<p>They <strong>Gain Yin</strong> when they defend the status-quo, or a weaker Character. </p><p><strong>Gain Yang</strong> when they attack an enemy of the state, criminal or traitor to their society. </p><p>They <strong>Gain Chi</strong> when they protect any group or pact which they are part of. </p><p>They gain +1 Success Levels to all active defences.</p>",
+			"Diegetic_Character": "A steadfast guardian and protector, dedicated to the safety of others and the preservation of order. They act as a bulwark against those who would do harm, finding their greatest strength in the defense of their community and the upholding of the law.",
 			"Scene": "The Shield Scene is usually used as a Weft, to protect or shield the Character from harm. It can be used as a Defence Ordeal, forcing the Character to defend themselves against some attack or accident. Yarn-Tellers usually play this card as an Aegis defence, protecting the target from all damage for the duration of the Scene, although they can try the target's defences too."
 		},
 		"Beat_Type": "5",
@@ -31,6 +32,7 @@
 		"Hook": "Tone-Setter",
 		"Hook_Description": "The Conflict Hooks the Character with a powerful, Tone setting Scene. The Tone should reflect the Dominant side of the Conflict, usually an under represented Facet on that side of the Conflict. This tone setting serves as a warning of what to expect later.",
 		"Gain": "A Defence Descendant (armour, gauntlets, shield, anti-virus software, insurance, etc)",
+		"Diegetic_Gain": "A robust means of protection—a set of sturdy armor, a reliable shield, or a sophisticated security system—that ensures safety against future threats.",
 		"Fray": "Raise Shields",
 		"Fray_Description": "This is total war, and during total war you do not go into battle without putting on armour, strapping on a shield, and raising your deflector fields. This is an Extreme Stakes Opposed Ordeal, where the PCs usually defend a position, vehicle or person that's under attack.",
 		"Snag": "Redoubt",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Protection",
 		"Description": "An Age of Protection is occurring. During this age the society acts to create a safe environment for itself, its members and its allies. Protective societies often include social outreach, charities for the poor and disadvantaged (at least members, sometimes allies), as well as socialised, and sometimes professional, military and health care (usually).",
+		"Diegetic_Description": "A time of security and collective care, where society prioritizes the protection and well-being of its members. It is an era of fortified defenses and social outreach, characterized by a shared commitment to building a safe and stable environment for all.",
 		"Rules": "During the Age of Protection the society attempts to protect itself, its members and its allies, often by building defences, obstacles, training guards or police etc."
 	}
 }

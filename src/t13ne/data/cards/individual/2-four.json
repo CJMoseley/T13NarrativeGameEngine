@@ -21,6 +21,7 @@
 			"Plot": "The Myth Plot is a plot that concerns enormous lies and/or ancient legends. The Plot usually utilises ancient stories and myths, but recast within the terms of the current Conflict. This might create a modern version of Arthurian Legend, or Robin Hood, or it might highlight the similarities between the perils of AI and Golems. There is often some aspect of the updated retelling that makes a lie of the original Myth, while retaining some Truth from it (AI is compared to Golems, Pygmalion, Brazen Heads, Talos, Homunculi and Frankenstein's Monster, but isn't really the same as any of them). ",
 			"Side": "A side marked with the Myth will either have some huge lie that they have to maintain, or will be a reference to some group from a myth or legend. They may not be Achilles, but they are strong with a hidden weakness, or they may not be Odysseus, but they do have to go on a long trek, and everyone thinks they are dead when they get back.",
 			"Character": "The Myth Significator indicates a Character who lies easily and fluently.<p>They <strong>Gain Yin</strong> when they bend the truth, or present it in a way that makes it unbelievable. </p><p>They <strong>Gain Yang</strong> when they lie, or \"embellish\" a story. </p><p>They <strong>Gain Chi</strong> when their (mostly) true stories are disbelieved, or their lies and embellishments are repeated as fact. </p><p>They also gain +1 Success Levels to all actions to do with belief, lies and myths.</p>",
+			"Diegetic_Character": "A natural storyteller and silver-tongued deceiver, who weaves lies as easily as others breathe. They thrive on the blurring of fact and fiction, finding success when their fabrications are accepted as truth or when their honest words are met with doubt.",
 			"Scene": "The Myth Scene concerns itself with Misconceptions, Fables and Legends. It may be a Scene where ancient lies are revealed, perhaps a fresh web of lies are woven, or there may be some connection or echo of some heroic tale. Yarn-Tellers may play the card to weave lies, create propaganda, illusions, or fake news to support their position, evoke Mythic themes, or examine deep themes of the Epic's or Cycle's Conflict."
 		},
 		"Beat_Type": "4",
@@ -31,6 +32,7 @@
 		"Hook": "Mistake",
 		"Hook_Description": "The story hooks the character with an apparent mistake. A misdelivered parcel, or message, or some other confusion. Often opens a comedy.",
 		"Gain": "A Lore Descendant (as part of a Revelation about themselves)",
+		"Diegetic_Gain": "A profound realization about one's own identity or past, revealing a hidden truth that has been obscured by legend or lies.",
 		"Fray": "Legend",
 		"Fray_Description": "The Fray concerns a Legend. Maybe the PCs need to solve an ancient mystery to find a legendary treasure, defeat a legendary Monster, find a legendary place, or otherwise achieve the apparently impossible.",
 		"Snag": "Fable",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Myth",
 		"Description": "An Age of Myth is occurring. During this age aspects of legend and the world&apos;s Mythic Cycle will shape the society during this age. This can include a shift of tone and genre, adding elements of horror, fantasy, science-fiction and folklore to any other genre. During an Age of Myth fantastical monsters and wizardly magic may appear, in Terminal Thirteen this often includes an F&aelig; incursion, Bulmäs migration, or some spiritual awakening.",
+		"Diegetic_Description": "A time of legends and wonder, where the boundaries between reality and folklore begin to dissolve. Ancient myths come to life, and society is reshaped by the return of magic, the appearance of fantastical creatures, and the realization that the old stories were truer than anyone dared believe.",
 		"Rules": "During the Age of Myth additional fantasy, horror and mythic tropes may be added to stories, a magical emergence will often occur, and Monsters are often more extreme and obvious."
 	}
 }

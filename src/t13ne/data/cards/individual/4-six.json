@@ -21,6 +21,7 @@
 			"Plot": "The Clock Plot is generally a plot with a time limit. Deadlines, time-limits, ticking bombing countdowns are common enough examples. Of course, a time limit alone isn't the only thing about a Clock Plot. Clock plots also have lots of moving parts, complex set pieces and multiple sides with many Characters. ",
 			"Side": "A side marked with the Clock has limited time to achieve their goals, or at least they feel the constraints of time during this Plot. It may indicate that the side is aged and need to recruit new Embodiments, that they are becoming desperate and forced to act during the Plot, or that the time of prophecy has come to pass, and they will now follow their plan to victory.",
 			"Character": "The Clock Significator indicates a Character who is regulated and unforgiving. <p>They <strong>Gain Yin</strong> when they hold a grudge, recall an event, or talk about the past. </p><p>They <strong>Gain Yang</strong> when they plan ahead, talk about the future, or make a schedule. </p><p>They <strong>Gain Chi</strong> when they are on time, living in the moment, or check the time. </p><p>They also gain +1 Success Level on any action to do with timing, punctuality or precision.</p>",
+			"Diegetic_Character": "A person of meticulous habits and unyielding discipline, who views the world through the lens of history and future planning. They value precision above all else, keeping strict schedules and never forgetting a slight or a debt, existing in a state of constant awareness of the passing moments.",
 			"Scene": "The Clock Scene is any Scene that time is important in. It may be a specific temporal event (such as the start of a world war, or a presidential assassination) or just a timed event (such as a race or sport), it can also be used to imply extra time (perhaps outside of normal time like Nevertime). A Yarn-Teller can play a Clock card to impose a time-limit or negate it. They might use it to create some free time to recover, or limit how long a target may be able to access their Lores or Descendants."
 		},
 		"Beat_Type": "6",
@@ -31,6 +32,7 @@
 		"Hook": "Countdown",
 		"Hook_Description": "The story hooks the character with a countdown situation. There is limited time until something major happens. How major will vary on the Stakes, with low stakes being responding to a school reunion RSVP, and High Stakes being ambulances racing through traffic to get to a accident scene.",
 		"Gain": "Time (some sense of an extension in a deadline or additional life to live)",
+		"Diegetic_Gain": "A precious reprieve or extension—extra time to finish a vital task, a delayed deadline, or even the gift of a longer life than previously expected.",
 		"Fray": "Clockwork",
 		"Fray_Description": "Precise, meticulous planning, preparation and timing is required for execution of clockwork, whether its building a clock, or robbing a bank, clockwork is a Complex Procedural and Motional Ordeal that can be of any Stakes. Timing is a natural part of the Clockwork Fray and you can model that with limited Phases per Stage.",
 		"Snag": "Time",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Urgency",
 		"Description": "An Age of Urgency is occurring. During this age a society seems to lose patience, everything becomes hurried, with members pressured by society to be swift or even hasty. This urgency throughout society can appear in the individual as boldness, excitement, enthusiasm, fervor, insistence, persistence, desperation, uneasiness, frustration, weariness or hesitency. Sometimes an Age of Urgency is brought on by a need to complete some endeavour or great work quickly, but more often it is a general acceleration of life creating a lack of patience in society. Human progress can largely be tied to the speed of travel and communications that we have achieved.",
+		"Diegetic_Description": "A frantic era defined by a collective loss of patience and a driving need for speed. Life accelerates to a breathless pace as society demands immediate results, leading to a culture of constant pressure where hesitation is seen as failure and every moment is weighted with the need for action.",
 		"Rules": "During an Age of Urgency all members of a society will gain Stress equal to how long their task will take as an Extend Duration as Yarn (e.g. any task that takes longer than a second will add at least 1 Stress, longer than a moment, but less than two hours will add 2 Stress. Taking on a year or two year long task will add 10 Stress, etc."
 	}
 }

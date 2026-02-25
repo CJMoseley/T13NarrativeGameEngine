@@ -21,6 +21,7 @@
 			"Plot": "The Loner Plot is unique and unconnected to other Plots and events. It is a one off, freak Plot, that may centre around an unusual individual (less often a small group).  The Character is usually socially awkward or even socio &mdash; or psychopathic in nature. Loner plots are light on Revelations, and almost always leave open questions behind them (such as what was that about? Who was that guy?). ",
 			"Side": "Sides of a plot marked by the Loner are not actually a side so much as a collection of individuals, they share no common goals, and may even be separate Sides effectively.",
 			"Character": "The Loner Significator indicates a Character who does not really enjoy the company of others.<p><strong>Gain Yin</strong> when you are alone. </p><p><strong>Gain Yang</strong> when you ignore others, or try to drive others away. </p><p><strong>Gain Chi</strong> when you move away from others, or they move away from you. </p><p>They also gain +1 Success Level when acting on their own, or without backup.</p>",
+			"Diegetic_Character": "A solitary figure who shuns the company of others, preferring their own counsel and the silence of isolation. They are fiercely independent, often driving others away for their own reasons and excelling when they have only themselves to rely on.",
 			"Scene": "The Loner Scene is about isolation. A Yarn-Teller may play it to isolate Characters from each other, to drive wedges between them, or to simply separate them for a time."
 		},
 		"Beat_Type": "8",
@@ -31,6 +32,7 @@
 		"Hook": "Help!",
 		"Hook_Description": "The Hook is a direct call to help from someone (usually at least a Cast Extra) known to the Character often an Ally or Friend. The person calling for help usually believes (typically with good reason) that only the Character will help.",
 		"Gain": "Riches (Talent Treasure Descendant)",
+		"Diegetic_Gain": "A sudden and significant windfall of wealth—a hidden treasure or a vast sum of money—that provides financial independence and the means to pursue one's own ends.",
 		"Fray": "Lone Wolf",
 		"Fray_Description": "A Complex Ordeal for a single Character (or small group), where as well as trying to get through enemy territory (and accomplish some goal beyond survival), the Character will also be fighting a spread out, but vastly numerically superior force. Individual enemies may be weaker or similar in power level to Lone Wolf Character. The fight may be limited to Medium Stakes in some cases (such as during training exercises, or in cultures where firearms and blades are unfashionable), but is usually High, or Extreme Stakes.",
 		"Snag": "Pyrrhic Victory",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Isolation",
 		"Description": "An Age of Isolation is occuring. During this age a society reduces connections with other societies, this may be an active choice to limit association, or this can be an ostrasization, where they are forced out of contact by an external factor. This insularity within a society will always have a deleterious effect, resulting in stagnation, contraction and occasionally collapse.",
+		"Diegetic_Description": "A time of withdrawal and closing borders, where society turns inward and severs its ties with the outside world. Whether by choice or by force, this isolation leads to a period of stagnation and decline as the flow of new ideas and trade withers away.",
 		"Rules": "Connections to other societies are lost, restricted or limited, usually caused by external factors such as criminal enterprises, larger politics, and geo-politcal events such as wars."
 	}
 }

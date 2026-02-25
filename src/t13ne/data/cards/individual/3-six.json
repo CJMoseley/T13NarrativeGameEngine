@@ -21,6 +21,7 @@
 			"Plot": "The Horde Plot is about numbers, usually big numbers, occasionally there may be literal mathematics involved, but more normally this is a tale with scores of Characters and plenty of sides. These are Epic plots usually that reflect society from top to bottom, and may span multiple kingdoms or worlds. The main weapon of the Horde Plot is the Sub-Plot, and you can expect additional Arcs and Stories galore, which each Character having at least an Arc of their own, that will interact at least once with one other Character's Story. ",
 			"Side": "When a side is marked by the Horde, they are legion, they can take Pact-Descendant Embodiments, even if they have none, but most of these Embodiments will be a suitable Archetype Character that meets as many of  the Embodiment criteria as possible.",
 			"Character": "The Horde Significator indicates a Character who is legion. They might be a hive mind, or a linear reincarnation with multi-life recall. <p>They <strong>Gain Yin</strong> when they focus on the bigger picture, ignore details, or act without thinking. </p><p>They <strong>Gain Yang</strong> when they react strongly to something they've seen or heard, or share information with others.</p><p>They <strong>Gain Chi</strong> when they work or attack with others. </p><p>They gain +1 Success Levels to all actions where they can use their Horde lives together (multiple bodies or information from past lives, etc).</p>",
+			"Diegetic_Character": "A figure who is never truly alone, existing as a collective or a recurring soul with memories of many lives. They move with the weight of numbers and the wisdom of the masses, finding strength in unity and possessing a presence that can overwhelm through sheer scale.",
 			"Scene": "The Horde Scene is a crowd scene. Crowd scenes are commonly used to invoke a sense of scale, huge crowds have a realism to them all of their own. Yarn-Tellers may play the card to create a large force, usually of allies, to arrive. This often results in an Ordeal, but the Horde can ride in like the Cavalry and lift a bad situation too."
 		},
 		"Beat_Type": "6",
@@ -31,6 +32,7 @@
 		"Hook": "Crowd Scene",
 		"Hook_Description": "The story opens with a crowd scene, perhaps a sporting event, concert, theatre performance or just a busy shopping district. This scene can be Tone setting, with musical leading the way, or brutal sports, or it could be just the setting for a sudden burst of action from a Fray.",
 		"Gain": "Membership (new Pack Descendant or Level of same)",
+		"Diegetic_Gain": "Accepted into a larger group or collective, gaining the protection and influence that comes with belonging to a powerful movement or pact.",
 		"Fray": "Stampede",
 		"Fray_Description": "This Ordeal is usually a high Stakes every one for themselves Motional Ordeal. Stampedes are often caused by another disaster, such as earthquakes, tsunamis, mudslides, floods, fires, and terrorists. The point is huge crowds become very dangerous when everyone starts running in the same direction. Architects design buildings to minimise these risks, but people get both inventive and stupid when the pressure is on.",
 		"Snag": "Numbers",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Congestion",
 		"Description": "An Age of Congestion is occurring. During this age a society swells in numbers, but not in territory, leading to overpopulation and complications for the society. This can appear similar to Inundation, however there are no external forces at play only internal pressures, which results in different problems and solutions.",
+		"Diegetic_Description": "A time of stifling growth and internal pressure, where the population of society outpaces its borders. It is an era of crowded streets and dwindling resources, where the lack of space breeds tension and forces the culture to look desperately for ways to expand its territory.",
 		"Rules": "During an Age of Congestion Characters competition for space is greater, this increases Stress for all members of the society based on the difference in the society Group Size versus the Location they occupy as Chi. E.g. a couple of Thousand people (26) require the space of a city block (26) to live comfortably, if they all try to live in a single large public building like a Museum (14) this would create 12 Stress each day for every member of the society. This Stress will often force the society to expand their territory (although this can lead to an Age of Inundation as they encounter exterior forces)."
 	}
 }

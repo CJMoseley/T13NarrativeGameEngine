@@ -21,6 +21,7 @@
 			"Plot": "The Scythe Plot is about everyday life and death. Death is a hum-drum event, it is constantly occurring all around us, this Plot shows us that, but often not through violence or pestilence. The Scythe is a Plot of small, everyday dramas, soap opera, ordinary lives stuff, but death is always a part of that Tapestry. Old people, the ill, the careless, the unlucky, the Scythe may take a swing at them all, and keeps swinging until someone dies. ",
 			"Side": "When a side is marked with the Scythe then one of the Embodiments is slated to die. It may be the event that kicks off the Conflict as an inciting event, or it may occur in the Zenith, but at least one Embodiment on that side must die.",
 			"Character": "The Scythe Significator indicates a Character that works hard and expects rewards.<p>They <strong>Gain Yin</strong> when they complain, grumble, or moan. </p><p>They <strong>Gain Yang</strong> when they do work. </p><p>They <strong>Gain Chi</strong> when they rest, or are paid after work. </p><p>They gain +1 Success Levels to any task when they complain about it.</p>",
+			"Diegetic_Character": "A hardworking and gritty individual, accustomed to the long hours and physical strain of manual labor. They take pride in their work and expect fair recompense for their toil, often expressing their fatigue through grumbles and complaints even as they push through to the end of the day.",
 			"Scene": "The Scythe Scene is an Ordeal or Test usually, that features hard work, or work-related injuries, although it can be a Gain in terms of a payment or reward that has been earned. Yarn-Tellers can play the card to injure or just make things harder for a target, or to perform an arduous task automatically such as gathering food, or as a payment such as a salary."
 		},
 		"Beat_Type": "6",
@@ -31,6 +32,7 @@
 		"Hook": "Reap What Was Sowed",
 		"Hook_Description": "The Story opens with a call back to something that happened in a previous Story. This story could be a spin-off from the original, or this could just be a reuse of a location, descendant or character.",
 		"Gain": "Personalised Tool (Trophy/Monolith)",
+		"Diegetic_Gain": "A specialized and well-maintained tool of the trade—a masterwork implement that has become an extension of one's own skill and a symbol of professional pride.",
 		"Fray": "Labour",
 		"Fray_Description": "Hard Work and Labour is usually an Extended Ordeal, there is not often opposition, but there may be a requirement for multiple people to work together, or at a pace. The Stakes are usually Low or Medium, but higher Stakes Labour exist (miners, lumberjacks and crab fisherman spring to mind as high or extreme Stakes labour). The point is this work is hard, sweaty, exhausting and will push the PCs to exhaustion.",
 		"Snag": "Scythes, Pitchforks and Torches",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Accumulation",
 		"Description": "An Age of Accumulation is occurring. During this age a society reaps the rewards of their hard work and planning. This is a time of production, resource gathering, and manufacturing success and generates wealth for the society, individual members get richer, financially and culturally and society improves as a result. The age cultivates new cultural, artistic, manufacturing, management, and educational trends within the society, bringing in new knowledge, resources, techniques, styles and sciences from other societies, which benefit the society greatly moving forwards. This accumulation of knowledge, wealth and power leads to firther innovations and gains that can be made before the age ends.",
+		"Diegetic_Description": "A time of abundance and harvest, where the steady efforts of the past bear fruit. Society enters a cycle of prosperity, accumulating wealth, knowledge, and resources that elevate the culture and provide a solid foundation for future growth and innovation.",
 		"Rules": "During an Age of Accumulation a society and the individual members make Gains, often of wealth, resources, technologies, knowledge and fashions that lead to further accumulations."
 	}
 }

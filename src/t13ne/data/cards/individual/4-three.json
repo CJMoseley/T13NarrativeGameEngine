@@ -21,6 +21,7 @@
 			"Plot": "The Key Plot is a plot to find something essential (the key to the Plot). Usually Key Plots are more often puzzle treasure hunts than combat filled infiltrations, but both are possible.",
 			"Side": "A side that is marked with the Key is somehow the key to the Conflict. They may have some power or ability that can solve the main issues, perhaps they are some lynch-pin of the Dominant or Pressed side's plans, or maybe they are just the problem.",
 			"Character": "The Key Significator indicates a Character who has a keen mind and nimble fingers. <p><strong>Gain Yin</strong> when they try to work on a puzzle or lock. </p><p>They <strong>Gain Yang</strong> when they use tools or gadgets. </p><p>They <strong>Gain Chi</strong> when they open a door, read an encoded message, or complete a puzzle. </p><p>They gain +1 Success Levels to all actions that require dexterity or curiosity.</p>",
+			"Diegetic_Character": "A sharp-eyed and dexterous individual, possessing a keen analytical mind and a natural talent for unraveling complexities. They find satisfaction in solving puzzles and overcoming barriers, whether physical or intellectual, and they are never more capable than when their curiosity is piqued.",
 			"Scene": "The Key Scene is the most important part of a Story. It may be the \"Inciting Event\" of the Frame, the \"Dark Night Of the Soul\" of the Loom, or the Finale of the Zenith. The Key can be any type of Scene (including a Hook), but defines what is important to to the Story within its single Scene. Yarn-Tellers may play the Key card to create any sort of Scene, however the Scene must be Key to targets involvement in the Plot. If the Yarn-Teller fails to invent a suitable Key Scene then the Target decides the nature of the Key."
 		},
 		"Beat_Type": "3",
@@ -31,6 +32,7 @@
 		"Hook": "The Key To The Kingdom",
 		"Hook_Description": "The Conflict Hooks the Character with a promise of an incredible treasure or power. Alternatively the Hook may be a literal key, perhaps to a Location that has come into the PCs possession.",
 		"Gain": "A Clue or Key to an Obstacle or Location",
+		"Diegetic_Gain": "A vital clue or a physical key that provides access to a previously unreachable area or solves a pressing mystery.",
 		"Fray": "The Lock",
 		"Fray_Description": "The Fray is about either opening or closing a lock. It may be a door, vault, safe, computer, chest or something more experimental that needs locking or unlocking. Usually you will require the correct key, password or codebook, or you will have to pick or solve the lock as a Puzzle. The Lock is usually a Solitary Low-Medium Stakes Ordeal, with at least one Obstacle, however storming a keep to drop the drawbridge and raise the portcullis would be a high or extreme Stakes Opposed Motional Ordeal.",
 		"Snag": "Crux",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Crux",
 		"Description": "An Age of Crux is occurring. During this age a society must make an important choice or decision, that will later appear as a tipping point in history (a crux event). Typically during this age a society will choose between one action and another (whether to side with neighbour A or neighbour B during the war), although action and inaction (whether to invade or not) choices also occur. While the society as a whole may feel this crux age upon them, it is often the choice of a single individual that defines and ends the age, although no decision is made in a total vacuum and the beliefs of the society around the individual will have a powerful part of that decision-making process.",
+		"Diegetic_Description": "A pivotal era of decision, where society stands at a historical crossroads. It is a time of intense deliberation and immense risk, where the collective choice between two divergent paths will forever alter the course of the future and define the character of the culture for generations to come.",
 		"Rules": "During an Age of Crux a single crucial decision (often important for a variety of reasons, most of which will not be obvious until after it is made) affects a whole of society, often an individual will make the crucial decision (usually a leader within the society), but decisions can be voted upon by the whole, or a section, of a society too. The decision that must be made during an Age of Crux is usually a Crux Event or Causal Nexus Event (see Events for details) with all members of the Society contributing Sway to creating and enforcing the event, adding Edges and Glows, etc."
 	}
 }
