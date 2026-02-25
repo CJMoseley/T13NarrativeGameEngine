@@ -663,24 +663,65 @@ class T13NECardsAPI {
         if (!card || !position) return '';
 
         const role = position.role || 'This card';
-        const description = position.description || '';
+        const baseDesc = position.description || '';
         const cardName = card.name;
-        const tarot = card.data.Tarot_Text || '';
-        const narrative = card.data.Narrative_Meaning || '';
 
-        // Build a sentence.
+        // Helper to find a value, preferring diegetic versions
+        const findValue = (key, diegeticKey) => {
+            const dKey = diegeticKey || `Diegetic_${key}`;
+            
+            // Search nested objects common in card data
+            const searchPaths = [
+                card.data,
+                card.data?.Yarn,
+                card.data?.Yarn?.Significator,
+                card.data?.Age
+            ];
+
+            for (const path of searchPaths) {
+                if (path && path[dKey]) return path[dKey];
+            }
+            // Fallback to non-diegetic
+            for (const path of searchPaths) {
+                if (path && path[key]) return path[key];
+            }
+            
+            return null;
+        };
+
         let interpretation = `${role} is represented by '${cardName}'.`;
-        if (description) {
-            interpretation += ` This position signifies: ${description}`;
-        }
-        if (tarot) {
-            interpretation += ` In cartomancy, this suggests themes of '${tarot}'.`;
-        }
-        if (narrative) {
-            interpretation += ` Narratively, it points towards '${narrative}'.`;
+        if (baseDesc) {
+            interpretation += ` This position signifies: ${baseDesc}`;
         }
 
-        return interpretation;
+        let specificText = null;
+        const roleLower = role.toLowerCase();
+
+        if (roleLower.includes('significator') || roleLower.includes('character')) {
+            specificText = findValue('Character', 'Diegetic_Character');
+        } else if (roleLower.includes('age')) {
+            specificText = findValue('Description', 'Diegetic_Description');
+        } else if (roleLower.includes('gain')) {
+            specificText = findValue('Gain', 'Diegetic_Gain');
+        } else if (roleLower.includes('hook')) {
+            specificText = findValue('Hook_Description');
+        } else if (roleLower.includes('fray')) {
+            specificText = findValue('Fray_Description');
+        } else if (roleLower.includes('snag')) {
+            specificText = findValue('Snag_Description');
+        }
+
+        if (specificText && typeof specificText === 'string') {
+            const cleanText = specificText.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+            interpretation += ` This suggests: ${cleanText}`;
+        } else {
+            const narrative = card.data?.Narrative_Meaning || '';
+            if (narrative) {
+                interpretation += ` Narratively, it points towards '${narrative}'.`;
+            }
+        }
+
+        return interpretation.trim();
     }
 
     /**
