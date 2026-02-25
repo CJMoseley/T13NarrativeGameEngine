@@ -52,7 +52,9 @@ class T13NE_Referee {
 
         // Generate Galactic Epic Vertical Slice for this generation
         const Epic = new GalacticEpic(this.t13ne.pluginManager);
-        await Epic.generateVerticalSlice(this.t13ne.getModule('PRNG').deriveSeed('epic', Date.now()));
+        const gameSeed = this.t13ne.getModule('Game')?.getActiveGame()?.seed || 'default-game-seed';
+        const sliceCount = Epic.getFullEpic().length;
+        await Epic.generateVerticalSlice(this.t13ne.getModule('PRNG').deriveSeed(gameSeed, 'epic', sliceCount));
 
         const ViewManager = this.t13ne.viewManager;
         const GameEngine = ViewManager?.gameEngine;

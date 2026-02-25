@@ -22,7 +22,7 @@ export class GalacticEpic {
         const CardsAPI = T13NE?.getModule('CardsAPI');
 
         let slice = {
-            id: `slice-${Date.now()}`,
+            id: `slice-${prng.nextInt(0, 1000000)}`,
             title: "A New Chapter",
             description: "A period of relative calm in the sector.",
             factionsInvolved: []
