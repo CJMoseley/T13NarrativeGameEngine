@@ -11,28 +11,30 @@ class CacheManager {
     }
 
     /**
+     * Returns the default empty cache state.
+     * @private
+     */
+    _getDefaultState() {
+        return {
+            systems: {},
+            planets: {},
+            ships: {},
+            characters: {},
+            epic: []
+        };
+    }
+
+    /**
      * Loads the cache from localStorage.
      * @private
      */
     _loadFromStorage() {
         try {
             const stored = localStorage.getItem(this.cacheKey);
-            return stored ? JSON.parse(stored) : {
-                systems: {},
-                planets: {},
-                ships: {},
-                characters: {},
-                epic: []
-            };
+            return stored ? JSON.parse(stored) : this._getDefaultState();
         } catch (e) {
             Logger.warn("CacheManager: Failed to load from localStorage. Starting with empty cache.");
-            return {
-                systems: {},
-                planets: {},
-                ships: {},
-                characters: {},
-                epic: []
-            };
+            return this._getDefaultState();
         }
     }
 
@@ -96,13 +98,7 @@ class CacheManager {
      * Clears the cache.
      */
     clear() {
-        this.data = {
-            systems: {},
-            planets: {},
-            ships: {},
-            characters: {},
-            epic: []
-        };
+        this.data = this._getDefaultState();
         this._saveToStorage();
     }
 }
