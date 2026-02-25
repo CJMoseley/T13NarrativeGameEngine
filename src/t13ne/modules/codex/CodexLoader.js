@@ -62,37 +62,8 @@ class CodexLoader {
     saveSuperKnot(obj) { return this.scribe.saveSuperKnot(obj); }
     loadSuperKnot(id) { return this.scribe.loadSuperKnot(id); }
     saveEntityToStore(entity) { return this.scribe.saveEntityToStore(entity); }
-
-    /**
-     * Procedural Caching Service
-     * Provides persistent storage for generated content.
-     */
-    async storeCache(category, id, content) {
-        const CodexDB = (await import('./CodexDB.js')).default;
-        const knotId = `cache:${category}:${id}`;
-        try {
-            await CodexDB.saveKnot({
-                id: knotId,
-                type: 'CacheEntry',
-                category,
-                content
-            });
-        } catch (e) {
-            console.error(`CodexLoader: Failed to store cache ${category}/${id}`, e);
-        }
-    }
-
-    async getCache(category, id) {
-        const CodexDB = (await import('./CodexDB.js')).default;
-        const knotId = `cache:${category}:${id}`;
-        try {
-            const knot = await CodexDB.getKnot(knotId);
-            return knot ? knot.content : null;
-        } catch (e) {
-            console.error(`CodexLoader: Failed to retrieve cache ${category}/${id}`, e);
-            return null;
-        }
-    }
+    storeCache(category, id, content) { return this.library.storeCache(category, id, content); }
+    getCache(category, id) { return this.library.getCache(category, id); }
 
     // Legacy internal method exposure if needed
     _buildFileIndex() { return this.library._buildFileIndex(); }

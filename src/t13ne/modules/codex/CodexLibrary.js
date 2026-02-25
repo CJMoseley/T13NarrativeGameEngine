@@ -256,6 +256,31 @@ export class CodexLibrary {
         const types = await this.getData('wounds', 'woundFreshTypes.json') || [];
         return { levels, types };
     }
+
+    async storeCache(category, id, content) {
+        const knotId = `cache:${category}:${id}`;
+        try {
+            await CodexDB.saveKnot({
+                id: knotId,
+                type: 'CacheEntry',
+                category,
+                content
+            });
+        } catch (e) {
+            console.error(`CodexLibrary: Failed to store cache ${category}/${id}`, e);
+        }
+    }
+
+    async getCache(category, id) {
+        const knotId = `cache:${category}:${id}`;
+        try {
+            const knot = await CodexDB.getKnot(knotId);
+            return knot ? knot.content : null;
+        } catch (e) {
+            console.error(`CodexLibrary: Failed to retrieve cache ${category}/${id}`, e);
+            return null;
+        }
+    }
 }
 
 
