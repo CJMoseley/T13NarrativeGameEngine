@@ -26,11 +26,7 @@ export class SystemLoreGenerator {
         let { n1, n2, n3, n4 } = noiseValues;
 
         // Normalize noise values to [0, 1]
-        n1 = Math.abs(n1) % 1;
-        n2 = Math.abs(n2) % 1;
-        n3 = Math.abs(n3) % 1;
-        n4 = Math.abs(n4) % 1;
-
+        n1 = 
         // 1. Species Determination
         Logger.message(`${funcName}: Step 1 - Species Determination`);
         let primarySpeciesKey = this.speciesGenerator.determineSpecies(star, noiseValues, galaxyParams);

@@ -26,7 +26,7 @@ export class PlanetarySystemGenerator {
         const planets = [];
         // Ensure seeds exist to prevent crash if systemData is incomplete
         if (!systemData.seeds || !Array.isArray(systemData.seeds)) {
-            Logger.error(`${funcName}: systemData.seeds is missing or invalid. Cannot generate planets deterministically.`);
+            Logger.error(`${funcName}: systemData.seeds is missing or invalid (${typeof systemData.seeds}). Value: ${JSON.stringify(systemData.seeds)}. Keys: ${Object.keys(systemData).join(', ')}`);
             return [];
         }
         const seeds = systemData.seeds;

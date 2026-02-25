@@ -49,10 +49,10 @@ export class SystemGenerator {
         }
 
         // Normalize noise values to [0, 1] to prevent negative indices or out-of-bounds errors
-        n1 = Math.abs(n1) % 1;
-        n2 = Math.abs(n2) % 1;
-        n3 = Math.abs(n3) % 1;
-        n4 = Math.abs(n4) % 1;
+        n1 = (Number.isFinite(n1) ? Math.abs(n1) : 0.5) % 1;
+        n2 = (Number.isFinite(n2) ? Math.abs(n2) : 0.5) % 1;
+        n3 = (Number.isFinite(n3) ? Math.abs(n3) : 0.5) % 1;
+        n4 = (Number.isFinite(n4) ? Math.abs(n4) : 0.5) % 1;
 
         const safeNoise = { n1, n2, n3, n4 };
 
@@ -235,6 +235,14 @@ export class SystemGenerator {
             eventDescription += `History remembers this system for its era of ${cleanAge.toLowerCase()}. ${historicalEvent.description}`;
         }
 
+        // Calculate numPlanets and homeWorldIndex early so they are available for quick mode
+        let numPlanets = galaxyParams.numPlanets;
+        if (numPlanets === undefined || !Number.isFinite(numPlanets)) {
+            // Generate 1-12 planets based on noise if not specified
+            numPlanets = Math.floor(n1 * 12) + 1;
+        }
+        const homeWorldIndex = Math.floor(n2 * numPlanets);
+
         if (options.quick) {
             Logger.message(`SystemGenerator: Quick mode active for star ${star.id}, skipping detailed generation.`);
             return {
@@ -242,7 +250,10 @@ export class SystemGenerator {
                 speciesCore: speciesLore,
                 commonName: speciesLore.commonName,
                 name: star.name || "Scanning...",
-                description: "System details pending full scan."
+                description: "System details pending full scan.",
+                seeds: [n1, n2, n3, n4],
+                numPlanets: numPlanets,
+                homeWorldIndex: homeWorldIndex
             };
         }
 
@@ -323,13 +334,6 @@ export class SystemGenerator {
         }
 
         // Generate the main system description, now focusing on high-level details.
-        let numPlanets = galaxyParams.numPlanets;
-        if (numPlanets === undefined) {
-            // Generate 1-12 planets based on noise if not specified
-            numPlanets = Math.floor(n1 * 12) + 1;
-        }
-        const homeWorldIndex = Math.floor(n2 * numPlanets);
-
         let description = this.generateSystemDescription(star, numPlanets, speciesLore, secondarySpeciesLore, eventDescription, corporatePresence, isRelicSystem);
 
         // Force syllabic generation more often to avoid repetitive list names
