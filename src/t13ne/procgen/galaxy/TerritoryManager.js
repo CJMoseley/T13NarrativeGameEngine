@@ -7,6 +7,13 @@ import Logger from '/src/t13ne/core/Logger.js';
  */
 export class TerritoryManager {
     constructor() {
+        this.reset();
+    }
+
+    /**
+     * Resets the territory layers to their default state.
+     */
+    reset() {
         this.layers = {
             POLITICAL: [],
             CORPORATE: [],

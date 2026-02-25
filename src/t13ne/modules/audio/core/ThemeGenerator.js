@@ -552,7 +552,14 @@ export class ThemeGenerator {
             'snare': 'Drum_Snare',
             'hat': 'Drum_HiHat_Closed',
             'perc': 'Drum_Cowbell',
-            'bass': rng.pick(['Bass_Sub808', 'Bass_Reese', 'Bass_Moog', 'Bass_Acid', 'Bass_Pluck', 'Synth_Bass']),
+            'bass': (() => {
+                // Pick a random bass style if no samples available
+                const basses = ['Bass_Sub808', 'Bass_Reese', 'Bass_Moog', 'Bass_Acid', 'Bass_Pluck', 'Synth_Bass'];
+                // Use seed to pick consistently for the same character
+                let hash = 0;
+                for (let i = 0; i < seed.length; i++) hash = ((hash << 5) - hash) + seed.charCodeAt(i);
+                return basses[Math.abs(hash) % basses.length];
+            })(),
             'lead': 'Synth_Lead',
             'pad': 'Synth_Pad',
             'rhythm': 'Piano'

@@ -3,7 +3,7 @@ import ProcGen from '../ProcGen.js';
 import Logger from '/src/t13ne/core/Logger.js';
 import { ColourUtils } from '/src/t13ne/utils/ColourUtils.js';
 import { Galaxy } from '/src/t13ne/procgen/galaxy/Galaxy.js';
-import CacheManager from '/src/t13ne/core/CacheManager.js';
+import CodexLoader from '/src/t13ne/modules/codex/CodexLoader.js';
 
 export class GalaxyGenerator {
   constructor(loreMaster, params = {}) {
@@ -53,7 +53,7 @@ export class GalaxyGenerator {
     }
 
     const systemId = `${Math.round(star.x)},${Math.round(star.y)},${Math.round(star.z)}`;
-    const cachedSystem = CacheManager.get('systems', systemId);
+    const cachedSystem = await CodexLoader.getCache('systems', systemId);
     if (cachedSystem && !options.force) {
       Logger.message(`GalaxyGenerator: Returning cached system for ${systemId}`);
       return cachedSystem;
@@ -120,7 +120,7 @@ export class GalaxyGenerator {
       seeds: seeds
     };
 
-    CacheManager.store('systems', systemId, result);
+    await CodexLoader.storeCache('systems', systemId, result);
     return result;
   }
 }
