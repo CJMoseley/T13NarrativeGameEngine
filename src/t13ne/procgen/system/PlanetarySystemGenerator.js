@@ -3,7 +3,7 @@ import ProcGen from '/src/t13ne/procgen/ProcGen.js';
 import Logger from '/src/t13ne/core/Logger.js';
 import { ResourceFactory } from '/src/t13ne/procgen/lore/factories/ResourceFactory.js';
 import { PlanetGenerator } from '/src/t13ne/procgen/system/PlanetGenerator.js';
-import CacheManager from '/src/t13ne/core/CacheManager.js';
+import CodexLoader from '/src/t13ne/modules/codex/CodexLoader.js';
 
 export class PlanetarySystemGenerator {
     constructor(pluginManager, nameGenerator, speciesGenerator) {
@@ -24,7 +24,7 @@ export class PlanetarySystemGenerator {
         }
 
         const systemId = systemData.coords || `${Math.round(systemData.star?.x)},${Math.round(systemData.star?.y)},${Math.round(systemData.star?.z)}`;
-        const cachedPlanets = CacheManager.get('planets', systemId);
+        const cachedPlanets = await CodexLoader.getCache('planets', systemId);
         if (cachedPlanets) {
             Logger.message(`${funcName}: Returning cached planets for ${systemId}`);
             return cachedPlanets;
@@ -378,7 +378,7 @@ export class PlanetarySystemGenerator {
         }
 
         Logger.end(funcName, `Generated ${planets.length} planets.`);
-        CacheManager.store('planets', systemId, planets);
+        await CodexLoader.storeCache('planets', systemId, planets);
         return planets;
     }
 

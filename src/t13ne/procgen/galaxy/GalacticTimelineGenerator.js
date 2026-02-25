@@ -23,12 +23,8 @@ export class GalacticTimelineGenerator {
         Logger.start(funcName);
 
         // Reset Territory Manager for new generation
-        TerritoryManager.layers = {
-            POLITICAL: [],
-            CORPORATE: [],
-            ECONOMIC: [],
-            RACING: []
-        };
+        TerritoryManager.reset();
+
         const params = await this._loadParams();
 
         // Load Sway Events

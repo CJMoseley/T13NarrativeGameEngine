@@ -17,7 +17,7 @@ import { ShipAssembler } from '/src/t13ne/core/ship/ShipAssembler.js';
 import { COMPONENT_COLORS } from '/src/t13ne/core/ship/ShipUtils.js';
 import { WorkerPool } from '/src/t13ne/core/WorkerPool.js';
 import { GalacticHistory } from '/src/t13ne/procgen/galaxy/GalacticHistory.js';
-import CacheManager from '/src/t13ne/core/CacheManager.js';
+import CodexLoader from '/src/t13ne/modules/codex/CodexLoader.js';
 import TerritoryManager from '/src/t13ne/procgen/galaxy/TerritoryManager.js';
 
 export { COMPONENT_COLORS };
@@ -76,7 +76,7 @@ export class ShipFactory {
      * @returns {Array<object>} List of component definitions ready for generation.
      */
     async createRandomShip(seed, config = {}) {
-        const cachedShip = CacheManager.get('ships', seed);
+        const cachedShip = await CodexLoader.getCache('ships', seed);
         if (cachedShip && !config.force) {
             console.log(`ShipFactory: Returning cached ship for seed ${seed}`);
             return cachedShip;
@@ -108,7 +108,7 @@ export class ShipFactory {
         }
 
         if (components) {
-            CacheManager.store('ships', seed, components);
+            await CodexLoader.storeCache('ships', seed, components);
         }
         return components;
     }

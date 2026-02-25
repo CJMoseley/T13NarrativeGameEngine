@@ -1,5 +1,5 @@
 import Logger from '/src/t13ne/core/Logger.js';
-import CacheManager from '/src/t13ne/core/CacheManager.js';
+import CodexLoader from '/src/t13ne/modules/codex/CodexLoader.js';
 import ProcGen from '/src/t13ne/procgen/ProcGen.js';
 
 /**
@@ -45,7 +45,10 @@ export class GalacticEpic {
             }
         }
 
-        CacheManager.addEpicSlice(slice);
+        const epic = await this.getFullEpic();
+        epic.push(slice);
+        await CodexLoader.storeCache('global', 'epic', epic);
+
         Logger.message(`GalacticEpic: Slice '${slice.title}' added to the persistent Epic.`);
         return slice;
     }
@@ -53,8 +56,9 @@ export class GalacticEpic {
     /**
      * Returns the full Epic.
      */
-    getFullEpic() {
-        return CacheManager.getEpic();
+    async getFullEpic() {
+        const epic = await CodexLoader.getCache('global', 'epic');
+        return epic || [];
     }
 }
 

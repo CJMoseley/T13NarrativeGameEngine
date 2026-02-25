@@ -2,7 +2,7 @@ import { GalacticTimelineGenerator } from '/src/t13ne/procgen/galaxy/GalacticTim
 import { LoreData } from '/src/t13ne/procgen/lore/LoreData.js';
 import Logger from '/src/t13ne/core/Logger.js';
 import TerritoryManager from '/src/t13ne/procgen/galaxy/TerritoryManager.js';
-import CacheManager from '/src/t13ne/core/CacheManager.js';
+import CodexLoader from '/src/t13ne/modules/codex/CodexLoader.js';
 
 /**
  * Manages the galactic timeline and historical events.
@@ -30,7 +30,7 @@ class GalacticHistoryManager {
             throw new Error("Cannot generate galactic history because LoreData failed to load.");
         }
         try {
-            const cachedHistory = CacheManager.get('systems', 'galactic_history_' + this.seed);
+            const cachedHistory = await CodexLoader.getCache('systems', 'galactic_history_' + this.seed);
             if (cachedHistory) {
                 this._timeline = cachedHistory.timeline;
                 this._corporations = cachedHistory.corporations;
@@ -50,7 +50,7 @@ class GalacticHistoryManager {
             this._activeSpecies = history.activeSpecies;
             this._isLoaded = true;
 
-            CacheManager.store('systems', 'galactic_history_' + this.seed, {
+            await CacheManager.store('systems', 'galactic_history_' + this.seed, {
                 timeline: this._timeline,
                 corporations: this._corporations,
                 activeSpecies: this._activeSpecies,

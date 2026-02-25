@@ -1,7 +1,7 @@
 import { LoreData } from '../LoreData.js';
 import { NameGenerator } from './NameGenerator.js';
 import Logger from '../../../core/Logger.js';
-import CacheManager from '../../../core/CacheManager.js';
+import CodexLoader from '../../../modules/codex/CodexLoader.js';
 
 class Descendant {
     constructor(data) {
@@ -42,7 +42,7 @@ export class CharacterGenerator {
     async generateCharacter(model, options = {}) {
         const characterId = options.seed !== undefined ? `${model}_${options.seed}` : null;
         if (characterId) {
-            const cachedCharacter = CacheManager.get('characters', characterId);
+            const cachedCharacter = await CodexLoader.getCache('characters', characterId);
             if (cachedCharacter && !options.force) {
                 Logger.message(`CharacterGenerator: Returning cached character for ${characterId}`);
                 return cachedCharacter;
@@ -69,7 +69,7 @@ export class CharacterGenerator {
             }
 
             if (character && characterId) {
-                CacheManager.store('characters', characterId, character);
+                await CodexLoader.storeCache('characters', characterId, character);
             }
             return character;
         } catch (error) {
