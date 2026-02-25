@@ -11,5 +11,3 @@
 "Spirit of Fire" (https://skfb.ly/oUEDp) by gavinpgamer1 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 "Minecraft rig" (https://skfb.ly/6XK7n) by RunningBoy106 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 "Minecraft Player Wide (Rigged with outer layer)" (https://skfb.ly/oV79n) by DunneWortel is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
-"8 Low Poly Asteroids" (https://skfb.ly/osIzW) by Everios96 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
-"Asteroid Field (100 x low-Poly)" (https://skfb.ly/oQG7N) by Sereib is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
