@@ -21,6 +21,7 @@
 			"Plot": "The Crystal Plot is about changing circumstances and fortunes. It may appear like a Rags-To-Riches story, but there is more emphasis on realising that money is essentially worthless, and that human connections are more important than money. ",
 			"Side": "A side marked with the Crystal is getting richer off the events of the Plot, somehow they are making bank off the Conflict, this might be through taxes, sales, services provided or because off a Robin Hood style vigilante, depending upon the genre and era.",
 			"Character": "The Crystal Significator indicates a Character who so rich that money has no meaning to them. <p>They <strong>Gain Yin</strong> when they listen to another talk. </p><p>They <strong>Gain Yang</strong> when they give advice, aid or time to another. </p><p>They <strong>Gain Chi</strong> when they give Chi or Descendants to other Characters. </p><p>They gain +1 Success Level on all Purchase or summoning Tests and Ordeal actions.</p>",
+			"Diegetic_Character": "An individual of immense wealth and influence, for whom material concerns are a thing of the past. They possess the luxury of time and the means to be truly philanthropic, often acting as a patron or benefactor to those they find worthy of their attention.",
 			"Scene": "The Crystal Scene is a point where a great gain is made by the Characters. This may be the final reward, or it may be the McGuffin or some other important Plot Device, it can even be a Revelation of exactly what the Characters need to do to win. Yarn-Tellers may play this card for either a specific Gain (such as \"The Grail is mine!\"), or a Specific Revelation (such as \"I need to know, how do I kill <em>this</em> immortal?\"."
 		},
 		"Beat_Type": "7",
@@ -31,6 +32,7 @@
 		"Hook": "Payment",
 		"Hook_Description": "The Story hooks the by offering to pay them. It could be that this plot is part of their normal job, the next case, or delivery, or it might be that they are specifically offered money to look into (or perhaps turn a blind eye to) something.",
 		"Gain": "Treasure Descendant",
+		"Diegetic_Gain": "A legendary treasure or a rare and valuable artifact, gleaming with an inner light and representing a significant increase in one's fortunes.",
 		"Fray": "Crystal Ball",
 		"Fray_Description": "The Fray is an attempt to spy upon the enemy, or predict the future somehow, this may involve a trip to a fortune-teller, or running simulations, or use of Wyrd or Yarn abilities. Regardless of method, the fray consists of trying to create a Chronolith of a suitable size to fix a point in the future, or observe the past, or the enemy's current position. This is normally done with a Solitary or Opposed Ordeal of Paradoxical Stakes.",
 		"Snag": "Flawed",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Ostentation",
 		"Description": "An Age of Ostentation is occurring. During this age a society becomes obsessed with demonstrations of wealth, power, bravado, pagentry and general excess. The society is rich, but is not humble, spectacles, splendor and splurges are the fashion of the day, as the society swaggers around flaunting its own magnificence. Usually this age is as a result of previous economic success, with little done during the age to prepare for future hard times, the fashionable baubles purchased at great expense now, will be worth nothing when the collapse comes.",
+		"Diegetic_Description": "A time of grand displays and excessive splendor, where society is consumed by the desire to flaunt its wealth and power. It is an era of lavish pageantry and magnificent spectacles, characterized by a bold—if perhaps short-sighted—confidence in its own enduring prosperity.",
 		"Rules": "During an Age of Ostentation a society fritters away the wealth it has previously created on fashions, parades, excessive and often questionable celebrations, rather than saving that wealth for leaner times, or reinvesting it to secure the future (although some within the society may do this and be rewarded later for their forward thinking)."
 	}
 }

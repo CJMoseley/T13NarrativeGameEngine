@@ -21,6 +21,7 @@
 			"Plot": "The F&aelig;ry Noble Plot is a tale of imagination and fantasy. Any fantasy so fantastic that it may be a dream, is suitable for the F&aelig;ry Noble. Madness and magic are common themes and you can expect reality warping Yarn-Telling as a common thread. Often these Fantasy events are tied to some idea of prophecy, karma or destiny. ",
 			"Side": "A side of a conflict marked by the F&aelig;ry Noble are sometimes actually Fae, or time-travellers, trying to keep destiny or history on track.",
 			"Character": "The F&aelig;ry Noble Significator indicates a powerful, capricious Character. <p>They <strong>Gain Yin</strong> by changing their mind. </p><p>They <strong>Gain Yang</strong> by using their Annexes. </p><p>They <strong>Gain Chi</strong> by utilizing deeper structures than logic, or linear time, which can appear as acting crazy to normal people.</p><p>They gain +1 Success Levels when Stakes are Paradoxical.</p>",
+			"Diegetic_Character": "A figure of immense and unearthly power, possessing a temperament as capricious as it is ancient. They operate on principles that defy conventional logic or linear time, often appearing erratic or even mad to those bound by mortal constraints, while pursuing agendas that span dimensions.",
 			"Scene": "The F&aelig;ry Noble Scene is one where the world is inverted, tipped upside down, or otherwise reordered. Trivial Events are magnified in importance and important events rendered pointless. F&aelig;ry Nobles always seem to appear near great events (although are oddly focused on something else entirely). Yarn-Tellers may play the card to evoke magical, reality altering powers, travel to inner realms, dreams, or other worlds, or use it to summon time-travelling hyper-dimensional beings without human weaknesses like feelings or conscience (if you want)."
 		},
 		"Beat_Type": "9",
@@ -31,6 +32,7 @@
 		"Hook": "Danger",
 		"Hook_Description": "The Hook just consists of some enormous danger, it isn't looming, it isn't coming, it is right here, right now.",
 		"Gain": "Extremely Powerful Yarn-Teller Ally / Artefact Power Descendant",
+		"Diegetic_Gain": "The patronage of a powerful and mysterious entity or the acquisition of a legendary artifact that can reshape reality itself.",
 		"Fray": "Magic",
 		"Fray_Description": "Maybe there's a Ward, a Runic barrier, an Alchemical Seal, or some dark and sinister Psibertek involved, but magic is in the Fray, and the PCs better have a mage on their side. Magic can come in a lot of different flavours, spells and cantrips, glamours and illusions, necromancy, scrying, summoning, invocations and evocations. This is usually a Low to Paradoxical Opposed, Co-operative or occasionally Solitary Ordeal.",
 		"Snag": "Changeable",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Magic",
 		"Description": "An Age of Magic is occurring. During this age there is within a society some belief in magic. This is not necessarily a Mythic age that actually contains magic, although that can occur too, but more a rejection of materialistic mainstream knowledge, particuarly sciences. Magical thinking and beliefs may include fantastical or just misapplied mystical or scientific concepts, that can have positive and negative effects upon the society. Shared rituals, experiences and beliefs can draw a community closer together, but lead to irrational decision-making, social stagnation, and extremism.",
+		"Diegetic_Description": "A time of mysticism and the rejection of the mundane, where society embraces the arcane and the unknown. It is an era of shared rituals and deep-seated beliefs that defy scientific explanation, fostering a sense of collective wonder—and a dangerous descent into the irrational.",
 		"Rules": "Magical thinking and beliefs are accepted within the society, often causing a rejection of materialistic scientific beliefs and counter-evidence. Often accompanied by a profound change in the society, often with a shift towards more popularist and extremist politics."
 	}
 }

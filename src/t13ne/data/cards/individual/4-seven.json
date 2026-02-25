@@ -21,6 +21,7 @@
 			"Plot": "The Sword Plot is a War Story. It is a tale of attackers and assaults, tactics and defences.",
 			"Side": "The side marked by the Sword are aggressive, angry, often dangerous (interactions with them are all one Stake Higher than normal), and when possible on the war path. They will respond to conversation with threats, and to threats with violence, physical challenges will invoke weapons and armed combat.",
 			"Character": "The Sword Significator indicates a Character who is quick to attack and deadly with it. <p>They <strong>Gain Yin</strong> when they are in peril. </p><p>They <strong>Gain Yang</strong> when they prepare for action. </p><p>They <strong>Gain Chi</strong> when they attack another. </p><p>They also gain +1 Success Levels to all attacks they make.</p>",
+			"Diegetic_Character": "A character defined by aggression and lethality, always poised for conflict. They thrive in moments of peril and are most comfortable when either preparing for a strike or actively engaged in battle, carrying themselves with the dangerous air of a drawn blade.",
 			"Scene": "The Sword Scene is usually a fight or battle. An Opposed Ordeal at High or Extreme Stakes where lives are on the line. Although it can be used to Gain a Weapon Descendant, Military equipment of some sort, or an effective fighter Ally. Yarn-Tellers may play the Sword to inflict a military defeat, or injury on a target, or they may gain military equipment or allies."
 		},
 		"Beat_Type": "7",
@@ -31,6 +32,7 @@
 		"Hook": "Attack!",
 		"Hook_Description": "The Story hooks the character with a sudden attack. This attack should be connected (even if only peripherally) to the main Villain, so a trail of revenge would lead the PCs back. Of course, the attack on the PCs may not have been deliberate, but just be a domino chain of events.",
 		"Gain": "Lower a Hitch Boon by one or several Boons.",
+		"Diegetic_Gain": "A significant recovery or healing—the lifting of a burden, the mending of a long-standing injury, or the resolution of a persistent personal struggle.",
 		"Fray": "Battle",
 		"Fray_Description": "Battle is a massive, Extreme stakes Opposed Ordeal, where at least two armed forces exchange wounds. There will be deaths on both sides usually, or worse, enemies may come in waves, a steady stream, or may be separated by Stages.",
 		"Snag": "A Sword Raised",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "War",
 		"Description": "An Age of War is occurring. During this age a society engages in warfare with another society. Wars come in various types, from the chaotic and bloody, firey mess that is total war, to the relative paranoid quiet of a cold war, or anything in between. All wars contain battles, which are always bloody wastes of lives for both societies, although during cold wars often proxy societies will sacrifice the most, fighting direct, but proxy battles for their cold war allies.",
+		"Diegetic_Description": "A violent and transformative era where the drumbeats of conflict drown out all other concerns. Whether it is a slow, paranoid struggle or a swift, fiery conflagration, society is entirely reoriented toward the machinery of warfare and the harsh reality of strategic survival.",
 		"Rules": "During an Age of War a society is engaged in armed (and often armoured) comabt against at least one other society. Wars are complex strategic Ordeals that rely on logistics, intelligence, equipment ease of maintenance, long-term morale and discipline more than actual battlefield prowess."
 	}
 }

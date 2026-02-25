@@ -21,6 +21,7 @@
 			"Plot": "The Cloak Plot is usually a Spy or Superhero Story, like the Mask. Unlike the Mask, The Cloak is about secrets, and privileges, not dual identities, so while the Characters' secrets may be threatened, they do not have to live as another Side or person. Cloak Plots will usually kill Embodiments on all sides, but often new Embodiments will be recruited during the Plot",
 			"Side": "A Cloaked side may be better protected or privileged than normal, or they may be secretive, hidden from view, indeed they can be so cloaked their Embodiments may not obviously appear, like the DeeperShadows Side. When the Cloak marks the DeeperShadows the DeeperShadows may actually Embody and act, although they will suicide rather than reveal anything about themselves if captured (which would be very unlikely anyway).",
 			"Character": "The Cloak Significator indicates a Character who keeps their real self hidden. <p>They <strong>Gain Yin</strong> when they hide or avoid conversation. </p><p>They <strong>Gain Yang</strong> when they lie or tell a story. </p><p>They <strong>Gain Chi</strong> when they ignore their Persona. </p><p>They also gain +1 Success Level to any hide actions, or remaining hidden.</p>",
+			"Diegetic_Character": "A highly private and secretive individual, who carefully guards their true self from the world. They are master of staying out of the spotlight, preferring the safety of the shadows and the protection of a well-maintained facade, excelling when they are unseen and unheard.",
 			"Scene": "The Cloak Scene is any Scene where what actually happens is in some way hidden, or misleading. A Yarn-Teller may play the Cloak to hide themselves or others, granting them an ambush, escape or a rest, as required. The Cloak allows them to make secret actions with little chance of detection."
 		},
 		"Beat_Type": "5",
@@ -31,6 +32,7 @@
 		"Hook": "Cloaked Threat",
 		"Hook_Description": "The Hook tells the Character directly of some looming, but secretive danger, rumours of a new mob boss, prototype fighter with incredible stats, or any mysterious stranger or player.",
 		"Gain": "Secret Alliance (the creation of a secretive Pact Descendant)",
+		"Diegetic_Gain": "A secret pact with a hidden ally, forging a bond of mutual protection and shared goals that remains unknown to the outside world.",
 		"Fray": "Hide!",
 		"Fray_Description": "These Ordeals may involve hiding, or concealing something. The PCs may have to hide themselves from detection, or they may have to conceal something else, perhaps not letting the guards take the kid who just burst into the room and hid under the sofa. As such Hiding can be as much about bluffing as it is physical concealment, but is an Opposed Ordeal of almost any Stakes.",
 		"Snag": "No Witnesses",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Secrets",
 		"Description": "An Age of Secrets is occurring. During this age a society becomes secretive and self-protecting. A society in an age of secrets may make the society into a secret society, with membership never revealed beyond the society, but this is not guarranteed. Secrecy may protect the society from some external threat, or it may be intended to keep some secret, such as a source, technique or technology to maintain a monopoly. Historically the greatest example is probably the silk trade, which caused the nation of China to maintain an age of Secrets, protecting knowledge of the silk worm for around a millenium.",
+		"Diegetic_Description": "A time of shadows and silence, where society turns inward to protect its most valuable secrets. It is an era defined by a culture of discretion and self-preservation, where the most important truths are guarded by a veil of secrecy and the bonds of the community are strengthened by shared mysteries.",
 		"Rules": "Certain information within or about the society is protected by a veil of secrecy, how far the society will go to keep those secrets will vary with the secret and society, but most will consider killing more acceptable than dying to preserve a secret."
 	}
 }

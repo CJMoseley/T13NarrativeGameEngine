@@ -21,6 +21,7 @@
 			"Plot": "The Swamp Plot is about corruption and usually that means business and politics. It may be about crime, dirt, and sin in general, but usually this is a story of greed and power. Occasionally, a Swamp plot will actually be set in a real swamp, but more often it is just a Location, but is treated more like a Character, often fulfilling a Character Role such as love interest or rival. ",
 			"Side": "A side marked by The Swamp is marked as corrupted and degenerate some how. Sometimes they are in-bred cannibals, other times they are dirty cops, occasionally they can be redeemed.",
 			"Character": "The Swamp Significator indicates a Character who is corrupt, but powerful. <p>They <strong>Gain Yin</strong> when try to corrupt or tempt another. </p><p>They <strong>Gain Yang</strong> when they act selfishly or for themselves. </p><p>They <strong>Gain Chi</strong> when they demonstrate their power (use their Power or Super-Annex). </p><p>They also gain +1 Success Levels when they are performing immoral or illegal actions.</p>",
+			"Diegetic_Character": "A potent but morally compromised figure, whose influence is rooted in corruption and self-interest. They are masters of temptation and exploitation, thriving in environments of decay and finding their greatest strength when operating outside the bounds of traditional morality.",
 			"Scene": "The Swamp Scene is usually one of despair or malaise. Swamps when they literally appear are a struggle, at the best of times. Swamps can be beautiful places, but the light has to be just right... Yarn-Tellers may play the card to engage in a little light corruption, make a Gain, or slap an Ordeal replete with Festering Wounds on a Character."
 		},
 		"Beat_Type": "2",
@@ -31,6 +32,7 @@
 		"Hook": "What's That Smell?",
 		"Hook_Description": "The Story Hooks the Characters with a direct warning and a question, this is usually what's that smell? But it can be What's that noise, taste or weird light, just as easily. In any case the answer is usually a corpse, occasionally a Monster, and just occasionally a broken sewer.",
 		"Gain": "Dark Territory or Dark Matter Descendant",
+		"Diegetic_Gain": "Control over a desolate or corrupted region, or the acquisition of a substance that defies natural laws, providing a dark and dangerous source of power.",
 		"Fray": "Quagmire",
 		"Fray_Description": "A Quagmire is a sticky morass or corruption which the PCs find themselves engulfed by. Quagmires can be literal swamps, so called Quicksand, and so on, or more likely they can be sticky situations, economic quagmires are rising debts, negative equity and falling wages, political quagmires are usually the opposite, with money from all sorts of dubious sources flooding in, who only want small concessions and favours. Either way, the PCs will need to extricate themselves somehow.",
 		"Snag": "Unique Situation",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Corruption",
 		"Description": "An Age of Corruption is occurring. During this age society begins to break down, individual members of the society behave in their own self-interest, rather than the interest of their society. Corruption, extortion, exploitation, fraud, profiteering, racketeering, malfeasence and nepotism are the order of the day, often with a hint of social injustice and base criminality. A corrupt society does not serve its membership and they will often form new societies, abandonning their old, where they cannot fix the society&apos;s ills.",
+		"Diegetic_Description": "A dark era of decay and self-interest, where the foundations of society are eroded by greed and malpractice. Trust is a rare commodity as corruption and exploitation become the norm, leading to a fragmented culture where individuals look only to their own gain and the collective good is forgotten.",
 		"Rules": "During an Age of Corruption most members turn aside from the society, whether to exploit the other members, make a quick buck, or to excape the corruption within the society. This allows exploitation narratives and corruption stories to Embody within the society. Allowing an age of corruption to continue unchecked always has a negative effect upon the society, costing them membership to other nearby, and less corrupt societies, and often leading to a complete collapse."
 	}
 }

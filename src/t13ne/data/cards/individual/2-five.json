@@ -21,6 +21,7 @@
 			"Plot": "The Joke Plot is traditionally known as a Comedy. Comedies are usually built around a central misunderstanding, or confusion that creates the comedic situation. Classically these are cases of mistaken identity, suspected infidelity, misunderstandings, gossip and rumour. In more modern comedies, these components may be present along with satire, parody, witty banter, comedic insults, social awkwardness, and slapstick to create funny, farcical, or just cringe-worthy situations. ",
 			"Side": "A Side with The Joke Significator is usually comedic relief, and is often considered a joke by the other sides. In some genres, and under some Yarn-Tellers the Joke Side can always invoke the \"Rule of Funny\" to get by, survive or even succeed, depending upon how funny the Joke is...",
 			"Character": "The Joke Significator indicates a Character who is a comedian. <p>They <strong>Gain Yin</strong> when they act stupid or uncomprehending. </p><p>They <strong>Gain Yang</strong> when they tell jokes, or attempt humour. </p><p>They <strong>Gain Chi</strong> when anyone laughs. </p><p>They also gain +1 Success Levels on any Positive Psyche Attacks that they may attempt.</p>",
+			"Diegetic_Character": "A jovial and often irreverent individual, who views the world through a comedic lens. They are master of wit and humor, using laughter as both a shield and a weapon, and they possess a knack for finding the absurd in any situation.",
 			"Scene": "The Joke Scene is intended for a moment of comic relief, a reduction of tension with a silly situation. Although occasionally a Prank can heighten tensions rather than relieve them. Yarn-Tellers can play the card to create Pranks and Jokes, that will not impact the main Plot, if they wish, or they can impact the Plot <em>with</em> humour. Satirical lampooning of the Dominant force can act to reduce their control, etc."
 		},
 		"Beat_Type": "5",
@@ -31,7 +32,7 @@
 		"Hook": "Set up",
 		"Hook_Description": "The set up is the beginning of the joke, in a comedy this is usually a misunderstanding, in a shorter joke this is a question, somewhere in between it is a sentence or two that creates a narrative framework that misleads the audience. At its very simplest it is a cliché, such as a bunch of adventurers walk into a bar. Occasionally, it is a physical set up to a prank or stunt that will be important later. And every now and then it is a literal set up, with a situation created to put the PCs in the Narrative.",
 		"Gain": "Friends (a Group of 2-12 Vexes, or 2-6 Chorus Extras)",
-		"Diegetic_Gain": "The character makes new friends, forming a small but loyal group of companions.",
+		"Diegetic_Gain": "A gathering of new companions and allies, drawn together by shared laughter and a common sense of fun.",
 		"Fray": "Caper",
 		"Fray_Description": "Capers are usually Low to Medium Stakes (although Higher Stakes Capers are possible) where multiple deceptions, confusions and complex physical activities occur that are all connected to trying to achieve some goal, often a heist or con-game. Humour is usually part of a Caper, such as swapping priceless jewels for plastic kids jewellery, or million-dollar bonds for monopoly money. In a real criminal enterprise such frivolities would create additional leads for the police, during a Caper though they will just confound, bemuse and amuse.",
 		"Snag": "Shenanigans",
@@ -111,7 +112,7 @@
 	"Age": {
 		"Type": "Whimsy",
 		"Description": "An Age of Whimsy is occurring. During this age a society values play, sport, entertainment and escapism over industry or advancement. During an age of whimsy artists, musicians, sportsmen, actors, writers, and similar individuals are seen as social leaders and revolutionaries, and new artforms and styles will emerge during the age. Politics during this age is often more driven by character than by policy, which can lead to popularism and extremist politics arising to end the age.",
-		"Diegetic_Description": "An age of whimsy and play, where society values entertainment and escapism above all else. Artists and performers become cultural leaders.",
+		"Diegetic_Description": "A time of lightheartedness and creativity, where society prioritizes enjoyment and artistic expression over more somber pursuits. It is an era defined by the rise of entertainers and sports stars as cultural icons, and the emergence of vibrant new styles in art, music, and fashion.",
 		"Rules": "A period of cultural growth and diversity that creates new artforms, musical genres, styles and fashions. The Age will often end with some reactionary event or social force."
 	}
 }

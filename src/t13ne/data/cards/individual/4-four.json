@@ -21,6 +21,7 @@
 			"Plot": "The Tower Plot is one that builds up piece by piece. Such a Plot doesn't begin as a Cycle or Epic, it starts small, with a Single Story. The Plot will return, each time promoted, over and over until it dominates the whole Story. Such Plots reflect the emergence of new cultures, new technologies and new societies, it is also useful in world-building as each Story builds upon the last occurrence until the new world is defined. ",
 			"Side": "When a side is marked with the Tower then they are in a period of construction, getting more powerful and preparing for something beyond this immediate conflict, perhaps a later or larger Plot that needs foreshadowing. Their Embodiments are usually less engaged in the Plot (unless Dominant) than normal because of this work.",
 			"Character": "The Tower Significator indicates a Character who is a prominent figure of their society. <p>They <strong>Gain Yin</strong> when they speak calmly, suggest an alternative option, or prioritize problems. </p><p>They <strong>Gain Yang</strong> when they keep silent, agree with another or organize assistance.</p><p><strong>Gain Chi</strong> when they demonstrate physical prowess. </p><p>They gain +1 Success Levels when they perform physical actions (firing a gun doesn't count).</p>",
+			"Diegetic_Character": "A prominent and respected figure within their society, possessing a calm and measured demeanor. They are natural organizers and problem-solvers, valuing consensus and physical excellence, and they carry themselves with the steady confidence of a pillar of the community.",
 			"Scene": "The Tower Scene usually represents a Construction or Research Ordeal, often about or to \"purchase\" a Location. It can also create a Force-of-Nature Extra, as an Earthquake or Storm to attack a building. Yarn-Tellers can play the Tower to Gain (or build) a Location, research a topic, or observe a Location, or perhaps unleash a Storm or Earthquake."
 		},
 		"Beat_Type": "4",
@@ -31,6 +32,7 @@
 		"Hook": "Lookout",
 		"Hook_Description": "The Story opens with a Lookout or Scout bringing news, of an impending threat, this might be \"Land Ho!\", or \"Smoke!\" or \"Three Thousand Orcs and Ogres are marching South along the King's road. They will be here in two days, maybe less.\" or the PCs themselves may be the one's to see the threat, and have to raise the alarm.",
 		"Gain": "Location (often Real Estate or a Province where appropriate)",
+		"Diegetic_Gain": "The acquisition of a significant location—a piece of land, a sturdy building, or a new territory—that provides a permanent foundation and a base of operations.",
 		"Fray": "Tower Struck By Lightning",
 		"Fray_Description": "A terrible, traumatic, life changing, paradigm shifting event. Usually a disaster of this magnitude is a Force of Nature Extra (at least), in an Ordeal that has High-Paradoxical Stakes. It is common for new Hitches to result from this Fray, ideally that will deepen the hooks of the Conflict in the PCs, perhaps even causing them to internalise the actual Conflict within themselves.",
 		"Snag": "Hold!",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Expansion",
 		"Description": "An Age of Expansion is occurring. During this age a society will seek out new territories and locations, and construct and build upon this new land they have acquired. Societies in this age will often build an impressive building or buildings that will become historically significant with time, such as churches, cathedrals, tithe barns, exchanges and official market buildings, banks, palaces, henges, castles, citadels, town walls, town halls, public baths, court buildings, etc.",
+		"Diegetic_Description": "A dynamic era of growth and building, where society reaches out to claim new lands and establish its presence. It is a time of grand construction projects and the founding of new settlements, as the culture expands its reach and leaves a lasting mark on the landscape through its impressive architecture.",
 		"Rules": "During an Age of Expansion a society and the individual members will undertake various Ordeals to capture, colonise, explore, find, gain, purchase or rent a new location, and convert that location to their purposes, often by constructing infrastructure and buildings in the new Location. Such a society-wide Ordeal is similar to an Age of Endeavour, where the society works for a common goal, in this case the common goal is less common to all members of the society, but the society will benefit from the expansion as a whole."
 	}
 }

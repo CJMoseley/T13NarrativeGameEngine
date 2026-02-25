@@ -21,6 +21,7 @@
 			"Plot": "The Rival Plot is a plot that focuses upon a Character and their Rival, in the case of a Party of Adventurers, or Team, the Rival plot will consist of a Rival team (usually made of the various types of Rival with a Rival for each Character). The Rivals will have similar, or opposed, goals to the Party, which will naturally bring them into conflict, such as wanting to win the same league, or control the kingdom themselves. ",
 			"Side": "A side marked with the Rival will act as (and often be composed of) Rivals to at least one Character Embodiment from at least one other side, and sometimes multiple sides and multiple Embodiments.",
 			"Character": "The Rival Significator indicates a Character who feels compelled to compete against others. <p>They <strong>Gain Yin</strong> when they enter a competition, disagree, or oppose another. </p><p>They <strong>Gain Yang</strong> when they acknowledge or greet someone they acknowledge as a rival. </p><p>They <strong>Gain Chi</strong> when they act in competition against an acknowledged rival. </p><p>They also gain +1 Success Levels when they compete against an acknowledged rival.</p>",
+			"Diegetic_Character": "A character driven by a fierce competitive spirit, constantly measuring themselves against others. They are defined by their disagreements and their determination to surpass those they deem worthy adversaries, viewing every interaction as a potential contest for supremacy.",
 			"Scene": "The Rival Scene is usually an appearance of a Character's Rival. Rivals can be the same side of a Conflict as the Characters, or another side. Yarn-Tellers can play the card on a target to Reveal or Summon one of the target's Rivals. This is often useful for the plot development, and can provide them with new allies (or enemies if things go badly)."
 		},
 		"Beat_Type": "6",
@@ -31,6 +32,7 @@
 		"Hook": "Rival Arrives",
 		"Hook_Description": "The Story opens with a Rival arriving, or being revealed. This often signifies some sort of competition is occurring (even if neither side is aware of it).",
 		"Gain": "Gain an Ally of a former Rival, or Resolve a Hitch",
+		"Diegetic_Gain": "The resolution of a long-standing personal struggle or the unexpected transformation of a bitter rival into a steadfast ally, turning a source of conflict into a pillar of support.",
 		"Fray": "Competition",
 		"Fray_Description": "Competitions are usually Opposed Ordeals (Stakes vary based on the Competition. Competitions can be friendly rivalries between comrades, or they can be the reason for bitter Rivalries that destroy lives. Almost any event can become a Competition if Characters are willing. Drinking, Sports, Quizzes, Driving, Racing, and so on. Tournaments are a special type of Competition that includes multiple Rounds of Ordeals with each Round representing a single competition / game / match. Tournaments are usually a Story in their own right rather than just a single Fray, but bigger Conflicts may have to use Tournaments for any Competition.",
 		"Snag": "Rivalry",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Rivalry",
 		"Description": "An Age of Rivalry is occuring. During this age a society develops a profound rivalry with another society, often a neighbour and ally. This rivalry is usually expressed within some sport or competition, although this rivalry may in time develop into a more aggressive and violent situation, it rarely becomes a war. In fact, such rivalries are more commonly a result of a changing geo-political landscape that creates allies of former enemies, this ancient enmity becomes the basis for bitter rivalry in sports, economics, art or some other field.",
+		"Diegetic_Description": "An era of intense but regulated competition between neighbors. Society defines itself through its ongoing struggle to outshine a peer, leading to rapid advancements in art, commerce, and athletics as each side strives for dominance without descending into open warfare.",
 		"Rules": "During an Age of Rivalry a society will select a rival society from its current allies, often a previous enemy, and compete against them scoring small vitories and loses against the rival society. This rivalry will often cause a growth of both societies as they repeatedly compete and improve."
 	}
 }

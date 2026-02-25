@@ -21,6 +21,7 @@
 			"Plot": "The Scope Plot is a plot about investigation. Investigations can vary in type from genre and era, scouting parties, religious inquisitions, criminal investigations, scientific discoveries and expeditions are all with in the scope of The Scope. ",
 			"Side": "A side marked by The Scope are watching, observing, often making notes. They may be the media, a journalist, or herald, or an academic, a Chronicler, or historian, or they could be authorities, undercover police, agents and spies, or even aliens or Nephilim. The real question is are they watching everyone the same, or do they have a focus to their investigation?",
 			"Character": "The Scope Significator indicates a Character that revels in watching and investigating. <p>They <strong>Gain Yin</strong> when they make themselves comfortable, settle down, or adjust their position. </p><p>They <strong>Gain Yang</strong> when they discuss events they have witnessed, take notes, or record information. </p><p>They <strong>Gain Chi</strong> when they watch or observe an event, show, or process from beginning to end, focus on details or draw conclusions. </p><p>They gain +1 Success Levels to all actions to do with sensing, recording, or understanding information.</p>",
+			"Diegetic_Character": "A keen-eyed observer and meticulous chronicler who finds meaning in the smallest details. They are patient investigators, capable of remaining still and silent for hours as they witness events unfold, always recording their findings and drawing insightful conclusions from what they have seen.",
 			"Scene": "The Scope Scene is usually a Revelation, often where something is observed and revealed to the Characters (in extreme cases the villain will be monologue the Plot during a Scope Scene). Sometimes the Scope can be a Test of Senses or an Observation Ordeal (like a Stake-Out). Yarn-Tellers can play the card to pass any sensory Ordeal, or to gain a Revelation. They can also create Observation Ordeals for the target if they wish."
 		},
 		"Beat_Type": "5",
@@ -31,6 +32,7 @@
 		"Hook": "Hints",
 		"Hook_Description": "The Hook hints at the Story with clues, background details, and no direct exposition of any sort. The Hook may even modify the Revelations of the Frame to make them into more specific details and less broad exposition. These Hooks may require setting multiple times during other stories before they finally catch the PC.",
 		"Gain": "Improve Alternate Integration",
+		"Diegetic_Gain": "A profound increase in self-awareness and mental clarity—the harmonious integration of one's various facets and past experiences into a more coherent and focused identity.",
 		"Fray": "Watch",
 		"Fray_Description": "Watch Frays are Ordeals where PCs have to watch, observe and perceive something. It could be that they are watching their favourite TV show, or a film, the Ordeal will be the Psychological effects of the movie and the story, or perhaps the PCs are on a stake out, watching the enemy base, then again military watches are something else again. Who knows what might attack the party during the night.",
 		"Snag": "Scrutiny",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Inspection",
 		"Description": "An Age of Inspection is occurring. During this age a society performs an inspection, sometimes this is a retrospective, examining the past, but it is more often introspective, where a society looks within itself. The exact reasons for this can be due to an political, judicial or scientific inquiry that catches the public attention, an artistic, journalistic, political, or social movement, or due to a new broom at the top, sweeping away corruption and criminality. Depending upon what is found and how the society responds to this knowledge can profoundly effect whether this age will be perceived later in a positive or negative light.",
+		"Diegetic_Description": "An era of intense scrutiny and introspection, where society turns its gaze inward to examine its own structures and past. It is a time of high-profile inquiries and a collective drive to uncover hidden truths, root out corruption, and achieve a clearer understanding of the culture's true character.",
 		"Rules": "During an Age of Inspection some society wide inquiry or inspection takes place, often this becomes an inspection of the society itself. With similar Questions (defined often by the society&apos;s highest Facet) being asked throughout the society."
 	}
 }

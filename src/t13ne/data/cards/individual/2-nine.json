@@ -21,6 +21,7 @@
 			"Plot": "The Lady Plot is one of luck. Good luck, bad luck, coincidence and random events. These plots tend to favour certain types of Characters, naive fools, beginners, risk-takers, gamblers and their ilk. What is true though is the Lady often loses interest in her Hooked Characters, and being fickle may decide to start all over again. The Lady can smile or frown upon a side, causing lucky gains or unlucky losses. ",
 			"Side": "A side marked by the Lady will feel they are lucky, and take more risks. Perhaps they believe now is the time to act, or that they are poised to score the highest in the exams, who knows they might be right. What is true is that the side marked by the Lady will interact with all the other Embodiments during the Plot. They may not be all at once, and might not involve rational conflict, but they will interact directly with Embodiments of all the other sides.",
 			"Character": "The Lady Significator indicates a Character who is a risk-taker, a gambler or gamer. <p>They <strong>Gain Yin</strong> when they play a game, or keep a score. </p><p><strong>Gain Yang</strong> when they make, or take, a bet. </p><p><strong>Gain Chi</strong> when they win a bet. </p><p>They also gain a +1 Success Level on any game of Skill or Chance.</p>",
+			"Diegetic_Character": "A daring risk-taker and master of chance, who thrives on the edge of uncertainty. They are never happier than when a fortune is on the line, possessing an uncanny luck and a keen eye for the odds in any situation.",
 			"Scene": "The Lady Scene is a scene of extreme luck, coincidence and special circumstances. Yarn-Tellers may play the card to win a game of chance, or bet, arrange some helpful or terrible coincidence, or unleash chaos, as required."
 		},
 		"Beat_Type": "7",
@@ -31,6 +32,7 @@
 		"Hook": "Coincidences",
 		"Hook_Description": "The Hook of this Plot is about lucky breaks, coincidental leads, chance encounters or random factors aligning. The PCs are usually involved in some other business (like a high Stakes Motional Ordeal) when suddenly they run into the next Bad Guy's minions or more coincidentally the return of an old one.",
 		"Gain": "Cash, Car, Companionship (<strong>Gain Chi</strong>, A Descendant and at least a Cast Extra Ally)",
+		"Diegetic_Gain": "A sudden influx of wealth, a dependable vehicle, and the company of a new and loyal ally—a trifecta of good fortune that significantly improves one's circumstances.",
 		"Fray": "Games",
 		"Fray_Description": "The Fray is a game, it could be a game of chance, skill or athleticism. Games are obviously usually Low Stakes, but higher Stakes games exist. Playing Chess with Death would count as Soul Stakes (at least), a game of Russian Roulette is Extreme Stakes, and so on. Games can be teaching moments, with Mentors teaching tactics in Chess or ethics, morals or any amount of knowledge being passed via the game. Games can be Ordeals or Tests, or can be played out for real if desired.",
 		"Snag": "Accident",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Chance",
 		"Description": "An Age of Chance is occurring. During this age unlikely coincidences and examples of extreme luck dominate the society, there is often an air of gaming, gambling, and an association with underclasses, criminality, and  this creates great unbalances and destabilising forces within a society, as the old fabric may be destroyed as some rich become poor, and some poor become rich randomly. These need not be economic riches, cultural mores and fashions can shift randomly, what was unfashionable and ostracizing before can become cool. An Age of Chance can create charmed individuals who always seem to land on their feet, no matter what, as well as cursed individuals who never catch a break.",
+		"Diegetic_Description": "A time of radical uncertainty and miraculous coincidences, where the fortunes of society shift like the wind. It is an era defined by grand gambles and unexpected reversals, where the lowly are elevated and the mighty brought low by the fickle whims of luck.",
 		"Rules": "During an Age of Chance all members of a society will receive Chance Success Levels and Chance Failure Levels that are randomly assigned, this number is created by Liberty and Wyrd Annexes each rolling a die roll based on Facet Values from all members of the society. For societies greater than 15,000 members assume a 6d20 rolled Score Reduced for both the Successes and Failures, this gives each member a Score between 6 and 120 or between 2 and 18 Success and Failure Levels each. These Success and Failure Levels are activated by the Referee, Yarn-Teller or Author/Player randomly throughout the Age."
 	}
 }

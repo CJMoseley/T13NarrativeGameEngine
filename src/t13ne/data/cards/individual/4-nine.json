@@ -21,6 +21,7 @@
 			"Plot": "The Robot Plot is a special sort of plot that is built with conditional events and essentially is preprogrammed. This sort of Plot can be great for pre-planned Scenarios, but represent a lot of work for the author. At it's simplest a Robot plot can be built around a single \"rail-road\" time-line that all the sides are trying to either maintain, subvert, or break. ",
 			"Side": "A side marked by the Robot may be composed of actual robots (rarely), or may have a rigid routine that they maintain, usually following all of their society's laws and regulations, or may be sleepwalkers somehow, unable to see what is going on around them. Sometimes the Robot side can be awakened, causing strikes, civil disruption, panics, and even revolutions depending upon the plot, setting and genre.",
 			"Character": "The Robot Significator indicates a Character who follows orders and rules.<p>They <strong>Gain Yin</strong> when they follow rules that they are subject to. </p><p>They <strong>Gain Yang</strong> when they follow legal orders that they have been given. </p><p>They <strong>Gain Chi</strong> when they perform actions automatically (they have practised an action enough that it no longer requires conscious thought).</p><p>They also gain +1 Success Levels to any task they perform automatically.</p>",
+			"Diegetic_Character": "A character of rigid routine and unquestioning obedience, who moves through the world with mechanistic precision. They find comfort in following established rules and orders, often performing their duties with an automatic, practiced ease that borders on the inhuman.",
 			"Scene": "The Robot Scene can be used in a number of ways. It can represent a Character going about their automatic scheduled humdrum day, any machine that performs a task, any repetitive task (of the sort that machinery could do), or it can represent an actual robot. Yarn-Tellers can play the Robot on a Target to make them behave like a robot (going about their normal schedule and behaviour, ignoring the Yarn-Teller's presence), or can set them a Robot task that they must complete."
 		},
 		"Beat_Type": "7",
@@ -31,6 +32,7 @@
 		"Hook": "Previously...",
 		"Hook_Description": "This Story is a continuation, sequel and possibly a resolution to a previous Story. It can help to have a little recap, where was that Story left, what did they PCs know, how much do the Players remember? This Hook is that chance to recap.",
 		"Gain": "Powerful, but subservient Cast or Force of Nature Ally (Supernatural Servant / Golem / Robot / AI / Toon)",
+		"Diegetic_Gain": "The acquisition of a powerful and tireless servant—a constructed guardian, a mindless laborer, or a digital assistant—that obeys every command without hesitation or question.",
 		"Fray": "An Ordinary Day",
 		"Fray_Description": "An Ordinary Day, just going about doing what you normally do. So much of the day is normally performed by the body and mind on autopilot, imagine if it wasn't, imagine trying to do everything in a normal day consciously, as though for the first time. Usually this sort of Fray is part of early world-building to establish the Character, later this Ordinary Day is subverted as the Character has changed and developed, their old Ordinary Day is no longer normal and they may expect Demons or Wizards to burst into the office at any moment, and have to focus on the HR Memo that's doing the rounds.",
 		"Snag": "Automatic",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Drudgery",
 		"Description": "An Age of Drudgery is occurring. During this age a society becomes almost robotic, it is in many ways a zombie society, dead already, but still going through the motions. A society in this state may wake up, revitalise and move formward, but then again it does require someone within the membership realising what is happening and changing something before a complete collapse occurs as some new society offers a better way of life to its members.",
+		"Diegetic_Description": "A bleak era where society has fallen into a state of mindless repetition. It is a time of hollow traditions and outdated practices, where the collective continues to go through the motions of a once-vital culture that has long since lost its purpose and spark.",
 		"Rules": "During an Age of Drudgery a society appears to continue their last age, although not to the same result. The society may be blindly producing outdated technology, they may be using a traditional manufacturing method that is no longer competitive, may be fighting an enemy that no longer strictly speaking exists, or they may be following some ancient contract or programming that is long out of date in some other way."
 	}
 }

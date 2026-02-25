@@ -21,6 +21,7 @@
 			"Plot": "The Book Plot indicates a Plot that is reworking some other work (rather like The Myth). It may be a retelling of an older story, or a retelling of history, re-imagined in a new place or time. The new Plot will always have differences to the original (often completely inverting the Conflict or Final Resolution), but is fundamentally the same thing. Book Plots often rely heavily on Revelations and characterisations  in their Conflict.",
 			"Side": "A side of a conflict that is marked by the Book is granted authority, but that authority is flawed in some way. Perhaps they misinterpret the law, or a religious document, or place the wrong emphasis in between the two...",
 			"Character": "The Book Significator indicates a Character who does things by the Book. <p>They <strong>Gain Yin</strong> when they remind others of the rules, and point out rule-breaking.</p><p><strong>Gain Yang</strong> when they follow or enforce proper procedures and rules.</p><p><strong>Gain Chi</strong> when they are respectful of others and polite.</p><p>The Book also grants them a +1 Success Level if they break a rule.</p>",
+			"Diegetic_Character": "A stickler for tradition and procedure, who finds security in the written word and established laws. They value order, politeness, and the correct way of doing things, often acting as a guardian of the rules they live by.",
 			"Scene": "The Book Scenes tend to be scripted. They might be a section of descriptive prose, narration or scripted dialogue, perhaps a Character will tell their back-story, motives or simply mislead. Words are important to this scene, which is more likely to be an argument than a fight, and more often a conversation or revelation. Yarn-Tellers should use this card carefully, as they will be required to narrate the details, or play out the conversations."
 		},
 		"Beat_Type": "4",
@@ -31,6 +32,7 @@
 		"Hook": "Tone, Theme or Thesis",
 		"Hook_Description": "The Conflict hooks the Characters by a powerful scene that sets the Tone for the Story, that may also specify the Theme or Thesis of the Conflict with an immediate Revelation.",
 		"Gain": "Knowledge (Lore or Learning Descendant of Skill or Talent Level)",
+		"Diegetic_Gain": "The acquisition of deep and authoritative knowledge, perhaps a lost secret or a fundamental understanding of a complex subject.",
 		"Fray": "Research",
 		"Fray_Description": "Usually a Low Stakes Ordeal that involves a Character finding out some information, it may involve reading (web-pages, books, articles, papers), visiting a Location (usually a Library, Archive, or a website), asking people questions, in interviews or by polling, or (more rarely) conducting experiments.",
 		"Snag": "Missing Page",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Reason",
 		"Description": "An Age of Reason is occuring. During this age, knowledge and logic are valued, this usually enables a scientific, technological or cultural advance to be made by the society. Such periods usually include a host of discoveries, developments or rediscoveries, that can quickly, and often, lead onto another age.",
+		"Diegetic_Description": "A time of enlightenment and logic, where society values understanding and the pursuit of truth above all else. It is an era defined by great discoveries, scientific advances, and a fundamental shift in how the world is perceived and explained.",
 		"Rules": "An age of reason where science, history and knowledge are celebrated and expanded upon, are always revolutionary somehow for a society, but always short-lived turning into another type of age after a few discoveries have been made."
 	}
 }

@@ -21,6 +21,7 @@
 			"Plot": "The Crown Plot is usually a Political Thriller, these are stories of alliances, enmities, betrayals and treaties. There's a lot going on and usually a lot at stake. The fates of countries and worlds are decided by Crown Plots, but so too are the fates of businesses and families. ",
 			"Side": "A side marked by the Crown will face tough leadership decisions, this may be because of the Internal side, which may be placed entirely within the Crown marked Side, or it may be because of another side of the Conflict, as the Yarn-Teller sees fit.",
 			"Character": "The Crown Significator indicates an absolute monarch, at least within their territory. <p>They <strong>Gain Yin</strong> when they speak to their followers, act emotional, or listen to others. </p><p>They <strong>Gain Yang</strong> when they behave aloof, or polite, use logic, or amuse themselves. </p><p>They <strong>Gain Chi</strong> when they act for the benefit of their followers, country or people. </p><p>They gain +1 Success Levels to all Psyche Defences.</p>",
+			"Diegetic_Character": "A born leader and absolute authority within their domain, carrying the weight of their station with a mixture of aloof dignity and genuine concern for their subjects. They are adept at navigating the complexities of power, using both logic and emotional resonance to direct the course of their territory.",
 			"Scene": "The Crown Scene is usually a demonstration of power. This may be an Ordeal or more usually it will be an immense Gain (often of a powerful Lore Artefact) with an appropriate Revelation. Yarn-Tellers can play a Crown to have people follow them, gain treasures, or demonstrate their power (usually with an extreme use of their Power or Super-Annex)."
 		},
 		"Beat_Type": "7",
@@ -31,6 +32,7 @@
 		"Hook": "Commanded",
 		"Hook_Description": "The Hook of this Story is simply that the PC is ordered to follow the Plot (investigate the mystery, secure the asset, overthrow the government, etc) by their boss, monarch, superior officer or spouse.",
 		"Gain": "Trophy / Monolith Treasure Descendant",
+		"Diegetic_Gain": "A grand trophy or a lasting monument that stands as a testament to one's achievements and a symbol of enduring influence.",
 		"Fray": "Society",
 		"Fray_Description": "Sometimes we all need a leg up, and friends are the people to do that. Making and keeping friends can be Ordeals in their own right, especially when one is talking about joining clubs, guilds and fraternity houses. Fortunately, they are usually low Stakes, but Opposed by large numbers of people at the same time.",
 		"Snag": "Responsibilities",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Governance",
 		"Description": "An Age of Governance is occurring. During this age a society is lead by a powerful leader, this leader may be a benign dictator, a progressive emperor, a democratically-elected successor, a regressive oppressor, a tyrannical despot, or an unfeeling bureaucrat, amongst many other things. Regardless of their way of attaining power and leadership, they are truly in charge of the society, they may be a pinickity micromanager or a sweeping generalizer, but their leadership will have a profound effect (either positive or negative) upon the society.",
+		"Diegetic_Description": "A time of strong leadership and centralized authority, where the direction of society is determined by a single, powerful figure. Whether they rule with a gentle hand or an iron fist, the era is defined by their vision and the administrative structures they build to govern the land.",
 		"Rules": "During an Age of Governance a leader will arise from within the society that is accepted and followed without question by most of the society. Depending upon the nature of this leader the society may be dramatically positively or negatively effected by them."
 	}
 }

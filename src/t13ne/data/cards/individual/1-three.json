@@ -21,6 +21,7 @@
 			"Plot": "The Grindstone Plot is one that seeks to grind down the Characters that it Hooks, it tries to exhaust and wear them down, not so that they may be destroyed, but be improved, sharpened and refined. It knocks a Character down so that they may build themselves up again. All Tests and Ordeals the Plot creates will have twice the Difficulty, or increased Stakes.",
 			"Side": "A side marked by the Grindstone can expect to be tested and worn down, either to exhaustion or even near death, however if they are allowed to recuperate, they become stronger than before.",
 			"Character": "The Grindstone Significator indicates a  Character who works hard for what they have.<p>They <strong>Gain Yin</strong> by doing any routine task, such as washing, cleaning, maintenance, etc. </p><p>They <strong>Gain Yang</strong> by working up a sweat, doing hard work or exercise. </p><p>They <strong>Gain Chi</strong> whenever they receive any payment for their work, goods or services. </p><p>Grindstone Characters additionally gain a +1 Success Level whenever they are faced with gruelling working conditions or circumstances.</p>",
+			"Diegetic_Character": "A diligent worker, accustomed to the rhythm of labor and the satisfaction of a task well done. They are defined by their industry and perseverance, often finding peace in routine and strength in physical exertion.",
 			"Scene": "A Grindstone Scene wears at the Characters it affects it may force them to expend Yarn, Chi or Sway on their actions during the Scene. This is usually the result of a strong Warp (Ordeal, Test, Quest), or a terrible Weft (that includes Tests, Ordeals and no Gains). Yarn-Tellers should be aware that the Grindstone should not kill, but may Cripple, or Fatigue."
 		},
 		"Beat_Type": "3",
@@ -31,6 +32,7 @@
 		"Hook": "Working Start",
 		"Hook_Description": "The Conflict engages with a Character's current task. This is best expressed in TV by the cold start or In Media Res, that involves the Character's day-to-day job.",
 		"Gain": "Wage (Normal Chi Gain or payment, may be daily, weekly, monthly or yearly)",
+		"Diegetic_Gain": "A hard-earned wage, a fair payment for labor that provides the means to continue one's journey or trade.",
 		"Fray": "Working",
 		"Fray_Description": "The Test is like a Facet Test (A,C,O,Q,V,Z), but the Difficulty is a little higher (Diff 16+). These Tests are simple, and intended to just check some aspect of the Character, they represent a normal day at work, usually.",
 		"Snag": "Drudgery",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Endeavour",
 		"Description": "An Age of Endeavour is occuring. During this age a society works towards a common goal, not all members will necessarily be directly working on the goal, but they will support the Endeavour of the age in some way. Examples can include building infrastructure, construction of new buildings, towns or cities (although these are sometimes better handled by an age of expansion), development of some new required technology (such as the clock, space race, or sustainable power generation), survival usually of a diaspora, exodus, or migration. During this age the wealth of the society is tied up in the project and the society may appear poorer as a result.",
+		"Diegetic_Description": "A time of collective effort, where society is united by a single, monumental goal. Resources and labor are poured into a grand undertaking—be it building a city, forging a new technology, or ensuring survival—and the era is defined by the sweat and determination of its people.",
 		"Rules": "The society sets some enormous goal and then works towards it, with thousands of individuals contributing Score and Sway to complete an enormous Pact Ordeal, often due to the scale of such projects they require years or even decades of work to achieve their final goal, and along the way many individuals will have to complete smaller, but equally important sub-Ordeals, to actually complete the work."
 	}
 }
