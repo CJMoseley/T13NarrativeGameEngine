@@ -1,6 +1,7 @@
 import { LoreData } from '../LoreData.js';
 import { NameGenerator } from './NameGenerator.js';
 import Logger from '../../../core/Logger.js';
+import CacheManager from '../../../core/CacheManager.js';
 
 class Descendant {
     constructor(data) {
@@ -39,20 +40,38 @@ export class CharacterGenerator {
     }
 
     async generateCharacter(model, options = {}) {
+        const characterId = options.seed !== undefined ? `${model}_${options.seed}` : null;
+        if (characterId) {
+            const cachedCharacter = CacheManager.get('characters', characterId);
+            if (cachedCharacter && !options.force) {
+                Logger.message(`CharacterGenerator: Returning cached character for ${characterId}`);
+                return cachedCharacter;
+            }
+        }
+
         Logger.message(`CharacterGenerator: generateCharacter called for model '${model}'`);
         try {
+            let character;
             switch (model) {
                 case 'Extra':
                 case 'Chorus':
                 case 'Cast':
-                    return await this._generateExtraCharacter(model, options);
+                    character = await this._generateExtraCharacter(model, options);
+                    break;
                 case 'Archetype':
-                    return await this._generateArchetypeCharacter(options);
+                    character = await this._generateArchetypeCharacter(options);
+                    break;
                 case 'Detailed':
-                    return await this._generateDetailedCharacter(options);
+                    character = await this._generateDetailedCharacter(options);
+                    break;
                 default:
                     throw new Error(`Unknown character model: ${model}`);
             }
+
+            if (character && characterId) {
+                CacheManager.store('characters', characterId, character);
+            }
+            return character;
         } catch (error) {
             Logger.error(`CharacterGenerator: Failed to generate character for model '${model}'`, error);
             throw error;

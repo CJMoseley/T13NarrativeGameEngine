@@ -17,6 +17,8 @@ import { ShipAssembler } from '/src/t13ne/core/ship/ShipAssembler.js';
 import { COMPONENT_COLORS } from '/src/t13ne/core/ship/ShipUtils.js';
 import { WorkerPool } from '/src/t13ne/core/WorkerPool.js';
 import { GalacticHistory } from '/src/t13ne/procgen/galaxy/GalacticHistory.js';
+import CacheManager from '/src/t13ne/core/CacheManager.js';
+import TerritoryManager from '/src/t13ne/procgen/galaxy/TerritoryManager.js';
 
 export { COMPONENT_COLORS };
 
@@ -74,18 +76,41 @@ export class ShipFactory {
      * @returns {Array<object>} List of component definitions ready for generation.
      */
     async createRandomShip(seed, config = {}) {
+        const cachedShip = CacheManager.get('ships', seed);
+        if (cachedShip && !config.force) {
+            console.log(`ShipFactory: Returning cached ship for seed ${seed}`);
+            return cachedShip;
+        }
+
         // Gather context data to pass to worker (since worker cannot access singletons)
         const workerConfig = { ...config };
         
         if (!workerConfig.manufacturers) {
-            const activeCorps = GalacticHistory.getCorporations()?.filter(c => c.status === 'Active');
-            if (activeCorps && activeCorps.length > 0) workerConfig.manufacturers = activeCorps;
+            // Attempt to find manufacturers based on local territory if coords provided
+            if (config.coords) {
+                const influence = TerritoryManager.getInfluenceAt(config.coords.x, config.coords.y, config.coords.z);
+                if (influence.CORPORATE) {
+                    workerConfig.manufacturers = [influence.CORPORATE];
+                }
+            }
+
+            if (!workerConfig.manufacturers) {
+                const activeCorps = GalacticHistory.getCorporations()?.filter(c => c.status === 'Active');
+                if (activeCorps && activeCorps.length > 0) workerConfig.manufacturers = activeCorps;
+            }
         }
 
+        let components;
         if (this.useWorker && this.workerPool) {
-            return await this.callWorker('createRandomShip', { seed, config: workerConfig });
+            components = await this.callWorker('createRandomShip', { seed, config: workerConfig });
+        } else {
+            components = await this.shipGenerator.createRandomShip(seed, workerConfig);
         }
-        return await this.shipGenerator.createRandomShip(seed, workerConfig);
+
+        if (components) {
+            CacheManager.store('ships', seed, components);
+        }
+        return components;
     }
 
     /**

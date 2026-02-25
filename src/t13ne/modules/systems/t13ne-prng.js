@@ -245,7 +245,28 @@ export default {
 
   // helper to create local PRNG instances
   create(seed) { return new Xoshiro256ss(seed); },
-  create32(seed) { return new Mulberry32(seed); }
+  create32(seed) { return new Mulberry32(seed); },
+
+  /**
+   * Derives a new seed from a parent seed and one or more components.
+   * Ensures a consistent and unpredictable derivation for hierarchical seeding.
+   * @param {string|number|bigint} parentSeed
+   * @param  {...(string|number|bigint)} components
+   * @returns {string} A derived seed string.
+   */
+  deriveSeed(parentSeed, ...components) {
+    let h = 1469598103934665603n;
+    const mix = (val) => {
+      let s = String(val);
+      for (let i = 0; i < s.length; i++) {
+        h ^= BigInt(s.charCodeAt(i));
+        h = (h * 1099511628211n) & MASK64;
+      }
+    };
+    mix(parentSeed);
+    components.forEach(c => mix(c));
+    return h.toString(16);
+  }
 };
 
 

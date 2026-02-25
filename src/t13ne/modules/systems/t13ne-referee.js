@@ -5,6 +5,7 @@ import { T13Plot } from "../narrative/t13ne-plots.js";
 import T13LoreManager from "../narrative/t13ne-lore.js";
 import { SceneDirector } from "./t13ne-scene-director.js";
 import { WorkerPool } from "/src/t13ne/core/WorkerPool.js";
+import GalacticEpic from "../../procgen/galaxy/GalacticEpic.js";
 
 /**
  * T13NE Referee Module
@@ -48,6 +49,13 @@ class T13NE_Referee {
      */
     async playIntro() {
         Logger.message("Referee: Playing Intro Sequence...");
+
+        // Generate Galactic Epic Vertical Slice for this generation
+        const Epic = new GalacticEpic(this.t13ne.pluginManager);
+        const gameSeed = this.t13ne.getModule('Game')?.getActiveGame()?.seed || 'default-game-seed';
+        const sliceCount = Epic.getFullEpic().length;
+        await Epic.generateVerticalSlice(this.t13ne.getModule('PRNG').deriveSeed(gameSeed, 'epic', sliceCount));
+
         const ViewManager = this.t13ne.viewManager;
         const GameEngine = ViewManager?.gameEngine;
 

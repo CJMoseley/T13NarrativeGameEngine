@@ -15,7 +15,7 @@ export class PlanetGenerator {
         const group = new THREE.Group();
         const baseRadius = (typeof planetData.radius === 'number' && Number.isFinite(planetData.radius)) ? planetData.radius : 1.0;
         const radius = baseRadius * 10; // Scale up for visibility
-        const seed = this._stringToSeed(planetData.name || 'planet');
+        const seed = planetData.seed || this._stringToSeed(planetData.name || 'planet');
         const prng = ProcGen.createPRNG(seed);
 
         // 1. Base Planet Sphere (Oblate Spheroid)

@@ -1,6 +1,8 @@
 import { GalacticTimelineGenerator } from '/src/t13ne/procgen/galaxy/GalacticTimelineGenerator.js';
 import { LoreData } from '/src/t13ne/procgen/lore/LoreData.js';
 import Logger from '/src/t13ne/core/Logger.js';
+import TerritoryManager from '/src/t13ne/procgen/galaxy/TerritoryManager.js';
+import CacheManager from '/src/t13ne/core/CacheManager.js';
 
 /**
  * Manages the galactic timeline and historical events.
@@ -28,6 +30,18 @@ class GalacticHistoryManager {
             throw new Error("Cannot generate galactic history because LoreData failed to load.");
         }
         try {
+            const cachedHistory = CacheManager.get('systems', 'galactic_history_' + this.seed);
+            if (cachedHistory) {
+                this._timeline = cachedHistory.timeline;
+                this._corporations = cachedHistory.corporations;
+                this._activeSpecies = cachedHistory.activeSpecies;
+                TerritoryManager.deserialize(cachedHistory.territories);
+                this._isLoaded = true;
+                Logger.message("Cached galactic history loaded.");
+                Logger.end(funcName);
+                return;
+            }
+
             // Procedurally generate the history instead of fetching a static file
             const generator = new GalacticTimelineGenerator(this.seed, pluginManager, loreMaster);
             const history = await generator.generate();
@@ -35,6 +49,14 @@ class GalacticHistoryManager {
             this._corporations = history.corporations;
             this._activeSpecies = history.activeSpecies;
             this._isLoaded = true;
+
+            CacheManager.store('systems', 'galactic_history_' + this.seed, {
+                timeline: this._timeline,
+                corporations: this._corporations,
+                activeSpecies: this._activeSpecies,
+                territories: TerritoryManager.serialize()
+            });
+
             Logger.message("Procedural galactic history generated and loaded.");
         } catch (error) {
             Logger.message(`ERROR: Failed to load galactic history: ${error}`);

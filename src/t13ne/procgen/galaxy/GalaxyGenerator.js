@@ -3,6 +3,7 @@ import ProcGen from '../ProcGen.js';
 import Logger from '/src/t13ne/core/Logger.js';
 import { ColourUtils } from '/src/t13ne/utils/ColourUtils.js';
 import { Galaxy } from '/src/t13ne/procgen/galaxy/Galaxy.js';
+import CacheManager from '/src/t13ne/core/CacheManager.js';
 
 export class GalaxyGenerator {
   constructor(loreMaster, params = {}) {
@@ -49,6 +50,13 @@ export class GalaxyGenerator {
     if (!this.galaxy || !this.galaxy.stars || this.galaxy.stars.length === 0) {
       Logger.error("GalaxyGenerator: Galaxy not generated. Cannot get system details.");
       return null;
+    }
+
+    const systemId = `${Math.round(star.x)},${Math.round(star.y)},${Math.round(star.z)}`;
+    const cachedSystem = CacheManager.get('systems', systemId);
+    if (cachedSystem && !options.force) {
+      Logger.message(`GalaxyGenerator: Returning cached system for ${systemId}`);
+      return cachedSystem;
     }
 
     // 1. Find nearby systems to gather context for name generation
@@ -111,5 +119,8 @@ export class GalaxyGenerator {
       homeWorldIndex,
       seeds: seeds
     };
+
+    CacheManager.store('systems', systemId, result);
+    return result;
   }
 }

@@ -2,6 +2,7 @@ import { LoreData } from '/src/t13ne/procgen/lore/LoreData.js';
 import Logger from '/src/t13ne/core/Logger.js';
 import { SystemHistoryGenerator } from '/src/t13ne/procgen/system/SystemHistoryGenerator.js';
 import { GalacticHistory } from '/src/t13ne/procgen/galaxy/GalacticHistory.js';
+import TerritoryManager from '/src/t13ne/procgen/galaxy/TerritoryManager.js';
 
 export class SystemGenerator {
     constructor(pluginManager, generators) {
@@ -56,9 +57,18 @@ export class SystemGenerator {
 
         const safeNoise = { n1, n2, n3, n4 };
 
-        // 1. Species Determination
+        // 1. Species Determination & Influence
         Logger.message(`: Step 1 - Species Determination`);
+        const influence = TerritoryManager.getInfluenceAt(star.x, star.y, star.z);
         let initialSpeciesKey = this.speciesGenerator.determineSpecies(star, safeNoise, galaxyParams);
+
+        if (influence.POLITICAL) {
+            Logger.message(`System influenced by POLITICAL entity: ${influence.POLITICAL.commonName || influence.POLITICAL.name}`);
+            // 30% chance to adopt political species as primary if it's a colony
+            if (safeNoise.n1 > 0.7) {
+                initialSpeciesKey = influence.POLITICAL.speciesKey || influence.POLITICAL.id || initialSpeciesKey;
+            }
+        }
         let primarySpeciesKey = initialSpeciesKey;
         let isRelicSystem = false;
         let inhabitants = [];
@@ -128,6 +138,10 @@ export class SystemGenerator {
         // 3. Narrative Generation
         Logger.message(`: Step 3 - Narrative Generation`);
         let speciesLore;
+
+        if (influence.CORPORATE) {
+            Logger.message(`System influenced by CORPORATE entity: ${influence.CORPORATE.name}`);
+        }
         const foundations = LoreData.speciesFoundations || [];
         const template = foundations.find(s => s.type === 'template' && (s.id === primarySpeciesKey || s.name === primarySpeciesKey));
 
@@ -419,6 +433,7 @@ export class SystemGenerator {
         const result = {
             name: systemNameArray[0], // Common name
             systemNameFull: systemNameArray, // Full name object
+            influence: influence,
             tech: ` ()`,
             numPlanets: numPlanets,
             homeWorldIndex: homeWorldIndex,
@@ -624,7 +639,7 @@ export class SystemGenerator {
         return result;
     }
 
-    generateSystemDescription(star, numPlanets, loreObject, secondaryLore, eventDescription, corporatePresence, isRelicSystem) {
+    generateSystemDescription(star, numPlanets, loreObject, secondaryLore, eventDescription, corporatePresence, isRelicSystem, influence = {}) {
         const funcName = 'SystemGenerator.generateSystemDescription';
         Logger.start(funcName, {
             starId: star.id,
@@ -657,7 +672,12 @@ export class SystemGenerator {
 
         const corporateDesc = corporatePresence ? `The ${corporatePresence.name} have a pervasive influence here, shaping the system's economic landscape.` : '';
 
-        const description = [relicDesc, systemDesc, culturalDesc, secondaryDesc, eventDescription, impressionDesc, corporateDesc].filter(Boolean).join(' ');
+        let influenceDesc = "";
+        if (influence.POLITICAL && influence.POLITICAL.commonName !== loreObject.commonName) {
+            influenceDesc = `The system is within the sphere of influence of the ${influence.POLITICAL.commonName || influence.POLITICAL.name}.`;
+        }
+
+        const description = [relicDesc, systemDesc, culturalDesc, secondaryDesc, eventDescription, impressionDesc, corporateDesc, influenceDesc].filter(Boolean).join(' ');
 
         Logger.end(funcName, description);
         return description;

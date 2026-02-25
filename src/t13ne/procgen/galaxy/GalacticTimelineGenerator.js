@@ -2,6 +2,7 @@ import PRNG from '/src/t13ne/modules/systems/t13ne-prng.js';
 import { LoreData } from '/src/t13ne/procgen/lore/LoreData.js';
 import Logger from '/src/t13ne/core/Logger.js';
 import { ComponentDefs } from '/src/t13ne/procgen/ships/components/ComponentDefs.js';
+import TerritoryManager from '/src/t13ne/procgen/galaxy/TerritoryManager.js';
 import { NameGenerator as FallbackNameGenerator } from '/src/t13ne/procgen/lore/factories/NameGenerator.js';
 
 /**
@@ -20,6 +21,14 @@ export class GalacticTimelineGenerator {
     async generate() {
         const funcName = 'GalacticTimelineGenerator.generate';
         Logger.start(funcName);
+
+        // Reset Territory Manager for new generation
+        TerritoryManager.layers = {
+            POLITICAL: [],
+            CORPORATE: [],
+            ECONOMIC: [],
+            RACING: []
+        };
         const params = await this._loadParams();
 
         // Load Sway Events
@@ -145,6 +154,12 @@ export class GalacticTimelineGenerator {
                 position: { x: this.prng.nextDouble() * 4000 - 2000, y: this.prng.nextDouble() * 4000 - 2000 },
                 description: `The ${speciesLore.commonName} emerged as a significant power in the galaxy.`
             });
+
+            // Political Territory for the emerging species
+            TerritoryManager.addTerritory('POLITICAL', speciesLore,
+                { x: age.events[age.events.length-1].position.x, y: age.events[age.events.length-1].position.y, z: 0 },
+                500 + this.prng.nextDouble() * 500
+            );
         }
     }
 
@@ -228,13 +243,19 @@ export class GalacticTimelineGenerator {
         };
 
         corporations.push(corporation);
+        const posX = corporation.homeRegion.r * 2000 * Math.cos(corporation.homeRegion.theta);
+        const posY = corporation.homeRegion.r * 2000 * Math.sin(corporation.homeRegion.theta);
+
         age.events.push({
             type: "CORPORATION_FOUNDING",
             corporation: corporation,
             time: corporation.founded,
-            position: { x: corporation.homeRegion.r * 2000 * Math.cos(corporation.homeRegion.theta), y: corporation.homeRegion.r * 2000 * Math.sin(corporation.homeRegion.theta) },
+            position: { x: posX, y: posY },
             description: `The ${corporation.name}, who identify as a ${corporation.archetype}, were founded by the ${foundingSpecies.commonName}.`
         });
+
+        // Corporate Territory
+        TerritoryManager.addTerritory('CORPORATE', corporation, { x: posX, y: posY, z: 0 }, 300 + this.prng.nextDouble() * 300);
     }
 
     _createCorporationMergerEvent(age, corporations, params) {

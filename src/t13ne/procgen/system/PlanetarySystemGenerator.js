@@ -3,6 +3,7 @@ import ProcGen from '/src/t13ne/procgen/ProcGen.js';
 import Logger from '/src/t13ne/core/Logger.js';
 import { ResourceFactory } from '/src/t13ne/procgen/lore/factories/ResourceFactory.js';
 import { PlanetGenerator } from '/src/t13ne/procgen/system/PlanetGenerator.js';
+import CacheManager from '/src/t13ne/core/CacheManager.js';
 
 export class PlanetarySystemGenerator {
     constructor(pluginManager, nameGenerator, speciesGenerator) {
@@ -21,6 +22,14 @@ export class PlanetarySystemGenerator {
             Logger.error(`${funcName}: systemData is undefined.`);
             return [];
         }
+
+        const systemId = systemData.coords || `${Math.round(systemData.star?.x)},${Math.round(systemData.star?.y)},${Math.round(systemData.star?.z)}`;
+        const cachedPlanets = CacheManager.get('planets', systemId);
+        if (cachedPlanets) {
+            Logger.message(`${funcName}: Returning cached planets for ${systemId}`);
+            return cachedPlanets;
+        }
+
         Logger.start(funcName, { numPlanets: systemData.numPlanets });
 
         const planets = [];
@@ -67,8 +76,11 @@ export class PlanetarySystemGenerator {
         let currentPeriod = Math.sqrt(Math.pow(lastDistance, 3) / starMass);
 
 
+        const systemSeed = systemData.seeds.join(',');
+
         for (let i = 0; i < numPlanets; i++) {
-            const planetPRNG = ProcGen.createPRNG([...seeds, i].join(','));
+            const planetSeed = ProcGen.deriveSeed(systemSeed, i);
+            const planetPRNG = ProcGen.createPRNG(planetSeed);
             const innerSeed = planetPRNG.nextDouble();
             const outerSeed = planetPRNG.nextDouble();
             const moonSeed = planetPRNG.nextDouble();
@@ -252,6 +264,7 @@ export class PlanetarySystemGenerator {
             planets.push({
                 index: i,
                 name: planetName,
+                seed: planetSeed,
                 t13Name: t13Name,
                 status: statusText,
                 society: society,
@@ -365,6 +378,7 @@ export class PlanetarySystemGenerator {
         }
 
         Logger.end(funcName, `Generated ${planets.length} planets.`);
+        CacheManager.store('planets', systemId, planets);
         return planets;
     }
 
