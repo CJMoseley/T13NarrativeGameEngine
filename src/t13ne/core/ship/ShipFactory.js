@@ -78,7 +78,7 @@ export class ShipFactory {
     async createRandomShip(seed, config = {}) {
         const cachedShip = CacheManager.get('ships', seed);
         if (cachedShip && !config.force) {
-            console.log(`ShipFactory: Returning cached ship for seed ${seed}`);
+            Logger.message(`ShipFactory: Returning cached ship for seed ${seed}`);
             return cachedShip;
         }
 
