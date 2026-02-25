@@ -1,0 +1,80 @@
+newmtl space_asteroids_02_l_0002
+Ka 0.2 0.2 0.2
+Kd 0.6 0.6 0.6
+Ks 1 1 1
+Tr 0
+illum 5
+d 1
+Ns 1
+map_Kd space_asteroids_02_l_0002.jpg
+map_Bump space_asteroids_02_l_0002_b.png
+newmtl space_asteroids_02_l_0001
+Ka 0.2 0.2 0.2
+Kd 0.6 0.6 0.6
+Ks 1 1 1
+Tr 0
+illum 5
+d 1
+Ns 1
+map_Kd space_asteroids_02_l_0001.jpg
+map_Bump space_asteroids_02_l_0001_b.png
+newmtl space_asteroids_02_l_0004
+Ka 0.2 0.2 0.2
+Kd 0.6 0.6 0.6
+Ks 1 1 1
+Tr 0
+illum 5
+d 1
+Ns 1
+map_Kd space_asteroids_02_l_0004.jpg
+map_Bump space_asteroids_02_l_0004_b.png
+newmtl space_asteroids_02_l_0006
+Ka 0.2 0.2 0.2
+Kd 0.6 0.6 0.6
+Ks 1 1 1
+Tr 0
+illum 5
+d 1
+Ns 1
+map_Kd space_asteroids_02_l_0006.jpg
+map_Bump space_asteroids_02_l_0006_b.png
+newmtl space_asteroids_02_l_0007
+Ka 0.2 0.2 0.2
+Kd 0.6 0.6 0.6
+Ks 1 1 1
+Tr 0
+illum 5
+d 1
+Ns 1
+map_Kd space_asteroids_02_l_0007.jpg
+map_Bump space_asteroids_02_l_0007_b.png
+newmtl space_asteroids_02_l_0005
+Ka 0.2 0.2 0.2
+Kd 0.6 0.6 0.6
+Ks 1 1 1
+Tr 0
+illum 5
+d 1
+Ns 1
+map_Kd space_asteroids_02_l_0005.jpg
+map_Bump space_asteroids_02_l_0005_b.png
+newmtl space_asteroids_02_l_0008
+Ka 0.2 0.2 0.2
+Kd 0.6 0.6 0.6
+Ks 1 1 1
+Tr 0
+illum 5
+d 1
+Ns 1
+map_Kd space_asteroids_02_l_0008.jpg
+map_Bump space_asteroids_02_l_0008_b.png
+newmtl space_asteroids_02_l_0003
+Ka 0.2 0.2 0.2
+Kd 0.6 0.6 0.6
+Ks 1 1 1
+Tr 0
+illum 5
+d 1
+Ns 1
+map_Kd space_asteroids_02_l_0003.jpg
+map_Bump space_asteroids_02_l_0003_b.png
