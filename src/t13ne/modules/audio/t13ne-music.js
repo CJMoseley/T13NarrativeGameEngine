@@ -250,6 +250,7 @@ class T13NE_Music {
             if (existingIndex !== -1) {
                 const existing = this.activeComponents.splice(existingIndex, 1)[0];
                 this.activeComponents.push({ ...existing, lastUpdate: Date.now() });
+                changed = true; // Force regeneration on re-focus/update
             } else {
                 this.activeComponents.push({ ...entity, lastUpdate: Date.now() });
                 changed = true;
@@ -268,20 +269,26 @@ class T13NE_Music {
     }
 
     async createMainTheme(gameEngine, forceVariation = false) {
-        if (!this.synth) return;
+        if (!this.synth) {
+            Logger.warn("T13NE_Music: createMainTheme called but synth is not initialized.");
+            return;
+        }
 
         const tensionModule = this.t13ne ? this.t13ne.getModule('Tension') : null;
         const currentTension = tensionModule ? tensionModule.getTensionLevel() : (this.lastTension >= 0 ? this.lastTension : 2);
 
         // Generate a unique hash for the current components to enable caching
+        // We do NOT sort, so the order (focus) matters. Last item is usually the conductor.
         const componentHash = this.activeComponents
             .map(c => c.name || c.id || 'unknown')
-            .sort()
             .join('|');
         
+        // Include tension in hash so music evolves with game state
+        const fullHashString = `${componentHash}_${currentTension}`;
+
         let hash = 0;
-        for (let i = 0; i < componentHash.length; i++) {
-            hash = ((hash << 5) - hash) + componentHash.charCodeAt(i);
+        for (let i = 0; i < fullHashString.length; i++) {
+            hash = ((hash << 5) - hash) + fullHashString.charCodeAt(i);
             hash |= 0;
         }
         const trackId = `theme_${Math.abs(hash)}`;

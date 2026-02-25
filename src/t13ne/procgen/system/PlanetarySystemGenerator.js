@@ -25,13 +25,18 @@ export class PlanetarySystemGenerator {
 
         const planets = [];
         // Ensure seeds exist to prevent crash if systemData is incomplete
-        const seeds = (systemData.seeds && Array.isArray(systemData.seeds)) ? systemData.seeds : [Math.random(), Math.random(), Math.random(), Math.random()];
+        if (!systemData.seeds || !Array.isArray(systemData.seeds)) {
+            Logger.error(`${funcName}: systemData.seeds is missing or invalid. Cannot generate planets deterministically.`);
+            return [];
+        }
+        const seeds = systemData.seeds;
         let numPlanets = systemData.numPlanets;
         const homeWorldIndex = systemData.homeWorldIndex !== undefined ? systemData.homeWorldIndex : -1;
 
         // Ensure minimum planets (especially for homeworlds)
         if (numPlanets === undefined || numPlanets < 1) {
-            numPlanets = Math.floor(Math.random() * 5) + 3; // 3-7 planets default
+            Logger.error(`${funcName}: numPlanets is undefined or invalid (${numPlanets}). Cannot generate planets.`);
+            return [];
         }
 
         let lastDistance = 0.2; // Start at 0.2 AU for realistic inner planets
@@ -307,7 +312,9 @@ export class PlanetarySystemGenerator {
         const hasLife = planets.some(p => (p.biosphere && p.biosphere !== 'None' && p.biosphere !== 'Extinct') || p.moons.some(m => m.biosphere && m.biosphere !== 'None'));
         if (planets.length > 0 && !hasLife) {
             // Pick a random planet to host life if none exists
-            const lifeHost = planets[Math.floor(Math.random() * planets.length)];
+            // Pick a deterministic planet to host life if none exists
+            const lifePRNG = ProcGen.createPRNG(seeds.join(',') + '_life_guarantee');
+            const lifeHost = planets[Math.floor(lifePRNG.nextDouble() * planets.length)];
             const temp = parseFloat(lifeHost.temperature);
 
             let bioType = 'Native Biosphere';

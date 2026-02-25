@@ -31,6 +31,16 @@ export class T13Scene extends Scene {
     }
 
     /**
+     * Updates the scene data with new context (e.g. passed from IntroSequence).
+     * Useful for scenes preloaded before all data was available.
+     */
+    updateContext(context) {
+        if (!context) return;
+        Object.assign(this.sceneData, context);
+        // Subclasses can override to react to new data (e.g. show the ship)
+    }
+
+    /**
      * Initializes the 2D SVG layer for the scene.
      */
     init2DLayer() {

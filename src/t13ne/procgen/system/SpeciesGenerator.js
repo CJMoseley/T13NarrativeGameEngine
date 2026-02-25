@@ -76,7 +76,14 @@ export class SpeciesGenerator {
             if (affinity === 'ICE_WORLD' && star.starClass.includes('M-Type')) return true;
             if (affinity === 'GAS_GIANT_SYSTEM' && context.star.r > 0.4) return true;
             if (affinity === 'VOLCANIC_WORLD' && star.isYoung) return true;
-            return Math.random() < 0.1;
+            
+            // Deterministic fallback based on star coordinates
+            if (context.star) {
+                const seed = (context.star.x || 0) + (context.star.y || 0) + (context.star.z || 0);
+                const pseudoRandom = Math.abs(Math.sin(seed * 12.9898));
+                return pseudoRandom < 0.1;
+            }
+            return false;
         }
 
         const parts = condition.match(/(\w+)\s*>\s*([\d.]+)/);

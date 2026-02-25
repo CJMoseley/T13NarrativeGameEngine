@@ -2,6 +2,7 @@ import Logger from '/src/t13ne/core/Logger.js';
 import IntroSequence from '/src/t13ne/core/ui/IntroSequence.js';
 import Localization from '/src/t13ne/core/ui/Localization.js';
 import * as THREE from 'three';
+import T13NE_Music from '/src/t13ne/modules/audio/t13ne-music.js';
 
 /**
  * @module Core/LoaderManager
@@ -79,8 +80,18 @@ class LoaderManager {
 
             {
                 name: 'Initialize Audio', action: async () => {
-                    const music = this.viewManager.engine.getModule('Music');
+                    let music = this.viewManager.engine.getModule('Music');
+                    if (!music) {
+                        Logger.warn("LoaderManager: Music module not found in Engine. Using direct import.");
+                        music = T13NE_Music;
+                        if (this.viewManager.engine.registerModule) {
+                            this.viewManager.engine.registerModule('Music', music);
+                        }
+                    }
                     if (music) {
+                        if (!music.initialized) {
+                            await music.initialize(this.viewManager.engine);
+                        }
                         music.injectThemeComponents({ galaxy: this.gameEngine.galaxy });
                         this.reportProgress("Priming Acoustic Harmonics...");
                         const theme = await music.createMainTheme(this.gameEngine);

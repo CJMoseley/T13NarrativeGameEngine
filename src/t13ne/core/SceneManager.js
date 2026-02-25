@@ -1,6 +1,7 @@
 import Logger from './Logger.js';
 import { EventBus } from './EventBus.js';
 import { Scene } from './Scene.js';
+import { IntroSequence } from './IntroSequence.js';
 
 /**
  * SceneManager
@@ -25,6 +26,11 @@ export class SceneManager {
             const sceneName = path.split('/').pop().replace('.js', '');
             this.sceneRegistry[sceneName] = sceneModules[path];
         }
+        this.preparedScenes = new Map(); // Cache for preloaded scenes
+        
+        // Initialize the Intro Sequence Controller
+        this.introSequence = new IntroSequence(viewManager);
+        this.introSequence.sceneManager = this; // Explicitly link back to avoid race conditions
 
         Logger.message("SceneManager initialized.");
     }
@@ -34,14 +40,22 @@ export class SceneManager {
     }
 
     /**
+     * Starts the intro sequence.
+     */
+    startIntro() {
+        if (this.introSequence) this.introSequence.start();
+    }
+
+    /**
      * Prepares a scene for display. This includes loading the module, instantiating the class,
      * and running its async prepare() method to load assets and run procedural generation.
      * @param {string} sceneName - The name of the scene to prepare.
      * @param {object} sceneData - Data to pass to the scene's constructor.
      * @param {function} onProgress - A callback to report progress (e.g., for a loading bar).
+     * @param {boolean} cacheResult - Whether to store the prepared instance for later retrieval.
      * @returns {Promise<Scene|null>} A promise that resolves with the prepared scene instance, or null on failure.
      */
-    async prepareScene(sceneName, sceneData = {}, onProgress = () => { }) {
+    async prepareScene(sceneName, sceneData = {}, onProgress = () => { }, cacheResult = false) {
         const funcName = 'SceneManager.prepareScene';
         Logger.start(funcName, { sceneName, sceneData });
 
@@ -90,6 +104,10 @@ export class SceneManager {
             
             // Notify systems (like Audio) that the scene and its data are ready
             EventBus.emit('scene:ready', newSceneInstance);
+
+            if (cacheResult) {
+                this.preparedScenes.set(sceneName, newSceneInstance);
+            }
             
             return newSceneInstance;
 
@@ -102,5 +120,14 @@ export class SceneManager {
             }
             return null;
         }
+    }
+
+    /**
+     * Retrieves a previously prepared scene instance and removes it from the cache.
+     */
+    getPreparedScene(sceneName) {
+        const scene = this.preparedScenes.get(sceneName);
+        if (scene) this.preparedScenes.delete(sceneName); // Consume it
+        return scene;
     }
 }

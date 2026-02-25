@@ -18,7 +18,12 @@ export class SystemLoreGenerator {
     async generateSystemLore(star, noiseValues, galaxyParams, nearbySpecies = []) {
         const funcName = 'SystemLoreGenerator.generateSystemLore';
         Logger.start(funcName, { starId: star.id });
-        let { n1, n2, n3, n4 } = noiseValues || { n1: Math.random(), n2: Math.random(), n3: Math.random(), n4: Math.random() };
+        
+        if (!noiseValues) {
+            Logger.error(`${funcName}: noiseValues is missing. Cannot generate system lore deterministically.`);
+            return null;
+        }
+        let { n1, n2, n3, n4 } = noiseValues;
 
         // Normalize noise values to [0, 1]
         n1 = Math.abs(n1) % 1;

@@ -14,7 +14,8 @@ export class SystemHistoryGenerator {
         if (T13NE_PRNG) {
             this.prng = T13NE_PRNG.create(seed);
         } else {
-            this.prng = { nextDouble: () => Math.random() };
+            Logger.error("SystemHistoryGenerator: T13NE_PRNG module not found. Cannot generate history deterministically.");
+            // No fallback provided to ensure errors are caught
         }
         this.loreData = LoreData; // Assuming LoreData is loaded and available
     }

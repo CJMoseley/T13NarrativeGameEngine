@@ -582,7 +582,11 @@ export class SystemGenerator {
         let result;
         if (availableTemplates.length > 0) {
             // Use one of the noise values to deterministically pick a fallback from the filtered list.
-            const n4 = (noiseValues && typeof noiseValues.n4 === 'number') ? noiseValues.n4 : Math.random();
+            if (!noiseValues || typeof noiseValues.n4 !== 'number') {
+                Logger.error(`${funcName}: noiseValues.n4 is missing. Cannot select fallback template deterministically.`);
+                return null;
+            }
+            const n4 = noiseValues.n4;
             let fallbackIndex = Math.floor(Math.abs(n4) * availableTemplates.length);
             // Safety clamp
             if (fallbackIndex >= availableTemplates.length) fallbackIndex = availableTemplates.length - 1;

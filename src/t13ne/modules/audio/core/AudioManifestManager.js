@@ -19,10 +19,7 @@ export class AudioManifestManager {
         try {
             // Prioritize the standard media/audio path where the generation script outputs
             let response = await fetch('/media/audio/audio_assets_manifest.json');
-            if (!response.ok) {
-                response = await fetch('/data/media/audio/audio_assets_manifest.json');
-            }
-
+            
             if (response.ok) {
                 const loaded = await response.json();
                 this.manifest = { ...this.manifest, ...loaded };
@@ -75,7 +72,21 @@ export class AudioManifestManager {
             if (!url.startsWith('media/audio/') && !url.startsWith('data/')) {
                 // If it starts with media/ but not media/audio/, we assume it's relative to root media/
                 if (!url.startsWith('media/')) {
-                    url = `media/audio/${url}`;
+                    // Inject subdirectory based on category if not already present
+                    // This fixes the issue where manifest keys are missing the category prefix
+                    const categoryMap = {
+                        'samples': 'samples',
+                        'loops': 'loops',
+                        'stems': 'stems',
+                        'tracks': 'tracks'
+                    };
+                    const subdir = categoryMap[category];
+
+                    if (subdir && !url.startsWith(subdir + '/')) {
+                        url = `media/audio/${subdir}/${url}`;
+                    } else {
+                        url = `media/audio/${url}`;
+                    }
                 }
             }
             url = '/' + url;

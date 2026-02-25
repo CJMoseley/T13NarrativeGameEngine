@@ -111,12 +111,6 @@ async function init(data) {
 
         themeGenerator = new ThemeGenerator(mockMusicModule);
         if (performanceMode) themeGenerator.performanceMode = performanceMode;
-        try {
-            await themeGenerator.loadAssets();
-            console.log('[MusicWorker] ThemeGenerator assets loaded.');
-        } catch (e) {
-            console.error('[MusicWorker] Failed to load assets in ThemeGenerator:', e);
-        }
         await themeGenerator.loadAssets();
         console.log('[MusicWorker] ThemeGenerator assets loaded.');
     })();
