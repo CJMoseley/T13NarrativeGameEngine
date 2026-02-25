@@ -21,6 +21,7 @@
 			"Plot": "The Explorer Plot is another good world-builder (although the Yarn-Teller does have to a little more work. The Explorer plot is about exploring a blank map. The map may be of a new land or new world, but the Characters are Hooked to explore and investigate the map, of course each area they go may consider them invaders. ",
 			"Side": "A side marked by the Explorer behaves as though they are an explorer in a strange land. This may be because they are, or they may be experiencing life beyond their class for the first time, the naive country bumpkin who wishes to be a king's guard does not understand things in the city, the princess on the run does not understand why anyone does anything they do, and why none of them do what she tells them. Such Characters are rarely out of trouble for long...",
 			"Character": "The Explorer Significator indicates a Character that lives to explore and investigate. <p>They <strong>Gain Yin</strong> when they are travel more than 1 kilometre. </p><p>They <strong>Gain Yang</strong> when they explore or investigate a place or person. </p><p>They <strong>Gain Chi</strong> when they make notes, drawings or maps of a location, person or thing. </p><p>They also gain +1 Success Levels when they are in unfamiliar territory.</p>",
+			"Diegetic_Character": "A tireless wanderer and seeker of truth, driven by an insatiable urge to map the unknown. They thrive in unfamiliar territories, always observing and documenting the world around them, though their presence is often viewed with suspicion by those whose lands they traverse.",
 			"Scene": "The Explorer Scene indicates a Scene where the Character has to explore a Location, or meets an explorer or invader. Such Scenes are often Ordeals although a few may be Wefts. Yarn-Tellers may play the card to \"create\" a new Location to be explored, or make a Location seem unfamiliar (possibly by side-stepping) or summon an explorer ally or invading enemy for the target."
 		},
 		"Beat_Type": "4",
@@ -31,6 +32,7 @@
 		"Hook": "Visitor",
 		"Hook_Description": "The Story opens with an unexpected visitor that may  bring the PCs a Revelation and a Gain. This Visitor is usually a friend or Ally, rather than a Rival or enemy, but occasionally it will be a stranger, who claims a connection that will later be validated or proved a lie.",
 		"Gain": "Discover a new or lost Location / Real Estate / Province / Dark Territory",
+		"Diegetic_Gain": "The discovery of a hidden or long-lost territory—a piece of uncharted land, a forgotten ruin, or a secret path—that expands one's knowledge and influence over the world.",
 		"Fray": "Explore",
 		"Fray_Description": "The Explore Fray is an exploration of the Conflict, it is time to explore some aspect of the interactions of the Facets in the Conflict. This may be done by actually exploring a Locations that Embodies the Conflict directly, or investigating a Descendant that has an Annex like the Conflict's.",
 		"Snag": "Lost",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Exploration",
 		"Description": "An Age of Exploration is occurring. During this age a society explores beyond its borders, seeking unsettled lands that they can add to their own territory. A society often becomes obsessed with the latest exploratory missions, and the discoveries they have found, with new plants, animals, feathers or cultural artifacts. Settlement or colonization of the new land is usually the result of this age. ",
+		"Diegetic_Description": "An era of discovery where society looks beyond its established borders with curiosity and ambition. It is a time of grand voyages and the cataloging of exotic wonders, as the culture becomes captivated by the legends of uncharted lands and the artifacts brought back from the frontier.",
 		"Rules": "During an Age of Exploration a society encounters a new territory that they must explore, uninhabited territories may provide new animals, minerals or plants. Inhabited territories will expose the society to a new external (most often ancient or dead) culture, which captures the public imagination for a while."
 	}
 }

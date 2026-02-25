@@ -21,6 +21,7 @@
 			"Plot": "The Forge Plot is a construction or creation plot. It is normal for such plots to be solely about the creation of a new technology or prototype, although there are always politics, market forces and other factors that revolves around a creation plot like this. ",
 			"Side": "The Forge is often useful as a Side Significator indicating that the side marked is trying to create something (or has created something).",
 			"Character": "The Forge Significator indicates a Character who is most likely a Smith or Artist. The card makes them even more so... <p>They <strong>Gain Yin</strong> by gathering resources, ores, fuel, and materials. </p><p>They <strong>Gain Yang</strong> by planning, drawing, and designing, writing notes on papers, preparing resources, etc. </p><p>They <strong>Gain Chi</strong> by creating Descendants (helping to pay off some of the costs of the Creation). </p><p>They also gain a +1 Success Level when they are creating.</p>",
+			"Diegetic_Character": "A skilled artisan or creator, deeply immersed in the world of making and crafting. They are driven by the process of creation, from the gathering of raw materials to the final, polished work, and they possess an uncanny ability to bring new and useful things into existence.",
 			"Scene": "The Forge Scene is often used for Descendant Creation (or shopping). A Yarn-Teller can play the Forge to allow themselves an Item Creation or Shopping Ordeal/Test or a Descendant Gain, they can also be used for personal Revelations by artist and craftsman Characters, as they work in their workshop."
 		},
 		"Beat_Type": "5",
@@ -31,6 +32,7 @@
 		"Hook": "Loss",
 		"Hook_Description": "The Hook for the Character is a loss of something that can be replaced. Perhaps they have broken their sword, or their base is burnt down. The Conflict may drive them to replace this loss, or it may be part of a Villain's plan.",
 		"Gain": "Temporal, Material and Economic Power (Power Descendant)",
+		"Diegetic_Gain": "A position of significant material and economic influence, granting the power to shape the world through wealth and resources.",
 		"Fray": "Creativity",
 		"Fray_Description": "The Ordeal is about the Character acquiring a Descendant. Maybe they go shopping and hunt around for a deal, but usually they make one themselves (or summon one magically, perhaps). The point is that they have to beat a Summoning / Creation difficulty somehow.",
 		"Snag": "Requirements",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Industry",
 		"Description": "An Age of Industry is occurring. During this age a society is working, often maufacturing some item, or providing some service, that is well desired far beyond the society, producing an enormous amount of trade and wealth. Things are obviously positive economically, with close to full employment within the society and a sense that there is more work to do than time or available people-power. Societies and the individuals they are made from get rich during this age, even the poorest members of the society will be well off compared to another society.",
+		"Diegetic_Description": "A time of unparalleled productivity and prosperity, where the gears of industry turn day and night. Society is transformed by the mass production of goods or the widespread provision of services, leading to a golden age of trade and a rise in the standard of living for all.",
 		"Rules": "The entire society has an economic and industrial boom, often driven by a single product or service that the society may have a monopoly on. Such booms often have a limited duration, after which the society may move to another industry or service, or enter a new age."
 	}
 }

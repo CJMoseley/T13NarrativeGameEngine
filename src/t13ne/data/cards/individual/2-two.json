@@ -21,6 +21,7 @@
 			"Plot": "The Burn-Out Plot is about things from the past, that were once great, but have now fallen apart. It may be a plot about an ancient ruin, or an old civilisation, something about this place, or people, has become relevant again. It is history trying to repeat itself, but trying again in an old palette, not quite updating the story as it might. Perhaps a village is found in the Italian Alps where Latin is still spoken, aliens appear over Stonehenge, or an old tired king, longs to relive his glory years. ",
 			"Side": "A side marked by the Burn-Out is a side that has seen better times, they may be old, or infirm from illness, or in the case of obstacles, descendants and so on just a little worn out. Of course, an elderly master, while not at the height of his powers, is no less formidable.",
 			"Character": "The Burn-Out Significator indicates a Character who was great, powerful or a genius, but is now less.<p>They <strong>Gain Yin</strong> when they mope, don't bother getting properly dressed or prepared, or ignore a question. </p><p>They <strong>Gain Yang</strong> when they volunteer information or solutions, help others, or offer food. </p><p>They <strong>Gain Chi</strong> when they freak out about something (usually a Triggered Hitch). </p><p>They also gain a +1 Success Level to any activity that can be done while wearing slippers and either eating cereal or watching video.</p>",
+			"Diegetic_Character": "A once-great figure who has lost their spark, now a shadow of their former self. They may seem indifferent or poorly prepared for the world, yet flashes of their old genius or power still occasionally surface, especially when they are pushed to their limits.",
 			"Scene": "The Burn-Out Scene is usually used for a calm following a disaster. Yarn-Tellers can use it to get a break when they need one, or can use it to ramp up the temperature an pressure on someone, creating a fiery Ordeal or Accident that must be dealt with."
 		},
 		"Beat_Type": "2",
@@ -31,6 +32,7 @@
 		"Hook": "Smoke Signals",
 		"Hook_Description": "There's no smoke without fire, people say. So when this Conflict starts rumours and gossip, leaving smoking guns and other clues that point to something being up, you can be sure the PCs will jump to all the wrong conclusions, or if they don't someone else will interpret the same signals as the PCs guilt.",
 		"Gain": "Someone's (potential Rival, Ally or Opposed Embodiment) contact details",
+		"Diegetic_Gain": "Valuable information regarding the whereabouts or private details of a key figure, providing a crucial advantage in future dealings.",
 		"Fray": "Burn-out",
 		"Fray_Description": "This Fray is an intense Ordeal designed to exhaust the PC to the point of collapse. This may involve staying active for far too long (working night and day for a week), or expending all of your fuel or ammo during the Ordeal. Exactly how the Fray exhausts the Character' resources will depend on the Character and Situation. Generally speaking the Stakes of the Ordeal are usually Medium or High. It is usual during a Burn-Out for the Plot to use Carnage Wounds (and Carnage+) as defence cards, not attack. Ideally the Ordeal will end with a Fatigue Hitch being triggered.",
 		"Snag": "Futile Pursuit",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Collapse",
 		"Description": "An Age of Collapse is occurring. During this age the society suffers some setback or blow, members may be lost, people may flee the area and society, another society may grow more popular, this may be a temporary setback, a compacting, or it can represent a complete collapse to nothingness.",
+		"Diegetic_Description": "A dark time of decline and disintegration, where the structures of society begin to fail. People flee their homes, populations dwindle, and once-proud institutions crumble into insignificance as the culture faces a terminal setback.",
 		"Rules": "During a Collapse a society loses a significant number of members due to some external factor, sometimes dramatic geo-political events such as war, famine, pestilence or plague, other times members simply drift away to find new hobbies, or lands."
 	}
 }

@@ -21,6 +21,7 @@
 			"Plot": "The Serpent Plot is all about deceit, lies, and sins. It may be a tale of crime, lust, or passion, or it could be a counter-intelligence operation undertaken for Monarch and country. ",
 			"Side": "If a side is marked with The Serpent then they are clearly not to be trusted, they may not be actually evil (although often are), but something about circumstance or their nature means they will lie every scene about something, and betray, double-cross, or triple-cross someone before the end of the Story.",
 			"Character": "The Serpent Significator indicates a lying snake of a Character. <p>They <strong>Gain Yin</strong> when they stay calm, are rational, or reasonable.</p><p>They <strong>Gain Yang</strong> when they are duplicitous, misleading or creative. </p><p>They <strong>Gain Chi</strong> when they lie or sin.</p><p>They gain +1 Success Level to all Psyche defences.</p>",
+			"Diegetic_Character": "A silver-tongued and duplicitous individual, master of misdirection and cool-headed reasoning. They are at their best when weaving complex webs of deceit, finding success in the space between truth and lies while maintaining a calm, rational exterior.",
 			"Scene": "The Serpent Scene is a Scene of deception, lies or occasionally, a big snake. Yarn-Tellers can play the card to succeed in any kind of lying or deception, they can also play it to create a Monster or to stay cool when under psychological pressure."
 		},
 		"Beat_Type": "3",
@@ -31,6 +32,7 @@
 		"Hook": "Temptation",
 		"Hook_Description": "Offer a Gain to the Character, as their eventual reward.",
 		"Gain": "Fruit of the Tree of Knowledge (A Lore / Learning Descendant)",
+		"Diegetic_Gain": "A forbidden secret or a profound insight that offers a transformative understanding of the world, though often at a heavy price.",
 		"Fray": "Persuasion",
 		"Fray_Description": "Persuasion is a Low to Soul Stakes Ordeal where a PC tries to change another's mind (often another Side's Embodiment) or has someone try to change their minds.",
 		"Snag": "Skin-Shedding",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Crime",
 		"Description": "An Age of Crime is occurring. During this age criminal enterprise is most important for the society, whether created by draconian prohibitive laws, or liberal market forces this society contains a strong criminal underworld. Black markets, drug dealing, thefts, bank robberies, violence and criminals, thieves, and gangsters rule the streets and the headlines, and the police if active at all, are either corrupt, or act as just another gang. In this age it can seem like crime not only pays, but may be the only pay-day. You will find few rich people in this time who do not have criminal contacts and investments.",
+		"Diegetic_Description": "A gritty and lawless time, where the structures of order are overshadowed by a rampant criminal underworld. It is an era of black markets, gang rule, and pervasive corruption, where survival often depends on having the right illicit connections and a willingness to operate outside the law.",
 		"Rules": "During the Age of Crime a society tends towards criminality and violence. Even high ranking members of society will have criminal contacts, such as drug-dealers, black marketeers, fences and even assassins."
 	}
 }

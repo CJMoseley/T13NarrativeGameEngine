@@ -21,6 +21,7 @@
 			"Plot": "The Star Plot is mostly about darkness, it may be the darkness in people, or the darkness of space, the cave or night. Darkness is danger, which surrounds the Star, or the Characters in this Plot. The Plot may tempt all Hooked Characters with Glory, Success and/or Fame, making them important heroes (or villains) that will shine brightly in the dangerous darkness. ",
 			"Side": "The Side marked with the Star believes they are ascendant, but they are surrounded by darkness. The Star marked side will gain fame, and success, but the cost is that all other sides become at least loosely allied with the Shadows (or External in the case of a Shadow Side with a Star) Side",
 			"Character": "The Star Significator indicates a Character who believes themselves to a Star. </p><p>They <strong>Gain Yin</strong> when they are praised or others do things for them. </p><p>They <strong>Gain Yang</strong> when they perform or practise. </p><p>They <strong>Gain Chi</strong> when they affect another with a Psyche Attack (positive or negative).</p>",
+			"Diegetic_Character": "A figure of radiant charisma and ego, who thrives on the adoration of others and believes themselves destined for greatness. They are natural performers, always seeking the spotlight and capable of profoundly affecting those around them through the sheer force of their personality.",
 			"Scene": "The Star Scene is one that focuses on a single Character for all of the Scene. The Character may have to face opponents, Ordeals or Tests alone, without their usual allies and friends. Yarn-Tellers can play this card to get themselves some one on one Referee time, or to focus that attention elsewhere..."
 		},
 		"Beat_Type": "9",
@@ -31,6 +32,7 @@
 		"Hook": "Danger",
 		"Hook_Description": "The Hook just consists of some enormous danger, it may be looming, it may be coming, or it is right here, right now. The Hook may include a Revelation and/or a High-Stakes Ordeal.",
 		"Gain": "Stardom brings great wealth and recognition. Mansions, cars, space-yachts, all are available, with only one or two Hitches (usually Exposed and Dependence Hitches).",
+		"Diegetic_Gain": "The pinnacle of fame and recognition, bringing with it immense wealth and a life of unparalleled luxury, though often at the cost of one's privacy and independence.",
 		"Fray": "Wish",
 		"Fray_Description": "The Fray consists of a Quest, usually to accomplish something personally important to the Character.",
 		"Snag": "A New Star Rises",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Glory",
 		"Description": "An Age of Glory is occurring. During this age a society reaches the next level somehow, although often such glories are followed by failures, for the moment everything the society attempts is successful. Ages of Glory are often claimed to be caused by some technological achievement, but there are always multiple foundations for the success in this age. An age of Glory can often cause a society to defeat or even consume their enemies, as kingdoms rise to become empires and colonial powers.",
+		"Diegetic_Description": "A golden era of triumph and ascension, where society reaches the absolute peak of its power and influence. It is a time when every endeavor meets with success, leading to rapid expansion and the eclipse of all rivals as the culture enters a period of legendary achievement.",
 		"Rules": "During an Age of Glory everything the society attempts will be successful (at least until the age is over, when repercussions and consequences may emerge from that initial success)."
 	}
 }

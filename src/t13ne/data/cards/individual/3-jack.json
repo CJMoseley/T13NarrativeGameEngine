@@ -21,6 +21,7 @@
 			"Plot": "The Tempest Plot is about destruction and tearing down the old world. Huge changes and shifts in social norms are indicated by the Tempest. It is the Plot of disaster movies, apocalypses and wars. ",
 			"Side": "When a side is marked by the Tempest things will not go well for it. The side may be destroyed, torn apart from within, but sometimes a new replacement Embodiment will appear within the chaos and lead what remains of this side as a stronger, changed version of the side.",
 			"Character": "The Tempest Significator indicates a Character who is violent and unpredictable.<p>They <strong>Gain Yin</strong> when they are attacked. </p><p>They <strong>Gain Yang</strong> when they attack. </p><p>They <strong>Gain Chi</strong> when they act randomly or react violently. </p><p>They also gain +1 Success Level on every attack.</p>",
+			"Diegetic_Character": "A turbulent and volatile individual, whose actions are as unpredictable as a mounting storm. They thrive in the midst of conflict and upheaval, possessing a raw, destructive energy that makes them a formidable force when provoked.",
 			"Scene": "The Tempest Scene is usually a survival Ordeal, caused by foul weather, it often throws unlikely people together as they try to survive the turmoil. Yarn-Tellers can play the card to evoke an enormous disaster that will usually befall their enemies, although they do occasionally get out of hand."
 		},
 		"Beat_Type": "4",
@@ -31,6 +32,7 @@
 		"Hook": "It Was A Dark And Stormy Night...",
 		"Hook_Description": "The Story opens with inclement weather, this may reflect the Conflict in some strange way, or simply be a bad night to be out. Into this night is injected a scene of violence, perhaps a murder or assault. It might be the PCs who are attacked, or more likely the dying stranger at their door.",
 		"Gain": "Monolith / Chronolith or Artefact",
+		"Diegetic_Gain": "An artifact of immense power or a stable anchor in the flow of time—a monolith that stands firm amidst the swirling chaos.",
 		"Fray": "Tempest",
 		"Fray_Description": "A Tempest is a storm or similar huge event (Terrorist attack, aerial bombardment, war front, tsunami, volcano, etc) that uses 1-12 Force-Of-Nature Extras, or go for a Kaiju in extreme circumstances, to create an Extreme Stakes Motional Ordeal. These events are destructive to Locations / Stages which can result in paths being closed or creating new obstacles. Ideally, the PCs should have their own goals, entirely separate to the Tempest that they are trying to complete against this backdrop of destruction.",
 		"Snag": "Alarming",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Chaos",
 		"Description": "An Age of Chaos is occurring. During this age a society experiences upheavals, disturbances, tumults and uproar from within. Normal functioning within the society, such as trade, travel, leadership and communications are disrupted, usually this is not a complete disruption, but a limited period of disruption. Historically ages of chaos can include natural disasters, political upheavals, invasions, wars and similar historical events.",
+		"Diegetic_Description": "A time of great upheaval and disruption, where the old certainties of society are swept away by a whirlwind of change. It is an era of disturbances and tumult, where the breakdown of normal life leads to a period of intense uncertainty and struggle as people navigate the wreckage of the past.",
 		"Rules": "During the age of Chaos, everything changes, trade, communications and travel beyond and within the society is interrupted or confused somehow. Life within the society is more stressful and at higher Stakes than normal, during the age of Chaos."
 	}
 }

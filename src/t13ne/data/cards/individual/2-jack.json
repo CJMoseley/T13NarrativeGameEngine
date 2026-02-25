@@ -21,6 +21,7 @@
 			"Plot": "The Mask Plot is a a plot about secret identities and double-lives. The Plot might be about Superheroes, dealing with a real life and a costumed identity, or an undercover cop in a crime syndicate, or a cyber-ninja infiltrating an opposed mega-Zaibatsu. Mask Plots can become farcical, unless there is real Tension that they will be discovered, and that it will have profound consequences. It is sometimes a necessary part of the Mask plot to have the hero discover exactly how bad it can get, with loved ones threatened or killed by the Plot. ",
 			"Side": "When a side is marked by the Mask the side may pretend to be something they are not, such as the Above pretending to be the Shadows or vice-versa.",
 			"Character": "The Mask Significator indicates a Character who can pretend to be things they are not. <p>They <strong>Gain Yin</strong> when they wear a mask, disguise or shape-shift. </p><p>They <strong>Gain Yang</strong> when they deceive another or pretend to be something they are not. </p><p>They <strong>Gain Chi</strong> when they are not recognised for who, or what, they are. </p><p>They also gain +1 Success Level with all disguise, masks and make-up actions.</p>",
+			"Diegetic_Character": "A master of deception and disguise, capable of assuming many faces and identities. They are at their best when hidden behind a mask, moving unseen and unrecognized through the world while expertly playing whatever role is required of them.",
 			"Scene": "A Mask scene is a scene where things are not as they first appear. Perhaps the location is a Facade, such as movie set, or that what was intended to be paying in some cash to the bank, gets subverted when masked robbers walk in and unload a shotgun into the ceiling."
 		},
 		"Beat_Type": "4",
@@ -31,6 +32,7 @@
 		"Hook": "False Face",
 		"Hook_Description": "The Story opens with the Plot presenting a false face, it may be a pretext for something else, or a pretence of some sort, but the plot does not represent itself truthfully. It may hide its Conflict Embodiments (perhaps making the Player Characters not the Pressed Characters), make false Revelations, or false promises in general.",
 		"Gain": "Secret Identity (this can just be a disguise Descendant, or a whole lifestyle including Locations, or even a whole new Alternate)",
+		"Diegetic_Gain": "The creation of a perfect cover—a secret identity that provides a new life, a safe haven, and the freedom to act without being recognized.",
 		"Fray": "Masquerade",
 		"Fray_Description": "Masquerades can be simple fancy dress parties, or they can be complex political or covert Ordeals full of under-the-table deals, or thinking bigger they can be their own Stories with sub-rosa themes, Quests to deceive, mislead and be underhanded with others, or even a Witness Protection Program or Deep Cover / Sleeper Agent situations that last decades.",
 		"Snag": "Red Herring",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Pretence",
 		"Description": "An Age of Pretence is occurring. During this age the society values lying and pretence more than actual accomplishments. During this age the leaders of the society will also be liars and deceivers, and the society will usually be misled by them, for their own personal goals. The society will treat gossip, stories and anecdotes with equal validity often without checking for evidence. ",
+		"Diegetic_Description": "A time of facades and falsehoods, where society values the appearance of things more than their reality. It is an era of deception and misinformation, where the truth is obscured by a web of rumors and the leaders themselves are masters of the lie.",
 		"Rules": "During the Age of Pretence clearly showing disbelief will be viewed as rude, insulting and have a negative impression within the society. Appearing to believe something that is probably false will be viewed positively within this society at this time."
 	}
 }

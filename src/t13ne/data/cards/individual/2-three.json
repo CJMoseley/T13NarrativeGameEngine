@@ -21,6 +21,7 @@
 			"Plot": "The Question Plot is at its simplest a Mystery Story, which of course asks an often simple question. Usually the Question is \"Whodunnit?\", but even then there are hidden questions of \"how\" and \"why\" that may have equally satisfying answers. Any Mystery will fit within the Question, from \"How do we lift the curse?\" through \"Where are we\" to \"how can we make money from it?\"",
 			"Side": "When a side is marked by the Question they will often ask an important question (who is the chosen one? What is the Matrix? Where is the Ark? What will we do? How will we survive? etc) and will also usually be expected to answer questions (often including the one they asked), perhaps as a Revelation or Ordeal.",
 			"Character": "The Question Significator indicates a Character that asks questions.<p><strong>Gain Yin</strong> when they listen to others speak. </p><p><strong>Gain Yang</strong> when they elicit information from someone without asking a direct question. </p><p>They <strong>Gain Chi</strong> when they ask a question.</p><p>They gain +1 Success Levels whenever they are interrogating or questioning someone.</p>",
+			"Diegetic_Character": "An inquisitive and sharp-minded individual, always seeking to peel back the layers of a mystery. They are master listeners and subtle observers, skilled at drawing out the truth from others while keeping their own cards close to their chest.",
 			"Scene": "The Question Scene is a Scene that has a lot of questions. It might be a pub-quiz or more likely a suspect interrogation. Yarn-Tellers should play this card when they want to make Revelations, or gain information."
 		},
 		"Beat_Type": "3",
@@ -31,6 +32,7 @@
 		"Hook": "Question",
 		"Hook_Description": "The Conflict Hooks the Character a question. This Question may be one they ask themselves, \"What was that noise?\", \"Who is at the door?\", or it might be a question that they overhear, \"How many men have you got for the job?\". The Hook may even be a mystery in its own right.",
 		"Gain": "An truthful, honest answer (sometimes the best Gain of all).",
+		"Diegetic_Gain": "A moment of absolute clarity—a truthful and honest answer that resolves a long-standing mystery or provides the missing piece of a vital puzzle.",
 		"Fray": "Questioning",
 		"Fray_Description": "Questioning can be a terrible Fray. Inquisitions, interrogations, inquiries, examinations. Questioning can be a Low to Soul Stakes Ordeal, or even a simple Facet Test. Usually the PCs are the one's questioned, as the Challenge is normally greater that way.",
 		"Snag": "Puzzle",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Inquisition",
 		"Description": "An Age of Inquisition is occurring. During this age some power arises within the society that calls for some investigation of the society. Often an inquisition is religious or political in nature, rooting out heretics, dissidents, terrorists, or revolutionaries, but scientific and medical inquisitions can also occur. Inquisitions are usually characterised by a loss of individual rights, prejudicial examiners, biased courts and cruel and unusual punishments.",
+		"Diegetic_Description": "A dark time of suspicion and scrutiny, where the authorities turn their gaze inward upon society. It is an era of inquisitions and trials, where the hunt for perceived enemies of the state or faith leads to a climate of fear, paranoia, and the erosion of trust between neighbors.",
 		"Rules": "Some faction within the society achieves a position of power and uses it to root out supposed opposition, usually in the form of a witch hunt or inquisition against this supposed opposition. Success in this inquisition can be beneficial for a society (if they have been infiltrated by a foreign power for example), but failure to find supposed opposition while being convinced of its existence will have a negative effect upon the society, paranoia and mistrust can quickly destroy a society from within. A failing inquisition will sometimes create new factions who are opposed to the inquisition which can tear a society apart."
 	}
 }

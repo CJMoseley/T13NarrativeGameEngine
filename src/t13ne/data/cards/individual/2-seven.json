@@ -21,6 +21,7 @@
 			"Plot": "The Stag Plot is a natural story, concerned with the normal conflicts of nature, the difficulties of survival, hunting, mating and child-rearing. These can be stories of nature, or children raised by wolves, bears and lions, or they can be coming of age tales, that mark important and natural events in any life. ",
 			"Side": "When one side is marked with The Stag they are often elevated by the season or story (as the Stag bellows and threatens during the rut). The Stag side may become Monster Facet Embodiments for the duration of the Story usually during the Zenith. ",
 			"Character": "The Stag Significator indicates a Character who is physical, athletic and sexual. <p>They <strong>Gain Yin</strong> when they practice, train, or exercise. </p><p>They <strong>Gain Yang</strong> when they compete with another, or show off. </p><p>They <strong>Gain Chi</strong> when their accomplishments are recognised. </p><p>They gain +1 Success Level on any purely physically athletic action (such as rutting, running, jumping, swimming, punching, kicking, head-butting).</p>",
+			"Diegetic_Character": "A figure of raw physical prowess and vitality, possessing a deep connection to their own animal nature. They are competitive and athletic, thriving on physical challenges and the recognition of their strength and grace.",
 			"Scene": "The Stag Scene is physical and sometimes hedonistic, there is often a sense of importance or occasion to these Scenes though. They can be important watershed moments for the Characters. Yarn-Tellers can play a Stag card to create a Physical Ordeal (such as a race or chase), or a scene of debauchery (such as a night in a brothel or strip club). They can also use them to mark such events as weddings and coming of age (manhood/womanhood) events."
 		},
 		"Beat_Type": "7",
@@ -31,6 +32,7 @@
 		"Hook": "Taste of Desire",
 		"Hook_Description": "The Story hooks the character by offering what they currently desire (although not perhaps what they really need). This temptation usually includes a taste of what is to come, a kiss from a potential lover, a hit of their addiction to sooth the tremors, a morsel of food for the starving man, but it is not enough to satiate them, yet.",
 		"Gain": "Herd (3-60) Cast Extra Allies",
+		"Diegetic_Gain": "The loyalty of a sizable group—a herd or community that provides safety in numbers and a shared sense of purpose.",
 		"Fray": "Hunt",
 		"Fray_Description": "A Hunt is a High Stakes Complex Motional Chase Ordeal. The PCs may be trying to find food, or they may be the hunted, trying to escape, then again not all hunts are for food, the search for a mate or a place to live can also be hunts. Hunts can involve Snares, Traps and Obstacles, as well as deadly predators and dangerous prey animals.",
 		"Snag": "Seductions",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Plague",
 		"Description": "An Age of Plague is occurring. During this age the society is afflicted by some plague, often an abundance of a particular animal, although plagues can also be bacterial or viral in nature. Plagues devastate societies, mice and locust plagues target foods destroying crops and stores, any plague can spread disease, tainting water supplies, or bringing people in close proximity to dead and living animals.",
+		"Diegetic_Description": "A harrowing time of pestilence and overabundance, where the natural world turns against society. Whether it is an infestation of vermin or the spread of a deadly disease, the era is defined by the struggle to survive amidst a environment that has become toxic and hostile.",
 		"Rules": "An animal species explodes in population, such that they appear everywhere, this creates a tremendous negative effect upon the society, as too many animals spread disease and damage property and food stores."
 	}
 }

@@ -21,6 +21,7 @@
 			"Plot": "The Cultist Plot is about conspiracies and Characters who are not what they first seem. There may be a secret cult, or a hidden group that is manipulating the situation. The Cultist Plot will often rely on occult details or supernatural effects in some genres, in others it may be a conspiracy of silence that is to blame.",
 			"Side": "The Side marked by the Cultist are tight-knit, and secretive, they try their best to hide their connections and actions from everyone else in the Plot, and are often discovered only by Revelations.",
 			"Character": "The Cultist Significator indicates a Character who has odd, often dark, beliefs.<p>They <strong>Gain Yin</strong> when they keep secrets, or make indirect references to their beliefs. </p><p><strong>Gain Yang</strong> when they lie about their actions, or reveal some aspect of their belief (swear by a weird god or saint). </p><p>They <strong>Gain Chi</strong> when they practice their religion, or belief alone, or share it with others. </p><p>They gain a +1 Success Level to all actions to do with the beliefs and lore of their Cult.</p>",
+			"Diegetic_Character": "A figure of deep and often unsettling convictions, belonging to a secretive order or following a fringe philosophy. They are guarded about their true allegiances, speaking in riddles and following strange rituals known only to their kind.",
 			"Scene": "The Cultist Scene typically is a religious or psychological based Warp or Weft. Yarn-Tellers can use the Cultist to imply hidden forces, occult influences or just a strange person."
 		},
 		"Beat_Type": "6",
@@ -31,6 +32,7 @@
 		"Hook": "Craze",
 		"Hook_Description": "The Conflict hooks Characters with a new craze, fad or fashion that is related to the Conflict. Kids and young adults are often the early adopters of the new craze, but the fad may be more cultish. in extreme examples the Dominant Embodiment will have this fad cult based around themselves.",
 		"Gain": "Fan Club (a group of Chorus Allies who are \"fans\" of the Character",
+		"Diegetic_Gain": "A growing following of devoted individuals who look to the character for guidance or inspiration, becoming a loyal—if sometimes overzealous—source of support.",
 		"Fray": "Persuasion",
 		"Fray_Description": "The Fray consists of trying to persuade someone (a group of potential allies, a mentor or guardian, an Opposed Embodiment, or any Rival) to your point of view. Persuasion is either a Sub-Ordeal conversation, a Zeal vs Personality Test, or a Low / Soul Stakes Ordeal, depending how the Yarn-Teller wants to run it. Of course matters may be complicated if you are trying to convince a braying mob of your innocence, and the ultimate goal of the Cultist is always to try and persuade another to join the same cult.",
 		"Snag": "Kidnapped",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Schism",
 		"Description": "An Age of Schism is occurring. During this age a society fractures and schisms as the society breaks apart due to internal pressures. During this period ideological or political differences will create internal groups following individual leaders within the society. During the age of Schism the internal sides will compete to control the society as a whole.",
+		"Diegetic_Description": "A time of internal strife and deep division, where the foundations of society begin to crack. Ideological differences and personal ambitions drive the people into competing factions, leading to a period of instability as rival groups struggle for dominance and the soul of the culture.",
 		"Rules": "During an age of Schism a group will break apart, creating internal factions each with their own leadership, who will compete for actual control."
 	}
 }

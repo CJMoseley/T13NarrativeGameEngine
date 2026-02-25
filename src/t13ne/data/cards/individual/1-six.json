@@ -21,6 +21,7 @@
 			"Plot": "The Sun Plot is about Hope. It offers hope to the hopeless, a new hope to the downtrodden, and reversals of fortunes. Of course, the truth is that for every hope that the Sun grants, another must be dashed. For every plant that grows in the light, another is scorched and dies of dehydration, because it would have preferred the shade. ",
 			"Side": "The Side that has the Sun on their side has been marked as being powerful and important. They are on the rise, growing in power, and are not tested as strongly by the Plot as other sides. However, if they do fail, failure will be especially harsh to them, and may see Deaths and Destruction.",
 			"Character": "The Sun Significator indicates a Character who <strong>Gains Yin</strong> when they are warm and pleasant.<p><strong>Gains Yang</strong> when they are blunt or harsh.</p>They <strong>Gain Chi</strong> when they give people hope or inspire them.</p><p>They also gain +1 Success Level when they are stood in sunshine.</p>",
+			"Diegetic_Character": "A radiant and charismatic figure, capable of both gentle warmth and blinding intensity. They are a natural source of inspiration for others, moving through the world with a directness that can either illuminate or scorch depending on their mood.",
 			"Scene": "The Sun Scenes are generally outdoors, often fun involving sun, sea and sand at the beach, but occasionally tortuous, sun, sand and no water to see, desert scenes. The sand is completely optional. Sun Scenes are usually Ordeals, but may be Tests with a Gain or Revelations, and are often just rests (or Wefts). Yarn-Tellers can decide if the Sun is harmful (sun burn, sun stroke and heat exhaustion) or helpful (restful, fun, pleasant weather) during play."
 		},
 		"Beat_Type": "6",
@@ -31,6 +32,7 @@
 		"Hook": "Dawn Chorus",
 		"Hook_Description": "The story hooks the character with a morning messenger (or other media such as the morning newspaper or update) bearing important news. It may be news that a friend is ill, or that the enemy is closing in, or that you have won a lottery. Regardless, this begins the Conflict with a Gain or Revelation.",
 		"Gain": "Gold and Gems (Yarn Gain)",
+		"Diegetic_Gain": "A wealth of gold and precious stones, gleaming with a light that promises prosperity and a higher station in life.",
 		"Fray": "Burning Sun",
 		"Fray_Description": "A High Stakes Solitary Motional Ordeal, where you must survive a dangerous situation, travel and often accomplish other tasks along the way, it might be as simple as making it back to the oasis after your camel was bitten by a snake, or it could be dashing through rush hour traffic to deliver pizzas when a shoot-out takes place. There are usually Obstacles involved and occasionally Traps.",
 		"Snag": "Changing Light",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Enlightenment",
 		"Description": "An Age of Enlightenment is occurring. During this age great discoveries are made, it is an age of exploration, both geographically and culturally. The society looks beyond itself, and seeks betterment by incorporation of ideas it finds there. These ideas may come from the society&apos;s past, a neighbouring culture or group (as during the actual enlightenment), some distant colonised land, or as a result of some out-group within the society (such as mathematicians, scientists, clergy or magicians). A society will often evolve culturally and technologically during this age, and may not resemble itself at all following the age.",
+		"Diegetic_Description": "A time of transformation and discovery, where society looks beyond its borders to find new truths. It is an era of cultural and geographical exploration, where the influx of new ideas from distant lands or ancient pasts reshapes every aspect of daily life and thought.",
 		"Rules": "Enlightenment is pictured as shining a light upon oneself and one&apos;s culture, but this must usually be done from an exterior position, such as through the window of a foreign or ancient culture. Elightenment can have a profound affect upon a society, changing almost everything about its culture in a revolutionary way."
 	}
 }

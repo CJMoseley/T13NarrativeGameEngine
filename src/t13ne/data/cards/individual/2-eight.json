@@ -21,6 +21,7 @@
 			"Plot": "The Wizard plot is sometimes a world changing plot. Nothing that follows a Wizard Plot will ever be the same again. They are often huge events that change the nature of reality, or the fabric of society are the order of the day. But they can also be small moments of magic, especially when they fall as a Side Significator.",
 			"Side": "When a side is marked by the Wizard they have an expert or specialist at something, they might be an elite hacker, or an expert sword-smith, or an actual spell-throwing, wand-carrying wizard. Usually they have one, sometimes the whole side may be Wizards, often of different types of specialists.",
 			"Character": "The Wizard Significator indicates a Character who is an ace in their field. They are a wizard at what they do. <p>They <strong>Gain Yin</strong> when they share wisdom, or tips with another. They gain from learning as well as teaching tips. </p><p>They <strong>Gain Yang</strong> when they work at what they are good at (research, or practical). </p><p>They <strong>Gain Chi</strong> when they don't do exactly what they are asked for, complicate matters, or achieve something unique or important.</p><p>They also gain a +1 Success Level on any Test, Ordeal or Action that they are a \"Wizard\" at.</p>",
+			"Diegetic_Character": "A master of their craft, possessing unparalleled skill and knowledge in their chosen field. They are often perceived as eccentric or even magical by those who cannot comprehend their expertise, always seeking to push the boundaries of what is possible through innovation and dedication.",
 			"Scene": "The Wizard Scene is a tiny piece of magic in a heartless universe. Yarn-Tellers can play the card to perform immense magics, or so that they can meet any suitable expert, potentially as an Ally (although often not)."
 		},
 		"Beat_Type": "6",
@@ -31,6 +32,7 @@
 		"Hook": "Summoning",
 		"Hook_Description": "The story opens a summoning, this may mean a message, an invitation, police at the door, or magical circles across dimensions. Sometimes the PCs are the summoners, but usually they are the Summoned. Someone powerful wants to see them, or has something to give them, or take from them.",
 		"Gain": "Magic Spell / Tool / Treasure (Skill Descendant / Talent / Power Descendant)",
+		"Diegetic_Gain": "A powerful secret or a specialized tool that grants extraordinary capability, reflecting a high degree of mastery and control over one's environment.",
 		"Fray": "Wizard Duel",
 		"Fray_Description": "A Wizard Duel should be a unique experience. Every Wizard is a master of themselves and their environment, so when two Duel it will reflect their individualities blended together. The Duel will be an appropriate Stake for both Wizards, from Low to Extreme, Soul, or Paradoxical. Unlike most Ordeals during Proficiencies each Wizard must agree the Proficiencies of the other. During this \"negotiation\" the rules will usually be stated, with a later intent to bend or break them for an advantage.",
 		"Snag": "Strange Ways",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Wizardry",
 		"Description": "An Age of Wizardry is occurring. During this age great masters of some art, craft, magic or technology arise within the society. These wizards can usher in a new technological or artistic age as they alter the whole world around their society trough their great works. Often these wizards are forever remembered as great philosophers, scientists, engineers and artists.",
+		"Diegetic_Description": "A legendary era of mastery and wonder, where the pinnacle of human achievement is reached by visionary individuals. It is a time when the impossible becomes possible through the application of deep knowledge and arcane skill, leaving a legacy of great works that will be remembered for generations.",
 		"Rules": "Among the society several Characters are selected as Wizards, these Characters can work seeming magic as they shift the Difficulties of a Test from Banal to Intrepid, onto Bold, Monstrous or even Twisted for all who attempt similar feats following them."
 	}
 }

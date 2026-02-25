@@ -21,6 +21,7 @@
 			"Plot": "The Drive Plot is usually a journey or odyssey. Sometimes the Vehicle is important, becoming a Character (often a Rival), other times it is barely mentioned. The Journey though is always more important than the destination. ",
 			"Side": "Drive Plots can affect individual sides of a Conflict, forcing them to move to find what they seek, or indicate that they have drive and will get closer to what they are working towards.",
 			"Character": "The Drive Significator indicates a Character who loves to drive (or pilot).<p>They <strong>Gain Yin</strong> when they talk about vehicles, motors, engines, riding animals. </p><p><strong>Gain Yang</strong> when they look after, or maintain a vehicle or riding animal. </p><p><strong>Gain Chi</strong> when they drive or ride a vehicle or riding animal. </p><p>They also gain a +1 Success Level when they are driving a vehicle or riding a riding animal.</p>",
+			"Diegetic_Character": "A master of motion and machinery, happiest when they are behind the controls of a vehicle or in the saddle of a swift beast. They have an innate connection to anything that moves with speed and purpose, possessing a drive that pushes them forward even in the face of danger.",
 			"Scene": "The Drive Scene is usually a car chase or race Ordeal, but it could be a quiet drive in the countryside, or a quick flit on a plane somewhere. Travel by vehicle is suggested and usually with a soupçon of action and danger."
 		},
 		"Beat_Type": "7",
@@ -31,6 +32,7 @@
 		"Hook": "Action",
 		"Hook_Description": "The Conflict opens with Action, usually a Motional Ordeal like a Car Chase, or Race.",
 		"Gain": "A Vehicle (A Vehicle Descendant) whether it is a run-down pick-up truck, a luxury yacht, or a Void-runner Space-liner.",
+		"Diegetic_Gain": "A dependable means of transport—perhaps a sturdy ground-car, a sleek vessel, or a loyal mount—opening up the world for travel and exploration.",
 		"Fray": "Furiously Fast",
 		"Fray_Description": "An Opposed Motional Ordeal, usually of High or Extreme Stakes. This is usually a car chase or race (although it may be a Flee! situation). There are ample opportunities for Stunts and Obstacles during this Ordeal and all drivers are expected to complete them.",
 		"Snag": "Collision",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Vehicles",
 		"Description": "An Age of Vehicles is occurring. During this age a society gains access to a new method of travel, this opens up new vistas of trade and exploration for the society, granting them additional freedoms and responsibilities. Examples from history include the \"Age of Oars\", \"Age of horse\", \"Age of Sail\", \"Age of Steam\", \"Automobile Age\", \"Jet Age\" and \"Space Age\". Although technically every new vehicle creates its own age, many are short-lived events for that society, where as others can continue for a very lonng time.",
+		"Diegetic_Description": "A time of newfound mobility, where society gains the means to traverse great distances with ease. Whether by sea, air, or land, the era is defined by the expansion of trade, exploration, and the shrinking of the known world as new horizons are reached.",
 		"Rules": "Access to a new vehicle or mode of transport within the society will have dramatic impacts upon that society. Additional freedom of movement, speed of travel, cheapness of trade and so on will positively affect the society, although responsibilities such as rail-road or fleet building can cost a society in the short-term the eventual benefits usually outweigh the costs."
 	}
 }

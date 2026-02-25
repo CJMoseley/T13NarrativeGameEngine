@@ -21,6 +21,7 @@
 			"Plot": "The Guardian Plot is often a plot about families. These may be coming of age tales (and often are), but a Guardian and Ward relationship will be important to this Plot. Guardian Plots can also fall into Police procedural lines, and Superhero adventures, where protecting others is an important plot point.",
 			"Side": "A side of the conflict marked by the Guardian will ally themselves with another side of the Conflict, often the Pressed or Below sides, protecting them and acting against their Rivals or enemies.",
 			"Character": "The Guardian Significator indicates a protector, who guides as well as guards. <p>They <strong>Gain Yin</strong> when they watch or listen to those they would protect, or comfort those who are injured. </p><p>They <strong>Gain Yang</strong> when they offer advice or guide others. They <strong>Gain Chi</strong> when they act to protect or shield another. </p><p>They gain +1 Success Level when they act to assist one of their wards.</p>",
+			"Diegetic_Character": "A vigilant and devoted protector, serving as both a shield and a guide for those in their care. They are master of observation and counsel, finding their greatest fulfillment in ensuring the safety and well-being of their wards and the stability of their community.",
 			"Scene": "The Guardian Scene is one of the major Ordeals of the Story. Guardians patrol the thresholds of adventure, and must be bested somehow. This may be a coming of age test, or a Guardian Monster Ordeal. Yarn-Tellers can use this card to unleash a Guardian Monster, perhaps as an Ally, perhaps not, they can also be used as a defence, or as a Mentor ally Gain."
 		},
 		"Beat_Type": "8",
@@ -31,6 +32,7 @@
 		"Hook": "Help!",
 		"Hook_Description": "The Hook is a direct call to help from someone (usually at least a Cast Extra) such as an Ally or Friend.",
 		"Gain": "A Cast Extra Ally with Power Descendant Armour",
+		"Diegetic_Gain": "The loyalty of a well-equipped guardian—a capable ally clad in formidable armor who stands ready to assist and defend.",
 		"Fray": "Protect and Serve",
 		"Fray_Description": "The Fray is trying to keep people safe in a dangerous situation. Maybe the PCs are cops during a riot, or perhaps there is a natural disaster and very one has to pitch in, then again maybe someone the PCs have a Duty or Devotion to is at risk.",
 		"Snag": "Untrustworthy Guardian",
@@ -110,6 +112,7 @@
 	"Age": {
 		"Type": "Surveillance",
 		"Description": "An Age of Surveillance is occurring. During this age a society watches itself, perhaps by introducing journalism, watchmen, police officers, video surveillance cameras, or internet tracking systems. Typically this watching simultaneously makes a society safer and more paranoid, until you reach a situation where you have nothing to fear, but are constantly afraid.",
+		"Diegetic_Description": "A time of constant vigilance and mounting paranoia, where society is perpetually under the watchful eyes of its own guardians. It is an era of unparalleled security and deep-seated unease, as the pervasive presence of watchmen and monitoring systems creates a world where every action is observed and every secret is at risk.",
 		"Rules": "During an Age of Surveillance a society increases both social paranoia and physical security, there will be less crime (possibly even zero crime), but this is replaced with increased paranoia and Stress for anyone who lives in the society. Typically all members of society gain Stress whenever they see signs of the surveillence (police, security guards, cameras, cell towers, etc), with Traumas often causing paranoid behaviour ."
 	}
 }
