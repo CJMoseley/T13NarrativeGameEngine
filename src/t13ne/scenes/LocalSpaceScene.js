@@ -263,8 +263,11 @@ export class LocalSpaceScene extends Scene {
         const systemRadius = allPlanets.length > 0 ? allPlanets[allPlanets.length - 1].orbitRadius : 20000;
         const startDist = Math.max(systemRadius * 2.5, 120000); // Start MUCH further out
 
+        // Use seeded RNG for consistent intro path
+        const prng = ProcGen.createPRNG((this.systemData.name || 'system') + '_intro');
+
         // 1. Start Point: Outer Edge
-        const angle = Math.random() * Math.PI * 2;
+        const angle = prng.nextDouble() * Math.PI * 2;
         this.introStartPos.set(
             Math.cos(angle) * startDist,
             startDist * 0.4, // Higher elev
@@ -582,17 +585,20 @@ export class LocalSpaceScene extends Scene {
 
         const matrix = new THREE.Matrix4();
 
+        // Use seeded RNG for consistent asteroid fields
+        const prng = ProcGen.createPRNG((this.systemData.name || 'system') + '_asteroids');
+
         for (let i = 0; i < count; i++) {
-            const angle = Math.random() * Math.PI * 2;
-            const dist = beltRadius + (Math.random() - 0.5) * beltWidth;
-            const y = (Math.random() - 0.5) * 400;
+            const angle = prng.nextDouble() * Math.PI * 2;
+            const dist = beltRadius + (prng.nextDouble() - 0.5) * beltWidth;
+            const y = (prng.nextDouble() - 0.5) * 400;
 
             const asteroidObj = {
                 mesh: null, // No individual mesh
                 instanceIndex: i,
                 realPosition: new THREE.Vector3(Math.cos(angle) * dist, y, Math.sin(angle) * dist),
                 orbitRadius: dist,
-                orbitSpeed: (0.0002 + Math.random() * 0.0001) * 5,
+                orbitSpeed: (0.0002 + prng.nextDouble() * 0.0001) * 5,
                 orbitAngle: angle,
                 baseRadius: 15,
                 type: 'asteroid',
