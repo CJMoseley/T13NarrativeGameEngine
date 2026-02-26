@@ -3,6 +3,7 @@
 import * as THREE from 'three';
 import { DecalGeometry } from 'three/examples/jsm/geometries/DecalGeometry.js';
 import { mulberry32 } from './ShipUtils.js';
+import CodexLoader from '/src/t13ne/modules/codex/CodexLoader.js';
 
 export class GreebleGenerator {
     constructor(modelLoader) {
@@ -173,6 +174,35 @@ export class GreebleGenerator {
         emitter.position.y = 0.15;
         group.add(base);
         group.add(emitter);
+        return group;
+    }
+
+    /**
+     * Creates a greeble from an external model.
+     * @param {string} modelUrl
+     * @returns {THREE.Group}
+     */
+    async createModelGreeble(modelUrl) {
+        const group = new THREE.Group();
+        try {
+            const model = await this.modelLoader.loadModel(modelUrl);
+            // Center the model and scale it to a standard greeble size
+            const bbox = new THREE.Box3().setFromObject(model);
+            const size = new THREE.Vector3();
+            bbox.getSize(size);
+            const maxDim = Math.max(size.x, size.y, size.z);
+            const scale = 1.0 / maxDim;
+            model.scale.set(scale, scale, scale);
+
+            // Move center to origin
+            const center = new THREE.Vector3();
+            bbox.getCenter(center);
+            model.position.sub(center.multiplyScalar(scale));
+
+            group.add(model);
+        } catch (e) {
+            console.error(`GreebleGenerator: Failed to load model greeble ${modelUrl}`, e);
+        }
         return group;
     }
 
@@ -1165,7 +1195,22 @@ export class GreebleGenerator {
             // 9. Universal Sensor/Shield Placement (Random distribution on large surfaces)
             if (isStructural && random() > 0.7) {
                 const greebleType = random() > 0.5 ? 'sensor' : 'shield';
-                const greebleObj = greebleType === 'sensor' ? this.createSensorBlister() : this.createShieldEmitter();
+                let greebleObj;
+
+                // Use models for greebles if available
+                if (CodexLoader.media && random() > 0.4) {
+                    const category = greebleType === 'sensor' ? 'misc' : 'weapon';
+                    const models = CodexLoader.media.findModels(category, [greebleType]);
+                    if (models.length > 0) {
+                        const model = models[Math.floor(random() * models.length)];
+                        greebleObj = new THREE.Group(); // Placeholder
+                        this.createModelGreeble(model.path).then(m => greebleObj.add(m));
+                    }
+                }
+
+                if (!greebleObj) {
+                    greebleObj = greebleType === 'sensor' ? this.createSensorBlister() : this.createShieldEmitter();
+                }
                 
                 // Pick a random spot on the component surface
                 // Simple approximation: Move along length, pick a random angle

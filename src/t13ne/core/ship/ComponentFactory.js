@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import Logger from '../Logger.js';
 import { ProceduralComponentGenerator } from '/src/t13ne/procgen/ships/components/ProceduralComponentGenerator.js';
+import ModelLoader from '/src/t13ne/core/ModelLoader.js';
 
 export const PRIMITIVE_TYPES = {
     BOX: 'box',
@@ -16,12 +17,14 @@ export const PRIMITIVE_TYPES = {
     ICOSAHEDRON: 'icosahedron',
     OCTAHEDRON: 'octahedron',
     TETRAHEDRON: 'tetrahedron',
-    COMPOUND_EYE: 'compound_eye'
+    COMPOUND_EYE: 'compound_eye',
+    MODEL: 'model'
 };
 
 export class ComponentFactory {
     constructor(gameEngine) {
         this.gameEngine = gameEngine;
+        this.modelLoader = new ModelLoader();
         // Standard material for the skeleton (bones of the ship)
         this.material = new THREE.MeshStandardMaterial({
             color: 0x888888,
@@ -36,9 +39,16 @@ export class ComponentFactory {
      * Generates a mesh based on the proxy type and dimensions.
      * @param {string} type - One of PRIMITIVE_TYPES
      * @param {Object} dims - Dimensions {x, y, z, radius, etc}
-     * @returns {THREE.Mesh}
+     * @returns {THREE.Mesh|THREE.Group}
      */
     createProxy(type, dims = {}) {
+        if (type === PRIMITIVE_TYPES.MODEL) {
+            // Placeholder group for async loaded model
+            const group = new THREE.Group();
+            group.userData = { isComponent: true, primitiveType: type, originalDims: dims, isPlaceholder: true };
+            return group;
+        }
+
         const cacheKey = `${type}_${JSON.stringify(dims)}`;
         if (this.geometryCache.has(cacheKey)) {
             const cachedGeometry = this.geometryCache.get(cacheKey);
@@ -262,11 +272,38 @@ export class ComponentFactory {
                 scale.set(dims.radius || 1, dims.radius || 1, dims.radius || 1);
                 sdfType = type;
                 break;
+            case PRIMITIVE_TYPES.MODEL:
+                scale.set(dims.width || 1, dims.height || 1, dims.depth || 1);
+                sdfType = 'model';
+                break;
             default:
                 scale.set(1, 1, 1);
                 sdfType = 'box';
         }
         return { sdfType, scale };
+    }
+
+    /**
+     * Loads a model for a component asynchronously and replaces the placeholder.
+     * @param {THREE.Group} placeholder
+     * @param {string} modelUrl
+     */
+    async _loadModelForProxy(placeholder, modelUrl) {
+        try {
+            const model = await this.modelLoader.loadModel(modelUrl);
+            placeholder.add(model);
+            placeholder.userData.isPlaceholder = false;
+
+            // Adjust scale/rotation if needed based on dims
+            const dims = placeholder.userData.originalDims;
+            if (dims.scale) placeholder.scale.set(dims.scale, dims.scale, dims.scale);
+            if (dims.rotation) placeholder.rotation.set(dims.rotation[0], dims.rotation[1], dims.rotation[2]);
+        } catch (error) {
+            console.error(`ComponentFactory: Failed to load model ${modelUrl}`, error);
+            // Fallback to a box
+            const fallback = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), this.material);
+            placeholder.add(fallback);
+        }
     }
 
     /**
@@ -324,6 +361,10 @@ export class ComponentFactory {
             : PRIMITIVE_TYPES.BOX;
 
         const mesh = this.createProxy(primitiveType, procComponent.dims);
+
+        if (primitiveType === PRIMITIVE_TYPES.MODEL && procComponent.modelUrl) {
+            this._loadModelForProxy(mesh, procComponent.modelUrl);
+        }
 
         // Link them
         procComponent.mesh = mesh;

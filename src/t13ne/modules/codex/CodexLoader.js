@@ -1,6 +1,7 @@
 import { CodexLibrary } from './CodexLibrary.js';
 import { CodexLibrarian } from './CodexLibrarian.js';
 import { CodexScribe } from './CodexScribe.js';
+import { MediaLibrarian } from './MediaLibrarian.js';
 
 /**
  * CodexLoader is responsible for loading and caching game data from JSON files.
@@ -11,6 +12,7 @@ class CodexLoader {
         this.library = new CodexLibrary();
         this.librarian = new CodexLibrarian(this.library);
         this.scribe = new CodexScribe(this.library, this.librarian);
+        this.media = new MediaLibrarian();
     }
 
     // --- Proxy Properties ---
@@ -30,7 +32,10 @@ class CodexLoader {
 
     // --- Delegated Methods ---
 
-    initialize(retries, delay) { return this.library.initialize(retries, delay); }
+    async initialize(retries, delay) {
+        await this.media.load();
+        return this.library.initialize(retries, delay);
+    }
     setConfig(config) { return this.library.setConfig(config); }
     clearCache() { return this.library.clearCache(); }
     getData(category, file) { return this.library.getData(category, file); }

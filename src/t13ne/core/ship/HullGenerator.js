@@ -456,6 +456,12 @@ export class HullGenerator {
                 dist = this.sdTetrahedron(localP, scale.x) - localPadding;
             } else if (c.sdfType === 'dodecahedron' || c.sdfType === 'icosahedron') {
                 dist = localP.length() - (scale.x + localPadding);
+            } else if (c.sdfType === 'model') {
+                // For models, use a box SDF based on their scale (bounding box approx)
+                const absLocalP = new THREE.Vector3(Math.abs(localP.x), Math.abs(localP.y), Math.abs(localP.z));
+                const qVec = absLocalP.sub(scale.clone().multiplyScalar(0.5).addScalar(localPadding));
+                dist = qVec.clone().max(new THREE.Vector3(0, 0, 0)).length() +
+                    Math.min(Math.max(qVec.x, Math.max(qVec.y, qVec.z)), 0.0);
             } else {
                 const absLocalP = new THREE.Vector3(Math.abs(localP.x), Math.abs(localP.y), Math.abs(localP.z));
                 const qVec = absLocalP.sub(scale.clone().multiplyScalar(0.5).addScalar(localPadding));

@@ -10,6 +10,7 @@ import { Planet } from '/src/t13ne/scenes/scenecomponents/Planet.js';
 import { Star } from '/src/t13ne/scenes/scenecomponents/Star.js';
 import { Asteroid } from '/src/t13ne/scenes/scenecomponents/Asteroid.js';
 import { SceneTools } from '/src/t13ne/core/SceneTools.js';
+import CodexLoader from '/src/t13ne/modules/codex/CodexLoader.js';
 
 export class LocalSpaceScene extends Scene {
     constructor(viewManager, sceneData) {
@@ -566,15 +567,40 @@ export class LocalSpaceScene extends Scene {
         });
     }
 
-    createAsteroids() {
+    async createAsteroids() {
         const count = 400;
         const beltRadius = this.scales.orbit * 2.5;
         const beltWidth = this.scales.orbit * 0.8;
 
-        // Use InstancedMesh for asteroid belt optimization
-        const dummyAsteroid = new Asteroid(15);
-        const geometry = dummyAsteroid.geometry;
-        const material = dummyAsteroid.material;
+        let geometry, material;
+
+        // Try to load a high-poly asteroid model from the manifest
+        if (CodexLoader.media) {
+            const asteroidModels = CodexLoader.media.findModels('asteroid');
+            if (asteroidModels.length > 0) {
+                try {
+                    const ModelLoader = (await import('/src/t13ne/core/ModelLoader.js')).default;
+                    const loader = new ModelLoader();
+                    const model = await loader.loadModel(asteroidModels[0].path);
+
+                    // Extract geometry and material from the first mesh found in the model
+                    model.traverse(child => {
+                        if (child.isMesh && !geometry) {
+                            geometry = child.geometry;
+                            material = child.material;
+                        }
+                    });
+                } catch (e) {
+                    Logger.warn("LocalSpaceScene: Failed to load asteroid model, falling back to procedural.", e);
+                }
+            }
+        }
+
+        if (!geometry) {
+            const dummyAsteroid = new Asteroid(15);
+            geometry = dummyAsteroid.geometry;
+            material = dummyAsteroid.material;
+        }
 
         this.asteroidMesh = new THREE.InstancedMesh(geometry, material, count);
         this.asteroidMesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);

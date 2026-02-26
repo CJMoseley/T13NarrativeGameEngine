@@ -3,6 +3,7 @@
 import Logger from "/src/t13ne/core/Logger.js";
 import { T13Plot } from "../narrative/t13ne-plots.js";
 import T13LoreManager from "../narrative/t13ne-lore.js";
+import CodexLoader from "../codex/CodexLoader.js";
 import { SceneDirector } from "./t13ne-scene-director.js";
 import { WorkerPool } from "/src/t13ne/core/WorkerPool.js";
 import GalacticEpic from "../../procgen/galaxy/GalacticEpic.js";
@@ -393,6 +394,66 @@ class T13NE_Referee {
 
         Logger.message(`Referee: Backstory generated for ${character.name}. Gained Lore: ${lore.topic}`);
         return backstoryPlot;
+    }
+
+    /**
+     * Pick a random model from the media catalogue.
+     * @param {string} category
+     * @param {Array<string>} tags
+     * @returns {object|null}
+     */
+    pickModel(category, tags = []) {
+        if (!CodexLoader.media) return null;
+        const models = CodexLoader.media.findModels(category, tags);
+        if (models.length === 0) return null;
+        const prng = this.t13ne.getModule('PRNG');
+        const index = prng ? Math.floor(prng.nextDouble() * models.length) : Math.floor(Math.random() * models.length);
+        return models[index];
+    }
+
+    /**
+     * Pick a random image from the media catalogue.
+     * @param {string} category
+     * @returns {object|null}
+     */
+    pickImage(category) {
+        if (!CodexLoader.media) return null;
+        const images = CodexLoader.media.findImages(category);
+        if (images.length === 0) return null;
+        const prng = this.t13ne.getModule('PRNG');
+        const index = prng ? Math.floor(prng.nextDouble() * images.length) : Math.floor(Math.random() * images.length);
+        return images[index];
+    }
+
+    /**
+     * Decorates a scene with random props based on its type.
+     * @param {T13Scene} scene
+     */
+    async decorateScene(scene) {
+        if (!scene || !CodexLoader.media) return;
+
+        const sceneType = scene.constructor.name;
+        let categories = [];
+        let count = 0;
+
+        if (sceneType === 'PlanetSurfaceScene') {
+            categories = ['plant', 'furniture'];
+            count = 5;
+        } else if (sceneType === 'LocalSpaceScene') {
+            categories = ['asteroid'];
+            count = 10;
+        }
+
+        for (let i = 0; i < count; i++) {
+            const cat = categories[Math.floor(Math.random() * categories.length)];
+            const model = this.pickModel(cat);
+            if (model) {
+                // Logic to add prop to scene (assuming scene has an addProp method or similar)
+                if (typeof scene.addProp === 'function') {
+                    await scene.addProp(model.path);
+                }
+            }
+        }
     }
 
     /**

@@ -54,6 +54,33 @@ export class PlanetSurfaceScene extends Scene {
         this.environment = new PlanetSurfaceEnvironment(this.planetData);
     }
 
+    /**
+     * Adds a prop to the scene from an external model.
+     * @param {string} modelUrl
+     */
+    async addProp(modelUrl) {
+        if (!this.environment) return;
+
+        try {
+            const ModelLoader = (await import('/src/t13ne/core/ModelLoader.js')).default;
+            const loader = new ModelLoader();
+            const model = await loader.loadModel(modelUrl);
+
+            // Random position on surface
+            const x = (Math.random() - 0.5) * 200;
+            const z = (Math.random() - 0.5) * 200;
+            const y = this.environment.getTerrainHeight(x, z);
+
+            model.position.set(x, y, z);
+            model.rotation.y = Math.random() * Math.PI * 2;
+
+            this.scene.add(model);
+            Logger.message(`PlanetSurfaceScene: Added prop ${modelUrl} at ${x}, ${y}, ${z}`);
+        } catch (e) {
+            console.error(`PlanetSurfaceScene: Failed to add prop ${modelUrl}`, e);
+        }
+    }
+
     update(time, delta) {
         super.update(time, delta);
         if (this.skybox) this.skybox.update(time * 0.001);
