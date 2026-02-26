@@ -42,10 +42,14 @@ export class MediaLibrarian {
     /**
      * Gets a random model from a category.
      * @param {string} category
-     * @param {Function} random - PRNG function
+     * @param {Function} random - PRNG function (should be a seeded procedural random)
      * @returns {object|null}
      */
-    getRandomModel(category, random = Math.random) {
+    getRandomModel(category, random) {
+        if (!random) {
+            console.warn('MediaLibrarian: getRandomModel called without a procedural random function.');
+            return null;
+        }
         const models = this.findModels(category);
         if (models.length === 0) return null;
         return models[Math.floor(random() * models.length)];

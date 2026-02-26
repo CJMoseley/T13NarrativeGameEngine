@@ -61,18 +61,21 @@ export class PlanetSurfaceScene extends Scene {
     async addProp(modelUrl) {
         if (!this.environment) return;
 
+        const prng = this.viewManager.gameEngine.getModule('PRNG');
+        const random = () => prng ? prng.nextDouble() : Math.random();
+
         try {
             const ModelLoader = (await import('/src/t13ne/core/ModelLoader.js')).default;
             const loader = new ModelLoader();
             const model = await loader.loadModel(modelUrl);
 
             // Random position on surface
-            const x = (Math.random() - 0.5) * 200;
-            const z = (Math.random() - 0.5) * 200;
+            const x = (random() - 0.5) * 200;
+            const z = (random() - 0.5) * 200;
             const y = this.environment.getTerrainHeight(x, z);
 
             model.position.set(x, y, z);
-            model.rotation.y = Math.random() * Math.PI * 2;
+            model.rotation.y = random() * Math.PI * 2;
 
             this.scene.add(model);
             Logger.message(`PlanetSurfaceScene: Added prop ${modelUrl} at ${x}, ${y}, ${z}`);

@@ -407,7 +407,7 @@ class T13NE_Referee {
         const models = CodexLoader.media.findModels(category, tags);
         if (models.length === 0) return null;
         const prng = this.t13ne.getModule('PRNG');
-        const index = prng ? Math.floor(prng.nextDouble() * models.length) : Math.floor(Math.random() * models.length);
+        const index = prng ? Math.floor(prng.nextDouble() * models.length) : 0;
         return models[index];
     }
 
@@ -421,7 +421,7 @@ class T13NE_Referee {
         const images = CodexLoader.media.findImages(category);
         if (images.length === 0) return null;
         const prng = this.t13ne.getModule('PRNG');
-        const index = prng ? Math.floor(prng.nextDouble() * images.length) : Math.floor(Math.random() * images.length);
+        const index = prng ? Math.floor(prng.nextDouble() * images.length) : 0;
         return images[index];
     }
 
@@ -431,6 +431,9 @@ class T13NE_Referee {
      */
     async decorateScene(scene) {
         if (!scene || !CodexLoader.media) return;
+
+        const prng = this.t13ne.getModule('PRNG');
+        const random = (max) => prng ? Math.floor(prng.nextDouble() * max) : 0;
 
         const sceneType = scene.constructor.name;
         let categories = [];
@@ -445,7 +448,7 @@ class T13NE_Referee {
         }
 
         for (let i = 0; i < count; i++) {
-            const cat = categories[Math.floor(Math.random() * categories.length)];
+            const cat = categories[random(categories.length)];
             const model = this.pickModel(cat);
             if (model) {
                 // Logic to add prop to scene (assuming scene has an addProp method or similar)
