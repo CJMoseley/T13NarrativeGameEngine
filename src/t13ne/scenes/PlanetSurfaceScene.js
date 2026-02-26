@@ -70,15 +70,34 @@ export class PlanetSurfaceScene extends Scene {
             const model = await loader.loadModel(modelUrl);
 
             // Random position on surface
-            const x = (random() - 0.5) * 200;
-            const z = (random() - 0.5) * 200;
-            const y = this.environment.getTerrainHeight(x, z);
+            const x = (random() - 0.5) * 400;
+            const z = (random() - 0.5) * 400;
 
-            model.position.set(x, y, z);
-            model.rotation.y = random() * Math.PI * 2;
+            // Raycast to find the exact ground point and normal
+            const raycaster = new THREE.Raycaster(
+                new THREE.Vector3(x, 1000, z),
+                new THREE.Vector3(0, -1, 0)
+            );
+
+            // Ensure matrix world is updated for raycasting
+            this.scene.updateMatrixWorld(true);
+            const intersects = raycaster.intersectObjects(this.scene.children, true);
+            const groundHit = intersects.find(hit => hit.object.name === 'terrain' || hit.object.userData.isTerrain);
+
+            if (groundHit) {
+                model.position.copy(groundHit.point);
+                // Align to normal
+                model.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), groundHit.face.normal);
+                model.rotateY(random() * Math.PI * 2);
+            } else {
+                // Fallback to environment height
+                const y = this.environment.getTerrainHeight(x, z);
+                model.position.set(x, y, z);
+                model.rotation.y = random() * Math.PI * 2;
+            }
 
             this.scene.add(model);
-            Logger.message(`PlanetSurfaceScene: Added prop ${modelUrl} at ${x}, ${y}, ${z}`);
+            Logger.message(`PlanetSurfaceScene: Added prop ${modelUrl} via raycast at ${model.position.x}, ${model.position.y}, ${model.position.z}`);
         } catch (e) {
             console.error(`PlanetSurfaceScene: Failed to add prop ${modelUrl}`, e);
         }
