@@ -1,6 +1,7 @@
 // d:\GoogleDrive\Games\wormholeracersJS\WormholeRacersJS\plugins\t13ne\modules\t13ne-referee.js
 
 import Logger from "/src/t13ne/core/Logger.js";
+import { EventBus } from "/src/t13ne/core/EventBus.js";
 import { T13Plot } from "../narrative/t13ne-plots.js";
 import T13LoreManager from "../narrative/t13ne-lore.js";
 import { SceneDirector } from "./t13ne-scene-director.js";
