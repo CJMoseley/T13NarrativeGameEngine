@@ -54,6 +54,55 @@ export class PlanetSurfaceScene extends Scene {
         this.environment = new PlanetSurfaceEnvironment(this.planetData);
     }
 
+    /**
+     * Adds a prop to the scene from an external model.
+     * @param {string} modelUrl
+     */
+    async addProp(modelUrl) {
+        if (!this.environment) return;
+
+        const prng = this.viewManager.gameEngine.getModule('PRNG');
+        const random = () => prng ? prng.nextDouble() : Math.random();
+
+        try {
+            const ModelLoader = (await import('/src/t13ne/core/ModelLoader.js')).default;
+            const loader = new ModelLoader();
+            const model = await loader.loadModel(modelUrl);
+
+            // Random position on surface
+            const x = (random() - 0.5) * 400;
+            const z = (random() - 0.5) * 400;
+
+            // Raycast to find the exact ground point and normal
+            const raycaster = new THREE.Raycaster(
+                new THREE.Vector3(x, 1000, z),
+                new THREE.Vector3(0, -1, 0)
+            );
+
+            // Ensure matrix world is updated for raycasting
+            this.scene.updateMatrixWorld(true);
+            const intersects = raycaster.intersectObjects(this.scene.children, true);
+            const groundHit = intersects.find(hit => hit.object.name === 'terrain' || hit.object.userData.isTerrain);
+
+            if (groundHit) {
+                model.position.copy(groundHit.point);
+                // Align to normal
+                model.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), groundHit.face.normal);
+                model.rotateY(random() * Math.PI * 2);
+            } else {
+                // Fallback to environment height
+                const y = this.environment.getTerrainHeight(x, z);
+                model.position.set(x, y, z);
+                model.rotation.y = random() * Math.PI * 2;
+            }
+
+            this.scene.add(model);
+            Logger.message(`PlanetSurfaceScene: Added prop ${modelUrl} via raycast at ${model.position.x}, ${model.position.y}, ${model.position.z}`);
+        } catch (e) {
+            console.error(`PlanetSurfaceScene: Failed to add prop ${modelUrl}`, e);
+        }
+    }
+
     update(time, delta) {
         super.update(time, delta);
         if (this.skybox) this.skybox.update(time * 0.001);

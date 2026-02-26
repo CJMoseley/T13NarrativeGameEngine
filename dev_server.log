@@ -3,7 +3,7 @@
 > vite
 
 
-  VITE v7.3.0  ready in 758 ms
+  VITE v7.3.0  ready in 331 ms
 
   ➜  Local:   http://localhost:5173/
   ➜  Network: use --host to expose
@@ -1652,3 +1652,33 @@
     at handleRequest (/app/node_modules/esbuild/lib/main.js:628:17)
     at handleIncomingPacket (/app/node_modules/esbuild/lib/main.js:653:7)
     at Socket.readFromStdout (/app/node_modules/esbuild/lib/main.js:581:7)
+12:42:12 AM [vite] (client) ✨ new dependencies optimized: three
+12:42:13 AM [vite] (client) ✨ new dependencies optimized: simplex-noise, workerpool, three/examples/jsm/controls/OrbitControls.js, three/examples/jsm/controls/TrackballControls.js, three/examples/jsm/loaders/OBJLoader.js, three/examples/jsm/loaders/TDSLoader.js, three/examples/jsm/loaders/PLYLoader.js, lindenmayer, three/examples/jsm/objects/MarchingCubes.js, three/examples/jsm/geometries/DecalGeometry.js, three-csg-ts, enable3d
+12:42:13 AM [vite] (client) ✨ optimized dependencies changed. reloading
+Files in the public directory are served at the root path.
+Instead of /public/media/audio/samples/pad_softsynth/syn string c4.wav, use /media/audio/samples/pad_softsynth/syn string c4.wav.
+Files in the public directory are served at the root path.
+Instead of /public/data/media/audio/samples/pad_softsynth/syn string c4.wav, use /data/media/audio/samples/pad_softsynth/syn string c4.wav.
+Files in the public directory are served at the root path.
+Instead of /public/media/audio/samples/pad_softsynth/syn_string_c4.wav, use /media/audio/samples/pad_softsynth/syn_string_c4.wav.
+Files in the public directory are served at the root path.
+Instead of /public/data/media/audio/samples/pad_softsynth/syn_string_c4.wav, use /data/media/audio/samples/pad_softsynth/syn_string_c4.wav.
+Files in the public directory are served at the root path.
+Instead of /public/media/audio/samples/pad_softsynth/syn string c4.mp3, use /media/audio/samples/pad_softsynth/syn string c4.mp3.
+Files in the public directory are served at the root path.
+Instead of /public/media/audio/samples/pad_softsynth/syn string c4.ogg, use /media/audio/samples/pad_softsynth/syn string c4.ogg.
+Files in the public directory are served at the root path.
+Instead of /public/data/media/audio/samples/pad_softsynth/syn string c4.mp3, use /data/media/audio/samples/pad_softsynth/syn string c4.mp3.
+Files in the public directory are served at the root path.
+Instead of /public/data/media/audio/samples/pad_softsynth/syn string c4.ogg, use /data/media/audio/samples/pad_softsynth/syn string c4.ogg.
+Files in the public directory are served at the root path.
+Instead of /public/media/audio/samples/pad_softsynth/syn_string_c4.mp3, use /media/audio/samples/pad_softsynth/syn_string_c4.mp3.
+Files in the public directory are served at the root path.
+Instead of /public/media/audio/samples/pad_softsynth/syn_string_c4.ogg, use /media/audio/samples/pad_softsynth/syn_string_c4.ogg.
+Files in the public directory are served at the root path.
+Instead of /public/data/media/audio/samples/pad_softsynth/syn_string_c4.mp3, use /data/media/audio/samples/pad_softsynth/syn_string_c4.mp3.
+Files in the public directory are served at the root path.
+Instead of /public/data/media/audio/samples/pad_softsynth/syn_string_c4.ogg, use /data/media/audio/samples/pad_softsynth/syn_string_c4.ogg.
+1:01:20 AM [vite] (client) page reload src/t13ne/modules/codex/MediaLibrarian.js
+1:01:25 AM [vite] (client) page reload src/t13ne/modules/systems/t13ne-referee.js
+1:03:09 AM [vite] (client) page reload src/t13ne/rendering/PlanetaryRenderer.js

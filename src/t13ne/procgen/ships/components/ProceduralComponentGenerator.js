@@ -2,6 +2,7 @@ import Logger from '/src/t13ne/core/Logger.js';
 import { ComponentDefs } from '/src/t13ne/procgen/ships/components/ComponentDefs.js';
 import ProcGen from '/src/t13ne/procgen/ProcGen.js';
 import { ComponentLoreGenerator } from '/src/t13ne/procgen/lore/factories/ComponentLoreGenerator.js';
+import CodexLoader from '/src/t13ne/modules/codex/CodexLoader.js';
 
 const SHAPE_OPTIONS = {
     'fuselage': ['box', 'cylinder', 'capsule'],
@@ -32,9 +33,34 @@ export class ProceduralComponentGenerator {
         // Initialize PRNG
         const prng = ProcGen.createPRNG(seed);
 
-        // 1. Determine Shape
-        const possibleShapes = SHAPE_OPTIONS[effectiveUsage] || SHAPE_OPTIONS['default'];
-        const shapeType = possibleShapes[Math.floor(prng.nextDouble() * possibleShapes.length)];
+        // 1. Determine Shape or Model
+        let shapeType;
+        let modelUrl = null;
+
+        // Try to find a matching model from the manifest for certain high-detail components
+        if (CodexLoader.media && (effectiveUsage === 'engine' || effectiveUsage === 'cockpit' || effectiveUsage === 'weapon' || effectiveUsage === 'asteroid')) {
+            // Mapping usage to manifest categories
+            const categoryMap = {
+                'engine': 'misc', // We don't have an 'engine' category yet, maybe search by name?
+                'cockpit': 'misc',
+                'weapon': 'weapon',
+                'asteroid': 'asteroid'
+            };
+
+            const category = categoryMap[effectiveUsage];
+            const matchingModels = CodexLoader.media.findModels(category, [effectiveUsage]);
+
+            if (matchingModels.length > 0 && prng.nextDouble() > 0.5) {
+                const selectedModel = matchingModels[Math.floor(prng.nextDouble() * matchingModels.length)];
+                shapeType = 'model';
+                modelUrl = selectedModel.path;
+            }
+        }
+
+        if (!shapeType) {
+            const possibleShapes = SHAPE_OPTIONS[effectiveUsage] || SHAPE_OPTIONS['default'];
+            shapeType = possibleShapes[Math.floor(prng.nextDouble() * possibleShapes.length)];
+        }
 
         // 2. Determine Dimensions (Procedural variation)
         // Generate a numeric seed for noise functions from the provided seed if it's a string
@@ -89,6 +115,7 @@ export class ProceduralComponentGenerator {
             name: name,
             description: finalDescription,
             proxyShape: shapeType,
+            modelUrl: modelUrl,
             dims: dims,
             harmonics: harmonics,
             wiringNodes: Math.floor(prng.nextDouble() * 3) + 1, // 1-3 connection points

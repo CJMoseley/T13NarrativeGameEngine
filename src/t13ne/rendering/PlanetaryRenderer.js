@@ -46,6 +46,8 @@ export class PlanetaryRenderer {
 
         const material = new THREE.MeshPhongMaterial({ color: 0x336633 });
         const mesh = new THREE.Mesh(geometry, material);
+        mesh.name = 'terrain';
+        mesh.userData.isTerrain = true;
         this.scene.add(mesh);
     }
 
