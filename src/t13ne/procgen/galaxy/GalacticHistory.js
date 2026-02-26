@@ -50,7 +50,7 @@ class GalacticHistoryManager {
             this._activeSpecies = history.activeSpecies;
             this._isLoaded = true;
 
-            await CacheManager.store('systems', 'galactic_history_' + this.seed, {
+            await CodexLoader.storeCache('systems', 'galactic_history_' + this.seed, {
                 timeline: this._timeline,
                 corporations: this._corporations,
                 activeSpecies: this._activeSpecies,
