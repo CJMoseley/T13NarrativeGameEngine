@@ -36,7 +36,7 @@ export class DialogueScene extends T13Scene {
         }
     }
 
-    async prepare(onProgress) {
+    async _prepare(onProgress) {
         await super.prepare(onProgress);
         
         // Ensure Social Ordeals module is initialized

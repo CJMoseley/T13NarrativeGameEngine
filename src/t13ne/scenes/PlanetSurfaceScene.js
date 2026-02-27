@@ -18,7 +18,12 @@ export class PlanetSurfaceScene extends Scene {
         this.skybox = null;
     }
 
-    init(planetData) {
+    async _prepare(onProgress) {
+        this.init(this.sceneData);
+        if (onProgress) onProgress({ status: 'Surface Ready', percent: 1.0 });
+    }
+
+    init(planetData) { // Keep init for backward compatibility if called directly
         this.planetData = planetData;
         Logger.log('PlanetSurfaceScene: init', { planetData: this.planetData });
 
@@ -109,7 +114,8 @@ export class PlanetSurfaceScene extends Scene {
     }
 
     onLoad(sceneData) {
-        this.init(sceneData);
+        // init is now called in _prepare, but we might need to update data if it's passed here
+        if (sceneData) this.init(sceneData);
         super.onLoad();
         Logger.message("PlanetSurfaceScene loaded.");
     }

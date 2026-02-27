@@ -48,12 +48,51 @@ export class PlanetaryOrbitScene extends Scene {
         this.starbox = null;
     }
 
-    async prepare(onProgress) {
+    /**
+     * Updates the scene data with new context (e.g. passed from IntroSequence).
+     * This ensures the scene has the latest generated data before loading.
+     */
+    updateSceneData(data) {
+        if (data.planet) this.planetData = data.planet;
+        if (data.systemDetails) this.systemData = data.systemDetails;
+        
+        // If we received valid data, rebuild the scene visuals
+        if (this.planetData && this.planetData.name && this.planetData.name !== 'Unknown World') {
+            Logger.message("PlanetaryOrbitScene: Received updated planet data. Rebuilding scene.");
+            this.buildScene();
+            if (this.isActive) {
+                if (this.infoPanel && this.infoPanel.parentNode) this.infoPanel.parentNode.removeChild(this.infoPanel);
+                this.createPlanetInfoPanel();
+            }
+        }
+    }
+
+    async _prepare(onProgress) {
         this.scene.background = new THREE.Color(0x000000);
         this.setupLighting();
         this.setupCamera();
-        // Defer heavy generation to onLoad to prevent hanging the previous scene's transition
+        
+        // If we already have data (unlikely if preloaded early, but possible), build now.
+        if (this.planetData && this.planetData.name && this.planetData.name !== 'Unknown World') {
+            await this.buildScene();
+        }
+        
         if (onProgress) onProgress({ status: 'Orbit Achieved', percent: 1.0 });
+    }
+
+    async buildScene() {
+        // Clear existing objects to prevent duplicates on rebuild
+        if (this.planetMesh) { this.scene.remove(this.planetMesh); this.planetMesh = null; }
+        if (this.atmosphereMesh) { this.scene.remove(this.atmosphereMesh); this.atmosphereMesh = null; }
+        this.moons.forEach(m => this.scene.remove(m.mesh));
+        this.moons = [];
+        if (this.asteroidObj) { this.scene.remove(this.asteroidObj.mesh); this.asteroidObj = null; }
+
+        await this.createSkybox();
+        this.createSunVisual();
+        this.createMainPlanet();
+        this.createMoons();
+        this.createCinematicAsteroid();
     }
 
     setupLighting() {
@@ -106,23 +145,14 @@ export class PlanetaryOrbitScene extends Scene {
         const funcName = 'PlanetaryOrbitScene.onLoad';
         Logger.start(funcName);
         
-        if (!this.planetData) {
+       if (!this.planetData || !this.planetData.name) {
             Logger.error("PlanetaryOrbitScene: No planet data provided.");
         }
 
-        await this.createSkybox();
-        await new Promise(r => setTimeout(r, 0)); // Yield to event loop
-        
-        this.createSunVisual();
-        await new Promise(r => setTimeout(r, 0)); // Yield
-        
-        this.createMainPlanet();
-        await new Promise(r => setTimeout(r, 0)); // Yield
-        
-        this.createMoons();
-        await new Promise(r => setTimeout(r, 0)); // Yield
-        
-        this.createCinematicAsteroid();
+        // Ensure scene is built if it wasn't in prepare
+        if (!this.planetMesh) {
+            await this.buildScene();
+        }
         this.createPlanetInfoPanel();
 
         super.onLoad();
@@ -567,9 +597,6 @@ export class PlanetaryOrbitScene extends Scene {
         document.body.appendChild(panel);
         this.infoPanel = panel;
         
-        // Trigger ship preload now that UI is up
-        this.preloadShipScene();
-        
         // Trigger Surface Generation
         setTimeout(() => this.generateSurfaceSnapshot(landCanvas), 100);
         // Trigger Avatar Generation
@@ -857,9 +884,6 @@ export class PlanetaryOrbitScene extends Scene {
             this.introTime += dt;
             if (this.introTime > 10.0) {
                  this.introActive = false;
-                 if (this.infoPanel) {
-                    this.infoPanel.style.opacity = '0';
-                }
             }
         }
     }

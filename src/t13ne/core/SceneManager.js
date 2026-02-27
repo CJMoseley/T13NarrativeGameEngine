@@ -43,7 +43,10 @@ export class SceneManager {
      * Starts the intro sequence.
      */
     startIntro() {
-        if (this.introSequence) this.introSequence.start();
+        if (this.introSequence) {
+            return this.introSequence.start();
+        }
+        return Promise.resolve();
     }
 
     /**

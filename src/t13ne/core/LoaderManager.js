@@ -101,17 +101,15 @@ class LoaderManager {
             },
 
             {
-                name: 'Cinematic Intro', action: async () => {
-                    this.viewManager.sceneQueue = [];
-                    // Start the cinematic loop - we do NOT await completion so narrative gen can run in parallel
-                    IntroSequence.play(this.viewManager);
-                    // Minimal delay to ensure scene transition logic starts before background crunching
-                    await new Promise(r => setTimeout(r, 200));
+                name: 'Building World', action: async () => { // This is now an async task
+                    this.reportProgress('Initializing narrative sequence...');
+                    if (this.viewManager.sceneManager) {
+                        // Explicitly do not await the full sequence to prevent loader timeout.
+                        // The intro runs in the foreground while the loader completes.
+                        this.viewManager.sceneManager.startIntro().catch(e => Logger.error("IntroSequence failed to start", e));
+                    }
+                    return Promise.resolve();
                 }
-            },
-
-            {
-                name: 'Narrative Data', action: () => this.gameEngine.initializeNarrativeData()
             }
         ];
     }
@@ -170,10 +168,7 @@ class LoaderManager {
             }
         }
 
-        this.reportProgress(Localization.__('READY_MESSAGE', { message: 'All systems initialized. Welcome, racer.' }));
         Logger.message('LoaderManager: All tasks completed successfully.');
-
-        // Finalize loading - the IntroSequence or the last scene will handle the transition to the Main Menu.
     }
 }
 

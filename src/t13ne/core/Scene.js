@@ -2,12 +2,16 @@ import * as THREE from 'three';
 import Logger from './Logger.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls.js';
+import { EventBus } from './EventBus.js';
 import { Controls } from './Controls.js';
+import T13NE from '../T13NE.js'; // Import T13NE for config access
 
 /**
  * An "Empty Stage" or base class for all scenes in the application.
  * It provides a standardized structure for initialization, asset preparation,
  * lifecycle management, and rendering. It also includes a basic multi-camera system.
+ * 
+ * Now includes T13NE specific functionality (Plots, Locations, 2D Layer) by default.
  */
 export class Scene {
     /**
@@ -19,6 +23,24 @@ export class Scene {
         this.gameEngine = viewManager.gameEngine;
         this.sceneData = sceneData;
 
+        // Scene flow control properties
+        this.estimatedPreparationTime = sceneData.estimatedPreparationTime || 1000; // Default 1s
+        this.minDuration = sceneData.minDuration || 0; // Default 0s
+        this.isPrepared = false;
+        this.isPlaying = false;
+        this.isComplete = false;
+
+        // Narrative Context
+        this.renderMode = sceneData.renderMode || '3d'; // '3d', '2d', or 'dual'
+        this.location = sceneData.location || null; // T13 Location Entity
+        this.plot = sceneData.plot || null; // T13Plot instance
+
+        // Music Strategy
+        this.theme = null;
+        this.themeComponents = [];
+        // 'replace' = play this scene's theme. 'merge' = mix with current. 'keep' = don't change.
+        this.musicTransition = sceneData.musicTransition || 'replace'; 
+
         this.scene = new THREE.Scene();
         this.renderer = this.viewManager.renderer;
         if (!this.renderer) {
@@ -26,6 +48,16 @@ export class Scene {
             this.renderer.setSize(window.innerWidth, window.innerHeight);
             this.viewManager.renderer = this.renderer; // Assign back to ViewManager
             // The canvas is appended by the ViewManager when a scene is first shown.
+        }
+
+        // 2D Layer (SVG & Raster)
+        this.twoDContainer = null;
+        this.svg = null;
+        this.rasterLayer = null;
+        this.sprites = [];
+
+        if (this.renderMode === '2d' || this.renderMode === 'dual') {
+            this.init2DLayer();
         }
 
         this.cameras = new Map();
@@ -51,6 +83,145 @@ export class Scene {
     }
 
     /**
+     * Initializes the 2D SVG/Raster layer for the scene.
+     */
+    init2DLayer() {
+        this.twoDContainer = document.createElement('div');
+        this.twoDContainer.id = `t13-scene-2d-${Date.now()}`;
+        Object.assign(this.twoDContainer.style, {
+            position: 'absolute',
+            top: '0',
+            left: '0',
+            width: '100%',
+            height: '100%',
+            pointerEvents: 'none',
+            zIndex: '5'
+        });
+        document.body.appendChild(this.twoDContainer);
+
+        // Raster Layer (for PNGs, JPGs, etc.)
+        this.rasterLayer = document.createElement('div');
+        Object.assign(this.rasterLayer.style, {
+            position: 'absolute',
+            top: '0',
+            left: '0',
+            width: '100%',
+            height: '100%',
+            pointerEvents: 'none',
+            zIndex: '1'
+        });
+        this.twoDContainer.appendChild(this.rasterLayer);
+
+        this.svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        this.svg.setAttribute("width", "100%");
+        this.svg.setAttribute("height", "100%");
+        this.svg.style.pointerEvents = 'none';
+        this.svg.style.position = 'absolute';
+        this.svg.style.zIndex = '2';
+        this.twoDContainer.appendChild(this.svg);
+
+        Logger.message("Scene: 2D Layer initialized (SVG & Raster).");
+
+        // Handle initial background image if provided in sceneData
+        if (this.sceneData.backgroundImage) {
+            this.addRasterImage(this.sceneData.backgroundImage, { 
+                id: 'scene-background',
+                style: { width: '100%', height: '100%', objectFit: 'cover' } 
+            });
+        }
+    }
+
+    addRasterImage(src, options = {}) {
+        if (!this.rasterLayer) return null;
+        const img = document.createElement('img');
+        img.src = src;
+        if (options.id) img.id = options.id;
+        if (options.className) img.className = options.className;
+        if (options.style) Object.assign(img.style, options.style);
+        this.rasterLayer.appendChild(img);
+        return img;
+    }
+
+    /**
+     * Adds an animated sprite to the 2D layer.
+     */
+    addSprite(src, options = {}) {
+        if (!this.rasterLayer) return null;
+
+        const sprite = {
+            id: options.id || `sprite_${Date.now()}_${Math.floor(Math.random() * 1000)}`,
+            element: document.createElement('div'),
+            src: src,
+            frames: options.frames || 1,
+            currentFrame: 0,
+            fps: options.fps || 12,
+            loop: options.loop !== undefined ? options.loop : true,
+            timer: 0,
+            frameWidth: options.frameWidth || 64,
+            frameHeight: options.frameHeight || 64,
+            isPlaying: options.autoPlay !== undefined ? options.autoPlay : true,
+            onComplete: options.onComplete || null,
+            isSpritesheet: options.isSpritesheet || (options.frames > 1)
+        };
+
+        Object.assign(sprite.element.style, {
+            position: 'absolute',
+            width: `${sprite.frameWidth}px`,
+            height: `${sprite.frameHeight}px`,
+            backgroundImage: `url()`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: '0px 0px',
+            top: (options.y || 0) + 'px',
+            left: (options.x || 0) + 'px',
+            pointerEvents: options.interactive ? 'auto' : 'none',
+            zIndex: options.zIndex || '10'
+        });
+
+        if (options.style) Object.assign(sprite.element.style, options.style);
+        if (options.className) sprite.element.className = options.className;
+
+        this.rasterLayer.appendChild(sprite.element);
+        this.sprites.push(sprite);
+        return sprite;
+    }
+
+    removeSprite(spriteOrId) {
+        const id = typeof spriteOrId === 'string' ? spriteOrId : spriteOrId.id;
+        const idx = this.sprites.findIndex(s => s.id === id);
+        if (idx !== -1) {
+            const s = this.sprites[idx];
+            if (s.element && s.element.parentNode) {
+                s.element.parentNode.removeChild(s.element);
+            }
+            this.sprites.splice(idx, 1);
+        }
+    }
+
+    /**
+     * Helper to project 3D coordinates to 2D screen space.
+     */
+    projectTo2D(position) {
+        if (!this.activeCamera) return { x: 0, y: 0 };
+
+        const vector = position.clone();
+        vector.project(this.activeCamera);
+
+        return {
+            x: (vector.x * 0.5 + 0.5) * window.innerWidth,
+            y: (-(vector.y * 0.5) + 0.5) * window.innerHeight
+        };
+    }
+
+    /**
+     * Updates the scene data with new context (e.g. passed from IntroSequence).
+     */
+    updateContext(context) {
+        if (!context) return;
+        Object.assign(this.sceneData, context);
+        // Subclasses can override to react to new data
+    }
+
+    /**
      * Sets up camera controls for a specific camera.
      * @param {string} type - 'orbit', 'trackball', or 'none'.
      * @param {object} options - Configuration options for the controls.
@@ -59,7 +230,7 @@ export class Scene {
     setupControls(type = 'orbit', options = {}, cameraName = null) {
         const targetCameraName = cameraName || this.activeCameraName;
         if (!targetCameraName || !this.cameras.has(targetCameraName)) {
-            Logger.error(`Scene: Cannot setup controls. Camera '${targetCameraName}' not found.`);
+            Logger.error(`Scene: Cannot setup controls. Camera '' not found.`);
             return;
         }
 
@@ -76,7 +247,7 @@ export class Scene {
         }
 
         if (type === 'none') {
-            Logger.message(`Scene: Controls removed for camera '${targetCameraName}'.`);
+            Logger.message(`Scene: Controls removed for camera ''.`);
             return;
         }
 
@@ -111,7 +282,7 @@ export class Scene {
         controls.enabled = true;
 
         this.cameraControls.set(targetCameraName, controls);
-        Logger.message(`Scene: Controls set to '${type}' for camera '${targetCameraName}'.`);
+        Logger.message(`Scene: Controls set to '' for camera ''.`);
     }
 
     /**
@@ -121,7 +292,7 @@ export class Scene {
      */
     addCamera(name, camera) {
         this.cameras.set(name, camera);
-        Logger.message(`Scene: Camera '${name}' added.`);
+        Logger.message(`Scene: Camera '' added.`);
     }
 
     /**
@@ -150,9 +321,9 @@ export class Scene {
                 newControls.update();
             }
 
-            Logger.message(`Scene: Active camera set to '${name}'.`);
+            Logger.message(`Scene: Active camera set to ''.`);
         } else {
-            Logger.error(`Scene: Camera '${name}' not found.`);
+            Logger.error(`Scene: Camera '' not found.`);
         }
     }
 
@@ -163,10 +334,10 @@ export class Scene {
     setCameraMode(mode) {
         if (this.cameraModes.includes(mode)) {
             this.activeCameraMode = mode;
-            Logger.message(`Scene: Camera mode set to '${mode}'.`);
+            Logger.message(`Scene: Camera mode set to ''.`);
             // Subclasses can override this to change controls based on mode.
         } else {
-            Logger.warn(`Scene: Invalid camera mode '${mode}'.`);
+            Logger.warn(`Scene: Invalid camera mode ''.`);
         }
     }
 
@@ -176,10 +347,80 @@ export class Scene {
      * @param {function} onProgress - A callback to report loading progress (0 to 1).
      * @returns {Promise<void>}
      */
-    async prepare(onProgress) {
-        // Example: onProgress(0.5); // Report 50% completion
+    async _prepare(onProgress) {
         // Subclasses will override this to load their specific assets.
         Logger.message(`Preparing scene: ${this.constructor.name}`);
+        await this._generateTheme();
+    }
+
+    /**
+     * Collects components from the scene to be used for theme generation.
+     * Includes T13NE specific narrative elements.
+     * @returns {Array<object>} An array of components for the theme generator.
+     * @protected
+     */
+    _getThemeComponents() {
+        const components = [];
+        if (this.sceneData) {
+            components.push({ name: `SceneData_${this.constructor.name}`, type: 'Scene', ...this.sceneData });
+        }
+        if (this.location) {
+            components.push(this.location);
+        }
+        if (this.plot) {
+            components.push(this.plot);
+        }
+        // Add other relevant entities from the game engine if available
+        const gameEngine = this.gameEngine;
+        if (gameEngine) {
+            if (gameEngine.playerCharacter) components.push(gameEngine.playerCharacter);
+            if (gameEngine.playerShip) components.push(gameEngine.playerShip);
+            if (gameEngine.crew) components.push(...gameEngine.crew);
+        }
+        return components;
+    }
+
+    /**
+     * Generates the musical theme for this scene.
+     * @protected
+     */
+    async _generateTheme() {
+        const music = this.gameEngine.engine.getModule('Music');
+        if (music && music.themeGenerator) {
+            Logger.message(`Scene: Generating theme for ${this.constructor.name}...`);
+            try {
+                // Store components for potential merging later
+                this.themeComponents = this._getThemeComponents();
+                
+                // Always generate a standalone theme for this scene, even if we might merge later.
+                // This ensures we have a fallback and a distinct identity for the scene.
+                this.theme = await music.createMainTheme(this.gameEngine, true, this.themeComponents);
+                
+                if (this.theme) {
+                    // Rename it to avoid "Main Theme" collisions in logs/cache
+                    this.theme.name = `${this.constructor.name} Theme`;
+                    Logger.message(`Scene: Theme '${this.theme.name}' generated.`);
+                }
+            } catch (error) {
+                Logger.error(`Scene: Failed to generate theme for ${this.constructor.name}.`, error);
+            }
+        }
+    }
+
+    async prepare(onProgress) {
+        const startTime = performance.now();
+        try {
+            await this._prepare(onProgress); // Call the subclass's implementation
+            this.isPrepared = true;
+            const duration = performance.now() - startTime;
+            this.estimatedPreparationTime = duration; // Update with actual time
+            Logger.message(`Scene ${this.constructor.name} prepared in ${duration.toFixed(2)}ms.`);
+            EventBus.emit('scene:prepared', this);
+        } catch (error) {
+            Logger.error(`Scene ${this.constructor.name} failed to prepare.`, error);
+            EventBus.emit('scene:prepare_failed', this);
+            throw error; // Re-throw so SceneManager can catch it.
+        }
     }
 
     /**
@@ -189,8 +430,23 @@ export class Scene {
     onLoad() {
         this.isActive = true;
         this.isLoaded = true;
+        
+        if (this.twoDContainer) {
+            this.twoDContainer.style.display = 'block';
+        }
+
+        // Initialize default controls if 3D and camera exists and no controls set
+        if ((this.renderMode === '3d' || this.renderMode === 'dual') && this.activeCamera && this.viewManager.renderer) {
+            if (!this.cameraControls.has(this.activeCameraName)) {
+                // Default to Trackball for T13 compatibility if not specified
+                this.setupControls('trackball');
+            }
+        }
+
         this.animate();
-        Logger.message(`Scene loaded: ${this.constructor.name}`);
+        this.isPlaying = true;
+        EventBus.emit('scene:playing', this);
+        Logger.message(`Scene loaded and playing: ${this.constructor.name}`);
     }
 
     /**
@@ -198,16 +454,32 @@ export class Scene {
      * This is for stopping animations and detaching event listeners.
      */
     onUnload() {
+        this.isPlaying = false;
         this.isActive = false;
         if (this.animationFrameId) {
             cancelAnimationFrame(this.animationFrameId);
             this.animationFrameId = null;
         }
+        
+        if (this.twoDContainer) {
+            this.twoDContainer.style.display = 'none';
+        }
+
         // Dispose all controls
         this.cameraControls.forEach(controls => controls.dispose());
         this.cameraControls.clear();
 
         Logger.message(`Scene unloaded: ${this.constructor.name}`);
+    }
+
+    /**
+     * Scenes should call this method when their internal logic/animation is complete.
+     */
+    complete() {
+        if (this.isComplete) return;
+        this.isComplete = true;
+        EventBus.emit('scene:complete', this);
+        Logger.message(`Scene complete: ${this.constructor.name}`);
     }
 
     /**
@@ -217,6 +489,46 @@ export class Scene {
      */
     update(time, delta) {
         // Subclasses override this with their per-frame logic.
+        if (this.renderMode === '2d' || this.renderMode === 'dual') {
+            this.update2D(time, delta);
+        }
+    }
+
+    /**
+     * Update loop for 2D elements.
+     */
+    update2D(time, delta) {
+        // Update animated sprites
+        if (this.sprites && this.sprites.length > 0) {
+            for (let i = 0; i < this.sprites.length; i++) {
+                const sprite = this.sprites[i];
+                if (sprite.isPlaying && sprite.isSpritesheet && sprite.frames > 1) {
+                    sprite.timer += delta;
+                    const interval = 1000 / sprite.fps;
+                    
+                    if (sprite.timer >= interval) {
+                        const framesToAdvance = Math.floor(sprite.timer / interval);
+                        sprite.timer %= interval;
+                        
+                        sprite.currentFrame += framesToAdvance;
+                        
+                        if (sprite.currentFrame >= sprite.frames) {
+                            if (sprite.loop) {
+                                sprite.currentFrame = sprite.currentFrame % sprite.frames;
+                            } else {
+                                sprite.currentFrame = sprite.frames - 1;
+                                sprite.isPlaying = false;
+                                if (typeof sprite.onComplete === 'function') sprite.onComplete();
+                            }
+                        }
+                        
+                        // Assuming horizontal spritesheet
+                        const posX = -(sprite.currentFrame * sprite.frameWidth);
+                        sprite.element.style.backgroundPosition = `px 0px`;
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -292,6 +604,12 @@ export class Scene {
         });
         this.scene.clear();
         this.cameras.clear();
+        
+        if (this.twoDContainer && this.twoDContainer.parentNode) {
+            this.twoDContainer.parentNode.removeChild(this.twoDContainer);
+        }
+        this.sprites = [];
+
         window.removeEventListener('resize', this.onWindowResize.bind(this));
         Logger.message(`Scene disposed: ${this.constructor.name}`);
     }

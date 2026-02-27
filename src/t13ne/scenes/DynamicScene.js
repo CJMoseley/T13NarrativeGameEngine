@@ -14,7 +14,7 @@ export class DynamicScene extends Scene {
         this.currentBeatIndex = -1;
     }
 
-    async prepare(onProgress) {
+    async _prepare(onProgress) {
         Logger.message(`DynamicScene: Preparing with ${this.sceneData.components?.length || 0} components.`);
 
         const componentDefs = this.sceneData.components || [];

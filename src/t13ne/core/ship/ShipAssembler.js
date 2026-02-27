@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { CSG } from 'three-csg-ts';
+import Logger from '/src/t13ne/core/Logger.js';
 import { ShipComponent } from '/src/t13ne/core/ship/ShipComponent.js';
 import { COMPONENT_COLORS, getCompProps, mulberry32 } from '/src/t13ne/core/ship/ShipUtils.js';
 import { racingLiveryShader, industrialLiveryShader, boxyLiveryShader, organicLiveryShader, miningLiveryShader, metallicLiveryShader } from '/src/t13ne/core/ship/ShipShaders.js';
@@ -390,6 +391,7 @@ export class ShipAssembler {
                     };
                 }).filter(c => c !== null);
 
+                Logger.start('ShipAssembler.worker.generateSDFHull');
                 const geoData = await this.gameEngine.shipFactory.callWorker('generateSDFHull', {
                     components: sanitizedComponents,
                     styleConfig: effectiveStyle
@@ -404,6 +406,7 @@ export class ShipAssembler {
                         hullGeometry.setAttribute('color', new THREE.BufferAttribute(geoData.colors, 3));
                     }
                 }
+                Logger.end('ShipAssembler.worker.generateSDFHull');
             } else {
                 hullGeometry = await this.hullGenerator.generateAsync(shipComponents, effectiveStyle);
             }
@@ -455,7 +458,9 @@ export class ShipAssembler {
                     }
                 }
 
+                Logger.start('ShipAssembler.worker.generateCSGHull');
                 const geoData = await this.gameEngine.shipFactory.callWorker('generateCSGHull', { components: workerComponents });
+                Logger.end('ShipAssembler.worker.generateCSGHull');
                 if (geoData && geoData.positions) {
                     hullGeometry = new THREE.BufferGeometry();
                     hullGeometry.setAttribute('position', new THREE.BufferAttribute(geoData.positions, 3));
@@ -632,12 +637,14 @@ export class ShipAssembler {
 
             // Apply Geometric Greebling (Rivets, Antennae, Vents, etc.)
             try {
+                Logger.start('ShipAssembler.greebleGenerator.generate');
                 const greebles = this.greebleGenerator.generate(hullMesh, shipComponents, effectiveStyle, components.symmetryType, components.radialAxis, components.radialCount, components.hullType, components.seed);
                 shipGroup.add(greebles);
 
                 // Apply Decals
                 const decals = this.greebleGenerator.generateDecals(hullMesh, shipComponents, this.glyphGenerator, components.shipName, components.corporation, components.seed, components.livery);
                 shipGroup.add(decals);
+                Logger.end('ShipAssembler.greebleGenerator.generate');
             } catch (e) {
                 console.error("ShipAssembler: Greeble generation failed.", e);
             }

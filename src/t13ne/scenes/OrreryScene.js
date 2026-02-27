@@ -27,8 +27,8 @@ export class OrreryScene extends Scene {
         this.cameraPathPoints = [];
         this.hudElement = null;
     }
-
-    async prepare(onProgress) {
+    
+    async _prepare(onProgress) {
         this.init();
         if (onProgress) onProgress({ status: 'Orrery generated', percent: 1.0 });
     }

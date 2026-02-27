@@ -9,6 +9,7 @@ import { Scene } from '/src/t13ne/core/Scene.js';
 import { PluginManager } from '/src/t13ne/core/PluginManager.js'; // Import PluginManager
 import { LoreData } from '/src/t13ne/procgen/lore/LoreData.js'; // Import LoreData
 import { GalacticHistory } from '/src/t13ne/procgen/galaxy/GalacticHistory.js'; // Import GalacticHistory
+import IntroSequenceUI from '/src/t13ne/core/ui/IntroSequence.js';
 import { UIMessage } from '/src/t13ne/core/ui/UIMessage.js';
 import { PerformanceMonitor } from '/src/t13ne/core/PerformanceMonitor.js';
 import Localization from '/src/t13ne/core/ui/Localization.js';
@@ -328,7 +329,28 @@ export class ViewManager {
                 ...options
             }
         });
-        Logger.message(`ViewManager: Cued scene '${sceneName}'. Queue length: ${this.sceneQueue.length}`);
+        Logger.message(`ViewManager: Cued scene ''. Queue length: ${this.sceneQueue.length}`);
+    }
+
+    /**
+     * Updates data for a scene, regardless of its state (queued, preparing, or prepared).
+     * @param {string} sceneName 
+     * @param {object} data 
+     */
+    updateSceneData(sceneName, data) {
+        // 1. Check Prepared Cache
+        const prepared = this.preparedScenes.get(sceneName);
+        if (prepared && typeof prepared.updateSceneData === 'function') {
+            prepared.updateSceneData(data);
+            return;
+        }
+
+        // 2. Check Queue
+        const queuedItem = this.sceneQueue.find(item => item.name === sceneName);
+        if (queuedItem) {
+            Object.assign(queuedItem.data, data);
+            return;
+        }
     }
 
     /**
@@ -407,6 +429,26 @@ export class ViewManager {
                     await new Promise(resolve => setTimeout(resolve, remainingTime));
                 }
 
+                // NEW: Wait for scene completion if not auto-completing
+                if (item.options.autoComplete === false) {
+                    if (this.currentScene && this.currentScene.isComplete) {
+                        Logger.message(`ViewManager: Scene '${item.name}' already complete.`);
+                    } else {
+                        Logger.message(`ViewManager: Waiting for scene '${item.name}' to complete...`);
+                        await new Promise(resolve => {
+                            const onComplete = (scene) => {
+                                // Check if the completing scene is the one we are waiting for
+                                // (Comparing constructor name or instance)
+                                if (scene.constructor.name === item.name) {
+                                    EventBus.off('scene:complete', onComplete);
+                                    resolve();
+                                }
+                            };
+                            EventBus.on('scene:complete', onComplete);
+                        });
+                    }
+                }
+
                 // Ensure we don't switch faster than the safety buffer allows for stability
                 const totalTime = performance.now() - startTime;
                 if (totalTime < safetyBuffer) {
@@ -442,7 +484,7 @@ export class ViewManager {
         // We do this first to ensure we don't unload the current scene if the new one fails.
         let newScene = this.preparedScenes.get(sceneName);
         if (!newScene) {
-            Logger.message(`Scene '${sceneName}' not in cache. Preparing...`);
+            Logger.message(`Scene '' not in cache. Preparing...`);
             EventBus.emit('scene:loading', sceneName); // For UIManager to show loading screen
 
             const onProgress = (progress) => {
@@ -454,7 +496,7 @@ export class ViewManager {
                         key: 'scene_loader',
                         title: 'Loading Scene',
                         template: 'loading_scene',
-                        data: { message: progress.status || `Loading ${sceneName}...` },
+                        data: { message: progress.status || `Loading ...` },
                         showProgress: true,
                         progress: progress.percent
                     });
@@ -473,7 +515,7 @@ export class ViewManager {
             }
             this.addSceneToCache(sceneName, newScene);
         } else {
-            Logger.message(`Scene '${sceneName}' found in cache.`);
+            Logger.message(`Scene '' found in cache.`);
             // Inject updated data if the scene supports it (fixes pre-loading race conditions)
             if (sceneData && typeof newScene.updateSceneData === 'function') {
                 newScene.updateSceneData(sceneData);
@@ -513,7 +555,7 @@ export class ViewManager {
             this.uiManager.onSceneLoaded(sceneName);
         }
 
-        Logger.message(`Successfully transitioned to scene: ${sceneName}`);
+        Logger.message(`Successfully transitioned to scene: `);
 
         // 5. Handle Transition End (Reveal new scene)
         if (transitionOptions) {
@@ -544,7 +586,7 @@ export class ViewManager {
         if (needsCapture && this.renderer && this.renderer.domElement) {
             try {
                 const dataUrl = this.renderer.domElement.toDataURL();
-                overlay.style.backgroundImage = `url(${dataUrl})`;
+                overlay.style.backgroundImage = `url()`;
                 overlay.style.backgroundColor = 'transparent';
                 overlay.style.opacity = '1'; // Show immediately to freeze frame
             } catch (e) {
@@ -582,13 +624,13 @@ export class ViewManager {
             await new Promise(r => setTimeout(r, duration / 2));
         }
         else if (type === 'crossDissolve') {
-            overlay.style.transition = `opacity ${duration}ms ease`;
+            overlay.style.transition = `opacity ms ease`;
             overlay.style.opacity = '0';
             await new Promise(r => setTimeout(r, duration));
         }
         else if (type === 'wipe') {
             const direction = options.direction || 'right';
-            overlay.style.transition = `clip-path ${duration}ms ease-in-out`;
+            overlay.style.transition = `clip-path ms ease-in-out`;
             if (direction === 'right') overlay.style.clipPath = 'inset(0 0 0 100%)';
             else if (direction === 'left') overlay.style.clipPath = 'inset(0 100% 0 0)';
             else if (direction === 'up') overlay.style.clipPath = 'inset(0 0 100% 0)';
@@ -596,13 +638,13 @@ export class ViewManager {
             await new Promise(r => setTimeout(r, duration));
         }
         else if (type === 'circleWipe' || type === 'iris') {
-            overlay.style.transition = `clip-path ${duration}ms ease-in-out`;
+            overlay.style.transition = `clip-path ms ease-in-out`;
             overlay.style.clipPath = 'circle(0% at 50% 50%)';
             await new Promise(r => setTimeout(r, duration));
         }
         else if (type === 'slide' || type === 'push') {
             const direction = options.direction || 'left';
-            overlay.style.transition = `transform ${duration}ms ease-in-out`;
+            overlay.style.transition = `transform ms ease-in-out`;
             if (direction === 'left') overlay.style.transform = 'translateX(-100%)';
             else if (direction === 'right') overlay.style.transform = 'translateX(100%)';
             else if (direction === 'up') overlay.style.transform = 'translateY(-100%)';
@@ -610,14 +652,14 @@ export class ViewManager {
             await new Promise(r => setTimeout(r, duration));
         }
         else if (type === 'zoom') {
-            overlay.style.transition = `transform ${duration}ms ease-in, opacity ${duration}ms ease-out`;
+            overlay.style.transition = `transform ms ease-in, opacity ms ease-out`;
             overlay.style.transform = 'scale(2)';
             overlay.style.opacity = '0';
             await new Promise(r => setTimeout(r, duration));
         }
         else {
             // Default fade out
-            overlay.style.transition = `opacity ${duration}ms ease`;
+            overlay.style.transition = `opacity ms ease`;
             overlay.style.opacity = '0';
             await new Promise(r => setTimeout(r, duration));
         }
@@ -635,7 +677,7 @@ export class ViewManager {
             const lruScene = this.preparedScenes.get(lruSceneName);
             lruScene.dispose();
             this.preparedScenes.delete(lruSceneName);
-            Logger.message(`Evicted scene '${lruSceneName}' from cache.`);
+            Logger.message(`Evicted scene '' from cache.`);
         }
         this.preparedScenes.set(sceneName, sceneInstance);
     }
@@ -646,7 +688,7 @@ export class ViewManager {
      */
     setActiveComponent(componentId) {
         this.activeComponentForPlacement = componentId;
-        Logger.message(`ViewManager: Active component for placement set to ${componentId}`);
+        Logger.message(`ViewManager: Active component for placement set to `);
         // We can also emit an event here if other parts of the UI need to know
         EventBus.emit('component:select', componentId);
     }
@@ -703,7 +745,7 @@ export class ViewManager {
     }
 
     handleSceneLoadFailure(sceneName, reason = 'Unknown') {
-        Logger.error(`ViewManager: CRITICAL FAILURE loading scene ${sceneName}. Reason: ${reason}`);
+        Logger.error(`ViewManager: CRITICAL FAILURE loading scene . Reason: `);
 
         // Fallback to main menu if not already there
         if (sceneName !== 'MainMenuScene') {
@@ -727,6 +769,7 @@ export class ViewManager {
             this.currentScene = null;
         }
         this.hideCanvas();
+        IntroSequenceUI.hide();
         try {
             if (this.uiManager && typeof this.uiManager.showMainMenu === 'function') {
                 this.uiManager.showMainMenu();

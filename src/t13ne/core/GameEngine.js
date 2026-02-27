@@ -73,8 +73,54 @@ export class GameEngine {
         this.availablePlayerSpecies = [];
         this.database = { ships: [] }; // Mock database
 
+        this.setupEventListeners();
+
         Logger.message("GameEngine: Instantiated.");
         Logger.end(funcName);
+    }
+
+    /**
+     * Initializes the data-dependent components of the game engine.
+     * This must be called after core data (LoreData, GalacticHistory) has been loaded.
+     */
+    setupEventListeners() {
+        EventBus.on('request:generate:galaxy', async (seed) => {
+            if (this.galaxy) {
+                EventBus.emit('galaxy:generated', this.galaxy);
+            } else {
+                await this.initializeBaseData();
+                // initializeBaseData now emits the event itself.
+            }
+        });
+
+        EventBus.on('request:generate:history', async (galaxy, seed) => {
+            if (seed) GalacticHistory.setSeed(seed);
+            await GalacticHistory.load(this.pluginManager, this.loreMaster);
+            EventBus.emit('history:generated', GalacticHistory.getTimeline());
+        });
+
+        EventBus.on('request:generate:system', async (galaxy, seed) => {
+            if (!this.playerStartSystem) {
+                await this._determineRandomStartPosition();
+            }
+            if (this.playerStartSystem) {
+                await this.generateSystem();
+            } else {
+                Logger.error("GameEngine: Failed to determine start system, cannot generate system details.");
+            }
+            EventBus.emit('system:generated', { system: this.currentSystemDetails, planets: this.currentPlanets });
+        });
+
+        EventBus.on('request:generate:homeworld', (systemDetails, seed) => {
+             const homeworld = this.currentPlanets ? this.currentPlanets.find(p => p.isHomeworld) : null;
+             const species = this.currentSystemDetails ? this.currentSystemDetails.speciesCore : null;
+             EventBus.emit('homeworld:generated', { planet: homeworld, species: species });
+        });
+
+        EventBus.on('request:generate:ship', async (data) => {
+            await this.seedPlayerShip();
+            EventBus.emit('ship:generated', this.playerShip);
+        });
     }
 
     /**
@@ -121,6 +167,8 @@ export class GameEngine {
             if (!this.galaxy || !this.galaxy.stars || this.galaxy.stars.length === 0) {
                 throw new Error("Galaxy generation failed or produced no stars.");
             }
+
+            EventBus.emit('galaxy:generated', this.galaxy);
 
             const tapestry = this.engine.getModule('Tapestry');
             this.galaxy.name = tapestry?.galaxyName || "The Galaxy";

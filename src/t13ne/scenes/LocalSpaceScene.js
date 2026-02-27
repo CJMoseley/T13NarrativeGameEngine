@@ -35,6 +35,8 @@ export class LocalSpaceScene extends Scene {
         this.introActive = !!this.introConfig;
         this.introPhase = 0;
         this.introTime = 0;
+        this.introProgress = 0; // Track progress 0.0 to 1.0
+        this.cameraSpeed = 5000.0; // Units per second
         this.introStartTime = performance.now();
         this.homeWorldObj = null;
         this.flybySequenceActive = false;
@@ -56,6 +58,7 @@ export class LocalSpaceScene extends Scene {
         this._introResolve = null;
 
         this.introPath = [];
+        this.introPathLength = null; // Cache for path length
         this.raycaster = new THREE.Raycaster();
         this.mouse = new THREE.Vector2();
         this.onMouseClick = this.onMouseClick.bind(this);
@@ -68,6 +71,10 @@ export class LocalSpaceScene extends Scene {
         this.lockedTarget = null;
     }
 
+    updateContext(context) {
+        this.updateSceneData(context);
+    }
+
     updateSceneData(data) {
         if (data.systemDetails) this.systemData = data.systemDetails;
         if (data.planets) this.planets = data.planets;
@@ -76,17 +83,25 @@ export class LocalSpaceScene extends Scene {
             this.introConfig = data.introConfig;
             this.introActive = true;
         }
-
-        // Re-initialize the scene with the new data
         this.init();
     }
 
-    async prepare(onProgress) {
-        // Removed fallback generation logic. The View expects valid data.
-        this.init();
+    onLoad() {
+        super.onLoad();
+        this.createHUD();
+        // Only play intro if we have PLANETS (data loaded). If not, updateSceneData will trigger it later.
+        if (this.introActive && this.planets && this.planets.length > 0) {
+            this.playIntroSequence();
+        } else if (this.introActive) {
+            Logger.message("LocalSpaceScene: Deferring intro sequence until planets are loaded.");
+        }
+    }
+
+    async _prepare(onProgress) {
+        // DO NOT call init() here. It will be called by updateSceneData when data is ready.
+        // Calling it here with empty data causes "0 planets" state.
         if (onProgress) onProgress({ status: 'System Ready', percent: 1.0 });
     }
-
     onActive() {
         this.isActive = true;
         Logger.message("LocalSpaceScene active.");
@@ -153,85 +168,12 @@ export class LocalSpaceScene extends Scene {
         this.createSkybox();
         this.setupInteraction();
 
-        // --- Identify Homeworld and Fly-by target for Intro ---
-        // Search all objects (planets and moons) for the explicit isHomeworld flag
-        this.homeWorldObj = this.objects.find(o => o.data?.isHomeworld === true);
-
-        // Fallback to the index-based planet if no object is explicitly marked
-        if (!this.homeWorldObj) {
-            const planets = this.objects.filter(o => o.type === 'planet');
-            const hwIndex = this.systemData.homeWorldIndex !== undefined ? this.systemData.homeWorldIndex : 0;
-            this.homeWorldObj = planets[hwIndex] || planets[0] || null;
-        }
-
-        if (this.homeWorldObj) {
-            Logger.message(`LocalSpaceScene: Homeworld identified as ${this.homeWorldObj.data.name || 'Body ' + (this.homeWorldObj.index || '')} (${this.homeWorldObj.type})`);
-
-            // Find a fly-by target: random solid object (planet, moon, asteroid) NOT homeworld
-            const candidates = this.objects.filter(o =>
-                (o.type === 'planet' || o.type === 'moon' || o.type === 'asteroid') &&
-                o !== this.homeWorldObj &&
-                (o.mesh || o.type === 'asteroid') // Ensure it has a mesh or is an asteroid
-            );
-
-            if (candidates.length > 0) {
-                this.flybyObj = candidates[Math.floor(Math.random() * candidates.length)];
-            } else {
-                // If no other planets/moons, pick a point in space or fallback to star focus
-                this.flybyObj = (this.homeWorldObj.moons && this.homeWorldObj.moons.length > 0) ?
-                    this.homeWorldObj.moons[0] :
-                    this.objects.find(o => o.type === 'star');
-            }
-            Logger.message(`LocalSpaceScene: Fly-by object identified as ${this.flybyObj?.data?.name || this.flybyObj?.type || 'the star'}`);
-
-        } else {
-            Logger.warn("LocalSpaceScene: Could not identify a homeworld. Intro sequence disabled.");
-            this.introActive = false;
-        }
-
-        // Enable High Detail for key objects
-        if (this.homeWorldObj && this.homeWorldObj.mesh && typeof this.homeWorldObj.mesh.enableHighDetail === 'function') {
-            this.homeWorldObj.mesh.enableHighDetail();
-        }
-        if (this.flybyObj && this.flybyObj.mesh && typeof this.flybyObj.mesh.enableHighDetail === 'function') {
-            this.flybyObj.mesh.enableHighDetail();
-        }
-
-        this.flybySequenceActive = !!this.flybyObj;
-
-        // Reset intro time
-
-        // Set initial camera position AFTER path is calculated
-
-        this.introTime = 0;
-
         this.orreryScene = new OrreryScene(this.viewManager, {
             systemDetails: this.systemData,
             planets: this.planets,
             star: this.starData
         });
         this.orreryScene.init();
-
-        if (this.orreryScene.cameraControls.has('orbit')) this.orreryScene.cameraControls.get('orbit').enabled = false;
-
-        // --- Generate Intro Path and Set Initial Camera Position ---
-        if (this.introActive) {
-            // If a path was passed in config, use it
-            if (this.introConfig && this.introConfig.path) {
-                this.setIntroPath(this.introConfig.path);
-            }
-            // Otherwise generate one if we have a target
-            else if (this.homeWorldObj) {
-                this.generateIntroPath();
-            } else {
-                this.introActive = false;
-            }
-        }
-
-        // Set initial camera position AFTER path is calculated
-        if (this.introActive) {
-            this.virtualCameraPosition.copy(this.introStartPos);
-        }
 
         Logger.end(funcName);
     }
@@ -244,6 +186,7 @@ export class LocalSpaceScene extends Scene {
         if (!points || points.length < 2) return;
         this.introPathSpline = new THREE.CatmullRomCurve3(points);
         this.introPath = this.introPathSpline.getPoints(200);
+        this.introPathLength = null; // Reset length cache
         this.introStartPos.copy(points[0]);
 
         if (this.orreryScene) {
@@ -278,13 +221,13 @@ export class LocalSpaceScene extends Scene {
             const flybyPos = this.flybyObj.realPosition.clone();
             const flybyRadius = (this.flybyObj.baseRadius || 100) * (this.flybyObj.type === 'star' ? 40.0 : 15.0);
 
-            // Perpendicular vector
-            const dirToCenter = new THREE.Vector3(0, 0, 0).sub(this.introStartPos).normalize();
-            const side = new THREE.Vector3().crossVectors(dirToCenter, new THREE.Vector3(0, 1, 0)).normalize();
-            if (side.lengthSq() === 0) side.set(1, 0, 0);
-
-            const flybyWaypoint = flybyPos.clone().add(side.multiplyScalar(flybyRadius));
-            flybyWaypoint.y += flybyRadius * 0.3; // Slight drop/rise
+            // Calculate a safe flyby offset: Outward (away from star) and Up
+            // This prevents the "side" calculation from accidentally pointing into the path or the star
+            const fromStar = flybyPos.clone().normalize();
+            if (fromStar.lengthSq() === 0) fromStar.set(1, 0, 0); // Handle star itself (0,0,0)
+            const safeDir = new THREE.Vector3().addVectors(fromStar, new THREE.Vector3(0, 1, 0)).normalize();
+            
+            const flybyWaypoint = flybyPos.clone().add(safeDir.multiplyScalar(flybyRadius));
             waypoints.push(flybyWaypoint);
         }
 
@@ -321,10 +264,19 @@ export class LocalSpaceScene extends Scene {
                 maxStarRadius = o.baseRadius;
             }
         });
-        const starSafeRadius = maxStarRadius * 2.5 + 2000; // Add buffer
+        // Fix: Reduced buffer to prevent enveloping inner planets (e.g. at 2000 units)
+        const starSafeRadius = maxStarRadius * 1.2; 
         const origin = new THREE.Vector3(0, 0, 0);
 
+        let safetyIterations = 0;
+        const MAX_SAFETY_ITERATIONS = 50;
+
         for (let i = 0; i < waypoints.length - 1; i++) {
+            if (safetyIterations++ > MAX_SAFETY_ITERATIONS) {
+                Logger.warn("LocalSpaceScene: Safety path generation hit iteration limit. Stopping checks.");
+                break;
+            }
+
             const p1 = waypoints[i];
             const p2 = waypoints[i + 1];
 
@@ -348,7 +300,7 @@ export class LocalSpaceScene extends Scene {
                 }
 
                 waypoints.splice(i + 1, 0, mid);
-                i++; // Skip the newly inserted point
+                // in the next iteration to ensure it is also safe.
                 Logger.message("LocalSpaceScene: Inserted safety waypoint to avoid star collision.");
             }
         }
@@ -356,6 +308,7 @@ export class LocalSpaceScene extends Scene {
         if (waypoints.length > 1) {
             this.introPathSpline = new THREE.CatmullRomCurve3(waypoints);
             this.introPath = this.introPathSpline.getPoints(200);
+            this.introPathLength = null; // Reset length cache
             this.orreryScene.setIntroPath(this.introPath, this.scales.orbit);
         } else {
             Logger.warn("LocalSpaceScene: Failed to generate valid intro path.");
@@ -366,11 +319,6 @@ export class LocalSpaceScene extends Scene {
         if (this.introActive) {
             this.virtualCameraPosition.copy(this.introStartPos);
         }
-    }
-
-    onLoad() {
-        super.onLoad();
-        this.createHUD();
     }
 
     setupInteraction() {
@@ -416,10 +364,10 @@ export class LocalSpaceScene extends Scene {
         let name = this.systemData.name || 'Unknown';
         if (this.systemData.systemNameFull && Array.isArray(this.systemData.systemNameFull)) {
             const [common, formal, aka] = this.systemData.systemNameFull;
-            name = `${common} | ${formal}`;
-            if (aka) name += ` | ${aka}`;
+            name = `${common} | `;
+            if (aka) name += ` | `;
         }
-        this.hudElement.innerText = `SYSTEM: ${name} (${total} Bodies)`;
+        this.hudElement.innerText = `SYSTEM:  ( Bodies)`;
 
         if (this.viewManager) {
             this.viewManager.setHUD(this.hudElement);
@@ -699,26 +647,13 @@ export class LocalSpaceScene extends Scene {
 
         // --- 2. Intro Sequence Logic (Camera Movement) ---
         if (this.introActive && this.homeWorldObj && this.homeWorldObj.realPosition) {
-            this.introTime += dt;
-            this.updateIntroCamera(this.introTime);
+            const finished = this.updateIntroCamera(dt);
 
             // Transition condition
-            const introDuration = this.introConfig.duration || (this.flybyObj ? 22.0 : 15.0);
-            if (this.introTime >= introDuration) {
+            if (finished) {
                 this.introActive = false;
-
-                let sunDirection = null;
-                const starObj = this.objects.find(o => o.type === 'star');
-                if (starObj && this.homeWorldObj) {
-                    sunDirection = new THREE.Vector3().subVectors(starObj.realPosition, this.homeWorldObj.realPosition).normalize();
-                }
-
-                Logger.message("LocalSpaceScene: Intro complete. Signalling ViewManager.");
-
-                if (this._introResolve) {
-                    this._introResolve();
-                    this._introResolve = null;
-                }
+                Logger.message("LocalSpaceScene: Intro complete. Calling this.complete().");
+                this.complete();
             }
         } else if (this.homeWorldObj && !this.introActive) {
             // Gameplay Mode: Do NOT lock virtualCameraPosition to homeworld every frame.
@@ -935,22 +870,62 @@ export class LocalSpaceScene extends Scene {
         }
     }
 
-    async playIntroSequence() {
-        if (!this.introActive) return;
+    playIntroSequence() {
+        // This logic is now deferred until onLoad to ensure all data is present.
+        this.homeWorldObj = this.objects.find(o => o.data?.isHomeworld === true);
+
+        if (!this.homeWorldObj) {
+            const planets = this.objects.filter(o => o.type === 'planet');
+            const hwIndex = this.systemData.homeWorldIndex !== undefined ? this.systemData.homeWorldIndex : 0;
+            this.homeWorldObj = planets[hwIndex] || planets[0] || null;
+        }
+
+        if (this.homeWorldObj) {
+            Logger.message(`LocalSpaceScene: Homeworld identified as ${this.homeWorldObj.data.name || 'Body ' + (this.homeWorldObj.index || '')} (${this.homeWorldObj.type})`);
+
+            const candidates = this.objects.filter(o => (o.type === 'planet' || o.type === 'moon') && o !== this.homeWorldObj && o.mesh);
+            this.flybyObj = candidates.length > 0 ? candidates[Math.floor(Math.random() * candidates.length)] : this.objects.find(o => o.type === 'star');
+            Logger.message(`LocalSpaceScene: Fly-by object identified as ${this.flybyObj?.data?.name || this.flybyObj?.type || 'the star'}`);
+
+            if (this.homeWorldObj.mesh && typeof this.homeWorldObj.mesh.enableHighDetail === 'function') this.homeWorldObj.mesh.enableHighDetail();
+            if (this.flybyObj && this.flybyObj.mesh && typeof this.flybyObj.mesh.enableHighDetail === 'function') this.flybyObj.mesh.enableHighDetail();
+
+            this.flybySequenceActive = !!this.flybyObj;
+
+            if (this.introConfig && this.introConfig.path) {
+                this.setIntroPath(this.introConfig.path);
+            } else {
+                this.generateIntroPath();
+            }
+
+            this.virtualCameraPosition.copy(this.introStartPos);
+        } else {
+            Logger.warn("LocalSpaceScene: Could not identify a homeworld on load. Completing intro step immediately.");
+            this.introActive = false;
+            this.complete();
+            return;
+        }
 
         this.introStartTime = performance.now();
         this.introTime = 0;
-
-        return new Promise(resolve => {
-            this._introResolve = resolve;
-        });
+        this.introProgress = 0;
     }
 
-    updateIntroCamera(time) {
-        if (!this.introPathSpline) return;
+    updateIntroCamera(dt) {
+        if (!this.introPathSpline) return true;
 
-        const totalDuration = this.introConfig?.duration || (this.flybyObj ? 22.0 : 15.0);
-        const progress = Math.min(time / totalDuration, 1.0);
+        if (!this.introPathLength) {
+            this.introPathLength = this.introPathSpline.getLength();
+        }
+
+        // Calculate progress based on speed and distance
+        const speed = this.introConfig?.speed || this.cameraSpeed || 5000;
+        const dist = speed * dt;
+        const progressDelta = dist / this.introPathLength;
+
+        this.introProgress += progressDelta;
+
+        const progress = Math.min(this.introProgress, 1.0);
         const ease = 1 - Math.pow(1 - progress, 3); // Ease-out
 
         // Move camera along the spline
@@ -966,8 +941,6 @@ export class LocalSpaceScene extends Scene {
             this.introPhase = 1; // Direct approach
         }
 
-        // The actual lookAt is now handled in the main update loop after visual positions are calculated.
-        // This function is now only responsible for moving the virtualCameraPosition along the path
-        // and setting the current intro phase.
+        return progress >= 1.0;
     }
 }

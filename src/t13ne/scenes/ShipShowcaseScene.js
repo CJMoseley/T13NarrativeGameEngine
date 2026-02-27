@@ -4,6 +4,7 @@ import { TECH_SPECS, QUALITIES, FALLBACK_MANUFACTURERS } from '/src/t13ne/core/s
 import { GalacticHistory } from '/src/t13ne/procgen/galaxy/GalacticHistory.js';
 import { Scene } from '/src/t13ne/core/Scene.js';
 import ProcGen from '/src/t13ne/procgen/ProcGen.js';
+import { EventBus } from '/src/t13ne/core/EventBus.js';
 
 export class ShipShowcaseScene extends Scene {
     constructor(viewManager) {
@@ -35,7 +36,7 @@ export class ShipShowcaseScene extends Scene {
         this.prepareRevealSequence();
     }
 
-    async prepare(onProgress) {
+    async _prepare(onProgress) {
         this.scene.background = new THREE.Color(0x050510); // Dark space blue
         this.activeCamera.position.set(15, 10, 15);
 
@@ -67,8 +68,8 @@ export class ShipShowcaseScene extends Scene {
         // 8. Generate Ship Data Procedurally
         onProgress({ status: 'Designing random ship...', percent: 0.4 });
         // Use a random seed (never) instead only use one based on the home system 
-        const prng = ProcGen.createPRNG(Date.now()); // this code is incorrect and will not generate procedurally seeded ships that  are required.
-        const seed = Math.floor(prng.nextDouble() * 4294967296); // this is not correct and will not generate procedurally seeded ships that  are required.
+        const seed = this.sceneData?.seed || Date.now();
+        const prng = ProcGen.createPRNG(seed);
         
         // Determine style to ensure name matches visual
         const styles = ['ORGANIC', 'INDUSTRIAL', 'SKELETON', 'BOXY', 'RACING', 'MINING', 'METALLIC'];
@@ -77,13 +78,18 @@ export class ShipShowcaseScene extends Scene {
         const sizes = ['small', 'medium', 'large'];
         const size = sizes[Math.floor(prng.nextDouble() * sizes.length)];
         
-        try {
-            const shipComponents = await this.shipFactory.createRandomShip(seed, { size: size, techLevel: 2, style: style });
-            this.shipComponents = shipComponents;
-        } catch (e) {
-            console.error("ShipShowcaseScene: Failed to generate ship components.", e);
-            onProgress({ status: 'Ship generation failed.', percent: 1.0, error: true });
-            return;
+        if (this.sceneData && this.sceneData.ship) {
+            Logger.message("ShipShowcaseScene: Using existing ship data from context.");
+            this.shipComponents = this.sceneData.ship;
+        } else {
+            try {
+                const shipComponents = await this.shipFactory.createRandomShip(seed, { size: size, techLevel: 2, style: style });
+                this.shipComponents = shipComponents;
+            } catch (e) {
+                console.error("ShipShowcaseScene: Failed to generate ship components.", e);
+                onProgress({ status: 'Ship generation failed.', percent: 1.0, error: true });
+                return;
+            }
         }
 
         // Generate Ship Name
@@ -104,7 +110,7 @@ export class ShipShowcaseScene extends Scene {
                     const tech = TECH_SPECS[Math.floor(prng.nextDouble() * TECH_SPECS.length)];
                     const qual = QUALITIES[Math.floor(prng.nextDouble() * QUALITIES.length)];
                     const type = style === 'ORGANIC' ? "Bio-Craft" : (style === 'SKELETON' ? "Frame" : "Racer");
-                    this.shipName = `${manu} ${tech} ${type} ${qual}`;
+                    this.shipName = `${manu}   `;
                 }
             } catch (e) {
                 console.warn("ShipShowcaseScene: Failed to generate ship name.", e);
@@ -116,6 +122,14 @@ export class ShipShowcaseScene extends Scene {
         const styleConfig = { method: style, plating: (style === 'INDUSTRIAL'), blendStrength: (style === 'ORGANIC' ? 1.5 : 0.1) };
         // Pass 'this.scene' so wireframes appear immediately
         this.hullGenerationPromise = this.shipFactory.generateProceduralShipAsync(this.shipComponents, styleConfig, null, this.scene);
+        
+        // Await the generation so the scene is not considered "prepared" until the ship is ready.
+        try {
+            await this.hullGenerationPromise;
+        } catch (e) {
+            console.error("ShipShowcaseScene: Hull generation failed during prepare.", e);
+        }
+        
         onProgress({ status: 'Ship data ready.', percent: 1.0 });
     }
 
@@ -166,6 +180,14 @@ export class ShipShowcaseScene extends Scene {
         if (!this.hullGenerationPromise) return;
         const shipGroup = await this.hullGenerationPromise;
         
+        // Graceful failure if hull generation returns nothing.
+        if (!shipGroup || shipGroup.children.length === 0) {
+            console.error("ShipShowcaseScene: Hull generation failed or produced an empty ship. Aborting reveal sequence.");
+            this.labelElement.innerText = "Ship Generation Failed";
+            this.descElement.innerText = "Could not construct vessel. Please check logs for errors.";
+            return;
+        }
+
         if (!this.isActive) return; // Stop if scene unloaded
 
         // shipGroup is likely already in the scene from generateProceduralShipAsync, but ensure it's added/referenced
@@ -205,7 +227,7 @@ export class ShipShowcaseScene extends Scene {
         for (const [name, meshes] of groups) {
             this.componentGroups.push({
                 name: name,
-                description: `Installing ${name}...`,
+                description: `Installing ...`,
                 meshes: meshes
             });
         }
@@ -283,7 +305,7 @@ export class ShipShowcaseScene extends Scene {
                 // If this group is still active, update the label
                 if (this.activeGroup === group) {
                     this.labelElement.innerText = newName;
-                    this.typeText(`Installing ${newName}...`);
+                    this.typeText(`Installing ...`);
                 }
             }).catch(e => console.warn("Name resolution failed", e));
         }
@@ -395,6 +417,10 @@ export class ShipShowcaseScene extends Scene {
                 }
                 this.labelElement.innerText = this.shipName;
                 this.descElement.innerText = "Ready for the Wormhole."; 
+                
+                // Signal completion to IntroSequence
+                // EventBus.emit('showcase:complete'); // DEPRECATED
+                this.complete(); // Use new base scene method
 
             } 
         }, 50);
@@ -429,7 +455,7 @@ export class ShipShowcaseScene extends Scene {
             const y = (-(center.y * .5) + .5) * window.innerHeight;
 
             // Update UI position (offset slightly)
-            this.uiContainer.style.left = `${x}px`;
+            this.uiContainer.style.left = `px`;
             this.uiContainer.style.top = `${y + 50}px`; // Below the component
             this.uiContainer.style.bottom = 'auto'; // Clear bottom constraint
             this.uiContainer.style.transform = 'translate(-50%, 0)';

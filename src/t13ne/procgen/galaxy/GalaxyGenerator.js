@@ -90,7 +90,7 @@ export class GalaxyGenerator {
     const n3 = ProcGen.simplex2D(star.z * noiseScale, star.x * noiseScale);
     const n4 = ProcGen.simplex2D(star.x * noiseScale, star.z * noiseScale);
 
-    const seeds = [star.x, star.y, star.z, n1, n2, n3, n4].join(',');
+    const seeds = [star.x, star.y, star.z, n1, n2, n3, n4];
     const localPRNG = ProcGen.create32PRNG(seeds);
 
     const planetCountSeed = localPRNG.nextDouble();

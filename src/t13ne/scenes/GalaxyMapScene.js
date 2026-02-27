@@ -28,7 +28,7 @@ export class GalaxyMapScene extends Scene {
     this.onMouseMove = this.onMouseMove.bind(this);
   }
 
-  async prepare(onProgress) {
+  async _prepare(onProgress) {
     const funcName = 'GalaxyMapScene.prepare';
     Logger.start(funcName);
     onProgress({ status: 'Setting up camera and controls...', percent: 0.1 });
@@ -531,7 +531,7 @@ export class GalaxyMapScene extends Scene {
       const endQuaternion = this.cinematicCamera.quaternion.clone();
       this.cinematicCamera.quaternion.copy(startQuaternion); // Reset to animate
 
-      const duration = 2000; // Slower for dramatic effect
+      const duration = 4000; // Slower for dramatic effect and to cover generation time
       const startTime = performance.now();
 
       controls.enabled = false;
@@ -553,6 +553,8 @@ export class GalaxyMapScene extends Scene {
           // Do NOT re-enable controls here, as it causes snapping before the scene transition.
           // The ViewManager will handle unloading this scene shortly.
           this.flyToAnimationFrameId = null;
+          this.shouldUpdateControls = true; // Re-enable controls update loop
+          if (controls) controls.enabled = true; // Re-enable controls
           resolve();
         }
       };
