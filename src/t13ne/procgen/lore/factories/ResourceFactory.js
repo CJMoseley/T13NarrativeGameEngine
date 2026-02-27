@@ -1,5 +1,6 @@
 import { LoreData } from '../LoreData.js';
 import Logger from '/src/t13ne/core/Logger.js';
+import ProcGen from '/src/t13ne/procgen/ProcGen.js';
 
 export class ResourceFactory {
     constructor(pluginManager) {
@@ -40,8 +41,8 @@ export class ResourceFactory {
         Logger.start(funcName, { planetType, orbitalDistance, starClass: starData?.starClass });
         
         if (!prng || typeof prng.nextDouble !== 'function') {
-            Logger.warn(`${funcName}: Invalid PRNG provided. Using Math.random fallback.`);
-            prng = { nextDouble: () => Math.random() };
+            Logger.warn(`${funcName}: Invalid PRNG provided. Using deterministic fallback.`);
+            prng = ProcGen.createPRNG(planetType + orbitalDistance + (starData?.starClass || ''));
         }
 
         if (!planetType) {
@@ -153,8 +154,8 @@ export class ResourceFactory {
                 
                 let rand = prng.nextDouble();
                 if (typeof rand !== 'number' || isNaN(rand)) {
-                     Logger.warn(`${selectionFuncName}: PRNG returned invalid value ${rand}. Using Math.random().`);
-                     rand = Math.random();
+                     Logger.warn(`${selectionFuncName}: PRNG returned invalid value ${rand}. Using fixed fallback.`);
+                     rand = 0.5;
                 }
 
                 // Ensure index is valid

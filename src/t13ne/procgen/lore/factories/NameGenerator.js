@@ -1,5 +1,6 @@
 import { LoreData } from '../LoreData.js';
 import Logger from '../../../core/Logger.js';
+import ProcGen from '/src/t13ne/procgen/ProcGen.js';
 
 export class NameGenerator {
     constructor(pluginManager) {
@@ -24,7 +25,7 @@ export class NameGenerator {
         if (T13NE_PRNG) {
             prng = T13NE_PRNG.create(seed);
         } else {
-            prng = { nextDouble: () => Math.random() }; // Fallback
+            prng = ProcGen.createPRNG(seed);
         }
         const grammar = LoreData.naming[grammarKey];
 
@@ -40,7 +41,7 @@ export class NameGenerator {
 
         let rand = prng.nextDouble();
         if (typeof rand !== 'number' || isNaN(rand) || rand < 0 || rand >= 1) {
-            rand = Math.random();
+            rand = 0.5; // Fixed fallback
         }
 
         let templateIndex = Math.floor(rand * grammar.templates.length);
@@ -65,7 +66,7 @@ export class NameGenerator {
             
             let wRand = prng.nextDouble();
             if (typeof wRand !== 'number' || isNaN(wRand) || wRand < 0 || wRand >= 1) {
-                wRand = Math.random();
+                wRand = 0.5;
             }
             
             let wordIndex = Math.floor(wRand * list.length);
@@ -77,7 +78,7 @@ export class NameGenerator {
         name = name.replace(/\{RANDOM_(\d+)\}/g, (match, max) => {
             let nRand = prng.nextDouble();
             if (typeof nRand !== 'number' || isNaN(nRand) || nRand < 0 || nRand >= 1) {
-                nRand = Math.random();
+                nRand = 0.5;
             }
             return Math.floor(nRand * parseInt(max, 10));
         });
@@ -135,12 +136,12 @@ export class NameGenerator {
             if (T13NE_PRNG) {
                 prng = T13NE_PRNG.create(currentSeed);
             } else {
-                prng = { nextDouble: () => Math.random() };
+                prng = ProcGen.createPRNG(currentSeed);
             }
 
             let rand = prng.nextDouble();
             if (typeof rand !== 'number' || isNaN(rand) || rand < 0 || rand >= 1) {
-                rand = Math.random();
+                rand = 0.5;
             }
             
             let length = 2 + Math.floor(rand * 4); // 2-5 syllables
@@ -150,7 +151,7 @@ export class NameGenerator {
             for (let i = 0; i < length; i++) {
                 const getRand = () => {
                     let r = prng.nextDouble();
-                    return (typeof r !== 'number' || isNaN(r) || r < 0 || r >= 1) ? Math.random() : r;
+                    return (typeof r !== 'number' || isNaN(r) || r < 0 || r >= 1) ? 0.5 : r;
                 };
                 const s = set.start[Math.floor(getRand() * set.start.length)];
                 const m = set.mid[Math.floor(getRand() * set.mid.length)];
@@ -195,7 +196,11 @@ export class NameGenerator {
             let prng;
             const T13NE = this.pluginManager?.getApi('T13', 'T13NE');
             const T13NE_PRNG = T13NE?.getModule('PRNG');
-            prng = T13NE_PRNG ? T13NE_PRNG.create(seed) : { nextDouble: () => Math.random() };
+            if (T13NE_PRNG) {
+                prng = T13NE_PRNG.create(seed);
+            } else {
+                prng = ProcGen.createPRNG(seed);
+            }
 
             let prefixIndex = Math.floor(prng.nextDouble() * prefixes.length);
             if (prefixIndex >= prefixes.length) prefixIndex = prefixes.length - 1;
@@ -217,7 +222,14 @@ export class NameGenerator {
         }
         // Fallback list
         const locations = ["Nova Scotia", "Albion", "Columbia", "Victoria", "Arcadia", "Britannia", "Gallia", "Hibernia", "Caledonia", "Cambria", "Alexandria", "Carolina", "Georgia", "Virginia", "Maryland", "Pennsylvania", "York", "Jersey", "Hampshire", "London", "Paris", "Berlin", "Rome", "Athens", "Sparta", "Troy", "Carthage", "Memphis", "Thebes", "Babylon"];
-        const prng = this.pluginManager?.getApi('T13', 'T13NE')?.getModule('PRNG')?.create(seed) || { nextDouble: () => Math.random() };
+        const T13NE = this.pluginManager?.getApi('T13', 'T13NE');
+        const T13NE_PRNG = T13NE?.getModule('PRNG');
+        let prng;
+        if (T13NE_PRNG) {
+            prng = T13NE_PRNG.create(seed);
+        } else {
+            prng = ProcGen.createPRNG(seed);
+        }
         const base = locations[Math.floor(prng.nextDouble() * locations.length)];
         
         // Add suffix occasionally
@@ -230,7 +242,14 @@ export class NameGenerator {
 
     generateFounderName(seed) {
         // Use generic human names or specific founder list
-        const prng = this.pluginManager?.getApi('T13', 'T13NE')?.getModule('PRNG')?.create(seed) || { nextDouble: () => Math.random() };
+        const T13NE = this.pluginManager?.getApi('T13', 'T13NE');
+        const T13NE_PRNG = T13NE?.getModule('PRNG');
+        let prng;
+        if (T13NE_PRNG) {
+            prng = T13NE_PRNG.create(seed);
+        } else {
+            prng = ProcGen.createPRNG(seed);
+        }
         const names = ["Drake", "Hudson", "Carter", "Franklin", "Vega", "Thorne", "Bishop", "Mercer", "Vance", "Halloway", "Brand", "Ross", "Finch", "Cross", "Stark"];
         const name = names[Math.floor(prng.nextDouble() * names.length)];
         
@@ -246,7 +265,14 @@ export class NameGenerator {
             return this.generate('DESCRIPTIVE_PLANET_NAMES', seed);
         }
         const names = ["Red Rock", "Emerald", "Sapphire", "Onyx", "Dust", "Rust", "Ice", "Frost", "Magma", "Cinder", "Verdant", "Azure", "Midnight", "Twilight", "Dawn", "Horizon", "Reach", "Haven", "Sanctuary", "Paradise", "Eden", "Hell", "Inferno", "Abyss", "Void"];
-        const prng = this.pluginManager?.getApi('T13', 'T13NE')?.getModule('PRNG')?.create(seed) || { nextDouble: () => Math.random() };
+        const T13NE = this.pluginManager?.getApi('T13', 'T13NE');
+        const T13NE_PRNG = T13NE?.getModule('PRNG');
+        let prng;
+        if (T13NE_PRNG) {
+            prng = T13NE_PRNG.create(seed);
+        } else {
+            prng = ProcGen.createPRNG(seed);
+        }
         return names[Math.floor(prng.nextDouble() * names.length)];
     }
 
@@ -255,7 +281,11 @@ export class NameGenerator {
         let prng;
         const T13NE = this.pluginManager?.getApi('T13', 'T13NE');
         const T13NE_PRNG = T13NE?.getModule('PRNG');
-        prng = T13NE_PRNG ? T13NE_PRNG.create(seed) : { nextDouble: () => Math.random() };
+        if (T13NE_PRNG) {
+            prng = T13NE_PRNG.create(seed);
+        } else {
+            prng = ProcGen.createPRNG(seed);
+        }
 
         // Check if the specific grammar exists
         // 50% chance to use grammar if available, otherwise use syllabic for variety
@@ -281,7 +311,14 @@ export class NameGenerator {
     async generateSystemName(n1, n2, n3, nearbySpecies = []) {
         // The noise values are used as a seed. We combine them for a more unique seed.
         const seed = `${n1}-${n2}-${n3}`;
-        const prng = this.pluginManager?.getApi('T13', 'T13NE')?.getModule('PRNG')?.create(seed) || { nextDouble: () => Math.random() };
+        const T13NE = this.pluginManager?.getApi('T13', 'T13NE');
+        const T13NE_PRNG = T13NE?.getModule('PRNG');
+        let prng;
+        if (T13NE_PRNG) {
+            prng = T13NE_PRNG.create(seed);
+        } else {
+            prng = ProcGen.createPRNG(seed);
+        }
 
         // 50% chance to use syllabic generation for unique system names
         if (prng.nextDouble() < 0.5) {
@@ -309,7 +346,7 @@ export class NameGenerator {
         if (T13NE_PRNG) {
             prng = T13NE_PRNG.create(seed);
         } else {
-            prng = { nextDouble: () => Math.random() };
+            prng = ProcGen.createPRNG(seed);
         }
 
         if (speciesKey === 'FirstRelic') return 'The Silent Relic';

@@ -38,7 +38,7 @@ export class WorkerPool {
      * Executes a task on the pool.
      */
     async execute(type, data, transferables = []) {
-        const requestId = Math.random().toString(36).substring(7);
+        const requestId = (performance.now() + (data?.seed || 0)).toString(36).replace('.', '');
         Logger.message(`[WorkerPool:${this.poolId}] Executing task '${type}' with requestId ${requestId}.`);
 
         try {

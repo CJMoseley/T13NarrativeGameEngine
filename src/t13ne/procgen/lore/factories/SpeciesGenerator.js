@@ -2,6 +2,7 @@ import { LoreData } from '../LoreData.js';
 import { NameGenerator } from './NameGenerator.js';
 import { GalacticHistory } from '/src/t13ne/procgen/galaxy/GalacticHistory.js';
 import Logger from '../../../core/Logger.js';
+import ProcGen from '/src/t13ne/procgen/ProcGen.js';
 
 export class SpeciesGenerator {
     constructor(pluginManager, nameGenerator) {
@@ -181,7 +182,14 @@ export class SpeciesGenerator {
             if (affinity === 'ICE_WORLD' && star.starClass.includes('M-Type')) return true;
             if (affinity === 'GAS_GIANT_SYSTEM' && context.star.r > 0.4) return true;
             if (affinity === 'VOLCANIC_WORLD' && star.isYoung) return true;
-            return Math.random() < 0.1;
+
+            // Deterministic fallback based on star coordinates
+            if (context.star) {
+                const seed = (context.star.x || 0) + (context.star.y || 0) + (context.star.z || 0);
+                const prng = ProcGen.createPRNG(seed);
+                return prng.nextDouble() < 0.1;
+            }
+            return false;
         }
 
         const parts = condition.match(/(\w+)\s*>\s*([\d.]+)/);
@@ -460,7 +468,7 @@ export class SpeciesGenerator {
         if (archetypeId === 'ARCHETYPE_BIOLOGICAL_CARBON') {
             const bases = LoreData.naming.ANIMAL_BASES || [];
             if (bases.length > 0) {
-                const prng = T13NE_PRNG ? T13NE_PRNG.create(`${n1}-${biosphere}`) : { nextDouble: () => Math.random() };
+                const prng = T13NE_PRNG ? T13NE_PRNG.create(`${n1}-${biosphere}`) : ProcGen.createPRNG(`${n1}-${biosphere}`);
                 animalBase = bases[Math.floor(prng.nextDouble() * bases.length)];
             }
         }
@@ -470,7 +478,7 @@ export class SpeciesGenerator {
 
         // Generate Scientific Name
         let scientificName = '';
-        const prngName = T13NE_PRNG ? T13NE_PRNG.create(`${n3}-${n4}-${archetypeId}`) : { nextDouble: () => Math.random() };
+        const prngName = T13NE_PRNG ? T13NE_PRNG.create(`${n3}-${n4}-${archetypeId}`) : ProcGen.createPRNG(`${n3}-${n4}-${archetypeId}`);
 
         if (animalBase) {
             const latinPrefix = LoreData.naming.ANIMAL_TO_LATIN_MAPPING?.[animalBase] || animalBase;

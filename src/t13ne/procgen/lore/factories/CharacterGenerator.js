@@ -1,6 +1,7 @@
 import { LoreData } from '../LoreData.js';
 import { NameGenerator } from './NameGenerator.js';
 import Logger from '../../../core/Logger.js';
+import ProcGen from '/src/t13ne/procgen/ProcGen.js';
 import CodexLoader from '../../../modules/codex/CodexLoader.js';
 
 class Descendant {
@@ -127,14 +128,11 @@ export class CharacterGenerator {
     async _generateExtraCharacter(specificType, options = {}) {
         Logger.message(`CharacterGenerator: Generating extra character (${specificType})...`);
         try {
-            // Use options.seed if available, otherwise Date.now() + random
-            const seed = options.seed !== undefined ? options.seed : (Date.now() + Math.floor(Math.random() * 100000));
+            // Use options.seed if available, otherwise a default deterministic seed
+            const seed = options.seed !== undefined ? options.seed : (this.nameGenerator.constructor.name + specificType + (options.species || 'unknown'));
             
-            // Simple seeded RNG for internal choices
-            const rng = (typeof seed === 'number') ? (() => {
-                let s = seed;
-                return () => { s = Math.sin(s) * 10000; return s - Math.floor(s); };
-            })() : Math.random;
+            const prng = ProcGen.createPRNG(seed);
+            const rng = () => prng.nextDouble();
 
             const name = this.nameGenerator.generateAlienName(seed);
             Logger.message(`CharacterGenerator: Generated name: ${name}`);
@@ -206,11 +204,9 @@ export class CharacterGenerator {
     }
 
     async _generateArchetypeCharacter(options = {}) {
-        const seed = options.seed !== undefined ? options.seed : Math.random();
-        const rng = (typeof seed === 'number') ? (() => {
-            let s = seed;
-            return () => { s = Math.sin(s) * 10000; return s - Math.floor(s); };
-        })() : Math.random;
+        const seed = options.seed !== undefined ? options.seed : ('archetype-' + (options.species || 'unknown'));
+        const prng = ProcGen.createPRNG(seed);
+        const rng = () => prng.nextDouble();
 
         const name = this.nameGenerator.generateAlienName(rng(), rng(), rng());
         
@@ -262,17 +258,10 @@ export class CharacterGenerator {
 
     async _generateDetailedCharacter(options = {}) {
         Logger.message("CharacterGenerator: _generateDetailedCharacter started.");
-        const seed = options.seed !== undefined ? options.seed : Math.random();
+        const seed = options.seed !== undefined ? options.seed : ('detailed-' + (options.species || 'unknown'));
         
-        // Ensure seed is a number for the RNG
-        const seedNum = (typeof seed === 'number') ? seed : (
-            (typeof seed === 'string') ? seed.split('').reduce((a,b)=>a+b.charCodeAt(0),0) : Date.now()
-        );
-
-        const rng = (() => {
-            let s = seedNum;
-            return () => { s = Math.sin(s) * 10000; return s - Math.floor(s); };
-        })();
+        const prng = ProcGen.createPRNG(seed);
+        const rng = () => prng.nextDouble();
 
         Logger.message("CharacterGenerator: Generating Name...");
         let name = "Unknown";

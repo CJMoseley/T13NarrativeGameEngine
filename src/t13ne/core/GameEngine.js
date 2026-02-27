@@ -311,7 +311,9 @@ export class GameEngine {
         });
 
         const startPool = discStars.length > 0 ? discStars : allStars;
-        this.playerStartSystem = startPool[Math.floor(Math.random() * startPool.length)];
+
+        const prng = this.engine.getModule('PRNG').create(this.galaxy.seed || 'start-pos');
+        this.playerStartSystem = startPool[Math.floor(prng.nextDouble() * startPool.length)];
 
         this.nearbyStartSystems = this._findClosestSystems(this.playerStartSystem, startPool, 12);
 

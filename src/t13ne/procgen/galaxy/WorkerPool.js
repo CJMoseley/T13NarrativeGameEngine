@@ -39,7 +39,16 @@ export class WorkerPool {
      * Executes a task on the pool.
      */
     async execute(type, data, transferables = []) {
-        const requestId = Math.random().toString(36).substring(7);
+        // Use a deterministic requestId generation if data has a seed, otherwise use timestamp/counter
+        // For debugging/tracking purposes, it is better to be unique but repeatable if possible.
+        const seed = (data && data.seed) ? String(data.seed) : String(Date.now() + (performance.now() % 1));
+        let hash = 0;
+        for (let i = 0; i < seed.length; i++) {
+            hash = ((hash << 5) - hash) + seed.charCodeAt(i);
+            hash |= 0;
+        }
+        const requestId = Math.abs(hash).toString(36).substring(0, 7) + (performance.now().toString(36).replace('.', ''));
+
         Logger.message(`[WorkerPool:${this.poolId}] Executing task '${type}' with requestId ${requestId}.`);
 
         try {
