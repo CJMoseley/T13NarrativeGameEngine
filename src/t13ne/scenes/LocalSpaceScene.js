@@ -204,11 +204,22 @@ export class LocalSpaceScene extends Scene {
 
         const waypoints = [];
         const allPlanets = this.objects.filter(o => o.type === 'planet').sort((a, b) => a.orbitRadius - b.orbitRadius);
+        const outermostPlanet = allPlanets.length > 0 ? allPlanets[allPlanets.length - 1] : null;
+        const isHomeworldOutermost = this.homeWorldObj === outermostPlanet || (this.homeWorldObj.type === 'moon' && this.homeWorldObj.parent === outermostPlanet);
+
         const systemRadius = allPlanets.length > 0 ? allPlanets[allPlanets.length - 1].orbitRadius : 20000;
         const startDist = Math.max(systemRadius * 2.5, 120000); // Start MUCH further out
 
         // 1. Start Point: Outer Edge
-        const angle = Math.random() * Math.PI * 2;
+        let angle;
+        if (isHomeworldOutermost && this.flybyObj && this.flybyObj.realPosition) {
+            // "opposite side of the system" for inner planet flyby
+            const flybyDir = this.flybyObj.realPosition.clone().normalize();
+            angle = Math.atan2(flybyDir.z, flybyDir.x) + Math.PI;
+        } else {
+            angle = Math.random() * Math.PI * 2;
+        }
+
         this.introStartPos.set(
             Math.cos(angle) * startDist,
             startDist * 0.4, // Higher elev
@@ -885,8 +896,23 @@ export class LocalSpaceScene extends Scene {
         if (this.homeWorldObj) {
             Logger.message(`LocalSpaceScene: Homeworld identified as ${this.homeWorldObj.data.name || 'Body ' + (this.homeWorldObj.index || '')} (${this.homeWorldObj.type})`);
 
-            const candidates = this.objects.filter(o => (o.type === 'planet' || o.type === 'moon') && o !== this.homeWorldObj && o.mesh);
-            this.flybyObj = candidates.length > 0 ? candidates[Math.floor(Math.random() * candidates.length)] : this.objects.find(o => o.type === 'star');
+            const allPlanets = this.objects.filter(o => o.type === 'planet').sort((a, b) => a.orbitRadius - b.orbitRadius);
+            const outermostPlanet = allPlanets.length > 0 ? allPlanets[allPlanets.length - 1] : null;
+            const isHomeworldOutermost = this.homeWorldObj === outermostPlanet || (this.homeWorldObj.type === 'moon' && this.homeWorldObj.parent === outermostPlanet);
+
+            const getDistFromStar = (obj) => obj.type === 'moon' ? (obj.parent?.orbitRadius || 0) : (obj.orbitRadius || 0);
+            const hwDist = getDistFromStar(this.homeWorldObj);
+
+            if (isHomeworldOutermost) {
+                // Select an inner planet for flyby
+                const innerPlanets = allPlanets.filter(p => p !== outermostPlanet);
+                this.flybyObj = innerPlanets.length > 0 ? innerPlanets[Math.floor(Math.random() * innerPlanets.length)] : this.objects.find(o => o.type === 'star');
+            } else {
+                // Select an outer planet/body for flyby
+                const outerBodies = this.objects.filter(o => (o.type === 'planet' || o.type === 'moon') && o !== this.homeWorldObj && getDistFromStar(o) > hwDist);
+                this.flybyObj = outerBodies.length > 0 ? outerBodies[Math.floor(Math.random() * outerBodies.length)] : allPlanets[allPlanets.length - 1];
+            }
+
             Logger.message(`LocalSpaceScene: Fly-by object identified as ${this.flybyObj?.data?.name || this.flybyObj?.type || 'the star'}`);
 
             if (this.homeWorldObj.mesh && typeof this.homeWorldObj.mesh.enableHighDetail === 'function') this.homeWorldObj.mesh.enableHighDetail();

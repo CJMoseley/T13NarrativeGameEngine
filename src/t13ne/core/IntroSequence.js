@@ -116,7 +116,7 @@ export class IntroSequence {
                 // This scene's intro sequence has an internal timer, after which it calls complete().
                 // We don't need a `waitFor` here, as the scene's completion will trigger the next step
                 // in the ViewManager/IntroSequence logic.
-                autoComplete: true
+                autoComplete: false
             },
             {
                 id: 'orbit',
@@ -142,7 +142,7 @@ export class IntroSequence {
                         this.viewManager.currentScene.updateContext(this.context);
                     }
                 },
-                autoComplete: true
+                autoComplete: false
             },
             {
                 id: 'showcase',

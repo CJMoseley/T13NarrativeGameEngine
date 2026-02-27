@@ -429,15 +429,7 @@ export class SpeciesGenerator {
         const facadeGeo = foundations.find(s => s.type === 'descriptive_geometry' && s.category === 'FACADE');
         if (facadeGeo && facadeGeo.data[traits.facadeNumber]) {
             const facadeData = facadeGeo.data[traits.facadeNumber];
-            if (facadeData?.Diegetic_Description) {
-                physDescParts.push(facadeData.Diegetic_Description);
-            } else if (facadeData?.diegetic_text) {
-                physDescParts.push(facadeData.diegetic_text);
-            } else if (facadeData?.preGeneratedLore) {
-                physDescParts.push(facadeData.preGeneratedLore);
-            } else if (typeof facadeData === 'string') {
-                physDescParts.push(facadeData);
-            }
+            if (facadeData?.Diegetic_Description) physDescParts.push(facadeData.Diegetic_Description);
             if (facadeData?.Diegetic_Goal) physDescParts.push(facadeData.Diegetic_Goal);
             if (facadeData?.Diegetic_Gift) physDescParts.push(facadeData.Diegetic_Gift);
         }
@@ -456,23 +448,9 @@ export class SpeciesGenerator {
         const soulGeo = foundations.find(s => s.type === 'descriptive_geometry' && s.category === 'SOUL');
         if (soulGeo && soulGeo.data[traits.soulNumber]) {
             const soulData = soulGeo.data[traits.soulNumber];
-            if (soulData?.Diegetic_Description) {
-                cultureParts.push(soulData.Diegetic_Description);
-            } else if (soulData?.diegetic_text) {
-                cultureParts.push(soulData.diegetic_text);
-            } else if (soulData?.preGeneratedLore) {
-                cultureParts.push(soulData.preGeneratedLore);
-            } else if (typeof soulData === 'string') {
-                cultureParts.push(soulData);
-            }
+            if (soulData?.Diegetic_Description) cultureParts.push(soulData.Diegetic_Description);
             if (soulData?.Diegetic_Goal) cultureParts.push(soulData.Diegetic_Goal);
             if (soulData?.Diegetic_Gift) cultureParts.push(soulData.Diegetic_Gift);
-        }
-
-        // Use Harmonic Signature for general disposition
-        if (traits.harmonicNames && traits.harmonicNames.length > 0) {
-            const names = traits.harmonicNames.join(', ');
-            cultureParts.push(`They are often characterized by a ${names.toLowerCase()} disposition.`);
         }
 
         if (traits.impressionSummary) {

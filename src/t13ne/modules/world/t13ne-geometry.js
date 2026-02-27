@@ -378,7 +378,7 @@ class T13Geometry {
     const geoData = this.Geometries[g];
 
     if (!geoData) {
-        return { GeoName: 'Unknown', GeoText: `<div>Unknown Geometry for ${name}</div>`, Name: name, Harmonics: {} };
+        return { GeoText: `<div>Unknown scan for ${name}</div>`, Name: name, Harmonics: {} };
     }
 
     let geoDesc = '';
@@ -386,9 +386,10 @@ class T13Geometry {
         geoDesc = `<div class="t13ne-geo-desc">${geoData.Diegetic_Description}</div>`;
     }
 
-    const geoText = `<div class="t13ne-geo"><strong>Name:</strong> ${geo.Name} ${geoDesc}</div>`;
+    // Completely remove the technical "Name" (GeoName) from the output text.
+    const geoText = `<div class="t13ne-geo">${geoDesc}</div>`;
     
-    return { GeoName: geoData.Name, GeoText: geoText, Name: name, Harmonics: geo.GeoHarmonics };
+    return { GeoText: geoText, Name: name, Harmonics: geo.GeoHarmonics };
   }
 
   writeBlock(/* omitted: detailed HTML rendering; keep minimal for now */) {
