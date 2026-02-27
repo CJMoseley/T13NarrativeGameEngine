@@ -824,7 +824,8 @@ export class PlanetaryOrbitScene extends Scene {
                     Logger.warn(`PlanetaryOrbitScene: Invalid species color '${speciesCore.color}', defaulting to random.`);
                 }
             } else {
-                 const hue = Math.random();
+                 const prng = ProcGen.createPRNG(this.planetData.name || 'avatar-color');
+                 const hue = prng.nextDouble();
                  avatarMesh.material.color.setHSL(hue, 0.6, 0.5);
             }
 
