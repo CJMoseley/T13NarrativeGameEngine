@@ -23,6 +23,7 @@ import { WebRTCManager } from '/src/t13ne/net/WebRTCManager.js';
 import { VOIPManager } from './VOIPManager.js';
 import { EventBus } from './EventBus.js';
 import Logger from './Logger.js';
+import { Controls } from './Controls.js';
 
 /**
  * @class GameEngine
@@ -72,6 +73,10 @@ export class GameEngine {
         this.galacticPlot = null;
         this.availablePlayerSpecies = [];
         this.database = { ships: [] }; // Mock database
+
+        // Debug
+        this.debugEnabled = false;
+        this.debugTogglePressed = false;
 
         this.setupEventListeners();
 
@@ -448,5 +453,40 @@ export class GameEngine {
         // Update sound generators if active
         if (this.engineSound) this.engineSound.update(time, delta);
         if (this.wormholeAmbiance) this.wormholeAmbiance.update(time, delta);
+
+        // Handle Debug Toggle
+        const debugToggle = Controls.isPressed(this.physicsEngine.keys, 'system_actions', 'DEBUG_TOGGLE');
+        if (debugToggle && !this.debugTogglePressed) {
+            this.debugEnabled = !this.debugEnabled;
+            Logger.log(`Debug mode: ${this.debugEnabled ? 'ON' : 'OFF'}`);
+
+            // Toggle visibility of general debug elements
+            const debugElements = document.querySelectorAll('.t13ne-debug');
+            debugElements.forEach(el => {
+                el.style.display = this.debugEnabled ? '' : 'none';
+            });
+
+            // Toggle specific known debug overlays
+            const audioDebug = document.getElementById('audio-debug-viz');
+            if (audioDebug) {
+                audioDebug.style.display = this.debugEnabled ? 'block' : 'none';
+            }
+
+            const viewDebug = document.getElementById('view-debug-container');
+            if (viewDebug) {
+                viewDebug.style.display = this.debugEnabled ? 'block' : 'none';
+            }
+
+            // Propagate to current scene
+            if (this.engine.sceneManager && this.engine.sceneManager.currentScene) {
+                const scene = this.engine.sceneManager.currentScene;
+                if (typeof scene.toggleDebug === 'function') {
+                    scene.toggleDebug(this.debugEnabled);
+                } else if (scene.debugLayer) {
+                    scene.debugLayer.visible = this.debugEnabled;
+                }
+            }
+        }
+        this.debugTogglePressed = debugToggle;
     }
 }

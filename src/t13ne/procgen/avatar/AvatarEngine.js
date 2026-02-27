@@ -1,22 +1,68 @@
 import * as THREE from 'three';
 import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils.js';
-import { COMPONENT_TYPES, MIXINS, TRAITS } from './BodyPlanSchema.js';
+import { COMPONENT_TYPES, MIXINS, TRAITS, BODY_PLANS } from './BodyPlanSchema.js';
+import ModelLoader from '../../core/ModelLoader.js';
 
 /**
  * @module Avatar/AvatarEngine
- * @description Generates SkinnedMesh and Skeleton from a BodyPlan.
+ * @description Generates SkinnedMesh and Skeleton from a BodyPlan, or loads pre-rigged models.
  */
 export class AvatarEngine {
     constructor() {
         this.boneMap = new Map();
+        this.modelLoader = new ModelLoader();
     }
 
     /**
-     * Generates a complete avatar.
+     * Generates a complete avatar, either by loading a model or by procedural generation.
+     * @param {object} bodyPlan - The body plan defining the avatar's structure.
+     * @returns {Promise<THREE.SkinnedMesh|THREE.Group>} A promise that resolves with the avatar object.
+     */
+    async generate(bodyPlan) {
+        if (bodyPlan && bodyPlan.name === 'Humanoid') {
+            return this.loadHumanoidAvatar();
+        }
+        // For Aliens, Theriocephalics, etc., use procedural generation.
+        return this.generateProceduralAvatar(bodyPlan);
+    }
+
+    /**
+     * Loads the specific rigged FBX model for humanoid characters.
+     * @returns {Promise<THREE.Group>} A promise that resolves with the loaded and configured model.
+     */
+    async loadHumanoidAvatar() {
+        const fbxPath = '/data/models/minecraft-rig/source/RunningboyRig.fbx';
+        try {
+            const avatar = await this.modelLoader.loadModel(fbxPath);
+            
+            const toonMaterial = new THREE.MeshToonMaterial({
+                color: 0xaaaaaa,
+                skinning: true
+            });
+
+            avatar.traverse((child) => {
+                if (child.isMesh || child.isSkinnedMesh) {
+                    child.material = toonMaterial;
+                    // Ensure shadows are cast and received if needed
+                    child.castShadow = true;
+                    child.receiveShadow = true;
+                }
+            });
+
+            return avatar;
+        } catch (error) {
+            console.error('Failed to load humanoid avatar, falling back to procedural generation.', error);
+            // Fallback to a simple procedural humanoid if the FBX fails to load
+            return this.generateProceduralAvatar(BODY_PLANS.HUMANOID);
+        }
+    }
+
+    /**
+     * Generates a procedural avatar from a body plan.
      * @param {object} bodyPlan
      * @returns {THREE.SkinnedMesh}
      */
-    generate(bodyPlan) {
+    generateProceduralAvatar(bodyPlan) {
         this.boneMap.clear();
 
         // 1. Build Skeleton
@@ -31,7 +77,8 @@ export class AvatarEngine {
 
         // 4. Create SkinnedMesh
         const material = new THREE.MeshToonMaterial({
-            color: 0xaaaaaa
+            color: 0xaaaaaa,
+            skinning: true
         });
 
         const mesh = new THREE.SkinnedMesh(geometry, material);
@@ -138,8 +185,29 @@ export class AvatarEngine {
 
             // Create segment for the main bone
             let size = [0.1, 0.1, 0.1];
-            if (comp.type === COMPONENT_TYPES.HEAD) size = [0.25, 0.25, 0.25];
-            else if (comp.type === COMPONENT_TYPES.TORSO) size = [0.4, 0.5, 0.3];
+            if (comp.type === COMPONENT_TYPES.HEAD) {
+                size = [0.25, 0.25, 0.25];
+                
+                // Add snout/ears for non-humanoids (Aliens/Theriocephalics)
+                if (bodyPlan.name !== 'Humanoid') {
+                    // Snout
+                    const snoutGeo = new THREE.BoxGeometry(0.15, 0.1, 0.2);
+                    snoutGeo.translate(0, -0.05, 0.2); // Position it sticking out from the front-bottom
+                    geometries.push(this._applySkinning(snoutGeo, boneIndex));
+
+                    // Ears
+                    const leftEarGeo = new THREE.BoxGeometry(0.05, 0.15, 0.05);
+                    leftEarGeo.translate(-0.1, 0.15, 0); // Position on top-left
+                    geometries.push(this._applySkinning(leftEarGeo, boneIndex));
+
+                    const rightEarGeo = new THREE.BoxGeometry(0.05, 0.15, 0.05);
+                    rightEarGeo.translate(0.1, 0.15, 0); // Position on top-right
+                    geometries.push(this._applySkinning(rightEarGeo, boneIndex));
+                }
+
+            } else if (comp.type === COMPONENT_TYPES.TORSO) {
+                size = [0.4, 0.5, 0.3];
+            }
 
             const mainGeo = new THREE.BoxGeometry(...size);
             // Move geometry so pivot is at top/center

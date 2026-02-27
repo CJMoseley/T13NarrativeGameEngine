@@ -372,6 +372,25 @@ class T13Geometry {
     return { GeoName: this.Geometries[g].Name, GeoText: geoText, Name: name, Harmonics: geo.GeoHarmonics };
   }
 
+  writeDiegeticGeo(name, showname = true, forcegeo = 0) {
+    const geo = this.calculateFullGeo(name, forcegeo);
+    const g = geo.GeometryNumber;
+    const geoData = this.Geometries[g];
+
+    if (!geoData) {
+        return { GeoName: 'Unknown', GeoText: `<div>Unknown Geometry for ${name}</div>`, Name: name, Harmonics: {} };
+    }
+
+    let geoDesc = '';
+    if (geoData.Diegetic_Description) {
+        geoDesc = `<div class="t13ne-geo-desc">${geoData.Diegetic_Description}</div>`;
+    }
+
+    const geoText = `<div class="t13ne-geo"><strong>Name:</strong> ${geo.Name} ${geoDesc}</div>`;
+    
+    return { GeoName: geoData.Name, GeoText: geoText, Name: name, Harmonics: geo.GeoHarmonics };
+  }
+
   writeBlock(/* omitted: detailed HTML rendering; keep minimal for now */) {
     return '<div class="t13ne-geo-block">Geometry block (summary)</div>';
   }
@@ -525,6 +544,31 @@ class T13Geometry {
         nascent: geo.Nascent,
         ghost: ghostIndex
       }
+    };
+  }
+
+  getDiegeticLoreDescriptions(name, type = 'Character') {
+    const geo = this.calculateFullGeo(name);
+    if (!geo || !geo.Geo) return {};
+
+    const getFields = (num) => {
+      const g = this.Geometries[num];
+      if (!g) return { description: null, goal: null, gift: null };
+      return {
+          description: g.Diegetic_Description || null,
+          goal: g.Diegetic_Goal || null,
+          gift: g.Diegetic_Gift || null,
+      };
+    };
+
+    const ghostIndex = geo.GeoHarmonics ? geo.GeoHarmonics.Ghost : 0;
+
+    return {
+      main: getFields(geo.GeometryNumber),
+      soul: getFields(geo.Soul),
+      facade: getFields(geo.Facade),
+      nascent: getFields(geo.Nascent),
+      hidden: getFields(ghostIndex),
     };
   }
 

@@ -24,7 +24,7 @@
                      else if (t.includes('location') || t.includes('planet') || t.includes('system')) type = 'Location';
                      else if (t.includes('descendant') || t.includes('item') || t.includes('object')) type = 'Descendant';
                  }
-                 context.geometryLore = T13Geometry.getLoreDescriptions(context.name, type);
+                 context.geometryLore = T13Geometry.getDiegeticLoreDescriptions(context.name, type);
              }
         }
 
@@ -86,36 +86,34 @@
 
         // Add Geometry Context if available
         if (context.geometryLore) {
-            prompt += `\nGeometry Context (Numerological Influences):\n`;
-            prompt += `- Essence (Full Name): ${context.geometryLore.main}\n`;
-            prompt += `- Inner Nature (Soul): ${context.geometryLore.soul}\n`;
-            prompt += `- Outward Appearance (Facade): ${context.geometryLore.facade}\n`;
-            prompt += `- Origin/Foundation (Nascent): ${context.geometryLore.nascent}\n`;
-            prompt += `- Hidden Potential (Ghost): ${context.geometryLore.hidden}\n`;
+            prompt += `\nDiegetic Lore Context:\n`;
             
-            if (context.geometryLore.key) {
-                const k = context.geometryLore.key;
-                prompt += `- Key/Pitch: ${k.Pitch} (${k.House})\n`;
-                if (k.Questions) prompt += `  * Thematic Question: ${k.Questions}\n`;
-                if (k.Ruler) prompt += `  * Ruler: ${k.Ruler}\n`;
-                if (context.geometryLore.keyDescription) {
-                    prompt += `  * Environmental Feel: ${context.geometryLore.keyDescription}\n`;
+            const addLoreSection = (title, lore) => {
+                if (!lore) return;
+                let sectionAdded = false;
+                let sectionString = `- ${title}:\n`;
+                if (lore.description) {
+                    sectionString += `  - Description: ${lore.description}\n`;
+                    sectionAdded = true;
+                }
+                if (lore.goal) {
+                    sectionString += `  - Goal: ${lore.goal}\n`;
+                    sectionAdded = true;
+                }
+                if (lore.gift) {
+                    sectionString += `  - Gift: ${lore.gift}\n`;
+                    sectionAdded = true;
+                }
+                if(sectionAdded) {
+                    prompt += sectionString;
                 }
             }
-
-            if (context.geometryLore.chord) {
-                const c = context.geometryLore.chord;
-                prompt += `- Harmonic Chord: ${c.Type || 'Unknown'}\n`;
-                if (context.geometryLore.chordDescription) {
-                    prompt += `  * Harmonic Feel: ${context.geometryLore.chordDescription}\n`;
-                }
-            }
-
-            if (context.geometryLore.harmonics) {
-                const h = context.geometryLore.harmonics;
-                if (h.perfect && h.perfect.name) prompt += `- Perfect Harmony (Affinity): ${h.perfect.name}\n`;
-                if (h.nemesis && h.nemesis.name) prompt += `- Nemesis (Conflict): ${h.nemesis.name}\n`;
-            }
+            
+            addLoreSection('Essence (Full Name)', context.geometryLore.main);
+            addLoreSection('Inner Nature (Soul)', context.geometryLore.soul);
+            addLoreSection('Outward Appearance (Facade)', context.geometryLore.facade);
+            addLoreSection('Origin/Foundation (Nascent)', context.geometryLore.nascent);
+            addLoreSection('Hidden Potential (Ghost)', context.geometryLore.hidden);
         }
 
         if (context.proficiencies) {

@@ -78,6 +78,13 @@
                 "label": "Release to Jump Inward",
                 "display": "<SPACE_REL>"
             }
+        },
+        "system_actions": {
+            "DEBUG_TOGGLE": {
+               "key": "f3",
+               "alt_key": "f",
+               "label": "Toggle Debug Overlays"
+            }
         }
     },
     "default": "galaxy"

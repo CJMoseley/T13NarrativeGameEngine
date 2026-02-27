@@ -429,9 +429,17 @@ export class SpeciesGenerator {
         const facadeGeo = foundations.find(s => s.type === 'descriptive_geometry' && s.category === 'FACADE');
         if (facadeGeo && facadeGeo.data[traits.facadeNumber]) {
             const facadeData = facadeGeo.data[traits.facadeNumber];
-            // Prefer diegetic text if available
-            const diegeticText = facadeData?.Diegetic_Individual || facadeData?.diegetic_text || facadeData?.preGeneratedLore || (typeof facadeData === 'string' ? facadeData : null);
-            if (diegeticText) physDescParts.push(diegeticText);
+            if (facadeData?.Diegetic_Description) {
+                physDescParts.push(facadeData.Diegetic_Description);
+            } else if (facadeData?.diegetic_text) {
+                physDescParts.push(facadeData.diegetic_text);
+            } else if (facadeData?.preGeneratedLore) {
+                physDescParts.push(facadeData.preGeneratedLore);
+            } else if (typeof facadeData === 'string') {
+                physDescParts.push(facadeData);
+            }
+            if (facadeData?.Diegetic_Goal) physDescParts.push(facadeData.Diegetic_Goal);
+            if (facadeData?.Diegetic_Gift) physDescParts.push(facadeData.Diegetic_Gift);
         }
 
         return physDescParts.join(' ');
@@ -448,9 +456,17 @@ export class SpeciesGenerator {
         const soulGeo = foundations.find(s => s.type === 'descriptive_geometry' && s.category === 'SOUL');
         if (soulGeo && soulGeo.data[traits.soulNumber]) {
             const soulData = soulGeo.data[traits.soulNumber];
-            // Prefer diegetic text if available
-            const diegeticText = soulData?.Diegetic_Society || soulData?.diegetic_text || soulData?.preGeneratedLore || (typeof soulData === 'string' ? soulData : null);
-            if (diegeticText) cultureParts.push(diegeticText);
+            if (soulData?.Diegetic_Description) {
+                cultureParts.push(soulData.Diegetic_Description);
+            } else if (soulData?.diegetic_text) {
+                cultureParts.push(soulData.diegetic_text);
+            } else if (soulData?.preGeneratedLore) {
+                cultureParts.push(soulData.preGeneratedLore);
+            } else if (typeof soulData === 'string') {
+                cultureParts.push(soulData);
+            }
+            if (soulData?.Diegetic_Goal) cultureParts.push(soulData.Diegetic_Goal);
+            if (soulData?.Diegetic_Gift) cultureParts.push(soulData.Diegetic_Gift);
         }
 
         // Use Harmonic Signature for general disposition

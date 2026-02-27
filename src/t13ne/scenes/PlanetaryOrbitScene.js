@@ -44,6 +44,9 @@ export class PlanetaryOrbitScene extends Scene {
         this.introActive = true;
         this.introTime = 0;
         this.infoPanel = null;
+        this.infoPanels = [];
+        this.updatablePanels = [];
+        this.raycaster = new THREE.Raycaster();
         this.shipSceneReady = false;
         this.starbox = null;
     }
@@ -61,8 +64,7 @@ export class PlanetaryOrbitScene extends Scene {
             Logger.message("PlanetaryOrbitScene: Received updated planet data. Rebuilding scene.");
             this.buildScene();
             if (this.isActive) {
-                if (this.infoPanel && this.infoPanel.parentNode) this.infoPanel.parentNode.removeChild(this.infoPanel);
-                this.createPlanetInfoPanel();
+                this.createPlanetInfoPanels();
             }
         }
     }
@@ -181,7 +183,7 @@ export class PlanetaryOrbitScene extends Scene {
         if (!this.planetMesh) {
             await this.buildScene();
         }
-        this.createPlanetInfoPanel();
+        this.createPlanetInfoPanels();
 
         super.onLoad();
         Logger.end(funcName);
@@ -436,80 +438,47 @@ export class PlanetaryOrbitScene extends Scene {
         // Yield to allow frame render before generating UI
         await new Promise(r => setTimeout(r, 100));
 
-        const seed = this.planetData.name ? this._stringToSeed(this.planetData.name) : 12345;
-        const prng = ProcGen.createPRNG(seed);
+        // --- 1. Data Gathering ---
+        const {
+            species, society, description, gravity, temperature,
+            atmosphere, techInfo, resourcesHtml, speciesLoreHtml, poi
+        } = this._getInfoPanelData();
 
-        // Generate Lore Data
-        // Use actual system data if available, otherwise fallback
-        const species = this._sanitizeLore(this.systemData.species || this.planetData.species || "Unknown Species");
-        let society = this._sanitizeLore(this.systemData.society || "Unknown Society");
-        if (this.planetData.population) {
-            society += ` (Pop: ${this.planetData.population.toLocaleString()})`;
-        }
-        
-        const description = this._sanitizeLore(this.planetData.description || "A mysterious world.");
-
-        // Extended Data extraction
-        const gravity = this.planetData.gravity ? `${parseFloat(this.planetData.gravity).toFixed(2)} G` : 'Unknown';
-        const temperature = this.planetData.temperature ? `${Math.round(this.planetData.temperature)} K` : 'Unknown';
-        const atmosphere = this.planetData.atmosphere || 'None';
-        
-        let techInfo = "Unknown";
-        if (this.systemData.tech) {
-            // Handle both string and object formats for tech
-            techInfo = this._sanitizeLore(typeof this.systemData.tech === 'string' ? this.systemData.tech : (this.systemData.tech.Type || "Unknown"));
-        }
-
-        let resourcesHtml = '<span style="color:#888;">None detected</span>';
-        if (this.planetData.resources && this.planetData.resources.length > 0) {
-            resourcesHtml = this.planetData.resources.map(r => `<span style="color:#aaffaa;">${r.name}</span> <span style="color:#88aa88; font-size:0.8em;">(${r.grade})</span>`).join(', ');
-        }
-
-        let speciesLoreHtml = "";
-        if (this.systemData.speciesCore) {
-            const core = this.systemData.speciesCore;
-            if (core.physicalDescription) speciesLoreHtml += `<div style="margin-top:5px; font-style:italic; color:#aaccff;">"${this._sanitizeLore(core.physicalDescription)}"</div>`;
-            if (core.culturalDescription) speciesLoreHtml += `<div style="margin-top:5px; color:#ccccff;">${this._sanitizeLore(core.culturalDescription)}</div>`;
-        }
-
-        // Define POI (Point of Interest) for the UI
-        let poi = "Unknown Anomaly";
-        if (this.planetData.resources && this.planetData.resources.length > 0) {
-            poi = `Resource Deposit: ${this.planetData.resources[0].name}`;
-        } else if (this.planetData.biosphere && this.planetData.biosphere !== 'None') {
-            poi = `Life Sign: ${this.planetData.biosphere}`;
-        } else if (this.planetData.type) {
-            poi = `Geological Feature: ${this.planetData.type}`;
-        }
-
-        // Create Panel Container
+        // --- 2. Create Panel & Header ---
         const panel = document.createElement('div');
-        Object.assign(panel.style, {
-            position: 'absolute',
-            top: '10%',
-            right: '2%',
-            width: '400px', // Widened
-            maxHeight: '80%',
-            overflowY: 'auto',
-            padding: '20px',
-            backgroundColor: 'rgba(0, 10, 20, 0.9)',
-            border: '1px solid #00aaff',
-            boxShadow: '0 0 20px rgba(0, 170, 255, 0.4)',
-            color: '#e0f0ff',
-            fontFamily: '"Orbitron", "Courier New", monospace',
-            zIndex: '100',
-            borderRadius: '8px',
-            backdropFilter: 'blur(8px)',
-            transition: 'opacity 1s',
-            scrollbarWidth: 'thin'
-        });
-
-        // Header
+        this._styleInfoPanel(panel);
         panel.innerHTML = `
             <h2 style="margin: 0 0 10px 0; color: #00ffff; text-transform: uppercase; font-size: 1.4em; border-bottom: 2px solid #005588; padding-bottom: 5px; text-shadow: 0 0 5px #00ffff;">
-                ${this.planetData.name || 'Unknown World'}
-            </h2>
-            
+                ${this.planetData.name || 'Null'}
+            </h2>`;
+        document.body.appendChild(panel);
+        this.infoPanel = panel;
+
+        // --- 3. Staged Reveal Logic ---
+        const revealSection = (contentElement, delay) => {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    if (!this.isActive) return; // Don't proceed if scene is gone
+                    contentElement.style.opacity = '0';
+                    contentElement.style.transform = 'translateY(15px)';
+                    contentElement.style.transition = 'opacity 0.7s ease-out, transform 0.7s ease-out';
+                    panel.appendChild(contentElement);
+                    
+                    requestAnimationFrame(() => {
+                        contentElement.style.opacity = '1';
+                        contentElement.style.transform = 'translateY(0)';
+                    });
+                    
+                    resolve();
+                }, delay);
+            });
+        };
+
+        let currentDelay = 500;
+
+        // --- Section: Anomaly Analysis (Stats Grid) ---
+        const gridDiv = document.createElement('div');
+        gridDiv.innerHTML = `
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.85em; margin-bottom: 15px; color: #aaccff; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px;">
                 <div><strong>Class:</strong> ${this.planetData.type || 'Terrestrial'}</div>
                 <div><strong>Gravity:</strong> ${gravity}</div>
@@ -518,101 +487,136 @@ export class PlanetaryOrbitScene extends Scene {
                 <div style="grid-column: span 2;"><strong>Biosphere:</strong> ${this.planetData.biosphere || 'None'}</div>
                 <div style="grid-column: span 2;"><strong>Technological Era:</strong> ${techInfo}</div>
             </div>
-
             <div style="font-size: 0.9em; line-height: 1.4; margin-bottom: 15px; color: #ffffff;">
                 ${description}
-            </div>
-        `;
+            </div>`;
+        await revealSection(gridDiv, currentDelay);
+        currentDelay += 1200;
 
-        // Species Section
-        const speciesDiv = document.createElement('div');
-        speciesDiv.style.marginBottom = '15px';
-        speciesDiv.style.borderTop = '1px solid #005588';
-        speciesDiv.style.paddingTop = '10px';
-        
-        speciesDiv.innerHTML = `
-            <div style="color:#00ffff; font-size:1.0em; margin-bottom:5px; font-weight:bold;">DOMINANT SPECIES: ${species}</div>
-            <div style="color:#aaccff; font-size:0.85em; margin-bottom:10px;">SOCIETY: ${society}</div>
-        `;
-        
-        // Procedural Avatar Container (Replaces Canvas)
-        const avContainer = document.createElement('div');
-        avContainer.style.width = '80px'; 
-        avContainer.style.height = '80px';
-        avContainer.style.border = '1px solid #005588';
-        avContainer.style.float = 'left';
-        avContainer.style.marginRight = '15px';
-        avContainer.style.marginBottom = '5px';
-        avContainer.style.backgroundColor = '#050510';
-        avContainer.style.borderRadius = '4px';
-        avContainer.style.overflow = 'hidden';
-        avContainer.innerHTML = '<div style="color:#00ffff;font-size:10px;text-align:center;line-height:80px;">Scanning...</div>';
-        
-        speciesDiv.insertBefore(avContainer, speciesDiv.children[2] || null); // Insert after headers
-        
-        const loreTextDiv = document.createElement('div');
-        loreTextDiv.style.fontSize = '0.85em';
-        loreTextDiv.innerHTML = speciesLoreHtml;
-        speciesDiv.appendChild(loreTextDiv);
-        
-        // Clear float
-        const clearDiv = document.createElement('div');
-        clearDiv.style.clear = 'both';
-        speciesDiv.appendChild(clearDiv);
+        // --- Section: Species Profile ---
+        const speciesDiv = this._createSpeciesPanel(species, society, speciesLoreHtml);
+        await revealSection(speciesDiv, currentDelay);
+        this.generateAvatarSnapshot(speciesDiv.querySelector('.avatar-container'));
+        currentDelay += 1500;
 
-        panel.appendChild(speciesDiv);
-
-        // Resources Section
+        // --- Section: Resource Scan ---
         const resDiv = document.createElement('div');
         resDiv.style.borderTop = '1px solid #005588';
         resDiv.style.paddingTop = '10px';
         resDiv.style.marginBottom = '15px';
         resDiv.innerHTML = `
             <div style="color:#00ffff; font-size:0.9em; margin-bottom:5px;">STRATEGIC RESOURCES</div>
-            <div style="font-size:0.8em; line-height:1.4;">${resourcesHtml}</div>
-        `;
-        panel.appendChild(resDiv);
+            <div style="font-size:0.8em; line-height:1.4;">${resourcesHtml}</div>`;
+        await revealSection(resDiv, currentDelay);
+        currentDelay += 1000;
 
-        // POI Section
+        // --- Section: Surface Snapshot ---
         const poiDiv = document.createElement('div');
-        poiDiv.style.borderTop = '1px solid #005588';
-        poiDiv.style.paddingTop = '10px';
-        poiDiv.innerHTML = `<div style="color:#00ffff; font-size:0.9em; margin-bottom:5px;">SURFACE SCAN: ${poi}</div>`;
-        
-        // Procedural Landscape Canvas
-        const landCanvas = document.createElement('canvas');
-        landCanvas.width = 360; landCanvas.height = 120;
-        landCanvas.style.border = '1px solid #005588';
-        landCanvas.style.width = '100%';
-        landCanvas.style.borderRadius = '4px';
-        const lCtx = landCanvas.getContext('2d');
-        
-        // Placeholder background
-        lCtx.fillStyle = '#000';
-        lCtx.fillRect(0,0,360,120);
-        lCtx.fillStyle = '#004488';
-        lCtx.font = "12px monospace";
-        lCtx.fillText("Acquiring Satellite Feed...", 10, 20);
+        const landCanvasContainer = this._createSurfaceScanPanel(poi, poiDiv);
+        await revealSection(poiDiv, currentDelay);
+        this.generateSurfaceSnapshot(landCanvasContainer);
+    }
 
-        poiDiv.appendChild(landCanvas);
-        panel.appendChild(poiDiv);
+    _styleInfoPanel(panel) {
+        Object.assign(panel.style, {
+            position: 'absolute', top: '10%', right: '2%', width: '400px',
+            maxHeight: '80%', overflowY: 'auto', padding: '20px',
+            backgroundColor: 'rgba(0, 10, 20, 0.9)', border: '1px solid #00aaff',
+            boxShadow: '0 0 20px rgba(0, 170, 255, 0.4)', color: '#e0f0ff',
+            fontFamily: '"Orbitron", "Courier New", monospace', zIndex: '100',
+            borderRadius: '8px', backdropFilter: 'blur(8px)',
+            transition: 'opacity 1s', scrollbarWidth: 'thin'
+        });
+    }
 
-        // Progress Bar / Status
-        const statusDiv = document.createElement('div');
-        statusDiv.style.marginTop = '15px';
-        statusDiv.style.fontSize = '0.8em';
-        statusDiv.style.color = '#00ff00';
-        statusDiv.style.textAlign = 'right';
-        statusDiv.innerText = "ORBITAL INSERTION COMPLETE";
-        panel.appendChild(statusDiv);
+    _getInfoPanelData() {
+        const species = this._sanitizeLore(this.systemData.species || this.planetData.species || "Unknown Species");
+        let society = this._sanitizeLore(this.systemData.society || "Unknown Society");
+        if (this.planetData.population) {
+            society += ` (Pop: ${this.planetData.population.toLocaleString()})`;
+        }
+        const description = this._sanitizeLore(this.planetData.description || "A mysterious world.");
+        const gravity = this.planetData.gravity ? `${parseFloat(this.planetData.gravity).toFixed(2)} G` : 'Unknown';
+        const temperature = this.planetData.temperature ? `${Math.round(this.planetData.temperature)} K` : 'Unknown';
+        const atmosphere = this.planetData.atmosphere || 'None';
+        let techInfo = "Unknown";
+        if (this.systemData.tech) {
+            techInfo = this._sanitizeLore(typeof this.systemData.tech === 'string' ? this.systemData.tech : (this.systemData.tech.Type || "Unknown"));
+        }
+        let resourcesHtml = '<span style="color:#888;">None detected</span>';
+        if (this.planetData.resources && this.planetData.resources.length > 0) {
+            resourcesHtml = this.planetData.resources.map(r => `<span style="color:#aaffaa;">${r.name}</span> <span style="color:#88aa88; font-size:0.8em;">(${r.grade})</span>`).join(', ');
+        }
+        let speciesLoreHtml = "";
+        if (this.systemData.speciesCore) {
+            const core = this.systemData.speciesCore;
+            if (core.physicalDescription) speciesLoreHtml += `<div style="margin-top:5px; font-style:italic; color:#aaccff;">"${this._sanitizeLore(core.physicalDescription)}"</div>`;
+            if (core.culturalDescription) speciesLoreHtml += `<div style="margin-top:5px; color:#ccccff;">${this._sanitizeLore(core.culturalDescription)}</div>`;
+        }
+        let poi = "Unknown Anomaly";
+        if (this.planetData.resources && this.planetData.resources.length > 0) {
+            poi = `Resource Deposit: ${this.planetData.resources[0].name}`;
+        } else if (this.planetData.biosphere && this.planetData.biosphere !== 'None') {
+            poi = `Life Sign: ${this.planetData.biosphere}`;
+        } else if (this.planetData.type) {
+            poi = `Geological Feature: ${this.planetData.type}`;
+        }
+        return { species, society, description, gravity, temperature, atmosphere, techInfo, resourcesHtml, speciesLoreHtml, poi };
+    }
+    
+    _createSpeciesPanel(species, society, speciesLoreHtml) {
+        const speciesDiv = document.createElement('div');
+        speciesDiv.style.marginBottom = '15px';
+        speciesDiv.style.borderTop = '1px solid #005588';
+        speciesDiv.style.paddingTop = '10px';
+        speciesDiv.innerHTML = `
+            <div style="color:#00ffff; font-size:1.0em; margin-bottom:5px; font-weight:bold;">DOMINANT SPECIES: ${species}</div>
+            <div style="color:#aaccff; font-size:0.85em; margin-bottom:10px;">SOCIETY: ${society}</div>`;
+            
+        const avContainer = document.createElement('div');
+        avContainer.className = 'avatar-container'; // Add class for easy selection
+        Object.assign(avContainer.style, {
+            width: '80px', height: '80px', border: '1px solid #005588', float: 'left',
+            marginRight: '15px', marginBottom: '5px', backgroundColor: '#050510',
+            borderRadius: '4px', overflow: 'hidden', textAlign: 'center', lineHeight: '80px',
+            color: '#00ffff', fontSize: '10px'
+        });
+        avContainer.innerText = 'Scanning...';
+        speciesDiv.insertBefore(avContainer, speciesDiv.children[2] || null);
 
-        document.body.appendChild(panel);
-        this.infoPanel = panel;
+        const loreTextDiv = document.createElement('div');
+        loreTextDiv.style.fontSize = '0.85em';
+        loreTextDiv.innerHTML = speciesLoreHtml;
+        speciesDiv.appendChild(loreTextDiv);
+
+        const clearDiv = document.createElement('div');
+        clearDiv.style.clear = 'both';
+        speciesDiv.appendChild(clearDiv);
+        return speciesDiv;
+    }
+
+    _createSurfaceScanPanel(poi, parentDiv) {
+        parentDiv.style.borderTop = '1px solid #005588';
+        parentDiv.style.paddingTop = '10px';
+        parentDiv.innerHTML = `<div style="color:#00ffff; font-size:0.9em; margin-bottom:5px;">SURFACE SCAN: ${poi}</div>`;
         
-        // Trigger Surface Generation
-        setTimeout(() => this.generateSurfaceSnapshot(landCanvas), 100);
-        // Trigger Avatar Generation
-        setTimeout(() => this.generateAvatarSnapshot(avContainer), 200);
+        const landCanvasContainer = document.createElement('div');
+        landCanvasContainer.style.border = '1px solid #005588';
+        landCanvasContainer.style.width = '100%';
+        landCanvasContainer.style.height = '120px';
+        landCanvasContainer.style.borderRadius = '4px';
+        landCanvasContainer.style.backgroundColor = '#000';
+        landCanvasContainer.style.position = 'relative'; // For scanline overlay
+        
+        const placeholder = document.createElement('div');
+        placeholder.style.color = '#004488';
+        placeholder.style.font = "12px monospace";
+        placeholder.innerText = "Acquiring Satellite Feed...";
+        placeholder.style.padding = '10px';
+        landCanvasContainer.appendChild(placeholder);
+        
+        parentDiv.appendChild(landCanvasContainer);
+        return landCanvasContainer;
     }
 
     _sanitizeLore(text) {
@@ -898,12 +902,41 @@ export class PlanetaryOrbitScene extends Scene {
                  this.introActive = false;
             }
         }
+
+        // Update dynamic UI panels
+        if (this.updatablePanels && this.updatablePanels.length > 0 && this.planetMesh) {
+            this.updatablePanels.forEach(poi => {
+                const screenPos = this.getScreenPosition(poi.position3D, this.activeCamera);
+                
+                const camToPoi = poi.position3D.clone().sub(this.activeCamera.position);
+                this.raycaster.set(this.activeCamera.position, camToPoi.normalize());
+                
+                const intersects = this.raycaster.intersectObject(this.planetMesh, true);
+                
+                if (intersects.length > 0 && intersects[0].distance < camToPoi.length()) {
+                    poi.panel.style.display = 'none';
+                } else {
+                    poi.panel.style.display = 'block';
+                    poi.panel.style.left = `${screenPos.x}px`;
+                    poi.panel.style.top = `${screenPos.y}px`;
+                }
+            });
+        }
+    }
+
+    getScreenPosition(position3D, camera) {
+        const vector = position3D.clone().project(camera);
+        const x = (vector.x + 1) / 2 * window.innerWidth;
+        const y = -(vector.y - 1) / 2 * window.innerHeight;
+        return { x, y };
     }
 
     onUnload() {
         super.onUnload();
-        if (this.infoPanel && this.infoPanel.parentNode) {
-            this.infoPanel.parentNode.removeChild(this.infoPanel);
-        }
+        this.infoPanels.forEach(p => {
+            if (p.parentNode) p.parentNode.removeChild(p);
+        });
+        this.infoPanels = [];
+        this.updatablePanels = [];
     }
 }

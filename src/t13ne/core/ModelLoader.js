@@ -4,6 +4,8 @@ import * as THREE from 'three';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 import { TDSLoader } from 'three/examples/jsm/loaders/TDSLoader.js';
 import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js';
+import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 // USDALoader is more complex and might require additional dependencies or a custom build,
 // so we'll leave it as a lower priority/future enhancement for now.
 // import { USDZLoader } from 'three/addons/loaders/USDZLoader.js'; // For USD files
@@ -20,7 +22,10 @@ class ModelLoader {
             'obj': new OBJLoader(this.loadingManager),
             '3ds': new TDSLoader(this.loadingManager),
             'ply': new PLYLoader(this.loadingManager),
-            'json': new THREE.ObjectLoader(this.loadingManager) // For Three.js JSON format
+            'json': new THREE.ObjectLoader(this.loadingManager), // For Three.js JSON format
+            'fbx': new FBXLoader(this.loadingManager),
+            'gltf': new GLTFLoader(this.loadingManager),
+            'glb': new GLTFLoader(this.loadingManager)
             // 'usdz': new USDZLoader(this.loadingManager) // Uncomment and add if USDZ support is implemented
         };
 
