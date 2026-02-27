@@ -449,7 +449,7 @@ export class PlanetaryOrbitScene extends Scene {
         this._styleInfoPanel(panel);
         panel.innerHTML = `
             <h2 style="margin: 0 0 10px 0; color: #00ffff; text-transform: uppercase; font-size: 1.4em; border-bottom: 2px solid #005588; padding-bottom: 5px; text-shadow: 0 0 5px #00ffff;">
-                ${this.planetData.name || 'Null'}
+                ${this.planetData.name || 'Scanning...'}
             </h2>`;
         document.body.appendChild(panel);
         this.infoPanel = panel;
@@ -514,7 +514,15 @@ export class PlanetaryOrbitScene extends Scene {
         const poiDiv = document.createElement('div');
         const landCanvasContainer = this._createSurfaceScanPanel(poi, poiDiv);
         await revealSection(poiDiv, currentDelay);
-        this.generateSurfaceSnapshot(landCanvasContainer);
+        await this.generateSurfaceSnapshot(landCanvasContainer);
+
+        // Notify that the intro is complete after everything is revealed
+        if (!this._stagedRevealComplete) {
+            this._stagedRevealComplete = true;
+            setTimeout(() => {
+                if (this.isActive) this.complete();
+            }, 2000);
+        }
     }
 
     _styleInfoPanel(panel) {
@@ -708,8 +716,37 @@ export class PlanetaryOrbitScene extends Scene {
             container.innerHTML = '';
             const img = document.createElement('img');
             img.src = canvas.toDataURL();
-            img.style.width = '100%'; img.style.height = '100%';
+            img.style.width = '100%';
+            img.style.height = '100%';
+            img.style.display = 'block';
             container.appendChild(img);
+
+            // Add Scanline Overlay
+            const scanlineCanvas = document.createElement('canvas');
+            scanlineCanvas.width = width;
+            scanlineCanvas.height = height;
+            Object.assign(scanlineCanvas.style, {
+                position: 'absolute',
+                top: '0',
+                left: '0',
+                width: '100%',
+                height: '100%',
+                pointerEvents: 'none'
+            });
+            container.appendChild(scanlineCanvas);
+
+            const sctx = scanlineCanvas.getContext('2d');
+            const drawScanlines = () => {
+                if (!this.isActive || !scanlineCanvas.parentNode) return;
+                sctx.clearRect(0, 0, width, height);
+                sctx.fillStyle = 'rgba(0, 255, 255, 0.1)';
+                const offset = (performance.now() / 50) % 8;
+                for (let y = offset; y < height; y += 4) {
+                    sctx.fillRect(0, y, width, 1);
+                }
+                requestAnimationFrame(drawScanlines);
+            };
+            drawScanlines();
             
             rt.dispose();
             // Cleanup
