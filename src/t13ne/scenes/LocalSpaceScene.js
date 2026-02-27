@@ -210,6 +210,8 @@ export class LocalSpaceScene extends Scene {
         const systemRadius = allPlanets.length > 0 ? allPlanets[allPlanets.length - 1].orbitRadius : 20000;
         const startDist = Math.max(systemRadius * 2.5, 120000); // Start MUCH further out
 
+        const prng = ProcGen.createPRNG(ProcGen.deriveSeed(this.systemData.name || 'default', 'intro-path'));
+
         // 1. Start Point: Outer Edge
         let angle;
         if (isHomeworldOutermost && this.flybyObj && this.flybyObj.realPosition) {
@@ -217,7 +219,7 @@ export class LocalSpaceScene extends Scene {
             const flybyDir = this.flybyObj.realPosition.clone().normalize();
             angle = Math.atan2(flybyDir.z, flybyDir.x) + Math.PI;
         } else {
-            angle = Math.random() * Math.PI * 2;
+            angle = prng.nextDouble() * Math.PI * 2;
         }
 
         this.introStartPos.set(
@@ -531,6 +533,8 @@ export class LocalSpaceScene extends Scene {
         const beltRadius = this.scales.orbit * 2.5;
         const beltWidth = this.scales.orbit * 0.8;
 
+        const prng = ProcGen.createPRNG(ProcGen.deriveSeed(this.systemData.name || 'default', 'asteroids'));
+
         let geometry, material;
 
         // Try to load a high-poly asteroid model from the manifest
@@ -568,16 +572,16 @@ export class LocalSpaceScene extends Scene {
         const matrix = new THREE.Matrix4();
 
         for (let i = 0; i < count; i++) {
-            const angle = Math.random() * Math.PI * 2;
-            const dist = beltRadius + (Math.random() - 0.5) * beltWidth;
-            const y = (Math.random() - 0.5) * 400;
+            const angle = prng.nextDouble() * Math.PI * 2;
+            const dist = beltRadius + (prng.nextDouble() - 0.5) * beltWidth;
+            const y = (prng.nextDouble() - 0.5) * 400;
 
             const asteroidObj = {
                 mesh: null, // No individual mesh
                 instanceIndex: i,
                 realPosition: new THREE.Vector3(Math.cos(angle) * dist, y, Math.sin(angle) * dist),
                 orbitRadius: dist,
-                orbitSpeed: (0.0002 + Math.random() * 0.0001) * 5,
+                orbitSpeed: (0.0002 + prng.nextDouble() * 0.0001) * 5,
                 orbitAngle: angle,
                 baseRadius: 15,
                 type: 'asteroid',
@@ -903,14 +907,16 @@ export class LocalSpaceScene extends Scene {
             const getDistFromStar = (obj) => obj.type === 'moon' ? (obj.parent?.orbitRadius || 0) : (obj.orbitRadius || 0);
             const hwDist = getDistFromStar(this.homeWorldObj);
 
+            const prng = ProcGen.createPRNG(ProcGen.deriveSeed(this.systemData.name || 'default', 'intro-selection'));
+
             if (isHomeworldOutermost) {
                 // Select an inner planet for flyby
                 const innerPlanets = allPlanets.filter(p => p !== outermostPlanet);
-                this.flybyObj = innerPlanets.length > 0 ? innerPlanets[Math.floor(Math.random() * innerPlanets.length)] : this.objects.find(o => o.type === 'star');
+                this.flybyObj = innerPlanets.length > 0 ? innerPlanets[Math.floor(prng.nextDouble() * innerPlanets.length)] : this.objects.find(o => o.type === 'star');
             } else {
                 // Select an outer planet/body for flyby
                 const outerBodies = this.objects.filter(o => (o.type === 'planet' || o.type === 'moon') && o !== this.homeWorldObj && getDistFromStar(o) > hwDist);
-                this.flybyObj = outerBodies.length > 0 ? outerBodies[Math.floor(Math.random() * outerBodies.length)] : allPlanets[allPlanets.length - 1];
+                this.flybyObj = outerBodies.length > 0 ? outerBodies[Math.floor(prng.nextDouble() * outerBodies.length)] : allPlanets[allPlanets.length - 1];
             }
 
             Logger.message(`LocalSpaceScene: Fly-by object identified as ${this.flybyObj?.data?.name || this.flybyObj?.type || 'the star'}`);

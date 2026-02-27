@@ -164,8 +164,8 @@
         prompt += "3. DO NOT use system geometry names (e.g., 'Nonagon', 'Septagon', 'Heptagon', etc.) as they are non-diegetic system information.\n";
         prompt += "4. DO NOT repeat the technical labels from the context provided above. Instead, 'absorb' their meaning into the narrative. For example, instead of 'Chi Gain', describe a feeling of spiritual replenishment or atmospheric resonance.\n";
         prompt += "5. If a 'Geometry Number' or 'Key' is provided, use it to inform the 'vibe' or 'pitch' of the description (e.g., if it's a dissonant key, make the description unsettling or chaotic).\n";
-        prompt += "5. The final output should NOT contain any parenthetical technical data or explicit lists of game stats.\n";
-        prompt += "6. Focus on atmosphere, sensory details, and lore-friendly explanations for technical phenomena.\n";
+        prompt += "6. The final output should NOT contain any parenthetical technical data or explicit lists of game stats.\n";
+        prompt += "7. Focus on atmosphere, sensory details, and lore-friendly explanations for technical phenomena.\n";
         prompt += "\nThe description should be evocative and suitable for a science fiction setting.";
 
         return prompt;
