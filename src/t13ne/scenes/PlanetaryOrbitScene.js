@@ -93,6 +93,7 @@ export class PlanetaryOrbitScene extends Scene {
         this.createMainPlanet();
         this.createMoons();
         this.createCinematicAsteroid();
+        this.fitCameraToPlanet();
     }
 
     setupLighting() {
@@ -139,6 +140,33 @@ export class PlanetaryOrbitScene extends Scene {
             autoRotate: true,
             autoRotateSpeed: 0.2
         });
+    }
+
+    fitCameraToPlanet() {
+        if (!this.planetMesh) return;
+        
+        const radius = this.scales.planetRadius * (this.planetData.radius || 1.0);
+        
+        // Calculate distance to fill ~60% of vertical FOV (leaving room for UI and offset)
+        const fov = this.activeCamera.fov * (Math.PI / 180);
+        const fillPercentage = 0.6; 
+        const dist = radius / Math.sin((fov * fillPercentage) / 2);
+        
+        // Position: Fixed angle (0, 0.2, 1.0)
+        const offsetDir = new THREE.Vector3(0, 0.25, 1.0).normalize();
+        const camPos = offsetDir.multiplyScalar(dist);
+        
+        this.activeCamera.position.copy(camPos);
+        this.activeCamera.lookAt(0, 0, 0);
+        
+        // Update controls
+        if (this.cameraControls.has('orbit')) {
+            const controls = this.cameraControls.get('orbit');
+            controls.target.set(0, 0, 0);
+            controls.minDistance = radius * 1.2;
+            controls.maxDistance = dist * 3;
+            controls.update();
+        }
     }
 
     async onLoad() {
@@ -362,22 +390,6 @@ export class PlanetaryOrbitScene extends Scene {
                 speed: 0.1 / (index + 1) // Slower for outer moons
             });
             
-            // Set camera to the first moon for cinematic view
-            if (index === 0) {
-                const moonPos = moonMesh.position.clone();
-                const planetPos = new THREE.Vector3(0, 0, 0);
-                const dir = new THREE.Vector3().subVectors(planetPos, moonPos).normalize();
-                
-                // Position camera on surface facing planet
-                const camPos = moonPos.clone().add(dir.multiplyScalar(scale * 6)); // Slightly above surface
-                this.activeCamera.position.copy(camPos);
-                this.activeCamera.lookAt(planetPos);
-                
-                // Update controls target to planet
-                if (this.cameraControls.has('orbit')) {
-                    this.cameraControls.get('orbit').target.copy(planetPos);
-                }
-            }
         });
     }
 

@@ -174,7 +174,7 @@ export class SystemLoreGenerator {
             const geo = T13Geometry.calculateFullGeo(systemNameArray[0]);
             const soulGeometryData = T13Geometry.Geometries[geo.Soul];
             // Use preGeneratedLore for a more diegetic and jargon-free description
-            const diegeticText = soulGeometryData?.Diegetic_Society || soulGeometryData?.diegetic_text || soulGeometryData?.preGeneratedLore || soulGeometryData?.Description;
+            const diegeticText = soulGeometryData?.Diegetic_Society || soulGeometryData?.diegetic_text || soulGeometryData?.preGeneratedLore;
 
             if (diegeticText) {
                 description += ` ${diegeticText}`;

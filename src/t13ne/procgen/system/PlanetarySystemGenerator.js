@@ -228,12 +228,12 @@ export class PlanetarySystemGenerator {
                 const facadeGeometryData = T13Geometry.Geometries[geo.Facade];
 
                 // Use preGeneratedLore for more immersive and jargon-free planet society descriptions
-                const soulDiegeticText = soulGeometryData?.Diegetic_Society || soulGeometryData?.diegetic_text || soulGeometryData?.preGeneratedLore || soulGeometryData?.Description;
+                const soulDiegeticText = soulGeometryData?.Diegetic_Society || soulGeometryData?.diegetic_text || soulGeometryData?.preGeneratedLore;
                 if (soulDiegeticText) {
                     classificationData.description += ` ${soulDiegeticText}`;
                 }
 
-                const facadeDiegeticText = facadeGeometryData?.Diegetic_Society || facadeGeometryData?.diegetic_text || facadeGeometryData?.preGeneratedLore || facadeGeometryData?.Description;
+                const facadeDiegeticText = facadeGeometryData?.Diegetic_Society || facadeGeometryData?.diegetic_text || facadeGeometryData?.preGeneratedLore;
                 if (facadeDiegeticText) {
                     classificationData.description += ` ${facadeDiegeticText}`;
                 }
@@ -668,7 +668,7 @@ export class PlanetarySystemGenerator {
             }
         }
 
-        classification.description = `A ${classification.type} with a biosphere classification of '${classification.biosphere}'.`;
+        classification.description = (classification.description ? classification.description + ' ' : '') + `It is a ${classification.type} with a biosphere classification of '${classification.biosphere}'.`;
 
         Logger.end(funcName, classification);
         return classification;

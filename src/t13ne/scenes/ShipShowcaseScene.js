@@ -418,9 +418,12 @@ export class ShipShowcaseScene extends Scene {
                 this.labelElement.innerText = this.shipName;
                 this.descElement.innerText = "Ready for the Wormhole."; 
                 
-                // Signal completion to IntroSequence
-                // EventBus.emit('showcase:complete'); // DEPRECATED
-                this.complete(); // Use new base scene method
+                // Wait for a full rotation (approx 10 seconds) before completing
+                setTimeout(() => {
+                    if (this.isActive) {
+                        this.complete();
+                    }
+                }, 10000);
 
             } 
         }, 50);

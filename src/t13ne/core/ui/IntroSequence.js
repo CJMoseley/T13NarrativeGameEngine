@@ -12,6 +12,7 @@ class IntroSequenceUI {
             this.element.style.display = 'flex';
             this.element.style.opacity = '1';
             this.element.style.zIndex = '10000';
+            this.element.style.pointerEvents = 'auto';
         }
     }
 
@@ -19,6 +20,7 @@ class IntroSequenceUI {
         if (this.element) {
             this.element.style.transition = 'opacity 1s ease-out';
             this.element.style.opacity = '0';
+            this.element.style.pointerEvents = 'none'; // Ensure clicks pass through during fade
             setTimeout(() => {
                 if (this.element.style.opacity === '0') {
                     this.element.style.display = 'none';

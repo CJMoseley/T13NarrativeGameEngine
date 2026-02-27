@@ -650,8 +650,10 @@ export class LocalSpaceScene extends Scene {
             const finished = this.updateIntroCamera(dt);
 
             // Transition condition
-            if (finished) {
-                this.introActive = false;
+            if (finished && !this.isComplete) {
+                // Do NOT set introActive = false here. 
+                // We want to keep the logarithmic view active until the scene unloads
+                // to prevent the camera snapping to the linear "gameplay" view during the transition.
                 Logger.message("LocalSpaceScene: Intro complete. Calling this.complete().");
                 this.complete();
             }
