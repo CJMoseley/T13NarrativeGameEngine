@@ -1,4 +1,6 @@
-﻿/**
+﻿import { calculateValue } from '../world/t13ne-gematria.js';
+
+/**
  * T13Name Class
  * A helper class to parse and standardize name formats into a consistent object.
  * It accepts strings, arrays `['common', 'full', 'aliases']`, or objects.
@@ -21,10 +23,15 @@ export default class T13Name {
       this.full = this.common;
       this.aliases = '';
     }
+
+    // Perform Gematria Calculations automatically and embed the data.
+    this.geometryData = {
+      full: calculateValue(this.full),
+      soul: calculateValue(this.full.replace(/[bcdfghjklmnpqrstvwxz\s]+/gi, '')),
+      facade: calculateValue(this.full.replace(/[aeiouy\s]+/gi, '')),
+      nascent: calculateValue(this.full.slice(0, 1)),
+      geometryNumber: calculateValue(this.common)
+    };
   }
   get asArray() { return [this.common, this.full, this.aliases]; }
 }
-
-
-
-

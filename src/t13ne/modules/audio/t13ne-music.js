@@ -242,24 +242,17 @@ class T13NE_Music {
     }
 
     injectThemeComponents(components) {
-        let changed = false;
-        Object.values(components).forEach(entity => {
-            if (!entity) return;
+        const newComponentNames = Object.values(components).map(c => c?.name || c?.id).filter(Boolean);
+        const oldComponentNames = this.activeComponents.map(c => c?.name || c?.id).filter(Boolean);
 
-            const existingIndex = this.activeComponents.findIndex(c => c.name === entity.name);
-            if (existingIndex !== -1) {
-                const existing = this.activeComponents.splice(existingIndex, 1)[0];
-                this.activeComponents.push({ ...existing, lastUpdate: Date.now() });
-                changed = true; // Force regeneration on re-focus/update
-            } else {
-                this.activeComponents.push({ ...entity, lastUpdate: Date.now() });
-                changed = true;
-            }
-        });
+        let changed = false;
+        if (newComponentNames.some(name => !oldComponentNames.includes(name))) {
+            this.activeComponents.push(...Object.values(components));
+            changed = true;
+        }
 
         if (this.activeComponents.length > 5) {
-            this.activeComponents.shift();
-            changed = true;
+            this.activeComponents = this.activeComponents.slice(-5);
         }
 
         if (changed) {
@@ -268,7 +261,7 @@ class T13NE_Music {
         Logger.message(`T13NE_Music: Active components updated. Focal Influence: ${this.activeComponents[this.activeComponents.length - 1].name}`);
     }
 
-    async createMainTheme(gameEngine, forceVariation = false) {
+    async createMainTheme(gameEngine, forceVariation = false, components = null) {
         if (!this.synth) {
             Logger.warn("T13NE_Music: createMainTheme called but synth is not initialized.");
             return;
@@ -277,9 +270,11 @@ class T13NE_Music {
         const tensionModule = this.t13ne ? this.t13ne.getModule('Tension') : null;
         const currentTension = tensionModule ? tensionModule.getTensionLevel() : (this.lastTension >= 0 ? this.lastTension : 2);
 
+        const themeComponents = components || this.activeComponents;
+
         // Generate a unique hash for the current components to enable caching
         // We do NOT sort, so the order (focus) matters. Last item is usually the conductor.
-        const componentHash = this.activeComponents
+        const componentHash = themeComponents
             .map(c => c.name || c.id || 'unknown')
             .join('|');
         
@@ -304,7 +299,7 @@ class T13NE_Music {
         let trackData;
         if (this.useWorker && this.workerPool) {
             // Sanitize components to plain objects for cloning to Worker
-            const sanitizedComponents = this.activeComponents.map(c => ({
+        const sanitizedComponents = themeComponents.map(c => ({
                 name: c.name,
                 id: c.id,
                 type: c.type,
@@ -336,7 +331,7 @@ class T13NE_Music {
                 }
             }
         } else {
-            trackData = await this.themeGenerator.createMainTheme(this.activeComponents, gameEngine, this.needsRegeneration || forceVariation, currentTension);
+        trackData = await this.themeGenerator.createMainTheme(themeComponents, gameEngine, this.needsRegeneration || forceVariation, currentTension);
         }
 
         if (!trackData) {

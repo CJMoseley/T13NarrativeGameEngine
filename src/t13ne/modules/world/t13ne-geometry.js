@@ -331,10 +331,10 @@ class T13Geometry {
     ret.Name = commonName;
     ret.AKAs = Array.isArray(akas) ? akas.join(', ') : (akas || '');
     ret.AKANums = akaNums;
-    ret.Full = this.getGeometryFromString(fullname);
-    ret.Facade = this.getGeometryFromString(String(fullname).replace(/[aeiouy\s]+/gi, ''));
-    ret.Soul = this.getGeometryFromString(String(fullname).replace(/[bcdfghjklmnpqrstvwxz\s]+/gi, ''));
-    ret.Nascent = this.getGeometryFromString(String(fullname).slice(0, 1));
+    ret.Full = t13n.geometryData.full;
+    ret.Facade = t13n.geometryData.facade;
+    ret.Soul = t13n.geometryData.soul;
+    ret.Nascent = t13n.geometryData.nascent;
     ret.Len = String(commonName).length;
     ret.Flen = String(fullname).length;
     ret.Fullname = String(fullname) + this.writeGeoNum(ret.Full);
@@ -345,7 +345,7 @@ class T13Geometry {
     } else if (typeof name === 'number') {
       g = (name < 14 && name > 0) ? name : 0;
     } else {
-      g = this.getGeometryFromString(commonName);
+      g = t13n.geometryData.geometryNumber;
     }
     ret.GeometryNumber = g;
     ret.Geo = this.Geometries[g] || this.Geometries[0];
@@ -535,9 +535,3 @@ class T13Geometry {
 }
 
 export default T13Geometry;
-
-
-
-
-
-

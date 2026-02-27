@@ -45,89 +45,6 @@ class T13NE_Referee {
     }
 
     /**
-     * Plays the introductory narrative sequence.
-     * Replaces the hardcoded sequence in LoaderManager.
-     */
-    async playIntro() {
-        Logger.message("Referee: Playing Intro Sequence...");
-
-        // Generate Galactic Epic Vertical Slice for this generation
-        const Epic = new GalacticEpic(this.t13ne.pluginManager);
-        const gameSeed = this.t13ne.getModule('Game')?.getActiveGame()?.seed || 'default-game-seed';
-        const fullEpic = await Epic.getFullEpic();
-        const sliceCount = fullEpic.length;
-        await Epic.generateVerticalSlice(this.t13ne.getModule('PRNG').deriveSeed(gameSeed, 'epic', sliceCount));
-
-        const ViewManager = this.t13ne.viewManager;
-        const GameEngine = ViewManager?.gameEngine;
-
-        if (!ViewManager) {
-            Logger.error("Referee: ViewManager not found.");
-            return;
-        }
-
-        // Use priming data for initial narration if available
-        if (this.primingData && this.primingData.intro_narrative) {
-            Logger.message(`Referee: ${this.primingData.intro_narrative.opening}`);
-        }
-
-        // 1. Initial Galaxy Reveal
-        ViewManager.cueScene('GalaxyMapScene', { attractMode: true }, {
-            duration: 4000,
-            onActive: async (scene) => {
-                await GameEngine.generateSystem();
-
-                // Update the next scenes in the queue with the generated data
-                const localSpaceItem = ViewManager.sceneQueue.find(i => i.name === 'LocalSpaceScene');
-                if (localSpaceItem) {
-                    localSpaceItem.data.systemDetails = GameEngine.currentSystemDetails;
-                    localSpaceItem.data.planets = GameEngine.currentPlanets;
-                    localSpaceItem.data.star = GameEngine.playerStartSystem;
-                }
-                const orbitItem = ViewManager.sceneQueue.find(i => i.name === 'PlanetaryOrbitScene');
-                if (orbitItem) {
-                    orbitItem.data.system = GameEngine.currentSystemDetails;
-                    orbitItem.data.planet = GameEngine.currentPlanets ? GameEngine.currentPlanets[0] : null;
-                }
-
-                if (scene && typeof scene.focusOnSystem === 'function' && GameEngine.playerStartSystem) {
-                    await scene.focusOnSystem(GameEngine.playerStartSystem);
-                }
-            }
-        });
-
-        // 2. Transition to Local Space
-        ViewManager.cueScene('LocalSpaceScene', {
-            playIntro: true
-        }, {
-            duration: 0,
-            transition: { type: 'crossDissolve', duration: 2000 },
-            onActive: async (scene) => {
-                if (typeof scene.playIntroSequence === 'function') {
-                    await scene.playIntroSequence();
-                }
-            }
-        });
-
-        // 3. Planetary Orbit and Ship Discovery
-        ViewManager.cueScene('PlanetaryOrbitScene', {}, {
-            duration: 10000,
-            transition: { type: 'fade', duration: 1500 },
-            onActive: async () => {
-                await GameEngine.seedPlayerShip();
-            }
-        });
-
-        // 4. Ship Showcase (Final Reveal)
-        ViewManager.cueScene('ShipShowcaseScene', {}, {
-            duration: 0,
-            transition: { type: 'wipe', duration: 1200, direction: 'up' }
-        });
-
-        return await ViewManager.playSequence();
-    }
-
-    /**
      * Adds a character to the master list.
      * @param {Character} character 
      */
@@ -497,10 +414,3 @@ class T13NE_Referee {
 }
 
 export default new T13NE_Referee();
-
-
-
-
-
-
-
