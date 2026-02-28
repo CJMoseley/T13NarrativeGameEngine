@@ -64,7 +64,7 @@ export class PlanetaryOrbitScene extends Scene {
             Logger.message("PlanetaryOrbitScene: Received updated planet data. Rebuilding scene.");
             this.buildScene();
             if (this.isActive) {
-                this.createPlanetInfoPanels();
+                this.createPlanetInfoPanel();
             }
         }
     }
@@ -183,7 +183,7 @@ export class PlanetaryOrbitScene extends Scene {
         if (!this.planetMesh) {
             await this.buildScene();
         }
-        this.createPlanetInfoPanels();
+        this.createPlanetInfoPanel();
 
         super.onLoad();
         Logger.end(funcName);

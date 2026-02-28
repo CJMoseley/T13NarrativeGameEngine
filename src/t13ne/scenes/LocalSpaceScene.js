@@ -91,6 +91,7 @@ export class LocalSpaceScene extends Scene {
         this.createHUD();
         // Only play intro if we have PLANETS (data loaded). If not, updateSceneData will trigger it later.
         if (this.introActive && this.planets && this.planets.length > 0) {
+            this.shouldUpdateControls = false; // Disable controls during intro
             this.playIntroSequence();
         } else if (this.introActive) {
             Logger.message("LocalSpaceScene: Deferring intro sequence until planets are loaded.");
@@ -629,6 +630,19 @@ export class LocalSpaceScene extends Scene {
         const dt = delta * 0.001;
         const compression = this.COMPRESSION_C;
 
+        // Ensure FOV is cinematic during intro
+        if (this.introActive) {
+            if (this.activeCamera.fov !== 35) {
+                this.activeCamera.fov = 35;
+                this.activeCamera.updateProjectionMatrix();
+            }
+        } else {
+            if (this.activeCamera.fov !== 60) {
+                this.activeCamera.fov = 60;
+                this.activeCamera.updateProjectionMatrix();
+            }
+        }
+
         // --- 0. Input Handling (Local Controls) ---
         if (!this.introActive) {
             // Transfer movement from activeCamera (moved by system controls) to virtualCameraPosition
@@ -870,6 +884,10 @@ export class LocalSpaceScene extends Scene {
 
         this.update(time, delta);
 
+        if (this.gameEngine && typeof this.gameEngine.update === 'function') {
+            this.gameEngine.update(time, delta);
+        }
+
         if (this.activeCamera && this.renderer) {
             this.renderer.setViewport(0, 0, window.innerWidth, window.innerHeight);
             this.renderer.setScissor(0, 0, window.innerWidth, window.innerHeight);
@@ -911,12 +929,12 @@ export class LocalSpaceScene extends Scene {
 
             if (isHomeworldOutermost) {
                 // Select an inner planet for flyby
-                const innerPlanets = allPlanets.filter(p => p !== outermostPlanet);
+                const innerPlanets = allPlanets.filter(p => p !== outermostPlanet && p.mesh);
                 this.flybyObj = innerPlanets.length > 0 ? innerPlanets[Math.floor(prng.nextDouble() * innerPlanets.length)] : this.objects.find(o => o.type === 'star');
             } else {
                 // Select an outer planet/body for flyby
-                const outerBodies = this.objects.filter(o => (o.type === 'planet' || o.type === 'moon') && o !== this.homeWorldObj && getDistFromStar(o) > hwDist);
-                this.flybyObj = outerBodies.length > 0 ? outerBodies[Math.floor(prng.nextDouble() * outerBodies.length)] : allPlanets[allPlanets.length - 1];
+                const outerBodies = this.objects.filter(o => (o.type === 'planet' || o.type === 'moon') && o !== this.homeWorldObj && getDistFromStar(o) > hwDist && o.mesh);
+                this.flybyObj = outerBodies.length > 0 ? outerBodies[Math.floor(prng.nextDouble() * outerBodies.length)] : allPlanets.filter(p => p.mesh).pop() || allPlanets[allPlanets.length - 1];
             }
 
             Logger.message(`LocalSpaceScene: Fly-by object identified as ${this.flybyObj?.data?.name || this.flybyObj?.type || 'the star'}`);
