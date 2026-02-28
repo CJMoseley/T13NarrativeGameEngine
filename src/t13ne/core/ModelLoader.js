@@ -2,6 +2,7 @@
 
 import * as THREE from 'three';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
+import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js';
 import { TDSLoader } from 'three/examples/jsm/loaders/TDSLoader.js';
 import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
@@ -50,8 +51,12 @@ class ModelLoader {
      */
     async loadModel(url) {
         const extension = url.split('.').pop().toLowerCase();
-        const loader = this.loaders[extension];
+        
+        if (extension === 'obj') {
+            return this.loadOBJWithMaterials(url);
+        }
 
+        const loader = this.loaders[extension];
         if (!loader) {
             console.error(`No loader found for file extension: ${extension}`);
             return Promise.reject(new Error(`Unsupported model format: ${extension}`));
@@ -64,14 +69,38 @@ class ModelLoader {
                     console.log(`Successfully loaded model from: ${url}`);
                     resolve(object);
                 },
-                (xhr) => {
-                    // console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-                },
+                null,
                 (error) => {
                     console.error(`Error loading model ${url}:`, error);
                     reject(error);
                 }
             );
+        });
+    }
+
+    /**
+     * Specialized loader for OBJ files that attempts to load associated MTL files.
+     */
+    async loadOBJWithMaterials(url) {
+        const mtlUrl = url.replace('.obj', '.mtl');
+        const mtlLoader = new MTLLoader(this.loadingManager);
+        
+        return new Promise((resolve) => {
+            mtlLoader.load(mtlUrl, (materials) => {
+                materials.preload();
+                const objLoader = new OBJLoader(this.loadingManager);
+                objLoader.setMaterials(materials);
+                objLoader.load(url, (object) => {
+                    console.log(`Loaded OBJ with materials: ${url}`);
+                    resolve(object);
+                }, null, () => {
+                    // Fallback to no materials if loading fails
+                    this.loaders['obj'].load(url, resolve);
+                });
+            }, null, () => {
+                // Fallback to no materials if MTL missing
+                this.loaders['obj'].load(url, resolve);
+            });
         });
     }
 

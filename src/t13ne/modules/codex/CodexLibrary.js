@@ -1,4 +1,4 @@
-﻿import Logger from '/src/t13ne/core/Logger.js';
+import Logger from '/src/t13ne/core/Logger.js';
 import CodexDB from '/src/t13ne/modules/codex/CodexDB.js';
 
 /**
@@ -143,6 +143,11 @@ export class CodexLibrary {
         if (category === 'tagging' || category.startsWith('tagging/')) {
             const fullPath = `/plugins/t13ne/data/tagging/${fileName}`;
             return this._fetchFile(fullPath, `tagging/${fileName}`);
+        }
+
+        if (category === 'dressing' || category.startsWith('dressing/')) {
+            const fullPath = `/data/dressing/${fileName}`;
+            return this._fetchFile(fullPath, `dressing/${fileName}`);
         }
 
         if (!this.codex) await this.initialize();
