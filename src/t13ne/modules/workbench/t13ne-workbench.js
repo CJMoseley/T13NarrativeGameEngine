@@ -74,8 +74,7 @@ export default class Workbench {
 
             // Listen for Chronicle entries
             EventBus.on('chronicle:entry', (entry) => {
-                const typeMap = { 'Mechanical': 'info', 'Diegetic': 'success', 'General': 'info' };
-                this.log(`[Chronicle:${entry.source}] ${entry.message}`, typeMap[entry.type] || 'info');
+                this.log(`[Chronicle:${entry.source}] ${entry.message}`, CHRONICLE_LOG_LEVEL_MAP[entry.type] || 'info');
             });
 
             // Initialize Card Table
