@@ -64,7 +64,7 @@ export class PlanetaryOrbitScene extends Scene {
             Logger.message("PlanetaryOrbitScene: Received updated planet data. Rebuilding scene.");
             this.buildScene();
             if (this.isActive) {
-                this.createPlanetInfoPanel();
+                this.createPlanetInfoPanels();
             }
         }
     }
@@ -183,7 +183,7 @@ export class PlanetaryOrbitScene extends Scene {
         if (!this.planetMesh) {
             await this.buildScene();
         }
-        this.createPlanetInfoPanel();
+        this.createPlanetInfoPanels();
 
         super.onLoad();
         Logger.end(funcName);
@@ -434,15 +434,12 @@ export class PlanetaryOrbitScene extends Scene {
         }
     }
 
-    async createPlanetInfoPanel() {
-        // Cleanup existing panel to prevent duplicates
-        if (this.infoPanel && this.infoPanel.parentNode) {
-            this.infoPanel.parentNode.removeChild(this.infoPanel);
-            this.infoPanel = null;
-        }
-
-        // Yield to allow frame render before generating UI
-        await new Promise(r => setTimeout(r, 100));
+    async createPlanetInfoPanels() {
+        // Cleanup existing panels
+        this.infoPanels.forEach(p => {
+            if (p.parentNode) p.parentNode.removeChild(p);
+        });
+        this.infoPanels = [];
 
         // --- 1. Data Gathering ---
         const {
@@ -450,86 +447,83 @@ export class PlanetaryOrbitScene extends Scene {
             atmosphere, techInfo, resourcesHtml, speciesLoreHtml, poi
         } = this._getInfoPanelData();
 
-        // --- 2. Create Panel & Header ---
-        const panel = document.createElement('div');
-        this._styleInfoPanel(panel);
-        panel.innerHTML = `
-            <h2 style="margin: 0 0 10px 0; color: #00ffff; text-transform: uppercase; font-size: 1.4em; border-bottom: 2px solid #005588; padding-bottom: 5px; text-shadow: 0 0 5px #00ffff;">
-                ${this.planetData.name || 'Scanning...'}
-            </h2>`;
-        document.body.appendChild(panel);
-        this.infoPanel = panel;
-
-        // --- 3. Staged Reveal Logic ---
-        const revealSection = (contentElement, delay) => {
-            return new Promise(resolve => {
-                setTimeout(() => {
-                    if (!this.isActive) return; // Don't proceed if scene is gone
-                    contentElement.style.opacity = '0';
-                    contentElement.style.transform = 'translateY(15px)';
-                    contentElement.style.transition = 'opacity 0.7s ease-out, transform 0.7s ease-out';
-                    panel.appendChild(contentElement);
-                    
-                    requestAnimationFrame(() => {
-                        contentElement.style.opacity = '1';
-                        contentElement.style.transform = 'translateY(0)';
-                    });
-                    
-                    resolve();
-                }, delay);
-            });
-        };
+        const sections = [
+            { title: "Anomaly Analysis", content: `
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.85em; margin-bottom: 15px; color: #aaccff; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px;">
+                    <div><strong>Class:</strong> ${this.planetData.type || 'Terrestrial'}</div>
+                    <div><strong>Gravity:</strong> ${gravity}</div>
+                    <div><strong>Atmosphere:</strong> ${atmosphere}</div>
+                    <div><strong>Surface Temp:</strong> ${temperature}</div>
+                    <div style="grid-column: span 2;"><strong>Biosphere:</strong> ${this.planetData.biosphere || 'None'}</div>
+                    <div style="grid-column: span 2;"><strong>Technological Era:</strong> ${techInfo}</div>
+                </div>
+                <div style="font-size: 0.9em; line-height: 1.4; margin-bottom: 15px; color: #ffffff;">
+                    ${description}
+                </div>`,
+                id: 'anomaly-analysis'
+            },
+            { title: "Species Profile", content: ``, id: 'species-profile', customCreate: (container) => {
+                const speciesPanel = this._createSpeciesPanel(species, society, speciesLoreHtml);
+                container.appendChild(speciesPanel);
+                this.generateAvatarSnapshot(speciesPanel.querySelector('.avatar-container'));
+            }},
+            { title: "Resource Scan", content: `
+                <div style="color:#00ffff; font-size:0.9em; margin-bottom:5px;">STRATEGIC RESOURCES</div>
+                <div style="font-size:0.8em; line-height:1.4;">${resourcesHtml}</div>`,
+                id: 'resource-scan'
+            },
+            { title: "Surface Snapshot", content: ``, id: 'surface-snapshot', customCreate: async (container) => {
+                const landCanvasContainer = this._createSurfaceScanPanel(poi, container);
+                await this.generateSurfaceSnapshot(landCanvasContainer);
+            }}
+        ];
 
         let currentDelay = 500;
+        const totalRevealTime = 12000;
+        const delayPerSection = (totalRevealTime - currentDelay) / sections.length;
 
-        // --- Section: Anomaly Analysis (Stats Grid) ---
-        const gridDiv = document.createElement('div');
-        gridDiv.innerHTML = `
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.85em; margin-bottom: 15px; color: #aaccff; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px;">
-                <div><strong>Class:</strong> ${this.planetData.type || 'Terrestrial'}</div>
-                <div><strong>Gravity:</strong> ${gravity}</div>
-                <div><strong>Atmosphere:</strong> ${atmosphere}</div>
-                <div><strong>Surface Temp:</strong> ${temperature}</div>
-                <div style="grid-column: span 2;"><strong>Biosphere:</strong> ${this.planetData.biosphere || 'None'}</div>
-                <div style="grid-column: span 2;"><strong>Technological Era:</strong> ${techInfo}</div>
-            </div>
-            <div style="font-size: 0.9em; line-height: 1.4; margin-bottom: 15px; color: #ffffff;">
-                ${description}
-            </div>`;
-        await revealSection(gridDiv, currentDelay);
-        currentDelay += 1200;
+        for (let i = 0; i < sections.length; i++) {
+            const section = sections[i];
 
-        // --- Section: Species Profile ---
-        const speciesDiv = this._createSpeciesPanel(species, society, speciesLoreHtml);
-        await revealSection(speciesDiv, currentDelay);
-        this.generateAvatarSnapshot(speciesDiv.querySelector('.avatar-container'));
-        currentDelay += 1500;
+            // Create a separate panel for each section
+            const panel = document.createElement('div');
+            this._styleInfoPanel(panel);
+            // Stack panels vertically or position them differently
+            panel.style.top = `${10 + (i * 22)}%`;
+            panel.style.opacity = '0';
+            panel.style.transform = 'translateX(50px)';
 
-        // --- Section: Resource Scan ---
-        const resDiv = document.createElement('div');
-        resDiv.style.borderTop = '1px solid #005588';
-        resDiv.style.paddingTop = '10px';
-        resDiv.style.marginBottom = '15px';
-        resDiv.innerHTML = `
-            <div style="color:#00ffff; font-size:0.9em; margin-bottom:5px;">STRATEGIC RESOURCES</div>
-            <div style="font-size:0.8em; line-height:1.4;">${resourcesHtml}</div>`;
-        await revealSection(resDiv, currentDelay);
-        currentDelay += 1000;
+            panel.innerHTML = `
+                <h2 style="margin: 0 0 10px 0; color: #00ffff; text-transform: uppercase; font-size: 1.1em; border-bottom: 1px solid #005588; padding-bottom: 5px; text-shadow: 0 0 5px #00ffff;">
+                    ${this.planetData.name || 'Scanning...'} | ${section.title}
+                </h2>
+                <div class="panel-content">${section.content}</div>`;
 
-        // --- Section: Surface Snapshot ---
-        const poiDiv = document.createElement('div');
-        const landCanvasContainer = this._createSurfaceScanPanel(poi, poiDiv);
-        await revealSection(poiDiv, currentDelay);
-        await this.generateSurfaceSnapshot(landCanvasContainer);
+            document.body.appendChild(panel);
+            this.infoPanels.push(panel);
+
+            if (section.customCreate) {
+                const contentContainer = panel.querySelector('.panel-content');
+                await section.customCreate(contentContainer);
+            }
+
+            // Staged reveal
+            setTimeout(() => {
+                if (!this.isActive) return;
+                panel.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+                panel.style.opacity = '1';
+                panel.style.transform = 'translateX(0)';
+            }, currentDelay);
+
+            currentDelay += delayPerSection;
+        }
 
         // Notify that the intro is complete after everything is revealed
-        if (!this._stagedRevealComplete) {
-            this._stagedRevealComplete = true;
-            setTimeout(() => {
-                if (this.isActive) this.complete();
-            }, 2000);
-        }
+        setTimeout(() => {
+            if (this.isActive && !this.isComplete) this.complete();
+        }, currentDelay + 2000);
     }
+
 
     _styleInfoPanel(panel) {
         Object.assign(panel.style, {
