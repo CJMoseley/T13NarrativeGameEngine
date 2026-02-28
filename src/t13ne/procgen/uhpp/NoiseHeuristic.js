@@ -4,14 +4,16 @@ import { createNoise3D } from 'simplex-noise';
  * @module UHPP/NoiseHeuristic
  * @description Phase A: Macro-Weighting. Generates a noise field to influence tile weights.
  */
+import ProcGen from '/src/t13ne/procgen/ProcGen.js';
+
+/**
+ * @module UHPP/NoiseHeuristic
+ * @description Phase A: Macro-Weighting. Generates a noise field to influence tile weights.
+ */
 export class NoiseHeuristic {
-    constructor(seed = Math.random()) {
-        // simplex-noise 4.x expects a function that returns 0-1
-        const prng = () => {
-            seed = (seed * 16807) % 2147483647;
-            return (seed - 1) / 2147483646;
-        };
-        this.noise3D = createNoise3D(prng);
+    constructor(seed = 'uhpp-default-seed') {
+        const prng = ProcGen.create32PRNG(seed);
+        this.noise3D = createNoise3D(() => prng.nextDouble());
     }
 
     /**

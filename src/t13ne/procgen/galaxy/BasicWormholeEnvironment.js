@@ -45,16 +45,18 @@ export class BasicWormholeEnvironment { // Renamed from WormholeEnvironment
             this.length = this.calculateStraightLineLength();
         }
 
+        const prng = ProcGen.createPRNG(ProcGen.deriveSeed(`${this.startPoint.x},${this.startPoint.y},${this.startPoint.z}`, `${this.destinationPoint.x},${this.destinationPoint.y},${this.destinationPoint.z}`, raceType));
+
         switch (raceType) {
             case 'Obstacles':
                 for (let i = 0; i < 10; i++) {
                     this.obstacles.push({
                         position: {
-                            x: Math.random() * 500 - 250,
-                            y: Math.random() * 500 - 250,
-                            z: Math.random() * this.length,
+                            x: prng.nextDouble() * 500 - 250,
+                            y: prng.nextDouble() * 500 - 250,
+                            z: prng.nextDouble() * this.length,
                         },
-                        radius: Math.random() * 50 + 10,
+                        radius: prng.nextDouble() * 50 + 10,
                     });
                 }
                 break;
@@ -62,16 +64,16 @@ export class BasicWormholeEnvironment { // Renamed from WormholeEnvironment
                 for (let i = 0; i < 3; i++) {
                     this.wormholes.push({
                         entry: {
-                            x: Math.random() * 400 - 200,
-                            y: Math.random() * 400 - 200,
-                            z: Math.random() * this.length * 0.8,
+                            x: prng.nextDouble() * 400 - 200,
+                            y: prng.nextDouble() * 400 - 200,
+                            z: prng.nextDouble() * this.length * 0.8,
                         },
                         exit: {
-                            x: Math.random() * 400 - 200,
-                            y: Math.random() * 400 - 200,
-                            z: Math.random() * this.length * 0.8 + this.length * 0.2,
+                            x: prng.nextDouble() * 400 - 200,
+                            y: prng.nextDouble() * 400 - 200,
+                            z: prng.nextDouble() * this.length * 0.8 + this.length * 0.2,
                         },
-                        radius: Math.random() * 30 + 20,
+                        radius: prng.nextDouble() * 30 + 20,
                     });
                 }
                 break;

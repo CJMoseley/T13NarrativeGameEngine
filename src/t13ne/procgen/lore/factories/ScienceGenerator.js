@@ -1,5 +1,6 @@
 import { LoreData } from '../LoreData.js';
 import Logger from '../../../core/Logger.js';
+import ProcGen from '/src/t13ne/procgen/ProcGen.js';
 
 //This Generator should create scientific (latinised) names for Therios, Dracos, Trans-humans, aliens and even plants. 
 // It should do this froma large array of latin names and recombine them.
@@ -33,7 +34,7 @@ export class ScienceGenerator {
             
             if (profs && profs.length > 0) {
                 // Pick two proficiencies deterministically if seed provided
-                const rng = seed ? T13NE.getModule('PRNG').create(seed) : { nextDouble: () => Math.random() };
+                const rng = seed ? ProcGen.createPRNG(seed) : ProcGen.createPRNG(`tech-${techLevel}`);
                 const p1 = profs[Math.floor(rng.nextDouble() * profs.length)];
                 const p2 = profs[Math.floor(rng.nextDouble() * profs.length)];
                 
@@ -48,7 +49,8 @@ export class ScienceGenerator {
         // Fallback to simple list
         const prefixes = ["Quantum", "Hyper", "Nano", "Bio", "Cyber", "Astro", "Void", "Flux", "Chrono", "Meta"];
         const suffixes = ["Dynamics", "Physics", "Mechanics", "Synthesis", "Engineering", "Optics", "Harmonics", "Resonance"];
-        const rng = seed ? (typeof seed === 'number' ? { nextDouble: () => (Math.abs(seed) * 9301 + 49297) % 233280 / 233280 } : { nextDouble: () => Math.random() }) : { nextDouble: () => Math.random() };
+
+        const rng = ProcGen.createPRNG(seed || `tech-babble-${techLevel}`);
         
         return `${prefixes[Math.floor(rng.nextDouble() * prefixes.length)]} ${suffixes[Math.floor(rng.nextDouble() * suffixes.length)]}`;
     }

@@ -53,19 +53,22 @@ export const SceneTools = {
 
     /**
      * Creates a cloud-like texture for nebulae.
+     * @param {string} seed - Seed for deterministic generation.
      * @returns {THREE.CanvasTexture}
      */
-    createCloudTexture: () => {
+    createCloudTexture: (seed = 'cloud') => {
         const canvas = document.createElement('canvas');
         canvas.width = 128;
         canvas.height = 128;
         const ctx = canvas.getContext('2d');
 
+        const prng = ProcGen.createPRNG(seed);
+
         // Draw multiple soft puffs to create an irregular cloud shape
         for (let i = 0; i < 8; i++) {
-            const x = 64 + (Math.random() - 0.5) * 40;
-            const y = 64 + (Math.random() - 0.5) * 40;
-            const r = 10 + Math.random() * 20;
+            const x = 64 + (prng.nextDouble() - 0.5) * 40;
+            const y = 64 + (prng.nextDouble() - 0.5) * 40;
+            const r = 10 + prng.nextDouble() * 20;
 
             const grad = ctx.createRadialGradient(x, y, 0, x, y, r);
             grad.addColorStop(0, 'rgba(255, 255, 255, 0.15)');
@@ -83,17 +86,20 @@ export const SceneTools = {
      * @param {number} count - Number of stars.
      * @param {number} size - Size of the particles.
      * @param {boolean} sizeAttenuation - Whether size scales with distance.
+     * @param {string} seed - Seed for deterministic generation.
      * @returns {THREE.Points}
      */
-    createStarfield: (radius, count = 10000, size = 1, sizeAttenuation = false) => {
+    createStarfield: (radius, count = 10000, size = 1, sizeAttenuation = false, seed = 'stars') => {
         const starsGeo = new THREE.BufferGeometry();
         const starsPos = [];
         const starsCol = [];
 
+        const prng = ProcGen.createPRNG(seed);
+
         for (let i = 0; i < count; i++) {
-            const theta = 2 * Math.PI * Math.random();
-            const phi = Math.acos(2 * Math.random() - 1);
-            const r = radius * (0.8 + Math.random() * 0.4);
+            const theta = 2 * Math.PI * prng.nextDouble();
+            const phi = Math.acos(2 * prng.nextDouble() - 1);
+            const r = radius * (0.8 + prng.nextDouble() * 0.4);
 
             const x = r * Math.sin(phi) * Math.cos(theta);
             const y = r * Math.sin(phi) * Math.sin(theta);
@@ -102,7 +108,7 @@ export const SceneTools = {
             starsPos.push(x, y, z);
 
             const color = new THREE.Color();
-            color.setHSL(Math.random(), 0.5, Math.random() * 0.5 + 0.5);
+            color.setHSL(prng.nextDouble(), 0.5, prng.nextDouble() * 0.5 + 0.5);
             starsCol.push(color.r, color.g, color.b);
         }
 
@@ -134,13 +140,16 @@ export const SceneTools = {
         const ctx = canvas.getContext('2d');
         const imgData = ctx.createImageData(size, size);
         const data = imgData.data;
-        const h = planet.color ? planet.color.h : Math.random();
+
+        const prng = ProcGen.createPRNG(planet.name || 'planet-tex');
+
+        const h = planet.color ? planet.color.h : prng.nextDouble();
         const s = planet.color ? planet.color.s : 0.5;
         const l = planet.color ? planet.color.l : 0.5;
         const baseColor = new THREE.Color().setHSL(h, s, l);
         const secondaryColor = new THREE.Color().setHSL((h + 0.1) % 1, s * 0.8, l * 0.8);
         const noiseScale = 5.0;
-        const seed = Math.random() * 100;
+        const seed = prng.nextDouble() * 100;
 
         for (let y = 0; y < size; y++) {
             for (let x = 0; x < size; x++) {
@@ -161,7 +170,7 @@ export const SceneTools = {
         if (planet.atmosphere && planet.atmosphere !== 'None') {
             ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
             for(let i=0; i<20; i++) {
-                ctx.beginPath(); ctx.arc(Math.random() * size, Math.random() * size, Math.random() * size / 4, 0, Math.PI * 2); ctx.fill();
+                ctx.beginPath(); ctx.arc(prng.nextDouble() * size, prng.nextDouble() * size, prng.nextDouble() * size / 4, 0, Math.PI * 2); ctx.fill();
             }
         }
         return new THREE.CanvasTexture(canvas);

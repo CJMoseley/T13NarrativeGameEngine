@@ -91,6 +91,7 @@ export class LocalSpaceScene extends Scene {
         this.createHUD();
         // Only play intro if we have PLANETS (data loaded). If not, updateSceneData will trigger it later.
         if (this.introActive && this.planets && this.planets.length > 0) {
+            this.shouldUpdateControls = false; // Disable controls during intro
             this.playIntroSequence();
         } else if (this.introActive) {
             Logger.message("LocalSpaceScene: Deferring intro sequence until planets are loaded.");
@@ -629,6 +630,7 @@ export class LocalSpaceScene extends Scene {
         const dt = delta * 0.001;
         const compression = this.COMPRESSION_C;
 
+
         // --- 0. Input Handling (Local Controls) ---
         if (!this.introActive) {
             // Transfer movement from activeCamera (moved by system controls) to virtualCameraPosition
@@ -744,10 +746,11 @@ export class LocalSpaceScene extends Scene {
                         obj.sprite.position.copy(visualPos);
 
                         const isFinalPhase = this.introActive && this.introPhase === 1;
-                        const canShowMesh = scale > 0.005 || (obj === this.homeWorldObj && isFinalPhase) || (obj.type === 'star');
+                        const isTarget = (obj === this.flybyObj && this.introPhase === 0) || (obj === this.homeWorldObj && this.introPhase === 1);
+                        const canShowMesh = scale > 0.005 || (obj === this.homeWorldObj && isFinalPhase) || (obj.type === 'star') || (this.introActive && isTarget && scale > 0.001);
 
                         if (canShowMesh) {
-                            obj.mesh.visible = !this.introActive || (obj === this.homeWorldObj && isFinalPhase) || (obj.type === 'star');
+                            obj.mesh.visible = !this.introActive || (obj === this.homeWorldObj && isFinalPhase) || (obj.type === 'star') || (this.introActive && isTarget);
                             obj.sprite.material.opacity = Math.max(0, 1.0 - (scale * 100));
                             obj.sprite.visible = obj.sprite.material.opacity > 0.01;
                         } else {
@@ -807,7 +810,11 @@ export class LocalSpaceScene extends Scene {
 
         // --- 4. Update Camera LookAt ---
         if (this.introActive) {
-            this.activeCamera.lookAt(CameraSubject);
+            // Smoothly look at the subject (the "eye reaction")
+            // We use a virtual target that lerps between the flyby and the homeworld
+            if (!this.virtualLookAt) this.virtualLookAt = new THREE.Vector3().copy(CameraSubject);
+            this.virtualLookAt.lerp(CameraSubject, 2.0 * dt);
+            this.activeCamera.lookAt(this.virtualLookAt);
         } else if (this.lockedTarget && this.lockedTarget.mesh) {
             // Target Lock Logic: Smoothly rotate camera to face the target
             const targetPos = this.lockedTarget.mesh.position;
@@ -870,6 +877,10 @@ export class LocalSpaceScene extends Scene {
 
         this.update(time, delta);
 
+        if (this.gameEngine && typeof this.gameEngine.update === 'function') {
+            this.gameEngine.update(time, delta);
+        }
+
         if (this.activeCamera && this.renderer) {
             this.renderer.setViewport(0, 0, window.innerWidth, window.innerHeight);
             this.renderer.setScissor(0, 0, window.innerWidth, window.innerHeight);
@@ -911,12 +922,12 @@ export class LocalSpaceScene extends Scene {
 
             if (isHomeworldOutermost) {
                 // Select an inner planet for flyby
-                const innerPlanets = allPlanets.filter(p => p !== outermostPlanet);
+                const innerPlanets = allPlanets.filter(p => p !== outermostPlanet && p.mesh);
                 this.flybyObj = innerPlanets.length > 0 ? innerPlanets[Math.floor(prng.nextDouble() * innerPlanets.length)] : this.objects.find(o => o.type === 'star');
             } else {
                 // Select an outer planet/body for flyby
-                const outerBodies = this.objects.filter(o => (o.type === 'planet' || o.type === 'moon') && o !== this.homeWorldObj && getDistFromStar(o) > hwDist);
-                this.flybyObj = outerBodies.length > 0 ? outerBodies[Math.floor(prng.nextDouble() * outerBodies.length)] : allPlanets[allPlanets.length - 1];
+                const outerBodies = this.objects.filter(o => (o.type === 'planet' || o.type === 'moon') && o !== this.homeWorldObj && getDistFromStar(o) > hwDist && o.mesh);
+                this.flybyObj = outerBodies.length > 0 ? outerBodies[Math.floor(prng.nextDouble() * outerBodies.length)] : allPlanets.filter(p => p.mesh).pop() || allPlanets[allPlanets.length - 1];
             }
 
             Logger.message(`LocalSpaceScene: Fly-by object identified as ${this.flybyObj?.data?.name || this.flybyObj?.type || 'the star'}`);
@@ -964,6 +975,12 @@ export class LocalSpaceScene extends Scene {
 
         // Move camera along the spline
         this.introPathSpline.getPointAt(ease, this.virtualCameraPosition);
+
+        // Slow transition FOV from 60 (standard) to 35 (cinematic/orbit)
+        const targetFOV = 35;
+        const startFOV = 60;
+        this.activeCamera.fov = startFOV + (targetFOV - startFOV) * ease;
+        this.activeCamera.updateProjectionMatrix();
 
         // Determine current phase of the intro (for LOD and look-at target)
         // If we have a flyby object, we switch phase halfway through the path (at the flyby point)
