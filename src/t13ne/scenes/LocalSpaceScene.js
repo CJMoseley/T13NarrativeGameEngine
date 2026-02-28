@@ -630,18 +630,6 @@ export class LocalSpaceScene extends Scene {
         const dt = delta * 0.001;
         const compression = this.COMPRESSION_C;
 
-        // Ensure FOV is cinematic during intro
-        if (this.introActive) {
-            if (this.activeCamera.fov !== 35) {
-                this.activeCamera.fov = 35;
-                this.activeCamera.updateProjectionMatrix();
-            }
-        } else {
-            if (this.activeCamera.fov !== 60) {
-                this.activeCamera.fov = 60;
-                this.activeCamera.updateProjectionMatrix();
-            }
-        }
 
         // --- 0. Input Handling (Local Controls) ---
         if (!this.introActive) {
@@ -758,10 +746,11 @@ export class LocalSpaceScene extends Scene {
                         obj.sprite.position.copy(visualPos);
 
                         const isFinalPhase = this.introActive && this.introPhase === 1;
-                        const canShowMesh = scale > 0.005 || (obj === this.homeWorldObj && isFinalPhase) || (obj.type === 'star');
+                        const isTarget = (obj === this.flybyObj && this.introPhase === 0) || (obj === this.homeWorldObj && this.introPhase === 1);
+                        const canShowMesh = scale > 0.005 || (obj === this.homeWorldObj && isFinalPhase) || (obj.type === 'star') || (this.introActive && isTarget && scale > 0.001);
 
                         if (canShowMesh) {
-                            obj.mesh.visible = !this.introActive || (obj === this.homeWorldObj && isFinalPhase) || (obj.type === 'star');
+                            obj.mesh.visible = !this.introActive || (obj === this.homeWorldObj && isFinalPhase) || (obj.type === 'star') || (this.introActive && isTarget);
                             obj.sprite.material.opacity = Math.max(0, 1.0 - (scale * 100));
                             obj.sprite.visible = obj.sprite.material.opacity > 0.01;
                         } else {
@@ -821,7 +810,12 @@ export class LocalSpaceScene extends Scene {
 
         // --- 4. Update Camera LookAt ---
         if (this.introActive) {
+            // Smoothly look at the subject
+            const currentQuaternion = this.activeCamera.quaternion.clone();
             this.activeCamera.lookAt(CameraSubject);
+            const targetQuaternion = this.activeCamera.quaternion.clone();
+            this.activeCamera.quaternion.copy(currentQuaternion);
+            this.activeCamera.quaternion.slerp(targetQuaternion, 2.0 * dt);
         } else if (this.lockedTarget && this.lockedTarget.mesh) {
             // Target Lock Logic: Smoothly rotate camera to face the target
             const targetPos = this.lockedTarget.mesh.position;
@@ -982,6 +976,12 @@ export class LocalSpaceScene extends Scene {
 
         // Move camera along the spline
         this.introPathSpline.getPointAt(ease, this.virtualCameraPosition);
+
+        // Slow transition FOV from 60 (standard) to 35 (cinematic/orbit)
+        const targetFOV = 35;
+        const startFOV = 60;
+        this.activeCamera.fov = startFOV + (targetFOV - startFOV) * ease;
+        this.activeCamera.updateProjectionMatrix();
 
         // Determine current phase of the intro (for LOD and look-at target)
         // If we have a flyby object, we switch phase halfway through the path (at the flyby point)

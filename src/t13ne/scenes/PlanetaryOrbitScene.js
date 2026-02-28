@@ -448,7 +448,7 @@ export class PlanetaryOrbitScene extends Scene {
         } = this._getInfoPanelData();
 
         const sections = [
-            { title: "Anomaly Analysis", content: `
+            { title: "Anomaly Analysis", pos: { top: '5%', right: '2%' }, content: `
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.85em; margin-bottom: 15px; color: #aaccff; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px;">
                     <div><strong>Class:</strong> ${this.planetData.type || 'Terrestrial'}</div>
                     <div><strong>Gravity:</strong> ${gravity}</div>
@@ -462,17 +462,17 @@ export class PlanetaryOrbitScene extends Scene {
                 </div>`,
                 id: 'anomaly-analysis'
             },
-            { title: "Species Profile", content: ``, id: 'species-profile', customCreate: (container) => {
+            { title: "Species Profile", pos: { bottom: '5%', right: '2%' }, content: ``, id: 'species-profile', customCreate: (container) => {
                 const speciesPanel = this._createSpeciesPanel(species, society, speciesLoreHtml);
                 container.appendChild(speciesPanel);
                 this.generateAvatarSnapshot(speciesPanel.querySelector('.avatar-container'));
             }},
-            { title: "Resource Scan", content: `
+            { title: "Resource Scan", pos: { top: '5%', left: '2%' }, content: `
                 <div style="color:#00ffff; font-size:0.9em; margin-bottom:5px;">STRATEGIC RESOURCES</div>
                 <div style="font-size:0.8em; line-height:1.4;">${resourcesHtml}</div>`,
                 id: 'resource-scan'
             },
-            { title: "Surface Snapshot", content: ``, id: 'surface-snapshot', customCreate: async (container) => {
+            { title: "Surface Snapshot", pos: { bottom: '5%', left: '2%' }, content: ``, id: 'surface-snapshot', customCreate: async (container) => {
                 const landCanvasContainer = this._createSurfaceScanPanel(poi, container);
                 await this.generateSurfaceSnapshot(landCanvasContainer);
             }}
@@ -488,10 +488,16 @@ export class PlanetaryOrbitScene extends Scene {
             // Create a separate panel for each section
             const panel = document.createElement('div');
             this._styleInfoPanel(panel);
-            // Stack panels vertically or position them differently
-            panel.style.top = `${10 + (i * 22)}%`;
+
+            // Reset position from default styles then apply section-specific position
+            panel.style.top = section.pos.top || 'auto';
+            panel.style.bottom = section.pos.bottom || 'auto';
+            panel.style.left = section.pos.left || 'auto';
+            panel.style.right = section.pos.right || 'auto';
+            panel.style.width = '350px'; // Slightly smaller to reduce clutter
+
             panel.style.opacity = '0';
-            panel.style.transform = 'translateX(50px)';
+            panel.style.transform = section.pos.left ? 'translateX(-50px)' : 'translateX(50px)';
 
             panel.innerHTML = `
                 <h2 style="margin: 0 0 10px 0; color: #00ffff; text-transform: uppercase; font-size: 1.1em; border-bottom: 1px solid #005588; padding-bottom: 5px; text-shadow: 0 0 5px #00ffff;">
