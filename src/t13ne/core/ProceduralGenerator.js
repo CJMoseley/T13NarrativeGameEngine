@@ -1,4 +1,5 @@
 import Logger from './Logger.js';
+import PRNG from '../modules/systems/t13ne-prng.js';
 
 /**
  * ProceduralGenerator
@@ -28,8 +29,10 @@ export class ProceduralGenerator {
      * Wave Function Collapse (Simplified 2D)
      * Reduces entropy of a grid based on tile adjacency constraints.
      */
-    static wfc(width, height, tiles, constraints) {
+    static wfc(width, height, tiles, constraints, seed = 'wfc-seed') {
         Logger.message("ProceduralGenerator: Wave Function Collapse starting...");
+
+        const prng = PRNG.create(seed);
 
         // Initialize grid with all possibilities
         let grid = Array(width * height).fill(null).map(() => tiles.map(t => t.id));
@@ -58,7 +61,7 @@ export class ProceduralGenerator {
 
             // Collapse target cell
             const possibilities = grid[targetIdx];
-            grid[targetIdx] = [possibilities[Math.floor(Math.random() * possibilities.length)]];
+            grid[targetIdx] = [possibilities[Math.floor(prng.nextDouble() * possibilities.length)]];
 
             // Propagate constraints (placeholder for actual propagation logic)
             // ... logic to reduce possibilities in neighbors ...

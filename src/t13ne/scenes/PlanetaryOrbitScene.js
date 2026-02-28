@@ -942,7 +942,8 @@ export class PlanetaryOrbitScene extends Scene {
         // Intro Sequence Transition Logic
         if (this.introActive) {
             this.introTime += dt;
-            if (this.introTime > 10.0) {
+            // The intro remains active until the staged reveal is complete or user interacts
+            if (this._stagedRevealComplete && this.introTime > 15.0) {
                  this.introActive = false;
             }
         }

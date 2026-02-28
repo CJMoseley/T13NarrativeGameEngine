@@ -810,12 +810,11 @@ export class LocalSpaceScene extends Scene {
 
         // --- 4. Update Camera LookAt ---
         if (this.introActive) {
-            // Smoothly look at the subject
-            const currentQuaternion = this.activeCamera.quaternion.clone();
-            this.activeCamera.lookAt(CameraSubject);
-            const targetQuaternion = this.activeCamera.quaternion.clone();
-            this.activeCamera.quaternion.copy(currentQuaternion);
-            this.activeCamera.quaternion.slerp(targetQuaternion, 2.0 * dt);
+            // Smoothly look at the subject (the "eye reaction")
+            // We use a virtual target that lerps between the flyby and the homeworld
+            if (!this.virtualLookAt) this.virtualLookAt = new THREE.Vector3().copy(CameraSubject);
+            this.virtualLookAt.lerp(CameraSubject, 2.0 * dt);
+            this.activeCamera.lookAt(this.virtualLookAt);
         } else if (this.lockedTarget && this.lockedTarget.mesh) {
             // Target Lock Logic: Smoothly rotate camera to face the target
             const targetPos = this.lockedTarget.mesh.position;
