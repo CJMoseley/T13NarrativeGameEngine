@@ -110,10 +110,33 @@ class NarrativeUI {
             });
         }
 
-        // Add "New Cycle" Button at the bottom
+        // Add Referee Controls and New Cycle Button at the bottom
+        const controlGroup = document.createElement('div');
+        controlGroup.style.cssText = 'margin-top: 2rem; display: flex; flex-direction: column; gap: 0.5rem;';
+
+        const heartbeatBtn = document.createElement('button');
+        heartbeatBtn.className = 'btn';
+        heartbeatBtn.style.cssText = 'width: 100%; padding: 0.75rem; border: 1px solid var(--accent-blue); color: var(--accent-blue);';
+
+        const updateHeartbeatBtn = () => {
+            const Ref = T13NE.getModule('Referee');
+            const isActive = Ref?.heartbeatInterval !== null;
+            heartbeatBtn.textContent = isActive ? '⏸ Stop Referee Heartbeat' : '▶ Start Referee Heartbeat';
+            heartbeatBtn.style.background = isActive ? 'rgba(56, 189, 248, 0.1)' : 'transparent';
+        };
+        updateHeartbeatBtn();
+
+        heartbeatBtn.onclick = () => {
+            const Ref = T13NE.getModule('Referee');
+            if (Ref?.heartbeatInterval) Ref.stopHeartbeat();
+            else Ref?.startHeartbeat(5000);
+            updateHeartbeatBtn();
+        };
+        controlGroup.appendChild(heartbeatBtn);
+
         const cycleBtn = document.createElement('button');
         cycleBtn.className = 'btn btn-primary';
-        cycleBtn.style.cssText = 'display: block; width: 100%; margin-top: 2rem; padding: 1rem;';
+        cycleBtn.style.cssText = 'width: 100%; padding: 1rem;';
         cycleBtn.textContent = '✨ Generate New Narrative Cycle';
         cycleBtn.onclick = () => {
             const name = prompt("Name the new Cycle:");
@@ -123,7 +146,9 @@ class NarrativeUI {
                 setTimeout(() => this.render(), 1000); // Hacky refresh
             }
         };
-        list.appendChild(cycleBtn);
+        controlGroup.appendChild(cycleBtn);
+
+        list.appendChild(controlGroup);
     }
 
     createItemCard(obj) {

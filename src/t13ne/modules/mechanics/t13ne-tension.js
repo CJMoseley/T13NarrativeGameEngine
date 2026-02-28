@@ -9,6 +9,11 @@ class T13NE_Tension {
 
     async initialize(t13ne) {
         this.t13ne = t13ne;
+        try {
+            this.tensionLevels = await CodexLoader.getData('drama', 'tensionLevels.json') || [];
+        } catch (e) {
+            Logger.warn("T13NE_Tension: Failed to load tensionLevels data.", e);
+        }
         this.initialized = true;
         Logger.message("T13NE_Tension: Initialized.");
     }
@@ -27,6 +32,19 @@ class T13NE_Tension {
 
     getTensionLevel() {
         return this.tensionLevel;
+    }
+
+    /**
+     * Retrieves the description data for a specific tension level.
+     * @param {number} level
+     * @returns {object|null}
+     */
+    getSuspenseData(level) {
+        if (!this.tensionLevels || this.tensionLevels.length === 0) return null;
+        // The data is 1-indexed in the JSON (Tension_Level: 1..6)
+        // But our level might be 0..11. Map it to the 6 levels.
+        const normalizedLevel = Math.max(1, Math.min(6, Math.ceil(level / 2) || 1));
+        return this.tensionLevels.find(l => l.Tension_Level === normalizedLevel) || this.tensionLevels[0];
     }
 
     _updateTension(level) {

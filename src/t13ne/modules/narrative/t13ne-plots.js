@@ -38,6 +38,7 @@ class T13Plot extends SuperKnot {
         }
 
         this.Name = this.name || data.Name || data.name || "Unnamed Plot";
+        this.Rank = data.Rank || data.rank || 'Story';
         this.memory = data.memory || { events: [] };
         this.subPlots = [];
         this.plotDescendants = [];
@@ -71,6 +72,7 @@ class T13Plot extends SuperKnot {
         this.genre = data.genre || 'T13 Core';
         this.era = data.era || 'Timeless';
         this.variety = data.variety || data.actType || 'Unknown';
+        this.actType = data.actType || null;
 
         // Hierarchy & Spread Data
         this.index = data.index || 0;
@@ -795,7 +797,7 @@ class T13Plot extends SuperKnot {
         const state = this.stateMachine.getState(); // Frame, Loom, Zenith
 
         // Find or Spawn Act Plot (Child of Story)
-        let actPlot = this.subPlots.find(p => p.Rank === 'Act' && p.actType === state && p.isActive);
+        let actPlot = this.subPlots.find(p => p.Rank === 'Act' && (p.variety === state || p.actType === state) && p.isActive);
 
         if (!actPlot && this.narrativeStructure && this.narrativeStructure[state]) {
             const actData = this.narrativeStructure[state];
@@ -1207,6 +1209,16 @@ class T13Plot extends SuperKnot {
             // Feeding the plot
             this.feed(playedCards.length);
 
+            const Referee = this.t13ne?.getModule('Referee');
+            if (Referee && typeof Referee.logChronicle === 'function') {
+                Referee.logChronicle({
+                    type: 'Mechanical',
+                    source: this.Name,
+                    message: `Played cards: ${playedCards.map(c => c.name).join(', ')}.`,
+                    details: { plotId: this.id, cards: playedCards.map(c => c.name), rationale: decision.rationale }
+                });
+            }
+
             // Narrate the event
             if (this.yarnTeller) {
                 const tensionData = T13NE_Tension.getSuspenseData(this.tensionLevel);
@@ -1224,6 +1236,15 @@ class T13Plot extends SuperKnot {
                 });
                 Logger.message(`Plot ${this.Name} Narration: ${narration}`);
                 this.logEvent(`Narration: ${narration}`);
+
+                if (Referee && typeof Referee.logChronicle === 'function') {
+                    Referee.logChronicle({
+                        type: 'Diegetic',
+                        source: this.Name,
+                        message: narration,
+                        details: { plotId: this.id }
+                    });
+                }
             }
 
             // Here we would trigger actual game effects based on narrativeEffect or card types
@@ -1283,6 +1304,16 @@ class T13Plot extends SuperKnot {
         this.subPlots.push(subPlot);
         this.logEvent(`Spawned subplot: ${subPlot.Name}`);
         Logger.message(`Plot ${this.Name}: Spawned subplot ${subPlot.Name}`);
+
+        const Referee = this.t13ne?.getModule('Referee');
+        if (Referee && typeof Referee.logChronicle === 'function') {
+            Referee.logChronicle({
+                type: 'Mechanical',
+                source: this.Name,
+                message: `Spawned subplot: ${subPlot.Name} (Rank: ${subPlot.Rank})`,
+                details: { parentId: this.id, childId: subPlot.id, rank: subPlot.Rank }
+            });
+        }
 
         // Ensure children are saved and parent is updated
         subPlot.save();

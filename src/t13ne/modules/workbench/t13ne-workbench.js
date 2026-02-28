@@ -12,6 +12,7 @@ import CharacterUI from './t13ne-chars-UI.js';
 import TapestryUI from './t13ne-tapestry-UI.js';
 import Inspector from './t13ne-inspector.js';
 import Terminal from './t13ne-terminal.js';
+import { EventBus } from '/src/t13ne/core/EventBus.js';
 
 const T13 = AuthorMain.getEngine();
 
@@ -70,6 +71,11 @@ export default class Workbench {
             this.refreshAll();
             this.setupNav();
             this.terminal.setup();
+
+            // Listen for Chronicle entries
+            EventBus.on('chronicle:entry', (entry) => {
+                this.log(`[Chronicle:${entry.source}] ${entry.message}`, CHRONICLE_LOG_LEVEL_MAP[entry.type] || 'info');
+            });
 
             // Initialize Card Table
             const cardContainer = document.getElementById('card-table-container');

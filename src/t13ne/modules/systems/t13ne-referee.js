@@ -1,6 +1,7 @@
 // d:\GoogleDrive\Games\wormholeracersJS\WormholeRacersJS\plugins\t13ne\modules\t13ne-referee.js
 
 import Logger from "/src/t13ne/core/Logger.js";
+import { EventBus } from "/src/t13ne/core/EventBus.js";
 import { T13Plot } from "../narrative/t13ne-plots.js";
 import T13LoreManager from "../narrative/t13ne-lore.js";
 import CodexLoader from "../codex/CodexLoader.js";
@@ -21,6 +22,10 @@ class T13NE_Referee {
         this.sceneDirector = new SceneDirector(this);
         this.primingData = null;
         this.workerPool = null;
+        this.chronicle = []; // Persistent log of narrative and mechanical events
+        this.heartbeatInterval = null;
+        this.heartbeatRate = 5000; // Default 5 seconds
+        this.isProcessing = false;
     }
 
 
@@ -42,6 +47,54 @@ class T13NE_Referee {
 
         this.initialized = true;
         Logger.message('T13NE_Referee: Initialized.');
+
+        // Auto-start heartbeat if configured or appropriate
+        this.startHeartbeat();
+    }
+
+    /**
+     * Logs an entry to the Chronicle.
+     * @param {object} entry - { type: 'Mechanical'|'Diegetic', source: string, message: string, details: any }
+     */
+    logChronicle(entry) {
+        const logEntry = {
+            timestamp: Date.now(),
+            type: entry.type || 'General',
+            source: entry.source || 'Referee',
+            message: entry.message || '',
+            details: entry.details || null
+        };
+        this.chronicle.push(logEntry);
+        if (this.chronicle.length > 500) this.chronicle.shift(); // Keep last 500 entries
+
+        // Also log to system logger for dev visibility
+        Logger.message(`Chronicle [${logEntry.type}] [${logEntry.source}]: ${logEntry.message}`);
+
+        // Dispatch event for UI updates
+        EventBus.emit('chronicle:entry', logEntry);
+    }
+
+    /**
+     * Starts the Referee heartbeat.
+     * @param {number} [rate] - Interval in ms.
+     */
+    startHeartbeat(rate) {
+        if (rate) this.heartbeatRate = rate;
+        if (this.heartbeatInterval) this.stopHeartbeat();
+
+        Logger.message(`Referee: Starting heartbeat at ${this.heartbeatRate}ms.`);
+        this.heartbeatInterval = setInterval(() => this.processTurn(), this.heartbeatRate);
+    }
+
+    /**
+     * Stops the Referee heartbeat.
+     */
+    stopHeartbeat() {
+        if (this.heartbeatInterval) {
+            clearInterval(this.heartbeatInterval);
+            this.heartbeatInterval = null;
+            Logger.message("Referee: Heartbeat stopped.");
+        }
     }
 
     /**
@@ -160,6 +213,9 @@ class T13NE_Referee {
      * Triggers Plot AI cycles and potentially other periodic checks.
      */
     async processTurn() {
+        if (this.isProcessing) return;
+        this.isProcessing = true;
+
         const Plots = this.t13ne.getModule('Plots');
         const AIService = this.t13ne.getModule('AIService');
 
@@ -209,7 +265,28 @@ class T13NE_Referee {
             // We act on them in priority order.
             // Note: Act() calls updateState(), which may spawn new subplots.
             for (const plot of allPlots) {
+                const oldState = plot.currentState;
+                const oldTension = plot.tensionLevel;
+
                 await plot.act(AIService);
+
+                // Log state changes to Chronicle
+                if (plot.currentState !== oldState) {
+                    this.logChronicle({
+                        type: 'Mechanical',
+                        source: plot.Name,
+                        message: `State changed from ${oldState} to ${plot.currentState}.`,
+                        details: { plotId: plot.id, rank: plot.Rank }
+                    });
+                }
+                if (plot.tensionLevel !== oldTension) {
+                    this.logChronicle({
+                        type: 'Mechanical',
+                        source: plot.Name,
+                        message: `Tension shifted from ${oldTension} to ${plot.tensionLevel}.`,
+                        details: { plotId: plot.id }
+                    });
+                }
 
                 // If a Scene plot is active and at top priority, trigger its display
                 if (plot === allPlots[0] && plot.Rank === 'Scene' && plot.isActive && !plot.isResolved) {
@@ -222,6 +299,7 @@ class T13NE_Referee {
         }
 
         // Future expansion: Check active Arcs, trigger Latent Drama, etc.
+        this.isProcessing = false;
     }
 
     /**
