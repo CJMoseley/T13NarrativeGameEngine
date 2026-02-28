@@ -435,6 +435,12 @@ export class PlanetaryOrbitScene extends Scene {
     }
 
     async createPlanetInfoPanel() {
+        // Cleanup existing panel to prevent duplicates
+        if (this.infoPanel && this.infoPanel.parentNode) {
+            this.infoPanel.parentNode.removeChild(this.infoPanel);
+            this.infoPanel = null;
+        }
+
         // Yield to allow frame render before generating UI
         await new Promise(r => setTimeout(r, 100));
 
