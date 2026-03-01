@@ -167,6 +167,8 @@ async function process_plots(data) {
     const { plots, rulesets } = data;
     const deltas = [];
 
+    if (!rulesets) return deltas;
+
     for (const plot of plots) {
         // 1. Calculate Conflict Boons
         const newBoons = calculateConflictBoons(plot);

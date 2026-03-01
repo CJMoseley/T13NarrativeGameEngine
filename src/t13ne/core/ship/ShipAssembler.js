@@ -5,6 +5,8 @@ import { ShipComponent } from '/src/t13ne/core/ship/ShipComponent.js';
 import { COMPONENT_COLORS, getCompProps, mulberry32 } from '/src/t13ne/core/ship/ShipUtils.js';
 import { racingLiveryShader, industrialLiveryShader, boxyLiveryShader, organicLiveryShader, miningLiveryShader, metallicLiveryShader } from '/src/t13ne/core/ship/ShipShaders.js';
 import { GlyphGenerator } from '/src/t13ne/core/ship/GlyphGenerator.js';
+import { SimplifyModifier } from 'three/examples/jsm/modifiers/SimplifyModifier.js';
+import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 
 export class ShipAssembler {
     constructor(componentFactory, hullGenerator, greebleGenerator, wiringGenerator, gameEngine) {
@@ -417,6 +419,9 @@ export class ShipAssembler {
             // For ALL OTHER styles (INDUSTRIAL, BOXY, DISC, etc.), use CSG to create a single, manifold hull.
             // This is the definitive fix for Z-fighting on hard-surface models.
             console.log(`ShipAssembler: Using unified CSG method for '${effectiveStyle.method}' style.`);
+            
+            // The showcase scene passes itself as targetScene.
+            const isShowcase = targetScene !== null;
 
             if (this.gameEngine.shipFactory?.useWorker) {
                 const workerComponents = [];
@@ -473,7 +478,7 @@ export class ShipAssembler {
                     // Apply slight scale to avoid Z-fighting with internal components
                     hullGeometry.scale(1.005, 1.005, 1.005);
                 }
-            } else {
+            } else { // Run synchronous CSG
                 let baseCSG = null;
 
                 // 1. Union all non-carve components into a single solid.
@@ -648,6 +653,12 @@ export class ShipAssembler {
             } catch (e) {
                 console.error("ShipAssembler: Greeble generation failed.", e);
             }
+
+            // Optimization: Hide internal component proxies if hull exists and we are not in showcase
+            // They are kept in the group for destruction effects ("blown apart") but shouldn't be rendered normally
+            if (!isShowcase) {
+                componentMeshes.forEach(m => m.visible = false);
+            }
         } else {
             console.warn("ShipFactory: Hull generation produced empty geometry or SKELETON style selected.");
             // For SKELETON style or failed hull, we keep proxies visible and maybe add struts
@@ -805,5 +816,107 @@ export class ShipAssembler {
         }
 
         return shipGroup;
+        // --- LOD GENERATION ---
+        const lod = new THREE.LOD();
+        
+        // LOD 1: Normal (Distance 100)
+        // This is the shipGroup we just built.
+        lod.addLevel(shipGroup, 100);
+
+        // LOD 0: Human Scale (Distance 0) - With Interiors Carved
+        // We clone the shipGroup and replace the hull with a carved version if interiors exist.
+        if (interior && interior.length > 0 && hullMesh && effectiveStyle.method !== 'SKELETON') {
+            const lod0Group = shipGroup.clone();
+            const lod0Hull = lod0Group.getObjectByName("procedural_hull");
+            
+            if (lod0Hull) {
+                try {
+                    // Perform extra carving for interiors
+                    let hullCSG = CSG.fromMesh(lod0Hull);
+                    for (const space of interior) {
+                        const spaceMesh = this.componentFactory.createProxy(space.type, space.dims);
+                        spaceMesh.position.set(...(space.pos || [0, 0, 0]));
+                        if (space.rot) spaceMesh.rotation.set(...space.rot);
+                        spaceMesh.updateMatrix();
+                        hullCSG = hullCSG.subtract(CSG.fromMesh(spaceMesh));
+                    }
+                    const carvedMesh = CSG.toMesh(hullCSG, lod0Hull.matrix);
+                    lod0Hull.geometry.dispose();
+                    lod0Hull.geometry = carvedMesh.geometry;
+                    // Re-apply attributes if lost (CSG usually preserves them but let's be safe)
+                    if (!lod0Hull.geometry.attributes.color && hullMesh.geometry.attributes.color) {
+                        lod0Hull.geometry.setAttribute('color', hullMesh.geometry.attributes.color);
+                    }
+                } catch (e) {
+                    console.warn("ShipAssembler: LOD 0 Interior carving failed", e);
+                }
+            }
+            lod.addLevel(lod0Group, 0);
+        } else {
+            lod.addLevel(shipGroup.clone(), 0);
+        }
+
+        // LOD 2: Mid Distance (Distance 300) - Simplified Mesh
+        // Merge everything into one mesh and simplify
+        await new Promise(r => setTimeout(r, 0)); // Yield
+        const mergedGeo = this._mergeShipGeometries(shipGroup);
+        if (mergedGeo) {
+            const modifier = new SimplifyModifier();
+            // Reduce by 50%
+            const count = mergedGeo.attributes.position.count;
+            const simplifiedGeo = modifier.modify(mergedGeo, Math.floor(count * 0.5));
+            
+            const lod2Mesh = new THREE.Mesh(simplifiedGeo, hullMesh ? hullMesh.material : new THREE.MeshStandardMaterial({ color: 0x888888 }));
+            lod2Mesh.name = "lod2_mesh";
+            lod.addLevel(lod2Mesh, 300);
+
+            // LOD 3: Far Distance (Distance 1000) - Heavily Simplified
+            // Reduce by 80%
+            const simplifiedGeoFar = modifier.modify(mergedGeo, Math.floor(count * 0.8));
+            const lod3Mesh = new THREE.Mesh(simplifiedGeoFar, hullMesh ? hullMesh.material : new THREE.MeshStandardMaterial({ color: 0x888888 }));
+            lod3Mesh.name = "lod3_mesh";
+            lod.addLevel(lod3Mesh, 1000);
+        }
+
+        // If we added the raw group to the scene for the showcase, replace it with the LOD
+        if (scene && isShowcase) {
+            scene.remove(shipGroup);
+            scene.add(lod);
+        }
+
+        return lod;
+    }
+
+    _mergeShipGeometries(group) {
+        const geometries = [];
+        group.updateMatrixWorld(true);
+        group.traverse(child => {
+            if (child.isMesh && child.geometry && child.visible) {
+                const geom = child.geometry.clone();
+                geom.applyMatrix4(child.matrixWorld);
+                
+                // Standardize attributes: Position, Normal, Color
+                if (!geom.attributes.color) {
+                    const count = geom.attributes.position.count;
+                    const colors = new Float32Array(count * 3);
+                    const matColor = child.material.color || new THREE.Color(1,1,1);
+                    for(let i=0; i<count*3; i+=3) {
+                        colors[i] = matColor.r; colors[i+1] = matColor.g; colors[i+2] = matColor.b;
+                    }
+                    geom.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+                }
+                // Strip other attributes to ensure merge success
+                if (geom.index) geom.setIndex(null); 
+                geometries.push(geom);
+            }
+        });
+        
+        if (geometries.length === 0) return null;
+        try {
+            return BufferGeometryUtils.mergeBufferGeometries(geometries, false);
+        } catch (e) {
+            console.warn("LOD Merge failed", e);
+            return null;
+        }
     }
 }

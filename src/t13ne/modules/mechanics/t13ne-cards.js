@@ -1,4 +1,4 @@
-﻿﻿import PRNG from "../systems/t13ne-prng.js";
+﻿﻿﻿﻿import PRNG from "../systems/t13ne-prng.js";
 import CodexLoader from "../codex/CodexLoader.js"; // Import CodexLoader
 
 class Card {
@@ -216,11 +216,24 @@ class Deck {
      * @returns {Card[]} An array of drawn cards.
      */
     draw(numCards = 1) {
-        if (numCards > this.currentDeck.length) {
-            console.warn(`Not enough cards to draw ${numCards}. Drawing all remaining ${this.currentDeck.length} cards.`);
-            numCards = this.currentDeck.length;
+        const drawnCards = [];
+
+        // 1. Draw available cards from current deck
+        const available = Math.min(numCards, this.currentDeck.length);
+        if (available > 0) {
+            drawnCards.push(...this.currentDeck.splice(0, available));
         }
-        return this.currentDeck.splice(0, numCards);
+
+        // 2. If we need more, reshuffle discard and draw remainder
+        if (drawnCards.length < numCards && this.discardPile.length > 0) {
+            this.currentDeck = [...this.discardPile];
+            this.discardPile = [];
+            this.shuffle(['fisherYates']);
+            const remainingNeeded = numCards - drawnCards.length;
+            drawnCards.push(...this.currentDeck.splice(0, Math.min(remainingNeeded, this.currentDeck.length)));
+        }
+
+        return drawnCards;
     }
 
     /**

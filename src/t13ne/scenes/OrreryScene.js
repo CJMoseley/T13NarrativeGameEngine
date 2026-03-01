@@ -234,7 +234,7 @@ export class OrreryScene extends Scene {
         this.scene.add(this.cameraPathLine);
 
         // Add Points for visibility (since Lines can be thin)
-        const pointsMat = new THREE.PointsMaterial({ color: 0xff00ff, size: 8, sizeAttenuation: false, depthTest: false });
+        const pointsMat = new THREE.PointsMaterial({ color: 0xff00ff, size: 2, sizeAttenuation: false, depthTest: false });
         this.cameraPathPointsMesh = new THREE.Points(pathGeo, pointsMat);
         this.cameraPathPointsMesh.frustumCulled = false;
         this.cameraPathPointsMesh.renderOrder = 999;
@@ -310,7 +310,7 @@ export class OrreryScene extends Scene {
             }
         }
 
-        Logger.message(`OrreryScene: Path points outside frustum:  / . Max Dist: `);
+        Logger.message(`OrreryScene: Path points outside frustum: ${outsideCount} / ${count}. Max Dist: ${maxVisualDist}`);
 
         this.cameraPathLine.geometry.setDrawRange(0, count);
         this.cameraPathLine.geometry.attributes.position.needsUpdate = true;
@@ -354,7 +354,7 @@ export class OrreryScene extends Scene {
             this.activeCamera.aspect = aspect; // Force square aspect
             this.activeCamera.updateProjectionMatrix();
 
-            Logger.message(`OrreryScene: Adjusted camera to fit dist . New Pos: ${y.toFixed(0)}, ${z.toFixed(0)}`);
+            Logger.message(`OrreryScene: Adjusted camera to fit dist ${targetMaxDist}. New Pos: ${y.toFixed(0)}, ${z.toFixed(0)}`);
         }
     }
 

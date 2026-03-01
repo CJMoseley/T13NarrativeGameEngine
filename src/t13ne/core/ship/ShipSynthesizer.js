@@ -14,16 +14,19 @@ export class ShipSynthesizer {
             ],
             [SOCKET_TYPES.NECK_BOTTOM]: [
                 { part: 'hull_cylindrical_standard', weight: 5 },
-                { part: 'hull_box_cargo', weight: 1 }
+                { part: 'hull_box_cargo', weight: 1 },
+                { part: 'hull_section_engineering', weight: 3 }
             ],
             [SOCKET_TYPES.SAUCER_VENTRAL]: [
                 { part: 'neck_upright', weight: 4 },
                 { part: 'neck_swept', weight: 2 },
-                { part: 'hull_cylindrical_standard', weight: 1 } // Direct connect
+                { part: 'hull_cylindrical_standard', weight: 1 }, // Direct connect
+                { part: 'hull_section_engineering', weight: 2 }
             ],
             [SOCKET_TYPES.PYLON_MOUNT]: [
                 { part: 'pylon_straight', weight: 3 },
-                { part: 'pylon_angled', weight: 3 }
+                { part: 'pylon_angled', weight: 3 },
+                { part: 'pylon_battlestar', weight: 2 }
             ],
             [SOCKET_TYPES.NACELLE_MOUNT]: [
                 { part: 'nacelle_cylindrical', weight: 5 },
@@ -31,17 +34,31 @@ export class ShipSynthesizer {
             ],
             [SOCKET_TYPES.BRIDGE_MOUNT]: [
                 { part: 'bridge_dome', weight: 5 },
-                { part: 'bridge_block', weight: 1 }
+                { part: 'bridge_block', weight: 1 },
+                { part: 'bridge_cockpit', weight: 2 }
             ],
             [SOCKET_TYPES.FUSELAGE_AFT]: [
                 { part: 'nacelle_cylindrical', weight: 1 }, // Single nacelle?
-                { part: 'hull_box_cargo', weight: 1 }
+                { part: 'hull_box_cargo', weight: 1 },
+                { part: 'engine_thruster', weight: 2 }
             ],
             [SOCKET_TYPES.WING_MOUNT]: [
                 { part: 'wing_delta', weight: 3 },
                 { part: 'wing_swept_back', weight: 3 },
                 { part: 'wing_forward_swept', weight: 1 },
                 { part: 'wing_blocky', weight: 1 }
+            ],
+            [SOCKET_TYPES.FUSELAGE_FRONT]: [
+                { part: 'deflector_dish', weight: 1 }
+            ],
+            [SOCKET_TYPES.ENGINE_MOUNT]: [
+                { part: 'engine_thruster', weight: 1 }
+            ],
+            [SOCKET_TYPES.FUSELAGE_SIDE]: [
+                { part: 'cargo_pod', weight: 1 }
+            ],
+            [SOCKET_TYPES.THRUSTER_MOUNT]: [
+                { part: 'engine_thruster', weight: 1 }
             ]
         };
     }
@@ -57,11 +74,15 @@ export class ShipSynthesizer {
         const openSockets = []; // Queue of { socket, parentPos, parentRot, parentId }
 
         // 1. Select Root Component
-        // Usually a Secondary Hull or a Saucer depending on ship class
-        let rootPartId = 'hull_cylindrical_standard';
-        if (rng() > 0.7) rootPartId = 'saucer_elliptical';
-        if (rng() > 0.85) rootPartId = 'saucer_radial';
-        if (rng() > 0.95) rootPartId = 'hull_star';
+        const rootOptions = [
+            { part: 'hull_cylindrical_standard', weight: 40 },
+            { part: 'saucer_elliptical', weight: 20 },
+            { part: 'saucer_classic', weight: 15 },
+            { part: 'hull_box_cargo', weight: 15 },
+            { part: 'saucer_radial', weight: 5 },
+            { part: 'hull_star', weight: 5 }
+        ];
+        let rootPartId = this.weightedSelect(rootOptions, rng);
         if (config.style === 'INDUSTRIAL') rootPartId = 'hull_box_cargo';
 
         const rootDef = SHIP_PARTS[rootPartId];
@@ -174,18 +195,27 @@ export class ShipSynthesizer {
         // This supports the requirement for sub-assemblies to have distinct skinning/hull generation parameters.
         const componentStyle = partDef.style || null;
         
+        // Combine rotation: passed rotation (from socket) + intrinsic part rotation
+        let finalRot = [...rot];
+        if (partDef.rot) {
+            finalRot[0] += partDef.rot[0];
+            finalRot[1] += partDef.rot[1];
+            finalRot[2] += partDef.rot[2];
+        }
+
         // Handle Composite Parts (expand them into individual primitives)
         if (partDef.type === 'composite' && partDef.components) {
             partDef.components.forEach((sub, idx) => {
                 // Transform sub-component relative to the main part's pos/rot
+                // Note: We use finalRot here so sub-components align with the corrected part orientation
                 const subPos = new THREE.Vector3(...sub.pos);
-                subPos.applyEuler(new THREE.Euler(...rot));
+                subPos.applyEuler(new THREE.Euler(...finalRot));
                 subPos.add(new THREE.Vector3(...pos));
                 
                 const subRot = new THREE.Euler(
-                    rot[0] + sub.rot[0],
-                    rot[1] + sub.rot[1],
-                    rot[2] + sub.rot[2]
+                    finalRot[0] + sub.rot[0],
+                    finalRot[1] + sub.rot[1],
+                    finalRot[2] + sub.rot[2]
                 );
 
                 list.push({
@@ -206,7 +236,7 @@ export class ShipSynthesizer {
                 type: partDef.type,
                 dims: partDef.dims,
                 pos: pos,
-                rot: rot,
+                rot: finalRot, // Use corrected rotation
                 usage: partDef.usage,
                 scale: partDef.scale || [1,1,1],
                 styleConfig: componentStyle
@@ -216,11 +246,16 @@ export class ShipSynthesizer {
         // Add this part's sockets to the queue
         if (partDef.sockets) {
             partDef.sockets.forEach(s => {
+                // Prevent saucers from growing necks if they are not the root (i.e. attached to a hull)
+                if (partDef.usage === 'hull_primary' && list.length > 1 && s.type === SOCKET_TYPES.SAUCER_VENTRAL) {
+                    return;
+                }
+
                 socketQueue.push({
                     ...s,
                     parentId: id,
                     parentPos: pos,
-                    parentRot: rot
+                    parentRot: finalRot // Sockets move with the corrected part rotation
                 });
             });
         }

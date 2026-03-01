@@ -907,6 +907,56 @@
           "description": "Determines environmental affinity."
         }
       ]
+    },
+    {
+      "id": "frame",
+      "name": "Frame Act Spread",
+      "numCards": 7,
+      "shufflePatterns": ["fisherYates"],
+      "includeDiceRoll": false,
+      "cardPositions": [
+        { "role": "Hook 1", "description": "Hook for Side 1" },
+        { "role": "Hook Aspect 1", "description": "Aspect for Hook 1" },
+        { "role": "Hook 2", "description": "Hook for Side 2" },
+        { "role": "Hook Aspect 2", "description": "Aspect for Hook 2" },
+        { "role": "Revelation About", "description": "What the revelation is about" },
+        { "role": "Revelation Vector", "description": "How it is revealed" },
+        { "role": "Revelation Info", "description": "The information revealed" }
+      ]
+    },
+    {
+      "id": "Loom",
+      "name": "Loom Spread",
+      "numCards": 10,
+      "shufflePatterns": ["fisherYates"],
+      "includeDiceRoll": false,
+      "cardPositions": [
+        { "role": "Warp 1 Fray", "description": "Fray for Warp 1" },
+        { "role": "Warp 1 Snag", "description": "Snag for Warp 1" },
+        { "role": "Weft 1 Sweeping", "description": "Sweeping for Weft 1" },
+        { "role": "Weft 1 Option A", "description": "Choice A for Weft 1" },
+        { "role": "Weft 1 Option B", "description": "Choice B for Weft 1" },
+        { "role": "Warp 2 Fray", "description": "Fray for Warp 2" },
+        { "role": "Warp 2 Snag", "description": "Snag for Warp 2" },
+        { "role": "Weft 2 Sweeping", "description": "Sweeping for Weft 2" },
+        { "role": "Weft 2 Option A", "description": "Choice A for Weft 2" },
+        { "role": "Weft 2 Option B", "description": "Choice B for Weft 2" }
+      ]
+    },
+    {
+      "id": "zenith",
+      "name": "Zenith Act Spread",
+      "numCards": 6,
+      "shufflePatterns": ["fisherYates"],
+      "includeDiceRoll": false,
+      "cardPositions": [
+        { "role": "Ordeal Stakes", "description": "Stakes of the final ordeal" },
+        { "role": "Ordeal Spread", "description": "Layout of the final ordeal" },
+        { "role": "Ordeal Obstacles", "description": "Obstacles in the final ordeal" },
+        { "role": "Ordeal Stages", "description": "Stages of the final ordeal" },
+        { "role": "Ordeal Test", "description": "Test for the final ordeal" },
+        { "role": "Gain", "description": "The final reward or outcome" }
+      ]
     }
   ]
 }

@@ -69,6 +69,7 @@ export class LocalSpaceScene extends Scene {
         this.asteroidMesh = null;
         this._asteroidNeedsUpdate = false;
         this.lockedTarget = null;
+        this.flybyProgress = 0.5; // Default to middle
     }
 
     updateContext(context) {
@@ -76,6 +77,17 @@ export class LocalSpaceScene extends Scene {
     }
 
     updateSceneData(data) {
+        // Prevent re-init if data appears identical (basic check)
+        if (this.systemData && data.systemDetails && this.systemData.name === data.systemDetails.name && 
+            this.planets && data.planets && this.planets.length === data.planets.length) {
+             if (data.introConfig) {
+                 this.introConfig = data.introConfig;
+                 this.introActive = true;
+                 this.playIntroSequence();
+             }
+             return;
+        }
+
         if (data.systemDetails) this.systemData = data.systemDetails;
         if (data.planets) this.planets = data.planets;
         if (data.star) this.starData = data.star;
@@ -99,8 +111,10 @@ export class LocalSpaceScene extends Scene {
     }
 
     async _prepare(onProgress) {
-        // DO NOT call init() here. It will be called by updateSceneData when data is ready.
-        // Calling it here with empty data causes "0 planets" state.
+        // Initialize immediately if data is available
+        if (this.planets && this.planets.length > 0) {
+            this.init();
+        }
         if (onProgress) onProgress({ status: 'System Ready', percent: 1.0 });
     }
     onActive() {
@@ -145,7 +159,7 @@ export class LocalSpaceScene extends Scene {
         this.activeCamera.lookAt(0, 0, -1);
         this.activeCamera.up.set(0, 1, 0); // Reset UP vector in case previous scene changed it
         this.activeCamera.fov = 60; // Reset FOV
-        this.activeCamera.near = 10.0; // Increased to prevent Z-fighting on clouds at distance
+        this.activeCamera.near = 0.1; // Reduced from 10.0 to prevent clipping small objects
         this.activeCamera.far = 10000000; // Increased far plane for realistic scales
         this.activeCamera.updateProjectionMatrix();
         this.scene.add(this.activeCamera);
@@ -175,6 +189,11 @@ export class LocalSpaceScene extends Scene {
             star: this.starData
         });
         this.orreryScene.init();
+
+        // Restore intro path if active
+        if (this.introActive && this.introPath && this.introPath.length > 0) {
+             this.orreryScene.setIntroPath(this.introPath, this.scales.orbit);
+        }
 
         Logger.end(funcName);
     }
@@ -214,6 +233,7 @@ export class LocalSpaceScene extends Scene {
         const prng = ProcGen.createPRNG(ProcGen.deriveSeed(this.systemData.name || 'default', 'intro-path'));
 
         // 1. Start Point: Outer Edge
+        let flybyWaypointRef = null;
         let angle;
         if (isHomeworldOutermost && this.flybyObj && this.flybyObj.realPosition) {
             // "opposite side of the system" for inner planet flyby
@@ -233,7 +253,7 @@ export class LocalSpaceScene extends Scene {
         // 2. Flyby Waypoint
         if (this.flybyObj && this.flybyObj.realPosition) {
             const flybyPos = this.flybyObj.realPosition.clone();
-            const flybyRadius = (this.flybyObj.baseRadius || 100) * (this.flybyObj.type === 'star' ? 40.0 : 15.0);
+            const flybyRadius = (this.flybyObj.baseRadius || 100) * (this.flybyObj.type === 'star' ? 40.0 : 4.0);
 
             // Calculate a safe flyby offset: Outward (away from star) and Up
             // This prevents the "side" calculation from accidentally pointing into the path or the star
@@ -243,6 +263,7 @@ export class LocalSpaceScene extends Scene {
             
             const flybyWaypoint = flybyPos.clone().add(safeDir.multiplyScalar(flybyRadius));
             waypoints.push(flybyWaypoint);
+            flybyWaypointRef = flybyWaypoint;
         }
 
         // 3. Final approach point to homeworld
@@ -324,6 +345,22 @@ export class LocalSpaceScene extends Scene {
             this.introPath = this.introPathSpline.getPoints(200);
             this.introPathLength = null; // Reset length cache
             this.orreryScene.setIntroPath(this.introPath, this.scales.orbit);
+
+            // Calculate actual progress point of the flyby
+            if (flybyWaypointRef) {
+                let currentLen = 0;
+                let totalLen = 0;
+                let found = false;
+                for (let i = 0; i < waypoints.length - 1; i++) {
+                    const dist = waypoints[i].distanceTo(waypoints[i+1]);
+                    if (!found) {
+                        currentLen += dist;
+                        if (waypoints[i+1] === flybyWaypointRef) found = true;
+                    }
+                    totalLen += dist;
+                }
+                this.flybyProgress = totalLen > 0 ? currentLen / totalLen : 0.5;
+            }
         } else {
             Logger.warn("LocalSpaceScene: Failed to generate valid intro path.");
             this.introActive = false;
@@ -668,11 +705,9 @@ export class LocalSpaceScene extends Scene {
 
             // Transition condition
             if (finished && !this.isComplete) {
-                // Do NOT set introActive = false here. 
-                // We want to keep the logarithmic view active until the scene unloads
-                // to prevent the camera snapping to the linear "gameplay" view during the transition.
-                Logger.message("LocalSpaceScene: Intro complete. Calling this.complete().");
-                this.complete();
+                Logger.message("LocalSpaceScene: Intro complete. Enabling controls.");
+                this.introActive = false;
+                this.shouldUpdateControls = true;
             }
         } else if (this.homeWorldObj && !this.introActive) {
             // Gameplay Mode: Do NOT lock virtualCameraPosition to homeworld every frame.
@@ -964,8 +999,20 @@ export class LocalSpaceScene extends Scene {
         }
 
         // Calculate progress based on speed and distance
-        const speed = this.introConfig?.speed || this.cameraSpeed || 5000;
-        const dist = speed * dt;
+        let currentSpeed = this.introConfig?.speed || this.cameraSpeed || 5000;
+
+        // Cinematic Slowdown near flyby object
+        if (this.flybyObj && this.flybyObj.realPosition) {
+            const distToFlyby = this.virtualCameraPosition.distanceTo(this.flybyObj.realPosition);
+            const approachRadius = (this.flybyObj.baseRadius || 100) * 15.0; // Start slowing down well in advance
+            if (distToFlyby < approachRadius) {
+                // Slow down to 10% speed at closest approach, ramping back up as we leave
+                const factor = 0.1 + 0.9 * (distToFlyby / approachRadius);
+                currentSpeed *= factor;
+            }
+        }
+
+        const dist = currentSpeed * dt;
         const progressDelta = dist / this.introPathLength;
 
         this.introProgress += progressDelta;
@@ -987,7 +1034,9 @@ export class LocalSpaceScene extends Scene {
         if (this.flybyObj) {
             // Assuming 3 points: Start(0), Flyby(0.5), Home(1)
             // Switch focus after passing the flyby point
-            this.introPhase = ease < 0.55 ? 0 : 1; // 0.55 to give a bit of time after passing
+            // Switch focus EXACTLY when we pass the flyby point to avoid "flying backwards" look
+            const switchPoint = (this.flybyProgress || 0.5); 
+            this.introPhase = ease < switchPoint ? 0 : 1; 
         } else {
             this.introPhase = 1; // Direct approach
         }
