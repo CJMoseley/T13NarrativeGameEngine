@@ -822,14 +822,6 @@ export const generateHeavyCarrier = (context) => {
     const podW = 6 * unit;
     const podH = 5 * unit;
     const podZ = 0; // Center Z
-    
-    // Pylons
-    const pylonW = 14 * unit;
-    const pylonD = 12 * unit;
-    const pylonH = 4 * unit;
-    
-    attachComponent('pylon_L', [-13 * unit, 0, podZ], [0, 0, 0], 'box', 
-        { width: pylonW, height: pylonH, depth: pylonD }, 'REFLECTIVE');
 
     // Construct Pods (Hollow Box / Tube open at ends)
     // Move below body: Body is ~15 high (7.5 half). Move pods down to Y = -10 * unit.
@@ -854,16 +846,18 @@ export const generateHeavyCarrier = (context) => {
     const pylonMidX = rPodX / 2;
     const pylonMidY = podY / 2;
     const pylonLen = Math.sqrt(rPodX*rPodX + podY*podY);
+    const pylonH = 4 * unit;
+    const pylonD = 12 * unit;
     const pylonAngle = Math.atan2(podY, rPodX); // Negative angle
     
-    // Replace previous pylon with angled one
-    // Remove previous pylon calls above and use this:
-    // Note: We need to clear the previous pylon components or just overwrite the logic. 
-    // Since I'm editing the file, I'll just replace the pylon block in the diff.
-    
-    // (The diff above replaces the pylon_L/R block with the new angled pylon logic)
-    attachComponent('pylon', [pylonMidX, pylonMidY, podZ], [0, 0, -pylonAngle], 'box', 
-        { width: pylonLen, height: pylonH * 0.5, depth: pylonD }, 'REFLECTIVE');
+    // Explicitly place Right and Left pylons to ensure correct downward angle
+    // Right Pylon (Angled Down-Right)
+    attachComponent('pylon_R', [pylonMidX, pylonMidY, podZ], [0, 0, pylonAngle], 'box', 
+        { width: pylonLen, height: pylonH * 0.5, depth: pylonD }, 'NONE');
+
+    // Left Pylon (Angled Down-Left) - Mirror position and rotation
+    attachComponent('pylon_L', [-pylonMidX, pylonMidY, podZ], [0, 0, Math.PI - pylonAngle], 'box', 
+        { width: pylonLen, height: pylonH * 0.5, depth: pylonD }, 'NONE');
 };
 
 export const generateScavenger = (context) => {

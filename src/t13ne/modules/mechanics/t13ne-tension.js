@@ -1,5 +1,6 @@
 import Logger from '../../core/Logger.js';
 import { EventBus } from '../../core/EventBus.js';
+import CodexLoader from '../codex/CodexLoader.js';
 
 class T13NE_Tension {
     constructor() {

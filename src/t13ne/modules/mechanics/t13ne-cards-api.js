@@ -1,4 +1,4 @@
-﻿/**
+﻿﻿/**
  * @module Plugins/T13Ne/CardsAPI
  * @description
  * This module provides an API for working with decks of cards, drawing spreads, and interpreting them.
@@ -353,6 +353,36 @@ class T13NECardsAPI {
     }
 
     /**
+     * Discards all cards in a specific spread and removes the spread from active tracking.
+     * @param {string} spreadId - The ID of the spread to discard.
+     */
+    discardSpread(spreadId) {
+        const idx = this.activeSpreads.findIndex(s => s.id === spreadId);
+        if (idx !== -1) {
+            const spread = this.activeSpreads[idx];
+            const cardsToDiscard = spread.cards.map(sc => sc.card);
+            this.discard(cardsToDiscard);
+            this.activeSpreads.splice(idx, 1);
+            this.persistToGame();
+        }
+    }
+
+    /**
+     * Discards all cards in a specific spread and removes the spread from active tracking.
+     * @param {string} spreadId - The ID of the spread to discard.
+     */
+    discardSpread(spreadId) {
+        const idx = this.activeSpreads.findIndex(s => s.id === spreadId);
+        if (idx !== -1) {
+            const spread = this.activeSpreads[idx];
+            const cardsToDiscard = spread.cards.map(sc => sc.card);
+            this.discard(cardsToDiscard);
+            this.activeSpreads.splice(idx, 1);
+            this.persistToGame();
+        }
+    }
+
+    /**
      * Adds a custom deck of cards to the master deck.
      * @param {string} deckId - Unique identifier for this source deck.
      * @param {Array<Object>} cardIdentifiers - Array of card identifiers, e.g., [{ suit: '1', card: 'Ace' }].
@@ -433,9 +463,8 @@ class T13NECardsAPI {
             drawingDeck.reset(shufflePatterns || ['fisherYates']);
         }
 
-        if (drawingDeck.currentDeck.length < (numCards || 1)) {
-            drawingDeck.reset(shufflePatterns || ['fisherYates']); // Reset if not enough cards
-        }
+        // Removed explicit reset here. The Deck.draw() method handles reshuffling the discard pile
+        // into the deck if it runs out of cards. Resetting here was clearing the discard pile.
         const drawnCards = drawingDeck.draw(numCards);
         Logger.message(`T13NECardsAPI: Drawn ${drawnCards.length} cards for spread "${spreadId}"${seed ? ` (Seeded: ${seed})` : ''}.`);
 

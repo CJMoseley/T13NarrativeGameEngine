@@ -81,8 +81,8 @@
         },
         "system_actions": {
             "DEBUG_TOGGLE": {
-               "key": "f3",
-               "alt_key": "f",
+               "key": "@",
+               "alt_key": "£",
                "label": "Toggle Debug Overlays"
             }
         }

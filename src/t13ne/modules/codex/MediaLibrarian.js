@@ -26,16 +26,32 @@ export class MediaLibrarian {
     }
 
     /**
-     * Finds models by category and optional tags.
+     * Finds models by category and optional tags/metadata.
      * @param {string} category - e.g., 'ship', 'plant', 'weapon'
-     * @param {Array<string>} tags - Optional tags to filter by
+     * @param {object} options - Filter options
+     * @param {Array<string>} options.tags - Specific tags to match
+     * @param {string} options.era - T13 Era to match
+     * @param {string} options.genre - T13 Genre to match
      * @returns {Array<object>} List of matching models
      */
-    findModels(category, tags = []) {
+    findModels(category, options = {}) {
+        const tags = Array.isArray(options) ? options : (options.tags || []);
+        const era = options.era;
+        const genre = options.genre;
+
         return this.manifest.models.filter(m => {
             const catMatch = !category || m.category === category;
-            const tagMatch = tags.length === 0 || tags.every(t => m.path.includes(t) || m.name.includes(t));
-            return catMatch && tagMatch;
+            const eraMatch = !era || m.era === era || m.era === 'timeless';
+            const genreMatch = !genre || m.genre === genre || m.genre === 'core';
+            
+            const itemTags = m.tags || [];
+            const tagMatch = tags.length === 0 || tags.every(t => 
+                itemTags.includes(t) || 
+                m.path.toLowerCase().includes(t.toLowerCase()) || 
+                m.name.toLowerCase().includes(t.toLowerCase())
+            );
+            
+            return catMatch && eraMatch && genreMatch && tagMatch;
         });
     }
 
@@ -43,14 +59,15 @@ export class MediaLibrarian {
      * Gets a random model from a category.
      * @param {string} category
      * @param {Function} random - PRNG function (should be a seeded procedural random)
+     * @param {object} options - Filter options
      * @returns {object|null}
      */
-    getRandomModel(category, random) {
+    getRandomModel(category, random, options = {}) {
         if (!random) {
             console.warn('MediaLibrarian: getRandomModel called without a procedural random function.');
             return null;
         }
-        const models = this.findModels(category);
+        const models = this.findModels(category, options);
         if (models.length === 0) return null;
         return models[Math.floor(random() * models.length)];
     }

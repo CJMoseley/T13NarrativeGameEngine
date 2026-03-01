@@ -468,6 +468,7 @@ export class GreebleGenerator {
         // Reset tracking arrays
         this.occupiedZones = [];
         this.avoidanceZones = [];
+        const loadingPromises = [];
 
         // Identify Cockpits for avoidance
         components.forEach(c => {
@@ -562,8 +563,8 @@ export class GreebleGenerator {
                     radiusDim = Math.max((comp.dims.width||1)*scale.x, (comp.dims.height||1)*scale.y) * 0.5;
                 }
 
-                const rivetPitch = 0.5; // Spacing between rivets
-                const panelSpacing = 5.0; // Spacing between structural seams
+                const rivetPitch = 0.4; // Dense spacing for seams
+                const panelSpacing = 10.0; // Wide spacing for panels
                 
                 // A. Ring Seams (Radial)
                 const numRings = Math.floor(lengthDim / panelSpacing);
@@ -1204,7 +1205,7 @@ export class GreebleGenerator {
                     if (models.length > 0) {
                         const model = models[Math.floor(random() * models.length)];
                         greebleObj = new THREE.Group(); // Placeholder
-                        this.createModelGreeble(model.path).then(m => greebleObj.add(m));
+                        loadingPromises.push(this.createModelGreeble(model.path).then(m => greebleObj.add(m)));
                     }
                 }
 
@@ -1227,6 +1228,7 @@ export class GreebleGenerator {
             }
         });
 
+        greebleGroup.userData.loadingPromise = Promise.all(loadingPromises);
         return greebleGroup;
     }
 

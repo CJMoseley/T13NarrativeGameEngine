@@ -205,10 +205,14 @@ export class ShipGenerator {
         // or if the config explicitly requests legacy mode.
         const legacyTypes = ['HORSESHOE', 'BLOB', 'Y_FORK', 'TREE', 'MAZE', 'BIO_CLUSTER', 'MONOLITH', 'FRACTAL', 'HEAVY_CARRIER', 'LIBERATOR', 'BIO_BIRD', 'BIO_FISH', 'BIO_INSECT', 'BIO_CEPHALOPOD', 'SCAVENGER'];
         
-        let useSynthesizer = true;
-        if (config.hullType && legacyTypes.includes(config.hullType)) {
+        // Default to Legacy generation (Synthesizer disabled by default as per user request)
+        let useSynthesizer = false;
+        
+        if (config.useSynthesizer) { // Allow forcing it
+            useSynthesizer = true;
+        } else if (config.legacy || (config.hullType && legacyTypes.includes(config.hullType))) {
             useSynthesizer = false;
-        } else if (config.legacy) {
+        } else if (random() < 0.25) { // 25% chance to use the synthesizer for variety
             useSynthesizer = false;
         }
 

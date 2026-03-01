@@ -15,7 +15,8 @@ export const SOCKET_TYPES = {
     WEAPON_MOUNT: 'weapon_mount',
     ENGINE_MOUNT: 'engine_mount',
     RING_HUB: 'ring_hub',
-    WING_MOUNT: 'wing_mount'
+    WING_MOUNT: 'wing_mount',
+    THRUSTER_MOUNT: 'thruster_mount'
 };
 
 // Helper to define a socket
@@ -118,13 +119,14 @@ export const SHIP_PARTS = {
         rot: [Math.PI/2, 0, 0], // Lay flat
         usage: 'hull_secondary',
         sockets: [
-            socket('neck', SOCKET_TYPES.NECK_TOP, 0, 2.5, 4), // Forward top
+            socket('neck', SOCKET_TYPES.NECK_TOP, 0, 4, -2.5, -Math.PI/2, 0, 0), // Forward top, corrected for 90deg hull rot
             socket('pylon_port', SOCKET_TYPES.PYLON_MOUNT, 2.0, 0, -2, 0, 0, -0.2), // Angled up slightly
             socket('pylon_starboard', SOCKET_TYPES.PYLON_MOUNT, -2.0, 0, -2, 0, 0, 0.2),
             socket('wing_port', SOCKET_TYPES.WING_MOUNT, 2.2, 0, 1, 0, 0, 0),
             socket('wing_starboard', SOCKET_TYPES.WING_MOUNT, -2.2, 0, 1, 0, 0, 0, true), // Mirror
             socket('deflector', SOCKET_TYPES.FUSELAGE_FRONT, 0, 0, 6),
-            socket('shuttlebay', SOCKET_TYPES.FUSELAGE_AFT, 0, 1, -6)
+            socket('shuttlebay', SOCKET_TYPES.FUSELAGE_AFT, 0, 1, -6),
+            socket('main_thruster', SOCKET_TYPES.THRUSTER_MOUNT, 0, -1.5, -6)
         ],
         tags: ['union', 'standard']
     },
@@ -142,6 +144,20 @@ export const SHIP_PARTS = {
             socket('engine', SOCKET_TYPES.ENGINE_MOUNT, 0, 0, -8)
         ],
         tags: ['industrial', 'freighter']
+    },
+    'hull_section_engineering': {
+        id: 'hull_section_engineering',
+        type: 'cylinder',
+        dims: { radiusTop: 3, radiusBottom: 2.8, height: 10, radialSegments: 16 },
+        rot: [Math.PI/2, 0, 0],
+        usage: 'hull_secondary',
+        sockets: [
+            socket('pylon_port', SOCKET_TYPES.PYLON_MOUNT, 2.8, 0, 0),
+            socket('pylon_starboard', SOCKET_TYPES.PYLON_MOUNT, -2.8, 0, 0, 0, 0, 0, true),
+            socket('main_thruster', SOCKET_TYPES.THRUSTER_MOUNT, 0, 0, -5),
+            socket('forward_connect', SOCKET_TYPES.FUSELAGE_FRONT, 0, 0, 5)
+        ],
+        tags: ['union', 'engineering']
     },
 
     // --- NECKS ---
@@ -178,7 +194,8 @@ export const SHIP_PARTS = {
         usage: 'warp_nacelle',
         sockets: [
             socket('pylon', SOCKET_TYPES.PYLON_MOUNT, 0, -1.2, 0),
-            socket('bussard', SOCKET_TYPES.FORWARD, 0, 0, 7)
+            socket('bussard', SOCKET_TYPES.FUSELAGE_FRONT, 0, 0, 7),
+            socket('exhaust', SOCKET_TYPES.THRUSTER_MOUNT, 0, 0, -7)
         ],
         tags: ['union', 'standard']
     },
@@ -188,7 +205,8 @@ export const SHIP_PARTS = {
         dims: { width: 1.5, height: 2, depth: 12 },
         usage: 'warp_nacelle',
         sockets: [
-            socket('pylon', SOCKET_TYPES.PYLON_MOUNT, -0.75, 0, 0) // Side mount
+            socket('pylon', SOCKET_TYPES.PYLON_MOUNT, -0.75, 0, 0), // Side mount
+            socket('exhaust', SOCKET_TYPES.THRUSTER_MOUNT, 0, 0, -6)
         ],
         tags: ['industrial', 'boxy']
     },
@@ -216,6 +234,18 @@ export const SHIP_PARTS = {
             socket('tip', SOCKET_TYPES.NACELLE_MOUNT, 2.5, 1.5, 0)
         ],
         tags: ['union']
+    },
+    'pylon_battlestar': {
+        id: 'pylon_battlestar',
+        type: 'box',
+        dims: { width: 5, height: 1.2, depth: 3 },
+        rot: [0, 0, -Math.PI/6], // 30 deg down
+        usage: 'pylon',
+        sockets: [
+            socket('root', SOCKET_TYPES.PYLON_MOUNT, -2.5, 0, 0),
+            socket('tip', SOCKET_TYPES.NACELLE_MOUNT, 2.5, 0, 0)
+        ],
+        tags: ['military', 'battlestar']
     },
 
     // --- WINGS ---
@@ -276,6 +306,14 @@ export const SHIP_PARTS = {
         sockets: [],
         tags: ['industrial']
     },
+    'bridge_cockpit': {
+        id: 'bridge_cockpit',
+        type: 'box',
+        dims: { width: 1.5, height: 1.0, depth: 2.5 },
+        usage: 'cockpit',
+        sockets: [],
+        tags: ['fighter', 'small']
+    },
 
     // --- EXOTIC ---
     'ring_habitat': {
@@ -291,5 +329,30 @@ export const SHIP_PARTS = {
             socket('spoke_4', SOCKET_TYPES.RING_SPOKE, 0, 0, -10)
         ],
         tags: ['station', 'alien_logic']
+    },
+
+    // --- SYSTEMS ---
+    'deflector_dish': {
+        id: 'deflector_dish',
+        type: 'cylinder',
+        dims: { radiusTop: 1.5, radiusBottom: 0.5, height: 0.5 },
+        rot: [Math.PI/2, 0, 0], // Face forward
+        usage: 'deflector',
+        tags: ['standard']
+    },
+    'engine_thruster': {
+        id: 'engine_thruster',
+        type: 'cone',
+        dims: { radius: 1.0, height: 2.0 },
+        rot: [-Math.PI/2, 0, 0], // Point back
+        usage: 'thruster',
+        tags: ['standard']
+    },
+    'cargo_pod': {
+        id: 'cargo_pod',
+        type: 'box',
+        dims: { width: 2.5, height: 2.5, depth: 4.0 },
+        usage: 'cargo',
+        tags: ['industrial']
     }
 };
