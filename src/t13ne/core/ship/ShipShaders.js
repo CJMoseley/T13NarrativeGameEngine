@@ -133,7 +133,7 @@ export const industrialLiveryShader = {
         {
             time: { value: 0 },
             opacity: { value: 1.0 },
-            baseColor: { value: new THREE.Color(0x667788) }, // Blue-ish grey
+            baseColor: { value: new THREE.Color(0x555555) }, // Mid-Grey
             noiseSeed: { value: 0 },
             scale: { value: 1.0 }
         }
@@ -160,11 +160,35 @@ export const industrialLiveryShader = {
     fragmentShader: `
         #include <common>
         #include <lights_pars_begin>
+        varying vec3 vPos;
         varying vec3 vNormal;
         varying vec3 vWorldPosition;
         varying vec3 vColor;
         uniform vec3 baseColor;
         uniform float opacity;
+        uniform float noiseSeed;
+
+        // Hash function for noise
+        float hash(vec3 p) {
+            p = fract(p * 0.3183099 + .1);
+            p *= 17.0;
+            return fract(p.x * p.y * p.z * (p.x + p.y + p.z));
+        }
+
+        vec3 rgb2hsv(vec3 c) {
+            vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
+            vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));
+            vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));
+            float d = q.x - min(q.w, q.y);
+            float e = 1.0e-10;
+            return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
+        }
+
+        vec3 hsv2rgb(vec3 c) {
+            vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+            vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
+            return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+        }
 
         void main() {
             vec3 normal = normalize(vNormal);
@@ -176,24 +200,47 @@ export const industrialLiveryShader = {
 
             float NdotL = max(dot(normal, lightDir), 0.0);
             
-            // Apply Vertex Color Modifiers (R=Sat, G=Val)
+            // --- Panel Generation ---
+            float panelScale = 0.5; 
+            vec3 p = vPos * panelScale;
+            
+            // Irregular grid logic
+            vec3 id1 = floor(p);
+            float n1 = hash(id1 + noiseSeed);
+            
+            // Offset sub-grid
+            vec3 id2 = floor(p * 2.0 + n1); 
+            float n2 = hash(id2 + noiseSeed * 1.5);
+            
+            float n = mix(n1, n2, 0.5); // Combined noise 0..1
+            
+            // --- Color Modulation ---
             vec3 col = baseColor;
+            vec3 hsv = rgb2hsv(col);
             
-            // Simple Saturation
-            float luminance = dot(col, vec3(0.299, 0.587, 0.114));
-            col = mix(vec3(luminance), col, vColor.r);
+            // Slight Hue shift
+            hsv.x += (n - 0.5) * 0.05; 
             
-            // Value
-            col *= vColor.g;
+            // Desaturate slightly based on noise
+            hsv.y *= 0.8 + (n * 0.2); 
+            
+            // Value variation (Mid-grey target)
+            float vVar = (n - 0.5) * 0.15; 
+            hsv.z = clamp(hsv.z + vVar, 0.2, 0.6); 
+            
+            col = hsv2rgb(hsv);
+
+            // Apply Vertex Color (Component Tinting)
+            col *= vColor;
 
             // Cell Shading
             float levels = 4.0;
             float diffuse = floor(NdotL * levels + 0.5) / levels;
-            vec3 lighting = vec3(0.4) + vec3(0.6) * diffuse;
+            vec3 lighting = vec3(0.3) + vec3(0.7) * diffuse;
             
             vec3 halfDir = normalize(lightDir + viewDir);
             float NdotH = max(dot(normal, halfDir), 0.0);
-            float spec = pow(NdotH, 32.0) * 0.2;
+            float spec = pow(NdotH, 32.0) * 0.1;
 
             gl_FragColor = vec4(col * lighting + vec3(spec), opacity);
         }

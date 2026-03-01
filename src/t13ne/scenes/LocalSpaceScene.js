@@ -253,7 +253,6 @@ export class LocalSpaceScene extends Scene {
         // 2. Flyby Waypoint
         if (this.flybyObj && this.flybyObj.realPosition) {
             const flybyPos = this.flybyObj.realPosition.clone();
-            const flybyRadius = (this.flybyObj.baseRadius || 100) * (this.flybyObj.type === 'star' ? 40.0 : 4.0);
             const flybyRadius = (this.flybyObj.baseRadius || 100) * (this.flybyObj.type === 'star' ? 40.0 : 2.0);
 
             // Calculate a safe flyby offset: Outward (away from star) and Up
@@ -378,6 +377,11 @@ export class LocalSpaceScene extends Scene {
     }
 
     onUnload() {
+        this.introActive = false;
+        if (this.orreryScene) {
+            this.orreryScene.onUnload();
+            this.orreryScene = null;
+        }
         super.onUnload();
         window.removeEventListener('click', this.onMouseClick);
         if (this.viewManager) this.viewManager.setHUD(null);
@@ -386,11 +390,6 @@ export class LocalSpaceScene extends Scene {
             this.renderer.setViewport(0, 0, window.innerWidth, window.innerHeight);
             this.renderer.setScissor(0, 0, window.innerWidth, window.innerHeight);
             this.renderer.setScissorTest(false);
-        }
-
-        if (this.orreryScene) {
-            this.orreryScene.onUnload();
-            this.orreryScene = null;
         }
     }
 
@@ -848,16 +847,13 @@ export class LocalSpaceScene extends Scene {
         if (this.introActive) {
             // Smoothly look at the subject (the "eye reaction")
             // We use a virtual target that lerps between the flyby and the homeworld
-            if (!this.virtualLookAt) this.virtualLookAt = new THREE.Vector3().copy(CameraSubject);
-            this.virtualLookAt.lerp(CameraSubject, 2.0 * dt);
-            this.activeCamera.lookAt(this.virtualLookAt);
             // Use Quaternion Slerp for smooth rotation instead of vector lerp to avoid snapping
             const targetRotation = new THREE.Quaternion();
             const m = new THREE.Matrix4();
             m.lookAt(new THREE.Vector3(0, 0, 0), CameraSubject, this.activeCamera.up);
             targetRotation.setFromRotationMatrix(m);
 
-            this.activeCamera.quaternion.slerp(targetRotation, 2.0 * dt);
+            this.activeCamera.quaternion.slerp(targetRotation, 1.0 * dt);
         } else if (this.lockedTarget && this.lockedTarget.mesh) {
             // Target Lock Logic: Smoothly rotate camera to face the target
             const targetPos = this.lockedTarget.mesh.position;
@@ -1012,11 +1008,8 @@ export class LocalSpaceScene extends Scene {
         // Cinematic Slowdown near flyby object
         if (this.flybyObj && this.flybyObj.realPosition) {
             const distToFlyby = this.virtualCameraPosition.distanceTo(this.flybyObj.realPosition);
-            const approachRadius = (this.flybyObj.baseRadius || 100) * 15.0; // Start slowing down well in advance
             const approachRadius = (this.flybyObj.baseRadius || 100) * 20.0; // Start slowing down well in advance
             if (distToFlyby < approachRadius) {
-                // Slow down to 10% speed at closest approach, ramping back up as we leave
-                const factor = 0.1 + 0.9 * (distToFlyby / approachRadius);
                 // Slow down to 5% speed at closest approach, ramping back up as we leave
                 const factor = 0.05 + 0.95 * (distToFlyby / approachRadius);
                 currentSpeed *= factor;
@@ -1045,8 +1038,9 @@ export class LocalSpaceScene extends Scene {
         if (this.flybyObj) {
             // Assuming 3 points: Start(0), Flyby(0.5), Home(1)
             // Switch focus after passing the flyby point
-            // Switch focus EXACTLY when we pass the flyby point to avoid "flying backwards" look
-            const switchPoint = (this.flybyProgress || 0.5); 
+            // Switch focus earlier (approx 10% of path before flyby) to start rotating towards destination
+            // This prevents the camera from tracking the flyby object as it passes alongside/behind
+            const switchPoint = (this.flybyProgress || 0.5) - 0.1;
             this.introPhase = ease < switchPoint ? 0 : 1; 
         } else {
             this.introPhase = 1; // Direct approach

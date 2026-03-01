@@ -235,6 +235,8 @@ export class ShipAssembler {
         const shipGroup = new THREE.Group();
         const scene = targetScene || this.gameEngine.physicsEngine.scene;
         const effectiveStyle = components.styleConfig || styleConfig || { method: 'INDUSTRIAL', padding: 0.1 };
+        // The showcase scene passes itself as targetScene.
+        const isShowcase = targetScene !== null;
 
         // 1. Generate individual component meshes (proxies) and Wires
         const componentMeshes = [];
@@ -420,9 +422,6 @@ export class ShipAssembler {
             // This is the definitive fix for Z-fighting on hard-surface models.
             console.log(`ShipAssembler: Using unified CSG method for '${effectiveStyle.method}' style.`);
             
-            // The showcase scene passes itself as targetScene.
-            const isShowcase = targetScene !== null;
-
             if (this.gameEngine.shipFactory?.useWorker) {
                 const workerComponents = [];
                 for (const comp of components) {
