@@ -644,6 +644,10 @@ export class ShipAssembler {
             try {
                 Logger.start('ShipAssembler.greebleGenerator.generate');
                 const greebles = this.greebleGenerator.generate(hullMesh, shipComponents, effectiveStyle, components.symmetryType, components.radialAxis, components.radialCount, components.hullType, components.seed);
+                // Wait for any async greeble models to load before adding to group/LODs
+                if (greebles.userData.loadingPromise) {
+                    await greebles.userData.loadingPromise;
+                }
                 shipGroup.add(greebles);
 
                 // Apply Decals
@@ -815,7 +819,6 @@ export class ShipAssembler {
             }
         }
 
-        return shipGroup;
         // --- LOD GENERATION ---
         const lod = new THREE.LOD();
         
@@ -831,7 +834,7 @@ export class ShipAssembler {
             
             if (lod0Hull) {
                 try {
-                    // Perform extra carving for interiors
+                    // Perform extra carving for interiors on the solid CSG Hull
                     let hullCSG = CSG.fromMesh(lod0Hull);
                     for (const space of interior) {
                         const spaceMesh = this.componentFactory.createProxy(space.type, space.dims);
@@ -891,6 +894,10 @@ export class ShipAssembler {
         const geometries = [];
         group.updateMatrixWorld(true);
         group.traverse(child => {
+            // Exclude decals (they don't bake well) and wires
+            if (child.parent && child.parent.name === 'decals') return;
+            if (child.userData.isWire) return;
+
             if (child.isMesh && child.geometry && child.visible) {
                 const geom = child.geometry.clone();
                 geom.applyMatrix4(child.matrixWorld);

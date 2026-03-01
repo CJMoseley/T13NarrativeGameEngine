@@ -254,6 +254,7 @@ export class LocalSpaceScene extends Scene {
         if (this.flybyObj && this.flybyObj.realPosition) {
             const flybyPos = this.flybyObj.realPosition.clone();
             const flybyRadius = (this.flybyObj.baseRadius || 100) * (this.flybyObj.type === 'star' ? 40.0 : 4.0);
+            const flybyRadius = (this.flybyObj.baseRadius || 100) * (this.flybyObj.type === 'star' ? 40.0 : 2.0);
 
             // Calculate a safe flyby offset: Outward (away from star) and Up
             // This prevents the "side" calculation from accidentally pointing into the path or the star
@@ -850,6 +851,13 @@ export class LocalSpaceScene extends Scene {
             if (!this.virtualLookAt) this.virtualLookAt = new THREE.Vector3().copy(CameraSubject);
             this.virtualLookAt.lerp(CameraSubject, 2.0 * dt);
             this.activeCamera.lookAt(this.virtualLookAt);
+            // Use Quaternion Slerp for smooth rotation instead of vector lerp to avoid snapping
+            const targetRotation = new THREE.Quaternion();
+            const m = new THREE.Matrix4();
+            m.lookAt(new THREE.Vector3(0, 0, 0), CameraSubject, this.activeCamera.up);
+            targetRotation.setFromRotationMatrix(m);
+
+            this.activeCamera.quaternion.slerp(targetRotation, 2.0 * dt);
         } else if (this.lockedTarget && this.lockedTarget.mesh) {
             // Target Lock Logic: Smoothly rotate camera to face the target
             const targetPos = this.lockedTarget.mesh.position;
@@ -1005,9 +1013,12 @@ export class LocalSpaceScene extends Scene {
         if (this.flybyObj && this.flybyObj.realPosition) {
             const distToFlyby = this.virtualCameraPosition.distanceTo(this.flybyObj.realPosition);
             const approachRadius = (this.flybyObj.baseRadius || 100) * 15.0; // Start slowing down well in advance
+            const approachRadius = (this.flybyObj.baseRadius || 100) * 20.0; // Start slowing down well in advance
             if (distToFlyby < approachRadius) {
                 // Slow down to 10% speed at closest approach, ramping back up as we leave
                 const factor = 0.1 + 0.9 * (distToFlyby / approachRadius);
+                // Slow down to 5% speed at closest approach, ramping back up as we leave
+                const factor = 0.05 + 0.95 * (distToFlyby / approachRadius);
                 currentSpeed *= factor;
             }
         }

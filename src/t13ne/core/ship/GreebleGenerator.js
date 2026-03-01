@@ -468,6 +468,7 @@ export class GreebleGenerator {
         // Reset tracking arrays
         this.occupiedZones = [];
         this.avoidanceZones = [];
+        const loadingPromises = [];
 
         // Identify Cockpits for avoidance
         components.forEach(c => {
@@ -1204,7 +1205,7 @@ export class GreebleGenerator {
                     if (models.length > 0) {
                         const model = models[Math.floor(random() * models.length)];
                         greebleObj = new THREE.Group(); // Placeholder
-                        this.createModelGreeble(model.path).then(m => greebleObj.add(m));
+                        loadingPromises.push(this.createModelGreeble(model.path).then(m => greebleObj.add(m)));
                     }
                 }
 
@@ -1227,6 +1228,7 @@ export class GreebleGenerator {
             }
         });
 
+        greebleGroup.userData.loadingPromise = Promise.all(loadingPromises);
         return greebleGroup;
     }
 
