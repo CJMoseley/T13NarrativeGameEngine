@@ -14,6 +14,7 @@ import T13NE_StateMachine from '../systems/t13ne-state-machine.js';
 import T13LoreManager from "./t13ne-lore.js"; // Import Lore Manager
 import PRNG from "../systems/t13ne-prng.js";
 import ProcGen from "../../procgen/ProcGen.js";
+import WasmManager from "../../wasm/WasmManager.js";
 
 
 import { SuperKnot } from "../mechanics/t13ne-knots.js";
@@ -98,6 +99,16 @@ class T13Plot extends SuperKnot {
 
         // Automatically save on creation
         this.save();
+
+        // HARDENING: Register with WASM Core if available
+        if (WasmManager.initialized && WasmManager.core) {
+            try {
+                this._hardened = new WasmManager.core.HardenedPlot(this.serialize());
+                console.log(`T13Plot: Hardened instance created for "${this.Name}"`);
+            } catch (e) {
+                Logger.warn(`T13Plot: Failed to create hardened WASM instance for "${this.Name}".`, e);
+            }
+        }
     }
 
     /**

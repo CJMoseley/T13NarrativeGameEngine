@@ -2,6 +2,7 @@
 import T13Name from "../characters/t13ne-names.js";
 import PRNG from "./t13ne-prng.js";
 import ProcGen from "../../procgen/ProcGen.js";
+import WasmManager from "../../wasm/WasmManager.js";
 
 /**
  * Represents a T13 Game instance.
@@ -9,7 +10,7 @@ import ProcGen from "../../procgen/ProcGen.js";
  */
 export class T13Game {
     constructor(data = {}) {
-        this.id = data.id || `game-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+        this.id = data.id || `game-${Date.now()}-${Math.floor(PRNG.nextDouble() * 1000)}`;
 
         const t13n = new T13Name(data.Name || data.name || 'New Game');
         this.name = t13n.common;
@@ -41,6 +42,16 @@ export class T13Game {
             spreads: [], // { id, spreadId, cards: [] }
             pools: {} // poolId -> []
         };
+
+        // HARDENING: Register with WASM Core if available
+        if (WasmManager.initialized && WasmManager.core) {
+            try {
+                this._hardened = new WasmManager.core.HardenedGame(this.serialize());
+                console.log(`T13Game: Hardened instance created for "${this.name}"`);
+            } catch (e) {
+                Logger.warn("T13Game: Failed to create hardened WASM instance.", e);
+            }
+        }
     }
 
     addPlot(plotId) {

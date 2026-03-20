@@ -3,6 +3,7 @@ import Logger from "../../../core/Logger.js";
 import T13NECardsAPI from "../../mechanics/t13ne-cards-api.js";
 import T13NE_Stakes from "./t13ne-stakes.js";
 import T13NE_NarrativeTricks from "./t13ne-narrative-tricks.js";
+import PRNG from "../t13ne-prng.js";
 
 /**
  * @class OrdealStage
@@ -60,7 +61,7 @@ export class OrdealStage {
         const numObstacles = Math.max(1, Math.floor(this.difficulty / 15));
 
         for (let i = 0; i < numObstacles; i++) {
-            let obstacleDiff = Math.floor(Math.random() * 10) + 5; // Base 5-14
+            let obstacleDiff = Math.floor(PRNG.nextDouble() * 10) + 5; // Base 5-14
             obstacleDiff = Math.ceil(obstacleDiff * multiplier);
 
             let name = `Obstacle ${i + 1}`;

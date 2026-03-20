@@ -2,6 +2,8 @@
 import workerpool from 'workerpool';
 import { ThemeGenerator } from '/src/t13ne/modules/audio/core/ThemeGenerator.js';
 import { MusicRNG } from '/src/t13ne/modules/audio/core/MusicUtils.js';
+import WasmManager from '/src/t13ne/wasm/WasmManager.js';
+import PRNG from '/src/t13ne/modules/systems/t13ne-prng.js';
 
 let themeGenerator = null;
 let initPromise = null;
@@ -56,6 +58,9 @@ const mockMusicModule = {
 async function init(data) {
     initPromise = (async () => {
         const { codexData, geometryData, manifest, performanceMode } = data;
+
+        await WasmManager.initialize();
+        await PRNG.ready();
 
         for (const [key, val] of Object.entries(codexData || {})) {
             const parts = key.split(':');

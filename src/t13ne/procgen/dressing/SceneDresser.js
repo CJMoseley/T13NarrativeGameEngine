@@ -120,7 +120,7 @@ export class SceneDresser {
         if (models.length === 0) return;
 
         const prng = this.t13ne.getModule('PRNG');
-        const random = () => prng ? prng.nextDouble() : Math.random();
+        const random = () => prng ? prng.nextDouble() : 0.5;
 
         for (let i = 0; i < count; i++) {
             const model = models[Math.floor(random() * models.length)];
@@ -148,7 +148,7 @@ export class SceneDresser {
         if (!librarian) return null;
 
         const prng = this.t13ne.getModule('PRNG');
-        const random = () => prng ? prng.nextDouble() : Math.random();
+        const random = () => prng ? prng.nextDouble() : 0.5;
 
         if (options.specificName) {
             const exact = librarian.findModels(category, { tags: [options.specificName], era: options.era, genre: options.genre });
@@ -175,9 +175,9 @@ export class SceneDresser {
         const prng = this.t13ne.getModule('PRNG');
         const spread = 50;
         return {
-            x: (prng ? (prng.nextDouble() - 0.5) : (Math.random() - 0.5)) * spread,
+            x: (prng ? (prng.nextDouble() - 0.5) : 0) * spread,
             y: 0,
-            z: (prng ? (prng.nextDouble() - 0.5) : (Math.random() - 0.5)) * spread
+            z: (prng ? (prng.nextDouble() - 0.5) : 0) * spread
         };
     }
 

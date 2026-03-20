@@ -1,17 +1,20 @@
 // t13neworkers.js
 import workerpool from 'workerpool';
 import PRNG from '../systems/t13ne-prng.js';
+import WasmManager from '../wasm/WasmManager.js';
 import { Deck } from '../mechanics/t13ne-cards.js';
 import CodexLoader from '../codex/CodexLoader.js';
 
 let aiConfig = null;
 
 /**
- * Initializes the AI configuration for the worker.
+ * Initializes the AI configuration and WASM for the worker.
  */
-function INITIALIZE_AI({ config }) {
+async function INITIALIZE_AI({ config }) {
     aiConfig = config;
-    return 'AI Initialized';
+    await WasmManager.initialize();
+    await PRNG.ready();
+    return 'AI and WASM Initialized';
 }
 
 /**
