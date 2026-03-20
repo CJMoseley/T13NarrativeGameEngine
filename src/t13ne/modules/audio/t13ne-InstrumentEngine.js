@@ -307,6 +307,7 @@ export class InstrumentEngine {
             // Pre-warm the worklet pool for performance
             for (let i = 0; i < this.MAX_WORKLET_VOICES; i++) {
                 const node = new AudioWorkletNode(this.ctx, 'additive-processor');
+                node.port.postMessage({ type: 'init-wasm' }); // Signal worklet to load WASM
                 const env = this.ctx.createGain();
                 node.connect(env);
                 env.gain.value = 0;

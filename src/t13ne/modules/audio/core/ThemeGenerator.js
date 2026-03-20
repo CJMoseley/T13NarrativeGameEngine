@@ -3,6 +3,7 @@
 import CodexLoader from "/src/t13ne/modules/codex/CodexLoader.js";
 import { MusicRNG } from "/src/t13ne/modules/audio/core/MusicUtils.js";
 import { AudioAnalyzer } from "/src/t13ne/modules/audio/t13ne-audio-analyzer.js";
+import WasmManager from "/src/t13ne/wasm/WasmManager.js";
 
 const CHROMATIC_SCALE = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 
@@ -2053,7 +2054,7 @@ export class ThemeGenerator {
         let geo = character.geometry;
         if (!geo && this.geometry) geo = this.geometry.calculateFullGeo(character.name);
         if (!geo) return null;
-        const rng = new MusicRNG(character.name);
+
         const keyNum = geo.GeoHarmonics ? geo.GeoHarmonics.key : geo.GeometryNumber;
         if (!this.geometry) {
             SafeLogger.warn("ThemeGenerator: Geometry module missing, cannot generate composition.");
@@ -2070,6 +2071,62 @@ export class ThemeGenerator {
             cumulativeInterval += step;
             if (cumulativeInterval < 12) allowedScaleIntervals.push(cumulativeInterval);
         }
+
+        // ACCELERATION: Use C++ MarkovComposer if available
+        if (WasmManager.initialized && WasmManager.audio) {
+            try {
+                const composer = new WasmManager.audio.MarkovComposer();
+                const scaleVec = new WasmManager.audio.VectorInt();
+                allowedScaleIntervals.forEach(i => scaleVec.push_back(i));
+
+                const rhythm = this._getSyllableRhythm(character.name);
+                const rhythmVec = new WasmManager.audio.VectorDouble();
+                rhythm.forEach(d => rhythmVec.push_back(d));
+
+                // Deterministic seed from name
+                let seed = 0;
+                for (let i = 0; i < character.name.length; i++) seed = ((seed << 5) - seed) + character.name.charCodeAt(i);
+
+                const wasmComp = composer.generate(character.name, baseFreq, scaleVec, rhythmVec, seed >>> 0);
+
+                // Convert WASM sequence to JS array
+                const sequence = [];
+                for (let i = 0; i < wasmComp.sequence.size(); i++) {
+                    const note = wasmComp.sequence.get(i);
+                    const finalPitchIndex = (rootKeyIndex + note.interval) % 12;
+                    sequence.push({
+                        freq: note.freq,
+                        duration: note.duration,
+                        interval: note.interval,
+                        pitchName: CHROMATIC_SCALE[finalPitchIndex]
+                    });
+                }
+
+                const composition = {
+                    name: wasmComp.name,
+                    key: keyData.Key.Key,
+                    baseFreq: wasmComp.baseFreq,
+                    scale: allowedScaleIntervals,
+                    sequence: sequence,
+                    tempo: 100 + (geo.Facade * 2)
+                };
+
+                // Cleanup WASM objects
+                scaleVec.delete();
+                rhythmVec.delete();
+                composer.delete();
+                // wasmComp is a value object, but its sequence vector might need individual note deletions if they were class instances,
+                // but here sequence is a VectorNote registered with register_vector and Note is a value_object.
+                // Value objects and registered vectors are generally managed by Embind but we should be careful.
+
+                this.compositionCache.set(cacheKey, composition);
+                return composition;
+            } catch (e) {
+                SafeLogger.warn("ThemeGenerator: WASM composition failed, falling back to JS.", e);
+            }
+        }
+
+        const rng = new MusicRNG(character.name);
         let harmonicStepDistribution = {};
         if (useCharacterHarmonics) {
             const harmonics = geo.GeoHarmonics ? geo.GeoHarmonics.Harmonic : [1, 3, 5, 8];
