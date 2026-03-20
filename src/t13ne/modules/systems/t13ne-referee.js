@@ -26,12 +26,14 @@ class T13NE_Referee {
         this.heartbeatInterval = null;
         this.heartbeatRate = 5000; // Default 5 seconds
         this.isProcessing = false;
+        this.vttManager = null;
     }
 
 
     async initialize(t13ne) {
         if (this.initialized) return;
         this.t13ne = t13ne;
+        this.vttManager = t13ne.getVTTManager();
 
         // Initialize Worker Pool
         this.workerPool = new WorkerPool('referee', new URL('./t13neworkers.js', import.meta.url), 1);
@@ -119,6 +121,16 @@ class T13NE_Referee {
     getCharacter(identifier) {
         if (!identifier) return null;
         return this.characters.find(c => c.id === identifier || c.name === identifier || c.Name === identifier) || null;
+    }
+
+    /**
+     * Starts a VTT Ordeal.
+     * @param {Ordeal} ordeal
+     */
+    startVTTOrdeal(ordeal) {
+        if (this.vttManager) {
+            this.vttManager.startOrdeal(ordeal);
+        }
     }
 
     /**

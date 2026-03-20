@@ -60,6 +60,12 @@ class T13NE_Ordeals {
             gameEngine: T13NE // Pass the game engine instance to avoid circular dependency in core
         });
 
+        // Start the VTT for the Ordeal
+        const vttManager = T13NE.getVTTManager();
+        if (vttManager) {
+            vttManager.startOrdeal(ordeal);
+        }
+
         // Start the ordeal process
         ordeal.start();
 
