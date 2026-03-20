@@ -4,6 +4,7 @@
 #include <cmath>
 #include <map>
 #include <algorithm>
+#include "../common/prng_shared.h"
 
 using namespace emscripten;
 
@@ -28,14 +29,7 @@ public:
     MarkovComposer() {}
 
     Composition generate(std::string name, double baseFreq, std::vector<int> scale, std::vector<double> syllableRhythm, uint32_t seed) {
-        uint32_t state = seed;
-        auto nextDouble = [&state]() {
-            state = (state + 0x6D2B79F5) | 0;
-            uint32_t t = state ^ (state >> 15);
-            t = (uint32_t)((uint64_t)t * (1 | state));
-            t = (t + (uint32_t)((uint64_t)(t ^ (t >> 7)) * (61 | t))) | 0;
-            return (uint32_t)(t ^ (t >> 14)) / 4294967296.0;
-        };
+        Mulberry32 rng(seed);
 
         std::vector<std::vector<double>> transitionMatrix = generateMatrix(scale);
         int length = std::max((int)syllableRhythm.size(), 8);
@@ -44,7 +38,7 @@ public:
 
         for (int i = 0; i < length; i++) {
             std::vector<double> probabilities = transitionMatrix[currentIndex];
-            double random = nextDouble();
+            double random = rng.nextDouble();
             double cumulativeProb = 0;
             int nextNoteIndex = 0;
             for (int j = 0; j < probabilities.size(); j++) {
@@ -136,7 +130,4 @@ EMSCRIPTEN_BINDINGS(audio_module) {
     class_<MarkovComposer>("MarkovComposer")
         .constructor<>()
         .function("generate", &MarkovComposer::generate);
-
-    // For direct memory access in AdditiveSynth, we'll expose a wrapper if needed,
-    // but the hot loop is better handled with a simpler C-style function if we want raw speed.
 }
