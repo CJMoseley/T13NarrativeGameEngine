@@ -1,4 +1,5 @@
 import Logger from "../../core/Logger.js";
+import PRNG from "./t13ne-prng.js";
 
 /**
  * SceneDirector
@@ -37,7 +38,7 @@ export class SceneDirector {
             if (typeof instance.prepare !== 'function') {
                 // Wrapper for legacy THREE objects
                 return {
-                    id: def.id || Math.random().toString(36).substring(7),
+                    id: def.id || PRNG.nextDouble().toString(36).substring(7),
                     mesh: instance,
                     prepare: async () => {},
                     onLoad: (scene) => scene.add(instance),

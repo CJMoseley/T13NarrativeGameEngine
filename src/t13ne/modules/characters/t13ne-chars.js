@@ -2,37 +2,19 @@
 import T13NE from '/src/t13ne/T13NE.js';
 import Logger from "/src/t13ne/core/Logger.js";
 import T13SwayAccount from './T13SwayAccount.js';
+import PRNG from '../systems/t13ne-prng.js';
 
 /**
  * Simple Seeded RNG to ensure deterministic character generation from a seed.
+ * Now unified to use the WASM-backed PRNG system.
  */
 class SeededRNG {
     constructor(seed) {
-        // If seed is a string, hash it. If it's a number, use it. If null/undefined, random.
-        if (typeof seed === 'string') {
-            this.seed = this._hashString(seed);
-        } else if (typeof seed === 'number') {
-            this.seed = seed;
-        } else {
-            this.seed = Math.floor(Math.random() * 2147483647);
-        }
-    }
-
-    _hashString(str) {
-        let hash = 0;
-        for (let i = 0; i < str.length; i++) {
-            const char = str.charCodeAt(i);
-            hash = ((hash << 5) - hash) + char;
-            hash |= 0; // Convert to 32bit integer
-        }
-        return hash;
+        this._localPRNG = PRNG.create32(seed);
     }
 
     next() {
-        this.seed = (this.seed * 16807) % 2147483647;
-        // Ensure positive result
-        if (this.seed < 0) this.seed += 2147483647;
-        return (this.seed - 1) / 2147483646;
+        return this._localPRNG.nextDouble();
     }
 
     // Helper to pick from array

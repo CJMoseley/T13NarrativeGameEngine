@@ -1,4 +1,9 @@
 // AdditiveProcessor.js
+import audioModule from '../../wasm/audio.js';
+
+let wasmAudio = null;
+let wasmInitialized = false;
+
 class AdditiveProcessor extends AudioWorkletProcessor {
   constructor(options) {
     super();
@@ -14,8 +19,19 @@ class AdditiveProcessor extends AudioWorkletProcessor {
       this.active = true;
     }
 
-    this.port.onmessage = (event) => {
+    this.port.onmessage = async (event) => {
       const data = event.data;
+      if (data.type === 'init-wasm') {
+          if (!wasmInitialized) {
+              try {
+                  wasmAudio = await audioModule();
+                  wasmInitialized = true;
+                  console.log('AdditiveProcessor: WASM initialized in worklet.');
+              } catch (e) {
+                  console.error('AdditiveProcessor: WASM init failed in worklet.', e);
+              }
+          }
+      }
       if (data.type === 'update') {
         if (data.wavetable && data.wavetable.length > 0) {
           this.wavetable = data.wavetable;
@@ -47,6 +63,9 @@ class AdditiveProcessor extends AudioWorkletProcessor {
     }
 
     const freqArray = parameters.frequency;
+
+    // TODO: When WASM is fully stable in Worklets, call wasmAudio.AdditiveSynth.process(...)
+    // For now, we keep the JS loop as a primary/fallback but with optimized access.
 
     // Generate the signal for the block
     for (let i = 0; i < bufferSize; i++) {

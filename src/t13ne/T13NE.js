@@ -47,6 +47,7 @@ import { ViewManager } from './core/ViewManager.js';
 import { PluginManager } from './core/PluginManager.js';
 import { SoundEngine } from './core/SoundEngine.js';
 import LoaderManager from './core/LoaderManager.js';
+import WasmManager from './wasm/WasmManager.js';
 
 /**
  * T13NE Engine Core
@@ -213,6 +214,7 @@ class T13NE {
         Logger.message("T13NE: Initializing Engine Core...");
 
         // 1. Initialize Core Infrastructure
+        await WasmManager.initialize();
         this.soundEngine = new SoundEngine();
         this.pluginManager = new PluginManager(this);
         this.viewManager = new ViewManager(this); // Pass T13NE as the context
