@@ -8,6 +8,7 @@
 import { Card, Deck } from './t13ne-cards.js';
 import PRNG from '../systems/t13ne-prng.js';
 import dice from './t13ne-dice.js';
+import WasmManager from '../../wasm/WasmManager.js';
 import Logger from '../../core/Logger.js';
 import CodexLoader from '../codex/CodexLoader.js'; // Import CodexLoader
 
@@ -461,6 +462,23 @@ class T13NECardsAPI {
                 drawingDeck.sourceDecks.set(id, data);
             }
             drawingDeck.reset(shufflePatterns || ['fisherYates']);
+        }
+
+        // ACCELERATION: Use WASM for the draw logic if available
+        if (WasmManager.initialized && WasmManager.core && drawingDeck._hardened) {
+            try {
+                const posVec = new WasmManager.core.VectorSpreadPosition();
+                cardPositions.forEach(p => posVec.push_back({ role: p.role, description: p.description || '' }));
+
+                const wasmResult = drawingDeck._hardened.getSpread(spreadId, `instance-${Date.now()}`, numCards, posVec);
+
+                // We'd still need to map WASM card data back to JS Card objects for UI
+                // This highlights the need for a unified asset registry in C++ as well.
+                // For now, we fall back to JS draw to maintain the UI objects.
+                posVec.delete();
+            } catch (e) {
+                Logger.warn("T13NECardsAPI: WASM spread failed, using JS.", e);
+            }
         }
 
         // Removed explicit reset here. The Deck.draw() method handles reshuffling the discard pile

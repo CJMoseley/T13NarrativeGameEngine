@@ -5,15 +5,15 @@ OUT_DIR = src/t13ne/wasm
 
 all: $(OUT_DIR)/prng.js $(OUT_DIR)/core.js $(OUT_DIR)/audio.js
 
-$(OUT_DIR)/prng.js: src/cpp/prng/prng.cpp
+$(OUT_DIR)/prng.js: src/cpp/prng/prng.cpp src/cpp/common/prng_shared.h
 	mkdir -p $(OUT_DIR)
 	$(CC) $(OPT) $(FLAGS) $< -o $@
 
-$(OUT_DIR)/core.js: src/cpp/core/core.cpp
+$(OUT_DIR)/core.js: src/cpp/core/core.cpp src/cpp/core/narrative.cpp src/cpp/core/cards.cpp src/cpp/common/prng_shared.h
 	mkdir -p $(OUT_DIR)
-	$(CC) $(OPT) $(FLAGS) $< -o $@
+	$(CC) $(OPT) $(FLAGS) src/cpp/core/core.cpp src/cpp/core/narrative.cpp src/cpp/core/cards.cpp -o $@
 
-$(OUT_DIR)/audio.js: src/cpp/audio/audio.cpp
+$(OUT_DIR)/audio.js: src/cpp/audio/audio.cpp src/cpp/common/prng_shared.h
 	mkdir -p $(OUT_DIR)
 	$(CC) $(OPT) $(FLAGS) $< -o $@
 

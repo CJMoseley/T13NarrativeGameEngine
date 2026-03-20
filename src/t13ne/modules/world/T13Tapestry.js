@@ -6,6 +6,7 @@ import Logger from "/src/t13ne/core/Logger.js";
 import FacetWeb from '/src/t13ne/modules/systems/t13ne-facet-web.js';
 import T13NE_PRNG from "/src/t13ne/modules/systems/t13ne-prng.js";
 import T13Name from "/src/t13ne/modules/characters/t13ne-names.js";
+import WasmManager from '../../wasm/WasmManager.js';
 
 /**
  * A JavaScript port of the T13Statblock PHP class.
@@ -106,6 +107,20 @@ class T13Tapestry extends FacetWeb {
         // Assign all properties from the statblock object to this instance
         Object.assign(this, statblock);
 
+        // HARDENING: Register with WASM Core if available
+        if (WasmManager.initialized && WasmManager.core) {
+            try {
+                this._hardened = new WasmManager.core.HardenedTapestry(this.Scale || 0);
+                if (this.Stats) {
+                    this.Stats.forEach((s, i) => {
+                        this._hardened.setStat(i, s.Facet, s.Antifacet, s.Facet_Boon, s.Antifacet_Boon);
+                    });
+                }
+            } catch (e) {
+                Logger.warn("T13Tapestry: Failed to create hardened WASM instance.", e);
+            }
+        }
+
         // Default Scale to 13 if not provided
         this.Scale = this.Scale !== undefined ? this.Scale : 13;
         this.monsterType = statblock.monsterType || 'Intrepid'; // Default monster type
@@ -139,6 +154,12 @@ class T13Tapestry extends FacetWeb {
      * @returns {object} { Boon, Scale, EffectiveBoon }
      */
     getFacetBoon(facetIdentifier, twists = 0) {
+        if (this._hardened) {
+            const facetIndex = FacetWeb.getFacetIndex(facetIdentifier);
+            const boon = this._hardened.getBoonForFacet(facetIndex);
+            // We still need to return the full object for JS compatibility
+            return { Boon: boon - this.Scale, Scale: this.Scale, EffectiveBoon: boon };
+        }
         const base = super.getFacetBoon(facetIdentifier);
         const facetIndex = FacetWeb.getFacetIndex(facetIdentifier);
 

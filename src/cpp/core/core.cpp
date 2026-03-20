@@ -2,23 +2,71 @@
 #include <vector>
 #include <map>
 #include <cstdint>
+#include <algorithm>
 #include <emscripten/bind.h>
 
 using namespace emscripten;
 
-// Forward declarations
-struct T13PlotData;
+namespace Gematria {
+    const std::map<char, int> VALUES = {
+        {'a', 1}, {'j', 1}, {'q', 1}, {'y', 1}, {'i', 1},
+        {'b', 2}, {'k', 2}, {'r', 2}, {'c', 2},
+        {'g', 3}, {'l', 3},
+        {'d', 4}, {'m', 4}, {'t', 4},
+        {'e', 5}, {'n', 5},
+        {'s', 6}, {'u', 6}, {'v', 6}, {'w', 6}, {'x', 6},
+        {'o', 7}, {'z', 7},
+        {'f', 8}, {'h', 8}, {'p', 8}
+    };
 
-struct T13GameData {
-    std::string id;
-    std::string name;
-    std::string type;
-    std::string description;
-    std::string seed;
-    std::vector<std::string> plots;
-    std::vector<std::string> characters;
-    uint64_t created;
-    uint64_t lastModified;
+    int crunch(int num) {
+        while (num > 13) {
+            int sum = 0;
+            std::string s = std::to_string(num);
+            for (char c : s) {
+                if (std::isdigit(c)) sum += (c - '0');
+            }
+            num = sum;
+        }
+        return num;
+    }
+
+    int calculate(std::string str) {
+        int sum = 0;
+        for (char c : str) {
+            char lc = std::tolower(c);
+            if (VALUES.count(lc)) sum += VALUES.at(lc);
+        }
+        return crunch(sum);
+    }
+}
+
+struct StatPair {
+    int facet;
+    int antiFacet;
+    int facetBoon;
+    int antiFacetBoon;
+};
+
+class HardenedTapestry {
+public:
+    std::vector<StatPair> stats;
+    int scale;
+
+    HardenedTapestry(int s) : scale(s) {}
+
+    void setStat(int index, int facet, int antiFacet, int fBoon, int aBoon) {
+        if (index >= stats.size()) stats.resize(index + 1);
+        stats[index] = {facet, antiFacet, fBoon, aBoon};
+    }
+
+    int getBoonForFacet(int facetId) {
+        for (const auto& pair : stats) {
+            if (pair.facet == facetId) return pair.facetBoon + scale;
+            if (pair.antiFacet == facetId) return pair.antiFacetBoon + scale;
+        }
+        return 13 + scale;
+    }
 };
 
 struct T13PlotData {
@@ -36,14 +84,18 @@ struct T13PlotData {
     std::string parentPlotId;
 };
 
-struct GeometryData {
-    int geometryNumber;
-    int chi;
-    int octave;
+struct T13GameData {
+    std::string id;
     std::string name;
+    std::string type;
+    std::string description;
+    std::string seed;
+    std::vector<std::string> plots;
+    std::vector<std::string> characters;
+    uint64_t created;
+    uint64_t lastModified;
 };
 
-// Hardened classes with better memory management and safety
 class HardenedPlot {
 public:
     T13PlotData data;
@@ -94,6 +146,24 @@ public:
 };
 
 EMSCRIPTEN_BINDINGS(core_module) {
+    function("gematria_crunch", &Gematria::crunch);
+    function("gematria_calculate", &Gematria::calculate);
+
+    register_vector<std::string>("VectorString");
+
+    value_object<StatPair>("StatPair")
+        .field("facet", &StatPair::facet)
+        .field("antiFacet", &StatPair::antiFacet)
+        .field("facetBoon", &StatPair::facetBoon)
+        .field("antiFacetBoon", &StatPair::antiFacetBoon);
+
+    register_vector<StatPair>("VectorStatPair");
+
+    class_<HardenedTapestry>("HardenedTapestry")
+        .constructor<int>()
+        .function("setStat", &HardenedTapestry::setStat)
+        .function("getBoonForFacet", &HardenedTapestry::getBoonForFacet);
+
     value_object<T13GameData>("T13GameData")
         .field("id", &T13GameData::id)
         .field("name", &T13GameData::name)
@@ -118,12 +188,6 @@ EMSCRIPTEN_BINDINGS(core_module) {
         .field("characters", &T13PlotData::characters)
         .field("subPlots", &T13PlotData::subPlots)
         .field("parentPlotId", &T13PlotData::parentPlotId);
-
-    value_object<GeometryData>("GeometryData")
-        .field("geometryNumber", &GeometryData::geometryNumber)
-        .field("chi", &GeometryData::chi)
-        .field("octave", &GeometryData::octave)
-        .field("name", &GeometryData::name);
 
     class_<HardenedPlot>("HardenedPlot")
         .constructor<T13PlotData>()

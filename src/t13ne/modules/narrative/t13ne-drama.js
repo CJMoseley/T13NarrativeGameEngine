@@ -8,6 +8,7 @@ import Logger from "../../core/Logger.js";
 import T13Dice from '../mechanics/t13ne-dice.js';
 import T13NECardsAPI from "../mechanics/t13ne-cards-api.js";
 import T13NE_Facets from "../mechanics/t13ne-facets.js";
+import WasmManager from "../../wasm/WasmManager.js";
 
 /**
  * Module for handling T13NE Drama, Tension, and Stress relief systems.
@@ -217,6 +218,13 @@ class T13NE_Drama {
      * @returns {number} The amount of stress to relieve.
      */
     getStressRelief(dramaType) {
+        if (WasmManager.initialized && WasmManager.core) {
+            return WasmManager.core.NarrativeEvaluator.calculateStressRelief(
+                dramaType,
+                T13Dice.RNG(1, 6),
+                T13Dice.RNG(1, 6)
+            );
+        }
         switch (dramaType) {
             case 'Atmospheric': return 1;
             case 'Narrative Moment': return T13Dice.RNG(1, 6); // Variable based on Facet usually

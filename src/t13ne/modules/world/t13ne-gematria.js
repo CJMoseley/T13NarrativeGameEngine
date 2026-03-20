@@ -1,3 +1,4 @@
+import WasmManager from '../../wasm/WasmManager.js';
 /**
  * T13 Gematria Utilities
  * Provides pure functions for calculating Gematria values, centralizing the logic
@@ -23,6 +24,9 @@ const GEMATRIA_VALUES = {
  * @returns {number} The crunched number.
  */
 export function crunch(num) {
+    if (WasmManager.initialized && WasmManager.core) {
+        return WasmManager.core.gematria_crunch(num);
+    }
     while (num > 13) {
         num = String(num).split('').reduce((a, b) => a + parseInt(b, 10), 0);
     }
@@ -36,6 +40,9 @@ export function crunch(num) {
  */
 export function calculateValue(str) {
     if (!str) return 0;
+    if (WasmManager.initialized && WasmManager.core) {
+        return WasmManager.core.gematria_calculate(str);
+    }
     const cleanStr = str.toLowerCase().replace(/[^a-z]/g, '');
     let sum = 0;
     for (let i = 0; i < cleanStr.length; i++) {

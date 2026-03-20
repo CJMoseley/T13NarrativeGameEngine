@@ -102,8 +102,23 @@ const AIService = {
 /**
  * Evaluates state machine transitions based on ruleset and context.
  * Uses a stateless, data-driven approach to determine the next state.
+ * Optimized with C++/WASM acceleration.
  */
 function evaluateStateMachine(currentState, context, ruleset) {
+    if (WasmManager.initialized && WasmManager.core) {
+        const result = WasmManager.core.NarrativeEvaluator.evaluate(
+            currentState,
+            context.tensionLevel || 0,
+            context.yarnPoints || 0,
+            !!context.isHooked,
+            !!context.isResolved
+        );
+        if (result.state !== currentState) {
+            return { state: result.state, transition: result.transition };
+        }
+        return { state: currentState, transition: null };
+    }
+
     if (!ruleset || !ruleset.states) return { state: currentState, transition: null };
 
     const stateConfig = ruleset.states[currentState];
