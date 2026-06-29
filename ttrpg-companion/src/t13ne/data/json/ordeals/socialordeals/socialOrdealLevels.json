@@ -1,0 +1,149 @@
+[
+    {
+        "Level": -10,
+        "Impression": "👿",
+        "Type": "Violent",
+        "Description": "The Character named to the left has a terrible opinion of the Character at the top of this column. It is actually a bit scary how much they hate them, with even the sight of them often leading to violent outbursts. Worse still, they may even feel drawn to hunt down the Character above, to kill or maim them with Extreme / Soul / Paradoxical Stake Attacks.",
+        "Response": "The Target instantly takes a 3 card Negative Psych effect, and will immediately attempt to attack you."
+    },
+    {
+        "Level": -9,
+        "Impression": "🤬",
+        "Type": "Hateful",
+        "Description": "The Character named to the left really hates the Character named above. They will insult them to their face, and even seek them out to insult and torment. Violence may occur, but it is usually not started by the Character to the left, and often restricted to High Stakes at most.",
+        "Response": "The Target has a hostile reaction to you or your action. They will reject the offer, take a Negative Emotion (2 card Psych Attack), and probably insult you back."
+    },
+    {
+        "Level": -8,
+        "Impression": "😡",
+        "Type": "Hostile",
+        "Description": "The Character named to the left is hostile to the Character named above. They will insult them to their face, but probably prefer to keep it behind their back, and generally do their best to avoid them.",
+        "Response": "The Target has a hostile reaction to you or your action. They will reject the offer, take a Negative Emotion (2 card Psych Attack), and probably insult you back."
+    },
+    {
+        "Level": -7,
+        "Impression": "😖",
+        "Type": "Aversion",
+        "Description": "The Character named to the left really doesn't like the Character named above. They might keep this opinion to themselves mostly, but will occasionally be driven to comments. They will leave any event, location or situation, although not always quietly, rather than be around them.",
+        "Response": "The Target has a negative opinion of you, your action, or offer. They will reject your offer and attempt to move on. They will take a 1 card Negative Emotional Psych Attack."
+    },
+    {
+        "Level": -6,
+        "Impression": "😠",
+        "Type": "Avoid",
+        "Description": "The Character named to the left completely avoids the Character named above. They prefer not to mix with them if possible, they tend to avoid attend functions or events they suspect the Character above will be at, and may quietly and quickly leave if they spot them.",
+        "Response": "The Target has a negative opinion of you, your action, or offer. They will reject your offer and attempt to move on. They will take a 1 card Negative Emotional Psych Attack."
+    },
+    {
+        "Level": -5,
+        "Impression": "😒",
+        "Type": "Disapprove",
+        "Description": "The Character named to the left strongly disapproves of the Character named above. They are often directly critical of them and their opinions. They will generally avoid their company as long as they will not appear too rude, they may find excuses to not attend functions they know the Character above will attend.",
+        "Response": "The Target has a mildly negative opinion of you, your action, or offer. They will reject your offer unless it is truly exceptional. They may take a 1 card Negative Emotional Psych Attack ."
+    },
+    {
+        "Level": -4,
+        "Impression": "🙁",
+        "Type": "Dislike",
+        "Description": "The Character named to the left disapproves of the Character named above. They are often directly critical of them and their opinions. They will generally avoid their company as long as they will not appear too rude, avoiding them at parties, but not avoiding the party.",
+        "Response": "The Target has a mildly negative opinion of you, your action, or offer. They will reject your offer unless it is truly exceptional. They may take a 1 card Negative Emotional Psych Attack ."
+    },
+    {
+        "Level": -3,
+        "Impression": "🤔",
+        "Type": "Distrust",
+        "Description": "The Character named to the left does not really trust the Character above, but may not be able to put their finger on exactly why. They will avoid their company when possible without appearing rude, but can appear cordial in social settings.",
+        "Response": "Unless the deal is obviously unbiased and open, or appears to be slightly slanted in their favour (a good discount) the Target will be suspicious and ask a lot of follow-up questions."
+    },
+    {
+        "Level": -2,
+        "Impression": "😕",
+        "Type": "Suspicious",
+        "Description": "The Character named to the left is suspicious of the Character above, often without any real reason. They will often ask a lot of questions, and may not be satidified with even reasonable sounding answers.",
+        "Response": "Unless the deal is obviously unbiased or appears to be slightly slanted in their favour the Target will be suspicious and ask follow-up questions."
+    },
+    {
+        "Level": -1,
+        "Impression": "🤨",
+        "Type": "Cautious",
+        "Description": "The Character named to the left does not have a very high opinion of the Character named above, that they will usually explain as them just not getting on, but there are always some other reasons. They probably don't share their negative opinion without prompting, and will always qualify their suspicions. They won't go out of their way to avoid them and will still engage socially.",
+        "Response": "The Target is mildly suspicious and asks follow-up questions, before probably agreeing if the deal is reasonable."
+    },
+    {
+        "Level": 0,
+        "Impression": "😐",
+        "Type": "Neutral",
+        "Description": "The Character named to the left has no real opinions about the Character named above. They would not ignore them, but have never really interacted beyond simple conversations.",
+        "Response": "The Target has no discernible reaction to the Action, and has no real opinion about you. If a deal appears reasonable at first glance they will probably agree to it."
+    },
+    {
+        "Level": 1,
+        "Impression": "💬",
+        "Type": "Polite",
+        "Description": "The Character named to the left has a vaguely positive impression of the Character named above, and thinks of them as a reasonable person, worthy of having a chat with. They may even become firm acquaintances, in time, although probably not good friends.",
+        "Response": "The Target, has a vaguely positive opinion about you, your action or offer, but will ask questions to clarify your position, before they accept."
+    },
+    {
+        "Level": 2,
+        "Impression": "🙂",
+        "Type": "Cordial",
+        "Description": "The Character named to the left has a generally positive impression of the Character named above, they are likely to be casual friends, share some interests, and have mutual friends (who they are often closer to).",
+        "Response": "Unless the deal being offered is exceptionally bad in some way the Target will probably ask for a few details to be clarified and then agree."
+    },
+    {
+        "Level": 3,
+        "Impression": "😏",
+        "Type": "Positive",
+        "Description": "The Character named to the left has a positive impression of the Character named above, their is likely additional interest above cordial conversation, joking, intense conversations, and flirtation are all possible.",
+        "Response": "Unless the deal being offered is exceptionally bad in some way the Target will probably ask for a few details to be clarified and then agree."
+    },
+    {
+        "Level": 4,
+        "Impression": "😊",
+        "Type": "Like",
+        "Description": "The Character named to the left likes the Character named above, they have a good opinion of them and will go out of their way to stop and chat with them when they meet. They are probably friends, may be intimate, and may share secrets.",
+        "Response": "The Target has a positive opinion of you, your action, or offer. They will accept your offer, and may even take a 1 card Positive Psych Effect."
+    },
+    {
+        "Level": 5,
+        "Impression": "😀",
+        "Type": "Warm",
+        "Description": "The Character named to the left has a good opinion of the person named above, they think of them warmly and are quite trusting of them.",
+        "Response": "The Target has a positive opinion of you, your action, or offer. They will accept your offer, and may even take a 1 card Positive Psych Effect."
+    },
+    {
+        "Level": 6,
+        "Impression": "😃",
+        "Type": "Sincere",
+        "Description": "The Character named to the left sincerely approves of the Character named above, they generally agree with each other on a number of subjects, share a few proficiencies, and have often known one another for most of their lives. They are usually trusting and neighbourly at least.",
+        "Response": "The Target pretty strongly positive opinion of you, your action, or offer. Unless the offer is truly terrible the Target will accept it, and will take a 1 card Positive Psych Effect."
+    },
+    {
+        "Level": 7,
+        "Impression": "😄",
+        "Type": "Trusting",
+        "Description": "The Character named to the left trusts the Character named above, they generally agree with each other on a number of subjects and probably share more than a few proficiencies. Characters may be completely intimate with each other, sharing all casual and some deep secrets with each other.",
+        "Response": "The Target pretty strongly positive opinion of you, your action, or offer. Unless the offer is truly terrible the Target will accept it, and will take a 1 card Positive Psych Effect."
+    },
+    {
+        "Level": 8,
+        "Impression": "😘",
+        "Type": "Affectionate",
+        "Description": "The Character named to the left sees the Character named above affectionately, they may be very good friends, or even lovers. They may have a lot in common, and years of friendship, or this may be a case of opposites attracting and love at first sight. ",
+        "Response": "The Target has an amiable (or otherwise positive) reaction to you, your action or offer. They will immediately accept your offer and take a Positive Emotion (2 card Positive Psych effect)."
+    },
+    {
+        "Level": 9,
+        "Impression": "🥰",
+        "Type": "Loving",
+        "Description": "The Character named to the left loves the Character named above. They find them attractive, wonderful and find themselves thinking about them when they are not there. This might be love at first sight, or just a deep partnership or best friend situation. There is a danger to this state, in that Soul-Stakes are often involved, with Characters placing Devotions upon each other all too easily.",
+        "Response": "The Target has an amiable (or otherwise positive) reaction to you, your action or offer. They will immediately accept your offer and take a Positive Emotion (2 card Positive Psych effect)."
+    },
+    {
+        "Level": 10,
+        "Impression": "😍",
+        "Type": "Kinship",
+        "Description": "The Character named to the left holds the Character named above in the highest regard possible, at the same emotional status as only the most loved family. This is sometimes the case with friends, usually the case with lovers and often the case with close personal family, such as siblings. There are often Soul-Stakes involved in interactions between these Characters.",
+        "Response": "The Target has a raucously positive emotional response to you, your action or offer. They will immediately accept your offer and take a Positive 3 card Emotion effect."
+    }
+]

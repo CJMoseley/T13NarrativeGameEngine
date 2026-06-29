@@ -1,0 +1,38 @@
+[
+    {
+        "Icon": "🍒",
+        "Name": "Fresh",
+        "Description": "When a Wound is so fresh you are still holding the card.",
+        "Rules": "When you reach the end of the Round, note the Suit and Pips of the Wound as appropriate (next to a Proficiency / Annex Slot or Hitch) and Discard the card, this Wound is now Untreated ⏱️. Hitch causing Mortal+ Wounds will increase the Hitch at the end of the next Round again."
+    },
+    {
+        "Icon": "⏱️",
+        "Name": "Untreated",
+        "Description": "Any Wound on the Character or Descendant that has been there for a little while.",
+        "Rules": "Untreated Wounds linger doing their thing. Depending on the situation Untreated Wounds will begin to Fester after a few minutes / hours / days. Untreated Wounds create an Unsoakable Distract on the Character or Descendant every time they act."
+    },
+    {
+        "Icon": "🤒",
+        "Name": "Treated",
+        "Description": "This Wound has been cleaned and sealed, by medicine, therapy, magic, surgery, or first-aid.",
+        "Rules": "A Treated Wound can be thought of as behaving like a -1 Level Wound, so a Crippling Wound behaves like a Maiming Wound. Hitches will no longer increase automatically in Mortal+ Wounds. Treated Wounds can be re-opened by any Flesh Wound, but with time will Stabilize."
+    },
+    {
+        "Icon": "🤕",
+        "Name": "Stabilized",
+        "Description": "This Wound begun naturally or narratively healing, the wound may have bled and clotted, or the bones may have begun to repair, the fever has broken, or the nightmares are no longer every night.",
+        "Rules": "A Stabilized Wound is a Wound on pause. It no longer has its active effect, but still isn't fully healed yet. Any Action that \"breaks\" the Wound, such as using a Crippled Annex, or Maimed Proficiency, or triggering the Hitch of a Stabilized Mortal Wound will create Stress equal to the Wound Pips. Any Action that creates Shock or any fresh Flesh Wound will re-open the Wound. "
+    },
+    {
+        "Icon": "🎃",
+        "Name": "Re-opened",
+        "Description": "When you stretch a wound and it starts bleeding again, it’s re-opened.",
+        "Rules": "Re-opened Wounds go back to being active, Maims block Proficiencies, Crippling block Annexes and Mortal+ Wounds go back to increasing Hitches. Re-opened Wounds cause an Unsoakable Distract whenever the Character or Descendant acts."
+    },
+    {
+        "Icon": "☠️",
+        "Name": "Festering",
+        "Description": "Festering Wounds are untreated (or re-opened) Wounds that have gone bad, or have been poisoned by a Toxin. Sometimes specific attacks create Festering Wounds other times they have just been left too long (days normally, hours in a jungle, minutes in a sewer or based on the Toxin involved) without treatment.",
+        "Rules": "Festering Wounds create an Unsoakable Flesh Wound (which will try to aggravate the original wound) every time the Character acts (performs a full or half-action). Kind Yarn-Tellers may allow half-actions to create an Unsoakable Distract instead."
+    }
+]

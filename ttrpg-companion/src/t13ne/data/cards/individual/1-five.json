@@ -1,0 +1,118 @@
+{
+	"Card_Corner": "5",
+	"Card": "Five",
+	"Suit": "1",
+	"IconSuit": "♦",
+	"Pips": "5",
+	"Unicode": "&#x1f0c5;",
+	"Svg": "images/cards-svg/5D.svg",
+	"Wound_Level": 2,
+	"Facet": "Quiet",
+	"Tao": [
+		0,
+		0
+	],
+	"Narrative_Meaning": "Fives signify change and challenges",
+	"Image": "",
+	"Yarn": {
+		"Yarn_Name": "The Forest",
+		"Yarn_Description": "Far from the City, beyond the farms lie the deep, dark woods, the ancient forests of the world. This is the card of quiet woodlands and quiet yearnings, the Forests are places of plenty, but they are also places of darkness. Animals that know no fear of man haunt these places. It is a card of loneliness, abandonment, and very real needs &mdash; such as comfort, warmth and security.",
+		"Significator": {
+			"Plot": "The Forest Plot is about making the Hooked Characters learn their place in the greater world. Often, they learn their place is not where they thought it was (and it certainly isn't the Forest itself). In the deep, dark forest all Stakes are Higher than you might expect, especially for the side that has this Significator.",
+			"Side": "A side marked by the Forest will be isolated from the other sides, occasionally physically removed entirely and sometimes suffer only External Embodiments from the other sides, all these interactions increase in Stake by at least one step.",
+			"Character": "The Forest Significator indicates a Character who is uncomfortable in normal society.<p>They <strong>Gain Yin</strong> when they are silent or alone. </p><p><strong>Gain Yang</strong> when they walk away, leave the path, or sniff the air. </p><p>They <strong>Gain Chi</strong> when they enjoy the elements directly upon their body, wind in their hair, sun on their face. </p><p>They also gain a +1 Success Level when in the shadows of trees.</p>",
+			"Diegetic_Character": "A wild or untamed soul, more at home in the silence of the woods than in the bustle of the city. They are deeply attuned to the natural world, finding comfort in the elements and the solitary peace of the wild.",
+			"Scene": "The Forest Scenes are set deep in the wilds of the world, far from normal civilisations. These are the settings for Ordeals, Tests and Quests or quiet, but deeply personal Revelations. Yarn-Tellers may use The Forest in an urban environment to signify urban jungle, with its own predators and prey."
+		},
+		"Beat_Type": "5",
+		"Conflict_Embodiment": "3",
+		"Facet_Embodiment": "11",
+		"Hook_Aspect": "Core",
+		"Aspect_Description": "The Hook targets the Character's Core, the Facet(s) that Characters think of as the essence of themselves. ",
+		"Hook": "Witch's Cottage",
+		"Hook_Description": "Traditionally the Witch's Cottage is a run down shack hidden in the woods. It is thought that no one lives there any more, at least until the first child went missing. The Conflict begins with a missing child, or a strange ruin found of the beaten path.",
+		"Gain": "Serenity, the Character finds a small Location where they can relax and meditate. This Location can help them to rest and recover more quickly from stress and negative effects.",
+		"Diegetic_Gain": "A place of profound serenity—a quiet grove or a hidden glade where the mind can find rest and the spirit can heal from the wounds of the world.",
+		"Fray": "Forced March",
+		"Fray_Description": "Usually a Medium Stakes Solitary Motional Ordeal, like hurrying to catch the bus, racing to the airport, getting the shopping done before the dinner party, or getting an army through the Forest before nightfall. A Forced March Ordeal usually involves an Obstacle or two.",
+		"Snag": "Dangerous Shadows",
+		"Snag_Description": "It is dark in the forest and difficult to see what is going on. Dangers lurk in the Shadows as well, from thorns and brambles that catch and scratch to the Big Bad Wolf. Even lighting fires for light will quickly increase the danger as a forest fire blazes around you. The Snag can either add additional Obstacles, darkness, dangerous conditions and/or enemies, to the Fray, and raise the Stakes; or it creates a second short Higher Stakes Ordeal immediately after it.",
+		"NPC": {
+			"Archetype": "Woodsman",
+			"Persona": 16,
+			"Core": 18,
+			"Hitch": 15,
+			"Description": "The Woodsman is a forest worker or hunter, commonly found with an axe and a bow, or in modern times a chainsaw and perhaps a shotgun or rifle. The Woodsman usually has a family to support and is eager to return to them with food or having earned money working in the woods. They always have wilderness survival skills and often a high Craft."
+		},
+		"Sweeping": "The Enchanted Forest",
+		"Sweeping_Text": "The Enchanted Forest is a place of transformation. The Character that enters the Enchanted Forest has no pressing need to act, they may eat, drink, heal, rest and relax. Magic lies in the Enchanted Forest and the Character may return having had a Revelation, or having made a Gain, as well as having healed.",
+		"History": "Backwoods",
+		"History_Description": "The Forest indicates the past of this situation was a place far from civilisation, it may be a literal backwoods location that is important, but more likely this indicates that the situation derives from a past natural event or disaster, such as an autumnal landslide that causes the river to divert or dam up in the spring, causing a terrible harvest in the countryside and creating a flour buying panic in the city come winter.",
+		"Situation": "Darkness",
+		"Situation_Description": "The Forest is dark and full of unknown terrors, so too is the current situation. It is difficult to see in the forest and hard to make out both predators and prey, even when they are almost on top of you. Information is sparse and will remain so for some time.",
+		"Solution": "Wandering",
+		"Solution_Description": "The Forest indicates that the solution to the current situation requires wandering, usually in the form of walking, hiking, marching or trekking, often through a wilderness of some sort. This is usually a purely physical trek, but occasionally it may have a spirit-quest or pilgrimage element to the journey.",
+		"Revelations": {
+			"About": "World-Building Geography",
+			"About_Description": "The information is about the background, or setting, not the current plot or situation. It might include pertinent details for the current plot, but is usually just about the geography of the world, it could be the literal location of a forest, a city or even a fortress.",
+			"Info": "Which?",
+			"Info_Description": "Information that reveals which conclusion, opinion, or option is correct. Like which way round the next piece of the puzzle is, which wire should be cut to stop the bomb, or which of your many enemies is actually on your trail.",
+			"Vector": "Minutia",
+			"Vector_Description": "The information is encoded in the smallest, most easily overlooked details, this maybe a \"can't see the wood for the trees issue\" with hundreds of small \"off\" details, a Freudian slip here, a glossed over point there, a pointed insult thrown at random, these can lead to that \"Just one more thing...\" question that busts everything open.",
+			"Alternate": "Core",
+			"Alternate_Description": "The information conveys core information, either about the Character's Personality Annex Core, or about the work, toil, labour or sacrifices that are key to the events to come.",
+			"Detail": "Ecology",
+			"Detail_Description": "Some Ecological detail about an area or people is shared, such as the Forest Elves bred the first horses, but as a food stock animal, since then the animals have been declared Taboo, only to eaten by the priesthood, and nobility, and their numbers shrank so no horses remain in their forests."
+		}
+	},
+	"Obstacle": {
+		"Type": "Plants",
+		"Description": "The way is blocked, by plants, such as roses, poison ivy, thorns, hawthorn hedges, stinging nettles, holly bushes, or some other \"unpleasant\" plant."
+	},
+	"Tarot": {
+		"WyrdTarot": "Feint",
+		"Crossed": "Discard all incoming Distract Attacks, or gain a hint from the Ref",
+		"Normal": "Automatically apply 1d6 Distract Wounds to Target"
+	},
+	"Ordeal": {
+		"Ordeal_Type": "Solitary Ordeal",
+		"Stages": "2",
+		"Ordeal_Spread": "Railroad",
+		"Stakes": "Low",
+		"Test": "Survival (Nature)",
+		"Obstacles": "1 Obstacle in 1 Court Stage",
+		"Suggested_Action": "Walk",
+		"Stage": "Medium Straight",
+		"Stage_Description": "A medium length, straight path, street or road. Complex preparations or research. Working normally.",
+		"Motional": "Water Vehicle Dash",
+		"Motional_Description": "Pass through as many watery Ordeal stages as possible in your boat, before the time (Rounds or Phases) limit expires.",
+		"Tide_of_Battle": "The Slog",
+		"Tide_of_Battle_Text": "The battle has become a chaotic crush of blows in close melee. The Tide of Battle has become a churning swirl. Both sides have lost all momentum and fine control. No side has any advantages.",
+		"Fight": "Minor Guardian",
+		"Fight_Description": "A single opponent, at least as powerful as a PC (Extras match Highest Annex Boon), that has some interesting abilities (I-Ching, Core) and Annexes, or powerful Descendants."
+	},
+	"Lea": {
+		"PathColour": "Brown/Blue Omnivore",
+		"Bulmas": "Broccen, Vermis, Labyrinthine, All-Walkers",
+		"AnimalCategory": "Macrofauna",
+		"Example": "Earthworm / Beetles / Ants / Minnows / Wasp",
+		"Bodypart": "Legs",
+		"Notes": "Small (often burrowing) creatures. May include the Smallest omnivorous vertebrates, such as the smallest fish, amphibians and shrews (as the smallest rodentia)."
+	},
+	"Stress": {
+		"Type": "Complicated",
+		"Description": "Stress can interfere with your life, making it more complicated in every way. Self-sabotage can play a part too, stress acts against our better judgement and instincts at times, interfering in what we do.",
+		"Rules": "All Actions in the suited Facets (Awe, Craft, Orthodox, Quiet, Virtue, Zeal) add a Difficulty equal to the Character’s current Stress in Tao Sway / Score. If any penalised Action Succeeds it will reduce the Character’s Stress, Strain or Shock by 1 for each Success Level created."
+	},
+	"Trauma": {
+		"Type": "Withdrawal",
+		"Description": "Trauma and Shock can have profound effects on a Character’s social behaviour, often anxiety and Stress from the Trauma will combine in social situations, which can lead to a withdrawal away from all social activities as an avoidance method for more pain. This withdrawal will often lead to less interactions with friends, and abandonning hobbies and activities that might encourage further socialisation. Typically this withdrawal does not cause the Character to abandon friends or allies completely.",
+		"Rules": "The Trauma can either create a suitable Mild, Taboo or Social Hitch or can permanently delete one Annex that may represent the abandonned hobby or the loss of social skills."
+	},
+	"Age": {
+		"Type": "Dispersal",
+		"Description": "An Age of Dispersal is occuring. During this age a society sheds members, sometimes due to death and old age, more often they dissolve into other (neighbouring, related or more popular) societies, some few may remain in the original, but it will now be a smaller, more tightly aligned group.",
+		"Diegetic_Description": "A time of fading and scattering, where the bonds of society begin to loosen. People drift away, seeking new lives in distant lands or merging with neighboring cultures, leaving behind a smaller, more insular core of those who remain.",
+		"Rules": "More than half of the members of the society fade away, ceasing their membership, often including former leadership roles. There must be a change of orientation or direction for the group, along with a change of leadership, or this age will end when the social group has completely collapsed."
+	}
+}

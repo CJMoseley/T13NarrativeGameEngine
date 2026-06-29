@@ -1,0 +1,118 @@
+{
+	"Card_Corner": "8",
+	"Card": "Eight",
+	"Suit": "1",
+	"IconSuit": "♦",
+	"Pips": "8",
+	"Unicode": "&#x1f0c8;",
+	"Svg": "images/cards-svg/8D.svg",
+	"Wound_Level": 3,
+	"Facet": "Zeal",
+	"Tao": [
+		1,
+		0
+	],
+	"Narrative_Meaning": "Eights signify karma and mostly in the form of karmic retributions, if someone has been having a bad time now is the time they will be rewarded, if they have been running amok they will now have to pay that price.",
+	"Image": "",
+	"Yarn": {
+		"Yarn_Name": "The Cultist",
+		"Yarn_Description": "The Cultist is the card of the dark sides of belief and belonging. Everyone holds at least one belief that another would find dark, extremist, or just plain weird. Sometimes it is a religious belief, sometimes its just your weird head-cannon to tie the classic series to the reboot directly. This is the card that shows us those parts of a character. It asks questions of them, such as: What do they really believe? Do they identify more with a Villain or Hero? What is their inner darkness? How far will they go? What lines will they never cross? and exactly how bad was that last instalment/season?",
+		"Significator": {
+			"Plot": "The Cultist Plot is about conspiracies and Characters who are not what they first seem. There may be a secret cult, or a hidden group that is manipulating the situation. The Cultist Plot will often rely on occult details or supernatural effects in some genres, in others it may be a conspiracy of silence that is to blame.",
+			"Side": "The Side marked by the Cultist are tight-knit, and secretive, they try their best to hide their connections and actions from everyone else in the Plot, and are often discovered only by Revelations.",
+			"Character": "The Cultist Significator indicates a Character who has odd, often dark, beliefs.<p>They <strong>Gain Yin</strong> when they keep secrets, or make indirect references to their beliefs. </p><p><strong>Gain Yang</strong> when they lie about their actions, or reveal some aspect of their belief (swear by a weird god or saint). </p><p>They <strong>Gain Chi</strong> when they practice their religion, or belief alone, or share it with others. </p><p>They gain a +1 Success Level to all actions to do with the beliefs and lore of their Cult.</p>",
+			"Diegetic_Character": "A figure of deep and often unsettling convictions, belonging to a secretive order or following a fringe philosophy. They are guarded about their true allegiances, speaking in riddles and following strange rituals known only to their kind.",
+			"Scene": "The Cultist Scene typically is a religious or psychological based Warp or Weft. Yarn-Tellers can use the Cultist to imply hidden forces, occult influences or just a strange person."
+		},
+		"Beat_Type": "6",
+		"Conflict_Embodiment": "0",
+		"Facet_Embodiment": "1",
+		"Hook_Aspect": "Geometry (Nemesis)",
+		"Aspect_Description": "The Hook targets the Character's Geometry through the Harmonic Nemesis, creating another Character who this Character will naturally hate.",
+		"Hook": "Craze",
+		"Hook_Description": "The Conflict hooks Characters with a new craze, fad or fashion that is related to the Conflict. Kids and young adults are often the early adopters of the new craze, but the fad may be more cultish. in extreme examples the Dominant Embodiment will have this fad cult based around themselves.",
+		"Gain": "Fan Club (a group of Chorus Allies who are \"fans\" of the Character",
+		"Diegetic_Gain": "A growing following of devoted individuals who look to the character for guidance or inspiration, becoming a loyal—if sometimes overzealous—source of support.",
+		"Fray": "Persuasion",
+		"Fray_Description": "The Fray consists of trying to persuade someone (a group of potential allies, a mentor or guardian, an Opposed Embodiment, or any Rival) to your point of view. Persuasion is either a Sub-Ordeal conversation, a Zeal vs Personality Test, or a Low / Soul Stakes Ordeal, depending how the Yarn-Teller wants to run it. Of course matters may be complicated if you are trying to convince a braying mob of your innocence, and the ultimate goal of the Cultist is always to try and persuade another to join the same cult.",
+		"Snag": "Kidnapped",
+		"Snag_Description": "One of the Embodiment's allies, friends or family, goes missing and needs saving. Usually they have been kidnapped by Mooks(Vex/Chorus/Cast Extras) working for the Opposed Embodiment.",
+		"NPC": {
+			"Archetype": "Fan",
+			"Persona": 23,
+			"Core": 18,
+			"Hitch": 15,
+			"Description": "The Fan has some subject, genre, or technology that obsesses them. There's nothing they love more than to talk about or consume their \"books / shows\". Sometimes divided into cultists, fanboys, and fangirls, these people are naturally drawn to groups of similar minded people."
+		},
+		"Sweeping": "Worshipped",
+		"Sweeping_Text": "The Pressed Embodiment Gains a following, usually represented as a Group Descendant, the following is normally Chorus and Cast Extras.",
+		"History": "Beliefs",
+		"History_Description": "The Cultist indicates that the history of this situation is to do with dark or dangerous beliefs, it may be some old pagan beliefs or some crazy modern conspiracy theory.",
+		"Situation": "Conspiracy",
+		"Situation_Description": "The Cultist indicates that the current situation involves a conspiracy, they may operate in secret, perhaps use magic or forbidden technology and may even pretend that they are all one individual.",
+		"Solution": "Occult",
+		"Solution_Description": "The Cultist indicates that the situation is best relieved by judicious use of occult knowledge, this might be knowledge of a forgotten religion, understanding of tarot, astrology, herbalism, alchemy, hermeticism, or just magic.",
+		"Revelations": {
+			"About": "World-Building Fashion",
+			"About_Description": "The information is about the background, or setting, not the current plot or situation. It might include pertinent details for the current plot, but is usually information about the fashions, fads, conventions, trends and crazes in the world. Is everyone wearing roses to court this season? Are cod-pieces meant to be big? Is brown really the new black? Is fur or leather worn in the city? Has there been a run on goose-down and wool? Is mirror-chrome or are implanted-cyber-weapons the new hotness?",
+			"Info": "What?",
+			"Info_Description": "What is a broad question, what is it? What does he want? What are their Goals / Plans / Ends?",
+			"Vector": "Head-Canon",
+			"Vector_Description": "The Information does not come from a reputable source, but some amateur, or fan, who may or may not have access to the truth, but has developed their own theory about what really happened. This can be true as \"those in the know, know\", but it can also be \"crack-pot musings on the internet\", occasionally though even these crack-pot conspiracy theories can pass true information to a needful party.",
+			"Alternate": "A Belief",
+			"Alternate_Description": "The information is specifically about a belief held by a character, this might be a religion or particular political or life philosophy that someone subscribes to.",
+			"Detail": "Fundamental",
+			"Detail_Description": "Fundamental Details are the big pieces that we often need to make sense of a situation. They might include that two families are at war, or that two members of those families are in love, or that a culture has no magic, only technology. Fundamental Details are often key plot points."
+		}
+	},
+	"Obstacle": {
+		"Type": "Pedestrians",
+		"Description": "The way is blocked, by a crowd of pedestrians, they may be troops, passers-by or pedestrians, depending on the Stakes."
+	},
+	"Tarot": {
+		"WyrdTarot": "Lose Chi",
+		"Crossed": "Target pulls and discards another card and gains Chi equal to the Pips",
+		"Normal": "Target loses 8 Chi"
+	},
+	"Ordeal": {
+		"Ordeal_Type": "Solitary Ordeal",
+		"Stages": "3",
+		"Ordeal_Spread": "Railroad",
+		"Stakes": "Low",
+		"Test": "Esoteric Knowledge (Heresy)",
+		"Obstacles": "1 non-Court Stage Obstacle + Obstacles in all Court Stages",
+		"Suggested_Action": "Persuade",
+		"Stage": "Uphill Slog",
+		"Stage_Description": "A long, straight, but steeply climbing way, or long hours of work, preparation or research.",
+		"Motional": "Ground Riding Dash",
+		"Motional_Description": "Whatever you are doing on that bike, or horse, you have to do it quickly.",
+		"Tide_of_Battle": "Battle Styling",
+		"Tide_of_Battle_Text": "One Flowing Style Reserve has dominance over all Ebbing Styles. That Flowing Style Reserve may randomly draw and add an additional card whenever an Action is Prepared to it.",
+		"Fight": "Gang Battle",
+		"Fight_Description": "Lesser opponents (Chorus Extras) that outnumber the PCs by at least 3 to 1."
+	},
+	"Lea": {
+		"PathColour": "Brown/Blue Omnivore",
+		"Bulmas": "Broccen, Vermis, Labyrinthine, All-Walkers",
+		"AnimalCategory": "Megafauna – Medium",
+		"Example": "Badger (Brwc) / Raccoon / Small Primates/ Geese / Catfish / Sea Turtles",
+		"Bodypart": "Claws",
+		"Notes": "The Badger (or Brwc) is where the Broccen get their name. These Animals tend to keep territories, although they may have a nomadic stage."
+	},
+	"Stress": {
+		"Type": "Struggling",
+		"Description": "Characters deep in Stress can struggle to cope. It can feel like they are drowning, unable to catch a breath between the wild buffets of fate. If they were less stressed they would cope, but it seems like everything is more difficult for these Characters now. Somehow though they will often struggle through, barely making ends meet until the stress lifts.",
+		"Rules": "Diamond Suited Facet Actions (Awe, Craft, Orthodox, Quiet, Virtue, Zeal) add Difficulty equal to the current Stress in Chi, all other Facet Actions add Difficulty equal to the current Stress as Tao Sway. If a penalised Action is a Stalemate then the Character may reduce Stress, Strain and Shock by 1."
+	},
+	"Trauma": {
+		"Type": "Cultism",
+		"Description": "Trauma can be spiritual and religious in nature, and can alter beliefs, or at least lead a Character to seek answers beyond the normal orthodoxy of their religion or culture. Trauma causes the Character to question something about their religion, culture, society or politics, and these questions lead them to others with answers (*veracity of answers will vary between cults). Cults vary a lot, some are just reactionary religious sects (Satanists for example), others are led by charismatic narcissists for their own glorification (cults of personality), still others are pervasive terrorist idealogies, you just don&apos;t know what you might find.",
+		"Rules": "The Trauma leads the Character to question, and seek answers, beyond the cultural confines of their upbringing. This makes them vulnerable to cults who will attempt to recruit them, giving oneself over to the cult allows all Stress to be removed (although cultish living will invariably create new Stress later). This Trauma can create Hitches for the Character as they become members of the cult."
+	},
+	"Age": {
+		"Type": "Schism",
+		"Description": "An Age of Schism is occurring. During this age a society fractures and schisms as the society breaks apart due to internal pressures. During this period ideological or political differences will create internal groups following individual leaders within the society. During the age of Schism the internal sides will compete to control the society as a whole.",
+		"Diegetic_Description": "A time of internal strife and deep division, where the foundations of society begin to crack. Ideological differences and personal ambitions drive the people into competing factions, leading to a period of instability as rival groups struggle for dominance and the soul of the culture.",
+		"Rules": "During an age of Schism a group will break apart, creating internal factions each with their own leadership, who will compete for actual control."
+	}
+}

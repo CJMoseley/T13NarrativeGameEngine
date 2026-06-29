@@ -1,0 +1,1450 @@
+{
+  "1751": {
+    "id": 1751,
+    "prof": {
+      "Name": [
+        "Chaotic",
+        "Chaotic Wyrd Zero Boon Adjective Proficiency",
+        "disordered, lawless, wild, messy, turbulent"
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Chaotic is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1752": {
+    "id": 1752,
+    "prof": {
+      "Name": [
+        "Chaotic",
+        "Chaotic Wyrd Zero Boon Descendant Adjective Proficiency",
+        "disordered, lawless, wild, messy, turbulent"
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Chaotic is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1753": {
+    "id": 1753,
+    "prof": {
+      "Name": [
+        "Chaotic Locations",
+        "Chaotic Location Wyrd Zero Boon Location Adjective Proficiency",
+        "disordered, lawless, wild, messy, turbulent"
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Chaotic Locations is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1754": {
+    "id": 1754,
+    "prof": {
+      "Name": [
+        "Quixotic",
+        "Quixotic Wyrd Low Boon Adjective Proficiency",
+        "chimerical, dreaming, idealistic, unrealistic, romantic"
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Quixotic is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1755": {
+    "id": 1755,
+    "prof": {
+      "Name": [
+        "Chimerical",
+        "Chimerical Wyrd Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Chimerical is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1756": {
+    "id": 1756,
+    "prof": {
+      "Name": [
+        "Dreaming Locations",
+        "Dreaming Location Wyrd Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Dreaming Locations is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1757": {
+    "id": 1757,
+    "prof": {
+      "Name": [
+        "Musing",
+        "Musing Wyrd Low Boon Adjective Proficiency",
+        "meditative, contemplative, pensive, pensive, thoughtful, dreamy"
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Musing is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1758": {
+    "id": 1758,
+    "prof": {
+      "Name": [
+        "Meditative",
+        "Meditative Wyrd Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Meditative is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1759": {
+    "id": 1759,
+    "prof": {
+      "Name": [
+        "Contemplative Locations",
+        "Contemplative Location Wyrd Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Contemplative Locations is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1760": {
+    "id": 1760,
+    "prof": {
+      "Name": [
+        "Indecisive",
+        "Indecisive Wyrd Low Boon Adjective Proficiency",
+        "halting, mutable, unsure, wavering, hesitant"
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Indecisive is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1761": {
+    "id": 1761,
+    "prof": {
+      "Name": [
+        "Halting",
+        "Halting Wyrd Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Halting is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1762": {
+    "id": 1762,
+    "prof": {
+      "Name": [
+        "Mutable Locations",
+        "Mutable Location Wyrd Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Mutable Locations is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1763": {
+    "id": 1763,
+    "prof": {
+      "Name": [
+        "Irresolute",
+        "Irresolute Wyrd Low Boon Adjective Proficiency",
+        "faltering, unstable, hesitant, weak, uncertain"
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Irresolute is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1764": {
+    "id": 1764,
+    "prof": {
+      "Name": [
+        "Faltering",
+        "Faltering Wyrd Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Faltering is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1765": {
+    "id": 1765,
+    "prof": {
+      "Name": [
+        "Unstable Locations",
+        "Unstable Location Wyrd Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Unstable Locations is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1766": {
+    "id": 1766,
+    "prof": {
+      "Name": [
+        "Selective",
+        "Selective Wyrd Medium Boon Adjective Proficiency",
+        "particular, difficult, careful, picky, choosy"
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Selective is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1767": {
+    "id": 1767,
+    "prof": {
+      "Name": [
+        "Particular",
+        "Particular Wyrd Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Particular is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1768": {
+    "id": 1768,
+    "prof": {
+      "Name": [
+        "Difficult Locations",
+        "Difficult Location Wyrd Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Difficult Locations is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1769": {
+    "id": 1769,
+    "prof": {
+      "Name": [
+        "Fussy",
+        "Fussy Wyrd Medium Boon Adjective Proficiency",
+        "precise, odd, fastidious, finicky, choosy"
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Fussy is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1770": {
+    "id": 1770,
+    "prof": {
+      "Name": [
+        "Precise",
+        "Precise Wyrd Medium Boon Descendant Adjective Proficiency",
+        "exact, memorable, famous, accurate, definite"
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Precise is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1771": {
+    "id": 1771,
+    "prof": {
+      "Name": [
+        "Odd Locations",
+        "Odd Location Wyrd Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Odd Locations is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1772": {
+    "id": 1772,
+    "prof": {
+      "Name": [
+        "Decisive",
+        "Decisive Wyrd High Boon Adjective Proficiency",
+        "firm, accessible, definite, resolute, final"
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Decisive is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1773": {
+    "id": 1773,
+    "prof": {
+      "Name": [
+        "Firm",
+        "Firm Wyrd High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Firm is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1774": {
+    "id": 1774,
+    "prof": {
+      "Name": [
+        "Accessible Locations",
+        "Accessible Location Wyrd High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Accessible Locations is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1775": {
+    "id": 1775,
+    "prof": {
+      "Name": [
+        "Judging",
+        "Judging Wyrd High Boon Adjective Proficiency",
+        "definitive, ideal, critical, analytical, discerning"
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Judging is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1776": {
+    "id": 1776,
+    "prof": {
+      "Name": [
+        "Definitive",
+        "Definitive Wyrd High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Definitive is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1777": {
+    "id": 1777,
+    "prof": {
+      "Name": [
+        "Ideal Locations",
+        "Ideal Location Wyrd High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Ideal Locations is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1778": {
+    "id": 1778,
+    "prof": {
+      "Name": [
+        "Destined",
+        "Destined Wyrd Very-High Boon Adjective Proficiency",
+        "menacing, looming, fated, predestined, certain"
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Destined is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1779": {
+    "id": 1779,
+    "prof": {
+      "Name": [
+        "Menacing",
+        "Menacing Wyrd Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Menacing is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1780": {
+    "id": 1780,
+    "prof": {
+      "Name": [
+        "Looming Locations",
+        "Looming Location Wyrd Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Looming Locations is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1781": {
+    "id": 1781,
+    "prof": {
+      "Name": [
+        "Mythical",
+        "Mythical Wyrd Very-High Boon Adjective Proficiency",
+        "legendary, mythic, fabulous, fabled, imaginary"
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Mythical is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1782": {
+    "id": 1782,
+    "prof": {
+      "Name": [
+        "Legendary",
+        "Legendary Wyrd Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Legendary is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1783": {
+    "id": 1783,
+    "prof": {
+      "Name": [
+        "Mythic Locations",
+        "Mythic Location Wyrd Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Mythic Locations is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1784": {
+    "id": 1784,
+    "prof": {
+      "Name": [
+        "Doomed",
+        "Doomed Wyrd Very-High Boon Adjective Proficiency",
+        "cursed, bewitched, fated, ill-fated, condemned"
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Doomed is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1785": {
+    "id": 1785,
+    "prof": {
+      "Name": [
+        "Cursed",
+        "Cursed Wyrd Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Cursed is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1786": {
+    "id": 1786,
+    "prof": {
+      "Name": [
+        "Bewitched Locations",
+        "Bewitched Location Wyrd Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Bewitched Locations is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1787": {
+    "id": 1787,
+    "prof": {
+      "Name": [
+        "Indifference",
+        "Indifference Wyrd Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Indifference is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1788": {
+    "id": 1788,
+    "prof": {
+      "Name": [
+        "Resentment",
+        "Resentment Wyrd Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Resentment is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1789": {
+    "id": 1789,
+    "prof": {
+      "Name": [
+        "Spite",
+        "Spite Wyrd Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Spite is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1790": {
+    "id": 1790,
+    "prof": {
+      "Name": [
+        "Considering",
+        "Considering Wyrd Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Considering is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1791": {
+    "id": 1791,
+    "prof": {
+      "Name": [
+        "Contemplating",
+        "Contemplating Wyrd Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Contemplating is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1792": {
+    "id": 1792,
+    "prof": {
+      "Name": [
+        "Cogitate",
+        "Cogitate Wyrd Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Cogitate is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1793": {
+    "id": 1793,
+    "prof": {
+      "Name": [
+        "Decide",
+        "Decide Wyrd Action Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Decide is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1794": {
+    "id": 1794,
+    "prof": {
+      "Name": [
+        "Snare",
+        "Snare Wyrd Attack Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Snare is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1795": {
+    "id": 1795,
+    "prof": {
+      "Name": [
+        "Magical",
+        "Magical Wyrd Critical Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Magical is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1796": {
+    "id": 1796,
+    "prof": {
+      "Name": [
+        "Cheater",
+        "Cheater Wyrd Core Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Cheater is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1797": {
+    "id": 1797,
+    "prof": {
+      "Name": [
+        "Sentences",
+        "Sentences Wyrd Descendants Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Sentences is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1798": {
+    "id": 1798,
+    "prof": {
+      "Name": [
+        "Destiny",
+        "Destiny Wyrd Edge Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Destiny is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1799": {
+    "id": 1799,
+    "prof": {
+      "Name": [
+        "Destiny",
+        "Destiny Wyrd Glow Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Destiny is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1800": {
+    "id": 1800,
+    "prof": {
+      "Name": [
+        "Just",
+        "Just Wyrd Failure Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Just is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

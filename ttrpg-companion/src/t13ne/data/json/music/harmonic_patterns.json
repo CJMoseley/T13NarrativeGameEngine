@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "version": "1.0",
+    "description": "Harmonic intersection patterns for Guitar and Pads."
+  },
+  "patterns": {
+    "Funk": {
+      "style": "Funk",
+      "description": "Perpetual 16th-note scratching with offbeat stabs.",
+      "guitar": { "steps": [1, 3, 5, 7, 9, 11, 13, 15], "velocity": 0.7, "duration": 0.1 },
+      "pad": { "steps": [4, 12], "velocity": 0.6, "duration": 0.2, "behavior": "snare_mirror" }
+    },
+    "Reggae": {
+      "style": "Global",
+      "description": "The Skank: Sharp downstrokes on 2 and 4.",
+      "guitar": { "steps": [4, 12], "velocity": 0.9, "duration": 0.1 },
+      "pad": { "steps": [2, 6, 10, 14], "velocity": 0.5, "duration": 0.2, "behavior": "syncopated" }
+    },
+    "Electronic": {
+      "style": "Electronic",
+      "description": "Muted 8th-note chugging and sidechained pads.",
+      "guitar": { "steps": [0, 2, 4, 6, 8, 10, 12, 14], "velocity": 0.6, "duration": 0.1 },
+      "pad": { "steps": [0], "velocity": 0.8, "duration": 4.0, "behavior": "sidechain" }
+    },
+    "Jazz": {
+      "style": "Jazz",
+      "description": "The Charleston rhythm.",
+      "guitar": { "steps": [0, 6], "velocity": 0.7, "duration": 0.4 },
+      "pad": { "steps": [0], "velocity": 0.5, "duration": 4.0, "behavior": "floating" }
+    },
+    "Rock": {
+      "style": "Rock",
+      "description": "Driving 8ths with power chords.",
+      "guitar": { "steps": [0, 2, 4, 6, 8, 10, 12, 14], "velocity": 0.8, "duration": 0.2 },
+      "pad": { "steps": [0, 8], "velocity": 0.6, "duration": 2.0, "behavior": "kick_lock" }
+    }
+  }
+}

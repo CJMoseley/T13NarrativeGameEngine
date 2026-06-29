@@ -1,0 +1,38 @@
+[
+    {
+        "Type": "Water",
+        "Description": "This Drama Pool will generate Drama with a frequency and intensity that resembles the most dramatic soap operas. It can even generate multiple different Dramas at the same time.",
+        "Dramatic Threshold": "2",
+        "Rules": "A Drama is created if any two Drama Dice roll the same result, if multiple dice roll the same result then each pair will generate its own Drama."
+    },
+    {
+        "Type": "Fire",
+        "Description": "This Drama Pool generates Drama quite consistently, creating twists, turns and hazardous fights often and is suitable for the most dramatic action sequences. Generally only one Drama can happen at a time.",
+        "Dramatic Threshold": "3",
+        "Rules": "Drama is created if any three Drama Dice roll the same result."
+    },
+    {
+        "Type": "Wood",
+        "Description": "This Drama Pool generates Drama consistently, not too often, and usually one at a time.",
+        "Dramatic Threshold": "4",
+        "Rules": "Drama is created whenever 4 or more Dice roll the same result."
+    },
+    {
+        "Type": "Earth",
+        "Description": "This Drama Pool generates Drama more infrequently, creating a more stable, less chaotic story with less surprises.",
+        "Dramatic Threshold": "5",
+        "Rules": "Drama is created when five or more Dice roll the same result."
+    },
+    {
+        "Type": "Metal",
+        "Description": "This Drama Pool generates Drama most infrequently, this makes the most stable stories, but the Suspense can be more palpable.",
+        "Dramatic Threshold": "6",
+        "Rules": "Drama is only created if 6 Dice roll the same result."
+    },
+    {
+        "Type": "Void",
+        "Description": "This Drama Pool will generate Drama erratically, Dramatic Tension may build, or collapse randomly, but can only create one Drama at any time.",
+        "Dramatic Threshold": "All",
+        "Rules": "Drama is only created if all Dice currently in the Drama Pool roll the same result. Although this can be modified by larger Drama Dice."
+    }
+]

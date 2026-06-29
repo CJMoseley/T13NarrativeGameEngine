@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 56,
+    "Name": "Traveller Abroad",
+    "Entity": "&#19959;",
+    "Logical": 44,
+    "Trigrams": [
+      6,
+      2
+    ],
+    "Hexagram_Text": "Lu, The Traveller Abroad (or Sojourning or Wanderer), signifies the adventure of being a Stranger in a strange land. Everything is weird and an experience for the true Wanderer, the most mundane things can be alien when seen with a foreigners eyes.",
+    "Unchanging": "You may change any Proficiency to another from the same Facet free once per day.",
+    "Line1": "Trivial Traveller",
+    "Line2": "With Baggage In The Inn",
+    "Line3": "Burning Bridges",
+    "Line4": "Sheltering At The Roadside",
+    "Line5": "Traveller Shoots Pheasant",
+    "Line6": "The Fool Abroad"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you see a new place or talk to a stranger",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you act suspicious of another Character",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yang",
+        "Condition": "you act miserly, focus on trivial things, or act as though something is fascinating",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yang",
+        "Condition": "you are self-reliant",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yin",
+        "Condition": "you are impulsive, lose support, or you or others around you are injured",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yin",
+        "Condition": "you act ill at ease, edgy or nervous",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you seek out new opportunities",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yin",
+        "Condition": "you act the fool, ignore a social more, or disrespect others",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Traveller Abroad Quest describes a situation where the Quester must travel to some alien, foreign locale to complete the test. Of course, the journey itself, rather than the destination is more important to the Quest here. The emphasis is often on the strangeness of customs, as well as the ephemeral nature of the experience. There is always inherent danger to this Quest, and the Quester must be cautious in alien lands.",
+    "Quest_Complete": "The Quest that ends with the Traveller Abroad Hexagram indicates the Quester is not pinned down, or imprisoned by the ending, that is no to say that they may be unpunished, simply that the punishment will not include imprisonment, exile for example would be a perfect match. Occasionally this ending may indicate when the Quester has returned to their own home, but both the Quester and home have been changed so much that they are both unrecognisable to each other.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester is confronted in their travels with things of very little value, or people of poor character. To be bothered with, distracted by, or to demean themselves with these trivial things or people will add a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester who is modest and reserved will find a place to stay and may even make friends or allies in this strange place. The Quester who is not modest and reserved may find themselves robbed, beset by beggars, or followed by fools adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The Quester who is impulsive or reckless in a strange land may find themselves in trouble, and adding a Failure Level, Obstacle or Hurdle to their Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester is in a dangerous position, surrounded by threats and without real protection. If they relax, and do not maintain their caution, they must add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. ",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester meets a stranger. If the Quester introduce themselves as is suitable to the culture (perhaps offering a gift of food) this will bring an additional Success Level as the stranger becomes a potential ally, companion, supporter or friend. Failure to greet the stranger appropriately to their culture will instead add a Hurdle, Obstacle or Failure Level to the Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester will encounter strange behaviour while they travel. If they laugh aloud at the strange behaviour, forgetting they are the one out of place, then they will add a Failure Level, Obstacle or Hurdle to their Test or Ordeal.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "The mountain, Kên, stands still; above it fire, Li, flames up and does not tarry. Therefore the two trigrams do not stay together. Strange lands and separation are the wanderer's lot.",
+    "The_Image": {
+      "text": "Fire on the mountain:\n\nThe image of THE WANDERER.\n\nThus the superior man\nIs clear-minded and cautious\nIn imposing penalties,\nAnd protracts no lawsuits.",
+      "comments": "When grass on a mountain takes fire, there is bright light. However, the fire does not linger in one place, but travels on to new fuel. It is a phenomenon of short duration. This is what penalties and lawsuits should be like. They should be a quickly passing matter, and must not be dragged out indefinitely. Prisons ought to be places where people are lodged only temporarily, as guests are. They must not become dwelling places."
+    },
+    "The_Judgment": {
+      "text": "The Wanderer. Success through smallness.\nPerseverance brings good fortune to the wanderer.\n\nWHEN A man is a wanderer and stranger, he should not be gruff nor overbearing. He has no large circle of acquaintances, therefore he should not give himself airs. He must be cautious and reserved; in this way he protects himself from evil. If he is obliging toward others, he wins success.",
+      "comments": "A wanderer has no fixed abode; his home is the road. Therefore he must take care to remain upright and steadfast, so that he sojourns only in the proper places, associating only with good people. Then he has good fortune and can go his way unmolested."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "If the wanderer busies himself with trivial things,\nHe draws down misfortune upon himself.",
+        "comments": "A wanderer should not demean himself or busy himself with inferior things he meets with along the way. The humbler and more defenseless his outward position, the more should he preserve his inner dignity. For a stranger is mistaken if he hopes to find a friendly reception through lending himself to jokes and buffoonery. The result will be only contempt and insulting treatment."
+      },
+      "2": {
+        "text": "The wanderer comes to an inn.\nHe has his property with him.\nHe wins the steadfastness of a young servant.",
+        "comments": "The wanderer her described is modest and reserved. He does not lose touch with his inner being, hence he finds a resting place. In the outside world he does not lose the liking of other people, hence all persons further him, so that he can acquire property. Moreover, he wins the allegiance of a faithful and trustworthy servant-a thing of inestimable value to a wanderer."
+      },
+      "3": {
+        "text": "The wanderer's inn burns down.\nHe loses the steadfastness of his young servant.\nDanger.",
+        "comments": "A truculent stranger does not know how to behave properly. He meddles in affairs and controversies that do not concern him; thus he loses his resting place. He treats his servant with aloofness and arrogance; thus he loses the man's loyalty. When a stranger in a strange land has no one left on whom he can rely, the situation becomes very dangerous."
+      },
+      "4": {
+        "text": "The wanderer rests in a shelter.\nHe obtains his property and an ax.\nMy heart is not glad.",
+        "comments": "This describes a wanderer who knows how to limit his desires outwardly, though he is inwardly strong and aspiring. Therefore he finds at least a place of shelter in which he can stay. He also succeeds in acquiring property, but even with this he is not secure. He must be always on guard, ready to defend himself with arms. Hence he is not at ease. He is persistently conscious of being a stranger in a strange land."
+      },
+      "5": {
+        "text": "He shoots a pheasant.\nIt drops with the first arrow.\nIn the end this brings both praise and office.",
+        "comments": "Traveling statesman were in the habit of introducing themselves to local princes with the gift of a pheasant, killing it at the first shot. Thus he finds friends who praise and recommend him, and in the end the prince accepts him and confers an office upon him. Circumstances often cause a man to seek a home in foreign parts. If he knows how to meet the situation and how to introduce himself in the right way, he may find a circle of friends and a sphere of activity even in a strange country."
+      },
+      "6": {
+        "text": "The bird's nest burns up.",
+        "comments": "The wanderer laughs at first,\n\nThen must needs lament and weep.\n\nThrough carelessness he loses his cow.\nMisfortune.\n\nThe picture of a bird whose nest burns up indicates loss of one's resting place. This misfortune may overtake the bird if it is heedless and imprudent when building its nest. It is the same with a wanderer. If he lets himself go, laughing and jesting, and forgets that he is a wanderer, he will later have cause to weep and lament. For if through carelessness a man loses his cow-i.e., his modesty and adaptability-evil will result."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Traveller Abroad'. Internalize this core philosophy: The mountain, Kên, stands still; above it fire, Li, flames up and does not tarry. Therefore the two trigrams do not stay together. Strange lands and separation are the wanderer's lot. Your current worldview is: \"Lu, The Traveller Abroad (or Sojourning or Wanderer), signifies the adventure of being a Stranger in a strange land. Everything is weird and an experience for the true Wanderer, the most mundane things can be alien when seen with a foreigners eyes.\". Let your choices be subtly driven by these conditions: you see a new place or talk to a stranger, you act suspicious of another Character. When interacting, mirror the wisdom found in the commentary: \"A wanderer has no fixed abode; his home is the road. Therefore he must take care to remain upright and steadfast, so that he sojourns only in the proper places, associating only with good people. Then he has good fortune and can go his way unmolested.\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Traveller Abroad'. The primary quest objective is: The Traveller Abroad Quest describes a situation where the Quester must travel to some alien, foreign locale to complete the test. Of course, the journey itself, rather than the destination is more important to the Quest here. The emphasis is often on the strangeness of customs, as well as the ephemeral nature of the experience. There is always inherent danger to this Quest, and the Quester must be cautious in alien lands.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: When grass on a mountain takes fire, there is bright light. However, the fire does not linger in one place, but travels on to new fuel. It is a phenomenon of short duration. This is what penalties and lawsuits should be like. They should be a quickly passing matter, and must not be dragged out indefinitely. Prisons ought to be places where people are lodged only temporarily, as guests are. They... Use the following line-specific challenges to pace the story: The Quester is confronted in their travels with things of very little value, or people of poor character. To be bothered with, distracted by, or to demean themselves with these trivial things or people will add a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test. | The Quester who is modest and reserved will find a place to stay and may even make friends or allies in this strange place. The Quester who is not modest and reserved may find themselves robbed, beset by beggars, or followed by fools adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test. | The Quester who is impulsive or reckless in a strange land may find themselves in trouble, and adding a Failure Level, Obstacle or Hurdle to their Test or Ordeal. | The Quester is in a dangerous position, surrounded by threats and without real protection. If they relax, and do not maintain their caution, they must add a Hurdle, Obstacle or Failure Level to their Ordeal or Test.  | The Quester meets a stranger. If the Quester introduce themselves as is suitable to the culture (perhaps offering a gift of food) this will bring an additional Success Level as the stranger becomes a potential ally, companion, supporter or friend. Failure to greet the stranger appropriately to their culture will instead add a Hurdle, Obstacle or Failure Level to the Ordeal or Test. | The Quester will encounter strange behaviour while they travel. If they laugh aloud at the strange behaviour, forgetting they are the one out of place, then they will add a Failure Level, Obstacle or Hurdle to their Test or Ordeal.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Trivial Traveller): Mirror the internal state described in the commentary: \"A wanderer should not demean himself or busy himself with inferior things he meets with along the way. The humbler and more defenseless his outward position, the more should he preserve his inner dignity. For a stranger is mistaken if he hopes to...\" Your actions should be framed by the goal: you act miserly, focus on trivial things, or act as though something is fascinating.",
+        "Plot": "Plot Complication Line 1 (Trivial Traveller): Introduce a challenge based on the interpretation: \"A wanderer should not demean himself or busy himself with inferior things he meets with along the way. The humbler and more defenseless his outward position, the more should he preserve his inner dignity. For a stranger is mistaken if he hopes to...\" The specific quest objective for this stage is: The Quester is confronted in their travels with things of very little value, or people of poor character. To be bothered with, distracted by, or to demean themselves with these trivial things or people will add a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (With Baggage In The Inn): Mirror the internal state described in the commentary: \"The wanderer her described is modest and reserved. He does not lose touch with his inner being, hence he finds a resting place. In the outside world he does not lose the liking of other people, hence all persons further him, so that he can acquire...\" Your actions should be framed by the goal: you are self-reliant.",
+        "Plot": "Plot Complication Line 2 (With Baggage In The Inn): Introduce a challenge based on the interpretation: \"The wanderer her described is modest and reserved. He does not lose touch with his inner being, hence he finds a resting place. In the outside world he does not lose the liking of other people, hence all persons further him, so that he can acquire...\" The specific quest objective for this stage is: The Quester who is modest and reserved will find a place to stay and may even make friends or allies in this strange place. The Quester who is not modest and reserved may find themselves robbed, beset by beggars, or followed by fools adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Burning Bridges): Mirror the internal state described in the commentary: \"A truculent stranger does not know how to behave properly. He meddles in affairs and controversies that do not concern him; thus he loses his resting place. He treats his servant with aloofness and arrogance; thus he loses the man's loyalty. When a...\" Your actions should be framed by the goal: you are impulsive, lose support, or you or others around you are injured.",
+        "Plot": "Plot Complication Line 3 (Burning Bridges): Introduce a challenge based on the interpretation: \"A truculent stranger does not know how to behave properly. He meddles in affairs and controversies that do not concern him; thus he loses his resting place. He treats his servant with aloofness and arrogance; thus he loses the man's loyalty. When a...\" The specific quest objective for this stage is: The Quester who is impulsive or reckless in a strange land may find themselves in trouble, and adding a Failure Level, Obstacle or Hurdle to their Test or Ordeal."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Sheltering At The Roadside): Mirror the internal state described in the commentary: \"This describes a wanderer who knows how to limit his desires outwardly, though he is inwardly strong and aspiring. Therefore he finds at least a place of shelter in which he can stay. He also succeeds in acquiring property, but even with this he is...\" Your actions should be framed by the goal: you act ill at ease, edgy or nervous.",
+        "Plot": "Plot Complication Line 4 (Sheltering At The Roadside): Introduce a challenge based on the interpretation: \"This describes a wanderer who knows how to limit his desires outwardly, though he is inwardly strong and aspiring. Therefore he finds at least a place of shelter in which he can stay. He also succeeds in acquiring property, but even with this he is...\" The specific quest objective for this stage is: The Quester is in a dangerous position, surrounded by threats and without real protection. If they relax, and do not maintain their caution, they must add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. "
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Traveller Shoots Pheasant): Mirror the internal state described in the commentary: \"Traveling statesman were in the habit of introducing themselves to local princes with the gift of a pheasant, killing it at the first shot. Thus he finds friends who praise and recommend him, and in the end the prince accepts him and confers an...\" Your actions should be framed by the goal: you seek out new opportunities.",
+        "Plot": "Plot Complication Line 5 (Traveller Shoots Pheasant): Introduce a challenge based on the interpretation: \"Traveling statesman were in the habit of introducing themselves to local princes with the gift of a pheasant, killing it at the first shot. Thus he finds friends who praise and recommend him, and in the end the prince accepts him and confers an...\" The specific quest objective for this stage is: The Quester meets a stranger. If the Quester introduce themselves as is suitable to the culture (perhaps offering a gift of food) this will bring an additional Success Level as the stranger becomes a potential ally, companion, supporter or friend. Failure to greet the stranger appropriately to their culture will instead add a Hurdle, Obstacle or Failure Level to the Ordeal or Test."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (The Fool Abroad): Mirror the internal state described in the commentary: \"The wanderer laughs at first,\n\nThen must needs lament and weep.\n\nThrough carelessness he loses his cow.\nMisfortune.\n\nThe picture of a bird whose nest burns up indicates loss of one's resting place. This misfortune may overtake the bird if it is...\" Your actions should be framed by the goal: you act the fool, ignore a social more, or disrespect others.",
+        "Plot": "Plot Complication Line 6 (The Fool Abroad): Introduce a challenge based on the interpretation: \"The wanderer laughs at first,\n\nThen must needs lament and weep.\n\nThrough carelessness he loses his cow.\nMisfortune.\n\nThe picture of a bird whose nest burns up indicates loss of one's resting place. This misfortune may overtake the bird if it is...\" The specific quest objective for this stage is: The Quester will encounter strange behaviour while they travel. If they laugh aloud at the strange behaviour, forgetting they are the one out of place, then they will add a Failure Level, Obstacle or Hurdle to their Test or Ordeal."
+      }
+    }
+  }
+}

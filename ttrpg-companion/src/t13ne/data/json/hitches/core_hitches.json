@@ -1,0 +1,134 @@
+[
+    {
+        "id": "T13-NE-HITCH-COREHITCHES-1",
+        "data": {
+            "Name": [
+                "Arachnophobia",
+                "Irrational Fear of Spiders Hitch",
+                "Arachnophobia, Fear of Spiders, irrational fear of spiders, "
+            ],
+            "Description": "Characters with Arachnophocia suffer from an irrational fear, terror, horror or fascination when in the presence of spiders and spider-like creatures. ",
+            "Bane": 13,
+            "Proficiencies": [
+                {
+                    "Type": "HitchType",
+                    "Prof": {
+                        "Name": [
+                            "Irrational",
+                            "Irrational Awe Hitch Type Proficiency",
+                            "Irrationality, Irrational Hitches, Irrational Fears, Irrational Thoughts, Irrational Love, Phobias, Manias, Philias, Awe Hitch Type,"
+                        ],
+                        "Description": "Irrational Hitches cause a Character to engage in irrational behaviour, or experience irrational emotions.",
+                        "Facet": "Awe",
+                        "ID": 0
+                    }
+                },
+                {
+                    "Type": "Gnarl",
+                    "Prof": {
+                        "Name": [
+                            "Fear",
+                            "Awe Emotional Gnarl Proficiency",
+                            "Alarm, Fear, Dread, Blanch, Cower, Creeps, Shudder, Quail, Flinch, Afraid, Fearful, Scared, Frightened, Wiggins, Phobia"
+                        ],
+                        "Description": "The emotion of fear is a distressing negative emotion aroused by impending danger, evil, or a chance of pain, etc. The feeling or emotional condition of being afraid.",
+                        "Facet": "Awe",
+                        "ID": 0
+                    }
+                },
+                {
+                    "Type": "Gnarl",
+                    "Prof": {
+                        "Name": [
+                            "Stress",
+                            "Stress (Orthodox Gnarl) Gnarl Proficiency",
+                            "Stress, Stressful, Stressing, Orthodox Gnarl Proficiency"
+                        ],
+                        "Description": "The Gnarl of Orthodox is Stress. Stress is nervous energy that can be positively used, but in excess creates nothing but harm, but Stress is a normal response to any kind of adversity. Hitches that are triggered simply add Stress to the Character or Descendant. The Stress Gnarl will create Hitch Marks Stress for the Character or Descendant each time the Hitch is Triggered",
+                        "Facet": "FacetName",
+                        "ID": 0
+                    }
+                },
+                {
+                    "Type": "Gnarl",
+                    "Prof": {
+                        "Name": [
+                            "Instinct",
+                            "Instinct Nature Gnarl Proficiency",
+                            "Instinctive, Instinctual, Instinct, Natural Instinct, inherent, impulsive, innate, intuitive, ingrained, habitual"
+                        ],
+                        "Description": "The Gnarl of Nature is Instinct. When a Hitch with an Instinct Gnarl is Triggered the Hitch will take a predefined Action with a Score equal to the Hitch Banes, or Pips equal to the Hitch Marks. Instinct responses can be to flee (Flight moving away), flinch (prepare defences), flirt (or similar charm offence defence mechanisms or sexual activity), hide/vanish, or fight (attack whatever Triggered the Hitch). This Instinct cannot be broken or ammended once set, exposure to the trigger will always result in the same response, no matter the circumstances until the Hitch is Resolved or this Gnarl is removed",
+                        "Facet": "Nature",
+                        "ID": 0
+                    }
+                },
+                {
+                    "Type": "Trigger",
+                    "Prof": {
+                        "Name": [
+                            "Spider",
+                            "Venomous Web-spinning Arachnid",
+                            "Cob, Spider, Tarantula, Wolf-spider, Web-spinner, Wall-climber"
+                        ],
+                        "Description": "Spiders (order Araneae) are air-breathing arthropods, having an exoskeleton, that have eight legs, moved by a combination of hydaulic pressure and muscle contraction. They typically have chelicerae with fangs generally able to inject venom, and spinnerets that extrude silk which may be used to trap and bind prey or construct trap lines, hinges, webs, etc",
+                        "Facet": "Nature",
+                        "ID": 0
+                    }
+                },
+                {
+                    "Type": "Trigger",
+                    "Prof": {
+                        "Name": [
+                            "Cobweb",
+                            "Lingering Dense Spider Webs",
+                            "Cobwebs, Filament, Gossamer, Web, Webbing, Sticky Fibres, Snare, Spider-web, Spider-silk"
+                        ],
+                        "Description": "A dense mass of lingering, old, often dust-coated, abandonned or ill-kempt web, spun by a spider, as either a walkway or to ensnare prey. Anything finely spun or flimsy.",
+                        "Facet": "Gossamer",
+                        "ID": 0
+                    }
+                },
+                {
+                    "Type": "Trigger",
+                    "Prof": {
+                        "Name": [
+                            "Eight-Legs",
+                            "Eight-Legged Arachnids",
+                            "Arachnids, Spiders, Scorpions, Mites, Camel-Spiders, Ticks, Whip Scorpions, Pseudo-Scorpions"
+                        ],
+                        "Description": "All Arachnids, whether spiders, scorpions, mites, ticks or whatever are all categorized by having eight legs.",
+                        "Facet": "Nature",
+                        "ID": 0
+                    }
+                },
+                {
+                    "Type": "Trigger",
+                    "Prof": {
+                        "Name": [
+                            "Webs",
+                            "Woven Interconnected Network Structure",
+                            "Webs, Networks, Enveloping, Nets, Networks"
+                        ],
+                        "Description": "Webs are complex networks of fibres, often knotted or woven from individual fibres",
+                        "Facet": "Dominion",
+                        "ID": 0
+                    }
+                },
+                {
+                    "Type": "Slot",
+                    "Prof": {
+                        "Name": [
+                            "",
+                            "Prof Full Name",
+                            "ProfAKA"
+                        ],
+                        "Description": "Proficiency Description",
+                        "Facet": "FacetName",
+                        "ID": 0
+                    }
+                }
+            ],
+            "preGeneratedLore": "A deep-seated, irrational revulsion toward the many-legged weavers of the dark. Those afflicted by this shadow of the spirit find their resolve crumbling in the presence of eight-legged arthropods and the sticky silken snares they leave behind. It is an instinctive terror that bypasses reason, a primal echo of ancient dangers that forces the body to flinch or flee when the skittering begins in the shadows."
+        }
+    }
+]

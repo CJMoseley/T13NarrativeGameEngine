@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>T13 TTRPG Companion & 3D VTT</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="brand">
+      <h1>T13 System</h1>
+      <span>Companion & 3D VTT</span>
+    </div>
+    
+    <nav>
+      <ul class="nav-links">
+        <li class="nav-item">
+          <a class="nav-link active" data-panel="vtt">
+            <span>3D Tabletop (VTT)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-panel="character">
+            <span>Character Sheet</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-panel="rulebook">
+            <span>Rules Handbook</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    
+    <!-- P2P PeerJS connection lobby -->
+    <div class="conn-panel">
+      <div class="conn-title">Peer Connection</div>
+      <div class="room-inputs">
+        <input type="text" id="roomIdInput" placeholder="Room ID (e.g. MyGame)">
+        <button class="btn" id="btnHostRoom">Host Game</button>
+        <button class="btn btn-secondary" id="btnJoinRoom">Join Game</button>
+        <div id="connectionStatus" style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; text-align: center;">
+          Offline
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Viewports -->
+  <main class="viewport">
+    
+    <!-- 3D VTT View -->
+    <div class="panel-view active" id="view-vtt">
+      <div id="vtt-container">
+        <!-- Floating controls for the 3D grid -->
+        <div class="vtt-controls">
+          <button class="btn btn-secondary" id="btnRollDice">Roll Dice (3d6)</button>
+          <button class="btn btn-secondary" id="btnClearDice">Clear Table</button>
+        </div>
+        <div id="vtt-canvas"></div>
+      </div>
+    </div>
+    
+    <!-- Character Sheet View -->
+    <div class="panel-view" id="view-character">
+      <div class="char-sheet-wrapper">
+        <div class="char-card">
+          <h2 style="font-family: var(--font-header); font-size: 1.8rem; color: var(--text-accent); margin-bottom: 20px; text-transform: uppercase;">
+            Character Catalyst
+          </h2>
+          <!-- Placeholder character creation interface -->
+          <div id="characterCreatorContent">
+            <p style="color: var(--text-muted); margin-bottom: 20px;">
+              Generating a T13 character starts with the I-Ching Numerology. Fill in details to calculate your hexagrams and bind proficiencies.
+            </p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+              <div style="display: flex; flex-direction: column; gap: 6px;">
+                <label style="font-size: 0.85rem; text-transform: uppercase; color: var(--text-accent); font-weight: 600;">Character Name</label>
+                <input type="text" id="inputCharName" value="Kaelen Weaver" style="background: rgba(10, 7, 20, 0.6); border: 1px solid var(--border-glass); border-radius: 6px; color: var(--text-main); padding: 10px; font-family: inherit;">
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 6px;">
+                <label style="font-size: 0.85rem; text-transform: uppercase; color: var(--text-accent); font-weight: 600;">Core Facet Focus</label>
+                <select id="selectCoreFacet" style="background: rgba(10, 7, 20, 0.6); border: 1px solid var(--border-glass); border-radius: 6px; color: var(--text-main); padding: 10px; font-family: inherit; outline: none;">
+                  <option value="Incarna">Incarna (Material/Physical)</option>
+                  <option value="Persona" selected>Persona (Identity/Mind)</option>
+                  <option value="Umbral">Umbral (Shadow/Spirit)</option>
+                  <option value="Nimbed">Nimbed (Glow/Aura)</option>
+                </select>
+              </div>
+            </div>
+            <button class="btn" id="btnGenerateCatalyst">Calculate Hexagram & Stats</button>
+            
+            <div id="characterStatsOutput" style="margin-top: 32px; display: none; padding-top: 24px; border-top: 1px dashed var(--border-glass);">
+              <!-- Render results here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Rulebook Iframe View -->
+    <div class="panel-view" id="view-rulebook">
+      <!-- Point directly to our compiled static single-page handbook -->
+      <iframe class="rulebook-frame" src="./rulebook/index.html" title="T13 Narrative System Rules Handbook"></iframe>
+    </div>
+
+    <!-- Floating Vtuber Widget (Always visible over VTT and sheets) -->
+    <div class="vtuber-box" id="vtuberWidget">
+      <div class="vtuber-header">
+        <h3>Vtuber Avatar</h3>
+        <span style="font-size: 0.75rem; color: var(--text-muted); cursor: pointer;" id="toggleWebcam">Webcam Off</span>
+      </div>
+      <div class="vtuber-canvas-container">
+        <!-- avatar renders here -->
+        <canvas class="vtuber-canvas" id="vtuberCanvas"></canvas>
+      </div>
+      <div class="vtuber-controls">
+        <button class="btn btn-secondary" style="flex: 1; font-size: 0.75rem; padding: 6px;" id="btnLoadVRM">Load VRM</button>
+        <button class="btn btn-secondary" style="flex: 1; font-size: 0.75rem; padding: 6px;" id="btnProceduralAvatar">Procedural</button>
+      </div>
+    </div>
+
+  </main>
+
+  <script type="module" src="/main.js"></script>
+</body>
+</html>

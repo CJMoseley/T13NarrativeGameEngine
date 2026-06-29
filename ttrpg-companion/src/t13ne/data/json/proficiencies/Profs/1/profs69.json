@@ -1,0 +1,1415 @@
+{
+  "3452": {
+    "id": 3452,
+    "prof": {
+      "Name": [
+        "Rigid",
+        "Rigid Orthodox Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Rigid is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3453": {
+    "id": 3453,
+    "prof": {
+      "Name": [
+        "Staid",
+        "Staid Orthodox Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Staid is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3454": {
+    "id": 3454,
+    "prof": {
+      "Name": [
+        "Stern",
+        "Stern Orthodox Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Stern is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3455": {
+    "id": 3455,
+    "prof": {
+      "Name": [
+        "Truthful",
+        "Truthful Orthodox Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Truthful is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3456": {
+    "id": 3456,
+    "prof": {
+      "Name": [
+        "Unprogressive",
+        "Unprogressive Orthodox Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Unprogressive is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3457": {
+    "id": 3457,
+    "prof": {
+      "Name": [
+        "Rival",
+        "Rival Orthodox Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Rival is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3458": {
+    "id": 3458,
+    "prof": {
+      "Name": [
+        "Ally",
+        "Ally Orthodox Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Ally is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3459": {
+    "id": 3459,
+    "prof": {
+      "Name": [
+        "Passionate",
+        "Passionate Phoenix Annex Root Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Passionate represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3460": {
+    "id": 3460,
+    "prof": {
+      "Name": [
+        "Hot",
+        "Hot Phoenix Annex Root Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Hot represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3461": {
+    "id": 3461,
+    "prof": {
+      "Name": [
+        "Fiery",
+        "Fiery Phoenix Annex Root Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Fiery represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3462": {
+    "id": 3462,
+    "prof": {
+      "Name": [
+        "Burning",
+        "Burning Phoenix Gnarl Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Burning represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3463": {
+    "id": 3463,
+    "prof": {
+      "Name": [
+        "Burning",
+        "Burning Phoenix Test Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Burning represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3464": {
+    "id": 3464,
+    "prof": {
+      "Name": [
+        "Purifying",
+        "Purifying Phoenix Test Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Purifying represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3465": {
+    "id": 3465,
+    "prof": {
+      "Name": [
+        "Flaming",
+        "Flaming Phoenix Glow Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Flaming represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3466": {
+    "id": 3466,
+    "prof": {
+      "Name": [
+        "Flaming",
+        "Flaming Phoenix Annex Root Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Flaming represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3467": {
+    "id": 3467,
+    "prof": {
+      "Name": [
+        "Aid",
+        "Aid Phoenix Quest Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Aid represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3468": {
+    "id": 3468,
+    "prof": {
+      "Name": [
+        "Burn",
+        "Burn Phoenix Quest Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Burn represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3469": {
+    "id": 3469,
+    "prof": {
+      "Name": [
+        "Burn",
+        "Burn Phoenix Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Burn represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3470": {
+    "id": 3470,
+    "prof": {
+      "Name": [
+        "Flame",
+        "Flame Phoenix Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Flame represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3471": {
+    "id": 3471,
+    "prof": {
+      "Name": [
+        "span>",
+        "span> Phoenix Critical Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, span> represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3472": {
+    "id": 3472,
+    "prof": {
+      "Name": [
+        "span>",
+        "span> Phoenix Fumble Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, span> represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3473": {
+    "id": 3473,
+    "prof": {
+      "Name": [
+        "Cure",
+        "Cure Phoenix Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Cure represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3474": {
+    "id": 3474,
+    "prof": {
+      "Name": [
+        "Cleaning",
+        "Cleaning Phoenix Test Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Cleaning represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3475": {
+    "id": 3475,
+    "prof": {
+      "Name": [
+        "Cooking",
+        "Cooking Phoenix Test Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Cooking represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3476": {
+    "id": 3476,
+    "prof": {
+      "Name": [
+        "Fire-starting",
+        "Fire-starting Phoenix Test Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Fire-starting represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3477": {
+    "id": 3477,
+    "prof": {
+      "Name": [
+        "Healing",
+        "Healing Phoenix Test Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Healing represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3478": {
+    "id": 3478,
+    "prof": {
+      "Name": [
+        "Rebirth",
+        "Rebirth Phoenix Turn Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Rebirth represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3479": {
+    "id": 3479,
+    "prof": {
+      "Name": [
+        "Recuperating",
+        "Recuperating Phoenix Test Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Recuperating represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3480": {
+    "id": 3480,
+    "prof": {
+      "Name": [
+        "Regeneration",
+        "Regeneration Phoenix Test Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Regeneration represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3481": {
+    "id": 3481,
+    "prof": {
+      "Name": [
+        "Medical",
+        "Medical Phoenix Annex Root Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Medical represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3482": {
+    "id": 3482,
+    "prof": {
+      "Name": [
+        "Boil",
+        "Boil Phoenix Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Boil represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3483": {
+    "id": 3483,
+    "prof": {
+      "Name": [
+        "Cauterise",
+        "Cauterise Phoenix Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Cauterise represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3484": {
+    "id": 3484,
+    "prof": {
+      "Name": [
+        "Cook",
+        "Cook Phoenix Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Cook represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3485": {
+    "id": 3485,
+    "prof": {
+      "Name": [
+        "Diagnose",
+        "Diagnose Phoenix Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Diagnose represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3486": {
+    "id": 3486,
+    "prof": {
+      "Name": [
+        "Electrocute",
+        "Electrocute Phoenix Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Electrocute represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3487": {
+    "id": 3487,
+    "prof": {
+      "Name": [
+        "Fry",
+        "Fry Phoenix Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Fry represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3488": {
+    "id": 3488,
+    "prof": {
+      "Name": [
+        "Grill",
+        "Grill Phoenix Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Grill represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3489": {
+    "id": 3489,
+    "prof": {
+      "Name": [
+        "Heal",
+        "Heal Phoenix Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Heal represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3490": {
+    "id": 3490,
+    "prof": {
+      "Name": [
+        "Ignite",
+        "Ignite Phoenix Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Ignite represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3491": {
+    "id": 3491,
+    "prof": {
+      "Name": [
+        "Medicate",
+        "Medicate Phoenix Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Medicate represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3492": {
+    "id": 3492,
+    "prof": {
+      "Name": [
+        "Regenerate",
+        "Regenerate Phoenix Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Regenerate represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3493": {
+    "id": 3493,
+    "prof": {
+      "Name": [
+        "Rejuvenate",
+        "Rejuvenate Phoenix Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Rejuvenate represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3494": {
+    "id": 3494,
+    "prof": {
+      "Name": [
+        "Rise",
+        "Rise Phoenix Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Rise represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3495": {
+    "id": 3495,
+    "prof": {
+      "Name": [
+        "Roast",
+        "Roast Phoenix Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Roast represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3496": {
+    "id": 3496,
+    "prof": {
+      "Name": [
+        "Treat",
+        "Treat Phoenix Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Treat represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3497": {
+    "id": 3497,
+    "prof": {
+      "Name": [
+        "Toast",
+        "Toast Phoenix Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Toast represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3498": {
+    "id": 3498,
+    "prof": {
+      "Name": [
+        "Clinical",
+        "Clinical Phoenix Annex Root Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Clinical represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3499": {
+    "id": 3499,
+    "prof": {
+      "Name": [
+        "Crispy",
+        "Crispy Phoenix Annex Root Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Crispy represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3500": {
+    "id": 3500,
+    "prof": {
+      "Name": [
+        "Destructive",
+        "Destructive Phoenix Annex Root Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Destructive represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3501": {
+    "id": 3501,
+    "prof": {
+      "Name": [
+        "Regenerative",
+        "Regenerative Phoenix Annex Root Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Regenerative represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

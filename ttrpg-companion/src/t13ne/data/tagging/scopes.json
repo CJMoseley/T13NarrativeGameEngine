@@ -1,0 +1,62 @@
+{
+    "0": {
+        "Name": "Development",
+        "Description": "This scope implies the element is under development and not ready to be published yet.",
+        "Slug": "dev",
+        "Parent": "T13Root"
+    },
+    "1": {
+        "Name": "Omniversal",
+        "Description": "This scope implies the element is available in all universes at all times. The scope is reserved for the most generic things possible (like the system core).",
+        "Slug": "omni",
+        "Parent": "T13Root"
+    },
+    "2": {
+        "Name": "Limited",
+        "Description": "This scope implies the element is limited in availability somehow. Limited scope almost always restricts access to the element by Genres and Eras, but there are even stricter limits.",
+        "Slug": "limited",
+        "Parent": "T13Root"
+    },
+    "3": {
+        "Name": "Referee",
+        "Description": "This scope implies that the element is intended only for Referees, this is Ref-only knowledge, and not to be accessed by any other Players, not even other Yarn-Tellers, usually. This often includes hidden Plots, secrets and specific rules, such as House Rules.",
+        "Slug": "ref",
+        "Parent": "2"
+    },
+    "4": {
+        "Name": "Multiversal",
+        "Description": "This scope implies that the element is available in most universes, it might not be truly Omniversal, but it is pretty generic. The element may still be restricted by Era and Genre.",
+        "Slug": "multi",
+        "Parent": "2"
+    },
+    "5": {
+        "Name": "Game",
+        "Description": "This scope implies that the element is available in one Game. It is reasonably common to restrict specific things to a single game. The Mechs or Spells developed during play in one Game are not necessarily available to other Characters playing in the same Universe.",
+        "Slug": "game",
+        "Parent": "2"
+    },
+    "6": {
+        "Name": "Universal",
+        "Description": "This scope implies that the element is available within one game Universe. It may also be restricted by Genre, and usually by Era as well. For example, the magic spells used by a Character in one Fantasy universe are often very different to that in another, although some Fantasy Multiverses exist where \"Fireball\" is always a similar effect.",
+        "Slug": "verse",
+        "Parent": "2"
+    },
+    "7": {
+        "Name": "Location",
+        "Description": "This scope implies that the element is available in one Location only. It is important to remember that Locations usually have smaller Locations within them that will also have access. Referees can use this to restrict items to a single system, planet, town or even building as they wish. For example, military rank strictly only carries weight within the territory that particular military controls.",
+        "Slug": "location",
+        "Parent": "2"
+    },
+    "8": {
+        "Name": "Plot Specific",
+        "Description": "This scope implies that the element is available in one Plot. The Plot might be a single Scene or an entire Cycle as required. This can allow a Yarn-Teller to introduce a new faction for a specific story-line, including specific Descendants and Proficiencies, which will not be available beyond that plot. A Character who has played through that Plot may retain these elements, but once lost they may not be repurchased without some re-occurrence of that Plot.",
+        "Slug": "plot",
+        "Parent": "2"
+    },
+    "9": {
+        "Name": "Private",
+        "Description": "This scope implies the element is private to the creator, and those people they have shared it with. As an example, the secret of a Character's real identity may be a secret known only to the Player, the Yarn-Teller, and perhaps the Referee.",
+        "Slug": "private",
+        "Parent": "2"
+    }
+}

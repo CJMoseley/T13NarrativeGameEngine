@@ -1,0 +1,44 @@
+[
+  {
+    "Chi": 1,
+    "Element_Type": "Range",
+    "Type": "Melee",
+    "Sway_Type_Description": "Melee Range is close enough to swing an arm and connect. It is usually around a half a Character's height or about a metre."
+  },
+  {
+    "Chi": 2,
+    "Element_Type": "Range",
+    "Type": "Measure",
+    "Sway_Type_Description": "Measure Range is close enough to swing your weapon and connect. It is usually a little over a Character's height adding on the Reach of the weapon and Stance. So perhaps up to 5 metres with some lances and pikes"
+  },
+  {
+    "Chi": 3,
+    "Element_Type": "Range",
+    "Type": "Close",
+    "Sway_Type_Description": "Close Range is close enough to throw an improvised weapon and have it kill. It is usually up to about five times the Character's height or around 10 metres."
+  },
+  {
+    "Chi": 8,
+    "Element_Type": "Range",
+    "Type": "Medium",
+    "Sway_Type_Description": "Medium Range is far enough away that you might want to aim to make sure you hit. Medium is up to ten times Close range, For human scale this is usually up to 100 metres."
+  },
+  {
+    "Chi": 17,
+    "Element_Type": "Range",
+    "Type": "Long",
+    "Sway_Type_Description": "Long Range is far enough away that you might need to use a rifle with sights, take a moment to prepare and aim. This is usually any range up to five times Medium Range, which is 101-500 metres or so."
+  },
+  {
+    "Chi": 44,
+    "Element_Type": "Range",
+    "Type": "Far",
+    "Sway_Type_Description": "Far Range is far enough away that if you start now you might get there in a few minutes. To shoot Far Range shots you probably need a good rifle, telescopic scope, and to shoot prone and the wind and even spin of the planet may effect a longer shot. This is usually anything more than five times Long range. Basically at human scales anything over half a kilometre is what we're talking about."
+  },
+  {
+    "Chi": 131,
+    "Element_Type": "Range",
+    "Type": "Horizon",
+    "Sway_Type_Description": "Horizon Range is hitting something that is out of sight over the horizon, or just visible at the horizon. Such shots are legendary with a rifle, but far easier with ballistic caluclators and artillery pieces. At human scale Horizon shots are usually around 4.8 km at sea level, although in mountains much longer ranges are possible."
+  }
+]

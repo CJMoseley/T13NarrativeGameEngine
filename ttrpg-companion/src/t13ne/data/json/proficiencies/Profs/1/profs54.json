@@ -1,0 +1,1412 @@
+{
+  "2702": {
+    "id": 2702,
+    "prof": {
+      "Name": [
+        "Technological",
+        "Technological Craft Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Technological is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2703": {
+    "id": 2703,
+    "prof": {
+      "Name": [
+        "Witchcraft",
+        "Witchcraft Craft Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Witchcraft is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2704": {
+    "id": 2704,
+    "prof": {
+      "Name": [
+        "span>",
+        "span> Dominion Critical Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, span> is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2705": {
+    "id": 2705,
+    "prof": {
+      "Name": [
+        "span>",
+        "span> Dominion Fumble Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, span> is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2706": {
+    "id": 2706,
+    "prof": {
+      "Name": [
+        "Social",
+        "Social Dominion Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Social is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2707": {
+    "id": 2707,
+    "prof": {
+      "Name": [
+        "Network",
+        "Network Dominion Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Network is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2708": {
+    "id": 2708,
+    "prof": {
+      "Name": [
+        "Influence",
+        "Influence Dominion Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Influence is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2709": {
+    "id": 2709,
+    "prof": {
+      "Name": [
+        "Control",
+        "Control Dominion Quest Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Control is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2710": {
+    "id": 2710,
+    "prof": {
+      "Name": [
+        "Control",
+        "Control Dominion Test Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Control is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2711": {
+    "id": 2711,
+    "prof": {
+      "Name": [
+        "Control",
+        "Control Dominion Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Control is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2712": {
+    "id": 2712,
+    "prof": {
+      "Name": [
+        "Lead",
+        "Lead Dominion Quest Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Lead is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2713": {
+    "id": 2713,
+    "prof": {
+      "Name": [
+        "Lead",
+        "Lead Dominion Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Lead is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2714": {
+    "id": 2714,
+    "prof": {
+      "Name": [
+        "Join",
+        "Join Dominion Quest Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Join is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2715": {
+    "id": 2715,
+    "prof": {
+      "Name": [
+        "Join",
+        "Join Dominion Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Join is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2716": {
+    "id": 2716,
+    "prof": {
+      "Name": [
+        "Manipulation",
+        "Manipulation Dominion Test Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Manipulation is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2717": {
+    "id": 2717,
+    "prof": {
+      "Name": [
+        "Politics",
+        "Politics Dominion Test Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Politics is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2718": {
+    "id": 2718,
+    "prof": {
+      "Name": [
+        "Popularity",
+        "Popularity Dominion Test Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Popularity is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2719": {
+    "id": 2719,
+    "prof": {
+      "Name": [
+        "Self-control",
+        "Self-control Dominion Test Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Self-control is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2720": {
+    "id": 2720,
+    "prof": {
+      "Name": [
+        "Political",
+        "Political Dominion Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Political is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2721": {
+    "id": 2721,
+    "prof": {
+      "Name": [
+        "Administrate",
+        "Administrate Dominion Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Administrate is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2722": {
+    "id": 2722,
+    "prof": {
+      "Name": [
+        "Agree",
+        "Agree Dominion Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Agree is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2723": {
+    "id": 2723,
+    "prof": {
+      "Name": [
+        "Command",
+        "Command Dominion Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Command is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2724": {
+    "id": 2724,
+    "prof": {
+      "Name": [
+        "Conquer",
+        "Conquer Dominion Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Conquer is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2725": {
+    "id": 2725,
+    "prof": {
+      "Name": [
+        "Destroy",
+        "Destroy Dominion Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Destroy is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2726": {
+    "id": 2726,
+    "prof": {
+      "Name": [
+        "Detonate",
+        "Detonate Dominion Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Detonate is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2727": {
+    "id": 2727,
+    "prof": {
+      "Name": [
+        "Direct",
+        "Direct Dominion Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Direct is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2728": {
+    "id": 2728,
+    "prof": {
+      "Name": [
+        "Dominate",
+        "Dominate Dominion Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Dominate is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2729": {
+    "id": 2729,
+    "prof": {
+      "Name": [
+        "Engage",
+        "Engage Dominion Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Engage is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2730": {
+    "id": 2730,
+    "prof": {
+      "Name": [
+        "Enslave",
+        "Enslave Dominion Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Enslave is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2731": {
+    "id": 2731,
+    "prof": {
+      "Name": [
+        "Erupt",
+        "Erupt Dominion Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Erupt is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2732": {
+    "id": 2732,
+    "prof": {
+      "Name": [
+        "Exploit",
+        "Exploit Dominion Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Exploit is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2733": {
+    "id": 2733,
+    "prof": {
+      "Name": [
+        "Govern",
+        "Govern Dominion Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Govern is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2734": {
+    "id": 2734,
+    "prof": {
+      "Name": [
+        "Involve",
+        "Involve Dominion Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Involve is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2735": {
+    "id": 2735,
+    "prof": {
+      "Name": [
+        "Manage",
+        "Manage Dominion Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Manage is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2736": {
+    "id": 2736,
+    "prof": {
+      "Name": [
+        "Monopolise",
+        "Monopolise Dominion Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Monopolise is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2737": {
+    "id": 2737,
+    "prof": {
+      "Name": [
+        "Organise",
+        "Organise Dominion Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Organise is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2738": {
+    "id": 2738,
+    "prof": {
+      "Name": [
+        "Reign",
+        "Reign Dominion Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Reign is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2739": {
+    "id": 2739,
+    "prof": {
+      "Name": [
+        "Socialise",
+        "Socialise Dominion Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Socialise is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2740": {
+    "id": 2740,
+    "prof": {
+      "Name": [
+        "Steer",
+        "Steer Dominion Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Steer is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2741": {
+    "id": 2741,
+    "prof": {
+      "Name": [
+        "Supervise",
+        "Supervise Dominion Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Supervise is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2742": {
+    "id": 2742,
+    "prof": {
+      "Name": [
+        "Treaty",
+        "Treaty Dominion Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Treaty is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2743": {
+    "id": 2743,
+    "prof": {
+      "Name": [
+        "Connected",
+        "Connected Dominion Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Connected is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2744": {
+    "id": 2744,
+    "prof": {
+      "Name": [
+        "Decisive",
+        "Decisive Dominion Annex Root Proficiency",
+        "firm, accessible, definite, resolute, final"
+      ],
+      "Description": "Framed by political power and social structures, Decisive is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2745": {
+    "id": 2745,
+    "prof": {
+      "Name": [
+        "Dominant",
+        "Dominant Dominion Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Dominant is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2746": {
+    "id": 2746,
+    "prof": {
+      "Name": [
+        "Explosive",
+        "Explosive Dominion Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Explosive is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2747": {
+    "id": 2747,
+    "prof": {
+      "Name": [
+        "Managerial",
+        "Managerial Dominion Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Managerial is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2748": {
+    "id": 2748,
+    "prof": {
+      "Name": [
+        "Moderation",
+        "Moderation Dominion Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Moderation is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2749": {
+    "id": 2749,
+    "prof": {
+      "Name": [
+        "Mutual",
+        "Mutual Dominion Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Mutual is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2750": {
+    "id": 2750,
+    "prof": {
+      "Name": [
+        "Pyrotechnical",
+        "Pyrotechnical Dominion Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Pyrotechnical is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2751": {
+    "id": 2751,
+    "prof": {
+      "Name": [
+        "Regional",
+        "Regional Dominion Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Regional is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

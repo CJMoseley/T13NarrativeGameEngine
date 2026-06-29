@@ -1,0 +1,147 @@
+[
+    {
+        "Type": "Affecting",
+        "Description": "Affecting Descendants have additional effects upon their users and surroundings.",
+        "Rule": "The Affecting Edge causes the Descendant to cosmetically alter the appearance of the user. The Affecting Glow causes the Surrounding Location or User to be affected as though Side-Stepped by the Master Annex Roll as Yarn when the Descendant is entered, held, drawn or used as appropriate."
+    },
+    {
+        "Type": "Annex",
+        "Description": "The Annex Descendant has additional Annexes beyond normal.",
+        "Rule": "The Annex Edge grants the Descendant an additional Annex of the highest type available (Proficiency for a Skill, Skill for a Talent, etc). The Annex Glow grants an additional Annex of type \"equal\" to the Master Annex or Super-Annex, and one of each lower Annex type down to Proficiency."
+    },
+    {
+        "Type": "Assault",
+        "Description": "An Assault Descendant is intended to cause greater damage to its targets, but is draining on the Descendant.",
+        "Rule": "An Assault Edge can make one Attack per Scene at Extreme Stakes and may Roll the Descendant’s Master Annex Die and add the result to the Pips for the Attack for a cost of 1 Stored Chi. An Assault Glow makes one Attack per Ordeal Round at Extreme Stakes automatically, and adds the Descendant' Edge Tier Limit to the Pips of that Attack for 1 Chi. "
+    },
+    {
+        "Type": "Back-up",
+        "Description": "An Back-up Descendant is capable of calling or sending back-up, assistance, or aid. It is common on Pact Descendants.",
+        "Rule": "A Back-up Edge can summon one member of the Pact from a lower Tier or one Extra with a Boon smaller than the Master Annex Boon of the Descendant. A Back-Up Glow can summon all same or lower Tiered members of the Pact or Summon a number of Characters equal to the Total Stored Chi in the Descendant (see sway table). Summoning will take time based on the Master Annex Boon as a Chi Limit Duration, but may be accelerated by paying Chi from the Descendant."
+    },
+    {
+        "Type": "Better",
+        "Description": "A Better Descendant is just better than others.",
+        "Rule": "A Better Edge adds the current number of Edges to every rolled Score (does not effect the Tier Limits). A Better Glow adds +2 for each Edge and +5 Score for each Glow."
+    },
+    {
+        "Type": "Changes",
+        "Description": "The Changes Descendant grants a Descendant a personality of sorts. This is often a animistic spirit the User associates with the Descendant, but it may be communicative such as an AI assistant. It is certainly true that the Descendant gains Sway in new ways and may even have its own abilities that it can employ.",
+        "Rule": "The Changes Edge grants the Descendant an I-Ching Hexagram (with a Gain that usually pays 1). The Changes Glow grants a second Hexagram to the Descendant that is normally the same as the previous one, granting that Hexagram’s \"Unchanging\" ability (or Changing Lines) to the Descendant."
+    },
+    {
+        "Type": "Dark",
+        "Description": "Dark Descendants are wreathed in shadows and darkness.",
+        "Rule": "A Descendant with a Dark Edge has a shroud of darkness that engulfs it.  This clouds an area equal to the Edge Tier Limit as a Size, with an unfavourable lighting condition or shadow for non-Users (-2). A Dark Glow is a deeper darkness that renders everyone in the radius apart from the User effectively blind (-13), or affects them with an Umbral effect."
+    },
+    {
+        "Type": "Doomed",
+        "Description": "Doomed Descendants have a greater purpose, and can be leveraged by Characters to achieve theirs.",
+        "Rule": "Doomed Edges allow a Wyrd Tarot card to be played upon the Descendant, that will linger permanently. Court cards are permanently active in their desired facing for the Descendant and any User, but Non-Court cards must be activated for 1 Chi. Doomed Glows allow the Descendant to use the lingering Doom card as a Yarn Card at anytime by the User (even Grunts can Yarn-Tell a little with this Descendant)."
+    },
+    {
+        "Type": "Diabolic/Unseelie",
+        "Description": "Diabolic or Unseelie Descendants are usually associated with devils, demons, and Unseelie faeries.",
+        "Rule": "Diabolic / Unseelie Edges grant a Descendant a bonus to all Yang Facet Actions equal to the number of Edges &times; 2, but exude an aura may be sensed as a malevolent force. Diabolic / Unseelie Glows raise this bonus to +3 for each Edge and +10 for each Glow, but the aura is now visibly present as a flame, shadow, or sparks. It also creates a noise when used, like screaming souls, moans, whispering voices, or raging fires, and has an associated smell such as brimstone, corruption, or excrement."
+    },
+    {
+        "Type": "Discount",
+        "Description": "Discount Descendants grant the user discounts on other Descendants that they purchase. This can represent staff or guild discounts, loyalty cards, insider knowledge, old school networks, or just being rich.",
+        "Rule": "Discount Edges grant a discount on purchases of other Descendants, usually based on genre conventions and social conventions (subject to Yarn-Teller and Referee agreement) equal to the Edge Tier Limit / Master Annex Score in Chi for each Edge. Discount Glows increase this ability to the Master Annex Boon for each Glow. Purchases retain a minimum cost of 1 Chi."
+    },
+    {
+        "Type": "Divine/Seelie",
+        "Description": "Divine or Seelie Descendants are usually associated with saints, gods, and Seelie faeries.",
+        "Rule": "Divine / Seelie Edges grant a Descendant a bonus to all Yin Facet Actions equal to the number of Edges &times; 2, but exude an aura that may be sensed as a benevolent force. Divine / Seelie Glows raise this bonus to +3 for each Edge and +10 for each Glow, but the aura is now visibly present as a flame, frost, or light. It also creates a noise when used, like a bell ring, singing choirs, whispered prayers, or susurrating leaves, and has an associated perfume, such as flowers, fresh pine, incense or fresh baking."
+    },
+    {
+        "Type": "Effective",
+        "Description": "Effective Descendants are more effective than others. ",
+        "Rule": "A Descendant with an Effective Edge adds a Success Level once per Scene. As an Effective Glow this increases to adding a Success Level to every Action."
+    },
+    {
+        "Type": "Eternal",
+        "Description": "Eternal Descendants never age, or are damaged, until they are destroyed.",
+        "Rule": "The Eternal Edge causes a Descendant to not age. It will always maintain the appearance of whatever age it had when the Edge was added. The Eternal Glow increases this to make the State of the Descendant also unchanging. Additionally, no Wound will affect the Eternal Descendant until it is affected by any Mortal or Carnage Wound when it will immediately collapse into dust."
+    },
+    {
+        "Type": "Extended",
+        "Description": "Extended Descendants are customised to make them permanently bigger somehow. Often this pertains to a single dimension, such as length (a Stretch Limousine), height, or duration (time such as, Chronoliths that last longer than an Instant).",
+        "Rule": "The Extended Edge increases the selected dimension slightly. Increasing in size can increase Reach or add a new Size Annex to the Descendant equal to the number of Edges (e.g. 3 Edges could grant Reach or Size +3), but is most important for extending the duration of normally instantaneous effects. The Extended Glow increases the Scale of the Owner by +1 (even beyond their number of Hitches), and increases the Reach or Size Annex by 2 per Edge and 3 per Glow"
+    },
+    {
+        "Type": "Fast",
+        "Description": "Fast Descendants are quicker than others. ",
+        "Rule": "A Descendant with an Fast Edge reduces the RT of all Annexes by the total number of Edges and all GRTs by 1. The Fast Glow reduces GRT by the number of Glows +1 and RT is at most 1."
+    },
+    {
+        "Type": "Fortunate",
+        "Description": "Fortunate Descendants are less likely to be randomly difficult to handle, or explosive, unstable, etc.",
+        "Rule": "If a Descendant with an Fortunate Edge rolls less than average then it automatically takes the average instead, this also grants a re-roll of one Proficiency die during a Proficiency Crisis. When raised to an Fortunate Glow, the Descendant always rolls maximum."
+    },
+    {
+        "Type": "Hardened",
+        "Description": "A Hardened Descendant is tougher than you might expect. In some cases it may be nigh on indestructible.",
+        "Rule": "A Hardened Edge can store one additional Wound on one of the Descendant’s Annexes. A Hardened Glow will store an extra Wound on each Annex, and may ignore 1 Wound completely."
+    },
+    {
+        "Type": "Knowledge",
+        "Description": "Knowledge Descendants grant their User access to their own Proficiencies as though they were the Users.",
+        "Rule": "Knowledge Edges allow the Wielder to access one Proficiency from each Annex of the Descendant as though it was their own. Knowledge Glows grant the User access to all the Proficiencies in the Descendant as though they were their own."
+    },
+    {
+        "Type": "Light",
+        "Description": "Light Descendants are lit with an aura that only the User can see.",
+        "Rule": "A Descendant with an Light Edge has a flickering aura that activates when the Descendant is used. This Aura lights an area equal to the Edge Tier Limit as a Size, usually only the User can see by this light, but it may be visible to everyone in a high magical field or setting. A Light Glow grants each and every action with the Edged Descendant a specific Facet Success, chosen by the Creator."
+    },
+    {
+        "Type": "Monstrous",
+        "Description": "Those who wield the Descendant, or enter the Location or Space become Monsters.",
+        "Rule": "Each Monstrous Edge grants the User (or those in the Location) access to a Monster Facet (usually the Descendant Incarna or Master Annex Channelling Facet). However, the Monster Pool is restricted by the Descendant, to the Edge Tier Cost Reduced cards. A Monstrous Glow grants full unrestricted access to the Monster Pool and grants access to Monster Facets of both the Master Annex Root and Channel Facets."
+    },
+    {
+        "Type": "Paid",
+        "Description": "A Descendant or with a Paid Edge is cheaper to use than others of its type.",
+        "Rule": "A Descendant with a Paid Edge allows its user to ignore one Umbral or Hitch when using the Descendant. A Descendant with a Paid Glow will negate all Descendant Hitches and Umbrals when using the Descendant."
+    },
+    {
+        "Type": "Personal",
+        "Description": "Personal Descendants are intended to be used only by their Creator or Owner",
+        "Rule": "Descendants with a Personal Edge add +2 Score per Edge when used by the person who set the Edge, but have a -2 per Edge if wielded by someone else. The Personal Glow will attempt to attack anyone who does not have a Personal Edge that attempts to use the Descendant and adds 1 Failure Level to every action they attempt with the Descendant."
+    },
+    {
+        "Type": "Personality",
+        "Description": "The Personality Descendant becomes, or at least seems close to, sentient. It definitely displays at least an animal-like personality. Combined with Changes this can create a truly intelligent and real personality.",
+        "Rule": "The Personality Edge can grant a Descendant either a Master Annex Channelling Facet Persona, or a Master Annex Root Facet Core. These Cores may affect the user if Referee and Yarn-Teller deem it appropriate. As a Glow this will grant both, and effectively replace the Descendant with an appropriate Archetype / Extra Character."
+    },
+    {
+        "Type": "Rank",
+        "Description": "Rank Descendants allow grades of Membership for Pacts (or similar).",
+        "Rule": "Each Rank Edge purchased buys a Rank within the Pact/Descendant, the number of possible Rank Edges gives the number of subordinates within the organization that the Rank has (as Yarn Group Size on the Sway Table) E.g. a Military Organization Pact, may have Rank 1 (Corporal) 3-10 Subordinates, Rank 2 (Sergeant) Dozen to 39 subordinates, Rank 3 (Lieutenant) 40-84 subordinates, Rank 4 (Captain) 85-374 subordinates, and so on. A Rank Glow will add Two Rank Edges, and grant access to another Edge such as Mentor or Proficient. Subordinates are expected to follow the orders of those with a higher Rank, or face expulsion from the Pact. Rank also counts as a Pay-day Edge but all Chi rewards are halved."
+    },
+    {
+        "Type": "Relieving",
+        "Description": "Relieving Descendants provide Stress Relief for their User.",
+        "Rule": "A Relieving Edge Relieves Stress for the User. Typically the Edge will Relieve Stress equal to the Rolled Score each use. A Relieving Glow will Relieve all Stress when drawn or weilded."
+    },
+    {
+        "Type": "Shielding",
+        "Description": "Shielding Descendants help protect themselves and their User.",
+        "Rule": "A Shielding Edge creates a Descendant or Defensive Style Pool Prepared Defence, each time it is wielded. This Prepared Defence always has a minimum card of a 2 and a maximum card Pip equal to the Master Annex Maximum Score. E.g. A d6 Sword would create a 2-6 Prepared Defence. A Shielding Edge adds a total number of Pips equal to the Edge Tier Cost &times; the total number of Edges, e.g. the d6 sword with a Shielding Edge and two others would create a Prepared Defence for 2-6 Pips and 18 Pips total each time it is drawn. A Shielding Glow creates a Prepared Defence that is always up and can block all Ordeal cards. It uses the current stored Chi as the Pips of the Defence, but will lose 1 Chi for each card stopped."
+    },
+    {
+        "Type": "Shrinking",
+        "Description": "Shrinking Descendants are customised to make them capable of collapsing or shrinking somehow. Usually this Shrinking will effect the Reach (a magical shrinking staff, collapsable baton), Size (collapsible ladders or tents) or Duration (Limiting normally permanent effects such as making a temporary hole).",
+        "Rule": "The Shrinking Edge decreases the Size, Reach or Extend Duration (or more often, increases the Limit Duration) of a Descendant by the number of Edges when required. e.g. 3 Edges, 1 of which was Shrinking, would grant Reach or Size of -3 or a Duration Limit of a Decade. The Shrinking Glow allows the User to change size with the Descendant, and decreases the Reach, Size or Duration by 2 per Edge and 3 per Glow as Chi. This can allow a Shrinking Glow along with two other Edges to alter Reach or Size by -7 (which can shrink the User to the size of a Bee), or let you kill someone for 4 months before they get better."
+    },
+    {
+        "Type": "Stressful",
+        "Description": "Stressful Descendants generate Stress for their User and the Target.",
+        "Rule": "A Stressful Edge creates Stress for the User and the Target each use. The User Gains the generated Score from the Die roll as Stress. The Target Gains Stress always equal to the Maximum possible roll. A Stressful Glow mulitples the Stress gained by the total number of Edges, which can quickly become Strains or Shocks and Traumas. Use with care."
+    },
+    {
+        "Type": "Wielded",
+        "Description": "A Wielded Descendant grants its owner or user an Edge of their own.",
+        "Rule": "A Wielded Edge grants the User or Owner one of the other Edges that effects themselves. A Wielded Glow grants either another Glow to the User or all Edges, as the Owner decides."
+    }
+]

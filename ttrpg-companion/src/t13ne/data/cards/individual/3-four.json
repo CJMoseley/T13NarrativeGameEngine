@@ -1,0 +1,118 @@
+{
+	"Card_Corner": "4",
+	"Card": "Four",
+	"Suit": "3",
+	"IconSuit": "♣",
+	"Pips": "4",
+	"Unicode": "&#x1f0d4;",
+	"Svg": "images/cards-svg/4C.svg",
+	"Wound_Level": 1,
+	"Facet": "Fury",
+	"Tao": [
+		1,
+		1
+	],
+	"Narrative_Meaning": "Fours signify stability and foundations. They usually indicate some foundation, whether an organization or a building, that may have its foundation weakened, damaged or strengthened by the narrative.",
+	"Image": "",
+	"Yarn": {
+		"Yarn_Name": "The Waters",
+		"Yarn_Description": "The Waters is a card that can literally mean waters, in the form of a river, a lake or an ocean that is important as a location, motif, or symbol, but it can also be symbolic, standing for the darker, violent emotions, that suddenly explode from out of someone. It can be hidden, deep motifs and meanings too. In these waters unconscious acts stir unpredictable actions.",
+		"Significator": {
+			"Plot": "The Waters Plot is deep. It may be that there are a lot of sides, or that the Conflict involves deeper themes than normal. Perhaps it is philosophical, an essay on the existential angst that haunts modern life, or how predestination paradoxes and prophesy counter the concept of free-will. Then again, maybe the Story revolves literally around waters, waves, water-craft, and sailors. ",
+			"Side": "A side of a Conflict marked by the Deep, will often be deeply affected philosophically or emotionally by the events occurring in the main Conflict. This often leads that side to behave outside what is expected, due to the depth of their feelings.",
+			"Character": "The Waters Significator indicates a deep, philosophical, emotional Character. <p>They <strong>Gain Yin</strong> when they act calm, thoughtful, or philosophical. </p><p>They <strong>Gain Yang</strong> when they act agitated, emotional or angry. </p><p>They <strong>Gain Chi</strong> when they empathise or reflect another's emotions. </p><p>They gain +1 Success Level to all Psyche Attacks.</p>",
+			"Diegetic_Character": "A deeply emotional and contemplative individual, possessing a philosophical mind and a heart that resonates with the feelings of others. They are subject to sudden shifts in temperament, moving from thoughtful calm to stormy agitation as their inner tides dictate.",
+			"Scene": "The Waters Scene is one that features Water. The Waters often represent a moment of death and rebirth, which is a profound Ordeal or Weft. They don't all have to be so deep, sometimes it just means it rains. Yarn-Tellers may play the card to gain deep insights, travel by water, or create Ordeals (including rebirth), as required."
+		},
+		"Beat_Type": "4",
+		"Conflict_Embodiment": "3",
+		"Facet_Embodiment": "16",
+		"Hook_Aspect": "Hitch",
+		"Aspect_Description": "The Hook targets the Character's Hitches, specifically this one will target a Quirk. Triggering the Hitch as part of the Hook usually, but offering to resolve this Quirk often too. For example, a Character may be wanted by the law, well this Hook can threaten them with jail or offer them a pardon.",
+		"Hook": "Rising Waters",
+		"Hook_Description": "The story hooks the character with a slowly rising danger. This can be a literal rising water level, or a sign of worse things to come, such as being teased, before it turns to abuse and bullying. The danger is present now, but may not be taken seriously enough yet.",
+		"Gain": "Water Location (such as a pond, pool, lake, river, shore, beach or a suitable water  vehicle)",
+		"Diegetic_Gain": "A tranquil sanctuary near the water—a hidden pool, a serene shoreline, or a dependable vessel that provides both refuge and a means of travel.",
+		"Fray": "Drowning",
+		"Fray_Description": "Drowning is any Ordeal where the Stakes rise rapidly during the Ordeal. Drowning might start as Low Stakes (a pleasant swim or putting a meal on credit card), but it soon escalates until the Stakes are Medium (a current starts to drag them out to sea or they have to take a pay day loan after the car breaks down, until suddenly the stakes are High or even higher (far from shore the sharks start circling or finally they made a deal with the devil to pay off the debt).",
+		"Snag": "Leaks",
+		"Snag_Description": "After the Fray it appears that there is a leak. This could be a case of getting home to find the Embodiment's apartment flooded, or it may mean there is a mole in their organization. Either way some things are damaged or lost, or some information makes its way to the Opposed Embodiment.",
+		"NPC": {
+			"Archetype": "Bully",
+			"Persona": 5,
+			"Core": 3,
+			"Hitch": 0,
+			"Description": "The Bully likes to get their own way, throwing orders and punches as easily and as often as each other, all bullies though are afraid of something and are driven by fury and fear."
+		},
+		"Sweeping": "Salvage",
+		"Sweeping_Text": "You rescue someone, or something from destruction. This often is a gain of a treasure descendant, vehicle, location or powerful ally.",
+		"History": "Abyssal",
+		"History_Description": "The Waters indicates that the history that leads to the current situation is either very deep, stretching back to ancient even prehistoric times, and / or very dark, whether emotional, deadly, grim, wicked, sinister, shadowed or obscured.",
+		"Situation": "Uncontrolled",
+		"Situation_Description": "The Waters indicates that the current situation is not a result of any controlled plan or conspiracy, but has occurred as a random chance, or some unconscious instinct or reaction.",
+		"Solution": "Outburst",
+		"Solution_Description": "The Waters indicates that the way out of the current situation will involve a building of pressure, often physically, emotionally, psychologically or even psychically, until there is an outburst of some kind. The only real question is who, or what, the required outburst is meant to burst from.",
+		"Revelations": {
+			"About": "The Story",
+			"About_Description": "The information is about the current situation and plot. It might include information about one side of the Conflict, all the sides and anything in between. It is normal when providing information to always reveal information about the Dominant Side as well as any others.",
+			"Info": "Answers",
+			"Info_Description": "When we have questions, all we want is answers. Of course, an answer is not always the same as <em>the</em> answer. What are the biggest questions someone would have about the Embodiment? Now create two answers to each of those questions.",
+			"Vector": "Fluids",
+			"Vector_Description": "The information is carried by a fluid medium, this may mean the sonar that dolphins or submarines use, the electrical signals tracked by some bottom-feeding species, how a blood splattered crime scene tells the story of the crime, how liquid ink running from a fountain pen can write a message, or how much emotional information can be convened in a single tear welling and rolling forth.",
+			"Alternate": "Abyss",
+			"Alternate_Description": "The information is about the depths that this Embodiment have plumbed. This is often profound information, revealing much of the character and strengths, as well as an occasional exploitable weakness. Sometimes the depths revealed are only glimpses of something truly unfathomable, literally immeasurable or infinite in scope, such as the abyss of space or time.",
+			"Detail": "Emotional",
+			"Detail_Description": "Emotional details are the details the carry emotional information, and are read so easily by empathic characters. A kiss to the forehead says \"I love you.\" but it can also carry connotations such as \"Good luck\", \"Goodbye\", \"Please stop\" or \"Do your chores\" depending on context. "
+		}
+	},
+	"Obstacle": {
+		"Type": "Water",
+		"Description": "The way is blocked by water. It might be a flash flood, a swollen river, a flooded passage, or just a huge puddle, but you will have to get wet, or clever to move on. If the Ordeal is on water then the way is blocked by earth, ice, fog, or fire as the Yarn-Teller prefers."
+	},
+	"Tarot": {
+		"WyrdTarot": "Fast Talk",
+		"Normal": "+1 Success Level on any social action (they believe the lie) or Psych Attack.",
+		"Crossed": "+1 Failure Level of any social action (they won't believe the truth) or Psych Attack."
+	},
+	"Ordeal": {
+		"Ordeal_Type": "Opposed Ordeal",
+		"Stages": "3",
+		"Ordeal_Spread": "Pyramid",
+		"Stakes": "Medium",
+		"Test": "Swimming / Sailing (Zeal)",
+		"Obstacles": "1 Obstacle in a Court Stage",
+		"Suggested_Action": "Swim",
+		"Stage": "Wrangling",
+		"Stage_Description": "The way ahead is winding and difficult to get through. There may be passing traffic or too many pedestrians, only the Ref can say for sure.",
+		"Motional": "Street Chase",
+		"Motional_Description": "This can be as powerful and simple as \"Follow-That-Car!\", or you can be the one at the wheel.",
+		"Tide_of_Battle": "Swirling",
+		"Tide_of_Battle_Text": "The Ebb and Flow of the Tide of Battle has become chaotic, there are no advantages to be had by either side.",
+		"Fight": "Siege",
+		"Fight_Description": "One side is entrenched and well-prepared. The other side must lay siege. The attacking side will usually have a numerical advantage and may have a power advantage too. Defenders have a tactical advantage in their defences which will apply Location Bonus Cards to suitable Style Reserves ."
+	},
+	"Lea": {
+		"PathColour": "Green/Turquoise Herbivore",
+		"Bulmas": "Herd, Broccen, Vermis, Labyrinthine, All-Walkers",
+		"AnimalCategory": "Mesofauna",
+		"Example": "Greenfly / Grubs / Larvae",
+		"Bodypart": "Silk Glands",
+		"Notes": "Tiny Arthropods, including a lot of boring insects paths at this level"
+	},
+	"Stress": {
+		"Type": "Coping",
+		"Description": "Coping mechanisms for stress vary from person to person. Some people throw money away, chasing a new fling, others will pick a fight or become irritable, or defensive, a few may turn to magic with dubious repercussions. These coping mechanisms can grow rapidly becoming Flaws or even Woes as a Character relies on them to cope with Stress.",
+		"Rules": "Coping Characters create a new Lacking, Harrowed, Unstable, Defensive, Desires or Doomed Quirk automatically initially with a Bane of 1. Characters may move Stress into this Hitch, increasing the Banes by 1 for the current Banes in Stress any time the Hitch is Triggered."
+	},
+	"Trauma": {
+		"Type": "Turbulent",
+		"Description": "Trauma can make a mind unstable, with the emotions unchecked, hormones and neuro-transmitters sloshing around their brain at heightened levels. Their neurons are too easily stimulated, which can make them easier to emotionally affect, but such emotional states are never long-lived, as the next stimulation will alter that too.",
+		"Rules": "Trauma reduces the ability of the mind to defend from Emotional Effects. At the time of the Trauma all Current Stress is Relieved and creates a \"Turbulent\" Pool. This Pool can spend this Stress as Pips / Chi adding to all Emotional Effects the Character is struck by, increasing the chances of being affected. Additionally, the Character may Relieve Stress, moving it into the \"Turbulent\" Pool, any time their Emotional State changes (Relieving 1 Stress for each Card of the emotional effect)."
+	},
+	"Age": {
+		"Type": "Inundation",
+		"Description": "An Age of Inundation is occurring. During this age pressure builds within society, like water gathering behind a dam, exactly what is the cause or experession of this pressure will vary everytime the age occurs. Usually this pressure pushes Characters together, as a flood will push a community further from the river.",
+		"Diegetic_Description": "A time of building pressure and collective unease, where the weight of unresolved issues threatens to overflow. It is an era that forces people together as they seek higher ground, defined by the mounting tension and the inevitable outbursts that occur when the social floodgates finally burst.",
+		"Rules": "An Age of Inudnation creates a pressure on or within the society, this may be a literal pressure, too many people in too small a Location, or dramatic cliff erosion taking houses from the town, but is more likely a metaphorical pressue, such as the economoic pressures placed on high streets by out of town supermarkets, or the cultural pressure between neighbouring sports teams. This pressure is often expressed through Push Embodiments of the Facets within the society (and beyond) that best represent the sources and expressions of the pressure."
+	}
+}

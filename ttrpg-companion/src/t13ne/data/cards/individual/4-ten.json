@@ -1,0 +1,118 @@
+{
+	"Card_Corner": "10",
+	"Card": "Ten",
+	"Suit": "4",
+	"IconSuit": "♠",
+	"Pips": "10",
+	"Unicode": "&#x1f0aa;",
+	"Svg": "images/cards-svg/10S.svg",
+	"Wound_Level": 4,
+	"Facet": "Gossamer",
+	"Tao": [
+		1,
+		0
+	],
+	"Narrative_Meaning": "Tens indicate a completion, whether the actual end of the story or the end of a character or phase.",
+	"Image": "",
+	"Yarn": {
+		"Yarn_Name": "The Lion",
+		"Yarn_Description": "The Lion card represents strength, not just individually (which it does) but also strength in numbers. The Lion may indicate also heroic deeds and actions or proud behaviour. The Lion can be seen as a symbol of success and power, but more often it represents a test of that strength, and shows that pride comes before a fall.",
+		"Significator": {
+			"Plot": "The Lion plot is a plot about strength (personal or numeric), heroics (hunting or battle prowess are likely) and often pride (usually as part of a dramatic fall). ",
+			"Side": "A side marked by the Lion sees themselves as strong, and powerful, although others may see them as overly-proud or heroic depending upon their alliances. The side is often challenged by another as a demonstration of strength, which may have profound impacts on the plot as whole.",
+			"Character": "The Lion Significator indicates a Character who is proud and regal. <p>They <strong>Gain Yin</strong> when they act proud or mention their accomplishments. </p><p>They <strong>Gain Yang</strong> when they demonstrate their strength or physical ability.</p><p>They also gain +1 Success Levels to any action that demonstrates physical prowess and strength.</p>",
+			"Diegetic_Character": "A proud and regal figure who carries themselves with an air of natural authority and strength. They value their own accomplishments and physical excellence, thriving when their power is acknowledged or put to the test, though their pride can occasionally lead them into peril.",
+			"Scene": "The Lion Scene is any scene that tests the strength (or pride) of the Characters. This may be a simple Gossamer Test or a more complex Ordeal. The Lion can also represent an animal (often a pet) or a Guardian Monster. Yarn-Tellers may play the card to summon a Lion (or similar strong animal) to attack their enemies, or they can pass a strength test, or any hunting Ordeals."
+		},
+		"Beat_Type": "8",
+		"Conflict_Embodiment": "3",
+		"Facet_Embodiment": "8",
+		"Hook_Aspect": "Hitches",
+		"Aspect_Description": "The Hook targets the Character's Hitches, the bigger the better.",
+		"Hook": "Pride Comes Before A Fall",
+		"Hook_Description": "The Story Hooks the Character with giving them recognition for some earlier story, this Story is often a Sequel to the earlier episode. Usually makes a Gain (often a Prize, Medal or Award) as acknowledgement of the previous actions of the PC.",
+		"Gain": "Powerful Monster Ally, Super (or Power) Annex or Super-Skill Descendant",
+		"Diegetic_Gain": "The acquisition of a powerful and formidable ally—a great beast or a master of combat—or the attainment of a legendary skill that sets one apart from all others.",
+		"Fray": "Encounter",
+		"Fray_Description": "An Encounter is a Fight against a smaller number of similar powered foes, or a larger group of weaker foes. The Encounter is intended to insert a bit of action, and drama without risking the PCs too much. An Encounter should wear at the party, maybe Crippling or Maiming a few Characters and perhaps giving one Character a new Hitch (Mortal+), Extras (of any size) may die, including Cast Extras. You may want to kill a PC during this Fray if the Stakes are already elevated.",
+		"Snag": "Test of Strength",
+		"Snag_Description": "The Lion Snag is a test of strength, this might be a literal strength test, where the PC must break in a door, or lift a gate, or it may be a more subtle complication where the PCs specific abilities are tested by a Rival, Ally, Mentor, or Opposed Embodiment. This complication can involve asking questions like \"How many troops can the PC defeat at once?\" and testing that theory. Note that the Test is usually not intended to destroy, and you can capture the party with a \"Captured\" Confined Hitch rather than a \"Dead\" Scars Hitch.",
+		"NPC": {
+			"Archetype": "Soldier",
+			"Persona": 19,
+			"Core": 1,
+			"Hitch": 8,
+			"Description": "The Soldier is a more refined Warrior, usually with better weapons and armour, more Duties and less Scars. Soldiers usually specialise according to the weapons they carry, and may be called Archer, Rifleman, Sniper, Paladin, Knight, etc"
+		},
+		"Sweeping": "The Lion Sleeps",
+		"Sweeping_Text": "The PCs get to rest and recover, but so does the Opposed Embodiment. In fact the Opposed Embodiment and PCs may both make a Gain or Revelation during this Sweeping.",
+		"History": "Proud",
+		"History_Description": "The Lion indicates that the history of the current situation is a source of pride for some people, this may be such that you should have heard of it already.",
+		"Situation": "Heroic",
+		"Situation_Description": "The Lion indicates that the current situation is in need of a hero, the sort of optimistic, adventurous, possibly psychopathic sort.",
+		"Solution": "Strength",
+		"Solution_Description": "The Lion indicates that the solution to the current situation is a show of strength. This may be a display of power, a literal show of strength, or revealing that your forces vastly outnumber theirs.",
+		"Revelations": {
+			"About": "Pressed",
+			"About_Description": "The information is about the Pressed Conflict Embodiment, which is often a PC in a game, and is usually the antagonist in a Story.",
+			"Info": "Where?",
+			"Info_Description": "Information about a Location.",
+			"Vector": "Exchange",
+			"Vector_Description": "Maybe you overhear an exchanging of words, or maybe you are part of the exchange, trading information you know, for information back.",
+			"Alternate": "Ruins",
+			"Alternate_Description": "The information may be about a location, fallen into disrepair, or some hint of the Hitches of the Embodiment.",
+			"Detail": "Coherent",
+			"Detail_Description": "Coherent details all point to the same conclusion. All the details line up pointed at what must appear a forgone conclusion. Of course, just because it all lines up doesn't mean it can't be wrong or misinterpreted."
+		}
+	},
+	"Obstacle": {
+		"Type": "Lion",
+		"Description": "The Obstacle may be a Beast Guardian (such as a dog or actual lion), but is more normally a test of either the physical body (strength) or humility and true sense of worth (pride). Something may have to be lifted, or something given up to proceed."
+	},
+	"Tarot": {
+		"WyrdTarot": "Wound",
+		"Normal": "Draw and Apply one Unsoakable Wound to the Target.",
+		"Crossed": "Remove the largest Wound from the Target."
+	},
+	"Ordeal": {
+		"Ordeal_Type": "Opposed Ordeal",
+		"Stages": "6",
+		"Ordeal_Spread": "Pyramid",
+		"Stakes": "Extreme",
+		"Test": "Confrontation (Trial)",
+		"Obstacles": "1 Obstacle in every Non-Court Stage, 2 in every Court Stage",
+		"Suggested_Action": "Fight",
+		"Stage": "Encounter",
+		"Stage_Description": "The way ahead involves an encounter, and often a fight, perhaps with the Dominant Embodiment, or perhaps with a different foe. Wiles, or weapons, may be needed to get by, and it is bound to slow you down. This might be a place where the route arcs back, allowing shots to be fired between Chaser and Chased, but more often is a third party encounter that both sides must contend with (unaffiliated street gang / raiders, bear etc)",
+		"Motional": "Foot Flee",
+		"Motional_Description": "The Robots are hunting, they've got guns, they're coming.",
+		"Tide_of_Battle": "Every Shot Counts",
+		"Tide_of_Battle_Text": "Everyone is low on ammo, and needs to reload, and resupply. Both sides may only make Prepared Attacks at Range, spontaneous attacks must be made with Reach weapons.",
+		"Fight": "Army,",
+		"Fight_Description": "Large scale military battles involve Armies. Usually two of them, but PCs may not always have the resources to create their own army. The opposition however has hundreds of Grunts (or Cast Extras) who have military grade equipment suitable for their time period (Chain-mail and sword, tac-vest and assault rifle, power-armour and a pew-pew-pulsed-plasma-pistol)."
+	},
+	"Lea": {
+		"PathColour": "Red/Purple Carnivore",
+		"Bulmas": "Hunters, Broccen, Vermis, Labyrinthine, All-Walkers",
+		"AnimalCategory": "Megafauna – Largest",
+		"Example": "Salt Water Crocodile / Whale / Dinosaur",
+		"Bodypart": "Spikes / Bone Scales / Tooth Scales",
+		"Notes": "These Paths tend to be lost on Earth, although a few cling on."
+	},
+	"Stress": {
+		"Type": "Disturbed",
+		"Description": "High Stress for hours, days, weeks or perhaps even years can profoundly alter a Character. Some people freak out if their schedule is disturbed even slightly, others need their sleep cycle disturbed before it becomes a problem. Others find themselves physically or emotionally disturbed. But this all amounts to the same thing.",
+		"Rules": "A Character who has become disturbed (by the latest Stressor) cannot rest or settle while this latest stressor continues. If they can find a way to cease the disturbance they will relieve 10 Stress and cease being disturbed, but until that time they will add their current Stress and the Tension-Level as a Chi Difficulty to all Actions that are not based on ceasing the disturbance (or at least getting far away). Even Actions that act to cease the disturbance will add the Character’s current Stress in Chi as additional Difficulty."
+	},
+	"Trauma": {
+		"Type": "Fierce",
+		"Description": "Trauma can unlock hidden strengths and courage within a Character, it can be odd to think that a powerful trauma that can make some Characters afraid of everthing around them, can have the opposite effect on some other Character, making them bold and self-assured to the point of fierceness. Fierce Characters are scary not scared, aggressive not defensive, and have either physical or mental strength and willpower.",
+		"Rules": "The Trauma allows the Character to Relieve 1 Stress by being bold, assertive, fierce (aggresive), or demonstrating strength of will, or physical strength."
+	},
+	"Age": {
+		"Type": "Predation",
+		"Description": "An Age of Predation is occurring. During this age a society draws closer together, either as they prey upon a weaker society, or as they are preyed upon by a larger society. Typically this predation is in the form of exploitation, manipulation and abuse, whether through invasion, theft, warfare or more nefarious means such as trade agreements, enslavement, post-war reparations, aid foundations, international politics, or unchecked commercial practices. Usually the weaker, prey society is \"consumed\" by the predatory society, who will gain the members (sometimes as prisoners, slaves or as part of a brain-drain). There is some overlap here with Jumbling Ages, but one society is always clearly dominant in an age pf Predation.",
+		"Diegetic_Description": "A harsh and unforgiving era defined by the consumption of the weak by the strong. Society becomes predatory, thriving on the exploitation and absorption of its neighbors, leading to a consolidation of power where one culture expands by systematically dismantling and incorporating another.",
+		"Rules": "During an Age of Predation the society preys upon and consumes another, usually smaller or less technological society. Members of the smaller predated society may be able to move into the predatory society and those able to move will often do so. Sometimes a prey society may manage to survive, or at least preserve some of their original culture within the new society."
+	}
+}

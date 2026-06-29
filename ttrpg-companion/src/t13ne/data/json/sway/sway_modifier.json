@@ -1,0 +1,188 @@
+[
+  {
+    "Chi": 1,
+    "Element_Type": "Modifier",
+    "Type": "Haze",
+    "Sway_Type_Description": "A light haze in the atmosphere has a minor effect on visibility. It makes spotting things and targeting a little more difficult."
+  },
+  {
+    "Chi": 2,
+    "Element_Type": "Modifier",
+    "Type": "Lighting conditions",
+    "Sway_Type_Description": "Low light or bright artificial light can affect how and what you see, a negative lighting condition can make a minor difference, good lighting can help you too."
+  },
+  {
+    "Chi": 3,
+    "Element_Type": "Modifier",
+    "Type": "Light Weather",
+    "Sway_Type_Description": "Bright sunshine can can be a worse problem than artificial light usually, but add a little cross-wind, fog, or drizzle into the mix and things can get much more difficult, then again a nice tail wind might help you make a shot."
+  },
+  {
+    "Chi": 4,
+    "Element_Type": "Modifier",
+    "Type": "Higher ground",
+    "Sway_Type_Description": "Being higher up can be an advantage or disadvantage, depending upon what you are trying to do. Usually when attacking or defending the higher ground grants an advantage, although if heads are silhouetted against the sky, that can give the lower ground the advantage on their shots."
+  },
+  {
+    "Chi": 5,
+    "Element_Type": "Modifier",
+    "Type": "Bad Weather",
+    "Sway_Type_Description": "Bad Weather can stop you from doing a lot, try lighting a fire in the rain, flying a kite when the wind is gusting, or suntanning on an overcast day."
+  },
+  {
+    "Chi": 6,
+    "Element_Type": "Modifier",
+    "Type": "Minimal Retcon",
+    "Sway_Type_Description": "Sometimes a time-traveller, or dimension-shifter, will remember a history that no longer exists. Other times events may change someone's personal history, just a little, perhaps altering some minor details, such as the spelling of their neighbours name. Minimal Retcons are the smallest possible changes that can be noticed as they are usually dismissed as misremembering."
+  },
+  {
+    "Chi": 7,
+    "Element_Type": "Modifier",
+    "Type": "Equipment",
+    "Sway_Type_Description": "Having the right equipment can help a lot (even if you can't add it to a roll right now), having bad equipment can be a problem as well."
+  },
+  {
+    "Chi": 8,
+    "Element_Type": "Modifier",
+    "Type": "Secretive",
+    "Sway_Type_Description": "Trying to do things without being spotted or overheard doing them can always make a situation more difficult."
+  },
+  {
+    "Chi": 9,
+    "Element_Type": "Modifier",
+    "Type": "Focus / Distracting",
+    "Sway_Type_Description": "Mental Focus is key to magic, and helps with almost everything else. Conversely, trying to do anything complex without adequate focus can hinder almost anything. Distractions can interfere incredibly with someone's ability to do a task. Even causing them to... Wait, what is that smell?"
+  },
+  {
+    "Chi": 10,
+    "Element_Type": "Modifier",
+    "Type": "First Time",
+    "Sway_Type_Description": "Everything is harder the First Time you try. If you have never attempted something before, then it will always be harder than something that you have even tried once."
+  },
+  {
+    "Chi": 11,
+    "Element_Type": "Modifier",
+    "Type": "Location",
+    "Sway_Type_Description": "Being in the right Location can really help. Want to repair a car, a garage can help, but a workshop is better. Being in the wrong Location can also be a real hinderance, as any one who has tried to drink tea on a rollercoaster can attest."
+  },
+  {
+    "Chi": 12,
+    "Element_Type": "Modifier",
+    "Type": "Terrible Weather",
+    "Sway_Type_Description": "Storms and blizzards can make it impossible to do some things. It is almost impossible to track someone in a white-out, and even standing can become impossible in a tornado."
+  },
+  {
+    "Chi": 13,
+    "Element_Type": "Modifier",
+    "Type": "Darkness",
+    "Sway_Type_Description": "Try to do some things while you are blind, in the dark, or deaf, and it gets a lot harder. Conversely, detecting a single photon is possible with the human eye, if you are in real pitch darkness."
+  },
+  {
+    "Chi": 14,
+    "Element_Type": "Modifier",
+    "Type": "Luck",
+    "Sway_Type_Description": "Luck, whether good or bad can have an almost incredible impact on any test,"
+  },
+  {
+    "Chi": 16,
+    "Element_Type": "Modifier",
+    "Type": "Minor Narrative Issues / Irrelevant",
+    "Sway_Type_Description": "Sometimes what you are trying to do goes against the Story that is being told. Perhaps the tale is about finding a kidnapper and the victim, within a strict time-limit, and a character says they are going to bed instead of working through the night, well they might just find that sleep does not come as easily as normal, same if they try to spend time in the kitchen making a family dinner, the story demands that it comes first in these cases by adding a difficulty to those distractions."
+  },
+  {
+    "Chi": 16,
+    "Element_Type": "Modifier",
+    "Type": "Limited Retcon",
+    "Sway_Type_Description": "Altering History in a way that directly affects a limited amount of people and space, such as changing the history of one family, or the history of one Location. This assumes the Location or Group do not butterfly affect anything major."
+  },
+  {
+    "Chi": 21,
+    "Element_Type": "Modifier",
+    "Type": "Hostile Environment",
+    "Sway_Type_Description": "Maybe its noxious gases, dangerous heat or cold, or acidic fog. Sometimes the environment itself is out to stop the Character from doing what they want."
+  },
+  {
+    "Chi": 26,
+    "Element_Type": "Modifier",
+    "Type": "Lost",
+    "Sway_Type_Description": "Being Lost can be a significant problem, and if you think getting lost on the way to a party is bad, imagine ending up in C&aelig;ster when trying to find the bathroom in your hotel room."
+  },
+  {
+    "Chi": 31,
+    "Element_Type": "Modifier",
+    "Type": "Moderated Retcon",
+    "Sway_Type_Description": "Sometimes history gets changed in a significant, but relatively minor way. History books will be a little different now, but only by a paragraph or two. A battle may be won, but the war is still lost (but dragged on longer, etc). Sometimes agencies will interfere with history to create Moderated Retcons out of larger Retcons, in an attempt to keep history on track (as they see it). Other examples include, \"I was sure they spelled their name with an E\", \"Huh? Where did that restaurant we used to go to go?\" and \"I thought they were dead already?!\". These changes to history are large enough to be noticed by some people, but are still easily dismissed as misremembering."
+  },
+  {
+    "Chi": 32,
+    "Element_Type": "Modifier",
+    "Type": "Deadly Danger",
+    "Sway_Type_Description": "Sometimes the mere presence of danger in a situation can make it harder to do. Putting your life on the line can have a strong impact on people's ability to cope. This is the reason that removing the safety net is such a thrill for the audience. Even the easy crossword can seem a lot more cryptic if your life depends upon it."
+  },
+  {
+    "Chi": 38,
+    "Element_Type": "Modifier",
+    "Type": "Narrative Issues / Plot Armour",
+    "Sway_Type_Description": "Sometimes a Story is actually out to get you. Maybe the story is meant to be about a Character's tragic fall from grace, yet they keep succeeding... This is where Narrative issues step in. Narrative issues can also act as Plot Armour if needed, keeping a plot significant Character alive through events they could not otherwise survive. Be wary of this one, it can break games if used injudiciously."
+  },
+  {
+    "Chi": 59,
+    "Element_Type": "Modifier",
+    "Type": "Hellish Conditions",
+    "Sway_Type_Description": "Traditionally we're talking fire and brimstone, but any truly awful place would make if much more difficult to do what you want."
+  },
+  {
+    "Chi": 66,
+    "Element_Type": "Modifier",
+    "Type": "Retcon",
+    "Sway_Type_Description": "History has been rewritten, it might not have changed the entire world, but it has had a significant impact. History books will have different Chapters and even different titles. These sorts of Retcons are usually limited to altering a single Era (most often the most recent). Examples might include, \"Taured is not a country!\", \"That's not who won the war!\", \"What do you mean? The logo was always like this.\". These sorts of changes are too large for \"misremembering\" and look more like a serious psychological issue, such as paranoid schizophrenia, or fugue states."
+  },
+  {
+    "Chi": 74,
+    "Element_Type": "Modifier",
+    "Type": "Major Narrative Issues / Greater Plot Armour",
+    "Sway_Type_Description": "Turns out you were the chosen one, after all. When a Character is meant to be the focus of a story and do their best to completely ignore it then we can be looking at modifiers like this. Major Narrative issues could include an Embodiment Character getting wiped out in a car accident in the first act (where we would hope for Greater Plot Armour). Then again, maybe the Plot calls for the villain to die (or appear to die at least) in the Second Act of the Story, but he just keeps rolling so well, he's going to win)."
+  },
+  {
+    "Chi": 101,
+    "Element_Type": "Modifier",
+    "Type": "Major Retcon",
+    "Sway_Type_Description": "A huge change has been made to the history of the world. The level of this change is enough to divert history significantly, but not quite change everything about the world. Examples include \"The Theocratic States of America\", \"The Luna Penal Colonies\", \"Last Pharaoh of Australia\" and \"Ultra-terrestrials sign peace accord\". Revealing that you remember these time-lines after the retcon will have the same effect on most mental healthcare practitioners as declaring you are Napoleon Bonaparte, Gaius Julius Caesar or Yeshua Ben Yusef of Nazareth."
+  },
+  {
+    "Chi": 165,
+    "Element_Type": "Modifier",
+    "Type": "Unfathomably Complex",
+    "Sway_Type_Description": "Some things are so complex that you cannot hope to figure it out alone and quickly. It might take a team of people working together years to accomplish this. You might even need a team just to work out who you are going to need in the actual team."
+  },
+  {
+    "Chi": 190,
+    "Element_Type": "Modifier",
+    "Type": "Extreme Narrative Issues",
+    "Sway_Type_Description": "Extreme Narrative issues can mean that a Character who was essential to the Plot has actually died, or someone that was meant to die has survived (murder mysteries can be attempted-murder mysteries, but honestly they are not as exciting). It may be possible, but difficult to move on with the Story, and generally it would be better if the Yarn-Teller or Hero rewound time and took another run at it, but sometimes you just cannot do that. This can lead to situations where with the Chosen one dead, her neighbour now has to save the world, or whatever."
+  },
+  {
+    "Chi": 230,
+    "Element_Type": "Modifier",
+    "Type": "Chronoclysm (Extreme Retcon)",
+    "Sway_Type_Description": "Someone broke history. Almost everything about the world has changed, most of history is now completely different. Examples include \"Elizabeth Regina-Venefica\", \"Christopher Columbus? Who's that?\", and \"The Dinosaurs never died.\" Remembering the lost time-line may even cause people to want to murder you now, rather than just want to lock you up, as they unconsciously react to avoid even contemplating the Chronoclysm."
+  },
+  {
+    "Chi": 244,
+    "Element_Type": "Modifier",
+    "Type": "Rules Lawyer",
+    "Sway_Type_Description": "Rules Lawyers like to remind Refs what the Rules are, bet you don't remind them about this Difficulty Modifier."
+  },
+  {
+    "Chi": 244,
+    "Element_Type": "Modifier",
+    "Type": "Temporal Paradox (Predestination)",
+    "Sway_Type_Description": "If a mysterious notebook appears with details to build a time-machine and you build it, do you then send the notebook to yourself? If you do, where did the notebook come from originally? Who designed the time machine? Well, understandably the universe is not keen this kind of loop, and tries to stop it from occurring."
+  },
+  {
+    "Chi": 259,
+    "Element_Type": "Modifier",
+    "Type": "Temporal Paradox (Grandfather)",
+    "Sway_Type_Description": "If you thought Predestination time-loops were bad, what happens if the time-traveller goes back in time and shoots their own Grandparent, before their parent was born? Suddenly they have removed themselves from history, but then who came back in time and killed? Well, the universe hates that. Any attempt to interfere with your own existence (or that of the time machine) directly will invoke the Grandfather Paradox clauses in the universe's warranty (you did keep up the payments on that, right?)."
+  }
+]

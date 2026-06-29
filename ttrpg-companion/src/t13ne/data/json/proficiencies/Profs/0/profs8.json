@@ -1,0 +1,1448 @@
+{
+  "401": {
+    "id": 401,
+    "prof": {
+      "Name": [
+        "Inscrutable",
+        "Inscrutable Enigma Very-High Boon Adjective Proficiency",
+        "impenetrable, arcane, mysterious, unreadable, enigmatic"
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Inscrutable lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "402": {
+    "id": 402,
+    "prof": {
+      "Name": [
+        "Arcane",
+        "Arcane Enigma Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Arcane lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "403": {
+    "id": 403,
+    "prof": {
+      "Name": [
+        "Impenetrable Locations",
+        "Impenetrable Location Enigma Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Impenetrable Locations lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "404": {
+    "id": 404,
+    "prof": {
+      "Name": [
+        "Unfathomable",
+        "Unfathomable Enigma Very-High Boon Adjective Proficiency",
+        "baffling, inexplicable, deep, bottomless, mysterious"
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Unfathomable lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "405": {
+    "id": 405,
+    "prof": {
+      "Name": [
+        "Baffling",
+        "Baffling Enigma Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Baffling lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "406": {
+    "id": 406,
+    "prof": {
+      "Name": [
+        "Inexplicable Locations",
+        "Inexplicable Location Enigma Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Inexplicable Locations lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "407": {
+    "id": 407,
+    "prof": {
+      "Name": [
+        "Sheepishness",
+        "Sheepishness Enigma Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Sheepishness lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "408": {
+    "id": 408,
+    "prof": {
+      "Name": [
+        "Ashamed",
+        "Ashamed Enigma Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Ashamed lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "409": {
+    "id": 409,
+    "prof": {
+      "Name": [
+        "Guilt",
+        "Guilt Enigma Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Guilt lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "410": {
+    "id": 410,
+    "prof": {
+      "Name": [
+        "Ambiguity",
+        "Ambiguity Enigma Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Ambiguity lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "411": {
+    "id": 411,
+    "prof": {
+      "Name": [
+        "Puzzlement",
+        "Puzzlement Enigma Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Puzzlement lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "412": {
+    "id": 412,
+    "prof": {
+      "Name": [
+        "Confusion",
+        "Confusion Enigma Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Confusion lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "413": {
+    "id": 413,
+    "prof": {
+      "Name": [
+        "Bewilder",
+        "Bewilder Enigma Action Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Bewilder lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "414": {
+    "id": 414,
+    "prof": {
+      "Name": [
+        "Ambush",
+        "Ambush Enigma Attack Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Ambush lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "415": {
+    "id": 415,
+    "prof": {
+      "Name": [
+        "Sub-Rosa",
+        "Sub-Rosa Enigma Critical Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Sub-Rosa lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "416": {
+    "id": 416,
+    "prof": {
+      "Name": [
+        "Significator",
+        "Significator Enigma Core Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Significator lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "417": {
+    "id": 417,
+    "prof": {
+      "Name": [
+        "Puzzle",
+        "Puzzle Enigma Descendants Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Puzzle lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "418": {
+    "id": 418,
+    "prof": {
+      "Name": [
+        "Occult",
+        "Occult Enigma Edge Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Occult lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "419": {
+    "id": 419,
+    "prof": {
+      "Name": [
+        "Occult",
+        "Occult Enigma Glow Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Occult lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "420": {
+    "id": 420,
+    "prof": {
+      "Name": [
+        "Questions",
+        "Questions Enigma Failure Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Questions lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "421": {
+    "id": 421,
+    "prof": {
+      "Name": [
+        "Confusion",
+        "Confusion Enigma Fumble Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Confusion lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "422": {
+    "id": 422,
+    "prof": {
+      "Name": [
+        "Shadows",
+        "Shadows Enigma Gnarl Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Shadows lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "423": {
+    "id": 423,
+    "prof": {
+      "Name": [
+        "Shadows",
+        "Shadows Enigma Herald Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Shadows lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "424": {
+    "id": 424,
+    "prof": {
+      "Name": [
+        "Vague",
+        "Vague Enigma Hitch Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Vague lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "425": {
+    "id": 425,
+    "prof": {
+      "Name": [
+        "Trust",
+        "Trust Enigma Hurdle Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Trust lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "426": {
+    "id": 426,
+    "prof": {
+      "Name": [
+        "Riddle",
+        "Riddle Enigma Incarna Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Riddle lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "427": {
+    "id": 427,
+    "prof": {
+      "Name": [
+        "Secret Locations",
+        "Secret Location Enigma Location Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Secret Locations lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "428": {
+    "id": 428,
+    "prof": {
+      "Name": [
+        "Mysteries",
+        "Mysteries Enigma Lore Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Mysteries lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "429": {
+    "id": 429,
+    "prof": {
+      "Name": [
+        "Cryptid",
+        "Cryptid Enigma Monster Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Cryptid lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "430": {
+    "id": 430,
+    "prof": {
+      "Name": [
+        "Sub-Rosa",
+        "Sub-Rosa Enigma Narration Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Sub-Rosa lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "431": {
+    "id": 431,
+    "prof": {
+      "Name": [
+        "Secrets",
+        "Secrets Enigma Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Secrets lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "432": {
+    "id": 432,
+    "prof": {
+      "Name": [
+        "Problem Ordeals",
+        "Problem Ordeal Enigma Ordeal Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Problem Ordeals lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "433": {
+    "id": 433,
+    "prof": {
+      "Name": [
+        "Secrets",
+        "Secrets Enigma Psychosocial Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Secrets lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "434": {
+    "id": 434,
+    "prof": {
+      "Name": [
+        "Hide",
+        "Hide Enigma Quest Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Hide lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "435": {
+    "id": 435,
+    "prof": {
+      "Name": [
+        "Rhetorical",
+        "Rhetorical Enigma Question Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Rhetorical lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "436": {
+    "id": 436,
+    "prof": {
+      "Name": [
+        "Guile",
+        "Guile Enigma Resolved Hitch Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Guile lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "437": {
+    "id": 437,
+    "prof": {
+      "Name": [
+        "Occult",
+        "Occult Enigma Rule Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Occult lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "438": {
+    "id": 438,
+    "prof": {
+      "Name": [
+        "Enigmatic",
+        "Enigmatic Enigma Style Proficiency",
+        "mysterious, occult, shadowy, cryptic, puzzling"
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Enigmatic lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "439": {
+    "id": 439,
+    "prof": {
+      "Name": [
+        "Covert",
+        "Covert Enigma Success Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Covert lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "440": {
+    "id": 440,
+    "prof": {
+      "Name": [
+        "Covers",
+        "Covers Enigma Sway Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Covers lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "441": {
+    "id": 441,
+    "prof": {
+      "Name": [
+        "Questions",
+        "Questions Enigma Tangle Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Questions lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "442": {
+    "id": 442,
+    "prof": {
+      "Name": [
+        "Confuse / Hide / Misdirection / Questioning / Riddle",
+        "Confuse / Hide / Misdirection / Questioning / Riddle",
+        ""
+      ],
+      "Description": "In the hushed halls of Empathy, Confuse / Hide / Misdirection / Questioning / Riddle is the whispered secret of compassion.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "4"
+        ],
+        "Genres": [
+          "4"
+        ],
+        "Eras": [
+          "4"
+        ],
+        "Types": [
+          "Test"
+        ]
+      }
+    }
+  },
+  "443": {
+    "id": 443,
+    "prof": {
+      "Name": [
+        "Mystery",
+        "Mystery Enigma Tone Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Mystery lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "444": {
+    "id": 444,
+    "prof": {
+      "Name": [
+        "Reveal Hidden",
+        "Reveal Hidden Enigma Turn Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Reveal Hidden lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "445": {
+    "id": 445,
+    "prof": {
+      "Name": [
+        "Occult",
+        "Occult Enigma Twisted Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Occult lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "446": {
+    "id": 446,
+    "prof": {
+      "Name": [
+        "Obscuring",
+        "Obscuring Enigma Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Obscuring lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "447": {
+    "id": 447,
+    "prof": {
+      "Name": [
+        "Enigmatic",
+        "Enigmatic Enigma Annex Root Proficiency",
+        "mysterious, occult, shadowy, cryptic, puzzling"
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Enigmatic lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "448": {
+    "id": 448,
+    "prof": {
+      "Name": [
+        "Hidden",
+        "Hidden Enigma Nimbed Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Hidden lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "449": {
+    "id": 449,
+    "prof": {
+      "Name": [
+        "Mysterious",
+        "Mysterious Enigma Umbral Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Mysterious lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "450": {
+    "id": 450,
+    "prof": {
+      "Name": [
+        "Sphinx",
+        "Sphinx Enigma Persona Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Sphinx lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

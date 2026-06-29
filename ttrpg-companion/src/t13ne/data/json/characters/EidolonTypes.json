@@ -1,0 +1,27 @@
+[
+    {
+        "Type": "Ubergeist",
+        "Description": "Ubergeist Eidolons behave as true divinities within their Psychosocial Space. Such Eidolons have powerful personalities that are often the result of Alt personalities melding their Mindscapes into enormous Psychosocial realms.",
+        "Rules": "Ubergeist Eidolons have Personalities that are made of all available Facets as either a Persona, Core, Resolved Hitch, or Monster Facet as required or wanted."
+    },
+    {
+        "Type": "Persona",
+        "Description": "Persona Eidolons have a personality, usually this Personality is not the same Persona as the Internal-Self of the Eidolon, but is often the Facet of the Character's largest Facet instead.",
+        "Rules": "Persona Eidolons are known for having a Personality, this makes them Characters with their own motivations and drives, which can complicate the Psychosocial Space in interesting ways."
+    },
+    {
+        "Type": "Genius Loci",
+        "Description": "Genius Loci Eidolons are the spirits of a Psychosocial Space, they are generally not technically aware, and have no rigid personality, but they may behave in person like ways from time to time.",
+        "Rules": "Genius Loci Eidolons are usually neutral although they may turn aggressive if threatened."
+    },
+    {
+        "Type": "Animalistic",
+        "Description": "Animalistic Eidolons are quite common in most Characters. Often a specific totem animal represents the Eidolon, which may appear through out the Psychosocial Space in some form, for example as a Chesire Cat like entity, or as towering statues.",
+        "Rules": "Animalistic Eidolons usually reflect the animal in temperament and intelligence, most are not truly sentient, but they will act to defend themselves and their Psychosocial Space."
+    },
+    {
+        "Type": "Sleeping",
+        "Description": "Sleeping Eidolons are usually unaware of events within their Psychosocial Space, they are effectively asleep. However if Characters within the Psychosocial Space become too agitated, or noisy, then the Sleeping Eidolon will awaken to deal with the situation as quickly and often grumpily as possible.",
+        "Rules": "Sleeping Eidolons are notable only for their power levels when they awaken, which can vary wildly. Some will behave more like Personas when awake, others will simply disrupt and attack the source of agitation."
+    }
+]

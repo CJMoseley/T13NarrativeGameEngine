@@ -1,0 +1,98 @@
+[
+  {
+    "Chi": 1,
+    "Element_Type": "Events",
+    "Type": "Half-Action",
+    "Sway_Type_Description": "Half-Actions are the smallest Events in T13. They are less than a Full-Action in that they take less time, but are less effective. A Character can roll a single dice Pool usually a Facet Die or their Proficiency dice to generate a Score. In an Ordeal they allow you to Draw <strong>or</strong> Play 1 card."
+  },
+  {
+    "Chi": 2,
+    "Element_Type": "Events",
+    "Type": "Action",
+    "Sway_Type_Description": "An Action is using an Annex (or Facet along with Proficiencies) to generate a Score to influence the world. During an Ordeal this Score is used to Draw <strong>and</strong> Play at least 1 card."
+  },
+  {
+    "Chi": 3,
+    "Element_Type": "Events",
+    "Type": "Phase",
+    "Sway_Type_Description": "An Ordeal Phase is the time taken for each Character in the Ordeal to take a Half-Action (and some less powerful Full Actions). More powerful Full-Actions resolve over several Phases (which is modelled through RT and GRT)."
+  },
+  {
+    "Chi": 4,
+    "Element_Type": "Events",
+    "Type": "Stage",
+    "Sway_Type_Description": "Ordeal Stages represent a sequence of Actions towards a goal. Normally each Stage has a Difficulty that must be beaten to cross to the next Stage."
+  },
+  {
+    "Chi": 5,
+    "Element_Type": "Events",
+    "Type": "Round",
+    "Sway_Type_Description": "An Ordeal Round is a long sequence that describes a period of time where lots of actions have happened, often over or through several Stages, before coming to a natural break. Think of them as rounds of a competition, Sets in Tennis, or Halves / Quarters in Football."
+  },
+  {
+    "Chi": 5,
+    "Element_Type": "Events",
+    "Type": "Simple Ordeal",
+    "Sway_Type_Description": "Simple Ordeals may last a long time, but they are fairly simple events for the most part."
+  },
+  {
+    "Chi": 6,
+    "Element_Type": "Events",
+    "Type": "Discovery",
+    "Sway_Type_Description": "A Discovery event is like finding a pointer towards a Clue or Revelation, it is never evidence of anything itself, but indicates something interesting is going on, or it might indicate that a specific Character has some information you need. A scientist making a Discovery initially observes something that current theories do not fully explain, this Discovery leads them to postulate a theory and test it, to codify a true scientific discovery."
+  },
+  {
+    "Chi": 8,
+    "Element_Type": "Events",
+    "Type": "Chronolith",
+    "Sway_Type_Description": "Chronoliths are events, moments, infused with additional Chi to make them more historically certain than usual. Heroes can utilise and manipulate Chronoliths in interesting ways, including reloading reality back to the last Chronolith, just like in a video-game. Chronoliths may have Edges to help them defend themselves from temporal meddling."
+  },
+  {
+    "Chi": 16,
+    "Element_Type": "Events",
+    "Type": "Expanded Ordeal",
+    "Sway_Type_Description": "Expanded Ordeals (where we have multiple simultaneous Ordeals or complex systems in play) tend to be around here."
+  },
+  {
+    "Chi": 21,
+    "Element_Type": "Events",
+    "Type": "Yarn Event",
+    "Sway_Type_Description": "Yarn Cards and the Spreads used by Yarn-Tellers can create complex narrative Events that are important to Characters and Descendants, more powerful than most Chronoliths, but fall beneath the level of Crux Events. Yarn Events are typically narratively important to specific Characters and Sides of a Conflict, representing a narratively important turn of events. Heroes and Grunts may refer to Yarn Events as \"Historically/Personally Important Events\", \"Coincidental Incidents\", \"Heroic Moments\" or \"Programmed Events\" depending upon the setting and so on."
+  },
+  {
+    "Chi": 26,
+    "Element_Type": "Events",
+    "Type": "Crux",
+    "Sway_Type_Description": "Cruxes are events, moments, where a single choice can change the direction of history, they are essentially Chronoliths made with Yarn (often as Prophetic events or by Character Deaths). Yarn-Tellers can utilise and manipulate Cruxes in interesting ways, including using them to create new time-lines and alternative worlds. However, Cruxes can only represent a single choice, with only a few (often only two) potential results. Cruxes may have Edges and Glows that they grant to specific Characters during their Event. Heroes and Grunts may refer to, and understand Cruxes as \"Tipping-points in History\", \"Prophesied Moments\" or \"Chronologically Strategic Events\" depending upon setting and so on."
+  },
+  {
+    "Chi": 30,
+    "Element_Type": "Events",
+    "Type": "Causal Nexus",
+    "Sway_Type_Description": "A Causal Nexus is a more powerful Crux Event that occurs when multiple Yarn-Tellers create overlapping Cruxes. Causal Nexuses can have many potential outcomes not a limited number of choices. Yarn-Tellers working together can create much more diverse time-lines. Causal Nexuses always have Edges and Glows that they lend to the Yarn-Tellers that create them. Heroes and Grunts may refer to, and understand Causal Nexuses as \"Hardened History\" or \"Static Chronological Events\" depending upon setting and so on."
+  },
+  {
+    "Chi": 45,
+    "Element_Type": "Events",
+    "Type": "Cascade",
+    "Sway_Type_Description": "Cascade events are created by the thousands of social and physical interactions of history. They may begin with a Crux, or Casual Nexus, but events flow from that moment and grow in power as things unfold. Even experienced, powerful Yarn-Tellers can struggle to even influence a Cascade meaningfully once it is under way, and many will either be swept along, or create a new Causal Nexus or Crux to escape to a new time-line. Grunts and Heroes may refer to Cascades as \"The Tide of History\" or \"Immutable Chronological Events"
+  },
+  {
+    "Chi": 101,
+    "Element_Type": "Events",
+    "Type": "Keep",
+    "Sway_Type_Description": "A Keep event is when an event has been fixed in history, by magic, prophecy, time-travellers, or similar. All Yarn-Tellers that enter a Keep event become Keepers of the event in order to gain access. Any attempt to alter the Keep event will immediately eject the Yarn-Teller into another time-line without the Keep event. Grunts and Heroes may understand and refer to Keep events as \"Fortified History\" or \"Protected Chronologies\" depending upon the setting etc."
+  },
+  {
+    "Chi": 203,
+    "Element_Type": "Events",
+    "Type": "Sacrosanct",
+    "Sway_Type_Description": "A Sacrosanct event is an event created by a divine being, usually the birth or death of the same, although transferrals of godhead and crowning of high priests or pontiffs may also qualify. Sacrosanct Events are not generally understood by Heroes and Grunts except as being of \"Religious Importance\"."
+  },
+  {
+    "Chi": 289,
+    "Element_Type": "Events",
+    "Type": "Boundless",
+    "Sway_Type_Description": "Boundless events are unlimited in scope and are called immutable (although technically they are not, they may as well be). They may include mixtures of other event types and Retcons like Chronoclysms, for example. Usually these are creation events of entire multiverses, our own local Big Bang for example, this single Boundless event, set the rules of physics across our local multiverse, allowing quantum reality to work across them all."
+  }
+]

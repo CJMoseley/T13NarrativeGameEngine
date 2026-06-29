@@ -1,0 +1,262 @@
+[
+    {
+        "id": "T13-NE-GEOMETRY-KEYS-1",
+        "data": {
+            "Key": "C",
+            "Description": "A pure key of innocence, naive courage and simple, triumphant strength when Major. When Minor it becomes languishing, longing, obscure, sad and love-sick.",
+            "Alt": "B&sharp;",
+            "Syllable": "Do",
+            "Colour": [
+                "Red",
+                "#FF0000"
+            ],
+            "Frequency": 130.81,
+            "Sharps": 0,
+            "Flats": 0,
+            "Relative_Minor": 9,
+            "Fifth": 7,
+            "Fourth": 5,
+            "index": 0
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-KEYS-2",
+        "data": {
+            "Key": "C&sharp;",
+            "Description": "An emotionally constrained and confused Major key, it can smile or shed a tear, but extreme emotions become confusing and erratically expressed. In Minor it becomes a lamentation, a disappointed wail, a sigh of lost love and failed friendships.",
+            "Alt": "D&flat;",
+            "Syllable": "Di/Ra",
+            "Colour": [
+                "Violet",
+                "#CF9BFF"
+            ],
+            "Frequency": 138.59,
+            "Sharps": 7,
+            "Flats": 5,
+            "Relative_Minor": 10,
+            "Fifth": 8,
+            "Fourth": 6,
+            "index": 1
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-KEYS-3",
+        "data": {
+            "Key": "D",
+            "Description": "A key of triumph &mdash; powerful and majestic, with perhaps a hint of cruelty and can be quarrelsome, at least in Major, where it is a key for declarations and war-cries. In Minor it becomes softer, more serious, more feminine and even melancholic or pious.",
+            "Alt": "E\ud834\udd2b",
+            "Syllable": "Re",
+            "Colour": [
+                "Yellow",
+                "#F8F9FA"
+            ],
+            "Frequency": 146.83,
+            "Sharps": 2,
+            "Flats": 0,
+            "Relative_Minor": 11,
+            "Fifth": 9,
+            "Fourth": 7,
+            "index": 2
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-KEYS-4",
+        "data": {
+            "Key": "D&sharp;",
+            "Description": "A key of intimacy, delicate, devotional, it has an air of prayer to it, although it can feel cruel and hard too, and can turn haunting, brooding, plaintive, feminine, or despairing as it shifts from Major to Minor.",
+            "Alt": "E&flat;",
+            "Syllable": "Ri/Ma",
+            "Colour": [
+                "Flesh",
+                "#65659A"
+            ],
+            "Frequency": 155.56,
+            "Sharps": 0,
+            "Flats": 3,
+            "Relative_Minor": 0,
+            "Fifth": 10,
+            "Fourth": 8,
+            "index": 3
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-KEYS-5",
+        "data": {
+            "Key": "E",
+            "Description": "A key of delights, joy, and noisy pleasures in Major, that becomes more naive, innocent and has an air of hopeful optimism against great adversity in Minor.",
+            "Alt": "F&flat;",
+            "Syllable": "Mi",
+            "Colour": [
+                "Sky-blue",
+                "#E4FBFF"
+            ],
+            "Frequency": 164.81,
+            "Sharps": 4,
+            "Flats": 0,
+            "Relative_Minor": 1,
+            "Fifth": 11,
+            "Fourth": 9,
+            "index": 4
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-KEYS-6",
+        "data": {
+            "Key": "F",
+            "Description": "A key of compliance, calm and acceptance in Major, that becomes depressive, even funereal, and miserable in Minor.",
+            "Alt": "E&sharp;",
+            "Syllable": "Fa",
+            "Colour": [
+                "Deep-Red",
+                "#434345"
+            ],
+            "Frequency": 174.61,
+            "Sharps": 0,
+            "Flats": 1,
+            "Relative_Minor": 2,
+            "Fifth": 0,
+            "Fourth": 10,
+            "index": 5
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-KEYS-7",
+        "data": {
+            "Key": "F&sharp;",
+            "Description": "A key of besting difficulties, the sigh of relief, and long fought success in Major, but in Minor it is a key of discontent, resentment and gloom-filled passions.",
+            "Alt": "G&flat;",
+            "Syllable": "Fi/Se",
+            "Colour": [
+                "Bright-Blue",
+                "#00CDFF"
+            ],
+            "Frequency": 185,
+            "Sharps": 6,
+            "Flats": 6,
+            "Relative_Minor": 3,
+            "Fifth": 1,
+            "Fourth": 11,
+            "index": 6
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-KEYS-8",
+        "data": {
+            "Key": "G",
+            "Description": "A key of peaceful, gentle emotion, in Major, it can even achieve an idyllic, buccolic quality, like a faithfuul friend, but in Minor it becomes uneasy, resentful, discontented, and dwells in the past.",
+            "Alt": "G",
+            "Syllable": "Sol/So",
+            "Colour": [
+                "Orange",
+                "#FF6500"
+            ],
+            "Frequency": 196,
+            "Sharps": 1,
+            "Flats": 0,
+            "Relative_Minor": 4,
+            "Fifth": 2,
+            "Fourth": 0,
+            "index": 7
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-KEYS-9",
+        "data": {
+            "Key": "G&sharp;",
+            "Description": "The key of eternity, it sits in judgement, inevitable and as grave as death, even in Major. In Minor it becomes a complaint, a struggle with difficulty, that squeezes the heart to death.",
+            "Alt": "A&flat;",
+            "Syllable": "Si/Lo",
+            "Colour": [
+                "Magenta",
+                "#FF00FF"
+            ],
+            "Frequency": 207.65,
+            "Sharps": 0,
+            "Flats": 4,
+            "Relative_Minor": 5,
+            "Fifth": 3,
+            "Fourth": 1,
+            "index": 8
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-KEYS-10",
+        "data": {
+            "Key": "A",
+            "Description": "A key of hope, innocent love, youth and deep statisfaction while Major, even in Minor it is still tender and caring, although it carries a more pious, sometimes even sanctimonious, more mature attitude.",
+            "Alt": "B\ud834\udd2b",
+            "Syllable": "La",
+            "Colour": [
+                "Green",
+                "#2FCD30"
+            ],
+            "Frequency": 220,
+            "Sharps": 3,
+            "Flats": 0,
+            "Relative_Minor": 6,
+            "Fifth": 4,
+            "Fourth": 2,
+            "index": 9
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-KEYS-11",
+        "data": {
+            "Key": "A&sharp;",
+            "Description": "A cheerful key, full hope and aspiration in Major, that turns very sour, surly, mocking and dour in Minor. In Major it is the sound of a clear conscience, in Minor the sound of one so laden with guilt that suicide is on their mind.",
+            "Alt": "B&flat;",
+            "Syllable": "Li/Te",
+            "Colour": [
+                "Steel",
+                "#8D8B8D"
+            ],
+            "Frequency": 233.08,
+            "Sharps": 0,
+            "Flats": 2,
+            "Relative_Minor": 7,
+            "Fifth": 5,
+            "Fourth": 3,
+            "index": 10
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-KEYS-12",
+        "data": {
+            "Key": "B",
+            "Description": "A key of wild passions and jarringly coloured emotions in Major, but in Minor this becomes the key of patience, submission to another will and utter devotion to a higher power.",
+            "Alt": "C&flat;",
+            "Syllable": "Ti/Si",
+            "Colour": [
+                "Blue",
+                "#0000FE"
+            ],
+            "Frequency": 246.94,
+            "Sharps": 5,
+            "Flats": 7,
+            "Relative_Minor": 8,
+            "Fifth": 6,
+            "Fourth": 4,
+            "index": 11
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-KEYS-13",
+        "data": {
+            "Key": "C",
+            "Description": "A pure key of innocence, naive courage and simple, triumphant strength when Major. When Minor it becomes languishing, longing, and love-sick.",
+            "Alt": "B&sharp;",
+            "Syllable": "Do",
+            "Colour": [
+                "Red",
+                "#FF0000"
+            ],
+            "Frequency": 261.63,
+            "Sharps": 0,
+            "Flats": 0,
+            "Relative_Minor": 9,
+            "Fifth": 7,
+            "Fourth": 5,
+            "index": 12
+        }
+    }
+]

@@ -1,0 +1,434 @@
+[
+        {
+            "Zodiac_Sign" : "Aligator",
+            "Description" : "The 1st day of the Mayan Zodiac cycle is the Aligator (or crocodile). Known for a clever, protective and creative personality, always starting new things, or taking stands. Aligators are assertive, to the point of aggression, and can be dominating or selfish, but they will always be trying to do what is right for them and theirs.",
+            "Chi_Gain" : "When you start something new, make changes to something, or take a stand.",
+            "Stress_Gain" : "When something or someone you like is threatened.",
+            "Stress_Relief" : "Aligators Relieve Stress by asserting their will, being dominant, aggressive or selfish.",
+            "Solar_Dates" : "2nd Day of Mayan cycle.",
+            "Alternative_Names" : "Crocodile"
+        },
+        {
+            "Zodiac_Sign" : "Aquarius ♒",
+            "Description" : "Innovative, progressive, rebellious and humanitarian, Aquarius is the fixed air sign, demonstrating all the intellectual and social skills. Aquarians are non-traditionalists who can be so busy helping everyone that a few individuals may get overlooked.",
+            "Chi_Gain" : "When you try give others help, hope or encouragement.",
+            "Stress_Gain" : "When you hear gossip or small talk.",
+            "Stress_Relief" : "Aquarians being naturally rebellious, Relieve Stress by rejecting authority, tradition, and conventions, such as ignoring fashion to wear what amuses them, practising an unusual hobby or just being a nonconformist.",
+            "Solar_Dates" : "January 20 - February 18",
+            "Alternative_Names" : "Khum, Sekhmet, Kumbha, Rowan, Crane, Green Dragon, Otter"
+        },
+        {
+            "Zodiac_Sign" : "Aries ♈",
+            "Description" : "Impulsive, Bold and Ambitious, they have the passion of the cardinal fire sign, and are uncomplicated and direct in their optimistic approach to life.",
+            "Chi_Gain" : "When you leap before you look, act without thinking, or are impusive or bold.",
+            "Stress_Gain" : "When you think after you have leapt, realise you have made a mistake, or learn a lesson",
+            "Stress_Relief" : "Aries Characters can Relieve Stress by expressing a negative emotion such as Anger. Typically they will Relieve Stress equal to the Pips of an Negative Emotional Effect they are experiencing everytime they express it (and may always express the same emotion several times in a row).",
+            "Solar_Dates" : "March 21 - April 19",
+            "Alternative_Names" : "Amun, Osiris, Mesa, Alder, Bear, Fox, Hawk, Red Hawk"
+        },
+        {
+            "Zodiac_Sign" : "Cancer ♋",
+            "Description" : "Intuitive, sensitive, cold and well occasionally crabby, the cardinal water sign Cancer just want to create a cozy space for themselves, and maybe passive-aggressively avoiding direct confrontation.",
+            "Chi_Gain" : "When you act to protect yourself physically or emotionally.",
+            "Stress_Gain" : "When there is a confrontation or conflict with another you cannot side-step somehow.",
+            "Stress_Relief" : "Cancerians Relieve Stress by retreating to a prepared cozy space, such as their home or bedroom, for a few hours.",
+            "Solar_Dates" : "June 21 - July 22",
+            "Alternative_Names" : "Bastet, Karkaṭa, Oak, Wren, Otter, White Horse, Woodpecker"
+        },
+        {
+            "Zodiac_Sign" : "Capricorn ♑",
+            "Description" : "Grounded, determined, hard-working, materialistic, and definitely not given to flights of fancy, Capricorns are the cardinal earth sign. Arriving in the dark of winter, when the days are the shortest, Capricorns will always act as though there are not enough hours in the day, certainly not enough for <em>that</em> nonsense, as well as their own much more important stuff.",
+            "Chi_Gain" : "When you are running late, have to dash, or are very busy right now.",
+            "Stress_Gain" : "When someone doesn’t take you seriously, or does not believe you will succeed.",
+            "Stress_Relief" : "Capricorns Relieve Stress by climbing up things, partying, and other nocturnal activities, why not combine all three by getting drunk and dancing on a table until dawn?",
+            "Solar_Dates" : "December 22 - January 19",
+            "Alternative_Names" : "Horus, Makara, Birch, Eagle, Stag, Snow goose"
+        },
+        {
+            "Zodiac_Sign" : "Death",
+            "Description" : "The 6th day of the Mayan Zodiac cycle, is called Death (or transformer, or World-Bridger). Death is known to be eloquent, charismatic, generous, practical and helpful, but this can sometimes cause them to burn-out, becoming resentful of those they helped.",
+            "Chi_Gain" : "When you act generous towards another, giving them a gift, or sacrificing something for them.",
+            "Stress_Gain" : "When you act resentful towards those you have helped.",
+            "Stress_Relief" : "Death Characters Relieve Stress by entering into spaces that are different from the normal world, such as sacred spaces, ancient ruins, theatres, or crossing into psychosocial spaces.",
+            "Solar_Dates" : "6th day of the Mayan Zodiac Cycle",
+            "Alternative_Names" : "World-bridger, Eternal Now, Transformer"
+        },
+        {
+            "Zodiac_Sign" : "Deer",
+            "Description" : "The 7th day of the Mayan Zodiac cycle, is called Deer (or the Hand). Deer are known as strong, intuitive, leaders, but this is more an expression of their conflicting loves of personal freedom and their community. Deer have strong opinions and are rarely persuaded out of them, preferring to wander off than debate, but they will always listen first.",
+            "Chi_Gain" : "When you listen to other’s arguements or opinions.",
+            "Stress_Gain" : "When others do not do what you expected them to.",
+            "Stress_Relief" : "Deer Relieve Stress by wandering off, on their own, away from their problems (Chi Extend Duration Stress Relieved).",
+            "Solar_Dates" : "7th day of the Mayan Zodiac cycle.",
+            "Alternative_Names" : "The Hand"
+        },
+        {
+            "Zodiac_Sign" : "Dog",
+            "Description" : "Lovely, honest and prudent. The Dog is the first eleventh of the Chinese zodiac and is cosidered Yang and Earth Element. Known for their exuberance, playful, loyalty, and their incredible sense of duty, justice and diplomacy.",
+            "Chi_Gain" : "When you do what you think is right.",
+            "Stress_Gain" : "When you act worried, or are concerned about others.",
+            "Stress_Relief" : "Dogs Relieve Stress by playing games, or acting the fool.",
+            "Solar_Dates" : "Year 11, also Oct 8 - Nov 6.",
+            "Alternative_Names" : "Mongoose"
+        },
+        {
+            "Zodiac_Sign" : "Dog",
+            "Description" : "The 10th day of the Mayan Zodiac cycle is called Dog (or Leg). Known for their loyalty, dedication and courage, they crave order and structure, but they can be too sensitive and lack emotional maturity.",
+            "Chi_Gain" : "When you act to protect another.",
+            "Stress_Gain" : "When you act immature, especially emotionally.",
+            "Stress_Relief" : "Dogs Relieve Stress by being authoritarian, specifically telling others what not to do.",
+            "Solar_Dates" : "10th day of the Mayan Zodiac cycle.",
+            "Alternative_Names" : "Leg, Wolf, Coyote"
+        },
+        {
+            "Zodiac_Sign" : "Dragon",
+            "Description" : "Confident, intelligent, noble and enthusiastic. The Dragon is the fifth animaml of the Chinese zodiac Yang and Earth Element. Known for their generous but impetuous nature, idealistic charisma, and as hard-working perfectionists.",
+            "Chi_Gain" : "When you act charming or intelligent.",
+            "Stress_Gain" : "When you see another in trouble.",
+            "Stress_Relief" : "Dragons Relieve Stress by being impetuous or inflexible, often suddenly changing their minds or refusing to compromise.",
+            "Solar_Dates" : "Year 5, also Apr 6 - May 6",
+            "Alternative_Names" : "Naga, Sea serpent, Big Snake, Eagle, Crocodile, Fish, Shark, Eel, Whale, Snail"
+        },
+        {
+            "Zodiac_Sign" : "Eagle",
+            "Description" : "The 15th day of the Mayan Zodiac cycle is called Eagle. Known for being independent and intellectual explorers, although they can be closed-minded and stubborn about their own beliefs. Eagles are seen as aloof, prone to deeply philosophical thoughts, as well as imaginative flights of fancy, and they can have difficulty telling the two apart, but they are otherwise perfectionist who pay attention to every detail, at least until they lose interest.",
+            "Chi_Gain" : "When you encounter a new idea, place or person.",
+            "Stress_Gain" : "When you act or speak critically of others or yourself.",
+            "Stress_Relief" : "Eagles Relieve Stress by getting bored, losing interest in projects, groups or people, and wandering off (although they will usually return after they have Relieved all their Stress, e.g. Chi Extend Duration equal to their current Stress).",
+            "Solar_Dates" : "15th day of the Mayan Zodiac cycle.",
+            "Alternative_Names" : ""
+        },
+        {
+            "Zodiac_Sign" : "Earth",
+            "Description" : "The 17th day of the Mayan Zodiac cycle is called Earth (or Earthquake or Knowledge). Known for their rational minds, and self-control, they are always efficient and resourceful, however this means they make terrible followers, and their pure logical thought can seem elitist and arrogant, and often fails to understand deeper emotional situations.",
+            "Chi_Gain" : "When you act, think and speak about a situation logically..",
+            "Stress_Gain" : "When you are affected by any strong (2 card or more) emotions.",
+            "Stress_Relief" : "Earth Characters Relieve Stress by meditating on or thinking logically about their problems (Chi Extend Duration Stress Relieved).",
+            "Solar_Dates" : "17th day of the Mayan Zodiac cycle.",
+            "Alternative_Names" : "Earthquake, Knowledge"
+        },
+        {
+            "Zodiac_Sign" : "Flower",
+            "Description" : "The 20th day of the Mayan Zodiac cycle is called Flower (or Sun or Lord). Known for their nobility, power and perfection, they have a sharp, adaptable mind, finding a way of communicating with anyone, and always appear deeply interested in whatever they hear. The only negative anyone feels about Flowers is that they hold everyone else to their own ridiculously high standards, which can lead to them being dissapointed.",
+            "Chi_Gain" : "When you act with nobility, or try to understand another’s point of view.",
+            "Stress_Gain" : "When something doesn’t go the way you’d hoped.",
+            "Stress_Relief" : "Flowers Relieve Stress by taking a moment to enjoy something beautiful, stopping to sniff the flowers, or stare at the view.",
+            "Solar_Dates" : "16th day of the Mayan Zodiac cycle.",
+            "Alternative_Names" : "Sun, Sunflower, Lord, Lord of Light"
+        },
+        {
+            "Zodiac_Sign" : "Gemini ♊",
+            "Description" : "Curious, creative, gregarious, and quick-witted as you would expect from an air sign, Geminis are always juggling a project, hobbies, friends and their careers.",
+            "Chi_Gain" : "Gain Chi when you meet someone new or try something new.",
+            "Stress_Gain" : "When they cannot move onto a different project when they want to.",
+            "Stress_Relief" : "Geminis can Relieve Stress by talking to another Character.",
+            "Solar_Dates" : "May 21 - June 20",
+            "Alternative_Names" : "Horus, Seth, Mithuna, Hawthorn, Bee, Owl, Deer"
+        },
+        {
+            "Zodiac_Sign" : "Goat",
+            "Description" : "Calm, gentle and sympathetic. The Goat is the eighth animaml of the Chinese zodiac and is considered Yin and Earth Element. Known for their sensitive, compassionate and romnantic natures, they are often gifted, creatively, esoterically, physically, mentally, or psychically, but are always profoundly social, preferring to be part of a team, or work to support others.",
+            "Chi_Gain" : "When you act disorganised, lazy, timid, guillible or overly-sensitive.",
+            "Stress_Gain" : "When you are vulnerable, keep secrets, or are bossy.",
+            "Stress_Relief" : "Sheep Relieve Stress when they are given another Character’s approval, support or love.",
+            "Solar_Dates" : "Year 8, also Jul 7 - Aug 6",
+            "Alternative_Names" : "Sheep, Ram"
+        },
+        {
+            "Zodiac_Sign" : "Grass",
+            "Description" : "The 12th day of the Mayan Zodiac cycle is called Grass (or Road). Known for their adaptability, rigor and helpful natures, are perceptive, even investigative in their curiosity, but it can take them a while to get started on projects as they must organise and procrastinate first, but once they begin they will focus and work harder than anyone else, even to their own detriment.",
+            "Chi_Gain" : "When you act curious, investigating or asking questions.",
+            "Stress_Gain" : "When you are defeated, set-back, or rejected.",
+            "Stress_Relief" : "Grass Characters Relieve Stress by completing any project or job that they have begun.",
+            "Solar_Dates" : "12th day of the Mayan Zodiac cycle.",
+            "Alternative_Names" : "Road, Ladder"
+        },
+        {
+            "Zodiac_Sign" : "Horse",
+            "Description" : "Animated, Active and Energetic. The Horse is the seventh animaml of the Chinese zodiac and is considered Yang and Fire ELement. Known for their stamina and energy, as well as an easygoing wit, they are independant but social, and exceptionally decisive, this borders on impatience and impulsive at times.",
+            "Chi_Gain" : "When you are physically, mentally, or socially energetic, active or animated.",
+            "Stress_Gain" : "When you and your opinons or concerns are ignored.",
+            "Stress_Relief" : "Horses Relieve Stress by abandonning a project, challenge, quest or social gathering.",
+            "Solar_Dates" : "Year 7, also Jun 6 - Jul 7.",
+            "Alternative_Names" : ""
+        },
+        {
+            "Zodiac_Sign" : "House",
+            "Description" : "The 3rd day of the Mayan Zodiac Cycle, is called the House (or  perhaps Night). Known for being optimistic hard-workers, they are loyal traditionalists, which can make them inflexible but conventional.",
+            "Chi_Gain" : "When you get on with the job.",
+            "Stress_Gain" : "When you must make a change, or something has been changed on you.",
+            "Stress_Relief" : "Houses Relieve Stress by participating in traditions, be they local cultural customs, religious ritual practices, or culturally traditional practices.",
+            "Solar_Dates" : "3rd day of the Mayan Zodiac cycle.",
+            "Alternative_Names" : "Night"
+        },
+        {
+            "Zodiac_Sign" : "Increated",
+            "Description" : "This Zodiac sign is given to all the Increated, since they have no date of birth.",
+            "Chi_Gain" : "When another being is reminded that you exist.",
+            "Stress_Gain" : "When you are ignored, or forgotten about.",
+            "Stress_Relief" : "Increated Relieve Stress by creating evidence of their existence, including acquiring souls.",
+            "Solar_Dates" : "Not Applicable Increated have no birthdate.",
+            "Alternative_Names" : "D&aelig;monic Patron, Reality Thieves"
+        },
+        {
+            "Zodiac_Sign" : "Jaguar",
+            "Description" : "The 14th day of the Mayan Zodiac cycle is called Jaguar (or Ocelot or Wizard). Known for their mysterious, intuitive and sharp interpersonal skills, their strange, eclectic knowledge and almost supernatural talents and grace.",
+            "Chi_Gain" : "When you make a guess or an observation.",
+            "Stress_Gain" : "When you reveal something about yourself.",
+            "Stress_Relief" : "Jaguars Relieve Stress by spending time with animals, or hiking up into mountains.",
+            "Solar_Dates" : "14th day of the Mayan Zodiac cycle.",
+            "Alternative_Names" : "Ocelot, Wizard"
+        },
+        {
+            "Zodiac_Sign" : "Knife",
+            "Description" : "The 18th day of the Mayan Zodiac cycle, is the Obsidian or Flint Knife (or Mirror). Known to be reflective, considerate of others, but that reflective nature can make them become engrossed and obsessive, or lead them to suppress their own feelings for the good of others..",
+            "Chi_Gain" : "When you listen to someone and encourage them to tell you more.",
+            "Stress_Gain" : "When you do not express your emotions or feelings.",
+            "Stress_Relief" : "Knives Relieve Stress by expressing their emotions, even Negative Emotions.",
+            "Solar_Dates" : "18th day of Mayan Zodiac cycle.",
+            "Alternative_Names" : "Mirror, Flint, Glass"
+        },
+        {
+            "Zodiac_Sign" : "Leo ♌",
+            "Description" : "Vivacious, theatrical, bright and passionate as you would expect from the fixed fire sign, Leos are stable, successful and loyal, but are proud, can be jealous and if there is anything more important than their ego they want it shot, stuffed and mounted for their trophy wall.",
+            "Chi_Gain" : "When you are bold, dramatic, flamboyant or can show-off somehow.",
+            "Stress_Gain" : "When another Character performs better than you (rolls a higher Score).",
+            "Stress_Relief" : "Leos Relieve Stress by playing games, which sounds benign, until you realise lions think people are playthings; Leos can create Drama for other Characters as a way of Relieving their own Stress.",
+            "Solar_Dates" : "July 23 - August 22",
+            "Alternative_Names" : "Sekhmet, Anubis, Siṃha, Holly, Cat, Unicorn, Salmon"
+        },
+        {
+            "Zodiac_Sign" : "Libra ♎",
+            "Description" : "Balance, harmony and judgement are the words that define the cardinal air sign of Libra the Scales, although on the balance of things they can get a little judgemental from time to time, and are perhaps a little too bothered by a little asymmetry here or there.",
+            "Chi_Gain" : "When you are in good company.",
+            "Stress_Gain" : "When you must make a decision.",
+            "Stress_Relief" : "Librans Relieve Stress by gazing upon something they consider beautiful, such as a piece of art, or a lover’s smiling face.",
+            "Solar_Dates" : "September 23 - October 22",
+            "Alternative_Names" : "Geb, Tula, Ivy, Boar, Butterfly, Goose, Raven"
+        },
+        {
+            "Zodiac_Sign" : "Lizard",
+            "Description" : "The 4th day of the Mayan Zodiac cycle is known as Lizard or Seed. Lizards are known to be natural entertainers, often passionate about their art, they set themselves high standards, and often attain them, but this can make them seem aggressive and argumentative with others, especially those who do not share their passion.",
+            "Chi_Gain" : "When you act confident, brave, or passionate about something or someone.",
+            "Stress_Gain" : "When you disagree with another.",
+            "Stress_Relief" : "Lizards Relieve Stress when they spend time alone (typically as Chi Extend Duration, e.g an hour alone Relieves 7 Stress).",
+            "Solar_Dates" : "4th day of Mayan Zodiac cycle.",
+            "Alternative_Names" : "Seed"
+        },
+        {
+            "Zodiac_Sign" : "Monkey",
+            "Description" : "Sharp, Smart, Charming and Curious. The Monkey is the ninth animaml of the Chinese zodiac and is considered Yang and Metal Element. Known for their arrogant confidence, opportunistic and manipulative charm, and inventive and quick humour.",
+            "Chi_Gain" : "When you appear informed about a subject, or share an opinion on a subject, even if you know nothing about it.",
+            "Stress_Gain" : "When you know nothing about the subject.",
+            "Stress_Relief" : "Monkeys Relieve Stress by making another Character laugh, or by laughing in company.",
+            "Solar_Dates" : "Year 9, also Aug 7 - Sep 7.",
+            "Alternative_Names" : "Turtle, Hedgehog"
+        },
+        {
+            "Zodiac_Sign" : "Monkey",
+            "Description" : "The 11th day of the Mayan Zodiac cycle is called Monkey. Known for their need to be social and perform for others, but don’t do well with personal relationships because of this sometimes. Monkeys are consired bright and curious, but this can cause them to be unfocused and impatient.",
+            "Chi_Gain" : "When you act to entertain others.",
+            "Stress_Gain" : "When you have to think about details.",
+            "Stress_Relief" : "Moneys Relieve Stress by creating or experiencing Drama (Drama effects double their Stress Relief effect).",
+            "Solar_Dates" : "11th day of the Mayan Zodiac cycle.",
+            "Alternative_Names" : ""
+        },
+        {
+            "Zodiac_Sign" : "Ox",
+            "Description" : "Diligent, dependable, strong and determined. The Ox is the second animaml of the Chinese zodiac and is considered Yin and Earth Element. Known for their cautious determination, stubborn loyalty and judgemental observations.",
+            "Chi_Gain" : "When you are generous to another, or cautious.",
+            "Stress_Gain" : "When someone takes advantage of you.",
+            "Stress_Relief" : "Ox’s Relieve Stress by being petty, or judgmental of others.",
+            "Solar_Dates" : "Year 2, also Jan 6 - Feb 3.",
+            "Alternative_Names" : "Buffalo, Cattle"
+        },
+        {
+            "Zodiac_Sign" : "Pig",
+            "Description" : "Compassionate, generous, diligent. The Pig is the twelfth animal of the Chinese zodiac and is considered Yin and Water Element. They are known for their nobility, being intelligent, responsible and self-reliance, but they also known for their appetites, generosity and humour.",
+            "Chi_Gain" : "When you do what you believe is right.",
+            "Stress_Gain" : "When you act gullible or insecure.",
+            "Stress_Relief" : "Pigs Relieve Stress by indulging an appetite.",
+            "Solar_Dates" : "Year 12, also Nov 7 - Dec 6.",
+            "Alternative_Names" : "Boar, Hog, Tortoise, Deer, Elephant"
+        },
+        {
+            "Zodiac_Sign" : "Pisces ♓",
+            "Description" : "Compassionate, intuitive, imaginative, and unreliable, the mutable water sign of Pisces is so emotional, spiritual and creative it can seem either visionary or delusional. Pisceans are led by their emotions, and struggle to remain grounded in the real world, as their dreams, intuitions and fantasies are much more beguiling than material things to them.",
+            "Chi_Gain" : "When you show compassion for others, empathise with their feelings, or are swayed by their emotions.",
+            "Stress_Gain" : "When you try to sleep without trying to address a problem you know exists.",
+            "Stress_Relief" : "Pisceans Relieve Stress through escapism, using their imagination, whether creatively, such as painting, writing, or role-playing or passively such as reading, fantasizing or daydreaming.",
+            "Solar_Dates" : "February 19 - March 20",
+            "Alternative_Names" : "Isis, Mīna, Ash, Seal, Seahoarse, Seagull, Wolf"
+        },
+        {
+            "Zodiac_Sign" : "Portented",
+            "Description" : "This Zodiac sign is intended for times of birth that are astronomically special, such as being born during an eclipse, planetary conjunction, or visible super-nova. Such Characters are often considered special, perhaps blessed, perhaps cursed. There may or may not be a prophecy, gift, or destiny involved.",
+            "Chi_Gain" : "When you attempt to hide, distract from or ignore these special circumstances.",
+            "Stress_Gain" : "When you act to embrace or utilise your gift or destiny.",
+            "Stress_Relief" : "Portended Characters Relieve all Stress when they start (or in some cases end such as Lunar or Super-Nova potents) a project, Plot or Quest.",
+            "Solar_Dates" : "Varies as Eclipses, novas and supernovas occur.",
+            "Alternative_Names" : "Eclipsed, New Stars, Adumbrate, Harbinger"
+        },
+        {
+            "Zodiac_Sign" : "Rabbit",
+            "Description" : "Quiet, Elegant, Kind and Responsible. The Rat Rabbit the fourth animaml of the Chinese zodiac and is considered Yin and Wood Element. Known for their intuitive, fortunate, but still pessimistic, cleverness, gentle and even-tempered nature and occasional insecurity and vanity.",
+            "Chi_Gain" : "When you act unsure, uncertain or pessimistic.",
+            "Stress_Gain" : "When you experience emotions that cannot be expressed gently.",
+            "Stress_Relief" : "Rabbits Relieve Stress by looking at beautiful things (often art or nature).",
+            "Solar_Dates" : "Year 4, also Mar 6 - Apr 5.",
+            "Alternative_Names" : "Hare, Cat"
+        },
+        {
+            "Zodiac_Sign" : "Rat",
+            "Description" : "Quick-witted, resourceful, versatile and kind. The Rat is the first animaml of the Chinese zodiac and is considered Yang and Water Element. Known for their keen creative intelligence, unique wisdom and an intense ruthlessness and acquistiveness.",
+            "Chi_Gain" : "When you answer a question.",
+            "Stress_Gain" : "When you are caught in a lie.",
+            "Stress_Relief" : "Rats relieve Stress by acquiring something they did not own before.",
+            "Solar_Dates" : "Year 1, also Dec 7 - Jan 5.",
+            "Alternative_Names" : "Mouse, Camel"
+        },
+        {
+            "Zodiac_Sign" : "Reed",
+            "Description" : "The 13th day of the Mayan Zodiac cycle is called Reed. Known to be incredibly determined, and authorative by nature, they make natural leaders, adept at finding solutions to problems and extremely confident. However, this authority does not come without a price, Reeds may make things difficult for themselves and others just to follow a rule or prove a point.",
+            "Chi_Gain" : "When you act confident or with authority.",
+            "Stress_Gain" : "When you don’t know what to do.",
+            "Stress_Relief" : "Reeds Relieve Stress by finding peaceful solutions to problems, or spending time in peace and quiet (Chi Extend Duration Stress Relieved).",
+            "Solar_Dates" : "13th day of the Mayan Zodiac cycle.",
+            "Alternative_Names" : ""
+        },
+        {
+            "Zodiac_Sign" : "Rooster",
+            "Description" : "Observant, hard-working, talented and courageous. The Rooster is the tenth animaml of the Chinese zodiac an dis considered Yin and Metal Element. Known for their almost psychic powers of observation, blunt, but charming honesty, and almost inhuman levels of self-confidence and bravery that often borders into plain recklessness.",
+            "Chi_Gain" : "When you take a risk, set a big goal, or organise and make a plan.",
+            "Stress_Gain" : "When you act narrow-minded, selfish or reckless.",
+            "Stress_Relief" : "Rooster Relieve Stress when they arrive somewhere on time.",
+            "Solar_Dates" : "Year 10, also Sep 8 - Oct 7.",
+            "Alternative_Names" : "Hen, Chicken, Cockerel, Bird"
+        },
+        {
+            "Zodiac_Sign" : "Sagittarius ♐",
+            "Description" : "Intense, passionate, curious, and adaptable, Saggitarians are the mutable fire of imagination embodied as a centaur archer, pushing them to not only explore and range far, as they quest for knowledge, experiences and tales to tell, but to go all in on whatever wild adventure looms, just so long as they are done when the next thing comes along, as they might just wander off or not show up.",
+            "Chi_Gain" : "When you share information, a story, an adventure, or a joke with at least one other Character.",
+            "Stress_Gain" : "When they are in the middle of doing something (including adventures, courtships, quests, conversations, or jobs) when something else catches their eye that appeals to them more.",
+            "Stress_Relief" : "Saggitarians Relieve Stress by acting as if they have no filters between their brain and mouth, saying the unthinkable, being bluntly insulting (while still being funny), or going all-in on a bit, taking a point to an absurd extreme.",
+            "Solar_Dates" : "November 22 - December 21",
+            "Alternative_Names" : "Hapi, Dhanus, Elder, Badger, Ravem. Black Horse, Owl"
+        },
+        {
+            "Zodiac_Sign" : "Scorpio ♏",
+            "Description" : "Enticing, empathic, passionate and powerful water signs, Scorpios are intuitive, secretive, seductive and a little controlling.",
+            "Chi_Gain" : "When you are physically close to, or emotionally initimate with, another Character.",
+            "Stress_Gain" : "When you are surprised by something you are unprepared for.",
+            "Stress_Relief" : "Scorpios Relieve Stress by taking (or wresting if required) control of the situation, making plans, issuing orders and delivering demands.",
+            "Solar_Dates" : "October 23 - November 21",
+            "Alternative_Names" : "Mut, Vṛścika, Reed, Hound, Swan, Lizard, Snake"
+        },
+        {
+            "Zodiac_Sign" : "Snake",
+            "Description" : "Enigmatic, intelligent and wise. The Snake is the sixth animal of the Chinese zodiac and is considered Yin and Fire Element. Known for their mesmerising beauty and sensual talented wit, they can also be patient, manipulative and malicious under the right circumstances.",
+            "Chi_Gain" : "When you act wise, enigmatic  or sympathetic.",
+            "Stress_Gain" : "When you must place your trust in another, or are not trusted yourself.",
+            "Stress_Relief" : "Snakes Relieve Stress by spending time alone, or engaging in hedonistic pleasures.",
+            "Solar_Dates" : "Year 6, also May 7 - Jun 5.",
+            "Alternative_Names" : "Serpent, Little Snake"
+        },
+        {
+            "Zodiac_Sign" : "Serpent",
+            "Description" : "The 5th day of the Mayan Zodiac cycle is known as the Serpent (or Snake). Serpents are known to be compassionate, empathic, with a deep understanding of human behaviour and emotion, they have a dramatic nature, which can lead them into theatre, or trouble.",
+            "Chi_Gain" : "When you act with compassion or contempt towards another.",
+            "Stress_Gain" : "When you feel powerless or out of control.",
+            "Stress_Relief" : "Serpents Relieve Stress by having another Character spend time with them (Chi Extend Duration), who loves, respects or fears them.",
+            "Solar_Dates" : "5th day of Mayan Zodiac cycle.",
+            "Alternative_Names" : "Snake, Rain Bringer,"
+        },
+        {
+            "Zodiac_Sign" : "Star",
+            "Description" : "The 8th day of the Mayan Zodiac cycle is called the Star (or the Rabbit). Stars are known for their carefree, playful nature, they seem to believe life is a game, and that competitive nature means they delight in finding challenges that they can overcome.",
+            "Chi_Gain" : "When you compete against another, or face a challenge.",
+            "Stress_Gain" : "When they act nervous or self-centred.",
+            "Stress_Relief" : "Stars Relieve Stress when they engage in escapism (such as reading), or spend time in nature (Chi Extend Duration Stress Relieved).",
+            "Solar_Dates" : "8th day of Mayan Zodiac cycle.",
+            "Alternative_Names" : "Star, Rabbit, Hare"
+        },
+        {
+            "Zodiac_Sign" : "Star-Touched",
+            "Description" : "The Star-Touched Zodiac sign is intended for those born of the F&aelig;ry bloodlines under mortal stars. Such Characters are driven mad by exposure to the stars, usually this madness expresses as a powerful wanderlust or fury.",
+            "Chi_Gain" : "When you are able to see the stars above you, arrive in a new place, or kill an Extra Character.",
+            "Stress_Gain" : "When you are trapped, stuck, or cannot see the stars.",
+            "Stress_Relief" : "The Star-touched Relieve  Stress when they dance beneath the stars and Relieve all Stress when they kill any Extra beneath the stars.",
+            "Solar_Dates" : "Any date",
+            "Alternative_Names" : "Star-mad, Blood-dancers"
+        },
+        {
+            "Zodiac_Sign" : "Storm",
+            "Description" : "The 19th day of the Mayan Zodiac cycle is called Storm (or Rain). Known for their youthful healing energy, they have busy, neat minds, and a nuturing, soothing personality, driven by concern for others. However, Storm Characters can build resentment for other Characters, and require some escapist behaviours when overwhelmed.",
+            "Chi_Gain" : "When you act to care for others.",
+            "Stress_Gain" : "When you work in a cluttered, or disorganised space.",
+            "Stress_Relief" : "Storm Characters Relieve Stress by indulging in escapism, especially potentially harmful forms such as drinking to excess, smoking or taking drugs.",
+            "Solar_Dates" : "19th day of the Mayan Zodiac cycle.",
+            "Alternative_Names" : "Rain, Rainstorm, Deluge"
+        },
+        {
+            "Zodiac_Sign" : "Taurus ♉",
+            "Description" : "Hedonistic, stubborn, focused and hard-working, they are a steadfast, steady and true fixed earth sign. Dedicated to the point of stubborness, a Taurus may linger in a bad situation just to prove a point.",
+            "Chi_Gain" : "When you prove a point, stick to your guns or act stubbor.",
+            "Stress_Gain" : "When someone threatens you, your loved ones, or your established lifestyle.",
+            "Stress_Relief" : "Taurus can Relieve Stress by enjoying something pleasurable, decadent, or hedonistic, whether a nice glass of wine or a decadent spa vacation.",
+            "Solar_Dates" : "April 20 - May 20",
+            "Alternative_Names" : "Apis, Amun-Ra, Vṛṣabha, Willow, Adder, Hare, Sea Serpent, Beaver"
+        },
+        {
+            "Zodiac_Sign" : "Tiger",
+            "Description" : "Prideful, adventurous and unconventional. The Tiger is the third animaml of the Chinese zodiac and is considered Yang and Wood Element. Known for their aggressive outspoken natures, often deserved arrogance and enthusiastic adventurousness, that can begin optimistic but can become short-tempered or anxious.",
+            "Chi_Gain" : "When you take pride in your accomplishments, bragging about them, or assume you will succeed.",
+            "Stress_Gain" : "When you fail at something.",
+            "Stress_Relief" : "Tigers Relieve Stress by expressing their emotions, often their anger or anxieties.",
+            "Solar_Dates" : "Year 3, also Feb 4 - Mar 5.",
+            "Alternative_Names" : "Leopard, Wolf"
+        },
+        {
+            "Zodiac_Sign" : "Virgo ♍",
+            "Description" : "Logical, practical, systematic and diligent as you would expect from an earth sign, Virgos are kind, gentle, and like to solve problems with their incredible intellect and perceptual senses.",
+            "Chi_Gain" : "When you work logically, or methodically, to find a solution to a problem.",
+            "Stress_Gain" : "When you try to be perfect.",
+            "Stress_Relief" : "Virgos Relieve Stress by helping others to achieve Success Levels at any task, Test or Ordeal.",
+            "Solar_Dates" : "August 23 - September 22",
+            "Alternative_Names" : "Isis, Thoth, Kanyā, Hazel, Crane, Salmon, Brown Bear"
+        },
+        {
+            "Zodiac_Sign" : "Vermin",
+            "Description" : "Intended as an example of an alien or fantasy zodiac where the zodiac is not a reskinning of the 12 Animals or 12 Western Signs. Vermin are opportunistic survivors, typically cowardly, but aggressive they attack without warning, and scuttle away to hide afterwards.",
+            "Chi_Gain" : "When you stay out of sight, or out of the way of another Character.",
+            "Stress_Gain" : "When you are surprised, ambushed, trapped, or hurt by another Character (Emotionally or Physically).",
+            "Stress_Relief" : "Vermin Relieve Stress by hurting others before they can hurt them, Vermin Relieve all Stress if they defeat or kill an opponent without being Wounded themselves.",
+            "Solar_Dates" : "Intended for re-worked Fantasy Zodiacs.",
+            "Alternative_Names" : "Centipede, Spider, Ant, Wasp, Maggot, Cockroach"
+        },
+        {
+            "Zodiac_Sign" : "Vulture",
+            "Description" : "The 16th day of the Mayan Zodiac cycle is called Vulture (or Warrior or Wisdom). Known for their self-awareness, life-experience, and somewhat ruthless, but realistic and practical nature. Vultures are patient and respectful of others, always learning whatever lessons life has to teach them, and eager to share that experience with others, although they do not like to judged themselves.",
+            "Chi_Gain" : "When you do something you have tried before, while someone else tries it for their first time.",
+            "Stress_Gain" : "When you act self-conscious, self-effacing, or as if you believe others are judging you.",
+            "Stress_Relief" : "Vultures Relieve Stress by being mean, hard, cold or ruthless to others.",
+            "Solar_Dates" : "16th day of the Mayan Zodiac cycle.",
+            "Alternative_Names" : "Warrior, Wisdom"
+        },
+        {
+            "Zodiac_Sign" : "Water",
+            "Description" : "The 9th day of the Mayan Zodiac cycle is called Water (or the Offering). Known for their deep, powerful emotions, and clear understanding of others, they have strong ideals, and are persistent, always finding a way through difficulties, although sometimes their ways are not always healthy or advised.",
+            "Chi_Gain" : "When you experience any emotional state (emotional state, Psych Wound etc).",
+            "Stress_Gain" : "When you act gently, or exagerate your problems.",
+            "Stress_Relief" : "Water Characters Relieve Stress by abusive behaviour, often in the form of self abuse, such as excessive drink, gambling, or drugs.",
+            "Solar_Dates" : "9th day of the Mayan Zodiac cycle.",
+            "Alternative_Names" : "Rain, Offering"
+        },
+        {
+            "Zodiac_Sign" : "Wind",
+            "Description" : "The 2nd day of the Mayan Zodiac cycle, is Wind. Known for being communicative, smart (to the point of over-thinking often), supremely flexible and open, they are able to master many fields of study simultaneously, but this can make them indecisive and insecure.",
+            "Chi_Gain" : "When you think, talk or study without acting.",
+            "Stress_Gain" : "When you are unsure, can see both sides of an argument, or are indecisive.",
+            "Stress_Relief" : "Wind characters Relieve Stress by reacting negatively to their surroundings.",
+            "Solar_Dates" : "3rd day of Mayan Zodiac cycle.",
+            "Alternative_Names" : "Air, Spirit, Soul"
+        }
+]

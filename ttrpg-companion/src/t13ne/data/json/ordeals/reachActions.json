@@ -1,0 +1,58 @@
+[
+  {
+    "Type": "Full Lunge",
+    "Description": "The Full Lunge involves a couple of steps or a leap forwards, as well as twisting and leaning the body to maximise the Lunge from back foot to leading hand, or weapon tip. A Full Lunge is a great attacking move, but will leave even a Master open to attack while they recover.",
+    "Rules": "The Full Lunge adds the +3 Pips to each card played as an Attack in the Action, but leaves can leave the Character exposed after their attack. The Full Lunge adds 1d6 RT to the attack, but a roll of 5 or 6 adds 1 additional GRT to the Action instead.",
+    "Required_Number_of_Profs": "3",
+    "Reach_Modifier": "+3",
+    "RT_Modifier": "+1d6 RT, rolls of 5 or 6 add 1 GRT instead."
+  },
+  {
+    "Type": "Lunge",
+    "Description": "A Lunge involves twisting your shoulders, stepping and leaning into an attack to extend your Reach. A lunge can leave you somewhat exposed, but a clean lunge is less dangerous than a full lunge.",
+    "Rules": "Lunges add +2 Pips to each Card played to Attack, and extends your reach by upto 2 metres but adds +3 RT to the attack.",
+    "Required_Number_of_Profs": "2",
+    "Reach_Modifier": "+2",
+    "RT_Modifier": "+3 RT"
+  },
+  {
+    "Type": "Extended",
+    "Description": "An extended Thrust or Swing drives an arm out towards the Target with a weapon extended, but is otherwise a guarded position.",
+    "Rules": "A Thrust can extend your Reach, but slows your recovery slightly.",
+    "Required_Number_of_Profs": "1",
+    "Reach_Modifier": "+1",
+    "RT_Modifier": "+1 RT"
+  },
+  {
+    "Type": "Standing",
+    "Description": "A Standing attack is a tight swing, or guarded thrust intended to offend without opening the guard.",
+    "Rules": "The weapon is kept close to the body, to keep a guard up while striking.",
+    "Required_Number_of_Profs": "0",
+    "Reach_Modifier": "0",
+    "RT_Modifier": "0"
+  },
+  {
+    "Type": "Halving",
+    "Description": "Halving, or Half-Swording when using a sword, involves moving a hand higher, usually beyond the centre of mass to allow closer control, in the case of a sword a hand will be placed upon the blade, and the sword may (but doesn’t have to be) be reversed.",
+    "Rules": "Halving effectively reduces the Reach of the weapon allowing the Master Annex to be used closer. Halving can also allow a longer two-handed sword to be used effectively in crowded, or cluttered quarters, such as pressed melee. Halving can also allow some weapons to be used slightly faster.",
+    "Required_Number_of_Profs": "1",
+    "Reach_Modifier": "-1",
+    "RT_Modifier": "-1 RT"
+  },
+  {
+    "Type": "Pressed",
+    "Description": "Moving your hands, leaning back and twisting your body away, while keeping the point toward the enemy, can reduce the Reach significantly. Pressed fighting relies heavily on non-Master Annex strikes such as with the pummel, jabbing with a slashing weapon, etc.",
+    "Rules": "Pressed fighting generally encourages swift actions, with Sub-Annexes of the Descendant rather than the Master Annex, as well as additional control and leverage over the weapon that reduces Reaction Times. ",
+    "Required_Number_of_Profs": "2",
+    "Reach_Modifier": "-2",
+    "RT_Modifier": "-3 RT"
+  },
+  {
+    "Type": "Fall-back",
+    "Description": "Moving away from the enemy, as well as turning away, changing grip or similar, to reduce Reach a lot.Falling back allows a Character to keep threatening someone who has stepped inside the reach of even the longest weapons. Additionally Falling-back while attacking can buy you time to recover, especially from battle strain or shock. ",
+    "Rules": "The Character who falls back can either reduce their recovery time by 5 RT or 1 GRT, or the Character can Relieve 1 Shock (or 2 Strains) as they \"fall-back\", and the Character will either move weapon Reach metres \"backwards\" away from the enemy after the attack, or they may make an automatic disengagement action instead with Pips equal to the Reach, if engagement rules are being used. This Disengagement is usually bolstered with at least one Card from the Action.",
+    "Required_Number_of_Profs": "3",
+    "Reach_Modifier": "-3",
+    "RT_Modifier": "-5 RT or -1 GRT"
+  }
+]

@@ -1,0 +1,49 @@
+[
+    {
+        "Type": "Extra",
+        "Description": "A simple NPC, not even really a Character at all, although they are still be characters in a narrative sense. Vex and Chorus characters are particularly inconsequential and one-dimensional. They are the background characters of a crowd scene, individually they are unimportant to the Plot or Conflict, but they will be important to someone",
+        "Rules": "Extras are just sentient Descendants created by the Plot or a Yarn-Teller, not really Characters in the true sense. Extras can have a Scale of -3 to +20 as it isn’t attached to the number of Hitches, but instead based on the Plot that created them. Extras may have Geometries, Personas and Cores. They may have access to I-Ching, but usually do not. Normally Extras have a single Annex that they use for all rolls (it is their Skills, Talents and Powers). Treat normal rolls as appropriate for the Extra. Skills draw one less card than a Talent. Talents draw an extra card than a Skill. Powers draw Twice the number of cards of a Skill. Super-Annexes draw twice the cards of a Talent. Play as normal (Skill plays 1, Talent plays 2, Power plays 3) with normal GRT costs. You can detail the Skills, Talents and Powers separately for each one, but really why bother. Instead add a Pip bonus to each card to balance the combat (Talent: add Half Scale, Power: add Scale, Super-Skill: add Scale x3 as a rough example rule – or add Nimbeds instead).<br/> Vexes have no Hexagram, no Personality Annex and may only gain Chi from Geometry or by triggering Hitches.<br/>",
+        "Element": [
+            "Extra",
+            "Pattern"
+        ]
+    },
+    {
+        "Type": "Lite",
+        "Description": "Lite Characters are a very simplified Character that may be used as NPCs or PCs in a either a simplified game or as an Alternate.",
+        "Rules": "Lite Characters essentially multiply Proficiencies rather than building actual Annexes. They are quick to build and easy to play. Lite Characters can also use Extras as Alts.",
+        "Element": [
+            "Lite",
+            "Extra"
+        ]
+    },
+    {
+        "Type": "Archetype",
+        "Description": "Archetypes are simplified Full Characters that the Ref uses for really important NPCs, they are real Characters, but are less detailed than standard Characters.",
+        "Rules": "Archetypes simplify Full Characters with card Archetypes, and limit the number of Facets of different boons by combining them into Stats (often 1-6 Stats of Boons between 8-18) for ease of creation and use. It is not unusual to begin play, especially for NPCs using Archetype Characters. They are usually migrated to Full Characters if they are reused.",
+        "Element": [
+            "Archetype",
+            "Character"
+        ]
+    },
+    {
+        "Type": "Detailed",
+        "Description": "Detailed Characters are intended for PCs, they are the best Character type for all your lead Characters (unless you require Full Characters).",
+        "Rules": "Detailed Characters are created around a complete set of Facets (although they may share Boons into Stats, of course), a Personality Annex, with (potentially a Super-Annex) Powers, Talents, Skills, Proficiencies etc. Detailed Characters usually have a very limited number of Alts.",
+        "Element": [
+            "Detailed",
+            "Weaver",
+            "Character"
+        ]
+    },
+    {
+        "Type": "Full",
+        "Description": "Full Characters are the pinnacle of T13 Characters, and are required for the most powerful and important NPCs and PCs. Most Yarn-Tellers, Fae and Bulm&auml;s Characters require Full Characters if they are going to be encountered more than once.",
+        "Rules": "Full Characters are essentially a pool of abilities from all their Alts. They are essentially a group of Detailed Characters living in a single trans-dimensional body.",
+        "Element": [
+            "Full",
+            "Weaver",
+            "Character"
+        ]
+    }
+]

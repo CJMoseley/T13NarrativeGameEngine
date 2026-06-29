@@ -1,0 +1,118 @@
+{
+	"Card_Corner": "8",
+	"Card": "Eight",
+	"Suit": "4",
+	"IconSuit": "♠",
+	"Pips": "8",
+	"Unicode": "&#x1f0a8;",
+	"Svg": "images/cards-svg/8S.svg",
+	"Wound_Level": 3,
+	"Facet": "Trial",
+	"Tao": [
+		1,
+		0
+	],
+	"Narrative_Meaning": "Eights signify karma and mostly in the form of karmic retributions, if someone has been having a bad time now is the time they will be rewarded, if they have been running amok they will now have to pay that price.",
+	"Image": "",
+	"Yarn": {
+		"Yarn_Name": "The Rival",
+		"Yarn_Description": "The Rival card represents another Character that rivals or opposes a Player or Non-Player Character in some way. The Rival may be an opponent, a competitor, an enemy, or just interested in the same love interest. Rivals can be strangers or friends, and the card can indicate a rivalry that is growing within a group, or indicate an external threat. In many ways the Rival card be tied to the Friend or Foe Wyrd Tarot cards, as Rivals can become friends, as well as friends become Rivals.",
+		"Significator": {
+			"Plot": "The Rival Plot is a plot that focuses upon a Character and their Rival, in the case of a Party of Adventurers, or Team, the Rival plot will consist of a Rival team (usually made of the various types of Rival with a Rival for each Character). The Rivals will have similar, or opposed, goals to the Party, which will naturally bring them into conflict, such as wanting to win the same league, or control the kingdom themselves. ",
+			"Side": "A side marked with the Rival will act as (and often be composed of) Rivals to at least one Character Embodiment from at least one other side, and sometimes multiple sides and multiple Embodiments.",
+			"Character": "The Rival Significator indicates a Character who feels compelled to compete against others. <p>They <strong>Gain Yin</strong> when they enter a competition, disagree, or oppose another. </p><p>They <strong>Gain Yang</strong> when they acknowledge or greet someone they acknowledge as a rival. </p><p>They <strong>Gain Chi</strong> when they act in competition against an acknowledged rival. </p><p>They also gain +1 Success Levels when they compete against an acknowledged rival.</p>",
+			"Diegetic_Character": "A character driven by a fierce competitive spirit, constantly measuring themselves against others. They are defined by their disagreements and their determination to surpass those they deem worthy adversaries, viewing every interaction as a potential contest for supremacy.",
+			"Scene": "The Rival Scene is usually an appearance of a Character's Rival. Rivals can be the same side of a Conflict as the Characters, or another side. Yarn-Tellers can play the card on a target to Reveal or Summon one of the target's Rivals. This is often useful for the plot development, and can provide them with new allies (or enemies if things go badly)."
+		},
+		"Beat_Type": "6",
+		"Conflict_Embodiment": "2",
+		"Facet_Embodiment": "1",
+		"Hook_Aspect": "Hitches",
+		"Aspect_Description": "The Hook targets the Character's Hitches, the bigger the better.",
+		"Hook": "Rival Arrives",
+		"Hook_Description": "The Story opens with a Rival arriving, or being revealed. This often signifies some sort of competition is occurring (even if neither side is aware of it).",
+		"Gain": "Gain an Ally of a former Rival, or Resolve a Hitch",
+		"Diegetic_Gain": "The resolution of a long-standing personal struggle or the unexpected transformation of a bitter rival into a steadfast ally, turning a source of conflict into a pillar of support.",
+		"Fray": "Competition",
+		"Fray_Description": "Competitions are usually Opposed Ordeals (Stakes vary based on the Competition. Competitions can be friendly rivalries between comrades, or they can be the reason for bitter Rivalries that destroy lives. Almost any event can become a Competition if Characters are willing. Drinking, Sports, Quizzes, Driving, Racing, and so on. Tournaments are a special type of Competition that includes multiple Rounds of Ordeals with each Round representing a single competition / game / match. Tournaments are usually a Story in their own right rather than just a single Fray, but bigger Conflicts may have to use Tournaments for any Competition.",
+		"Snag": "Rivalry",
+		"Snag_Description": "The Fray is complicated by at least one of the PCs Rivals being involved somehow. They may just be present, but immediately start acting to mislead, distract or engage the PC depending upon the nature of the Rivalry. If no Rival is available then an Ally will complicate the Fray by being involved with the Opposed Side somehow.",
+		"NPC": {
+			"Archetype": "Competitor",
+			"Persona": 19,
+			"Core": 6,
+			"Hitch": 7,
+			"Description": "Competitors are those people who dedicate themselves to a particular sport, game or activity, trying to be the best at some competition. Unspecified Rivals are often Competitors, and sometimes a Competitor may raise to full Rival status."
+		},
+		"Sweeping": "The Enemy of my Enemy",
+		"Sweeping_Text": "The PCs may make contact with one or more of the Opposed Embodiments Rivals, or a Rival may be entangled in the Plot. Perhaps offering the PCs a place to stay, or some assistance, simply to get back at their Rival. This Rival may even subject the Opposed Embodiment to a Rivalry Snag during their next or current Fray.",
+		"History": "Competition",
+		"History_Description": "The Rival indicates that the current situation has its roots in an old competition, perhaps a lover's ex-lover is back in town, or then again perhaps this is an ancient rivalry between nations, tribes, clans or cities, then again a more recent sporting rivalry, or similar competition can also spawn rivalries.",
+		"Situation": "Rivalry",
+		"Situation_Description": "The Rival indicates that current situation involves a rivalry, usually a Rival character will be involved in the current situation, often competing against the character.",
+		"Solution": "Feuding",
+		"Solution_Description": "The Rival indicates that the solution to the current situation is based on feuding, this may mean that you should use your own rivals against your enemies, or more often recruit your enemy's rivals to your side.",
+		"Revelations": {
+			"About": "Deeper Shadows",
+			"About_Description": "The information revealed is about the Deeper Shadows Conflict Embodiment. Even more hidden than the Shadow side are the Deeper Shadows. Even their actions are hidden, this Revelation should reveal only that their is a potential for some deeply hidden group to be influencing the Conflict in some way.",
+			"Info": "What?",
+			"Info_Description": "Information about the Opposition's Ends, what are their goals, or plans.",
+			"Vector": "Traces",
+			"Vector_Description": "Maybe there are trace materials or chemicals found by forensic scientists, or maybe the police traced the call, or maybe you saw through a piece of paper.",
+			"Alternate": "Weaponry",
+			"Alternate_Description": "The information is about the weaponry, offensive capability, or defensibility of the Embodiment.",
+			"Detail": "Mixed",
+			"Detail_Description": "Mixed details are the worst. Important facts mixed in with useless lies, and properly hard to tell the one from the other, until it is proven, one way or another."
+		}
+	},
+	"Obstacle": {
+		"Type": "Rival",
+		"Description": "The way is blocked by one of the Character's Rivals, this will usually block the path of only the Characters with Rivalries with that Rival, depending upon the Rival."
+	},
+	"Tarot": {
+		"WyrdTarot": "Doom-theft",
+		"Crossed": "Add a card from your Hand to the Target&#39;s Hand and Draw 2 cards.",
+		"Normal": "Take a random card from the Target&#39;s Hand and add it to your own. They may draw a replacement."
+	},
+	"Ordeal": {
+		"Ordeal_Type": "Opposed Ordeal",
+		"Stages": "6",
+		"Ordeal_Spread": "Forking",
+		"Stakes": "High",
+		"Test": "Charm (Awe)",
+		"Obstacles": "1 Obstacle in every Stage",
+		"Suggested_Action": "Compete",
+		"Stage": "Foetid",
+		"Stage_Description": "The way ahead stinks. It may not necessarily be a foul smell, but it usually is. A perfume store is less likely than an open sewer, or pile of trash, but not impossible.",
+		"Motional": "Ground Riding Flee",
+		"Motional_Description": "The horses are sweating, foaming as the bit, and you should stop, and rest them, but the Warg-Riders are somewhere behind you and already trying to flank.",
+		"Tide_of_Battle": "Collapse",
+		"Tide_of_Battle_Text": "The Tide of Battle is in transition, unsure who is winning, defences are abandonned by both sides to close to melee. All Prepared Defences are abandoned, and all Style Reserves Discard a card. All physical movement and attack cards by either side add +1 Pips.",
+		"Fight": "Gang Warfare",
+		"Fight_Description": "The enemy is a large group of rag-tag, undisciplined, but often surprisingly strong, well-trained or heavily-armed Cast Extras."
+	},
+	"Lea": {
+		"PathColour": "Red/Purple Carnivore",
+		"Bulmas": "Hunters, Broccen, Vermis, Labyrinthine, All-Walkers",
+		"AnimalCategory": "Megafauna – Medium",
+		"Example": "Lion / Large Snake / Shark",
+		"Bodypart": "Spine",
+		"Notes": "These paths are uncommon in human occupied areas, except where they tend to be end in Zoos."
+	},
+	"Stress": {
+		"Type": "Struggling",
+		"Description": "Characters deep in Stress can struggle to cope. It can feel like they are drowning, unable to catch a breath between the wild buffets of fate. If they were less stressed they would cope, but it seems like everything is more difficult for these Characters now. Somehow though they will often struggle through, barely making ends meet until the stress lifts.",
+		"Rules": "Spades Suited Facet Actions (Gossamer, Inertia, Key, Miasma, Trial or Yonder) add Difficulty equal to the current Stress in Chi, all other Facet Actions add Difficulty equal to the current Stress as Tao Sway. If a penalised Action is a Stalemate then the Character may reduce Stress by 1."
+	},
+	"Trauma": {
+		"Type": "Rivalry",
+		"Description": "Trauma can alter not just who a Character is, but who their friends are. It can also create new Rivalries, with Trauma revealing a comptetive nature in a Character, directed against their former friends. Then again Trauma can also create new Rivalries in other ways, for example, if two Characters suffer the same Trauma, but cope very differently with aspects of the lingering effects, then those Characters may develop a Rivalry.",
+		"Rules": "The Trauma relieves all current Stress, converting it into Chi that is used to improve a Rival Character or develop a new Rival. The Rivals may both Relieve 1 Stress by demonstrating their superiority over the other in some way (often by winning a quick Opposed Facet Test or Ordeal)."
+	},
+	"Age": {
+		"Type": "Rivalry",
+		"Description": "An Age of Rivalry is occuring. During this age a society develops a profound rivalry with another society, often a neighbour and ally. This rivalry is usually expressed within some sport or competition, although this rivalry may in time develop into a more aggressive and violent situation, it rarely becomes a war. In fact, such rivalries are more commonly a result of a changing geo-political landscape that creates allies of former enemies, this ancient enmity becomes the basis for bitter rivalry in sports, economics, art or some other field.",
+		"Diegetic_Description": "An era of intense but regulated competition between neighbors. Society defines itself through its ongoing struggle to outshine a peer, leading to rapid advancements in art, commerce, and athletics as each side strives for dominance without descending into open warfare.",
+		"Rules": "During an Age of Rivalry a society will select a rival society from its current allies, often a previous enemy, and compete against them scoring small vitories and loses against the rival society. This rivalry will often cause a growth of both societies as they repeatedly compete and improve."
+	}
+}

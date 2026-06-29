@@ -1,0 +1,65 @@
+[
+    {
+        "Base_Metal": "Silver",
+        "Cardinal_Metal": "Artemesium",
+        "Cardinal_Description": "Emits Silvery or Blue-White light that shimmers and moves as though water was present when a sentient mind is observing the field, the light has a cleansing effect and thins the boundaries between worlds (overlaying Action Spaces}. This can have a number of effects, enhancing intuition and psychic powers, allowing Spirits to appear, making dream imagery appear above the sleeper’s head, creating portals into memories, or granting mental defences physical manifestation, depending upon which Action Spaces are \"overlayed\" and \"thinned\".",
+        "Fixed_Metal": "Menium",
+        "Fixed_Description": "A black, metallic powder that is toxic in direct light and has a healing effect in darkness.",
+        "Mutable_Metal": "Hecatium",
+        "Mutable_Description": "An indigo metal that absorbs, stores and transfers magical, psychic and mystical energies."
+    },
+    {
+        "Base_Metal": "Mercury (Quicksilver}",
+        "Cardinal_Metal": "Primium",
+        "Cardinal_Description": "Primium is called Prima Materia in the treatise. It converts any metal that touches Primium into Primium. Primium itself is a metallic liquid that can variously look white, black, yellow or red, depending upon the cicumstance. If Primium is fixed with Alchemy in the suitable manner, it may become any non-alchemical material such as water, bread, salt, iron or gold.",
+        "Fixed_Metal": "Hermetium",
+        "Fixed_Description": "Hermetium is a shape-shifting metal that is sky-blue and shines as though it was very reflective. Hermetium although fixed still changes constantly, sometimes forming hard crystal shapes, or jelly-like fluids, depending upon how the metal is handled. Hermetium is chaotic and somewhat unpredictable, but when correctly alloyed can be made to be controlled and switch between stable forms. Reflections that appear in Hermetium alloys are always changed and altered in some way, exactly how depends upon the alloy and a variety of magical mirrors can be constructed, including far-sight glasses where a pair of mirrors show each others reflections, and the caroletebat mirror that reveals broken bones. Musical instruments made from Hermetium alloys such as trumpets and horns will produce unusual sounds, or can convert sound energy to light, electricity, gravity or other forces. Hermetium that carries an electrical current will convert that current into some other energy form, often potential or kinetic energies.",
+        "Mutable_Metal": "Bombium",
+        "Mutable_Description": "Incredibly unstable and explosive liquid metal that has a reddish colour. Bombium can be somewhat stabilised by freezing, however even when frozen a single percussive blow will detonate the metal, creating explosive metal shrapnel. As a liquid metal Bombium has an accelerant effect upon other explosives, increasing the explosive damage, yield and radius. Careful alloying can allow Bombium to be stabilised within an alloy, but still have a multiplication effect on the power of explosives."
+    },
+    {
+        "Base_Metal": "Copper",
+        "Cardinal_Metal": "Electronium",
+        "Cardinal_Description": "Electronium is an orange-green ductile metal that is highly electrically conducting (virtually superconducting}. Electronium also has a piezo-electrical effect that when stressed and strained electricity will course through the metal. If struck in a suitable manner a correctly shaped Electronium piece may release a bolt of lightning or ball of electrical plasma.",
+        "Fixed_Metal": "Orichalcum",
+        "Fixed_Description": "Orichalcum (or Mountain Copper} is an incredibly strong, light, brassy-bronze coloured metal. In large enough quantities Orichalcum is considered almost indestructible, with only three-inch Orichalcum battle-plating considered completely dragon or cannon proof. Orichalcum is almost impossible to work in its fixed form, and is usually returned to Natural Copper tuning or is made into Mutable Cuprium before re-fixing.",
+        "Mutable_Metal": "Cuprium",
+        "Mutable_Description": "Cuprium is a green-orange metallic putty, so ductile that it can be easily moulded with finger pressure. Cuprium is often used to join Orichalcum, as it can easily be smeared like a glue, and then alchemically fixed to become Oricalcum."
+    },
+    {
+        "Base_Metal": "Gold",
+        "Cardinal_Metal": "Aurorium",
+        "Cardinal_Description": "Aurorium glows brightly with white light that includes a lot of Ultraviolet radiation. Aurorium typically emits light for a period of time proportional to the mass, and returns to being gold, unless recharged with direct sunlight or any light via Aurichalcum.",
+        "Fixed_Metal": "Aurichalcum",
+        "Fixed_Description": "Aurichalcum is as strong as Iridium and shares its heat not just within the metal but to all Aurichalcum nearby (by the inverse square law}. Aurichalcum also transfers light between itself, so the metal usually glows with a golden light, it can also \"recharge\" Aurorium that it is directly in contact with.",
+        "Mutable_Metal": "Quickgold",
+        "Mutable_Description": "Quickgold is a liquid golden metal that clings to surfaces like an oil. Quickgold always feels both cool and warm to the touch, no matter the actual temperature of the metal, and can be used for thermal protection against both heat and cold. Quickgold is also a lubricant, rendering surfaces coated in it almost completely frictionless."
+    },
+    {
+        "Base_Metal": "Iron",
+        "Cardinal_Metal": "Agnium",
+        "Cardinal_Description": "Agnium is also known as flaming steel, as the metal appears to ignite upon contact with the air. In actual fact the Agnium ionises the air around itself due to the rapidly changing magnetic fields in the metal and a single electrical spark ignites the liberated Oxygen, Hydrogen, Nitrogen and Carbon ions.",
+        "Fixed_Metal": "Aresium",
+        "Fixed_Description": "Aresium is also known as Blood-steel and Stygian-iron, it typically has a rusty, bloody or black colouration. Aresium is hard metal that takes and holds an edge well, but is somewhat brittle and very toxic, Aresium however can repair the edge with any spare iron atoms it can find. This makes Aresium blades self-repairing if it can strike steel or draw blood.",
+        "Mutable_Metal": "Praelium",
+        "Mutable_Description": "Praelium is also known as Battle-steel and is known to change shape, crystalline structure, and colour in response to external and internal pressure and forces. This makes Praelium extremely strong and adaptable, praelium weapons seem to shift their mass as the weilder wishes, changing balance toward the tip when swung to strike, and then towards the base when moving to block or parry, this greatly increases the effective speed of the weapon. Praelium armour, while not as strong as Orichalcum can instead be constructed to augment the wearer in terms of strength, speed and effective endurance, although this is advantage is lost when mechanical Orichalcum armours are used."
+    },
+    {
+        "Base_Metal": "Tin",
+        "Cardinal_Metal": "Zeusium",
+        "Cardinal_Description": "Zeusium is also known Cloud-Tin is an almost transparent metal that is incredibly low in density. Zeusium is not very strong or durable, but is ductile and light. Zeusium is often used as a coating or replacement for glass in aviation. Zeusium is also sometimes used as a protective and decorative metal coating or plating over other alchemical metals.",
+        "Fixed_Metal": "Jovium",
+        "Fixed_Description": "Jovium is a highly reflective silver white metal, that is known for being indestructible in some ways, although it is actually quite physically weak, being quite brittle. Jovium will resist heat, acid, weathering, erosion and even time itself. Food wrapped in Jovium foil will not spoil, and it is said that Knights whose armour contains Jovium survive worse wounds and recover faster than those who do not. Jovium is often used as a protective coating for, or as an alloy in, other alchemical metals as it protects and preserves so well.",
+        "Mutable_Metal": "Veritium",
+        "Mutable_Description": "Veritium or True-Tin is a stange greyish metal, however when held in contact with someone who believes they are telling the truth the grey will lighten to silvery, however if those in contact lie or try to deliberately mislead with what they are saying, the Veritium will turn black, bittle, toxic and powdery. Veritium has very few common uses, and due to toxicity is rarely even used for detecting lies."
+    },
+    {
+        "Base_Metal": "Lead",
+        "Cardinal_Metal": "Kronosium",
+        "Cardinal_Description": "Kronosium is a blue-white metal that is described as rapidly aging any material that comes in contact with it. This is not entirely true, Kronosium does have a very toxic or detrimental effect on metals and organics, but it does not actually age them.",
+        "Fixed_Metal": "Necronium",
+        "Fixed_Description": "Necronium is known as Death-Metal, it is black in colour, very heavy and dense, quite stiff and incredibly toxic to living beings. Necronium is said to get heavier for each soul it consumes, but if this is true, it is negligible.",
+        "Mutable_Metal": "Tenebrium",
+        "Mutable_Description": "Tenebrium also known as Shadow-Lead absorbs high-energy photons that pass near the metal, this creates an area of shadow or darkness around the Tenebrium. Tenebrium is technically mid-grey in colour, however it will often appear reddish-black due to the shadow effect. Tenebrium can be used to create leaded glass, and powerful radiation shielding."
+    }
+]

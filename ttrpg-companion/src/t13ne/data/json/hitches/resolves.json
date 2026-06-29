@@ -1,0 +1,42 @@
+[
+    {
+        "id": "T13-NE-HITCH-RESOLVES-1",
+        "data": {
+            "Name": "Unresolved",
+            "Description": "This Hitch is active and may be Triggered to Gain Chi or Twists",
+            "Index": 0
+        }
+    },
+    {
+        "id": "T13-NE-HITCH-RESOLVES-2",
+        "data": {
+            "Name": "Resolved (Persona)",
+            "Description": "The Hitch is Resolved and instead the Character may access an additional Persona.",
+            "Index": 1
+        }
+    },
+    {
+        "id": "T13-NE-HITCH-RESOLVES-3",
+        "data": {
+            "Name": "Resolved (Core)",
+            "Description": "The Hitch is Resolved and instead the Character may access an additional Core.",
+            "Index": 2
+        }
+    },
+    {
+        "id": "T13-NE-HITCH-RESOLVES-4",
+        "data": {
+            "Name": "Resolved (Edge)",
+            "Description": "The Hitch is Resolved, the Character gains a Resolved Hitch Edge.",
+            "Index": 3
+        }
+    },
+    {
+        "id": "T13-NE-HITCH-RESOLVES-5",
+        "data": {
+            "Name": "Resolved (Monster)",
+            "Description": "The Hitch is Resolved but the Character becomes a Monster of the same Facet.",
+            "Index": 4
+        }
+    }
+]

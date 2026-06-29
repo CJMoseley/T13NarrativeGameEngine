@@ -1,0 +1,1430 @@
+{
+  "1251": {
+    "id": 1251,
+    "prof": {
+      "Name": [
+        "Data / Truth",
+        "Data / Truth",
+        ""
+      ],
+      "Description": "Like a river carving its path through stone, Data / Truth is the relentless pursuit of harmony.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "14"
+        ],
+        "Genres": [
+          "14"
+        ],
+        "Eras": [
+          "14"
+        ],
+        "Types": [
+          "Incarna"
+        ]
+      }
+    }
+  },
+  "1252": {
+    "id": 1252,
+    "prof": {
+      "Name": [
+        "Study Locations",
+        "Study Location Orthodox Location Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Study Locations is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1253": {
+    "id": 1253,
+    "prof": {
+      "Name": [
+        "Fact",
+        "Fact Orthodox Lore Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Fact is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1254": {
+    "id": 1254,
+    "prof": {
+      "Name": [
+        "Tyrant",
+        "Tyrant Orthodox Monster Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Tyrant is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1255": {
+    "id": 1255,
+    "prof": {
+      "Name": [
+        "Objective",
+        "Objective Orthodox Narration Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Objective is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1256": {
+    "id": 1256,
+    "prof": {
+      "Name": [
+        "Introduction",
+        "Introduction Orthodox Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Introduction is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1257": {
+    "id": 1257,
+    "prof": {
+      "Name": [
+        "Knowledge Ordeals",
+        "Knowledge Ordeal Orthodox Ordeal Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Knowledge Ordeals is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1258": {
+    "id": 1258,
+    "prof": {
+      "Name": [
+        "Knowledge",
+        "Knowledge Orthodox Psychosocial Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Knowledge is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1259": {
+    "id": 1259,
+    "prof": {
+      "Name": [
+        "Learn / Teach",
+        "Learn / Teach",
+        ""
+      ],
+      "Description": "The art of Learn / Teach is a delicate dance with structure, a step in the grand ballet of Order.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "14"
+        ],
+        "Genres": [
+          "14"
+        ],
+        "Eras": [
+          "14"
+        ],
+        "Types": [
+          "Quest"
+        ]
+      }
+    }
+  },
+  "1260": {
+    "id": 1260,
+    "prof": {
+      "Name": [
+        "Comprehension",
+        "Comprehension Orthodox Question Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Comprehension is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1261": {
+    "id": 1261,
+    "prof": {
+      "Name": [
+        "Objectivity",
+        "Objectivity Orthodox Resolved Hitch Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Objectivity is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1262": {
+    "id": 1262,
+    "prof": {
+      "Name": [
+        "Knowledge",
+        "Knowledge Orthodox Rule Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Knowledge is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1263": {
+    "id": 1263,
+    "prof": {
+      "Name": [
+        "Traditional",
+        "Traditional Orthodox Style Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Traditional is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1264": {
+    "id": 1264,
+    "prof": {
+      "Name": [
+        "Theoretical",
+        "Theoretical Orthodox Success Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Theoretical is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1265": {
+    "id": 1265,
+    "prof": {
+      "Name": [
+        "Facts",
+        "Facts Orthodox Sway Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Facts is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1266": {
+    "id": 1266,
+    "prof": {
+      "Name": [
+        "Restrictions",
+        "Restrictions Orthodox Tangle Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Restrictions is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1267": {
+    "id": 1267,
+    "prof": {
+      "Name": [
+        "Examination / Knowing / Reading / Researching / Studying / Testing",
+        "Examination / Knowing / Reading / Researching / Studying / Testing",
+        ""
+      ],
+      "Description": "The tireless watchman on the soul's high tower, Examination / Knowing / Reading / Researching / Studying / Testing is the silent guardian against the shadows of discipline.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "14"
+        ],
+        "Genres": [
+          "14"
+        ],
+        "Eras": [
+          "14"
+        ],
+        "Types": [
+          "Test"
+        ]
+      }
+    }
+  },
+  "1268": {
+    "id": 1268,
+    "prof": {
+      "Name": [
+        "Historical / Documentary",
+        "Historical / Documentary",
+        ""
+      ],
+      "Description": "A lonely star in the vast emptiness, Historical / Documentary is a beacon of law in the cold night of the universe.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "14"
+        ],
+        "Genres": [
+          "14"
+        ],
+        "Eras": [
+          "14"
+        ],
+        "Types": [
+          "Tone"
+        ]
+      }
+    }
+  },
+  "1269": {
+    "id": 1269,
+    "prof": {
+      "Name": [
+        "Discovery",
+        "Discovery Orthodox Turn Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Discovery is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1270": {
+    "id": 1270,
+    "prof": {
+      "Name": [
+        "Philosophy",
+        "Philosophy Orthodox Twisted Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Philosophy is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1271": {
+    "id": 1271,
+    "prof": {
+      "Name": [
+        "Lecturing",
+        "Lecturing Orthodox Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Lecturing is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1272": {
+    "id": 1272,
+    "prof": {
+      "Name": [
+        "Orthodox",
+        "Orthodox Orthodox Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Orthodox is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1273": {
+    "id": 1273,
+    "prof": {
+      "Name": [
+        "Learned",
+        "Learned Orthodox Nimbed Proficiency",
+        "scholarly, academic, cultured, knowledgeable, erudite"
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Learned is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1274": {
+    "id": 1274,
+    "prof": {
+      "Name": [
+        "Specific",
+        "Specific Orthodox Umbral Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Specific is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1275": {
+    "id": 1275,
+    "prof": {
+      "Name": [
+        "Authority",
+        "Authority Orthodox Persona Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Authority is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1276": {
+    "id": 1276,
+    "prof": {
+      "Name": [
+        "Frigid",
+        "Frigid Phoenix Zero Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Frigid represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1277": {
+    "id": 1277,
+    "prof": {
+      "Name": [
+        "Icy",
+        "Icy Phoenix Zero Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Icy represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1278": {
+    "id": 1278,
+    "prof": {
+      "Name": [
+        "Glacial Locations",
+        "Glacial Location Phoenix Zero Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Glacial Locations represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1279": {
+    "id": 1279,
+    "prof": {
+      "Name": [
+        "Cold-hearted",
+        "Cold-hearted Phoenix Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Cold-hearted represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1280": {
+    "id": 1280,
+    "prof": {
+      "Name": [
+        "Cold",
+        "Cold Phoenix Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Cold represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1281": {
+    "id": 1281,
+    "prof": {
+      "Name": [
+        "Frozen Locations",
+        "Frozen Location Phoenix Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Frozen Locations represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1282": {
+    "id": 1282,
+    "prof": {
+      "Name": [
+        "Long-suffering",
+        "Long-suffering Phoenix Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Long-suffering represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1283": {
+    "id": 1283,
+    "prof": {
+      "Name": [
+        "Cool",
+        "Cool Phoenix Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Cool represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1284": {
+    "id": 1284,
+    "prof": {
+      "Name": [
+        "Chilly Locations",
+        "Chilly Location Phoenix Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Chilly Locations represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1285": {
+    "id": 1285,
+    "prof": {
+      "Name": [
+        "Stoic",
+        "Stoic Phoenix Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Stoic represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1286": {
+    "id": 1286,
+    "prof": {
+      "Name": [
+        "Sober",
+        "Sober Phoenix Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Sober represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1287": {
+    "id": 1287,
+    "prof": {
+      "Name": [
+        "Sombre Locations",
+        "Sombre Location Phoenix Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Sombre Locations represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1288": {
+    "id": 1288,
+    "prof": {
+      "Name": [
+        "Impassive",
+        "Impassive Phoenix Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Impassive represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1289": {
+    "id": 1289,
+    "prof": {
+      "Name": [
+        "Dry",
+        "Dry Phoenix Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Dry represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1290": {
+    "id": 1290,
+    "prof": {
+      "Name": [
+        "Muted Locations",
+        "Muted Location Phoenix Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Muted Locations represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1291": {
+    "id": 1291,
+    "prof": {
+      "Name": [
+        "Excitable",
+        "Excitable Phoenix Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Excitable represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1292": {
+    "id": 1292,
+    "prof": {
+      "Name": [
+        "Temperamental",
+        "Temperamental Phoenix Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Temperamental represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1293": {
+    "id": 1293,
+    "prof": {
+      "Name": [
+        "Rocky Locations",
+        "Rocky Location Phoenix Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Rocky Locations represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1294": {
+    "id": 1294,
+    "prof": {
+      "Name": [
+        "Eager",
+        "Eager Phoenix Medium Boon Adjective Proficiency",
+        "keen, enthusiastic, ready, impatient"
+      ],
+      "Description": "A medical beacon of restoration, Eager represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1295": {
+    "id": 1295,
+    "prof": {
+      "Name": [
+        "Charged",
+        "Charged Phoenix Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Charged represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1296": {
+    "id": 1296,
+    "prof": {
+      "Name": [
+        "Rocky Locations",
+        "Rocky Location Phoenix Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Rocky Locations represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1297": {
+    "id": 1297,
+    "prof": {
+      "Name": [
+        "Excited",
+        "Excited Phoenix High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Excited represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1298": {
+    "id": 1298,
+    "prof": {
+      "Name": [
+        "Wired",
+        "Wired Phoenix High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Wired represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1299": {
+    "id": 1299,
+    "prof": {
+      "Name": [
+        "Wired Locations",
+        "Wired Location Phoenix High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Wired Locations represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1300": {
+    "id": 1300,
+    "prof": {
+      "Name": [
+        "Aroused",
+        "Aroused Phoenix High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "A medical beacon of restoration, Aroused represents the hopeful cycle of healing and the resilience of life against decay.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,675 @@
+{
+  "meta": {
+    "version": "3.0",
+    "description": "Procedural drum patterns for T13NE Music Engine with Narrative Tagging."
+  },
+  "Atmospheric_Patterns": [
+    {
+      "name": "Bo Diddley",
+      "tags": {
+        "genres": ["3", "4", "10"],
+        "eras": ["2", "8"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "A 3-2 clave rhythm applied to the whole drum kit.",
+      "tracks": {
+        "kick": [0, 3, 6, 10, 12],
+        "snare": [0, 3, 6, 10, 12],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14]
+      }
+    },
+    {
+      "name": "Surf Rock Wipeout",
+      "tags": {
+        "genres": ["3", "10", "16"],
+        "eras": ["2", "8"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Constant, frantic 16th-note single-stroke rolls.",
+      "tracks": {
+        "kick": [0, 4, 8, 12],
+        "snare": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+        "hat": [0, 4, 8, 12]
+      }
+    }
+  ],
+  "Global_and_Folk": [
+    {
+      "name": "Habanera",
+      "tags": {
+        "genres": ["12", "9", "14"],
+        "eras": ["13", "14", "2"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "A dotted rhythm: 1. (long), 1-and (short), 2, 2-and.",
+      "tracks": {
+        "kick": [0, 3, 4, 7, 8, 11, 12, 15],
+        "snare": [4, 12],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14]
+      }
+    },
+    {
+      "name": "Polka",
+      "tags": {
+        "genres": ["12", "13"],
+        "eras": ["13", "12", "2"]
+      },
+      "timeSignature": [2, 4],
+      "length": 8,
+      "description": "A very fast 2/4 'Um-Pah' rhythm.",
+      "tracks": {
+        "kick": [0, 4],
+        "snare": [2, 6],
+        "hat": [0, 2, 4, 6]
+      }
+    },
+    {
+      "name": "Reggae One-Drop",
+      "tags": {
+        "genres": ["3", "18"],
+        "eras": ["2", "8"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Unique because beat 1 is 'empty'.",
+      "tracks": {
+        "kick": [8],
+        "snare": [8],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14]
+      }
+    },
+    {
+      "name": "Afrobeat",
+      "tags": {
+        "genres": ["3"],
+        "eras": ["2", "8"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Highly complex 4/4 where the Kick drum plays a staggered pattern.",
+      "tracks": {
+        "kick": [0, 3, 7, 10],
+        "snare": [4, 12, 15],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14]
+      }
+    }
+  ],
+  "Stage_and_Screen": [
+    {
+      "name": "Overture Gallop",
+      "tags": {
+        "genres": ["13", "10"],
+        "eras": ["13", "12"]
+      },
+      "timeSignature": [2, 4],
+      "length": 8,
+      "description": "High-energy 2/4 rhythm for chase scenes.",
+      "tracks": {
+        "kick": [0],
+        "snare": [4, 5, 6, 7],
+        "hat": [0, 2, 4, 6]
+      }
+    },
+    {
+      "name": "Cinematic Ostinato",
+      "tags": {
+        "genres": ["10", "11", "6"],
+        "eras": ["2", "3"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Steady, driving 8th or 16th note staccato hits.",
+      "tracks": {
+        "kick": [0, 2, 4, 6, 8, 10, 12, 14],
+        "snare": [4, 12],
+        "hat": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+      }
+    },
+    {
+      "name": "Military March",
+      "tags": {
+        "genres": ["8", "12"],
+        "eras": ["1", "11", "9", "13"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Formal snare-heavy pattern.",
+      "tracks": {
+        "kick": [0, 4, 8, 12],
+        "snare": [0, 1, 2, 4, 5, 6, 8, 9, 10, 12, 13, 14],
+        "hat": [0, 4, 8, 12]
+      }
+    },
+    {
+      "name": "Burlesque",
+      "tags": {
+        "genres": ["13", "15"],
+        "eras": ["12", "10"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Slow, heavy swing. Kick on 1 and 3.",
+      "tracks": {
+        "kick": [0, 8],
+        "snare": [4, 12],
+        "hat": [4, 12]
+      }
+    }
+  ],
+  "Odd_Meters": [
+    {
+      "name": "Balkan 7/8",
+      "tags": {
+        "genres": ["5", "50"],
+        "eras": ["1", "6"]
+      },
+      "timeSignature": [7, 8],
+      "length": 14,
+      "description": "Grouped as 2+2+3.",
+      "tracks": {
+        "kick": [0, 4, 8],
+        "snare": [12],
+        "hat": [0, 2, 4, 6, 8, 10, 12]
+      }
+    },
+    {
+      "name": "Take Five",
+      "tags": {
+        "genres": ["3", "71", "20"],
+        "eras": ["2", "8"]
+      },
+      "timeSignature": [5, 4],
+      "length": 20,
+      "description": "Classic cool jazz. Grouped as 3+2.",
+      "tracks": {
+        "kick": [0],
+        "snare": [4, 12, 16],
+        "hat": [0, 3, 6, 8, 12, 15, 18]
+      }
+    },
+    {
+      "name": "Math Rock 11/8",
+      "tags": {
+        "genres": ["0", "3"],
+        "eras": ["2"]
+      },
+      "timeSignature": [11, 8],
+      "length": 22,
+      "description": "Highly syncopated linear technique.",
+      "tracks": {
+        "kick": [0, 6, 12, 18],
+        "snare": [8, 16],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+      }
+    }
+  ],
+  "Jazz_and_Blues": [
+    {
+      "name": "Hard Bop",
+      "tags": {
+        "genres": ["3", "71"],
+        "eras": ["2", "8"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Aggressive swing.",
+      "tracks": {
+        "kick": [0, 10],
+        "snare": [4, 9, 12, 14],
+        "hat": [0, 3, 6, 9, 12, 15]
+      }
+    },
+    {
+      "name": "Shuffle Blues",
+      "tags": {
+        "genres": ["3", "18"],
+        "eras": ["2", "10"]
+      },
+      "timeSignature": [4, 4],
+      "length": 12,
+      "description": "The classic 'Chicago Shuffle'. Triplets.",
+      "tracks": {
+        "kick": [0, 2, 3, 5, 6, 8, 9, 11],
+        "snare": [3, 9],
+        "hat": [0, 2, 3, 5, 6, 8, 9, 11]
+      }
+    },
+    {
+      "name": "Country Train Beat",
+      "tags": {
+        "genres": ["3", "49"],
+        "eras": ["2", "12"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Rapid 16th-note snare roll with accents.",
+      "tracks": {
+        "kick": [0, 8],
+        "snare": [0, 2, 4, 6, 8, 10, 12, 14],
+        "hat": [0, 4, 8, 12]
+      }
+    }
+  ],
+  "Latin_and_Ballroom": [
+    {
+      "name": "Mambo",
+      "tags": {
+        "genres": ["3", "9"],
+        "eras": ["2", "8"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "High-energy Cuban dance.",
+      "tracks": {
+        "kick": [0, 8],
+        "snare": [4, 12],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14]
+      }
+    },
+    {
+      "name": "Merengue",
+      "tags": {
+        "genres": ["3"],
+        "eras": ["2"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Fast-paced Dominican rhythm.",
+      "tracks": {
+        "kick": [0, 4, 8, 12],
+        "snare": [2, 6, 10, 14],
+        "hat": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+      }
+    },
+    {
+      "name": "Bolero",
+      "tags": {
+        "genres": ["9"],
+        "eras": ["13", "2"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Slow and romantic.",
+      "tracks": {
+        "kick": [0, 8, 12],
+        "snare": [4, 10, 12],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14]
+      }
+    },
+    {
+      "name": "Tango",
+      "tags": {
+        "genres": ["9", "14"],
+        "eras": ["12", "10", "2"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Dramatic and sharp.",
+      "tracks": {
+        "kick": [0, 8],
+        "snare": [4, 14],
+        "hat": [0, 4, 8, 14]
+      }
+    }
+  ],
+  "Jazz_and_Swing_Standards": [
+    {
+      "name": "Swing Groove",
+      "tags": {
+        "genres": ["20", "12"],
+        "eras": ["10", "9", "2"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Spang-a-lang: Ride cymbal on 1, 2-&, 3, 4-&.",
+      "tracks": {
+        "kick": [0, 4, 8, 12],
+        "snare": [4, 12],
+        "hat": [0, 3, 6, 9, 12, 15]
+      }
+    },
+    {
+      "name": "Bebop Fast",
+      "tags": {
+        "genres": ["3"],
+        "eras": ["8", "2"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "High-speed Ride pattern.",
+      "tracks": {
+        "kick": [0, 7, 10],
+        "snare": [2, 5, 9, 14],
+        "hat": [0, 3, 6, 9, 12, 15]
+      }
+    },
+    {
+      "name": "Jazz Waltz",
+      "tags": {
+        "genres": ["3"],
+        "eras": ["2"]
+      },
+      "timeSignature": [3, 4],
+      "length": 12,
+      "description": "Ride on 1, 2-&, 3.",
+      "tracks": {
+        "kick": [0],
+        "snare": [4, 8],
+        "hat": [0, 3, 6, 8]
+      }
+    }
+  ],
+  "Ballroom_and_Social_Dance": [
+    {
+      "name": "Foxtrot",
+      "tags": {
+        "genres": ["9"],
+        "eras": ["10", "2"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Slow-Slow-Quick-Quick.",
+      "tracks": {
+        "kick": [0, 8],
+        "snare": [4, 12],
+        "hat": [0, 4, 8, 12]
+      }
+    },
+    {
+      "name": "Rhumba",
+      "tags": {
+        "genres": ["9"],
+        "eras": ["2", "8"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Kick on 1, 3, 4.",
+      "tracks": {
+        "kick": [0, 8, 12],
+        "snare": [0, 2, 8, 12],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14]
+      }
+    },
+    {
+      "name": "Cha-Cha-Cha",
+      "tags": {
+        "genres": ["9"],
+        "eras": ["2", "8"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Cowbell on every beat; Scraper on 4-&-1.",
+      "tracks": {
+        "kick": [0],
+        "snare": [4, 8, 12],
+        "hat": [0, 4, 8, 12, 14]
+      }
+    },
+    {
+      "name": "Viennese Waltz",
+      "tags": {
+        "genres": ["12", "9", "25"],
+        "eras": ["13", "14"]
+      },
+      "timeSignature": [3, 4],
+      "length": 12,
+      "description": "Fast 3/4 pulse.",
+      "tracks": {
+        "kick": [0],
+        "snare": [4, 8],
+        "hat": [4, 8]
+      }
+    }
+  ],
+  "Blues_and_Soul": [
+    {
+      "name": "12-Bar Shuffle",
+      "tags": {
+        "genres": ["3"],
+        "eras": ["10", "2"]
+      },
+      "timeSignature": [4, 4],
+      "length": 12,
+      "description": "Triplet-based 'Gallop'.",
+      "tracks": {
+        "kick": [0, 2, 3, 5, 6, 8, 9, 11],
+        "snare": [3, 9],
+        "hat": [0, 2, 3, 5, 6, 8, 9, 11]
+      }
+    },
+    {
+      "name": "The Motown Beat",
+      "tags": {
+        "genres": ["3"],
+        "eras": ["8", "2"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Snare on every beat.",
+      "tracks": {
+        "kick": [0, 8],
+        "snare": [0, 4, 8, 12],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14]
+      }
+    }
+  ],
+  "EDM_and_Bass": [
+    {
+      "name": "Four-on-the-Floor",
+      "tags": {
+        "genres": ["6", "32", "3"],
+        "eras": ["2", "3", "38"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Kick on 1, 2, 3, 4.",
+      "tracks": {
+        "kick": [0, 4, 8, 12],
+        "snare": [4, 12],
+        "hat": [2, 6, 10, 14]
+      }
+    },
+    {
+      "name": "2-Step",
+      "tags": {
+        "genres": ["6", "32", "11"],
+        "eras": ["2", "3", "38"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Kick on 1 and 3.5.",
+      "tracks": {
+        "kick": [0, 10],
+        "snare": [4, 12],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14]
+      }
+    },
+    {
+      "name": "Dem Bow",
+      "tags": {
+        "genres": ["3", "46"],
+        "eras": ["2"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Syncopated 3-3-2 feel.",
+      "tracks": {
+        "kick": [0, 4, 8, 12],
+        "snare": [3, 6, 11, 14],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14]
+      }
+    },
+    {
+      "name": "Progressive House Build-Up",
+      "tags": {
+        "genres": ["6", "32"],
+        "eras": ["2", "3"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Gradual increase in intensity.",
+      "tracks": {
+        "kick": [0, 4, 8, 12],
+        "snare": [0, 2, 4, 6, 8, 10, 12, 14],
+        "hat": [2, 6, 10, 14]
+      }
+    },
+    {
+      "name": "Dubstep Wobble",
+      "tags": {
+        "genres": ["6", "32", "4"],
+        "eras": ["2", "3"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Half-time Snare on beat 3.",
+      "tracks": {
+        "kick": [0, 3, 10],
+        "snare": [8],
+        "hat": [2, 6, 10, 14]
+      }
+    },
+    {
+      "name": "Trance Anthem",
+      "tags": {
+        "genres": ["6", "32"],
+        "eras": ["2", "3"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Driving four-on-the-floor.",
+      "tracks": {
+        "kick": [0, 4, 8, 12],
+        "snare": [4, 12],
+        "hat": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+      }
+    }
+  ],
+  "Rock_Metal_Punk": [
+    {
+      "name": "BasicRock",
+      "tags": {
+        "genres": ["3", "10"],
+        "eras": ["2", "8"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Kick on 1 and 3; Snare on 2 and 4.",
+      "tracks": {
+        "kick": [0, 8],
+        "snare": [4, 12],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14]
+      }
+    },
+    {
+      "name": "Driving",
+      "tags": {
+        "genres": ["11", "32", "45"],
+        "eras": ["2", "8"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Fast 8th-note riding on Cymbals.",
+      "tracks": {
+        "kick": [0, 3, 8],
+        "snare": [4, 12],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14]
+      }
+    },
+    {
+      "name": "Blast Beat",
+      "tags": {
+        "genres": ["7", "28", "45"],
+        "eras": ["2"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Rapid alternating 16th-note Kick and Snare.",
+      "tracks": {
+        "kick": [0, 2, 4, 6, 8, 10, 12, 14],
+        "snare": [1, 3, 5, 7, 9, 11, 13, 15],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14]
+      }
+    },
+    {
+      "name": "Odd-Time Groove",
+      "tags": {
+        "genres": ["6", "5"],
+        "eras": ["2"]
+      },
+      "timeSignature": [7, 8],
+      "length": 14,
+      "description": "Subdivided 2-2-3.",
+      "tracks": {
+        "kick": [0, 4, 8],
+        "snare": [12],
+        "hat": [0, 2, 4, 6, 8, 10, 12]
+      }
+    }
+  ],
+  "Vintage_Machine_Presets": [
+    {
+      "name": "Electro Pulse",
+      "tags": {
+        "genres": ["6", "32", "17"],
+        "eras": ["2", "8", "38"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "16th-note mechanical Hi-Hats.",
+      "tracks": {
+        "kick": [0, 3, 6],
+        "snare": [4, 12],
+        "hat": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+      }
+    },
+    {
+      "name": "Bossa Nova",
+      "tags": {
+        "genres": ["3", "16"],
+        "eras": ["2", "8"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Rimshot pattern.",
+      "tracks": {
+        "kick": [0, 8],
+        "snare": [0, 3, 6, 9, 12],
+        "hat": [0, 2, 4, 6, 8, 10, 12, 14]
+      }
+    },
+    {
+      "name": "Waltz",
+      "tags": {
+        "genres": ["12"],
+        "eras": ["13", "2"]
+      },
+      "timeSignature": [3, 4],
+      "length": 12,
+      "description": "Emphasis on the downbeat.",
+      "tracks": {
+        "kick": [0],
+        "snare": [4, 8],
+        "hat": [0, 2, 4, 6, 8, 10]
+      }
+    },
+    {
+      "name": "Trap",
+      "tags": {
+        "genres": ["3", "45", "32"],
+        "eras": ["2", "3"]
+      },
+      "timeSignature": [4, 4],
+      "length": 16,
+      "description": "Syncopated 808 Kick.",
+      "tracks": {
+        "kick": [0, 10],
+        "snare": [8],
+        "hat": [0, 2, 4, 5, 6, 8, 10, 11, 12, 14]
+      }
+    }
+  ]
+}

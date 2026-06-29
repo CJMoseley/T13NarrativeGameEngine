@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 55,
+    "Name": "Abundance",
+    "Entity": "&#19958;",
+    "Logical": 13,
+    "Trigrams": [
+      2,
+      3
+    ],
+    "Hexagram_Text": "Feng, Abundance (or Abounding), Abundance is the symbolic pinnacle of the cycle of increase and decrease. It will fulfil any need, meet any requirement, and provide all provisions.",
+    "Unchanging": "You gain an additional Pool of Incarna Facet Proficiency Slots, equal to Incarna Score (Boon Reduced).",
+    "Line1": "Ten Days Together",
+    "Line2": "The Eclipse Begins",
+    "Line3": "In The Shadow",
+    "Line4": "The Eclipse Ends",
+    "Line5": "The Penumbra Lifts",
+    "Line6": "The Rich Miser"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you stock up, store additional resources or prepare for lean times ahead",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you spend Chi and have nothing material to show for it",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "you spend time with another",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yang",
+        "Condition": "you act devoted to, or mistrust, another",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yin",
+        "Condition": "you display patience or if you are accused of something",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yin",
+        "Condition": "you have an Ally at your side",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you thank, congratulate, or do a favour for another",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yang",
+        "Condition": "you isolate yourself or are alone",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Abundance Quest describes a situation where some authority has reached a peak of greatness, this may be a Business boom, a peak performance period, or some unforeseen bounty. During this time the authority will be able to achieve incredible things, but this bountiful period is limited. Quests during this time often rely on investigations, perhaps as the Quester investigates the authority, or more often works for the authority. The authority and opposition during this time are often strict and may deal in harsh penalties and punishments (death penalties for some or even most crimes are not unknown) as the abundance affects the authority directly.",
+    "Quest_Complete": "The Quest that ends in the Abundance ends on a high, the Quester makes amazing gains, recoveries and progress now. These gains are effectively unlimited during abundance, perhaps with even planets being granted by these Quests.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester who is alone will add a Hurdle, Obstacle or Failure Level to the Ordeal or Test, but if the Quester spends time with a partner, and between them they have both high Zeal and high Key then they will add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester encounters dark forces, conspiracies and political intrigues that interfere with their tasks, adding a Hurdle, Obstacle or Failure Level to the Ordeal or Test. If the Quester instead bides their time, and gathers their strength, eventually the conspiracy will make a mistake, reveal its hand and the Quester will add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The Quester is cut off and isolated (usually by the opposition), left in the dark, without intelligence or communication with authority, this adds a Failure Level, Obstacle or Hurdle to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The dark forces still surround the Quester, adding a Hurdle, Obstacle or Failure Level to any action they make alone, but it is possible for them to communicate with an ally, and if they can coordinate with and ally and have between them a high Key and high Zeal, then they can add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester is offered advice that if followed will add a Success Level to their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester experiences an abundance, but how they behave with it effects how they are perceived. The Quester who shares the abundance with those around them, will be fine, but those who hoard the abundance, isolate themselves from others, or use it to further only their own goals, they will add a Hurdle, Obstacle, or Failure Level to their Ordeal or Test.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "Chên is movement; Li is flame, whose attribute is clarity. Clarity within, movement without-this produces greatness and abundance. The hexagram pictures a period of advanced civilization. However, the fact that development has reached a peak suggests that this extraordinary condition of abundance cannot be maintained permanently.",
+    "The_Image": {
+      "text": "Both thunder and lightning come:\n\nThe image of ABUNDANCE.\n\nThus the superior man decides lawsuits\nAnd carries out punishments.\n\nThis hexagram has a certain connection with Shih Ho, BITING THROUGH",
+      "comments": "21, in which thunder and lightning similarly appear together, but in the reverse order. In BITING THROUGH, laws are laid down; here they are applied and enforced. Clarity [Li] within makes it possible to investigate the facts exactly, and shock [Chên] without ensures a strict and precise carrying out of punishments."
+    },
+    "The_Judgment": {
+      "text": "ABUNDANCE has success.\n\nThe king attains abundance.\nBe not sad.\nBe like the sun at midday.",
+      "comments": "It is not given to every mortal to bring about a time of outstanding greatness and abundance. Only a born ruler of men is able to do it, because his will is directed to what is great. Such a time of abundance is usually brief. Therefore a sage might well feel sad in view of the decline that must follow. But such sadness foes not befit him. Only a man who is inwardly free of sorrow and care can lead in a time of abundance. He must be like the sun at midday, illuminating and gladdening everything under heaven."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "When a man meets his destined ruler,",
+        "comments": "They can be together ten days,\nAnd it is not a mistake.\nGoing meets with recognition.\n\nTo bring about a time of abundance, a union of clarity with energetic movement is needed. Two individuals possessed of these two attributes are suited to each other, and even if they spend an entire cycle of time together during the period of abundance, it will not be too long, nor is it a mistake. Therefore one may go forth, in order to make one's influence felt; it will meet with recognition."
+      },
+      "2": {
+        "text": "The curtain is of such fullness",
+        "comments": "That the polestars can be seen at noon.\n\nThrough going one meets with mistrust and hate.\nIf one rouses him through truth,\nGood fortune comes.\n\nIt often happens that plots and party intrigues, which have the darkening effect of an eclipse of the sun, come between a ruler intent on great achievement and the man who could effect great undertakings. Then, instead of the sun, we see the northern stars in the sky. The ruler is overshadowed by a party that has usurped power. If a man at such a time were to try to take energetic measures, he would encounter only mistrust and envy, which would prohibit all movement. The essential thing then is to hold inwardly to the power of truth, which in the end is so strong that it exerts an invisible influence on the ruler, so that all goes well."
+      },
+      "3": {
+        "text": "The underbrush is of such abundance",
+        "comments": "That the small stars can be seen at noon.\nHe breaks his right arm . No blame.\n\nThe image is that of a progressive covering over of the sun. Here the eclipse reaches totality, therefore even the small stars can be seen at noon. In the sphere of social relationships, this means that the prince is now so eclipsed that even the most insignificant persons can push themselves into the foreground. This makes it impossible for an able man, though he might be the right hand of the ruler, to undertake anything. It is as though his arm were broken, but he is not to blame for being thus hindered in action."
+      },
+      "4": {
+        "text": "The curtain is of such fullness",
+        "comments": "That the polestars can be seen at noon.\nHe meets his ruler, who is of like kind.\nGood fortune.\n\nHere the darkness is already decreasing, therefore interrelated elements come together. Here too the complement must be found-the necessary wisdom to complement joy of action. Then everything will go well. The complementary factor postulated here is the reverse of the one in the first line. In the latter, wisdom is to be complemented by energy, while here energy is complemented by wisdom."
+      },
+      "5": {
+        "text": "Lines are coming,\nBlessing and fame draw near.\nGood fortune.",
+        "comments": "The ruler is modest and therefore open to the counsel of able men. Thus he is surrounded by men who suggest to him the lines of action. This brings blessing, fame, and good fortune to him and all the people."
+      },
+      "6": {
+        "text": "His house is in a state of abundance.\nHe screens off his family.\nHe peers through the gate\nAnd no longer perceives anyone.\nFor three years he sees nothing.\nMisfortune.",
+        "comments": "This describes a man who because of his arrogance and obstinacy attains the opposite of what he strives for. He seeks abundance and splendor for his dwelling. He wishes at all odds to be master in his house, which so alienates his family that in the end he finds himself completely isolated."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Abundance'. Internalize this core philosophy: Chên is movement; Li is flame, whose attribute is clarity. Clarity within, movement without-this produces greatness and abundance. The hexagram pictures a period of advanced civilization. However, the fact that development has reached a peak suggests that this extraordinary condition of abundance cannot be maintained permanently. Your current worldview is: \"Feng, Abundance (or Abounding), Abundance is the symbolic pinnacle of the cycle of increase and decrease. It will fulfil any need, meet any requirement, and provide all provisions.\". Let your choices be subtly driven by these conditions: you stock up, store additional resources or prepare for lean times ahead, you spend Chi and have nothing material to show for it. When interacting, mirror the wisdom found in the commentary: \"It is not given to every mortal to bring about a time of outstanding greatness and abundance. Only a born ruler of men is able to do it, because his will is directed to what is great. Such a time of abundance is usually brief. Therefore a sage might well feel sad in view of the decline that must...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Abundance'. The primary quest objective is: The Abundance Quest describes a situation where some authority has reached a peak of greatness, this may be a Business boom, a peak performance period, or some unforeseen bounty. During this time the authority will be able to achieve incredible things, but this bountiful period is limited. Quests during this time often rely on investigations, perhaps as the Quester investigates the authority, or more often works for the authority. The authority and opposition during this time are often strict and may deal in harsh penalties and punishments (death penalties for some or even most crimes are not unknown) as the abundance affects the authority directly.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: 21, in which thunder and lightning similarly appear together, but in the reverse order. In BITING THROUGH, laws are laid down; here they are applied and enforced. Clarity [Li] within makes it possible to investigate the facts exactly, and shock [Chên] without ensures a strict and precise carrying out of punishments. Use the following line-specific challenges to pace the story: The Quester who is alone will add a Hurdle, Obstacle or Failure Level to the Ordeal or Test, but if the Quester spends time with a partner, and between them they have both high Zeal and high Key then they will add a Success Level instead. | The Quester encounters dark forces, conspiracies and political intrigues that interfere with their tasks, adding a Hurdle, Obstacle or Failure Level to the Ordeal or Test. If the Quester instead bides their time, and gathers their strength, eventually the conspiracy will make a mistake, reveal its hand and the Quester will add a Success Level instead. | The Quester is cut off and isolated (usually by the opposition), left in the dark, without intelligence or communication with authority, this adds a Failure Level, Obstacle or Hurdle to the Test or Ordeal. | The dark forces still surround the Quester, adding a Hurdle, Obstacle or Failure Level to any action they make alone, but it is possible for them to communicate with an ally, and if they can coordinate with and ally and have between them a high Key and high Zeal, then they can add a Success Level instead. | The Quester is offered advice that if followed will add a Success Level to their Ordeal or Test. | The Quester experiences an abundance, but how they behave with it effects how they are perceived. The Quester who shares the abundance with those around them, will be fine, but those who hoard the abundance, isolate themselves from others, or use it to further only their own goals, they will add a Hurdle, Obstacle, or Failure Level to their Ordeal or Test.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Ten Days Together): Mirror the internal state described in the commentary: \"They can be together ten days,\nAnd it is not a mistake.\nGoing meets with recognition.\n\nTo bring about a time of abundance, a union of clarity with energetic movement is needed. Two individuals possessed of these two attributes are suited to each...\" Your actions should be framed by the goal: you spend time with another.",
+        "Plot": "Plot Complication Line 1 (Ten Days Together): Introduce a challenge based on the interpretation: \"They can be together ten days,\nAnd it is not a mistake.\nGoing meets with recognition.\n\nTo bring about a time of abundance, a union of clarity with energetic movement is needed. Two individuals possessed of these two attributes are suited to each...\" The specific quest objective for this stage is: The Quester who is alone will add a Hurdle, Obstacle or Failure Level to the Ordeal or Test, but if the Quester spends time with a partner, and between them they have both high Zeal and high Key then they will add a Success Level instead."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (The Eclipse Begins): Mirror the internal state described in the commentary: \"That the polestars can be seen at noon.\n\nThrough going one meets with mistrust and hate.\nIf one rouses him through truth,\nGood fortune comes.\n\nIt often happens that plots and party intrigues, which have the darkening effect of an eclipse of the sun,...\" Your actions should be framed by the goal: you act devoted to, or mistrust, another.",
+        "Plot": "Plot Complication Line 2 (The Eclipse Begins): Introduce a challenge based on the interpretation: \"That the polestars can be seen at noon.\n\nThrough going one meets with mistrust and hate.\nIf one rouses him through truth,\nGood fortune comes.\n\nIt often happens that plots and party intrigues, which have the darkening effect of an eclipse of the sun,...\" The specific quest objective for this stage is: The Quester encounters dark forces, conspiracies and political intrigues that interfere with their tasks, adding a Hurdle, Obstacle or Failure Level to the Ordeal or Test. If the Quester instead bides their time, and gathers their strength, eventually the conspiracy will make a mistake, reveal its hand and the Quester will add a Success Level instead."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (In The Shadow): Mirror the internal state described in the commentary: \"That the small stars can be seen at noon.\nHe breaks his right arm . No blame.\n\nThe image is that of a progressive covering over of the sun. Here the eclipse reaches totality, therefore even the small stars can be seen at noon. In the sphere of...\" Your actions should be framed by the goal: you display patience or if you are accused of something.",
+        "Plot": "Plot Complication Line 3 (In The Shadow): Introduce a challenge based on the interpretation: \"That the small stars can be seen at noon.\nHe breaks his right arm . No blame.\n\nThe image is that of a progressive covering over of the sun. Here the eclipse reaches totality, therefore even the small stars can be seen at noon. In the sphere of...\" The specific quest objective for this stage is: The Quester is cut off and isolated (usually by the opposition), left in the dark, without intelligence or communication with authority, this adds a Failure Level, Obstacle or Hurdle to the Test or Ordeal."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (The Eclipse Ends): Mirror the internal state described in the commentary: \"That the polestars can be seen at noon.\nHe meets his ruler, who is of like kind.\nGood fortune.\n\nHere the darkness is already decreasing, therefore interrelated elements come together. Here too the complement must be found-the necessary wisdom to...\" Your actions should be framed by the goal: you have an Ally at your side.",
+        "Plot": "Plot Complication Line 4 (The Eclipse Ends): Introduce a challenge based on the interpretation: \"That the polestars can be seen at noon.\nHe meets his ruler, who is of like kind.\nGood fortune.\n\nHere the darkness is already decreasing, therefore interrelated elements come together. Here too the complement must be found-the necessary wisdom to...\" The specific quest objective for this stage is: The dark forces still surround the Quester, adding a Hurdle, Obstacle or Failure Level to any action they make alone, but it is possible for them to communicate with an ally, and if they can coordinate with and ally and have between them a high Key and high Zeal, then they can add a Success Level instead."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (The Penumbra Lifts): Mirror the internal state described in the commentary: \"The ruler is modest and therefore open to the counsel of able men. Thus he is surrounded by men who suggest to him the lines of action. This brings blessing, fame, and good fortune to him and all the people.\" Your actions should be framed by the goal: you thank, congratulate, or do a favour for another.",
+        "Plot": "Plot Complication Line 5 (The Penumbra Lifts): Introduce a challenge based on the interpretation: \"The ruler is modest and therefore open to the counsel of able men. Thus he is surrounded by men who suggest to him the lines of action. This brings blessing, fame, and good fortune to him and all the people.\" The specific quest objective for this stage is: The Quester is offered advice that if followed will add a Success Level to their Ordeal or Test."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (The Rich Miser): Mirror the internal state described in the commentary: \"This describes a man who because of his arrogance and obstinacy attains the opposite of what he strives for. He seeks abundance and splendor for his dwelling. He wishes at all odds to be master in his house, which so alienates his family that in the...\" Your actions should be framed by the goal: you isolate yourself or are alone.",
+        "Plot": "Plot Complication Line 6 (The Rich Miser): Introduce a challenge based on the interpretation: \"This describes a man who because of his arrogance and obstinacy attains the opposite of what he strives for. He seeks abundance and splendor for his dwelling. He wishes at all odds to be master in his house, which so alienates his family that in the...\" The specific quest objective for this stage is: The Quester experiences an abundance, but how they behave with it effects how they are perceived. The Quester who shares the abundance with those around them, will be fine, but those who hoard the abundance, isolate themselves from others, or use it to further only their own goals, they will add a Hurdle, Obstacle, or Failure Level to their Ordeal or Test."
+      }
+    }
+  }
+}

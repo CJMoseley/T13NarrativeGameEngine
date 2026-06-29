@@ -1,0 +1,118 @@
+{
+	"Card_Corner": "10",
+	"Card": "Ten",
+	"Suit": "2",
+	"IconSuit": "♥",
+	"Pips": "10",
+	"Unicode": "&#x1f0ba;",
+	"Svg": "images/cards-svg/10H.svg",
+	"Wound_Level": 4,
+	"Facet": "Jeer",
+	"Tao": [
+		0,
+		1
+	],
+	"Narrative_Meaning": "Tens indicate a completion, whether the actual end of the story or the end of a character or phase.",
+	"Image": "",
+	"Yarn": {
+		"Yarn_Name": "The Jester",
+		"Yarn_Description": "The Jester card represents satire, comedy, and the absurd. It might be a witty exchange of insults, a bit of rec-room banter, a carefully arranged practical joke, or simply a sense of disjunction in a world turned upside-down. There might be mimicry, disguises, acting, buffoonery, or the delicate terror of a vacant stare.",
+		"Significator": {
+			"Plot": "The Jester Plot is also a comedy, although unlike the Joke, the Jester is more parody and satire of something else than a comedy in its own right. A Jester has things to say, about politics, about society, about the audience, where as the Joke just wants to make you laugh the Jester wants to make you laugh and think. The Jester doesn't just make a Pun at random, the Pun will fully reflect the situation at hand.",
+			"Side": " When a side is affected by a Jester they are marked out politically, perhaps they have the ear of the press, or the people directly, or perhaps they are an advisor to the crown, then again they may just be comedic relief.",
+			"Character": "The Jester Significator indicates a Character who pokes fun at their betters. <p>They <strong>Gain Yin</strong> when they mock or make jokes about their superiors, leaders or friends. </p><p>They <strong>Gain Yang</strong> when they defend someone, or distract an attacker with humour. </p><p>They <strong>Gain Chi</strong> when they mock or poke fun at some one of higher status than themselves.</p>",
+			"Diegetic_Character": "A sharp-witted satirist who delights in puncturing the egos of the powerful and the self-important. They use humor as a social equalizer, mocking authority and defending the downtrodden with a quick tongue and a keen eye for hypocrisy.",
+			"Scene": "The Jester Scene is intended for comic relief, rather like the Joke card. However, the Jester indicates the Scene will contain a Character who is Comic Relief rather than the Scene being comic. Yarn-Tellers can play the card to create a Comic-Relief Character (usually an Ally or Rival), who will help them, or hinder their enemies somehow."
+		},
+		"Beat_Type": "8",
+		"Conflict_Embodiment": "2",
+		"Facet_Embodiment": "5",
+		"Hook_Aspect": "Hitch",
+		"Aspect_Description": "The Hook targets the Character's largest Hitch, either threatening to trigger the Hitch or actually triggering it, depending upon which will motivate the Character more.",
+		"Hook": "Entrance",
+		"Hook_Description": "The Hook is literally an entrance. This usually refers to the sudden, dramatic appearance of a new or returning Embodiment, but it can also be an opening, door or any threshold, or cliff-edge moment. In Old Comedies the players would sing as they paraded in, setting up the story with the first song, in old serials they would show how the Cliff-Hanger ending of the last Chapter was resolved (often with a retcon).",
+		"Gain": "An unlikely, but powerful Ally (A Eusaivean with a Bulmäs best friend, a Knight with a Dragon steed, a cyborg with a pet Rust monster)",
+		"Diegetic_Gain": "A strong bond with an unexpected and powerful ally, whose unique nature and abilities provide a formidable advantage.",
+		"Fray": "Insult Tennis",
+		"Fray_Description": "Insult tennis is a Low-Medium Stakes Opposed Ordeal, the PCs and their foes or Rivals exchange insults, and cutting remarks. In effect the Tennis is a battle or duel fought to the first blood (although in this case first emotional outburst) with Psych attacks.",
+		"Snag": "Upside-Down",
+		"Snag_Description": "Nothing makes sense, the good becomes bad, the powerful become weak, and the weak become powerful. Even though they may have won the Fray, everything is turned on its head. Perhaps it turns out that they were deceived all along, and were working for the bad guys, or maybe they never really grasped what was going on and picked the wrong side.",
+		"NPC": {
+			"Archetype": "Comedian",
+			"Persona": 4,
+			"Core": 9,
+			"Hitch": 7,
+			"Description": "The Comedian asks questions and expects only laughs as answers. They use humour to deflect and manipulate people, and can usually create powerful Psych attacks with a \"Jokes\" Power."
+		},
+		"Sweeping": "Wandering Fool",
+		"Sweeping_Text": "The PC moves (usually via a Motional Ordeal) to a new Location. For the PCs this journey may be aimless wandering, but in fact it is a hunt for something they need. Often the Fool will encounter a lesson in the new location, or maybe just rest, heal up a bit, and maybe get a bite to eat or a little spending cash on the way.",
+		"History": "Absurd",
+		"History_Description": "The Jester indicates that the past history that lead to the current situation is absurd in some way, this may mean that the recorded history is nonsense, written by lunatics and the severely misinformed, or that the time-line itself may be twisted, looped or adjusted to create an absurd situation.",
+		"Situation": "Misunderstanding",
+		"Situation_Description": "The Jester indicates that this situation is a misunderstanding of some sort, perhaps a knight has got the wrong idea about what his lord wants, or more often a case of mistaken identity, these misunderstandings are often comedic in nature, but do not have to be.",
+		"Solution": "Laughter",
+		"Solution_Description": "The Jester indicates that the way out of the current situation is to make someone laugh, often this is in a sense of tension breaking comic relief, but humour is always subjective.",
+		"Revelations": {
+			"About": "Yours",
+			"About_Description": "The information is about your own side, or own self. This might reveal your weaknesses or strengths, if you aren't already painfully aware of them.",
+			"Info": "Position",
+			"Info_Description": "Positions are important, whether it is knowing where someone or something is, their rank in society, their reputation, or an attitude, situation or viewpoint that they hold. Knowing those things about someone can tell you a lot about them. Of course knowing the position of a castle can help plan an assault, and the position of an army can help plan a defence.",
+			"Vector": "Entertainment",
+			"Vector_Description": "The information is embedded or encoded in a piece of entertainment, this might be a case of the infamous \"play-within-a-play\", a novelist who commits a murder exactly like one they have written in a book, or a song sung by a court-jester that derides the King's cousin and his many short-comings. Bards and Heralds for centuries used folk songs to create and spread news stories and gossip, and this is something similar.",
+			"Alternate": "Home",
+			"Alternate_Description": "Where someone lives currently can be important information about a person, especially if you are looking for them. Where they came from can also be useful.",
+			"Detail": "Political",
+			"Detail_Description": "Political details are details about how a character or location is viewed politically, who are their allies and enemies in court, to which political party do they belong (or vote) and what image do they project to others (are they known as a respectable family man, billionaire philanthropist, or are they remembered for a fiasco?)."
+		}
+	},
+	"Obstacle": {
+		"Type": "Ridicule",
+		"Description": "The way is blocked unless the Character subjects themselves to some ridicule or mockery. This is usually a psych attack and may have a Character who performs the ridicule. Or you may draw again and create a humorous, but more dangerous (dark-humour) version of that Obstacle."
+	},
+	"Tarot": {
+		"WyrdTarot": "Miracle",
+		"Normal": "Automatic Success +4 Additional Success Levels/ Draw Maximum Roll +4 Ordeal Cards",
+		"Crossed": "Target fails with a Disaster (Score of -1 and +4 Failure Levels)/ -5 Ordeal Cards."
+	},
+	"Ordeal": {
+		"Ordeal_Type": "Opposed Ordeal",
+		"Stages": "4",
+		"Ordeal_Spread": "Block",
+		"Stakes": "Extreme",
+		"Test": "Tale-Telling (Heresy)",
+		"Obstacles": "1 per Stage",
+		"Suggested_Action": "Satirise",
+		"Stage": "Countryside",
+		"Stage_Description": "Rolling hills, grasslands, trees and countryside, or maybe just a really good park, or an incredible garden",
+		"Motional": "Foot Race",
+		"Motional_Description": "Reach the goal on foot, before anyone else to secure the victory.",
+		"Tide_of_Battle": "Caught out",
+		"Tide_of_Battle_Text": "The smoke of battle clears, and one member of the Ebbing side is caught out away from their line, engaged with the enemy in their territory. They can either charge to melee reach, or retreat back to their line with a Disengament Action.",
+		"Fight": "Fire fight",
+		"Fight_Description": "A battle against opponents with prepared defences and ranged (and / or heavy) weapons. The opponent should be at least equal in number and power to the party."
+	},
+	"Lea": {
+		"PathColour": "Blue Aquatic or Black Migratory",
+		"Bulmas": "All",
+		"AnimalCategory": "Megafauna – Largest",
+		"Example": "Pseudo-Dragon",
+		"Bodypart": "Frills / Spines",
+		"Notes": "The Pseudo-Dragons are large reptiles, monitor lizards and the like, usually ancient paths like these can become blended with later animal paths leading to complex monstrous chimeras. Such as the Wyvern, a Lizard / Pterosaur / Bat Hybrid, Thunderbird (a Pterosaur / Condor Hybrid), Wyrms ( Snake / Dinosaur / Eel Hybrids) or Lake Monster (a blend of Dinosaur / Sturgeon / Seal / Eel Hybrids)."
+	},
+	"Stress": {
+		"Type": "Disturbed",
+		"Description": "High Stress for hours, days, weeks or perhaps even years can profoundly alter a Character. Some people freak out if their schedule is disturbed even slightly, others need their sleep cycle disturbed before it becomes a problem. Others find themselves physically or emotionally disturbed. But this all amounts to the same thing.",
+		"Rules": "A Character who has become disturbed (by the latest Stressor) cannot rest or settle while this latest stressor continues. If they can find a way to cease the disturbance they will relieve all current Stress and cease being disturbed, but until that time they will add their current Stress and the Tension-Level as a Chi Difficulty to all Actions that are not based on ceasing the disturbance (or at least getting far away). Even Actions that act to cease the disturbance will add the Character’s current Stress in Chi as additional Difficulty."
+	},
+	"Trauma": {
+		"Type": "Folly",
+		"Description": "Trauma can cause confusion and disorientation, shutting down former pathways in the brain and making things make less sense for the Character. This is not necessarily a loss of \"intelligence\", but more an indication that significant parts of that intelligence may now be working illogically or irratically. Where before the Character may have been sensible, even reasonable, this is simply no longer the case. Their confusion may become Quixotic imprudence (tilting at windmills), or Panzaic dullness (skeptical dismissal of the fantastic), or some other delusional reality.",
+		"Rules": "The Trauma creates a confusion or delusion in the mind of the Character, this is often expressed as a Hitch, but also works as follows: The Character can Relieve 1 Stress by <em><strong>either</strong></em> identifying something fantastic and even supernatural as entirely banal (swamp-gas reflecting the light of venus, failed real-estate-developer in a costume, low resolution video of a bird, etc), or by identifying and behaving as is something banal was something fantastic and extraordinary (those are not windmills, they are giants &mdash; whirling their swords to attack &mdash; we must charge!)."
+	},
+	"Age": {
+		"Type": "Jest",
+		"Description": "An Age of Jest is occurring. During this age wits, humour and comedy are greatly valued within the society. While they generally do not become leaders themselves, comedians, clowns, jokers and jesters are accorded great fame and often some political power within the society in this age.",
+		"Diegetic_Description": "A time of laughter and wit, where the jester's tongue is as influential as the king's decree. Society embraces the absurd and the satirical, granting great renown and even political sway to those who can make the masses laugh and think.",
+		"Rules": "During an Age of Jest Stakes are usually limited to Medium at best, unless a weapon is drawn. However, comedy and humiliation can operate at Higher Stakes (including Soul Stakes) if the comedian wishes to humiliate and harm their target."
+	}
+}

@@ -1,0 +1,44 @@
+[
+    {
+        "Type": "Threadbare",
+        "Description": "Threadbare Facets cannot produce Facet Sway or dice Scores at all.",
+        "Rules": "Threadbare Facets exist in Tapestries where a Facet has had all potency removed from it. Threadbare Facets have an effective Boon of 0, but do allow their Anti-Facets to reach Boon 26. Threadbare Potency is defined by a Facet Boon of 0.",
+        "Generation_Difficulty": "Impossible",
+        "Pillar_Proficiencies": 0
+    },
+    {
+        "Type": "Banal",
+        "Description": "Banal Facet Sway is indistinguishable from Tao Sway and Dice Scores.",
+        "Rules": "In many conditions, without suitable tools, methods, or abilities, Facet Sway may count as Banal. Spotting a clue could have a Difficulty as high as 45 Yang Sway / Insight. Banal Potency is defined by a Tapestry Boon of 1 to 7.",
+        "Generation_Difficulty": "&frac12; (All rolled Score generates Sway)",
+        "Pillar_Proficiencies": "1 Weakened"
+    },
+    {
+        "Type": "Intrepid",
+        "Description": "Intrepid Facet Sway sit between Tao Sway and Chi in power, those who weild it are usually experienced professionals in their field.",
+        "Rules": "Intrepid Facet Sway has the power of exactly half that of Chi. Intrepid Facet Sway is usually what is meant by Facet Sway, as it is the default. Intrepid Potenncy is defined by a Tepestry Boon of 8 to 15",
+        "Generation_Difficulty": "1",
+        "Pillar_Proficiencies": "1 Normal"
+    },
+    {
+        "Type": "Bold",
+        "Description": "Bold Facet Sway is the equivalent of Chi in power. Those who weild it are considered experts in their field, and the Facet is currently enjoying a Golden Age (Craft and Orthodox appear to be Bold in Greek Mythology, with Craftsmen like Daedalus creating devices that only modern science and engineering can approach).",
+        "Rules": "Bold Facet Sway behaves as Chi (adding +2 per point and calculating Difficulties as Chi). The individual Facet Sways are always named individually and have special rules for their use if they are Bold. Combining Facet Sway to make Chi will create 2 Chi. Spotting a clue becomes at most 10 Bold Insight. Bold Potency is defined by a Tapestry Boon of 16 to 21",
+        "Generation_Difficulty": "4",
+        "Pillar_Proficiencies": "2 Normal"
+    },
+    {
+        "Type": "Monstrous",
+        "Description": "Monstrous Facet Sway is the next most powerful Facet Sway, capable of incredible and horrific things, intended for Monsters.",
+        "Rules": "Monstrous Facet Sway behaves as Yarn when used to add to Scores and calculate Difficulties. Monstrous Facet Sway are always called by their individual names, have the same special rules as Bold Facet Sway, and are normally only available to characters with an appropriate Monster Facet. Spotting a Clue is always at most only 3 Monstrous Insight. Monstrous Potency is defined by a Tapestry Boon of 21 to 25",
+        "Generation_Difficulty": "6",
+        "Pillar_Proficiencies": "2 Golden"
+    },
+    {
+        "Type": "Twisted",
+        "Description": "Twisted Facet Sway is the most powerful Facet Sway, created only by Facets that have been corrupted by the Increated, via their Demonic pacts and Blakk’s apples.",
+        "Rules": "Twisted Facet Sway is the equivalent in power to Twists. Twisted Facet Sway always has the same Special Rules as Bold Facet Sway, but is usually corrupted in some way. Twisted Potency is defined by a Tapestry Boon of 26, note that this will create a Threadbare Anti-Facet.",
+        "Generation_Difficulty": "16",
+        "Pillar_Proficiencies": "2 Golden plus 1 Twisted"
+    }
+]

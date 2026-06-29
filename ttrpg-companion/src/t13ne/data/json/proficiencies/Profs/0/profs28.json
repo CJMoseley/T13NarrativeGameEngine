@@ -1,0 +1,1432 @@
+{
+  "1401": {
+    "id": 1401,
+    "prof": {
+      "Name": [
+        "Hushed\\/Wooden\\/Paper",
+        "Hushed\\/Wooden\\/Paper",
+        ""
+      ],
+      "Description": "The threads of Quest are woven into the tapestry of Hushed\\/Wooden\\/Paper, a story of pursuit told in silence.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "16"
+        ],
+        "Genres": [
+          "16"
+        ],
+        "Eras": [
+          "16"
+        ],
+        "Types": [
+          "Descendant"
+        ]
+      }
+    }
+  },
+  "1402": {
+    "id": 1402,
+    "prof": {
+      "Name": [
+        "Muted",
+        "Muted Quiet Edge Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Muted speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1403": {
+    "id": 1403,
+    "prof": {
+      "Name": [
+        "Muted",
+        "Muted Quiet Glow Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Muted speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1404": {
+    "id": 1404,
+    "prof": {
+      "Name": [
+        "Reserve",
+        "Reserve Quiet Failure Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Reserve speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1405": {
+    "id": 1405,
+    "prof": {
+      "Name": [
+        "Repose",
+        "Repose Quiet Fumble Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Repose speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1406": {
+    "id": 1406,
+    "prof": {
+      "Name": [
+        "Suppression",
+        "Suppression Quiet Gnarl Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Suppression speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1407": {
+    "id": 1407,
+    "prof": {
+      "Name": [
+        "Hushing",
+        "Hushing Quiet Herald Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Hushing speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1408": {
+    "id": 1408,
+    "prof": {
+      "Name": [
+        "Mild",
+        "Mild Quiet Hitch Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Mild speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1409": {
+    "id": 1409,
+    "prof": {
+      "Name": [
+        "Stillness",
+        "Stillness Quiet Hurdle Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Stillness speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1410": {
+    "id": 1410,
+    "prof": {
+      "Name": [
+        "Vegetation\\/Wood\\/Paper",
+        "Vegetation\\/Wood\\/Paper",
+        ""
+      ],
+      "Description": "The art of Vegetation\\/Wood\\/Paper is a delicate dance with mission, a step in the grand ballet of Quest.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "16"
+        ],
+        "Genres": [
+          "16"
+        ],
+        "Eras": [
+          "16"
+        ],
+        "Types": [
+          "Incarna"
+        ]
+      }
+    }
+  },
+  "1411": {
+    "id": 1411,
+    "prof": {
+      "Name": [
+        "Placid Locations",
+        "Placid Location Quiet Location Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Placid Locations speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1412": {
+    "id": 1412,
+    "prof": {
+      "Name": [
+        "Unspoken",
+        "Unspoken Quiet Lore Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Unspoken speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1413": {
+    "id": 1413,
+    "prof": {
+      "Name": [
+        "Hush",
+        "Hush Quiet Monster Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Hush speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1414": {
+    "id": 1414,
+    "prof": {
+      "Name": [
+        "Symbolic",
+        "Symbolic Quiet Narration Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Symbolic speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1415": {
+    "id": 1415,
+    "prof": {
+      "Name": [
+        "The Quiet One Speaks",
+        "The Quiet One Speaks Quiet Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of The Quiet One Speaks speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1416": {
+    "id": 1416,
+    "prof": {
+      "Name": [
+        "Silent Ordeals",
+        "Silent Ordeal Quiet Ordeal Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Silent Ordeals speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1417": {
+    "id": 1417,
+    "prof": {
+      "Name": [
+        "Thoughts",
+        "Thoughts Quiet Psychosocial Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Thoughts speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1418": {
+    "id": 1418,
+    "prof": {
+      "Name": [
+        "Read \\/ Listen \\/ Study",
+        "Read \\/ Listen \\/ Study",
+        ""
+      ],
+      "Description": "A shield against the storm, Read \\/ Listen \\/ Study is the quiet strength that endures the onslaught of mission.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "16"
+        ],
+        "Genres": [
+          "16"
+        ],
+        "Eras": [
+          "16"
+        ],
+        "Types": [
+          "Quest"
+        ]
+      }
+    }
+  },
+  "1419": {
+    "id": 1419,
+    "prof": {
+      "Name": [
+        "Unspoken",
+        "Unspoken Quiet Question Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Unspoken speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1420": {
+    "id": 1420,
+    "prof": {
+      "Name": [
+        "Discreet",
+        "Discreet Quiet Resolved Hitch Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Discreet speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1421": {
+    "id": 1421,
+    "prof": {
+      "Name": [
+        "Restrained",
+        "Restrained Quiet Style Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Restrained speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1422": {
+    "id": 1422,
+    "prof": {
+      "Name": [
+        "Unheard",
+        "Unheard Quiet Success Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Unheard speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1423": {
+    "id": 1423,
+    "prof": {
+      "Name": [
+        "Serenity",
+        "Serenity Quiet Sway Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Serenity speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1424": {
+    "id": 1424,
+    "prof": {
+      "Name": [
+        "Consistent",
+        "Consistent Quiet Tangle Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Consistent speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1425": {
+    "id": 1425,
+    "prof": {
+      "Name": [
+        "Calming \\/ Listening \\/ Meditation \\/ Sneaking \\/ Studying \\/ Thinking",
+        "Calming \\/ Listening \\/ Meditation \\/ Sneaking \\/ Studying \\/ Thinking",
+        ""
+      ],
+      "Description": "A lonely star in the vast emptiness, Calming \\/ Listening \\/ Meditation \\/ Sneaking \\/ Studying \\/ Thinking is a beacon of calling in the cold night of the universe.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "16"
+        ],
+        "Genres": [
+          "16"
+        ],
+        "Eras": [
+          "16"
+        ],
+        "Types": [
+          "Test"
+        ]
+      }
+    }
+  },
+  "1426": {
+    "id": 1426,
+    "prof": {
+      "Name": [
+        "Suspense",
+        "Suspense Quiet Tone Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Suspense speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1427": {
+    "id": 1427,
+    "prof": {
+      "Name": [
+        "Silence",
+        "Silence Quiet Turn Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Silence speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1428": {
+    "id": 1428,
+    "prof": {
+      "Name": [
+        "Mind",
+        "Mind Quiet Twisted Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Mind speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1429": {
+    "id": 1429,
+    "prof": {
+      "Name": [
+        "Contemplating",
+        "Contemplating Quiet Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Contemplating speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1430": {
+    "id": 1430,
+    "prof": {
+      "Name": [
+        "Calm",
+        "Calm Quiet Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Calm speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1431": {
+    "id": 1431,
+    "prof": {
+      "Name": [
+        "Listening",
+        "Listening Quiet Test Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Listening speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1432": {
+    "id": 1432,
+    "prof": {
+      "Name": [
+        "Study",
+        "Study Quiet Quest Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Study speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1433": {
+    "id": 1433,
+    "prof": {
+      "Name": [
+        "Hermit",
+        "Hermit Quiet Persona Proficiency",
+        ""
+      ],
+      "Description": "Understated and symbolic, the suspenseful nature of Hermit speaks volumes in its silence, carrying a weight that words cannot express.",
+      "Tags": {
+        "Facets": [
+          "16",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1434": {
+    "id": 1434,
+    "prof": {
+      "Name": [
+        "Defenceless",
+        "Defenceless Rook Zero Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Defenceless is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1435": {
+    "id": 1435,
+    "prof": {
+      "Name": [
+        "Weak",
+        "Weak Rook Zero Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Weak is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1436": {
+    "id": 1436,
+    "prof": {
+      "Name": [
+        "Open Locations",
+        "Open Location Rook Zero Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Open Locations is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1437": {
+    "id": 1437,
+    "prof": {
+      "Name": [
+        "Reckless",
+        "Reckless Rook Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Reckless is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1438": {
+    "id": 1438,
+    "prof": {
+      "Name": [
+        "Casual",
+        "Casual Rook Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Casual is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1439": {
+    "id": 1439,
+    "prof": {
+      "Name": [
+        "Exposed Locations",
+        "Exposed Location Rook Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Exposed Locations is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1440": {
+    "id": 1440,
+    "prof": {
+      "Name": [
+        "Careless",
+        "Careless Rook Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Careless is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1441": {
+    "id": 1441,
+    "prof": {
+      "Name": [
+        "Lax",
+        "Lax Rook Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Lax is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1442": {
+    "id": 1442,
+    "prof": {
+      "Name": [
+        "Loose Locations",
+        "Loose Location Rook Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Loose Locations is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1443": {
+    "id": 1443,
+    "prof": {
+      "Name": [
+        "Hasty",
+        "Hasty Rook Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Hasty is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1444": {
+    "id": 1444,
+    "prof": {
+      "Name": [
+        "Superficial",
+        "Superficial Rook Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Superficial is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1445": {
+    "id": 1445,
+    "prof": {
+      "Name": [
+        "Brisk Locations",
+        "Brisk Location Rook Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Brisk Locations is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1446": {
+    "id": 1446,
+    "prof": {
+      "Name": [
+        "Indiscreet",
+        "Indiscreet Rook Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Indiscreet is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1447": {
+    "id": 1447,
+    "prof": {
+      "Name": [
+        "Foolhardy",
+        "Foolhardy Rook Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Foolhardy is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1448": {
+    "id": 1448,
+    "prof": {
+      "Name": [
+        "Unguarded Locations",
+        "Unguarded Location Rook Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Unguarded Locations is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1449": {
+    "id": 1449,
+    "prof": {
+      "Name": [
+        "Discreet",
+        "Discreet Rook Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Discreet is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1450": {
+    "id": 1450,
+    "prof": {
+      "Name": [
+        "Prudent",
+        "Prudent Rook Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Prudent is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

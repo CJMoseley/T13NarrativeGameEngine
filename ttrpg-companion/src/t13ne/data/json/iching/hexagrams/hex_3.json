@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 3,
+    "Name": "Initial Adversity",
+    "Entity": "&#19906;",
+    "Logical": 17,
+    "Trigrams": [
+      3,
+      5
+    ],
+    "Hexagram_Text": "Chun, Initial Adversity (or Difficult Beginnings or Sprouting), symbolizes the first shoots of spring. The Earth is still hard, but the plant struggles on.",
+    "Unchanging": "May add Incarna Boon reduced to any action if helped by another.",
+    "Line1": "Insurmountable Stone",
+    "Line2": "Horse &amp; Wagon Part",
+    "Line3": "Deer Hunter Lost Without Guide",
+    "Line4": "Wagon &amp; Horses Separated",
+    "Line5": "Difficulties In Blessings",
+    "Line6": "Bloody Tears Flow"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you accept help, make allies, or encounter Obstacles or Hurdles",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you begin without making a plan first",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "you avoid conflict alone, seek or have help",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yang",
+        "Condition": "you turn down help, or get what you want via persuasion or seduction",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yang",
+        "Condition": "you seek help, guidance, or conduct research",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yang",
+        "Condition": "you ask another for help or act immediately",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yin",
+        "Condition": "you explain something, use diplomacy, or make a mistake",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yang",
+        "Condition": "you change tactic or give up after a failure",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Initial adversity Quest begins hard and gets easier later. Difficulty and Stakes may be higher for the early part of the Quest, and later will lower, or early Ordeals will have additional Obstacles or automatic Failure Levels.",
+    "Quest_Complete": "This is a time of turmoil, chaos and confusion, unleashed by the Quest. Dangers and hazards gather around and tensions are raised. This Quest may end on an extra Ordeal, often a fight.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "An insurmountable problem presents itself, blocking all progress in the Quest, and adding at least one Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test. However, if the Quester can find the right companions then they may instead add a Success Level.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "Tensions are high, and somebody makes an offer that appears advantageous, but if taken by the Quester it will lead to downfall, betrayal or humiliation (adding an Obstacle, Hurdle or Failure Level to their Ordeal or Test. Only by turning down this offer diplomatically, or careful manipulation of the situation can the Quester add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The situation ahead is some sort of trap, like the hunter led too deep into the woods, the Quester is out of their depth and add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If the Quester ignores their Quest at this time, and focuses on their safety, retreating from the danger, then they may later add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester has a duty to act, but lacks the power or ability necessary. If the Quester acts alone, or does not fulfil their duty to act then they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Task, but if they seek out assistance (replacing the missing horses) then they may add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester who tries to express their intentions, explain themselves, or their agenda, adds a Hurdle, Obstacle or Failure Level, as they are misunderstood or misinterpreted by their companions or the authorities. If instead the Quester moves ahead working on their own, then this will add a Success Level instead as they build trust with those that would have misunderstood.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester faces great difficulties and hardships, that add at least one Hurdle, Obstacle or Failure Level to their Ordeal or Test, if the Quester does not give up, surrender or abandon the Quest then instead they may try again with an additional Success Level.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "The name of the hexagram, Chun, really connotes a blade of grass pushing against an obstacle as it sprouts out of the earth--hence the meaning, \"difficulty at the beginning.\" The hexagram indicates the way in which heaven and earth bring forth individual beings. It is their first meeting, which is beset with difficulties. The lower trigram Chên is the Arousing; its motion is upward and its image is thunder. The upper trigram K'an stands for the Abysmal, the dangerous. Its motion is downward and its image is rain. The situation points to teeming, chaotic profusion; thunder and rain fill the air. But the chaos clears up. While the Abysmal sinks, the upward movement eventually passes beyond the danger. A thunderstorm brings release from tension, and all things breathe freely again.",
+    "The_Image": {
+      "text": "Clouds and thunder:\n\nThe image of DIFFICULTY AT THE BEGINNING.\n\nThus the superior man\nBrings order out of confusion.",
+      "comments": "Clouds and thunder are represented by definite decorative lines; this means that in the chaos of difficulty at the beginning, order is already implicit. So too the superior man has to arrange and organize the inchoate profusion of such times of beginning, just as one sorts out silk threads from a knotted tangle and binds them into skeins. In order to find one's place in the infinity of being, one must be able both to separate and to unite."
+    },
+    "The_Judgment": {
+      "text": "DIFFICULTY AT THE BEGINNING works supreme success,\nFurthering through perseverance.\nNothing should be undertaken.\nIt furthers one to appoint helpers.",
+      "comments": "Times of growth are beset with difficulties. They resemble a first birth. But these difficulties arise from the very profusion of all that is struggling to attain form . Everything is in motion: therefore if one perseveres there is a prospect of great success, in spite of the existing danger. When it is a man's fate to undertake such new beginnings, everything is still unformed, dark. Hence he must hold back, because any premature move might bring disaster. Likewise, it is very important not to remain alone; in order to overcome the chaos he needs helpers. This is not to say, however, that he himself should look on passively at what is happening. He must lend his hand and participate with inspiration and guidance."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Hesitation and hindrance.\nIt furthers one to remain persevering.\nIt furthers one to appoint helpers.",
+        "comments": "If a person encounters a hindrance at the beginning of an enterprise, he must not try to force advance but must pause and take thought. However, nothing should put him off his course; he must persevere and constantly keep the goal in sight. It is important to seek out the right assistants, but he can find them only if he avoids arrogance and associated with his fellows in a spirit of humility. Only then will he attract those with whose help he can combat the difficulties."
+      },
+      "2": {
+        "text": "Difficulties pile up.\nHorse and wagon part.\nHe is not a robber;\nHe wants to woo when the time comes.\nThe maiden is chaste,\nShe does not pledge herself.\nTen years--then she pledges herself.",
+        "comments": "We find ourselves beset by difficulties and hindrances. Suddenly there is a turn of affairs, as if someone were coming up with a horse and wagon and unhitching them. This event comes so unexpectedly that we assume the newcomer to be a robber. Gradually it becomes clear that he has no evil intentions but seeks to be friendly and to offer help. But this offer is not to be accepted, because it does not come from the right quarter. We must wait until the time is fulfilled; ten years is a fulfilled cycle of time. Then normal conditions return of themselves, and we can join forces with the friend intended for us. Using the image of a betrothed girl who remains true to her lover in face of grave conflicts, the hexagram gives counsel for a special situation. When in times of difficulty a hindrance is encountered and unexpected relief is offered from a source unrelated to us, we must be careful and not take upon ourselves any obligations entailed by such help; otherwise our freedom of decision is impaired. If we bide our time, things will quiet down again, and we shall attain what we have hoped for."
+      },
+      "3": {
+        "text": "Whoever hunts deer without the forester\nOnly loses his way in the forest.\nThe superior man understands the signs of the time\nAnd prefers to desist.\nTo go on brings humiliation.",
+        "comments": "If a man tries to hunt in a strange forest and has no guide, he loses his way. When he finds himself in difficulties he must not try to steal out of them unthinkingly and without guidance. Fate cannot be duped; premature effort, without the necessary guidance, ends in failure and disgrace. Therefore the superior man, discerning the seeds of coming events, prefers to renounce a wish rather than to provoke failure and humiliation by trying to force its fulfillment."
+      },
+      "4": {
+        "text": "Horse and wagon part.\nStrive for union.\nTo go brings good fortune.\nEverything acts to further.",
+        "comments": "We are in a situation in which it is our duty to act, but we lack sufficient power. However, an opportunity to make connections offers itself. It must be seized. Neither false pride nor false reserve should deter us. Bringing oneself to take the first step, even when it involves a certain degree of self-abnegation, is a sign of inner clarity. To accept help in a difficult situation is not a disgrace. If the right helper is found, all goes well."
+      },
+      "5": {
+        "text": "Difficulties in blessing.\nA little perseverance brings good fortune.\nGreat perseverance brings misfortune.",
+        "comments": "An individual is in a position in which he cannot so express his good intentions that they will actually take shape and be understood. Other people interpose and distort everything he does. He should then be cautious and proceed step by step. He must not try to force the consummation of a great undertaking, because success is possible only when general confidence already prevails. It is only through faithful and conscientious work, unobtrusively carried on, that the situation gradually clears up and the hindrance disappears."
+      },
+      "6": {
+        "text": "Horse and wagon part.\nBloody tears flow.",
+        "comments": "The difficulties at the beginning are too great for some persons. They get stuck and never find their way out; they fold their hands and give up the struggle. Such resignation is the saddest of all things. Therefore Confucius says of this line: \"Bloody tears flow: one should not persist in this.\""
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Initial Adversity'. Internalize this core philosophy: The name of the hexagram, Chun, really connotes a blade of grass pushing against an obstacle as it sprouts out of the earth--hence the meaning, \"difficulty at the beginning.\" The hexagram indicates the way in which heaven and earth bring forth individual beings. It is their first meeting, which is beset with difficulties. The lower trigram Chên is the Arousing; its motion is upward and its image is thunder. The upper trigram K'an stands for the Abysmal, the dangerous. Its motion is downward and... Your current worldview is: \"Chun, Initial Adversity (or Difficult Beginnings or Sprouting), symbolizes the first shoots of spring. The Earth is still hard, but the plant struggles on.\". Let your choices be subtly driven by these conditions: you accept help, make allies, or encounter Obstacles or Hurdles, you begin without making a plan first. When interacting, mirror the wisdom found in the commentary: \"Times of growth are beset with difficulties. They resemble a first birth. But these difficulties arise from the very profusion of all that is struggling to attain form . Everything is in motion: therefore if one perseveres there is a prospect of great success, in spite of the existing danger. When...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Initial Adversity'. The primary quest objective is: The Initial adversity Quest begins hard and gets easier later. Difficulty and Stakes may be higher for the early part of the Quest, and later will lower, or early Ordeals will have additional Obstacles or automatic Failure Levels.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: Clouds and thunder are represented by definite decorative lines; this means that in the chaos of difficulty at the beginning, order is already implicit. So too the superior man has to arrange and organize the inchoate profusion of such times of beginning, just as one sorts out silk threads from a knotted tangle and binds them into skeins. In order to find one's place in the infinity of being, one... Use the following line-specific challenges to pace the story: An insurmountable problem presents itself, blocking all progress in the Quest, and adding at least one Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test. However, if the Quester can find the right companions then they may instead add a Success Level. | Tensions are high, and somebody makes an offer that appears advantageous, but if taken by the Quester it will lead to downfall, betrayal or humiliation (adding an Obstacle, Hurdle or Failure Level to their Ordeal or Test. Only by turning down this offer diplomatically, or careful manipulation of the situation can the Quester add a Success Level instead. | The situation ahead is some sort of trap, like the hunter led too deep into the woods, the Quester is out of their depth and add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If the Quester ignores their Quest at this time, and focuses on their safety, retreating from the danger, then they may later add a Success Level instead. | The Quester has a duty to act, but lacks the power or ability necessary. If the Quester acts alone, or does not fulfil their duty to act then they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Task, but if they seek out assistance (replacing the missing horses) then they may add a Success Level instead. | The Quester who tries to express their intentions, explain themselves, or their agenda, adds a Hurdle, Obstacle or Failure Level, as they are misunderstood or misinterpreted by their companions or the authorities. If instead the Quester moves ahead working on their own, then this will add a Success Level instead as they build trust with those that would have misunderstood. | The Quester faces great difficulties and hardships, that add at least one Hurdle, Obstacle or Failure Level to their Ordeal or Test, if the Quester does not give up, surrender or abandon the Quest then instead they may try again with an additional Success Level.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Insurmountable Stone): Mirror the internal state described in the commentary: \"If a person encounters a hindrance at the beginning of an enterprise, he must not try to force advance but must pause and take thought. However, nothing should put him off his course; he must persevere and constantly keep the goal in sight. It is...\" Your actions should be framed by the goal: you avoid conflict alone, seek or have help.",
+        "Plot": "Plot Complication Line 1 (Insurmountable Stone): Introduce a challenge based on the interpretation: \"If a person encounters a hindrance at the beginning of an enterprise, he must not try to force advance but must pause and take thought. However, nothing should put him off his course; he must persevere and constantly keep the goal in sight. It is...\" The specific quest objective for this stage is: An insurmountable problem presents itself, blocking all progress in the Quest, and adding at least one Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test. However, if the Quester can find the right companions then they may instead add a Success Level."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Horse &amp; Wagon Part): Mirror the internal state described in the commentary: \"We find ourselves beset by difficulties and hindrances. Suddenly there is a turn of affairs, as if someone were coming up with a horse and wagon and unhitching them. This event comes so unexpectedly that we assume the newcomer to be a robber....\" Your actions should be framed by the goal: you turn down help, or get what you want via persuasion or seduction.",
+        "Plot": "Plot Complication Line 2 (Horse &amp; Wagon Part): Introduce a challenge based on the interpretation: \"We find ourselves beset by difficulties and hindrances. Suddenly there is a turn of affairs, as if someone were coming up with a horse and wagon and unhitching them. This event comes so unexpectedly that we assume the newcomer to be a robber....\" The specific quest objective for this stage is: Tensions are high, and somebody makes an offer that appears advantageous, but if taken by the Quester it will lead to downfall, betrayal or humiliation (adding an Obstacle, Hurdle or Failure Level to their Ordeal or Test. Only by turning down this offer diplomatically, or careful manipulation of the situation can the Quester add a Success Level instead."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Deer Hunter Lost Without Guide): Mirror the internal state described in the commentary: \"If a man tries to hunt in a strange forest and has no guide, he loses his way. When he finds himself in difficulties he must not try to steal out of them unthinkingly and without guidance. Fate cannot be duped; premature effort, without the...\" Your actions should be framed by the goal: you seek help, guidance, or conduct research.",
+        "Plot": "Plot Complication Line 3 (Deer Hunter Lost Without Guide): Introduce a challenge based on the interpretation: \"If a man tries to hunt in a strange forest and has no guide, he loses his way. When he finds himself in difficulties he must not try to steal out of them unthinkingly and without guidance. Fate cannot be duped; premature effort, without the...\" The specific quest objective for this stage is: The situation ahead is some sort of trap, like the hunter led too deep into the woods, the Quester is out of their depth and add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If the Quester ignores their Quest at this time, and focuses on their safety, retreating from the danger, then they may later add a Success Level instead."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Wagon &amp; Horses Separated): Mirror the internal state described in the commentary: \"We are in a situation in which it is our duty to act, but we lack sufficient power. However, an opportunity to make connections offers itself. It must be seized. Neither false pride nor false reserve should deter us. Bringing oneself to take the...\" Your actions should be framed by the goal: you ask another for help or act immediately.",
+        "Plot": "Plot Complication Line 4 (Wagon &amp; Horses Separated): Introduce a challenge based on the interpretation: \"We are in a situation in which it is our duty to act, but we lack sufficient power. However, an opportunity to make connections offers itself. It must be seized. Neither false pride nor false reserve should deter us. Bringing oneself to take the...\" The specific quest objective for this stage is: The Quester has a duty to act, but lacks the power or ability necessary. If the Quester acts alone, or does not fulfil their duty to act then they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Task, but if they seek out assistance (replacing the missing horses) then they may add a Success Level instead."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Difficulties In Blessings): Mirror the internal state described in the commentary: \"An individual is in a position in which he cannot so express his good intentions that they will actually take shape and be understood. Other people interpose and distort everything he does. He should then be cautious and proceed step by step. He...\" Your actions should be framed by the goal: you explain something, use diplomacy, or make a mistake.",
+        "Plot": "Plot Complication Line 5 (Difficulties In Blessings): Introduce a challenge based on the interpretation: \"An individual is in a position in which he cannot so express his good intentions that they will actually take shape and be understood. Other people interpose and distort everything he does. He should then be cautious and proceed step by step. He...\" The specific quest objective for this stage is: The Quester who tries to express their intentions, explain themselves, or their agenda, adds a Hurdle, Obstacle or Failure Level, as they are misunderstood or misinterpreted by their companions or the authorities. If instead the Quester moves ahead working on their own, then this will add a Success Level instead as they build trust with those that would have misunderstood."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Bloody Tears Flow): Mirror the internal state described in the commentary: \"The difficulties at the beginning are too great for some persons. They get stuck and never find their way out; they fold their hands and give up the struggle. Such resignation is the saddest of all things. Therefore Confucius says of this line:...\" Your actions should be framed by the goal: you change tactic or give up after a failure.",
+        "Plot": "Plot Complication Line 6 (Bloody Tears Flow): Introduce a challenge based on the interpretation: \"The difficulties at the beginning are too great for some persons. They get stuck and never find their way out; they fold their hands and give up the struggle. Such resignation is the saddest of all things. Therefore Confucius says of this line:...\" The specific quest objective for this stage is: The Quester faces great difficulties and hardships, that add at least one Hurdle, Obstacle or Failure Level to their Ordeal or Test, if the Quester does not give up, surrender or abandon the Quest then instead they may try again with an additional Success Level."
+      }
+    }
+  }
+}

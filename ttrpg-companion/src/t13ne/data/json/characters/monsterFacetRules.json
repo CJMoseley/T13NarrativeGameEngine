@@ -1,0 +1,27 @@
+[
+    {
+        "Type": "Banal",
+        "Description": "Banal Monsters are just humans who are temperamentally monstrous. The Banal Werewolf may believe they are wolf, but they are just some poor deluded soul howling at the moon. Typically such Monsters are due to Genre and Setting Limitations.",
+        "Rules": "Monster Facets are increased in Boon by the total number of Monster Facets available, as though it were a Scale effect. So a Boon 13 Monster (II) would be Boon 15 and add 83 Value to any annex instead of 66."
+    },
+    {
+        "Type": "Intrepid",
+        "Description": "Intrepid Monsters are mostly humans who are a little monstrous, although you might encounter the occasional monstrous animal, alien or robot. Intrepid Monsters are often described with animalistic features, such as yellow or reflective eyes, sharp teeth, claws, etc even when they are humans. The Intrepid werewolf may have long pointed nails, sharp canines and wild eyes, but they still look human.",
+        "Rules": "Monster Facets add the number of Monster Facets to the Boon but also adds the original Value. A Boon 13 Monster (II) Facet gives 83+66=149 or Boon 22 (ish)."
+    },
+    {
+        "Type": "Bold",
+        "Description": "Bold Monsters are pretty monstrous, often having clear signs they are not normal. The Bold werewolf actually becomes a wolf-man, perhaps even having a short snout and fur. Bold monsters are common in fantasy, and can be aliens or robots in science-fiction.",
+        "Rules": "All Monster Facet Values are multiplied by 1 + the number of Monster Facets. So a Boon 13 Monster (II) Facet would have a Value of 198, making it the equivalent of Boon 25 or 26."
+    },
+    {
+        "Type": "Monstrous",
+        "Description": "Monstrous Monsters are true monsters. These are the werewolves that have wolf heads, dog legs, are only injured by silver, and tend to be about eight feet tall. Such Monsters are common to Horror Settings and some Fantasy settings.",
+        "Rules": "Monstrous Monster Facets increase the Boon by the current number of Monster Facets, then take the Value as a Boon and halve. So a Monster (II) Boon 13 becomes 15 with so 83 &divide; 2 that becomes Boon 41 adding 448 Value to any Annex."
+    },
+    {
+        "Type": "Twisted",
+        "Description": "Twisted Monsters are the worst Monsters, usually fused with the forces of the Increated, although science, aliens and cosmic forces can also twist a Monster.",
+        "Rules": "Twisted Monster Facets increase the Boon by multiplying the Boon by 1 + Number of Monster Facets + Stored Twists. So Boon 13 Monster(II) with 1 Twists gives 13 &times; 4 = Boon 52."
+    }
+]

@@ -1,0 +1,30 @@
+[
+    {
+        "Chi_Class": "NPC",
+        "Character Types": "Extra / Descendant / Lite / Archetype",
+        "Description": "Extra Characters are usually NPCs, Lite Characters can be PCs too. Occasionally an artificial intelligence or magic sword may appear as a Descendant too.",
+        "Max_Stored_Chi": "Master Annex Maximum Roll",
+        "Chi Gain": "1"
+    },
+    {
+        "Chi_Class": "Low PC",
+        "Character Type": "Grunt / Goblin",
+        "Description": "Gritty, low-powered, and generally realistic Characters. They cannot manipulate reality at all.",
+        "Max_Stored_Chi": "Personality Boon",
+        "Chi Gain": "Personality Draw"
+    },
+    {
+        "Chi_Class": "Mid PC",
+        "Character Type": "Hero / Demon / Monsters",
+        "Description": "Middle-tier Characters who are able to bend and manipulate reality around them in minor ways. There is cross-over with Faery Commoners and Bulm&auml;s at their lower power levels.",
+        "Max_Stored_Chi": "Personality Value",
+        "Chi Gain": "Rolled Personality Die / Personality Score"
+    },
+    {
+        "Chi_Class": "High PC",
+        "Character Type": "Yarn-Teller / Demon-Lord / Kaiju / Immortals / ",
+        "Description": "High-powered Characters who can manipulate reality around themselves directly on a whim.",
+        "Max_Stored_Chi": "Personality Super-Value",
+        "Chi Gain": "Personality Die as Yarn / Personality Boon"
+    }
+]

@@ -1,0 +1,34 @@
+[
+    {
+        "Type": "bag",
+        "Description": "a group of objects like a pool, but objects in the bag can only be accessed randomly."
+    },
+    {
+        "Type": "character",
+        "Description": "a group of objects that makes a character (annexes, stats, profs etc)."
+    },
+    {
+        "Type": "list",
+        "Description": "a group of objects such as proficiencies of an Annex, lists are open and all entries are shown"
+    },
+    {
+        "Type": "narrative",
+        "Description": "a group of objects held by a narrative demon whether a scene or cycle. This is similar to a structure, but more flexible as it can contain any type of threshold members, including a conflict spread."
+    },
+    {
+        "Type": "pact",
+        "Description": "a group of objects that includes characters. The pact will also have Annex Members that are available to pact members, as well as descendants such as a guild equipment, territory, etc."
+    },
+    {
+        "Type": "pool",
+        "Description": "a group of objects that is used to move objects from one group to another. Pools can copy from a list and create a new list. They can also place things in lists which removes them from the pool. Characters can be copied into the list to be used as a pool of wandering monsters, for example."
+    },
+    {
+        "Type": "stock",
+        "Description": "a group that usually consists of a single type of object (such as an extra) that creates minor variations (such as names, creators, and statblocks) by also adding them to the stock."
+    },
+    {
+        "Type": "structure",
+        "Description": "a group of objects that form a larger object, such as how a building is a structured collection of rooms. A true structure can only have Cartesian, structural, way, or window threshold members. Can be created by fossilizing a narrative."
+    }
+]

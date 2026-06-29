@@ -1,0 +1,50 @@
+[
+    {
+        "Type": "Vex",
+        "Master_Annex": "Skill equal to any PC Skill",
+        "Description": "Vexes are simplistic and weak animals and characters, they are static, unchanging stereotypes and one-dimensional characters, they are intended for small animals and unimportant none-speaking roles. They generally have little effect on the outcome of a story.",
+        "Rules": "Vexes are made from a single Skill Annex, usually named for the Extra or \"Living\" or \"Doing Stuff\" that the Vex uses for all actions. Vexes have no Hexagram, no Personality Annex and may only gain Chi from Geometry or by triggering Hitches. Vexes cannot spend Chi except on their own actions. Vexes are not really limited in Hitches at all, you can add them for flavour. Vexes can have a Scale of -3 to +20 as it is not restricted by Hitches, but by the Plot.",
+        "Min-Hitches": 0,
+        "Max-Hitches": 24,
+        "Woe_Gain": "1 Twist when triggered",
+        "Hitch_Gain": "1 Yarn when triggered",
+        "Gain": "Normally 1 Yarn for Persona / Core / I-Ching / Geometry gains",
+        "Max_Stored_Chi": "Master Annex Highest possible rolled Score"
+    },
+    {
+        "Type": "Chorus",
+        "Master_Annex": "Talent equal to any PC Talent",
+        "Description": "Chorus are simple NPCs (Secondary or Tertiary Characters) that may have a larger part in a Story. They are usually at best two-dimensional characters, and are seldom named roles beyond \"Townsperson #3\" or \"Second Guard\".",
+        "Rules": "Chorus are usually made from a single Talent Annex, although they may also have Skills as a Talent Descendant. Chorus have no Hexagram, no Personality Annex and may only gain Chi from Geometry or by triggering Hitches. Chorus cannot spend Chi except on their own actions. Chorus are not really limited in Hitches at all, you can add them for flavour. Chorus can have a Scale of -3 to +20 as it is not restricted by Hitches, but by the Plot.",
+        "Min-Hitches": 0,
+        "Max-Hitches": 24,
+        "Woe_Gain": "1 Twist when triggered",
+        "Hitch_Gain": "1 Yarn when triggered",
+        "Gain": "Normally 1 Yarn for Persona / Core / I-Ching / Geometry gains",
+        "Max_Stored_Chi": "Master Annex Highest possible rolled Score"
+    },
+    {
+        "Type": "Cast",
+        "Master_Annex": "Power equal to any PC Power",
+        "Description": "Cast are fairly simple NPCs, usually a Secondary Character, that usually have a recurring role, or are important to an individual Story. They are often also used as Alternates for bigger Characters. Cast can be two-dimensional if they are reused too often, although the addition of Personas, Cores and I-Ching can add depth.",
+        "Rules": "Cast are created from a Power Annex, but may have additional Skills and Talents (usually one per Hitch to a Max of the Power Score (Boon Reduced)). Cast can have a Scale of -3 to +20 based on the Plots involved. Cast may have a Persona and Core Proficiencies rather than a true Personality Annex. They often have at least 3 Hitches (although not compulsory). They usually have I-Ching Hexagrams.",
+        "Min-Hitches": 0,
+        "Max-Hitches": 24,
+        "Woe_Gain": "1 Twist when triggered",
+        "Hitch_Gain": "1 Yarn when triggered",
+        "Gain": "Normally 1 Yarn for Persona / Core / I-Ching / Geometry gains",
+        "Max_Stored_Chi": "Master Annex Highest possible rolled Score"
+    },
+    {
+        "Type": "Force-of-Nature",
+        "Master_Annex": "Super-Annex equal to any PC Super-Annex or Personality Annex",
+        "Description": "The most powerful of the Extras, these are important villains, major recurring tertiary roles and even storms, floods and actual Forces of Nature. Like all Extras they can be somewhat lacking in depth, although the addition of Personas, I-Ching, etc can go a long way toward adding a third dimension.",
+        "Rules": "F.O.Ns are made from Super-Annexes (often a Size Annex) and can have lots of Skills, Talents and Powers, one per Hitch, to a maximum number of the Super-Annex Score (Boon Reduced). They may have a Scale of -3 to +20 based on the Plots involved. They can be more powerful than PCs (certainly starting PCs) so use responsibly. They may have Geometries, Personas, Cores, Resolved Hitches, Monster Facets and I-Ching, or not as required.",
+        "Min-Hitches": 0,
+        "Max-Hitches": 24,
+        "Woe_Gain": "1 Twist when triggered",
+        "Hitch_Gain": "1 Yarn when triggered",
+        "Gain": "Normally 1 Yarn for Persona / Core / I-Ching / Geometry gains",
+        "Max_Stored_Chi": "Master Annex Highest possible rolled Score"
+    }
+]

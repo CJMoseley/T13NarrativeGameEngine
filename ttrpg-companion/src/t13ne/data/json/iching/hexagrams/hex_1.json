@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 1,
+    "Name": "The Creative",
+    "Entity": "&#19904;",
+    "Logical": 63,
+    "Trigrams": [
+      0,
+      0
+    ],
+    "Hexagram_Text": "Qián, The Creative (sometimes also called Heaven), is made of all Yang Lines. It symbolises beginnings, and completing that which you have begun. It also represents Time and Duration, and the awakened Sage or creative Dragon.",
+    "Unchanging": "May make all Facet tests on the Yang Facets alone.",
+    "Line1": "Hidden Dragon",
+    "Line2": "Dragon in the Field",
+    "Line3": "All Day &amp; Night",
+    "Line4": "Dragon Leaps Pond",
+    "Line5": "Dragon Flying",
+    "Line6": "Haughty Dragon"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you begin something new or complete something you have begun",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you are distracted from your goals",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "you do not act when you may, holding your action and waiting instead",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yin",
+        "Condition": "you act as a part of a group, make friends, network, socialize, negotiate, or use a pact Descendant",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yin",
+        "Condition": "you are cautious or responsible",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yin",
+        "Condition": "you concentrate on the details, small steps, little picture, or use gentle persuasion",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yin",
+        "Condition": "you act boldly, immediately or confidently",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yin",
+        "Condition": "whenever you mock yourself, or rely on the help of others",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Creative Quest is active and dynamic, and requires the same of the Quester. The Quester may succeed by displaying energy and creativity, all Yin and uncreative Actions (especially Yin Actions that lack originality) suffer from an automatic Failure Level atop of any Quest complications.",
+    "Quest_Complete": "The Creative expresses itself through constant change and evolution. As a result of the Quest the Quester and the Opposition may find themselves changed and altered, gifted new powers and abilities, cursed or scared with new hitches, or discovering a new alternative self.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester encounters a powerful hidden opposition, any action by the Quester will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester meets a character who seems unimportant, but is actually a mentor, authority or suitable companion for the Quester. If the Quester approaches this character correctly asking for help they can add a Success Level to their Ordeal or Test, failure to greet the character properly will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "Things have become perilous for the Quester. They have been exposed to a new sphere of influence (such as new pact or group), and are praised by these new people. If they embrace this new fame and accolades however it will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test, only caution and focus on their task at hand will instead add a Success Level.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester is offered a choice, on the one path they will become stronger physically by engaging the opposition, or they may withdraw from the opposition and they will grow mentally or spiritually. Neither path adds Successes or Failures.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester who is bold and daring will add a Success Level to their Test or Ordeal, those who hide or use cunning will add a Failure Level, Obstacle or Hurdle instead.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester who takes themselves too seriously, is haughty or bragging will add a Failure Level, Obstacle or Hurdle to their Test or Ordeal. The Quester who is self-depreciating will instead add a Success Level.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "The first hexagram is made up of six unbroken lines. These unbroken lines stand for the primal power, which is light-giving, active, strong, and of the spirit. The hexagram is consistently strong in character, and since it is without weakness, its essence is power or energy. Its image is heaven. Its energy is represented as unrestricted by any fixed conditions in space and is therefore conceived of as motion. Time is regarded as the basis of this motion. Thus the hexagram includes also the power of time and the power of persisting in time, that is, duration. The power represented by the hexagram is to be interpreted in a dual sense in terms of its action on the universe and of its action on the world of men. In relation to the universe, the hexagram expresses the strong, creative action of the Deity. In relation to the human world, it denotes the creative action of the holy man or sage, of the ruler or leader of men, who through his power awakens and develops their higher nature.",
+    "The_Image": {
+      "text": "The movement of heaven is full of power.\nThus the superior man makes himself strong and\nuntiring.",
+      "comments": "Since there is only one heaven, the doubling of the trigram Ch'ien, of which heaven is the image, indicates the movement of heaven. One complete revolution of heaven makes a day, and the repetition of the trigram means that each day is followed by another. This creates the idea of time. Since it is the same heaven moving with untiring power, there is also created the idea of duration both in and beyond time, a movement that never stops nor slackens, just as one day follows another in an unending course. This duration in time is the image of the power inherent in the Creative. With this image as a model, the sage learns how best to develop himself so that his influence may endure. He must make himself strong in every way, by consciously casting out all that is inferior and degrading. Thus he attains that tirelessness which depends upon consciously limiting the fields of his activity."
+    },
+    "The_Judgment": {
+      "text": "THE CREATIVE works sublime success, Furthering through perseverance.",
+      "comments": "According to the original meaning, the attributes [sublimity, potentiality of success, power to further, perseverance] are paired. When an individual draws this oracle, it means that success will come to him from the primal depths of the universe and that everything depends upon his seeking his happiness and that of others in one way only, that is, by perseverance in what is right. The specific meanings of the four attributes became the subject of speculation at an early date. The Chinese word here rendered by \"sublime\" means literally \"head,\" \"origin,\" \"great.\" This is why Confucius says in explaining it: \"Great indeed is the generating power of the Creative; all beings owe their beginning to it. This power permeates all heaven.\" For this attribute inheres in the other three as well. The beginning of all things lies still in the beyond in the form of ideas that have yet to become real. But the Creative furthermore has power to lend form to these archetypes of ideas. This is indicated in the word success, and the process is represented by an image from nature: \"The clouds pass and the rain does its work, and all individual beings flow into their forms.\" Applies to the human world, these attributes show the great man the way to notable success: \"Because he sees with great clarity and cause and effects, he completes the six steps at the right time and mounts toward heaven on them at the right time, as though on six dragons.\" The six steps are the six different positions given in the hexagram, which are represented later by the dragon symbol. Here it is shown that the way to success lies in apprehending and giving actuality to the way of the universe [Tao], which, as a law running through end and beginning, brings about all phenomena in time. Thus each step attained forthwith becomes a preparation for the next. Time is no longer a hindrance but the means of making actual what is potential. The act of creation having found expression in the two attributes sublimity and success, the work of conservation is shown to be a continuous actualization and differentiation of form. This is expressed in the two terms \"furthering\" (literally, \"creating that which accords with the nature of a given being\") and \"persevering\" (literally, \"correct and firm\"). \"The course of the Creative alters and shapes beings until each attains its true, specific nature, then it keeps them in conformity with the Great Harmony. Thus does it show itself to further through perseverance.\" In relation to the human sphere, this shows how the great man brings peace and security to the world through his activity in creating order: \"He towers high above the multitude of beings, and all lands are united in peace.\" Another line of speculation goes still further in separating the words \"sublime,\" \"success,\" \"furthering,\" \"perseverance,\" and parallels them with the four cardinal virtues in humanity. To sublimity, which, as the fundamental principle, embraces all the other attributes, it links love. To the attribute success are linked the morals, which regulate and organize expressions of love and thereby make them successful. The attribute furthering is correlated with justice, which creates the conditions in which each receives that which accords with his being, that which is due him and which constitutes his happiness. The attribute perseverance is correlated with wisdom, which discerns the immutable laws of all that happens and can therefore bring about enduring conditions. These speculations, already broached in the commentary called Wên Yen , later formed the bridge connecting the philosophy of the \"five stages (elements) of change,\" as laid down in the Book of History (Shu Ching) with the philosophy of the Book of Changes, which is based solely on the polarity of positive and negative principles. In the course of time this combination of the two systems of thought opened the way for an increasingly intricate number symbolism."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Hidden dragon. Do not act.",
+        "comments": "In China the dragon has a meaning altogether different from that given it in the Western world. The dragon is a symbol of the electrically charged, dynamic, arousing force that manifests itself in the thunderstorm. In winter this energy withdraws into the earth; in the early summer it becomes active again, appearing in the sky as thunder and lightning. As a result the creative forces on earth begin to stir again. Here this creative force is still hidden beneath the earth and therefore has no effect. In terms of human affairs, this symbolizes a great man who is still unrecognized. Nonetheless he remains true to himself. He does not allow himself to be influenced by outward success or failure, but confident in his strength, he bides his time. Hence it is wise for the man who consults the oracle and draws this line to wait in the calm strength of patience. The time will fulfill itself. One need not fear least strong will should not prevail; the main thing is not to expend one's powers prematurely in an attempt to obtain by force something for which the time is not yet ripe."
+      },
+      "2": {
+        "text": "Dragon appearing in the field.\nIt furthers one to see the great man.",
+        "comments": "Here the effects of the light-giving power begin to manifest themselves. In terms of human affairs, this means that the great man makes his appearance in his chosen field of activity. As yet he has no commanding position but is still with his peers. However, what distinguishes him form the others is his seriousness of purpose, his unqualified reliability, and the influence he exerts on his environment with out conscious effort. Such a man is destined to gain great influence and to set the world in order. Therefore it is favorable to see him."
+      },
+      "3": {
+        "text": "All day long the superior man is creatively active.\nAt nightfall his mind is still beset with cares.\nDanger. No blame.",
+        "comments": "A sphere of influence opens up for the great man. His fame begins to spread. The masses flock to him. His inner power is adequate to the increased outer activity. There are all sorts of things to be done, and when others are at rest in the evening, plans and anxieties press in upon him. But danger lurks here at the place of transition from lowliness to the heights. Many a great man has been ruined because the masses flocked to him and swept him into their course. Ambition has destroyed his integrity. However, true greatness is not impaired by temptations. He who remains in touch with the time that is dawning, and with its demands is prudent enough to avoid all pitfalls, and remains blameless."
+      },
+      "4": {
+        "text": "Wavering flight over the depths.\nNo blame.",
+        "comments": "A place of transition has been reached, and free choice can enter in. A twofold possibility is presented to the great man: he can soar to the heights and play an important part in the world, or he can withdraw into solitude and develop himself. He can go the way of the hero or that of the holy sage who seeks seclusion. There is no general law of his being. If the individual acts consistently and is true to himself, he will find the way that is appropriate for him. This way is right for him and without blame."
+      },
+      "5": {
+        "text": "Flying dragon in the heavens.\nIt furthers one to see the great man.",
+        "comments": "Here the great man has attained the sphere of the heavenly beings. His influence spreads and becomes visible throughout the whole world. Everyone who sees him may count himself blessed. Confucius says about this line:\n\nThings that accord in tone vibrate together. Things that have affinity in their inmost natures seek one another. Water flows to what is wet, fire turns to what is dry. Clouds (the breath of heaven) follow the dragon, wind (the breath of earth) follows the tiger. Thus the sage arises, and all creatures follow him with their eyes. What is born of heaven feels related to what is above. What is born of earth feels related to what is below. Each follows its kind."
+      },
+      "6": {
+        "text": "Arrogant dragon will have cause to repent.",
+        "comments": "When a man seeks to climb so high that he loses touch with the rest of mankind, he becomes isolated, and this necessarily leads to failure. This line warns against titanic aspirations that exceed one's power. A precipitous fall would follow.\nWhen all the lines are nines, it means:\n\nThere appears a flight of dragons without heads.\nGood fortune."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'The Creative'. Internalize this core philosophy: The first hexagram is made up of six unbroken lines. These unbroken lines stand for the primal power, which is light-giving, active, strong, and of the spirit. The hexagram is consistently strong in character, and since it is without weakness, its essence is power or energy. Its image is heaven. Its energy is represented as unrestricted by any fixed conditions in space and is therefore conceived of as motion. Time is regarded as the basis of this motion. Thus the hexagram includes also the... Your current worldview is: \"Qián, The Creative (sometimes also called Heaven), is made of all Yang Lines. It symbolises beginnings, and completing that which you have begun. It also represents Time and Duration, and the awakened Sage or creative Dragon.\". Let your choices be subtly driven by these conditions: you begin something new or complete something you have begun, you are distracted from your goals. When interacting, mirror the wisdom found in the commentary: \"According to the original meaning, the attributes [sublimity, potentiality of success, power to further, perseverance] are paired. When an individual draws this oracle, it means that success will come to him from the primal depths of the universe and that everything depends upon his seeking his...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'The Creative'. The primary quest objective is: The Creative Quest is active and dynamic, and requires the same of the Quester. The Quester may succeed by displaying energy and creativity, all Yin and uncreative Actions (especially Yin Actions that lack originality) suffer from an automatic Failure Level atop of any Quest complications.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: Since there is only one heaven, the doubling of the trigram Ch'ien, of which heaven is the image, indicates the movement of heaven. One complete revolution of heaven makes a day, and the repetition of the trigram means that each day is followed by another. This creates the idea of time. Since it is the same heaven moving with untiring power, there is also created the idea of duration both in and... Use the following line-specific challenges to pace the story: The Quester encounters a powerful hidden opposition, any action by the Quester will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. | The Quester meets a character who seems unimportant, but is actually a mentor, authority or suitable companion for the Quester. If the Quester approaches this character correctly asking for help they can add a Success Level to their Ordeal or Test, failure to greet the character properly will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. | Things have become perilous for the Quester. They have been exposed to a new sphere of influence (such as new pact or group), and are praised by these new people. If they embrace this new fame and accolades however it will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test, only caution and focus on their task at hand will instead add a Success Level. | The Quester is offered a choice, on the one path they will become stronger physically by engaging the opposition, or they may withdraw from the opposition and they will grow mentally or spiritually. Neither path adds Successes or Failures. | The Quester who is bold and daring will add a Success Level to their Test or Ordeal, those who hide or use cunning will add a Failure Level, Obstacle or Hurdle instead. | The Quester who takes themselves too seriously, is haughty or bragging will add a Failure Level, Obstacle or Hurdle to their Test or Ordeal. The Quester who is self-depreciating will instead add a Success Level.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Hidden Dragon): Mirror the internal state described in the commentary: \"In China the dragon has a meaning altogether different from that given it in the Western world. The dragon is a symbol of the electrically charged, dynamic, arousing force that manifests itself in the thunderstorm. In winter this energy withdraws...\" Your actions should be framed by the goal: you do not act when you may, holding your action and waiting instead.",
+        "Plot": "Plot Complication Line 1 (Hidden Dragon): Introduce a challenge based on the interpretation: \"In China the dragon has a meaning altogether different from that given it in the Western world. The dragon is a symbol of the electrically charged, dynamic, arousing force that manifests itself in the thunderstorm. In winter this energy withdraws...\" The specific quest objective for this stage is: The Quester encounters a powerful hidden opposition, any action by the Quester will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Dragon in the Field): Mirror the internal state described in the commentary: \"Here the effects of the light-giving power begin to manifest themselves. In terms of human affairs, this means that the great man makes his appearance in his chosen field of activity. As yet he has no commanding position but is still with his peers....\" Your actions should be framed by the goal: you act as a part of a group, make friends, network, socialize, negotiate, or use a pact Descendant.",
+        "Plot": "Plot Complication Line 2 (Dragon in the Field): Introduce a challenge based on the interpretation: \"Here the effects of the light-giving power begin to manifest themselves. In terms of human affairs, this means that the great man makes his appearance in his chosen field of activity. As yet he has no commanding position but is still with his peers....\" The specific quest objective for this stage is: The Quester meets a character who seems unimportant, but is actually a mentor, authority or suitable companion for the Quester. If the Quester approaches this character correctly asking for help they can add a Success Level to their Ordeal or Test, failure to greet the character properly will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (All Day &amp; Night): Mirror the internal state described in the commentary: \"A sphere of influence opens up for the great man. His fame begins to spread. The masses flock to him. His inner power is adequate to the increased outer activity. There are all sorts of things to be done, and when others are at rest in the evening,...\" Your actions should be framed by the goal: you are cautious or responsible.",
+        "Plot": "Plot Complication Line 3 (All Day &amp; Night): Introduce a challenge based on the interpretation: \"A sphere of influence opens up for the great man. His fame begins to spread. The masses flock to him. His inner power is adequate to the increased outer activity. There are all sorts of things to be done, and when others are at rest in the evening,...\" The specific quest objective for this stage is: Things have become perilous for the Quester. They have been exposed to a new sphere of influence (such as new pact or group), and are praised by these new people. If they embrace this new fame and accolades however it will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test, only caution and focus on their task at hand will instead add a Success Level."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Dragon Leaps Pond): Mirror the internal state described in the commentary: \"A place of transition has been reached, and free choice can enter in. A twofold possibility is presented to the great man: he can soar to the heights and play an important part in the world, or he can withdraw into solitude and develop himself. He...\" Your actions should be framed by the goal: you concentrate on the details, small steps, little picture, or use gentle persuasion.",
+        "Plot": "Plot Complication Line 4 (Dragon Leaps Pond): Introduce a challenge based on the interpretation: \"A place of transition has been reached, and free choice can enter in. A twofold possibility is presented to the great man: he can soar to the heights and play an important part in the world, or he can withdraw into solitude and develop himself. He...\" The specific quest objective for this stage is: The Quester is offered a choice, on the one path they will become stronger physically by engaging the opposition, or they may withdraw from the opposition and they will grow mentally or spiritually. Neither path adds Successes or Failures."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Dragon Flying): Mirror the internal state described in the commentary: \"Here the great man has attained the sphere of the heavenly beings. His influence spreads and becomes visible throughout the whole world. Everyone who sees him may count himself blessed. Confucius says about this line:\n\nThings that accord in tone...\" Your actions should be framed by the goal: you act boldly, immediately or confidently.",
+        "Plot": "Plot Complication Line 5 (Dragon Flying): Introduce a challenge based on the interpretation: \"Here the great man has attained the sphere of the heavenly beings. His influence spreads and becomes visible throughout the whole world. Everyone who sees him may count himself blessed. Confucius says about this line:\n\nThings that accord in tone...\" The specific quest objective for this stage is: The Quester who is bold and daring will add a Success Level to their Test or Ordeal, those who hide or use cunning will add a Failure Level, Obstacle or Hurdle instead."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Haughty Dragon): Mirror the internal state described in the commentary: \"When a man seeks to climb so high that he loses touch with the rest of mankind, he becomes isolated, and this necessarily leads to failure. This line warns against titanic aspirations that exceed one's power. A precipitous fall would follow.\nWhen...\" Your actions should be framed by the goal: whenever you mock yourself, or rely on the help of others.",
+        "Plot": "Plot Complication Line 6 (Haughty Dragon): Introduce a challenge based on the interpretation: \"When a man seeks to climb so high that he loses touch with the rest of mankind, he becomes isolated, and this necessarily leads to failure. This line warns against titanic aspirations that exceed one's power. A precipitous fall would follow.\nWhen...\" The specific quest objective for this stage is: The Quester who takes themselves too seriously, is haughty or bragging will add a Failure Level, Obstacle or Hurdle to their Test or Ordeal. The Quester who is self-depreciating will instead add a Success Level."
+      }
+    }
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 24,
+    "Name": "Returning",
+    "Entity": "&#19927;",
+    "Logical": 1,
+    "Trigrams": [
+      3,
+      7
+    ],
+    "Hexagram_Text": "Fu, Returning (or just Return), is the Hexagram that sometimes warns us to turn around and go back, or more often that something from our past is returning. Everything proceeds in cycles, Fu shows us this, with a return. Just as the sun begins to return the light after the darkness of the winter solstice or dawn, what has left will return, and if we have made a false start, it is good to return to the start line. It is the Hexagram of second chances and third times the charm, it teaches us to never give up and to try, try again.",
+    "Unchanging": "You may regenerate and Discard all Wounds for a Chi cost equal to the Pips of the largest Wound.",
+    "Line1": "False Starts",
+    "Line2": "Quiet Return",
+    "Line3": "Repeated Returns",
+    "Line4": "Returns Alone",
+    "Line5": "Noble Return",
+    "Line6": "Missed Return"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you do something you have done before",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "in any Test or situation if you will not be able to try again after failure",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "you reload a Chronolith or restart a project or journey",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yang",
+        "Condition": "you accept help, or advice",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yang",
+        "Condition": "you show bravery, or apprehension, keep your true intentions secret, and stay firm in your decisions",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yang",
+        "Condition": "you try to offend others, or are alone",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you act noble, confess your faults, or make excuses",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yang",
+        "Condition": "you are late, get lost, or you dislike a change",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "Returning Quests are often based on old Quests or Characters returning. A Quester may return to a place they have been before to engage in a new Quest there, or the Opposition from a previous Quest may reappear engaging in a new Quest themselves, or this Quest may represent the return of light after darkness, health after illness or the return of lost friends (or lost items). However, things that return are always changed somehow from their first appearance, they may be broken, damaged and in need of care and nurturing, or they may be hardened, made crueller, more callous, seasoned compared to their first encounter.",
+    "Quest_Complete": "When a Quest ends in the Returning Hexagram, it is usually a sign that things at the end of the Quest are returned to how they began. The Quest may be completed, but somehow is reset, ready to be done again one day. The most extreme example of this is a \"Temporal Loop\" or \"Ground-hog Day\", where the Quester is literally trapped in a single closed time-like loop, that must be broken to return themselves to normal time (and maybe discover how to manipulate time themselves). More normally, this is simply that the situation at the end of the Quest is very similar to that at the beginning with only a minor difference (in that the Quester learnt something).",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "Something has already gone wrong for the Quester, adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test. However, if the Quester circles back, or abandons this attempt and starts again with precautions in place (especially by reloading a Chronolith), then they will add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester suffers an additional Hurdle, Obstacle or Failure Level one their Ordeal or Test as a decision complicates the Quest. If the Quester takes help or advice offered by a wise and compassionate character, this advice will grant them an additional Success Level on their Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The circumstances around the Quester change, which may make them insecure and cause them to doubt their previous decisions. If the Quester changes their mind (u-turning or worse flip-flopping in indecision) then each change of mind or direction adds a Hurdle, Obstacle or Failure Level to the Ordeal or Test. If the Quester has made the correct decision and sticks to that, then they will add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester who is surrounded by companions will receive lots of advice from these companions, each will have an opinion on how best to proceed. In this instance, only one companion has the correct advice that will add a Success Level to the Quester&#39;s Test or Ordeal, all other advice offered will instead add a Failure Level, Obstacle or Hurdle to their Test or Ordeal if it is followed.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester is returning to a place where they are known, and this usually means that they will face repercussions for decisions they previously made, as they are recognised by the locals and reminded of the mistakes they made, or crimes they committed last time. This adds a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test, unless they confess their short-comings, mistakes or wrong-doings and apologize to those who believe they wronged by, which will instead add a Success Level. However, if the Quester tries to make excuses (for their mistakes, crimes, performance or behaviour) then they add another Hurdle, Obstacle, or Failure Level each time.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The time for return has passed, and now it is too late somehow. Perhaps the Quester finally braves the dark keep, only to find the enemy army has already marched, or the Quester rushes forth to defend a pass, only to hear reports later that the enemy are already in the lands behind them. Or perhaps the Quester eventually returns home after the war to find the town in ruins. For whatever reason, the Quest becomes meaningless and there is no point to continuing this Quest, instead the Quester should move straight into the next Quest. Trying to continue this Quest is blind obstinacy and adds a Failure Level, Obstacle or Hurdle automatically (to a meaningless Test or Ordeal at this point).",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "The idea of a turning point arises from the fact that after the dark lines have pushed all of the light lines upward and out of the hexagram, another light line enters the hexagram from below. The time of darkness is past. The winter solstice brings the victory of light. This hexagram is linked with the eleventh month, the month of the solstice (December-January).",
+    "The_Image": {
+      "text": "Thunder within the earth:\nThe image of THE TURNING POINT.\nThus the kings of antiquity closed the passes\nAt the time of solstice.\nMerchants and strangers did not go about,\nAnd the ruler\nDid not travel through the provinces.",
+      "comments": "The winter solstice has always been celebrated in China as the resting time of the year--a custom that survives in the time of rest observed at the new year. In winter the life energy, symbolized by thunder, the Arousing, is still underground. Movement is just at its beginning; therefore it must be strengthened by rest so that it will not be dissipated by being used prematurely. This principle, i.e., of allowing energy that is renewing itself to be reinforced by rest, applies to all similar situations. The return of health after illness, the return of understanding after an estrangement: everything must be treated tenderly and with care at the beginning, so that the return may lead to a flowering."
+    },
+    "The_Judgment": {
+      "text": "RETURN. Success.\nGoing out and coming in without error.\nFriends come without blame.\nTo and fro goes the way.\nOn the seventh day comes return.\nIt furthers one to have somewhere to go.",
+      "comments": "After a time of decay comes the turning point. The powerful light that has been banished returns. There is movement, but it is not brought about by force. The upper trigram K'un is characterized by devotion; thus the movement is natural, arising spontaneously. For this reason the transformation of the old becomes easy. The old is discarded and the new is introduced. Both measures accord with the time; therefore no harm results. Societies of people sharing the same views are formed. But since these groups come together in full public knowledge and are in harmony with the time, all selfish separatist tendencies are excluded, and no mistake is made. The idea of RETURN is based on the course of nature. The movement is cyclic, and the course completes itself. Therefore it is not necessary to hasten anything artificially. Everything comes of itself at the appointed time. This is the meaning of heaven and earth. All movements are accomplished in six stages, and the seventh brings return. Thus the winter solstice, with which the decline of the year begins, comes in the seventh month after the summer solstice; so too sunrise comes in the seventh double hour after sunset. Therefore seven is the number of the young light, and it arises when six, the number of the great darkness, is increased by one. In this way the state of rest gives place to movement."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Return from a short distance.\nNo need for remorse.\nGreat good fortune.",
+        "comments": "Slight digressions from the good cannot be avoided, but one must turn back in time, before going too far. This is especially important in the development of character; every faintly evil thought must be put aside immediately, before it goes too far and takes root in the mind. Then there is no cause for remorse, and all goes well."
+      },
+      "2": {
+        "text": "Quiet return. Good fortune.",
+        "comments": "Return always calls for a decision and is an act of self-mastery. It is made easier if a man is in good company. If he can bring himself to put aside pride and follow the example of good men, good fortune results."
+      },
+      "3": {
+        "text": "Repeated return. Danger. No blame.",
+        "comments": "There are people of a certain inner instability who feel a constant urge to reverse themselves. There is danger in continually deserting the good because of uncontrolled desires, then turning back to it again because of a better resolution. However, since this does not lead to habituation in evil, a general inclination to overcome the defect is not wholly excluded/"
+      },
+      "4": {
+        "text": "Walking in the midst of others,\nOne returns alone.",
+        "comments": "A man is in a society composed of inferior people, but is connected spiritually with a strong and good friend, and this makes him turn back alone. Although nothing is said of reward and punishment, this return is certainly favorable, for such a resolve to choose the good brings its own reward."
+      },
+      "5": {
+        "text": "Noblehearted return. No remorse.",
+        "comments": "When the time for return has come, a man should not take shelter in trivial excuses, but should look within and examine himself. And if he has done something wrong he should make a noblehearted resolve to confess his fault. No one will regret having taken this road."
+      },
+      "6": {
+        "text": "Missing the return. Misfortune.\nMisfortune from within and without.\nIf armies are set marching in this way,\nOne will in the end suffer a great defeat,\nDisastrous for the ruler of the country.\nFor ten years\nIt will not be possible to attack again.",
+        "comments": "If a man misses the right time for return, he meets with misfortune. The misfortune has its inner cause in a wrong attitude toward the world. The misfortune coming upon him for without results from this wrong attitude. What is pictured here is blind obstinacy and the judgment that is visited upon it."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Returning'. Internalize this core philosophy: The idea of a turning point arises from the fact that after the dark lines have pushed all of the light lines upward and out of the hexagram, another light line enters the hexagram from below. The time of darkness is past. The winter solstice brings the victory of light. This hexagram is linked with the eleventh month, the month of the solstice (December-January). Your current worldview is: \"Fu, Returning (or just Return), is the Hexagram that sometimes warns us to turn around and go back, or more often that something from our past is returning. Everything proceeds in cycles, Fu shows us this, with a return. Just as the sun begins to return the light after the darkness of the winter solstice or dawn, what has left will return, and if we have made a false start, it is good to return to the start line. It is the Hexagram of second chances and third times the charm, it teaches us to never give up and to try, try again.\". Let your choices be subtly driven by these conditions: you do something you have done before, in any Test or situation if you will not be able to try again after failure. When interacting, mirror the wisdom found in the commentary: \"After a time of decay comes the turning point. The powerful light that has been banished returns. There is movement, but it is not brought about by force. The upper trigram K'un is characterized by devotion; thus the movement is natural, arising spontaneously. For this reason the transformation of...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Returning'. The primary quest objective is: Returning Quests are often based on old Quests or Characters returning. A Quester may return to a place they have been before to engage in a new Quest there, or the Opposition from a previous Quest may reappear engaging in a new Quest themselves, or this Quest may represent the return of light after darkness, health after illness or the return of lost friends (or lost items). However, things that return are always changed somehow from their first appearance, they may be broken, damaged and in need of care and nurturing, or they may be hardened, made crueller, more callous, seasoned compared to their first encounter.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: The winter solstice has always been celebrated in China as the resting time of the year--a custom that survives in the time of rest observed at the new year. In winter the life energy, symbolized by thunder, the Arousing, is still underground. Movement is just at its beginning; therefore it must be strengthened by rest so that it will not be dissipated by being used prematurely. This principle,... Use the following line-specific challenges to pace the story: Something has already gone wrong for the Quester, adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test. However, if the Quester circles back, or abandons this attempt and starts again with precautions in place (especially by reloading a Chronolith), then they will add a Success Level instead. | The Quester suffers an additional Hurdle, Obstacle or Failure Level one their Ordeal or Test as a decision complicates the Quest. If the Quester takes help or advice offered by a wise and compassionate character, this advice will grant them an additional Success Level on their Test or Ordeal. | The circumstances around the Quester change, which may make them insecure and cause them to doubt their previous decisions. If the Quester changes their mind (u-turning or worse flip-flopping in indecision) then each change of mind or direction adds a Hurdle, Obstacle or Failure Level to the Ordeal or Test. If the Quester has made the correct decision and sticks to that, then they will add a Success Level instead. | The Quester who is surrounded by companions will receive lots of advice from these companions, each will have an opinion on how best to proceed. In this instance, only one companion has the correct advice that will add a Success Level to the Quester&#39;s Test or Ordeal, all other advice offered will instead add a Failure Level, Obstacle or Hurdle to their Test or Ordeal if it is followed. | The Quester is returning to a place where they are known, and this usually means that they will face repercussions for decisions they previously made, as they are recognised by the locals and reminded of the mistakes they made, or crimes they committed last time. This adds a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test, unless they confess their short-comings, mistakes or wrong-doings and apologize to those who believe they wronged by, which will instead add a Success Level. However, if the Quester tries to make excuses (for their mistakes, crimes, performance or behaviour) then they add another Hurdle, Obstacle, or Failure Level each time. | The time for return has passed, and now it is too late somehow. Perhaps the Quester finally braves the dark keep, only to find the enemy army has already marched, or the Quester rushes forth to defend a pass, only to hear reports later that the enemy are already in the lands behind them. Or perhaps the Quester eventually returns home after the war to find the town in ruins. For whatever reason, the Quest becomes meaningless and there is no point to continuing this Quest, instead the Quester should move straight into the next Quest. Trying to continue this Quest is blind obstinacy and adds a Failure Level, Obstacle or Hurdle automatically (to a meaningless Test or Ordeal at this point).",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (False Starts): Mirror the internal state described in the commentary: \"Slight digressions from the good cannot be avoided, but one must turn back in time, before going too far. This is especially important in the development of character; every faintly evil thought must be put aside immediately, before it goes too far...\" Your actions should be framed by the goal: you reload a Chronolith or restart a project or journey.",
+        "Plot": "Plot Complication Line 1 (False Starts): Introduce a challenge based on the interpretation: \"Slight digressions from the good cannot be avoided, but one must turn back in time, before going too far. This is especially important in the development of character; every faintly evil thought must be put aside immediately, before it goes too far...\" The specific quest objective for this stage is: Something has already gone wrong for the Quester, adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test. However, if the Quester circles back, or abandons this attempt and starts again with precautions in place (especially by reloading a Chronolith), then they will add a Success Level instead."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Quiet Return): Mirror the internal state described in the commentary: \"Return always calls for a decision and is an act of self-mastery. It is made easier if a man is in good company. If he can bring himself to put aside pride and follow the example of good men, good fortune results.\" Your actions should be framed by the goal: you accept help, or advice.",
+        "Plot": "Plot Complication Line 2 (Quiet Return): Introduce a challenge based on the interpretation: \"Return always calls for a decision and is an act of self-mastery. It is made easier if a man is in good company. If he can bring himself to put aside pride and follow the example of good men, good fortune results.\" The specific quest objective for this stage is: The Quester suffers an additional Hurdle, Obstacle or Failure Level one their Ordeal or Test as a decision complicates the Quest. If the Quester takes help or advice offered by a wise and compassionate character, this advice will grant them an additional Success Level on their Test or Ordeal."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Repeated Returns): Mirror the internal state described in the commentary: \"There are people of a certain inner instability who feel a constant urge to reverse themselves. There is danger in continually deserting the good because of uncontrolled desires, then turning back to it again because of a better resolution. However,...\" Your actions should be framed by the goal: you show bravery, or apprehension, keep your true intentions secret, and stay firm in your decisions.",
+        "Plot": "Plot Complication Line 3 (Repeated Returns): Introduce a challenge based on the interpretation: \"There are people of a certain inner instability who feel a constant urge to reverse themselves. There is danger in continually deserting the good because of uncontrolled desires, then turning back to it again because of a better resolution. However,...\" The specific quest objective for this stage is: The circumstances around the Quester change, which may make them insecure and cause them to doubt their previous decisions. If the Quester changes their mind (u-turning or worse flip-flopping in indecision) then each change of mind or direction adds a Hurdle, Obstacle or Failure Level to the Ordeal or Test. If the Quester has made the correct decision and sticks to that, then they will add a Success Level instead."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Returns Alone): Mirror the internal state described in the commentary: \"A man is in a society composed of inferior people, but is connected spiritually with a strong and good friend, and this makes him turn back alone. Although nothing is said of reward and punishment, this return is certainly favorable, for such a...\" Your actions should be framed by the goal: you try to offend others, or are alone.",
+        "Plot": "Plot Complication Line 4 (Returns Alone): Introduce a challenge based on the interpretation: \"A man is in a society composed of inferior people, but is connected spiritually with a strong and good friend, and this makes him turn back alone. Although nothing is said of reward and punishment, this return is certainly favorable, for such a...\" The specific quest objective for this stage is: The Quester who is surrounded by companions will receive lots of advice from these companions, each will have an opinion on how best to proceed. In this instance, only one companion has the correct advice that will add a Success Level to the Quester&#39;s Test or Ordeal, all other advice offered will instead add a Failure Level, Obstacle or Hurdle to their Test or Ordeal if it is followed."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Noble Return): Mirror the internal state described in the commentary: \"When the time for return has come, a man should not take shelter in trivial excuses, but should look within and examine himself. And if he has done something wrong he should make a noblehearted resolve to confess his fault. No one will regret having...\" Your actions should be framed by the goal: you act noble, confess your faults, or make excuses.",
+        "Plot": "Plot Complication Line 5 (Noble Return): Introduce a challenge based on the interpretation: \"When the time for return has come, a man should not take shelter in trivial excuses, but should look within and examine himself. And if he has done something wrong he should make a noblehearted resolve to confess his fault. No one will regret having...\" The specific quest objective for this stage is: The Quester is returning to a place where they are known, and this usually means that they will face repercussions for decisions they previously made, as they are recognised by the locals and reminded of the mistakes they made, or crimes they committed last time. This adds a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test, unless they confess their short-comings, mistakes or wrong-doings and apologize to those who believe they wronged by, which will instead add a Success Level. However, if the Quester tries to make excuses (for their mistakes, crimes, performance or behaviour) then they add another Hurdle, Obstacle, or Failure Level each time."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Missed Return): Mirror the internal state described in the commentary: \"If a man misses the right time for return, he meets with misfortune. The misfortune has its inner cause in a wrong attitude toward the world. The misfortune coming upon him for without results from this wrong attitude. What is pictured here is blind...\" Your actions should be framed by the goal: you are late, get lost, or you dislike a change.",
+        "Plot": "Plot Complication Line 6 (Missed Return): Introduce a challenge based on the interpretation: \"If a man misses the right time for return, he meets with misfortune. The misfortune has its inner cause in a wrong attitude toward the world. The misfortune coming upon him for without results from this wrong attitude. What is pictured here is blind...\" The specific quest objective for this stage is: The time for return has passed, and now it is too late somehow. Perhaps the Quester finally braves the dark keep, only to find the enemy army has already marched, or the Quester rushes forth to defend a pass, only to hear reports later that the enemy are already in the lands behind them. Or perhaps the Quester eventually returns home after the war to find the town in ruins. For whatever reason, the Quest becomes meaningless and there is no point to continuing this Quest, instead the Quester should move straight into the next Quest. Trying to continue this Quest is blind obstinacy and adds a Failure Level, Obstacle or Hurdle automatically (to a meaningless Test or Ordeal at this point)."
+      }
+    }
+  }
+}

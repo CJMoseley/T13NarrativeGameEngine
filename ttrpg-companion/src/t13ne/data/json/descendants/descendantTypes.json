@@ -1,0 +1,269 @@
+{
+  "Raw": [
+    {
+      "Type": "Prop",
+      "Description": "A simple physical Descendant, such as a tool, weapon or vehicle.",
+      "Annex_Limit": "1",
+      "Costing": "Annex Boon in Chi + Annex Type Chi Cost (+2 Skill, +5 Talent, +7 Power, +12 Super-Skill) + 1 Chi for each Proficiency + Nimbed Boons - Umbral Boons - Hitch Boons.",
+      "Cost": "+1"
+    },
+    {
+      "Type": "Learning",
+      "Description": "A simple non-physical Descendant, such as any training, education or studying the Character may have done or received.",
+      "Annex_Limit": "1",
+      "Costing": "Annex Boon in Chi + Annex Type Chi Cost (+2 Skill, +5 Talent, +7 Power, +12 Super-Skill) + 1 Chi for each Proficiency + Nimbed Boons - Umbral Boons - Hitch Boons.",
+      "Cost": 2
+    },
+    {
+      "Type": "Reputation",
+      "Description": "A simple non-physical Descendant, that aren’t necessarily learned, and may include abilities that are added by the Plot. In many ways a Reputation is the simplest Lore. In some cases Reputations may have an \"Unearned\"  Hitch...",
+      "Annex_Limit": "1",
+      "Costing": "Annex Boon in Chi + Annex Type Chi Cost (+2 Skill, +5 Talent, +7 Power, +12 Super-Skill) + 1 Chi for each Proficiency + Nimbed Boons - Umbral Boons - Hitch Boons.",
+      "Cost": 2
+    },
+    {
+      "Type": "Place",
+      "Description": "A simple Location Descendant, such as a room, building or outdoor spot that doesn't have much in the way of decoration or complexity. A Place is a Location with a Size Annex and one descriptive Annex.",
+      "Annex_Limit": "2",
+      "Costing": "Size in Chi + 12 Chi (Location modifier) + Other Annex Boons Reduced + 1 Chi for each Proficiency +Nimbed Boons - Umbral Boons - Hitch Boons.",
+      "Cost": 12
+    },
+    {
+      "Type": "Partnership",
+      "Description": "A simple Club Pact Descendant, such as a Partnership or game Party. Partnerships have only 1 level that all members share. These are Skill Annexes in essence.",
+      "Annex_Limit": "1",
+      "Costing": "14 Chi (Pact)+ 2 (Skill) + Pact Boon (Highest Character Type Yarn Cost + Membership Yarn Cost)",
+      "Cost": 16
+    },
+    {
+      "Type": "Complex Descendant",
+      "Description": "A complex Descendant, has multiple Annexes",
+      "Annex_Limit": "1 Master Annex + upto Master Annex Boon Reduced Sub-Annexes",
+      "Costing": "Master Annex Boon in Chi + Master Annex Type Chi Cost (+5 Talent, +7 Power, +12 Super-Skill) + 1 Chi for each Proficiency + Master Nimbed Boons - Master Umbral Boons - Hitch Boons + (for each Sub-Annex) Reduced (Sub-Annex Boon + Sub Annex Type (+2 Skill, +5 Talent, +7 Power, +12 Super-Annex) +1 each Umbral or Nimbed Proficiency + Sub-Annex Nimbed Boons - Sub-Annex Umbral Boons) ",
+      "Cost": 5
+    },
+    {
+      "Type": "Extra",
+      "Description": "Extras are the simplest of Characters, usually reserved for NPCS and perhaps <q>unimportant</q> Alternates (such as captured Bulm&auml;s Souls).",
+      "Annex_Limit": "Master Annex Boon + Master Annex Boon Reduced Sub-Annexes",
+      "Costing": "Master Annex Boon in Chi + Master Extra Type Chi Cost (+5 Chorus , +7 Force-of-Nature (Power), +12 Force-of-Nature (Super-Skill) ) + 1 Chi for each Master Umbral or Master Nimbed Proficiency + Master Nimbed Boons - Master Umbral Boons - Hitch Boons + (for each Sub-Annex) Reduced (Sub-Annex Boon + Sub Annex Type (+2 Skill, +5 Talent, +7 Power) +1 each Umbral or Nimbed Proficiency + Sub-Annex Nimbed Boons - Sub-Annex Umbral Boons)",
+      "Cost": 2
+    },
+    {
+      "Type": "Important Location",
+      "Description": "Important Locations are Complex Locations, and pretty much a Standard Complex Descendant (with a Size Annex as the Master Annex).",
+      "Annex_Limit": "Size Annex Boon + Size Annex Boon Reduced Sub-Annexes",
+      "Costing": "Size Annex Boon in Chi + 12 Chi (Location)) - Hitch Boons + (for each Sub-Annex) Reduced (Sub-Annex Boon + Sub Annex Type (+2 Skill, +5 Talent, +7 Power) +1 each Umbral or Nimbed Proficiency + Sub-Annex Nimbed Boons - Sub-Annex Umbral Boons)",
+      "Cost": 12
+    },
+    {
+      "Type": "Guild Pact",
+      "Description": "A Complex, Guild Pact Descendant membership, such as professional membership of a Guild, Company, or similar. This can also represent a privileged middle-class position within a racial or national Pact. Guild Pacts have multiple Annexes with a Talent Master Annex at this level of membership",
+      "Annex_Limit": "Talent Boon Reduced",
+      "Costing": "14 Chi (Pact) + 5 (Talent) + Pact Boon (Highest Character Type Yarn Cost + Membership Yarn Cost) &times; Pact Level",
+      "Cost": 19
+    },
+    {
+      "Type": "Distinction Lore",
+      "Description": "The simplest and least powerful Lores, created by 2-3 Revelation Cards. Generally limited to Talents as Master Annex (at best). Limited to quirk Hitches.",
+      "Annex_Limit": "Master Annex + (Master Annex Reduced) Sub-Annexes",
+      "Costing": "As Standard generally, but are handed out by Plots and Yarn manipulations.",
+      "Cost": 0
+    },
+    {
+      "Type": "Executive Pact",
+      "Description": "A Complex, Executive Pact Descendant membership, such as the managers of a Company may have, or can represent a lesser leadership role (such as minor aristocracy, or local council membership, within a racial or national Pact. Executive Pacts have multiple Annexes with a Power Master Annex at this level of membership",
+      "Annex_Limit": "Power Boon Reduced",
+      "Costing": "14 Chi (Pact) + 7 (Talent) + Pact Boon (Highest Character Type Yarn Cost + Membership Yarn Cost) &times; Pact Level",
+      "Cost": 21
+    },
+    {
+      "Type": "Courtier Pact",
+      "Description": "A Complex, Courtier Pact Descendant membership, represents leadership of large pacts such as nations. Guild Pacts have multiple Annexes with a Talent Super-Annex Annex at this level of membership",
+      "Annex_Limit": "Super-Annex Boon Reduced",
+      "Costing": "14 Chi (Pact) + 12 (Super-Annex) + Pact Boon (Highest Character Type Yarn Cost + Membership Yarn Cost) &times; Pact Level",
+      "Cost": 26
+    },
+    {
+      "Type": "Belonging",
+      "Description": "A simple Skill Pact Descendant, that represents being a member of a race or nation Pact (these are huge Pacts, but this is the lowest tier). These are Skill Annexes in essence.",
+      "Annex_Limit": "1",
+      "Costing": "14 Chi (Pact)+ 2 (Skill) + Pact Boon (Highest Character Type Yarn Cost + Membership Yarn Cost)",
+      "Cost": 16
+    },
+    {
+      "Type": "Reputation Lore",
+      "Description": "More powerful Lores, created by 2-8 Revelation Cards. Generally limited to Talents or Powers as Master Annex (at best). May have quirk or Flaw Hitches",
+      "Annex_Limit": "Master Annex + (Master Annex Reduced) Sub-Annexes",
+      "Costing": "As Standard generally, but are handed out by Plots and Yarn manipulations.",
+      "Cost": 0
+    },
+    {
+      "Type": "Legend Lore",
+      "Description": "The most powerful Lores, created by at least 4 Revelation Cards. Legend Lores can create Super-Annexes, Powers, Talents and Skills, as well as quirk, Flaw and Woe Hitches as required by the Plot or Yarn-Teller.",
+      "Annex_Limit": "Master Annex + (Master Annex Reduced) Sub-Annexes",
+      "Costing": "As Standard generally, but are handed out by Plots and Yarn manipulations.",
+      "Cost": 0
+    }
+  ],
+  "Commonality": [
+    {
+      "Type": "Ubiquitous",
+      "Description": "Found literally everywhere, like stones generally, or computers in a Cyberpunk setting. Ubiquitous Pacts typically include the Pacts that Characters are automatically born into, like their citizenship, nationality or species.",
+      "Cost_Modifier": "Base Cost is paid in Banal Tao Sway."
+    },
+    {
+      "Type": "Everyday",
+      "Description": "As common as cutlery, a coffee mug, or a daily newspaper. Everyday Pacts are usually memberships of particular social media platforms, or the readership of a particular daily paper, however the most common one is membership of a huge world religion, such as Islam, Hinduism, Buddhism or Christianity.",
+      "Cost_Modifier": "Base Cost paid in Intrepid Facet Sway."
+    },
+    {
+      "Type": "Common",
+      "Description": "At one time the Knife, or Cooking were common, most people had them, these days a mobile phone or a car are Common. Common Pacts will obviously vary greatly by setting, in a fantasy setting, your Class Guild would be a Common Membership, in the modern day it might mean a membership to a particular big international charity organization, a smaller world religion such as Sikhism, Judaism, or Zoroastrianism, or working for a huge multi-national company.",
+      "Cost_Modifier": "Base Cost is paid in Chi or Bold Facet Sway."
+    },
+    {
+      "Type": "Uncommon",
+      "Description": "Not everyone owns one, in medieval times Armour and Swords were around this Commonality, these days a high specification PC, a sports car, or military equipment is this common. Uncommon Pacts are usually the powerful political party memberships, big national chains, international fan clubs, or religions that are not common to the area although they may be more common elsewhere, like African and Asian \"Ethnic\" religions such as Shinto, Shamanism, Bantu, San, Akan, Edo religions, etc, Rastafarianism and generic Neopaganism are also around here.",
+      "Cost_Modifier": "Base Cost &times; 2 is paid in Chi or Bold Facet Sway."
+    },
+    {
+      "Type": "Rare",
+      "Description": "Rare objects are extremely expensive, and difficult to source, but are still mass produced objects. In medieval times such objects included Jewellery, field plate armour and even clocks. In the modern era, Super-cars, Jet-liners and pre-production test models are around this Commonality. For Pacts Rare means exclusivity, these may include small sects, secret clubs and societies, a membership of a Coven or particular church may fall at this level.",
+      "Cost_Modifier": "Base Cost &times; 3 is paid in Chi or Bold Facet Sway"
+    },
+    {
+      "Type": "Unique",
+      "Description": "Truly one of a kind. These are Artisanal masterpieces, uniquely designed, fitted, tailored, they are usually irreplaceable, and utterly personal. Prototypes and Crown Jewels usually fall into this commonality. Unique Pacts can be tricky to define, as a lot of Pacts are unique, by virtue of their membership being unique, but a truly one of a kind Pact is usually either secretive to the point of obscurity, but powerful, or infamous, but exclusive (and often still powerful). These are societies that hand-pick new members, and always have some strange reason for existing, and often have a cause they are working towards.",
+      "Cost_Modifier": "Base Cost is paid in Yarn (or Value Chi)."
+    }
+  ],
+  "State": [
+    {
+      "Type": "Junk",
+      "Description": "Found literally lying around, it is probably broken. Junk generally has at least one Mortal+ wound, already. A Junk Pact is one that no one wants to join, but that some people end up in, examples mostly include the most severely oppressed minorities.",
+      "Cost_Modifier": "Base Cost is Reduced (to a minimum of the Type Cost)."
+    },
+    {
+      "Type": "Battered",
+      "Description": "This Descendant is probably already damaged. You might get a few more cautious uses out of it. Battered Descendants usually have at least one  Crippling Wound that stops a Sub-Annex from working. Battered Pacts are typically oppressed minorities, or self-selected outcast groups, they are often viewed with suspicion or pity.",
+      "Cost_Modifier": "Base Cost is halved."
+    },
+    {
+      "Type": "Dirty",
+      "Description": "Sure, it could be cleaner, but it works fine, mostly. Okay, so it may be a bit... eh... glitchy or something... Dirty Descendants usually have at least one Maiming Wound usually on a Sub-Annex. Dirty Pacts are looked down on by others, usually because of some criminal activity in the past or other unsavoury nonsense. A lot of religious groups end up in this state after they become associated with repeated scandals and abusive crimes.",
+      "Cost_Modifier": "Base Cost -8 (to a minimum of the Type Cost)."
+    },
+    {
+      "Type": "Like New",
+      "Description": "Reconditioned, Second Hand, polished up and looks okay. Everything should work, although it might not have the battery life, or range it once had. Like New Descendants generally have at least one Flesh Wound on a Sub-Annex. A Like New Pact is usually one that has undergone a rebranding, some people may remember the bad old days, but most are willing to move past the past and look to the future of the group. Occasionally a newer group may fall to this level after a little while, not due to any scandals or even suspicions, but simply due to a lack of awareness.",
+      "Cost_Modifier": "Base Cost -5 (to a minimum of the Type Cost)."
+    },
+    {
+      "Type": "Pristine",
+      "Description": "Literally straight out of the box. It works perfectly and doesn’t have a single scratch, yet. Pristine Descendants have no Wounds. Pristine Pacts are typically brand new groups, companies and organisations, they haven’t had time to create or garner bad publicity, and usually little good publicity either, beyond whatever the PR department arranged for the opening.",
+      "Cost_Modifier": "Base Cost unmodified."
+    },
+    {
+      "Type": "Collector’s-Piece",
+      "Description": "Not only is this still perfect, but it is either a special edition, or just a perfect example. It might be older, but the owner’s manual has been followed to the letter. If you continue to look after it, it will continue to work for years. Collector’s-piece Pacts are truly rare, very few organisations or companies manage to keep a pristine record, unsullied by previous leaders or public relations disasters, in our world this is is rarely possible, even Pacts that are very respected such as Disney, Apple or the Catholic church have their detractors who know where the bodies are buried.",
+      "Cost_Modifier": "Base Cost &times; 4."
+    }
+  ],
+  "Pact_Reputation": [
+    {
+      "Type": "Null",
+      "Description": "A Null Pact is completely inconsequential, have no purpose, and are often groups created by people standing together. Typically Null Pacts have no members above Tier 0, although some charisma types may automatically purchase Tier 1 or even seize Sovereign status if available. ",
+      "Cost_Modifier": "Base Cost is Reduced (to a minimum of the Type Cost)."
+    },
+    {
+      "Type": "Public",
+      "Description": "A Public Pact lets anyone join the Pact, such Pacts usually have a distinct and stated mission or purpose, a Public Library promotes reading, as well as maintaining a suitable collection of literature and a building suitable for storing them in. Public Pacts are usually not well funded and often rely upon Sway from lower Tiers to support higher Tier membership, in the Library the Librarians are paid by the local taxes usually.",
+      "Cost_Modifier": "Base Cost Halved (&divide; 2)."
+    },
+    {
+      "Type": "Notorious",
+      "Description": "Notorious Pacts have a infamous reputation, people have heard of the Pact, but not for good reasons. In most cases Notorious Pacts are exclusive, for example you must be a criminal to join a criminal gang. Notorious Pacts often have Hitches that help explain the Pact exclusivity such as a Social Hitch that causes members to be persecuted by law-enforcement.",
+      "Cost_Modifier": "Base Cost Three-Quartered (75%) / &divide; 4 &times; 3 (&times; &frac34;)."
+    },
+    {
+      "Type": "Accepted",
+      "Description": "Accepted Pacts are groups that are recognised and accepted by other larger groups. Most clubs and guilds fall into this type, they are accepted by the social structure above them. For example society as a whole accepts most corporations and companies right to exist. Although individual Accepted Pacts may have rivalries and exclusivity with other Pacts, these do not affect the Accepted status.",
+      "Cost_Modifier": "Base Cost Unmodified."
+    },
+    {
+      "Type": "Enterprise",
+      "Description": "Enterprise Pacts are groups that have commercial, political, or military objectives. Such Pacts are usually exclusive in their higher tiers, although they allow clients to have limited low tier access without exclusion. Enterprise Pacts are the pacts of corporations, business, armies and political parties. ",
+      "Cost_Modifier": "Base Cost &times; 2."
+    },
+    {
+      "Type": "Renowned",
+      "Description": "Renowned Pacts have a very good reputation, for whatever it is they do. Such Pacts are necessarily very exclusive, cultivating their membership carefully to maintain that renown. Renowned Pacts will often cast out or exile members who do not live up to the standards of the Pact, and a Character can find their membership revoked, without any return of their investments (although sometimes the Character may be offered some inquisition, tribunal or appeal, and may just be penalised a tier of membership or similar rather than losing all access).",
+      "Cost_Modifier": "Base Cost &times; 3."
+    }
+  ],
+  "Age": [
+    {
+      "Type": "Ancient",
+      "Description": "If this was in any better condition it would be in a museum.",
+      "Cost_Modifier": "Base Cost Halved (&divide; 2)."
+    },
+    {
+      "Type": "Old",
+      "Description": "Sure there’s some spots of rust, and the leather might be a bit worn, but it still works.",
+      "Cost_Modifier": "Base Cost Two-Thirded / &divide; 3 and &times; 2 (&times; &frac23;)."
+    },
+    {
+      "Type": "Not new",
+      "Description": "A few years ago this would have been State of the Art.",
+      "Cost_Modifier": "Base Cost normal."
+    },
+    {
+      "Type": "Last Season",
+      "Description": "\"Why are you still using that model? Don’t you know there’s a new one out?\"",
+      "Cost_Modifier": "Base Cost Doubled (&times; 2)."
+    },
+    {
+      "Type": "Brand New",
+      "Description": "The very latest deluxe model, with all the features and packages. Sure, you can look, but don’t touch.",
+      "Cost_Modifier": "Base Cost Tripled  (&times; 3)."
+    },
+    {
+      "Type": "Anachronistic",
+      "Description": "So new they don’t even make it yet. It might be a an advanced prototype, the work of a genius ahead of his time, or maybe it fell back from the future.",
+      "Cost_Modifier": "Base Cost Quintupled (&times; 5)."
+    }
+  ],
+  "Pact_History": [
+    {
+      "Type": "New",
+      "Description": "When a Pact has basically just formed they have no history, usually not a lot of power or authority, and what they do have, they will often be uncomfortable wielding.",
+      "Cost_Modifier": "Base Cost Halved (&divide; 2)."
+    },
+    {
+      "Type": "Fresh",
+      "Description": "Fresh Pacts are no longer new, but have little track record. Depending what they are they might be a few months or years old, if they are clubs or guild, or a few decades for a society or nation.",
+      "Cost_Modifier": "Base Cost Two-Thirded / &divide; 3 and &times; 2 (&times; &frac23;)."
+    },
+    {
+      "Type": "Established",
+      "Description": "Established Pacts have a history, it may not be the best, or longest, but they certainly have a track record. They are usually still on the rise, although they may have begun to slow that growth.",
+      "Cost_Modifier": "Base Cost Unmodified."
+    },
+    {
+      "Type": "Mature",
+      "Description": "Mature Pacts have a long history, and represent a group at their peak of power and influence. These are long established organisations and nations with enough history to span a few centuries.",
+      "Cost_Modifier": "Base Cost 150% (&times; 1.5)."
+    },
+    {
+      "Type": "Traditional",
+      "Description": "Traditional Pacts are so old that their true origins are long forgotten, and were probably forgotten before anyone thought to ask what they were and write them down, or may be so old that they extend back into pre-history and legends. This is the case for most old world nations, almost all town societies and guilds, and some clubs.",
+      "Cost_Modifier": "Base Cost Doubled (&times; 2)."
+    },
+    {
+      "Type": "Ancient",
+      "Description": "Ancient Pacts are so old that even their traditional phase is long forgotten. These Pacts extend back into depths of time, and even the original meanings of words and rituals will have been completely lost, as that language went extinct long before writing was invented, and yet somehow the Pact continues to exist.",
+      "Cost_Modifier": "Base Cost Tripled (&times; 3)."
+    }
+  ]
+}

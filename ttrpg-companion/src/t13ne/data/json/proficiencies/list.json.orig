@@ -1,0 +1,11 @@
+[
+    {
+        "id": "0",    
+        "prof": {
+            "name": "Spiritual",
+            "description": "The Spiritual Proficiency represents knowledge of the spiritual world, spirits, ancestors, or divine entities. Characters with this proficiency often believe they can communicate with spirits, whether genre appropriate or not.",
+            "facet": "0",
+            "tags": {"scope": ["1"], "genre": ["1"], "era": ["1"], "type": ["32"]}   
+        }
+    }
+]

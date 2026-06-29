@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 46,
+    "Name": "Ascending",
+    "Entity": "&#19949;",
+    "Logical": 6,
+    "Trigrams": [
+      4,
+      7
+    ],
+    "Hexagram_Text": "Shêng, Ascending (or Pushing Upward), is another growth Hexagram, this is the exertion that one must make to get to the top of a cliff, or a social structure. Climbing, rising and flying are all examples of the power of Shêng. It warns us that anything worth reaching for is going to take time to achieve, and that we have to push upward to get there.",
+    "Unchanging": "Once per Session / Chapter / Episode you may add Incarna Value to any Roll, or Incarna Boon Pips to any Ordeal Card.",
+    "Line1": "Ascending Confidently",
+    "Line2": "Ascending the Pyramid",
+    "Line3": "Ascending to an Empty Floor",
+    "Line4": "King&#39;s Sacrifice atop Pyramid",
+    "Line5": "Ascending by a Stream",
+    "Line6": "Ascending in Darkness"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you roll above average, are flexible or adaptable, move up or climb",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you encounter an Obstacle or Hurdle",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yang",
+        "Condition": "you approach a goal directly",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yin",
+        "Condition": "act odd, speak bluntly, or you pay an Umbral Sacrifice, receive a Flesh Wound or worse",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yin",
+        "Condition": "you notice something is missing, or enter an empty room",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yang",
+        "Condition": "you make any sacrifice, pay any cost, or participate in any Test or Ordeal",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you are calm, out of breath, wet, or slip",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yang",
+        "Condition": "you roll below average, stumble, or are careful",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Ascending Quest describes a situation where the Quester can climb a social, political, rank or even physical ladder. This climb is intended to be an active struggle, with the Difficulty and Stakes climbing steadily throughout the Quest. The Quester may have to face a power imbalance, violence, or demonstrate strong perseverance in order to proceed.",
+    "Quest_Complete": "The Quest that ends in the Ascending Hexagram indicates the Quest has a final Test or Ordeal, where the Quester is offered a moment to grow, or at least demonstrate the growth that they have already achieved. This growth is often a gain of a Proficiency, Annex, or an alternate personality, although they may also Resolve a Hitch. The Test or Ordeal may reflect their prize, but often will not.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester is just beginning their Quest and they are like a walker starting to climb a hill, confidently facing their goals will add a Success Level, as those atop the hill may look down and admire the confidence of those just beginning their climb. Distraction from their goals, indecision or a lack of confidence will add a Failure Level, Hurdle or Obstacle to the Test or Ordeal , as those above can clearly watch these deviations.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester is directly challenged, something about their behaviour or appearance is singled out as strange or odd by one of the characters. If the Quester tries to blend in, change their appearance, or alter this behaviour then they will add a Failure Level, Obstacle or Hurdle to the Test or Ordeal. If they are honest, sincere, or pay a small sacrifice then add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The Quester has reached an area where their progress is inherently easier, but there are no gains to be made. All Obstacles are removed from any Ordeal that may be attempted (although they will instead be added to the next Ordeal the Quester encounters), but the Success of this Test or Ordeal is worthless to the Quester in meeting their eventual goals anyway. The barriers are removed, but unless momentum carries the Quester forward no progress can be made.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester is honoured by an authority, this honour may often add a Duty, Devotion or Taboo Hitch to the Quester, which can be seen as a sacrifice. This honour will often include a promotion, increase in popularity, money, land, power or a similar change in rank. This was usually the Quester&#39;s immediate goal (although it may not exactly be the Quest goal always), and they have achieved it early.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The situation around the Quester changes now, becoming perilous, or dangerous in some way, as a path by a stream may be wet and slick underfoot. The Quester who is busy celebrating previous ease of passage, or their accomplishments may stumble and fall. The Test or Ordeal has an additional Hurdle, Failure Level or Obstacles, and failure will cause the entire Quest to fail now, however the Quester who is methodical, calm, unhurried and careful will add a Success Level.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester reaches a situation in which they are blind, this may be literally, such as when one tries to climb stairs in darkness, but more often is a figurative inability to see the way to their goal. Pushing on blindly will bring exhaustion adding a Failure Level, Obstacle or Hurdle to the Test or Ordeal. The Quester should retreat and rest, awaiting daylight (figuratively or literally) and trying again, as that will bring a Success Level.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "The lower trigram, Sun, represents wood, and the upper, K'un, means the earth. Linked with this is the idea that wood in the earth grows upward. In contrast to the meaning of Chin, PROGRESS\n\n35, this pushing upward is associated with effort, just as a plant needs energy for pushing upward through the earth. That is why this hexagram, although it is connected with success, is associated with effort of the will. In PROGRESS the emphasis is on expansion; PUSHING UPWARD indicates rather a vertical ascent-direct rise from obscurity and lowliness to power and influence.",
+    "The_Image": {
+      "text": "Within the earth, wood grows:\n\nThe image of PUSHING UPWARD.\n\nThus the superior man of devoted character\nHeaps up small things\nIn order to achieve something high and great.",
+      "comments": "Adapting itself to obstacles and bending around them, wood in the earth grows upward without haste and without rest. Thus too the superior man is devoted in character and never pauses in his progress."
+    },
+    "The_Judgment": {
+      "text": "PUSHING UPWARD has supreme success.\nOne must see the great man.\nFear not.\nDeparture toward the south\nBrings good fortune.",
+      "comments": "The pushing upward of the good elements encounters no obstruction and is therefore accompanied by great success. The pushing upward is made possible not by violence but by modesty and adaptability. Since the individual is borne along by the propitiousness of the time, he advances. He must go to see authoritative people. He need not be afraid to do this, because success is assured. But he must set to work, for activity (this is the meaning of \"the south\") brings good fortune."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Pushing upward that meets with confidence\nBrings great good fortune.",
+        "comments": "This situation at the beginning of ascent. Just as wood draws strength for its upward push from the root, which in itself is in the lowest place, so the power to rise comes from this low and obscure station. But there is a spiritual affinity with the rulers above, and this solidarity creates the confidence needed to accomplish something."
+      },
+      "2": {
+        "text": "If one is sincere,\nIt furthers one to bring even a small offering.",
+        "comments": "No blame.\n\nHere a strong man is presupposed. It is true that he does not fit in with his environment, inasmuch as he is too brusque and pays too little attention to form. But as he is upright in character, he meets with response, and his lack of outward form does no harm. Here uprightness is the outcome of sound qualities of character, whereas in the corresponding line of the preceding hexagram it is the result of innate humility."
+      },
+      "3": {
+        "text": "One pushes upward into an empty city.",
+        "comments": "All obstructions that generally block progress fall away here. Things proceed with remarkable ease. Unhesitatingly one follows this road, in order to profit by one's success. Seen from without, everything seems to be in the best of order. However, no promise of good fortune is added. It is a question how long such unobstructed success can last. But it is wise not to yield to such misgivings, because they only inhibit one's power. Instead, the point is to profit by the propitiousness of time."
+      },
+      "4": {
+        "text": "The king offers him Mount Ch'i.\nGood fortune. No blame.",
+        "comments": "Mount Ch'i is in the western China, the homeland of King Wên, whose son, the Duke of Chou, added the words to the individual lines. The pronouncement takes us back to a time when the Chou dynasty was coming into power. At that time King Wên introduced his illustrious helpers to the god of his native mountain, and they received their places in the halls of the ancestors by the side of the ruler. This indicates a stage in which pushing upward attains its goal. One acquires fame in the sight of gods and men, is received into the circle of those who foster the spiritual life of the nation, and thereby attains a significance that endures beyond time."
+      },
+      "5": {
+        "text": "Perseverance brings good fortune.\nOne pushes upward by steps.",
+        "comments": "When a man is advancing farther and farther, it is important for him not to become intoxicated by success. Precisely when he experiences great success it is necessary to remain sober and not to try to skip any stages; he must go on slowly, step by step, as though hesitant. Only such calm, steady progress, overleaping nothing, leads to the goal."
+      },
+      "6": {
+        "text": "Pushing upward in darkness.\nIt furthers one",
+        "comments": "To be unremittingly persevering.\n\nHe who pushes upward blindly deludes himself. He knows only advance, not retreat. But this means exhaustion. In such a case it is important to be constantly mindful that one must be conscientious and consistent and must remain so. Only thus does one become free of blind impulse, which is always harmful."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Ascending'. Internalize this core philosophy: The lower trigram, Sun, represents wood, and the upper, K'un, means the earth. Linked with this is the idea that wood in the earth grows upward. In contrast to the meaning of Chin, PROGRESS\n\n35, this pushing upward is associated with effort, just as a plant needs energy for pushing upward through the earth. That is why this hexagram, although it is connected with success, is associated with effort of the will. In PROGRESS the emphasis is on expansion; PUSHING UPWARD indicates rather a vertical... Your current worldview is: \"Shêng, Ascending (or Pushing Upward), is another growth Hexagram, this is the exertion that one must make to get to the top of a cliff, or a social structure. Climbing, rising and flying are all examples of the power of Shêng. It warns us that anything worth reaching for is going to take time to achieve, and that we have to push upward to get there.\". Let your choices be subtly driven by these conditions: you roll above average, are flexible or adaptable, move up or climb, you encounter an Obstacle or Hurdle. When interacting, mirror the wisdom found in the commentary: \"The pushing upward of the good elements encounters no obstruction and is therefore accompanied by great success. The pushing upward is made possible not by violence but by modesty and adaptability. Since the individual is borne along by the propitiousness of the time, he advances. He must go to see...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Ascending'. The primary quest objective is: The Ascending Quest describes a situation where the Quester can climb a social, political, rank or even physical ladder. This climb is intended to be an active struggle, with the Difficulty and Stakes climbing steadily throughout the Quest. The Quester may have to face a power imbalance, violence, or demonstrate strong perseverance in order to proceed.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: Adapting itself to obstacles and bending around them, wood in the earth grows upward without haste and without rest. Thus too the superior man is devoted in character and never pauses in his progress. Use the following line-specific challenges to pace the story: The Quester is just beginning their Quest and they are like a walker starting to climb a hill, confidently facing their goals will add a Success Level, as those atop the hill may look down and admire the confidence of those just beginning their climb. Distraction from their goals, indecision or a lack of confidence will add a Failure Level, Hurdle or Obstacle to the Test or Ordeal , as those above can clearly watch these deviations. | The Quester is directly challenged, something about their behaviour or appearance is singled out as strange or odd by one of the characters. If the Quester tries to blend in, change their appearance, or alter this behaviour then they will add a Failure Level, Obstacle or Hurdle to the Test or Ordeal. If they are honest, sincere, or pay a small sacrifice then add a Success Level instead. | The Quester has reached an area where their progress is inherently easier, but there are no gains to be made. All Obstacles are removed from any Ordeal that may be attempted (although they will instead be added to the next Ordeal the Quester encounters), but the Success of this Test or Ordeal is worthless to the Quester in meeting their eventual goals anyway. The barriers are removed, but unless momentum carries the Quester forward no progress can be made. | The Quester is honoured by an authority, this honour may often add a Duty, Devotion or Taboo Hitch to the Quester, which can be seen as a sacrifice. This honour will often include a promotion, increase in popularity, money, land, power or a similar change in rank. This was usually the Quester&#39;s immediate goal (although it may not exactly be the Quest goal always), and they have achieved it early. | The situation around the Quester changes now, becoming perilous, or dangerous in some way, as a path by a stream may be wet and slick underfoot. The Quester who is busy celebrating previous ease of passage, or their accomplishments may stumble and fall. The Test or Ordeal has an additional Hurdle, Failure Level or Obstacles, and failure will cause the entire Quest to fail now, however the Quester who is methodical, calm, unhurried and careful will add a Success Level. | The Quester reaches a situation in which they are blind, this may be literally, such as when one tries to climb stairs in darkness, but more often is a figurative inability to see the way to their goal. Pushing on blindly will bring exhaustion adding a Failure Level, Obstacle or Hurdle to the Test or Ordeal. The Quester should retreat and rest, awaiting daylight (figuratively or literally) and trying again, as that will bring a Success Level.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Ascending Confidently): Mirror the internal state described in the commentary: \"This situation at the beginning of ascent. Just as wood draws strength for its upward push from the root, which in itself is in the lowest place, so the power to rise comes from this low and obscure station. But there is a spiritual affinity with...\" Your actions should be framed by the goal: you approach a goal directly.",
+        "Plot": "Plot Complication Line 1 (Ascending Confidently): Introduce a challenge based on the interpretation: \"This situation at the beginning of ascent. Just as wood draws strength for its upward push from the root, which in itself is in the lowest place, so the power to rise comes from this low and obscure station. But there is a spiritual affinity with...\" The specific quest objective for this stage is: The Quester is just beginning their Quest and they are like a walker starting to climb a hill, confidently facing their goals will add a Success Level, as those atop the hill may look down and admire the confidence of those just beginning their climb. Distraction from their goals, indecision or a lack of confidence will add a Failure Level, Hurdle or Obstacle to the Test or Ordeal , as those above can clearly watch these deviations."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Ascending the Pyramid): Mirror the internal state described in the commentary: \"No blame.\n\nHere a strong man is presupposed. It is true that he does not fit in with his environment, inasmuch as he is too brusque and pays too little attention to form. But as he is upright in character, he meets with response, and his lack of...\" Your actions should be framed by the goal: act odd, speak bluntly, or you pay an Umbral Sacrifice, receive a Flesh Wound or worse.",
+        "Plot": "Plot Complication Line 2 (Ascending the Pyramid): Introduce a challenge based on the interpretation: \"No blame.\n\nHere a strong man is presupposed. It is true that he does not fit in with his environment, inasmuch as he is too brusque and pays too little attention to form. But as he is upright in character, he meets with response, and his lack of...\" The specific quest objective for this stage is: The Quester is directly challenged, something about their behaviour or appearance is singled out as strange or odd by one of the characters. If the Quester tries to blend in, change their appearance, or alter this behaviour then they will add a Failure Level, Obstacle or Hurdle to the Test or Ordeal. If they are honest, sincere, or pay a small sacrifice then add a Success Level instead."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Ascending to an Empty Floor): Mirror the internal state described in the commentary: \"All obstructions that generally block progress fall away here. Things proceed with remarkable ease. Unhesitatingly one follows this road, in order to profit by one's success. Seen from without, everything seems to be in the best of order. However,...\" Your actions should be framed by the goal: you notice something is missing, or enter an empty room.",
+        "Plot": "Plot Complication Line 3 (Ascending to an Empty Floor): Introduce a challenge based on the interpretation: \"All obstructions that generally block progress fall away here. Things proceed with remarkable ease. Unhesitatingly one follows this road, in order to profit by one's success. Seen from without, everything seems to be in the best of order. However,...\" The specific quest objective for this stage is: The Quester has reached an area where their progress is inherently easier, but there are no gains to be made. All Obstacles are removed from any Ordeal that may be attempted (although they will instead be added to the next Ordeal the Quester encounters), but the Success of this Test or Ordeal is worthless to the Quester in meeting their eventual goals anyway. The barriers are removed, but unless momentum carries the Quester forward no progress can be made."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (King&#39;s Sacrifice atop Pyramid): Mirror the internal state described in the commentary: \"Mount Ch'i is in the western China, the homeland of King Wên, whose son, the Duke of Chou, added the words to the individual lines. The pronouncement takes us back to a time when the Chou dynasty was coming into power. At that time King Wên...\" Your actions should be framed by the goal: you make any sacrifice, pay any cost, or participate in any Test or Ordeal.",
+        "Plot": "Plot Complication Line 4 (King&#39;s Sacrifice atop Pyramid): Introduce a challenge based on the interpretation: \"Mount Ch'i is in the western China, the homeland of King Wên, whose son, the Duke of Chou, added the words to the individual lines. The pronouncement takes us back to a time when the Chou dynasty was coming into power. At that time King Wên...\" The specific quest objective for this stage is: The Quester is honoured by an authority, this honour may often add a Duty, Devotion or Taboo Hitch to the Quester, which can be seen as a sacrifice. This honour will often include a promotion, increase in popularity, money, land, power or a similar change in rank. This was usually the Quester&#39;s immediate goal (although it may not exactly be the Quest goal always), and they have achieved it early."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Ascending by a Stream): Mirror the internal state described in the commentary: \"When a man is advancing farther and farther, it is important for him not to become intoxicated by success. Precisely when he experiences great success it is necessary to remain sober and not to try to skip any stages; he must go on slowly, step by...\" Your actions should be framed by the goal: you are calm, out of breath, wet, or slip.",
+        "Plot": "Plot Complication Line 5 (Ascending by a Stream): Introduce a challenge based on the interpretation: \"When a man is advancing farther and farther, it is important for him not to become intoxicated by success. Precisely when he experiences great success it is necessary to remain sober and not to try to skip any stages; he must go on slowly, step by...\" The specific quest objective for this stage is: The situation around the Quester changes now, becoming perilous, or dangerous in some way, as a path by a stream may be wet and slick underfoot. The Quester who is busy celebrating previous ease of passage, or their accomplishments may stumble and fall. The Test or Ordeal has an additional Hurdle, Failure Level or Obstacles, and failure will cause the entire Quest to fail now, however the Quester who is methodical, calm, unhurried and careful will add a Success Level."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Ascending in Darkness): Mirror the internal state described in the commentary: \"To be unremittingly persevering.\n\nHe who pushes upward blindly deludes himself. He knows only advance, not retreat. But this means exhaustion. In such a case it is important to be constantly mindful that one must be conscientious and consistent and...\" Your actions should be framed by the goal: you roll below average, stumble, or are careful.",
+        "Plot": "Plot Complication Line 6 (Ascending in Darkness): Introduce a challenge based on the interpretation: \"To be unremittingly persevering.\n\nHe who pushes upward blindly deludes himself. He knows only advance, not retreat. But this means exhaustion. In such a case it is important to be constantly mindful that one must be conscientious and consistent and...\" The specific quest objective for this stage is: The Quester reaches a situation in which they are blind, this may be literally, such as when one tries to climb stairs in darkness, but more often is a figurative inability to see the way to their goal. Pushing on blindly will bring exhaustion adding a Failure Level, Obstacle or Hurdle to the Test or Ordeal. The Quester should retreat and rest, awaiting daylight (figuratively or literally) and trying again, as that will bring a Success Level."
+      }
+    }
+  }
+}

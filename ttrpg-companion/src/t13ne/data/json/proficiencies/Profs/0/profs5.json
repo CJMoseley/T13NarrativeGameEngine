@@ -1,0 +1,1433 @@
+{
+  "251": {
+    "id": 251,
+    "prof": {
+      "Name": [
+        "Toil",
+        "Toil Craft Incarna Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Toil is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "252": {
+    "id": 252,
+    "prof": {
+      "Name": [
+        "Working Locations",
+        "Working Location Craft Location Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Working Locations is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "253": {
+    "id": 253,
+    "prof": {
+      "Name": [
+        "Occupation",
+        "Occupation Craft Lore Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Occupation is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "254": {
+    "id": 254,
+    "prof": {
+      "Name": [
+        "Maker",
+        "Maker Craft Monster Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Maker is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "255": {
+    "id": 255,
+    "prof": {
+      "Name": [
+        "Neologism",
+        "Neologism Craft Narration Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Neologism is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "256": {
+    "id": 256,
+    "prof": {
+      "Name": [
+        "Quirk",
+        "Quirk Craft Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Quirk is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "257": {
+    "id": 257,
+    "prof": {
+      "Name": [
+        "Descendant Ordeals",
+        "Descendant Ordeal Craft Ordeal Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Descendant Ordeals is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "258": {
+    "id": 258,
+    "prof": {
+      "Name": [
+        "Muscle-memory",
+        "Muscle-memory Craft Psychosocial Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Muscle-memory is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "259": {
+    "id": 259,
+    "prof": {
+      "Name": [
+        "Build / Work",
+        "Build / Work",
+        ""
+      ],
+      "Description": "To wield Build / Work is to hold the very heart of Craft, a power that shapes the tides of creation.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "2"
+        ],
+        "Genres": [
+          "2"
+        ],
+        "Eras": [
+          "2"
+        ],
+        "Types": [
+          "Quest"
+        ]
+      }
+    }
+  },
+  "260": {
+    "id": 260,
+    "prof": {
+      "Name": [
+        "Methods",
+        "Methods Craft Question Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Methods is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "261": {
+    "id": 261,
+    "prof": {
+      "Name": [
+        "Able",
+        "Able Craft Resolved Hitch Proficiency",
+        "capable, planned, rustic, skillful, competent"
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Able is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "262": {
+    "id": 262,
+    "prof": {
+      "Name": [
+        "Profiencies",
+        "Profiencies Craft Rule Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Profiencies is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "263": {
+    "id": 263,
+    "prof": {
+      "Name": [
+        "Finesse",
+        "Finesse Craft Style Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Finesse is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "264": {
+    "id": 264,
+    "prof": {
+      "Name": [
+        "Precision",
+        "Precision Craft Success Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Precision is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "265": {
+    "id": 265,
+    "prof": {
+      "Name": [
+        "Knacks",
+        "Knacks Craft Sway Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Knacks is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "266": {
+    "id": 266,
+    "prof": {
+      "Name": [
+        "Measures",
+        "Measures Craft Tangle Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Measures is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "267": {
+    "id": 267,
+    "prof": {
+      "Name": [
+        "Building / Crafting / Fixing / Jury-Rig / Manufacturing / Repairing / Work",
+        "Building / Crafting / Fixing / Jury-Rig / Manufacturing / Repairing / Work",
+        ""
+      ],
+      "Description": "The art of Building / Crafting / Fixing / Jury-Rig / Manufacturing / Repairing / Work is a delicate dance with creation, a step in the grand ballet of Craft.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "2"
+        ],
+        "Genres": [
+          "2"
+        ],
+        "Eras": [
+          "2"
+        ],
+        "Types": [
+          "Test"
+        ]
+      }
+    }
+  },
+  "268": {
+    "id": 268,
+    "prof": {
+      "Name": [
+        "Creative",
+        "Creative Craft Tone Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Creative is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "269": {
+    "id": 269,
+    "prof": {
+      "Name": [
+        "Planned Gambit",
+        "Planned Gambit Craft Turn Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Planned Gambit is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "270": {
+    "id": 270,
+    "prof": {
+      "Name": [
+        "Skill",
+        "Skill Craft Twisted Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Skill is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "271": {
+    "id": 271,
+    "prof": {
+      "Name": [
+        "Crafting",
+        "Crafting Craft Test Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Crafting is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "272": {
+    "id": 272,
+    "prof": {
+      "Name": [
+        "Crafted",
+        "Crafted Craft Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Crafted is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "273": {
+    "id": 273,
+    "prof": {
+      "Name": [
+        "Proficiency",
+        "Proficiency Craft Nimbed Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Proficiency is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "274": {
+    "id": 274,
+    "prof": {
+      "Name": [
+        "Preparation",
+        "Preparation Craft Umbral Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Preparation is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "275": {
+    "id": 275,
+    "prof": {
+      "Name": [
+        "Smith",
+        "Smith Craft Persona Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Smith is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "276": {
+    "id": 276,
+    "prof": {
+      "Name": [
+        "Powerless",
+        "Powerless Dominion Zero Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Powerless is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "277": {
+    "id": 277,
+    "prof": {
+      "Name": [
+        "Uncontrollable",
+        "Uncontrollable Dominion Zero Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Uncontrollable is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "278": {
+    "id": 278,
+    "prof": {
+      "Name": [
+        "Desolate Locations",
+        "Desolate Location Dominion Zero Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Desolate Locations is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "279": {
+    "id": 279,
+    "prof": {
+      "Name": [
+        "Obnoxious",
+        "Obnoxious Dominion Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Obnoxious is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "280": {
+    "id": 280,
+    "prof": {
+      "Name": [
+        "Wild",
+        "Wild Dominion Low Boon Descendant Adjective Proficiency",
+        "barbarian, lush, untamed, savage, feral"
+      ],
+      "Description": "Framed by political power and social structures, Wild is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "281": {
+    "id": 281,
+    "prof": {
+      "Name": [
+        "Deserted Locations",
+        "Deserted Location Dominion Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Deserted Locations is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "282": {
+    "id": 282,
+    "prof": {
+      "Name": [
+        "Rude",
+        "Rude Dominion Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Rude is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "283": {
+    "id": 283,
+    "prof": {
+      "Name": [
+        "Impracticable",
+        "Impracticable Dominion Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Impracticable is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "284": {
+    "id": 284,
+    "prof": {
+      "Name": [
+        "Lonely Locations",
+        "Lonely Location Dominion Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Lonely Locations is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "285": {
+    "id": 285,
+    "prof": {
+      "Name": [
+        "Antisocial",
+        "Antisocial Dominion Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Antisocial is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "286": {
+    "id": 286,
+    "prof": {
+      "Name": [
+        "Complex",
+        "Complex Dominion Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Complex is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "287": {
+    "id": 287,
+    "prof": {
+      "Name": [
+        "Settled Locations",
+        "Settled Location Dominion Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Settled Locations is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "288": {
+    "id": 288,
+    "prof": {
+      "Name": [
+        "Tactless",
+        "Tactless Dominion Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Tactless is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "289": {
+    "id": 289,
+    "prof": {
+      "Name": [
+        "Tricky",
+        "Tricky Dominion Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Tricky is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "290": {
+    "id": 290,
+    "prof": {
+      "Name": [
+        "Occupied Locations",
+        "Occupied Location Dominion Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Occupied Locations is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "291": {
+    "id": 291,
+    "prof": {
+      "Name": [
+        "Unpopular",
+        "Unpopular Dominion Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Unpopular is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "292": {
+    "id": 292,
+    "prof": {
+      "Name": [
+        "Intricate",
+        "Intricate Dominion Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Intricate is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "293": {
+    "id": 293,
+    "prof": {
+      "Name": [
+        "Populated Locations",
+        "Populated Location Dominion Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Populated Locations is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "294": {
+    "id": 294,
+    "prof": {
+      "Name": [
+        "Trendy",
+        "Trendy Dominion Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Trendy is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "295": {
+    "id": 295,
+    "prof": {
+      "Name": [
+        "Sophisticated",
+        "Sophisticated Dominion Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Sophisticated is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "296": {
+    "id": 296,
+    "prof": {
+      "Name": [
+        "Sleepy Locations",
+        "Sleepy Location Dominion Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Sleepy Locations is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "297": {
+    "id": 297,
+    "prof": {
+      "Name": [
+        "Sociable",
+        "Sociable Dominion High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Sociable is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "298": {
+    "id": 298,
+    "prof": {
+      "Name": [
+        "Understandable",
+        "Understandable Dominion High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Understandable is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "299": {
+    "id": 299,
+    "prof": {
+      "Name": [
+        "Lively Locations",
+        "Lively Location Dominion High Boon Location Adjective Proficiency",
+        "rustic, spirited, active, energetic, animated"
+      ],
+      "Description": "Framed by political power and social structures, Lively Locations is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "300": {
+    "id": 300,
+    "prof": {
+      "Name": [
+        "Authoritative",
+        "Authoritative Dominion High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Authoritative is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

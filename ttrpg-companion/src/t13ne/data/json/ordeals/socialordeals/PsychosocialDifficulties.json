@@ -1,0 +1,47 @@
+[
+    {
+        "Type": "Assisted Border Crossing",
+        "Description": "When a Character crosses a border to enter or leave a Psychosocial Space, but they are helped by the Eidolon with either a Push or more often a Pull. This is common to Drives, which assist a Character across the Space. It is also reasonable common when communicating with an open-minded Character.",
+        "Rules": "Entering or Exiting a Psychosocial Space with assistance from the Eidolon has a Pips Difficulty equal to the Facet Draw for that Space’s Facet minus the Zeal Draw of the Psychosocial Space’s owner."
+    },
+    {
+        "Type": "Assisted Line Transit",
+        "Description": "When a Character moves along a line, such as a border, rather than crossing it, and the Eidolon enourages this behaviour usually with a Pull. This is often common if entry to the Space is Opposed, a Character will be encouraged to move around this space. Line Transits can also be travel between preferred \"Spaces\", such as communications between friends.",
+        "Rules": "Travelling an Assisted Line has a Pips Difficulty equal to the Facet Draw &times; 2 minus the Zeal Draw of the Psychosocial Space’s owner."
+    },
+    {
+        "Type": "Assisted Space Traversal",
+        "Description": "When a Character moves across or within a space, from one side to another, and is assisted by the Eidolon. Typically this is following a Drive, or any Psychosocial Pulls, such as those a Conflict Pull Embodiment may feel towards an opposed Pull Embodiment.",
+        "Rules": "Traversing a Psychosocial Space that is assisting you across has a Pips Difficulty equal to the Facet Boon minus the Zeal Score of the Psychosocial Space’s owner."
+    },
+    {
+        "Type": "Neutral Border Crossing",
+        "Description": "When a Character crosses a border to enter or leave a Psychosocial Space, but they are neither helped or hindered by the Eidolon.",
+        "Rules": "Entering or exiting a Neutral Psychosocial Space has a Difficulty equal to the Facet Score for the Space’s Facet."
+    },
+    {
+        "Type": "Neutral Line Transit",
+        "Description": "When a Character moves along a line, such as a border, rather than crossing it and the Eidolon is Neutral about this motion. Normal communications between Characters are usually like this, or when one Character is a Conflict Push Embodiment and the other is an Opposed Pull Embodiment.",
+        "Rules": "Travelling a Neutral Line has a Pips Difficulty equal to the Facet Score &times; 2."
+    },
+    {
+        "Type": "Neutral Space Traversal",
+        "Description": "When a Character moves across or within a space, from one side to another, and the Eidolon neither helps nor opposes. This is the normal way of travelling across a Psychosocial Space, and can be thought of a default for Psychosocial \"distances\" and \"motion\".",
+        "Rules": "Traversing the Psychosocial Space as a Pips Difficulty equal to the Space’s Facet Boon."
+    },
+    {
+        "Type": "Opposed Border Crossing",
+        "Description": "When a Character crosses a border to enter or leave a Psychosocial Space, but they are hindered by the Eidolon typically with a Push (although a Pull back will also work). This is often the case with the Mental Defences that are erected around painful Memories, Darkness, Sickness and Secrets, or in trying to get through to those who have Closed or Confined Minds.",
+        "Rules": "Entering or Exiting a Psychosocial Space when actively hindered by the Eidolon itself, has a Pips Difficulty equal to the Facet Score plus Rook Score of the Psychosocial Space’s owner."
+    },
+    {
+        "Type": "Opposed Line Transit",
+        "Description": "When a Character moves along a line, such as a Border, rather than crossing it, but is Opposed in this Action typically by a Push or Pull from the Psychosocial Space's Eidolon. This can also represent attempts at communication that are frequently rejected, such as when two Characters hate each other, or in a case of unrequited love.",
+        "Rules": "Travelling a straight or curved line opposed by the Eidolon has a Pips Difficulty equal to the Facet Score &times; 2 plus the Facet Score of Rook, Wyrd or Yonder of the Psychosocial Space’s owner, as preferred ."
+    },
+    {
+        "Type": "Opposed Space Traversal",
+        "Description": "When a Character moves across or within a space, from one side to another, and is opposed by the Eidolon usually by a Push, although occasionally a Pull may be used. This is typical of attempts recover \"lost\" memories, especially those associated with pain or trauma, or trying to probe for information in a mentally Confined Character.",
+        "Rules": "Traversing a Psychosocial Space has a Pips Difficulty equal to the Space’s Facet Boon plus the Incarna or Rook Boon of the Psychosocial Space’s owner."
+    }
+]

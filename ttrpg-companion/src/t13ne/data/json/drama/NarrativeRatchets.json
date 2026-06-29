@@ -1,0 +1,45 @@
+[
+  {
+    "id": "ratchet_security",
+    "name": "Security Guard",
+    "type": "Security",
+    "tensionBound": false,
+    "levels": [
+      { "description": "Guards actively asleep at their posts, missing or unconscious. 1 Success Level on Hide or Sneak attempts.", "stressRelief": 10 },
+      { "description": "Guards bored and distracted: no special rules.", "stressRelief": 8 },
+      { "description": "Guards are alert, but stationary: 1 Failure Level on Hiding or Sneak attempts.", "stressRelief": 6 },
+      { "description": "Guards patrol, looking for intruders, but not expecting to find them: 2 Failure Levels on Hide or Sneak.", "stressRelief": 4 },
+      { "description": "Guards are aware there is an intruder: 3 Failure Levels on hide or Sneak.", "stressRelief": 3 },
+      { "description": "Intruder alarms are ringing: 5 Failure Levels on Hide or Sneak.", "stressRelief": 2 }
+    ]
+  },
+  {
+    "id": "ratchet_volcanic",
+    "name": "Volcanic Eruption",
+    "type": "Disaster",
+    "tensionBound": true,
+    "levels": [
+      { "description": "Strange smells on the air.", "stressRelief": 10, "tension": 1 },
+      { "description": "Animals behave strangely.", "stressRelief": 8, "tension": 1 },
+      { "description": "Rumbling noises, but no lightning.", "stressRelief": 6, "tension": 2 },
+      { "description": "Birds leave the area.", "stressRelief": 5, "tension": 3 },
+      { "description": "Strange auras around the mountain at night.", "stressRelief": 4, "tension": 4 },
+      { "description": "Volcano erupts!", "stressRelief": 3, "tension": 5 },
+      { "description": "Pyroclastic flow engulfs your side of the volcano.", "stressRelief": 2, "tension": 6 }
+    ]
+  },
+  {
+    "id": "ratchet_dominance",
+    "name": "Dominance Ladder",
+    "type": "Dominance",
+    "tensionBound": true,
+    "levels": [
+      { "description": "Tension None: Dominance is impossible without some Tension.", "stressRelief": 10, "tension": 0 },
+      { "description": "Low Tension: Active but limited displays of Dominance can occur.", "stressRelief": 8, "tension": 1 },
+      { "description": "Medium: Pressed side has at least one negative encounter with a representative of the Dominant Side.", "stressRelief": 6, "tension": 2 },
+      { "description": "High Tension: Embodiments appear in a Scene together. Demonstration of Dominance.", "stressRelief": 4, "tension": 4 },
+      { "description": "Open Conflict: The Dominant Embodiment focuses their attention and power on the Pressed Embodiment.", "stressRelief": 3, "tension": 5 },
+      { "description": "Tragic Conflict: Either or both Embodiments badly injured by the end of the Scene.", "stressRelief": 2, "tension": 6 }
+    ]
+  }
+]

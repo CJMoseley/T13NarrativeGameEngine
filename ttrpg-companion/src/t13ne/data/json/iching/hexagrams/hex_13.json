@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 13,
+    "Name": "Fellowship",
+    "Entity": "&#19916;",
+    "Logical": 61,
+    "Trigrams": [
+      2,
+      0
+    ],
+    "Hexagram_Text": "T'ung Jen, or Fellowship, is symbolic of friendship, social circles and situations, and how we all interact with each other. We are nothing more than connections, social connections, neural connections, memeplexes. Find out who others are and you learn more about yourself.",
+    "Unchanging": "Anyone you co-operate with gains +1 Success Level to all actions.",
+    "Line1": "Fellowship at the Gate",
+    "Line2": "Clique",
+    "Line3": "Hidden Weapons",
+    "Line4": "Climbing a Wall",
+    "Line5": "People Cry Then Laugh",
+    "Line6": "Fellowship Beyond the City"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you ask any Character about their feelings, or how they are doing",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "they tell you their problems",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "you tell the whole truth, keep no secrets, or find mutual interests with others",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yang",
+        "Condition": "you act shy, do not introduce yourself to strangers, or talk to people you know",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yin",
+        "Condition": "you are suspicious of others",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yin",
+        "Condition": "you discuss, or set, boundaries, expectations or roles",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yin",
+        "Condition": "you or someone nearby laughs or cries",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yin",
+        "Condition": "you find common ground with another, or communicate over a distance",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Fellowship Quest is well known, where one man (or hobbit) would fail a fellowship may succeed. The Quester in this situation finds himself surrounded by allies, and support, that are needed to complete the Quest. In fact, one could argue that the Quester is a Pact during a Fellowship Quest, and each member will have their own Test or Ordeal that they must bring the entire Fellowship through. Attempts to work alone, in private or in secret, during a Fellowship Quest will generate additional Hurdles, Obstacles or Failure Levels. The Quest will be as much about maintaining the Fellowship as their Quest goal.",
+    "Quest_Complete": "The Quest that ends with a Fellowship Hexagram creates a great friendship, bonding the Quester and those they met during their Quest (often the companions, or an authority) into friendship that will outlast the Quest and go on for a lifetime.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The group must bond together and learn enough of each other to at least decide a marching order and some sense of leadership or mutual respect. This requires openness and honesty from each member as to their ability and skills, those who keep secrets or mislead the others will weaken the fellowship and add a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The fellowship, as it stands, is too small or too focused in some way that adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If the Quester can recruit more members, that also increase the diversity of the group with regard to the \"too focused\" factor then they can add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "There are members of the fellowship that do not trust other members, often due to a difference of goals, morals or culture. This causes suspicion and disharmony in the Fellowship that will add a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "A member of the fellowship (often the Quester) will become aware of disharmony in the group, even if there is none. This can indicate that the internal strife in the fellowship has been addressed, but if there is no internal strife these accusations will create them. This will add an additional Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test, however the fellowship that confronts these difficulties will be united and harmonious afterwards.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "One in the fellowship (often the Quester) feels isolated from the rest of the fellowship, unvalued and ignored, which may add a Failure Level, Hurdle or Obstacle to their Test or Ordeal. This is not a correct assessment though, and if the character is reassured by the fellowship or companions as to their worth then this will remove the Failure Level, Hurdle or Obstacle that was added. If the character is assured that they are valued, but not for the reasons they expected (perhaps the warrior is valued for their sense of humour, or pragmatic stoicism, not their fighting prowess) then this will instead add a Success Level to their Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The fellowship is splintered into different factions, which are often physically and socially separated. This adds a Hurdle, Obstacle or Failure Level to the Ordeal or Test. If the fellowship realise they are fragmented, and try to find common ground with their other factions, and communicate with their greater community and between factions, then they can instead add a Success Level.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "The image of the upper trigram Ch'ien is heaven, and that of the lower, Li, is flame. It is the nature of fire to flame up to the heaven. This gives the idea of fellowship. IT is the second line that, by virtue of its central character, unites the five strong lines around it. This hexagram forms a complement to Shih, THE ARMY\n\n7. In the latter, danger is within and obedience without--the character of a warlike army, which, in order to hold together, needs one strong man among the many who are weak. Here, clarity is within and strength without--the character of a peaceful union of men, which, in order to hold together, needs one yielding nature among many firm persons.",
+    "The_Image": {
+      "text": "Heaven together with fire:\n\nThe image of FELLOWSHIP WITH MEN.\nThus the superior man organizes the clans\nAnd makes distinctions between things.",
+      "comments": "Heaven has the same direction of movement as fire, yet it is different from fire. Just as the luminaries in the sky serve for the systematic division and arrangement of time, so human society and all things that really belong together must be organically arranged. Fellowship should not be a mere mingling of individuals or of things--that would be chaos, not fellowship. If fellowship is to lead to order, there must be organization within diversity."
+    },
+    "The_Judgment": {
+      "text": "FELLOWSHIP WITH MEN in the open.\n\nSuccess.\nIt furthers one to cross the great water.\nThe perseverance of the superior man furthers.",
+      "comments": "True fellowship among men must be based upon a concern that is universal. It is not the private interests of the individual that create lasting fellowship among men, but rather the goals of humanity. That is why it is said that fellowship with men in the open succeeds. If unity of this kind prevails, even difficult and dangerous tasks, such as crossing the great water, can be accomplished. But in order to bring about this sort of fellowship, a persevering and enlightened leader is needed--a man with clear, convincing, and inspiring aims and the strength to carry them out. (The inner trigram means clarity; the outer, strength.)"
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Fellowship with men at the gate.\nNo blame.",
+        "comments": "The beginning of union among people should take place before the door. All are equally close to one another. No divergent aims have yet arisen, and one makes not mistakes. The basic principles of any kind of union must be equally accessible to all concerned. Secret agreements bring misfortune."
+      },
+      "2": {
+        "text": "Fellowship with men in the clan.\nHumiliation.",
+        "comments": "There is danger here of formation of a separate faction on the basis of personal and egotistic interests. Such factions, which are exclusive and, instead of welcoming all men, must condemn one group in order to unite the others, originate from low motives and therefore lead in the course of time to humiliation."
+      },
+      "3": {
+        "text": "He hides weapons in the thicket;\nHe climbs the high hill in front of it.\nFor three years he does not rise up.",
+        "comments": "Here fellowship has changed about to mistrust. Each man distrusts the other, plans a secret ambush, and seeks to spy on his fellow form afar. We are dealing with an obstinate opponent whom we cannot come at by this method. Obstacles standing in the way of fellowship with others are shown here. One has mental reservations for one's own part and seeks to take his opponent by surprise. This very fact makes one mistrustful, suspecting the same wiles in his opponent and trying to ferret them out. The result is that one departs further and further from true fellowship. The longer this goes on, the more alienated one becomes."
+      },
+      "4": {
+        "text": "He climbs up on his wall; he cannot attack.\nGood fortune.",
+        "comments": "Here the reconciliation that follows quarrel mover nearer. It is true that there are still dividing walls on which we stand confronting one another. But the difficulties are too great. We get into straits, and this brings us to our senses. We cannot fight, and therein lies our good fortune."
+      },
+      "5": {
+        "text": "Men bound in fellowship first weep and lament,\nBut afterward they laugh.\nAfter great struggles they succeed in meeting.",
+        "comments": "Two people are outwardly separated, but in their hearts they are united. They are kept apart by their positions in life. Many difficulties and obstructions arise between them and cause them grief. But, remaining true to each other, the allow nothing to separate them, and although it costs them a severe struggle to overcome the obstacles, they will succeed. When they come together their sadness will change to joy. Confucius says of this:\n\nLife leads the thoughtful man on a path of many windings.Now the course is checked, now it runs straight again.Here winged thoughts may pour freely forth in words,There the heavy burden of knowledge must be shut away in silence.But when two people are at one in the inmost hearts,They shatter even the strength of iron or of bronze.And when two people understand each other in their inmost hearts,Their words are sweet and strong, like the fragrance of orchids."
+      },
+      "6": {
+        "text": "Fellowship with men in the meadow.\nNo remorse.",
+        "comments": "The warm attachment that springs from the heart is lacking here. We are by this time actually outside of fellowship with others. However, we ally ourselves with them. The fellowship does not include all, but only those who happen to dwell near one another. The meadow is the pasture at the entrance to the town. At this stage, the ultimate goal of the union of mankind has not yet been attained, but we need not reproach ourselves. We join the community without separate aims of our own."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Fellowship'. Internalize this core philosophy: The image of the upper trigram Ch'ien is heaven, and that of the lower, Li, is flame. It is the nature of fire to flame up to the heaven. This gives the idea of fellowship. IT is the second line that, by virtue of its central character, unites the five strong lines around it. This hexagram forms a complement to Shih, THE ARMY\n\n7. In the latter, danger is within and obedience without--the character of a warlike army, which, in order to hold together, needs one strong man among the many who are... Your current worldview is: \"T'ung Jen, or Fellowship, is symbolic of friendship, social circles and situations, and how we all interact with each other. We are nothing more than connections, social connections, neural connections, memeplexes. Find out who others are and you learn more about yourself.\". Let your choices be subtly driven by these conditions: you ask any Character about their feelings, or how they are doing, they tell you their problems. When interacting, mirror the wisdom found in the commentary: \"True fellowship among men must be based upon a concern that is universal. It is not the private interests of the individual that create lasting fellowship among men, but rather the goals of humanity. That is why it is said that fellowship with men in the open succeeds. If unity of this kind...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Fellowship'. The primary quest objective is: The Fellowship Quest is well known, where one man (or hobbit) would fail a fellowship may succeed. The Quester in this situation finds himself surrounded by allies, and support, that are needed to complete the Quest. In fact, one could argue that the Quester is a Pact during a Fellowship Quest, and each member will have their own Test or Ordeal that they must bring the entire Fellowship through. Attempts to work alone, in private or in secret, during a Fellowship Quest will generate additional Hurdles, Obstacles or Failure Levels. The Quest will be as much about maintaining the Fellowship as their Quest goal.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: Heaven has the same direction of movement as fire, yet it is different from fire. Just as the luminaries in the sky serve for the systematic division and arrangement of time, so human society and all things that really belong together must be organically arranged. Fellowship should not be a mere mingling of individuals or of things--that would be chaos, not fellowship. If fellowship is to lead to... Use the following line-specific challenges to pace the story: The group must bond together and learn enough of each other to at least decide a marching order and some sense of leadership or mutual respect. This requires openness and honesty from each member as to their ability and skills, those who keep secrets or mislead the others will weaken the fellowship and add a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test. | The fellowship, as it stands, is too small or too focused in some way that adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If the Quester can recruit more members, that also increase the diversity of the group with regard to the \"too focused\" factor then they can add a Success Level instead. | There are members of the fellowship that do not trust other members, often due to a difference of goals, morals or culture. This causes suspicion and disharmony in the Fellowship that will add a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test. | A member of the fellowship (often the Quester) will become aware of disharmony in the group, even if there is none. This can indicate that the internal strife in the fellowship has been addressed, but if there is no internal strife these accusations will create them. This will add an additional Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test, however the fellowship that confronts these difficulties will be united and harmonious afterwards. | One in the fellowship (often the Quester) feels isolated from the rest of the fellowship, unvalued and ignored, which may add a Failure Level, Hurdle or Obstacle to their Test or Ordeal. This is not a correct assessment though, and if the character is reassured by the fellowship or companions as to their worth then this will remove the Failure Level, Hurdle or Obstacle that was added. If the character is assured that they are valued, but not for the reasons they expected (perhaps the warrior is valued for their sense of humour, or pragmatic stoicism, not their fighting prowess) then this will instead add a Success Level to their Test or Ordeal. | The fellowship is splintered into different factions, which are often physically and socially separated. This adds a Hurdle, Obstacle or Failure Level to the Ordeal or Test. If the fellowship realise they are fragmented, and try to find common ground with their other factions, and communicate with their greater community and between factions, then they can instead add a Success Level.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Fellowship at the Gate): Mirror the internal state described in the commentary: \"The beginning of union among people should take place before the door. All are equally close to one another. No divergent aims have yet arisen, and one makes not mistakes. The basic principles of any kind of union must be equally accessible to all...\" Your actions should be framed by the goal: you tell the whole truth, keep no secrets, or find mutual interests with others.",
+        "Plot": "Plot Complication Line 1 (Fellowship at the Gate): Introduce a challenge based on the interpretation: \"The beginning of union among people should take place before the door. All are equally close to one another. No divergent aims have yet arisen, and one makes not mistakes. The basic principles of any kind of union must be equally accessible to all...\" The specific quest objective for this stage is: The group must bond together and learn enough of each other to at least decide a marching order and some sense of leadership or mutual respect. This requires openness and honesty from each member as to their ability and skills, those who keep secrets or mislead the others will weaken the fellowship and add a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Clique): Mirror the internal state described in the commentary: \"There is danger here of formation of a separate faction on the basis of personal and egotistic interests. Such factions, which are exclusive and, instead of welcoming all men, must condemn one group in order to unite the others, originate from low...\" Your actions should be framed by the goal: you act shy, do not introduce yourself to strangers, or talk to people you know.",
+        "Plot": "Plot Complication Line 2 (Clique): Introduce a challenge based on the interpretation: \"There is danger here of formation of a separate faction on the basis of personal and egotistic interests. Such factions, which are exclusive and, instead of welcoming all men, must condemn one group in order to unite the others, originate from low...\" The specific quest objective for this stage is: The fellowship, as it stands, is too small or too focused in some way that adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If the Quester can recruit more members, that also increase the diversity of the group with regard to the \"too focused\" factor then they can add a Success Level instead."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Hidden Weapons): Mirror the internal state described in the commentary: \"Here fellowship has changed about to mistrust. Each man distrusts the other, plans a secret ambush, and seeks to spy on his fellow form afar. We are dealing with an obstinate opponent whom we cannot come at by this method. Obstacles standing in the...\" Your actions should be framed by the goal: you are suspicious of others.",
+        "Plot": "Plot Complication Line 3 (Hidden Weapons): Introduce a challenge based on the interpretation: \"Here fellowship has changed about to mistrust. Each man distrusts the other, plans a secret ambush, and seeks to spy on his fellow form afar. We are dealing with an obstinate opponent whom we cannot come at by this method. Obstacles standing in the...\" The specific quest objective for this stage is: There are members of the fellowship that do not trust other members, often due to a difference of goals, morals or culture. This causes suspicion and disharmony in the Fellowship that will add a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Climbing a Wall): Mirror the internal state described in the commentary: \"Here the reconciliation that follows quarrel mover nearer. It is true that there are still dividing walls on which we stand confronting one another. But the difficulties are too great. We get into straits, and this brings us to our senses. We cannot...\" Your actions should be framed by the goal: you discuss, or set, boundaries, expectations or roles.",
+        "Plot": "Plot Complication Line 4 (Climbing a Wall): Introduce a challenge based on the interpretation: \"Here the reconciliation that follows quarrel mover nearer. It is true that there are still dividing walls on which we stand confronting one another. But the difficulties are too great. We get into straits, and this brings us to our senses. We cannot...\" The specific quest objective for this stage is: A member of the fellowship (often the Quester) will become aware of disharmony in the group, even if there is none. This can indicate that the internal strife in the fellowship has been addressed, but if there is no internal strife these accusations will create them. This will add an additional Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test, however the fellowship that confronts these difficulties will be united and harmonious afterwards."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (People Cry Then Laugh): Mirror the internal state described in the commentary: \"Two people are outwardly separated, but in their hearts they are united. They are kept apart by their positions in life. Many difficulties and obstructions arise between them and cause them grief. But, remaining true to each other, the allow nothing...\" Your actions should be framed by the goal: you or someone nearby laughs or cries.",
+        "Plot": "Plot Complication Line 5 (People Cry Then Laugh): Introduce a challenge based on the interpretation: \"Two people are outwardly separated, but in their hearts they are united. They are kept apart by their positions in life. Many difficulties and obstructions arise between them and cause them grief. But, remaining true to each other, the allow nothing...\" The specific quest objective for this stage is: One in the fellowship (often the Quester) feels isolated from the rest of the fellowship, unvalued and ignored, which may add a Failure Level, Hurdle or Obstacle to their Test or Ordeal. This is not a correct assessment though, and if the character is reassured by the fellowship or companions as to their worth then this will remove the Failure Level, Hurdle or Obstacle that was added. If the character is assured that they are valued, but not for the reasons they expected (perhaps the warrior is valued for their sense of humour, or pragmatic stoicism, not their fighting prowess) then this will instead add a Success Level to their Test or Ordeal."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Fellowship Beyond the City): Mirror the internal state described in the commentary: \"The warm attachment that springs from the heart is lacking here. We are by this time actually outside of fellowship with others. However, we ally ourselves with them. The fellowship does not include all, but only those who happen to dwell near one...\" Your actions should be framed by the goal: you find common ground with another, or communicate over a distance.",
+        "Plot": "Plot Complication Line 6 (Fellowship Beyond the City): Introduce a challenge based on the interpretation: \"The warm attachment that springs from the heart is lacking here. We are by this time actually outside of fellowship with others. However, we ally ourselves with them. The fellowship does not include all, but only those who happen to dwell near one...\" The specific quest objective for this stage is: The fellowship is splintered into different factions, which are often physically and socially separated. This adds a Hurdle, Obstacle or Failure Level to the Ordeal or Test. If the fellowship realise they are fragmented, and try to find common ground with their other factions, and communicate with their greater community and between factions, then they can instead add a Success Level."
+      }
+    }
+  }
+}

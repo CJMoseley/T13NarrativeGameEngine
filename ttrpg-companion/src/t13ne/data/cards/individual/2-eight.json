@@ -1,0 +1,118 @@
+{
+	"Card_Corner": "8",
+	"Card": "Eight",
+	"Suit": "2",
+	"IconSuit": "♥",
+	"Pips": "8",
+	"Unicode": "&#x1f0b8;",
+	"Svg": "images/cards-svg/8H.svg",
+	"Wound_Level": 3,
+	"Facet": "Nature",
+	"Tao": [
+		0,
+		1
+	],
+	"Narrative_Meaning": "Eights signify karma and mostly in the form of karmic retributions, if someone has been having a bad time now is the time they will be rewarded, if they have been running amok they will now have to pay that price.",
+	"Image": "",
+	"Yarn": {
+		"Yarn_Name": "The Wizard",
+		"Yarn_Description": "The Wizard card represents a person with complete mastery of their surroundings and in complete control of themselves. A talented, skilful, and powerful person who has the ability to create and achieve almost any goal they set themselves.",
+		"Significator": {
+			"Plot": "The Wizard plot is sometimes a world changing plot. Nothing that follows a Wizard Plot will ever be the same again. They are often huge events that change the nature of reality, or the fabric of society are the order of the day. But they can also be small moments of magic, especially when they fall as a Side Significator.",
+			"Side": "When a side is marked by the Wizard they have an expert or specialist at something, they might be an elite hacker, or an expert sword-smith, or an actual spell-throwing, wand-carrying wizard. Usually they have one, sometimes the whole side may be Wizards, often of different types of specialists.",
+			"Character": "The Wizard Significator indicates a Character who is an ace in their field. They are a wizard at what they do. <p>They <strong>Gain Yin</strong> when they share wisdom, or tips with another. They gain from learning as well as teaching tips. </p><p>They <strong>Gain Yang</strong> when they work at what they are good at (research, or practical). </p><p>They <strong>Gain Chi</strong> when they don't do exactly what they are asked for, complicate matters, or achieve something unique or important.</p><p>They also gain a +1 Success Level on any Test, Ordeal or Action that they are a \"Wizard\" at.</p>",
+			"Diegetic_Character": "A master of their craft, possessing unparalleled skill and knowledge in their chosen field. They are often perceived as eccentric or even magical by those who cannot comprehend their expertise, always seeking to push the boundaries of what is possible through innovation and dedication.",
+			"Scene": "The Wizard Scene is a tiny piece of magic in a heartless universe. Yarn-Tellers can play the card to perform immense magics, or so that they can meet any suitable expert, potentially as an Ally (although often not)."
+		},
+		"Beat_Type": "6",
+		"Conflict_Embodiment": "0",
+		"Facet_Embodiment": "2",
+		"Hook_Aspect": "Power",
+		"Aspect_Description": "The Hook targets the Character's Power or Super-Annex, offering some upgrade, edge or perhaps just a change of Tangle or Umbral.",
+		"Hook": "Summoning",
+		"Hook_Description": "The story opens a summoning, this may mean a message, an invitation, police at the door, or magical circles across dimensions. Sometimes the PCs are the summoners, but usually they are the Summoned. Someone powerful wants to see them, or has something to give them, or take from them.",
+		"Gain": "Magic Spell / Tool / Treasure (Skill Descendant / Talent / Power Descendant)",
+		"Diegetic_Gain": "A powerful secret or a specialized tool that grants extraordinary capability, reflecting a high degree of mastery and control over one's environment.",
+		"Fray": "Wizard Duel",
+		"Fray_Description": "A Wizard Duel should be a unique experience. Every Wizard is a master of themselves and their environment, so when two Duel it will reflect their individualities blended together. The Duel will be an appropriate Stake for both Wizards, from Low to Extreme, Soul, or Paradoxical. Unlike most Ordeals during Proficiencies each Wizard must agree the Proficiencies of the other. During this \"negotiation\" the rules will usually be stated, with a later intent to bend or break them for an advantage.",
+		"Snag": "Strange Ways",
+		"Snag_Description": "Wizards naturally complicate everything. They over think situations and plans, or use incredible obscure or clever ideas. They build secret ways, like escape routes, or magically create extra ways to complicate things. The Snag complicates the Fray in unique, complex ways, at the very least adding secret passages for people to vanish into or arrive out of.",
+		"NPC": {
+			"Archetype": "Expert",
+			"Persona": 11,
+			"Core": 11,
+			"Hitch": 15,
+			"Description": "The Expert is a master of their subject environment, and as such stand with one foot in the normal world and another in their field. They can be Witch-Doctors literally carrying profound messages between the spirit world and the physical world, or they can be IT specialists, interfacing electronic fora and digital FAQs to the recurring malware vector in marketing via direct meat-space social linguistics."
+		},
+		"Sweeping": "Magical Gain",
+		"Sweeping_Text": "This can be an actual Gain, such as a magickal spell, tomb or sword, or more likely it is a magically gained Revelation, such as a portent or vision.",
+		"History": "Fortune-teller",
+		"History_Description": "The Wizard indicates that the past is somehow tangled with the future directly, this is usually in the form of some sort of prophecy, or fortune-telling, but it may be a result of predestination paradoxes because of time travel. Either way the past and future are some how connected in this situation.",
+		"Situation": "Wizardry",
+		"Situation_Description": "The Wizard indicates The current situation is caused by wizardry of some sort. Where possible magic has caused the situation, cursing someone, or creating a portal are typical examples, otherwise the threat can be scientific, technological, or computational wizardry instead.",
+		"Solution": "Mastery",
+		"Solution_Description": "The Wizard indicates that the way out of this current situation is through mastery, this may be mastery of a particular skill or proficiencies such as swordsmanship, it could be mastery over your surroundings, or some subject matter, but it always includes self-mastery. This is often a test of self-knowledge, self-restraint and self-control, as well as the mastery of annex, descendant or location.",
+		"Revelations": {
+			"About": "Yours",
+			"About_Description": "The information is about your own side, or own self. This might reveal your weaknesses or strengths, if you aren't already painfully aware of them.",
+			"Info": "Expertise",
+			"Info_Description": "The information reveals something about the expertise of a character or the skill that was required to construct a Descendant or Location. In some cases the information will reveal the actual creator, or the only other expert who could understand something.",
+			"Vector": "Symbols",
+			"Vector_Description": "The information is presented in the form of symbols, this can mean simply a written message, but more often with symbols there is additional nuance that must be used when interpreting them. Perhaps this is a text-message that is written in emojis, txt, H@xor or 1337 speak, or the information may have been encoded into a painting or even into building plans. Then again it can be as obvious as a radiation warning symbol.",
+			"Alternate": "Training",
+			"Alternate_Description": "Information about the training that a character has received or the training that is necessary to correctly use a given Descendant can be very pertinent information indeed.",
+			"Detail": "Professional",
+			"Detail_Description": "Professional details are those tiny touches that let you know that something was done by a very skilled and practised person, as such they are usually only spotted by another skilled professional. A professional detail might reveal that the thief wore gloves, and a hat so they left no fingerprints or hairs in the crime scene, or that the programmer of a nasty virus had previous experience working with the banking machines that have been hardest hit."
+		}
+	},
+	"Obstacle": {
+		"Type": "Ward",
+		"Description": "The Obstacle is a magical ward, or curse, that either magically or psychologically blocks the way. Magical Wards can be very specific what they block and what they allow through, which can allow Yarn-Tellers to split parties and teach lessons."
+	},
+	"Tarot": {
+		"WyrdTarot": "Chi",
+		"Normal": "Target pulls another card and gains Chi equal to 7 + the Pips.",
+		"Crossed": "Target loses 15 Chi."
+	},
+	"Ordeal": {
+		"Ordeal_Type": "Opposed Ordeal",
+		"Stages": "4",
+		"Ordeal_Spread": "Forking",
+		"Stakes": "High",
+		"Test": "Charms (Awe) / Create (Craft) / Magic (Wyrd)",
+		"Obstacles": "1 per Court Stage",
+		"Suggested_Action": "Perform",
+		"Stage": "Harmony",
+		"Stage_Description": "Music fills the space, perhaps there is Muzak playing in the mall, or an outdoor concert in the park, maybe its just the music blaring from some kids loud car stereo. There might be crowds of people, maybe dancing. Or this could just be about everyone moving along the same way.",
+		"Motional": "Horse Race",
+		"Motional_Description": "Everyone else should be behind you, or unhorsed, when you reach that last Stage.",
+		"Tide_of_Battle": "Battle Dancer",
+		"Tide_of_Battle_Text": "The Flowing side is synced with the rhythm of the battle. Roll 1d3 each Phase during the Stage, during any Action that plays this many cards a Flowing Character may automatically choose to Stabilise a Wound, make an Attack Immune to Active Defences, or Prepare one card from their Pool to their preferred Style Reserve. Ebbing Characters receive no bonus or penalty.",
+		"Fight": "Skirmish",
+		"Fight_Description": "A Skirmish is an unplanned encounter between two enemy forces. Skirmishes are often Medium or High Stakes (even during Warfare), and will become a fighting retreat after the first Round."
+	},
+	"Lea": {
+		"PathColour": "Blue Aquatic or Black Migratory",
+		"Bulmas": "All",
+		"AnimalCategory": "Megafauna – Medium",
+		"Example": "Hyena / Condor / Albatross",
+		"Bodypart": "Beak",
+		"Notes": "The largest of the living Black Paths."
+	},
+	"Stress": {
+		"Type": "Struggling",
+		"Description": "Characters deep in Stress can struggle to cope. It can feel like they are drowning, unable to catch a breath between the wild buffets of fate. If they were less stressed they would cope, but it seems like everything is more difficult for these Characters now. Somehow though they will often struggle through, barely making ends meet until the stress lifts.",
+		"Rules": "Hearts Suited Facet Actions (Enigma, Heresy, Jeer, Liberty, Phoenix, and Nature) add Difficulty equal to the current Stress in Chi, unsuited Facet Actions add Difficulty equal to the current Stress as Tao Sway. If a penalised Action is a Stalemate then the Character may reduce Stress, Strain and Shock by 1."
+	},
+	"Trauma": {
+		"Type": "Gifted",
+		"Description": "Trauma can profoundly affect the mind, creating new pathways that can open new mental abilities, often abilities unlocked by trauma can be surprising, such as suddenly being able to play a musical instrument, speaking a foreign language, or beoming a lightning calculator. If the Trauma is healed or repaired however the gifted ability is often lost.",
+		"Rules": "The Trauma immediately creates a Gifted Annex Slot. While the Character has the Trauma they may have an extra Annex Slot. When unlocked all the Character’s current Stress can be relieved by purchasing the Annex and its Proficiencies as though it was Chi."
+	},
+	"Age": {
+		"Type": "Wizardry",
+		"Description": "An Age of Wizardry is occurring. During this age great masters of some art, craft, magic or technology arise within the society. These wizards can usher in a new technological or artistic age as they alter the whole world around their society trough their great works. Often these wizards are forever remembered as great philosophers, scientists, engineers and artists.",
+		"Diegetic_Description": "A legendary era of mastery and wonder, where the pinnacle of human achievement is reached by visionary individuals. It is a time when the impossible becomes possible through the application of deep knowledge and arcane skill, leaving a legacy of great works that will be remembered for generations.",
+		"Rules": "Among the society several Characters are selected as Wizards, these Characters can work seeming magic as they shift the Difficulties of a Test from Banal to Intrepid, onto Bold, Monstrous or even Twisted for all who attempt similar feats following them."
+	}
+}

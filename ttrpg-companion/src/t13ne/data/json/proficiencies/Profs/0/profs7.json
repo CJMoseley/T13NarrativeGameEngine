@@ -1,0 +1,1432 @@
+{
+  "351": {
+    "id": 351,
+    "prof": {
+      "Name": [
+        "Support",
+        "Support Dominion Sway Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Support is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "352": {
+    "id": 352,
+    "prof": {
+      "Name": [
+        "People",
+        "People Dominion Tangle Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, People is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "353": {
+    "id": 353,
+    "prof": {
+      "Name": [
+        "Manipulation / Control / Politics / Popularity / Self-control",
+        "Manipulation / Control / Politics / Popularity / Self-control",
+        ""
+      ],
+      "Description": "Like a river carving its path through stone, Manipulation / Control / Politics / Popularity / Self-control is the relentless pursuit of subterfuge.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "3"
+        ],
+        "Genres": [
+          "3"
+        ],
+        "Eras": [
+          "3"
+        ],
+        "Types": [
+          "Test"
+        ]
+      }
+    }
+  },
+  "354": {
+    "id": 354,
+    "prof": {
+      "Name": [
+        "Political",
+        "Political Dominion Tone Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Political is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "355": {
+    "id": 355,
+    "prof": {
+      "Name": [
+        "Society",
+        "Society Dominion Turn Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Society is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "356": {
+    "id": 356,
+    "prof": {
+      "Name": [
+        "Familiar",
+        "Familiar Dominion Twisted Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Familiar is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "357": {
+    "id": 357,
+    "prof": {
+      "Name": [
+        "Dominating",
+        "Dominating Dominion Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Dominating is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "358": {
+    "id": 358,
+    "prof": {
+      "Name": [
+        "Collective",
+        "Collective Dominion Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Collective is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "359": {
+    "id": 359,
+    "prof": {
+      "Name": [
+        "Influence",
+        "Influence Dominion Nimbed Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Influence is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "360": {
+    "id": 360,
+    "prof": {
+      "Name": [
+        "Fashionable",
+        "Fashionable Dominion Umbral Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Fashionable is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "361": {
+    "id": 361,
+    "prof": {
+      "Name": [
+        "Leader",
+        "Leader Dominion Persona Proficiency",
+        ""
+      ],
+      "Description": "Framed by political power and social structures, Leader is understood through multiple perspectives of authority and collective governance.",
+      "Tags": {
+        "Facets": [
+          "3",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "362": {
+    "id": 362,
+    "prof": {
+      "Name": [
+        "Questionless",
+        "Questionless Enigma Zero Boon Adjective Proficiency",
+        "sure, exposed, certain, unquestionable, absolute"
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Questionless lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "363": {
+    "id": 363,
+    "prof": {
+      "Name": [
+        "Sure",
+        "Sure Enigma Zero Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Sure lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "364": {
+    "id": 364,
+    "prof": {
+      "Name": [
+        "Exposed Locations",
+        "Exposed Location Enigma Zero Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Exposed Locations lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "365": {
+    "id": 365,
+    "prof": {
+      "Name": [
+        "Obvious",
+        "Obvious Enigma Low Boon Adjective Proficiency",
+        "clear, conspicuous, evident, plain, manifest"
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Obvious lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "366": {
+    "id": 366,
+    "prof": {
+      "Name": [
+        "Clear",
+        "Clear Enigma Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Clear lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "367": {
+    "id": 367,
+    "prof": {
+      "Name": [
+        "Conspicuous Locations",
+        "Conspicuous Location Enigma Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Conspicuous Locations lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "368": {
+    "id": 368,
+    "prof": {
+      "Name": [
+        "Precise",
+        "Precise Enigma Low Boon Adjective Proficiency",
+        "exact, memorable, famous, accurate, definite"
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Precise lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "369": {
+    "id": 369,
+    "prof": {
+      "Name": [
+        "Memorable",
+        "Memorable Enigma Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Memorable lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "370": {
+    "id": 370,
+    "prof": {
+      "Name": [
+        "Famous Locations",
+        "Famous Location Enigma Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Famous Locations lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "371": {
+    "id": 371,
+    "prof": {
+      "Name": [
+        "Certain",
+        "Certain Enigma Low Boon Adjective Proficiency",
+        "sure, assured, familiar, positive, confident"
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Certain lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "372": {
+    "id": 372,
+    "prof": {
+      "Name": [
+        "Assured",
+        "Assured Enigma Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Assured lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "373": {
+    "id": 373,
+    "prof": {
+      "Name": [
+        "Familiar Locations",
+        "Familiar Location Enigma Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Familiar Locations lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "374": {
+    "id": 374,
+    "prof": {
+      "Name": [
+        "Uncertain",
+        "Uncertain Enigma Medium Boon Adjective Proficiency",
+        "doubtful, puzzling, anonymous, unsure, vague"
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Uncertain lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "375": {
+    "id": 375,
+    "prof": {
+      "Name": [
+        "Puzzling",
+        "Puzzling Enigma Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Puzzling lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "376": {
+    "id": 376,
+    "prof": {
+      "Name": [
+        "Anonymous Locations",
+        "Anonymous Location Enigma Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Anonymous Locations lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "377": {
+    "id": 377,
+    "prof": {
+      "Name": [
+        "Unreliable",
+        "Unreliable Enigma High Boon Adjective Proficiency",
+        "untrustworthy, irregular, curious, fickle, shaky"
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Unreliable lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "378": {
+    "id": 378,
+    "prof": {
+      "Name": [
+        "Irregular",
+        "Irregular Enigma High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Irregular lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "379": {
+    "id": 379,
+    "prof": {
+      "Name": [
+        "Curious Locations",
+        "Curious Location Enigma High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Curious Locations lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "380": {
+    "id": 380,
+    "prof": {
+      "Name": [
+        "Ambiguous",
+        "Ambiguous Enigma High Boon Adjective Proficiency",
+        "unclear, unknown, vague, cryptic, equivocal"
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Ambiguous lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "381": {
+    "id": 381,
+    "prof": {
+      "Name": [
+        "Ambiguous",
+        "Ambiguous Enigma High Boon Descendant Adjective Proficiency",
+        "unclear, unknown, vague, cryptic, equivocal"
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Ambiguous lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "382": {
+    "id": 382,
+    "prof": {
+      "Name": [
+        "Unknown Locations",
+        "Unknown Location Enigma High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Unknown Locations lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "383": {
+    "id": 383,
+    "prof": {
+      "Name": [
+        "Perplexing",
+        "Perplexing Enigma High Boon Adjective Proficiency",
+        "confusing, complicated, baffling, puzzling, mysterious"
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Perplexing lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "384": {
+    "id": 384,
+    "prof": {
+      "Name": [
+        "Complicated",
+        "Complicated Enigma High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Complicated lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "385": {
+    "id": 385,
+    "prof": {
+      "Name": [
+        "Confusing Locations",
+        "Confusing Location Enigma High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Confusing Locations lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "386": {
+    "id": 386,
+    "prof": {
+      "Name": [
+        "Obscure",
+        "Obscure Enigma High Boon Adjective Proficiency",
+        "faint, secluded, unclear, hidden, remote"
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Obscure lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "387": {
+    "id": 387,
+    "prof": {
+      "Name": [
+        "Faint",
+        "Faint Enigma High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Faint lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "388": {
+    "id": 388,
+    "prof": {
+      "Name": [
+        "Secluded Locations",
+        "Secluded Location Enigma High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Secluded Locations lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "389": {
+    "id": 389,
+    "prof": {
+      "Name": [
+        "Secretive",
+        "Secretive Enigma High Boon Adjective Proficiency",
+        "covert, concealed, private, stealthy, reclusive"
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Secretive lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "390": {
+    "id": 390,
+    "prof": {
+      "Name": [
+        "Covert",
+        "Covert Enigma High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Covert lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "391": {
+    "id": 391,
+    "prof": {
+      "Name": [
+        "Concealed Locations",
+        "Concealed Location Enigma High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Concealed Locations lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "392": {
+    "id": 392,
+    "prof": {
+      "Name": [
+        "Cryptic",
+        "Cryptic Enigma High Boon Adjective Proficiency",
+        "mysterious, puzzling, enigmatic, obscure, arcane"
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Cryptic lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "393": {
+    "id": 393,
+    "prof": {
+      "Name": [
+        "Mysterious",
+        "Mysterious Enigma High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Mysterious lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "394": {
+    "id": 394,
+    "prof": {
+      "Name": [
+        "Mysterious Locations",
+        "Mysterious Location Enigma High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Mysterious Locations lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "395": {
+    "id": 395,
+    "prof": {
+      "Name": [
+        "Enigmatic",
+        "Enigmatic Enigma Very-High Boon Adjective Proficiency",
+        "mysterious, occult, shadowy, cryptic, puzzling"
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Enigmatic lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "396": {
+    "id": 396,
+    "prof": {
+      "Name": [
+        "Occult",
+        "Occult Enigma Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Occult lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "397": {
+    "id": 397,
+    "prof": {
+      "Name": [
+        "Shadowy Locations",
+        "Shadowy Location Enigma Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Shadowy Locations lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "398": {
+    "id": 398,
+    "prof": {
+      "Name": [
+        "Indecipherable",
+        "Indecipherable Enigma Very-High Boon Adjective Proficiency",
+        "illegible, labyrinthine, unreadable, mysterious, obscure"
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Indecipherable lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "399": {
+    "id": 399,
+    "prof": {
+      "Name": [
+        "Illegible",
+        "Illegible Enigma Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Illegible lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "400": {
+    "id": 400,
+    "prof": {
+      "Name": [
+        "Labyrinthine Locations",
+        "Labyrinthine Location Enigma Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Vague and cryptic, yet deeply significant, the mystery of Labyrinthine Locations lies hidden beneath layers of sub-rosa secrets and ambiguous hints.",
+      "Tags": {
+        "Facets": [
+          "4",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

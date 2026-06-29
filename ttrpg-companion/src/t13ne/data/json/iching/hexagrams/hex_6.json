@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 6,
+    "Name": "Conflict",
+    "Entity": "&#19909;",
+    "Logical": 58,
+    "Trigrams": [
+      5,
+      0
+    ],
+    "Hexagram_Text": "Sung, or Conflict, is pretty self explanatory. Only when we meet opposition are we truly defined, it is through argument that we learn about our own position. Of course, Conflict can not solve every problem, but sometimes it is necessary before we can move forwards.",
+    "Unchanging": "Whenever you stalemate or draw with an opponent add a success level.",
+    "Line1": "Conflict Over Trivial Matters",
+    "Line2": "Yielding",
+    "Line3": "Basing Expectations on the Past",
+    "Line4": "No Win",
+    "Line5": "Arguments",
+    "Line6": "Defend a Prize"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you oppose another, supply a contrary view, argument, or theory, or enter combat",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "everyone agrees with you",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yang",
+        "Condition": "you de-escalate a situation, avoid conflict or find a peaceful solution",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yin",
+        "Condition": "you calmly withdraw from conflict, surrender, or yield",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yang",
+        "Condition": "each Phase of any Opposed Ordeal",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yin",
+        "Condition": "being defeated/injured",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yin",
+        "Condition": "you argue and someone argues back",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yin",
+        "Condition": "you win, or when another challenges you",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Opposition is strong and the more the Quester directly conflicts with them the stronger they will become. It would be wise for the Quester to work carefully and even withdraw, or politically ally with those who oppose them, if at all possible.",
+    "Quest_Complete": "Despite the Quest being completed there still exists conflict from the opposition, they will try to reclaim, or seek revenge, what they have lost.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester is caught up in a conflict at its initial stages, but if the Quester engages with the conflict it will create additional Hurdles, Obstacles or Failure Levels, however if they de-escalate the situation, avoid conflict, or drop the issue, they will instead add a Success Level.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester faces opposition that is more powerful than themselves, any action other than surrender, retreat or yielding will add an additional Hurdle, Obstacle or Failure Level to the Ordeal or Test. ",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The Quester finds themselves aligned with the old-guard, either by supporting the status-quo directly, expecting the old-guard to behave as they have in the past and planning accordingly, or by claiming territory from the enemies of the old-guard. As long as the old guard are on side the Quester will add a Success Level to their Tests and Ordeals, but should the Quester in anyway threaten the status-quo the old-guard will turn upon them adding Obstacles, Hurdles or Failure Levels for each offence instead.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester appears strong to the opposition, and they are unlikely to attack, however if the Quester escalates the situation and attacks the opposition they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test, and reveal they are actually not as strong as the opposition has assumed. The Quester who uses their perceived advantage to negotiate may instead add a Success Level.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "A conflict is inevitable, but the winner may be decided by a third party who will judge the winner. This may involve a court case, arguments, pleas to authority, etc. There is no loss of honour or risk of injury in this arbitration, even if this case is lost. The only way this could go wrong is if someone were to actually escalate the conflict which will add at least one Hurdle, Obstacle or Failure Level to that side&#39;s Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester has won the conflict, but now they face the problem of any champion, those who seek the title are now approaching to challenge them constantly. From genuinely dangerous experienced opponents to every up and coming kid trying to make a name for themselves. These contenders often add a Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "The upper trigram, whose image is heaven, has an upward movement; the lower trigram, water, in accordance with its nature tends downward. Thus the two halves move away from each other, giving rise to the idea of conflict. The attribute of the Creative is strength, that of the Abysmal is danger, guile. Where cunning has force before it, there is conflict. A third indication of conflict, in terms of character, is presented by the combination of deep cunning within and fixed determination outwardly. A person of this character will certainly be quarrelsome.",
+    "The_Image": {
+      "text": "Heaven and water go their opposite ways:\nThe image of CONFLICT.\nThus in all his transactions the superior man\nCarefully considers the beginning.",
+      "comments": "The image indicates that the causes of conflict are latent in the opposing tendencies of the two trig rams. Once these opposing tendencies appear, conflict is inevitable. To avoid it, therefore, everything must be taken carefully into consideration in the very beginning. If rights and duties are exactly defined, or if, in a group, the spiritual trends of the individuals harmonize, the cause of conflict is removed in advance."
+    },
+    "The_Judgment": {
+      "text": "CONFLICT. You are sincere\nAnd are being obstructed.\nA cautious halt halfway brings good fortune.\nGoing through to the end brings misfortune.\nIt furthers one to see the great man.\nIt does not further one to cross the great water.",
+      "comments": "Conflict develops when one feels himself to be in the right and runs into opposition. If one is not convinced of being in the right, opposition leads to craftiness or high-handed encroachment but not to open conflict. If a man is entangled in a conflict, his only salvation lies in being so clear-headed and inwardly strong that he is always ready to come to terms by meeting the opponent halfway. To carry one the conflict to the bitter end has evil effects even when one is the right, because the enmity is then perpetuated. It is important to see the great man, that is, an impartial man whose authority is great enough to terminate the conflict amicably or assure a just decision. In times of strife, crossing the great water is to be avoided, that is, dangerous enterprises are not to be begun, because in order to be successful they require concerted unity of focus. Conflict within weakens the power to conquer danger without."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "If one does not perpetuate the affair,\nThere is a little gossip.\nIn the end, good fortune comes.",
+        "comments": "While a conflict is in the incipient stage, the best thing To do is to drop the issue. Especially when the adversary is stronger, it is not advisable to risk pushing the conflict to a decision. It may come to a slight dispute, but in the end all goes well."
+      },
+      "2": {
+        "text": "One cannot engage in conflict;\nOne returns home, gives way.\nThe people of his town,\nThree hundred households,\nRemain free of guilt.",
+        "comments": "In a struggle with an enemy of superior strength, retreat is no disgrace. Timely withdrawal prevents bad consequences. If, out of a false sense of honor, a man allowed himself to be tempted into an unequal conflict, he would be drawing down disaster upon himself. In such a case a wise and conciliatory attitude benefits the whole community, which will then not be drawn into the conflict."
+      },
+      "3": {
+        "text": "To nourish oneself on ancient virtue induces perseverance.\nDanger. In the end, good fortune comes.\nIf by chance you are in the service of a king,\nSeek not works.",
+        "comments": "This is a warning of the danger that goes with an expansive disposition. Only that which has been honestly acquired through merit remains a permanent possession. It can happen that such a possession may be contested, but since it is really one's own, one cannot be robbed of it. Whatever a man possesses through the strength of his own nature cannot be lost. If one enters the service of a superior, one can avoid conflict only by not seeking works for the sake of prestige. It is enough if the work is done: let the honor go to the other."
+      },
+      "4": {
+        "text": "One cannot engage in conflict.\nOne turns back and submits to fate,\nChanges one's attitude,\nAnd finds peace in perseverance.\nGood fortune.",
+        "comments": "This refers to a person whose inner attitude at first lacks peace. He does not feel content with his situation and would like to improve it through conflict. In contrast tot the situation of the nine in the second place, he is dealing with a weaker opponent and might therefore succeed. But he cannot carry on the fight, because, since right is not on his side, he cannot justify the conflict to his conscience. Therefore he turns back and accepts his fate. He changes his mind and finds lasting peace in being at one with eternal law. This brings good fortune."
+      },
+      "5": {
+        "text": "To contend before him\nBrings supreme good fortune.",
+        "comments": "This refers to an arbiter in a conflict who is powerful and just, and strong enough to lend weight to the right side. A dispute can be turned over to him with confidence. If one is in the right, one attains great good fortune."
+      },
+      "6": {
+        "text": "Even if by chance a leather belt is bestowed on one,'\nBy the end of a morning\nIt will have been snatched away three times.",
+        "comments": "Here we have someone who has carried a conflict to the bitter end and has triumphed. He is granted a decoration, but his happiness does not last. He is attacked again and again, and the result is conflict without end."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Conflict'. Internalize this core philosophy: The upper trigram, whose image is heaven, has an upward movement; the lower trigram, water, in accordance with its nature tends downward. Thus the two halves move away from each other, giving rise to the idea of conflict. The attribute of the Creative is strength, that of the Abysmal is danger, guile. Where cunning has force before it, there is conflict. A third indication of conflict, in terms of character, is presented by the combination of deep cunning within and fixed determination... Your current worldview is: \"Sung, or Conflict, is pretty self explanatory. Only when we meet opposition are we truly defined, it is through argument that we learn about our own position. Of course, Conflict can not solve every problem, but sometimes it is necessary before we can move forwards.\". Let your choices be subtly driven by these conditions: you oppose another, supply a contrary view, argument, or theory, or enter combat, everyone agrees with you. When interacting, mirror the wisdom found in the commentary: \"Conflict develops when one feels himself to be in the right and runs into opposition. If one is not convinced of being in the right, opposition leads to craftiness or high-handed encroachment but not to open conflict. If a man is entangled in a conflict, his only salvation lies in being so...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Conflict'. The primary quest objective is: The Opposition is strong and the more the Quester directly conflicts with them the stronger they will become. It would be wise for the Quester to work carefully and even withdraw, or politically ally with those who oppose them, if at all possible.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: The image indicates that the causes of conflict are latent in the opposing tendencies of the two trig rams. Once these opposing tendencies appear, conflict is inevitable. To avoid it, therefore, everything must be taken carefully into consideration in the very beginning. If rights and duties are exactly defined, or if, in a group, the spiritual trends of the individuals harmonize, the cause of... Use the following line-specific challenges to pace the story: The Quester is caught up in a conflict at its initial stages, but if the Quester engages with the conflict it will create additional Hurdles, Obstacles or Failure Levels, however if they de-escalate the situation, avoid conflict, or drop the issue, they will instead add a Success Level. | The Quester faces opposition that is more powerful than themselves, any action other than surrender, retreat or yielding will add an additional Hurdle, Obstacle or Failure Level to the Ordeal or Test.  | The Quester finds themselves aligned with the old-guard, either by supporting the status-quo directly, expecting the old-guard to behave as they have in the past and planning accordingly, or by claiming territory from the enemies of the old-guard. As long as the old guard are on side the Quester will add a Success Level to their Tests and Ordeals, but should the Quester in anyway threaten the status-quo the old-guard will turn upon them adding Obstacles, Hurdles or Failure Levels for each offence instead. | The Quester appears strong to the opposition, and they are unlikely to attack, however if the Quester escalates the situation and attacks the opposition they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test, and reveal they are actually not as strong as the opposition has assumed. The Quester who uses their perceived advantage to negotiate may instead add a Success Level. | A conflict is inevitable, but the winner may be decided by a third party who will judge the winner. This may involve a court case, arguments, pleas to authority, etc. There is no loss of honour or risk of injury in this arbitration, even if this case is lost. The only way this could go wrong is if someone were to actually escalate the conflict which will add at least one Hurdle, Obstacle or Failure Level to that side&#39;s Ordeal or Test. | The Quester has won the conflict, but now they face the problem of any champion, those who seek the title are now approaching to challenge them constantly. From genuinely dangerous experienced opponents to every up and coming kid trying to make a name for themselves. These contenders often add a Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Conflict Over Trivial Matters): Mirror the internal state described in the commentary: \"While a conflict is in the incipient stage, the best thing To do is to drop the issue. Especially when the adversary is stronger, it is not advisable to risk pushing the conflict to a decision. It may come to a slight dispute, but in the end all...\" Your actions should be framed by the goal: you de-escalate a situation, avoid conflict or find a peaceful solution.",
+        "Plot": "Plot Complication Line 1 (Conflict Over Trivial Matters): Introduce a challenge based on the interpretation: \"While a conflict is in the incipient stage, the best thing To do is to drop the issue. Especially when the adversary is stronger, it is not advisable to risk pushing the conflict to a decision. It may come to a slight dispute, but in the end all...\" The specific quest objective for this stage is: The Quester is caught up in a conflict at its initial stages, but if the Quester engages with the conflict it will create additional Hurdles, Obstacles or Failure Levels, however if they de-escalate the situation, avoid conflict, or drop the issue, they will instead add a Success Level."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Yielding): Mirror the internal state described in the commentary: \"In a struggle with an enemy of superior strength, retreat is no disgrace. Timely withdrawal prevents bad consequences. If, out of a false sense of honor, a man allowed himself to be tempted into an unequal conflict, he would be drawing down disaster...\" Your actions should be framed by the goal: you calmly withdraw from conflict, surrender, or yield.",
+        "Plot": "Plot Complication Line 2 (Yielding): Introduce a challenge based on the interpretation: \"In a struggle with an enemy of superior strength, retreat is no disgrace. Timely withdrawal prevents bad consequences. If, out of a false sense of honor, a man allowed himself to be tempted into an unequal conflict, he would be drawing down disaster...\" The specific quest objective for this stage is: The Quester faces opposition that is more powerful than themselves, any action other than surrender, retreat or yielding will add an additional Hurdle, Obstacle or Failure Level to the Ordeal or Test. "
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Basing Expectations on the Past): Mirror the internal state described in the commentary: \"This is a warning of the danger that goes with an expansive disposition. Only that which has been honestly acquired through merit remains a permanent possession. It can happen that such a possession may be contested, but since it is really one's...\" Your actions should be framed by the goal: each Phase of any Opposed Ordeal.",
+        "Plot": "Plot Complication Line 3 (Basing Expectations on the Past): Introduce a challenge based on the interpretation: \"This is a warning of the danger that goes with an expansive disposition. Only that which has been honestly acquired through merit remains a permanent possession. It can happen that such a possession may be contested, but since it is really one's...\" The specific quest objective for this stage is: The Quester finds themselves aligned with the old-guard, either by supporting the status-quo directly, expecting the old-guard to behave as they have in the past and planning accordingly, or by claiming territory from the enemies of the old-guard. As long as the old guard are on side the Quester will add a Success Level to their Tests and Ordeals, but should the Quester in anyway threaten the status-quo the old-guard will turn upon them adding Obstacles, Hurdles or Failure Levels for each offence instead."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (No Win): Mirror the internal state described in the commentary: \"This refers to a person whose inner attitude at first lacks peace. He does not feel content with his situation and would like to improve it through conflict. In contrast tot the situation of the nine in the second place, he is dealing with a weaker...\" Your actions should be framed by the goal: being defeated/injured.",
+        "Plot": "Plot Complication Line 4 (No Win): Introduce a challenge based on the interpretation: \"This refers to a person whose inner attitude at first lacks peace. He does not feel content with his situation and would like to improve it through conflict. In contrast tot the situation of the nine in the second place, he is dealing with a weaker...\" The specific quest objective for this stage is: The Quester appears strong to the opposition, and they are unlikely to attack, however if the Quester escalates the situation and attacks the opposition they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test, and reveal they are actually not as strong as the opposition has assumed. The Quester who uses their perceived advantage to negotiate may instead add a Success Level."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Arguments): Mirror the internal state described in the commentary: \"This refers to an arbiter in a conflict who is powerful and just, and strong enough to lend weight to the right side. A dispute can be turned over to him with confidence. If one is in the right, one attains great good fortune.\" Your actions should be framed by the goal: you argue and someone argues back.",
+        "Plot": "Plot Complication Line 5 (Arguments): Introduce a challenge based on the interpretation: \"This refers to an arbiter in a conflict who is powerful and just, and strong enough to lend weight to the right side. A dispute can be turned over to him with confidence. If one is in the right, one attains great good fortune.\" The specific quest objective for this stage is: A conflict is inevitable, but the winner may be decided by a third party who will judge the winner. This may involve a court case, arguments, pleas to authority, etc. There is no loss of honour or risk of injury in this arbitration, even if this case is lost. The only way this could go wrong is if someone were to actually escalate the conflict which will add at least one Hurdle, Obstacle or Failure Level to that side&#39;s Ordeal or Test."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Defend a Prize): Mirror the internal state described in the commentary: \"Here we have someone who has carried a conflict to the bitter end and has triumphed. He is granted a decoration, but his happiness does not last. He is attacked again and again, and the result is conflict without end.\" Your actions should be framed by the goal: you win, or when another challenges you.",
+        "Plot": "Plot Complication Line 6 (Defend a Prize): Introduce a challenge based on the interpretation: \"Here we have someone who has carried a conflict to the bitter end and has triumphed. He is granted a decoration, but his happiness does not last. He is attacked again and again, and the result is conflict without end.\" The specific quest objective for this stage is: The Quester has won the conflict, but now they face the problem of any champion, those who seek the title are now approaching to challenge them constantly. From genuinely dangerous experienced opponents to every up and coming kid trying to make a name for themselves. These contenders often add a Hurdle, Obstacle or Failure Level to their Ordeal or Test."
+      }
+    }
+  }
+}

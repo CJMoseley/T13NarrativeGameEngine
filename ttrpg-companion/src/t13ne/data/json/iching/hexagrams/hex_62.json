@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 62,
+    "Name": "Exceeding In Smallness",
+    "Entity": "&#19965; ",
+    "Logical": 12,
+    "Trigrams": [
+      6,
+      3
+    ],
+    "Hexagram_Text": "Xiao Guo, Exceeding In Smallness (or Small Preponderance), teaches us that small things outnumber big ones. The insects are more numerous than the horses. The wren flies through the hedge not above it, teaching us not to over-reach ourselves, or stretch too high too soon. This is a strength in weakness that cannot be overcome as it will yield before you, until you are engulfed.",
+    "Unchanging": "You may add Incarna Draw (Boon Double Reduced) Success Levels to any mundane, easy or common task, Test or action or any action that is Low Stakes.",
+    "Line1": "Bird Hits Window",
+    "Line2": "Bypass Grandfather",
+    "Line3": "Struck From Behind",
+    "Line4": "Meeting Danger",
+    "Line5": "Dense Clouds, No Rain",
+    "Line6": "Overshooting"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you play cards you previously Prepared",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you Draw a Court Card in any Context",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yang",
+        "Condition": "you act without preparation, do not look before you leap, or are Distracted",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yang",
+        "Condition": "you show sensitivity or ignore normal procedure",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yin",
+        "Condition": "you put yourself at risk",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yin",
+        "Condition": "you face a problem head on, or keep your guard up",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you stay silent, act in secret, or call on help from an elder",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yang",
+        "Condition": "you act ambitiously, miss a target, or use overkill to try and guarantee success",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Exceeding In Smallness Quest signifies a situation when subtle changes are occurring, a time where it is important to concentrate on the details. These Quests often include a backdrop of shortages and resource-management. This is a time when small deeds can have the most impact, when emotion can overcome ceremony or law, and grand deeds can collapse and fail without warning. These Quests often also ask the Quester to stand with the lowest people, the commoners, or street-folk, often against an opposition of politicians, billionaires, nobles, or lawyers",
+    "Quest_Complete": "The Quest that ends in The Exceeding Greatness Hexagram ends with a situation where the Quester should not count on great success, but they should manage to hold onto the minor successes they have achieved. This is most often expressed as the war is not over, but this battle has ended, and even if you didn&#39;t win, you at least survived. It indicates a failure of the Quester&#39;s strength in comparison to the might of the opposition at this time.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester has created a problem that adds an Obstacle, Hurdle or Failure Level to their Ordeal or Test, usually this is caused by them attempt something too complex too early, jumping the gun in some way, but if they keep to the most simple solution and don&#39;t over-think the situation they can add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "If the Quester is overly ambitious, or breaks rules this adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test, however if the rule broken is broken with sensitivity, and for appropriate reasons then this may instead add a Success Level.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The Quester encounters a sign (often small and easily overlooked) that indicates there is danger around them, such as hearing a noise behind you. If they are not cautious, and ignore this small detail (they do not turn and look at the noise and potential attacker) then this brings the Quester into danger adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester encounters a dangerous situation or circumstance. Unless they yield to this danger, demonstrating extreme caution, and do not push on with their goal yet, then they add a Hurdle, Obstacle or Failure Level to the Ordeal or Test. If instead they withdraw and while keeping on guard begin training or practising to eventually overcome this danger and reach their goal, then they may add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester cannot proceed, as he has no suitable companion to help with a specific task, but a suitable companion exists, but is retired. If the Quester can tempt this retired person out to help then they may add a Success Level to their Test or Ordeal, otherwise they will add at least one Failure Level, Hurdle or Obstacle instead.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester is in danger of overstepping their bounds in some way. If their goals are not small, and they do not try to force success then they will add a Success Level to their Ordeal or Test, but if they do overreach, acting too ambitiously, or with too much force, then they will instead add an Obstacle, Hurdle or Failure Level.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "While in the hexagram Ta Kuo, PREPONDERANCE OF THE GREAT\n\n28, the strong lines preponderate and are within, inclosed between weak lines at the top and bottom, the present hexagram has weak lines preponderating, though here again they are on the outside, the strong lines being within. This indeed is the basis of the exceptional situation indicated by the hexagram. When strong lines are outside, we have the hexagram I, PROVIDING NOURISHMENT\n\n27, or Chung Fu, INNER TRUTH,\n\n61; neither represents and exceptional state. When strong elements within preponderate, they necessarily enforce their will. This creates struggle and exceptional conditions in general. But in the present hexagram it is the weak element that perforce must mediate with the outside world. If a man occupies a position of authority for which he is by nature really inadequate, extraordinary prudence is necessary.",
+    "The_Image": {
+      "text": "Thunder on the mountain:\n\nThe image of PREPONDERANCE OF THE SMALL.\n\nThus in his conduct the superior man gives preponderance to reverence.\nIn bereavement he gives preponderance to grief.\nIn his expenditures he gives preponderance to thrift.",
+      "comments": "Thunder on the mountain is different from thunder on the plain. In the mountains, thunder seems much nearer; outside the mountains, it is less audible than the thunder of an ordinary storm. Thus the superior man derives an imperative from this image: he must always fix his eyes more closely and more directly on duty than does the ordinary man, even though this might make his behavior seem petty to the outside world. He is exceptionally conscientious in his actions. In bereavement emotion means more to him than ceremoniousness. In all his personal expenditures he is extremely simple and unpretentious. In comparison with the man of the masses, all this makes him stand out as exceptional. But the essential significance of his attitude lies in the fact that in external matters he is on the side of the lowly."
+    },
+    "The_Judgment": {
+      "text": "PREPONDERANCE OF THE SMALL. Success.\nPerseverance furthers.\n\nSmall things may be done; great things should not be done.\n\nThe flying bird brings the message:\nIt is not well to strive upward,\nIt is well to remain below.\nGreat good fortune.\n\nExceptional modesty and conscientiousness are sure to be rewarded with success; however, if a man is not to throw himself away, it is important that they should not become empty form and subservience but be combined always with a correct dignity in personal behavior. We must understand the demands of the time in order to find the necessary offset for its deficiencies and damages. In any event we must not count on great success, since the requisite strength is lacking. In this lies the importance of the message that one should not strive after lofty things but hold to lowly things. The structure of the hexagram gives rise to the idea that this message is brought by a bird. In Ta Kuo, PREPONDERANCE OF THE GREAT",
+      "comments": "28, the four strong, heavy lines within, supported only by two weak lines without, give the image of a sagging ridgepole. Here the supporting weak lines are both outside and preponderant; this gives the image of a soaring bird. But a bird should not try to surpass itself and fly into the sun; it should descend to the earth, where its nest is. In this way it gives the message conveyed by the hexagram."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "The bird meets with misfortune through flying.",
+        "comments": "A bird ought to remain in the nest until it is fledged. If it tries to fly before this, it invites misfortune. Extraordinary measures should be resorted to only when all else fails. At first we ought to put up with traditional ways as long as possible; otherwise we exhaust ourselves and our energy and still achieve nothing."
+      },
+      "2": {
+        "text": "She passes by her ancestor\nAnd meets her ancestress.\nHe does not reach his prince\nAnd meets the official.",
+        "comments": "No blame.\n\nTwo exceptional situations are instanced here. In the temple of ancestors, where alternation of generations prevails, the grandson stands on the same side as the grandfather. Hence his closest relations are with the grandfather. The present line designates the grandson's wife, who during the sacrifice passes by the ancestor and goes toward the ancestress. This unusual behavior is, however, an expression of her modesty. She ventures rather to approach the ancestress, for she feels related to her by their common sex. Hence here deviation from the rule is not a mistake. Another image is that of the official who, in compliance with regulation, first seeks an audience with his prince. If he is not successful in this, he does not try to force anything but goes about conscientious fulfillment of his duty, taking his place among the other officials. This extraordinary restraint is likewise not a mistake in exceptional times. (The rule is that every official should first have an audience with the prince by whom he is appointed. Here the appointment is made by the minister.)"
+      },
+      "3": {
+        "text": "If one is not extremely careful,",
+        "comments": "Somebody may come up from behind and strike him.\nMisfortune.\n\nAt certain times extraordinary caution is absolutely necessary. But it is just in such life situations that we find upright and strong personalities who, conscious of being in the right, disdain to hold themselves on guard, because they consider it petty. Instead, they go their way proud and unconcerned. But this self-confidence deludes them. There are dangers lurking for which they are unprepared. Yet such danger is not unavoidable; one can escape it if he understands that the time demands that he pay especial attention to small and insignificant thing."
+      },
+      "4": {
+        "text": "No blame. He meets him without passing by.\nGoing brings danger. One must be on guard.\nDo not act. Be constantly persevering.",
+        "comments": "Hardness of character is tempered by yielding position so that no mistakes are made. The situation here calls for extreme caution; one must make no attempt of one's own initiative to reach the desired end. And if one were to go on, endeavoring one must be on guard and not act but continue inwardly to persevere."
+      },
+      "5": {
+        "text": "Dense clouds,",
+        "comments": "No rain from our western territory.\n\nThe prince shoots and hits him who is in the cave.\n\nAs a high place is pictured here, the image of a flying bird has become that of flying clouds. But dense as the clouds are, they race across the sky and give no rain. Similarly, in exceptional times there may be a born ruler who is qualified to set the world in order, but who cannot achieve anything or confer blessing on the people because he stands alone and has no helpers. Is such times a man must seek out helpers with whose aid he can carry out the task. But these helpers must be modestly sought out in the retirement to which they have withdrawn. It is not in the fame nor their great names but their genuine achievements that are important. Through such modesty the right man is found, and the exceptional task is carried out in spite of all difficulties."
+      },
+      "6": {
+        "text": "He passes him by, not meeting him.",
+        "comments": "The flying bird leaves him.\nMisfortune.\n\nThis means bad luck and injury.\n\nIf one overshoots the goal, one cannot hit it. If a bird will not come to its nest but flies higher and higher, it eventually falls into the hunter's net. He who in times of extraordinary salience of small things does not know how to call a halt, but restlessly seeks to press on and on, draws upon himself misfortune at the hands of gods and men, because he deviates from the order of nature."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Exceeding In Smallness'. Internalize this core philosophy: While in the hexagram Ta Kuo, PREPONDERANCE OF THE GREAT\n\n28, the strong lines preponderate and are within, inclosed between weak lines at the top and bottom, the present hexagram has weak lines preponderating, though here again they are on the outside, the strong lines being within. This indeed is the basis of the exceptional situation indicated by the hexagram. When strong lines are outside, we have the hexagram I, PROVIDING NOURISHMENT\n\n27, or Chung Fu, INNER TRUTH,\n\n61; neither represents... Your current worldview is: \"Xiao Guo, Exceeding In Smallness (or Small Preponderance), teaches us that small things outnumber big ones. The insects are more numerous than the horses. The wren flies through the hedge not above it, teaching us not to over-reach ourselves, or stretch too high too soon. This is a strength in weakness that cannot be overcome as it will yield before you, until you are engulfed.\". Let your choices be subtly driven by these conditions: you play cards you previously Prepared, you Draw a Court Card in any Context. When interacting, mirror the wisdom found in the commentary: \"28, the four strong, heavy lines within, supported only by two weak lines without, give the image of a sagging ridgepole. Here the supporting weak lines are both outside and preponderant; this gives the image of a soaring bird. But a bird should not try to surpass itself and fly into the sun; it...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Exceeding In Smallness'. The primary quest objective is: The Exceeding In Smallness Quest signifies a situation when subtle changes are occurring, a time where it is important to concentrate on the details. These Quests often include a backdrop of shortages and resource-management. This is a time when small deeds can have the most impact, when emotion can overcome ceremony or law, and grand deeds can collapse and fail without warning. These Quests often also ask the Quester to stand with the lowest people, the commoners, or street-folk, often against an opposition of politicians, billionaires, nobles, or lawyers. Introduce environmental or social complications that reflect the 'Image' of this hexagram: Thunder on the mountain is different from thunder on the plain. In the mountains, thunder seems much nearer; outside the mountains, it is less audible than the thunder of an ordinary storm. Thus the superior man derives an imperative from this image: he must always fix his eyes more closely and more directly on duty than does the ordinary man, even though this might make his behavior seem petty... Use the following line-specific challenges to pace the story: The Quester has created a problem that adds an Obstacle, Hurdle or Failure Level to their Ordeal or Test, usually this is caused by them attempt something too complex too early, jumping the gun in some way, but if they keep to the most simple solution and don&#39;t over-think the situation they can add a Success Level instead. | If the Quester is overly ambitious, or breaks rules this adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test, however if the rule broken is broken with sensitivity, and for appropriate reasons then this may instead add a Success Level. | The Quester encounters a sign (often small and easily overlooked) that indicates there is danger around them, such as hearing a noise behind you. If they are not cautious, and ignore this small detail (they do not turn and look at the noise and potential attacker) then this brings the Quester into danger adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test. | The Quester encounters a dangerous situation or circumstance. Unless they yield to this danger, demonstrating extreme caution, and do not push on with their goal yet, then they add a Hurdle, Obstacle or Failure Level to the Ordeal or Test. If instead they withdraw and while keeping on guard begin training or practising to eventually overcome this danger and reach their goal, then they may add a Success Level instead. | The Quester cannot proceed, as he has no suitable companion to help with a specific task, but a suitable companion exists, but is retired. If the Quester can tempt this retired person out to help then they may add a Success Level to their Test or Ordeal, otherwise they will add at least one Failure Level, Hurdle or Obstacle instead. | The Quester is in danger of overstepping their bounds in some way. If their goals are not small, and they do not try to force success then they will add a Success Level to their Ordeal or Test, but if they do overreach, acting too ambitiously, or with too much force, then they will instead add an Obstacle, Hurdle or Failure Level.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Bird Hits Window): Mirror the internal state described in the commentary: \"A bird ought to remain in the nest until it is fledged. If it tries to fly before this, it invites misfortune. Extraordinary measures should be resorted to only when all else fails. At first we ought to put up with traditional ways as long as...\" Your actions should be framed by the goal: you act without preparation, do not look before you leap, or are Distracted.",
+        "Plot": "Plot Complication Line 1 (Bird Hits Window): Introduce a challenge based on the interpretation: \"A bird ought to remain in the nest until it is fledged. If it tries to fly before this, it invites misfortune. Extraordinary measures should be resorted to only when all else fails. At first we ought to put up with traditional ways as long as...\" The specific quest objective for this stage is: The Quester has created a problem that adds an Obstacle, Hurdle or Failure Level to their Ordeal or Test, usually this is caused by them attempt something too complex too early, jumping the gun in some way, but if they keep to the most simple solution and don&#39;t over-think the situation they can add a Success Level instead."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Bypass Grandfather): Mirror the internal state described in the commentary: \"No blame.\n\nTwo exceptional situations are instanced here. In the temple of ancestors, where alternation of generations prevails, the grandson stands on the same side as the grandfather. Hence his closest relations are with the grandfather. The...\" Your actions should be framed by the goal: you show sensitivity or ignore normal procedure.",
+        "Plot": "Plot Complication Line 2 (Bypass Grandfather): Introduce a challenge based on the interpretation: \"No blame.\n\nTwo exceptional situations are instanced here. In the temple of ancestors, where alternation of generations prevails, the grandson stands on the same side as the grandfather. Hence his closest relations are with the grandfather. The...\" The specific quest objective for this stage is: If the Quester is overly ambitious, or breaks rules this adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test, however if the rule broken is broken with sensitivity, and for appropriate reasons then this may instead add a Success Level."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Struck From Behind): Mirror the internal state described in the commentary: \"Somebody may come up from behind and strike him.\nMisfortune.\n\nAt certain times extraordinary caution is absolutely necessary. But it is just in such life situations that we find upright and strong personalities who, conscious of being in the right,...\" Your actions should be framed by the goal: you put yourself at risk.",
+        "Plot": "Plot Complication Line 3 (Struck From Behind): Introduce a challenge based on the interpretation: \"Somebody may come up from behind and strike him.\nMisfortune.\n\nAt certain times extraordinary caution is absolutely necessary. But it is just in such life situations that we find upright and strong personalities who, conscious of being in the right,...\" The specific quest objective for this stage is: The Quester encounters a sign (often small and easily overlooked) that indicates there is danger around them, such as hearing a noise behind you. If they are not cautious, and ignore this small detail (they do not turn and look at the noise and potential attacker) then this brings the Quester into danger adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Meeting Danger): Mirror the internal state described in the commentary: \"Hardness of character is tempered by yielding position so that no mistakes are made. The situation here calls for extreme caution; one must make no attempt of one's own initiative to reach the desired end. And if one were to go on, endeavoring one...\" Your actions should be framed by the goal: you face a problem head on, or keep your guard up.",
+        "Plot": "Plot Complication Line 4 (Meeting Danger): Introduce a challenge based on the interpretation: \"Hardness of character is tempered by yielding position so that no mistakes are made. The situation here calls for extreme caution; one must make no attempt of one's own initiative to reach the desired end. And if one were to go on, endeavoring one...\" The specific quest objective for this stage is: The Quester encounters a dangerous situation or circumstance. Unless they yield to this danger, demonstrating extreme caution, and do not push on with their goal yet, then they add a Hurdle, Obstacle or Failure Level to the Ordeal or Test. If instead they withdraw and while keeping on guard begin training or practising to eventually overcome this danger and reach their goal, then they may add a Success Level instead."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Dense Clouds, No Rain): Mirror the internal state described in the commentary: \"No rain from our western territory.\n\nThe prince shoots and hits him who is in the cave.\n\nAs a high place is pictured here, the image of a flying bird has become that of flying clouds. But dense as the clouds are, they race across the sky and give no...\" Your actions should be framed by the goal: you stay silent, act in secret, or call on help from an elder.",
+        "Plot": "Plot Complication Line 5 (Dense Clouds, No Rain): Introduce a challenge based on the interpretation: \"No rain from our western territory.\n\nThe prince shoots and hits him who is in the cave.\n\nAs a high place is pictured here, the image of a flying bird has become that of flying clouds. But dense as the clouds are, they race across the sky and give no...\" The specific quest objective for this stage is: The Quester cannot proceed, as he has no suitable companion to help with a specific task, but a suitable companion exists, but is retired. If the Quester can tempt this retired person out to help then they may add a Success Level to their Test or Ordeal, otherwise they will add at least one Failure Level, Hurdle or Obstacle instead."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Overshooting): Mirror the internal state described in the commentary: \"The flying bird leaves him.\nMisfortune.\n\nThis means bad luck and injury.\n\nIf one overshoots the goal, one cannot hit it. If a bird will not come to its nest but flies higher and higher, it eventually falls into the hunter's net. He who in times of...\" Your actions should be framed by the goal: you act ambitiously, miss a target, or use overkill to try and guarantee success.",
+        "Plot": "Plot Complication Line 6 (Overshooting): Introduce a challenge based on the interpretation: \"The flying bird leaves him.\nMisfortune.\n\nThis means bad luck and injury.\n\nIf one overshoots the goal, one cannot hit it. If a bird will not come to its nest but flies higher and higher, it eventually falls into the hunter's net. He who in times of...\" The specific quest objective for this stage is: The Quester is in danger of overstepping their bounds in some way. If their goals are not small, and they do not try to force success then they will add a Success Level to their Ordeal or Test, but if they do overreach, acting too ambitiously, or with too much force, then they will instead add an Obstacle, Hurdle or Failure Level."
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+[
+    {
+        "Type": "Paved",
+        "Description": "The terrain is smooth, open, level and firm underfoot. Such as you would find on a well-maintained city street, piazza or courtyard.",
+        "Rules": "Does not modify Range, Reach or Movement at all."
+    },
+    {
+        "Type": "Uneven",
+        "Description": "The terrain is paved, but uneven, usually by using river stones or cobbles, or due to wear and tear to bricks or flags.",
+        "Rules": "Adds +1 Difficulty to all Movement on the terrain. Does not modify Range or Reach"
+    },
+    {
+        "Type": "Field",
+        "Description": "The terrain is mostly smooth, although the occasional divot or lump may hide in the long grasses.",
+        "Rules": "Adds +1 Difficulty to all Movement and Range calculations, but does not affect Reach."
+    },
+    {
+        "Type": "Rough",
+        "Description": "The terrain is rough ground, this may be due to very uneven ground or dense clutter such as furniture.",
+        "Rules": "1 &half; &times; Difficulty for Movement. Adds +1 Difficulty to all Range and Reach Difficulties."
+    },
+    {
+        "Type": "Soft",
+        "Description": "The terrain is soft, such as very muddy soil, deep snow, fine sand, or scree. Soft terrain is not a stable platform for firing except when prone.",
+        "Rules": "Doubles the Difficulty of Movement and Reach. Adds +3 Difficulty to Range unless prone."
+    },
+    {
+        "Type": "Slick",
+        "Description": "The terrain is slick, often smooth rock with a layer of slime, or ice, that makes movement and large weapons more Difficult.",
+        "Rules": "Doubles Difficulty of Movement and Reach. Adds +1 Difficulty to Range."
+    },
+    {
+        "Type": "Moving",
+        "Description": "The terrain is moving, this is common in vehicles, such as the pitch and roll of a ship's deck or the yawing of a train corridor.",
+        "Rules": "Adds between +1d4 to +1d12 Difficulty to all Range, Reach and Movement Actions on the vehicle depending upon the speed, acceleration, violence of the ocean, etc."
+    },
+    {
+        "Type": "Flooded",
+        "Description": "The terrain is covered in a liquid, usually water. This is common to oceans, seas, lakes, rivers, shorelines, streams, as well as during floods. Often the liquid will be in motion, whether flowing with gravity or the tide, thermal currents, vortices, undertows, or waves.",
+        "Rules": "Reach and Movement Difficulties increase by 2% for each centimetre depth of liquid (such that movement Difficulties are Tripled (200%) in 1 metre deep water). Adds +1 to Range Difficulties for each metre of depth to a maximum of +12 (this reflects waves and other ambient motion)."
+    },
+    {
+        "Type": "Jagged",
+        "Description": "The terrain is covered in something dangerous, such as sharp rocks, brambles, thorns, or poisonous plants. The terrain can wound Characters and Damage Descendants.",
+        "Rules": "All movement (including Reach attacks) in the area accumulates Pips towards a Wound at the current Stakes. Typically Characters will wish to restrict movement so only Distract Wounds are possible. Any Wound of Flesh Wound or Higher will immediately end a movement Action at the moment it happens (even before the end of expected movement). Does not effect Range."
+    }
+]

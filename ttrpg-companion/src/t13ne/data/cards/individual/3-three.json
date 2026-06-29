@@ -1,0 +1,118 @@
+{
+	"Card_Corner": "3",
+	"Card": "Three",
+	"Suit": "3",
+	"IconSuit": "♣",
+	"Pips": "3",
+	"Unicode": "&#x1f0d3;",
+	"Svg": "images/cards-svg/3C.svg",
+	"Wound_Level": 1,
+	"Facet": "Sin",
+	"Tao": [
+		1,
+		1
+	],
+	"Narrative_Meaning": "Threes signify creativity and and communication. They can indicate hope, imagination, inspiration and conversations.",
+	"Image": "",
+	"Yarn": {
+		"Yarn_Name": "The Serpent",
+		"Yarn_Description": "The Serpent card represents words spoken with forked tongues, duplicity, shedding one's skin, rebirth, or abandoning the past. It is the card of liars, sinners and the untrustworthy. However, as duplicitous and sinful as the Serpent may be, it is also a card of cool, creative, rational thought and reasoning.",
+		"Significator": {
+			"Plot": "The Serpent Plot is all about deceit, lies, and sins. It may be a tale of crime, lust, or passion, or it could be a counter-intelligence operation undertaken for Monarch and country. ",
+			"Side": "If a side is marked with The Serpent then they are clearly not to be trusted, they may not be actually evil (although often are), but something about circumstance or their nature means they will lie every scene about something, and betray, double-cross, or triple-cross someone before the end of the Story.",
+			"Character": "The Serpent Significator indicates a lying snake of a Character. <p>They <strong>Gain Yin</strong> when they stay calm, are rational, or reasonable.</p><p>They <strong>Gain Yang</strong> when they are duplicitous, misleading or creative. </p><p>They <strong>Gain Chi</strong> when they lie or sin.</p><p>They gain +1 Success Level to all Psyche defences.</p>",
+			"Diegetic_Character": "A silver-tongued and duplicitous individual, master of misdirection and cool-headed reasoning. They are at their best when weaving complex webs of deceit, finding success in the space between truth and lies while maintaining a calm, rational exterior.",
+			"Scene": "The Serpent Scene is a Scene of deception, lies or occasionally, a big snake. Yarn-Tellers can play the card to succeed in any kind of lying or deception, they can also play it to create a Monster or to stay cool when under psychological pressure."
+		},
+		"Beat_Type": "3",
+		"Conflict_Embodiment": "2",
+		"Facet_Embodiment": "15",
+		"Hook_Aspect": "I-Ching (Gains)",
+		"Aspect_Description": "The Hook targets the Character's I-Ching offering a situation that maximises the potential Gains of the all their I-Ching HHexagrams and Changing Lines.",
+		"Hook": "Temptation",
+		"Hook_Description": "Offer a Gain to the Character, as their eventual reward.",
+		"Gain": "Fruit of the Tree of Knowledge (A Lore / Learning Descendant)",
+		"Diegetic_Gain": "A forbidden secret or a profound insight that offers a transformative understanding of the world, though often at a heavy price.",
+		"Fray": "Persuasion",
+		"Fray_Description": "Persuasion is a Low to Soul Stakes Ordeal where a PC tries to change another's mind (often another Side's Embodiment) or has someone try to change their minds.",
+		"Snag": "Skin-Shedding",
+		"Snag_Description": "Snakes rejuvenate by shedding their skins. And the Snag here has an embodiment doing the same. Perhaps the enemy was defeated, the PCs watched him fall, but here he is again, fresh and ready for them, or maybe half-way through the Fray one of the PCs (or more likely an Ally) reveals they were working for the enemy all along, or having won the Fray the PCs now realise that they have fought for the wrong side.",
+		"NPC": {
+			"Archetype": "Snake",
+			"Persona": 18,
+			"Core": 5,
+			"Hitch": 1,
+			"Description": "Snakes are aggressive fiends, who use others for their own purposes, actually abuse is probably a better term. Snakes lie, and cheat not for gain or revenge, but because it is simply their nature. They have few redeeming features, but do have a Vulnerability, often an allergy or weakness."
+		},
+		"Sweeping": "Rebirth",
+		"Sweeping_Text": "The PCs are rejuvenated, refreshed, improved, reborn, or upgraded. Some circumstance will heal the worst of their Wounds, resolve a Hitch, or add an Alternate to a Character. The Alternate is usually uniquely suited for exactly the situation the Character finds themselves in.",
+		"History": "Fresh",
+		"History_Description": "The Serpent indicates that the past is unimportant to this current situation, that isn't to say there isn't some back-story, simply that it does not strictly inform or set-up the current situation directly.",
+		"Situation": "Scoundrel",
+		"Situation_Description": "The Serpent indicates that the current situation is created by a scoundrel, often an evil, mendacious trickster. The scoundrel may be a dangerous love interest, a swindler and confidence-trickster, a scruffy looking smuggler, a charming illusionist, a predatory psychic medium or whatever.",
+		"Solution": "Reason",
+		"Solution_Description": "The Serpent indicates that the solution to the current situation can be reasoned out logically, rationally, or sometimes intuitively, but still dispassionately, once all impossibilities have been discarded.",
+		"Revelations": {
+			"About": "The Story",
+			"About_Description": "The information is about the current situation and plot. It might include information about one side of the Conflict, all the sides and anything in between. It is normal when providing information to always reveal information about the Dominant Side as well as any others.",
+			"Info": "Warning",
+			"Info_Description": "Some information is just a warning, the rattlesnake does not shake its tail when hunting, but only when it is afraid. Warnings tell us things aren't safe, that some people are not to be trusted, or that now they are coming for you. Some warn us to back off, or simply that a food might contain nuts...",
+			"Vector": "Insinuations",
+			"Vector_Description": "Insinuations tell you nothing directly, but hint and suggest information, they are meant to be artful, covert and subtle idea inceptions. A master manipulator can make you question or believe anything they want with their insinuations, without any of those beliefs or doubts ever being directly stated.",
+			"Alternate": "Sins",
+			"Alternate_Description": "The information is all negative information about a Character or thing. It may be a police rap sheet, or the tales of infamy about a ruler or villain.",
+			"Detail": "Disinformation",
+			"Detail_Description": "Disinformation details can be subtle evasions and distortions of an actual truth or just blatant lies. At their most basic and simple disinformation details may be a lie, like a cover story that doesn't even explain what a single observer reported, at their most complex and covert the disinformation may include logical traps and assumptions that will even misdirect and misinform those who ignore the actual disinformation that is presented."
+		}
+	},
+	"Obstacle": {
+		"Type": "Hitch",
+		"Description": "The way ahead is blocked by some device that will trigger a Hitch for one Character (often the PCs Love Interest). If a Character is afraid of Spiders then the way is blocked with webs."
+	},
+	"Tarot": {
+		"WyrdTarot": "Aegis",
+		"Normal": "Discards all cards of an incoming attack.",
+		"Crossed": "Adds +10 Penetration Pips to an Attack card in play."
+	},
+	"Ordeal": {
+		"Ordeal_Type": "Opposed Ordeal",
+		"Stages": "3",
+		"Ordeal_Spread": "Forking",
+		"Stakes": "Medium",
+		"Test": "Lie (Heresy)",
+		"Obstacles": "1 Obstacle in a Court Stage",
+		"Suggested_Action": "Tempt",
+		"Stage": "Negotiate",
+		"Stage_Description": "Sometimes there are things in the we that you have to negotiate your way past, other times there are just difficult negotiations that you have to conduct.",
+		"Motional": "Flying Machine Chase",
+		"Motional_Description": "They're getting away in that aeroplane / helicopter / grav-platform, get after them, or better yet, get ahead of them.",
+		"Tide_of_Battle": "Ceasefire",
+		"Tide_of_Battle_Text": "The Ebbing forces call a ceasefire offering the Flowing forces a chance to accept and push for surrender, or attack with an advantage (+1 Pip per card).",
+		"Fight": "Third Force",
+		"Fight_Description": "The fight is initially between two sides, often equally matched, during the third Phase a third force arrives that is at least as powerful as the least powerful force already fighting."
+	},
+	"Lea": {
+		"PathColour": "Green/Turquoise Herbivore",
+		"Bulmas": "Herd, Broccen, Vermis, Labyrinthine, All-Walkers",
+		"AnimalCategory": "Meiofauna",
+		"Example": "Small Nematode worms / shrimps / Lavae / Grubs ",
+		"Bodypart": "Eggs",
+		"Notes": "A lot of boring insects paths at this level"
+	},
+	"Stress": {
+		"Type": "Avoiding",
+		"Description": "You can always avoid Stress, sometimes if you are being stressed by a task you can just get it done, better yet, sometimes you can tell someone else to do it, and go and do something else.",
+		"Rules": "A Character may remove 1 point of Stress by ordering or paying another Character to help them with what ever is stressing them."
+	},
+	"Trauma": {
+		"Type": "Sexual",
+		"Description": "Trauma can affect the base part of the mind, sexual function, fetishes, and attaction can all be significantly altered by Traumas. Characters who are affected by sexual trauma often have profoundly altered sexual tendencies, insecurities and practices. Some shutdown those aspects of themselves, others may seek to claim ownership by revelling in their changed behaviours.",
+		"Rules": "Trauma can affect a Character’s sexual behaviour, and desires. Often this will take the form of new sexual behaviours, fetishes and can reveal hidden aspects of a Character’s sexuality, other times this may shutdown sexual drives. The Character may Relieve 1 Stress by indulging in (or repressing) these new sexual desires and fetishes. Typically the number of new behaviours created is equal to the total Stress Reduced when the Trauma occurs (all current Stress is Relieved)."
+	},
+	"Age": {
+		"Type": "Crime",
+		"Description": "An Age of Crime is occurring. During this age criminal enterprise is most important for the society, whether created by draconian prohibitive laws, or liberal market forces this society contains a strong criminal underworld. Black markets, drug dealing, thefts, bank robberies, violence and criminals, thieves, and gangsters rule the streets and the headlines, and the police if active at all, are either corrupt, or act as just another gang. In this age it can seem like crime not only pays, but may be the only pay-day. You will find few rich people in this time who do not have criminal contacts and investments.",
+		"Diegetic_Description": "A gritty and lawless time, where the structures of order are overshadowed by a rampant criminal underworld. It is an era of black markets, gang rule, and pervasive corruption, where survival often depends on having the right illicit connections and a willingness to operate outside the law.",
+		"Rules": "During the Age of Crime a society tends towards criminality and violence. Even high ranking members of society will have criminal contacts, such as drug-dealers, black marketeers, fences and even assassins."
+	}
+}

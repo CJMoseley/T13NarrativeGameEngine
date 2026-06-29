@@ -1,0 +1,22 @@
+[
+    {
+        "Type": "Flowing Tide Success Level",
+        "Description": "Things are going well for this Character and their side right now.",
+        "Rules": "A Flowing Tide Success Level can act as either a Facet Success Level (such as Trials Gladiator Successes, or Generic such as Extra Effort."
+    },
+    {
+        "Type": "Flowing Tide Failure Level",
+        "Description": "Things should be going well, but they are not for some reason.",
+        "Rules": "A Flowing Tide Failure Level can act as only a Generic Failure Level, and usually acts Narratively (e.g. as a Small loss or Tonal Dissonance."
+    },
+    {
+        "Type": "Ebbing Tide Success Level",
+        "Description": "Things should be going badly, but somehow they are not.",
+        "Rules": "An Ebbing Tide Success level can act as a Generic Success Level only (e.g. )."
+    },
+    {
+        "Type": "Ebbing Tide Failure Level",
+        "Description": "Things should be going badly for this Character and definitly are.",
+        "Rules": "An Ebbing Tide Failure Level may act as a Facet Failure Level or as a Generic Failure Level as the Yarn-Teller prefers."
+    }
+]

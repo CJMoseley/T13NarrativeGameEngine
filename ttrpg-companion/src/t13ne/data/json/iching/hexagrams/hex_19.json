@@ -1,0 +1,177 @@
+{
+  "Hexagram": {
+    "Number": 19,
+    "Name": "Advance",
+    "Entity": "&#19922;",
+    "Logical": 3,
+    "Trigrams": [
+      1,
+      7
+    ],
+    "Hexagram_Text": "Lin, Advance (or Nearing or Approach), symbolises the need to advance or approach others. Helping and guiding those who surround us allows all of us to reach our goals.",
+    "Unchanging": "When you play cards to complete Ordeal Stages, or bypass Obstacles, you may take others with you by paying the additional targets Sway cost for the number of followers.",
+    "Line1": "Joint Approach",
+    "Line2": "Sincere Advance",
+    "Line3": "Comfort Does Not Advance",
+    "Line4": "Complete Advance",
+    "Line5": "Wise Advance",
+    "Line6": "A Sage Advance"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Stress",
+        "Condition": "someone is doing something dangerous, foolish or unwise, in your opinion",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "you succeed with others, explain something, or are sensitive to others emotions",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yin",
+        "Condition": "you sincerely discuss any issue with others",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yang",
+        "Condition": "you point out uncomfortable truths to others, or fail",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yang",
+        "Condition": "you are supportive of others, or ask searching questions",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you learn something about another, or someone you advised succeeds",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yang",
+        "Condition": "you are generous, put another's needs before your own, or show you are big-hearted",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Advance Quest is easy, everything is favourable to the Quest and Quester right now (difficulties will be calculated as high-power). The only way this could turn around on the Quester is if they forget this good fortune will not continue forever and do not make plans for their inevitable change in fortune.",
+    "Quest_Complete": "When the Quest ends in the Advance Hexagram then the end of the Quest should coincide with some dramatic change, such as the beginning of spring, the sun setting, or the end of the rain. This is a purely coincidental cosmetic effect, that will sometimes be mistaken for some synchronicity or nefarious planning. Otherwise the Hexagram has no effect upon the Quest.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "If the Quester is working alone, without help from companions or allies it will add a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test each time.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "If the Quester has company and has spoken truthfully with their companions, they will gain a Success Level on their Test or Ordeal. If they have lied or misled their companions then they will add a Failure Level, Hurdle or Obstacles.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "Things are going well, but this is itself a reason for caution, as the situation offers the Quester distractions and comfortable reasons to relax. If the Quester becomes complacent, easy-going or careless about their Quest then this will automatically add an Obstacle, Hurdle or Failure Level to their Ordeal or Test each time. If the Quester takes their responsibility seriously and makes deliberate action to further their Quest despite how well things are already going, then this will instead add a Success Level.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "Somehow the Quester has access to the ear of someone with some social standing or power (often an authority). This gives the Quester an opportunity, if they are supportive of this authority, or ask them questions about their previous mistakes then this will add a Success Level to the Quester&#39;s Ordeal or Test as they are accepted by this person who may even become a companion or ally. However, if the Quester does not display the proper respect to this person (couching questions in the appropriate manner), or is not supportive, then this will add a Hurdle, Obstacle or Failure Level to the Ordeal or Test instead.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quest includes a Test or Ordeal that is currently beyond the abilities of the Quester, that is revealed to the Quester now. The Quester should take time to seek out companions, employees, or allies with the appropriate expertise for this Test or Ordeal. If the Quester does not recruit the appropriate experts (or having hired them ignores their advice or worse yet micromanages them) then this will add a Failure Level, Hurdle or Obstacle to the already difficult Test or Ordeal. If the Quester recruits an expert that they allow to complete the Test or Ordeal with their expertise this will add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The situation ahead is complicated and requires some specialist wisdom or insight from a retired expert. Without assistance from this particular reclusive sage the Quester must add a Failure Level, Obstacle or Hurdle to their Test or Ordeal. The assistance of this sage is often difficult to win, requiring some additional Test or Ordeal from the Quester to prove their worth, although occasionally simply being generous to the old beggar on the mountain or having their patience tested by the old, big-eared, three-toed, green creature that lives in the swamp is enough. However, if the Quester impresses the sage enough to guide or help them, they will have much larger plans for the Quester than the current Quest, and may take on a Mentor or Quest-giver role for another Quest or Story.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "The Chinese word lin has a range of meanings that is not exhausted by any single word of another language. The ancient explanations in the Book of Changes give as its first meaning, \"becoming great.\" What becomes great are the two strong lines growing into the hexagram from below; the light-giving power expands with them. The meaning is then further extended to include the concept of approach, especially the approach of what is lower. Finally the meaning includes the attitude of condescension of a man in high position toward the people, and in general the setting to work on affairs. This hexagram is linked with the twelfth month (January-February), when after the winter solstice, the light power begins to ascend again.",
+    "The_Image": {
+      "text": "The earth above the lake:\nThe image of APPROACH.\nThus the superior man is inexhaustible\nIn his will to teach,\nAnd without limits\nIn his tolerance and protection of the people.",
+      "comments": "The earth borders upon the lake from above. This symbolizes the approach and condescension of the man of higher position to those beneath him. The two parts of the image indicate what his attitude toward these people will be. Just as the lake is inexhaustible in depth, so the sage is inexhaustible in his readiness to teach mankind, and just as the earth is boundlessly wide, sustaining and caring for all creatures on it, so the sage sustains and cares for all people and excludes no part of humanity."
+    },
+    "The_Judgment": {
+      "text": "APPROACH has supreme success.\nPerseverance furthers.\nWhen the eighth month comes,\n\n. There will be misfortune.",
+      "comments": "The hexagram as a whole points to a time of joyous, hopeful progress. Spring is approaching. Joy and forbearance bring high and low nearer together. Success is certain. But we must work with determination and perseverance to make full use of the propitiousness of the time. And on thing more: spring does not last forever. In the eighth month the aspects are reversed. Then only two strong, light lines are left; these do not advance but are in retreat (see next hexagram). We must take heed of this change in good time. If we meet evil before it becomes reality-before it has even begun to stir-we can master it."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Joint approach.\nPerseverance brings good fortune.",
+        "comments": "The good begins to prevail and to find response in influential circles. This in turn is an incentive to men of ability. IT is well to join this upward trend, but we must not let ourselves be carried away by the current of the time; we must adhere perseveringly to what is right. This bring good fortune."
+      },
+      "2": {
+        "text": "Joint approach.\nGood fortune.\nEverything furthers.",
+        "comments": "When the stimulus to approach comes from a high place, and when a man has the inner strength and consistency that need no admonition, good fortune will ensue. Nor need the future cause any concern. He is well aware that everything earthly is transitory, and that a descent follows upon every rise, but need not be confused by this universal law of fate. Everything serves to further. Therefore he will travel the paths of life swiftly, honestly, and valiantly."
+      },
+      "3": {
+        "text": "Comfortable approach.\nNothing that would further.\nIf one is induced to grieve over it,\nOne becomes free of blame.",
+        "comments": "Things are going well for a man: he achieves power and influence. But in this lies the danger that he may relax, and confident of his position, allow the easygoing, careless mood to show itself in his dealings with other people. This would inevitably be harmful. But there is possibility of a change of mood. If he regrets his mistaken attitude and feels the responsibility of an influential position, he frees himself of faults."
+      },
+      "4": {
+        "text": "Complete approach.\nNo blame.",
+        "comments": "While the three lower lines indicate rise to power and influence, the three upper lines show the attitude of persons in higher position toward those of lower rank for whom they procure influence. Here is shown the open-minded approach of a person of high rank to a man of ability whom he draws in to his own circle, regardless of class prejudice. This is very favorable."
+      },
+      "5": {
+        "text": "Wise approach.\nThis is right for a great prince.\nGood fortune.",
+        "comments": "A prince, or anyone in a leading position, must have the wisdom to attract to himself people of ability who are expert in directing affairs. His wisdom consists both in selecting the right people and in allowing those chosen to have a free hand without interference from him. For only through such self-restraint will he find the experts needed to satisfy all of his requirements."
+      },
+      "6": {
+        "text": "Great hearted approach.\nGood-hearted approach.\nGood fortune. No blame.",
+        "comments": "A sage who has put the world behind him and who in spirit has already withdrawn from life may, under certain circumstances, decide to return once more to the here and now and to approach other men. This means great good fortune for the men whom he teaches and helps. And for him this great hearted humbling of himself is blameless."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Advance'. Internalize this core philosophy: The Chinese word lin has a range of meanings that is not exhausted by any single word of another language. The ancient explanations in the Book of Changes give as its first meaning, \"becoming great.\" What becomes great are the two strong lines growing into the hexagram from below; the light-giving power expands with them. The meaning is then further extended to include the concept of approach, especially the approach of what is lower. Finally the meaning includes the attitude of condescension... Your current worldview is: \"Lin, Advance (or Nearing or Approach), symbolises the need to advance or approach others. Helping and guiding those who surround us allows all of us to reach our goals.\". Let your choices be subtly driven by these conditions: someone is doing something dangerous, foolish or unwise, in your opinion. When interacting, mirror the wisdom found in the commentary: \"The hexagram as a whole points to a time of joyous, hopeful progress. Spring is approaching. Joy and forbearance bring high and low nearer together. Success is certain. But we must work with determination and perseverance to make full use of the propitiousness of the time. And on thing more: spring...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Advance'. The primary quest objective is: The Advance Quest is easy, everything is favourable to the Quest and Quester right now (difficulties will be calculated as high-power). The only way this could turn around on the Quester is if they forget this good fortune will not continue forever and do not make plans for their inevitable change in fortune.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: The earth borders upon the lake from above. This symbolizes the approach and condescension of the man of higher position to those beneath him. The two parts of the image indicate what his attitude toward these people will be. Just as the lake is inexhaustible in depth, so the sage is inexhaustible in his readiness to teach mankind, and just as the earth is boundlessly wide, sustaining and caring... Use the following line-specific challenges to pace the story: If the Quester is working alone, without help from companions or allies it will add a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test each time. | If the Quester has company and has spoken truthfully with their companions, they will gain a Success Level on their Test or Ordeal. If they have lied or misled their companions then they will add a Failure Level, Hurdle or Obstacles. | Things are going well, but this is itself a reason for caution, as the situation offers the Quester distractions and comfortable reasons to relax. If the Quester becomes complacent, easy-going or careless about their Quest then this will automatically add an Obstacle, Hurdle or Failure Level to their Ordeal or Test each time. If the Quester takes their responsibility seriously and makes deliberate action to further their Quest despite how well things are already going, then this will instead add a Success Level. | Somehow the Quester has access to the ear of someone with some social standing or power (often an authority). This gives the Quester an opportunity, if they are supportive of this authority, or ask them questions about their previous mistakes then this will add a Success Level to the Quester&#39;s Ordeal or Test as they are accepted by this person who may even become a companion or ally. However, if the Quester does not display the proper respect to this person (couching questions in the appropriate manner), or is not supportive, then this will add a Hurdle, Obstacle or Failure Level to the Ordeal or Test instead. | The Quest includes a Test or Ordeal that is currently beyond the abilities of the Quester, that is revealed to the Quester now. The Quester should take time to seek out companions, employees, or allies with the appropriate expertise for this Test or Ordeal. If the Quester does not recruit the appropriate experts (or having hired them ignores their advice or worse yet micromanages them) then this will add a Failure Level, Hurdle or Obstacle to the already difficult Test or Ordeal. If the Quester recruits an expert that they allow to complete the Test or Ordeal with their expertise this will add a Success Level instead. | The situation ahead is complicated and requires some specialist wisdom or insight from a retired expert. Without assistance from this particular reclusive sage the Quester must add a Failure Level, Obstacle or Hurdle to their Test or Ordeal. The assistance of this sage is often difficult to win, requiring some additional Test or Ordeal from the Quester to prove their worth, although occasionally simply being generous to the old beggar on the mountain or having their patience tested by the old, big-eared, three-toed, green creature that lives in the swamp is enough. However, if the Quester impresses the sage enough to guide or help them, they will have much larger plans for the Quester than the current Quest, and may take on a Mentor or Quest-giver role for another Quest or Story.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Joint Approach): Mirror the internal state described in the commentary: \"The good begins to prevail and to find response in influential circles. This in turn is an incentive to men of ability. IT is well to join this upward trend, but we must not let ourselves be carried away by the current of the time; we must adhere...\" Your actions should be framed by the goal: you succeed with others, explain something, or are sensitive to others emotions.",
+        "Plot": "Plot Complication Line 1 (Joint Approach): Introduce a challenge based on the interpretation: \"The good begins to prevail and to find response in influential circles. This in turn is an incentive to men of ability. IT is well to join this upward trend, but we must not let ourselves be carried away by the current of the time; we must adhere...\" The specific quest objective for this stage is: If the Quester is working alone, without help from companions or allies it will add a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test each time."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Sincere Advance): Mirror the internal state described in the commentary: \"When the stimulus to approach comes from a high place, and when a man has the inner strength and consistency that need no admonition, good fortune will ensue. Nor need the future cause any concern. He is well aware that everything earthly is...\" Your actions should be framed by the goal: you sincerely discuss any issue with others.",
+        "Plot": "Plot Complication Line 2 (Sincere Advance): Introduce a challenge based on the interpretation: \"When the stimulus to approach comes from a high place, and when a man has the inner strength and consistency that need no admonition, good fortune will ensue. Nor need the future cause any concern. He is well aware that everything earthly is...\" The specific quest objective for this stage is: If the Quester has company and has spoken truthfully with their companions, they will gain a Success Level on their Test or Ordeal. If they have lied or misled their companions then they will add a Failure Level, Hurdle or Obstacles."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Comfort Does Not Advance): Mirror the internal state described in the commentary: \"Things are going well for a man: he achieves power and influence. But in this lies the danger that he may relax, and confident of his position, allow the easygoing, careless mood to show itself in his dealings with other people. This would...\" Your actions should be framed by the goal: you point out uncomfortable truths to others, or fail.",
+        "Plot": "Plot Complication Line 3 (Comfort Does Not Advance): Introduce a challenge based on the interpretation: \"Things are going well for a man: he achieves power and influence. But in this lies the danger that he may relax, and confident of his position, allow the easygoing, careless mood to show itself in his dealings with other people. This would...\" The specific quest objective for this stage is: Things are going well, but this is itself a reason for caution, as the situation offers the Quester distractions and comfortable reasons to relax. If the Quester becomes complacent, easy-going or careless about their Quest then this will automatically add an Obstacle, Hurdle or Failure Level to their Ordeal or Test each time. If the Quester takes their responsibility seriously and makes deliberate action to further their Quest despite how well things are already going, then this will instead add a Success Level."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Complete Advance): Mirror the internal state described in the commentary: \"While the three lower lines indicate rise to power and influence, the three upper lines show the attitude of persons in higher position toward those of lower rank for whom they procure influence. Here is shown the open-minded approach of a person of...\" Your actions should be framed by the goal: you are supportive of others, or ask searching questions.",
+        "Plot": "Plot Complication Line 4 (Complete Advance): Introduce a challenge based on the interpretation: \"While the three lower lines indicate rise to power and influence, the three upper lines show the attitude of persons in higher position toward those of lower rank for whom they procure influence. Here is shown the open-minded approach of a person of...\" The specific quest objective for this stage is: Somehow the Quester has access to the ear of someone with some social standing or power (often an authority). This gives the Quester an opportunity, if they are supportive of this authority, or ask them questions about their previous mistakes then this will add a Success Level to the Quester&#39;s Ordeal or Test as they are accepted by this person who may even become a companion or ally. However, if the Quester does not display the proper respect to this person (couching questions in the appropriate manner), or is not supportive, then this will add a Hurdle, Obstacle or Failure Level to the Ordeal or Test instead."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Wise Advance): Mirror the internal state described in the commentary: \"A prince, or anyone in a leading position, must have the wisdom to attract to himself people of ability who are expert in directing affairs. His wisdom consists both in selecting the right people and in allowing those chosen to have a free hand...\" Your actions should be framed by the goal: you learn something about another, or someone you advised succeeds.",
+        "Plot": "Plot Complication Line 5 (Wise Advance): Introduce a challenge based on the interpretation: \"A prince, or anyone in a leading position, must have the wisdom to attract to himself people of ability who are expert in directing affairs. His wisdom consists both in selecting the right people and in allowing those chosen to have a free hand...\" The specific quest objective for this stage is: The Quest includes a Test or Ordeal that is currently beyond the abilities of the Quester, that is revealed to the Quester now. The Quester should take time to seek out companions, employees, or allies with the appropriate expertise for this Test or Ordeal. If the Quester does not recruit the appropriate experts (or having hired them ignores their advice or worse yet micromanages them) then this will add a Failure Level, Hurdle or Obstacle to the already difficult Test or Ordeal. If the Quester recruits an expert that they allow to complete the Test or Ordeal with their expertise this will add a Success Level instead."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (A Sage Advance): Mirror the internal state described in the commentary: \"A sage who has put the world behind him and who in spirit has already withdrawn from life may, under certain circumstances, decide to return once more to the here and now and to approach other men. This means great good fortune for the men whom he...\" Your actions should be framed by the goal: you are generous, put another's needs before your own, or show you are big-hearted.",
+        "Plot": "Plot Complication Line 6 (A Sage Advance): Introduce a challenge based on the interpretation: \"A sage who has put the world behind him and who in spirit has already withdrawn from life may, under certain circumstances, decide to return once more to the here and now and to approach other men. This means great good fortune for the men whom he...\" The specific quest objective for this stage is: The situation ahead is complicated and requires some specialist wisdom or insight from a retired expert. Without assistance from this particular reclusive sage the Quester must add a Failure Level, Obstacle or Hurdle to their Test or Ordeal. The assistance of this sage is often difficult to win, requiring some additional Test or Ordeal from the Quester to prove their worth, although occasionally simply being generous to the old beggar on the mountain or having their patience tested by the old, big-eared, three-toed, green creature that lives in the swamp is enough. However, if the Quester impresses the sage enough to guide or help them, they will have much larger plans for the Quester than the current Quest, and may take on a Mentor or Quest-giver role for another Quest or Story."
+      }
+    }
+  }
+}

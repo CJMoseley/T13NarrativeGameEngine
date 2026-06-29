@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 32,
+    "Name": "Persistence",
+    "Entity": "&#19935;",
+    "Logical": 14,
+    "Trigrams": [
+      4,
+      3
+    ],
+    "Hexagram_Text": "Heng, Persistence (or Persevering or Duration), is symbolic of those aspects of life that are always enduring. No matter what happens, they pick themselves up, dust themselves off, and continue. This Persistence is what keeps us breathing, it is what holds together a successful marriage, and is what keeps the world turning, and planets and stars orbiting.",
+    "Unchanging": "Add +1 Success Level for each recent failure in the same Stage or Scene.",
+    "Line1": "Seeking Persistence Too Soon",
+    "Line2": "Regret Vanishes",
+    "Line3": "Persistently Mortified",
+    "Line4": "No Game in the Field",
+    "Line5": "Persistently Changing",
+    "Line6": "Even Persistence Fails"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you endure, persist, or try again",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you quit any task, Quest, Test, or Ordeal",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yang",
+        "Condition": "you are guided by intuition, jump to conclusions or rush in",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yin",
+        "Condition": "you change tactic, use a different approach, or try a simpler way",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yin",
+        "Condition": "you act embarrassed, humiliated, or ashamed",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yin",
+        "Condition": "you give up, leave, or go to try somewhere else",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you act strangely, irrationally or unconventionally",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yang",
+        "Condition": "you rush to conclusions, lack focus, act anxious, or walk away to relax",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Persistence Quest is about commitment, endurance and ongoing struggles. The Persistence Quest usually explores an established relationship that the Quester already has (a marriage, a partnership, a friendship, an enmity), drawing that character directly into the Quest in a way that they have not been before (so a love interest may get caught up in the Quest by being kidnapped, or believing the Quest to be some excuse to cheat insist on accompanying the Quester into danger). The Quest tests the Quester&#39;s commitment to this relationship and to the Quest, usually by changing things within the Quest (varying who the opposition actually is or what their abilities actually are) and even in the relationship (most often power dynamics within the relationship are changed).",
+    "Quest_Complete": "The Quest that ends in the Persistence Hexagram does not truly end, but instead adds some last minute complications that mean the Quest is far from completed. Usually this change will also increase the stakes of the Quest, often raising the Tension of the story simultaneously. Examples might include, having studied the artefact for days, and finally determined it is a puzzle box, now you must work out how to open it, or having opened it, now you must understand the clues that were hidden inside. If you were tasked with guarding something, a new threat that you were not warned about appears that continues to threaten what you are guarding, etc.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "If the Quester is impetuous, too quick to agree, or has high expectations, then add a Failure Level, Hurdle or Obstacle to the Test or Ordeal. If they are patient and slowly work towards their goal add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "Something about this situation is unusual, unnatural or even abnormal, because of this, any attempt to solve problems \"the usual way\", by \"trying harder\" or \"working smarter\", will add a Failure Level, Hurdle or Obstacle to the Quester&#39;s Test or Ordeal. If the Quester attempts something they normally would not, even something unlikely to succeed, in a restrained, cautious way, they will add a Success Level to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The Quest targets the Quester&#39;s character (such as their Persona, Core, Hitches, Resolved Hitches, Geometry, I-Ching) usually in the hopes of causing embarrassment, humiliation, shame, and distress. To this end the Quest will add a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test as a complication and whenever the Quester is actually embarrassed, humiliated or shamed.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "There is some deception or misunderstanding in the situation. The Quester is like a hunter in a field with no game, they are searching in the wrong place, or acting incorrectly somehow. Their quarry, the Quest itself, lies somewhere else, perhaps, or maybe they are approaching the Quest incorrectly, stalking when they should be baiting, or laying traps when they should be besieging. Unless the Quester changes their operation, or location, add a Failure Level, Hurdle or Obstacle to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "For a partnership, company or marriage to survive changing times, it must change its ways. This line indicates that the situation around the relationship is changing, perhaps the spouse or friend is terrified by the life the Quester is living, or perhaps they too are drawn in deeper, partners becoming friends or even lovers as their situations evolve. However, both partners must remain true to themselves, and any dishonesty or self-deception will add a Failure Level, Hurdle or Obstacle to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quest is best accomplished with more haste and less speed. Rushing around, leaping to conclusions and racing to the next location is going to cause an accident or mistake to happen. If the Quester hurries or rushes too much, not taking their time to check facts, for example, then add a Failure Level, Hurdle or Obstacle to the Test or Ordeal.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "The strong trigram Chên is above, the weak trigram Sun below. This hexagram is the inverse of the preceding one. In the latter we have influence, here we have union as an enduring condition. The two images are thunder and wind, which are likewise constantly paired phenomena. The lower trigram indicates gentleness within; the upper, movement without. In the sphere of social relationships, the hexagram represents the institution of marriage as the enduring union of the sexes. During courtship the young man subordinates himself to the girl, but in marriage, which is represented by the coming together of the eldest son and the eldest daughter, the husband is the directing and moving force outside, while the wife, inside, is gentle and submissive.",
+    "The_Image": {
+      "text": "Thunder and wind: the image of DURATION.\n\nThus the superior man stands firm\nAnd does not change has direction.",
+      "comments": "Thunder rolls, and the wind blows; both are examples of extreme mobility and so are seemingly the very opposite of duration, but the laws governing their appearance and subsidence, their coming and going, endure. In the same way the independence of the superior man is not based on rigidity and immobility of character. He always keeps abreast of the time and changes with it. What endures is the unswerving directive, the inner law of his being, which determines all his actions."
+    },
+    "The_Judgment": {
+      "text": "DURATION. Success. No blame.\nPerseverance furthers.\nIt furthers one to have somewhere to go.",
+      "comments": "Duration is a state whose movement is not worn down by hindrances. It is not a state of rest, for mere standstill is regression. Duration is rather the self-contained and therefore self-renewing movement of an organized, firmly integrated whole, taking place in accordance with immutable laws and beginning anew at every ending. The end is reached by an inward movement, by inhalation, systole, contraction, and this movement turns into a new beginning, in which the movement is directed outward, in exhalation, diastole, expansion. Heavenly bodies exemplify duration. They move in their fixed orbits, and because of this their light-giving power endures. The seasons of the year follow a fixed law of change and transformation, hence can produce effects that endure. So likewise the dedicated man embodies an enduring meaning in his way of life, and thereby the world is formed. In that which gives things their duration, we can come to understand the nature of all beings in heaven and on earth."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Seeking duration too hastily brings misfortune persistently.",
+        "comments": "Nothing that would further.\n\nWhatever endures can be created only gradually by long-continued work and careful reflection. In the same sense Lao-tse says: \"If we wish to compress something, we must first let it fully expand.\" He who demands too much at once is acting precipitately, and because he attempts too much, he ends by succeeding in nothing."
+      },
+      "2": {
+        "text": "Remorse disappears.",
+        "comments": "The situation is abnormal. A man's force of character is greater than the available material power. Thus he might be afraid of allowing himself to attempt something beyond his strength. However, since it is the time of DURATION, it is possible for him to control his inner strength and so to avoid excess. Cause for remorse then disappears."
+      },
+      "3": {
+        "text": "He who does not give duration to his character\nMeets with disgrace.\nPersistent humiliation.",
+        "comments": "If a man remains at the mercy of moods of hope or fear aroused by the outer world, he loses his inner consistency of character. Such inconsistency invariably leads to distressing experiences. These humiliations often come from an unforeseen quarter. Such experiences are not merely effects produced by the external world, but logical consequences evoked by his own nature."
+      },
+      "4": {
+        "text": "No game in the field.",
+        "comments": "If we are in pursuit of game and want to get a shot at a quarry, we must set about it in the right way. A man who persists in stalking game in a place where there is none may wait forever without finding any. Persistence in search is not enough. What is not sought in the right way is not found."
+      },
+      "5": {
+        "text": "Giving duration to one's character through perseverance.",
+        "comments": "This is good fortune for a woman, misfortune for a man.\n\nA woman should follow a man her whole life long, but a man should at all times hold to what is his duty at the given moment. Should he persistently seek to conform to the woman, it would be a mistake for him. Accordingly it is altogether right for a woman to hold conservatively to tradition, but a man must always be flexible and adaptable and allow himself to be guided solely by what his duty requires of him at the moment."
+      },
+      "6": {
+        "text": "Restlessness as an enduring condition brings misfortune.",
+        "comments": "There are people who live in a state of perpetual hurry without ever attaininginner composure. Restlessness not only prevents all thoroughness but actuallybecomes a danger if it is dominant in places of authority."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Persistence'. Internalize this core philosophy: The strong trigram Chên is above, the weak trigram Sun below. This hexagram is the inverse of the preceding one. In the latter we have influence, here we have union as an enduring condition. The two images are thunder and wind, which are likewise constantly paired phenomena. The lower trigram indicates gentleness within; the upper, movement without. In the sphere of social relationships, the hexagram represents the institution of marriage as the enduring union of the sexes. During courtship the... Your current worldview is: \"Heng, Persistence (or Persevering or Duration), is symbolic of those aspects of life that are always enduring. No matter what happens, they pick themselves up, dust themselves off, and continue. This Persistence is what keeps us breathing, it is what holds together a successful marriage, and is what keeps the world turning, and planets and stars orbiting.\". Let your choices be subtly driven by these conditions: you endure, persist, or try again, you quit any task, Quest, Test, or Ordeal. When interacting, mirror the wisdom found in the commentary: \"Duration is a state whose movement is not worn down by hindrances. It is not a state of rest, for mere standstill is regression. Duration is rather the self-contained and therefore self-renewing movement of an organized, firmly integrated whole, taking place in accordance with immutable laws and...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Persistence'. The primary quest objective is: The Persistence Quest is about commitment, endurance and ongoing struggles. The Persistence Quest usually explores an established relationship that the Quester already has (a marriage, a partnership, a friendship, an enmity), drawing that character directly into the Quest in a way that they have not been before (so a love interest may get caught up in the Quest by being kidnapped, or believing the Quest to be some excuse to cheat insist on accompanying the Quester into danger). The Quest tests the Quester&#39;s commitment to this relationship and to the Quest, usually by changing things within the Quest (varying who the opposition actually is or what their abilities actually are) and even in the relationship (most often power dynamics within the relationship are changed).. Introduce environmental or social complications that reflect the 'Image' of this hexagram: Thunder rolls, and the wind blows; both are examples of extreme mobility and so are seemingly the very opposite of duration, but the laws governing their appearance and subsidence, their coming and going, endure. In the same way the independence of the superior man is not based on rigidity and immobility of character. He always keeps abreast of the time and changes with it. What endures is the... Use the following line-specific challenges to pace the story: If the Quester is impetuous, too quick to agree, or has high expectations, then add a Failure Level, Hurdle or Obstacle to the Test or Ordeal. If they are patient and slowly work towards their goal add a Success Level instead. | Something about this situation is unusual, unnatural or even abnormal, because of this, any attempt to solve problems \"the usual way\", by \"trying harder\" or \"working smarter\", will add a Failure Level, Hurdle or Obstacle to the Quester&#39;s Test or Ordeal. If the Quester attempts something they normally would not, even something unlikely to succeed, in a restrained, cautious way, they will add a Success Level to the Test or Ordeal. | The Quest targets the Quester&#39;s character (such as their Persona, Core, Hitches, Resolved Hitches, Geometry, I-Ching) usually in the hopes of causing embarrassment, humiliation, shame, and distress. To this end the Quest will add a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test as a complication and whenever the Quester is actually embarrassed, humiliated or shamed. | There is some deception or misunderstanding in the situation. The Quester is like a hunter in a field with no game, they are searching in the wrong place, or acting incorrectly somehow. Their quarry, the Quest itself, lies somewhere else, perhaps, or maybe they are approaching the Quest incorrectly, stalking when they should be baiting, or laying traps when they should be besieging. Unless the Quester changes their operation, or location, add a Failure Level, Hurdle or Obstacle to the Test or Ordeal. | For a partnership, company or marriage to survive changing times, it must change its ways. This line indicates that the situation around the relationship is changing, perhaps the spouse or friend is terrified by the life the Quester is living, or perhaps they too are drawn in deeper, partners becoming friends or even lovers as their situations evolve. However, both partners must remain true to themselves, and any dishonesty or self-deception will add a Failure Level, Hurdle or Obstacle to the Test or Ordeal. | The Quest is best accomplished with more haste and less speed. Rushing around, leaping to conclusions and racing to the next location is going to cause an accident or mistake to happen. If the Quester hurries or rushes too much, not taking their time to check facts, for example, then add a Failure Level, Hurdle or Obstacle to the Test or Ordeal.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Seeking Persistence Too Soon): Mirror the internal state described in the commentary: \"Nothing that would further.\n\nWhatever endures can be created only gradually by long-continued work and careful reflection. In the same sense Lao-tse says: \"If we wish to compress something, we must first let it fully expand.\" He who demands too much...\" Your actions should be framed by the goal: you are guided by intuition, jump to conclusions or rush in.",
+        "Plot": "Plot Complication Line 1 (Seeking Persistence Too Soon): Introduce a challenge based on the interpretation: \"Nothing that would further.\n\nWhatever endures can be created only gradually by long-continued work and careful reflection. In the same sense Lao-tse says: \"If we wish to compress something, we must first let it fully expand.\" He who demands too much...\" The specific quest objective for this stage is: If the Quester is impetuous, too quick to agree, or has high expectations, then add a Failure Level, Hurdle or Obstacle to the Test or Ordeal. If they are patient and slowly work towards their goal add a Success Level instead."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Regret Vanishes): Mirror the internal state described in the commentary: \"The situation is abnormal. A man's force of character is greater than the available material power. Thus he might be afraid of allowing himself to attempt something beyond his strength. However, since it is the time of DURATION, it is possible for...\" Your actions should be framed by the goal: you change tactic, use a different approach, or try a simpler way.",
+        "Plot": "Plot Complication Line 2 (Regret Vanishes): Introduce a challenge based on the interpretation: \"The situation is abnormal. A man's force of character is greater than the available material power. Thus he might be afraid of allowing himself to attempt something beyond his strength. However, since it is the time of DURATION, it is possible for...\" The specific quest objective for this stage is: Something about this situation is unusual, unnatural or even abnormal, because of this, any attempt to solve problems \"the usual way\", by \"trying harder\" or \"working smarter\", will add a Failure Level, Hurdle or Obstacle to the Quester&#39;s Test or Ordeal. If the Quester attempts something they normally would not, even something unlikely to succeed, in a restrained, cautious way, they will add a Success Level to the Test or Ordeal."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Persistently Mortified): Mirror the internal state described in the commentary: \"If a man remains at the mercy of moods of hope or fear aroused by the outer world, he loses his inner consistency of character. Such inconsistency invariably leads to distressing experiences. These humiliations often come from an unforeseen quarter....\" Your actions should be framed by the goal: you act embarrassed, humiliated, or ashamed.",
+        "Plot": "Plot Complication Line 3 (Persistently Mortified): Introduce a challenge based on the interpretation: \"If a man remains at the mercy of moods of hope or fear aroused by the outer world, he loses his inner consistency of character. Such inconsistency invariably leads to distressing experiences. These humiliations often come from an unforeseen quarter....\" The specific quest objective for this stage is: The Quest targets the Quester&#39;s character (such as their Persona, Core, Hitches, Resolved Hitches, Geometry, I-Ching) usually in the hopes of causing embarrassment, humiliation, shame, and distress. To this end the Quest will add a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test as a complication and whenever the Quester is actually embarrassed, humiliated or shamed."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (No Game in the Field): Mirror the internal state described in the commentary: \"If we are in pursuit of game and want to get a shot at a quarry, we must set about it in the right way. A man who persists in stalking game in a place where there is none may wait forever without finding any. Persistence in search is not enough....\" Your actions should be framed by the goal: you give up, leave, or go to try somewhere else.",
+        "Plot": "Plot Complication Line 4 (No Game in the Field): Introduce a challenge based on the interpretation: \"If we are in pursuit of game and want to get a shot at a quarry, we must set about it in the right way. A man who persists in stalking game in a place where there is none may wait forever without finding any. Persistence in search is not enough....\" The specific quest objective for this stage is: There is some deception or misunderstanding in the situation. The Quester is like a hunter in a field with no game, they are searching in the wrong place, or acting incorrectly somehow. Their quarry, the Quest itself, lies somewhere else, perhaps, or maybe they are approaching the Quest incorrectly, stalking when they should be baiting, or laying traps when they should be besieging. Unless the Quester changes their operation, or location, add a Failure Level, Hurdle or Obstacle to the Test or Ordeal."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Persistently Changing): Mirror the internal state described in the commentary: \"This is good fortune for a woman, misfortune for a man.\n\nA woman should follow a man her whole life long, but a man should at all times hold to what is his duty at the given moment. Should he persistently seek to conform to the woman, it would be a...\" Your actions should be framed by the goal: you act strangely, irrationally or unconventionally.",
+        "Plot": "Plot Complication Line 5 (Persistently Changing): Introduce a challenge based on the interpretation: \"This is good fortune for a woman, misfortune for a man.\n\nA woman should follow a man her whole life long, but a man should at all times hold to what is his duty at the given moment. Should he persistently seek to conform to the woman, it would be a...\" The specific quest objective for this stage is: For a partnership, company or marriage to survive changing times, it must change its ways. This line indicates that the situation around the relationship is changing, perhaps the spouse or friend is terrified by the life the Quester is living, or perhaps they too are drawn in deeper, partners becoming friends or even lovers as their situations evolve. However, both partners must remain true to themselves, and any dishonesty or self-deception will add a Failure Level, Hurdle or Obstacle to the Test or Ordeal."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Even Persistence Fails): Mirror the internal state described in the commentary: \"There are people who live in a state of perpetual hurry without ever attaininginner composure. Restlessness not only prevents all thoroughness but actuallybecomes a danger if it is dominant in places of authority.\" Your actions should be framed by the goal: you rush to conclusions, lack focus, act anxious, or walk away to relax.",
+        "Plot": "Plot Complication Line 6 (Even Persistence Fails): Introduce a challenge based on the interpretation: \"There are people who live in a state of perpetual hurry without ever attaininginner composure. Restlessness not only prevents all thoroughness but actuallybecomes a danger if it is dominant in places of authority.\" The specific quest objective for this stage is: The Quest is best accomplished with more haste and less speed. Rushing around, leaping to conclusions and racing to the next location is going to cause an accident or mistake to happen. If the Quester hurries or rushes too much, not taking their time to check facts, for example, then add a Failure Level, Hurdle or Obstacle to the Test or Ordeal."
+      }
+    }
+  }
+}
