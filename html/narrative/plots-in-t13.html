@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="T13 Narrative Engine Rules - Plots in T13">
+    <title>Plots in T13 - T13 Rules</title>
+    <link rel="stylesheet" href="../css/ui-styles.css">
+    <link rel="stylesheet" href="../css/rules.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" src="../js/rule-components.js"></script>
+</head>
+<body class="t13-rules-page">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+        <div class="header-inner">
+            <div class="t13-logo" aria-hidden="true"></div>
+            <h1>T13 Narrative Engine</h1>
+        </div>
+    </header>
+    <div class="main-container">
+        <aside class="sidebar">
+            <nav class="rule-nav" aria-label="Rulebook Navigation"><ul><li><a href="../index.html">Home</a></li><li><details><summary>Core Concepts</summary><ul><li><a href="../core/boons.html">Boons</a></li><li><a href="../core/geometry-gematria-and-numerology.html">Geometry, Gematria and Numerology</a></li><li><a href="../core/facet-folio.html">Facet Folio</a></li><li><a href="../core/i-ching.html">I-Ching</a></li><li><a href="../core/core-concepts.html">Core Concepts</a></li></ul></details></li><li><details><summary>Mechanics</summary><ul><li><a href="../mechanics/tao-sway.html">Tao Sway</a></li><li><a href="../mechanics/facet-sway.html">Facet Sway</a></li><li><a href="../mechanics/chi.html">Chi</a></li><li><a href="../mechanics/yarn.html">Yarn</a></li><li><a href="../mechanics/twists.html">Twists</a></li><li><a href="../mechanics/sway.html">Sway</a></li><li><a href="../mechanics/card-guide.html">Card Guide</a></li><li><a href="../mechanics/card-spreads.html">Card Spreads</a></li><li><a href="../mechanics/proficiencies.html">Proficiencies</a></li><li><a href="../mechanics/hitches.html">Hitches</a></li><li><a href="../mechanics/annexes.html">Annexes</a></li><li><a href="../mechanics/character-catalysts.html">Character Catalysts</a></li><li><a href="../mechanics/modelling-resources.html">Modelling Resources</a></li><li><a href="../mechanics/test-value.html">Test (Value)</a></li><li><a href="../mechanics/test-card-draw.html">Test (Card Draw)</a></li><li><a href="../mechanics/test-dice.html">Test (Dice)</a></li><li><a href="../mechanics/stakes.html">Stakes</a></li><li><a href="../mechanics/success-and-failure-levels.html">Success and Failure Levels</a></li><li><a href="../mechanics/wounds.html">Wounds</a></li><li><a href="../mechanics/death-and-immortality.html">Death and Immortality</a></li></ul></details></li><li><details><summary>Characters</summary><ul><li><a href="../characters/character-arcs.html">Character Arcs</a></li><li><a href="../characters/characters-and-plots.html">Characters and Plots</a></li><li><a href="../characters/character-arcs.html">Character Arcs</a></li><li><a href="../characters/creating-characters.html">Creating Characters</a></li></ul></details></li><li><details><summary>Narrative</summary><ul><li><a href="../narrative/subplots.html">Subplots</a></li><li><a href="../narrative/drama.html">Drama</a></li><li><a href="../narrative/stress.html">Stress</a></li><li><a href="../narrative/strains-and-straining-dice.html">Strains and Straining Dice</a></li><li><a href="../narrative/shocks-and-shocked-dice.html">Shocks and Shocked Dice</a></li><li><a href="../narrative/distress-and-traumas.html">Distress and Traumas</a></li><li><a href="../narrative/tension.html">Tension</a></li><li><a href="../narrative/narrative-weaving.html">Narrative Weaving</a></li><li><a href="../narrative/plot-descendants.html">Plot Descendants</a></li><li><a href="../narrative/plots-in-t13.html">Plots in T13</a></li><li><a href="../narrative/yarn-tellers-weavers-and-plots.html">Yarn-Tellers, Weavers, and Plots</a></li></ul></details></li><li><details><summary>Ordeals</summary><ul><li><a href="../ordeals/ordeals.html">Ordeals</a></li><li><a href="../ordeals/ordeal-rounds.html">Ordeal Rounds</a></li><li><a href="../ordeals/ordeal-stages.html">Ordeal Stages</a></li><li><a href="../ordeals/narrative-tricks.html">Narrative Tricks</a></li><li><a href="../ordeals/social-ordeals.html">Social Ordeals</a></li><li><a href="../ordeals/alternate-ordeals.html">Alternate Ordeals</a></li><li><a href="../ordeals/action-spaces.html">Action Spaces</a></li><li><a href="../ordeals/psychosocial-action-spaces.html">Psychosocial Action Spaces</a></li></ul></details></li><li><details><summary>Meta</summary><ul><li><a href="../meta/tapestries.html">Tapestries</a></li><li><a href="../meta/coping-with-players.html">Coping With Players</a></li><li><a href="../meta/embedded-facet-conflicts.html">Embedded Facet Conflicts</a></li><li><a href="../meta/types-of-games.html">Types of Games</a></li><li><a href="../meta/referees-rules.html">Referee's Rules</a></li></ul></details></li></ul></nav>
+        </aside>
+        <main id="main-content" class="rule-content">
+            <article>
+                <header class="article-header">
+                    <h2>Plots in T13</h2>
+                </header>
+                <section class="rule-body">
+                    <p>T13 has a unique way to think about narratives and their impact on the universe. Human beings are unique, as far as we know, for being the only species that tells stories, in fact we even tell stories to our selves, creating narratives from all the events that happen to us. It is how we understand things best. So into what could be a strict simulation of reality, full of numbers and facts, we add Plots to guide and shepherd Characters into creating something that feels like a story. We consider the Plot to be a sort of Character, a Plot Daemon (in the computing sense) if you will, trying to direct (although it may more closely resemble herding cats) the Characters, most commonly to explore aspects of specific Conflicts between Facets. </p>
+
+
+
+<p>The Conflict is like the Personality of the Plot, it decides how powerful the Plot is and often what the Plot wishes to achieve. The Conflict also governs the sorts of Stories that the Plot can tell (or is a part of). Like a lot of things in T13 we can consider the Conflict to be a type of Annex, in this case the Central Conflict is the Master Annex of the Plot.</p>
+
+
+
+<p>As well as the Conflict, the Plot is also where we store all the plot specific Characters, Locations and Descendants that the Plot may throw around.</p>
+
+
+
+<h2>Plot Rank</h2>
+
+
+
+<p>The Rank of a Plot is one way that we can determine how powerful it is. Larger Ranked Plots can affect more Characters, even entire universes can be rearranged by even the middle-ranking ones. Plots range in Rank from Scene to Cycle.
+</p>
+
+
+
+<t13-data-table array='plotRanks'></t13-data-table>
+
+
+
+<h2>Conflicts</h2>
+
+
+
+<p>Conflicts are the meat of almost every narrative. There are a few exceptions, but in general conflict drives the T13 Narrative Engine. Stories are shaped by Character’s experiences, their successes, and failures, and the Conflict pushes at Characters, creating situations that test them, causing them to fail and succeed (and a whole lot of in between the two as well).</p>
+
+
+
+<p>Now, you may be saying, "No, I don’t like Conflict as a narrative force, I prefer Event-driven, or (more likely) Character-driven Narratives." Well, that’s fair enough, but what we mean in T13 by a Conflict isn’t necessarily two Opposed sides fighting (although it can mean that). In fact, both of those narrative forms, Event-Driven and Character-Driven narratives, actually utilise Conflicts, but they embody the Conflict completely within the Character(s) or Events themselves. One Character or Event can embody both sides of a Conflict, and create drama and tension within the normal scope of any Event or Character driven narrative, without a shot fired or even an angry word spoken. The T13, Conflict can even play out as a romance, which is about as far removed from most peoples idea of Conflict as you can get.</p>
+
+
+
+<p>In games of T13, the Plot and therefore the Conflict,<em> must always </em> take a back seat to <strong>Player decisions</strong>. The Plot cannot force the Players to take certain actions, but it can usually limit their choices, just as the positions of doors and windows may limit what you can see, and which room you enter next. There is a careful balance to be found when gaming between the Players, their Characters, and the Plots. Good Referees and Yarn-Tellers should expect that not every Plot will work out, and never exactly as planned, and that you should talk to your Players about what they would find as acceptable future Plots, as well as using fore-shadowing and other devices. Good Players will also work as a Yarn-Teller, as a Hero, or even a Grunt, with the other Players, including the Referee, towards making the story better and more dramatic, and therefore more fun, rather than just trying to "win". There is little drama in winning, but much more in failure, or even near-failure.</p>
+
+
+
+<h3>A Simple Opposed Conflict</h3>
+
+
+
+<p>In T13, the Conflict is defined by using the Facets. We can start by considering a simple Opposed Conflict.</p>
+
+
+
+<p>This Conflict appears again and again, throughout literature, dramas, and other forms of fiction, as <strong>"Good"</strong> vs <strong>"Evil"</strong>. This is the Conflict at its most simple, primal, and understandable. Good is a Proficiency of the Virtue Facet and Evil is a Proficiency of the Sin Facet, it doesn’t really get more simple than that.</p>
+
+
+
+<p>Sin is the stronger of the Two in this Conflict usually, so we call this the "Dominant" side. The Evil oppresses the Good, who must be helped and are called the "Pressed" side. For this reason, we consider the T13 Conflict as Sin vs Virtue. So that we know which side is Dominant and which is Pressed from the position. Tensions between the Embodiments of Sin and Embodiments of Virtue create the Story, which we will look at later.</p>
+
+
+
+<p>Actually though, the iconic Good against Evil Conflict rarely occurs in isolation, Orthodox and Heresy (Truth and Lies), Liberty and Wyrd (Freedom and Justice / Fate) and other Facets or Proficiencies also tend to get mixed in to the Conflict more often than not. In fact, a truly powerful Plot could have all the Facets involved perhaps forming two opposed sides (often Yang Facets vs Yin Facets), or even all the Facets on both sides, just with the Dominant Side having higher Boons. In fact, a two Facet Conflict is probably too simplistic. Instead, we recommend at least four Facets are present in even simplest Story Conflicts, this allows for a number of sides to have a more than one Character Embodiment, which allows for more complex interactions and narratives.</p>
+
+
+
+<h3>Conflict Total</h3>
+
+
+
+<p>When we use T13 to measure something as nebulous as the sides of the Conflict, we ground this by thinking in terms of Boons. Typically, a Plot will have Boons that usually have a value between 13 and 26 (adjusting for Scale this could be much higher or a little lower) for each Facet that is involved in the Conflict. For the Central Conflict (and the most important Conflict Total) you add the Boons of every Facet involved in the Conflict directly. So two Boon 13 Facets create a Boon 26 Conflict Total.</p>
+
+
+
+<p>Conflict Totals can vary a lot, based on the Characters that are involved in those Plots, which can make them very difficult to create on the fly. It can be hard to know which side of a Conflict should be more powerful and what that means in terms of Boons.</p>
+
+
+
+<t13-data-table ></t13-data-table>
+
+
+
+<p>Each side in a Conflict has a number of Facets available to it (and a Boon for each Facet, usually based on the Hooked Characters Facet Boons). This allows a Conflict Total for each side to be calculated (by directly adding the Boons), effectively creating a Super-Annex for each Conflict side.<br/>A Plot therefore can be thought of as having a minimum of 3 annexes.</p>
+
+
+
+<h4>Conflict Annexes</h4>
+
+
+
+<ol><li><strong>The Central Conflict</strong> &mdash; the whole thing, all the Facets on both sides. This is the Plot’s Conflict Total. It is the largest Annex available to the Plot, and is used to calculate the Hand the Plot can play as a Yarn-Teller</li><li><strong>The Dominant Side</strong> &mdash; which is the side that has control of the situation at the beginning. This might represent the status-quo, the elite, or the bad guys depending on the actual situation. The plot will usually rely on this Conflict Total to assist the Dominant side of the Conflict during the Plot (adding it to rolls or drawing extra cards as the Plot requires to keep the Dominant side ahead, along the way).</li><li><strong>The Pressed Side</strong> &mdash; this is the side that the hero or heroine belongs to. Often the Plot doesn’t use this side very much (but it can be used for determining the size of Gains and similar rewards during the Narrative).</li></ol>
+
+
+
+<h3>Complicating Conflicts</h3>
+
+
+
+<p>Of course, simple, opposed Conflicts between a Dominant side and a Pressed side aren’t the only way that Conflicts can drive the Plot forward (although they are the easiest to understand). Here are some other options:</p>
+
+
+
+<ul><li><strong>Both Sides are the Same</strong> &mdash; Generally, both sides of any conflict think they are the good guys. Sometimes it can just be hard to tell which side is worse. When you really want to play with this you can put the same Facets on both sides. Perhaps two evil, authoritarian city-states clash in battle, both may have Sin, Orthodox and Dominion on their side, or two Holy Orders compete for the Grace of God with Virtue, Orthodox and Wyrd on their sides. The point is, a balanced Conflict can be spun out into oodles of narratives. As there is rarely any clear winner, the plot keeps Revolving coming up with new generals, armies and lords from either side to grind upon.</li><li><strong>More than Two sides</strong> &mdash; Sometimes (actually quite often) Conflicts can be much more complicated than one side versus the other. Conflicts can have multiple sides and they can interact in complex ways. You don’t have to have every side represented, and often sides will join together becoming a new larger version of one of those sides as the Plot progresses <t13-data-table array='conflictSides'></t13-data-table></li><li><strong>Asymmetric Conflicts</strong> &mdash; Just as you can have multiple sides, those sides don’t have to be equal in their power. You can give the Dominant side of a Conflict more Facets than the Pressed side(s), or less commonly the Pressed side may have a Facet advantage, but generally should still a smaller Conflict Total.</li><li><strong>Cooperative Conflicts</strong> &mdash; Sometimes enemies come together and work towards common goals, this is sometimes because of a worse side appearing (often a new Dominant or Above side), but it can be for other reasons. Tensions will still push and pull at the sides, trying to break the cooperation between them.</li></ul>
+
+
+
+<h2>Yarn-Telling and Plots</h2>
+
+
+
+<p>Plots are generally how the Referee uses Yarn-Telling and Yarn cards. The Plots are the Referee’s Yarn-Tellers. To represent this we give each Plot at least one Yarn-Card as a Plot Significator. The Plot can Play any Yarn-card as its Plot Significator, at no Cost. You can give each Side of a Plot a separate Significator (although we rarely give the Pressed side their own &mdash; see below), so the Central Conflict might be A &clubs; (The Court), which means the over all themes are probably a legal case or set in a king’s court, while the Dominant Side Annex may have an 8 &diams; (The Cultist), implying a conspiracy is afoot.
+
+
+<p><strong>Pressed Side Significator</strong> &mdash; The Pressed Side of a Conflict does not have a Significator in the usual sense. Instead, the Pressed Side Significator indicates something that the Plot is lacking, or limited by, often in regard to the Pressed Side.</p>
+
+
+
+<p>Referees can use cards to randomly build any Plot from components like Scenes and Acts. This is done through a Plot Hand.</p>
+
+
+
+<p>Each Plot has a Plot Hand that can hold as many cards as the Maximum for its type (and has a Minimum Size that it must Draw if it falls below). However, generally it Draws according to the Side being affected’s Conflict Annex Draw. When creating Sweeping events, Gains and Revelations for the Pressed side, the Plot can add the Pressed Side’s Conflict Draw. In fact, that holds true for every side. If the DeeperShadows need to Draw and Play cards then they should use their side’s Conflict Draw to do it. Only rarely will the Conflict use its Central Conflict Annex to Draw, if it is trying to gain a big enough hand to create a Conflict Spread or and Act spread for example.</p>
+
+
+
+<p>The Referee (and occasionally other Yarn-Tellers) can play from this Plot Hand as they need to (and can play cards as Yarn, Wyrd Tarot and Ordeal cards as they wish for the Dominant side). This Plot Hand is similar to a single Player Character’s Wyrd Tarot Hand and Ordeal Pool combined, just like most Yarn-Teller’s Yarn cards. Yarn-Tellers and Referees can add their own Yarn-Cards into any Plot Spread they are creating along with the Plot Hand.</p>
+
+
+
+<p>It is largely up to the Referee when and how the Plot plays these cards, but these are the main types that we consider.</p>
+
+
+
+<t13-data-table array='plottingTypes'></t13-data-table>
+
+
+
+<h2>Embodiments</h2>
+
+
+
+<p>Embodiments are how the Facets of a Conflict interact in the Narrative. Usually the most important Embodiments of the Conflict are the main Characters, often the actual Facet will embody as a Character’s Incarna, Persona, Core or as a Hitch, but Plots also Embody as other aspects of the Story.</p>
+
+
+
+<t13-data-table array='embodimentTypes'></t13-data-table>
+
+
+
+<p>Tension between Embodiments drives the Narratives in T13, by which we mean that if you Embody one side of a simple Conflict in one Character perhaps as a Persona, and the other side of the Conflict is embodied in a Location say, then the Character will feel drawn (or even pushed) towards that Location. Events should coincide to force that Character to that Location (although usually not via a fait-accompli or Deus-Ex-Machina). Revelations, Clues, and hints in the Story should point the Character to the Location, instead. Tension also means that the longer the Character avoids reaching the Location the more Tension will build creating Drama and Prods.</p>
+
+
+
+<h2>Characters</h2>
+
+
+
+<p>Plots need Characters, and create Characters during the Narrative, to find out more read the Characters and Plots rules.</p>
+
+
+
+<h2>Weaving Narratives and Tension</h2>
+
+
+
+<p>How the Characters, cards, events and Embodiments interact is what creates the Narrative of the Tale. Narratives also rely on something we call Tension to draw Characters together, and encourage interactions between the Facet Embodiments of the different Sides of the Conflict. </p>
+
+
+
+<p>You can see the Rules Page on Tension and Weaving Narratives for more details.</p>
+
+
+
+<h2>Plot Descendants</h2>
+
+
+
+<p>Just like Plots need Characters to move their Conflict on, they also need Descendants. At the very least they require a Location where the Conflict can be worked through. See the rules on Plot Descendants for more details.</p>
+
+
+
+<h2>Plot Motifs</h2>
+
+
+
+<p>Plots can have recurring motifs, that turn up again and again throughout the Plot. Each time you use a Motif that you’ve given a Plot it adds 1 Yarn to the Plot’s Yarn.  The Plot Motif can be very varied, but is usually a single specified Proficiency. </p>
+
+
+
+<p>For example, by selecting a Motif of "Scorpion" the Plot can can add Yarn any time a Scorpion turns up in the Story. These could be a scorpion in a boot, a giant scorpion, a Skorpion machine pistol, or a Japanese company called "Sasori Security", a Scorpion Logo, a Character with a scorpion tattoo, or someone with a birthday in late October or early November (star sign Scorpio). With each use adding a point of Yarn.</p>
+
+
+
+<h2>Plots and Subplots</h2>
+
+
+
+<p>Big Plots spawn smaller Plots all the time, perhaps the huge Alien invasion begins with a more subtle infiltration, or a single scout drone landing, getting damaged, and interacting with some kids on bikes. To find out more read the rules page on Subplots.</p>
+                </section>
+
+                <t13-plot-creator></t13-plot-creator>
+            </article>
+        </main>
+    </div>
+    <footer>
+        <div class="footer-inner">
+            <p>&copy; 2026 <a href="https://www.cjmoseley.co.uk">CJ Moseley</a>. Terminal Thirteen Narrative Engine. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="T13 Narrative Engine Rules - Wounds">
+    <title>Wounds - T13 Rules</title>
+    <link rel="stylesheet" href="../css/ui-styles.css">
+    <link rel="stylesheet" href="../css/rules.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" src="../js/rule-components.js"></script>
+</head>
+<body class="t13-rules-page">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+        <div class="header-inner">
+            <div class="t13-logo" aria-hidden="true"></div>
+            <h1>T13 Narrative Engine</h1>
+        </div>
+    </header>
+    <div class="main-container">
+        <aside class="sidebar">
+            <nav class="rule-nav" aria-label="Rulebook Navigation"><ul><li><a href="../index.html">Home</a></li><li><details><summary>Core Concepts</summary><ul><li><a href="../core/boons.html">Boons</a></li><li><a href="../core/geometry-gematria-and-numerology.html">Geometry, Gematria and Numerology</a></li><li><a href="../core/facet-folio.html">Facet Folio</a></li><li><a href="../core/i-ching.html">I-Ching</a></li><li><a href="../core/core-concepts.html">Core Concepts</a></li></ul></details></li><li><details><summary>Mechanics</summary><ul><li><a href="../mechanics/tao-sway.html">Tao Sway</a></li><li><a href="../mechanics/facet-sway.html">Facet Sway</a></li><li><a href="../mechanics/chi.html">Chi</a></li><li><a href="../mechanics/yarn.html">Yarn</a></li><li><a href="../mechanics/twists.html">Twists</a></li><li><a href="../mechanics/sway.html">Sway</a></li><li><a href="../mechanics/card-guide.html">Card Guide</a></li><li><a href="../mechanics/card-spreads.html">Card Spreads</a></li><li><a href="../mechanics/proficiencies.html">Proficiencies</a></li><li><a href="../mechanics/hitches.html">Hitches</a></li><li><a href="../mechanics/annexes.html">Annexes</a></li><li><a href="../mechanics/character-catalysts.html">Character Catalysts</a></li><li><a href="../mechanics/modelling-resources.html">Modelling Resources</a></li><li><a href="../mechanics/test-value.html">Test (Value)</a></li><li><a href="../mechanics/test-card-draw.html">Test (Card Draw)</a></li><li><a href="../mechanics/test-dice.html">Test (Dice)</a></li><li><a href="../mechanics/stakes.html">Stakes</a></li><li><a href="../mechanics/success-and-failure-levels.html">Success and Failure Levels</a></li><li><a href="../mechanics/wounds.html">Wounds</a></li><li><a href="../mechanics/death-and-immortality.html">Death and Immortality</a></li></ul></details></li><li><details><summary>Characters</summary><ul><li><a href="../characters/character-arcs.html">Character Arcs</a></li><li><a href="../characters/characters-and-plots.html">Characters and Plots</a></li><li><a href="../characters/character-arcs.html">Character Arcs</a></li><li><a href="../characters/creating-characters.html">Creating Characters</a></li></ul></details></li><li><details><summary>Narrative</summary><ul><li><a href="../narrative/subplots.html">Subplots</a></li><li><a href="../narrative/drama.html">Drama</a></li><li><a href="../narrative/stress.html">Stress</a></li><li><a href="../narrative/strains-and-straining-dice.html">Strains and Straining Dice</a></li><li><a href="../narrative/shocks-and-shocked-dice.html">Shocks and Shocked Dice</a></li><li><a href="../narrative/distress-and-traumas.html">Distress and Traumas</a></li><li><a href="../narrative/tension.html">Tension</a></li><li><a href="../narrative/narrative-weaving.html">Narrative Weaving</a></li><li><a href="../narrative/plot-descendants.html">Plot Descendants</a></li><li><a href="../narrative/plots-in-t13.html">Plots in T13</a></li><li><a href="../narrative/yarn-tellers-weavers-and-plots.html">Yarn-Tellers, Weavers, and Plots</a></li></ul></details></li><li><details><summary>Ordeals</summary><ul><li><a href="../ordeals/ordeals.html">Ordeals</a></li><li><a href="../ordeals/ordeal-rounds.html">Ordeal Rounds</a></li><li><a href="../ordeals/ordeal-stages.html">Ordeal Stages</a></li><li><a href="../ordeals/narrative-tricks.html">Narrative Tricks</a></li><li><a href="../ordeals/social-ordeals.html">Social Ordeals</a></li><li><a href="../ordeals/alternate-ordeals.html">Alternate Ordeals</a></li><li><a href="../ordeals/action-spaces.html">Action Spaces</a></li><li><a href="../ordeals/psychosocial-action-spaces.html">Psychosocial Action Spaces</a></li></ul></details></li><li><details><summary>Meta</summary><ul><li><a href="../meta/tapestries.html">Tapestries</a></li><li><a href="../meta/coping-with-players.html">Coping With Players</a></li><li><a href="../meta/embedded-facet-conflicts.html">Embedded Facet Conflicts</a></li><li><a href="../meta/types-of-games.html">Types of Games</a></li><li><a href="../meta/referees-rules.html">Referee's Rules</a></li></ul></details></li></ul></nav>
+        </aside>
+        <main id="main-content" class="rule-content">
+            <article>
+                <header class="article-header">
+                    <h2>Wounds</h2>
+                </header>
+                <section class="rule-body">
+                    <p>Cards played in Attack are said to summon Wounds, and apply them to the target. These Cards as Wounds are then Soaked by Armour, Annexes and the Rook Facet, after this the cards on Descendants and Characters represent damage and injuries to the Character or Descendants.</p>
+
+
+
+<p>Wounds in T13 are based on the cards (and the Stakes see the Stakes rules page for details), although Wounds can be summoned, applied and so on outside of Ordeals also. The different Levels of Wound have radically different effects on the Character (or Descendant) that’s Wounded.  </p>
+
+
+
+<div class="t13-placeholder" data-type="woundtable" >Interactive Component: woundtable</div>
+
+
+
+<h2>Summoning Wounds</h2>
+
+
+
+<p>In T13 we normally use Ordeal Cards to Summon Wounds. Although Wounds can also be summoned, stabilised and healed by Scores and Chi, when appropriate. However, these methods all mimic the Ordeal Cards with Chi replacing Pips, or being used to calculate required Scores in Sway.  See the Sway Table Rules for details.</p>
+
+
+
+<p>The cards played to attack, summon a Wound as follows. </p>
+
+
+
+<ol><li>The highest card defines the maximum Wound Level that can be summoned by the attack (this is the Wound Limit Card or just the Wound Card). So, at most Stakes, an Ace or a Joker must be in an attack to unlock Carnage Wounds.</li><li>The Total Pips must beat the Summoning Cost of the Wound for the current Stakes. So the Ace of Spades (16 Pips) can summon a Mortal Wound at High Stakes, but an Ace of Diamonds (14 Pips) can summon only a Crippling Wound.&nbsp; &nbsp;<br>Additional cards can help increase the Wound (as can Tricks). To play the Ace of Spades as a Carnage Wound requires only a 3 of Spades or 5 of any other suit.</li><li>Pips that are left over from the attack may purchase additional lower wounds, or may stay with the original as additional Difficulty. <br>e.g. Play an Ace of Spades and a Jack of Diamonds in High Stakes you could have a 27 Pip Carnage Wound or a 21 Pip Carnage Wound and a 6 Pip Flesh Wound.</li><li>The Attack classes of each Facet have differing effects that may modify the Wound level:
+<t13-facet-aspects suit='all' aspect='Attack'></t13-facet-aspects>
+<div class="t13-placeholder" data-type="attacktable" attack='Attack_Classes'>Interactive Component: attacktable</div>
+</li><li>The Damage Type may also alter the Wound Level: <div class="t13-placeholder" data-type="attacktable" attack='Damage_Types'>Interactive Component: attacktable</div> </li></ol>
+
+
+
+<h2>Soaking Wounds and Reducing Damage</h2>
+
+
+
+<p>When a Character or Descendant potentially takes damage from an attack, the Wounds may be reduced by the Characters various Soak-Layers of armour and other protection (such as dodges, parries, Chi expenditure, and so on). </p>
+
+
+
+<p>In T13 we talk about Soak-Layers implying that these are layers that must be penetrated to cause a Wound. You might begin with an outer layer such as a Power-Field, or Force-Shroud, then perhaps a cloak made from Advanced-Kevlar, over an Advanced Polymer Plate and steel chain-mail shirt, over a padded vest, before you finally get down to a "Tough" Annex. Depending upon the Stakes, you will get to use some, or all, of these Soak-Layers to reduce and absorb the damage. In general, we start at the outer-most layer and work in, although Players should choose which layers are used first. </p>
+
+
+
+<p>Armour and Shields tend to accumulate damage as they protect you, and can quickly end up destroyed if you don’t take time to repair, and replace it, as it fails.</p>
+
+
+
+<div class="t13-placeholder" data-type="attacktable" attack='Defence_Modes'>Interactive Component: attacktable</div>
+
+
+
+<p>Hero and Yarn-Teller Characters can also use Chi to lower wounds a level, or even remove them entirely, if they have enough Chi available.  This can also be used to make repairs to armour and other defences as they accumulate Wounds.</p>
+
+
+
+<p>Chi used in this way must meet the Base Chi cost for a Wound of that type at "Lower" Stakes. So when struck by a Carnage Wound the cost to reduce it to a Mortal Wound is 21 Chi.  This can then be repeated, so the Mortal Wound can be reduced for 16 Chi, and so on... Removing a Carnage Wound entirely would cost. 21+16+12+8+5+2 = 64 Chi (see Sway Table Rules Page).<br/> Heroes and Yarn-Tellers can also play Wyrd Tarot or Yarn-Cards to reduce, remove and affect Wounds in other ways. </p>
+
+
+
+<p>This Soaking or reducing of damage must take place during the Ordeal Round. At the end of the Ordeal Round the damage is applied.</p>
+
+
+
+<h2>Applying Wounds</h2>
+
+
+
+<p> All Wounds are applied at the end of an Ordeal Round as follows. </p>
+
+
+
+<ul><li>Distract Wounds: Any Distract Wounds that have not been dealt with in the Round can be discarded by matching Limit Pip Equivalents from the remaining Ordeal Pool. E.g. Dealing with 4 Distracts in High Stakes causes Frank the Psycho to hand over 2 Pips per Distract, he discards an 8♦ to be rid of them all.</li><li>Flesh Wounds can be discarded for a cost of 1 card for each Wound, drawn randomly from the remaining Ordeal Pool, or they will automatically aggravate a Wound already in place one level and are then are discarded. E.g. 3 Flesh Wounds could cost 3 cards from your Pool or two cards could aggravate the third into a Crippling Wound.</li><li>Maiming Wounds cost a Proficiency Slot and this should be deleted at this time. This will impact the affected Annex, usually removing an Umbral or Nimbed, depending on the Wounded Proficiency, but Annexes can be disabled by losing Root, Channel or Tangle.</li><li>Crippling Wounds cost an Annex slot, and should have been applied during the Round (although you can do it now). Nothing more is generally required although note that a Crippled active Personality Annex stops the Character from entering the next Round (as they are unconscious) unless an Alt takes over the body.</li><li>Carnage and Mortal Wounds add Hitches to Characters and Descendants. They should be applied at this time as the Wound, Yarn-Teller, and Referee recommends. These often stop a Character from entering the next round (although Quantum Immortality may be invoked by some Heroes, letting another Alternate take over the body).</li></ul>
+
+
+
+<h2>Recording Wounds</h2>
+
+
+
+<p>In T13 we record the total Pips and Suit of the Limit card that created the Wound on the Character or Descendant when the Wound is taken, we also keep a track of how the Wound has so far been treated (or not). <br>e.g. A 17 Pip Diamonds suited Crippling Wound would be noted on the affected Annex as "Crippled: 17<span class="t13ne-redcard">♦</span>". You might also want to note the freshness of the Wound and the Damage Type, if they will have any effect.</p>
+
+
+
+<p>Wounds on Characters begin as Fresh, but quickly become Untreated, or Stabilised, and can become Reopened, or Festering with time.</p>
+
+
+
+[t13ne type="displaytable" array="woundFreshType"]
+
+
+
+<h2>Stabilising, Healing and Treating Wounds</h2>
+
+
+
+<p>In T13, unlike many Dungeon-based RPGs, we don’t always have a Healer / Cleric Character in the Party. For this reason we have multiple ways that a Character might be healed, we also have the slightly cinematic concept of a Stabilized Wound, which is a sort of half-way healed Wound that allows you to carry on doing things (but might reopen if you over-tax yourself). Most often during an Ordeal, if you are injured, you aren’t going to have much chance to get Magical or Divine Healing, but you can quite easily Stabilize your Wounds.</p>
+
+
+
+<p>Narrative Healing is used during the Round usually when you are in combat, but is often very limited in what it can achieve (see the table below). However, you can Stabilize Wounds relatively easily by playing a card that matches suit (or use a <span class="t13ne-redcard">♥</span> Trump) and beats the Pips of the individual Wound.  </p>
+
+
+
+<p>Wounds can also be treated, in various ways, to try and cure or fix them. </p>
+
+
+
+<p>This is the complete table of Wound treatment methods, you can see which ones are instantly usable, and those that have a separate Ordeal of their own. In general, a Healer will require some experience with using their type of Healing on a given Character Incarna, or they will suffer penalties (usually requiring at least one suitable Proficiency or a guaranteed Failure Level). Surgery on an Earth Incarna Character is quite different to that on a Flesh Incarna, and would be penalised, although once they’ve said "Damnit, I’m a Doctor not a bricklayer" a couple of times, and purchased a Stonemason Proficiency then they would lose the automatic Failure Level on that Incarna.</p>
+
+
+
+<t13-data-table array='healingModes'></t13-data-table>
+
+
+
+<p>Damage to Descendants (and Extras) is generally dealt with as though the Wounds were Fresh or Untreated. Descendant Wounds can be Stabilised, or Fixed, it is rare that Descendant Wounds ever Fester. However, the methods used to do this are varied depending upon the type of the Descendant, Incarna, etc. Extras generally use the same methods of Healing as Characters.</p>
+
+
+
+<p>Fixing Descendants generally requires a suitable Ordeal that the Referee may base on one of the Character Healing modes. Mechanical repairs are usually closest to Chirurgery, or Surgery. Repairs to Knowledge Descendants and their ilk can be handled with Psychotherapy or Natural Regeneration, and so on.</p>
+
+
+
+<h2>Psychology Effects</h2>
+
+
+
+<p>When a Character is affected by a Psych attack, the Wound has an additional Psychological component that the system models as a Negative or Positive Emotional reaction. Sticks and stones will break bones, but words can have profound effects on the psyche.</p>
+
+
+
+<h3>Emotions</h3>
+
+
+
+<p>In T13 you can be Wounded by Emotions. This may seem obvious for Negative Emotions like Fear, Sorrow and Hatred, but is less obvious when the Wound effects of Positive Emotions, such as Happiness, Hope and Love. These emotions can be just as powerful, as the Negative Emotions and can alter Characters just as profoundly, it’s just that usually they have more positive effects upon the Character. </p>
+
+
+
+<p>Love may create a Devotion Hitch for example, but might also allow a Character to alter their Core, or Personality, or add a new Skill, Talent or Power as well. </p>
+
+
+
+<div class="t13-placeholder" data-type="facemotable" >Interactive Component: facemotable</div>
+
+
+
+<p>Each Wound Type has a Psych Normal Ruling (that applies to the 1 and 2 card Emotions, such as Fear and Terror) and a Psych Extreme Rule (that applies only to a 3+ card Emotion such as Horror).</p>
+
+
+
+<p>Normal attacks, like Physical Attacks, can have a Psychological component sometimes (this can be due to Nimbed effects or just extreme circumstances), but most Psych effects come from Psych Attacks (like Bedlam, Lecture and Duck).</p>
+
+
+
+<ul><li>Any Psych Attack can have a Psych effect, which is based purely off how many cards are involved in the Attack.</li><li>The number of Cards that eventually penetrate the defence is not important to deciding the Emotion type, only the number that it begins with (1,2,3+).</li><li>The Psychological component (or Psych Attack) can be Soaked with any of the Psych Defences noted (usually a Psych Soak). This can take place in conjunction with other Soaks such as Physical, Energy or Magical Soaks</li><li>Each Wound that is taken will have its additional Psychological Effects (with the type Normal, or Extreme based on the initial number of cards).</li><li>Positive Emotional Effects do not actually Wound the Character necessarily, and even the Psych effects are often discarded the moment the "Wound" has been Stabilized, but Extreme effects are more likely to be permanent.</li></ul>
+
+
+
+<h2>Traumas</h2>
+
+
+
+<p>Traumas are the worst form of Stress and are essentially Stress-induced Soul-Stakes Wounds, and as such are a combination of physical, emotional, and spiritual stresses. Characters and Descendants can only store Traumas on their Annexes or Incarna Facet Scores (acknowledging some Characters have more than one Incarna). Any new Trauma can replace or reopen an old Stabilised Trauma if no free Trauma slots are available.</p>
+
+
+
+<p>Traumas are not soaked like an Attack or a Psych Effect. Traumas are essentially Unsoakable Attacks that combine features of Normal Wounds and Negative (often Extreme) Psych Effects (usually Descendants may or may not suffer Psych effects or may pass them on to their User via a normal Psych Effect).</p>
+
+
+
+<p>A Trauma like any Wound is made from a number of cards. A Trauma will always involve at least one card (which can also define the negative emotion associated with the Trauma) and usually will involve several cards working together. </p>
+
+
+
+
+<h2>Healing Traumas</h2>
+
+
+
+<p>Traumas are a combination of physical injury, a psychological effect and often a spiritual correlation, that is difficult to successfully treat without high-powered magic or advanced neuro-therapy. Traumas, in fact, are never technically healed, but can be stabilised .</p>
+
+
+
+<p>Traumas</p>
+
+
+
+<h2>Damaging Locations and Giant Characters</h2>
+
+
+
+<p>You may have noticed that the way the system has been described so far, it is possible that a Character could punch the ground, draw a few Carnage cards and destroy the Planet. Which not only isn’t very simulationist, it doesn’t make much Narrative sense either.</p>
+
+
+
+<p>This is because Locations (and in fact any Vehicle, Kaiju, or giant Characters) have a Size Annex, and a Size Annex directly affects how they play cards and soak damage. The rule is that the difference in Size Shifts the Card Pips by the Score of the difference in Sizes as a Boon. The Yarn-Teller and Referee agree when these Size Shifts (or Size Bonus and Penalties) take place and apply. </p>
+
+
+
+<p>If that sounds complicated, let’s look at an example. If Jim jumps into a sports car (a vehicle with a Size Annex of 3), and is shot at by Kerry (who as a human is Size 1) with a machine-gun then all the individual cards of Kerry’s attack will shifted down 1 Pip (a difference of Size 2 which has been Reduced to a Score of 1 from a Boon of 2). Making it a little less likely that Jim is badly injured. If Jim swerves the car and rams into Kerry, running her down. All the cards of Jim’s Crash Attack are then Shifted up 1 Pip, making him a little more likely to injure Kerry. These Size Shift Pips are inherent to the cards and the Wounds they create.</p>
+
+
+
+<p>This becomes very important when for example a huge Kaiju attacks a City. The Kaiju has a Size of 20, the city itself a Size of 35. That Size Shifts all the Kaiju’s attacks on the City by (15 Reduced gives 4 Pips). If Jim and Kerry joined up to fight the Kaiju, Kerry would be at a (-19 Reduced -5) on all cards played with her machine-gun, Jim in his car would be at (17 which is also a -5). Meanwhile every action taken by the Kaiju would have +5 Pips on each card to affect Jim and Kerry. These changes to Pips do not effect the Wound Limit of cards, but it is worth noting that even at Extreme Stakes the reduction in Pips means that if you are trying to affect a Planet for example (Size 153) Jim and Kerry would both have a -22 Pips to <strong><em>every</em> card</strong> they played to try and damage the planet under them, not even enough to Distract the planet. Even the Kaiju trying to attack the planet would have a SIze Shift of 133 and have a -20 to each card.</p>
+
+
+
+<p>Giant Kaiju cause a lot of collateral damage. This is handled by also drawing the difference in Size (Double Reduced to create a Draw) as additional potential cards on the attack. This means if the Kaiju plays a 10 of Diamonds to move, that would hurt any Size 1 people in the way as a 10+5=15 Pip Crippling attack (and they would also Draw another 2 (Boon 19  gives Draw 2) Cards to add to that attack, either of which may lift the Wound Limit). A tree along the route may be Size 8 which would take a 14 Pip Crippling Wound and also Draw an extra card. (20-8 =12 Reduced to 4 Reduced to 1). </p>
+
+
+
+<h3>Size Shifts and Area of Effect</h3>
+
+
+
+<p>Some Annexes have an Area of Effect (the Dominion Realm Success). This gives the Annex a Size of its own, which works just as above, under most circumstances. The Area of Effect also takes into account the Size of the Character or Descendant that has the Annex. </p>
+
+
+
+<p>Perhaps that Kaiju has a breath weapon (Flame, or even Radioactive Plasma, breath is fairly common amongst such beasts). The Kaiju is Size 20 (+5) and its Dominion is 18(+5), this would give an Area of Effect equal to Yarn 10, which would let the Kaiju’s breath weapon effect all of a large city.</p>
+
+
+
+<p>Alternatively, if a human wants to attack a Kaiju, then having an area of effect weapon like a grenade or missile launcher, or a plasma or Splat cannon can really help even the odds. </p>
+
+
+
+<p>When comparing these Area of Effect to Location Sizes it’s important to remember that Location Sizes are always measured in Chi, so you must convert the Area of Effect from Yarn to Chi before calculating the Size Shift Pips the Attack may have (or be Penalised by).</p>
+
+
+
+<p>If a Grenade has a Yarn Size of 2  (a couple of rooms) that’s a Chi Size of 7, which means going up against a Size 20 Kaiju the grenade is at a Size difference of 13 (with a -4 Pips).</p>
+
+
+
+<h3>Parrying, Blocking, Dodging, Soaking, and Size.</h3>
+
+
+
+<p>Size effects everything about an Attack, including how the Attack can be defended against. A Parry, for example must match the Pips of the Kaiju’s or Location’s attack including the Size Shift Pips, the same goes for a Block. Dodges are even worse with each card of the Attack having a bonus, all of which must be beaten to Dodge the attack.</p>
+
+
+
+<p>Larger Parries and Blocks could have difficulty parrying smaller attacks too, but here the Size works for the larger thing. Allowing them more freedom in matching the attack Pips as they don’t have to use all the Size Shift Pips. </p>
+
+
+
+<p>Soaks and Armour are also affected in this way, which can create some odd situations, such as when attacked by a 10 of Diamonds with +5 Pips, if your Armour Draws the Ace of Diamonds, the armour will Soak the Crippling Wound, and pass through a Carnage wound. Potentially killing you in your armour, which could be easily repaired. Conversely, if you are wearing a suit of Mech Armour (armour that has Size as a vehicle) then it could add its Size Shift Pips to an incoming attack from a smaller opponent, but only when you want it too.</p>
+
+
+
+<p>Referees and Yarn-Tellers should usually not allow Size Shift Pips to add to a Dodge roll, Kaiju rarely dodge anything but other Kaiju.</p>
+
+
+
+<h2>Resource Wounds</h2>
+
+
+
+<p>Resource Wounds are an alternative or optional rule that extends the Economic Attack types to include all other forms of Wounds. </p>
+
+
+
+<p>In a normal game, only Economic attacks affect the Character’s resources, draining them of Chi based on Pips as Yarn, but in this optional rule all Wound Cards cause Sway damage paid from the various Facet Sway stores the Character has. Normally Characters have a lot less of these Sway Resources than Chi it should be noted, so slightly different systems are used to make this play out.</p>
+
+
+
+<p>Generally speaking the Resources attacked should be specified during the card play and are paid immediately. Most combat attacks for instance will attack a Character’s Health (Nature Facet Sway), but attacks may target any Resource with a suitable Narration / or Narrative reasoning.</p>
+
+
+
+<p>Playing cards and defending against them is performed as normal above, but when Wounds are assigned they do not have the normal effects, but instead drain the Sway Resources of the Character.</p>
+
+
+
+<p>Usually each card causes its Pips Reduced as a Resource Damage (1-4 points each card). Characters who are reduced to zero (0) are unable to continue, although exactly why varies by Resource. A Character that has a Health of zero is considered Dead. No additional Hitches are created or anything like that, they are just dead.</p>
+
+
+
+<p>In this variant, Chi can be converted into Resource Sway only by making a specific Resource Replenishment action (such as Healing in the case of replenishing Health). This is done by making a Resource Replenishment Roll on the Facet that you are trying to convert the Sway to. </p>
+
+
+
+<p>The Difficulty of the roll is equal to the number of Resource Sway that you are trying to create. So if you have a Nature of 13 and currently have 6 points of Health, the Difficulty to Replenish would be 7. </p>
+
+
+
+<p>If this Difficulty is beaten then Chi may be converted into Resource Sway as required to top up the Resource. The Chi spent is usually doubled to create the amount of the Resource Sway, although in a Higher-powered game you may receive the Value of the Chi as a Boon instead. </p>
+
+
+
+<p>Failure to pass the Difficulty means that you cannot convert Chi into the Resource, however you can pay 1 Chi to replenish 1 Sway (half the Chi is lost).</p>
+
+
+
+<p>As another optional Rule, any attack that will take more than half the Character’s current Resource can be spread to other Resources as well. So if a three card attack is focused on Health the cards (An Ace of Diamonds, 5 of Spades and 6 of Hearts),  may cause 4, 2 and 2 points of Health, for a total of 8 (and 27 Pips Total) , this causes more than half the Health to be lost in one go (13 Nature would give 13 Health) so the Player will lose 6 Health, and 2 Points of Health must be paid by another Resource. </p>
+
+
+
+<p>The Yarn-Teller must agree the other Sway used (for example Dignity, Wealth or Effort). These Points of Damage are paid on a 2 for 1 basis (so the Attack could take 4 points of Effort instead of the extra 2 Points of Health) when paid in another Sway Resource, or they may be paid in Chi, however when paying in Chi the calculation is a bit different. If there were no Health Points the 27 Pips would try to drain 216 Chi, but we’ve already dealt with 6 of the 8 Health Points. So instead we look up the Super-Value of Boon 2 and pay that in Chi (16 Chi).</p>
+
+
+
+<p>Another optional Rule that can be used during a Resource Attack is that if any Resource loses more points than the Facet Score in one blow then the Character is considered Staggered (and take 1 GRT). So any Health Attack that causes more than 4 Points of Health to be lost in one attack (if Nature Facet is Boon 13), will cause the Character to be staggered for 1 GRT.</p>
+
+
+
+<p>Resource Attacks are only possible if individual Facet Resources are used in the game, otherwise use the standard Economic rules that effect only Sway or Chi as standard on a Pip for point basis.</p>
+                </section>
+
+
+            </article>
+        </main>
+    </div>
+    <footer>
+        <div class="footer-inner">
+            <p>&copy; 2026 <a href="https://www.cjmoseley.co.uk">CJ Moseley</a>. Terminal Thirteen Narrative Engine. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
