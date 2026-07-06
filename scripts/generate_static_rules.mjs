@@ -99,7 +99,8 @@ function convertShortcodes(content) {
 
         const type = attrs.type || 'unknown';
         delete attrs.type;
-        const attrStr = Object.entries(attrs).map(([k, v]) => `${k}='${v}'`).join(' ');
+        // Escape single quotes for attribute values
+        const attrStr = Object.entries(attrs).map(([k, v]) => `${k}='${v.replace(/'/g, "&apos;")}'`).join(' ');
 
         switch(type.toLowerCase()) {
             case 'boontable': return `<t13-boon-table ${attrStr}></t13-boon-table>`;
