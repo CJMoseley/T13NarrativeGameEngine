@@ -1,5 +1,16 @@
 import T13NE from '/src/t13ne/T13NE.js';
 import Logger from '/src/t13ne/core/Logger.js';
+import P2PNetworkManager from '/src/t13ne/core/P2PNetworkManager.js';
+import { VOIPManager } from '/src/t13ne/core/VOIPManager.js';
+import { EventBus } from '/src/t13ne/core/EventBus.js';
+
+import '/src/components/T13VttCanvas.js';
+import '/src/components/T13CharacterSheet.js';
+import '/src/components/T13PlotWidget.js';
+import '/src/components/T13YarnCardWidget.js';
+import '/src/components/T13ProficiencyWidget.js';
+import '/src/components/T13AnnexWidget.js';
+import '/src/components/T13EntityInspector.js';
 
 console.log("Bootstrap: Initializing TTRPG Companion client...");
 
@@ -10,167 +21,262 @@ const panelViews = document.querySelectorAll('.panel-view');
 navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
-        
-        // Remove active class from all links and panels
         navLinks.forEach(l => l.classList.remove('active'));
         panelViews.forEach(p => p.classList.remove('active'));
-        
-        // Add active class to clicked link
         link.classList.add('active');
-        
-        // Show corresponding panel
         const targetPanel = link.getAttribute('data-panel');
         const panel = document.getElementById(`view-${targetPanel}`);
         if (panel) panel.classList.add('active');
-        
         console.log(`Navigation: Switched to panel "${targetPanel}"`);
     });
 });
 
-// App Bootstrapper
+let voipManager = null;
+
 async function initApp() {
     try {
         console.log("App Init: Starting T13 Narrative Engine...");
-        
-        // Bootstraps WASM modules, Codex databases, and narrative registers
         await T13NE.start();
         
         console.log("App Init: Narrative Engine running successfully.");
         document.getElementById('connectionStatus').textContent = "Engine Ready";
-        document.getElementById('connectionStatus').style.color = "#10b981"; // Success green
+        document.getElementById('connectionStatus').style.color = "#10b981";
 
-        // Setup Character Creator Button Listener
+        const soundEngine = T13NE.getModule('SoundEngine');
+        voipManager = new VOIPManager(P2PNetworkManager, soundEngine);
+        await voipManager.init();
+        voipManager.setupVAD();
+
+        setupNetworking();
+        setupPlotSystem();
         setupCharacterCreator();
-
-        // Setup VTT Buttons Listener
         setupVttControls();
+        setupInspector();
+
+        EventBus.on('p2p:peer-connected', ({ peerId }) => {
+            console.log(`P2P: Connected to peer ${peerId}`);
+            if (voipManager) voipManager.callPeer(peerId);
+            const vttCanvas = document.querySelector('t13-vtt-canvas');
+            if (vttCanvas) vttCanvas.addToken(peerId, `Player ${peerId.substring(0,4)}`, 0xef4444);
+        });
 
     } catch (error) {
         console.error("App Init: Narrative Engine failed to start", error);
-        document.getElementById('connectionStatus').textContent = "Initialization Failed";
-        document.getElementById('connectionStatus').style.color = "#ef4444"; // Error red
+        document.getElementById('connectionStatus').textContent = "Init Failed";
     }
 }
 
-// Interactive Character Sheet Calculations using T13 Modules
+function setupPlotSystem() {
+    const btnGenerate = document.getElementById('btnGeneratePlot');
+    const plotOutput = document.getElementById('activePlotOutput');
+
+    btnGenerate.addEventListener('click', async () => {
+        // Correct hierarchy: Plot is the master
+        const plotData = {
+            id: `plot_${Date.now()}`,
+            Name: "The Breaking of the Third Seal",
+            Rank: "Story",
+            goal: "Prevent the emergence of the Archfiend at the Sector 7 gateway.",
+            tensionLevel: 4,
+            Conflict: {
+                NoSides: 2,
+                Sides: {
+                    Dominant: { Expressions: ["Archfiend Malphas", "The Void Gate"] },
+                    Pressed: { Expressions: ["The Last Wardens", "Ancient Sigils"] }
+                }
+            },
+            subPlots: [{ Name: "Infiltrate the Gateway", Rank: "Act" }],
+            plotDescendants: [
+                { Type: 'Location', Name: 'Sector 7 Gateway' },
+                { Type: 'Prop', Name: 'Shattered Seal' }
+            ],
+            Hooked_Characters: [
+                { id: 'char_kaelen', name: 'Kaelen Weaver', charType: 'Hero' },
+                { id: 'npc_vex', name: 'The Silent Warden', charType: 'Vex' }
+            ],
+            quests: [
+                {
+                    name: "Secure the Perimeter",
+                    description: "Establish a defensive line around the Sector 7 rift.",
+                    reward: "5 Chi",
+                    steps: [
+                        { text: "Deploy sensor drones", complete: true },
+                        { text: "Neutralize vanguard scouts", complete: false }
+                    ]
+                }
+            ],
+            hand: [
+                { name: "The Catalyst", suit: "Spades", pips: "A", meaning: "A sudden event triggers a cascade." },
+                { name: "Broken Vow", suit: "Diamonds", pips: "5", meaning: "A betrayal or failed oath complicates the path." }
+            ]
+        };
+
+        renderPlot(plotData);
+        P2PNetworkManager.broadcast({ type: 'PLOT_SYNC', plot: plotData });
+    });
+
+    EventBus.on('p2p:msg:PLOT_SYNC', ({ message }) => {
+        renderPlot(message.plot);
+    });
+
+    function renderPlot(data) {
+        plotOutput.innerHTML = '';
+        const widget = document.createElement('t13-plot-widget');
+        plotOutput.appendChild(widget);
+        widget.setPlot(data);
+    }
+}
+
+function setupInspector() {
+    const inspector = document.createElement('t13-entity-inspector');
+    document.body.appendChild(inspector);
+
+    window.addEventListener('inspect-character', (e) => {
+        const entityId = e.detail;
+        console.log(`Inspecting entity: ${entityId}`);
+        // In a real session, we'd fetch the full entity from the engine cache
+        inspector.inspect({ id: entityId, name: entityId, description: "A hooked entity in this narrative plot." });
+    });
+}
+
 function setupCharacterCreator() {
     const btnCalculate = document.getElementById('btnGenerateCatalyst');
-    if (!btnCalculate) return;
+    const btnShowCreator = document.getElementById('btnShowCreator');
+    const creatorContent = document.getElementById('characterCreatorContent');
+    const statsOutput = document.getElementById('characterStatsOutput');
+
+    if (btnShowCreator) {
+        btnShowCreator.addEventListener('click', () => {
+            creatorContent.style.display = 'block';
+            statsOutput.style.display = 'none';
+        });
+    }
 
     btnCalculate.addEventListener('click', async () => {
         const name = document.getElementById('inputCharName').value.trim();
-        const facetFocus = document.getElementById('selectCoreFacet').value;
-        const statsOutput = document.getElementById('characterStatsOutput');
+        const charType = document.getElementById('selectCharType').value;
 
-        if (!name) {
-            alert("Please enter a character name.");
-            return;
-        }
+        if (!name) return alert("Enter character name.");
 
         try {
-            console.log(`Character Creator: Generating stats for "${name}" with focus "${facetFocus}"`);
-
-            // Use the copied Gematria/Geometry module
             const geometryModule = T13NE.getModule('T13Geometry');
             const ichingModule = T13NE.getModule('IChing');
 
-            if (!geometryModule || !ichingModule) {
-                throw new Error("Required modules (Geometry or IChing) not loaded.");
-            }
-
-            // Calculate Numerological Gemantria values from name
-            const geoResult = geometryModule.getGeometryFromString(name) || { full: 13, impressions: [1, 3] };
-            const geoVal = geoResult.full || 13;
-
-            // Generate I-Ching Hexagram
+            const geoResult = geometryModule.getGeometryFromString(name);
+            const geoVal = geoResult.full;
             const hexagramNum = (geoVal % 64) || 1;
-            const hexagram = await ichingModule.getHexagram(hexagramNum) || { name: "The Creative", meaning: "Initiating force" };
+            const hexagram = await ichingModule.getHexagram(hexagramNum);
 
-            // Calculate core Boons (T13 attributes) based on name length and gematria
             const boons = {
-                Incarna: Math.min(24, Math.max(5, 10 + (name.length % 5))),
-                Persona: Math.min(24, Math.max(5, 12 + (geoVal % 6))),
-                Umbral: Math.min(24, Math.max(5, 8 + (name.charCodeAt(0) % 8))),
-                Nimbed: Math.min(24, Math.max(5, 9 + ((geoVal + name.length) % 7)))
+                Incarna: 10 + (name.length % 5),
+                Persona: 12 + (geoVal % 6),
+                Umbral: 8 + (name.charCodeAt(0) % 8),
+                Nimbed: 9 + ((geoVal + name.length) % 7)
             };
 
-            // Boost the focused facet
-            boons[facetFocus] += 2;
+            const charData = {
+                id: `char_${Date.now()}`,
+                name: name,
+                charType: charType,
+                boons: boons,
+                hexagram: { number: hexagramNum, name: hexagram.name },
+                significator: { name: "The Hierophant", suit: "Spades", pips: "V" },
+                features: [
+                    { name: "Resonant Harmony", description: "Your boons are perfectly aligned with the Cycle's current state." },
+                    { name: "Unyielding Resolve", description: "Ignore 1 Stress per Act when pursuing your primary Catalyst." }
+                ],
+                descendants: [],
+                annexes: [
+                    {
+                        name: "Astrogation System",
+                        type: "Talent",
+                        description: "Standard navigation and path-finding patterns.",
+                        proficiencies: [
+                            { name: "Void Mapping", knot: 16 },
+                            { name: "Sway Compensation", knot: 32 },
+                            { name: "Calculated Jump", knot: 1 }
+                        ]
+                    }
+                ],
+                proficiencies: [
+                    { name: "Zero-G Combat", facet: "Trial" }
+                ],
+                plots: ["The Breaking of the Third Seal"],
+                hitches: []
+            };
 
-            // Display Results in DOM
+            creatorContent.style.display = 'none';
             statsOutput.style.display = 'block';
-            statsOutput.innerHTML = `
-                <h3 style="font-family: var(--font-header); font-size: 1.3rem; color: var(--text-accent); margin-bottom: 12px; text-transform: uppercase;">
-                    Results for ${name}
-                </h3>
-                <p style="margin-bottom: 16px; font-size: 0.95rem;">
-                    <strong>Numerological Value (Gematria):</strong> <code>${geoVal}</code>
-                </p>
-                <div style="background: rgba(10, 7, 20, 0.4); padding: 16px; border-radius: 8px; border: 1px solid var(--border-glass); margin-bottom: 16px;">
-                    <h4 style="color: var(--text-accent); margin-bottom: 6px; font-size: 1rem;">
-                        I-Ching Catalyst Hexagram #${hexagramNum}: ${hexagram.name || 'Hexagram'}
-                    </h4>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;">
-                        ${hexagram.meaning || 'No description available for this cosmic gateway.'}
-                    </p>
-                </div>
-                <h4 style="font-family: var(--font-header); font-size: 1.1rem; color: var(--text-accent); margin-bottom: 8px; text-transform: uppercase;">
-                    Calculated Facet Boons
-                </h4>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                    <div style="padding: 10px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 6px;">
-                        <strong>Incarna (Body):</strong> Boon ${boons.Incarna}
-                    </div>
-                    <div style="padding: 10px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 6px;">
-                        <strong>Persona (Mind):</strong> Boon ${boons.Persona}
-                    </div>
-                    <div style="padding: 10px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 6px;">
-                        <strong>Umbral (Spirit):</strong> Boon ${boons.Umbral}
-                    </div>
-                    <div style="padding: 10px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 6px;">
-                        <strong>Nimbed (Aura):</strong> Boon ${boons.Nimbed}
-                    </div>
-                </div>
-            `;
-            
-            console.log("Character Creator: Stats and gateway successfully rendered.");
+            statsOutput.innerHTML = '';
+            const sheet = document.createElement('t13-character-sheet');
+            statsOutput.appendChild(sheet);
+            sheet.setCharacter(charData);
+
+            P2PNetworkManager.broadcast({ type: 'CHARACTER_SYNC', character: charData });
         } catch (err) {
-            console.error("Character Creator: Generation error", err);
-            alert("Error generating character stats. Check console.");
+            console.error(err);
         }
     });
 }
 
-// VTT Controls and Dice Rolls
 function setupVttControls() {
     const btnRoll = document.getElementById('btnRollDice');
     const btnClear = document.getElementById('btnClearDice');
+    const vttContainer = document.getElementById('vtt-canvas');
+
+    const vttCanvas = document.createElement('t13-vtt-canvas');
+    vttContainer.appendChild(vttCanvas);
+    vttCanvas.addToken('local-player', 'Me', 0x10b981);
     
     if (btnRoll) {
         btnRoll.addEventListener('click', () => {
-            // Trigger local dice roll calculation via T13NE.PRNG
-            const prng = T13NE.getModule('PRNG');
-            
-            // Defaulting to Mulberry32 or simple seed math
-            const rolls = [];
-            for (let i = 0; i < 3; i++) {
-                rolls.push(Math.floor(Math.random() * 6) + 1);
-            }
-            const total = rolls.reduce((a, b) => a + b, 0);
-            
-            console.log(`VTT Dice Roll: Rolled 3d6 -> [${rolls.join(', ')}] = ${total}`);
-            alert(`Rolled 3d6 on the Table: [${rolls.join(', ')}] = ${total}`);
-            
-            // In a fully configured pass, this would spawn 3D objects in the three.js container
+            const rolls = [Math.floor(Math.random()*6)+1, Math.floor(Math.random()*6)+1, Math.floor(Math.random()*6)+1];
+            const total = rolls.reduce((a,b)=>a+b, 0);
+
+            // Send delta: Just the result and a reference to the active plot
+            P2PNetworkManager.broadcast({
+                type: 'DICE_ROLL',
+                rolls,
+                total,
+                target: 'plot_active'
+            });
+            vttCanvas.spawnDice(rolls);
         });
     }
     
     if (btnClear) {
         btnClear.addEventListener('click', () => {
-            console.log("VTT Dice Roll: Cleared board.");
+            vttCanvas.clearDice();
+            P2PNetworkManager.broadcast({ type: 'CLEAR_TABLE' });
         });
     }
 }
 
-// Launch the application bootstrap
+function setupNetworking() {
+    const btnHost = document.getElementById('btnHostRoom');
+    const btnJoin = document.getElementById('btnJoinRoom');
+    const roomInput = document.getElementById('roomIdInput');
+    const status = document.getElementById('connectionStatus');
+
+    btnHost.addEventListener('click', async () => {
+        const roomId = roomInput.value.trim();
+        if (!roomId) return;
+        status.textContent = "Hosting...";
+        await P2PNetworkManager.createRoom(roomId);
+        status.textContent = `Hosting: ${roomId}`;
+        status.style.color = "#10b981";
+        voipManager.start();
+    });
+
+    btnJoin.addEventListener('click', async () => {
+        const roomId = roomInput.value.trim();
+        if (!roomId) return;
+        status.textContent = "Joining...";
+        await P2PNetworkManager.joinRoom(roomId);
+        status.textContent = `Joined: ${roomId}`;
+        status.style.color = "#10b981";
+        voipManager.start();
+    });
+}
+
 initApp();
