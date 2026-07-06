@@ -24,18 +24,21 @@ const Logger = {
   }
 };
 
-// Connected clients: clientId -> { ws, info }
+// Connected clients: clientId -> { ws, roomId, info }
 const clients = new Map();
 
-function broadcast(obj) {
+function broadcastToRoom(roomId, obj, excludeId = null) {
   const s = JSON.stringify(obj);
-  for (const [, c] of clients) {
-    try { c.ws.send(s); } catch (e) { }
+  for (const [id, c] of clients) {
+    if (c.roomId === roomId && id !== excludeId) {
+      try { c.ws.send(s); } catch (e) { }
+    }
   }
 }
 
 wss.on('connection', (ws) => {
   let clientId = null;
+  let clientRoomId = null;
   Logger.info('New WebSocket connection initiated.');
 
   ws.on('message', (data) => {
@@ -43,9 +46,43 @@ wss.on('connection', (ws) => {
       const msg = JSON.parse(data.toString());
       if (msg.type === 'register') {
         clientId = msg.clientId || `client_${Math.floor(Math.random()*10000)}`;
-        clients.set(clientId, { ws, info: msg.info || {} });
-        Logger.info(`Registered client ${clientId} with info: ${JSON.stringify(msg.info || {})}`);
+        clientRoomId = msg.roomId || 'lobby';
+        clients.set(clientId, { ws, roomId: clientRoomId, info: msg.info || {} });
+        Logger.info(`Registered client ${clientId} in room ${clientRoomId} with info: ${JSON.stringify(msg.info || {})}`);
+        
+        // Acknowledge registration
         ws.send(JSON.stringify({ type: 'registered', clientId }));
+
+        // Notify existing peers and sync peer listing
+        for (const [id, c] of clients.entries()) {
+          if (id !== clientId && c.roomId === clientRoomId) {
+            // Notify existing peer about the new peer
+            try {
+              c.ws.send(JSON.stringify({
+                type: 'peerJoined',
+                peerId: clientId,
+                info: msg.info || {}
+              }));
+            } catch (e) {}
+
+            // Send existing peer info to the joining client
+            ws.send(JSON.stringify({
+              type: 'peerExists',
+              peerId: id,
+              info: c.info || {}
+            }));
+          }
+        }
+      } else if (msg.to) {
+        // Relays signaling offers, answers, and candidates
+        const target = clients.get(msg.to);
+        const sender = clients.get(clientId);
+        if (target && sender && target.roomId === sender.roomId) {
+          target.ws.send(JSON.stringify({
+            ...msg,
+            from: clientId
+          }));
+        }
       } else if (msg.type === 'benchmark') {
         // store capability metrics
         if (clientId && clients.has(clientId)) {
@@ -54,11 +91,6 @@ wss.on('connection', (ws) => {
         }
       } else if (msg.type === 'taskResult') {
         Logger.info(`Task result from ${clientId || 'unknown'}: taskId=${msg.taskId}, size=${msg.size || 'n/a'}`);
-        // TODO: Verification and anti-cheat
-        // - Implement Merkle-chunked digests for large blobs and request random leaf proofs
-        // - Stochastically re-compute small random samples on the server or on trusted nodes
-        // - Maintain a record of node performance and demote/blacklist nodes that fail checks
-        // For now, acknowledge receipt and broadcast availability
         ws.send(JSON.stringify({ type: 'taskAccepted', taskId: msg.taskId }));
       }
     } catch (err) {
@@ -68,8 +100,17 @@ wss.on('connection', (ws) => {
   });
 
   ws.on('close', () => {
-    if (clientId && clients.has(clientId)) clients.delete(clientId);
-    Logger.info(`WebSocket closed for client: ${clientId}`);
+    if (clientId && clients.has(clientId)) {
+      const client = clients.get(clientId);
+      clients.delete(clientId);
+      Logger.info(`WebSocket closed for client: ${clientId} from room ${client.roomId}`);
+      
+      // Notify other clients in the same room
+      broadcastToRoom(client.roomId, {
+        type: 'peerLeft',
+        peerId: clientId
+      });
+    }
   });
 });
 
