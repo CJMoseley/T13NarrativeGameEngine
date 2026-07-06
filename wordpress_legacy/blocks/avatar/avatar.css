@@ -1,0 +1,5 @@
+figure.t13ne-avatar{padding:0.1em; background-color:rgba(80,80,255,0.2); border-radius:2em; border:5.6px solid rgba(0,0,0,0.2); max-width:100%; width:fit-content;}
+.t13ne-avatar details{padding:0;margin:0;display:inline-block; max-width:80px;}
+.t13ne-avatar details[open]{max-width:278px;}
+.t13ne-avatar summary{vertical-align: top; padding:0; display:inline;}
+.t13ne-avatar img.photo{display:inline-block; padding:0; margin:; 0 6px; height:36px;width:36px;border-radius:50%;overflow: clip; border:5.6px outset rgba(126,126,126,0.8);}
