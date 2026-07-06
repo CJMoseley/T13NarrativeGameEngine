@@ -7,6 +7,7 @@ import { EventBus } from '/src/t13ne/core/EventBus.js';
 import '/src/components/T13VttCanvas.js';
 import '/src/components/T13CharacterSheet.js';
 import '/src/components/T13PlotWidget.js';
+import '/src/components/T13YarnCardWidget.js';
 import '/src/components/T13ProficiencyWidget.js';
 import '/src/components/T13AnnexWidget.js';
 import '/src/components/T13EntityInspector.js';
@@ -77,10 +78,36 @@ function setupPlotSystem() {
             Rank: "Story",
             goal: "Prevent the emergence of the Archfiend at the Sector 7 gateway.",
             tensionLevel: 4,
+            Conflict: {
+                NoSides: 2,
+                Sides: {
+                    Dominant: { Expressions: ["Archfiend Malphas", "The Void Gate"] },
+                    Pressed: { Expressions: ["The Last Wardens", "Ancient Sigils"] }
+                }
+            },
             subPlots: [{ Name: "Infiltrate the Gateway", Rank: "Act" }],
+            plotDescendants: [
+                { Type: 'Location', Name: 'Sector 7 Gateway' },
+                { Type: 'Prop', Name: 'Shattered Seal' }
+            ],
             Hooked_Characters: [
                 { id: 'char_kaelen', name: 'Kaelen Weaver', charType: 'Hero' },
                 { id: 'npc_vex', name: 'The Silent Warden', charType: 'Vex' }
+            ],
+            quests: [
+                {
+                    name: "Secure the Perimeter",
+                    description: "Establish a defensive line around the Sector 7 rift.",
+                    reward: "5 Chi",
+                    steps: [
+                        { text: "Deploy sensor drones", complete: true },
+                        { text: "Neutralize vanguard scouts", complete: false }
+                    ]
+                }
+            ],
+            hand: [
+                { name: "The Catalyst", suit: "Spades", pips: "A", meaning: "A sudden event triggers a cascade." },
+                { name: "Broken Vow", suit: "Diamonds", pips: "5", meaning: "A betrayal or failed oath complicates the path." }
             ]
         };
 
@@ -153,6 +180,11 @@ function setupCharacterCreator() {
                 charType: charType,
                 boons: boons,
                 hexagram: { number: hexagramNum, name: hexagram.name },
+                significator: { name: "The Hierophant", suit: "Spades", pips: "V" },
+                features: [
+                    { name: "Resonant Harmony", description: "Your boons are perfectly aligned with the Cycle's current state." },
+                    { name: "Unyielding Resolve", description: "Ignore 1 Stress per Act when pursuing your primary Catalyst." }
+                ],
                 descendants: [],
                 annexes: [
                     {
@@ -200,7 +232,14 @@ function setupVttControls() {
         btnRoll.addEventListener('click', () => {
             const rolls = [Math.floor(Math.random()*6)+1, Math.floor(Math.random()*6)+1, Math.floor(Math.random()*6)+1];
             const total = rolls.reduce((a,b)=>a+b, 0);
-            P2PNetworkManager.broadcast({ type: 'DICE_ROLL', rolls, total });
+
+            // Send delta: Just the result and a reference to the active plot
+            P2PNetworkManager.broadcast({
+                type: 'DICE_ROLL',
+                rolls,
+                total,
+                target: 'plot_active'
+            });
             vttCanvas.spawnDice(rolls);
         });
     }
