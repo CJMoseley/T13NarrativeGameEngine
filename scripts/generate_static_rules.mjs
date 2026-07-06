@@ -85,18 +85,23 @@ function sanitizeContent(content) {
 
 function convertShortcodes(content) {
     content = sanitizeContent(content);
-    return content.replace(/\[t13ne\s+([^\]]+)\/\]/g, (match, p1) => {
+    // Updated regex to handle [t13ne ...] (case-insensitive) and optional trailing slash
+    return content.replace(/\[t13ne\s+([^\]]+)\]/gi, (match, p1) => {
         const attrs = {};
-        const attrRegex = /(\w+)="([^"]*)"/g;
+        // Handle both single and double quotes
+        const attrRegex = /(\w+)=["']([^"']*)["']/g;
         let m;
-        while ((m = attrRegex.exec(p1)) !== null) {
-            attrs[m[1]] = m[2];
+        // Strip trailing slash if present at the end of the capture group
+        const cleanP1 = p1.replace(/\/$/, '').trim();
+        while ((m = attrRegex.exec(cleanP1)) !== null) {
+            attrs[m[1].toLowerCase()] = m[2];
         }
-        const type = attrs.type;
+
+        const type = attrs.type || 'unknown';
         delete attrs.type;
         const attrStr = Object.entries(attrs).map(([k, v]) => `${k}='${v}'`).join(' ');
 
-        switch(type) {
+        switch(type.toLowerCase()) {
             case 'boontable': return `<t13-boon-table ${attrStr}></t13-boon-table>`;
             case 'name': return `<t13-gematria-calc ${attrStr}></t13-gematria-calc>`;
             case 'cards': return `<t13-card-list ${attrStr}></t13-card-list>`;
@@ -111,6 +116,15 @@ function convertShortcodes(content) {
         }
     });
 }
+
+const uniqueRules = [];
+const seenTitles = new Set();
+rules.forEach(rule => {
+    if (!seenTitles.has(rule.data.RulePage)) {
+        uniqueRules.push(rule);
+        seenTitles.add(rule.data.RulePage);
+    }
+});
 
 function generateNav(currentRelPath) {
     const categories = {
@@ -127,7 +141,7 @@ function generateNav(currentRelPath) {
 
     for (const [cat, label] of Object.entries(categories)) {
         nav += `<li><details><summary>${label}</summary><ul>`;
-        const catRules = rules.filter(r => hierarchy[r.data.RulePage] === cat);
+        const catRules = uniqueRules.filter(r => hierarchy[r.data.RulePage] === cat);
         for (const rule of catRules) {
             const slug = slugify(rule.data.RulePage);
             nav += `<li><a href="${currentRelPath}${cat}/${slug}.html">${rule.data.RulePage}</a></li>`;
@@ -146,7 +160,6 @@ const baseTemplate = (title, content, nav, currentRelPath) => `
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="T13 Narrative Engine Rules - ${title}">
     <title>${title} - T13 Rules</title>
-    <link rel="stylesheet" href="${currentRelPath}css/ui-styles.css">
     <link rel="stylesheet" href="${currentRelPath}css/rules.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -187,7 +200,7 @@ const baseTemplate = (title, content, nav, currentRelPath) => `
 </html>
 `;
 
-rules.forEach(rule => {
+uniqueRules.forEach(rule => {
     const title = rule.data.RulePage;
     const cat = hierarchy[title] || 'meta';
     const slug = slugify(title);
