@@ -1,0 +1,313 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="T13 Narrative Engine Rules - Ordeal Rounds">
+    <title>Ordeal Rounds - T13 Rules</title>
+    <link rel="stylesheet" href="../css/rules.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" src="../js/rule-components.js"></script>
+</head>
+<body class="t13-rules-page">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+        <div class="header-inner">
+            <div class="t13-logo" aria-hidden="true"></div>
+            <h1>T13 Narrative Engine</h1>
+        </div>
+    </header>
+    <div class="main-container">
+        <aside class="sidebar">
+            <nav class="rule-nav" aria-label="Rulebook Navigation"><ul><li><a href="../index.html">Home</a></li><li><details><summary>Core Concepts</summary><ul><li><a href="../core/boons.html">Boons</a></li><li><a href="../core/geometry-gematria-and-numerology.html">Geometry, Gematria and Numerology</a></li><li><a href="../core/facet-folio.html">Facet Folio</a></li><li><a href="../core/i-ching.html">I-Ching</a></li><li><a href="../core/core-concepts.html">Core Concepts</a></li></ul></details></li><li><details><summary>Mechanics</summary><ul><li><a href="../mechanics/tao-sway.html">Tao Sway</a></li><li><a href="../mechanics/facet-sway.html">Facet Sway</a></li><li><a href="../mechanics/chi.html">Chi</a></li><li><a href="../mechanics/yarn.html">Yarn</a></li><li><a href="../mechanics/twists.html">Twists</a></li><li><a href="../mechanics/sway.html">Sway</a></li><li><a href="../mechanics/card-guide.html">Card Guide</a></li><li><a href="../mechanics/card-spreads.html">Card Spreads</a></li><li><a href="../mechanics/proficiencies.html">Proficiencies</a></li><li><a href="../mechanics/hitches.html">Hitches</a></li><li><a href="../mechanics/annexes.html">Annexes</a></li><li><a href="../mechanics/character-catalysts.html">Character Catalysts</a></li><li><a href="../mechanics/modelling-resources.html">Modelling Resources</a></li><li><a href="../mechanics/test-value.html">Test (Value)</a></li><li><a href="../mechanics/test-card-draw.html">Test (Card Draw)</a></li><li><a href="../mechanics/test-dice.html">Test (Dice)</a></li><li><a href="../mechanics/stakes.html">Stakes</a></li><li><a href="../mechanics/success-and-failure-levels.html">Success and Failure Levels</a></li><li><a href="../mechanics/wounds.html">Wounds</a></li><li><a href="../mechanics/death-and-immortality.html">Death and Immortality</a></li></ul></details></li><li><details><summary>Characters</summary><ul><li><a href="../characters/character-arcs.html">Character Arcs</a></li><li><a href="../characters/characters-and-plots.html">Characters and Plots</a></li><li><a href="../characters/creating-characters.html">Creating Characters</a></li></ul></details></li><li><details><summary>Narrative</summary><ul><li><a href="../narrative/subplots.html">Subplots</a></li><li><a href="../narrative/drama.html">Drama</a></li><li><a href="../narrative/stress.html">Stress</a></li><li><a href="../narrative/strains-and-straining-dice.html">Strains and Straining Dice</a></li><li><a href="../narrative/shocks-and-shocked-dice.html">Shocks and Shocked Dice</a></li><li><a href="../narrative/distress-and-traumas.html">Distress and Traumas</a></li><li><a href="../narrative/tension.html">Tension</a></li><li><a href="../narrative/narrative-weaving.html">Narrative Weaving</a></li><li><a href="../narrative/plot-descendants.html">Plot Descendants</a></li><li><a href="../narrative/plots-in-t13.html">Plots in T13</a></li><li><a href="../narrative/yarn-tellers-weavers-and-plots.html">Yarn-Tellers, Weavers, and Plots</a></li></ul></details></li><li><details><summary>Ordeals</summary><ul><li><a href="../ordeals/ordeals.html">Ordeals</a></li><li><a href="../ordeals/ordeal-rounds.html">Ordeal Rounds</a></li><li><a href="../ordeals/ordeal-stages.html">Ordeal Stages</a></li><li><a href="../ordeals/narrative-tricks.html">Narrative Tricks</a></li><li><a href="../ordeals/social-ordeals.html">Social Ordeals</a></li><li><a href="../ordeals/alternate-ordeals.html">Alternate Ordeals</a></li><li><a href="../ordeals/action-spaces.html">Action Spaces</a></li><li><a href="../ordeals/psychosocial-action-spaces.html">Psychosocial Action Spaces</a></li></ul></details></li><li><details><summary>Meta</summary><ul><li><a href="../meta/tapestries.html">Tapestries</a></li><li><a href="../meta/coping-with-players.html">Coping With Players</a></li><li><a href="../meta/embedded-facet-conflicts.html">Embedded Facet Conflicts</a></li><li><a href="../meta/types-of-games.html">Types of Games</a></li><li><a href="../meta/referees-rules.html">Referee's Rules</a></li></ul></details></li></ul></nav>
+        </aside>
+        <main id="main-content" class="rule-content">
+            <article>
+                <header class="article-header">
+                    <h2>Ordeal Rounds</h2>
+                </header>
+                <section class="rule-body">
+                    <p>The Round is the largest and most important structure that we use in an Ordeal. The Round controls the pace of the action and helps break Ordeals into smaller, more understandable "chunks", but the Round is purely a game-mechanic structure, it serves only the game, and not the Narrative. Rounds are initiated whenever an Ordeal is declared, and ends when either the Round Wild Pool or the Deck is emptied.</p>
+
+
+
+<h2>Round Wild Pool</h2>
+
+
+
+<p>A defining point of a T13 Round is the Round Wild Pool. This is a pool of cards that are potentially used by every Character involved in the Ordeal. The Pool varies in size based on the Stakes of the Ordeal. The Round Wild Pool can vary from 2-6 Ordeal Cards. </p>
+
+
+
+<p>Blended Stakes can modify the Round Wild Pool, with a Low Stakes Ordeal, with a High Stakes component using the Medium or even High Stakes Round Wild Pool to increase the potential danger and threat.</p>
+
+
+
+<p>These Cards are dealt face-up onto the table where everyone can see them during the Round.</p>
+
+
+
+<p>When making an Action, if a Character can make an Ordeal Trick with a card from the Round Wild Pool then they may take the Wild Pool card and add it to the Action they are currently making. For example if you can match a card from the Round Wild Pool with a card from your Pool, they can be played together as a Pair. This would allow one of the Pair to be played as a Wyrd Tarot card Promise.</p>
+
+
+
+<p>When all cards are played from the Round Wild Pool then the Round will end.</p>
+
+
+
+<p>You can also find out more about Narrative Tricks, what they are, and how they affect the Narrative in the Rules page for Narrative Tricks.</p>
+
+
+
+<h2>Rounds and Stages</h2>
+
+
+
+<p>The Round is a game-mechanic structure, Stages are a Narrative structure. These two structural systems combine to create the flow of all Ordeals, and can vary greatly from Ordeal to Ordeal.</p>
+
+
+
+<ul><li><strong>Racetrack</strong> &mdash; The Characters can work through several Stages (possibly even repeating a number of Stages, as you might race around a track) in a single round. This is especially common in Action sequences, where Characters are moving through a number of Stages during a single Round of the Ordeal.</li><li><strong>Gradual</strong> &mdash; The Characters can work through several Rounds while remaining in a single Stage. This is more common in gradual Ordeals where Characters have to accumulate resources to make purchases, or perform years of research to make a breakthrough.</li><li><strong>In-Step</strong> &mdash; Each Round is specifically tied to a Single Stage. The Stage cannot be completed, without also completing the Round (and vice-versa). This effect is usually created by making the Round Wild Pool only 1 or 2 cards big, and works well with heist style Ordeals, or any situation where there is a clearly stepped plan.</li><li><strong>In-Flux</strong> &mdash; Rounds and Stages are completely unconnected to each other. The first Stage may take two Rounds to complete, but the later Stages may all be completed in a single Round, or vice-versa. This is the usual chaos that most Ordeals exists in.</li></ul>
+
+
+
+<h2>Round Procedure</h2>
+
+
+
+<ol><li><strong>Roll Proficiencies</strong> &mdash; A Proficiency Roll is how we begin an Ordeal. The Proficiencies should be appropriate to the Ordeal being attempted, in Higher Stakes Ordeals you would probably be allowed to use Proficiencies for any weapons you carry, or martial arts you may know, as well as Proficiencies like "Fast", "Quick-witted". Normally at this point you only roll Proficiency Dice (it is possible for an Annex, Descendant or Facet to also be rolled if the Referee and Yarn-Teller agree, although usually the Annex must have a Quiet Automatic Activation Nimbed specifically for this purpose). The Score of this roll is Reduced to find a Draw and this number of Ordeal Cards are drawn to form the initial Ordeal Pool (which may be beyond the Ordeal Pool Limit, at this time).<br>Extra Success Levels may draw an additional card. Failure Levels may cost a card each.</li><li><strong>Narrate Stage Card(s)</strong> &mdash; The Yarn-Teller should reveal the difficulty of this Round’s 1st Stage (by revealing the Ordeal Cards or telling the Players the difficulty) while describing the Stage (or Location) and narrating the Ordeal at this time. <br>The Yarn-Teller may allow characters with knowledge of the Location (or the procedure) to see the coming Stages, allowing them to plan ahead. <br>Sometimes the Yarn-Teller will keep the Stage Difficulty, or most often the Obstacles secret. They might show one route, but a short-cut, or secret technique that is unknown, would be kept face-down (or even off the table) until it is discovered. <br>Characters may start in different Stages, with different Stage Difficulties, if that is the case this would be the time to tell them that. They may even have different goals and even different Stakes. That’s all up to the Yarn-Teller and Referee.</li><li><strong>Deal Round Wild Pool</strong> <strong> &mdash;</strong> The cards of the Round Wild Pool should be dealt according to the current Stakes of the Ordeal.</li><li><strong>Begin Round Phases</strong> &mdash; Start the Phase Order according to the Initiative System you prefer to use.</li></ol>
+
+
+
+<h3 id="duringround">During the Round</h3>
+
+
+
+<p>Rounds proceed by Phases, through Stages (or across/between Stages if they are acting as proxies for Locations). With each Character taking their actions in turn. The number of Phases per Stage and number of Stages is generally controlled by the the Yarn-Teller.</p>
+
+
+
+<h3 id="endofround">End of the Round</h3>
+
+
+
+<p>A Round ends at the moment that the Deck is exhausted (the last card is drawn or dealt) or a Trick is played that includes the final Round Wild Pool card. The end of the Round breaks the narrative flow a little, as combatants back off to assess the situation, gauge the severity of their wounds, assess ammo levels, those being chased stop to catch their breath, look behind them, and that kind of thing.</p>
+
+
+
+<ol><li>All RT and GRT Chips are immediately handed in. They will have no effect on the next Round.</li><li>All Ordeal Pools are immediately counted and that number Reduced (take the Score of the Boon), then you hand back all but the reduced number of cards.</li><li>It is normal to apply all damage before the next Round. See Wounds Rule Page for how to apply Wounds. </li><li>Returned Ordeal Cards are shuffled, the next Round Wild Pool is dealt (or selected), and then Proficiency Dice may be rolled to draw additional cards for the next Round. These are added to the remaining Pool from the last Round. Highest number of cards begins the first Phase of the next Round.</li></ol>
+
+
+
+<h2 id="phases">Rounds and Phases</h2>
+
+
+
+<p>A Phase is a collection of single Narrative events or ‘Moments’, usually consisting of one Moment for each Character in the Ordeal. At its fastest, in a High Stakes situation like Combat, a Phase lasts about half a second of subjective time (it feels about as long in a Never-Time bubble, or travelling in Time, or whatever, as it does at normal pace), and is just about long enough for each Character to do a few quick things, usually an Full-Action or Half-Action (drawing and/or playing 1 or more cards). </p>
+
+
+
+<p>During an extended Ordeal, a Phase could be a day, a week or even centuries long (more if travelling in time as well), with many things happening that aren’t narrated around the Ordeal.</p>
+
+
+
+<p>In short, in a Phase we have some "things" happen, each thing caused by someone, usually to something or someone else.</p>
+
+
+
+<p>The Ordeal proceeds by Phases, in a Phase each Character gets at least one Action where you might be able to draw and play cards, narrating the action, or you might be stuck waiting for a Power to cool-down (in GRT).</p>
+
+
+
+<p>Normally, a Stage has a limited number of Phases (decided by the Stakes and Yarn-Teller), if the Character fails to play cards that are higher than the Stage difficulty (for that purpose alone – you can’t count that cracking shot you pulled off in phase 4) by the end of the Phases of the Stage, then they have failed that Stage.</p>
+
+
+
+<h3>Phase Order Initiative System </h3>
+
+
+
+<p>The order that Characters can take their Moments and act in during a Phase is determined by what we call the Phase Order Initiative System (POIS), there are a number of different ways that POIS can be deployed.</p>
+
+
+
+<ul><li><strong>Sweeping Spotlight POIS </strong> &mdash; Start with the Player to the current Yarn-Teller’s left or right (after they have described the Scene, Stage, Situation and Stakes) and go around handing the spotlight off to the left or right.</li><li><strong>Yarn-Teller Directed POIS</strong> &mdash; The Yarn-Teller points the "camera" at the interesting action (while letting the boring stuff happen off camera). This means they follow the Characters that are actively fighting, shooting or whatever, then turn to those who are hiding, waiting, digging in, and so on and say "So, what have you been doing?"</li><li><strong>Ordeal Pool POIS</strong> &mdash; The Order proceeds from the Character with the largest Ordeal Pool (by number of cards) down to the smallest. This can work very well, but changing Pool sizes and Preparations can complicate the procedure immensely. In general, a Prepared Reserve does not count towards initiative Order, unless noted for a Style Reserve Pool (such as Speedster).</li><li><strong>Card POIS</strong> &mdash; Each Character must assign at least one card from their Ordeal Pool as their Initiative Card(s) for the Round (or Stage). Play proceeds from highest Pips to lowest Pips. The cards assigned for initiative cannot be used for another purpose, but can be swapped out or added to whenever a Character Draws a card (which can allow a Character to take more than one Action a Phase). Playing an Initiative Card means it will not be available for initiative next Phase.</li><li><strong>Scored POIS</strong> &mdash; The Character with the highest Zeal, Inertia, Fury or Quiet Score goes first and so on down to the lowest. This is can be rolled to give some random factor. Score Ties can be broken by Boon, Value or die roll as required. Annexes may be used if they are appropriate.</li><li><strong>Pay Sway POIS</strong> &mdash; You can pay with Sway (usually Facet Sway Verve, Endurance, Surges or Serenity &mdash; although Breaths, Health and so on may also be used). Those who pay more go faster, optionally Heroes may add Chi, Yarn-Tellers may add Yarn. This Action Economy system is best used for tactical and strategic games where you want limited randomness, for a more cinematic and random flavour try combining with the previous three modes.</li></ul>
+
+
+
+<p>Sometimes one side may have an advantage of surprise, in these cases they should act first, regardless of Initiative, but only for the first Phase.</p>
+
+
+
+<h3 id="takingactions">Moments and Taking Actions</h3>
+
+
+
+<p>During a Phase each Character gets usually one Moment, this is their go, chance, or turn (some careful play and strategies can get you more than one Moment), the time for them to act and hopefully shine. During your Moment you can elect to take a Full-Action or a Half-Action, unless you are already affected by GRT. But we’ll get to that in a moment. Normally all Moments are considered to be overlapping, with POIS order determining when each Moment begins, but they all end simultaneously at the end of the Phase. This is when the Yarn-Teller or Referee should narrate the Phase’s Action.</p>
+
+
+
+<h4 id="fullactions">Full Actions with Descendants and Annexes</h4>
+
+
+
+<p>When you use a Descendant, or an Annex, during a Ordeal you get to draw new cards as well as playing at least one card.</p>
+
+
+
+<p>It is normal during Ordeals to not roll for these actions, instead take the average (it should be noted that the average will be halved if you are not Proficient, but otherwise Proficiencies are not rolled or checked during an Action). These Averages are noted on the Boon of the Annex or Descendant as the Score and more importantly the Draw.</p>
+
+
+
+<ol><li>You should pay any Umbral costs associated with the Descendant or Annex before drawing any cards (in case they fail). In some situations failure to activate the Annex may cause automatic failure, so be sure you meet all the Umbral Conditions.</li><li>A Descendant or Annex draws the Boon Draw cards (Score Reduced). If rolling Score and reducing the number of cards looks like this helpful table <div class="t13ne-tablewrap"> <table class="t13ne-table"> <thead> <tr> <th>Rolled Score</th> <td>0</td> <td>1</td> <td>2-4</td> <td>5-7</td> <td>8-11</td> <td>12-15</td> <td>16-20</td> <td>21-25</td> <td>26-31</td> <td>32-37</td> <td>38-44</td> </tr> </thead> <tbody> <tr> <th>Number of Cards</th> <td>0</td> <td>0.5*</td> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td> <td>6</td> <td>7</td> <td>8</td> <td>9</td> </tr> </tbody> </table></div> <p>*A half card is one card but the Pips are halved. </p></li><li>Having drawn your cards then you may play at least one card. The number you can play is based on the Annex Type, and varies from 1-4, but some Nimbeds and Success Level Effects can let you play more.<br> <br>When playing cards, if you could play a Trick that would use a card from the Round Wild Pool, then remove it from the Round Wild Pool and add it to the Action. <br><br>Additional cards (such as from Trick play) may be used as normal, or to pay the costs of Range, or multiple Targets as appropriate. They can also be used to reduce the Reaction Time of that Annex or Descendant. <br><br>You may be able to play cards on the Stage Difficulty while playing other cards to perform other actions such attacking another competitor (unless restricted by Umbrals or Hitches).</li><li>Having played cards you should now Discard cards over your Ordeal Pool Limit (number of Hitches + Scale).</li><li>Having Discarded you now draw Reaction Time chips, and any Global Reaction Time Chips that are required.</li></ol>
+
+
+
+<h4 id="halfactions">Half Actions</h4>
+
+
+
+<p>Half-Actions are another way of getting things done during an Ordeal. They don’t incur any Reaction Time penalties, and therefore are an excellent way of progressing through an Ordeal – if you have a good enough Pool.</p>
+
+
+
+<p>Half-Actions are simple Facet based actions. This allows them to either:</p>
+
+
+
+<ol><li><strong>Wait</strong>: And draw a card (some Refs may allow a Character to draw equal to the appropriate Facet Draw, but usually this will be one anyway).</li><li><strong>Quick Action</strong>: Play a single card from your Ordeal Pool without any GRT or RT.</li></ol>
+
+
+
+<h4 id="rt">Reaction Times</h4>
+
+
+
+<p>When a character takes a Full-action (drawing new cards and then playing them) there is a lag, or cool down, before they can use that Descendant or Annex again. This is called Reaction Time.</p>
+
+
+
+<p>For Annexes, the normal Reaction Time is equal to the Reduced Boon, but this will often be modified by Tangles, Umbrals or Nimbeds or a Hitch Gnarl. Descendants are additionally limited by their physical size (like a rifle is slower than a pistol and a dagger is faster than a battle-axe, although that isn&apos;t to say that a magical battle-axe isn&apos;t faster than normal dagger, but it couldn&apos;t be faster than a dagger with the same enchantments).</p>
+
+
+
+<div class="t13-placeholder" data-type="unknown" >Interactive Component: unknown</div>
+
+
+
+<p>Some Umbrals and Nimbeds can completely alter the way that RT (and GRT work) be sure to check with your Referee.</p>
+
+
+
+<p>It can be useful to keep track of these Reaction Times with poker chips (use Red Chips for RT). After a Descendant or Annex takes an action take a number of chips equal to its RT – less any paid off with cards of course (we suggest using different colour chips for normal RT and Global RT).</p>
+
+
+
+<p>Each phase where you don’t use that Descendant or Annex you can discard a chip from its stack. You may discard RT chips even if you are in GRT or Shocked.</p>
+
+
+
+<p>You can reduce Reaction Times on individual actions by paying Pips from cards during an Action or Half-Action i.e. When playing 3 cards using his ‘Dark Magic’ power Nigel the Necromancer uses one of the cards (a 5 of Diamonds) to reduce the Dark Magic RT by 5.</p>
+
+
+
+<p>Once an Annex or Descendants RT has been reduced to zero it can be used in a Full-Action again.</p>
+
+
+
+<p><strong>Optional Rule: </strong>It is possible to use an Annex or Descendant that is in Reaction Time, but only by the Character or Descendant taking Stress equal to the remaining RT. This can create a more realistic, gritty feel to Ordeals. As it has a less gamified sense of time, however this will accelerate Drama within a Plot while also forcing more rest periods on the Characters to cope with the higher Stress. This rule can be simplified for speed of play to Characters or Descendants take Stress equal to the half the RT and ignore Reaction Time rules otherwise, however this variant does reduce the tactical options available to Players.</p>
+
+
+
+<h4 id="grt">Global Reaction Time</h4>
+
+
+
+<p>Global Reaction Time (GRT) is a more powerful form of Reaction Time that rather than stopping an Annex from being used stops a Character or Descendant from taking any actions (Full or Half). You cannot draw, or play, any cards while you have Global RT chips (and technically cannot roll dice either without straining). Passive Annexes as well as armour (Rook Incarna) Descendants may still act independently to draw/play cards and soak wounds in GRT.</p>
+
+
+
+<p>Global Reaction Time is related to Shock and the Stunned result of a Shock Dice being rolled creates GRT that is unrelated to the Character&apos;s own Actions. Similarly Shocking attacks (amongst others) can also apply GRT to a Character or Descendant before they have acted.</p>
+
+
+
+<p>It should be noted that GRT chips affect only the Character or Descendant that has them. If you use a Power-based Blaster Rifle’s “Scope” Talent, then the Descendant draws RT chips equal to Scope RT and 1 GRT. The Rifle may not be used again until the GRT is paid off. The character holding the Rifle may still take actions.</p>
+
+
+
+<p>Generally the GRT of any Action relates directly to the number of cards that it may play simultaneously (or the type of Annex, see <a href="annexcards">table</a>). Particularly large Reaction Times (on a powerful Descendant usually) and some Umbrals can affect the GRT of an action.</p>
+
+
+
+<p> You can reduce the GRT of an Action with cards, just like RT. A chip (or point) of GRT costs 5 Pips to pay-off this way though, so a Joker is required to pay off three chips of GRT simultaneously. </p>
+
+
+
+<div id="annexcards" class="t13ne-tablewrap">
+<table class="t13ne-table">
+<thead>
+<tr>
+<th>Type</th>
+<th>Global RT / Extra Cards playable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Skill, Skill-type descendant or light Prop (e.g. Dagger, Pistol or Wand)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Talent, Talent-type descendant or Average Prop (e.g. Sword, Submachine Gun or Staff)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Power, Power-type descendant or Heavy Prop (e.g. Warhammer, Rifle or Tome)</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Super-Skill, Super-Skill Descendants or Very Heavy Prop (e.g. Halberd, Cannon, etc)</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Super-Annexes, Super-type Descendant or Ridiculously Heavy Prop (e.g. Anime Warhammer, Siege Engine, Battering Ram)</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+
+<p>Note that the GRT is equal to the <em><strong>extra</strong></em> cards played. A Facet plays 1 card and so does a Skill, neither incurs a GRT penalty. A Super-Power on the other hand plays 5 cards, with those 4 extra cards having a 4 GRT cost.</p>
+
+
+
+<p>It is worth noting again that a Character or Descendant can act during GRT, but only by spending Stress to roll Strain Dice and then Draw and Play as usual. This action does not generally create additional GRT, and any cards Played as a result can be used to cancel GRT or RT as required. If the Annex Strained is also in RT then it will also generate Stress. Because of this it is possible for an action in GRT to Shock the Character or Descendant and thereby end up deeper in GRT afterward.</p>
+
+
+
+<h2>What can you do with a Half-Action or Action?</h2>
+
+
+
+<p>Half-Actions consist of either drawing a card or playing a single card (although it is possible that a Trick or Reserve Pool may allow additional cards to be played). Actions can draw and play one or more cards, sometimes allowing multiple simultaneously <em>actions</em> such as:</p>
+
+
+
+<ul><li><strong>Moving</strong> &mdash; Movement around the Location or Stage (positioning for an attack is a good example). Movement works much like Range (see Action Spaces and Ordeals for Rules), depending on the type of motion that you engage in and the terrain you move through.<t13-data-table array='ordealTerrain'></t13-data-table><t13-data-table array='ordealMotionType'></t13-data-table></li><li><strong>Prepare</strong> &mdash; You can Prepare any sort of action, playing a card turned sideways is how we show that. When a card is prepared you usually say what that Preparation consists of (or what it is for) and into which Style Reserve you are Preparing it. <br>For example playing two fives, you might say that you are dropping to the ground and sighting on the enemy, using your Tactical Reserve, which would allow you to use the Prepared cards on your next shot, as a Prepared Defence if you are attacked, to Hide, or to break and run if necessary. Alternatively, maybe you would play to your Aiming Style Reserve, which you can only use to attack, but can hold over the end of the Round. As well as Preparing Cards you can prepare Pips, Rolled Score, or unrolled Dice into the Reserve (which can be helpful to not Draw too many cards at once).</li><li><strong>Deal with an Obstacle</strong> &mdash; Obstacles get in the way. Some are dangerous Traps, or slippery floors, but some are no more complicated than a closed door.<br>Obstacles can be strewn around the Stages, placed in the middle of the Stage, or separating the Stages from each other. <br>If the Obstacle is obvious then it should be described by the Referee (or Yarn-Teller) to the Players when they enter the Stage. If it isn’t obvious then the description should contain some hint, for example a decapitated skeleton in the middle of the room, or broken arrows against a wall, or small holes in a fresco.&nbsp;<br>Obstacles are defined by a card that sets the type of Obstacle, and then 1 or 2 Difficulty cards (they are added together to create the Pips Difficulty).&nbsp;<br>Hidden Obstacles are more complicated, and can require the Yarn-Teller to call for a "Spot Hidden Obstacles" Key Test, or a passive Key Test. Traps usually have a hidden trigger as well as the hidden Trap, although occasionally a trigger may be more obvious or more hidden than the actual trap.<ul><li><em>Spot the Obstacle</em> &mdash; The Characters can declare that they are searching for Traps (and their Triggers, which are more often hidden) or something similar ("I’m scanning the room with my Multi-corder / Cybernetic Eye / Eelafin Senses / etc"). This should generally be prompted by some detail of the narration (such as the headless skeleton). <br>They then play a card to spot the Obstacle, the Obstacle can draw a card to represent how hidden it is. <br>Hearts are the Trump for Hiding, Spades for spotting and each adds +2 Pips. <br>Characters may Spot Obstacles automatically if they are Walking or Crawling (rather than running) at lower Stakes, or if they Prepare an Attack, Defence or movement that will pass through, or near, the Obstacle. Alternatively, the Yarn-Teller can make a passive Key Test for all the Characters and Narrate what they see appropriately. At the very least there should be some indication that there is potential danger present in the description given.</li><li><em>Pass the Obstacle</em> &mdash; If the Obstacle is visible simply play a card (or cards) that matches suit (with at least one card) with the Obstacle type and the Difficulty Pips. You have to beat the Pips if you cannot match Suit.&nbsp; This allows you to Pass the Obstacle, without triggering or engaging with it.<br>In the case of a hidden Obstacle, this is the point where the Yarn-Teller must narrate the action, explaining that the Character hears a "Click" or feels a trip wire against their leg, or feels the flagstone drop. They may even ask what they want to do next. Players may be able to play a card to describe their action, such as raising their shield (Prepare a defence), dive aside (usually with Diamonds), then the trap triggers. The Player action may help, or hinder them as the Yarn-Teller narrates that the floor they run on suddenly turns slippery, a bang goes off, the floor falls away, or the Character runs into the glass, or whatever is appropriate for the Obstacle. Then the Obstacle cards are usually revealed, as any Wounds are summoned, or a way around is achieved.</li><li><em>Disable the Obstacle</em> &mdash; To disable an Obstacle (so that the door is unlocked, held open, or the Trap is no longer dangerous) you should beat the Difficulty Pips twice over, and must match Suit (or Trump) with at least one of the cards you use. To randomise the pass amount the Yarn-Teller can modify the Difficulty Pips by +1d6-1d6.<br>Although, of course it isn’t strictly necessary to disable the lock in the door if you just hold it open after passing, so use some sense here (or make wedging or opening&nbsp;a door a Disabling Test).</li><li><em>Failure to Pass</em> &mdash; If you can’t scrape enough Pips together then you cannot move through the Obstacle. In the case of a Trap (and some of the others too) the Obstacle will Wound (or at least try to) those who cannot pass it, usually, or at least those who try to pass it and fail (they fall through the trapdoor).&nbsp;Now they may try again, or more normally someone will have to Disable the Obstacle (wedge the trap door open and dangle a rope into the pit).</li></ul></li><li><strong>Beat the Stage Diff</strong> &mdash; Passing the Stage Difficulty is what the Stage is often all about. So, of course, a Character can play cards towards defeating the Stage Difficulty. <br>Stage Difficulties do not require specific Suits, but they are often Trumped by a specific Suit. See <a href="#trumps">Trumps</a>. <br>Stage Difficulties can usually vary from a single card up to 3 cards (2 - 45 Pips), and are set by the&nbsp;Yarn-Teller (or Referee), some exceptionally complex Ordeals may even have higher Difficulties.</li><li><strong>Attack</strong> &mdash; You can play any card (or cards) to attack another Character or Descendant. <ul><li>Each Facet has its own preferred attack, and the Attacks of the Suits reflect that. <t13-facet-aspects suits='all' aspect='Attack'></t13-facet-aspects> </li><li>The Spades Trump can make every sort of Attack and all Spades have a +2 Pip modifier when attacking. </li><li>You can read about how Wounds are Summoned, created and applied in the Wounds Rulepage.</li></ul><ul><li>Resource Attacks are covered on the Alternate Ordeals  Rulepage. </li></ul></li><li><strong>Defence</strong> &mdash; You can also play cards to defend yourself from attack. Card defences also vary by card Suit as you can see on the table in the <a href="#trumps">Trumps</a> section. The types of defences and how they work are shown here. <div class="t13-placeholder" data-type="attacktable" attack='Defence_Modes'>Interactive Component: attacktable</div></li><li><strong>Healing</strong> &mdash; During most Ordeals you have to rely on Narrative Healing, which can be quite limited, unless you have some sort of magical healing, hyper-medicines, or accelerated regeneration. See the rules on Wounds for more details.</li></ul>
+                </section>
+
+
+            </article>
+        </main>
+    </div>
+    <footer>
+        <div class="footer-inner">
+            <p>&copy; 2026 <a href="https://www.cjmoseley.co.uk">CJ Moseley</a>. Terminal Thirteen Narrative Engine. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
