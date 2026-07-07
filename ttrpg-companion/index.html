@@ -153,3 +153,40 @@
   <script type="module" src="/main.js"></script>
 </body>
 </html>
+<!-- AUTHOR MODE ADDED MANUALLY DUE TO GIT DIFF FAILURE -->
+<script>
+console.log("Checking Author Mode integration...");
+if (!document.querySelector('[data-panel="author"]')) {
+    const navUl = document.querySelector('.nav-links');
+    const authorLi = document.createElement('li');
+    authorLi.className = 'nav-item';
+    authorLi.innerHTML = '<a class="nav-link" data-panel="author"><span>Author Mode</span></a>';
+    navUl.appendChild(authorLi);
+
+    const viewport = document.querySelector('.viewport');
+    const authorPanel = document.createElement('div');
+    authorPanel.className = 'panel-view';
+    authorPanel.id = 'view-author';
+    authorPanel.innerHTML = `
+      <div class="char-sheet-wrapper">
+        <div class="char-card">
+          <h2 style="font-family: var(--font-header); font-size: 1.8rem; color: var(--text-accent); text-transform: uppercase; margin-bottom: 24px;">
+            Author Workbench
+          </h2>
+          <div id="workbench-container">
+            <div class="workbench-nav" style="display: flex; gap: 10px; margin-bottom: 20px;">
+                <button class="btn btn-secondary wb-nav-btn active" data-wb-view="narrative">Narrative</button>
+                <button class="btn btn-secondary wb-nav-btn" data-wb-view="knots">Knots & Annexes</button>
+                <button class="btn btn-secondary wb-nav-btn" data-wb-view="chars">Characters</button>
+            </div>
+            <div id="workbench-content">
+                <div id="knots-grid"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    viewport.appendChild(authorPanel);
+    console.log("Author Mode injected via script.");
+}
+</script>
