@@ -58,6 +58,16 @@ async function initApp() {
             if (voipManager) voipManager.callPeer(peerId);
             const vttCanvas = document.querySelector('t13-vtt-canvas');
             if (vttCanvas) vttCanvas.addToken(peerId, `Player ${peerId.substring(0,4)}`, 0xef4444);
+
+            if (P2PNetworkManager.isHost) {
+                Logger.message(`Referee: Sending initial sync to player ${peerId}`);
+                // In a full implementation, we would send the active Game and Character data
+                P2PNetworkManager.sendTo(peerId, {
+                    type: 'SESSION_SYNC',
+                    ts: Date.now(),
+                    welcome: "Welcome to the T13 Session."
+                });
+            }
         });
 
     } catch (error) {
