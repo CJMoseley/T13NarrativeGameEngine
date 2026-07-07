@@ -42,7 +42,7 @@ import T13NE_Game from './modules/systems/t13ne-game.js';
 import T13NE_Reasoning from './modules/ai/t13ne-reasoning.js';
 import T13NE_StateMachine from './modules/systems/t13ne-state-machine.js';
 import T13NE_Editor from './modules/systems/t13ne-editor.js';
-import T13NE_VTTManager from './modules/vtt/VTTManager.js';
+import T13VTTManager from './modules/vtt/VTTManager.js';
 
 import { ViewManager } from './core/ViewManager.js';
 import { PluginManager } from './core/PluginManager.js';
@@ -223,7 +223,7 @@ class T13NE {
         this.loaderManager = new LoaderManager(this.viewManager);
 
         // Initialize VTT Manager
-        this.vttManager = new T13NE_VTTManager();
+        this.vttManager = T13VTTManager;
         this.vttManager.initialize(this.viewManager.sceneManager);
 
         // 2. Load Narrative Modules
