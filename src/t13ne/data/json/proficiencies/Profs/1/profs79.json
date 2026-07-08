@@ -1,0 +1,58 @@
+{
+  "3904": {
+    "id": 3904,
+    "prof": {
+      "Name": [
+        "Stars",
+        "Stars Yonder Subject Proficiency",
+        "Stars, Sun, Planets"
+      ],
+      "Description": "A fundamental proficiency in Stars, categorized within the Yonder facet.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3905": {
+    "id": 3905,
+    "prof": {
+      "Name": [
+        "Projectiles",
+        "Projectiles Yonder Subject Proficiency",
+        "Projectiles, Arrows, Bullets, Thrown"
+      ],
+      "Description": "A fundamental proficiency in Projectiles, categorized within the Yonder facet.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

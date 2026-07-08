@@ -1,0 +1,1404 @@
+{
+  "3854": {
+    "id": 3854,
+    "prof": {
+      "Name": [
+        "Archaeology",
+        "Archaeology Orthodox Scientific Study Proficiency",
+        "Archaeology, Tomb-raiding, Antiquarianism"
+      ],
+      "Description": "A fundamental proficiency in Archaeology, categorized within the Orthodox facet.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3855": {
+    "id": 3855,
+    "prof": {
+      "Name": [
+        "Sociology",
+        "Sociology Orthodox Scientific Study Proficiency",
+        "Sociology, Social Science, Human Society"
+      ],
+      "Description": "A fundamental proficiency in Sociology, categorized within the Orthodox facet.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3856": {
+    "id": 3856,
+    "prof": {
+      "Name": [
+        "Psychology",
+        "Psychology Orthodox Scientific Study Proficiency",
+        "Psychology, Behavioral Science, Mental Processes"
+      ],
+      "Description": "A fundamental proficiency in Psychology, categorized within the Orthodox facet.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3857": {
+    "id": 3857,
+    "prof": {
+      "Name": [
+        "Linguistics",
+        "Linguistics Orthodox Scientific Study Proficiency",
+        "Linguistics, Philology, Language Study"
+      ],
+      "Description": "A fundamental proficiency in Linguistics, categorized within the Orthodox facet.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3858": {
+    "id": 3858,
+    "prof": {
+      "Name": [
+        "Physics",
+        "Physics Orthodox Scientific Study Proficiency",
+        "Physics, Natural Philosophy, Matter and Energy"
+      ],
+      "Description": "A fundamental proficiency in Physics, categorized within the Orthodox facet.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3859": {
+    "id": 3859,
+    "prof": {
+      "Name": [
+        "Mathematics",
+        "Mathematics Orthodox Scientific Study Proficiency",
+        "Mathematics, Arithmetic, Geometry, Calculus"
+      ],
+      "Description": "A fundamental proficiency in Mathematics, categorized within the Orthodox facet.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3860": {
+    "id": 3860,
+    "prof": {
+      "Name": [
+        "Biology",
+        "Biology Orthodox Scientific Study Proficiency",
+        "Biology, Life Sciences"
+      ],
+      "Description": "A fundamental proficiency in Biology, categorized within the Orthodox facet.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3861": {
+    "id": 3861,
+    "prof": {
+      "Name": [
+        "Medicine",
+        "Medicine Orthodox Scientific Study Proficiency",
+        "Medicine, Healthcare, Healing Arts, Medic, Medicine Man"
+      ],
+      "Description": "A fundamental proficiency in Medicine, categorized within the Orthodox facet.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "15",
+          "7"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3862": {
+    "id": 3862,
+    "prof": {
+      "Name": [
+        "Accountancy",
+        "Accountancy Orthodox Formal Study Proficiency",
+        "Accountancy, Bookkeeping, Financial Auditing"
+      ],
+      "Description": "A fundamental proficiency in Accountancy, categorized within the Orthodox facet.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3863": {
+    "id": 3863,
+    "prof": {
+      "Name": [
+        "Botany",
+        "Botany Orthodox Scientific Study Proficiency",
+        "Botany, Plant Science"
+      ],
+      "Description": "A fundamental proficiency in Botany, categorized within the Orthodox facet.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3864": {
+    "id": 3864,
+    "prof": {
+      "Name": [
+        "Zoology",
+        "Zoology Orthodox Scientific Study Proficiency",
+        "Zoology, Animal Science"
+      ],
+      "Description": "A fundamental proficiency in Zoology, categorized within the Orthodox facet.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3865": {
+    "id": 3865,
+    "prof": {
+      "Name": [
+        "Anatomy",
+        "Anatomy Orthodox Scientific Study Proficiency",
+        "Anatomy, Bodily Structure"
+      ],
+      "Description": "A fundamental proficiency in Anatomy, categorized within the Orthodox facet.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3866": {
+    "id": 3866,
+    "prof": {
+      "Name": [
+        "Physiology",
+        "Physiology Orthodox Scientific Study Proficiency",
+        "Physiology, Biological Function"
+      ],
+      "Description": "A fundamental proficiency in Physiology, categorized within the Orthodox facet.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3867": {
+    "id": 3867,
+    "prof": {
+      "Name": [
+        "Ecology",
+        "Ecology Orthodox Scientific Study Proficiency",
+        "Ecology, Environmental Science"
+      ],
+      "Description": "A fundamental proficiency in Ecology, categorized within the Orthodox facet.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3868": {
+    "id": 3868,
+    "prof": {
+      "Name": [
+        "Chemistry",
+        "Chemistry Orthodox Scientific Study Proficiency",
+        "Chemistry, Molecular Science, Alchemy"
+      ],
+      "Description": "A fundamental proficiency in Chemistry, categorized within the Orthodox facet.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3869": {
+    "id": 3869,
+    "prof": {
+      "Name": [
+        "Pharmacology",
+        "Pharmacology Orthodox Scientific Study Proficiency",
+        "Pharmacology, Drug Study"
+      ],
+      "Description": "A fundamental proficiency in Pharmacology, categorized within the Orthodox facet.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3870": {
+    "id": 3870,
+    "prof": {
+      "Name": [
+        "Toxicology",
+        "Toxicology Orthodox Scientific Study Proficiency",
+        "Toxicology, Poison Study"
+      ],
+      "Description": "A fundamental proficiency in Toxicology, categorized within the Orthodox facet.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3871": {
+    "id": 3871,
+    "prof": {
+      "Name": [
+        "Metallurgy",
+        "Metallurgy Orthodox Scientific Study Proficiency",
+        "Metallurgy, Metal Science"
+      ],
+      "Description": "A fundamental proficiency in Metallurgy, categorized within the Orthodox facet.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "24"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3872": {
+    "id": 3872,
+    "prof": {
+      "Name": [
+        "Cryptography",
+        "Cryptography Orthodox Formal Study Proficiency",
+        "Cryptography, Code Breaking, Cipher Study"
+      ],
+      "Description": "A fundamental proficiency in Cryptography, categorized within the Orthodox facet.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3873": {
+    "id": 3873,
+    "prof": {
+      "Name": [
+        "Ballistics",
+        "Ballistics Orthodox Scientific Study Proficiency",
+        "Ballistics, Projectile Motion"
+      ],
+      "Description": "A fundamental proficiency in Ballistics, categorized within the Orthodox facet.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3874": {
+    "id": 3874,
+    "prof": {
+      "Name": [
+        "Astronomy",
+        "Astronomy Orthodox Scientific Study Proficiency",
+        "Astronomy, Celestial Science"
+      ],
+      "Description": "A fundamental proficiency in Astronomy, categorized within the Orthodox facet.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3875": {
+    "id": 3875,
+    "prof": {
+      "Name": [
+        "Astrogation",
+        "Astrogation Orthodox Scientific Study Proficiency",
+        "Astrogation, Space Navigation"
+      ],
+      "Description": "A fundamental proficiency in Astrogation, categorized within the Orthodox facet.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Genres": [
+          "6"
+        ],
+        "Eras": [
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3876": {
+    "id": 3876,
+    "prof": {
+      "Name": [
+        "Forensics",
+        "Forensics Orthodox Forensic Science Skill Proficiency",
+        "Forensics, Criminal Science, Crime Scene Examination, Forensic Pathology"
+      ],
+      "Description": "A fundamental proficiency in Forensics, categorized within the Orthodox facet.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3877": {
+    "id": 3877,
+    "prof": {
+      "Name": [
+        "Rhetoric",
+        "Rhetoric Orthodox Formal Study Proficiency",
+        "Rhetoric, Persuasive Speech"
+      ],
+      "Description": "A fundamental proficiency in Rhetoric, categorized within the Orthodox facet.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3878": {
+    "id": 3878,
+    "prof": {
+      "Name": [
+        "Engineering",
+        "Engineering Orthodox Technical Study Proficiency",
+        "Engineering, Structural Design"
+      ],
+      "Description": "A fundamental proficiency in Engineering, categorized within the Orthodox facet.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3879": {
+    "id": 3879,
+    "prof": {
+      "Name": [
+        "Mechanics",
+        "Mechanics Orthodox Technical Study Proficiency",
+        "Mechanics, Machinery Study"
+      ],
+      "Description": "A fundamental proficiency in Mechanics, categorized within the Orthodox facet.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "15"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3880": {
+    "id": 3880,
+    "prof": {
+      "Name": [
+        "Electronics",
+        "Electronics Orthodox Technical Study Proficiency",
+        "Electronics, Circuit Design"
+      ],
+      "Description": "A fundamental proficiency in Electronics, categorized within the Orthodox facet.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3881": {
+    "id": 3881,
+    "prof": {
+      "Name": [
+        "Investigation",
+        "Investigation Orthodox Formal Study Proficiency",
+        "Investigation, Inquiry, Research"
+      ],
+      "Description": "A fundamental proficiency in Investigation, categorized within the Orthodox facet.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3882": {
+    "id": 3882,
+    "prof": {
+      "Name": [
+        "Property",
+        "Property Burden Subject Proficiency",
+        "Property, Ownership, Real Estate"
+      ],
+      "Description": "A fundamental proficiency in Property, categorized within the Burden facet.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3883": {
+    "id": 3883,
+    "prof": {
+      "Name": [
+        "Metals",
+        "Metals Craft Subject Proficiency",
+        "Metals, Ore, Alloys"
+      ],
+      "Description": "A fundamental proficiency in Metals, categorized within the Craft facet.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3884": {
+    "id": 3884,
+    "prof": {
+      "Name": [
+        "Machines",
+        "Machines Craft Subject Proficiency",
+        "Machines, Engines, Devices"
+      ],
+      "Description": "A fundamental proficiency in Machines, categorized within the Craft facet.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3885": {
+    "id": 3885,
+    "prof": {
+      "Name": [
+        "Circuits",
+        "Circuits Craft Subject Proficiency",
+        "Circuits, Wiring, Components"
+      ],
+      "Description": "A fundamental proficiency in Circuits, categorized within the Craft facet.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3886": {
+    "id": 3886,
+    "prof": {
+      "Name": [
+        "Structures",
+        "Structures Craft Subject Proficiency",
+        "Structures, Buildings, Frameworks"
+      ],
+      "Description": "A fundamental proficiency in Structures, categorized within the Craft facet.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3887": {
+    "id": 3887,
+    "prof": {
+      "Name": [
+        "Tools",
+        "Tools Craft Subject Proficiency",
+        "Tools, Implements, Instruments"
+      ],
+      "Description": "A fundamental proficiency in Tools, categorized within the Craft facet.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3888": {
+    "id": 3888,
+    "prof": {
+      "Name": [
+        "Assembly",
+        "Assembly Craft Subject Proficiency",
+        "Assembly, Construction, Fabrication"
+      ],
+      "Description": "A fundamental proficiency in Assembly, categorized within the Craft facet.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3889": {
+    "id": 3889,
+    "prof": {
+      "Name": [
+        "Codes",
+        "Codes Enigma Subject Proficiency",
+        "Codes, Ciphers, Encryption"
+      ],
+      "Description": "A fundamental proficiency in Codes, categorized within the Enigma facet.",
+      "Tags": {
+        "Facets": [
+          "4"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3890": {
+    "id": 3890,
+    "prof": {
+      "Name": [
+        "Toxins",
+        "Toxins Miasma Subject Proficiency",
+        "Toxins, Poisons, Venoms"
+      ],
+      "Description": "A fundamental proficiency in Toxins, categorized within the Miasma facet.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3891": {
+    "id": 3891,
+    "prof": {
+      "Name": [
+        "Chemicals",
+        "Chemicals Miasma Subject Proficiency",
+        "Chemicals, Substances, Reagents"
+      ],
+      "Description": "A fundamental proficiency in Chemicals, categorized within the Miasma facet.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3892": {
+    "id": 3892,
+    "prof": {
+      "Name": [
+        "Plants",
+        "Plants Nature Subject Proficiency",
+        "Plants, Flora, Vegetation"
+      ],
+      "Description": "A fundamental proficiency in Plants, categorized within the Nature facet.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3893": {
+    "id": 3893,
+    "prof": {
+      "Name": [
+        "Animals",
+        "Animals Nature Subject Proficiency",
+        "Animals, Fauna, Wildlife"
+      ],
+      "Description": "A fundamental proficiency in Animals, categorized within the Nature facet.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3894": {
+    "id": 3894,
+    "prof": {
+      "Name": [
+        "Ecosystems",
+        "Ecosystems Nature Subject Proficiency",
+        "Ecosystems, Habitats, Biomes"
+      ],
+      "Description": "A fundamental proficiency in Ecosystems, categorized within the Nature facet.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3895": {
+    "id": 3895,
+    "prof": {
+      "Name": [
+        "Growth",
+        "Growth Nature Subject Proficiency",
+        "Growth, Fertility, Development"
+      ],
+      "Description": "A fundamental proficiency in Growth, categorized within the Nature facet.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3896": {
+    "id": 3896,
+    "prof": {
+      "Name": [
+        "Heat",
+        "Heat Phoenix Subject Proficiency",
+        "Heat, Temperature, Fire"
+      ],
+      "Description": "A fundamental proficiency in Heat, categorized within the Phoenix facet.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3897": {
+    "id": 3897,
+    "prof": {
+      "Name": [
+        "Resurrection",
+        "Resurrection Phoenix Subject Proficiency",
+        "Resurrection, Rebirth, Revival"
+      ],
+      "Description": "A fundamental proficiency in Resurrection, categorized within the Phoenix facet.",
+      "Tags": {
+        "Facets": [
+          "15"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3898": {
+    "id": 3898,
+    "prof": {
+      "Name": [
+        "Archives",
+        "Archives Quiet Subject Proficiency",
+        "Archives, Records, Repositories"
+      ],
+      "Description": "A fundamental proficiency in Archives, categorized within the Quiet facet.",
+      "Tags": {
+        "Facets": [
+          "16"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3899": {
+    "id": 3899,
+    "prof": {
+      "Name": [
+        "Shields",
+        "Shields Rook Subject Proficiency",
+        "Shields, Bucklers, Aegis"
+      ],
+      "Description": "A fundamental proficiency in Shields, categorized within the Rook facet.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3900": {
+    "id": 3900,
+    "prof": {
+      "Name": [
+        "Fortifications",
+        "Fortifications Rook Subject Proficiency",
+        "Fortifications, Strongholds, Defenses"
+      ],
+      "Description": "A fundamental proficiency in Fortifications, categorized within the Rook facet.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3901": {
+    "id": 3901,
+    "prof": {
+      "Name": [
+        "Bastions",
+        "Bastions Rook Subject Proficiency",
+        "Bastions, Bulwarks, Forts"
+      ],
+      "Description": "A fundamental proficiency in Bastions, categorized within the Rook facet.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3902": {
+    "id": 3902,
+    "prof": {
+      "Name": [
+        "Doom",
+        "Doom Wyrd Subject Proficiency",
+        "Doom, Destiny, Inevitability"
+      ],
+      "Description": "A fundamental proficiency in Doom, categorized within the Wyrd facet.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3903": {
+    "id": 3903,
+    "prof": {
+      "Name": [
+        "Coordinates",
+        "Coordinates Yonder Subject Proficiency",
+        "Coordinates, Location, Position"
+      ],
+      "Description": "A fundamental proficiency in Coordinates, categorized within the Yonder facet.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}
