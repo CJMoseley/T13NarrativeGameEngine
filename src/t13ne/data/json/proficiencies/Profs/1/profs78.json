@@ -201,12 +201,14 @@
       "Name": [
         "Medicine",
         "Medicine Orthodox Scientific Study Proficiency",
-        "Medicine, Healthcare, Healing Arts"
+        "Medicine, Healthcare, Healing Arts, Medic, Medicine Man"
       ],
       "Description": "A fundamental proficiency in Medicine, categorized within the Orthodox facet.",
       "Tags": {
         "Facets": [
-          "14"
+          "14",
+          "15",
+          "7"
         ],
         "Genres": [
           "1"
