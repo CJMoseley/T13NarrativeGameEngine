@@ -2,6 +2,7 @@ import fs from 'fs';
 
 const TIE = { ROOT: 16, CHANNEL: 32 };
 const facets = ["Awe", "Burden", "Craft", "Dominion", "Enigma", "Fury", "Gossamer", "Heresy", "Inertia", "Jeer", "Key", "Liberty", "Miasma", "Nature", "Orthodox", "Phoenix", "Quiet", "Rook", "Sin", "Trial", "Virtue", "Wyrd", "Yonder", "Zeal"];
+
 const core_ids = {"Awe":"2513","Burden":"155","Craft":"241","Dominion":"327","Enigma":"416","Fury":"499","Gossamer":"582","Heresy":"668","Inertia":"750","Jeer":"836","Key":"918","Liberty":"1001","Miasma":"1081","Nature":"1161","Orthodox":"1241","Phoenix":"1321","Quiet":"1400","Rook":"1479","Sin":"1559","Trial":"1639","Virtue":"1716","Wyrd":"1796","Yonder":"2407","Zeal":"1959"};
 const action_ids = {"Awe":"2507","Burden":"152","Craft":"238","Dominion":"324","Enigma":"413","Fury":"496","Gossamer":"579","Heresy":"665","Inertia":"747","Jeer":"833","Key":"915","Liberty":"998","Miasma":"1078","Nature":"1158","Orthodox":"1238","Phoenix":"1318","Quiet":"1397","Rook":"1476","Sin":"1556","Trial":"1636","Virtue":"1713","Wyrd":"1793","Yonder":"1876","Zeal":"1956"};
 
@@ -22,7 +23,7 @@ const matrix = [
     ["Taming", "Agriculture", "Woodworking", "Ecology", "Camouflage", "Hunting", "Weather-Sense", "Evolution", "Resilience", "Mimicry", "Biology", "Survival", "Poison", "Botany", "Taxonomy", "Healing", "Hibernation", "Natural-Defense", "Instinct", "Predation", "Herbalism", "Instinct", "Navigation", "Riding"],
     ["Etiquette", "Banking", "Masonry", "Bureaucracy", "Tradition", "Discipline", "Protocol", "Reform", "Order", "Ceremony", "Law", "Constitution", "Dogma", "Preservation", "Organization", "Consecration", "Calm", "Hierarchy", "Penance", "Strategy", "Priesthood", "Legislation", "Diplomacy", "Conviction"],
     ["Inspiration", "Restoration", "Repair", "Relief", "Rebirth", "Fury", "Renewal", "Reincarnation", "Recovery", "Resurrection", "Medicine", "Redemption", "Immunity", "Healing", "Ritual", "Regeneration", "Peace", "Salvage", "Penance", "Surgery", "Salvation", "Karma", "Rebirth", "Zeal"],
-    ["Meditation", "Hoarding", "Fine-detail", "Peacekeeping", "Stealth", "Calm", "Serenity", "Contemplation", "Stillness", "Silence", "Intuition", "Contentment", "Apathy", "Solitude", "Order", "Rest", "Quietude", "Warding", "Humility", "Precision", "Prayer", "Reflection", "Isolation", "Patience", "Zen"],
+    ["Meditation", "Hoarding", "Fine-detail", "Peacekeeping", "Stealth", "Calm", "Serenity", "Contemplation", "Stillness", "Silence", "Intuition", "Contentment", "Apathy", "Solitude", "Order", "Rest", "Quietude", "Warding", "Humility", "Precision", "Prayer", "Reflection", "Isolation", "Zen"],
     ["Protection", "Treasury", "Armoring", "Security", "Undercover", "Fortitude", "Shielding", "Sabotage-Defense", "Defense", "Guarding", "Tactics", "Liberty-Defense", "Quarantine", "Survival", "Watch", "First-Aid", "Vigilance", "Fortification", "Justice", "Shield-Wall", "Sanctuary", "Law-Enforcement", "Garrison", "Alertness"],
     ["Temptation", "Greed", "Sabotage", "Corruption", "Vice", "Wrath", "Sloth", "Rebellion", "Gluttony", "Envy", "Pride", "Liberty", "Lust", "Desecration", "Transgression", "Ruin", "Indifference", "Betrayal", "Villainy", "Murder", "Defiance", "Iniquity", "Exile", "Zealotry"],
     ["War-cry", "Mercenary", "Weaponry", "Strategy", "Ambush", "Brawling", "Fencing", "Guerrilla", "Defense", "Intimidation", "Tactics", "Skirmishing", "Atrocity", "Hunting", "Martial-Law", "Surgery", "Precision", "Guarding", "Murder", "Melee", "Chivalry", "Duel", "Archery", "Athletics"],
@@ -32,24 +33,22 @@ const matrix = [
     ["Evangelism", "Transport", "Mechanics", "Mobilization", "Tracking", "Charge", "Haste", "Fanaticism", "Slow-motion", "Mock-Zeal", "Speed-Reading", "Zeal", "Frenzy", "Riding", "Conviction", "Zeal", "Patience", "Alertness", "Zealotry", "Athletics", "Evangelism", "Zeal", "Astronavigation", "Running"]
 ];
 
-const matrix_aliases = JSON.parse(fs.readFileSync('aka_db.json', 'utf8'));
-
-const contextual_overrides = {
-    "Performance": "Acting, Showmanship, Presentation, Stagecraft, Persona-ing, Dramatics, Entertainment",
-    "Melee": "Close-combat, Brawling, Hand-to-hand, Scrapping",
-    "Stealth": "Sneaking, Prowling, Hiding, Invisibility, Furtiveness",
-    "Diplomacy": "Persuasion, Negotiation, Oratory, Tact, Statesmanship, Mediation",
-    "Survival": "Endurance, Hardship, Outdoor-living, Bushcraft, Field-craft",
-    "Occultism": "Arcane-study, Esotericism, Hidden-knowledge, Mysticism",
-    "Atrocity": "Cruelty, Horror, Barbarism, Outrage, Brutality",
-    "Zen": "Meditation, Stillness, Enlightenment, Quietude",
-    "Guerrilla": "Insurgency, Irregular-warfare, Ambush-tactics, Partisanship"
+const akaData = {
+    "performance": "acting, showmanship, presentation, stagecraft, persona-ing, dramatics, entertainment",
+    "melee": "close-combat, brawling, hand-to-hand, scrapping",
+    "stealth": "sneaking, prowling, hiding, invisibility, furtiveness",
+    "diplomacy": "persuasion, negotiation, oratory, tact, statesmanship, mediation",
+    "survival": "endurance, hardship, outdoor-living, bushcraft, field-craft",
+    "occultism": "arcane-study, esotericism, hidden-knowledge, mysticism",
+    "atrocity": "cruelty, horror, barbarism, outrage, brutality",
+    "zen": "meditation, stillness, enlightenment, quietude",
+    "guerrilla": "insurgency, irregular-warfare, ambush-tactics, partisanship"
 };
 
 const types_map = {
     "Awe": "Artistic", "Burden": "Economic", "Craft": "Technical", "Dominion": "Political", "Enigma": "Covert",
-    "Fury": "Aggressive", "Gossamer": "Elegant", "Heresy": "Deviant", "Inertia": "Stable", "Jeer": "Derisive",
-    "Key": "Perceptive", "Liberty": "Autonomous", "Miasma": "Malignant", "Nature": "Primal", "Orthodox": "Formal",
+    "Fury": "Aggressive", "Gossamer": "Elegant", "Heresy": "Deviant", "Inertia": "Stable", "Key": "Perceptive",
+    "Liberty": "Autonomous", "Miasma": "Malignant", "Nature": "Primal", "Orthodox": "Formal",
     "Phoenix": "Regenerative", "Quiet": "Serene", "Rook": "Protective", "Sin": "Corrupt", "Trial": "Martial",
     "Virtue": "Righteous", "Wyrd": "Destined", "Yonder": "Expansive", "Zeal": "Fervent"
 };
@@ -72,44 +71,73 @@ facets.forEach((root, i) => {
         else if (channel === "Enigma") descriptive_type = "Tactical";
         else if (channel === "Jeer") descriptive_type = "Performance";
 
-        let facet_part = (root === channel) ? root : `${root} ${channel}`;
+        const facet_part = (root === channel) ? root : `${root} ${channel}`;
         const full_name = `${short} ${facet_part} ${descriptive_type} Skill Annex`;
 
         const root_prof_id = String(core_ids[root]);
         const channel_prof_id = String(action_ids[channel]);
 
-        // Synonyms construction
-        let base_aliases = contextual_overrides[short] || matrix_aliases[short.toLowerCase()] || "";
-        let final_aliases = short;
+        let alt_name = short;
+        const base_aliases = akaData[short.toLowerCase()];
         if (base_aliases) {
             const list = base_aliases.split(",").map(s => s.trim());
             const filtered = list.filter(s => s.toLowerCase() !== short.toLowerCase());
             if (filtered.length > 0) {
-                final_aliases = short + ", " + filtered.join(", ");
+                alt_name = short + ", " + filtered.join(", ");
             }
         }
+
+        let genres = ["1"];
+        let eras = ["1"];
+
+        const techFacets = ["Craft", "Key", "Yonder"];
+        const martialFacets = ["Fury", "Trial", "Rook", "Zeal"];
+        const mysticalFacets = ["Wyrd", "Heresy", "Phoenix", "Enigma", "Miasma", "Nature"];
+        const socialFacets = ["Awe", "Dominion", "Jeer", "Virtue", "Orthodox"];
+        const economicFacets = ["Burden"];
+
+        if (techFacets.includes(root) || techFacets.includes(channel)) {
+            genres.push("3");
+            eras.push("38", "39", "41", "42");
+        }
+        if (martialFacets.includes(root) || martialFacets.includes(channel)) {
+            genres.push("2");
+            eras.push("28", "29", "30");
+        }
+        if (mysticalFacets.includes(root) || mysticalFacets.includes(channel)) {
+            genres.push("2", "5");
+            eras.push("28");
+        }
+        if (socialFacets.includes(root) || socialFacets.includes(channel) || economicFacets.includes(root)) {
+            genres.push("4");
+            eras.push("44");
+        }
+
+        genres = [...new Set(genres)].sort((a,b) => parseInt(a)-parseInt(b));
+        eras = [...new Set(eras)].sort((a,b) => parseInt(a)-parseInt(b));
 
         all_skills[String(current_knot_id)] = {
             knot_id: String(current_knot_id),
             name: short,
             fullName: full_name,
-            aliases: final_aliases,
+            altName: alt_name,
             description: `A Skill Annex combining the ${root} essence with the ${channel} expression, forming the ${short} skill.`,
             tags: {
                 facets: [String(i), String(j)],
                 scopes: ["1"],
-                genres: ["1"],
-                eras: ["1"],
+                genres: genres,
+                eras: eras,
                 types: ["32"]
             },
             knot: [
-                { thread_id: root_prof_id, knot: TIE.ROOT },
-                { thread_id: channel_prof_id, knot: TIE.CHANNEL }
-            ]
+                [ root_prof_id, TIE.ROOT ],
+                [ channel_prof_id, TIE.CHANNEL ]
+            ],
+            annexType: "Skill"
         };
         current_knot_id++;
     });
 });
 
 fs.writeFileSync('src/t13ne/data/json/annexes/base_skills.json', JSON.stringify(all_skills, null, 2) + '\n');
-console.log(`Generated 576 skills successfully with knot_id and thread_id.`);
+console.log(`Generated 576 skills starting from ID 1.`);
