@@ -41,7 +41,7 @@ export class PhysXProvider {
         try {
             // Dynamically import the PhysX module.
             // This relies on the bundler (e.g. Vite) to resolve the path and handle the .wasm asset referenced within.
-            const mod = await import('@plugins/physx/physx-js-webidl.mjs');
+            const mod = await import('physx-js-webidl');
 
             const factory = mod.default || mod;
             if (typeof factory !== 'function') {

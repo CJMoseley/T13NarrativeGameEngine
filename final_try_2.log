@@ -1,0 +1,175 @@
+1:00:00 AM [vite] (client) Re-optimizing dependencies because lockfile has changed
+
+  VITE v7.3.0  ready in 726 ms
+
+  ➜  Local:   http://localhost:5174/
+  ➜  Network: use --host to expose
+[vite-plugin-static-copy] Collected 2 items.
+(!) Failed to run dependency scan. Skipping dependency pre-bundling. Error:   Failed to scan for dependencies from entries:
+  /app/ttrpg-companion/index.html
+/app/ttrpg-companion/rulebook/index.html
+/app/ttrpg-companion/rulebook/characters/character-arcs.html
+/app/ttrpg-companion/rulebook/characters/characters-and-plots.html
+/app/ttrpg-companion/rulebook/characters/creating-characters.html
+/app/ttrpg-companion/rulebook/core/boons.html
+/app/ttrpg-companion/rulebook/core/core-concepts.html
+/app/ttrpg-companion/rulebook/core/facet-folio.html
+/app/ttrpg-companion/rulebook/core/geometry-gematria-and-numerology.html
+/app/ttrpg-companion/rulebook/core/i-ching.html
+/app/ttrpg-companion/rulebook/meta/coping-with-players.html
+/app/ttrpg-companion/rulebook/meta/embedded-facet-conflicts.html
+/app/ttrpg-companion/rulebook/meta/patterns-extras-descendants.html
+/app/ttrpg-companion/rulebook/meta/referees-rules.html
+/app/ttrpg-companion/rulebook/meta/tapestries.html
+/app/ttrpg-companion/rulebook/meta/types-of-games.html
+/app/ttrpg-companion/rulebook/mechanics/annexes.html
+/app/ttrpg-companion/rulebook/mechanics/card-guide.html
+/app/ttrpg-companion/rulebook/mechanics/card-spreads.html
+/app/ttrpg-companion/rulebook/mechanics/character-catalysts.html
+/app/ttrpg-companion/rulebook/mechanics/chi.html
+/app/ttrpg-companion/rulebook/mechanics/death-and-immortality.html
+/app/ttrpg-companion/rulebook/mechanics/facet-sway.html
+/app/ttrpg-companion/rulebook/mechanics/hitches.html
+/app/ttrpg-companion/rulebook/mechanics/modelling-resources.html
+/app/ttrpg-companion/rulebook/mechanics/proficiencies.html
+/app/ttrpg-companion/rulebook/mechanics/stakes.html
+/app/ttrpg-companion/rulebook/mechanics/success-and-failure-levels.html
+/app/ttrpg-companion/rulebook/mechanics/sway.html
+/app/ttrpg-companion/rulebook/mechanics/tao-sway.html
+/app/ttrpg-companion/rulebook/mechanics/test-card-draw.html
+/app/ttrpg-companion/rulebook/mechanics/test-dice.html
+/app/ttrpg-companion/rulebook/mechanics/test-value.html
+/app/ttrpg-companion/rulebook/mechanics/twists.html
+/app/ttrpg-companion/rulebook/mechanics/wounds.html
+/app/ttrpg-companion/rulebook/mechanics/yarn.html
+/app/ttrpg-companion/rulebook/narrative/distress-and-traumas.html
+/app/ttrpg-companion/rulebook/narrative/drama.html
+/app/ttrpg-companion/rulebook/narrative/narrative-weaving.html
+/app/ttrpg-companion/rulebook/narrative/plot-descendants.html
+/app/ttrpg-companion/rulebook/narrative/plots-in-t13.html
+/app/ttrpg-companion/rulebook/narrative/shocks-and-shocked-dice.html
+/app/ttrpg-companion/rulebook/narrative/strains-and-straining-dice.html
+/app/ttrpg-companion/rulebook/narrative/stress.html
+/app/ttrpg-companion/rulebook/narrative/subplots.html
+/app/ttrpg-companion/rulebook/narrative/tension.html
+/app/ttrpg-companion/rulebook/narrative/yarn-tellers-weavers-and-plots.html
+/app/ttrpg-companion/rulebook/ordeals/action-spaces.html
+/app/ttrpg-companion/rulebook/ordeals/alternate-ordeals.html
+/app/ttrpg-companion/rulebook/ordeals/narrative-tricks.html
+/app/ttrpg-companion/rulebook/ordeals/ordeal-rounds.html
+/app/ttrpg-companion/rulebook/ordeals/ordeal-stages.html
+/app/ttrpg-companion/rulebook/ordeals/ordeals.html
+/app/ttrpg-companion/rulebook/ordeals/psychosocial-action-spaces.html
+/app/ttrpg-companion/rulebook/ordeals/social-ordeals.html
+/app/ttrpg-companion/src/t13ne/index.html
+/app/ttrpg-companion/src/t13ne/proficiency-manager.html
+/app/ttrpg-companion/src/t13ne/t13ne-control-panel.html
+/app/ttrpg-companion/src/t13ne/core/ui/debug_limbs.html
+/app/ttrpg-companion/src/t13ne/modules/examples/proficiency-manager.html
+
+  [31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mENOENT: no such file or directory, open '/app/ttrpg-companion/src/t13ne/modules/t13ne-threads.js'[0m [1m[35m[plugin vite:dep-scan][0m
+
+    node_modules/esbuild/lib/main.js:1267:21:
+[37m      1267 │         let result = [32m[37mawait callback({
+           ╵                      [32m^[0m
+
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1235:14)
+    at async file:///app/node_modules/vite/dist/node/chunks/config.js:31671:20
+    at async requestCallbacks.on-load (/app/node_modules/esbuild/lib/main.js:1267:22)
+    at async handleRequest (/app/node_modules/esbuild/lib/main.js:628:11)
+
+  This error came from the "onLoad" callback registered here:
+
+    node_modules/esbuild/lib/main.js:1141:20:
+[37m      1141 │       let promise = [32m[37msetup({
+           ╵                     [32m^[0m
+
+    at setup (file:///app/node_modules/vite/dist/node/chunks/config.js:31667:12)
+    at handlePlugins (/app/node_modules/esbuild/lib/main.js:1141:21)
+    at buildOrContextImpl (/app/node_modules/esbuild/lib/main.js:854:5)
+    at Object.buildOrContext (/app/node_modules/esbuild/lib/main.js:680:5)
+    at /app/node_modules/esbuild/lib/main.js:2035:68
+    at new Promise (<anonymous>)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:2035:27)
+    at Object.context (/app/node_modules/esbuild/lib/main.js:1877:58)
+    at prepareEsbuildScanner (file:///app/node_modules/vite/dist/node/chunks/config.js:31453:23)
+
+  The plugin "vite:dep-scan" was triggered by this import
+
+    script:/app/ttrpg-companion/src/t13ne/modules/examples/proficiency-manager.html?id=0:2:38:
+[37m      2 │ ...mport { ThreadsSystem } from [32m'/src/t13ne/modules/t13ne-threads.js'[37m;
+        ╵                                 [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+    at failureErrorWithLog (/app/node_modules/esbuild/lib/main.js:1467:15)
+    at /app/node_modules/esbuild/lib/main.js:926:25
+    at runOnEndCallbacks (/app/node_modules/esbuild/lib/main.js:1307:45)
+    at buildResponseToResult (/app/node_modules/esbuild/lib/main.js:924:7)
+    at /app/node_modules/esbuild/lib/main.js:936:9
+    at new Promise (<anonymous>)
+    at requestCallbacks.on-end (/app/node_modules/esbuild/lib/main.js:935:54)
+    at handleRequest (/app/node_modules/esbuild/lib/main.js:628:17)
+    at handleIncomingPacket (/app/node_modules/esbuild/lib/main.js:653:7)
+    at Socket.readFromStdout (/app/node_modules/esbuild/lib/main.js:581:7)
+1:00:18 AM [vite] (client) Pre-transform error: Failed to load url /rulebook/js/rule-components.js (resolved id: /rulebook/js/rule-components.js). Does the file exist?
+1:00:19 AM [vite] (client) Pre-transform error: Failed to resolve import "@plugins/physx/physx-js-webidl.mjs" from "ttrpg-companion/src/t13ne/core/physics/PhysXProvider.js". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /app/ttrpg-companion/src/t13ne/core/physics/PhysXProvider.js:44:37
+  42 |              // Dynamically import the PhysX module.
+  43 |              // This relies on the bundler (e.g. Vite) to resolve the path and handle the .wasm asset referenced within.
+  44 |              const mod = await import('@plugins/physx/physx-js-webidl.mjs');
+     |                                       ^
+  45 |
+  46 |              const factory = mod.default || mod;
+1:00:21 AM [vite] (client) ✨ new dependencies optimized: three, three/examples/jsm/controls/OrbitControls.js, peerjs
+1:00:22 AM [vite] Internal server error: Failed to resolve import "@plugins/physx/physx-js-webidl.mjs" from "ttrpg-companion/src/t13ne/core/physics/PhysXProvider.js". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /app/ttrpg-companion/src/t13ne/core/physics/PhysXProvider.js:44:37
+  42 |              // Dynamically import the PhysX module.
+  43 |              // This relies on the bundler (e.g. Vite) to resolve the path and handle the .wasm asset referenced within.
+  44 |              const mod = await import('@plugins/physx/physx-js-webidl.mjs');
+     |                                       ^
+  45 |
+  46 |              const factory = mod.default || mod;
+      at TransformPluginContext._formatLog (file:///app/node_modules/vite/dist/node/chunks/config.js:28998:43)
+      at TransformPluginContext.error (file:///app/node_modules/vite/dist/node/chunks/config.js:28995:14)
+      at normalizeUrl (file:///app/node_modules/vite/dist/node/chunks/config.js:27118:18)
+      at async file:///app/node_modules/vite/dist/node/chunks/config.js:27176:32
+      at async Promise.all (index 2)
+      at async TransformPluginContext.transform (file:///app/node_modules/vite/dist/node/chunks/config.js:27144:4)
+      at async EnvironmentPluginContainer.transform (file:///app/node_modules/vite/dist/node/chunks/config.js:28796:14)
+      at async loadAndTransform (file:///app/node_modules/vite/dist/node/chunks/config.js:22669:26)
+      at async viteTransformMiddleware (file:///app/node_modules/vite/dist/node/chunks/config.js:24541:20)
+1:00:23 AM [vite] (client) ✨ new dependencies optimized: simplex-noise, workerpool, three/examples/jsm/controls/TrackballControls.js, three/examples/jsm/loaders/OBJLoader.js, three/examples/jsm/loaders/MTLLoader.js, three/examples/jsm/loaders/TDSLoader.js, three/examples/jsm/loaders/PLYLoader.js, three/examples/jsm/loaders/FBXLoader.js, three/examples/jsm/loaders/GLTFLoader.js, lindenmayer, three/examples/jsm/objects/MarchingCubes.js, three/examples/jsm/geometries/DecalGeometry.js, three-csg-ts, three/examples/jsm/modifiers/SimplifyModifier.js, three/examples/jsm/utils/BufferGeometryUtils.js, enable3d
+1:00:23 AM [vite] (client) ✨ optimized dependencies changed. reloading
+1:00:23 AM [vite] (client) Pre-transform error: Failed to load url /rulebook/js/rule-components.js (resolved id: /rulebook/js/rule-components.js). Does the file exist?
+1:00:23 AM [vite] (client) Pre-transform error: Failed to load url /rulebook/js/rule-components.js (resolved id: /rulebook/js/rule-components.js). Does the file exist?
+1:00:24 AM [vite] (client) Pre-transform error: Failed to resolve import "@plugins/physx/physx-js-webidl.mjs" from "ttrpg-companion/src/t13ne/core/physics/PhysXProvider.js". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /app/ttrpg-companion/src/t13ne/core/physics/PhysXProvider.js:44:37
+  42 |              // Dynamically import the PhysX module.
+  43 |              // This relies on the bundler (e.g. Vite) to resolve the path and handle the .wasm asset referenced within.
+  44 |              const mod = await import('@plugins/physx/physx-js-webidl.mjs');
+     |                                       ^
+  45 |
+  46 |              const factory = mod.default || mod;
+1:00:24 AM [vite] Internal server error: Failed to resolve import "@plugins/physx/physx-js-webidl.mjs" from "ttrpg-companion/src/t13ne/core/physics/PhysXProvider.js". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /app/ttrpg-companion/src/t13ne/core/physics/PhysXProvider.js:44:37
+  42 |              // Dynamically import the PhysX module.
+  43 |              // This relies on the bundler (e.g. Vite) to resolve the path and handle the .wasm asset referenced within.
+  44 |              const mod = await import('@plugins/physx/physx-js-webidl.mjs');
+     |                                       ^
+  45 |
+  46 |              const factory = mod.default || mod;
+      at TransformPluginContext._formatLog (file:///app/node_modules/vite/dist/node/chunks/config.js:28998:43)
+      at TransformPluginContext.error (file:///app/node_modules/vite/dist/node/chunks/config.js:28995:14)
+      at normalizeUrl (file:///app/node_modules/vite/dist/node/chunks/config.js:27118:18)
+      at async file:///app/node_modules/vite/dist/node/chunks/config.js:27176:32
+      at async Promise.all (index 2)
+      at async TransformPluginContext.transform (file:///app/node_modules/vite/dist/node/chunks/config.js:27144:4)
+      at async EnvironmentPluginContainer.transform (file:///app/node_modules/vite/dist/node/chunks/config.js:28796:14)
+      at async loadAndTransform (file:///app/node_modules/vite/dist/node/chunks/config.js:22669:26)
+      at async viteTransformMiddleware (file:///app/node_modules/vite/dist/node/chunks/config.js:24541:20)
+1:04:13 AM [vite] (client) page reload src/t13ne/core/physics/PhysXProvider.js

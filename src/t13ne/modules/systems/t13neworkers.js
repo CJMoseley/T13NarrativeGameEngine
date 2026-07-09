@@ -1,7 +1,7 @@
 // t13neworkers.js
 import workerpool from 'workerpool';
-import PRNG from '../systems/t13ne-prng.js';
-import WasmManager from '../wasm/WasmManager.js';
+import PRNG from './t13ne-prng.js';
+import WasmManager from '../../wasm/WasmManager.js';
 import { Deck } from '../mechanics/t13ne-cards.js';
 import CodexLoader from '../codex/CodexLoader.js';
 

@@ -1,0 +1,11 @@
+
+> wormholeracersjs@0.1.0 dev
+> vite --port 5174
+
+WebSocket server error: Port 5173 is already in use
+
+  VITE v7.3.0  ready in 643 ms
+
+  ➜  Local:   http://localhost:5174/
+  ➜  Network: use --host to expose
+[vite-plugin-static-copy] Collected 3 items.
