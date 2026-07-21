@@ -168,6 +168,9 @@ function cleanHtmlToMarkdown(html) {
 
     let text = html;
 
+    // Remove raw inline SVG tags first so they do not clutter markdown tables/text
+    text = text.replace(/<svg[^>]*>([\s\S]*?)<\/svg>/gi, '\n*[Diagram: SVG Illustration]*\n');
+
     // Convert standard Gutenberg block comments to nothing
     text = text.replace(/<!--[\s\S]*?-->/g, '');
 
@@ -719,7 +722,7 @@ async function run() {
             const finalMarkdown = `# ${RulePage}\n\n${markdownBody}\n\n---\n*Copyright CJ Moseley (2026). All rights reserved.*`;
 
             fs.writeFileSync(destPath, finalMarkdown, 'utf8');
-            console.log(`Generated Markdown Rule: ${destPath}`);
+            console.log("Generated Markdown Rule:", destPath);
 
             rulePagesList.push({
                 title: RulePage,
