@@ -1,0 +1,110 @@
+[
+    {
+        "id": "T13-NE-GEOMETRY-CHARACTEREFFECTS-1",
+        "data": {
+            "Effect": -6,
+            "Name": "Traumatic",
+            "Description": "This is a powerfully negative experience for the Characters involved.",
+            "Character_Effect": "The Card atop the Discard Pile acts as a Stress Card. The Character effected must spend Stress equal to the Pips of the Card to accept the Stress effect or the Card will become a Trauma."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHARACTEREFFECTS-2",
+        "data": {
+            "Effect": -5,
+            "Name": "Fray",
+            "Description": "This is a Yarn Fray event, typically narrated by the Yarn-Teller responsible for the Character&apos;s Arc.",
+            "Character_Effect": "The Card atop the Discard Pile acts as a Fray that will affect the Characters during this Beat or Bar."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHARACTEREFFECTS-3",
+        "data": {
+            "Effect": -4,
+            "Name": "Snag",
+            "Description": "This is a Yarn Snag event, typically narrated by the Yarn-Teller responisible for the Character&apos;s Arc.",
+            "Character_Effect": "The Card atop the Discard Pile acts as a Snag that will affect the Characters during this Beat or Bar."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHARACTEREFFECTS-4",
+        "data": {
+            "Effect": -3,
+            "Name": "Hurdle",
+            "Description": "This is a Facet Hurdle event, typically narrated by the Yarn-Teller responsible for the Character&apos;s Arc.",
+            "Character_Effect": "The Card atop the Discard Pile provides a Facet Hurdle that will effect the Characters during this Beat or Bar."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHARACTEREFFECTS-5",
+        "data": {
+            "Effect": -2,
+            "Name": "Negative Emotion",
+            "Description": "There is a Negative Emotion associated with the current situation, this effect is typically narrated by the Player of the Character affected.",
+            "Character_Effect": "The Card atop the Discard Pile becomes +1 Card Negative Emotional Effect that affects the Characters with a Psych Attack Emotional Effect during this Beat or Bar."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHARACTEREFFECTS-6",
+        "data": {
+            "Effect": -1,
+            "Name": "Failure",
+            "Description": "There is an air of failure about the situation. This effect is usually narrated by the Referee.",
+            "Character_Effect": "The Referee may either narrate the Card atop the Discard Pile as a Facet Failure Level or demand the Character must Discard a Card from their Hand or Pool as the Failure for each Action the Character takes during the Beat or Bar."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHARACTEREFFECTS-7",
+        "data": {
+            "Effect": 0,
+            "Name": "Home",
+            "Description": "This is where the Character is naturallly at home. It may be literally their territory, but most likely it is the social and geographical situation to which they are habituated.",
+            "Character_Effect": "Adds +1 Generic Success Level that the Player may add to each Action the Character takes during the Beat or Bar."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHARACTEREFFECTS-8",
+        "data": {
+            "Effect": 1,
+            "Name": "Stressful",
+            "Description": "The situation around the Character is stressful for them.",
+            "Character_Effect": "The Character Gains Stress during the Beat or each Beat of the Bar."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHARACTEREFFECTS-9",
+        "data": {
+            "Effect": 2,
+            "Name": "Positive Emotion",
+            "Description": "There is a Positive Emotion associated with the current situation, this effect is typically narrated by the Player of the Character affected.",
+            "Character_Effect": "The Card atop the Discard Pile becomes +1 Card Positive Emotional Effect that affects the Characters with an Emotional Effect during this Beat or Bar."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHARACTEREFFECTS-10",
+        "data": {
+            "Effect": 3,
+            "Name": "Relief",
+            "Description": "This is a restful situation that allows a Character to rest and recuperate.",
+            "Character_Effect": "The Character can rest, this will usually Relieve all current Stress, Strain and Shock the Character has over the Bar."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHARACTEREFFECTS-11",
+        "data": {
+            "Effect": 4,
+            "Name": "Revelation",
+            "Description": "This is a Yarn Revelation Event, typically narrated by the Yarn-Teller responsible for the Character&apos;s Arc.",
+            "Character_Effect": "The Card atop the Discard Pile acts as a Revelation (which may be expanded by the Yarn-Teller with additional cards and may create a Lore for the Character) this Revelation plays out over the Beat or Bar."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-CHARACTEREFFECTS-12",
+        "data": {
+            "Effect": 5,
+            "Name": "Gain",
+            "Description": "This is a Yarn Gain Event, typically narrated by the Yarn-Teller responsible for the Character&apos;s Arc.",
+            "Character_Effect": "The Card atop the Discard Pile acts as a Gain Event that plays out over the Beat or Bar."
+        }
+    }
+]

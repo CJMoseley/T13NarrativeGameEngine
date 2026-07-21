@@ -1,0 +1,555 @@
+[
+    {
+        "Type": "Advise",
+        "Impression": "-2 to +2",
+        "Reaction": "0",
+        "Suggested_Facets": "Craft, Dominion, Orthodox, Sin, Virtue, Wyrd, Zeal",
+        "Description": "Giving someone advice is a double-edged sword, if the advice works for them, then they will have done whatever they wanted to accomplish, and while they may have a positive impression of you, they are unlikely to really remember your contribution to their success, whereas if you give bad advice, then you will never hear the end of it or the negative impression they have of you because of it. Under rare circumstances advice given to the Target may be not acted upon, but appreciated, this can lead to the most positive outcome from the advisor’s position, the \"I should have taken your advice\"."
+    },
+    {
+        "Type": "Agree",
+        "Impression": "+1",
+        "Reaction": "0",
+        "Suggested_Facets": "Nature, Orthodox, Zeal",
+        "Description": "Agreeing to something the Target has offered has an immediate positive effect on the Target’s impression of you. Which can be used to renegotiate later."
+    },
+    {
+        "Type": "Annoy",
+        "Impression": "-2",
+        "Reaction": "0",
+        "Suggested_Facets": "Fury, Jeer, Liberty, Sin, Trial",
+        "Description": "A deliberate attempt to create a negative opinion and attitude in a Target, often for petty reasons, but occasionally as a more complex deception."
+    },
+    {
+        "Type": "Apologize",
+        "Impression": "-1 to +3",
+        "Reaction": "-1",
+        "Suggested_Facets": "Awe, Burden, Craft, Dominion, Gossamer, Heresy, Inertia, Orthodox, Phoenix, Rook, Virtue",
+        "Description": "Apologizing is usually a very positive action, as long as the target has a negative impression, but has not decided to attack you instead of listening. An apology when you have done nothing wrong will usually be received negatively."
+    },
+    {
+        "Type": "Argue",
+        "Impression": "-3 to +3",
+        "Reaction": "-2 to +2",
+        "Suggested_Facets": "Craft, Fury, Liberty, Orthodox, Rook, Sin, Trial, Virtue, Zeal",
+        "Description": "Arguing, is a complex mixture of Debate, Convincing, Persuasion, Agreement and Disagreement that combines into a powerful positive, negative or neutral effect depending what is being argued over and with whom."
+    },
+    {
+        "Type": "Ask a Favour",
+        "Impression": "+1",
+        "Reaction": "0",
+        "Suggested_Facets": "Burden, Dominion, Inertia, Quiet, Virtue, Wyrd",
+        "Description": "Asking someone to do you a small favour that is difficult to say no to is surprisingly often a good way to create a positive impression, as it demonstrates a trusting nature. Of course, this can go wrong with the Target taking advantage of the favour or situation, but if the favour is small enough it will usually be accepted."
+    },
+    {
+        "Type": "Assess",
+        "Impression": "0",
+        "Reaction": "-1 to +1",
+        "Suggested_Facets": "Burden, Key, Quiet, Rook, Yonder",
+        "Description": "A quick glance can be enough to assess a Target, perhaps tell whether they are lying or telling the truth, how much they might be worth, how good they might be in a fight, or what their allegiances may be."
+    },
+    {
+        "Type": "Befriend",
+        "Impression": "+3",
+        "Reaction": "+1",
+        "Suggested_Facets": "Awe, Dominion, Gossamer, Nature, Quiet, Rook, Virtue, Wyrd, Zeal",
+        "Description": "An open attempt to create a favourable impression that is intended to lead to a deeper relationship or alliance. This can be altruistic, or manipulative as required."
+    },
+    {
+        "Type": "Betray",
+        "Impression": "Special",
+        "Reaction": "-2",
+        "Suggested_Facets": "Awe, Dominion, Fury, Gossamer, Nature, Orthodix, Phoenix, Quiet, Sin, Trial, Virtue, Wyrd",
+        "Description": "Betrayal is usually a an extreme action, it can move a Character from whatever positive position they have to the negative equivalent for a cost of one Successs or Failure Level. This can allow Violent hatred to instantly become Kinship, or vice-versa."
+    },
+    {
+        "Type": "Blackmail",
+        "Impression": "-5",
+        "Reaction": "-5",
+        "Suggested_Facets": "Awe, Dominion, Enigma, Gossamer, Heresy, Inertia, Key, Sin, Trial",
+        "Description": "Blackmail is a form of corruption where you find out someone’s secrets and then threaten them with exposure (by releasing evidence to bosses, loved ones, police or press) if the Target does not do what you want (which is usually handing over large sums of cash). Blackmail attempts create an immediate negative impression, but if you have good evidence (or powerful enough accusations and lies) then you get what you want. See also \"Secret keeping\" though."
+    },
+    {
+        "Type": "Bluff",
+        "Impression": "-1",
+        "Reaction": "-1",
+        "Suggested_Facets": "Awe, Dominion, Enigma, Heresy, Jeer, Quiet, Sin, Yonder",
+        "Description": "A deception method that involves making the Target believe something to be true that is not. This is often done by presenting a strong front with little to back it up. A bluff is usually only negative if the Character finds out it was a bluff, but a bluffer may lose respect for someone who is easily bluffed."
+    },
+    {
+        "Type": "Boo",
+        "Impression": "-2 to target, +1 with other Booers.",
+        "Reaction": "-1",
+        "Suggested_Facets": "Fury, Inertia, Jeer, Miasma, Trial, Yonder, Zeal",
+        "Description": "Booing, jeering and heckling is a negative experience for those who are on the receiving end generally. However, those who boo together will bond slightly having a positive reaction to each other over all."
+    },
+    {
+        "Type": "Bore",
+        "Impression": "-1 to 0",
+        "Reaction": "+1",
+        "Suggested_Facets": "Burden, Craft, Gossamer, Inertia, Miasma, Nature, Orthodox, Quiet, Rook, Virtue, Zeal",
+        "Description": "Boring the Target will generally create a Neutral or mildly Negative impression. Boring someone does not generally create violence, which can be useful, however the person doing the boring will often feel more positive about the person they bored."
+    },
+    {
+        "Type": "Brag",
+        "Impression": "+1 to +4 First Time hearing, -1 for each subsequent time hearing",
+        "Reaction": "+1",
+        "Suggested_Facets": "Awe, Burden, Dominion, Gossamer, Heresy, Key, Nature, Orthodox, Sin, Trial, Yonder",
+        "Description": "Bragging is boasting specifically about some accomplishment, usually as a result of pride in that accomplishment. Bragging aggrandizes the speaker, which can have a slightly positive impact on those listening if it is the first time they have heard the story, but if this brag has been heard before by the Target (or is too similar to another brag you have made) then it will be perceived negatively. For the braggard listening to their brags will give them a positive reaction."
+    },
+    {
+        "Type": "Bribery",
+        "Impression": "-5 to +2 varies by ethics and economics",
+        "Reaction": "0",
+        "Suggested_Facets": "Burden, Dominion, Enigma, Miasma, Sin",
+        "Description": "Bribery is paying someone to do something they are not supposed to do. You might bribe a trade envoy into agreeing to an unfavourable trade deal, or bribe a city councillor into rezoning an area of the city you own for redevelopment. Bribery is one specific form of corruption and as long as the Target is receptive to the bribe it will create a positive impression. Judging how receptive the Target will be is often really just a question of working out how big a bribe is necessary. Try and bribe someone with too little and you will create an immediate negative impression. Of course, some people are genuinely insulted by any attempted bribe."
+    },
+    {
+        "Type": "Charm",
+        "Impression": "+4 to -1 varies",
+        "Reaction": "+2",
+        "Suggested_Facets": "Awe, Dominion, Enigma, Gossamer, Heresy, Jeer, Liberty, Nature, Quiet, Sin, Virtue, Wyrd",
+        "Description": "An attempt to create a more positive impression. Charm can be natural, which is usually universally positively received or trained, which can appear forced and create a mildly negative impression. However, trying to Charm someone will always result in you gaining a hgiher opinion of the person you are charming."
+    },
+    {
+        "Type": "Chat",
+        "Impression": "+1 to -1 by circumstance",
+        "Reaction": "+1 to -1 by circumstance",
+        "Suggested_Facets": "Awe, Dominion, Gossamer, Jeer, Liberty, Nature, Orthodox, Rook, Yonder, Zeal",
+        "Description": "Chatting is a generally positive experience for everyone involved, although it can become negative if the Target is pressed for time, or is trying to keep a secret."
+    },
+    {
+        "Type": "Cheer-on",
+        "Impression": "+3",
+        "Reaction": "+1 reaction to cheering also applies to other cheerers.",
+        "Suggested_Facets": "Awe, Dominion, Fury, Gossamer, Heresy, Inertia, Jeer, Phoenix, Trial, Yonder, Zeal",
+        "Description": "Cheering someone on is generally a positive experience for both the cheerer and the cheered. Being cheered has a positive effect on the Target, and joining in cheering has a positive interaction with everyone else who is cheering."
+    },
+    {
+        "Type": "Co-operate",
+        "Impression": "+1 to +4 depending",
+        "Reaction": "+1",
+        "Suggested_Facets": "Craft, Dominion, Nature, Quiet, Rook, Virtue, Zeal",
+        "Description": "Doing what the Target wants you to do, whether from altruism, aligned interests, or coercion actually has a generally positive effect upon both you and the Target. Of course, forced cooperation is not as great an impact as finding some common ground, but it still improves relations between you slightly."
+    },
+    {
+        "Type": "Command",
+        "Impression": "Generally 0, may be as low as -5 depending upon the command.",
+        "Reaction": "+1",
+        "Suggested_Facets": "Awe, Burden, Dominion, Fury, Gossamer, Virtue, Yonder",
+        "Description": "A command is an authoritative order or demand that is generally Neutral, but may be negative in nature, depending upon the command issued. However a commander will come to trust those they command in time."
+    },
+    {
+        "Type": "Compliment",
+        "Impression": "-2 to +2 depending upon circumstance",
+        "Reaction": "+1",
+        "Suggested_Facets": "Awe, Craft, Dominion, Gossamer, Heresy, Key, Nature, Orthodox, Yonder",
+        "Description": "Saying something nice about the Target, such as liking their clothes, hair or behaviour can have an instant positive effect on the Target. However, in some cases the Target may be not take the compliment well, perhaps because they did not want to be wearing those clothes, have that haircut etc, or some other reason, when this happens the impression created or effect will be negative."
+    },
+    {
+        "Type": "Confide",
+        "Impression": "-3 to +2 depending",
+        "Reaction": "+1 to -1",
+        "Suggested_Facets": "Craft, Dominion, Enigma, Key, Liberty, Orthodox, Quiet, Zeal",
+        "Description": "Confiding in the target, and telling them your secrets is a good way to build trust and create a positive impression with a positive action. However, this can go wrong if the target is shocked or outraged by the information confided in them. "
+    },
+    {
+        "Type": "Congratulate",
+        "Impression": "+2 to -5 depending",
+        "Reaction": "0",
+        "Suggested_Facets": "Awe, Burden, Dominion, Gossamer, Inertia, Orthodox, Rook, Virtue, Zeal",
+        "Description": "Acknowledging someone’s accomplishments is generally a positive effect, at least as long as they did accomplish that thing, or did want to accomplish that thing, if they didn’t then you may give the Target a very negative impression."
+    },
+    {
+        "Type": "Convince",
+        "Impression": "0 to -2 depending",
+        "Reaction": "",
+        "Suggested_Facets": "Craft, Dominion, Heresy, Inertia, Key, Orthodox, Phoenix, Quiet, Trial, Wyrd",
+        "Description": "Convincing is an attempt to change someone’s mind by application of logic, reason, evidence and argument. Whilst it can be used on anyone, it works best on those who are Neutral, rather than already decided against."
+    },
+    {
+        "Type": "Cruel",
+        "Impression": "+1 to -5 depending",
+        "Reaction": "",
+        "Suggested_Facets": "Dominion, Fury, Jeer, Key, Miasma, Nature, Phoenix, Sin, Trial, Wyrd, Zeal",
+        "Description": "Being cruel to your Target, such as enjoying their punishment, pain or torment, is always a negative impression builder, unless the Target is a masochist or similar. Truly cruel actions deliberately and wilfully cause pain, distress and suffering to the Target while delighting or amusing yourself or some observer, this is not just some severity or strictness, this is a malediction of sorts."
+    },
+    {
+        "Type": "Debate",
+        "Impression": "0 to -1 depending",
+        "Reaction": "0 to -1",
+        "Suggested_Facets": "Craft, Gossamer, Inertia, Key, Orthodox, Quiet, Rook, Trial, Wyrd, Zeal",
+        "Description": "Debating is arguing and discussing a specific topic, usually disputed between the Target and yourself. Debate is generally considered a Neutral action, although good arguments may persuade and win the debate, they may also cause negative consequences as well."
+    },
+    {
+        "Type": "Demand",
+        "Impression": "0 to -1 depending",
+        "Reaction": "-1 to 0 depending",
+        "Suggested_Facets": "Awe, Burden, Dominion, Fury, Inertia, Miasma, Nature, Phoenix, Rook, Sin, Trial, Wyrd, Zeal",
+        "Description": "A demand is a usually neutral or negatively perceived command or order, demands are usually urgent and may be made with the proper authority, but usually overstepping some boundary creates a negative impression."
+    },
+    {
+        "Type": "Direct",
+        "Impression": "0 to +2 depending",
+        "Reaction": "+1",
+        "Suggested_Facets": "Craft, Dominion, Gossamer, Liberty, Trial, Wyrd",
+        "Description": "Directing the target is a form of command, usually performed with gestures or by simple language. Directing a target is usually neutral or positive (unless you are directing people into danger or something). Directions are always received positively if they have been specifically requested by the target (\"Excuse me, can you tell me where the library is?\")"
+    },
+    {
+        "Type": "Disagree",
+        "Impression": "-3 to +2",
+        "Reaction": "-1 to +1",
+        "Suggested_Facets": "Craft, Heresy, Nature, Orthodox, Trial, Zeal",
+        "Description": "Disagreeing with the Target will usually have an immediate negative effect on the Target, however some people will find that refreshing and it give a positive impression."
+    },
+    {
+        "Type": "Discourage",
+        "Impression": "0",
+        "Reaction": "0",
+        "Suggested_Facets": "Dominion, Enigma, Fury, Jeer, Key, Miasma, Sin, Trial, Virtue, Zeal",
+        "Description": "Discouraging someone is usually a negative effect, however it usually creates a neutral impression rather than negative, as the discouragement is usually seen as coming from a positive place."
+    },
+    {
+        "Type": "Double Bluff",
+        "Impression": "-2 to -4 when discovered",
+        "Reaction": "-1",
+        "Suggested_Facets": "Dominion, Enigma, Heresy, Jeer, Orthodox, Yonder",
+        "Description": "A deception method that involves making the Target believe something is not true, when it is. This is usually done by presenting the truth in an unbelievable manner."
+    },
+    {
+        "Type": "Elicit Information",
+        "Impression": "+1 to +3",
+        "Reaction": "0 to +1",
+        "Suggested_Facets": "Enigma, Jeer, Key, Nature, Orthodox, Quiet, Yonder",
+        "Description": "Eliciting information is about showing an interest in the Target, and rather than asking direct and specific questions, is more about encouraging the Target to talk about themselves, their plans, interests and problems on their own. This sort of elicitation is also known as \"Being a Good Listener\", and is generally perceived positively."
+    },
+    {
+        "Type": "Encourage",
+        "Impression": "-1 to +3 depending",
+        "Reaction": "+1",
+        "Suggested_Facets": "Awe, Burden, Dominion, Enigma, Gossamer, Inertia, Jeer, Key, Orthodox, Phoenix, Rook, Virtue, Zeal",
+        "Description": "Encouraging someone to do something is a positive experience for them, if they want to do it, otherwise results may vary."
+    },
+    {
+        "Type": "Entertain",
+        "Impression": "+1 to +5 depending",
+        "Reaction": "0",
+        "Suggested_Facets": "Awe, Craft, Gossamer, Jeer, Liberty, Nature, Zeal",
+        "Description": "Entertaining a Target can be attempted in any number of ways, from conversation to performance arts. Usually the Target will react positively, unless they are scared of clowns or some other unfortunate complication."
+    },
+    {
+        "Type": "Explain",
+        "Impression": "-1 to +1 often 0",
+        "Reaction": "0",
+        "Suggested_Facets": "Dominion, Heresy, Key, Orthodox, Quiet, Zeal",
+        "Description": "Explaining a situation or thing is <em>usually</em> a Neutral effect upon the Target. Although, in rare circumstances this exposition can be blamed (a case of \"shoot the messenger\"), it is usually a positive effect for the Target and creates a positive impression of you."
+    },
+    {
+        "Type": "Flatter",
+        "Impression": "+3 to -2 depending",
+        "Reaction": "+1",
+        "Suggested_Facets": "Awe, Burden, Craft, Dominion, Heresy, Key, Miasma, Orthodox, Sin",
+        "Description": "An attempt to please another and create a positive impression by making complimentary remarks. Flattery works best when the compliments are perceived as sincere, but insincere praise will quickly create a negative impression. Flattery can be exceptional persuasive on some people, especially those suffering from vanity or naivety."
+    },
+    {
+        "Type": "Flirt",
+        "Impression": "+2 to +5 depending",
+        "Reaction": "+1 to +3 depending",
+        "Suggested_Facets": "Awe, Dominion, Fury, Gossamer, Heresy, Liberty, Nature, Phoenix, Sin, Zeal",
+        "Description": "Flirting is a deliberate attempt to create a favourable impression by acting amorously or toying with the Target’s emotions. Flirting is not usually intended to be taken seriously, although it may lead to more serious relationships."
+    },
+    {
+        "Type": "Gossip",
+        "Impression": "+1 to -1 depending",
+        "Reaction": "0",
+        "Suggested_Facets": "Dominion, Gossamer, Heresy, Key, Rook, Trial, Yonder, Zeal",
+        "Description": "Gossip is simply sharing news and stories with the Target. Usually gossiping is a Neutral event that may generate a slightly negative impression, but amongst gossips it usually creates a more positive impression."
+    },
+    {
+        "Type": "Grovel",
+        "Impression": "+2 to 0",
+        "Reaction": "-1",
+        "Suggested_Facets": "Burden, Enigma, Gossamer, Heresy, Inertia, Miasma, Quiet, Rook, Virtue, Wyrd",
+        "Description": "Grovelling is when you humiliate yourself for the Target’s enjoyment. Grovelling will usually result in the Target not choosing to punish you too much further for whatever slight they have imagined or sustained. Grovelling for your life is quite likely to work, as the Target will no longer see you as a threat that must be dealt with."
+    },
+    {
+        "Type": "Honesty",
+        "Impression": "+3 to -2 depending",
+        "Reaction": "-1 depending",
+        "Suggested_Facets": "Inertia, Key, Orthodox, Quiet, Virtue",
+        "Description": "Honesty, usually in the sense of answering questions truthfully and without holding information back, is usually considered a positive effect. However, sometimes such honesty can be blunt and may therefore cause a negative impression on the Target, especially if these blunt truths are delivered sincerely."
+    },
+    {
+        "Type": "Humiliate",
+        "Impression": "-2 to -5 depending",
+        "Reaction": "-1 to -3 depending",
+        "Suggested_Facets": "Dominion, Enigma, Fury, Heresy, Jeer, Key, Miasma, Orthodox, Phoenix, Quiet",
+        "Description": "Humiliating your Target is a quick way to a negative impression, whether through insults, revelations about previous misdeeds, or through pranks or jokes at their expense (although sometimes they will see the funny side) however it will establish you positively with the Target’s Rivals and Enemies."
+    },
+    {
+        "Type": "Ignore",
+        "Impression": "0 to -2",
+        "Reaction": "0",
+        "Suggested_Facets": "Awe, Enigma, Heresy, Inertia, Jeer, Miasma, Quiet, Rook",
+        "Description": "Any attempt to completely ignore the target is usually a negative impression builder, although actually only a neutral action, any negative reaction is easily removed by apologizing."
+    },
+    {
+        "Type": "Insult",
+        "Impression": "-3 to -5 generally",
+        "Reaction": "-1 generally +1 on others nearby",
+        "Suggested_Facets": "Dominion, Fury, Heresy, Jeer, Key, Miasma, Orthodox, Phoenix, Quiet, Sin",
+        "Description": "Usually an insult is a Curse, Lecture, or Bedlam Psych attack that is intended to Distract, humiliate or ridicule the Target. This will usually have a negative effect on the Target, but may have a positive effect on others nearby, some people consider a good insult a positive effect though so be warned."
+    },
+    {
+        "Type": "Intimidate",
+        "Impression": "-2 to -4 depending",
+        "Reaction": "-1 to +1 depending",
+        "Suggested_Facets": "Awe, Burden, Fury, Gossamer, Inertia, Nature, Quiet, Trial, Yonder",
+        "Description": "An attempt to compel someone to do something through a threat, or imagined threat, of some sort, usually physical violence. Intimidating another Character can often give the intimidator "
+    },
+    {
+        "Type": "Introductions",
+        "Impression": "+1",
+        "Reaction": "+1",
+        "Suggested_Facets": "Awe, Dominion, Heresy, Inertia, Orthodox, Virtue, Wyrd",
+        "Description": "Introducing yourself to a bunch of strangers is usually considered positively, of course some circumstances may make this negative, such as trying to introduce yourself to paranoid schizophrenics or xenophobes. Introducing others to your friends is also a positive action, that creates a positive impression in everyone involved (usually)."
+    },
+    {
+        "Type": "Jest",
+        "Impression": "+2 to -2 depending",
+        "Reaction": "+1 to -1 depending",
+        "Suggested_Facets": "Dominion, Gossamer, Jeer, Key, Liberty, Quiet, Zeal",
+        "Description": "Humour, whether quick one-liner, snappy comeback, or clever pun, demonstrates a quick wit and usually creates an immediate positive impression. Humour though is an exceptionally personal thing and you must know your audience well to tell a well-judged joke, if you make an incorrect presumption about the Target then you may give a very negative impression."
+    },
+    {
+        "Type": "Lecture",
+        "Impression": "+1 to -5 depending upon Woundage",
+        "Reaction": "-1",
+        "Suggested_Facets": "Craft, Dominion, Key, Orthodox, Quiet",
+        "Description": "In T13 Lectures are type of attack, so it is probably no surprise that lecturing someone generally creates a negative perception of you. Lectures can be positive things, but the Target will rarely build a positive impression of the Lecturer, except perhaps years later when they come to appreciate their lecturer. Lecturing represents an obsolete teaching style that implies everyone must learn the same way, and this is quick to create negative effects in some pupils."
+    },
+    {
+        "Type": "Lie",
+        "Impression": "+1 to -5 depending",
+        "Reaction": "+1 to -2 depending",
+        "Suggested_Facets": "Craft, Dominion, Heresy, Liberty, Miasma, Rook, Sin",
+        "Description": "Lying is a direct deception, which may be intended to protect (a white lie), mislead or deceive the Target. However, if discovered lies cause negative impacts, usually regardless of the reasons."
+    },
+    {
+        "Type": "Listen",
+        "Impression": "-2 to +3 depending upon target and openess",
+        "Reaction": "-1 to +3",
+        "Suggested_Facets": "Dominion, Gossamer, Inertia, Key, Quiet, Yonder",
+        "Description": "Just listening to someone talk and nodding or making agreement noises can be an effective way of gaining information and making friends. Listening and paying attention to people is generally seen as positive. Although, eavesdropping and listening into conversations that you are not a part can be seen in a very negative light."
+    },
+    {
+        "Type": "Manipulate",
+        "Impression": "-5 to +5 depending",
+        "Reaction": "-2 to +2 depending",
+        "Suggested_Facets": "Dominion, Enigma, Gossamer, Sin, Zeal",
+        "Description": "Manipulation is a very subtle form of persuasion that over time will accomplish your goals, but is rarely quick to enact. Manipulation is usually perceived positively at the time, until the target realises that they have been manipulated, when a negative impression will be immediately formed at least equal to the positive one previously formed."
+    },
+    {
+        "Type": "Mannered",
+        "Impression": "-2 to +2 depending upon cultural similarity.",
+        "Reaction": "-2 to +2 depending upon cultural similarity",
+        "Suggested_Facets": "Dominion, Orthodox, Quiet, Rook, Virtue",
+        "Description": "Being polite and well-mannered are almost always considered a positive effect and create a positive impression, as long as both parties share cultural understandings of what good manners are. Post-Apocalyptic Punks might have a very different polite greeting to medieval knights, and both may find the other’s offensive."
+    },
+    {
+        "Type": "Mediate",
+        "Impression": "-2 to +2 depending upon bias",
+        "Reaction": "+2 to -2 depending upon bias",
+        "Suggested_Facets": "Burden, Craft, Gossamer, Quiet, Rook, Trial, Wyrd",
+        "Description": "In order to mediate there must be two parties for you to act as the mediator. Mediators carry messages, translate information, and negotiate on another’s behalf as required. Mediation is usually seen as a positive effect and creates a positive impression for both sides, as long as they do not display any significant bias. The moment you display bias of any sort against one of the parties that party will immediately form a negative impression of you."
+    },
+    {
+        "Type": "Mimicking",
+        "Impression": "-3 to +2 depending",
+        "Reaction": "-1 to +1 depending",
+        "Suggested_Facets": "Craft, Dominion, Heresy, Jeer, Key, Trial, Yonder",
+        "Description": "An attempt to gain a positive impression from some, by creating a negative impression in the target of the mimickery. Often used to mock the target and draw attention to their negative traits, although it can be used to draw attention to their positive traits instead, however this form does not create positive impressions in the target still, but can create positive impressions in others of both the target and the mimic."
+    },
+    {
+        "Type": "Mirror",
+        "Impression": "+1 or rarely -1",
+        "Reaction": "+1 or rarely -1",
+        "Suggested_Facets": "Awe, Craft, Dominion, Enigma, Heresy, Inertia, Jeer, Key, Quiet, Rook, Yonder",
+        "Description": "A technique that increases a Target’s positive impression by subtly mimicking their body language and speech patterns, must be employed secretly or unconsciously as conscious copying is often seen negatively."
+    },
+    {
+        "Type": "Mislead",
+        "Impression": "+2 falls to -1",
+        "Reaction": "+1 falls to -2",
+        "Suggested_Facets": "Awe, Dominion, Enigma, Gossamer, Heresy, Jeer, Quiet, Trial, Virtue, Wyrd, Yonder",
+        "Description": "A complex technique that can create a short term positive impression or opinion, but generally does not have too bad negative consequences, or relies on you being long gone by the time the consequences are revealed."
+    },
+    {
+        "Type": "Negotiate",
+        "Impression": "Usually -1, 0 or +1",
+        "Reaction": "Usually -1, 0 or +1",
+        "Suggested_Facets": "Burden, Dominion, Gossamer, Key, Orthodox, Quiet, Rook, Trial, Wyrd",
+        "Description": "Negotiations are usually a back and forth of offer and counter-offer. A bad offer will be perceived negatively, a good offer positive, generally, most balanced offers should be Neutral though."
+    },
+    {
+        "Type": "Observe",
+        "Impression": "0 to -2 depending",
+        "Reaction": "+2 to -2 depending",
+        "Suggested_Facets": "Key, Quiet, Yonder",
+        "Description": "Observing the Target without otherwise interacting, and without them becoming aware of the observation, or being distracted by another social interaction with someone else, can reveal aspects of their character (especially large Hitches often) that may be useful in deciding what else to do. However, being observed, and realising it, is usually a negative experience for the Target, and allows them to mislead you in response. Careful observation with paralanguage understanding can even reveal the exact action that they are engaged in."
+    },
+    {
+        "Type": "Offer",
+        "Impression": "+6 to -6 depending upon offer",
+        "Reaction": "+1 to -1 depending upon acceptance",
+        "Suggested_Facets": "Burden, Dominion, Gossamer, Liberty, Nature, Phoenix, Virtue, Wyrd",
+        "Description": "Offering the target something (care for a drink?) is usually seen as positive, although this does depend upon the offer. Offering terms for surrender will not go down well if they are winning the fight, and offering something negative (Surrender, I promise, I’ll make the execution painless...) is at best a neutral action."
+    },
+    {
+        "Type": "Omit",
+        "Impression": "+2 to -2 depending, potentially -5 if discovered",
+        "Reaction": "0 to -2 depending",
+        "Suggested_Facets": "Craft, Dominion, Enigma, Heresy, Jeer, Quiet",
+        "Description": "Not revealing a single piece of information, while spouting other information, so that it is not obvious that anything has been left out is an impressive skill that based on the information revealed may have a positive or negative effect as desired, usually though if the omission is ever discovered by the target then they will immediately suffer a powerful negative impression of you."
+    },
+    {
+        "Type": "Order",
+        "Impression": "+2 to 0 depending upon order",
+        "Reaction": "-1 to +2 depending upon execution",
+        "Suggested_Facets": "Awe, Burden, Craft, Dominion, Fury, Gossamer, Miasma, Nature, Orthodox, Wyrd, Zeal",
+        "Description": "An order is often an arrangement, that is given to the Target and that they are expected to fulfil for some reward, or out of continued loyalty. Orders are generally Neutral or positive in nature, in comparison with a command."
+    },
+    {
+        "Type": "Paralanguage",
+        "Impression": "Modify +/-4 on failure upto -5",
+        "Reaction": "+2",
+        "Suggested_Facets": "Craft, Dominion, Enigma, Gossamer, Heresy, Orthodox, Quiet, Wyrd, Zeal",
+        "Description": "Paralanguage is an advanced technique, layered on top of one of the other Actions that involves modifying the words used to include local dialectual variants, as well as body language, posture, accent, voice quality, pitch, rhythm and tone to modify the original message to make it be received more positively or more negatively as desired. The problems are that Paralanguage is difficult to perform without a lot of knowledge of local cultural factors, to the point that even many locals will avoid its use, as it can create extremely negative impressions if performed incorrectly, where it may be seen as mockery or even a Psych Attack. Additionally, any use of of paralanguage demands good rapport with the target, automatically increasing your Impression of them, as you understand them better."
+    },
+    {
+        "Type": "Persuade",
+        "Impression": "0 to -2 depending",
+        "Reaction": "+1 to -1 depending",
+        "Suggested_Facets": "Dominion, Fury, Gossamer, Heresy, Inertia, Liberty, Miasma, Phoenix, Rook, Virtue, Zeal",
+        "Description": "Persuasion is an attempt to change someone’s mind by advice and urging, it can only be successful if the Target has a good impression of you, and can often cost one or both of you an Impression level or two in the process"
+    },
+    {
+        "Type": "Play",
+        "Impression": "+2 to -5 per game depending",
+        "Reaction": "+2 to -5 per game depending",
+        "Suggested_Facets": "Burden, Craft, Inertia, Jeer, Liberty, Nature, Trial, Zeal",
+        "Description": "Playing with someone (joining them in a game, playing a game with them, joining in their fun, etc) is usually seen as a positive effect and creates a positive impression. However, winning or losing too much, betting too heavily, taking things too seriously, cheating, extreme tactics, being a poor winner (gloating) or poor loser (whinging) can all create negative impressions very quickly if you are not careful."
+    },
+    {
+        "Type": "Punish",
+        "Impression": "-2 to +1 depending upon \"fairness\", respect and trust",
+        "Reaction": "+1 to -1 depending",
+        "Suggested_Facets": "Burden, Fury, Jeer, Miasma, Trial, Wyrd",
+        "Description": "Punishing is usually a negative impression building action, few people are drawn to their punisher. Although, under the correct circumstances a positive (usually respect based) relationship may grow between punished and punisher, especially if the punishment is fair and well-judged. Some people may gain a positive impression of the punisher if they are strict, but fair, for example, but this is usually not the case."
+    },
+    {
+        "Type": "Question",
+        "Impression": "+2 to -3 depending upon question",
+        "Reaction": "+3 to -4 depending upon answer",
+        "Suggested_Facets": "Enigma, Gossamer, Jeer, Key, Orthodox, Quiet, Wyrd, Yonder",
+        "Description": "Asking questions can have a usually Neutral or Negative effect, depending upon the questions asked. If based upon finding out more about the Target’s interests, likes, hobbies and passions then this displayed interest will have a positive effect upon the Target. Asking questions can have a more profound reaction on the questioner when they find out the answers to some questions."
+    },
+    {
+        "Type": "Recommend",
+        "Impression": "-2 to +1 depending",
+        "Reaction": "0",
+        "Suggested_Facets": "Dominion, Inertia, Liberty, Miasma, Orthodox, Virtue, Zeal",
+        "Description": "Recommending something to the target is usually a neutral action (although it does depend upon what you are recommending), if asked to make a recommendation and you do and it is enjoyed, then this is a Positive impression maker. Bad recommendations quickly create a negative impression, though so be warned."
+    },
+    {
+        "Type": "Renegotiate",
+        "Impression": "-5 to +2 depending on changes",
+        "Reaction": "-3 to +3 depending upon result",
+        "Suggested_Facets": "Burden, Craft, Dominion, Inertia, Liberty, Miasma, Rook, Sin, Trial",
+        "Description": "An attempt to alter the arrangements of an earlier negotiation usually to improve the circumstances of the deal for yourself. As such renegotiations are usually perceived negatively. Renegotiation can be neutrally or even positively perceived if there has been some noteworthy change of circumstance."
+    },
+    {
+        "Type": "Repress",
+        "Impression": "0 usually -1 if already suspicious (-2) or worse",
+        "Reaction": "0 usually -1 if pressed",
+        "Suggested_Facets": "Awe, Dominion, Enigma, Inertia, Liberty, Miasma, Rook",
+        "Description": "When you try to hold back information in your body language, facial expression and tone, from the Target, to avoid giving any reaction away, is usually a Neutral action, although it can be negatively perceived if the Target is already suspicious."
+    },
+    {
+        "Type": "Secret-keeping",
+        "Impression": "+4 to -5 depending",
+        "Reaction": "-3 to +4 depending upon secret",
+        "Suggested_Facets": "Enigma, Inertia, Quiet, Rook, Wyrd",
+        "Description": "Keeping somebody’s secrets for them, can have create a positive impression as the Target sees you as trustworthy and loyal to them in some way. Being told a secret also has a reaction based on the nature of the secret. Of course, it can be a difficult balance to remind someone of your secret-keeper situation, without it appearing as blackmail. Successful blackmail can sometimes be emotional interpreted as secret-keeping, and vice versa for unsuccessful secret-keeping."
+    },
+    {
+        "Type": "Seduce",
+        "Impression": "+4 to -4 depending",
+        "Reaction": "+2 to -2 depending",
+        "Suggested_Facets": "Awe, Craft, Dominion, Fury, Gossamer, Heresy, Inertia, Liberty, Miasma, Nature, Phoenix, Sin, Zeal",
+        "Description": "Seduction is a temptation that is offered to the Target, often an offer of sexual intercourse, although actually any temptation away from one’s duty, principles, faith, or allegiance is also a seduction. The Temptation is often alluring, and flattering itself, but the offer alone is usually a positive effect on the Target, although a few highly chaste and principled characters may be negatively impacted by the attempt. Seduction has an emotional reaction on the seducer, for example a rejection may sting, but create a more positive impression, but the opposite scenario need not create an opposite result."
+    },
+    {
+        "Type": "Sincerity",
+        "Impression": "+2 to -2 depending upon alignment",
+        "Reaction": "Usually 0",
+        "Suggested_Facets": "Enigma, Liberty, Nature, Orthodox, Quiet, Rook, Virtue, Wyrd, Zeal",
+        "Description": "Sincerity is often described as a freedom from deceit and hypocrisy, and this is true, but it is more about your words and actions aligning with your feelings about something. Sincerity does grant a generally positive impression, however if your sincere feelings do not match those of the Target, then they are more likely to create a negative effect or impression."
+    },
+    {
+        "Type": "Suggestion",
+        "Impression": "+1 to +3 usually occasionally -1 to -3 when opposed",
+        "Reaction": "0 usually, -1 to -2 when opposed",
+        "Suggested_Facets": "Awe, Craft, Dominion, Enigma, Miasma, Quiet, Virtue, Wyrd, Yonder",
+        "Description": "Suggesting something is usually seen as a positive action and creates a positive impression. The only times this is not true is if the target already has an idea what they want and is not interested in your suggestion, or if they are opposed to your suggestion for some reason (try suggesting eating peanut butter to someone with a peanut allergy for a personal example)."
+    },
+    {
+        "Type": "Taunt",
+        "Impression": "-3 to -7 depending upon taunt",
+        "Reaction": "-1 to -2 depending upon Taunt used",
+        "Suggested_Facets": "Fury, Gossamer, Jeer, Miasma, Phoenix, Trial",
+        "Description": "A taunt is a deliberate action, usually creating a very negative impression, often to provoke a specific reaction from the Target. Using a taunt usually causes the reaction of a negative impression, that is affected by the Taunt used."
+    },
+    {
+        "Type": "Teach",
+        "Impression": "0 to +3 usually",
+        "Reaction": "+1 Usually",
+        "Suggested_Facets": "Craft, Enigma, Heresy, Orthodox, Quiet, Zeal",
+        "Description": "Teaching and instructing someone is generally a Neutral or Positive experience. Of course, some teachers are boring, or quick to lecture rather than teach, but a true mentor will teach in way compatible with the Target’s learning style and will grant an overall positive experience."
+    },
+    {
+        "Type": "Tease",
+        "Impression": "+2 to -4 depending",
+        "Reaction": "+1 to 0 Usually",
+        "Suggested_Facets": "Awe, Enigma, Gossamer, Heresy, Inertia, Jeer, Liberty, Nature, Phoenix, Sin, Trial, Zeal",
+        "Description": "Teasing ranges from exciting someone without gratifying them, which can give a fairly positive impression, through to bullying, harassment, or tormenting, irritation and provocations which are intended to be negative."
+    },
+    {
+        "Type": "Tell Anecdote",
+        "Impression": "+2 to -1 depending upon anecdote suitability",
+        "Reaction": "+1 to -1 depending upon reaction",
+        "Suggested_Facets": "Gossamer, Heresy, Inertia, Jeer, Orthodox, Quiet, Yonder, Zeal",
+        "Description": "Telling your version of some event can have a positive effect on people, causing them to relax, laugh and empathise with you. A poor choice of anecdote and  misreading the crowd’s initial reactions can have a negative result however."
+    },
+    {
+        "Type": "Trickery",
+        "Impression": "+4 to -3 depending",
+        "Reaction": "0 to +1",
+        "Suggested_Facets": "Craft, Dominion, Enigma, Heresy, Jeer, Liberty, Miasma, Sin, Trial",
+        "Description": "Trickery is using deception and skilled techniques to create a positive impression, sometimes the trickery can involve showing a magic trick to someone, leaving a lasting impression although not always a positive one, although trickery can also be used in more direct and negative impression causing ways."
+    },
+    {
+        "Type": "Two-faced",
+        "Impression": "+1 usually",
+        "Reaction": "-1 usually",
+        "Suggested_Facets": "Dominion, Enigma, Heresy, Jeer, Liberty, Miasma, Sin, Trial",
+        "Description": "Two-faced interactions are a form of deception where you modify your behaviour around the target to give them a usually positive impression, while to other people you indicate you have a negative impression of the target to others to increase their positive impressions."
+    },
+    {
+        "Type": "Whimsy",
+        "Impression": "+1 to -2 depending (often towards 0)",
+        "Reaction": "+1 if well received",
+        "Suggested_Facets": "Jeer, Liberty, Nature, Virtue",
+        "Description": "Whimsy whether in the form of erratic humour, fanciful imagination, or a general playfulness is an interesting social technique. While it can be perceived negatively, it usually causes to user to become ignored, or even feared and avoided, rather than hated and attacked, however whimsy is never considered professional and using it will have negative consequences in serious situations."
+    }
+]

@@ -1,0 +1,87 @@
+[
+  {
+    "Type": "Below",
+    "Boon": "-1",
+    "Description": "The Below Side of any Conflict will always have at least one Boon lower than even the Pressed side."
+  },
+  {
+    "Type": "Average",
+    "Boon": 13,
+    "Description": "A perfectly average character would have Boon 13 in every Facet."
+  },
+  {
+    "Type": "Hamlet",
+    "Boon": 14,
+    "Description": "The highest Facet Boon in a tiny hamlet of 3-5 houses would generally fall around Boon 14 plus Scale)"
+  },
+  {
+    "Type": "Village",
+    "Boon": 15,
+    "Description": "The highest Facet Boon in a village of a few hundred people would usually be around Boon 15 plus Scale"
+  },
+  {
+    "Type": "Town",
+    "Boon": 16,
+    "Description": "In a town of a few thousand people the highest Facet Boon available would be around Boon 16 plus Scale"
+  },
+  {
+    "Type": "City",
+    "Boon": 17,
+    "Description": "In an average city people the highest Facet Boon available would be around Boon 17 plus Scale"
+  },
+  {
+    "Type": "County",
+    "Boon": 18,
+    "Description": "Across a whole county the highest Facet Boon available would be around Boon 18 plus Scale"
+  },
+  {
+    "Type": "Country",
+    "Boon": 19,
+    "Description": "Across a whole country the highest Facet Boon would be around Boon 19 plus Scale"
+  },
+  {
+    "Type": "Continent",
+    "Boon": 20,
+    "Description": "Across a whole continent the highest Facet Boon available would be around Boon 20 plus Scale"
+  },
+  {
+    "Type": "World",
+    "Boon": 21,
+    "Description": "Across a whole world the current highest Facet Boon available would be around Boon 21 plus Scale"
+  },
+  {
+    "Type": "History",
+    "Boon": 22,
+    "Description": "Through out the local history the highest Facet Boon available would be around Boon 22 plus Scale"
+  },
+  {
+    "Type": "System",
+    "Boon": 23,
+    "Description": "Across an entire populated star system in some highly populated future the highest Facet Boon available would be around Boon 23 plus Scale"
+  },
+  {
+    "Type": "All",
+    "Boon": 24,
+    "Description": "Out of all humans who have ever lived the highest Facet Boon available would be around Boon 24 plus Scale"
+  },
+  {
+    "Type": "Galaxy",
+    "Boon": 25,
+    "Description": "Across a whole galaxy (including Aliens and so on) the highest Facet Boon available would be around Boon 25 plus Scale"
+  },
+  {
+    "Type": "Multiverses",
+    "Boon": 26,
+    "Description": "Once you start looking in different universes to find special cases, the highest Facet Boon available would be around Boon 26 plus Scale. In general this is the most it can ever rise to."
+  },
+  {
+    "Type": "Dominant",
+    "Boon": "+1",
+    "Description": "The Dominant Side of any Conflict will always have at least one additional Boon on the Pressed side, even if they are both characters from the same family."
+  },
+  {
+    "Type": "Above",
+    "Boon": "+2",
+    "Description": "The Above Side of any Conflict will always have at least two additional Boons on the Pressed side."
+  }
+]

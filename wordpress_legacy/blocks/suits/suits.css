@@ -1,0 +1,22 @@
+.t13ne-redcard {display: inline-block; font-size: 155%; color: red !important; text-shadow: 2px 2px 3px rgba(125, 0, 0, 0.4) !important; line-height: 1.7rem; }
+.t13ne-blackcard {display: inline-block; font-size: 155%; color: black !important; text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4) !important; line-height: 1.7rem; }
+img.emoji {font-size: 26px; }
+.t13ne-atkicon {font-size: 140%; display: inline-block; position: relative; }
+div.t13ne-atkicon {display: inline-block; position: initial; }
+.t13ne-atkicon>details[open] {font-size: calc(100% / 1.4);}
+details div.t13ne-atkicon>details{ margin: 0;margin-left: 0.2em !important;margin-right: 0.3em;}
+span.t13ne-atkicon {font-size: 200%; }
+figure[t13card] figcaption figure.t13ne-atkicon {margin: 0.1em; padding: 0.2em; height: auto; }
+figure.t13ne-atkicon>details[open] {font-weight: normal; margin: 0.2em; }
+table.t13ne-table tbody tr td.t13ne-redcard {background-color: rgba(200, 0, 0, 0.8); text-shadow: 2px 2px 3px rgba(180, 255, 255, 0.4); color: black; font-size: 120%; border-radius: 2em; width: 50%; vertical-align: top; }
+table.t13ne-table tbody tr td.t13ne-redcard:hover {background-color: rgba(180, 0, 0, 0.8); text-shadow: 2px 2px 3px rgba(80, 0, 0, 0.4); color: white; font-size: 120%; border-radius: 2em; width: 50%; vertical-align: top; }
+table.t13ne-table tbody tr td.t13ne-blackcard {background-color: rgba(40, 40, 40, 0.8); text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.4); color: white; font-size: 120%; border-radius: 2em; width: 50%; vertical-align: top; }
+.t13ne-redcard ul li {text-shadow: 0 0 1.2em rgba(60, 0, 0, 0.9); color: rgba(255, 230, 230, 0.9); }
+.t13ne-blackcard ul li {text-shadow: 0px 0px 1.2em rgba(0, 0, 0, 0.9); color: rgba(255, 255, 255, 0.9); }
+td.t13ne-redcard span.t13ne-redcard {font-size: 2em; text-shadow: 0 0 1.2em rgba(0, 0, 0, 0.9); }
+td.t13ne-blackcard span.t13ne-blackcard {font-size: 2em; text-shadow: 0px 0px 1.2em rgba(255, 255, 255, 0.9); }
+div.t13ne-cardwrap-jsvg-div.t13ne-card-corner {display: inline-block; max-width: 98%; min-width: 64px; width: auto; display: inline-block; margin: 0; min-height: 64px; max-height: 80vh; vertical-align: top; text-align: center; padding-right: 0.5em; border: 0px none transparent; background: transparent !important; overflow:visible;}
+div.t13ne-card-corner section {border: 0px none transparent !important; background: transparent !important; }
+section.t13ne-cardwrap-jsvg-suit.t13ne-textbox {font-size: 16px; line-height: 21.5px; }
+section.t13ne-cardwrap-jsvg-suit.t13ne-card-suit-section.t13ne-tooltip {max-width: 109px; min-width: 64px; width: fit-content; display: inline-block; margin: 0; }
+table.t13ne-table span.t13ne-blackcard {text-shadow: 1px 1px 0.1em rgba(255, 255, 255, 0.9), -1px 1px 0.1em rgba(255, 255, 255, 0.9), 1px -1px 0.1em rgba(255, 255, 255, 0.9), -1px -1px 0.1em rgba(255, 255, 255, 0.9) !important; }

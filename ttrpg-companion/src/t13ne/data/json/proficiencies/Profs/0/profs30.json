@@ -1,0 +1,1437 @@
+{
+  "1501": {
+    "id": 1501,
+    "prof": {
+      "Name": [
+        "Defensive",
+        "Defensive Rook Style Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Defensive is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1502": {
+    "id": 1502,
+    "prof": {
+      "Name": [
+        "Shelter",
+        "Shelter Rook Success Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Shelter is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1503": {
+    "id": 1503,
+    "prof": {
+      "Name": [
+        "Securities",
+        "Securities Rook Sway Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Securities is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1504": {
+    "id": 1504,
+    "prof": {
+      "Name": [
+        "Warnings",
+        "Warnings Rook Tangle Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Warnings is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1505": {
+    "id": 1505,
+    "prof": {
+      "Name": [
+        "Blocking / Defending / Guarding / Protecting / Self-defence",
+        "Blocking / Defending / Guarding / Protecting / Self-defence",
+        ""
+      ],
+      "Description": "Like a river carving its path through stone, Blocking / Defending / Guarding / Protecting / Self-defence is the relentless pursuit of prudence.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "17"
+        ],
+        "Genres": [
+          "17"
+        ],
+        "Eras": [
+          "17"
+        ],
+        "Types": [
+          "Test"
+        ]
+      }
+    }
+  },
+  "1506": {
+    "id": 1506,
+    "prof": {
+      "Name": [
+        "Restful",
+        "Restful Rook Tone Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Restful is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1507": {
+    "id": 1507,
+    "prof": {
+      "Name": [
+        "Retreat",
+        "Retreat Rook Turn Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Retreat is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1508": {
+    "id": 1508,
+    "prof": {
+      "Name": [
+        "Defence",
+        "Defence Rook Twisted Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Defence is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1509": {
+    "id": 1509,
+    "prof": {
+      "Name": [
+        "Guarding",
+        "Guarding Rook Test Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Guarding is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1510": {
+    "id": 1510,
+    "prof": {
+      "Name": [
+        "Guarded Locations",
+        "Guarded Location Rook Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Guarded Locations is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1511": {
+    "id": 1511,
+    "prof": {
+      "Name": [
+        "Protective",
+        "Protective Rook Nimbed Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Protective is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1512": {
+    "id": 1512,
+    "prof": {
+      "Name": [
+        "Safety",
+        "Safety Rook Umbral Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Safety is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1513": {
+    "id": 1513,
+    "prof": {
+      "Name": [
+        "Guardian",
+        "Guardian Rook Persona Proficiency",
+        ""
+      ],
+      "Description": "Restful and avoidant, Guardian is a defensive posture that seeks sanctuary and the preservation of self through strategic withdrawal.",
+      "Tags": {
+        "Facets": [
+          "17",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1514": {
+    "id": 1514,
+    "prof": {
+      "Name": [
+        "Blameless",
+        "Blameless Sin Zero Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Blameless is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1515": {
+    "id": 1515,
+    "prof": {
+      "Name": [
+        "Irreproachable",
+        "Irreproachable Sin Zero Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Irreproachable is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1516": {
+    "id": 1516,
+    "prof": {
+      "Name": [
+        "Clean Locations",
+        "Clean Location Sin Zero Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Clean Locations is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1517": {
+    "id": 1517,
+    "prof": {
+      "Name": [
+        "Innocent",
+        "Innocent Sin Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Innocent is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1518": {
+    "id": 1518,
+    "prof": {
+      "Name": [
+        "Stainless",
+        "Stainless Sin Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Stainless is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1519": {
+    "id": 1519,
+    "prof": {
+      "Name": [
+        "Pristine Locations",
+        "Pristine Location Sin Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Pristine Locations is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1520": {
+    "id": 1520,
+    "prof": {
+      "Name": [
+        "Honourable",
+        "Honourable Sin Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Honourable is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1521": {
+    "id": 1521,
+    "prof": {
+      "Name": [
+        "Reliable",
+        "Reliable Sin Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Reliable is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1522": {
+    "id": 1522,
+    "prof": {
+      "Name": [
+        "Celebrated Locations",
+        "Celebrated Location Sin Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Celebrated Locations is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1523": {
+    "id": 1523,
+    "prof": {
+      "Name": [
+        "Respectable",
+        "Respectable Sin Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Respectable is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1524": {
+    "id": 1524,
+    "prof": {
+      "Name": [
+        "Seemly",
+        "Seemly Sin Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Seemly is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1525": {
+    "id": 1525,
+    "prof": {
+      "Name": [
+        "Nice Locations",
+        "Nice Location Sin Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Nice Locations is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1526": {
+    "id": 1526,
+    "prof": {
+      "Name": [
+        "Decent",
+        "Decent Sin Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Decent is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1527": {
+    "id": 1527,
+    "prof": {
+      "Name": [
+        "Reputable",
+        "Reputable Sin Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Reputable is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1528": {
+    "id": 1528,
+    "prof": {
+      "Name": [
+        "Seemly Locations",
+        "Seemly Location Sin Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Seemly Locations is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1529": {
+    "id": 1529,
+    "prof": {
+      "Name": [
+        "Tempted",
+        "Tempted Sin Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Tempted is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1530": {
+    "id": 1530,
+    "prof": {
+      "Name": [
+        "Intriguing",
+        "Intriguing Sin Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Intriguing is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1531": {
+    "id": 1531,
+    "prof": {
+      "Name": [
+        "Appealing Locations",
+        "Appealing Location Sin Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Appealing Locations is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1532": {
+    "id": 1532,
+    "prof": {
+      "Name": [
+        "Improper",
+        "Improper Sin Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Improper is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1533": {
+    "id": 1533,
+    "prof": {
+      "Name": [
+        "Inaccurate",
+        "Inaccurate Sin Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Inaccurate is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1534": {
+    "id": 1534,
+    "prof": {
+      "Name": [
+        "Shady Locations",
+        "Shady Location Sin Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Shady Locations is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1535": {
+    "id": 1535,
+    "prof": {
+      "Name": [
+        "Shameless",
+        "Shameless Sin High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Shameless is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1536": {
+    "id": 1536,
+    "prof": {
+      "Name": [
+        "Bold",
+        "Bold Sin High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Bold is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1537": {
+    "id": 1537,
+    "prof": {
+      "Name": [
+        "Prominent Locations",
+        "Prominent Location Sin High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Prominent Locations is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1538": {
+    "id": 1538,
+    "prof": {
+      "Name": [
+        "Immoral",
+        "Immoral Sin High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Immoral is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1539": {
+    "id": 1539,
+    "prof": {
+      "Name": [
+        "Salacious",
+        "Salacious Sin High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Salacious is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1540": {
+    "id": 1540,
+    "prof": {
+      "Name": [
+        "Delightful Locations",
+        "Delightful Location Sin High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Delightful Locations is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1541": {
+    "id": 1541,
+    "prof": {
+      "Name": [
+        "Criminal",
+        "Criminal Sin Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Criminal is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1542": {
+    "id": 1542,
+    "prof": {
+      "Name": [
+        "Illegal",
+        "Illegal Sin Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Illegal is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1543": {
+    "id": 1543,
+    "prof": {
+      "Name": [
+        "Illicit Locations",
+        "Illicit Location Sin Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Illicit Locations is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1544": {
+    "id": 1544,
+    "prof": {
+      "Name": [
+        "Nefarious",
+        "Nefarious Sin Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Nefarious is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1545": {
+    "id": 1545,
+    "prof": {
+      "Name": [
+        "Heinous",
+        "Heinous Sin Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Heinous is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1546": {
+    "id": 1546,
+    "prof": {
+      "Name": [
+        "Treacherous Locations",
+        "Treacherous Location Sin Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Treacherous Locations is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1547": {
+    "id": 1547,
+    "prof": {
+      "Name": [
+        "Sinful",
+        "Sinful Sin Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Sinful is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1548": {
+    "id": 1548,
+    "prof": {
+      "Name": [
+        "Unholy",
+        "Unholy Sin Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Unholy is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1549": {
+    "id": 1549,
+    "prof": {
+      "Name": [
+        "Profane Locations",
+        "Profane Location Sin Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Profane Locations is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1550": {
+    "id": 1550,
+    "prof": {
+      "Name": [
+        "Schadenfreude",
+        "Schadenfreude Sin Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Schadenfreude is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

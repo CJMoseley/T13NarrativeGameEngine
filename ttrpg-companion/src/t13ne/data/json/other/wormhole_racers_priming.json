@@ -1,0 +1,40 @@
+{
+  "game": "Wormhole Racers",
+  "setting": {
+    "era": "Future",
+    "genre": "Sci-Fi Racing",
+    "description": "High-stakes racing within hyper-spatial vortex structures (Wormholes) across the galaxy."
+  },
+  "mechanics": {
+    "propulsion": "Rolling on energy shields inside vortexes",
+    "vortex_geometry": "Three-dimensional tubes that shake, writhe, and respond to racers",
+    "ship_roles": ["Pilot", "Navigator", "Engineer", "Weapons Operator"],
+    "fuels": ["Methane", "Fissile Matter", "Fusion Matter", "Darkmatter", "Zero-point energy", "Protomatter"]
+  },
+  "lore": {
+    "ftl_method": "Wormholes generated between Subspace Vortex Generators",
+    "major_species": [
+      { "name": "Humans", "description": "Diverse and colorful inhabitants of many worlds." },
+      { "name": "Theriocephalics", "description": "Human-animal DNA blends engineered for harsh environments." },
+      { "name": "Drones", "description": "Splinter species of human-created AIs." },
+      { "name": "The First", "description": "Primordial race, now extinct or ascended." },
+      { "name": "Draco", "description": "Uplifted dinosaurs created by The First." },
+      { "name": "Kathorri", "description": "Crystalline creatures living on ice worlds." },
+      { "name": "Vemlek", "description": "Artificial robotic species split by moral stances (Vemleki vs Vemleko)." },
+      { "name": "Grenk", "description": "Biological servitor race with excellent memory." },
+      { "name": "Thf-Thf", "description": "Sentient gas hive-mind." }
+    ],
+    "leagues": [
+      { "name": "Planetary Leagues", "scope": "Inhabited planets, small ships." },
+      { "name": "Local System League", "scope": "Orbiting the star and planets." },
+      { "name": "Local Interstellar League", "scope": "Larger ships, includes molecular scoops." },
+      { "name": "Rim Leagues", "scope": "Wild, outer rim, few restrictions." },
+      { "name": "Arm / Spur Leagues", "scope": "Tightly controlled, armor required." },
+      { "name": "Core League", "scope": "Small, nimble ships, no weaponry allowed." }
+    ]
+  },
+  "intro_narrative": {
+    "opening": "The roar of the Vortex Generator fills the cockpit as your old, beat-up ship aligns for the jump.",
+    "goal": "Climb the ranks from a rookie in a backwater league to a legend in the Core League."
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 5,
+    "Name": "Nourished Waiting",
+    "Entity": "&#19908;",
+    "Logical": 23,
+    "Trigrams": [
+      0,
+      5
+    ],
+    "Hexagram_Text": "Hsu, Nourished While Waiting (or just Waiting), is symbolic of Patience. Whatever is going to happen will take time, and you can either wait nervously, or patiently. The watched pot never boils, but if you do something else, you will never have enough time before it boils dry.",
+    "Unchanging": "When you do not take an action or are in GRT (and it would be your turn) you may pull and play Incarna Boon Doubled Reduced Ordeal Cards to reduce RT and GRT.",
+    "Line1": "Waiting in the Meadow",
+    "Line2": "Waiting on the Beach",
+    "Line3": "Waiting in Mud",
+    "Line4": "Waiting in Blood",
+    "Line5": "Waiting With Food &amp; Drink",
+    "Line6": "Waiting In The Pit"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you wait for another, display patience, or don’t use an available action in combat",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "others have to wait for you",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "you begin any Ordeal",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yin",
+        "Condition": "you observe, while you wait, and do not speak",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yin",
+        "Condition": "you are in GRT",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yang",
+        "Condition": "you wait while Wounded",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yin",
+        "Condition": "you try to make the best of a bad situation",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yang",
+        "Condition": "you trust in others, accept help, or find a middle way",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Nourish Waiting Quest is one that is about self-discipline and self-control. An opportunity will present itself, but the Quester must be ready and prepared. If they act before the opportunity presents itself on their Quest you will face unnecessary dangers and obstacles that could have been avoided by patience and preparation.",
+    "Quest_Complete": "The Quest that ends on the Nourished Waiting Hexagram indicates a Quest that is so gruelling and such hard work that the Quester is expected to need time to rest and recover after it has finished.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester should have some sense that something bad is going to happen, this may be a sense of foreboding or a specific warning, but the danger is still some distance away. If the Quester worries about this coming danger, makes plans or tries to stall it this adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test, instead if the Quester ignores the warning and works on as normal then they may add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "Danger approaches, disagreements and unrest fester beneath the surface, and the Quester becomes a subject for speculation, gossip and slander. If the Quester can rise above and ignore what people are saying about them then they may avoid adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The Quester has acted too soon in some regard, as though they ran into the mud at the first sign of a ship on the horizon. This has them stuck behind some Hurdle, Obstacle or suffering from a Failure Level or two. Only extreme patience, waiting for that boat to arrive, will allow them to add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester is trapped, perhaps caught in mud, captured by some enemy, or pinned down by a siege. Nothing you can do will release this trap at this time, accept the situation and await some change. Any attempt to escape, complain or change the situation will add an additional Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "There is some celebration that the Quester is invited to (and may even be the guest of honour at). However, the Quester must move on after this feast, any delay will add a Failure Level, Obstacle or Hurdle to their Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester may be trapped, or stuck, often by their own indecision. Three routes or pieces of advice are offered, one of which will add a Success Level to their Test or Ordeal, the other two will add a Failure Level, Hurdle or Obstacle instead.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "All beings have need of nourishment from above. But the gift of food comes in its own time, and for this one must wait. This hexagram shows the clouds in the heavens, giving rain to refresh all that grows and to provide mankind with food and drink. The rain will come in its own time. We cannot make it come; we have to wait for it. The idea of waiting is further suggested by the attributes of the two trigrams--strength within, danger in from. Strength in the face of danger does not plunge ahead but bides its time, whereas weakness in the face of danger grows agitated and has not the patience to wait.",
+    "The_Image": {
+      "text": "Clouds rise up to heaven:\nThe image of WAITING.\nThus the superior man eats and drinks,\nIs joyous and of good cheer.",
+      "comments": "When clouds rise in the sky, it is a sign that it will rain. There is nothing to do but to wait until after the rain falls. It is the same in life when destiny is at work. We should not worry and seek to shape the future by interfering in things before the time is ripe. We should quietly fortify the body with food and drink and the mind with gladness and good cheer. Fate comes when it will, and thus we are ready."
+    },
+    "The_Judgment": {
+      "text": "WAITING. If you are sincere,\nYou have light and success.\nPerseverance brings good fortune.\nIt furthers one to cross the great water.",
+      "comments": "Waiting is not mere empty hoping. It has the inner certainty of reaching the goal. Such certainty alone gives that light which leads to success. This leads to the perseverance that brings good fortune and bestows power to cross the great water. One is faced with a danger that has to be overcome. Weakness and impatience can do nothing. Only a strong man can stand up to his fate, for his inner security enables him to endure to the end. This strength shows itself in uncompromising truthfulness [with himself]. It is only when we have the courage to face things exactly as they are, without any sort of self-deception or illusion, that a light will develop out of events, by which the path to success may be recognized. This recognition must be followed by resolute and persevering action. For only the man who goes to meet his fate resolutely is equipped to deal with it adequately. Then he will be able to cross the great water--that is to say, he will be capable of making the necessary decision and of surmounting the danger."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Waiting in the meadow.\nIT furthers one to abide in what endures.\nNo blame.",
+        "comments": "The danger is not yet close. One is still waiting on the open plain. Conditions are still simple, yet there is a feeling of something impending. One must continue to lead a regular life as long as possible. Only in this way does one guard against a premature waste of strength, keep free of blame and error that would become a source of weakness later on."
+      },
+      "2": {
+        "text": "Waiting on the sand.\nThere is some gossip.\nThe end brings good fortune.",
+        "comments": "The danger gradually comes closer. Sand is near the bank of the river, and the water means danger. Disagreements crop up. General unrest can easily develop in such times, and we lay the blame on one another. He who stays calm will succeed in making things go well in the end. Slander will be silenced if we do not gratify it with injured retorts."
+      },
+      "3": {
+        "text": "Waiting in the mud\nBrings about the arrival of the enemy.",
+        "comments": "Mud is no place for waiting, since it is already being washed by the water of the stream. Instead of having gathered strength to cross the stream at one try, one has made a premature start that has got him no farther than the muddy bank. Such an unfavorable position invites enemies from without, who naturally take advantage of it. Caution and a sense of the seriousness of the situation are all that can keep one from injury."
+      },
+      "4": {
+        "text": "Waiting in blood.\nGet out of the pit.",
+        "comments": "The situation is extremely dangerous. IT is of utmost gravity now--a matter of life and death. Bloodshed seems imminent. There is no going forward or backward; we are cut off as if in a pit. Now we must simply stand fast and let fate take its course. This composure, which keeps us from aggravating the trouble by anything we might do, is the only way of getting out of the dangerous pit."
+      },
+      "5": {
+        "text": "Waiting at meat and drink.\nPerseverance brings good fortune.",
+        "comments": "Even in the midst of danger there come intervals of peace when things go relatively well. If we possess enough inner strength, we shall take advantage of these intervals to fortify ourselves for renewed struggle. We must know how to enjoy the moment without being deflected from the goal, for perseverance is needed to remain victorious. This is true in public life as well; it is not possible to achieve everything all at once. The height of wisdom is to allow people enough recreation to quicken pleasure in their work until the task is completed. Herein lies the secret of the whole hexagram. It differs from Chin OBSTRUCTION\n\n39, in the fact that in this instance, while waiting, we are sure of our cause and therefore do not lose the serenity born of inner cheerfulness."
+      },
+      "6": {
+        "text": "One falls into the pit.\nThree uninvited guests arrive.\nHonor them, and in the end there will be good fortune.",
+        "comments": "The waiting is over; the danger can no longer be averted. One falls into the pit and must yield to the inevitable. Everything seems to have been in vain. But precisely in this extremity things take an unforeseen turn. Without a move on one's own part, there is outside intervention. At first one cannot be sure of its meaning: is it rescue or is it destruction? A person in this situation must keep his mind alert and not withdraw into himself with a sulky gesture of refusal, but must greet the new turn with respect. Thus he ultimately escapes the danger, and all goes well. Even happy turns of fortune often come in a form that at first seems strange to us."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Nourished Waiting'. Internalize this core philosophy: All beings have need of nourishment from above. But the gift of food comes in its own time, and for this one must wait. This hexagram shows the clouds in the heavens, giving rain to refresh all that grows and to provide mankind with food and drink. The rain will come in its own time. We cannot make it come; we have to wait for it. The idea of waiting is further suggested by the attributes of the two trigrams--strength within, danger in from. Strength in the face of danger does not plunge ahead... Your current worldview is: \"Hsu, Nourished While Waiting (or just Waiting), is symbolic of Patience. Whatever is going to happen will take time, and you can either wait nervously, or patiently. The watched pot never boils, but if you do something else, you will never have enough time before it boils dry.\". Let your choices be subtly driven by these conditions: you wait for another, display patience, or don’t use an available action in combat, others have to wait for you. When interacting, mirror the wisdom found in the commentary: \"Waiting is not mere empty hoping. It has the inner certainty of reaching the goal. Such certainty alone gives that light which leads to success. This leads to the perseverance that brings good fortune and bestows power to cross the great water. One is faced with a danger that has to be overcome....\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Nourished Waiting'. The primary quest objective is: The Nourish Waiting Quest is one that is about self-discipline and self-control. An opportunity will present itself, but the Quester must be ready and prepared. If they act before the opportunity presents itself on their Quest you will face unnecessary dangers and obstacles that could have been avoided by patience and preparation.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: When clouds rise in the sky, it is a sign that it will rain. There is nothing to do but to wait until after the rain falls. It is the same in life when destiny is at work. We should not worry and seek to shape the future by interfering in things before the time is ripe. We should quietly fortify the body with food and drink and the mind with gladness and good cheer. Fate comes when it will, and... Use the following line-specific challenges to pace the story: The Quester should have some sense that something bad is going to happen, this may be a sense of foreboding or a specific warning, but the danger is still some distance away. If the Quester worries about this coming danger, makes plans or tries to stall it this adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test, instead if the Quester ignores the warning and works on as normal then they may add a Success Level instead. | Danger approaches, disagreements and unrest fester beneath the surface, and the Quester becomes a subject for speculation, gossip and slander. If the Quester can rise above and ignore what people are saying about them then they may avoid adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test. | The Quester has acted too soon in some regard, as though they ran into the mud at the first sign of a ship on the horizon. This has them stuck behind some Hurdle, Obstacle or suffering from a Failure Level or two. Only extreme patience, waiting for that boat to arrive, will allow them to add a Success Level instead. | The Quester is trapped, perhaps caught in mud, captured by some enemy, or pinned down by a siege. Nothing you can do will release this trap at this time, accept the situation and await some change. Any attempt to escape, complain or change the situation will add an additional Hurdle, Obstacle or Failure Level to their Ordeal or Test. | There is some celebration that the Quester is invited to (and may even be the guest of honour at). However, the Quester must move on after this feast, any delay will add a Failure Level, Obstacle or Hurdle to their Test or Ordeal. | The Quester may be trapped, or stuck, often by their own indecision. Three routes or pieces of advice are offered, one of which will add a Success Level to their Test or Ordeal, the other two will add a Failure Level, Hurdle or Obstacle instead.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Waiting in the Meadow): Mirror the internal state described in the commentary: \"The danger is not yet close. One is still waiting on the open plain. Conditions are still simple, yet there is a feeling of something impending. One must continue to lead a regular life as long as possible. Only in this way does one guard against a...\" Your actions should be framed by the goal: you begin any Ordeal.",
+        "Plot": "Plot Complication Line 1 (Waiting in the Meadow): Introduce a challenge based on the interpretation: \"The danger is not yet close. One is still waiting on the open plain. Conditions are still simple, yet there is a feeling of something impending. One must continue to lead a regular life as long as possible. Only in this way does one guard against a...\" The specific quest objective for this stage is: The Quester should have some sense that something bad is going to happen, this may be a sense of foreboding or a specific warning, but the danger is still some distance away. If the Quester worries about this coming danger, makes plans or tries to stall it this adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test, instead if the Quester ignores the warning and works on as normal then they may add a Success Level instead."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Waiting on the Beach): Mirror the internal state described in the commentary: \"The danger gradually comes closer. Sand is near the bank of the river, and the water means danger. Disagreements crop up. General unrest can easily develop in such times, and we lay the blame on one another. He who stays calm will succeed in making...\" Your actions should be framed by the goal: you observe, while you wait, and do not speak.",
+        "Plot": "Plot Complication Line 2 (Waiting on the Beach): Introduce a challenge based on the interpretation: \"The danger gradually comes closer. Sand is near the bank of the river, and the water means danger. Disagreements crop up. General unrest can easily develop in such times, and we lay the blame on one another. He who stays calm will succeed in making...\" The specific quest objective for this stage is: Danger approaches, disagreements and unrest fester beneath the surface, and the Quester becomes a subject for speculation, gossip and slander. If the Quester can rise above and ignore what people are saying about them then they may avoid adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Waiting in Mud): Mirror the internal state described in the commentary: \"Mud is no place for waiting, since it is already being washed by the water of the stream. Instead of having gathered strength to cross the stream at one try, one has made a premature start that has got him no farther than the muddy bank. Such an...\" Your actions should be framed by the goal: you are in GRT.",
+        "Plot": "Plot Complication Line 3 (Waiting in Mud): Introduce a challenge based on the interpretation: \"Mud is no place for waiting, since it is already being washed by the water of the stream. Instead of having gathered strength to cross the stream at one try, one has made a premature start that has got him no farther than the muddy bank. Such an...\" The specific quest objective for this stage is: The Quester has acted too soon in some regard, as though they ran into the mud at the first sign of a ship on the horizon. This has them stuck behind some Hurdle, Obstacle or suffering from a Failure Level or two. Only extreme patience, waiting for that boat to arrive, will allow them to add a Success Level instead."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Waiting in Blood): Mirror the internal state described in the commentary: \"The situation is extremely dangerous. IT is of utmost gravity now--a matter of life and death. Bloodshed seems imminent. There is no going forward or backward; we are cut off as if in a pit. Now we must simply stand fast and let fate take its...\" Your actions should be framed by the goal: you wait while Wounded.",
+        "Plot": "Plot Complication Line 4 (Waiting in Blood): Introduce a challenge based on the interpretation: \"The situation is extremely dangerous. IT is of utmost gravity now--a matter of life and death. Bloodshed seems imminent. There is no going forward or backward; we are cut off as if in a pit. Now we must simply stand fast and let fate take its...\" The specific quest objective for this stage is: The Quester is trapped, perhaps caught in mud, captured by some enemy, or pinned down by a siege. Nothing you can do will release this trap at this time, accept the situation and await some change. Any attempt to escape, complain or change the situation will add an additional Hurdle, Obstacle or Failure Level to their Ordeal or Test."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Waiting With Food &amp; Drink): Mirror the internal state described in the commentary: \"Even in the midst of danger there come intervals of peace when things go relatively well. If we possess enough inner strength, we shall take advantage of these intervals to fortify ourselves for renewed struggle. We must know how to enjoy the moment...\" Your actions should be framed by the goal: you try to make the best of a bad situation.",
+        "Plot": "Plot Complication Line 5 (Waiting With Food &amp; Drink): Introduce a challenge based on the interpretation: \"Even in the midst of danger there come intervals of peace when things go relatively well. If we possess enough inner strength, we shall take advantage of these intervals to fortify ourselves for renewed struggle. We must know how to enjoy the moment...\" The specific quest objective for this stage is: There is some celebration that the Quester is invited to (and may even be the guest of honour at). However, the Quester must move on after this feast, any delay will add a Failure Level, Obstacle or Hurdle to their Test or Ordeal."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Waiting In The Pit): Mirror the internal state described in the commentary: \"The waiting is over; the danger can no longer be averted. One falls into the pit and must yield to the inevitable. Everything seems to have been in vain. But precisely in this extremity things take an unforeseen turn. Without a move on one's own...\" Your actions should be framed by the goal: you trust in others, accept help, or find a middle way.",
+        "Plot": "Plot Complication Line 6 (Waiting In The Pit): Introduce a challenge based on the interpretation: \"The waiting is over; the danger can no longer be averted. One falls into the pit and must yield to the inevitable. Everything seems to have been in vain. But precisely in this extremity things take an unforeseen turn. Without a move on one's own...\" The specific quest objective for this stage is: The Quester may be trapped, or stuck, often by their own indecision. Three routes or pieces of advice are offered, one of which will add a Success Level to their Test or Ordeal, the other two will add a Failure Level, Hurdle or Obstacle instead."
+      }
+    }
+  }
+}

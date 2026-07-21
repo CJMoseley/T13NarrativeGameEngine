@@ -1,0 +1,1446 @@
+{
+  "1951": {
+    "id": 1951,
+    "prof": {
+      "Name": [
+        "Amazed",
+        "Amazed Zeal Negative Emotion Proficiency",
+        "astonished, surprised, bewildered, stunned, dazed"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Amazed is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1952": {
+    "id": 1952,
+    "prof": {
+      "Name": [
+        "Shocked",
+        "Shocked Zeal Negative Emotion Proficiency",
+        "stunned, staggered, appalled, outraged, dazed"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Shocked is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1953": {
+    "id": 1953,
+    "prof": {
+      "Name": [
+        "Enthusiastic",
+        "Enthusiastic Zeal Positive Emotion Proficiency",
+        "eager, animated, lively, keen, fervent"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Enthusiastic is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1954": {
+    "id": 1954,
+    "prof": {
+      "Name": [
+        "Ardent",
+        "Ardent Zeal Positive Emotion Proficiency",
+        "passionate, fervent, zeal, intense, eager"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Ardent is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1955": {
+    "id": 1955,
+    "prof": {
+      "Name": [
+        "Ecstatic",
+        "Ecstatic Zeal Positive Emotion Proficiency",
+        "joyful, elated, rapturous, blissful, overjoyed"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Ecstatic is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1956": {
+    "id": 1956,
+    "prof": {
+      "Name": [
+        "Move",
+        "Move Zeal Action Proficiency",
+        "motion, transit, travel, activity, shift"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Move is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1957": {
+    "id": 1957,
+    "prof": {
+      "Name": [
+        "Leap",
+        "Leap Zeal Attack Proficiency",
+        "jump, spring, bound, vault, hop"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Leap is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1958": {
+    "id": 1958,
+    "prof": {
+      "Name": [
+        "Manoeuvre",
+        "Manoeuvre Zeal Critical Proficiency",
+        "movement, tactic, strategy, operation, exercise"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Manoeuvre is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1959": {
+    "id": 1959,
+    "prof": {
+      "Name": [
+        "Meddler",
+        "Meddler Zeal Core Proficiency",
+        "interferer, busybody, intruder, prying, intrusive"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Meddler is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1960": {
+    "id": 1960,
+    "prof": {
+      "Name": [
+        "Engine",
+        "Engine Zeal Descendants Proficiency",
+        "motor, machine, mechanism, power, drive"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Engine is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1961": {
+    "id": 1961,
+    "prof": {
+      "Name": [
+        "Potent",
+        "Potent Zeal Edge Proficiency",
+        "powerful, strong, mighty, vigorous, forceful"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Potent is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1962": {
+    "id": 1962,
+    "prof": {
+      "Name": [
+        "Potent",
+        "Potent Zeal Glow Proficiency",
+        "powerful, strong, mighty, vigorous, forceful"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Potent is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1963": {
+    "id": 1963,
+    "prof": {
+      "Name": [
+        "Zealous",
+        "Zealous Zeal Failure Proficiency",
+        "fervent, divine, sublime, passionate, ardent"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Zealous is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1964": {
+    "id": 1964,
+    "prof": {
+      "Name": [
+        "Haywire",
+        "Haywire Zeal Fumble Proficiency",
+        "chaotic, erratic, uncontrolled, wild, out-of-control"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Haywire is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1965": {
+    "id": 1965,
+    "prof": {
+      "Name": [
+        "Intensity",
+        "Intensity Zeal Gnarl Proficiency",
+        "strength, power, force, vigor, passion"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Intensity is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1966": {
+    "id": 1966,
+    "prof": {
+      "Name": [
+        "Shows",
+        "Shows Zeal Herald Proficiency",
+        "displays, exhibits, spectacles, performances"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Shows is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1967": {
+    "id": 1967,
+    "prof": {
+      "Name": [
+        "Devotion",
+        "Devotion Zeal Hitch Proficiency",
+        "dedication, loyalty, commitment, love, allegiance"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Devotion is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1968": {
+    "id": 1968,
+    "prof": {
+      "Name": [
+        "Urgency",
+        "Urgency Zeal Hurdle Proficiency",
+        "haste, pressure, necessity, importance, drive"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Urgency is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1969": {
+    "id": 1969,
+    "prof": {
+      "Name": [
+        "Faith",
+        "Faith Zeal Incarna Proficiency",
+        "belief, trust, confidence, conviction, creed"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Faith is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1970": {
+    "id": 1970,
+    "prof": {
+      "Name": [
+        "Vehicle Locations",
+        "Vehicle Location Zeal Location Proficiency",
+        "craft, transport, carrier, machine, vessel"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Vehicle Locations is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1971": {
+    "id": 1971,
+    "prof": {
+      "Name": [
+        "Motive",
+        "Motive Zeal Lore Proficiency",
+        "reason, drive, intent, purpose, rationale"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Motive is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1972": {
+    "id": 1972,
+    "prof": {
+      "Name": [
+        "Celestial",
+        "Celestial Zeal Monster Proficiency",
+        "heavenly, divine, spiritual, stellar, ethereal"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Celestial is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1973": {
+    "id": 1973,
+    "prof": {
+      "Name": [
+        "Skipping",
+        "Skipping Zeal Narration Proficiency",
+        "bypassing, leaping, avoiding, omitting, jumping"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Skipping is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1974": {
+    "id": 1974,
+    "prof": {
+      "Name": [
+        "Motivation",
+        "Motivation Zeal Narrative Moment Proficiency",
+        "drive, incentive, ambition, impulse, goal"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Motivation is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1975": {
+    "id": 1975,
+    "prof": {
+      "Name": [
+        "Drive Ordeals",
+        "Drive Ordeal Zeal Ordeal Proficiency",
+        "impulse, motivation, surge, momentum, push"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Drive Ordeals is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1976": {
+    "id": 1976,
+    "prof": {
+      "Name": [
+        "Drives",
+        "Drives Zeal Psychosocial Proficiency",
+        "impulse, motivation, surge, momentum, push"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Drives is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1977": {
+    "id": 1977,
+    "prof": {
+      "Name": [
+        "Flee / Encourage / Protest",
+        "Flee / Encourage / Protest",
+        ""
+      ],
+      "Description": "In the hushed halls of Freedom, Flee / Encourage / Protest is the whispered secret of chaos.",
+      "Tags": {
+        "Facets": [
+          "23"
+        ],
+        "Scopes": [
+          "23"
+        ],
+        "Genres": [
+          "23"
+        ],
+        "Eras": [
+          "23"
+        ],
+        "Types": [
+          "Quest"
+        ]
+      }
+    }
+  },
+  "1978": {
+    "id": 1978,
+    "prof": {
+      "Name": [
+        "What",
+        "What Zeal Question Proficiency",
+        ""
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of What is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1979": {
+    "id": 1979,
+    "prof": {
+      "Name": [
+        "Withdrawn",
+        "Withdrawn Zeal Resolved Hitch Proficiency",
+        "detached, aloof, reserved, unsociable, isolated"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Withdrawn is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1980": {
+    "id": 1980,
+    "prof": {
+      "Name": [
+        "Drives",
+        "Drives Zeal Rule Proficiency",
+        "impulse, motivation, surge, momentum, push"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Drives is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1981": {
+    "id": 1981,
+    "prof": {
+      "Name": [
+        "Speed",
+        "Speed Zeal Style Proficiency",
+        "velocity, pace, celerity, swiftness, rapid"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Speed is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1982": {
+    "id": 1982,
+    "prof": {
+      "Name": [
+        "Boost",
+        "Boost Zeal Success Proficiency",
+        "increase, enhancement, uplift, advance, lift"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Boost is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1983": {
+    "id": 1983,
+    "prof": {
+      "Name": [
+        "Verve",
+        "Verve Zeal Sway Proficiency",
+        "energy, vigor, spirit, vitality, enthusiasm"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Verve is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1984": {
+    "id": 1984,
+    "prof": {
+      "Name": [
+        "Dynamic",
+        "Dynamic Zeal Tangle Proficiency",
+        "energetic, forceful, active, vibrant, potent"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Dynamic is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1985": {
+    "id": 1985,
+    "prof": {
+      "Name": [
+        "Accelerating / Believing / Determination / Driving / Enthusing / Faith / Self-belief / Suicide / Travelling",
+        "Accelerating / Believing / Determination / Driving / Enthusing / Faith / Self-belief / Suicide / Travelling",
+        ""
+      ],
+      "Description": "To wield Accelerating / Believing / Determination / Driving / Enthusing / Faith / Self-belief / Suicide / Travelling is to hold the very heart of Freedom, a power that shapes the tides of liberty.",
+      "Tags": {
+        "Facets": [
+          "23"
+        ],
+        "Scopes": [
+          "23"
+        ],
+        "Genres": [
+          "23"
+        ],
+        "Eras": [
+          "23"
+        ],
+        "Types": [
+          "Test"
+        ]
+      }
+    }
+  },
+  "1986": {
+    "id": 1986,
+    "prof": {
+      "Name": [
+        "Sincere",
+        "Sincere Zeal Tone Proficiency",
+        "genuine, honest, heartfelt, earnest, true"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Sincere is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1987": {
+    "id": 1987,
+    "prof": {
+      "Name": [
+        "Ex Machina",
+        "Ex Machina Zeal Turn Proficiency",
+        ""
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Ex Machina is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1988": {
+    "id": 1988,
+    "prof": {
+      "Name": [
+        "Beliefs",
+        "Beliefs Zeal Twisted Proficiency",
+        ""
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Beliefs is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1989": {
+    "id": 1989,
+    "prof": {
+      "Name": [
+        "Driving",
+        "Driving Zeal Test Proficiency",
+        ""
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Driving is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1990": {
+    "id": 1990,
+    "prof": {
+      "Name": [
+        "Zealous",
+        "Zealous Zeal Annex Root Proficiency",
+        "fervent, divine, sublime, passionate, ardent"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Zealous is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1991": {
+    "id": 1991,
+    "prof": {
+      "Name": [
+        "Speed",
+        "Speed Zeal Nimbed Proficiency",
+        "velocity, pace, celerity, swiftness, rapid"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Speed is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1992": {
+    "id": 1992,
+    "prof": {
+      "Name": [
+        "Following",
+        "Following Zeal Umbral Proficiency",
+        "pursuing, observing, complying, adhering, trailing"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Following is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1993": {
+    "id": 1993,
+    "prof": {
+      "Name": [
+        "Fanatic",
+        "Fanatic Zeal Persona Proficiency",
+        "extremist, enthusiast, devotee, zealot, radical"
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Fanatic is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2000": {
+    "id": 2000,
+    "prof": {
+      "Name": [
+        "Pleasure-dome Locations",
+        "Pleasure-dome Location Sin Location Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Pleasure-dome Locations is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2001": {
+    "id": 2001,
+    "prof": {
+      "Name": [
+        "Scandal",
+        "Scandal Sin Lore Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Scandal is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2002": {
+    "id": 2002,
+    "prof": {
+      "Name": [
+        "Villain",
+        "Villain Sin Monster Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Villain is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2003": {
+    "id": 2003,
+    "prof": {
+      "Name": [
+        "Unreliable",
+        "Unreliable Sin Narration Proficiency",
+        "untrustworthy, irregular, curious, fickle, shaky"
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Unreliable is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2004": {
+    "id": 2004,
+    "prof": {
+      "Name": [
+        "Dark-side",
+        "Dark-side Sin Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Dark-side is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2005": {
+    "id": 2005,
+    "prof": {
+      "Name": [
+        "Wrongdoing Ordeals",
+        "Wrongdoing Ordeal Sin Ordeal Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Wrongdoing Ordeals is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2006": {
+    "id": 2006,
+    "prof": {
+      "Name": [
+        "Fiend",
+        "Fiend Sin Persona Proficiency",
+        ""
+      ],
+      "Description": "Immoral and unreliable, the selfish pursuit of Fiend is a dark path driven by desire and the subversion of common decency.",
+      "Tags": {
+        "Facets": [
+          "18",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

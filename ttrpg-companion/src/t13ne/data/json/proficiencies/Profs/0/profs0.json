@@ -1,0 +1,1442 @@
+{
+  "1": {
+    "id": 1,
+    "prof": {
+      "Name": [
+        "Plain",
+        "Plain Awe Zero Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Plain represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2": {
+    "id": 2,
+    "prof": {
+      "Name": [
+        "Featureless Locations",
+        "Featureless Location Awe Zero Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Featureless Locations represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3": {
+    "id": 3,
+    "prof": {
+      "Name": [
+        "Boring",
+        "Boring Awe Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Boring represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "4": {
+    "id": 4,
+    "prof": {
+      "Name": [
+        "Bland",
+        "Bland Awe Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Bland represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "5": {
+    "id": 5,
+    "prof": {
+      "Name": [
+        "Stark Locations",
+        "Stark Location Awe Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Stark Locations represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "6": {
+    "id": 6,
+    "prof": {
+      "Name": [
+        "Dull",
+        "Dull Awe Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Dull represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "7": {
+    "id": 7,
+    "prof": {
+      "Name": [
+        "Stale",
+        "Stale Awe Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Stale represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "8": {
+    "id": 8,
+    "prof": {
+      "Name": [
+        "Dismal Locations",
+        "Dismal Location Awe Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Dismal Locations represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "9": {
+    "id": 9,
+    "prof": {
+      "Name": [
+        "Unimpressive",
+        "Unimpressive Awe Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Unimpressive represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "10": {
+    "id": 10,
+    "prof": {
+      "Name": [
+        "Conventional",
+        "Conventional Awe Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Conventional represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "11": {
+    "id": 11,
+    "prof": {
+      "Name": [
+        "Flat Locations",
+        "Flat Location Awe Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Flat Locations represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "12": {
+    "id": 12,
+    "prof": {
+      "Name": [
+        "Unremarkable",
+        "Unremarkable Awe Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Unremarkable represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "13": {
+    "id": 13,
+    "prof": {
+      "Name": [
+        "Everyday",
+        "Everyday Awe Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Everyday represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "14": {
+    "id": 14,
+    "prof": {
+      "Name": [
+        "Sloped Locations",
+        "Sloped Location Awe Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Sloped Locations represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "15": {
+    "id": 15,
+    "prof": {
+      "Name": [
+        "Humdrum",
+        "Humdrum Awe Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Humdrum represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "16": {
+    "id": 16,
+    "prof": {
+      "Name": [
+        "Regular Locations",
+        "Regular Location Awe Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Regular Locations represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "17": {
+    "id": 17,
+    "prof": {
+      "Name": [
+        "Attractive",
+        "Attractive Awe Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Attractive represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "18": {
+    "id": 18,
+    "prof": {
+      "Name": [
+        "Remarkable",
+        "Remarkable Awe Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Remarkable represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "19": {
+    "id": 19,
+    "prof": {
+      "Name": [
+        "Pretty Locations",
+        "Pretty Location Awe Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Pretty Locations represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "20": {
+    "id": 20,
+    "prof": {
+      "Name": [
+        "Imposing",
+        "Imposing Awe High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Imposing represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "21": {
+    "id": 21,
+    "prof": {
+      "Name": [
+        "Impressive",
+        "Impressive Awe High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Impressive represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "22": {
+    "id": 22,
+    "prof": {
+      "Name": [
+        "Striking Locations",
+        "Striking Location Awe High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Striking Locations represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "23": {
+    "id": 23,
+    "prof": {
+      "Name": [
+        "Beautiful",
+        "Beautiful Awe High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Beautiful represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "24": {
+    "id": 24,
+    "prof": {
+      "Name": [
+        "Stylish",
+        "Stylish Awe High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Stylish represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "25": {
+    "id": 25,
+    "prof": {
+      "Name": [
+        "Splendid Locations",
+        "Splendid Location Awe High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Splendid Locations represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "26": {
+    "id": 26,
+    "prof": {
+      "Name": [
+        "Amazing",
+        "Amazing Awe High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Amazing represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "27": {
+    "id": 27,
+    "prof": {
+      "Name": [
+        "Inspired",
+        "Inspired Awe High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Inspired represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "28": {
+    "id": 28,
+    "prof": {
+      "Name": [
+        "Stunning Locations",
+        "Stunning Location Awe High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Stunning Locations represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "29": {
+    "id": 29,
+    "prof": {
+      "Name": [
+        "Formidable",
+        "Formidable Awe Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Formidable represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "30": {
+    "id": 30,
+    "prof": {
+      "Name": [
+        "Great-looking",
+        "Great-looking Awe Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Great-looking represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "31": {
+    "id": 31,
+    "prof": {
+      "Name": [
+        "Daunting Locations",
+        "Daunting Location Awe Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Daunting Locations represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "32": {
+    "id": 32,
+    "prof": {
+      "Name": [
+        "Entrancing",
+        "Entrancing Awe Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Entrancing represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "33": {
+    "id": 33,
+    "prof": {
+      "Name": [
+        "Fascinating",
+        "Fascinating Awe Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Fascinating represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "34": {
+    "id": 34,
+    "prof": {
+      "Name": [
+        "Delightful Locations",
+        "Delightful Location Awe Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Delightful Locations represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "35": {
+    "id": 35,
+    "prof": {
+      "Name": [
+        "Menacing",
+        "Menacing Awe Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Menacing represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "36": {
+    "id": 36,
+    "prof": {
+      "Name": [
+        "Alarming",
+        "Alarming Awe Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Alarming represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "37": {
+    "id": 37,
+    "prof": {
+      "Name": [
+        "Ominous Locations",
+        "Ominous Location Awe Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Ominous Locations represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "38": {
+    "id": 38,
+    "prof": {
+      "Name": [
+        "Sublime",
+        "Sublime Awe Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Sublime represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "39": {
+    "id": 39,
+    "prof": {
+      "Name": [
+        "Majestic",
+        "Majestic Awe Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Majestic represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "40": {
+    "id": 40,
+    "prof": {
+      "Name": [
+        "Glorious Locations",
+        "Glorious Location Awe Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Glorious Locations represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "41": {
+    "id": 41,
+    "prof": {
+      "Name": [
+        "Fear",
+        "Fear Awe Negative Emotion Proficiency",
+        "alarm, dread, terror, apprehension, fright"
+      ],
+      "Description": "In the hushed halls of Awe, Fear represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "42": {
+    "id": 42,
+    "prof": {
+      "Name": [
+        "Terror",
+        "Terror Awe Negative Emotion Proficiency",
+        "dread, panic, horror, fright, alarm"
+      ],
+      "Description": "In the hushed halls of Awe, Terror represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "43": {
+    "id": 43,
+    "prof": {
+      "Name": [
+        "Horror",
+        "Horror Awe Negative Emotion Proficiency",
+        "terror, revulsion, dread, aversion, loathing"
+      ],
+      "Description": "In the hushed halls of Awe, Horror represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "44": {
+    "id": 44,
+    "prof": {
+      "Name": [
+        "Fascination",
+        "Fascination Awe Positive Emotion Proficiency",
+        "interest, allure, attraction, enchantment, spell"
+      ],
+      "Description": "In the hushed halls of Awe, Fascination represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "45": {
+    "id": 45,
+    "prof": {
+      "Name": [
+        "Wonder",
+        "Wonder Awe Positive Emotion Proficiency",
+        "amazement, awe, surprise, marvel, curiosity"
+      ],
+      "Description": "In the hushed halls of Awe, Wonder represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "46": {
+    "id": 46,
+    "prof": {
+      "Name": [
+        "Reverence",
+        "Reverence Awe Positive Emotion Proficiency",
+        "veneration, respect, awe, devotion, adoration"
+      ],
+      "Description": "In the hushed halls of Awe, Reverence represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "47": {
+    "id": 47,
+    "prof": {
+      "Name": [
+        "Entrancing Action",
+        "Entrancing Action",
+        ""
+      ],
+      "Description": "A shield against the storm, Entrancing Action is the quiet strength that endures the onslaught of inspiration.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "48": {
+    "id": 48,
+    "prof": {
+      "Name": [
+        "Duck Attack",
+        "Duck Attack",
+        ""
+      ],
+      "Description": "A seed of inspiration planted in the fertile ground of Awe, Duck Attack is the flower that blooms in adversity.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "49": {
+    "id": 49,
+    "prof": {
+      "Name": [
+        "Flashy Critical",
+        "Flashy Critical",
+        ""
+      ],
+      "Description": "The threads of Awe are woven into the tapestry of Flashy Critical, a story of reverence told in silence.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "50": {
+    "id": 50,
+    "prof": {
+      "Name": [
+        "Enhancer Core",
+        "Enhancer Core",
+        ""
+      ],
+      "Description": "The art of Enhancer Core is a delicate dance with inspiration, a step in the grand ballet of Awe.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

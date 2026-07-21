@@ -1,0 +1,202 @@
+[
+    {
+        "id": "T13-NE-GEOMETRY-INTERVALRATIOS-1",
+        "data": {
+            "Name": "Unison",
+            "Ratio": 1,
+            "Effect": 1,
+            "Interval": 0,
+            "Description": "Unison is the same note twice, as such it has no harmonics or dissonance, which gives it no power, and no emotional content. The relationship has a smoothness and peace to it, but has will and insistence too."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-INTERVALRATIOS-2",
+        "data": {
+            "Name": "Minor-Second",
+            "Ratio": 1.0666666666666667,
+            "Effect": -4,
+            "Interval": 1,
+            "Description": "The Minor-Second is a difference of one semi-tone. This gives is a melancholic relationship, displeasurable, dull and dark, there is a certain weak, uptight, anguish to it. This is a reltionship that has humiliation and pain baked in. There is a sense of roughness, derangement, shyness or illness to this relationship, that may express as occasional fear or anger."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-INTERVALRATIOS-3",
+        "data": {
+            "Name": "Major-Second",
+            "Ratio": 1.125,
+            "Effect": -2,
+            "Interval": 2,
+            "Description": "The Major-Second is a difference of a whole tone. This reltionship is dissonant, a pain-filled torment, but has hints of stability, which gives it tension &mdash; a sense of longing and eagerness. This is the sensation of asking a question and waiting for an anwer, there is a sense of motion and vulgarity to this. It is a wish and a displeasure simultaneously."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-INTERVALRATIOS-4",
+        "data": {
+            "Name": "Minor-Third",
+            "Ratio": 1.2,
+            "Effect": 1,
+            "Interval": 3,
+            "Description": "The Minor-Third is a difference of three semi-tones, and brings a tragic dissonance with a sad harmony. This is a deeply emotional and sometimes tragic relationship, perhaps painful at times, but still sweet. It is a lament of discouraging sadness wrapped in heavy shadows."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-INTERVALRATIOS-5",
+        "data": {
+            "Name": "Major-Third",
+            "Ratio": 1.25,
+            "Effect": 3,
+            "Interval": 4,
+            "Description": "The Major-Third is a difference of two tones, and this brings a rich harmonic strength. This is usually a bright, joyful relationship, full of positive energy and laughter, but that same energy and strength cannot become furious, quite due to the inherent hope and balance."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-INTERVALRATIOS-6",
+        "data": {
+            "Name": "Perfect Fourth",
+            "Ratio": 1.3333333333333333,
+            "Effect": 4,
+            "Interval": 5,
+            "Description": "The Perfect Fourth is a difference of five semi-tones and has a perfection about it (hence the name). This is a strong, bouyant relationship, but is not without active tension, pathos and sad times, but they serve to make it stronger. The Perfect Fourth can be firm, hard and cold, even indifferent to emotions, but it is always successful."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-INTERVALRATIOS-7",
+        "data": {
+            "Name": "Tri-tone",
+            "Ratio": 1.3888888888888888,
+            "Effect": -5,
+            "Interval": 6,
+            "Description": "The Tritone, or Devil's interval, is three whole tones wide and has a violent dissonance to it. The relationship is filled with mysterious tension, restless, anxious, excitement and uncertainty, it has suprises, a soup\u00e7on of pretension, more than an air of destructive danger, and devilishly spicy heat. All of which can be terrible or great depending upon the context."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-INTERVALRATIOS-8",
+        "data": {
+            "Name": "Perfect Fifth",
+            "Ratio": 1.5,
+            "Effect": 5,
+            "Interval": 7,
+            "Description": "The Perfect Fifth, stretches over seven semi-tones and is the epitome of opposites attracting, hence the Perfect in the name. The relationship is completely stable, healthy, and pleasurable, it is not prone to any fights or internally caused sadness, as it is internally cheerful, gentle and bright. Loving, certain and calm, it is the essence of balance, but can feel hollow."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-INTERVALRATIOS-9",
+        "data": {
+            "Name": "Minor-Sixth",
+            "Ratio": 1.6,
+            "Effect": -1,
+            "Interval": 8,
+            "Description": "The Minor-Sixth and its four tone interval brings some dark dissonance to the relationship. There is anguish, upsets, discontentment and instability to the relationship, it floats between pleasure and pain, and can be stressful and strained or shadowed and pitiful."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-INTERVALRATIOS-10",
+        "data": {
+            "Name": "Major-Sixth",
+            "Ratio": 1.6666666666666667,
+            "Effect": 3,
+            "Interval": 9,
+            "Description": "The Major-Sixth and its nine semi-tone interval brings tension as the relationship wants to resolve to Perfection, but cannot. There is a sweetness to the relationship, but no stability, it is a radiant will-they won't-they situation that can satisfy in the short term, but lacking true stability may fly apart at anytime."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-INTERVALRATIOS-11",
+        "data": {
+            "Name": "Minor-Seventh",
+            "Ratio": 1.7777777777777777,
+            "Effect": -2,
+            "Interval": 10,
+            "Description": "The Minor-Seventh is marked by the five whole tones of interval. This is a sad, painful, and unsatisifying relationship, but that has warmth, romance and love. Such relationships may leave both partners bewildered, strained and stressed when they are over, but while they are happening it is just a dynamic exaltation of love."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-INTERVALRATIOS-12",
+        "data": {
+            "Name": "Major-Seventh",
+            "Ratio": 1.875,
+            "Effect": -4,
+            "Interval": 11,
+            "Description": "The Major-Seventh is an eleven semi-tone interval (or one semi-tone down from the octave). It is a bitter, tense relationship, often gloomy, wicked, and prideful and generable disagreeable, but it can be marked by some optimism, pride, hope and rebellion that lends it brightness."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-INTERVALRATIOS-13",
+        "data": {
+            "Name": "Octave",
+            "Ratio": 2,
+            "Effect": 5,
+            "Interval": 12,
+            "Description": "A whole Octave seperates these notes and this brings perfect consonance. The relationship is generally an easy, stable one, but it is not without energy and strength, in fact the Octave relationship can be too intense, too strong, a majesty that becomes solemn or evern severe sometimes. It is courageous and heroic while being stable and solid."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-INTERVALRATIOS-14",
+        "data": {
+            "Name": "Minor-Ninth",
+            "Ratio": 2.1333333333333333,
+            "Effect": -3,
+            "Interval": 13,
+            "Description": "The Minor-Ninth is marked by an interval of an Octave plus a semitone. This is a relationship with sadness and just a hint of chaos."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-INTERVALRATIOS-15",
+        "data": {
+            "Name": "Major-Ninth",
+            "Ratio": 2.25,
+            "Effect": -1,
+            "Interval": 14,
+            "Description": "The Major Ninth brings a dissonance that adds spice to the relationship. This is the not quite harmony of a brass band, it can feel slick and bitter."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-INTERVALRATIOS-16",
+        "data": {
+            "Name": "Minor-Tenth",
+            "Ratio": 2.4,
+            "Effect": -2,
+            "Interval": 15,
+            "Description": "The Minor Tenth or more often Augmented-Ninth is perhaps the saddest of the Ninths, as a hint of consonance joins the dissonance. It is darkness wrapped in tears, and adds a sorrow to any group it joins. "
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-INTERVALRATIOS-17",
+        "data": {
+            "Name": "Major Tenth",
+            "Ratio": 2.5,
+            "Effect": 3,
+            "Interval": 16,
+            "Description": "The Major Tenth or Diminished Eleventh has a strong relationship with the Major Third with additional brightness. This is the interval of a joyous, harmonious, relationship filled with laughter."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-INTERVALRATIOS-18",
+        "data": {
+            "Name": "Perfect-Eleventh",
+            "Ratio": 2.6666666666666665,
+            "Effect": 5,
+            "Interval": 17,
+            "Description": "The Perfect Eleventh is a Perfect Fourth an Octave apart. Which raises the energy of the Fourth creating a more positive and emotional feeling to the relationship."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-INTERVALRATIOS-19",
+        "data": {
+            "Name": "Augmented-Eleventh",
+            "Ratio": 2.7777777777777777,
+            "Effect": -6,
+            "Interval": 18,
+            "Description": "The Augmented Eleventh or Diminished Twelfth is a Tritone and an Octave apart. This raises the dissonance and creates a more troubled and dangerous relationship that includes threats of abuse and death."
+        }
+    },
+    {
+        "id": "T13-NE-GEOMETRY-INTERVALRATIOS-20",
+        "data": {
+            "Name": "Perfect-Twelfth",
+            "Ratio": 3,
+            "Effect": 3,
+            "Interval": 19,
+            "Description": "The Perfect Twelfth is a Perfect Fifth above the Octave and carries a stability and bright consonance, that sadly is less stable than the Perfect Fifth. Unlike the Fifth the these relationships are weaker, while still cheerful, open and light, and as such can feel superficial, hollow and stark."
+        }
+    }
+]

@@ -1,0 +1,191 @@
+/* Wormhole Racers UI Styles */
+
+/* Import a suitable sci-fi font */
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@400;600&display=swap');
+
+.ui-message-window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 350px;
+    max-width: 500px;
+    background-color: rgba(10, 20, 30, 0.85);
+    border: 1px solid #337ab7;
+    color: #e0e8f0; /* Slightly brighter for better contrast */
+    font-family: 'Jura', sans-serif;
+    font-size: 0.9rem; /* PS2/GameCube aesthetic - slightly smaller, sharper text */
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 18px rgba(51, 122, 183, 0.6); /* Slightly stronger shadow */
+    border-radius: 3px;
+    z-index: 1000;
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.8); /* Stronger text shadow for legibility */
+    display: flex;
+    flex-direction: column;
+}
+
+.ui-message-title-bar {
+    background-color: #1a2a3a;
+    padding: 8px 12px;
+    cursor: move;
+    border-bottom: 1px solid #337ab7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.ui-message-title-bar-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.ui-message-title-bar-button {
+    background: none;
+    border: 1px solid #337ab7;
+    color: #cce;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    font-family: sans-serif; /* Use a generic font for symbols, not the UI font */
+    font-size: 16px;
+    line-height: 22px; /* Match height for vertical centering */
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.ui-message-title-bar-button:hover {
+    background-color: #337ab7;
+    color: #fff;
+}
+
+.ui-message-content {
+    padding: 15px;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.ui-message-content h3 {
+    color: #66aaff;
+    margin-top: 0;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #334;
+    padding-bottom: 5px;
+}
+
+/* T13 ContentBox modular styles */
+.t13ne-textbox {
+    border: 1px solid rgba(102, 170, 255, 0.3);
+    background: rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 2px;
+}
+
+.t13ne-textbox-title {
+    font-weight: bold;
+    color: #66aaff;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.t13ne-textbox-description {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.t13ne-textbox-type {
+    font-size: 0.7rem;
+    color: #88ccff;
+    opacity: 0.7;
+    text-align: right;
+}
+
+.t13ne-textbox-rules {
+    font-size: 0.75rem;
+    font-style: italic;
+    color: #aaa;
+    margin-top: 5px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    padding-top: 4px;
+}
+
+.ui-message-content p {
+    line-height: 1.6;
+    margin: 8px 0;
+}
+
+.ui-message-content strong {
+    color: #88ccff;
+    font-weight: normal;
+}
+
+.ui-message-footer {
+    padding: 10px;
+    background-color: #1a2a3a;
+    border-top: 1px solid #337ab7;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.ui-message-action-button {
+    background-color: #225588;
+    border: 1px solid #337ab7;
+    color: #cce;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-family: 'Jura', sans-serif;
+    text-transform: uppercase;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.ui-message-action-button:hover {
+    background-color: #337ab7;
+    box-shadow: 0 0 8px rgba(51, 122, 183, 0.7);
+}
+
+/* Generic UI Button Style */
+.ui-button {
+    background-color: rgba(34, 85, 136, 0.8);
+    border: 1px solid #337ab7;
+    color: #cce;
+    padding: 8px 15px;
+    margin: 5px;
+    cursor: pointer;
+    font-family: 'Jura', sans-serif;
+    text-transform: uppercase;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+}
+
+.ui-button:hover {
+    background-color: #337ab7;
+    box-shadow: 0 0 8px rgba(51, 122, 183, 0.7);
+}
+
+/* Style for main menu buttons */
+.menu-button {
+    background-color: rgba(34, 85, 136, 0.7);
+    border: 1px solid #337ab7;
+    color: #cce;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    font-family: 'Jura', sans-serif;
+    text-transform: uppercase;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    display: block; /* Make buttons take up full width in the menu */
+    width: calc(100% - 10px); /* Adjust for margin */
+    text-align: center;
+}
+
+.menu-button:hover {
+    background-color: #337ab7;
+    box-shadow: 0 0 8px rgba(51, 122, 183, 0.7);
+    color: #fff;
+}

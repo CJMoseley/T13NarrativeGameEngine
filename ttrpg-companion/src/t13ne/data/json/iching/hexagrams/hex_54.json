@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 54,
+    "Name": "Young Maiden Marries",
+    "Entity": "&#19957;",
+    "Logical": 11,
+    "Trigrams": [
+      1,
+      3
+    ],
+    "Hexagram_Text": "Kui Mei, Young Maiden Marries (or Propriety or Conversion), is about accepting your role, subordinating yourself to the will of another or accepting your fate. The Young Bride must find her place in the ancestral home of the husband, especially if she is not the first wife (or worse is a secret lover). We are all out of place, and finding our footing in some situations.",
+    "Unchanging": "You may add Incarna Draw (Boon Double Reduced) Success Levels to any action you are tasked with.",
+    "Line1": "The Concubine",
+    "Line2": "The Straying Husband",
+    "Line3": "The Slave Wife",
+    "Line4": "Long Engagement",
+    "Line5": "A Princess Marries Beneath Her",
+    "Line6": "An Impious Couple"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you are respectful, tactful, secretive or careful around another Character",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "whenever you do what you want, throw caution to the wind, or ignore the consequences",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "you hide or adopt a low profile",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yin",
+        "Condition": "you concentrate on your issues",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yang",
+        "Condition": "you act dignified or unsatisfied",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yin",
+        "Condition": "you act optimistic or patient",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you act unrealistic or ambitiously",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yang",
+        "Condition": "you act impious, unethical, immoral, godless or irreverent",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Young Maiden Marries Quest describes a situation like a love-triangle, although it need not be a sexual or romantic relationship, simply a shifting dynamic between three sides. The Quest includes social problems that are common experiences, misunderstandings, disagreements, miscommunication all swirl around the Quester, complicating their relationships and generally making life miserable. The Quest will often centre around Social Ordeals and Tests rather than physical ones.",
+    "Quest_Complete": "The Quest that ends on the Young Maiden Marries Hexagram ends with the Quester isolated from most of their usual companions, often in a strange place, and occasionally imprisoned. This isolation may prove beneficial in time, the time spent among strangers may lead to new alliances and learning new proficiencies or skills depending upon the Quest, of course.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester must find their place within the social order, or relationship, this can be quite difficult, for example, does being an old school friend of the king make you more or less important than his generals? Getting this wrong will add a Hurdle, Obstacle or Failure Level to the Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester is abandoned or ignored by a companion or ally that they trusted. This, of course, adds a Hurdle, Obstacle, or Failure Level to the Ordeal or Test. If the Quester remains loyal to their missing companion, they will return bringing a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The Quester is placed in a situation where to continue they must abase themselves, humiliating themselves, by taking a position that is beneath them, such as a low-paid job or even indentured servitude or slavery. Failure to humiliate themselves will add a Failure Level, Obstacle or Hurdle to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester must wait, potentially for years for their chance to achieve what they want. If they demonstrate the necessary patience they will add a Success Level to their Test or Ordeal. Trying to move on too early will add a Failure Level, Obstacle or Hurdle immediately.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester is placed in a position that is beneath them, however if they accept this more humble position with grace, humility and honesty then they will add a Success Level to their Test or Ordeal. Refusal to accept this role will add a Failure Level, Obstacle or Hurdle.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester may notice that someone that they interact with is only going through the motions, or is impious or irreverent. If the Quester responds in kind then they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. ",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "Above we have Chên, the eldest son, and below, Tui, the youngest daughter. The man leads and the girl follows him in gladness. The picture is that of the entrance of the girl into her husband's house. In all, there are four hexagrams depicting the relationship between husband and wife. Hsien, INFLUENCE,\n\n31, describes the attraction that a young couple have for each other; Hêng, DURATION\n\n32, portrays the permanent relationships of marriage; Chien, DEVELOPMENT\n\n53, reflects the protracted, ceremonious procedures attending THE MARRYING MAIDEN, shows a young girl under the guidance of an older man who marries her.",
+    "The_Image": {
+      "text": "Thunder over the lake:\n\nThe image of THE MARRYING MAIDEN.\n\nThus the superior man\nUnderstands the transitory\nIn the light of the eternity of the end.",
+      "comments": "Thunder stirs the water of the lake, which follows it in shimmering waves. This symbolizes the girl who follows the man of her choice. But every relationship between individuals bears within it the danger that wrong turns may be taken, leading to endless misunderstandings and disagreements. Therefore it is necessary constantly to remain mindful of the end. If we permit ourselves to drift along, we come together and are parted again as the day may determine. If on the other hand a man fixes his mind on an end that endures, he will succeed in avoiding the reefs that confront the closer relationships of people."
+    },
+    "The_Judgment": {
+      "text": "THE MARRYING MAIDEN.\nUndertakings bring misfortune.\n\nNothing that would further.",
+      "comments": "A girl who is taken into the family, but not as the chief wife, must behave with special caution and reserve. She must not take it upon herself to supplant the mistress of the house, for that would mean disorder and lead to untenable relationships. The same is true of all voluntary relationships between human beings. While legally regulated relationships based on personal inclination depend in the long run entirely on tactful reserve. Affection as the essential principle of relatedness is of the greatest importance in all relationships in the world. For the union of heaven and earth is the origin of the whole of nature. Among human beings likewise, spontaneous affection is the all-inclusive principle of union."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "The marrying maiden as a concubine.\nA lame man who is able to tread.\nUndertakings bring good fortune.",
+        "comments": "The princess of ancient China maintained a fixed order of rank among the court ladies, who were subordinated to the queen as are younger sisters to the eldest. Frequently they came from the family of the queen, who herself led them to her husband. The meaning is that a girl entering a family with the consent of the wife will not rank outwardly as the equal of the latter but will withdraw modestly into the background. However, if she understands how to fit herself into the pattern of things, her position will be entirely satisfactory, and she will feel sheltered in the love of the husband to whom she bears children. The same meaning is brought out in the relationships between officials. A man may enjoy the personal friendship of a prince and be taken into his confidence. Outwardly this man must keep tactfully in the background behind the official ministers of state, but, although he is hampered by this status, as if he were lame, he can nevertheless accomplish something through the kindliness of his nature."
+      },
+      "2": {
+        "text": "A one-eyed man who is able to see.",
+        "comments": "The perseverance of a solitary man furthers.\n\nHere the situation is that of a girl married to a man who has disappointed her. Man and wife ought to work together like a pair of eyes. Here the girl is left behind in loneliness; the man of her choice either has become unfaithful or has died. But she does not lost the inner light of loyalty. Thought the other eye is gone, she maintains her loyalty even in loneliness."
+      },
+      "3": {
+        "text": "The marrying maiden as a slave.",
+        "comments": "She marries as a concubine.\n\nA girl who is in a lowly position and finds no husband may, in some circumstances, still win shelter as a concubine. This pictures the situation of a person who longs too much for joys that cannot be obtained in the usual way. He enters upon a situation not altogether compatible with self-esteem. Neither judgment nor warning is added to this line; it merely lays bare the actual situation, so that everyone may draw a lesson from it."
+      },
+      "4": {
+        "text": "The marrying maiden draws out the allotted time.\nA late marriage comes in due course.",
+        "comments": "The girl is virtuous. She does not wish to throw herself away, and allows the customary time for marriage to slip by. However, there is no harm in this; she is rewarded for her purity and, even though belatedly, finds the husband intended for her."
+      },
+      "5": {
+        "text": "The sovereign I gave his daughter in marriage.",
+        "comments": "The embroidered garments of the princess\nWere not as gorgeous\nAs those of the serving maid.\n\nThe moon that is nearly full\nBrings good fortune.\n\nThe sovereign I is T'ang the Completer. This ruler decreed that the imperial princesses should be subordinated to their husbands in the same manner as other women (cf. Hexagram\n\n11, six in the fifth place). The emperor does not wait for a suitor to woo his daughter but gives her in marriage when he sees fit. Therefore it is in accord with custom for the girl's family to take the initiative here. We see here a girl of aristocratic birth who marries a man of modest circumstances and understands how to adapt herself with grace to the new situation. She is free of all vanity of outer adornment, and forgetting her rank in her marriage, takes a place below that of her husband, just as the moon, before it is quite full, does not directly face the sun."
+      },
+      "6": {
+        "text": "The woman holds the basket, but there are no fruits in it.",
+        "comments": "The man stabs the sheep, but no blood flows.\n\nNothing that acts to further.\n\nAt the sacrifice to the ancestors, the woman had to present harvest offerings in a basket, while the man slaughtered the sacrificial animal with his own hand. Here the ritual is only superficially fulfilled; the woman takes an empty basket and the man stabs a sheep slaughtered beforehand-solely to preserve the forms. This impious, irreverent attitude bodes no good for a marriage."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Young Maiden Marries'. Internalize this core philosophy: Above we have Chên, the eldest son, and below, Tui, the youngest daughter. The man leads and the girl follows him in gladness. The picture is that of the entrance of the girl into her husband's house. In all, there are four hexagrams depicting the relationship between husband and wife. Hsien, INFLUENCE,\n\n31, describes the attraction that a young couple have for each other; Hêng, DURATION\n\n32, portrays the permanent relationships of marriage; Chien, DEVELOPMENT\n\n53, reflects the protracted,... Your current worldview is: \"Kui Mei, Young Maiden Marries (or Propriety or Conversion), is about accepting your role, subordinating yourself to the will of another or accepting your fate. The Young Bride must find her place in the ancestral home of the husband, especially if she is not the first wife (or worse is a secret lover). We are all out of place, and finding our footing in some situations.\". Let your choices be subtly driven by these conditions: you are respectful, tactful, secretive or careful around another Character, whenever you do what you want, throw caution to the wind, or ignore the consequences. When interacting, mirror the wisdom found in the commentary: \"A girl who is taken into the family, but not as the chief wife, must behave with special caution and reserve. She must not take it upon herself to supplant the mistress of the house, for that would mean disorder and lead to untenable relationships. The same is true of all voluntary relationships...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Young Maiden Marries'. The primary quest objective is: The Young Maiden Marries Quest describes a situation like a love-triangle, although it need not be a sexual or romantic relationship, simply a shifting dynamic between three sides. The Quest includes social problems that are common experiences, misunderstandings, disagreements, miscommunication all swirl around the Quester, complicating their relationships and generally making life miserable. The Quest will often centre around Social Ordeals and Tests rather than physical ones.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: Thunder stirs the water of the lake, which follows it in shimmering waves. This symbolizes the girl who follows the man of her choice. But every relationship between individuals bears within it the danger that wrong turns may be taken, leading to endless misunderstandings and disagreements. Therefore it is necessary constantly to remain mindful of the end. If we permit ourselves to drift along,... Use the following line-specific challenges to pace the story: The Quester must find their place within the social order, or relationship, this can be quite difficult, for example, does being an old school friend of the king make you more or less important than his generals? Getting this wrong will add a Hurdle, Obstacle or Failure Level to the Ordeal or Test. | The Quester is abandoned or ignored by a companion or ally that they trusted. This, of course, adds a Hurdle, Obstacle, or Failure Level to the Ordeal or Test. If the Quester remains loyal to their missing companion, they will return bringing a Success Level instead. | The Quester is placed in a situation where to continue they must abase themselves, humiliating themselves, by taking a position that is beneath them, such as a low-paid job or even indentured servitude or slavery. Failure to humiliate themselves will add a Failure Level, Obstacle or Hurdle to the Test or Ordeal. | The Quester must wait, potentially for years for their chance to achieve what they want. If they demonstrate the necessary patience they will add a Success Level to their Test or Ordeal. Trying to move on too early will add a Failure Level, Obstacle or Hurdle immediately. | The Quester is placed in a position that is beneath them, however if they accept this more humble position with grace, humility and honesty then they will add a Success Level to their Test or Ordeal. Refusal to accept this role will add a Failure Level, Obstacle or Hurdle. | The Quester may notice that someone that they interact with is only going through the motions, or is impious or irreverent. If the Quester responds in kind then they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. ",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (The Concubine): Mirror the internal state described in the commentary: \"The princess of ancient China maintained a fixed order of rank among the court ladies, who were subordinated to the queen as are younger sisters to the eldest. Frequently they came from the family of the queen, who herself led them to her husband....\" Your actions should be framed by the goal: you hide or adopt a low profile.",
+        "Plot": "Plot Complication Line 1 (The Concubine): Introduce a challenge based on the interpretation: \"The princess of ancient China maintained a fixed order of rank among the court ladies, who were subordinated to the queen as are younger sisters to the eldest. Frequently they came from the family of the queen, who herself led them to her husband....\" The specific quest objective for this stage is: The Quester must find their place within the social order, or relationship, this can be quite difficult, for example, does being an old school friend of the king make you more or less important than his generals? Getting this wrong will add a Hurdle, Obstacle or Failure Level to the Ordeal or Test."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (The Straying Husband): Mirror the internal state described in the commentary: \"The perseverance of a solitary man furthers.\n\nHere the situation is that of a girl married to a man who has disappointed her. Man and wife ought to work together like a pair of eyes. Here the girl is left behind in loneliness; the man of her choice...\" Your actions should be framed by the goal: you concentrate on your issues.",
+        "Plot": "Plot Complication Line 2 (The Straying Husband): Introduce a challenge based on the interpretation: \"The perseverance of a solitary man furthers.\n\nHere the situation is that of a girl married to a man who has disappointed her. Man and wife ought to work together like a pair of eyes. Here the girl is left behind in loneliness; the man of her choice...\" The specific quest objective for this stage is: The Quester is abandoned or ignored by a companion or ally that they trusted. This, of course, adds a Hurdle, Obstacle, or Failure Level to the Ordeal or Test. If the Quester remains loyal to their missing companion, they will return bringing a Success Level instead."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (The Slave Wife): Mirror the internal state described in the commentary: \"She marries as a concubine.\n\nA girl who is in a lowly position and finds no husband may, in some circumstances, still win shelter as a concubine. This pictures the situation of a person who longs too much for joys that cannot be obtained in the...\" Your actions should be framed by the goal: you act dignified or unsatisfied.",
+        "Plot": "Plot Complication Line 3 (The Slave Wife): Introduce a challenge based on the interpretation: \"She marries as a concubine.\n\nA girl who is in a lowly position and finds no husband may, in some circumstances, still win shelter as a concubine. This pictures the situation of a person who longs too much for joys that cannot be obtained in the...\" The specific quest objective for this stage is: The Quester is placed in a situation where to continue they must abase themselves, humiliating themselves, by taking a position that is beneath them, such as a low-paid job or even indentured servitude or slavery. Failure to humiliate themselves will add a Failure Level, Obstacle or Hurdle to the Test or Ordeal."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Long Engagement): Mirror the internal state described in the commentary: \"The girl is virtuous. She does not wish to throw herself away, and allows the customary time for marriage to slip by. However, there is no harm in this; she is rewarded for her purity and, even though belatedly, finds the husband intended for her.\" Your actions should be framed by the goal: you act optimistic or patient.",
+        "Plot": "Plot Complication Line 4 (Long Engagement): Introduce a challenge based on the interpretation: \"The girl is virtuous. She does not wish to throw herself away, and allows the customary time for marriage to slip by. However, there is no harm in this; she is rewarded for her purity and, even though belatedly, finds the husband intended for her.\" The specific quest objective for this stage is: The Quester must wait, potentially for years for their chance to achieve what they want. If they demonstrate the necessary patience they will add a Success Level to their Test or Ordeal. Trying to move on too early will add a Failure Level, Obstacle or Hurdle immediately."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (A Princess Marries Beneath Her): Mirror the internal state described in the commentary: \"The embroidered garments of the princess\nWere not as gorgeous\nAs those of the serving maid.\n\nThe moon that is nearly full\nBrings good fortune.\n\nThe sovereign I is T'ang the Completer. This ruler decreed that the imperial princesses should be...\" Your actions should be framed by the goal: you act unrealistic or ambitiously.",
+        "Plot": "Plot Complication Line 5 (A Princess Marries Beneath Her): Introduce a challenge based on the interpretation: \"The embroidered garments of the princess\nWere not as gorgeous\nAs those of the serving maid.\n\nThe moon that is nearly full\nBrings good fortune.\n\nThe sovereign I is T'ang the Completer. This ruler decreed that the imperial princesses should be...\" The specific quest objective for this stage is: The Quester is placed in a position that is beneath them, however if they accept this more humble position with grace, humility and honesty then they will add a Success Level to their Test or Ordeal. Refusal to accept this role will add a Failure Level, Obstacle or Hurdle."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (An Impious Couple): Mirror the internal state described in the commentary: \"The man stabs the sheep, but no blood flows.\n\nNothing that acts to further.\n\nAt the sacrifice to the ancestors, the woman had to present harvest offerings in a basket, while the man slaughtered the sacrificial animal with his own hand. Here the...\" Your actions should be framed by the goal: you act impious, unethical, immoral, godless or irreverent.",
+        "Plot": "Plot Complication Line 6 (An Impious Couple): Introduce a challenge based on the interpretation: \"The man stabs the sheep, but no blood flows.\n\nNothing that acts to further.\n\nAt the sacrifice to the ancestors, the woman had to present harvest offerings in a basket, while the man slaughtered the sacrificial animal with his own hand. Here the...\" The specific quest objective for this stage is: The Quester may notice that someone that they interact with is only going through the motions, or is impious or irreverent. If the Quester responds in kind then they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. "
+      }
+    }
+  }
+}

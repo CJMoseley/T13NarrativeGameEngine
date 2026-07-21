@@ -1,0 +1,1449 @@
+{
+  "1051": {
+    "id": 1051,
+    "prof": {
+      "Name": [
+        "Corruptible",
+        "Corruptible Miasma Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Corruptible is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1052": {
+    "id": 1052,
+    "prof": {
+      "Name": [
+        "Unfair",
+        "Unfair Miasma Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Unfair is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1053": {
+    "id": 1053,
+    "prof": {
+      "Name": [
+        "Dusty Locations",
+        "Dusty Location Miasma Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Dusty Locations is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1054": {
+    "id": 1054,
+    "prof": {
+      "Name": [
+        "Sloppy",
+        "Sloppy Miasma Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Sloppy is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1055": {
+    "id": 1055,
+    "prof": {
+      "Name": [
+        "Reconditioned",
+        "Reconditioned Miasma Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Reconditioned is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1056": {
+    "id": 1056,
+    "prof": {
+      "Name": [
+        "Trashy Locations",
+        "Trashy Location Miasma Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Trashy Locations is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1057": {
+    "id": 1057,
+    "prof": {
+      "Name": [
+        "Dishevelled",
+        "Dishevelled Miasma High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Dishevelled is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1058": {
+    "id": 1058,
+    "prof": {
+      "Name": [
+        "Modified",
+        "Modified Miasma High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Modified is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1059": {
+    "id": 1059,
+    "prof": {
+      "Name": [
+        "Untidy Locations",
+        "Untidy Location Miasma High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Untidy Locations is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1060": {
+    "id": 1060,
+    "prof": {
+      "Name": [
+        "Sick",
+        "Sick Miasma High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Sick is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1061": {
+    "id": 1061,
+    "prof": {
+      "Name": [
+        "Filthy",
+        "Filthy Miasma High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Filthy is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1062": {
+    "id": 1062,
+    "prof": {
+      "Name": [
+        "Messy Locations",
+        "Messy Location Miasma High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Messy Locations is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1063": {
+    "id": 1063,
+    "prof": {
+      "Name": [
+        "Corrupted",
+        "Corrupted Miasma Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Corrupted is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1064": {
+    "id": 1064,
+    "prof": {
+      "Name": [
+        "Tainted",
+        "Tainted Miasma Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Tainted is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1065": {
+    "id": 1065,
+    "prof": {
+      "Name": [
+        "Polluted Locations",
+        "Polluted Location Miasma Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Polluted Locations is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1066": {
+    "id": 1066,
+    "prof": {
+      "Name": [
+        "Revolting",
+        "Revolting Miasma Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Revolting is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1067": {
+    "id": 1067,
+    "prof": {
+      "Name": [
+        "Rotten",
+        "Rotten Miasma Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Rotten is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1068": {
+    "id": 1068,
+    "prof": {
+      "Name": [
+        "Foul Locations",
+        "Foul Location Miasma Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Foul Locations is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1069": {
+    "id": 1069,
+    "prof": {
+      "Name": [
+        "Vile",
+        "Vile Miasma Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Vile is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1070": {
+    "id": 1070,
+    "prof": {
+      "Name": [
+        "Nasty",
+        "Nasty Miasma Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Nasty is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1071": {
+    "id": 1071,
+    "prof": {
+      "Name": [
+        "Repugnant Locations",
+        "Repugnant Location Miasma Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Repugnant Locations is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1072": {
+    "id": 1072,
+    "prof": {
+      "Name": [
+        "Sadness",
+        "Sadness Miasma Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Sadness is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1073": {
+    "id": 1073,
+    "prof": {
+      "Name": [
+        "Sorrow",
+        "Sorrow Miasma Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Sorrow is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1074": {
+    "id": 1074,
+    "prof": {
+      "Name": [
+        "Despair",
+        "Despair Miasma Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Despair is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1075": {
+    "id": 1075,
+    "prof": {
+      "Name": [
+        "Bemusement",
+        "Bemusement Miasma Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Bemusement is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1076": {
+    "id": 1076,
+    "prof": {
+      "Name": [
+        "Giddiness",
+        "Giddiness Miasma Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Giddiness is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1077": {
+    "id": 1077,
+    "prof": {
+      "Name": [
+        "Silliness",
+        "Silliness Miasma Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Silliness is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1078": {
+    "id": 1078,
+    "prof": {
+      "Name": [
+        "Poison",
+        "Poison Miasma Action Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Poison is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1079": {
+    "id": 1079,
+    "prof": {
+      "Name": [
+        "Toxin",
+        "Toxin Miasma Attack Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Toxin is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1080": {
+    "id": 1080,
+    "prof": {
+      "Name": [
+        "Bane",
+        "Bane Miasma Critical Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Bane is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1081": {
+    "id": 1081,
+    "prof": {
+      "Name": [
+        "Barber",
+        "Barber Miasma Core Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Barber is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1082": {
+    "id": 1082,
+    "prof": {
+      "Name": [
+        "Nasty",
+        "Nasty Miasma Descendants Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Nasty is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1083": {
+    "id": 1083,
+    "prof": {
+      "Name": [
+        "Contagious",
+        "Contagious Miasma Edge Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Contagious is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1084": {
+    "id": 1084,
+    "prof": {
+      "Name": [
+        "Contagious",
+        "Contagious Miasma Glow Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Contagious is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1085": {
+    "id": 1085,
+    "prof": {
+      "Name": [
+        "Foul Condition",
+        "Foul Condition Miasma Failure Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Foul Condition is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1086": {
+    "id": 1086,
+    "prof": {
+      "Name": [
+        "Nasty",
+        "Nasty Miasma Fumble Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Nasty is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1087": {
+    "id": 1087,
+    "prof": {
+      "Name": [
+        "Noxious",
+        "Noxious Miasma Gnarl Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Noxious is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1088": {
+    "id": 1088,
+    "prof": {
+      "Name": [
+        "Stink",
+        "Stink Miasma Herald Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Stink is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1089": {
+    "id": 1089,
+    "prof": {
+      "Name": [
+        "Corrupted",
+        "Corrupted Miasma Hitch Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Corrupted is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1090": {
+    "id": 1090,
+    "prof": {
+      "Name": [
+        "Affliction",
+        "Affliction Miasma Hurdle Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Affliction is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1091": {
+    "id": 1091,
+    "prof": {
+      "Name": [
+        "Poison/Potion",
+        "Poison/Potion",
+        ""
+      ],
+      "Description": "The tireless watchman on the soul's high tower, Poison/Potion is the silent guardian against the shadows of expertise.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Scopes": [
+          "12"
+        ],
+        "Genres": [
+          "12"
+        ],
+        "Eras": [
+          "12"
+        ],
+        "Types": [
+          "Incarna"
+        ]
+      }
+    }
+  },
+  "1092": {
+    "id": 1092,
+    "prof": {
+      "Name": [
+        "Fouled Locations",
+        "Fouled Location Miasma Location Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Fouled Locations is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1093": {
+    "id": 1093,
+    "prof": {
+      "Name": [
+        "Blot",
+        "Blot Miasma Lore Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Blot is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1094": {
+    "id": 1094,
+    "prof": {
+      "Name": [
+        "Mutant",
+        "Mutant Miasma Monster Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Mutant is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1095": {
+    "id": 1095,
+    "prof": {
+      "Name": [
+        "Pastiche",
+        "Pastiche Miasma Narration Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Pastiche is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1096": {
+    "id": 1096,
+    "prof": {
+      "Name": [
+        "Insomnia",
+        "Insomnia Miasma Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Insomnia is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1097": {
+    "id": 1097,
+    "prof": {
+      "Name": [
+        "Repugnant Locations",
+        "Repugnant Location Miasma Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Repugnant Locations is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1098": {
+    "id": 1098,
+    "prof": {
+      "Name": [
+        "Sickness",
+        "Sickness Miasma Psychosocial Proficiency",
+        ""
+      ],
+      "Description": "Eerie and unsettling, Sickness is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1099": {
+    "id": 1099,
+    "prof": {
+      "Name": [
+        "Sabotage / Poison / Corrupt",
+        "Sabotage / Poison / Corrupt",
+        ""
+      ],
+      "Description": "The ghost of a forgotten memory, Sabotage / Poison / Corrupt is the echo of control in the ruins of the past.",
+      "Tags": {
+        "Facets": [
+          "12"
+        ],
+        "Scopes": [
+          "12"
+        ],
+        "Genres": [
+          "12"
+        ],
+        "Eras": [
+          "12"
+        ],
+        "Types": [
+          "Quest"
+        ]
+      }
+    }
+  },
+  "1100": {
+    "id": 1100,
+    "prof": {
+      "Name": [
+        "Impossible",
+        "Impossible Miasma Question Proficiency",
+        "unattainable, absurd, impassable, unthinkable, hopeless"
+      ],
+      "Description": "Eerie and unsettling, Impossible is a pastiche of uncanny elements that linger in the shadows like an unwanted memory.",
+      "Tags": {
+        "Facets": [
+          "12",
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

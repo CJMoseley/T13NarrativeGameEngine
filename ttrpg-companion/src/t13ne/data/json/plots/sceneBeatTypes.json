@@ -1,0 +1,72 @@
+[
+    {
+        "Type": "Not a Scene",
+        "Description": "This Plot is not a Scene Demon for a Larger Story.",
+        "Rule": "This Plot is either too big to be a Scene, or is a Story in its own right.",
+        "Spread": "",
+        "Narrative_Meaning": "This is its own full Story or some larger Narrative such as an Arc, Volume, Epic or Cycle."
+    },
+    {
+        "Type": "Hook",
+        "Description": "Hooks hook a character into a Conflict making them into a Conflict Embodiment. A Hook offers a Character (or Group) a reason to get involved in the Story. This lets the Plot use the Conflict Facet of the Character to help build their Conflict Annex.",
+        "Rule": "Hooks require 2 additional cards. A card for the Hook, and one for the Hook Aspect, a combination of both creates the Hook Scene.",
+        "Spread": "Hook",
+        "Narrative_Meaning": "The Character begins with some agenda or preconception. The Plot complicates this agenda, via a Hook and Hook Aspect, often indicating that another already Hooked Embodiment will oppose the Character. This creates a question for the Character, will they accept the Hook or reject it?"
+    },
+    {
+        "Type": "Test",
+        "Description": "Some Scenes are nothing but a single Test, often with a lot of discussion around them. Tests are usually a single dice roll, like a Facet Test, and usually a Test of one of the Conflict Facets. ",
+        "Rule": "A single Test is one of the simplest of Scenes. A Ref should have some idea what the Difficulty is, what will occur on a pass, or a fail, and what a Stalemate or Borderline would look like. It is also useful to know what Failure Levels or Success Levels will do in the Test Scene. Occasionally Tests may be a single roll against an Opponent (such as the Villain). You can find example Tests in the Ordeal details for a card, so usually 1 card will be added for this Test.",
+        "Spread": "Test",
+        "Narrative_Meaning": "A Character encounters an Embodiment in the form of a Test. Which opposes the Character somehow, over something. The Character must choose how hard to commit themselves to the Test, and should be aware of the likely results (although not all the painful details). Passing or failing the Test is usually only important because of the repercussions for the Characters."
+    },
+    {
+        "Type": "Ordeal",
+        "Description": "Ordeals test Characters in a complex way (more than a single dice roll Facet Test). Ordeals can range from Low Stakes Ordeals (like doing the Crossword), to mixed Stakes Ordeals, such as solving a crossword puzzle, while exchanging gunfire with enemies, during a car chase. Action generally, and Fights in particular, involve an Ordeal. Ordeals are usually created by playing a number of cards to define everything about the Ordeal (from the Type, Stakes, Number of Obstacles you should draw and add, to a suggested action that could be taken, or a description of a Stage).",
+        "Rule": "The most complex of spreads. Additional Yarn cards may define the Ordeal Type, Stakes, number of Obstacles per Stage, number of Stages of the Ordeal and the type of ordeal (Railroad. Forking, etc). Stages and Obstacles are also defined by cards (see Ordeals on each card).",
+        "Spread": "Ordeal",
+        "Narrative_Meaning": "Ordeals are complex narrative structures in their own right, that can handle complex narrative events in a variety of different ways, but at its core an Ordeal is a struggle between two or more Conflict sides. These sides will complicate each others stories, creating a crisis or choice of some sort quite often, and allow the two sides to even exchange blows and directly react to each other."
+    },
+    {
+        "Type": "Gain",
+        "Description": "Gains give something to one of the Characters to help move the Story on. Sometimes this might be payment for a job they did, or it might be a discovery that will directly connect to the Story. This may be information, knowledge in the forms of Skills and Descendants that can forward the Conflict.",
+        "Rule": "Every Yarn card has an example Gain that you can use to reward the Characters for their actions, in general the size of the Gain should be based on the Plot (and not randomly assigned). It is normal to add 1 card to define the card.",
+        "Spread": "Gain",
+        "Narrative_Meaning": "Some prize or payment is offered to the Character. There may be complications associated with accepting the offer, for example, debts may be owed, or lines may be crossed, sometimes accepting a gain can be a trap for a Character Embodiment, damning them to a recurring Plot. Characters should choose whether they accept or reject the \"prize\" offered. In some cases rejecting this \"prize\" will force the Plot to offer a better one, in others the best prize is already on offer and rejecting may result in no gains at all, or perhaps a lesser \"booby-prize\" may be offered."
+    },
+    {
+        "Type": "Revelation",
+        "Description": "Revelations reveal information to the Characters. Typically a Revelation reveals something about the Plot, the Villain, the Prize they are after, or themselves. Revelation Scenes usually include multiple actual Revelations. Revelations can also create Lores that are granted to characters by the Plot. For example, if it is revealed that the Villain attended a Wizard’s school, then this will add a Lore allowing the Villain to perform Wizardry.",
+        "Rule": "Revelations usually consist of 2-5 cards that define: What the information is about, what the actual info is that is revealed, the vector the Revelation is revealed by (media can include newspapers, forensics, etc), and perhaps some Alternative Information that might be revealed (in case you can’t use the Info), and additional details that are involved somehow. Revelations can create Lore Descendants as they reveal information that was not known about a Character. Usually a Revelation Scene will use these same cards in different permutations to reveal several items of information at the same time.",
+        "Spread": "Revelation",
+        "Narrative_Meaning": "Revelations can be arguments, as two Characters reveal things about each other or a third party. Revelations are sometimes used to ladle out lores to make Bad Guys more powerful, so remember that revelations can be misdirections, and can certainly be misunderstood, however each revelation should change how one Character feels about themselves, another (usually the Bad Guy, Rival, or Love Interest), the situation, or their goals. A good revelation has an emotional impact, as well as a choice... how much you believe the revelation?"
+    },
+    {
+        "Type": "Warp",
+        "Description": "Warps work the Conflict. They are broken into 3 parts or Sub-Scenes:<ul><li>The Ends (what the Characters of the Side that is experiencing the Warp want, usually described as Quests or Questions). This is sub-scene similar to a Frame Act, usually the only thing revealed is the Character’s immediate goals, such as \"Get past the guards\", \"Open the door\", \"Find the kid\", etc.</li><li>The Fray (what is keeping the Characters from their Ends, how do they work through that Quest or answer that Question?). The Fray sub-scene is usually the longest and most important, it will be where the action takes place and should be the majority of the Warp.</li><li>The Snag (A complication that either makes things more difficult during the Fray or follows immediately afterwards and often renders the actions of the Characters during the Fray moot somehow). The Snag can be presented like a Zenith Act of the Warp Scene, but is often more like a Hurdle or Turn complicating matters during the Fray.</li></ul>During Warps things tend to get worse for the sides of the Conflict that are Warping, not all Sides Warp at the same time, opposed sides will usually have a Weft instead.",
+        "Rule": "Define The Fray and The Snag with at least 2 Yarn Cards. Draw additional cards to your Hand and Play as required for additional details. e.g. if the Fray is an Ordeal, draw cards to define the Ordeal for free. Suspense usually increases 1-3 Levels during a Warp Scene.",
+        "Spread": "Warp",
+        "Narrative_Meaning": "The Ends describe what all the Characters want to achieve, the Fray and Snag complicate those goals, creating obstacles, crises, choices and additional Character Stress throughout."
+    },
+    {
+        "Type": "Weft",
+        "Description": "Wefts also work the Conflict through 3 Parts: <ul><li>First by the Characters Recoiling from the Snag (as they emotionally respond to the events of their previous Warp Scene). The Recoiling is usually described by a 1-3 card Psych attack, which may have positive or negative emotions depending upon the results of the Warp. A terrible Fray and Snag would result in a 3 card Negative Psych effect.</li><li>Secondly Sweeping (where the Characters recover from what happened during the Warp). The Sweeping is usually defined by a single card and may include rest time, recovery, making gains, allies, assistance, or making discoveries and coming to realisations (Revelations)</li><li>Finally, Picking (where the Characters will have a choice that they must make). Often this choice defines how the narrative will continue, and is most simply a choice between two or more Quests that become potential the Ends of the next Warp.</li></ul>During Wefts the Wefting side makes a little headway, or gets a little breather.",
+        "Rule": "Play an additional card to define the Sweeping. The Yarn-Teller should prepare <em>at least</em> 2 Warps following the Weft to be picked between. Suspense is usually reduced 1-3 Levels during a Weft Scene. Character Stress is usually relieved during a Weft Scene.",
+        "Spread": "Weft",
+        "Narrative_Meaning": "Wefts open to the emotional impact of a previous scene, Characters respond to what came before. Then they more beyond that, recovering some and perhaps even making progress. This is before some choice is offered to the Character, this can be as simple as asking \"What&aposs next?\", but ideally should reflect the ongoing situation more directly."
+    },
+    {
+        "Type": "Finale",
+        "Description": "The Finale is a final culmination of the Story so far. This is where the Conflict comes to a head, and you can think of it as being like a Warp for every side simultaneously. It is often defined as a Fray and Snag or an Ordeal (and very often includes a Fight even to the point of a battle), but it can be defined as a Test, Revelation or occasionally as a Gain as well. Suspense and Stakes will be higher than they have been during the Loom (at least Intense Suspense Level and High / Extreme / Soul / Paradoxical Stakes).",
+        "Rule": "The Finale should extend logically from the Story so far. Although there may be a twist in the ending sometimes, it is unlikely that the aliens in town that have been killing people, will go without a fight. A Finale is usually defined as a Revelation, Gain, Ordeal or Test and may draw additional cards as that type. Suspense during the Finale is usually <em>at least</em> one level higher than it has been through out the narrative so far.",
+        "Spread": "Finale",
+        "Narrative_Meaning": "Finales are the Climax of the Story, but their structure is surprisingly fluid, as it must suit the nature of the story so far. Some cliches can include the final battle, or the detective revealing who the murderer is, but the ideal finale brings together the sides of the Conflict and the winner is decided amongst them."
+    },
+    {
+        "Type": "Completion",
+        "Description": "How the Story completes and Resolves depends on how and what the Characters do. The Plot may be destroyed by their actions, or be demoted or promoted, to return again later, if some aspect has not been entirely dealt with. Sometimes the Plot will just recycle, changing Embodiments and starting again.",
+        "Rule": "Character actions and interactions decide what sorts of Plot resolutions are appropriate to the narrative. Referees have final adjudication over Yarn-Tellers here, especially when the Yarn-Teller is involved directly in the Completion. Completion usually results in a complete loss of Suspense for that Plot, and Characters may become Exhausted immediately following it (it is usual to add a Logue after the Zenith if the lead character passes out during the Zenith).",
+        "Spread": "",
+        "Narrative_Meaning": "Completing Plots and Resolutions depend heavily upon the narrative that has proceeded this event. Yarn-Teller Characters will have important choices to make during Completion, but only if they are narrating, completion events can often include epilogue and similar scenes that ease the audience away from the Story."
+    }
+]

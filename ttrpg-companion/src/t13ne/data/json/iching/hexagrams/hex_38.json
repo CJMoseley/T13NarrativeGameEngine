@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 38,
+    "Name": "Opposition",
+    "Entity": "&#19941;",
+    "Logical": 43,
+    "Trigrams": [
+      1,
+      2
+    ],
+    "Hexagram_Text": "K'uei, Opposition (or Polarising), tells us that there is a opposition to our ideas and purposes. It may be that some one disagrees with your ideas, or someone who used to agree with you has changed their minds and diverged from your beliefs, or that you are just alienated. Perhaps you are two people who are incompatible with each other, or that you are simply incompatible with anyone.",
+    "Unchanging": "When countering / parrying you may automatically Draw and play Incarna Draw (Boon Double Reduced) cards.",
+    "Line1": "A Lost Horse",
+    "Line2": "Boss in the Street",
+    "Line3": "Wagon Halted",
+    "Line4": "Isolated",
+    "Line5": "Heroes Always Fight When they Meet",
+    "Line6": "Companion Devils"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you or anyone nearby argues, disagrees, opposes or fights",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "someone agrees with you",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "whenever you lose or leave something (a fight, an argument, an object, a relationship)",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yin",
+        "Condition": "you hold a grudge, or do not forgive another",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yang",
+        "Condition": "you act frustrated, humiliated, or misunderstand a situation",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yin",
+        "Condition": "you are alone",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yin",
+        "Condition": "you misread a situation, or apologize",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yang",
+        "Condition": "you talk to your enemies",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Opposition Quest is all about a powerful opposing force to the Quester. This might be a powerful monster, an influential group or a single character, often of immense intellect, wealth and political or criminal power. This oppositional force will oppose the Quester completing their Quest both indirectly and directly. The Opposition in the Quest will have their own goals and usually have their own Quest to complete, so while the Quester may not immediately be able to complete their own Quest, their small actions may disrupt the opposition Quest and lead to an opportunity to complete their own. Opposition Quests are polarising for the general populace, as the phrase \"If you aren&#39;t for us, you are against us\" applies to both sides of this Quest, and bystanders and common folk will be drawn into the conflict between the Quester and the Opposition.",
+    "Quest_Complete": "The Quest that ends with the Opposition Hexagram reveals a new opposition who directly opposes the Quester moving forwards. They may even begin a revenge Quest that is intended to undo the Quester&#39;s successes. It is a declaration that the Quester has a new enemy, and of course, you know &mdash; this means war.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester encounters the Opposition directly, and unless they extremely cautious (hiding, calm, carefully worded communications) add a Failure Level, Hurdle or Obstacle to their Test or Ordeal. If the Quester tries to use force to overcome the Opposition at this time feel free to add additional Hurdles, Obstacles or Failure Levels as appropriate.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "By sheer chance the Quester will run into an authority that they may have been avoiding (perhaps the Quest-giver if they have made little or no progress on the Quest), this chance encounter helps the Quester, granting them an additional Success Level on their Test or Ordeal, perhaps as they have assistance from this authority. However, any misunderstandings or lack of honesty at this time may add a Hurdle, Obstacle or Failure Level to their Ordeal or Test instead.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The Quester is frustrated and stuck, no matter what they try. No progress on the Quest can be made now (adding 2 Hurdles, Failure Levels, or 5 Obstacles to any attempts). Sometimes this blockage appears physically, with traffic halting any progress the Quester may try, but more often this is a figurative blockage in the way.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester is isolated, separated from their companions, and surrounded by those loyal to the opposition. They may even be a prisoner of the enemy. However, this isolation places the Quester in contact with a potential ally, who also opposes the opposition for a different reason. Normally, until the ally is met the Test or Ordeal has an added Failure Level, Hurdle or Obstacle but once the alliance is made this adds a Success Level.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester meets a rival Quester, who has goals aligned completely with the Quester. Typically misunderstandings, disguises, isolation, and lack of communication cause these Questers to believe each other to be the opposition, and they fight. This fight is an additional Ordeal added to the Quest, and is usually Medium or High Stakes, sometimes the Questers are known to each other, and occasionally they may even be companions who believe the Quester was killed by the opposition.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester must either keep company with the opposition, having earned their respect or trust, while hiding their Quest as they complete it secretly, or the Quester suspects their own companions are agents for the opposition. Usually, there is no mole, but the Quester may drive their allies away with this mistrust and defensive attitude, adding a Failure Level, Hurdle or Obstacle to the Quester&#39;s Test or Ordeal.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "This hexagram is composed of the trigram Li above, i.e., flame, which burns upward, and Tui below, i.e., the lake, which seeps downward. These two movements are indirect contrast. Furthermore, LI is the second daughter and Tui the youngest daughter, and although they live in the same house they belong to different men; hence their wills are not the same but are divergently directed.",
+    "The_Image": {
+      "text": "Above, fire; below. The lake.\n\nThe image of OPPOSITION.\n\nThus amid all fellowship\n\nThe superior man retains his individuality.",
+      "comments": "The two elements, fire and water, never mingle but even when in contact retain their own natures. So the sutured man is never led into baseness or vulgarity through intercourse or community of interests with persons of another sort; regardless of all commingling, he will always preserve his individuality."
+    },
+    "The_Judgment": {
+      "text": "OPPOSITION. In small matters, good fortune.",
+      "comments": "When people live in opposition and estrangement they cannot carry out a great undertaking in common; their points of view diverge too widely. In such circumstances one should above all not proceed brusquely, for that would only increase the existing opposition; instead, one should limit oneself to producing gradual effects in small matters. Here success can still be expected, because the situation is such that the opposition does not preclude all agreement. In general, opposition appears as an obstruction, but when it represents polarity within a comprehensive whole, it has also its useful and important functions. The oppositions of heaven and earth, spirit and nature, man and woman, when reconciled, bring about the creation and reproduction of life. In the world of visible things, the principle of opposites makes possible the differentiation by categories through which order is brought into the world."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Remorse disappears.\nIf you lose your horse, do not run after it;\nIt will come back of its own accord.\nWhen you see evil people,\nGuard yourself against mistakes.",
+        "comments": "Even in times when oppositions prevail, mistakes can be avoided, so that remorse disappears. When opposition begins to manifest itself, a man must not try to bring about unity by force, for by so doing he would only achieve the contrary, just as a horse goes farther and farther away if one runs after it. It it is one's won horse, one can safely let it go; it will come back of its own accord. So too when someone who belongs with us is momentarily estranged because of a misunderstanding, he will return of his own accord if we leave matters to him. One the other hand, it is well to be cautious when evil men who do not belong with us force themselves upon us, again as the result of a misunderstanding. Here the important thing is to avoid mistakes. We must not try to shake off these evil men by force; this would give rise to real hostility. We must simply endure them. They will eventually withdraw of their own accord."
+      },
+      "2": {
+        "text": "One meets his lord in a narrow street.",
+        "comments": "No blame.\n\nAs a result of misunderstandings, it has become impossible for people who by nature belong together to meet in the correct way. This being so, an accidental meeting under informal circumstances may serve the purpose, provided there is an inner affinity between them."
+      },
+      "3": {
+        "text": "One sees the wagon dragged back,",
+        "comments": "The oxen halted,\nA man's hair and nose cut off.\n\nNot a good beginning, but a good end.\n\nOften it seems tot a man as though everything were conspiring against him. He sees himself checked and hindered in his progress, insulted and dishonored. However, he must not let himself be misled; despite this opposition, he must cleave to the man with whom he knows he belongs. Thus, notwithstanding the bad beginning, the matter will end well."
+      },
+      "4": {
+        "text": "Isolated through opposition,\nOne meets a like-minded man\nWith whom one can associate in good faith.\nDespite the danger, no blame.",
+        "comments": "If a man finds himself in a company of people from whom he is separated by an inner opposition, he becomes isolated. But if in such a situation a man meets someone who fundamentally by the very law of his being, is kin to him, and whom he can trust completely, he overcomes all the dangers of isolation. His will achieves its aim, and he becomes free of faults."
+      },
+      "5": {
+        "text": "Remorse disappears.",
+        "comments": "The companion bits his way through the wrappings.\nIf one goes to him,\nHow could it be a mistake?\n\nComing upon a sincere man, one fails to recognize him at first because of the general estrangement. However, he bites his way through the wrappings that are causing the separation. When such a companion thus reveals himself in his true character, it is one's duty to go to meet him and to work with him."
+      },
+      "6": {
+        "text": "Isolated through opposition,\nOne sees one's companion as a pig covered with dirt,\nAs a wagon full of devils.\nFirst one draws a bow against him,",
+        "comments": "Then one lays the bow aside.\nHe is not a robber; he will woo at the right time.\nAs one goes, rain falls; then good fortune comes.\n\nHere the isolation is due to misunderstanding; it is brought about not by outer circumstances but by inner conditions. A man misjudges his best friends, taking them to be as unclean as a dirty pig in and as dangerous as a wagon full of devils. He adopts an attitude of defense. But in the end, realizing his mistake, he lays aside the bow, perceiving that the other is approaching with the best intentions for the purpose of close union. Thus the tension is relieved. The union resolves the tension, just as falling rain relieves the sultriness preceding a thunderstorm. All goes well, for just when opposition reaches its climax it changes over to its antithesis."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Opposition'. Internalize this core philosophy: This hexagram is composed of the trigram Li above, i.e., flame, which burns upward, and Tui below, i.e., the lake, which seeps downward. These two movements are indirect contrast. Furthermore, LI is the second daughter and Tui the youngest daughter, and although they live in the same house they belong to different men; hence their wills are not the same but are divergently directed. Your current worldview is: \"K'uei, Opposition (or Polarising), tells us that there is a opposition to our ideas and purposes. It may be that some one disagrees with your ideas, or someone who used to agree with you has changed their minds and diverged from your beliefs, or that you are just alienated. Perhaps you are two people who are incompatible with each other, or that you are simply incompatible with anyone.\". Let your choices be subtly driven by these conditions: you or anyone nearby argues, disagrees, opposes or fights, someone agrees with you. When interacting, mirror the wisdom found in the commentary: \"When people live in opposition and estrangement they cannot carry out a great undertaking in common; their points of view diverge too widely. In such circumstances one should above all not proceed brusquely, for that would only increase the existing opposition; instead, one should limit oneself to...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Opposition'. The primary quest objective is: The Opposition Quest is all about a powerful opposing force to the Quester. This might be a powerful monster, an influential group or a single character, often of immense intellect, wealth and political or criminal power. This oppositional force will oppose the Quester completing their Quest both indirectly and directly. The Opposition in the Quest will have their own goals and usually have their own Quest to complete, so while the Quester may not immediately be able to complete their own Quest, their small actions may disrupt the opposition Quest and lead to an opportunity to complete their own. Opposition Quests are polarising for the general populace, as the phrase \"If you aren&#39;t for us, you are against us\" applies to both sides of this Quest, and bystanders and common folk will be drawn into the conflict between the Quester and the Opposition.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: The two elements, fire and water, never mingle but even when in contact retain their own natures. So the sutured man is never led into baseness or vulgarity through intercourse or community of interests with persons of another sort; regardless of all commingling, he will always preserve his individuality. Use the following line-specific challenges to pace the story: The Quester encounters the Opposition directly, and unless they extremely cautious (hiding, calm, carefully worded communications) add a Failure Level, Hurdle or Obstacle to their Test or Ordeal. If the Quester tries to use force to overcome the Opposition at this time feel free to add additional Hurdles, Obstacles or Failure Levels as appropriate. | By sheer chance the Quester will run into an authority that they may have been avoiding (perhaps the Quest-giver if they have made little or no progress on the Quest), this chance encounter helps the Quester, granting them an additional Success Level on their Test or Ordeal, perhaps as they have assistance from this authority. However, any misunderstandings or lack of honesty at this time may add a Hurdle, Obstacle or Failure Level to their Ordeal or Test instead. | The Quester is frustrated and stuck, no matter what they try. No progress on the Quest can be made now (adding 2 Hurdles, Failure Levels, or 5 Obstacles to any attempts). Sometimes this blockage appears physically, with traffic halting any progress the Quester may try, but more often this is a figurative blockage in the way. | The Quester is isolated, separated from their companions, and surrounded by those loyal to the opposition. They may even be a prisoner of the enemy. However, this isolation places the Quester in contact with a potential ally, who also opposes the opposition for a different reason. Normally, until the ally is met the Test or Ordeal has an added Failure Level, Hurdle or Obstacle but once the alliance is made this adds a Success Level. | The Quester meets a rival Quester, who has goals aligned completely with the Quester. Typically misunderstandings, disguises, isolation, and lack of communication cause these Questers to believe each other to be the opposition, and they fight. This fight is an additional Ordeal added to the Quest, and is usually Medium or High Stakes, sometimes the Questers are known to each other, and occasionally they may even be companions who believe the Quester was killed by the opposition. | The Quester must either keep company with the opposition, having earned their respect or trust, while hiding their Quest as they complete it secretly, or the Quester suspects their own companions are agents for the opposition. Usually, there is no mole, but the Quester may drive their allies away with this mistrust and defensive attitude, adding a Failure Level, Hurdle or Obstacle to the Quester&#39;s Test or Ordeal.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (A Lost Horse): Mirror the internal state described in the commentary: \"Even in times when oppositions prevail, mistakes can be avoided, so that remorse disappears. When opposition begins to manifest itself, a man must not try to bring about unity by force, for by so doing he would only achieve the contrary, just as a...\" Your actions should be framed by the goal: whenever you lose or leave something (a fight, an argument, an object, a relationship).",
+        "Plot": "Plot Complication Line 1 (A Lost Horse): Introduce a challenge based on the interpretation: \"Even in times when oppositions prevail, mistakes can be avoided, so that remorse disappears. When opposition begins to manifest itself, a man must not try to bring about unity by force, for by so doing he would only achieve the contrary, just as a...\" The specific quest objective for this stage is: The Quester encounters the Opposition directly, and unless they extremely cautious (hiding, calm, carefully worded communications) add a Failure Level, Hurdle or Obstacle to their Test or Ordeal. If the Quester tries to use force to overcome the Opposition at this time feel free to add additional Hurdles, Obstacles or Failure Levels as appropriate."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Boss in the Street): Mirror the internal state described in the commentary: \"No blame.\n\nAs a result of misunderstandings, it has become impossible for people who by nature belong together to meet in the correct way. This being so, an accidental meeting under informal circumstances may serve the purpose, provided there is an...\" Your actions should be framed by the goal: you hold a grudge, or do not forgive another.",
+        "Plot": "Plot Complication Line 2 (Boss in the Street): Introduce a challenge based on the interpretation: \"No blame.\n\nAs a result of misunderstandings, it has become impossible for people who by nature belong together to meet in the correct way. This being so, an accidental meeting under informal circumstances may serve the purpose, provided there is an...\" The specific quest objective for this stage is: By sheer chance the Quester will run into an authority that they may have been avoiding (perhaps the Quest-giver if they have made little or no progress on the Quest), this chance encounter helps the Quester, granting them an additional Success Level on their Test or Ordeal, perhaps as they have assistance from this authority. However, any misunderstandings or lack of honesty at this time may add a Hurdle, Obstacle or Failure Level to their Ordeal or Test instead."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Wagon Halted): Mirror the internal state described in the commentary: \"The oxen halted,\nA man's hair and nose cut off.\n\nNot a good beginning, but a good end.\n\nOften it seems tot a man as though everything were conspiring against him. He sees himself checked and hindered in his progress, insulted and dishonored....\" Your actions should be framed by the goal: you act frustrated, humiliated, or misunderstand a situation.",
+        "Plot": "Plot Complication Line 3 (Wagon Halted): Introduce a challenge based on the interpretation: \"The oxen halted,\nA man's hair and nose cut off.\n\nNot a good beginning, but a good end.\n\nOften it seems tot a man as though everything were conspiring against him. He sees himself checked and hindered in his progress, insulted and dishonored....\" The specific quest objective for this stage is: The Quester is frustrated and stuck, no matter what they try. No progress on the Quest can be made now (adding 2 Hurdles, Failure Levels, or 5 Obstacles to any attempts). Sometimes this blockage appears physically, with traffic halting any progress the Quester may try, but more often this is a figurative blockage in the way."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Isolated): Mirror the internal state described in the commentary: \"If a man finds himself in a company of people from whom he is separated by an inner opposition, he becomes isolated. But if in such a situation a man meets someone who fundamentally by the very law of his being, is kin to him, and whom he can trust...\" Your actions should be framed by the goal: you are alone.",
+        "Plot": "Plot Complication Line 4 (Isolated): Introduce a challenge based on the interpretation: \"If a man finds himself in a company of people from whom he is separated by an inner opposition, he becomes isolated. But if in such a situation a man meets someone who fundamentally by the very law of his being, is kin to him, and whom he can trust...\" The specific quest objective for this stage is: The Quester is isolated, separated from their companions, and surrounded by those loyal to the opposition. They may even be a prisoner of the enemy. However, this isolation places the Quester in contact with a potential ally, who also opposes the opposition for a different reason. Normally, until the ally is met the Test or Ordeal has an added Failure Level, Hurdle or Obstacle but once the alliance is made this adds a Success Level."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Heroes Always Fight When they Meet): Mirror the internal state described in the commentary: \"The companion bits his way through the wrappings.\nIf one goes to him,\nHow could it be a mistake?\n\nComing upon a sincere man, one fails to recognize him at first because of the general estrangement. However, he bites his way through the wrappings...\" Your actions should be framed by the goal: you misread a situation, or apologize.",
+        "Plot": "Plot Complication Line 5 (Heroes Always Fight When they Meet): Introduce a challenge based on the interpretation: \"The companion bits his way through the wrappings.\nIf one goes to him,\nHow could it be a mistake?\n\nComing upon a sincere man, one fails to recognize him at first because of the general estrangement. However, he bites his way through the wrappings...\" The specific quest objective for this stage is: The Quester meets a rival Quester, who has goals aligned completely with the Quester. Typically misunderstandings, disguises, isolation, and lack of communication cause these Questers to believe each other to be the opposition, and they fight. This fight is an additional Ordeal added to the Quest, and is usually Medium or High Stakes, sometimes the Questers are known to each other, and occasionally they may even be companions who believe the Quester was killed by the opposition."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Companion Devils): Mirror the internal state described in the commentary: \"Then one lays the bow aside.\nHe is not a robber; he will woo at the right time.\nAs one goes, rain falls; then good fortune comes.\n\nHere the isolation is due to misunderstanding; it is brought about not by outer circumstances but by inner conditions....\" Your actions should be framed by the goal: you talk to your enemies.",
+        "Plot": "Plot Complication Line 6 (Companion Devils): Introduce a challenge based on the interpretation: \"Then one lays the bow aside.\nHe is not a robber; he will woo at the right time.\nAs one goes, rain falls; then good fortune comes.\n\nHere the isolation is due to misunderstanding; it is brought about not by outer circumstances but by inner conditions....\" The specific quest objective for this stage is: The Quester must either keep company with the opposition, having earned their respect or trust, while hiding their Quest as they complete it secretly, or the Quester suspects their own companions are agents for the opposition. Usually, there is no mole, but the Quester may drive their allies away with this mistrust and defensive attitude, adding a Failure Level, Hurdle or Obstacle to the Quester&#39;s Test or Ordeal."
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="210mm" height="297mm" version="1.1" viewBox="0 0 210 297" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <defs>
+  <marker id="a" overflow="visible" orient="auto">
+   <path transform="matrix(.8 0 0 .8 10 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill="#009ef8" fill-rule="evenodd" stroke="#009ef8" stroke-width="1pt"/>
+  </marker>
+  <marker id="b" overflow="visible" orient="auto">
+   <path transform="matrix(-.8 0 0 -.8 -10 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill="#009ef8" fill-rule="evenodd" stroke="#009ef8" stroke-width="1pt"/>
+  </marker>
+  <marker id="c" overflow="visible" orient="auto">
+   <path transform="matrix(.8 0 0 .8 10 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill="#f30000" fill-rule="evenodd" stroke="#f30000" stroke-width="1pt"/>
+  </marker>
+  <marker id="d" overflow="visible" orient="auto">
+   <path transform="matrix(-.8 0 0 -.8 -10 0)" d="m0 0 5-5-17.5 5 17.5 5z" fill="#f30000" fill-rule="evenodd" stroke="#f30000" stroke-width="1pt"/>
+  </marker>
+ </defs>
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <text x="28.764971" y="40.711075" fill="#000000" font-family="sans-serif" font-size="10.583px" stroke-width=".26458" style="line-height:1.25" xml:space="preserve"><tspan x="28.764971" y="40.711075"/><tspan x="28.764971" y="53.940201"/><tspan x="28.764971" y="67.169327"/><tspan x="28.764971" y="80.398445"/><tspan x="28.764971" y="93.627571"/><tspan x="28.764971" y="106.8567"/><tspan x="28.764971" y="120.08582"/><tspan x="28.764971" y="133.31494"/><tspan x="28.764971" y="146.54407"/><tspan x="28.764971" y="159.77319"/><tspan x="28.764971" y="173.00232"/><tspan x="28.764971" y="186.23145"/><tspan x="28.764971" y="199.46057"/><tspan x="28.764971" y="212.6897"/><tspan x="28.764971" y="225.91882"/><tspan x="28.764971" y="239.14795"/><tspan x="28.764971" y="252.37708"/><tspan x="28.764971" y="265.6062"/><tspan x="28.764971" y="278.83533"/><tspan x="28.764971" y="292.06445"/><tspan x="28.764971" y="305.29358"/><tspan x="28.764971" y="318.52271"/><tspan x="28.764971" y="331.7518"/><tspan x="28.764971" y="344.98093"/><tspan x="28.764971" y="358.21005"/></text>
+ <g>
+  <g>
+   <rect x="16.078" y="36.701" width="76.028" height="76.028" fill="#848481" stroke="#000704" stroke-width=".565"/>
+   <path d="m18.377 52.549c73.559-0.31728 73.559-0.15865 73.559-0.15865" fill="none" marker-end="url(#d)" marker-start="url(#c)" stroke="#f30000" stroke-width=".39803"/>
+   <text transform="scale(.87999 1.1364)" x="68.705223" y="45.620499" fill="#000000" font-family="sans-serif" font-size="4.3754px" stroke="#f30000" stroke-width=".1" style="line-height:1.25" xml:space="preserve"><tspan x="68.705223" y="45.620499" stroke="#f30000" stroke-width=".1">1.5m</tspan></text>
+   <path d="m17.811 37.933 73.734 73.892" fill="none" marker-end="url(#b)" marker-start="url(#a)" stroke="#009ef8" stroke-width=".7741"/>
+  </g>
+  <text transform="matrix(.61341 .60448 -.81503 .82707 0 0)" x="89.791252" y="11.285429" fill="#000000" font-family="sans-serif" font-size="4.64px" stroke="#009ef8" stroke-width=".116" style="line-height:1.25" xml:space="preserve"><tspan x="89.791252" y="11.285429" stroke="#009ef8" stroke-width=".116">2m</tspan></text>
+ </g>
+</svg>

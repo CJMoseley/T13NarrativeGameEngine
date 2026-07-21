@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 27,
+    "Name": "Nourishment",
+    "Entity": "&#19930;",
+    "Logical": 33,
+    "Trigrams": [
+      3,
+      6
+    ],
+    "Hexagram_Text": "Yi, Nourishment (or Mouth Corners or even Nourishing Vision), is the hexagram of nurturing. Food is a great bounty, but all our actions nourish some desire we hold. If you understand your own actions, you understand your needs, and those of others. If you would understand another see what they nourish or cultivate, and see who they are.",
+    "Unchanging": "You may add Incarna Draw (Boon Double Reduced) Ordeal Cards to any Healing action or attempt.",
+    "Line1": "Requiring Nourishment",
+    "Line2": "Not a Sage on a Mountain, but a Beggar on a Hill",
+    "Line3": "Dessert First",
+    "Line4": "Nourished by the Mountain, like a Tiger",
+    "Line5": "Turn from the Path",
+    "Line6": "Real Nourishment"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you share with, or feed others, cook and tend food, or nourish something",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you cannot give someone something they need",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "you are greedy or envious",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yang",
+        "Condition": "you eat alone, or are anti-social",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yang",
+        "Condition": "you seek pleasure or acknowledge your desires",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yang",
+        "Condition": "you ask another for a favour, or seek what you want",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you break a task down into smaller steps, procrastinate or waste time",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yin",
+        "Condition": "you act for the benefit of others",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Nourishment Quest nurtures some aspect of a character, usually, but not always the Quester or a big-bad. The Nourishment Quest might, for example, add a new Alt to a character, or integrate an existing Alt, or it may add Proficiencies, Skills, Talents, Powers or Super-Powers to a character, or most often it will add Lores to the big-bad. Any Nourishment step will add a Hurdle, Failure Levels, or Obstacle to the Test or Ordeal, unless that Test or Ordeal is concerned with consuming nourishment, either physical, mental or spiritual nourishment",
+    "Quest_Complete": "The Nourishment Hexagram at the end of the Quest indicates a Feast of some kind. This may be a huge victory celebration, with fine foods and drinks, but is more likely not a physical feast, but a mental or spiritual one. Devouring a book, exploring a museum, a third eye opening vision quest, these are all options for this Hexagram. This is much more a reward than a Test or Ordeal, but it may still feature some Test or Ordeal aspects as they have to ingest and digest the nourishment.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester is hungry for some nourishment, most often this is spiritual or mental nourishment that they seek, but a situation can occur where they might be physically starved, of course. If the Quester finds their own nourishment (hunting, gathering or purchasing ingredients, and cooking their own food) then things are normal, but if they look to another to nourish them (not cooking themselves), then this adds Hurdles, Obstacles or Failure Levels on their Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester needs nourishment, however they cannot provide it for themselves (perhaps an authority limits access to suitable sources, or famine) and must either work on without it, or accept it from an authority. Working with an empty stomach, or accepting nourishment from another character will result in an additional Hurdle, Failure Level or Obstacle.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The Quester receives the nourishment that they seek, and they enjoy it, but it is not the nourishment that they really require. This is the spiritual, intellectual or natural equivalent of a junk food diet, or perhaps filling a spiritual void with material possessions and pleasures, and each time it is consumed it adds a Failure Level, Hurdle or Obstacle to the Test or Ordeal. This is the time for the Quester to realise that this nourishment is worthless, and to seek out better provision, and another character should tell them this now. If the Quester acknowledges this desire is not good for them and seeks out a more wholesome nourishment (often a more traditional, austere, or difficult path) then they may add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester must focus on one thing at this time, but is what they truly pursue the Quest, or their own Nourishment? As long as they pursue either one exclusively they will have a Success Level on their Ordeal or Test, but if they choose to try to pursue both, even if they ask for help from companions so they can focus on one while the Quester focuses on the other, it will add a Hurdle, Obstacle, or Failure Level to their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester should be offered a way to turn from the path that they are on (be it the Quest or nourishment). They are offered options such as continuing, rejecting the Quest (perhaps handing it off to some one else), rejecting the nourishment (turning aside from those self-enriching pursuits), waiting and resting until something changes (including learning something new that may shift the balance or gathering resources to allow them to proceed later), or embracing the status-quo and not changing a thing. Of these things only embracing the status-quo or waiting, will not add a Failure Level, Hurdle or Obstacle to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester should become aware that they are a source of nourishment for others, they teach others around them, and are responsible for those they teach. While they may not be able to nourish themselves, they can nourish others. If the Quester works for others (teaching or training others, or even manual labour for a land owner or authority), rather than for themselves, then they add a Success Level to their Ordeal or Test, and by some unexpected manner often complete the Quest or find a new source of nourishment for themselves and others. If the Quester works only for themselves and their goals they add a Failure Level, Hurdle or Obstacle to their Test or Ordeal.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "This hexagram is a picture of an open mouth; above and below are firm lines of the lips, and between them the opening. Starting with the mouth, through which we take food for nourishment, the thought leads to nourishment itself. Nourishment of oneself, specifically of the body, is represented in the three lower lines, while the three upper lines represent nourishment and care of others, in a higher, spiritual sense.",
+    "The_Image": {
+      "text": "At the foot of the mountain, thunder:\n\nThe image of PROVIDING NOURISHMENT.\n\nThus the superior man is careful of his words\nAnd temperate in eating and drinking.",
+      "comments": "\"God comes forth in the sign of the Arousing\": when in the spring the life forces stir again, all things comes into being anew. \"He brings to perfection in the sign of Keeping Still\": thus in the early spring, when the seeds fall to earth, all things are made ready. This is an image of providing nourishment through movement and tranquillity. The superior man takes it as a pattern for the nourishment and cultivation of his character. Words are a movement going form within outward. Eating and drinking are movements from without inward. Both kinds of movement can be modified by tranquillity. For tranquillity keeps the words that come out of the mouth from exceeding proper measure, and keeps the food that goes into the mouth from exceeding its proper measure. Thus character is cultivated."
+    },
+    "The_Judgment": {
+      "text": "THE CORNERS OF THE MOUTH.\nPerseverance brings good fortune.\nPay heed to the providing of nourishment\nAnd to what a man seeks\n\nTo fill his own mouth with.\n\nIn bestowing care and nourishment, it is important that the right people should be taken care of and that we should attend to our own nourishment in the right way. If we wish to know what anyone is like, we have only to observe on whom he bestows his care and what sides of his own nature he cultivates and nourishes. Nature nourishes all creatures. The great man fosters and takes care of superior men, in order to take care of all men through them. Mencius says about this:",
+      "comments": "If we wish to know whether anyone is superior or not, we need only observe what part of his being he regards as especially important. The body has superior and inferior, important and unimportant parts. We must not injure important parts for the sake of the unimportant, nor must we injure the superior parts for the sake of the inferior. He who cultivates the inferior parts of his nature is an inferior man. He who cultivates the superior parts of his nature is a superior man."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "You let your magic tortoise go,\nAnd look at me with the corners of your mouth drooping.\nMisfortune.",
+        "comments": "The magic tortoise is a creature possessed of such supernatural powers that it lives on air and needs no earthly nourishment. The image means that a man fitted by nature and position to live freely and independently renounces this self-reliance and instead looks with envy and discontent at others who are outwardly in better circumstances. But such base envy only arouses derision and contempt in those others. This has bad results."
+      },
+      "2": {
+        "text": "Turning to the summit for nourishment,\nDeviating from the path",
+        "comments": "To seek nourishment from the hill.\nContinuing to do this brings misfortune.\n\nNormally a person either provides his own means of nourishment or is supported in a proper way by those whose duty of privilege it is to provide for him. If, owing to weakness of spirit, a man cannot support himself, a feeling of uneasiness comes over him; this is because in shirking the proper way of obtaining a living, he accepts support as a favor from those in higher place. This is unworthy, for he is deviating from his true nature. Kept up indefinitely, this course leads to misfortune."
+      },
+      "3": {
+        "text": "Turning away from nourishment.\nPerseverance brings misfortune.\nDo not act thus for ten years.",
+        "comments": "Nothing serves to further.\nHe who seeks nourishment that does not nourish reels from desire to gratification and in gratification craves desire. Mad pursuit of pleasure for the satisfaction of the senses never brings one to the goal. One should never (ten years is a complete cycle of time) follow this path, for nothing good can come of it."
+      },
+      "4": {
+        "text": "Turning to the summit\nFor provision of nourishment\nBrings good fortune.",
+        "comments": "Spying about with sharp eyes\nLike a tiger with insatiable craving.\n\nNo blame.\n\nIn contrast to the six in the second place, which refers to a man bent exclusively on his own advantage, this line refers to one occupying a high position and striving to let his light sine forth. To do this he needs helpers, because he cannot attain his lofty aim alone. With the greed of a hungry tiger he is on the lookout for the right people. Since he is not working for himself but for the good of all, there is no wrong in such zeal."
+      },
+      "5": {
+        "text": "Turning away from the path.",
+        "comments": "To remain persevering brings good fortune.\nOne should not cross the great water.\n\nA man may be conscious of a deficiency in himself. He should be undertaking the nourishment of the people, but he has not the strength to do it. Thus he must turn from his accustomed path and beg counsel and help from a man who is spiritually his superior but undistinguished outwardly. If he maintains this attitude of mind perseveringly, success and good fortune are his. But he must remain aware of his dependence. He must not put his own person forward nor attempt great labors, such as crossing the great water."
+      },
+      "6": {
+        "text": "The source of nourishment.\nAwareness of danger brings good fortune.\nIt furthers one to cross the great water.",
+        "comments": "This describes a sage of the highest order, from whom emanate all influences that provide nourishment for others. Such a position brings with it heavy responsibility. If he remains conscious of this fact, he has good fortune and may confidently undertake even great and difficult labors, such as crossing the great water. These undertakings bring general happiness for him and for all others."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Nourishment'. Internalize this core philosophy: This hexagram is a picture of an open mouth; above and below are firm lines of the lips, and between them the opening. Starting with the mouth, through which we take food for nourishment, the thought leads to nourishment itself. Nourishment of oneself, specifically of the body, is represented in the three lower lines, while the three upper lines represent nourishment and care of others, in a higher, spiritual sense. Your current worldview is: \"Yi, Nourishment (or Mouth Corners or even Nourishing Vision), is the hexagram of nurturing. Food is a great bounty, but all our actions nourish some desire we hold. If you understand your own actions, you understand your needs, and those of others. If you would understand another see what they nourish or cultivate, and see who they are.\". Let your choices be subtly driven by these conditions: you share with, or feed others, cook and tend food, or nourish something, you cannot give someone something they need. When interacting, mirror the wisdom found in the commentary: \"If we wish to know whether anyone is superior or not, we need only observe what part of his being he regards as especially important. The body has superior and inferior, important and unimportant parts. We must not injure important parts for the sake of the unimportant, nor must we injure the...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Nourishment'. The primary quest objective is: The Nourishment Quest nurtures some aspect of a character, usually, but not always the Quester or a big-bad. The Nourishment Quest might, for example, add a new Alt to a character, or integrate an existing Alt, or it may add Proficiencies, Skills, Talents, Powers or Super-Powers to a character, or most often it will add Lores to the big-bad. Any Nourishment step will add a Hurdle, Failure Levels, or Obstacle to the Test or Ordeal, unless that Test or Ordeal is concerned with consuming nourishment, either physical, mental or spiritual nourishment. Introduce environmental or social complications that reflect the 'Image' of this hexagram: \"God comes forth in the sign of the Arousing\": when in the spring the life forces stir again, all things comes into being anew. \"He brings to perfection in the sign of Keeping Still\": thus in the early spring, when the seeds fall to earth, all things are made ready. This is an image of providing nourishment through movement and tranquillity. The superior man takes it as a pattern for the... Use the following line-specific challenges to pace the story: The Quester is hungry for some nourishment, most often this is spiritual or mental nourishment that they seek, but a situation can occur where they might be physically starved, of course. If the Quester finds their own nourishment (hunting, gathering or purchasing ingredients, and cooking their own food) then things are normal, but if they look to another to nourish them (not cooking themselves), then this adds Hurdles, Obstacles or Failure Levels on their Test or Ordeal. | The Quester needs nourishment, however they cannot provide it for themselves (perhaps an authority limits access to suitable sources, or famine) and must either work on without it, or accept it from an authority. Working with an empty stomach, or accepting nourishment from another character will result in an additional Hurdle, Failure Level or Obstacle. | The Quester receives the nourishment that they seek, and they enjoy it, but it is not the nourishment that they really require. This is the spiritual, intellectual or natural equivalent of a junk food diet, or perhaps filling a spiritual void with material possessions and pleasures, and each time it is consumed it adds a Failure Level, Hurdle or Obstacle to the Test or Ordeal. This is the time for the Quester to realise that this nourishment is worthless, and to seek out better provision, and another character should tell them this now. If the Quester acknowledges this desire is not good for them and seeks out a more wholesome nourishment (often a more traditional, austere, or difficult path) then they may add a Success Level instead. | The Quester must focus on one thing at this time, but is what they truly pursue the Quest, or their own Nourishment? As long as they pursue either one exclusively they will have a Success Level on their Ordeal or Test, but if they choose to try to pursue both, even if they ask for help from companions so they can focus on one while the Quester focuses on the other, it will add a Hurdle, Obstacle, or Failure Level to their Ordeal or Test. | The Quester should be offered a way to turn from the path that they are on (be it the Quest or nourishment). They are offered options such as continuing, rejecting the Quest (perhaps handing it off to some one else), rejecting the nourishment (turning aside from those self-enriching pursuits), waiting and resting until something changes (including learning something new that may shift the balance or gathering resources to allow them to proceed later), or embracing the status-quo and not changing a thing. Of these things only embracing the status-quo or waiting, will not add a Failure Level, Hurdle or Obstacle to the Test or Ordeal. | The Quester should become aware that they are a source of nourishment for others, they teach others around them, and are responsible for those they teach. While they may not be able to nourish themselves, they can nourish others. If the Quester works for others (teaching or training others, or even manual labour for a land owner or authority), rather than for themselves, then they add a Success Level to their Ordeal or Test, and by some unexpected manner often complete the Quest or find a new source of nourishment for themselves and others. If the Quester works only for themselves and their goals they add a Failure Level, Hurdle or Obstacle to their Test or Ordeal.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Requiring Nourishment): Mirror the internal state described in the commentary: \"The magic tortoise is a creature possessed of such supernatural powers that it lives on air and needs no earthly nourishment. The image means that a man fitted by nature and position to live freely and independently renounces this self-reliance and...\" Your actions should be framed by the goal: you are greedy or envious.",
+        "Plot": "Plot Complication Line 1 (Requiring Nourishment): Introduce a challenge based on the interpretation: \"The magic tortoise is a creature possessed of such supernatural powers that it lives on air and needs no earthly nourishment. The image means that a man fitted by nature and position to live freely and independently renounces this self-reliance and...\" The specific quest objective for this stage is: The Quester is hungry for some nourishment, most often this is spiritual or mental nourishment that they seek, but a situation can occur where they might be physically starved, of course. If the Quester finds their own nourishment (hunting, gathering or purchasing ingredients, and cooking their own food) then things are normal, but if they look to another to nourish them (not cooking themselves), then this adds Hurdles, Obstacles or Failure Levels on their Test or Ordeal."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Not a Sage on a Mountain, but a Beggar on a Hill): Mirror the internal state described in the commentary: \"To seek nourishment from the hill.\nContinuing to do this brings misfortune.\n\nNormally a person either provides his own means of nourishment or is supported in a proper way by those whose duty of privilege it is to provide for him. If, owing to...\" Your actions should be framed by the goal: you eat alone, or are anti-social.",
+        "Plot": "Plot Complication Line 2 (Not a Sage on a Mountain, but a Beggar on a Hill): Introduce a challenge based on the interpretation: \"To seek nourishment from the hill.\nContinuing to do this brings misfortune.\n\nNormally a person either provides his own means of nourishment or is supported in a proper way by those whose duty of privilege it is to provide for him. If, owing to...\" The specific quest objective for this stage is: The Quester needs nourishment, however they cannot provide it for themselves (perhaps an authority limits access to suitable sources, or famine) and must either work on without it, or accept it from an authority. Working with an empty stomach, or accepting nourishment from another character will result in an additional Hurdle, Failure Level or Obstacle."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Dessert First): Mirror the internal state described in the commentary: \"Nothing serves to further.\nHe who seeks nourishment that does not nourish reels from desire to gratification and in gratification craves desire. Mad pursuit of pleasure for the satisfaction of the senses never brings one to the goal. One should...\" Your actions should be framed by the goal: you seek pleasure or acknowledge your desires.",
+        "Plot": "Plot Complication Line 3 (Dessert First): Introduce a challenge based on the interpretation: \"Nothing serves to further.\nHe who seeks nourishment that does not nourish reels from desire to gratification and in gratification craves desire. Mad pursuit of pleasure for the satisfaction of the senses never brings one to the goal. One should...\" The specific quest objective for this stage is: The Quester receives the nourishment that they seek, and they enjoy it, but it is not the nourishment that they really require. This is the spiritual, intellectual or natural equivalent of a junk food diet, or perhaps filling a spiritual void with material possessions and pleasures, and each time it is consumed it adds a Failure Level, Hurdle or Obstacle to the Test or Ordeal. This is the time for the Quester to realise that this nourishment is worthless, and to seek out better provision, and another character should tell them this now. If the Quester acknowledges this desire is not good for them and seeks out a more wholesome nourishment (often a more traditional, austere, or difficult path) then they may add a Success Level instead."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Nourished by the Mountain, like a Tiger): Mirror the internal state described in the commentary: \"Spying about with sharp eyes\nLike a tiger with insatiable craving.\n\nNo blame.\n\nIn contrast to the six in the second place, which refers to a man bent exclusively on his own advantage, this line refers to one occupying a high position and striving to...\" Your actions should be framed by the goal: you ask another for a favour, or seek what you want.",
+        "Plot": "Plot Complication Line 4 (Nourished by the Mountain, like a Tiger): Introduce a challenge based on the interpretation: \"Spying about with sharp eyes\nLike a tiger with insatiable craving.\n\nNo blame.\n\nIn contrast to the six in the second place, which refers to a man bent exclusively on his own advantage, this line refers to one occupying a high position and striving to...\" The specific quest objective for this stage is: The Quester must focus on one thing at this time, but is what they truly pursue the Quest, or their own Nourishment? As long as they pursue either one exclusively they will have a Success Level on their Ordeal or Test, but if they choose to try to pursue both, even if they ask for help from companions so they can focus on one while the Quester focuses on the other, it will add a Hurdle, Obstacle, or Failure Level to their Ordeal or Test."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Turn from the Path): Mirror the internal state described in the commentary: \"To remain persevering brings good fortune.\nOne should not cross the great water.\n\nA man may be conscious of a deficiency in himself. He should be undertaking the nourishment of the people, but he has not the strength to do it. Thus he must turn from...\" Your actions should be framed by the goal: you break a task down into smaller steps, procrastinate or waste time.",
+        "Plot": "Plot Complication Line 5 (Turn from the Path): Introduce a challenge based on the interpretation: \"To remain persevering brings good fortune.\nOne should not cross the great water.\n\nA man may be conscious of a deficiency in himself. He should be undertaking the nourishment of the people, but he has not the strength to do it. Thus he must turn from...\" The specific quest objective for this stage is: The Quester should be offered a way to turn from the path that they are on (be it the Quest or nourishment). They are offered options such as continuing, rejecting the Quest (perhaps handing it off to some one else), rejecting the nourishment (turning aside from those self-enriching pursuits), waiting and resting until something changes (including learning something new that may shift the balance or gathering resources to allow them to proceed later), or embracing the status-quo and not changing a thing. Of these things only embracing the status-quo or waiting, will not add a Failure Level, Hurdle or Obstacle to the Test or Ordeal."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Real Nourishment): Mirror the internal state described in the commentary: \"This describes a sage of the highest order, from whom emanate all influences that provide nourishment for others. Such a position brings with it heavy responsibility. If he remains conscious of this fact, he has good fortune and may confidently...\" Your actions should be framed by the goal: you act for the benefit of others.",
+        "Plot": "Plot Complication Line 6 (Real Nourishment): Introduce a challenge based on the interpretation: \"This describes a sage of the highest order, from whom emanate all influences that provide nourishment for others. Such a position brings with it heavy responsibility. If he remains conscious of this fact, he has good fortune and may confidently...\" The specific quest objective for this stage is: The Quester should become aware that they are a source of nourishment for others, they teach others around them, and are responsible for those they teach. While they may not be able to nourish themselves, they can nourish others. If the Quester works for others (teaching or training others, or even manual labour for a land owner or authority), rather than for themselves, then they add a Success Level to their Ordeal or Test, and by some unexpected manner often complete the Quest or find a new source of nourishment for themselves and others. If the Quester works only for themselves and their goals they add a Failure Level, Hurdle or Obstacle to their Test or Ordeal."
+      }
+    }
+  }
+}

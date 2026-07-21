@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 49,
+    "Name": "Reforming",
+    "Entity": "&#19952;",
+    "Logical": 29,
+    "Trigrams": [
+      2,
+      1
+    ],
+    "Hexagram_Text": "Ko, Reforming (or Moulting or Revolution or Change), is symbolic of transformation. It is the silken cocoon of the caterpillar, the snakes shed skin, or the split, empty shell of an invertebrate.",
+    "Unchanging": "You may once per Session / Chapter / Episode alter Incarna Score (Boon Reduced) Proficiencies of your Character. Any Annex that is altered may be renamed. E.g. Having altered \"Man\" to \"Rifles\", a Character changes \"Gunman\" to \"Guns\".",
+    "Line1": "Bound in Snakeskin",
+    "Line2": "Viva La Revolution",
+    "Line3": "Third Times a Charm",
+    "Line4": "Remorse Vanishes",
+    "Line5": "A Tiger Changes Stripes",
+    "Line6": "A Leopard Changes Spots"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you change your mind, your tactics, or any aspect of the Character",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you behave conventionally, or agree with the majority",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "you resist a change, or are impatient",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yang",
+        "Condition": "you rock the boat, speak against the status quo, or change things around you",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yin",
+        "Condition": "you discuss something three (or more) times before acting",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yin",
+        "Condition": "you are believed, or you act alone",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yin",
+        "Condition": "you lie, or mislead, and do not have to explain, or it becomes true anyway",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yang",
+        "Condition": "you make another change expression / mood, or what they think about you",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Reforming Quest is set in a situation of upheaval, change and transformation, often including open conflict between two sides of a conflict, usually this is framed as a political revolution, with the conservative, and often corrupt, old guard leaving and the new reactionary, progressive and often naive generation arriving, but a more simple good versus evil or light versus darkness conflict can also occur. This change in circumstance is inevitable, and the Quester, like everyone else must be learn to accept this change and then they may profit from the change somehow. ",
+    "Quest_Complete": "The Quest that ends in the reforming Hexagram ends in a dramatic change of circumstances for everyone involved. This is usually a profound change or inversion in the situation, such as the rich becoming poor, or vice versa. This dramatic change is often an unforeseen consequence of the Quest&#39;s completion rather than an additional Ordeal or Gain. In some cases this final change may be experienced as a twist in the tale.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "When the Quester is not prepared for the change that is taking place, or when they try to force a change before things are ready then they will suffer an additional Hurdle, Obstacle or Failure Level on their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The time for real change is arriving, but without proper preparation and the right leaders ready the revolution is doomed. The Quester who ignores the changes occurring around them, or who ignores the new regime as it appears will suffer a Hurdle, Obstacle or Failure Level on their Ordeal or Test. The Quester who plans for this change, and assists it, identifying the new leaders, and ingratiating themselves with them, will instead add a Success Level to their Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The Quester who acts too quickly to bring change and the Quester who hesitates until after the new order is established will both add a Failure Level, Obstacle or Hurdle to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "There is a profound and radical change in circumstances happening, but such an all encompassing change is doomed to failure without the right leadership. If the leadership of the revolution is not perfectly sincere and honest then the change will fail somehow, either reverting to how it was, or collapsing into some new chaotic state. The Quester who ignores these changes taking place, or who acts as a leader without sincerity and honour, adds a Failure Level, Obstacle or Hurdle to their Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester has an opportunity to effect change themselves, if they can explain the change they wish to make and how they are going to affect this change then they will add a Success Level, but if they cannot explain the changes or how to make them then they add a Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "After the grand dramatic changes have finished there are always smaller changes that must be accomplished. This is not the time to try and make a big change to anything, trying will create a Hurdle, Obstacle or Failure Level, but if the Quester aims for small changes, this will become an added Success Level.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "The Chinese character for this hexagram means in its original sense an animal's pelt, which is changed in the course of the year by molting. From this word is carried over to apply to the \"moltings\" in political life, the great revolutions connected with changes of governments. The two trigrams making up the hexagram are the same two that appear in K'uei, OPPOSITION\n\n38, that is, the two younger daughters, Li and Tui. But while there the elder of the two daughters is above, and what results is essentially only an opposition of tendencies, here the younger daughter is above. The influences are in actual conflict, and the forces combat each other like fire and water (lake), each trying to destroy the other. Hence the idea of revolution.",
+    "The_Image": {
+      "text": "Fire in the lake: the image of REVOLUTION.\n\nThus the superior man\n\nSets the calendar in order\nAnd makes the seasons clear.",
+      "comments": "Fire below and the lake above combat and destroy each other. So too in the course of the year a combat takes place between the forces of light and the forces of darkness, eventuating in the revolution of the seasons, and man is able to adjust himself in advance to the demands of the different times."
+    },
+    "The_Judgment": {
+      "text": "REVOLUTION. On your own day\nYou are believed.\n\nSupreme success,\nFurthering through perseverance.\nRemorse disappears.",
+      "comments": "Political revolutions are extremely grave matters. They should be undertaken only under stress of direst necessity, when there is no other way out. Not everyone is called to this task, but only the man who has the confidence of the people, and even he only when the time is ripe. He must then proceed in the right way, so that he gladdens the people and, by enlightening them, prevents excesses. Furthermore, he must be quite free of selfish aims and must really relieve the need of the people. Only then does he have nothing to regret. Times change, and with them their demands. Thus the seasons change in the course of the year. In the world cycle also there are spring and autumn in the life of peoples and nations, and these call for social transformations."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Wrapped in the hide of a yellow cow.",
+        "comments": "Changes ought to be undertaken only when there is nothing else to be done. Therefore at first the utmost restraint is necessary. One must becomes firm in one's mind, control oneself-yellow is the color of the means, and the cow is the symbol of docility-and refrain from doing anything for the time being, because any premature offensive will bring evil results."
+      },
+      "2": {
+        "text": "When one's own day comes, one may create revolution.",
+        "comments": "Starting brings good fortune. No blame.\n\nWhen we have tried in every other way to bring about reforms, but without success, revolution becomes necessary. But such a thoroughgoing upheaval must be carefully prepared. There must be available a man who has the requisite abilities and who possesses public confidence. To such a man we may well turn. This brings good fortune and is not a mistake. The first thing to be considered is our inner attitude toward the new condition that will inevitably come. We have to go out to meet it, as it were. Only in this way can it be prepared for."
+      },
+      "3": {
+        "text": "Starting brings misfortune.\nPerseverance brings danger.\nWhen talk of revolution has gone the rounds three times,\nOne may commit himself,\nAnd men will believe him.",
+        "comments": "When change is necessary, there are two mistakes to be avoided. One lies in excessive haste and ruthlessness, which bring disaster. The other lies in excessive hesitation and conservatism, which are also dangerous. Not every demand for change in the existing order should be heeded. On the other hand, repeated and well-founded complaints should not fail of a hearing. When talk of change has come to one's ears three times, and has been pondered well, he may believe and acquiesce in it. Then he will meet with belief and will accomplish something."
+      },
+      "4": {
+        "text": "Remorse disappears. Men believe him.\nChanging the form of government brings good fortune.",
+        "comments": "Radical changes require adequate authority. A man must have inner strength as well as influential position. What he does must correspond with a higher truth and must not spring from arbitrary or petty motives; then it brings great good fortune. If a revolution is not founded on such inner truth, the results are bad, and it has no success. For in the end men will support only those undertakings which they feel instinctively to be just."
+      },
+      "5": {
+        "text": "The great man changes like a tiger.\nEven before he questions the oracle\nHe is believed.",
+        "comments": "A tigerskin, with its highly visible black stripes on a yellow ground, shows its distinct pattern from afar. It is the same with a revolution brought about by a great man: large, clear guiding lines become visible, understandable to everyone. Therefore he need not first consult the oracle, for he wins the spontaneous support of the people."
+      },
+      "6": {
+        "text": "The superior man changes like a panther.",
+        "comments": "The inferior man molts in the face.\n\nStarting brings misfortune.\n\nTo remain persevering brings good fortune.\n\nAfter the large and fundamental problems are settled, certain minor reforms, and elaborations of these, are necessary. These detailed reforms may be likened to the equally distinct but relatively small marks of the panther's coat. As a consequence, a change also takes place among the inferior people. In conformity with the new order, they likewise \"molt.\" This molting, it is true, does not go very deep, but that is not to be expected. We must be satisfied with the attainable. If we should go too far and try to achieve too much, it would lead to unrest and misfortune. For the object of a great revolution is the attainment of clarified, secure conditions ensuring a general stabilization on the basis of what is possible at the moment."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Reforming'. Internalize this core philosophy: The Chinese character for this hexagram means in its original sense an animal's pelt, which is changed in the course of the year by molting. From this word is carried over to apply to the \"moltings\" in political life, the great revolutions connected with changes of governments. The two trigrams making up the hexagram are the same two that appear in K'uei, OPPOSITION\n\n38, that is, the two younger daughters, Li and Tui. But while there the elder of the two daughters is above, and what results is... Your current worldview is: \"Ko, Reforming (or Moulting or Revolution or Change), is symbolic of transformation. It is the silken cocoon of the caterpillar, the snakes shed skin, or the split, empty shell of an invertebrate.\". Let your choices be subtly driven by these conditions: you change your mind, your tactics, or any aspect of the Character, you behave conventionally, or agree with the majority. When interacting, mirror the wisdom found in the commentary: \"Political revolutions are extremely grave matters. They should be undertaken only under stress of direst necessity, when there is no other way out. Not everyone is called to this task, but only the man who has the confidence of the people, and even he only when the time is ripe. He must then...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Reforming'. The primary quest objective is: The Reforming Quest is set in a situation of upheaval, change and transformation, often including open conflict between two sides of a conflict, usually this is framed as a political revolution, with the conservative, and often corrupt, old guard leaving and the new reactionary, progressive and often naive generation arriving, but a more simple good versus evil or light versus darkness conflict can also occur. This change in circumstance is inevitable, and the Quester, like everyone else must be learn to accept this change and then they may profit from the change somehow. . Introduce environmental or social complications that reflect the 'Image' of this hexagram: Fire below and the lake above combat and destroy each other. So too in the course of the year a combat takes place between the forces of light and the forces of darkness, eventuating in the revolution of the seasons, and man is able to adjust himself in advance to the demands of the different times. Use the following line-specific challenges to pace the story: When the Quester is not prepared for the change that is taking place, or when they try to force a change before things are ready then they will suffer an additional Hurdle, Obstacle or Failure Level on their Ordeal or Test. | The time for real change is arriving, but without proper preparation and the right leaders ready the revolution is doomed. The Quester who ignores the changes occurring around them, or who ignores the new regime as it appears will suffer a Hurdle, Obstacle or Failure Level on their Ordeal or Test. The Quester who plans for this change, and assists it, identifying the new leaders, and ingratiating themselves with them, will instead add a Success Level to their Test or Ordeal. | The Quester who acts too quickly to bring change and the Quester who hesitates until after the new order is established will both add a Failure Level, Obstacle or Hurdle to the Test or Ordeal. | There is a profound and radical change in circumstances happening, but such an all encompassing change is doomed to failure without the right leadership. If the leadership of the revolution is not perfectly sincere and honest then the change will fail somehow, either reverting to how it was, or collapsing into some new chaotic state. The Quester who ignores these changes taking place, or who acts as a leader without sincerity and honour, adds a Failure Level, Obstacle or Hurdle to their Test or Ordeal. | The Quester has an opportunity to effect change themselves, if they can explain the change they wish to make and how they are going to affect this change then they will add a Success Level, but if they cannot explain the changes or how to make them then they add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. | After the grand dramatic changes have finished there are always smaller changes that must be accomplished. This is not the time to try and make a big change to anything, trying will create a Hurdle, Obstacle or Failure Level, but if the Quester aims for small changes, this will become an added Success Level.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Bound in Snakeskin): Mirror the internal state described in the commentary: \"Changes ought to be undertaken only when there is nothing else to be done. Therefore at first the utmost restraint is necessary. One must becomes firm in one's mind, control oneself-yellow is the color of the means, and the cow is the symbol of...\" Your actions should be framed by the goal: you resist a change, or are impatient.",
+        "Plot": "Plot Complication Line 1 (Bound in Snakeskin): Introduce a challenge based on the interpretation: \"Changes ought to be undertaken only when there is nothing else to be done. Therefore at first the utmost restraint is necessary. One must becomes firm in one's mind, control oneself-yellow is the color of the means, and the cow is the symbol of...\" The specific quest objective for this stage is: When the Quester is not prepared for the change that is taking place, or when they try to force a change before things are ready then they will suffer an additional Hurdle, Obstacle or Failure Level on their Ordeal or Test."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Viva La Revolution): Mirror the internal state described in the commentary: \"Starting brings good fortune. No blame.\n\nWhen we have tried in every other way to bring about reforms, but without success, revolution becomes necessary. But such a thoroughgoing upheaval must be carefully prepared. There must be available a man who...\" Your actions should be framed by the goal: you rock the boat, speak against the status quo, or change things around you.",
+        "Plot": "Plot Complication Line 2 (Viva La Revolution): Introduce a challenge based on the interpretation: \"Starting brings good fortune. No blame.\n\nWhen we have tried in every other way to bring about reforms, but without success, revolution becomes necessary. But such a thoroughgoing upheaval must be carefully prepared. There must be available a man who...\" The specific quest objective for this stage is: The time for real change is arriving, but without proper preparation and the right leaders ready the revolution is doomed. The Quester who ignores the changes occurring around them, or who ignores the new regime as it appears will suffer a Hurdle, Obstacle or Failure Level on their Ordeal or Test. The Quester who plans for this change, and assists it, identifying the new leaders, and ingratiating themselves with them, will instead add a Success Level to their Test or Ordeal."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Third Times a Charm): Mirror the internal state described in the commentary: \"When change is necessary, there are two mistakes to be avoided. One lies in excessive haste and ruthlessness, which bring disaster. The other lies in excessive hesitation and conservatism, which are also dangerous. Not every demand for change in the...\" Your actions should be framed by the goal: you discuss something three (or more) times before acting.",
+        "Plot": "Plot Complication Line 3 (Third Times a Charm): Introduce a challenge based on the interpretation: \"When change is necessary, there are two mistakes to be avoided. One lies in excessive haste and ruthlessness, which bring disaster. The other lies in excessive hesitation and conservatism, which are also dangerous. Not every demand for change in the...\" The specific quest objective for this stage is: The Quester who acts too quickly to bring change and the Quester who hesitates until after the new order is established will both add a Failure Level, Obstacle or Hurdle to the Test or Ordeal."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Remorse Vanishes): Mirror the internal state described in the commentary: \"Radical changes require adequate authority. A man must have inner strength as well as influential position. What he does must correspond with a higher truth and must not spring from arbitrary or petty motives; then it brings great good fortune. If a...\" Your actions should be framed by the goal: you are believed, or you act alone.",
+        "Plot": "Plot Complication Line 4 (Remorse Vanishes): Introduce a challenge based on the interpretation: \"Radical changes require adequate authority. A man must have inner strength as well as influential position. What he does must correspond with a higher truth and must not spring from arbitrary or petty motives; then it brings great good fortune. If a...\" The specific quest objective for this stage is: There is a profound and radical change in circumstances happening, but such an all encompassing change is doomed to failure without the right leadership. If the leadership of the revolution is not perfectly sincere and honest then the change will fail somehow, either reverting to how it was, or collapsing into some new chaotic state. The Quester who ignores these changes taking place, or who acts as a leader without sincerity and honour, adds a Failure Level, Obstacle or Hurdle to their Test or Ordeal."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (A Tiger Changes Stripes): Mirror the internal state described in the commentary: \"A tigerskin, with its highly visible black stripes on a yellow ground, shows its distinct pattern from afar. It is the same with a revolution brought about by a great man: large, clear guiding lines become visible, understandable to everyone....\" Your actions should be framed by the goal: you lie, or mislead, and do not have to explain, or it becomes true anyway.",
+        "Plot": "Plot Complication Line 5 (A Tiger Changes Stripes): Introduce a challenge based on the interpretation: \"A tigerskin, with its highly visible black stripes on a yellow ground, shows its distinct pattern from afar. It is the same with a revolution brought about by a great man: large, clear guiding lines become visible, understandable to everyone....\" The specific quest objective for this stage is: The Quester has an opportunity to effect change themselves, if they can explain the change they wish to make and how they are going to affect this change then they will add a Success Level, but if they cannot explain the changes or how to make them then they add a Hurdle, Obstacle or Failure Level to their Ordeal or Test."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (A Leopard Changes Spots): Mirror the internal state described in the commentary: \"The inferior man molts in the face.\n\nStarting brings misfortune.\n\nTo remain persevering brings good fortune.\n\nAfter the large and fundamental problems are settled, certain minor reforms, and elaborations of these, are necessary. These detailed...\" Your actions should be framed by the goal: you make another change expression / mood, or what they think about you.",
+        "Plot": "Plot Complication Line 6 (A Leopard Changes Spots): Introduce a challenge based on the interpretation: \"The inferior man molts in the face.\n\nStarting brings misfortune.\n\nTo remain persevering brings good fortune.\n\nAfter the large and fundamental problems are settled, certain minor reforms, and elaborations of these, are necessary. These detailed...\" The specific quest objective for this stage is: After the grand dramatic changes have finished there are always smaller changes that must be accomplished. This is not the time to try and make a big change to anything, trying will create a Hurdle, Obstacle or Failure Level, but if the Quester aims for small changes, this will become an added Success Level."
+      }
+    }
+  }
+}

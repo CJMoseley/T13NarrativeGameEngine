@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 39,
+    "Name": "Obstacles",
+    "Entity": "&#19942;",
+    "Logical": 20,
+    "Trigrams": [
+      5,
+      6
+    ],
+    "Hexagram_Text": "Jian, Obstacles (or Obstruction, Barriers, or Limping), signifies the Obstacles that get in the way of us achieving our goals. Obstacles and barriers force us to Innovate to bypass or defeat them. Overcoming our barriers is part of our growth process.",
+    "Unchanging": "You may play any card as a Yarn Obstacle once per Stage, and you may add Incarna Draw (Boon Double Reduced) Success Levels to any action to do with Obstacles.",
+    "Line1": "Going Leads to Obstruction",
+    "Line2": "The King's Servant Obstructed",
+    "Line3": "Coming Back",
+    "Line4": "Return for Help",
+    "Line5": "Friends Arrive when Obstacles are Biggest",
+    "Line6": "Coming Leads to Triumph"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you meet an Obstacle, Hurdle, Snag or Fray or another barrier or set-back and change direction or work around the issue, rather than confront it head on",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you take on an Obstacle, Hurdle, Snag or Fray head on",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yang",
+        "Condition": "you do not go first",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yang",
+        "Condition": "you face a problem or don&#39;t follow advice",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yin",
+        "Condition": "you are back in a place you have been before",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yang",
+        "Condition": "you ask someone for help",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yin",
+        "Condition": "if you help another past a barrier or Obstacle",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yang",
+        "Condition": "you prepare an action",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Obstacles Quest is one that signifies a great danger lies ahead, the Quest will be more difficult and dangerous at every turn than the Quester would want or expect. Every Ordeal that occurs during the Quest will have at least one additional Obstacle, and Obstacle Quests always have at least one Hurdle that must also be overcome (even if that Hurdle is the Quester&#39;s own Embodiment Facet. These Hurdles often relate to faults (particularly Flaws and other Hitches) in the Quester, rather than external forces working against them.",
+    "Quest_Complete": "When the Quest ends with the Obstacles Hexagram then the Quest veers in the end into dangerous territories. This often adds an immediate Ordeal, that must include at least three Obstacles (usually dangerous traps, fights and the like), and at least one Hurdle.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "If the Quester attempts to push forwards, rather than hold their position, then add a Hurdle, Failure Level, or Obstacle to the Test or Ordeal. The Quester who holds their position, and assesses the barriers to their progress, and how best to deal with them, they may add a Success Level to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester is offered a choice, that simply places an additional Hurdle, Failure Level or 2 Obstacles on their Test or Ordeal, if they continue with the Quest, or duties. An authority (perhaps even the Quest-giver) may recommend to the Quester to abandon the Quest completely. ",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The Quester is faced with a situation where one choice will harm their companions or innocents (often applying an Unsoakable Wound or an Obstacle, Failure Level or Hurdle to their next Test or Ordeal Actions) and the other choice will harm their chances of completing the Quest (adding a Hurdle, Failure Level, or 2 Obstacles to the Test or Ordeal).",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "Reaching the next barrier the wise Quester would stop here and wait for their companions to join them. If the Quester has companions then they can add a Success Level to the Test or Ordeal, but if they try to push on alone, add a Failure Level, Hurdle or Obstacle.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester should encounter another character who is already caught upon an obstacle or barrier. If the Quester chooses to help this other character past their barrier, the character will help the Quester past their barrier (add a Success Level). If the Quester does not help the stuck character, then add a Hurdle, Failure Level or 2 Obstacles to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester cannot ignore or remove themselves from Obstacles, they can only face the Obstacles and try to power through. Adding an Obstacle or Hurdle will also add a Success Level, attempts to avoid Obstacles or circumvent a Hurdle will add Failure Levels, Hurdles and more Obstacles.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "The hexagram pictures a dangerous abyss lying before us and a steep, inaccessible mountain rising behind us. We are surrounded by obstacles; at the same time, since the mountain has the attribute of keeping still, there is implicit a hint as to how we can extricate ourselves. The hexagram represents obstructions that appear in the course of time but that can and should be overcome. Therefore all the instruction given is directed to overcoming them.",
+    "The_Image": {
+      "text": "Water on the mountain:\n\nThe image of OBSTRUCTION.\n\nThus the superior man turns his attention to himself\nAnd molds his character.",
+      "comments": "Difficulties and obstructions throw a man back upon himself. While the inferior man seeks to put the blame on other persons, bewailing his fate, the superior man seeks the error within himself, and through this introspection the external obstacle becomes for him an occasion for inner enrichment and education."
+    },
+    "The_Judgment": {
+      "text": "OBSTRUCTION. The southwest furthers.\n\nThe northeast does not further.\nIt furthers one to see the great man.\nPerseverance brings good fortune.",
+      "comments": "The southwest is the region of retreat, the northeast that of advance. Here an individual is confronted by obstacles that cannot be overcome directly. In such a situation it is wise to pause in view of the danger and to retreat. However, this is merely a preparation for overcoming the obstructions. One must join forces with friends of like mind and put himself under the leadership of a man equal to the situation: then one will succeed in removing the obstacles. This requires the will to persevere just when one apparently must do something that leads away from his goal. This unswerving inner purpose brings good fortune in the end. An obstruction that lasts only for a time is useful for self-development. This is the value of adversity."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Going leads to obstructions,\nComing meets with praise.",
+        "comments": "When one encounters an obstruction, the important thing is to reflect on how best to deal with it. When threatened with danger, one should not strive blindly to go ahead, for this only leads to complications. The correct thing is, on the contrary, to retreat for the time being, not in order to give up the struggle but to await the right moment for action."
+      },
+      "2": {
+        "text": "The King's servant is beset by obstruction upon obstruction,\nBut it is not his own fault.",
+        "comments": "Ordinarily it is best to go around an obstacle and try to overcome it along the line of least resistance. But there is one instance in which a man must go out to meet the trouble, even though difficulty piles upon difficulty: this is when the path of duty leads directly to it-in other words, when he cannot act of his own volition but is duty bound to go and seek out danger in the service of a higher cause. Then he may do it without compunction, because it is not through any fault of his that he is putting himself in this difficult situation."
+      },
+      "3": {
+        "text": "Going leads to obstructions;\nHence he comes back.",
+        "comments": "While the preceding line shows the official compelled by duty to follow the way of danger, this line shows the man who must act as father of a family or as head of his kin. If he were to plunge recklessly in to danger, it would be a useless act, because those entrusted to his care cannot get along by themselves. But if he withdraws and turns back to his own, they welcome him with great joy."
+      },
+      "4": {
+        "text": "Going leads to obstructions,\nComing leads to union.",
+        "comments": "This too describes a situation that cannot be managed single-handed. In such a case the direct way is not the shortest. If a person were to forge ahead on his own strength and without the necessary preparations, he would not find the support he needs and would realize too late that he has been mistaken in his calculations, inasmuch as the conditions on which he hoped he could rely would prove to be inadequate. In this case it is better, therefore, to hold back for the time being and to gather together trustworthy companions who can be counted upon for help in overcoming the obstructions."
+      },
+      "5": {
+        "text": "In the midst of the greatest obstructions,\nFriends come.",
+        "comments": "Here we see a man who is called to help in an emergency. He should not seek to evade the obstructions, no matter how dangerously they pile up before him. But because he is really called to the task, the power of his spirit is strong enough to attract helpers whom he can effectively organize, so that through the well-directed co-operation of all participants the obstruction is overcome."
+      },
+      "6": {
+        "text": "Going leads to obstructions,\nComing leads to great good fortune.\nIt furthers one to see the great man.",
+        "comments": "This refers to a man who has already left the world and its tumult behind him. When the time of obstructions arrives, it might seem that the simplest thing for him to do would be to turn his back upon the world and take refuge in the beyond. But this road is barred to him. He must not seek his own salvation and abandon the world to its adversity. Duty calls him back once more into the turmoil of life. Precisely because of his experience and inner freedom, he is able to create something both great and complete that brings good fortune. And it is favorable to see the great man in alliance with whom one can achieve the work of rescue."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Obstacles'. Internalize this core philosophy: The hexagram pictures a dangerous abyss lying before us and a steep, inaccessible mountain rising behind us. We are surrounded by obstacles; at the same time, since the mountain has the attribute of keeping still, there is implicit a hint as to how we can extricate ourselves. The hexagram represents obstructions that appear in the course of time but that can and should be overcome. Therefore all the instruction given is directed to overcoming them. Your current worldview is: \"Jian, Obstacles (or Obstruction, Barriers, or Limping), signifies the Obstacles that get in the way of us achieving our goals. Obstacles and barriers force us to Innovate to bypass or defeat them. Overcoming our barriers is part of our growth process.\". Let your choices be subtly driven by these conditions: you meet an Obstacle, Hurdle, Snag or Fray or another barrier or set-back and change direction or work around the issue, rather than confront it head on, you take on an Obstacle, Hurdle, Snag or Fray head on. When interacting, mirror the wisdom found in the commentary: \"The southwest is the region of retreat, the northeast that of advance. Here an individual is confronted by obstacles that cannot be overcome directly. In such a situation it is wise to pause in view of the danger and to retreat. However, this is merely a preparation for overcoming the obstructions....\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Obstacles'. The primary quest objective is: The Obstacles Quest is one that signifies a great danger lies ahead, the Quest will be more difficult and dangerous at every turn than the Quester would want or expect. Every Ordeal that occurs during the Quest will have at least one additional Obstacle, and Obstacle Quests always have at least one Hurdle that must also be overcome (even if that Hurdle is the Quester&#39;s own Embodiment Facet. These Hurdles often relate to faults (particularly Flaws and other Hitches) in the Quester, rather than external forces working against them.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: Difficulties and obstructions throw a man back upon himself. While the inferior man seeks to put the blame on other persons, bewailing his fate, the superior man seeks the error within himself, and through this introspection the external obstacle becomes for him an occasion for inner enrichment and education. Use the following line-specific challenges to pace the story: If the Quester attempts to push forwards, rather than hold their position, then add a Hurdle, Failure Level, or Obstacle to the Test or Ordeal. The Quester who holds their position, and assesses the barriers to their progress, and how best to deal with them, they may add a Success Level to the Test or Ordeal. | The Quester is offered a choice, that simply places an additional Hurdle, Failure Level or 2 Obstacles on their Test or Ordeal, if they continue with the Quest, or duties. An authority (perhaps even the Quest-giver) may recommend to the Quester to abandon the Quest completely.  | The Quester is faced with a situation where one choice will harm their companions or innocents (often applying an Unsoakable Wound or an Obstacle, Failure Level or Hurdle to their next Test or Ordeal Actions) and the other choice will harm their chances of completing the Quest (adding a Hurdle, Failure Level, or 2 Obstacles to the Test or Ordeal). | Reaching the next barrier the wise Quester would stop here and wait for their companions to join them. If the Quester has companions then they can add a Success Level to the Test or Ordeal, but if they try to push on alone, add a Failure Level, Hurdle or Obstacle. | The Quester should encounter another character who is already caught upon an obstacle or barrier. If the Quester chooses to help this other character past their barrier, the character will help the Quester past their barrier (add a Success Level). If the Quester does not help the stuck character, then add a Hurdle, Failure Level or 2 Obstacles to the Test or Ordeal. | The Quester cannot ignore or remove themselves from Obstacles, they can only face the Obstacles and try to power through. Adding an Obstacle or Hurdle will also add a Success Level, attempts to avoid Obstacles or circumvent a Hurdle will add Failure Levels, Hurdles and more Obstacles.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Going Leads to Obstruction): Mirror the internal state described in the commentary: \"When one encounters an obstruction, the important thing is to reflect on how best to deal with it. When threatened with danger, one should not strive blindly to go ahead, for this only leads to complications. The correct thing is, on the contrary,...\" Your actions should be framed by the goal: you do not go first.",
+        "Plot": "Plot Complication Line 1 (Going Leads to Obstruction): Introduce a challenge based on the interpretation: \"When one encounters an obstruction, the important thing is to reflect on how best to deal with it. When threatened with danger, one should not strive blindly to go ahead, for this only leads to complications. The correct thing is, on the contrary,...\" The specific quest objective for this stage is: If the Quester attempts to push forwards, rather than hold their position, then add a Hurdle, Failure Level, or Obstacle to the Test or Ordeal. The Quester who holds their position, and assesses the barriers to their progress, and how best to deal with them, they may add a Success Level to the Test or Ordeal."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (The King's Servant Obstructed): Mirror the internal state described in the commentary: \"Ordinarily it is best to go around an obstacle and try to overcome it along the line of least resistance. But there is one instance in which a man must go out to meet the trouble, even though difficulty piles upon difficulty: this is when the path...\" Your actions should be framed by the goal: you face a problem or don&#39;t follow advice.",
+        "Plot": "Plot Complication Line 2 (The King's Servant Obstructed): Introduce a challenge based on the interpretation: \"Ordinarily it is best to go around an obstacle and try to overcome it along the line of least resistance. But there is one instance in which a man must go out to meet the trouble, even though difficulty piles upon difficulty: this is when the path...\" The specific quest objective for this stage is: The Quester is offered a choice, that simply places an additional Hurdle, Failure Level or 2 Obstacles on their Test or Ordeal, if they continue with the Quest, or duties. An authority (perhaps even the Quest-giver) may recommend to the Quester to abandon the Quest completely. "
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Coming Back): Mirror the internal state described in the commentary: \"While the preceding line shows the official compelled by duty to follow the way of danger, this line shows the man who must act as father of a family or as head of his kin. If he were to plunge recklessly in to danger, it would be a useless act,...\" Your actions should be framed by the goal: you are back in a place you have been before.",
+        "Plot": "Plot Complication Line 3 (Coming Back): Introduce a challenge based on the interpretation: \"While the preceding line shows the official compelled by duty to follow the way of danger, this line shows the man who must act as father of a family or as head of his kin. If he were to plunge recklessly in to danger, it would be a useless act,...\" The specific quest objective for this stage is: The Quester is faced with a situation where one choice will harm their companions or innocents (often applying an Unsoakable Wound or an Obstacle, Failure Level or Hurdle to their next Test or Ordeal Actions) and the other choice will harm their chances of completing the Quest (adding a Hurdle, Failure Level, or 2 Obstacles to the Test or Ordeal)."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Return for Help): Mirror the internal state described in the commentary: \"This too describes a situation that cannot be managed single-handed. In such a case the direct way is not the shortest. If a person were to forge ahead on his own strength and without the necessary preparations, he would not find the support he...\" Your actions should be framed by the goal: you ask someone for help.",
+        "Plot": "Plot Complication Line 4 (Return for Help): Introduce a challenge based on the interpretation: \"This too describes a situation that cannot be managed single-handed. In such a case the direct way is not the shortest. If a person were to forge ahead on his own strength and without the necessary preparations, he would not find the support he...\" The specific quest objective for this stage is: Reaching the next barrier the wise Quester would stop here and wait for their companions to join them. If the Quester has companions then they can add a Success Level to the Test or Ordeal, but if they try to push on alone, add a Failure Level, Hurdle or Obstacle."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Friends Arrive when Obstacles are Biggest): Mirror the internal state described in the commentary: \"Here we see a man who is called to help in an emergency. He should not seek to evade the obstructions, no matter how dangerously they pile up before him. But because he is really called to the task, the power of his spirit is strong enough to...\" Your actions should be framed by the goal: if you help another past a barrier or Obstacle.",
+        "Plot": "Plot Complication Line 5 (Friends Arrive when Obstacles are Biggest): Introduce a challenge based on the interpretation: \"Here we see a man who is called to help in an emergency. He should not seek to evade the obstructions, no matter how dangerously they pile up before him. But because he is really called to the task, the power of his spirit is strong enough to...\" The specific quest objective for this stage is: The Quester should encounter another character who is already caught upon an obstacle or barrier. If the Quester chooses to help this other character past their barrier, the character will help the Quester past their barrier (add a Success Level). If the Quester does not help the stuck character, then add a Hurdle, Failure Level or 2 Obstacles to the Test or Ordeal."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Coming Leads to Triumph): Mirror the internal state described in the commentary: \"This refers to a man who has already left the world and its tumult behind him. When the time of obstructions arrives, it might seem that the simplest thing for him to do would be to turn his back upon the world and take refuge in the beyond. But...\" Your actions should be framed by the goal: you prepare an action.",
+        "Plot": "Plot Complication Line 6 (Coming Leads to Triumph): Introduce a challenge based on the interpretation: \"This refers to a man who has already left the world and its tumult behind him. When the time of obstructions arrives, it might seem that the simplest thing for him to do would be to turn his back upon the world and take refuge in the beyond. But...\" The specific quest objective for this stage is: The Quester cannot ignore or remove themselves from Obstacles, they can only face the Obstacles and try to power through. Adding an Obstacle or Hurdle will also add a Success Level, attempts to avoid Obstacles or circumvent a Hurdle will add Failure Levels, Hurdles and more Obstacles."
+      }
+    }
+  }
+}

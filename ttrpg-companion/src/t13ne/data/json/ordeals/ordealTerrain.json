@@ -1,0 +1,20 @@
+[
+    {
+        "Type": "Open",
+        "Description": "Wide-open terrain is outdoors, free from clutter, such as a desert, tundra, wasteland, grassland/prairie, open square, open water, empty air and the cold void of outer-space.",
+        "Psychosocial": "An open mind, unbiased on this topic, or unprejudiced against you is easier to reach, even if there is a great divide between your ideas. Difficulty to travel is often Assisted or Neutral, rarely Opposed.",
+        "Rules": "Base Range Diff is calculated from the distance in Metres as a Value to a Score (Double Reduced). Base Movement Distance is Pips Value metres so a Jack of Diamonds will let you move 66 metres (11+2 Trump Pips=13). Note that Rolled Scores may be converted to Ordeal Pips by either direct conversion, halving or Reducing depending upon the Power-Level and Facet. Descendant Reach does not alter in Open terrain (a 3 metre Reach is still 3 metres away)."
+    },
+    {
+        "Type": "Closed",
+        "Description": "Closed terrain is indoors, or a cluttered outdoor space, such as in a woodland, a street with parked vehicles, there’s usually occasional traffic (including pedestrians). This is the normal standard for roads, paths, indoor spaces, and urban settings. It is the standard battle field of the modern day.",
+        "Psychosocial": "A closed mind is cautious, but already decided. They may be willing to reason to reason, and even change their mind, but it will be a harder fought job. Difficulty to travel is usually Neutral, but may be Assisted or Opposed also.",
+        "Rules": "Base Range Diff is calculated from the distance in Metres as a Boon to a Score (Reduced). Base Movement Distance is Pips in metres. Descendant Reach is most easily understood in this Terrain."
+    },
+    {
+        "Type": "Confined",
+        "Description": "Confined is close-quarters, when your elbows touch the walls, or you are jostled by a crowd. Packed, cluttered environments, such as crowds, jungles, melee, busy market squares, roads with heavy-traffic, cluttered corridors and small furnished rooms.",
+        "Psychosocial": "A confined mind is completely closed to other ideas. These people believe that beliefs different than their own are somehow already immoral or even criminal. Such a mind is very hard to reach and effect, with years of effective defences, such as the ability to spot fallacies in counter-arguments, formal training in apologetics or mental conditioning such as doublethink. Difficulty to travel is often Opposed, but may be Neutral occasionally. Assisted Paths will exist away from or around Protected Spaces occasionally.",
+        "Rules": "Base Range Diff is the distance in Metres as a Score. Base Movement Distance is Pips Score (Reduced) in metres. Descendant Reach can create issues causing long-reached Weapons to become ineffective in confined spaces. Range counts for the Reach of the Descendant, and usually counts as Hip-fire (see Firing Type) unless both hands are on the weapon when it may count as braced."
+    }
+]

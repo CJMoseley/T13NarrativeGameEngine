@@ -1,0 +1,52 @@
+[
+    {
+        "Type": "Core Identity",
+        "Description": "This Alternate is the original, \"ur\" example of the character. All other Alternates are measured from this one.",
+        "Name_Rule": "[Character Name] (Nickname)"
+    },
+    {
+        "Type": "Nominative Alternate",
+        "Description": "We all wear masks in life, behaving differently in different contexts. In work, you might be \"Doctor Welsh\", at home you are \"James\", but to some old school buddies you are still \"Jimmy Welsh\". Each name can gain Yin and Yang differently and has different behaviour despite all being the same person.",
+        "Name_Rule": "[Character Name] AKA Nickname"
+    },
+    {
+        "Type": "Personality Disorder",
+        "Description": "Sometimes the inner monologue in a Character&#39;s head starts using different voices, and even identify with different names. Stress induced Dissociation and Madness, Paranoia and mentally Scarred Hitches can create these Alternates with Carnage Wounds, as the character slips into dissociative identity disorder or some similar state.",
+        "Name_Rule": "[Character Name]\u2019s Identity (Nickname)"
+    },
+    {
+        "Type": "Past-Life",
+        "Description": "A simple to understand Alternate, where you remember some existence before your modern one. Especially common amongst the Fields of the Bulm\u00e4s, who collect chains of linked past-lives, and recognise Soul-Siblings as those who shared that Soul in a Past-life (yes Bulm\u00e4s can share Alternates).",
+        "Name_Rule": "[Character Name]\u2019s Past-Life-Nickname"
+    },
+    {
+        "Type": "Possessing Entity",
+        "Description": "Spirits, ghosts, devils, djinns, fairies, d&aelig;mons, wizards, psychics, and demons can all get into some Character&#39;s heads and sometimes take over. Consider having Possession Alternates being played by different Players.",
+        "Name_Rule": "Nickname possessing [Character Name]"
+    },
+    {
+        "Type": "Quantum Alternate",
+        "Description": "We all make choices that separate who we are from who we might have been. Quantum Alternates see beyond those choices. They communicate across Dimensions and show how they might have turned out different. They are classic <q>What if...?<\/q> Questions answered.",
+        "Name_Rule": "Nickname-([Character Name] Alternate)"
+    },
+    {
+        "Type": "Temporal Alternate",
+        "Description": "We all change as we get older, and so if a Character had two versions of themselves in one time period they would need to differentiate themselves. The \"older\" one may be able to remember the events experienced by the younger one (or not depending upon the method of time-travel used).",
+        "Name_Rule": "Nickname-(Old \/ Older \/ Young \/ Younger [Character Name])"
+    },
+    {
+        "Type": "Consumed Soul",
+        "Description": "Demons, Increated, Cyberwraiths, and Bulm&auml;s (amongst others) are capable of absorbing, stealing, copying, or eating other Souls (or Personalities or Neural Uploads, etc) and adding them to their own totality. Consumed souls are usually traumatised by the event and are rarely \"complete\", but do allow some information from the soul to remain.",
+        "Name_Rule": "Nickname (Eaten by [Character Name])"
+    },
+    {
+        "Type": "Unknown Alternate",
+        "Description": "Sometimes we don\u2019t know how the Alternate got there, perhaps they are a possession or a quantum alternate, or perhaps a Bulm&auml;s falls and is absorbed by Lord Vermis, making the whole question of who they are very difficult to answer.",
+        "Name_Rule": "[Character Name] Unknown Alt: Nickname"
+    },
+    {
+        "Type": "Alternate Form",
+        "Description": "Some Characters change between forms, perhaps due to a curse or complication with an Alchemical Elixir, or radiation experiment, then again they may have a superhero identity or giant robot form. This is how we can represent that.",
+        "Name_Rule": "Nickname Alternate Form of [Character Name]"
+    }
+]

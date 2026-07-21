@@ -1,0 +1,80 @@
+[
+    {
+        "Type": "Terminal",
+        "Number_Of_Stats": 1,
+        "Description": "Terminal Tapestries are the most simplified, most basic that the Tapestry can be. All Facets share the same Terminal Boon.",
+        "Facet_Distribution": "1 Stat of 24 Facets."
+    },
+    {
+        "Type": "Eclipse",
+        "Number_Of_Stats": 2,
+        "Description": "Eclipse Tapestries are split in two, half the Facets have one Boon, the other half another. This creates two Stats such as \"Yin\" and \"Yang\",  \"Light\" and \"Dark\", or \"Brains\" and \"Brawn\" ",
+        "Facet_Distribution": "2 Stats of 12 Facets."
+    },
+    {
+        "Type": "Triptych",
+        "Number_Of_Stats": 3,
+        "Description": "Triptych Tapestries separate Facets into 3 equal Stats, often \"Mind\", \"Body\" and \"Spirit\", or \"Power\", \"Finesse\" and \"Resistance\".",
+        "Facet_Distribution": "3 Stats of 8 Facets."
+    },
+    {
+        "Type": "Natural",
+        "Number_Of_Stats": 4,
+        "Description": "Natural Tapestries are split into 4 groups, often these groups will have be associated with card suits, seasons or elements, e.g. \"Fire\", \"Water\", \"Earth\", \"Air\".",
+        "Facet_Distribution": "4 Stats of 6 Facets."
+    },
+    {
+        "Type": "Wu",
+        "Number_Of_Stats": 5,
+        "Description": "Wu Tapestries are built around five stats. Most often this is based on the chinese elements \"Wood\",\"Earth\", \"Fire\", \"Metal\" and \"Water\". ",
+        "Facet_Distribution": "5 Stats, 4 of 5 Facets, and 1 of 4."
+    },
+    {
+        "Type": "Traditional",
+        "Number_Of_Stats": 6,
+        "Description": "Traditional Tapestries are the most common in table-top games. Traditionally the size stats are \"Strength\", \"Dexterity\", \"Constitution\", \"Intelligence\", \"Wisdom\" and \"Charisma\".",
+        "Facet_Distribution": "6 Stats of 4 Facets each."
+    },
+    {
+        "Type": "Wonderful",
+        "Number_Of_Stats": 7,
+        "Description": "Wonderful Tapestries use seven Stats. Often this is just the traditional six with an extra Stat added for flavour. E.g. \"Luck\" ",
+        "Facet_Distribution": "7 Stats, 3 of 4 Facets and 4 of 3 Facets."
+    },
+    {
+        "Type": "Heroic",
+        "Number_Of_Stats": 8,
+        "Description": "Heroic Tapestries use eight Stats, these are often described as \"Strength\", \"Dexterity\", \"Constitution\", \"Body\", \"Intelligence\", \"Ego\", \"Presence\", and \"Comeliness\". ",
+        "Facet_Distribution": "8 Stats of 3 Facets each."
+    },
+    {
+        "Type": "Shadowed",
+        "Number_Of_Stats": 9,
+        "Description": "Shadowed Tapestries use nine Stats. These stats are often defined as 3 groups of 3 Stats, the Physical \"Strength\", \"Dexterity\", \"Stamina\", the Social \"Presence/Charisma\", \"Manipulation\", \"Composure/Appearence\", and the Mental \"Intelligence\", \"Wits\" and \"Resolve/Perception\" ",
+        "Facet_Distribution": "9 Stats, 6 of 3 Facets and 3 of 2 Facets."
+    },
+    {
+        "Type": "Decemfid",
+        "Number_Of_Stats": 10,
+        "Description": "Decemfid Tapestries use ten Stats, and allow for some quite complex Archetypes. Example Decemfid Tapestry Stats: \"Strength\", \"Constitution\", \"Agility\", \"Quickness\", \"Appearence\", \"Memory\", \"Reasoning\", \"Presence\", \"Intuition\" and \"Empathy\" ",
+        "Facet_Distribution": "10 Stats, 4 of 3 Facets and 6 of 2 Facets."
+    },
+    {
+        "Type": "Subtle",
+        "Number_Of_Stats": 11,
+        "Description": "Subtle Tapestries use eleven Stats, and allow for bizarre and complex archetypes to exist. Stats are almost always unique.",
+        "Facet_Distribution": "11 Stats, 2 of 3 Facets and 9 of 2 Facets."
+    },
+    {
+        "Type": "Hours",
+        "Number_Of_Stats": 12,
+        "Description": "Hours Tapestries have 12 Stats, these are amongst the most complicated that most Yarn-tellers will want to use. There is a great deal of variety in Stats created by Hours Tapestries, depeding upon the genre and setting.",
+        "Facet_Distribution": "12 Stats of 2 Facets each."
+    },
+    {
+        "Type": "Malefic",
+        "Number_Of_Stats": 13,
+        "Description": "Malefic Tapestries have 13 Stats, they are the most complicated Stats that Tapestries usually create. ",
+        "Facet_Distribution": "13 Stats, 11 of 2 Facets and 2 of 1 Facet each."
+    }
+]

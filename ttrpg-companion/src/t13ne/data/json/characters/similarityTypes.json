@@ -1,0 +1,27 @@
+[
+  {
+    "Type": "Original",
+    "Description": "This Alternate is the Character's original, all other Alternates will be measured based off it.",
+    "Rules": "This is the original Alternate."
+  },
+  {
+    "Type": "Same",
+    "Description": "The Alternates are essentially identical. They have the same Persona, Core, Hitches and Annexes, but might differ in Geometry, or a few Proficiencies. Most Nominative Alternates are this (only differing in the Geometry — and sometimes not even in that), and some Quantum Alternates too. ",
+    "Rules": "Same Alternates normally automatically Coalesce with the character, although the character can get half of their Chi back from adding an Alternate if they make the new Alternate Integrated (or Co-dominant or Split) instead."
+  },
+  {
+    "Type": "Similar",
+    "Description": "This Alternate is similar to the original character,  Most Quantum Alternates fall into this type, and some Past-Life ones as well. ",
+    "Rules": "They have the same Facet Boons, and same Personality Annex Boon, but the alternate may swap around Personality, Core and Hitches. The alternate Personality usually has different Annexes. These Personalities are often Integrated when first created, but the character can get half the Chi back from adding the alternate by making the alternate personality a Co-Dominant or Split instead."
+  },
+  {
+    "Type": "Related",
+    "Description": "This Alternate is radically different to the original Alternate but has connections to the original, for example both might share a Fear of Spiders Hitch. Most Past-life Alternates fall into this similarity, but many Quantum and some Possessions would qualify, as would some Personality Disorders.",
+    "Rules": "Related Alternates share a Persona, Core, Hitch or I-Ching, but little else. Such related characters usually begin as Co-dominant but can be Split instead with the Character receiving back half the Chi spent adding the Alternate."
+  },
+  {
+    "Type": "Unrelated",
+    "Description": "This personality has nothing (or very little) in common with the original character. They are completely different entities who are blended together. Disorders and Possession Alternates are usually about this similar, but more than a few Mercari or Bulmäs have picked up these kinds of Alternates.",
+    "Rules": " It is normal for unrelated personalities to be Split when they are added, but you can get half your Chi back by making them Unstable instead."
+  }
+]

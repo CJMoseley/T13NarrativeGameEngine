@@ -1,0 +1,50 @@
+[
+    {
+        "Type": "Low",
+        "Description": "Low Stakes Ordeals are the least dangerous, or important of the Ordeal Stakes. They are suitable for situations like conversations, studying, or a training sessions. In a Duel situation it would be a Duel to the first touch (Flesh Wound).",
+        "Round_Wild_Pool": "2 Cards",
+        "Wound_Modifier": "Base Pips &times; 3 are required. (6: Distract, 15: Flesh, 24: Maim, 36:Crippling, 48: Mortal, 63: Carnage, 78: Carnage+) Essentially 3 (or 4 for the Mortal+ Wounds) Cards are required to create that Wound.",
+        "Maximum_Soak_Levels": "3",
+        "Rules": "<ul class=\"t13ne-stakes\"><li>There are Unlimited Phases to the Ordeal Stage</li><li>The Ordeal ends when someone Succeeds or quits.</li><li>Side Bets, Raises, Blinds and Antes are limited to only Score, Tao Sway and Facet Sway.</li></ul>"
+    },
+    {
+        "Type": "Medium",
+        "Description": "Medium Stakes Ordeals are what we consider a normal Ordeal. They are suitable for most standard work, sports (including contact sports) or an argument. In a Duel situation it would be a Duel to the first Blood (Maim Wound).",
+        "Round_Wild_Pool": "3 Cards",
+        "Wound_Modifier": "Base Pips &times; 2 are required. (4: Distract, 10: Flesh, 16: Maim, 24:Crippling, 32: Mortal, 42: Carnage, 52: Carnage+) Essentially 2 (or 3 for the Mortal+ Wounds) Cards are required to create that Wound.",
+        "Maximum_Soak_Levels": "2",
+        "Rules": "<ul class=\"t13ne-stakes\"><li>During each Round you begin with a Round Wild Pool of 3 Cards.</li><li>The maximum number of Phases a Character can take in the Stage is equal to the Character’s Facet Boon (normally Zeal in a Motional Ordeal, or Craft in a Creative Ordeal, or Trial in a Competitive Ordeal) in the Ordeal.</li><li>The Ordeal is limited by a Time-limit (a number of Rounds that it must be completed in).</li><li>Side Bets, Raises, Blinds and Antes usually consist of Chi or Stress.</li></ul>"
+    },
+    {
+        "Type": "High",
+        "Description": "High Stakes Ordeals are where normal combat lies. A fight, sprinting, dangerous work, dangerous sports are all solid examples. In a Duel situation it would be a \"Knock-out\" situation (Duel ends when all opponents are Crippled or worse).",
+        "Round_Wild_Pool": "4 Cards",
+        "Wound_Modifier": "All Wounds cost simple Base Cost and require a Limit card, so to cause a Carnage you need an Ace for the Limit, but the attack needs at least another 7 Pips from other cards. (2: Distract, 5: Flesh, 8: Maim, 12:Crippling, 16: Mortal, 21: Carnage, 26: Carnage+)",
+        "Maximum_Soak_Levels": "3",
+        "Rules": "<ul class=\"t13ne-stakes\"><li>During High Stakes Ordeal any Unrecoverable failure in any Stage will usually result in failure overall.</li><li>Characters are limited to Facet Score Phases Per Stage. </li><li>Side Bets, Raises, Blinds and Antes may include Yarn, Shock, Descendants and specific Wounds.</li></ul>"
+    },
+    {
+        "Type": "Extreme",
+        "Description": "Extreme Stakes Ordeals are where modern warfare and combat lies. Warfare, Rooftop Parkour, and Extreme Sports are all good examples. Any situation where \"Life is on the line\" or it’s \"Life or death\" you are looking at Extreme Stakes. In a Duel situation it would be a \"To The Death\" situation (Duel ends with Maximised Wounds that are Mortal or worse).",
+        "Round_Wild_Pool": "5 Cards",
+        "Wound_Modifier": "All Wounds are summoned by the Limit Card alone (2: Distract, 5: Flesh, 8: Maim, 10:Crippling, 12: Mortal, 14: Carnage, 15: Carnage+). So an Ace alone creates a Carnage Wound.",
+        "Maximum_Soak_Levels": "4",
+        "Rules": "<ul class=\"t13ne-stakes\"><li>During Extreme Stakes Ordeal any failure in any Stage will result in complete failure and depending upon the ante and side bets may incur additional Wounds or Hitches.</li><li>Characters are limited to Facet Draw Phases per Stage (minimum of 1 for Normal Stages and 2 for Court Stages)</li><li>Side Bets, Raises, Blinds and Antes may usually include specific Wounds, Descendants or Characters (Allies connections).</li></ul>"
+    },
+    {
+        "Type": "Soul",
+        "Description": "Soul Stakes Ordeals are, perhaps, the highest possible Stakes in the game, at least for any individual Character who is not mucking about in their own past. Any time your immortal soul is placed on the line, by fighting demons, falling in love, testing faith, dealing with Traumas, any situation  that is bigger than life and death, or if the bad guy just made it personal, you are probably in Soul Stakes. In a Duel situation the Duel ends with the Creation of a new Flaw or Woe Hitch for the Characters involved.",
+        "Round_Wild_Pool": "6 Cards",
+        "Wound_Modifier": "All cards are at +1-6 Pips (roll 1d6). Wounds are summoned by the Limit Pips alone (2: Distract, 5: Flesh, 8: Maim, 10:Crippling, 12: Mortal, 14: Carnage, 15: Carnage+), including the additional Pips. This allows a 4 to summon a Flesh, Maim or Crippling Wound depending upon the roll, and means a Queen must summon at least a Carnage Wound.",
+        "Maximum_Soak_Levels": "1",
+        "Rules": "<ul class=\"t13ne-stakes\"><li>A Soul Stakes Ordeal continues until all Stages are complete, failure won’t end the Ordeal early, not while you can accrue more failure.</li><li>Number of Phases per Stage is usually decided by Yarn-Teller as a set number.</li><li>Side Bets, Raises, Blinds and Antes often consist of specified Quirk or Flaw Hitches.</li></ul>"
+    },
+    {
+        "Type": "Paradoxical",
+        "Description": "Paradoxical Stakes Ordeals occur when The Fate of the World, Time, History, Sanity, or the nature of Reality is on the line. It is commonly used during Temporal Paradoxes and similar situations. You do not generally have Paradoxical Duels, although fighting your own Grandfather would probably count, he can kill you, but you can’t kill him.",
+        "Round_Wild_Pool": "3 Cards chosen by Yarn-Teller (or Plot) from their own Pool and Hand.",
+        "Wound_Modifier": ">Wounds are summoned for the Limit Pips but at +1 Wound Level over the Card’s normal Limit (2: Flesh, 5: Maim, 8: Crippling, 10:Mortal, 12: Carnage, 14: Carnage+). Wildcards add an additional free Distract Wound along with the Carnage+.",
+        "Maximum_Soak_Levels": "2",
+        "Rules": "<ul class=\"t13ne-stakes\"><li>The Ordeal ends when the Paradox is resolved.</li><li>Number of Phases per Stage is determined by the Yarn-Teller.</li><li>Side Bets, Raises, Blinds and Antes include Alternates.</li></ul>"
+    }
+]

@@ -1,0 +1,1434 @@
+{
+  "751": {
+    "id": 751,
+    "prof": {
+      "Name": [
+        "Time",
+        "Time Inertia Descendants Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Time unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "752": {
+    "id": 752,
+    "prof": {
+      "Name": [
+        "Pulse",
+        "Pulse Inertia Edge Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Pulse unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "753": {
+    "id": 753,
+    "prof": {
+      "Name": [
+        "Pulse",
+        "Pulse Inertia Glow Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Pulse unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "754": {
+    "id": 754,
+    "prof": {
+      "Name": [
+        "Delayed",
+        "Delayed Inertia Failure Proficiency",
+        "held-up, late, postponed, stalled, hindered"
+      ],
+      "Description": "Persistent and stagnant, the saga of Delayed unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "755": {
+    "id": 755,
+    "prof": {
+      "Name": [
+        "Slip",
+        "Slip Inertia Fumble Proficiency",
+        "slide, skid, glissade, stumble, fall"
+      ],
+      "Description": "Persistent and stagnant, the saga of Slip unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "756": {
+    "id": 756,
+    "prof": {
+      "Name": [
+        "Time",
+        "Time Inertia Gnarl Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Time unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "757": {
+    "id": 757,
+    "prof": {
+      "Name": [
+        "Patterns",
+        "Patterns Inertia Herald Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Patterns unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "758": {
+    "id": 758,
+    "prof": {
+      "Name": [
+        "Laments",
+        "Laments Inertia Hitch Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Laments unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "759": {
+    "id": 759,
+    "prof": {
+      "Name": [
+        "Patience",
+        "Patience Inertia Hurdle Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Patience unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "760": {
+    "id": 760,
+    "prof": {
+      "Name": [
+        "Time",
+        "Time Inertia Incarna Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Time unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "761": {
+    "id": 761,
+    "prof": {
+      "Name": [
+        "Historical Locations",
+        "Historical Location Inertia Location Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Historical Locations unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "762": {
+    "id": 762,
+    "prof": {
+      "Name": [
+        "History",
+        "History Inertia Lore Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of History unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "763": {
+    "id": 763,
+    "prof": {
+      "Name": [
+        "Inexorable",
+        "Inexorable Inertia Monster Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Inexorable unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "764": {
+    "id": 764,
+    "prof": {
+      "Name": [
+        "Timed",
+        "Timed Inertia Narration Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Timed unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "765": {
+    "id": 765,
+    "prof": {
+      "Name": [
+        "Callback",
+        "Callback Inertia Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Callback unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "766": {
+    "id": 766,
+    "prof": {
+      "Name": [
+        "Persistent Ordeals",
+        "Persistent Ordeal Inertia Ordeal Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Persistent Ordeals unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "767": {
+    "id": 767,
+    "prof": {
+      "Name": [
+        "Memories",
+        "Memories Inertia Psychosocial Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Memories unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "768": {
+    "id": 768,
+    "prof": {
+      "Name": [
+        "Survive",
+        "Survive Inertia Quest Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Survive unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "769": {
+    "id": 769,
+    "prof": {
+      "Name": [
+        "Time",
+        "Time Inertia Question Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Time unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "770": {
+    "id": 770,
+    "prof": {
+      "Name": [
+        "Pastime",
+        "Pastime Inertia Resolved Hitch Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Pastime unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "771": {
+    "id": 771,
+    "prof": {
+      "Name": [
+        "Time",
+        "Time Inertia Rule Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Time unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "772": {
+    "id": 772,
+    "prof": {
+      "Name": [
+        "Momentum",
+        "Momentum Inertia Style Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Momentum unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "773": {
+    "id": 773,
+    "prof": {
+      "Name": [
+        "Continuity",
+        "Continuity Inertia Success Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Continuity unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "774": {
+    "id": 774,
+    "prof": {
+      "Name": [
+        "Endurance",
+        "Endurance Inertia Sway Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Endurance unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "775": {
+    "id": 775,
+    "prof": {
+      "Name": [
+        "Delay",
+        "Delay Inertia Tangle Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Delay unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "776": {
+    "id": 776,
+    "prof": {
+      "Name": [
+        "Coasting / Enduring / Hold-firm / Keep-moving / Momentum / Persistence / Sliding",
+        "Coasting / Enduring / Hold-firm / Keep-moving / Momentum / Persistence / Sliding",
+        ""
+      ],
+      "Description": "A seed of oblivion planted in the fertile ground of Ignorance, Coasting / Enduring / Hold-firm / Keep-moving / Momentum / Persistence / Sliding  is the flower that blooms in adversity.",
+      "Tags": {
+        "Facets": [
+          "8"
+        ],
+        "Scopes": [
+          "8"
+        ],
+        "Genres": [
+          "8"
+        ],
+        "Eras": [
+          "8"
+        ],
+        "Types": [
+          "Test"
+        ]
+      }
+    }
+  },
+  "777": {
+    "id": 777,
+    "prof": {
+      "Name": [
+        "Saga",
+        "Saga Inertia Tone Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Saga unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "778": {
+    "id": 778,
+    "prof": {
+      "Name": [
+        "Callback",
+        "Callback Inertia Turn Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Callback unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "779": {
+    "id": 779,
+    "prof": {
+      "Name": [
+        "Immortality",
+        "Immortality Inertia Twisted Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Immortality unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "780": {
+    "id": 780,
+    "prof": {
+      "Name": [
+        "Passing",
+        "Passing Inertia Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Passing unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "781": {
+    "id": 781,
+    "prof": {
+      "Name": [
+        "Inert",
+        "Inert Inertia Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Inert unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "782": {
+    "id": 782,
+    "prof": {
+      "Name": [
+        "Momentum",
+        "Momentum Inertia Test Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Momentum unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "783": {
+    "id": 783,
+    "prof": {
+      "Name": [
+        "Coasting",
+        "Coasting Inertia Test Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Coasting unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "784": {
+    "id": 784,
+    "prof": {
+      "Name": [
+        "Sloth",
+        "Sloth Inertia Persona Proficiency",
+        ""
+      ],
+      "Description": "Persistent and stagnant, the saga of Sloth unfolds slowly over time, anchored by a timed resistance to change.",
+      "Tags": {
+        "Facets": [
+          "8",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "785": {
+    "id": 785,
+    "prof": {
+      "Name": [
+        "Humourless",
+        "Humourless Jeer Zero Boon Adjective Proficiency",
+        "serious, dour, solemn, joyless, dry"
+      ],
+      "Description": "With a sharp, mocking wit, Humourless is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "786": {
+    "id": 786,
+    "prof": {
+      "Name": [
+        "Musty",
+        "Musty Jeer Zero Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Musty is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "787": {
+    "id": 787,
+    "prof": {
+      "Name": [
+        "Uninteresting Locations",
+        "Uninteresting Location Jeer Zero Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Uninteresting Locations is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "788": {
+    "id": 788,
+    "prof": {
+      "Name": [
+        "Puritanical",
+        "Puritanical Jeer Low Boon Adjective Proficiency",
+        "austere, moralistic, rigid, strict, prim"
+      ],
+      "Description": "With a sharp, mocking wit, Puritanical is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "789": {
+    "id": 789,
+    "prof": {
+      "Name": [
+        "Proper",
+        "Proper Jeer Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Proper is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "790": {
+    "id": 790,
+    "prof": {
+      "Name": [
+        "Prim Locations",
+        "Prim Location Jeer Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Prim Locations is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "791": {
+    "id": 791,
+    "prof": {
+      "Name": [
+        "Dour",
+        "Dour Jeer Low Boon Adjective Proficiency",
+        "gloomy, grim, sullen, forbidding, harsh"
+      ],
+      "Description": "With a sharp, mocking wit, Dour is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "792": {
+    "id": 792,
+    "prof": {
+      "Name": [
+        "Harsh",
+        "Harsh Jeer Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Harsh is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "793": {
+    "id": 793,
+    "prof": {
+      "Name": [
+        "Forbidding Locations",
+        "Forbidding Location Jeer Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Forbidding Locations is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "794": {
+    "id": 794,
+    "prof": {
+      "Name": [
+        "Pompous",
+        "Pompous Jeer Low Boon Adjective Proficiency",
+        "pretentious, arrogant, self-important, haughty"
+      ],
+      "Description": "With a sharp, mocking wit, Pompous is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "795": {
+    "id": 795,
+    "prof": {
+      "Name": [
+        "Cultured",
+        "Cultured Jeer Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Cultured is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "796": {
+    "id": 796,
+    "prof": {
+      "Name": [
+        "Formal Locations",
+        "Formal Location Jeer Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Formal Locations is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "797": {
+    "id": 797,
+    "prof": {
+      "Name": [
+        "Serious",
+        "Serious Jeer Low Boon Adjective Proficiency",
+        "solemn, earnest, grave, sober, formal"
+      ],
+      "Description": "With a sharp, mocking wit, Serious is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "798": {
+    "id": 798,
+    "prof": {
+      "Name": [
+        "Serious",
+        "Serious Jeer Low Boon Descendant Adjective Proficiency",
+        "solemn, earnest, grave, sober, formal"
+      ],
+      "Description": "With a sharp, mocking wit, Serious is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "799": {
+    "id": 799,
+    "prof": {
+      "Name": [
+        "Dramatic Locations",
+        "Dramatic Location Jeer Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "With a sharp, mocking wit, Dramatic Locations is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "800": {
+    "id": 800,
+    "prof": {
+      "Name": [
+        "Amusing",
+        "Amusing Jeer Medium Boon Adjective Proficiency",
+        "funny, entertaining, diverting, humorous, comical"
+      ],
+      "Description": "With a sharp, mocking wit, Amusing is a humorous subversion of the serious, turning the grandiose into a plaything of comedy.",
+      "Tags": {
+        "Facets": [
+          "9"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

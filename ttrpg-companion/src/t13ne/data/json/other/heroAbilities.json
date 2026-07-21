@@ -1,0 +1,72 @@
+[
+    {
+        "Ability": "Hand",
+        "Description": "Some Heroes seem unnaturally powerful, as though they have hidden reserves that they can tap when needed. Sometimes these hidden reserves can power supernatural abilities.",
+        "Rules": "Heroes can Draw cards to their Hand. Typically the Hand holds 5 Cards (although some Character Types and Cores may add more). Hero&apos;s may Play cards from their Hand during Ordeals (adding to Actions or as Actions), or may be played as Wyrd Tarot or Lea Cards. Characters without a Hand are limited in what they can accomplish with Shapeshifting and Doom-Weaving."
+    },
+    {
+        "Ability": "Chi Boosting",
+        "Description": "Heroes can almost always spend Chi to boost their own Scores, many can also boost the Scores of their allies.",
+        "Rules": "Typically Chi adds +2 Score or +1 Pip per point of Chi spent. However this can vary with setting and Character.<br/>Larger amounts of Chi may create more Score such as 2 Chi adding +5, 3 +8, etc."
+    },
+    {
+        "Ability": "Increase Character Scale",
+        "Description": "People grow and change with time. Experience and practise hones a heroes body, mind, and spirit.",
+        "Rules": "Increasing in Character Scale is equal to the total Yin and Yang that the Character can Store or a Hero&apos;s Maximum stored Chi (which is often Cheaper). Scale adds directly to all Facet Boons and increases the available Values for Annexes."
+    },
+    {
+        "Ability": "Doom-Weaving",
+        "Description": "Heroes that have some F&aelig; Blood can often manipulate the Tapestry, altering events around them in minor and major ways.",
+        "Rules": "Typically Doom-Weavers may Play Cards from their Hands as Wyrd Tarot effects.<br/>Doom-weavers can also typically convert Ordeal Cards into Wyrd Tarot cards for a Chi Cost or Difficulty."
+    },
+    {
+        "Ability": "Soul-Walking /  Dream-Trodding",
+        "Description": "Heroes that have more than one Soul and at least one Bulmäs Soul, or are descended from certain F&aelig; Bloodlines can physically travel via another realm, typically described as the Lea or the Tapestry. Bulmäs Lea paths follow the trails and migratory routes of specific animals, if you&apos;ve seen the same type of butterfly in two places then a butterfly path will connect those places.<br/>Trods are similar, but connect places that have similar names, purposes, or real roads that connect them; Trods allow F&aelig; to skip from any crossroad, doorway, threshold, or similar liminal space, to any other. Trods and Lea Paths can both access Dreams, Memories or minds if the right paths are available.",
+        "Rules": "Soul-Walkers typically use their Hand of cards to represent the Lea Paths that are available to them locally. The Bulmäs perceive the Lea as composed of coloured animal spirit paths. Walking the path is an expression of how familiar the Bulmäs is with that animal and they can present Soul-Stakes Ordeals that must be overcome.<br/>Only certain paths are open to certain Bulmäs, only All-Walkers can walk all paths, and they risk being lost even then.<br/>The F&aelig; perceive the Trods as similarly coloured, but they do not perceive animal spirits (usually &mdash; more than a few Trods align along drover routes and horse-paths), still Trodding is often represented as an Ordeal (The Suggested Ordeal from the Card may provide inspiration).<br/>Lea and Trods are expressions of Psychosocial Action Spaces that overlay the normal Action Space. And these Heroes travel \"supernaturally\" through the Psychosocial Space not the real world. These lines are typically given colours and Difficulties that must be matched with cards to travel along them (see Psychosocial Action Spaces for more details)."
+    },
+    {
+        "Ability": "Shapeshifting",
+        "Description": "Mostly accessible to Bulmäs who walk Lea Paths, but proven to be a separate, but allied ability. Shapeshifting is as much the gift that allows the Bulmäs to walk certain paths with such assuredness, as it is a result of Lea walking. Bulmäs rarely disentangle the two unless they walk the Broccen lifestyle, which involves walking the Lea without leaving your territory. A few others have Shapeshifting abilities although these are often very limited.",
+        "Rules": "Lea cards are played and remain in place on a character, where they add their Pips to all Scores the Bulmäs generates that reflects this animal form. Many Shapeshifters will have a Significator card that represents their preferrred shape. Some may have a limited number of shapes that they can achieve requiring a Proficiency in the shape (which is what limits Bulmäs) or a Lorical Destiny that provides a limited set of cards. Others may achieve the shape of any Lea card played. It should be noted that cosmetic shapeshifting is typically just a roll to beat the Difficulty of the Shapeshift."
+    },
+    {
+        "Ability": "Prescience",
+        "Description": "Knowledge of the future allows Heroes to change the time-line. Some Heroes have senses that allow them to avoid danger, or even anticipate the most unlikely scenarios, and plan accordingly.",
+        "Rules": "Prescience is usually best represented by Heroes having the ability to Reload. The Hero can Save almost whenever they like, and then can Reload back to that Save when they can afford it. This allows them to \"scout\" ahead and then Reload with all that knowledge intact."
+    },
+    {
+        "Ability": "Metamagic",
+        "Description": "Metamagic is the ability to alter the rules of nature, to allow or disallow various magics and technologies. In T13 different Ages and settings will have different technologies and magics, they change over time as the public changes their concepts of normality. Metamagic allows these changes to be forced, at least within a limited area or period.",
+        "Rules": "If magic is impossible then any magic should cost 101 Chi, the same would apply to any Technology, however technically this is a major Retcon, 66 Chi should be enough for most Retcons such as allowing limited magic. Making something impossible is usually more tricky, but making something impossible (or possible) for a while is usually equal to whatever the Chi cost is for that effect + the Extend Duration (and perhaps a Location Size although that is not always necessary)."
+    },
+    {
+        "Ability": "Quantum Sliding",
+        "Description": "Some Heroes seem to have an ability to choose how random events unfold. They perform this not by altering probabilities with magic, but instead by shifting themselves partially into the closest quantum wave-collapse universe where the result they want is happening. In extreme cases the Hero may \"vanish\" from their original universe, through Quantum Immotality.",
+        "Rules": "Most often this acts as Chi Boosting, but minor retcons and changes are possible, until the Character slips into a universe too far removed from the original."
+    },
+    {
+        "Ability": "Access Alternate Memories",
+        "Description": "Paradox Warriors, Mercari and many other Heroes are capable of remembering things from their other lives. Sometimes they may remember a Past-Life, or may access a memory from the entity that lives in their cerebellum, or they may see a flash of their life in another universe. Accessing Alternate Memories is usually done while dreaming and lasts until the next time you lose consciousness. This sort of swapping can occur randomly whenever a Hero Gains enough Chi if they are not in control of their abilities yet.",
+        "Rules": "Accessing Alternate Memories actually means that for 1 Chi a Hero may swap a Proficiency from one Alternate to another. Annexes can also be swapped between Alternates if required; Skills can be swapped for 3 Chi, Talents for 5 Chi and Powers for 7 Chi. If swapping a Proficiency could create a new Skill, Talent or Power, then the appropriate cost as though they were being swapped is used."
+    },
+    {
+        "Ability": "Lorical Destiny",
+        "Description": "Sometimes a Hero is only a Hero because a prophecy made them the Chosen One, such Heroes are not in charge of their own fate, they are guided by other forces in the universe. While they may have incredible abilities these abilities will seemingly only work in service of the prophecy that created them.",
+        "Rules": "A Hero with a Lorical Destiny can replace any card in their Hand with one from the Lore Spread that created their Lore. Additionally, even if they have no Hand currently, they may play Ordeal Cards that match cards from the Lore spread as Wyrd Tarot, Lea or even as Yarn cards (Yarn should only be possible if the Prophecy may be in doubt- and it should be Narrated by the Referee or the Yarn-Teller who created the Prophecy)."
+    },
+    {
+        "Ability": "Boost Scale",
+        "Description": "Some Heroes are just better than other people. Everything about them is beyond what a normal person is capable of. These Heroes are just stronger, tougher and smarter. This ability is most obvious in heroes with supernatural or divine blood",
+        "Rules": "Heroes may give up 1 Card from their Hand to increase their Scale by 1 even beyond their number of Hitches. They may do this as many times as they have Cards in their Hand, until they have no Hand left. The Hand Cards may be regained if the Character purchases Scale normally (and they are still below the number of Hitches). Scale can also be lowered by Twists which may release the Card again."
+    },
+    {
+        "Ability": "Million-To-One-Shot",
+        "Description": "All Heroes can stand in the face of complete disaster and some how achieve that one in a million chance that no one expected. Sometimes this victory seems to cost the Hero almost everything.",
+        "Rules": "When a Hero Character is faced with no other choice they can spend all their current Chi at once. This Chi is converted into Yarn when it is spent however the Referee will narrate the result of the Yarn spent. Note that Million-To-One-Shots can have a profound and dramatic affect on the setting and can even shift genre or era."
+    },
+    {
+        "Ability": "",
+        "Description": "",
+        "Rules": ""
+    }
+]

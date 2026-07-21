@@ -1,0 +1,17 @@
+[
+    {
+        "Type": "Hip-Fire",
+        "Description": "Firing from the hip, snap firing, thrown with a flick of the wrist, turning the gun on its side, or using full-auto (after the first shot) with most SMGs. Also trying to hit multiple targets at the same time (who aren’t stood close together) or hit any target while moving quickly. Also trying to hit someone with a long reach weapon with one hand.",
+        "Rules": "Difficulty is Reduced one LESS tier than normal or is Doubled, whichever is more. In open territory a range of 105 metres would normally have a difficulty of 5, when Hip-firing this would increase to 17 (being more than 10). Hip-firing should be used by anyone with only a cursory understanding of the weapon, a first use, single applicable proficiency, etc."
+    },
+    {
+        "Type": "Braced",
+        "Description": "The moment you brace the gun properly, pull the stock into your shoulder, use the sights, throw with your whole arm, or use a weapon with proper training while stood still, usually with two hands on the weapon, you can say you’re braced. Generally consists of a focused attack, centred on a single target (or close group of targets).",
+        "Rules": "Standard Range Difficulty is calculated normally from the terrain type, so 50 metres across a shopping mall would have a Difficulty of 10 as it’s a Closed Terrain. Bracing a weapon requires at least two Proficiencies that cover the use of the weapon."
+    },
+    {
+        "Type": "Prone/Tripod",
+        "Description": "Lying down, or using a mounted weapon such as a tripod or bi-pod, usually with telescopic sights, proper military training, and preparations (at least one card played preparing the attack) allows Sniping at extended Range.",
+        "Rules": "Range Diff is Reduced. This might allow a Character to fire into 30 metres of dense crowds, with a Difficulty of 7. Prone shooting requires at least 3 Proficiencies that cover the use of the weapon. Additionally a \"spotter\" can Prepare additional cards into the shooter’s Style Reserve (if they have a suitable Style Reserve themselves), as they tell them windage, range and other information. "
+    }
+]

@@ -1,0 +1,1429 @@
+{
+  "2502": {
+    "id": 2502,
+    "prof": {
+      "Name": [
+        "Soulless",
+        "Soulless Awe Zero Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Soulless represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2503": {
+    "id": 2503,
+    "prof": {
+      "Name": [
+        "Plain",
+        "Plain Awe Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Plain represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2504": {
+    "id": 2504,
+    "prof": {
+      "Name": [
+        "Attractive",
+        "Attractive Awe Annex Root Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Attractive represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2505": {
+    "id": 2505,
+    "prof": {
+      "Name": [
+        "Beautiful",
+        "Beautiful Awe Annex Root Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Beautiful represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2506": {
+    "id": 2506,
+    "prof": {
+      "Name": [
+        "Splendid",
+        "Splendid Awe Annex Root Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Splendid represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2507": {
+    "id": 2507,
+    "prof": {
+      "Name": [
+        "Entrancing",
+        "Entrancing Awe Action Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Entrancing represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2508": {
+    "id": 2508,
+    "prof": {
+      "Name": [
+        "Majestic",
+        "Majestic Awe Annex Root Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Majestic represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2509": {
+    "id": 2509,
+    "prof": {
+      "Name": [
+        "Duck",
+        "Duck Awe Attack Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Duck represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2510": {
+    "id": 2510,
+    "prof": {
+      "Name": [
+        "Flashy",
+        "Flashy Awe Critical Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Flashy represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2511": {
+    "id": 2511,
+    "prof": {
+      "Name": [
+        "span>",
+        "span> Awe Critical Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, span> represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2512": {
+    "id": 2512,
+    "prof": {
+      "Name": [
+        "span>",
+        "span> Awe Fumble Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, span> represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2513": {
+    "id": 2513,
+    "prof": {
+      "Name": [
+        "Enhancer",
+        "Enhancer Awe Core Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Enhancer represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2514": {
+    "id": 2514,
+    "prof": {
+      "Name": [
+        "Spiritual",
+        "Spiritual Awe Descendants Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Spiritual represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2515": {
+    "id": 2515,
+    "prof": {
+      "Name": [
+        "Spiritual Locations",
+        "Spiritual Location Awe Location Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Spiritual Locations represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2516": {
+    "id": 2516,
+    "prof": {
+      "Name": [
+        "Spiritual Ordeals",
+        "Spiritual Ordeal Awe Ordeal Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Spiritual Ordeals represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2517": {
+    "id": 2517,
+    "prof": {
+      "Name": [
+        "Spiritual",
+        "Spiritual Awe Nimbed Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Spiritual represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2518": {
+    "id": 2518,
+    "prof": {
+      "Name": [
+        "Spiritual",
+        "Spiritual Awe Annex Root Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Spiritual represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2519": {
+    "id": 2519,
+    "prof": {
+      "Name": [
+        "Numinous",
+        "Numinous Awe Edge Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Numinous represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2520": {
+    "id": 2520,
+    "prof": {
+      "Name": [
+        "Numinous",
+        "Numinous Awe Glow Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Numinous represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2521": {
+    "id": 2521,
+    "prof": {
+      "Name": [
+        "Emotions",
+        "Emotions Awe Gnarl Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Emotions represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2522": {
+    "id": 2522,
+    "prof": {
+      "Name": [
+        "Emotions",
+        "Emotions Awe Tangle Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Emotions represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2523": {
+    "id": 2523,
+    "prof": {
+      "Name": [
+        "Feelings",
+        "Feelings Awe Herald Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Feelings represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2524": {
+    "id": 2524,
+    "prof": {
+      "Name": [
+        "Feelings",
+        "Feelings Awe Question Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Feelings represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2525": {
+    "id": 2525,
+    "prof": {
+      "Name": [
+        "Spirit (Ka)",
+        "Spirit (Ka) Awe Incarna Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Spirit (Ka) represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2526": {
+    "id": 2526,
+    "prof": {
+      "Name": [
+        "Trait",
+        "Trait Awe Lore Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Trait represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2527": {
+    "id": 2527,
+    "prof": {
+      "Name": [
+        "Spirit",
+        "Spirit Awe Monster Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Spirit represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2528": {
+    "id": 2528,
+    "prof": {
+      "Name": [
+        "Spirit",
+        "Spirit Awe Test Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Spirit represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2529": {
+    "id": 2529,
+    "prof": {
+      "Name": [
+        "Spirit",
+        "Spirit Awe Twisted Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Spirit represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2530": {
+    "id": 2530,
+    "prof": {
+      "Name": [
+        "Inner-Life",
+        "Inner-Life Awe Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Inner-Life represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2531": {
+    "id": 2531,
+    "prof": {
+      "Name": [
+        "Supernature",
+        "Supernature Awe Psychosocial Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Supernature represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2532": {
+    "id": 2532,
+    "prof": {
+      "Name": [
+        "Brave",
+        "Brave Awe Quest Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Brave represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2533": {
+    "id": 2533,
+    "prof": {
+      "Name": [
+        "Brave",
+        "Brave Awe Annex Root Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Brave represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2534": {
+    "id": 2534,
+    "prof": {
+      "Name": [
+        "Charm",
+        "Charm Awe Test Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Charm represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2535": {
+    "id": 2535,
+    "prof": {
+      "Name": [
+        "Charm",
+        "Charm Awe Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Charm represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2536": {
+    "id": 2536,
+    "prof": {
+      "Name": [
+        "Invocation",
+        "Invocation Awe Resolved Hitch Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Invocation represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2537": {
+    "id": 2537,
+    "prof": {
+      "Name": [
+        "Psychosocial States",
+        "Psychosocial States Awe Rule Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Psychosocial States represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2538": {
+    "id": 2538,
+    "prof": {
+      "Name": [
+        "Elegant",
+        "Elegant Awe Style Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Elegant represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2539": {
+    "id": 2539,
+    "prof": {
+      "Name": [
+        "Artistic",
+        "Artistic Awe Success Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Artistic represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2540": {
+    "id": 2540,
+    "prof": {
+      "Name": [
+        "Splendour",
+        "Splendour Awe Sway Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Splendour represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2541": {
+    "id": 2541,
+    "prof": {
+      "Name": [
+        "Attitude",
+        "Attitude Awe Test Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Attitude represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2542": {
+    "id": 2542,
+    "prof": {
+      "Name": [
+        "Art",
+        "Art Awe Test Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Art represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2543": {
+    "id": 2543,
+    "prof": {
+      "Name": [
+        "Cool",
+        "Cool Awe Test Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Cool represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2544": {
+    "id": 2544,
+    "prof": {
+      "Name": [
+        "Emotional",
+        "Emotional Awe Tone Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Emotional represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2545": {
+    "id": 2545,
+    "prof": {
+      "Name": [
+        "Emotional",
+        "Emotional Awe Annex Root Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Emotional represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2546": {
+    "id": 2546,
+    "prof": {
+      "Name": [
+        "Change-of-Heart",
+        "Change-of-Heart Awe Turn Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Change-of-Heart represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2547": {
+    "id": 2547,
+    "prof": {
+      "Name": [
+        "Enhancing",
+        "Enhancing Awe Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Enhancing represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2548": {
+    "id": 2548,
+    "prof": {
+      "Name": [
+        "Awesome",
+        "Awesome Awe Annex Root Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Awesome represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2549": {
+    "id": 2549,
+    "prof": {
+      "Name": [
+        "Awesome",
+        "Awesome Awe Annex Root Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Awesome represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2550": {
+    "id": 2550,
+    "prof": {
+      "Name": [
+        "Awful",
+        "Awful Awe Umbral Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Awful represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2551": {
+    "id": 2551,
+    "prof": {
+      "Name": [
+        "Awful",
+        "Awful Awe Annex Root Proficiency",
+        ""
+      ],
+      "Description": "In the hushed halls of Awe, Awful represents a poetic resonance that stirs the spirit and shapes the perception of the sublime.",
+      "Tags": {
+        "Facets": [
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

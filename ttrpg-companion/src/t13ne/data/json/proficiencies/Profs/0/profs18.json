@@ -1,0 +1,1448 @@
+{
+  "901": {
+    "id": 901,
+    "prof": {
+      "Name": [
+        "Innovative",
+        "Innovative Key Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Innovative unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "902": {
+    "id": 902,
+    "prof": {
+      "Name": [
+        "Fresh Locations",
+        "Fresh Location Key Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Fresh Locations unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "903": {
+    "id": 903,
+    "prof": {
+      "Name": [
+        "Astute",
+        "Astute Key Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Astute unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "904": {
+    "id": 904,
+    "prof": {
+      "Name": [
+        "Intelligent",
+        "Intelligent Key Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Intelligent unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "905": {
+    "id": 905,
+    "prof": {
+      "Name": [
+        "Smart Locations",
+        "Smart Location Key Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Smart Locations unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "906": {
+    "id": 906,
+    "prof": {
+      "Name": [
+        "Genius",
+        "Genius Key Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Genius unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "907": {
+    "id": 907,
+    "prof": {
+      "Name": [
+        "Original",
+        "Original Key Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Original unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "908": {
+    "id": 908,
+    "prof": {
+      "Name": [
+        "Precise Locations",
+        "Precise Location Key Very-High Boon Location Adjective Proficiency",
+        "exact, memorable, famous, accurate, definite"
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Precise Locations unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "909": {
+    "id": 909,
+    "prof": {
+      "Name": [
+        "Preoccupation",
+        "Preoccupation Key Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Preoccupation unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "910": {
+    "id": 910,
+    "prof": {
+      "Name": [
+        "Obsession",
+        "Obsession Key Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Obsession unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "911": {
+    "id": 911,
+    "prof": {
+      "Name": [
+        "Compelled",
+        "Compelled Key Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Compelled unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "912": {
+    "id": 912,
+    "prof": {
+      "Name": [
+        "Interest",
+        "Interest Key Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Interest unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "913": {
+    "id": 913,
+    "prof": {
+      "Name": [
+        "Focused",
+        "Focused Key Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Focused unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "914": {
+    "id": 914,
+    "prof": {
+      "Name": [
+        "Immersion",
+        "Immersion Key Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Immersion unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "915": {
+    "id": 915,
+    "prof": {
+      "Name": [
+        "Investigate",
+        "Investigate Key Action Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Investigate unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "916": {
+    "id": 916,
+    "prof": {
+      "Name": [
+        "Jab",
+        "Jab Key Attack Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Jab unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "917": {
+    "id": 917,
+    "prof": {
+      "Name": [
+        "Break Through",
+        "Break Through Key Critical Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Break Through unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "918": {
+    "id": 918,
+    "prof": {
+      "Name": [
+        "Sensor",
+        "Sensor Key Core Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Sensor unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "919": {
+    "id": 919,
+    "prof": {
+      "Name": [
+        "Inspired",
+        "Inspired Key Descendants Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Inspired unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "920": {
+    "id": 920,
+    "prof": {
+      "Name": [
+        "Pointed",
+        "Pointed Key Edge Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Pointed unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "921": {
+    "id": 921,
+    "prof": {
+      "Name": [
+        "Pointed",
+        "Pointed Key Glow Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Pointed unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "922": {
+    "id": 922,
+    "prof": {
+      "Name": [
+        "Catch",
+        "Catch Key Failure Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Catch unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "923": {
+    "id": 923,
+    "prof": {
+      "Name": [
+        "Dull",
+        "Dull Key Fumble Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Dull unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "924": {
+    "id": 924,
+    "prof": {
+      "Name": [
+        "Exposed",
+        "Exposed Key Gnarl Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Exposed unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "925": {
+    "id": 925,
+    "prof": {
+      "Name": [
+        "Senses",
+        "Senses Key Herald Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Senses unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "926": {
+    "id": 926,
+    "prof": {
+      "Name": [
+        "Confined",
+        "Confined Key Hitch Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Confined unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "927": {
+    "id": 927,
+    "prof": {
+      "Name": [
+        "Catch",
+        "Catch Key Hurdle Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Catch unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "928": {
+    "id": 928,
+    "prof": {
+      "Name": [
+        "Inspiration",
+        "Inspiration Key Incarna Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Inspiration unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "929": {
+    "id": 929,
+    "prof": {
+      "Name": [
+        "Sign Locations",
+        "Sign Location Key Location Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Sign Locations unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "930": {
+    "id": 930,
+    "prof": {
+      "Name": [
+        "Suspicion",
+        "Suspicion Key Lore Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Suspicion unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "931": {
+    "id": 931,
+    "prof": {
+      "Name": [
+        "Hunter",
+        "Hunter Key Monster Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Hunter unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "932": {
+    "id": 932,
+    "prof": {
+      "Name": [
+        "Sensory",
+        "Sensory Key Narration Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Sensory unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "933": {
+    "id": 933,
+    "prof": {
+      "Name": [
+        "Lost Keys",
+        "Lost Keys Key Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Lost Keys unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "934": {
+    "id": 934,
+    "prof": {
+      "Name": [
+        "Unravelling Ordeals",
+        "Unravelling Ordeal Key Ordeal Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Unravelling Ordeals unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "935": {
+    "id": 935,
+    "prof": {
+      "Name": [
+        "Perceptions",
+        "Perceptions Key Psychosocial Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Perceptions unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "936": {
+    "id": 936,
+    "prof": {
+      "Name": [
+        "Investigate/Seek",
+        "Investigate/Seek",
+        ""
+      ],
+      "Description": "Like a river carving its path through stone, Investigate/Seek is the relentless pursuit of learning.",
+      "Tags": {
+        "Facets": [
+          "10"
+        ],
+        "Scopes": [
+          "10"
+        ],
+        "Genres": [
+          "10"
+        ],
+        "Eras": [
+          "10"
+        ],
+        "Types": [
+          "Quest"
+        ]
+      }
+    }
+  },
+  "937": {
+    "id": 937,
+    "prof": {
+      "Name": [
+        "Senses",
+        "Senses Key Question Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Senses unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "938": {
+    "id": 938,
+    "prof": {
+      "Name": [
+        "Insight",
+        "Insight Key Resolved Hitch Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Insight unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "939": {
+    "id": 939,
+    "prof": {
+      "Name": [
+        "Senses",
+        "Senses Key Rule Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Senses unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "940": {
+    "id": 940,
+    "prof": {
+      "Name": [
+        "Observant",
+        "Observant Key Style Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Observant unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "941": {
+    "id": 941,
+    "prof": {
+      "Name": [
+        "Probing",
+        "Probing Key Success Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Probing unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "942": {
+    "id": 942,
+    "prof": {
+      "Name": [
+        "Insight",
+        "Insight Key Sway Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Insight unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "943": {
+    "id": 943,
+    "prof": {
+      "Name": [
+        "Answers",
+        "Answers Key Tangle Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Answers unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "944": {
+    "id": 944,
+    "prof": {
+      "Name": [
+        "Perception / Spot Hidden / Spot Bleeding Obvious / Lock-picking",
+        "Perception / Spot Hidden / Spot Bleeding Obvious / Lock-picking",
+        ""
+      ],
+      "Description": "The ghost of a forgotten memory, Perception / Spot Hidden / Spot Bleeding Obvious / Lock-picking is the echo of wisdom in the ruins of the past.",
+      "Tags": {
+        "Facets": [
+          "10"
+        ],
+        "Scopes": [
+          "10"
+        ],
+        "Genres": [
+          "10"
+        ],
+        "Eras": [
+          "10"
+        ],
+        "Types": [
+          "Test"
+        ]
+      }
+    }
+  },
+  "945": {
+    "id": 945,
+    "prof": {
+      "Name": [
+        "Investigative",
+        "Investigative Key Tone Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Investigative unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "946": {
+    "id": 946,
+    "prof": {
+      "Name": [
+        "Reveal",
+        "Reveal Key Turn Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Reveal unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "947": {
+    "id": 947,
+    "prof": {
+      "Name": [
+        "Senses",
+        "Senses Key Twisted Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Senses unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10",
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "948": {
+    "id": 948,
+    "prof": {
+      "Name": [
+        "Piercing",
+        "Piercing Key Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Piercing unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "949": {
+    "id": 949,
+    "prof": {
+      "Name": [
+        "Incisive",
+        "Incisive Key Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Incisive unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "950": {
+    "id": 950,
+    "prof": {
+      "Name": [
+        "Sharp",
+        "Sharp Key Nimbed Proficiency",
+        ""
+      ],
+      "Description": "Observed with sensory precision, the investigative detail of Sharp unlocks a deeper understanding of the world through objective scrutiny.",
+      "Tags": {
+        "Facets": [
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

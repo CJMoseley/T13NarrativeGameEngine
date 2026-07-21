@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 60,
+    "Name": "Restraint",
+    "Entity": "&#19963;",
+    "Logical": 19,
+    "Trigrams": [
+      1,
+      5
+    ],
+    "Hexagram_Text": "Jie, Restraint (or Restriction or Limiting), Restraints are not always physical, but can be emotional, spiritual, intellectual, or magical just as easily, but even so this restriction is not necessarily bad, . Just as necessity is the mother of invention, so limits push us to new discoveries. Changes in the environment restrict animals, forcing adaptive evolution to change them.",
+    "Unchanging": "When a Hitch is triggered you may either elect to ignore the Hitch, or you may add additional Chi equal to Incarna Draw (Grunts) / Score (Hero) / Boon (Yarn-Teller) for rest of the Session / Chapter / Episode.",
+    "Line1": "Restrained At The Threshold",
+    "Line2": "Entering The Courtyard",
+    "Line3": "Not Knowing Restraint",
+    "Line4": "Contented Restraint",
+    "Line5": "Sweet Restraint",
+    "Line6": "Galling Restraint"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you display moderation (including rolling average) rather than being too strict, lenient, disciplined, free, limited or limiting",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you must make a decision, choose a path, or break a rule",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "you stay behind or seek safety",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yin",
+        "Condition": "you grasp an opportunity",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yang",
+        "Condition": "you display excess, or blame others for your failures",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yang",
+        "Condition": "you use an Annex with Umbral Proficiencies",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yin",
+        "Condition": "you are disciplined, or follow a routine, rules, laws or orders",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yang",
+        "Condition": "you enforce rules or laws, or are resented",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Restraint Quest describes a situation where resources are limited for some reason. This is often an expression of poverty, moral limitations enforced by culture, or simply a strict time-limit that limits how long the Quester has to complete their Quest. This creates a situation where the Quester must place limits upon themselves or others (such as rationing available resources etc).",
+    "Quest_Complete": "When a Quest ends with the Restraint Hexagram the Quester will be forced to limit or restrain something or someone as part of the ending of the Quest. This is commonly expressed as taking prisoners, or making arrests, usually from the opposition, although occasionally the Quester will have to limit or restrain some other resource or group for the greater good or their own personal gain. Sometimes, if the Quester is powerful, the limitations that must be applied by the Quester themselves, vowing never again to use their full-power, or some descendant they have acquired.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester encounters a limitation and potential danger. Trying to remove or overcome the limitation will lead to danger, and add a Hurdle, Obstacle or Failure Level to the Ordeal or Test. Halting progress and taking time to rest, recuperate and gather strength or resources before proceeding will add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "If the Quester acts now then they will add a Success Level, further hesitation or delay will add a Failure Level, Obstacle or Hurdle to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The Quester is not limited by external factors, and may do as they please, but if they do not apply some restraint upon their indulgences, or blames others for their failures, then they will add a Failure Level, Hurdle or Obstacle to the Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester that accepts natural limitations (that help them conserve resources), but rejects limitations that waste resources will add a Success Level. If the Quester chooses to fight against the current of the limitations and waste resources they will add a Failure Level, Obstacle or Hurdle to their Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester must impose some limitation on others, if they do this directly it will create bad feelings and add a Hurdle, Obstacle or Failure Level to the Ordeal or Test. If the Quester imposes this limitation upon themselves first, leading by example, then they will instead add a Success Level as others follow their example.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester who imposes strict and severe limitations or restrictions will suffer additional Failure Levels, Hurdles or Obstacles created by those who are imposed upon. Though the Quester who imposes too few restrictions will also find themselves in trouble (with each missed limit adding one instead). The Quester though who is ruthless when required, and mostly to themselves rather than others, will instead add a Success Level.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "A lake occupies a limited space. When more water comes into it, it overflows. Therefore limits must be set for the water. The image shows water below and water above, with the firmament between them as a limit. The Chinese word for limitation really denotes the joints that divide a bamboo stalk. In relation to ordinary life it means the thrift that sets fixed limits upon expenditures. In relation to the moral sphere it means the fixed limits that the superior man sets upon his actions-the limits of loyalty and disinterestedness.",
+    "The_Image": {
+      "text": "Water over lake: the image of LIMITATION.\n\nThus the superior man\nCreates number and measure,\nAnd examines the nature of virtue and correct conduct.",
+      "comments": "A lake is something limited. Water is inexhaustible. A lake can contain only a definite amount of the infinite quantity of water; this is its peculiarity. In human life too the individual achieves significance through discrimination and the setting of limits. Therefore what concerns us here is the problem of clearly defining these discriminations, which are, so to speak, the backbone of morality. Unlimited possibilities are not suited to man; if they existed, his life would only dissolve in the boundless. To become strong, a man's life needs the limitations ordained by duty and voluntarily accepted. The individual attains significance as a free spirit only by surrounding himself with these limitations and by determining for himself what his duty is."
+    },
+    "The_Judgment": {
+      "text": "LIMITATION. Success.\nGalling limitation must not be persevered in.",
+      "comments": "Limitations are troublesome, but they are effective. If we live economically in normal times, we are prepared for times of want. To be sparing saves us from humiliation. Limitations are also indispensable in the regulation of world conditions. In nature there are fixed limits for summer and winter, day and night, and these limits give the year its meaning. In the same way, economy, by setting fixed limits upon expenditures, acts to preserve property and prevent injury to the people. But in limitation we must observe due measure. If a man should seek to impose galling limitations upon his own nature, it would be injurious. And if he should go too far in imposing limitations on others, they would rebel. Therefore it is necessary to set limits even upon limitation."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Not going out of the door and the courtyard\nIs without blame.",
+        "comments": "Often a man who would like to undertake something finds himself confronted by insurmountable limitations. Then he must know where to stop. If he rightly understands this and does not go beyond the limits set for him, he accumulates an energy that enables him, when the proper time comes, to act with great force. Discretion is of prime importance in preparing the way for momentous things. Concerning this, Confucius says:\n\nWhere disorder develops, words are the first steps. If the prince is not discreet, he loses his servant. If the servant is not discreet he loses his life. If germinating things are not handled with discretion, the perfecting of them is impeded. Therefore the superior man is careful to maintain silence and does not go forth."
+      },
+      "2": {
+        "text": "Not going out of the gate and the courtyard\nBrings misfortune.",
+        "comments": "When the time for action has come, the moment must be quickly seized. Just as water first collects in a lake without flowing out, yet is certain to find an outlet when the lake is full, so it is in the life of man. It is a good thing to hesitate so long as the time for action has not come, but no longer. Once the obstacles to action have been removed, anxious hesitation is a mistake that is bound to bring disaster, because one misses one's opportunity."
+      },
+      "3": {
+        "text": "He who knows limitation\nWill have cause to lament.",
+        "comments": "No blame.\n\nIf an individual is bent only on pleasures and enjoyment, it is easy for him to lose his sense of the limits that are necessary. If he gives himself over to extravagance, he will have to suffer the consequences, with accompanying regret. He must not seek to lay the blame on others. Only when we realize that our mistakes are of our own making will such disagreeable experiences free us of errors."
+      },
+      "4": {
+        "text": "Contented limitation. Success.",
+        "comments": "Every limitation has its value, but a limitation that requires persistent effort entails a cost of too much energy. When, however, the limitation is a natural one (as for example, the limitation by which water flows only downhill), it necessarily leads to success, for then it means a saving of energy. The energy that otherwise would be consumed in a vain struggle with the object, is applied wholly to the benefit of the matter in hand, and success is assured."
+      },
+      "5": {
+        "text": "Sweet limitation brings good fortune.\nGoing brings esteem.",
+        "comments": "The limitation must be carried out in the right way if it is to be effective. If we seek to impose restrictions on others only, while evading them ourselves, these restrictions will always be resented and will provoke resistance. If, however, a man in a leading position applies the limitation first to himself, demanding little from those associated with him, and with modest means manages to achieve something, good fortune is the result. Where such an example occurs, it meets with emulation, so that whatever is undertaken must succeed."
+      },
+      "6": {
+        "text": "Galling limitation.\nPerseverance brings misfortune.\nRemorse disappears.",
+        "comments": "If one is too severe in setting up restrictions, people will not endure them. The more consistent such severity, the worse it is, for in the long run a reaction is unavoidable. In the same way, the tormented body will rebel against excessive asceticism. On the other hand, although ruthless severity is not to be applied persistently and systematically, there may be times when it si the only means of safeguarding against guilt and remorse. In such situations ruthlessness toward oneself is the only means of saving one's soul, which otherwise would succumb to irresolution and temptation."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Restraint'. Internalize this core philosophy: A lake occupies a limited space. When more water comes into it, it overflows. Therefore limits must be set for the water. The image shows water below and water above, with the firmament between them as a limit. The Chinese word for limitation really denotes the joints that divide a bamboo stalk. In relation to ordinary life it means the thrift that sets fixed limits upon expenditures. In relation to the moral sphere it means the fixed limits that the superior man sets upon his actions-the... Your current worldview is: \"Jie, Restraint (or Restriction or Limiting), Restraints are not always physical, but can be emotional, spiritual, intellectual, or magical just as easily, but even so this restriction is not necessarily bad, . Just as necessity is the mother of invention, so limits push us to new discoveries. Changes in the environment restrict animals, forcing adaptive evolution to change them.\". Let your choices be subtly driven by these conditions: you display moderation (including rolling average) rather than being too strict, lenient, disciplined, free, limited or limiting, you must make a decision, choose a path, or break a rule. When interacting, mirror the wisdom found in the commentary: \"Limitations are troublesome, but they are effective. If we live economically in normal times, we are prepared for times of want. To be sparing saves us from humiliation. Limitations are also indispensable in the regulation of world conditions. In nature there are fixed limits for summer and winter,...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Restraint'. The primary quest objective is: The Restraint Quest describes a situation where resources are limited for some reason. This is often an expression of poverty, moral limitations enforced by culture, or simply a strict time-limit that limits how long the Quester has to complete their Quest. This creates a situation where the Quester must place limits upon themselves or others (such as rationing available resources etc).. Introduce environmental or social complications that reflect the 'Image' of this hexagram: A lake is something limited. Water is inexhaustible. A lake can contain only a definite amount of the infinite quantity of water; this is its peculiarity. In human life too the individual achieves significance through discrimination and the setting of limits. Therefore what concerns us here is the problem of clearly defining these discriminations, which are, so to speak, the backbone of morality.... Use the following line-specific challenges to pace the story: The Quester encounters a limitation and potential danger. Trying to remove or overcome the limitation will lead to danger, and add a Hurdle, Obstacle or Failure Level to the Ordeal or Test. Halting progress and taking time to rest, recuperate and gather strength or resources before proceeding will add a Success Level instead. | If the Quester acts now then they will add a Success Level, further hesitation or delay will add a Failure Level, Obstacle or Hurdle to the Test or Ordeal. | The Quester is not limited by external factors, and may do as they please, but if they do not apply some restraint upon their indulgences, or blames others for their failures, then they will add a Failure Level, Hurdle or Obstacle to the Test or Ordeal. | The Quester that accepts natural limitations (that help them conserve resources), but rejects limitations that waste resources will add a Success Level. If the Quester chooses to fight against the current of the limitations and waste resources they will add a Failure Level, Obstacle or Hurdle to their Test or Ordeal. | The Quester must impose some limitation on others, if they do this directly it will create bad feelings and add a Hurdle, Obstacle or Failure Level to the Ordeal or Test. If the Quester imposes this limitation upon themselves first, leading by example, then they will instead add a Success Level as others follow their example. | The Quester who imposes strict and severe limitations or restrictions will suffer additional Failure Levels, Hurdles or Obstacles created by those who are imposed upon. Though the Quester who imposes too few restrictions will also find themselves in trouble (with each missed limit adding one instead). The Quester though who is ruthless when required, and mostly to themselves rather than others, will instead add a Success Level.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Restrained At The Threshold): Mirror the internal state described in the commentary: \"Often a man who would like to undertake something finds himself confronted by insurmountable limitations. Then he must know where to stop. If he rightly understands this and does not go beyond the limits set for him, he accumulates an energy that...\" Your actions should be framed by the goal: you stay behind or seek safety.",
+        "Plot": "Plot Complication Line 1 (Restrained At The Threshold): Introduce a challenge based on the interpretation: \"Often a man who would like to undertake something finds himself confronted by insurmountable limitations. Then he must know where to stop. If he rightly understands this and does not go beyond the limits set for him, he accumulates an energy that...\" The specific quest objective for this stage is: The Quester encounters a limitation and potential danger. Trying to remove or overcome the limitation will lead to danger, and add a Hurdle, Obstacle or Failure Level to the Ordeal or Test. Halting progress and taking time to rest, recuperate and gather strength or resources before proceeding will add a Success Level instead."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Entering The Courtyard): Mirror the internal state described in the commentary: \"When the time for action has come, the moment must be quickly seized. Just as water first collects in a lake without flowing out, yet is certain to find an outlet when the lake is full, so it is in the life of man. It is a good thing to hesitate so...\" Your actions should be framed by the goal: you grasp an opportunity.",
+        "Plot": "Plot Complication Line 2 (Entering The Courtyard): Introduce a challenge based on the interpretation: \"When the time for action has come, the moment must be quickly seized. Just as water first collects in a lake without flowing out, yet is certain to find an outlet when the lake is full, so it is in the life of man. It is a good thing to hesitate so...\" The specific quest objective for this stage is: If the Quester acts now then they will add a Success Level, further hesitation or delay will add a Failure Level, Obstacle or Hurdle to the Test or Ordeal."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Not Knowing Restraint): Mirror the internal state described in the commentary: \"No blame.\n\nIf an individual is bent only on pleasures and enjoyment, it is easy for him to lose his sense of the limits that are necessary. If he gives himself over to extravagance, he will have to suffer the consequences, with accompanying regret....\" Your actions should be framed by the goal: you display excess, or blame others for your failures.",
+        "Plot": "Plot Complication Line 3 (Not Knowing Restraint): Introduce a challenge based on the interpretation: \"No blame.\n\nIf an individual is bent only on pleasures and enjoyment, it is easy for him to lose his sense of the limits that are necessary. If he gives himself over to extravagance, he will have to suffer the consequences, with accompanying regret....\" The specific quest objective for this stage is: The Quester is not limited by external factors, and may do as they please, but if they do not apply some restraint upon their indulgences, or blames others for their failures, then they will add a Failure Level, Hurdle or Obstacle to the Test or Ordeal."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Contented Restraint): Mirror the internal state described in the commentary: \"Every limitation has its value, but a limitation that requires persistent effort entails a cost of too much energy. When, however, the limitation is a natural one (as for example, the limitation by which water flows only downhill), it necessarily...\" Your actions should be framed by the goal: you use an Annex with Umbral Proficiencies.",
+        "Plot": "Plot Complication Line 4 (Contented Restraint): Introduce a challenge based on the interpretation: \"Every limitation has its value, but a limitation that requires persistent effort entails a cost of too much energy. When, however, the limitation is a natural one (as for example, the limitation by which water flows only downhill), it necessarily...\" The specific quest objective for this stage is: The Quester that accepts natural limitations (that help them conserve resources), but rejects limitations that waste resources will add a Success Level. If the Quester chooses to fight against the current of the limitations and waste resources they will add a Failure Level, Obstacle or Hurdle to their Test or Ordeal."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Sweet Restraint): Mirror the internal state described in the commentary: \"The limitation must be carried out in the right way if it is to be effective. If we seek to impose restrictions on others only, while evading them ourselves, these restrictions will always be resented and will provoke resistance. If, however, a man...\" Your actions should be framed by the goal: you are disciplined, or follow a routine, rules, laws or orders.",
+        "Plot": "Plot Complication Line 5 (Sweet Restraint): Introduce a challenge based on the interpretation: \"The limitation must be carried out in the right way if it is to be effective. If we seek to impose restrictions on others only, while evading them ourselves, these restrictions will always be resented and will provoke resistance. If, however, a man...\" The specific quest objective for this stage is: The Quester must impose some limitation on others, if they do this directly it will create bad feelings and add a Hurdle, Obstacle or Failure Level to the Ordeal or Test. If the Quester imposes this limitation upon themselves first, leading by example, then they will instead add a Success Level as others follow their example."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Galling Restraint): Mirror the internal state described in the commentary: \"If one is too severe in setting up restrictions, people will not endure them. The more consistent such severity, the worse it is, for in the long run a reaction is unavoidable. In the same way, the tormented body will rebel against excessive...\" Your actions should be framed by the goal: you enforce rules or laws, or are resented.",
+        "Plot": "Plot Complication Line 6 (Galling Restraint): Introduce a challenge based on the interpretation: \"If one is too severe in setting up restrictions, people will not endure them. The more consistent such severity, the worse it is, for in the long run a reaction is unavoidable. In the same way, the tormented body will rebel against excessive...\" The specific quest objective for this stage is: The Quester who imposes strict and severe limitations or restrictions will suffer additional Failure Levels, Hurdles or Obstacles created by those who are imposed upon. Though the Quester who imposes too few restrictions will also find themselves in trouble (with each missed limit adding one instead). The Quester though who is ruthless when required, and mostly to themselves rather than others, will instead add a Success Level."
+      }
+    }
+  }
+}

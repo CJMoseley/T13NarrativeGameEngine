@@ -1,0 +1,1414 @@
+{
+  "2107": {
+    "id": 2107,
+    "prof": {
+      "Name": [
+        "Compete",
+        "Compete Trial Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Compete is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2108": {
+    "id": 2108,
+    "prof": {
+      "Name": [
+        "Quiz",
+        "Quiz Trial Question Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Quiz is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2109": {
+    "id": 2109,
+    "prof": {
+      "Name": [
+        "Combatant",
+        "Combatant Trial Resolved Hitch Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Combatant is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2110": {
+    "id": 2110,
+    "prof": {
+      "Name": [
+        "Conflict",
+        "Conflict Trial Rule Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Conflict is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2111": {
+    "id": 2111,
+    "prof": {
+      "Name": [
+        "Tactical",
+        "Tactical Trial Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Tactical is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2112": {
+    "id": 2112,
+    "prof": {
+      "Name": [
+        "Gladiator",
+        "Gladiator Trial Success Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Gladiator is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2113": {
+    "id": 2113,
+    "prof": {
+      "Name": [
+        "Plays",
+        "Plays Trial Sway Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Plays is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2114": {
+    "id": 2114,
+    "prof": {
+      "Name": [
+        "Dangerous",
+        "Dangerous Trial Tangle Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Dangerous is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2115": {
+    "id": 2115,
+    "prof": {
+      "Name": [
+        "Battling",
+        "Battling Trial Test Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Battling is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2116": {
+    "id": 2116,
+    "prof": {
+      "Name": [
+        "Competing",
+        "Competing Trial Test Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Competing is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2117": {
+    "id": 2117,
+    "prof": {
+      "Name": [
+        "Confronting",
+        "Confronting Trial Test Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Confronting is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2118": {
+    "id": 2118,
+    "prof": {
+      "Name": [
+        "Fighting",
+        "Fighting Trial Test Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Fighting is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2119": {
+    "id": 2119,
+    "prof": {
+      "Name": [
+        "Struggling",
+        "Struggling Trial Test Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Struggling is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2120": {
+    "id": 2120,
+    "prof": {
+      "Name": [
+        "Tactics",
+        "Tactics Trial Test Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Tactics is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2121": {
+    "id": 2121,
+    "prof": {
+      "Name": [
+        "Warring",
+        "Warring Trial Test Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Warring is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2122": {
+    "id": 2122,
+    "prof": {
+      "Name": [
+        "Combative",
+        "Combative Trial Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Combative is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2123": {
+    "id": 2123,
+    "prof": {
+      "Name": [
+        "A New Challenger Appears",
+        "A New Challenger Appears Trial Turn Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, A New Challenger Appears is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2124": {
+    "id": 2124,
+    "prof": {
+      "Name": [
+        "Assault",
+        "Assault Trial Twisted Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Assault is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2125": {
+    "id": 2125,
+    "prof": {
+      "Name": [
+        "Opposing",
+        "Opposing Trial Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Opposing is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2126": {
+    "id": 2126,
+    "prof": {
+      "Name": [
+        "Battle",
+        "Battle Trial Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Battle is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2127": {
+    "id": 2127,
+    "prof": {
+      "Name": [
+        "Chop",
+        "Chop Trial Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Chop is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2128": {
+    "id": 2128,
+    "prof": {
+      "Name": [
+        "Contend",
+        "Contend Trial Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Contend is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2129": {
+    "id": 2129,
+    "prof": {
+      "Name": [
+        "Counter",
+        "Counter Trial Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Counter is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2130": {
+    "id": 2130,
+    "prof": {
+      "Name": [
+        "Eliminate",
+        "Eliminate Trial Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Eliminate is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2131": {
+    "id": 2131,
+    "prof": {
+      "Name": [
+        "Overcome",
+        "Overcome Trial Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Overcome is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2132": {
+    "id": 2132,
+    "prof": {
+      "Name": [
+        "Pirate",
+        "Pirate Trial Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Pirate is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2133": {
+    "id": 2133,
+    "prof": {
+      "Name": [
+        "Play",
+        "Play Trial Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Play is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2134": {
+    "id": 2134,
+    "prof": {
+      "Name": [
+        "Shoot",
+        "Shoot Trial Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Shoot is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2135": {
+    "id": 2135,
+    "prof": {
+      "Name": [
+        "Test",
+        "Test Trial Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Test is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2136": {
+    "id": 2136,
+    "prof": {
+      "Name": [
+        "Thwart",
+        "Thwart Trial Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Thwart is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2137": {
+    "id": 2137,
+    "prof": {
+      "Name": [
+        "Armed",
+        "Armed",
+        ""
+      ],
+      "Description": "Placeholder description.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2138": {
+    "id": 2138,
+    "prof": {
+      "Name": [
+        "Champion",
+        "Champion Trial Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Champion is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2139": {
+    "id": 2139,
+    "prof": {
+      "Name": [
+        "Cybernetic",
+        "Cybernetic Trial Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Cybernetic is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2140": {
+    "id": 2140,
+    "prof": {
+      "Name": [
+        "Deadly",
+        "Deadly Trial Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Deadly is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2141": {
+    "id": 2141,
+    "prof": {
+      "Name": [
+        "Fair",
+        "Fair Trial Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Fair is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2142": {
+    "id": 2142,
+    "prof": {
+      "Name": [
+        "Gladiatorial",
+        "Gladiatorial Trial Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Gladiatorial is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2143": {
+    "id": 2143,
+    "prof": {
+      "Name": [
+        "Metallic",
+        "Metallic Trial Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Metallic is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2144": {
+    "id": 2144,
+    "prof": {
+      "Name": [
+        "Piratical",
+        "Piratical Trial Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Piratical is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2145": {
+    "id": 2145,
+    "prof": {
+      "Name": [
+        "Valiant",
+        "Valiant Trial Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Valiant is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2146": {
+    "id": 2146,
+    "prof": {
+      "Name": [
+        "Strife",
+        "Strife Trial Umbral Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Strife is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2147": {
+    "id": 2147,
+    "prof": {
+      "Name": [
+        "Virtue-less",
+        "Virtue-less Virtue Zero Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Virtue-less is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2148": {
+    "id": 2148,
+    "prof": {
+      "Name": [
+        "Notorious Locations",
+        "Notorious Location Virtue Zero Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Notorious Locations is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2149": {
+    "id": 2149,
+    "prof": {
+      "Name": [
+        "Maleficent",
+        "Maleficent Virtue Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Maleficent is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2150": {
+    "id": 2150,
+    "prof": {
+      "Name": [
+        "Ruinous Locations",
+        "Ruinous Location Virtue Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Ruinous Locations is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2151": {
+    "id": 2151,
+    "prof": {
+      "Name": [
+        "Delinquent",
+        "Delinquent Virtue Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Delinquent is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2152": {
+    "id": 2152,
+    "prof": {
+      "Name": [
+        "Regretful",
+        "Regretful Virtue Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Regretful is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2153": {
+    "id": 2153,
+    "prof": {
+      "Name": [
+        "Depressing Locations",
+        "Depressing Location Virtue Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Depressing Locations is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2154": {
+    "id": 2154,
+    "prof": {
+      "Name": [
+        "Intimidating",
+        "Intimidating Virtue Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Intimidating is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2155": {
+    "id": 2155,
+    "prof": {
+      "Name": [
+        "Wistful Locations",
+        "Wistful Location Virtue Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Wistful Locations is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2156": {
+    "id": 2156,
+    "prof": {
+      "Name": [
+        "Sassy",
+        "Sassy Virtue Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Sassy is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

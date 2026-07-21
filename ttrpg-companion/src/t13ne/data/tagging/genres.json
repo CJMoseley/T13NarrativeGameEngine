@@ -1,0 +1,434 @@
+{
+    "0": {
+        "Name": "Experimental",
+        "Description": "Experimental Genre usually means someone hasn't decided exactly what Genre this is meant to be, or it does not fit any Genre or the T13 Core",
+        "Slug": "xp",
+        "Parent": 0
+    },
+    "1": {
+        "Name": "T13 Core",
+        "Description": "The Omniversal Core — you can and will encounter Core genre objects stuff in every other genre. The T13 Core defines every Omniversal concept, which include things like life, rocks, planets, atmospheres, even space-time itself.",
+        "Slug": "core",
+        "Parent": 0
+    },
+    "2": {
+        "Name": "Speculative Fiction",
+        "Description": "Speculative Fiction is a catch-all term for all \"What if?\" questions in literature. It is the fiction of thought experiments, and can span genres from fantasy, horror and science-fiction. Speculative fiction often uses metaphors to explore tricky real-world situations, these can be delicate analogies, dripping with satirical insights, or clumsy mockeries that do not bear deep scrutiny.",
+        "Slug": "sf",
+        "Parent": 1
+    },
+    "3": {
+        "Name": "Contemporary",
+        "Description": "Contemporary fiction, set in the allegedly real world. Although contemporary settings can vary in \"accuracy\" significantly while remaining \"realistic\". Contemporary fiction often explores social situations and may question society without resorting to metaphors.",
+        "Slug": "contemporary",
+        "Parent": 1
+    },
+    "4": {
+        "Name": "Weird Fiction",
+        "Description": "Weird Fiction blends contemporary and speculative fiction genres together as it pre-dates the creations of Fantasy, Science-Fiction and Horror, which arose from it, and along side it. It sometimes asks questions, but rarely provides even metaphorical answers, and is more interested in the effect it creates in the audience than the characters. Weird Fiction exists in a world where folkore and ghost stories have some truth to them, but the real truth is more macabre, and far more alien, and much more darkly fantastic than anyone might guess. This is the genre that tries to scare, even perhaps terrify and even horrify, but it also to create a fascination, sense of wonder, and even to invoke reverence where it may. ",
+        "Slug": "weird",
+        "Parent": 1
+    },
+    "5": {
+        "Name": "Fantasy",
+        "Description": "Fantasy Fiction asks questions such as \"What if Magic was real?\", \"What if monsters existed?\" and \"What if gods walked amongst us?\". Fantasy is always some how different from the real-world, although the laws of biology, chemistry and physics may seem similar at first glance, there is something very different here, like how time flows differently in fairy-land, how gryphons and hippogriffs generate enough lift to fly, and require gold to nest their eggs, and these are often worlds with powerful magic (although it is not always necessary it goes a long way towards explaining how dragons can work).",
+        "Slug": "fantasy",
+        "Parent": 2
+    },
+    "6": {
+        "Name": "Science-Fiction",
+        "Description": "Science Fiction asks questions like \"What if we could time-travel?\", \"What if we could travel to the stars?\" and \"What if we all lived in a computer simulation inside a computer simulation?\". Science-Fiction is limited in several ways in how it can answer hte questions it asks. If the Science is being used correctly it should keep reality nearby for easy reference, although often as scientific understanding changes what was once science-fiction can become fantasy or weird fiction as the science diverges from the narrative. Science-Fiction can be awkward and tricky, set the future too close, and your technology may be too difficult to believe in, set it too far in the future annd only our science can ground the story, that is otherwise skipping between stars.",
+        "Slug": "science-fiction",
+        "Parent": 2
+    },
+    "7": {
+        "Name": "Horror",
+        "Description": "Horror Fiction asks similar questions to both Fantasy and Science-Fiction, it just presents the answers as much darker, coloured in blood and brooding. Yes, magic exists and is addictive and corrupting. Monsters exists and some people keep them like pets, feeding them their enemies. The gods that walk amongst us do so to feed. Time-travel is possible, but you will change your own history so that you can never return to your own time. The stars, and their peoples, will not be friendly when we reach them. And yes, we are in a simulation, and you do not want to know why, or who runs it. Horror is half of Weird Fiction in terms of the emotions it invokes, although it can invoke fascination, it tries for horror as a priority, although often can only manage fear.",
+        "Slug": "horror",
+        "Parent": 2
+    },
+    "8": {
+        "Name": "War",
+        "Description": "War stories are usually Adventure stories, although with a strong emphasis on Historical or Contemporary Military actions, with occasional hints of other genres from Science-Fiction or Horror.",
+        "Slug": "war",
+        "Parent": 3
+    },
+    "9": {
+        "Name": "Romance",
+        "Description": "Romances were originally tales of adventure, which often had some aspect of the hero getting the girl as a reward for their adventures. Later the romance changed emphasis with the love story, usually from the heroine's perspective taking the centre stage against a backdrop that might include adventure or other themes.",
+        "Slug": "romance",
+        "Parent": 3
+    },
+    "10": {
+        "Name": "Adventure",
+        "Description": "Adventure stories are the classical romance, although the action and conflict is emphasised more now over the love story that once shared the stage with the adventure. Adventure stories usually feature young, male protagonists who may be explorers, archaeologists, scientists, or most often military men . They are usually much less cerebral than thrillers, and the Stakes are often higher.",
+        "Slug": "adventure",
+        "Parent": 3
+    },
+    "11": {
+        "Name": "Thriller",
+        "Description": "Thrillers are stories of spies, crimes and action heroes. Conspiracies, murders and very human monsters are the tropes of these stories.",
+        "Slug": "thriller",
+        "Parent": 3
+    },
+    "12": {
+        "Name": "Historical",
+        "Description": "Historical fiction takes place at some point in the past, often by using historical contemporary fiction as a guide. Historical fiction often explores a specific moment in history from some unconsidered perspective.",
+        "Slug": "historical",
+        "Parent": 3
+    },
+    "13": {
+        "Name": "Comedy",
+        "Description": "Comedies are contemporary tales intended to amuse. Their narratives and conflicts usually take a back seat to the effect the narration has on the audience. Comedies often rely on confusing situations and events, or ridiculous, foolish Characters to amuse the audience.",
+        "Slug": "comedy",
+        "Parent": 3
+    },
+    "14": {
+        "Name": "Tragedy",
+        "Description": "Tragedies are contemporary tales (although often historical) that tell the tale of a fall from grace, or of human suffering, that is usually intended to act as a catharsis for the audience. Tragedies commonly feature themes of flawed characters, mistakes being made and bloody revenge. Otherwise they can often be considered Historical or Romances.",
+        "Slug": "tragedy",
+        "Parent": 3
+    },
+    "15": {
+        "Name": "Soap-Opera",
+        "Description": "Soap-operas are domestic contemporary stories based around small events, such as familial and neighbourly conflicts, that usually rely on sentimentality and melodrama. Soap opera stories usually focus on small events, with little to no lasting impact, although the occasional story will have powerful ramifications later.",
+        "Slug": "soap-opera",
+        "Parent": 3
+    },
+    "16": {
+        "Name": "Spy Thriller",
+        "Description": "Thrillers that focus on spy-craft, foreign powers, and secret agents make up a good amount of what most people think of as Thrillers. These are complicated games of deception and counter-intelligence, controlling what the enemy knows and what they think they know.",
+        "Slug": "spy",
+        "Parent": 11
+    },
+    "17": {
+        "Name": "Techno-thriller",
+        "Description": "Techno-thrillers are thrillers that focus on technology and details, generally. They usually like to get their facts right, whether about computers, genetics, forensics, martial arts, or military specs, but on occasion wander into Science-Fiction, such as anti-matter bombs or too advanced artificial intelligence. Techno-Thrillers can also become Spy-fi if the spy gadgets get too science-fiction.",
+        "Slug": "techno",
+        "Parent": 11
+    },
+    "18": {
+        "Name": "Crime Thriller",
+        "Description": "The Crime Thriller is probably the oldest and most famous of the Crime stories, crime thrillers are a large genre with a number of sub-genres of their own, but all focus on crime and criminal enterprises, the law enforcement who try to catch them, and the lawyers that try to defend and prosecute them.",
+        "Slug": "crime",
+        "Parent": 11
+    },
+    "19": {
+        "Name": "Medical Thriller",
+        "Description": "Medical thrillers are sometimes a Techno-thriller set in a hospital, other times they are more like detective novels with the doctor hunting down the pathogen killer. Then there are stories about doctors operating in terrible conditions, such as during a pandemic or war. Medical thrillers, rather like medics themselves can often have a dark and especially macabre humour about themselves.",
+        "Slug": "medical",
+        "Parent": 11
+    },
+    "20": {
+        "Name": "Detective",
+        "Description": "Detective stories focus on the detective, be they a hard-boiled private eye, a consulting detective, or a nosy great Aunt. The crime is usually murder, although occasionally the Murder is part of a larger criminal conspiracy.",
+        "Slug": "detective",
+        "Parent": 11
+    },
+    "21": {
+        "Name": "Murder Mystery",
+        "Description": "Murder Mysteries are related to the Detective stories, but with a slightly different focus. In them the emphasis is upon the complex mysteries of the murder, \"Who did this thing?\", \"Why did they do it?\", and in the case of locked room mysteries, \"How did they do that?\"",
+        "slug": "murder-mystery",
+        "Parent": 11
+    },
+    "22": {
+        "Name": "Hardboiled",
+        "Description": "The Hard-boiled detective story is a detective story that places less emphasis on mystery and more emphasis on suspense and action. The mysteries in Hard Boiled stories tend to be simpler, less psychological, and the story tends to play out more as an adventure, with fist and gun fights, as well as a lot of hard drinking and gruff characterisation.",
+        "Slug": "hardboiled",
+        "Parent": 11
+    },
+    "23": {
+        "Name": "Caper",
+        "Description": "Capers are Crime stories that focus on the criminals, and upon the crime they commit. Classic examples of the type include heists, con jobs and stings. Capers are often quite comedic, given the subject matter, and may treat death quite lightly.",
+        "Slug": "caper",
+        "Parent": 11
+    },
+    "24": {
+        "Name": "Courtroom Drama",
+        "Description": "'Courtroom dramas and Legal thrillers are about the attorneys and evidence, arguments and investigations being played out in a courtroom setting. Courtroom dramas are often very far removed from actual court proceedings, as many authors are not lawyers.",
+        "Slug": "courtroom",
+        "Parent": 11
+    },
+    "25": {
+        "Name": "'High Fantasy",
+        "Description": "High Fantasy is fantasy with epic scope. Magic is strongly present in the world, and can accomplish unbelievable things, but has no value judgement associated, a magician can be good or evil, but is usually powerful. Monsters are present and even common, although the most powerful forms, such as Balrogs, and intelligent, fire-breathing Dragons are usually less common.",
+        "Slug": "high-fantasy",
+        "Parent": 5
+    },
+    "26": {
+        "Name": "Low Fantasy",
+        "Description": "Low fantasy is more grounded fantasy, closer to historical fiction than mythology. Monsters are fewer and more scientifically plausible, and magic is rare and low-powered when it is encountered. In low-fantasy you might find a dragon skeleton, but a living dragon is unlikely (unless it is just a large monitor lizard).",
+        "Slug": "low-fantasy",
+        "Parent": 5
+    },
+    "27": {
+        "Name": "Swords and Sorcery",
+        "Description": "This is primitive fantasy mixed with cosmic horror. Magic exists, as a remnant of ancient civilisations that acts as a corrupting force upon humans. The heroes are brave, strong warriors and thieves who swing swords, or use bow and arrows, and rarely wear more than leather armour. Villains will be powerful, evil magicians, often with strong metal armour wearing henchmen.",
+        "Slug": "swords-sorcery",
+        "Parent": 5
+    },
+    "28": {
+        "Name": "Dark Fantasy",
+        "Description": "This is fantasy with most of the light and hope extracted, the Epic battles are between grey and even darker grey, and most stories are tales of revenge and petty vices, that swerve into horror territory regularly. Magic when it appears in Dark-Fantasy is usually a negative power, held by specific bloodlines, dark gods and demons.",
+        "Slug": "dark-fantasy",
+        "Parent": 5
+    },
+    "29": {
+        "Name": "Portal Fantasy",
+        "Description": "'Portal Fantasy is a specific form of Fantasy that asks the question, \"What if a normal person could explore this Fantasy world\". They have a lot of cross=over with Adventures and Romances, but take place in a fantastical world that is often a unique setting rather than a generic medieval Fantasy, such as Oz, Narnia, or Barsoom. Portal Fantasy is often strongly reliant on Quests to carry the narrative.",
+        "Slug": "portal",
+        "Parent": 5
+    },
+    "30": {
+        "Name": "Magic Realism",
+        "Description": "Magic Realism is in some ways the opposite of portal fantasy, in that magic \"leaks\" into the contemporary world. Usually such magical events are low-powered supernatural events.",
+        "Slug": "magic-realism",
+        "Parent": 5
+    },
+    "31": {
+        "Name": "Sci-Fi",
+        "Description": "Sci-Fi is the action version of the more cerebral science-fiction. It is still has spaceships, robots, and aliens, but is a lot more \"Pew-Pew\" in it's story lines and plotting. In Sci-Fi the science is de-emphasised, glossed over with terms like hyperspace, time-machine, and computer.",
+        "Slug": "sci-fi",
+        "Parent": 6
+    },
+    "32": {
+        "Name": "Cyberpunk",
+        "Description": "Originally Science fiction set five minutes into the future, a world of cyber upgrades and artificial intelligence, where corporations and nations are pitched in battle for only resources left, people. These days the themes and stories are closer to Grim-Modern.",
+        "Slug": "cyberpunk",
+        "Parent": 6
+    },
+    "33": {
+        "Name": "Steam-punk",
+        "Description": "Steam-punk originally blended Cyberpunk with a dash of Fantasy and Horror. It stripped away some of the computers and electricity and replacing it with... Steam, Mad-Science, and maybe a bit of Victorian occultism, it kept the cyber upgrades and robot tropes though.",
+        "Slug": "steam-punk",
+        "Parent": 32
+    },
+    "34": {
+        "Name": "Diesel-punk",
+        "Description": "Mad-science with internal combustion. Usually an adventure set in a strange alternate version of the mid-twentieth century. The emphasis is on adventure, engines, engineers, pilots and aeronautics usually.",
+        "Slug": "diesel-punk",
+        "Parent": 33
+    },
+    "35": {
+        "Name": "Atom-punk",
+        "Description": "Could also be called Mad-science-fiction. A combination of tropes from dated science-fiction that has since had it's science disproved, and all the various Scientific-Romance and Punk genres.",
+        "Slug": "atom-punk",
+        "Parent": 34
+    },
+    "37": {
+        "Name": "Scientific-Romance",
+        "Description": "Early European science fiction, when it was created it was the equivalent of the Techno-thriller or Cyberpunk, believably close, but that now seems to be a bizarre mix of Historical, Adventure, and Steam-punk tropes.",
+        "Slug": "sci-rom",
+        "Parent": 6
+    },
+    "38": {
+        "Name": "Science-Fantasy",
+        "Description": "Space-Wizards, Space-Princesses, alien warriors... You know the stuff. This blends Fantasy (particularly the Swords and Sorcery style) stories and tropes with Science-Fiction settings, usually.",
+        "Slug": "sci-fantasy",
+        "Parent": 6
+    },
+    "39": {
+        "Name": "Post-Apocalyptic",
+        "Description": "Disaster has struck the earth and civilization has collapsed, mostly... Small groups struggle to survive in the face of a world gone mad somehow, as the nature of the apocalypse varies immensely across the genre from environmental collapse, pandemics, blinding meteor storms combined with man-eating plants, or atomic and thermo-nuclear wars. Often the least scientific of the science-fiction sub-genres, as mutants, psychics, and magic often appear too.",
+        "Slug": "apocalypse",
+        "Parent": 6
+    },
+    "40": {
+        "Name": "Space Opera",
+        "Description": "Space Opera is epic sci-fi, the technology of science-fiction is left completely behind for what looks like god-like magical technology that can destroy whole stars let alone planets. Space Opera has a lot of cross-over with Science-Fantasy, although the technology looks like magic, it isn't really ,and usually has bigger explosions.",
+        "Slug": "space-opera",
+        "Parent": 31
+    },
+    "41": {
+        "Name": "Paranormal",
+        "Description": "'Paranormal fiction is a cross-over genre that blends Horror and Fantasy fiction with Contemporary Modern, Historical settings, often with Romance tropes.",
+        "Slug": "paranormal",
+        "Parent": 7
+    },
+    "42": {
+        "Name": "Cosmic Horror",
+        "Description": "Cosmic Horror is Horror with super-powerful aliens and their advanced technologies. These Ancient Aliens truly are god-like, immortal beings, humans are at the very best their property, and the human mind will break rather than face the truth...",
+        "Slug": "cosmic-horror",
+        "Parent": 7
+    },
+    "43": {
+        "Name": "Gothic Horror",
+        "Description": "Gothic Horror is Horror with a historical twist, often set in the 18th or 19th centuries. It often features old castles, dark family secrets, and a brooding atmosphere. Vampires, werewolves, and ghosts are common tropes in Gothic Horror.",
+        "Slug": "gothic-horror",
+        "Parent": 7
+    },
+    "44": {
+        "Name": "Super Heroics",
+        "Description": "Super Heroics is a blend of Science-Fiction, Fantasy, and Contemporary genres, often with Adventure, Romance, War and Thriller elements. It focuses on characters with superhuman abilities, fighting crime or saving the world.",
+        "Slug": "super-heroics",
+        "Parent": 2
+    },
+    "45": {
+        "Name": "Grim Modern",
+        "Description": "Grim Modern is Contemporary fiction with a dark twist. It often explores themes of crime, corruption, and moral ambiguity. The settings are usually urban, and the characters are often flawed anti-heroes.",
+        "Slug": "grim-modern",
+        "Parent": 3
+    },
+    "46": {
+        "Name": "Urban Fantasy",
+        "Description": "Urban Fantasy is a sub-genre of Fantasy set in a contemporary urban setting. It often features supernatural creatures living among humans, and explores the interaction between the magical and mundane worlds.",
+        "Slug": "urban-fantasy",
+        "Parent": 5
+    },
+    "47": {
+        "Name": "Biopunk",
+        "Description": "Biopunk is a sub-genre of Science-Fiction that focuses on biotechnology and genetic engineering. It often explores themes of biohacking, corporate control of biology, and the ethical implications of genetic manipulation.",
+        "Slug": "biopunk",
+        "Parent": 32
+    },
+    "48": {
+        "Name": "Apocalyptic Fantasy",
+        "Description": "Apocalyptic Fantasy combines elements of Fantasy with post-apocalyptic settings. It often features magical creatures and powers in a world that has been devastated by some catastrophic event.",
+        "Slug": "apocalyptic-fantasy",
+        "Parent": 5
+    },
+    "49": {
+        "Name": "Space Western",
+        "Description": "Space Western blends elements of Westerns with Science-Fiction settings. It often features frontier-like settings in space, with themes of exploration, lawlessness, and rugged individualism.",
+        "Slug": "space-western",
+        "Parent": 31
+    },
+    "50": {
+        "Name": "Mythic Fiction",
+        "Description": "Mythic Fiction draws heavily from mythology and folklore, often reimagining ancient myths in contemporary or fantastical settings. It explores timeless themes through the lens of mythological archetypes.",
+        "Slug": "mythic-fiction",
+        "Parent": 5
+    },
+    "51": {
+        "Name": "Dystopian Fiction",
+        "Description": "Dystopian Fiction is a sub-genre of Science-Fiction that explores oppressive societies and totalitarian regimes. It often serves as a critique of contemporary social, political, or technological trends.",
+        "Slug": "dystopian",
+        "Parent": 6
+    },
+    "52": {
+        "Name": "Eco-Fiction",
+        "Description": "Eco-Fiction focuses on environmental themes and the relationship between humans and nature. It often explores the consequences of environmental degradation and the importance of ecological balance.",
+        "Slug": "eco-fiction",
+        "Parent": 2
+    },
+    "53": {
+        "Name": "Time Travel",
+        "Description": "Time Travel fiction explores the concept of moving through time, often involving paradoxes, alternate histories, and the consequences of altering the past or future.",
+        "Slug": "time-travel",
+        "Parent": 6
+    },
+    "54": {
+        "Name": "Alternate History",
+        "Description": "Alternate History fiction explores what might have happened if certain historical events had occurred differently. It often involves significant changes to the course of history, leading to new societies and cultures.",
+        "Slug": "alternate-history",
+        "Parent": 3
+    },
+    "55": {
+        "Name": "Slipstream",
+        "Description": "Slipstream fiction blurs the boundaries between genres, often combining elements of Science-Fiction, Fantasy, and Literary Fiction. It challenges traditional genre conventions and explores surreal or speculative themes.",
+        "Slug": "slipstream",
+        "Parent": 2
+    },
+    "56": {
+        "Name": "Cli-Fi",
+        "Description": "Cli-Fi, or Climate Fiction, focuses on climate change and its impact on society and the environment. It often explores themes of survival, adaptation, and the human response to environmental crises.",
+        "Slug": "cli-fi",
+        "Parent": 2
+    },
+    "57": {
+        "Name": "New Weird",
+        "Description": "New Weird is a sub-genre of Weird Fiction that combines elements of Fantasy, Science-Fiction, and Horror. It often features bizarre and surreal settings, blending the mundane with the fantastical in unsettling ways.",
+        "Slug": "new-weird",
+        "Parent": 4
+    },
+    "58": {
+        "Name": "Afrofuturism",
+        "Description": "Afrofuturism combines elements of Science-Fiction, Fantasy, and African culture to explore the experiences and futures of the African diaspora. It often addresses themes of identity, technology, and social justice.",
+        "Slug": "afrofuturism",
+        "Parent": 6
+    },
+    "59": {
+        "Name": "Silkpunk",
+        "Description": "Silkpunk is a sub-genre of Science-Fiction and Fantasy that draws inspiration from East Asian antiquity and technology. It often features a blend of traditional aesthetics with futuristic elements.",
+        "Slug": "silkpunk",
+        "Parent": 5
+    },
+    "60": {
+        "Name": "Hopepunk",
+        "Description": "Hopepunk is a sub-genre that emphasizes optimism, resilience, and positive change in the face of adversity. It often features characters who fight for a better future through compassion and cooperation.",
+        "Slug": "hopepunk",
+        "Parent": 2
+    },
+    "61": {
+        "Name": "Solarpunk",
+        "Description": "Solarpunk envisions a sustainable future where technology and nature coexist harmoniously. It often explores themes of renewable energy, ecological balance, and community resilience.",
+        "Slug": "solarpunk",
+        "Parent": 32
+    },
+    "62": {
+        "Name": "Litrpg",
+        "Description": "LitRPG combines elements of role-playing games with narrative fiction. It often features characters who are aware of game mechanics, leveling up, and quests within a fictional world.",
+        "Slug": "litrpg",
+        "Parent": 2
+    },
+    "63": {
+        "Name": "Bizarro Fiction",
+        "Description": "Bizarro Fiction is a sub-genre that embraces the weird, absurd, and surreal. It often features unconventional narratives, bizarre characters, and strange settings that challenge traditional storytelling norms.",
+        "Slug": "bizarro",
+        "Parent": 4
+    },
+    "64": {
+        "Name": "Pandemic Fiction",
+        "Description": "Pandemic Fiction explores the outbreak and spread of infectious diseases, often focusing on societal collapse, survival, and human resilience in the face of global health crises.",
+        "Slug": "pandemic",
+        "Parent": 6
+    },
+    "65": {
+        "Name": "Virtual Reality",
+        "Description": "Virtual Reality fiction explores immersive digital worlds and the interaction between humans and virtual environments. It often delves into themes of identity, consciousness, and the nature of reality.",
+        "Slug": "virtual-reality",
+        "Parent": 6
+    },
+    "66": {
+        "Name": "Mythpunk",
+        "Description": "Mythpunk is a sub-genre that reimagines and subverts traditional myths and folklore. It often features contemporary settings and explores themes of identity, power, and cultural heritage.",
+        "Slug": "mythpunk",
+        "Parent": 5
+    },
+    "67": {
+        "Name": "Fabulism",
+        "Description": "Fabulism is a literary genre that incorporates fantastical elements into realistic settings, often using allegory and metaphor to explore complex themes and ideas.",
+        "Slug": "fabulism",
+        "Parent": 2
+    },
+    "68": {
+        "Name": "Magical Realism",
+        "Description": "Magical Realism is a literary genre that incorporates fantastical elements into realistic settings, often using allegory and metaphor to explore complex themes and ideas.",
+        "Slug": "magical-realism",
+        "Parent": 3
+    },
+    "69": {
+        "Name": "New Space Opera",
+        "Description": "New Space Opera is a revitalized form of Space Opera that incorporates modern scientific understanding and complex character development. It often explores themes of politics, culture, and identity in a space-faring context.",
+        "Slug": "new-space-opera",
+        "Parent": 40
+    },
+    "70": {
+        "Name": "Post-Cyberpunk",
+        "Description": "Post-Cyberpunk is a sub-genre that evolves from Cyberpunk, focusing on the integration of technology into society rather than its dystopian aspects. It often explores themes of identity, community, and the human-technology relationship.",
+        "Slug": "post-cyberpunk",
+        "Parent": 32
+    },
+    "71": {
+        "Name": "Neon-Noir",
+        "Description": "Neon-Noir is a sub-genre that combines elements of Film Noir with futuristic, cyberpunk aesthetics. It often features morally ambiguous characters, dark urban settings, and themes of existentialism and identity.",
+        "Slug": "neon-noir",
+        "Parent": 32
+    },
+    "72": {
+        "Name": "Genre Mashup",
+        "Description": "Genre Mashup combines specific selected elements and story tropes from multiple genres to create a unique narrative experience.",
+        "Slug": "genre-mashup",
+        "Parent": 0
+    }
+}

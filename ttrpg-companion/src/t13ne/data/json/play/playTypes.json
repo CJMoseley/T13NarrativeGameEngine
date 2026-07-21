@@ -1,0 +1,38 @@
+[
+  {
+    "Type": "PBM",
+    "Description": "A Play-By-Mail Game, almost extinct, but play takes place by post (Averages are usually used or Refs may make dice rolls / card play for the players."
+  },
+  {
+    "Type": "PBeM",
+    "Description": "A Play-By-Email Game, a dying game type now, but was huge in the 90s. Turns are taken to describe the action, resolution is usually mediated by the Referee in their return. "
+  },
+  {
+    "Type": "Forum",
+    "Description": "Played online, turns take place within a Forum usually with at least a Thread devoted to the Game."
+  },
+  {
+    "Type": "Chatroom",
+    "Description": "Played On-line in a Chatroom, Talker, or via a real-time messenger app."
+  },
+  {
+    "Type": "Tabletop",
+    "Description": "How Roleplaying Games have been played since the 70s. Players describe actions with their voices, roll dice, and play cards on the table (other playing surfaces are available)."
+  },
+  {
+    "Type": "Conference",
+    "Description": "Playing characters via conferencing app. Card and Dice play may be verified by video, or handled by the Referee on a voice call."
+  },
+  {
+    "Type": "Discord",
+    "Description": "Combining Forum / Chatroom and voice or video conferencing to allow both synchronous and asynchronous on-line play."
+  },
+  {
+    "Type": "Hybrid On-line Table",
+    "Description": "The game is played on-line, and in real-life. Maybe one or two characters Skype in from another location, while everyone else is at a table."
+  },
+  {
+    "Type": "App",
+    "Description": "Play takes place through a dedicated gaming web app. Like this might become.."
+  }
+]

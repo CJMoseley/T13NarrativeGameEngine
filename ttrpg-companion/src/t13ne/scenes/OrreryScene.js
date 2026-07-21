@@ -1,0 +1,721 @@
+import * as THREE from 'three';
+import Logger from '/src/t13ne/core/Logger.js';
+import { Scene } from '/src/t13ne/core/Scene.js';
+import { SceneTools } from '/src/t13ne/core/SceneTools.js';
+import ProcGen from '/src/t13ne/procgen/ProcGen.js';
+import { ColourUtils } from '/src/t13ne/utils/ColourUtils.js';
+
+export class OrreryScene extends Scene {
+    constructor(viewManager, sceneData) {
+        super(viewManager, sceneData);
+
+        this.systemData = sceneData.systemDetails || {};
+        // Fix: Clone planets to prevent mutation of shared data
+        this.planets = sceneData.planets ? JSON.parse(JSON.stringify(sceneData.planets)) : [];
+        this.starLocation = sceneData.star;
+
+        // Orrery specific settings: Toy Scale
+        this.STAR_RADIUS = 80; // Fixed large size for the star
+        this.planetMeshes = [];
+        this.orbitLines = [];
+
+        this.onMouseClick = this.onMouseClick.bind(this);
+        this.onMouseMove = this.onMouseMove.bind(this);
+        this.raycaster = new THREE.Raycaster();
+        this.mouseVector = new THREE.Vector2();
+
+        this.cameraPathPoints = [];
+        this.hudElement = null;
+    }
+    
+    async _prepare(onProgress) {
+        this.init();
+        if (onProgress) onProgress({ status: 'Orrery generated', percent: 1.0 });
+    }
+
+    init() {
+        const funcName = 'OrreryScene.init';
+        Logger.start(funcName);
+
+        // Debug Data
+        Logger.message(`Orrery Init: System ${this.systemData.name || 'Unknown'}, Planets: ${this.planets.length}`);
+        this.planets.forEach((p, i) => {
+            Logger.message(`- Planet : ${p.name} (${p.type}) Dist: ${p.orbitalDistance} AU`);
+        });
+
+        this.sanitizeData();
+
+        this.scene.background = new THREE.Color(0x111111); // Slightly lighter background to see black planets
+
+        this.setupCamera();
+        this.setupLighting();
+        this.createStar();
+        this.createPlanets(); // This now uses getScaledDistance
+        this.createGrid(); // Helper grid to establish the orbital plane
+        this.createCameraMarker();
+
+        // Body Count Display
+        this.createBodyCountDisplay();
+
+        Logger.end(funcName);
+    }
+
+    sanitizeData() {
+        if (!this.planets) return;
+        this.planets.forEach((p, i) => {
+            let dist = parseFloat(p.orbitalDistance);
+            if (isNaN(dist) || dist <= 0) {
+                dist = (i + 1) * 3.0 + 2.0; // Fallback distribution, ensure > 0
+            }
+            p.orbitalDistance = dist;
+
+            if (p.moons) {
+                p.moons.forEach((m, j) => {
+                    let mDist = parseFloat(m.orbitalDistance);
+                    if (isNaN(mDist) || mDist <= 0) m.orbitalDistance = 0.002 + (j * 0.001);
+                });
+            }
+        });
+    }
+
+    // Helper to place planets at even intervals for visibility
+    getVisualDistance(index) {
+        // Explicitly add Star Radius to ensure we start outside
+        const gap = this.STAR_RADIUS * 3.0; // Adjusted gap for better separation
+        return this.STAR_RADIUS + (this.STAR_RADIUS * 2) + (index * gap);
+    }
+
+    // Helper to map real AU back to the visual index-based scale for the camera marker
+    getVisualDistanceForAU(au) {
+        if (!this.planets || this.planets.length === 0) return 0;
+
+        // 1. Find the two planets this AU falls between
+        // Assumes planets are sorted by distance (which we do in createPlanets)
+        for (let i = 0; i < this.planets.length - 1; i++) {
+            const p1 = this.planets[i];
+            const p2 = this.planets[i + 1];
+            if (au >= p1.orbitalDistance && au <= p2.orbitalDistance) {
+                // Interpolate
+                const range = p2.orbitalDistance - p1.orbitalDistance;
+                if (range <= 0) return this.getVisualDistance(i); // Safety
+                const progress = (au - p1.orbitalDistance) / range;
+                const v1 = this.getVisualDistance(i);
+                const v2 = this.getVisualDistance(i + 1);
+                return v1 + (progress * (v2 - v1));
+            }
+        }
+
+        // 2. Handle out of bounds
+        if (au < this.planets[0].orbitalDistance) {
+            return (au / this.planets[0].orbitalDistance) * this.getVisualDistance(0);
+        }
+
+        // Beyond the last planet - Conservative extrapolation
+        const lastPlanet = this.planets[this.planets.length - 1];
+        const lastVisual = this.getVisualDistance(this.planets.length - 1);
+        if (lastPlanet.orbitalDistance <= 0) return lastVisual; // Safety
+
+        const extrapolationRatio = au / lastPlanet.orbitalDistance;
+        // Use a slight log factor for extreme distances to prevent "breaking" the orrery view
+        const logRatio = 1 + Math.log(extrapolationRatio);
+        return lastVisual * logRatio;
+    }
+
+    setupCamera() {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        // Calculate extent of system to position camera
+        let maxDist = 500;
+        if (this.planets.length > 0) {
+            // Use the visual distance of the last planet
+            maxDist = this.getVisualDistance(this.planets.length - 1);
+        }
+
+        // Calculate distance required to fit the system in view based on FOV
+        const fov = 45; // Use a slightly narrower FOV for a better "diagram" look
+        const aspect = width / height;
+        const vFov = fov * (Math.PI / 180);
+
+        // Calculate distance needed to fit maxDist vertically and horizontally
+        const distV = (maxDist * 1.2) / Math.tan(vFov / 2);
+        const distH = (maxDist * 1.2) / (Math.tan(vFov / 2) * aspect);
+        let fitDist = Math.max(distV, distH, 500); // Ensure minimum distance
+
+        // NaN Safety
+        if (isNaN(fitDist)) fitDist = 500;
+
+        // Fixed view, 45 degrees above plane for better orbital visibility
+        const angle = 30 * (Math.PI / 180);
+        const y = fitDist * Math.sin(angle);
+        const z = fitDist * Math.cos(angle);
+
+        this.activeCamera.fov = fov;
+        this.activeCamera.position.set(0, y, z);
+        this.activeCamera.lookAt(0, 0, 0);
+        this.activeCamera.far = fitDist * 5; // Ensure far plane covers the whole system
+        this.activeCamera.updateProjectionMatrix();
+
+        this.setupControls('orbit', {
+            target: new THREE.Vector3(0, 0, 0),
+            maxDistance: fitDist * 2,
+            minDistance: 10,
+            enableDamping: true
+        });
+    }
+
+    setupLighting() {
+        const ambient = new THREE.AmbientLight(0xffffff, 0.4);
+        this.scene.add(ambient);
+
+        // Star light (Point light at center) - 0 decay for infinite range in this view
+        const point = new THREE.PointLight(0xffffff, 1.2, 0, 0);
+        point.position.set(0, 0, 0);
+        this.scene.add(point);
+
+        // Camera Headlamp to ensure planets are visible regardless of angle
+        const headlamp = new THREE.PointLight(0xffffff, 0.5, 0, 0);
+        this.activeCamera.add(headlamp);
+        this.scene.add(this.activeCamera);
+    }
+
+    createStar() {
+        const radius = this.STAR_RADIUS;
+        const geometry = new THREE.SphereGeometry(radius, 32, 32);
+
+        // Standardize color source to match LocalSpaceScene
+        // Standardize color source
+        let starColor = 0xffffaa;
+        if (this.starLocation && this.starLocation.color) {
+            starColor = this.starLocation.color;
+        } else if (this.systemData.starColor) {
+            starColor = this.systemData.starColor;
+        }
+        const starMat = new THREE.MeshStandardMaterial({
+            color: starColor,
+            emissive: starColor,
+            emissiveIntensity: 0.8
+        });
+
+        this.starMesh = new THREE.Mesh(geometry, starMat);
+        this.scene.add(this.starMesh);
+    }
+
+    createCameraMarker() {
+        // Create a Red Spot marker as requested
+        const geometry = new THREE.SphereGeometry(80, 16, 16); // Even larger for visibility
+        const material = new THREE.MeshBasicMaterial({
+            color: 0xff0000, // Red for visibility
+            depthTest: false, // Always render on top of other objects
+            transparent: true,
+            opacity: 0.9
+        });
+
+        this.cameraMarker = new THREE.Mesh(geometry, material);
+        this.cameraMarker.renderOrder = 999;
+        this.scene.add(this.cameraMarker);
+
+        // Camera Path Line - Pre-allocate buffer for dynamic updates
+        const maxPoints = 10000; // Increased buffer size
+        const pathGeo = new THREE.BufferGeometry();
+        const positions = new Float32Array(maxPoints * 3);
+        pathGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        pathGeo.setDrawRange(0, 0);
+
+        const pathMat = new THREE.LineBasicMaterial({
+            color: 0xff00ff, // Magenta
+            depthTest: false, // Always draw on top of other objects
+            transparent: false,
+            opacity: 1.0
+        });
+        this.cameraPathLine = new THREE.Line(pathGeo, pathMat);
+        this.cameraPathLine.frustumCulled = false;
+        this.cameraPathLine.renderOrder = 999; // Ensure it renders last
+        this.scene.add(this.cameraPathLine);
+
+        // Add Points for visibility (since Lines can be thin)
+        const pointsMat = new THREE.PointsMaterial({ color: 0xff00ff, size: 2, sizeAttenuation: false, depthTest: false });
+        this.cameraPathPointsMesh = new THREE.Points(pathGeo, pointsMat);
+        this.cameraPathPointsMesh.frustumCulled = false;
+        this.cameraPathPointsMesh.renderOrder = 999;
+        this.scene.add(this.cameraPathPointsMesh);
+
+        this.cameraPathPoints = []; // Reset points
+    }
+
+    resetPath() {
+        this.cameraPathPoints = [];
+        this.isStaticPath = false;
+        if (this.cameraPathLine) {
+            this.cameraPathLine.geometry.setDrawRange(0, 0);
+            if (this.cameraPathLine.geometry?.attributes?.position?.array) {
+                const positions = this.cameraPathLine.geometry.attributes.position.array;
+                positions.fill(0); // Clear buffer
+                this.cameraPathLine.geometry.attributes.position.needsUpdate = true;
+            }
+            if (this.cameraPathPointsMesh && this.cameraPathPointsMesh.geometry?.attributes?.position) {
+                this.cameraPathPointsMesh.geometry.attributes.position.needsUpdate = true;
+            }
+        }
+    }
+
+    setIntroPath(points, mainScale = 100) {
+        if (!points || points.length === 0 || !this.cameraPathLine) return;
+
+        this.resetPath();
+        this.isStaticPath = true;
+
+        Logger.message(`OrreryScene: Setting intro path with ${points.length} points.`);
+
+        if (!this.cameraPathLine.geometry?.attributes?.position?.array) return;
+        const positions = this.cameraPathLine.geometry.attributes.position.array;
+        let count = 0;
+        const maxPoints = positions.length / 3;
+        let maxVisualDist = 0;
+
+        // Frustum check prep
+        const frustum = new THREE.Frustum();
+        const projScreenMatrix = new THREE.Matrix4();
+        if (this.activeCamera) {
+            this.activeCamera.updateMatrixWorld();
+            projScreenMatrix.multiplyMatrices(this.activeCamera.projectionMatrix, this.activeCamera.matrixWorldInverse);
+            frustum.setFromProjectionMatrix(projScreenMatrix);
+        }
+        let outsideCount = 0;
+
+        for (let i = 0; i < points.length; i++) {
+            if (count >= maxPoints) break;
+
+            const p = points[i];
+            // Convert main scene position to AU, then to Visual Scale
+            const dist = p.length() || 1; // Avoid division by zero
+            const au = Math.max(0, (dist - 25) / mainScale); // 25 is STAR_RADIUS in StellarSystemScene
+            let orreryDist = this.getVisualDistanceForAU(au);
+
+            if (orreryDist < this.STAR_RADIUS + 5) orreryDist = this.STAR_RADIUS + 5;
+
+            const newPos = p.clone().normalize().multiplyScalar(orreryDist);
+
+            if (!isNaN(newPos.x) && !isNaN(newPos.y) && !isNaN(newPos.z)) {
+                positions[count * 3] = newPos.x;
+                positions[count * 3 + 1] = newPos.y;
+                positions[count * 3 + 2] = newPos.z;
+
+                if (this.activeCamera && !frustum.containsPoint(newPos)) {
+                    outsideCount++;
+                }
+                if (orreryDist > maxVisualDist) maxVisualDist = orreryDist;
+
+                count++;
+            }
+        }
+
+        Logger.message(`OrreryScene: Path points outside frustum: ${outsideCount} / ${count}. Max Dist: ${maxVisualDist}`);
+
+        this.cameraPathLine.geometry.setDrawRange(0, count);
+        this.cameraPathLine.geometry.attributes.position.needsUpdate = true;
+        if (this.cameraPathPointsMesh) this.cameraPathPointsMesh.geometry.setDrawRange(0, count);
+        this.cameraPathLine.computeLineDistances();
+
+        // Auto-fit camera to include the path
+        this.fitCameraToDist(maxVisualDist);
+    }
+
+    fitCameraToDist(targetMaxDist) {
+        // Ensure we include planets
+        let maxDist = 500;
+        if (this.planets.length > 0) {
+            maxDist = this.getVisualDistance(this.planets.length - 1);
+        }
+        maxDist = Math.max(maxDist, targetMaxDist);
+
+        // Assume Square Aspect for PiP
+        const aspect = 1.0;
+        const fov = 45;
+        const vFov = fov * (Math.PI / 180);
+        // Tighter fit (1.1 buffer instead of 1.2)
+        const distV = (maxDist * 1.1) / Math.tan(vFov / 2);
+        const distH = (maxDist * 1.1) / (Math.tan(vFov / 2) * aspect);
+        let fitDist = Math.max(distV, distH, 300);
+
+        // CAP fitDist to prevent camera flying into deep space where system is invisible
+        const maxFit = maxDist * 4.0;
+        if (fitDist > maxFit) fitDist = maxFit;
+        if (fitDist > 15000) fitDist = 15000; // Hard cap for orrery visibility
+
+        if (this.activeCamera) {
+            const angle = 45 * (Math.PI / 180);
+            const y = fitDist * Math.sin(angle);
+            const z = fitDist * Math.cos(angle);
+
+            this.activeCamera.position.set(0, y, z);
+            this.activeCamera.lookAt(0, 0, 0);
+            this.activeCamera.far = fitDist * 5;
+            this.activeCamera.aspect = aspect; // Force square aspect
+            this.activeCamera.updateProjectionMatrix();
+
+            Logger.message(`OrreryScene: Adjusted camera to fit dist ${targetMaxDist}. New Pos: ${y.toFixed(0)}, ${z.toFixed(0)}`);
+        }
+    }
+
+    updateCameraMarker(position, mainScale = 100) {
+        if (this.cameraMarker && position && !isNaN(position.x)) {
+            // Convert main scene position to AU, then to Visual Scale
+            // Note: StellarSystemScene does NOT add STAR_RADIUS to orbital distance in realPosition.
+            const dist = position.length();
+            const au = Math.max(0, dist / mainScale);
+
+            let orreryDist = this.getVisualDistanceForAU(au);
+
+            // Ensure marker is visible (not inside star) and has a minimum distance
+            if (orreryDist < this.STAR_RADIUS + 5) orreryDist = this.STAR_RADIUS + 5;
+
+            // Clamp to camera far plane to prevent clipping
+            if (this.activeCamera && orreryDist > this.activeCamera.far * 0.9) orreryDist = this.activeCamera.far * 0.9;
+
+            const direction = position.clone().normalize();
+            // Safety check for (0,0,0) vector which can't be normalized
+            if (direction.lengthSq() === 0) direction.set(0, 0, 1);
+            const newPos = direction.multiplyScalar(Math.max(orreryDist, this.STAR_RADIUS + 15));
+            if (newPos.lengthSq() === 0) newPos.set(0, 0, this.STAR_RADIUS + 5); // Handle 0,0,0 input
+            this.cameraMarker.position.copy(newPos);
+
+            // If path is static (pre-calculated intro), do not update it incrementally
+            if (this.isStaticPath) return;
+
+            // Update Path
+            // Only add point if it has moved sufficiently to avoid buffer spam
+            const lastPoint = this.cameraPathPoints.length > 0 ? this.cameraPathPoints[this.cameraPathPoints.length - 1] : null;
+
+            // Check for NaN to prevent corrupting the buffer
+            if (isNaN(newPos.x) || isNaN(newPos.y) || isNaN(newPos.z)) return;
+
+            // If this is the first point, just add it and return (don't draw line from 0,0,0)
+            if (!lastPoint) {
+                this.cameraPathPoints.push(newPos.clone());
+                return;
+            }
+
+            // Update if moved or if it's the first point. Reduced threshold for smoother lines.
+            if (!lastPoint || lastPoint.distanceTo(newPos) > 1.0) {
+                this.cameraPathPoints.push(newPos.clone());
+
+                const maxPoints = 10000;
+                if (this.cameraPathPoints.length > maxPoints) {
+                    this.cameraPathPoints.shift();
+                }
+
+                // Update BufferGeometry
+                if (!this.cameraPathLine.geometry?.attributes?.position?.array) return;
+                const positions = this.cameraPathLine.geometry.attributes.position.array;
+                for (let i = 0; i < this.cameraPathPoints.length; i++) {
+                    positions[i * 3] = this.cameraPathPoints[i].x;
+                    positions[i * 3 + 1] = this.cameraPathPoints[i].y;
+                    positions[i * 3 + 2] = this.cameraPathPoints[i].z;
+                }
+
+                this.cameraPathLine.geometry.attributes.position.needsUpdate = true;
+                this.cameraPathLine.geometry.setDrawRange(0, this.cameraPathPoints.length);
+                if (this.cameraPathPointsMesh) this.cameraPathPointsMesh.geometry.setDrawRange(0, this.cameraPathPoints.length);
+                this.cameraPathLine.computeLineDistances(); // Helpful for some line types
+            }
+        }
+    }
+
+    createPlanets() {
+        this.planetMeshes = [];
+        this.orbitLines = [];
+        this.planetGroups = []; // Track groups for animation
+
+        if (!this.planets || this.planets.length === 0) {
+            Logger.warn("OrreryScene: No planets to render.");
+            return;
+        }
+
+        // Sort planets by distance to ensure linear spacing works visually
+        this.planets.sort((a, b) => a.orbitalDistance - b.orbitalDistance);
+
+        const prng = ProcGen.createPRNG(this.systemData.name || 'orrery');
+
+        this.planets.forEach((planet, index) => {
+            // Use index-based distance for visibility
+            const dist = this.getVisualDistance(index);
+
+            // Toy Scale: Planets are huge relative to orbits for visibility
+            let size = 50; // Increased base size
+            if (planet.type && planet.type.includes('Giant')) {
+                size = 80;
+            } else if (planet.type && planet.type.includes('Dwarf')) {
+                size = 30;
+            }
+
+            // 1. Orbit Line
+            const orbitGeo = new THREE.BufferGeometry();
+            const points = [];
+            const segments = 128;
+            for (let i = 0; i <= segments; i++) {
+                const th = (i / segments) * Math.PI * 2;
+                points.push(dist * Math.cos(th), 0, dist * Math.sin(th));
+            }
+            orbitGeo.setAttribute('position', new THREE.Float32BufferAttribute(points, 3));
+
+            // Orbit Color based on Temperature/Distance
+            let orbitColor = 0x0088ff; // Default Blue (Frigid)
+            const au = planet.orbitalDistance;
+            if (au < 0.8) {
+                orbitColor = 0xff3333; // Red (Hot)
+            } else if (au >= 0.8 && au <= 1.6) {
+                orbitColor = 0x33ff33; // Green (Habitable)
+            }
+
+            const orbitMat = new THREE.LineBasicMaterial({ color: orbitColor, transparent: true, opacity: 0.4 });
+            const orbit = new THREE.Line(orbitGeo, orbitMat);
+            this.scene.add(orbit);
+            this.orbitLines.push(orbit);
+
+            // 2. Planet Group (Holds Mesh + Moons)
+            const planetGroup = new THREE.Group();
+            const angle = planet.startAngle !== undefined ? planet.startAngle : prng.nextDouble() * Math.PI * 2;
+            planetGroup.position.set(dist * Math.cos(angle), 0, dist * Math.sin(angle));
+
+            planetGroup.userData = {
+                planet: planet,
+                distance: dist,
+                angle: angle,
+                speed: (planet.orbitSpeed || 0.01) * 20
+            };
+            this.scene.add(planetGroup);
+            this.planetGroups.push(planetGroup);
+
+            // 3. Planet Mesh (Visual Sphere)
+            const geometry = new THREE.SphereGeometry(size, 32, 32);
+            let color = new THREE.Color(0x888888);
+
+            // Simplified, robust color check
+            if (planet.color) {
+                if (planet.color.isColor) { color.copy(planet.color); }
+                else if (planet.color.h !== undefined) { color.setHSL(planet.color.h, planet.color.s, planet.color.l); }
+                else if (planet.color.r !== undefined) { color.setRGB(planet.color.r, planet.color.g, planet.color.b); }
+                else color.set(planet.color);
+            } else if (planet.name) {
+                // Fallback using name frequency
+                let freq = 0;
+                for (let i = 0; i < planet.name.length; i++) freq += planet.name.charCodeAt(i);
+                freq = (freq % 300) + 400;
+                color.set(ColourUtils.curvedFrequencyToHex(freq));
+            }
+
+            const material = new THREE.MeshStandardMaterial({
+                color: color,
+                roughness: 0.7,
+                metalness: 0.1
+            });
+
+            const mesh = new THREE.Mesh(geometry, material);
+            mesh.userData.isPlanetBody = true; // Tag for rotation logic
+            // Add mesh to group (at 0,0,0 relative to group)
+            planetGroup.add(mesh);
+            this.planetMeshes.push(mesh); // Keep track for raycasting
+
+            // 3. Moons (Simplified)
+            if (planet.moons && planet.moons.length > 0) {
+                // Calculate visual limit for moons in Orrery (half the gap between planets)
+                // Use a local scale for moons similar to StellarSystemScene but adapted for Orrery
+                const MOON_ORBIT_SCALE = 100000; // Increased scale for visibility
+
+                planet.moons.forEach((moon, mIdx) => {
+                    // if (moon.type === 'Quasi-Satellite') return; // User wants them generated, just not lines
+
+                    const moonSize = 12;
+                    // Ensure visual clearance: Planet Size + Moon Size + Buffer + Scaled Distance
+                    let moonDist = size + moonSize + 4 + ((moon.orbitalDistance || 0.002) * MOON_ORBIT_SCALE);
+
+                    if (moon.isRing) {
+                        moonDist = size + 5 + (mIdx * 2);
+                    }
+
+                    let moonGeo;
+                    const moonMat = new THREE.MeshStandardMaterial({ color: 0xaaaaaa });
+
+                    if (moon.isRing) {
+                        moonGeo = new THREE.RingGeometry(moonDist - 1, moonDist + 1, 32);
+                        moonGeo.rotateX(-Math.PI / 2);
+                    } else {
+                        moonGeo = new THREE.SphereGeometry(moonSize, 8, 8);
+                    }
+
+                    const moonMesh = new THREE.Mesh(moonGeo, moonMat);
+
+                    const mAngle = prng.nextDouble() * Math.PI * 2;
+                    moonMesh.userData = {
+                        distance: moonDist,
+                        angle: mAngle,
+                        speed: 1.5 + (prng.nextDouble() * 1.0) // Fast orbit for visibility
+                    };
+
+                    if (moon.isRing) {
+                        moonMesh.position.set(0, 0, 0);
+                    } else {
+                        moonMesh.position.set(moonDist * Math.cos(mAngle), 0, moonDist * Math.sin(mAngle));
+                    }
+
+                    // Moon Orbit Line
+                    if (!moon.isRing && moon.type !== 'Quasi-Satellite') {
+                        const mOrbitGeo = new THREE.BufferGeometry();
+                        const mPts = [];
+                        const mSeg = 32;
+                        for (let k = 0; k <= mSeg; k++) {
+                            const phi = (k / mSeg) * Math.PI * 2;
+                            mPts.push(moonDist * Math.cos(phi), 0, moonDist * Math.sin(phi));
+                        }
+                        mOrbitGeo.setAttribute('position', new THREE.Float32BufferAttribute(mPts, 3));
+                        // Yellow orbit lines for moons
+                        const mOrbit = new THREE.Line(mOrbitGeo, new THREE.LineBasicMaterial({ color: 0xffff00, transparent: true, opacity: 0.6 }));
+                        planetGroup.add(mOrbit);
+                    }
+
+                    // Add moon to planet group
+                    planetGroup.add(moonMesh);
+                });
+            }
+        });
+    }
+
+    createBodyCountDisplay() {
+        const planetCount = this.planets.length;
+        const moonCount = this.planets.reduce((acc, p) => acc + (p.moons ? p.moons.length : 0), 0);
+        const total = 1 + planetCount + moonCount; // +1 for Star
+
+        this.hudElement = document.createElement('div');
+        Object.assign(this.hudElement.style, {
+            position: 'absolute',
+            top: '20px',
+            right: '20px',
+            color: '#00ff00',
+            fontFamily: 'Arial, sans-serif',
+            fontSize: '24px',
+            fontWeight: 'bold',
+            textShadow: '0 0 5px #000',
+            pointerEvents: 'none'
+        });
+        this.hudElement.innerText = `TRACKING:  BODIES`;
+    }
+
+    createGrid() {
+        // Create a grid helper to visualize the ecliptic plane
+        let size = 200;
+        if (this.planets.length > 0) {
+            // Use visual distance of last planet
+            size = this.getVisualDistance(this.planets.length - 1) * 2.5;
+        }
+
+        const grid = new THREE.GridHelper(size, 40, 0x333333, 0x111111);
+        this.scene.add(grid);
+    }
+
+    update(time, delta) {
+        super.update(time, delta);
+
+        // Animate orbits
+        const dt = delta / 1000;
+
+        // Move Planet Groups (Orbit)
+        this.planetGroups.forEach(group => {
+            group.userData.angle += group.userData.speed * dt;
+            group.position.x = group.userData.distance * Math.cos(group.userData.angle);
+            group.position.z = group.userData.distance * Math.sin(group.userData.angle);
+
+            // Rotate Planet Mesh on Axis (Day/Night cycle)
+            const planetBody = group.children.find(c => c.userData.isPlanetBody);
+            if (planetBody) {
+                planetBody.rotation.y += 0.5 * dt;
+            }
+
+            // Animate Moons
+            group.children.forEach(child => {
+                if (child.userData.speed && child.userData.distance) {
+                    child.userData.angle += child.userData.speed * dt;
+                    child.position.x = child.userData.distance * Math.cos(child.userData.angle);
+                    child.position.z = child.userData.distance * Math.sin(child.userData.angle);
+                }
+            });
+        });
+
+        // Rotate Star
+        if (this.starMesh) {
+            this.starMesh.rotation.y += 0.1 * dt;
+        }
+
+        // Pulse Camera Marker
+        if (this.cameraMarker) {
+            const scale = 1 + Math.sin(time * 0.005) * 0.2;
+            this.cameraMarker.scale.setScalar(scale);
+            // this.cameraMarker.material.opacity = 0.5 + Math.sin(time * 0.01) * 0.5; // Don't fade out completely
+        }
+    }
+
+    onLoad() {
+        super.onLoad();
+        if (this.renderer && this.renderer.domElement) {
+            this.renderer.domElement.addEventListener('click', this.onMouseClick);
+            this.renderer.domElement.addEventListener('mousemove', this.onMouseMove);
+        }
+        if (this.hudElement) {
+            this.viewManager.setHUD(this.hudElement);
+        }
+    }
+
+    onUnload() {
+        super.onUnload();
+        if (this.renderer && this.renderer.domElement) {
+            this.renderer.domElement.removeEventListener('click', this.onMouseClick);
+            this.renderer.domElement.removeEventListener('mousemove', this.onMouseMove);
+        }
+    }
+
+    onMouseClick(event) {
+        const mouse = SceneTools.getMouseVector(event, this.renderer.domElement);
+
+        this.raycaster.setFromCamera(mouse, this.activeCamera);
+        const intersects = this.raycaster.intersectObjects(this.planetMeshes);
+
+        if (intersects.length > 0) {
+            const planet = intersects[0].object.parent.userData.planet; // Data is on the Group now
+            Logger.message(`Orrery: Clicked ${planet.name}`);
+
+            // Trigger UI Message
+            this.viewManager.uiMessage.showMessage({
+                key: 'orrery_scan',
+                title: `Orrery Scan: ${planet.name}`,
+                template: 'planet_lore',
+                data: {
+                    name: planet.name,
+                    type: planet.type,
+                    description: planet.description,
+                    resources: planet.resources || []
+                }
+            });
+        }
+    }
+
+    onMouseMove(event) {
+        const mouse = SceneTools.getMouseVector(event, this.renderer.domElement);
+
+        this.raycaster.setFromCamera(mouse, this.activeCamera);
+        const intersects = this.raycaster.intersectObjects(this.planetMeshes);
+
+        // Reset scales of previously hovered
+        this.planetMeshes.forEach(m => {
+            if (m.userData.hovered) {
+                m.scale.set(1, 1, 1);
+                m.userData.hovered = false;
+            }
+        });
+
+        if (intersects.length > 0) {
+            const mesh = intersects[0].object;
+            mesh.scale.set(1.5, 1.5, 1.5); // Pop effect
+            mesh.userData.hovered = true;
+        }
+    }
+}

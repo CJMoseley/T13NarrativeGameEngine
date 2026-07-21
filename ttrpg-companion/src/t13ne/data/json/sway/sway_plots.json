@@ -1,0 +1,56 @@
+[
+  {
+    "Chi": 230,
+    "Element_Type": "Plots",
+    "Type": "Scene",
+    "Sway_Type_Description": "The least powerful of the Narrative \"D&aelig;mons\". Scenes are the massed ranks of Privates of the Plot army. They examine a single aspect of a Conflict (often a meeting between two or more sides). A Scene may represent the moment when our Heroes first meet, a conversation with their allies, or the final showdown with the Villain. Scenes do what they are told by larger Plots, and while they may have a little lee-way in how they accomplish it, they cannot change that goal."
+  },
+  {
+    "Chi": 244,
+    "Element_Type": "Plots",
+    "Type": "Act ",
+    "Sway_Type_Description": "Acts are the NCOs of Narrative Army they marshal Scenes into the Frame, Loom, Zenith structure. The Frame sets up the Story (or Chapter), The Loom is the meat of the Story (or Chapter) and Zenith represents the climax. Acts work for their Chapter and Story above them, and have more ability to respond to the Character actions than the Scenes they command, but not as much as the Chapter or Story. "
+  },
+  {
+    "Chi": 244,
+    "Element_Type": "Plots",
+    "Type": "Sub-Plot",
+    "Sway_Type_Description": "Sub-Plot D&aelig;mons can create a new Conflict that Presses on the Pressed side of the current conflict in a new way. This is often only a single Facet Conflict for each Side and is typically just 2 Sides Pressed and Dominant (although that may a different Dominant to the main Conflict)."
+  },
+  {
+    "Chi": 259,
+    "Element_Type": "Plots",
+    "Type": "Chapter",
+    "Sway_Type_Description": "Chapter D&aelig;mons examine a single Conflict to tell part of a Story, usually as part of a larger Arc. You can think of Chapters as the Acts of an Arc, or as the Scenes (Tracts) of a Volume. Chapters may not be complete, their individual Conflicts may be unresolved, just like Chapters in a book, or episodes of TV Shows. Chapters serve a larger Plot, but they have quite a lot of latitude in how they achieve that. A Chapter can add, remove and replace Embodiments to preserve the Arc's overall Conflict, as long as it affects only the part they are examining."
+  },
+  {
+    "Chi": 259,
+    "Element_Type": "Plots",
+    "Type": "Story",
+    "Sway_Type_Description": "Story Demons that examine a single Conflict to tell a single Story, with limited Characters and Locations. Stories can be little more than an Extended Ordeal, or be sprawling multi-faceted delights, but are always complete in themselves. Stories are occasionally part of a Volume, Epic or Cycle, but rarely part of an Arc. They are like Short Stories or episodes of some TV shows. Stories are considered autonomous, they may be directed by a larger Plot, but they really don't have to listen."
+  },
+  {
+    "Chi": 274,
+    "Element_Type": "Plots",
+    "Type": "Arc",
+    "Sway_Type_Description": "Arc Demons organize Chapter Demons (or occasionally Stories) into Plot Arcs. Arcs examine two or more Conflicts usually at least two Chapters work together to create an Arc. Arcs can be Scenes (Tracts) of an Epic, or Acts of a Volume. Think of an Arc as a two part episode, or a movie, there's more going on than just one Story. Arcs are semi-autonomous, they will always defer to a larger Plot, but don't always have to, sometimes creating unconnected \"What If?\", \"It was all a dream...\" and \"Meanwhile...\" Arcs that do not have to completely follow the original plan."
+  },
+  {
+    "Chi": 289,
+    "Element_Type": "Plots",
+    "Type": "Volume ",
+    "Sway_Type_Description": "Volume Demons organize Arc Demons like they were Acts of a Story, and Story and Chapter Demons like they were Scenes (Tracts). Volumes can tell complex inter-weaved Stories that you just can't fit into a movie. They are best though of as a Season of a TV show (or a Novel's worth). Volumes should bring their main Stories to a satisfying conclusion, but Volumes may be an Act of an Epic, or just a Scene (Tract) within a Cycle."
+  },
+  {
+    "Chi": 305,
+    "Element_Type": "Plots",
+    "Type": "Epic",
+    "Sway_Type_Description": "Epic Demons organize Volume Demons into longer series. Epics represent a full and complete work. Epics can also be Acts of a Cycle. Think of an Epic as the entire TV series (assuming the show got more than one or two) but probably not including the following movies or the reboot."
+  },
+  {
+    "Chi": 321,
+    "Element_Type": "Plots",
+    "Type": "Cycle",
+    "Sway_Type_Description": "The greatest of the grand plots. The summation of everything smaller than themselves, they hold together whole imaginary multiverses, containing potentially billions of Characters, Locations and individual Stories. Cycles bind whole book series, plus all the unpublished background material, encyclopaedia entries and the fan-fiction together. Cycles form the entirety of the DC and Marvel franchises, comic-books, TV shows, Movies and the games played by costumed kids, or with toys from that Cycle. All the Stories, Novels, Movies, TV shows and Fan-fictions that touch on the Cthulhu Mythos, or Greek Mythology, or Vampire lore could all be within a single Cycle."
+  }
+]

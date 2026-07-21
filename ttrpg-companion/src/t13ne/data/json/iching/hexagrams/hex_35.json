@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 35,
+    "Name": "Prospering",
+    "Entity": "&#19938;",
+    "Logical": 40,
+    "Trigrams": [
+      7,
+      2
+    ],
+    "Hexagram_Text": "Chin/Jin, Prospering (or Advancement or Progress), is the Hexagram that symbolises enlightenment. But this is not genius in yourself, but the ability to sense and release genius in others. It is the strength of a magnetic field that draws metal within itself, the ultimate in yielding power.",
+    "Unchanging": "You may use your Personality Annex Boon/Die in the place of any Talent Annex Boon/Die once per Scene.",
+    "Line1": "Three Steps Forward, Two Steps Back",
+    "Line2": "Grandmother Brings Happiness",
+    "Line3": "Prosperous Accord",
+    "Line4": "Squirrel Prosperity",
+    "Line5": "Remorse Vanishes",
+    "Line6": "Blowing Your Horn"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you succeed at any Test, Ordeal Stage or Quest",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you fail any Test, Ordeal Stage or Quest",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yang",
+        "Condition": "you are rebuffed, denied, meet an Obstacle, or when you are generous or kind",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yang",
+        "Condition": "you help another achieve a goal",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yang",
+        "Condition": "you act trustworthy, respectful, or explain your goal",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yin",
+        "Condition": "you attempt to attract attention, get in over your head, or admit you can't do something",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you are gentle or loyal",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yin",
+        "Condition": "you are firm, but fair, cite your achievements, or brag",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Prospering Quest promises the Quester an opportunity. This is often a new job, or a promotion, but they can also be a financial, social, intellectual, academic, magical or political advancement opportunity. Prospering Quests often accompany a Plot-driven Gain event, and are usually fairly simple in nature with the Quester learning to work with their companions in a new way, that results in rapid easy progress. Prospering Quests can become complex when the Quester is caught between different factions, such as when when the Quest-giver and the Quester&#39;s companions oppose each each other in some way (such as the companions not believing the Quester should have been promoted).",
+    "Quest_Complete": "The Quest that ends with the Prospering Hexagram will see an unexpected reward for the Quester. This windfall reward is often a Gain of Wealth, Yin, or Chi that represents discovered treasure, reward money, insurance pay-outs, or some unconnected lottery win.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester has some initial success, but is then rebuffed. Whatever progress they felt they made is taken away, suddenly. If the Quester remains calm or optimistic things will reassert themselves soon, but if the Quester becomes glum or angry at the situation then add a Failure Level, Hurdle or Obstacle to their Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester is unable to progress on their own, stymied by lack of contacts or an inability to communicate their need. An authority, often much older than the Quester and with attractive Yin power (often Wealth) will offer the Quester aid. This aid is not based on political issues or selfishness, but genuine concern and principles.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The Quester who joins a Pact, makes an alliance with another, or has companions helping them will add a Success Level to their Test or Ordeal. Those Questers who are untrustworthy will add a Failure Level, Hurdle or Obstacle to their Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The Quester is offered small (usually monetary) gains that would be easy to take, but not honest, such as a shopkeeper, with some ulterior motive, offering free products, discounts, or bribes, a stranger dropping a fat purse upon the road unobserved by any but the Quester, or the Quester discovering a stash of gold in a cave and not reporting it to the lord. If the Quester takes and keeps this small gain, not returning it or reporting it to authorities, add a Failure Level, Hurdle or Obstacle to their Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester is granted some influential position for some reason. This new position offers them the chance to make both gains and losses, depending upon how they handle the situation. If the Quester remains loyal to those who gave them this position then add a Success Level to the Test or Ordeal, but if they focus instead on their personal gains and losses then add a Failure Level, Hurdle or Obstacle to their Test or Ordeal.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "Some of the Quester&#39;s companions or employees act against them, trying to disrupt their Quest or gains. The Quester may win a Success Level on their Test or Ordeal by punishing those who work against them fairly, but firmly according to their Quest-giver, otherwise add a Failure Level, Hurdle or Obstacle to their Test or Ordeal.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "The hexagram represents the sun rising over the earth. It is therefore the symbol of rapid, easy progress, which at the same time means ever widening expansion and clarity.",
+    "The_Image": {
+      "text": "The sun rises over the earth:\n\nThe image of PROGRESS.\n\nThus the superior man himself\nBrightens his bright virtue.",
+      "comments": "The light of the sun rises over the earth is by nature clear. The higher the sun rises, the more it emerges from the dark mists, spreading the pristine purity of its rays over an ever widening area. The real nature of man is likewise originally good, but it becomes clouded by contact with earthly things and therefore needs purification before it can shine forth in its native clarity."
+    },
+    "The_Judgment": {
+      "text": "PROGRESS. The powerful prince\nIs honored with horses in large numbers.\nIn a single day he is granted audience three times.\n\nAs an example of progress, this pictures a time when a powerful feudal lord rallies the other lords around the sovereign and pledges fealty and peace. The sovereign rewards him richly and invites him to a closer intimacy.",
+      "comments": "A twofold idea is set forth here. The actual effect of the progress emanates from a man who is in a dependent position and whom the others regard as their equal and are therefore willing to follow. This leader has enough clarity of vision not to abuse his great influence but to use it rather for the benefit of his ruler. His ruler in turn is free of all jealousy, showers presents on the great man, and invites him continually to his court. An enlightened ruler and an obedient servant--this is the condition on which great progress depends."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Progressing, but turned back.\nPerseverance brings good fortune.\nIf one meets with no confidence, one should remain calm.",
+        "comments": "No mistake.\n\nAt a time when all elements are pressing for progress, we are still uncertain whether in the course of advance we may not meet with a rebuff. Then the thing to do is simply continue in what is right; in the end this will bring good fortune. It may be that we meet with no confidence. In this case we ought not to try to win confidence regardless of the situation, but should remain calm and cheerful and refuse to be roused to anger. Thus we remain free of mistakes."
+      },
+      "2": {
+        "text": "Progressing, but in sorrow.\nPerseverance brings good fortune.",
+        "comments": "Then one obtains great happiness from one's ancestress.\n\nProgress is halted; an individual is kept from getting in touch with the man in authority with whom he has a connection. When this happens, he must remain persevering, although he is grieved; then with a maternal gentleness the man in question will bestow great happiness upon him. This happiness comes to him-and is well deserved-because in this case mutual attraction does not rest on selfish or partisan motives but on firm and correct principles."
+      },
+      "3": {
+        "text": "All are in accord. Remorse disappears.",
+        "comments": "A man strives onward, in association with others whose backing encourages him. This dispels any cause for regret over the fact that he does not have enough independence to triumph unaided over every hostile turn of fate."
+      },
+      "4": {
+        "text": "Progress like a hamster.\nPerseverance brings danger.",
+        "comments": "In times of progress it is easy for strong men in the wrong places to amass great possessions. But such conduct shuns the light. And since times of progress are inevitably brought to the light, perseverance in such action always leads to danger."
+      },
+      "5": {
+        "text": "Remorse disappears.",
+        "comments": "Take not gain and loss to heart.\nUndertakings bring good fortune.\nEverything serves to further.\n\nThe situation described here is that of one who, finding himself in an influential position in a time of progress, remains gentle and reserved. He might reproach himself for lack of energy in making the most of the propitiousness of the time and obtaining all possible advantage. However, this regret passes away. He must not take either loss or gain to heart; they are minor considerations. What matters much more is the fact that in this way he has assured himself of opportunities for successful and beneficent influence."
+      },
+      "6": {
+        "text": "Making progress with the horns is permissible\nOnly for the purpose of punishing one's own city.",
+        "comments": "To be conscious of danger brings good fortune.\n\nNo blame.\nPerseverance brings humiliation.\n\nMaking progress with lowered horns-i.e., acting on the offensive-is permissible, in times like those referred to here, only in dealing with the mistakes of one's own people. Even then we must bear in mind that proceeding on the offensive may always be dangerous. In this way we avoid the mistakes that otherwise threaten, and succeed in what we set out to do. On the other hand, perseverance in such over energetic behavior, especially toward persons with whom there is no close connection, will lead to humiliation."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Prospering'. Internalize this core philosophy: The hexagram represents the sun rising over the earth. It is therefore the symbol of rapid, easy progress, which at the same time means ever widening expansion and clarity. Your current worldview is: \"Chin/Jin, Prospering (or Advancement or Progress), is the Hexagram that symbolises enlightenment. But this is not genius in yourself, but the ability to sense and release genius in others. It is the strength of a magnetic field that draws metal within itself, the ultimate in yielding power.\". Let your choices be subtly driven by these conditions: you succeed at any Test, Ordeal Stage or Quest, you fail any Test, Ordeal Stage or Quest. When interacting, mirror the wisdom found in the commentary: \"A twofold idea is set forth here. The actual effect of the progress emanates from a man who is in a dependent position and whom the others regard as their equal and are therefore willing to follow. This leader has enough clarity of vision not to abuse his great influence but to use it rather for...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Prospering'. The primary quest objective is: The Prospering Quest promises the Quester an opportunity. This is often a new job, or a promotion, but they can also be a financial, social, intellectual, academic, magical or political advancement opportunity. Prospering Quests often accompany a Plot-driven Gain event, and are usually fairly simple in nature with the Quester learning to work with their companions in a new way, that results in rapid easy progress. Prospering Quests can become complex when the Quester is caught between different factions, such as when when the Quest-giver and the Quester&#39;s companions oppose each each other in some way (such as the companions not believing the Quester should have been promoted).. Introduce environmental or social complications that reflect the 'Image' of this hexagram: The light of the sun rises over the earth is by nature clear. The higher the sun rises, the more it emerges from the dark mists, spreading the pristine purity of its rays over an ever widening area. The real nature of man is likewise originally good, but it becomes clouded by contact with earthly things and therefore needs purification before it can shine forth in its native clarity. Use the following line-specific challenges to pace the story: The Quester has some initial success, but is then rebuffed. Whatever progress they felt they made is taken away, suddenly. If the Quester remains calm or optimistic things will reassert themselves soon, but if the Quester becomes glum or angry at the situation then add a Failure Level, Hurdle or Obstacle to their Test or Ordeal. | The Quester is unable to progress on their own, stymied by lack of contacts or an inability to communicate their need. An authority, often much older than the Quester and with attractive Yin power (often Wealth) will offer the Quester aid. This aid is not based on political issues or selfishness, but genuine concern and principles. | The Quester who joins a Pact, makes an alliance with another, or has companions helping them will add a Success Level to their Test or Ordeal. Those Questers who are untrustworthy will add a Failure Level, Hurdle or Obstacle to their Test or Ordeal. | The Quester is offered small (usually monetary) gains that would be easy to take, but not honest, such as a shopkeeper, with some ulterior motive, offering free products, discounts, or bribes, a stranger dropping a fat purse upon the road unobserved by any but the Quester, or the Quester discovering a stash of gold in a cave and not reporting it to the lord. If the Quester takes and keeps this small gain, not returning it or reporting it to authorities, add a Failure Level, Hurdle or Obstacle to their Test or Ordeal. | The Quester is granted some influential position for some reason. This new position offers them the chance to make both gains and losses, depending upon how they handle the situation. If the Quester remains loyal to those who gave them this position then add a Success Level to the Test or Ordeal, but if they focus instead on their personal gains and losses then add a Failure Level, Hurdle or Obstacle to their Test or Ordeal. | Some of the Quester&#39;s companions or employees act against them, trying to disrupt their Quest or gains. The Quester may win a Success Level on their Test or Ordeal by punishing those who work against them fairly, but firmly according to their Quest-giver, otherwise add a Failure Level, Hurdle or Obstacle to their Test or Ordeal.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Three Steps Forward, Two Steps Back): Mirror the internal state described in the commentary: \"No mistake.\n\nAt a time when all elements are pressing for progress, we are still uncertain whether in the course of advance we may not meet with a rebuff. Then the thing to do is simply continue in what is right; in the end this will bring good...\" Your actions should be framed by the goal: you are rebuffed, denied, meet an Obstacle, or when you are generous or kind.",
+        "Plot": "Plot Complication Line 1 (Three Steps Forward, Two Steps Back): Introduce a challenge based on the interpretation: \"No mistake.\n\nAt a time when all elements are pressing for progress, we are still uncertain whether in the course of advance we may not meet with a rebuff. Then the thing to do is simply continue in what is right; in the end this will bring good...\" The specific quest objective for this stage is: The Quester has some initial success, but is then rebuffed. Whatever progress they felt they made is taken away, suddenly. If the Quester remains calm or optimistic things will reassert themselves soon, but if the Quester becomes glum or angry at the situation then add a Failure Level, Hurdle or Obstacle to their Test or Ordeal."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Grandmother Brings Happiness): Mirror the internal state described in the commentary: \"Then one obtains great happiness from one's ancestress.\n\nProgress is halted; an individual is kept from getting in touch with the man in authority with whom he has a connection. When this happens, he must remain persevering, although he is grieved;...\" Your actions should be framed by the goal: you help another achieve a goal.",
+        "Plot": "Plot Complication Line 2 (Grandmother Brings Happiness): Introduce a challenge based on the interpretation: \"Then one obtains great happiness from one's ancestress.\n\nProgress is halted; an individual is kept from getting in touch with the man in authority with whom he has a connection. When this happens, he must remain persevering, although he is grieved;...\" The specific quest objective for this stage is: The Quester is unable to progress on their own, stymied by lack of contacts or an inability to communicate their need. An authority, often much older than the Quester and with attractive Yin power (often Wealth) will offer the Quester aid. This aid is not based on political issues or selfishness, but genuine concern and principles."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Prosperous Accord): Mirror the internal state described in the commentary: \"A man strives onward, in association with others whose backing encourages him. This dispels any cause for regret over the fact that he does not have enough independence to triumph unaided over every hostile turn of fate.\" Your actions should be framed by the goal: you act trustworthy, respectful, or explain your goal.",
+        "Plot": "Plot Complication Line 3 (Prosperous Accord): Introduce a challenge based on the interpretation: \"A man strives onward, in association with others whose backing encourages him. This dispels any cause for regret over the fact that he does not have enough independence to triumph unaided over every hostile turn of fate.\" The specific quest objective for this stage is: The Quester who joins a Pact, makes an alliance with another, or has companions helping them will add a Success Level to their Test or Ordeal. Those Questers who are untrustworthy will add a Failure Level, Hurdle or Obstacle to their Test or Ordeal."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Squirrel Prosperity): Mirror the internal state described in the commentary: \"In times of progress it is easy for strong men in the wrong places to amass great possessions. But such conduct shuns the light. And since times of progress are inevitably brought to the light, perseverance in such action always leads to danger.\" Your actions should be framed by the goal: you attempt to attract attention, get in over your head, or admit you can't do something.",
+        "Plot": "Plot Complication Line 4 (Squirrel Prosperity): Introduce a challenge based on the interpretation: \"In times of progress it is easy for strong men in the wrong places to amass great possessions. But such conduct shuns the light. And since times of progress are inevitably brought to the light, perseverance in such action always leads to danger.\" The specific quest objective for this stage is: The Quester is offered small (usually monetary) gains that would be easy to take, but not honest, such as a shopkeeper, with some ulterior motive, offering free products, discounts, or bribes, a stranger dropping a fat purse upon the road unobserved by any but the Quester, or the Quester discovering a stash of gold in a cave and not reporting it to the lord. If the Quester takes and keeps this small gain, not returning it or reporting it to authorities, add a Failure Level, Hurdle or Obstacle to their Test or Ordeal."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Remorse Vanishes): Mirror the internal state described in the commentary: \"Take not gain and loss to heart.\nUndertakings bring good fortune.\nEverything serves to further.\n\nThe situation described here is that of one who, finding himself in an influential position in a time of progress, remains gentle and reserved. He might...\" Your actions should be framed by the goal: you are gentle or loyal.",
+        "Plot": "Plot Complication Line 5 (Remorse Vanishes): Introduce a challenge based on the interpretation: \"Take not gain and loss to heart.\nUndertakings bring good fortune.\nEverything serves to further.\n\nThe situation described here is that of one who, finding himself in an influential position in a time of progress, remains gentle and reserved. He might...\" The specific quest objective for this stage is: The Quester is granted some influential position for some reason. This new position offers them the chance to make both gains and losses, depending upon how they handle the situation. If the Quester remains loyal to those who gave them this position then add a Success Level to the Test or Ordeal, but if they focus instead on their personal gains and losses then add a Failure Level, Hurdle or Obstacle to their Test or Ordeal."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Blowing Your Horn): Mirror the internal state described in the commentary: \"To be conscious of danger brings good fortune.\n\nNo blame.\nPerseverance brings humiliation.\n\nMaking progress with lowered horns-i.e., acting on the offensive-is permissible, in times like those referred to here, only in dealing with the mistakes of...\" Your actions should be framed by the goal: you are firm, but fair, cite your achievements, or brag.",
+        "Plot": "Plot Complication Line 6 (Blowing Your Horn): Introduce a challenge based on the interpretation: \"To be conscious of danger brings good fortune.\n\nNo blame.\nPerseverance brings humiliation.\n\nMaking progress with lowered horns-i.e., acting on the offensive-is permissible, in times like those referred to here, only in dealing with the mistakes of...\" The specific quest objective for this stage is: Some of the Quester&#39;s companions or employees act against them, trying to disrupt their Quest or gains. The Quester may win a Success Level on their Test or Ordeal by punishing those who work against them fairly, but firmly according to their Quest-giver, otherwise add a Failure Level, Hurdle or Obstacle to their Test or Ordeal."
+      }
+    }
+  }
+}

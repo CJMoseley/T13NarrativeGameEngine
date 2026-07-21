@@ -1,0 +1,1450 @@
+{
+  "1151": {
+    "id": 1151,
+    "prof": {
+      "Name": [
+        "Lush Locations",
+        "Lush Location Nature Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Lush Locations is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1152": {
+    "id": 1152,
+    "prof": {
+      "Name": [
+        "Inclination",
+        "Inclination Nature Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Inclination is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1153": {
+    "id": 1153,
+    "prof": {
+      "Name": [
+        "Desire",
+        "Desire Nature Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Desire is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1154": {
+    "id": 1154,
+    "prof": {
+      "Name": [
+        "Hunger",
+        "Hunger Nature Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Hunger is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1155": {
+    "id": 1155,
+    "prof": {
+      "Name": [
+        "Comfort",
+        "Comfort Nature Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Comfort is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1156": {
+    "id": 1156,
+    "prof": {
+      "Name": [
+        "Relief",
+        "Relief Nature Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Relief is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1157": {
+    "id": 1157,
+    "prof": {
+      "Name": [
+        "Delight",
+        "Delight Nature Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Delight is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1158": {
+    "id": 1158,
+    "prof": {
+      "Name": [
+        "Eating",
+        "Eating Nature Action Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Eating is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1159": {
+    "id": 1159,
+    "prof": {
+      "Name": [
+        "Gouge",
+        "Gouge Nature Attack Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Gouge is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1160": {
+    "id": 1160,
+    "prof": {
+      "Name": [
+        "Bloody",
+        "Bloody Nature Critical Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Bloody is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1161": {
+    "id": 1161,
+    "prof": {
+      "Name": [
+        "Master",
+        "Master Nature Core Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Master is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1162": {
+    "id": 1162,
+    "prof": {
+      "Name": [
+        "Natural",
+        "Natural Nature Descendants Proficiency",
+        "instinctive, common, organic, genuine, native"
+      ],
+      "Description": "Visceral and sensual, Natural is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1163": {
+    "id": 1163,
+    "prof": {
+      "Name": [
+        "Living",
+        "Living Nature Edge Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Living is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1164": {
+    "id": 1164,
+    "prof": {
+      "Name": [
+        "Living",
+        "Living Nature Glow Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Living is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1165": {
+    "id": 1165,
+    "prof": {
+      "Name": [
+        "Natural Condition",
+        "Natural Condition Nature Failure Proficiency",
+        "instinctive, common, organic, genuine, native"
+      ],
+      "Description": "Visceral and sensual, Natural Condition is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1166": {
+    "id": 1166,
+    "prof": {
+      "Name": [
+        "Wild",
+        "Wild Nature Fumble Proficiency",
+        "barbarian, lush, untamed, savage, feral"
+      ],
+      "Description": "Visceral and sensual, Wild is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1167": {
+    "id": 1167,
+    "prof": {
+      "Name": [
+        "Instinct",
+        "Instinct Nature Gnarl Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Instinct is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1168": {
+    "id": 1168,
+    "prof": {
+      "Name": [
+        "Signs",
+        "Signs Nature Herald Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Signs is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1169": {
+    "id": 1169,
+    "prof": {
+      "Name": [
+        "Scars",
+        "Scars Nature Hitch Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Scars is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1170": {
+    "id": 1170,
+    "prof": {
+      "Name": [
+        "Overspecialisation",
+        "Overspecialisation Nature Hurdle Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Overspecialisation is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1171": {
+    "id": 1171,
+    "prof": {
+      "Name": [
+        "Flesh",
+        "Flesh Nature Incarna Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Flesh is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1172": {
+    "id": 1172,
+    "prof": {
+      "Name": [
+        "Rustic Locations",
+        "Rustic Location Nature Location Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Rustic Locations is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1173": {
+    "id": 1173,
+    "prof": {
+      "Name": [
+        "Heritage",
+        "Heritage Nature Lore Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Heritage is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1174": {
+    "id": 1174,
+    "prof": {
+      "Name": [
+        "Elemental",
+        "Elemental Nature Monster Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Elemental is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1175": {
+    "id": 1175,
+    "prof": {
+      "Name": [
+        "Environmental",
+        "Environmental Nature Narration Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Environmental is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1176": {
+    "id": 1176,
+    "prof": {
+      "Name": [
+        "Quirk-of-Nature",
+        "Quirk-of-Nature Nature Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Quirk-of-Nature is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1177": {
+    "id": 1177,
+    "prof": {
+      "Name": [
+        "Natural Ordeals",
+        "Natural Ordeal Nature Ordeal Proficiency",
+        "instinctive, common, organic, genuine, native"
+      ],
+      "Description": "Visceral and sensual, Natural Ordeals is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1178": {
+    "id": 1178,
+    "prof": {
+      "Name": [
+        "Urges",
+        "Urges Nature Psychosocial Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Urges is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1179": {
+    "id": 1179,
+    "prof": {
+      "Name": [
+        "Nurture / Living",
+        "Nurture / Living",
+        ""
+      ],
+      "Description": "The art of Nurture / Living is a delicate dance with despair, a step in the grand ballet of Nihilism.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "13"
+        ],
+        "Genres": [
+          "13"
+        ],
+        "Eras": [
+          "13"
+        ],
+        "Types": [
+          "Quest"
+        ]
+      }
+    }
+  },
+  "1180": {
+    "id": 1180,
+    "prof": {
+      "Name": [
+        "Important",
+        "Important Nature Question Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Important is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1181": {
+    "id": 1181,
+    "prof": {
+      "Name": [
+        "Better",
+        "Better Nature Resolved Hitch Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Better is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1182": {
+    "id": 1182,
+    "prof": {
+      "Name": [
+        "Wounds",
+        "Wounds Nature Rule Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Wounds is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1183": {
+    "id": 1183,
+    "prof": {
+      "Name": [
+        "Natural Ordeals",
+        "Natural Ordeal Nature Ordeal Proficiency",
+        "instinctive, common, organic, genuine, native"
+      ],
+      "Description": "Visceral and sensual, Natural Ordeals is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1184": {
+    "id": 1184,
+    "prof": {
+      "Name": [
+        "Gory",
+        "Gory Nature Success Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Gory is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1185": {
+    "id": 1185,
+    "prof": {
+      "Name": [
+        "Health",
+        "Health Nature Sway Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Health is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1186": {
+    "id": 1186,
+    "prof": {
+      "Name": [
+        "Innate",
+        "Innate Nature Tangle Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Innate is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1187": {
+    "id": 1187,
+    "prof": {
+      "Name": [
+        "Foraging / Hunting / Instinct / Stalking / Survival",
+        "Foraging / Hunting / Instinct / Stalking / Survival",
+        ""
+      ],
+      "Description": "A lonely star in the vast emptiness, Foraging / Hunting / Instinct / Stalking / Survival is a beacon of meaninglessness in the cold night of the universe.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "13"
+        ],
+        "Genres": [
+          "13"
+        ],
+        "Eras": [
+          "13"
+        ],
+        "Types": [
+          "Test"
+        ]
+      }
+    }
+  },
+  "1188": {
+    "id": 1188,
+    "prof": {
+      "Name": [
+        "Visceral / Sensual",
+        "Visceral / Sensual",
+        ""
+      ],
+      "Description": "To wield Visceral / Sensual is to hold the very heart of Nihilism, a power that shapes the tides of meaninglessness.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "13"
+        ],
+        "Genres": [
+          "13"
+        ],
+        "Eras": [
+          "13"
+        ],
+        "Types": [
+          "Tone"
+        ]
+      }
+    }
+  },
+  "1189": {
+    "id": 1189,
+    "prof": {
+      "Name": [
+        "Survival",
+        "Survival Nature Test Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Survival is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1190": {
+    "id": 1190,
+    "prof": {
+      "Name": [
+        "Nature",
+        "Nature Nature Twisted Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Nature is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1191": {
+    "id": 1191,
+    "prof": {
+      "Name": [
+        "Living",
+        "Living Nature Quest Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Living is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1192": {
+    "id": 1192,
+    "prof": {
+      "Name": [
+        "Natural",
+        "Natural Nature Style Proficiency",
+        "instinctive, common, organic, genuine, native"
+      ],
+      "Description": "Visceral and sensual, Natural is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1193": {
+    "id": 1193,
+    "prof": {
+      "Name": [
+        "Instinct",
+        "Instinct Nature Test Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Instinct is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1194": {
+    "id": 1194,
+    "prof": {
+      "Name": [
+        "Blood",
+        "Blood Nature Umbral Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Blood is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1195": {
+    "id": 1195,
+    "prof": {
+      "Name": [
+        "Familiar",
+        "Familiar Nature Persona Proficiency",
+        ""
+      ],
+      "Description": "Visceral and sensual, Familiar is an environmental force that connects the physical body to the raw, unyielding pulse of the natural world.",
+      "Tags": {
+        "Facets": [
+          "13",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1196": {
+    "id": 1196,
+    "prof": {
+      "Name": [
+        "Truth-less",
+        "Truth-less Orthodox Zero Boon Adjective Proficiency",
+        "false, counter-factual, fictitious, deceitful, mendacious"
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Truth-less is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1197": {
+    "id": 1197,
+    "prof": {
+      "Name": [
+        "Counter-factual",
+        "Counter-factual Orthodox Zero Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Counter-factual is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1198": {
+    "id": 1198,
+    "prof": {
+      "Name": [
+        "Fictitious Locations",
+        "Fictitious Location Orthodox Zero Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Fictitious Locations is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1199": {
+    "id": 1199,
+    "prof": {
+      "Name": [
+        "Ignorant",
+        "Ignorant Orthodox Low Boon Adjective Proficiency",
+        "uneducated, obtuse, illogical, unaware, unlearned"
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Ignorant is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1200": {
+    "id": 1200,
+    "prof": {
+      "Name": [
+        "Obtuse",
+        "Obtuse Orthodox Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Objective and documentary-like, the pedantic precision of Obtuse is recorded as an historical fact, devoid of subjective bias.",
+      "Tags": {
+        "Facets": [
+          "14",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

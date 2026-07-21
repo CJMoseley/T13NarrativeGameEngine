@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="297mm" height="210mm" version="1.1" viewBox="0 0 297 210" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <defs>
+  <marker id="Arrow1Lend" overflow="visible" orient="auto">
+   <path transform="scale(.8) rotate(180) translate(12.5)" d="m0 0 5-5-17.5 5 17.5 5-5-5z" fill-rule="evenodd" stroke="#00bc00" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker7270" overflow="visible" orient="auto">
+   <path transform="scale(.4) translate(7.4 1)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill-rule="evenodd" stroke="#000" stroke-width="1pt"/>
+  </marker>
+  <marker id="DotM" overflow="visible" orient="auto">
+   <path transform="scale(.4) translate(7.4 1)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill-rule="evenodd" stroke="#000" stroke-width="1pt"/>
+  </marker>
+  <marker id="DotM-7" overflow="visible" orient="auto">
+   <path transform="matrix(.4 0 0 .4 2.96 .4)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill-rule="evenodd" stroke="#000" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker7270-3" overflow="visible" orient="auto">
+   <path transform="matrix(.4 0 0 .4 2.96 .4)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill-rule="evenodd" stroke="#000" stroke-width="1pt"/>
+  </marker>
+  <marker id="DotM-3" overflow="visible" orient="auto">
+   <path transform="matrix(.4 0 0 .4 2.96 .4)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill-rule="evenodd" stroke="#000" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker7270-6" overflow="visible" orient="auto">
+   <path transform="matrix(.4 0 0 .4 2.96 .4)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill-rule="evenodd" stroke="#000" stroke-width="1pt"/>
+  </marker>
+  <marker id="DotM-5" overflow="visible" orient="auto">
+   <path transform="matrix(.4 0 0 .4 2.96 .4)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill-rule="evenodd" stroke="#000" stroke-width="1pt"/>
+  </marker>
+  <marker id="marker7270-0" overflow="visible" orient="auto">
+   <path transform="matrix(.4 0 0 .4 2.96 .4)" d="m-2.5-1c0 2.76-2.24 5-5 5s-5-2.24-5-5 2.24-5 5-5 5 2.24 5 5z" fill-rule="evenodd" stroke="#000" stroke-width="1pt"/>
+  </marker>
+ </defs>
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <g transform="translate(0,-87)">
+  <g stroke="#000">
+   <g stroke-width="2.7793">
+    <g transform="matrix(.17991 0 0 .18509 35.617 164.55)">
+     <path d="m166.84 235.55c0 3.7774-3.0869 6.8691-6.8711 6.8691h-152.85c-3.7749 0-6.8608-3.0918-6.8608-6.8691v-228.43c0-3.7773 3.0859-6.8701 6.8608-6.8701h152.85c3.7842 0 6.8711 3.0928 6.8711 6.8701z" fill="#fff" stroke-width="2.7793"/>
+    </g>
+    <g transform="matrix(.17991 0 0 .18509 87.211 164.55)">
+     <path d="m166.84 235.55c0 3.7774-3.0869 6.8691-6.8711 6.8691h-152.85c-3.7749 0-6.8608-3.0918-6.8608-6.8691v-228.43c0-3.7773 3.0859-6.8701 6.8608-6.8701h152.85c3.7842 0 6.8711 3.0928 6.8711 6.8701z" fill="#fff" stroke-width="2.7793"/>
+    </g>
+    <g transform="matrix(.17991 0 0 .18509 138.8 164.55)">
+     <path d="m166.84 235.55c0 3.7774-3.0869 6.8691-6.8711 6.8691h-152.85c-3.7749 0-6.8608-3.0918-6.8608-6.8691v-228.43c0-3.7773 3.0859-6.8701 6.8608-6.8701h152.85c3.7842 0 6.8711 3.0928 6.8711 6.8701z" fill="#fff" stroke-width="2.7793"/>
+    </g>
+    <g transform="matrix(.17991 0 0 .18509 190.4 164.55)">
+     <path d="m166.84 235.55c0 3.7774-3.0869 6.8691-6.8711 6.8691h-152.85c-3.7749 0-6.8608-3.0918-6.8608-6.8691v-228.43c0-3.7773 3.0859-6.8701 6.8608-6.8701h152.85c3.7842 0 6.8711 3.0928 6.8711 6.8701z" fill="#fff" stroke-width="2.7793"/>
+    </g>
+    <g transform="matrix(.17991 0 0 .18509 241.99 164.55)">
+     <path d="m166.84 235.55c0 3.7774-3.0869 6.8691-6.8711 6.8691h-152.85c-3.7749 0-6.8608-3.0918-6.8608-6.8691v-228.43c0-3.7773 3.0859-6.8701 6.8608-6.8701h152.85c3.7842 0 6.8711 3.0928 6.8711 6.8701z" fill="#fff" stroke-width="2.7793"/>
+    </g>
+   </g>
+   <g stroke-dasharray="5.29199974,2.64599987,1.32299993,2.64599987" stroke-width="2.646">
+    <path d="m49.893 186.25h52.161" marker-end="url(#marker7270)" marker-start="url(#DotM)"/>
+    <path d="m101.21 186.25h52.161" marker-end="url(#marker7270-3)" marker-start="url(#DotM-7)"/>
+    <path d="m152.52 186.25h52.161" marker-end="url(#marker7270-6)" marker-start="url(#DotM-3)"/>
+    <path d="m203.84 186.25h52.161" marker-end="url(#marker7270-0)" marker-start="url(#DotM-5)"/>
+   </g>
+  </g>
+  <path d="m75.595 235.01c136.83-0.75595 185.21 0 185.21 0" marker-end="url(#Arrow1Lend)" marker-start="url(#Arrow1Lend)" stroke="#00bc00" stroke-width="2.646"/>
+ </g>
+</svg>

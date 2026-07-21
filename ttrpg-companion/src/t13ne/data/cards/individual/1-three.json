@@ -1,0 +1,118 @@
+{
+	"Card_Corner": "3",
+	"Card": "Three",
+	"Suit": "1",
+	"IconSuit": "♦",
+	"Pips": "3",
+	"Unicode": "&#x1f0c3;",
+	"Svg": "images/cards-svg/3D.svg",
+	"Wound_Level": 1,
+	"Facet": "Craft",
+	"Tao": [
+		1,
+		1
+	],
+	"Narrative_Meaning": "Threes signify creativity and and communication. They can indicate hope, imagination, inspiration and conversations.",
+	"Image": "",
+	"Yarn": {
+		"Yarn_Name": "The Grindstone",
+		"Yarn_Description": "The Grindstone is the card of hard work, wearing down opposition, or training yourself to a finely sharpened point. It is a card of determined hard-won success for little reward or bitter, grinding defeat.",
+		"Significator": {
+			"Plot": "The Grindstone Plot is one that seeks to grind down the Characters that it Hooks, it tries to exhaust and wear them down, not so that they may be destroyed, but be improved, sharpened and refined. It knocks a Character down so that they may build themselves up again. All Tests and Ordeals the Plot creates will have twice the Difficulty, or increased Stakes.",
+			"Side": "A side marked by the Grindstone can expect to be tested and worn down, either to exhaustion or even near death, however if they are allowed to recuperate, they become stronger than before.",
+			"Character": "The Grindstone Significator indicates a  Character who works hard for what they have.<p>They <strong>Gain Yin</strong> by doing any routine task, such as washing, cleaning, maintenance, etc. </p><p>They <strong>Gain Yang</strong> by working up a sweat, doing hard work or exercise. </p><p>They <strong>Gain Chi</strong> whenever they receive any payment for their work, goods or services. </p><p>Grindstone Characters additionally gain a +1 Success Level whenever they are faced with gruelling working conditions or circumstances.</p>",
+			"Diegetic_Character": "A diligent worker, accustomed to the rhythm of labor and the satisfaction of a task well done. They are defined by their industry and perseverance, often finding peace in routine and strength in physical exertion.",
+			"Scene": "A Grindstone Scene wears at the Characters it affects it may force them to expend Yarn, Chi or Sway on their actions during the Scene. This is usually the result of a strong Warp (Ordeal, Test, Quest), or a terrible Weft (that includes Tests, Ordeals and no Gains). Yarn-Tellers should be aware that the Grindstone should not kill, but may Cripple, or Fatigue."
+		},
+		"Beat_Type": "3",
+		"Conflict_Embodiment": "3",
+		"Facet_Embodiment": "8",
+		"Hook_Aspect": "Power Root",
+		"Aspect_Description": "The Hook targets the Character's Power, specifically the Root Facet of that power, this may be a chance to increase a Facet Boon, or a promise of a large amount of Facet Sway.",
+		"Hook": "Working Start",
+		"Hook_Description": "The Conflict engages with a Character's current task. This is best expressed in TV by the cold start or In Media Res, that involves the Character's day-to-day job.",
+		"Gain": "Wage (Normal Chi Gain or payment, may be daily, weekly, monthly or yearly)",
+		"Diegetic_Gain": "A hard-earned wage, a fair payment for labor that provides the means to continue one's journey or trade.",
+		"Fray": "Working",
+		"Fray_Description": "The Test is like a Facet Test (A,C,O,Q,V,Z), but the Difficulty is a little higher (Diff 16+). These Tests are simple, and intended to just check some aspect of the Character, they represent a normal day at work, usually.",
+		"Snag": "Drudgery",
+		"Snag_Description": "Boredom is the enemy in this Snag. Whatever the Fray, the Snag is either the Fray or the aftermath is tedious. The Snag will inevitably have a negative Psychological effect, which can leave people despondent, dismayed and even suicidal.",
+		"NPC": {
+			"Archetype": "Tradesman",
+			"Persona": 2,
+			"Core": 8,
+			"Hitch": 17,
+			"Description": "The Tradesman, be they Carpenter, Plumber, Builder, Electrician, or jobbing Programmer."
+		},
+		"Sweeping": "Wages",
+		"Sweeping_Text": "A Wage (or bonus) is a single Cash (Chi) Gain, Wages are a Skill Treasure Descendant",
+		"History": "Toil",
+		"History_Description": "The Grindstone indicates a history of hard work, or exploitation, that has lead to this current situation. Either someone has worked long and hard to bring this about, usually alone, but sometimes with others, or someone has got rich off the back of other people's work.",
+		"Situation": "Grind",
+		"Situation_Description": "The Grindstone indicates the current situation is wearing you down. This may be the daily grind getting you down, or it may indicate that you are working too hard.",
+		"Solution": "Effort",
+		"Solution_Description": "The Grindstone shows the way out of your current predicament involves a lot of hard work, there is a long slog ahead of you before you will make any real progress at all.",
+		"Revelations": {
+			"About": "World-Building Work",
+			"About_Description": "The information is about the background, or setting, not the current plot or situation. It might include pertinent details for the current plot, but is usually just information about a fairly common task, job, occupation or occasionally a hobby. It could be mucking out stables, scrubbing dragon scales, emptying night-soil, shovelling coal into a furnace, downloading an update, uploading a social status, or flamacksing the flange-straightener.",
+			"Info": "Forte",
+			"Info_Description": "The information is about what they are good at, this may reveal their profession, occupation, or simply be a warning about a character's strengths.",
+			"Vector": "Details",
+			"Vector_Description": "The information is hidden as easily overlooked details. Like an addressed, but empty envelope, or a circled phone number in the phone book. Such Details sometimes require a \"Spot Hidden\" Key (or a \"Knowledge\" Orthodox or Heresy, as appropriate) Test to reveal them. Maybe it won't be noticed until later.",
+			"Alternate": "Skills",
+			"Alternate_Description": "The information reveals some knowledge of the Skills available to the Narrative Element. This may simply be a Lore Skill.",
+			"Detail": "Functional",
+			"Detail_Description": "A functional detail is information about a function of the Narrative Element being revealed. It might include the fact that a particular car make cannot make certain tyre tracks, or that Rumble mountain isn't actually a volcano, but has a huge machine built within it."
+		}
+	},
+	"Obstacle": {
+		"Type": "Hard Work",
+		"Description": "The way is blocked by debris or stacked items that must be moved out of the way by a proper application of elbow grease."
+	},
+	"Tarot": {
+		"WyrdTarot": "Proficiency",
+		"Normal": "Player gains an additional, applicable Proficiency (May fill a slot).",
+		"Crossed": "-1 Prof Die on Target&#39;s next roll."
+	},
+	"Ordeal": {
+		"Ordeal_Type": "Solitary Ordeal",
+		"Stages": "1",
+		"Ordeal_Spread": "Railroad",
+		"Stakes": "Medium",
+		"Test": "Endurance (Inertia)",
+		"Obstacles": "Usually none",
+		"Suggested_Action": "Prepare/Repair",
+		"Stage": "Sharp corner",
+		"Stage_Description": "A sharp corner, change of direction, preparation or research",
+		"Motional": "Aerial Vehicle Dash",
+		"Motional_Description": "The Ordeal is meant to involve travel quickly in an aerial vehicle, such as a plane, or somewhere high, perhaps swinging from cranes.",
+		"Tide_of_Battle": "Cornered",
+		"Tide_of_Battle_Text": "The Ebbing enemy is backed into a corner, they cannot escape, but may prepare siege defences and counter-attacks. The Flowing force should demand surrender.",
+		"Fight": "Stand-off",
+		"Fight_Description": "Two or more forces that are evenly matched in size and power can form a Stand-off."
+	},
+	"Lea": {
+		"PathColour": "Brown/Blue Omnivore",
+		"Bulmas": "Broccen, Vermis, Labyrinthine, All-Walkers",
+		"AnimalCategory": "Meiofauna",
+		"Example": "Small Nematode worms / shrimps",
+		"Bodypart": "Carapace",
+		"Notes": "A lot of parasite paths at this level"
+	},
+	"Stress": {
+		"Type": "Working",
+		"Description": "You can always work through Stress. Sometimes you can just put your head down and get on with things, and when you lift your head something has changed. Sometimes this time is best spent working a physically demanding job, or one that keeps your mind occupied, other times the best way to work through it is a nap.",
+		"Rules": "A Character may remove 1 point of Stress, Strain or Shock by working on, or working at ignoring, their problems for twenty-minutes."
+	},
+	"Trauma": {
+		"Type": "Compulsion",
+		"Description": "Shocks and Trauma can make a Character do things, and more importantly want to do things, that they did not want to do before. Compulsions create compulsive behaviours, where even normal behaviours such as exercise, eating, talking, or shopping, become compulsions. Typically the compulsion will be some normal behaviour that is performed to excess, as in binge-eating, or some lack of impulse control, such as over-spending when shopping.",
+		"Rules": "The Trauma creates a compulsion that affects the Character thereafter. This compulsion is given a \"Severity\" rating between 1 and 6 when created, this may be assigned randomly or based on how dangerous the compulsion is (1 being a mild, or easily overlooked compulsion and a 6 being attention-gathering self-destructive behaviour). The Compulsion then moves at random around the Character’s Psychosocial space. When in the Unconscious mind the compulsion is ignorable and if performed will relieve Stress equal to the Severity, but when in a conscious part of the Mindscape the Character will be compelled to perform the Compulsion or Gain Stress equal to the \"Severity\" of the Compulsion"
+	},
+	"Age": {
+		"Type": "Endeavour",
+		"Description": "An Age of Endeavour is occuring. During this age a society works towards a common goal, not all members will necessarily be directly working on the goal, but they will support the Endeavour of the age in some way. Examples can include building infrastructure, construction of new buildings, towns or cities (although these are sometimes better handled by an age of expansion), development of some new required technology (such as the clock, space race, or sustainable power generation), survival usually of a diaspora, exodus, or migration. During this age the wealth of the society is tied up in the project and the society may appear poorer as a result.",
+		"Diegetic_Description": "A time of collective effort, where society is united by a single, monumental goal. Resources and labor are poured into a grand undertaking—be it building a city, forging a new technology, or ensuring survival—and the era is defined by the sweat and determination of its people.",
+		"Rules": "The society sets some enormous goal and then works towards it, with thousands of individuals contributing Score and Sway to complete an enormous Pact Ordeal, often due to the scale of such projects they require years or even decades of work to achieve their final goal, and along the way many individuals will have to complete smaller, but equally important sub-Ordeals, to actually complete the work."
+	}
+}

@@ -1,0 +1,1449 @@
+{
+  "651": {
+    "id": 651,
+    "prof": {
+      "Name": [
+        "Intriguing",
+        "Intriguing Heresy Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Intriguing challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "652": {
+    "id": 652,
+    "prof": {
+      "Name": [
+        "Perilous Locations",
+        "Perilous Location Heresy Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Perilous Locations challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "653": {
+    "id": 653,
+    "prof": {
+      "Name": [
+        "Insidious",
+        "Insidious Heresy Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Insidious challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "654": {
+    "id": 654,
+    "prof": {
+      "Name": [
+        "Deceptive",
+        "Deceptive Heresy Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Deceptive challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "655": {
+    "id": 655,
+    "prof": {
+      "Name": [
+        "Perfidious Locations",
+        "Perfidious Location Heresy Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Perfidious Locations challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "656": {
+    "id": 656,
+    "prof": {
+      "Name": [
+        "Guileful",
+        "Guileful Heresy Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Guileful challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "657": {
+    "id": 657,
+    "prof": {
+      "Name": [
+        "False",
+        "False Heresy Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, False challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "658": {
+    "id": 658,
+    "prof": {
+      "Name": [
+        "False Locations",
+        "False Location Heresy Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, False Locations challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "659": {
+    "id": 659,
+    "prof": {
+      "Name": [
+        "Dissatisfaction",
+        "Dissatisfaction Heresy Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Dissatisfaction challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "660": {
+    "id": 660,
+    "prof": {
+      "Name": [
+        "Disappointment",
+        "Disappointment Heresy Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Disappointment challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "661": {
+    "id": 661,
+    "prof": {
+      "Name": [
+        "Frustration",
+        "Frustration Heresy Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Frustration challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "662": {
+    "id": 662,
+    "prof": {
+      "Name": [
+        "Scepticism",
+        "Scepticism Heresy Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Scepticism challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "663": {
+    "id": 663,
+    "prof": {
+      "Name": [
+        "Disbelief",
+        "Disbelief Heresy Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Disbelief challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "664": {
+    "id": 664,
+    "prof": {
+      "Name": [
+        "Rejection",
+        "Rejection Heresy Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Rejection challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "665": {
+    "id": 665,
+    "prof": {
+      "Name": [
+        "Lie",
+        "Lie Heresy Action Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Lie challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "666": {
+    "id": 666,
+    "prof": {
+      "Name": [
+        "Malign",
+        "Malign Heresy Attack Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Malign challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "667": {
+    "id": 667,
+    "prof": {
+      "Name": [
+        "Ploy",
+        "Ploy Heresy Critical Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Ploy challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "668": {
+    "id": 668,
+    "prof": {
+      "Name": [
+        "Pretender",
+        "Pretender Heresy Core Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Pretender challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "669": {
+    "id": 669,
+    "prof": {
+      "Name": [
+        "Unorthodox",
+        "Unorthodox Heresy Descendants Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Unorthodox challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "670": {
+    "id": 670,
+    "prof": {
+      "Name": [
+        "Beguiling",
+        "Beguiling Heresy Edge Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Beguiling challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "671": {
+    "id": 671,
+    "prof": {
+      "Name": [
+        "Beguiling",
+        "Beguiling Heresy Glow Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Beguiling challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "672": {
+    "id": 672,
+    "prof": {
+      "Name": [
+        "Disbelief",
+        "Disbelief Heresy Failure Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Disbelief challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "673": {
+    "id": 673,
+    "prof": {
+      "Name": [
+        "Tricked",
+        "Tricked Heresy Fumble Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Tricked challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "674": {
+    "id": 674,
+    "prof": {
+      "Name": [
+        "Distorted",
+        "Distorted Heresy Gnarl Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Distorted challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "675": {
+    "id": 675,
+    "prof": {
+      "Name": [
+        "View",
+        "View Heresy Herald Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, View challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "676": {
+    "id": 676,
+    "prof": {
+      "Name": [
+        "Doubt",
+        "Doubt Heresy Hitch Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Doubt challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "677": {
+    "id": 677,
+    "prof": {
+      "Name": [
+        "Scepticism",
+        "Scepticism Heresy Hurdle Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Scepticism challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "678": {
+    "id": 678,
+    "prof": {
+      "Name": [
+        "Fiction",
+        "Fiction Heresy Incarna Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Fiction challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "679": {
+    "id": 679,
+    "prof": {
+      "Name": [
+        "Bohemian Locations",
+        "Bohemian Location Heresy Location Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Bohemian Locations challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "680": {
+    "id": 680,
+    "prof": {
+      "Name": [
+        "Myth",
+        "Myth Heresy Lore Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Myth challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "681": {
+    "id": 681,
+    "prof": {
+      "Name": [
+        "Masker",
+        "Masker Heresy Monster Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Masker challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "682": {
+    "id": 682,
+    "prof": {
+      "Name": [
+        "Red Herring",
+        "Red Herring Heresy Narration Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Red Herring challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "683": {
+    "id": 683,
+    "prof": {
+      "Name": [
+        "Bluffs, Lies and Sophistry",
+        "Bluffs, Lies and Sophistry",
+        ""
+      ],
+      "Description": "A seed of optimism planted in the fertile ground of Hope, Bluffs, Lies and Sophistry is the flower that blooms in adversity.",
+      "Tags": {
+        "Facets": [
+          "7"
+        ],
+        "Scopes": [
+          "7"
+        ],
+        "Genres": [
+          "7"
+        ],
+        "Eras": [
+          "7"
+        ],
+        "Types": [
+          "Narrative_Moment"
+        ]
+      }
+    }
+  },
+  "684": {
+    "id": 684,
+    "prof": {
+      "Name": [
+        "Deception Ordeals",
+        "Deception Ordeal Heresy Ordeal Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Deception Ordeals challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "685": {
+    "id": 685,
+    "prof": {
+      "Name": [
+        "Masks",
+        "Masks Heresy Psychosocial Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Masks challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "686": {
+    "id": 686,
+    "prof": {
+      "Name": [
+        "Infiltrate / Lie",
+        "Infiltrate / Lie",
+        ""
+      ],
+      "Description": "Like a river carving its path through stone, Infiltrate / Lie  is the relentless pursuit of resilience.",
+      "Tags": {
+        "Facets": [
+          "7"
+        ],
+        "Scopes": [
+          "7"
+        ],
+        "Genres": [
+          "7"
+        ],
+        "Eras": [
+          "7"
+        ],
+        "Types": [
+          "Quest"
+        ]
+      }
+    }
+  },
+  "687": {
+    "id": 687,
+    "prof": {
+      "Name": [
+        "Loaded",
+        "Loaded Heresy Question Proficiency",
+        "wealthy, rich, expensive, affluent, flush"
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Loaded challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "688": {
+    "id": 688,
+    "prof": {
+      "Name": [
+        "Superstition",
+        "Superstition Heresy Resolved Hitch Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Superstition challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "689": {
+    "id": 689,
+    "prof": {
+      "Name": [
+        "Pretend",
+        "Pretend Heresy Rule Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Pretend challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "690": {
+    "id": 690,
+    "prof": {
+      "Name": [
+        "Misdirection",
+        "Misdirection Heresy Style Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Misdirection challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "691": {
+    "id": 691,
+    "prof": {
+      "Name": [
+        "Diversion",
+        "Diversion Heresy Success Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Diversion challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "692": {
+    "id": 692,
+    "prof": {
+      "Name": [
+        "Guises",
+        "Guises Heresy Sway Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Guises challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "693": {
+    "id": 693,
+    "prof": {
+      "Name": [
+        "Fabrications",
+        "Fabrications Heresy Tangle Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Fabrications challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "694": {
+    "id": 694,
+    "prof": {
+      "Name": [
+        "Blaspheme / Deceive / Fib / Lie / Mislead / Reject Doctrine / Tale-telling",
+        "Blaspheme / Deceive / Fib / Lie / Mislead / Reject Doctrine / Tale-telling",
+        ""
+      ],
+      "Description": "In the hushed halls of Hope, Blaspheme / Deceive / Fib / Lie / Mislead / Reject Doctrine / Tale-telling is the whispered secret of optimism.",
+      "Tags": {
+        "Facets": [
+          "7"
+        ],
+        "Scopes": [
+          "7"
+        ],
+        "Genres": [
+          "7"
+        ],
+        "Eras": [
+          "7"
+        ],
+        "Types": [
+          "Test"
+        ]
+      }
+    }
+  },
+  "695": {
+    "id": 695,
+    "prof": {
+      "Name": [
+        "Fantasy",
+        "Fantasy Heresy Tone Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Fantasy challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "696": {
+    "id": 696,
+    "prof": {
+      "Name": [
+        "Deceptions",
+        "Deceptions Heresy Turn Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Deceptions challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "697": {
+    "id": 697,
+    "prof": {
+      "Name": [
+        "Truths",
+        "Truths Heresy Twisted Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Truths challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7",
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "698": {
+    "id": 698,
+    "prof": {
+      "Name": [
+        "Lying",
+        "Lying Heresy Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Lying challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "699": {
+    "id": 699,
+    "prof": {
+      "Name": [
+        "Heretical",
+        "Heretical Heresy Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Heretical challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "700": {
+    "id": 700,
+    "prof": {
+      "Name": [
+        "Indirect",
+        "Indirect Heresy Nimbed Proficiency",
+        ""
+      ],
+      "Description": "Unconventional and filled with fantastical red herrings, Indirect challenges established truths with a speculative and often misleading flair.",
+      "Tags": {
+        "Facets": [
+          "7"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

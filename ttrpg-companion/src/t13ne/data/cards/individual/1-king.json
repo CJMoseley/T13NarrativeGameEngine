@@ -1,0 +1,118 @@
+{
+	"Card_Corner": "K",
+	"Card": "King",
+	"Suit": "1",
+	"IconSuit": "♦",
+	"Pips": "13",
+	"Unicode": "&#x1f0ce;",
+	"Svg": "images/cards-svg/KD.svg",
+	"Wound_Level": 5,
+	"Facet": "Awe",
+	"Tao": [
+		1,
+		0
+	],
+	"Narrative_Meaning": "Kings dignify an older mature male, the patriarchy, business acumen, wisdom, knowledge and good advice.",
+	"Image": "",
+	"Yarn": {
+		"Yarn_Name": "The Star",
+		"Yarn_Description": "The Star represents the pinnacle of success, the height of fame. It is the card of glory, excesses and undreamt of achievements, but it is also the card of jealousy, betrayals and rock and roll suicides. The Star may burn bright, but ultimately the night is dark.",
+		"Significator": {
+			"Plot": "The Star Plot is mostly about darkness, it may be the darkness in people, or the darkness of space, the cave or night. Darkness is danger, which surrounds the Star, or the Characters in this Plot. The Plot may tempt all Hooked Characters with Glory, Success and/or Fame, making them important heroes (or villains) that will shine brightly in the dangerous darkness. ",
+			"Side": "The Side marked with the Star believes they are ascendant, but they are surrounded by darkness. The Star marked side will gain fame, and success, but the cost is that all other sides become at least loosely allied with the Shadows (or External in the case of a Shadow Side with a Star) Side",
+			"Character": "The Star Significator indicates a Character who believes themselves to a Star. </p><p>They <strong>Gain Yin</strong> when they are praised or others do things for them. </p><p>They <strong>Gain Yang</strong> when they perform or practise. </p><p>They <strong>Gain Chi</strong> when they affect another with a Psyche Attack (positive or negative).</p>",
+			"Diegetic_Character": "A figure of radiant charisma and ego, who thrives on the adoration of others and believes themselves destined for greatness. They are natural performers, always seeking the spotlight and capable of profoundly affecting those around them through the sheer force of their personality.",
+			"Scene": "The Star Scene is one that focuses on a single Character for all of the Scene. The Character may have to face opponents, Ordeals or Tests alone, without their usual allies and friends. Yarn-Tellers can play this card to get themselves some one on one Referee time, or to focus that attention elsewhere..."
+		},
+		"Beat_Type": "9",
+		"Conflict_Embodiment": "1",
+		"Facet_Embodiment": "3",
+		"Hook_Aspect": "Geometry (Goal)",
+		"Aspect_Description": "The Hook targets the Character's Geometry via their Goal, offering them what they want.",
+		"Hook": "Danger",
+		"Hook_Description": "The Hook just consists of some enormous danger, it may be looming, it may be coming, or it is right here, right now. The Hook may include a Revelation and/or a High-Stakes Ordeal.",
+		"Gain": "Stardom brings great wealth and recognition. Mansions, cars, space-yachts, all are available, with only one or two Hitches (usually Exposed and Dependence Hitches).",
+		"Diegetic_Gain": "The pinnacle of fame and recognition, bringing with it immense wealth and a life of unparalleled luxury, though often at the cost of one's privacy and independence.",
+		"Fray": "Wish",
+		"Fray_Description": "The Fray consists of a Quest, usually to accomplish something personally important to the Character.",
+		"Snag": "A New Star Rises",
+		"Snag_Description": "An new Facet Embodiment appears, which destabilises the situation against the PCs, often making them work with Rivals or even former enemies. This could be a separate Facet joining the Conflict (or popping in from another usually larger Plot) or just another, stronger Embodiment of the Dominant side of this Conflict, such as when Guard and a Gladiator who have clashed on the battlefield before, join forces to fight a Dragon that threatens both armies.",
+		"NPC": {
+			"Archetype": "Star",
+			"Persona": 0,
+			"Core": 0,
+			"Hitch": 9,
+			"Description": "The Star is not just famous, they are at the pinnacle of their profession. They may not be as talented as some others in their field, but are famous outside of it."
+		},
+		"Sweeping": "Darkness",
+		"Sweeping_Text": "The PC makes a powerful gain, but of a dark and terrible nature, such as a Dark Matter Descendant, Dark Territory, Demonic Pact, or a Monster Ally.",
+		"History": "Glory",
+		"History_Description": "The Star indicates that this situation is based on past glories. These may be the glories of a character, or part of a national history, but the point is that pinnacle for the character or society has long passed.",
+		"Situation": "Betrayal",
+		"Situation_Description": "The Star indicates that situation is a betrayal of some kind. This betrayal may be a case of an unfaithful lover, reprehensible retailers, snitching subordinates, treasonous underlings, tattling ex-lovers, or treachery, but is often caused by jealousy of the character's perceived success, wealth, fame, rank or position.",
+		"Solution": "Lodestar",
+		"Solution_Description": "The Star indicates that a guide will appear that will lead the characters out of this situation. This guide can take the form of a leader, often from among the characters, or some external sign or portent that will lead the way. The difficulty for those in this situation is knowing which sign, guide or portent is the true lodestar and which are not.",
+		"Revelations": {
+			"About": "Treasure",
+			"About_Description": "The information is about an item of treasure or legendary artefact that may ",
+			"Info": "How?",
+			"Info_Description": "How exactly is what they plan to do, going to be done? You may get the full plan, or just the important pieces. Sometimes you might even know how to stop them, but not what they plan to do. It all depends on the situation at hand.",
+			"Vector": "Portent",
+			"Vector_Description": "The information is presented via some sign or portent, perhaps some strange planetary conjunction reveals some pertinent astrological facts, or more likely some augury, aura, superstition or warning is seen.",
+			"Alternate": "True Name",
+			"Alternate_Description": "Knowing a True Name is very important for some people. In T13 it lets you know a Character's Geometry, but it also let's us understand and control Increated a little better, since their True Name is the only reason they exist.",
+			"Detail": "Important",
+			"Detail_Description": "An important detail is revealed. This varies from case to case, but might include knowledge that the device has to charge for an hour before turning it on, or an invading force is on its way, or that unless stopped, the angels will end the world on Thursday. You know, things that people might like to know."
+		}
+	},
+	"Obstacle": {
+		"Type": "Dark",
+		"Description": "The way ahead is dark, and full of terrors."
+	},
+	"Tarot": {
+		"WyrdTarot": "Escape",
+		"Normal": "+2 Success Levels to all motion Actions while atop pile.",
+		"Crossed": "+2 Failure Levels to motion Actions while atop pile."
+	},
+	"Ordeal": {
+		"Ordeal_Type": "Solitary Ordeal",
+		"Stages": "5",
+		"Ordeal_Spread": "Map-Grid",
+		"Stakes": "Blended Low-Medium-High",
+		"Test": "Impress (Awe)",
+		"Obstacles": "2 Obstacles in every Stage and 3 in Court Stages",
+		"Suggested_Action": "Distract",
+		"Stage": "Crossing",
+		"Stage_Description": "A Creative Dilemma, intersection or busy, dangerous crossing.",
+		"Motional": "Dangerous Gauntlet Dash",
+		"Motional_Description": "Get to the end of the Ordeal as quickly as possible in one piece, on foot, while opponents defend each dangerous Stage.",
+		"Tide_of_Battle": "Turning Point",
+		"Tide_of_Battle_Text": "The Turning Point is a moment where the Ebbing enemy and Flowing forces are inverted somehow. Some change of situation, such as the arrival of reinforcements, or a terrible accident, causes the Flow and Ebb to reverse.",
+		"Fight": "Lieutenant",
+		"Fight_Description": "One of the Villain's Henchmen (equivalent to any 2 PCs) accompanied by a number of lesser opponents at least equal in number to the Party."
+	},
+	"Lea": {
+		"PathColour": "Brown/Blue Omnivore",
+		"Bulmas": "Broccen, Vermis, Labyrinthine, All-Walkers",
+		"AnimalCategory": "Labyrinth",
+		"Example": "Labrys patterned Minotaur",
+		"Bodypart": "Ear",
+		"Notes": "Kings represent paths in the Labyrinth, and C&aelig;ster in the centre as well. A normal Bulmäs that tries to walk the Labyrinth would be lost, and would then be recruited into the Labyrinth. The Labyrinth can connect any point in space and time to any other, allowing Bulmäs to consciously time-travel through the Lea. A King can allow a Bulmäs to create or reload a Chronolith or side-step depending on the power-level of the Bulmäs."
+	},
+	"Stress": {
+		"Type": "Dangerous",
+		"Description": "Stress is dangerous, it can turn a simple mistake into a deadly danger, make a simple shock cause a heart attack, or make a Character hold a loaded gun to their own head.",
+		"Rules": "All Diamond (<span class=\"t13ne-redcard\">&diams;</span>) Suited Ordeal cards that target the Character for an Attack add the Character’s current Stress as Yarn so 13 Stress adds 66 Pips to each card, but then relieves Stress equal to the original Card Pips, plus all Strain and current Shock (although this new attack is a whole other ball game). Unsuited cards add current Stress as Chi (13 Pips), but remove only the current Stress Reduced (4 Stress), 1 Strain or 1 Shock."
+	},
+	"Trauma": {
+		"Type": "Notoriety",
+		"Description": "Trauma can lead to a Character gaining fame within their community or society. This notoriety can be \"positive\" with celebrity bringing benefts that may offset the trauma somewhat, but notoriety is as often negative, as some folk will try to exploit their knowledge of who the Character is in negative ways.",
+		"Rules": "The Trauma grants the Character recognition by the masses. This becomes tied to a \"Media Impression\" similar to a Character’s Impression of them. Most Characters who did not meet the Character before the Trauma will match their Impression of the Character to the media impression, although often those with media exposure themselves will be less quick to adopt the media impression."
+	},
+	"Age": {
+		"Type": "Glory",
+		"Description": "An Age of Glory is occurring. During this age a society reaches the next level somehow, although often such glories are followed by failures, for the moment everything the society attempts is successful. Ages of Glory are often claimed to be caused by some technological achievement, but there are always multiple foundations for the success in this age. An age of Glory can often cause a society to defeat or even consume their enemies, as kingdoms rise to become empires and colonial powers.",
+		"Diegetic_Description": "A golden era of triumph and ascension, where society reaches the absolute peak of its power and influence. It is a time when every endeavor meets with success, leading to rapid expansion and the eclipse of all rivals as the culture enters a period of legendary achievement.",
+		"Rules": "During an Age of Glory everything the society attempts will be successful (at least until the age is over, when repercussions and consequences may emerge from that initial success)."
+	}
+}

@@ -1,0 +1,58 @@
+[
+    {
+        "Tempo": "Grave",
+        "Description": "A Grave Tempo implies a depth to the composition, things that happen slowly have gravitas, they tend to be important, huge and unweildy affairs. A Grave tempo implies serious business, with large Stakes, where little happens quickly, such as Geo-politics, Economics, Social Change, etc. Grave Compositions can feel too heavy for some people to use them as Character Arcs, and Plots are better suited to this level of intensity, but a Grave Composition can run alongside an Epic Plot very nicely.",
+        "Difficulties": "Difficulties usually reflect the size and importance of the Composition, if the fate of a Kingdom is on the line, the Difficulty should reflect at least the size of the Kingdom.",
+        "Obstacles": "Obstacles are frequent and often multiple. Every Bar should contain at least one Obstacle per Beat, but they are usually collected onto the Strong Beats and often mostly the first beat of the Bar.",
+        "Hurdles": "Hurdles are most common in Grave Tempo, and every Beat can potentially hold a Hurdle for a Character. Each Bar should hold a Hurdle for at least two Characters (often the lead and bass voicings).",
+        "Stakes": "Grave Tempo usually means Extreme, Soul or Paradoxical-Stakes, a lot rides on the Stakes of a Grave Composition, including (at least once) the fate of the entire Omniverse."
+    },
+    {
+        "Tempo": "Creeping",
+        "Description": "A Creeping Tempo implies slow progress towards some goal, often with a great threat that must be avoided at all costs. Creeping Compositions are often delicate situations, that must be handled with care, as they carry suspense and uneasiness, usually any mistake along the way will destroy or unbalance everything accomplished so far. Creeping tends to be somewhat time sensitive, and is often secretive, such as an infiltration, manipulation, or corruption. Often Creeping Compositions work best alongside a Story or Volume Plot. Creeping Tempo will often be overwhelmed or interrupted by Suspense and Drama from a Plot.",
+        "Difficulties": "Difficulties in Creeping Compositions are usually caused by those Opposed to the goal of the Composition. This can be as simple as a Character (a guard for example) who must be avoided, persuaded or bribed; how sharp-eyed is this \"guard\"? How alert to the approach? how corrupt are they? The answers to these questions should let you decide the difficulty.",
+        "Obstacles": "Obstacles are very common to Creeping Tempo, usually Strong Beats will contain two or three Obstacles, Weak Beats will contain only one or two. In Creeping Tempo even Rests may contain Obstacles.",
+        "Hurdles": "Hurdles are quite common in Creeping Tempo, typically only one Hurdle is found per Bar, often opening the Bar, this is usually given to the lead voicing Character of the Bar.",
+        "Stakes": "Creeping Tempo can be of any Stakes, however usually a unique point of the Creeping Composition is that there is a Failure state hanging over the whole Composition. If the Characters cannot reach their goal without being spotted, for example, then they will be captured, and potentially even killed. These Stakes should be obvious from context, and enforced by the Referee, so that if a Conductor fails to make the consequences of failure obvious enough then the Characters should not be unfairly punished."
+    },
+    {
+        "Tempo": "Leisurely",
+        "Description": "A Leisurely Tempo is the least important of the slower tempos on the one hand, and quite commonly used on the other. It is the Tempo of relaxed social, vacation or weekend activity, when you meet with friends and are in no rush to leave, can stop for a drink and a chat. This makes it the ideal Tempo for most Character-driven Compositions. Leisurely Compositions can work alongside any Plots very easily and should be used if no other Character Arcs are currently being used.",
+        "Difficulties": "Difficulties in a Leisurely Tempo tend to be small things, although you may compete against another Character, most Difficulties will be simple routine tasks, or perhaps Hobby challenges at worst.",
+        "Obstacles": "Leisurely Tempo does not usually include Obstacles, although occasionally one may be placed upon the opening of a new Bar, particularly following a Chord Change.",
+        "Hurdles": "Hurdles are not common in Leisurely Tempo, but they can occur.",
+        "Stakes": "Leisurely Tempo is usually a place of Low Stakes although that may rise to Medium or Soul-Stakes on the Strong Beat following a Chord Change."
+    },
+    {
+        "Tempo": "Moderate",
+        "Description": "A Moderate Tempo is the most common Tempo, and is pretty much the default. This is the Tempo of normal life, the working week. This is the Tempo of people headed from meeting to meeting, working towards deadlines, and just trying to get to work on time.",
+        "Difficulties": "Difficulties in Moderate can range vastly, somedays work can be standing at the water cooler, chatting with people and reading a professional journal, other days there is an overdue project and everyone’s nose is on the grindstone.",
+        "Obstacles": "Obstacles can vary greatly in a Moderate tempo, although Obstacles are common in the last strong beat of the bar.",
+        "Hurdles": "Hurdles are rare in the Moderate Tempo, although they can occur on any Strong Beat following a Chord change.",
+        "Stakes": "Stakes of Moderate Tempo are typically Low or Medium, although they can rise to High for a Bar or two."
+    },
+    {
+        "Tempo": "Brisk",
+        "Description": "A Brisk Tempo is the slowest of the fast Tempos and is mostly used in social and work situations. A Brisk Tempo implies that the Characters are trying to move things along, or push forwards to get things done faster rather than slower. This briskness implies that Characters should still be careful and thorough, unlike the faster Tempos.",
+        "Difficulties": "Difficulties are often raised slightly as Characters try to meet deadlines, push things through faster, or get more done than normal. Brisk Tempo Compositions will often make a Character add additional Targets, or reduce production times, and encourage Characters to push ahead without worrying too much about consequences.",
+        "Obstacles": "Obstacles are exceptionally rare to the Brisk Tempo, although they can be added as a response to the Characters not being thorough.",
+        "Hurdles": "Normally there will be a single Hurdle that the Characters will have to overcome, this is often a consequence of the Brisk Tempo.",
+        "Stakes": "Stakes are typically Low, but can occasionally be as high as Extreme. Stakes higher than Medium should be rare."
+    },
+    {
+        "Tempo": "Hurried",
+        "Description": "A Hurried Tempo is commonly used when there simply isn’t enough time to get everything done, when working with deadlines, or strict time constraints. Whenever Characters will have to make decisions about what they can do in the time available (do we barricade all the doors a bit, or the main door a lot?) then the Hurried Tempo is probably the one to use. Hurried Tempo creates additional problems as everyone is rushing; mistakes will be made and probably not caught.",
+        "Difficulties": "Difficulties rise the closer we get to the deadline, even simple tasks can become impossible if left too late, and therefore the Characters must prioritise their actions properly throughout the Hurried Tempo.",
+        "Obstacles": "Any mistakes or individual Failure Level in a previous Bar of a Hurried Tempo Composition will add an Obstacle to a later Bar. This can, <sem>and will</em>, accumulate, with multiple Obstacles per Bar possible later.",
+        "Hurdles": "Hurdles can also increase throughout the Composition, although never to the level of Obstacles, 1 Hurdle per Character per Bar is usually the limit here, with only the Lead voice having them earlier, later all Characters will have one.",
+        "Stakes": "Hurried Tempo can be any Stakes, but always tend to rise with time. Hurried Tempo modifies those Stakes further, adding Automatic Failure Levels to all Actions in the later Bars of the Composition. Typically this is +1 Failure Level per Bar of the Composition that has already past."
+    },
+    {
+        "Tempo": "Hasty",
+        "Description": "Hasty Tempo is the most break-neck pace that Characters can operate at. There is no time to stop and think about what the Characters are doing, and inevitably that means that mistakes occur. Hasty Tempo is the fastest that a Composition can move, and is the equivalent of the fastest paced Action Plots.",
+        "Difficulties": "Difficulties are always raised in a Hasty Tempo. There simply isn’t enough time for them to do anything at a normal pace. Difficulties are often simply Doubled to try and make everything happen as close to instantly as possible.",
+        "Obstacles": "Hasty Tempo increases the number of Obstacles with time. Typically the number of Obstacles will rise, every Bar, until every Beat of the final Bar has up to 3 Obstacles on the Strong Beats and 2 on the Weak.",
+        "Hurdles": "If any Character attempts to make any decision in Hasty Tempo, it adds a Hurdle for the Character to at least their next Bar (and the longer the decision took to make, the more Bars should be affected) so if a Character has to choose a door to run through, that is a single Hurdle. If they stop to think about which door, feel free to add a Hurdle to every remaining Bar for that Character.",
+        "Stakes": "Any, but Stakes tend to rise with time, with additional Failure Levels, Obstacles and Hurdles being automatically added as a consequence of later Bars."
+    }
+]

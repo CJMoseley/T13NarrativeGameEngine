@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>T13 TTRPG Companion & 3D VTT</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="brand">
+      <h1>T13 System</h1>
+      <span>Narrative Companion</span>
+    </div>
+    
+    <nav>
+      <ul class="nav-links">
+        <li class="nav-item">
+          <a class="nav-link active" data-panel="plots">
+            <span>Narrative Plot</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-panel="vtt">
+            <span>3D Tabletop (VTT)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-panel="character">
+            <span>Character Sheet</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-panel="rulebook">
+            <span>Rules Handbook</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    
+    <!-- P2P Connection -->
+    <div class="conn-panel">
+      <div class="conn-title">Session Connection</div>
+      <div class="room-inputs">
+        <input type="text" id="roomIdInput" placeholder="Room Name (e.g. Sector7)">
+        <button class="btn" id="btnHostRoom">Host Session</button>
+        <button class="btn btn-secondary" id="btnJoinRoom">Join Session</button>
+        <div id="connectionStatus" style="font-size: 0.75rem; color: #64748b; margin-top: 8px; text-align: center;">
+          Initializing...
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Viewports -->
+  <main class="viewport">
+    
+    <!-- Narrative Plot View -->
+    <div class="panel-view active" id="view-plots">
+      <div class="char-sheet-wrapper">
+        <div class="char-card">
+          <h2 style="font-family: var(--font-header); font-size: 1.8rem; color: var(--text-accent); margin-bottom: 20px; text-transform: uppercase;">
+            Narrative Loom
+          </h2>
+          <div id="plotContainer">
+            <p style="color: var(--text-muted); margin-bottom: 20px;">
+              The Plot is the engine of the T13 system. Connect to a session or generate a local thread to begin.
+            </p>
+            <button class="btn" id="btnGeneratePlot">Cascade New Plot Thread</button>
+            <div id="activePlotOutput" style="margin-top: 32px;">
+              <!-- T13PlotWidget renders here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3D VTT View -->
+    <div class="panel-view" id="view-vtt">
+      <div id="vtt-container">
+        <div class="vtt-controls">
+          <button class="btn btn-secondary" id="btnRollDice">Roll Dice (3d6)</button>
+          <button class="btn btn-secondary" id="btnClearDice">Clear Table</button>
+        </div>
+        <div id="vtt-canvas"></div>
+      </div>
+    </div>
+    
+    <!-- Character Sheet View -->
+    <div class="panel-view" id="view-character">
+      <div class="char-sheet-wrapper">
+        <div class="char-card">
+          <div id="characterViewHeader" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+              <h2 style="font-family: var(--font-header); font-size: 1.8rem; color: var(--text-accent); text-transform: uppercase; margin: 0;">
+                Character Catalyst
+              </h2>
+              <button class="btn btn-secondary" id="btnShowCreator">Create New</button>
+          </div>
+
+          <!-- Character Creator -->
+          <div id="characterCreatorContent" style="display: none;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+              <div style="display: flex; flex-direction: column; gap: 6px;">
+                <label style="font-size: 0.85rem; text-transform: uppercase; font-weight: 700;">Character Name</label>
+                <input type="text" id="inputCharName" value="Kaelen Weaver" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px;">
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 6px;">
+                <label style="font-size: 0.85rem; text-transform: uppercase; font-weight: 700;">Character Type</label>
+                <select id="selectCharType" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px;">
+                  <option value="Hero">Hero (Full Character)</option>
+                  <option value="Cast">Cast (Named NPC)</option>
+                  <option value="Chorus">Chorus (Group)</option>
+                  <option value="Vex">Vex (Antagonist)</option>
+                  <option value="Extra">Extra (Minimal)</option>
+                </select>
+              </div>
+            </div>
+            <button class="btn" id="btnGenerateCatalyst">Calculate Hexagram & Stats</button>
+          </div>
+
+          <div id="characterStatsOutput">
+            <!-- T13CharacterSheet renders here -->
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Rulebook View -->
+    <div class="panel-view" id="view-rulebook">
+      <iframe class="rulebook-frame" src="./rulebook/index.html" title="T13 Rules"></iframe>
+    </div>
+
+    <!-- Floating Vtuber Widget -->
+    <div class="vtuber-box" id="vtuberWidget">
+      <div class="vtuber-header">
+        <h3>Live Avatar</h3>
+        <span style="font-size: 0.75rem; color: #94a3b8; cursor: pointer;" id="toggleWebcam">Webcam Off</span>
+      </div>
+      <div class="vtuber-canvas-container">
+        <canvas class="vtuber-canvas" id="vtuberCanvas"></canvas>
+      </div>
+      <div class="vtuber-controls">
+        <button class="btn btn-secondary" style="flex: 1; font-size: 0.7rem;" id="btnLoadVRM">VRM</button>
+        <button class="btn btn-secondary" style="flex: 1; font-size: 0.7rem;" id="btnProceduralAvatar">ProcGen</button>
+      </div>
+    </div>
+
+  </main>
+
+  <div id="game-canvas-container" style="display: none;"></div>
+  <script type="module" src="/main.js"></script>
+</body>
+</html>
+<!-- AUTHOR MODE ADDED MANUALLY DUE TO GIT DIFF FAILURE -->
+<script>
+console.log("Checking Author Mode integration...");
+if (!document.querySelector('[data-panel="author"]')) {
+    const navUl = document.querySelector('.nav-links');
+    const authorLi = document.createElement('li');
+    authorLi.className = 'nav-item';
+    authorLi.innerHTML = '<a class="nav-link" data-panel="author"><span>Author Mode</span></a>';
+    navUl.appendChild(authorLi);
+
+    const viewport = document.querySelector('.viewport');
+    const authorPanel = document.createElement('div');
+    authorPanel.className = 'panel-view';
+    authorPanel.id = 'view-author';
+    authorPanel.innerHTML = `
+      <div class="char-sheet-wrapper">
+        <div class="char-card">
+          <h2 style="font-family: var(--font-header); font-size: 1.8rem; color: var(--text-accent); text-transform: uppercase; margin-bottom: 24px;">
+            Author Workbench
+          </h2>
+          <div id="workbench-container">
+            <div class="workbench-nav" style="display: flex; gap: 10px; margin-bottom: 20px;">
+                <button class="btn btn-secondary wb-nav-btn active" data-wb-view="narrative">Narrative</button>
+                <button class="btn btn-secondary wb-nav-btn" data-wb-view="knots">Knots & Annexes</button>
+                <button class="btn btn-secondary wb-nav-btn" data-wb-view="chars">Characters</button>
+            </div>
+            <div id="workbench-content">
+                <div id="knots-grid"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    viewport.appendChild(authorPanel);
+    console.log("Author Mode injected via script.");
+}
+</script>

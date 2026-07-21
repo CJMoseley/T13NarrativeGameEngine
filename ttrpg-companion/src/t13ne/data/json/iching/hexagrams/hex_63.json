@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 63,
+    "Name": "Across The Stream",
+    "Entity": "&#19966;",
+    "Logical": 21,
+    "Trigrams": [
+      3,
+      6
+    ],
+    "Hexagram_Text": "Chi Chi, Across the Stream (or Already Fording or After Completion), is symbolic of having achieved all you can achieve already. The kettle balances water over fire, but if not watched it will boil over, extinguish the fire, or boil off the water, leaving you with nothing. Having reached an end, do not stop, or it may become the end.",
+    "Unchanging": "Once per Scene you may add Incarna Score (Boon Reduced) Pips to all cards you play to Prepare.",
+    "Line1": "Fording Breakdown",
+    "Line2": "The Carriage's Lost Curtain",
+    "Line3": "Discipling Devils",
+    "Line4": "Even Finery Turns To Rags",
+    "Line5": "Neighbours Sacrifice Rewarded",
+    "Line6": "Head Wet"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you take precautions and do not let down your guard, especially when it seems you have won",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you are surprised or distracted",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "you drag your heels, take your time, or check behind you",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yang",
+        "Condition": "you accept something and move on",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yin",
+        "Condition": "you try to intimidate or upset others",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yang",
+        "Condition": "you are unfashionable, prepare, or seek out hidden evil",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yin",
+        "Condition": "someone else succeeds nearby",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yang",
+        "Condition": "you plunge in head-first, or try to recapture something you lost",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Across The Stream Quest indicates a situation where things seem to have changed, and now favour the Quester some how. This is usually a case of a change in regime or the law that now favours the Quester in some way. This might seem like a case of out with old and in with the new, but this does not mean the new regime (or situation) is yet established and stable, or that the opposition is gone. This time is delicate and mistakes may yet cause the new regime to fall or decay. ",
+    "Quest_Complete": "The Quest that ends on the Across The Stream Hexagram ends with the Quester accomplishing their goal. What they have achieved may only be ephemeral and may begin to fall apart almost immediately, but what they wanted to achieve has at least been achieved in some way.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "There are signs of a transition everywhere, and everything is pressing the Quester forwards, into trouble (adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test), but if the Quester resists this urge to press on regardless, and makes sure they are ready before trying to make progress then they can ignore this trouble.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "This time of change creates a power vacuum or an empty office, that the authorities seem unwilling to fill. The Quester who takes advantage of this situation to make a power grab will make their own life more complicated adding an Obstacle, Hurdle or Failure Level to their Ordeal or Test. The Quester who does not draw attention, and remains patient will find themselves rewarded afterwards, as well as adding a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "The new regime has stirred up a new danger, usually an external or hidden threat that had been controlled by the old regime, or disturbed by the new regimes expansions. The Quester will encounter a new enemy, or opposition force, that often have different technologies or abilities (in extreme circumstances they may have supernatural abilities and resources). This adds a Hurdle, Obstacle or Failure Level to the Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "Scandals and secrets plague the new regime, and the Quester too, they will discover some hidden problem that would stop them from progressing that adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If the Quester is careful, and pays attention to the details, they will subvert this problem and instead add a Success Level.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The new regime brings with it new leaders, mores, morals, laws, and new religious or social ceremonies. These new ceremonies, etc are more flamboyant and exaggerated than the old regimes, but no more effective. If the Quester joins in with these new celebrations and rituals they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If they do not join in with the new ways, but stick to the old rituals and ways, then they will add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "There is a danger that the Quester must pass, once they have passed it they should not look back, or dwell upon it at all, or they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If they instead push on regardless and without pausing then they will add a Success Level instead.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "This hexagram is the evolution of T'ai PEACE\n\n11. The transition from confusion to order is completed, and everything is in its proper place even in particulars. The strong lines are in the strong places, the weak lines in the weak places. This is a very favorable outlook, yet it gives reason for thought. For it is just when perfect equilibrium has been reached that any movement may cause order to revert to disorder. The one strong line that has moved to the top, thus effecting complete order in details, is followed by the other lines. Each moving according to its nature, and thus suddenly there arises again the hexagram P'i, STANDSTILL\n\n12. Hence the present hexagram indicates the conditions of a time of climax, which necessitate the utmost caution.",
+    "The_Image": {
+      "text": "Water over fire: the image of the condition\nIn AFTER COMPLETION.\n\nThus the superior man\n\nTakes thought of misfortune\nAnd arms himself against it in advance.",
+      "comments": "When water in a kettle hangs over fire, the two elements stand in relation and thus generate energy (cf. the production of steam). But the resulting tension demands caution. If the water boils over, the fire is extinguished an its energy is lost. If the heat is too great, the water evaporates into the air. These elements here brought in to relation and thus generating energy are by nature hostile to each other. Only the most extreme caution can prevent damage. In life too there are junctures when all forces are in balance and work in harmony, so that everything seems to be in the best of order. In such times only the sage recognizes the moments that bode danger and knows how to banish it by means of timely precautions."
+    },
+    "The_Judgment": {
+      "text": "AFTER COMPLETION. Success in small matters.\nPerseverance furthers.\nAt the beginning good fortune.\nAt the end disorder.",
+      "comments": "The transition from the old to the new time is already accomplished. In principle, everything stands systematized, and it si only in regard to details that success is still to be achieved. In respect to this, however, we must be careful to maintain the right attitude. Everything proceeds as if of its own accord, and this can all too easily tempt us to relax and let thing take their course without troubling over details. Such indifference is the root of all evil. Symptoms of decay are bound to be the result. Here we have the rule indicating the usual course of history. But this rule is not an inescapable law. He who understands it is in position to avoid its effects by dint of unremitting perseverance and caution."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "He breaks his wheels.\nHe gets his tail in the water.",
+        "comments": "No blame.\n\nIn times following a great transition, everything is pressing forward, striving in the direction of development and progress. But this pressing forward at the beginning is not good; it overshoots the mark and leads with certainty to loss and collapse. Therefore a man of strong character does not allow himself to be infected by the general intoxication but checks his course in time. He may indeed not remain altogether untouched by the disastrous consequences of the general pressure, but he is hit only from behind like a fox that, having crossed the water, at the last minute gets its tail wet. He will not suffer any real harm, because his behavior has been correct."
+      },
+      "2": {
+        "text": "The woman loses the curtain of her carriage.\nDo not run after it;\nOn the seventh day you will get it.",
+        "comments": "When a woman drove out in her carriage, she had a curtain that hid her from the glances of the curious. It was regarded as a breach of propriety to drive on if this curtain was lost. Applied to public life, this means that a man who wants to achieve something is not receiving that confidence of the authorities which he needs, so to speak, for his personal protection. Especially in times \"after completion\" it may happen that those who have come to power grow arrogant and conceited and no longer trouble themselves about fostering new talent. This as a rule results in office seeking. If a man's superiors withhold their trust from him, he will seek ways and means of getting it and of drawing attention to himself. We are warned against such an unworthy procedure: \"Do not seek it.\" Do not throw yourself away on the world, but wait tranquilly and develop your personal worth by your own efforts. Times change. When the six stages of the hexagram have passed, the new era dawns. That which is a man's own cannot be permanently lost. It comes to him of its own accord. He need only be able to wait."
+      },
+      "3": {
+        "text": "The Illustrious Ancestor\nDisciplines the Devil's Country.\nAfter three years he conquers it.\nInferior people must not be employed.",
+        "comments": "\"Illustrious Ancestor\" is the dynastic title of the Emperor Wu Ting of the Yin dynasty. After putting his realm in order with a strong hand, he waged long colonial wars for the subjection of the Huns who occupied the northern borderland with constant threat of incursions. The situation described is as follows. After times of completion, when a new power has arisen and everything within the country has been set in order, a period of colonial expansion almost inevitably follows. Then as a rule long-drawn-out struggles must be reckoned with. For this reason, a correct colonial policy is especially important. The territory won at such bitter cost must not be regarded as an almshouse for people who in one way or another have hade themselves impossible at home, but who are thought to be quite good enough for the colonies. Such a policy ruins at the outset any chance of success. This holds true in small as well as large matters, because it is not only rising states that carry on a colonial policy; the urge to expand, with its accompanying dangers, is part and parcel of every ambitious undertaking."
+      },
+      "4": {
+        "text": "The finest clothes turn to rags.\nBe careful all day long.",
+        "comments": "In a time of flowering culture, an occasional convulsion is bound to occur, uncovering a hidden evil within society and at first causing a great sensation. But since the situation is favorable on the whole, such evils can easily be glossed over and concealed from the public. Then everything is forgotten and peace apparently reigns complacently once more. However, to the thoughtful man, such occurrences are grave omens that he does not neglect. This is the only way of averting evil consequences."
+      },
+      "5": {
+        "text": "The neighbor in the east who slaughters an ox\nDoes not attain as much real happiness\nAs the neighbor in the west\nWith his small offering.",
+        "comments": "Religious attitudes are likewise influenced by the spiritual atmosphere prevailing in times after completion. In divine worship the simple old forms are replaced by an ever more elaborate ritual and an ever greater outward display. But inner seriousness is lacking in this show of magnificence; human caprice takes the place of conscientious obedience to the divine will. However, while man sees what is before his eyes, God looks into the heart. Therefore a simple sacrifice offered with real piety holds a greater blessing than an impressive service without warmth."
+      },
+      "6": {
+        "text": "He gets his head in the water. Danger.",
+        "comments": "Here in conclusion another warning is added. After crossing a stream, a man's head can get into the water only if he is so imprudent as to turn back. As long as he goes forward and does not look back, he escapes this danger. But there is a fascination in standing still and looking back on a peril overcome. However, such vain self-admiration brings misfortune. It leads only to danger, and unless one finally resolves to go forward without pausing, one falls a victim to this danger."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Across The Stream'. Internalize this core philosophy: This hexagram is the evolution of T'ai PEACE\n\n11. The transition from confusion to order is completed, and everything is in its proper place even in particulars. The strong lines are in the strong places, the weak lines in the weak places. This is a very favorable outlook, yet it gives reason for thought. For it is just when perfect equilibrium has been reached that any movement may cause order to revert to disorder. The one strong line that has moved to the top, thus effecting complete order... Your current worldview is: \"Chi Chi, Across the Stream (or Already Fording or After Completion), is symbolic of having achieved all you can achieve already. The kettle balances water over fire, but if not watched it will boil over, extinguish the fire, or boil off the water, leaving you with nothing. Having reached an end, do not stop, or it may become the end.\". Let your choices be subtly driven by these conditions: you take precautions and do not let down your guard, especially when it seems you have won, you are surprised or distracted. When interacting, mirror the wisdom found in the commentary: \"The transition from the old to the new time is already accomplished. In principle, everything stands systematized, and it si only in regard to details that success is still to be achieved. In respect to this, however, we must be careful to maintain the right attitude. Everything proceeds as if of...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Across The Stream'. The primary quest objective is: The Across The Stream Quest indicates a situation where things seem to have changed, and now favour the Quester some how. This is usually a case of a change in regime or the law that now favours the Quester in some way. This might seem like a case of out with old and in with the new, but this does not mean the new regime (or situation) is yet established and stable, or that the opposition is gone. This time is delicate and mistakes may yet cause the new regime to fall or decay. . Introduce environmental or social complications that reflect the 'Image' of this hexagram: When water in a kettle hangs over fire, the two elements stand in relation and thus generate energy (cf. the production of steam). But the resulting tension demands caution. If the water boils over, the fire is extinguished an its energy is lost. If the heat is too great, the water evaporates into the air. These elements here brought in to relation and thus generating energy are by nature hostile... Use the following line-specific challenges to pace the story: There are signs of a transition everywhere, and everything is pressing the Quester forwards, into trouble (adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test), but if the Quester resists this urge to press on regardless, and makes sure they are ready before trying to make progress then they can ignore this trouble. | This time of change creates a power vacuum or an empty office, that the authorities seem unwilling to fill. The Quester who takes advantage of this situation to make a power grab will make their own life more complicated adding an Obstacle, Hurdle or Failure Level to their Ordeal or Test. The Quester who does not draw attention, and remains patient will find themselves rewarded afterwards, as well as adding a Success Level instead. | The new regime has stirred up a new danger, usually an external or hidden threat that had been controlled by the old regime, or disturbed by the new regimes expansions. The Quester will encounter a new enemy, or opposition force, that often have different technologies or abilities (in extreme circumstances they may have supernatural abilities and resources). This adds a Hurdle, Obstacle or Failure Level to the Ordeal or Test. | Scandals and secrets plague the new regime, and the Quester too, they will discover some hidden problem that would stop them from progressing that adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If the Quester is careful, and pays attention to the details, they will subvert this problem and instead add a Success Level. | The new regime brings with it new leaders, mores, morals, laws, and new religious or social ceremonies. These new ceremonies, etc are more flamboyant and exaggerated than the old regimes, but no more effective. If the Quester joins in with these new celebrations and rituals they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If they do not join in with the new ways, but stick to the old rituals and ways, then they will add a Success Level instead. | There is a danger that the Quester must pass, once they have passed it they should not look back, or dwell upon it at all, or they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If they instead push on regardless and without pausing then they will add a Success Level instead.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Fording Breakdown): Mirror the internal state described in the commentary: \"No blame.\n\nIn times following a great transition, everything is pressing forward, striving in the direction of development and progress. But this pressing forward at the beginning is not good; it overshoots the mark and leads with certainty to loss...\" Your actions should be framed by the goal: you drag your heels, take your time, or check behind you.",
+        "Plot": "Plot Complication Line 1 (Fording Breakdown): Introduce a challenge based on the interpretation: \"No blame.\n\nIn times following a great transition, everything is pressing forward, striving in the direction of development and progress. But this pressing forward at the beginning is not good; it overshoots the mark and leads with certainty to loss...\" The specific quest objective for this stage is: There are signs of a transition everywhere, and everything is pressing the Quester forwards, into trouble (adding a Hurdle, Obstacle or Failure Level to their Ordeal or Test), but if the Quester resists this urge to press on regardless, and makes sure they are ready before trying to make progress then they can ignore this trouble."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (The Carriage's Lost Curtain): Mirror the internal state described in the commentary: \"When a woman drove out in her carriage, she had a curtain that hid her from the glances of the curious. It was regarded as a breach of propriety to drive on if this curtain was lost. Applied to public life, this means that a man who wants to achieve...\" Your actions should be framed by the goal: you accept something and move on.",
+        "Plot": "Plot Complication Line 2 (The Carriage's Lost Curtain): Introduce a challenge based on the interpretation: \"When a woman drove out in her carriage, she had a curtain that hid her from the glances of the curious. It was regarded as a breach of propriety to drive on if this curtain was lost. Applied to public life, this means that a man who wants to achieve...\" The specific quest objective for this stage is: This time of change creates a power vacuum or an empty office, that the authorities seem unwilling to fill. The Quester who takes advantage of this situation to make a power grab will make their own life more complicated adding an Obstacle, Hurdle or Failure Level to their Ordeal or Test. The Quester who does not draw attention, and remains patient will find themselves rewarded afterwards, as well as adding a Success Level instead."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Discipling Devils): Mirror the internal state described in the commentary: \"\"Illustrious Ancestor\" is the dynastic title of the Emperor Wu Ting of the Yin dynasty. After putting his realm in order with a strong hand, he waged long colonial wars for the subjection of the Huns who occupied the northern borderland with...\" Your actions should be framed by the goal: you try to intimidate or upset others.",
+        "Plot": "Plot Complication Line 3 (Discipling Devils): Introduce a challenge based on the interpretation: \"\"Illustrious Ancestor\" is the dynastic title of the Emperor Wu Ting of the Yin dynasty. After putting his realm in order with a strong hand, he waged long colonial wars for the subjection of the Huns who occupied the northern borderland with...\" The specific quest objective for this stage is: The new regime has stirred up a new danger, usually an external or hidden threat that had been controlled by the old regime, or disturbed by the new regimes expansions. The Quester will encounter a new enemy, or opposition force, that often have different technologies or abilities (in extreme circumstances they may have supernatural abilities and resources). This adds a Hurdle, Obstacle or Failure Level to the Ordeal or Test."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Even Finery Turns To Rags): Mirror the internal state described in the commentary: \"In a time of flowering culture, an occasional convulsion is bound to occur, uncovering a hidden evil within society and at first causing a great sensation. But since the situation is favorable on the whole, such evils can easily be glossed over and...\" Your actions should be framed by the goal: you are unfashionable, prepare, or seek out hidden evil.",
+        "Plot": "Plot Complication Line 4 (Even Finery Turns To Rags): Introduce a challenge based on the interpretation: \"In a time of flowering culture, an occasional convulsion is bound to occur, uncovering a hidden evil within society and at first causing a great sensation. But since the situation is favorable on the whole, such evils can easily be glossed over and...\" The specific quest objective for this stage is: Scandals and secrets plague the new regime, and the Quester too, they will discover some hidden problem that would stop them from progressing that adds a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If the Quester is careful, and pays attention to the details, they will subvert this problem and instead add a Success Level."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Neighbours Sacrifice Rewarded): Mirror the internal state described in the commentary: \"Religious attitudes are likewise influenced by the spiritual atmosphere prevailing in times after completion. In divine worship the simple old forms are replaced by an ever more elaborate ritual and an ever greater outward display. But inner...\" Your actions should be framed by the goal: someone else succeeds nearby.",
+        "Plot": "Plot Complication Line 5 (Neighbours Sacrifice Rewarded): Introduce a challenge based on the interpretation: \"Religious attitudes are likewise influenced by the spiritual atmosphere prevailing in times after completion. In divine worship the simple old forms are replaced by an ever more elaborate ritual and an ever greater outward display. But inner...\" The specific quest objective for this stage is: The new regime brings with it new leaders, mores, morals, laws, and new religious or social ceremonies. These new ceremonies, etc are more flamboyant and exaggerated than the old regimes, but no more effective. If the Quester joins in with these new celebrations and rituals they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If they do not join in with the new ways, but stick to the old rituals and ways, then they will add a Success Level instead."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Head Wet): Mirror the internal state described in the commentary: \"Here in conclusion another warning is added. After crossing a stream, a man's head can get into the water only if he is so imprudent as to turn back. As long as he goes forward and does not look back, he escapes this danger. But there is a...\" Your actions should be framed by the goal: you plunge in head-first, or try to recapture something you lost.",
+        "Plot": "Plot Complication Line 6 (Head Wet): Introduce a challenge based on the interpretation: \"Here in conclusion another warning is added. After crossing a stream, a man's head can get into the water only if he is so imprudent as to turn back. As long as he goes forward and does not look back, he escapes this danger. But there is a...\" The specific quest objective for this stage is: There is a danger that the Quester must pass, once they have passed it they should not look back, or dwell upon it at all, or they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. If they instead push on regardless and without pausing then they will add a Success Level instead."
+      }
+    }
+  }
+}

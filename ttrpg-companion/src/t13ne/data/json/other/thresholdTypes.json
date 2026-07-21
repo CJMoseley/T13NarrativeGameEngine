@@ -1,0 +1,138 @@
+[
+    {
+        "Type": "alternate",
+        "Description": "These thresholds indicate the Element (Character, Pact, or Extra Descendant) is an alternate of a Character."
+    },
+    {
+        "Type": "annex",
+        "Description": "These thresholds indicate the Element is an Annex (the owner of a prof list group)."
+    },
+    {
+        "Type": "cartesian",
+        "Description": "These thresholds indicate a Cartesian co-ordinate that specifies a position in some dimensional space, 1 dimensional for a single value, often 2d for surface maps and hex crawls, and even most dungeons), sometimes 3d (for realistic caverns and buildings), rarely 4d (time is included as well, key events begin or end Eras), occasionally 5d(branching time-lines and multiple choices can be represented this way). They are most often used to place Locations on a map (which will be referenced as well)."
+    },
+    {
+        "Type": "chain",
+        "Description": "These thresholds indicate the Element is intended to be loaded along with another Element. Multiple Elements can be chained together, without using a Group. Chains can be structural, chronological etc."
+    },
+    {
+        "Type": "choice",
+        "Description": "These threshold represents a choice that may be made, only a single object may be selected from the group"
+    },
+    {
+        "Type": "contact",
+        "Description": "These thresholds indicates the element has a way of contacting a member of a group"
+    },
+    {
+        "Type": "creator",
+        "Description": "The threshold indicates this Element created the group (making them a special member) or element"
+    },
+    {
+        "Type": "difficulty",
+        "Description": "These thresholds require a generated Score to pass (common to Tests, Ordeals, and Obstacles)"
+    },
+    {
+        "Type": "encountered",
+        "Description": "The threshold indicates the Element has encountered something"
+    },
+    {
+        "Type": "external",
+        "Description": "The threshold indicates the Element is influenced by an External Embodiment."
+    },
+    {
+        "Type": "hidden",
+        "Description": "The threshold indicates the element is influenced by a hidden Conflict Embodiment."
+    },
+    {
+        "Type": "hitch",
+        "Description": "The threshold indicates hitch type. Usually targets the Hitch alone."
+    },
+    {
+        "Type": "hitchtier",
+        "Description": "The threshold indicates the element is a hitch tier. Targets the hitch and another Element often a Character."
+    },
+    {
+        "Type": "holds",
+        "Description": "The Element holds or contains the link group, like a pact and its members, or rooms and the furniture"
+    },
+    {
+        "Type": "loop",
+        "Description": "These thresholds indicate objects form a scroll that loops around stepping incrementally (usually by +1)"
+    },
+    {
+        "Type": "member",
+        "Description": "the Element is a member of the link group"
+    },
+    {
+        "Type": "metaphysical",
+        "Description": "The Element is metaphysically joined to the link group"
+    },
+    {
+        "Type": "multiply",
+        "Description": "The Element has a multiplier, like a lite prof."
+    },
+    {
+        "Type": "opposed",
+        "Description": "This Element is opposed to the link group somehow."
+    },
+    {
+        "Type": "owns",
+        "Description": "The Element owns a copy of something"
+    },
+    {
+        "Type": "personality",
+        "Description": "The Element is a personality component of an annex (Persona, Core, Hitches)"
+    },
+    {
+        "Type": "power",
+        "Description": "These thresholds indicate power or 3rd tier membership of a group"
+    },
+    {
+        "Type": "prof",
+        "Description": "These thresholds indicate proficiencies of a Hitch, Annex, Descendant, or Character"
+    },
+    {
+        "Type": "pulled",
+        "Description": "These thresholds indicate pulled Embodiment effects on a group or element"
+    },
+    {
+        "Type": "pushed",
+        "Description": "These thresholds indicates a pushed embodiment effect on a group or element"
+    },
+    {
+        "Type": "random",
+        "Description": "These thresholds randomly select objects from a group of objects, like drawing them from a bag"
+    },
+    {
+        "Type": "relative",
+        "Description": "The threshold is relative but structural, the threshold may vary, for example \"Descendant A is to the left of Descendant B is true when you are looking from the north, but not the south\""
+    },
+    {
+        "Type": "scroll",
+        "Description": "These thresholds move along a list of objects, but only a selection are readable at a time. Like an old tape drive, or a scroll, scrolls can be paged or scrolling (which move a line after a certain amount of game time or real time)."
+    },
+    {
+        "Type": "skill",
+        "Description": "These thresholds indicate skill or lowest tier membership of a group"
+    },
+    {
+        "Type": "structural",
+        "Description": "These thresholds indicate structural connections, like rooms being inside a house, or a mountain being outside and far to the south. Structural thresholds are usually two-way (or are duplicated)."
+    },
+    {
+        "Type": "super",
+        "Description": "These thresholds indicate super or top tier membership of a group"
+    },
+    {
+        "Type": "talent",
+        "Description": "These thresholds indicate talent or 2nd tier membership of a group"
+    },
+    {
+        "Type": "way",
+        "Description": "These thresholds connect this descendant to that descendant with a direction, as a way that can be travelled, many locations can be placed in a group to create a long road with many locations along it. Ways usually two-way (there and back again), and are considered structural"
+    },
+    {
+        "Type": "window",
+        "Description": "These thresholds allow some or all senses to be used through them, but they cannot easily be passed through. Window thresholds are usually two-way when physical, but may be one way for magical effects. Windows can be turned into way thresholds to allow passage quite easily (they just need to be big enough and open enough)"
+    }
+]

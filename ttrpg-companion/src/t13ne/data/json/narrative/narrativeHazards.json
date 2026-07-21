@@ -1,0 +1,74 @@
+[
+    {
+        "Minimum_Suspense_Level": "None",
+        "Maximum_Suspense_Level": "High",
+        "Type": "Failure",
+        "Description": "Hazards can just be small collections of failures that build up to a breaking point.",
+        "Rules": "Adds a Failure Level to the Character’s current Action or Ordeal Stage for every 2 Stress relieved.",
+        "Stress": "Varies (2+)"
+    },
+    {
+        "Minimum_Suspense_Level": "Low",
+        "Maximum_Suspense_Level": "Tragic Conflict",
+        "Type": "Obstacle",
+        "Description": "Hazards can just be the same as Obstacles, minor inconveniences and blockages, or more complex things like traps.",
+        "Rules": "Draws and Plays one card as an Ordeal Obstacle, for 1 Stress. Additional Stress will add additional cards (usually between 1 and 3) that increase the Difficulty of this Obstacle. Hazards add triple the current Suspense Level (0-15) as Pips of Difficulty to these Obstacles.",
+        "Stress": "Varies (1-4)"
+    },
+    {
+        "Minimum_Suspense_Level": "Low",
+        "Maximum_Suspense_Level": "Open Conflict",
+        "Type": "Hurdle",
+        "Description": "Hazards can complicate an entire Narrative in small, but important ways.",
+        "Rules": "Adds a Facet Hurdle (usually based on the Facet of the card atop the Discard Pile) that will affect the current situation and story. The Hurdle will not add a new Scene, but will complicate the current Scene somehow. This relieves 5 Stress.",
+        "Stress": "5"
+    },
+    {
+        "Minimum_Suspense_Level": "Low",
+        "Maximum_Suspense_Level": "Tragic Conflict",
+        "Type": "Snag",
+        "Description": "Hazards can make everything about a Scene just a little bit harder, by adding a Snag.",
+        "Rules": "Draws and Plays one card as a Snag that will affect the current situation and story. The Snag will not generally add a new Scene, but can if necessary. This relieves 6 Stress.",
+        "Stress": "6"
+    },
+    {
+        "Minimum_Suspense_Level": "Low",
+        "Maximum_Suspense_Level": "Tragic Conflict",
+        "Type": "Plight",
+        "Description": "Hazards can mean a problem in its own right, rather than just being some complication to another situation. This Hazard is a complex Situation of its own, also called a Plight these are usually a simple small problem, smaller than a Sub-Plot or a true Quest.",
+        "Rules": "Draws and Plays 3 Cards as a Plight or History-Situation-Solution Trigram Spread. This relieves 7 Stress.",
+        "Stress": "7"
+    },
+    {
+        "Minimum_Suspense_Level": "Medium",
+        "Maximum_Suspense_Level": "Tragic Conflict",
+        "Type": "Fray",
+        "Description": "Hazards can include big problems, ranging from fires to opposing armies. Fray Hazards can add a Scene to a Narrative where the Hazard must be dealt with.",
+        "Rules": "Draws and Plays one card as a Fray for the Character and their Allies, this will add a Scene to the Narrative. This relieves 9 Stress.",
+        "Stress": "9"
+    },
+    {
+        "Minimum_Suspense_Level": "Medium",
+        "Maximum_Suspense_Level": "Tragic Conflict",
+        "Type": "Quest",
+        "Description": "Hazards can mean a problem in its own right, in this case a Quest that stands in the way of the Character.",
+        "Rules": "Draws and Plays 6 Cards as a Quest spread or Hexagram Spread. This relieves 13 Stress.",
+        "Stress": "13"
+    },
+    {
+        "Minimum_Suspense_Level": "High",
+        "Maximum_Suspense_Level": "Tragic Conflict",
+        "Type": "Geas",
+        "Description": "Hazards can mean a problem in its own right, in this case a Geas is placed upon the Character. A geas is a quest wrapped in a curse, or a curse wrapped in a Quest depending upon your point of view.",
+        "Rules": "Draws and Plays 6 Cards as a Geas Spread, which creates a Quest, a Revelation and a Lore from the same 6 cards. This relieves 18 Stress.",
+        "Stress": "18"
+    },
+    {
+        "Minimum_Suspense_Level": "High",
+        "Maximum_Suspense_Level": "Tragic Conflict",
+        "Type": "Sub-Plot",
+        "Description": "The most complex and powerful Hazards can spawn Sub-Plots, complete with their own Conflict and Characters that are set to oppose this Character directly.",
+        "Rules": "Adds a Sub-Plot that targets this Character as the Pressed Side of this Conflict. Sub-Plots relieves all current Stress.",
+        "Stress": "All Current"
+    }
+]

@@ -1,0 +1,52 @@
+[
+    {
+        "Type": "Cardinal",
+        "Description": "The Hermetic Mode of Primal thrust, the initial Thesis or rawest form of a thing, it is energetic and creative, forceful or aggressive.",
+        "Effect": "In alchemy the Cardinal form of a metal is productive in some way, Cardinal Copper is called Electronium and when struck releases electricity."
+    },
+    {
+        "Type": "Fixed",
+        "Description": "A Hermetic mode of response, antithesis, stability or loyalty.",
+        "Effect": "In Elementalism fire may be fixed, causing the fire to burn in a certain shape, colour or size, fixing copper is the Alchemical process that creates Orichalcum."
+    },
+    {
+        "Type": "Mutable",
+        "Description": "The third and final Hermetic Mode, represents balance, synthesis, cessation, change, adaptability and destruction",
+        "Effect": " In Alchemy the Mutable form of Copper is called Cuprium and is described as behaving like a metallic putty. Cuprium is often used to join Orichalcum as it can be easily moulded and fixed."
+    },
+    {
+        "Type": "Mentalism",
+        "Description": "The Hermetic belief that everything is mental, the universe exists and is self-aware only through us and our perception of it.",
+        "Effect": "In Alchemy and all Hermetic magics mental preparedness, imagination, intention, and expectation are as important as the actual procedures or components. Control of the mind, what it believes, how practised your imagination is, and exerting control over the body through discipline and visualisation, is an important, fundamental step in Hermetic magic. If you control what you believe is true, then you control what is true for you."
+    },
+    {
+        "Type": "Correspondence",
+        "Description": "The Hermetic belief that there is always a deeper and higher relationship between any two things, which is is expressed as \"As above, so below\". Sometimes when we look at a problem we cannot see a solution, but a step back, or a different perspective can offer a solution.",
+        "Effect": "In Alchemy and Hermetic magics correspondences let one thing stand for another, there is no difference in melting a cube of Tungsten or an icecube, except the temperature required, is how the Hermeticist sees things. Link the two via the correct correspondences and you can either make Tungsten melt at room temperature or make ice that will not melt in most fires or furnaces. Knowledge of Correspondences can allow the magician to percieve, create, maintain and sever connections between events and objects that to many people would appear wholy unconnected."
+    },
+    {
+        "Type": "Vibration",
+        "Description": "The Hemertic belief that everything that exists, that has energy, is in motion. Nothing can stand at rest in the Hermetic belief, matter orbits matter, energy flows from where it is most concetrated to where it isn’t and even spirits must have motion.",
+        "Effect": "Alchemy and Hermetic magics categorise all vibrations as falling into one of the Alchemical Tones or Keys. If you can isolate an object’s, spirit’s or even a thought’s Key then you can negate, enhance or even alter that Key and the object, spirit or thought somehow. Syncronicity and manifestation are examples of vibrations demonstrating resonance and harmonic effects."
+    },
+    {
+        "Type": "Polarity",
+        "Description": "The Hermetic belief that everything has two sides, two poles like a magnet, or contains a duality of some sort. This inherent duality means that opposites are often only opposites on a single scale, so hot and cold are both just temperatures, and both scalding and frostbite are burns, love and hate are both just emotions, either one can make someone kill, or humilate themselves, and even a few words or a single action can cause the one emotion to become the other.",
+        "Effect": "In Alchemy and Hermetic Magic Polarity must often be identified and balanced to accomplish the goal. If we wish to alter someone’s emotional response to us from a negative emotion to a postive one then there will have to be an application of postive emotional energies, so we might try smiling, being happy around them, and directing other positive energy their way. To cool a body magically, a reversal of polarity could make a flame burn cold, now cooling as much as it once heated (or at least that will be the perception), or the heat could be drawn from an object and sent somewhere else as a burst of fire."
+    },
+    {
+        "Type": "Rhythm",
+        "Description": "The Hermetic belief that if everything is vibrating and everything has polarities then those polarities must shift and change in time, with a Rhythm. Thus emotions and indeed all states, ebb and flow, no matter how far the pendulum swings it must always eventually swing back.",
+        "Effect": "In Alchemy and Hermetic Magic realising that Rhythyms exist for everything, but that they can also be influenced harmonically by other Rhythms, Keys and Tones, allows the mage to isolate particular rhythms and exploit them, learning when to ride the ebbing tide away, out or down or the flowing tide back, in or up."
+    },
+    {
+        "Type": "Cause &amp; Effect",
+        "Description": "The Hermetic belief that nothing happens without a reason, every effect has a cause, and every cause has an effect. This belief can become paranoid, if every effect that is currently happening to you has a cause, and many effects are happening to you at once, perhaps there is one cause creating all these effects. This paranoia can be very tricky to avoid, as you seek to understand the effects that are happening, you realise that the only thing linking these effects is yourself, it can then be easy to assume that you must be the solitary cause of all these effects, rather than realising that each effect may have its own cause.",
+        "Effect": "In Alchemy and Hermetic Magic there is a always a belief that a specific cause will always have a specific effect, and any specific effect can be created by a single specific, if difficult to identify, cause. Within Hermetic magic, it is common to use cause and effect to reinforce beliefs, by having a small, easy example work, it creates a belief that a larger effect is possible."
+    },
+    {
+        "Type": "Gender",
+        "Description": "The Hermetic belief that all things are not only gendered, but bi-gendered. This balance of masculine, Yang and feminine Yin energy must be actively sought. Too much masculine assertive, progressive (future considering), exploration can lead to rapacious conquesting, too much feminine receptive, conservative (past considering), protective, treasuring submission may make a person accept any lot without question.",
+        "Effect": "In Alchemy and Hermetic magic gender controls what is possible, creation, evolution and regeneration is only possible with an exact balance of masculine (Yang) and feminine (Yin) energies and processes. The Hermetic mage that wills harm upon another, must submit to some other power in exchange."
+    }
+]

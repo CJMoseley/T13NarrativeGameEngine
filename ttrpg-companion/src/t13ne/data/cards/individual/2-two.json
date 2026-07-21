@@ -1,0 +1,118 @@
+{
+	"Card_Corner": "2",
+	"Card": "Two",
+	"Suit": "2",
+	"IconSuit": "♥",
+	"Pips": "2",
+	"Unicode": "&#x1f0b2;",
+	"Svg": "images/cards-svg/2H.svg",
+	"Wound_Level": 1,
+	"Facet": "Phoenix",
+	"Tao": [
+		1,
+		1
+	],
+	"Narrative_Meaning": "Twos signify conflict, opposition and choices. They can indicate crossroads, partings, separations, and changes of direction.",
+	"Image": "",
+	"Yarn": {
+		"Yarn_Name": "The Burn-Out",
+		"Yarn_Description": "The Burn-Out is the card that represents the lingering embers of the once great. Where once a mighty, powerful fire roared, now there is just smoke and warm ashes. It can represent collapse after a great effort, or a futility in beginning.",
+		"Significator": {
+			"Plot": "The Burn-Out Plot is about things from the past, that were once great, but have now fallen apart. It may be a plot about an ancient ruin, or an old civilisation, something about this place, or people, has become relevant again. It is history trying to repeat itself, but trying again in an old palette, not quite updating the story as it might. Perhaps a village is found in the Italian Alps where Latin is still spoken, aliens appear over Stonehenge, or an old tired king, longs to relive his glory years. ",
+			"Side": "A side marked by the Burn-Out is a side that has seen better times, they may be old, or infirm from illness, or in the case of obstacles, descendants and so on just a little worn out. Of course, an elderly master, while not at the height of his powers, is no less formidable.",
+			"Character": "The Burn-Out Significator indicates a Character who was great, powerful or a genius, but is now less.<p>They <strong>Gain Yin</strong> when they mope, don't bother getting properly dressed or prepared, or ignore a question. </p><p>They <strong>Gain Yang</strong> when they volunteer information or solutions, help others, or offer food. </p><p>They <strong>Gain Chi</strong> when they freak out about something (usually a Triggered Hitch). </p><p>They also gain a +1 Success Level to any activity that can be done while wearing slippers and either eating cereal or watching video.</p>",
+			"Diegetic_Character": "A once-great figure who has lost their spark, now a shadow of their former self. They may seem indifferent or poorly prepared for the world, yet flashes of their old genius or power still occasionally surface, especially when they are pushed to their limits.",
+			"Scene": "The Burn-Out Scene is usually used for a calm following a disaster. Yarn-Tellers can use it to get a break when they need one, or can use it to ramp up the temperature an pressure on someone, creating a fiery Ordeal or Accident that must be dealt with."
+		},
+		"Beat_Type": "2",
+		"Conflict_Embodiment": "0",
+		"Facet_Embodiment": "5",
+		"Hook_Aspect": "Persona (Shadow)",
+		"Aspect_Description": "The Hook targets the Character's Persona specifically via the Shadow of the Persona, which means appealing to the darker nature of the Persona.",
+		"Hook": "Smoke Signals",
+		"Hook_Description": "There's no smoke without fire, people say. So when this Conflict starts rumours and gossip, leaving smoking guns and other clues that point to something being up, you can be sure the PCs will jump to all the wrong conclusions, or if they don't someone else will interpret the same signals as the PCs guilt.",
+		"Gain": "Someone's (potential Rival, Ally or Opposed Embodiment) contact details",
+		"Diegetic_Gain": "Valuable information regarding the whereabouts or private details of a key figure, providing a crucial advantage in future dealings.",
+		"Fray": "Burn-out",
+		"Fray_Description": "This Fray is an intense Ordeal designed to exhaust the PC to the point of collapse. This may involve staying active for far too long (working night and day for a week), or expending all of your fuel or ammo during the Ordeal. Exactly how the Fray exhausts the Character' resources will depend on the Character and Situation. Generally speaking the Stakes of the Ordeal are usually Medium or High. It is usual during a Burn-Out for the Plot to use Carnage Wounds (and Carnage+) as defence cards, not attack. Ideally the Ordeal will end with a Fatigue Hitch being triggered.",
+		"Snag": "Futile Pursuit",
+		"Snag_Description": "Regardless of the Fray result, the Snag makes clear that the Fray was a wasted effort. Even though you succeeded, it is a useless success, perhaps you plan the perfect Heist only to discover they emptied the Vault hours before, or you fight your way to the Vampire's castle, only to watch it vanish as you reach the walls.",
+		"NPC": {
+			"Archetype": "Burn-out",
+			"Persona": 9,
+			"Core": 7,
+			"Hitch": 23,
+			"Description": "Burn-Outs are sarcastic and usually pretend to be Sloths, rather than Adventurers say. They would much rather not get involved , if they can help it."
+		},
+		"Sweeping": "Ashes",
+		"Sweeping_Text": "The Pressed Side has an Test or minor Ordeal that they must deal with. Such as clearing the ash from the Forge after making a sword.",
+		"History": "Collapse",
+		"History_Description": "The Burn-Out indicates that the current situation is rooted in a collapse in the past. This might be a mental, emotional, political, social, economic, or structural collapse, but this current situation is fall out from this event.",
+		"Situation": "History",
+		"Situation_Description": "The Burn-Out indicates the current situation is an echo or repeat of some previous event. This may be a case of history literally repeating itself, or it may be a more figurative, with things generally following cycles of growth and collapse.",
+		"Solution": "Exhaustion",
+		"Solution_Description": "The Burn-Out indicates that sometimes there is no easy solution to a problem, and that the best we can hope for is the enemy to exhaust themselves somehow, perhaps even getting bored and going home. This situation has no solution, unless you can work out how to wear down the opposition forces, making them expend resources and troops.",
+		"Revelations": {
+			"About": "Yours",
+			"About_Description": "The information is about your own side, or own self. This might reveal your weaknesses or strengths, if you aren't already painfully aware of them.",
+			"Info": "Former Glories",
+			"Info_Description": "Some people and things have seem better days, this is information about somethings former glories. Did they once win a gold medal? A science prize? Were they the largest city port in the west long ago?",
+			"Vector": "Red Herring",
+			"Vector_Description": "False information can be as useful as true information, sometimes. Maybe not this time, as the information is actually incorrect or misleading somehow.",
+			"Alternate": "Friends",
+			"Alternate_Description": "Knowledge of a Character's friends and allies can tell you a lot about a person.",
+			"Detail": "Remains",
+			"Detail_Description": "Remains details are the often overlooked lingering details, it is the trace of paper ash on a saucer, the clinging strands of DNA that respond to UV light, the fingerprints of a killer on a blade, and of course the dismembered corpse of a serial killer's victim."
+		}
+	},
+	"Obstacle": {
+		"Type": "Burn-Out",
+		"Description": "The Obstacle is an area that has been weakened and damaged (usually by a fire), you will have to tread carefully to not bring something down."
+	},
+	"Tarot": {
+		"WyrdTarot": "Friend",
+		"Normal": "Player and Target are &quot;Confidantes&quot;. The highest level of interaction possible.",
+		"Crossed": "Player and Target move to a lower, more negative Interaction Type (by one level)."
+	},
+	"Ordeal": {
+		"Ordeal_Type": "Opposed Ordeal",
+		"Stages": "1",
+		"Ordeal_Spread": "Railroad",
+		"Stakes": "Low",
+		"Test": "Abuse (Sin)",
+		"Obstacles": "None",
+		"Suggested_Action": "Recover/Wait",
+		"Stage": "Bustling",
+		"Stage_Description": "A busy road, or path, a social occasion or situation.",
+		"Motional": "Ground Vehicle Race",
+		"Motional_Description": "Get you and your car through the Stages of the Ordeal faster than your Opponents.",
+		"Tide_of_Battle": "Break",
+		"Tide_of_Battle_Text": "The Ebbing enemy breaks, some of their number flee (or attempt to regroup), the Flowing forces can pursue with a +1 Pip to each card played, or can take this time to regroup themselves.",
+		"Fight": "Competition",
+		"Fight_Description": "The Fight is a competitive bout of a contact sport, such as a boxing match, or fencing. Such Fights are usually Medium or Low Stakes against at least Cast Extras."
+	},
+	"Lea": {
+		"PathColour": "Blue Aquatic or Black Migratory",
+		"Bulmas": "All",
+		"AnimalCategory": "Microfauna",
+		"Example": "Plankton / Zooplankton / Fungal spores / Bacteria",
+		"Bodypart": "Tendrils",
+		"Notes": "Microscopic animal and bacterial paths, often overlooked."
+	},
+	"Stress": {
+		"Type": "Worries",
+		"Description": "Worries make a Character think about their issues, dwelling on what questions or issues are stressing them out.",
+		"Rules": "Character may reduce their Stress, Strain or Shock by 1 for each question they ask, or statement they make, that relates to their worries, or each Pip that they dedicate to \"Healing Prayers\", \"Meditation\" or similar Stress reduction techniques, or they may pay Chi equal to their current Stress to remove 1 Stress."
+	},
+	"Trauma": {
+		"Type": "Burn-Out",
+		"Description": "Trauma can cause a Character to burn-out, whether through fatigue, mental exhaustion, or emotional breakdown. Depression can overwhelm anyone, and will often cause a Character to abandon projects and even relationships. A Burned-out Character should usually be retired from active duty, but may struggle on a shadow of their former selves.",
+		"Rules": "Trauma causes the Character to Burn-Out, this usually includes relieving all current Stress by creating \"Burnt-Out\" Hitches that effectively negate the Character’s Annexes. These Hitches can effect only one Annex or all Annexes as the Player, Author, Referee and Yarn-Teller agree."
+	},
+	"Age": {
+		"Type": "Collapse",
+		"Description": "An Age of Collapse is occurring. During this age the society suffers some setback or blow, members may be lost, people may flee the area and society, another society may grow more popular, this may be a temporary setback, a compacting, or it can represent a complete collapse to nothingness.",
+		"Diegetic_Description": "A dark time of decline and disintegration, where the structures of society begin to fail. People flee their homes, populations dwindle, and once-proud institutions crumble into insignificance as the culture faces a terminal setback.",
+		"Rules": "During a Collapse a society loses a significant number of members due to some external factor, sometimes dramatic geo-political events such as war, famine, pestilence or plague, other times members simply drift away to find new hobbies, or lands."
+	}
+}

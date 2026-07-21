@@ -1,0 +1,102 @@
+[
+    {
+        "Type": "Acting out",
+        "Description": "Acting out is when a Character acts in response to an unconscious wish or emotion that they are not even aware of.",
+        "Rules": "Acting out works as a Prepared Psych Defence with the Character’s Acting Out Action also preparing the Defence. In a Psychosocial space this will create a barrier or Obstacle as a result of the Action."
+    },
+    {
+        "Type": "Avoidance",
+        "Description": "Avoidance is a very primitive psychological defence mechanism. If something, or someone, has hurt you in the past, then if you avoid them for the rest of your life they cannot do it to you again.",
+        "Rules": "Avoidance is pretty much trying to use a Dodge action to avoid Psych damage, but if you are in the same Location as the person, or thing, you are trying to avoid then the defence has already failed. Avoidance usually involves not going to places their abuser goes or even knows. "
+    },
+    {
+        "Type": "Denial",
+        "Description": "Whatever is happening (or happened) the Character will deny it, essentially lying to themselves, as well as others.",
+        "Rules": "Denial works as an Ignore Active Psych Defence to mitigate harm. Within the Psychosocial space Denial often appears as a blackness, smoke, fog, or veil that covers and hides whatever is being denied."
+    },
+    {
+        "Type": "Displacement",
+        "Description": "Displacement is about shifting the target or goal to avoid something dangerous or (usually socially) unacceptable. Typically negative emotions connected with one target are moved to another. Positive Emotions can be Displaced too if there is psychological need.",
+        "Rules": "Displacement works as a Focus Active Psych Defence, however any Emotional Effect during the attack is postponed until after the Character has been alone and then encounters another (third) Character. The emotional effect will then apply as though this third Character had made the attack. In Psychosocial spaces Displacement can also create tunnels within the space that act as portals to displace a concept (or Thread) within the space."
+    },
+    {
+        "Type": "Dissociation",
+        "Description": "Dissociation is a drastic modification of personality in order to avoid emotional trauma. Dissociation can create Alternate Personalities (or reveal them at least).",
+        "Rules": "Dissociation typically involves a Character shutting down all access to a Facet in order to not feel the emotions of that Facet. This can be performed by any Character who is affected by 3 (or more) cards of emotions simultaneously (this might be 3 different emotions, two 2 card emotions or a single 3 card emotion). The Character can decide to Dissociate one or more emotion card. Dissociation is temporary solution, however as this state causes the Character to Gain Stress equal to the Chi Extend Duration for each Dissociated Card present. Dissociation can sometimes manifest as a different Persona or Core if the original Persona or Core Facet is shutdown, and if the \"Dissociated Personality\" is given a different name (perhaps a nickname) a differernt Geometry can emerge also. If Stress related Trauma occurs while Dissociated a new Alt may be created instead. Dissociation \"removes\" the emotions that are currently being felt from the Psychosocial space using the Dissociated cards as an Obstacle to accessing that emotional State, the cards also limit access to the Facet (adding the Obstacle Difficulty to all actions with the Facet) and any Proficiencies or Annexes that rely on it."
+    },
+    {
+        "Type": "Distortion",
+        "Description": "Why accept the truth when instead you can reshape reality to meet your emotional needs? This is a form of denial, where the denier reinterprets evidence in a more positive light for themselves.",
+        "Rules": "Distortion works as an Ignore Active Psych Defence. Within a Psychosocial space Distortion will alter the appearance of anything within the space as required, however these Distorted images can be noticed as not quite being normal, this does not allow the original to be recovered, it at best reveals that what is there is false. However, if a foundational Distortion can be broken, overwhelmed, and proved to be false, then all Distortions may collapse and reveal the true Psychosocial space."
+    },
+    {
+        "Type": "Frenzy",
+        "Description": "Frenzy is a specific Hysteria/Sublimation that converts any emotional situation into blind rage. This is a very negative emotional defence, that converts any emotional state into very negative emotions.",
+        "Rules": "Frenzy works as a negative Sublimation, converting any stressful emotional state into Rage, with the Stress being spent on Straining any Annex Attack Actions on any available target. The Frenzy will not end until all the Stress has been spent. In a Psychosocial space a Frenzy usually appears as a Force-Of-Nature Extra, which can express as an animal, beast, monster, storm, flood, landslide, or whatever takes the Yarn-Teller’s imagination."
+    },
+    {
+        "Type": "Hysteria",
+        "Description": "Hysteria (or more correctly Pathological Conversion) is when an intrapsychic conflict is expressed through a physical symptom. Examples include hysterical blindness, deafness, numbness (emotional or physical) or any one of a number of other ailments and afflictions.",
+        "Rules": "Rather than taking emotional affects (and potentially Traumas) the Character elects instead to activate their Hysteria Defence. The Pips of the emotional attack are Reduced, and become the Banes of a Temporary Hitch (often a Loss of Sense, Lacking or Bound Hitch). The Pips of the original attack indicate the Chi Extend Duration of the Hysterical Hitch. In the Psychosocial space, Hysteria often appears as an Extra, who may be aggressive, protective, duplicitous, blunt or persuasive as the Yarn-Teller prefers, but they take this sense or deny it to the Character to protect them from something (which may or may not be real too)."
+    },
+    {
+        "Type": "Monstrous",
+        "Description": "Monstrous is a Sublimation that causes a Character unleash their inner monster to protect themselves from harm. This is often the case with demonic possessions and the like where the possessee will give over control to the demon for protection.",
+        "Rules": "Monstrous functions either as Frenzy and Sublimation, moving Stress to a Monster Facet (typically their Persona or Core Facet becomes the Monster Facet), or as Regression / Dissociation if a suitable Alt is available. In the Psychosocial space Monstrous defences will create a Monster, usually a Force-Of-Nature Extra with Monster Facets. This Monster will attempt to protect the mind, and particularly Ego, from any issues arising from the outside world. The Monster will from time to time seize control of an area of the Psychosocial landscape, often the consciousness, as they take control of the physical body and mind. Depending upon Genre and setting the Monster may be able to manifest independently in and affect only Psychosocial and / or real Action Spaces as required."
+    },
+    {
+        "Type": "Passive-Aggression",
+        "Description": "Indirect hostility is a result of repressing negative emotions against a person. As a defence it works best against a single target, often someone who asks a thing be done that the passive-aggressor will agree to do, but then not follow through.",
+        "Rules": "Passive-Aggression works as a Focus Active Psych Defence against only one individual at once. In Psychosocial space Passive-Aggression usually expresses as an Extra who is the cause of the negative emotions, this Character will often be disguised (often as a Monster of some sort), usually as a distortion of who they really represent. A Passive-Aggressive response to a bad boss, may create a monster that represents all the negative emotions associated with the boss and it is this \"dragon\" that begins to behave as an Alt trying to express these negative emotions in indirect ways, such as opposing, resenting, griping, using sarcasm, and complaining about anything they are asked to do by anyone else."
+    },
+    {
+        "Type": "Posturing",
+        "Description": "Posturing is a basic defence mechanism that relies on not showing that you have been affected by an emotional attack. When scared, for example, one may posture bravado.",
+        "Rules": "Posturing works as a Focus Active Psych Defence. Within the Psychosocial space Posturing is often expressed as statues (which may be Obstacles), or occasionally Extras. As long as the Posture is maintained the emotion is suppressed and ignored."
+    },
+    {
+        "Type": "Projection",
+        "Description": "Redirects negative self-thought, feelings, and failings onto others. Technically this is a Displacement of attribution, where the negative thoughts one feels are attributed to another, but it occurs often enough in isolation to be its own defence.",
+        "Rules": "Projection works as an Ignore Active Psych Defence. Within a Psychosocial space the Projection will often appear as mirror, or water, a reflective surface, sometimes this will create a knight in shining armour Extra who will strike down the negative thoughts as being from outside. Other times the projection will instead \"other\" internal unwanted thoughts, making them appear as suddenly exotic, alien or terrifying."
+    },
+    {
+        "Type": "Rationalization",
+        "Description": "A Character will rationalise that whatever is happening must be their own fault, or it is happening to them for a reason.",
+        "Rules": "Rationalization works as a Focus Active Psych Defence. In a Psychosocial space Rationalization will often take the form of \"Justifiers\". Justifiers are Extras that roam the Psychosocial area finding ways to justify the Character assuming blame for everything, sometimes they appear as authority figures to the Character, such as school teachers, police, judges, priests, politicians, gods, or parental figures. The justifiers can end up appearing as Split Alts taking control to assume blame for the Character."
+    },
+    {
+        "Type": "Reaction Formation",
+        "Description": "A Character take a stance opposite to that they truly believe and feel to be true, in order to deflect, displace, and hide their true self from harm. It may be this mechanism that leads to latent homosexuality expressing as homophobia in some cases.",
+        "Rules": "Reaction Formation works as a Focus Active Psych Defence. Within a Psychosocial space a Reaction Formation will often appear as both a barrier or Obstacle around the true feelings, and a number of Extras will roam the space loudly expressing an opposed, or distracting, opinion. The Extras will always act to stop any Character from entering that area along with the Obstacle. If a Reaction Formation is particularly old and strongly embedded then there may be Ordeal levels of layers of Obstacles envisioned as a vault, fortress, tower or dungeon keeping the truth prisoner."
+    },
+    {
+        "Type": "Reflection",
+        "Description": "Reflection is a defence mechanism that can works (when it works) by making the target think that the Character is more like them, building sympathy between the Characters, or at least mutual fear, and making an attack less likely. In some ways Reflection is perhaps a variation on Passive-Aggression",
+        "Rules": "Reflection works as an Ignore Active Psych Defence, however the Character must attempt to replicate the attack back as their next Action, which will effectively counter it. Within the Psychosocial space you will find internal Extras who represent aspects of the target being reflected, they represent what the Character who owns the space thinks and feels about the reflected target, especially what they admire or fear about them will be exaggerated (often via fantasy, superhero or horror tropes, depending upon the interests of the Character) in the Extras. "
+    },
+    {
+        "Type": "Regression",
+        "Description": "Regression is a neurotic defence mechanism that causes the Character to abandon more mature Psych Defences to fall back on ones that worked for the Character when they were younger. Typically this results in whining, temper tantrums, and other childish behaviour.",
+        "Rules": "Regression creates a \"Regressed\" Subsumed Same Personality Disorder Alt (note that Personality Disorder Alts should be used with care), that takes whatever emotional effects, trauma or mental damage that the Character wishes to not take on their original Alt. With time the Alt may diverge more and begin to fight for dominance with the original personality creating a Split or Unstable Integration."
+    },
+    {
+        "Type": "Repression",
+        "Description": "Repression tries to ensure that anything that would Stress the conscious mind is hidden from the conscious mind. Repressed memories and emotions have a habit of escaping though, emerging in the Dreamscape or Supernature (or elsewhere) as nightmares, sleepwalking, poltergeists, or related activity.",
+        "Rules": "Repression can be used by a Character who has taken a Negative Emotion for any reason. That Emotion (and usually any memories associated  with this event) are Repressed, removed from the conscious mind of the Character to their unconscious mind. The Emotion and memory are typically moved in the Psychosocial space of the Character to their Mental Defences, however each card and memory in that Space will cause the Character to Gain 1 Stress every day it remains there. Emotions can be moved back, or into another Pscyhosocial space for no cost, but they can only move along a line or cross a line as the Character wakes or falls asleep."
+    },
+    {
+        "Type": "Sublimation",
+        "Description": "Sublimation is converting typically unhealthy emotions and behaviours into healthy actions, behaviours and emotions. This may allow artists to turn suffering into better art, or sports-people to place emotional content in their actions. Sublimation can be inverted though, and a Frenzy represents a similar but inverted defence.",
+        "Rules": "Sublimation allows a Character to remove any Negative Emotion by converting the Pips of Negative Emotion into Stress placing it on at least one of their Annexes and immediately Straining those Annexes to spend that Stress. Within the Psychosocial space Sublimation often appears as internal Extras that have chimerical natures. The chimerical form often represents the emotion or behaviour being sublimated into an action or feeling, so we might see a dragon, bear or lion form that has been fused with an athelete, signifying predatory thoughts or negative emotions sublimated into sports performance."
+    },
+    {
+        "Type": "Suppression",
+        "Description": "Suppression is the defence mechanism of immediately squashing <em><strong>all</strong></em> emotional reactions until they can be dealt with in a more safe space later. Suppression can in some cases be similar to an overload burning-out a circuit, where an intense emotion can seem to burn out all emotional responses, at least for a while making the Character seem almost robotic or disconnected in nature",
+        "Rules": "Suppression works by defering a specific emotional affect for a duration equal to the Pips of the attacks as a Limit Duration. Within a Psychosocial space suppression can appear in a number of ways, from a fire truck turning up to douse flames of rage, or a librarian that deafens the area shushing any discussion on a topic. No emotional cards may have any effect until the Suppression is over, with emotions and their effects paused."
+    },
+    {
+        "Type": "Working Through",
+        "Description": "Working Through is technically not a defence, but is instead about expressing and working through powerful emotions with as little long term damage as possible. Working Through is more about coping with and minimising emotional damage than stopping it.",
+        "Rules": "Working Through does not strictly act as a defence, but instead allows large emotional effects to be broken apart into smaller less dangerous effects, before they are allowed to damage the Character. An emotional effect can be broken apart into its component 1 card effects, however the Character will also gain Stress equal to the largest single card Pips in the effect, and have to deal with the individual effects and their damage separately."
+    }
+]

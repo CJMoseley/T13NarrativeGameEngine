@@ -1,0 +1,1432 @@
+{
+  "151": {
+    "id": 151,
+    "prof": {
+      "Name": [
+        "Admiration",
+        "Admiration Burden Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Admiration reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "152": {
+    "id": 152,
+    "prof": {
+      "Name": [
+        "Trading",
+        "Trading Burden Action Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Trading reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "153": {
+    "id": 153,
+    "prof": {
+      "Name": [
+        "Pound",
+        "Pound Burden Attack Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Pound reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "154": {
+    "id": 154,
+    "prof": {
+      "Name": [
+        "Sack",
+        "Sack Burden Critical Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Sack reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "155": {
+    "id": 155,
+    "prof": {
+      "Name": [
+        "Wielder",
+        "Wielder Burden Core Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Wielder reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "156": {
+    "id": 156,
+    "prof": {
+      "Name": [
+        "Material",
+        "Material Burden Descendants Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Material reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "157": {
+    "id": 157,
+    "prof": {
+      "Name": [
+        "Rewarding",
+        "Rewarding Burden Edge Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Rewarding reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "158": {
+    "id": 158,
+    "prof": {
+      "Name": [
+        "Rewarding",
+        "Rewarding Burden Glow Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Rewarding reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "159": {
+    "id": 159,
+    "prof": {
+      "Name": [
+        "Financial",
+        "Financial Burden Failure Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Financial reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "160": {
+    "id": 160,
+    "prof": {
+      "Name": [
+        "Taxing",
+        "Taxing Burden Fumble Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Taxing reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "161": {
+    "id": 161,
+    "prof": {
+      "Name": [
+        "Expense",
+        "Expense Burden Gnarl Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Expense reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "162": {
+    "id": 162,
+    "prof": {
+      "Name": [
+        "Shake",
+        "Shake Burden Herald Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Shake reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "163": {
+    "id": 163,
+    "prof": {
+      "Name": [
+        "Lacking",
+        "Lacking Burden Hitch Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Lacking reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "164": {
+    "id": 164,
+    "prof": {
+      "Name": [
+        "Expenses",
+        "Expenses Burden Hurdle Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Expenses reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "165": {
+    "id": 165,
+    "prof": {
+      "Name": [
+        "Earth",
+        "Earth Burden Incarna Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Earth reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "166": {
+    "id": 166,
+    "prof": {
+      "Name": [
+        "Material Locations",
+        "Material Location Burden Location Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Material Locations reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "167": {
+    "id": 167,
+    "prof": {
+      "Name": [
+        "Inventory",
+        "Inventory Burden Lore Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Inventory reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "168": {
+    "id": 168,
+    "prof": {
+      "Name": [
+        "Fabricant",
+        "Fabricant Burden Monster Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Fabricant reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "169": {
+    "id": 169,
+    "prof": {
+      "Name": [
+        "Amplification",
+        "Amplification Burden Narration Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Amplification reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "170": {
+    "id": 170,
+    "prof": {
+      "Name": [
+        "Household Burdens",
+        "Household Burdens Burden Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Household Burdens reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "171": {
+    "id": 171,
+    "prof": {
+      "Name": [
+        "Material Ordeals",
+        "Material Ordeal Burden Ordeal Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Material Ordeals reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "172": {
+    "id": 172,
+    "prof": {
+      "Name": [
+        "Wishes",
+        "Wishes Burden Psychosocial Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Wishes reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "173": {
+    "id": 173,
+    "prof": {
+      "Name": [
+        "Obtain",
+        "Obtain Burden Quest Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Obtain reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "174": {
+    "id": 174,
+    "prof": {
+      "Name": [
+        "Quantity",
+        "Quantity Burden Question Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Quantity reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "175": {
+    "id": 175,
+    "prof": {
+      "Name": [
+        "Abundance",
+        "Abundance Burden Resolved Hitch Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Abundance reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "176": {
+    "id": 176,
+    "prof": {
+      "Name": [
+        "Costs",
+        "Costs Burden Rule Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Costs reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "177": {
+    "id": 177,
+    "prof": {
+      "Name": [
+        "Descendant",
+        "Descendant Burden Style Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Descendant reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "178": {
+    "id": 178,
+    "prof": {
+      "Name": [
+        "Material",
+        "Material Burden Success Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Material reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "179": {
+    "id": 179,
+    "prof": {
+      "Name": [
+        "Wealth",
+        "Wealth Burden Sway Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Wealth reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "180": {
+    "id": 180,
+    "prof": {
+      "Name": [
+        "Cost",
+        "Cost Burden Tangle Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Cost reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "181": {
+    "id": 181,
+    "prof": {
+      "Name": [
+        "Barter / Feasting / Haggling / Purchase / Selling / Trade / Wealth",
+        "Barter / Feasting / Haggling / Purchase / Selling / Trade / Wealth",
+        ""
+      ],
+      "Description": "The threads of Burden are woven into the tapestry of Barter / Feasting / Haggling / Purchase / Selling / Trade / Wealth, a story of encumbrance told in silence.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "Test"
+        ]
+      }
+    }
+  },
+  "182": {
+    "id": 182,
+    "prof": {
+      "Name": [
+        "Dark",
+        "Dark Burden Tone Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Dark reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "183": {
+    "id": 183,
+    "prof": {
+      "Name": [
+        "Reversal of Fortune",
+        "Reversal of Fortune Burden Turn Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Reversal of Fortune reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "184": {
+    "id": 184,
+    "prof": {
+      "Name": [
+        "Body",
+        "Body Burden Twisted Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Body reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "185": {
+    "id": 185,
+    "prof": {
+      "Name": [
+        "Indebting",
+        "Indebting Burden Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Indebting reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "186": {
+    "id": 186,
+    "prof": {
+      "Name": [
+        "Burdensome",
+        "Burdensome Burden Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Burdensome reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "187": {
+    "id": 187,
+    "prof": {
+      "Name": [
+        "Material",
+        "Material Burden Nimbed Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Material reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "188": {
+    "id": 188,
+    "prof": {
+      "Name": [
+        "Dragging",
+        "Dragging Burden Umbral Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Dragging reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "189": {
+    "id": 189,
+    "prof": {
+      "Name": [
+        "Reaper",
+        "Reaper Burden Persona Proficiency",
+        ""
+      ],
+      "Description": "Measured by weight and value, the knowledge of Reaper reflects a deep perception of quality and the heavy cost of existence.",
+      "Tags": {
+        "Facets": [
+          "1",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "190": {
+    "id": 190,
+    "prof": {
+      "Name": [
+        "Craft-less",
+        "Craft-less Craft Zero Boon Adjective Proficiency",
+        "unskilled, raw, wild, natural, crude"
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Craft-less is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "191": {
+    "id": 191,
+    "prof": {
+      "Name": [
+        "Raw",
+        "Raw Craft Zero Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Raw is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "192": {
+    "id": 192,
+    "prof": {
+      "Name": [
+        "Wild Locations",
+        "Wild Location Craft Zero Boon Location Adjective Proficiency",
+        "barbarian, lush, untamed, savage, feral"
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Wild Locations is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "193": {
+    "id": 193,
+    "prof": {
+      "Name": [
+        "Inept",
+        "Inept Craft Low Boon Adjective Proficiency",
+        "incompetent, primitive, harsh, unskilled, clumsy"
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Inept is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "194": {
+    "id": 194,
+    "prof": {
+      "Name": [
+        "Primitive",
+        "Primitive Craft Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Primitive is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "195": {
+    "id": 195,
+    "prof": {
+      "Name": [
+        "Harsh Locations",
+        "Harsh Location Craft Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Harsh Locations is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "196": {
+    "id": 196,
+    "prof": {
+      "Name": [
+        "Clumsy",
+        "Clumsy Craft Low Boon Adjective Proficiency",
+        "awkward, rough-hewn, rugged, unskillful"
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Clumsy is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "197": {
+    "id": 197,
+    "prof": {
+      "Name": [
+        "Rough-hewn",
+        "Rough-hewn Craft Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Rough-hewn is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "198": {
+    "id": 198,
+    "prof": {
+      "Name": [
+        "Rugged Locations",
+        "Rugged Location Craft Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Rugged Locations is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "199": {
+    "id": 199,
+    "prof": {
+      "Name": [
+        "Awkward",
+        "Awkward Craft Low Boon Adjective Proficiency",
+        "clumsy, shabby, unspoiled, ungraceful, difficult"
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Awkward is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "200": {
+    "id": 200,
+    "prof": {
+      "Name": [
+        "Shabby",
+        "Shabby Craft Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Deftly finessed and constructed with literary precision, Shabby is a testament to the practical mastery and creative ingenuity of the maker.",
+      "Tags": {
+        "Facets": [
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

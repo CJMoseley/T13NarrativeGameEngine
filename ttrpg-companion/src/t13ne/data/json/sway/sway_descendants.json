@@ -1,0 +1,56 @@
+[
+  {
+    "Chi": 0,
+    "Element_Type": "Descendants",
+    "Type": "Lore",
+    "Sway_Type_Description": "Lores are Descendants that are not earned or purchased by Characters, but are handed out by Revelations during Stories. Lores can range from tiny Reputations that tell you about a single aspect of a Character to enormous Legends, that tell you about their powers and accomplishments. Lores are usually treated as a standard Descendant of their Master Annex Type. E.g. A Skill Lore is just a Skill Descendant the Character has."
+  },
+  {
+    "Chi": 2,
+    "Element_Type": "Descendants",
+    "Type": "Skill",
+    "Sway_Type_Description": "A Skill based Descendant."
+  },
+  {
+    "Chi": 3,
+    "Element_Type": "Descendants",
+    "Type": "Prop",
+    "Sway_Type_Description": "Props are a physical Descendant usually with a single Skill Master Annex. They often represent simple things like magazines of guns, video tapes, books, etc. Because Props are Physical they can store 1 additional Wound over normal."
+  },
+  {
+    "Chi": 5,
+    "Element_Type": "Descendants",
+    "Type": "Talent",
+    "Sway_Type_Description": "A Talent based Descendant."
+  },
+  {
+    "Chi": 7,
+    "Element_Type": "Descendants",
+    "Type": "Power",
+    "Sway_Type_Description": "A Power based Descendant."
+  },
+  {
+    "Chi": 8,
+    "Element_Type": "Descendants",
+    "Type": "Trophy",
+    "Sway_Type_Description": "Trophies are the simplest of the special descendants. They are an ordinary Descendant that has extra Facet Sway (or Yin/Yang) stored within it. This may grant the Trophy an Edge, making it more powerful than other examples of its type. Trophies represent the customization and detail work that we put into our favourite Tools and Objects (custom paint jobs, cases, stickers and installing programs and apps are all Trophy moves)."
+  },
+  {
+    "Chi": 12,
+    "Element_Type": "Descendants",
+    "Type": "Super-Annex",
+    "Sway_Type_Description": "A Super-Annex based Descendant. These are the most powerful Descendant base type, usually created by large Pacts, Plots or Yarn-Tellers."
+  },
+  {
+    "Chi": 12,
+    "Element_Type": "Descendants",
+    "Type": "Prize",
+    "Sway_Type_Description": "Prizes are Descendants imbued with additional Edges and abilities by a Hero storing Chi within them. They are considered more \"Real\" than normal Descendants, able to resist anachronistic events like Paradoxes, Chronoclysms, and Retcons, they are also usually able to survive side-steps without change, allowing a Hero Gunfighter to wield Prized Six-shooters against fantasy opponents without running afoul of different laws of physics or chemistry. Ancient Prize stones and gems are normally called \"Monoliths\" and some F&aelig; call all Prizes Monoliths."
+  },
+  {
+    "Chi": 21,
+    "Element_Type": "Descendants",
+    "Type": "Artefact",
+    "Sway_Type_Description": "A Descendant granted Yarn by a Yarn-Teller (or another Weaver such as a Plot) is called an Artefact and has a lot of Edges and perhaps, a few powerful Glows."
+  }
+]

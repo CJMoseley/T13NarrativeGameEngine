@@ -1,0 +1,38 @@
+[
+    {
+        "Nightmare_Points": 0,
+        "Type": "Relieved",
+        "Description": "This Nightmare Zone still holds some disturbances and disturbing imagery, but has largely returned to a normal part of the Dreamspace.",
+        "Rules": "This is what happens to a Nightmare Zone that has all of the Nightmare Points removed, drained or the Trauma is healed."
+    },
+    {
+        "Nightmare_Points": 1,
+        "Type": "Disturbing",
+        "Description": "This Nightmare Zone contains a disturbing dream aspect. Dream aspects could include sounds, imagery, dream Extras, conversation topics, dream locations, odd dream logic, as well as Obstacles in the Dreeamscape. The disturbing nature of the aspects are often related to the initial Trauma that created the Nightmare Zone, although blood, sex, death and violence feature commonly.",
+        "Rules": "A single Nightmare point creates a circular Nightmare Zone within the Dreamscape. If the sleeper enters the Nightmare Zone during a dream they will Gain Stress."
+    },
+    {
+        "Nightmare_Points": 2,
+        "Type": "Distressing",
+        "Description": "This Nightmare Zone contains multiple disturbing aspects, which mingle and mix in the Dreamspace to create a Distressing dream. Usually a distressing Dream will include multiple distrubing noises and imagery as well as Nightmare Characters.",
+        "Rules": "Two Nightmare points creates a Nightmare Path, which connects two circular zones to create a straight line path in the Dreamscape. Nightmare Paths may create Monsters with upto 2 Monster Facets. Nightmare Paths can create 1 card negative Psych effects on the sleeper that may linger upon awakening, often a Path will make multiple attempts at this until it succeeds. If the sleeper enters the path, they must travel it to either end, be emotionally affected, and Gain Stress twice, once to enter and once to escape again."
+    },
+    {
+        "Nightmare_Points": 3,
+        "Type": "Fitful",
+        "Description": "This Nightmare Zone contains a fitful dream. Fitful dreams are made from multiple disturbing aspects, tied together with a disturbing story, and cause the sleeper to twitch and moan in their sleep. Fitful dreams are often extremely distressing and disturbing, but are not quite enough to force the sleeper to wake up. Instead, the sleeper may move or wordlessly sleep-talk, acting out the dream.",
+        "Rules": "Three Nightmare Points creates a Nightmare Triangle, which will hold a full dream narrative, often with seemingly branching events, like an Ordeal or Plot. Nightmare Triangles can create Monsters (with to upto 3 Monster Facets) and 2 Card Negative Psych Effects on the Sleeper (which they may try multiple times with Psych Attacks, until one sticks). Entering the Nightmare Triangle will cause a sleeper to Gain Stress three times before they can exit the Triangle."
+    },
+    {
+        "Nightmare_Points": 4,
+        "Type": "Nightmare",
+        "Description": "This Nightmare Zone is the first to truly be worthy of the name Nightmare. These are the dreams so bad that Characters awaken screaming in the dark, and must immediately turn on the lights.",
+        "Rules": "Four Nightmare points creates a Nightmare Plane, a rectangular area in the Character’s Dreamscape. The Nightmare Plane contains many disturbing Characters, Locations and events, which can be connected by a narrative, but more often shift randomly. The Nightmare Plane will create a 3 Card Psych Emotional Effect on the sleeper and can create Monsters with upto 4 Monster Facets. Exiting the Nightmare Plane is impossible without Gaining Stress 4 times, and then the sleeper awakens often screaming or crying out (exhibiting the 3 card Psych effect), and if they try to sleep again too quickly (typically at least twenty minutes to an hour must be spent awake, and the emotional effect recovered from or replaced with a positive emotional effect) or they will enter the Nightmare Plane again."
+    },
+    {
+        "Nightmare_Points": 5,
+        "Type": "Parasomnia",
+        "Description": "This Nightmare Zone casts out the normal rules of sleep. Letting the sleeper completely act out their nightmares, screaming, sleep-talking, sleep-walking, as well as occasionally attacking those who try to restrain or wake them, although these are more often defensive actions. Parasomnia can even cause Nightmares to spread, with screams and whispered horrors from one sleeper disturbing the dreams of other sleepers nearby.",
+        "Rules": "Five Nightmare points creates a Nightmare Star. A Nightmare Star extends beyond the Dreamscape of a single Character in five directions (the pentagon is held within the Dreamscape, the pentagram arms extend beyond into other parts of the Psychosocial space). The Nightmare Star can create Extreme 3 Card Psych Effects, that the sleeper must suffer through to awaken. The Nightmare Star can contain Monster(IV) Characters (who need not be Extras and can be potential Alts or exterior beings depending upon genre) with upto 4 Monster Facets. Depending upon the Psychosocial spaces touched by the Nightmare Star a Character may speak, act out the dream, or the Nightmare can also create Nightmare Points in another Character who is sleeping nearby, as their Dreams become affected. It is possible for a Nightmare Point to move permanently from one sleeper to another in this way, but should not happen easily. Sleepers entering the Nightmare Star  must Gain Stress 5 times to awaken from the nightmare themselves (otherwise they will walk around acting the dream out until someone else awakens them). Although they may Relieve Stress for each other Character’s sleep they disturb or awaken."
+    }
+]

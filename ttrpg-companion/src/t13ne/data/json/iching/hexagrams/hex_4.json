@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 4,
+    "Name": "Innocence",
+    "Entity": "&#19907;",
+    "Logical": 34,
+    "Trigrams": [
+      5,
+      6
+    ],
+    "Hexagram_Text": "Meng, Innocence (or Youthful Folly), symbolizes the innocent mistakes that a child might make in class, without which they will never learn and improve. Failure, Meng tells us, is just a stepping stone to success. It can also mean that you are foolishly seeking \"without\" something that can only be found \"within\".",
+    "Unchanging": "Proficiencies can be purchased at half price and Personality Proficiency Slots are doubled.",
+    "Line1": "A Fool Needs Discipline",
+    "Line2": "Suffer Fools Gladly",
+    "Line3": "Know Thy Strengths",
+    "Line4": "Entangled Folly",
+    "Line5": "Youthful Folly",
+    "Line6": "Attacking Ignorance"
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you ask a question, fail or realise you made a mistake",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you see another in pain",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yang",
+        "Condition": "you accept criticism, or punishment, or you self-criticize, or are self-disciplined",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yin",
+        "Condition": "someone else asks a question",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yang",
+        "Condition": "you answer a question, or use your own knowledge successfully",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yang",
+        "Condition": "you are realistic, rejecting the fantastical or overly ambitious",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you don't know the answer, or try something new",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yin",
+        "Condition": "a mistake is made by you or near you, or you demonstrate respect for another",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Quester is naive or inexperienced about this Quest. Something about the Quest is a lie, or more than it seems, and the Quester may find they have made a foolish mistake.",
+    "Quest_Complete": "The Quest that ends on the Innocence Hexagram shows a Quest where the Quester must learn from the mistakes that they have made, learn from them, and try to better themselves before greater mistakes occur.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester has made some mistake, error, or committed some crime, unless they admit this mistake and face the consequences they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "One of the companions of the Quester is foolish, or makes some mistake that will add a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test. The Quester who tolerates this folly with kindness and consideration will instead add a Success Level, as they will guide their companions to help them better.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "Someone approaches the Quester full of flattery, offering favours and gifts, that will add a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test if the Quester accepts this \"assistance\". Only by staying firm to their own convictions, and working alone will the Quester add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "Some assumption the Quester has made is wrong, and may lead to humiliation or disaster as it adds a Hurdle, Obstacle or Failure Level to the Ordeal or Test. Only by having a realistic grasp of what is really going on will can the Quester instead add a Success Level.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester is inexperienced at the tasks required of them. If they blunder in assuming they know what is required, they will complicate things adding Hurdles, Obstacles and Failure Levels as they go. If the Quester is modest and cautious they will add an additional appropriate Success Level to their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "Mistakes have been made, often by the companions of the Quester, and it falls upon the Quester to punish these mistakes that have added a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test. If the Quester applies an appropriate punishment, that is not too forgiving nor too tyrannical, and addresses the specific mistakes, crimes or problems they have caused then they may instead add a Success Level.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "In this hexagram we are reminded of youth and folly in two different ways. The image of the upper trigram, Kên, is the mountain, that of the lower, K'an, is water; the spring rising at the foot of the mountain is the image of inexperienced youth. Keeping still is the attribute of the upper trigram; that of the lower is the abyss, danger. Stopping in perplexity on the brink of a dangerous abyss is a symbol of the folly of youth. However, the two trigrams also show the way of overcoming the follies of youth. Water is something that of necessity flows on. When the spring gushes forth, it does not know at first where it will go. But its steady flow fills up the deep place blocking its progress, and success is attained.",
+    "The_Image": {
+      "text": "A spring wells up at the foot of the mountain:\nThe image of YOUTH.\n\nThus the superior man fosters his character\nBy thoroughness in all that he does.",
+      "comments": "A spring succeeds in flowing on and escapes stagnation by filling up all the hollow places in its path. In the same way character is developed by thoroughness that skips nothing but, like water, gradually and steadily fills up all gaps and so flows onward."
+    },
+    "The_Judgment": {
+      "text": "YOUTHFUL FOLLY has success.\nIt is not I who seek the young fool;\nThe young fool seeks me.\nAt the first oracle I inform him.\nIf he asks two or three times, it is importunity.\nIf he importunes, I give him no information.\nPerseverance furthers.",
+      "comments": "In the time of youth, folly is not an evil. One may succeed in spite of it, provided one finds an experienced teacher and has the right attitude toward him. This means, first of all, that the youth himself must be conscious of his lack of experience and must seek out the teacher. Without this modesty and this interest there is no guarantee that he has the necessary receptivity, which should express itself in respectful acceptance of the teacher. This is the reason why the teacher must wait to be sought out instead of offering himself. Only thus can the instruction take place at the right time and in the right way. A teacher's answer to the question of a pupil ought to be clear and definite like that expected from an oracle; thereupon it ought to be accepted as a key for resolution of doubts and a basis for decision. If mistrustful or unintelligent questioning is kept up, it serves only to annoy the teacher. He does well to ignore it in silence, just as the oracle gives one answer only and refuses to be tempted by questions implying doubt. Given addition a perseverance that never slackens until the points are mastered one by one, real success is sure to follow. Thus the hexagram counsels the teacher as well as the pupil."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "To make a fool develop\nIt furthers one to apply discipline.\nThe fetters should be removed.\nTo go on in this way bring humiliation.",
+        "comments": "Law is the beginning of education. Youth in its inexperience is inclined at first to take everything carelessly and playfully. It must be shown the seriousness of life. A certain measure of taking oneself in hand, brought about by strict discipline, is a good thing. He who plays with life never amounts to anything. However, discipline should not degenerate into drill. Continuous drill has a humiliating effect and cripples a man's powers."
+      },
+      "2": {
+        "text": "To bear with fools in kindliness brings good fortune.\nTo know how to take women\nBrings good fortune.\nThe son is capable of taking charge of the household.",
+        "comments": "These lines picture a man who has no external power, but who has enough strength of mind to bear his burden of responsibility. He has the inner superiority and that enable him to tolerate with kindliness the shortcomings of human folly. The same attitude is owed to women as the weaker sex. One must understand them and give them recognition in a spirit of chivalrous consideration. Only this combination of inner strength with outer reserve enables one to take on the responsibility of directing a larger social body with real success."
+      },
+      "3": {
+        "text": "Take not a maiden who. When she sees a man of bronze,\nLoses possession of herself.\nNothing furthers.",
+        "comments": "A weak, inexperienced man, struggling to rise, easily loses his own individuality when he slavishly imitates a strong personality of higher station. He is like a girl throwing herself away when she meets a strong man. Such a servile approach should not be encouraged, because it is bad both for the youth and the teacher. A girl owes it to her dignity to wait until she is wooed. In both cases it is undignified to offer oneself, and no good comes of accepting such an offer."
+      },
+      "4": {
+        "text": "Entangled folly bring humiliation.",
+        "comments": "For youthful folly it is the most hopeless thing to entangle itself in empty imaginings. The more obstinately it clings to such unreal fantasies, the more certainly will humiliation overtake it. Often the teacher, when confronted with such entangled folly, has no other course but to leave the fool to himself for a time, not sparing him the humiliation that results. This is frequently the only means of rescue."
+      },
+      "5": {
+        "text": "Childlike folly brings good fortune.",
+        "comments": "An inexperienced person who seeks instruction in a childlike and unassuming way is on the right path, for the man devoid of arrogance who subordinated himself to his teacher will certainly be helped."
+      },
+      "6": {
+        "text": "In punishing folly\nIt does not further one\nTo commit transgressions.\nThe only thing that furthers\nIs to prevent transgressions.",
+        "comments": "Sometimes an incorrigible fool must be punished. He who will not heed will be made to feel. This punishment is quite different from a preliminary shaking up. But the penalty should not be imposed in anger; it must be restricted to an objective guarding against unjustified excesses. Punishment is never an end in itself but serves merely to restore order. This applies not only in regard to education but also in regard to the measures taken by a government against a populace guilty of transgressions. Governmental interference should always be merely preventive and should have as its sole aim the establishment of public security and peace."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Innocence'. Internalize this core philosophy: In this hexagram we are reminded of youth and folly in two different ways. The image of the upper trigram, Kên, is the mountain, that of the lower, K'an, is water; the spring rising at the foot of the mountain is the image of inexperienced youth. Keeping still is the attribute of the upper trigram; that of the lower is the abyss, danger. Stopping in perplexity on the brink of a dangerous abyss is a symbol of the folly of youth. However, the two trigrams also show the way of overcoming the... Your current worldview is: \"Meng, Innocence (or Youthful Folly), symbolizes the innocent mistakes that a child might make in class, without which they will never learn and improve. Failure, Meng tells us, is just a stepping stone to success. It can also mean that you are foolishly seeking \"without\" something that can only be found \"within\".\". Let your choices be subtly driven by these conditions: you ask a question, fail or realise you made a mistake, you see another in pain. When interacting, mirror the wisdom found in the commentary: \"In the time of youth, folly is not an evil. One may succeed in spite of it, provided one finds an experienced teacher and has the right attitude toward him. This means, first of all, that the youth himself must be conscious of his lack of experience and must seek out the teacher. Without this...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Innocence'. The primary quest objective is: The Quester is naive or inexperienced about this Quest. Something about the Quest is a lie, or more than it seems, and the Quester may find they have made a foolish mistake.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: A spring succeeds in flowing on and escapes stagnation by filling up all the hollow places in its path. In the same way character is developed by thoroughness that skips nothing but, like water, gradually and steadily fills up all gaps and so flows onward. Use the following line-specific challenges to pace the story: The Quester has made some mistake, error, or committed some crime, unless they admit this mistake and face the consequences they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test. | One of the companions of the Quester is foolish, or makes some mistake that will add a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test. The Quester who tolerates this folly with kindness and consideration will instead add a Success Level, as they will guide their companions to help them better. | Someone approaches the Quester full of flattery, offering favours and gifts, that will add a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test if the Quester accepts this \"assistance\". Only by staying firm to their own convictions, and working alone will the Quester add a Success Level instead. | Some assumption the Quester has made is wrong, and may lead to humiliation or disaster as it adds a Hurdle, Obstacle or Failure Level to the Ordeal or Test. Only by having a realistic grasp of what is really going on will can the Quester instead add a Success Level. | The Quester is inexperienced at the tasks required of them. If they blunder in assuming they know what is required, they will complicate things adding Hurdles, Obstacles and Failure Levels as they go. If the Quester is modest and cautious they will add an additional appropriate Success Level to their Ordeal or Test. | Mistakes have been made, often by the companions of the Quester, and it falls upon the Quester to punish these mistakes that have added a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test. If the Quester applies an appropriate punishment, that is not too forgiving nor too tyrannical, and addresses the specific mistakes, crimes or problems they have caused then they may instead add a Success Level.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (A Fool Needs Discipline): Mirror the internal state described in the commentary: \"Law is the beginning of education. Youth in its inexperience is inclined at first to take everything carelessly and playfully. It must be shown the seriousness of life. A certain measure of taking oneself in hand, brought about by strict discipline,...\" Your actions should be framed by the goal: you accept criticism, or punishment, or you self-criticize, or are self-disciplined.",
+        "Plot": "Plot Complication Line 1 (A Fool Needs Discipline): Introduce a challenge based on the interpretation: \"Law is the beginning of education. Youth in its inexperience is inclined at first to take everything carelessly and playfully. It must be shown the seriousness of life. A certain measure of taking oneself in hand, brought about by strict discipline,...\" The specific quest objective for this stage is: The Quester has made some mistake, error, or committed some crime, unless they admit this mistake and face the consequences they will add a Hurdle, Obstacle or Failure Level to their Ordeal or Test."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Suffer Fools Gladly): Mirror the internal state described in the commentary: \"These lines picture a man who has no external power, but who has enough strength of mind to bear his burden of responsibility. He has the inner superiority and that enable him to tolerate with kindliness the shortcomings of human folly. The same...\" Your actions should be framed by the goal: someone else asks a question.",
+        "Plot": "Plot Complication Line 2 (Suffer Fools Gladly): Introduce a challenge based on the interpretation: \"These lines picture a man who has no external power, but who has enough strength of mind to bear his burden of responsibility. He has the inner superiority and that enable him to tolerate with kindliness the shortcomings of human folly. The same...\" The specific quest objective for this stage is: One of the companions of the Quester is foolish, or makes some mistake that will add a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test. The Quester who tolerates this folly with kindness and consideration will instead add a Success Level, as they will guide their companions to help them better."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (Know Thy Strengths): Mirror the internal state described in the commentary: \"A weak, inexperienced man, struggling to rise, easily loses his own individuality when he slavishly imitates a strong personality of higher station. He is like a girl throwing herself away when she meets a strong man. Such a servile approach should...\" Your actions should be framed by the goal: you answer a question, or use your own knowledge successfully.",
+        "Plot": "Plot Complication Line 3 (Know Thy Strengths): Introduce a challenge based on the interpretation: \"A weak, inexperienced man, struggling to rise, easily loses his own individuality when he slavishly imitates a strong personality of higher station. He is like a girl throwing herself away when she meets a strong man. Such a servile approach should...\" The specific quest objective for this stage is: Someone approaches the Quester full of flattery, offering favours and gifts, that will add a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test if the Quester accepts this \"assistance\". Only by staying firm to their own convictions, and working alone will the Quester add a Success Level instead."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Entangled Folly): Mirror the internal state described in the commentary: \"For youthful folly it is the most hopeless thing to entangle itself in empty imaginings. The more obstinately it clings to such unreal fantasies, the more certainly will humiliation overtake it. Often the teacher, when confronted with such entangled...\" Your actions should be framed by the goal: you are realistic, rejecting the fantastical or overly ambitious.",
+        "Plot": "Plot Complication Line 4 (Entangled Folly): Introduce a challenge based on the interpretation: \"For youthful folly it is the most hopeless thing to entangle itself in empty imaginings. The more obstinately it clings to such unreal fantasies, the more certainly will humiliation overtake it. Often the teacher, when confronted with such entangled...\" The specific quest objective for this stage is: Some assumption the Quester has made is wrong, and may lead to humiliation or disaster as it adds a Hurdle, Obstacle or Failure Level to the Ordeal or Test. Only by having a realistic grasp of what is really going on will can the Quester instead add a Success Level."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Youthful Folly): Mirror the internal state described in the commentary: \"An inexperienced person who seeks instruction in a childlike and unassuming way is on the right path, for the man devoid of arrogance who subordinated himself to his teacher will certainly be helped.\" Your actions should be framed by the goal: you don't know the answer, or try something new.",
+        "Plot": "Plot Complication Line 5 (Youthful Folly): Introduce a challenge based on the interpretation: \"An inexperienced person who seeks instruction in a childlike and unassuming way is on the right path, for the man devoid of arrogance who subordinated himself to his teacher will certainly be helped.\" The specific quest objective for this stage is: The Quester is inexperienced at the tasks required of them. If they blunder in assuming they know what is required, they will complicate things adding Hurdles, Obstacles and Failure Levels as they go. If the Quester is modest and cautious they will add an additional appropriate Success Level to their Ordeal or Test."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (Attacking Ignorance): Mirror the internal state described in the commentary: \"Sometimes an incorrigible fool must be punished. He who will not heed will be made to feel. This punishment is quite different from a preliminary shaking up. But the penalty should not be imposed in anger; it must be restricted to an objective...\" Your actions should be framed by the goal: a mistake is made by you or near you, or you demonstrate respect for another.",
+        "Plot": "Plot Complication Line 6 (Attacking Ignorance): Introduce a challenge based on the interpretation: \"Sometimes an incorrigible fool must be punished. He who will not heed will be made to feel. This punishment is quite different from a preliminary shaking up. But the penalty should not be imposed in anger; it must be restricted to an objective...\" The specific quest objective for this stage is: Mistakes have been made, often by the companions of the Quester, and it falls upon the Quester to punish these mistakes that have added a Hurdle, Obstacle or Failure Level to the Quester&#39;s Ordeal or Test. If the Quester applies an appropriate punishment, that is not too forgiving nor too tyrannical, and addresses the specific mistakes, crimes or problems they have caused then they may instead add a Success Level."
+      }
+    }
+  }
+}

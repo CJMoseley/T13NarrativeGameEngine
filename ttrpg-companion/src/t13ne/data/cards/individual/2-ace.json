@@ -1,0 +1,118 @@
+{
+	"Card_Corner": "A",
+	"Card": "Ace",
+	"Suit": "2",
+	"IconSuit": "♥",
+	"Pips": "14",
+	"Unicode": "&#x1f0b1;",
+	"Svg": "images/cards-svg/AH.svg",
+	"Wound_Level": 6,
+	"Facet": "Enigma, Heresy, Jeer, Liberty, Nature, Phoenix",
+	"Tao": [
+		0,
+		1
+	],
+	"Narrative_Meaning": "Aces signify beginnings, meetings and unions. They can indicate love-interests, chance encounters, alliances, and friendships.",
+	"Image": "",
+	"Yarn": {
+		"Yarn_Name": "The Lovers",
+		"Yarn_Description": "The Lovers card represents the forces of romance and love, and the tough choices that they bring. As a force, Love is usually seen as positive, building and holding together families even through the most trying times, but love can also be destructive. The torrid affairs of untamed hearts ruin families' lives and destroy homes everyday. These are powerful forces, Soul Stakes that play with people' hearts. They are not for the faint of heart, but then what romantic is truly a coward?",
+		"Significator": {
+			"Plot": "The Lovers Plot is a Romance. These come in a number of types, but usually involve a hero, or heroine, at least one Love Interest, and a number of Love Rivals. Stories may be complicated by multiple Love Interests, or both sides having Love Rivals, or by additional Rivalries beyond love. Romances generally end with marriage, or death, occasionally both. ",
+			"Side": "The side of a Conflict marked by The Lovers will face a choice (usually between Love Interests, but it may be who to make a friendship or alliance with or whom to attack).",
+			"Character": "The Lovers Significator indicates a Character who is a Lothario or temptress. <p>They <strong>Gain Yin</strong> by being touched by another Character. </p><p>They <strong>Gain Yang</strong> by flirting, or seducing another Character. </p><p>They <strong>Gain Chi</strong> when they are intimate with others.</p><p>They gain +1 Success Levels with all attempts at flirting, charm, kissing or similar socio-sexual acts.</p>",
+			"Diegetic_Character": "A charismatic figure, often a temptress or lothario, who thrives on intimacy and connection. They are masters of charm and seduction, navigating the world through relationships.",
+			"Scene": "The Lovers Scene can represent a romantic (or just sexual) interlude. Yarn-Tellers can play the card and fade to black, if they wish... Alternatively, the Yarn-Teller can use the card to effect profound changes in how they are perceived by those around them. Hate being transformed into Love, or vice versa."
+		},
+		"Beat_Type": "1",
+		"Conflict_Embodiment": "1",
+		"Facet_Embodiment": "15",
+		"Hook_Aspect": "Geometry (Perfect)",
+		"Aspect_Description": "The Hook targets the Character's Geometry via their Perfect Harmonic, this may be a soul mate, best friend, lover or just a Perfect business partner.",
+		"Hook": "Who is That?",
+		"Hook_Description": "The Story opens with a new Character appearing who is of interest to the PC (usually as a friend or potential new love interest).",
+		"Gain": "Monster Lover - A Powerful Ally that even has some Monster Facets.",
+		"Diegetic_Gain": "A powerful bond with a monstrous or extraordinary ally, forged in the fires of deep emotion.",
+		"Fray": "Test of Love",
+		"Fray_Description": "The Fray is a Test, Ordeal or Quest, usually set by the PC's Romantic Interest as a Test of their Love. Such tests can include humiliating yourself, surviving battle, or going against your normal nature, to prove that your have grown as an individual. Tests of Love can also include Quests where the Quest giver is a friend or member of the family.",
+		"Snag": "Love Triangle/Jealousy",
+		"Snag_Description": "The Embodiment's love interest (who may be the Opposed Embodiment / a Rival / another PC, etc) and the Embodiment's relationship is complicated by a third-party. This may be a Love Rival of the Embodiment, who will try to win the love interest's heart, or it may be an alternative love interest, or any variation (the adulterous husband/wife). This Snag can act as a Hook for a Story in its own right to explore the Tension inherent in the Love Triangle. Or perhaps The Character's Rival or the Opposition Gains a Romantic Interest. Ideally this should be someone the Character is already interested in, but will otherwise just be someone wonderful. If there is no Romantic sub-plot currently in play, then the Opposition makes an important alliance / treaty that will cause the PCs to become jealous.",
+		"NPC": {
+			"Archetype": "Lover",
+			"Persona": 11,
+			"Core": 15,
+			"Hitch": 9,
+			"Description": "The Lover, is a hedonist, who is a master of making themselves and others feel good. Lovers are usually beautiful, or at least distinctive looking (or raunchily dressed)."
+		},
+		"Sweeping": "Love",
+		"Sweeping_Text": "The Pressed Embodiment finds love, or a reasonable facsimile there of. This might involve a Gain of an Ally, Romantic Interest, or even a pet. Or it could just be a de-stressing evening in a night club that turned into breakfast.",
+		"History": "Affair",
+		"History_Description": "The Lovers indicates that this current situation owes something to a often passionate and sometimes illicit affair between at least two of the characters involved in the situation. This often implies past love triangles, flirtatious behaviour, intrigues and attachments which will complicate the current problem.",
+		"Situation": "Choice",
+		"Situation_Description": "The Lovers indicates a serious choice that must be made by the character, often between two potential lovers, or even lives. Often there is little to decide the issue between these choices, they are rarely so clear cut as one is good and one is bad, but rather each has a balance of pros and cons. This choice is intended to be difficult and often permanent.",
+		"Solution": "Alliance",
+		"Solution_Description": "The Lovers indicates that the true way out of the current situation is through an alliance (historically secured with a marriage), sometimes between conflicting sides, but more often with a neutral, but powerful third-party.",
+		"Revelations": {
+			"About": "Love Interest",
+			"About_Description": "The information is about a Character's Love Interest, it may be a potential new love Interest, or just something you never knew about the one you have.",
+			"Info": "Decisions",
+			"Info_Description": "The Information revealed is about the decisions that the Character must make, or decisions they have made in the past that reveal pertinent things about their character.",
+			"Vector": "Whispers",
+			"Vector_Description": "The information is a secret, perhaps an intimate or delicate one, that is shared in a whisper. Often such whispers can be misheard as they spread, but some inkling of truth should still be discernible.",
+			"Alternate": "Happiness",
+			"Alternate_Description": "Information about the happiness, or not, of the Embodiment(s) or population at large. Perhaps there is a holiday approaching...",
+			"Detail": "Intimate",
+			"Detail_Description": "This is an intimate detail about a character, such as, who are their best friends, who are their past and present lovers, who is their confidante, who do they trust, and sometimes even details about intimate preferences."
+		}
+	},
+	"Obstacle": {
+		"Type": "Love Interest",
+		"Description": "The Obstacle is an attractive individual who catches at least one Character's eye. Positive Emotional affects may cause love at first sight, and the Stakes may raise to Soul, then again they may just be a temptation easily ignored."
+	},
+	"Tarot": {
+		"WyrdTarot": "Ignore Wounds",
+		"Normal": "Target may ignore all Wound effects while atop their pile.",
+		"Crossed": "All Target Wounds affect as though one level higher."
+	},
+	"Ordeal": {
+		"Ordeal_Type": "Opposed Ordeal",
+		"Stages": "7",
+		"Ordeal_Spread": "Map-Geography",
+		"Stakes": "Blended Low-Medium-High-Extreme",
+		"Test": "Instincts (Nature)",
+		"Obstacles": "1 per Stage and 3 per Court Stage",
+		"Suggested_Action": "Flirt",
+		"Stage": "Fire Stunt",
+		"Stage_Description": "A dangerous Stunt with flames and explosions, or a medical emergency.",
+		"Motional": "Dangerous Vehicular Race",
+		"Motional_Description": "This Opposed Ordeal involves trying to get through the Stages of dangerous terrain in a vehicle, before the Opposition.",
+		"Tide_of_Battle": "Fire-fight",
+		"Tide_of_Battle_Text": "Bullets are flying and things are exploding, its mayhem wherever you look. No one has any advantages, everyone is threatening or suppressing everyone else, but even attempting to close to melee is likely to involve getting shot.",
+		"Fight": "Bout",
+		"Fight_Description": "The fight is a training session, or bout, this is a Low Stakes Fight, intended to teach Proficiencies or similar."
+	},
+	"Lea": {
+		"PathColour": "Blue Aquatic or Black Migratory",
+		"Bulmas": "All",
+		"AnimalCategory": "All-path",
+		"Example": "All-Walkers",
+		"Bodypart": "Heart",
+		"Notes": "The Paths of the All-Walkers can allow Bulmäs to do extraordinary things, like walking an individual’s life-path, so that all of their personal history is known to them. All-Walkers can assume even the forms and souls of other people by using these paths, without directly eating of the Soul. All-Walkers can even Doom Weave and play other cards from their hands as Wyrd Tarot cards, once they have played an Ace on themselves."
+	},
+	"Stress": {
+		"Type": "Hardened",
+		"Description": "Sometimes a Character can become hardened, insensitive and incapable of caring. Hardboiled detectives, grizzled war veterans and the like, shrug off the ability to heal themselves and empathise, in favour of losing Stress.",
+		"Rules": "Character must discard all Hearts (<span class=\"t13ne-redcard\">&hearts;</span>) cards from Ordeal Pool, Style Reserves and Wyrd Tarot Hand, until they have zero Stress. Each Heart Discarded removes Pips Stress, or 1 Strain or 1 Shock."
+	},
+	"Trauma": {
+		"Type": "Romance",
+		"Description": "Trauma can change Characters in wonderful and terrible ways, making them more open, truthful, emotional, or simply causing them to show a more vulnerable side for a while. Vulnerability and emotional-openness can be profoundly attractive, and being openly vulnerable and being cared for by another can also be attractive in return. Although it should be noted that this is rarely the case with professional carers such as Doctors or Nurses, where ethics committees and professional bodies would have something to say about it. Such Romances are often short-lived things, although as with any romance Soul-Stakes are involved.",
+		"Rules": "The Trauma can alter both Impressions of the Character and the Character’s Impressions of others (increasing the impressions one step for each Stress Relieved) to make them completely trusting of each other, and can create a \"Will-They-Won&apos;t-They\" Soul-Stakes romance Plot between the two Characters."
+	},
+	"Age": {
+		"Type": "Romance",
+		"Description": "An Age of Romance is occurring. During this age narratived (often at least one Arc Plot and several Stories) will shape the society, often these narratives include love, attraction and betrayals, usually this narrative is based upon a choice, perhaps a society will be presented with two potential alliances, siding with one will alienate the other, another example is that two sides within society are opposed to each other, within that context members of both sides fall in love. Note that during an age of Romance many narratives may unfold, concurrently and in series.",
+		"Diegetic_Description": "This is an Age of Romance, where the heart rules the head. Society is swept up in narratives of love, betrayal, and grand choices. Alliances are forged and broken on the whims of passion, and the drama of relationships takes center stage.",
+		"Rules": "During an Age of Romance the entire age is woven by Plots for the society. Embodiments will be chosen exclusively from within the society. An age of romance can tie directly into Mythic Cycles for that universe, although that is not in any way guarranteed."
+	}
+}

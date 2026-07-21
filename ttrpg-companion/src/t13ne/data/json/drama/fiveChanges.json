@@ -1,0 +1,97 @@
+[
+    {
+        "Type": "Wood (木) 🌳",
+        "Description": "The period of the first impulse, early development, expansion and rising growth; life stirs around you as the Wood begins to bud and grow. The time of planning and communication. Wood is seen as warm, generous and social, but it is also collectivist and idealistic, just as a wood is many trees. Wood is sometimes identified as Wind or Air, but this attributon has few correspondences, beyond forward planning, decision making, and unconscious actions like breathing. Numbers ending in 4 or 5 are considered Wood.",
+        "Season": "Spring",
+        "Weather": "Wind",
+        "Direction": "East",
+        "Generates": "Wood burns to generate Fire",
+        "Destroys": "Wood’s roots hold and break the Earth",
+        "Weakens": "Wood drinks Water",
+        "Insults": "Wood blunts Metal",
+        "Tension": "Rooting",
+        "Tension_Text": "Rooting Tension is the Tension that draws Characters towards theories, ideas, objects and other people through sheer curiosity. Characters pulled by a Rooting Tension <strong>Gain Chi</strong> when they explore, investigate or look around. They <strong>Gain Stress</strong> when there is no other Embodiment in the same Location as them.",
+        "Pressure": "Growth",
+        "Pressure_Text": "Growth Pressures include cultural, heritage, and environmental traditions, laws, rules, influences, and rituals that apply pressure to the Characters. Growth Pressures push Characters to grow up in certain ways. They <strong>Gain Chi</strong> when they state or question a thesis (belief, idea, thought) that is aligned with their culture, background or upbringing. They <strong>Gain Stress</strong> when someone rejects their thesis (and by extension, culture, background and upbringing) or refuses to answer them.",
+        "Colour": [
+            "Azure or two parrallel straight lines ",
+            "#00EED7"
+        ]
+    },
+    {
+        "Type": "Fire (火) 🔥",
+        "Description": "The period of embodiment, the dynamic creative phase, the time of passionate action; where a plant flowers and fruits in summer heat. The time of motivation, action, and stimulation. Fire is seen as passionate, enthusiastic, joyful and (perhaps surprisingly) creative, but is also impatient and impulsive and aggresive, the heat of passion can burn as love, lust or hate. Numbers ending in 6 or 7 are considered Fire.",
+        "Season": "Summer",
+        "Weather": "Heat",
+        "Direction": "South",
+        "Generates": "Fires form lava and new Earth",
+        "Destroys": "Fire melts Metal",
+        "Weakens": "Fire burns Wood",
+        "Insults": "Fire evaporates Water",
+        "Tension": "Ardour",
+        "Tension_Text": "Ardour Tension is what happens when two Characters interact and one or both experience warm interest in the other (this includes sexual or romantic Tension in some cases). Characters pulled by Ardour Tension <strong>Gain Chi</strong> when they learn more about another Embodiment Character, or create a positive emotional effect in another Embodiment. They <strong>Gain Stress</strong> when they create a negative emotional effect on another Character.",
+        "Pressure": "Heat",
+        "Pressure_Text": "Heat Pressure a simple mechanical fact, human relationships, conflicts, and emotions can also carry heat pressure; affairs are often described as torrid, steamy and fiery, and situations can be said to ignite, explode and smolder. Heat Pressure makes things move faster and more violently including the Characters experiencing it. They <strong>Gain Chi</strong> when they enter a Location that has another Embodiment present. They <strong>Gain Stress</strong> when their action is anything other than targeting another Embodiment for an attack (which may be a positive Emotional effect).",
+        "Colour": [
+            "Red or two parrallel zig-zagging lines",
+            "#f04000"
+        ]
+    },
+    {
+        "Type": "Earth (土) ⛰",
+        "Description": "The period of change between each season, a time of transformation, changeable, settling and yet stable. Winter sprouts to spring, spring warms to summer, summer dries to autumn, and autumn moistens to winter. This is a time of responsibility, and mediation, now is the time to help others. Earth is seen as patient, practical, hard-working and stable, but it is also greedy, reserved and ambitious, as it draws all things to the centre of itself. Numbers ending in 8 or 9 are considered Earth.",
+        "Season": "Season Changes",
+        "Weather": "Damp",
+        "Direction": "Centre",
+        "Generates": "Earth bears ores of Metal",
+        "Destroys": "Earth dams Water",
+        "Weakens": "Earth smothers Fire",
+        "Insults": "Earth rots Wood",
+        "Tension": "Rifting",
+        "Tension_Text": "Rifting Tension occurs when Character’s who are in a relationship, are held apart for some reason. The Tension builds and draws them back together, as they experience missing each other, homesickness, etc. Characters who are pulled by Rifting Tension will <strong>Gain Chi</strong> when they take steps to get back to their family, people or partner. They <strong>Gain Stress</strong> equal to the total Yarn Extend Duration that they have so far been separated (e.g. 2 Stress after a short Scene, 3 after 8 hours apart, 4 after a whole day, etc).",
+        "Pressure": "Peer",
+        "Pressure_Text": "Peer Pressure is an immediate geo-social pressure that can encourage certain behaviours throughout a social group. Character’s feel pressured to perform certain behaviours (both positive or negative) because others in their social group are performing those behaviours. Peer pressure can be direct, indirect, spoken, or unspoken, with these behaviours normalised throughout the social group in the area. Characters pushed by Peer Pressure <strong>Gain Chi</strong> when their actions conform to those of their peers, pact members or other members of their Side of the Conflict. They <strong>Gain Stress</strong> when their actions or beliefs do not conform to those of their peers, pact members, or other members of their Side of the Conflict.",
+        "Colour": [
+            "Yellow or single straight line",
+            "#F0F0A0"
+        ]
+    },
+    {
+        "Type": "Metal (金) 🛠",
+        "Description": "The period of harvesting, collecting and dryness. This is a period of unyielding, rigid hardship, discipline, and clean sharp morals. Metal is seen as firm, self-reliant, strong, and wise, but it is also rigid, a little anti-social, competitive, forceful, and hedonistic. Numbers ending in 0 and 1 are considered Metal.",
+        "Season": "Autumn",
+        "Weather": "Dry",
+        "Direction": "West",
+        "Generates": "Metal condenses Water",
+        "Destroys": "Metal chops Wood",
+        "Weakens": "Metal poisons Earth",
+        "Insults": "Metal conducts heat from Fire",
+        "Tension": "Medal",
+        "Tension_Text": "Medal Tension is the competitive Tension that exists between Rivals, it draws them together to compete at some task or challenge over and over again, determined to prove which one of them is better. Competitive Tension can also occurs in other situations, whenever something is turned into a contest or competition. A Character pulled by Medal Tension <strong>Gain Chi</strong> when they best another Embodiment at any competition, contest, race, test, exam or game. They <strong>Gain Stress</strong> when they meet another Embodiment and they do not compete with them in some (at least Low Stakes) way.",
+        "Pressure": "Coin",
+        "Pressure_Text": "Coin (or monetary, financial or economic) Pressure is what stops most people from quitting their jobs to pursue their dreams. Coin Pressure can push Characters to work with people they don’t appreciate, like, or respect, but it can also push someone to crime, force business to close. Characters pushed by Coin Pressure <strong>Gain Chi</strong> when they take steps to secure their economic position in some way, such as out-competing rival workers, making themselves indispensible at their company, or criminal endeavours. They <strong>Gain Stress</strong> when they feel poor, do not have enough money for a purchase, or have to miss some event (such as a party, concert, excursion) in order to work.",
+        "Colour": [
+            "White or single dashed/dotted line",
+            "#d7d7d7"
+        ]
+    },
+    {
+        "Type": "Water (水) 🌊",
+        "Description": "The period of introverted retreat, sensitive stillness, self-reflection, contracting and coolness. It is the period when inspiration strikes, emotions stir, and things are very internalised. Water is seen as wise, intelligent, flexible, and pliant, but it is also mercurial, secretive, changeable and unpredictable, just as waters may be calm as a millpond, or as furious as a torrent. Numbers ending in 2 and 3 are seen as Water.",
+        "Season": "Winter",
+        "Weather": "Cold",
+        "Direction": "North",
+        "Generates": "Water grows Wood",
+        "Destroys": "Water extinguishes Fire",
+        "Weakens": "Water rusts Metal",
+        "Insults": "Water destabilises Earth",
+        "Tension": "Surface",
+        "Tension_Text": "Surface Tension occurs when two fluids interface, creating a surface where the two fluids \"touch\", surface tension causes flowing water to form droplets in the air, and behaves as an elastic barrier between the water and the air, that insects and even razor blades can float upon. Surface Tesnion has similar effects where two social groups meet, creating internalised tension and forces that can act to separate those caught on the interface. Characters pulled by Surface Tension <strong>Gain Chi</strong> when they move away from other members of their social group. They <strong>Gain Stress</strong> when they enter the same Location as another Embodiment.",
+        "Pressure": "Fathomless",
+        "Pressure_Text": "Fathomless Pressure is the internal, cryptic pressure that Characters feel, often from their deep unconscious, or even supernatural sources, that something is wrong. Fathomless Pressures often express in the Character’s dreams and unconsious mind as Psychosocial Characters. Such pressures can be negative, causing a Character to become introspective, wallowing in the abyssal maw of despair, and causing projection of these negative traits onto others, or they can be positive, giving insights, intuitions and inspirations seemingly from nowhere. Characters pushed by Fathomless Pressure <strong>Gain Chi</strong> when they spend time alone, or project their own negative traits and behaviour onto another Embodiment. They <strong>Gain Stress</strong> when they admit to having a problem, or a negative trait or behaviour shared with another Embodiment.",
+        "Colour": [
+            "Black or single wobbling line",
+            "#000033"
+        ]
+    }
+]

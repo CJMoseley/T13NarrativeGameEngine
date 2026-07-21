@@ -1,0 +1,44 @@
+[
+    {
+        "Category": "Strength (Lifting)",
+        "Example": "A small child",
+        "Boon": 5,
+        "Value": "10 kg",
+        "Notes": "Can lift a small bag of groceries."
+    },
+    {
+        "Category": "Strength (Lifting)",
+        "Example": "Average Human Adult (Scale 0)",
+        "Boon": 13,
+        "Value": "66 kg",
+        "Notes": "Can lift another person in a fireman's carry."
+    },
+    {
+        "Category": "Strength (Lifting)",
+        "Example": "Strong Human Adult (Scale 0)",
+        "Boon": 18,
+        "Value": "111 kg",
+        "Notes": "Equivalent to a trained weightlifter."
+    },
+    {
+        "Category": "Strength (Lifting)",
+        "Example": "Peak Human (Scale 0)",
+        "Boon": 26,
+        "Value": "200 kg",
+        "Notes": "World-record level deadlift."
+    },
+    {
+        "Category": "Speed (Running)",
+        "Example": "Average Human Adult (Scale 0)",
+        "Boon": 13,
+        "Value": "24 kph / 15 mph",
+        "Notes": "A decent jogging speed."
+    },
+    {
+        "Category": "Speed (Running)",
+        "Example": "Olympic Sprinter (Scale 0)",
+        "Boon": 20,
+        "Value": "44 kph / 27 mph",
+        "Notes": "Peak human running speed."
+    }
+]

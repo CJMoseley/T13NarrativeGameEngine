@@ -1,0 +1,58 @@
+{
+  "3852": {
+    "id": 3852,
+    "prof": {
+      "Name": [
+        "Core",
+        "Core Zeal Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Core is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "3853": {
+    "id": 3853,
+    "prof": {
+      "Name": [
+        "Cores",
+        "Cores Zeal Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "Sincere and enthusiastic, the dynamic energy of Cores is a fervent spark that empowers action and fuels the drive toward desire.",
+      "Tags": {
+        "Facets": [
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

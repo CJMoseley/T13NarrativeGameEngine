@@ -1,0 +1,183 @@
+{
+  "Hexagram": {
+    "Number": 9,
+    "Name": "Taming Power",
+    "Entity": "&#19912;",
+    "Logical": 55,
+    "Trigrams": [
+      0,
+      4
+    ],
+    "Hexagram_Text": "Hsiao Ch'u, Taming Power (or Small Restraint or Small Gathering), is symbolic of how a small force can tame a more powerful one. A mighty river can be dammed to make a lake, as even the smallest obstacles can seem insurmountable if you do not believe you can beat them.",
+    "Unchanging": "You may reduce the result of any Test, Roll or Draw by one Success Level or Card and Gain Incarna Boon Reduced Chi.",
+    "Line1": "Wrong Way",
+    "Line2": "Returning Home",
+    "Line3": "The Breaking Wheel",
+    "Line4": "Blood Vanishes",
+    "Line5": "Rich Neighbours",
+    "Line6": "The Half-Laden Wagon "
+  },
+  "Hexagram_Character": {
+    "Gains": [
+      {
+        "Type": "Chi",
+        "Condition": "you act pessimistic, make things more difficult for yourself, or do not try your hardest",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Type": "Stress",
+        "Condition": "you fail a Test or an Ordeal Stage",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ],
+    "LineGains": [
+      {
+        "Line": 1,
+        "Type": "Yin",
+        "Condition": "you fail and decide that was not what you wanted to do anyway, and so seek a new goal",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Type": "Yin",
+        "Condition": "you follow another’s example, or concentrate on your relationships with others",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Type": "Yin",
+        "Condition": "you give in, surrender, or step back to encourage another to try",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Type": "Yin",
+        "Condition": "you advise or suggest restraint, caution or care is taken, or if you act surprised",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Type": "Yang",
+        "Condition": "you are friendly, courteous, or loyal",
+        "Amount": "Standard",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Type": "Yin",
+        "Condition": "you do not push forwards, without first making the proper preparations, check for traps, etc",
+        "Amount": "Standard",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Quest": {
+    "Quest_Text": "The Quest of Taming Power shows a situation where the opposition is of great power and could easily destroy the Quester, either physically, or more often economically, socially or politically. The Quester can still succeed, but only by use of gentle determination and yielding yin strengths such as secrecy or keeping one&#39;s distance. Any use of direct yang power, strength, or arrogance by the Quester will cause them additional Hurdles, Obstacles and Failure Levels, as these Yang forces are greater in the opposition. The Quester may believe themselves to be the most physically, spiritually, or mentally strong, that they are the better leader, but this opposition authority is stronger in all those same ways.",
+    "Quest_Complete": "The Quest that ends with the Taming Power Hexagram changes another character&#39;s perceptions of the Quester. Perhaps a companion having seen some expression of darkness in the Quester, which they have never seen before, which causes them to fear the Quester, or the Quester might suffer a loss or wound that causes the opposition, or a rival, to pity them. These characters should address this issue here, making the Quester aware of how they perceive them, and ideally cause the Quester to question if this is how they wish to be seen.",
+    "Line_Quests": [
+      {
+        "Line": 1,
+        "Quest": "The Quester is headed the wrong way, or working against themselves without realising it. If they continue in this direction they will add Failure Levels, Obstacles and Hurdles to their Tests or Ordeals, but if they realise their mistake and change their method or destination then they may instead add a Success Level.",
+        "Commands": []
+      },
+      {
+        "Line": 2,
+        "Quest": "The Quester is reminded of their home or family. Sometimes this is just some faint resemblance combined with a general homesickness, although most often it is a chance encounter with someone from the Quester&#39;s home (such as a family member, friend or neighbour) that reminds them, very occasionally a Quester will actually return to their home, during the Quest, only to find it in some way damaged or different now that they have another perspective upon the place. These complications can add a Failure Level, Hurdle or Obstacle to the Quester&#39;s Test or Ordeal as they are confounded by homesickness, confusion or excessive emotions.",
+        "Commands": []
+      },
+      {
+        "Line": 3,
+        "Quest": "Any sign of aggression or voice raised in anger by the Quester will cause additional Failure Levels, Obstacles, or Hurdles. If the Quester is yielding, sympathetic and calming upon their peers and even the opposition then they may add a Success Level instead.",
+        "Commands": []
+      },
+      {
+        "Line": 4,
+        "Quest": "The situation is changing and potentially dangerous, as the opposition or the Quester is passionately seeking conflict, driven by powerful emotions that will negatively impact the situation. This desire for battle must be restrained somehow, usually by a careful and judicial application of the truth, however this argument must be made dispassionately, additional emotions will only add additional Hurdles, Obstacles or Failure Levels to their Ordeal or Test.",
+        "Commands": []
+      },
+      {
+        "Line": 5,
+        "Quest": "The Quester may have done the wrong thing, and even created additional Hurdles, Obstacles or Failure Levels, but among the characters there is someone who is a perfect ally for the Quester. If the Quester is powerful the ally is trustworthy, if the Quester is weak the ally is devoted to the same goals (or even to them). If the Quester makes this alliance they may add a Success Level to their Test or Ordeal, as the ally brings resources, supplies or additional forces to the alliance, but if they fail to make this alliance it will add an additional Failure Level, Hurdle or Obstacle instead.",
+        "Commands": []
+      },
+      {
+        "Line": 6,
+        "Quest": "The Quester&#39;s progress within the Quest is currently in jeopardy. If the Quester pushes ahead, trying to complete the Quest, they will add a Failure Level, Hurdle or Obstacle to their Test or Ordeal, which may even undo the progress they have already made. However, if the Quester is content with the progress they have so far made, and does not push on at all, instead searching out traps, or preparing for an unforeseen event like an ambush, then they will add a Success Level to the Test or Ordeal instead.",
+        "Commands": []
+      }
+    ]
+  },
+  "Hexagram_Wilhelm": {
+    "Philosophy": "This hexagram means the force of the small--the power of the shadowy--that restrains, tames, impedes. A weak line in the fourth place, that of the minister, holds the five strong lines in check. In the Image it is the wind blowing across the sky. The wind restrains the clouds, the rising breath of the Creative, and makes them grow dense, but as yet is not strong enough to turn them to rain. The hexagram presents a configuration of circumstances in which a strong element is temporarily held in leash by a weak element. It is only through gentleness that this can have a successful outcome.",
+    "The_Image": {
+      "text": "The wind drives across heaven:\nThe image of THE TAMING POWER OF THE SMALL.Thus the superior man\nRefines the outward aspect of his nature.",
+      "comments": "The wind can indeed drive the clouds together in the sky; yet, being nothing but air, without solid body, it does not produce great or lasting effects. So also an individual, in times when he can produce no great effect in the outer world, can do nothing except refine the expression of his nature in small ways."
+    },
+    "The_Judgment": {
+      "text": "THE TAMING POWER OF THE SMALL\nHas success.\nDense clouds, no rain from our western region.",
+      "comments": "This image refers to the state of affairs in China at the time when King Wên, who came originally from the west, was in the east at the court of the reigning tyrant Chou Hsin. The moment for action on a large scale had not yet arrived. King Wên could only keep the tyrant somewhat in check by friendly persuasion. Hence the image of many clouds, promising moisture and blessing to the land, although as yet no rain falls. The situation is not unfavorable; there is a prospect of ultimate success, but there are still obstacles in the way, and we can merely take preparatory measures. Only through the small means of friendly persuasion can we exert any influence. The time has not yet come for sweeping measures. However, we may be able, to a limited extent, to act as a restraining and subduing influence. To carry out our purpose we need firm determination within and gentleness and adaptability in external relations."
+    },
+    "Line_Interpretations": {
+      "1": {
+        "text": "Return to the way.\nHow could there be blame in this?\nGood fortune.",
+        "comments": "It lies in the nature of a strong man to press forward. In so doing he encounters obstructions. Therefore he returns to the way suited to his situation, where he is free to advance or to retreat. In the nature of things this will bring good fortune, for it is wise and reasonable not to try to obtain anything by force."
+      },
+      "2": {
+        "text": "He allows himself to be drawn into returning.\nGood fortune.",
+        "comments": "One would like to press forward, but before going farther one sees from the example of others like oneself that this way is blocked. In such a case, if the effort to push forward is not in harmony with the time, a reasonable and resolute man will not expose himself to a personal rebuff, but will retreat with others of like mind. This brings good fortune, because he does not needlessly jeopardize himself."
+      },
+      "3": {
+        "text": "The spokes burst out of the wagon wheels.\nMan and wife roll their eyes.",
+        "comments": "Here an attempt is made to press forward forcibly, in the consciousness that the obstructing power is slight. But since, under the circumstances, power actually lies with the weak, this sudden offensive is doomed to failure. External conditions hinder the advance, just as loss of the wheel spokes stops the progress of a wagon. We do not yet heed this hint form fate, hence there are annoying arguments like those of a married couple. Naturally this is not a favorable state of thing, for though the situation may enable the weaker side to hold its ground, the difficulties are too numerous to permit of a happy result. In consequence even the strong man cannot so use his power as to exert the right influence on those around him. He experiences a rebuff where he expected an easy victory, and he thus compromises his dignity."
+      },
+      "4": {
+        "text": "If you are sincere, blood vanishes and fear gives way.\nNo blame.",
+        "comments": "If one is in the difficult and responsible position of counselor to a powerful man, on should restrain him in such a way that the threat of actual bloodshed may arise. Nonetheless, the power of disinterested truth is greater than all theses obstacles. It carries such weight that the end is achieved, and all danger of bloodshed and all fear disappear."
+      },
+      "5": {
+        "text": "If you are sincere and loyally attached,\nYou are rich in your neighbor.",
+        "comments": "Loyalty leads to firm ties because it means that each partner complements the other. In the weaker person loyalty consists in devotion, in the stronger it consists in trustworthiness. This relation of mutual reinforcement leads to a true wealth that is all the more apparent because it is not selfishly hoarded but is shared with friends. Pleasure shared is pleasure doubled."
+      },
+      "6": {
+        "text": "The rain comes, there is rest.\nThis is due to the lasting effect of character.\nPerseverance brings the woman into danger.\nThe moon is nearly full.\nIf the superior man persists,\nMisfortune comes.",
+        "comments": "Success is at hand. The wind has driven up the rain. A fixed standpoint has been reach. This has come about through the cumulation of small effects produced by reverence for a superior character. But a success thus secured bit by bit calls for great caution. It would be a dangerous illusion for anyone to think he could presume upon it. The female principle, the weak element that has won the victory, should never persist in vaunting it--that would lead to danger. The dark power in the moon is strongest when the moon is almost full. When it is full and directly opposite the sun, its waning is inevitable. Under such circumstances one must be content with what has been achieved. To advance any further, before the appropriate time has come, would lead to misfortune."
+      }
+    }
+  },
+  "Hexagram_AI": {
+    "Roleplaying_Guidance": "Act and roleplay as a character under the profound influence of the Hexagram 'Taming Power'. Internalize this core philosophy: This hexagram means the force of the small--the power of the shadowy--that restrains, tames, impedes. A weak line in the fourth place, that of the minister, holds the five strong lines in check. In the Image it is the wind blowing across the sky. The wind restrains the clouds, the rising breath of the Creative, and makes them grow dense, but as yet is not strong enough to turn them to rain. The hexagram presents a configuration of circumstances in which a strong element is temporarily held in... Your current worldview is: \"Hsiao Ch'u, Taming Power (or Small Restraint or Small Gathering), is symbolic of how a small force can tame a more powerful one. A mighty river can be dammed to make a lake, as even the smallest obstacles can seem insurmountable if you do not believe you can beat them.\". Let your choices be subtly driven by these conditions: you act pessimistic, make things more difficult for yourself, or do not try your hardest, you fail a Test or an Ordeal Stage. When interacting, mirror the wisdom found in the commentary: \"This image refers to the state of affairs in China at the time when King Wên, who came originally from the west, was in the east at the court of the reigning tyrant Chou Hsin. The moment for action on a large scale had not yet arrived. King Wên could only keep the tyrant somewhat in check by...\"",
+    "Plot_Complication_Guidance": "As the Narrative Engine/Yarn-Teller, structure the current arc around the theme of 'Taming Power'. The primary quest objective is: The Quest of Taming Power shows a situation where the opposition is of great power and could easily destroy the Quester, either physically, or more often economically, socially or politically. The Quester can still succeed, but only by use of gentle determination and yielding yin strengths such as secrecy or keeping one&#39;s distance. Any use of direct yang power, strength, or arrogance by the Quester will cause them additional Hurdles, Obstacles and Failure Levels, as these Yang forces are greater in the opposition. The Quester may believe themselves to be the most physically, spiritually, or mentally strong, that they are the better leader, but this opposition authority is stronger in all those same ways.. Introduce environmental or social complications that reflect the 'Image' of this hexagram: The wind can indeed drive the clouds together in the sky; yet, being nothing but air, without solid body, it does not produce great or lasting effects. So also an individual, in times when he can produce no great effect in the outer world, can do nothing except refine the expression of his nature in small ways. Use the following line-specific challenges to pace the story: The Quester is headed the wrong way, or working against themselves without realising it. If they continue in this direction they will add Failure Levels, Obstacles and Hurdles to their Tests or Ordeals, but if they realise their mistake and change their method or destination then they may instead add a Success Level. | The Quester is reminded of their home or family. Sometimes this is just some faint resemblance combined with a general homesickness, although most often it is a chance encounter with someone from the Quester&#39;s home (such as a family member, friend or neighbour) that reminds them, very occasionally a Quester will actually return to their home, during the Quest, only to find it in some way damaged or different now that they have another perspective upon the place. These complications can add a Failure Level, Hurdle or Obstacle to the Quester&#39;s Test or Ordeal as they are confounded by homesickness, confusion or excessive emotions. | Any sign of aggression or voice raised in anger by the Quester will cause additional Failure Levels, Obstacles, or Hurdles. If the Quester is yielding, sympathetic and calming upon their peers and even the opposition then they may add a Success Level instead. | The situation is changing and potentially dangerous, as the opposition or the Quester is passionately seeking conflict, driven by powerful emotions that will negatively impact the situation. This desire for battle must be restrained somehow, usually by a careful and judicial application of the truth, however this argument must be made dispassionately, additional emotions will only add additional Hurdles, Obstacles or Failure Levels to their Ordeal or Test. | The Quester may have done the wrong thing, and even created additional Hurdles, Obstacles or Failure Levels, but among the characters there is someone who is a perfect ally for the Quester. If the Quester is powerful the ally is trustworthy, if the Quester is weak the ally is devoted to the same goals (or even to them). If the Quester makes this alliance they may add a Success Level to their Test or Ordeal, as the ally brings resources, supplies or additional forces to the alliance, but if they fail to make this alliance it will add an additional Failure Level, Hurdle or Obstacle instead. | The Quester&#39;s progress within the Quest is currently in jeopardy. If the Quester pushes ahead, trying to complete the Quest, they will add a Failure Level, Hurdle or Obstacle to their Test or Ordeal, which may even undo the progress they have already made. However, if the Quester is content with the progress they have so far made, and does not push on at all, instead searching out traps, or preparing for an unforeseen event like an ambush, then they will add a Success Level to the Test or Ordeal instead.",
+    "Line_Advice": {
+      "1": {
+        "Roleplaying": "Roleplaying Line 1 (Wrong Way): Mirror the internal state described in the commentary: \"It lies in the nature of a strong man to press forward. In so doing he encounters obstructions. Therefore he returns to the way suited to his situation, where he is free to advance or to retreat. In the nature of things this will bring good fortune,...\" Your actions should be framed by the goal: you fail and decide that was not what you wanted to do anyway, and so seek a new goal.",
+        "Plot": "Plot Complication Line 1 (Wrong Way): Introduce a challenge based on the interpretation: \"It lies in the nature of a strong man to press forward. In so doing he encounters obstructions. Therefore he returns to the way suited to his situation, where he is free to advance or to retreat. In the nature of things this will bring good fortune,...\" The specific quest objective for this stage is: The Quester is headed the wrong way, or working against themselves without realising it. If they continue in this direction they will add Failure Levels, Obstacles and Hurdles to their Tests or Ordeals, but if they realise their mistake and change their method or destination then they may instead add a Success Level."
+      },
+      "2": {
+        "Roleplaying": "Roleplaying Line 2 (Returning Home): Mirror the internal state described in the commentary: \"One would like to press forward, but before going farther one sees from the example of others like oneself that this way is blocked. In such a case, if the effort to push forward is not in harmony with the time, a reasonable and resolute man will...\" Your actions should be framed by the goal: you follow another’s example, or concentrate on your relationships with others.",
+        "Plot": "Plot Complication Line 2 (Returning Home): Introduce a challenge based on the interpretation: \"One would like to press forward, but before going farther one sees from the example of others like oneself that this way is blocked. In such a case, if the effort to push forward is not in harmony with the time, a reasonable and resolute man will...\" The specific quest objective for this stage is: The Quester is reminded of their home or family. Sometimes this is just some faint resemblance combined with a general homesickness, although most often it is a chance encounter with someone from the Quester&#39;s home (such as a family member, friend or neighbour) that reminds them, very occasionally a Quester will actually return to their home, during the Quest, only to find it in some way damaged or different now that they have another perspective upon the place. These complications can add a Failure Level, Hurdle or Obstacle to the Quester&#39;s Test or Ordeal as they are confounded by homesickness, confusion or excessive emotions."
+      },
+      "3": {
+        "Roleplaying": "Roleplaying Line 3 (The Breaking Wheel): Mirror the internal state described in the commentary: \"Here an attempt is made to press forward forcibly, in the consciousness that the obstructing power is slight. But since, under the circumstances, power actually lies with the weak, this sudden offensive is doomed to failure. External conditions...\" Your actions should be framed by the goal: you give in, surrender, or step back to encourage another to try.",
+        "Plot": "Plot Complication Line 3 (The Breaking Wheel): Introduce a challenge based on the interpretation: \"Here an attempt is made to press forward forcibly, in the consciousness that the obstructing power is slight. But since, under the circumstances, power actually lies with the weak, this sudden offensive is doomed to failure. External conditions...\" The specific quest objective for this stage is: Any sign of aggression or voice raised in anger by the Quester will cause additional Failure Levels, Obstacles, or Hurdles. If the Quester is yielding, sympathetic and calming upon their peers and even the opposition then they may add a Success Level instead."
+      },
+      "4": {
+        "Roleplaying": "Roleplaying Line 4 (Blood Vanishes): Mirror the internal state described in the commentary: \"If one is in the difficult and responsible position of counselor to a powerful man, on should restrain him in such a way that the threat of actual bloodshed may arise. Nonetheless, the power of disinterested truth is greater than all theses...\" Your actions should be framed by the goal: you advise or suggest restraint, caution or care is taken, or if you act surprised.",
+        "Plot": "Plot Complication Line 4 (Blood Vanishes): Introduce a challenge based on the interpretation: \"If one is in the difficult and responsible position of counselor to a powerful man, on should restrain him in such a way that the threat of actual bloodshed may arise. Nonetheless, the power of disinterested truth is greater than all theses...\" The specific quest objective for this stage is: The situation is changing and potentially dangerous, as the opposition or the Quester is passionately seeking conflict, driven by powerful emotions that will negatively impact the situation. This desire for battle must be restrained somehow, usually by a careful and judicial application of the truth, however this argument must be made dispassionately, additional emotions will only add additional Hurdles, Obstacles or Failure Levels to their Ordeal or Test."
+      },
+      "5": {
+        "Roleplaying": "Roleplaying Line 5 (Rich Neighbours): Mirror the internal state described in the commentary: \"Loyalty leads to firm ties because it means that each partner complements the other. In the weaker person loyalty consists in devotion, in the stronger it consists in trustworthiness. This relation of mutual reinforcement leads to a true wealth that...\" Your actions should be framed by the goal: you are friendly, courteous, or loyal.",
+        "Plot": "Plot Complication Line 5 (Rich Neighbours): Introduce a challenge based on the interpretation: \"Loyalty leads to firm ties because it means that each partner complements the other. In the weaker person loyalty consists in devotion, in the stronger it consists in trustworthiness. This relation of mutual reinforcement leads to a true wealth that...\" The specific quest objective for this stage is: The Quester may have done the wrong thing, and even created additional Hurdles, Obstacles or Failure Levels, but among the characters there is someone who is a perfect ally for the Quester. If the Quester is powerful the ally is trustworthy, if the Quester is weak the ally is devoted to the same goals (or even to them). If the Quester makes this alliance they may add a Success Level to their Test or Ordeal, as the ally brings resources, supplies or additional forces to the alliance, but if they fail to make this alliance it will add an additional Failure Level, Hurdle or Obstacle instead."
+      },
+      "6": {
+        "Roleplaying": "Roleplaying Line 6 (The Half-Laden Wagon ): Mirror the internal state described in the commentary: \"Success is at hand. The wind has driven up the rain. A fixed standpoint has been reach. This has come about through the cumulation of small effects produced by reverence for a superior character. But a success thus secured bit by bit calls for great...\" Your actions should be framed by the goal: you do not push forwards, without first making the proper preparations, check for traps, etc.",
+        "Plot": "Plot Complication Line 6 (The Half-Laden Wagon ): Introduce a challenge based on the interpretation: \"Success is at hand. The wind has driven up the rain. A fixed standpoint has been reach. This has come about through the cumulation of small effects produced by reverence for a superior character. But a success thus secured bit by bit calls for great...\" The specific quest objective for this stage is: The Quester&#39;s progress within the Quest is currently in jeopardy. If the Quester pushes ahead, trying to complete the Quest, they will add a Failure Level, Hurdle or Obstacle to their Test or Ordeal, which may even undo the progress they have already made. However, if the Quester is content with the progress they have so far made, and does not push on at all, instead searching out traps, or preparing for an unforeseen event like an ambush, then they will add a Success Level to the Test or Ordeal instead."
+      }
+    }
+  }
+}

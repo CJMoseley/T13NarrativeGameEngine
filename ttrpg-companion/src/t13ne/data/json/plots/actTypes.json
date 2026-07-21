@@ -1,0 +1,38 @@
+[
+    {
+        "Type": "Scene",
+        "Description": "This Plot is too small to be an Act. It may be a fragment or just be tagged as part of a Plot.",
+        "Rules": "Use a Scene Spread.",
+        "Spread": "Scene"
+    },
+    {
+        "Type": "Frame",
+        "Description": "The Frame hooks the Characters, sets up the Story, and reveals something about the Conflict.",
+        "Rules": "Each Embodiment gets Hooked. These Hooks can take place simultaneously or sequentially (or somewhere in between). There should be at least one Revelation Scene, although more Revelations will be scattered throughout the Frame.",
+        "Spread": "Frame"
+    },
+    {
+        "Type": "Loom",
+        "Description": "The Loom works the Conflict through Tensions, Pressures, Tests and Ordeals between Embodiments. As the Loom goes on things things will generally get worse for some of the sides and better for the others. Looms are broken into a number of Warp Scenes which make things worse for someone, and Weft Scenes where they might get a break or some relief.",
+        "Rules": "The Loom presents Warps and Wefts to all sides of the Conflict, with each Embodiment of the Conflict taking either a Warp or a Weft Scene. If the enemy takes a Weft, this Embodiment should take a Warp, and less importantly whatever the Embodiment’s Ally takes, the Embodiment should take the same. Each Scene during the Loom is then a blend of simultaneous Warps and Wefts, filled with interacting Frays, Snags and Sweeping Sub-Scenes.",
+        "Spread": "Loom"
+    },
+    {
+        "Type": "Zenith",
+        "Description": "The Zenith completes the Story. It describes the Resolution of the tale, how this story ends. In a comedy the mistake is revealed, and everything that went wrong is undone. In a tragedy the hero suffers their painful downfall. In a detective story the villain is revealed and arrested or killed. In a romance the Characters finally marry, or at least kiss. In a war the final battle takes place deciding the victors.",
+        "Rules": "The Zenith is mostly about the Finale, which is usually like a Warp for all our Characters, with the Suspense and Stakes at the highest they will be in the Story. ",
+        "Spread": "Zenith"
+    },
+    {
+        "Type": "Logue",
+        "Description": "A Logue is an Act (usually no more than one or two Scenes) detached from a Story, it may be a Prologue (set before the Story), an Epilogue (to conclude the Story), an Interlogue (where we see things from another Character’s point of view (often the Villain), or in T13 an Exologue where we suddenly step out to a different Alternate’s universe. It usually involves direct Narration, but may not.",
+        "Rules": "Logues are often a combination of a Gain or Revelation and an Ordeal for the Characters that are involved in the Logue, but they also act as a Revelation for the reader or gaming group, or for Characters that are told the Logue later.",
+        "Spread": "Logue"
+    },
+    {
+        "Type": "Story",
+        "Description": "This Plot is a whole Story, it does not fit into a larger story, but is self contained.",
+        "Rules": "Use a Conflict Spread to create a Story instead of a Act.",
+        "Spread": "Simple"
+    }
+]

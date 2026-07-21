@@ -1,0 +1,25 @@
+# T13NE Source Audio Assets Git Ignore
+# Excludes large audio data, keeping only synth-related source files.
+
+*
+!.gitignore
+!*/
+
+midi/**
+sequences/**
+!midi/
+!sequences/
+
+loops/*
+samples/*
+tracks/*
+
+# Allow synths
+!samples/*synth*/
+!samples/*synth*/**
+!samples/Inst_*/
+!samples/Inst_*/**
+!loops/*synth*/
+!loops/*synth*/**
+!loops/Inst_*/
+!loops/Inst_*/**

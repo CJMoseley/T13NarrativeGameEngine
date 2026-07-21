@@ -1,0 +1,101 @@
+[
+    {
+        "Name": "Chirurgery",
+        "Icon": "☤",
+        "Description": "The forerunner of modern surgery and medicine, a combination of faith healing, herbalism, astrology, magic and surgical techniques (largely conducted without anaesthetics). As likely to kill as to cure.",
+        "Rules": "<strong>Chirurgery Ordeal</strong> — High Stakes<ul><li>Maximum Wound Level Healed equals Chirugeon’s Phoenix Facet Score (e.g. at Boon 13 up to Crippling).</li><li>May automatically Stabilize any wound with Pip Score lower than Half the Chirugeon’s Phoenix Boon</li><li>Beat total Pips of all Wounds with Hearts <span class=\"t13ne-redcard\">\u2665</span> (+2 Pips for Trump) or Suited cards and Heal the Level of the Wound by one (Mortal becomes Crippling). Failure to Heal all Wounds will aggravate all Wounds by one Level (Mortal becomes Carnage).</li><li>Halve Diff if all Wounds are Treated 🤒 or Stabilized 🤕 first.</li><li>Double Diff if any Wound is Festering ☠️.</li></ul>",
+        "Applicable_Wounds": "👤⚒⭐",
+        "Best_Result": "- 1 Level to all Wounds and wounds are \"Treated\".",
+        "Worst_Result": "Aggravate all Wounds 1 Level. All Wounds now Fester if any Wound did."
+    },
+    {
+        "Name": "First-Aid",
+        "Icon": "🚑",
+        "Description": "The techniques of the Paramedic, these techniques are intended to keep someone from dying, or losing body-parts. First-aid is about stabilizing Wounds, so that surgeons, or medicines can treat them more easily. Although good first-aid practices will also encourage natural regeneration.",
+        "Rules": "<strong>First Aid</strong> — Takes place within a standard Ordeal (same Stakes as Ordeal). <ul><li>Match Suit (or use <span class=\"t13ne-redcard\">\u2665</span>) and match or beat Pips of each individual Wound.</li><li>Diff x2 if Reopened 🎃.</li><li>Diff x3 if Festering ☠️</li><li>Can only Treat a Wound</li></ul>",
+        "Applicable_Wounds": "⚡⚒",
+        "Best_Result": "Treats Wound 🤒 (Halves Diff to Heal)",
+        "Worst_Result": "Aggravate 1 Level."
+    },
+    {
+        "Name": "Healing",
+        "Icon": "🙏",
+        "Description": "Magic, Prayers, or super-technology can all be super effective at healing certain Wounds. Micro and Nano-surgery technology can reattach, or regrow limbs which would have been lost. Spells can reweave limbs and Prayers can even bring people back from the dead.",
+        "Rules": "<strong>Healing Ordeal</strong> — Soul stakes <ul><li>Beat total Pips of all current Wounds + Age of oldest Wound in Chi (Extend Duration) with Hearts <span class=\"t13ne-redcard\">\u2665</span>.</li><li>Ordeal is 3 Stages long, Preparation (<span class=\"t13ne-redcard\">\u2666</span> Trump), Enchantment (<span class=\"t13ne-redcard\">\u2665</span> Trump), Cleansing (<span class=\"t13ne-redcard\">\u2665</span> Trump). Failure in any Stage results in complete failure.</li></ul> ",
+        "Applicable_Wounds": "👤⚡⚒⭐",
+        "Best_Result": "Heals all Wounds completely removing them.",
+        "Worst_Result": "Failure results in Yarn-Teller or Ref’s choice of: <ol><li>Wounds are duplicated to Healer</li><li>Healer is attacked by Psych or magical versions of the Wounds (but may Soak)</li><li>All Wounds Fester ☠️</li><li>All Wounds Re-open</li><li>No changes of any sort (are you sure? This one is really boring)</li><ol>"
+    },
+    {
+        "Name": "Jury-rigging",
+        "Icon": "🔨",
+        "Description": "Jury-rigging is a technique of repair where an attempt is made to negate a Wound for a while. It is rarely intended to be a permanent fix, but simply a quick-fix that can be later improved. Jury-rigging is usually intended for Descendants, but jury-rigging can be used to splint broken limbs, bind wounds, and clean wounds.",
+        "Rules": "<strong>Jury-rigging Test</strong> — Jury-rigging is about creating a fast and dirty quick fix.<ul><li>Match Suit (or <span class=\"t13ne-redcard\">\u2665</span>) and Beat the Pips of a Wound.</li><li>Difficulty is Pips for most Wounds.</li><li>Diff &times;2 for Festering Wounds</li><li>Success Stabilizes the Wound immediately for a period equal to the Pips beaten by as a Yarn Extend Duration after which the wound will immediately Fester ☠️. Failure will make the Wound Fester ☠️ automatically and apply a Fresh 🍒 copy of the original.</li></ul>",
+        "Applicable_Wounds": "⚡⚒",
+        "Best_Result": "Stabilizes a Wound for a Yarn Extend Duration equal to the Pips over the Difficulty.",
+        "Worst_Result": "Wound automatically Festers ☠️ and a Fresh 🍒 copy is applied."
+    },
+    {
+        "Name": "Medicine",
+        "Icon": "🏥",
+        "Description": "Potions, poultices, and pills that are scientifically proven to make money for doctors, pharmacists and drug companies. Not every cure works, and not every Wound type is treatable, depending on the time period. These are usually Descendants taken for a period of treatment, that may have side-effects (often quirk or Flaw Hitches) such as Consuming. Medicine can be as simple as chewing the right leaf, or wearing a sling for a day or it can involve weeks of expensive therapies.",
+        "Rules": "<strong>Medicine Ordeal</strong><ul><li>Beat a Wound’s Pips x2 with cards (match Suit or <span class=\"t13ne-redcard\">\u2665</span>).</li><li>Difficulty equals Pips if Stabilized🤕 or Treated 🤒</li><li>Pips x3 if Festering ☠️</li></ul>",
+        "Applicable_Wounds": "👤⚡⚒",
+        "Best_Result": "Wound is Treated.",
+        "Worst_Result": "Aggravate 1 Level."
+    },
+    {
+        "Name": "Narrative Healing",
+        "Icon": "✒️",
+        "Description": "Narrative Healing is the sort of healing that most people work on themselves during the story. Narrative Healing often represents wounds that initially look worse than they are, or at least hurt more, but that later are forgotten or shrugged off. Narrative Healing’s effectiveness varies with the Genre. In some, it hardly works at all, in others you can shrug off explosions (looking at you 80’s action movies and cartoons).",
+        "Rules": "<strong>Narrative Healing</strong> — Takes place during the Standard Ordeal (usually during the Fight)<br/>It may may only effect Fresh Wounds (that is Wounds that are still cards), so can only be used during the Round when the Wound was first applied. The Referee and Yarn-Teller decide the Maximum Narrative Healing Pips based on the Genre between 3 (for realistic) and 13 (for 80s Action movies and cartoons).<ul><li>Narrative Healing with a lower Wound card. The card must be within the Maximum Narrative Healing Pips of the Wound being healed, and be Suited or a Heart. E.g. If the Max Narrative Heal Pips are 8, a Joker (Pips 15) can be replaced with any card from a 7 to an Ace (14). This healing card replaces the original (potentially) Carnage+ Wound as a new Fresh Maiming, Crippling, Mortal or Carnage Wound, as appropriate.</li><li>Regardless of Genre a suited (or <span class=\"t13ne-redcard\">\u2665</span>) card of greater Pips than the Wound will Stabilize the Wound (Skipping Treated Wounds). For example, if you have a K <span class=\"t13ne-blackcard\">\u2660</span> Mortal Wound, you may Narrative Heal with an Ace of <span class=\"t13ne-blackcard\">\u2660</span> or <span class=\"t13ne-redcard\">\u2665</span> or the Q and K of <span class=\"t13ne-redcard\">\u2665</span> (due to the +2 Trump Pips) and Stabilize the Wound.</li></ul>",
+        "Applicable_Wounds": "👤⚡⚒⭐",
+        "Best_Result": "Wound Stabilized / Wound replaced with lower Wound, wound remains Fresh",
+        "Worst_Result": "Wound Unchanged"
+    },
+    {
+        "Name": "Natural Regeneration",
+        "Icon": "🛏️",
+        "Description": "Bodies are generally pretty good at repairing themselves, but there are limits to what natural Regeneration can achieve (unless you are super-powered or a sea cucumber).",
+        "Rules": "<strong>Regeneration Ordeal</strong> — High Stakes<ul><li>Characters use their Phoenix Facet to handle their regeneration, but they may have a dedicated Annex (like an overly chatty mercenary mutant) or Descendant (or both) to improve on that.</li><li>Natural Regeneration is slow but steady, if the wound can be healed, it will, eventually. </li><li>The Largest Wound that Natural Regeneration can Heal is calculated from the Character’s Phoenix Score doubled (or a regeneration Annex Score could stand in here), as the Limit Pips (so 1 for Distract, 7 for Carnage). So an Average Character with a 13 Phoenix, can heal up to a Crippling Wound themselves.</li><li>Natural Regeneration can attempt to Stabilize any Wound with a Pip Score lower than Half the Phoenix or Annex Boon. Stabilizing a Wound this way is common during combat.</li><li>A Wound is Stabilized by playing the same Suit as the Wound or Hearts <span class=\"t13ne-redcard\">\u2665</span> to match, or beat, the Pips of the Wound (or Rolling a Score equal to twice the Pips).</li><li><strong>Reopening the Wound</strong> — Until a Wound has completely naturally healed any Flesh Wound can reopen that Wound (the Flesh wound can aggravate any Wound into whatever the regenerating Wound is).</li><li>Regeneration takes time (Pips - Phoenix Facet / Annex Draw as a Yarn Extend Duration) — so an 8 Pip Maiming Wound Healing with a Boon 40(9)[3] Regeneration Power, would heal in a weekend, but a normal Phoenix of 13 [1] would Heal it in about a month). If a Wound has been Treated by another technique (such as first-aid) the wound will naturally heal faster, treating the Pips as -2 for calculating Duration calculation. Wounds already Stabilized by another technique treat Pips as -3.</li></ul>",
+        "Applicable_Wounds": "🤕🤒👤⚡⚒⭐",
+        "Best_Result": "Stabilizes🤕, then Heals with time.",
+        "Worst_Result": "Wound Festers☠️."
+    },
+    {
+        "Name": "Physical Therapy",
+        "Icon": "🏈",
+        "Description": "Natural Regeneration is all well and good, but after you’ve nursed a Wound for a while, you might notice you have lost range of movement, strength, or feeling around the injury. Physical Therapy consists of exercises, motions and activities that can speed up Natural Regeneration 🛏️.",
+        "Rules": "<strong>Exercises</strong> — Stakes - Medium <ul><li>Physical therapy is only useful on Stabilized Naturally Regenerating Wounds.</li><li>Match Suit (or <span class=\"t13ne-redcard\">\u2665</span>) and Match or Beat Pips of a Wound to half regeneration time, failure will reopen the Wound.</li></ul>",
+        "Applicable_Wounds": "🤕🤒👤⚡⚒",
+        "Best_Result": "Duration of Natural Regeneration Period is halved.",
+        "Worst_Result": "Wound Reopens 🎃"
+    },
+    {
+        "Name": "Psychotherapy",
+        "Icon": "🛋️",
+        "Description": "There are a number of Psychotherapies, ranging from talking therapies to much more modern behaviour modification techniques.",
+        "Rules": "<strong>Psychotherapy Ordeal</strong> — Low Stakes<ul><li>Match Suit (or <span class=\"t13ne-redcard\">\u2665</span>) and Match or Beat Pips of a Wound.</li><li>Diff &times;2 if Wounds are Fresh 🍒 or Re-opened 🎃)</li><li>Diff &times;3 for Festering Wounds</li><li>Success Stabilises Psych Wound or halves regeneration time, Failure causes Festering</li></ul>",
+        "Applicable_Wounds": "👤⭐",
+        "Best_Result": "Wound Stabilized 🤕, or Natural Regeneration 🛏️ Time halved.",
+        "Worst_Result": "Wound Festers☠️"
+    },
+    {
+        "Name": "Repair",
+        "Icon": "🛠️",
+        "Description": "Repairing is like healing but for Descendants usually. Repairing can be used by advanced technology on living Flesh such as nanotechnologies, genetic engineering, vita-rays or whatever.",
+        "Rules": "<strong>Repair Ordeal</strong> — Low-Extreme Stakes (varying with the situation)<ul><li>Match Suit (or <span class=\"t13ne-redcard\">\u2665</span>) and Match the Difficulty to Remove the Wound in Pips.</li><li>Difficulty is Pips &times; 2 for Festering Wounds</li><li>Success removes the Wound completely. Failure makes the original Wound Fester ☠️ and a Fresh 🍒 copy is applied.</li></ul>",
+        "Applicable_Wounds": "⚡⚒⭐",
+        "Best_Result": "Removes the Wound completely.",
+        "Worst_Result": "Wound automatically Festers ☠️ and a Fresh 🍒 copy is applied."
+    },
+    {
+        "Name": "Surgery",
+        "Icon": "💉",
+        "Description": "You can do a lot with chopping, cutting, sawing and metal pins. New surgical techniques can achieve medical miracles, as long as you don’t mind a scar, or occasional left behind gauze or implement.",
+        "Rules": "<strong>Surgical Ordeal</strong> — Medium-Extreme Stakes (varies by context such as time period, sterility, wound type etc)<ul><li>Surgical Ordeal is a minimum of 3 Stages: Preparation (<span class=\"t13ne-redcard\">\u2666</span> Trump), Cutting (<span class=\"t13ne-blackcard\">\u2660</span> Trump) and Closing (<span class=\"t13ne-redcard\">\u2665</span> Trump)</li><li>Beat total Pips of all Wounds + (current Boons of the Hitches the Wounds have affected / Boons of Crippled Annexes) over the Stages.</li><li>Each additional Wound to be healed adds a Cutting Stage to the Ordeal, where that Wound will be focused on.</li><li>For each Stage, if you pass the Stage Difficulty, the Wound is replaced with a Stabilized Flesh Wound and the Hitch is renamed as \"Surgical Scar\" or similar, or the Annex or Proficiency Slot is unlocked.</li><li>Failure in a Cutting Stage means that an additional Fresh (🍒) Flesh Wound is created, and the original Wound remains.</li></ul>",
+        "Applicable_Wounds": "👤⚡⚒",
+        "Best_Result": "<ul><li>Heals Wounds of any type to a Treated 🤒 Flesh Wound.</li><li>Changes \"Dying\" Hitch to \"Surgical Scars\", \"Amputated Body part\" or similar.</li></ul>",
+        "Worst_Result": "<ul><li>Wounds are re-opened 🎃 (and may Fester ☠️) .</li><li>Additional Fresh 🍒 Flesh Wound created for each wound.</li></ul>"
+    }
+]

@@ -1,0 +1,118 @@
+{
+	"Card_Corner": "3",
+	"Card": "Three",
+	"Suit": "2",
+	"IconSuit": "♥",
+	"Pips": "3",
+	"Unicode": "&#x1f0b3;",
+	"Svg": "images/cards-svg/3H.svg",
+	"Wound_Level": 1,
+	"Facet": "Enigma",
+	"Tao": [
+		0,
+		0
+	],
+	"Narrative_Meaning": "Threes signify creativity and and communication. They can indicate hope, imagination, inspiration and conversations.",
+	"Image": "",
+	"Yarn": {
+		"Yarn_Name": "The Question",
+		"Yarn_Description": "The Question card stands for nothing more, or less, than a question. It could be an unspoken question, or a question that is asked over and over again. Sometimes the question will be the same, other times it will be unique. Sometimes the question has an answer, other times it is rhetorical, and just occasionally the answer itself is the question.",
+		"Significator": {
+			"Plot": "The Question Plot is at its simplest a Mystery Story, which of course asks an often simple question. Usually the Question is \"Whodunnit?\", but even then there are hidden questions of \"how\" and \"why\" that may have equally satisfying answers. Any Mystery will fit within the Question, from \"How do we lift the curse?\" through \"Where are we\" to \"how can we make money from it?\"",
+			"Side": "When a side is marked by the Question they will often ask an important question (who is the chosen one? What is the Matrix? Where is the Ark? What will we do? How will we survive? etc) and will also usually be expected to answer questions (often including the one they asked), perhaps as a Revelation or Ordeal.",
+			"Character": "The Question Significator indicates a Character that asks questions.<p><strong>Gain Yin</strong> when they listen to others speak. </p><p><strong>Gain Yang</strong> when they elicit information from someone without asking a direct question. </p><p>They <strong>Gain Chi</strong> when they ask a question.</p><p>They gain +1 Success Levels whenever they are interrogating or questioning someone.</p>",
+			"Diegetic_Character": "An inquisitive and sharp-minded individual, always seeking to peel back the layers of a mystery. They are master listeners and subtle observers, skilled at drawing out the truth from others while keeping their own cards close to their chest.",
+			"Scene": "The Question Scene is a Scene that has a lot of questions. It might be a pub-quiz or more likely a suspect interrogation. Yarn-Tellers should play this card when they want to make Revelations, or gain information."
+		},
+		"Beat_Type": "3",
+		"Conflict_Embodiment": "0",
+		"Facet_Embodiment": "3",
+		"Hook_Aspect": "Persona (Question)",
+		"Aspect_Description": "The Hook targets the Character's Persona, but via a Question based upon this Facet. For example an Idol will be Questioned about their Feelings.",
+		"Hook": "Question",
+		"Hook_Description": "The Conflict Hooks the Character a question. This Question may be one they ask themselves, \"What was that noise?\", \"Who is at the door?\", or it might be a question that they overhear, \"How many men have you got for the job?\". The Hook may even be a mystery in its own right.",
+		"Gain": "An truthful, honest answer (sometimes the best Gain of all).",
+		"Diegetic_Gain": "A moment of absolute clarity—a truthful and honest answer that resolves a long-standing mystery or provides the missing piece of a vital puzzle.",
+		"Fray": "Questioning",
+		"Fray_Description": "Questioning can be a terrible Fray. Inquisitions, interrogations, inquiries, examinations. Questioning can be a Low to Soul Stakes Ordeal, or even a simple Facet Test. Usually the PCs are the one's questioned, as the Challenge is normally greater that way.",
+		"Snag": "Puzzle",
+		"Snag_Description": "The Snag is a Puzzle, some additional complication. Maybe the Fray is set in a Maze, or having completed the Fray the PCs are now faced with a riddle that must be solved to continue. Perhaps Clues must be deciphered, or the PCs have to unlock a combination lock to open a door, or maybe the door itself is hidden, and the Puzzle is a secret room.",
+		"NPC": {
+			"Archetype": "Inquisitor",
+			"Persona": 4,
+			"Core": 13,
+			"Hitch": 7,
+			"Description": "The Inquisitor asks questions, and rely on methods of persuasion (such as how their interrogation room / torture chamber is set up), to pressure people into answering."
+		},
+		"Sweeping": "Deeper Questions",
+		"Sweeping_Text": "The PCs make a Revelation, that reveals more complications and deeper questions for the future.",
+		"History": "Shrouded",
+		"History_Description": "The Question indicates that the history of this situation is shrouded by the mists of time, there will be mysteries, questions and enigmas that hide the truth.",
+		"Situation": "Query",
+		"Situation_Description": "The Question indicates the current situation involves trying to find an answer to a question, this question may be simple or a complex cross-examination.",
+		"Solution": "Doubt",
+		"Solution_Description": "The Question indicates that the solution to this situation must rely on not taking any fact for granted, trust no one, and question everything that you think you know.",
+		"Revelations": {
+			"About": "Yours",
+			"About_Description": "The information is about your own side, or own self. This might reveal your weaknesses or strengths, if you aren't already painfully aware of them.",
+			"Info": "Facets",
+			"Info_Description": "Information about the Facets of a Character or Plot, what are they good at, what are they bad at. The information can be relative to the Character themselves (she is much Stronger in attack than defence), or to another (he is much better-looking than you), or be absolute (the standard unit can lift 3 tonnes, but only moves at a slow walking pace).",
+			"Vector": "Quandary",
+			"Vector_Description": "Sometimes the information given  is a secret itself, perhaps hidden in riddling rhymes and puzzlingly ambiguous statements. It might be a coincidental clue in a crossword puzzle, a question asked by a Sphinx, an ancient symbolic prophecy, or a substitution cipher scrawled in blood by a dying man. The information is available, but a clever mind will be required to reveal all.",
+			"Alternate": "Injuries",
+			"Alternate_Description": "The information is about injuries, perhaps damage that something has taken in the past, or what <em>really</em> happened to the test-pilot...",
+			"Detail": "Questions",
+			"Detail_Description": "Everyone has questions, these details are questions that either the Embodiment itself would ask, or those who know the Embodiment should be asking. These might include \"Who out of all my lieutenants is most likely to be behind this coup?\", \"What is the optimum number of guards for a secret base this size?\", \"Where will the enemy strike back?\", \"When is the best time of year to invade Russia? I mean everyone knows the worst time...\", \"Which says arch-mage better, polymorphing their king into a frog, forcing their entire kingdom to sleep for a thousand years, trapping their capitol city in a painting or turning them all into statues?\", or \"How many weapons does one man really need to be carrying?\""
+		}
+	},
+	"Obstacle": {
+		"Type": "Question",
+		"Description": "The way ahead is blocked by a question, this may be a riddle, or conundrum, that halts finding the next Stage (common to mysteries, who is the killer?), or it may be a guardian that demands an answer."
+	},
+	"Tarot": {
+		"WyrdTarot": "Inept",
+		"Crossed": "Player gains an additional, applicable Proficiency (May fill a slot).",
+		"Normal": "-1 Prof Die on Target&#39;s next roll."
+	},
+	"Ordeal": {
+		"Ordeal_Type": "Opposed Ordeal",
+		"Stages": "2",
+		"Ordeal_Spread": "Railroad",
+		"Stakes": "Medium",
+		"Test": "Questioning (Enigma)",
+		"Obstacles": "None",
+		"Suggested_Action": "Accuse",
+		"Stage": "Question",
+		"Stage_Description": "Either you need to formulate a question or an answer, usually while lots of other people ask theirs. This might be the first stage of the Scientific method, or you may be at a press conference. Otherwise you are looking at a cul-de-sac style turn, that might have a way out, if you are willing to think outside the box (or at least off the road).",
+		"Motional": "Flying Machine Race",
+		"Motional_Description": "Those magnificent men in their flying machines are trying to get through the Stages faster than you.",
+		"Tide_of_Battle": "Rock and Roll",
+		"Tide_of_Battle_Text": "The battle is loud and distracting, but there is a rhythm to it. Roll 1d3, during each Phase of the Stage, any Character of either Flowing or Ebbing side that makes an Action that does not play that many cards will automatically take an Unsoakable Distract Wound if Flowing and an Unsoakable Flesh Wound if Ebbing.",
+		"Fight": "Scrap",
+		"Fight_Description": "The Scrap is a usually Medium Stakes punch-up or street fight, between more than two people (at least Chorus Extras), who each are fighting individually in a chaotic, last-man-standing way. The Scrap can shift to High Stakes if someone pulls a weapon, or starts stamping on necks."
+	},
+	"Lea": {
+		"PathColour": "Blue Aquatic or Black Migratory",
+		"Bulmas": "All",
+		"AnimalCategory": "Meiofauna",
+		"Example": "Small Nematode worms / shrimps",
+		"Bodypart": "Gut",
+		"Notes": "A lot of parasite paths at this level"
+	},
+	"Stress": {
+		"Type": "Questioning",
+		"Description": "Asking the right questions at the right time can alleviate a lot of Stress for some people. Knowing what might be on the Test can make revision easier, for example.",
+		"Rules": "A Character may relieve Stress equal to the current Tension Level by asking any Character for advice about their problems."
+	},
+	"Trauma": {
+		"Type": "Questions",
+		"Description": "Trauma is bad enough, but sometimes traumas can be compounded by additional problems, such as inquests, political inquiries, insurance problems, as well as disputes over responsibilities and liabities, which all involve a number of very pointed question being asked of the Character.",
+		"Rules": "The Trauma creates Questions for the Character to answer, these questions are usually based on the Character’s Annex Facets, and the Difficulty in answering the Question is usually based on the amount of Stress relieved from the Annex, with the Stress acting as a Chi (Pips) Difficulty usually."
+	},
+	"Age": {
+		"Type": "Inquisition",
+		"Description": "An Age of Inquisition is occurring. During this age some power arises within the society that calls for some investigation of the society. Often an inquisition is religious or political in nature, rooting out heretics, dissidents, terrorists, or revolutionaries, but scientific and medical inquisitions can also occur. Inquisitions are usually characterised by a loss of individual rights, prejudicial examiners, biased courts and cruel and unusual punishments.",
+		"Diegetic_Description": "A dark time of suspicion and scrutiny, where the authorities turn their gaze inward upon society. It is an era of inquisitions and trials, where the hunt for perceived enemies of the state or faith leads to a climate of fear, paranoia, and the erosion of trust between neighbors.",
+		"Rules": "Some faction within the society achieves a position of power and uses it to root out supposed opposition, usually in the form of a witch hunt or inquisition against this supposed opposition. Success in this inquisition can be beneficial for a society (if they have been infiltrated by a foreign power for example), but failure to find supposed opposition while being convinced of its existence will have a negative effect upon the society, paranoia and mistrust can quickly destroy a society from within. A failing inquisition will sometimes create new factions who are opposed to the inquisition which can tear a society apart."
+	}
+}

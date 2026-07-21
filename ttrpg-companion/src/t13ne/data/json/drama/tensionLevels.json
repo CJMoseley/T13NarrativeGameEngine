@@ -1,0 +1,74 @@
+[
+	{
+		"Type": "None",
+		"Emotional_States": "Exhaustion, comatose, asleep. All Embodiment Characters will have low activity and engagement, as they rest between or during Narratives.",
+		"Description": "There is currently no Tension between Embodiments. This is usually the case when Characters are exhausted, separated, or recovering.",
+		"Dramatic_Meaning": "The Scene is most often a rest or recovery scene, a Character may be peacefully sleeping or lingering in bed. This situation will rarely last long.",
+		"Push_Embodiments": "Push Embodiments are encouraged to speak, explaining their \"Thesis\", or point of view. <br/><strong>Add 1 Stress</strong> for each hour they do not speak their Thesis (including sleep).",
+		"Pull_Embodiments": "Pull Embodiment's attention is drawn towards other Embodiments. <br/><strong>Add 1 Stress</strong> for each Embodiment that they are not in same Location as during the Scene.",
+		"External_Embodiments": "External Embodiments (except Monsters which are more like Push Embodiments often) are encouraged in the Scene at this Tension, replacing Character Embodiments where possible.",
+		"Hidden_Embodiments": "Hidden Embodiment may cause a Character to experience disturbed dreams, or unconscious resistance. Characters may speak, but would prefer to rest. <br/><strong>Add 1 Stress</strong> for each hour of rest taken.",
+		"Latent_Drama_Pool_Limit": 21,
+		"Tension_Level": 1
+	},
+	{
+		"Type": "Low",
+		"Emotional_States": "Cool, bored, uninterested. All Embodiment Characters will have little emotional engagement with each other or the Plot, at most you can expect 1 card emotional effects.",
+		"Description": "The Tension is low between Embodiments. This is common early in a Narrative.",
+		"Dramatic_Meaning": "The Tension is low and no Conflict can occur directly. Indirect conflict between Embodiments can occur, such as a Character being Tested or having an Ordeal (usually Low Stakes). Low Tension is the safety of normal life.",
+		"Push_Embodiments": "Push Embodiments may \"compete\" socially, or \"State their Thesis\", explaining their point of view, but cannot \"compete\" directly. Push Embodiments may act to keep Pull Embodiments apart. <br/><strong>Add 1 Stress</strong> if they see two Pull Embodiments approaching each other, or do not \"compete\" socially with another Push Embodiment (Low Stakes).",
+		"Pull_Embodiments": "Pull Embodiments are drawn towards other Embodiments, particulary towards other Pull Embodiments, but Push Embodiments often will keep Pull Embodiments apart.<br/><strong>Add 1 Stress</strong> for each \"known\" Embodiment that they have not interacted with in the last hour.",
+		"External_Embodiments": "External Embodiments (Hazards, Obstacles, Monsters, Failures, etc) may be capable of killing, but only NPC Extras may be deliberately targetted (and usually not Cast Extras).",
+		"Hidden_Embodiments": "Hidden Embodiments will cause a Character to second guess themselves, changing their mind (thesis) mid-conversation. This can also cause a Character to complicate their own decisions and actions. Referees and Yarn-Tellers should feel free to add complications to their decisions and offer them choices to vacillate between.<br/><strong>Add 1 Stress</strong> when they do not change their mind when offered an alternate choice.",
+		"Latent_Drama_Pool_Limit": 19,
+		"Tension_Level": 2
+	},
+	{
+		"Type": "Medium",
+		"Emotional_States": "Engaged, Attentive, Aware. Embodiment Characters are somewhat aware of each other, and emotionally engaged with the Narrative to some extent. Usually emotional effects are still 1 card effects, but 2 cards are possible.",
+		"Description": "Tension is noticeable between Embodiments. Embodiment Characters are often drawn into the same Scenes, and may interact physically.",
+		"Dramatic_Meaning": "Medium Tension allows conflicts to be worked through competition between Character Embodiments as well as External Embodiments",
+		"Push_Embodiments": "Push Embodiments are \"competitive\" with other Embodiments. This is usually Medium Stakes competition, argument or perhaps unarmed combat with another Push Embodiment. Push Embodiments may feel compelled to show-off for, or compete against, a Pull Embodiment.<br/><strong>Add 1 Stress</strong> each time they meet another Embodiment and do not compete, or with Push Embodiments argue or fight.",
+		"Pull_Embodiments": "Pull Embodiments are drawn towards each other, bringing Push Embodiments with them, and into open competition. The Pull Embodiment is often agitated, anxious, excited or nervous, although they may try and play it cool. Tension can force action upon a Pull Embodiment, but while it cannot compel them to physically fight, it can compel them to argue with, or draw closer to, one of the other Embodiments. Other Character Embodiments should be drawn to and perhaps even attracted to the Pull Embodiment, compelled to interact with them socially (although not always positively). Pull Embodiments may be compelled to talk about themselves, or one of the other Conflict sides or Embodiments (especially with Push Embodiment).<br/><strong>Add 1 Stress</strong> for every 10 minutes the Pull Embodiment does not talk about themselves, their Side / Thesis, or another Embodiment.",
+		"External_Embodiments": "All sides without a Character Embodiment should have at least one External Embodiment in the Scene. At least one side of the Conflict (often the Dominant or Above side) should have an External Embodiment in addition to any Character Embodiments at this Tension Level. Tests, Obstacles and Quests should be more common at this Tension Level.",
+		"Hidden_Embodiments": "Internal Conflicts should now become fairly obvious to everyone, as their behaviour moves from self-questioning to actual self-sabotage and self-destructive behaviours. This will often include Medium Stakes Negative Emotional effects and Psych Attacks on oneself. Characters that try to confront this Hidden Embodiment are likely to become a focus for the Conflict, causing the internal Conflict to project upon them often as a Pull Embodiment.<br/><strong>Add 1 Stress</strong> for any action the Character takes that does not work their internal Conflict in some way (such as self-harming, usually as self-imposed negative emotions, or self-sabotaging another action), or projects the Embodiment on another Character as a Pull Embodiment.",
+		"Latent_Drama_Pool_Limit": 16,
+		"Tension_Level": 3
+	},
+	{
+		"Type": "High",
+		"Emotional_States": "Alert, Excited, Scared. Embodiment Characters are clearly alert to the other Embodiments, the narrative will usually engage them emotionally during Recoiling. Up to 3 card emotional effects are possible, and 1 card emotional effects are practically guarranteed.",
+		"Description": "This is the level of Tension when someone pulls a gun, transforms into a werewolf, or a bomb is discovered in the room. No one is dying yet, but it suddenly looks likely. This Tension is usually kept until the Mid-to-Late Loom or even the Zenith. It is as high as Tension can go without becoming Open Conflict.",
+		"Dramatic_Meaning": "High Tension allows Conflict to be worked rapidly but without Embodiments actually fighting, usually, or at least not to the death.",
+		"Push_Embodiments": "Push Embodiments are usually compelled to act, attacking to capture, Maim or occasionally Cripple other unallied Push Embodiments, when they must.<br/><strong>Add 1 Stress</strong> when their actions do not target another Push Embodiment for capture or harm.",
+		"Pull_Embodiments": "Pull Embodiments are focused and passionate, compelled to act, determined to get what they want, and possibly even attack (often a Positive Psych effect) compelling emotional states. Pull Embodiments are usually restricted to creating only Crippling Wounds except when targeting another Pull Embodiment with a Positive Emotion Psych Effect.<br/><strong>Add 1 Stress</strong> when their actions do not focus on getting close or positively affecting another Pull Embodiment.",
+		"External_Embodiments": "At least two sides must have an External Embodiment present in the Scene (usually as a Test, Obstacle, or Monster) in addition to a Character Embodiment being present.",
+		"Hidden_Embodiments": "Hidden Embodiments are at their most intense at this Level. High Tension Hidden Embodiments can compel a Character to self-harming behaviors including suicide attempts. However, if confronted, or questioned about the Hidden Embodiment, or the Facet Side of the Conflict, the Hidden Embodiment will project their inner Conflict upon this Character as a projected Push Embodiment, behaving as though, the Character is a Push Embodiment of their Hidden Embodiment Facet.<br/><strong>Add 1 Stress</strong> for any action taken that does not work the internal conflict with self-destructive actions, or projects the Hidden Embodiment as a Push Embodiment.",
+		"Latent_Drama_Pool_Limit": 13,
+		"Tension_Level": 4
+	},
+	{
+		"Type": "Open Conflict",
+		"Emotional_States": "Terrified, Overjoyed, Shocked. No Character should remain unaware of the conflict now. People are being hurt, wounded and even killed, and emotional effects are almost always 2 or 3 card effects.",
+		"Description": "Now the Tension is exploding into Open Conflict. Stakes are elevated, shots are fired. People are being hurt. Typical of the Late Loom or Zenith although it may turn up earlier in action-driven genres, such as Sci-Fi and Dark Fantasy.",
+		"Dramatic_Meaning": "Open Conflict brings the sides of the Narrative Conflict into actual battles. Conflicts can be worked rapidly by fights, time-travel shennanigans, declarations of love, and other Higher Stakes Ordeals. Add an additional 1-3 Failure Levels to all Actions during Open Conflict Scenes, to represent the difficulties the Conflict causes. Open Conflict usually demands all Character Embodiments are present in the Scene, at least until someone dies.",
+		"Push_Embodiments": "Push Embodiments are compelled to attack, wound and even kill other Character Embodiments that they are not Allied with, and may be compelled to attack other Push Embodiments they are allied with, if no other target is available. They will not hesitate to kill other Push Embodiments, but usually only hurt Pull Embodiments that get in their way, although violent Characters may kill everything. Push Embodiments may gain up to 3 Monster Facets (depending upon the Genre), if the Plot desires, as they reveal their Monstrous nature.<br/><strong>Add 1 Stress</strong> when their action is not targetting a Character Embodiment for an attack.",
+		"Pull_Embodiments": "Pull Embodiments will feel compelled to approach other Character Embodiments, declare their attraction, or act with passion. Pull Embodiments often experience, or cause, heart-break in these Scenes, raising the Stakes to Soul-Stakes is normal for them. Pull Embodiments can become overwhelmed by the emotions they feel, and love can turn to hate, and vice-versa. Pull Embodiments can be compelled to kill, especially if rejected by another Character Embodiment, or if someone stands between them and another Pull Embodiment.<br/><strong>Add 1 Stress</strong> if any Character stops them from approaching another Character Embodiment, especially another Pull Embodiment.",
+		"External_Embodiments": "All Sides should have External Embodiments present in the Scene in addition to any Character Embodiments. Often these Embodiments will appear as Monsters, Obstacles and Failure Levels.",
+		"Hidden_Embodiments": "Hidden Embodiments are not possible in Open Conflict. Instead the Hidden Embodiment now behaves exactly as a Push, Pull or External Monster Embodiment, even including the Monster Facets if genre appropriate.",
+		"Latent_Drama_Pool_Limit": 11,
+		"Tension_Level": 5
+	},
+	{
+		"Type": "Tragic Conflict",
+		"Emotional_States": "Horrified, Despairing, Catastrophe. Embodiment Characters will be dying, struck down in the Conflict. Emotional effects are almost always 3 Card extreme emotional effects.",
+		"Description": "Tragic Conflict indicates at least one Character Embodiment has died. In most genres, this is the highest \"Tension\" Level the plot should reach.",
+		"Dramatic_Meaning": "The death of a Character Embodiment can mean a resolution is available for the Plot, however Plots will have back up External and Character Embodiments that they will deploy to insure they continue. The central conflict can be worked quickly as deaths alter the Facet Conflict balance. A minimum of 5 Failure Levels are normally added to all actions during a Tragic Conflict Scene, and it is possible for no one to succeed at all during them.",
+		"Push_Embodiments": "Push Embodiments usually gain Monster Facets at this Tension Level in almost all genres. Push Embodiments can be forced by the Plot to attack their own Allies (madness, hallucinations, confusion, betrayal, etc), and / or suffer intense Psych attacks, often Extreme Negative Emotions, although not always.<br/><strong>Add 1 Stress</strong> whenever they are not attacked by another Character Embodiment or Monster, or not affected by an Extreme Emotional state.",
+		"Pull_Embodiments": "Pull Embodiments can be paralysed by tragic Conflict, collapsing emotionally, depending upon their relationship with the dead Character. Pull Embodiments can becomes extremely erratic during tragic conflict, sometimes changing sides, betraying Allies for opposed Pull Embodiments, dying to make a point, killing to underline a point, that kind of thing.<br/><strong>Add 1 Stress</strong> when they are not affected by an Extreme Emotional State, or are not trying to make a point.",
+		"External_Embodiments": "All sides should be present as External Embodiments at least twice over in all Tragic Scenes, favouring Monster, Obstacle, Failure Level Embodiments.",
+		"Hidden_Embodiments": "Hidden Embodiments are not possible in Tragic Conflict. Instead the Hidden Embodiment now behaves exactly as a Push, Pull and External Monster Embodiment all at the same time.",
+		"Latent_Drama_Pool_Limit": 9,
+		"Tension_Level": 6
+	}
+]

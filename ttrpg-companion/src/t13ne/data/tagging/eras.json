@@ -1,0 +1,272 @@
+{
+    "0": {
+        "Name": "Unknown",
+        "Description": "'Unknown usually means that this is anachronistic in every time period, or that someone has forgotten to actually decide what Era is is really from.",
+        "Slug": "unknown",
+        "Parent": "T13Root"
+    },
+    "1": {
+        "Name": "Timeless",
+        "Description": "Timeless means you can find this in any time periods",
+        "Slug": "timeless",
+        "Parent": "T13Root"
+    },
+    "2": {
+        "Name": "Modern",
+        "Description": "The Modern day is really a broad swathe from the late 20th century to early 21st. Rendered particularly difficult to target precisely as it keeps moving. It is the Information age, Space Age, Digital Age, or Post-modern age depending who you ask.",
+        "Slug": "modern",
+        "Parent": 1
+    },
+    "3": {
+        "Name": "Future",
+        "Description": "Any time period that follows the Modern Era is a Future Era.",
+        "Slug": "future",
+        "Parent": 1
+    },
+    "4": {
+        "Name": "Past",
+        "Description": "Any time period before the modern day is the Past.",
+        "Slug": "past",
+        "Parent": 1
+    },
+    "5": {
+        "Name": "Pre-history",
+        "Description": "Pre-history is all history that pre-dates records. Most of the past falls within this Era.",
+        "Slug": "pre-history",
+        "Parent": 4
+    },
+    "6": {
+        "Name": "Ancient History",
+        "Description": "Ancient History ranges from 3600 BC to 500 CE, and covers the major developments of civilization that we still adhere to today. Writing, mathematics and science all owe their existence to records from this time period, be it the Chinese, Greek, Egyptian or Sumerian civilizations. Recorded History does not extend further back than this.",
+        "Slug": "ancient",
+        "Parent": 4
+    },
+    "7": {
+        "Name": "Medieval",
+        "Description": "The Middle Ages range from 500 CE to 1500 CE",
+        "Slug": "medieval",
+        "Parent": 4
+    },
+    "8": {
+        "Name": "Cold War",
+        "Description": "The Cold War extends from the 1940s to around 1995. It is the age of two super-powers and could also be called the Space Age, due to the development of space exploration technology, as well as nuclear weapons.",
+        "Slug": "cold-war",
+        "Parent": 4
+    },
+    "9": {
+        "Name": "World War II",
+        "Description": "World War II Era begins around 1935 with the invasion of Abyssinia by Italy, however it doesn't really get going until 1939 (or even 1941 if you're American), when Nazi Germany invades Poland. The war lasts until 1945. The period is the most obvious catalyst for the modern age.",
+        "Slug": "ww2",
+        "Parent": 4
+    },
+    "10": {
+        "Name": "Interbellum",
+        "Description": "Between the world wars. A bright hopeful time for some countries and in others a dark shadow rises. This is the time of the Great Depression, the New Deal, and the rise of of Dictators. This period is also known as the Golden Age of Heroes, which in some universes means the peak of pulp magazine heroes and in others the emergence of superheroes.",
+        "Slug": "interbellum",
+        "Parent": 4
+    },
+    "11": {
+        "Name": "The Great War",
+        "Description": "The Great War begins in 1914 and ends in 1918. It is the first modern mechanised war, which basically means machine guns and tanks exist, and aerial bombardments were possible of civilian populations.",
+        "Slug": "ww1",
+        "Parent": 4
+    },
+    "12": {
+        "Name": "Edwardian",
+        "Description": "The Early Twentieth Century. Called the Progressive Era in America. It was a time of great scientific discovery and social changes that directly leads to the modern day. It could be known as the Electric Age, as early electronics appear.",
+        "Slug": "edwardian",
+        "Parent": 4
+    },
+    "13": {
+        "Name": "Victorian",
+        "Description": "The period of the height of the British Empire (1837-1901). Britain was at the world's largest superpower, with strong political ties to Russia and Germany. During this period the American Civil War takes place, and western societies undergo the first moves away from true Monarchy and rampant Capitalism towards more Social Democratic systems of governance, including the Suffrage movement in Western Cultures.",
+        "Slug": "victorian",
+        "Parent": 4
+    },
+    "14": {
+        "Name": "Romantic Period",
+        "Description": "The Romantic period can be seen as poetic and cultural reaction to the Industrial revolution which is taking place at the same time. It is something of a cultural and literary revolution that influences the early Victorian era (1770-1850) ",
+        "Slug": "romantic",
+        "Parent": 4
+    },
+    "15": {
+        "Name": "Industrial Revolution",
+        "Description": "A period of great scientific discovery, characterised by the appearance of modern engineering materials, beginning with cast iron and Steam engine driven machines (from 1760s on). This era has a lot of overlaps with the Victorian era that follows it, and the Enlightenment before it. It is also referred to as the Regency Era in Britain, due to the Hanoverian Regents (also called the Georgian Era)",
+        "Slug": "industrial-revolution",
+        "Parent": 4
+    },
+    "16": {
+        "Name": "Enlightenment",
+        "Description": "The Enlightenment or Age of reason begins with the scientific renaissance (1600s), and extends until the French and Amercian revolutionary period (1776). Western culture develops philosophically, scientifically, and culturally during this period. It is the period of Symphonies and Operas. In Britain it is also known as the Stuart Era (1603-1714) after the Jacobean and Carolean kings. It leads to the English Civil War(s) (1642-1651) and eventually the establishment of a more modern form of Parliamentary democracy.",
+        "Slug": "enlightenment",
+        "Parent": 4
+    },
+    "17": {
+        "Name": "Renaissance",
+        "Description": "The Renaissance or Age of Discovery (1400-1600) begins with the exploration by the Portuguese of the West-Coast of Africa. It marks the end of the stagnation of the Middle Ages and the start of Modern Era.  Culturally in Europe this period is known as the Renaissance. In Britain it is referred to as the Tudor period (1485-1603) and the later part is called the Elizabethan Era (1550s-1603). It is the period where modern science is created, extracted by magicians and alchemists from Greek and Roman writings.",
+        "Slug": "renaissance",
+        "Parent": 4
+    },
+    "18": {
+        "Name": "Iron-Age",
+        "Description": "The Iron-Age is a relatively short period that begins during prehistory and ends with the beginnings of writing in certain areas. Iron-Age settlements in northern Europe continue long after the fall of Rome in the south, as there was no local writing culture except some Runic or Ogham texts that are fragmentary. For this reason we place generic Iron-Age here, contemporary with the Hellenistic, Roman and even some Dark-Age Historical periods.",
+        "Slug": "iron-age",
+        "Parent": 6
+    },
+    "19": {
+        "Name": "Roman",
+        "Description": "The Romans represent the end of Antiquity. Their culture arises during the Greek Hellenistic period, and they proceed to conquer much of Europe, with Iron-Age technology that includes early mechanisation and advanced construction techniques that are later lost until the modern age, such as concrete and automatic milling machinery. ",
+        "Slug": "roman",
+        "Parent": 6
+    },
+    "20": {
+        "Name": "Greek",
+        "Description": "The Greek civilization arises out of a dark-age following the fall of the Minoan culture around 8000 BCE. It is a transition period when modern civilization, religion, science and philosophy begins, and is considered when European Pre-history becomes history, with the surviving works of actual Greek historians cataloguing events during the period and before. This period is broken into smaller ages, from the Greek Dark Age, through the Classical Period, and into the Post-Alexandrian Hellenistic period. Technologically very advanced the Greeks developed a number of technologies that are still used today, including the crane and lighthouses",
+        "Slug": "greek",
+        "Parent": 6
+    },
+    "21": {
+        "Name": "Egyptian",
+        "Description": "The Egyptian Empire grew out of Stone-Age cultures as the desertification of northern Africa created the Sahara and forced the wandering hunter-gatherers to settle around the Nile. They developed metal working, probably as a result with trade with other cultures, as well as local discoveries, and there is evidence of an extensive trade network that eventually included the Minoans, and may have extended to Asia and even the Americas. Egypt bridges the change between Pre-history and history as they developed writing, although much of this knowledge was forgotten until the modern age. At the end of the Neolithic era, the Upper and Lower kingdoms united into the Dynastic Empire, around the time Stone Henge was built in England. Eventually the Egyptian empire is subsumed by the Greek, after the conquering of Alexander the Great, thousands of years after the building of the pyramids.",
+        "Slug": "egyptian",
+        "Parent": 6
+    },
+    "22": {
+        "Name": "Minoan",
+        "Description": "The Minoan, or Atlantean culture as it appears now to be, largely pre-dates the Greek period, and were contemporaries of the Pyramid building Pharaohs in Egypt. They represented a peak trade culture that traded across the Mediterranean until their civilization was disrupted by a volcanic eruption that destroyed their capital city and harmed all their major colonies with tsunamis. The technology of the Minoans was highly advanced for the period, perhaps higher than the Egyptians at that time, with strong evidence of indoor plumbing and advanced medicinal practices, that were lost and rediscovered in the Greek period.",
+        "Slug": "minoan",
+        "Parent": 6
+    },
+    "23": {
+        "Name": "Sumerian",
+        "Description": "The Sumerian civilization in the middle-east, pre-dates even the Egyptian Dynasties and appears to be the birthplace of civilization, including the development of writing, agriculture and settled living. Sumerian Civilization may represent a hold over from some lost stone-age civilization, or may have had extraterrestrial or time-traveller influences according to some \"historians\", as they represent a sudden leap in technology and life-style changes that are attributed to gods. The Sumerians themselves began as a stone-age culture, but developed metallurgy and began the bronze-age. The civilization later became or was replaced by the Akkadian and Assyrian empires, around the time the Giza pyramids were constructed.",
+        "Slug": "sumerians",
+        "Parent": 6
+    },
+    "24": {
+        "Name": "Bronze-Age",
+        "Description": "The Bronze Age represents the end of human pre-history. Several Bronze Age civilizations are considered Ancient History rather than Pre-History as they developed writing during this period. Earliest recorded Sword and Chariot technologies come from this period, with some evidence of long-distance trade across the landmasses and oceans.",
+        "Slug": "bronze-age",
+        "Parent": 5
+    },
+    "25": {
+        "Name": "Ice Age",
+        "Description": "Earth has had many Ice-Ages during the Billions of years of Pre-History, these are periods of strong ice accumulation, which have even reached the Equator during the early Earth. Normally we concern ourselves with the latest Ice-Age, or Younger Dryas when nomadic human (and related hominid) tribes spread across the globe. Technically, this age overlaps with the Stone-Age significantly, and falls within the larger Pleistocene.",
+        "Slug": "ice-age",
+        "Parent": 5
+    },
+    "26": {
+        "Name": "Stone Age",
+        "Description": "The Stone-Age is back when we were all cavemen, before we officially invented houses and living in cities (although we may have built giant stone temples, we're a little uncertain on that). Rather like now, the height of technology was silicon based.",
+        "Slug": "stone-age",
+        "Parent": 5
+    },
+    "27": {
+        "Name": "Mesolithic",
+        "Description": "The Mesolithic is second stone age of humanity, also called the Middle Stone Age. Stone technology is more advanced, with evidence of spear, axe and arrow technology. There is good evidence of textiles, including weaving and pottery and primitive farming technologies, as the Mesolithic follows the end of the Ice-Age. There is some evidence of stone buildings, although many coastal locations are flooded through Europe and Asia, causing a semi-dark-age of cultural collapses. Burial Mounds are common for cultural leaders. Large animal hunting appears reduced, with more emphasis on gathering, this may be due to extinctions and range restrictions of ice-age animals, or represent a cultural change, as animal husbandry also begins during this period.",
+        "Slug": "mesolithic",
+        "Parent": 26
+    },
+    "28": {
+        "Name": "Neolithic",
+        "Description": "The Neolithic or New Stone Age represents the peak of stone-age technology. Stone and mud-brick buildings are common and the first cities are usually considered to begin in this age with the widespread adoption of farming technologies. Stone temples and underground excavations are constructed during the Neolithic, with the oldest confirmed construction at Gobekli Tepe around 10,000 BCE. Animal Husbandry, Farming, Pottery and weaving technologies are quite advanced. In the Neolithic metal working and mettallurgy begin, with gold, silver and copper working in the late Neolithic.",
+        "Slug": "neolithic",
+        "Parent": 26
+    },
+    "29": {
+        "Name": "Paleolithic",
+        "Description": "The Paleolithc is first stone age of humanity, also called the Old Stone Age. Technology is limited to primitive stone shaping, although probably antler and wood shaping also occurred, as well as primitive textile technologies and fire-starting. Humans and human like hominids are spreading across the globe slowly, as hunter-gatherers.",
+        "Slug": "paleolithic",
+        "Parent": 26
+    },
+    "30": {
+        "Name": "Pleistocene",
+        "Description": "The Pleistocene represents the period of time from 2.5 million years ago until the end of the last ice-age. It is characterised by a number of ice-ages and cataclysmic volcanic eruptions that caused a number of animal extinctions (including the almost extinction of all hominid species). Human evolution is generally considered to have taken place during this period, although some evidence of early tool using apes has been found.",
+        "Slug": "pleistocene",
+        "Parent": 26
+    },
+    "31": {
+        "Name": "Cenozoic",
+        "Description": "The Cenezoic Era is the terms used to describe the period following the extinction event at the end of of the Mesozoic, 66 Million years ago. It is the period of modern mammalian and avian evolution and domination of the ecosystem. During the Cenozoic mammls and birds evolved from small creatures to mega-fauna, including whales, elephants. Technically, the modern age falls within the Cenozoic Era, although there are good reasons to consider the human altered modern climate as the beginnings of a separate Era.",
+        "Slug": "cenozoic",
+        "Parent": 5
+    },
+    "32": {
+        "Name": "Mesozoic",
+        "Description": "The Mesozoic Era is the middle period of life on Earth. Characterised as the Age of the Dinosaurs. We still know comparatively little about this period of Earth's history, and in the T13 Core Universe this period included a sentient dinosaur sub-species developed by the Time-Traveller Norridi. The Dinosaivean civilization is later integrated with the Eusaivean Civilization.",
+        "Slug": "mesozoic",
+        "Parent": 5
+    },
+    "33": {
+        "Name": "Paleozoic",
+        "Description": "The Paleozoic Era is the period of pre-history when invertebrates first evolved, during this period life moved from only being in the sea to first colonizing land. the first fish, amphibians and tetrapods all evolve during this era. There are numerous periods within the Era, from the Cambrian, Ordovician, Silurian, Carboniferous, and Permian periods, each characterised by some form of development or extinction event of their own.",
+        "Slug": "paleozoic",
+        "Parent": 5
+    },
+    "34": {
+        "Name": "Precambrian",
+        "Description": "The Precambrian Era was the first and earliest era of the Earth's existence. During this era life first evolved, potentially while the planet was still technically being formed during the heavy bombardment of the Hadean Eon, however we know that life must have existed by the Archaeon Eon, as oxygen liberation began then, leading to the Proterozoic when the first multi-cellular animals evolved. In some universes, such as the Lovecraftian Mythos Universe, this is when numerous alien species first colonized the Earth.",
+        "Slug": "precambrian",
+        "Parent": 5
+    },
+    "35": {
+        "Name": "Cretaceous",
+        "Description": "The Cretaceous is that period of Earth's history when all the most famous dinosaurs were running about. Dinosaurs had reached their peak, and had even started to degenerate, being replaced by the younger bird sub-species. In the T13 universe, this is the peak of the Dinosaivean culture, when they begin the spread away from Earth in the first migrations into space.",
+        "Slug": "cretaceous",
+        "Parent": 32
+    },
+    "36": {
+        "Name": "Jurassic",
+        "Description": "The Jurassic is the period of the age of dinosaurs when the dinosaurs really conquered the Earth. Many of the other giant reptile species went extinct during this period largely due to climatic changes and competition from arising dinosaur species. The first birds evolved from therapod dinosaurs during this period, and the first modern lizards are also from this period. Sometime during the Jurassic Norridi initially creates the Dinosaivean culture in the T13 universe.",
+        "Slug": "jurassic",
+        "Parent": 32
+    },
+    "37": {
+        "Name": "Triassic",
+        "Description": "The Triassic is that period of Earth's history when dinosaurs first evolved and developed, along with early mammals and reptiles. It is believed that numerous early time-traveller settlements were developed in this period by Norridi, that later developed into the local Dinosaivean culture in the T13 Universe.",
+        "Slug": "triassic",
+        "Parent": 32
+    },
+    "38": {
+        "Name": "20 minutes in the Future",
+        "Description": "The near future, which may be somewhat predictable. Computer and Nano-scale technologies develop alongside increasing social unrest and disenfranchisement of the poor. Often the setting of Cyberpunk fiction, this period represent the beginnings of Trans-human people.",
+        "Slug": "20-mins",
+        "Parent": 3
+    },
+    "39": {
+        "Name": "Singularity",
+        "Description": "The Singularity is a looming future event where the rate of technological achievement will exceed our ability to predict it. It is categorised by the creation of the first truly Sentient Artificial Intelligences, which in some scenarios immediately begin destroying, or subjugating, humanity, in others humanity blends with these AIs creating Trans-human species such as Eusaiveans and Cyberwraiths. In still others, humanity controls the AIs, and after some problems, harnesses them to assist humanity.",
+        "Slug": "singularity",
+        "Parent": 3
+    },
+    "40": {
+        "Name": "Apocalypse",
+        "Description": "A future environmental, warfare, or runaway-technology-caused apocalypse wipes out most of humanity. Severe environmental damage may wipe as much as 90% of life from the Earth leaving only bacteria in a worst case scenario, usually Apocalypses are actually about the fall of society (rather than all life), and the hopeful (or at least not entirely pessimistic) survival of a small group against this adversity, and the BDSM-leather-clad, occasionally mutant, biker-punks... There's a lot of them, for some reason.",
+        "Slug": "apocalypse",
+        "Parent": 3
+    },
+    "41": {
+        "Name": "Egression",
+        "Description": "The Egression is the great diaspora of humanity out into the galaxy. It may take the form of colonization, or integration and trade with an already present Galactic Federation of some sort. Humankind (or the AIs that inherit and surpass our culture) move away from Earth and spread across the Stars. It is categorized by huge, space-going vessels known as Colony ships that are often generational vessels, and later by Faster-than-light ships such as Warp drives (Void Runners) and Wormhole drives.",
+        "Slug": "egression",
+        "Parent": 3
+    },
+    "42": {
+        "Name": "Human Space",
+        "Description": "The distant future, mankind (or our inheritors) are spread out across the Galaxy in huge social structures with trillions of members. Typically characterised by wars between factions, and with non-conforming Alien species, it is, in most time-lines, a loose alliance, a trade federation, rather than a more rigid single political entity. This flexibility in social systems and mimetic diversity is considered an important factor in its success, although you cannot overlook humanities technology including Trans-human technologies that allow humans to adapt to non-terrestrial environments.",
+        "Slug": "human-space",
+        "Parent": 3
+    },
+    "43": {
+        "Name": "Post-Human Space",
+        "Description": "The far future, when our distant descendants have modified themselves, medically, genetically, or evolutionarily so that they are better adapted to their new home-worlds, hybridized with alien species, or shrugged free from biological matter. Humanity is shattered into myriad different species, many of which have no contact with each other due to the size of Post-Human Space. Trade between Post-Human species is often subdued, over-shadowed by ideological disputes between the various groups. From time to time, colonies collapse, or fall back into dark ages and are forgotten, or older lost colonies re-emerge, filled with new vigour, and a desire to right long misremembered wrongs.",
+        "Slug": "post-human",
+        "Parent": 3
+    },
+    "44": {
+        "Name": "Baroque Period",
+        "Description": "The Baroque period (1600-1750) is the period of dramatic art, music and architecture that follows the Renaissance and precedes the Enlightenment. It is characterised by highly detailed art, and the development of opera as a musical form. In Britain it overlaps with the later Stuart period and the early Georgian period.",
+        "Slug": "baroque", 
+        "Parent": 4 
+    }
+}    

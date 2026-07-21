@@ -1,0 +1,1432 @@
+{
+  "1651": {
+    "id": 1651,
+    "prof": {
+      "Name": [
+        "Result",
+        "Result Trial Lore Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Result is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1652": {
+    "id": 1652,
+    "prof": {
+      "Name": [
+        "Killer",
+        "Killer Trial Monster Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Killer is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1653": {
+    "id": 1653,
+    "prof": {
+      "Name": [
+        "Contradictory",
+        "Contradictory Trial Narration Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Contradictory is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1654": {
+    "id": 1654,
+    "prof": {
+      "Name": [
+        "Game",
+        "Game Trial Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Game is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1655": {
+    "id": 1655,
+    "prof": {
+      "Name": [
+        "Opposed Ordeals",
+        "Opposed Ordeal Trial Ordeal Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Opposed Ordeals is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1656": {
+    "id": 1656,
+    "prof": {
+      "Name": [
+        "Arsenal",
+        "Arsenal Trial Psychosocial Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Arsenal is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1657": {
+    "id": 1657,
+    "prof": {
+      "Name": [
+        "Compete",
+        "Compete Trial Quest Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Compete is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1658": {
+    "id": 1658,
+    "prof": {
+      "Name": [
+        "Quiz",
+        "Quiz Trial Question Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Quiz is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1659": {
+    "id": 1659,
+    "prof": {
+      "Name": [
+        "Combatant",
+        "Combatant Trial Resolved Hitch Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Combatant is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1660": {
+    "id": 1660,
+    "prof": {
+      "Name": [
+        "Conflict",
+        "Conflict Trial Rule Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Conflict is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1661": {
+    "id": 1661,
+    "prof": {
+      "Name": [
+        "Tactical Locations",
+        "Tactical Location Trial Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Tactical Locations is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1662": {
+    "id": 1662,
+    "prof": {
+      "Name": [
+        "Gladiator",
+        "Gladiator Trial Success Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Gladiator is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1663": {
+    "id": 1663,
+    "prof": {
+      "Name": [
+        "Plays",
+        "Plays Trial Sway Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Plays is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1664": {
+    "id": 1664,
+    "prof": {
+      "Name": [
+        "Dangerous",
+        "Dangerous Trial Tangle Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Dangerous is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1665": {
+    "id": 1665,
+    "prof": {
+      "Name": [
+        "Battling / Competing / Confronting / Fighting / Struggling / Tactics / Warring",
+        "Battling / Competing / Confronting / Fighting / Struggling / Tactics / Warring",
+        ""
+      ],
+      "Description": "Like a river carving its path through stone, Battling / Competing / Confronting / Fighting / Struggling / Tactics / Warring is the relentless pursuit of opposition.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "19"
+        ],
+        "Genres": [
+          "19"
+        ],
+        "Eras": [
+          "19"
+        ],
+        "Types": [
+          "Test"
+        ]
+      }
+    }
+  },
+  "1666": {
+    "id": 1666,
+    "prof": {
+      "Name": [
+        "Combative",
+        "Combative Trial Tone Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Combative is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1667": {
+    "id": 1667,
+    "prof": {
+      "Name": [
+        "A New Challenger Appears",
+        "A New Challenger Appears Trial Turn Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, A New Challenger Appears is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1668": {
+    "id": 1668,
+    "prof": {
+      "Name": [
+        "Assault",
+        "Assault Trial Twisted Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Assault is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1669": {
+    "id": 1669,
+    "prof": {
+      "Name": [
+        "Opposing",
+        "Opposing Trial Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Opposing is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1670": {
+    "id": 1670,
+    "prof": {
+      "Name": [
+        "Combative",
+        "Combative Trial Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Combative is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1671": {
+    "id": 1671,
+    "prof": {
+      "Name": [
+        "Battle",
+        "Battle Trial Nimbed Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Battle is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1672": {
+    "id": 1672,
+    "prof": {
+      "Name": [
+        "Strife",
+        "Strife Trial Umbral Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Strife is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1673": {
+    "id": 1673,
+    "prof": {
+      "Name": [
+        "Athlete",
+        "Athlete Trial Persona Proficiency",
+        ""
+      ],
+      "Description": "Combative and contradictory, Athlete is a test of strength and conviction, forged in the fires of conflict and personal trial.",
+      "Tags": {
+        "Facets": [
+          "19",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1674": {
+    "id": 1674,
+    "prof": {
+      "Name": [
+        "Virtue-less",
+        "Virtue-less Virtue Zero Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Virtue-less is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1675": {
+    "id": 1675,
+    "prof": {
+      "Name": [
+        "Damned",
+        "Damned Virtue Zero Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Damned is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1676": {
+    "id": 1676,
+    "prof": {
+      "Name": [
+        "Notorious Locations",
+        "Notorious Location Virtue Zero Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Notorious Locations is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1677": {
+    "id": 1677,
+    "prof": {
+      "Name": [
+        "Maleficent",
+        "Maleficent Virtue Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Maleficent is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1678": {
+    "id": 1678,
+    "prof": {
+      "Name": [
+        "Wicked",
+        "Wicked Virtue Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Wicked is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1679": {
+    "id": 1679,
+    "prof": {
+      "Name": [
+        "Ruinous Locations",
+        "Ruinous Location Virtue Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Ruinous Locations is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1680": {
+    "id": 1680,
+    "prof": {
+      "Name": [
+        "Delinquent",
+        "Delinquent Virtue Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Delinquent is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1681": {
+    "id": 1681,
+    "prof": {
+      "Name": [
+        "Regretful",
+        "Regretful Virtue Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Regretful is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1682": {
+    "id": 1682,
+    "prof": {
+      "Name": [
+        "Depressing Locations",
+        "Depressing Location Virtue Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Depressing Locations is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1683": {
+    "id": 1683,
+    "prof": {
+      "Name": [
+        "Defiant",
+        "Defiant Virtue Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Defiant is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1684": {
+    "id": 1684,
+    "prof": {
+      "Name": [
+        "Intimidating",
+        "Intimidating Virtue Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Intimidating is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1685": {
+    "id": 1685,
+    "prof": {
+      "Name": [
+        "Wistful Locations",
+        "Wistful Location Virtue Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Wistful Locations is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1686": {
+    "id": 1686,
+    "prof": {
+      "Name": [
+        "Sassy",
+        "Sassy Virtue Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Sassy is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1687": {
+    "id": 1687,
+    "prof": {
+      "Name": [
+        "Demanding",
+        "Demanding Virtue Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Demanding is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1688": {
+    "id": 1688,
+    "prof": {
+      "Name": [
+        "Challenging Locations",
+        "Challenging Location Virtue Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Challenging Locations is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1689": {
+    "id": 1689,
+    "prof": {
+      "Name": [
+        "Faithful",
+        "Faithful Virtue Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Faithful is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1690": {
+    "id": 1690,
+    "prof": {
+      "Name": [
+        "Straight",
+        "Straight Virtue Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Straight is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1691": {
+    "id": 1691,
+    "prof": {
+      "Name": [
+        "Level Locations",
+        "Level Location Virtue Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Level Locations is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1692": {
+    "id": 1692,
+    "prof": {
+      "Name": [
+        "Moral",
+        "Moral Virtue High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Moral is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1693": {
+    "id": 1693,
+    "prof": {
+      "Name": [
+        "Decent",
+        "Decent Virtue High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Decent is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1694": {
+    "id": 1694,
+    "prof": {
+      "Name": [
+        "Noble Locations",
+        "Noble Location Virtue High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Noble Locations is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1695": {
+    "id": 1695,
+    "prof": {
+      "Name": [
+        "Upright",
+        "Upright Virtue High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Upright is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1696": {
+    "id": 1696,
+    "prof": {
+      "Name": [
+        "Fair",
+        "Fair Virtue High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Fair is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1697": {
+    "id": 1697,
+    "prof": {
+      "Name": [
+        "Steep Locations",
+        "Steep Location Virtue High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Steep Locations is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1698": {
+    "id": 1698,
+    "prof": {
+      "Name": [
+        "Noble",
+        "Noble Virtue Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Noble is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1699": {
+    "id": 1699,
+    "prof": {
+      "Name": [
+        "Grand",
+        "Grand Virtue Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Grand is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1700": {
+    "id": 1700,
+    "prof": {
+      "Name": [
+        "Magnificent Locations",
+        "Magnificent Location Virtue Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Romantic and idealistic, the faithful practice of Magnificent Locations is a testament to the purity of heart and the noble pursuit of the good.",
+      "Tags": {
+        "Facets": [
+          "20",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

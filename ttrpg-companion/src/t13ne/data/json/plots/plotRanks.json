@@ -1,0 +1,83 @@
+[
+    {
+        "Rank": "Scene",
+        "Description": "Scenes are the rank and file of the Plot army. They examine a single aspect of a Conflict. Scenes can be called Tracts when they are a part of a larger Story.",
+        "Example": "Our Hero meets our Villain for the first time.",
+        "Conflicts": "1 (Simple-Complete)",
+        "Suggested_Number_of_Embodiments_per_Facet": 1,
+        "Scope": "Focused — May focus on a single, or select few, Characters or Locations. Several Locations / Stages may be passed through during a Scene.",
+        "Maximum_Plot_Hand_Size": 26,
+        "Minimum_Plot_Hand_Size": 5
+        
+    },
+    {
+        "Rank": "Act",
+        "Description": "Acts are the NCOs of the plot Army. They marshal Scenes into the Frame, Loom, Zenith structure.",
+        "Example": "Everything up to the first ad break is usually the Frame Act of a TV show.",
+        "Conflicts": "1 (Simple-Complex)",
+        "Suggested_Number_of_Embodiments_per_Facet": 1,
+        "Scope": "Limited — Usually focuses on at least a third of the available Locations and Characters of a Tale, without visiting or referencing all Locations and Characters.",
+        "Maximum_Plot_Hand_Size": 26,
+        "Minimum_Plot_Hand_Size": 6
+    },
+    {
+        "Rank": "Story",
+        "Description": "Stories examine a single Conflict usually no more complicated than Complex, and most often Simple to Complete. Stories are usually self contained, and do not relate to other larger Plots. This gives a Story a little more lee-way to create larger Locations than a Chapter usually can. Use Chapter instead if the Story is part of a larger Narrative.",
+        "Example": "Short Stories, Pilot Episodes of TV shows, Short plays or films, or One-Off adventures are all Stories.",
+        "Conflicts": "1 (Simple-Complete)",
+        "Suggested_Number_of_Embodiments_per_Facet": 1,
+        "Scope": "Closed — A Story's Scope is usually limited to a Specific Location (although usually large such as a Town, City, or even a Galaxy) and certain set of Characters. Characters and Locations from beyond the Story may be referenced, but are generally not required by the Story.",
+        "Maximum_Plot_Hand_Size": 26,
+        "Minimum_Plot_Hand_Size": 7
+    },
+    {
+        "Rank": "Chapter",
+        "Description": "Chapters usually examine a single Simple to Complete Conflict between multiple Sides, although multiple Simple Conflicts may occur during a Chapter. Chapters may also act as Tracts of a Volume, or Acts of an Arc.",
+        "Example": "Chapters of books, Episodes of TV shows, and individual comic-books are all Chapters.",
+        "Conflicts": "1-2 (Simple-Complete)",
+        "Suggested_Number_of_Embodiments_per_Facet": 2,
+        "Scope": "Open — A Chapter has a much larger Scope than a Story generally, although it is usually more focused (examining aspects of the larger Volume Conflict). They draw Characters and Locations from across the whole Volume (and may reference the Epic or Cycle).",
+        "Maximum_Plot_Hand_Size": 26,
+        "Minimum_Plot_Hand_Size": 8
+    },
+    {
+        "Rank": "Arc",
+        "Description": "Arcs examine two or more Simple Conflicts, or one Complex Conflict, usually at least one Sub-Plot extends a Story. Arcs can be Scenes (Tracts) of an Epic Demon's, or Acts of a Volume.",
+        "Example": "Arcs are a Novella, Two-part Special, Play or Movie in complexity.",
+        "Conflicts": "1-2 (Simple-Complex)",
+        "Suggested_Number_of_Embodiments_per_Facet": 4,
+        "Scope": "Limited — An Arc utilises a limited selection of Characters and Locations from a Volume or larger, but generally has more than a Story due to the greater complexity.",
+        "Maximum_Plot_Hand_Size": 37,
+        "Minimum_Plot_Hand_Size": 9
+    },
+    {
+        "Rank": "Volume",
+        "Description": "A Narrative of many interwoven Stories and Arcs that can be told to a satisfying conclusion. Volumes may be an Act of an Epic, but are just a Scene (or Tract) within a Cycle.",
+        "Example": "Volumes represents a complete Novel, or a Season/Series of a TV show, or a whole roleplaying game campaign.",
+        "Conflicts": "3-6 (Simple-Exceptional)",
+        "Suggested_Number_of_Embodiments_per_Facet": 8,
+        "Scope": "Partial — A Volume can access almost all Characters and Locations of an Epic or Cycle, but generally favours a part or only some Characters.",
+        "Maximum_Plot_Hand_Size": 50,
+        "Minimum_Plot_Hand_Size": 10
+    },
+    {
+        "Rank": "Epic",
+        "Description": "Epics represent a full and complete work. Epics can also be thought of as Acts of a Cycle.",
+        "Example": "A complete Franchise Canon. Several Volumes are gathered together into a Trilogy (or series of books or movies). In TV terms Epics are all the Seasons of a TV show, but not necessarily the reboot or movies. Large sprawling RPG campaigns can be Epics too, but more normally this would be all the collected Modules of a game series that you own, like D&D's Dark Sun, Greyhawk, Forgotten Realms, Dragonlance or your home-brew world.",
+        "Conflicts": "1-18 (Simple-Exceptional)",
+        "Suggested_Number_of_Embodiments_per_Facet": 16,
+        "Scope": "Complete — The Epic references all Characters and Locations (but not necessarily all Eras or Alternates).",
+        "Maximum_Plot_Hand_Size": 50,
+        "Minimum_Plot_Hand_Size": 17
+    },
+    {
+        "Rank": "Cycle",
+        "Description": "The summation of everything smaller than themselves, they hold together whole imaginary multiverses, containing potentially billions of Characters, Locations and individual Stories. ",
+        "Example": "Cycles bind whole book series, plus all the unpublished background material, encyclopaedia entries and the fan-fiction together. Cycles form the entirety of the DC and Marvel franchises, comic-books, TV shows, Movies and the games played by costumed kids. All the Stories, Novels, Movies, and TV shows that touch on the Cthulhu Mythos, or Greek Mythology, or Vampire lore could all be within a Cycle. In RPG terms the Cycle is represented by Source Books, all the Campaigns, modules, adventures, movies and novellas that a game may have spawned across all editions, plus every game ever played there by any gaming group, including the home-brewed spin-off versions.",
+        "Conflicts": "8-48 (Simple-Exceptional).",
+        "Suggested_Number_of_Embodiments_per_Facet": 32,
+        "Scope": "Exhaustive — Over the course of a Cycle every Character, Alternate, Era, Location and well everything is referenced.",
+        "Maximum_Plot_Hand_Size": 52,
+        "Minimum_Plot_Hand_Size": 21
+    }
+]

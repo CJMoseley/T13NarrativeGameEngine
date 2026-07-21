@@ -1,0 +1,1406 @@
+{
+  "2852": {
+    "id": 2852,
+    "prof": {
+      "Name": [
+        "Seize",
+        "Seize Fury Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Seize in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2853": {
+    "id": 2853,
+    "prof": {
+      "Name": [
+        "Shake",
+        "Shake Fury Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Shake in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2854": {
+    "id": 2854,
+    "prof": {
+      "Name": [
+        "Shout",
+        "Shout Fury Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Shout in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2855": {
+    "id": 2855,
+    "prof": {
+      "Name": [
+        "Splash",
+        "Splash Fury Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Splash in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2856": {
+    "id": 2856,
+    "prof": {
+      "Name": [
+        "Suppress",
+        "Suppress Fury Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Suppress in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2857": {
+    "id": 2857,
+    "prof": {
+      "Name": [
+        "Threaten",
+        "Threaten Fury Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Threaten in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2858": {
+    "id": 2858,
+    "prof": {
+      "Name": [
+        "Unleash",
+        "Unleash Fury Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Unleash in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2859": {
+    "id": 2859,
+    "prof": {
+      "Name": [
+        "Aggressive",
+        "Aggressive Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Aggressive in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2860": {
+    "id": 2860,
+    "prof": {
+      "Name": [
+        "Bitter",
+        "Bitter Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Bitter in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2861": {
+    "id": 2861,
+    "prof": {
+      "Name": [
+        "Boisterous",
+        "Boisterous Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Boisterous in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2862": {
+    "id": 2862,
+    "prof": {
+      "Name": [
+        "Destructive",
+        "Destructive Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Destructive in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2863": {
+    "id": 2863,
+    "prof": {
+      "Name": [
+        "Disturbed",
+        "Disturbed Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Disturbed in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2864": {
+    "id": 2864,
+    "prof": {
+      "Name": [
+        "Ferocious",
+        "Ferocious Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Ferocious in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2865": {
+    "id": 2865,
+    "prof": {
+      "Name": [
+        "Frenzied",
+        "Frenzied Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Frenzied in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2866": {
+    "id": 2866,
+    "prof": {
+      "Name": [
+        "Frustrated",
+        "Frustrated Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Frustrated in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2867": {
+    "id": 2867,
+    "prof": {
+      "Name": [
+        "Hectic",
+        "Hectic Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Hectic in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2868": {
+    "id": 2868,
+    "prof": {
+      "Name": [
+        "Jealous",
+        "Jealous Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Jealous in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2869": {
+    "id": 2869,
+    "prof": {
+      "Name": [
+        "Justified",
+        "Justified Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Justified in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2870": {
+    "id": 2870,
+    "prof": {
+      "Name": [
+        "Indignant",
+        "Indignant Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Indignant in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2871": {
+    "id": 2871,
+    "prof": {
+      "Name": [
+        "Intense",
+        "Intense Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Intense in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2872": {
+    "id": 2872,
+    "prof": {
+      "Name": [
+        "Irrational",
+        "Irrational Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Irrational in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2873": {
+    "id": 2873,
+    "prof": {
+      "Name": [
+        "Mad",
+        "Mad Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Mad in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2874": {
+    "id": 2874,
+    "prof": {
+      "Name": [
+        "Maladjusted",
+        "Maladjusted Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Maladjusted in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2875": {
+    "id": 2875,
+    "prof": {
+      "Name": [
+        "Morbid",
+        "Morbid Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Morbid in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2876": {
+    "id": 2876,
+    "prof": {
+      "Name": [
+        "Noisy",
+        "Noisy Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Noisy in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2877": {
+    "id": 2877,
+    "prof": {
+      "Name": [
+        "Outraged",
+        "Outraged Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Outraged in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2878": {
+    "id": 2878,
+    "prof": {
+      "Name": [
+        "Pathetic",
+        "Pathetic Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Pathetic in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2879": {
+    "id": 2879,
+    "prof": {
+      "Name": [
+        "Prejudiced",
+        "Prejudiced Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Prejudiced in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2880": {
+    "id": 2880,
+    "prof": {
+      "Name": [
+        "Psionic",
+        "Psionic Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Psionic in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2881": {
+    "id": 2881,
+    "prof": {
+      "Name": [
+        "Stormy",
+        "Stormy Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Stormy in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2882": {
+    "id": 2882,
+    "prof": {
+      "Name": [
+        "Raucous",
+        "Raucous Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Raucous in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2883": {
+    "id": 2883,
+    "prof": {
+      "Name": [
+        "Reckless",
+        "Reckless Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Reckless in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2884": {
+    "id": 2884,
+    "prof": {
+      "Name": [
+        "Resentful",
+        "Resentful Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Resentful in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2885": {
+    "id": 2885,
+    "prof": {
+      "Name": [
+        "Righteous",
+        "Righteous Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Righteous in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2886": {
+    "id": 2886,
+    "prof": {
+      "Name": [
+        "Thunderous",
+        "Thunderous Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Thunderous in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2887": {
+    "id": 2887,
+    "prof": {
+      "Name": [
+        "Torrential",
+        "Torrential Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Torrential in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2888": {
+    "id": 2888,
+    "prof": {
+      "Name": [
+        "Uncontrollable",
+        "Uncontrollable Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Uncontrollable in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2889": {
+    "id": 2889,
+    "prof": {
+      "Name": [
+        "Unreasoning",
+        "Unreasoning Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Unreasoning in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2890": {
+    "id": 2890,
+    "prof": {
+      "Name": [
+        "Violent",
+        "Violent Fury Annex Root Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, Violent in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2891": {
+    "id": 2891,
+    "prof": {
+      "Name": [
+        "lovers",
+        "lovers Fury Lore Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, lovers in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2892": {
+    "id": 2892,
+    "prof": {
+      "Name": [
+        "sorrows",
+        "sorrows Fury Lore Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, sorrows in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2893": {
+    "id": 2893,
+    "prof": {
+      "Name": [
+        "annoyances",
+        "annoyances Fury Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "An aggressive storm of intense emotion, annoyances in Fury is a thundering roar that defies silence and demands visceral attention.",
+      "Tags": {
+        "Facets": [
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2894": {
+    "id": 2894,
+    "prof": {
+      "Name": [
+        "Strong",
+        "Strong Gossamer Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Strong is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2895": {
+    "id": 2895,
+    "prof": {
+      "Name": [
+        "Airy",
+        "Airy Gossamer Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Airy is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2896": {
+    "id": 2896,
+    "prof": {
+      "Name": [
+        "Rip",
+        "Rip Gossamer Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Rip is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2897": {
+    "id": 2897,
+    "prof": {
+      "Name": [
+        "span>",
+        "span> Gossamer Critical Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, span> is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2898": {
+    "id": 2898,
+    "prof": {
+      "Name": [
+        "span>",
+        "span> Gossamer Fumble Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, span> is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2899": {
+    "id": 2899,
+    "prof": {
+      "Name": [
+        "Strength",
+        "Strength Gossamer Test Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Strength is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2900": {
+    "id": 2900,
+    "prof": {
+      "Name": [
+        "Hold",
+        "Hold Gossamer Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Hold is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "2901": {
+    "id": 2901,
+    "prof": {
+      "Name": [
+        "Conversing",
+        "Conversing Gossamer Test Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Conversing is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

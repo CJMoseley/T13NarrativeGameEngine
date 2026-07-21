@@ -1,0 +1,1451 @@
+{
+  "551": {
+    "id": 551,
+    "prof": {
+      "Name": [
+        "Robust Locations",
+        "Robust Location Gossamer Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Robust Locations is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "552": {
+    "id": 552,
+    "prof": {
+      "Name": [
+        "Strong",
+        "Strong Gossamer High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Strong is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "553": {
+    "id": 553,
+    "prof": {
+      "Name": [
+        "Effective",
+        "Effective Gossamer High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Effective is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "554": {
+    "id": 554,
+    "prof": {
+      "Name": [
+        "Stable Locations",
+        "Stable Location Gossamer High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Stable Locations is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "555": {
+    "id": 555,
+    "prof": {
+      "Name": [
+        "Muscular",
+        "Muscular Gossamer High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Muscular is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "556": {
+    "id": 556,
+    "prof": {
+      "Name": [
+        "Efficient",
+        "Efficient Gossamer High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Efficient is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "557": {
+    "id": 557,
+    "prof": {
+      "Name": [
+        "Light Locations",
+        "Light Location Gossamer High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Light Locations is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "558": {
+    "id": 558,
+    "prof": {
+      "Name": [
+        "Wiry",
+        "Wiry Gossamer High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Wiry is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "559": {
+    "id": 559,
+    "prof": {
+      "Name": [
+        "Light",
+        "Light Gossamer High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Light is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "560": {
+    "id": 560,
+    "prof": {
+      "Name": [
+        "Airy Locations",
+        "Airy Location Gossamer High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Airy Locations is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "561": {
+    "id": 561,
+    "prof": {
+      "Name": [
+        "Sinewy",
+        "Sinewy Gossamer High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Sinewy is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "562": {
+    "id": 562,
+    "prof": {
+      "Name": [
+        "Hard",
+        "Hard Gossamer High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Hard is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "563": {
+    "id": 563,
+    "prof": {
+      "Name": [
+        "Resilient Locations",
+        "Resilient Location Gossamer High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Resilient Locations is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "564": {
+    "id": 564,
+    "prof": {
+      "Name": [
+        "Dynamic",
+        "Dynamic Gossamer Very-High Boon Adjective Proficiency",
+        "energetic, forceful, active, vibrant, potent"
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Dynamic is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "565": {
+    "id": 565,
+    "prof": {
+      "Name": [
+        "Potent",
+        "Potent Gossamer Very-High Boon Descendant Adjective Proficiency",
+        "powerful, strong, mighty, vigorous, forceful"
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Potent is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "566": {
+    "id": 566,
+    "prof": {
+      "Name": [
+        "Influential Locations",
+        "Influential Location Gossamer Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Influential Locations is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "567": {
+    "id": 567,
+    "prof": {
+      "Name": [
+        "Mighty",
+        "Mighty Gossamer Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Mighty is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "568": {
+    "id": 568,
+    "prof": {
+      "Name": [
+        "Dynamic",
+        "Dynamic Gossamer Very-High Boon Descendant Adjective Proficiency",
+        "energetic, forceful, active, vibrant, potent"
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Dynamic is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "569": {
+    "id": 569,
+    "prof": {
+      "Name": [
+        "Sturdy Locations",
+        "Sturdy Location Gossamer Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Sturdy Locations is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "570": {
+    "id": 570,
+    "prof": {
+      "Name": [
+        "Forceful",
+        "Forceful Gossamer Very-High Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Forceful is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "571": {
+    "id": 571,
+    "prof": {
+      "Name": [
+        "Magnificent",
+        "Magnificent Gossamer Very-High Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Magnificent is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "572": {
+    "id": 572,
+    "prof": {
+      "Name": [
+        "Towering Locations",
+        "Towering Location Gossamer Very-High Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Towering Locations is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "573": {
+    "id": 573,
+    "prof": {
+      "Name": [
+        "Attachment",
+        "Attachment Gossamer Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Attachment is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "574": {
+    "id": 574,
+    "prof": {
+      "Name": [
+        "Longing",
+        "Longing Gossamer Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Longing is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "575": {
+    "id": 575,
+    "prof": {
+      "Name": [
+        "Envy",
+        "Envy Gossamer Negative Emotion Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Envy is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "576": {
+    "id": 576,
+    "prof": {
+      "Name": [
+        "Affinity",
+        "Affinity Gossamer Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Affinity is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "577": {
+    "id": 577,
+    "prof": {
+      "Name": [
+        "Attraction",
+        "Attraction Gossamer Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Attraction is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "578": {
+    "id": 578,
+    "prof": {
+      "Name": [
+        "Bonding",
+        "Bonding Gossamer Positive Emotion Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Bonding is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "0",
+          "9",
+          "5"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "579": {
+    "id": 579,
+    "prof": {
+      "Name": [
+        "Pulling",
+        "Pulling Gossamer Action Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Pulling is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "23"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "580": {
+    "id": 580,
+    "prof": {
+      "Name": [
+        "Rip",
+        "Rip Gossamer Attack Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Rip is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "581": {
+    "id": 581,
+    "prof": {
+      "Name": [
+        "Restrain",
+        "Restrain Gossamer Critical Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Restrain is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "582": {
+    "id": 582,
+    "prof": {
+      "Name": [
+        "Poser",
+        "Poser Gossamer Core Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Poser is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "583": {
+    "id": 583,
+    "prof": {
+      "Name": [
+        "Aery",
+        "Aery Gossamer Descendants Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Aery is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "584": {
+    "id": 584,
+    "prof": {
+      "Name": [
+        "Grappling",
+        "Grappling Gossamer Edge Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Grappling is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "585": {
+    "id": 585,
+    "prof": {
+      "Name": [
+        "Grappling",
+        "Grappling Gossamer Glow Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Grappling is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "586": {
+    "id": 586,
+    "prof": {
+      "Name": [
+        "Fumble",
+        "Fumble Gossamer Failure Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Fumble is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "587": {
+    "id": 587,
+    "prof": {
+      "Name": [
+        "Drop",
+        "Drop Gossamer Fumble Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Drop is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "588": {
+    "id": 588,
+    "prof": {
+      "Name": [
+        "Tangling",
+        "Tangling Gossamer Gnarl Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Tangling is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "589": {
+    "id": 589,
+    "prof": {
+      "Name": [
+        "Wind",
+        "Wind Gossamer Herald Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Wind is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "590": {
+    "id": 590,
+    "prof": {
+      "Name": [
+        "Binding",
+        "Binding Gossamer Hitch Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Binding is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "591": {
+    "id": 591,
+    "prof": {
+      "Name": [
+        "Bindings",
+        "Bindings Gossamer Hurdle Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Bindings is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "592": {
+    "id": 592,
+    "prof": {
+      "Name": [
+        "Air",
+        "Air Gossamer Incarna Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Air is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "13"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "593": {
+    "id": 593,
+    "prof": {
+      "Name": [
+        "Airy Locations",
+        "Airy Location Gossamer Location Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Airy Locations is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "594": {
+    "id": 594,
+    "prof": {
+      "Name": [
+        "Rumour",
+        "Rumour Gossamer Lore Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Rumour is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "595": {
+    "id": 595,
+    "prof": {
+      "Name": [
+        "Goon",
+        "Goon Gossamer Monster Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Goon is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "596": {
+    "id": 596,
+    "prof": {
+      "Name": [
+        "Dialogue",
+        "Dialogue Gossamer Narration Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Dialogue is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "597": {
+    "id": 597,
+    "prof": {
+      "Name": [
+        "Bad Hair Day",
+        "Bad Hair Day Gossamer Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Bad Hair Day is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "598": {
+    "id": 598,
+    "prof": {
+      "Name": [
+        "Strength Ordeals",
+        "Strength Ordeal Gossamer Ordeal Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Strength Ordeals is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "599": {
+    "id": 599,
+    "prof": {
+      "Name": [
+        "Language",
+        "Language Gossamer Psychosocial Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Language is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "600": {
+    "id": 600,
+    "prof": {
+      "Name": [
+        "Hold",
+        "Hold Gossamer Quest Proficiency",
+        ""
+      ],
+      "Description": "Woven through dialogue and conversational nuance, Hold is a delicate thread in the social tapestry, light yet binding.",
+      "Tags": {
+        "Facets": [
+          "6",
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}

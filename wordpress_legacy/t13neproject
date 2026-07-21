@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<NotepadPlus>
+    <Session activeView="0">
+        <mainView activeIndex="0">
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="6264" startPos="0" endPos="0" selMode="0" offset="0" wrapCount="1" lang="PHP" encoding="-1" userReadOnly="no" filename="E:\Site\cjm.dev.cc\wp-content\plugins\t13ne\includes\class-t13-ne-types.php" backupFilePath="" originalFileLastModifTimestamp="1854064673" originalFileLastModifTimestampHigh="30960126" mapFirstVisibleDisplayLine="-1" mapFirstVisibleDocLine="-1" mapLastVisibleDocLine="-1" mapNbLine="-1" mapHigherPos="-1" mapWidth="-1" mapHeight="-1" mapKByteInDoc="512" mapWrapIndentMode="-1" mapIsWrap="no" />
+        </mainView>
+        <subView activeIndex="0" />
+        <FileBrowser latestSelectedItem="E:\Site\cjm.dev.cc\wp-content\plugins\t13ne\includes\class-t13-ne-types.php">
+            <root foldername="E:\Site\cjm.dev.cc\wp-content\plugins\t13ne" />
+        </FileBrowser>
+    </Session>
+</NotepadPlus>

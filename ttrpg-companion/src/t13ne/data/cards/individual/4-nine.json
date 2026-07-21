@@ -1,0 +1,118 @@
+{
+	"Card_Corner": "9",
+	"Card": "Nine",
+	"Suit": "4",
+	"IconSuit": "♠",
+	"Pips": "9",
+	"Unicode": "&#x1f0a9;",
+	"Svg": "images/cards-svg/9S.svg",
+	"Wound_Level": 3,
+	"Facet": "Inertia",
+	"Tao": [
+		0,
+		1
+	],
+	"Narrative_Meaning": "Nines signify fortune, monetary rewards and cash prizes.",
+	"Image": "",
+	"Yarn": {
+		"Yarn_Name": "The Robot",
+		"Yarn_Description": "The Robot card represents the automatons, and workers, be they real robots, or people who live rigid, regimented lives, like the Eusaiveans. The Robot can represent the unconscious mind, which operates the body for the consciousness, or the mechanistic body itself. It can also represent those who are unawakened (or ain't woke) to what is really happening. They might be muggles, grunts, slaves, serfs, or actual robots.",
+		"Significator": {
+			"Plot": "The Robot Plot is a special sort of plot that is built with conditional events and essentially is preprogrammed. This sort of Plot can be great for pre-planned Scenarios, but represent a lot of work for the author. At it's simplest a Robot plot can be built around a single \"rail-road\" time-line that all the sides are trying to either maintain, subvert, or break. ",
+			"Side": "A side marked by the Robot may be composed of actual robots (rarely), or may have a rigid routine that they maintain, usually following all of their society's laws and regulations, or may be sleepwalkers somehow, unable to see what is going on around them. Sometimes the Robot side can be awakened, causing strikes, civil disruption, panics, and even revolutions depending upon the plot, setting and genre.",
+			"Character": "The Robot Significator indicates a Character who follows orders and rules.<p>They <strong>Gain Yin</strong> when they follow rules that they are subject to. </p><p>They <strong>Gain Yang</strong> when they follow legal orders that they have been given. </p><p>They <strong>Gain Chi</strong> when they perform actions automatically (they have practised an action enough that it no longer requires conscious thought).</p><p>They also gain +1 Success Levels to any task they perform automatically.</p>",
+			"Diegetic_Character": "A character of rigid routine and unquestioning obedience, who moves through the world with mechanistic precision. They find comfort in following established rules and orders, often performing their duties with an automatic, practiced ease that borders on the inhuman.",
+			"Scene": "The Robot Scene can be used in a number of ways. It can represent a Character going about their automatic scheduled humdrum day, any machine that performs a task, any repetitive task (of the sort that machinery could do), or it can represent an actual robot. Yarn-Tellers can play the Robot on a Target to make them behave like a robot (going about their normal schedule and behaviour, ignoring the Yarn-Teller's presence), or can set them a Robot task that they must complete."
+		},
+		"Beat_Type": "7",
+		"Conflict_Embodiment": "0",
+		"Facet_Embodiment": "0",
+		"Hook_Aspect": "Hitches",
+		"Aspect_Description": "The Hook targets the Character's Hitches, the bigger the better.",
+		"Hook": "Previously...",
+		"Hook_Description": "This Story is a continuation, sequel and possibly a resolution to a previous Story. It can help to have a little recap, where was that Story left, what did they PCs know, how much do the Players remember? This Hook is that chance to recap.",
+		"Gain": "Powerful, but subservient Cast or Force of Nature Ally (Supernatural Servant / Golem / Robot / AI / Toon)",
+		"Diegetic_Gain": "The acquisition of a powerful and tireless servant—a constructed guardian, a mindless laborer, or a digital assistant—that obeys every command without hesitation or question.",
+		"Fray": "An Ordinary Day",
+		"Fray_Description": "An Ordinary Day, just going about doing what you normally do. So much of the day is normally performed by the body and mind on autopilot, imagine if it wasn't, imagine trying to do everything in a normal day consciously, as though for the first time. Usually this sort of Fray is part of early world-building to establish the Character, later this Ordinary Day is subverted as the Character has changed and developed, their old Ordinary Day is no longer normal and they may expect Demons or Wizards to burst into the office at any moment, and have to focus on the HR Memo that's doing the rounds.",
+		"Snag": "Automatic",
+		"Snag_Description": "The Automatic Snag indicates that the problem that complicates the Fray is an automatic process, this could be indicative of a machine or process that is our of control, or be a failure of a mechanism or computer system that the PCs were relying on (Damage to a crucial Descendant can qualify), or it could be the result of the PCs own unconscious processes rebelling against their conscious decisions.",
+		"NPC": {
+			"Archetype": "Robot",
+			"Persona": 4,
+			"Core": 8,
+			"Hitch": 8,
+			"Description": "The Robot is usually an android servant or digital assistant. It has some AI and may even be sentient in Science-Fiction. In some genres Robot Archetypes may also be used for slaves, zombies and hypnotized or enchanted servants."
+		},
+		"Sweeping": "Systems",
+		"Sweeping_Text": "The PCs are helped by systems they or someone else has put in place, maybe the Police turn up and help, maybe the guy on Tech Support really knows his stuff and fixed the issues, or maybe the insurance pays out, covering that nasty damages or hospital bill.",
+		"History": "Controlled",
+		"History_Description": "The Robot indicates the history of the current situation was controlled, usually this means someone was controlling the situation and created it, sometimes it means they have recently lost control leading to the current situation. Most importantly, who or what, exactly was under control?",
+		"Situation": "Autonomous",
+		"Situation_Description": "The Robot indicates that the current situation is autonomous, it is under its own control, playing out on automatic. This may have been set up by someone, but they are no longer directly involved.",
+		"Solution": "Automation",
+		"Solution_Description": "The Robot indicates that the solution to the current situation can be automated, this may mean an industrial process, some sort of magical automation (such as a golem), or an actual robot occasionally.",
+		"Revelations": {
+			"About": "Dominant",
+			"About_Description": "The information revealed is about the Dominant Conflict Embodiment. Sometimes they are Characters, but almost as often they are Locations, Quests, Ordeals, or similar. Where this is true the Revelation should reveal details about future Quests the Pressed Characters must complete, or places they should visit. The Revelation can be little more than a call-back or foreshadowing if handled correct.",
+			"Info": "By What Means?",
+			"Info_Description": "Information about how far someone may go to achieve their Ends.",
+			"Vector": "Argument",
+			"Vector_Description": "Perhaps you overhear an argument that just happens to contain info you need, or maybe while you are having an argument something comes to light.",
+			"Alternate": "Wants",
+			"Alternate_Description": "What does the Embodiment want? You may not know how, or why, they are going to steal the Sceptre of Brass, but you do know they are after it.",
+			"Detail": "Doubtful",
+			"Detail_Description": "These details are probably mostly lies. Unlikely to be true, they hint at something that, at the very least, you hope cannot be."
+		}
+	},
+	"Obstacle": {
+		"Type": "Robotic",
+		"Description": "Robotic traps come in all shapes and sizes, from automatic spike traps, to actual robots. The robotic trap usually targets a moving individual and wounds them. Then it selects a new moving target (or the same target randomly if they're still moving) and wounds them. The trap may be limited in duration, or range, as well as Limit."
+	},
+	"Tarot": {
+		"WyrdTarot": "Distractions",
+		"Normal": "Target takes 1d4 Unsoakable Distract Wounds.",
+		"Crossed": "Target removes <strong>all</strong> Distract Wounds"
+	},
+	"Ordeal": {
+		"Ordeal_Type": "Opposed Ordeal",
+		"Stages": "6",
+		"Ordeal_Spread": "Block",
+		"Stakes": "Extreme",
+		"Test": "Work (Craft) / Program (Orthodox) / Control (Dominion)",
+		"Obstacles": "1 Obstacle in every Stage",
+		"Suggested_Action": "Hack",
+		"Stage": "Competition",
+		"Stage_Description": "The route ahead involves some extra competition. Maybe the race you are in suddenly has a stampede cross it, or you have to reach the level crossing before the train, the road runs along side. Then again it could just mean that what you thought was a dash is now something else.",
+		"Motional": "Dangerous Riding Flee",
+		"Motional_Description": "Ride! Pedal faster! We need to get to high ground, ahead of the flood-waters.",
+		"Tide_of_Battle": "Extreme Violence",
+		"Tide_of_Battle_Text": "Both sides are extrememly dangerous right now, and the Stakes are lifted to a minimum of Extreme. The Flowing side may add +2 Pips to any Attack card, the Ebbing side may add +1 Pips to an Attack card.",
+		"Fight": "Bullies and Thugs",
+		"Fight_Description": "The enemy is a larger group of Cast Extras (or Force-of-Nature for powerful Characters) who attempt to inflict harm on the Party, usually trying to humiliate or steal from the PCs. They rarely intend to kill, and will usually retreat if any PC or member is seriously injured."
+	},
+	"Lea": {
+		"PathColour": "Red/Purple Carnivore",
+		"Bulmas": "Hunters, Broccen, Vermis, Labyrinthine, All-Walkers",
+		"AnimalCategory": "Megafauna – Large",
+		"Example": "Tiger / Python / Alligator / Polar Bear / Large Shark",
+		"Bodypart": "Muscle",
+		"Notes": "These Paths are usually lost in any area where the Labyrinth is strong."
+	},
+	"Stress": {
+		"Type": "Health",
+		"Description": "Stress, especially high stress over time, can have a very deleterious effect upon a Character’s health. Commonly a weakened immune system takes longer to shrug off infections and heal, and the Character may find themselves run down and exhausted from minor illnesses that would not normally affect them so much.",
+		"Rules": "Healing times for all Spades Suited Wounds adds the Current Stress as a Chi Extend Duration, even a Distract Wound can take a while to shake off when you are Stressed. Additionally all Spades Suited Wounds that the Character takes will add Current Stress to their Pips, including the Difficulty to treat and Stabilise (increasing the chances of Wounds Festering)."
+	},
+	"Trauma": {
+		"Type": "Robotic",
+		"Description": "Trauma can make a Character seem like a robot in a number of ways. Many victims of Trauma will suppress or numb their emotions, some focus on logic and rationalism, others can settle into a strict regime of work, so that they don’t have time to think about their past traumas, and for a few injuries may have been healed with mechanical or cybernetic parts (for some such as Eusaiveans they may even be converted into a Cyberwraith), dissociation, psychoses, and delusions convince them that they are no longer really human, embracing their idea of robotic behaviour.",
+		"Rules": "Trauma may cause a Character to become Cybernetic (with associated Hitch(es) created from current Stress relief), or simply to behave in a robotic way. The Character can Relieve 1 Stress by acting robotically or \"inhumanly\" in any given situation (working mechannically, suppressing or numbing their emotions, speaking in a flat monotone to avoid displaying emotional cues, ignoring social pleasantries, having no discernable sense of humour, acting \"robotic\", \"undead\", or \"inhuman\" in some way, etc)."
+	},
+	"Age": {
+		"Type": "Drudgery",
+		"Description": "An Age of Drudgery is occurring. During this age a society becomes almost robotic, it is in many ways a zombie society, dead already, but still going through the motions. A society in this state may wake up, revitalise and move formward, but then again it does require someone within the membership realising what is happening and changing something before a complete collapse occurs as some new society offers a better way of life to its members.",
+		"Diegetic_Description": "A bleak era where society has fallen into a state of mindless repetition. It is a time of hollow traditions and outdated practices, where the collective continues to go through the motions of a once-vital culture that has long since lost its purpose and spark.",
+		"Rules": "During an Age of Drudgery a society appears to continue their last age, although not to the same result. The society may be blindly producing outdated technology, they may be using a traditional manufacturing method that is no longer competitive, may be fighting an enemy that no longer strictly speaking exists, or they may be following some ancient contract or programming that is long out of date in some other way."
+	}
+}

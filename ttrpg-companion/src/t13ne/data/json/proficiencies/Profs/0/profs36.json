@@ -1,0 +1,1424 @@
+{
+  "1801": {
+    "id": 1801,
+    "prof": {
+      "Name": [
+        "Hesitation",
+        "Hesitation Wyrd Fumble Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Hesitation is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "11"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1802": {
+    "id": 1802,
+    "prof": {
+      "Name": [
+        "Ruling",
+        "Ruling Wyrd Gnarl Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Ruling is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1803": {
+    "id": 1803,
+    "prof": {
+      "Name": [
+        "Liminal",
+        "Liminal Wyrd Herald Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Liminal is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "10"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1804": {
+    "id": 1804,
+    "prof": {
+      "Name": [
+        "Doomed",
+        "Doomed Wyrd Hitch Proficiency",
+        "cursed, bewitched, fated, ill-fated, condemned"
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Doomed is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1805": {
+    "id": 1805,
+    "prof": {
+      "Name": [
+        "Predestination",
+        "Predestination Wyrd Hurdle Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Predestination is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "8"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1806": {
+    "id": 1806,
+    "prof": {
+      "Name": [
+        "Fate / Sway",
+        "Fate / Sway",
+        ""
+      ],
+      "Description": "To wield Fate / Sway is to hold the very heart of Fate, a power that shapes the tides of judgment.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "21"
+        ],
+        "Genres": [
+          "21"
+        ],
+        "Eras": [
+          "21"
+        ],
+        "Types": [
+          "Incarna"
+        ]
+      }
+    }
+  },
+  "1807": {
+    "id": 1807,
+    "prof": {
+      "Name": [
+        "Court Locations",
+        "Court Location Wyrd Location Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Court Locations is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1808": {
+    "id": 1808,
+    "prof": {
+      "Name": [
+        "Warning",
+        "Warning Wyrd Lore Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Warning is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "14"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1809": {
+    "id": 1809,
+    "prof": {
+      "Name": [
+        "Doom-weaver",
+        "Doom-weaver Wyrd Monster Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Doom-weaver is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "12"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1810": {
+    "id": 1810,
+    "prof": {
+      "Name": [
+        "Foreshadowing",
+        "Foreshadowing Wyrd Narration Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Foreshadowing is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1811": {
+    "id": 1811,
+    "prof": {
+      "Name": [
+        "Shadows from Above",
+        "Shadows from Above Wyrd Narrative Moment Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Shadows from Above is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1812": {
+    "id": 1812,
+    "prof": {
+      "Name": [
+        "Axiomatic Ordeals",
+        "Axiomatic Ordeal Wyrd Ordeal Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Axiomatic Ordeals is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "19"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1813": {
+    "id": 1813,
+    "prof": {
+      "Name": [
+        "Judgement",
+        "Judgement Wyrd Psychosocial Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Judgement is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "3"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1814": {
+    "id": 1814,
+    "prof": {
+      "Name": [
+        "Capture / Judge",
+        "Capture / Judge",
+        ""
+      ],
+      "Description": "The ghost of a forgotten memory, Capture / Judge is the echo of destiny in the ruins of the past.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "21"
+        ],
+        "Genres": [
+          "21"
+        ],
+        "Eras": [
+          "21"
+        ],
+        "Types": [
+          "Quest"
+        ]
+      }
+    }
+  },
+  "1815": {
+    "id": 1815,
+    "prof": {
+      "Name": [
+        "Fact-finding",
+        "Fact-finding Wyrd Question Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Fact-finding is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "4"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1816": {
+    "id": 1816,
+    "prof": {
+      "Name": [
+        "Discretion",
+        "Discretion Wyrd Resolved Hitch Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Discretion is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1817": {
+    "id": 1817,
+    "prof": {
+      "Name": [
+        "Law",
+        "Law Wyrd Rule Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Law is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1818": {
+    "id": 1818,
+    "prof": {
+      "Name": [
+        "Balance",
+        "Balance Wyrd Style Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Balance is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "0"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1819": {
+    "id": 1819,
+    "prof": {
+      "Name": [
+        "Judgement",
+        "Judgement Wyrd Success Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Judgement is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "20"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1820": {
+    "id": 1820,
+    "prof": {
+      "Name": [
+        "Axioms",
+        "Axioms Wyrd Sway Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Axioms is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "1"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1821": {
+    "id": 1821,
+    "prof": {
+      "Name": [
+        "Narratives",
+        "Narratives Wyrd Tangle Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Narratives is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "6"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1822": {
+    "id": 1822,
+    "prof": {
+      "Name": [
+        "Intuition / Judging / Law-making / Loopholes / Magic / Prophecy",
+        "Intuition / Judging / Law-making / Loopholes / Magic / Prophecy",
+        ""
+      ],
+      "Description": "To wield Intuition / Judging / Law-making / Loopholes / Magic / Prophecy is to hold the very heart of Fate, a power that shapes the tides of inevitability.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "21"
+        ],
+        "Genres": [
+          "21"
+        ],
+        "Eras": [
+          "21"
+        ],
+        "Types": [
+          "Test"
+        ]
+      }
+    }
+  },
+  "1823": {
+    "id": 1823,
+    "prof": {
+      "Name": [
+        "Magical",
+        "Magical Wyrd Tone Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Magical is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1824": {
+    "id": 1824,
+    "prof": {
+      "Name": [
+        "Meddlers",
+        "Meddlers Wyrd Turn Proficiency",
+        "interferer, busybody, intruder, prying, intrusive"
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Meddlers is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1825": {
+    "id": 1825,
+    "prof": {
+      "Name": [
+        "Destiny",
+        "Destiny Wyrd Twisted Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Destiny is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21",
+          "18"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1826": {
+    "id": 1826,
+    "prof": {
+      "Name": [
+        "Allowing",
+        "Allowing Wyrd Annex Channel Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Allowing is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1827": {
+    "id": 1827,
+    "prof": {
+      "Name": [
+        "Judged",
+        "Judged Wyrd Annex Root Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Judged is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1828": {
+    "id": 1828,
+    "prof": {
+      "Name": [
+        "Inevitable",
+        "Inevitable Wyrd Nimbed Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Inevitable is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1829": {
+    "id": 1829,
+    "prof": {
+      "Name": [
+        "Legal",
+        "Legal Wyrd Umbral Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Legal is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1830": {
+    "id": 1830,
+    "prof": {
+      "Name": [
+        "Judge",
+        "Judge Wyrd Quest Proficiency",
+        ""
+      ],
+      "Description": "Magical and mythical, the foreshadowing of Judge is a thread on Wyrd's loom, binding fate with legalistic and supernatural certainty.",
+      "Tags": {
+        "Facets": [
+          "21"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1831": {
+    "id": 1831,
+    "prof": {
+      "Name": [
+        "Stuck",
+        "Stuck Yonder Zero Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Stuck leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1832": {
+    "id": 1832,
+    "prof": {
+      "Name": [
+        "Frozen",
+        "Frozen Yonder Zero Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Frozen leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1833": {
+    "id": 1833,
+    "prof": {
+      "Name": [
+        "Mired Locations",
+        "Mired Location Yonder Zero Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Mired Locations leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1834": {
+    "id": 1834,
+    "prof": {
+      "Name": [
+        "Connected",
+        "Connected Yonder Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Connected leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1835": {
+    "id": 1835,
+    "prof": {
+      "Name": [
+        "Affiliated",
+        "Affiliated Yonder Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Affiliated leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1836": {
+    "id": 1836,
+    "prof": {
+      "Name": [
+        "Joined Locations",
+        "Joined Location Yonder Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Joined Locations leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1837": {
+    "id": 1837,
+    "prof": {
+      "Name": [
+        "Affectionate",
+        "Affectionate Yonder Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Affectionate leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1838": {
+    "id": 1838,
+    "prof": {
+      "Name": [
+        "Partial",
+        "Partial Yonder Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Partial leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1839": {
+    "id": 1839,
+    "prof": {
+      "Name": [
+        "Sweet Locations",
+        "Sweet Location Yonder Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Sweet Locations leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1840": {
+    "id": 1840,
+    "prof": {
+      "Name": [
+        "Amiable",
+        "Amiable Yonder Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Amiable leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1841": {
+    "id": 1841,
+    "prof": {
+      "Name": [
+        "Harmonious",
+        "Harmonious Yonder Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Harmonious leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1842": {
+    "id": 1842,
+    "prof": {
+      "Name": [
+        "Hospitable Locations",
+        "Hospitable Location Yonder Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Hospitable Locations leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1843": {
+    "id": 1843,
+    "prof": {
+      "Name": [
+        "Cordial",
+        "Cordial Yonder Low Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Cordial leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1844": {
+    "id": 1844,
+    "prof": {
+      "Name": [
+        "Coordinated",
+        "Coordinated Yonder Low Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Coordinated leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1845": {
+    "id": 1845,
+    "prof": {
+      "Name": [
+        "Cozy Locations",
+        "Cozy Location Yonder Low Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Cozy Locations leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1846": {
+    "id": 1846,
+    "prof": {
+      "Name": [
+        "Laid-back",
+        "Laid-back Yonder Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Laid-back leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1847": {
+    "id": 1847,
+    "prof": {
+      "Name": [
+        "Glowing",
+        "Glowing Yonder Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Glowing leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1848": {
+    "id": 1848,
+    "prof": {
+      "Name": [
+        "Agreeable Locations",
+        "Agreeable Location Yonder Medium Boon Location Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Agreeable Locations leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1849": {
+    "id": 1849,
+    "prof": {
+      "Name": [
+        "Mellow",
+        "Mellow Yonder Medium Boon Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Mellow leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  },
+  "1850": {
+    "id": 1850,
+    "prof": {
+      "Name": [
+        "Soothing",
+        "Soothing Yonder Medium Boon Descendant Adjective Proficiency",
+        ""
+      ],
+      "Description": "Distant and travel-worn, the odyssey of Soothing leads through strange lands and over long horizons in a constant search for the beyond.",
+      "Tags": {
+        "Facets": [
+          "22",
+          "2"
+        ],
+        "Scopes": [
+          "1"
+        ],
+        "Genres": [
+          "1"
+        ],
+        "Eras": [
+          "1"
+        ],
+        "Types": [
+          "32"
+        ]
+      }
+    }
+  }
+}
