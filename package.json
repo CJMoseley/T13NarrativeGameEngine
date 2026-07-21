@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "rules:md": "node scripts/generate_markdown_rules.mjs",
+    "rules:generate": "npm run rules:md"
   },
   "dependencies": {
     "@bitheral/marching-cubes": "^1.4.7",

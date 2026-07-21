@@ -1,0 +1,18 @@
+# Core Concepts
+
+Before we teach you how to use this system to build all the characters you might ever want, we need to talk a little about how the system works and the core concepts that your should know about.
+<p>T13 is built around simple concepts that stack together to create conplex characters.
+* **Facets** — Facets are the aspects of reality (and everything in it, including the Characters) that we use in T13 to model the Omniverse. You can find out more about the Facets on the Facet Folio rules page). Most things in the system are classified by Facets, they describe what things are made from (Incarna), what sort of person they are (Persona / Monster / Core) and what sort of things they can do (Umbrals and Nimbeds)
+* **Boons** — Boons are the number system of the model, and Character Facets can have Boons. Real world values like weight in kilos can be converted into T13 Boons to give you exact model within the system (although you don’t often need to think about anything more than an average human who has Boon 13 in every Facet, and how this Character differs from them). Boons give Characters access to Dice that generate Scores, or be used to generate card Draws.
+* **Proficiencies** — Proficiencies are the mimetic Threads that hold the Omniverse together. Everything that exists can be described by a Proficiency, everything that a Character can do can be summed up by a single Proficiency. Proficiencies are described in terms of their Facet and little more.
+* **Annexes** — Annexes are created by combining the threads of Proficiencies together to create the knots of Skills, Talents, Powers (and Super-Annexes) of Characters and Descendants. Annexes have a Boon that tells you how powerful it is, and governs the dice it might roll, how many cards it may draw etc. Annexes can also have costs and benefits that they gain from knotted Proficiencies acting as tangles, umbrals or nimbeds.
+
+			* **Hitches** — hitches are the dark shadow of Annexes, Proficiencies working together to create restrictions placed on Characters and Descendants. Hitches tell us what the Character or Descendant is not good at, what they don’t like doing, and what makes them afraid, angry or sad (amongst other things). Hitches have a Bane (the equivalent of a Boon) that tells you how powerfully it affects the Character when the Hitch is triggered. but Proficiencies also govern the Type of Hitch, the gnarls that occur when it is triggered and what Triggers the Hitch in the first place.
+* **Descendants** — Descendants are used in the system to model things that aren’t Characters (or Ref stuff like plots). They might be equipment, locations, things the Character has learnt, or even simple Characters in their own right (called Extras).
+
+			* **Characters** — T13 Characters vary in complexity from simple starter Characters to ridiculously complex detailed Gods and demons with eons of experience to draw on. Players can play anything they can imagine, although the Referee and Yarn-Tellers will have to agree any PC fits with their game concept (if you are playing in a Dark-Fantasy genre then a giant Robot may not be the best fit).
+
+			* **Plot** — Plots (or more properly Plot D&aelig;mons) are used by Referees and Yarn-Tellers to create Stories that Characters get involved in. Plots are the major narrative force in the engine, second only to Characters themselves.
+
+---
+*Copyright CJ Moseley (2026). All rights reserved.*

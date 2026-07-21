@@ -1,0 +1,104 @@
+# Modelling Resources
+
+In T13, Resources can be modelled in a number of different ways, but all Resources are essentially Sway. The wealth of a multinational corporation, for example, is just an amount of Burden-flavoured Facet Sway, but much of that wealth would be tied up in other ways. Some of it is combined with other resources, such as the company&apos;s international reach (Yonder Facet Sway), or their political support (Dominion Facet Sway), which creates Chi instead, that could be invested back into the Characters that own it, or the Pact itself. But there are many ways the resources of the company can be modelled.
+
+## Resource Models
+
+* **Sway** — A lot of resources can be modelled as Sway. Sway can be stored by Characters and Descendants, although Pact Descendants can store even more. This methood is very precise, but becomes an effort in accounting.
+* **Style Reserves** — During Ordeals cards can be Prepared into Style Reserves. These Style Reserves can store Sway in the form of Prepared Score (Tao Sway), and Prepared Cards (Chi). Style Reserves are generally not meant to represent stored resources beyond the Ordeal.
+* **Sway Cache** — Sway Cache are a simple way to store a Resource, consisting of nothing but a Proficiency to describe the Resource and a Score (e.g. "Wallet of Cash" Score: 7). <ul><li>This Score is always Facet aligned with the Proficiency used, so a Wealth Burden Score must have a Burden Proficiency.
+* Creating a Resource Cache is cheap, as the only cost is the Proficiency that must be purchased with the Score being stored (that wallet of cash was created with a Wealth Roll of 9 so 2 Wealth purchase the Proficiency).
+* When a Sway Cache is used you may elect to use either the Proficiency or the Score, but not both. For example, using a Wallet full of Cash could either add the 7 Score to an Action, helping purchase something, or the Proficiency could be used to build a Wealth Annex.
+* Score can be spent from a Sway Cache, but with a cost of 2 Score each time it is accessed (so spending 2 Wealth from the Wallet of cash will result in "Wallet of Cash" Score:3).
+* Sway Caches can be merged together if they are of the same Facet, but this destroys both Sway Caches and their Proficiencies, but creates a new Sway Cache with a free Proficiency and a combined Score (e.g. Adding together 2, or more, Wallets of Cash could create a "Bag of Cash" (14) or perhaps a "Briefcase full of Cash" (21) as more are added).
+
+</li>* **Annexes** — An Annex can represent a managed resource. A Character or Descendant could have a "Wealth" Annex, generating Wealth Burden-Flavoured Facet Sway. The Boon of the Annex here represents the amount of Wealth, not in the same way as a pile of Sway, but rather how much Wealth the Annex can generate with a single Action.
+* **Trophies** — Characters can also store Chi within Descendants. This makes the Descendant into a Trophy, Monolith or Artefact.
+</ul>
+
+## Resource Management
+
+Lots of games use Resource Management as more than a simple mechanic, but an actual part of the gameplay cycle. You may have to farm food to survive, or harvest XP to get levels for enchantments, gather troops to your cause, arm those troops and feed them, or simply acquire gold for purchases. Resources are important ways of measuring survival and success. T13 can easily accommodate such play through the use of Sway and Ordeals, and here are presented some examples of how a Yarn-Teller can handle resource management. In general, these examples are based on Wealth (the Burden <span class="t13ne-blackcard">&clubs</span> Yin Sway), but any Facet Sway could be the Resource that requires accumulation, spending or nurturing.
+
+It is important when dealing with Resource Management to bear in mind the relative power levels of the Facet Sways. In a civilised environment, for example, Wealth will often be Bold, but in a more rural environment wealth becomes less important, becoming only Intrepid, in the wilds far from any shopping Wealth is Banal at best. Just as Facet Sway can vary in power with genre and setting Resources can also. Resources are directly tied to Facet Sway after all.
+
+**Optional Rule: ** During Survival situations there is an ongoing drain of Sway from every Character. The Sway Drain is typically 1 of the Facet Sway, such as Breath, Surge, etc. However, how often the Drain occurs is based on the situation the Character finds themselves in.
+* A Character who is in a Vacuum for example will lose a Breath every 3 Rounds.
+* A Character in a desert without water will lose an Endurance every hour
+* A Character naked in Snow would lose a Fever every five minutes.
+* A Character without food, would lose Health every 2-8 hours depending upon how often they usually eat.
+* A spy or undercover cop in a deep cover situation may lose a Cover or Guise every day.
+* A politician may lose a Support each week that they continue with an unpopular policy.
+* A Character who is wallowing in minor debts may suffer a lose of a Wealth every month.
+
+Managing Sway can be as simple as having to meet a Difficulty with Yarn, Chi or Wealth (Burden Yin), in much the same way as a Test is rolled, but the Difficulty involved is too great to manage with a single roll or even during a normal Ordeal. Most Resource Management Ordeals are usually about managing larger things than a simple purchase though, and several Action types are included specifically for this sort of thing.
+
+* **Harvest**: A Harvest Action gathers an amount of a specific Facet Sway. The amount of Sway gleaned from a Harvest is usually a small, but steady amount. Harvest actions vary in implementation as follows:<ul><li>Take 1 Point of the Sway for a Harvest. You can simply make 1 Wealth point per turn.
+* Pay 1 Point of Facet Sway from a suited Facet and Roll a Facet Die for the Harvest (or gather the Facet Score). Pay a Surge, or Support and gather points of Wealth.
+* Pay 2, 4 or 5 Points of suited Facet Sway (depending upon Bold, Intrepid or Banal) to Play a card from your Ordeal Pool, gaining Twice the Card Pips in Facet Sway. However, the suit played must match the required Facet (so Wealth requires playing a Club).
+
+</li>* **Payment**: A Payment Action represents ongoing costs and difficulties that the Ordeal contains. Payment actions are called for by the Yarn-Teller or Referee every few Phases usually. Although, you can usually make a Payment early, and skip the next Payment action (but only the next one).
+<li>Payment Actions can occur randomly (triggered by any Dice rolling a result that the digits add to 1 or 10 e.g. 1,10,19,28,37,46,55 etc this is based on the gematria of Payment).
+* Payment Actions can occur regularly (once every few Actions, Phases or every Round or Stage for example).
+* Payment Actions can occur in some sequence (such as in Phases 1, 5, 8, 10, 11 and 12) or other preplanned order.
+* Payments can have a set cost (often a proportion of the Difficulty) such as 12 Wealth.
+* Payments can have a random cost (usually based on a Facet die) such as 2d4-1 Wealth for Burden Boon 13.
+
+</li>* **Store**: You can put resources away because you have an excess. You cannot have more points of a Facet Sway than that Facet Boon, so in order to create huge amounts of specific Sway it must be stored. Storing Sway is usually done by either converting into Chi (which is usually lossy with 5 Sway creating only 2 Chi for Storage for example), storing in a Style Reserve (such as the Aiming Reserve) or by creating Trophies or Sway Caches (see Resources).
+* **Resource Replenishment**, Chi can be converted into Resource Sway by making a specific Resource Replenishment action (such as Healing in the case of replenishing Health). This is done by making a Resource Replenishment Facet Roll on the Facet that you are trying to convert the Sway **into**. A Replenishment roll fills up a Resource to the Maximum (usually the Facet Boon including Scale).
+<li>The Difficulty of the roll is equal to the number of Resource Sway that you are trying to create. So if you have a Nature of 13 and currently have 6 points of Health, the Difficulty to Replenish would be 7.
+
+* If this Difficulty is beaten then Chi may be converted into Resource Sway as required. The Chi spent is usually doubled to create the amount of the Resource Sway, although a Higher-powered game, or because of  an easily accessible item or Skill, you may receive the Value of the Chi as a Boon instead.
+* Failure to pass the Difficulty means that you cannot convert Chi into the Resource, however you can pay 1 Chi to replenish 1 Sway (half the Chi is lost).
+
+</li>* **Convert Facet Sway**: You can convert Sway between types with this Action. Converting Sway can be done in a number of ways:
+<li>Conversion to Tao Yin or Tao Yang Sway (costs 1 point of Facet Sway). This allows you convert Cheers into Wealth for 1 Cheer.
+* Conversion to Chi and back. This might allow you to convert Breath into Wealth via a usually Low-powered conversion. 5 Breath becomes 2 Chi, which then becomes 4 Wealth.
+* Direct Conversion. The Score of one Facet can be Converted to the Score of another, with a cost of 1. E.g. If you have a Facet pair at Burden 18 and Gossamer 8 then you can convert 5 Wealth into (3-1=) 2 Breaths or 3 Breaths into (5-1=) 4 Wealth.
+
+</li>* **Trade**: You can swap resources with another Character. Perhaps you Trade your Breaths for their Wealth, doing some work for them stacking their trade goods.
+<li>Trades are usually carried out on a Facet Score to Facet Score basis, with anything better than Conversion being considered a good trade. E.g. If your Gossamer is 13 and Burden 13, you can Trade up to 4 of either and consider them equal in value, an employer may have a Gossamer of 8 and Burden 18 letting them Trade up to 3 Breaths or 5 Wealth. They therefore think 5 Wealth is an appropriate Trade for 3 Breaths (better than the 2 they can convert themselves). They offer 5 Wealth and you Trade 4 Breaths. Both of you should feel good about that Trade.
+
+</li>* **Attack**: Attacks can be made directly by resources on another’s resources, but they behave a little differently to normal Ordeal attacks (although if they are used in combination they are treated as "Financial Attacks" regardless of the Facet).
+<li>Attacks usually cost 4/8/12 Sway to begin. This draws and Plays 1 card.
+* The Card does direct Resource damage (destroying 2 Sway per Pip) if suited with the Resource being spent, or the Resource being attacked, otherwise it does 1 Sway per Pip.
+* Multiple cards can be played and drawn at once for higher costs as seen on the Sway Table.
+
+</li></ul>
+
+### Death, Injury and Healing by Resources
+
+It is normal for the Facet Sway of a Character’s Incarna Facet to be called their Incarna Sway. It is this Facet Sway that the Character uses to keep their body together and functioning. Most often this Incarna Sway is Nature’s Health Sway. Incarna Sway behaves a lot like Chi for the purposes of physical actions to do with their body, and is never considered low-powered for Incarna purposes.
+
+Normally a Resource Attack can just attack the targeted resource without needing special Rules, but when the targeted Resource is an Incarna Sway then we get some slightly different issues.
+
+Wounds are taken by losing Incarna Sway. The number of points lost determines the Wound taken in the attack just as Card Pips. 10 Health lost at once is equal to a Crippling Wound at Higher Stakes.
+
+However, if a Character loses all their Health then immediately another Wound card is drawn and applied on top of any caused by the attack. This ends that attack (even if they had only 1 Incarna Sway left). So a Character on 5 Health who is hit for 10 is now on 0 Health and takes a Crippling Wound (probably) and draws a Mortal Wound randomly as well.
+
+A Character with 0 Incarna Sway cannot use their body or form for any purpose. They are effectively unconscious, or paralysed, until they get at least one point of Incarna Sway back, although their exact state varies by what the Incarna is.
+
+It is usual for a Character to immediately convert Chi or another Facet Sway into at least 1 Incarna Sway if they have none. Some Characters will immediately refill their Incarna Sway completely, but others will hang around 1 for a while.
+
+Counter-intuitively Characters may spend Incarna Sway as though it was Chi to Remove Wounds or Heal them (as noted on the Sway table). This is usually done over time, to pay off large Wounds (as removing a Mortal Wound completely costs 43 Health normally). When paying off a Wound like this the Character may store the Health (or Chi) on the Wound until paid off in full. It is more normal to Heal a Mortal Wound into a Crippling Wound for only 24 Health, again the Health can be accumulated on the Wound.
+
+A Character with no Sway who is attacked is generally dead, and unplayable thereafter. Even Increated don’t generally come back from being completely drained of everything (although since Shades does not interact with time linearly they may still turn up again).
+
+#### Normal Ordeals and Resource Attacks
+
+In a normal Ordeal, only Resource attacks affect the Character’s resources, draining them of a Specific Sway or Chi based on Pips as Yarn.
+
+Generally speaking the Resources attacked should be specified during the card play and are paid immediately. Most combat attacks for instance will attack a Character’s Incarna Sway (Nature Facet Sway or Health), but attacks may target any Resource with a suitable Narration / or Narrative reasoning.
+
+Playing a card and defending against them is performed as normal, but when Wounds are assigned they do not have the normal effects, but instead drain the Sway Resources of the Character. Exactly as described above for Resource Ordeals.
+
+As another optional Rule, any attack that will take more than half the Character’s current Resource can be spread to other Resources as well. So if a three card attack is focused on Health the cards (An Ace of Diamonds, 5 of Spades and 6 of Hearts),  may cause 4, 2 and 2 points of Health, for a total of 8 (and 27 Pips Total) , this causes more than half the Health to be lost in one go (13 Nature would give 13 Health) so the Player will lose 6 Health, and 2 Points of Health must be paid by another Resource.
+
+The Yarn-Teller must agree the other Sway used (for example Dignity, Wealth or Effort). These Points of Damage are paid on a 2 for 1 basis (so the Attack could take 4 points of Effort instead of the extra 2 Points of Health) when paid in another Sway Resource, or they may be paid in Chi, however when paying in Chi the calculation is a bit different. If there were no Health Points the 27 Pips would try to drain 216 Chi, but we’ve already dealt with 6 of the 8 Health Points. So instead we look up the Super-Value of Boon 2 and pay that in Chi (16 Chi).
+
+Another optional Rule that can be used during a Resource Attack is that if any Resource loses more points than the Facet Score in one blow then the Character is considered Staggered (and take 1 GRT). So any Health Attack that causes more than 4 Points of Health to be lost in one attack (if Nature Facet is Boon 13), will cause the Character to be staggered for 1 GRT.
+
+Resource Attacks are only possible if individual Facet Resources are used in the game, otherwise use the standard Economic rules that effect only Sway or Chi as standard on a Pip for point basis.
+
+---
+*Copyright CJ Moseley (2026). All rights reserved.*
