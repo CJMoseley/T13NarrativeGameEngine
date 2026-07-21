@@ -919,7 +919,7 @@ export class ShipAssembler {
         
         if (geometries.length === 0) return null;
         try {
-            return BufferGeometryUtils.mergeBufferGeometries(geometries, false);
+            return BufferGeometryUtils.mergeGeometries(geometries, false);
         } catch (e) {
             console.warn("LOD Merge failed", e);
             return null;
