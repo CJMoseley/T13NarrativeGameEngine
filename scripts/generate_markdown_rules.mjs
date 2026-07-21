@@ -691,6 +691,44 @@ function processShortcodes(markdownContent) {
             return md;
         }
 
+        if (type === 'cards') {
+            if (!cardsCache) {
+                try {
+                    cardsCache = JSON.parse(fs.readFileSync('./src/t13ne/data/cards/cards.json', 'utf8'));
+                } catch (e) {
+                    console.error('Failed to load cards.json:', e);
+                    return `\n*[Error loading cards]*\n`;
+                }
+            }
+
+            let md = `\n## 🃏 Complete T13 Card Reference Guide\n\n`;
+            md += `This section provides the full listing of all 54 playing cards in the T13 engine, including their Unicode representation, mechanical statistics (Pips, Wound Levels, Facets), and their narrative and Yarn meanings.\n\n`;
+
+            for (const card of cardsCache) {
+                const uni = getUnicodeCardSymbol(card);
+                const suitName = getSuitName(card.Suit);
+                const name = `${card.Card} of ${suitName}`;
+
+                md += `### ${uni} ${name}\n`;
+                md += `- **Suit:** ${suitName}\n`;
+                md += `- **Pips (Value):** ${card.Pips || 'N/A'}\n`;
+                md += `- **Wound Level:** ${card.Wound_Level !== undefined ? card.Wound_Level : 'N/A'}\n`;
+                if (card.Facet) {
+                    md += `- **Associated Facets:** ${card.Facet}\n`;
+                }
+                if (card.Narrative_Meaning) {
+                    md += `- **Narrative Meaning:** *${cleanHtmlToMarkdown(card.Narrative_Meaning)}*\n`;
+                }
+                if (card.Yarn) {
+                    const yarnName = card.Yarn.Yarn_Name || 'Unnamed Yarn';
+                    const yarnDesc = card.Yarn.Yarn_Description || '';
+                    md += `- **Yarn / Theme:** **${yarnName}** — *${cleanHtmlToMarkdown(yarnDesc)}*\n`;
+                }
+                md += `\n`;
+            }
+            return md;
+        }
+
         return `\n*Placeholder for custom visual block: [type="${type}"]*\n`;
     });
 }
