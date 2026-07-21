@@ -1,0 +1,107 @@
+# Twists
+
+Twists are a narrative power like Yarn, subverted by the Increated to grant themselves some measure of existence. Twists are at once the ultimate refined and condensed form of Sway, and are not Sway at all, from another perspective. While Twists can be spun from F&aelig;ry Yarn (by Reducing the Yarn you get the number of Twists generated), they are technically not a refined form of Sway.
+
+If Sway allows living beings to push reality around, and influence existence, Twists are like a cheat-code used by the Increated to break those rules, they were intended to be the most powerful forms of Narrative Magic only usable by beings like F&aelig;ry Royalty, Angels and Gods. For this reason, they were built to exist only momentarily, creating whole changes in the Tapestry without a need to make sense. The Increated create Twists more easily than they do Sway, and so value other forms of Sway much more highly than Twists alone, as Twists can never be converted back into other Sway forms.
+
+The Increated like existing, and they have discovered tricks to helping them do it. The greatest of those tricks was leveraging human beliefs, magical and occult knowledge, and Twists to grant themselves semi-existence. The second greatest trick they discovered was that they could fuse their beings with living beings who had reasons to invite them in. Characters with Hitches so bad that they are known as Woes draw Increated to them, from the fleeting sub-animal intellects of the Neechies to the incredibly powerful and practically existing, by sheer force of belief, Patron D&allig;mons, and everything in between.
+
+For this reason Characters with a Woe Hitch find themselves generating Twists with their Woes. They may also end up with an Alt who is an Increated and may add Lores or Nightmare Forms (depending on the genre and Character Arc), or if the Increated was just one of the local Neechies then there will be no Alt to speak of.
+
+Twists can only be stored on Hitches, usually one point per Hitch, but in extreme cases one per Ruin may be possible. Stored Twists have the following effects on the Hitch and Character. There is a hard limit though, no Character can ever generate or spend more than 28 Twists in one go.
+
+* The Hitch Will effectively gain a Bane when a Twist is stored in it, this does not effect the Hitch Boon, only the Bane.
+* Storing a Twist on a Hitch will add a Twisted Facet effect (see below).
+* one of:
+<li>Sense that Hitch (within Hitch Boon as Chi Location on The Sway Table) automatically. Spending 1 Chi the Location may be calculated as Yarn instead. E.g. A character with Arachnophobia x15 can detect another arachnophobe within a building, paying 1 Chi will extend that range to a Large City.
+* Tone affinity. The Character can draw a Wyrd Tarot/Yarn Card or Ordeal card any time they act in accord with their Hitch’s Facet Tone. E.g. That Arachnophobe can draw a card any time they act Emotionally.
+* +1 Wound / Success Level with the Hitch Facet Attack type. E.g. Arachnophobia would grant a +1 Level to Duck attacks.
+* May change to the Hitch’s Facet Incarna for a duration equal the Hitch Banes as Chi on the Limit Duration table for free. Chi may be spent to extend the duration (costs as Chi Extend Duration). E.g. Our Arachnophobic Demon can turn into a Spirit (Ka) for a moment (3 Rounds).
+
+</li>
+
+## Twisted Facets
+
+Twists were never meant to have a continued existence, they were meant to be momentary existing bursts of magically created and focused Faery Yarn, they were not mean to be stored, and were certainly not meant to be stored in living beings. Because of this when a Character with a Woe makes a Gain by having the Hitch trigger, and they should gain a huge amount of Yarn, but don't because the Increated takes that Sway and swaps it for Twists instead. So the Character ends up storing Twists in themselves on their Hitch. This alters the Character immediately giving them a Twisted Facet.
+
+
+> **Aspect Info [Twisted]**
+> *No aspect specific text mapped for "Twisted".*
+
+
+
+Twists are always considered high-powered, and while costs in Twists may appear as halves or even quarters you cannot split a Twist, or spend a half Twist, but you can combine two half costs into a whole point and do two things at once. Twists can achieve specific things that Yarn cannot, such creating Dark Territory, Dark Matter, Never-Time and Dark Pacts.
+
+## Twist Effects
+
+* Sway Multiplication: Multiply any singular Score or Sway by 1+Twists spent.
+* Twisted Assault: Twists can be used to enhance any attack you are currently making. 1 point of Twist will let you add a card from your Ordeal Pool, 2 points lets you Pull, play and make Unsoakable 1 Card.
+*  Twists spent allows you to ignore all aspects of the specified Facet for a Twist based Duration. Spending 1 Twist will allow you to ignore all aspects of Burden (for example) for 1 action (perhaps allowing them to step through a wall of solid rock, or ignore the price of something and pay with a bean), 6 Twists would allow them to ignore Burden for a Week. A Character or Dark Matter Descendant that is Ignoring a Facet can still generate a score in the Ignored Facet i.e. a Character who is ignoring Rook (and hence Defences) can still generate a score to defend themselves or others (but they won’t need to versus a Quash attack).
+* Sway Vampirism allows you to spend Twists to drain Sway (in the form of Yarn) from a victim.
+<li>1d2 Yarn
+* 1d4 Yarn
+* 1d6 Yarn
+* 1d8 Yarn
+* 1d10 Yarn
+* 1d12 yarn
+* 2d6 Yarn
+* 4d3 Yarn etc... to a maximum of 14. 4d6 Yarn
+
+</li>* Twist Fate: Twists can be used to create new events and even Characters much like Yarn. However, Twists can also break some of the rules of reality and do things like introduce things that shouldn’t exist in the universe, like temporal paradoxes, magical effects in a hard-science universe (or vice-versa). However, anything created or summoned by Twists is non-permanent, it must continually pay to have its existence extended, and these Extend Durations must be paid in Sway, Chi or Yarn, never in Twists. The effects of Twisted Fates are permanent though, a Burn Wound caused by a momentary, magically-summoned flame still lingers after the flame has ceased to be.
+* Negation: Negation is possibly the most powerful of the effects that Twists can have. Negation allows Twists to be used to cancel anything, a powerful Demon-lord could use Negation to cancel the last year of history, winding time back for the whole world. Negation costs Twice the normal Twist cost for whatever you are trying to achieve. Negating a Year (3.5 Twists), for a whole world (6), would cost 19 Twists total, negating the last attack performed on you (a 25 Pip attack for example) would cost 5 Twists.
+
+## Gaining Twists
+
+Twists are usually gained by triggering a Woe, when the Sway Gain that should take place is hijacked by one of the Increated and a Twist is offered instead. But Twists can be generated by an Annex (usually at 1 or 2 points at a time) as it is possible for F&aelig;ry Yarn to be spun into Twists, by Elven magick (Reducing generated Yarn - see Yarn generation in the Yarn Rules). However, there is one other way that Increated, and some Goblins, Demons and Demon-Lords can generate potentially enormous amounts of Twists in one go.
+
+### Nightmare Fuel
+
+An Increated (Dæmon) that is near a character (or possessing them) can attempt to Nightmare Fuel itself. Tapping into the character’s memories, experiences and unconscious fears (Hitches, Annex, Proficiencies, and Descendants) to create a Nightmare form for itself.
+
+The Nightmare Fuel Source grants potentially vast amounts of Twists that the Increated can use to not only create its own existence, but may also use to Twist the Fuel Source into being a Goblin, Demon or Demon-Lord (forcing them to take a Woe via an Unsoakable Mortal Wound for 4.5 Twists at Low Stakes). Any additional Twists gained beyond the limits of the number of Hitches (or Banes occasionally), especially above the Hard Twist limit of 28, will be converted to Yarn, Chi or Sway as appropriate.
+
+| Nightmare Fuel Source | Mechanical Source | Twists gained ** (to a Max of 28)** |
+| --- | --- | --- |
+| Memories / Forgotten Stories | **Proficiency** | 1 |
+| Experiences / Learning | Skill **Annexes** | Annex Draw |
+| Imagination / Creativity | Talent Annex | Annex Score |
+| Profession / Magical Knowledge | Power Annex | Annex Boon |
+| Formal Training / Books / Pacts / Locations | **Descendant** | Descendant Master Annex Boon |
+| Known Fears / Nightmares / Beliefs etc | **Hitch** | **Hitch Boon** |
+| Unconscious Fears / Soul | Personality Annex | Personality Annex Boon |
+
+### Nightmare Form
+
+A Nightmare Form is a supernaturally powerful, monstrous form that an Increated can briefly inhabit while Nightmare Fuelled. The Increated reaches into the mind of their Nightmare Fuel Source and finds some form from their nightmares, superstitions, or religion that they can take on and inhabit. These forms usually come with folkloric or logical weaknesses, and can also be added to Goblins, Demons, Demon-Lords or even Descendants the Increated possesses.
+
+For example, reaching into the mind of a nearby horror movie fan would grant the Increated the ability to become a vampire, werewolf, zombie, knife-fingered dream-stalking burn victim, hockey-masked killer, leather-clad fetish demons... you know... the one who looks like someone turned the mattress on a bed of nails, or whatever you like in phantoms and scary clown things. A science-fiction fan may provide all manner of aliens from acid-blooded space-wasps to unknowable hyper-geometric intelligences or sentient colours, as well as time-travelling shape-shifting assassin robots, or a doppelganger clone of themselves. A religious person might provide angelic or demonic forms, ancestor spirits, devas, djinn, dybbuk, ifrit, imps, kami, oni, or a saint, depending upon their religion of course. Children can be fertile grounds for Nightmare Fuel, providing horrific forms, but this may limit the behaviour the form can achieve, with such child-provoked forms often behaving in terrifying, but illogical ways, scaring the child, but failing to actually capture, kidnap, or eat them, although as it relies on what the child has been exposed to, not always.
+
+Nightmare forms grant the Character (Increated, Goblin, etc) Monster Facets and additional Annexes, at a cost of additional Hitches. Typically a Nightmare Form is treated as a Descendant that they gain access to. Often, for simplicity’s sake, the Nightmare form consists of a Single Annex with balancing Hitches. The Annex’s Root and Channelling Facet become Monster Facets for the affected Character (or Descendant).
+
+The Nightmare Form can only be maintained as long as it has access to the Nightmare Fuel that created it. If the character providing the Nightmare Form is killed then the Form will be lost immediately.
+
+E.g. An Increated that possesses a corpse (Skill Descendant [0.5] + Puppet Possession [1.5] = 2 Twists) in Eastern Europe, finds that when the shuffling puppet approaches a local, their beliefs in ‘Vampyre’ legends grant them 12 Twists that they can spend immediately, upgrading their possession and accessing a Nightmare Form:
+
+ “Vampyre Abilities” Boon 34 (d8+4) "Blood"(N), "Folklore" (H<sup>U-L</sup>), "Lust"(S) — In daylight halve Score  Hitch: Dependence (Blood)(Q-Mystical-"Practice" must spend time hunting) (x14) : Monster Facets N Temperamental, S Villain
+
+The 34 Boons of Vampyre abilities is paid for by 20 Boons from the Umbral and 14 from Hitch. Should they remove themselves from the locals, flying from town for example, they will once again lose access to the Nightmare Form, unless they can find another source.
+
+### Nightmare Refuelling
+
+Every now and then Increated want a little more Nightmare Fuel, but how to get more fuel from a source? Well there are four ways.
+
+* Find a new source. You can’t change Nightmare Forms whilst you have one on, so the new Fuel source must have an applicable Proficiency, Annex, or Hitch. A good tactic is to hit a crowd for Nightmare Fuel, you can keep pulling from all targets, especially if you target those with contagious Hitches.
+* Retap the original Nightmare Fuel source. Pay Chi (or Sway for Chi) equal to the number of Twists that will be gained. E.g. if targeting a Hitch x24 they must pay 24 Chi. However, the Re-tapped Source will be drained one Boon (so that Hitch becomes Boon 23). Annexes of Boon 1 become Proficiencies, Proficiencies will be lost, Hitches of Boon 1 are Resolved, if a source is lost then the Nightmare Form will also be lost.
+* Create a new source: Once you have a Nightmare form, it is generally pretty easy to create a new source. You just have to use the form to convince someone it exists. Characters usually believe in things that they have seen, and definitely believe in things that have chewed their leg off, or whatever. Nightmare forms will try to create new Hitches such as "Fear of Vampyres" (or whatever), and then immediately tap them.
+* Steal Source: Increated have a reputation for consuming souls. In actual fact, while they do Steal Souls, they don’t actually eat them. Instead, they transfer the Character to Shades, where they are tortured (or some other intense experience) to create belief in the realm and the Increated that brought them there. Taking a Source to Shades requires paying their summoning cost with Twists. However, once in Shades the Souls will provide Twists and Chi back. A Stolen Source can be tapped as often as the Twists Extend Limit (in Yarn). So a 4 Twists source can be tapped once per day. The Increated can either take the Twists, or take twice that in Chi instead. All the Stolen Souls one Increated has stolen form a Pact in Shades and the whole Pact can be tapped as a Master Annex by the Increated.
+
+## Sway Table
+
+The Sway Table is where all this information comes together and you can look up how Twists are required to do something. The Increated find Twists easy to create, which is why they are so powerful compared to normal characters. A character with Twists can alter the entire world in a single action, with enough effort and no opposition.
+
+
+*Placeholder for custom visual block: [type="swaytable"]*
+
+
+---
+*Copyright CJ Moseley (2026). All rights reserved.*
