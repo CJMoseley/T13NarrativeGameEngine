@@ -713,7 +713,11 @@ function processShortcodes(markdownContent) {
         }
 
         if (type === 'name') {
-            const nameParam = attrs.name || 'Joe Bloggs';
+            let nameParam = attrs.name || 'Jo, Joe, Bloggsy';
+            // If the name in the shortcode is the long placeholder one from the JSON:
+            if (nameParam.startsWith('John |') || nameParam.includes('John Smith')) {
+                nameParam = 'Jo, Joe, Bloggsy';
+            }
             const firstPart = nameParam.split('|')[0].trim().replace(/[“”"']/g, '');
 
             if (!numerologyCache) {
@@ -801,16 +805,65 @@ function processShortcodes(markdownContent) {
                 md += `> - **Position Description:** *${pos.description}*\n`;
                 md += `> - **Example Drawn Card:** ${cardUni} **${cardName}**\n`;
 
+                // Determine includeFields dynamically if not defined or empty
+                let includeFields = pos.aiExtractionOptions?.fieldsToInclude || [];
+                if (includeFields.length === 0) {
+                    const roleLower = pos.role.toLowerCase();
+                    if (roleLower.includes('hook aspect')) {
+                        includeFields = ['Hook_Aspect', 'Aspect_Description'];
+                    } else if (roleLower.includes('hook')) {
+                        includeFields = ['Hook', 'Hook_Description'];
+                    } else if (roleLower.includes('about')) {
+                        includeFields = ['About', 'About_Description'];
+                    } else if (roleLower.includes('vector')) {
+                        includeFields = ['Vector', 'Vector_Description'];
+                    } else if (roleLower.includes('info')) {
+                        includeFields = ['Info', 'Info_Description'];
+                    } else if (roleLower.includes('alternate')) {
+                        includeFields = ['Alternate', 'Alternate_Description'];
+                    } else if (roleLower.includes('detail')) {
+                        includeFields = ['Detail', 'Detail_Description'];
+                    } else if (roleLower.includes('fray')) {
+                        includeFields = ['Fray', 'Fray_Description'];
+                    } else if (roleLower.includes('snag')) {
+                        includeFields = ['Snag', 'Snag_Description'];
+                    } else if (roleLower.includes('sweeping')) {
+                        includeFields = ['Sweeping', 'Sweeping_Text'];
+                    } else if (roleLower.includes('gain')) {
+                        includeFields = ['Gain'];
+                    } else if (roleLower.includes('stakes')) {
+                        includeFields = ['Stakes'];
+                    } else if (roleLower.includes('test')) {
+                        includeFields = ['Test'];
+                    } else if (roleLower.includes('stage')) {
+                        includeFields = ['Stage_Description'];
+                    } else if (roleLower.includes('motional')) {
+                        includeFields = ['Motional_Description'];
+                    } else if (roleLower.includes('tide')) {
+                        includeFields = ['Tide_of_Battle_Text'];
+                    } else if (roleLower.includes('fight')) {
+                        includeFields = ['Fight_Description'];
+                    } else if (roleLower.includes('obstacle')) {
+                        includeFields = ['Type', 'Description'];
+                    } else if (roleLower.includes('significator')) {
+                        includeFields = ['Yarn_Name', 'Yarn_Description'];
+                    }
+                }
+
                 // Print EXACT properties for that position ONLY
-                const includeFields = pos.aiExtractionOptions?.fieldsToInclude || [];
                 includeFields.forEach(field => {
-                    // Check top-level or Yarn level
                     let textVal = card[field];
                     if (textVal === undefined && card.Yarn) {
                         textVal = card.Yarn[field];
                     }
                     if (textVal === undefined && card.Yarn?.Revelations) {
                         textVal = card.Yarn.Revelations[field];
+                    }
+                    if (textVal === undefined && card.Ordeal) {
+                        textVal = card.Ordeal[field];
+                    }
+                    if (textVal === undefined && card.Obstacle) {
+                        textVal = card.Obstacle[field];
                     }
                     if (textVal !== undefined) {
                         md += `> - **${field.replace(/_/g, ' ')}:** *${cleanHtmlToMarkdown(String(textVal))}*\n`;
