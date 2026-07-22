@@ -46,30 +46,44 @@ The Frame Act Spread includes a Hook Spread for each Side (or Character) that mu
 > 📍 **Position: Hook 1**
 > - **Position Description:** *Hook for Side 1*
 > - **Example Drawn Card:** 🃁 **Ace of Diamonds**
+> - **Hook:** *Opportunity*
+> - **Hook Description:** *The Story hooks Characters by offering them an opportunity to Gain something they want or need to fulfil an ambition.*
 >
 > 📍 **Position: Hook Aspect 1**
 > - **Position Description:** *Aspect for Hook 1*
 > - **Example Drawn Card:** 🃍 **Queen of Diamonds**
+> - **Hook Aspect:** *Geometry (Yang)*
+> - **Aspect Description:** *The Hook targets the Character's Geometry specifically how they generate Yang and creates a situation that allows them to generate Yang this way.*
 >
 > 📍 **Position: Hook 2**
 > - **Position Description:** *Hook for Side 2*
 > - **Example Drawn Card:** 🂺 **Ten of Hearts**
+> - **Hook:** *Entrance*
+> - **Hook Description:** *The Hook is literally an entrance. This usually refers to the sudden, dramatic appearance of a new or returning Embodiment, but it can also be an opening, door or any threshold, or cliff-edge moment. In Old Comedies the players would sing as they paraded in, setting up the story with the first song, in old serials they would show how the Cliff-Hanger ending of the last Chapter was resolved (often with a retcon).*
 >
 > 📍 **Position: Hook Aspect 2**
 > - **Position Description:** *Aspect for Hook 2*
 > - **Example Drawn Card:** 🃘 **Eight of Clubs**
+> - **Hook Aspect:** *Skills*
+> - **Aspect Description:** *The Hook targets the Character's Skills indicating that only someone with those precise skills can truly solve this problem. The opposition may even be targeting people known to possess certain Skills.*
 >
 > 📍 **Position: Revelation About**
 > - **Position Description:** *What the revelation is about*
 > - **Example Drawn Card:** 🂦 **Six of Spades**
+> - **About:** *External*
+> - **About Description:** *The information revealed is about the External Conflict Embodiment. This is a side that is considered outside of the normal Conflict, this could be aliens, or more likely, the next town over.*
 >
 > 📍 **Position: Revelation Vector**
 > - **Position Description:** *How it is revealed*
 > - **Example Drawn Card:** 🃂 **Two of Diamonds**
+> - **Vector:** *Phantasm*
+> - **Vector Description:** *The information is conveyed by some supernatural means, often a ghost or spirit that appears and brings word of importance (often their own passing). If you are not comfortable with a ghost in your cyberpunk universe, you can always use a Cyberwraith, a digital soul, or transhuman, or phantasms can also be a holographic image, an illusion or hallucination.*
 >
 > 📍 **Position: Revelation Info**
 > - **Position Description:** *The information revealed*
 > - **Example Drawn Card:** 🃎 **King of Diamonds**
+> - **Info:** *How?*
+> - **Info Description:** *How exactly is what they plan to do, going to be done? You may get the full plan, or just the important pieces. Sometimes you might even know how to stop them, but not what they plan to do. It all depends on the situation at hand.*
 
 
 
@@ -106,14 +120,20 @@ Loom Spreads consist of Pairs of Warp and Weft Spreads, or Weft and Warp if you 
 > 📍 **Position: Warp 1 Fray**
 > - **Position Description:** *Fray for Warp 1*
 > - **Example Drawn Card:** 🃁 **Ace of Diamonds**
+> - **Fray:** *Quest*
+> - **Fray Description:** *The Fray is a Quest, usually based on the Facets of the Conflict, for something the PC requires or desires.*
 >
 > 📍 **Position: Warp 1 Snag**
 > - **Position Description:** *Snag for Warp 1*
 > - **Example Drawn Card:** 🃍 **Queen of Diamonds**
+> - **Snag:** *Requirements*
+> - **Snag Description:** *Either during the Fray or after it, the PCs will discover that they require something that they do not have. It might be an ingredient, or component, a specific person or piece of information. The point is, they cannot succeed without this thing.*
 >
 > 📍 **Position: Weft 1 Sweeping**
 > - **Position Description:** *Sweeping for Weft 1*
 > - **Example Drawn Card:** 🂺 **Ten of Hearts**
+> - **Sweeping:** *Wandering Fool*
+> - **Sweeping Text:** *The PC moves (usually via a Motional Ordeal) to a new Location. For the PCs this journey may be aimless wandering, but in fact it is a hunt for something they need. Often the Fool will encounter a lesson in the new location, or maybe just rest, heal up a bit, and maybe get a bite to eat or a little spending cash on the way.*
 >
 > 📍 **Position: Weft 1 Option A**
 > - **Position Description:** *Choice A for Weft 1*
@@ -126,14 +146,20 @@ Loom Spreads consist of Pairs of Warp and Weft Spreads, or Weft and Warp if you 
 > 📍 **Position: Warp 2 Fray**
 > - **Position Description:** *Fray for Warp 2*
 > - **Example Drawn Card:** 🃂 **Two of Diamonds**
+> - **Fray:** *Insubstantial*
+> - **Fray Description:** *The Fray is an insubstantial, or trifling matter, but failure may have profound consequences later. An example may be a single question asked by a co-worker, it seems unimportant at the time, but is actually part of an human resources investigation. Usually a Test on a single Facet (A,C,O,Q,V,Z) (although an appropriate Annex might help). The difficulty is usually quite low (between 1-15). Facet Tests are meant to be quick, easy checks, a simple roll. Failures may involve negative Psyche effects.*
 >
 > 📍 **Position: Warp 2 Snag**
 > - **Position Description:** *Snag for Warp 2*
 > - **Example Drawn Card:** 🃎 **King of Diamonds**
+> - **Snag:** *A New Star Rises*
+> - **Snag Description:** *An new Facet Embodiment appears, which destabilises the situation against the PCs, often making them work with Rivals or even former enemies. This could be a separate Facet joining the Conflict (or popping in from another usually larger Plot) or just another, stronger Embodiment of the Dominant side of this Conflict, such as when Guard and a Gladiator who have clashed on the battlefield before, join forces to fight a Dragon that threatens both armies.*
 >
 > 📍 **Position: Weft 2 Sweeping**
 > - **Position Description:** *Sweeping for Weft 2*
 > - **Example Drawn Card:** 🂻 **Jack of Hearts**
+> - **Sweeping:** *Lost-in-the-crowd*
+> - **Sweeping Text:** *No matter the Fray the PCs get to vanish in the wind after it. They change or adopt disguises, head to a safe-house, or vanish into the night. They can rest, recover, shop, create or train for the next Fray.*
 >
 > 📍 **Position: Weft 2 Option A**
 > - **Position Description:** *Choice A for Weft 2*
@@ -206,6 +232,7 @@ Zenith Spreads consist of a Single Ordeal Spread and a single Gain Spread. The Z
 > 📍 **Position: Ordeal Stakes**
 > - **Position Description:** *Stakes of the final ordeal*
 > - **Example Drawn Card:** 🃁 **Ace of Diamonds**
+> - **Stakes:** *Blended Low-Medium-High-Extreme*
 >
 > 📍 **Position: Ordeal Spread**
 > - **Position Description:** *Layout of the final ordeal*
@@ -214,18 +241,23 @@ Zenith Spreads consist of a Single Ordeal Spread and a single Gain Spread. The Z
 > 📍 **Position: Ordeal Obstacles**
 > - **Position Description:** *Obstacles in the final ordeal*
 > - **Example Drawn Card:** 🂺 **Ten of Hearts**
+> - **Type:** *Ridicule*
+> - **Description:** *The way is blocked unless the Character subjects themselves to some ridicule or mockery. This is usually a psych attack and may have a Character who performs the ridicule. Or you may draw again and create a humorous, but more dangerous (dark-humour) version of that Obstacle.*
 >
 > 📍 **Position: Ordeal Stages**
 > - **Position Description:** *Stages of the final ordeal*
 > - **Example Drawn Card:** 🃘 **Eight of Clubs**
+> - **Stage Description:** *The way ahead is some sort of webbing, net, or weave, maybe the internet, or perhaps a suspension bridge, or maybe a confluence of roads, threads or wires. Or perhaps the way ahead is just heavy with old cobwebs.*
 >
 > 📍 **Position: Ordeal Test**
 > - **Position Description:** *Test for the final ordeal*
 > - **Example Drawn Card:** 🂦 **Six of Spades**
+> - **Test:** *Mechanics (Craft)*
 >
 > 📍 **Position: Gain**
 > - **Position Description:** *The final reward or outcome*
 > - **Example Drawn Card:** 🃂 **Two of Diamonds**
+> - **Gain:** *A single coin, suitable for paying a ferryman (Yin/Yang Gain).*
 
 
 
@@ -289,6 +321,8 @@ As well as Ordeal Spreads we have Stage Spreads, which define the Stages set in 
 > 📍 **Position: Stage Type**
 > - **Position Description:** *The type of stage.*
 > - **Example Drawn Card:** 🃁 **Ace of Diamonds**
+> - **Stage:** *Speed Stunt*
+> - **Stage Description:** *Something needs to be done at speed, maybe its a skid, shooting rapids, speed typing, rapid mental arithmetic, dashing through a closing gate, or speed reading.*
 >
 > 📍 **Position: Stage Diff 1**
 > - **Position Description:** *Stage difficulty card 1.*
@@ -305,6 +339,8 @@ As well as Ordeal Spreads we have Stage Spreads, which define the Stages set in 
 > 📍 **Position: Obstacle Type**
 > - **Position Description:** *Obstacle within the stage.*
 > - **Example Drawn Card:** 🂦 **Six of Spades**
+> - **Type:** *Mechanism*
+> - **Description:** *The way is blocked by some mechanism (such as a raising or rotating bridge, crane or vehicle), often used to create complex mechanical traps, that usually have some timer and reset mechanism, such as crushing walls, swinging blades, spinning chains. Such mechanisms usually have some hidden reset or control panel.*
 >
 > 📍 **Position: Obstacle Diff 1**
 > - **Position Description:** *Obstacle difficulty 1.*
@@ -327,6 +363,8 @@ Even within a Stage Spread we have Obstacle Spreads, which will define some of t
 > 📍 **Position: Type**
 > - **Position Description:** *The type of obstacle.*
 > - **Example Drawn Card:** 🃁 **Ace of Diamonds**
+> - **Type:** *Required*
+> - **Description:** *The way is blocked by some required descendant, or business that must be completed before proceeding. It usually involves a payment of some sort being made.*
 >
 > 📍 **Position: Difficulty 1**
 > - **Position Description:** *First difficulty card.*

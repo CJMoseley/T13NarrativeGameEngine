@@ -60,11 +60,11 @@ In T13 we use a lot of terms that borrow from music, especially when talking abo
 A Pitch is the name we give to notes or tones when they appear in Compositions. Characters have a Key defined by their Geometry (in fact the Character&apos;s Geometry defines a lot about how they are represented and affected by the Composition. This is because Geometry is unaffected by the type of the Character. Jonathon “John” Smith the Solo is geometrically identical to Jonathon "John" Smith the Extra.
 
 
-> 🔮 **Gematria Breakdown for Name: "John"**
-> - **Formula:** J (1) + O (7) + H (8) + N (5) = 21
-> - **Reduced Geometry Number:** **3**
-> - **Geometry Name:** **Triangle**
-> - **Soul Description:** *Triangle Characters are intelligent, creative, expressive, often artistic types. They love to talk, being entertaining and all ways have a story to tell, but it may turn gossipy and superficial.*
+> 🔮 **Gematria Breakdown for Name: "Jo, Joe, Bloggsy"**
+> - **Formula:** J (1) + O (7) + J (1) + O (7) + E (5) + B (2) + L (3) + O (7) + G (3) + G (3) + S (6) + Y (1) = 46
+> - **Reduced Geometry Number:** **10**
+> - **Geometry Name:** **Decagon**
+> - **Soul Description:** *Decagon Characters are like Circle Characters turned up to, well 10. They are more independent than Circles, but also work better with others.*
 
 
 
