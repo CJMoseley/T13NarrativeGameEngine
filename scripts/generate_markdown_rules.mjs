@@ -57,6 +57,17 @@ const conflictSpreadsFallback = [
     }
 ];
 
+const woundTypes = [
+    "Unwounded",   // Level 0
+    "Distract",    // Level 1
+    "Flesh",       // Level 2
+    "Maiming",     // Level 3
+    "Crippling",   // Level 4
+    "Mortal",      // Level 5
+    "Carnage",     // Level 6
+    "Carnage+"     // Level 7
+];
+
 // Global data caches
 let diceDataCache = null;
 let cardsCache = null;
@@ -351,6 +362,143 @@ function parseAttributes(shortcodeStr) {
         attrs[match[1]] = match[2];
     }
     return attrs;
+}
+
+// Generate Detailed Markdown for a Single Card
+function generateCardDetailMd(card) {
+    const uni = getUnicodeCardSymbol(card);
+    const suitName = getSuitName(card.Suit);
+    const name = `${card.Card} of ${suitName}`;
+    const woundType = woundTypes[card.Wound_Level] || 'Unknown';
+
+    let md = `## ${uni} ${name}\n\n`;
+
+    // 1. Mechanics Section
+    md += `### 📊 Mechanical Statistics\n`;
+    md += `- **Pips (Value):** **${card.Pips || 'N/A'}**\n`;
+    md += `- **Wound Type:** **${woundType}** *(Wound Level ${card.Wound_Level !== undefined ? card.Wound_Level : 'N/A'})*\n`;
+    if (card.Facet) {
+        md += `- **Associated Facets:** *${card.Facet}*\n`;
+    }
+    if (card.Narrative_Meaning) {
+        md += `- **General Meaning:** *${cleanHtmlToMarkdown(card.Narrative_Meaning)}*\n`;
+    }
+    md += `\n`;
+
+    // 2. Tarot & Wyrd Tarot Section
+    if (card.Tarot) {
+        md += `### 🔮 Tarot & Wyrd Tarot\n`;
+        md += `- **Wyrd Tarot:** **${card.Tarot.WyrdTarot || 'N/A'}**\n`;
+        if (card.Tarot.Normal) {
+            md += `- **Normal Position:** *${cleanHtmlToMarkdown(card.Tarot.Normal)}*\n`;
+        }
+        if (card.Tarot.Crossed) {
+            md += `- **Crossed Position:** *${cleanHtmlToMarkdown(card.Tarot.Crossed)}*\n`;
+        }
+        md += `\n`;
+    }
+
+    // 3. Bulmas & Lea Section
+    if (card.Lea) {
+        md += `### 🌿 Lea & Bulmas (Animal & Nature Aspects)\n`;
+        md += `- **Path Color:** **${card.Lea.PathColour || 'N/A'}**\n`;
+        md += `- **Bulmas Type:** **${card.Lea.Bulmas || 'N/A'}**\n`;
+        if (card.Lea.AnimalCategory) {
+            md += `- **Animal Category:** *${card.Lea.AnimalCategory}*\n`;
+        }
+        if (card.Lea.Example) {
+            md += `- **Example Animal:** *${card.Lea.Example}*\n`;
+        }
+        if (card.Lea.Bodypart) {
+            md += `- **Bodypart Association:** *${card.Lea.Bodypart}*\n`;
+        }
+        if (card.Lea.Notes) {
+            md += `- **Lea Notes:** *${cleanHtmlToMarkdown(card.Lea.Notes)}*\n`;
+        }
+        md += `\n`;
+    }
+
+    // 4. Ordeals Section
+    if (card.Ordeal) {
+        md += `### ⚔️ Ordeal & Combat Aspects\n`;
+        if (card.Ordeal.Ordeal_Type) md += `- **Ordeal Type:** *${card.Ordeal.Ordeal_Type}*\n`;
+        if (card.Ordeal.Stages) md += `- **Stages:** *${card.Ordeal.Stages}*\n`;
+        if (card.Ordeal.Ordeal_Spread) md += `- **Ordeal Spread:** *${card.Ordeal.Ordeal_Spread}*\n`;
+        if (card.Ordeal.Stakes) md += `- **Stakes:** *${card.Ordeal.Stakes}*\n`;
+        if (card.Ordeal.Test) md += `- **Test:** *${card.Ordeal.Test}*\n`;
+        if (card.Ordeal.Obstacles) md += `- **Obstacles:** *${card.Ordeal.Obstacles}*\n`;
+        if (card.Ordeal.Suggested_Action) md += `- **Suggested Action:** *${card.Ordeal.Suggested_Action}*\n`;
+        if (card.Ordeal.Stage_Description) md += `- **Stage:** *${cleanHtmlToMarkdown(card.Ordeal.Stage_Description)}*\n`;
+        if (card.Ordeal.Motional_Description) md += `- **Motional Aspect:** *${cleanHtmlToMarkdown(card.Ordeal.Motional_Description)}*\n`;
+        if (card.Ordeal.Tide_of_Battle_Text) md += `- **Tide of Battle:** *${cleanHtmlToMarkdown(card.Ordeal.Tide_of_Battle_Text)}*\n`;
+        if (card.Ordeal.Fight_Description) md += `- **Fight / Conflict:** *${cleanHtmlToMarkdown(card.Ordeal.Fight_Description)}*\n`;
+        md += `\n`;
+    }
+
+    // 5. Yarn (Yarn Cards / Plot Spread)
+    if (card.Yarn) {
+        md += `### 📖 Yarn & Story-Weaving\n`;
+        const yarnName = card.Yarn.Yarn_Name || 'Unnamed Yarn';
+        const yarnDesc = card.Yarn.Yarn_Description || '';
+        md += `- **Theme/Yarn:** **${yarnName}** — *${cleanHtmlToMarkdown(yarnDesc)}*\n`;
+        if (card.Yarn.Hook) {
+            md += `- **Hook Event:** **${card.Yarn.Hook}** — *${cleanHtmlToMarkdown(card.Yarn.Hook_Description || '')}*\n`;
+        }
+        if (card.Yarn.Hook_Aspect) {
+            md += `- **Hook Aspect:** **${card.Yarn.Hook_Aspect}** — *${cleanHtmlToMarkdown(card.Yarn.Aspect_Description || '')}*\n`;
+        }
+        if (card.Yarn.Gain) {
+            md += `- **Gain Reward:** *${cleanHtmlToMarkdown(card.Yarn.Gain)}*\n`;
+        }
+        if (card.Yarn.Fray) {
+            md += `- **The Fray:** **${card.Yarn.Fray}** — *${cleanHtmlToMarkdown(card.Yarn.Fray_Description || '')}*\n`;
+        }
+        if (card.Yarn.Snag) {
+            md += `- **The Snag:** **${card.Yarn.Snag}** — *${cleanHtmlToMarkdown(card.Yarn.Snag_Description || '')}*\n`;
+        }
+        if (card.Yarn.Sweeping) {
+            md += `- **Sweeping:** **${card.Yarn.Sweeping}** — *${cleanHtmlToMarkdown(card.Yarn.Sweeping_Text || '')}*\n`;
+        }
+        if (card.Yarn.History) {
+            md += `- **History Context:** **${card.Yarn.History}** — *${cleanHtmlToMarkdown(card.Yarn.History_Description || '')}*\n`;
+        }
+        if (card.Yarn.Situation) {
+            md += `- **Situation/Plight:** **${card.Yarn.Situation}** — *${cleanHtmlToMarkdown(card.Yarn.Situation_Description || '')}*\n`;
+        }
+        if (card.Yarn.Solution) {
+            md += `- **Solution:** **${card.Yarn.Solution}** — *${cleanHtmlToMarkdown(card.Yarn.Solution_Description || '')}*\n`;
+        }
+
+        if (card.Yarn.Revelations) {
+            md += `- **Revelations Aspects:**\n`;
+            const rev = card.Yarn.Revelations;
+            if (rev.About) md += `  - *About (Fact):* **${rev.About}** — ${cleanHtmlToMarkdown(rev.About_Description || '')}\n`;
+            if (rev.Info) md += `  - *Info (Embodiment):* **${rev.Info}** — ${cleanHtmlToMarkdown(rev.Info_Description || '')}\n`;
+            if (rev.Vector) md += `  - *Vector (How):* **${rev.Vector}** — ${cleanHtmlToMarkdown(rev.Vector_Description || '')}\n`;
+            if (rev.Alternate) md += `  - *Alternate (Special):* **${rev.Alternate}** — ${cleanHtmlToMarkdown(rev.Alternate_Description || '')}\n`;
+            if (rev.Detail) md += `  - *Detail:* **${rev.Detail}** — ${cleanHtmlToMarkdown(rev.Detail_Description || '')}\n`;
+        }
+        md += `\n`;
+    }
+
+    // 6. Stress, Trauma, Age
+    if (card.Stress && card.Stress.Type) {
+        md += `### 🧠 Stress, Trauma & Lifespan\n`;
+        md += `- **Stress Type:** **${card.Stress.Type}** — *${cleanHtmlToMarkdown(card.Stress.Description)}*\n`;
+        md += `  > **Stress Rules:** ${cleanHtmlToMarkdown(card.Stress.Rules)}\n`;
+        if (card.Trauma && card.Trauma.Type) {
+            md += `- **Trauma Type:** **${card.Trauma.Type}** — *${cleanHtmlToMarkdown(card.Trauma.Description)}*\n`;
+            md += `  > **Trauma Rules:** ${cleanHtmlToMarkdown(card.Trauma.Rules)}\n`;
+        }
+        if (card.Age && card.Age.Type) {
+            md += `- **Age/Lifespan Aspect:** **${card.Age.Type}** — *${cleanHtmlToMarkdown(card.Age.Description)}*\n`;
+            md += `  > **Age Rules:** ${cleanHtmlToMarkdown(card.Age.Rules)}\n`;
+        }
+        md += `\n`;
+    }
+
+    md += `---\n\n`;
+    return md;
 }
 
 function processShortcodes(markdownContent) {
@@ -692,40 +840,14 @@ function processShortcodes(markdownContent) {
         }
 
         if (type === 'cards') {
-            if (!cardsCache) {
-                try {
-                    cardsCache = JSON.parse(fs.readFileSync('./src/t13ne/data/cards/cards.json', 'utf8'));
-                } catch (e) {
-                    console.error('Failed to load cards.json:', e);
-                    return `\n*[Error loading cards]*\n`;
-                }
-            }
-
-            let md = `\n## 🃏 Complete T13 Card Reference Guide\n\n`;
-            md += `This section provides the full listing of all 54 playing cards in the T13 engine, including their Unicode representation, mechanical statistics (Pips, Wound Levels, Facets), and their narrative and Yarn meanings.\n\n`;
-
-            for (const card of cardsCache) {
-                const uni = getUnicodeCardSymbol(card);
-                const suitName = getSuitName(card.Suit);
-                const name = `${card.Card} of ${suitName}`;
-
-                md += `### ${uni} ${name}\n`;
-                md += `- **Suit:** ${suitName}\n`;
-                md += `- **Pips (Value):** ${card.Pips || 'N/A'}\n`;
-                md += `- **Wound Level:** ${card.Wound_Level !== undefined ? card.Wound_Level : 'N/A'}\n`;
-                if (card.Facet) {
-                    md += `- **Associated Facets:** ${card.Facet}\n`;
-                }
-                if (card.Narrative_Meaning) {
-                    md += `- **Narrative Meaning:** *${cleanHtmlToMarkdown(card.Narrative_Meaning)}*\n`;
-                }
-                if (card.Yarn) {
-                    const yarnName = card.Yarn.Yarn_Name || 'Unnamed Yarn';
-                    const yarnDesc = card.Yarn.Yarn_Description || '';
-                    md += `- **Yarn / Theme:** **${yarnName}** — *${cleanHtmlToMarkdown(yarnDesc)}*\n`;
-                }
-                md += `\n`;
-            }
+            // Under our new architecture, we link to the divided card guide files
+            let md = `\n## 📚 Suit Reference Guides\n\n`;
+            md += `Due to the extreme depth of mechanical and narrative details associated with each card, the card guide has been broken out into suit-specific sub-guides. Please select a suit below to view detailed card layouts:\n\n`;
+            md += `- 💎 [**Diamonds Reference Guide**](Card-Guide-Diamonds.md) — 13 cards detailing Travel, Money, Business, and Creation Ordeals.\n`;
+            md += `- ❤️ [**Hearts Reference Guide**](Card-Guide-Hearts.md) — 13 cards detailing Love, Relationships, Affections, and Peace.\n`;
+            md += `- ♣️ [**Clubs Reference Guide**](Card-Guide-Clubs.md) — 13 cards detailing Power, Fame, Politics, and Actions.\n`;
+            md += `- ♠️ [**Spades Reference Guide**](Card-Guide-Spades.md) — 13 cards detailing Misfortune, Suffering, and Lawsuits.\n`;
+            md += `- 🃏 [**Wildcards (Jokers) Reference Guide**](Card-Guide-Wildcards.md) — The Red and Black Jokers representing the Omniverse and the Beyond.\n\n`;
             return md;
         }
 
@@ -742,6 +864,38 @@ async function run() {
         const ruleFiles = fs.readdirSync(rulesDataDir).filter(f => f.endsWith('.json'));
         const rulePagesList = [];
 
+        // Pre-load cards for generating divided guides
+        cardsCache = JSON.parse(fs.readFileSync('./src/t13ne/data/cards/cards.json', 'utf8'));
+
+        // 1. Generate Sub-Guides for Suits
+        const suitGuides = {
+            'Diamonds': { filename: 'Card-Guide-Diamonds.md', cards: cardsCache.filter(c => c.Suit === '1') },
+            'Hearts': { filename: 'Card-Guide-Hearts.md', cards: cardsCache.filter(c => c.Suit === '2') },
+            'Clubs': { filename: 'Card-Guide-Clubs.md', cards: cardsCache.filter(c => c.Suit === '3') },
+            'Spades': { filename: 'Card-Guide-Spades.md', cards: cardsCache.filter(c => c.Suit === '4') },
+            'Wildcards': { filename: 'Card-Guide-Wildcards.md', cards: cardsCache.filter(c => c.Suit === '0' || c.Suit === '5') }
+        };
+
+        for (const [suitName, info] of Object.entries(suitGuides)) {
+            let suitMd = `# Card Guide: ${suitName}\n\n`;
+            suitMd += `This guide provides the complete mechanical, narrative, and Yarn specifications for all ${info.cards.length} cards of the ${suitName} suit in the T13 Narrative Game Engine.\n\n`;
+            suitMd += `[Back to Card Guide](Card-Guide.md) | [Back to Rules Index](README.md)\n\n---\n\n`;
+
+            for (const card of info.cards) {
+                suitMd += generateCardDetailMd(card);
+            }
+
+            suitMd += `*Copyright CJ Moseley (2026). All rights reserved.*`;
+            fs.writeFileSync(path.join(outputDir, info.filename), suitMd, 'utf8');
+            console.log(`Generated Card Suit Guide: ${path.join(outputDir, info.filename)}`);
+
+            rulePagesList.push({
+                title: `Card Guide: ${suitName}`,
+                filename: info.filename
+            });
+        }
+
+        // 2. Generate General Rule Pages
         for (const ruleFile of ruleFiles) {
             const raw = fs.readFileSync(path.join(rulesDataDir, ruleFile), 'utf8');
             const ruleObj = JSON.parse(raw);
