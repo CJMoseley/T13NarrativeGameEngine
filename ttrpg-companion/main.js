@@ -52,6 +52,8 @@ async function initApp() {
         setupCharacterCreator();
         setupVttControls();
         setupInspector();
+    setupStoryMode();
+    setupAuthorMode();
 
         EventBus.on('p2p:peer-connected', ({ peerId }) => {
             console.log(`P2P: Connected to peer ${peerId}`);
@@ -260,6 +262,62 @@ function setupVttControls() {
             P2PNetworkManager.broadcast({ type: 'CLEAR_TABLE' });
         });
     }
+}
+
+function setupAuthorMode() {
+    const authorLink = document.querySelector('[data-panel="author"]');
+    if (authorLink) {
+        authorLink.addEventListener('click', async () => {
+            const AuthorMode = T13NE.getModule('AuthorMode');
+            if (AuthorMode && !AuthorMode.isActive) {
+                await AuthorMode.toggle(true);
+            }
+        });
+    }
+}
+
+function setupStoryMode() {
+    const btnToggle = document.getElementById('btnToggleStoryMode');
+    const status = document.getElementById('storyModeStatus');
+    const overlay = document.getElementById('story-narration-overlay');
+    const nTitle = document.getElementById('narration-title');
+    const nText = document.getElementById('narration-text');
+    const nMech = document.getElementById('narration-mechanical');
+
+    let storyModeActive = false;
+
+    if (btnToggle) {
+        btnToggle.addEventListener('click', () => {
+            const StoryMode = T13NE.getModule('StoryMode');
+            if (!StoryMode) return;
+
+            storyModeActive = !storyModeActive;
+            StoryMode.toggle(storyModeActive);
+
+            btnToggle.textContent = storyModeActive ? "Disable Story Mode" : "Enable Story Mode";
+            btnToggle.style.background = storyModeActive ? "#ef4444" : "#3b82f6";
+            status.textContent = storyModeActive ? "AI Driven Narrative" : "Manual Control";
+        });
+    }
+
+    EventBus.on('chronicle:entry', (entry) => {
+        if (!overlay || !storyModeActive) return;
+        if (entry.type !== 'Diegetic') return; // Only show narrative text in the overlay
+
+        overlay.style.display = 'block';
+        nTitle.textContent = entry.source || "Narration";
+        nText.textContent = entry.message || "";
+        nMech.textContent = entry.details?.mechanical || "";
+
+        // Auto-fade overlay after 12 seconds for diegetic entries
+        setTimeout(() => {
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                overlay.style.opacity = '1';
+            }, 1000);
+        }, 12000);
+    });
 }
 
 function setupNetworking() {

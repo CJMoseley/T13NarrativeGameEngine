@@ -40,6 +40,17 @@
       </ul>
     </nav>
     
+    <!-- Story Mode Toggle -->
+    <div class="conn-panel" style="margin-bottom: 10px; background: #1e293b;">
+        <div class="conn-title">Engine Mode</div>
+        <div style="padding: 10px; display: flex; flex-direction: column; gap: 10px;">
+            <button class="btn" id="btnToggleStoryMode" style="background: #3b82f6;">Enable Story Mode</button>
+            <div id="storyModeStatus" style="font-size: 0.7rem; color: #94a3b8; text-align: center;">
+                Manual Control
+            </div>
+        </div>
+    </div>
+
     <!-- P2P Connection -->
     <div class="conn-panel">
       <div class="conn-title">Session Connection</div>
@@ -85,6 +96,12 @@
           <button class="btn btn-secondary" id="btnClearDice">Clear Table</button>
         </div>
         <div id="vtt-canvas"></div>
+      </div>
+      <!-- Story Mode Narration Overlay -->
+      <div id="story-narration-overlay" style="display: none; position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); width: 80%; max-width: 800px; background: rgba(15, 23, 42, 0.9); border: 1px solid #334155; border-radius: 12px; padding: 20px; z-index: 100; color: #f8fafc; font-family: 'Inter', sans-serif; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+          <h4 id="narration-title" style="margin-top: 0; color: #3b82f6; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Scene Intro</h4>
+          <p id="narration-text" style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 0;"></p>
+          <div id="narration-mechanical" style="margin-top: 10px; font-size: 0.75rem; color: #10b981; font-weight: bold; text-transform: uppercase;"></div>
       </div>
     </div>
     

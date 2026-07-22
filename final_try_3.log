@@ -1,0 +1,11 @@
+
+  VITE v7.3.0  ready in 434 ms
+
+  ➜  Local:   http://localhost:5174/
+  ➜  Network: use --host to expose
+[vite-plugin-static-copy] Collected 2 items.
+1:05:16 AM [vite] (client) Pre-transform error: Failed to load url /rulebook/js/rule-components.js (resolved id: /rulebook/js/rule-components.js). Does the file exist?
+1:05:23 AM [vite] (client) ✨ new dependencies optimized: physx-js-webidl
+1:05:23 AM [vite] (client) ✨ optimized dependencies changed. reloading
+1:05:23 AM [vite] (client) Pre-transform error: Failed to load url /rulebook/js/rule-components.js (resolved id: /rulebook/js/rule-components.js). Does the file exist?
+1:05:23 AM [vite] (client) Pre-transform error: Failed to load url /rulebook/js/rule-components.js (resolved id: /rulebook/js/rule-components.js). Does the file exist?

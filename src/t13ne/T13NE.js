@@ -43,6 +43,7 @@ import T13NE_Reasoning from './modules/ai/t13ne-reasoning.js';
 import T13NE_StateMachine from './modules/systems/t13ne-state-machine.js';
 import T13NE_Editor from './modules/systems/t13ne-editor.js';
 import T13VTTManager from './modules/vtt/VTTManager.js';
+import AuthorMode from './modules/systems/AuthorMode.js';
 
 import { ViewManager } from './core/ViewManager.js';
 import { PluginManager } from './core/PluginManager.js';
