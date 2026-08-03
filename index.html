@@ -147,6 +147,7 @@
         </div>
         <!-- Shipyard Panel will be dynamically added by its component -->
     </div>
+    <button id="install-btn" class="menu-button" style="display:none; position:fixed; bottom:10px; right:10px; z-index:9999; pointer-events:auto;">Install App</button>
 
     <!-- Game Canvas -->
     <div id="game-canvas-container">
@@ -158,10 +159,43 @@
         Physics engine initialization is now handled by the enable3d library,
         which is triggered by the scenes that require physics.
     -->
+    <link rel="manifest" href="./manifest.json">
     <script>
         console.log("index.html script tag is executing (Standard Engine Mode)");
     </script>
-    <script type="module" src="/src/t13ne/main.js"></script>
+    <script>
+      // Register service worker for offline / install
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js').then(() => {
+            console.log('Service worker registered');
+          }).catch((e) => console.warn('Service worker registration failed', e));
+        });
+      }
+
+      // beforeinstallprompt handling for custom Install button
+      let deferredInstallPrompt = null;
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredInstallPrompt = e;
+        const btn = document.getElementById('install-btn');
+        if (btn) {
+          btn.style.display = 'block';
+          btn.addEventListener('click', async () => {
+            btn.style.display = 'none';
+            try {
+              deferredInstallPrompt.prompt();
+              const choice = await deferredInstallPrompt.userChoice;
+              console.log('User choice', choice);
+              deferredInstallPrompt = null;
+            } catch (err) {
+              console.warn('Install prompt failed', err);
+            }
+          });
+        }
+      });
+    </script>
+    <script type="module" src="./src/t13ne/main.js"></script>
 
 </body>
 
