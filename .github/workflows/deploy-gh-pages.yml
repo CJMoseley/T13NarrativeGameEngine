@@ -26,8 +26,22 @@ jobs:
       - name: Install dependencies
         run: npm ci --silent
 
-      - name: Build
+      - name: Build (main site)
         run: npm run build --silent
+
+      - name: Build companion site (ttrpg-companion)
+        run: |
+          echo "Building ttrpg-companion..."
+          npm run build:companion --silent || { echo "Companion build failed, re-running with verbose logs..."; npm run build:companion:verbose; exit 1; }
+
+      - name: Copy companion build into dist
+        run: |
+          if [ -d dist-ttrpg ]; then
+            mkdir -p dist/ttrpg-companion
+            cp -r dist-ttrpg/* dist/ttrpg-companion/ || true
+          else
+            echo "No companion dist-ttrpg found — companion build may have failed"
+          fi
 
       - name: Package referee server
         run: |
