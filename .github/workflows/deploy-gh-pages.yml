@@ -29,10 +29,10 @@ jobs:
       - name: Build
         run: npm run build --silent
 
-      - name: Deploy to gh-pages
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Upload build artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v1
         with:
-          branch: gh-pages
-          folder: dist
-          clean: true
-          token: ${{ secrets.GITHUB_TOKEN }}
+          path: ./dist
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
