@@ -35,8 +35,10 @@ export class PluginManager {
         Logger.start('PluginManager.discoverAndLoadPlugins');
 
         // Vite-specific feature to find all plugin registration files.
+        // Use relative glob patterns so Vite can resolve them correctly in the companion build.
+        // The plugins directory is expected at ./plugins in the repository root; keep the src fallback too.
         const registrationModules = import.meta.glob([
-            '@plugins/*/wormholeracers-register-plugin.js',
+            './plugins/*/wormholeracers-register-plugin.js',
             '/src/*/wormholeracers-register-plugin.js'
         ]);
 
