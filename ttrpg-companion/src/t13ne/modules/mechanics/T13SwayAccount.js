@@ -2,7 +2,7 @@
 import T13NE_Sway from "./t13ne-sway.js";
 import Logger from "../../core/Logger.js";
 import T13SwayPurse from './T13SwayPurse.js';
-import T13NE from '../T13NE.js';
+import T13NE from '../../T13NE.js';
 
 /**
  * Manages multiple "flavors" of sway for a character or item.
