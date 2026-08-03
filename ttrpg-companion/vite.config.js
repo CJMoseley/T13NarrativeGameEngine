@@ -29,6 +29,7 @@ export default defineConfig({
     alias: {
       'three': path.resolve(__dirname, '../node_modules/three'),
       '@': path.resolve(__dirname, '..'),
+      '/src': path.resolve(__dirname, 'src'),
       '/src/t13ne': path.resolve(__dirname, 'src/t13ne')
     }
   },
