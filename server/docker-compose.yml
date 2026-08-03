@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  referee:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    restart: unless-stopped
+    # If you want to mount local files for development, uncomment the volumes section:
+    # volumes:
+    #   - ./:/usr/src/app
+    #   - /usr/src/app/node_modules
