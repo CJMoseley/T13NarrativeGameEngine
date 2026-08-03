@@ -29,6 +29,26 @@ jobs:
       - name: Build
         run: npm run build --silent
 
+      - name: Package referee server
+        run: |
+          mkdir -p dist/server
+          if [ -d server ]; then
+            cd server
+            zip -r "../dist/server/referee-server.zip" . -x "node_modules/*" "*.log" || true
+            cd -
+          else
+            echo "No server folder found to package"
+          fi
+
+      - name: Copy docs for publishing
+        run: |
+          mkdir -p dist/docs
+          if [ -d docs ]; then
+            cp -r docs/* dist/docs/ || true
+          else
+            echo "No docs folder to copy"
+          fi
+
       - name: Upload build artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v1
         with:

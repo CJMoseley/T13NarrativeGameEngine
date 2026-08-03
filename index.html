@@ -149,7 +149,7 @@
     </div>
     <div style="position:fixed; bottom:10px; right:10px; z-index:9999; pointer-events:auto; display:flex; gap:8px;">
       <button id="install-btn" class="menu-button" style="display:none;">Install App</button>
-      <button id="referee-btn" class="menu-button" title="Download / install the Referee server (instructions)">Referee Server</button>
+      <button id="referee-btn" class="menu-button" title="Referee docs and download">Referee Server</button>
     </div>
 
     <!-- Game Canvas -->
@@ -198,18 +198,20 @@
         }
       });
 
-      // Referee server button: open the repository server README (instructions + install)
-      const refereeBtn = document.getElementById('referee-btn');
-      if (refereeBtn) {
-        refereeBtn.addEventListener('click', (ev) => {
-          // Open the server folder on GitHub where the README gives install instructions.
-          // Adjust branch/name if your repo uses a different default branch.
-          const repo = 'CJMoseley/T13NarrativeGameEngine';
-          const serverPath = `https://github.com/${repo}/tree/main/server`;
-          window.open(serverPath, '_blank', 'noopener');
-        });
-      }
+
+    <script>
+      // Referee server button handler: open on-site docs
+      (function () {
+        const refereeBtn = document.getElementById('referee-btn');
+        if (refereeBtn) {
+          refereeBtn.addEventListener('click', (ev) => {
+            const url = '/docs/referee/index.html';
+            window.open(url, '_blank', 'noopener');
+          });
+        }
+      })();
     </script>
+
     <script type="module" src="./src/t13ne/main.js"></script>
 
 </body>

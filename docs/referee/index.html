@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Referee Server — Setup & Run</title>
+    <link rel="stylesheet" href="/css/ui-styles.css">
+    <style>
+      body { background: #000; color: #cce; font-family: Jura, sans-serif; padding: 24px; }
+      .card { background: rgba(10,10,20,0.6); border: 1px solid #334; padding: 18px; border-radius: 8px; max-width: 980px; }
+      h1 { color: #8fc; }
+      pre { background: #001; padding: 12px; overflow:auto; }
+      a { color: #8fc }
+      .note { color: #cc9 }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>Referee (Host) Server — Setup & Run</h1>
+      <p>This page documents how to run the Referee (signaling/task) server that coordinates distributed compute and acts as the central "referee" for multi-client games.</p>
+
+      <h2>Overview</h2>
+      <p>The referee server is a lightweight Node.js process in the <code>/server</code> folder. It provides a WebSocket signaling endpoint and an HTTP <code>/assign</code> endpoint to distribute compute tasks to capable clients. Clients may advertise compute capability and benchmarks so the referee can select them.</p>
+
+      <h2>AI Provider Requirements</h2>
+      <p>The project supports multiple AI providers. The Referee server (and compute workers) can be configured to use one of the following:</p>
+      <ul>
+        <li><strong>Ollama (local host)</strong> — a self-hosted LLM host. Default base URL: <code>http://localhost:11434</code>. Endpoints used: <code>/api/tags</code> (models) and <code>/api/generate</code>.</li>
+        <li><strong>OpenAI</strong> — cloud API using an API key. Used via the OpenAI SDK / REST endpoints.</li>
+        <li><strong>Google Gemini</strong> — Google Generative Language API (requires API key).</li>
+        <li><strong>Mock</strong> — in-development fallback for testing.</li>
+      </ul>
+      <p class="note">The code is provider-agnostic where possible — other local LLM hosts exposing compatible HTTP endpoints can also be used if configured accordingly.</p>
+
+      <h2>Download packaged Referee server</h2>
+      <p>A packaged zip of the server folder is available for download from this site at <code>/server/referee-server.zip</code> (created by CI). If not present, use the repository <a href="/server">server folder</a> on GitHub.</p>
+
+      <h2>Run locally (from source)</h2>
+      <ol>
+        <li>Clone the repository and change into the server directory:
+          <pre>git clone https://github.com/CJMoseley/T13NarrativeGameEngine.git
+cd T13NarrativeGameEngine/server</pre>
+        </li>
+        <li>Install and start:
+          <pre>npm install
+npm start</pre>
+        </li>
+        <li>Verify: <code>http://localhost:3000/health</code> should return <code>{ ok:true }</code>.</li>
+      </ol>
+
+      <h2>Run with Docker (recommended for portability)</h2>
+      <p>We can add a Dockerfile to the server package; if you want this packaged in the download, enable the Dockerfile option in CI. Example commands to run locally (assuming a Dockerfile present):</p>
+      <pre>docker build -t t13-referee ./server
+docker run -p 3000:3000 t13-referee</pre>
+
+      <h2>Configure AI provider for the referee/compute workers</h2>
+      <p>Set the AI configuration either in a runtime config file or environment variables used by the server/worker. Example configuration object:</p>
+      <pre>{
+  "provider": "ollama", // or 'openai' / 'gemini' / 'mock'
+  "baseUrl": "http://localhost:11434",
+  "model": "llama3",
+  "apiKey": "YOUR_API_KEY_IF_REQUIRED",
+  "temperature": 0.7
+}</pre>
+      <p>Important: Ollama requires pulling a compatible model to your Ollama instance; consult <a href="https://ollama.com/docs">Ollama docs</a>.</p>
+
+      <h2>Distributed compute model</h2>
+      <p>Clients register over WebSocket with a JSON <code>{ type: 'register', clientId, info }</code> message. They may send a <code>benchmark</code> message to advertise their capabilities (e.g., <code>{ computeCapable: true, cpu: 8, memoryGb: 16 }</code>).</p>
+      <p>To assign work, POST to <code>/assign</code> with a JSON body containing a <code>task</code> object. The server will broadcast a <code>taskAssign</code> message to compute-capable clients or to all clients as a fallback.</p>
+
+      <h2>Security and verification (notes)</h2>
+      <ul>
+        <li>The current prototype trusts clients and does minimal verification. For production you should add: result verification (Merkle-chunked digests), spot re-computation, client reputation/blacklisting, and TLS for transport.</li>
+        <li>Be mindful of LLM model licensing when distributing requests and results.</li>
+      </ul>
+
+      <h2>Troubleshooting</h2>
+      <ul>
+        <li>If AI calls fail, check which provider is configured and that the provider endpoint/API key is reachable and valid.</li>
+        <li>For Ollama, ensure the model is pulled and the Ollama daemon is running: <code>ollama pull llama3</code> and <code>ollama run</code>.</li>
+      </ul>
+
+      <p style="margin-top:18px">If you want, I can add a Dockerfile and docker-compose to the server folder and include them in the downloadable zip—say the word and I will add them next.</p>
+    </div>
+  </body>
+</html>

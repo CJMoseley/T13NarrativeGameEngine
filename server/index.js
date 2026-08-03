@@ -24,6 +24,16 @@ const Logger = {
   }
 };
 
+// Notes on security and distributed compute
+// - This prototype trusts connected clients and accepts task results without strong verification.
+// - Production recommendations:
+//   * Use TLS (HTTPS / WSS) with validated certificates.
+//   * Add result verification (Merkle-chunked digests, random sample re-computation).
+//   * Implement client reputation and throttling/blacklisting for misbehaving nodes.
+//   * Authenticate clients (JWT / API keys) and validate permissions on /assign.
+// - The /assign endpoint currently broadcasts to compute-capable clients; ensure the data sent does not expose secrets or private keys.
+
+
 // Connected clients: clientId -> { ws, info }
 const clients = new Map();
 
