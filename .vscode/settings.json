@@ -1,4 +1,5 @@
 {
     "ollama-participant.model": "qwen3-coder",
-    "ollamaAgent.model": "deepseek-coder-v2"
+    "ollamaAgent.model": "deepseek-coder-v2",
+    "files.autoSave": "onFocusChange"
 }
