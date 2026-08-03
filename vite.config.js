@@ -49,6 +49,9 @@ export default defineConfig({
     }
   },
   build: {
-    outDir: '../dist'
+    outDir: 'dist',
+    emptyOutDir: true,
+    // Increase warning limit because large wasm assets (physx, audio) are expected in this project
+    chunkSizeWarningLimit: 2000
   }
 });
