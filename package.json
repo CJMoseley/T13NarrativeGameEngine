@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:verbose": "vite build --debug",
     "preview": "vite preview",
+    "build:companion": "vite build --config ttrpg-companion/vite.config.js",
+    "build:companion:verbose": "vite build --config ttrpg-companion/vite.config.js --debug",
     "rules:md": "node scripts/generate_markdown_rules.mjs",
     "rules:generate": "npm run rules:md"
   },
