@@ -28,3 +28,12 @@ A comprehensive, procedurally-driven narrative engine and 3D Virtual Tabletop (V
 - [Referee's Guide](docs/guides/RefereesGuide.md)
 - [Author's Guide](docs/guides/AuthorsGuide.md)
 - [Developer's Guide](docs/guides/DevelopersGuide.md)
+
+## GitHub Pages
+A deployed static site is published via GitHub Pages when the main branch is updated. The site includes an on-site Referee documentation page and a packaged Referee server download.
+
+- Pages URL (typical): https://CJMoseley.github.io/T13NarrativeGameEngine
+- Referee docs: /docs/referee/index.html on the published site
+- Packaged Referee server (download): /server/referee-server.zip (created by CI during site build)
+
+Note: The exact Pages URL may differ if you use a custom domain or organization settings. If the published site URL is different, update this README accordingly.
