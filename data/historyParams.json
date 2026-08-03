@@ -1,0 +1,23 @@
+{
+    "galaxyAge": 100000000,
+    "ageDurationRange": [5000000, 20000000],
+    "gameStartTime": -5000,
+    "eventRollInterval": 10000,
+    "eventProbabilities": {
+        "SPECIES_EMERGENCE": 0.15,
+        "TECHNOLOGICAL_LEAP": 0.2,
+        "MAJOR_WAR": 0.05,
+        "EXTINCTION_EVENT": 0.02,
+        "UPLIFT_EVENT": 0.1,
+        "CORPORATION_FOUNDING": 0.2
+    },
+    "speciesParams": {
+        "maxActiveSpecies": 10,
+        "creatorChance": 0.25,
+        "baseLifespan": 500000,
+        "lifespanVariance": 1000000
+    },
+    "ageNameTemplates": [
+        "The Age of {species}", "The {adjective} Expansion", "The {noun} Era", "The Great {event}"
+    ]
+}

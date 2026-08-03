@@ -1,0 +1,14 @@
+[
+    { "name": "Methane", "facet": "Burden", "attributes": { "state": "gas" }, "potential": { "fuel": 10, "carbon_source": 5 } },
+    { "name": "Oxygen", "facet": "Fury", "attributes": { "state": "gas" }, "potential": { "oxidizer": 10 } },
+    { "name": "Water", "facet": "Fury", "attributes": { "state": "liquid" }, "potential": { "solvent": 8, "hydrogen_source": 7 } },
+    { "name": "Iron", "facet": "Burden", "attributes": { "state": "solid", "metal": true }, "potential": { "building_material": 10, "conductive": 6 } },
+    { "name": "Silicon", "facet": "Craft", "attributes": { "state": "solid" }, "potential": { "semiconductor": 10 } },
+    { "name": "Copper", "facet": "Burden", "attributes": { "state": "solid", "metal": true }, "potential": { "conductive": 10 } },
+    { "name": "Carbon", "facet": "Phoenix", "attributes": { "state": "solid" }, "potential": { "carbon_source": 10 } },
+    { "name": "Hydrogen", "facet": "Liberty", "attributes": { "state": "gas" }, "potential": { "fuel": 8, "hydrogen_source": 10 } },
+    { "name": "Aluminium", "facet": "Gossamer", "attributes": { "state": "solid", "metal": true }, "potential": { "building_material": 7, "lightweight": 9 } },
+    { "name": "Gold", "facet": "Virtue", "attributes": { "state": "solid", "metal": true }, "potential": { "conductive": 9, "inert": 10 } },
+    { "name": "Lithium", "facet": "Zeal", "attributes": { "state": "solid", "metal": true }, "potential": { "battery_component": 10 } },
+    { "name": "Uranium", "facet": "Sin", "attributes": { "state": "solid", "metal": true }, "potential": { "fissile": 10 } }
+]

@@ -1,0 +1,38 @@
+{
+    "SOCIAL_ADJECTIVES": [
+        "absolute", "affluent", "allied", "anarchic", "authoritarian", "autocratic", "autonomous", "bipartisan",
+        "bourgeois", "bureaucratic", "capitalist", "central", "centralized", "civil", "coalition", "colonial",
+        "communist", "confederate", "constitutional", "conservative", "corrupt", "democratic", "despotic",
+        "developing", "dictatorial", "diplomatic", "domestic", "electoral", "executive", "failed", "fascist",
+        "federal", "foreign", "free", "friendly", "governmental", "imperial", "impoverished", "independent",
+        "interim", "internal", "left-wing", "legitimate", "liberal", "libertarian", "local", "military",
+        "minority", "monarchical", "municipal", "national", "nationalist", "official", "parliamentary",
+        "partisan", "peace-loving", "popular", "presidential", "previous", "progressive", "provisional",
+        "provincial", "public", "recipient", "regressive", "regional", "repressive", "republican",
+        "representative", "responsible", "revolutionary", "right-wing", "rogue", "royal", "secular",
+        "self-governing", "socialist", "sovereign", "stable", "strong", "successive", "territorial",
+        "theocratic", "totalitarian", "tribal", "various", "weak", "well-developed", "technocratic",
+        "cybernetic", "digital", "algorithmic", "data-driven", "collectivist", "syndicalist", "corporate",
+        "plutocratic", "meritocratic", "eugenic", "theocratic-feudal", "hive-minded", "post-scarcity",
+        "utilitarian", "galactic", "interstellar", "planetary", "system-spanning", "lunar", "orbital",
+        "frontier", "exiled", "imperialistic", "dystopian", "utopian", "militaristic", "xenophobic",
+        "xenophilic", "bio-engineered", "cloned", "totalitarian-surveillance", "feudal-starship",
+        "consensus-driven"
+    ],
+    "SOCIAL_NOUN": [
+        "Absolutism", "Administration", "Ambiarchy", "Anachronocracy", "Anarchism", "Aristocracy",
+        "Astrotocracy", "Autarchy", "Autocracy", "Authoritarianism", "Bibliocracy", "Biocracy", "Bureaucracy",
+        "Centralism", "Colonialism", "Collectivism", "Command", "Communalism", "Communism", "Confederation",
+        "Consensus", "Control", "Corporatism", "Council", "Cryptocracy", "Cyberocracy", "Decentralization", "Demarchy",
+        "Democracy", "Despotism", "Dictatorship", "Direction", "Dominion", "Ecocracy", "Egalitarianism", "Ergatocracy", "Fallocracy",
+        "Federation", "Federalism", "Feudalism", "Genocracy", "Gerontocracy", "Gymnasiarchy", "Gynarchy", "Hegemony", "Hierarchy",
+        "Hierocracy", "Hydrocracy", "Imperialism", "Infocracy", "Iotacracy", "Juntocracy", "Kleptocracy",
+        "Kyriarchy", "Leadership", "Logocracy", "Lottocracy", "Ludocracy", "Management", "Matriarchy", "Meritocracy",
+        "Militarism", "Minarchy", "Monarchy", "Monitor", "Neocolonialism", "Network", "Nomocracy", "Ochlocracy", "Oligarchy",
+        "Oversight", "Palaeocracy", "Panarchy", "Papyrocracy", "Paracratic", "Patriarchy", "Pedocracy",
+        "Phallocracy", "Phenocracy", "Physiocracy", "Pornocracy", "Plutocracy", "Polyarchy", "Populism",
+        "Probocracy", "Ptochocracy", "Representation", "Republic", "Rule", "Sociocracy", "Sophocracy", "Stratocracy",
+        "Supervision", "Synarchy", "Syndicate", "Technocracy", "Teleocracy", "Thelemocracy", "Theocracy",
+        "Timocracy", "Totalitarianism", "Tribalism", "Triumvirate", "Tyranny", "Unilateralism", "Unitarism"
+    ]
+}

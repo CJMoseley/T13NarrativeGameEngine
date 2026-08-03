@@ -1,0 +1,30 @@
+{
+    "schemes": {
+        "galaxy": {
+            "type": "OrbitControls",
+            "settings": {
+                "enableDamping": true,
+                "dampingFactor": 0.05,
+                "screenSpacePanning": false,
+                "minDistance": 500,
+                "maxDistance": 8000
+            }
+        },
+        "system": {
+            "type": "OrbitControls",
+            "settings": {
+                "enableDamping": true,
+                "dampingFactor": 0.05,
+                "minDistance": 10,
+                "maxDistance": 1000
+            }
+        },
+        "ui": {
+            "open": "o",
+            "minimize": "m",
+            "okay": "k",
+            "dismiss": "n"
+        }
+    },
+    "default": "galaxy"
+}
