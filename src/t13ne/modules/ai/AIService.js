@@ -3,7 +3,21 @@ import OpenAI from 'https://esm.sh/openai';
 
 /**
  * AIService handles interactions with external AI providers.
- * Supports: OpenAI, Gemini, Ollama (Local), and Mock.
+ *
+ * Supported providers and notes:
+ * - openai: Uses the OpenAI SDK when apiKey is provided. Cloud-hosted, requires API key and billing.
+ * - gemini: Uses Google Generative Language via REST with an API key.
+ * - ollama: Local, self-hosted LLM host (default baseUrl http://localhost:11434). Requires models to be pulled into the Ollama instance.
+ * - mock: Development fallback with deterministic mock responses for testing.
+ *
+ * Design notes:
+ * - The service exposes a provider-agnostic API (generateText) so callers can remain uncoupled to the provider.
+ * - Ollama-specific helpers assume the Ollama HTTP API endpoints (/api/tags, /api/generate). Other local hosts with compatible endpoints can be used but may require adapting the baseUrl/endpoints.
+ * - Worker/compute code uses the same provider contract so heavy tasks can run in worker threads or remote clients.
+ *
+ * Security & operational notes:
+ * - API keys and provider configuration must be kept out of client-side builds for production use; set them server-side or in environment variables on trusted hosts.
+ * - Ollama is local by default; ensure network access and model licensing are appropriate before exposing or distributing requests to other clients.
  */
 class AIService {
     constructor() {
