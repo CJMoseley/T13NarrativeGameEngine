@@ -26,6 +26,11 @@ export default defineConfig(({ mode }) => {
           {
             src: path.resolve(__dirname, '../node_modules/three/examples/jsm/libs/ammo.wasm.wasm'),
             dest: 'libs'
+          },
+          {
+            // Copy the T13NE engine data directory so that the companion dev server can load the library codex
+            src: path.resolve(__dirname, '../src/t13ne/data'),
+            dest: 'plugins/t13ne'
           }
         ]
       })

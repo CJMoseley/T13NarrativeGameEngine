@@ -1,0 +1,10 @@
+[SECURITY WARNING] REFREE_SECRET environment variable is not defined!
+[SECURITY] Generated secure one-time session token: Bearer 2e3beb153cc92b3c1926fa422f76a03882df79d3a5fe7bc92e3f0ac4911ef858
+[StateStore] Running in-memory mode. File persistence is disabled.
+[INFO] 2026-08-04T19:39:12.933Z - Signaling/task/API server listening on http://localhost:5713
+[INFO] 2026-08-04T19:39:39.219Z - New WebSocket connection initiated.
+[INFO] 2026-08-04T19:39:39.300Z - Registered client client_ui_57184 [ROLE: player] with info: {"mode":"player","isAuthorized":false}
+[INFO] 2026-08-04T19:39:51.113Z - New WebSocket connection initiated.
+[INFO] 2026-08-04T19:39:51.119Z - WebSocket closed for client: client_ui_57184
+[INFO] 2026-08-04T19:39:51.836Z - Registered client client_ui_22483 [ROLE: player] with info: {"mode":"player","isAuthorized":true}
+[INFO] 2026-08-04T19:39:59.703Z - WebSocket closed for client: client_ui_22483

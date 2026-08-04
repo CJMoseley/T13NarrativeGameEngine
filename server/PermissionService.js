@@ -3,31 +3,38 @@
  *
  * Centralized gatekeeper and single source of truth for write access validation.
  * Enforces role-based permissions (Referee vs Player) on resources and actions.
+ *
+ * [SECURITY RESTRICTION] No hardcoded default secrets are allowed.
  */
 
-const REFREE_SECRET = process.env.REFREE_SECRET || 'DEV_SUPER_SECRET_KEY';
+const crypto = require('crypto');
+
+// Load secret strictly from environment or generate a secure one-time session token
+const REFREE_SECRET = process.env.REFREE_SECRET || (() => {
+  console.warn('[SECURITY WARNING] REFREE_SECRET environment variable is not defined!');
+  const fallback = crypto.randomBytes(32).toString('hex');
+  console.info(`[SECURITY] Generated secure one-time session token: Bearer ${fallback}`);
+  return fallback;
+})();
 
 class PermissionService {
   /**
    * Evaluates granular, role-based permission. Mandatory JULES API contract method.
    * @param {'player' | 'referee'} userRole
-   * @param {string} resourceType - e.g., 'state', 'characters', 'story', 'modules'
-   * @param {'create' | 'read' | 'update' | 'delete' | string} action
+   * @param {string} resourceType
+   * @param {string} action
    * @returns {boolean}
    */
   canWrite(userRole, resourceType, action) {
-    // Referee role has absolute write and administrative power
     if (userRole === 'referee') {
       return true;
     }
 
-    // Player role is read-only
     const readActions = ['read', 'get', 'view', 'list'];
     if (readActions.includes(action.toLowerCase())) {
       return true;
     }
 
-    // Block any non-read action for player (write, update, delete, etc.)
     return false;
   }
 
