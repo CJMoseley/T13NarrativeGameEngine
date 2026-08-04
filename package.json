@@ -1,5 +1,5 @@
 {
-  "name": "wormholeracersjs",
+  "name": "T13NGE",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -7,6 +7,15 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "dev:player": "vite --mode player",
+    "dev:referee": "vite --mode referee",
+    "build:player": "vite build --mode player",
+    "build:referee": "vite build --mode referee",
+    "companion:dev:player": "vite -c ttrpg-companion/vite.config.js --mode player",
+    "companion:dev:referee": "vite -c ttrpg-companion/vite.config.js --mode referee",
+    "companion:build:player": "vite build -c ttrpg-companion/vite.config.js --mode player",
+    "companion:build:referee": "vite build -c ttrpg-companion/vite.config.js --mode referee",
+    "test:playwright": "playwright test",
     "rules:md": "node scripts/generate_markdown_rules.mjs",
     "rules:generate": "npm run rules:md"
   },
@@ -21,7 +30,7 @@
     "gl-matrix": "^3.4.4",
     "kalidokit": "^1.1.5",
     "lindenmayer": "^1.5.4",
-    "peerjs": "^1.5.5",
+    "peerjs": "^1.5.4",
     "physx-js-webidl": "^2.7.1",
     "simplex-noise": "^4.0.3",
     "three": "^0.174.0",
@@ -31,7 +40,7 @@
   "devDependencies": {
     "@playwright/test": "^1.57.0",
     "vite": "^7.3.6",
-    "vite-plugin-static-copy": "^3.4.0",
+    "vite-plugin-static-copy": "^3.1.4",
     "wav-decoder": "^1.3.0"
   }
 }

@@ -18,7 +18,7 @@ class NarrativeWriteFlowHandler {
    * @returns {object} Result of the flow
    */
   handleNarrativeIntent(userRole, rawIntent) {
-    // 1. Raw Intent -> Translate into Structured Payload
+    // 1. Raw Intent -> Translate into Structured Payload (Safe Extracted Input)
     const structuredPayload = this.translateIntentToPayload(rawIntent, userRole);
 
     // 2. PermissionCheck via central PermissionService
@@ -64,49 +64,108 @@ class NarrativeWriteFlowHandler {
   }
 
   /**
+   * Safe property extractor that filters and sanitizes unvalidated objects.
+   * Prevents blind JSON stringification or nested object reference leak.
+   * @param {any} input
+   * @returns {object | string}
+   */
+  extractSafeProperties(input) {
+    if (!input) {
+      return '';
+    }
+
+    if (typeof input !== 'object') {
+      return typeof input === 'string' ? input.slice(0, 500) : String(input);
+    }
+
+    const safeObj = {};
+    const allowedStringKeys = ['currentLocation', 'activeScene', 'resolutionStatus', 'name', 'id', 'charType'];
+    const allowedNumberKeys = ['tension', 'yarnPoints', 'scaleModifier'];
+    const allowedArrayKeys = ['facets', 'proficiencies', 'boons', 'hitches'];
+
+    for (const key of allowedStringKeys) {
+      if (typeof input[key] === 'string') {
+        safeObj[key] = input[key].slice(0, 250);
+      }
+    }
+
+    for (const key of allowedNumberKeys) {
+      if (typeof input[key] === 'number' && !isNaN(input[key])) {
+        safeObj[key] = input[key];
+      }
+    }
+
+    for (const key of allowedArrayKeys) {
+      if (Array.isArray(input[key])) {
+        safeObj[key] = input[key].map(item => {
+          if (typeof item === 'string') {
+            return item.slice(0, 100);
+          }
+          if (typeof item === 'number') {
+            return item;
+          }
+          if (item && typeof item === 'object') {
+            return {
+              name: typeof item.name === 'string' ? item.name.slice(0, 100) : undefined,
+              facet: typeof item.facet === 'string' ? item.facet.slice(0, 100) : undefined,
+              value: typeof item.value === 'number' ? item.value : undefined
+            };
+          }
+          return null;
+        }).filter(item => item !== null);
+      }
+    }
+
+    return safeObj;
+  }
+
+  /**
    * Translates raw, unvalidated input/intent into a clean structured payload.
    * @param {any} rawIntent
    * @param {string} userRole
    * @returns {object}
    */
   translateIntentToPayload(rawIntent, userRole) {
-    const rawString = typeof rawIntent === 'string' ? rawIntent : JSON.stringify(rawIntent);
+    // Sanitize and extract only explicitly allowed properties
+    const safeData = this.extractSafeProperties(rawIntent);
 
     // Create standard structured payload containing explicit target resources and actions
     const payload = {
       timestamp: new Date().toISOString(),
-      originalIntent: rawIntent,
       metadata: {
         sourceRole: userRole,
-        analyzerType: 'NarrativeWriteFlowHandler_V1'
+        analyzerType: 'NarrativeWriteFlowHandler_V2_Safe'
       },
       actionsToExecute: []
     };
 
-    // Determine targeted mutations based on properties of the intent
-    if (typeof rawIntent === 'object') {
-      if (rawIntent.currentLocation || rawIntent.tension || rawIntent.activeScene) {
+    if (typeof safeData === 'object' && safeData !== null) {
+      payload.originalIntent = safeData;
+
+      if (safeData.currentLocation || safeData.tension || safeData.activeScene) {
         payload.actionsToExecute.push({
           targetResource: 'state',
           action: 'update',
           payload: {
-            currentLocation: rawIntent.currentLocation || undefined,
-            activeScene: rawIntent.activeScene || undefined,
-            tension: typeof rawIntent.tension === 'number' ? rawIntent.tension : undefined,
-            yarnPoints: typeof rawIntent.yarnPoints === 'number' ? rawIntent.yarnPoints : undefined,
-            resolutionStatus: rawIntent.resolutionStatus || undefined
+            currentLocation: safeData.currentLocation || undefined,
+            activeScene: safeData.activeScene || undefined,
+            tension: typeof safeData.tension === 'number' ? safeData.tension : undefined,
+            yarnPoints: typeof safeData.yarnPoints === 'number' ? safeData.yarnPoints : undefined,
+            resolutionStatus: safeData.resolutionStatus || undefined
           }
         });
       }
 
-      if (rawIntent.name && (rawIntent.facets || rawIntent.proficiencies)) {
+      if (safeData.name && (safeData.facets || safeData.proficiencies)) {
         payload.actionsToExecute.push({
           targetResource: 'characters',
           action: 'create',
-          payload: rawIntent
+          payload: safeData
         });
       }
-    } else if (typeof rawIntent === 'string') {
+    } else if (typeof safeData === 'string' && safeData.length > 0) {
+      payload.originalIntent = safeData;
+
       // String fallbacks - progress tension or active scenes
       payload.actionsToExecute.push({
         targetResource: 'state',
@@ -124,7 +183,7 @@ class NarrativeWriteFlowHandler {
         targetResource: 'state',
         action: 'update',
         payload: {
-          lastNarrativeLog: `Raw intent logged: ${rawString.slice(0, 100)}`
+          lastNarrativeLog: `Raw intent logged cleanly.`
         }
       });
     }
