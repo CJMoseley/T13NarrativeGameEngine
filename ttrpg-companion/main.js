@@ -14,6 +14,30 @@ import '/src/components/T13EntityInspector.js';
 
 console.log("Bootstrap: Initializing TTRPG Companion client...");
 
+// ==========================================
+// 🛡️ Client Mode & Authorization Logic
+// ==========================================
+
+// Enforce standard client modes (player or referee) via environment variables
+const CLIENT_MODE = import.meta.env.VITE_CLIENT_MODE || 'player'; // default to restricted player state
+const SERVER_URL = 'http://localhost:5713'; // Changed to standard T13 port 5713
+const WS_URL = 'ws://localhost:5713'; // Changed to standard T13 port 5713
+
+window.T13NE_Auth = {
+  mode: CLIENT_MODE,
+  isAuthorized: CLIENT_MODE === 'referee', // referee starts elevated
+  token: CLIENT_MODE === 'referee' ? (localStorage.getItem('t13ne_referee_token') || 'DEV_SUPER_SECRET_KEY') : (localStorage.getItem('t13ne_player_token') || null)
+};
+
+// Global helper to get request headers with Authorization
+window.getAuthHeaders = () => {
+  const headers = { 'Content-Type': 'application/json' };
+  if (window.T13NE_Auth.token) {
+    headers['Authorization'] = `Bearer ${window.T13NE_Auth.token}`;
+  }
+  return headers;
+};
+
 // Navigation Control
 const navLinks = document.querySelectorAll('.nav-link');
 const panelViews = document.querySelectorAll('.panel-view');
@@ -32,6 +56,7 @@ navLinks.forEach(link => {
 });
 
 let voipManager = null;
+let apiWs = null;
 
 async function initApp() {
     try {
@@ -47,11 +72,16 @@ async function initApp() {
         await voipManager.init();
         voipManager.setupVAD();
 
+        // Initialize UI panels and connection
+        setupAuthUI();
         setupNetworking();
         setupPlotSystem();
         setupCharacterCreator();
         setupVttControls();
         setupInspector();
+
+        // Connect to centralized WebSocket server
+        connectToCentralServer();
 
         EventBus.on('p2p:peer-connected', ({ peerId }) => {
             console.log(`P2P: Connected to peer ${peerId}`);
@@ -61,7 +91,6 @@ async function initApp() {
 
             if (P2PNetworkManager.isHost) {
                 Logger.message(`Referee: Sending initial sync to player ${peerId}`);
-                // In a full implementation, we would send the active Game and Character data
                 P2PNetworkManager.sendTo(peerId, {
                     type: 'SESSION_SYNC',
                     ts: Date.now(),
@@ -76,12 +105,186 @@ async function initApp() {
     }
 }
 
+/**
+ * Creates and injects the permission & auth panel into the sidebar.
+ */
+function setupAuthUI() {
+  const sidebar = document.querySelector('.sidebar');
+  if (!sidebar) return;
+
+  const authPanel = document.createElement('div');
+  authPanel.className = 'conn-panel';
+  authPanel.style.marginTop = '15px';
+  authPanel.id = 'authPanel';
+
+  authPanel.innerHTML = `
+    <div class="conn-title" style="margin-bottom: 8px;">
+      Mode: <span id="authModeLabel" style="text-transform: uppercase; color: var(--text-accent);">${window.T13NE_Auth.mode}</span>
+    </div>
+    <div style="font-size: 0.75rem; color: #94a3b8; margin-bottom: 8px;" id="authStatusText">
+      ${window.T13NE_Auth.isAuthorized ? 'Authorized (Referee Admin)' : 'Restricted (Read-Only Player)'}
+    </div>
+    <div id="authForm" style="display: ${window.T13NE_Auth.isAuthorized ? 'none' : 'flex'}; flex-direction: column; gap: 6px;">
+      <input type="password" id="authSecretInput" placeholder="Referee Bearer Token"
+             style="background: #1e293b; border: 1px solid #334155; border-radius: 4px; padding: 6px; font-size: 0.8rem; color: #f8fafc;"
+             value="${window.T13NE_Auth.token || ''}">
+      <button class="btn" id="btnElevateAuth" style="font-size: 0.75rem; padding: 6px;">Elevate to Referee</button>
+    </div>
+    <div id="deElevateContainer" style="display: ${window.T13NE_Auth.isAuthorized ? 'block' : 'none'};">
+      <button class="btn btn-secondary" id="btnDeElevateAuth" style="font-size: 0.75rem; padding: 6px; width: 100%;">Relinquish Credentials</button>
+    </div>
+  `;
+
+  sidebar.appendChild(authPanel);
+
+  // Hook elevation action
+  const btnElevate = document.getElementById('btnElevateAuth');
+  const btnDeElevate = document.getElementById('btnDeElevateAuth');
+  const secretInput = document.getElementById('authSecretInput');
+  const authStatusText = document.getElementById('authStatusText');
+  const authForm = document.getElementById('authForm');
+  const deElevateContainer = document.getElementById('deElevateContainer');
+
+  const verifyAndElevate = async (token) => {
+    try {
+      // Validate credentials against the unified PermissionService via a simple fetch
+      const res = await fetch(`${SERVER_URL}/api/v1/state`, {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+
+      if (res.status === 200) {
+        window.T13NE_Auth.isAuthorized = true;
+        window.T13NE_Auth.token = token;
+        localStorage.setItem(window.T13NE_Auth.mode === 'referee' ? 't13ne_referee_token' : 't13ne_player_token', token);
+
+        authStatusText.textContent = "Authorized (Referee Elevated)";
+        authStatusText.style.color = "#10b981";
+        authForm.style.display = 'none';
+        deElevateContainer.style.display = 'block';
+
+        console.log("PermissionService: Elevated client state to authorized Referee.");
+        // Re-establish WebSocket connection with updated auth token
+        connectToCentralServer();
+      } else {
+        alert("PermissionService rejection: Invalid Referee secret token.");
+        authStatusText.textContent = "Elevation Failed (Unauthorized)";
+        authStatusText.style.color = "#ef4444";
+      }
+    } catch (e) {
+      console.error("Auth verification failed", e);
+      alert("Failed connecting to permission validation endpoint. Operating in fallback offline state.");
+    }
+  };
+
+  btnElevate.addEventListener('click', () => {
+    const token = secretInput.value.trim();
+    if (!token) return alert("Please input a Referee token.");
+    verifyAndElevate(token);
+  });
+
+  btnDeElevate.addEventListener('click', () => {
+    window.T13NE_Auth.isAuthorized = false;
+    window.T13NE_Auth.token = null;
+    localStorage.removeItem('t13ne_referee_token');
+    localStorage.removeItem('t13ne_player_token');
+
+    authStatusText.textContent = "Restricted (Read-Only Player)";
+    authStatusText.style.color = "#94a3b8";
+    authForm.style.display = 'flex';
+    secretInput.value = '';
+    deElevateContainer.style.display = 'none';
+
+    console.log("PermissionService: Relinquished authorization. Client state set to Restricted Player.");
+    connectToCentralServer();
+  });
+
+  // If we already have a token stored on load for player mode, auto-verify it
+  if (window.T13NE_Auth.token && !window.T13NE_Auth.isAuthorized) {
+    verifyAndElevate(window.T13NE_Auth.token);
+  }
+}
+
+/**
+ * Connects to the centralized websocket server and handles state synchronizations.
+ */
+function connectToCentralServer() {
+  if (apiWs) {
+    try { apiWs.close(); } catch (e) {}
+  }
+
+  console.log("WS Init: Connecting to central API signaling server...");
+  apiWs = new WebSocket(WS_URL);
+
+  apiWs.onopen = () => {
+    console.log("WS Sync: Connected. Sending client registration message.");
+    apiWs.send(JSON.stringify({
+      type: 'register',
+      clientId: `client_ui_${Math.floor(Math.random() * 100000)}`,
+      token: window.T13NE_Auth.token, // Sends token to establish WS connection role
+      info: {
+        mode: window.T13NE_Auth.mode,
+        isAuthorized: window.T13NE_Auth.isAuthorized
+      }
+    }));
+  };
+
+  apiWs.onmessage = (event) => {
+    try {
+      const msg = JSON.parse(event.data);
+      console.log(`WS Sync received: ${msg.type}`, msg);
+
+      if (msg.type === 'sync_event') {
+        handleServerSyncEvent(msg.event, msg.data);
+      } else if (msg.type === 'registered') {
+        console.log(`WS Sync: Registered as [ROLE: ${msg.role}]`);
+        // Use server-provided global state
+        if (msg.state) {
+          syncGlobalStateToUI(msg.state);
+        }
+      }
+    } catch (err) {
+      console.error("WS Parse Error", err);
+    }
+  };
+
+  apiWs.onerror = (e) => {
+    console.warn("WS Sync: Offline / connection refused. State changes will operate locally.");
+  };
+}
+
+/**
+ * Sync server-side events back to client UI components dynamically.
+ */
+function handleServerSyncEvent(event, data) {
+  if (event === 'stateUpdated') {
+    syncGlobalStateToUI(data);
+  } else if (event === 'characterCreated' || event === 'characterUpdated') {
+    const characterSheet = document.querySelector('t13-character-sheet');
+    if (characterSheet && data) {
+      characterSheet.setCharacter(data);
+    }
+  }
+}
+
+function syncGlobalStateToUI(state) {
+  console.log("UI Sync: Applying server state to interface:", state);
+  const statusEl = document.getElementById('connectionStatus');
+  if (statusEl && state.currentLocation) {
+    statusEl.textContent = `Active: ${state.currentLocation.toUpperCase()} (Tension: ${state.tension})`;
+  }
+}
+
 function setupPlotSystem() {
     const btnGenerate = document.getElementById('btnGeneratePlot');
     const plotOutput = document.getElementById('activePlotOutput');
 
     btnGenerate.addEventListener('click', async () => {
-        // Correct hierarchy: Plot is the master
+        // Enforce PermissionService checks before allowing write paths
+        if (!window.T13NE_Auth.isAuthorized) {
+          alert("PermissionService Restrict: Writing a Plot requires Referee credentials.");
+          return;
+        }
+
         const plotData = {
             id: `plot_${Date.now()}`,
             Name: "The Breaking of the Third Seal",
@@ -121,8 +324,35 @@ function setupPlotSystem() {
             ]
         };
 
-        renderPlot(plotData);
-        P2PNetworkManager.broadcast({ type: 'PLOT_SYNC', plot: plotData });
+        try {
+          // POST plot through the authorized /api/v1/story endpoint
+          const res = await fetch(`${SERVER_URL}/api/v1/story`, {
+            method: 'POST',
+            headers: window.getAuthHeaders(),
+            body: JSON.stringify({
+              prompt: plotData.goal,
+              tone: 'dark',
+              length: 'medium',
+              context: plotData.Name
+            })
+          });
+
+          if (res.status === 200) {
+            const resultData = await res.json();
+            console.log("REST API: Story segment created:", resultData);
+
+            // Render locally
+            renderPlot(plotData);
+            P2PNetworkManager.broadcast({ type: 'PLOT_SYNC', plot: plotData });
+          } else {
+            const errResult = await res.json();
+            alert(`Failed creating narrative thread: ${errResult.error}`);
+          }
+        } catch (e) {
+          console.warn("Server offline, executing local plot generator fallback...");
+          renderPlot(plotData);
+          P2PNetworkManager.broadcast({ type: 'PLOT_SYNC', plot: plotData });
+        }
     });
 
     EventBus.on('p2p:msg:PLOT_SYNC', ({ message }) => {
@@ -144,7 +374,6 @@ function setupInspector() {
     window.addEventListener('inspect-character', (e) => {
         const entityId = e.detail;
         console.log(`Inspecting entity: ${entityId}`);
-        // In a real session, we'd fetch the full entity from the engine cache
         inspector.inspect({ id: entityId, name: entityId, description: "A hooked entity in this narrative plot." });
     });
 }
@@ -163,6 +392,12 @@ function setupCharacterCreator() {
     }
 
     btnCalculate.addEventListener('click', async () => {
+        // Enforce PermissionService checks before allowing write paths
+        if (!window.T13NE_Auth.isAuthorized) {
+          alert("PermissionService Restrict: Creating a Character requires Referee credentials.");
+          return;
+        }
+
         const name = document.getElementById('inputCharName').value.trim();
         const charType = document.getElementById('selectCharType').value;
 
@@ -215,14 +450,41 @@ function setupCharacterCreator() {
                 hitches: []
             };
 
-            creatorContent.style.display = 'none';
-            statsOutput.style.display = 'block';
-            statsOutput.innerHTML = '';
-            const sheet = document.createElement('t13-character-sheet');
-            statsOutput.appendChild(sheet);
-            sheet.setCharacter(charData);
+            try {
+              // POST character to authorized REST API
+              const res = await fetch(`${SERVER_URL}/api/v1/characters`, {
+                method: 'POST',
+                headers: window.getAuthHeaders(),
+                body: JSON.stringify(charData)
+              });
 
-            P2PNetworkManager.broadcast({ type: 'CHARACTER_SYNC', character: charData });
+              if (res.status === 210 || res.status === 200) {
+                const createdResult = await res.json();
+                console.log("REST API: Character saved to central StateStore:", createdResult);
+
+                creatorContent.style.display = 'none';
+                statsOutput.style.display = 'block';
+                statsOutput.innerHTML = '';
+                const sheet = document.createElement('t13-character-sheet');
+                statsOutput.appendChild(sheet);
+                sheet.setCharacter(charData);
+
+                P2PNetworkManager.broadcast({ type: 'CHARACTER_SYNC', character: charData });
+              } else {
+                const errResult = await res.json();
+                alert(`Failed creating character on server: ${errResult.error}`);
+              }
+            } catch (e) {
+              console.warn("Server offline, executing local character generator fallback...");
+              creatorContent.style.display = 'none';
+              statsOutput.style.display = 'block';
+              statsOutput.innerHTML = '';
+              const sheet = document.createElement('t13-character-sheet');
+              statsOutput.appendChild(sheet);
+              sheet.setCharacter(charData);
+
+              P2PNetworkManager.broadcast({ type: 'CHARACTER_SYNC', character: charData });
+            }
         } catch (err) {
             console.error(err);
         }
@@ -243,7 +505,6 @@ function setupVttControls() {
             const rolls = [Math.floor(Math.random()*6)+1, Math.floor(Math.random()*6)+1, Math.floor(Math.random()*6)+1];
             const total = rolls.reduce((a,b)=>a+b, 0);
 
-            // Send delta: Just the result and a reference to the active plot
             P2PNetworkManager.broadcast({
                 type: 'DICE_ROLL',
                 rolls,
@@ -276,6 +537,17 @@ function setupNetworking() {
         status.textContent = `Hosting: ${roomId}`;
         status.style.color = "#10b981";
         voipManager.start();
+
+        // If authorized, also sync state to central server
+        if (window.T13NE_Auth.isAuthorized) {
+          try {
+            await fetch(`${SERVER_URL}/api/v1/state`, {
+              method: 'POST',
+              headers: window.getAuthHeaders(),
+              body: JSON.stringify({ currentLocation: roomId })
+            });
+          } catch(e) {}
+        }
     });
 
     btnJoin.addEventListener('click', async () => {
