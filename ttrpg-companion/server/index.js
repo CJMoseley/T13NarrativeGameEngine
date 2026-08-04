@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5713; // Changed to standard T13 port 5713
 
 // Simple server-side logger for consistency
 const Logger = {
