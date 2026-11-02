@@ -4,7 +4,7 @@ The Round is the largest and most important structure that we use in an Ordeal. 
 
 ## Round Wild Pool
 
-A defining point of a T13 Round is the Round Wild Pool. This is a pool of cards that are potentially used by every Character involved in the Ordeal. The Pool varies in size based on the Stakes of the Ordeal. The Round Wild Pool can vary from 2-6 Ordeal Cards.
+A defining point of a T13 Round is the Round Wild Pool. This is a pool of cards that are potentially used by every Character involved in the Ordeal. The Pool varies in size based on the Stakes of the Ordeal. The Round Wild Pool can vary from 2-6 Ordeal Cards. 
 
 Blended Stakes can modify the Round Wild Pool, with a Low Stakes Ordeal, with a High Stakes component using the Medium or even High Stakes Round Wild Pool to increase the potential danger and threat.
 
@@ -42,12 +42,12 @@ A Round ends at the moment that the Deck is exhausted (the last card is drawn or
 
 * All RT and GRT Chips are immediately handed in. They will have no effect on the next Round.
 * All Ordeal Pools are immediately counted and that number Reduced (take the Score of the Boon), then you hand back all but the reduced number of cards.
-* It is normal to apply all damage before the next Round. See Wounds Rule Page for how to apply Wounds.
+* It is normal to apply all damage before the next Round. See Wounds Rule Page for how to apply Wounds. 
 * Returned Ordeal Cards are shuffled, the next Round Wild Pool is dealt (or selected), and then Proficiency Dice may be rolled to draw additional cards for the next Round. These are added to the remaining Pool from the last Round. Highest number of cards begins the first Phase of the next Round.
 
 ## Rounds and Phases
 
-A Phase is a collection of single Narrative events or ‘Moments’, usually consisting of one Moment for each Character in the Ordeal. At its fastest, in a High Stakes situation like Combat, a Phase lasts about half a second of subjective time (it feels about as long in a Never-Time bubble, or travelling in Time, or whatever, as it does at normal pace), and is just about long enough for each Character to do a few quick things, usually an Full-Action or Half-Action (drawing and/or playing 1 or more cards).
+A Phase is a collection of single Narrative events or ‘Moments’, usually consisting of one Moment for each Character in the Ordeal. At its fastest, in a High Stakes situation like Combat, a Phase lasts about half a second of subjective time (it feels about as long in a Never-Time bubble, or travelling in Time, or whatever, as it does at normal pace), and is just about long enough for each Character to do a few quick things, usually an Full-Action or Half-Action (drawing and/or playing 1 or more cards). 
 
 During an extended Ordeal, a Phase could be a day, a week or even centuries long (more if travelling in time as well), with many things happening that aren’t narrated around the Ordeal.
 
@@ -57,7 +57,7 @@ The Ordeal proceeds by Phases, in a Phase each Character gets at least one Actio
 
 Normally, a Stage has a limited number of Phases (decided by the Stakes and Yarn-Teller), if the Character fails to play cards that are higher than the Stage difficulty (for that purpose alone – you can’t count that cracking shot you pulled off in phase 4) by the end of the Phases of the Stage, then they have failed that Stage.
 
-### Phase Order Initiative System
+### Phase Order Initiative System 
 
 The order that Characters can take their Moments and act in during a Phase is determined by what we call the Phase Order Initiative System (POIS), there are a number of different ways that POIS can be deployed.
 
@@ -81,13 +81,13 @@ When you use a Descendant, or an Annex, during a Ordeal you get to draw new card
 It is normal during Ordeals to not roll for these actions, instead take the average (it should be noted that the average will be halved if you are not Proficient, but otherwise Proficiencies are not rolled or checked during an Action). These Averages are noted on the Boon of the Annex or Descendant as the Score and more importantly the Draw.
 
 * You should pay any Umbral costs associated with the Descendant or Annex before drawing any cards (in case they fail). In some situations failure to activate the Annex may cause automatic failure, so be sure you meet all the Umbral Conditions.
-* A Descendant or Annex draws the Boon Draw cards (Score Reduced). If rolling Score and reducing the number of cards looks like this helpful table <div class="t13ne-tablewrap">
+* A Descendant or Annex draws the Boon Draw cards (Score Reduced). If rolling Score and reducing the number of cards looks like this helpful table <div class="t13ne-tablewrap"> 
 | Rolled Score | 0 | 1 | 2-4 | 5-7 | 8-11 | 12-15 | 16-20 | 21-25 | 26-31 | 32-37 | 38-44 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Number of Cards | 0 | 0.5* | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
 
-</div>
-*A half card is one card but the Pips are halved.
+</div> 
+*A half card is one card but the Pips are halved. 
 
 * Having drawn your cards then you may play at least one card. The number you can play is based on the Annex Type, and varies from 1-4, but some Nimbeds and Success Level Effects can let you play more.<br> <br>When playing cards, if you could play a Trick that would use a card from the Round Wild Pool, then remove it from the Round Wild Pool and add it to the Action. <br><br>Additional cards (such as from Trick play) may be used as normal, or to pay the costs of Range, or multiple Targets as appropriate. They can also be used to reduce the Reaction Time of that Annex or Descendant. <br><br>You may be able to play cards on the Stage Difficulty while playing other cards to perform other actions such attacking another competitor (unless restricted by Umbrals or Hitches).
 * Having played cards you should now Discard cards over your Ordeal Pool Limit (number of Hitches + Scale).
@@ -155,7 +155,7 @@ It should be noted that GRT chips affect only the Character or Descendant that h
 
 Generally the GRT of any Action relates directly to the number of cards that it may play simultaneously (or the type of Annex, see <a href="annexcards">table</a>). Particularly large Reaction Times (on a powerful Descendant usually) and some Umbrals can affect the GRT of an action.
 
- You can reduce the GRT of an Action with cards, just like RT. A chip (or point) of GRT costs 5 Pips to pay-off this way though, so a Joker is required to pay off three chips of GRT simultaneously.
+ You can reduce the GRT of an Action with cards, just like RT. A chip (or point) of GRT costs 5 Pips to pay-off this way though, so a Joker is required to pay off three chips of GRT simultaneously. 
 
 <div id="annexcards" class="t13ne-tablewrap">
 
@@ -205,8 +205,8 @@ Half-Actions consist of either drawing a card or playing a single card (although
 * *Failure to Pass* — If you can’t scrape enough Pips together then you cannot move through the Obstacle. In the case of a Trap (and some of the others too) the Obstacle will Wound (or at least try to) those who cannot pass it, usually, or at least those who try to pass it and fail (they fall through the trapdoor). Now they may try again, or more normally someone will have to Disable the Obstacle (wedge the trap door open and dangle a rope into the pit).
 
 </li>* **Beat the Stage Diff** — Passing the Stage Difficulty is what the Stage is often all about. So, of course, a Character can play cards towards defeating the Stage Difficulty. <br>Stage Difficulties do not require specific Suits, but they are often Trumped by a specific Suit. See <a href="#trumps">Trumps</a>. <br>Stage Difficulties can usually vary from a single card up to 3 cards (2 - 45 Pips), and are set by the Yarn-Teller (or Referee), some exceptionally complex Ordeals may even have higher Difficulties.
-* **Attack** — You can play any card (or cards) to attack another Character or Descendant.
-<li>Each Facet has its own preferred attack, and the Attacks of the Suits reflect that.
+* **Attack** — You can play any card (or cards) to attack another Character or Descendant. 
+<li>Each Facet has its own preferred attack, and the Attacks of the Suits reflect that. 
 ### Attack by Facet
 
 #### Awe (Attack)
@@ -281,13 +281,13 @@ Yonder attacks can be energy, psychological, physical or magic. They usually aff
 #### Zeal (Attack)
 Leap attacks can be any Type but Resource. Regardless of type they have the same effect. Leap attacks move the attacker at the same time as they make an attack. The Pips of the attack are also used to move the attacker. In a Banal game they move as though Walking. In an Intrepid game they move as though Marching and in a Bold Game they move as though flying.
 
-
-* The Spades Trump can make every sort of Attack and all Spades have a +2 Pip modifier when attacking.
+ 
+* The Spades Trump can make every sort of Attack and all Spades have a +2 Pip modifier when attacking. 
 * You can read about how Wounds are Summoned, created and applied in the Wounds Rulepage.
 
-* Resource Attacks are covered on the Alternate Ordeals  Rulepage.
+* Resource Attacks are covered on the Alternate Ordeals  Rulepage. 
 
-</li>* **Defence** — You can also play cards to defend yourself from attack. Card defences also vary by card Suit as you can see on the table in the <a href="#trumps">Trumps</a> section. The types of defences and how they work are shown here.
+</li>* **Defence** — You can also play cards to defend yourself from attack. Card defences also vary by card Suit as you can see on the table in the <a href="#trumps">Trumps</a> section. The types of defences and how they work are shown here. 
 *Placeholder for custom visual block: [type="attacktable"]*
 
 * **Healing** — During most Ordeals you have to rely on Narrative Healing, which can be quite limited, unless you have some sort of magical healing, hyper-medicines, or accelerated regeneration. See the rules on Wounds for more details.

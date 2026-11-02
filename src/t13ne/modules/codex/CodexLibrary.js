@@ -23,10 +23,8 @@ export class CodexLibrary {
         if (this.codex) return;
         if (this._initPromise) return this._initPromise;
 
-        // Initialize DB
-        await CodexDB.open();
-
         this._initPromise = (async () => {
+            await CodexDB.open();
             let attempt = 0;
             while (attempt <= retries) {
                 try {
@@ -54,6 +52,7 @@ export class CodexLibrary {
             await this._initPromise;
         } catch (e) {
             this._initPromise = null;
+            throw e;
         }
     }
 
@@ -287,7 +286,6 @@ export class CodexLibrary {
         }
     }
 }
-
 
 
 

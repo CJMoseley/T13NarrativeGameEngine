@@ -19,12 +19,12 @@ export default defineConfig(({ mode }) => {
       viteStaticCopy({
         targets: [
           {
-            // Copy physics binary helper from main node_modules
-            src: path.resolve(__dirname, '../node_modules/three/examples/jsm/libs/ammo.wasm.js'),
+            // Copy the project's physics binary helper.
+            src: path.resolve(__dirname, '../public/ammo/ammo.wasm.js'),
             dest: 'libs'
           },
           {
-            src: path.resolve(__dirname, '../node_modules/three/examples/jsm/libs/ammo.wasm.wasm'),
+            src: path.resolve(__dirname, '../public/ammo/ammo.wasm.wasm'),
             dest: 'libs'
           },
           {
@@ -39,7 +39,7 @@ export default defineConfig(({ mode }) => {
       alias: {
         'three': path.resolve(__dirname, '../node_modules/three'),
         '@': path.resolve(__dirname, '..'),
-        '/src/t13ne': path.resolve(__dirname, 'src/t13ne'),
+        '/src/t13ne': path.resolve(__dirname, '../src/t13ne'),
         '@plugins': path.resolve(__dirname, '../plugins')
       }
     },

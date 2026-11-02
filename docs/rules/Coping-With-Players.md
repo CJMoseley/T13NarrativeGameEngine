@@ -1,16 +1,16 @@
 # Coping With Players
 
-If you were to go online and read stories about roleplaying games you will find a lot of RPG Horror stories, these vary from games that fell apart, Games Masters that weren’t, and Players that no one in their right mind would want to talk to, let alone play with.
+If you were to go online and read stories about roleplaying games you will find a lot of RPG Horror stories, these vary from games that fell apart, Games Masters that weren’t, and Players that no one in their right mind would want to talk to, let alone play with. 
 
 Roleplaying is a big, if still a bit fringe and geeky hobby, there are a lot of Players out there, and while no two are exactly the same, there are trends and types that you can observe in the wild.
 
-Referees and Yarn-Tellers may not get to choose who their players are, and T13 is a complex game to try and explain quickly. It can behave like a simulation, if that’s what you want, but favours a more Narrative style of play than some games. There’s no limits on the Genres or Tone that a game of T13 might take, some games may be Nihilistic Cosmic Horror, others are Grim-Dark fantasies, and still others are comedic steam-punk extravaganzas. And there’s nothing to stop you from blending, mashing and layering different Tones and Genres together.
+Referees and Yarn-Tellers may not get to choose who their players are, and T13 is a complex game to try and explain quickly. It can behave like a simulation, if that’s what you want, but favours a more Narrative style of play than some games. There’s no limits on the Genres or Tone that a game of T13 might take, some games may be Nihilistic Cosmic Horror, others are Grim-Dark fantasies, and still others are comedic steam-punk extravaganzas. And there’s nothing to stop you from blending, mashing and layering different Tones and Genres together. 
 
 This means it has the potential to attract a lot of different Players from various backgrounds and throw them all into a Plot together. T13 is also one of the few roleplaying games that encourages not only intra-party Conflicts, but even internal conflicts in one Character (and that’s without getting into having Alternates played by different Players in a single Character, or the other shenanigans that are possible and even encouraged in the system). In short, there’s a lot going on, which can make it tricky for Referees to know what should happen next sometimes, and can make it hard for Players to agree on a style of play that suits the current game. The following tips can help.
 
 ## Types of Players
 
-There are lots of different player types, and it can help to identify what sort of players you have, as it will help you to have fun with these people. Of course, most real people will display aspects of two, or even three, Player Types, rather than just one.
+There are lots of different player types, and it can help to identify what sort of players you have, as it will help you to have fun with these people. Of course, most real people will display aspects of two, or even three, Player Types, rather than just one. 
 
 
 ### Player Play Types
@@ -53,13 +53,13 @@ Knowing who your players are can let you understand the sorts of stories they wi
 
 ## Session Zero
 
-When you are setting up a game, it is often a good idea to know what style of play the Players like. Knowing what your players like is a good first step to building a fun narrative that they will all enjoy and engage in enthusiastically.
+When you are setting up a game, it is often a good idea to know what style of play the Players like. Knowing what your players like is a good first step to building a fun narrative that they will all enjoy and engage in enthusiastically. 
 
-You can get at lot of this stuff sorted by hosting a Session Zero, which is where explain your ideas for the game, what sorts of Characters the Players are expected to play, what the genre (or genres) will be, any special rules or systems like special technologies, or magic that will be available, and all that good stuff.
+You can get at lot of this stuff sorted by hosting a Session Zero, which is where explain your ideas for the game, what sorts of Characters the Players are expected to play, what the genre (or genres) will be, any special rules or systems like special technologies, or magic that will be available, and all that good stuff. 
 
-Session Zero is a great time to make Characters, and you can start when the Characters were children (Children start out with a Scale that is negative - how negative depends upon the child) Play a scene or two from their lives as kids, introduce some early friends, allies and potential rivals, perhaps introduce an early Mentor. Feel free to skip time forwards, move some Facets up or down as appropriate to how and what the Character is doing, hand out appropriate Proficiencies. Let Skills, a Talent or two and occasionally a Power emerge during this play (the Proficiency Crisis will happen rarely, but can be forced with Wyrd Tarot cards).
+Session Zero is a great time to make Characters, and you can start when the Characters were children (Children start out with a Scale that is negative - how negative depends upon the child) Play a scene or two from their lives as kids, introduce some early friends, allies and potential rivals, perhaps introduce an early Mentor. Feel free to skip time forwards, move some Facets up or down as appropriate to how and what the Character is doing, hand out appropriate Proficiencies. Let Skills, a Talent or two and occasionally a Power emerge during this play (the Proficiency Crisis will happen rarely, but can be forced with Wyrd Tarot cards). 
 
-Try skipping time forwards a few years, after each suggestion they make about the Character, and then try to show a Scene from that period of the Character’s life. For example, if has been suggested that Geena got given a robot on her 14th birthday, that kept breaking down, or overheating, and that encouraged her to learn Robotics, programming and AI Psychology. Then skip forwards to Geena in college where she develops a technique for running machine learning algorithms on machines with half the power of normal, effectively halving the cost, or doubling the upper limits if what the Robot can achieve.
+Try skipping time forwards a few years, after each suggestion they make about the Character, and then try to show a Scene from that period of the Character’s life. For example, if has been suggested that Geena got given a robot on her 14th birthday, that kept breaking down, or overheating, and that encouraged her to learn Robotics, programming and AI Psychology. Then skip forwards to Geena in college where she develops a technique for running machine learning algorithms on machines with half the power of normal, effectively halving the cost, or doubling the upper limits if what the Robot can achieve. 
 
 In general, Session Zero should be run for all Characters simultaneously as they have known each other for a while. This should allow you to build a party of Characters, some of whom may have connections going back years, with a sense of shared history between them. It may lead them to share ambitions, even. Sometimes it can be better to have Session Zero ignore the Characters childhoods, instead focusing on how they met as group, be it at university, in boot camp, or that one day in the tavern, as necessary.
 

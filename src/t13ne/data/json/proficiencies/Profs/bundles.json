@@ -1,0 +1,325 @@
+{
+  "version": 1,
+  "bundles": [
+    {
+      "path": "proficiencies/Profs/0/profs0.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs1.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs2.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs3.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs4.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs5.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs6.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs7.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs8.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs9.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs10.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs11.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs12.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs13.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs14.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs15.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs16.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs17.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs18.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs19.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs20.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs21.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs22.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs23.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs24.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs25.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs26.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs27.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs28.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs29.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs30.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs31.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs32.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs33.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs34.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs35.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs36.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs37.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs38.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs39.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs40.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs41.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs42.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs43.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs44.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs45.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs46.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs47.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs48.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/0/profs49.json",
+      "count": 45
+    },
+    {
+      "path": "proficiencies/Profs/1/profs50.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/1/profs51.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/1/profs52.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/1/profs53.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/1/profs54.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/1/profs55.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/1/profs56.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/1/profs57.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/1/profs58.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/1/profs59.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/1/profs60.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/1/profs61.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/1/profs62.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/1/profs63.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/1/profs64.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/1/profs65.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/1/profs66.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/1/profs67.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/1/profs68.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/1/profs69.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/1/profs70.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/1/profs71.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/1/profs72.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/1/profs73.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/1/profs74.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/1/profs75.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/1/profs76.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/1/profs77.json",
+      "count": 2
+    },
+    {
+      "path": "proficiencies/Profs/1/profs78.json",
+      "count": 50
+    },
+    {
+      "path": "proficiencies/Profs/1/profs79.json",
+      "count": 2
+    }
+  ]
+}

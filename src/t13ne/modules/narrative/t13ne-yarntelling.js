@@ -1,6 +1,7 @@
 ﻿import Logger from "../../core/Logger.js";
 import AIService from "../ai/AIService.js";
 import T13NECardsAPI from "../mechanics/t13ne-cards-api.js";
+import { characterGuidance, guidanceForPrompt } from "../characters/t13ne-character-guidance.js";
 
 /**
  * T13YarnTeller
@@ -264,6 +265,7 @@ Voice/Style: ${this.voice} (${this.narrativeStyle}).
 Speaking to: ${targetName}.
 Topic: ${topic}.
 Tone: ${tone}.
+${guidanceForPrompt(characterGuidance(this.character?.geometry))}
 
 Output only the dialogue text, in character.`;
 
@@ -447,7 +449,6 @@ Narrate the shift or revelation that changes the perception of the event to the 
 }
 
 export default T13YarnTeller;
-
 
 
 

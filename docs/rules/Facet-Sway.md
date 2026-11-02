@@ -97,7 +97,7 @@ Sometimes you want to convert Sway between different Facet Sway. How this happen
 
 Facet sway points can be treated differently depending upon the Game, Character and Setting rules. For example, in games with Fæ it is not uncommon for Axioms to be used to empower magic as though the Axioms were Bold, in most settings Axioms only behave this way when working with laws. In a rough and tumble frontier setting, Axioms may only be Intrepid for law-enforcement, and in a lawless super-villain game we might would expect Axioms to be treated as Banal.
 
-The Narrative as well as the setting can effect which Facet Sway we consider Banal, Intrepid, or Bold. If the Conflict involves Dominion oppressing Nature then it would be reasonable for Dominion’s Support to be Intrepid or even Bold, where as Nature’s Health may be treated as Intrepid (giving it High-powered Healing abilities) or even Banal (making it no better at Healing than Support).
+The Narrative as well as the setting can effect which Facet Sway we consider Banal, Intrepid, or Bold. If the Conflict involves Dominion oppressing Nature then it would be reasonable for Dominion’s Support to be Intrepid or even Bold, where as Nature’s Health may be treated as Intrepid (giving it High-powered Healing abilities) or even Banal (making it no better at Healing than Support). 
 
 ## Generating Facet Sway
 

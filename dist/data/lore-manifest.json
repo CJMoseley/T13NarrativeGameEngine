@@ -11,5 +11,5 @@
         { "key": "corporations", "path": "/data/corporations.json" },
         { "key": "proficiencies", "path": "/data/proficiencies.json" }
     ]
-
+    
 }

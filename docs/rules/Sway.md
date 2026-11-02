@@ -1,10 +1,10 @@
 # Sway
 
-In T13 Sway is used to measure how effective, powerful or expensive something is. It is a measure of a Character’s wealth, power, and destiny all at once. Sway comes in the following flavours which are used for specific tasks within the system.
+In T13 Sway is used to measure how effective, powerful or expensive something is. It is a measure of a Character’s wealth, power, and destiny all at once. Sway comes in the following flavours which are used for specific tasks within the system. 
 
 ## Sway Types
 
-* **Yin & Yang (Tao) Sway** — Tao Sway is the smallest form of Sway and is generally known as Yin or Yang, each one equals a +/- 1 on a rolled Yin or Yang Facet Score. It can be used by most Characters to make simple purchases such as learning Proficiencies, or buying Descendants. You can read more in the Tao Sway rules.
+* **Yin & Yang (Tao) Sway** — Tao Sway is the smallest form of Sway and is generally known as Yin or Yang, each one equals a +/- 1 on a rolled Yin or Yang Facet Score. It can be used by most Characters to make simple purchases such as learning Proficiencies, or buying Descendants. You can read more in the Tao Sway rules. 
 
 * **Facet Sway** — Facet Sway varies in name by Facet, and can behave differently based on the type of character wielding it and the genre of the Story or Game. Facet Sway varies immensely in what it can do based on the type used. Health can heal, Wealth can make purchases, etc.To find out more look at the Facet Sway rules.
 
@@ -33,7 +33,7 @@ T13 uses the Sway Table to calculate the Difficulty of everything and anything t
 
 * **Card Draw** — A Card Draw Test is calculated as Single Roll, but is then Reduced to set the Pips required by the Card Draw.
 
-* **Ordeal** — For Ordeals the Difficulty is usually calculated as a Single Roll (overall), but this Difficulty is then divided over the various Stages of the Ordeal.
+* **Ordeal** — For Ordeals the Difficulty is usually calculated as a Single Roll (overall), but this Difficulty is then divided over the various Stages of the Ordeal. 
 
 It should be noted that Yarn-Tellers and Referees have a number of ways that they can calculate a Difficulty to make something harder or easier depending upon factors in the setting and character. For example, if you are playing in an epic space-opera universe then you would probably expect all technology to calculate Difficulties as if it were Bold (as Chi), where as in a modern day setting technology may be considered Intrepid for most purposes, but a few hundred years ago technology would always use a Banal Difficulty. This doesn’t just apply to technology, as everything in the system can also have differing Difficulties.
 

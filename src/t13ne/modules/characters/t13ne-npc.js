@@ -1,5 +1,6 @@
 ﻿﻿import Logger from "/src/t13ne/core/Logger.js";
 import T13NE from '/src/t13ne/T13NE.js';
+import { characterGuidance } from './t13ne-character-guidance.js';
 
 /**
  * T13NE NPC Handler
@@ -28,6 +29,7 @@ export class NPCController {
             descriptors: await this._getDescriptors(),
             capabilities: this._getCapabilities(),
             geometry: await this._getGeometryProfile(),
+            characterGuidance: characterGuidance(this.character.geometry),
             gains: await this._getGains(), // Gain Chis, Yins, Yangs
             ichingAdvice: await this._getIChingAdvice(),
             shadows: await this._getShadows(),

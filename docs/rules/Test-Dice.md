@@ -6,10 +6,10 @@ Dice Rolls can be made for any Boon, in fact many Boons have multiple dice avail
 
 Refs can ask for all sorts of different things as a Test, but what they are actually after is usually a Facet Test. Facet tests are based on Testing a single Facet, although often the Player decides the Facet they use to try and pass the Test the Referee should know the Test involved to know which Facet is Trump and which Facets are Misfits. Trump Facets receive a +5 Score bonus when you Test the same Facet, and a Success Level, Misfit Facets suffer from Failure Levels that may colour the nature of the Success.
 
-Generally though you don’t just make Facet Tests in T13, Characters have more powerful abilities than just their native attributes, they have Skills, Talents and even Powers to help them accomplish their goals. But how do you decide if an Annex or Descendant can be used to make a Test?
+Generally though you don’t just make Facet Tests in T13, Characters have more powerful abilities than just their native attributes, they have Skills, Talents and even Powers to help them accomplish their goals. But how do you decide if an Annex or Descendant can be used to make a Test?  
 
 * **It is literally named that** — You’d be surprised how often the Yarn-Teller might say, "Okay, everyone make a Spot Hidden test," or perhaps say "Listen Tests, everyone." well those are both probably Key (or maybe Quiet) Facet Tests, but if one Character has an Annex called "Superior Senses" then it makes sense to roll that for both.
-* **Channelling Facet** — If your Annex has the same Channelling Facet as the Facet being Tested then you should normally be able to use it, unless there is some reason the Ref disagrees. Perhaps when the engine of you Space Fighter fails, the Ref calls for a "Spacefighter Mechanic roll" with a Craft Trump to assist in repairs, while you may have a Craft Channelling Facet on your "Origami" Annex, it’s unlikely that a tiny paper crane is going to be much use, then again if the Space Fighter is an Origami Kite fighter made from folding nanotechnology, then maybe it would be perfect.
+* **Channelling Facet** — If your Annex has the same Channelling Facet as the Facet being Tested then you should normally be able to use it, unless there is some reason the Ref disagrees. Perhaps when the engine of you Space Fighter fails, the Ref calls for a "Spacefighter Mechanic roll" with a Craft Trump to assist in repairs, while you may have a Craft Channelling Facet on your "Origami" Annex, it’s unlikely that a tiny paper crane is going to be much use, then again if the Space Fighter is an Origami Kite fighter made from folding nanotechnology, then maybe it would be perfect. 
 * **Root Facet** — If asked to perform a Test to decide how much the Character knows about the King’s Guard (which is an Orthodox Trump), it is unlikely that their "Scientific Method" Annex is going to be helpful at all, even though it is made from an Orthodox Root. If the Player insisted on using it, then the Referee would be justified in adding up to 3 Failure Levels automatically to this Test.
 * **It may be useful**  — Just like individual Facets can sometimes be used that aren’t the Trump Facet, an Annex with only a peripheral association can be used (but may incur Failure Levels). "Military Training" can be useful in many situations that aren’t Trial or Orthodox Trump Facet Tests, but sometimes that training will work against you a little, or a lot.
 
@@ -58,7 +58,7 @@ If your Proficiency Dice roll maximum or minimum (all 6s or all 1s normally) the
 
 ## Descendant Dice
 
-You may have noticed that in addition to the Boon and Proficiency Dice you are also allowed to add Descendant Dice. This Die comes from an applicable Annex on one of your Descendants. Perhaps for example you are making a Perception based Key check and own a pair of binoculars, it would be totally appropriate to add the Binoculars die to the roll.
+You may have noticed that in addition to the Boon and Proficiency Dice you are also allowed to add Descendant Dice. This Die comes from an applicable Annex on one of your Descendants. Perhaps for example you are making a Perception based Key check and own a pair of binoculars, it would be totally appropriate to add the Binoculars die to the roll. 
 
 Deciding whether a Descendant is appropriate should never be too difficult, just use the same rules as deciding if an Annex can be used, but the Ref will, as ever, act as final arbitrator on what is allowed in a roll. For example, if a Character has a Reputation (a Lore Descendant) for being a great swordsman, then it would make sense to add that during a Fencing match.
 
@@ -74,9 +74,9 @@ Difficulties are looked up on the Sway Table, but you might notice that there ar
 
 Because of this variation it is generally wise to calculate Difficulty for Pips/Chi or Bold and then adjust from there as required, as each other Difficulty can be calculated from that. With Monstrous being Bold Reduced as a Value Reduces to a Boon, Intrepid being twice Bold and Banal being the Value of the Bold as a Boon.
 
-* **Single Roll** — The crunchy way to go about setting and passing the Difficulty is to add all the pieces up to find a Total Difficulty. You do the same with the Dice that you roll, totalling them together. This determines whether you beat the Difficulty and Succeed, or don’t beat it and fail. You determine additional Success Levels by rolling multiples of the Difficulty, or by rolling specific numbers (see below). Which makes extreme Successes or Failures unlikely. Example: If you wish to create a Flesh Wound (Diff 10) on a Vex Extra (Diff 4) means you need to beat a Difficulty of 14. Want to Flesh wound the whole Omniverse at once? That’s Diff 652 instead. Perhaps you want that Vex Character to remember meeting you some years ago. That would usually be a Minimal Retcon, which would add 12 to the Difficulty.
+* **Single Roll** — The crunchy way to go about setting and passing the Difficulty is to add all the pieces up to find a Total Difficulty. You do the same with the Dice that you roll, totalling them together. This determines whether you beat the Difficulty and Succeed, or don’t beat it and fail. You determine additional Success Levels by rolling multiples of the Difficulty, or by rolling specific numbers (see below). Which makes extreme Successes or Failures unlikely. Example: If you wish to create a Flesh Wound (Diff 10) on a Vex Extra (Diff 4) means you need to beat a Difficulty of 14. Want to Flesh wound the whole Omniverse at once? That’s Diff 652 instead. Perhaps you want that Vex Character to remember meeting you some years ago. That would usually be a Minimal Retcon, which would add 12 to the Difficulty. 
 The Ref can add modifiers to this Difficulty, such as trying to do modify the Vex’s memory without anyone else spotting what is going on would add an extra 16 Difficulty.
-
+ 
 * **Pools** — Pools are a faster, rougher system for calculating levels of success. Each Dice Pool is kept separate, Proficiency Dice, each Annex or Facet Die, and each Descendant Die. The Difficulty of each Dice Pool is equal to the Pips/Chi Cost that the action is attempting. So when affecting a Vex (Pip 2) with a Flesh Wound (Pip 5) the Flesh Wound is the highest Difficulty and sets the difficulty of each Pool at 5. If one die beats the Difficulty then it is a success, each additional die that beats the difficulty adds a Success Level. If all dice are below the Difficulty then a Failure has occurred with each die below the Difficulty creating an additional Failure Level. If one die exactly matches the Difficulty, one passes and one fails then you would have a Stalemate. Kind Referees may allow Pools to be added to try and beat the Difficulty if all rolls are too low.
 * **Card Draw** — The third way of resolving a simple Test is to use cards (much like during an Ordeal). In this case the Average Draw (or Rolled Score Reduced for Proficiency Dice) is used to draw cards from the deck. Cards can then be played (usually between 1 and 4 depending on the Annex being used) to beat the Difficulty (Calculated from the Reduced Addition Difficulty or as a Score as the Yarn-Teller prefers)
 
@@ -112,7 +112,7 @@ The dice roll Score is compared to the Difficulty of the test, or to an opponent
 
 Whichever side rolls higher (or rolls higher than the set Diff) has succeeded although by how much depends on how high they roll, or how many dice beat the Difficulty.
 
-If both sides roll the same (or exactly roll the Diff) then they have reached a Borderline/Stalemate, where they have not failed, but haven’t really succeeded either.
+If both sides roll the same (or exactly roll the Diff) then they have reached a Borderline/Stalemate, where they have not failed, but haven’t really succeeded either. 
 
 * Borderlines can be considered a "Yes, But..." Statement, where the Character succeeds, just barely, but also incurs some penalty (a Failure Level) at the same time. This is generally the preferred choice as it moves on the story, but is not always feasible.
 * Stalemates can be though of as a "Nearly There..." , where the Character is stuck, not failing, but not yet Succeeding. This should not be the preferred option unless the situation is already Tense or Dramatic (climbing up a cliff would be a good time to use a Nearly There, or a competition that then moves into the Sudden Death round after).
@@ -133,15 +133,15 @@ The following table governs levels of success based on how much you defeat the D
 
 ## Criticals and Fumbles
 
-Criticals are an optional rule that can apply to any roll. They are usually used for rolled combat, although can be used elsewhere. Criticals are something extra powerful that happens when a certain number is rolled. The Numerology method of adding digits larger than 13 can be used to crunch the number down to compare it. For example, rolling a 17 would become an 8. If the Character rolling has a Perfect Harmony of 8 then they have rolled a Critical, if they had a Nemesis Dissonant of 8 then they would have rolled a Fumble. A Fumble is where something has gone wrong with an action, such as losing a Descendant you were trying to use or similar.
+Criticals are an optional rule that can apply to any roll. They are usually used for rolled combat, although can be used elsewhere. Criticals are something extra powerful that happens when a certain number is rolled. The Numerology method of adding digits larger than 13 can be used to crunch the number down to compare it. For example, rolling a 17 would become an 8. If the Character rolling has a Perfect Harmony of 8 then they have rolled a Critical, if they had a Nemesis Dissonant of 8 then they would have rolled a Fumble. A Fumble is where something has gone wrong with an action, such as losing a Descendant you were trying to use or similar. 
 
-Fumbles and Criticals are based on the Facet being rolled, or the Channelling Facet of an Annex.
+Fumbles and Criticals are based on the Facet being rolled, or the Channelling Facet of an Annex. 
 
 ## Or Ordeals
 
-Sometimes these simple Tests are not enough to make a Story fun.
+Sometimes these simple Tests are not enough to make a Story fun. 
 
-If you want to craft a sword during an adventure, it makes sense to just roll a Test most of the time, but if this sword is meant to end a particular threat — such as killing the Vampire Prince, piercing Ghul-flesh, or exploiting a noticed weakness in a dragon’s scales — then the Yarn-Teller may prefer to use an Ordeal instead.
+If you want to craft a sword during an adventure, it makes sense to just roll a Test most of the time, but if this sword is meant to end a particular threat — such as killing the Vampire Prince, piercing Ghul-flesh, or exploiting a noticed weakness in a dragon’s scales — then the Yarn-Teller may prefer to use an Ordeal instead. 
 
 Ordeals break the Test down into multiple smaller Stages that create a more detailed Narrative. It is worth noting that if you are in an Ordeal, you might still be asked to Roll Tests. Perhaps, during that sword creation Ordeal our Smith-Adventurer’s hammer breaks, the Ref could make our hero repair it or craft a replacement during the next Stage, or they could just make a roll to buy a replacement hammer. It is common for Purchase Rolls and Summoning Rolls like this to be rolled even during Ordeals, although they can be replaced with Ordeal Obstacles and the like.
 

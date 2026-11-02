@@ -1,8 +1,8 @@
 # Boons
 
-T13 uses a number system called Boons to convert "real world" values into game specific usefulness (like Card Draws or Dice Rolls for your Facets or Skill Annexes).
+T13 uses a number system called Boons to convert "real world" values into game specific usefulness (like Card Draws or Dice Rolls for your Facets or Skill Annexes). 
 
-Boons are usually accessed directly on this table, looking up the equivalent Dice Rolls for any Boon. Sometimes you may be adding Values together and then looking up that Value on the table to find the Boon, this can happen when building Annexes, or when Characters work together very closely (it can for example be used to describe situations where coordinated groups work together in an Ordeal)
+Boons are usually accessed directly on this table, looking up the equivalent Dice Rolls for any Boon. Sometimes you may be adding Values together and then looking up that Value on the table to find the Boon, this can happen when building Annexes, or when Characters work together very closely (it can for example be used to describe situations where coordinated groups work together in an Ordeal) 
 
 
 | Draw 🃏 | Score | Boon | Value | Super-Value | Dice 🎲 |

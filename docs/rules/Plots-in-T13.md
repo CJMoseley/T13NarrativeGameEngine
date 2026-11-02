@@ -1,6 +1,6 @@
 # Plots in T13
 
-T13 has a unique way to think about narratives and their impact on the universe. Human beings are unique, as far as we know, for being the only species that tells stories, in fact we even tell stories to our selves, creating narratives from all the events that happen to us. It is how we understand things best. So into what could be a strict simulation of reality, full of numbers and facts, we add Plots to guide and shepherd Characters into creating something that feels like a story. We consider the Plot to be a sort of Character, a Plot Daemon (in the computing sense) if you will, trying to direct (although it may more closely resemble herding cats) the Characters, most commonly to explore aspects of specific Conflicts between Facets.
+T13 has a unique way to think about narratives and their impact on the universe. Human beings are unique, as far as we know, for being the only species that tells stories, in fact we even tell stories to our selves, creating narratives from all the events that happen to us. It is how we understand things best. So into what could be a strict simulation of reality, full of numbers and facts, we add Plots to guide and shepherd Characters into creating something that feels like a story. We consider the Plot to be a sort of Character, a Plot Daemon (in the computing sense) if you will, trying to direct (although it may more closely resemble herding cats) the Characters, most commonly to explore aspects of specific Conflicts between Facets. 
 
 The Conflict is like the Personality of the Plot, it decides how powerful the Plot is and often what the Plot wishes to achieve. The Conflict also governs the sorts of Stories that the Plot can tell (or is a part of). Like a lot of things in T13 we can consider the Conflict to be a type of Annex, in this case the Central Conflict is the Master Annex of the Plot.
 
@@ -88,7 +88,7 @@ Each side in a Conflict has a number of Facets available to it (and a Boon for e
 Of course, simple, opposed Conflicts between a Dominant side and a Pressed side aren’t the only way that Conflicts can drive the Plot forward (although they are the easiest to understand). Here are some other options:
 
 * **Both Sides are the Same** — Generally, both sides of any conflict think they are the good guys. Sometimes it can just be hard to tell which side is worse. When you really want to play with this you can put the same Facets on both sides. Perhaps two evil, authoritarian city-states clash in battle, both may have Sin, Orthodox and Dominion on their side, or two Holy Orders compete for the Grace of God with Virtue, Orthodox and Wyrd on their sides. The point is, a balanced Conflict can be spun out into oodles of narratives. As there is rarely any clear winner, the plot keeps Revolving coming up with new generals, armies and lords from either side to grind upon.
-* **More than Two sides** — Sometimes (actually quite often) Conflicts can be much more complicated than one side versus the other. Conflicts can have multiple sides and they can interact in complex ways. You don’t have to have every side represented, and often sides will join together becoming a new larger version of one of those sides as the Plot progresses
+* **More than Two sides** — Sometimes (actually quite often) Conflicts can be much more complicated than one side versus the other. Conflicts can have multiple sides and they can interact in complex ways. You don’t have to have every side represented, and often sides will join together becoming a new larger version of one of those sides as the Plot progresses 
 ### Conflict Sides
 
 | Type | Description | Rules |
@@ -173,7 +173,7 @@ Plots need Characters, and create Characters during the Narrative, to find out m
 
 ## Weaving Narratives and Tension
 
-How the Characters, cards, events and Embodiments interact is what creates the Narrative of the Tale. Narratives also rely on something we call Tension to draw Characters together, and encourage interactions between the Facet Embodiments of the different Sides of the Conflict.
+How the Characters, cards, events and Embodiments interact is what creates the Narrative of the Tale. Narratives also rely on something we call Tension to draw Characters together, and encourage interactions between the Facet Embodiments of the different Sides of the Conflict. 
 
 You can see the Rules Page on Tension and Weaving Narratives for more details.
 
@@ -183,7 +183,7 @@ Just like Plots need Characters to move their Conflict on, they also need Descen
 
 ## Plot Motifs
 
-Plots can have recurring motifs, that turn up again and again throughout the Plot. Each time you use a Motif that you’ve given a Plot it adds 1 Yarn to the Plot’s Yarn.  The Plot Motif can be very varied, but is usually a single specified Proficiency.
+Plots can have recurring motifs, that turn up again and again throughout the Plot. Each time you use a Motif that you’ve given a Plot it adds 1 Yarn to the Plot’s Yarn.  The Plot Motif can be very varied, but is usually a single specified Proficiency. 
 
 For example, by selecting a Motif of "Scorpion" the Plot can can add Yarn any time a Scorpion turns up in the Story. These could be a scorpion in a boot, a giant scorpion, a Skorpion machine pistol, or a Japanese company called "Sasori Security", a Scorpion Logo, a Character with a scorpion tattoo, or someone with a birthday in late October or early November (star sign Scorpio). With each use adding a point of Yarn.
 

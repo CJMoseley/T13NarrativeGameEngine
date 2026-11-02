@@ -1,0 +1,3 @@
+Please place this file in the following location on your HD to access it from within Logic Pro X:
+
+Mac HD > Users > [Your User] > Music > Audio Music Apps > Channel Strip Settings > Output

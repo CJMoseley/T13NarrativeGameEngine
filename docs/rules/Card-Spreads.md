@@ -8,7 +8,7 @@ Each size of Plot has a Spread associated with it. This spread includes the Plot
 
 ### Conflict Spreads
 
-When a Plot is defined the first thing that is defined is the Conflict the most simple is a 2x2 pattern that uses 5 cards as this example shows
+When a Plot is defined the first thing that is defined is the Conflict the most simple is a 2x2 pattern that uses 5 cards as this example shows 
 
 
 > 🃏 **Card Spread: Simple** *(Handsize: 5)*
@@ -33,7 +33,7 @@ Conflict spreads can increase in complexity several times with greater and more 
 
 ### Act Spreads
 
-Each Plot has Acts and an Act in T13 has its own unique card spread that helps define it.
+Each Plot has Acts and an Act in T13 has its own unique card spread that helps define it. 
 
 #### Frame Act Spread
 
@@ -89,7 +89,7 @@ The Frame Act Spread includes a Hook Spread for each Side (or Character) that mu
 
 ##### Hook Spreads
 
-Hooks are created specifically for each Side of a Conflict, and it should be noted that they can be created on their own.
+Hooks are created specifically for each Side of a Conflict, and it should be noted that they can be created on their own. 
 
 
 > 🃏 **Card Spread: Hook** *(Handsize: 3)*
@@ -111,7 +111,7 @@ Hooks are created specifically for each Side of a Conflict, and it should be not
 
 #### Loom Act Spread
 
-Loom Spreads consist of Pairs of Warp and Weft Spreads, or Weft and Warp if you prefer, for each Side in the Conflict. The Loom has as many Warp-Weft pairs as the Yarn-Teller wishes (although usually you will have at least one pair per Side plus another pair). Loom Spreads can become more complicated with complex narrative-weaving techniques.
+Loom Spreads consist of Pairs of Warp and Weft Spreads, or Weft and Warp if you prefer, for each Side in the Conflict. The Loom has as many Warp-Weft pairs as the Yarn-Teller wishes (although usually you will have at least one pair per Side plus another pair). Loom Spreads can become more complicated with complex narrative-weaving techniques. 
 
 
 > 🃏 **Card Spread: Loom Spread** *(Handsize: 15)*
@@ -195,7 +195,7 @@ Warp Scenes require Warp Spreads. These help define the Warp. No cards are requi
 
 ##### Weft Spread
 
-Weft Spreads define firstly how bad the emotional backlash was to the last Warp with a "Recoiling" spread of 0 to 3 cards. This is treated as a Psych attack on the Characters. Then 1 card sets the "Sweeping" up. Finally "Picking" must define the possible choices the Characters can make, these are usually narrative choices not connected to the cards, but cards can be used to provide "routes" if required.
+Weft Spreads define firstly how bad the emotional backlash was to the last Warp with a "Recoiling" spread of 0 to 3 cards. This is treated as a Psych attack on the Characters. Then 1 card sets the "Sweeping" up. Finally "Picking" must define the possible choices the Characters can make, these are usually narrative choices not connected to the cards, but cards can be used to provide "routes" if required. 
 
 
 > 🃏 **Card Spread: Weft** *(Handsize: 14)*

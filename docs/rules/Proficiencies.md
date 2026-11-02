@@ -2,7 +2,7 @@
 
 In T13 we describe a Character&apos;s abilities in terms of the things that they can do. Usually this is expressed most simply as a Proficiency Thread (or just a Proficiency, Thread, or Prof). A Proficiency Thread is a mimetic unit in T13, if you have a Proficiency in something then you know a lot about it, you may even have a deep and nuanced understanding of the thing you have a Proficiency in. Proficiencies in the system are virtual Threads woven from Facet Sway that we weave to create more complex models, and that makes Proficiency Threads are the most basic object in the system.
 
-There really isn't much to know about Proficiency Threads, they are really very simple:
+There really isn't much to know about Proficiency Threads, they are really very simple: 
 
 * **Proficiency Name** — What is this a proficiency for?
 * **Description** — What is this thing that we have a Proficiency for, what does it look like, is it physical or a concept, can we count it, what can we do with this knowledge?
@@ -10,7 +10,7 @@ There really isn't much to know about Proficiency Threads, they are really very 
 
 Proficiencies are the most simple part of the T13 System, but everything else is constructed from these <q>memetic</q> building blocks. Because of this Proficiency Threads have a simple cost of 2 Sway or 1 Chi. Although Characters can be limited in how many Proficiencies they can hold at once (and potentially limited in how many Proficiencies of a given Facet they may have), they are almost always able to buy a new Proficiency somehow.
 
-Proficiencies are used by Characters to model all the things that the Character knows about. Because this knowledge is contained within the Proficiencies, having a Proficiency Thread in a particular topic grants a Character an ability or knowledge in and about that topic. This will allow the Character to know how to apply their Boon Dice from a Facet or Annex to the best affect possible. Having extra Proficiencies that are applicable to the task you are attempting can potentially grant you extra Dice to add to the roll. We call these extra dice **Proficiency Dice** and they can have a profound impact on not just the Test or task being attempted, but the Character and even the plot or setting sometimes.
+Proficiencies are used by Characters to model all the things that the Character knows about. Because this knowledge is contained within the Proficiencies, having a Proficiency Thread in a particular topic grants a Character an ability or knowledge in and about that topic. This will allow the Character to know how to apply their Boon Dice from a Facet or Annex to the best affect possible. Having extra Proficiencies that are applicable to the task you are attempting can potentially grant you extra Dice to add to the roll. We call these extra dice **Proficiency Dice** and they can have a profound impact on not just the Test or task being attempted, but the Character and even the plot or setting sometimes. 
 
 ## Proficiency Dice
 

@@ -75,7 +75,7 @@ The rules for whether a Distress / Trauma result creates a Distress ongoing Stre
 * If a Character or Descendant cannot pay Stress equal to a Card&apos;s Pips then the card is instead a Trauma.
 * Traumas are treated like Attacks or Wounds, with a Trauma Limit card and total Trauma Pips, except Traumas have additional Stress, Strain and Shock effects over a normal Wound and Traumas are not soaked (see Traumas).
 
-
+ 
 
 
 ### Trauma Card Associations Table

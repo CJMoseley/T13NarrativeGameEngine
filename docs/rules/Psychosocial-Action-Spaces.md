@@ -13,7 +13,7 @@ Psychosocial Action Spaces are imaginary territories that can overlay the physic
 * Psychosocial Action Spaces can also model spirit-realms, dreamworlds, faery-lands, wonderlands, worlds-of-fiction, imaginariums, hallucinations, illusions, and other fantasy worlds, that may have dramatically different rules and even physics, in many cases they are not at all simulations, but metaphors, allegories, delusions, or even projections on top of physical realty.
 * Psychosocial Action Spaces can model all kinds of neurological and mental traumas, for example within the mind of a Character with a compulsion to bite their fingernails when anxious, there may be found "biting fingernails" right in the middle of anxiety, perhaps as a coping mechanism or some sort of emotional release, this Space may even have an Edge or Glow that allows it to Relieve Stress, although more likely it will create more. Or within a "Fractured Mind" you may find random cracks that interrupt communications and travel through the Character&apos;s Mindscape.
 
-
+ 
 
 Games and even certain genres can rely on certain Psychosocial Action Spaces existing. For example, if there is a "Spirit World" in a horror story then how that spiritual realm borders on the human collective unconscious such as dreamscapes, the individual’s subconscious awareness, and the Id, Ego and judgemental Super-Ego, might be useful knowledge for a Psychic Detective Character, or for the Yarn-Teller. The Character’s powers may allow him to "Astrally Project", but is the "Astral Plane" a section of the Spirit World, or a slice of a Jungian collective unconsciousness, or a window to some inner mental space? The answers to these questions can be very important to the world-building of the setting, and once set should not be arbitrarily changed. These Psychosocial Action Spaces are maps to the mind of the Characters too, and while every character is unique and should have a unique Psychosocial Action Space for their inner mind, there are always a chance of similarities between Characters.
 
@@ -49,9 +49,9 @@ A Character, such as a simple Vex, or perhaps, Chorus Extra, should begin in one
 
 * **Content** — The animal is content and probably resting, it may even be asleep, it may wake if disturbed by pressure, sound or smell which will immediately move it to one of the other states.
 * **Seeking** — The animal is awake and typically seeking something, with a priority of water (unless aquatic), food, company, shelter or "entertainment". The animal may use tracking, or some other ability to locate and move towards their selected target. They are goal-oriented and may not perceive much beyond that goal, although a target with a higher priority may distract them.
-* **Agitated** — The animal is very alert, and may even be experiencing the Fight-Flight-Freeze response. Typically this is the space when an animal is threatened, or has found what they sought, such as discovering food, attacking prey, or has finding a suitable mate.
+* **Agitated** — The animal is very alert, and may even be experiencing the Fight-Flight-Freeze response. Typically this is the space when an animal is threatened, or has found what they sought, such as discovering food, attacking prey, or has finding a suitable mate. 
 
-Typically the animal or animalistic mind will cycle through these states as their day progresses, waking from sleep to seeking something, finding it and  unless prompted by something to move backwards or forwards.
+Typically the animal or animalistic mind will cycle through these states as their day progresses, waking from sleep to seeking something, finding it and  unless prompted by something to move backwards or forwards. 
 
 More complicated Characters such as Cast and Archetype Characters can benefit from a more complex Empathy Map. The Elemental Temperaments of greek philosophy work quite adequately for most dramatic purposes.
 
@@ -75,7 +75,7 @@ The most complex Characters should have their own Private Psychosocial Spaces, t
 
 ### Class 2: Clique
 
-The Second class is Clique. This class of Psychosocial Action space relies heavily on a concept called Social Ordeal Levels. You can see them here:
+The Second class is Clique. This class of Psychosocial Action space relies heavily on a concept called Social Ordeal Levels. You can see them here: 
 
 
 ### Social Ordeal Levels
@@ -125,7 +125,7 @@ The lines that represent communications and connections between Characters will 
 * **Green Line — ** Green lines indicate Characters who have positive interactions and experiences with each other, like good friends or close family. Often this can also indicate two Characters with a Pull Attraction for each other, regardless of their Sides Oppositions etc. (Romeo and Juliet both experienced strong attraction for each other despite their opposed families).
 * **Blue Line —** Blue Lines indicate a situation where Characters are fairly Neutral to each other, but it is often because of a situation of Push meeting Pull. This could be a love-hate relationship, unrequited love (especially dues to mixed sexualities), uncertainty, or hestiancy on one or both sides.
 
-An example Social Map can be created from the impressions Grid above.
+An example Social Map can be created from the impressions Grid above. 
 
 *Figure: An example Social Map*
 <img id ="socialmap" name="socialmap" />
@@ -153,13 +153,13 @@ This map has no key currently but we can identify a number of townships from the
 *Placeholder for custom visual block: [type="impressions"]*
 
 
-Over this map, we add an Underworld that shows us the territories that are controlled by different species and how the individual towns and villages feel about each other. This creates additional understanding, as we realise that the spirits of Draktor Keep are opposed to both the Human occupation and the Goblinoids upon what they see as their Island. The Barrow Goblins are allied with the humans in Jedsfrom, but only Neutral with the Wood Goblins, and have no contact with the Goblins of Orcsness. The Humans of Yewshaven are effectively at war with the Goblins in the Forest and those in Orcsness, but have no knowledge of the Barrow Goblins, but Yewshaven has strained relations with the other Human towns in the East.
+Over this map, we add an Underworld that shows us the territories that are controlled by different species and how the individual towns and villages feel about each other. This creates additional understanding, as we realise that the spirits of Draktor Keep are opposed to both the Human occupation and the Goblinoids upon what they see as their Island. The Barrow Goblins are allied with the humans in Jedsfrom, but only Neutral with the Wood Goblins, and have no contact with the Goblins of Orcsness. The Humans of Yewshaven are effectively at war with the Goblins in the Forest and those in Orcsness, but have no knowledge of the Barrow Goblins, but Yewshaven has strained relations with the other Human towns in the East. 
 <figcaption>An Underworld Map of the same Map*
 <img id="Underworld" name="Underworld" />
 
 Psychosocial Spaces are technically Descendants (just like Locations), although it is not often that they are detailed in that way, but they can have Annexes, as well as Descendant Edges and Glows of their own, and this applies to the Territories on the Island. The Spirit Territory for example may have a "Spirit World" Annex, with a Numinous Edge, that allows the Spirits to affect the Humans and vice versa. The Human Territory meanwhile probably has a "Trade" Annex with a Rewarding Edge. The Goblins however are linked by a "Brutal" Annex that grants all Goblins a Storm Edge.
 
-Of course this is a basic Underworld Map, it details the regions and how each township views its neighbours, and is a suitable overview of politics on the Island for a group of Fantasy Adventurers who have recently arrived. After the Characters have spent some time on this island, and have acquired better intelligence they may have a more detailed map (the Yarn-Teller would normally require it), perhaps noting the major political Characters in each township, and their individual relationships across the island.
+Of course this is a basic Underworld Map, it details the regions and how each township views its neighbours, and is a suitable overview of politics on the Island for a group of Fantasy Adventurers who have recently arrived. After the Characters have spent some time on this island, and have acquired better intelligence they may have a more detailed map (the Yarn-Teller would normally require it), perhaps noting the major political Characters in each township, and their individual relationships across the island. 
 
 ### Class 4 : Mercurial
 

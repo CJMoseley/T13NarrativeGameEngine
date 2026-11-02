@@ -1,0 +1,120 @@
+{
+    "ship_interior": {
+        "Name": "Starship Interior",
+        "Category": "industrial",
+        "Era": "future",
+        "Genre": "sci-fi",
+        "Props": [
+            { "Category": "furniture", "Tags": ["storage", "terminal"], "Count": [2, 4] },
+            { "Category": "industrial", "Tags": ["conduit", "terminal"], "Count": [3, 6] },
+            { "Category": "furniture", "Tags": ["seating"], "Count": [1, 2] }
+        ],
+        "Motifs": {
+            "HighTech": { "Tags": ["terminal", "fixture"] },
+            "Abandoned": { "Tags": ["debris", "bones"] }
+        }
+    },
+    "mine": {
+        "Name": "Mine",
+        "Category": "industrial",
+        "Era": "timeless",
+        "Genre": "core",
+        "Props": [
+            { "Category": "environment", "Tags": ["geology", "resource"], "Count": [5, 10] }
+        ],
+        "Motifs": {
+            "Deep": { "Era": "industrial-revolution", "Tags": ["industrial", "structure", "conduit"] },
+            "Rich": { "Tags": ["resource"] },
+            "Dangerous": { "Tags": ["debris", "conduit"] }
+        }
+    },
+    "junkyard": {
+        "Name": "Orbital Junkyard",
+        "Category": "industrial",
+        "Era": "future",
+        "Genre": "sci-fi",
+        "Props": [
+            { "Category": "industrial", "Tags": ["structure", "conduit"], "Count": [5, 15] },
+            { "Category": "environment", "Tags": ["debris"], "Count": [5, 10] }
+        ],
+        "Motifs": {
+            "Scavenged": { "Tags": ["terminal"] }
+        }
+    },
+    "dungeon": {
+        "Name": "Ancient Dungeon",
+        "Category": "environment",
+        "Era": "past",
+        "Genre": "fantasy",
+        "Props": [
+            { "Category": "environment", "Tags": ["dungeon", "structure"], "Count": [4, 8] },
+            { "Category": "furniture", "Tags": ["storage", "interior"], "Count": [1, 3] }
+        ],
+        "Motifs": {
+            "Cursed": { "Tags": ["bones"] }
+        }
+    },
+    "space_diner": {
+        "Name": "Galactic Diner",
+        "Category": "furniture",
+        "Era": "future",
+        "Genre": "sci-fi",
+        "Props": [
+            { "Category": "furniture", "Tags": ["seating", "table"], "Count": [4, 8] },
+            { "Category": "furniture", "Tags": ["storage", "fixture"], "Count": [2, 4] },
+            { "Category": "furniture", "Tags": ["terminal"], "Count": [1, 2] }
+        ],
+        "Rules": [
+            { "Type": "Line", "Tags": ["table"], "Count": 3, "Spacing": 10 }
+        ]
+    },
+    "medieval_tavern": {
+        "Name": "Olde World Tavern",
+        "Category": "environment",
+        "Era": "past",
+        "Genre": "fantasy",
+        "Props": [
+            { "Category": "environment", "Tags": ["town", "tavern"], "Count": [5, 10] },
+            { "Category": "furniture", "Tags": ["interior", "seating", "surface"], "Count": [3, 6] }
+        ],
+        "Rules": [
+            { "Type": "Cluster", "Tags": ["seating", "table"], "Count": 4 }
+        ]
+    },
+    "blacksmith": {
+        "Name": "Blacksmith Forge",
+        "Category": "environment",
+        "Era": "past",
+        "Genre": "fantasy",
+        "Props": [
+            { "Category": "environment", "Tags": ["town", "blacksmith"], "Count": [3, 7] },
+            { "Category": "industrial", "Tags": ["structure", "metal"], "Count": [2, 4] }
+        ],
+        "Rules": [
+            { "Type": "Center", "Tags": ["anvil", "forge"] }
+        ]
+    },
+    "shop": {
+        "Name": "Galactic Trade Post",
+        "Category": "furniture",
+        "Era": "future",
+        "Genre": "sci-fi",
+        "Props": [
+            { "Category": "furniture", "Tags": ["storage", "shelf"], "Count": [4, 10] },
+            { "Category": "furniture", "Tags": ["terminal", "counter"], "Count": [1, 2] }
+        ],
+        "Rules": [
+            { "Type": "Perimeter", "Tags": ["storage"], "Count": 8 }
+        ]
+    },
+    "colony_hub": {
+        "Name": "Frontier Colony",
+        "Category": "industrial",
+        "Era": "future",
+        "Genre": "sci-fi",
+        "Props": [
+            { "Category": "industrial", "Tags": ["structure", "terminal"], "Count": [4, 8] },
+            { "Category": "furniture", "Tags": ["interior", "storage"], "Count": [2, 5] }
+        ]
+    }
+}

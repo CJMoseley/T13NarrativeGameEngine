@@ -6,9 +6,9 @@ If Sway allows living beings to push reality around, and influence existence, Tw
 
 The Increated like existing, and they have discovered tricks to helping them do it. The greatest of those tricks was leveraging human beliefs, magical and occult knowledge, and Twists to grant themselves semi-existence. The second greatest trick they discovered was that they could fuse their beings with living beings who had reasons to invite them in. Characters with Hitches so bad that they are known as Woes draw Increated to them, from the fleeting sub-animal intellects of the Neechies to the incredibly powerful and practically existing, by sheer force of belief, Patron D&allig;mons, and everything in between.
 
-For this reason Characters with a Woe Hitch find themselves generating Twists with their Woes. They may also end up with an Alt who is an Increated and may add Lores or Nightmare Forms (depending on the genre and Character Arc), or if the Increated was just one of the local Neechies then there will be no Alt to speak of.
+For this reason Characters with a Woe Hitch find themselves generating Twists with their Woes. They may also end up with an Alt who is an Increated and may add Lores or Nightmare Forms (depending on the genre and Character Arc), or if the Increated was just one of the local Neechies then there will be no Alt to speak of. 
 
-Twists can only be stored on Hitches, usually one point per Hitch, but in extreme cases one per Ruin may be possible. Stored Twists have the following effects on the Hitch and Character. There is a hard limit though, no Character can ever generate or spend more than 28 Twists in one go.
+Twists can only be stored on Hitches, usually one point per Hitch, but in extreme cases one per Ruin may be possible. Stored Twists have the following effects on the Hitch and Character. There is a hard limit though, no Character can ever generate or spend more than 28 Twists in one go. 
 
 * The Hitch Will effectively gain a Bane when a Twist is stored in it, this does not effect the Hitch Boon, only the Bane.
 * Storing a Twist on a Hitch will add a Twisted Facet effect (see below).
@@ -16,7 +16,7 @@ Twists can only be stored on Hitches, usually one point per Hitch, but in extrem
 <li>Sense that Hitch (within Hitch Boon as Chi Location on The Sway Table) automatically. Spending 1 Chi the Location may be calculated as Yarn instead. E.g. A character with Arachnophobia x15 can detect another arachnophobe within a building, paying 1 Chi will extend that range to a Large City.
 * Tone affinity. The Character can draw a Wyrd Tarot/Yarn Card or Ordeal card any time they act in accord with their Hitch’s Facet Tone. E.g. That Arachnophobe can draw a card any time they act Emotionally.
 * +1 Wound / Success Level with the Hitch Facet Attack type. E.g. Arachnophobia would grant a +1 Level to Duck attacks.
-* May change to the Hitch’s Facet Incarna for a duration equal the Hitch Banes as Chi on the Limit Duration table for free. Chi may be spent to extend the duration (costs as Chi Extend Duration). E.g. Our Arachnophobic Demon can turn into a Spirit (Ka) for a moment (3 Rounds).
+* May change to the Hitch’s Facet Incarna for a duration equal the Hitch Banes as Chi on the Limit Duration table for free. Chi may be spent to extend the duration (costs as Chi Extend Duration). E.g. Our Arachnophobic Demon can turn into a Spirit (Ka) for a moment (3 Rounds). 
 
 </li>
 
@@ -37,7 +37,7 @@ Twists are always considered high-powered, and while costs in Twists may appear 
 * Sway Multiplication: Multiply any singular Score or Sway by 1+Twists spent.
 * Twisted Assault: Twists can be used to enhance any attack you are currently making. 1 point of Twist will let you add a card from your Ordeal Pool, 2 points lets you Pull, play and make Unsoakable 1 Card.
 *  Twists spent allows you to ignore all aspects of the specified Facet for a Twist based Duration. Spending 1 Twist will allow you to ignore all aspects of Burden (for example) for 1 action (perhaps allowing them to step through a wall of solid rock, or ignore the price of something and pay with a bean), 6 Twists would allow them to ignore Burden for a Week. A Character or Dark Matter Descendant that is Ignoring a Facet can still generate a score in the Ignored Facet i.e. a Character who is ignoring Rook (and hence Defences) can still generate a score to defend themselves or others (but they won’t need to versus a Quash attack).
-* Sway Vampirism allows you to spend Twists to drain Sway (in the form of Yarn) from a victim.
+* Sway Vampirism allows you to spend Twists to drain Sway (in the form of Yarn) from a victim. 
 <li>1d2 Yarn
 * 1d4 Yarn
 * 1d6 Yarn
@@ -48,7 +48,7 @@ Twists are always considered high-powered, and while costs in Twists may appear 
 * 4d3 Yarn etc... to a maximum of 14. 4d6 Yarn
 
 </li>* Twist Fate: Twists can be used to create new events and even Characters much like Yarn. However, Twists can also break some of the rules of reality and do things like introduce things that shouldn’t exist in the universe, like temporal paradoxes, magical effects in a hard-science universe (or vice-versa). However, anything created or summoned by Twists is non-permanent, it must continually pay to have its existence extended, and these Extend Durations must be paid in Sway, Chi or Yarn, never in Twists. The effects of Twisted Fates are permanent though, a Burn Wound caused by a momentary, magically-summoned flame still lingers after the flame has ceased to be.
-* Negation: Negation is possibly the most powerful of the effects that Twists can have. Negation allows Twists to be used to cancel anything, a powerful Demon-lord could use Negation to cancel the last year of history, winding time back for the whole world. Negation costs Twice the normal Twist cost for whatever you are trying to achieve. Negating a Year (3.5 Twists), for a whole world (6), would cost 19 Twists total, negating the last attack performed on you (a 25 Pip attack for example) would cost 5 Twists.
+* Negation: Negation is possibly the most powerful of the effects that Twists can have. Negation allows Twists to be used to cancel anything, a powerful Demon-lord could use Negation to cancel the last year of history, winding time back for the whole world. Negation costs Twice the normal Twist cost for whatever you are trying to achieve. Negating a Year (3.5 Twists), for a whole world (6), would cost 19 Twists total, negating the last attack performed on you (a 25 Pip attack for example) would cost 5 Twists. 
 
 ## Gaining Twists
 

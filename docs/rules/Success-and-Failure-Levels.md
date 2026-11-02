@@ -2,7 +2,7 @@
 
 In T13 any Test or Ordeal Result can be modified by Success and Failure Levels. These can mitigate the worst disasters, or act as unintended consequences on what would otherwise be a Complete Success.
 
-These Success and Failure Levels may come from the results of the Test itself, the Facets being used, Tone, Cards in Play, Annexes, Unchanging I-Ching, Descendant or Character Edges, Player choice ("If he has a gun on me, can I add a Failure Level on my bluff, just from nerves?"), Yarn-Teller choice ("He fires the gun at you, misses but hits the gas cannister, it explodes... that’s a lot of damage... I’ll add a Failure Level call it Plot Armour... Two Crippling Wounds."), Referee Choice ("That explosion is technically an Overload, and no one is wearing ear defenders or similar soak layers, so you can all add a Failure Level on your Soak, too. The attack will target any sensory Annexes or Personality, or creating a Deaf Loss of Sense Hitch.") and a number of other in-game effects.
+These Success and Failure Levels may come from the results of the Test itself, the Facets being used, Tone, Cards in Play, Annexes, Unchanging I-Ching, Descendant or Character Edges, Player choice ("If he has a gun on me, can I add a Failure Level on my bluff, just from nerves?"), Yarn-Teller choice ("He fires the gun at you, misses but hits the gas cannister, it explodes... that’s a lot of damage... I’ll add a Failure Level call it Plot Armour... Two Crippling Wounds."), Referee Choice ("That explosion is technically an Overload, and no one is wearing ear defenders or similar soak layers, so you can all add a Failure Level on your Soak, too. The attack will target any sensory Annexes or Personality, or creating a Deaf Loss of Sense Hitch.") and a number of other in-game effects. 
 
 You can gain Success and Failure Levels during Tests (including Value and Rolled Tests) and Ordeals in the following ways:
 
@@ -29,10 +29,10 @@ Hiding is an Enigma Facet action, Enigma is a Yin <span class="t13ne-redcard">�
 * Heresy - "I will disguise myself as an old beggar and await them on the roadside. Heresy Score 22." — which could add a Disbelief Failure Level.
 * Jeer - "I will cloak us all in an illusion. Jeer Score 34" — which will stand.
 * Liberty - "I rely on Luck to not be noticed. Liberty Score 26" — note that Liberty is Yang which should add an Unlucky Failure Level, you can’t rely on luck all the time.
-* Nature - "I shall use my natural camouflage chromatophores and the forest to blend in. Nature Score 12"
+* Nature - "I shall use my natural camouflage chromatophores and the forest to blend in. Nature Score 12" 
 * Phoenix - "I will ***help*** hide the others close to the road, and then retreat further back in the woods. Phoenix Score 14" Phoenix is Yang and adds a Burnt Failure Level, in this case getting scratched by thorns or stung as they hide.
 
-Any Diamonds (<span class="t13ne-redcard">♦</span>) are the next most likely to work. They don’t get any Trump bonuses, but it is normal for the opposite tao (Yin/Yang) to incur a Failure Level as a penalty (so for Enigma as Yin, all Yang Facets take an Failure Level).
+Any Diamonds (<span class="t13ne-redcard">♦</span>) are the next most likely to work. They don’t get any Trump bonuses, but it is normal for the opposite tao (Yin/Yang) to incur a Failure Level as a penalty (so for Enigma as Yin, all Yang Facets take an Failure Level). 
 
 * Awe - "I was a hunter in a past-life, that should let me hide pretty well. Awe Score 18." The Yarn-Teller should note a Yang imposed Failure Level on the Result, that might result in them Flashing back, perhaps even forgetting their modern self for a while.
 * Craft - "I can construct a hiding place, from some leaves and branches. Craft Score 18" The Yarn-Teller could respond,  "It’ll mean a bit of extra work, I’ll have to see if you can do it in time," because of the Extra Work Failure Level.
@@ -47,7 +47,7 @@ Then we have the Black cards, they share little in common with Enigma, generally
 * Dominion -"I can try and blend with the crowd, and use Psychology to not attract attention. Dominion Score 14" They should note 2 Failure Levels, with some sort of Scandal as a possibility, perhaps they kiss someone to avoid notice, only to attract the wrong attention.
 * Fury - "Sure, I’ll hide, I’ll dive into the ditch and hide under the water. Fury Score 14" This is definitely a stretch... and the Yarn-Teller and Referee note two Failure Levels with Stress being the most likely Failure.
 * Gossamer - "I’ll just grab a hold of some branches and hold them in front of me. Gossamer Score 16." That is 2 Failure Levels with Fumbles being preferred, maybe they will drop their weapons when the Ambush actually happens.
-* Inertia - "I’ll just lie here, and cover myself over with leaves and dirt so they can’t see me. Inertia Score 14"  Note a single Failure Level, which may slow them down when getting out of the leaves.
+* Inertia - "I’ll just lie here, and cover myself over with leaves and dirt so they can’t see me. Inertia Score 14"  Note a single Failure Level, which may slow them down when getting out of the leaves. 
 * Key - "I’ll stand on the road and watch for them. It’s just me so it shouldn’t ruin the Ambush completely, and I’ll be able to time the attack perfectly. Key Score 19" The Yarn-Teller and Referee should note the 3 Failure Levels this will incur, which could be enough of a Catch to ruin the whole ambush.
 * Miasma - "I can build a fire with wet leaves, that will create a lot of smoke we can hide in. Miasma Score 14" The Yarn-Teller and Referee should both note the Failure level which means the Foul Conditions might make everyone choke and cough a little.
 * Rook - "I’ll find the thickest wall to stand behind. Rook Score 18." Which adds a Failure Level, which means they should be prompted by the Yarn-Teller or Referee to explain how they are self-defeating, or have some impact imposed by the Yarn-Teller.
@@ -58,7 +58,7 @@ Then we have the Black cards, they share little in common with Enigma, generally
 
 ## Success Level Effects
 
-Success Levels can have a variety of different effects, depending on the Narrative, the action attempted, and how many Success Levels are being spent on an Effect. Success Levels vary in type by Facet, which creates a Facet Flavoured Success as follows:
+Success Levels can have a variety of different effects, depending on the Narrative, the action attempted, and how many Success Levels are being spent on an Effect. Success Levels vary in type by Facet, which creates a Facet Flavoured Success as follows: 
 
 
 ### Success by Facet

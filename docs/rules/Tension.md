@@ -6,10 +6,10 @@ Tension is handled slightly differently in T13 than you may expect if you are fa
 
 To handle this dramatic and narrative tension we need two tools that we refer to as Tension and Stress. The first is the Tension, this is described in terms of Level and shows how on edge Characters should appear. The Tension Level of the current Scene, Act, or Plot affects what the Scene, Act, or Plot can do. Extras usually all use the Scene Tension Level as their Stress as well, but we&apos;ll get to that later.
 
-Tension in T13 has 6 levels and we can consider them as follows.
+Tension in T13 has 6 levels and we can consider them as follows. 
 
-* Each Plot (including the Scenes and Acts) should have a Tension Level from the following table, starting somewhere around Low-Medium usually.
-* Characters who are in a Scene with a lower Tension Level are more likely to behave calmly, acting more rationally and responding more logically to each other. At higher Tension Levels, Characters will become more Stressed, making them more emotional, erratic, and may even become dangerous to be around.
+* Each Plot (including the Scenes and Acts) should have a Tension Level from the following table, starting somewhere around Low-Medium usually. 
+* Characters who are in a Scene with a lower Tension Level are more likely to behave calmly, acting more rationally and responding more logically to each other. At higher Tension Levels, Characters will become more Stressed, making them more emotional, erratic, and may even become dangerous to be around. 
 * Scene (and Act and Plot) Tension Level can determine which Characters, and particularly which Embodiments can appear in the same Scene. If the Tension is high then Characters are pushed or drawn together, forced to interact, be it a Romantic plot, where the two Characters become intensely passionate about each other and ignore the rest of the world, or a Thriller plot where the enemy draw closer to the heroes as the Tension mounts.
 * Each Tension Level has a suggested Stakes for any Ordeals and also specifies an "Add Stress Event". If a Scene is at this Tension Level then all Add Stress Events from this Level or lower apply. These Events each add individual Stress to the Characters in the Scene that they apply to.
 

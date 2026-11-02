@@ -3,6 +3,7 @@
 
 import T13Dice from '../mechanics/t13ne-dice.js';
 import T13Name from "../characters/t13ne-names.js";
+import { tidyName } from './t13ne-gematria.js';
 
 class T13Geometry {
   constructor(codexLoader) {
@@ -95,15 +96,7 @@ class T13Geometry {
   }
 
   tidyName(name) {
-    if (typeof name !== 'string') name = JSON.stringify(name);
-    name = name.toLowerCase().trim();
-    const patterns = [/[Ã¡Ã¢Ã Ã¥Ã¤]/g, /[Ã°Ã©ÃªÃ¨Ã«]/g, /[Ã­Ã®Ã¬Ã¯]/g, /[Ã³Ã´Ã²Ã¸ÃµÃ¶]/g, /[ÃºÃ»Ã¹Ã¼]/g, /Ã¦/g, /Ã§/g, /ÃŸ/g];
-    const replacements = ['a', 'e', 'i', 'o', 'u', 'ae', 'c', 'ss'];
-    for (let i = 0; i < patterns.length; i++) {
-      name = name.replace(patterns[i], replacements[i]);
-    }
-    name = name.replace(/[^A-Za-z,.]/g, '');
-    return name;
+    return tidyName(typeof name === 'string' ? name : JSON.stringify(name));
   }
 
   countOccurrences(haystack, needle) {

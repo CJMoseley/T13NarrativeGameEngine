@@ -22,7 +22,7 @@ During Ordeals we use the term Trumps for the Suit most suited for the task. It 
 
 However, there is another use of Trump that applies more generally in Ordeals that do not include direct conflict, arguments or combat. If you are using the right Suit for the Test at hand (for example when preparing ingredients playing a Diamond) then you can add **+2 Pips** to the action which you can think of as a 2 of whatever Suit, or add to the Trump itself (it can even cause Spades to unlock a Wound with a Lower Limit card (see Attacks and Wounds).
 
-Trumps tend to match the Facet Suit of the action or Test. You can see how this works here.
+Trumps tend to match the Facet Suit of the action or Test. You can see how this works here. 
 ### Card Suit Correspondences
 
 | Suit Character | Suit Name | Traditional Tarot Suit | Key Themes |
@@ -136,9 +136,9 @@ The Stages of an Ordeal are often procedural points of the Ordeal that the Chara
 
 These are optional rules intended to make combat, and particularly large scale battles simpler to manage and more Narrative.
 
-Tide of Battle follows from the Rounds of the Ordeal and can only occur during combat.
+Tide of Battle follows from the Rounds of the Ordeal and can only occur during combat. 
 
-Tide of Battle can either work for you, when it is said to be Flowing, or work against you, when it is said to be Ebbing.
+Tide of Battle can either work for you, when it is said to be Flowing, or work against you, when it is said to be Ebbing. 
 
 The Tide of Battle is decided at the end of each Round (by the Referee), usually with Flowing going to the Characters that have (in order of importance):
 

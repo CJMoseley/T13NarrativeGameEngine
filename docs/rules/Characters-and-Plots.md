@@ -1,6 +1,6 @@
 # Characters and Plots
 
-T13 is a Narrative Engine, designed to create Stories and play games that create stories (although with a simulationist philosophy). Stories need Characters to fill the roles of the Narrative. In T13, Stories can embody the Conflict in many different ways, but most commonly a Character acts as the Embodiment of at least one Side of the Conflict and usually this means they are the Embodiment of a particular Facet.
+T13 is a Narrative Engine, designed to create Stories and play games that create stories (although with a simulationist philosophy). Stories need Characters to fill the roles of the Narrative. In T13, Stories can embody the Conflict in many different ways, but most commonly a Character acts as the Embodiment of at least one Side of the Conflict and usually this means they are the Embodiment of a particular Facet. 
 
 
 ### Embodiment Types
@@ -31,9 +31,9 @@ T13 is a Narrative Engine, designed to create Stories and play games that create
 
 
 
-More Complex Characters occur when they are the Embodiment of more than a single Facet or even Side of a Conflict, or when they embody more than one Conflict simultaneously, perhaps causing Internal Conflicts in the Character as they try to reconcile these different Narrative forces and Tensions.
+More Complex Characters occur when they are the Embodiment of more than a single Facet or even Side of a Conflict, or when they embody more than one Conflict simultaneously, perhaps causing Internal Conflicts in the Character as they try to reconcile these different Narrative forces and Tensions. 
 
-It can help to think of most Characters as conforming to one of these Narrative Archetypes.
+It can help to think of most Characters as conforming to one of these Narrative Archetypes. 
 
 
 ### Narrative Archetypes
@@ -115,9 +115,9 @@ Rick has a 15 Sin, but since the Conflict sets Sin as Dominant over Key then it 
 
 ### Non-Player Characters
 
-NPCs are usually created by the Plot in response to the Characters that have been Hooked.
+NPCs are usually created by the Plot in response to the Characters that have been Hooked. 
 
-They represent everyone else in the world and come in different types. Most are just Extras, they aren’t really important in the same way as a player Character and we don’t need to know much about them.
+They represent everyone else in the world and come in different types. Most are just Extras, they aren’t really important in the same way as a player Character and we don’t need to know much about them. 
 
 Some, like Rivals should be similarly detailed Characters to the PCs (or at least Cast Extras). When you Hook any Character you may automatically Hook one (or more) of their Rivals, sometimes to the same side, more often to the opposite.
 

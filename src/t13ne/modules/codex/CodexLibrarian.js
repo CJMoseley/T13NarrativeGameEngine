@@ -2,7 +2,8 @@
 
 const PROF_MANIFEST_KEY = 'T13NE_PROF_MANIFEST';
 const PROF_MANIFEST_VERSION_KEY = 'T13NE_PROF_MANIFEST_VERSION';
-const CURRENT_MANIFEST_VERSION = '1.0.0';
+const CURRENT_MANIFEST_VERSION = '3.0.0';
+const KNOT_MANIFEST_VERSION = '1.0.0';
 const KNOT_MANIFEST_KEY = 'T13NE_KNOT_MANIFEST';
 const KNOT_MANIFEST_VERSION_KEY = 'T13NE_KNOT_MANIFEST_VERSION';
 
@@ -18,6 +19,7 @@ export class CodexLibrarian {
         this.nextProfId = 0;
         this.nextKnotId = 0;
         this.numerology = null;
+        this._profManifestPromise = null;
     }
 
     clearProficiencyManifest() {
@@ -36,6 +38,18 @@ export class CodexLibrarian {
 
     async _getOrBuildProficiencyManifest() {
         if (this.profManifest) return this.profManifest;
+        if (this._profManifestPromise) return this._profManifestPromise;
+
+        this._profManifestPromise = this._loadProficiencyManifest();
+        try {
+            return await this._profManifestPromise;
+        } finally {
+            this._profManifestPromise = null;
+        }
+    }
+
+    async _loadProficiencyManifest() {
+        if (this.profManifest) return this.profManifest;
 
         try {
             const storedVersion = localStorage.getItem(PROF_MANIFEST_VERSION_KEY);
@@ -46,24 +60,6 @@ export class CodexLibrarian {
                     this._calcNextProfId();
                     return this.profManifest;
                 }
-            }
-        } catch (e) { }
-
-        try {
-            const masterRes = await fetch('/plugins/t13ne/data/json/proficiencies/proficiencies-master.json');
-            if (masterRes.ok) {
-                const masterData = await masterRes.json();
-                this.profManifest = {
-                    paths: masterData.paths || {},
-                    indexes: { name: {}, facet: {}, genre: {}, era: {}, scope: {}, geometry: {} }
-                };
-                await Promise.all([
-                    this._loadIndexFile('name', 'proficiencies-names.json'),
-                    this._loadIndexFile('facet', 'proficiencies-facets.json')
-                ]);
-                this._cacheManifestToLS(PROF_MANIFEST_KEY, this.profManifest, PROF_MANIFEST_VERSION_KEY);
-                this._calcNextProfId();
-                return this.profManifest;
             }
         } catch (e) { }
 
@@ -112,27 +108,29 @@ export class CodexLibrarian {
     async _buildProficiencyManifest() {
         Logger.warn('CodexLibrarian: Building proficiency manifest...');
         const manifest = { paths: {}, indexes: { name: {}, facet: {}, geometry: {} } };
-        let fileIndex = 0;
-        const MAX_FILES = 5000;
-        let misses = 0;
-
-        while (fileIndex < MAX_FILES) {
-            const subdir = Math.floor(fileIndex / 50);
-            const path = `proficiencies/Profs/${subdir}/profs${fileIndex}.json`;
-            const data = await this.library.getData(path);
-            
-            if (data) {
-                for (const id in data) {
-                    const prof = data[id];
-                    manifest.paths[id] = `/plugins/t13ne/data/json/${path}`;
-                    this._indexProficiency(manifest, id, prof);
-                }
-                misses = 0;
-            } else {
-                misses++;
-                if (misses >= 5) break;
+        const inventory = await this.library.getData('proficiencies/Profs/bundles.json');
+        if (inventory?.version !== 1 || !Array.isArray(inventory.bundles) || !inventory.bundles.length) {
+            throw new Error('Invalid or missing proficiency bundle inventory.');
+        }
+        const seenPaths = new Set();
+        for (const bundle of inventory.bundles) {
+            const { path, count } = bundle;
+            if (typeof path !== 'string' || !/^proficiencies\/Profs\/\d+\/profs\d+\.json$/.test(path) ||
+                !Number.isSafeInteger(count) || count < 1 || seenPaths.has(path)) {
+                throw new Error('Invalid proficiency bundle inventory entry.');
             }
-            fileIndex++;
+            seenPaths.add(path);
+            const data = await this.library.getData(path);
+            if (!data || typeof data !== 'object' || Array.isArray(data) || Object.keys(data).length !== count) {
+                throw new Error(`Missing or incomplete proficiency bundle: ${path}.`);
+            }
+            for (const id of Object.keys(data)) {
+                if (manifest.paths[id]) {
+                    throw new Error(`Duplicate proficiency ID ${id} in ${path}.`);
+                }
+                manifest.paths[id] = `/plugins/t13ne/data/json/${path}`;
+                this._indexProficiency(manifest, id, data[id]);
+            }
         }
         
         this.profManifest = manifest;
@@ -145,7 +143,7 @@ export class CodexLibrarian {
         
         try {
             const stored = localStorage.getItem(KNOT_MANIFEST_KEY);
-            if (stored && localStorage.getItem(KNOT_MANIFEST_VERSION_KEY) === CURRENT_MANIFEST_VERSION) {
+            if (stored && localStorage.getItem(KNOT_MANIFEST_VERSION_KEY) === KNOT_MANIFEST_VERSION) {
                 this.knotManifest = JSON.parse(stored);
                 this._calcNextKnotId();
                 return this.knotManifest;
@@ -197,7 +195,7 @@ export class CodexLibrarian {
 
         // Extract category/file from full path
         // Path: /plugins/t13ne/data/json/proficiencies/Profs/0/profs0.json
-        const relPath = path.split('/data/json/')[1];
+        const relPath = path.includes('/data/json/') ? path.split('/data/json/')[1] : path;
         const data = await this.library.getData(relPath);
         return data ? data[profId] : null;
     }
@@ -239,26 +237,28 @@ export class CodexLibrarian {
      * @returns {boolean}
      */
     matchesFilter(entity, filters) {
-        const tags = entity.tags || entity.Tags || {};
+        const record = entity.prof || entity;
+        const tags = record.tags || record.Tags || {};
         
         const check = (selectedFilters, itemTags, universalTags) => {
             if (!selectedFilters || selectedFilters.includes('All')) return true;
             const t = itemTags || [];
             // Ensure loose comparison for IDs (string vs number)
             if (selectedFilters.some(f => t.some(it => String(it) === String(f)))) return true;
-            if (t.some(tag => universalTags.includes(tag))) return true;
+            if (t.some(tag => universalTags.includes(String(tag)))) return true;
             return false;
         };
 
-        const genreMatch = check(filters.genre, tags.genres || tags.Genres, ['T13 Core', 'Omniversal']);
-        const eraMatch = check(filters.era, tags.eras || tags.Eras, ['Timeless', 'Omniversal']);
-        const scopeMatch = check(filters.scope, tags.scopes || tags.Scopes, ['Omniversal']);
+        const genreMatch = check(filters.genre, tags.genres || tags.Genres, ['1', 'T13 Core', 'Omniversal']);
+        const eraMatch = check(filters.era, tags.eras || tags.Eras, ['1', 'Timeless', 'Omniversal']);
+        const scopeMatch = check(filters.scope, tags.scopes || tags.Scopes, ['1', 'Omniversal']);
         const facetMatch = check(filters.facet, tags.facets || tags.Facets, []);
 
         return genreMatch && eraMatch && scopeMatch && facetMatch;
     }
 
     _indexProficiency(manifest, id, prof) {
+        prof = prof.prof || prof;
         const addName = (n) => {
             if (!n) return;
             const k = String(n).trim().toLowerCase();
@@ -305,7 +305,7 @@ export class CodexLibrarian {
     _cacheManifestToLS(key, data, verKey) {
         try {
             localStorage.setItem(key, JSON.stringify(data));
-            localStorage.setItem(verKey, CURRENT_MANIFEST_VERSION);
+            localStorage.setItem(verKey, verKey === KNOT_MANIFEST_VERSION_KEY ? KNOT_MANIFEST_VERSION : CURRENT_MANIFEST_VERSION);
         } catch (e) {}
     }
 
@@ -314,10 +314,5 @@ export class CodexLibrarian {
         if (data) this.profManifest.indexes[indexName] = data;
     }
 }
-
-
-
-
-
 
 

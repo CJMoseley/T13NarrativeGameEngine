@@ -43,15 +43,15 @@ This Honour Stake might be useful in a chivalric or samurai based story, perhaps
 
 ### Examples: F&aelig;ry Stakes
 
-The F&aelig;ry Stakes of Seelie and Unseelie are similar, in that only particular Games and Characters can access them, but the actual Ordeals can vary greatly. In general, you can use either when a Character meets a F&aelig;ry, depending upon the F&aelig;ry met, and the time of year and day. You can also run the two simultaneously, with the F&aelig;ry Stakes blending together, as often it is not obvious which they are when you first meet a F&aelig;ry.
+The F&aelig;ry Stakes of Seelie and Unseelie are similar, in that only particular Games and Characters can access them, but the actual Ordeals can vary greatly. In general, you can use either when a Character meets a F&aelig;ry, depending upon the F&aelig;ry met, and the time of year and day. You can also run the two simultaneously, with the F&aelig;ry Stakes blending together, as often it is not obvious which they are when you first meet a F&aelig;ry. 
 
-**Seelie Stakes:** During the day, and in the summer the Faeries are at their most benign and friendly. They are jokers, and pranksters, but there is little malicious to their activities. Engaging with them can however be dangerous, as they forget how easily broken Mortals are, but usually quickly remember before things get too deadly.  Seelie Stakes can indicate that a F&aelig;ry is meant to be helping the Character achieve some Doomed goal set by Wyrd, but they rarely are upfront about such things.
+**Seelie Stakes:** During the day, and in the summer the Faeries are at their most benign and friendly. They are jokers, and pranksters, but there is little malicious to their activities. Engaging with them can however be dangerous, as they forget how easily broken Mortals are, but usually quickly remember before things get too deadly.  Seelie Stakes can indicate that a F&aelig;ry is meant to be helping the Character achieve some Doomed goal set by Wyrd, but they rarely are upfront about such things. 
 
 * Round Wild Pool: 4 Cards
 * Wounds (Limit is -1 Level)(Distract: 5-7, Flesh: 8-9, Maim: 10-J, Cripple: Q-K, Mortal: A, etc)
 * Wound Cost (x3) e.g. Distract 6, Flesh 15, Maim 24, Cripple 30, Mortal 42, Carnage 63 Pips.
 * Pips per card +1d6 (e.g. a 2 could add 3-8 Pips a Joker adds 16-21 Pips).
-* Liberty Score Phases per Stage. Wyrd Boon Phases Round-Limit or automatic failure.
+* Liberty Score Phases per Stage. Wyrd Boon Phases Round-Limit or automatic failure. 
 * Maximum Soak Levels: 2
 
 **Unseelie Stakes:** During night, in the dead of winter, the Fae are fickle and devilish beasts, as quick to kill as to prank, and even their pranks have a certain deadly malignancy that make them dangerous to even glance at. Spiteful and mean creatures, the Unseelie Fae are powerfully murderous often without provocation. Unseelie stakes are often a sign that you are going against your own destiny, as the Unseelie Faeries are often tasked with rearranging destinies to fit Wyrd’s plans (although only when the Loom can take them being removed from it).
@@ -95,7 +95,7 @@ Sometimes during a Story you need to raise the stakes of the game for a Characte
 * **Threaten something they Love —** Okay, it may be a bit obvious, but you can capture an Ally or Love Interest and threaten to kill them. This has no effects on the mechanical Stakes, but the Character will feel the Stakes ratchet up.
 * **Add, or shorten, a Time-Limit —** The Medium Stakes Ordeal is a timed Ordeal usually. You have to get something done in a certain time. Well, imagine finding out what you thought was a six week project, is actually only a four week project, in the middle of week 3. That may cause Tensions to rise.
 * **Ramping up the Damage — **It is possible to modify the Pips of each card as part of the Stakes. You could easily add a +3 Pips modifier and make everything a little more deadly for a while.
-* **Bake in Success or Failure ** **—** Stakes can have automatic Success or Failure Levels guaranteed, no matter what the PCs (or NPCs) do. Nothing reduces the threat of the Stakes as easily as having a guaranteed Success Level or 5, and the inverse is also true.
+* **Bake in Success or Failure ** **—** Stakes can have automatic Success or Failure Levels guaranteed, no matter what the PCs (or NPCs) do. Nothing reduces the threat of the Stakes as easily as having a guaranteed Success Level or 5, and the inverse is also true. 
 
 ## Stakes and Blinds
 

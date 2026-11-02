@@ -1,6 +1,6 @@
 # Tao Sway
 
-The least powerful form of Sway is divided in to Yin and Yang, which together we call Tao Sway. Because it is the least powerful it is the most easily generated, often by Facet or Annex Dice Rolls. Although the I-Ching and Geometry can also grant a Character Yin or Yang as well.
+The least powerful form of Sway is divided in to Yin and Yang, which together we call Tao Sway. Because it is the least powerful it is the most easily generated, often by Facet or Annex Dice Rolls. Although the I-Ching and Geometry can also grant a Character Yin or Yang as well. 
 
 Any generated Score is the equivalent of either Yin or Yang, depending upon the action being attempted. So if you add Tao Yin Sway to a Yin Facet action each point of Yin will add +1 to the rolled Score of one of the dice.
 
@@ -12,7 +12,7 @@ If using Normal Dice Pools that would be One Success and One Failure at the Diff
 
  Key Sway (Insight) if she had any and Bold optional rules were active could add +2 per point (and would halve the Difficulties). In a Pool roll she could pay 4 and have 2 Successes, in Addition mode she would have to add 3 to have a Complete Success. That is assuming she had no Key Facet Sway available.
 
-Descendants and Extras can only store as much Tao Yin and Yang as their Master Annex’s maximum dice roll. See Trophy Descendants.
+Descendants and Extras can only store as much Tao Yin and Yang as their Master Annex’s maximum dice roll. See Trophy Descendants. 
 
 ### Gaining Tao Yin & Yang
 
@@ -30,13 +30,13 @@ Descendants and Extras can only store as much Tao Yin and Yang as their Master A
 
 It is also possible to roll to generate Tao Sway, in which case the appropriate Facet will generate Sway as a Score. The Difficulty of this roll is usually set at 2 (unconscious Test), but circumstances can set it to much higher Difficulties (being secretive so that no one could sense it would add 16 or 32 depending on the power level) .
 
-In general, the amount of Tao Sway that can be stored by a Character is determined by their Facets.
+In general, the amount of Tao Sway that can be stored by a Character is determined by their Facets. 
 
 Each Boon of a Yang Facet can store 1 point of Yang and vice versa for Yin. These Boons are affected by the Character’s Scale so more powerful Characters can usually store more Sway. However, it should be noted that once stored in this way Tao Sway becomes Facet Sway, which may behave differently to Tao Sway in some circumstances.
 
 Tao Sway can also be stored in Descendants
 
-Each Boon of a Yang Facet can store 1 point of Yang and vice versa for Yin. These Boons are affected by the Character’s Scale so more powerful Characters can usually store more Sway.
+Each Boon of a Yang Facet can store 1 point of Yang and vice versa for Yin. These Boons are affected by the Character’s Scale so more powerful Characters can usually store more Sway. 
 
 ## Sway Table
 

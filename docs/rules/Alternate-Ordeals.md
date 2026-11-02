@@ -1,23 +1,23 @@
 # Alternate Ordeals
 
-Ordeals (with their Stages, Rounds and Phases, and card play) are a quite complex part of the game, and a strong combination of the crunchiness of simulation play and the flexibility of free-form narrative play, but they don’t suit every Player, or every situation.
+Ordeals (with their Stages, Rounds and Phases, and card play) are a quite complex part of the game, and a strong combination of the crunchiness of simulation play and the flexibility of free-form narrative play, but they don’t suit every Player, or every situation. 
 
 For these reasons we offer up some alternative ways of handling Ordeals that can be used instead of, or alongside, a standard Ordeal.
 
 ## Snap-fire Ordeals
 
-Snap-fire Ordeals are a variant of normal Ordeals intended for high Tension and Open Conflict scenes. Snap-fire Ordeals can take place as part of a larger Ordeal, and are handled alongside them, but often a Snap-fire Ordeal is ideal for rapid action scenes, like the most dangerous Stages of a chase, or a last ditch battle.
+Snap-fire Ordeals are a variant of normal Ordeals intended for high Tension and Open Conflict scenes. Snap-fire Ordeals can take place as part of a larger Ordeal, and are handled alongside them, but often a Snap-fire Ordeal is ideal for rapid action scenes, like the most dangerous Stages of a chase, or a last ditch battle. 
 
 During Snap-fire Ordeals normal player actions are limited by a single card called the Snap-fire card. Generally, only one Character gets to perform a Full-Action in each Phase, but all Characters get to take a Half-Action instead.
 
-The Snap-fire card is turned at the start of the Phase, and controls play during that Phase.
+The Snap-fire card is turned at the start of the Phase, and controls play during that Phase. 
 
 * The Snap-fire card determines who may take the Full-Action this Phase according to Phase Order Initiative System (POIS) and Tide of Battle as follows:<ul><li>Sweeping spotlight POIS, the next three Characters on the Flowing side get to bid on the Snap-fire card, which moves around the group with each Snap-fire card. Two Characters from the Ebbing side also get to bid, and they will also cycle around.
 * Yarn-Teller Directed POIS, the Yarn-Teller picks who gets to bid. Usually at least one Character from the Ebbed side should be allowed to bid, and most of the Flowing side.
 * Ordeal Pool POIS, Characters may bid if they have more cards in their Ordeal Pool than half the Snap-fire card Pips when Flowing and more cards than the Pips when Ebbed.
-* Card POIS (Recommended for Snap-fire), Characters may bid when they have Initiative cards with more Pips than the Snap-fire card Pips Reduced when Flowing and the Snap-fire Pips when Ebbed.
+* Card POIS (Recommended for Snap-fire), Characters may bid when they have Initiative cards with more Pips than the Snap-fire card Pips Reduced when Flowing and the Snap-fire Pips when Ebbed. 
 * Scored POIS, Characters may bid when they have a Score of Twice the card Reduced Pips or more when Flowing and the Pips when Ebbed.
-* Pay Sway POIS, Characters must pay a blind of the card Pips Reduced in Sway to buy into the bids when Flowing and all the Snap-Fire Pips when Ebbed. This can be added to all modes to allow all Characters to bid.
+* Pay Sway POIS, Characters must pay a blind of the card Pips Reduced in Sway to buy into the bids when Flowing and all the Snap-Fire Pips when Ebbed. This can be added to all modes to allow all Characters to bid. 
 
 </li>* Bids may be made in:
 <li>Sway: Specific Facet Sway, Chi, Yarn or Twists (Yarn Reduced).
@@ -31,12 +31,12 @@ The Snap-fire card is turned at the start of the Phase, and controls play during
 * Characters that didn’t get a chance to bid now may take a Half-Action.
 
 </li>* At any point any Character who has a matching card in their Ordeal Pool, or a Style Reserve, to the Snap-fire card may draw the Snap-fire card and add it to their Ordeal Pool. This immediately interrupts any bids under way.
-<li>The card must match Pips, and Colour and Suit may be used to break ties. E.g. If the Snap-fire card is the Jack of Hearts and Jim tries to claim it with a Jack of Clubs, Liz beats that with a Jack of Diamonds, but Dave beats even her with his own Jack of Hearts. Miscalling a Snap-fire action results in an immediate Snap-failure.
-* The Character may then declare a Half-Action (just keeping the Draw) or they may attempt a full Action, where they pay their Umbrals (or risk a snap-failure) and continue their Draw and then Play cards (that must include the Snap-pair, ideally as a Set) or take a Snap-failure.
-* After their Action (Half or Full) a new Phase begins. Because of this kind Referees may ask for matches before resolving the POIS Order or determining Bidders, with a late call counting as a miscall. Less kind Referees may allow a call to take place even after the winning Bid has been played. Creating a Snap-failure on the Bid winner.
+<li>The card must match Pips, and Colour and Suit may be used to break ties. E.g. If the Snap-fire card is the Jack of Hearts and Jim tries to claim it with a Jack of Clubs, Liz beats that with a Jack of Diamonds, but Dave beats even her with his own Jack of Hearts. Miscalling a Snap-fire action results in an immediate Snap-failure. 
+* The Character may then declare a Half-Action (just keeping the Draw) or they may attempt a full Action, where they pay their Umbrals (or risk a snap-failure) and continue their Draw and then Play cards (that must include the Snap-pair, ideally as a Set) or take a Snap-failure. 
+* After their Action (Half or Full) a new Phase begins. Because of this kind Referees may ask for matches before resolving the POIS Order or determining Bidders, with a late call counting as a miscall. Less kind Referees may allow a call to take place even after the winning Bid has been played. Creating a Snap-failure on the Bid winner. 
 
 </li>* After all actions in the Phase the Snap-fire card is replaced for the next Phase.
-* Referees and Yarn-Tellers can bid and match cards as NPCs just like other Characters.
+* Referees and Yarn-Tellers can bid and match cards as NPCs just like other Characters. 
 </ul>
 
 ### Snap-Failure
@@ -55,7 +55,7 @@ Snap-failures are terrible turns of events that depend upon the Snap-fire card p
 
 * ... Quest: Quests, especially small ones, can be great when a snap-failure happens, although they may not always fit the situation.
 * ... Ordeal (Ordeals within Ordeals are not generally recommended but can work, occasionally).
-* ... Twisted: Only Bids that used Twists should result in Twisted Snap-Failures, and not all bids that involve Twists have to, although they are often strangely applicable.
+* ... Twisted: Only Bids that used Twists should result in Twisted Snap-Failures, and not all bids that involve Twists have to, although they are often strangely applicable. 
 
 </li></ul>
 
@@ -80,10 +80,10 @@ Each Character attempts to gain some modicum of control over reality, history, o
 
 All of this boils down to a special card Ordeal. This involves trying to control one of the suits of the cards at a time. This is usually decided by the Referee, with a suggested order of Clubs, Hearts, Diamonds and Spades, as this defines what really happened, how that was twisted and lied about, the art and cultural response that was created, before deciding from all that what the man on the street thinks about it all, but you can modify this order as you like to match a given style.
 
-* All competing Yarn-Tellers Draw 3 Cards to create a Yarn-Tangle Pool.
+* All competing Yarn-Tellers Draw 3 Cards to create a Yarn-Tangle Pool. 
 * The Referee should turn over the top card of the deck to create a Discard pile if there is none.
 * Each Round every Character must try and get 3 suited cards with a total Pip value of exactly 31. Each Round they must try to get a different suit (but they decide in what order).
-* Phases involve each Character paying a Blind bet of 1 Yarn (paid in Chi); Drawing a card from either the top of the Deck, or from the Discard pile; adding it to their Yarn-Tangle Pool and then Discarding a card face up to the Discard pile.
+* Phases involve each Character paying a Blind bet of 1 Yarn (paid in Chi); Drawing a card from either the top of the Deck, or from the Discard pile; adding it to their Yarn-Tangle Pool and then Discarding a card face up to the Discard pile. 
 * During your turn instead of Drawing, you may attempt to Knock-Out another Character, this involves both Characters revealing their Yarn-Tangle Pool. The Challenged Character gets to make a Draw and Discard before they show their Pool automatically.
 * The Yarn-Tangle Pools are first compared by suits alone. If one Character has more suited cards (of any suit) than the other then they win, knocking out the other Character.
 * If both Characters have the same number of suited cards then Pips are compared with the highest (up to a maximum of 31) winning and Knocking-Out the other Character.
@@ -91,7 +91,7 @@ All of this boils down to a special card Ordeal. This involves trying to control
 * If a Character has Yarn-Tangle Pool of 32 Pips or more during a Knock-Out then they are Bust. A Bust Character is Knocked-Out, and may not continue in the Ordeal at all.
 * After a Character is knocked out play continues, until all Characters bar one are knocked out, or someone get exactly 31 Pips on 3 suited cards.
 * If all other Characters are knocked-out then the survivor takes the Round in whatever suit they have most of.
-* At any time if a Character gets 31 on 3 suited cards they declare a Blitz. A Blitz ends the Round, and are counted towards deciding who wins the Ordeal overall.
+* At any time if a Character gets 31 on 3 suited cards they declare a Blitz. A Blitz ends the Round, and are counted towards deciding who wins the Ordeal overall. 
 * The First Character to win 4 Rounds, one in each suit wins the Ordeal. However, if they win a Suit and then later concede that suit to someone else they must incorporate the ideas that Character promoted for that Suit.
 
 ---

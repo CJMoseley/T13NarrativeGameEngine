@@ -3,9 +3,9 @@
 T13 uses ordinary playing cards to model aspects of the narrative and how Ordeals (such as Combat) are run. Each card can be used in a variety of ways, and include all sorts of details that can help a Yarn-Teller out if they are stuck for ideas.
 
 * **Ordeal Cards** — During Ordeals cards may be played to represent the actions of the Character, causing them to move, talk, work, strike, dodge, etc. as required by their player. Characters draw cards into their Ordeal Pool based on their annex’s Draw, and play a number of cards based on the Annex Tier (1 for a Facet or Skill, 2+ for Talents, etc.). A Character may hold no more Ordeal Cards (at the end of their turn) in their Ordeal Pool than their current Scale + The Number of Active Hitches that they have (this does not include Resolved Hitches) - This is known as their Ordeal Pool Limit.
-* **Wyrd Tarot Cards** — During play Grunts, Mercari and Solo level Characters (especially those with direct access to Chi) can play cards from their Wyrd Tarot Hand at any time. <ol><li>Every Character and Descendant (including Pacts) has one place where a card can be played.
-* Non-Court cards are played to this spot and then discarded (revealing any cards they cover).
-* Court cards are played to this spot then stay there, having their effect until they are covered or discarded.
+* **Wyrd Tarot Cards** — During play Grunts, Mercari and Solo level Characters (especially those with direct access to Chi) can play cards from their Wyrd Tarot Hand at any time. <ol><li>Every Character and Descendant (including Pacts) has one place where a card can be played. 
+* Non-Court cards are played to this spot and then discarded (revealing any cards they cover). 
+* Court cards are played to this spot then stay there, having their effect until they are covered or discarded. 
 * Cards may be played face-down, covering a Court-Card and removing its effect until the Character takes an Action, then the card is turned over and has its normal effect (which will usually then be discarded).
 * Wyrd Tarot cards  can only be played upon Characters and Descendants that a Character can touch or affect with Ordeal cards (if you attack someone you can also play a Wyrd Tarot card upon them).
 * The Wyrd Tarot Hand varies in size based on the Character’s stored Chi. Comparing the amount of Chi the Character currently has to their Maximum Chi results in a %.  <div class="t13ne-table-wrap">

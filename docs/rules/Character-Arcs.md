@@ -4,7 +4,7 @@ In T13, Character Arcs can be handled in two different ways. The first way is si
 
 ## Compositions
 
-Compositions are a musical term, that can cover pretty much any piece of music, from any genre, whether it is a guitar/jet-engine riff from a Death Metal track or a piano concerto they are both Compositions. They share a lexicon of music, such as Pitches, Rhythms, Chords and Time Signatures, and in T13 we hijack that  lexicon and way of thinking to consider interpersonal Character relationships and how they are modelled.
+Compositions are a musical term, that can cover pretty much any piece of music, from any genre, whether it is a guitar/jet-engine riff from a Death Metal track or a piano concerto they are both Compositions. They share a lexicon of music, such as Pitches, Rhythms, Chords and Time Signatures, and in T13 we hijack that  lexicon and way of thinking to consider interpersonal Character relationships and how they are modelled. 
 
 A Composition then in T13 is something akin to an film score, telling us the emotional beats and thrills of the Characters, this can work along side or instead of plotted drama to create Character Drama. To do this we need to open our model and look at what we mean by a Composition.
 
@@ -51,7 +51,7 @@ There are various types of Composition that a Yarn-Teller (or Conductor as they 
 In T13 we use a lot of terms that borrow from music, especially when talking about Character Arcs. But the chief musical terms here are Pitches, Notes, Tones and Keys. Which with music are largeley the same thing, but in T13 each is a unique point of the system that interacts with the other musical terms.
 
 * **Pitches** — Pitches are ideas put forwards by each Yarn-Teller during the Bar. Each Pitch asks Questions about the Characters involved ono them, but also has a unique relationship with each Character via their Key and the Notes.
-* **Notes** — Notes are how we think about the Plot like aspects of a Character Arc. Notes can bring back aspects of the Arc from earlier, foreshadow later parts, add Characters and remove them and so on.
+* **Notes** — Notes are how we think about the Plot like aspects of a Character Arc. Notes can bring back aspects of the Arc from earlier, foreshadow later parts, add Characters and remove them and so on. 
 * **Tones** — Tones are defined for a Scene and is not related to Pitches, but can be tied to Notes. The Tone of a Scene defines the sorts of things that can happen during a Scene. See Tones
 * **Keys** — Characters have Keys set from their Geometry. This Key is defined as part of the Character, and indicates how the the Character is effected by Different Pitches and Notes (if not Tones)
 
@@ -70,7 +70,7 @@ A Pitch is the name we give to notes or tones when they appear in Compositions. 
 
 John Smith here is an A♯ Character. So he will be drawn into any suitable Composition that is in A♯ as it will resonate with his Character.
 
-Depending upon the Compositions that surround him, he might even be drawn into more than one, perhaps he is a religious person drawn into a Hymn as well as a Grunt drawn into a March.
+Depending upon the Compositions that surround him, he might even be drawn into more than one, perhaps he is a religious person drawn into a Hymn as well as a Grunt drawn into a March. 
 
 However, there are also Compositions that he will not be "in-tune" with. These Compositions may either ignore him, never giving him a voice, although they may have odd, unintended influences upon the world around him, or may draw him in for some specific Bars or Beats and have odd influences on him directly. This will be up to the Yarn-Teller who is running (or Conducting) the individual Composition. For example any Melody may draw him in even if woefully out of Key.
 
@@ -98,15 +98,15 @@ These are the absolute Pitches, each has an associated House. The House lists qu
 
 
 
-If a Composition is being improvised (rather than pre-written) Yarn-Tellers can Pitch different Pitches next. Pitches can be suggested by a common progressions, musical theory, or whimsy as the Conductor sees fit.
+If a Composition is being improvised (rather than pre-written) Yarn-Tellers can Pitch different Pitches next. Pitches can be suggested by a common progressions, musical theory, or whimsy as the Conductor sees fit. 
 
-Each Yarn-Teller may choose a Pitch, by asking a Question.
+Each Yarn-Teller may choose a Pitch, by asking a Question. 
 
-Then each Player of a Character affected by the Arc may select one of the Pitches that their Character will voice, Yarn-Tellers (and the Author or Player of the Character) may also add a Note at this time (see Notes). Sometimes the Composition will have set voices for certain Characters, which means they will have to voice a specific Pitch. Although they will still have a choice of Relative Pitch they can use.
+Then each Player of a Character affected by the Arc may select one of the Pitches that their Character will voice, Yarn-Tellers (and the Author or Player of the Character) may also add a Note at this time (see Notes). Sometimes the Composition will have set voices for certain Characters, which means they will have to voice a specific Pitch. Although they will still have a choice of Relative Pitch they can use. 
 
 During a Pre-written Composition the Pitches are preselected, but each Character in the Arc will still be offered a choice of Pitches from the Bar Chord that they may voice.
 
-During a Bar each Character need not be present for every Beat, the Conductor of the Composition should decide who is present in a Scene according to the usual Narrative Logic, as well as what voicings are required for the Beat and Bar.
+During a Bar each Character need not be present for every Beat, the Conductor of the Composition should decide who is present in a Scene according to the usual Narrative Logic, as well as what voicings are required for the Beat and Bar. 
 
 Not all Characters will be necessarily be present and voiced at the same time (this allows a Referee or Yarn-Teller to focus more on the voicings that are present at that time).
 
@@ -114,13 +114,13 @@ Some Characters may choose to not voice a particular Pitch, or are not required 
 
 All Voiced Characters will interact with the Pitch. They will have to "Answer the Question" the Absolute Pitch raises about the Character.
 
- This Question and Answering should not be thought of as a direct questioning, though. The Question the Yarn-Teller is asking such as "Who do you think you are?" should not be answered directly by the Character (no Character should state "I think I am a hero!" in response).
+ This Question and Answering should not be thought of as a direct questioning, though. The Question the Yarn-Teller is asking such as "Who do you think you are?" should not be answered directly by the Character (no Character should state "I think I am a hero!" in response). 
 
-Instead, this is a case of show, not tell, and even the Question the Pitch raises is not directly asked by the Conductor. So the Conductor should instead describe the Scene, but with the Questions in mind.
+Instead, this is a case of show, not tell, and even the Question the Pitch raises is not directly asked by the Conductor. So the Conductor should instead describe the Scene, but with the Questions in mind. 
 
-"Who do you think you are?" is a question usually asked by someone with authority  (be it social, political, legal, religious, spiritual, etc) so this Beat or Bar should be set in a place of some public, official or private authority.
+"Who do you think you are?" is a question usually asked by someone with authority  (be it social, political, legal, religious, spiritual, etc) so this Beat or Bar should be set in a place of some public, official or private authority. 
 
-In response, the Conductor might put the Characters upon a public stage such as a television news show, in the official chambers of a guild-master, or perhaps at the centre of a massive legal situation.
+In response, the Conductor might put the Characters upon a public stage such as a television news show, in the official chambers of a guild-master, or perhaps at the centre of a massive legal situation. 
 
 Characters should then show us the answers to the Questions the Pitches and Yarn-Tellers raised, through their actions and conversations. If the Player thinks the Character is a hero, they should show this through attempting acts of bravery and courage, not bravado and crowing.
 
@@ -128,9 +128,9 @@ Characters should then show us the answers to the Questions the Pitches and Yarn
 
 In addition to the Absolute Pitch, that is declared for a Beat or Bar, there is also the Relative Pitch, which is how the Pitch interacts with a Character’s personal Key. This Relative Pitch governs how the Beat will be experienced by the Character based on the different Intervals between the Character’s Key and the Pitch.
 
-We consider the Relative Pitch in terms of Semi-tone Intervals, to make counting these intervals easier we usually use a Chromatic Scale of 12 Pitches (although due to Octaves the actual Intervals we consider tends to be at most an Interval of 19 (the Perfect Twelfth), this could be expanded more to include perhaps as much as two Octaves, however the Octave adds less difference to the Interval beyond the Twelfth than we normally consider important.
+We consider the Relative Pitch in terms of Semi-tone Intervals, to make counting these intervals easier we usually use a Chromatic Scale of 12 Pitches (although due to Octaves the actual Intervals we consider tends to be at most an Interval of 19 (the Perfect Twelfth), this could be expanded more to include perhaps as much as two Octaves, however the Octave adds less difference to the Interval beyond the Twelfth than we normally consider important. 
 
-It is perfectly possible to consider Relative Pitches within a different Scale, such as a "Mixolydian" or "Locrian" Scale as part of a more advanced technique, where some Relative Pitches will become "Blues" Notes external to the Scale, which can have a seperate effect on Notes.
+It is perfectly possible to consider Relative Pitches within a different Scale, such as a "Mixolydian" or "Locrian" Scale as part of a more advanced technique, where some Relative Pitches will become "Blues" Notes external to the Scale, which can have a seperate effect on Notes. 
 
 You&apos;ll note that different relative Pitches can have the same Character Effect, and so the Effects the Characters experience are on a seperate table. This means two tables are required, with some quick looking up.
 
@@ -181,21 +181,21 @@ You&apos;ll note that different relative Pitches can have the same Character Eff
 
 
 
-The observant among you may have noticed that for any given pair of Pitches there are two available Intervals:
+The observant among you may have noticed that for any given pair of Pitches there are two available Intervals: 
 
-So, if a Character is an A♯4 and a Composition has an A♯ pitch for a Beat, then that is a Unison which is Stressful for the Character in some way, or it can be treated as an Octave which is a Gain Event for the Character based on the Discard Pile top card.
+So, if a Character is an A♯4 and a Composition has an A♯ pitch for a Beat, then that is a Unison which is Stressful for the Character in some way, or it can be treated as an Octave which is a Gain Event for the Character based on the Discard Pile top card. 
 
-If the Composition has a pitch of D instead then that can be an Interval of 8 (a Minor-Sixth: A Failure) or 4 (a Major-Third: A Relief) depending which way you count.
+If the Composition has a pitch of D instead then that can be an Interval of 8 (a Minor-Sixth: A Failure) or 4 (a Major-Third: A Relief) depending which way you count. 
 
-It is usual to try to alternate between positive and negative effects on the Strong or Weak beat, but Conductors are not restricted in how they apply the Beats in anyway (see Beats).
+It is usual to try to alternate between positive and negative effects on the Strong or Weak beat, but Conductors are not restricted in how they apply the Beats in anyway (see Beats). 
 
 #### Astrological Rulers
 
-Each Absolute pitch is noted as having an Astrological Ruler. Astrological Rulers can be used in a number of different ways.
+Each Absolute pitch is noted as having an Astrological Ruler. Astrological Rulers can be used in a number of different ways. 
 
 * The Astrological cycle progresses through the year with the Sun rising in each Astrological sign in turn (beginning and ending the year in Capricorn). This can indicate a Pitch based on the time of year.
 * The Planets that rule each House have their own cycles and associations that can suggest a Pitch based on those associations. For example Mars is long associated with combat and war, so during a war perhaps a B Pitch may be suggested.
-* The Planets have associations in Magic and Alchemy that indicate sympathetic vibrations that the Planets have with the universe.
+* The Planets have associations in Magic and Alchemy that indicate sympathetic vibrations that the Planets have with the universe. 
 * Astrological Signs can be used to grant Characters additional ways of Gaining Chi and Stress and Relieving Stress. This can also act to suggest Pitches for specific Characters (even if they are not actually the Pitch of the Character).
 
 ### Notes
@@ -209,25 +209,25 @@ Notes are used to bring some "Story-like" Narrative aspects to Compositions, Not
 * **Consequences and Repercussions** — Characters do all sorts of things that can have all sorts of consequences and repercussions. These Character Notes are used to remind the Character of things they did earlier, and to make those earlier choices have some sort of Karmic or developmental impact so they can learn from the experience. Referees will often add consequences or repercussions for Characters if the Yarn-Teller responsible for the Character Arc forgets.
 * **Enter / Exeunt a Character** — Characters are not always around, and events in their own life can cause them to leave or move about. Friends and Allies can have things they have to deal with, (especially if they are involved in some Quest or Plot that is going on at the time) that can take them away for a bit, and Rivals and Enemies can always turn up in the darndest places, and they too have lives that take them away from time to time. Basically, if a Yarn-Teller is trying to say "This Character is not going to be around for some reason" or "Has returned from that thing they were doing" then this is the Note to use.
 
-</li>* **Setting Notes** — Setting Notes are used to bring attention to the setting of the Composition for a number of reasons.
+</li>* **Setting Notes** — Setting Notes are used to bring attention to the setting of the Composition for a number of reasons. 
 <li>**Change of Location** — When a Character Arc leads a Character from one place to another, such as from their rural childhood home to their modern life in the big city, then a Change of Location Note is required. The importance of this is to usually emphasise the differences between the locations and the effects they have on the Character. Changing Locations is similar to the Enter / Exeunt Character Note and can Add and Remove several Characters at once with a single Note, as most Extra Characters are associated with specific Locations.
 * **Season Change** — Seasons are how we define periods of time in the setting. Typically a Change of Season Note will indicate the passage of time during a Composition. Sometimes the Season will refer to a an actual Season, such as how over the course of a Character Arc Winter may thaw into Spring, and then a hot Summer. But other times such a Season can be metaphorical in nature, and indicate a major event within the setting, such as a Season of War, Election Season, or a Season of Famine.
 
-</li>* **Story Notes** — Story notes are Notes passed to the Composition from some Weaver such as a Plot (or Yarn-Teller). Referees and Yarn-Tellers often use Story Notes to nudge and guide Character Arcs especially when the Arc is a part of a Volume, Epic or Cycle. Story Notes are usually of the following forms
+</li>* **Story Notes** — Story notes are Notes passed to the Composition from some Weaver such as a Plot (or Yarn-Teller). Referees and Yarn-Tellers often use Story Notes to nudge and guide Character Arcs especially when the Arc is a part of a Volume, Epic or Cycle. Story Notes are usually of the following forms 
 <li>**Lorics** — Lore from a Plot can be applied during a Character Arc. If a Character receives a Lore during a Character Arc this may appear as a Loric Story Note.
 * **Atavistic** — When a Character is an Embodiment of a Plot they are drawn into the Central Conflict of that Plot. Plot Tension will usually do this when a Plot is active, but even an inactive Plot can fire off a Atavistic Story Note. This will make an Opposed Embodiment from that Plot Embody in the Bar or Beat. Examples of this include Character and Monster Push and Pull Embodiments as well as any External Embodiments from an Annex to a Turn.
 * **Continuity** — Continuity Story Notes can be amongst the most important notes that a Character Arc can take. Continuity notes cover changes to the Setting caused by narrative causality. Say the king is killed sometime in the first Verse, well news of the death and coronation of the new king should be recorded in the Character Arc through a Continuity Note. The old king can no longer appear in the Character Arc, except perhaps as a Spirit or Dream Character. This takes precedence over Character Notes and Season Change Notes.
 * **Tonal** — Tonal Story Notes are used to pass Tones into the Composition. Tones change what a Scene is trying to accomplish and can affect how well a whole Bar can work. (See Tones)
 
-</li>* **Blue Notes** — Blue Notes are the final type of Note and are created by using a Pitch that falls outside of the musical Scale of a Character in the Arc. Blues notes have their usual Pitch effects, however something about the situation will be off somehow. Examples include:
+</li>* **Blue Notes** — Blue Notes are the final type of Note and are created by using a Pitch that falls outside of the musical Scale of a Character in the Arc. Blues notes have their usual Pitch effects, however something about the situation will be off somehow. Examples include: 
 <li>**Figments** — Sometimes a Character who is out of tune with the Composition will experience the Blue note as a Figment. Figments can be daybreams, fantasies, delusions, hallucinations, illusions, phantasms, visions, dreams, or nightmares. A Figment might be a bad dream, an imagined (or real for that matter depending upon genre) encounter with a ghost, a prophetic dream, or a momentary hallucination that someone is wearing different clothes than they really are. Figments are usually blink and you miss it double takes, where the Character thinks they see, hear or smell something, only to look again and realise they are mistaken. Often other Characters who are more in tune with the Composition will have different experiences of this event.
-* **Genre-Phreaking** — Pulling a Character or Descendant from a completely different context, such as a different genre movie, game or book and dropping wholesale it into a Character Arc is an example of Genre-Phreaking. <ul><li>It can be used delicately to ***Genre-bend***, adding a little Romance or Mystery to a Fantasy tale  about Goblin Hunting Elves for example.
-* Applied more vigorously it can ***Genre-Shift***, as the Fantasy Elven Kingdom moves into war against a technologically superior Goblin foe, the Arc incorporates more War genre tropes.
-* Applied with unilateral force Genre-Phreaking can ***Genre-Mashup*** where two or more Genres begin to merge, but are not quite syncretic, so Goblin scientists have created mechanical body-parts, and potion injectors to augment themselves for battle, but are still fighting Elven archers and mages.
+* **Genre-Phreaking** — Pulling a Character or Descendant from a completely different context, such as a different genre movie, game or book and dropping wholesale it into a Character Arc is an example of Genre-Phreaking. <ul><li>It can be used delicately to ***Genre-bend***, adding a little Romance or Mystery to a Fantasy tale  about Goblin Hunting Elves for example. 
+* Applied more vigorously it can ***Genre-Shift***, as the Fantasy Elven Kingdom moves into war against a technologically superior Goblin foe, the Arc incorporates more War genre tropes. 
+* Applied with unilateral force Genre-Phreaking can ***Genre-Mashup*** where two or more Genres begin to merge, but are not quite syncretic, so Goblin scientists have created mechanical body-parts, and potion injectors to augment themselves for battle, but are still fighting Elven archers and mages. 
 * Then finally ***Genre-Smash*** is possible where a new genre emerges, from the blend, as Elves adapt and break beyond their traditional roles they adapt and wrap their bodies in living armour made from Ent-wood, shed Forest Dragon skins and Druidic blood magics. All the Yarn-Tellers embrace and adapt to their new setting genre of Mecha-Fantasy.
 
 </li>* **Temporal Tampering** — What can we say sometimes time-travel happens, and the universe can get Retconned. When this happens a Character Arc can be tampered with too, and Blue Notes or Continuity Notes are usually the easiest way to deal with this.
-* **Incursion**  — There are things from outside the world of men that sometimes reach in for some reason. Perhaps beings from another planet, another world, another plane or some void beyond are present for some reason. If so this Blue Note is a perfect way to introduce a sudden Incursion of something alien, spiritual or Increated.
+* **Incursion**  — There are things from outside the world of men that sometimes reach in for some reason. Perhaps beings from another planet, another world, another plane or some void beyond are present for some reason. If so this Blue Note is a perfect way to introduce a sudden Incursion of something alien, spiritual or Increated. 
 </ul></li></ul>
 
 ### Tones
@@ -332,7 +332,7 @@ All Compositions have a Tempo, unlike in modern music this isn&apos;t thought of
 
 
 
-Additionally Tempo can change, either jumping from one to another Tempo class, or accessing the Accelerando or Ritardando tempos. Accelerando should be used when there is a deadline that becomes imposed, and time starts to run short. Ritardando should be used when a situation gets more serious as time goes on, with growing problems and rising dangers. In both cases the tempo change makes the situation more serious and important, drawing attention to it. A Composition could begin in moderate
+Additionally Tempo can change, either jumping from one to another Tempo class, or accessing the Accelerando or Ritardando tempos. Accelerando should be used when there is a deadline that becomes imposed, and time starts to run short. Ritardando should be used when a situation gets more serious as time goes on, with growing problems and rising dangers. In both cases the tempo change makes the situation more serious and important, drawing attention to it. A Composition could begin in moderate 
 
 ### Lyrics
 

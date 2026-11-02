@@ -18,11 +18,14 @@
       }
     ],
     "ordeals": {
-        "race": {
-            "type": "Video-Ordeal",
-            "physics": "AdvancedPhysicsEngine",
-            "scoring": "Time-Based"
-        }
+      "race": {
+        "category": "Travel",
+        "subtype": "Race",
+        "structure": "Forking",
+        "trump": "Diamonds",
+        "physics": "AdvancedPhysicsEngine",
+        "scoring": "Time-Based"
+      }
     }
   },
   "initialState": {

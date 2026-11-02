@@ -1,10 +1,10 @@
 # Action Spaces
 
-When playing a game or writing a story we have to model the world of the Narrative. Events that take place in the universe of the story take place in this Narrative Space, every conversation, every exchange of Sway or Score.
+When playing a game or writing a story we have to model the world of the Narrative. Events that take place in the universe of the story take place in this Narrative Space, every conversation, every exchange of Sway or Score. 
 
 Now when Characters are talking to each other and ambling around, we don’t need a very clear model of the space, but if someone decides to try and shoot someone, or dive for cover, or run up and brain someone with a frying pan, then we need a slightly more advanced Narrative Space, we call this Action Space.
 
-Action Space can be defined in a number of ways, depending upon how simulationist you need to Action Space to be. Now, many may be quick to assume that more simulationist is better, but the simulation is generally of a physical space. Not all Action Spaces are necessarily physical, Psychosocial spaces exist beyond physical, such as dreams, mindscapes, friendship groups, and spiritual realms where a strictly simulationist Action Space will work against you if the space is inappropriate.
+Action Space can be defined in a number of ways, depending upon how simulationist you need to Action Space to be. Now, many may be quick to assume that more simulationist is better, but the simulation is generally of a physical space. Not all Action Spaces are necessarily physical, Psychosocial spaces exist beyond physical, such as dreams, mindscapes, friendship groups, and spiritual realms where a strictly simulationist Action Space will work against you if the space is inappropriate. 
 
 
 ### Action Spaces
@@ -39,7 +39,7 @@ In T13 we classify the types of Terrain within the Action Space into one of 3 di
 
 ## Handling Range and Reach
 
-Ranged Actions, such as shooting a gun, always have an associated Cost. This cost varies with the type of Terrain and how the Action itself has been made. This is the Firing Type and modifies how Range Difficulties are calculated from Distances.
+Ranged Actions, such as shooting a gun, always have an associated Cost. This cost varies with the type of Terrain and how the Action itself has been made. This is the Firing Type and modifies how Range Difficulties are calculated from Distances. 
 
 Similar to Range is also Reach, Reach affects melee attacks with long weapons in similar ways. Reach is usually measured as though the weapon is braced, although some circumstances such as trying to wield a long weapon with only one hand can make this the equivalent of Hip-firing.
 
@@ -60,7 +60,7 @@ Reach mainly affects physical Descendants, although it is possible that a  menta
 
 Usually a Descendant can only use its Master Annex when it is between Reach metres or Reach Pips distance to the target (although Sub-Annexes may be used at Yarn-Teller’s discretion). So a Two-handed long sword has a Reach of 3, this means it is intended to be used at most 3 metres from the target. Because 3 Reduces to 1 the long Sword can strike a Character a metre away in Confined situations, but it is not able to strike a Character with the Master Annex any closer than one metre.
 
-In general, Reach is set when the Descendant is created and is tied to the physical size of the Descendant (as is RT and GRT).
+In general, Reach is set when the Descendant is created and is tied to the physical size of the Descendant (as is RT and GRT). 
 
 It is worth noting that Reach is affected by Size Annexes, a dagger built for a Kaiju is still hand-held for the Kaiju, although it would be a Kaiju-weapon for a normal Character. So a Descendant’s Size Annex when present may alter the actual Reach in metres. This is usually done by multiplying the standard Reach by the Size Score (Size Annex Boon Reduced) although Yarn-Tellers and Referees can make adjustments where required.
 
@@ -91,9 +91,9 @@ It is worth noting that Reach is affected by Size Annexes, a dagger built for a 
 
 ### Reach Actions
 
-When you are wielding a weapon, and you actually know how to use it, you can use that weapon in more tactical ways. More proficiency with your chosen weapon will grant you additional techniques, that allow you to use the weapon in more effective ways.
+When you are wielding a weapon, and you actually know how to use it, you can use that weapon in more tactical ways. More proficiency with your chosen weapon will grant you additional techniques, that allow you to use the weapon in more effective ways. 
 
-For example, a spear is a good weapon in tight quarters, until the enemy gets closer than the Reach, then a master spear-warrior will know how to retreat, and move the spear to bring the pointy end to bear once again.
+For example, a spear is a good weapon in tight quarters, until the enemy gets closer than the Reach, then a master spear-warrior will know how to retreat, and move the spear to bring the pointy end to bear once again. 
 
 This holds true of any Descendant, and how Reach can be extended or contracted. It is worth noting that these Reach Actions are always affected by the Action Space and Terrain. Fighting in a busy melee for example, restricts Reach much more than fighting in a Closed or Open Space. Using the right Action with the right weapon can effectively cancel the weapon’s Reach, allowing the spear-master to stab someone he is grappling, or someone skilled in a knife to lunge a few metres.
 
@@ -116,9 +116,9 @@ This holds true of any Descendant, and how Reach can be extended or contracted. 
 
 Character’s motion around the Action Space is of course important to how these games and Narratives play out. Whether it is a fight on top of a moving vehicle, a race through No Man’s Land, or a space-flight along a surface trench to a bombable surface vent.
 
-In T13, we utilise similar rules to how we handle Range to handle motion through the Space. Ordeal Motion is handled in cards and Chi or Ordeal Pips of Difficulty. Although, of course a rolled Score or Sway can be used as well, usually Zeal/Verve or Inertia/Endurance will count as Intrepid, but other Sway will not (assuming a physical Action Space rather than a Psychosocial one).
+In T13, we utilise similar rules to how we handle Range to handle motion through the Space. Ordeal Motion is handled in cards and Chi or Ordeal Pips of Difficulty. Although, of course a rolled Score or Sway can be used as well, usually Zeal/Verve or Inertia/Endurance will count as Intrepid, but other Sway will not (assuming a physical Action Space rather than a Psychosocial one). 
 
-Size Annexes also affect motion in T13, with the Size Annex generally adding the Size Score (Annex Boon Reduced) to the Pips of movement actions for exceptionally large objects. This is not particularly simulationist, but not many simulations will let giant radioactive dinosaurs stand, let alone walk along punching and tail swiping radio towers.
+Size Annexes also affect motion in T13, with the Size Annex generally adding the Size Score (Annex Boon Reduced) to the Pips of movement actions for exceptionally large objects. This is not particularly simulationist, but not many simulations will let giant radioactive dinosaurs stand, let alone walk along punching and tail swiping radio towers. 
 
 
 ### Ordeal Motion Type

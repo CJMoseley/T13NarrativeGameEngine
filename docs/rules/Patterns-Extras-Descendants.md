@@ -4,7 +4,7 @@ In T13 every aspect of the Game is built from smaller Components, Proficiency Th
 
 Patterns are recurring things, that you might use once, or every time you use the system, as required. They can be pretty diverse, with Patterns including:
 
-* Extras: Who are the minimal Characters, Animals or Mobs, usually built around a Single Annex sometimes with a Hitch. Extras are usually created from a Yarn Card NPC Archettpe, which specifies a Persona, a Core and a Hitch, for each NPC type. Extras can also be easily given additional Annexes, Hitches or even Monster Facets to make them more powerful, and more of a challenge for PCs to defeat.
+* Extras: Who are the minimal Characters, Animals or Mobs, usually built around a Single Annex sometimes with a Hitch. Extras are usually created from a Yarn Card NPC Archettpe, which specifies a Persona, a Core and a Hitch, for each NPC type. Extras can also be easily given additional Annexes, Hitches or even Monster Facets to make them more powerful, and more of a challenge for PCs to defeat. 
 * Descendants: Descendants are harder to understand. They are everything else that you might find in the universe, that isn’t a Character or Animal.  To start with it can easiest to think of Descendants as Props, things like the tools a Character might carry around, weapons, equipment, armour. Although, Descendants are so much more than that, they can be magic spells, martial arts, software, knowledge from books, reputations, guilds, companies, families, buildings, forests, land, planets, and much more.
 
 Regardless of the type the Pattern is still largely the same. They consist of at least one Annex, called the Master Annex. A Pattern may have other Annexes, but is restricted in how many it can have and their type. If your Master Annex is a Power with Boon 45 then the Pattern could have 10 other Annexes, and the other Annexes could be at most Talent Annexes.
@@ -13,11 +13,11 @@ Normally with a Pattern you can have as many Talents as Skills (but no more) and
 
 The Number of Skills can be limited by the Referee, to the Ruins (Boon Draw / Boon Double Reduced), Banes (Boon Score / Boon Reduced) or the Boon of the Patterns largest Hitch, or not at all as they prefer. Character created Patterns are usually limited to the Ruins for Grunts, Banes for Heroes, and Boons for Yarn-Tellers, but the Referee and Plots are not limited in the same way (although it can help to be consistent).
 
-Some Patterns can have special Master Annexes, these special Master Annexes sit above even Super-Annexes in terms of what they can unlock.
+Some Patterns can have special Master Annexes, these special Master Annexes sit above even Super-Annexes in terms of what they can unlock. 
 
 *  Extras for example can have Personality Annexes (which converts them into Archetype Characters). Personality Annexes are built from Hitches, Personas and Cores, and you can have up to 13 Hitches.
 *  Locations (and Kaiju which are Extras with added Size) can have a Size Annex, which just reflects how big the Location is (using the Sway Table look up the Size and the Chi cost) the Boon of the Size Annex should match the Chi Cost.
-* Pacts have a Pact Annex.  The Pact Annex is exactly like the Size Annex of a Location, using the Group Size. However, the Pact Annex should also be at least equal to the Highest Personality Annex in the Pact.
+* Pacts have a Pact Annex.  The Pact Annex is exactly like the Size Annex of a Location, using the Group Size. However, the Pact Annex should also be at least equal to the Highest Personality Annex in the Pact. 
 
 ## Pattern Incarna
 
@@ -224,17 +224,17 @@ In T13, if you keep a Descendant for a long time, and look after it well, it bec
 
 Trophies are normally created by Characters using a Descendant. Slowly, under the right circumstances, Chi can accumulate in the Descendant. This can be accelerated by Geometry, I-Ching, and Nimbeds, but typically is the result of the Weilder gaining Chi from Success Levels when using the Descendant for its intended purpose.
 
-Trophies can only store Chi equal to the maximum Score that their Annexes can generate (which is also usually the Stress Limit for each Boon Die see Stress).  So, if the Descendant Food Mixer only had a Master Annex that rolls 2d10-1 then that Trophy could store 19 Chi. If it also had a 1d8 Sub-Annex (in blending say) then it could store 27 Chi.   We call this amount of Chi the "Edge Tier Cost".
+Trophies can only store Chi equal to the maximum Score that their Annexes can generate (which is also usually the Stress Limit for each Boon Die see Stress).  So, if the Descendant Food Mixer only had a Master Annex that rolls 2d10-1 then that Trophy could store 19 Chi. If it also had a 1d8 Sub-Annex (in blending say) then it could store 27 Chi.   We call this amount of Chi the "Edge Tier Cost". 
 
- While a Trophy stores Chi, it may have an Edge, which grants it (or its wielder) some special bonus or ability. So that "Food Mixer" Descendant could hold 1-27 Chi and have an Edge.
+ While a Trophy stores Chi, it may have an Edge, which grants it (or its wielder) some special bonus or ability. So that "Food Mixer" Descendant could hold 1-27 Chi and have an Edge.  
 
-If a Trophy is full of Chi then it cannot naturally gain Chi any more. A Hero Character or Yarn-Teller may be able to force more Chi into the Trophy creating a Prize (also called a Monolith if made of rocks and gems or Real-Estate in the case of a Location). This creates a second, or higher Edge Tier that can be filled with Chi. Each Tier is the same size as the last and each Tier adds an Edge to the Prize. So every Prize begins with 2 Edges.
+If a Trophy is full of Chi then it cannot naturally gain Chi any more. A Hero Character or Yarn-Teller may be able to force more Chi into the Trophy creating a Prize (also called a Monolith if made of rocks and gems or Real-Estate in the case of a Location). This creates a second, or higher Edge Tier that can be filled with Chi. Each Tier is the same size as the last and each Tier adds an Edge to the Prize. So every Prize begins with 2 Edges. 
 
 A Prize can store Chi equal to the Value of the Boon of the Edge Tier Cost. So 27 Chi Edge Tier Cost could store 216 Chi. We call this the Glow Tier Cost, and if a Prize reaches that amount of Stored Chi it can promote one of its Edges into being a Glow instead. It should be noted that this also limits the number of possible Edges that a Descendant can have. The example above could have at most 9 Edges when not full of Chi, and 8 and 1 Glow when full of Chi. Each time a Prize is filled it may change which Edge is a Glow, if it loses Chi the Glow will revert to being an Edge.
 
-Artefacts are even more powerful than Prizes, they can only be created by a Yarn-Teller, who must push the Chi over the Glow Limit by storing Yarn in the Descendant.
+Artefacts are even more powerful than Prizes, they can only be created by a Yarn-Teller, who must push the Chi over the Glow Limit by storing Yarn in the Descendant. 
 
-Each time an Artefact fills Chi to the Glow Tier Cost it may promote another Edge into being a Glow. Each time an Artefact loses Chi below a Glow Tier Cost a Glow will be demoted to an Edge again.
+Each time an Artefact fills Chi to the Glow Tier Cost it may promote another Edge into being a Glow. Each time an Artefact loses Chi below a Glow Tier Cost a Glow will be demoted to an Edge again. 
 
 An Artefact cannot have more Glows than Edges, and can never add another Edge, so eventually a balance is found. Our example Artefact could start with 1 Glow and 8 Edges with a total of 216 Chi, but could reach 4 Glows and 5 Edges after storing a total of 648 Chi in the Artefact, and would demote one Glow if it lost even 1 Chi.
 

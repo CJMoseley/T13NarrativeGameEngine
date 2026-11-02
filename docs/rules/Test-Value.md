@@ -6,10 +6,10 @@ Values can also be calculated from Difficulties. Normally by taking the Difficul
 
 ## Complicating Value Tests
 
-When the comparison is not a pair of opposed Facets the Referee may impose additional complications to the Test in the form of Failure Levels.
+When the comparison is not a pair of opposed Facets the Referee may impose additional complications to the Test in the form of Failure Levels. 
  For example, when pushing a Car Characters might want to use their Gossamer rather than their Zeal, since Gossamer is a Spades Facet, and Zeal is a Diamonds Facet the Test will add a Failure Level (Perhaps a Fumble, making one of the Characters drop something on the road as they push). Failure Levels should be added if the Facet is a different coloured Suit (Red or Black). Another Failure Level is added if you oppose a Yin Facet with another Yin Facet or a Yang Facet with another Yang Facet. See the Rules Page on Success and Failure Levels for more details.
 
- Maybe that is a bit too certain for you and your gamers. Maybe you think that one guy pushing a car should be possible, but don’t want to reduce the Inertia of the car... Or perhaps you just want a chance to fail when Values should guarantee success.
+ Maybe that is a bit too certain for you and your gamers. Maybe you think that one guy pushing a car should be possible, but don’t want to reduce the Inertia of the car... Or perhaps you just want a chance to fail when Values should guarantee success. 
 
 If you want a more random Value comparison you can use a percentage chance. Decide who is being Tested (usually the one with the smaller Value) and then divide their Value by the combined Value of both sides and multiply by 100 to create a percentage. The above car pushing example gives one person a 66/66+111 = 37% chance of moving the car. For two people pushing as above, we instead Test if the car can resist them (111/243) = 46% chance that the car will successfully resist.
 
@@ -17,7 +17,7 @@ You can then roll a d100 and see if you can get lower than the % calculated.
 
 ### Further Complicating Value Tests
 
-The problem with the Value Test is that it usually supplies either a pass or a fail. It has limited ways of gaining Success and Failure Levels.
+The problem with the Value Test is that it usually supplies either a pass or a fail. It has limited ways of gaining Success and Failure Levels. 
 
 I don’t know about you, but for me that just isn’t good enough for a truly fun experience. So here are some options to confuse and excite the results.
 

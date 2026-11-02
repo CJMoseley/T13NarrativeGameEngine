@@ -22,7 +22,7 @@ Let’s be honest under most circumstances a Player is not going to want to let 
 
 ## The Inevitable
 
-So you have tried not dying in a variety of interesting ways, and it just hasn’t stuck. Usually this is because the Character has run out of Chi that they can use to counter the effects of the Omniverse. Eventually they just cannot fight the inevitable any longer and they must accept death. They will still create a Chronolith with their Yarn-burst death, although this will be smaller than that created by a Character who elected to die while full of Chi.
+So you have tried not dying in a variety of interesting ways, and it just hasn’t stuck. Usually this is because the Character has run out of Chi that they can use to counter the effects of the Omniverse. Eventually they just cannot fight the inevitable any longer and they must accept death. They will still create a Chronolith with their Yarn-burst death, although this will be smaller than that created by a Character who elected to die while full of Chi. 
 
 ## After Life
 

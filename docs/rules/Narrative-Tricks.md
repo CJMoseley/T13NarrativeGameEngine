@@ -2,21 +2,21 @@
 
 During a card Test or Ordeal if a Character plays a special Trick there are specific Narrative results that may result.
 
-
-
-
+	
+	
+	
 ## Narrative Tricks
 
+	
 
-
-
-
+	
+	
 The type of Ordeal Tricks that a character can play on another vary with the number of cards that can be played, and can unlock types of Narrative Tricks.
 
+	
 
-
-
-
+	
+	
 ### Narrative Tricks
 
 | Type | Description | Rules |
@@ -26,22 +26,22 @@ The type of Ordeal Tricks that a character can play on another vary with the num
 | Complication | A Complication is a new problem or obstacle that arises during a scene. It may be a new enemy, a sudden change in the environment, or a moral dilemma. | Complications are used to increase the challenge and make the story more interesting. They should be a direct or indirect consequence of the Characters' actions. |
 
 
+	
 
-
-
-
+	
+	
 ## Narrative Trick Types
 
+	
 
-
-
-
+	
+	
 The Tricks can unlock different types of Narrative effects which can have the following effects.
 
+	
 
-
-
-
+	
+	
 ### Narrative Trick Types
 
 | Type | Description | Rule |
@@ -57,17 +57,17 @@ The Tricks can unlock different types of Narrative effects which can have the fo
 | Schism | The Trick creates a new Plot with an Internalised Conflict inside the Target. | 9 cards from the Trick are used to create a new Internalised Conflict, which can develop into a whole new Arc Plot that focuses upon this character, but usually just complicates their life with new active Embodiments around and inside them. Sometimes an additional card will be added from the Trick to add a Plot Significator. |
 
 
+	
 
-
-
-
+	
+	
 ## Sets
 
+	
 
+	
 
-
-
-The types of Narrative that Narrative Tricks can tell with Pairs, Sets, Wildsets and Nth-of-a-kind Tricks can be further limited by the card that is being played.
+The types of Narrative that Narrative Tricks can tell with Pairs, Sets, Wildsets and Nth-of-a-kind Tricks can be further limited by the card that is being played. 
 
 This limitation is usually based upon what the signification of this set is. For example if a Trick is a Set of 2s this would emphasise Conflicts, Opposition and Choices during the Karmic Shift that is created. This is usually based on the Face Value of the card (although Trumps can match at +2 Pips if the Yarn-Teller allows it, but they then act as that Face Value, e.g. a Trump 10 is the same as a None-Trump Queen although this tops out at the Ace).
 

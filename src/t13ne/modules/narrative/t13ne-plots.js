@@ -173,7 +173,6 @@ class T13Plot extends SuperKnot {
         else if (era.match(/Modern|Contemporary/i)) structure = ['The Journalist', 'The Pantser', 'The Thespian', 'The Sportscaster', 'The Gossip', 'The Hard-Boiled Detective', 'The Investigator', 'The Satirist'];
         else if (era.match(/Future|Sci-?Fi|Cyberpunk|Space/i)) structure = ['The Scientist', 'The Tactician', 'The Mechanic', 'The Minimalist', 'The Logger', 'The Academic'];
 
-        // Mood (Tension)
         if (tension >= 7) mood = ['The Daredevil', 'The Grim', 'The Hatemonger', 'The Murderer', 'The Bedlamite', 'The Fearmonger', 'The Creep'];
         else if (tension >= 4) mood = ['The Interrogator', 'The Diplomat', 'The Gossip', 'The Blowhard', 'The Jargonist', 'The Liar', 'The Satirist'];
         else mood = ['The Romantic', 'The Quiet', 'The Stoic', 'The Noncommital', 'The Vague', 'The Idiot', 'The Punster'];
@@ -198,13 +197,9 @@ class T13Plot extends SuperKnot {
         return Array.from(new Set([v1, v2, v3])).join(' + ');
     }
 
-    /**
-     * Updates the plot's voice based on current state.
-     */
     updateVoice() {
         if (this.yarnTeller) {
-            const newVoice = this.generateComplexVoice();
-            this.yarnTeller.setVoice(newVoice);
+            this.yarnTeller.setVoice(this.generateComplexVoice());
         }
     }
 
@@ -655,13 +650,9 @@ class T13Plot extends SuperKnot {
             }
         }
 
-        // Check for significant change (crossing thresholds 4 or 7) to update voice
-        const getTier = (l) => {
-            if (l >= 7) return 2;
-            if (l >= 4) return 1;
-            return 0;
-        };
-        if (getTier(oldLevel) !== getTier(newLevel)) this.updateVoice();
+
+        const tier = level => level >= 7 ? 2 : level >= 4 ? 1 : 0;
+        if (tier(oldLevel) !== tier(newLevel)) this.updateVoice();
 
         // "Plot will not cause Characters to fight, but it will PUSH characters who are oppossed together"
         if (this.tensionLevel >= 4) { // Medium Tension or higher

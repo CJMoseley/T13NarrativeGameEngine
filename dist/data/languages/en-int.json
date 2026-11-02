@@ -1,0 +1,12 @@
+{
+  "MENU_TITLE": "Wormhole Racers",
+  "MENU_NEW_GAME": "New Game",
+  "MENU_GALAXY_MAP": "Galaxy Map",
+  "MENU_SETTINGS": "Settings",
+  "MENU_CONTROLS": "Controls",
+  "MENU_TEST_MENU": "Test Menu",
+  "LOADING_TITLE": "Loading...",
+  "LOADING_SCENE": "Preparing {scene}...",
+  "CONTINUE_BUTTON": "Continue to Main Menu",
+  "READY_MESSAGE": "All systems initialized. Welcome, racer."
+}

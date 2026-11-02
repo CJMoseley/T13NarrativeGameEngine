@@ -8,7 +8,7 @@ In T13 we track character interactions via the use of a sliding scale that we ca
 
 As well as that First Impression, which Character's will usually keep, they will also have a Current Impression. This Current Impression can differ greatly from the First Impression, and can replace the First Impression if it is sustained for long enough. For example, while two Characters may have a First Impression that each other is "Someone to talk to" if one of them is a jerk during all their interactions, while the other is generally nice, then these Current Impressions may eventually change, with the Jerk finally deciding the other is actually Someone Interesting, while the other Character comes to think of the Jerk as well "A bit of a Jerk" (or something worse).
 
-This occurs when the Current Impression is at least two or more levels above or below their First Impression, whatever that may be, for at least three Scenes where they interact.
+This occurs when the Current Impression is at least two or more levels above or below their First Impression, whatever that may be, for at least three Scenes where they interact. 
 
 ### Geometry and Zeroth Impressions
 
@@ -69,7 +69,7 @@ In addition to the main Geometry a Character also has a Facade that they maintai
 
 In general, when dealing with Harmonics and Dissonants you deal with Impressions (what the Character thinks of a Character of that Geometry) and Reactions (what those of that Geometry think of the Character back). Positive Impressions and Reactions add Success Levels, negative Impressions and Reactions add Failure Levels instead.
 
-You might notice notice that amongst the Harmonics and Dissonant Numbers there are some special numbers, such as Perfect Harmonics, Wolf Harmonics, Sustained Dissonants and Nemesis Dissonants. These have more profound Impressions and Reactions, that stack on top of the normal Dissonance or Harmony. It is actually
+You might notice notice that amongst the Harmonics and Dissonant Numbers there are some special numbers, such as Perfect Harmonics, Wolf Harmonics, Sustained Dissonants and Nemesis Dissonants. These have more profound Impressions and Reactions, that stack on top of the normal Dissonance or Harmony. It is actually 
 
 
 ### Harmonic Types

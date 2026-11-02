@@ -1,0 +1,12 @@
+{
+  "MENU_TITLE": "Wormhole Racers",
+  "MENU_NEW_GAME": "Nuevo Juego",
+  "MENU_GALAXY_MAP": "Mapa Galáctico",
+  "MENU_SETTINGS": "Ajustes",
+  "MENU_CONTROLS": "Controles",
+  "MENU_TEST_MENU": "Menú de Prueba",
+  "LOADING_TITLE": "Cargando...",
+  "LOADING_SCENE": "Preparando {scene}...",
+  "CONTINUE_BUTTON": "Continuar al Menú Principal",
+  "READY_MESSAGE": "Todos los sistemas inicializados. Bienvenido, corredor."
+}

@@ -10,7 +10,7 @@ Shock is the most powerful form of Stress, and can cause a Character to lose the
 
 ## Shocked Dice
 
-When a Die has any number of Shocks it is called a Shocked Die. A Shocked Die cannot store more Strains, or Stress, until it has lost all its current Shocks. Characters and Descendants that have Shocks cannot perform any Action except rolling their Shocked Dice.
+When a Die has any number of Shocks it is called a Shocked Die. A Shocked Die cannot store more Strains, or Stress, until it has lost all its current Shocks. Characters and Descendants that have Shocks cannot perform any Action except rolling their Shocked Dice. 
 
 Shocked Dice cannot generate a normal Score to perform Actions, and Characters and Descendants are often effectively locked in Global Reaction Time until their Shocks are Relieved. Shocks are typically Relieved by the Character spending time in GRT, taking a Distress or Trauma effect, or occasionally adding Drama Dice to the Drama Pool.
 

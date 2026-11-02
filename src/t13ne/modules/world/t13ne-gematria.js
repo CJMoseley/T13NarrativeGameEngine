@@ -16,6 +16,20 @@ const GEMATRIA_VALUES = {
     'o': 7, 'z': 7,
     'f': 8, 'h': 8, 'p': 8
 };
+const DIGRAPH_VALUES = {
+    bh: 2, gh: 3, sh: 3, ch: 8, ph: 8, th: 9, ts: 9, tz: 9
+};
+
+export function tidyName(name) {
+    return String(name ?? '').toLowerCase().trim()
+        .replace(/[áâàåä]/g, 'a')
+        .replace(/[ðéêèë]/g, 'e')
+        .replace(/[íîìï]/g, 'i')
+        .replace(/[óôòøõö]/g, 'o')
+        .replace(/[úûùü]/g, 'u')
+        .replace(/æ/g, 'ae').replace(/ç/g, 'c').replace(/ß/g, 'ss')
+        .replace(/[^a-z,.]/g, '');
+}
 
 /**
  * Crunches a number down to a value between 1 and 13.
@@ -36,10 +50,11 @@ export function crunch(num) {
  */
 export function calculateValue(str) {
     if (!str) return 0;
-    const cleanStr = str.toLowerCase().replace(/[^a-z]/g, '');
+    const cleanStr = tidyName(str);
     let sum = 0;
     for (let i = 0; i < cleanStr.length; i++) {
         sum += GEMATRIA_VALUES[cleanStr[i]] || 0;
+        sum += DIGRAPH_VALUES[cleanStr.slice(i, i + 2)] || 0;
     }
     return crunch(sum);
 }

@@ -49,8 +49,5 @@
         "MODIFIERS": [
             "Advanced", "Applied", "Core", "Unified", "Global", "Hyper"
         ]
-    },
-    "BANNED_WORDS": [
-        "core systems"
-    ]
+    }
 }

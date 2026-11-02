@@ -4,13 +4,13 @@ In T13, Hitches are a Knot that places restrictions on Characters and Descendant
 
 Hitches are created in a number of ways, they may be background aspects of the Character, Quirks and Flaws that the Character begins with, and may resolve as part of their personal Arc. Other Hitches are created by Mortal+ Wounds during play, where they represent traumas and usually form Natural Scar Hitches (although not always).
 
-Hitches can also be created during in play in another way. Situations and emotional traumas (such as actual Traumas) can blend Threads (usually in the form of Proficiencies) to create a new Hitch (or at least new to that Character).
+Hitches can also be created during in play in another way. Situations and emotional traumas (such as actual Traumas) can blend Threads (usually in the form of Proficiencies) to create a new Hitch (or at least new to that Character). 
 
 For example, if a Character falls down the stairs into a cellar, and come around in a dark and silent basement, wrapped in spider webs, with spiders running over them, they could be justified in freaking out a bit. This could allow their Player to combine the any of the Threads of "Spiders", "Fear", "Darkness", "Silk", "Cobwebs", "Eight-Legged", "More-Than-4-Legs", "Webs", "Weaving", "Basement", "Silence", and "Swarms". The Player can pick the Threads they wish to combine and create the Character’s new Hitch. Each Thread woven together will bring with it a Facet that identifies which Hitch Type or Gnarl the new Hitch may have.
 
 ## Anatomy of a Hitch
 
-Each Hitch in T13 is described as follows:
+Each Hitch in T13 is described as follows: 
 
 * **Name** — All Hitches need a name, like "Arachnophobia".
 * **Description** — Along with a Name a Description will help people understand the Hitch.
@@ -185,7 +185,7 @@ The Gnarl of Zeal is Intensity. A Hitch with an Intensity Gnarl makes others rea
 
 ### Hitch Tier
 
-Which leads us to the issue of the Hitch Tier. You might notice that the different Hitches behave differently depending upon if they are a Quirk, Flaw or Woe. Each Tier behaves differently because they are very different in intended effect.
+Which leads us to the issue of the Hitch Tier. You might notice that the different Hitches behave differently depending upon if they are a Quirk, Flaw or Woe. Each Tier behaves differently because they are very different in intended effect. 
 
 Characters are expected to have a selection of Quirks, that define minor aspects of the Character. Additionally they should have at least a couple of Flaws, with perhaps as many as a handful. Only the most powerful of Characters actually have Woes. Woes are generally reserved for Goblins, Demons, and Demon-Lords, as well as a few others plagued by the Increated. Although it is said that a few Færy Nobility and Fantasy Heroes can possess pure Woes that give them Yarn, and not Twists, most do not. Instead they must carefully manage their Flaws, keeping them below their Facet Boons, to avoid Increated attention.
 
@@ -207,7 +207,7 @@ Characters are expected to have a selection of Quirks, that define minor aspects
 You can see how the impact of the Tiers affects the Hitch directly. A Hitch must have as many Proficiencies as the Marks of the Hitch. Which usually means the additional Proficiencies can act as additional Triggers and Gnarls (although there is a limit on Gnarls). Some small Quirks will not have enough Proficiencies to have a separate Hitch Type, Trigger and Gnarl, and so a single Proficiency may end up doing double or even triple duty.
 
 Lets consider a simple Hitch that a Character may have. Such as the easy to understand "Scars" Hitches. Scars are the normal hitches a Character takes after they have recovered from an injury. A small Scar for example can look like this:
-
+ 
 
 Quirk: "Small Scar" × 3[1/0.5] (N) [Scars]{Trigger} <sup>Gnarl: Instinct Flinch</sup>
 
@@ -220,13 +220,13 @@ Quirk: <span class="t13ne-hitch">"Small Scar" × 5 [2/1] "A small scar of that e
 When we move beyond Quirks into the more powerful Flaws, and then Woes, the numbers of Proficiencies available is usually no longer any sort of limiting factor to the Hitch. You may have each Proficiency doing a separate job, which could look like this.
 
 Flaw: <span class="t13ne-hitch">"Small Mysterious Scar" × 13 [4/1] "A small scar of that exact type that one rarely remembers exactly how one got it." [Scars] "Scar" (N), {Trigger} "Mysterious" (E), "Small" (D) <sup>Gnarl: Limit (39/10/2)</sup>, "Mystery" (E) <sup>Gnarl: Shadows (Mysterious Umbral demands secrecy or Questions Failure Level)</sup></span>
-
+ 
 
 As Hitches grow bigger with time, Players may have opportunity to change and refine their Hitches often, sometimes keeping Gnarls and Triggers the same, other times having their Hitches evolve and change. This is entirely normal and should be mostly the Player’s decision, although the current Yarn-Teller (or the Yarn-Teller running this Character’s Arc) and Referee should be consulted, the Player is always considered the Author of their Character.
 
 ## Banes, Marks and Ruins
 
-Hitches have an equivalent to Boons, but being negative in nature we give them a different name, Banes, and we generally note the Banes with a number. With any Boon we can note the Score and the Draw, and Banes are no different.
+Hitches have an equivalent to Boons, but being negative in nature we give them a different name, Banes, and we generally note the Banes with a number. With any Boon we can note the Score and the Draw, and Banes are no different. 
 
 * Hitch Banes — Usually a number between 1 and 50, although rarely will they get bigger than 30.
 * Hitch Marks — The equivalent of Scores and usually affect Pip Difficulties.
@@ -234,7 +234,7 @@ Hitches have an equivalent to Boons, but being negative in nature we give them a
 
 ## Adding Hitches
 
-Hitches are sometimes added to Characters and Descendants during play, most often by being Wounded by a Mortal or worse Wound. Occasionally Players or Referees will wish to add a Hitch to a Character for Narrative reasons (for example if a close friend, or family member dies then you may want a Lament).
+Hitches are sometimes added to Characters and Descendants during play, most often by being Wounded by a Mortal or worse Wound. Occasionally Players or Referees will wish to add a Hitch to a Character for Narrative reasons (for example if a close friend, or family member dies then you may want a Lament). 
 
 When adding a new Hitch like this the Player, Yarn-Teller and Referee should agree the Bane of the Hitch (rather than using the Character’s Miasma Score, which determines how big Hitches created by Wounds are usually). Players should clear new Hitches with their Referee and the current Yarn-Teller (or the specific Yarn-Teller running that Character’s Arc if appropriate), as Hitches have a direct impact on the Character’s power level, adding to their Personality Annex, and the maximum Scale the Character can access. Additionally care should be take when adding Hitches as you can force Characters to change Experience Tier or Character Type .
 
@@ -294,7 +294,7 @@ Over time Hitches sometimes become stale, perhaps they haven’t been triggered 
 
 Revolving the Hitch simply means that we change the details of the Hitch. Normally revolving a Hitch will cause its Bane to increase by one, but you can also pay Chi to reduce the Bane at this time if you want. So in the example of "Persecuted by Sheriff Jones" could become "Persecuted by the Sheriff" × 16. Now, whoever the new Sheriff is, you know they will persecute you also, and moving towns or even county won’t help here either.
 
-Then again sometimes you might actually resolve a Hitch instead of just revolving it. Perhaps you saved Sheriff Jones’ life, it wouldn’t then make sense for him to carry on with the Persecution. Or perhaps you go see a Psychiatrist or Psychologist to get treatment for your Arachnophobia, Post Traumatic Stress Disorder, or Mental Scars.
+Then again sometimes you might actually resolve a Hitch instead of just revolving it. Perhaps you saved Sheriff Jones’ life, it wouldn’t then make sense for him to carry on with the Persecution. Or perhaps you go see a Psychiatrist or Psychologist to get treatment for your Arachnophobia, Post Traumatic Stress Disorder, or Mental Scars. 
 
 Usually resolution comes from a Story (often a subplot of the Character Arc), it is always an option when one of the sides embodies as a Hitch Facet. So if an Arachnophobe Character defeats a Terror monster (who no doubt used a spidery form or controlled swarms of spiders to tap that Arachnophobia) then it makes sense to have them no longer afraid of normal spiders.
 

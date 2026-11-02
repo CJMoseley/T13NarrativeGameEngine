@@ -59,7 +59,7 @@ Various players can add additional Dice to the Drama Dice Pool at various times.
 #### Triggering Drama
 
 * Drama is triggered and created by two (or more) dice rolling the same number in the Drama Pool. The type of dice rolled does not matter a 1 is a 1 whether rolled on a D20 or a D2
-* Plot Authors (current Yarn-Tellers) and Referees can set Plots to have specific Drama Dice (see above table) and Drama Pool Types as follows:
+* Plot Authors (current Yarn-Tellers) and Referees can set Plots to have specific Drama Dice (see above table) and Drama Pool Types as follows: 
 ### Drama Pool Types
 
 | Type | Description | Dramatic Threshold | Rules |
@@ -71,7 +71,7 @@ Various players can add additional Dice to the Drama Dice Pool at various times.
 | Metal | This Drama Pool generates Drama most infrequently, this makes the most stable stories, but the Suspense can be more palpable. | 6 | Drama is only created if 6 Dice roll the same result. |
 | Void | This Drama Pool will generate Drama erratically, Dramatic Tension may build, or collapse randomly, but can only create one Drama at any time. | All | Drama is only created if all Dice currently in the Drama Pool roll the same result. Although this can be modified by larger Drama Dice. |
 
-
+ 
 * A single Die cannot create Drama alone, ever. <ul><li>Not in a Void Pool, even with ignored Dice.
 * Not if the Character is Overstressed
 * Not if the base required for Latent Drama has been lowered to 1.
@@ -105,12 +105,12 @@ Immediately after rolling to create Drama, the Drama Dice that rolled the same r
 
 When the Drama Pool dice roll the same number that creates Drama. The exact type of Drama created is ***suggested*** by the number the Dice rolled. There are after all 6 types of Drama and 6 sides to a d6. It only makes sense that if you roll six 3s then the Suggested Drama is a Hazard.
 
-Of course, if the Yarn-Teller does not concur with the randomly rolled Drama (or cannot work out how to integrate it into that Character&apos;s or Plot&apos;s current narrative) then they can reject that Drama in one of two ways.
+Of course, if the Yarn-Teller does not concur with the randomly rolled Drama (or cannot work out how to integrate it into that Character&apos;s or Plot&apos;s current narrative) then they can reject that Drama in one of two ways. 
 
 * **Reject the Drama Type** — The Yarn-Teller believes that Drama Dice has rolled a result that makes no narrative sense for that Character, but the Character does deserve some dramatic attention and so the Yarn-Teller can change the Drama Type to something more suitable. However, this change is not free and will cost the Plot or Yarn-Teller 1 Yarn.
 * **Reject the Target** — Sometimes the Drama is perfect for the setting, has perfect timing and makes perfect narrative sense, just not for the current target. When this is the case the Yarn-Teller can redirect the Drama to another Character for a cost of 1 Yarn. The Character that created the Drama should automatically lose 1 Stress, Strain or Shock regardless, but will not lose Stress, Shock or Strains from the Drama. The Yarn-Teller should also play a card as a Drama on the original Target, which they can select from their Hand or Pool.
 
-The Character that created the Drama should automatically lose 1 Stress, Strain or Shock anyway. If their Drama is rejected their Player can Play any Wyrd Tarot or Ordeal Card from their Pool or Hand as a Stress Effect on the Character, which may create a Trauma under the usual circumstances.
+The Character that created the Drama should automatically lose 1 Stress, Strain or Shock anyway. If their Drama is rejected their Player can Play any Wyrd Tarot or Ordeal Card from their Pool or Hand as a Stress Effect on the Character, which may create a Trauma under the usual circumstances. 
 
 The Yarn-Teller can redirect the Suggested Drama, however, redirecting say a Prod to a Character who needs Prodding instead of the Character who triggered the Drama is not entirely free. First, the Character that rolled the Drama has to have their Drama rejected, as above, allowing them to reduce their Stress.
 
@@ -118,17 +118,17 @@ Secondly, the Yarn-Teller must spend 1 point of Yarn to redirect the Drama to a 
 
 ### Card based Drama
 
-Yarn-Tellers can play cards as Drama. They simply play the card they wish to use and claim it as Drama, just as they can play cards to create new Scenes or even new Stories as easily. In fact, creating Drama should be cheaper, and in terms of cards is generally cheaper as a single card can define at least some Dramas. You can see how the cards are used on the Tension Dramas table above. The Cards
+Yarn-Tellers can play cards as Drama. They simply play the card they wish to use and claim it as Drama, just as they can play cards to create new Scenes or even new Stories as easily. In fact, creating Drama should be cheaper, and in terms of cards is generally cheaper as a single card can define at least some Dramas. You can see how the cards are used on the Tension Dramas table above. The Cards 
 
 ### Atmospherics
 
-Atmospherics are simple "flavour-text" events that happen to keep the Player (and Character) Tension up. Atmospherics relieve 1 Stress from the Stressed Character, as they experience some relief from the Stress of the Situation, but not much. Atmospherics are commonly genre specific and can and should vary considerably. Every Location and Story should have a least one example Atmospheric that you can use once or twice. Some good examples include:
+Atmospherics are simple "flavour-text" events that happen to keep the Player (and Character) Tension up. Atmospherics relieve 1 Stress from the Stressed Character, as they experience some relief from the Stress of the Situation, but not much. Atmospherics are commonly genre specific and can and should vary considerably. Every Location and Story should have a least one example Atmospheric that you can use once or twice. Some good examples include: 
 
-* Contemporary genre specifically uses Atmospherics to ground the story in the current Era. Social media notifications (in the very modern day), news coverage (from apps, TV, radio, newspaper vendor, or a herald depending upon the era), real world events, spilled drinks, sticky floors, shouts from the street, nearby traffic noise (perhaps occasionally a crashing noise), distant sirens / bells or owl hoots.
+* Contemporary genre specifically uses Atmospherics to ground the story in the current Era. Social media notifications (in the very modern day), news coverage (from apps, TV, radio, newspaper vendor, or a herald depending upon the era), real world events, spilled drinks, sticky floors, shouts from the street, nearby traffic noise (perhaps occasionally a crashing noise), distant sirens / bells or owl hoots.  
 * Horror specifically uses Atmospherics to add spooky factors to otherwise mundane activities (an ill omen such as an owl screech, strange knocking or scraping noises outside, off-colour skies, a door they know was closed is found open, or even a glimpse of something terrible).
 * Cosmic Horror often uses Atmospherics to enhance the sense of despair and existential angst that floods the genre. Bizarre corpses, unexplained illnesses, odd individuals (specifically Extras that seem "off" somehow), or  unusual languages, texts or artistic endeavours, madness and terror run hand in hand in Cosmic Horror too, unsettling atmospherics serve both.
 * Fantasy usually uses Atmospherics to imply a sense of the extra-mundane. Weird tracks in the forests, odd foods or flowers, strange noises from a bush, weird glowing writings, enchanted mushrooms, and monstrous corpses, statues or skeletons.
-* Dark Fantasy uses Atmospherics like Fantasy, but emphasises the grim reality of the world. Things like starving peasants, lame animals, strange smells, beggars, animal dung, and the occasional gibbeted criminal.
+* Dark Fantasy uses Atmospherics like Fantasy, but emphasises the grim reality of the world. Things like starving peasants, lame animals, strange smells, beggars, animal dung, and the occasional gibbeted criminal. 
 * Science-fiction uses Atmospherics as part of world-building, such as watching the two suns set, observing an unusual alien as it glides past, weird holographic advertising drones, minor malfunctioning robots, sunlight catching the planetary rings, glinting off a space station, sky hook, or defence shields, or watching an armoured moon rise.
 * Cyberpunk uses Atmospherics like science-fiction, but also adds in more punk and noire aspects that act to ground the science-fiction in piles of grit. Flickering LEDs flash in piles of garbage; drug-dealers push their genetically modified, synthetically engineered and designer wares; surveillance drones hum and patrol overhead, issuing fines electronically direct to your phone; flickering screens flash personally selected advertisements at any persons retina that points their way, while overly loud and catchy music from a dozen shops and floating signs mix into a pink noise that sets the nerves on edge as it force pumps nostalgia direct into the ears.
 * Steam-punk combines Cyberpunk with Fantasy to create a blend of the two, only with even more smoke and noise. Distant engines, oily smells, clouds of smoke, clanking automatons, distant air ships, sudden klaxons, sirens, bells or whistles as some eccentrically engineered invention rattles past, holes punched in ticker-tapes hiss through reels as ticking but sonorous auto-orchestras, belt out advertising jingles and military marches, and just occasionally, a sprinkle of faery dust and soot.
@@ -245,13 +245,13 @@ Hazards vary in Stress relieved by Type, but have a minimum of 2.
 
 Prods are events that happen to the Hooked Characters either when they ignore the Plot, the Plot thinks they are ignoring the Characters on the other sides of the Conflict, or their Player underplays the Tension Level in their roleplay and the Yarn-Teller feels they need a reminder. Prods can also raise the Tension Level or Stakes of a Scene, should the Yarn-Teller or Referee feel it necessary.
 
-Prods can vary greatly in what they accomplish and should be tailored to the Character and Plot or Scene that is being played through. Prods generally relieve 2 Stress.
+Prods can vary greatly in what they accomplish and should be tailored to the Character and Plot or Scene that is being played through. Prods generally relieve 2 Stress. 
 
 Essentially a Prod is like an Auxiliary Hook, if the Character wasn’t Hooked well enough, they may need a Prod to keep them involved. That isn’t to say that there was some failure of the Hook, necessarily (although that can be the problem sometimes), but rather that even the best players, and most dedicated Characters need a Prod in the right direction sometimes.
 
 You may also need to tailor particular Prods for particular Players. If Geoff is always ruining the drama between two other Characters with off-colour jokes, and inappropriate comments, then perhaps it would be appropriate for the town-guard to find his humour less than respectful, and for him to spend a night in the cells, or having to pay a hefty fine. Similarly, Janet, who plays a red-suited mercenary superhero type, insists on making apparently fourth-wall breaking comments, that Janet apparently thinks she’s making out-of-character, she might be surprised to have the head of the tech firm she’s working for respond to the comment, and have Janet’s Character sectioned and treated for their delusion.
 
-Be careful with using Prods on Players this way though, everyone should be having fun, even Geoff and Janet. These sort of Prods should only be used if Geoff, or Janet, are ruining the game for others, if everyone laughs at Geoff’s jokes and then is straight back to the action, or enjoys Janet’s meta-commentary, and it leads them to realise some plot point that they had actually overlooked, then all is good, don’t Prod them.
+Be careful with using Prods on Players this way though, everyone should be having fun, even Geoff and Janet. These sort of Prods should only be used if Geoff, or Janet, are ruining the game for others, if everyone laughs at Geoff’s jokes and then is straight back to the action, or enjoys Janet’s meta-commentary, and it leads them to realise some plot point that they had actually overlooked, then all is good, don’t Prod them. 
 
 Of course, if Geoff’s jokes are getting in the way, like he made everyone laugh when they were supposed to be sneaking, or Janet keeps telling the guys she’s fighting that they can’t hit her with a 7 then absolutely use the Prod. Just remember that the Prod ***has*** to move the Conflict on somehow, it isn’t a punishment for Players, it is a Narrative Device that raises the Tension Level or Stakes, and pushes the Story forward.
 
@@ -288,7 +288,7 @@ Prods can vary in type greatly, and should really be specific to the Scene and P
 
 Breaks are in many ways the opposite of a Prod. Where Prods try to move the Conflict forward, raising the Tension and drawing the sides together so that the Plot’s Conflict is resolved, Breaks pause the Conflict, lowering the Stakes and the Tension, pushing the two sides further apart again.
 
-Breaks are especially useful if the Player Characters are being a little too efficient in tracking the bad guy down, or have worked out his scheme from the very first clue that the Yarn-Teller dropped. You don’t want the PCs to skip through your prepared materials too quickly, after all.
+Breaks are especially useful if the Player Characters are being a little too efficient in tracking the bad guy down, or have worked out his scheme from the very first clue that the Yarn-Teller dropped. You don’t want the PCs to skip through your prepared materials too quickly, after all. 
 
 Breaks relieve a Character all current Stress, as such they are the perfect way to calm things down for a Character who is Overstressed, Strained or Shocked.
 
@@ -303,7 +303,7 @@ Breaks can also be useful for the following reasons.
 
 Basically, if Ted keeps insisting that they must storm the castle right now, when you’ve got a whole campaign about raising a peasant army first planned, he needs a Break.
 
-A Break should reduce the Tension Level of the Scene, by at least one, and can even reset it to None under the right circumstances.
+A Break should reduce the Tension Level of the Scene, by at least one, and can even reset it to None under the right circumstances. 
 
 Breaks, like Prods should be specific to the Story and Scene, and are usually prepared beforehand by the Scene Author, but using a generic emergency break is sometimes necessary — especially to calm Ted down. You can get an idea of what might constitute a suitable Break from some generic examples:
 
@@ -328,13 +328,13 @@ Breaks, like Prods should be specific to the Story and Scene, and are usually pr
 
 ### Ratchets
 
-Ratchets are a type of Drama that connects the Tension and Character Stress to the Narrative directly. Ratchets are sometimes one way ladders of events that will occur during the plot. Some may be actual timed events, but they trigger when appropriate to the Tension and relieve Stress when they do.
+Ratchets are a type of Drama that connects the Tension and Character Stress to the Narrative directly. Ratchets are sometimes one way ladders of events that will occur during the plot. Some may be actual timed events, but they trigger when appropriate to the Tension and relieve Stress when they do. 
 
 Ratchets vary in cost greatly, with a minimum of 1 Stress each Level. Ratchets can have specific Stress costs at Specific Levels as the Yarn-Teller, Author, or Referee prefers.
 
 It should be noted that the more stress-inducing a Ratchet is meant to be the lower its Stress relief should be. A Ratchet that is meant to allow relaxation should have a higher Stress relief. An Average Ratchet Stress should be around a 6 and can vary between 2 and 10.
 
-Ratchets should generally be events that are specific to the Story being told. Although there are some "generic" Direct Tension Level Ratchets that can apply to any Pulled or Pushed Character Embodiments, and should be set up for your Conflict.
+Ratchets should generally be events that are specific to the Story being told. Although there are some "generic" Direct Tension Level Ratchets that can apply to any Pulled or Pushed Character Embodiments, and should be set up for your Conflict. 
 
 Some examples might include:
 

@@ -25,7 +25,7 @@ You can cancel gaining a point of Stress with a point of Chi, but all the Stress
 
 ## Storing Stress
 
-Characters and Descendants can both store Stress in the same ways. Stress can only be stored on a Boon Die, so Descendants can only store Stress on their Annex Dice, where Characters can store Stress on their Annex and Facet Dice.
+Characters and Descendants can both store Stress in the same ways. Stress can only be stored on a Boon Die, so Descendants can only store Stress on their Annex Dice, where Characters can store Stress on their Annex and Facet Dice. 
 
 Each Die can only safely store as much Stress as the highest Score the Die can roll. So 2d6 can store up to 12 Stress. This is called the **Stress Limit** of the Die.
 
@@ -33,7 +33,7 @@ Each Die has a Limit based on the Minimum roll +1. This is called the **Stress-S
 
 If a Die has any Stress stored on it, then it is called a Stressed Die. If a Die is storing Stress equal to the maximum rolled Score then the Die is considered Overstressed.
 
-**Optional Rule**: One way that Stress can be recorded in game session is by setting an appropriate Annex or Facet Die to the current Stress. Each time Stress is added, lost or spent the Die is changed to match the new Stress. Current Stress should be noted before rolling the Die for any purpose so that it can be returned to the Stress stored after the roll.
+**Optional Rule**: One way that Stress can be recorded in game session is by setting an appropriate Annex or Facet Die to the current Stress. Each time Stress is added, lost or spent the Die is changed to match the new Stress. Current Stress should be noted before rolling the Die for any purpose so that it can be returned to the Stress stored after the roll. 
 
 ## Stressed Dice
 
@@ -57,7 +57,7 @@ When a Character has an Overstressed Die and they interact with another Characte
 
 ## Stress Relief
 
-Characters can Relieve Stress, getting rid of it before it accumulates too much in a number of ways.
+Characters can Relieve Stress, getting rid of it before it accumulates too much in a number of ways. 
 
 * A Character’s Name Germatria and Geometry define a way a Character can Relieve Stress.
 * Stress can be Relieved by Dramas, but exactly how depends upon which rules variant you are using (see below). Some Stress and Tension Levels will create Drama more consistently than others.

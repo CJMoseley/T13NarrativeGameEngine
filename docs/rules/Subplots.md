@@ -4,7 +4,7 @@ Plots in T13 are rarely solitary things. Even a single Story is broken into 3 st
 
 When we build a new game-world we could start with a single Story, but it usually makes more sense to create an overview, and begin sketching in from the top down. The overview in this sense is the the beginnings of the Cycle.
 
-The Cycle can be joined by Epics, Volumes, Arcs and Stories/Chapters, that describe the Cycle with finer and finer granularity, to create more detailed interwoven Narratives. Even if we just extend the first line down from the Hook of the Cycle, down to the Hook of the Chapter, that’s already 4 different (although probably related) Conflicts each with different Sides and Narratives all beginning to interact. Imagine how complex it could get when you have an Epic History, or an Epic Saga, that pre-dates the current Epic, adding their influences too.
+The Cycle can be joined by Epics, Volumes, Arcs and Stories/Chapters, that describe the Cycle with finer and finer granularity, to create more detailed interwoven Narratives. Even if we just extend the first line down from the Hook of the Cycle, down to the Hook of the Chapter, that’s already 4 different (although probably related) Conflicts each with different Sides and Narratives all beginning to interact. Imagine how complex it could get when you have an Epic History, or an Epic Saga, that pre-dates the current Epic, adding their influences too. 
 
 So, when we create a new Plot, we should expect it to spawn at least one Subplot. Yarn-Tellers should prepare at least a little list of potential Subplots that may be spawned, it doesn't have to be a complete or even extensive list, just try to note down the most obvious potential Subplots that you see in the larger Plots. For example, if the current Plot has two Sides who are at open war, then the obvious Subplots can be summoned up as "Romeo & Juliet" (where a Character from each Side become romantically entangled creating a new Conflict within the larger Conflict), "Enemy Mine" (where a Character from each side are trapped together and must learn to live with each other, save each others lives from external threats and become friends), "".
 
@@ -54,11 +54,11 @@ Well, usually the Frame Epic is often the ancient history of the world. And a tr
 
 You might detail the History, and/or Saga — You may even play through it (or at least visit moments through time-travel, flash-backs, past-lives, or historical Revelations), but it is rarely necessary to know every detail of the Frame Epics.
 
-The Loom Epic is usually where the main body of our tales play out. If the Frame Epic is the Ancient History of the world, the Loom is Modern History leading to the Present day, when the big Stories happen. The Loom Epic lays out the thrust of the major conflict and how it affects the Story World. Usually the Loom begins some time in recent History, although just occasionally a Loom begins at the first Hook.
+The Loom Epic is usually where the main body of our tales play out. If the Frame Epic is the Ancient History of the world, the Loom is Modern History leading to the Present day, when the big Stories happen. The Loom Epic lays out the thrust of the major conflict and how it affects the Story World. Usually the Loom begins some time in recent History, although just occasionally a Loom begins at the first Hook. 
 
 Early on, the PCs have no chance or hope to influence these events. They are the concerns of Emperors, Popes and gods, not a farmer’s son who wants to learn how to swing a (laser) sword, and shoot a (plasma) bow by an old knight. Later, however, when the farmer’s son has joined an army, risen to the rank of General and won the ear of a Pope, or an Emperor, then they may influence the Epic Loom plot.
 
-Finally, the Zenith Epic is the approaching Future that you are working to bring about, or stave off as much as possible. Perhaps the Zenith represents a Prophecy, the predicted end of days, Armageddon, or Ragnarok. Of course, the future could be unwritten, in which case you won’t need to detail it. You may want know what the Zenith Epic is (or in some cases you may want to play through the Zenith Epic — perhaps as some sort of Armageddon, or Apocalypse storyline), but generally you won’t need to know too many details about the end of the Cycle, as it lies beyond the Scope of the Story-telling. The Cycles of Classical Mythologies, for example, simply seem to fade away. We do not know what happened to the Greek, Phoenician, Gaulish, Celtic, or Roman Gods, did they leave, die, or are they still living somewhere here? Their stories just stopped.
+Finally, the Zenith Epic is the approaching Future that you are working to bring about, or stave off as much as possible. Perhaps the Zenith represents a Prophecy, the predicted end of days, Armageddon, or Ragnarok. Of course, the future could be unwritten, in which case you won’t need to detail it. You may want know what the Zenith Epic is (or in some cases you may want to play through the Zenith Epic — perhaps as some sort of Armageddon, or Apocalypse storyline), but generally you won’t need to know too many details about the end of the Cycle, as it lies beyond the Scope of the Story-telling. The Cycles of Classical Mythologies, for example, simply seem to fade away. We do not know what happened to the Greek, Phoenician, Gaulish, Celtic, or Roman Gods, did they leave, die, or are they still living somewhere here? Their stories just stopped. 
 
 ## Subplots as Tracts
 
@@ -94,7 +94,7 @@ While a Volume is a Scene (Tract) of a Cycle it is still potentially an Act of a
 
 When you look below the level of Scenes of a Story you start to break things into Scene Components, Ordeal Stages, Tests or Quests as components of larger Plots.
 
-Warp and Weft Scenes can, for example, be further broken down into Scene Components, which can appear as similar to Acts within a Story.
+Warp and Weft Scenes can, for example, be further broken down into Scene Components, which can appear as similar to Acts within a Story. 
 
 
 ### Scene Components
@@ -120,20 +120,20 @@ The Quest is the ultimate example of that, as Quests sit completely outside the 
 
 Subplots just like Plots have requirements to work. Not only do they have to have Sides that create Characters and Descendants that all have to be detailed, but they need play time to work.
 
-If a Yarn-Teller is in charge of a Subplot it is their responsibility. They are meant to deal with the Plots and Subplots they have created. The Referee should make a record of any Subplots like this, when they are assigned to a Yarn-Teller.
+If a Yarn-Teller is in charge of a Subplot it is their responsibility. They are meant to deal with the Plots and Subplots they have created. The Referee should make a record of any Subplots like this, when they are assigned to a Yarn-Teller. 
 
-The Subplot should then proceed by having the Yarn-Teller play the appropriate Yarn cards to unlock each Scene of the Subplot. Perhaps the next Scene is a Revelation, then the Yarn-Teller would require a Yarn card with a Revelation Scene Beat Type (any 5 or a Queen). If they play a card an trigger the Scene, they must then narrate it.
+The Subplot should then proceed by having the Yarn-Teller play the appropriate Yarn cards to unlock each Scene of the Subplot. Perhaps the next Scene is a Revelation, then the Yarn-Teller would require a Yarn card with a Revelation Scene Beat Type (any 5 or a Queen). If they play a card an trigger the Scene, they must then narrate it. 
 
-Each session that the Yarn-Teller narrates, that does not touch on the Subplot, the Referee should remove a point of Yarn from the Subplot (although don’t change the original Yarn cost). If the Subplot is mentioned in the Narration and moved on somehow (even if only a Stage of an Ordeal, or meeting an Obstacle) then the Ref doesn’t remove a point of Yarn.
+Each session that the Yarn-Teller narrates, that does not touch on the Subplot, the Referee should remove a point of Yarn from the Subplot (although don’t change the original Yarn cost). If the Subplot is mentioned in the Narration and moved on somehow (even if only a Stage of an Ordeal, or meeting an Obstacle) then the Ref doesn’t remove a point of Yarn. 
 
-If the Subplot becomes empty of Yarn, which may happen after many sessions without being mentioned, then it will go rogue. The Referee, or another Yarn-Teller, may take over that Plot and use it as they wish (hopefully not as a stick to beat the Yarn-Teller for forgetting about it), although they cannot change the Conflict, they can alter the Embodiments if required, for free.
+If the Subplot becomes empty of Yarn, which may happen after many sessions without being mentioned, then it will go rogue. The Referee, or another Yarn-Teller, may take over that Plot and use it as they wish (hopefully not as a stick to beat the Yarn-Teller for forgetting about it), although they cannot change the Conflict, they can alter the Embodiments if required, for free. 
 
 ### Rogue Subplot Procedure
 
-*  The Ref should poll the Players as to whether the Rogue Subplot should be dropped, if they all agree then the Subplot is retired (although a Yarn-Teller may recycle it later).
-* If the Players decide the Subplot should stand, then a bidding war begins, with each Yarn-Teller bidding Yarn to take over the Subplot.
+*  The Ref should poll the Players as to whether the Rogue Subplot should be dropped, if they all agree then the Subplot is retired (although a Yarn-Teller may recycle it later). 
+* If the Players decide the Subplot should stand, then a bidding war begins, with each Yarn-Teller bidding Yarn to take over the Subplot. 
 * The Subplot is immediately refilled with Yarn and becomes the responsibility of the winning Yarn-Teller. They may now use that Subplot, and are responsible for its feeding.
-* If no one bids on the Subplot, then it becomes the Referee’s responsibility. They should incorporate the Subplot into their Narrative as normal.
+* If no one bids on the Subplot, then it becomes the Referee’s responsibility. They should incorporate the Subplot into their Narrative as normal. 
 * Referees may decide treat the Rogue Subplot as a Rejection Completion event, promote the Plot, add a Subplot that addresses the Rejection, and start a new Story that Hooks the original Yarn-Teller.
 
 ---

@@ -1,7 +1,7 @@
 # Core Concepts
 
 Before we teach you how to use this system to build all the characters you might ever want, we need to talk a little about how the system works and the core concepts that your should know about.
-<p>T13 is built around simple concepts that stack together to create conplex characters.
+<p>T13 is built around simple concepts that stack together to create conplex characters. 
 * **Facets** — Facets are the aspects of reality (and everything in it, including the Characters) that we use in T13 to model the Omniverse. You can find out more about the Facets on the Facet Folio rules page). Most things in the system are classified by Facets, they describe what things are made from (Incarna), what sort of person they are (Persona / Monster / Core) and what sort of things they can do (Umbrals and Nimbeds)
 * **Boons** — Boons are the number system of the model, and Character Facets can have Boons. Real world values like weight in kilos can be converted into T13 Boons to give you exact model within the system (although you don’t often need to think about anything more than an average human who has Boon 13 in every Facet, and how this Character differs from them). Boons give Characters access to Dice that generate Scores, or be used to generate card Draws.
 * **Proficiencies** — Proficiencies are the mimetic Threads that hold the Omniverse together. Everything that exists can be described by a Proficiency, everything that a Character can do can be summed up by a single Proficiency. Proficiencies are described in terms of their Facet and little more.

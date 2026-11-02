@@ -1,6 +1,6 @@
 # Test (Card Draw)
 
-In T13 it is possible to conduct a Test against a single Facet (potentially using an Annex) using Ordeal Cards instead of dice.
+In T13 it is possible to conduct a Test against a single Facet (potentially using an Annex) using Ordeal Cards instead of dice. 
 
 The Card Draw Test is intended to be used when a Test has multiple Characters competing and can either act as a standard Test or have only one winner, but you do not want to conduct a full Ordeal for this situation. This is usually due to a time or pacing constraint. The Card Draw Test works best for a Test where multiple Characters are interacting, and ideally are competing in some way, an ideal example may be a quick foot race between the Characters to get to the cafeteria. This is more of a Character moment than anything else and the idea of running a full Ordeal eveytime would fill most Yarn-Tellers or Referees with dread. Instead, we can simplify that whole Ordeal into a single Card Draw Test that will rank our runners, and even potentially reveal consequences for those who are not fast enough.
 
@@ -8,7 +8,7 @@ The Card Draw Test works as follows:
 
 * The Yarn-Teller must set a Difficulty for the Card Draw Test. This is usually done as a Chi  / Bold / (Pips) Difficulty (although this can be altered to Monstrous or Intrepid if the Yarn-Teller has specific Monster Facets in play, or a situation is particularly Difficult). This Difficulty can also be created with an Ordeal Card.
 * Each Character involved in the Test should Draw a single Ordeal Card, this card is not added to a Pool, but instead adds its Pips to the Facet or Annex Draw. E.g. a Trial of 16 could add +2 Pips to a Trial Test.
-* Card Pips can also be adjusted by the Suit of the card played. Each Facet's own Suit acts as a Trump for its Tests, adding +2 Pips. E.g. Spades <span class="t13ne-blackcard">♠</span> will add +2 Pips on a Trial Test.
+* Card Pips can also be adjusted by the Suit of the card played. Each Facet's own Suit acts as a Trump for its Tests, adding +2 Pips. E.g. Spades <span class="t13ne-blackcard">♠</span> will add +2 Pips on a Trial Test. 
 * The Anti-Facet of the Suit being Tested defines the Opposed Suit. The Opposed Suit adds a Failure Level automatically. E.g. For Trial, Rook is the Anti-Facet, so Clubs <span class="t13ne-blackcard">♣</span> suffer a Failure Level automatically.
 * Any Suit with the opposite colour may also incur a Failure Level. So in this example Trial case all Diamonds <span class="t13ne-redcard">♦</span> and Hearts <span class="t13ne-redcard">♥</span> add a Failure Level.
 * Each applicable Proficiency will add +1 if it is from an Unsuited Facet, +2 for an Unsuited but same coloured Facet and +5 for a Suited Facet. E.g. If the card Played is a Diamond <span class="t13ne-redcard">♦</span> then any Awe, Craft, Orthodoc, Quiet, Virtue and Zeal Proficiencies that are applicable to the Test will add +5 each, any Hearts <span class="t13ne-redcard">♥</span> Facet Proficiencies (Enigma, Heresy, Jeer, Liberty, Nature or Phoenix) would add +2, anything else +1. Note to help with speeding up Card Draw Tests, all Proficiencies should have their Suit marked on paper Character Sheets (or Proficiency lists should be grouped by Suit)

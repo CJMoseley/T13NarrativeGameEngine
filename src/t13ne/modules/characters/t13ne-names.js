@@ -1,4 +1,4 @@
-﻿import { calculateValue } from '../world/t13ne-gematria.js';
+import { calculateValue, tidyName } from '../world/t13ne-gematria.js';
 
 /**
  * T13Name Class
@@ -25,11 +25,12 @@ export default class T13Name {
     }
 
     // Perform Gematria Calculations automatically and embed the data.
+    const normalizedFull = tidyName(this.full);
     this.geometryData = {
       full: calculateValue(this.full),
-      soul: calculateValue(this.full.replace(/[bcdfghjklmnpqrstvwxz\s]+/gi, '')),
-      facade: calculateValue(this.full.replace(/[aeiouy\s]+/gi, '')),
-      nascent: calculateValue(this.full.slice(0, 1)),
+      soul: calculateValue(normalizedFull.replace(/[bcdfghjklmnpqrstvwxz]+/g, '')),
+      facade: calculateValue(normalizedFull.replace(/[aeiouy]+/g, '')),
+      nascent: calculateValue(normalizedFull.slice(0, 1)),
       geometryNumber: calculateValue(this.common)
     };
   }

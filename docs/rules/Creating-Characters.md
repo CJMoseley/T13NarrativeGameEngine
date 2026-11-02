@@ -17,7 +17,7 @@ Characters in T13 vary a lot depending upon what you are using them for, and how
 
 <div class="wp-block-group"><div class="wp-block-group__inner-container">
 
-Creating Characters should be as easy as saying add Character (or Extra), which will then open a Character Editor, but if you are working on paper to create Characters these rules are written out below to help. It will also let you understand what the Character creation is actually doing, when you use it.
+Creating Characters should be as easy as saying add Character (or Extra), which will then open a Character Editor, but if you are working on paper to create Characters these rules are written out below to help. It will also let you understand what the Character creation is actually doing, when you use it. 
 
 * Extras: Extras are usually used as NPC characters, and simple alternates, and are almost exactly the same as a Descendant.
 <li>Extras range in type from the incredibly simple and least powerful Vex, through Chorus, up to the complex Cast and powerful Forces-Of-Nature (see the Extras Types).
@@ -66,7 +66,7 @@ Creating Characters should be as easy as saying add Character (or Extra), which 
 * Lite characters store Yin on their Hitches and hold Yang on their Proficiencies and store the Value of the Hitch Boon, or equivalent (a x10 Hitch can hold 45 Yin where as Strong x4 could store 59 Yang).
 * Lite characters store Chi like normal PCs for their type, but the Personality Annex is calculated from the Hitch Values plus the highest Proficiency as a Boon. That is… Personality Annex Boon is equal to Max Yin looked up as Value to a Boon + Highest Proficiency Boon equivalent (e.g. a character with a Super-skill [x8+] would add 32 to their Personality Annex Boon).
 * Lite Characters can store 1 Wound per Proficiency/Annex and can only stack a Maximum of 3 of the same Wound type before they increase a Level.
-* Lite Characters can use "Extras" (usually Cast or Chorus Extras) as their Alternates.
+* Lite Characters can use "Extras" (usually Cast or Chorus Extras) as their Alternates. 
 
 </li>
 
@@ -97,7 +97,7 @@ Creating Characters should be as easy as saying add Character (or Extra), which 
 * Another example is to have all Yin and Yang Facets on the same Boon, giving a Character a Yin Stat and a Yang Stat.
 * The Simplest Archetypes use the same Boon for all Facets (usually Boon 13).
 
-</li>* Archetypes usually have their Facets defined by the Plot that they are associated with. This makes NPCs for those plots faster to generate. You can see a table below that shows how to generate Boons from the Plot.
+</li>* Archetypes usually have their Facets defined by the Plot that they are associated with. This makes NPCs for those plots faster to generate. You can see a table below that shows how to generate Boons from the Plot. 
 * Archetypes have their Persona, Core and 1 Hitch defined from a single card. More Cards can be drawn to add additional Hitches if they are required.
 * Archetypes can have Age categories and so on, as the Ref or Yarn-Teller requires.
 
@@ -112,7 +112,7 @@ Creating Characters should be as easy as saying add Character (or Extra), which 
 | Medium Power | Reduced (Conflict Boon + Conflict Half-Boon) | Half-Boon +5 | Conflict Boon (1 Umbral, 1 Nimbed) | Conflict Boon + 5 (1 Umbral 2 Nimbeds |
 | High Power | Conflict Boon divided by 2 | Conflict Boon Halved + Conflict Score | Conflict Boon (1 Umbral 2 Nimbeds) | Conflict Boon + Conflict Score (2 Umbrals 4 Nimbeds) |
 
-**Hitches**: Usually as Facets. NPCs are usually limited to one Hitch more than the highest number in the party normally. They can be a little more powerful, but not too much.
+**Hitches**: Usually as Facets. NPCs are usually limited to one Hitch more than the highest number in the party normally. They can be a little more powerful, but not too much. 
 
 **Personality Boon**: Either calculate from Values (as Detailed), or equal to the Conflict Boon.<br>**Number of Skills / Talents**: Conflict Score or calculate.<br>**Number of Powers**: Conflict Draw<br>**Proficiencies**: See this table instead
 
@@ -138,7 +138,7 @@ Creating Characters should be as easy as saying add Character (or Extra), which 
 | Power | 48 | d10+5 | 4/3 |
 
 * The Detailed Character
-<li>Depending upon the game and Plots PCs may begin in the Grunt Tier, Hero Tier or as Yarn-Teller Tier Characters. Most often PCs begin as Fresh Detailed Grunts, it is recommended that all new Players start this way (or with a Lite Character first).
+<li>Depending upon the game and Plots PCs may begin in the Grunt Tier, Hero Tier or as Yarn-Teller Tier Characters. Most often PCs begin as Fresh Detailed Grunts, it is recommended that all new Players start this way (or with a Lite Character first). 
 
 * They may also begin play as Younger Characters. Younger Characters are not as powerful as adults in most ways, and have negative Scale that will reduce both their Facets and Anti-Facets and therefore their Annexes. Additionally Youths adjust their Proficiency Dice, which can make Crises more common, but reduces what they are capable of, this reflects Younger Characters faster learning, but lower skill levels.
 * Detailed Characters will always have a Stat Block of Facets, each Facet is assigned a Boon of 13, but these may be moved up to 25 or down to 1 (along with their Anti-Facet moving down to 1 or up to 25). So a Gossamer Boon of 14 or 20 would force a Burden Boon of 12 or 6. Detailed Characters store Yin and Yang Sway on the Boons of their Stat-Block, so the maximum Yin they can store is equal to all their Yin Facet Boons (+Scale) added together, and the maximum Yang is calculated from Yang Facet Boons. If all Facets are 13 and Scale is 0 then Yin and Yang can both store 156 Sway.

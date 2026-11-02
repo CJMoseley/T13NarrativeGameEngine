@@ -5,6 +5,23 @@ npm_output.log
 *.mp3
 *.wav
 *.mid
+
+# Local model assets and bundled textures
+/public/data/models/
+/dist/data/models/
+*.glb
+*.gltf
+*.fbx
+*.obj
+*.mtl
+*.blend
+*.dae
+*.3ds
+*.stl
+
+# Local audio sample libraries (including metadata and sidecar files)
+/public/media/audio/samples/
+/dist/media/audio/samples/
 *.flac
 *.aac
 *.ogg

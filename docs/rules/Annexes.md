@@ -16,7 +16,7 @@ A kind Referee might allow the new Annex to be rolled and replace the Facet from
 
 ## Anatomy of an Annex
 
-Annexes are, like Hitches, a type of what we call a Knot in T13. Knots are built from the smaller components, Threads. For most Character Annexes, the most important of the Threads are Proficiencies, and it is these Proficiencies become tied together forming an Annex.
+Annexes are, like Hitches, a type of what we call a Knot in T13. Knots are built from the smaller components, Threads. For most Character Annexes, the most important of the Threads are Proficiencies, and it is these Proficiencies become tied together forming an Annex. 
 
 Annexes always have a Root Proficiency and a Channel Proficiency. The Facets of these Proficiencies govern what the Annex can do and achieve.
 
@@ -151,7 +151,7 @@ Talents have to have at least 3 Proficiencies working together. The Root, the Ch
 
 Conversely weak Powers can also have as few as 3 Proficiencies, in the case of Characters with only one Hitch, but most start around 5 Proficiencies.
 
-Super-Annexes are much more powerful than normal Annexes, with higher rolls and more Nimbeds. In fact, in a Super-Annex the Root and Channel add 3 Nimbeds each automatically.
+Super-Annexes are much more powerful than normal Annexes, with higher rolls and more Nimbeds. In fact, in a Super-Annex the Root and Channel add 3 Nimbeds each automatically. 
 
 ### Tangle
 
@@ -161,7 +161,7 @@ The Tangle of the Annex is a complication that adds a cost, limit, or restrictio
 ### Tangles by Facet
 
 #### Awe (Tangles)
-The Tangle of Awe is that of emotions. Each additional Proficiency will add an emotional limitation to the Annex. Umbral Proficiencies will usually add Negative Emotions from their Facet. Nimbed Proficiencies generally add Positive Emotions from their Facet. This is usually a simple 1 card emotional effect, but if the same Facet is present these may stack (and this can make Umbrals Positive or Nimbeds Negative). This creates a list of emotions that the Annex has affinity with. At least one of these emotional states must be present in the Scene to activate the Annex at all. Depending upon the Annex’s intended usage the Annex may only be able to detect, affect, create, project, control, or adjust those emotions, or it may simply require them all be present, with each emotion that is not present, or each emotion present that is not on the list creating a
+The Tangle of Awe is that of emotions. Each additional Proficiency will add an emotional limitation to the Annex. Umbral Proficiencies will usually add Negative Emotions from their Facet. Nimbed Proficiencies generally add Positive Emotions from their Facet. This is usually a simple 1 card emotional effect, but if the same Facet is present these may stack (and this can make Umbrals Positive or Nimbeds Negative). This creates a list of emotions that the Annex has affinity with. At least one of these emotional states must be present in the Scene to activate the Annex at all. Depending upon the Annex’s intended usage the Annex may only be able to detect, affect, create, project, control, or adjust those emotions, or it may simply require them all be present, with each emotion that is not present, or each emotion present that is not on the list creating a 
 * Generate a Failure Level of the appropriate Facet for the emotion.
 * Generate an appropriate Emotional Psych attack on a "random" target (often the Annex User or an Ally) to create the appropriate emotion.
 * The current Yarn-Teller may use these emotions within the Scene for their own purposes.
@@ -170,7 +170,7 @@ The Tangle of Awe is that of emotions. Each additional Proficiency will add an e
 Burden brings a cost as its Tangle. Each Umbral that is added adds a cost equal to the Facet Draw in Yin Sway. Each Nimbed added adds a cost equal to that Facet Draw in Yang Sway. This cost must be paid before the Annex will activate.
 
 #### Craft (Tangles)
-A Craft Tangle consists of Measures. For each Umbral or Nimbed Proficiency added to the Annex, choose one of the following:
+A Craft Tangle consists of Measures. For each Umbral or Nimbed Proficiency added to the Annex, choose one of the following: 
 * A Measurement is required to activate the Annex, such as "Span", "Height" or "Weight", which can be nominal, ordinal, interval or ratio measurements, the measurements can pertain to the Facet or not as required by the genre/setting. These measurements can be made with Prepared actions during Ordeals, or may be rolled as Key (or the Facet) Tests, or simply narrated as a half-action. Failure Levels from measurements (or failure to measure) will also affect the Annex narration.
 * A measure of specific ingredients are required to activate the Annex, these may be substituted for similar ingredients, but Failure Levels for these Facets may be added by the Yarn-Teller or Referee for incorrect ingredients. Ingredients are consumed by the Annex use.
 * Tools are required to activate the Annex, such as "Screwdriver" or "Hammer", Tools may be substituted but the Yarn-Teller may add an Umbral Facet Failure Level.
@@ -206,7 +206,7 @@ The Liberty Tangle is strangeness, the effects of the Annex must be narrated by 
 The Tangle of Miasma are fallout, by-products and side effects, it is not that things go wrong, exactly, its just that there are always secondary issues resulting from the Annex’s use. The total number of Umbral and Nimbed Proficiencies Reduced will add a side-effect (usually the Facet Boons for each Proficiency creates a low-power Sway effect, although Yarn/Chi/high-power Sway effects are also possible especially if Facets are stacked), or creates a toxic or unpleasant by-product of the Proficiency&apos;s Incarna (e.g. Gossamer could produce a toxic or foul-smelling gas by-product such as carbon-dioxide or hydrogen-sulphide, Trial would create metal, perhaps in the form of a heavy or even radioactive metal, and Inertia could corrupt time near the use potentially making it unsurvivable). Wounds caused by fallout usually Fester although the ones created by the Annex do not by default.
 
 #### Nature (Tangles)
-The Tangle of Nature is innate, the ability is just natural to the Character or Descendant. Each Umbral or Nimbed Proficiency adds a condition on the innate Annex, choose from
+The Tangle of Nature is innate, the ability is just natural to the Character or Descendant. Each Umbral or Nimbed Proficiency adds a condition on the innate Annex, choose from 
 * May not effect the Proficiency’s Facet Incarna
 * Requires the user be in a Location that matches the Proficiency&apos;s Facet.
 * Requires the Annex may only be used after the Action of the Proficiency&apos;s Facet has been performed.
@@ -334,13 +334,13 @@ Umbrals have various costs based on the Umbral Boon of the Facet. The Umbral Boo
 
 Nimbeds are Proficiencies added to an Annex like Umbrals, but rather than adding their Value to the Annex increasing its Value the Nimbed adds some trick or extra ability to the Annex. The Nimbed abilities always expand what you can achieve with an Annex, and can never act as any sort of limit. Nimbeds are completely positive in nature, but that means they must be limited somehow, otherwise everyone would just add every Nimbed to everything. There are two limits therefore placed on Nimbeds, the first being the limit of how many Proficiencies can be placed in a Talent or Power, the second limit is based on the number of Umbrals the Annex has and varies as follows by Game Type.
 
-* **Banal** — Each Umbral allows 1 Nimbed in the Annex. 3 Umbrals could support 3 Nimbeds.
+* **Banal** — Each Umbral allows 1 Nimbed in the Annex. 3 Umbrals could support 3 Nimbeds.   
 
 * **Intrepid** — Each Umbral allows 2 Nimbeds. 3 Umbrals could support 6 Nimbeds.
 * **Bold** — The Total number of Umbrals can support a number of Nimbeds equal to the Value of that Boon. 3 Umbrals could  support 8 Nimbeds.
 
-
-
+ 
+ 
 
 Nimbeds do not add to the Value of the Annex, but do add some trick or special ability to the Annex. If you have multiple Nimbeds of the same Facet then the Nimbeds add an Edge or a Glow
 
@@ -660,7 +660,7 @@ Boost Successes lift and move their Targets sometimes literally. 1 Boost Success
 
 ## Calculating Boons
 
-Annex Boons are generally calculated by adding Facet Values together for the Root and Channel Facet for a Skill. It is normal, if you don’t know your own Facets (perhaps you are using an Extra), to use the Stats of the Plot, or Game, or you may assume a Boon of 13 (value 66) that is modified by your current Scale.
+Annex Boons are generally calculated by adding Facet Values together for the Root and Channel Facet for a Skill. It is normal, if you don’t know your own Facets (perhaps you are using an Extra), to use the Stats of the Plot, or Game, or you may assume a Boon of 13 (value 66) that is modified by your current Scale. 
 
 If a Character has a Craft of 13 (66) and a Key of 16 (83) then that gives Lock-picking a Value of 149 which gives a Boon of 22. If that Character is raised to Scale 1, then their Craft becomes effective Boon 14 (74) with a Key of effective Boon 17 (92); that creates a lock-picking Value of 166 or Boon 24, raising it by 2 Boons. However, adding another Scale raises that Boon to only 25.
 
@@ -683,11 +683,11 @@ Talents are limited in how many Umbrals and Nimbeds they may have based on one o
 Any Talent that gains more than these (depending upon which limit you use) must become a Power instead. Powers are essentially just bigger Talents with more Proficiencies in them. Even Powers have a limit though, which can be decided in the following ways:
 
 * Hard Limit: No more than 4-24 Additional Proficiencies are possible - this hard limit will vary by game, genre, era or universe as the Referee and Yarn-teller require.
-* Variable Limit: Powers may have no more additional Proficiencies than the Character or Descendants Master Annex has Proficiencies or Hitches. So a Character with 2 Hitches can only have 2 additional Proficiencies in their Powers.
+* Variable Limit: Powers may have no more additional Proficiencies than the Character or Descendants Master Annex has Proficiencies or Hitches. So a Character with 2 Hitches can only have 2 additional Proficiencies in their Powers. 
 
 ## Super-Annexes
 
-Additionally, Yarn-Teller characters can have Super-Annexes, which might be a Super-Skill, Super-Talent or Super-Power, depending how they assign the Super-Annex.
+Additionally, Yarn-Teller characters can have Super-Annexes, which might be a Super-Skill, Super-Talent or Super-Power, depending how they assign the Super-Annex. 
 
 Each Proficiency in a Super-Annex adds the Nimbed, Edge and Glow of its Facet, and Umbrals and Tangles still add Value to the Annex. Super-Annex Root and Channel add their Boons together directly to find their combined Value. E.g. Super-Lock-picking would add Craft 13 and Key 16 to give Boon 29 and then add additional Value from any Umbrals (such as Quiet mentioned above) on top of a Value of 244, so the Super-Talent would have a Value of 244+83=327 that’s Boon 35. It would also have all the Nimbeds of Craft, Key and the Umbral Quiet would also add Quiet Nimbeds
 
