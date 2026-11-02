@@ -1,6 +1,8 @@
 node_modules/
 .vite/
 npm_output.log
+dist-build/
+dist-ttrpg/
 *.mp3
 *.mp3
 *.wav

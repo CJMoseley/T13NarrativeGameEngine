@@ -54,7 +54,8 @@ export default defineConfig(({ mode }) => {
       }
     },
     build: {
-      outDir: mode === 'player' ? 'dist/player' : mode === 'referee' ? 'dist/referee' : 'dist'
+      outDir: mode === 'player' ? 'dist-build/player' : mode === 'referee' ? 'dist-build/referee' : 'dist-build',
+      emptyOutDir: true
     }
   };
 });
