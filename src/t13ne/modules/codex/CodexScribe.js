@@ -15,10 +15,33 @@ export class CodexScribe {
         this.knotManifestIsDirty = false;
     }
 
+    /**
+     * Checks if a given proficiency/knot ID is part of the immutable Core collection.
+     * Core items cannot be modified or overwritten at runtime during play.
+     */
+    isCoreId(id) {
+        if (!id) return false;
+        const strId = String(id).trim();
+        // Check against known Core manifest paths or numeric range
+        if (this.librarian && this.librarian.profManifest && this.librarian.profManifest.paths[strId]) {
+            const p = this.librarian.profManifest.paths[strId];
+            if (p.includes('/plugins/t13ne/data/json/proficiencies/Profs/')) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     async createProficiency(profData, suggestedId = null) {
         const funcName = 'CodexScribe.createProficiency';
         Logger.start(funcName, { name: profData.name, suggestedId });
         await this.librarian._getOrBuildProficiencyManifest();
+
+        if (suggestedId && this.isCoreId(suggestedId)) {
+            const err = new Error(`CodexScribe: Cannot overwrite Core Proficiency ID '${suggestedId}'. Omniversal Core is immutable.`);
+            Logger.error(err.message);
+            throw err;
+        }
 
         let newId = suggestedId ? String(suggestedId) : String(this.librarian.nextProfId++);
 

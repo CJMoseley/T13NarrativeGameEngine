@@ -97,6 +97,13 @@ export class CodexLibrary {
     }
 
     getFilePath(category, file) {
+        if (!category || !file || typeof category !== 'string' || typeof file !== 'string') return null;
+        // Validate paths against directory traversal
+        if (category.includes('..') || file.includes('..') || category.startsWith('/') || file.startsWith('/')) {
+            Logger.warn(`CodexLibrary: Rejected potentially unsafe path traversal in category '${category}' file '${file}'`);
+            return null;
+        }
+
         const pathParts = category.split('/');
         let currentLevel = this.codex;
 

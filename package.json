@@ -15,7 +15,12 @@
     "companion:dev:referee": "vite -c ttrpg-companion/vite.config.js --mode referee",
     "companion:build:player": "vite build -c ttrpg-companion/vite.config.js --mode player",
     "companion:build:referee": "vite build -c ttrpg-companion/vite.config.js --mode referee",
+    "server:install": "cd server && npm ci",
+    "setup": "npm ci && npm run server:install",
+    "test:node": "node --test tests/t13-proficiency-catalog.test.js tests/t13-codex-initialization.test.js tests/t13-gematria.test.js tests/t13-codex-immutability.test.js tests/p2p-trust-boundary.test.js tests/t13-assets-smoke.test.js",
+    "test": "npm run test:node",
     "test:playwright": "playwright test",
+    "test:all": "npm run test:node && npm run test:playwright",
     "rules:md": "node scripts/generate_markdown_rules.mjs",
     "rules:generate": "npm run rules:md"
   },

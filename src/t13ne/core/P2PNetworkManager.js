@@ -1,6 +1,19 @@
 import { EventBus } from './EventBus.js';
 import { Peer } from 'peerjs';
 
+// Maximum allowable raw P2P message length (128 KB) to prevent memory exhaustion / DoS
+const MAX_P2P_MESSAGE_LENGTH = 131072;
+
+// Explicitly allowlisted P2P message types
+const ALLOWED_P2P_MSG_TYPES = new Set([
+    'TOKEN_MOVE',
+    'DICE_ROLL',
+    'PLOT_SYNC',
+    'ENTITY_TRANSFER',
+    'CHAT_MESSAGE',
+    'HEARTBEAT'
+]);
+
 export class P2PNetworkManager {
     constructor() {
         this.peer = null;
@@ -25,11 +38,47 @@ export class P2PNetworkManager {
         this.connections.forEach(c => { if (c.open) c.send(payload); });
     }
 
+    /**
+     * Validates and sanitizes incoming P2P message against trust boundary policy.
+     * Rejects oversized payloads, malformed structures, or unapproved types.
+     */
+    validateIncomingMessage(data, senderId) {
+        if (!data) return null;
+
+        let msg = data;
+        if (typeof data === 'string') {
+            if (data.length > MAX_P2P_MESSAGE_LENGTH) {
+                console.warn(`[P2P Trust Boundary] Dropped oversized message (${data.length} bytes) from ${senderId}`);
+                return null;
+            }
+            try {
+                msg = JSON.parse(data);
+            } catch (e) {
+                console.warn(`[P2P Trust Boundary] Dropped malformed JSON from ${senderId}:`, e.message);
+                return null;
+            }
+        }
+
+        if (!msg || typeof msg !== 'object' || Array.isArray(msg)) {
+            console.warn(`[P2P Trust Boundary] Dropped non-object payload from ${senderId}`);
+            return null;
+        }
+
+        if (!msg.type || typeof msg.type !== 'string' || !ALLOWED_P2P_MSG_TYPES.has(msg.type)) {
+            console.warn(`[P2P Trust Boundary] Dropped disallowed message type '${msg.type}' from ${senderId}`);
+            return null;
+        }
+
+        return msg;
+    }
+
     _handleIncomingConnection(conn) {
         this.connections.set(conn.peer, conn);
         conn.on('data', (data) => {
-            const msg = typeof data === 'string' ? JSON.parse(data) : data;
-            EventBus.emit(`p2p:msg:${msg.type}`, { message: msg, senderId: conn.peer });
+            const validMsg = this.validateIncomingMessage(data, conn.peer);
+            if (validMsg) {
+                EventBus.emit(`p2p:msg:${validMsg.type}`, { message: validMsg, senderId: conn.peer });
+            }
         });
         EventBus.emit('p2p:peer-connected', { peerId: conn.peer });
     }

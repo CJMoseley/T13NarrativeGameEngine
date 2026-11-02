@@ -1,4 +1,4 @@
-import { SafeDOM } from '../t13ne/utils/SafeDOM.js';
+import { SafeDOM } from '../utils/SafeDOM.js';
 
 export class T13EntityInspector extends HTMLElement {
     constructor() {

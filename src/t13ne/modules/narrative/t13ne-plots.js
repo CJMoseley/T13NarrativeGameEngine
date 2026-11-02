@@ -197,9 +197,13 @@ class T13Plot extends SuperKnot {
         return Array.from(new Set([v1, v2, v3])).join(' + ');
     }
 
+    /**
+     * Updates the plot's voice based on current state.
+     */
     updateVoice() {
         if (this.yarnTeller) {
-            this.yarnTeller.setVoice(this.generateComplexVoice());
+            const newVoice = this.generateComplexVoice();
+            this.yarnTeller.setVoice(newVoice);
         }
     }
 
@@ -651,8 +655,13 @@ class T13Plot extends SuperKnot {
         }
 
 
-        const tier = level => level >= 7 ? 2 : level >= 4 ? 1 : 0;
-        if (tier(oldLevel) !== tier(newLevel)) this.updateVoice();
+        // Check for significant change (crossing thresholds 4 or 7) to update voice
+        const getTier = (l) => {
+            if (l >= 7) return 2;
+            if (l >= 4) return 1;
+            return 0;
+        };
+        if (getTier(oldLevel) !== getTier(newLevel)) this.updateVoice();
 
         // "Plot will not cause Characters to fight, but it will PUSH characters who are oppossed together"
         if (this.tensionLevel >= 4) { // Medium Tension or higher
