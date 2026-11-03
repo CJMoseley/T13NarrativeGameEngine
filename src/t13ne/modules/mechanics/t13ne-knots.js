@@ -4,6 +4,14 @@
 import Logger from "/src/t13ne/core/Logger.js";
 import T13NE_Sway from "/src/t13ne/modules/mechanics/t13ne-sway.js";
 import T13Name from "/src/t13ne/modules/characters/t13ne-names.js";
+import T13Boons from "/src/t13ne/modules/mechanics/t13ne-boon.js";
+import { evaluateHitch } from './HitchRules.js';
+
+function proficiencyFacets(record) {
+    const data = record.prof || record;
+    const tags = data.tags || data.Tags || {};
+    return tags.facets || tags.Facets || [];
+}
 
 /**
  * TIE constants for defining knot relationships using a bitmask.
@@ -344,7 +352,7 @@ export class Annex extends KnotWork {
 
         const profs = await this.getProficiencyDetails();
         // Merge existing tags with derived facets
-        const facetIds = [...new Set([...(this.tags.facets || []), ...profs.flatMap(p => p.tags.facets || [])])];
+        const facetIds = [...new Set([...(this.tags.facets || this.tags.Facets || []), ...profs.flatMap(proficiencyFacets)])];
 
         const profData = {
             name: `${this.name} (${this.annexType})`,
@@ -361,7 +369,7 @@ export class Annex extends KnotWork {
             }
         };
 
-        const newId = await this.codexLoader.createKnot(profData);
+        const newId = await this.codexLoader.createProficiency(profData);
         this.proficiencyId = newId;
 
         // Self-reference: Assign the new Proficiency ID as the GNARL and T13 tie of this Annex
@@ -590,24 +598,47 @@ export class SizeAnnex extends Annex {
  * Often represents a complication, disadvantage, or narrative hook.
  */
 export class Hitch extends KnotWork {
-    constructor(codexLoader, { name, description, proficiencies = [], bane, root, channel, gnarls = [], triggers = [], tags = {}, fullName = null, altName = null }) {
-        const knotData = [...(proficiencies || [])];
-        if (root) knotData.push({ profId: root, knot: TIE.ROOT });
-        if (channel) knotData.push({ profId: channel, knot: TIE.CHANNEL });
+    constructor(codexLoader, { name, description, proficiencies = [], bane, root, channel, gnarls = [], triggers = [], tags = {}, fullName = null, altName = null, proficiencyId = null, tier = null }) {
+        const knotData = (proficiencies || []).map(item => Array.isArray(item) ? { profId: item[0], knot: item[1] } : item);
+        if (root !== undefined && root !== null) knotData.push({ profId: root, knot: TIE.ROOT });
+        if (channel !== undefined && channel !== null) knotData.push({ profId: channel, knot: TIE.CHANNEL });
 
-        super(codexLoader, { name, description, knotData, tags, fullName, altName });
+        super(codexLoader, { name, description, knotData, tags, fullName, altName, proficiencyId });
 
         this.bane = bane;
+        this.tier = tier;
 
         gnarls.forEach(g => this.knot.assign(g, TIE.GNARL));
         triggers.forEach(t => this.knot.assign(t, TIE.TRIGGER));
+    }
+
+    evaluateTrigger(options) {
+        return evaluateHitch(this, options, TIE, T13Boons);
+    }
+
+    static fromProficiency(codexLoader, record) {
+        const source = record?.sourceHitch;
+        if (!source || !Array.isArray(source.proficiencies) || record.id === undefined) {
+            throw new Error('Cannot reconstruct Hitch: missing sourceHitch data or Proficiency ID.');
+        }
+        const hitch = new Hitch(codexLoader, {
+            name: source.name,
+            description: record.description,
+            bane: source.bane,
+            tier: source.tier ?? null,
+            proficiencies: source.proficiencies,
+            proficiencyId: record.id,
+            tags: record.tags
+        });
+        hitch.knot.assign(record.id, TIE.HITCH | TIE.T13);
+        return hitch;
     }
 
     async saveAsProficiency() {
         if (this.proficiencyId) return this.proficiencyId;
 
         const profs = await this.getProficiencyDetails();
-        const facetIds = [...new Set([...(this.tags.facets || []), ...profs.flatMap(p => p.tags.facets || [])])];
+        const facetIds = [...new Set([...(this.tags.facets || this.tags.Facets || []), ...profs.flatMap(proficiencyFacets)])];
 
         const profData = {
             name: `${this.name} (Hitch)`,
@@ -619,11 +650,12 @@ export class Hitch extends KnotWork {
             sourceHitch: {
                 name: this.name,
                 bane: this.bane,
+                tier: this.tier,
                 proficiencies: this.knot.serialize()
             }
         };
 
-        const newId = await this.codexLoader.createKnot(profData);
+        const newId = await this.codexLoader.createProficiency(profData);
         this.proficiencyId = newId;
 
         // Self-reference: Assign the new Proficiency ID as the HITCH and T13 tie.
@@ -635,6 +667,7 @@ export class Hitch extends KnotWork {
                 sourceHitch: {
                     name: this.name,
                     bane: this.bane,
+                    tier: this.tier,
                     proficiencies: this.knot.serialize()
                 }
             });
@@ -656,7 +689,7 @@ export class Hitch extends KnotWork {
 
     /**
      * Generates a narrative name and description for the Hitch using AI.
-     * Uses Bane to determine severity (Quirk/Flaw/Woe) and tied proficiencies for context.
+     * Uses the explicitly supplied tier and tied proficiencies for context.
      * @param {object} aiService - The AI Service module.
      * @param {object} facetsModule - The Facets module to look up Root/Channel texts.
      */
@@ -673,22 +706,17 @@ export class Hitch extends KnotWork {
         let triggerText = [];
         let gnarlText = [];
 
-        // Determine Tier based on Bane
-        let tier = 'Quirk';
-        let intensity = 'Minor annoyance';
-        if (this.bane > 10) {
-            tier = 'Flaw';
-            intensity = 'Significant problem';
-        }
-        if (this.bane > 20) {
-            tier = 'Woe';
-            intensity = 'Devastating or life-defining problem';
-        }
+        const tier = this.tier || 'Unspecified';
+        let intensity = 'Tier determined by the relevant Facet and game rules';
 
         for (const p of profs) {
-            const mask = associations.get(p.id);
-            if (mask & TIE.TRIGGER) triggerText.push(p.name);
-            if (mask & TIE.GNARL) gnarlText.push(p.name);
+            const mask = [...associations].reduce((combined, [id, roles]) =>
+                String(id) === String(p.id) ? combined | roles : combined, 0);
+            const data = p.prof || p;
+            const name = data.name || data.Name;
+            const label = Array.isArray(name) ? name[0] : name;
+            if (mask & TIE.TRIGGER) triggerText.push(label);
+            if (mask & TIE.GNARL) gnarlText.push(label);
         }
 
         // Fallback if not explicitly tied but tags exist
@@ -708,8 +736,8 @@ export class Hitch extends KnotWork {
         Type: ${tier} (${intensity})
         Core Concept: ${rootText}
         Manifestation: ${channelText}
-        Triggers: ${triggerText.join(', ') || 'General circumstances'}
-        Complications (Gnarls): ${gnarlText.join(', ') || 'None'}
+        Triggers: ${triggerText.join(', ') || 'Not specified'}
+        Complications (Gnarls): ${gnarlText.join(', ') || 'Not specified'}
         
         Respond with ONLY a valid JSON object: { "name": "Creative Name", "description": "Flavourful description." }`;
 
@@ -813,7 +841,7 @@ export class SuperKnot extends KnotWork {
         }
 
         const profs = await this.getProficiencyDetails();
-        const facetIds = [...new Set([...(this.tags.facets || []), ...profs.flatMap(p => p.tags.facets || [])])];
+        const facetIds = [...new Set([...(this.tags.facets || this.tags.Facets || []), ...profs.flatMap(proficiencyFacets)])];
 
         const profData = {
             name: `${this.name} (${this.constructor.name})`,
@@ -829,7 +857,7 @@ export class SuperKnot extends KnotWork {
             }
         };
 
-        const newId = await this.codexLoader.createKnot(profData);
+        const newId = await this.codexLoader.createProficiency(profData);
         this.proficiencyId = newId;
 
         // Self-reference

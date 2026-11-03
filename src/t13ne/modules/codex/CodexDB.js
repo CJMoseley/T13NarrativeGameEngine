@@ -1,9 +1,11 @@
 ﻿import Logger from "/src/t13ne/core/Logger.js";
+import { isSafeProficiencyId } from './ProficiencyIdentity.js';
+import { validateProficiency } from './ProficiencyValidation.js';
 
 class CodexDB {
     constructor() {
         this.dbName = 'T13Codex';
-        this.version = 1;
+        this.version = 3;
         this.db = null;
     }
 
@@ -26,10 +28,20 @@ class CodexDB {
                     // MultiEntry index for tags allows searching by individual tags
                     knotStore.createIndex('tags', 'tags', { unique: false, multiEntry: true });
                 }
+                if (!db.objectStoreNames.contains('customProficiencies')) {
+                    db.createObjectStore('customProficiencies', { keyPath: 'id' });
+                }
+                if (!db.objectStoreNames.contains('ruleComponents')) {
+                    db.createObjectStore('ruleComponents', { keyPath: 'id' });
+                }
             };
 
             request.onsuccess = (event) => {
                 this.db = event.target.result;
+                this.db.onversionchange = () => {
+                    this.db.close();
+                    this.db = null;
+                };
                 Logger.message('CodexDB: Database opened successfully.');
                 resolve(this.db);
             };
@@ -61,6 +73,141 @@ class CodexDB {
         await this.open();
         if (!knot.id) throw new Error("CodexDB: Cannot save knot without ID");
         return this._put('knots', knot);
+    }
+
+    async getCustomProficiency(id) {
+        await this.open();
+        return this._get('customProficiencies', String(id));
+    }
+
+    async listRuleComponents() {
+        await this.open();
+        return new Promise((resolve, reject) => {
+            const transaction = this.db.transaction('ruleComponents', 'readonly');
+            const request = transaction.objectStore('ruleComponents').getAll();
+            request.onsuccess = () => resolve(request.result);
+            request.onerror = () => reject(request.error);
+            transaction.onabort = () => reject(transaction.error);
+        });
+    }
+
+    async getRuleComponent(id) {
+        await this.open();
+        return this._get('ruleComponents', id);
+    }
+
+    async addRuleComponent(component) {
+        await this.open();
+        return new Promise((resolve, reject) => {
+            const transaction = this.db.transaction('ruleComponents', 'readwrite');
+            transaction.objectStore('ruleComponents').add(component);
+            transaction.oncomplete = () => resolve(component);
+            transaction.onerror = () => reject(transaction.error);
+            transaction.onabort = () => reject(transaction.error || new Error('Rule component write aborted.'));
+        });
+    }
+
+    async updateRuleComponent(component, expectedRevision) {
+        await this.open();
+        return new Promise((resolve, reject) => {
+            const transaction = this.db.transaction('ruleComponents', 'readwrite');
+            const store = transaction.objectStore('ruleComponents');
+            const request = store.get(component.id);
+            let failure;
+            request.onsuccess = () => {
+                if (!request.result || request.result.revision !== expectedRevision) {
+                    failure = new Error('Rule component is missing or has changed; reload before editing.');
+                    transaction.abort();
+                    return;
+                }
+                store.put(component);
+            };
+            transaction.oncomplete = () => resolve(component);
+            transaction.onerror = () => reject(failure || transaction.error);
+            transaction.onabort = () => reject(failure || transaction.error || new Error('Rule component update aborted.'));
+        });
+    }
+
+    async listCustomProficiencies() {
+        await this.open();
+        return new Promise((resolve, reject) => {
+            const transaction = this.db.transaction('customProficiencies', 'readonly');
+            const request = transaction.objectStore('customProficiencies').getAll();
+            request.onsuccess = () => resolve(request.result);
+            request.onerror = () => reject(request.error);
+            transaction.onabort = () => reject(transaction.error);
+        });
+    }
+
+    async migrateLegacyProficiencies(coreIds) {
+        await this.open();
+        return new Promise((resolve, reject) => {
+            const transaction = this.db.transaction(['knots', 'customProficiencies'], 'readwrite');
+            const custom = transaction.objectStore('customProficiencies');
+            const existing = custom.getAllKeys();
+            const legacy = transaction.objectStore('knots').index('type').getAll('Proficiency');
+            const conflicts = [];
+            legacy.onsuccess = () => {
+                const keys = new Set(existing.result);
+                for (const record of legacy.result) {
+                    const id = String(record.id);
+                    if (!isSafeProficiencyId(id)) {
+                        Logger.warn(`CodexDB: Legacy Proficiency ID '${id}' requires manual recovery.`);
+                        continue;
+                    }
+                    if (coreIds.has(id)) {
+                        conflicts.push(id);
+                    } else if (!keys.has(id)) {
+                        custom.add({ ...record, id });
+                    }
+                }
+            };
+            transaction.oncomplete = () => resolve(conflicts);
+            transaction.onerror = () => reject(transaction.error);
+            transaction.onabort = () => reject(transaction.error || new Error('Legacy Proficiency migration aborted.'));
+        });
+    }
+
+    async saveCustomProficiency(data, suggestedId, coreIds) {
+        await this.open();
+        let id = suggestedId;
+        if (id === null) {
+            const bytes = crypto.getRandomValues(new Uint8Array(16));
+            id = `custom-${Array.from(bytes, byte => byte.toString(16).padStart(2, '0')).join('')}`;
+        }
+        if (!isSafeProficiencyId(id) || coreIds.has(id)) {
+            throw new Error(`CodexDB: Invalid or Core Proficiency ID '${id}'.`);
+        }
+        return new Promise((resolve, reject) => {
+            const transaction = this.db.transaction('customProficiencies', 'readwrite');
+            const store = transaction.objectStore('customProficiencies');
+            let result;
+            let failure;
+            const write = (previous, isNew) => {
+                result = { ...previous, ...data, id };
+                if (previous?.prof && data.prof) {
+                    result.prof = { ...previous.prof, ...data.prof };
+                }
+                try {
+                    validateProficiency(result);
+                    if (isNew) store.add(result); else store.put(result);
+                } catch (error) {
+                    failure = error;
+                    transaction.abort();
+                }
+            };
+            if (suggestedId === null) {
+                write(undefined, true);
+            } else {
+                const getRequest = store.get(id);
+                getRequest.onsuccess = () => {
+                    write(getRequest.result, false);
+                };
+            }
+            transaction.oncomplete = () => resolve(result);
+            transaction.onerror = () => reject(transaction.error);
+            transaction.onabort = () => reject(failure || transaction.error || new Error('Custom Proficiency write aborted.'));
+        });
     }
 
     async _get(storeName, key) {
@@ -146,9 +293,3 @@ class CodexDB {
 }
 const instance = new CodexDB();
 export default instance;
-
-
-
-
-
-

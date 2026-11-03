@@ -1,17 +1,14 @@
 import { EventBus } from './EventBus.js';
 import { Peer } from 'peerjs';
 
-// Maximum allowable raw P2P message length (128 KB) to prevent memory exhaustion / DoS
-const MAX_P2P_MESSAGE_LENGTH = 131072;
+const MAX_P2P_MESSAGE_BYTES = 131072;
 
 // Explicitly allowlisted P2P message types
 const ALLOWED_P2P_MSG_TYPES = new Set([
     'TOKEN_MOVE',
     'DICE_ROLL',
     'PLOT_SYNC',
-    'ENTITY_TRANSFER',
-    'CHAT_MESSAGE',
-    'HEARTBEAT'
+    'CLEAR_TABLE'
 ]);
 
 export class P2PNetworkManager {
@@ -39,24 +36,29 @@ export class P2PNetworkManager {
     }
 
     /**
-     * Validates and sanitizes incoming P2P message against trust boundary policy.
-     * Rejects oversized payloads, malformed structures, or unapproved types.
+     * Checks the wire format and fields used by current VTT handlers.
+     * This does not authenticate peers or authorize actions.
      */
     validateIncomingMessage(data, senderId) {
-        if (!data) return null;
-
-        let msg = data;
-        if (typeof data === 'string') {
-            if (data.length > MAX_P2P_MESSAGE_LENGTH) {
-                console.warn(`[P2P Trust Boundary] Dropped oversized message (${data.length} bytes) from ${senderId}`);
-                return null;
-            }
-            try {
-                msg = JSON.parse(data);
-            } catch (e) {
-                console.warn(`[P2P Trust Boundary] Dropped malformed JSON from ${senderId}:`, e.message);
-                return null;
-            }
+        if (typeof data !== 'string') {
+            console.warn(`[P2P Trust Boundary] Dropped non-string payload from ${senderId}`);
+            return null;
+        }
+        if (data.length > MAX_P2P_MESSAGE_BYTES) {
+            console.warn(`[P2P Trust Boundary] Dropped oversized message from ${senderId}`);
+            return null;
+        }
+        const bytes = new TextEncoder().encode(data).byteLength;
+        if (bytes > MAX_P2P_MESSAGE_BYTES) {
+            console.warn(`[P2P Trust Boundary] Dropped oversized message (${bytes} bytes) from ${senderId}`);
+            return null;
+        }
+        let msg;
+        try {
+            msg = JSON.parse(data);
+        } catch (e) {
+            console.warn(`[P2P Trust Boundary] Dropped malformed JSON from ${senderId}:`, e.message);
+            return null;
         }
 
         if (!msg || typeof msg !== 'object' || Array.isArray(msg)) {
@@ -66,6 +68,19 @@ export class P2PNetworkManager {
 
         if (!msg.type || typeof msg.type !== 'string' || !ALLOWED_P2P_MSG_TYPES.has(msg.type)) {
             console.warn(`[P2P Trust Boundary] Dropped disallowed message type '${msg.type}' from ${senderId}`);
+            return null;
+        }
+
+        const object = value => value !== null && typeof value === 'object' && !Array.isArray(value);
+        const valid = msg.type === 'CLEAR_TABLE' ||
+            (msg.type === 'DICE_ROLL' && Array.isArray(msg.rolls) && msg.rolls.length <= 128 &&
+                msg.rolls.every(Number.isFinite)) ||
+            (msg.type === 'TOKEN_MOVE' && typeof msg.tokenId === 'string' && msg.tokenId.length > 0 &&
+                object(msg.position) && Number.isFinite(msg.position.x) && Number.isFinite(msg.position.z)) ||
+            (msg.type === 'PLOT_SYNC' && object(msg.plot) &&
+                (msg.plot.tensionLevel === undefined || Number.isFinite(msg.plot.tensionLevel)));
+        if (!valid) {
+            console.warn(`[P2P Trust Boundary] Dropped invalid '${msg.type}' payload from ${senderId}`);
             return null;
         }
 

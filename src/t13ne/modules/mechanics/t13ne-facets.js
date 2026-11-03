@@ -6,6 +6,8 @@
  * This module provides functions to get facets, their aspects, and generate descriptions based on them.
  */
 
+import { coreFacetRuleRegistry } from './FacetRuleRegistry.js';
+
 const facets = [
     'awe', 'burden', 'craft', 'dominion', 'enigma', 'fury', 'gossamer', 'heresy',
     'inertia', 'jeer', 'key', 'liberty', 'miasma', 'nature', 'orthodox', 'phoenix',
@@ -96,6 +98,13 @@ const getFacetsArr = async () => {
         self.findIndex(t => t.FacetIndex === f.FacetIndex) === i
     );
     return uniqueFacets.sort((a, b) => a.FacetIndex - b.FacetIndex);
+};
+
+const getRuleCatalog = async (registry = coreFacetRuleRegistry) => {
+    if (!registry || typeof registry.list !== 'function') {
+        throw new TypeError('Facet rule catalog requires a rule registry.');
+    }
+    return (await getFacetsArr()).flatMap(facet => registry.list(facet));
 };
 
 /**
@@ -249,6 +258,7 @@ const T13NE_Facets = {
     loadAllFacets,
     getFacet,
     getFacetsArr,
+    getRuleCatalog,
     getAntiFacet,
     getFacetAspect,
     getAdjective,
@@ -260,7 +270,6 @@ const T13NE_Facets = {
 window.T13NE.Facets = T13NE_Facets; */
 
 export default T13NE_Facets;
-
 
 
 

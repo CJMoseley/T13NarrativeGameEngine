@@ -256,13 +256,19 @@ class ThreadsUI {
 
     async commit(idx) {
         const res = this.candidates[idx];
-        const id = await CodexLoader.createProficiency({
-            prof: {
-                Name: res.generatedName,
-                Description: res.generatedDescription,
-                Tags: res.tags
-            }
-        });
+        let id;
+        try {
+            id = await CodexLoader.createProficiency({
+                prof: {
+                    Name: res.generatedName,
+                    Description: res.generatedDescription,
+                    Tags: res.tags
+                }
+            });
+        } catch (error) {
+            UI.notify(`Threads: Could not commit proficiency: ${error.message}`, 'error');
+            return;
+        }
         UI.notify(`Threads: Committed "${res.generatedName[0]}" as ID ${id}.`, 'success');
         this.refresh();
         document.getElementById(`can-btn-${idx}`).innerHTML = '<span style="color: #4ade80;">Done</span>';
@@ -280,7 +286,6 @@ const threadsUI = new ThreadsUI();
 // Expose to window for inline onclicks in the short term, or refactor onclicks later
 window.ThreadsUI = threadsUI;
 export default threadsUI;
-
 
 
 

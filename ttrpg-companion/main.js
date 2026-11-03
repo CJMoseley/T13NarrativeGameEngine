@@ -469,7 +469,6 @@ function setupCharacterCreator() {
                 statsOutput.appendChild(sheet);
                 sheet.setCharacter(charData);
 
-                P2PNetworkManager.broadcast({ type: 'CHARACTER_SYNC', character: charData });
               } else {
                 const errResult = await res.json();
                 alert(`Failed creating character on server: ${errResult.error}`);
@@ -483,7 +482,6 @@ function setupCharacterCreator() {
               statsOutput.appendChild(sheet);
               sheet.setCharacter(charData);
 
-              P2PNetworkManager.broadcast({ type: 'CHARACTER_SYNC', character: charData });
             }
         } catch (err) {
             console.error(err);

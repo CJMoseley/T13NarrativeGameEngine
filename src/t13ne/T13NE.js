@@ -1,5 +1,7 @@
 import Logger from './core/Logger.js';
 import T13NE_Facets from './modules/mechanics/t13ne-facets.js';
+import { RuleCatalog } from './modules/mechanics/RuleCatalog.js';
+import CodexDB from './modules/codex/CodexDB.js';
 import T13NE_Sway from './modules/mechanics/t13ne-sway.js';
 import CodexLoader from './modules/codex/CodexLoader.js';
 
@@ -296,6 +298,7 @@ class T13NE {
         // Load the Facets module and pre-load all facet data
         this.modules.Facets = T13NE_Facets;
         await this.modules.Facets.loadAllFacets(); // Pre-load all facets
+        this.modules.RuleCatalog = new RuleCatalog({ facets: this.modules.Facets, codex: CodexLoader, components: CodexDB });
         Logger.message("T13NE: Facets module and data loaded.");
 
         // Load the Sway module and its data

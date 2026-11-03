@@ -12,6 +12,7 @@ export class Descendant extends SuperKnot {
     constructor(codexLoader, data) {
         super(codexLoader, data);
         this.descendantType = data.descendantType || 'Item'; // Item, Location, Connection, etc.
+        this.incarna = data.incarna ?? null;
         this.locationType = data.locationType || null; // Specifics for Location descendants
         this.wounds = data.wounds || []; // Ensure wounds are loaded or initialized
         this.traumas = data.traumas || []; // Ensure traumas are loaded or initialized
@@ -50,8 +51,21 @@ export class Descendant extends SuperKnot {
         Logger.start(funcName, options);
         const type = options.descendantType || 'Item';
         const Facets = T13NE.getModule('Facets');
-        const facetsArr = await Facets.getFacetsArr();
-        const facet = facetsArr[T13Dice.RNG(0, facetsArr.length - 1)];
+        if (!Facets) throw new Error('Descendant.generate: Facets module is required.');
+        let facet;
+        if (options.incarna !== undefined && options.incarna !== null) {
+            let identifier = options.incarna;
+            if (typeof identifier === 'string' && /^\d+$/.test(identifier)) identifier = Number(identifier);
+            if (typeof identifier !== 'string' && typeof identifier !== 'number') {
+                throw new Error('Descendant.generate: Incarna must identify a Facet.');
+            }
+            facet = await Facets.getFacet(identifier);
+            if (!facet) throw new Error(`Descendant.generate: Unknown Incarna Facet '${options.incarna}'.`);
+        } else {
+            const facetsArr = await Facets.getFacetsArr();
+            if (!facetsArr.length) throw new Error('Descendant.generate: No Facets are available.');
+            facet = facetsArr[T13Dice.RNG(0, facetsArr.length - 1)];
+        }
         const NameGenerator = T13NE.getModule('NameGenerator');
         const AnnexFactory = T13NE.getModule('AnnexFactory');
 
@@ -61,28 +75,32 @@ export class Descendant extends SuperKnot {
         }
 
         if (!nameInput) nameInput = [`Random ${facet.FacetName} ${type}`, `Random ${facet.FacetName} ${type}`, ''];
-        Logger.message(`${funcName}: Generated Name: ${nameInput[0]}`);
+        const displayName = Array.isArray(nameInput) ? nameInput[0] : nameInput;
+        Logger.message(`${funcName}: Generated Name: ${displayName}`);
 
         const data = {
             name: nameInput,
             description: `A procedurally generated ${type} related to ${facet.FacetName}.`,
             descendantType: type,
             tags: { facets: [facet.FacetName] },
-            ...options
+            ...options,
+            incarna: facet.FacetName
         };
 
         Logger.message(`${funcName}: Creating Master Annex for ${type}...`);
-        if (type === 'Pact') {
+        if (options.masterAnnex) {
+            data.masterAnnex = options.masterAnnex;
+        } else if (type === 'Pact') {
             const { PactAnnex } = await import("/src/t13ne/modules/mechanics/t13ne-knots.js");
             data.masterAnnex = new PactAnnex(codexLoader, {
-                name: `${nameInput[0]} Pact`,
+                name: `${displayName} Pact`,
                 description: `A collective pact of ${facet.FacetName}.`,
                 tags: { facets: [facet.FacetName] }
             });
         } else if (type === 'Location') {
             const { SizeAnnex } = await import("/src/t13ne/modules/mechanics/t13ne-knots.js");
             data.masterAnnex = new SizeAnnex(codexLoader, {
-                name: `${nameInput[0]} Size`,
+                name: `${displayName} Size`,
                 size: options.size || 0,
                 tags: { facets: [facet.FacetName] }
             });

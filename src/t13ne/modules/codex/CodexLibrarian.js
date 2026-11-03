@@ -1,4 +1,5 @@
 ﻿import Logger from "/src/t13ne/core/Logger.js";
+import CodexDB from '/src/t13ne/modules/codex/CodexDB.js';
 
 const PROF_MANIFEST_KEY = 'T13NE_PROF_MANIFEST';
 const PROF_MANIFEST_VERSION_KEY = 'T13NE_PROF_MANIFEST_VERSION';
@@ -20,6 +21,7 @@ export class CodexLibrarian {
         this.nextKnotId = 0;
         this.numerology = null;
         this._profManifestPromise = null;
+        this.coreProficiencyIds = new Set();
     }
 
     clearProficiencyManifest() {
@@ -37,8 +39,8 @@ export class CodexLibrarian {
     }
 
     async _getOrBuildProficiencyManifest() {
-        if (this.profManifest) return this.profManifest;
         if (this._profManifestPromise) return this._profManifestPromise;
+        if (this.profManifest) return this.profManifest;
 
         this._profManifestPromise = this._loadProficiencyManifest();
         try {
@@ -51,20 +53,25 @@ export class CodexLibrarian {
     async _loadProficiencyManifest() {
         if (this.profManifest) return this.profManifest;
 
-        try {
-            const storedVersion = localStorage.getItem(PROF_MANIFEST_VERSION_KEY);
-            if (storedVersion === CURRENT_MANIFEST_VERSION) {
-                const storedManifest = localStorage.getItem(PROF_MANIFEST_KEY);
-                if (storedManifest) {
-                    this.profManifest = JSON.parse(storedManifest);
-                    this._calcNextProfId();
-                    return this.profManifest;
-                }
-            }
-        } catch (e) { }
-
         await this._loadNumerology();
         await this._buildProficiencyManifest();
+        try {
+            const conflicts = await CodexDB.migrateLegacyProficiencies(this.coreProficiencyIds);
+            if (conflicts.length) {
+                Logger.warn(`CodexLibrarian: Legacy custom Proficiency IDs conflict with Core and were not migrated: ${conflicts.join(', ')}.`);
+            }
+            const custom = await CodexDB.listCustomProficiencies();
+            for (const record of custom) {
+                if (this.coreProficiencyIds.has(record.id)) {
+                    throw new Error(`Custom Proficiency ID '${record.id}' conflicts with Core.`);
+                }
+                this.profManifest.paths[record.id] = `custom-proficiencies/${record.id}.json`;
+                this._indexProficiency(this.profManifest, record.id, record);
+            }
+        } catch (error) {
+            this.profManifest = null;
+            throw error;
+        }
         this._calcNextProfId();
         return this.profManifest;
     }
@@ -133,6 +140,7 @@ export class CodexLibrarian {
             }
         }
         
+        this.coreProficiencyIds = new Set(Object.keys(manifest.paths));
         this.profManifest = manifest;
         this._cacheManifestToLS(PROF_MANIFEST_KEY, manifest, PROF_MANIFEST_VERSION_KEY);
         return manifest;
@@ -187,7 +195,17 @@ export class CodexLibrarian {
     async getProficiency(profId) {
         const manifest = await this._getOrBuildProficiencyManifest();
         const path = manifest.paths[profId];
+        if (path?.startsWith('custom-proficiencies/')) {
+            return (await CodexDB.getCustomProficiency(profId)) || null;
+        }
         if (!path) {
+            const custom = await CodexDB.getCustomProficiency(profId);
+            if (custom) {
+                manifest.paths[profId] = `custom-proficiencies/${profId}.json`;
+                this._indexProficiency(manifest, String(profId), custom);
+                this._calcNextProfId();
+                return custom;
+            }
             const knot = await this.getKnot(profId);
             if (knot) return knot;
             return null;
@@ -293,7 +311,10 @@ export class CodexLibrarian {
     _calcNextProfId() {
         if (!this.profManifest) return;
         const ids = Object.keys(this.profManifest.paths);
-        this.nextProfId = ids.reduce((max, id) => Math.max(max, parseInt(id, 10) || 0), 0) + 1;
+        this.nextProfId = ids.reduce((max, id) => {
+            const value = /^\d+$/.test(id) ? Number(id) : 0;
+            return Number.isSafeInteger(value) ? Math.max(max, value) : max;
+        }, 0) + 1;
     }
 
     _calcNextKnotId() {
@@ -314,5 +335,3 @@ export class CodexLibrarian {
         if (data) this.profManifest.indexes[indexName] = data;
     }
 }
-
-

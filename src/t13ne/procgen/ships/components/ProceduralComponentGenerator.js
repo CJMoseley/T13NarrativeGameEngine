@@ -3,6 +3,7 @@ import { ComponentDefs } from '/src/t13ne/procgen/ships/components/ComponentDefs
 import ProcGen from '/src/t13ne/procgen/ProcGen.js';
 import { ComponentLoreGenerator } from '/src/t13ne/procgen/lore/factories/ComponentLoreGenerator.js';
 import CodexLoader from '/src/t13ne/modules/codex/CodexLoader.js';
+import { getComponentIncarnaCandidates } from './ComponentFacetHints.js';
 
 const SHAPE_OPTIONS = {
     'fuselage': ['box', 'cylinder', 'capsule'],
@@ -114,6 +115,8 @@ export class ProceduralComponentGenerator {
         const component = {
             name: name,
             description: finalDescription,
+            usage: effectiveUsage,
+            incarnaCandidates: getComponentIncarnaCandidates(effectiveUsage),
             proxyShape: shapeType,
             modelUrl: modelUrl,
             dims: dims,

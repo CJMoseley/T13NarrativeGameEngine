@@ -4,6 +4,8 @@ Status: proposed. Dependencies are explicit; priorities are sequencing guidance,
 
 For bounded agent-ready work packages, dependencies, and acceptance criteria,
 see the [Jules implementation pass](jules-implementation-pass.md).
+For current uncommitted progress, validation and the immediate remaining work,
+see the [current-state handoff](current-state.md#current-implementation-handoff).
 
 ## Milestones and gates
 
@@ -20,7 +22,7 @@ see the [Jules implementation pass](jules-implementation-pass.md).
 
 - [ ] **B01** Inventory entry points, build modes, runtime dependencies, tracked/generated assets and local modifications; document setup for clean environments. Check lockfile/manifest consistency, restore missing PeerJS, run main and companion builds without overwriting tracked `dist` unexpectedly. Depends: none.
 - [ ] **B02** Create a subsystem inventory and rule traceability matrix: authoritative rule text, legacy PHP, JS implementation, test, behavior gaps and owner decision. Include dice, cards/spreads and triggers, facets/boons/sway/resources, tests/stakes, ordeal rounds/stages, plots/yarn/tension, characters/annexes/wounds, geometry and permissions. Depends: B01 for reproducible execution; rules authority decision.
-- [ ] **B03** Record architecture decisions: canonical source, save compatibility, tabletop and real-time authority, offline trust, privacy, and scope of first release. Depends: B01 and B02 findings.
+- [ ] **B03** Record architecture decisions: canonical source, save compatibility, tabletop and real-time authority, offline trust, privacy, and scope of first release. Incorporate the Author's Core, module, referee and optional Yarn-teller verification model and configurable game-type policies in the [platform specification](platform-specification.md#content-verification-and-game-authority). Depends: B01 and B02 findings.
 - [ ] **B04** Add CI for dependency restore, focused rules tests, both builds, browser smoke and artifact handling. Track existing failures separately from regressions. Depends: B01.
 
 ## P1: shared rules and state

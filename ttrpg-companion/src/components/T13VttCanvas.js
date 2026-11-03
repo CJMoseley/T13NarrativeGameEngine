@@ -49,6 +49,7 @@ export class T13VttCanvas extends HTMLElement {
         EventBus.on('p2p:msg:TOKEN_MOVE', ({ message }) => this.updateTokenPosition(message.tokenId, message.position, false));
         EventBus.on('p2p:msg:DICE_ROLL', ({ message }) => this.spawnDice(message.rolls));
         EventBus.on('p2p:msg:PLOT_SYNC', ({ message }) => this.updatePlotContext(message.plot));
+        EventBus.on('p2p:msg:CLEAR_TABLE', () => this.clearDice());
     }
 
     updatePlotContext(plot) {

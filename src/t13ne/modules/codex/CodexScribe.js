@@ -1,5 +1,6 @@
 ﻿import Logger from '/src/t13ne/core/Logger.js';
 import CodexDB from '/src/t13ne/modules/codex/CodexDB.js';
+import { isSafeProficiencyId } from './ProficiencyIdentity.js';
 
 /**
  * CodexScribe
@@ -22,59 +23,42 @@ export class CodexScribe {
     isCoreId(id) {
         if (!id) return false;
         const strId = String(id).trim();
-        // Check against known Core manifest paths or numeric range
-        if (this.librarian && this.librarian.profManifest && this.librarian.profManifest.paths[strId]) {
-            const p = this.librarian.profManifest.paths[strId];
-            if (p.includes('/plugins/t13ne/data/json/proficiencies/Profs/')) {
-                return true;
-            }
-        }
-        return false;
+        return this.librarian.coreProficiencyIds.has(strId);
     }
 
     async createProficiency(profData, suggestedId = null) {
         const funcName = 'CodexScribe.createProficiency';
+        if (!profData || typeof profData !== 'object' || Array.isArray(profData)) {
+            throw new Error('CodexScribe: Proficiency data must be an object.');
+        }
         Logger.start(funcName, { name: profData.name, suggestedId });
         await this.librarian._getOrBuildProficiencyManifest();
 
-        if (suggestedId && this.isCoreId(suggestedId)) {
+        const id = suggestedId === null ? null : String(suggestedId);
+        if (id !== null && !isSafeProficiencyId(id)) {
+            throw new Error(`CodexScribe: Invalid Proficiency ID '${id}'.`);
+        }
+        if (id !== null && this.isCoreId(id)) {
             const err = new Error(`CodexScribe: Cannot overwrite Core Proficiency ID '${suggestedId}'. Omniversal Core is immutable.`);
             Logger.error(err.message);
             throw err;
         }
 
-        let newId = suggestedId ? String(suggestedId) : String(this.librarian.nextProfId++);
-
-        const bundleIndex = Math.floor((parseInt(newId, 10) - 1) / 50);
-        const subdir = Math.floor(bundleIndex / 50);
-        const path = `proficiencies/Profs/${subdir}/profs${bundleIndex}.json`;
-        const fullPath = `/plugins/t13ne/data/json/${path}`;
-
-        let bundleData = this.dirtyFiles[fullPath] || await this.library.getData(path) || {};
-
-        // Merge if exists to preserve existing fields during updates
-        if (bundleData[newId]) {
-            bundleData[newId] = { ...bundleData[newId], ...profData, id: newId };
-        } else {
-            bundleData[newId] = { id: newId, ...profData };
+        const record = await CodexDB.saveCustomProficiency(profData, id, this.librarian.coreProficiencyIds);
+        const newId = record.id;
+        const path = `custom-proficiencies/${newId}.json`;
+        for (const index of Object.values(this.librarian.profManifest.indexes)) {
+            for (const key of Object.keys(index)) {
+                index[key] = index[key].filter(value => String(value) !== newId);
+                if (!index[key].length) delete index[key];
+            }
         }
-
-        this.dirtyFiles[fullPath] = bundleData;
-
-        // Update cache in library
-        this.library.cache[path] = bundleData;
-        this.library.cache[fullPath] = bundleData;
-
-        // Update Manifest
-        this.librarian.profManifest.paths[newId] = fullPath;
-        this.librarian._indexProficiency(this.librarian.profManifest, newId, bundleData[newId]);
+        this.dirtyFiles[path] = record;
+        this.librarian.profManifest.paths[newId] = path;
+        this.librarian._indexProficiency(this.librarian.profManifest, newId, record);
+        this.librarian._calcNextProfId();
         this.profManifestIsDirty = true;
-
-        // Save to DB as Knot
-        const knotRecord = { id: newId, type: 'Proficiency', ...profData };
-        await CodexDB.saveKnot(knotRecord);
-
-        Logger.message(`CodexScribe: Created/Updated proficiency ID '${newId}' in '${fullPath}'.`);
+        Logger.message(`CodexScribe: Created/Updated custom proficiency ID '${newId}'.`);
         Logger.end(funcName, newId);
         return newId;
     }

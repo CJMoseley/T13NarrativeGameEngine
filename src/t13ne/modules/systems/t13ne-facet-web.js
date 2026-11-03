@@ -94,8 +94,8 @@ class FacetWeb {
         return stats;
     }
 
-    calculateIChing() {
-        return T13NE_IChing.calculateIChing(this.Stats);
+    calculateIChing(options) {
+        return T13NE_IChing.calculateIChing(this.Stats, options);
     }
 
     getFacetBoon(facetIdentifier) {
@@ -187,7 +187,6 @@ class FacetWeb {
 }
 
 export default FacetWeb;
-
 
 
 

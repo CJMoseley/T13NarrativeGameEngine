@@ -1,8 +1,110 @@
 # Current-state assessment
 
-Date: 2026-11-02. This is a targeted static assessment, not an exhaustive audit or proof of runtime behavior. The working tree contained existing uncommitted changes, including rules documentation, plots, geometry data and an untracked updated-geometry implementation. Those sources must be considered when continuing this work; do not overwrite them. Some geometry changes and tests from the preceding investigation are also uncommitted.
+Updated: 2026-11-03. This is a targeted assessment, not an exhaustive audit or proof of runtime behavior. The implementation and documentation changes described below remain uncommitted in a shared working tree. Preserve unrelated work and verify the actual branch before continuing.
 
 Status vocabulary: **Present** means code or data exists, not that it is production-ready. **Partial** means an inspected path has an explicit limitation. **Unverified** means the path needs an end-to-end test or closer rules review.
+
+## Current implementation handoff
+
+The shared goal is one T13 rules and narrative engine for tabletop/VTT play,
+Wormhole Racers and future games. Simulation is not merely presentation: T13
+capabilities and outcomes should inform physics, and measured simulation
+conditions should inform appropriate T13 decisions. Rules, simulation units
+and game-specific calibration must remain distinguishable.
+
+### Implemented foundations
+
+| Area | Current state and evidence | Boundary |
+|---|---|---|
+| Codex and Proficiencies | [CodexDB](../../src/t13ne/modules/codex/CodexDB.js), validation and identity helpers support custom Proficiencies and preserve Core records. A Proficiency needs a name, description and tags including at least one Facet; numeric IDs are not universally required. | Package-wide versioning, author verification and a complete creator workflow remain open. No complete Core list of Skills, Talents or Powers is assumed. |
+| Descendants and components | [Descendants](../../src/t13ne/modules/characters/t13ne-descendants.js) retain or generate Incarna; [component Facet hints](../../src/t13ne/procgen/ships/components/ComponentFacetHints.js) provide optional candidates. | Annex-derived technology, appropriate Hitches and actual component/physics behavior are not fully integrated. Hints are not mandatory classifications. |
+| Hitches and Facet rules | [HitchRules](../../src/t13ne/modules/mechanics/HitchRules.js) evaluates roles, matching triggers, Marks/Ruins and tier; [FacetRuleRegistry](../../src/t13ne/modules/mechanics/FacetRuleRegistry.js) provides extensible handlers and several Gnarl proposals. Explicit difficulty effects can affect a Dice Test. | This is not automatic Hitch discovery or a complete effect pipeline. Most Facet mechanics require further source-backed encoding, choices, state or adjudication. The Author confirmed a Quirk's maximum Bane is half the relevant Facet Boon numerically. |
+| Rules catalog | [RuleCatalog](../../src/t13ne/modules/mechanics/RuleCatalog.js) combines source pages, Facet pages and sections; [RuleComponent](../../src/t13ne/modules/mechanics/RuleComponent.js) defines source-linked, revision-checked drafts stored in IndexedDB. | A Facet is a page, not a component per section. Draft classification is an unverified assertion; no verification, selection, enforcement or executable-rule pipeline exists. The original source JSON remains in use, including both distinct Character Arcs records. |
+| Character I-Ching | [I-Ching](../../src/t13ne/modules/mechanics/t13ne-iching.js) calculates from 12 Facet pairs, permits a caller-provided tie choice, checks data, and exposes Gain and Unchanging power text. The changing-line lookup and `%` statblock-generation marker were corrected. | UI choice, consistent species generation, save/migration review and execution of powers and Gain conditions remain open. Previously saved hexagrams are not silently recalculated. |
+| Quest spreads | [QuestSpread](../../src/t13ne/modules/mechanics/QuestSpread.js) and the [Cards API](../../src/t13ne/modules/mechanics/t13ne-cards-api.js) explicitly interpret a six-card spread; `Spread:InterpretQuest` accepts it in command context. The Author confirmed each card's two Tao bits represent the corresponding lines of the two hexagrams, bottom to top. | Interpretation does not automatically create or advance a Quest or Plot, resolve card effects, or apply Quest rules. It does not replace other card contexts. |
+| Physics | [PhysicalValueTest](../../src/t13ne/modules/mechanics/PhysicalValueTest.js) compares supplied Values and can apply a caller-calibrated force through [PhysXProvider](../../src/t13ne/core/physics/PhysXProvider.js); ties are left for adjudication. | Experimental explicit API, not a playable interaction or a universal conversion. Character/Descendant lookup, calibration, authority, timing and live game wiring remain open. The racing engine calls a provider capsule method that is currently absent. |
+| Builds and trust | Deployment/static-copy changes and bounded P2P payload handling were made; whole Character objects are no longer broadcast by the changed path. | Payload validation is not authentication, authorization, privacy enforcement, sandboxing or a distributed compute scheduler. Both applications still need end-to-end validation. |
+
+### Source and authority decisions already made
+
+- Compare relevant original PHP, authored rules, current data and JavaScript
+  for each substantial rules change; do not assume any one implementation is
+  always correct or silently copy known defects. Record discrepancies and
+  consult the Author when a rule remains ambiguous.
+- The legacy I-Ching changing-line `% 63` wraps the last hexagram incorrectly;
+  the Author confirmed `% 64` was intended. Current JavaScript instead
+  validates indexes. The legacy Quest trigram arithmetic cannot represent all
+  hexagrams; the card-to-line mapping above was confirmed by the Author.
+- The Core is immutable during play but authorized maintainers can release
+  canonical revisions. Verification, authorization and execution isolation
+  are separate. A local trusted JavaScript handler is not a sandbox for
+  downloaded code.
+- Individual rule pages can contain required and optional extractable rules.
+  Cards have context-dependent uses and interpretations; do not collapse
+  Quest, Ordeal, Tarot, Wound and other uses into one meaning.
+
+### Remaining work, in practical order
+
+1. **Establish reproducible parity and state.** Trace rules against PHP and
+   later authoritative sources, reconcile the root and companion consumers,
+   verify save compatibility and migrations, and establish versioned session,
+   authority and event contracts. Preserve source distinctions and record
+   unresolved discrepancies rather than overwriting old data.
+2. **Make rule components usable.** Add source/version provenance,
+   authorized verification, game/referee selection, dependency validation,
+   import/export and explicit execution permissions. Implement one selected
+   rule through a real Test/Hitch outcome with persistence and replay tests;
+   extend state machines around actual lifecycles rather than replacing them
+   wholesale.
+3. **Complete Character I-Ching.** Connect player tie choices to creation and
+   editing; assess species and other generation paths against Facet pairing
+   rules; preserve existing saves and choices. Encode and test Unchanging
+   powers and changing-line effects individually against PHP and rules. Avoid
+   treating display text as an executable power.
+4. **Model Gains without forcing every condition into one category.** Define
+   observations, contextual evidence, rule-specific matchers or explicit
+   player/referee adjudication, authority, deduplication, effects and an
+   audit trail. Reconcile the existing manual `IChing:GrantReward` command,
+   including unsupported reward types and condition/authority checks.
+5. **Connect Quest, Yarn cards and Plots.** Trace the PHP spread and Plot
+   implementations and source card contexts; carry interpreted hexagrams,
+   trigrams, line rules and card roles into a persistent Quest/Plot lifecycle.
+   Define choices, completion, effects and role authority; test draw,
+   interpretation, play, persistence and continuation. Do not equate an
+   AI-generated narrative or command with an authorized rules outcome.
+6. **Complete physics integration.** Verify and repair the actual PhysX
+   provider and runnable scene, then connect Character and Annex/Descendant
+   properties, suitable Hitches, units and author-approved calibration in
+   both directions. Test a real physical interaction with recorded inputs and
+   observable results; account for physics nondeterminism, repeated forces,
+   authority and simulation observations. Do not claim movement from a mock
+   provider test.
+7. **Finish remaining rule families and products.** Encode Criticals,
+   Failures, Gnarls and other cross-Facet systems with their real choices and
+   timing. Then verify a tabletop/VTT session and a playable race using the
+   shared engine, including multiplayer privacy and recovery.
+
+The broader dependencies and acceptance gates are in the
+[roadmap](roadmap.md). These items describe unfinished work, not a claim that
+the current prototypes implement complete rules.
+
+### Latest validation
+
+- `npm test`: 33 Node tests passed after the Character I-Ching changes. These
+  are focused tests, not complete rules, browser, multiplayer or gameplay
+  validation. The physical-force test uses a mock PhysX body.
+- A prior Chromium test covered IndexedDB v2-to-v3 upgrade, data preservation,
+  draft persistence and concurrent revision conflicts. It did not validate
+  the later Quest, I-Ching or physics paths.
+- A root production build succeeded earlier into isolated output before the
+  final component-store and later changes; it is not evidence that the
+  current tree builds or that either application runs end to end.
+
+## Earlier baseline assessment
+
+The following inventory records the 2026-11-02 assessment. It may describe
+issues subsequently addressed in the handoff above; retain it as historical
+context rather than treating every statement as current.
 
 ## What exists
 

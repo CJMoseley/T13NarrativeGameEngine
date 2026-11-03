@@ -8,6 +8,7 @@ import T13NE_Stakes from '/src/t13ne/modules/systems/ordeals/t13ne-stakes.js';
 import T13NE_Sway from "/src/t13ne/modules/mechanics/t13ne-sway.js";
 import T13NE_Stress from "/src/t13ne/modules/mechanics/t13ne-stress.js";
 import T13NE_Resources from "/src/t13ne/modules/mechanics/t13ne-resources.js";
+import { getDifficultyModifiers } from './FacetRuleEffects.js';
 
 /**
  * Module for handling T13NE Tests (Value, Card Draw, Dice).
@@ -155,6 +156,9 @@ class T13NE_Tests {
      * @returns {Promise<object>} The test result.
      */
     async performTest(type, character, options) {
+        if (options.difficultyEffects !== undefined && type.toLowerCase() !== 'dice') {
+            throw new Error('Difficulty effects are currently supported only for Dice Tests.');
+        }
         switch (type.toLowerCase()) {
             case 'value': return this.valueTest(character, options);
             case 'card': return this.cardTest(character, options);
@@ -313,7 +317,7 @@ class T13NE_Tests {
     /**
      * Performs a Dice Test.
      * @param {object} character 
-     * @param {object} options - { facet: string, difficulty: number, pool: boolean, proficiencies: number|Array, descendant: object, annex: object, potency: string }
+     * @param {object} options - { facet, difficulty, pool, proficiencies, descendant, annex, potency, difficultyEffects }
      */
     async diceTest(character, options) {
         const facetName = options.facet || 'Awe';
@@ -338,6 +342,9 @@ class T13NE_Tests {
             else if (potency === 'Bold') targetDifficulty = baseDifficulty;
             // Monstrous/Twisted logic can be added if needed, usually lower
         }
+        const difficultyModifiers = options.difficultyEffects === undefined
+            ? null : getDifficultyModifiers(options.difficultyEffects);
+        if (difficultyModifiers) targetDifficulty += difficultyModifiers.score;
 
         let diceResults = [];
         let details = [];
@@ -568,7 +575,8 @@ class T13NE_Tests {
             resultType: resultType,
             crisis: crisis,
             details: details,
-            diceResults: diceResults
+            diceResults: diceResults,
+            ...(difficultyModifiers ? { difficultyModifiers } : {})
         };
     }
 
@@ -636,8 +644,6 @@ class T13NE_Tests {
 }
 
 export default new T13NE_Tests();
-
-
 
 
 

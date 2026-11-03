@@ -15,8 +15,9 @@ overridden by game or universe content. Authorized maintainers may release
 a new canonical Core version. Genre, era, scope and Facet tags describe
 applicability, not permission to overwrite an identity.
 
-Use the current rules and data, compare substantive revisions and use legacy
-PHP only as a historical reference; do not execute it. Ask the Author when
+Use the current rules and data and compare substantive revisions against the
+original PHP and JavaScript; treat PHP as important evidence, not automatically
+correct, and do not execute it. Ask the Author when
 rules conflict or when simplified behavior is unspecified. T13 subsystems
 can be enabled or disabled independently; do not invent fallback rules.
 Preserve existing data and saves, record migrations, and never delete a
@@ -116,8 +117,9 @@ existing bundle inventory and tagging data.
   A package cannot replace Core identities. Reject duplicate identities and
   report their source; do not infer identity from a name or genre tag.
   Define how package identity scopes non-Core IDs and how clients agree on
-  package versions before sharing state. Ask the Author if legacy numeric ID
-  compatibility needs a policy decision.
+  package versions before sharing state. Numeric IDs are a legacy catalogue
+  convention, not a T13 rule; preserve existing numeric references while
+  supporting nonnumeric identifiers.
 - Reuse genre, era and scope tags, including numeric `1` for Core genre,
   Timeless era and Omniversal scope as defined in the current tag data.
   Preserve provenance and distinguish content selection from authorization.
@@ -139,6 +141,9 @@ Core. Inspect [CodexScribe](../../src/t13ne/modules/codex/CodexScribe.js),
 [CodexDB](../../src/t13ne/modules/codex/CodexDB.js), commands, AnnexFactory
 and existing saved data before modifying their contracts.
 
+- A Proficiency needs a Name, Description and tags including at least one
+  Facet. Core Proficiencies are typically single-Facet; Core Skills, Talents
+  and Powers can use multiple Facets. A complete Core list is not a goal.
 - Prevent runtime writes to Core records and bundles; preserve a separate,
   versioned maintainer workflow. Reject Core-ID collisions before mutation.
 - Replace ID-to-bundle arithmetic and success-shaped missing-file fallbacks

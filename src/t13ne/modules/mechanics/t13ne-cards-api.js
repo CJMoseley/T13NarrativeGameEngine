@@ -10,6 +10,7 @@ import PRNG from '../systems/t13ne-prng.js';
 import dice from './t13ne-dice.js';
 import Logger from '../../core/Logger.js';
 import CodexLoader from '../codex/CodexLoader.js'; // Import CodexLoader
+import { interpretQuestSpread } from './QuestSpread.js';
 
 // Helper function to gather entropy from various browser sources
 async function gatherEntropy() {
@@ -487,6 +488,12 @@ class T13NECardsAPI {
             topDiscard: this.deck.getTopDiscard(), // Include the top card of the discard pile
             spreadDefinition: spreadDef
         };
+    }
+
+    interpretQuestSpread(spread) {
+        const iching = this.t13ne?.getModule('IChing');
+        if (!iching?.initialized) throw new Error('I-Ching must be initialized to interpret a Quest spread.');
+        return interpretQuestSpread(spread, iching.iching);
     }
 
     /**

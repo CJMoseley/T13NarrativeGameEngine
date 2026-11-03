@@ -38,4 +38,9 @@ test('Required runtime assets and configurations are present and valid', async (
 
     const companionViteConfig = await readFile(path.join(root, 'ttrpg-companion/vite.config.js'), 'utf8');
     assert.ok(companionViteConfig.includes('dist-ttrpg'), 'ttrpg-companion vite config must direct builds to dist-ttrpg');
+
+    for (const workflow of ['deploy-pages.yml', 'deploy-gh-pages.yml']) {
+        const source = await readFile(path.join(root, '.github/workflows', workflow), 'utf8');
+        assert.match(source, /path:\s*\.\/dist-build\s*$/m, `${workflow} must publish the root build output`);
+    }
 });

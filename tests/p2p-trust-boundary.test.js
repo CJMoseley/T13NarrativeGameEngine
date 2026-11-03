@@ -5,7 +5,7 @@ import path from 'node:path';
 
 const root = process.cwd();
 
-test('P2PNetworkManager enforces trust boundary on incoming messages', async () => {
+test('P2PNetworkManager validates supported incoming VTT messages', async () => {
     const p2pSource = await readFile(path.join(root, 'src/t13ne/core/P2PNetworkManager.js'), 'utf8');
     const moduleSource = p2pSource
         .replace(/import \{ EventBus \} from [^;]+;/, 'const EventBus = { emit() {} };')
@@ -34,4 +34,12 @@ test('P2PNetworkManager enforces trust boundary on incoming messages', async () 
     // 5. Non-object payload is dropped
     assert.equal(mgr.validateIncomingMessage(JSON.stringify(['array_payload']), 'peer_5'), null);
     assert.equal(mgr.validateIncomingMessage(null, 'peer_5'), null);
+    assert.equal(mgr.validateIncomingMessage({ type: 'DICE_ROLL', rolls: [1] }, 'peer_5'), null);
+    assert.equal(mgr.validateIncomingMessage(JSON.stringify({ type: 'DICE_ROLL' }), 'peer_5'), null);
+    assert.equal(mgr.validateIncomingMessage(JSON.stringify({ type: 'TOKEN_MOVE', tokenId: 'a' }), 'peer_5'), null);
+    assert.equal(mgr.validateIncomingMessage(JSON.stringify({ type: 'PLOT_SYNC' }), 'peer_5'), null);
+    assert.equal(mgr.validateIncomingMessage(JSON.stringify({ type: 'ENTITY_TRANSFER' }), 'peer_5'), null);
+    assert.ok(mgr.validateIncomingMessage(JSON.stringify({ type: 'CLEAR_TABLE' }), 'peer_5'));
+    assert.ok(mgr.validateIncomingMessage(JSON.stringify({ type: 'TOKEN_MOVE', tokenId: 'a', position: { x: 1, z: 2 } }), 'peer_5'));
+    assert.equal(mgr.validateIncomingMessage(JSON.stringify({ type: 'DICE_ROLL', rolls: [1], extra: 'é'.repeat(70000) }), 'peer_5'), null);
 });

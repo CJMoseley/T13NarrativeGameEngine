@@ -15,7 +15,7 @@ for (const copy of copies) {
         const moduleSource = source.replace(
             /import Logger from [^;]+;/,
             'const Logger = { message() {}, warn() {}, error() {} };'
-        );
+        ).replace(/import CodexDB from [^;]+;/, 'const CodexDB = { migrateLegacyProficiencies: async () => [], listCustomProficiencies: async () => [] };');
         const { CodexLibrarian } = await import(`data:text/javascript;base64,${Buffer.from(moduleSource).toString('base64')}`);
         const cache = new Map([
             ['T13NE_PROF_MANIFEST_VERSION', '1.0.0'],
@@ -56,6 +56,13 @@ for (const copy of copies) {
         assert.ok(manifest.indexes.facet['23'].includes('1960'));
         assert.equal((await librarian.getProficiency(3613)).prof.Name[0], 'Shield');
         assert.equal(librarian.nextProfId, Math.max(...Object.keys(manifest.paths).map(Number)) + 1);
+        if (copy === 'src/t13ne') {
+            const previous = librarian.nextProfId;
+            manifest.paths['999999named'] = 'custom-proficiencies/999999named.json';
+            librarian._calcNextProfId();
+            assert.equal(librarian.nextProfId, previous);
+            delete manifest.paths['999999named'];
+        }
         assert.ok(librarian.nextProfId > 3853);
         assert.ok(await librarian.getProficiency(librarian.nextProfId - 1));
         assert.equal(cache.get('T13NE_PROF_MANIFEST_VERSION'), '3.0.0');

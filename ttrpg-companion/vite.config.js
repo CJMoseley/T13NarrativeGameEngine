@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { defineConfig, normalizePath } from 'vite';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -20,16 +20,16 @@ export default defineConfig(({ mode }) => {
         targets: [
           {
             // Copy the project's physics binary helper.
-            src: path.resolve(__dirname, '../public/ammo/ammo.wasm.js'),
+            src: normalizePath(path.resolve(__dirname, '../public/ammo/ammo.wasm.js')),
             dest: 'libs'
           },
           {
-            src: path.resolve(__dirname, '../public/ammo/ammo.wasm.wasm'),
+            src: normalizePath(path.resolve(__dirname, '../public/ammo/ammo.wasm.wasm')),
             dest: 'libs'
           },
           {
             // Copy the T13NE engine data directory so that the companion dev server can load the library codex
-            src: path.resolve(__dirname, '../src/t13ne/data'),
+            src: normalizePath(path.resolve(__dirname, '../src/t13ne/data')),
             dest: 'plugins/t13ne'
           }
         ]

@@ -192,6 +192,8 @@ Characters are expected to have a selection of Quirks, that define minor aspects
 
 ### Hitch Tiers
 
+For the Quirk limit, half the Facet Boon means dividing the Boon itself by two. This is distinct from the Half-Boon calculated from a halved Value.
+
 | Tier | Direction | Description | Gnarls |
 | --- | --- | --- | --- |
 | Quirk | quirk | The smallest tier of Hitches, are called Quirks and are intended for subtle characterization, and annoying nuisances. Quirks may have a Boon no greater than Half the Character’s Facet Boon | 1 |

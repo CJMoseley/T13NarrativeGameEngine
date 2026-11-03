@@ -1,5 +1,7 @@
 # Facet Folio
 
+The engine's catalog reads rule pages, Facet pages and their sections from their existing sources. A section is not automatically an individual rule. A registered handler identifies a rule that can produce an effect; it does not by itself mean that effect is applied to a game.
+
 T13 like most RPGs abstracts real-world characteristics into something that we model in the game. In the most popular roleplaying games you find six Stats that govern the Character’s Strength, Dexterity, Stamina, Intelligence, Wisdom and Charisma, but then add different mechanisms to determine how lawful, chaotic, good or evil a Character may be. In T13, everything about a Character can be extracted into the Character "Stats", but to do this we require more than six Stats.
 
 T13 uses 24 "Stats" (although they are bound together to make opposed Pairs) that are known as Facets (as in the facets of the character) each Facet has a recognised Anti-Facet that opposes it, and for most Characters their rating in a Facet negatively impacts their rating in the Anti-Facet, automatically providing balance for high powered Stats. A Character with a 16 Boon in Awe is limited to a 10 Boon in Jeer, so they are a little more likely to intimidate or impress someone, than make them laugh.

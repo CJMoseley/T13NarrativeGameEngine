@@ -32,12 +32,18 @@ class T13NE_IChing {
                 CodexLoader.getData('iching', 'trigrams.json')
             ]);
 
-            this.iching = ichingDataArray.filter(h => h !== null).sort((a, b) => a.Hexagram.Number - b.Hexagram.Number);
+            if (ichingDataArray.some(h => !h?.Hexagram ||
+                !Number.isInteger(h.Hexagram.Logical) || h.Hexagram.Logical < 0 || h.Hexagram.Logical > 63) ||
+                new Set(ichingDataArray.map(h => h.Hexagram.Logical)).size !== 64) {
+                throw new Error('I-Ching requires all 64 distinct hexagrams.');
+            }
+            this.iching = ichingDataArray.sort((a, b) => a.Hexagram.Number - b.Hexagram.Number);
             this.trigrams = trigramsData || [];
             this.initialized = true;
             Logger.message(`T13NE_IChing: Initialized successfully with ${this.iching.length} hexagrams.`);
         } catch (error) {
             Logger.error(`T13NE_IChing: Initialization failed: ${error}`);
+            throw error;
         }
     }
 
@@ -48,9 +54,10 @@ class T13NE_IChing {
     }
 
     getLogical(number) {
-        if (!this.initialized) return 0;
+        if (!this.initialized) throw new Error('I-Ching must be initialized before looking up hexagrams.');
         const index = this.iching.findIndex(h => h.Hexagram.Logical == number);
-        return index > -1 ? index : 0;
+        if (index < 0) throw new Error(`Hexagram logical value ${number} was not found.`);
+        return index;
     }
 
     getLogicalTrigram(number) {
@@ -59,30 +66,38 @@ class T13NE_IChing {
         return index > -1 ? index : 0;
     }
 
-    calculateIChing(stats) {
+    calculateIChing(stats, options = {}) {
         if (!this.initialized) {
-            Logger.warn("T13NE_IChing not initialized, returning default hexagrams.");
-            return [0, 63];
+            throw new Error('I-Ching must be initialized before calculating Character hexagrams.');
         }
 
-        let statPairs = (stats && stats.Stats) ? stats.Stats : (Array.isArray(stats) ? stats : []);
-        if (!Array.isArray(statPairs)) {
-            return [0, 63];
+        const statPairs = Array.isArray(stats) ? stats : stats?.Stats;
+        if (!Array.isArray(statPairs) || statPairs.length !== 12) {
+            throw new TypeError('Character I-Ching requires exactly twelve Facet pairs.');
+        }
+        if (options.chooseTie !== undefined && typeof options.chooseTie !== 'function') {
+            throw new TypeError('I-Ching tie choice must be a function.');
         }
 
         const logical = [0, 0];
         let i = 0;
         for (const statpair of statPairs) {
-            if (i >= 12) break;
-            const facetBoon = (statpair['Facet_Boon'] || 0) + (statpair['Facet_Mutation_Matrix'] || 0);
-            const antifacetBoon = (statpair['Antifacet_Boon'] || 0) + (statpair['Antifacet_Mutation_Matrix'] || 0);
+            const values = [statpair?.Facet_Boon, statpair?.Antifacet_Boon,
+                statpair?.Facet_Mutation_Matrix ?? 0, statpair?.Antifacet_Mutation_Matrix ?? 0];
+            if (values.some(value => !Number.isFinite(value))) {
+                throw new TypeError(`Facet pair ${i + 1} requires finite Boons and mutations.`);
+            }
+            const facetBoon = values[0] + values[2];
+            const antifacetBoon = values[1] + values[3];
             const targetIndex = i < 6 ? 0 : 1;
             const bitPosition = i % 6;
 
             if (facetBoon > antifacetBoon) {
                 logical[targetIndex] |= (1 << bitPosition);
             } else if (facetBoon === antifacetBoon) {
-                logical[targetIndex] |= (T13Dice.RNG(0, 1) << bitPosition);
+                const choice = options.chooseTie ? options.chooseTie({ index: i, pair: statpair }) : T13Dice.RNG(0, 1);
+                if (choice !== 0 && choice !== 1) throw new TypeError('I-Ching tie choice must be 0 or 1.');
+                logical[targetIndex] |= choice << bitPosition;
             }
             i++;
         }
@@ -91,10 +106,36 @@ class T13NE_IChing {
         return hex;
     }
 
+    getCharacterRules(hexes) {
+        if (!Array.isArray(hexes) || hexes.length !== 2) {
+            throw new TypeError('Character I-Ching requires two hexagram indexes.');
+        }
+        const mask = this.binXor(hexes[0], hexes[1]);
+        const record = this.iching[hexes[0]];
+        const character = record.Hexagram_Character;
+        if (!character || !Array.isArray(character.Gains) || !Array.isArray(character.LineGains)) {
+            throw new Error('Hexagram Character rules are missing.');
+        }
+        return {
+            hexagramNumber: record.Hexagram.Number,
+            gains: character.Gains,
+            changingLines: character.LineGains.filter(line => mask & (1 << (line.Line - 1))),
+            unchangingPower: mask === 0 ? record.Hexagram.Unchanging : null
+        };
+    }
+
     binXor(pex, fex) {
-        if (!this.initialized || !this.iching[pex] || !this.iching[fex]) return 0;
-        const logical1 = this.iching[pex % 64]['Logical'];
-        const logical2 = this.iching[fex % 64]['Logical'];
+        if (!this.initialized) throw new Error('I-Ching must be initialized before comparing hexagrams.');
+        if (!Number.isInteger(pex) || !Number.isInteger(fex) ||
+            !this.iching[pex] || !this.iching[fex]) {
+            throw new RangeError('Changing lines require two valid hexagram indexes.');
+        }
+        const logical1 = this.iching[pex].Hexagram?.Logical;
+        const logical2 = this.iching[fex].Hexagram?.Logical;
+        if (!Number.isInteger(logical1) || logical1 < 0 || logical1 > 63 ||
+            !Number.isInteger(logical2) || logical2 < 0 || logical2 > 63) {
+            throw new Error('Hexagrams must have valid six-bit logical values.');
+        }
         return logical1 ^ logical2;
     }
 
@@ -210,7 +251,7 @@ class T13NE_IChing {
         if (hex1 === hex2 || twisted || all) {
             rethtml += `<section class="t13ne-hex-unchanging"><strong>Unchanging Edge: </strong><span class="t13ne-hex-unchanging">${unchanging}</span></section>`;
         }
-        if (hex1 !== hex2 || all) {
+        if (!twisted && (hex1 !== hex2 || all)) {
             const cl = this.binXor(hex1, hex2);
             rethtml += `<section class="t13ne-changinglines" data-cl="${cl}"><strong class="t13ne-changing">Changing Lines</strong><ul class="t13ne-changinglines">`;
             for (let i = 0; i < 6; i++) {
@@ -267,9 +308,6 @@ class T13NE_IChing {
 }
 
 export default new T13NE_IChing();
-
-
-
 
 
 

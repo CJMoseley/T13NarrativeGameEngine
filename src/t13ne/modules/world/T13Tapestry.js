@@ -186,7 +186,7 @@ class T13Tapestry extends FacetWeb {
 
         const stats = this.buildStats(boons, sways);
 
-        if (Array.isArray(hex) && hex[0] === '%') {
+        if (hex === '%' || (Array.isArray(hex) && hex[0] === '%')) {
             const tempWeb = new FacetWeb({ Stats: stats });
             hex = tempWeb.calculateIChing();
         }
@@ -455,7 +455,6 @@ class T13Tapestry extends FacetWeb {
 }
 
 export default T13Tapestry;
-
 
 
 

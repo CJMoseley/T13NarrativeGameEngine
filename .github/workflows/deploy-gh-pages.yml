@@ -31,10 +31,10 @@ jobs:
 
       - name: Package referee server
         run: |
-          mkdir -p dist/server
+          mkdir -p dist-build/server
           if [ -d server ]; then
             cd server
-            zip -r "../dist/server/referee-server.zip" . -x "node_modules/*" "*.log" || true
+            zip -r "../dist-build/server/referee-server.zip" . -x "node_modules/*" "*.log" || true
             cd -
           else
             echo "No server folder found to package"
@@ -42,9 +42,9 @@ jobs:
 
       - name: Copy docs for publishing
         run: |
-          mkdir -p dist/docs
+          mkdir -p dist-build/docs
           if [ -d docs ]; then
-            cp -r docs/* dist/docs/ || true
+            cp -r docs/* dist-build/docs/ || true
           else
             echo "No docs folder to copy"
           fi
@@ -52,7 +52,7 @@ jobs:
       - name: Upload build artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./dist
+          path: ./dist-build
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v1

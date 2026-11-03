@@ -615,6 +615,7 @@ export class Character extends SuperKnot {
             const allFaceBoon = rng.range(8, 18) + charData.scaleModifier;
             charData.statblock = Tapestry.setStats(0, Array(12).fill(allFaceBoon), [0], charData.scaleModifier, ['%', '%'], charData.name[0]);
             charData.facetweb = new Tapestry(charData.statblock);
+            charData.iching = charData.statblock.Hex;
 
             // Calculate grouped stats
             charData.archetypeStats = {};
@@ -679,7 +680,6 @@ export class Character extends SuperKnot {
         return character;
     }
 }
-
 
 
 

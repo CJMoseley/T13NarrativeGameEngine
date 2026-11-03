@@ -430,6 +430,12 @@ export class T13NECommands {
     }
 
     registerSpreadCommands() {
+        this.registerCommand('Spread', 'InterpretQuest', async (args, ctx) => {
+            const cards = this.t13ne.getModule('CardsAPI');
+            if (!cards) throw new Error('CardsAPI is required to interpret a Quest spread.');
+            return { type: 'QuestSpreadInterpreted', quest: cards.interpretQuestSpread(ctx.spread) };
+        });
+
         // Spread:Get(spreadId=three-card-past-present-future)
         this.registerCommand('Spread', 'Get', async (args, ctx) => {
             const CardsAPI = this.t13ne.getModule('CardsAPI');
@@ -717,7 +723,7 @@ export class T13NECommands {
         this.registerCommand('Proficiency', 'Create', async (args, ctx) => {
             const Codex = this.t13ne.getModule('Codex');
             const profData = {
-                Name: [args.name || "New Proficiency", args.fullName || ""],
+                Name: [args.name || "", args.fullName || ""],
                 Description: args.description || "",
                 Tags: args.tags || {}
             };

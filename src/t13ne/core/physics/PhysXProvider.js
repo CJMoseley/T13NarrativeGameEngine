@@ -189,6 +189,16 @@ export class PhysXProvider {
         this.gravityCenter = center;
     }
 
+    applyForce(mesh, force) {
+        if (!this.initialized) throw new Error('PhysX provider is not initialized.');
+        if (!force || !['x', 'y', 'z'].every(axis => Number.isFinite(force[axis]))) {
+            throw new TypeError('Force must be a finite vector.');
+        }
+        const entry = this.bodies.get(mesh);
+        if (!entry || entry.isStatic) throw new Error('Force requires a registered dynamic body.');
+        entry.body.addForce({ x: force.x, y: force.y, z: force.z }, this.physx.PxForceMode.eFORCE);
+    }
+
     applyCustomGravity() {
         if (this.gravityMode === 'none' || !this.initialized) return;
         this.bodies.forEach((data, mesh) => {

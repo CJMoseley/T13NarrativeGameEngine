@@ -7,6 +7,7 @@ import { PlanetSurfaceEnvironment } from '/src/t13ne/procgen/planet/PlanetSurfac
 import { WormholeEnvironment } from '/src/t13ne/procgen/galaxy/WormholeEnvironment.js';
 import { Controls } from '/src/t13ne/core/Controls.js';
 import { ComponentDefs } from '/src/t13ne/procgen/ships/components/ComponentDefs.js';
+import { applyPhysicalValueTest } from '../modules/mechanics/PhysicalValueTest.js';
 
 export class AdvancedPhysicsEngine {
     constructor(gameEngine) {
@@ -244,6 +245,10 @@ export class AdvancedPhysicsEngine {
         this.keys.q = keyboard.addKey('Q');
         this._keysInitialized = true;
         Logger.end(funcName);
+    }
+
+    applyPhysicalValueTest(options) {
+        return applyPhysicalValueTest({ ...options, physics: this.physx });
     }
 
     applyThrust() {

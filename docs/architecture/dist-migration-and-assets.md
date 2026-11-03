@@ -33,7 +33,7 @@ The repository currently tracks 57 files under `dist/`. In a standard web archit
 | Asset Type | Location | Required for Runtime / Tests | Committed Status | Provisioning / Behavior if Missing |
 |------------|----------|------------------------------|------------------|------------------------------------|
 | **Physics WASM** | `public/ammo/ammo.wasm.{js,wasm}` | Yes (VTT 3D physics scenes) | Committed in `public/ammo/` | Bundled via `viteStaticCopy` to target output; served statically. |
-| **Codex & Data JSONs** | `src/t13ne/data/json/` & `public/data/` | Yes (CodexLibrary, rulebook, game state) | Committed in git | Loaded at runtime via fetch; missing files raise actionable errors in `CodexLibrary`. |
+| **Codex & Data JSONs** | `src/t13ne/data/json/` & `public/data/` | Yes (CodexLibrary, rulebook, game state) | Committed in git | Loaded at runtime via fetch; some missing files currently return null rather than an actionable error. |
 | **Card / Facet Art** | `public/media/images/` | Optional (Visual cards / iconography) | Partially committed (SVGs/PNGs) | Card component falls back to Unicode/ASCII symbols if image unavailable. |
 | **3D Models** | `public/data/models/` | Optional (detailed ship & environment meshes) | Non-committed (gitignored) | Procedural geometries generated in Three.js fallback gracefully. |
 | **Audio Samples / Loops**| `public/media/audio/loops/` | Optional (ambient music & procedural audio) | Non-committed / gitignored | Synthesizers/Markov generator fallback gracefully; manifests index available files. |
@@ -42,14 +42,11 @@ The repository currently tracks 57 files under `dist/`. In a standard web archit
 
 ## 3. Investigation of Windows `EPERM` During Sample Copying
 
-### Cause Analysis:
-During Vite builds (`viteStaticCopy`), `public/media/audio/loops` and `src/t13ne/data` are copied to build output targets.
-On Windows environments:
-1. **File System Locks & Antivirus Scanners:** Windows file locks prevent overwriting or deleting files currently opened by running dev server processes or background indexers.
-2. **Special Characters in Filenames:** Several audio sample sidecar directories contain hash marks (`#`) and brackets (`[ABLETON]`, `[LOGIC]`, `MA_Aerofoil_80_A#_TapeGuitar.wav.asd`). In Windows node environments, certain path-copying routines fail with `EPERM` when encountering locked handles or unescaped path characters.
-3. **Overlapping Output Directories:** Building into the same output directory while Vite is serving or watching locks destination files.
+### Status
+An isolated Windows build failed with `EPERM` while copying a local audio
+sample. The underlying cause is not established; locks, permissions and
+other filesystem conditions require investigation. Root Vite builds copy
+the public directory, which can include locally present ignored media.
 
-### Resolution & Prevention:
-- Use isolated, non-overlapping build output directories (`dist-build/` and `dist-ttrpg/`) with `emptyOutDir: true`.
-- Never attempt to copy non-committed media directories (`public/media/audio/samples/`) during standard builds.
-- Configure `viteStaticCopy` targets explicitly with normalized paths.
+The root and companion use separate output directories (`dist-build/` and
+`dist-ttrpg/`), but isolation alone has not been shown to resolve the error.

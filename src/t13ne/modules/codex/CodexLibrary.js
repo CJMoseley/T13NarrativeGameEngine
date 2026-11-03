@@ -1,6 +1,12 @@
 import Logger from '/src/t13ne/core/Logger.js';
 import CodexDB from '/src/t13ne/modules/codex/CodexDB.js';
 
+function isSafeRelativePath(value) {
+    return typeof value === 'string' && value.length > 0 &&
+        !value.startsWith('/') && !/[\\%?#\x00-\x1f]/.test(value) &&
+        !value.split('/').some(part => part === '.' || part === '..' || part === '');
+}
+
 /**
  * CodexLibrary
  * Responsible for raw file I/O, caching, and the base library index.
@@ -97,9 +103,7 @@ export class CodexLibrary {
     }
 
     getFilePath(category, file) {
-        if (!category || !file || typeof category !== 'string' || typeof file !== 'string') return null;
-        // Validate paths against directory traversal
-        if (category.includes('..') || file.includes('..') || category.startsWith('/') || file.startsWith('/')) {
+        if (!isSafeRelativePath(category) || !isSafeRelativePath(file)) {
             Logger.warn(`CodexLibrary: Rejected potentially unsafe path traversal in category '${category}' file '${file}'`);
             return null;
         }
@@ -125,6 +129,10 @@ export class CodexLibrary {
     }
 
     async getData(categoryOrKey, file) {
+        if (!isSafeRelativePath(categoryOrKey) || (file !== undefined && !isSafeRelativePath(file))) {
+            Logger.warn(`CodexLibrary: Rejected unsafe data path '${categoryOrKey}' file '${file}'.`);
+            return null;
+        }
         let category = categoryOrKey;
         let fileName = file;
 
@@ -293,7 +301,6 @@ export class CodexLibrary {
         }
     }
 }
-
 
 
 
