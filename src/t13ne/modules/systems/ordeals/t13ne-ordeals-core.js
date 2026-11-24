@@ -3,7 +3,7 @@ import Logger from "../../../core/Logger.js";
 import T13NECardsAPI from "../../mechanics/t13ne-cards-api.js";
 import T13NE_Stakes from "./t13ne-stakes.js";
 import T13NE_NarrativeTricks from "./t13ne-narrative-tricks.js";
-import PRNG from "../t13ne-prng.js";
+import { MIN_STAGE_CARDS, MAX_STAGE_CARDS, MIN_OBSTACLE_DIFFICULTY_CARDS, MAX_OBSTACLE_DIFFICULTY_CARDS, suitTheme, sumPips } from "./t13ne-ordeal-rules.js";
 
 /**
  * @class OrdealStage
@@ -16,84 +16,51 @@ export class OrdealStage {
         this.index = index;
         this.type = data.Type || 'Generic';
         this.description = data.Description || `Stage ${index + 1}`;
-        this.difficulty = 0;
+        // Pips. Null until the Yarn-Teller or Referee sets it.
+        this.difficulty = null;
         this.cards = [];
         this.obstacles = [];
         this.isComplete = false;
     }
 
     /**
-     * Initializes the stage by drawing cards to determine difficulty and obstacles.
-     * @param {number} baseDifficulty - Base difficulty from the Ordeal.
-     * @param {string} [stakes='Low'] - The stakes of the ordeal.
+     * Sets the Stage Difficulty from the Stage cards: the Pips of 1 to 3 cards.
+     * @param {Array<object>} cards - The Stage cards, chosen by the Yarn-Teller or Referee.
      */
-    initialize(baseDifficulty, stakes = 'Low') {
-        // Draw cards to define the stage difficulty
-        if (T13NECardsAPI.isInitialized) {
-            const spread = T13NECardsAPI.getCardSpread('stage'); // Assuming a 'stage' spread exists or we draw manually
-            if (spread && spread.cards) {
-                this.cards = spread.cards.map(c => c.card);
-                // Calculate difficulty from cards (sum of pips)
-                this.difficulty = this.cards.reduce((sum, card) => sum + (parseInt(card.pips) || 0), 0);
-            } else {
-                // Fallback draw
-                const cards = T13NECardsAPI.deck.draw(2);
-                this.cards = cards;
-                this.difficulty = cards.reduce((sum, card) => sum + (parseInt(card.pips) || 0), 0);
-            }
-        } else {
-            this.difficulty = baseDifficulty || 10;
+    setDifficultyFromCards(cards) {
+        if (!Array.isArray(cards) || cards.length < MIN_STAGE_CARDS || cards.length > MAX_STAGE_CARDS) {
+            throw new Error(`OrdealStage ${this.index}: a Stage Difficulty needs ${MIN_STAGE_CARDS}-${MAX_STAGE_CARDS} cards.`);
         }
-
-        // Add Obstacles based on difficulty or random chance
-        this.generateObstacles(stakes);
+        this.cards = cards;
+        this.difficulty = sumPips(cards);
     }
 
     /**
-     * Generates random obstacles based on difficulty and stakes.
-     * @param {string} stakes 
+     * Adds an Obstacle. It is defined by a type card, whose suit sets the Obstacle type,
+     * and 1 or 2 Difficulty cards whose Pips are added together.
+     * @param {object} obstacle
+     * @param {object} obstacle.typeCard - The card that sets the Obstacle type.
+     * @param {Array<object>} obstacle.difficultyCards - The 1 or 2 cards that give the Pips Difficulty.
+     * @param {string} [obstacle.description] - Description shown to Players.
+     * @returns {object} The Obstacle.
      */
-    generateObstacles(stakes) {
-        const stakeData = T13NE_Stakes.getStake(stakes);
-        const multiplier = stakeData ? (stakeData.Cost_Multiplier || 1) : 1;
-
-        // Determine number of obstacles: roughly 1 per 15 difficulty points, minimum 1
-        const numObstacles = Math.max(1, Math.floor(this.difficulty / 15));
-
-        for (let i = 0; i < numObstacles; i++) {
-            let obstacleDiff = Math.floor(PRNG.nextDouble() * 10) + 5; // Base 5-14
-            obstacleDiff = Math.ceil(obstacleDiff * multiplier);
-
-            let name = `Obstacle ${i + 1}`;
-            let type = 'Generic';
-            let description = 'A challenge to overcome.';
-
-            if (T13NECardsAPI.isInitialized) {
-                const card = T13NECardsAPI.deck.draw(1)[0];
-                if (card) {
-                    name = card.name;
-                    obstacleDiff += (parseInt(card.pips) || 0);
-
-                    // Flavor based on suit (1=Diamonds, 2=Hearts, 3=Clubs, 4=Spades)
-                    const s = String(card.suit);
-                    if (s === '1' || s === 'Diamonds') type = 'Mental';
-                    else if (s === '2' || s === 'Hearts') type = 'Social';
-                    else if (s === '3' || s === 'Clubs') type = 'Physical';
-                    else if (s === '4' || s === 'Spades') type = 'Mystical';
-
-                    description = card.description || card.data?.Narrative_Meaning || description;
-                }
-            }
-
-            this.obstacles.push({
-                name,
-                type,
-                description,
-                difficulty: obstacleDiff,
-                resolved: false
-            });
+    addObstacle({ typeCard, difficultyCards, description } = {}) {
+        if (!typeCard) {
+            throw new Error(`OrdealStage ${this.index}: an Obstacle needs a type card.`);
         }
-        Logger.message(`OrdealStage ${this.index}: Generated ${this.obstacles.length} obstacles (Stakes: ${stakes}).`);
+        if (!Array.isArray(difficultyCards) || difficultyCards.length < MIN_OBSTACLE_DIFFICULTY_CARDS || difficultyCards.length > MAX_OBSTACLE_DIFFICULTY_CARDS) {
+            throw new Error(`OrdealStage ${this.index}: an Obstacle needs ${MIN_OBSTACLE_DIFFICULTY_CARDS}-${MAX_OBSTACLE_DIFFICULTY_CARDS} difficulty cards.`);
+        }
+        const obstacle = {
+            name: typeCard.name || `Obstacle ${this.obstacles.length + 1}`,
+            suit: typeCard.suit,
+            type: suitTheme(typeCard.suit),
+            description: description || typeCard.description || typeCard.data?.Narrative_Meaning || 'A challenge to overcome.',
+            difficulty: sumPips(difficultyCards),
+            resolved: false
+        };
+        this.obstacles.push(obstacle);
+        return obstacle;
     }
 }
 
@@ -124,7 +91,11 @@ export class OrdealRound {
      * Starts the round by dealing the Wild Pool.
      */
     start() {
-        const poolSize = T13NE_Stakes.getWildPoolSize(this.stakesName) || 3;
+        const poolSize = T13NE_Stakes.getWildPoolSize(this.stakesName);
+        if (!poolSize) {
+            Logger.warn(`OrdealRound ${this.number}: no Round Wild Pool size for stakes "${this.stakesName}". Pool not dealt.`);
+            return;
+        }
         if (T13NECardsAPI.isInitialized) {
             this.wildPool = T13NECardsAPI.deck.draw(poolSize);
             Logger.message(`OrdealRound ${this.number}: Wild Pool dealt (${this.wildPool.length} cards).`);
@@ -209,13 +180,17 @@ export class Ordeal {
     }
 
     /**
-     * Sets up the stages for the Ordeal.
-     * @param {number} numStages 
+     * Sets up the stages for the Ordeal. A stage's Difficulty is set from its Stage cards
+     * (1-3 cards, summed Pips). A stage with no cards keeps a null Difficulty until the Yarn-Teller or Referee sets it.
+     * @param {number} numStages
+     * @param {Array<Array<object>>} [stageCards=[]] - Stage cards for each stage, by index.
      */
-    setupStages(numStages) {
+    setupStages(numStages, stageCards = []) {
         for (let i = 0; i < numStages; i++) {
             const stage = new OrdealStage({ Type: 'Standard' }, i);
-            stage.initialize(10, this.stakes); // Base difficulty, pass stakes
+            if (stageCards[i]) {
+                stage.setDifficultyFromCards(stageCards[i]);
+            }
             this.stages.push(stage);
         }
     }

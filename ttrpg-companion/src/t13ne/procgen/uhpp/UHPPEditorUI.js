@@ -1,4 +1,4 @@
-import T13NE_Sway from '../../plugins/t13ne/modules/t13ne-sway.js';
+import T13NE_Sway from '../../modules/mechanics/t13ne-sway.js';
 
 /**
  * @module UHPP/UHPPEditorUI

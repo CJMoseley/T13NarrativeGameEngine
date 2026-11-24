@@ -40,6 +40,8 @@ Character I-Ching calculation requires twelve Facet pairs and initialized hexagr
 
 Example: a racing collision produces a collision observation; the game-specific policy proposes an ordeal/stakes or damage-related intent; the authority applies the relevant T13 rules; resulting consequences update the narrative and, where specified, ship state. The rules owner must define the actual mapping and referee override behavior. Never assume each physics frame becomes an ordeal.
 
+Minigames, such as Wormhole Racers or a race across a planet surface, sit beside the simulation and do not own T13 state. The minigame core (`src/t13ne/modules/minigames/core/`) defines genre-neutral sections and a course contract. Adapters under `src/t13ne/modules/minigames/adapters/` translate a game's own inputs (song, engine tuning, terrain) into that contract. T13 Stage cards reach a course only as a 0 to 1 difficulty ratio, so the rulebook still owns Stage values. Calibration values in the adapters are placeholders until the Author tunes them.
+
 ## Games, content and tools
 
 - A versioned game package declares identity, engine and rules compatibility, entry points, content dependencies, assets, capabilities and migrations. Validate references and report missing or incompatible dependencies before start.

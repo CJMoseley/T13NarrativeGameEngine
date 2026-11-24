@@ -21,7 +21,14 @@
       "race": {
         "category": "Travel",
         "subtype": "Race",
-        "structure": "Forking",
+        "structure": "Railroad",
+        "surfaceForks": {
+          "allowed": true,
+          "surface": "wall",
+          "trigger": "harmonicInstability",
+          "tunedBy": "engineTuning",
+          "note": "Only the wormhole surface can fork, and only in sections where the wall is harmonically unstable. The tunnel itself never branches. Instability values are Author-tunable placeholders."
+        },
         "trump": "Diamonds",
         "physics": "AdvancedPhysicsEngine",
         "scoring": "Time-Based"

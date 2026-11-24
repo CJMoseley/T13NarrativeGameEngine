@@ -1,5 +1,6 @@
-﻿import CodexLoader from "/src/t13ne/modules/codex/CodexLoader.js";
+import CodexLoader from "/src/t13ne/modules/codex/CodexLoader.js";
 import Logger from "/src/t13ne/core/Logger.js";
+import { findStake, wildPoolSize } from "./t13ne-ordeal-rules.js";
 
 /**
  * Module for handling T13NE Stakes.
@@ -31,29 +32,16 @@ class T13NE_Stakes {
      * @returns {object|null} The stake data object.
      */
     getStake(name) {
-        if (!this.stakesData || this.stakesData.length === 0) return null;
-        // Case-insensitive search
-        return this.stakesData.find(s => (s.Level && s.Level.toLowerCase() === name.toLowerCase()) || (s.Name && s.Name.toLowerCase() === name.toLowerCase())) || null;
+        return findStake(this.stakesData, name);
     }
 
     /**
-     * Gets the Wild Pool size for a given stake level.
+     * Gets the Round Wild Pool size for a given stake level (docs/rules/Stakes.md).
      * @param {string} name - The name of the stake.
-     * @returns {number} The size of the Wild Pool.
+     * @returns {number} The number of cards in the Round Wild Pool, or 0 if the stake is unknown.
      */
     getWildPoolSize(name) {
-        const stake = this.getStake(name);
-        return stake ? (parseInt(stake.Wild_Pool) || 0) : 0;
-    }
-
-    /**
-     * Gets the cost multiplier for a given stake level.
-     * @param {string} name 
-     * @returns {number}
-     */
-    getCostMultiplier(name) {
-        const stake = this.getStake(name);
-        return stake ? (parseFloat(stake.Cost_Multiplier) || 1) : 1;
+        return wildPoolSize(this.getStake(name));
     }
 }
 

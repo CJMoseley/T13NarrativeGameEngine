@@ -9,7 +9,7 @@ import { PlanetaryRenderer } from '/src/t13ne/rendering/PlanetaryRenderer.js';
 import { Starbox } from '/src/t13ne/scenes/scenecomponents/starbox.js';
 import { Planet } from '/src/t13ne/scenes/scenecomponents/Planet.js';
 import { Asteroid } from '/src/t13ne/scenes/scenecomponents/Asteroid.js';
-import { AvatarEngine } from '/src/t13ne/procgen/avatar/AvatarEngine.js';
+import { AvatarEngine, makeHumanoidVariant } from '/src/t13ne/procgen/avatar/AvatarEngine.js';
 import { BODY_PLANS } from '/src/t13ne/procgen/avatar/BodyPlanSchema.js';
 
 export class PlanetaryOrbitScene extends Scene {
@@ -820,19 +820,23 @@ export class PlanetaryOrbitScene extends Scene {
             }
 
             const bodyPlan = BODY_PLANS[planName] || BODY_PLANS.HUMANOID;
-            const avatarMesh = avatarEngine.generate(bodyPlan);
+            const variant = planName === 'HUMANOID'
+                ? makeHumanoidVariant(this.planetData.name || 'avatar')
+                : undefined;
+            const avatarMesh = await avatarEngine.generate(bodyPlan, { variant });
             
             if (speciesCore.color) {
                 try {
                     const c = new THREE.Color(speciesCore.color);
-                    avatarMesh.material.color.copy(c);
+                    avatarMesh.traverse((child) => { if (child.isMesh) child.material.color.copy(c); });
                 } catch (e) {
                     Logger.warn(`PlanetaryOrbitScene: Invalid species color '${speciesCore.color}', defaulting to random.`);
                 }
-            } else {
+            } else if (planName !== 'HUMANOID') {
                  const prng = ProcGen.createPRNG(this.planetData.name || 'avatar-color');
                  const hue = prng.nextDouble();
-                 avatarMesh.material.color.setHSL(hue, 0.6, 0.5);
+                 const tint = new THREE.Color().setHSL(hue, 0.6, 0.5);
+                 avatarMesh.traverse((child) => { if (child.isMesh) child.material.color.copy(tint); });
             }
 
             // Center and scale to ensure it fits in the camera view

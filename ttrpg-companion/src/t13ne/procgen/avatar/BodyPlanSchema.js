@@ -36,34 +36,41 @@ export const TRAITS = {
 };
 
 /**
+ * Humanoid parts in metres for an figure about 1.8 m tall, feet on y = 0.
+ * Boxes are centred at their offset from the bone origin. Limb segments are joint offsets.
+ * Arms hang at rest with a slight outward splay and a forward forearm bend (not a T-pose).
+ */
+const HUMANOID_PARTS = [
+    { id: 'hips', type: COMPONENT_TYPES.TORSO, root: true, pos: [0, 0.95, 0], box: { size: [0.30, 0.16, 0.20], center: [0, -0.01, 0] } },
+    { id: 'spine', type: COMPONENT_TYPES.TORSO, parent: 'hips', pos: [0, 0.08, 0], box: { size: [0.32, 0.42, 0.19], center: [0, 0.21, 0] } },
+    { id: 'neck', type: COMPONENT_TYPES.TORSO, parent: 'spine', pos: [0, 0.42, 0], box: { size: [0.10, 0.09, 0.10], center: [0, 0.045, 0] } },
+    { id: 'head', type: COMPONENT_TYPES.HEAD, parent: 'neck', pos: [0, 0.09, 0], box: { size: [0.20, 0.26, 0.21], center: [0, 0.13, 0] }, features: ['eyes', 'brows', 'nose', 'mouth', 'earsSide', 'hair'] },
+    { id: 'arm_l', type: COMPONENT_TYPES.LIMB_CHAIN, parent: 'spine', mixin: MIXINS.ARM, side: 'left', pos: [-0.19, 0.38, 0], thickness: 0.09, segments: [[-0.05, -0.30, 0], [-0.03, -0.26, 0.09]], extremity: { size: [0.08, 0.12, 0.06], center: [0, -0.06, 0.02] } },
+    { id: 'arm_r', type: COMPONENT_TYPES.LIMB_CHAIN, parent: 'spine', mixin: MIXINS.ARM, side: 'right', pos: [0.19, 0.38, 0], thickness: 0.09, segments: [[0.05, -0.30, 0], [0.03, -0.26, 0.09]], extremity: { size: [0.08, 0.12, 0.06], center: [0, -0.06, 0.02] } },
+    { id: 'leg_l', type: COMPONENT_TYPES.LIMB_CHAIN, parent: 'hips', mixin: MIXINS.LEG, side: 'left', pos: [-0.09, 0, 0], thickness: 0.13, segments: [[0, -0.44, 0], [0, -0.44, 0]], extremity: { size: [0.11, 0.07, 0.24], center: [0, -0.035, 0.05], tone: 'dark' } },
+    { id: 'leg_r', type: COMPONENT_TYPES.LIMB_CHAIN, parent: 'hips', mixin: MIXINS.LEG, side: 'right', pos: [0.09, 0, 0], thickness: 0.13, segments: [[0, -0.44, 0], [0, -0.44, 0]], extremity: { size: [0.11, 0.07, 0.24], center: [0, -0.035, 0.05], tone: 'dark' } }
+];
+
+/**
  * Predefined Body Plans
  */
 export const BODY_PLANS = {
     HUMANOID: {
         name: 'Humanoid',
-        components: [
-            { id: 'hips', type: COMPONENT_TYPES.TORSO, root: true, pos: [0, 1, 0] },
-            { id: 'spine', type: COMPONENT_TYPES.TORSO, parent: 'hips', pos: [0, 0.3, 0] },
-            { id: 'neck', type: COMPONENT_TYPES.TORSO, parent: 'spine', pos: [0, 0.4, 0] },
-            { id: 'head', type: COMPONENT_TYPES.HEAD, parent: 'neck', pos: [0, 0.1, 0] },
-            { id: 'arm_l', type: COMPONENT_TYPES.LIMB_CHAIN, parent: 'spine', mixin: MIXINS.ARM, side: 'left', pos: [-0.2, 0.3, 0], joints: 3 },
-            { id: 'arm_r', type: COMPONENT_TYPES.LIMB_CHAIN, parent: 'spine', mixin: MIXINS.ARM, side: 'right', pos: [0.2, 0.3, 0], joints: 3 },
-            { id: 'leg_l', type: COMPONENT_TYPES.LIMB_CHAIN, parent: 'hips', mixin: MIXINS.LEG, side: 'left', pos: [-0.15, -0.1, 0], joints: 3 },
-            { id: 'leg_r', type: COMPONENT_TYPES.LIMB_CHAIN, parent: 'hips', mixin: MIXINS.LEG, side: 'right', pos: [0.15, -0.1, 0], joints: 3 }
-        ]
+        components: HUMANOID_PARTS
     },
     QUADRUPED: {
         name: 'Quadruped',
         components: [
-            { id: 'body_rear', type: COMPONENT_TYPES.TORSO, root: true, pos: [0, 0.5, -0.5] },
-            { id: 'body_front', type: COMPONENT_TYPES.TORSO, parent: 'body_rear', pos: [0, 0, 1.0] },
-            { id: 'neck', type: COMPONENT_TYPES.TORSO, parent: 'body_front', pos: [0, 0.2, 0.2] },
-            { id: 'head', type: COMPONENT_TYPES.HEAD, parent: 'neck', pos: [0, 0.1, 0.1] },
-            { id: 'leg_fl', type: COMPONENT_TYPES.LIMB_CHAIN, parent: 'body_front', mixin: MIXINS.LEG, side: 'left', pos: [-0.2, -0.1, 0], joints: 3 },
-            { id: 'leg_fr', type: COMPONENT_TYPES.LIMB_CHAIN, parent: 'body_front', mixin: MIXINS.LEG, side: 'right', pos: [0.2, -0.1, 0], joints: 3 },
-            { id: 'leg_rl', type: COMPONENT_TYPES.LIMB_CHAIN, parent: 'body_rear', mixin: MIXINS.LEG, side: 'left', pos: [-0.2, -0.1, 0], joints: 3 },
-            { id: 'leg_rr', type: COMPONENT_TYPES.LIMB_CHAIN, parent: 'body_rear', mixin: MIXINS.LEG, side: 'right', pos: [0.2, -0.1, 0], joints: 3 },
-            { id: 'tail', type: COMPONENT_TYPES.TAIL, parent: 'body_rear', pos: [0, 0.1, -0.1], joints: 5 }
+            // One continuous trunk. Legs and neck attach to its front and rear faces.
+            { id: 'body', type: COMPONENT_TYPES.TORSO, root: true, pos: [0, 0.60, 0], box: { size: [0.28, 0.22, 0.84], center: [0, 0, 0] } },
+            { id: 'neck', type: COMPONENT_TYPES.TORSO, parent: 'body', pos: [0, 0.08, 0.40], box: { size: [0.14, 0.20, 0.16], center: [0, 0.07, 0.06] } },
+            { id: 'head', type: COMPONENT_TYPES.HEAD, parent: 'neck', pos: [0, 0.16, 0.06], box: { size: [0.17, 0.18, 0.22], center: [0, 0.04, 0.09] }, features: ['eyes', 'earsUpright', 'snout'] },
+            { id: 'leg_fl', type: COMPONENT_TYPES.LIMB_CHAIN, parent: 'body', mixin: MIXINS.LEG, side: 'left', pos: [-0.10, -0.09, 0.28], thickness: 0.08, segments: [[0, -0.24, 0], [0, -0.22, 0]], extremity: { size: [0.09, 0.05, 0.12], center: [0, -0.025, 0.02], tone: 'dark' } },
+            { id: 'leg_fr', type: COMPONENT_TYPES.LIMB_CHAIN, parent: 'body', mixin: MIXINS.LEG, side: 'right', pos: [0.10, -0.09, 0.28], thickness: 0.08, segments: [[0, -0.24, 0], [0, -0.22, 0]], extremity: { size: [0.09, 0.05, 0.12], center: [0, -0.025, 0.02], tone: 'dark' } },
+            { id: 'leg_rl', type: COMPONENT_TYPES.LIMB_CHAIN, parent: 'body', mixin: MIXINS.LEG, side: 'left', pos: [-0.10, -0.09, -0.28], thickness: 0.08, segments: [[0, -0.24, 0], [0, -0.22, 0]], extremity: { size: [0.09, 0.05, 0.12], center: [0, -0.025, 0.02], tone: 'dark' } },
+            { id: 'leg_rr', type: COMPONENT_TYPES.LIMB_CHAIN, parent: 'body', mixin: MIXINS.LEG, side: 'right', pos: [0.10, -0.09, -0.28], thickness: 0.08, segments: [[0, -0.24, 0], [0, -0.22, 0]], extremity: { size: [0.09, 0.05, 0.12], center: [0, -0.025, 0.02], tone: 'dark' } },
+            { id: 'tail', type: COMPONENT_TYPES.TAIL, parent: 'body', pos: [0, 0.05, -0.42], thickness: 0.06, segments: [[0, 0.05, -0.13], [0, 0.05, -0.13], [0, 0.04, -0.12], [0, 0.03, -0.10]] }
         ]
     },
     SPIDER: {
@@ -85,7 +92,7 @@ export const BODY_PLANS = {
         name: 'Centipede',
         components: [
             { id: 'head_segment', type: COMPONENT_TYPES.TORSO, root: true, pos: [0, 0.2, 1.0] },
-            { id: 'head', type: COMPONENT_TYPES.HEAD, parent: 'head_segment', pos: [0, 0.1, 0.2] },
+            { id: 'head', type: COMPONENT_TYPES.HEAD, parent: 'head_segment', pos: [0, 0.1, 0.2], features: ['eyes', 'snout'] },
             // Segments will be added programmatically or expanded in a specialized generator
             ...Array.from({ length: 10 }).map((_, i) => ({
                 id: `segment_${i}`,
@@ -120,13 +127,9 @@ export const BODY_PLANS = {
     WINGED: {
         name: 'Winged',
         components: [
-            { id: 'hips', type: COMPONENT_TYPES.TORSO, root: true, pos: [0, 1, 0] },
-            { id: 'spine', type: COMPONENT_TYPES.TORSO, parent: 'hips', pos: [0, 0.3, 0] },
-            { id: 'head', type: COMPONENT_TYPES.HEAD, parent: 'spine', pos: [0, 0.5, 0] },
-            { id: 'leg_l', type: COMPONENT_TYPES.LIMB_CHAIN, parent: 'hips', mixin: MIXINS.LEG, side: 'left', pos: [-0.15, -0.1, 0], joints: 3 },
-            { id: 'leg_r', type: COMPONENT_TYPES.LIMB_CHAIN, parent: 'hips', mixin: MIXINS.LEG, side: 'right', pos: [0.15, -0.1, 0], joints: 3 },
-            { id: 'wing_l', type: COMPONENT_TYPES.WING, parent: 'spine', mixin: MIXINS.WING_MEMBRANE, side: 'left', pos: [-0.1, 0.4, -0.1], joints: 3 },
-            { id: 'wing_r', type: COMPONENT_TYPES.WING, parent: 'spine', mixin: MIXINS.WING_MEMBRANE, side: 'right', pos: [0.1, 0.4, -0.1], joints: 3 }
+            ...HUMANOID_PARTS,
+            { id: 'wing_l', type: COMPONENT_TYPES.WING, parent: 'spine', mixin: MIXINS.WING_MEMBRANE, side: 'left', pos: [-0.16, 0.34, -0.08], thickness: 0.04, segments: [[-0.22, 0.10, -0.04], [-0.20, 0.02, -0.06]] },
+            { id: 'wing_r', type: COMPONENT_TYPES.WING, parent: 'spine', mixin: MIXINS.WING_MEMBRANE, side: 'right', pos: [0.16, 0.34, -0.08], thickness: 0.04, segments: [[0.22, 0.10, -0.04], [0.20, 0.02, -0.06]] }
         ]
     }
 };

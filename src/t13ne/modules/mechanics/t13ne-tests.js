@@ -1,10 +1,9 @@
-﻿import CodexLoader from "/src/t13ne/modules/codex/CodexLoader.js";
+import CodexLoader from "/src/t13ne/modules/codex/CodexLoader.js";
 import Logger from "/src/t13ne/core/Logger.js";
 import T13Dice from '/src/t13ne/modules/mechanics/t13ne-dice.js';
 import T13NECardsAPI from "/src/t13ne/modules/mechanics/t13ne-cards-api.js";
 import T13NE_Facets from "/src/t13ne/modules/mechanics/t13ne-facets.js";
 import T13Boons from '/src/t13ne/modules/mechanics/t13ne-boon.js';
-import T13NE_Stakes from '/src/t13ne/modules/systems/ordeals/t13ne-stakes.js';
 import T13NE_Sway from "/src/t13ne/modules/mechanics/t13ne-sway.js";
 import T13NE_Stress from "/src/t13ne/modules/mechanics/t13ne-stress.js";
 import T13NE_Resources from "/src/t13ne/modules/mechanics/t13ne-resources.js";
@@ -586,19 +585,10 @@ class T13NE_Tests {
      * @param {object} options - { facet: string, difficulty: number, stakes: string, method: 'dice'|'card' }
      */
     async ordealTest(character, options) {
-        const stakesName = options.stakes || 'Low';
         const baseDifficulty = options.difficulty || 10;
         const method = options.method || 'dice';
 
-        let modifiedDifficulty = baseDifficulty;
-
-        const stake = T13NE_Stakes.getStake(stakesName);
-        if (stake) {
-            const multiplier = stake.Cost_Multiplier || 1;
-            modifiedDifficulty = Math.ceil(baseDifficulty * multiplier);
-        }
-
-        const testOptions = { ...options, difficulty: modifiedDifficulty };
+        const testOptions = { ...options, difficulty: baseDifficulty };
 
         if (method === 'card') {
             return this.cardTest(character, testOptions);
