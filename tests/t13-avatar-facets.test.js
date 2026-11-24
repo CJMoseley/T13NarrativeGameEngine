@@ -94,7 +94,9 @@ test('Formation picks the material family, with Nature (flesh) as the fallback',
     assert.equal(materialForFormation('Rook'), 'armour');
     assert.equal(materialForFormation(null), 'flesh');
     assert.equal(materialForFormation('NotAFacet'), 'flesh');
-    assert.equal(Object.keys(FORMATION_MATERIALS).length, 17);
+    assert.equal(materialForFormation('Zeal'), 'belief');
+    assert.equal(materialForFormation('Gossamer'), 'gas');
+    assert.equal(Object.keys(FORMATION_MATERIALS).length, 24);
 });
 
 test('tintSkin is identity at zero and moves toward olive for positive Miasma', () => {

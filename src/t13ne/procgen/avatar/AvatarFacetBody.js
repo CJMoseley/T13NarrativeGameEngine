@@ -39,25 +39,32 @@ const DESCRIPTOR_FACETS = Object.freeze([
 
 const SICKLY_TINT = 0x7d8a3c;
 
-// Material family per Formation (the Incarna facet). Unlisted Incarna fall back to flesh.
+// Material family per Formation (the Incarna facet), taken from each facet's Incarna_Text.
 export const FORMATION_MATERIALS = Object.freeze({
     Nature: 'flesh',
-    Trial: 'metal',
+    Awe: 'spirit',
+    Burden: 'stone',
+    Craft: 'artifice',
+    Dominion: 'society',
+    Enigma: 'cryptic',
+    Fury: 'liquid',
+    Gossamer: 'gas',
+    Heresy: 'simulacrum',
+    Inertia: 'clockwork',
+    Jeer: 'illusion',
+    Key: 'thought',
+    Liberty: 'dream',
+    Miasma: 'toxin',
+    Orthodox: 'data',
+    Phoenix: 'fire',
     Quiet: 'wood',
     Rook: 'armour',
-    Phoenix: 'fire',
-    Liberty: 'dream',
     Sin: 'vice',
-    Yonder: 'structure',
+    Trial: 'metal',
     Virtue: 'energy',
     Wyrd: 'arcane',
-    Key: 'thought',
-    Miasma: 'toxin',
-    Jeer: 'illusion',
-    Enigma: 'cryptic',
-    Dominion: 'society',
-    Orthodox: 'data',
-    Inertia: 'clockwork'
+    Yonder: 'structure',
+    Zeal: 'belief'
 });
 
 /**
