@@ -14,6 +14,42 @@ and game-specific calibration must remain distinguishable.
 
 ### Implemented foundations
 
+The UHPP [AvatarStage](../../src/t13ne/procgen/uhpp/AvatarStage.js) now awaits
+avatar generation before adding it to a scene. When a caller supplies a
+Character with `facetweb.Stats`, it derives the existing Facet-based body
+variant; an explicit `avatarOptions.variant` takes precedence. The stage and
+current avatar helpers are mirrored in the companion. No character screen
+currently invokes this path. Procedural avatars now have a lit body atlas and
+configurable painted clothing coverage, with a UV raycast painting component.
+The model maker is accessible from the game main menu and companion character
+sheet: left-drag paints, right-drag rotates, and the wheel zooms. Skin documents
+can be downloaded and imported; they validate atlas version, body plan and
+regions. A character sheet with an ID can also save a skin in the local Codex
+IndexedDB file store; reopening the sheet restores it. `AvatarStage` loads
+the saved skin by character ID in the browser, or accepts an explicit
+`skinDocument` or `skinStore`. Saved skins are stored separately from
+character records and are local to the browser origin (including its port):
+character exports and network synchronization do not yet include them. Game
+and companion pages on different origins do not share these skins. Download a
+skin document to transfer or back it up.
+
+Species lore can supply `avatarSkins`, an array of objects with unique `id` and
+24-bit integer `skinTone`, optionally `hairColor`, `clothing`, and
+`clothingCoverage`. The first is the default; `skinId` selects another in
+`AvatarStage`. Species without authored variants get a deterministic default
+from their identity (or their existing `color`). Character seeds vary facial
+proportions. These are procedural placeholders, not an authored species skin
+catalog; some features still share atlas regions. Facet-driven motion remains
+unimplemented. Hats, armour plates and helmets may be separate accessories.
+
+Intro sequencing now reports the system name and body count, signals completion
+of the local flyby, retains other bodies when their meshes are visible, and
+honours minimum scene durations. The ship showcase's preview scene is passed to
+the ship factory. Camera continuity and the complete intro remain to be verified
+as a continuous experience. Music key lookup now accepts Geometry's nested
+frequency, and scene preloading no longer changes the playing track; the
+requested listening and arrangement pass is still outstanding.
+
 | Area | Current state and evidence | Boundary |
 |---|---|---|
 | Codex and Proficiencies | [CodexDB](../../src/t13ne/modules/codex/CodexDB.js), validation and identity helpers support custom Proficiencies and preserve Core records. A Proficiency needs a name, description and tags including at least one Facet; numeric IDs are not universally required. | Package-wide versioning, author verification and a complete creator workflow remain open. No complete Core list of Skills, Talents or Powers is assumed. |

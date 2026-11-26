@@ -162,7 +162,7 @@ test('makeHumanoidVariant is deterministic per seed and varies across seeds', ()
     }
 });
 
-test('build scales body width and the skin tone is applied to the material', () => {
+test('build scales body width and the skin tone is applied to the atlas', () => {
     const width = (build) => {
         const mesh = new AvatarEngine().generateProceduralAvatar(BODY_PLANS.HUMANOID, { build, height: 1, skinTone: SKIN_TONES[0], prosthetics: [] });
         const box = new THREE.Box3().setFromBufferAttribute(mesh.geometry.attributes.position);
@@ -171,15 +171,16 @@ test('build scales body width and the skin tone is applied to the material', () 
     assert.ok(width(1.2) > width(0.85), 'a broader build is wider');
 
     const mesh = new AvatarEngine().generateProceduralAvatar(BODY_PLANS.HUMANOID, { skinTone: SKIN_TONES[3] });
-    assert.equal(mesh.material.vertexColors, true, 'colour comes from vertices');
-    const colors = mesh.geometry.attributes.color;
-    const target = new THREE.Color(SKIN_TONES[3]);
-    let skinVerts = 0;
-    for (let v = 0; v < colors.count; v++) {
-        const d = Math.abs(colors.getX(v) - target.r) + Math.abs(colors.getY(v) - target.g) + Math.abs(colors.getZ(v) - target.b);
-        if (d < 0.01) skinVerts++;
+    assert.ok(mesh.material.map.isDataTexture);
+    assert.equal(mesh.material.vertexColors, false);
+    const { regions, pixels } = mesh.userData.avatarAtlas;
+    const head = regions['head:skin'];
+    const offset = (head.y * 256 + head.x) * 4;
+    const expected = SKIN_TONES[3];
+    for (let i = 0; i < 3; i++) {
+        const channel = (expected >> (16 - 8 * i)) & 255;
+        assert.ok(Math.abs(pixels[offset + i] - channel) <= 16);
     }
-    assert.ok(skinVerts > colors.count * 0.3, 'a large share of vertices carry the skin tone');
 });
 
 test('humanoid proportions: head is 1/6 to 1/9 of height and the hips sit near half height', () => {

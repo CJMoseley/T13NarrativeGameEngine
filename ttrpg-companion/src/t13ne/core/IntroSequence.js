@@ -190,11 +190,12 @@ export class IntroSequence {
                 this.context.galaxy = this.viewManager.gameEngine.galaxy;
                 Logger.message("IntroSequence: Galaxy already present, skipping boot wait.");
             } else {
-                if (bootStep.action) bootStep.action();
-                await new Promise(resolve => EventBus.once(bootStep.waitFor, (data) => {
+                const ready = new Promise(resolve => EventBus.once(bootStep.waitFor, (data) => {
                     if (bootStep.saveData) bootStep.saveData(data);
                     resolve();
                 }));
+                if (bootStep.action) bootStep.action();
+                await ready;
             }
         }
 

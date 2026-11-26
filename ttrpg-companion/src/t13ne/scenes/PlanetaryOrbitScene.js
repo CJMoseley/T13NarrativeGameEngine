@@ -9,7 +9,8 @@ import { PlanetaryRenderer } from '/src/t13ne/rendering/PlanetaryRenderer.js';
 import { Starbox } from '/src/t13ne/scenes/scenecomponents/starbox.js';
 import { Planet } from '/src/t13ne/scenes/scenecomponents/Planet.js';
 import { Asteroid } from '/src/t13ne/scenes/scenecomponents/Asteroid.js';
-import { AvatarEngine, makeHumanoidVariant } from '/src/t13ne/procgen/avatar/AvatarEngine.js';
+import { AvatarEngine, makeFaceVariant, makeHumanoidVariant } from '/src/t13ne/procgen/avatar/AvatarEngine.js';
+import { speciesSkin } from '/src/t13ne/procgen/avatar/SpeciesSkins.js';
 import { BODY_PLANS } from '/src/t13ne/procgen/avatar/BodyPlanSchema.js';
 
 export class PlanetaryOrbitScene extends Scene {
@@ -822,22 +823,16 @@ export class PlanetaryOrbitScene extends Scene {
             const bodyPlan = BODY_PLANS[planName] || BODY_PLANS.HUMANOID;
             const variant = planName === 'HUMANOID'
                 ? makeHumanoidVariant(this.planetData.name || 'avatar')
-                : undefined;
-            const avatarMesh = await avatarEngine.generate(bodyPlan, { variant });
-            
-            if (speciesCore.color) {
-                try {
-                    const c = new THREE.Color(speciesCore.color);
-                    avatarMesh.traverse((child) => { if (child.isMesh) child.material.color.copy(c); });
-                } catch (e) {
-                    Logger.warn(`PlanetaryOrbitScene: Invalid species color '${speciesCore.color}', defaulting to random.`);
-                }
-            } else if (planName !== 'HUMANOID') {
-                 const prng = ProcGen.createPRNG(this.planetData.name || 'avatar-color');
-                 const hue = prng.nextDouble();
-                 const tint = new THREE.Color().setHSL(hue, 0.6, 0.5);
-                 avatarMesh.traverse((child) => { if (child.isMesh) child.material.color.copy(tint); });
+                : { face: makeFaceVariant(this.planetData.name || 'avatar') };
+            if (speciesCore.avatarSkins || speciesCore.color != null || speciesCore.id || speciesCore.scientificName || speciesCore.commonName || speciesCore.name) {
+                const { id, ...skin } = speciesSkin(speciesCore);
+                Object.assign(variant, skin);
             }
+            if (planName !== 'HUMANOID' && !('skinTone' in variant)) {
+                const prng = ProcGen.createPRNG(this.planetData.name || 'avatar-color');
+                variant.skinTone = new THREE.Color().setHSL(prng.nextDouble(), 0.6, 0.5).getHex();
+            }
+            const avatarMesh = await avatarEngine.generate(bodyPlan, { variant });
 
             // Center and scale to ensure it fits in the camera view
             const box = new THREE.Box3().setFromObject(avatarMesh);
@@ -890,6 +885,7 @@ export class PlanetaryOrbitScene extends Scene {
             
             rt.dispose();
             avatarMesh.geometry.dispose();
+            avatarMesh.material.map?.dispose();
             avatarMesh.material.dispose();
 
         } catch (e) {

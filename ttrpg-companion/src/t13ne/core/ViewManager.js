@@ -423,7 +423,7 @@ export class ViewManager {
                 // 4. Wait for the minimum duration, accounting for safety margin
                 const elapsed = performance.now() - startTime;
                 const safetyBuffer = this.systemLatency * this.safetyMarginFactor;
-                const remainingTime = Math.max(0, item.options.duration - elapsed);
+                const remainingTime = Math.max(0, (item.options.minDuration ?? item.options.duration) - elapsed);
 
                 if (remainingTime > 0) {
                     await new Promise(resolve => setTimeout(resolve, remainingTime));
@@ -548,7 +548,7 @@ export class ViewManager {
         this.showCanvas();
         this.currentScene.onLoad(); // This starts the animation loop
 
-        EventBus.emit('scene:load', sceneName);
+        EventBus.emit('scene:load', sceneName, this.currentScene);
 
         // Explicitly notify UIManager if it has the method
         if (this.uiManager && typeof this.uiManager.onSceneLoaded === 'function') {
@@ -581,21 +581,24 @@ export class ViewManager {
         overlay.style.filter = 'none';
 
         // Check if we need to capture the screen
-        const needsCapture = ['crossDissolve', 'wipe', 'slide', 'zoom', 'push', 'pageTurn', 'glitch', 'whipPan'].includes(type);
+        const needsCapture = ['crossDissolve', 'wipe', 'circleWipe', 'iris', 'slide', 'zoom', 'push', 'pageTurn', 'glitch', 'whipPan'].includes(type);
 
         if (needsCapture && this.renderer && this.renderer.domElement) {
             try {
                 const dataUrl = this.renderer.domElement.toDataURL();
-                overlay.style.backgroundImage = `url()`;
+                overlay.style.backgroundImage = `url("${dataUrl}")`;
                 overlay.style.backgroundColor = 'transparent';
                 overlay.style.opacity = '1'; // Show immediately to freeze frame
             } catch (e) {
                 Logger.warn("ViewManager: Failed to capture screen for transition.", e);
+                overlay.style.backgroundImage = 'none';
                 overlay.style.backgroundColor = color; // Fallback
+                overlay.style.opacity = '1';
             }
         } else {
             overlay.style.backgroundImage = 'none';
             overlay.style.backgroundColor = color;
+            if (needsCapture) overlay.style.opacity = '1';
         }
 
         if (type === 'fade' || type === 'fadeToBlack') {
@@ -624,13 +627,13 @@ export class ViewManager {
             await new Promise(r => setTimeout(r, duration / 2));
         }
         else if (type === 'crossDissolve') {
-            overlay.style.transition = `opacity ms ease`;
+            overlay.style.transition = `opacity ${duration}ms ease`;
             overlay.style.opacity = '0';
             await new Promise(r => setTimeout(r, duration));
         }
         else if (type === 'wipe') {
             const direction = options.direction || 'right';
-            overlay.style.transition = `clip-path ms ease-in-out`;
+            overlay.style.transition = `clip-path ${duration}ms ease-in-out`;
             if (direction === 'right') overlay.style.clipPath = 'inset(0 0 0 100%)';
             else if (direction === 'left') overlay.style.clipPath = 'inset(0 100% 0 0)';
             else if (direction === 'up') overlay.style.clipPath = 'inset(0 0 100% 0)';
@@ -638,13 +641,13 @@ export class ViewManager {
             await new Promise(r => setTimeout(r, duration));
         }
         else if (type === 'circleWipe' || type === 'iris') {
-            overlay.style.transition = `clip-path ms ease-in-out`;
+            overlay.style.transition = `clip-path ${duration}ms ease-in-out`;
             overlay.style.clipPath = 'circle(0% at 50% 50%)';
             await new Promise(r => setTimeout(r, duration));
         }
         else if (type === 'slide' || type === 'push') {
             const direction = options.direction || 'left';
-            overlay.style.transition = `transform ms ease-in-out`;
+            overlay.style.transition = `transform ${duration}ms ease-in-out`;
             if (direction === 'left') overlay.style.transform = 'translateX(-100%)';
             else if (direction === 'right') overlay.style.transform = 'translateX(100%)';
             else if (direction === 'up') overlay.style.transform = 'translateY(-100%)';
@@ -652,14 +655,14 @@ export class ViewManager {
             await new Promise(r => setTimeout(r, duration));
         }
         else if (type === 'zoom') {
-            overlay.style.transition = `transform ms ease-in, opacity ms ease-out`;
+            overlay.style.transition = `transform ${duration}ms ease-in, opacity ${duration}ms ease-out`;
             overlay.style.transform = 'scale(2)';
             overlay.style.opacity = '0';
             await new Promise(r => setTimeout(r, duration));
         }
         else {
             // Default fade out
-            overlay.style.transition = `opacity ms ease`;
+            overlay.style.transition = `opacity ${duration}ms ease`;
             overlay.style.opacity = '0';
             await new Promise(r => setTimeout(r, duration));
         }

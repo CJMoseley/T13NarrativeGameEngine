@@ -14,6 +14,7 @@ class T13NE_Conductor {
         this.tensionModule = null;
         this.initialized = false;
         this.currentSceneName = null;
+        this.activationId = 0;
     }
 
     async initialize(t13ne) {
@@ -27,8 +28,14 @@ class T13NE_Conductor {
         }
 
         // Subscribe to View/Scene events
-        EventBus.on('scene:load', (sceneName) => this.onSceneChanged(sceneName));
-        EventBus.on('scene:prepared', (scene) => this.onScenePrepared(scene));
+        EventBus.on('scene:load', (sceneName, scene) => {
+            this.onSceneChanged(sceneName);
+            const activationId = ++this.activationId;
+            if (scene) {
+                this.onSceneActivated(scene, activationId).catch(error =>
+                    Logger.error(`T13NE_Conductor: Failed to activate music for '${sceneName}'.`, error));
+            }
+        });
         
         // Subscribe to Tension events
         EventBus.on('tension:update', (data) => this.onTensionChanged(data));
@@ -38,11 +45,10 @@ class T13NE_Conductor {
     }
 
     /**
-     * Called when a scene has finished preparing (data generation complete).
-     * This is the cue to update the music based on the new scene data.
-     * @param {Scene} scene - The prepared scene instance.
+     * Called when a prepared scene becomes active, not during background preloading.
+     * @param {Scene} scene - The active scene instance.
      */
-    async onScenePrepared(scene) {
+    async onSceneActivated(scene, activationId = this.activationId) {
         const music = this.t13ne.getModule('Music');
         if (!music) return;
 
@@ -67,7 +73,7 @@ class T13NE_Conductor {
             // Generate a new merged theme
             const mergedTheme = await music.createMainTheme(this.t13ne.getModule('Game'), true, combined);
             
-            if (mergedTheme) {
+            if (mergedTheme && activationId === this.activationId) {
                 mergedTheme.name = `Merged Theme (${scene.constructor.name})`;
                 music.updateTrack(mergedTheme);
                 // Optionally update the active components in the music engine to reflect this merge

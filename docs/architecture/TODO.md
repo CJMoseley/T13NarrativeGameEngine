@@ -1,8 +1,8 @@
 # TODO: Outstanding Work
 
-Last updated: 2026-11-24
+Last updated: 2026-11-25
 
-Resume point: `npm run test:node` passed 132/132 after the Formation tests were added. Nothing is committed. The companion mirror in `ttrpg-companion/` is out of date for the new avatar files.
+Resume point: the Node suite passed 154 tests, and game and companion builds passed (with large-chunk warnings). The model maker supports direct painting and per-character local skin saving; the browser `AvatarStage` can restore a saved skin and optionally derive a variant from a Character's `facetweb.Stats`. The facet-driven stage path is not yet wired to a character screen. Changes remain uncommitted.
 
 Standing rules:
 - The rulebook in `docs/rules/` is authoritative.
@@ -16,20 +16,27 @@ Standing rules:
 
 ## 1. Resume checks (start here)
 
-- [ ] Re-run `npm run test:node` and confirm 132 passing.
+- [x] Re-run `npm run test:node` and confirm the 132-test baseline passes.
 - [ ] Run `problems` on `AvatarFacetBody.js`, `AvatarEngine.js`, `AvatarAtlas.js`, and `tests/t13-avatar-facets.test.js`.
 - [ ] Confirm the Formation tests in `tests/t13-avatar-facets.test.js` cover `Trial`→metal, `Quiet`→wood, `Rook`→armour, and unknown or null→flesh.
 
 ## 2. Decisions needed from the user
 
 - [ ] **Confirm proposed facet roles.** Roles are proposed from the adjective ladders in section 3a. Confirm them before implementing.
-- [ ] **Nature and height.** The user said Nature drives height. The Nature ladder's physical axis reads as vitality and health (Vigorous, Hardy, Lush), not stature. Confirm whether Nature should stay on height, or move to vitality (skin health, posture) with Burden handling size alone.
+- [x] **Nature and height.** Species can define different size mappings; retain the existing Nature-to-height behavior when no species rule is configured.
 - [ ] **Amplitudes.** Confirm the body ranges: height ±10%, build ±20%, thickness ±15%, length ±6%, litheness ±10%.
 - [ ] **Litheness reading.** Confirm Zeal vs Inertia as litheness versus momentum, with `litheness = (zeal - inertia) / 2`.
 - [ ] **Trilal.** Confirm this means Trial (index 19).
-- [ ] **Species tint vs atlas.** Decide whether the species colour multiplies the atlas or replaces it. `PlanetaryOrbitScene.js` (~828) currently sets `material.color`.
+- [x] **Species tint vs atlas.** Species colours now affect atlas skin rather than tinting painted clothing.
 
 ## 3. Avatar: facet-driven appearance
+
+Author direction (size and motion rules are not implemented yet; neutral painted clothing is in place):
+- Begin the species adjustment matrix with size. A Character's Formation takes precedence over the species Formation; each species can define its own mapping and phenotype adjustments. The matrix may later cover other properties, including structural density.
+- For the initial human rule, convert the selected Nature Boon's T13 Value from inches to centimetres (`Value * 2.54`). Calculate and display measurements in centimetres.
+- Species-defined entries can match caste, race, sex or other phenotypes. Apply matching entries in configured order, each as `(current height + offsetBeforeCm) * multiplier + offsetAfterCm`. Do not assume universal sex modifiers.
+- Define motion mappings separately for species or cultures; the proposed table below is not a universal default.
+- Render clothing as colours and patterns painted on the body skin, not as separate clothing meshes. Use a neutral configurable outfit when no culture is configured; culture-specific rules can override it. Hats, armour plates and helmets may eventually be separate accessories.
 
 Done (mapping and tests):
 - [x] `bodyFromFacets` (Burden → build, Nature → height, Gossamer → musculature, Zeal/Inertia → litheness)
@@ -42,7 +49,7 @@ Done (mapping and tests):
 To do:
 - [ ] Wire `appearanceFromFacets` into `AvatarEngine.js`: vividness on clothing, `tintSkin` on skin, mottle on the atlas.
 - [ ] Wire `materialForFormation` into the atlas palette or the prosthetic set.
-- [ ] Add a `facetBoons` path so a Descendant's stats drive the avatar end to end (`facetBoonsFromStats`).
+- [ ] Connect the new `AvatarStage` Character `facetweb.Stats` path to an application character workflow, and establish the corresponding Descendant data path.
 - [ ] Add tests for the Formation wiring, the appearance wiring, and the end-to-end facet → avatar path.
 
 ## 3a. Facet roles from the adjective ladders
@@ -113,26 +120,28 @@ To do:
 
 ## 4. Avatar: atlas, clothing, and skins
 
-Done (not yet wired in):
+Done:
 - [x] `avatarRandom.js` (`hashSeed`, `mulberry32`), used by `AvatarEngine.js`
 - [x] `AvatarAtlas.js`: 256 px atlas, 16 px tiles, 48×32 regions, capacity 40, `top:cloth` and `bottom:cloth` reserved, `mapUVsToRegion`, `paintAtlas`, `createAtlasTexture` (Nearest, no mipmaps, manual row flip)
 - [x] `AvatarAtlasIO.js`: browser PNG export and import (`atlasToPngBlob`, `pngBlobToAtlasPixels`), not yet used
+- [x] Procedural body meshes use a lit atlas, with configurable painted clothing coverage and a neutral humanoid outfit; no clothing meshes are added.
+- [x] `AvatarSkinPainter` paints a raycast UV and updates the live texture. PNG round-trip was checked in a browser.
+- [x] Atlas pixels, body-plan name, version and regions are available on generated avatars; injected atlas pixels are copied.
+- [x] The model maker opens from the game main menu and companion character sheet. It paints on the model, supports body plans and downloads/imports a layout-checked skin document.
+- [x] Species can supply named skin variants; otherwise their identity generates a stable default. Seeded facial feature proportions vary without changing atlas layout.
+- [x] `AvatarStage` can restore a compatible skin document, rejecting mismatched atlas versions, body plans and regions.
+- [x] Character sheets can save a skin to the local Codex database, reload it by character ID, and detect conflicting edits. Browser `AvatarStage` loads that saved skin.
 
 To do:
-- [ ] Add a `clothing` key to `BODY_PLANS.HUMANOID` in `BodyPlanSchema.js` (~lines 52–55):
-  - `top`: spine, arm_l, arm_r, inflate 1.14
-  - `bottom`: hips, leg_l, leg_r, inflate 1.12
-- [ ] In `AvatarEngine._part`, add atlas region and UV remap, and remove vertex colours.
-- [ ] Use the material `map` for skin and clothing.
-- [ ] Add clothing `SkinnedMesh` children from the `clothing` plan.
-- [ ] Paint the atlas per variant. Add `variant.atlasPixels` support so a painted skin can be injected.
-- [ ] Set `userData` on generated avatars so the paint tool and cache can find parts.
-- [ ] Add an atlas version field so a saved PNG can be checked for layout compatibility.
+- [ ] Author cultural coverage and appearance data for individual body plans; hats, armour plates and helmets may eventually be separate accessories.
+- [ ] Author species-specific skins and culture-specific clothing; generated defaults are placeholders. Add richer facial variation and independently paintable facial features.
+- [ ] Include associated skins in character exports and synchronization; storage is local to the browser origin (including port), and downloadable skin documents are the portable backup and transfer mechanism.
+- [ ] Make shared atlas regions independently paintable where needed; painting one feature can currently affect another sharing its region.
 - [ ] Check that `mergeGeometries` gets identical attribute sets.
 - [ ] Check that `BoxGeometry` survives `applyMatrix4` as `geo.type === 'BoxGeometry'`.
-- [ ] Update `tests/t13-avatar-rig.test.js`: the skin vertex-colour expectation changes to atlas expectations (~lines 37–223).
-- [ ] Add tests for limb scaling, clothing meshes, atlas bounds, UV remap, and the box geometry type.
-- [ ] Verify the PNG round-trip in the browser. Node has no DOM, so this needs a browser test.
+- [x] Update rig tests for atlas colours.
+- [ ] Add tests for limb scaling, painted clothing coverage, atlas bounds, UV remap, and the box geometry type.
+- [x] Verify the PNG round-trip in the browser.
 - [ ] Decide when `AvatarAtlasIO.js` is first used: the import/export button, or the paint tool.
 
 ## 5. Avatar: visual validation
@@ -175,11 +184,13 @@ To do:
 
 ## 9. Paint tool and skin editor
 
-- [ ] Paint skins directly on the model (UV-based paint). The user asked for this.
-- [ ] Add a skin editor.
+- Author direction: make the skin painter a separate component of a model maker/sculptor, accessible from the main menus and the character sheet view.
+- [x] Paint skins directly on the model (UV-based paint).
+- [x] Add an initial skin editor within the model maker, accessible from the main menu and character sheet.
 - [ ] Support PNG import and export for skins (uses `AvatarAtlasIO.js`).
 - [ ] Add procedural texture tools. Current state: the atlas painter only.
-- [ ] Decide the UV layout for editing so the atlas and the editor agree.
+- [x] Use the generated avatar atlas layout for direct painting and validate layout compatibility on skin document import.
+- [ ] Extend the initial editor into the requested model maker/sculptor; direct painting does not yet provide model sculpting.
 
 ## 10. Output types: portrait, speaking, and VTT token
 
@@ -205,9 +216,8 @@ To do:
 
 ## 11. Engine gaps (from the audit)
 
-Current state, from the audit:
-- No model editor
-- No paint or UV tools
+Current state:
+- Initial model maker with direct UV painting, but no sculpting or UV-layout editor
 - Procedural characters exist (humanoid, quadruped, spider), but are basic
 - Procedural textures are limited to the new atlas painter
 
@@ -219,7 +229,13 @@ To do:
 
 ## 12. Earlier TTRPG and game-engine threads
 
-These were discussed in earlier sessions. Their status is not fully recorded here, so each needs a check.
+Recent intro and music work:
+- [x] Fix identified intro HUD, scene-completion, object-visibility and ship-showcase preparation issues.
+- [ ] Verify the complete intro as a continuous experience, including camera handoffs, solar-system details and the ship showcase. Use an isolated harness where possible; run the full intro only when necessary to test the sequence itself.
+- [x] Correct music key-frequency lookup and prevent prepared background scenes from replacing active scene music.
+- [ ] Give the procedural music a listening-led second pass on composition and arrangement; the reliability fixes do not complete this request.
+
+Other earlier threads need a status check:
 
 - [ ] **Song progression comparison.** The user asked to compare standard song progressions and decide whether verses are always the same or vary. Some examples are similar or in different keys. Check whether this was done. If not, do it.
 - [ ] **Wormhole Mode restriction.** Wormholes are restricted by Mode. Engineers tune the engine to match the Mode of the engine and the wormhole. Mode and transposition are implemented. The engineer tuning gameplay needs checking.
@@ -229,10 +245,10 @@ These were discussed in earlier sessions. Their status is not fully recorded her
 
 ## 13. Housekeeping
 
-- [ ] Mirror all changed and new avatar files to `ttrpg-companion/src/t13ne/procgen/avatar/`. Verify hashes.
+- [x] Mirror the current avatar engine and new avatar helpers to `ttrpg-companion/src/t13ne/procgen/avatar/`, and verify hashes.
 - [ ] Mirror `package.json` and the new test file if the companion needs them.
-- [ ] Update `docs/architecture/current-state.md`, especially the "Character models" row (~line 123), and add the new modules.
-- [ ] Add every new test file to the explicit list in `test:node` in `package.json`.
+- [ ] Update the "Character models" row in `docs/architecture/current-state.md`: it still describes per-vertex colours and says no paint tool exists.
+- [x] Add the new avatar, skin-store, music-key and system-HUD test files to the explicit `test:node` list in `package.json`.
 - [ ] Remove the temporary Playwright harness (`tmp-avatar-render/`) after each use.
 - [ ] Clean up temporary files at the end of each task.
 - [ ] Do not commit unless asked.

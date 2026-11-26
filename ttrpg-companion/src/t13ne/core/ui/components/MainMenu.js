@@ -57,6 +57,21 @@ export class MainMenu {
         // These actions will now be handled by the ViewManager or UIManager
         this._addOption({ text: Localization.__('MENU_NEW_GAME'), onClick: () => this.viewManager.showGalaxyMap() });
         this._addOption({ text: Localization.__('MENU_GALAXY_MAP'), onClick: () => this.viewManager.showGalaxyMap() });
+        this._addOption({ text: Localization.__('MENU_AVATAR_MAKER'), onClick: async () => {
+            try {
+                const { AvatarModelMaker } = await import('../../../procgen/avatar/AvatarModelMaker.js');
+                const maker = new AvatarModelMaker({
+                    translate: (key, fallback) => {
+                        const value = Localization.__(key);
+                        return value === key ? fallback : value;
+                    }
+                });
+                maker.open();
+            } catch (error) {
+                Logger.error('Unable to open avatar model maker.', error);
+                window.alert(`${Localization.__('AVATAR_MAKER_OPEN_ERROR')}: ${error.message}`);
+            }
+        } });
         this._addOption({ text: Localization.__('MENU_SETTINGS'), onClick: () => this.uiManager.showSettingsMenu() });
         this._addOption({ text: 'Author Mode', onClick: () => window.location.href = '/src/t13ne/index.html' });
         this._addOption({ text: Localization.__('MENU_CONTROLS'), onClick: () => this.uiManager.showControls() });

@@ -11,6 +11,7 @@ import { Star } from '/src/t13ne/scenes/scenecomponents/Star.js';
 import { Asteroid } from '/src/t13ne/scenes/scenecomponents/Asteroid.js';
 import { SceneTools } from '/src/t13ne/core/SceneTools.js';
 import CodexLoader from '/src/t13ne/modules/codex/CodexLoader.js';
+import { systemHudText } from './SystemHud.js';
 
 export class LocalSpaceScene extends Scene {
     constructor(viewManager, sceneData) {
@@ -80,7 +81,7 @@ export class LocalSpaceScene extends Scene {
         // Prevent re-init if data appears identical (basic check)
         if (this.systemData && data.systemDetails && this.systemData.name === data.systemDetails.name && 
             this.planets && data.planets && this.planets.length === data.planets.length) {
-             if (data.introConfig) {
+             if (data.introConfig && !this.introPathSpline) {
                  this.introConfig = data.introConfig;
                  this.introActive = true;
                  this.playIntroSequence();
@@ -96,6 +97,7 @@ export class LocalSpaceScene extends Scene {
             this.introActive = true;
         }
         this.init();
+        if (this.isActive) this.createHUD();
     }
 
     onLoad() {
@@ -394,10 +396,6 @@ export class LocalSpaceScene extends Scene {
     }
 
     createHUD() {
-        const planetCount = this.planets.length;
-        const moonCount = this.planets.reduce((acc, p) => acc + (p.moons ? p.moons.length : 0), 0);
-        const total = 1 + planetCount + moonCount;
-
         this.hudElement = document.createElement('div');
         Object.assign(this.hudElement.style, {
             position: 'absolute',
@@ -412,13 +410,7 @@ export class LocalSpaceScene extends Scene {
             zIndex: '100'
         });
 
-        let name = this.systemData.name || 'Unknown';
-        if (this.systemData.systemNameFull && Array.isArray(this.systemData.systemNameFull)) {
-            const [common, formal, aka] = this.systemData.systemNameFull;
-            name = `${common} | `;
-            if (aka) name += ` | `;
-        }
-        this.hudElement.innerText = `SYSTEM:  ( Bodies)`;
+        this.hudElement.innerText = systemHudText(this.systemData, this.planets);
 
         if (this.viewManager) {
             this.viewManager.setHUD(this.hudElement);
@@ -705,9 +697,12 @@ export class LocalSpaceScene extends Scene {
 
             // Transition condition
             if (finished && !this.isComplete) {
-                Logger.message("LocalSpaceScene: Intro complete. Enabling controls.");
-                this.introActive = false;
-                this.shouldUpdateControls = true;
+                Logger.message("LocalSpaceScene: Intro complete.");
+                if (!this.viewManager?.isSequencing) {
+                    this.introActive = false;
+                    this.shouldUpdateControls = true;
+                }
+                this.complete();
             }
         } else if (this.homeWorldObj && !this.introActive) {
             // Gameplay Mode: Do NOT lock virtualCameraPosition to homeworld every frame.
@@ -785,7 +780,7 @@ export class LocalSpaceScene extends Scene {
                         const canShowMesh = scale > 0.005 || (obj === this.homeWorldObj && isFinalPhase) || (obj.type === 'star') || (this.introActive && isTarget && scale > 0.001);
 
                         if (canShowMesh) {
-                            obj.mesh.visible = !this.introActive || (obj === this.homeWorldObj && isFinalPhase) || (obj.type === 'star') || (this.introActive && isTarget);
+                            obj.mesh.visible = true;
                             obj.sprite.material.opacity = Math.max(0, 1.0 - (scale * 100));
                             obj.sprite.visible = obj.sprite.material.opacity > 0.01;
                         } else {

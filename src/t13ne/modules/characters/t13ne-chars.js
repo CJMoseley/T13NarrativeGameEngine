@@ -36,6 +36,7 @@ class SeededRNG {
 export class Character extends SuperKnot {
     constructor(codexLoader, data) {
         super(codexLoader, data);
+        if (data.id != null) this.id = data.id;
         this.charType = data.charType || 'Extra';
         this.facetweb = data.facetweb || null;
         this.personalityAnnex = data.personalityAnnex || null;
@@ -680,7 +681,6 @@ export class Character extends SuperKnot {
         return character;
     }
 }
-
 
 
 

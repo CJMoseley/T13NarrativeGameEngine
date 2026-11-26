@@ -4,6 +4,7 @@ import { Scene } from '/src/t13ne/core/Scene.js';
 import { SceneTools } from '/src/t13ne/core/SceneTools.js';
 import ProcGen from '/src/t13ne/procgen/ProcGen.js';
 import { ColourUtils } from '/src/t13ne/utils/ColourUtils.js';
+import { systemBodyCount } from './SystemHud.js';
 
 export class OrreryScene extends Scene {
     constructor(viewManager, sceneData) {
@@ -582,9 +583,7 @@ export class OrreryScene extends Scene {
     }
 
     createBodyCountDisplay() {
-        const planetCount = this.planets.length;
-        const moonCount = this.planets.reduce((acc, p) => acc + (p.moons ? p.moons.length : 0), 0);
-        const total = 1 + planetCount + moonCount; // +1 for Star
+        const total = systemBodyCount(this.systemData, this.planets);
 
         this.hudElement = document.createElement('div');
         Object.assign(this.hudElement.style, {
@@ -598,7 +597,7 @@ export class OrreryScene extends Scene {
             textShadow: '0 0 5px #000',
             pointerEvents: 'none'
         });
-        this.hudElement.innerText = `TRACKING:  BODIES`;
+        this.hudElement.innerText = `TRACKING: ${total} BODIES`;
     }
 
     createGrid() {

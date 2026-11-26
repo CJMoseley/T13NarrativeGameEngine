@@ -7,12 +7,13 @@ import * as THREE from 'three';
 import { hashSeed, mulberry32 } from './avatarRandom.js';
 
 export const ATLAS_SIZE = 256;
+export const ATLAS_VERSION = 1;
 export const TILE = 16;
 // A region holds the six faces of a box in a 3x2 grid of tiles.
 export const REGION_W = 3 * TILE;
 export const REGION_H = 2 * TILE;
-const COLS = ATLAS_SIZE / REGION_W;
-const ROWS = ATLAS_SIZE / REGION_H;
+const COLS = Math.floor(ATLAS_SIZE / REGION_W);
+const ROWS = Math.floor(ATLAS_SIZE / REGION_H);
 export const ATLAS_CAPACITY = COLS * ROWS;
 export const CLOTH_PATTERNS = ['plain', 'stripe', 'check', 'hoop'];
 
@@ -103,9 +104,9 @@ function clothPattern(rgb, pattern) {
 }
 
 function painterFor(key, palette) {
-    const [base, tone] = key.split(':');
+    const [base, tone, slot] = key.split(':');
     if (tone === 'cloth') {
-        const cloth = palette.clothing?.[base] ?? { colour: 0x6b6b6b, pattern: 'plain' };
+        const cloth = palette.clothing?.[slot ?? base] ?? { colour: 0x6b6b6b, pattern: 'plain' };
         return noisy(clothPattern(toRgb(cloth.colour), cloth.pattern), key, 0.06);
     }
     if (tone === 'dark') return () => toRgb(palette.dark);

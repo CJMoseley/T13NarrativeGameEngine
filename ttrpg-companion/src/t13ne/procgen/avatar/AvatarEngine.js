@@ -2,6 +2,9 @@ import * as THREE from 'three';
 import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import { COMPONENT_TYPES, MIXINS, TRAITS, BODY_PLANS } from './BodyPlanSchema.js';
 import ModelLoader from '../../core/ModelLoader.js';
+import { hashSeed, mulberry32 } from './avatarRandom.js';
+import { AvatarAtlas, ATLAS_VERSION, CLOTH_PATTERNS, mapUVsToRegion, paintAtlas, createAtlasTexture, ATLAS_SIZE } from './AvatarAtlas.js';
+import { bodyFromFacets } from './AvatarFacetBody.js';
 
 // Face morphs are region-based deltas on head vertices, shared by every body plan.
 const FACE_MORPHS = ['eyeBlinkLeft', 'eyeBlinkRight', 'browDownLeft', 'browDownRight', 'browInnerUp', 'jawOpen', 'mouthPucker', 'mouthFunnel', 'mouthSmileLeft', 'mouthSmileRight'];
@@ -14,9 +17,14 @@ const clamp01 = (t) => Math.min(Math.max(t, 0), 1);
 export const PROSTHETIC_TYPES = { ANTENNAE: 'antennae', HORNS: 'horns' };
 export const SKIN_TONES = [0xf1c27d, 0xe0ac69, 0xc68642, 0x8d5524, 0x5c3a1e, 0xffdbac];
 export const HAIR_COLORS = [0x1a1210, 0x3b2a1a, 0x6b4a2b, 0xb8862b, 0xd9c28a, 0x8a2b1a, 0x9a9a9a, 0xe8e8e8];
+export const CLOTH_COLOURS = [0x3d5a80, 0x7a2e2e, 0x4a4e3a, 0x6b4f2a, 0x2f4f4f, 0x5b3a6e, 0x8a7d5a, 0x2b2b33, 0xa45a2a, 0x355e3b];
 const DARK_TONE = 0x2a211c;   // eyes, mouth, brows, hooves and horns
 const DEFAULT_SKIN = SKIN_TONES[1];
-const DEFAULT_VARIANT = { height: 1, build: 1, skinTone: DEFAULT_SKIN, hairColor: HAIR_COLORS[1], prosthetics: [] };
+const DEFAULT_CLOTHING = {
+    top: { colour: 0x3d5a80, pattern: 'plain' },
+    bottom: { colour: 0x2b2b33, pattern: 'stripe' }
+};
+const DEFAULT_VARIANT = { height: 1, build: 1, musculature: 0, litheness: 0, skinTone: DEFAULT_SKIN, hairColor: HAIR_COLORS[1], prosthetics: [], clothing: DEFAULT_CLOTHING };
 
 // Primitive fallbacks for components without a box spec. Boxes hang below their pivot.
 const LEGACY_SPECS = {
@@ -25,38 +33,61 @@ const LEGACY_SPECS = {
 };
 const DEFAULT_SPEC = { size: [0.1, 0.1, 0.1], center: [0, -0.05, 0] };
 
-const hashSeed = (s) => {
-    let h = 2166136261;
-    for (let i = 0; i < s.length; i++) {
-        h ^= s.charCodeAt(i);
-        h = Math.imul(h, 16777619);
-    }
-    return h >>> 0;
-};
-
-const mulberry32 = (seed) => () => {
-    seed = (seed + 0x6D2B79F5) | 0;
-    let t = Math.imul(seed ^ (seed >>> 15), seed | 1);
-    t = (t + Math.imul(t ^ (t >>> 7), t | 61)) ^ t;
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-};
+/**
+ * Generate subtle, symmetric facial proportions independently of body and clothing draws.
+ * The ranges are relative to the body plan's existing features.
+ */
+export function makeFaceVariant(seed) {
+    const rand = mulberry32(hashSeed(`face:${String(seed)}`));
+    const range = (min, max) => min + (max - min) * rand();
+    return {
+        eyeSpacing: range(0.85, 1.15),
+        eyeSize: range(0.8, 1.2),
+        eyeHeight: range(-0.035, 0.035),
+        noseWidth: range(0.8, 1.2),
+        noseLength: range(0.8, 1.2),
+        mouthWidth: range(0.8, 1.2),
+        earSize: range(0.85, 1.15)
+    };
+}
 
 /**
- * Builds a deterministic humanoid variant (build, height, skin tone, prosthetics) from a seed string.
+ * Builds a deterministic humanoid variant from a seed string.
+ * Skin and hair come from the seed; clothing defaults to a neutral outfit. Body (height, build, musculature, litheness)
+ * comes from the character's Facets when they are supplied, otherwise from the seed.
+ * Seeded draws are appended in order, so older seeds keep the same values.
  * @param {string} seed
  * @param {object} [options]
  * @param {string[]} [options.prosthetics] - Values from PROSTHETIC_TYPES.
- * @returns {{height: number, build: number, skinTone: number, hairColor: number, prosthetics: string[]}}
+ * @param {Object<number, number>} [options.facetBoons] - Boon keyed by FacetIndex, see facetBoonsFromStats.
+ * @returns {{height: number, build: number, musculature: number, litheness: number, skinTone: number, hairColor: number, prosthetics: string[], clothing: object}}
  */
-export function makeHumanoidVariant(seed, { prosthetics = [] } = {}) {
+export function makeHumanoidVariant(seed, { prosthetics = [], facetBoons = null } = {}) {
     const rand = mulberry32(hashSeed(String(seed)));
     const range = (lo, hi) => lo + (hi - lo) * rand();
+    const pick = (list) => list[Math.floor(rand() * list.length)];
+    const seededHeight = range(0.9, 1.1);
+    const seededBuild = range(0.85, 1.2);
+    const skinTone = pick(SKIN_TONES);
+    const hairColor = pick(HAIR_COLORS);
+    // Keep consuming the original clothing draws to preserve seeded body proportions.
+    pick(CLOTH_COLOURS); pick(CLOTH_PATTERNS);
+    pick(CLOTH_COLOURS); pick(CLOTH_PATTERNS);
+    const clothing = { top: { ...DEFAULT_CLOTHING.top }, bottom: { ...DEFAULT_CLOTHING.bottom } };
+    const seededMusculature = range(-1, 1);
+    const seededLitheness = range(-1, 1);
+
+    const fromFacets = facetBoons ? bodyFromFacets(facetBoons) : null;
     return {
-        height: range(0.9, 1.1),
-        build: range(0.85, 1.2),
-        skinTone: SKIN_TONES[Math.floor(rand() * SKIN_TONES.length)],
-        hairColor: HAIR_COLORS[Math.floor(rand() * HAIR_COLORS.length)],
-        prosthetics
+        height: fromFacets ? fromFacets.height : seededHeight,
+        build: fromFacets ? fromFacets.build : seededBuild,
+        musculature: fromFacets ? fromFacets.musculature : seededMusculature,
+        litheness: fromFacets ? fromFacets.litheness : seededLitheness,
+        skinTone,
+        hairColor,
+        prosthetics,
+        clothing,
+        face: makeFaceVariant(seed)
     };
 }
 
@@ -128,6 +159,7 @@ export class AvatarEngine {
         this.chains.clear();
         this.headTop = 0;
         this.variant = { ...DEFAULT_VARIANT, ...variant };
+        this.atlas = new AvatarAtlas();
 
         // 1. Build Skeleton
         const { bones, rootBone } = this._buildSkeleton(bodyPlan);
@@ -141,9 +173,17 @@ export class AvatarEngine {
         // 3. Setup Morph Targets on Geometry
         const morphNames = this._setupMorphTargets(geometry, bodyPlan, bones);
 
-        // 4. Create SkinnedMesh
-        // Colours are per-vertex (skin, dark, hair), so the material base is white.
-        const material = new THREE.MeshLambertMaterial({ color: 0xffffff, vertexColors: true });
+        const supplied = this.variant.atlasPixels;
+        if (supplied != null && (!(supplied instanceof Uint8Array) || supplied.length !== ATLAS_SIZE * ATLAS_SIZE * 4)) {
+            throw new TypeError(`Avatar atlas pixels must be a ${ATLAS_SIZE}x${ATLAS_SIZE} RGBA Uint8Array.`);
+        }
+        const pixels = supplied ? new Uint8Array(supplied) : paintAtlas(this.atlas, {
+            skin: this.variant.skinTone,
+            hair: this.variant.hairColor,
+            dark: DARK_TONE,
+            clothing: this.variant.clothing
+        });
+        const material = new THREE.MeshLambertMaterial({ color: 0xffffff, map: createAtlasTexture(pixels) });
 
         const mesh = new THREE.SkinnedMesh(geometry, material);
         mesh.add(rootBone);
@@ -152,6 +192,12 @@ export class AvatarEngine {
 
         mesh.morphTargetDictionary = Object.fromEntries(morphNames.map((name, i) => [name, i]));
         mesh.morphTargetInfluences = new Array(morphNames.length).fill(0);
+        mesh.userData.avatarAtlas = {
+            version: ATLAS_VERSION,
+            bodyPlan: bodyPlan.name,
+            regions: Object.fromEntries(this.atlas.regions),
+            pixels
+        };
 
         return mesh;
     }
@@ -330,10 +376,11 @@ export class AvatarEngine {
 
                 if (comp.segments) {
                     // Explicit offsets, one joint per segment.
-                    let lastJoint = bone;
-                    comp.segments.forEach((offset, i) => {
-                        lastJoint = addJoint(lastJoint, `${comp.id}_joint_${i + 1}`, new THREE.Vector3(...offset).multiply(this._scale()));
-                    });
+                const { length: limbLength } = this._limbScale(comp);
+                let lastJoint = bone;
+                comp.segments.forEach((offset, i) => {
+                    lastJoint = addJoint(lastJoint, `${comp.id}_joint_${i + 1}`, new THREE.Vector3(...offset).multiply(this._scale()).multiplyScalar(limbLength));
+                });
                 } else {
                     let lastJoint = bone;
                     const jointCount = comp.joints || 3;
@@ -381,8 +428,11 @@ export class AvatarEngine {
             const bone = this.boneMap.get(comp.id);
             if (!bone) return;
 
+            this.currentPart = comp.id;
+            const coverage = this.variant.clothingCoverage ?? bodyPlan.clothingCoverage;
+            this.clothingSlot = coverage?.[comp.id] ?? null;
             const boneIndex = bones.indexOf(bone);
-            const tone = comp.tone || 'skin';
+            const tone = comp.tone || (this.clothingSlot ? 'cloth' : 'skin');
 
             if (this.chains.has(comp.id)) {
                 geometries.push(...this._chainGeometry(comp, bones));
@@ -431,9 +481,9 @@ export class AvatarEngine {
      */
     _chainGeometry(comp, bones) {
         const chain = this.chains.get(comp.id);
-        const thickness = (comp.thickness || 0.08) * this.variant.build;
+        const thickness = (comp.thickness || 0.08) * this.variant.build * this._limbScale(comp).thickness;
         const up = new THREE.Vector3(0, 1, 0);
-        const tone = comp.tone || 'skin';
+        const tone = comp.tone || (this.clothingSlot ? 'cloth' : 'skin');
         const parts = [];
 
         // Each segment runs from its bone to the next, in the bone's local frame.
@@ -450,7 +500,8 @@ export class AvatarEngine {
         // Joint caps hide the gap when a joint bends.
         const cap = thickness * 1.4;
         for (const joint of chain) {
-            parts.push(this._part(new THREE.BoxGeometry(cap, cap, cap), joint, bones.indexOf(joint), tone));
+            const capTone = joint === chain[chain.length - 1] ? (comp.extremity?.tone || 'skin') : tone;
+            parts.push(this._part(new THREE.BoxGeometry(cap, cap, cap), joint, bones.indexOf(joint), capTone));
         }
 
         if (comp.extremity) {
@@ -475,30 +526,9 @@ export class AvatarEngine {
      * @private
      */
     _part(geo, bone, boneIndex, tone = 'skin', blend = null) {
-        this._colorize(geo, tone);
+        const key = `${this.currentPart}:${tone}${tone === 'cloth' ? `:${this.clothingSlot}` : ''}`;
+        mapUVsToRegion(geo, this.atlas.region(key));
         return this._applySkinning(this._place(geo, bone), boneIndex, blend);
-    }
-
-    /**
-     * Writes a per-vertex colour so one material can show skin, dark and hair parts.
-     * @private
-     */
-    _colorize(geo, tone) {
-        const color = new THREE.Color(this._toneColor(tone));
-        const count = geo.attributes.position.count;
-        const colors = new Float32Array(count * 3);
-        for (let i = 0; i < count; i++) {
-            colors.set([color.r, color.g, color.b], i * 3);
-        }
-        geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-        return geo;
-    }
-
-    /** @private */
-    _toneColor(tone) {
-        if (tone === 'dark') return DARK_TONE;
-        if (tone === 'hair') return this.variant.hairColor;
-        return this.variant.skinTone;
     }
 
     /**
@@ -521,24 +551,27 @@ export class AvatarEngine {
         const [cx, cy, cz] = spec.center;
         const front = cz + d / 2;
         const top = cy + h / 2;
-        const eyeY = cy + 0.10 * h;
+        const face = this.variant.face ?? {};
+        const eyeY = cy + (0.10 + (face.eyeHeight ?? 0)) * h;
+        const eyeSpacing = face.eyeSpacing ?? 1;
+        const eyeSize = face.eyeSize ?? 1;
         const parts = [];
         const add = (size, center, tone = 'skin') => parts.push(this._part(this._boxSpec(size, center), bone, boneIndex, tone));
         const sides = [-1, 1];
 
         if (features.includes('eyes')) {
-            for (const sx of sides) add([0.035, 0.035, 0.02], [cx + sx * w * 0.25, eyeY, front], 'dark');
+            for (const sx of sides) add([0.035 * eyeSize, 0.035 * eyeSize, 0.02], [cx + sx * w * 0.25 * eyeSpacing, eyeY, front], 'dark');
         }
         if (features.includes('brows')) {
-            for (const sx of sides) add([0.05, 0.012, 0.02], [cx + sx * w * 0.25, eyeY + 0.08 * h, front], 'dark');
+            for (const sx of sides) add([0.05 * eyeSize, 0.012, 0.02], [cx + sx * w * 0.25 * eyeSpacing, eyeY + 0.08 * h, front], 'dark');
         }
-        if (features.includes('nose')) add([0.04, 0.06, 0.03], [cx, cy - 0.05 * h, front]);
-        if (features.includes('mouth')) add([0.08, 0.015, 0.02], [cx, cy - 0.23 * h, front], 'dark');
+        if (features.includes('nose')) add([0.04 * (face.noseWidth ?? 1), 0.06 * (face.noseLength ?? 1), 0.03], [cx, cy - 0.05 * h, front]);
+        if (features.includes('mouth')) add([0.08 * (face.mouthWidth ?? 1), 0.015, 0.02], [cx, cy - 0.23 * h, front], 'dark');
         if (features.includes('earsSide')) {
-            for (const sx of sides) add([0.03, 0.07, 0.04], [cx + sx * (w / 2 + 0.01), cy - 0.02 * h, cz]);
+            for (const sx of sides) add([0.03, 0.07 * (face.earSize ?? 1), 0.04], [cx + sx * (w / 2 + 0.01), cy - 0.02 * h, cz]);
         }
         if (features.includes('earsUpright')) {
-            for (const sx of sides) add([0.04, 0.07, 0.04], [cx + sx * w * 0.3, top + 0.03, cz]);
+            for (const sx of sides) add([0.04, 0.07 * (face.earSize ?? 1), 0.04], [cx + sx * w * 0.3, top + 0.03, cz]);
         }
         if (features.includes('snout')) add([w * 0.5, h * 0.4, 0.08], [cx, cy - 0.2 * h, front + 0.04]);
         if (features.includes('hair')) add([w * 1.04, h * 0.3, d * 1.02], [cx, top - 0.15 * h + 0.01, cz - 0.03], 'hair');
@@ -574,6 +607,21 @@ export class AvatarEngine {
      */
     _scale() {
         return new THREE.Vector3(this.variant.build, this.variant.height, this.variant.build);
+    }
+
+    /**
+     * Limb length and thickness factors from litheness and musculature. Only limb chains are affected.
+     * Lithe limbs are longer and slimmer. Momentum (negative litheness) is heavier. Musculature adds bulk.
+     * @private
+     */
+    _limbScale(comp) {
+        if (comp.type !== COMPONENT_TYPES.LIMB_CHAIN) return { length: 1, thickness: 1 };
+        const musculature = this.variant.musculature || 0;
+        const litheness = this.variant.litheness || 0;
+        return {
+            length: 1 + 0.06 * litheness,
+            thickness: (1 + 0.15 * musculature) * (1 - 0.1 * litheness)
+        };
     }
 
     /**

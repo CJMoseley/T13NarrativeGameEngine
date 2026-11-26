@@ -57,7 +57,11 @@ const HUMANOID_PARTS = [
 export const BODY_PLANS = {
     HUMANOID: {
         name: 'Humanoid',
-        components: HUMANOID_PARTS
+        components: HUMANOID_PARTS,
+        clothingCoverage: {
+            spine: 'top', arm_l: 'top', arm_r: 'top',
+            hips: 'bottom', leg_l: 'bottom', leg_r: 'bottom'
+        }
     },
     QUADRUPED: {
         name: 'Quadruped',

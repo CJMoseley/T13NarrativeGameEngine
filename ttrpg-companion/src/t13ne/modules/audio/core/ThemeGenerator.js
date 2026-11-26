@@ -2,6 +2,7 @@
 
 import CodexLoader from "/src/t13ne/modules/codex/CodexLoader.js";
 import { MusicRNG } from "/src/t13ne/modules/audio/core/MusicUtils.js";
+import { musicKeyFrequency } from './MusicKey.js';
 import { AudioAnalyzer } from "/src/t13ne/modules/audio/t13ne-audio-analyzer.js";
 import WasmManager from "/src/t13ne/wasm/WasmManager.js";
 
@@ -259,7 +260,7 @@ class VirtualBand {
         if (!this.conductor) {
             this.conductor = artist;
             // Snap base frequency to nearest standard note to ensure sample compatibility
-            const rawFreq = artist.keyData.Frequency;
+            const rawFreq = musicKeyFrequency(artist.keyData);
             const noteIndex = Math.round(12 * Math.log2(rawFreq / 440));
             this.baseFreq = 440 * Math.pow(2, noteIndex / 12);
             // Conductor sets the initial vibe
@@ -301,7 +302,7 @@ class VirtualBand {
             await shipArtist.prepare();
             this.members.unshift(shipArtist); 
             this.conductor = shipArtist;
-            this.baseFreq = shipArtist.keyData.Frequency;
+            this.baseFreq = musicKeyFrequency(shipArtist.keyData);
         }
     }
 
@@ -318,7 +319,7 @@ class VirtualBand {
         // Generate a progression from Conductor's key (Origin) to Target Key
         // This is a simplified modulation logic
         const startFreq = this.baseFreq;
-        const endFreq = targetKeyData.Frequency;
+        const endFreq = musicKeyFrequency(targetKeyData);
         
         // Standard Form: I -> ... -> V_of_Target -> I_Target
         // For now, simple interpolation of frequencies in steps
@@ -1167,7 +1168,7 @@ export class ThemeGenerator {
 
         // Check if artist is "distant" from the band's base frequency
         const bandBaseFreq = context.baseFreq;
-        const artistBaseFreq = artist.keyData.Frequency;
+        const artistBaseFreq = musicKeyFrequency(artist.keyData);
         const ratio = artistBaseFreq / bandBaseFreq;
         const semitoneDiff = Math.abs(12 * Math.log2(ratio));
         
@@ -1218,7 +1219,6 @@ export class ThemeGenerator {
             percRhythm.events.forEach(e => {
                 if (e.voice === 'v_snare' || e.voice === 'v_perc' || (e.voice === 'v_hat' && rng.next() > 0.5)) {
                     // Ensure tonal percussion follows the chord progression if possible
-                    let freq = artist.keyData.Frequency || 261.63;
                     // Find current chord to tune percussion if it's tonal
                     const currentChord = progression.find(c => {
                         // Approximate chord finding based on step (simplified)
@@ -1229,7 +1229,7 @@ export class ThemeGenerator {
                     // Use band base frequency for tonal percussion to ensure it's in key
                     // or a fixed ratio of it (e.g. 0.5 for low tom)
                     // FIX: Quantize to nearest semitone to avoid microtonal dissonance
-                    let percFreq = artist.keyData.Frequency || 261.63;
+                    let percFreq = artistBaseFreq;
                     const ratio = percFreq / 261.63;
                     const semitones = Math.round(12 * Math.log2(ratio));
                     percFreq = context.baseFreq * Math.pow(2, semitones / 12);

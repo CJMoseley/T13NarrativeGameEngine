@@ -5,10 +5,11 @@ import { GalacticHistory } from '/src/t13ne/procgen/galaxy/GalacticHistory.js';
 import { Scene } from '/src/t13ne/core/Scene.js';
 import ProcGen from '/src/t13ne/procgen/ProcGen.js';
 import { EventBus } from '/src/t13ne/core/EventBus.js';
+import Logger from '/src/t13ne/core/Logger.js';
 
 export class ShipShowcaseScene extends Scene {
-    constructor(viewManager) {
-        super(viewManager);
+    constructor(viewManager, sceneData = {}) {
+        super(viewManager, sceneData);
 
         this.shipFactory = null;
         
@@ -33,6 +34,7 @@ export class ShipShowcaseScene extends Scene {
 
     onLoad() {
         super.onLoad(); // This starts the animation loop
+        if (this.uiContainer) this.uiContainer.style.display = 'block';
         this.prepareRevealSequence();
     }
 
@@ -68,7 +70,7 @@ export class ShipShowcaseScene extends Scene {
         // 8. Generate Ship Data Procedurally
         onProgress({ status: 'Designing random ship...', percent: 0.4 });
         // Use a random seed (never) instead only use one based on the home system 
-        const seed = this.sceneData?.seed || Date.now();
+        const seed = this.sceneData?.seed ?? Date.now();
         const prng = ProcGen.createPRNG(seed);
         
         // Determine style to ensure name matches visual
@@ -78,7 +80,7 @@ export class ShipShowcaseScene extends Scene {
         const sizes = ['small', 'medium', 'large'];
         const size = sizes[Math.floor(prng.nextDouble() * sizes.length)];
         
-        if (this.sceneData && this.sceneData.ship) {
+        if (Array.isArray(this.sceneData?.ship)) {
             Logger.message("ShipShowcaseScene: Using existing ship data from context.");
             this.shipComponents = this.sceneData.ship;
         } else {
@@ -88,7 +90,7 @@ export class ShipShowcaseScene extends Scene {
             } catch (e) {
                 console.error("ShipShowcaseScene: Failed to generate ship components.", e);
                 onProgress({ status: 'Ship generation failed.', percent: 1.0, error: true });
-                return;
+                throw e;
             }
         }
 
@@ -110,7 +112,7 @@ export class ShipShowcaseScene extends Scene {
                     const tech = TECH_SPECS[Math.floor(prng.nextDouble() * TECH_SPECS.length)];
                     const qual = QUALITIES[Math.floor(prng.nextDouble() * QUALITIES.length)];
                     const type = style === 'ORGANIC' ? "Bio-Craft" : (style === 'SKELETON' ? "Frame" : "Racer");
-                    this.shipName = `${manu}   `;
+                    this.shipName = `${manu} ${qual} ${tech} ${type}`;
                 }
             } catch (e) {
                 console.warn("ShipShowcaseScene: Failed to generate ship name.", e);
@@ -128,6 +130,7 @@ export class ShipShowcaseScene extends Scene {
             await this.hullGenerationPromise;
         } catch (e) {
             console.error("ShipShowcaseScene: Hull generation failed during prepare.", e);
+            throw e;
         }
         
         onProgress({ status: 'Ship data ready.', percent: 1.0 });
@@ -153,6 +156,7 @@ export class ShipShowcaseScene extends Scene {
         this.uiContainer.style.padding = '20px';
         this.uiContainer.style.borderRadius = '10px';
         this.uiContainer.style.transition = 'left 0.1s, top 0.1s'; // Smooth movement
+        this.uiContainer.style.display = 'none';
         document.body.appendChild(this.uiContainer);
 
         this.labelElement = document.createElement('h2');
@@ -227,7 +231,7 @@ export class ShipShowcaseScene extends Scene {
         for (const [name, meshes] of groups) {
             this.componentGroups.push({
                 name: name,
-                description: `Installing ...`,
+                description: `Installing ${name}...`,
                 meshes: meshes
             });
         }
@@ -458,7 +462,7 @@ export class ShipShowcaseScene extends Scene {
             const y = (-(center.y * .5) + .5) * window.innerHeight;
 
             // Update UI position (offset slightly)
-            this.uiContainer.style.left = `px`;
+            this.uiContainer.style.left = `${x}px`;
             this.uiContainer.style.top = `${y + 50}px`; // Below the component
             this.uiContainer.style.bottom = 'auto'; // Clear bottom constraint
             this.uiContainer.style.transform = 'translate(-50%, 0)';

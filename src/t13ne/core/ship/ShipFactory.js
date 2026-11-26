@@ -123,8 +123,8 @@ export class ShipFactory {
         return this.shipAssembler.generateProceduralShip(components, styleConfig, interior);
     }
 
-    async generateProceduralShipAsync(components, styleConfig, interior) {
-        return this.shipAssembler.generateProceduralShipAsync(components, styleConfig, interior);
+    async generateProceduralShipAsync(components, styleConfig, interior, targetScene = null) {
+        return this.shipAssembler.generateProceduralShipAsync(components, styleConfig, interior, targetScene);
     }
 
     /**

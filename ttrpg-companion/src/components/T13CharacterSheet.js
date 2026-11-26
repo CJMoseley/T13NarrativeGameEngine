@@ -70,6 +70,9 @@ export class T13CharacterSheet extends HTMLElement {
                     ]) : document.createDocumentFragment()
                 ])
             ]),
+            SafeDOM.el('div', { class: 'section' }, [
+                SafeDOM.el('button', { type: 'button', onclick: () => this.openAvatarMaker() }, 'Open avatar model maker')
+            ]),
 
             features.length ? SafeDOM.el('div', { class: 'section' }, [
                 SafeDOM.el('h2', { class: 'section-title' }, 'Hexagram & Significator Features'),
@@ -119,6 +122,28 @@ export class T13CharacterSheet extends HTMLElement {
 
         const profContainer = this.shadowRoot.querySelectorAll('t13-proficiency');
         proficiencies.forEach((p, i) => { if (profContainer[i]) profContainer[i].setProficiency([p.name, p.facet, '']); });
+    }
+
+    async openAvatarMaker() {
+        try {
+            const character = this.characterData;
+            const [{ AvatarModelMaker }, { CharacterSkinStore }, { default: CodexDB }] = await Promise.all([
+                import('../t13ne/procgen/avatar/AvatarModelMaker.js'),
+                import('../t13ne/procgen/avatar/CharacterSkinStore.js'),
+                import('/src/t13ne/modules/codex/CodexDB.js')
+            ]);
+            const store = new CharacterSkinStore(CodexDB);
+            const id = character.id;
+            const saved = id == null ? null : await store.load(id);
+            let revision = saved?.revision ?? 0;
+            const onSave = id == null ? null : async document => {
+                revision = await store.save(id, document, revision);
+            };
+            new AvatarModelMaker({ character, skinDocument: saved?.document ?? null, onSave }).open();
+        } catch (error) {
+            console.error('Unable to open avatar model maker:', error);
+            window.alert(`Unable to open avatar model maker: ${error.message}`);
+        }
     }
 }
 
