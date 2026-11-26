@@ -9,9 +9,10 @@ import { PlanetaryRenderer } from '/src/t13ne/rendering/PlanetaryRenderer.js';
 import { Starbox } from '/src/t13ne/scenes/scenecomponents/starbox.js';
 import { Planet } from '/src/t13ne/scenes/scenecomponents/Planet.js';
 import { Asteroid } from '/src/t13ne/scenes/scenecomponents/Asteroid.js';
-import { AvatarEngine, makeFaceVariant, makeHumanoidVariant } from '/src/t13ne/procgen/avatar/AvatarEngine.js';
+import { makeFaceVariant, makeHumanoidVariant } from '/src/t13ne/procgen/avatar/AvatarEngine.js';
+import { sharedAvatarCache } from '/src/t13ne/procgen/avatar/AvatarCache.js';
 import { speciesSkin } from '/src/t13ne/procgen/avatar/SpeciesSkins.js';
-import { BODY_PLANS } from '/src/t13ne/procgen/avatar/BodyPlanSchema.js';
+import { resolveBodyPlan } from '/src/t13ne/procgen/avatar/BodyPlanSchema.js';
 
 export class PlanetaryOrbitScene extends Scene {
     constructor(viewManager, sceneData) {
@@ -806,24 +807,13 @@ export class PlanetaryOrbitScene extends Scene {
         try {
             if (!this.isActive) return;
 
-            const avatarEngine = new AvatarEngine();
-            // Determine body plan from lore
-            let planName = 'HUMANOID';
             const speciesCore = this.systemData.speciesCore || {};
-            
-            if (speciesCore.bodyPlan) {
-                const bp = speciesCore.bodyPlan.toLowerCase();
-                if (bp.includes('quadruped')) planName = 'QUADRUPED';
-                else if (bp.includes('spider') || bp.includes('arachnid')) planName = 'SPIDER';
-                else if (bp.includes('centipede') || bp.includes('myriapod')) planName = 'CENTIPEDE';
-                else if (bp.includes('radial') || bp.includes('tentacle')) planName = 'RADIAL';
-                else if (bp.includes('winged') || bp.includes('avian')) planName = 'WINGED';
-            }
-
-            const bodyPlan = BODY_PLANS[planName] || BODY_PLANS.HUMANOID;
+            const bodyPlan = resolveBodyPlan(speciesCore);
+            const planName = bodyPlan.name.toUpperCase();
+            const seed = this.planetData.name || 'avatar';
             const variant = planName === 'HUMANOID'
-                ? makeHumanoidVariant(this.planetData.name || 'avatar')
-                : { face: makeFaceVariant(this.planetData.name || 'avatar') };
+                ? makeHumanoidVariant(seed)
+                : { face: makeFaceVariant(seed) };
             if (speciesCore.avatarSkins || speciesCore.color != null || speciesCore.id || speciesCore.scientificName || speciesCore.commonName || speciesCore.name) {
                 const { id, ...skin } = speciesSkin(speciesCore);
                 Object.assign(variant, skin);
@@ -832,7 +822,7 @@ export class PlanetaryOrbitScene extends Scene {
                 const prng = ProcGen.createPRNG(this.planetData.name || 'avatar-color');
                 variant.skinTone = new THREE.Color().setHSL(prng.nextDouble(), 0.6, 0.5).getHex();
             }
-            const avatarMesh = await avatarEngine.generate(bodyPlan, { variant });
+            const avatarMesh = await sharedAvatarCache.generate(bodyPlan, { seed, variant });
 
             // Center and scale to ensure it fits in the camera view
             const box = new THREE.Box3().setFromObject(avatarMesh);

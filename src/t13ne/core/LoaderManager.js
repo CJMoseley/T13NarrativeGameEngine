@@ -3,6 +3,7 @@ import IntroSequence from '/src/t13ne/core/ui/IntroSequence.js';
 import Localization from '/src/t13ne/core/ui/Localization.js';
 import * as THREE from 'three';
 import T13NE_Music from '/src/t13ne/modules/audio/t13ne-music.js';
+import { sharedAvatarCache } from '/src/t13ne/procgen/avatar/AvatarCache.js';
 
 /**
  * @module Core/LoaderManager
@@ -77,6 +78,18 @@ class LoaderManager {
             { name: 'Initialize Plugins', action: () => this.pluginManager.initializePlugins(this) },
             { name: 'Lore Data', action: () => this.loreDataManager.load() },
             { name: 'Core Game Data', action: () => this.gameEngine.initializeBaseData() },
+            {
+                name: 'Prewarm Avatars', action: async () => {
+                    const roster = this.viewManager.pendingRaceRoster ?? {
+                        crew: this.gameEngine?.playerCrew ?? (this.gameEngine?.playerCharacter ? [this.gameEngine.playerCharacter] : ['pilot-default']),
+                        ships: this.gameEngine?.raceShips ?? [],
+                        racers: this.gameEngine?.raceParticipants ?? []
+                    };
+                    if (this.viewManager.pendingRaceRoster) this.viewManager.pendingRaceRoster = null;
+                    const result = await sharedAvatarCache.prewarmRoster(roster);
+                    Logger.message(`LoaderManager: Prewarmed ${result.warmed}/${result.total} avatars in ${result.durationMs.toFixed(1)} ms.`);
+                }
+            },
 
             {
                 name: 'Initialize Audio', action: async () => {

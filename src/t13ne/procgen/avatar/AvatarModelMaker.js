@@ -3,8 +3,10 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { AvatarEngine, makeHumanoidVariant } from './AvatarEngine.js';
 import { facetBoonsFromStats } from './AvatarFacetBody.js';
 import { BODY_PLANS } from './BodyPlanSchema.js';
+import { ATLAS_SIZE } from './AvatarAtlas.js';
 import { AvatarSkinPainter } from './AvatarSkinPainter.js';
 import { exportSkinDocument, importSkinDocument } from './AvatarSkinDocument.js';
+import { atlasToPngBlob, pngBlobToAtlasPixels } from './AvatarAtlasIO.js';
 import { speciesSkin } from './SpeciesSkins.js';
 
 /**
@@ -25,24 +27,51 @@ export class AvatarModelMaker {
         this.mesh = null;
         this.editRevision = 0;
         this.saving = false;
+        this.undoStack = [];
+        this.mode = 'rotate';
     }
 
     open() {
         if (this.root) throw new Error('Model maker is already open.');
         this.root = document.createElement('section');
+        this.root.className = 'avatar-maker';
         this.root.setAttribute('role', 'dialog');
+        this.root.setAttribute('aria-modal', 'true');
         this.root.setAttribute('aria-label', this.translate('AVATAR_MAKER_TITLE', 'Avatar model maker'));
-        Object.assign(this.root.style, {
-            position: 'fixed', inset: '0', zIndex: '10000', background: '#101827',
-            color: '#edf2ff', display: 'flex', flexDirection: 'column', padding: '1rem',
-            gap: '0.5rem', pointerEvents: 'auto', fontFamily: 'sans-serif'
-        });
+        const style = document.createElement('style');
+        style.textContent = `
+            .avatar-maker { position: fixed; inset: 0; z-index: 10000; background: #0e1726; color: #edf2ff; display: flex; flex-direction: column; font: 14px/1.4 system-ui, sans-serif; pointer-events: auto; }
+            .avatar-maker * { box-sizing: border-box; }
+            .avatar-maker__header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.8rem 1.2rem; border-bottom: 1px solid #334155; }
+            .avatar-maker h2 { font-size: 1.15rem; margin: 0; }
+            .avatar-maker__content { display: flex; flex: 1; min-height: 0; }
+            .avatar-maker__tools { width: 260px; flex: 0 0 260px; overflow-y: auto; padding: 1rem; background: #182538; display: flex; flex-direction: column; gap: 1rem; }
+            .avatar-maker__group { display: flex; flex-direction: column; gap: 0.45rem; }
+            .avatar-maker__label { color: #c4d2e5; font-size: 0.8rem; font-weight: 700; }
+            .avatar-maker select, .avatar-maker button { font: inherit; color: #edf2ff; background: #273950; border: 1px solid #49617e; border-radius: 5px; padding: 0.5rem 0.65rem; }
+            .avatar-maker button { cursor: pointer; text-align: left; }
+            .avatar-maker button:hover { background: #38536f; }
+            .avatar-maker button[aria-pressed=true] { background: #2e628b; border-color: #8cc9ff; }
+            .avatar-maker button:disabled { opacity: 0.5; cursor: default; }
+            .avatar-maker button:focus-visible, .avatar-maker input:focus-visible, .avatar-maker select:focus-visible { outline: 2px solid #8cc9ff; outline-offset: 2px; }
+            .avatar-maker input[type=color] { width: 100%; height: 2.4rem; border: 1px solid #49617e; border-radius: 5px; background: #273950; cursor: pointer; }
+            .avatar-maker input[type=range] { width: 100%; accent-color: #80c9ff; }
+            .avatar-maker input[type=file] { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+            .avatar-maker__help, .avatar-maker__status { color: #b6c8dc; margin: 0; font-size: 0.82rem; }
+            .avatar-maker__viewport { position: relative; flex: 1; min-width: 0; min-height: 0; }
+            @media (max-width: 650px) {
+                .avatar-maker__content { flex-direction: column-reverse; }
+                .avatar-maker__tools { width: auto; flex: 0 1 auto; max-height: 43%; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.75rem; }
+                .avatar-maker__viewport { min-height: 180px; }
+            }
+        `;
         const title = document.createElement('h2');
         title.textContent = this.translate('AVATAR_MAKER_TITLE', 'Avatar model maker');
         const instructions = document.createElement('p');
-        instructions.textContent = this.translate('AVATAR_MAKER_INSTRUCTIONS', 'Paint with the left mouse button. Rotate with the right mouse button and zoom with the wheel. Some features share paint regions.');
+        instructions.textContent = this.translate('AVATAR_MAKER_INSTRUCTIONS', 'Drag to rotate. Select Paint to paint with the left button; right-drag still rotates. Use the wheel to zoom.');
         const toolbar = document.createElement('div');
-        Object.assign(toolbar.style, { display: 'flex', gap: '0.75rem', flexWrap: 'wrap', alignItems: 'center' });
+        toolbar.className = 'avatar-maker__tools';
+        instructions.className = 'avatar-maker__help';
         this.planSelect = document.createElement('select');
         this.planSelect.setAttribute('aria-label', this.translate('AVATAR_MAKER_BODY_PLAN', 'Body plan'));
         for (const [key, plan] of Object.entries(BODY_PLANS)) {
@@ -52,7 +81,7 @@ export class AvatarModelMaker {
             this.planSelect.appendChild(option);
         }
         this.planSelect.addEventListener('change', () => {
-            if (this.dirty && !window.confirm(this.translate('AVATAR_MAKER_DISCARD', 'Discard the current painting? Download it first to keep it.'))) {
+            if (this.dirty && !window.confirm(this.translate('AVATAR_MAKER_DISCARD', 'Discard the current painting? Save it first to keep it.'))) {
                 this.planSelect.value = this.planName;
                 return;
             }
@@ -76,22 +105,37 @@ export class AvatarModelMaker {
         this.radius.max = '8';
         this.radius.value = '1';
         this.radius.setAttribute('aria-label', this.translate('AVATAR_MAKER_BRUSH_RADIUS', 'Brush radius in texture pixels'));
-        const save = this.button(this.translate('AVATAR_MAKER_DOWNLOAD', 'Download skin'), () => this.download());
-        if (this.onSave) toolbar.append(this.button(this.translate('AVATAR_MAKER_SAVE_CHARACTER', 'Save to character'), () => this.saveCharacter()));
+        this.expression = document.createElement('select');
+        this.expression.setAttribute('aria-label', this.translate('AVATAR_MAKER_EXPRESSION', 'Expression preview'));
+        for (const [value, key, label] of [
+            ['neutral', 'AVATAR_MAKER_NEUTRAL', 'Neutral'],
+            ['smile', 'AVATAR_MAKER_SMILE', 'Smile'],
+            ['frown', 'AVATAR_MAKER_FROWN', 'Frown']
+        ]) {
+            const option = document.createElement('option');
+            option.value = value;
+            option.textContent = this.translate(key, label);
+            this.expression.appendChild(option);
+        }
+        this.expression.addEventListener('change', () => this.updateExpression());
+        const save = this.button(this.translate('AVATAR_MAKER_DOWNLOAD', 'Save skin'), () => this.download());
+        const characterSave = this.onSave ? this.button(this.translate('AVATAR_MAKER_SAVE_CHARACTER', 'Save to character'), () => this.saveCharacter()) : null;
         const file = document.createElement('input');
         file.type = 'file';
         file.accept = '.json,application/json';
-        file.setAttribute('aria-label', this.translate('AVATAR_MAKER_IMPORT', 'Import skin document'));
+        file.setAttribute('aria-label', this.translate('AVATAR_MAKER_IMPORT', 'Load skin'));
         file.addEventListener('change', async () => {
             try {
                 if (!file.files?.[0]) return;
-                if (this.dirty && !window.confirm(this.translate('AVATAR_MAKER_DISCARD', 'Discard the current painting? Download it first to keep it.'))) return;
+                if (this.dirty && !window.confirm(this.translate('AVATAR_MAKER_DISCARD', 'Discard the current painting? Save it first to keep it.'))) return;
                 const mesh = this.mesh;
                 const revision = this.editRevision;
                 const data = JSON.parse(await file.files[0].text());
                 if (!this.root || this.mesh !== mesh) return;
                 if (revision !== this.editRevision) throw new Error('The model changed while the file was loading; import again.');
+                const previous = new Uint8Array(mesh.userData.avatarAtlas.pixels);
                 importSkinDocument(mesh, data);
+                this.recordUndo(previous);
                 this.dirty = true;
                 this.editRevision++;
                 this.status.textContent = this.translate('AVATAR_MAKER_IMPORTED', 'Skin imported.');
@@ -102,14 +146,75 @@ export class AvatarModelMaker {
                 file.value = '';
             }
         });
+        const pngFile = document.createElement('input');
+        pngFile.type = 'file';
+        pngFile.accept = '.png,image/png';
+        pngFile.setAttribute('aria-label', this.translate('AVATAR_MAKER_IMPORT_PNG', 'Load skin PNG'));
+        pngFile.addEventListener('change', async () => {
+            try {
+                if (!pngFile.files?.[0]) return;
+                if (this.dirty && !window.confirm(this.translate('AVATAR_MAKER_DISCARD', 'Discard the current painting? Save it first to keep it.'))) return;
+                if (!window.confirm(this.translate('AVATAR_MAKER_PNG_WARNING', 'PNG files do not contain body-plan or atlas layout information. Only import a PNG made for this exact avatar layout. Continue?'))) return;
+                const mesh = this.mesh;
+                const revision = this.editRevision;
+                const pixels = await pngBlobToAtlasPixels(pngFile.files[0]);
+                if (!this.root || this.mesh !== mesh) return;
+                if (revision !== this.editRevision) throw new Error('The model changed while the file was loading; import again.');
+                const skin = exportSkinDocument(mesh);
+                skin.pixels = Array.from(pixels);
+                const previous = new Uint8Array(mesh.userData.avatarAtlas.pixels);
+                importSkinDocument(mesh, skin);
+                this.recordUndo(previous);
+                this.dirty = true;
+                this.editRevision++;
+                this.status.textContent = this.translate('AVATAR_MAKER_IMPORTED', 'Skin imported.');
+            } catch (error) {
+                console.error('Unable to import avatar skin PNG:', error);
+                if (this.root) this.status.textContent = `${this.translate('AVATAR_MAKER_IMPORT_ERROR', 'Unable to import skin')}: ${error.message}`;
+            } finally {
+                pngFile.value = '';
+            }
+        });
         const close = this.button(this.translate('AVATAR_MAKER_CLOSE', 'Close'), () => this.close());
-        toolbar.append(this.planSelect, this.colour, this.radius, save, file, close);
+        const pngSave = this.button(this.translate('AVATAR_MAKER_DOWNLOAD_PNG', 'Save skin PNG'), () => this.downloadPng());
+        const group = (label, ...controls) => {
+            const container = document.createElement('div');
+            container.className = 'avatar-maker__group';
+            const heading = document.createElement('span');
+            heading.className = 'avatar-maker__label';
+            heading.textContent = label;
+            container.append(heading, ...controls);
+            return container;
+        };
+        const fileButton = this.button(this.translate('AVATAR_MAKER_IMPORT', 'Load skin'), () => file.click());
+        const pngButton = this.button(this.translate('AVATAR_MAKER_IMPORT_PNG', 'Load skin PNG'), () => pngFile.click());
+        this.rotateButton = this.button(this.translate('AVATAR_MAKER_ROTATE', 'Rotate'), () => this.setMode('rotate'));
+        this.paintButton = this.button(this.translate('AVATAR_MAKER_PAINT', 'Paint'), () => this.setMode('paint'));
+        this.undoButton = this.button(this.translate('AVATAR_MAKER_UNDO', 'Undo'), () => this.undo());
+        this.undoButton.disabled = true;
+        toolbar.append(
+            group(this.translate('AVATAR_MAKER_BODY_PLAN', 'Body plan'), this.planSelect),
+            group(this.translate('AVATAR_MAKER_EXPRESSION', 'Expression preview'), this.expression),
+            group(this.translate('AVATAR_MAKER_TOOL', 'Tool'), this.rotateButton, this.paintButton, this.undoButton),
+            group(this.translate('AVATAR_MAKER_BRUSH_COLOUR', 'Brush colour'), this.colour),
+            group(this.translate('AVATAR_MAKER_BRUSH_RADIUS', 'Brush radius in texture pixels'), this.radius),
+            group(this.translate('AVATAR_MAKER_SKIN_FILES', 'Skin files'), ...(characterSave ? [characterSave] : []), save, fileButton, file, pngSave, pngButton, pngFile),
+            instructions
+        );
         this.status = document.createElement('p');
+        this.status.className = 'avatar-maker__status';
         this.status.setAttribute('role', 'status');
-        this.status.textContent = this.translate('AVATAR_MAKER_SAVE_NOTICE', 'Download a skin document to keep your work.');
+        this.status.textContent = this.translate('AVATAR_MAKER_SAVE_NOTICE', 'Save a skin document to keep your work.');
         this.viewport = document.createElement('div');
-        Object.assign(this.viewport.style, { flex: '1', minHeight: '0', position: 'relative' });
-        this.root.append(title, instructions, toolbar, this.status, this.viewport);
+        this.viewport.className = 'avatar-maker__viewport';
+        toolbar.append(this.status);
+        const header = document.createElement('header');
+        header.className = 'avatar-maker__header';
+        header.append(title, close);
+        const content = document.createElement('div');
+        content.className = 'avatar-maker__content';
+        content.append(toolbar, this.viewport);
+        this.root.append(style, header, content);
         document.body.appendChild(this.root);
 
         try {
@@ -125,11 +230,11 @@ export class AvatarModelMaker {
             light.position.set(2, 4, 5);
             this.scene.add(light);
             this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-            this.controls.mouseButtons.LEFT = null;
-            this.controls.mouseButtons.RIGHT = THREE.MOUSE.ROTATE;
+            this.setMode('rotate');
             this.renderer.domElement.addEventListener('pointerdown', event => {
-                if (event.button !== 0) return;
+                if (event.button !== 0 || this.mode !== 'paint' || this.painting) return;
                 this.painting = true;
+                this.strokeBefore = new Uint8Array(this.mesh.userData.avatarAtlas.pixels);
                 this.renderer.domElement.setPointerCapture(event.pointerId);
                 this.paint(event);
             });
@@ -137,7 +242,10 @@ export class AvatarModelMaker {
                 if (this.painting) this.paint(event);
             });
             for (const type of ['pointerup', 'pointercancel', 'lostpointercapture']) {
-                this.renderer.domElement.addEventListener(type, () => { this.painting = false; });
+                this.renderer.domElement.addEventListener(type, () => {
+                    this.painting = false;
+                    this.strokeBefore = null;
+                });
             }
             this.resizeObserver = new ResizeObserver(() => this.resize());
             this.resizeObserver.observe(this.viewport);
@@ -173,10 +281,18 @@ export class AvatarModelMaker {
         const plan = BODY_PLANS[name];
         if (!plan) throw new Error(`Unknown body plan "${name}".`);
         const nameValue = this.character?.name;
-        const seed = (Array.isArray(nameValue) ? nameValue[0] : nameValue) || 'avatar';
+        const seed = (Array.isArray(nameValue) ? nameValue[0] : nameValue) || 'model-maker';
         const stats = this.character?.facetweb?.Stats;
         if (stats != null && !Array.isArray(stats)) throw new TypeError('Character facetweb.Stats must be an array.');
-        const variant = makeHumanoidVariant(seed, { facetBoons: stats ? facetBoonsFromStats(stats) : null });
+        const speciesForSize = this.species
+            ?? (typeof this.character?.species === 'object' ? this.character.species
+                : (typeof this.character?.species === 'string' ? { name: this.character.species } : null));
+        const variant = makeHumanoidVariant(seed, {
+            facetBoons: stats ? facetBoonsFromStats(stats) : null,
+            incarna: this.character?.incarna ?? null,
+            character: this.character ?? null,
+            species: speciesForSize
+        });
         if (this.species) {
             const { id, ...skin } = speciesSkin(this.species);
             Object.assign(variant, skin);
@@ -184,13 +300,18 @@ export class AvatarModelMaker {
         const mesh = this.engine.generateProceduralAvatar(plan, variant);
         this.disposeMesh();
         this.mesh = mesh;
+        this.undoStack = [];
+        this.undoButton.disabled = true;
         this.planName = name;
         this.scene.add(mesh);
         this.painter = new AvatarSkinPainter(mesh);
+        this.updateExpression();
         const box = new THREE.Box3().setFromObject(mesh);
         const center = box.getCenter(new THREE.Vector3());
         const size = box.getSize(new THREE.Vector3());
-        const distance = Math.max(size.x, size.y, size.z, 0.1) * 2.4;
+        const aspect = this.viewport.clientWidth / Math.max(this.viewport.clientHeight, 1);
+        const halfVertical = Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2));
+        const distance = Math.max(size.y / (2 * halfVertical), size.x / (2 * halfVertical * aspect), 0.1) * 1.2 + size.z / 2;
         this.controls.target.copy(center);
         this.camera.position.copy(center).add(new THREE.Vector3(0, 0, distance));
         this.camera.near = Math.max(0.001, distance / 1000);
@@ -204,11 +325,63 @@ export class AvatarModelMaker {
         this.pointer.set((event.clientX - bounds.left) / bounds.width * 2 - 1,
             1 - (event.clientY - bounds.top) / bounds.height * 2);
         this.raycaster.setFromCamera(this.pointer, this.camera);
-        const hit = this.raycaster.intersectObject(this.mesh)[0];
+        const hit = this.raycaster.intersectObject(this.mesh, true)[0];
         if (hit && this.painter.paint(hit, { colour: parseInt(this.colour.value.slice(1), 16), radius: Number(this.radius.value) })) {
+            if (this.strokeBefore) {
+                this.recordUndo(this.strokeBefore);
+                this.strokeBefore = null;
+            }
             this.dirty = true;
             this.editRevision++;
         }
+    }
+
+    setMode(mode) {
+        this.mode = mode;
+        this.rotateButton.setAttribute('aria-pressed', String(mode === 'rotate'));
+        this.paintButton.setAttribute('aria-pressed', String(mode === 'paint'));
+        if (this.controls) {
+            this.controls.mouseButtons.LEFT = mode === 'rotate' ? THREE.MOUSE.ROTATE : null;
+            this.controls.mouseButtons.RIGHT = THREE.MOUSE.ROTATE;
+            this.controls.touches.ONE = mode === 'rotate' ? THREE.TOUCH.ROTATE : null;
+        }
+    }
+
+    recordUndo(pixels) {
+        this.undoStack.push(pixels);
+        if (this.undoStack.length > 30) this.undoStack.shift();
+        this.undoButton.disabled = false;
+    }
+
+    updateExpression() {
+        if (!this.mesh?.morphTargetDictionary) return;
+        const values = {
+            mouthSmileLeft: this.expression.value === 'smile' ? 0.65 : this.expression.value === 'frown' ? -0.65 : 0,
+            mouthSmileRight: this.expression.value === 'smile' ? 0.65 : this.expression.value === 'frown' ? -0.65 : 0,
+            browDownLeft: this.expression.value === 'frown' ? 0.65 : 0,
+            browDownRight: this.expression.value === 'frown' ? 0.65 : 0
+        };
+        for (const [name, value] of Object.entries(values)) {
+            const index = this.mesh.morphTargetDictionary[name];
+            if (index !== undefined) this.mesh.morphTargetInfluences[index] = value;
+        }
+    }
+
+    undo() {
+        const pixels = this.undoStack.pop();
+        if (!pixels) return;
+        const atlas = this.mesh.userData.avatarAtlas;
+        atlas.pixels.set(pixels);
+        const texture = this.mesh.material.map;
+        const rowBytes = ATLAS_SIZE * 4;
+        for (let y = 0; y < ATLAS_SIZE; y++) {
+            texture.image.data.set(pixels.subarray(y * rowBytes, (y + 1) * rowBytes), (ATLAS_SIZE - 1 - y) * rowBytes);
+        }
+        texture.needsUpdate = true;
+        this.undoButton.disabled = this.undoStack.length === 0;
+        this.dirty = true;
+        this.editRevision++;
+        this.status.textContent = this.translate('AVATAR_MAKER_UNDONE', 'Last skin change undone.');
     }
 
     resize() {
@@ -237,6 +410,23 @@ export class AvatarModelMaker {
 
     }
 
+    async downloadPng() {
+        try {
+            const blob = await atlasToPngBlob(this.mesh.userData.avatarAtlas.pixels);
+            if (!this.root) return;
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'avatar-skin.png';
+            link.click();
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+            this.status.textContent = this.translate('AVATAR_MAKER_PNG_DOWNLOADED', 'PNG download started. Save a skin document to preserve layout information.');
+        } catch (error) {
+            console.error('Unable to export avatar skin PNG:', error);
+            if (this.root) this.status.textContent = `${this.translate('AVATAR_MAKER_EXPORT_ERROR', 'Unable to export skin')}: ${error.message}`;
+        }
+    }
+
     async saveCharacter() {
         if (this.saving) return;
         this.saving = true;
@@ -262,6 +452,9 @@ export class AvatarModelMaker {
         if (!this.mesh) return;
         this.scene.remove(this.mesh);
         this.mesh.geometry.dispose();
+        this.mesh.traverse(object => {
+            if (object !== this.mesh && object.isMesh) object.geometry.dispose();
+        });
         this.mesh.material.map.dispose();
         this.mesh.material.dispose();
         this.mesh = null;
@@ -273,7 +466,7 @@ export class AvatarModelMaker {
             this.status.textContent = this.translate('AVATAR_MAKER_SAVE_PENDING', 'Wait for the character skin save to finish.');
             return;
         }
-        if (!force && this.dirty && !window.confirm(this.translate('AVATAR_MAKER_DISCARD', 'Discard the current painting? Download it first to keep it.'))) return;
+        if (!force && this.dirty && !window.confirm(this.translate('AVATAR_MAKER_DISCARD', 'Discard the current painting? Save it first to keep it.'))) return;
         if (this.frame != null) cancelAnimationFrame(this.frame);
         this.resizeObserver?.disconnect();
         this.controls?.dispose();

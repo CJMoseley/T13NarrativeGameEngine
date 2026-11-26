@@ -1,5 +1,4 @@
-﻿import dice from '/src/t13ne/modules/mechanics/t13ne-dice.js';
-import CodexLoader from "/src/t13ne/modules/codex/CodexLoader.js";
+﻿let codexLoaderInstance = null;
 
 /**
  * Creates a 64-bit FNV-1a hash from a string and returns it as a hex string.
@@ -43,7 +42,11 @@ class T13Boons {
      */
     static async getDiceForBoon(boon, asArray = false) {
         if (diceDataCache === null) {
-            diceDataCache = await CodexLoader.getData('dice') || false;
+            if (!codexLoaderInstance) {
+                const mod = await import('../codex/CodexLoader.js');
+                codexLoaderInstance = mod.default;
+            }
+            diceDataCache = await codexLoaderInstance.getData('dice') || false;
         }
 
         if (!diceDataCache || diceDataCache.length === 0) {
@@ -364,7 +367,7 @@ class T13Boons {
         const aval = this.getBoonValue(boon);
         const bval = this.getBoonValue(vsboon);
         const pera = Math.round(100 * (aval / (aval + bval)));
-        const uniqueId = stringToHash(Date.now() + 'Yeah, make it a unique ID.' + dice.RNG(0, 6000));
+        const uniqueId = stringToHash(Date.now() + 'Yeah, make it a unique ID.' + Math.floor(Math.random() * 6001));
         return ret + `<span class="t13ne-boonvsboon"><span class="result">Percentage Chance=${pera}% </span><a href="#" onclick="rolldice('d100');" id="diceroll:${uniqueId}">Roll</a></span> `;
     }
 }

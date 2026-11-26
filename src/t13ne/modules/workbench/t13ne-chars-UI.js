@@ -2,6 +2,7 @@
 import UI from './t13ne-UI.js';
 import FacetWebUI from './t13ne-facetweb-UI.js';
 import GeometryUI from './t13ne-geometry-ui.js';
+import { facetBoonsFromStats, calculateSpeciesSize, formatHeightCm, resolveFormation } from '/src/t13ne/procgen/avatar/AvatarFacetBody.js';
 
 /**
  * T13NE Character UI Module
@@ -27,6 +28,14 @@ class CharacterUI {
     renderInspector(char, container) {
         const model = (char.model || char.charType || 'Extra').toLowerCase();
         const handler = this.subTypes.get(model);
+        const stats = char.facetweb?.Stats || char.stats;
+        const boons = Array.isArray(stats) ? facetBoonsFromStats(stats) : {};
+        const speciesArg = char.species
+            ? (typeof char.species === 'object' ? char.species : { name: char.species })
+            : { name: 'Human' };
+        const sizeInfo = calculateSpeciesSize({ boons, character: char, species: speciesArg });
+        const { formation, material } = resolveFormation(char, speciesArg);
+        const heightText = formatHeightCm(sizeInfo.heightCm);
 
         let html = `
             <div class="form-group">
@@ -42,8 +51,8 @@ class CharacterUI {
                 <div style="font-size: 0.85rem;">${char.experienceTier || 'Fresh'} ${char.charType || 'Grunt'}</div>
             </div>
             <div class="form-group">
-                <label>Incarna</label>
-                <div style="font-size: 0.85rem;">${char.incarna || 'Nature (Flesh)'}</div>
+                <label>Incarna (Formation)</label>
+                <div style="font-size: 0.85rem;">${formation} (${material})${heightText ? ` &bull; ${heightText}` : ''}</div>
             </div>
         `;
 

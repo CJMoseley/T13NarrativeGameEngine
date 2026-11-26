@@ -419,18 +419,48 @@ function setupCharacterCreator() {
                 Nimbed: 9 + ((geoVal + name.length) % 7)
             };
 
+            const OPPOSED_PAIRS = [
+                [0, 9], [2, 13], [3, 22], [5, 16], [6, 1], [7, 14],
+                [10, 4], [11, 21], [15, 12], [18, 20], [19, 17], [23, 8]
+            ];
+            const stats = OPPOSED_PAIRS.map(([facet, antifacet], idx) => {
+                const delta = ((geoVal + idx * 7 + name.charCodeAt(idx % name.length)) % 9) - 4;
+                const facetBoon = 13 + delta;
+                return {
+                    Facet: facet,
+                    Facet_Boon: facetBoon,
+                    Facet_Sway: 0,
+                    Facet_Mutation_Matrix: 0,
+                    Joined: true,
+                    Antifacet_Mutation_Matrix: 0,
+                    Antifacet: antifacet,
+                    Antifacet_Boon: 26 - facetBoon,
+                    AntiFacet_Sway: 0
+                };
+            });
+
             const charData = {
                 id: `char_${Date.now()}`,
                 name: name,
                 charType: charType,
+                species: 'Human',
+                incarna: 'Nature',
                 boons: boons,
+                facetweb: { Scale: 0, Stats: stats },
                 hexagram: { number: hexagramNum, name: hexagram.name },
                 significator: { name: "The Hierophant", suit: "Spades", pips: "V" },
                 features: [
                     { name: "Resonant Harmony", description: "Your boons are perfectly aligned with the Cycle's current state." },
                     { name: "Unyielding Resolve", description: "Ignore 1 Stress per Act when pursuing your primary Catalyst." }
                 ],
-                descendants: [],
+                descendants: [
+                    {
+                        id: `desc_${Date.now()}`,
+                        name: `${name}'s Field Gear`,
+                        descendantType: 'Item',
+                        incarna: 'Trial'
+                    }
+                ],
                 annexes: [
                     {
                         name: "Astrogation System",

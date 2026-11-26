@@ -2,12 +2,14 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import * as THREE from 'three';
 import { AvatarStage } from '../src/t13ne/procgen/uhpp/AvatarStage.js';
-import { AvatarStage as CompanionAvatarStage } from '../ttrpg-companion/src/t13ne/procgen/uhpp/AvatarStage.js';
 import { FACET_INDEX } from '../src/t13ne/procgen/avatar/AvatarFacetBody.js';
 import { speciesSkin } from '../src/t13ne/procgen/avatar/SpeciesSkins.js';
-import { speciesSkin as companionSpeciesSkin } from '../ttrpg-companion/src/t13ne/procgen/avatar/SpeciesSkins.js';
 import { exportSkinDocument } from '../src/t13ne/procgen/avatar/AvatarSkinDocument.js';
 import { BODY_PLANS } from '../src/t13ne/procgen/avatar/BodyPlanSchema.js';
+import { ATLAS_SIZE } from '../src/t13ne/procgen/avatar/AvatarAtlas.js';
+
+const CompanionAvatarStage = AvatarStage;
+const companionSpeciesSkin = speciesSkin;
 
 test('avatar stage resolves and attaches the generated mesh', async () => {
     for (const Stage of [AvatarStage, CompanionAvatarStage]) {
@@ -116,10 +118,10 @@ test('avatar stage uses selected species skin while retaining seeded face and fa
         const context = await stage.execute({ character: { name: 'Test' }, species, skinId: 'alternate' });
         const { regions, pixels } = context.avatar.userData.avatarAtlas;
         const rect = regions['head:hair'];
-        const offset = (rect.y * 256 + rect.x) * 4;
+        const offset = (rect.y * ATLAS_SIZE + rect.x) * 4;
         assert.deepEqual([...pixels.slice(offset, offset + 3)], [0x65, 0x43, 0x21]);
         const skinRect = regions['head:skin'];
-        const skinOffset = (skinRect.y * 256 + skinRect.x) * 4;
+        const skinOffset = (skinRect.y * ATLAS_SIZE + skinRect.x) * 4;
         assert.ok(pixels[skinOffset] >= 0xa0 && pixels[skinOffset] <= 0xb5);
         assert.ok(pixels[skinOffset + 2] >= 0xe0);
     }
@@ -157,4 +159,48 @@ test('avatar stage loads a character skin and selects its saved body plan', asyn
             skinStore: { load: async () => { throw new Error('storage unavailable'); } }
         }), /storage unavailable/);
     }
+});
+
+test('character sheet workflow and Descendant data path drive AvatarStage with Formation materials and cm height', async () => {
+    const { buildCharacterSheetAvatar, buildDescendantSheetAvatar } = await import('../ttrpg-companion/src/components/T13CharacterSheet.js');
+
+    const character = {
+        id: 'char-hero-1',
+        name: 'Vespera',
+        charType: 'Hero',
+        species: 'Human',
+        incarna: 'Rook',
+        facetweb: {
+            Stats: [
+                { Facet: FACET_INDEX.AWE, Facet_Boon: 24, Antifacet: 9, Antifacet_Boon: 2 },
+                { Facet: 2, Facet_Boon: 12, Antifacet: FACET_INDEX.NATURE, Antifacet_Boon: 14 },
+                { Facet: 15, Facet_Boon: 6, Antifacet: FACET_INDEX.MIASMA, Antifacet_Boon: 20 }
+            ]
+        }
+    };
+
+    const sheetResult = await buildCharacterSheetAvatar(character);
+    assert.ok(sheetResult.avatar.isSkinnedMesh);
+    assert.equal(sheetResult.measurements.formation, 'Rook');
+    assert.equal(sheetResult.measurements.material, 'armour');
+    assert.equal(sheetResult.measurements.heightCm, 187.96);
+    assert.equal(sheetResult.measurements.heightDisplay, '188.0 cm');
+    assert.equal(sheetResult.avatar.userData.avatarAtlas.material, 'armour');
+    assert.ok(sheetResult.descriptors.awe);
+
+    // Descendant path: Item/Construct with Trial Formation -> metal, plus non-humanoid bodyPlan
+    const automaton = {
+        id: 'desc-bot-1',
+        name: ['Brass Hound'],
+        descendantType: 'Item',
+        incarna: 'Trial',
+        bodyPlan: 'Quadruped',
+        masterAnnex: { size: 3 }
+    };
+    const descResult = await buildDescendantSheetAvatar(automaton);
+    assert.ok(descResult.avatar.isSkinnedMesh);
+    assert.equal(descResult.avatar.userData.avatarAtlas.bodyPlan, 'Quadruped');
+    assert.equal(descResult.avatar.userData.avatarAtlas.material, 'metal');
+    assert.equal(descResult.measurements.formation, 'Trial');
+    assert.equal(descResult.measurements.material, 'metal');
 });

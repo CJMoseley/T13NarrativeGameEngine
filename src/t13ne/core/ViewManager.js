@@ -13,6 +13,7 @@ import IntroSequenceUI from '/src/t13ne/core/ui/IntroSequence.js';
 import { UIMessage } from '/src/t13ne/core/ui/UIMessage.js';
 import { PerformanceMonitor } from '/src/t13ne/core/PerformanceMonitor.js';
 import Localization from '/src/t13ne/core/ui/Localization.js';
+import { sharedAvatarCache } from '/src/t13ne/procgen/avatar/AvatarCache.js';
 
 /**
  * ViewManager
@@ -207,16 +208,45 @@ export class ViewManager {
     }
 
     /**
-     * Manages the visibility and layering of a loading screen.
+     * Queues a ship crew and/or race participant roster (~100 characters) to be prewarmed
+     * during the next loading screen.
+     * @param {Array|object} roster - Array of character/seed specs, or { ships, crew, racers }.
+     */
+    queueRaceRosterPrewarm(roster) {
+        this.pendingRaceRoster = roster;
+    }
+
+    /**
+     * Prewarms procedural avatar templates in the shared cache for a crew or race roster.
+     * @param {Array|object} [roster=this.pendingRaceRoster]
+     * @returns {Promise<{total: number, warmed: number, cacheHits: number, durationMs: number}>}
+     */
+    async prewarmAvatars(roster = this.pendingRaceRoster) {
+        if (!roster) return { total: 0, warmed: 0, cacheHits: 0, durationMs: 0 };
+        if (roster === this.pendingRaceRoster) this.pendingRaceRoster = null;
+        const stats = await sharedAvatarCache.prewarmRoster(roster);
+        Logger.message(`ViewManager: Prewarmed ${stats.warmed}/${stats.total} avatars (${stats.cacheHits} cached) in ${stats.durationMs.toFixed(1)} ms.`);
+        return stats;
+    }
+
+    /**
+     * Manages the visibility and layering of a loading screen, optionally prewarming queued or supplied avatars.
      * @param {boolean} visible - Whether to show or hide the loading screen.
      * @param {HTMLElement} [customElement] - Optional custom loading element.
+     * @param {object} [options]
+     * @param {Array|object} [options.prewarmRoster] - Optional crew/racer roster to prewarm while loading.
      */
-    toggleLoadingScreen(visible, customElement = null) {
+    toggleLoadingScreen(visible, customElement = null, options = {}) {
         const loader = customElement || document.getElementById('intro-sequence') || document.getElementById('loading-status');
         if (loader) {
             loader.style.zIndex = this.Z_LAYERS.LOADING;
             loader.style.display = visible ? 'flex' : 'none';
         }
+        const roster = options.prewarmRoster ?? (visible ? this.pendingRaceRoster : null);
+        if (visible && roster) {
+            return this.prewarmAvatars(roster);
+        }
+        return null;
     }
 
     showDialogue(element) {

@@ -1,254 +1,195 @@
-# TODO: Outstanding Work
+# TODO: Staged Plan — T13 Engine, VTT, and Wormhole Racers
 
-Last updated: 2026-11-25
+Last updated: 2026-11-26
 
-Resume point: the Node suite passed 154 tests, and game and companion builds passed (with large-chunk warnings). The model maker supports direct painting and per-character local skin saving; the browser `AvatarStage` can restore a saved skin and optionally derive a variant from a Character's `facetweb.Stats`. The facet-driven stage path is not yet wired to a character screen. Changes remain uncommitted.
+Baseline: `npm run test:node` passes **179 tests**, and both root (`vite.config.js`) and companion (`ttrpg-companion/vite.config.js`) Rollup bundles resolve cleanly against the single canonical `src/t13ne/` source tree. Remaining Facet-role/body-language confirmations and authored cultural outfit catalogs stay parked in [TODO-avatars.md](./TODO-avatars.md), while **3D modelling/sculpting upgrades, audio/VOIP overhaul, T13 species voice effects, and Avatar puppeting** have been pulled directly into the active VTT pass (Stages 3–4 below).
 
-Standing rules:
-- The rulebook in `docs/rules/` is authoritative.
-- Use "Mode" for the musical key-set concept, not "Scale". Scale is reserved for T13.
-- Keep dynamic lighting (`MeshLambertMaterial`). Do not bake lighting unless it is a user setting.
-- Target PS1/PS2-era detail. Morph sets may go above PS1. Model detail stays PS1-like, with simple animation and bend morphs.
-- Keep the Node suite green, mirror changes to the companion, and update `docs/architecture/current-state.md`.
-- Do not commit unless asked.
+## Standing Rules & Product Boundaries
+
+- **Authoritative rules:** The rulebook in `docs/rules/` is authoritative. Compare legacy PHP (`wordpress_legacy/`), current JSON, and JS before encoding ambiguous mechanics; record discrepancies for Author review rather than silently guessing.
+- **Terminology:** Use **"Mode"** for the musical key-set concept, never "Scale". **Scale** is reserved strictly for T13.
+- **Single engine, multiple views/games:**
+  - `src/t13ne/` (core mechanics, narrative, Codex, Ordeals, VTT runtime, Avatars/UHPP, modelling tools, audio/VOIP/puppeting infrastructure) is the genre-agnostic **T13 Narrative Game Engine**.
+  - `ttrpg-companion/` is a **view** over `src/t13ne/`, not a separate app. Never mirror or copy engine files into `ttrpg-companion/src/t13ne/`.
+  - Galaxy, galactic history, stellar system, planet, corporation, and modular ship generators—along with space/orbital/shipyard scenes and Wormhole course adapters—belong to **Wormhole Racers**, built *on top of* the T13 Engine rather than baked into core engine boot.
+- **T13 Species vs. Wormhole Racers Species:**
+  - **T13 species and Wormhole Racers species are not the same specification or catalog.**
+  - In **T13**, species, bloodlines, and genetics are typically specified as **Descendants** (specifically Natural `Nature` Descendants per `docs/rules/Patterns-Extras-Descendants.md`, paired with Character/Pattern **Formation Incarna** when modelling non-flesh beings such as `Trial` metal/cyborgs, `Burden` stone/golems, `Phoenix` fire/plasma, `Fury` liquid, `Gossamer` gas, `Awe` spirits, `Dominion` hive minds, `Wyrd` fae, etc.).
+  - **Wormhole Racers species** (`SpeciesGenerator.js` / `05_Species.md`: Humans, Theriocephalics, Drones, The First, Draco, Kathorri, Vemlek, Grenk, Thf-Thf, and procedural species) are a **setting-specific subset** within the `"Humans"` and `"Aliens"` of T13, bridged via an adapter onto T13 Species Descendants + Formation Incarna.
+- **Visuals & performance:** Keep dynamic lighting (`MeshLambertMaterial`) unless baked lighting is an explicit user setting; target PS1/PS2-era low-poly model detail.
+- **Workflow discipline:** Keep `npm run test:node` green at every stage, update `docs/architecture/current-state.md` as capabilities land, clean up temporary harnesses, and **do not commit unless asked**.
 
 ---
 
-## 1. Resume checks (start here)
+## Development Stages Overview
 
-- [x] Re-run `npm run test:node` and confirm the 132-test baseline passes.
-- [ ] Run `problems` on `AvatarFacetBody.js`, `AvatarEngine.js`, `AvatarAtlas.js`, and `tests/t13-avatar-facets.test.js`.
-- [ ] Confirm the Formation tests in `tests/t13-avatar-facets.test.js` cover `Trial`→metal, `Quiet`→wood, `Rook`→armour, and unknown or null→flesh.
+| Stage | Focus | Target Cadence | Exit Gate (Definition of Done) |
+| :--- | :--- | :--- | :--- |
+| **Stage 1** | Engine Boundary, Species Contract & Headless Session | Days 1–3 | Legacy `ttrpg-companion/src/t13ne/` retired; Wormhole Racers decoupled from T13 boot; T13 Species-as-Descendant contract defined; concurrent headless `T13Session` instances pass in Node. |
+| **Stage 2** | Authoritative T13 Rules & Ordeal Execution | Days 3–6 | T13 Tests (Dice, Card Draw, Value), multi-deck Card play/prepare/discard, Ordeal Stages/Rounds/Stakes, Hitches, Wounds, Sway, and Plots execute deterministically via `T13Session`. |
+| **Stage 3** | VTT Service, 2D/3D Tabletop & Modelling Tools | Week 1–2 | Role-filtered VTT transport protects private Hands/Referee secrets; `<t13-vtt-canvas>` supports Top-Down 2D + 3D Orbit, token drag/snap, 3D Avatar/Descendant tokens, and upgraded low-poly sculptor/UHPP modelling tools. |
+| **Stage 4** | VTT Audio, VOIP, T13 Species Voice FX & Puppeting | Week 2 | Unified WebAudio bus + composition pass; WebRTC/PeerJS VOIP with T13 Species (`Descendant`/Formation) voice modulation FX; audio + webcam Avatar puppeting (`LiveAvatarController`) verified by automated tests. |
+| **Stage 5** | Playable Companion Views & Referee Console | Week 2–3 | **Playable Tabletop Slice (M2):** Referee and Player run a live Plot, Character Sheet Tests, Card Hand/Wild Pool Ordeal, VOIP/puppeted tokens, and save/reconnect in two browser views. |
+| **Stage 6** | Authoring Workbench, Packaging & Asset Catalogs | Week 3 | **Dev-Ready Engine Slice (M4):** Scenarios/characters/Descendants authored in Workbench validate, preview, export/import as versioned packages; offline model/audio indexers complete. |
+| **Stage 7** | Wormhole Racers Physics & Dynamic Tunnel | Week 3–4 | `PhysXProvider` (`addCapsule`, ship hulls) and `HyperphysicsEngine` work in a live scene; rebuilt 3D `WormholeEnvironment` vibrates with ship component frequencies, 12D Perlin turbulence, and `wormholeCourse.js` Modes/forks. |
+| **Stage 8** | Wormhole Racers Playable Race & Crew Consoles | Week 4–5 | **Playable Race Slice (M3):** Single-player wormhole race runs start-to-finish with Pilot flight, Engineer Mode tuning, Navigator scanner, puppeted crew comms, AI racers, and Race → T13 Ordeal consequences. |
+| **Stage 9** | Campaign Loop, Multi-Crew Sync & Hardening | Week 5–6+ | Full loop (Galaxy → System/Station NPCs → Shipyard customization → League Race), networked multi-role crew + VOIP comms, 60 fps + 100-racer budgets verified, end-to-end smoke suites green. |
 
-## 2. Decisions needed from the user
+---
 
-- [ ] **Confirm proposed facet roles.** Roles are proposed from the adjective ladders in section 3a. Confirm them before implementing.
-- [x] **Nature and height.** Species can define different size mappings; retain the existing Nature-to-height behavior when no species rule is configured.
-- [ ] **Amplitudes.** Confirm the body ranges: height ±10%, build ±20%, thickness ±15%, length ±6%, litheness ±10%.
-- [ ] **Litheness reading.** Confirm Zeal vs Inertia as litheness versus momentum, with `litheness = (zeal - inertia) / 2`.
-- [ ] **Trilal.** Confirm this means Trial (index 19).
-- [x] **Species tint vs atlas.** Species colours now affect atlas skin rather than tinting painted clothing.
+## Stage 1: Engine Boundary, T13 Species Contract & Headless Session Core (Days 1–3)
 
-## 3. Avatar: facet-driven appearance
+Goal: Separate the genre-agnostic T13 Engine from Wormhole Racers space-generation boot paths, formalize the T13 Species (`Descendant`) vs. Wormhole Racers species boundary, eliminate the legacy duplicate companion tree, and stand up a pure headless `T13Session`.
 
-Author direction (size and motion rules are not implemented yet; neutral painted clothing is in place):
-- Begin the species adjustment matrix with size. A Character's Formation takes precedence over the species Formation; each species can define its own mapping and phenotype adjustments. The matrix may later cover other properties, including structural density.
-- For the initial human rule, convert the selected Nature Boon's T13 Value from inches to centimetres (`Value * 2.54`). Calculate and display measurements in centimetres.
-- Species-defined entries can match caste, race, sex or other phenotypes. Apply matching entries in configured order, each as `(current height + offsetBeforeCm) * multiplier + offsetAfterCm`. Do not assume universal sex modifiers.
-- Define motion mappings separately for species or cultures; the proposed table below is not a universal default.
-- Render clothing as colours and patterns painted on the body skin, not as separate clothing meshes. Use a neutral configurable outfit when no culture is configured; culture-specific rules can override it. Hats, armour plates and helmets may eventually be separate accessories.
+- [ ] **1.1 Retire legacy `ttrpg-companion/src/t13ne/` copy:** Diff `ttrpg-companion/src/t13ne/` against canonical `src/t13ne/` to ensure no unique fixes are stranded, update the remaining legacy dual-tree tests (`t13-codex-initialization.test.js`, `t13-gematria.test.js`, `t13-proficiency-catalog.test.js`, `p2p-trust-boundary.test.js`), and remove the duplicate directory.
+- [ ] **1.2 Separate T13 Core from Wormhole Racers & formalize Species boundary:**
+  - Decouple Wormhole Racers generators and scenes (`GalaxyGenerator`, `GalacticHistory`, `StellarSystemGenerator`, `PlanetGenerator`, `SpeciesGenerator`, `ShipFactory`, space/orbital/shipyard scenes, `EngineSoundGenerator`, `WormholeAmbiance`) from core T13 initialization so non-sci-fi T13 games and the VTT boot cleanly without space-game dependencies.
+  - Define the canonical **T13 Species-as-Descendant schema** (`Descendant` of `Nature` / lineage + Character/Pattern `Incarna` Formation, supporting size rules, phenotype matrices, vocal/voice-FX traits, and natural Annexes/Hitches) and provide a Wormhole Racers adapter mapping `SpeciesGenerator` entries as a sci-fi subset within T13's `"Humans"` and `"Aliens"`.
+- [ ] **1.3 Remove browser/root-slash coupling in core mechanics:** Replace remaining `/src/t13ne/...` root-slash imports and unguarded `window`/`localStorage`/`document` references across `src/t13ne/modules/mechanics/`, `characters/`, `narrative/`, and `systems/` with clean relative imports and injected storage/UI adapters so all rules modules load natively in Node and Web Workers without regex/base64 test shims.
+- [ ] **1.4 Build `T13Session` command/event/snapshot core:** Implement versioned `command` validation (`id`, `sessionId`, `actorId`, `expectedRevision`, `type`, `payload`), idempotent deduplication, ordered `event` emission with visibility tags (`public`, `player:<id>`, `referee`), seeded PRNG state capture, and JSON `snapshot` serialize/restore.
+- [ ] **1.5 Stage 1 tests:** Automated Node tests proving two independent seeded `T13Session` instances run concurrently without shared singleton bleed, round-trip identical state across save/restore, and resolve T13 Species `Descendant` metadata cleanly with and without Wormhole Racers adapters.
 
-Done (mapping and tests):
-- [x] `bodyFromFacets` (Burden → build, Nature → height, Gossamer → musculature, Zeal/Inertia → litheness)
-- [x] `appearanceFromFacets` (Awe → vividness, Miasma → skin tint and mottle, adjective descriptors)
-- [x] `applyVividness`, `tintSkin`
-- [x] `FORMATION_MATERIALS` and `materialForFormation` (default flesh). All 24 facets are mapped from each facet's `Incarna_Text`: Awe spirit, Burden stone, Craft artifice, Dominion society, Enigma cryptic, Fury liquid, Gossamer gas, Heresy simulacrum, Inertia clockwork, Jeer illusion, Key thought, Liberty dream, Miasma toxin, Nature flesh, Orthodox data, Phoenix fire, Quiet wood, Rook armour, Sin vice, Trial metal, Virtue energy, Wyrd arcane, Yonder structure, Zeal belief.
-- [x] `makeHumanoidVariant(seed, {prosthetics, facetBoons})` uses facet body values. Seeded draws keep their order.
-- [x] `_limbScale(comp)` applies length and thickness to `LIMB_CHAIN` only
+---
 
-To do:
-- [ ] Wire `appearanceFromFacets` into `AvatarEngine.js`: vividness on clothing, `tintSkin` on skin, mottle on the atlas.
-- [ ] Wire `materialForFormation` into the atlas palette or the prosthetic set.
-- [ ] Connect the new `AvatarStage` Character `facetweb.Stats` path to an application character workflow, and establish the corresponding Descendant data path.
-- [ ] Add tests for the Formation wiring, the appearance wiring, and the end-to-end facet → avatar path.
+## Stage 2: Authoritative T13 Rules & Ordeal Execution (Days 3–6)
 
-## 3a. Facet roles from the adjective ladders
+Goal: Make T13 mechanics execute real, rulebook-backed state transitions inside `T13Session` instead of acting only as read-only calculators or UI stubs.
 
-Each facet has a ladder of Boons 0–37 with three adjective axes: persona (`Adjective`), physical description (`Desc_Adjective`), and setting (`Location_Adjective`). The physical axis drives avatar roles. Boon 13 is neutral.
+- [ ] **2.1 Executable T13 Tests (`Dice`, `Card`, `Value`):** Route `T13NE_Tests.performTest` through `T13Session`, wiring `T13Boons` (`getDiceForBoon`, `getBoonReduced`, `getBoonScore`, `getBoonDraw`, `getBoonValue`), Annex selection, Difficulty modifiers (`FacetRuleEffects`), Strain/Stress (`T13NE_Stress`), and Chi / Success & Failure Level calculation against `docs/rules/Test-Dice.md`, `Test-Card-Draw.md`, and `Success-and-Failure-Levels.md`.
+- [ ] **2.2 Complete `CardsAPI` & Deck triggers:** Implement missing card `play`, `prepare`, `discard`, Style Reserve (`docs/rules/Styles.md`), and multi-deck scaling triggers in `t13ne-cards-api.js`, preserving card context distinctions (Ordeal, Quest Spread, Wyrd Tarot, Wound) rather than collapsing them.
+- [ ] **2.3 Authoritative Ordeal state machine:** Wire `T13Ordeals` (`Ordeal`, `OrdealStage`, `OrdealRound`), Stage card difficulty (`t13ne-stage-difficulty.js`), Obstacle difficulty, Stakes & Wild Pool dealing (`t13ne-ordeal-rules.js`), Reaction Time (`RT` / `GRT`), and `T13NE_ActionSpaces` into `T13Session` commands (`Ordeal:Start`, `Ordeal:DrawStage`, `Ordeal:PlayCards`, `Ordeal:AdvanceRound`, `Ordeal:Resolve`). Audit edge cases against `docs/rules/Ordeals.md`, `Ordeal-Stages.md`, `Ordeal-Rounds.md`, and `Alternate-Ordeals.md`.
+- [ ] **2.4 Plots, Quest Spreads, I-Ching Gains & Wounds/Hitches:**
+  - Connect `Spread:InterpretQuest` (`QuestSpread.js`) to create/advance persistent `T13NE_Plots` and Quests with Referee confirmation.
+  - Connect Character I-Ching tie choices, Gain condition adjudication (`IChing:GrantReward` with authority checks), and source-backed Unchanging/changing-line effects.
+  - Wire `HitchRules` (`Quirk`/`Flaw`/`Woe` triggers, Marks/Ruins, Gnarls), `T13NE_Wounds` tags/healing states, and `T13SwayAccount` (`Yin`, `Yang`, `Chi`, `Yarn`, `Twists`, Facet Sway) into character/Descendant persistence.
+- [ ] **2.5 Stage 2 tests:** Golden worked-example tests in Node covering a complete Dice Test, Card Test, Hitch trigger, Wound application, and multi-round Ordeal resolution with snapshot replay.
 
-Proposed roles (confirm in section 2):
+---
 
-| Facet | Physical axis, low → high | Proposed avatar role | Confidence |
-|---|---|---|---|
-| Burden | Insubstantial → Tiny → Small → Delicate → Firm → Heavy → Large → Expensive → Luxury → Prized | Build and bulk. Also adornment and fabric richness at high Burden. | High |
-| Gossamer | Useless → Fragile → Old → Standard → Efficient → Hard → Potent → Magnificent | Musculature (Flabby → Sinewy → Mighty) | High |
-| Zeal | Inert → Slack → Lazy → Loose → Ready → Animated → Devoted → Divine | Litheness (eagerness). Devotion at high adds religious motifs. | High |
-| Inertia | Weightless → Handy → Fast → Swift → Modest → Slow → Passive → Antique → Primeval | Momentum (heavy and slow at high). Age and wear at high. | High |
-| Awe | Plain → Bland → Remarkable → Impressive → Stylish → Inspired → Majestic | Clothing vividness | High |
-| Miasma | Purified → Clean → Marked → Modified → Filthy → Tainted → Rotten | Skin mottle and grime. "Modified" at 14–16 suggests physical modification. | High |
-| Craft | Raw → Primitive → Rough-hewn → Crude → Planned → Well-made → Sculpted → Stylish → Superb → Magical | Clothing finish: seams, tailoring, mending, ornament | High |
-| Trial | Greasy → Genteel → Sharp → Competitive → Tough → Militant → Martial → Warlike | Combat bearing: squared posture, hard edges. Distinct from Fury. | High |
-| Rook | Weak → Casual → Lax → Prudent → Toughened → Hardened → Fortified → Crenelated | Armour coverage: how many plates and guards | High |
-| Fury | Blank → Feeble → Humble → Quiet → Whining → Assertive → Fierce → Brutal → Military → War | Resting expression (scowl and frown) and battle scars. Distinct from Trial. | High |
-| Jeer | Musty → Proper → Serious → Entertaining → Fun → Keen → Noisy → Silly → Kooky → Absurd | Resting smile and exaggerated, cartoon-like features (Toon) | Medium-high |
-| Quiet | Chaotic → Wild → Noisy → Untidy → Homey → Quiet → Subdued → Silent | Stillness of pose and restraint. Unkempt (low) to tidy (high) grooming. | Medium |
-| Dominion | Uncontrollable → Rude → Tricky → Sophisticated → Sociable → Authoritative → Commanding → Sovereign | Bearing (upright and commanding at high). Formality of dress. | Medium-high |
-| Enigma | Obvious → Clear → Assured → Puzzling → Obscure → Secretive → Mysterious → Shadowy → Impenetrable | Concealment: veils, masks, hoods, shadow. Faint or partly transparent at high. | Medium-high |
-| Wyrd | Chaotic → Chimerical → Mutable → Unstable → Odd → Accessible → Ideal → Menacing → Mythic → Bewitched | Uncanny marks and mutable forms. Mythic sigils at high. | Medium |
-| Heresy | Transparent → Sincere → Realistic → Guileless → Sneaky → Subtle → Cunning → Insidious | Simulacrum: realism at low, uncanny or seamed artifacts at high | Low-medium |
-| Sin | Irreproachable → Seemly → Intriguing → Shady → Salacious → Illegal → Heinous → Unholy | Vice markings, tattoos, seductive or sinister dress | Medium |
-| Virtue | Damned → Wicked → Decent → Fair → Grand → Holy → Flawless | Radiance: glow, bright eyes, clean light. Energy Formation. | Medium |
-| Phoenix | Icy → Cool → Sober → Charged → Warm → Hot → Fiery → Purifying | Body heat: skin warmth and flush, ember glow. Fire Formation. | Medium |
-| Yonder | Frozen → Affiliated → Mellow → Withdrawn → Detached → Staid → Exotic → Alien | Alienness: distant, exotic features at high. Non-human feature tier. | Medium-low |
-| Key | Idiotic → Dim → Gullible → Rational → Curious → Analytical → Observant → Brilliant → Original | Eye alertness and gaze | Medium |
-| Orthodox | Counter-factual → Obtuse → Faulty → Benighted → Barbarian → Polished → Scholarly → Academic → Discerning | Grooming and refinement. Weak evidence. | Low |
-| Liberty | Constrained → Cruel → Inhibited → Cursed → Glitchy → Autonomous → Benign → Charmed → Free → Sacred | Dream translucency or glitch artifacts. Weak evidence. | Low |
-| Nature | Psychic → Contrived → Odd → Risky → Unsuitable → Instinctive → Proper → Robust → Heartfelt → Rustic → Hardy → Barbarian | Vitality and health (skin and posture). Conflicts with the height mapping. See section 2. | Medium |
+## Stage 3: VTT Service, Privacy, 2D/3D Tabletop & Upgraded Modelling Tools (Week 1–2)
 
-Data checks found while cross-referencing (not yet fixed):
-- [ ] Duplicate Boon rungs: Phoenix at 12 (Excitable and Eager), Enigma at 16 (Unreliable and Ambiguous), Liberty at 32 (Felicitous and Fortuitous), and Trial at 14 (Competitive appears in two fields). Check whether the duplicates are intended, and check which rung `adjectiveForBoon` returns.
+Goal: Replace the companion's static grid and mock P2P messages with an authoritative VTT service, role-filtered privacy, Top-Down 2D + 3D views, 3D Avatar/Descendant tokens, and upgraded in-app low-poly modelling/sculpting tools.
 
-## 3b. Body language and animation from facets
+- [ ] **3.1 VTT Authority & Role-Filtered Transport:**
+  - Unify session transport across Referee-hosted PeerJS (`P2PNetworkManager.js`) and WebSocket/REST (`server/index.js`) behind one session client/host interface.
+  - Enforce **per-role state projections at the transport boundary**: Referee secrets, unrevealed Plot cards, and NPC hidden stats stay on the authority; each Player receives only public table state plus their own private Hand.
+  - Expand `P2PNetworkManager` validation schemas from the 4 prototype types to cover revisioned `SESSION_COMMAND`, `SESSION_EVENT`, `STATE_PROJECTION`, `SKIN_SYNC`, and rate-limited `AVATAR_PUPPET` frames, with reconnect catch-up.
+- [ ] **3.2 Top-Down 2D & 3D Camera + Board Controls (`T13VttCanvas.js` & `VTTScene.js`):**
+  - Fix `VTTScene.js`'s vertical `GridHelper` rotation bug and unify the VTT scene controller between `<t13-vtt-canvas>` and `VTTScene`.
+  - Add a **View Mode switcher**: **2D Top-Down (`OrthographicCamera`)** ↔ **3D Tactical (`PerspectiveCamera` Orbit)** ↔ **Psychosocial / Abstract Node Graph (`T13NE_SpaceVisualizer`)**.
+  - Attach pointer raycast handlers (`pointerdown`, `pointermove`, `pointerup`) for **token drag-and-drop**, optional grid/hex snapping, Reach/distance measurement ruler, terrain/zone overlays (`Open`, `Closed`, etc. from `T13NE_ActionSpaces`), and custom map/backdrop image loading with fog-of-war masks.
+- [ ] **3.3 3D Avatar & Descendant VTT Tokens:**
+  - Replace cylinder/sphere placeholders in `T13VttCanvas` and `VTTScene` with 3D `SkinnedMesh` miniatures generated via `AvatarStage` + `sharedAvatarCache` (for Characters, Extras, Creatures, and 3D Descendant props/structures).
+  - Mount each 3D avatar on a readable VTT token base ring showing allegiance colour, facing arrow, speaking/VOIP indicator ring, nameplate, and compact Wound/Stress pips.
+  - Include portable skin/model-override sync (`AvatarSkinDocument`) so custom sculpted/painted characters appear consistently across connected peers.
+- [ ] **3.4 Upgrade Modelling, Sculpting & UHPP Prop Tools (`AvatarModelMaker.js`, `UHPPEditorUI.js`):**
+  - Extend `AvatarModelMaker` beyond flat UV painting into an integrated **PS1/PS2 low-poly sculptor & texture studio**: per-part proportion/offset/vertex-group sculpting (with symmetry toggle and triangle-budget guardrails), procedural texture brushes/patterns/stamps (noise, weathering, scales, cloth weave, emblems), UV-region overlay inspection, and detachable low-poly accessory slots (hats, helmets, armour plates, natural horns/crests from T13 Species Descendants).
+  - Upgrade `UHPPEditorUI` and prop modelling tools so Referees and Authors can procedurally generate, sculpt/tweak, preview, and place 3D Location terrain blocks and Item Descendants directly onto the VTT scene.
+- [ ] **3.5 Stage 3 tests:** Transport boundary tests proving unauthorized commands are rejected and hidden hands/Referee notes never cross the wire to player peers; camera/token raycast state tests; and unit tests for low-poly sculptor geometry invariants, procedural brush determinism, and portable document serialization.
 
-Some facets are better expressed as motion than as static morphs. Each one below sets a parameter of the idle, gait, or gesture layer. The values come from the physical axis in section 3a.
+---
 
-| Facet | Motion parameter | Low → high |
-|---|---|---|
-| Quiet | Idle sway amplitude and frequency | Chaotic jitter → Serene stillness |
-| Dominion | Carriage: chest height, head level | Slouched → Upright and commanding |
-| Trial | Stance: squared shoulders, wide base | Loose → Hard and combat-ready |
-| Fury | Resting tension: brow, jaw, shoulder hunch | Blank and slack → Scowling and braced |
-| Jeer | Gait bounce, head bob, resting grin | Solemn → Bouncing and grinning |
-| Zeal | Forward lean, idle tempo | Dormant → Eager and leaning in |
-| Inertia | Gait tempo and weight-shift timing | Quick and light → Slow and ponderous |
-| Gossamer | Idle tension in limbs (not morphs) | Limp → Taut |
-| Key | Gaze and head scan rate | Vacant → Quick, observant scanning |
-| Phoenix | Gesture frequency and restless movement | Still → Fidgety and gesturing |
-| Enigma | Hooded or lowered head, slow turns | Open → Withdrawn and watchful |
-| Rook | Guarded stance, hands raised | Open → Braced and shielded |
-| Sin | Hip sway and lean | Upright → Languid and swaying |
-| Wyrd | Irregular timing, noise-driven motion | Regular → Uncanny and erratic |
-| Yonder | Non-human gait and stillness, blink rate | Human → Alien and unblinking |
+## Stage 4: VTT Audio System, VOIP, T13 Species Voice FX & Avatar Puppeting (Week 2)
 
-To do:
-- [ ] Decide which facets go into motion and which stay as morphs. Each facet should drive one layer only, to avoid double-counting.
-- [ ] Define the motion parameters as a small set (sway, tempo, lean, tension, gaze rate, blink rate), set from facet boons. Keep them seeded and deterministic.
-- [ ] Route the parameters through the existing `bend_<joint>` morphs and simple clip playback. Keep animation very simple, per the PS1 target.
-- [ ] Apply the same parameters to portrait, speaking, and token outputs (section 10).
-- [ ] Add tests: the same boons produce the same motion parameters, and the bounds hold at the extremes.
+Goal: Upgrade the engine's audio architecture while working in the VTT, wire WebRTC/PeerJS VOIP through a T13 Species/Formation voice-effects pipeline, connect live audio + optional webcam tracking to the Avatar puppeting system, and verify both with automated tests.
 
+- [ ] **4.1 Upgrade Audio Engine, VTT Soundscape & Music Composition (`SoundEngine.js`, `src/t13ne/modules/audio/`):**
+  - Upgrade `SoundEngine` into a structured multi-bus WebAudio mixer (`master`, `music`, `sfx`, `ambience`, `voip`) with clean headless/suspended fallbacks and per-bus metering/mute/volume controls.
+  - Wire `T13NE_AudioDirector` and `T13Effects` to live VTT `T13Session` events: Plot tension transitions, Ordeal rhythm hot-swapping, procedural/sample Foley for T13 Dice rolls, Yarn card draws/plays, Hitch/Wound stingers, and Location Descendant ambience.
+  - Complete the listening-led second pass on procedural music composition, Mode adherence, voice leading, and arrangement (`t13ne-music.js`, `t13ne-conductor.js`, `ThemeGenerator.js`).
+- [ ] **4.2 VOIP Overhaul & Peer Connection Lifecycle (`VOIPManager.js`, `WebRTCManager.js`, `P2PNetworkManager.js`):**
+  - Fix `VOIPManager` so peer audio tracks attach dynamically for peers joining *after* `start()`, support PeerJS media calls alongside `WebRTCManager`, and route remote streams into `SoundEngine`'s `voip` bus (with optional 3D token spatialization on the VTT board) rather than detached `HTMLAudioElement`s.
+  - Route local microphone capture through a WebAudio processing graph (`MediaStreamAudioSourceNode` → Noise Gate / Compressor → `VoiceFXChain` → `MediaStreamAudioDestinationNode` → outbound WebRTC track), with push-to-talk, calibrated RMS/spectral VAD hysteresis, per-peer volume/mute, and a local voice-test ("hear myself") monitor toggle.
+- [ ] **4.3 T13 Species (`Descendant`) & Formation Voice Modulation FX:**
+  - Build a modular, zero-external-server WebAudio `VoiceFXChain` (pitch/formant filter banks, ring modulator, comb/karplus-strong resonator, chorus/hive doubler, waveshaper/bitcrusher, algorithmic reverb from `T13Effects`) parameterized by the speaker's **T13 Species (`Descendant`) and Formation (`Incarna`)**:
+    - *T13 Species Descendant vocal profiles:* e.g., Human (neutral/bypass), Giant/Kaiju-blooded (lowered pitch + chest formant shift), Small/Fae-blooded (raised formant + airy shimmer), Insectoid/Chitinous lineage (mandible click modulation + bandpass chorus), Beast/Theriocephalic lineage (growl sub-harmonics), plus custom vocal-tract parameters stored directly on any T13 Species `Descendant`.
+    - *Formation Incarna timbre overlays:* e.g., `Trial` / `Craft` (metallic resonator / robotic ring-mod), `Inertia` (clockwork/phase-locked tremolo), `Burden` (deep stone cavern convolution), `Phoenix` (warm harmonic saturation + subtle crackle), `Fury` (liquid modulated lowpass/formant), `Gossamer` / `Awe` (breathy whisper/spectral reverb), `Dominion` (multi-voice hive chorus), `Orthodox` / `Heresy` (synth/bitcrushed digital voice).
+    - *Wormhole Racers compatibility:* Map Wormhole Racers' `"Humans"` and `"Aliens"` subset (`Kathorri`, `Thf-Thf`, `Vemlek`, `Draco`, `Grenk`, `Drones`, etc.) cleanly onto these T13 Species Descendant + Formation voice profiles via the Stage 1.2 adapter.
+    - Include dry/wet mix sliders, output limiter protection, and a one-click **"Clean Voice / Accessibility Bypass"** per player and for the Referee.
+- [ ] **4.4 Avatar Puppeting System (`LiveAvatarController.js`, `VTuberBridge.js`, `MorphManager.js`, `AnimationBlender.js`):**
+  - Refactor `VTuberBridge` so it never touches `document.body` on import, supports configurable local/bundled asset paths instead of hardcoded CDN URLs, and shares `VOIPManager`'s audio analyser stream rather than opening a duplicate microphone capture.
+  - Upgrade `MorphManager` and `AvatarLowPoly` head morphs with a clean **viseme + expression blend set** (`jaw_open`, `viseme_aa`, `viseme_ee`, `viseme_oh`, `viseme_oo`, `blink`, `smile`, `frown` combining cleanly) for humanoids, and **articulated mouthpart/mandible puppeting** for insectoid/non-humanoid body plans (`TODO-avatars.md` §10).
+  - Support **two seamless puppeting modes** in VTT tokens, Character Sheet stages, and speaking portraits:
+    1. **Audio-Driven Puppeting (default whenever VOIP/mic is active, no webcam required):** Real-time FFT formant-band + envelope extraction drives visemes/mandibles, subtle head bob/lean, and blink cadence.
+    2. **Full Webcam + Audio Puppeting (opt-in):** MediaPipe/Kalidokit head, neck, torso, arm, eye-blink, and mouth tracking blended cleanly over idle animations via `AnimationBlender`, transmitted to VTT peers as compact quantized puppet states.
+- [ ] **4.5 Stage 4 Automated Tests (Audio, VOIP, Species FX & Puppeting):**
+  - **VOIP & Species Voice FX tests:** Deterministic WebAudio/offline-graph and synthetic-`MediaStream` tests verifying `VOIPManager` VAD start/stop events, dynamic peer join/leave track cleanup, limiter safety bounds, accessibility dry-bypass, and measurable spectral/formant transformations across distinct T13 Species Descendant + Formation presets.
+  - **Avatar Puppeting tests:** Automated tests feeding synthetic speech/formant envelopes and recorded landmark fixtures through `VOIPManager` → `VTuberBridge` / `LiveAvatarController` → `MorphManager` / `AnimationBlender`, asserting humanoid viseme blending, non-humanoid mandible rotation, skeleton quaternion slerp bounds, and quantized VTT puppet-packet round-trips.
 
-## 4. Avatar: atlas, clothing, and skins
+---
 
-Done:
-- [x] `avatarRandom.js` (`hashSeed`, `mulberry32`), used by `AvatarEngine.js`
-- [x] `AvatarAtlas.js`: 256 px atlas, 16 px tiles, 48×32 regions, capacity 40, `top:cloth` and `bottom:cloth` reserved, `mapUVsToRegion`, `paintAtlas`, `createAtlasTexture` (Nearest, no mipmaps, manual row flip)
-- [x] `AvatarAtlasIO.js`: browser PNG export and import (`atlasToPngBlob`, `pngBlobToAtlasPixels`), not yet used
-- [x] Procedural body meshes use a lit atlas, with configurable painted clothing coverage and a neutral humanoid outfit; no clothing meshes are added.
-- [x] `AvatarSkinPainter` paints a raycast UV and updates the live texture. PNG round-trip was checked in a browser.
-- [x] Atlas pixels, body-plan name, version and regions are available on generated avatars; injected atlas pixels are copied.
-- [x] The model maker opens from the game main menu and companion character sheet. It paints on the model, supports body plans and downloads/imports a layout-checked skin document.
-- [x] Species can supply named skin variants; otherwise their identity generates a stable default. Seeded facial feature proportions vary without changing atlas layout.
-- [x] `AvatarStage` can restore a compatible skin document, rejecting mismatched atlas versions, body plans and regions.
-- [x] Character sheets can save a skin to the local Codex database, reload it by character ID, and detect conflicting edits. Browser `AvatarStage` loads that saved skin.
+## Stage 5: Playable Companion Views — Character Sheet, Card Tray & Referee Console (Week 2–3)
 
-To do:
-- [ ] Author cultural coverage and appearance data for individual body plans; hats, armour plates and helmets may eventually be separate accessories.
-- [ ] Author species-specific skins and culture-specific clothing; generated defaults are placeholders. Add richer facial variation and independently paintable facial features.
-- [ ] Include associated skins in character exports and synchronization; storage is local to the browser origin (including port), and downloadable skin documents are the portable backup and transfer mechanism.
-- [ ] Make shared atlas regions independently paintable where needed; painting one feature can currently affect another sharing its region.
-- [ ] Check that `mergeGeometries` gets identical attribute sets.
-- [ ] Check that `BoxGeometry` survives `applyMatrix4` as `geo.type === 'BoxGeometry'`.
-- [x] Update rig tests for atlas colours.
-- [ ] Add tests for limb scaling, painted clothing coverage, atlas bounds, UV remap, and the box geometry type.
-- [x] Verify the PNG round-trip in the browser.
-- [ ] Decide when `AvatarAtlasIO.js` is first used: the import/export button, or the paint tool.
+Goal: Achieve **Milestone M2 (Playable Tabletop Vertical Slice)** so a group can run a full T13 tabletop session using the VTT, VOIP/puppeted Avatars, and Companion views.
 
-## 5. Avatar: visual validation
+- [ ] **5.1 Interactive Character Sheet (`T13CharacterSheet.js`):**
+  - Add character roster creation, selection, import/export, and IndexedDB/server persistence (supporting `Extra`, `Lite`, `Archetype`, `Detailed`, and `Full` models from `docs/rules/Creating-Characters.md`, plus T13 Species `Descendant` selection).
+  - Make Facet Boons, Annexes, Proficiencies, and Hitches clickable to configure and submit real `T13Session` Dice/Card/Value Tests (with optional Strain/Sway spend).
+  - Add live interactive panels for Sway Purse (`Yin`, `Yang`, `Chi`, Facet Sway), Stress/Strain/Shock dice pools, active Wounds, equipped Descendants, and quick controls for Model Maker sculpting, VOIP Species Voice FX preview, and Avatar puppeting mode.
+- [ ] **5.2 Player Card Tray & Ordeal Action Bar (`T13YarnCardWidget.js`):**
+  - Upgrade `<t13-yarn-card>` from hover-only to interactive selection (`Play`, `Prepare`, `Discard`, `Use Significator`).
+  - Build a persistent bottom/side **Card & Ordeal HUD** showing the player's private Hand, Prepared Reserve, Style Reserve, active Stage Difficulty, shared Wild Pool, Turn/RT tracker, VOIP peer roster/mute/FX bypass strip, and a shared **Roll & Narrative Log** feed.
+- [ ] **5.3 Referee / Yarn-Teller Console:**
+  - Replace the hardcoded `"Breaking of the Third Seal"` mock in `ttrpg-companion/main.js` with live `T13NE_Plots` + `QuestSpread` generation and editing.
+  - Add Referee controls to spawn Extras/Monsters/Descendants onto the VTT (with Referee NPC voice-FX switching when voicing different NPCs!), set Stakes, deal/advance Ordeal Stages & Rounds, adjudicate Hitch triggers and I-Ching Gains, toggle fog/zones/mood audio, and save/load campaign snapshots.
+- [ ] **5.4 Stage 5 acceptance test:** Automated two-client Playwright test (Referee + Player) executing session join, character + Species Descendant creation, token spawn/move, T13 Test roll, private card draw/play in an Ordeal round, synthetic VOIP/puppet indicator sync, disconnect/reconnect, and save/restore.
 
-- [ ] Re-render the humanoids and quadruped with a temporary Playwright harness into a new folder (e.g. `files\avatar-renders-v3\`). Compare against `files\avatar-renders-v2\`.
-- [ ] Check that portraits show skin, not blank surfaces.
-- [ ] Check that portraits use a natural pose, not a T-pose.
-- [ ] Check that humanoids have correct proportions: head size, arm length, leg length, and body height. The user rejected earlier renders for these.
-- [ ] Check that quadrupeds are not split laterally.
-- [ ] Delete the temporary harness after validation.
+---
 
-## 6. Creatures
+## Stage 6: Engine Packaging, Workbench & Asset Tooling (Week 3)
 
-- [ ] Spider: legs currently drop straight down. Fix the leg layout.
-- [ ] Spider: the winged membrane is not built. Add it.
-- [ ] Confirm the quadruped body is a single root torso. (Fixed in v2; verify again after changes.)
+Goal: Achieve **Milestone M4 (Creator & Dev-Ready Engine)** so new settings, scenarios, and games can be authored cleanly without forking `src/t13ne/`.
 
-## 7. Morph, rig, and animation
+- [ ] **6.1 Author Workbench & Package Validation (`src/t13ne/modules/workbench/`):**
+  - Replace placeholder merge/cut logic in `t13ne-editor.js` and wire Workbench forms (`t13ne-chars-UI.js`, `t13ne-knots-UI.js`, `t13ne-narrative-UI.js`, `t13ne-codex-UI.js`) to shared runtime validators (`RuleComponent`, `CodexDB`), including authoring T13 Species Descendants (size matrices, voice FX profiles, natural Annexes, body plans).
+  - Support authoring, isolated previewing, and exporting/importing versioned scenario/setting packages while enforcing Core immutability and provenance checks.
+- [ ] **6.2 Non-Destructive Model & Audio Indexers:**
+  - Build offline indexer scripts for `public/data/models` (OBJ/FBX/glTF/GLB) and `public/media/audio` (WAV/loops), emitting versioned manifests with mesh/audio metrics, duplicate detection, and explicit license/provenance status for VTT and Workbench asset pickers.
 
-- [ ] Confirm morph sets stay within the stated budget: higher than PS1 for morphs, PS1-like for model detail.
-- [ ] Keep the 10 face morphs and the `bend_<joint>` morphs. These give Minecraft-style limb bending.
-- [ ] Keep animation very simple.
-- [ ] Re-test the `bend_<joint>` morphs after the limb scaling changes.
+---
 
-## 8. Performance: cache, prewarm, and loading screen
+## Stage 7: Wormhole Racers Foundation — Physics & Dynamic Wormhole Tunnel (Week 3–4)
 
-Measurements so far (Node only, 100 runs):
-- Humanoid 1.73 ms, quadruped 1.89 ms, spider 3.29 ms, variant hashing under 0.01 ms
-- Browser render cost is not yet measured.
+Goal: Fix the physics foundation and build the signature physics-reactive, musical 3D Wormhole tunnel.
 
-To do:
-- [ ] Measure browser render and atlas paint time for 100 characters.
-- [ ] Build an avatar cache keyed by seed plus a facet-boon hash. The hashing already exists.
-- [ ] Replace `new AvatarEngine()` per character in `PlanetaryOrbitScene.js` (~808–832) and `AvatarStage.js` (~10) with one shared engine and cache.
-- [ ] Add a prewarm step to the loading screen. The likely hook is `ViewManager.toggleLoadingScreen` (~214).
-- [ ] No race scene exists yet. Create the hook so a race's crew and racers can be generated during the loading screen.
-- [ ] Support ships with several crew, and races with around 100 characters.
-- [ ] Decide on web workers. A worker cannot return three.js objects, so it would transfer typed arrays and rebuild on the main thread. Decide only after measuring.
-- [ ] Keep WASM out unless measurements show it is needed. Plain JS is fast enough for generation.
+- [ ] **7.1 Repair `PhysXProvider` & Ship Colliders (`PhysXProvider.js`, `AdvancedPhysicsEngine.js`):**
+  - Implement `addCapsule` (fixing the crash in `AdvancedPhysicsEngine.create()`), validate `createConvexHull` / compound colliders from `ShipFactory`, and verify deterministic-step rigid-body sliding, collisions, and cleanup in a standalone test harness.
+- [ ] **7.2 Live `HyperphysicsEngine` Coupling (`HyperphysicsEngine.js`):**
+  - Replace number-only logging with real PhysX coupling: map modular ship component frequencies, resonance stress, shield friction, elasticity, and calibrated T13 `PhysicalValueTest` / Annex effects directly onto PhysX body forces and materials.
+- [ ] **7.3 Rebuild 3D `WormholeEnvironment` & Shader/Collider Pipeline (`WormholeEnvironment.js`, `WormholeShader.js`):**
+  - Replace the deprecated prototype with the true Wormhole specification:
+    - Opening entry funnel → stabilized racing tube → closing exit funnel.
+    - Driven by `wormholeCourse.js` & `wormholeSong.js` (288-beat song structure, musical Modes, root transpositions on final choruses, consonance/harmonic instability, and solid vs. unsolid/fast/slow forks).
+    - Standing-wave ("guitar string") wall vibrations induced by each ship's component frequencies, wall-contact displacement with opposite-node reaction forces, and 12D-cycled Perlin realspace turbulence near entrances, mid-realspace, and exits.
 
-## 9. Paint tool and skin editor
+---
 
-- Author direction: make the skin painter a separate component of a model maker/sculptor, accessible from the main menus and the character sheet view.
-- [x] Paint skins directly on the model (UV-based paint).
-- [x] Add an initial skin editor within the model maker, accessible from the main menu and character sheet.
-- [ ] Support PNG import and export for skins (uses `AvatarAtlasIO.js`).
-- [ ] Add procedural texture tools. Current state: the atlas painter only.
-- [x] Use the generated avatar atlas layout for direct painting and validate layout compatibility on skin document import.
-- [ ] Extend the initial editor into the requested model maker/sculptor; direct painting does not yet provide model sculpting.
+## Stage 8: Wormhole Racers Playable Race Loop & Crew Stations (Week 4–5)
 
-## 10. Output types: portrait, speaking, and VTT token
+Goal: Achieve **Milestone M3 (Playable Racing Vertical Slice)** with single-player flight, crew role mechanics, puppeted comms, and T13 Ordeal integration.
 
-Definitions (from the user):
-- **Portrait.** A static picture of the avatar facing the camera. Frame the face and upper body where possible. Pose is neutral and upright, not a T-pose.
-- **Speaking image.** Used for racing-scene characters. The avatar is turned slightly away from the camera, with natural body language. Include some hand gestures and head motion. Include mouth animation and emotional expression where possible.
-- **VTT token.** A 3D model, not a 2D image.
+- [ ] **8.1 Build `WormholeRaceScene` & Core Race Loop:**
+  - Create `WormholeRaceScene` (and planet-surface course hook via `planetCourse.js`) with pre-race loading screen ship/100-avatar prewarm, countdown, spline/beat progression, checkpoint & fork traversal, shield/hull collision handling, AI opponent ships, and finish results.
+  - Verify continuous camera/scene handoffs from the intro sequence (`LocalSpaceScene`, `PlanetaryOrbitScene`, `ShipShowcaseScene`).
+- [ ] **8.2 Playable Multi-Role Crew Stations & Comms (Single-Player + AI Crew Assist):**
+  - **Pilot:** 6-DOF / tube-riding ship flight controls, boost, and fork selection (`Controls.js`).
+  - **Engineer (`EngineersConsole`):** Interactive live engine Mode and ratio tuning to match wormhole segment Modes (including transposed final choruses), component power routing, and resonance heat/strain management.
+  - **Navigator:** Upcoming song-section Mode, harmonic overlap (`modeOverlap`), and fork stability readout HUD.
+  - **Weapons / Tactical:** Shield friction/phase modulation and T13-backed tactical actions.
+  - **Live Crew / Rival Comms:** Reuse Stage 4's speaking/puppeted 3D Avatar view and Wormhole Racers → T13 Species voice FX for rival hails and crew callouts.
+- [ ] **8.3 Racing Ordeal ↔ T13 Session Bridge:**
+  - Frame races as T13 Action Sequences / Ordeals: coalesce key simulation observations (out-of-mode instability spikes, wall impacts, overtakes, stage completions) into idempotent `T13Session` intents, applying resulting Component Hitches, Character Stress/Wounds, Sway/Chi rewards, and Plot updates.
 
-Expression requirements (speaking and portrait):
-- [ ] Blinks.
-- [ ] Smiles and frowns. Blend shapes must be able to combine with mouth shapes.
-- [ ] Mouth shapes for speech (viseme set), built as morphs on the head.
-- [ ] Insects and other non-human mouths: moving mouth parts (mandibles or similar), not morphs on a human-style mouth.
-- [ ] Head motion and a turned-away pose for speaking images.
-- [ ] Hand gestures for speaking images, driven by the existing bend morphs.
+---
 
-To do:
-- [ ] Add a portrait renderer: front-facing camera, face and upper-body framing, neutral pose.
-- [ ] Add a speaking renderer: three-quarter turn, natural pose, expression and mouth controls.
-- [ ] Add a 3D VTT token renderer, using the definition above.
-- [ ] Confirm the same avatar pipeline drives all three.
-- [ ] Decide whether `PortraitGenerator` (SVG) is kept for any use, or retired.
+## Stage 9: Wormhole Racers Campaign Loop, Multi-Crew Networking & Hardening (Week 5–6+)
 
-## 11. Engine gaps (from the audit)
+Goal: Connect racing, exploration, ship customization, story progression, and multiplayer crew play into a cohesive release candidate.
 
-Current state:
-- Initial model maker with direct UV painting, but no sculpting or UV-layout editor
-- Procedural characters exist (humanoid, quadruped, spider), but are basic
-- Procedural textures are limited to the new atlas painter
-
-To do:
-- [ ] Decide the minimum set of systems for the final product. The user asked for this and it is not yet written up.
-- [ ] Build or scope the model editor.
-- [ ] Build or scope UV tools.
-- [ ] List the other systems still missing for release.
-
-## 12. Earlier TTRPG and game-engine threads
-
-Recent intro and music work:
-- [x] Fix identified intro HUD, scene-completion, object-visibility and ship-showcase preparation issues.
-- [ ] Verify the complete intro as a continuous experience, including camera handoffs, solar-system details and the ship showcase. Use an isolated harness where possible; run the full intro only when necessary to test the sequence itself.
-- [x] Correct music key-frequency lookup and prevent prepared background scenes from replacing active scene music.
-- [ ] Give the procedural music a listening-led second pass on composition and arrangement; the reliability fixes do not complete this request.
-
-Other earlier threads need a status check:
-
-- [ ] **Song progression comparison.** The user asked to compare standard song progressions and decide whether verses are always the same or vary. Some examples are similar or in different keys. Check whether this was done. If not, do it.
-- [ ] **Wormhole Mode restriction.** Wormholes are restricted by Mode. Engineers tune the engine to match the Mode of the engine and the wormhole. Mode and transposition are implemented. The engineer tuning gameplay needs checking.
-- [ ] **Ordeals and minigames.** Video game and minigame sections should be driven from the Ordeal rules where possible. The genre-neutral minigame core and the Wormhole and planet-surface adapters are done. Check the rest of the driving logic.
-- [ ] **Racing ordeals as action sequences.** Check whether races are action sequences and use the rules.
-- [ ] **Ordeal rule audit.** Keep checking against `docs/rules/`.
-
-## 13. Housekeeping
-
-- [x] Mirror the current avatar engine and new avatar helpers to `ttrpg-companion/src/t13ne/procgen/avatar/`, and verify hashes.
-- [ ] Mirror `package.json` and the new test file if the companion needs them.
-- [ ] Update the "Character models" row in `docs/architecture/current-state.md`: it still describes per-vertex colours and says no paint tool exists.
-- [x] Add the new avatar, skin-store, music-key and system-HUD test files to the explicit `test:node` list in `package.json`.
-- [ ] Remove the temporary Playwright harness (`tmp-avatar-render/`) after each use.
-- [ ] Clean up temporary files at the end of each task.
-- [ ] Do not commit unless asked.
+- [ ] **9.1 Star System, Station Dialogue & Shipyard Loop:**
+  - Connect `GalaxyMapScene` → `LocalSpaceScene` → `PlanetaryOrbitScene` / Station docking (`DialogueScene` using cached, puppeted 3D NPC avatars) → `ShipyardScene` (modular component fitting, bitwise tech-tree fog-of-war unlocks, CSG ship interiors) → League Race entry.
+- [ ] **9.2 Multiplayer Crew, VOIP & Race Synchronization:**
+  - Synchronize multi-player crew stations aboard a shared ship (Pilot, Navigator, Engineer, Weapons) and competing ships over `WebRTCManager` / authoritative session state, with ship-intercom VOIP + alien species voice FX and graceful AI-crew takeover on disconnect.
+- [ ] **9.3 Performance, Security & End-to-End Release Verification:**
+  - Profile browser frame times (PhysX + dynamic wormhole mesh updates + 100 prewarmed character avatars + WebAudio voice FX); offload non-Three.js math to workers only where measurements justify it.
+  - Complete P2P/server security and privacy audit; run full Node + Playwright smoke suites across both the TTRPG Companion/VTT and Wormhole Racers.

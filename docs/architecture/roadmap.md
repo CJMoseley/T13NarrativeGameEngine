@@ -27,7 +27,7 @@ see the [current-state handoff](current-state.md#current-implementation-handoff)
 
 ## P1: shared rules and state
 
-- [ ] **C01** Diff the root and companion engine trees and map consumers/import roots. Establish parity tests for representative data and rules before extracting a canonical package. Depends: B01, B03.
+- [ ] **C01** Diff and retire the legacy `ttrpg-companion/src/t13ne/` copy: Author confirmed `ttrpg-companion` is a view over canonical `src/t13ne/`, not a separate app. Reconcile any unmerged companion-only changes into `src/t13ne/` and point all remaining imports/tests at `src/t13ne/`. Depends: B01, B03.
 - [ ] **C02** Separate session construction and rule services from global browser state behind adapters. Preserve current public entry points as compatibility shims; test two isolated headless sessions. Depends: C01.
 - [ ] **C03** Define versioned commands, validation, ordered results, stable IDs, seeded RNG and explicit errors. Add contract tests and replay/idempotency tests. Depends: B02, B03, C02.
 - [ ] **C04** Specify complete snapshot coverage and migrations; test nested entities, cards, RNG, active ordeals and plots through save/load/continue, including corrupt and unsupported versions. Depends: C03.

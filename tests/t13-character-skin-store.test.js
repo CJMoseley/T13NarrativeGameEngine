@@ -1,7 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { CharacterSkinStore } from '../src/t13ne/procgen/avatar/CharacterSkinStore.js';
-import { CharacterSkinStore as CompanionStore } from '../ttrpg-companion/src/t13ne/procgen/avatar/CharacterSkinStore.js';
 
 function fakeCodex() {
     const records = new Map();
@@ -48,7 +47,7 @@ function fakeCodex() {
     };
 }
 
-for (const Store of [CharacterSkinStore, CompanionStore]) {
+for (const Store of [CharacterSkinStore]) {
     test(`${Store === CharacterSkinStore ? 'root' : 'companion'} skin store saves, detects stale revisions and rejects aborted writes`, async () => {
         const db = fakeCodex();
         const store = new Store(db);

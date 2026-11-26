@@ -1,6 +1,6 @@
 # Current-state assessment
 
-Updated: 2026-11-03. This is a targeted assessment, not an exhaustive audit or proof of runtime behavior. The implementation and documentation changes described below remain uncommitted in a shared working tree. Preserve unrelated work and verify the actual branch before continuing.
+Updated: 2026-11-26. This is a targeted assessment, not an exhaustive audit or proof of runtime behavior. The implementation and documentation changes described below remain uncommitted in a shared working tree. Preserve unrelated work and verify the actual branch before continuing.
 
 Status vocabulary: **Present** means code or data exists, not that it is production-ready. **Partial** means an inspected path has an explicit limitation. **Unverified** means the path needs an end-to-end test or closer rules review.
 
@@ -14,23 +14,49 @@ and game-specific calibration must remain distinguishable.
 
 ### Implemented foundations
 
-The UHPP [AvatarStage](../../src/t13ne/procgen/uhpp/AvatarStage.js) now awaits
-avatar generation before adding it to a scene. When a caller supplies a
-Character with `facetweb.Stats`, it derives the existing Facet-based body
-variant; an explicit `avatarOptions.variant` takes precedence. The stage and
-current avatar helpers are mirrored in the companion. No character screen
-currently invokes this path. Procedural avatars now have a lit body atlas and
-configurable painted clothing coverage, with a UV raycast painting component.
+The UHPP [AvatarStage](../../src/t13ne/procgen/uhpp/AvatarStage.js) awaits
+avatar generation before adding it to a scene and delegates through a shared
+[AvatarCache](../../src/t13ne/procgen/avatar/AvatarCache.js) and
+`sharedAvatarEngine` (also used by `PlanetaryOrbitScene`, with loading-screen
+prewarm hooks on `ViewManager.toggleLoadingScreen` / `queueRaceRosterPrewarm`
+and `LoaderManager` for multi-crew ships and ~100-racer rosters). When supplied
+a Character with `facetweb.Stats` or a T13 `Descendant` (`context.descendant`),
+`AvatarStage` derives Facet-based body proportions (`Burden`, `Nature`,
+`Gossamer`, `Zeal`/`Inertia`), appearance (`Awe` clothing vividness, `Miasma`
+skin tint and atlas mottling), and Formation surface material across all 24
+Formation families (`FORMATION_PALETTES`, with Character Formation taking
+precedence over species Formation); an explicit `avatarOptions.variant` takes
+precedence. An initial species size adjustment matrix (`calculateSpeciesSize`
+in [AvatarFacetBody](../../src/t13ne/procgen/avatar/AvatarFacetBody.js))
+converts Human Nature Boon T13 Values from inches to centimetres (`Value * 2.54`)
+and applies configured phenotype adjustments in order without assuming
+universal sex modifiers, retaining the prior Nature-to-height ratio when no
+species size rule is configured. The companion
+[T13CharacterSheet](../../ttrpg-companion/src/components/T13CharacterSheet.js)
+and character creator now populate `facetweb.Stats`, display centimetre height
+and Formation material, render an `AvatarStage` preview, and list linked
+Descendants with their Formation material and model inspection hook; in-game
+Wormhole Racers crew/station character screens are not yet built. Because
+`ttrpg-companion` is a view over the shared engine rather than a separate
+application, companion components import canonical `src/t13ne/` modules
+directly (no file mirroring).
+Procedural avatars have a lit 512×512 body atlas and configurable painted
+clothing coverage, with a UV raycast painting component.
 The model maker is accessible from the game main menu and companion character
-sheet: left-drag paints, right-drag rotates, and the wheel zooms. Skin documents
-can be downloaded and imported; they validate atlas version, body plan and
-regions. A character sheet with an ID can also save a skin in the local Codex
+sheet: left-drag rotates by default; Paint mode enables left-drag painting,
+right-drag rotates, and the wheel zooms. Undo restores the previous stroke or
+loaded skin (up to 30 changes). Skin documents
+can be saved and loaded; they validate atlas version, body plan and
+regions. The editor also loads and saves 512×512 PNG atlases for external
+painting. PNG files have no layout metadata: import requires confirmation and
+cannot check compatibility. Keep a skin document for a layout-checked backup.
+A character sheet with an ID can also save a skin in the local Codex
 IndexedDB file store; reopening the sheet restores it. `AvatarStage` loads
 the saved skin by character ID in the browser, or accepts an explicit
 `skinDocument` or `skinStore`. Saved skins are stored separately from
 character records and are local to the browser origin (including its port):
 character exports and network synchronization do not yet include them. Game
-and companion pages on different origins do not share these skins. Download a
+and companion pages on different origins do not share these skins. Save a
 skin document to transfer or back it up.
 
 Species lore can supply `avatarSkins`, an array of objects with unique `id` and
@@ -39,8 +65,18 @@ Species lore can supply `avatarSkins`, an array of objects with unique `id` and
 `AvatarStage`. Species without authored variants get a deterministic default
 from their identity (or their existing `color`). Character seeds vary facial
 proportions. These are procedural placeholders, not an authored species skin
-catalog; some features still share atlas regions. Facet-driven motion remains
-unimplemented. Hats, armour plates and helmets may be separate accessories.
+catalog. Facial features are separate skinned meshes sharing the rig, with
+independent atlas regions and basic expression previews; they remain simple
+primitives, not a finished facial animation system. Humanoid eyes, brows and
+mouth are separate polygonal markings fitted to the head rather than protruding
+boxes; the nose has a faceted profile. The humanoid head and hair
+cap have a raised crown and tapered jaw. The neutral body uses measured
+head, shoulder, hip, elbow, knee and wrist landmarks; the neck and joint caps
+have faceted cross sections, and the thigh and lower leg taper independently.
+The torso overlaps the pelvis to close the waist gap. These remain separate
+primitives, and hip and limb transitions
+need refinement in motion. Facet-driven motion remains unimplemented. Hats,
+armour plates and helmets may be separate accessories.
 
 Intro sequencing now reports the system name and body count, signals completion
 of the local flyby, retains other bodies when their meshes are visible, and
@@ -53,7 +89,8 @@ requested listening and arrangement pass is still outstanding.
 | Area | Current state and evidence | Boundary |
 |---|---|---|
 | Codex and Proficiencies | [CodexDB](../../src/t13ne/modules/codex/CodexDB.js), validation and identity helpers support custom Proficiencies and preserve Core records. A Proficiency needs a name, description and tags including at least one Facet; numeric IDs are not universally required. | Package-wide versioning, author verification and a complete creator workflow remain open. No complete Core list of Skills, Talents or Powers is assumed. |
-| Descendants and components | [Descendants](../../src/t13ne/modules/characters/t13ne-descendants.js) retain or generate Incarna; [component Facet hints](../../src/t13ne/procgen/ships/components/ComponentFacetHints.js) provide optional candidates. | Annex-derived technology, appropriate Hitches and actual component/physics behavior are not fully integrated. Hints are not mandatory classifications. |
+| Descendants, T13 Species and components | [Descendants](../../src/t13ne/modules/characters/t13ne-descendants.js) retain or generate Incarna; [component Facet hints](../../src/t13ne/procgen/ships/components/ComponentFacetHints.js) provide optional candidates. In T13 rules ([Patterns-Extras-Descendants](../rules/Patterns-Extras-Descendants.md)), species, bloodlines and genetics are typically specified as `Descendant` patterns (paired with Formation `Incarna`), whereas Wormhole Racers' [SpeciesGenerator](../../src/t13ne/procgen/system/SpeciesGenerator.js) represents a sci-fi subset within T13's `"Humans"` and `"Aliens"`. | A canonical T13 Species-as-Descendant schema + Wormhole Racers adapter, Annex-derived technology, appropriate Hitches and actual component/physics behavior are not yet fully integrated. Hints are not mandatory classifications. |
+| Audio, VOIP and Avatar puppeting | [SoundEngine](../../src/t13ne/core/SoundEngine.js), [audio modules](../../src/t13ne/modules/audio/), [VOIPManager](../../src/t13ne/core/VOIPManager.js), [LiveAvatarController](../../src/t13ne/procgen/avatar/LiveAvatarController.js), [VTuberBridge](../../src/t13ne/procgen/avatar/VTuberBridge.js), [MorphManager](../../src/t13ne/procgen/avatar/MorphManager.js) and [AnimationBlender](../../src/t13ne/procgen/avatar/AnimationBlender.js) exist. | Partial and unverified: `VOIPManager` connects raw mic tracks directly without a WebAudio FX bus, binds `ontrack` only to pre-existing peers, and plays remote audio outside `SoundEngine`; `VTuberBridge` appends a `<video>` to `document.body` on construction, uses a CDN MediaPipe URL, and opens a duplicate mic stream; `MorphManager` ARKit names do not yet match `AvatarEngine` morph targets, and no VOIP, T13 Species voice-FX, or puppeting tests exist yet. |
 | Hitches and Facet rules | [HitchRules](../../src/t13ne/modules/mechanics/HitchRules.js) evaluates roles, matching triggers, Marks/Ruins and tier; [FacetRuleRegistry](../../src/t13ne/modules/mechanics/FacetRuleRegistry.js) provides extensible handlers and several Gnarl proposals. Explicit difficulty effects can affect a Dice Test. | This is not automatic Hitch discovery or a complete effect pipeline. Most Facet mechanics require further source-backed encoding, choices, state or adjudication. The Author confirmed a Quirk's maximum Bane is half the relevant Facet Boon numerically. |
 | Rules catalog | [RuleCatalog](../../src/t13ne/modules/mechanics/RuleCatalog.js) combines source pages, Facet pages and sections; [RuleComponent](../../src/t13ne/modules/mechanics/RuleComponent.js) defines source-linked, revision-checked drafts stored in IndexedDB. | A Facet is a page, not a component per section. Draft classification is an unverified assertion; no verification, selection, enforcement or executable-rule pipeline exists. The original source JSON remains in use, including both distinct Character Arcs records. |
 | Character I-Ching | [I-Ching](../../src/t13ne/modules/mechanics/t13ne-iching.js) calculates from 12 Facet pairs, permits a caller-provided tie choice, checks data, and exposes Gain and Unchanging power text. The changing-line lookup and `%` statblock-generation marker were corrected. | UI choice, consistent species generation, save/migration review and execution of powers and Gain conditions remain open. Previously saved hexagrams are not silently recalculated. |
@@ -126,15 +163,9 @@ the current prototypes implement complete rules.
 
 ### Latest validation
 
-- `npm test`: 33 Node tests passed after the Character I-Ching changes. These
-  are focused tests, not complete rules, browser, multiplayer or gameplay
-  validation. The physical-force test uses a mock PhysX body.
-- A prior Chromium test covered IndexedDB v2-to-v3 upgrade, data preservation,
-  draft persistence and concurrent revision conflicts. It did not validate
-  the later Quest, I-Ching or physics paths.
-- A root production build succeeded earlier into isolated output before the
-  final component-store and later changes; it is not evidence that the
-  current tree builds or that either application runs end to end.
+- `npm test` (`npm run test:node`): 179 Node tests passed, covering Codex/Proficiencies, Hitches/Facet rules, Character I-Ching, Quest spreads, PhysicalValueTest (mock PhysX body), Ordeal/Wormhole/Planet courses, low-poly procedural rigs across 14 body plans, Facet appearance and 24 Formation palettes, species size matrix (inches-to-cm conversion and ordered phenotype adjustments), Character Sheet and Descendant `AvatarStage` paths, `AvatarCache` isolation/LRU/100-racer prewarm, skin store, system HUD and music key lookup.
+- Both Vite/Rollup production module graphs (`vite.config.js` and `ttrpg-companion/vite.config.js`) bundle cleanly without overwriting tracked `dist/`, and `ttrpg-companion/vite.config.js` now uses a pre-resolution regex alias for `/src/t13ne` so zero modules resolve from the legacy `ttrpg-companion/src/t13ne/` copy. Large-chunk warnings remain, and passing builds do not prove end-to-end browser gameplay or multi-client VTT sessions.
+- Cross-referenced duplicate `FacetAdjectives` Boon rungs against `wordpress_legacy/includes/class-t13-ne-facets.php`: Phoenix (two Boon 12 entries), Enigma (two Boon 16 entries), Liberty (two Boon 32 entries) and Trial (Boon 14 `Competitive` in two fields) exist verbatim in legacy PHP; `adjectiveForBoon` deterministically selects the later entry. Canonical facet data was preserved pending Author confirmation.
 
 ## Earlier baseline assessment
 
@@ -154,9 +185,9 @@ context rather than treating every statement as current.
 | Racing | [GameEngine](../../src/t13ne/core/GameEngine.js) initializes a galaxy, narrative cycle and a prototype ship; [Wormhole Racers design](../../WormholeRacers.html) describes a race. | World and simulation scaffolding exist. A complete race loop and automated end-to-end test were not found in the inspected scene/controller paths. A genre-neutral course contract and two course adapters (Wormhole and planet surface) exist with unit tests. The Wormhole adapter restricts engine tuning to the engine mode (Ionian by default) and adds instability where the tuning is not a note in a segment's mode; a key may transpose its mode by a root ratio, so the final choruses need their own tuning. Mode is used in this sense to avoid confusion with the T13 Scale. The adapters are not yet wired to a scene, the Ordeal manager or the T13 authority. Runtime-loaded or unexplored components could change that conclusion. |
 | Simulation and narrative | [GameEngine](../../src/t13ne/core/GameEngine.js) derives world/start context using T13. | Initialization bridge exists; a verified round trip from race events to T13 consequences and back was not found. |
 | Companion | [main.js](../../ttrpg-companion/main.js) starts a companion, provides plot/character/VTT controls and networking hooks; [VTTManager](../../ttrpg-companion/src/t13ne/modules/vtt/VTTManager.js) handles ordeal scene lifecycle. | Partial. Network authority, hidden information, turn and dice arbitration, and recovery need end-to-end verification. |
-| Duplicate engines | Both [root engine](../../src/t13ne/) and [companion engine](../../ttrpg-companion/src/t13ne/) exist. The companion builds with its own Vite root. | Two source trees can drift; do not assume shared runtime or parity without tests. Identify differences and migrations before choosing one canonical source. |
+| Duplicate engines | Canonical [root engine](../../src/t13ne/) and a legacy duplicate `ttrpg-companion/src/t13ne/` directory exist; `ttrpg-companion/vite.config.js` aliases `/src/t13ne` to `../src/t13ne`. | Author confirmed `ttrpg-companion` is a view, not a separate app: companion views must import canonical `src/t13ne/` modules directly rather than mirroring files. The legacy `ttrpg-companion/src/t13ne/` copy should be audited for any unmerged edits and retired. |
 | Network and compute | [P2P manager](../../ttrpg-companion/src/t13ne/core/P2PNetworkManager.js) wraps PeerJS. [Server](../../server/index.js) offers benchmark registration and task assignment; [compute worker](../../src/t13ne/net/computeWorker.js) calculates wormhole samples. | Transport and compute prototypes are separate. A complete scheduler, result routing, fault handling and application consumer were not established. PeerJS does not provide scheduling by itself. |
-| Character models | [AvatarEngine](../../src/t13ne/procgen/avatar/AvatarEngine.js) generates a procedural rig from [body plans](../../src/t13ne/procgen/avatar/BodyPlanSchema.js) (six plans). Parts are built in bind-pose world space and skinned with a short blend at each pivot. Limbs and joints are boxes, Minecraft-style, with low vertex counts (humanoid about 770). Materials are lit per-vertex Lambert, so dynamic lighting is kept. Morph targets are higher than PS1 hardware would drive: ten face morphs (eyes, brows, jaw, mouth shapes) are region-based offsets on head vertices, and one `bend_<joint>` morph per joint rotates that joint's distal chain, Minecraft-style. The procedural rig is the default for all plans, including humanoids. The FBX humanoid is opt-in with `generate(plan, { style: 'fbx' })`. Humanoids get a per-planet variant from `makeHumanoidVariant(seed)`: height (0.9–1.1), build (0.85–1.2), a skin tone from `SKIN_TONES`, and optional prosthetics (`antennae`, `horns`). Non-human plans keep their species colour. Output targets are not built yet: static portraits should be renders of this 3D avatar, not 2D SVG bases; racing-scene speaking characters and VTT tokens should also use the 3D avatar. Covered by [rig tests](../../tests/t13-avatar-rig.test.js). There is no model editor, no paint tool, no UV painting and no weight-painting UI. Procedural textures exist as canvas code, not as an editor. The UHPP environment pipeline runs on a mock tileset and has not been executed end-to-end. |
+| Character models | [AvatarEngine](../../src/t13ne/procgen/avatar/AvatarEngine.js) builds PS1-style low-poly procedural skinned rigs across 14 [body plans](../../src/t13ne/procgen/avatar/BodyPlanSchema.js) via [AvatarLowPoly](../../src/t13ne/procgen/avatar/AvatarLowPoly.js), with dynamic Lambert lighting, independently mapped 512×512 atlas regions, 24 Formation surface palettes, `Awe` vividness, `Miasma` tint/mottle, species size matrix (`cm`), separate rigged facial features, 10 face morphs and `bend_<joint>` morphs, cached via [AvatarCache](../../src/t13ne/procgen/avatar/AvatarCache.js). The optional FBX humanoid is separate. [AvatarStage](../../src/t13ne/procgen/uhpp/AvatarStage.js) drives both Character (`T13CharacterSheet`) and `Descendant` avatars. The [model maker](../../src/t13ne/procgen/avatar/AvatarModelMaker.js) supports direct UV painting, layout-checked skin documents, raw PNG atlases and local per-character skin storage. [Rig](../../tests/t13-avatar-rig.test.js), [facets](../../tests/t13-avatar-facets.test.js), [stage](../../tests/t13-avatar-stage.test.js), [atlas](../../tests/t13-avatar-atlas.test.js) and [cache](../../tests/t13-avatar-cache.test.js) tests cover the procedural foundation. | Sculpting, UV-layout and weight-painting tools, authored species/cultural outfits, Facet-driven motion/animation, dedicated portrait/speaking/3D-VTT-token renderers, and browser 100-avatar WebGL frame benchmarks remain incomplete. PNGs cannot verify layout compatibility. The UHPP environment pipeline has not been verified end-to-end. |
 | Geometry | [Gematria](../../src/t13ne/modules/world/t13ne-gematria.js), [geometry](../../src/t13ne/modules/world/t13ne-geometry.js), [legacy PHP](../../wordpress_legacy/includes/class-t13-ne-geometry.php) and [updated implementation](../../updatedgeometry/agenticGematria.ts) coexist. | PHP-compatible additive digraph scoring was selected and partially integrated; harmonics, impressions, agent decisions and all consumers still need comparison and behavioral tests. The updated C and TypeScript disagree about digraph scoring. |
 | Validation | [Tests](../../tests/) include companion smoke and gematria tests. | Coverage is limited; tests do not establish end-to-end racing, multi-client VTT or full rules conformance. |
 
