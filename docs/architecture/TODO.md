@@ -1,8 +1,8 @@
 # TODO: Staged Plan — T13 Engine, VTT, and Wormhole Racers
 
-Last updated: 2026-11-26
+Last updated: 2026-11-27
 
-Baseline: `npm run test:node` passes **192 tests** (Stages 1 & 2, including Stage 2.6 Drama/Wyrd Tarot/Yarn/Ordeal Trick cross-links, complete on branch `feat/staged-engine-vtt-wormhole`), and both root (`vite.config.js`) and companion (`ttrpg-companion/vite.config.js`) Rollup bundles resolve cleanly against the single canonical `src/t13ne/` source tree (`ttrpg-companion/src/t13ne/` has been retired). Remaining Facet-role/body-language confirmations and authored cultural outfit catalogs stay parked in [TODO-avatars.md](./TODO-avatars.md), while **3D modelling/sculpting upgrades, audio/VOIP overhaul, T13 species voice effects, and Avatar puppeting** have been pulled directly into the active VTT pass (Stages 3–4 below).
+Baseline: `npm run test:node` passes **199 tests** (Stages 1, 2 & 3 complete on branch `feat/staged-engine-vtt-wormhole`), and both root (`vite.config.js`) and companion (`ttrpg-companion/vite.config.js`) Rollup bundles resolve cleanly against the single canonical `src/t13ne/` source tree (`ttrpg-companion/src/t13ne/` has been retired). Remaining Facet-role/body-language confirmations and authored cultural outfit catalogs stay parked in [TODO-avatars.md](./TODO-avatars.md), while **3D modelling/sculpting upgrades, audio/VOIP overhaul, T13 species voice effects, and Avatar puppeting** have been pulled directly into the active VTT pass (Stages 3–4 below).
 
 ## Standing Rules & Product Boundaries
 
@@ -70,26 +70,25 @@ Goal: Make T13 mechanics execute real, rulebook-backed state transitions inside 
 
 ---
 
-## Stage 3: VTT Service, Privacy, 2D/3D Tabletop & Upgraded Modelling Tools (Week 1–2)
+## Stage 3: VTT Service, Privacy, 2D/3D Tabletop & Upgraded Modelling Tools (Week 1–2) — COMPLETED
 
 Goal: Replace the companion's static grid and mock P2P messages with an authoritative VTT service, role-filtered privacy, Top-Down 2D + 3D views, 3D Avatar/Descendant tokens, and upgraded in-app low-poly modelling/sculpting tools.
 
-- [ ] **3.1 VTT Authority & Role-Filtered Transport:**
-  - Unify session transport across Referee-hosted PeerJS (`P2PNetworkManager.js`) and WebSocket/REST (`server/index.js`) behind one session client/host interface.
-  - Enforce **per-role state projections at the transport boundary**: Referee secrets, unrevealed Plot cards, and NPC hidden stats stay on the authority; each Player receives only public table state plus their own private Hand.
-  - Expand `P2PNetworkManager` validation schemas from the 4 prototype types to cover revisioned `SESSION_COMMAND`, `SESSION_EVENT`, `STATE_PROJECTION`, `SKIN_SYNC`, and rate-limited `AVATAR_PUPPET` frames, with reconnect catch-up.
-- [ ] **3.2 Top-Down 2D & 3D Camera + Board Controls (`T13VttCanvas.js` & `VTTScene.js`):**
-  - Fix `VTTScene.js`'s vertical `GridHelper` rotation bug and unify the VTT scene controller between `<t13-vtt-canvas>` and `VTTScene`.
-  - Add a **View Mode switcher**: **2D Top-Down (`OrthographicCamera`)** ↔ **3D Tactical (`PerspectiveCamera` Orbit)** ↔ **Psychosocial / Abstract Node Graph (`T13NE_SpaceVisualizer`)**.
-  - Attach pointer raycast handlers (`pointerdown`, `pointermove`, `pointerup`) for **token drag-and-drop**, optional grid/hex snapping, Reach/distance measurement ruler, terrain/zone overlays (`Open`, `Closed`, etc. from `T13NE_ActionSpaces`), and custom map/backdrop image loading with fog-of-war masks.
-- [ ] **3.3 3D Avatar & Descendant VTT Tokens:**
-  - Replace cylinder/sphere placeholders in `T13VttCanvas` and `VTTScene` with 3D `SkinnedMesh` miniatures generated via `AvatarStage` + `sharedAvatarCache` (for Characters, Extras, Creatures, and 3D Descendant props/structures).
-  - Mount each 3D avatar on a readable VTT token base ring showing allegiance colour, facing arrow, speaking/VOIP indicator ring, nameplate, and compact Wound/Stress pips.
-  - Include portable skin/model-override sync (`AvatarSkinDocument`) so custom sculpted/painted characters appear consistently across connected peers.
-- [ ] **3.4 Upgrade Modelling, Sculpting & UHPP Prop Tools (`AvatarModelMaker.js`, `UHPPEditorUI.js`):**
-  - Extend `AvatarModelMaker` beyond flat UV painting into an integrated **PS1/PS2 low-poly sculptor & texture studio**: per-part proportion/offset/vertex-group sculpting (with symmetry toggle and triangle-budget guardrails), procedural texture brushes/patterns/stamps (noise, weathering, scales, cloth weave, emblems), UV-region overlay inspection, and detachable low-poly accessory slots (hats, helmets, armour plates, natural horns/crests from T13 Species Descendants).
-  - Upgrade `UHPPEditorUI` and prop modelling tools so Referees and Authors can procedurally generate, sculpt/tweak, preview, and place 3D Location terrain blocks and Item Descendants directly onto the VTT scene.
-- [ ] **3.5 Stage 3 tests:** Transport boundary tests proving unauthorized commands are rejected and hidden hands/Referee notes never cross the wire to player peers; camera/token raycast state tests; and unit tests for low-poly sculptor geometry invariants, procedural brush determinism, and portable document serialization.
+- [x] **3.1 VTT Authority & Role-Filtered Transport:**
+  - Unified session transport across Referee-hosted PeerJS (`P2PNetworkManager.js`), deterministic `InMemoryTransportHub`, and WebSocket/REST (`server/index.js`) behind `VTTSessionHost` / `VTTSessionClient` (`VTTTransportService.js`) + `T13SessionVTT.js`, with ECDSA P-256 (`ES256`) signed JWTs + salted PBKDF2/HMAC challenge-response Referee elevation (`VTTAuthService.js`, `server/PermissionService.js`).
+  - Enforced **per-role state projections at the transport boundary**: Referee secrets, hidden tokens, unrevealed Plot cards, face-down Wyrd Tarot cards, and other players' private hands stay on the authority; each Player receives only public table state plus their own private Hand.
+  - Expanded `P2PNetworkManager` validation schemas to cover revisioned `SESSION_COMMAND`, `SESSION_EVENT`, `STATE_PROJECTION`, `SESSION_SYNC_REQUEST`, `SESSION_ERROR`, compact PackBits `SKIN_SYNC`, and rate-limited `AVATAR_PUPPET` frames, with reconnect catch-up.
+- [x] **3.2 Top-Down 2D & 3D Camera + Board Controls (`T13VttCanvas.js`, `VTTBoardController.js` & `VTTScene.js`):**
+  - Fixed `VTTScene.js`'s vertical `GridHelper` rotation bug and unified the VTT scene controller (`VTTBoardController`) between `<t13-vtt-canvas>` and `VTTScene`.
+  - Added **View Mode switcher**: **2D Top-Down (`OrthographicCamera`)** ↔ **3D Tactical (`PerspectiveCamera` Orbit)** ↔ **Psychosocial / Abstract Node Graph**.
+  - Attached pointer raycast handlers (`pointerdown`, `pointermove`, `pointerup`) for **token drag-and-drop**, square/hex snapping, Reach/distance measurement ruler, terrain/zone overlays (`Open`, `Closed`, `Difficult`, `Hazard`), and custom map/backdrop image loading with role-aware fog-of-war masks.
+- [x] **3.3 3D Avatar & Descendant VTT Tokens:**
+  - Built `VTTTokenBuilder.js` replacing cylinder/sphere placeholders in `T13VttCanvas` and `VTTScene` with 3D `SkinnedMesh` miniatures via `AvatarStage` + `sharedAvatarCache` (and `UHPPPropBuilder` Formation-tinted terrain/props).
+  - Mounted each 3D avatar on a readable VTT token base ring showing allegiance colour, facing arrow, speaking/VOIP indicator ring, nameplate metadata, and compact Wound/Stress pips, with portable `AvatarSkinDocument` sync.
+- [x] **3.4 Upgrade Modelling, Sculpting & UHPP Prop Tools (`AvatarSculptor.js`, `AvatarModelMaker.js`, `UHPPPropBuilder.js`, `UHPPEditorUI.js`):**
+  - Extended `AvatarModelMaker` with `AvatarSculptor`: per-part proportion/offset/inflate sculpting (with symmetry toggle and triangle-budget guardrails), deterministic procedural brushes (`noise`, `weathering`, `scales`, `cloth-weave`, `emblem`), UV-region overlay inspection, and detachable low-poly weirdfiction/science-fantasy accessory slots (`hat`, `helmet`, `visor`, `horns`, `crest`, `halo`, `armour_chest`, `armour_shoulder`).
+  - Built `UHPPPropBuilder` and upgraded `UHPPEditorUI` so Referees and Authors can configure Formation-tinted 3D Location terrain blocks and Item Descendants and place them directly onto the VTT scene.
+- [x] **3.5 Stage 3 tests:** Added `tests/t13-stage3-vtt-transport.test.js` and `tests/t13-stage3-vtt-board-sculptor.test.js` proving ECDSA P-256 JWT + salted challenge-response auth, unauthorized/spoofed command rejection, hidden token/hand/secret non-disclosure, reconnect catch-up, PackBits `SKIN_SYNC` within P2P 131 KB limit, 2D/3D/Psychosocial board controls, 3D VTT tokens, symmetric non-drifting sculpting, deterministic procedural brushes, and `UHPPPropBuilder`.
 
 ---
 

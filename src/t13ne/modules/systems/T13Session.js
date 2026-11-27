@@ -8,6 +8,7 @@
 
 import { validateSpeciesDescendant } from '../characters/T13SpeciesDescendant.js';
 import { registerStage2Commands } from './T13SessionRules.js';
+import { createDefaultVTTTableState, ensureVTTTableShape, registerVTTCommands } from '../vtt/T13SessionVTT.js';
 
 export const T13_SESSION_SCHEMA_VERSION = 1;
 
@@ -125,11 +126,12 @@ export class T13Session {
                 hiddenPlots: {},
                 hiddenObstacles: {}
             },
-            table: deepClone(options.initialTable ?? { tokens: {}, activeOrdeal: null, ordealHistory: [] })
+            table: ensureVTTTableShape(deepClone(options.initialTable ?? createDefaultVTTTableState()))
         };
 
         this._registerBuiltinCommands();
         registerStage2Commands(this);
+        registerVTTCommands(this);
     }
 
     nextRandom() {
@@ -384,6 +386,16 @@ export class T13Session {
             });
         }
 
+        const rawTable = ensureVTTTableShape(deepClone(this._state.table));
+        const filteredTable = isReferee
+            ? rawTable
+            : {
+                ...rawTable,
+                tokens: Object.fromEntries(
+                    Object.entries(rawTable.tokens || {}).filter(([, tok]) => !tok?.hidden)
+                )
+            };
+
         const projection = {
             schemaVersion: this.schemaVersion,
             sessionId: this.sessionId,
@@ -404,7 +416,7 @@ export class T13Session {
             drama: deepClone(this._state.drama),
             yarnWeaves: deepClone(this._state.yarnWeaves || []),
             plots: publicPlots,
-            table: deepClone(this._state.table),
+            table: filteredTable,
             privateHand: actorId && this._state.privateHands[actorId]
                 ? deepClone(this._state.privateHands[actorId])
                 : [],
@@ -468,6 +480,7 @@ export class T13Session {
         session.revision = snap.revision ?? 0;
         session._nextEventSeq = snap.nextEventSeq ?? (Array.isArray(snap.eventLog) ? snap.eventLog.length + 1 : 1);
         session._state = deepClone(snap.state);
+        session._state.table = ensureVTTTableShape(session._state.table);
         if (!session._state.wyrdTarotHands) session._state.wyrdTarotHands = {};
         if (!session._state.publicWyrdTarotCounts) session._state.publicWyrdTarotCounts = {};
         if (!session._state.wyrdTarotSlots) session._state.wyrdTarotSlots = {};
