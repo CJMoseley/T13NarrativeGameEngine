@@ -314,9 +314,22 @@ export class T13CharacterSheet extends BaseElement {
             ])] : [])
         ];
 
+        const voiceLabels = {
+            auto: 'Auto (Species)',
+            neutral: 'Natural',
+            'giant-kaiju': 'Colossal / Kaiju',
+            'fae-small': 'Fae / Diminutive',
+            'chitin-click': 'Chitinous Click',
+            'subharmonic-growl': 'Subharmonic Growl',
+            'deep-resonator': 'Deep Resonator',
+            'hive-chorus': 'Hive Chorus',
+            'ethereal-shimmer': 'Ethereal Shimmer',
+            'metallic-ring': 'Metallic Ring',
+            'synth-vocoder': 'Synthetic Vocoder'
+        };
         const presetNames = ['auto', ...Object.keys(SPECIES_VOICE_PRESETS)];
         const voiceSelect = SafeDOM.el('select', { 'data-role': 'voice-preset' }, presetNames.map(p =>
-            SafeDOM.el('option', { value: p, ...(this._voicePreset === p ? { selected: 'selected' } : {}) }, p)
+            SafeDOM.el('option', { value: p, ...(this._voicePreset === p ? { selected: 'selected' } : {}) }, voiceLabels[p] || p)
         ));
         voiceSelect.addEventListener('change', (e) => {
             this._voicePreset = e.target.value;
@@ -340,8 +353,9 @@ export class T13CharacterSheet extends BaseElement {
             this.audioHooks?.voipManager?.setAccessibilityBypass(this._dryVoiceBypass);
         });
 
+        const puppetLabels = { idle: 'Idle', audio: 'Audio / Voice', webcam: 'Webcam' };
         const puppetSelect = SafeDOM.el('select', { 'data-role': 'puppet-mode' }, ['idle', 'audio', 'webcam'].map(m =>
-            SafeDOM.el('option', { value: m, ...(this._puppetMode === m ? { selected: 'selected' } : {}) }, m)
+            SafeDOM.el('option', { value: m, ...(this._puppetMode === m ? { selected: 'selected' } : {}) }, puppetLabels[m] || m)
         ));
         puppetSelect.addEventListener('change', async (e) => {
             this._puppetMode = e.target.value;
@@ -446,7 +460,7 @@ export class T13CharacterSheet extends BaseElement {
         }, 'Evaluate Hitch');
 
         const runnerChildren = [
-            SafeDOM.el('div', { style: 'font-weight:700; font-size:0.85rem; color:#1e293b;' }, 'T13 Test & Hitch Runner'),
+            SafeDOM.el('div', { style: 'font-weight:700; font-size:0.85rem; color:#1e293b;' }, 'Tests & Hitches'),
             SafeDOM.el('div', { class: 'runner-controls' }, [
                 SafeDOM.el('label', {}, ['Facet', runnerFacetSel]),
                 SafeDOM.el('label', {}, ['Method', runnerMethodSel]),
@@ -478,7 +492,7 @@ export class T13CharacterSheet extends BaseElement {
 
         sections.push(
             SafeDOM.el('div', { class: 'section' }, [
-                SafeDOM.el('h2', { class: 'section-title' }, 'Facet Boons & Inline Runner'),
+                SafeDOM.el('h2', { class: 'section-title' }, 'Facet Boons'),
                 SafeDOM.el('div', { class: 'boon-grid' }, boonEntries.map(([label, val]) =>
                     SafeDOM.el('button', {
                         type: 'button',
@@ -499,8 +513,9 @@ export class T13CharacterSheet extends BaseElement {
                 SafeDOM.el('h2', { class: 'section-title' }, 'Sway Purse'),
                 SafeDOM.el('div', { class: 'sway-grid' }, swayKeys.map((currency) => {
                     const amount = Number(swayObj[currency] ?? 0);
+                    const displayCurrency = currency.replace(/^Tao:/, '');
                     return SafeDOM.el('div', { class: 'sway-row', 'data-sway': currency }, [
-                        SafeDOM.el('span', { style: 'font-weight:600; font-size:0.85rem;' }, `${currency}: ${amount}`),
+                        SafeDOM.el('span', { style: 'font-weight:600; font-size:0.85rem;' }, `${displayCurrency}: ${amount}`),
                         SafeDOM.el('div', { style: 'display:flex; gap:4px;' }, [
                             SafeDOM.el('button', {
                                 class: 'mini-btn secondary',
@@ -523,7 +538,7 @@ export class T13CharacterSheet extends BaseElement {
                 SafeDOM.el('div', { class: 'list-container' }, [
                     ...(stressEntries.length
                         ? stressEntries.map(([bucket, vals]) => SafeDOM.el('div', { class: 'stress-row' }, [
-                            SafeDOM.el('span', { style: 'font-size:0.85rem; font-weight:600;' }, `${bucket}: Stress ${vals?.stress ?? 0} • Strains ${vals?.strains ?? 0} • Shocks ${vals?.shocks ?? 0}`),
+                            SafeDOM.el('span', { style: 'font-size:0.85rem; font-weight:600;' }, `${bucket.replace(/^Facet:/, '')}: Stress ${vals?.stress ?? 0} • Strains ${vals?.strains ?? 0} • Shocks ${vals?.shocks ?? 0}`),
                             SafeDOM.el('button', {
                                 class: 'mini-btn',
                                 type: 'button',

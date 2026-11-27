@@ -15,15 +15,15 @@
       <span>Narrative Companion</span>
     </div>
     
+    <div class="mode-switcher" id="modeSwitcher" role="tablist" aria-label="Companion Mode">
+      <button type="button" class="mode-btn active" id="btnModePlay" role="tab" aria-selected="true">Play</button>
+      <button type="button" class="mode-btn" id="btnModeAuthor" role="tab" aria-selected="false">Author</button>
+    </div>
+
     <nav>
-      <ul class="nav-links">
+      <ul class="nav-links" id="playNavLinks">
         <li class="nav-item">
-          <a class="nav-link active" data-panel="plots">
-            <span>Narrative Plot</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-panel="vtt">
+          <a class="nav-link active" data-panel="vtt">
             <span>3D Tabletop (VTT)</span>
           </a>
         </li>
@@ -43,10 +43,33 @@
           </a>
         </li>
       </ul>
+
+      <ul class="nav-links" id="authorNavLinks" style="display: none;">
+        <li class="nav-item">
+          <a class="nav-link active" data-panel="author" data-wb-view="narrative">
+            <span>Plot Daemons</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-panel="author" data-wb-view="knots">
+            <span>Knots &amp; Annexes</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-panel="author" data-wb-view="chars">
+            <span>Characters &amp; Species</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-panel="rulebook">
+            <span>Rules Handbook</span>
+          </a>
+        </li>
+      </ul>
     </nav>
     
-    <!-- P2P Connection -->
-    <div class="conn-panel">
+    <!-- Session Connection -->
+    <div class="conn-panel" id="sessionConnPanel">
       <div class="conn-title">Session Connection</div>
       <div class="room-inputs">
         <input type="text" id="roomIdInput" placeholder="Room Name (e.g. Sector7)">
@@ -61,29 +84,9 @@
 
   <!-- Main Viewports -->
   <main class="viewport">
-    
-    <!-- Narrative Plot View -->
-    <div class="panel-view active" id="view-plots">
-      <div class="char-sheet-wrapper">
-        <div class="char-card">
-          <h2 style="font-family: var(--font-header); font-size: 1.8rem; color: var(--text-accent); margin-bottom: 20px; text-transform: uppercase;">
-            Narrative Loom
-          </h2>
-          <div id="plotContainer">
-            <p style="color: var(--text-muted); margin-bottom: 20px;">
-              The Plot is the engine of the T13 system. Connect to a session or generate a local thread to begin.
-            </p>
-            <button class="btn" id="btnGeneratePlot">Cascade New Plot Thread</button>
-            <div id="activePlotOutput" style="margin-top: 32px;">
-              <!-- T13PlotWidget renders here -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- 3D VTT View -->
-    <div class="panel-view" id="view-vtt">
+    <!-- 3D VTT View (Default Play Mode View) -->
+    <div class="panel-view active" id="view-vtt">
       <div id="vtt-container">
         <div class="vtt-controls">
           <button class="btn btn-secondary" id="btnRollDice">Roll Dice (3d6)</button>
@@ -100,7 +103,7 @@
         <div class="char-card">
           <div id="characterViewHeader" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
               <h2 style="font-family: var(--font-header); font-size: 1.8rem; color: var(--text-accent); text-transform: uppercase; margin: 0;">
-                Character Catalyst
+                Character Sheet
               </h2>
               <button class="btn btn-secondary" id="btnShowCreator">Create New</button>
           </div>
@@ -157,9 +160,49 @@
     
     <div class="panel-view" id="view-referee">
       <div class="panel-header">
-        <h2>Referee Console & Director</h2>
+        <h2>Referee Console</h2>
       </div>
       <t13-referee-console id="refereeConsole"></t13-referee-console>
+    </div>
+
+    <!-- Author Mode View -->
+    <div class="panel-view" id="view-author">
+      <div class="char-sheet-wrapper">
+        <div class="char-card">
+          <h2 style="font-family: var(--font-header); font-size: 1.8rem; color: var(--text-accent); text-transform: uppercase; margin-bottom: 20px;">
+            Author Mode
+          </h2>
+          <div id="workbench-container">
+            <div class="workbench-nav" style="display: flex; gap: 10px; margin-bottom: 20px;">
+              <button type="button" class="btn btn-secondary wb-nav-btn active" data-wb-view="narrative">Plot Daemons</button>
+              <button type="button" class="btn btn-secondary wb-nav-btn" data-wb-view="knots">Knots &amp; Annexes</button>
+              <button type="button" class="btn btn-secondary wb-nav-btn" data-wb-view="chars">Characters &amp; Species</button>
+            </div>
+            <div id="workbench-content">
+              <div id="wb-pane-narrative" class="wb-pane">
+                <div id="plotContainer">
+                  <p style="color: var(--text-muted); margin-bottom: 16px;">
+                    Author Plot Daemons (Scene through Cycle rank) and Quest Spread structures for settings and scenarios.
+                  </p>
+                  <button class="btn" id="btnGeneratePlot">Create Plot Daemon</button>
+                  <div id="activePlotOutput" style="margin-top: 24px;"></div>
+                </div>
+              </div>
+              <div id="wb-pane-knots" class="wb-pane" style="display: none;">
+                <p style="color: var(--text-muted); margin-bottom: 12px;">
+                  Compose Proficiencies into Knotted Annexes and Hitches.
+                </p>
+                <div id="knots-grid"></div>
+              </div>
+              <div id="wb-pane-chars" class="wb-pane" style="display: none;">
+                <p style="color: var(--text-muted);">
+                  Author reusable Character templates and T13 Species Descendant packages for campaigns.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Rulebook View -->
@@ -188,40 +231,3 @@
   <script type="module" src="/main.js"></script>
 </body>
 </html>
-<!-- AUTHOR MODE ADDED MANUALLY DUE TO GIT DIFF FAILURE -->
-<script>
-console.log("Checking Author Mode integration...");
-if (!document.querySelector('[data-panel="author"]')) {
-    const navUl = document.querySelector('.nav-links');
-    const authorLi = document.createElement('li');
-    authorLi.className = 'nav-item';
-    authorLi.innerHTML = '<a class="nav-link" data-panel="author"><span>Author Mode</span></a>';
-    navUl.appendChild(authorLi);
-
-    const viewport = document.querySelector('.viewport');
-    const authorPanel = document.createElement('div');
-    authorPanel.className = 'panel-view';
-    authorPanel.id = 'view-author';
-    authorPanel.innerHTML = `
-      <div class="char-sheet-wrapper">
-        <div class="char-card">
-          <h2 style="font-family: var(--font-header); font-size: 1.8rem; color: var(--text-accent); text-transform: uppercase; margin-bottom: 24px;">
-            Author Workbench
-          </h2>
-          <div id="workbench-container">
-            <div class="workbench-nav" style="display: flex; gap: 10px; margin-bottom: 20px;">
-                <button class="btn btn-secondary wb-nav-btn active" data-wb-view="narrative">Narrative</button>
-                <button class="btn btn-secondary wb-nav-btn" data-wb-view="knots">Knots & Annexes</button>
-                <button class="btn btn-secondary wb-nav-btn" data-wb-view="chars">Characters</button>
-            </div>
-            <div id="workbench-content">
-                <div id="knots-grid"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-    viewport.appendChild(authorPanel);
-    console.log("Author Mode injected via script.");
-}
-</script>

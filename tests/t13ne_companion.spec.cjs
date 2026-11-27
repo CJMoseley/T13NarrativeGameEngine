@@ -27,6 +27,8 @@ test.describe('TTRPG Companion App', () => {
       await dialog.dismiss();
     });
 
+    await page.locator('#btnModeAuthor').click();
+    await expect(page.locator('#view-author')).toHaveClass(/active/);
     await page.locator('#btnGeneratePlot').click();
     await page.waitForTimeout(300);
     expect(alertMessage).toContain('Writing a Plot requires Referee credentials');
@@ -40,6 +42,7 @@ test.describe('TTRPG Companion App', () => {
     await page.locator('#btnDeElevateAuth').click();
     await expect(authStatusText).toContainText('Restricted');
 
+    await page.locator('#btnModePlay').click();
     await page.locator('a[data-panel="vtt"]').click();
     await expect(page.locator('#vtt-canvas t13-vtt-canvas')).toBeAttached();
     await expect(page.locator('#cardOrdealHud')).toBeAttached();

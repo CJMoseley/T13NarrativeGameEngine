@@ -1,3 +1,4 @@
+import * as THREE from 'three';
 import T13NE from '/src/t13ne/T13NE.js';
 import Logger from '/src/t13ne/core/Logger.js';
 import P2PNetworkManager from '/src/t13ne/core/P2PNetworkManager.js';
@@ -63,19 +64,79 @@ const bridge = new SessionCompanionBridge({
   mode: CLIENT_MODE
 });
 
-// Navigation Control
+// Mode & Navigation Control (Play Mode vs Author Mode)
 const navLinks = document.querySelectorAll('.nav-link');
 const panelViews = document.querySelectorAll('.panel-view');
+const btnModePlay = document.getElementById('btnModePlay');
+const btnModeAuthor = document.getElementById('btnModeAuthor');
+const playNavLinks = document.getElementById('playNavLinks');
+const authorNavLinks = document.getElementById('authorNavLinks');
+const sessionConnPanel = document.getElementById('sessionConnPanel');
+const vtuberWidget = document.getElementById('vtuberWidget');
+
+function activatePanel(panelId) {
+    panelViews.forEach(p => p.classList.remove('active'));
+    const panel = document.getElementById(`view-${panelId}`);
+    if (panel) panel.classList.add('active');
+}
+
+function activateWorkbenchPane(viewKey) {
+    const panes = {
+        narrative: document.getElementById('wb-pane-narrative'),
+        knots: document.getElementById('wb-pane-knots'),
+        chars: document.getElementById('wb-pane-chars')
+    };
+    for (const [k, el] of Object.entries(panes)) {
+        if (el) el.style.display = k === viewKey ? 'block' : 'none';
+    }
+    document.querySelectorAll('.wb-nav-btn').forEach(b => {
+        b.classList.toggle('active', b.getAttribute('data-wb-view') === viewKey);
+    });
+}
+
+function setAppMode(mode) {
+    const isAuthor = mode === 'author';
+    btnModePlay?.classList.toggle('active', !isAuthor);
+    btnModeAuthor?.classList.toggle('active', isAuthor);
+    btnModePlay?.setAttribute('aria-selected', String(!isAuthor));
+    btnModeAuthor?.setAttribute('aria-selected', String(isAuthor));
+    if (playNavLinks) playNavLinks.style.display = isAuthor ? 'none' : '';
+    if (authorNavLinks) authorNavLinks.style.display = isAuthor ? '' : 'none';
+    if (sessionConnPanel) sessionConnPanel.style.display = isAuthor ? 'none' : '';
+    if (vtuberWidget) vtuberWidget.style.display = isAuthor ? 'none' : '';
+
+    const activeNavList = isAuthor ? authorNavLinks : playNavLinks;
+    const defaultLink = activeNavList?.querySelector('.nav-link');
+    navLinks.forEach(l => l.classList.remove('active'));
+    if (defaultLink) {
+        defaultLink.classList.add('active');
+        activatePanel(defaultLink.getAttribute('data-panel'));
+        const wbView = defaultLink.getAttribute('data-wb-view');
+        if (wbView) activateWorkbenchPane(wbView);
+    } else {
+        activatePanel(isAuthor ? 'author' : 'vtt');
+    }
+}
+
+btnModePlay?.addEventListener('click', () => setAppMode('play'));
+btnModeAuthor?.addEventListener('click', () => setAppMode('author'));
 
 navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
         navLinks.forEach(l => l.classList.remove('active'));
-        panelViews.forEach(p => p.classList.remove('active'));
         link.classList.add('active');
         const targetPanel = link.getAttribute('data-panel');
-        const panel = document.getElementById(`view-${targetPanel}`);
-        if (panel) panel.classList.add('active');
+        activatePanel(targetPanel);
+        const wbView = link.getAttribute('data-wb-view');
+        if (wbView) activateWorkbenchPane(wbView);
+    });
+});
+
+document.querySelectorAll('.wb-nav-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const wbView = btn.getAttribute('data-wb-view');
+        if (wbView) activateWorkbenchPane(wbView);
     });
 });
 
@@ -111,6 +172,7 @@ async function initApp() {
             });
             await liveAvatarController.init();
             liveAvatarController.attachVOIP(voipManager);
+            mountLiveAvatarPreview(previewMesh, liveAvatarController);
         } catch (avatarErr) {
             console.warn('LiveAvatarController init deferred:', avatarErr);
         }
@@ -243,7 +305,7 @@ function adaptPlotForWidget(plot) {
         name: q.name || `Line ${q.line ?? idx + 1} Quest`,
         description: q.description || q.quest || 'Active changing line quest',
         reward: q.reward || '1 Chi',
-        steps: Array.isArray(q.steps) ? q.steps : [{ text: q.quest || 'Resolve thread', complete: Boolean(q.completed) }]
+        steps: Array.isArray(q.steps) ? q.steps : [{ text: q.quest || 'Complete quest step', complete: Boolean(q.completed) }]
     }));
     return {
         ...plot,
@@ -305,7 +367,7 @@ function setupPlotSystem() {
         };
 
         bridge.client.sendCommand('Spread:InterpretQuest', {
-            title: `Thread #${(Object.keys(bridge.client.projection?.plots || {}).length) + 1}`,
+            title: `Plot #${(Object.keys(bridge.client.projection?.plots || {}).length) + 1}`,
             spread,
             hexagrams: buildMinimalHexagramTable()
         });
@@ -579,6 +641,44 @@ function setupVttControls() {
                 bridge.client.sendCommand('VTT:ClearTable', {});
             }
         });
+    }
+}
+
+function mountLiveAvatarPreview(mesh, controller) {
+    const canvas = document.getElementById('vtuberCanvas');
+    if (!canvas || !mesh) return;
+    try {
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x0b0f19);
+        scene.add(new THREE.HemisphereLight(0xffffff, 0x334155, 1.8));
+        const keyLight = new THREE.DirectionalLight(0xffffff, 1.8);
+        keyLight.position.set(1.5, 2.5, 3);
+        scene.add(keyLight);
+        scene.add(mesh);
+
+        const box = new THREE.Box3().setFromObject(mesh);
+        const size = box.getSize(new THREE.Vector3());
+        const upperY = box.min.y + size.y * 0.72;
+        const w = canvas.clientWidth || 240;
+        const h = canvas.clientHeight || 220;
+        const camera = new THREE.PerspectiveCamera(32, w / h, 0.05, 30);
+        camera.position.set(0, upperY, Math.max(size.y * 0.72, 0.75));
+        camera.lookAt(0, upperY - size.y * 0.04, 0);
+
+        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+        renderer.setSize(w, h, false);
+
+        let lastTime = performance.now();
+        const tick = (now) => {
+            const dt = Math.min(0.1, (now - lastTime) / 1000);
+            lastTime = now;
+            controller?.blender?.update?.(dt);
+            renderer.render(scene, camera);
+            requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+    } catch (err) {
+        console.warn('Live Avatar WebGL preview unavailable:', err?.message);
     }
 }
 

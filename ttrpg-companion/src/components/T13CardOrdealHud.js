@@ -22,8 +22,12 @@ export function formatSessionLogEntry(evt) {
             return `${p.ownerId || 'Actor'} discarded ${p.discarded?.length ?? 1} card(s)`;
         case 'Ordeal:Started':
             return `Ordeal Started: ${p.ordeal?.stakes || 'Low'} Stakes (${p.ordeal?.terrain || 'Closed'})`;
-        case 'Ordeal:StageDrawn':
-            return `Stage ${(p.stageIndex ?? 0) + 1} Drawn: Difficulty ${p.stage?.difficulty ?? '?'} (${p.stage?.difficultyRatio ?? ''})`;
+        case 'Ordeal:StageDrawn': {
+            const ratio = Number.isFinite(p.stage?.difficultyRatio)
+                ? p.stage.difficultyRatio.toFixed(2)
+                : '';
+            return `Stage ${(p.stageIndex ?? 0) + 1} Drawn: Difficulty ${p.stage?.difficulty ?? '?'}${ratio ? ` (${ratio})` : ''}`;
+        }
         case 'Ordeal:CardsPlayed':
             return `${p.actorId} ${p.actionType} action: ${p.actionPips} action pips (RT:${p.rt}, GRT:${p.grt})${p.tricks?.length ? ` Tricks: ${p.tricks.map(t => t.name || t).join(', ')}` : ''}`;
         case 'Ordeal:DefenseResolved':
@@ -35,14 +39,33 @@ export function formatSessionLogEntry(evt) {
         case 'Wound:Applied':
             return `Wound Applied to ${p.characterId}: ${p.wound?.name} (Lvl ${p.wound?.level})`;
         case 'Sway:Adjusted':
-            return `Sway ${p.currency} for ${p.characterId}: ${p.delta > 0 ? '+' : ''}${p.delta} (Balance ${p.balance})`;
+            return `Sway ${String(p.currency || '').replace(/^Tao:/, '')} adjusted (${p.delta > 0 ? '+' : ''}${p.delta}, Balance ${p.balance})`;
         case 'Drama:StressRelieved':
-            return `Stress Relieved for ${p.characterId}: -${p.relievedTotal} (${p.dramaType})`;
+            return `Stress Relieved: -${p.relievedTotal} (${p.dramaType})`;
         case 'Plot:CreatedFromQuestSpread':
         case 'Plot:Confirmed':
             return `Plot ${evt.type === 'Plot:Confirmed' ? 'Confirmed' : 'Created'}: ${p.plot?.title || p.plot?.id}`;
+        case 'Deck:Initialized':
+            return `Deck shuffled (${p.cardCount ?? 54} cards ready)`;
+        case 'Card:HandCountChanged':
+            return `Private hand updated (${p.totalHandCount ?? '?'} cards)`;
+        case 'VTT:TokenSpawned':
+            return `Token placed on tabletop: ${p.token?.name || 'Entity'}`;
+        case 'VTT:TokenMoved':
+            return `Token moved: ${p.tokenId || 'Entity'}`;
+        case 'Character:Registered':
+        case 'Character:Updated': {
+            const cName = Array.isArray(p.character?.name) ? p.character.name[0] : (p.character?.name || 'Character');
+            return `Character ${evt.type === 'Character:Updated' ? 'updated' : 'joined'}: ${cName}`;
+        }
+        case 'Species:Registered':
+            return `Species loaded: ${p.species?.name || 'Species'}`;
+        case 'Referee:SecretNoteUpdated':
+            return `Referee recorded a private note (${String(p.key || 'Note').replace(/[_:]+/g, ' ')})`;
+        case 'Session:ActorJoined':
+            return `${p.name || p.actorId || 'Participant'} connected (${p.role || 'player'})`;
         default:
-            return `${evt.type}`;
+            return String(evt.type).replace(/[:_]+/g, ' ');
     }
 }
 
@@ -193,7 +216,8 @@ export class T13CardOrdealHud extends BaseElement {
             .hud-panel { background: rgba(15, 23, 42, 0.88); border: 1px solid #334155; border-radius: 10px; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
             .hud-title { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #93c5fd; display: flex; justify-content: space-between; align-items: center; }
             .card-strip { display: flex; flex-wrap: wrap; gap: 8px; }
-            .reserve-chip, .pool-chip { background: #1e293b; border: 1px solid #475569; border-radius: 6px; padding: 6px 10px; font-size: 0.8rem; display: flex; align-items: center; gap: 8px; }
+            .reserve-chip, .pool-chip { background: #1e293b; color: #f8fafc; border: 1px solid #475569; border-radius: 6px; padding: 6px 10px; font-size: 0.8rem; display: flex; align-items: center; gap: 8px; cursor: pointer; }
+            .pool-chip:hover { border-color: #60a5fa; background: #273549; }
             .pool-chip.selected { border-color: #38bdf8; background: #0c4a6e; }
             .hud-btn { background: #2563eb; color: #fff; border: none; border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; font-weight: 700; cursor: pointer; }
             .hud-btn.secondary { background: #475569; }
@@ -316,12 +340,12 @@ export class T13CardOrdealHud extends BaseElement {
         const voipPeers = this.voipManager?.remoteStreams instanceof Map
             ? Array.from(this.voipManager.remoteStreams.entries())
             : [];
-        const sessionActors = Object.values(state.actors || {});
+        const sessionActors = Object.values(state.actors || {}).filter(a => a.role !== 'system');
         const voipRows = [
             SafeDOM.el('div', { class: 'voip-peer' }, [
                 SafeDOM.el('span', {}, [
                     SafeDOM.el('span', { class: 'speaking-dot', 'data-speaking': String(Boolean(this.voipManager?.isSpeaking)) }),
-                    ` Local (${actorId}) — `,
+                    ' You — ',
                     SafeDOM.el('strong', { 'data-voip-local': 'true' }, this.voipManager?.isSpeaking ? 'Speaking' : (this.voipManager?.isMuted ? 'Muted' : 'Idle'))
                 ]),
                 SafeDOM.el('div', { style: 'display:flex; gap:4px;' }, [
@@ -367,7 +391,7 @@ export class T13CardOrdealHud extends BaseElement {
                 if (act.id === actorId) continue;
                 voipRows.push(SafeDOM.el('div', { class: 'voip-peer' }, [
                     SafeDOM.el('span', {}, `${act.label || act.id} (${act.role})`),
-                    SafeDOM.el('span', { style: 'color:#94a3b8;' }, 'Peer Ready')
+                    SafeDOM.el('span', { style: 'color:#94a3b8;' }, 'Connected')
                 ]));
             }
         }
@@ -376,20 +400,20 @@ export class T13CardOrdealHud extends BaseElement {
             ...(this._hudError ? [SafeDOM.el('div', { class: 'hud-error' }, this._hudError)] : []),
             SafeDOM.el('div', { class: 'hud-grid' }, [
                 SafeDOM.el('div', { class: 'hud-panel' }, [
-                    SafeDOM.el('div', { class: 'hud-title' }, [`Private Hand (${privateHand.length})`, SafeDOM.el('span', {}, `Reserves: ${prepared.length}`)]),
+                    SafeDOM.el('div', { class: 'hud-title' }, [`Your Hand (${privateHand.length})`, SafeDOM.el('span', {}, `Reserves: ${prepared.length}`)]),
                     handStrip,
                     ...(reserveChildren.length ? [SafeDOM.el('div', { class: 'action-row' }, reserveChildren)] : [])
                 ]),
                 SafeDOM.el('div', { class: 'hud-panel', 'data-panel': 'active-ordeal' }, [
-                    SafeDOM.el('div', { class: 'hud-title' }, ['Active Ordeal Bar', SafeDOM.el('span', {}, ordeal ? ordeal.status : 'Standby')]),
+                    SafeDOM.el('div', { class: 'hud-title' }, ['Active Ordeal', SafeDOM.el('span', {}, ordeal ? ordeal.status : 'Standby')]),
                     ...ordealChildren
                 ]),
                 SafeDOM.el('div', { class: 'hud-panel', 'data-panel': 'voip-strip' }, [
-                    SafeDOM.el('div', { class: 'hud-title' }, ['VOIP & Voice FX Strip', SafeDOM.el('span', {}, `${sessionActors.length} Actor(s)`)]),
+                    SafeDOM.el('div', { class: 'hud-title' }, ['Voice & Effects', SafeDOM.el('span', {}, `${sessionActors.length} Connected`)]),
                     ...voipRows
                 ]),
                 SafeDOM.el('div', { class: 'hud-panel', 'data-panel': 'session-log' }, [
-                    SafeDOM.el('div', { class: 'hud-title' }, ['Roll & Narrative Log', SafeDOM.el('span', {}, `Rev ${state.revision ?? 0}`)]),
+                    SafeDOM.el('div', { class: 'hud-title' }, ['Session Log', SafeDOM.el('span', {}, `${this.eventLog.length} Events`)]),
                     SafeDOM.el('div', { class: 'log-list' },
                         this.eventLog.length
                             ? this.eventLog.map(item => SafeDOM.el('div', { class: 'log-item' }, item.text))

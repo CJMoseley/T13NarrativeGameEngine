@@ -18,6 +18,7 @@ export class T13VttCanvas extends HTMLElement {
         this.viewerRole = 'player';
         this.tokens = new Map();
         this._tokenSpecs = new Map();
+        this._pendingTokens = new Set();
         this.dice = [];
         this._frameId = null;
         this._resizeObserver = null;
@@ -323,22 +324,44 @@ export class T13VttCanvas extends HTMLElement {
         if (this.tokens.has(id)) {
             return this.tokens.get(id);
         }
+        if (this._pendingTokens.has(id)) {
+            return null;
+        }
+        this._pendingTokens.add(id);
         const tokenSpec = {
             id,
             name: name ?? id,
             color,
             ...spec
         };
-        const group = await buildVttToken(tokenSpec, {
-            character: spec.character ?? null,
-            species: spec.species ?? null,
-            skinDocument: spec.skinDocument ?? null
-        });
-        this.scene.add(group);
-        this.tokens.set(id, group);
-        this._tokenSpecs.set(id, tokenSpec);
-        this.boardController?.registerTokenObject(id, group);
-        return group;
+        try {
+            let group;
+            try {
+                group = await buildVttToken(tokenSpec, {
+                    character: spec.character ?? null,
+                    species: spec.species ?? null,
+                    skinDocument: spec.skinDocument ?? null
+                });
+            } catch (err) {
+                console.warn(`VTT token build fallback for '${id}':`, err?.message || err);
+                group = new THREE.Group();
+                const geo = new THREE.CylinderGeometry(0.32, 0.38, 1.1, 10);
+                const mat = new THREE.MeshLambertMaterial({ color: Number.isInteger(color) ? color : 0x3b82f6 });
+                const mesh = new THREE.Mesh(geo, mat);
+                mesh.position.y = 0.55;
+                group.add(mesh);
+                group.position.set(tokenSpec.position?.x || 0, tokenSpec.position?.y || 0, tokenSpec.position?.z || 0);
+            }
+            if (!this.tokens.has(id)) {
+                this.scene.add(group);
+                this.tokens.set(id, group);
+                this._tokenSpecs.set(id, tokenSpec);
+                this.boardController?.registerTokenObject(id, group);
+            }
+            return this.tokens.get(id);
+        } finally {
+            this._pendingTokens.delete(id);
+        }
     }
 
     setActorSpeaking(actorId, active, level = 1) {

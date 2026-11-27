@@ -96,7 +96,9 @@ export function createSpeciesDescendant(spec = {}) {
         masterAnnex,
         naturalAnnexes: Array.isArray(spec.naturalAnnexes) ? spec.naturalAnnexes.map(a => ({ ...a })) : [],
         naturalHitches: Array.isArray(spec.naturalHitches) ? spec.naturalHitches.map(h => ({ ...h })) : [],
-        avatarSkins: Array.isArray(spec.avatarSkins) ? spec.avatarSkins.map(s => ({ ...s })) : [],
+        ...(Array.isArray(spec.avatarSkins) && spec.avatarSkins.length > 0
+            ? { avatarSkins: spec.avatarSkins.map(s => ({ ...s })) }
+            : {}),
         tags: {
             ...(spec.tags && typeof spec.tags === 'object' ? spec.tags : {}),
             facets: Array.isArray(spec.tags?.facets) && spec.tags.facets.length > 0

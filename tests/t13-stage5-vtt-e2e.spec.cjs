@@ -65,7 +65,7 @@ test.describe('Milestone M2 Two-Client VTT & Companion E2E', () => {
       // Verify Referee sees secret + hidden token, while Player NEVER sees either
       await expect.poll(async () => {
         return refPage.evaluate(() => Boolean(
-          window.__T13_COMPANION__.getClient().projection?.refereeSecrets?.notes?.plot_hook &&
+          window.__T13_COMPANION__.getClient().projection?.refereeSecrets?.notes?.['Plot Hook'] &&
           window.__T13_COMPANION__.getClient().projection?.table?.tokens?.['hidden-ambush-token']
         ));
       }).toBe(true);
@@ -177,7 +177,7 @@ test.describe('Milestone M2 Two-Client VTT & Companion E2E', () => {
         await new Promise(r => setTimeout(r, 250));
         return b.client.projection?.refereeSecrets?.notes;
       });
-      expect(restored?.plot_hook).toBeTruthy();
+      expect(restored?.['Plot Hook']).toBeTruthy();
       expect(restored?.temp_ephemeral).toBeUndefined();
     } finally {
       await refCtx.close().catch(() => {});

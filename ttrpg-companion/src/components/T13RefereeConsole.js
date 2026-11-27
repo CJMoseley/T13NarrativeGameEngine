@@ -19,6 +19,53 @@ export function buildMinimalHexagramTable() {
     }));
 }
 
+const TOKEN_TYPE_LABELS = {
+    character: 'Character',
+    extra: 'Extra',
+    creature: 'Creature',
+    prop: 'Prop',
+    terrain: 'Terrain'
+};
+
+const VOICE_PRESET_LABELS = {
+    neutral: 'Natural',
+    'giant-kaiju': 'Colossal / Kaiju',
+    'fae-small': 'Fae / Diminutive',
+    'chitin-click': 'Chitinous Click',
+    'subharmonic-growl': 'Subharmonic Growl',
+    'deep-resonator': 'Deep Resonator',
+    'hive-chorus': 'Hive Chorus',
+    'ethereal-shimmer': 'Ethereal Shimmer',
+    'metallic-ring': 'Metallic Ring',
+    'synth-vocoder': 'Synthetic Vocoder'
+};
+
+const COMMAND_STATUS_LABELS = {
+    'Spread:InterpretQuest': 'Plot queued from Quest Spread.',
+    'Plot:Confirm': 'Plot confirmed as Active.',
+    'Referee:SetSecretNote': 'Private Referee note saved.',
+    'VTT:SpawnToken': 'Token placed on tabletop.',
+    'Deck:Initialize': 'Deck initialized and shuffled.',
+    'Card:Draw': 'Private card dealt.',
+    'Ordeal:Start': 'Ordeal started.',
+    'Ordeal:DrawStage': 'Stage drawn.',
+    'Ordeal:AdvancePhase': 'Advanced to next Ordeal Phase.',
+    'Ordeal:AdvanceRound': 'Advanced to next Ordeal Round.',
+    'Ordeal:Resolve': 'Ordeal resolved.',
+    'Wound:Apply': 'Wound applied.',
+    'IChing:GrantReward': 'I-Ching reward granted.',
+    'Hitch:Evaluate': 'Hitch evaluated.',
+    'VTT:SetFog': 'Fog of War updated.'
+};
+
+function humanizeLabel(raw) {
+    return String(raw || '')
+        .replace(/[_:]+/g, ' ')
+        .replace(/([a-z])([A-Z])/g, '$1 $2')
+        .replace(/\b\w/g, (ch) => ch.toUpperCase())
+        .trim();
+}
+
 const BaseElement = typeof HTMLElement !== 'undefined' ? HTMLElement : class {};
 
 export class T13RefereeConsole extends BaseElement {
@@ -39,7 +86,7 @@ export class T13RefereeConsole extends BaseElement {
 
         this._form = {
             plotTitle: 'Crimson Nexus Awakening',
-            secretKey: 'plot_hook',
+            secretKey: 'Plot Hook',
             secretNote: 'Cultists hold the Obsidian Key.',
             tokenLabel: 'Clockwork Sentinel',
             tokenKind: 'character',
@@ -105,9 +152,10 @@ export class T13RefereeConsole extends BaseElement {
 
     setSessionState(projection) {
         this.sessionState = projection || null;
-        const actors = Object.values(projection?.actors || {}).filter(a => a.role === 'player' || a.id);
-        if (!this._form.targetActorId && actors.length) {
-            this._form.targetActorId = actors[0].id;
+        const actors = Object.values(projection?.actors || {}).filter(a => a.role !== 'system');
+        const preferred = actors.find(a => a.role === 'player') || actors[0];
+        if ((!this._form.targetActorId || this._form.targetActorId === 'system') && preferred) {
+            this._form.targetActorId = preferred.id;
         }
         const chars = Object.values(projection?.characters || {});
         if (!this._form.targetCharId && chars.length) {
@@ -125,7 +173,7 @@ export class T13RefereeConsole extends BaseElement {
         try {
             this._error = '';
             const res = await this.sessionClient.sendCommand(type, payload);
-            this._status = `Dispatched ${type}`;
+            this._status = COMMAND_STATUS_LABELS[type] || `${humanizeLabel(type)} completed.`;
             this.render();
             return res;
         } catch (err) {
@@ -194,7 +242,7 @@ export class T13RefereeConsole extends BaseElement {
 
         // 1. Plots & Quest Spreads
         const plotCard = SafeDOM.el('div', { class: 'ref-card' }, [
-            SafeDOM.el('div', { class: 'ref-title' }, 'Quest Spreads & Plot Queue'),
+            SafeDOM.el('div', { class: 'ref-title' }, 'Plots & Quest Spreads'),
             SafeDOM.el('div', { class: 'row' }, [
                 fieldInput('Plot Title', f.plotTitle, (v) => { f.plotTitle = v; }),
                 SafeDOM.el('button', {
@@ -220,7 +268,7 @@ export class T13RefereeConsole extends BaseElement {
             SafeDOM.el('div', { class: 'list-box', 'data-ref-plots': 'true' },
                 plots.length
                     ? plots.map(p => SafeDOM.el('div', { class: 'list-item' }, [
-                        SafeDOM.el('span', {}, `${p.title} [${p.status}]`),
+                        SafeDOM.el('span', {}, `${p.title} (${humanizeLabel(p.status)})`),
                         ...(p.status !== 'Active' ? [SafeDOM.el('button', {
                             type: 'button',
                             class: 'primary',
@@ -233,10 +281,10 @@ export class T13RefereeConsole extends BaseElement {
 
         // 2. Private Referee Notes (never disclosed in player projections)
         const secretsCard = SafeDOM.el('div', { class: 'ref-card' }, [
-            SafeDOM.el('div', { class: 'ref-title' }, 'Private Referee Notes (Hidden from Players)'),
+            SafeDOM.el('div', { class: 'ref-title' }, 'Private Notes'),
             SafeDOM.el('div', { class: 'row' }, [
-                fieldInput('Secret Key', f.secretKey, (v) => { f.secretKey = v; }),
-                fieldInput('Secret Note', f.secretNote, (v) => { f.secretNote = v; }),
+                fieldInput('Note Title', f.secretKey, (v) => { f.secretKey = v; }),
+                fieldInput('Note', f.secretNote, (v) => { f.secretNote = v; }),
                 SafeDOM.el('button', {
                     type: 'button',
                     'data-ref-action': 'save-secret',
@@ -246,7 +294,7 @@ export class T13RefereeConsole extends BaseElement {
             SafeDOM.el('div', { class: 'list-box', 'data-ref-secrets': 'true' },
                 Object.keys(secrets).length
                     ? Object.entries(secrets).map(([k, v]) => SafeDOM.el('div', { class: 'list-item' }, [
-                        SafeDOM.el('strong', {}, k),
+                        SafeDOM.el('strong', {}, humanizeLabel(k)),
                         SafeDOM.el('span', {}, typeof v === 'string' ? v : JSON.stringify(v))
                     ]))
                     : [SafeDOM.el('span', { style: 'color:#94a3b8;' }, 'No Referee secrets recorded.')]
@@ -258,10 +306,10 @@ export class T13RefereeConsole extends BaseElement {
         hiddenToggle.addEventListener('change', (e) => { f.tokenHidden = Boolean(e.target.checked); });
 
         const spawnerCard = SafeDOM.el('div', { class: 'ref-card' }, [
-            SafeDOM.el('div', { class: 'ref-title' }, 'NPC / Encounter Spawner & Voice FX'),
+            SafeDOM.el('div', { class: 'ref-title' }, 'NPC & Encounter Spawner'),
             SafeDOM.el('div', { class: 'row' }, [
                 fieldInput('Name', f.tokenLabel, (v) => { f.tokenLabel = v; }),
-                fieldSelect('Type', f.tokenKind, VTT_TOKEN_TYPES, (v) => { f.tokenKind = v; }),
+                fieldSelect('Type', f.tokenKind, VTT_TOKEN_TYPES.map(t => ({ value: t, label: TOKEN_TYPE_LABELS[t] || humanizeLabel(t) })), (v) => { f.tokenKind = v; }),
                 fieldSelect('Species', f.tokenSpecies, ['Human', 'Insectoid', 'Mech', 'Giant', 'Fae'], (v) => { f.tokenSpecies = v; }),
                 SafeDOM.el('label', { style: 'flex-direction:row; align-items:center; gap:6px;' }, [hiddenToggle, 'Hidden from Players'])
             ]),
@@ -283,7 +331,7 @@ export class T13RefereeConsole extends BaseElement {
                         }
                     })
                 }, 'Spawn Token on VTT'),
-                fieldSelect('NPC Voice FX', f.voicePreset, Object.keys(SPECIES_VOICE_PRESETS), (v) => {
+                fieldSelect('NPC Voice FX', f.voicePreset, Object.keys(SPECIES_VOICE_PRESETS).map(k => ({ value: k, label: VOICE_PRESET_LABELS[k] || humanizeLabel(k) })), (v) => {
                     f.voicePreset = v;
                     this.audioHooks?.voipManager?.setLocalVoiceProfile(v);
                 })
@@ -291,14 +339,15 @@ export class T13RefereeConsole extends BaseElement {
         ]);
 
         // 4. Deck & Ordeal Director
-        const actorOpts = actors.length
-            ? actors.map(a => ({ value: a.id, label: `${a.name || a.id} (${a.role})` }))
-            : [{ value: 'player-1', label: 'player-1' }];
+        const visibleActors = actors.filter(a => a.role !== 'system');
+        const actorOpts = visibleActors.length
+            ? visibleActors.map(a => ({ value: a.id, label: `${a.name || a.id} (${humanizeLabel(a.role)})` }))
+            : [{ value: 'player-1', label: 'Player 1' }];
         const ordealCard = SafeDOM.el('div', { class: 'ref-card' }, [
-            SafeDOM.el('div', { class: 'ref-title' }, 'Deck & Ordeal Director'),
+            SafeDOM.el('div', { class: 'ref-title' }, 'Deck & Ordeals'),
             SafeDOM.el('div', { class: 'row' }, [
                 fieldSelect('Stakes', f.stakes, Object.keys(STAKES_RULES), (v) => { f.stakes = v; }),
-                fieldSelect('Target Actor', f.targetActorId || actorOpts[0].value, actorOpts, (v) => { f.targetActorId = v; })
+                fieldSelect('Recipient', f.targetActorId || actorOpts[0].value, actorOpts, (v) => { f.targetActorId = v; })
             ]),
             SafeDOM.el('div', { class: 'row' }, [
                 SafeDOM.el('button', { type: 'button', 'data-ref-action': 'init-deck', onclick: () => this._sendCommand('Deck:Initialize', { deckCount: 1 }) }, 'Init Deck'),
@@ -335,7 +384,13 @@ export class T13RefereeConsole extends BaseElement {
             SafeDOM.el('div', { class: 'row' }, [
                 fieldSelect('Character', f.targetCharId || charOpts[0].value, charOpts, (v) => { f.targetCharId = v; }),
                 fieldInput('Wound Pips', f.woundTotalPips, (v) => { f.woundTotalPips = Number(v) || 10; }, 'number'),
-                fieldSelect('I-Ching Reward', f.ichingReward, ['Chi', 'Karma', 'Renown', 'Tao:Yin', 'Tao:Yang'], (v) => { f.ichingReward = v; })
+                fieldSelect('I-Ching Reward', f.ichingReward, [
+                    { value: 'Chi', label: 'Chi' },
+                    { value: 'Karma', label: 'Karma' },
+                    { value: 'Renown', label: 'Renown' },
+                    { value: 'Tao:Yin', label: 'Yin' },
+                    { value: 'Tao:Yang', label: 'Yang' }
+                ], (v) => { f.ichingReward = v; })
             ]),
             SafeDOM.el('div', { class: 'row' }, [
                 SafeDOM.el('button', {
@@ -382,7 +437,7 @@ export class T13RefereeConsole extends BaseElement {
 
         // 6. Session Snapshot Save / Restore
         const snapCard = SafeDOM.el('div', { class: 'ref-card' }, [
-            SafeDOM.el('div', { class: 'ref-title' }, 'Session Persistence (Snapshot & Restore)'),
+            SafeDOM.el('div', { class: 'ref-title' }, 'Session Snapshots'),
             SafeDOM.el('div', { class: 'row' }, [
                 SafeDOM.el('button', {
                     type: 'button',
