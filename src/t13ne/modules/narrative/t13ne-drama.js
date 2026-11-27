@@ -128,7 +128,7 @@ class T13NE_Drama {
     addDramaDie(type = 'Standard', source = 'Unknown') {
         const die = { type, source, value: null };
         this.dramaPool.push(die);
-        Logger.message(`T13NE_Drama: Added  die from . Pool size: ${this.dramaPool.length}`);
+        Logger.message(`T13NE_Drama: Added ${type} die from ${source}. Pool size: ${this.dramaPool.length}`);
 
         if (this.dramaPool.length >= this.latentLimit) {
             return this.triggerLatentDrama();
@@ -321,7 +321,7 @@ class T13NE_Drama {
             }
             return entry;
         }
-        return `Generic `;
+        return `Generic ${type}`;
     }
 
     /**
@@ -451,7 +451,7 @@ class DramaticChallenge {
         if (bidAmount > this.currentHighBid) {
             this.currentHighBid = bidAmount;
             p.bid = bidAmount;
-            this.log.push(` bids  Stress.`);
+            this.log.push(`${participantName} bids ${bidAmount} Stress.`);
             return true;
         }
         return false;

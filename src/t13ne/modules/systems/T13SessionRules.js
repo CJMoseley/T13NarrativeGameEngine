@@ -21,6 +21,17 @@ import {
 import { interpretQuestSpread } from '../mechanics/QuestSpread.js';
 import { classifyHitchTier } from '../mechanics/HitchRules.js';
 import { describeFacetAspect } from '../mechanics/FacetRuleRegistry.js';
+import {
+    detectOrdealTricks,
+    extractCardComplications,
+    resolveCompetitiveCardDrawTest
+} from '../mechanics/T13CardPlayRules.js';
+import {
+    applyWyrdTarotPlay,
+    pushCharacterDramaDie,
+    registerStage26Commands,
+    triggerFaceDownWyrdTarotOnAction
+} from './T13SessionDramaCards.js';
 import { suitTheme, sumPips } from './ordeals/t13ne-ordeal-rules.js';
 import { stageDifficultyRatio } from './ordeals/t13ne-stage-difficulty.js';
 
@@ -225,6 +236,8 @@ function makeErr(code, message) {
 }
 
 export function registerStage2Commands(session) {
+    registerStage26Commands(session, { drawFromSessionDeck, ensureSessionDeck });
+
     // -------------------------------------------------------------------------
     // 2.1 Executable T13 Tests
     // -------------------------------------------------------------------------
@@ -246,6 +259,7 @@ export function registerStage2Commands(session) {
             const facetName = opts.facet || 'Awe';
             const boon = opts.boon ?? opts.annex?.boon ?? getFacetBoonOnCharacter(character, facetName);
             const rngInt = (min, max) => s.nextInt(min, max);
+            let dramaTrigger = null;
 
             let result;
             if (testType === 'dice') {
@@ -286,6 +300,7 @@ export function registerStage2Commands(session) {
                     strainGain: opts.strainGain ?? 0,
                     shockGain: opts.shockGain ?? 0
                 });
+                result.complications = extractCardComplications(card);
                 if (character && (opts.chiSpend || opts.stressGain || opts.strainGain || opts.shockGain)) {
                     const sway = ensureCharacterSway(character);
                     if (opts.chiSpend > 0) {
@@ -300,7 +315,51 @@ export function registerStage2Commands(session) {
                     character.stressState[key].stress += opts.stressGain || 0;
                     character.stressState[key].strains += opts.strainGain || 0;
                     character.stressState[key].shocks += opts.shockGain || 0;
+                    if (payload.autoAddDramaDie !== false && (opts.stressGain || opts.strainGain || opts.shockGain)) {
+                        dramaTrigger = pushCharacterDramaDie(s, state, {
+                            type: 'Character',
+                            source: character.name || character.id,
+                            characterId: character.id,
+                            plotId: payload.plotId ?? null
+                        }, emit);
+                    }
                 }
+            } else if (testType === 'card-competitive') {
+                const rawEntries = Array.isArray(opts.participants) ? opts.participants : [];
+                if (rawEntries.length === 0) {
+                    throw makeErr('INVALID_PARTICIPANTS', 'card-competitive requires options.participants.');
+                }
+                const preparedEntries = rawEntries.map(entry => {
+                    const eChar = entry.characterId ? state.characters[entry.characterId] : null;
+                    const eFacet = entry.facet || facetName;
+                    const eBoon = entry.boon ?? (eChar ? getFacetBoonOnCharacter(eChar, eFacet) : boon);
+                    let eCard = entry.card || null;
+                    if (!eCard) {
+                        const drawn = drawFromSessionDeck(s, state, 1);
+                        eCard = drawn[0];
+                        if (eCard) state.deck.discardPile.push(eCard);
+                    }
+                    if (eChar && payload.autoTriggerWyrdTarot !== false) {
+                        triggerFaceDownWyrdTarotOnAction(state, eChar.id, emit);
+                    }
+                    return {
+                        ...entry,
+                        facet: eFacet,
+                        trumpFacet: entry.trumpFacet ?? opts.trumpFacet ?? null,
+                        boon: eBoon,
+                        card: eCard,
+                        difficulty: entry.difficulty ?? opts.difficulty ?? 10
+                    };
+                });
+                const ranked = resolveCompetitiveCardDrawTest(preparedEntries, {
+                    placeBonuses: opts.placeBonuses ?? [1],
+                    failureCutoffRank: opts.failureCutoffRank ?? null
+                });
+                result = {
+                    type: 'CardCompetitive',
+                    facet: facetName,
+                    ranked
+                };
             } else if (testType === 'value') {
                 result = resolveValueTest({
                     facet: facetName,
@@ -318,6 +377,12 @@ export function registerStage2Commands(session) {
             } else {
                 throw makeErr('INVALID_TEST_TYPE', `Unsupported Test type '${testType}'.`);
             }
+
+            if (character && payload.autoTriggerWyrdTarot !== false) {
+                const flipped = triggerFaceDownWyrdTarotOnAction(state, character.id, emit);
+                if (flipped) result.wyrdTarotTriggered = flipped;
+            }
+            if (dramaTrigger) result.dramaDieAdded = dramaTrigger;
 
             emit('Test:Resolved', { characterId: character?.id ?? null, actorId, testType, result }, 'public');
             return result;
@@ -530,6 +595,7 @@ export function registerStage2Commands(session) {
                 stakes: stakesRule.type,
                 wildPoolSize: stakesRule.wildPool,
                 terrain,
+                strictWildTricks: Boolean(payload.strictWildTricks),
                 status: 'Active',
                 currentStageIndex: 0,
                 roundNumber: 1,
@@ -654,6 +720,108 @@ export function registerStage2Commands(session) {
             }
 
             const allPlayed = [...played, ...wildClaimed];
+            const trickInfo = detectOrdealTricks(played, wildClaimed, {
+                trumpSuit: payload.trumpSuit ?? null,
+                allowTrumpShift: Boolean(payload.allowTrumpShift)
+            });
+            if ((payload.validateWildTrick === true || ordeal.strictWildTricks === true) && !trickInfo.wildPoolTrickValid) {
+                throw makeErr('INVALID_WILD_TRICK', 'Claimed Wild Pool cards must form a valid Ordeal Trick with played cards.');
+            }
+
+            let narrativeTrickResult = null;
+            if (payload.applyNarrativeTrick) {
+                const chosenTrick = String(payload.applyNarrativeTrick);
+                if (!trickInfo.unlockedNarrativeTricks.includes(chosenTrick)) {
+                    throw makeErr('INVALID_NARRATIVE_TRICK', `Narrative Trick '${chosenTrick}' is not unlocked by played cards.`);
+                }
+                const trickTargetId = String(payload.trickTargetId ?? payload.characterId ?? participantId);
+                const trickSelfId = String(payload.characterId ?? Object.values(state.characters || {}).find(c => c.ownerActorId === participantId)?.id ?? participantId);
+
+                if (chosenTrick === 'Promise') {
+                    const wtCard = allPlayed[0];
+                    const wtRes = applyWyrdTarotPlay({
+                        session: s,
+                        state,
+                        card: wtCard,
+                        ownerId: participantId,
+                        targetEntityId: trickTargetId,
+                        orientation: payload.trickOrientation || 'normal',
+                        faceDown: Boolean(payload.trickFaceDown),
+                        promised: Boolean(payload.promised),
+                        emit
+                    });
+                    narrativeTrickResult = { type: 'Promise', targetEntityId: trickTargetId, wyrdTarot: wtRes };
+                } else if (chosenTrick === 'Karmic Shift') {
+                    const cardTarget = allPlayed[0];
+                    const cardSelf = allPlayed[1] || allPlayed[0];
+                    const resTarget = applyWyrdTarotPlay({
+                        session: s,
+                        state,
+                        card: cardTarget,
+                        ownerId: participantId,
+                        targetEntityId: trickTargetId,
+                        orientation: payload.targetOrientation || 'crossed',
+                        emit
+                    });
+                    const resSelf = applyWyrdTarotPlay({
+                        session: s,
+                        state,
+                        card: cardSelf,
+                        ownerId: participantId,
+                        targetEntityId: trickSelfId,
+                        orientation: payload.selfOrientation || 'normal',
+                        emit
+                    });
+                    narrativeTrickResult = { type: 'Karmic Shift', target: resTarget, self: resSelf };
+                } else if (chosenTrick === 'Plight') {
+                    if (!Array.isArray(state.yarnWeaves)) state.yarnWeaves = [];
+                    const plightWeave = {
+                        id: `yarn-plight-${s.revision + 1}`,
+                        kind: 'Plight',
+                        actorId: participantId,
+                        targetEntityId: trickTargetId,
+                        cards: [
+                            { card: clone(allPlayed[0]), role: 'History' },
+                            { card: clone(allPlayed[1]), role: 'Situation' },
+                            { card: clone(allPlayed[2]), role: 'Solution' }
+                        ]
+                    };
+                    state.yarnWeaves.push(plightWeave);
+                    emit('Yarn:PlightCreated', { weave: clone(plightWeave) }, 'public');
+                    narrativeTrickResult = { type: 'Plight', weave: plightWeave };
+                } else if (chosenTrick === 'Discord' || chosenTrick === 'Geas' || chosenTrick === 'Schism') {
+                    const plotId = `plot-${chosenTrick.toLowerCase()}-${s.revision + 1}`;
+                    const plot = {
+                        id: plotId,
+                        title: `${chosenTrick} (${trickTargetId})`,
+                        kind: chosenTrick,
+                        status: 'Active',
+                        dominantSide: participantId,
+                        pressedSide: trickTargetId,
+                        internalized: chosenTrick === 'Schism',
+                        hasSignificator: allPlayed.length === 5 || allPlayed.length >= 10,
+                        cards: clone(allPlayed)
+                    };
+                    state.plots[plotId] = plot;
+                    if (chosenTrick === 'Geas' && payload.addDoomedHitch && state.characters[trickTargetId]) {
+                        const tChar = state.characters[trickTargetId];
+                        if (!Array.isArray(tChar.hitches)) tChar.hitches = [];
+                        tChar.hitches.push({
+                            id: `hitch-geas-${s.revision + 1}`,
+                            facet: 'Wyrd',
+                            bane: 6,
+                            tier: 'Flaw',
+                            name: 'Doomed (Geas)',
+                            triggered: true
+                        });
+                    }
+                    emit('Plot:CreatedFromTrick', { trick: chosenTrick, plot: clone(plot) }, 'public');
+                    narrativeTrickResult = { type: chosenTrick, plot: clone(plot) };
+                } else if (chosenTrick === 'Advantage') {
+                    narrativeTrickResult = { type: 'Advantage', bonusSuccessLevels: 1 };
+                }
+            }
+
             let totalPips = sumPips(allPlayed);
             if (payload.trumpSuit) {
                 const tId = SUIT_ID_BY_NAME[String(payload.trumpSuit)] ?? 0;
@@ -691,6 +859,28 @@ export function registerStage2Commands(session) {
                 participant.grt += Math.max(0, Math.trunc(payload.actionGrt ?? extraCards));
             }
 
+            const targetChar = payload.characterId
+                ? state.characters[payload.characterId]
+                : Object.values(state.characters || {}).find(c => c.ownerActorId === participantId);
+
+            let wyrdTarotTriggered = null;
+            if (payload.autoTriggerWyrdTarot !== false) {
+                wyrdTarotTriggered = triggerFaceDownWyrdTarotOnAction(state, targetChar?.id || participantId, emit);
+            }
+
+            let trimmedCount = 0;
+            let poolLimit = null;
+            if (targetChar) {
+                const activeHitches = (targetChar.hitches || []).filter(h => !h.resolved).length;
+                const scaleVal = Number(targetChar.scale ?? targetChar.scaleModifier ?? 1) || 1;
+                poolLimit = Math.max(0, scaleVal + activeHitches);
+                if (payload.enforcePoolLimit && participant.ordealPool.length > poolLimit) {
+                    const excess = participant.ordealPool.splice(poolLimit);
+                    trimmedCount = excess.length;
+                    state.deck.discardPile.push(...excess);
+                }
+            }
+
             if (ordeal.wildPool.length === 0 || state.deck.drawPile.length === 0) {
                 ordeal.roundComplete = true;
             }
@@ -704,6 +894,13 @@ export function registerStage2Commands(session) {
                 actionPips,
                 rt: participant.rt,
                 grt: participant.grt,
+                tricks: trickInfo.tricks,
+                unlockedNarrativeTricks: trickInfo.unlockedNarrativeTricks,
+                wildPoolTrickValid: trickInfo.wildPoolTrickValid,
+                narrativeTrickResult,
+                wyrdTarotTriggered,
+                poolLimit,
+                trimmedCount,
                 roundComplete: ordeal.roundComplete,
                 stageComplete: stage?.isComplete ?? false
             }, 'public');
@@ -713,6 +910,13 @@ export function registerStage2Commands(session) {
                 actionPips,
                 rt: participant.rt,
                 grt: participant.grt,
+                tricks: trickInfo.tricks,
+                unlockedNarrativeTricks: trickInfo.unlockedNarrativeTricks,
+                wildPoolTrickValid: trickInfo.wildPoolTrickValid,
+                narrativeTrickResult,
+                wyrdTarotTriggered,
+                poolLimit,
+                trimmedCount,
                 roundComplete: ordeal.roundComplete,
                 stageComplete: stage?.isComplete ?? false
             };

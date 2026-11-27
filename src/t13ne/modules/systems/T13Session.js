@@ -101,9 +101,24 @@ export class T13Session {
             characters: {},
             privateHands: {},
             publicHandCounts: {},
+            wyrdTarotHands: {},
+            publicWyrdTarotCounts: {},
+            wyrdTarotSlots: {},
             preparedReserves: {},
             styleReserves: {},
             deck: { drawPile: [], discardPile: [], deckCount: 0 },
+            drama: {
+                tensionLevel: 1,
+                latentLimit: 21,
+                poolType: 'Water',
+                thresholdModifier: 0,
+                pool: [],
+                activeDramas: [],
+                history: [],
+                lastLatentPlotId: null,
+                consecutiveLatentCount: 0
+            },
+            yarnWeaves: [],
             plots: {},
             refereeSecrets: {
                 notes: {},
@@ -351,6 +366,24 @@ export class T13Session {
             }
         }
 
+        const maskedWyrdSlots = {};
+        for (const [entityId, stack] of Object.entries(this._state.wyrdTarotSlots || {})) {
+            maskedWyrdSlots[entityId] = (Array.isArray(stack) ? stack : []).map(entry => {
+                if (isReferee || !entry.faceDown || (actorId && entry.playedBy === actorId)) {
+                    return deepClone(entry);
+                }
+                return {
+                    id: entry.id,
+                    faceDown: true,
+                    playedBy: entry.playedBy,
+                    orientation: 'hidden',
+                    active: false,
+                    suspended: Boolean(entry.suspended),
+                    promised: Boolean(entry.promised)
+                };
+            });
+        }
+
         const projection = {
             schemaVersion: this.schemaVersion,
             sessionId: this.sessionId,
@@ -359,6 +392,8 @@ export class T13Session {
             speciesDescendants: deepClone(this._state.speciesDescendants),
             characters: deepClone(this._state.characters),
             publicHandCounts: deepClone(this._state.publicHandCounts),
+            publicWyrdTarotCounts: deepClone(this._state.publicWyrdTarotCounts || {}),
+            wyrdTarotSlots: maskedWyrdSlots,
             preparedReserves: deepClone(this._state.preparedReserves),
             styleReserves: deepClone(this._state.styleReserves),
             deckCounts: {
@@ -366,15 +401,21 @@ export class T13Session {
                 drawPileCount: this._state.deck?.drawPile?.length ?? 0,
                 discardPileCount: this._state.deck?.discardPile?.length ?? 0
             },
+            drama: deepClone(this._state.drama),
+            yarnWeaves: deepClone(this._state.yarnWeaves || []),
             plots: publicPlots,
             table: deepClone(this._state.table),
             privateHand: actorId && this._state.privateHands[actorId]
                 ? deepClone(this._state.privateHands[actorId])
+                : [],
+            wyrdTarotHand: actorId && this._state.wyrdTarotHands?.[actorId]
+                ? deepClone(this._state.wyrdTarotHands[actorId])
                 : []
         };
 
         if (isReferee) {
             projection.privateHands = deepClone(this._state.privateHands);
+            projection.wyrdTarotHands = deepClone(this._state.wyrdTarotHands || {});
             projection.refereeSecrets = deepClone(this._state.refereeSecrets);
             projection.deck = deepClone(this._state.deck);
         }
@@ -427,6 +468,23 @@ export class T13Session {
         session.revision = snap.revision ?? 0;
         session._nextEventSeq = snap.nextEventSeq ?? (Array.isArray(snap.eventLog) ? snap.eventLog.length + 1 : 1);
         session._state = deepClone(snap.state);
+        if (!session._state.wyrdTarotHands) session._state.wyrdTarotHands = {};
+        if (!session._state.publicWyrdTarotCounts) session._state.publicWyrdTarotCounts = {};
+        if (!session._state.wyrdTarotSlots) session._state.wyrdTarotSlots = {};
+        if (!session._state.yarnWeaves) session._state.yarnWeaves = [];
+        if (!session._state.drama) {
+            session._state.drama = {
+                tensionLevel: 1,
+                latentLimit: 21,
+                poolType: 'Water',
+                thresholdModifier: 0,
+                pool: [],
+                activeDramas: [],
+                history: [],
+                lastLatentPlotId: null,
+                consecutiveLatentCount: 0
+            };
+        }
         session._eventLog = Array.isArray(snap.eventLog) ? deepClone(snap.eventLog) : [];
         session._processedCommands = new Map();
 

@@ -2,7 +2,7 @@
 
 Last updated: 2026-11-26
 
-Baseline: `npm run test:node` passes **187 tests** (Stages 1 & 2 complete on branch `feat/staged-engine-vtt-wormhole`), and both root (`vite.config.js`) and companion (`ttrpg-companion/vite.config.js`) Rollup bundles resolve cleanly against the single canonical `src/t13ne/` source tree (`ttrpg-companion/src/t13ne/` has been retired). Remaining Facet-role/body-language confirmations and authored cultural outfit catalogs stay parked in [TODO-avatars.md](./TODO-avatars.md), while **3D modelling/sculpting upgrades, audio/VOIP overhaul, T13 species voice effects, and Avatar puppeting** have been pulled directly into the active VTT pass (Stages 3–4 below).
+Baseline: `npm run test:node` passes **192 tests** (Stages 1 & 2, including Stage 2.6 Drama/Wyrd Tarot/Yarn/Ordeal Trick cross-links, complete on branch `feat/staged-engine-vtt-wormhole`), and both root (`vite.config.js`) and companion (`ttrpg-companion/vite.config.js`) Rollup bundles resolve cleanly against the single canonical `src/t13ne/` source tree (`ttrpg-companion/src/t13ne/` has been retired). Remaining Facet-role/body-language confirmations and authored cultural outfit catalogs stay parked in [TODO-avatars.md](./TODO-avatars.md), while **3D modelling/sculpting upgrades, audio/VOIP overhaul, T13 species voice effects, and Avatar puppeting** have been pulled directly into the active VTT pass (Stages 3–4 below).
 
 ## Standing Rules & Product Boundaries
 
@@ -63,6 +63,10 @@ Goal: Make T13 mechanics execute real, rulebook-backed state transitions inside 
   - Wired `IChing:Calculate` (preserving existing saves unless `forceRecalculate`) and Referee-only adjudicated `IChing:GrantReward` with idempotent grant deduplication.
   - Wired `Hitch:Evaluate` (`Quirk`/`Flaw`/`Woe`, Marks/Ruins, synchronous Gnarl effects), Stakes-aware `Wound:Apply` / `Wound:UpdateState` (including Chi reduction & Freshness lifecycle), and overdraft-checked `Sway:Adjust` into character persistence.
 - [x] **2.5 Stage 2 tests:** Added `tests/t13-stage2-rules.test.js` covering rulebook Dice/Card/Value golden examples, `CardsAPI` reserve/trigger/context handling, and an end-to-end multi-round Ordeal + Plot + I-Ching + Hitch + Wound + Snapshot replay in `T13Session`.
+- [x] **2.6 Drama Systems, Wyrd Tarot, Yarn Card Play & Card Draw / Ordeal Cross-Links:**
+  - Created pure `src/t13ne/modules/mechanics/T13CardPlayRules.js` covering D2–D20 Drama Dice, Water/Fire/Wood/Earth/Metal/Void pool thresholds (1-die-never-triggers, multi-plot consumption, Drama Storm prevention), Tension-level Latent limits, Card-based Drama (`Diamonds`/`Hearts`/`Spades`/`Clubs`/`Wildcard`), Chi-% Wyrd Tarot hand limits (`Grunt`/`Mercari`/`Solo`), Court persistence vs. Non-Court discard, Top-of-Chi-pool Yarn↔Chi math + Færy Yarn + reality-manipulation techniques (`Side-step`, `Quantum Swap`, `Retcon`, `Flip-Flop`), Narrative Trick detection (`Promise`, `Karmic Shift`, `Plight`, `Discord`, `Geas`, `Schism`), Suit Parry/Soak defense effects, and Competitive Card Draw Test rankings/complications.
+  - Extended `T13Session` & `T13SessionRules.js` with `T13SessionDramaCards.js`: `Drama:Configure/AddDie/RollPool/PlayCard/Reject/RelieveStress` (with 3-in-a-row Latent Plot rotation and Stress-gain auto-die feedback), privacy-masked `WyrdTarot:Draw/Play/TriggerFaceDown/DiscardSlot` (including face-down Court suspension & auto-flip when acting), `Yarn:PlayCards/ManipulateReality`, `Ordeal:Defend`, `Ordeal:YarnTangleAction` (`Bust >= 32`, `Knock-Out`, 4-Suit victory), Wild Pool Trick enforcement + Narrative Trick execution inside `Ordeal:PlayCards`, and `testType: 'card-competitive'` in `Test:Perform`.
+  - Added `tests/t13-stage2-drama-tarot-yarn.test.js` covering all Stage 2.6 systems and full `snapshot()` / `fromSnapshot()` round-trips.
 
 ---
 
