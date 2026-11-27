@@ -166,13 +166,18 @@ class T13NE_AudioDirector {
                 this.setMood('Calm', 0.35);
                 this.playPattern('BasicRock');
                 break;
+            case 'Test:Resolved':
             case 'Test:Performed':
             case 'RNG:Drawn':
                 this.playSFX('OneShot', 'dice-roll');
                 break;
             case 'Card:Drawn':
+            case 'Card:DrawnPrivate':
+            case 'Hand:DealtPrivate':
+            case 'Card:Prepared':
             case 'Card:Played':
             case 'Yarn:Played':
+            case 'Yarn:CardsPlayed':
             case 'Ordeal:CardsPlayed':
                 this.playSFX('OneShot', 'card-play');
                 break;

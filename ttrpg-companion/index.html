@@ -33,6 +33,11 @@
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" data-panel="referee">
+            <span>Referee Console</span>
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" data-panel="rulebook">
             <span>Rules Handbook</span>
           </a>
@@ -85,6 +90,7 @@
           <button class="btn btn-secondary" id="btnClearDice">Clear Table</button>
         </div>
         <div id="vtt-canvas"></div>
+        <t13-card-ordeal-hud id="cardOrdealHud" style="display:block; margin-top: 12px;"></t13-card-ordeal-hud>
       </div>
     </div>
     
@@ -116,9 +122,31 @@
                   <option value="Extra">Extra (Minimal)</option>
                 </select>
               </div>
+              <div style="display: flex; flex-direction: column; gap: 6px;">
+                <label style="font-size: 0.85rem; text-transform: uppercase; font-weight: 700;">Creation Model</label>
+                <select id="selectCreationModel" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px;">
+                  <option value="Extra">Extra</option>
+                  <option value="Lite">Lite</option>
+                  <option value="Archetype">Archetype</option>
+                  <option value="Detailed" selected>Detailed</option>
+                  <option value="Full">Full</option>
+                </select>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 6px;">
+                <label style="font-size: 0.85rem; text-transform: uppercase; font-weight: 700;">Species Descendant</label>
+                <select id="selectSpeciesDescendant" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px;">
+                  <option value="Human" selected>Human</option>
+                  <option value="Insectoid">Insectoid</option>
+                  <option value="Mech">Mech</option>
+                  <option value="Giant">Giant</option>
+                  <option value="Fae">Fae</option>
+                </select>
+              </div>
             </div>
             <button class="btn" id="btnGenerateCatalyst">Calculate Hexagram & Stats</button>
           </div>
+
+          <div id="characterRoster" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px;"></div>
 
           <div id="characterStatsOutput">
             <!-- T13CharacterSheet renders here -->
@@ -127,6 +155,13 @@
       </div>
     </div>
     
+    <div class="panel-view" id="view-referee">
+      <div class="panel-header">
+        <h2>Referee Console & Director</h2>
+      </div>
+      <t13-referee-console id="refereeConsole"></t13-referee-console>
+    </div>
+
     <!-- Rulebook View -->
     <div class="panel-view" id="view-rulebook">
       <iframe class="rulebook-frame" src="./rulebook/index.html" title="T13 Rules"></iframe>

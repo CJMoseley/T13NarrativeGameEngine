@@ -117,17 +117,17 @@ Goal: Upgrade the engine's audio architecture while working in the VTT, wire Web
 
 Goal: Achieve **Milestone M2 (Playable Tabletop Vertical Slice)** so a group can run a full T13 tabletop session using the VTT, VOIP/puppeted Avatars, and Companion views.
 
-- [ ] **5.1 Interactive Character Sheet (`T13CharacterSheet.js`):**
+- [x] **5.1 Interactive Character Sheet (`T13CharacterSheet.js`):**
   - Add character roster creation, selection, import/export, and IndexedDB/server persistence (supporting `Extra`, `Lite`, `Archetype`, `Detailed`, and `Full` models from `docs/rules/Creating-Characters.md`, plus T13 Species `Descendant` selection).
   - Make Facet Boons, Annexes, Proficiencies, and Hitches clickable to configure and submit real `T13Session` Dice/Card/Value Tests (with optional Strain/Sway spend).
   - Add live interactive panels for Sway Purse (`Yin`, `Yang`, `Chi`, Facet Sway), Stress/Strain/Shock dice pools, active Wounds, equipped Descendants, and quick controls for Model Maker sculpting, VOIP Species Voice FX preview, and Avatar puppeting mode.
-- [ ] **5.2 Player Card Tray & Ordeal Action Bar (`T13YarnCardWidget.js`):**
+- [x] **5.2 Player Card Tray & Ordeal Action Bar (`T13YarnCardWidget.js`):**
   - Upgrade `<t13-yarn-card>` from hover-only to interactive selection (`Play`, `Prepare`, `Discard`, `Use Significator`).
   - Build a persistent bottom/side **Card & Ordeal HUD** showing the player's private Hand, Prepared Reserve, Style Reserve, active Stage Difficulty, shared Wild Pool, Turn/RT tracker, VOIP peer roster/mute/FX bypass strip, and a shared **Roll & Narrative Log** feed.
-- [ ] **5.3 Referee / Yarn-Teller Console:**
+- [x] **5.3 Referee / Yarn-Teller Console:**
   - Replace the hardcoded `"Breaking of the Third Seal"` mock in `ttrpg-companion/main.js` with live `T13NE_Plots` + `QuestSpread` generation and editing.
   - Add Referee controls to spawn Extras/Monsters/Descendants onto the VTT (with Referee NPC voice-FX switching when voicing different NPCs!), set Stakes, deal/advance Ordeal Stages & Rounds, adjudicate Hitch triggers and I-Ching Gains, toggle fog/zones/mood audio, and save/load campaign snapshots.
-- [ ] **5.4 Stage 5 acceptance test:** Automated two-client Playwright test (Referee + Player) executing session join, character + Species Descendant creation, token spawn/move, T13 Test roll, private card draw/play in an Ordeal round, synthetic VOIP/puppet indicator sync, disconnect/reconnect, and save/restore.
+- [x] **5.4 Stage 5 acceptance test:** Automated two-client Playwright test (Referee + Player) executing session join, character + Species Descendant creation, token spawn/move, T13 Test roll, private card draw/play in an Ordeal round, synthetic VOIP/puppet indicator sync, disconnect/reconnect, and save/restore.
 
 ---
 

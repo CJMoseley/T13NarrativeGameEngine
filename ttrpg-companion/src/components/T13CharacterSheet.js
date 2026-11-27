@@ -9,6 +9,7 @@ import {
     resolveFormation,
     descendantAvatarData
 } from '../../../src/t13ne/procgen/avatar/AvatarFacetBody.js';
+import { SPECIES_VOICE_PRESETS } from '../../../src/t13ne/modules/audio/VoiceFXChain.js';
 
 /**
  * Generates a Character avatar and its physical/material summary through AvatarStage.
@@ -85,9 +86,29 @@ export class T13CharacterSheet extends BaseElement {
             this.attachShadow({ mode: 'open' });
         }
         this.characterData = null;
+        this.sessionClient = null;
+        this.sessionState = null;
+        this.audioHooks = { voipManager: null, liveAvatarController: null };
+        this._clientUnsubs = [];
         this._previewRenderer = null;
         this._previewAvatar = null;
         this._previewRunId = 0;
+        this._voicePreset = 'auto';
+        this._dryVoiceBypass = false;
+        this._puppetMode = 'idle';
+        this._runnerState = {
+            facet: 'Awe',
+            testType: 'dice',
+            difficulty: 2,
+            extraDiceCount: 0,
+            strainDiceCount: 0,
+            chiSpend: 0,
+            stressGain: 0,
+            bane: 4,
+            hitchTriggered: true,
+            lastOutcome: null,
+            lastError: null
+        };
     }
 
     connectedCallback() {
@@ -95,11 +116,93 @@ export class T13CharacterSheet extends BaseElement {
     }
 
     disconnectedCallback() {
+        this._unbindSessionClient();
         this._disposePreview();
+    }
+
+    _unbindSessionClient() {
+        while (this._clientUnsubs.length) {
+            const unsub = this._clientUnsubs.pop();
+            try { unsub?.(); } catch (_) {}
+        }
+    }
+
+    bindSessionClient(client) {
+        this._unbindSessionClient();
+        this.sessionClient = client || null;
+        if (!client || typeof client.on !== 'function') return;
+
+        const onProj = (proj) => this.setSessionState(proj);
+        const onEvent = (evt) => {
+            if (!evt || !this.characterData) return;
+            const targetId = evt.payload?.characterId;
+            if (targetId && targetId !== this.characterData.id) return;
+            if (evt.type === 'Test:Resolved') {
+                this._runnerState.lastOutcome = evt.payload?.result ?? evt.payload;
+                this._runnerState.lastError = null;
+                this.render();
+            } else if (evt.type === 'Hitch:Evaluated') {
+                this._runnerState.lastOutcome = evt.payload?.hitch ?? evt.payload;
+                this._runnerState.lastError = null;
+                this.render();
+            }
+        };
+        const u1 = client.on('projection', onProj);
+        const u2 = client.on('event', onEvent);
+        if (typeof u1 === 'function') this._clientUnsubs.push(u1);
+        if (typeof u2 === 'function') this._clientUnsubs.push(u2);
+    }
+
+    setSessionState(projection) {
+        this.sessionState = projection || null;
+        if (this.characterData?.id && projection?.characters?.[this.characterData.id]) {
+            this.characterData = projection.characters[this.characterData.id];
+        }
+        this.render();
+    }
+
+    setAudioHooks(hooks = {}) {
+        this.audioHooks = {
+            voipManager: hooks.voipManager ?? this.audioHooks?.voipManager ?? null,
+            liveAvatarController: hooks.liveAvatarController ?? this.audioHooks?.liveAvatarController ?? null
+        };
+        if (this.audioHooks.liveAvatarController?.mode) {
+            this._puppetMode = this.audioHooks.liveAvatarController.mode;
+        }
+        if (this.audioHooks.voipManager) {
+            this._dryVoiceBypass = Boolean(this.audioHooks.voipManager.accessibilityBypass);
+        }
+        this.render();
+    }
+
+    async _sendSessionCommand(type, payload) {
+        if (typeof this.dispatchEvent === 'function' && typeof CustomEvent !== 'undefined') {
+            this.dispatchEvent(new CustomEvent('session-command', {
+                detail: { type, payload },
+                bubbles: true,
+                composed: true
+            }));
+        }
+        if (!this.sessionClient || typeof this.sessionClient.sendCommand !== 'function') {
+            this._runnerState.lastError = 'No active session connection; command queued locally.';
+            this.render();
+            return null;
+        }
+        try {
+            const res = await this.sessionClient.sendCommand(type, payload);
+            this._runnerState.lastError = null;
+            return res;
+        } catch (err) {
+            this._runnerState.lastError = err?.message || String(err);
+            this.render();
+            return null;
+        }
     }
 
     setCharacter(data) {
         this.characterData = data;
+        const firstFacet = data?.boons ? Object.keys(data.boons)[0] : null;
+        if (firstFacet) this._runnerState.facet = firstFacet;
         this.render();
     }
 
@@ -179,22 +282,86 @@ export class T13CharacterSheet extends BaseElement {
 
             .list-container { display: flex; flex-direction: column; gap: 12px; }
             .widget-list { display: flex; flex-wrap: wrap; gap: 8px; }
-            .widget-chip { background: #f1f5f9; border: 1px solid #e2e8f0; padding: 4px 12px; border-radius: 16px; font-size: 0.875rem; font-weight: 500; color: #475569; }
+            .widget-chip { background: #f1f5f9; border: 1px solid #e2e8f0; padding: 4px 12px; border-radius: 16px; font-size: 0.875rem; font-weight: 500; color: #475569; cursor: pointer; }
+            .widget-chip:hover { border-color: #3b82f6; }
             .hitch-chip { background: #fef2f2; border: 1px solid #fee2e2; color: #dc2626; }
-            .descendant-row { display: flex; justify-content: space-between; align-items: center; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px 14px; }
+            .descendant-row, .wound-row, .sway-row, .stress-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px 14px; }
+            .boon-clickable { cursor: pointer; transition: border-color 0.15s, background 0.15s; text-align: left; width: 100%; font: inherit; }
+            .boon-clickable:hover, .boon-clickable.active { border-color: #2563eb; background: #eff6ff; }
+            .runner-panel { margin-top: 14px; padding: 14px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; flex-direction: column; gap: 10px; }
+            .runner-controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+            .runner-controls label { font-size: 0.78rem; color: #475569; display: flex; flex-direction: column; gap: 3px; font-weight: 600; }
+            .runner-controls input, .runner-controls select { padding: 5px 8px; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 0.85rem; background: #fff; color: #0f172a; }
+            .runner-result { padding: 10px 12px; border-radius: 6px; background: #0f172a; color: #e2e8f0; font-family: monospace; font-size: 0.82rem; white-space: pre-wrap; }
+            .runner-error { padding: 8px 12px; border-radius: 6px; background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; font-size: 0.82rem; }
+            .sway-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; }
+            .mini-btn { background: #1e293b; color: #fff; border: none; border-radius: 4px; padding: 4px 10px; cursor: pointer; font-size: 0.8rem; font-weight: 600; }
+            .mini-btn.secondary { background: #475569; }
+            .mini-btn.danger { background: #b91c1c; }
+            .voice-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 8px; padding-top: 8px; border-top: 1px dashed #cbd5e1; }
+            .voice-row label { font-size: 0.8rem; color: #334155; display: flex; align-items: center; gap: 6px; font-weight: 600; }
         `);
 
         const previewBox = SafeDOM.el('div', { class: 'avatar-preview-box' }, 'Loading avatar...');
         const metaChildren = [
             SafeDOM.el('div', { class: 'hexagram' }, [
                 SafeDOM.el('span', { style: 'font-size: 1.2rem;' }, '☯'),
-                SafeDOM.el('span', {}, `Hexagram #${hexagram?.number}: ${hexagram?.name}`)
+                SafeDOM.el('span', {}, `Hexagram #${hexagram?.number ?? hexagram?.Hexagram?.Number ?? '?'}: ${hexagram?.name ?? hexagram?.Hexagram?.Name ?? 'Unset'}`)
             ]),
             ...(significator ? [SafeDOM.el('div', { class: 'significator' }, [
                 SafeDOM.el('span', { style: 'font-size: 1.2rem;' }, '🃟'),
                 SafeDOM.el('span', {}, `Significator: ${significator.name}`)
             ])] : [])
         ];
+
+        const presetNames = ['auto', ...Object.keys(SPECIES_VOICE_PRESETS)];
+        const voiceSelect = SafeDOM.el('select', { 'data-role': 'voice-preset' }, presetNames.map(p =>
+            SafeDOM.el('option', { value: p, ...(this._voicePreset === p ? { selected: 'selected' } : {}) }, p)
+        ));
+        voiceSelect.addEventListener('change', (e) => {
+            this._voicePreset = e.target.value;
+            const vm = this.audioHooks?.voipManager;
+            if (vm) {
+                if (this._voicePreset === 'auto') {
+                    vm.setLocalVoiceProfile(this.characterData);
+                } else {
+                    vm.setLocalVoiceProfile(this._voicePreset);
+                }
+            }
+        });
+
+        const dryBypassCheck = SafeDOM.el('input', {
+            type: 'checkbox',
+            'data-role': 'dry-bypass',
+            ...(this._dryVoiceBypass ? { checked: 'checked' } : {})
+        });
+        dryBypassCheck.addEventListener('change', (e) => {
+            this._dryVoiceBypass = Boolean(e.target.checked);
+            this.audioHooks?.voipManager?.setAccessibilityBypass(this._dryVoiceBypass);
+        });
+
+        const puppetSelect = SafeDOM.el('select', { 'data-role': 'puppet-mode' }, ['idle', 'audio', 'webcam'].map(m =>
+            SafeDOM.el('option', { value: m, ...(this._puppetMode === m ? { selected: 'selected' } : {}) }, m)
+        ));
+        puppetSelect.addEventListener('change', async (e) => {
+            this._puppetMode = e.target.value;
+            const ctrl = this.audioHooks?.liveAvatarController;
+            if (ctrl && typeof ctrl.setMode === 'function') {
+                try {
+                    await ctrl.setMode(this._puppetMode, this.audioHooks?.voipManager || null);
+                } catch (err) {
+                    this._runnerState.lastError = err?.message || String(err);
+                    this.render();
+                }
+            }
+        });
+
+        const spawnTokenBtn = SafeDOM.el('button', {
+            class: 'avatar-btn',
+            type: 'button',
+            'data-action': 'spawn-character-token',
+            onclick: () => this.spawnCharacterTokenOnVTT()
+        }, 'Spawn VTT Token');
 
         const sections = [
             SafeDOM.el('div', { class: 'header' }, [
@@ -211,7 +378,15 @@ export class T13CharacterSheet extends BaseElement {
                     SafeDOM.el('div', { class: 'avatar-details' }, [
                         SafeDOM.el('div', { class: 'avatar-meta' }, `Formation: ${sizeInfo.formation} (${sizeInfo.material})${heightLabel ? ` • Height: ${heightLabel}` : ''}`),
                         ...(descriptorSummary ? [SafeDOM.el('div', { class: 'avatar-meta' }, `Build & Bearing: ${descriptorSummary}`)] : []),
-                        SafeDOM.el('button', { class: 'avatar-btn', type: 'button', onclick: () => this.openAvatarMaker() }, 'Open avatar model maker')
+                        SafeDOM.el('div', { style: 'display:flex; gap:8px; flex-wrap:wrap;' }, [
+                            SafeDOM.el('button', { class: 'avatar-btn', type: 'button', onclick: () => this.openAvatarMaker() }, 'Open avatar model maker'),
+                            spawnTokenBtn
+                        ]),
+                        SafeDOM.el('div', { class: 'voice-row' }, [
+                            SafeDOM.el('label', {}, ['Voice FX:', voiceSelect]),
+                            SafeDOM.el('label', {}, [dryBypassCheck, 'Dry Voice Bypass']),
+                            SafeDOM.el('label', {}, ['Puppeting:', puppetSelect])
+                        ])
                     ])
                 ])
             ])
@@ -227,26 +402,184 @@ export class T13CharacterSheet extends BaseElement {
             ]));
         }
 
+        const boonEntries = Object.entries(boons || {});
+        const runner = this._runnerState;
+        const facetOptions = Array.from(new Set([runner.facet, ...boonEntries.map(([k]) => k)].filter(Boolean)));
+        const runnerFacetSel = SafeDOM.el('select', { 'data-runner': 'facet' }, facetOptions.map(f =>
+            SafeDOM.el('option', { value: f, ...(runner.facet === f ? { selected: 'selected' } : {}) }, f)
+        ));
+        runnerFacetSel.addEventListener('change', (e) => { runner.facet = e.target.value; });
+
+        const runnerMethodSel = SafeDOM.el('select', { 'data-runner': 'testType' }, [
+            ['dice', 'Dice Test'],
+            ['card', 'Card Draw Test'],
+            ['value', 'Value Test']
+        ].map(([val, label]) =>
+            SafeDOM.el('option', { value: val, ...(runner.testType === val ? { selected: 'selected' } : {}) }, label)
+        ));
+        runnerMethodSel.addEventListener('change', (e) => { runner.testType = e.target.value; });
+
+        const diffInput = SafeDOM.el('input', { type: 'number', min: '0', max: '30', value: String(runner.difficulty), style: 'width:68px;', 'data-runner': 'difficulty' });
+        diffInput.addEventListener('change', (e) => { runner.difficulty = Number(e.target.value) || 0; });
+
+        const extraInput = SafeDOM.el('input', { type: 'number', min: '0', max: '10', value: String(runner.extraDiceCount), style: 'width:58px;', 'data-runner': 'extraDice' });
+        extraInput.addEventListener('change', (e) => { runner.extraDiceCount = Math.max(0, Number(e.target.value) || 0); });
+
+        const strainInput = SafeDOM.el('input', { type: 'number', min: '0', max: '10', value: String(runner.strainDiceCount), style: 'width:58px;', 'data-runner': 'strainDice' });
+        strainInput.addEventListener('change', (e) => { runner.strainDiceCount = Math.max(0, Number(e.target.value) || 0); });
+
+        const baneInput = SafeDOM.el('input', { type: 'number', min: '1', max: '20', value: String(runner.bane), style: 'width:58px;', 'data-runner': 'bane' });
+        baneInput.addEventListener('change', (e) => { runner.bane = Math.max(1, Number(e.target.value) || 1); });
+
+        const performTestBtn = SafeDOM.el('button', {
+            class: 'avatar-btn',
+            type: 'button',
+            'data-action': 'perform-test',
+            onclick: () => this.performSelectedTest()
+        }, 'Perform Test');
+
+        const evalHitchBtn = SafeDOM.el('button', {
+            class: 'mini-btn secondary',
+            type: 'button',
+            'data-action': 'evaluate-hitch',
+            onclick: () => this.evaluateSelectedHitch()
+        }, 'Evaluate Hitch');
+
+        const runnerChildren = [
+            SafeDOM.el('div', { style: 'font-weight:700; font-size:0.85rem; color:#1e293b;' }, 'T13 Test & Hitch Runner'),
+            SafeDOM.el('div', { class: 'runner-controls' }, [
+                SafeDOM.el('label', {}, ['Facet', runnerFacetSel]),
+                SafeDOM.el('label', {}, ['Method', runnerMethodSel]),
+                SafeDOM.el('label', {}, ['Difficulty', diffInput]),
+                SafeDOM.el('label', {}, ['Extra d6', extraInput]),
+                SafeDOM.el('label', {}, ['Strain d6', strainInput]),
+                SafeDOM.el('label', {}, ['Hitch Bane', baneInput]),
+                performTestBtn,
+                evalHitchBtn
+            ])
+        ];
+        if (runner.lastOutcome) {
+            const o = runner.lastOutcome;
+            const summaryText = o.tier
+                ? `Hitch ${o.facet} (Bane ${o.bane}) -> Tier: ${o.tier}, Marks: ${o.marks}, Ruins: ${o.ruins}, Triggered: ${o.triggered}`
+                : `${o.type || runner.testType} (${o.facet || runner.facet}): Outcome=${o.outcome ?? o.successLevel ?? (o.success ? 'Success' : 'Failure')} | Total=${o.total ?? o.score ?? o.finalValue ?? '-'}${(o.diceRolls || o.rolls) ? ` | Rolls=[${(o.diceRolls || o.rolls).join(', ')}]` : ''}`;
+            runnerChildren.push(SafeDOM.el('div', { class: 'runner-result', 'data-role': 'test-outcome' }, summaryText));
+        }
+        if (runner.lastError) {
+            runnerChildren.push(SafeDOM.el('div', { class: 'runner-error', 'data-role': 'test-error' }, runner.lastError));
+        }
+
+        const swayObj = this.characterData.sway && typeof this.characterData.sway === 'object' ? this.characterData.sway : {};
+        const swayKeys = Array.from(new Set(['Tao:Yin', 'Tao:Yang', 'Chi', 'Coin', 'Karma', 'Renown', 'Wealth', ...Object.keys(swayObj)]));
+        const stressEntries = this.characterData.stressState && typeof this.characterData.stressState === 'object'
+            ? Object.entries(this.characterData.stressState)
+            : [];
+        const wounds = Array.isArray(this.characterData.wounds) ? this.characterData.wounds : [];
+
         sections.push(
             SafeDOM.el('div', { class: 'section' }, [
-                SafeDOM.el('h2', { class: 'section-title' }, 'Facet Boons'),
-                SafeDOM.el('div', { class: 'boon-grid' }, Object.entries(boons || {}).map(([label, val]) =>
-                    SafeDOM.el('div', { class: 'boon-item' }, [
+                SafeDOM.el('h2', { class: 'section-title' }, 'Facet Boons & Inline Runner'),
+                SafeDOM.el('div', { class: 'boon-grid' }, boonEntries.map(([label, val]) =>
+                    SafeDOM.el('button', {
+                        type: 'button',
+                        class: `boon-item boon-clickable${runner.facet === label ? ' active' : ''}`,
+                        'data-facet': label,
+                        onclick: () => {
+                            this._runnerState.facet = label;
+                            this.render();
+                        }
+                    }, [
                         SafeDOM.el('span', { class: 'boon-label' }, label),
                         SafeDOM.el('span', { class: 'boon-value' }, String(val))
                     ])
-                ))
+                )),
+                SafeDOM.el('div', { class: 'runner-panel' }, runnerChildren)
+            ]),
+            SafeDOM.el('div', { class: 'section' }, [
+                SafeDOM.el('h2', { class: 'section-title' }, 'Sway Purse'),
+                SafeDOM.el('div', { class: 'sway-grid' }, swayKeys.map((currency) => {
+                    const amount = Number(swayObj[currency] ?? 0);
+                    return SafeDOM.el('div', { class: 'sway-row', 'data-sway': currency }, [
+                        SafeDOM.el('span', { style: 'font-weight:600; font-size:0.85rem;' }, `${currency}: ${amount}`),
+                        SafeDOM.el('div', { style: 'display:flex; gap:4px;' }, [
+                            SafeDOM.el('button', {
+                                class: 'mini-btn secondary',
+                                type: 'button',
+                                'data-action': `sway-minus-${currency}`,
+                                onclick: () => this._adjustSway(currency, -1)
+                            }, '-1'),
+                            SafeDOM.el('button', {
+                                class: 'mini-btn',
+                                type: 'button',
+                                'data-action': `sway-plus-${currency}`,
+                                onclick: () => this._adjustSway(currency, 1)
+                            }, '+1')
+                        ])
+                    ]);
+                }))
+            ]),
+            SafeDOM.el('div', { class: 'section' }, [
+                SafeDOM.el('h2', { class: 'section-title' }, 'Stress, Strain & Shock'),
+                SafeDOM.el('div', { class: 'list-container' }, [
+                    ...(stressEntries.length
+                        ? stressEntries.map(([bucket, vals]) => SafeDOM.el('div', { class: 'stress-row' }, [
+                            SafeDOM.el('span', { style: 'font-size:0.85rem; font-weight:600;' }, `${bucket}: Stress ${vals?.stress ?? 0} • Strains ${vals?.strains ?? 0} • Shocks ${vals?.shocks ?? 0}`),
+                            SafeDOM.el('button', {
+                                class: 'mini-btn',
+                                type: 'button',
+                                onclick: () => this._relieveStress(bucket.replace(/^Facet:/, ''), 1)
+                            }, 'Relieve Stress (-1)')
+                        ]))
+                        : [SafeDOM.el('div', { class: 'stress-row' }, [
+                            SafeDOM.el('span', { style: 'color:#64748b; font-size:0.85rem;' }, 'No accumulated Stress/Strain/Shock.'),
+                            SafeDOM.el('button', {
+                                class: 'mini-btn secondary',
+                                type: 'button',
+                                onclick: () => this._relieveStress(runner.facet, 1)
+                            }, 'Atmospheric Relief')
+                        ])])
+                ])
+            ]),
+            SafeDOM.el('div', { class: 'section' }, [
+                SafeDOM.el('h2', { class: 'section-title' }, 'Active Wounds'),
+                SafeDOM.el('div', { class: 'list-container' },
+                    wounds.length
+                        ? wounds.map(w => SafeDOM.el('div', { class: 'wound-row', 'data-wound-id': w.id }, [
+                            SafeDOM.el('span', { style: 'font-size:0.85rem; font-weight:600;' }, `${w.name} (Lvl ${w.level}) • ${w.freshness || 'Fresh'} • ${w.damageType || 'Physical'}`),
+                            SafeDOM.el('div', { style: 'display:flex; gap:6px;' }, [
+                                SafeDOM.el('button', {
+                                    class: 'mini-btn',
+                                    type: 'button',
+                                    onclick: () => this._updateWoundState(w.id, { spendChiToReduce: true })
+                                }, 'Spend Chi to Reduce'),
+                                SafeDOM.el('button', {
+                                    class: 'mini-btn secondary',
+                                    type: 'button',
+                                    onclick: () => this._updateWoundState(w.id, { freshness: w.freshness === 'Treated' ? 'Untreated' : 'Treated' })
+                                }, w.freshness === 'Treated' ? 'Mark Untreated' : 'Treat'),
+                                SafeDOM.el('button', {
+                                    class: 'mini-btn danger',
+                                    type: 'button',
+                                    onclick: () => this._updateWoundState(w.id, { action: 'remove' })
+                                }, 'Heal')
+                            ])
+                        ]))
+                        : [SafeDOM.el('span', { style: 'color: #94a3b8; font-size: 0.875rem;' }, 'No active wounds.')]
+                )
             ]),
             SafeDOM.el('div', { class: 'section' }, [
                 SafeDOM.el('h2', { class: 'section-title' }, 'Descendants & Gear'),
                 SafeDOM.el('div', { class: 'list-container' },
                     descendants.length
-                        ? descendants.map(d => {
+                        ? descendants.map((d, idx) => {
                             const dName = Array.isArray(d.name) ? d.name[0] : (d.name || 'Unnamed Descendant');
                             const { formation, material } = resolveFormation(d, null);
                             return SafeDOM.el('div', { class: 'descendant-row' }, [
                                 SafeDOM.el('span', { style: 'font-size: 0.875rem; font-weight: 600;' }, `${dName} (${d.descendantType || 'Item'} • ${formation} / ${material})`),
-                                SafeDOM.el('button', { class: 'avatar-btn', type: 'button', onclick: () => this.openDescendantMaker(d) }, 'Inspect Model')
+                                SafeDOM.el('div', { style: 'display:flex; gap:6px;' }, [
+                                    SafeDOM.el('button', { class: 'avatar-btn', type: 'button', onclick: () => this.openDescendantMaker(d) }, 'Inspect Model'),
+                                    SafeDOM.el('button', { class: 'mini-btn', type: 'button', onclick: () => this.spawnDescendantOnVTT(d, idx) }, 'Spawn Prop on VTT')
+                                ])
                             ]);
                         })
                         : [SafeDOM.el('span', { style: 'color: #94a3b8; font-size: 0.875rem;' }, 'No linked descendants.')]
@@ -261,13 +594,33 @@ export class T13CharacterSheet extends BaseElement {
             SafeDOM.el('div', { class: 'section' }, [
                 SafeDOM.el('h2', { class: 'section-title' }, 'Proficiencies'),
                 SafeDOM.el('div', { class: 'widget-list' },
-                    proficiencies.length ? proficiencies.map(() => SafeDOM.el('t13-proficiency')) : [SafeDOM.el('span', { style: 'color: #94a3b8; font-size: 0.875rem;' }, 'No base proficiencies.')]
+                    proficiencies.length ? proficiencies.map((p) => SafeDOM.el('t13-proficiency', {
+                        onclick: () => {
+                            if (p?.facet) {
+                                this._runnerState.facet = p.facet;
+                                this.render();
+                            }
+                        }
+                    })) : [SafeDOM.el('span', { style: 'color: #94a3b8; font-size: 0.875rem;' }, 'No base proficiencies.')]
                 )
             ]),
             SafeDOM.el('div', { class: 'section' }, [
                 SafeDOM.el('h2', { class: 'section-title' }, 'Hitches & Complications'),
                 SafeDOM.el('div', { class: 'widget-list' },
-                    hitches.length ? hitches.map(h => SafeDOM.el('div', { class: 'widget-chip hitch-chip' }, SafeDOM.escape(typeof h === 'string' ? h : (h?.name || 'Hitch')))) : [SafeDOM.el('span', { style: 'color: #94a3b8; font-size: 0.875rem;' }, 'No active hitches.')]
+                    hitches.length ? hitches.map(h => {
+                        const label = typeof h === 'string' ? h : (h?.name || `${h?.facet || 'Hitch'} (${h?.tier || `Bane ${h?.bane ?? '?'}`})`);
+                        return SafeDOM.el('button', {
+                            type: 'button',
+                            class: 'widget-chip hitch-chip',
+                            onclick: () => {
+                                if (h && typeof h === 'object') {
+                                    if (h.facet) this._runnerState.facet = h.facet;
+                                    if (h.bane) this._runnerState.bane = Number(h.bane);
+                                    this.render();
+                                }
+                            }
+                        }, SafeDOM.escape(label));
+                    }) : [SafeDOM.el('span', { style: 'color: #94a3b8; font-size: 0.875rem;' }, 'No active hitches.')]
                 )
             ])
         );
@@ -369,6 +722,106 @@ export class T13CharacterSheet extends BaseElement {
             console.error('Unable to open descendant model maker:', error);
             window.alert(`Unable to open descendant model maker: ${error.message}`);
         }
+    }
+
+    async performSelectedTest() {
+        if (!this.characterData) return null;
+        const r = this._runnerState;
+        const extraDice = Array.from({ length: Math.max(0, r.extraDiceCount || 0) }, () => '1d6');
+        const strainDice = Array.from({ length: Math.max(0, r.strainDiceCount || 0) }, () => '1d6');
+        const res = await this._sendSessionCommand('Test:Perform', {
+            characterId: this.characterData.id,
+            testType: r.testType || 'dice',
+            options: {
+                facet: r.facet || 'Awe',
+                difficulty: Number(r.difficulty ?? 0),
+                extraDice,
+                strainDice,
+                chiSpend: Number(r.chiSpend ?? 0),
+                stressGain: Number(r.stressGain ?? 0)
+            }
+        });
+        if (res && typeof res === 'object') {
+            this._runnerState.lastOutcome = res;
+            this.render();
+        }
+        return res;
+    }
+
+    async evaluateSelectedHitch() {
+        if (!this.characterData) return null;
+        const r = this._runnerState;
+        const res = await this._sendSessionCommand('Hitch:Evaluate', {
+            characterId: this.characterData.id,
+            facet: r.facet || 'Awe',
+            bane: Number(r.bane ?? 4),
+            triggered: true
+        });
+        if (res && typeof res === 'object') {
+            this._runnerState.lastOutcome = res;
+            this.render();
+        }
+        return res;
+    }
+
+    async _adjustSway(currency, delta) {
+        if (!this.characterData) return null;
+        return this._sendSessionCommand('Sway:Adjust', {
+            characterId: this.characterData.id,
+            currency,
+            delta
+        });
+    }
+
+    async _relieveStress(facet, amount = 1) {
+        if (!this.characterData) return null;
+        return this._sendSessionCommand('Drama:RelieveStress', {
+            characterId: this.characterData.id,
+            facet,
+            amount,
+            dramaType: 'Atmospheric'
+        });
+    }
+
+    async _updateWoundState(woundId, patch) {
+        if (!this.characterData) return null;
+        return this._sendSessionCommand('Wound:UpdateState', {
+            characterId: this.characterData.id,
+            woundId,
+            ...patch
+        });
+    }
+
+    async spawnCharacterTokenOnVTT() {
+        if (!this.characterData) return null;
+        const char = this.characterData;
+        const displayName = Array.isArray(char.name) ? char.name[0] : (char.name || char.id);
+        const speciesId = char.speciesDescendantId ?? (typeof char.species === 'object' ? char.species.id || char.species.name : (char.species || 'Human'));
+        return this._sendSessionCommand('VTT:SpawnToken', {
+            id: `token-${char.id}`,
+            name: displayName,
+            tokenType: 'character',
+            characterId: char.id,
+            ownerActorId: char.ownerActorId ?? null,
+            speciesId,
+            incarna: char.incarna || 'Nature',
+            position: { x: 0, y: 0, z: 0 }
+        });
+    }
+
+    async spawnDescendantOnVTT(descendant, idx = 0) {
+        if (!this.characterData || !descendant) return null;
+        const dName = Array.isArray(descendant.name) ? descendant.name[0] : (descendant.name || 'Prop');
+        const { formation } = resolveFormation(descendant, null);
+        return this._sendSessionCommand('VTT:SpawnToken', {
+            id: `prop-${this.characterData.id}-${descendant.id || idx}`,
+            name: dName,
+            tokenType: 'prop',
+            descendantId: descendant.id ?? null,
+            ownerActorId: this.characterData.ownerActorId ?? null,
+            incarna: formation,
+            position: { x: 1 + idx, y: 0, z: 1 }
+        });
     }
 }
 

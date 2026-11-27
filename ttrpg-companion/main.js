@@ -3,6 +3,10 @@ import Logger from '/src/t13ne/core/Logger.js';
 import P2PNetworkManager from '/src/t13ne/core/P2PNetworkManager.js';
 import { VOIPManager } from '/src/t13ne/core/VOIPManager.js';
 import { EventBus } from '/src/t13ne/core/EventBus.js';
+import { createHumanSpeciesDescendant, createSpeciesDescendant } from '/src/t13ne/modules/characters/T13SpeciesDescendant.js';
+import T13NE_AudioDirector from '/src/t13ne/modules/audio/t13ne-audio-director.js';
+import { LiveAvatarController } from '/src/t13ne/procgen/avatar/LiveAvatarController.js';
+import { AvatarEngine } from '/src/t13ne/procgen/avatar/AvatarEngine.js';
 
 import '/src/components/T13VttCanvas.js';
 import '/src/components/T13CharacterSheet.js';
@@ -11,6 +15,10 @@ import '/src/components/T13YarnCardWidget.js';
 import '/src/components/T13ProficiencyWidget.js';
 import '/src/components/T13AnnexWidget.js';
 import '/src/components/T13EntityInspector.js';
+import './src/components/T13CardOrdealHud.js';
+import { buildMinimalHexagramTable } from './src/components/T13RefereeConsole.js';
+import './src/components/T13RefereeConsole.js';
+import { SessionCompanionBridge } from './src/services/SessionCompanionBridge.js';
 
 console.log("Bootstrap: Initializing TTRPG Companion client...");
 
@@ -18,18 +26,27 @@ console.log("Bootstrap: Initializing TTRPG Companion client...");
 // 🛡️ Client Mode & Authorization Logic
 // ==========================================
 
-// Enforce standard client modes (player or referee) via environment variables
-const CLIENT_MODE = import.meta.env.VITE_CLIENT_MODE || 'player'; // default to restricted player state
-const SERVER_URL = 'http://localhost:5713'; // Changed to standard T13 port 5713
-const WS_URL = 'ws://localhost:5713'; // Changed to standard T13 port 5713
+const CLIENT_MODE = import.meta.env.VITE_CLIENT_MODE || 'player';
+const SERVER_URL = 'http://localhost:5713';
+const WS_URL = 'ws://localhost:5713';
 
+function getTabActorId() {
+  if (typeof sessionStorage === 'undefined') return `${CLIENT_MODE}-${Math.random().toString(36).slice(2, 8)}`;
+  let id = sessionStorage.getItem('t13ne_actor_id');
+  if (!id) {
+    id = `${CLIENT_MODE}-${Math.random().toString(36).slice(2, 8)}`;
+    sessionStorage.setItem('t13ne_actor_id', id);
+  }
+  return id;
+}
+
+const storedRefToken = typeof localStorage !== 'undefined' ? localStorage.getItem('t13ne_referee_token') : null;
 window.T13NE_Auth = {
   mode: CLIENT_MODE,
-  isAuthorized: CLIENT_MODE === 'referee', // referee starts elevated
-  token: CLIENT_MODE === 'referee' ? (localStorage.getItem('t13ne_referee_token') || 'DEV_SUPER_SECRET_KEY') : (localStorage.getItem('t13ne_player_token') || null)
+  isAuthorized: CLIENT_MODE === 'referee' && Boolean(storedRefToken),
+  token: CLIENT_MODE === 'referee' ? storedRefToken : (typeof localStorage !== 'undefined' ? localStorage.getItem('t13ne_player_token') : null)
 };
 
-// Global helper to get request headers with Authorization
 window.getAuthHeaders = () => {
   const headers = { 'Content-Type': 'application/json' };
   if (window.T13NE_Auth.token) {
@@ -37,6 +54,14 @@ window.getAuthHeaders = () => {
   }
   return headers;
 };
+
+const bridge = new SessionCompanionBridge({
+  apiBase: SERVER_URL,
+  wsUrl: WS_URL,
+  sessionId: (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('t13ne_session_id')) || 'default',
+  actorId: getTabActorId(),
+  mode: CLIENT_MODE
+});
 
 // Navigation Control
 const navLinks = document.querySelectorAll('.nav-link');
@@ -51,63 +76,108 @@ navLinks.forEach(link => {
         const targetPanel = link.getAttribute('data-panel');
         const panel = document.getElementById(`view-${targetPanel}`);
         if (panel) panel.classList.add('active');
-        console.log(`Navigation: Switched to panel "${targetPanel}"`);
     });
 });
 
 let voipManager = null;
-let apiWs = null;
+let liveAvatarController = null;
+let activeCharacterSheet = null;
+let activeCharacterId = null;
+
+window.__T13_COMPANION__ = {
+  bridge,
+  getAuth: () => window.T13NE_Auth,
+  getClient: () => bridge.client,
+  getVoipManager: () => voipManager,
+  getLiveAvatarController: () => liveAvatarController,
+  getActiveCharacterId: () => activeCharacterId
+};
 
 async function initApp() {
     try {
         console.log("App Init: Starting T13 Narrative Engine (companion mode)...");
         await T13NE.start({ mode: 'companion' });
-        
-        console.log("App Init: Narrative Engine running successfully.");
-        document.getElementById('connectionStatus').textContent = "Engine Ready";
-        document.getElementById('connectionStatus').style.color = "#10b981";
 
         const soundEngine = T13NE.getModule('SoundEngine');
         voipManager = new VOIPManager(P2PNetworkManager, soundEngine);
         await voipManager.init();
         voipManager.setupVAD();
 
-        // Initialize UI panels and connection
+        try {
+            const avatarEngine = new AvatarEngine();
+            const previewMesh = avatarEngine.createAvatarMesh({ gender: 'neutral', height: 1.75 });
+            liveAvatarController = new LiveAvatarController(previewMesh, 'humanoid', {
+                onPuppetPacket: (packet) => bridge.client?.sendPuppetFrame(packet)
+            });
+            await liveAvatarController.init();
+            liveAvatarController.attachVOIP(voipManager);
+        } catch (avatarErr) {
+            console.warn('LiveAvatarController init deferred:', avatarErr);
+        }
+
         setupAuthUI();
         setupNetworking();
         setupPlotSystem();
         setupCharacterCreator();
         setupVttControls();
+        setupVTuberWidget();
         setupInspector();
 
-        // Connect to centralized WebSocket server
-        connectToCentralServer();
+        const vttCanvas = document.querySelector('t13-vtt-canvas');
+        const cardHud = document.getElementById('cardOrdealHud');
+        const refereeConsole = document.getElementById('refereeConsole');
 
-        EventBus.on('p2p:peer-connected', ({ peerId }) => {
-            console.log(`P2P: Connected to peer ${peerId}`);
-            if (voipManager) voipManager.callPeer(peerId);
-            const vttCanvas = document.querySelector('t13-vtt-canvas');
-            if (vttCanvas) vttCanvas.addToken(peerId, `Player ${peerId.substring(0,4)}`, 0xef4444);
-
-            if (P2PNetworkManager.isHost) {
-                Logger.message(`Referee: Sending initial sync to player ${peerId}`);
-                P2PNetworkManager.sendTo(peerId, {
-                    type: 'SESSION_SYNC',
-                    ts: Date.now(),
-                    welcome: "Welcome to the T13 Session."
-                });
-            }
+        bridge.attachComponents({
+            vttCanvas,
+            characterSheet: activeCharacterSheet,
+            cardHud,
+            refereeConsole,
+            audioDirector: T13NE_AudioDirector,
+            voipManager,
+            liveAvatarController
         });
 
+        const connInfo = await bridge.connect({
+            sessionId: bridge.sessionId,
+            actorId: bridge.actorId,
+            storedRefereeToken: window.T13NE_Auth.token
+        });
+
+        const statusEl = document.getElementById('connectionStatus');
+        if (statusEl) {
+            statusEl.textContent = connInfo.transportMode === 'websocket'
+                ? `Connected (${bridge.sessionId})`
+                : `Local Engine (${bridge.sessionId})`;
+            statusEl.style.color = "#10b981";
+        }
+        syncAuthPanelFromBridge();
     } catch (error) {
         console.error("App Init: Narrative Engine failed to start", error);
-        document.getElementById('connectionStatus').textContent = "Init Failed";
+        const statusEl = document.getElementById('connectionStatus');
+        if (statusEl) statusEl.textContent = "Init Failed";
     }
 }
 
-/**
- * Creates and injects the permission & auth panel into the sidebar.
- */
+function syncAuthPanelFromBridge() {
+    const isRef = bridge.role === 'referee';
+    window.T13NE_Auth.isAuthorized = Boolean(isRef);
+    window.T13NE_Auth.token = bridge.token || window.T13NE_Auth.token;
+    const authStatusText = document.getElementById('authStatusText');
+    const authForm = document.getElementById('authForm');
+    const deElevateContainer = document.getElementById('deElevateContainer');
+    const authModeLabel = document.getElementById('authModeLabel');
+    const refereeConsole = document.getElementById('refereeConsole');
+
+    if (authModeLabel) authModeLabel.textContent = isRef ? 'referee' : window.T13NE_Auth.mode;
+    if (authStatusText) {
+        authStatusText.textContent = isRef ? 'Authorized (Referee Elevated)' : 'Restricted (Read-Only Player)';
+        authStatusText.style.color = isRef ? '#10b981' : '#94a3b8';
+    }
+    if (authForm) authForm.style.display = isRef ? 'none' : 'flex';
+    if (deElevateContainer) deElevateContainer.style.display = isRef ? 'block' : 'none';
+    if (refereeConsole?.setAuthorized) refereeConsole.setAuthorized(Boolean(isRef));
+}
+
 function setupAuthUI() {
   const sidebar = document.querySelector('.sidebar');
   if (!sidebar) return;
@@ -122,12 +192,12 @@ function setupAuthUI() {
       Mode: <span id="authModeLabel" style="text-transform: uppercase; color: var(--text-accent);">${window.T13NE_Auth.mode}</span>
     </div>
     <div style="font-size: 0.75rem; color: #94a3b8; margin-bottom: 8px;" id="authStatusText">
-      ${window.T13NE_Auth.isAuthorized ? 'Authorized (Referee Admin)' : 'Restricted (Read-Only Player)'}
+      ${window.T13NE_Auth.isAuthorized ? 'Authorized (Referee Elevated)' : 'Restricted (Read-Only Player)'}
     </div>
     <div id="authForm" style="display: ${window.T13NE_Auth.isAuthorized ? 'none' : 'flex'}; flex-direction: column; gap: 6px;">
-      <input type="password" id="authSecretInput" placeholder="Referee Bearer Token"
+      <input type="password" id="authSecretInput" placeholder="Referee Passphrase"
              style="background: #1e293b; border: 1px solid #334155; border-radius: 4px; padding: 6px; font-size: 0.8rem; color: #f8fafc;"
-             value="${window.T13NE_Auth.token || ''}">
+             value="">
       <button class="btn" id="btnElevateAuth" style="font-size: 0.75rem; padding: 6px;">Elevate to Referee</button>
     </div>
     <div id="deElevateContainer" style="display: ${window.T13NE_Auth.isAuthorized ? 'block' : 'none'};">
@@ -137,234 +207,112 @@ function setupAuthUI() {
 
   sidebar.appendChild(authPanel);
 
-  // Hook elevation action
   const btnElevate = document.getElementById('btnElevateAuth');
   const btnDeElevate = document.getElementById('btnDeElevateAuth');
   const secretInput = document.getElementById('authSecretInput');
   const authStatusText = document.getElementById('authStatusText');
-  const authForm = document.getElementById('authForm');
-  const deElevateContainer = document.getElementById('deElevateContainer');
 
-  const verifyAndElevate = async (token) => {
+  btnElevate.addEventListener('click', async () => {
+    const passphrase = secretInput.value.trim();
+    if (!passphrase) return alert("Please input a Referee passphrase.");
     try {
-      // Validate credentials against the unified PermissionService via a simple fetch
-      const res = await fetch(`${SERVER_URL}/api/v1/state`, {
-        headers: { 'Authorization': `Bearer ${token}` }
-      });
-
-      if (res.status === 200) {
-        window.T13NE_Auth.isAuthorized = true;
-        window.T13NE_Auth.token = token;
-        localStorage.setItem(window.T13NE_Auth.mode === 'referee' ? 't13ne_referee_token' : 't13ne_player_token', token);
-
-        authStatusText.textContent = "Authorized (Referee Elevated)";
-        authStatusText.style.color = "#10b981";
-        authForm.style.display = 'none';
-        deElevateContainer.style.display = 'block';
-
-        console.log("PermissionService: Elevated client state to authorized Referee.");
-        // Re-establish WebSocket connection with updated auth token
-        connectToCentralServer();
-      } else {
-        alert("PermissionService rejection: Invalid Referee secret token.");
+      await bridge.elevateWithPassphrase(passphrase);
+      syncAuthPanelFromBridge();
+    } catch (e) {
+      if (authStatusText) {
         authStatusText.textContent = "Elevation Failed (Unauthorized)";
         authStatusText.style.color = "#ef4444";
       }
-    } catch (e) {
-      console.error("Auth verification failed", e);
-      alert("Failed connecting to permission validation endpoint. Operating in fallback offline state.");
+      alert(`PermissionService rejection: ${e.message}`);
     }
-  };
-
-  btnElevate.addEventListener('click', () => {
-    const token = secretInput.value.trim();
-    if (!token) return alert("Please input a Referee token.");
-    verifyAndElevate(token);
   });
 
-  btnDeElevate.addEventListener('click', () => {
+  btnDeElevate.addEventListener('click', async () => {
     window.T13NE_Auth.isAuthorized = false;
     window.T13NE_Auth.token = null;
-    localStorage.removeItem('t13ne_referee_token');
-    localStorage.removeItem('t13ne_player_token');
-
-    authStatusText.textContent = "Restricted (Read-Only Player)";
-    authStatusText.style.color = "#94a3b8";
-    authForm.style.display = 'flex';
-    secretInput.value = '';
-    deElevateContainer.style.display = 'none';
-
-    console.log("PermissionService: Relinquished authorization. Client state set to Restricted Player.");
-    connectToCentralServer();
+    await bridge.deElevate();
+    if (secretInput) secretInput.value = '';
+    syncAuthPanelFromBridge();
   });
-
-  // If we already have a token stored on load for player mode, auto-verify it
-  if (window.T13NE_Auth.token && !window.T13NE_Auth.isAuthorized) {
-    verifyAndElevate(window.T13NE_Auth.token);
-  }
 }
 
-/**
- * Connects to the centralized websocket server and handles state synchronizations.
- */
-function connectToCentralServer() {
-  if (apiWs) {
-    try { apiWs.close(); } catch (e) {}
-  }
-
-  console.log("WS Init: Connecting to central API signaling server...");
-  apiWs = new WebSocket(WS_URL);
-
-  apiWs.onopen = () => {
-    console.log("WS Sync: Connected. Sending client registration message.");
-    apiWs.send(JSON.stringify({
-      type: 'register',
-      clientId: `client_ui_${Math.floor(Math.random() * 100000)}`,
-      token: window.T13NE_Auth.token, // Sends token to establish WS connection role
-      info: {
-        mode: window.T13NE_Auth.mode,
-        isAuthorized: window.T13NE_Auth.isAuthorized
-      }
+function adaptPlotForWidget(plot) {
+    if (!plot) return null;
+    const rawQuests = Array.isArray(plot.quests) ? plot.quests : [];
+    const widgetQuests = rawQuests.map((q, idx) => ({
+        name: q.name || `Line ${q.line ?? idx + 1} Quest`,
+        description: q.description || q.quest || 'Active changing line quest',
+        reward: q.reward || '1 Chi',
+        steps: Array.isArray(q.steps) ? q.steps : [{ text: q.quest || 'Resolve thread', complete: Boolean(q.completed) }]
     }));
-  };
-
-  apiWs.onmessage = (event) => {
-    try {
-      const msg = JSON.parse(event.data);
-      console.log(`WS Sync received: ${msg.type}`, msg);
-
-      if (msg.type === 'sync_event') {
-        handleServerSyncEvent(msg.event, msg.data);
-      } else if (msg.type === 'registered') {
-        console.log(`WS Sync: Registered as [ROLE: ${msg.role}]`);
-        // Use server-provided global state
-        if (msg.state) {
-          syncGlobalStateToUI(msg.state);
-        }
-      }
-    } catch (err) {
-      console.error("WS Parse Error", err);
-    }
-  };
-
-  apiWs.onerror = (e) => {
-    console.warn("WS Sync: Offline / connection refused. State changes will operate locally.");
-  };
-}
-
-/**
- * Sync server-side events back to client UI components dynamically.
- */
-function handleServerSyncEvent(event, data) {
-  if (event === 'stateUpdated') {
-    syncGlobalStateToUI(data);
-  } else if (event === 'characterCreated' || event === 'characterUpdated') {
-    const characterSheet = document.querySelector('t13-character-sheet');
-    if (characterSheet && data) {
-      characterSheet.setCharacter(data);
-    }
-  }
-}
-
-function syncGlobalStateToUI(state) {
-  console.log("UI Sync: Applying server state to interface:", state);
-  const statusEl = document.getElementById('connectionStatus');
-  if (statusEl && state.currentLocation) {
-    statusEl.textContent = `Active: ${state.currentLocation.toUpperCase()} (Tension: ${state.tension})`;
-  }
+    return {
+        ...plot,
+        Name: plot.Name || plot.title || 'Active Plot',
+        Rank: plot.Rank || (plot.status === 'PendingConfirmation' ? 'Pending Spread' : 'Story'),
+        goal: plot.goal || `Hexagram #${plot.situationHexagram ?? '?'} -> #${plot.solutionHexagram ?? '?'}`,
+        tensionLevel: plot.tensionLevel ?? 1,
+        Conflict: plot.Conflict || {
+            NoSides: 2,
+            Sides: {
+                Dominant: { Expressions: [`Hexagram #${plot.situationHexagram ?? '?'}`] },
+                Pressed: { Expressions: [`Hexagram #${plot.solutionHexagram ?? '?'}`] }
+            }
+        },
+        quests: widgetQuests
+    };
 }
 
 function setupPlotSystem() {
     const btnGenerate = document.getElementById('btnGeneratePlot');
     const plotOutput = document.getElementById('activePlotOutput');
+    if (!btnGenerate || !plotOutput) return;
+
+    function renderPlotsFromProjection(proj) {
+        const list = Object.values(proj?.plots || {});
+        if (!list.length) return;
+        plotOutput.innerHTML = '';
+        for (const p of list.slice().reverse()) {
+            const widget = document.createElement('t13-plot-widget');
+            plotOutput.appendChild(widget);
+            widget.setPlot(adaptPlotForWidget(p));
+        }
+    }
+
+    bridge.onSessionEvent((evt) => {
+        if (evt?.type?.startsWith('Plot:') || evt?.type === 'Spread:Interpreted') {
+            if (bridge.client?.projection) renderPlotsFromProjection(bridge.client.projection);
+        }
+    });
 
     btnGenerate.addEventListener('click', async () => {
-        // Enforce PermissionService checks before allowing write paths
         if (!window.T13NE_Auth.isAuthorized) {
           alert("PermissionService Restrict: Writing a Plot requires Referee credentials.");
           return;
         }
+        if (!bridge.client) return;
 
-        const plotData = {
-            id: `plot_${Date.now()}`,
-            Name: "The Breaking of the Third Seal",
-            Rank: "Story",
-            goal: "Prevent the emergence of the Archfiend at the Sector 7 gateway.",
-            tensionLevel: 4,
-            Conflict: {
-                NoSides: 2,
-                Sides: {
-                    Dominant: { Expressions: ["Archfiend Malphas", "The Void Gate"] },
-                    Pressed: { Expressions: ["The Last Wardens", "Ancient Sigils"] }
-                }
-            },
-            subPlots: [{ Name: "Infiltrate the Gateway", Rank: "Act" }],
-            plotDescendants: [
-                { Type: 'Location', Name: 'Sector 7 Gateway' },
-                { Type: 'Prop', Name: 'Shattered Seal' }
-            ],
-            Hooked_Characters: [
-                { id: 'char_kaelen', name: 'Kaelen Weaver', charType: 'Hero' },
-                { id: 'npc_vex', name: 'The Silent Warden', charType: 'Vex' }
-            ],
-            quests: [
-                {
-                    name: "Secure the Perimeter",
-                    description: "Establish a defensive line around the Sector 7 rift.",
-                    reward: "5 Chi",
-                    steps: [
-                        { text: "Deploy sensor drones", complete: true },
-                        { text: "Neutralize vanguard scouts", complete: false }
-                    ]
-                }
-            ],
-            hand: [
-                { name: "The Catalyst", suit: "Spades", pips: "A", meaning: "A sudden event triggers a cascade." },
-                { name: "Broken Vow", suit: "Diamonds", pips: "5", meaning: "A betrayal or failed oath complicates the path." }
+        const seedBit = (Date.now() >> 2) & 1;
+        const spread = {
+            spreadDefinition: { id: 'quest-6-card' },
+            cards: [
+                { position: 'Line 1', card: { data: { Tao: [1, seedBit] } } },
+                { position: 'Line 2', card: { data: { Tao: [0, 0] } } },
+                { position: 'Line 3', card: { data: { Tao: [1, 1] } } },
+                { position: 'Line 4', card: { data: { Tao: [seedBit, 1] } } },
+                { position: 'Line 5', card: { data: { Tao: [0, 1] } } },
+                { position: 'Line 6', card: { data: { Tao: [1, 1] } } }
             ]
         };
 
-        try {
-          // POST plot through the authorized /api/v1/story endpoint
-          const res = await fetch(`${SERVER_URL}/api/v1/story`, {
-            method: 'POST',
-            headers: window.getAuthHeaders(),
-            body: JSON.stringify({
-              prompt: plotData.goal,
-              tone: 'dark',
-              length: 'medium',
-              context: plotData.Name
-            })
-          });
-
-          if (res.status === 200) {
-            const resultData = await res.json();
-            console.log("REST API: Story segment created:", resultData);
-
-            // Render locally
-            renderPlot(plotData);
-            P2PNetworkManager.broadcast({ type: 'PLOT_SYNC', plot: plotData });
-          } else {
-            const errResult = await res.json();
-            alert(`Failed creating narrative thread: ${errResult.error}`);
-          }
-        } catch (e) {
-          console.warn("Server offline, executing local plot generator fallback...");
-          renderPlot(plotData);
-          P2PNetworkManager.broadcast({ type: 'PLOT_SYNC', plot: plotData });
-        }
+        bridge.client.sendCommand('Spread:InterpretQuest', {
+            title: `Thread #${(Object.keys(bridge.client.projection?.plots || {}).length) + 1}`,
+            spread,
+            hexagrams: buildMinimalHexagramTable()
+        });
+        setTimeout(() => {
+            if (bridge.client?.projection) renderPlotsFromProjection(bridge.client.projection);
+        }, 120);
     });
-
-    EventBus.on('p2p:msg:PLOT_SYNC', ({ message }) => {
-        renderPlot(message.plot);
-    });
-
-    function renderPlot(data) {
-        plotOutput.innerHTML = '';
-        const widget = document.createElement('t13-plot-widget');
-        plotOutput.appendChild(widget);
-        widget.setPlot(data);
-    }
 }
 
 function setupInspector() {
@@ -373,9 +321,51 @@ function setupInspector() {
 
     window.addEventListener('inspect-character', (e) => {
         const entityId = e.detail;
-        console.log(`Inspecting entity: ${entityId}`);
         inspector.inspect({ id: entityId, name: entityId, description: "A hooked entity in this narrative plot." });
     });
+}
+
+function buildSpeciesPreset(speciesKey) {
+    switch (speciesKey) {
+        case 'Insectoid':
+            return createSpeciesDescendant({
+                id: 't13-species-insectoid',
+                name: 'Insectoid',
+                incarna: 'Trial',
+                bodyPlan: 'insectoid',
+                scaleModifier: 0,
+                voiceProfile: { preset: 'chitin-click' }
+            });
+        case 'Mech':
+            return createSpeciesDescendant({
+                id: 't13-species-mech',
+                name: 'Mech',
+                incarna: 'Craft',
+                bodyPlan: 'humanoid',
+                scaleModifier: 1,
+                voiceProfile: { preset: 'synth-vocoder' }
+            });
+        case 'Giant':
+            return createSpeciesDescendant({
+                id: 't13-species-giant',
+                name: 'Giant',
+                incarna: 'Burden',
+                bodyPlan: 'humanoid',
+                scaleModifier: 4,
+                voiceProfile: { preset: 'giant-kaiju' }
+            });
+        case 'Fae':
+            return createSpeciesDescendant({
+                id: 't13-species-fae',
+                name: 'Fae',
+                incarna: 'Gossamer',
+                bodyPlan: 'winged',
+                scaleModifier: -3,
+                voiceProfile: { preset: 'fae-small' }
+            });
+        default:
+            return createHumanSpeciesDescendant();
+    }
 }
 
 function setupCharacterCreator() {
@@ -383,6 +373,61 @@ function setupCharacterCreator() {
     const btnShowCreator = document.getElementById('btnShowCreator');
     const creatorContent = document.getElementById('characterCreatorContent');
     const statsOutput = document.getElementById('characterStatsOutput');
+    const rosterEl = document.getElementById('characterRoster');
+
+    const mountCharacterSheet = (charData) => {
+        if (!charData) return;
+        activeCharacterId = charData.id;
+        creatorContent.style.display = 'none';
+        statsOutput.style.display = 'block';
+        statsOutput.innerHTML = '';
+        const sheet = document.createElement('t13-character-sheet');
+        statsOutput.appendChild(sheet);
+        activeCharacterSheet = sheet;
+        sheet.bindSessionClient(bridge.client);
+        sheet.setAudioHooks({ voipManager, liveAvatarController });
+        sheet.setCharacter(charData);
+        if (bridge.client?.projection) {
+            sheet.setSessionState(bridge.client.projection);
+        }
+        bridge.attachComponents({ characterSheet: sheet });
+        document.getElementById('cardOrdealHud')?.setActiveCharacterId?.(charData.id);
+        voipManager?.setLocalVoiceProfile?.(charData);
+    };
+
+    const renderRoster = (proj) => {
+        if (!rosterEl) return;
+        const chars = Object.values(proj?.characters || {});
+        rosterEl.innerHTML = '';
+        for (const c of chars) {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = `btn ${c.id === activeCharacterId ? '' : 'btn-secondary'}`;
+            btn.style.cssText = 'padding:5px 10px; font-size:0.78rem;';
+            btn.dataset.charRosterId = c.id;
+            const cName = Array.isArray(c.name) ? c.name[0] : (c.name || c.id);
+            btn.textContent = `${cName} (${c.creationModel || 'Detailed'} • ${c.species?.name || 'Human'})`;
+            btn.addEventListener('click', () => mountCharacterSheet(c));
+            rosterEl.appendChild(btn);
+        }
+        if (chars.length && !activeCharacterSheet) {
+            const mine = chars.find(c => c.ownerActorId === bridge.actorId) || chars[0];
+            mountCharacterSheet(mine);
+        }
+    };
+
+    bridge.onSessionEvent((evt) => {
+        if (evt?.type?.startsWith('Character:') && bridge.client?.projection) {
+            renderRoster(bridge.client.projection);
+        }
+    });
+    const origProjSync = bridge.client?.on?.('projection', renderRoster);
+    if (!origProjSync) {
+        setTimeout(() => {
+            if (bridge.client?.projection) renderRoster(bridge.client.projection);
+            bridge.client?.on?.('projection', renderRoster);
+        }, 250);
+    }
 
     if (btnShowCreator) {
         btnShowCreator.addEventListener('click', () => {
@@ -392,14 +437,10 @@ function setupCharacterCreator() {
     }
 
     btnCalculate.addEventListener('click', async () => {
-        // Enforce PermissionService checks before allowing write paths
-        if (!window.T13NE_Auth.isAuthorized) {
-          alert("PermissionService Restrict: Creating a Character requires Referee credentials.");
-          return;
-        }
-
         const name = document.getElementById('inputCharName').value.trim();
         const charType = document.getElementById('selectCharType').value;
+        const creationModel = document.getElementById('selectCreationModel')?.value || 'Detailed';
+        const speciesKey = document.getElementById('selectSpeciesDescendant')?.value || 'Human';
 
         if (!name) return alert("Enter character name.");
 
@@ -407,16 +448,22 @@ function setupCharacterCreator() {
             const geometryModule = T13NE.getModule('T13Geometry');
             const ichingModule = T13NE.getModule('IChing');
 
-            const geoResult = geometryModule.getGeometryFromString(name);
-            const geoVal = geoResult.full;
+            const geoResult = geometryModule?.getGeometryFromString
+                ? geometryModule.getGeometryFromString(name)
+                : { full: Array.from(name).reduce((sum, ch) => sum + ch.charCodeAt(0), 0) };
+            const geoVal = geoResult?.full || 13;
             const hexagramNum = (geoVal % 64) || 1;
-            const hexagram = await ichingModule.getHexagram(hexagramNum);
+            const hexagramData = ichingModule?.getHexagramData
+                ? await ichingModule.getHexagramData(hexagramNum).catch(() => null)
+                : (ichingModule?.getHexagram ? await ichingModule.getHexagram(hexagramNum).catch(() => null) : null);
+            const hexagramName = hexagramData?.Hexagram?.Name || hexagramData?.name || `Hexagram ${hexagramNum}`;
 
+            const speciesDescendant = buildSpeciesPreset(speciesKey);
             const boons = {
-                Incarna: 10 + (name.length % 5),
-                Persona: 12 + (geoVal % 6),
-                Umbral: 8 + (name.charCodeAt(0) % 8),
-                Nimbed: 9 + ((geoVal + name.length) % 7)
+                Awe: 10 + (name.length % 5),
+                Trial: 12 + (geoVal % 6),
+                Craft: 8 + (name.charCodeAt(0) % 8),
+                Wyrd: 9 + ((geoVal + name.length) % 7)
             };
 
             const OPPOSED_PAIRS = [
@@ -439,15 +486,23 @@ function setupCharacterCreator() {
                 };
             });
 
+            const charId = `char_${name.toLowerCase().replace(/[^a-z0-9]+/g, '_')}_${Date.now().toString(36)}`;
             const charData = {
-                id: `char_${Date.now()}`,
-                name: name,
-                charType: charType,
-                species: 'Human',
-                incarna: 'Nature',
-                boons: boons,
-                facetweb: { Scale: 0, Stats: stats },
-                hexagram: { number: hexagramNum, name: hexagram.name },
+                id: charId,
+                ownerActorId: bridge.actorId,
+                name,
+                charType,
+                creationModel,
+                speciesDescendantId: speciesDescendant.id,
+                species: speciesDescendant,
+                incarna: speciesDescendant.incarna || 'Nature',
+                scaleModifier: speciesDescendant.scaleModifier || 0,
+                boons,
+                facetweb: { Scale: speciesDescendant.scaleModifier || 0, Stats: stats },
+                sway: { Chi: 3, 'Tao:Yin': 1, 'Tao:Yang': 1, Karma: 0, Renown: 0 },
+                wounds: [],
+                stressState: {},
+                hexagram: { number: hexagramNum, name: hexagramName },
                 significator: { name: "The Hierophant", suit: "Spades", pips: "V" },
                 features: [
                     { name: "Resonant Harmony", description: "Your boons are perfectly aligned with the Cycle's current state." },
@@ -455,7 +510,7 @@ function setupCharacterCreator() {
                 ],
                 descendants: [
                     {
-                        id: `desc_${Date.now()}`,
+                        id: `desc_${Date.now().toString(36)}`,
                         name: `${name}'s Field Gear`,
                         descendantType: 'Item',
                         incarna: 'Trial'
@@ -476,43 +531,16 @@ function setupCharacterCreator() {
                 proficiencies: [
                     { name: "Zero-G Combat", facet: "Trial" }
                 ],
-                plots: ["The Breaking of the Third Seal"],
                 hitches: []
             };
 
-            try {
-              // POST character to authorized REST API
-              const res = await fetch(`${SERVER_URL}/api/v1/characters`, {
-                method: 'POST',
-                headers: window.getAuthHeaders(),
-                body: JSON.stringify(charData)
-              });
-
-              if (res.status === 210 || res.status === 200) {
-                const createdResult = await res.json();
-                console.log("REST API: Character saved to central StateStore:", createdResult);
-
-                creatorContent.style.display = 'none';
-                statsOutput.style.display = 'block';
-                statsOutput.innerHTML = '';
-                const sheet = document.createElement('t13-character-sheet');
-                statsOutput.appendChild(sheet);
-                sheet.setCharacter(charData);
-
-              } else {
-                const errResult = await res.json();
-                alert(`Failed creating character on server: ${errResult.error}`);
-              }
-            } catch (e) {
-              console.warn("Server offline, executing local character generator fallback...");
-              creatorContent.style.display = 'none';
-              statsOutput.style.display = 'block';
-              statsOutput.innerHTML = '';
-              const sheet = document.createElement('t13-character-sheet');
-              statsOutput.appendChild(sheet);
-              sheet.setCharacter(charData);
-
+            if (bridge.client) {
+                if (bridge.role === 'referee' && speciesKey !== 'Human') {
+                    bridge.client.sendCommand('Species:Register', { species: speciesDescendant });
+                }
+                bridge.client.sendCommand('Character:Register', { character: charData });
             }
+            mountCharacterSheet(charData);
         } catch (err) {
             console.error(err);
         }
@@ -526,27 +554,63 @@ function setupVttControls() {
 
     const vttCanvas = document.createElement('t13-vtt-canvas');
     vttContainer.appendChild(vttCanvas);
-    vttCanvas.addToken('local-player', 'Me', 0x10b981);
-    
+
     if (btnRoll) {
         btnRoll.addEventListener('click', () => {
-            const rolls = [Math.floor(Math.random()*6)+1, Math.floor(Math.random()*6)+1, Math.floor(Math.random()*6)+1];
-            const total = rolls.reduce((a,b)=>a+b, 0);
-
-            P2PNetworkManager.broadcast({
-                type: 'DICE_ROLL',
-                rolls,
-                total,
-                target: 'plot_active'
-            });
-            vttCanvas.spawnDice(rolls);
+            if (bridge.client && activeCharacterId) {
+                bridge.client.sendCommand('Test:Perform', {
+                    characterId: activeCharacterId,
+                    testType: 'dice',
+                    options: { facet: 'Trial', difficulty: 2 }
+                });
+            } else if (bridge.client) {
+                bridge.client.sendCommand('RNG:Draw', { count: 3, min: 1, max: 6 });
+            } else {
+                const rolls = [Math.floor(Math.random()*6)+1, Math.floor(Math.random()*6)+1, Math.floor(Math.random()*6)+1];
+                vttCanvas.spawnDice(rolls);
+            }
         });
     }
-    
+
     if (btnClear) {
         btnClear.addEventListener('click', () => {
             vttCanvas.clearDice();
-            P2PNetworkManager.broadcast({ type: 'CLEAR_TABLE' });
+            if (bridge.client && bridge.role === 'referee') {
+                bridge.client.sendCommand('VTT:ClearTable', {});
+            }
+        });
+    }
+}
+
+function setupVTuberWidget() {
+    const btnWebcam = document.getElementById('toggleWebcam');
+    const btnProcedural = document.getElementById('btnProceduralAvatar');
+    const btnLoadVRM = document.getElementById('btnLoadVRM');
+
+    if (btnWebcam) {
+        btnWebcam.addEventListener('click', async () => {
+            if (!liveAvatarController) return;
+            const nextMode = liveAvatarController.mode === 'webcam' ? 'audio' : 'webcam';
+            try {
+                await liveAvatarController.setMode(nextMode, voipManager);
+                btnWebcam.textContent = nextMode === 'webcam' ? 'Webcam Live (On)' : 'Enable Webcam';
+            } catch (err) {
+                console.warn('Webcam mode unavailable, switching to audio puppeting:', err?.message);
+                await liveAvatarController.setMode('audio', voipManager);
+                btnWebcam.textContent = 'Audio Puppet Mode';
+            }
+        });
+    }
+    if (btnProcedural) {
+        btnProcedural.addEventListener('click', async () => {
+            if (!liveAvatarController) return;
+            await liveAvatarController.setMode('audio', voipManager);
+        });
+    }
+    if (btnLoadVRM) {
+        btnLoadVRM.addEventListener('click', () => {
+            const charSheet = activeCharacterSheet || document.querySelector('t13-character-sheet');
+            charSheet?.openAvatarMaker?.();
         });
     }
 }
@@ -557,36 +621,32 @@ function setupNetworking() {
     const roomInput = document.getElementById('roomIdInput');
     const status = document.getElementById('connectionStatus');
 
-    btnHost.addEventListener('click', async () => {
+    const connectRoom = async (isHost) => {
         const roomId = roomInput.value.trim();
         if (!roomId) return;
-        status.textContent = "Hosting...";
-        await P2PNetworkManager.createRoom(roomId);
-        status.textContent = `Hosting: ${roomId}`;
-        status.style.color = "#10b981";
-        voipManager.start();
-
-        // If authorized, also sync state to central server
-        if (window.T13NE_Auth.isAuthorized) {
-          try {
-            await fetch(`${SERVER_URL}/api/v1/state`, {
-              method: 'POST',
-              headers: window.getAuthHeaders(),
-              body: JSON.stringify({ currentLocation: roomId })
-            });
-          } catch(e) {}
+        if (typeof sessionStorage !== 'undefined') {
+            sessionStorage.setItem('t13ne_session_id', roomId);
         }
-    });
-
-    btnJoin.addEventListener('click', async () => {
-        const roomId = roomInput.value.trim();
-        if (!roomId) return;
-        status.textContent = "Joining...";
-        await P2PNetworkManager.joinRoom(roomId);
-        status.textContent = `Joined: ${roomId}`;
+        status.textContent = isHost ? 'Hosting...' : 'Joining...';
+        try {
+            if (isHost) await P2PNetworkManager.createRoom(roomId);
+            else await P2PNetworkManager.joinRoom(roomId);
+        } catch (p2pErr) {
+            console.warn('PeerJS signaling unavailable; continuing via WebSocket/authoritative session:', p2pErr?.message);
+        }
+        const info = await bridge.connect({
+            sessionId: roomId,
+            actorId: bridge.actorId,
+            storedRefereeToken: window.T13NE_Auth.token
+        });
+        status.textContent = `${isHost ? 'Hosting' : 'Joined'}: ${roomId} (${info.transportMode})`;
         status.style.color = "#10b981";
-        voipManager.start();
-    });
+        syncAuthPanelFromBridge();
+        voipManager?.start?.();
+    };
+
+    btnHost?.addEventListener('click', () => connectRoom(true));
+    btnJoin?.addEventListener('click', () => connectRoom(false));
 }
 
 initApp();

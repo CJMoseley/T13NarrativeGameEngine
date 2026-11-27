@@ -244,8 +244,12 @@ export class T13VttCanvas extends HTMLElement {
         if (!client) return;
         client.on('projection', (proj) => this.syncFromProjection(proj, this.viewerRole));
         client.on('event', (evt) => {
-            if (evt.type === 'Test:Performed' || evt.type === 'RNG:Drawn') {
-                const rolls = evt.payload?.rolls ?? evt.payload?.results ?? evt.payload?.dice?.rolls;
+            if (evt.type === 'Test:Resolved' || evt.type === 'Test:Performed' || evt.type === 'RNG:Drawn') {
+                const rolls = evt.payload?.result?.diceRolls
+                    ?? evt.payload?.result?.rolls
+                    ?? evt.payload?.rolls
+                    ?? evt.payload?.results
+                    ?? evt.payload?.dice?.rolls;
                 if (Array.isArray(rolls) && rolls.length) this.spawnDice(rolls.slice(0, 12));
             }
         });
