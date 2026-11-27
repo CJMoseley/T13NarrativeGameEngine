@@ -1,5 +1,4 @@
-﻿﻿import Logger from "/src/t13ne/core/Logger.js";
-import OpenAI from 'https://esm.sh/openai';
+﻿﻿import Logger from "../../core/Logger.js";
 
 /**
  * AIService handles interactions with external AI providers.
@@ -40,19 +39,24 @@ class AIService {
      */
     configure(config = {}) {
         this.config = { ...this.config, ...config };
-
-        if (this.config.provider === 'openai' && this.config.apiKey) {
-            try {
-                this.openai = new OpenAI({
-                    apiKey: this.config.apiKey,
-                    dangerouslyAllowBrowser: true
-                });
-                Logger.message("AIService: OpenAI SDK initialized.");
-            } catch (error) {
-                Logger.error("AIService: Failed to initialize OpenAI SDK:", error);
-            }
+        if (this.config.provider !== 'openai' || !this.config.apiKey) {
+            this.openai = null;
         }
         Logger.message(`AIService: Configured for provider '${this.config.provider}'`);
+    }
+
+    async _ensureOpenAI() {
+        if (this.openai) return this.openai;
+        if (!this.config.apiKey) {
+            throw new Error("OpenAI API Key is missing.");
+        }
+        const { default: OpenAI } = await import(/* @vite-ignore */ 'https://esm.sh/openai');
+        this.openai = new OpenAI({
+            apiKey: this.config.apiKey,
+            dangerouslyAllowBrowser: true
+        });
+        Logger.message("AIService: OpenAI SDK initialized.");
+        return this.openai;
     }
 
     /**
@@ -120,10 +124,10 @@ class AIService {
     }
 
     async _generateOpenAI(prompt, options = {}) {
-        if (!this.openai) throw new Error("OpenAI not initialized.");
+        const openai = await this._ensureOpenAI();
         const model = this.config.model || 'gpt-3.5-turbo';
 
-        const completion = await this.openai.chat.completions.create({
+        const completion = await openai.chat.completions.create({
             messages: [
                 { role: "system", content: this.config.systemPrompt },
                 { role: "user", content: prompt }

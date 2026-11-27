@@ -1,12 +1,12 @@
-import CodexLoader from "/src/t13ne/modules/codex/CodexLoader.js";
-import Logger from "/src/t13ne/core/Logger.js";
-import T13Dice from '/src/t13ne/modules/mechanics/t13ne-dice.js';
-import T13NECardsAPI from "/src/t13ne/modules/mechanics/t13ne-cards-api.js";
-import T13NE_Facets from "/src/t13ne/modules/mechanics/t13ne-facets.js";
-import T13Boons from '/src/t13ne/modules/mechanics/t13ne-boon.js';
-import T13NE_Sway from "/src/t13ne/modules/mechanics/t13ne-sway.js";
-import T13NE_Stress from "/src/t13ne/modules/mechanics/t13ne-stress.js";
-import T13NE_Resources from "/src/t13ne/modules/mechanics/t13ne-resources.js";
+import CodexLoader from "../codex/CodexLoader.js";
+import Logger from "../../core/Logger.js";
+import T13Dice from './t13ne-dice.js';
+import T13NECardsAPI from "./t13ne-cards-api.js";
+import T13NE_Facets from "./t13ne-facets.js";
+import T13Boons from './t13ne-boon.js';
+import T13NE_Sway from "./t13ne-sway.js";
+import T13NE_Stress from "./t13ne-stress.js";
+import T13NE_Resources from "./t13ne-resources.js";
 import { getDifficultyModifiers } from './FacetRuleEffects.js';
 
 /**
@@ -16,6 +16,15 @@ class T13NE_Tests {
     constructor() {
         this.successLevels = [];
         this.initialized = false;
+        this.session = null;
+    }
+
+    /**
+     * Binds or clears an authoritative T13Session so performTest routes through session commands.
+     * @param {object|null} session
+     */
+    bindSession(session) {
+        this.session = session || null;
     }
 
     /**
@@ -148,15 +157,35 @@ class T13NE_Tests {
     }
 
     /**
-     * Performs a test based on the specified type.
+     * Performs a test based on the specified type. If a T13Session is provided via
+     * `options.session` or `this.session`, routes execution through `Test:Perform`.
      * @param {string} type - 'Value', 'Card', or 'Dice'.
      * @param {object} character - The character performing the test.
-     * @param {object} options - Test options (difficulty, facet, etc.).
+     * @param {object} [options={}] - Test options (difficulty, facet, etc.).
      * @returns {Promise<object>} The test result.
      */
-    async performTest(type, character, options) {
+    async performTest(type, character, options = {}) {
         if (options.difficultyEffects !== undefined && type.toLowerCase() !== 'dice') {
             throw new Error('Difficulty effects are currently supported only for Dice Tests.');
+        }
+        const activeSession = options.session || this.session;
+        if (activeSession && typeof activeSession.dispatch === 'function' && options._fromSession !== true) {
+            const cmdId = options.commandId || `test-${Date.now()}-${Math.floor(Math.random() * 1e6)}`;
+            const actorId = options.actorId || character?.ownerActorId || 'referee';
+            const res = activeSession.dispatch({
+                id: cmdId,
+                sessionId: activeSession.sessionId,
+                actorId,
+                expectedRevision: options.expectedRevision,
+                type: 'Test:Perform',
+                payload: {
+                    testType: type,
+                    characterId: character?.id,
+                    character,
+                    options: { ...options, session: undefined, _fromSession: true }
+                }
+            });
+            return res.ok ? res.result : res;
         }
         switch (type.toLowerCase()) {
             case 'value': return this.valueTest(character, options);
@@ -172,14 +201,17 @@ class T13NE_Tests {
     /**
      * Performs a Value Test.
      * @param {object} character 
-     * @param {object} options - { facet: string, difficulty: number, opponentValue: number, method: 'direct'|'percentage' }
+     * @param {object} options - { facet: string, difficulty: number, opponentValue: number, method: 'direct'|'percentage', actorValues?: number[] }
      */
-    async valueTest(character, options) {
+    async valueTest(character, options = {}) {
         const facetName = options.facet || 'Awe';
         let actorValue = 0;
 
-        // Get Actor Value from Character Facet
-        if (character.facetweb) {
+        if (Array.isArray(options.actorValues) && options.actorValues.length > 0) {
+            actorValue = options.actorValues.reduce((sum, v) => sum + (Number(v) || 0), 0);
+        } else if (options.actorValue !== undefined) {
+            actorValue = Number(options.actorValue) || 0;
+        } else if (character?.facetweb) {
             const facetData = await character.facetweb.getFacetBoon(facetName);
             if (facetData) actorValue = T13Boons.getBoonValue(facetData.Boon + (character.scaleModifier || 0));
         }
@@ -208,10 +240,23 @@ class T13NE_Tests {
             result.success = roll <= chance;
 
             // Check for doubles (e.g., 11, 22)
-            if (roll % 11 === 0) {
+            if (roll >= 11 && roll < 100 && roll % 11 === 0) {
                 if (result.success) result.successLevels++;
                 else result.failureLevels++;
                 result.details.push('Rolled Doubles (+1 Level)');
+            }
+
+            // Multiples / Fractions of percentage target
+            if (result.success && chance > 0) {
+                let mult = 2;
+                while (roll <= chance / mult && mult <= 8) {
+                    result.successLevels++;
+                    result.details.push(`Under 1/${mult} of ${chance}% (+1 Success Level)`);
+                    mult++;
+                }
+            } else if (!result.success && chance > 0 && roll >= chance * 2) {
+                result.failureLevels++;
+                result.details.push(`Multiple of ${chance}% (+1 Failure Level)`);
             }
 
             // Numerology check (sum digits -> 1-13)
@@ -221,7 +266,7 @@ class T13NE_Tests {
                 sum = sum.toString().split('').map(Number).reduce((a, b) => a + b, 0);
             }
 
-            if (character.geometry && character.geometry.Geo && character.geometry.Geo.Number === sum) {
+            if (character?.geometry?.Geo && (character.geometry.Geo.Number === sum || character.geometry.Geo.Geometry === sum)) {
                 result.successLevels++;
                 result.details.push(`Numerology Match (${sum}) (+1 Success Level)`);
             }
@@ -230,9 +275,9 @@ class T13NE_Tests {
             // Direct comparison
             result.success = actorValue >= difficulty;
             if (result.success) {
-                result.successLevels = Math.floor((actorValue - difficulty) / 10); // Arbitrary scaling for value diff
+                result.successLevels = 1 + Math.floor((actorValue - difficulty) / 10);
             } else {
-                result.failureLevels = Math.floor((difficulty - actorValue) / 10);
+                result.failureLevels = 1 + Math.floor((difficulty - actorValue) / 10);
             }
         }
 
@@ -244,14 +289,17 @@ class T13NE_Tests {
      * @param {object} character 
      * @param {object} options - { facet: string, difficulty: number }
      */
-    async cardTest(character, options) {
+    async cardTest(character, options = {}) {
         const facetName = options.facet || 'Awe';
         const difficulty = options.difficulty || 10;
 
-        // 1. Draw Card
-        if (!T13NECardsAPI.deck) await T13NECardsAPI.initialize();
-        const cards = T13NECardsAPI.deck.draw(1);
-        const card = cards[0];
+        // 1. Draw Card (or use supplied card)
+        let card = options.card || null;
+        if (!card) {
+            if (!T13NECardsAPI.deck) await T13NECardsAPI.initialize();
+            const cards = T13NECardsAPI.deck.draw(1);
+            card = cards[0];
+        }
 
         if (!card) return { error: 'No cards available' };
 
@@ -259,47 +307,51 @@ class T13NE_Tests {
         let total = pips;
         const details = [`Drawn ${card.name} (${pips})`];
 
-        // 2. Add Facet Draw
+        // 2. Add Facet Draw using T13Boons.getBoonDraw
         let facetDraw = 1;
         let facetObj = null;
-        if (character.facetweb) {
+        if (character?.facetweb) {
             const facetData = await character.facetweb.getFacetBoon(facetName);
             if (facetData) {
-                // Approximate Draw from Boon (Boon/4 roughly or lookup)
-                // Using T13Boons if available, else simple calc
-                facetDraw = Math.max(1, Math.floor(facetData.Boon / 4));
+                facetDraw = typeof T13Boons.getBoonDraw === 'function'
+                    ? T13Boons.getBoonDraw(facetData.Boon)
+                    : Math.max(1, Math.floor(facetData.Boon / 4));
             }
+            facetObj = typeof T13NE_Facets.getFacet === 'function' ? await T13NE_Facets.getFacet(facetName) : null;
+        } else if (typeof T13NE_Facets.getFacet === 'function') {
             facetObj = await T13NE_Facets.getFacet(facetName);
         }
         total += facetDraw;
         details.push(`Facet Draw (+${facetDraw})`);
 
+        let failureLevels = 0;
+
         // 3. Suit Modifiers
         if (facetObj) {
-            // Check Trump (Matching Suit)
-            // Assuming card.suit is 'Hearts', 'Diamonds', etc. and facetObj.Suit is 1-4 mapped.
-            // Mapping: 1=Diamonds, 2=Hearts, 3=Clubs, 4=Spades (based on context clues in rules.json)
-            const suitMap = { 'Diamonds': 1, 'Hearts': 2, 'Clubs': 3, 'Spades': 4 };
-            const cardSuitVal = suitMap[card.suit] || 0;
+            const suitMap = { 'Diamonds': 1, 'Hearts': 2, 'Clubs': 3, 'Spades': 4, '1': 1, '2': 2, '3': 3, '4': 4 };
+            const cardSuitVal = suitMap[String(card.suit)] || 0;
 
-            if (cardSuitVal === facetObj.Suit) {
+            if (cardSuitVal === 0 || cardSuitVal === facetObj.Suit) {
                 total += 2;
                 details.push('Trump Suit (+2)');
             }
-
-            // Check Anti-Facet (Opposed Suit) - Simplified logic: if suit is opposite?
-            // Rules say Anti-Facet defines Opposed Suit. 
-            // For now, simple check if card suit is same color but different suit? Or just random failure level.
-            // Implementing basic Trump check is good for now.
+            if (cardSuitVal !== 0) {
+                const cardIsRed = cardSuitVal === 1 || cardSuitVal === 2;
+                const facetIsRed = facetObj.Suit === 1 || facetObj.Suit === 2;
+                if (cardIsRed !== facetIsRed) {
+                    failureLevels++;
+                    details.push('Opposite Colour Suit (+1 Failure Level)');
+                }
+            }
         }
 
         // 4. Calculate Success
         const success = total >= difficulty;
         let successLevels = success ? 1 : 0;
-        let failureLevels = success ? 0 : 1;
+        if (!success) failureLevels += 1;
 
-        if (success && total >= difficulty * 2) successLevels++;
-        if (!success && total < difficulty / 2) failureLevels++;
+        if (success && difficulty > 0 && total >= difficulty * 2) successLevels++;
+        if (!success && difficulty > 0 && total < difficulty / 2) failureLevels++;
 
         return {
             type: 'Card',
@@ -419,13 +471,15 @@ class T13NE_Tests {
         }
 
         // 4. Strain Dice (Stress)
+        let strainScore = 0;
         if (options.strain && Array.isArray(options.strain)) {
             for (const s of options.strain) {
                 // s: { dieId, amount, boon }
                 const dieStr = await T13Boons.getDiceForBoon(s.boon);
                 const roll = this.rollDiceString(dieStr);
+                strainScore += roll;
 
-                if (T13NE_Stress) {
+                if (T13NE_Stress && typeof T13NE_Stress.resolveStrain === 'function') {
                     await T13NE_Stress.resolveStrain(character, s.dieId, s.amount, roll);
                 }
 
@@ -435,17 +489,19 @@ class T13NE_Tests {
         }
 
         // 5. Extra Dice (Chi/Sway)
+        let extraScore = 0;
         if (options.extraDice && Array.isArray(options.extraDice)) {
             for (const e of options.extraDice) {
                 // e: { resource, cost, boon, type }
                 let paid = false;
-                if (T13NE_Resources) {
+                if (T13NE_Resources && typeof T13NE_Resources.makePayment === 'function') {
                     paid = T13NE_Resources.makePayment(character, e.resource || 'Chi', e.cost);
                 }
 
                 if (paid) {
                     const dieStr = await T13Boons.getDiceForBoon(e.boon);
                     const roll = this.rollDiceString(dieStr);
+                    extraScore += roll;
 
                     diceResults.push({ type: 'Extra', score: roll, str: dieStr });
                     details.push(`Extra Die (${dieStr}): ${roll} (Paid ${e.cost} ${e.resource || 'Chi'})`);
@@ -468,13 +524,9 @@ class T13NE_Tests {
 
             // Check Main
             if (mainDieScore >= targetDifficulty) passes++; else failures++;
-            // Check Prof (if rolled separately? Text implies "Each Dice Pool is kept separate... Proficiency Dice..."). 
-            // Assuming Prof Score is the total of prof dice.
             if (profCount >= 2 && profScore >= targetDifficulty) passes++; else if (profCount >= 2) failures++;
-            // Check Descendant
             if (options.descendant && descScore >= targetDifficulty) passes++; else if (options.descendant) failures++;
 
-            // Check Strain/Extra Dice
             diceResults.forEach(res => {
                 if (res.type === 'Strain' || res.type === 'Extra') {
                     if (res.score >= targetDifficulty) passes++; else failures++;
@@ -483,82 +535,74 @@ class T13NE_Tests {
 
             if (passes > 0) {
                 success = true;
-                successLevels = passes - 1; // 1 pass = success, extras = levels
+                successLevels = passes - 1;
                 resultType = (successLevels >= 2) ? 'Superior Success' : (successLevels >= 1 ? 'Complete Success' : 'Moderate Success');
             } else {
                 success = false;
-                failureLevels = failures; // 1 failure = Moderate, 2 = Complete, 3 = Serious
+                failureLevels = failures;
                 resultType = (failureLevels >= 3) ? 'Serious Failure' : (failureLevels >= 2 ? 'Complete Failure' : 'Moderate Failure');
             }
-
-            // Stalemate check? "If one die exactly matches... one passes and one fails"
-            // Simplified: if passes == failures? No, text says "If one die beats... success".
-
         } else {
-            // Single Roll Logic
-            totalScore = mainDieScore + profScore + descScore;
+            // Single Roll Logic (sums Main, Proficiencies, Descendant, Strain, and Extra Dice)
+            totalScore = mainDieScore + profScore + descScore + strainScore + extraScore;
 
-            // Numerology Check
-            if (character.geometry && character.geometry.Geo) {
+            let baseLevel = 0;
+            if (totalScore >= targetDifficulty) {
+                success = true;
+                if (targetDifficulty > 0 && totalScore >= targetDifficulty * 3) { baseLevel = 3; resultType = 'Superior Success'; }
+                else if (targetDifficulty > 0 && totalScore >= targetDifficulty * 2) { baseLevel = 2; resultType = 'Complete Success'; }
+                else if (totalScore === targetDifficulty) {
+                    baseLevel = 1;
+                    resultType = 'Borderline/Stalemate';
+                    failureLevels++;
+                } else {
+                    baseLevel = 1;
+                    resultType = 'Moderate Success';
+                }
+                successLevels += baseLevel;
+            } else {
+                success = false;
+                if (totalScore < 0) { baseLevel = 3; resultType = 'Serious Failure'; }
+                else if (targetDifficulty > 0 && totalScore < targetDifficulty / 2) { baseLevel = 2; resultType = 'Complete Failure'; }
+                else { baseLevel = 1; resultType = 'Moderate Failure'; }
+                failureLevels += baseLevel;
+            }
+
+            // Numerology Check (additive after base SL/FL calculation so it is preserved)
+            if (character?.geometry?.Geo) {
                 let sum = totalScore;
                 while (sum > 13) {
                     sum = sum.toString().split('').map(Number).reduce((a, b) => a + b, 0);
                 }
-                // Check Harmonics
                 if (character.geometry.GeoHarmonics) {
                     if (character.geometry.GeoHarmonics.Perfect === sum) {
-                        // Critical / +1 Success Level
-                        successLevels++; // Tentative, applied after pass/fail check usually
+                        successLevels++;
                         details.push(`Numerology Critical (${sum})`);
                     } else if (character.geometry.GeoHarmonics.Nemesis === sum) {
-                        // Fumble / +1 Failure Level
                         failureLevels++;
                         details.push(`Numerology Fumble (${sum})`);
                     }
                 }
             }
 
-            if (totalScore >= targetDifficulty) {
-                success = true;
-                // Calculate Success Levels
-                if (totalScore >= targetDifficulty * 3) { successLevels = 3; resultType = 'Superior Success'; }
-                else if (totalScore >= targetDifficulty * 2) { successLevels = 2; resultType = 'Complete Success'; }
-                else { successLevels = 1; resultType = 'Moderate Success'; }
-
-                if (totalScore === targetDifficulty) {
-                    resultType = 'Borderline/Stalemate';
-                    failureLevels++; // "Borderline Success, but also take a Failure Level"
-                }
-            } else {
-                success = false;
-                // Calculate Failure Levels
-                if (totalScore < 0) { failureLevels = 3; resultType = 'Serious Failure'; }
-                else if (totalScore < targetDifficulty / 2) { failureLevels = 2; resultType = 'Complete Failure'; }
-                else { failureLevels = 1; resultType = 'Moderate Failure'; }
-            }
-        }
-
-        // Apply Crisis Effects
-        if (crisis) {
-            details.push(`Crisis: ${crisis}`);
-            if (success) {
-                if (crisis === 'Snake Eyes') {
-                    resultType = 'Borderline/Stalemate';
-                    success = true; // Technically passed but stalled
-                    // "Automatically Borderline/Stalemate"
-                } else if (crisis === 'Boxcars') {
-                    // Reversal of Success: Success + Failure Level
-                    failureLevels++;
-                    details.push('Reversal of Success (Added Failure Level)');
-                }
-            } else {
-                if (crisis === 'Snake Eyes') {
-                    // Reversal of Success (Failure + Success Level)
-                    successLevels++;
-                    details.push('Reversal of Success (Added Success Level)');
-                } else if (crisis === 'Boxcars') {
-                    resultType = 'Borderline/Stalemate';
-                    // "Automatic Borderline/Stalemate"
+            // Apply Crisis Effects
+            if (crisis) {
+                details.push(`Crisis: ${crisis}`);
+                if (success) {
+                    if (crisis === 'Snake Eyes') {
+                        resultType = 'Borderline/Stalemate';
+                        success = true;
+                    } else if (crisis === 'Boxcars') {
+                        failureLevels += baseLevel || 1;
+                        details.push('Reversal of Success (Added Failure Level)');
+                    }
+                } else {
+                    if (crisis === 'Snake Eyes') {
+                        successLevels += baseLevel || 1;
+                        details.push('Reversal of Success (Added Success Level)');
+                    } else if (crisis === 'Boxcars') {
+                        resultType = 'Borderline/Stalemate';
+                    }
                 }
             }
         }

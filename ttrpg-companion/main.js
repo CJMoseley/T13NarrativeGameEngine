@@ -60,8 +60,8 @@ let apiWs = null;
 
 async function initApp() {
     try {
-        console.log("App Init: Starting T13 Narrative Engine...");
-        await T13NE.start();
+        console.log("App Init: Starting T13 Narrative Engine (companion mode)...");
+        await T13NE.start({ mode: 'companion' });
         
         console.log("App Init: Narrative Engine running successfully.");
         document.getElementById('connectionStatus').textContent = "Engine Ready";

@@ -1,8 +1,8 @@
-﻿import { SuperKnot } from "/src/t13ne/modules/mechanics/t13ne-knots.js";
-import T13SwayAccount from '/src/t13ne/modules/mechanics/T13SwayAccount.js';
-import T13NE from '/src/t13ne/T13NE.js';
-import T13Dice from '/src/t13ne/modules/mechanics/t13ne-dice.js';
-import Logger from "/src/t13ne/core/Logger.js";
+﻿import { SuperKnot } from "../mechanics/t13ne-knots.js";
+import T13SwayAccount from '../mechanics/T13SwayAccount.js';
+import T13NE from '../../T13NE.js';
+import T13Dice from '../mechanics/t13ne-dice.js';
+import Logger from "../../core/Logger.js";
 
 /**
  * Represents a Descendant in the T13NE system (Items, Locations, Connections, etc.).
@@ -91,14 +91,14 @@ export class Descendant extends SuperKnot {
         if (options.masterAnnex) {
             data.masterAnnex = options.masterAnnex;
         } else if (type === 'Pact') {
-            const { PactAnnex } = await import("/src/t13ne/modules/mechanics/t13ne-knots.js");
+            const { PactAnnex } = await import("../mechanics/t13ne-knots.js");
             data.masterAnnex = new PactAnnex(codexLoader, {
                 name: `${displayName} Pact`,
                 description: `A collective pact of ${facet.FacetName}.`,
                 tags: { facets: [facet.FacetName] }
             });
         } else if (type === 'Location') {
-            const { SizeAnnex } = await import("/src/t13ne/modules/mechanics/t13ne-knots.js");
+            const { SizeAnnex } = await import("../mechanics/t13ne-knots.js");
             data.masterAnnex = new SizeAnnex(codexLoader, {
                 name: `${displayName} Size`,
                 size: options.size || 0,
@@ -113,7 +113,7 @@ export class Descendant extends SuperKnot {
                     proficiencies: [{ facet: facet.FacetName }, { facet: facet.FacetName }]
                 });
             } else {
-                const { Annex } = await import("/src/t13ne/modules/mechanics/t13ne-knots.js");
+                const { Annex } = await import("../mechanics/t13ne-knots.js");
                 data.masterAnnex = new Annex(codexLoader, {
                     name: `${facet.FacetName} Function`,
                     description: 'Generated functionality.',

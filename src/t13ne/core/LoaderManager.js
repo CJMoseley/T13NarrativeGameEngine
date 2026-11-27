@@ -2,8 +2,6 @@ import Logger from '/src/t13ne/core/Logger.js';
 import IntroSequence from '/src/t13ne/core/ui/IntroSequence.js';
 import Localization from '/src/t13ne/core/ui/Localization.js';
 import * as THREE from 'three';
-import T13NE_Music from '/src/t13ne/modules/audio/t13ne-music.js';
-import { sharedAvatarCache } from '/src/t13ne/procgen/avatar/AvatarCache.js';
 
 /**
  * @module Core/LoaderManager
@@ -16,8 +14,8 @@ import { sharedAvatarCache } from '/src/t13ne/procgen/avatar/AvatarCache.js';
  * @class LoaderManager
  * @description
  * Handles the step-by-step loading of all major game components. This includes plugins,
- * physics, lore data, and the initial visual scene sequence. It provides feedback to the user
- * via the `IntroSequence` UI.
+ * T13 Core, and optional game-adapter tasks (such as Wormhole Racers). It provides feedback
+ * to the user via the `IntroSequence` UI.
  */
 class LoaderManager {
     /**
@@ -27,10 +25,11 @@ class LoaderManager {
     constructor(viewManager) {
         this.viewManager = viewManager;
         this.engine = viewManager.engine; // T13NE Engine
-        this.gameEngine = viewManager.gameEngine;
+        this.gameAdapter = viewManager.gameAdapter || null;
+        this.gameEngine = viewManager.gameEngine || null;
         this.pluginManager = viewManager.pluginManager;
-        this.loreDataManager = viewManager.loreDataManager;
-        this.galacticHistoryManager = viewManager.galacticHistoryManager;
+        this.loreDataManager = viewManager.loreDataManager || null;
+        this.galacticHistoryManager = viewManager.galacticHistoryManager || null;
 
         /**
          * The sequence of tasks to be executed during the loading process.
@@ -38,7 +37,7 @@ class LoaderManager {
          * @type {Array<Object>}
          */
         this.tasks = [
-            { name: 'Sound Engine', action: () => this.viewManager.engine.soundEngine.init() },
+            { name: 'Sound Engine', action: () => this.viewManager.engine.soundEngine?.init() },
             {
                 name: 'System Check', action: async () => {
                     const soundEngine = this.viewManager.engine.soundEngine;
@@ -55,13 +54,12 @@ class LoaderManager {
                     }
                 }
             },
-            { name: 'Physics Engine', action: () => this.gameEngine.physicsEngine.init() },
             {
                 name: 'Load T13 Core', action: async () => {
                     if (this.engine.loadModules) await this.engine.loadModules();
 
                     // Manually register T13 Core APIs since it's no longer a plugin
-                    // This ensures generators can find 'T13' APIs via PluginManager
+                    // This ensures consumers can find 'T13' APIs via PluginManager
                     if (this.pluginManager) {
                         this.pluginManager.exposeApi('T13', 'T13NE', this.engine);
 
@@ -74,56 +72,18 @@ class LoaderManager {
                     }
                 }
             },
-            { name: 'Discover Plugins', action: () => this.pluginManager.discoverAndLoadPlugins(this) },
-            { name: 'Initialize Plugins', action: () => this.pluginManager.initializePlugins(this) },
-            { name: 'Lore Data', action: () => this.loreDataManager.load() },
-            { name: 'Core Game Data', action: () => this.gameEngine.initializeBaseData() },
-            {
-                name: 'Prewarm Avatars', action: async () => {
-                    const roster = this.viewManager.pendingRaceRoster ?? {
-                        crew: this.gameEngine?.playerCrew ?? (this.gameEngine?.playerCharacter ? [this.gameEngine.playerCharacter] : ['pilot-default']),
-                        ships: this.gameEngine?.raceShips ?? [],
-                        racers: this.gameEngine?.raceParticipants ?? []
-                    };
-                    if (this.viewManager.pendingRaceRoster) this.viewManager.pendingRaceRoster = null;
-                    const result = await sharedAvatarCache.prewarmRoster(roster);
-                    Logger.message(`LoaderManager: Prewarmed ${result.warmed}/${result.total} avatars in ${result.durationMs.toFixed(1)} ms.`);
-                }
-            },
-
-            {
-                name: 'Initialize Audio', action: async () => {
-                    let music = this.viewManager.engine.getModule('Music');
-                    if (!music) {
-                        Logger.warn("LoaderManager: Music module not found in Engine. Using direct import.");
-                        music = T13NE_Music;
-                        if (this.viewManager.engine.registerModule) {
-                            this.viewManager.engine.registerModule('Music', music);
-                        }
-                    }
-                    if (music) {
-                        if (!music.initialized) {
-                            await music.initialize(this.viewManager.engine);
-                        }
-                        music.injectThemeComponents({ galaxy: this.gameEngine.galaxy });
-                        this.reportProgress("Priming Acoustic Harmonics...");
-                        const theme = await music.createMainTheme(this.gameEngine);
-                        if (theme) music.updateTrack(theme);
-                    }
-                }
-            },
-
-            {
-                name: 'Building World', action: async () => { // This is now an async task
-                    this.reportProgress('Initializing narrative sequence...');
-                    if (this.viewManager.sceneManager) {
-                        // Explicitly do not await the full sequence to prevent loader timeout.
-                        // The intro runs in the foreground while the loader completes.
-                        this.viewManager.sceneManager.startIntro().catch(e => Logger.error("IntroSequence failed to start", e));
-                    }
-                    return Promise.resolve();
-                }
-            }
+            { name: 'Discover Plugins', action: () => this.pluginManager?.discoverAndLoadPlugins(this) },
+            { name: 'Initialize Plugins', action: () => this.pluginManager?.initializePlugins(this) },
+            ...(this.gameAdapter?.buildLoaderTasks
+                ? this.gameAdapter.buildLoaderTasks({
+                    viewManager: this.viewManager,
+                    engine: this.engine,
+                    gameEngine: this.gameEngine,
+                    loreDataManager: this.loreDataManager,
+                    pluginManager: this.pluginManager,
+                    reportProgress: (msg) => this.reportProgress(msg)
+                })
+                : [])
         ];
     }
 

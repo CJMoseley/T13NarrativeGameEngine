@@ -1,5 +1,5 @@
-﻿import Logger from "/src/t13ne/core/Logger.js";
-import CodexDB from '/src/t13ne/modules/codex/CodexDB.js';
+﻿import Logger from "../../core/Logger.js";
+import CodexDB from './CodexDB.js';
 
 const PROF_MANIFEST_KEY = 'T13NE_PROF_MANIFEST';
 const PROF_MANIFEST_VERSION_KEY = 'T13NE_PROF_MANIFEST_VERSION';
@@ -25,15 +25,19 @@ export class CodexLibrarian {
     }
 
     clearProficiencyManifest() {
-        localStorage.removeItem(PROF_MANIFEST_KEY);
-        localStorage.removeItem(PROF_MANIFEST_VERSION_KEY);
+        if (typeof localStorage !== 'undefined') {
+            localStorage.removeItem(PROF_MANIFEST_KEY);
+            localStorage.removeItem(PROF_MANIFEST_VERSION_KEY);
+        }
         this.profManifest = null;
         Logger.message('CodexLibrarian: Proficiency manifest cleared.');
     }
 
     clearKnotManifest() {
-        localStorage.removeItem(KNOT_MANIFEST_KEY);
-        localStorage.removeItem(KNOT_MANIFEST_VERSION_KEY);
+        if (typeof localStorage !== 'undefined') {
+            localStorage.removeItem(KNOT_MANIFEST_KEY);
+            localStorage.removeItem(KNOT_MANIFEST_VERSION_KEY);
+        }
         this.knotManifest = null;
         Logger.message('CodexLibrarian: Knot manifest cleared.');
     }
@@ -324,6 +328,7 @@ export class CodexLibrarian {
     }
 
     _cacheManifestToLS(key, data, verKey) {
+        if (typeof localStorage === 'undefined') return;
         try {
             localStorage.setItem(key, JSON.stringify(data));
             localStorage.setItem(verKey, verKey === KNOT_MANIFEST_VERSION_KEY ? KNOT_MANIFEST_VERSION : CURRENT_MANIFEST_VERSION);

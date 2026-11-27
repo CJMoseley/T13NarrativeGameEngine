@@ -1,8 +1,8 @@
-﻿﻿import { Character, SeededRNG } from "/src/t13ne/modules/characters/t13ne-chars.js";
-import { Annex, Hitch, PersonalityAnnex } from "/src/t13ne/modules/mechanics/t13ne-knots.js";
-import T13NE from '/src/t13ne/T13NE.js';
-import Logger from "/src/t13ne/core/Logger.js";
-import T13Boons from '/src/t13ne/modules/mechanics/t13ne-boon.js';
+﻿﻿import { Character, SeededRNG } from "../t13ne-chars.js";
+import { Annex, Hitch, PersonalityAnnex } from "../../mechanics/t13ne-knots.js";
+import T13NE from '../../../T13NE.js';
+import Logger from "../../../core/Logger.js";
+import T13Boons from '../../mechanics/t13ne-boon.js';
 
 const LITE_BOONS = {
     1: { type: 'Proficiency', boon: 10, draw: 1, play: 1, rt: 0, grt: 0, umbral: 0, nimbed: 0 },

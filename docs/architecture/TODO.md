@@ -2,7 +2,7 @@
 
 Last updated: 2026-11-26
 
-Baseline: `npm run test:node` passes **179 tests**, and both root (`vite.config.js`) and companion (`ttrpg-companion/vite.config.js`) Rollup bundles resolve cleanly against the single canonical `src/t13ne/` source tree. Remaining Facet-role/body-language confirmations and authored cultural outfit catalogs stay parked in [TODO-avatars.md](./TODO-avatars.md), while **3D modelling/sculpting upgrades, audio/VOIP overhaul, T13 species voice effects, and Avatar puppeting** have been pulled directly into the active VTT pass (Stages 3–4 below).
+Baseline: `npm run test:node` passes **187 tests** (Stages 1 & 2 complete on branch `feat/staged-engine-vtt-wormhole`), and both root (`vite.config.js`) and companion (`ttrpg-companion/vite.config.js`) Rollup bundles resolve cleanly against the single canonical `src/t13ne/` source tree (`ttrpg-companion/src/t13ne/` has been retired). Remaining Facet-role/body-language confirmations and authored cultural outfit catalogs stay parked in [TODO-avatars.md](./TODO-avatars.md), while **3D modelling/sculpting upgrades, audio/VOIP overhaul, T13 species voice effects, and Avatar puppeting** have been pulled directly into the active VTT pass (Stages 3–4 below).
 
 ## Standing Rules & Product Boundaries
 
@@ -37,32 +37,32 @@ Baseline: `npm run test:node` passes **179 tests**, and both root (`vite.config.
 
 ---
 
-## Stage 1: Engine Boundary, T13 Species Contract & Headless Session Core (Days 1–3)
+## Stage 1: Engine Boundary, T13 Species Contract & Headless Session Core (Days 1–3) — COMPLETED
 
 Goal: Separate the genre-agnostic T13 Engine from Wormhole Racers space-generation boot paths, formalize the T13 Species (`Descendant`) vs. Wormhole Racers species boundary, eliminate the legacy duplicate companion tree, and stand up a pure headless `T13Session`.
 
-- [ ] **1.1 Retire legacy `ttrpg-companion/src/t13ne/` copy:** Diff `ttrpg-companion/src/t13ne/` against canonical `src/t13ne/` to ensure no unique fixes are stranded, update the remaining legacy dual-tree tests (`t13-codex-initialization.test.js`, `t13-gematria.test.js`, `t13-proficiency-catalog.test.js`, `p2p-trust-boundary.test.js`), and remove the duplicate directory.
-- [ ] **1.2 Separate T13 Core from Wormhole Racers & formalize Species boundary:**
-  - Decouple Wormhole Racers generators and scenes (`GalaxyGenerator`, `GalacticHistory`, `StellarSystemGenerator`, `PlanetGenerator`, `SpeciesGenerator`, `ShipFactory`, space/orbital/shipyard scenes, `EngineSoundGenerator`, `WormholeAmbiance`) from core T13 initialization so non-sci-fi T13 games and the VTT boot cleanly without space-game dependencies.
-  - Define the canonical **T13 Species-as-Descendant schema** (`Descendant` of `Nature` / lineage + Character/Pattern `Incarna` Formation, supporting size rules, phenotype matrices, vocal/voice-FX traits, and natural Annexes/Hitches) and provide a Wormhole Racers adapter mapping `SpeciesGenerator` entries as a sci-fi subset within T13's `"Humans"` and `"Aliens"`.
-- [ ] **1.3 Remove browser/root-slash coupling in core mechanics:** Replace remaining `/src/t13ne/...` root-slash imports and unguarded `window`/`localStorage`/`document` references across `src/t13ne/modules/mechanics/`, `characters/`, `narrative/`, and `systems/` with clean relative imports and injected storage/UI adapters so all rules modules load natively in Node and Web Workers without regex/base64 test shims.
-- [ ] **1.4 Build `T13Session` command/event/snapshot core:** Implement versioned `command` validation (`id`, `sessionId`, `actorId`, `expectedRevision`, `type`, `payload`), idempotent deduplication, ordered `event` emission with visibility tags (`public`, `player:<id>`, `referee`), seeded PRNG state capture, and JSON `snapshot` serialize/restore.
-- [ ] **1.5 Stage 1 tests:** Automated Node tests proving two independent seeded `T13Session` instances run concurrently without shared singleton bleed, round-trip identical state across save/restore, and resolve T13 Species `Descendant` metadata cleanly with and without Wormhole Racers adapters.
+- [x] **1.1 Retire legacy `ttrpg-companion/src/t13ne/` copy:** Diffed `ttrpg-companion/src/t13ne/` against canonical `src/t13ne/` (all differing JS/JSON files were older snapshots; `SafeDOM.js` was copied to `src/t13ne/utils/SafeDOM.js`), updated dual-tree tests (`t13-codex-initialization.test.js`, `t13-gematria.test.js`, `t13-proficiency-catalog.test.js`), and removed the duplicate directory.
+- [x] **1.2 Separate T13 Core from Wormhole Racers & formalize Species boundary:**
+  - Moved Wormhole Racers `GameEngine`, `LoreData`, `GalacticHistory`, and loader tasks behind `src/t13ne/games/wormhole-racers/WormholeRacersAdapter.js`; added `mode: 'headless' | 'companion' | 'full'` to `T13NE.initializeEngine` / `T13NE.start` (plus updated `ttrpg-companion/main.js` and removed the unused `GalacticEpic` leak in `t13ne-referee.js`).
+  - Defined the canonical **T13 Species-as-Descendant schema** in `src/t13ne/modules/characters/T13SpeciesDescendant.js` and Wormhole Racers adapter in `src/t13ne/games/wormhole-racers/WormholeSpeciesAdapter.js` mapping Wormhole Racers templates/lore as a sci-fi subset within T13's `'human'` and `'alien'` categories.
+- [x] **1.3 Remove browser/root-slash coupling in core mechanics:** Converted 135 `/src/t13ne/...` imports across 48 files in `mechanics/`, `characters/`, `narrative/`, `systems/`, `codex/`, `world/`, `ai/`, and `vtt/` to relative ESM paths, lazy-loaded `OpenAI` in `AIService.js`, and guarded `window`/`localStorage`/`crypto` in core runtime paths.
+- [x] **1.4 Build `T13Session` command/event/snapshot core:** Implemented `src/t13ne/modules/systems/T13Session.js` with instance-owned mulberry32 PRNG, revisioned optimistic concurrency, idempotent deduplication with error rollback, visibility-tagged event logs (`public`, `player:<id>`, `referee`), role-filtered projections, built-in commands, and JSON `snapshot()` / `T13Session.fromSnapshot()`.
+- [x] **1.5 Stage 1 tests:** Added `tests/t13-session-core.test.js` proving native Node ESM imports, headless `T13NE` boot, concurrent seeded `T13Session` isolation, role/privacy enforcement, idempotency, snapshot round-trip, and `T13SpeciesDescendant` / `WormholeSpeciesAdapter` contracts.
 
 ---
 
-## Stage 2: Authoritative T13 Rules & Ordeal Execution (Days 3–6)
+## Stage 2: Authoritative T13 Rules & Ordeal Execution (Days 3–6) — COMPLETED
 
 Goal: Make T13 mechanics execute real, rulebook-backed state transitions inside `T13Session` instead of acting only as read-only calculators or UI stubs.
 
-- [ ] **2.1 Executable T13 Tests (`Dice`, `Card`, `Value`):** Route `T13NE_Tests.performTest` through `T13Session`, wiring `T13Boons` (`getDiceForBoon`, `getBoonReduced`, `getBoonScore`, `getBoonDraw`, `getBoonValue`), Annex selection, Difficulty modifiers (`FacetRuleEffects`), Strain/Stress (`T13NE_Stress`), and Chi / Success & Failure Level calculation against `docs/rules/Test-Dice.md`, `Test-Card-Draw.md`, and `Success-and-Failure-Levels.md`.
-- [ ] **2.2 Complete `CardsAPI` & Deck triggers:** Implement missing card `play`, `prepare`, `discard`, Style Reserve (`docs/rules/Styles.md`), and multi-deck scaling triggers in `t13ne-cards-api.js`, preserving card context distinctions (Ordeal, Quest Spread, Wyrd Tarot, Wound) rather than collapsing them.
-- [ ] **2.3 Authoritative Ordeal state machine:** Wire `T13Ordeals` (`Ordeal`, `OrdealStage`, `OrdealRound`), Stage card difficulty (`t13ne-stage-difficulty.js`), Obstacle difficulty, Stakes & Wild Pool dealing (`t13ne-ordeal-rules.js`), Reaction Time (`RT` / `GRT`), and `T13NE_ActionSpaces` into `T13Session` commands (`Ordeal:Start`, `Ordeal:DrawStage`, `Ordeal:PlayCards`, `Ordeal:AdvanceRound`, `Ordeal:Resolve`). Audit edge cases against `docs/rules/Ordeals.md`, `Ordeal-Stages.md`, `Ordeal-Rounds.md`, and `Alternate-Ordeals.md`.
-- [ ] **2.4 Plots, Quest Spreads, I-Ching Gains & Wounds/Hitches:**
-  - Connect `Spread:InterpretQuest` (`QuestSpread.js`) to create/advance persistent `T13NE_Plots` and Quests with Referee confirmation.
-  - Connect Character I-Ching tie choices, Gain condition adjudication (`IChing:GrantReward` with authority checks), and source-backed Unchanging/changing-line effects.
-  - Wire `HitchRules` (`Quirk`/`Flaw`/`Woe` triggers, Marks/Ruins, Gnarls), `T13NE_Wounds` tags/healing states, and `T13SwayAccount` (`Yin`, `Yang`, `Chi`, `Yarn`, `Twists`, Facet Sway) into character/Descendant persistence.
-- [ ] **2.5 Stage 2 tests:** Golden worked-example tests in Node covering a complete Dice Test, Card Test, Hitch trigger, Wound application, and multi-round Ordeal resolution with snapshot replay.
+- [x] **2.1 Executable T13 Tests (`Dice`, `Card`, `Value`):** Created pure `src/t13ne/modules/mechanics/T13TestRules.js` (canonical 24-Facet metadata, Trump/Misfit alignment, Potency Chi/Difficulty scaling, Dice Tests summing Strain/Extra dice with Crisis reversal & Numerology, Card Draw Tests using `T13Boons.getBoonDraw` & Suit bonuses, and Direct/Percentage Value Tests), updated `t13ne-tests.js` with `bindSession(session)`, and wired `Test:Perform` into `T13SessionRules.js`.
+- [x] **2.2 Complete `CardsAPI` & Deck triggers:** Removed duplicate `discardSpread`, added `preparedReserves` and `styleReserves`, implemented `prepareCard(...)` (`onPrepare`) and upgraded `playCard` / `discard` with location cleanup & preserved `cardContext` (`Ordeal`, `QuestSpread`, `WyrdTarot`, `Wound`, `Yarn`) in both `t13ne-cards-api.js` and `T13SessionRules.js` (`Deck:Initialize`, `Card:Draw`, `Card:Prepare`, `Card:Play`, `Card:Discard`).
+- [x] **2.3 Authoritative Ordeal state machine:** Wired `Ordeal:Start`, `Ordeal:DrawStage`, `Ordeal:PlayCards` (`full`, `half-wait`, `half-quick`, Wild Pool Tricks, RT/GRT tracking & paydown), `Ordeal:AdvancePhase`, `Ordeal:AdvanceRound` (RT/GRT clear, pool reduction via `getBoonReduced`, `Fresh` -> `Untreated` wound transition), and `Ordeal:Resolve` into `T13SessionRules.js`.
+- [x] **2.4 Plots, Quest Spreads, I-Ching Gains & Wounds/Hitches:**
+  - Wired `Spread:InterpretQuest`, `Plot:Confirm`, and `Plot:Update` for persistent Plot & Line-Quest creation from 6-card spreads.
+  - Wired `IChing:Calculate` (preserving existing saves unless `forceRecalculate`) and Referee-only adjudicated `IChing:GrantReward` with idempotent grant deduplication.
+  - Wired `Hitch:Evaluate` (`Quirk`/`Flaw`/`Woe`, Marks/Ruins, synchronous Gnarl effects), Stakes-aware `Wound:Apply` / `Wound:UpdateState` (including Chi reduction & Freshness lifecycle), and overdraft-checked `Sway:Adjust` into character persistence.
+- [x] **2.5 Stage 2 tests:** Added `tests/t13-stage2-rules.test.js` covering rulebook Dice/Card/Value golden examples, `CardsAPI` reserve/trigger/context handling, and an end-to-end multi-round Ordeal + Plot + I-Ching + Hitch + Wound + Snapshot replay in `T13Session`.
 
 ---
 

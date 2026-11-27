@@ -1,6 +1,6 @@
-import Logger from '/src/t13ne/core/Logger.js';
-import CodexLoader from '/src/t13ne/modules/codex/CodexLoader.js';
-import ProcGen from '/src/t13ne/procgen/ProcGen.js';
+import Logger from '../../core/Logger.js';
+import CodexLoader from '../../modules/codex/CodexLoader.js';
+import ProcGen from '../ProcGen.js';
 
 /**
  * GalacticEpic

@@ -1,5 +1,5 @@
-﻿import Logger from '/src/t13ne/core/Logger.js';
-import CodexDB from '/src/t13ne/modules/codex/CodexDB.js';
+﻿import Logger from '../../core/Logger.js';
+import CodexDB from './CodexDB.js';
 import { isSafeProficiencyId } from './ProficiencyIdentity.js';
 
 /**
@@ -247,7 +247,7 @@ export class CodexScribe {
     async _reconstructEntity(data, type) {
         // Dynamic imports to avoid circular dependencies in Scribe
         if (type === 'Character') {
-            const { Character } = await import('/src/t13ne/modules/characters/t13ne-chars.js');
+            const { Character } = await import('../characters/t13ne-chars.js');
             // We need to pass the CodexLoader facade, not just library/scribe
             // Assuming CodexLoader is available globally or passed down. 
             // Since we are inside CodexLoader composition, we might need a reference to the parent.

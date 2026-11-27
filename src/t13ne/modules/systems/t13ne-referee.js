@@ -1,13 +1,12 @@
 // d:\GoogleDrive\Games\wormholeracersJS\WormholeRacersJS\plugins\t13ne\modules\t13ne-referee.js
 
-import Logger from "/src/t13ne/core/Logger.js";
-import { EventBus } from "/src/t13ne/core/EventBus.js";
+import Logger from "../../core/Logger.js";
+import { EventBus } from "../../core/EventBus.js";
 import { T13Plot } from "../narrative/t13ne-plots.js";
 import T13LoreManager from "../narrative/t13ne-lore.js";
 import CodexLoader from "../codex/CodexLoader.js";
 import { SceneDirector } from "./t13ne-scene-director.js";
-import { WorkerPool } from "/src/t13ne/core/WorkerPool.js";
-import GalacticEpic from "../../procgen/galaxy/GalacticEpic.js";
+import { WorkerPool } from "../../core/WorkerPool.js";
 
 /**
  * T13NE Referee Module
@@ -467,17 +466,18 @@ class T13NE_Referee {
     }
 
     /**
-     * Saves the current game state to localStorage.
+     * Saves the current game state to an injected storage adapter or localStorage.
      * @param {string} slotName - The name of the save slot.
+     * @param {object} [storage] - Optional storage interface with setItem(k, v).
      * @returns {Promise<boolean>} Success status.
      */
-    async saveGame(slotName = 'default') {
-        const GameState = this.t13ne.getModule('GameState');
-        if (!GameState) return false;
+    async saveGame(slotName = 'default', storage = (typeof localStorage !== 'undefined' ? localStorage : null)) {
+        const GameState = this.t13ne?.getModule('GameState');
+        if (!GameState || !storage) return false;
 
         const jsonState = await GameState.save();
         if (jsonState) {
-            localStorage.setItem(`T13NE_SAVE_${slotName}`, jsonState);
+            storage.setItem(`T13NE_SAVE_${slotName}`, jsonState);
             Logger.message(`Referee: Game saved to slot '${slotName}'.`);
             return true;
         }
@@ -485,15 +485,16 @@ class T13NE_Referee {
     }
 
     /**
-     * Loads a game state from localStorage.
+     * Loads a game state from an injected storage adapter or localStorage.
      * @param {string} slotName - The name of the save slot.
+     * @param {object} [storage] - Optional storage interface with getItem(k).
      * @returns {Promise<boolean>} Success status.
      */
-    async loadGame(slotName = 'default') {
-        const GameState = this.t13ne.getModule('GameState');
-        if (!GameState) return false;
+    async loadGame(slotName = 'default', storage = (typeof localStorage !== 'undefined' ? localStorage : null)) {
+        const GameState = this.t13ne?.getModule('GameState');
+        if (!GameState || !storage) return false;
 
-        const jsonState = localStorage.getItem(`T13NE_SAVE_${slotName}`);
+        const jsonState = storage.getItem(`T13NE_SAVE_${slotName}`);
         if (jsonState) {
             Logger.message(`Referee: Loading game from slot '${slotName}'.`);
             return await GameState.load(jsonState);

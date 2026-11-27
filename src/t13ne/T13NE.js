@@ -46,12 +46,6 @@ import T13NE_StateMachine from './modules/systems/t13ne-state-machine.js';
 import T13NE_Editor from './modules/systems/t13ne-editor.js';
 import T13VTTManager from './modules/vtt/VTTManager.js';
 
-import { ViewManager } from './core/ViewManager.js';
-import { PluginManager } from './core/PluginManager.js';
-import { SoundEngine } from './core/SoundEngine.js';
-import LoaderManager from './core/LoaderManager.js';
-import WasmManager from './wasm/WasmManager.js';
-
 /**
  * T13NE Engine Core
  * The central hub of the game engine, managing core systems and narrative modules.
@@ -61,6 +55,8 @@ class T13NE {
         this.modules = {};
         this.isLoaded = false;
         this.engineInitialized = false;
+        this.bootMode = null;
+        this.gameAdapter = null;
         this._loadingPromise = null;
 
         // Core Systems
@@ -85,8 +81,10 @@ class T13NE {
 
         let savedConfig = {};
         try {
-            const stored = localStorage.getItem('T13NE_CONFIG');
-            if (stored) savedConfig = JSON.parse(stored);
+            if (typeof localStorage !== 'undefined') {
+                const stored = localStorage.getItem('T13NE_CONFIG');
+                if (stored) savedConfig = JSON.parse(stored);
+            }
         } catch (e) {
             Logger.warn("T13NE: Failed to load config from localStorage.");
         }
@@ -118,7 +116,9 @@ class T13NE {
             }
 
             try {
-                localStorage.setItem('T13NE_CONFIG', JSON.stringify(this.config));
+                if (typeof localStorage !== 'undefined') {
+                    localStorage.setItem('T13NE_CONFIG', JSON.stringify(this.config));
+                }
             } catch (e) {
                 Logger.error("T13NE: Failed to save config to localStorage", e);
             }
@@ -209,27 +209,59 @@ class T13NE {
     }
 
     /**
-     * Initializes the T13NE Engine and all core systems.
-     * This makes T13NE the primary hub for the entire application.
+     * Initializes the T13NE Engine and core systems for the requested boot mode:
+     * - 'headless' (or { headless: true }): pure T13 modules only (no DOM/WebGL/Wormhole Racers)
+     * - 'companion' / 'vtt': companion/VTT UI systems without Wormhole Racers galaxy/ship boot
+     * - 'full' / 'wormhole-racers': full game shell with WormholeRacersAdapter mounted
+     * @param {object} [options]
      */
-    async initializeEngine() {
+    async initializeEngine(options = {}) {
         if (this.engineInitialized) return;
 
-        Logger.message("T13NE: Initializing Engine Core...");
+        const mode = options.mode ?? (options.headless ? 'headless' : 'full');
+        const isHeadless = mode === 'headless' || Boolean(options.headless);
+        const isCompanion = mode === 'companion' || mode === 'vtt';
+        this.bootMode = mode;
 
-        // 1. Initialize Core Infrastructure
-        await WasmManager.initialize();
-        this.soundEngine = new SoundEngine();
-        this.pluginManager = new PluginManager(this);
-        this.viewManager = new ViewManager(this); // Pass T13NE as the context
-        this.loaderManager = new LoaderManager(this.viewManager);
+        Logger.message(`T13NE: Initializing Engine Core (mode: ${mode})...`);
 
-        // Initialize VTT Manager
-        this.vttManager = T13VTTManager;
-        this.vttManager.initialize(this.viewManager.sceneManager);
+        if (!isHeadless || options.loadWasm) {
+            try {
+                const { default: WasmManager } = await import('./wasm/WasmManager.js');
+                await WasmManager.initialize();
+            } catch (err) {
+                Logger.warn('T13NE: WASM initialization skipped/unavailable.', err?.message || err);
+            }
+        }
 
-        // 2. Load Narrative Modules
-        await this.loadModules();
+        if (!isHeadless) {
+            const { SoundEngine } = await import('./core/SoundEngine.js');
+            const { PluginManager } = await import('./core/PluginManager.js');
+            this.soundEngine = new SoundEngine();
+            this.modules.SoundEngine = this.soundEngine;
+            this.pluginManager = new PluginManager(this);
+
+            if (!isCompanion) {
+                let gameAdapter = options.gameAdapter || null;
+                if (!gameAdapter && mode !== 't13-only') {
+                    const mod = await import('./games/wormhole-racers/WormholeRacersAdapter.js');
+                    gameAdapter = mod.default;
+                }
+                this.gameAdapter = gameAdapter;
+
+                const { ViewManager } = await import('./core/ViewManager.js');
+                const { default: LoaderManager } = await import('./core/LoaderManager.js');
+                this.viewManager = new ViewManager(this, { gameAdapter });
+                this.loaderManager = new LoaderManager(this.viewManager);
+            }
+
+            this.vttManager = T13VTTManager;
+            this.vttManager.initialize(options.sceneManager || this.viewManager?.sceneManager || null);
+        }
+
+        if (options.loadModules !== false) {
+            await this.loadModules(options);
+        }
 
         this.engineInitialized = true;
         Logger.message("T13NE: Engine Core Initialized.");
@@ -237,22 +269,35 @@ class T13NE {
 
     /**
      * Starts the full engine loading sequence.
+     * @param {object} [options]
      */
-    async start() {
+    async start(options = {}) {
         if (!this.engineInitialized) {
-            await this.initializeEngine();
+            await this.initializeEngine(options);
         }
-        await this.loaderManager.loadAll();
+        if (this.loaderManager) {
+            await this.loaderManager.loadAll();
+        }
+    }
+
+    /**
+     * Registers or overrides a module reference on the engine instance.
+     * @param {string} moduleName
+     * @param {object} mod
+     */
+    registerModule(moduleName, mod) {
+        this.modules[moduleName] = mod;
     }
 
     /**
      * Asynchronously loads all necessary T13NE modules.
+     * @param {object} [options]
      */
-    async loadModules() {
+    async loadModules(options = {}) {
         if (this.isLoaded) return;
         if (this._loadingPromise) return this._loadingPromise;
 
-        this._loadingPromise = this._loadModulesInternal();
+        this._loadingPromise = this._loadModulesInternal(options);
         try {
             await this._loadingPromise;
         } catch (e) {
@@ -261,14 +306,16 @@ class T13NE {
         }
     }
 
-    async _loadModulesInternal() {
+    async _loadModulesInternal(options = {}) {
 
         Logger.message("T13NE: Loading modules...");
 
         // Load the CodexLoader module first as other modules depend on it
         this.modules.Codex = CodexLoader;
         this.modules.Codex.setConfig(this.config.codex);
-        await this.modules.Codex.initialize();
+        if (options.loadCodex !== false) {
+            await this.modules.Codex.initialize();
+        }
         Logger.message("T13NE: CodexLoader module loaded.");
 
         // Load Commands module early so others can use it

@@ -1,5 +1,5 @@
-﻿﻿import Logger from "/src/t13ne/core/Logger.js";
-import T13NE from '/src/t13ne/T13NE.js';
+﻿﻿import Logger from "../../core/Logger.js";
+import T13NE from '../../T13NE.js';
 import { characterGuidance } from './t13ne-character-guidance.js';
 
 /**

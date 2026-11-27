@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 
-for (const copy of ['src/t13ne', 'ttrpg-companion/src/t13ne']) {
+for (const copy of ['src/t13ne']) {
     test(`${copy}: codex initialization propagates failure and permits retry`, async () => {
         const source = await readFile(path.join(process.cwd(), copy, 'modules/codex/CodexLibrary.js'), 'utf8');
         const stubbed = source

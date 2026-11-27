@@ -1,7 +1,7 @@
-﻿﻿import { Character, SeededRNG } from "/src/t13ne/modules/characters/t13ne-chars.js";
-import { PersonalityAnnex, Hitch, Annex } from "/src/t13ne/modules/mechanics/t13ne-knots.js";
-import T13NE from '/src/t13ne/T13NE.js';
-import Logger from "/src/t13ne/core/Logger.js";
+﻿﻿import { Character, SeededRNG } from "../t13ne-chars.js";
+import { PersonalityAnnex, Hitch, Annex } from "../../mechanics/t13ne-knots.js";
+import T13NE from '../../../T13NE.js';
+import Logger from "../../../core/Logger.js";
 
 export class Detailed extends Character {
     constructor(codexLoader, data) {

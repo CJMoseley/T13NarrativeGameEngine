@@ -15,9 +15,9 @@ export class SceneDirector {
     _initDefaultRegistry() {
         // Register default components
         // These will be imported dynamically when needed
-        this.componentRegistry.set('Planet', () => import('/src/t13ne/scenes/scenecomponents/Planet.js').then(m => m.Planet));
-        this.componentRegistry.set('Star', () => import('/src/t13ne/scenes/scenecomponents/Star.js').then(m => m.Star));
-        this.componentRegistry.set('Asteroid', () => import('/src/t13ne/scenes/scenecomponents/Asteroid.js').then(m => m.Asteroid));
+        this.componentRegistry.set('Planet', () => import('../../scenes/scenecomponents/Planet.js').then(m => m.Planet));
+        this.componentRegistry.set('Star', () => import('../../scenes/scenecomponents/Star.js').then(m => m.Star));
+        this.componentRegistry.set('Asteroid', () => import('../../scenes/scenecomponents/Asteroid.js').then(m => m.Asteroid));
         // Add more furniture here...
     }
 

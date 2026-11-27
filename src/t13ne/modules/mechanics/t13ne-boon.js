@@ -158,11 +158,9 @@ class T13Boons {
         if (boon === 0) {
             return 0;
         } else if (boon >= 99850) {
-            // In the PHP, this returns a script tag. In JS, we assume T13NE object exists.
-            if (window.T13NE && window.T13NE.Render && window.T13NE.CE) {
+            // In the PHP, this returns a script tag. In JS, check browser globals safely.
+            if (typeof window !== 'undefined' && window.T13NE && window.T13NE.Render && window.T13NE.CE) {
                 window.T13NE.Render(window.T13NE.CE("span", { className: "t13ne-bignumbers" }, this.getBoonValue(boon)));
-            } else {
-                console.error("T13NE rendering components are not available.");
             }
             return `[Rendering big number for boon ${boon}]`;
 

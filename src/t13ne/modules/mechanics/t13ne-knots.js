@@ -1,10 +1,10 @@
 ﻿﻿// Knots are combinations of threads that create everything else in the game.
 // They are essentially bundles of proficiencies, texts, and other game elements.
 
-import Logger from "/src/t13ne/core/Logger.js";
-import T13NE_Sway from "/src/t13ne/modules/mechanics/t13ne-sway.js";
-import T13Name from "/src/t13ne/modules/characters/t13ne-names.js";
-import T13Boons from "/src/t13ne/modules/mechanics/t13ne-boon.js";
+import Logger from "../../core/Logger.js";
+import T13NE_Sway from "./t13ne-sway.js";
+import T13Name from "../characters/t13ne-names.js";
+import T13Boons from "./t13ne-boon.js";
 import { evaluateHitch } from './HitchRules.js';
 
 function proficiencyFacets(record) {

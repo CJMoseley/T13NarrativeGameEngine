@@ -5,8 +5,7 @@ import path from 'node:path';
 
 const root = process.cwd();
 const copies = [
-    'src/t13ne',
-    'ttrpg-companion/src/t13ne'
+    'src/t13ne'
 ];
 
 for (const copy of copies) {

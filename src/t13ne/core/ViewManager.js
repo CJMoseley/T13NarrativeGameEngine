@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-import { GameEngine } from '/src/t13ne/core/GameEngine.js';
 import { UIManager } from '/src/t13ne/core/ui/UIManager.js';
 import { SceneManager } from '/src/t13ne/core/SceneManager.js';
 import Logger from '/src/t13ne/core/Logger.js';
@@ -7,8 +6,6 @@ import { EventBus } from '/src/t13ne/core/EventBus.js';
 // The Scene base class is now the authority on what a scene is.
 import { Scene } from '/src/t13ne/core/Scene.js';
 import { PluginManager } from '/src/t13ne/core/PluginManager.js'; // Import PluginManager
-import { LoreData } from '/src/t13ne/procgen/lore/LoreData.js'; // Import LoreData
-import { GalacticHistory } from '/src/t13ne/procgen/galaxy/GalacticHistory.js'; // Import GalacticHistory
 import IntroSequenceUI from '/src/t13ne/core/ui/IntroSequence.js';
 import { UIMessage } from '/src/t13ne/core/ui/UIMessage.js';
 import { PerformanceMonitor } from '/src/t13ne/core/PerformanceMonitor.js';
@@ -29,15 +26,18 @@ import { sharedAvatarCache } from '/src/t13ne/procgen/avatar/AvatarCache.js';
  * the 3D aspects of these transitions, while the UIManager handles the 2D UI overlays.
  */
 export class ViewManager {
-    constructor(engine) {
+    constructor(engine, options = {}) {
         this.engine = engine; // T13NE Engine Core
-        this.gameEngine = new GameEngine(this.engine);
+        this.gameAdapter = options.gameAdapter || null;
+        this.gameEngine = this.gameAdapter?.createGameEngine
+            ? this.gameAdapter.createGameEngine(this.engine)
+            : (options.gameEngine || null);
         this.uiManager = new UIManager(this);
         this.uiMessage = new UIMessage(this);
         this.sceneManager = new SceneManager(this);
-        this.pluginManager = this.engine.pluginManager || this.gameEngine.pluginManager; // Use T13NE PluginManager
-        this.loreDataManager = LoreData; // Assign the imported LoreData instance
-        this.galacticHistoryManager = GalacticHistory; // Assign the imported GalacticHistory instance
+        this.pluginManager = this.engine.pluginManager || this.gameEngine?.pluginManager || null;
+        this.loreDataManager = this.gameAdapter?.getLoreData ? this.gameAdapter.getLoreData() : null;
+        this.galacticHistoryManager = this.gameAdapter?.getGalacticHistory ? this.gameAdapter.getGalacticHistory() : null;
 
         // Z-Index Layer Definitions - Centralized control
         this.Z_LAYERS = {

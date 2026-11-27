@@ -1,4 +1,4 @@
-﻿import Logger from "/src/t13ne/core/Logger.js";
+﻿import Logger from "../../core/Logger.js";
 import { isSafeProficiencyId } from './ProficiencyIdentity.js';
 import { validateProficiency } from './ProficiencyValidation.js';
 

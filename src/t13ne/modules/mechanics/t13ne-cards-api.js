@@ -12,14 +12,15 @@ import Logger from '../../core/Logger.js';
 import CodexLoader from '../codex/CodexLoader.js'; // Import CodexLoader
 import { interpretQuestSpread } from './QuestSpread.js';
 
-// Helper function to gather entropy from various browser sources
+// Helper function to gather entropy from runtime sources without assuming browser globals
 async function gatherEntropy() {
     let entropy = '';
 
-    // 1. window.crypto for strong randomness
-    if (window.crypto && window.crypto.getRandomValues) {
+    // 1. crypto.getRandomValues for strong randomness (works in Node 19+, Workers, and Browsers)
+    const cryptoObj = globalThis.crypto;
+    if (cryptoObj && typeof cryptoObj.getRandomValues === 'function') {
         const randomArray = new Uint32Array(10); // Get 10 random 32-bit integers
-        window.crypto.getRandomValues(randomArray);
+        cryptoObj.getRandomValues(randomArray);
         entropy += Array.from(randomArray).join('');
     }
 
@@ -27,21 +28,26 @@ async function gatherEntropy() {
     entropy += performance.now().toString();
     entropy += Date.now().toString();
 
-    // 3. User interaction (if available) - this would typically be a listener
-    // For now, we just add a placeholder string, real implementation would be event-driven
+    // 3. User interaction / runtime context
     entropy += 'userinteraction';
 
-    // 4. Screen/Window properties
-    entropy += window.screen.width;
-    entropy += window.screen.height;
-    entropy += window.screen.colorDepth;
-    entropy += window.innerHeight;
-    entropy += window.innerWidth;
+    // 4. Screen/Window properties (browser only)
+    if (typeof window !== 'undefined') {
+        if (window.screen) {
+            entropy += window.screen.width;
+            entropy += window.screen.height;
+            entropy += window.screen.colorDepth;
+        }
+        entropy += window.innerHeight;
+        entropy += window.innerWidth;
+    }
 
     // 5. Navigator properties
-    entropy += navigator.userAgent;
-    entropy += navigator.hardwareConcurrency;
-    entropy += navigator.deviceMemory;
+    if (typeof navigator !== 'undefined') {
+        entropy += navigator.userAgent || '';
+        entropy += navigator.hardwareConcurrency || '';
+        entropy += navigator.deviceMemory || '';
+    }
 
     return entropy;
 }
@@ -66,6 +72,8 @@ class T13NECardsAPI {
         // Visual State Collections
         this.hands = {}; // ownerId -> Card[]
         this.pools = {}; // poolId -> Card[]
+        this.preparedReserves = {}; // ownerId -> Card[]
+        this.styleReserves = {}; // ownerId -> { styleName -> Card[] }
         this.activeSpreads = []; // { id, spreadId, cards: {card, position}[] }
     }
 
@@ -194,6 +202,19 @@ class T13NECardsAPI {
                 this.pools[poolId] = this._restoreCards(serializedPool);
             }
 
+            // Restore Reserves
+            this.preparedReserves = {};
+            for (const [ownerId, serializedReserve] of Object.entries(game.cardState.preparedReserves || {})) {
+                this.preparedReserves[ownerId] = this._restoreCards(serializedReserve);
+            }
+            this.styleReserves = {};
+            for (const [ownerId, styleMap] of Object.entries(game.cardState.styleReserves || {})) {
+                this.styleReserves[ownerId] = {};
+                for (const [styleName, serializedStyleCards] of Object.entries(styleMap || {})) {
+                    this.styleReserves[ownerId][styleName] = this._restoreCards(serializedStyleCards);
+                }
+            }
+
             // Restore Spreads
             this.activeSpreads = (game.cardState.spreads || []).map(s => ({
                 id: s.id,
@@ -246,6 +267,19 @@ class T13NECardsAPI {
         game.cardState.pools = {};
         for (const [poolId, pool] of Object.entries(this.pools || {})) {
             game.cardState.pools[poolId] = pool.map(serialize);
+        }
+
+        // Sync Reserves
+        game.cardState.preparedReserves = {};
+        for (const [ownerId, reserve] of Object.entries(this.preparedReserves || {})) {
+            game.cardState.preparedReserves[ownerId] = reserve.map(serialize);
+        }
+        game.cardState.styleReserves = {};
+        for (const [ownerId, styleMap] of Object.entries(this.styleReserves || {})) {
+            game.cardState.styleReserves[ownerId] = {};
+            for (const [styleName, styleCards] of Object.entries(styleMap || {})) {
+                game.cardState.styleReserves[ownerId][styleName] = styleCards.map(serialize);
+            }
         }
 
         // Sync Spreads
@@ -344,6 +378,17 @@ class T13NECardsAPI {
             const idx = spread.cards.findIndex(sc => sc.card === card);
             if (idx !== -1) { spread.cards.splice(idx, 1); return; }
         }
+        // Search reserves
+        for (const reserve of Object.values(this.preparedReserves || {})) {
+            const idx = reserve.indexOf(card);
+            if (idx !== -1) { reserve.splice(idx, 1); return; }
+        }
+        for (const styleMap of Object.values(this.styleReserves || {})) {
+            for (const styleCards of Object.values(styleMap || {})) {
+                const idx = styleCards.indexOf(card);
+                if (idx !== -1) { styleCards.splice(idx, 1); return; }
+            }
+        }
         // Search deck
         const dIdx = this.deck.currentDeck.indexOf(card);
         if (dIdx !== -1) { this.deck.currentDeck.splice(dIdx, 1); return; }
@@ -351,21 +396,6 @@ class T13NECardsAPI {
         // Search discard
         const discIdx = this.deck.discardPile.indexOf(card);
         if (discIdx !== -1) { this.deck.discardPile.splice(discIdx, 1); return; }
-    }
-
-    /**
-     * Discards all cards in a specific spread and removes the spread from active tracking.
-     * @param {string} spreadId - The ID of the spread to discard.
-     */
-    discardSpread(spreadId) {
-        const idx = this.activeSpreads.findIndex(s => s.id === spreadId);
-        if (idx !== -1) {
-            const spread = this.activeSpreads[idx];
-            const cardsToDiscard = spread.cards.map(sc => sc.card);
-            this.discard(cardsToDiscard);
-            this.activeSpreads.splice(idx, 1);
-            this.persistToGame();
-        }
     }
 
     /**
@@ -497,50 +527,109 @@ class T13NECardsAPI {
     }
 
     /**
-     * Plays a card, triggering its onPlay commands if any.
+     * Prepares a card into a character's Prepared Reserve or named Style Reserve,
+     * preserving cardContext and executing any `onPrepare` commands.
+     * @param {Card} card
+     * @param {string} ownerId
+     * @param {object} [options]
+     * @returns {Promise<object>}
+     */
+    async prepareCard(card, ownerId, options = {}) {
+        if (!card || !ownerId) return { ok: false, error: 'Card and ownerId are required.' };
+
+        const reserveType = options.reserveType === 'style' ? 'style' : 'prepared';
+        const styleName = options.styleName || 'Default';
+        const cardContext = options.cardContext || 'Ordeal';
+
+        this.removeFromCurrentLocation(card);
+
+        if (reserveType === 'style') {
+            if (!this.styleReserves[ownerId]) this.styleReserves[ownerId] = {};
+            if (!this.styleReserves[ownerId][styleName]) this.styleReserves[ownerId][styleName] = [];
+            this.styleReserves[ownerId][styleName].push(card);
+        } else {
+            if (!this.preparedReserves[ownerId]) this.preparedReserves[ownerId] = [];
+            this.preparedReserves[ownerId].push(card);
+        }
+
+        let commandResult = null;
+        if (card.commands?.onPrepare) {
+            const Commands = this.t13ne?.getModule('Commands');
+            if (Commands) {
+                commandResult = await Commands.execute(card.commands.onPrepare, {
+                    ...(options.context || {}),
+                    card,
+                    ownerId,
+                    reserveType,
+                    styleName,
+                    cardContext
+                });
+            }
+        }
+
+        this.persistToGame();
+        return { ok: true, ownerId, reserveType, styleName, cardContext, card, commandResult };
+    }
+
+    /**
+     * Plays a card, preserving its narrative/rule context ('Ordeal', 'QuestSpread', 'WyrdTarot', 'Wound', 'Yarn'),
+     * removing it from its current location, triggering `onPlay` commands, and moving it to discard (unless retained).
      * @param {Card} card - The card to play.
-     * @param {object} context - The context for command execution.
-     * @async
+     * @param {object} [context={}] - Execution context including `cardContext`, `character`, `retainInPlay`.
+     * @returns {Promise<object|null>}
      */
     async playCard(card, context = {}) {
-        if (!card) return;
+        if (!card) return null;
 
-        Logger.message(`T13NECardsAPI: Playing card: ${card.name}`);
+        const cardContext = context.cardContext || 'Ordeal';
+        const execContext = { ...context, card, cardContext };
+        Logger.message(`T13NECardsAPI: Playing card '${card.name}' [${cardContext}]`);
 
-        // TODO: Trigger onPlay commands if card.commands.onPlay exists
+        this.removeFromCurrentLocation(card);
+
+        let commandResult = null;
         if (card.commands && card.commands.onPlay) {
             const Commands = this.t13ne?.getModule('Commands');
             if (Commands) {
                 Logger.message(`T13NECardsAPI: Executing onPlay command for ${card.name}: ${card.commands.onPlay}`);
-                await Commands.execute(card.commands.onPlay, context);
+                commandResult = await Commands.execute(card.commands.onPlay, execContext);
             }
         }
 
-        this.deck.discard(card);
+        if (!context.retainInPlay && this.deck) {
+            this.deck.discard(card);
+        }
+        this.persistToGame();
+        return { ok: true, card, cardContext, commandResult };
     }
 
     /**
-     * Delegates to the master deck's discard method.
+     * Removes cards from active locations, triggers `onDiscard` commands with context, and places them in discard.
      * @param {Card|Card[]} cards - A single card or an array of cards to discard.
+     * @param {object} [context={}]
      */
-    discard(cards) {
+    async discard(cards, context = {}) {
         if (!this.isInitialized || !this.deck) {
             Logger.error('T13NECardsAPI: Not initialized or deck not loaded. Call initialize() first.');
-            return;
+            return null;
         }
         const cardsArray = Array.isArray(cards) ? cards : [cards];
+        const cardContext = context.cardContext || 'Ordeal';
 
-        // TODO: Trigger onDiscard commands
         for (const card of cardsArray) {
+            if (!card) continue;
+            this.removeFromCurrentLocation(card);
             if (card.commands && card.commands.onDiscard) {
                 const Commands = this.t13ne?.getModule('Commands');
                 if (Commands) {
                     Logger.message(`T13NECardsAPI: Executing onDiscard command for ${card.name}: ${card.commands.onDiscard}`);
-                    Commands.execute(card.commands.onDiscard, {}); // Pass appropriate context
+                    await Commands.execute(card.commands.onDiscard, { ...context, card, cardContext });
                 }
             }
         }
-        this.deck.discard(cardsArray);
+        this.deck.discard(cardsArray.filter(Boolean));
+        this.persistToGame();
+        return { ok: true, discarded: cardsArray.length, cardContext };
     }
 
     /**

@@ -56,9 +56,11 @@ export default defineConfig(({ mode }) => {
     ],
     resolve: {
       alias: [
+      {
         // Regex alias runs before Vite's root-slash file lookup so '/src/t13ne/*' always resolves
-        // to the canonical root '../src/t13ne' rather than any legacy copy under ttrpg-companion/src/t13ne.
-        { find: /^\/src\/t13ne(\/.*)?$/, replacement: `${normalizePath(path.resolve(__dirname, '../src/t13ne'))}$1` },
+        // to the canonical root '../src/t13ne' source tree (ttrpg-companion is a view over src/t13ne).
+        find: /^\/src\/t13ne(\/.*)?$/, replacement: `${normalizePath(path.resolve(__dirname, '../src/t13ne'))}$1`
+      },
         { find: 'three', replacement: path.resolve(__dirname, '../node_modules/three') },
         { find: '@plugins', replacement: path.resolve(__dirname, '../plugins') },
         { find: '@', replacement: path.resolve(__dirname, '..') }

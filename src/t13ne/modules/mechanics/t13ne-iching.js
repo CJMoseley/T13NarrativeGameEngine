@@ -1,6 +1,6 @@
-﻿import CodexLoader from "/src/t13ne/modules/codex/CodexLoader.js";
-import T13Dice from '/src/t13ne/modules/mechanics/t13ne-dice.js';
-import Logger from "/src/t13ne/core/Logger.js";
+﻿import CodexLoader from "../codex/CodexLoader.js";
+import T13Dice from './t13ne-dice.js';
+import Logger from "../../core/Logger.js";
 
 class T13NE_IChing {
     constructor() {
