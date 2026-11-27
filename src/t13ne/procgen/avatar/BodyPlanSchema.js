@@ -82,6 +82,8 @@ export const BODY_PLANS = {
         components: [
             { id: 'cephalothorax', type: COMPONENT_TYPES.TORSO, root: true, pos: [0, 0.28, 0.08], box: { size: [0.26, 0.15, 0.28], center: [0, 0, 0] } },
             { id: 'abdomen', type: COMPONENT_TYPES.TORSO, parent: 'cephalothorax', pos: [0, 0.06, -0.32], box: { size: [0.34, 0.26, 0.42], center: [0, 0.04, 0] } },
+            { id: 'mandible_l', type: COMPONENT_TYPES.LIMB_CHAIN, parent: 'cephalothorax', mixin: MIXINS.MANDIBLE, side: 'left', tone: 'dark', pos: [-0.05, -0.02, 0.14], thickness: 0.025, segments: [[-0.02, -0.02, 0.06]] },
+            { id: 'mandible_r', type: COMPONENT_TYPES.LIMB_CHAIN, parent: 'cephalothorax', mixin: MIXINS.MANDIBLE, side: 'right', tone: 'dark', pos: [0.05, -0.02, 0.14], thickness: 0.025, segments: [[0.02, -0.02, 0.06]] },
             ...[0.10, 0.02, -0.06, -0.14].flatMap((z, i) => [-1, 1].map(side => ({
                 id: `leg_${i + 1}${side < 0 ? 'l' : 'r'}`,
                 type: COMPONENT_TYPES.LIMB_CHAIN, parent: 'cephalothorax', mixin: MIXINS.SPIDER_LEG,
@@ -177,6 +179,8 @@ Object.assign(BODY_PLANS, {
         components: [
             { id: 'thorax', type: COMPONENT_TYPES.TORSO, root: true, pos: [0, 0.32, 0.06], box: { size: [0.22, 0.18, 0.28], center: [0, 0, 0] } },
             { id: 'head', type: COMPONENT_TYPES.HEAD, parent: 'thorax', pos: [0, 0.04, 0.18], box: { size: [0.18, 0.16, 0.16], center: [0, 0.02, 0.04] }, features: ['eyes'] },
+            { id: 'mandible_l', type: COMPONENT_TYPES.LIMB_CHAIN, parent: 'head', mixin: MIXINS.MANDIBLE, side: 'left', tone: 'dark', pos: [-0.045, -0.02, 0.10], thickness: 0.022, segments: [[-0.02, -0.02, 0.055]] },
+            { id: 'mandible_r', type: COMPONENT_TYPES.LIMB_CHAIN, parent: 'head', mixin: MIXINS.MANDIBLE, side: 'right', tone: 'dark', pos: [0.045, -0.02, 0.10], thickness: 0.022, segments: [[0.02, -0.02, 0.055]] },
             { id: 'abdomen', type: COMPONENT_TYPES.TORSO, parent: 'thorax', pos: [0, -0.02, -0.28], box: { size: [0.26, 0.22, 0.38], center: [0, 0, -0.06] } },
             ...[0.10, 0, -0.10].flatMap((z, i) => [-1, 1].map(side => ({
                 id: `leg_${i + 1}${side < 0 ? 'l' : 'r'}`,

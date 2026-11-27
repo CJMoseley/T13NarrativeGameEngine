@@ -1,13 +1,14 @@
-import Logger from "/src/t13ne/core/Logger.js";
-import T13NE from '/src/t13ne/T13NE.js';
-import CodexLoader from "/src/t13ne/modules/codex/CodexLoader.js";
-import { InstrumentEngine } from "/src/t13ne/modules/audio/t13ne-InstrumentEngine.js";
-import { AudioAnalyzer } from "/src/t13ne/modules/audio/t13ne-audio-analyzer.js";
-import { ThemeGenerator } from "/src/t13ne/modules/audio/core/ThemeGenerator.js";
-import { MusicRNG } from "/src/t13ne/modules/audio/core/MusicUtils.js";
-import { AudioManifestManager } from "/src/t13ne/modules/audio/core/AudioManifestManager.js";
-import { T13Synth } from "/src/t13ne/modules/audio/core/T13Synth.js";
-import { WorkerPool } from "/src/t13ne/core/WorkerPool.js";
+import Logger from "../../core/Logger.js";
+import T13NE from '../../T13NE.js';
+import CodexLoader from "../codex/CodexLoader.js";
+import { InstrumentEngine } from "./t13ne-InstrumentEngine.js";
+import { AudioAnalyzer } from "./t13ne-audio-analyzer.js";
+import { ThemeGenerator } from "./core/ThemeGenerator.js";
+import { MusicRNG } from "./core/MusicUtils.js";
+import { AudioManifestManager } from "./core/AudioManifestManager.js";
+import { T13Synth } from "./core/T13Synth.js";
+import { WorkerPool } from "../../core/WorkerPool.js";
+import { voiceLeadProgression } from "./core/MusicCompositionRules.js";
 
 /**
  * T13NE Music Module
@@ -52,7 +53,7 @@ class T13NE_Music {
         await this.manifestManager.loadManifest();
 
         let ctx = this.soundEngine?.audioContext;
-        let output = this.soundEngine?.masterGain;
+        let output = this.soundEngine?.getBus?.('music') ?? this.soundEngine?.masterGain;
 
         if (!ctx) {
             Logger.message("T13NE_Music: Legacy SoundEngine context missing. Initializing independent AudioContext.");
@@ -714,6 +715,37 @@ class T13NE_Music {
     stopTrack() {
         if (this.currentSequenceTimer) clearTimeout(this.currentSequenceTimer);
         this.currentTrackName = null;
+    }
+
+    /**
+     * Hot-swaps the active rhythm pattern on the live track without stopping playback.
+     * @param {string} patternName
+     */
+    setRhythm(patternName) {
+        const patterns = this.themeGenerator?.drumPatterns;
+        const pattern = patterns?.[patternName] ?? null;
+        this.activeRhythmName = patternName;
+        if (!this.currentTrack?.voices || !pattern) return false;
+        const steps = pattern.steps || pattern.pattern || [];
+        if (!Array.isArray(steps) || !steps.length) return false;
+        for (const voice of this.currentTrack.voices) {
+            if (voice.role === 'percussion' || String(voice.id).toLowerCase().includes('drum')) {
+                voice.sequence = steps.map((step, idx) => ({
+                    step: typeof step === 'number' ? step : (step.step ?? idx),
+                    note: step.note ?? 'C2',
+                    duration: step.duration ?? 0.125,
+                    velocity: step.velocity ?? 0.8
+                }));
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Produces a Mode-locked, voice-led chord progression using MusicCompositionRules.
+     */
+    voiceLeadChords(chordsOfPitchClasses, modeName = 'Ionian', rootPitchClass = 0, registerName = 'pad') {
+        return voiceLeadProgression(chordsOfPitchClasses, modeName, rootPitchClass, registerName);
     }
     saveSequence(name, sequence) {
         const data = { name, sequence, timestamp: Date.now() };

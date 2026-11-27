@@ -22,6 +22,8 @@ import {
 
 // Face morphs are region-based deltas on head vertices, shared by every body plan.
 const FACE_MORPHS = ['eyeBlinkLeft', 'eyeBlinkRight', 'browDownLeft', 'browDownRight', 'browInnerUp', 'jawOpen', 'mouthPucker', 'mouthFunnel', 'mouthSmileLeft', 'mouthSmileRight'];
+const VISEME_MORPHS = ['viseme_aa', 'viseme_ee', 'viseme_oh', 'viseme_oo'];
+const ALL_FACE_MORPHS = [...FACE_MORPHS, ...VISEME_MORPHS];
 const LIMB_TYPES = [COMPONENT_TYPES.LIMB_CHAIN, COMPONENT_TYPES.TAIL, COMPONENT_TYPES.WING];
 const BEND_ANGLE = 0.6;   // radians at full morph weight
 const BEND_RAMP = 0.08;   // distance over which a part's own geometry starts to bend
@@ -289,7 +291,7 @@ export class AvatarEngine {
         const pivots = this._bendPivots(bodyPlan, bones);
         const bendDeltas = pivots.map(pivot => this._bendDeltas(geometry, bones, pivot));
 
-        const morphNames = [...FACE_MORPHS, ...pivots.map(p => `bend_${p.name}`)];
+        const morphNames = [...ALL_FACE_MORPHS, ...pivots.map(p => `bend_${p.name}`)];
         geometry.morphAttributes.position = [...faceDeltas, ...bendDeltas].map(d => new THREE.Float32BufferAttribute(d, 3));
         geometry.morphTargetsRelative = true;
         return morphNames;
@@ -303,8 +305,8 @@ export class AvatarEngine {
         const position = geometry.attributes.position;
         const skinIndex = geometry.attributes.skinIndex;
         const faceFeature = geometry.attributes.faceFeature;
-        const deltas = FACE_MORPHS.map(() => new Float32Array(position.count * 3));
-        const slot = Object.fromEntries(FACE_MORPHS.map((name, i) => [name, deltas[i]]));
+        const deltas = ALL_FACE_MORPHS.map(() => new Float32Array(position.count * 3));
+        const slot = Object.fromEntries(ALL_FACE_MORPHS.map((name, i) => [name, deltas[i]]));
 
         // Face vertices are head-skinned and below the top of the head box. Prosthetics sit above it.
         const face = [];
@@ -345,12 +347,22 @@ export class AvatarEngine {
                 slot[`browDown${side}`][o + 1] -= 0.025 * (1 - 0.5 * sideAmt);
                 slot.browInnerUp[o + 1] += 0.03 * centre;
             }
-            if (feature === 0 || feature === 3 || feature === 4) slot.jawOpen[o + 1] -= 0.08 * lower;
+            if (feature === 0 || feature === 3 || feature === 4) {
+                slot.jawOpen[o + 1] -= 0.08 * lower;
+                slot.viseme_aa[o + 1] -= 0.065 * lower;
+                slot.viseme_oh[o + 1] -= 0.045 * lower;
+                slot.viseme_oo[o + 1] -= 0.025 * lower;
+            }
             if ((feature === 3 || feature === 4) && front) {
                 slot.mouthPucker[o] -= 0.2 * x;
                 slot.mouthPucker[o + 2] += 0.02;
                 slot.mouthFunnel[o] -= 0.5 * x;
                 slot.mouthFunnel[o + 2] += 0.05;
+                slot.viseme_ee[o] += 0.28 * x;
+                slot.viseme_oh[o] -= 0.22 * x;
+                slot.viseme_oh[o + 2] += 0.025;
+                slot.viseme_oo[o] -= 0.35 * x;
+                slot.viseme_oo[o + 2] += 0.035;
                 if (feature === 3) {
                     const span = maxX - minX || 1;
                     const outer = side === 'Left' ? (maxX - x) / span : (x - minX) / span;

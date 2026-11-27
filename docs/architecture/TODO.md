@@ -2,7 +2,7 @@
 
 Last updated: 2026-11-27
 
-Baseline: `npm run test:node` passes **199 tests** (Stages 1, 2 & 3 complete on branch `feat/staged-engine-vtt-wormhole`), and both root (`vite.config.js`) and companion (`ttrpg-companion/vite.config.js`) Rollup bundles resolve cleanly against the single canonical `src/t13ne/` source tree (`ttrpg-companion/src/t13ne/` has been retired). Remaining Facet-role/body-language confirmations and authored cultural outfit catalogs stay parked in [TODO-avatars.md](./TODO-avatars.md), while **3D modelling/sculpting upgrades, audio/VOIP overhaul, T13 species voice effects, and Avatar puppeting** have been pulled directly into the active VTT pass (Stages 3–4 below).
+Baseline: `npm run test:node` passes **207 tests** (Stages 1, 2, 3 & 4 complete on branch `feat/staged-engine-vtt-wormhole`), and both root (`vite.config.js`) and companion (`ttrpg-companion/vite.config.js`) Rollup bundles resolve cleanly against the single canonical `src/t13ne/` source tree (`ttrpg-companion/src/t13ne/` has been retired). Remaining Facet-role/body-language confirmations and authored cultural outfit catalogs stay parked in [TODO-avatars.md](./TODO-avatars.md), while **3D modelling/sculpting upgrades, audio/VOIP overhaul, T13 species voice effects, and Avatar puppeting** have been pulled directly into the active VTT pass (Stages 3–4 below).
 
 ## Standing Rules & Product Boundaries
 
@@ -92,32 +92,24 @@ Goal: Replace the companion's static grid and mock P2P messages with an authorit
 
 ---
 
-## Stage 4: VTT Audio System, VOIP, T13 Species Voice FX & Avatar Puppeting (Week 2)
+## Stage 4: VTT Audio System, VOIP, T13 Species Voice FX & Avatar Puppeting (Week 2) — COMPLETED
 
 Goal: Upgrade the engine's audio architecture while working in the VTT, wire WebRTC/PeerJS VOIP through a T13 Species/Formation voice-effects pipeline, connect live audio + optional webcam tracking to the Avatar puppeting system, and verify both with automated tests.
 
-- [ ] **4.1 Upgrade Audio Engine, VTT Soundscape & Music Composition (`SoundEngine.js`, `src/t13ne/modules/audio/`):**
-  - Upgrade `SoundEngine` into a structured multi-bus WebAudio mixer (`master`, `music`, `sfx`, `ambience`, `voip`) with clean headless/suspended fallbacks and per-bus metering/mute/volume controls.
-  - Wire `T13NE_AudioDirector` and `T13Effects` to live VTT `T13Session` events: Plot tension transitions, Ordeal rhythm hot-swapping, procedural/sample Foley for T13 Dice rolls, Yarn card draws/plays, Hitch/Wound stingers, and Location Descendant ambience.
-  - Complete the listening-led second pass on procedural music composition, Mode adherence, voice leading, and arrangement (`t13ne-music.js`, `t13ne-conductor.js`, `ThemeGenerator.js`).
-- [ ] **4.2 VOIP Overhaul & Peer Connection Lifecycle (`VOIPManager.js`, `WebRTCManager.js`, `P2PNetworkManager.js`):**
-  - Fix `VOIPManager` so peer audio tracks attach dynamically for peers joining *after* `start()`, support PeerJS media calls alongside `WebRTCManager`, and route remote streams into `SoundEngine`'s `voip` bus (with optional 3D token spatialization on the VTT board) rather than detached `HTMLAudioElement`s.
-  - Route local microphone capture through a WebAudio processing graph (`MediaStreamAudioSourceNode` → Noise Gate / Compressor → `VoiceFXChain` → `MediaStreamAudioDestinationNode` → outbound WebRTC track), with push-to-talk, calibrated RMS/spectral VAD hysteresis, per-peer volume/mute, and a local voice-test ("hear myself") monitor toggle.
-- [ ] **4.3 T13 Species (`Descendant`) & Formation Voice Modulation FX:**
-  - Build a modular, zero-external-server WebAudio `VoiceFXChain` (pitch/formant filter banks, ring modulator, comb/karplus-strong resonator, chorus/hive doubler, waveshaper/bitcrusher, algorithmic reverb from `T13Effects`) parameterized by the speaker's **T13 Species (`Descendant`) and Formation (`Incarna`)**:
-    - *T13 Species Descendant vocal profiles:* e.g., Human (neutral/bypass), Giant/Kaiju-blooded (lowered pitch + chest formant shift), Small/Fae-blooded (raised formant + airy shimmer), Insectoid/Chitinous lineage (mandible click modulation + bandpass chorus), Beast/Theriocephalic lineage (growl sub-harmonics), plus custom vocal-tract parameters stored directly on any T13 Species `Descendant`.
-    - *Formation Incarna timbre overlays:* e.g., `Trial` / `Craft` (metallic resonator / robotic ring-mod), `Inertia` (clockwork/phase-locked tremolo), `Burden` (deep stone cavern convolution), `Phoenix` (warm harmonic saturation + subtle crackle), `Fury` (liquid modulated lowpass/formant), `Gossamer` / `Awe` (breathy whisper/spectral reverb), `Dominion` (multi-voice hive chorus), `Orthodox` / `Heresy` (synth/bitcrushed digital voice).
-    - *Wormhole Racers compatibility:* Map Wormhole Racers' `"Humans"` and `"Aliens"` subset (`Kathorri`, `Thf-Thf`, `Vemlek`, `Draco`, `Grenk`, `Drones`, etc.) cleanly onto these T13 Species Descendant + Formation voice profiles via the Stage 1.2 adapter.
-    - Include dry/wet mix sliders, output limiter protection, and a one-click **"Clean Voice / Accessibility Bypass"** per player and for the Referee.
-- [ ] **4.4 Avatar Puppeting System (`LiveAvatarController.js`, `VTuberBridge.js`, `MorphManager.js`, `AnimationBlender.js`):**
-  - Refactor `VTuberBridge` so it never touches `document.body` on import, supports configurable local/bundled asset paths instead of hardcoded CDN URLs, and shares `VOIPManager`'s audio analyser stream rather than opening a duplicate microphone capture.
-  - Upgrade `MorphManager` and `AvatarLowPoly` head morphs with a clean **viseme + expression blend set** (`jaw_open`, `viseme_aa`, `viseme_ee`, `viseme_oh`, `viseme_oo`, `blink`, `smile`, `frown` combining cleanly) for humanoids, and **articulated mouthpart/mandible puppeting** for insectoid/non-humanoid body plans (`TODO-avatars.md` §10).
-  - Support **two seamless puppeting modes** in VTT tokens, Character Sheet stages, and speaking portraits:
-    1. **Audio-Driven Puppeting (default whenever VOIP/mic is active, no webcam required):** Real-time FFT formant-band + envelope extraction drives visemes/mandibles, subtle head bob/lean, and blink cadence.
-    2. **Full Webcam + Audio Puppeting (opt-in):** MediaPipe/Kalidokit head, neck, torso, arm, eye-blink, and mouth tracking blended cleanly over idle animations via `AnimationBlender`, transmitted to VTT peers as compact quantized puppet states.
-- [ ] **4.5 Stage 4 Automated Tests (Audio, VOIP, Species FX & Puppeting):**
-  - **VOIP & Species Voice FX tests:** Deterministic WebAudio/offline-graph and synthetic-`MediaStream` tests verifying `VOIPManager` VAD start/stop events, dynamic peer join/leave track cleanup, limiter safety bounds, accessibility dry-bypass, and measurable spectral/formant transformations across distinct T13 Species Descendant + Formation presets.
-  - **Avatar Puppeting tests:** Automated tests feeding synthetic speech/formant envelopes and recorded landmark fixtures through `VOIPManager` → `VTuberBridge` / `LiveAvatarController` → `MorphManager` / `AnimationBlender`, asserting humanoid viseme blending, non-humanoid mandible rotation, skeleton quaternion slerp bounds, and quantized VTT puppet-packet round-trips.
+- [x] **4.1 Upgrade Audio Engine, VTT Soundscape & Music Composition (`SoundEngine.js`, `src/t13ne/modules/audio/`):**
+  - Upgraded `SoundEngine` into a structured 5-bus WebAudio mixer (`master`, `music`, `sfx`, `ambience`, `voip`) with clean headless/suspended fallbacks and per-bus metering/mute/volume controls.
+  - Wired `T13NE_AudioDirector` (`bindSession`) and `T13Effects` to live VTT `T13Session` events: Plot tension transitions, Ordeal rhythm hot-swapping (`setRhythm`), and procedural Foley for T13 Dice rolls, Yarn card plays, and Hitch/Wound stingers.
+  - Added `MusicCompositionRules.js` enforcing strict Mode adherence (never "Scale"), smooth voice leading, and arrangement registers wired into `t13ne-music.js` (and converted `/src/t13ne/` imports in `t13ne-music.js` / `t13ne-conductor.js` to relative ESM paths).
+- [x] **4.2 VOIP Overhaul & Peer Connection Lifecycle (`VOIPManager.js`, `WebRTCManager.js`, `P2PNetworkManager.js`):**
+  - Fixed `VOIPManager` + `WebRTCManager` so peer audio tracks attach dynamically for peers joining *after* `start()`, added PeerJS media call handling alongside `WebRTCManager`, and routed remote streams into `SoundEngine`'s `voip` bus (with optional 3D `PannerNode` spatialization) with full peer cleanup on leave.
+  - Routed local microphone capture through Noise Gate → `VoiceFXChain` → outbound `MediaStreamAudioDestinationNode`, with push-to-talk, calibrated RMS/hysteresis VAD (`evaluateVADFrame`), per-peer volume/mute, local "hear myself" monitor toggle, and shared analyser export.
+- [x] **4.3 T13 Species (`Descendant`) & Formation Voice Modulation FX (`VoiceFXChain.js`):**
+  - Built modular WebAudio + deterministic offline DSP `VoiceFXChain` (`SPECIES_VOICE_PRESETS`, `FORMATION_VOICE_OVERLAYS` across all 24 Formation Incarna, `resolveVoiceFXConfig`, `processSamplesOffline`) integrated with `resolveCharacterSpecies()` and Wormhole Racers species adapters (`Kathorri`, `Thf-Thf`, `Draco`, `Drones`, etc.).
+  - Included dry/wet mix control, safety brick-wall output limiting (`<= 0.98`), and one-click **Clean Voice / Accessibility Bypass**.
+- [x] **4.4 Avatar Puppeting System (`LiveAvatarController.js`, `VTuberBridge.js`, `MorphManager.js`, `AnimationBlender.js`):**
+  - Refactored `VTuberBridge` with zero `document.body` side-effects on import/construct, configurable `assetBaseUrl`, shared `VOIPManager` analyser support, `extractAudioPuppetFrame` formant viseme extraction, and compact quantized `encodePuppetPacket` / `decodePuppetPacket`.
+  - Added `viseme_aa`, `viseme_ee`, `viseme_oh`, `viseme_oo` morphs to `AvatarEngine`, articulated `mandible_l`/`mandible_r` chains to `INSECTOID`/`SPIDER` in `BodyPlanSchema`, additive expression+viseme blending + mandible rotation in `MorphManager`, anatomical rotation clamping in `AnimationBlender`, and `'idle' | 'audio' | 'webcam'` modes + remote puppet packet playback in `LiveAvatarController`.
+- [x] **4.5 Stage 4 Automated Tests:** Added `tests/t13-stage4-audio-voip-fx.test.js` and `tests/t13-stage4-avatar-puppeting.test.js` covering 5-bus mixer, Mode/voice-leading rules, session-driven audio cues, VAD hysteresis, dynamic peer join/leave, T13 Species/Formation DSP spectral shifts + limiter/bypass, audio formant visemes, `INSECTOID`/`SPIDER` mandible rotation, landmark clamping, and quantized puppet packets.
 
 ---
 

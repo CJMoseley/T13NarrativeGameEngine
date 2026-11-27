@@ -1,7 +1,8 @@
 import Logger from '../core/Logger.js';
+import { EventBus } from '../core/EventBus.js';
 
 /**
- * Manages WebRTC peer-to-peer connections.
+ * Manages WebRTC peer-to-peer connections and dynamic track synchronization.
  */
 export class WebRTCManager {
     constructor(signaling, rtcConfiguration) {
@@ -10,16 +11,14 @@ export class WebRTCManager {
         this.signaling = signaling;
         this.rtcConfiguration = rtcConfiguration;
         this.peers = new Map(); // Map of peerId -> RTCPeerConnection
+        this.localTracks = [];
 
-        this.signaling.ws.addEventListener('message', this._handleSignalingMessage.bind(this));
+        if (this.signaling?.ws && typeof this.signaling.ws.addEventListener === 'function') {
+            this.signaling.ws.addEventListener('message', this._handleSignalingMessage.bind(this));
+        }
         Logger.end(funcName);
     }
 
-    /**
-     * Creates a new peer connection for a given peer ID.
-     * @param {string} peerId - The ID of the peer to connect to.
-     * @returns {RTCPeerConnection}
-     */
     createPeerConnection(peerId) {
         const funcName = 'WebRTCManager.createPeerConnection';
         Logger.start(funcName, { peerId });
@@ -31,36 +30,48 @@ export class WebRTCManager {
         const pc = new RTCPeerConnection(this.rtcConfiguration);
         this.peers.set(peerId, pc);
 
+        // Attach already-active local tracks to peers joining after start()
+        for (const track of this.localTracks) {
+            try { pc.addTrack(track); } catch (e) {}
+        }
+
         pc.onicecandidate = (event) => {
             if (event.candidate) {
-                this.signaling.send({
+                this.signaling?.send?.({
                     type: 'candidate',
                     to: peerId,
-                    candidate: event.candidate,
+                    candidate: event.candidate
                 });
             }
         };
 
         pc.ontrack = (event) => {
             Logger.message(`WebRTCManager: Received remote track from ${peerId}.`);
-            // This event will be handled by the VOIPManager
+            EventBus.emit('webrtc:remote-track', {
+                peerId,
+                track: event.track,
+                stream: event.streams?.[0] ?? null
+            });
         };
 
         pc.onconnectionstatechange = () => {
             Logger.message(`WebRTCManager: Connection state with ${peerId} changed to ${pc.connectionState}`);
+            if (pc.connectionState === 'closed' || pc.connectionState === 'failed') {
+                this.close(peerId);
+            }
         };
 
+        EventBus.emit('webrtc:peer-created', { peerId, pc });
         Logger.end(funcName, pc);
         return pc;
     }
 
-    /**
-     * Adds a local audio track to all peer connections.
-     * @param {MediaStreamTrack} track - The audio track to send.
-     */
     addTrack(track) {
         const funcName = 'WebRTCManager.addTrack';
         Logger.start(funcName);
+        if (track && !this.localTracks.includes(track)) {
+            this.localTracks.push(track);
+        }
         for (const [peerId, pc] of this.peers.entries()) {
             Logger.message(`WebRTCManager: Adding track to peer ${peerId}`);
             pc.addTrack(track);
@@ -68,10 +79,19 @@ export class WebRTCManager {
         Logger.end(funcName);
     }
 
-    /**
-     * Initiates a connection to a peer by creating an offer.
-     * @param {string} peerId - The ID of the peer to connect to.
-     */
+    replaceLocalTrack(newTrack) {
+        this.localTracks = newTrack ? [newTrack] : [];
+        for (const pc of this.peers.values()) {
+            const senders = typeof pc.getSenders === 'function' ? pc.getSenders() : [];
+            const audioSender = senders.find(s => s.track?.kind === 'audio');
+            if (audioSender && typeof audioSender.replaceTrack === 'function') {
+                audioSender.replaceTrack(newTrack).catch(() => {});
+            } else if (newTrack) {
+                pc.addTrack(newTrack);
+            }
+        }
+    }
+
     async connect(peerId) {
         const funcName = 'WebRTCManager.connect';
         Logger.start(funcName, { peerId });
@@ -79,40 +99,31 @@ export class WebRTCManager {
         const offer = await pc.createOffer();
         await pc.setLocalDescription(offer);
 
-        this.signaling.send({
+        this.signaling?.send?.({
             type: 'offer',
             to: peerId,
-            offer: offer,
+            offer
         });
         Logger.end(funcName);
     }
 
-    /**
-     * Closes the connection to a specific peer.
-     * @param {string} peerId - The ID of the peer to disconnect from.
-     */
     close(peerId) {
         const funcName = 'WebRTCManager.close';
         Logger.start(funcName, { peerId });
         if (this.peers.has(peerId)) {
-            this.peers.get(peerId).close();
+            try { this.peers.get(peerId).close(); } catch (e) {}
             this.peers.delete(peerId);
+            EventBus.emit('webrtc:peer-closed', { peerId });
         }
         Logger.end(funcName);
     }
 
-    /**
-     * Handles incoming signaling messages.
-     * @param {MessageEvent} event - The WebSocket message event.
-     * @private
-     */
     async _handleSignalingMessage(event) {
         const funcName = 'WebRTCManager._handleSignalingMessage';
         Logger.start(funcName);
         try {
             const msg = JSON.parse(event.data);
             const from = msg.from;
-
             if (!from) return;
 
             const pc = this.peers.get(from) || this.createPeerConnection(from);
@@ -122,10 +133,10 @@ export class WebRTCManager {
                     await pc.setRemoteDescription(new RTCSessionDescription(msg.offer));
                     const answer = await pc.createAnswer();
                     await pc.setLocalDescription(answer);
-                    this.signaling.send({
+                    this.signaling?.send?.({
                         type: 'answer',
                         to: from,
-                        answer: answer,
+                        answer
                     });
                     break;
                 case 'answer':

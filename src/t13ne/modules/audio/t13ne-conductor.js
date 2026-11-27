@@ -1,5 +1,5 @@
-import Logger from "/src/t13ne/core/Logger.js";
-import { EventBus } from "/src/t13ne/core/EventBus.js";
+import Logger from "../../core/Logger.js";
+import { EventBus } from "../../core/EventBus.js";
 
 /**
  * T13NE Conductor Module
